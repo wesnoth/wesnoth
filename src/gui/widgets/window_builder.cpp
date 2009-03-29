@@ -165,44 +165,40 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		assert(false);
 	}
 
-	if(cfg.child("button")) {
-		return new tbuilder_button(*(cfg.child("button")));
-	} else if(cfg.child("horizontal_scrollbar")) {
-		return new tbuilder_horizontal_scrollbar(
-				*(cfg.child("horizontal_scrollbar")));
-
-	} else if(cfg.child("image")) {
-		return new tbuilder_image(*(cfg.child("image")));
-	} else if(cfg.child("label")) {
-		return new tbuilder_label(*(cfg.child("label")));
-	} else if(cfg.child("listbox")) {
-		return new tbuilder_listbox(*(cfg.child("listbox")));
-	} else if(cfg.child("menubar")) {
-		return new tbuilder_menubar(*(cfg.child("menubar")));
-	} else if(cfg.child("minimap")) {
-		return new tbuilder_minimap(*(cfg.child("minimap")));
-	} else if(cfg.child("panel")) {
-		return new tbuilder_panel(*(cfg.child("panel")));
-	} else if(cfg.child("scroll_label")) {
-		return new tbuilder_scroll_label(*(cfg.child("scroll_label")));
-	} else if(cfg.child("slider")) {
-		return new tbuilder_slider(*(cfg.child("slider")));
-	} else if(cfg.child("spacer")) {
-		return new tbuilder_spacer(*(cfg.child("spacer")));
-	} else if(cfg.child("text_box")) {
-		return new tbuilder_text_box(*(cfg.child("text_box")));
-	} else if(cfg.child("password_box")) {
-		return new tbuilder_password_box(*(cfg.child("password_box")));
-	} else if(cfg.child("toggle_button")) {
-		return new tbuilder_toggle_button(*(cfg.child("toggle_button")));
-	} else if(cfg.child("toggle_panel")) {
-		return new tbuilder_toggle_panel(*(cfg.child("toggle_panel")));
-	} else if(cfg.child("vertical_scrollbar")) {
-		return new tbuilder_vertical_scrollbar(
-				*(cfg.child("vertical_scrollbar")));
-
-	} else if(cfg.child("grid")) {
-		return new tbuilder_grid(*(cfg.child("grid")));
+	if (const config *c = cfg.child("button")) {
+		return new tbuilder_button(*c);
+	} else if (const config *c = cfg.child("horizontal_scrollbar")) {
+		return new tbuilder_horizontal_scrollbar(*c);
+	} else if (const config *c = cfg.child("image")) {
+		return new tbuilder_image(*c);
+	} else if (const config *c = cfg.child("label")) {
+		return new tbuilder_label(*c);
+	} else if (const config *c = cfg.child("listbox")) {
+		return new tbuilder_listbox(*c);
+	} else if (const config *c = cfg.child("menubar")) {
+		return new tbuilder_menubar(*c);
+	} else if (const config *c = cfg.child("minimap")) {
+		return new tbuilder_minimap(*c);
+	} else if (const config *c = cfg.child("panel")) {
+		return new tbuilder_panel(*c);
+	} else if (const config *c = cfg.child("scroll_label")) {
+		return new tbuilder_scroll_label(*c);
+	} else if (const config *c = cfg.child("slider")) {
+		return new tbuilder_slider(*c);
+	} else if (const config *c = cfg.child("spacer")) {
+		return new tbuilder_spacer(*c);
+	} else if (const config *c = cfg.child("text_box")) {
+		return new tbuilder_text_box(*c);
+	} else if (const config *c = cfg.child("password_box")) {
+		return new tbuilder_password_box(*c);
+	} else if (const config *c = cfg.child("toggle_button")) {
+		return new tbuilder_toggle_button(*c);
+	} else if (const config *c = cfg.child("toggle_panel")) {
+		return new tbuilder_toggle_panel(*c);
+	} else if (const config *c = cfg.child("vertical_scrollbar")) {
+		return new tbuilder_vertical_scrollbar(*c);
+	} else if (const config *c = cfg.child("grid")) {
+		return new tbuilder_grid(*c);
 	} else {
 		std::cerr << cfg;
 		ERROR_LOG(false);
@@ -380,7 +376,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   widgets will automatically disable this
  *                                   behaviour since they need to process the
  *                                   clicks as well, for example buttons do need
- *                                   a click and a missclick on button shouldn't
+ *                                   a click and a misclick on button shouldn't
  *                                   close the dialog. NOTE with some widgets
  *                                   this behaviour depends on their contents
  *                                   (like scrolling labels) so the behaviour
@@ -488,12 +484,12 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *
  *     vertical_grow (bool = false)    Does the widget grow in vertical
  *                                     direction when the grid cell grows in the
- *                                     vertical directon. This is used if the
+ *                                     vertical direction. This is used if the
  *                                     grid cell is wider as the best width for
  *                                     the widget.
  *     horizontal_grow (bool = false)  Does the widget grow in horizontal
  *                                     direction when the grid cell grows in the
- *                                     horizontal directon. This is used if the
+ *                                     horizontal direction. This is used if the
  *                                     grid cell is higher as the best width for
  *                                     the widget.
  * @end_table
@@ -559,7 +555,7 @@ tbuilder_control::tbuilder_control(const config& cfg) :
  *                                     unique or empty. Those special values are
  *                                     documented at the window definition that
  *                                     uses them. NOTE items starting with an
- *                                     underscore are used for composed witdgets
+ *                                     underscore are used for composed widgets
  *                                     and these should be unique per composed
  *                                     widget.
  *
@@ -568,7 +564,7 @@ tbuilder_control::tbuilder_control(const config& cfg) :
  *                                     specific version of the widget eg a title
  *                                     label when the label is used as title.
  *
- *     label (tstring = "")            Most widgets have some text accosiated
+ *     label (tstring = "")            Most widgets have some text associated
  *                                     with them, this field contain the value
  *                                     of that text. Some widgets use this value
  *                                     for other purposes, this is documented
@@ -590,7 +586,7 @@ tbuilder_control::tbuilder_control(const config& cfg) :
  *    use_tooltip_on_label_overflow (bool = true)
  *                                     If the text on the label is truncated and
  *                                     the tooltip is empty the label can be
- *                                     used for the tooltip. If this variale is
+ *                                     used for the tooltip. If this variable is
  *                                     set to true this will happen.
  * @end_table
  *
@@ -629,7 +625,7 @@ tbuilder_button::tbuilder_button(const config& cfg) :
  * == Button ==
  *
  * Instance of a button. When a button has a return value it sets the
- * retour value for the window. Normally this closes the window and returns
+ * return value for the window. Normally this closes the window and returns
  * this value to the caller. The return value can either be defined by the
  * user or determined from the id of the button. The return value has a
  * higher precedence as the one defined by the id. (Of course it's weird to
@@ -744,7 +740,7 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *                                     footer. (This grid will automatically
  *                                     get the id _footer_grid.)
  *
- *     list_definition (section)       This defines how a listboxs list data
+ *     list_definition (section)       This defines how a listbox item
  *                                     looks. It must contain the grid
  *                                     definition for 1 row of the list.
  *
@@ -1006,18 +1002,18 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  *     value (int = 0)                The value of the slider.
  *
  *     minimum_value_label (t_string = "")
- *                                    If the minimum value is choosen there
+ *                                    If the minimum value is chosen there
  *                                    might be the need for a special value (eg
  *                                    off). When this key has a value that value
  *                                    will be shown if the minimum is selected.
  *     maximum_value_label (t_string = "")
- *                                    If the maximum value is choosen there
+ *                                    If the maximum value is chosen there
  *                                    might be the need for a special value (eg
  *                                    unlimited)). When this key has a value
  *                                    that value will be shown if the maximum is
  *                                    selected.
  *     value_labels ([])              It might be the labels need to be shown
- *                                    are not a lineair number sequence eg (0.5,
+ *                                    are not a linear number sequence eg (0.5,
  *                                    1, 2, 4) in that case for all items this
  *                                    section can be filled with the values,
  *                                    which should be the same number of items
