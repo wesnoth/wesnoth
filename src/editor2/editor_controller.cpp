@@ -1119,7 +1119,6 @@ void editor_controller::fill_selection()
 	perform_refresh(editor_action_paint_area(get_map().selection(), foreground_terrain_));
 }
 
-
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
@@ -1131,7 +1130,8 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 				hotkey::get_hotkey(command).get_description());
 		gui().invalidate_game_status();
 	} else {
-		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
+		ERR_ED << "Invalid hotkey command (" 
+			<< static_cast<int>(command) << ") passed to set_mouse_action\n";
 	}
 }
 
