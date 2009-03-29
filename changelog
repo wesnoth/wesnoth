@@ -10,6 +10,8 @@ Version 1.6+svn:
      German, Finnish, Hebrew, Italian, Russian, Slovak, Turkish
  * General:
    * Fixed compilation with -D_GLIBCXX_PARALLEL
+   * Fixed handling of floating-point WML constants on localized Windows
+     (impacts "submerge" animations and AI settings)
  * AI:
    * Fixed incorrect handling of poisoning attacks when suggesting best attack 
      in user interface

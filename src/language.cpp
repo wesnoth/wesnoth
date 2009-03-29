@@ -197,30 +197,24 @@ static void wesnoth_setlocale(int category, std::string slocale,
 #endif
 
 #ifdef __BEOS__
-	if(setenv ("LANG", locale, 1) == -1)
+	if (category == LC_MESSAGES && setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
-	if(setenv ("LC_ALL", locale, 1) == -1)
-		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif
 #ifdef __APPLE__
-	if(setenv ("LANGUAGE", locale, 1) == -1)
+	if (category == LC_MESSAGES && setenv ("LANGUAGE", locale, 1) == -1)
 		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
-	if(setenv ("LC_ALL", locale, 1) == -1)
-		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif
 
 #ifdef _WIN32
-	std::string env = "LANG=" + slocale;
-	_putenv(env.c_str());
-	env = "LC_ALL=" + slocale;
-	_putenv(env.c_str());
 	std::string win_locale = locale;
 	win_locale = win_locale.substr(0,2);
 	#include "language_win32.ii"
-	SetEnvironmentVariable("LANG", win_locale.c_str());
-	SetEnvironmentVariable("LC_ALL", win_locale.c_str());
-	if(category == LC_MESSAGES)
-	    category = LC_ALL;
+	if(category == LC_MESSAGES) {
+		std::string env = "LANG=" + slocale;
+		_putenv(env.c_str());
+		SetEnvironmentVariable("LANG", win_locale.c_str());
+		return;
+	}
 	locale = win_locale.c_str();
 #endif
 
@@ -296,6 +290,10 @@ static void wesnoth_setlocale(int category, std::string slocale,
 			  << locale << "'.\n";
 	else
 		LOG_GENERAL << "set locale to '" << (try_loc.get()) << "' result: '" << res <<"'\n";
+
+	DBG_GENERAL << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
+	DBG_GENERAL << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
+
 }
 
 bool set_language(const language_def& locale)
