@@ -842,3 +842,155 @@ void twindow::generate_dot_file(const std::string& generator,
 #endif
 } // namespace gui2
 
+
+/**
+ * @page layout_algorihm Layout algorithm.
+ *
+ * @section introduction Introduction.
+ *
+ * This page describes how the layout engine for the dialogs works. First
+ * a global overview of some terms used in this document.
+ *
+ * - Widget; Any item which can be used in the widget toolkit. Not all
+ *   widgets are visible. In general widgets can not be sized directly, but
+ *   this is controlled by a window. A widget has an internal size cache and
+ *   if the value in the cache is not equal to 0,0 that value is its best
+ *   size. This value gets set when the widget can honour a resize request.
+ *   It will be set with the value which honours the request. 
+ *
+ * - Grid; A grid is an invisible container which holds one or more widgets.
+ *   Several widgets have a grid in them to hold multiple widgets eg panels
+ *   and windows.
+ *
+ * - Grid cell; Every widget which is in a grid is put in a grid cell. These
+ *   cells also hold the information about the gaps between widgets the
+ *   behaviour on growing etc. All grid cells must have a widget inside
+ *   them.
+ *
+ * - Window; A window is a top level item which has a grid with its
+ *   children. The window handles the sizing of the window and makes sure
+ *   everything fits.
+ *
+ * - Shared size group; A shared size group is a number of widgets which
+ *   share width and or height. These widgets are handled separately in the
+ *   layout algorithm. All grid cells width such a widget will get the same
+ *   height and or width and these widgets won't be resized when there's not
+ *   enough size. To be sure that these widgets don't cause trouble for the
+ *   layout algorithm, they must be in a container with scrollbars so there
+ *   will always be a way to properly layout them. The engine must enforce
+ *   this restriction so the shared layout property must be set by the
+ *   engine after validation.
+ *
+ * - All visible grid cells; A grid cell is visible when the widget inside
+ *   of it doesn't have the state INVISIBLE. Widgets which are HIDDEN are
+ *   sized properly since when they become VISIBLE the layout shouldn't be
+ *   invalidated. A grid cell that's invisible has size 0,0.
+ *
+ * - All resizable grid cells; A grid cell is resizable under the following
+ *   conditions:
+ *   - The widget is VISIBLE.
+ *   - The widget is not in a shared size group.
+ *
+ * There are two layout algorithms with a different purpose.
+ *
+ * - The Window algorithm; this algorithm's goal is it to make sure all grid
+ *   cells fit in the window. Sizing the grid cells depends on the widget
+ *   size as well, but this algorithm only sizes the grid cells and doesn't
+ *   handle the widgets inside them.
+ *
+ * - The Grid algorithm; after the Window algorithm made sure that all grid
+ *   cells fit this algorithm makes sure the widgets are put in the optimal
+ *   state in their grid cell.
+ *
+ * @section layout_algorihm_window Window.
+ *
+ * Here is the algorithm used to layout the window:
+ *
+ * - Perform a full initialization:
+ *   - Clear the internal best size cache for all widgets.
+ *   - For widgets with scrollbars hide them unless the scrollbar_mode is
+ *     ALWAYS.
+ * - Handle shared sizes:  
+ *   - Height and width:
+ *     - Get the best size for all widgets that share height and width.
+ *     - Set the maximum of width and height as best size for all these
+ *       widgets.
+ *   - Width only:
+ *     - Get the best width for all widgets which share their width.
+ *     - Set the maximum width for all widgets, but keep their own height.
+ *   - Height only:
+ *     - Get the best height for all widgets which share their height.
+ *     - Set the maximum height for all widgets, but keep their own width.
+ * - Start layout loop:
+ *   - Get best size.
+ *   - If width <= maximum_width && height <= maximum_height we're done.
+ *   - If width > maximum_width, optimize the width: 
+ *     - For every grid cell in a grid row there will be a resize request:
+ *       - Sort the widgets in the row on the resize priority.
+ *         - Loop through this priority queue until the row fits
+ *           - If priority != 0 try to share the extra width else all
+ *             widgets are tried to reduce the full size.
+ *           - Try to shrink the widgets by either wrapping or using a
+ *             scrollbar.
+ *           - If the row fits in the wanted width this row is done.  
+ *           - Else try the next priority.
+ *         - All priorities done and the width still doesn't fit.
+ *         - Loop through this priority queue until the row fits.
+ *           - If priority != 0 try to share the extra width else all
+ *             widgets are tried to reduce the full size.
+ *           - Try to shrink the widgets by sizing them smaller as really
+ *             wanted. For labels, buttons etc. they get ellipsized .
+ *           - If the row fits in the wanted width this row is done.  
+ *           - Else try the next priority.
+ *         - All priorities done and the width still doesn't fit.
+ *         - Throw a layout width doesn't fit exception.
+ *   - If height > maximum_height, optimize the height: 
+ *     - For every grid cell in a grid column there will be a resize request:
+ *       - Sort the widgets in the column on the resize priority.
+ *         - Loop through this priority queue until the column fits:
+ *           - If priority != 0 try to share the extra height else all
+ *              widgets are tried to reduce the full size.
+ *           - Try to shrink the widgets by using a scrollbar.
+ *             - If succeeded for a widget the width is influenced and the
+ *               width might be invalid.
+ *             - Throw a width modified exception. 
+ *           - If the column fits in the wanted height this column is done.  
+ *           - Else try the next priority.
+ *         - All priorities done and the height still doesn't fit.
+ *         - Loop through this priority queue until the column fits.
+ *           - If priority != 0 try to share the extra height else all
+ *              widgets are tried to reduce the full size.
+ *           - Try to shrink the widgets by sizing them smaller as really
+ *             wanted. For labels, buttons etc. they get ellipsized .
+ *           - If the column fits in the wanted height this column is done.  
+ *           - Else try the next priority.
+ *         - All priorities done and the height still doesn't fit.
+ *         - Throw a layout height doesn't fit exception.
+ * - End layout loop.
+ *
+ * - Catch width modified exception:
+ *   - Goto relayout. 
+ *
+ * - Catch layout width doesn't fit exception:
+ *   - If the window has a horizontal scrollbar which isn't shown but can be
+ *     shown.
+ *     - Show the scrollbar.
+ *     - goto relayout.
+ *   - Else show a layout failure message.
+ *
+ * - Catch layout height doesn't fit exception:
+ *   - If the window has a vertical scrollbar which isn't shown but can be
+ *     shown:
+ *     - Show the scrollbar.
+ *     - goto relayout.
+ *   - Else:
+ *     - show a layout failure message.
+ *
+ * - Relayout:
+ *   - Initialize all widgets.
+ *   - Goto start layout loop.
+ *
+ * @section grid Grid.
+ *
+ * This section will be documented later.
+ */
