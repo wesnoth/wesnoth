@@ -4,14 +4,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-03-26 23:21+0000\n"
+"PO-Revision-Date: 2009-03-29 00:07+0000\n"
 "Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bitPlural-Forms: nplurals=2; plural=(n % 100 != "
-"1 && n % 100 != 21 && n % 100 != 31 && n % 100 != 41 && n % 100 != 51 && n % "
-"100 != 61 && n % 100 != 71 && n % 100 != 81 && n % 100 != 91);\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n % 100 != 1 && n % 100 != 21 && n % 100 !"
+"= 31 && n % 100 != 41 && n % 100 != 51 && n % 100 != 61 && n % 100 != 71 && "
+"n % 100 != 81 && n % 100 != 91);\n"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
@@ -597,7 +598,7 @@ msgstr ""
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "Kannski að ættir þú að ráða annan álf?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
@@ -605,6 +606,8 @@ msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
+"Athugasemd:\n"
+"Þú getur hægri-smellt á einingu til að fá nánari lýsingu þess."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:923
@@ -614,6 +617,9 @@ msgid ""
 "needed. Take special care of units with the highest experience points (XP) "
 "so they can level up!"
 msgstr ""
+"Athugasemd:\n"
+"Mundu eftir að hörfa einingar til þorpa og ráða fleiri ef þörf krefst. Gættu "
+"vel að einingum með mestu reynsluna svo þeir geta eflst."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
@@ -622,6 +628,9 @@ msgid ""
 "Each village you own can support a single unit for free. After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"Athugasemd:\n"
+"Hvert þorp undir þinni stjórn styður eina einungu þér að kostnaðarlausu. "
+"Hver eining framyfir það kostar þig eitt gull hverja umferð."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
@@ -632,6 +641,10 @@ msgid ""
 "will have a chance to choose which one you want. Note that level 2 units "
 "cost you twice as much to support as level 1 units."
 msgstr ""
+"Athugasemd:\n"
+"Þegar eining fær nægilega reynslu mun hún eflast. Elvish Fighters hafa tvo "
+"valkosti sem þú hefur kost á að velja á milli. Athugaðu að level 2 eining "
+"kostar þig jafn mikið og tvær level 1 einingar."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
@@ -647,7 +660,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 msgid "The quintain is dead, sirs, and I have gained more experience!"
-msgstr ""
+msgstr "Krákan er dauð, herrar, og ég hef fengið frekari reynslu."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
@@ -663,6 +676,8 @@ msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+"Konrad, ég mun skilja þig einan eftir með fleri krákum til æfinga! Eftir það "
+"höfum við verk að vinna..."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1011
@@ -670,6 +685,8 @@ msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+"Li'sar,·ég·mun·skilja·þig·eina·eftir·með·fleri·krákum·til·æfinga!"
+"·Eftir·það·höfum·við·verk·að·vinna..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
@@ -682,17 +699,17 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "Viltu halda áfram æfingum?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1061
 msgid "Yes, I'm still figuring it out."
-msgstr ""
+msgstr "Já, ég er enn að átta mig á þessu."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1064
 msgid "No, I think I've got it."
-msgstr ""
+msgstr "Nei, ég held að ég hafi náð þessu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1099
@@ -708,13 +725,16 @@ msgid ""
 "*Remember:\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
+"*Áminning:\n"
+"Þú getur þrýst á U til að afturkalla flesta hluti, til dæmis til að "
+"leiðrétta mistök."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
 msgid "*Galdrad"
-msgstr ""
+msgstr "*Galdrad"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:74
@@ -746,7 +766,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
 msgid "Can one unit survive against all those enemies?"
-msgstr ""
+msgstr "Hvernig getur ein eining lifað af alla þessa óvini?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
@@ -773,6 +793,8 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
+"Þessi eining er einu drápi (8 reynslustigum) frá eflingu. Ekki láta hana "
+"drepast."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
@@ -792,7 +814,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
 msgid "I have $side.gold gold; enough to recruit!"
-msgstr ""
+msgstr "Ég hef $side.cold gull; nóg til ráðninga!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:276
@@ -802,7 +824,7 @@ msgstr ""
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
-msgstr ""
+msgstr "Wesnoth sýnikennsla, annar hluti"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
@@ -818,7 +840,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Dauði Konrads"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:340
@@ -829,12 +851,12 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
-msgstr ""
+msgstr "Dauði Li'sars"
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -842,16 +864,18 @@ msgid ""
 "Ho Galdrad! Has Delfador conjured something else to beat me with? A flock of "
 "scarecrows, perhaps?"
 msgstr ""
+"Hæ Galdrad! Hefur Delfador galdrað fram eitthvað fleira til að berja mig "
+"með? Hjörð fuglnahræðna, kannski?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:417
 msgid "This is no game, Konrad! "
-msgstr ""
+msgstr "Þetta er ei leikur, Konrad! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 msgid "This is no game, Li'sar! "
-msgstr ""
+msgstr "Þetta er ei leikur, Li'sar! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
@@ -865,7 +889,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
 msgid "What should I do?"
-msgstr ""
+msgstr "Hvað ætti ég að gera?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
@@ -888,7 +912,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
 msgid "SHALLOW"
-msgstr ""
+msgstr "GRUNNT"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:433
@@ -896,7 +920,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:435
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:436
 msgid "DEEP"
-msgstr ""
+msgstr "DJÚPT"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:438
@@ -923,6 +947,10 @@ msgid ""
 "Two Elvish Archers\n"
 "One Elvish Shaman"
 msgstr ""
+"Til að byrja með þurfum við að ráða nokkrar einingar:\n"
+"Tvo Elvish Fighters\n"
+"Tvo Elvish Archers\n"
+"Einn Elvish Shaman"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:524
@@ -971,7 +999,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:803
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "Elvish Fighter"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
@@ -981,7 +1009,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr ""
+msgstr "Nei! Ég sagði að þú hættir að ráða Elvish SHAMAN! Reyndu nú aftur..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
@@ -994,7 +1022,7 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
 msgid "So, should I end my turn now?"
-msgstr ""
+msgstr "Get ég lokið við umferð mína núna?"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:600
@@ -1007,30 +1035,30 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:602
 msgid "Move Konrad to capture a village"
-msgstr ""
+msgstr "Færðu Konrad til að hertaka þorp"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
 msgid "Move Li'sar to capture a village"
-msgstr ""
+msgstr "Færðu Li'sar til að hertaka þorp"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:659
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-msgstr ""
+msgstr "Nei! Ég sagði þér að ráða Elvish ARCHER! Reyndu nú aftur..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
 msgid "Eowynial"
-msgstr ""
+msgstr "Eowynial"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:642
 msgid "Shaman"
-msgstr ""
+msgstr "Shaman"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:643
@@ -1042,7 +1070,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
 msgid "Elriend"
-msgstr ""
+msgstr "Elriend"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
@@ -1070,14 +1098,14 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:724
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr ""
+msgstr "Nei! Ég sagði þér að ráða Elvish FIGHTER! Reyndu nú aftur..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
 msgid "Golir"
-msgstr ""
+msgstr "Golir"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
@@ -1119,12 +1147,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 msgid "Elindel"
-msgstr ""
+msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
 msgid "You've learned well, Konrad! "
-msgstr ""
+msgstr "Þú hefur lært vel, Konrad! "
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:875
@@ -1137,14 +1165,14 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:876
 msgid "You've learned well, Li'sar! "
-msgstr ""
+msgstr "Þú hefur lært vel, Li'sar! "
 
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:879
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
 msgid "End your turn"
-msgstr ""
+msgstr "Ljúktu umferð þinni"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
@@ -1152,6 +1180,8 @@ msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
+"Þú hefur hertekið öll þorpin næst höllinni, en haltu þér nærri svo þú getur "
+"ráðið fleiri einingar."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:900
@@ -1342,6 +1372,9 @@ msgid ""
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
 "attack you!"
 msgstr ""
+"Það er hættulegt að standa í vatni þegar óvinir eru nærri! Einingarnar þínar "
+"hafa 80% líkur á að fá meiðsl eftir árás! Hættu við, og bíddu eftir þeim að "
+"gera árás á þig!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1135
@@ -1403,6 +1436,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
+"Þú þarft eingöngu að drepa leiðtogann þeirra til sigurs (sjá Aðalval -> "
+"Markmið)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
