@@ -257,6 +257,9 @@ SDL_Color chat::color_message(const msg& message) {
 	if(message.user == "server") {
 		int unused;
 		font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
+	// Highlight private messages too
+	} else if(message.user.substr(0,8) == "whisper:") {
+	    c = font::LABEL_COLOUR;
 	}
 	return c;
 };
