@@ -82,7 +82,6 @@ void show_intro(display &disp, const vconfig& data, const config& level)
 
 			const std::string var_name = switch_node["variable"];
 			const std::string var_actual_value = (*gamestate).get_variable_const(var_name);
-			const vconfig::child_list& cases = item.second.get_children("case");
 			bool not_found = true;
 
 			for(vconfig::all_children_iterator j = switch_node.ordered_begin(); j != switch_node.ordered_end(); ++j) {
