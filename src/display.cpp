@@ -1718,8 +1718,8 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 
 		// we do not want to be only inside the screen rect, but center a bit more
 		double inside_frac = 0.5; // 0.0 = always center the target, 1.0 = scroll the minimum distance
-		w = (int)(w * inside_frac);
-		h = (int)(h * inside_frac);
+		w = static_cast<int>(w * inside_frac);
+		h = static_cast<int>(h * inside_frac);
 
 		// shrink the rectangle by the size of the locations rectangle we found
 		// such that the new task to fit a point into a rectangle instead of rectangle into rectangle
