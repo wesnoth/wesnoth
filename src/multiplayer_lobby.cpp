@@ -332,8 +332,8 @@ void gamebrowser::handle_event(const SDL_Event& event)
 			x = event.button.x;
 			y = event.button.y;
 		} else {
-			x = (long)event.user.data1;
-			y = (long)event.user.data2;
+			x = reinterpret_cast<long>(event.user.data1);
+			y = reinterpret_cast<long>(event.user.data2);
 		}
 		const SDL_Rect& loc = inner_location();
 
