@@ -70,12 +70,13 @@ music_track::music_track(const std::string& v_name) :
 	}
 }
 
-music_track::music_track(const std::string& v_name, unsigned int v_ms_before, unsigned int v_ms_after, bool v_once) :
+music_track::music_track(const std::string& v_name,
+		unsigned int v_ms_before, unsigned int v_ms_after, bool v_once) :
 	id_(v_name),
 	file_path_(""),
 	ms_before_(v_ms_before),
 	ms_after_(v_ms_after),
-	once_(false)
+	once_(v_once)
 {
 	if(id_.empty()) {
 		ERR_AUDIO << "empty track filename specified\n";
