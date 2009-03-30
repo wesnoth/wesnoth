@@ -836,6 +836,16 @@ def sanity_check(filename, lines):
                     races.append(value)
             except TypeError:
                 pass
+    # Check for fluky credit parts
+    for nav in WmllintIterator(lines, filename):
+        above = nav.ancestors()
+        if above and above[-1] == "about":
+            try:
+                (key, prefix, value, comment) = parse_attribute(nav.text)
+                if key == email and " " in value:
+                    print '"%s", line %d: space in email name'
+            except TypeError:
+                pass
     # Sanity-check recruit and recruitment_pattern.
     # This code has a limitation; if there are multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
