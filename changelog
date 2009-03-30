@@ -18,13 +18,15 @@ Version 1.7.0-svn:
    * Added run_file FormulaAI function to allow running .fai scripts directly
      from in-game console
  * Graphics:
-   * The ~RC() image functor does not accept the special palette switch
-     ~RC(palette1=palette2) syntax anymore. ~PAL(palette1>palette2) should
-     be used instead
    * New type of animation : "recruiting" used by leaders when recruiting
      units
    * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman
      Ogre/Young Ogre, Trapper
+   * Image path functors:
+     * New functor, ~NOP(), which does nothing.
+     * The ~RC() image functor does not accept the special palette switch
+       ~RC(palette1=palette2) syntax anymore. ~PAL(palette1>palette2) should
+       be used instead
  * Language and i18n:
    * new translations: Icelandic
    * updated translations: British English, Catalan, Chinese (Simplified),
