@@ -5,7 +5,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 bin_SCRIPTS =
 
 # Ignore junk -- object files, editor backup files, wmllint backup files.
-findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -name 'Makefile' -o -name '*Makefile' -o -type d -o -wholename "data/test/*" \)
+findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -name 'Makefile' -o -name '*Makefile' -o -type d -o -regex "data/test/*" \)
 
 # List all datafiles, ignoring junk
 finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print )
