@@ -31,7 +31,7 @@
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, ai_configuration)
 
 
-std::string bind_config_parameter( const std::string& value_from_config,
+static std::string bind_config_parameter( const std::string& value_from_config,
 		const std::string& value_from_global_config,
 		const std::string& default_value )
 {
