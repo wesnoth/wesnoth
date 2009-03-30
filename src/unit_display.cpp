@@ -352,7 +352,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
 		leader->second.set_facing(leader_loc.get_relative_dir(loc));
-		animator.add_animation(&leader->second,"recruiting",leader_loc,loc);
+		animator.add_animation(&leader->second,"recruiting",leader_loc,loc,0,true);
 	} else {
 		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	}
