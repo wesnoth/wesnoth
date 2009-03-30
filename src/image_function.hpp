@@ -28,9 +28,7 @@ namespace image {
 class function_base
 {
 public:
-
 	virtual ~function_base() {}
-
 	/**
 	 * Applies the image-path function on the specified surface.
 	 */
@@ -47,7 +45,7 @@ class rc_function : public function_base
 {
 public:
 	/**
-	 * Default construcotr.
+	 * Default constructor.
 	 */
 	rc_function()
 		: rc_map_()
