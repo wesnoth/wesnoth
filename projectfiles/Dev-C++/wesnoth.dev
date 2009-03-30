@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=214
+UnitCount=216
 Type=0
 Ver=1
 ObjFiles=
@@ -940,17 +940,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit215]
-FileName=..\..\src\play_controller.cpp
-CompileCpp=1
-Folder=Sources
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit216]
-FileName=..\..\src\play_controller.hpp
+FileName=..\..\src\hash.cpp
 CompileCpp=1
 Folder=Sources
 Compile=1
@@ -2622,6 +2612,16 @@ FileName=..\..\src\filesystem_win32.ii
 Folder=Others
 Compile=0
 Link=0
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit216]
+FileName=..\..\src\hash.hpp
+CompileCpp=1
+Folder=Headers
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
