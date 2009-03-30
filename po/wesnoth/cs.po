@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-04 20:19+0100\n"
+"PO-Revision-Date: 2009-03-27 16:38+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -8689,13 +8689,12 @@ msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Přezdívka '$nick' je rezervovaná a hráči ji nemohou registrovat."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
+msgstr "Přezdívka '$nick' není na tomto serveru registrovaná."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9768,6 +9767,9 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Islandský překlad"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Nalezeny nezkontrolované skripty:"
