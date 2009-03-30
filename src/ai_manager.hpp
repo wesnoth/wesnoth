@@ -114,7 +114,7 @@ public:
 	// CONSTANTS
 	// =======================================================================
 
-	static const int MAX_HISTORY_SIZE = 200;
+	static const size_t MAX_HISTORY_SIZE = 200;
 
 	static const int AI_TEAM_COMMAND_AI = 0;
 	static const int AI_TEAM_FALLBACK_AI = -1;
