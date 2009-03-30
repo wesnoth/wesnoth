@@ -138,7 +138,8 @@ public:
         virtual void set_team(int team) { info_.team_num = team; }
 
         /** Evaluate */
-        virtual std::string evaluate(const std::string& str) { return "evaluate command not implemented by this AI"; }
+        virtual std::string evaluate(const std::string& /*str*/) 
+			{ return "evaluate command not implemented by this AI"; }
 
         /** Return a message with information about the ai. Useful for making debugging ai-independent. */
         virtual std::string describe_self() { return "? ai"; }
