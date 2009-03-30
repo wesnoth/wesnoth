@@ -45,42 +45,23 @@ def string_to_name_hash(terrains)
 	return rehash
 end
 
-#create a hash where each 1.3+ terrain string is pointing to the correspondending 1.2 terrain string(e.g. "Gg"=>"g")
-def string_to_oldstring_hash(terrains,old_terrains)
-	rehash={}
-	#look for identical IDs in the old_terrain array and the terrain array
-	terrains.each do |terrain|
-		id=terrain["id"]
-		old_terrains.each do |old_terrain|
-			old_id=old_terrain["id"]
-			if old_id==id then
-				#if two terrains with the same id are found, add a key with the name of the new string to the hash that points to the old char
-				rehash[terrain["string"]]=old_terrain["char"]
-			end
-		end
-	end
-	return rehash
-end
-
-def create_table_line(string,old_letter,name,stats_from,show_old_letter)
+def create_table_line(string,name,stats_from)
 	return "<tr>
 <td>#{string}</td>#{"
-<td>#{old_letter}</td>" if show_old_letter}
+<td>#{old_letter}</td>" if nil}
 <td>#{name}</td>
 <td>#{stats_from}</td>
 </tr>"
 end
 
 #create wiki text from array in that terrain tag data is stored
-def create_wiki(terrains,old_terrains=nil)
+def create_wiki(terrains)
 
 	string_to_name=string_to_name_hash(terrains)
-	string_to_oldstring=string_to_oldstring_hash(terrains,old_terrains) if old_terrains
 
 	table_lines=""
 	terrains.each do |terrain|
 		string=terrain["string"]
-		oldstring=string_to_oldstring[terrain["string"]] if old_terrains#if old terrains should be shown, get the correspondending old terrain from the hash
 		name=terrain["name"]
 		stats_from=""
 		#convert the terrain strings from the aliasof into terrain names
@@ -89,13 +70,13 @@ def create_wiki(terrains,old_terrains=nil)
 			stats_from+=string_to_name[item.strip].to_s+", "
 		end
 		stats_from.chomp!(", ")
-		table_lines+=create_table_line(string,oldstring,name,stats_from,old_terrains)+"\n"
+		table_lines+=create_table_line(string,name,stats_from)+"\n"
 	end
 
 return "
 <table border=\"1\"><tr>
 <th>String</th>#{"
-<th>Old letter</th>" if old_terrains}
+<th>Old letter</th>" if nil}
 <th>Name</th>
 <th>Stats from</th>
 </tr>
@@ -111,7 +92,6 @@ def write_file(pat,text)
 	return true
 end
 
-$old_terrain_file=ARGV[2]
 $terrain_file=ARGV[1]
 $output_file=ARGV[0]
 
@@ -121,24 +101,12 @@ while !$terrain_file
 	$terrain_file=gets.chomp("\n")
 end
 
-if !$old_terrain_file
-	print "Terrain.cfg used for creating old path chars(optional): "
-	$old_terrain_file=gets.chomp("\n")
-end
-
 while !$output_file
 	print "Where will the wiki text be saved?"
 	$output_file=gets.chomp("\n")
 end
 
 terrain=File.new($terrain_file).read
-if File.exists?($old_terrain_file)
-	old_terrain=File.new($old_terrain_file).read
-else
-	print "No old terrain.cfg found.\n\n"
-end
 terrainarray=tags_to_hashes(terrain)
-old_terrainarray=tags_to_hashes(old_terrain) if old_terrain
-output=create_wiki(terrainarray,old_terrainarray) if old_terrain
-output=create_wiki(terrainarray) if !old_terrain
+output=create_wiki(terrainarray)
 write_file($output_file,output)
