@@ -1931,6 +1931,9 @@ if __name__ == '__main__':
                                              backup, fn, fromdate, todate, n=3)
                         sys.stdout.writelines(diff)
                 else:
+                    if fn.endswith("~"):
+                        print "wmllint: ignoring %s, the campaign server won't accept it." % fn
+                        continue
                     # Do file conversions
                     try:
                         changed = translator(fn, [], texttransform)
