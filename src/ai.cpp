@@ -19,6 +19,7 @@
 
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
+#include "ai_manager.hpp"
 #include "array.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
@@ -44,14 +45,20 @@
 
 typedef util::array<map_location,6> adjacent_tiles_array;
 
-/** A trivial ai that sits around doing absolutely nothing. */
-class idle_ai : public ai_interface {
-public:
-	idle_ai(info& i) : ai_interface(i) {}
-	void play_turn() {
-		game_events::fire("ai turn");
-	}
-};
+
+idle_ai::idle_ai(info& i) : ai_interface(i) {
+
+}
+
+std::string idle_ai::describe_self(){
+	return "[idle_ai]";
+}
+
+void idle_ai::play_turn()
+{
+	game_events::fire("ai turn");
+}
+
 
 /** Sample ai, with simple strategy. */
 class sample_ai : public ai_interface {
@@ -65,6 +72,11 @@ public:
 		do_moves();
 		do_recruitment();
 	}
+
+	std::string describe_self(){
+		return "[sample_ai]";
+	}
+
 
 protected:
 	void do_attacks() {
@@ -180,43 +192,6 @@ protected:
 	}
 };
 
-
-std::vector<std::string> get_available_ais()
-{
-    std::vector<std::string> ais;
-    ais.push_back("default");
-    //ais.push_back("sample_ai");
-    //ais.push_back("idle_ai");
-    //ais.push_back("dfool_ai");
-    return ais;
-}
-
-ai_interface* create_ai(const std::string& name, ai_interface::info& info)
-{
-	// To add an AI of your own, put
-	//		if(name == "my_ai")
-	//			return new my_ai(info);
-	// at the top of this function
-
-	if(name == "sample_ai")
-		return new sample_ai(info);
-	else if(name == "idle_ai")
-		return new idle_ai(info);
-	else if(name == "formula_ai")
-		return new formula_ai(info);
-	else if(name == "dfool_ai")
-		return new dfool::dfool_ai(info);
-	//else if(name == "advanced_ai")
-	//	return new advanced_ai(info);
-	else if(name == "ai2")
-		return new ai2(info);
-	else if(name != "" && name != "default") {
-		ERR_AI << "AI not found: '" << name << "'. Using default instead.\n";
-	}
-
-	return new ai(info);
-}
-
 ai::ai(ai_interface::info& info) :
 	ai_interface(info),
 	defensive_position_cache_(),
@@ -239,9 +214,18 @@ ai::ai(ai_interface::info& info) :
 	unit_stats_cache_(),
 	attack_depth_(0),
 	recruiting_preferred_(0),
-	master_(info_.master)
+	master_(info_.master),
+	formula_ai_(NULL)
 {
-       info_.master = false;
+       if (master_){
+    	   formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_info(),false));
+       }
+}
+
+ai::~ai(){
+	if (formula_ai_!=NULL) {
+		delete formula_ai_;
+	}
 }
 
 void ai::new_turn()
@@ -258,8 +242,14 @@ void ai::new_turn()
 	avoid_.clear();
 	unit_stats_cache_.clear();
 	attack_depth_ = 0;
-	ai_manager::get_ai("formula_ai", info_)->new_turn();
+	if (formula_ai_ != NULL){
+		formula_ai_->new_turn();
+	}
 	ai_interface::new_turn();
+}
+
+std::string ai::describe_self(){
+	return "[default_ai]";
 }
 
 bool ai::recruit_usage(const std::string& usage)
@@ -981,8 +971,11 @@ void ai::do_move()
 
        // Formula AI is first going to move everything that it can
 
-//     if (master_)
-//             static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
+	if (master_) {
+		if (formula_ai_ != NULL) {
+			formula_ai_->play_turn();
+		}
+	}
 
 	typedef paths::route route;
 
@@ -1902,10 +1895,12 @@ bool ai::do_recruitment()
 	// Let formula ai to do recruiting first
 	if (master_)
 	{
-        	if(static_cast<formula_ai*>(ai_manager::get_ai("formula_ai",info_).get())->do_recruitment()) {
-                	LOG_AI << "Recruitment done by formula_ai\n";
-                	return true;
-        	}
+		if (formula_ai_ != NULL){
+			if (formula_ai_->do_recruitment()) {
+				LOG_AI << "Recruitment done by formula_ai\n";
+				return true;
+			}
+		}
 	}
 
 	const location& start_pos = nearest_keep(leader->first);
@@ -2440,66 +2435,4 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
 
-ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 
-boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
-						       ai_interface::info& ai_info )
-{
-	int ai_key = ai_info.team_num - 1 ;
-	boost::intrusive_ptr<ai_interface> ai_obj;
-
-	// If we are dealing with an AI - try to find it
-	if(!ai_algo.empty() && ai_algo != "default") {
-		AINameMap::const_iterator itor = ais.find(ai_key);
-		LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl;
-		if (itor == ais.end()) {
-			LOG_AI << "manager did not find AI - creating..." << std::endl;
-			ai_obj = create_ai(ai_algo, ai_info);
-			LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl;
-			if (ai_obj->manager_manage_ai()) {
-				LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl;
-				AINameMap::value_type new_ai_pair(ai_key, ai_obj);
-				itor = ais.insert(new_ai_pair).first;
-			}
-		} else {
-			// AI was found - so return it
-			LOG_AI << "Reusing managed AI" << std::endl;
-			ai_obj = itor->second;
-		}
-	} else {
-		// No AI algorithm - simply create the instance
-		ai_obj = create_ai(ai_algo, ai_info);
-	}
-
-	return ai_obj ;
-}
-
-
-// Request each AI to clean up. The number of AIs which performed some type of
-// clean up is returned.
-int ai_manager::reap_ais()
-{
-	int counter = 0 ;
-	for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ) {
-		// Request the AI clean up after it self. If it does not which to
-		// be purged, it must return false. If it returns true, the AI
-		// is deleted from the AI map.
-
-		// TODO: currently if ais are not erased they maintain references to
-		// the current gamestate info, when we later try to reuse the ai, the
-		// dangling references are dereferenced... this is bad.  See bug#13003
-		// for more info. For now disabled the if and made the condition
-		// unconditionally.
-		/*
-		   if( itor->second->manager_reap_ai()) {
-		   */
-		// Delete the AI from the managed map
-		ais.erase( itor++ ) ;
-		++counter ;
-		/*
-				}
-				*/
-	}
-
-	return counter ;
-}

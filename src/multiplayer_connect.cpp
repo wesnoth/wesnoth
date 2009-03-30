@@ -19,7 +19,8 @@
 
 #include "global.hpp"
 
-#include "ai.hpp"
+
+#include "ai_manager.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
@@ -1430,7 +1431,7 @@ void connect::lists_init()
 	}
 
 	// AI algorithms
-    ai_algorithms_ = get_available_ais();
+	ai_algorithms_ = ai_manager::get_available_ais();
 
 	// Factions
 	config::child_itors sides = current_config()->child_range("side");

@@ -19,6 +19,8 @@
 
 #include "global.hpp"
 
+#include "ai_configuration.hpp"
+#include "ai_manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
@@ -29,22 +31,6 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 
-//some default values for the AI parameters following the default values listed
-//in the wiki at http://www.wesnoth.org/wiki/AiWML
-
-//A number 0 or higher which determines how many scouts the AI recruits. If 0,
-//the AI doesn't recruit scouts to capture villages.
-const int ai_default_villages_per_scout = 4;
-//A number 0 or higher which determines how much the AI targets enemy leaders.
-const double ai_default_leader_value = 3.0;
-//A number 0 or higher which determines how much the AI tries to capture villages.
-const double ai_default_village_value = 1.0;
-//details see in the [AI] tag explaination in the wiki:
-//http://www.wesnoth.org/wiki/AiWML#the_.5Bai.5D_tag
-const double ai_default_aggression = 0.5;
-//details see in the [AI] tag explaination in the wiki:
-//http://www.wesnoth.org/wiki/AiWML#the_.5Bai.5D_tag
-const double ai_default_caution = 0.25;
 
 namespace {
 	std::vector<team>* teams = NULL;
@@ -98,10 +84,10 @@ team::team_info::team_info(const config& cfg) :
 		income(cfg["income"]),
 		income_per_village(),
 		average_price(0),
-		number_of_possible_recruits_to_force_recruit(lexical_cast_default<float>(cfg["number_of_possible_recruits_to_force_recruit"],0.0)),
+		number_of_possible_recruits_to_force_recruit(),
 		can_recruit(),
-		global_recruitment_pattern(utils::split(cfg["global_recruitment_pattern"])),
-		recruitment_pattern(utils::split(cfg["recruitment_pattern"])),
+		global_recruitment_pattern(),
+		recruitment_pattern(),
 		enemies(),
 		team_name(cfg["team_name"]),
 		user_team_name(cfg["user_team_name"]),
@@ -115,14 +101,11 @@ team::team_info::team_info(const config& cfg) :
 		objectives(cfg["objectives"]),
 		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
 		controller(),
-		ai_algorithm(cfg["ai_algorithm"]),
-		ai_params(),
-		ai_memory_(),
-		villages_per_scout(ai_default_villages_per_scout),
-		leader_value(ai_default_leader_value),
-		village_value(ai_default_village_value),
-		aggression_(ai_default_aggression),
-		caution_(ai_default_caution),
+		villages_per_scout(),
+		leader_value(),
+		village_value(),
+		aggression_(),
+		caution_(),
 		targets(),
 		share_maps(false),
 		share_view(false),
@@ -131,25 +114,70 @@ team::team_info::team_info(const config& cfg) :
 		no_leader(utils::string_bool(cfg["no_leader"])),
 		hidden(utils::string_bool(cfg["hidden"])),
 		music(cfg["music"]),
-		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
+		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"]),
+		side(lexical_cast_default<int>(cfg["side"], 1))
 {
 	// If are starting new scenario overide settings from [ai] tags
 	if (!user_team_name.translatable())
 		user_team_name = user_team_name.from_serialized(user_team_name);
-	config global_ai_params;
 
-	foreach (const config &aiparam, cfg.child_range("ai"))
-	{
-		ai_params.push_back(aiparam);
+	config ai_memory;
+	config global_ai_parameters;//AI parameters which do not have a filter applied
+	std::vector<config> ai_parameters;//AI parameters inside [ai] tags. May contain filters.
+	const config& default_ai_parameters = ai_configuration::get_default_ai_parameters();
+	std::string ai_algorithm_type;
+	config effective_ai_params;//Needed only to set some legacy stuff in team_info
 
-		if (aiparam["turns"].empty() && aiparam["time_of_day"].empty()) {
-			global_ai_params.append(aiparam);
+	ai_configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_params );
+	ai_manager::add_ai_for_team(side,global_ai_parameters["ai_algorithm"]);
+
+	ai_manager::set_active_ai_effective_parameters_for_team(side,effective_ai_params);
+	ai_manager::set_active_ai_global_parameters_for_team(side,global_ai_parameters);
+	ai_manager::set_active_ai_memory_for_team(side,ai_memory);
+	ai_manager::set_active_ai_parameters_for_team(side,ai_parameters);
+
+
+	//legacy parameters
+	number_of_possible_recruits_to_force_recruit = lexical_cast<float>(effective_ai_params["number_of_possible_recruits_to_force_recruit"]);
+	villages_per_scout = lexical_cast<int>(effective_ai_params["villages_per_scout"]);
+	leader_value = lexical_cast<double>(effective_ai_params["leader_value"]);
+	village_value = lexical_cast<double>(effective_ai_params["village_value"]);
+	aggression_ = lexical_cast<double>(effective_ai_params["aggression"]);
+	caution_ = lexical_cast<double>(effective_ai_params["caution"]);
+
+	//START OF MESSY CODE
+	//========================================================================
+	//this part will be cleaned later
+
+		std::vector<std::string> recruits = utils::split(cfg["recruit"]);
+		for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+			can_recruit.insert(*i);
 		}
-	}
 
-	foreach (const config &aimem, cfg.child_range("ai_memory")) {
-		ai_memory_.append(aimem);
-	}
+		recruitment_pattern = utils::split(cfg["recruitment_pattern"]);
+
+				if(recruitment_pattern.empty())
+				{
+					recruitment_pattern =
+						utils::split(global_ai_parameters["recruitment_pattern"]);
+				}
+		// Keep a copy of the initial recruitment_pattern,
+		// since it can be changed on a per-time-of-day
+		// or per-turn basis inside [ai] sections.
+		global_recruitment_pattern = recruitment_pattern;
+
+
+		// Additional targets
+		foreach (const config &tgt, cfg.child_range("target")) {
+			targets.push_back(target(tgt));
+		}
+
+		foreach (const config &tgt, global_ai_parameters.child_range("target")) {
+			targets.push_back(target(tgt));
+		}
+
+	//all past this point should be non-ai code
+	//========================================================
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
@@ -170,8 +198,6 @@ team::team_info::team_info(const config& cfg) :
 	if (current_player.empty()) {
 		current_player = save_id;
 	}
-
-	int side = atoi(cfg["side"].c_str());
 
 	const std::string temp_rgb_str = cfg["team_rgb"];
 	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
@@ -214,117 +240,8 @@ team::team_info::team_info(const config& cfg) :
 	else
 		controller = AI;
 
-	if(ai_algorithm.empty())
-	{
-		ai_algorithm = global_ai_params["ai_algorithm"];
-	}
-
-	if (!cfg.has_attribute("number_of_possible_recruits_to_force_recruit"))
-	{
-		number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(global_ai_params["number_of_possible_recruits_to_force_recruit"],3.1);
-	}
-
-	std::string scouts_val = cfg["villages_per_scout"];
-
-	if(scouts_val.empty())
-	{
-		scouts_val = global_ai_params["villages_per_scout"];
-	}
-
-	if(scouts_val.empty()) {
-		villages_per_scout = ai_default_villages_per_scout;
-	} else {
-		villages_per_scout = atoi(scouts_val.c_str());
-	}
-
-	std::string leader_val = cfg["leader_value"];
-
-	if(leader_val.empty())
-	{
-		leader_val = global_ai_params["leader_value"];
-	}
-
-	if(leader_val.empty()) {
-		leader_value = ai_default_leader_value;
-	} else {
-		leader_value = atof(leader_val.c_str());
-	}
-
-	std::string village_val = cfg["village_value"];
-
-	if(village_val.empty())
-	{
-		village_val = global_ai_params["village_value"];
-	}
-
-	if(village_val.empty()) {
-		village_value = ai_default_village_value;
-	} else {
-		village_value = atof(village_val.c_str());
-	}
-
-	std::string aggression_val = cfg["aggression"];
-
-	if(aggression_val.empty())
-	{
-		aggression_val = global_ai_params["aggression"];
-	}
-
-	if(aggression_val.empty()) {
-		aggression_ = ai_default_aggression;
-	} else {
-		aggression_ = atof(aggression_val.c_str());
-	}
-
-	std::string caution_val = cfg["caution"];
-
-	if(caution_val.empty())
-	{
-		caution_val = global_ai_params["caution"];
-	}
-
-	if(caution_val.empty()) {
-		caution_ = ai_default_caution;
-	} else {
-		caution_ = atof(caution_val.c_str());
-	}
-
-
-	std::vector<std::string> recruits = utils::split(cfg["recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
-		can_recruit.insert(*i);
-	}
-
-	if(recruitment_pattern.empty())
-	{
-		recruitment_pattern =
-			utils::split(global_ai_params["recruitment_pattern"]);
-		LOG_NG << "Recruitment pattern: " << global_ai_params["recruitment_pattern"] << "\n";
-	} else {
-		LOG_NG << "Recruitment pattern from side: " << cfg["recruitment_pattern"] << "\n";
-	}
-
-
-/*	// Default recruitment pattern is to buy 2 fighters for every 1 archer
-	if(recruitment_pattern.empty()) {
-		recruitment_pattern.push_back("fighter");
-		recruitment_pattern.push_back("fighter");
-		recruitment_pattern.push_back("archer");
-	}
-*/
-	// Keep a copy of the initial recruitment_pattern,
-	// since it can be changed on a per-time-of-day
-	// or per-turn basis inside [ai] sections.
-	global_recruitment_pattern = recruitment_pattern;
-
-	// Additional targets
-	foreach (const config &tgt, cfg.child_range("target")) {
-		targets.push_back(target(tgt));
-	}
-
-	foreach (const config &tgt, global_ai_params.child_range("target")) {
-		targets.push_back(target(tgt));
-	}
+	//========================================================
+	//END OF MESSY CODE
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
@@ -337,11 +254,13 @@ team::team_info::team_info(const config& cfg) :
 
 void team::team_info::write(config& cfg) const
 {
+	const std::vector<config> &ai_params = ai_manager::get_active_ai_parameters_for_team(side);;
 	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
 		cfg.add_child("ai",*ai);
 	}
-	if(!ai_memory_.empty()) cfg.add_child("ai_memory",ai_memory_);
-	cfg["ai_algorithm"] = ai_algorithm;
+	const config &ai_memory_ = ai_manager::get_active_ai_memory_for_team(side);
+	if(!ai_memory_.empty()) cfg.add_child("ai_memory", ai_memory_ );
+	cfg["ai_algorithm"] = ai_manager::get_active_ai_algorithm_type_for_team(side);
 
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
@@ -449,7 +368,6 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		info_(cfg),
 		countdown_time_(0),
 		action_bonus_count_(0),
-		aiparams_(),
 		enemies_(),
 		seen_(),
 		ally_shroud_(),
@@ -579,8 +497,10 @@ size_t team::average_recruit_price()
 
 void team::set_time_of_day(int turn, const time_of_day& tod)
 {
-	aiparams_.clear();
-	for(std::vector<config>::const_iterator i = info_.ai_params.begin(); i != info_.ai_params.end(); ++i) {
+	config aiparams_effective;//current effective_parameters_for_team are to be cleared
+	const std::vector<config>& ai_params = ai_manager::get_active_ai_parameters_for_team(info_.side);
+
+	for(std::vector<config>::const_iterator i = ai_params.begin(); i != ai_params.end(); ++i) {
 		const std::string& time_of_day = (*i)["time_of_day"];
 		if(time_of_day.empty() == false) {
 			const std::vector<std::string>& times = utils::split(time_of_day);
@@ -607,17 +527,18 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 			}
 		}
 
-		aiparams_.append(*i);
+		aiparams_effective.append(*i);
 	}
 
     // Get the recruitment pattern from the matching [ai] section,
     // and fall back to the global recruitment pattern otherwise.
-	info_.recruitment_pattern = utils::split(aiparams_["recruitment_pattern"]);
+	info_.recruitment_pattern = utils::split(aiparams_effective["recruitment_pattern"]);
 	if (info_.recruitment_pattern.empty())
 		info_.recruitment_pattern = info_.global_recruitment_pattern;
-	info_.aggression_ = lexical_cast_default<double>(aiparams_["aggression"],info_.aggression_);
-	info_.caution_ = lexical_cast_default<double>(aiparams_["caution"],info_.caution_);
-	info_.number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(aiparams_["number_of_possible_recruits_to_force_recruit"],info_.number_of_possible_recruits_to_force_recruit);
+	info_.aggression_ = lexical_cast_default<double>(aiparams_effective["aggression"],info_.aggression_);
+	info_.caution_ = lexical_cast_default<double>(aiparams_effective["caution"],info_.caution_);
+	info_.number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(aiparams_effective["number_of_possible_recruits_to_force_recruit"],info_.number_of_possible_recruits_to_force_recruit);
+	ai_manager::set_active_ai_effective_parameters_for_team(info_.side,aiparams_effective);
 }
 
 bool team::calculate_enemies(size_t index) const
@@ -701,19 +622,32 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 		info_.objectives_changed = true;
 }
 
+const std::string& team::ai_algorithm() const
+{
+	return ai_manager::get_active_ai_algorithm_type_for_team(info_.side);
+}
+
+const config& team::ai_parameters() const
+{
+	return ai_manager::get_active_ai_effective_parameters_for_team(info_.side);
+}
+
+const config& team::ai_memory() const
+{
+	return ai_manager::get_active_ai_memory_for_team(info_.side);
+}
+
 void team::set_ai_memory(const config& ai_mem){
-  // It would perhaps be more efficient to allow writing to the memory directly,
-  // but this method comparmentalizes the functionality and protects against
-  // accidentally overwriting the memory
-  info_.ai_memory_=ai_mem;
+	ai_manager::set_active_ai_memory_for_team(info_.side,ai_mem);
 }
 
 void team::set_ai_parameters(const config::const_child_itors &ai_parameters)
 {
-	info_.ai_params.clear();		// override
+	std::vector<config> ai_params;
 	foreach (const config &p, ai_parameters) {
-		info_.ai_params.push_back(p);
+		ai_params.push_back(p);
 	}
+	ai_manager::set_active_ai_parameters_for_team(info_.side,ai_params);
 }
 
 bool team::shrouded(const map_location& loc) const

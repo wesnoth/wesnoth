@@ -23,14 +23,25 @@
 #include "ai_interface.hpp"
 #include "formula_callable.hpp"
 
+class formula_ai;
+
+/** A trivial ai that sits around doing absolutely nothing. */
+class idle_ai : public ai_interface {
+public:
+	idle_ai(info& i);
+	void play_turn();
+	virtual std::string describe_self();
+};
+
 class ai : public ai_interface {
 public:
 
 	ai(ai_interface::info& info);
-	virtual ~ai() {}
+	virtual ~ai();
 
 	virtual void play_turn();
 	virtual void new_turn();
+	virtual std::string describe_self();
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
@@ -383,18 +394,7 @@ private:
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
 	bool master_;
+	formula_ai* formula_ai_;
 };
-
-class ai_manager {
-public:
-  static boost::intrusive_ptr<ai_interface> get_ai( std::string, ai_interface::info& );
-  static int reap_ais() ;
-
-private:
-  typedef std::map< int, boost::intrusive_ptr<ai_interface> > AINameMap ;
-
-  static AINameMap ais ;
-};
-
 
 #endif

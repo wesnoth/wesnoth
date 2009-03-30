@@ -102,10 +102,6 @@ public:
 
 		enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
 		CONTROLLER controller;
-		std::string ai_algorithm;
-
-		std::vector<config> ai_params;
-		config ai_memory_;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -123,6 +119,8 @@ public:
 		std::string music;
 
 		std::string colour;
+
+		int side;
 	};
 
 	static std::map<int, color_range> team_color_range_;
@@ -250,9 +248,9 @@ public:
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
 
-	const std::string& ai_algorithm() const { return info_.ai_algorithm; }
-	const config& ai_parameters() const { return aiparams_; }
-	const config& ai_memory() const { return info_.ai_memory_; }
+	const std::string& ai_algorithm() const;
+	const config& ai_parameters() const;
+	const config& ai_memory() const;
 	void set_ai_memory(const config& ai_mem);
 	void set_ai_parameters(const config::const_child_itors &ai_parameters);
 
@@ -327,9 +325,6 @@ private:
 
 	int countdown_time_;
 	int action_bonus_count_;
-
-	config aiparams_;
-
 
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;

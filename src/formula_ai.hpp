@@ -120,6 +120,7 @@ public:
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
+	virtual std::string describe_self();
 
 	using ai_interface::get_info;
 	using ai_interface::current_team;

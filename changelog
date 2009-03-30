@@ -5,6 +5,9 @@ Version 1.7.0-svn:
  * AI:
    * Fixed incorrect handling of poisoning attacks when suggesting best attack
      in user interface
+   * Added basic history and hot-redeployment capabilities to in-game console.
+   * Changed AI Lifecycle handling. Console AI is now persistent between 
+     invocations.
  * Editor2:
    * New feature: exporting of selection coordinates to system clipboard
    * Made auto terrain transition mode tri-state: on (editor2's on), partial

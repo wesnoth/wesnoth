@@ -134,6 +134,14 @@ public:
         // Older AIs should use the default - false.
         virtual bool manager_reap_ai() { return false ; } ;
 
+        /** Set the team */
+        virtual void set_team(int team) { info_.team_num = team; }
+
+        /** Evaluate */
+        virtual std::string evaluate(const std::string& str) { return "evaluate command not implemented by this AI"; }
+
+        /** Return a message with information about the ai. Useful for making debugging ai-independent. */
+        virtual std::string describe_self() { return "? ai"; }
 protected:
 	/**
 	 * This function should be called to attack an enemy.
@@ -248,10 +256,5 @@ private:
 	events::generic_event unit_moved_;
 	events::generic_event enemy_attacked_;
 };
-
-/** Returns all currently available AIs. */
-std::vector<std::string> get_available_ais();
-/** Create a new AI object with the specified algorithm name. */
-ai_interface* create_ai(const std::string& algorithm_name, ai_interface::info& info);
 
 #endif

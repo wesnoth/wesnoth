@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "unit.hpp"
 
+#include "ai_manager.hpp"
 #include "menu_events.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
@@ -1375,6 +1376,10 @@ private:
 };
 }
 
+std::string formula_ai::describe_self(){
+	return "[formula_ai]";
+}
+
 
 namespace game_logic {
 expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
@@ -1800,8 +1805,10 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 	if(!formula_) {
 		if(master_) {
 			LOG_AI << "Falling back to default AI.\n";
-			ai_interface* fallback = create_ai("", get_info());
-			fallback->play_turn();
+			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, get_info(),false));
+			if (fallback != NULL){
+				fallback->play_turn();
+			}
 		}
 		return false;
 	}
@@ -2114,8 +2121,8 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai_interface* fallback = create_ai(fallback_command->key(), get_info());
-					if(fallback) {
+					util::scoped_ptr< ai_interface > fallback ( ai_manager::create_transient_ai(fallback_command->key(), get_info(),false));
+					if(fallback != NULL) {
 						fallback->play_turn();
 					}
 				}

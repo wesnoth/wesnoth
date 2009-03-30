@@ -49,7 +49,7 @@ std::vector< lg::logd > log_domains;
 void timestamps(bool t) { timestamp = t; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
-log_domain general("general"), ai("ai"), formula_ai("formula_ai"), cache("cache"), config("config"), display("display"),
+log_domain general("general"), ai("ai"), ai_configuration("ai_configuration"), ai_manager("ai_manager"), formula_ai("formula_ai"), cache("cache"), config("config"), display("display"),
 	engine("engine"), network("network"), mp_server("server"),
 	filesystem("filesystem"), audio("audio"),
 	replay("replay"), help("help"), gui("gui"), gui_parse("gui_parse"),

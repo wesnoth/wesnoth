@@ -178,6 +178,11 @@ namespace dfool {
     return;
   }
 
+  std::string dfool_ai::describe_self()
+	{
+		return "[dfool_ai]";
+	}
+
   unit_list dfool_ai::filter_units(const config& filter, unit_list& ul, unit_map& um)
   {
     //    LOG_STREAM(info, ai)<<"filter1:"<<std::endl;

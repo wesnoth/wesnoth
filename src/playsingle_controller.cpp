@@ -21,7 +21,7 @@
 
 #include "playsingle_controller.hpp"
 
-#include "ai.hpp"
+#include "ai_manager.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
@@ -64,7 +64,7 @@ playsingle_controller::playsingle_controller(const config& level,
 
 playsingle_controller::~playsingle_controller()
 {
-	ai_manager::reap_ais() ;
+	ai_manager::clear_ais() ;
 }
 
 
@@ -818,17 +818,15 @@ void playsingle_controller::play_ai_turn(){
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_);
 
 	ai_interface::info ai_info(*gui_,map_,units_,teams_,player_number_,status_, turn_data, gamestate_);
-	std::string ai_algorithm = current_team().ai_algorithm();
 
-	boost::intrusive_ptr<ai_interface> ai_obj ;
-	ai_obj = ai_manager::get_ai( ai_algorithm, ai_info ) ;
+	ai_interface& ai_obj = ai_manager::get_active_ai_for_team(player_number_ , ai_info ) ;
 
-	ai_obj->user_interact().attach_handler(this);
-	ai_obj->unit_recruited().attach_handler(this);
-	ai_obj->unit_moved().attach_handler(this);
-	ai_obj->enemy_attacked().attach_handler(this);
+	ai_obj.user_interact().attach_handler(this);
+	ai_obj.unit_recruited().attach_handler(this);
+	ai_obj.unit_moved().attach_handler(this);
+	ai_obj.enemy_attacked().attach_handler(this);
 	try {
-		ai_obj->play_turn();
+		ai_obj.play_turn();
 	} catch (end_turn_exception) {
 	}
 	recorder.end_turn();

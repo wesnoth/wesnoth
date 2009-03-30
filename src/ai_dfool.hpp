@@ -102,6 +102,7 @@ namespace dfool {
   public:
     dfool_ai(info& i) : ai_interface(i),unit_memory_(i.teams[i.team_num-1].ai_memory()){}
     void play_turn();
+    virtual std::string describe_self();
   private:
     //    std::map<std::string,target> target_map_;
     unit_list all_units();

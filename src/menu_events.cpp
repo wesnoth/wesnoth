@@ -21,16 +21,18 @@
 
 #include "global.hpp"
 
+#include "ai_manager.hpp"
 #include "dialogs.hpp"
 #include "formatter.hpp"
-#include "formula_ai.hpp"
 #include "filechooser.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
@@ -43,7 +45,6 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "widgets/combo.hpp"
-
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -3066,9 +3067,9 @@ private:
 
 		turn_info turn_data(gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
 		ai_interface::info info(*gui_, const_cast<gamemap&>(map_), units_, teams_, team_num,  const_cast<gamestatus&>(status_), turn_data, gamestate_);
-		formula_ai eval(info);
+
 		try {
-			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));
+			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(info,str));
 		} catch(...) {
 			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}

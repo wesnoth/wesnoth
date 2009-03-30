@@ -208,6 +208,8 @@ SET(wesnoth-main_SRC
     ai.cpp
     ai_dfool.cpp
     ai_attack.cpp
+    ai_configuration.cpp
+    ai_manager.cpp
     ai_move.cpp
     ai_village.cpp
     animated_game.cpp
