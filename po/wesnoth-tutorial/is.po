@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-03-29 00:07+0000\n"
-"Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
+"PO-Revision-Date: 2009-03-29 15:34-0000\n"
+"Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -656,6 +656,11 @@ msgid ""
 "dummy's attacks are magical, however, so they have a 70% chance of hitting "
 "you wherever you stand."
 msgstr ""
+"Athugasemd:\n"
+"Eftir að þú hefur valið einingu munt þú sjá prósentur yfir reiti. Því hærri "
+"sem prósentan er, því meiri vörn mun einingin hafa. T.d. er vörn góð í "
+"köstulum og þorpum, en slæm á ám. Árásir kráknanna eru göldróttar, þess "
+"vegna hafa þær 70% líkur á að valda þér meiðslum, sama hvar þú stendur."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
@@ -685,8 +690,8 @@ msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Li'sar,·ég·mun·skilja·þig·eina·eftir·með·fleri·krákum·til·æfinga!"
-"·Eftir·það·höfum·við·verk·að·vinna..."
+"Li'sar, ég mun skilja þig eina eftir með fleri krákum til æfinga! Eftir það "
+"höfum við verk að vinna..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
@@ -809,7 +814,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
 msgid "Ouch! I could make use of some healing in a village."
-msgstr ""
+msgstr "Ái! Ég gæti nýtt mér eitthverja lækningu í þorpi."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
@@ -820,6 +825,8 @@ msgstr "Ég hef $side.cold gull; nóg til ráðninga!"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:276
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr ""
+"Já, haltu áfram að ráða fleiri einingar. Ég held að þú þurfir á þeim að "
+"halda!"
 
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
@@ -1215,6 +1222,8 @@ msgid ""
 "Excellent. Elves are well-protected in the forest. There's only a 30% chance "
 "of hitting an Elvish Archer in forests."
 msgstr ""
+"Frábært. Álfar eru vel varðir í skógum. Það eru eingöngu 30% líkur á að "
+"valda meðslum á Elvish Archer í skógum."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:926
@@ -1223,6 +1232,8 @@ msgid ""
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
 "Cancel!"
 msgstr ""
+"Það er hættulegt að standa í vatni þegar óvinir eru nærri! Einingin þín mun "
+"hafa 80% líkur á meiðslum við árásum óvina! Hættu við!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:932
@@ -1232,7 +1243,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
 msgid "Fighter to HERE"
-msgstr ""
+msgstr "Fighter HINGAÐ"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
@@ -1289,12 +1300,12 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:994
 msgid "Move Konrad to another (unowned) village"
-msgstr ""
+msgstr "Færðu Konrad yfir í annað (óhertekið) þorp"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:995
 msgid "Move Li'sar to another (unowned) village"
-msgstr ""
+msgstr "Færðu Li'sar yfir í annað (óhertekið) þorp"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
@@ -1316,7 +1327,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1028
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1029
 msgid "ZoC"
-msgstr ""
+msgstr "ZoC"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
@@ -1372,9 +1383,9 @@ msgid ""
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
 "attack you!"
 msgstr ""
-"Það er hættulegt að standa í vatni þegar óvinir eru nærri! Einingarnar þínar "
-"hafa 80% líkur á að fá meiðsl eftir árás! Hættu við, og bíddu eftir þeim að "
-"gera árás á þig!"
+"Það er hættulegt að standa í vatni þegar óvinir eru nærri! Einingin þín mun "
+"hafa 80% líkur á meiðslum við árásum! Hættu við, og bíddu eftir þeim að gera "
+"árás á þig!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1135
@@ -1459,6 +1470,8 @@ msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
+"Leiðtoginn þeirra hefur fært sig í þorpið þarna! Hann er ekki eins heimskur "
+"og ég hélt. Þorpið læknar hann hverja umferð og veitir honum góða vörn."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1229
