@@ -618,6 +618,10 @@ surface locator::load_image_sub_file() const
 					const int b = lexical_cast_default<int>(field);
 					functor_queue.push_back(new cs_function(0,0,b));
 				}
+				else if("NOP" == function) {
+					// Odd, isn't it?
+					functor_queue.push_back(new nop_function());
+				}
 				// Fake image function used by GUI2 portraits until
 				// Mordante gets rid of it. *tsk* *tsk*
 				else if("RIGHT" == function) {
