@@ -22,7 +22,7 @@
 
 namespace image {
 /**
- * Base abstract class for an image-path function
+ * Base abstract class for an image-path function.
  * It actually just enforces the operator()() protocol.
  */
 class function_base
