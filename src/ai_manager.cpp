@@ -388,14 +388,14 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 	} else if (cmd.size()==1){
 		if (cmd.at(0)=="!help") {
 			return
-				std::string("known commands:\n")+
-				std::string("!    - repeat last command (? and ! do not count)\n")+
-				std::string("! NUMBER    - repeat numbered command\n")+
-				std::string("?    - show a history list\n")+
-				std::string("!add_ai TEAM FILE    - add a AI to team (0 - command AI, N - AI for team #N) from file\n")+
-				std::string("!remove_ai TEAM    - remove AI from team (0 - command AI, N - AI for team #N)\n")+
-				std::string("!replace_ai TEAM FILE    - replace AI of team (0 - command AI, N - AI for team #N) from file\n")+
-				std::string("!help    - show this help message");
+				"known commands:\n"
+				"!    - repeat last command (? and ! do not count)\n"
+				"! NUMBER    - repeat numbered command\n"
+				"?    - show a history list\n"
+				"!add_ai TEAM FILE    - add a AI to team (0 - command AI, N - AI for team #N) from file\n"
+				"!remove_ai TEAM    - remove AI from team (0 - command AI, N - AI for team #N)\n"
+				"!replace_ai TEAM FILE    - replace AI of team (0 - command AI, N - AI for team #N) from file\n"
+				"!help    - show this help message";
 		}
 	}
 
@@ -485,7 +485,7 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 		return new ai2(i);
 	}
 
-	if(ai_algorithm_type != "" && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
+	if (!ai_algorithm_type.empty() && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
 		ERR_AI_MANAGER << "AI not found: [" << ai_algorithm_type << "]. Using default instead.\n";
 	}
 
@@ -618,7 +618,7 @@ std::stack<ai_holder>& ai_manager::get_or_create_ai_stack_for_team( int team )
 	if (iter!=ai_map_.end()){
 		return iter->second;
 	}
-	return ai_map_.insert( std::make_pair<int, std::stack< ai_holder > >(team,std::stack< ai_holder >()) ).first->second;
+	return ai_map_.insert(std::pair<int, std::stack<ai_holder> >(team, std::stack<ai_holder>())).first->second;
 }
 
 // =======================================================================
