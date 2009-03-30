@@ -68,7 +68,7 @@ def isMacroCloser(elem):
     "Are we looking at a macro closer?"
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    return type(elem) == type("") and elem.startswith("}")
+    return type(elem) == type("") and elem == closeMacroType
 
 def isOpener(elem):
     "Are we looking at an opening tag?"
@@ -270,8 +270,7 @@ Important Attributes:
             while scopeDelta > 0:
                 openedScopes.append(elem)
                 scopeDelta -= 1
-            if elem != closeMacroType:
-                resultElements.append(elem)
+            resultElements.append(elem)
         return resultElements, openedScopes
 
     def printScopeError(self, elementType):
