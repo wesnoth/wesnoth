@@ -677,6 +677,7 @@ config connect::side::get_config() const
 			break;
 		case CNTR_LAST:
 		default:
+			description = N_("(empty)");
 			assert(false);
 			break;
 		}
