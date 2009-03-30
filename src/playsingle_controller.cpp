@@ -32,6 +32,7 @@
 #include "sound.hpp"
 #include "upload_log.hpp"
 #include "formula_string_utils.hpp"
+#include "events.hpp"
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -530,6 +531,7 @@ void playsingle_controller::play_turn(bool save)
 				skip_next_turn_ = false;
 				throw end_turn_exception();
 			}
+			input_blocker blocker;
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
