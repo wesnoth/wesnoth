@@ -143,6 +143,7 @@ wesnoth_source = \
 	settings.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
+	storyscreen.cpp \
 	team.cpp \
 	terrain_filter.cpp \
 	text.cpp \

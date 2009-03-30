@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2003 - 2009 by David White <dave@whitevine.net>
+   Copyright (C) 2009 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,14 +13,23 @@
    See the COPYING file for more details.
 */
 
-/** @file intro.hpp */
+/** @file storyscreen.hpp */
+// FIXME: textscreen.[ch]pp ??
 
-#ifndef INTRO_HPP_INCLUDED
-#define INTRO_HPP_INCLUDED
+// This code is work in progress, and shouldn't be enabled for production
+// builds. It is supposed to completely replace the old story screens code
+// at intro.cpp, introducing new WML conventions while at it.
+//
+// Do not remove the #ifdef below.
+#ifdef SHADOWM_STORYSCREEN
+
+#ifndef STORYSCREEN_HPP_INCLUDED
+#define STORYSCREEN_HPP_INCLUDED
 
 class config;
 class vconfig;
 class display;
+class t_string;
 #include "SDL.h"
 
 #include <string>
@@ -39,7 +49,7 @@ class display;
  * be displayed in turn, with the user able to go to the next part, or skip
  * it entirely.
  */
-void show_intro(display &disp, const vconfig& data, const config& level);
+void show_storyscreen(display& disp, const vconfig& data, const config& scenario_cfg);
 
 /**
  * Displays a simple fading screen with any user-provided text.
@@ -50,6 +60,8 @@ void show_intro(display &disp, const vconfig& data, const config& level);
  * @param duration In milliseconds, for how much time the text will
  *                 be displayed on screen.
  */
-void the_end(display &disp, std::string text, unsigned int duration);
+void show_endscreen(display& disp, const t_string& text, unsigned int duration);
 
-#endif /* ! INTRO_HPP_INCLUDED */
+#endif /* ! STORYSCREEN_HPP_INCLUDED */
+
+#endif /* SHADOWM_STORYSCREEN */

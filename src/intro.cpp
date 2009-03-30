@@ -18,6 +18,9 @@
  * campaign.
  */
 
+// Do not remove the #ifndef below. See storyscreen.hpp.
+#ifndef SHADOWM_STORYSCREEN
+
 #include "global.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
@@ -507,3 +510,5 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		--count;
 	}
 }
+
+#endif /* ! SHADOWM_STORYSCREEN */
