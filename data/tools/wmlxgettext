@@ -95,8 +95,66 @@ Usage: wmlxgettext [options] dirpath
 
         os.chdir(directory)
 
+        opener_stack = []
+        attributes_stack = []
+        translatables = []
+        contexts = {}
+        find_translatable = re.compile('_ *"[^"]*"')
+
+        def get_translatables(nav, fn):
+            "Mine translatable strings "
+            for match in find_translatable.findall(nav.text):
+                opener_stack.append((nav.element, fn, nav.lineno))
+                translatables.append((match, opener_stack[:]))
+                opener_stack.pop()
+
+        def inMacroContinuation(nav):
+            return opener_stack and type(opener_stack[-1][0]) == type("") \
+                   and opener_stack[-1][0].startswith("{")
+
+        def isInlineMacro(nav):
+            return type(nav.element) == type([]) and nav.element and nav.element[0].startswith("{")
+
+        def handle_element(nav, fn):
+            if isAttribute(nav):
+                attributes_stack[-1].append(nav.text.strip())
+                get_translatables(nav, fn)
+                if verbose > 1:
+                    print "Attribute", nav, "with ancestors", nav.ancestors()
+            elif isCloser(nav):
+                contexts[opener_stack.pop()] = attributes_stack.pop()
+                if verbose > 1:
+                    print "Closing scope", nav
+            elif isOpener(nav):
+                attributes_stack.append([])
+                opener_stack.append((nav.element, fn, nav.lineno))
+                if verbose > 1:
+                    print "Opening scope", nav
+            elif isMacroOpener(nav):
+                opener_stack.append((nav.element, fn, nav.lineno))
+                get_translatables(nav, fn)
+                if verbose > 1:
+                    print "Opening macro scope", nav
+            elif isMacroCloser(nav):
+                opener_stack.pop()
+                if verbose > 1:
+                    print "Closing macro scope", nav
+            elif inMacroContinuation(nav):
+                nav.element = "argument"
+                get_translatables(nav, fn)
+                if verbose > 1:
+                    print "In macro continuation", `nav.text`
+            elif isInlineMacro(nav):
+                if verbose > 1:
+                    print "Inline macro", nav
+                nav.element = nav.element[0]
+                get_translatables(nav, fn)
+            elif verbose > 1:
+                print "Unhandled", nav
+        # Gather a dictionary describing the context of every
+        # translatable string.
         for dir in arguments:
-            ofp = None
+            seqno = 0
             for fn in allcfgfiles(dir):
                 if verbose >= 2:
                     print fn + ":"
@@ -108,7 +166,14 @@ Usage: wmlxgettext [options] dirpath
                             print "wmlgettext: skipping %s, wrong domain" % fn
                         continue
                 for nav in WmllintIterator(lines, fn):
-                    print "FOO!", `nav`
+                    handle_element(nav, fn)
+        # Generate a report from the dictionary.
+        print "Translatables:"
+        for (translatable, context) in translatables:
+            print "%s: %s" % (translatable, context)
+        print "Contexts:"
+        for (key, value) in contexts.items():
+            print key, "->", value
     except KeyboardInterrupt:
-        print >>sys.stderr, "wmlgettext: aborted."
+        print >>sys.stderr, "wmlxgettext: aborted."
         
