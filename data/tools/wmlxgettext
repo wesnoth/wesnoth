@@ -1,0 +1,114 @@
+#!/usr/bin/env python
+#
+# wmlxgettext - extract .po files from Wesnoth WML
+
+import sys, os, time, re, getopt
+from wesnoth.wmltools import *
+from wesnoth.wmliterator import *
+
+# Code swiped from wmllint: probably should live in the wesnoth module
+
+vctypes = (".svn", ".git")
+
+def interesting(fn):
+    "Is a file interesting for conversion purposes?"
+    return fn.endswith(".cfg")
+
+def allcfgfiles(dir):
+    "Get the names of all interesting files under dir."
+    datafiles = []
+    if not os.path.isdir(dir):
+        if interesting(dir):
+            if not os.path.exists(dir):
+                sys.stderr.write("wmllint: %s does not exist\n" % dir)
+            else:
+                datafiles.append(dir)
+    else:
+        for root, dirs, files in os.walk(dir):
+            for vcsubdir in vctypes: 
+                if vcsubdir in dirs:
+                    dirs.remove(vcsubdir)
+            for name in files:
+                if interesting(os.path.join(root, name)):
+                    datafiles.append(os.path.join(root, name))
+    return map(os.path.normpath, datafiles)
+
+class WmllintIterator(WmlIterator):
+    "Fold an Emacs-compatible error reporter into WmlIterator."
+    def printError(self, *misc):
+        """Emit an error locator compatible with Emacs compilation mode."""
+        if not hasattr(self, 'lineno') or self.lineno == -1:
+            print >>sys.stderr, '"%s":' % self.fname
+        else:
+            print >>sys.stderr, '"%s", line %d:' % (self.fname, self.lineno+1),
+        for item in misc:
+            print >>sys.stderr, item,
+        print >>sys.stderr #terminate line
+
+# Swiped code ends here
+
+if __name__ == "__main__":
+    def help():
+        sys.stderr.write("""\
+Usage: wmlxgettext [options] dirpath
+    Options may be any of these:
+    -h, --help                   Emit this help message and quit
+    -d dir, --directory=dir      operate on specified directory
+    -i dn, --initialdomain=dn    Set initialdomain
+    -s dn, --domain=dn           Set domain
+    -v val. --verbose=val      Set warning level
+   Options may be followed by any number of directiories to check.  If no
+   directories are given, all files under the current directory are checked.
+""")
+
+    try:
+        directory = '.'
+        initialdomain = 'wesnoth'
+        domain = None
+        verbose = 0
+        # Process options
+        (options, arguments) = getopt.getopt(sys.argv[1:], "d:h:i:s:v:",
+                                             [
+                                              'directory=',
+                                              'help',
+                                              'initialdomain=',
+                                              'domain=',
+                                              'verbose=',
+                                              ])
+        for (switch, val) in options:
+            if switch in ('-d', '--directory'):
+                directory = val
+            elif switch in ('-i', '--initialdomain'):
+                initialdomain = val
+            elif switch in ('-h', '--help'):
+                help()
+                sys.exit(0)
+            elif switch in ('-s', '--domain'):
+                domain = val
+            elif switch in ('-v', '--verbose'):
+                verbose = int(val)
+
+        if not domain:
+            domain = initialdomain
+        if not arguments:
+            arguments = '.'
+
+        os.chdir(directory)
+
+        for dir in arguments:
+            ofp = None
+            for fn in allcfgfiles(dir):
+                if verbose >= 2:
+                    print fn + ":"
+                lines = file(fn).readlines()
+                if lines[0].startswith("#textdomain"):
+                    belongs_to = lines[0].split()[1]
+                    if belongs_to != domain:
+                        if verbose:
+                            print "wmlgettext: skipping %s, wrong domain" % fn
+                        continue
+                for nav in WmllintIterator(lines, fn):
+                    print "FOO!", `nav`
+    except KeyboardInterrupt:
+        print >>sys.stderr, "wmlgettext: aborted."
+        
