@@ -99,13 +99,14 @@ Usage: wmlxgettext [options] dirpath
         attributes_stack = []
         translatables = []
         contexts = {}
-        find_translatable = re.compile('_ *"[^"]*"')
+        find_translatable = re.compile('_ *"([^"]*)"')
 
         def get_translatables(nav, fn):
             "Mine translatable strings "
-            for match in find_translatable.findall(nav.text):
+            itor = find_translatable.finditer(nav.text)
+            for match in itor:
                 opener_stack.append((nav.element, fn, nav.lineno))
-                translatables.append((match, opener_stack[:]))
+                translatables.append((match.group(1), opener_stack[:]))
                 opener_stack.pop()
 
         def inMacroContinuation(nav):
@@ -163,7 +164,7 @@ Usage: wmlxgettext [options] dirpath
                     belongs_to = lines[0].split()[1]
                     if belongs_to != domain:
                         if verbose:
-                            print "wmlgettext: skipping %s, wrong domain" % fn
+                            print "wmlxgettext: skipping %s, wrong domain" % fn
                         continue
                 for nav in WmllintIterator(lines, fn):
                     handle_element(nav, fn)
