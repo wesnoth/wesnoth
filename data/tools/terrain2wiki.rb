@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 # A script to create the "Terrain Table" on the TerrainLettersWML wiki page.
+# Run this and splice the outtput into the wiki whenever you add a new 
+# terrain type to mainline.
 
 
 #create an array of hashes, each hash representing a [terrain] tag
@@ -47,8 +49,7 @@ end
 
 def create_table_line(string,name,stats_from)
 	return "<tr>
-<td>#{string}</td>#{"
-<td>#{old_letter}</td>" if nil}
+<td>#{string}</td>
 <td>#{name}</td>
 <td>#{stats_from}</td>
 </tr>"
@@ -75,8 +76,7 @@ def create_wiki(terrains)
 
 return "
 <table border=\"1\"><tr>
-<th>String</th>#{"
-<th>Old letter</th>" if nil}
+<th>String</th>
 <th>Name</th>
 <th>Stats from</th>
 </tr>
@@ -94,7 +94,6 @@ end
 
 $terrain_file=ARGV[1]
 $output_file=ARGV[0]
-
 
 while !$terrain_file
 	print "Path of terrain.cfg: "

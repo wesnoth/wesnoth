@@ -7,6 +7,9 @@ mirror-reversed a map and need to change coordinate-using macros.
 Takes a cross-reference of all known macros and looks for formals that
 are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
 
+Note: will not transform coorinates given as bare attribute values in, say,
+UnitWML. This should be fixed.
+
 Options:
     -m        Argument of this switch should name the map file.
               Required, because the coordinate transform needs to know the
@@ -189,7 +192,9 @@ def transformables(filename, relevant, verbose):
         (have_x, have_y) = relevant[name]
         pairs.append((arglocs[have_x], arglocs[have_y]))
 
-    # Transform these back to fronrt so laterchanges won't screw up earlier ones
+    # FIXME: extract spans associated with x,y  attributes, too.
+
+    # Transform these back to front so later changes won't screw up earlier ones
     pairs.reverse()
 
     # Return the file content as a string and the transformable extents in it.
