@@ -40,7 +40,7 @@ fi
 #echo 'svn update...'
 #svn update
 #svn status
-if [ "$VERSION" == "trunk"]; then
+if [ "$VERSION" = "trunk"]; then
 	data/tools/wmlunits -d data/ -o $SITE/temp || exit 1
 	rm -rf $SITE/$VERSION
 	# move the generated files to their proper place

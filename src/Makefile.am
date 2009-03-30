@@ -403,7 +403,7 @@ game_config.o: revision.hpp
 REVISION = $(shell LC_ALL=C svnversion -n $(topdir) 2>/dev/null)
 .PRECIOUS: revision.hpp
 revision.hpp: FORCE
-	if [ "$(REVISION)" == "" ] || [ "$(REVISION)" == "exported" ]; then echo '' >/tmp/westemp$$$$; \
+	if [ "$(REVISION)" = "" ] || [ "$(REVISION)" = "exported" ]; then echo '' >/tmp/westemp$$$$; \
 	else echo '#define REVISION    "$(REVISION)"' >/tmp/westemp$$$$; fi;\
 	if cmp -s revision.hpp /tmp/westemp$$$$ 2>/dev/null; then :; else cp /tmp/westemp$$$$ revision.hpp; fi; \
 	if [ -e /tmp/westemp$$$$ ]; then rm /tmp/westemp$$$$; fi
