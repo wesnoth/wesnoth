@@ -168,7 +168,7 @@ const std::string ai_holder::describe_ai()
 	}
 }
 
-bool ai_holder::is_mandate_ok( ai_interface::info &i )
+bool ai_holder::is_mandate_ok( ai_interface::info &/*i*/ )
 {
 	DBG_AI_MANAGER << describe_ai() << "AI mandate is ok" << std::endl;
 	return true;
@@ -638,13 +638,13 @@ ai_holder& ai_manager::get_active_ai_holder_for_team( int team )
 
 }
 
-ai_holder& ai_manager::get_command_ai_holder( int team )
+ai_holder& ai_manager::get_command_ai_holder( int /*team*/ )
 {
 	ai_holder& ai_holder = get_or_create_active_ai_holder_for_team_without_fallback(ai_manager::AI_TEAM_COMMAND_AI,AI_TYPE_FORMULA_AI);
 	return ai_holder;
 }
 
-ai_holder& ai_manager::get_fallback_ai_holder( int team )
+ai_holder& ai_manager::get_fallback_ai_holder( int /*team*/ )
 {
 	ai_holder& ai_holder = get_or_create_active_ai_holder_for_team_without_fallback(ai_manager::AI_TEAM_FALLBACK_AI,AI_TYPE_IDLE_AI);
 	return ai_holder;
