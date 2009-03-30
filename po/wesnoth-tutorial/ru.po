@@ -1,11 +1,12 @@
 # translation of comp.po to Russian
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
+# Fedor Khodkov <fedor76@istra.ru> 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-03-17 11:38+0200\n"
+"PO-Revision-Date: 2009-03-30 14:59+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
@@ -506,7 +507,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:704
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
-"Верно — боец, который целый ход ничего не делает, медленно восстанавливает "
+"Верно — боец, который целый ход ничего не делает, постепенно восстанавливает "
 "здоровье."
 
 #. [message]: id=Delfador
@@ -759,7 +760,7 @@ msgstr "Да, мне не помешало бы еще поучиться."
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1064
 msgid "No, I think I've got it."
-msgstr "Нет, думаю, для меня всё предельно ясно."
+msgstr "Нет, думаю, мне уже всё ясно."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1099
@@ -1101,7 +1102,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr "Нет! Я же сказал завербовать ШАМАНКУ! Давай-ка ещё раз..."
+msgstr "Нет! Я же сказал — завербовать ШАМАНКУ! Давай-ка ещё раз..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
@@ -1144,7 +1145,7 @@ msgstr "Передвиньте Лисар в деревню"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:659
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-msgstr "Нет! Я же сказал завербовать ЛУЧНИКА! Давай ещё раз..."
+msgstr "Нет! Я же сказал — завербовать ЛУЧНИКА! Давай ещё раз..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
@@ -1196,7 +1197,7 @@ msgstr "Завербуйте двух лучников в ячейках к за
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:724
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr "Нет! Я же сказал нанять ОПОЛЧЕНЦА! Давай еще раз..."
+msgstr "Нет! Я же сказал — нанять ОПОЛЧЕНЦА! Давай еще раз..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
@@ -1218,7 +1219,7 @@ msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
-"Нет! Я же сказал ПРИЗВАТЬ $recall_name1 с прошлой битвы, а не вербовать "
+"Нет! Я же сказал — ПРИЗВАТЬ $recall_name1 с прошлой битвы, а не вербовать "
 "$recruit.language_name|! Давай ещё раз..."
 
 #. [then]
@@ -1247,8 +1248,8 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.language_name|? Я же сказал ЗАВЕРБОВАТЬ нового ОПОЛЧЕНЦА. Попробуй "
-"ещё раз..."
+"$recruit.language_name|? Я же сказал — ЗАВЕРБОВАТЬ нового ОПОЛЧЕНЦА. "
+"Попробуй ещё раз..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1815,6 +1816,13 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "кистень"
+
+#~ msgid ""
+#~ "female^You're about to be healed by $hp_difference hitpoints, but I think "
+#~ "you're going to need some help against that quintain."
+#~ msgstr ""
+#~ "Твоё здоровье восстановилось на 8 очков. Но мне кажется, тебе понадобится "
+#~ "помощь против этого манекена."
 
 #~ msgid "Elder Mage"
 #~ msgstr "Древний маг"
