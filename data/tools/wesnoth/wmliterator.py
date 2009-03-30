@@ -62,13 +62,31 @@ def isCloser(elem):
     "Are we looking at a closing tag?"
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    return elem.startswith("[/")
+    return type(elem) == type("") and elem.startswith("[/")
+
+def isMacroCloser(elem):
+    "Are we looking at a macro closer?"
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return type(elem) == type("") and elem.startswith("}")
 
 def isOpener(elem):
     "Are we looking at an opening tag?"
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    return elem.startswith("[") and not isCloser(elem)
+    return type(elem) == type("") and elem.startswith("[") and not isCloser(elem)
+
+def isMacroOpener(elem):
+    "Are we looking at a macro opener?"
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return type(elem) == type("") and elem.startswith("{")
+
+def isAttribute(elem):
+    "Are we looking at an attribute?"
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return type(elem) == type(()) or (type(elem) == type("") and elem.endswith("="))
 
 class WmlIterator(object):
     """Return an iterable WML navigation object.
@@ -354,6 +372,21 @@ Important Attributes:
         if self.endScope is not None and not self.scopes.count(self.endScope):
             raise StopIteration
         return self
+
+    def isOpener(self):
+        return isOpener(self)
+
+    def isCloser(self):
+        return isCloser(self)
+
+    def isMacroOpener(self):
+        return isMacroOpener(self)
+
+    def isMacroCloser(self):
+        return isMacroCloser(self)
+
+    def isAttribute(self):
+        return isAttribute(self)
 
     def iterScope(self):
         """Return an iterator for the current scope"""
