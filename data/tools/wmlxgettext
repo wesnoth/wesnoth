@@ -68,6 +68,20 @@ Usage: wmlxgettext [options] dirpath
    directories are given, all files under the current directory are checked.
 """)
 
+    print '''\
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"
+"POT-Creation-Date: %s\\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
+"Last-Translator: FULL NAME <EMAIL\@ADDRESS>\\n"
+"Language-Team: LANGUAGE <LL\@li.org>\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+''' % time.strftime("%Y-%m-%d, %H:%M+0000", time.gmtime())
+
     try:
         directory = '.'
         initialdomain = 'wesnoth'
@@ -183,16 +197,18 @@ Usage: wmlxgettext [options] dirpath
             print "Contexts:"
             for (key, value) in contexts.items():
                 print key, "->", value
-        # Generate a report from the translattables
+        # Generate a report from the translatables
         for (translatable, context) in translatables:
             attribs = ""
-            for (tag, file, line) in context[:-1]:
-                for (key, value) in contexts.items():
-                    value = filter(interesting, value)
-                    if key[0] == tag and key[1] == file and key[2] == line:
-                        attribs = " has " + ", ".join(value)
-                print "%s, line %d: %s%s" % (file, line, tag, attribs)
-            print "%s, line %d: %s" % (context[-1][1], context[-1][2], context[-1][0])
+            for (i, (tag, file, line)) in enumerate(context):
+                if i == len(context)-1 or tag.startswith("{"):
+                    print "# %s, line %d: %s" % (file, line, tag)
+                else:
+                    for (key, value) in contexts.items():
+                        value = filter(interesting, value)
+                        if key[0] == tag and key[1] == file and key[2] == line:
+                            attribs = " has " + ", ".join(value)
+                    print "# %s, line %d: %s%s" % (file, line, tag, attribs)
             print 'msgid "%s"' % translatable
             print 'msgstr ""'
             print ""
