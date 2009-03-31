@@ -18,7 +18,9 @@
  */
 
 #include "global.hpp"
+
 #include "actions.hpp"
+#include "ai_manager.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
@@ -798,6 +800,10 @@ namespace {
 		 * @todo also allow client to modify a side's colour if it is possible
 		 * to change it on the fly without causing visual glitches
 		 */
+		/**
+		 * @todo: rename this attribute and document it
+		 */
+		std::string redeploy_ai_from_location = cfg["redeploy_ai_from_location"];
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -856,6 +862,11 @@ namespace {
 			// Override AI parameters
 			if (ai.first != ai.second) {
 				(*teams)[team_index].set_ai_parameters(ai);
+			}
+			// Redeploy ai from location (this ignores current AI parameters)
+			// @todo: this is probably SP-only and on human turn only
+			if (!redeploy_ai_from_location.empty()) {
+				ai_manager::add_ai_for_team_from_file(side_num,redeploy_ai_from_location);
 			}
 		}
 	}
