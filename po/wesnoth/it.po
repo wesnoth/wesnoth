@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-24 22:18+0100\n"
+"PO-Revision-Date: 2009-03-31 22:23+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,12 +33,12 @@ msgstr "Salvataggi compressi"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:56
 msgid "Mouse Scrolling"
-msgstr "Scrolling del mouse"
+msgstr "Scorrimento col mouse"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
 msgid "Middle-click Scrolling"
-msgstr "Scrolling con il clic centrale"
+msgstr "trascinamento col clic centrale"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -269,7 +269,7 @@ msgstr "Responsabili per l'internazionalizzazione"
 #. [about]
 #: data/core/about.cfg:915
 msgid "English strings edition"
-msgstr "Edizione dei messagi in inglese"
+msgstr "Edizione dei messaggi in inglese"
 
 #. [about]
 #: data/core/about.cfg:922
@@ -662,13 +662,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per iniziare, sarebbe meglio scegliere il bottone <italic>text=Tutorial</"
-"italic> nel menù principale. Questo ti porterà in una missione introduttiva "
-"che ti spiegherà le basi di Wesnoth. Dopo averlo terminato è consigliabile "
-"giocare per prima la campagna L'Erede al Trono — clicca "
-"<italic>text=Campagna</italic> poi <italic>text='L Erede al Trono'</italic>. "
-"Il gioco potrebbe risultare impegnativo, quindi si consiglia di iniziare con "
-"la modalità <italic>text=Facile</italic>."
+"Per iniziare, è meglio scegliere il pulsante <italic>text=Introduzione</"
+"italic> nel menù principale. Questo ti porterà alla missione introduttiva "
+"che ti insegnerà le basi di Wesnoth. Dopo averla terminato è consigliabile "
+"giocare per prima la campagna L'Erede al Trono — fai clic su "
+"<italic>text=Campagna</italic> poi <italic>text='Erede al Trono'</italic>. "
+"Il gioco può risultare impegnativo, quindi prova a iniziare con la modalità "
+"<italic>text=Facile</italic>."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
@@ -679,11 +679,11 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Mentre giochi, ricordati che se passi con il cursore sopra a molti elementi "
-"del gioco (ad esdempio le informazioni visualizzate sul pannello di stato) "
-"vedrai apparire una breve descrizione dell'elemento.Ciò è molto utile quando "
-"incontri per la prima volta una creatura con delle nuove <ref>dst='.."
-"abilities_section' text='abilità'</ref>."
+"Mentre giochi, ricordati che se passi col cursore sopra a molti elementi del "
+"gioco (come le informazioni nel sul pannello di stato) vedrai apparire una "
+"breve descrizione dell'elemento. Ciò è molto utile quando incontri per la "
+"prima volta una creatura con delle nuove <ref>dst='..abilities_section' "
+"text='abilità'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -997,17 +997,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ogni unità ha un certo un numero di movimenti che vengono utilizzati quando "
-"si sposta in un nuovo esagono in base al tipo di “terreno” di quel "
-"determinato esagono. Per esempio, la prateria generalmente necessita di 1 "
-"movimento per essere attraversata. Più precisamente il numero di punti "
-"movimento necessari a entrare in un esagono dipende dal tipo di unità – "
-"nella foresta le unità degli elfi utilizzano solo 1 punto movimento, la "
-"maggior parte delle unità di uomini o di orchi utilizzano 2, mentre i "
-"cavalieri ne utilizzano 3. Puoi sapere quanti punti movimento sono necessari "
-"a un'unità per entrare in un determinato tipo di terreno facendo clic con il "
-"destro su di essa, selezionando «Descrizione dell'unità» e quindi guardando "
-"alla voce <italic>text='Modificatori del terreno'</italic>."
+"Ogni unità ha un certo numero di punti di movimento che vengono utilizzati "
+"quando si sposta in un nuovo esagono in base al tipo del suo “terreno”. Per "
+"esempio, la prateria generalmente necessita di 1 punto movimento per essere "
+"attraversata. Più precisamente il numero di punti necessari a entrare in un "
+"esagono dipende dal tipo di unità – nella foresta le unità degli elfi "
+"utilizzano solo 1 punto movimento, la maggior parte delle unità di uomini o "
+"di orchi ne utilizzano 2, mentre i cavalieri ne utilizzano 3. Puoi sapere "
+"quanti punti movimento sono necessari a un'unità per entrare in un certo "
+"tipo di terreno facendo clic col tasto destro su di essa, selezionando "
+"«Descrizione dell'unità» e quindi leggendo la voce <italic>text='Modificatori "
+"del terreno'</italic>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1027,8 +1027,7 @@ msgstr ""
 "controllo”. Ciascuna unità genera una zona di controllo negli esagoni "
 "immediatamente intorno a essa. Imparare a usare le zone di controllo a "
 "proprio vantaggio è una parte importante di Wesnoth, dato che solo gli "
-"<ref>dst='ability_skirmisher' text='incursori'</ref> possono ignorare le "
-"zone di controllo."
+"<ref>dst='ability_skirmisher' text='incursori'</ref> possono ignorarle."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1074,16 +1073,16 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"In alcuni scenari, una parte della mappa sarà nascosta alla visuale. Ci sono "
-"due meccanismi che possono essere utilizzati separatamente o insieme. "
-"L'oscurità nasconde i terreni e qualsiasi unità che si trova in un luogo. "
-"Però una volta che si dirada sarà sempre possibile vedere quella posizione. "
-"La nebbia di guerra invece nasconde solo le unità e la proprietà di un "
-"villaggio (che non sia tua o dei tuoi alleati). La nebbia di guerra viene "
-"diradata al tuo passaggio, ma quando lasci la zona ritorna a ricoprirla. Sia "
-"l'oscurità che la nebbia di guerra vengono diradate dalle unità. Ogni unità "
-"dirada i luoghi adiacenti quando si sposta (ignorando le zone di controllo e "
-"le unità nemiche).\n"
+"In alcuni scenari, parte della mappa sarà nascosta alla visuale. Ci sono due "
+"meccanismi che possono essere utilizzati separatamente o insieme. L'oscurità "
+"nasconde i terreni e qualsiasi unità che si trova in un luogo. Però una "
+"volta che si dirada sarà sempre possibile vedere quella posizione. La nebbia "
+"di guerra invece nasconde solo le unità e la proprietà di un villaggio (che "
+"non sia tua o dei tuoi alleati). La nebbia di guerra viene diradata al tuo "
+"passaggio, ma quando lasci la zona ritorna a ricoprirla. Sia l'oscurità che "
+"la nebbia di guerra vengono diradate dalle unità. Ogni unità dirada i luoghi "
+"adiacenti quando si sposta (ignorando le zone di controllo e le unità "
+"nemiche).\n"
 "\n"
 "Normalmente puoi annullare il movimento di un'unità, a patto che non si sia "
 "verificato un evento dal risultato generato in modo casuale, come un "
@@ -1905,8 +1904,8 @@ msgid ""
 "cost."
 msgstr ""
 "Le unità leali non necessitano di mantenimento. Gran parte delle unità hanno "
-"un costo di mantenimento alla fine di ogni turno, questo costo è pari al "
-"loro livello. Le unità leali non hanno bisogno di questo costo."
+"un costo di mantenimento alla fine di ogni turno, pari al loro livello. Le "
+"unità leali non lo hanno."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
@@ -2036,6 +2035,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2045,7 +2045,8 @@ msgstr ""
 "\n"
 "\n"
 "Le unità sane hanno 1 PF più 1 PF per livello più del solito ed il riposo "
-"cura 2 PF in più dopo ogni turno in cui non hanno combattuto."
+"cura 2 PF in più dopo ogni turno in cui non hanno combattuto; inoltre "
+"patiscono solo un quarto dei danni da veleno."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -6815,8 +6816,8 @@ msgid ""
 msgstr ""
 "Nelle mappe dove l'oscurità o la nebbia di guerra sono state abilitate, il "
 "campo di vista di un'unità è limitato al valore massimo del movimento "
-"dell'unità stessa. Ricordati di questo quando scegli che unità utilizzare "
-"per perlustrare i specifici tipi di terreno."
+"dell'unità stessa. Ricordatene quando scegli che unità utilizzare per "
+"perlustrare gli specifici tipi di terreno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -8505,7 +8506,7 @@ msgid ""
 "control a side in a running game you are in."
 msgstr ""
 "Invia un messaggio privato. Non si possono mandare messaggi a giocatori che "
-"noncontrollano una fazione della partita a cui stai giocando."
+"non controllano una fazione della partita a cui stai giocando."
 
 #: src/menu_events.cpp:2190
 msgid "Change the log level of a log domain."
@@ -9882,6 +9883,9 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Traduzione in islandese"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "File di script non controllato trovato: "
