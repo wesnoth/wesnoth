@@ -143,7 +143,7 @@ namespace wesnothd {
 		read(cfg);
 	}
 
-	banned::ip_mask banned::parse_ip(const std::string& ip) const
+	ip_mask parse_ip(const std::string& ip)
 	{
 		// We use bit operations to construct the integer
 		// ip_mask is a pair: first is ip and second is mask
@@ -272,13 +272,8 @@ namespace wesnothd {
 		return ip_ & mask & mask_;
 	}
 
-	bool banned::match_ip(const std::string& ip) const {
-		try {
-			ip_mask pair = parse_ip(ip);
-			return (ip_ & mask_) == (pair.first & mask_);
-		} catch (banned::error&) {
-			return false;
-		}
+	bool banned::match_ip(const ip_mask& pair) const {
+		return (ip_ & mask_) == (pair.first & mask_);
 	}
 
 	void ban_manager::read()
@@ -609,7 +604,13 @@ namespace wesnothd {
 
 	std::string ban_manager::is_ip_banned(const std::string& ip) const
 	{
-		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), ip));
+		ip_mask pair;
+		try {
+			pair = parse_ip(ip);
+		} catch (banned::error&) {
+			return "";
+		}
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), pair));
 		if (ban == bans_.end()) return "";
 		return (*ban)->get_reason();
 	}
