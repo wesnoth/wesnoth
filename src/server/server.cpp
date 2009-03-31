@@ -298,7 +298,7 @@ private:
 	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
 
-	std::map<std::string, std::string> ip_log_;
+	std::deque<std::pair<std::string, std::string> > ip_log_;
 
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<network::connection,std::string> seeds_;
@@ -1197,7 +1197,7 @@ void server::process_login(const network::connection sock,
 	}
 
 	// Log the IP
-	ip_log_[username] = network::ip_address(sock);
+	ip_log_.push_back(std::pair<std::string, std::string>(username,network::ip_address(sock)));
 	// Remove the oldest entry if the size of the IP log exceeds the maximum size
 	if(ip_log_.size() > max_ip_log_size_) ip_log_.erase(ip_log_.begin());
 }
@@ -1484,7 +1484,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				// If nobody was banned yet check the ip_log but only if a
 				// simple username was used to prevent accidental bans.
 				if (utils::isvalid_username(target)) {
-					for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+					for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 							i != ip_log_.end(); i++) {
 						if (i->first == target) {
 							banned = true;
@@ -1570,7 +1570,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		// If this looks like an IP look up which nicks have been connected from it
 		// Otherwise look for the last IP the nick used to connect
 		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
-			for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->second, parameters)) {
 					found_something = true;
@@ -1578,7 +1578,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 		} else {
-			for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->first, parameters)) {
 					found_something = true;
