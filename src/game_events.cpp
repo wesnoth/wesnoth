@@ -1024,7 +1024,7 @@ namespace {
 
 				src = dst;
 			}
-			unit_display::move_unit(path, dummy_unit, *teams);
+			if (!path.empty()) unit_display::move_unit(path, dummy_unit, *teams);
 		}
 	}
 
