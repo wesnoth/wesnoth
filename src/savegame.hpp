@@ -22,7 +22,7 @@
 #include <string>
 
 /** Autosave */
-void save_autosave(unsigned turn, const config& snapshot, game_state& gamestate);
+std::string save_autosave(unsigned turn, const config& snapshot, game_state& gamestate);
 
 /** Normal midgame save */
 void save_game(std::string& filename, const config& snapshot, game_state& gamestate);

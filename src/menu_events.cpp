@@ -740,15 +740,14 @@ private:
 		write_game_snapshot(snapshot);
 
 		try {
-			::save_autosave(turn, snapshot, gamestate_);
+			std::string savename = ::save_autosave(turn, snapshot, gamestate_);
+			end = SDL_GetTicks();
+			LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
 		} catch(game::save_game_failed&) {
 			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
-		end = SDL_GetTicks();
-		LOG_NG << "Milliseconds to save Autosave: " << end - start << "\n";
-		//LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
 
 		remove_old_auto_saves();
 	}

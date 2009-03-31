@@ -66,7 +66,7 @@ void save_replay(game_state& gamestate)
 }
 
 /** Autosave */
-void save_autosave(unsigned turn, const config& snapshot, game_state& gamestate)
+std::string save_autosave(unsigned turn, const config& snapshot, game_state& gamestate)
 {
 	std::string filename;
 	if (gamestate.label.empty())
@@ -75,6 +75,8 @@ void save_autosave(unsigned turn, const config& snapshot, game_state& gamestate)
 		filename = gamestate.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 
 	save_game(filename, snapshot, gamestate);
+
+	return filename;
 }
 
 void save_game(std::string& filename, const config& snapshot, game_state& gamestate)
