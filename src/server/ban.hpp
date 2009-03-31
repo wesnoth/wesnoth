@@ -60,7 +60,9 @@ namespace wesnothd {
 	typedef std::list<banned_ptr> deleted_ban_list;
 	typedef std::priority_queue<banned_ptr,std::vector<banned_ptr>, banned_compare> ban_time_queue;
 	typedef std::map<std::string, size_t> default_ban_times;
+	typedef std::pair<unsigned int, unsigned int> ip_mask;
 
+	ip_mask parse_ip(const std::string&);
 
 	class banned {
 		unsigned int ip_;
@@ -73,9 +75,6 @@ namespace wesnothd {
 		std::string group_;
 		std::string nick_;
 		static const std::string who_banned_default_;
-		typedef std::pair<unsigned int, unsigned int> ip_mask;
-
-		ip_mask parse_ip(const std::string&) const;
 
 		banned(const std::string& ip);
 
@@ -110,7 +109,7 @@ namespace wesnothd {
 		bool match_group(const std::string& group) const
 		{ return group_ == group; }
 
-		bool match_ip(const std::string& ip) const;
+		bool match_ip(const ip_mask& ip) const;
 
 		unsigned int get_mask_ip(unsigned int) const;
 		unsigned int get_int_ip() const
