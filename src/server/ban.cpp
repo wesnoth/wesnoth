@@ -592,7 +592,7 @@ namespace wesnothd {
 
 		if (!groups.empty())
 		{
-			out << "\nban groups:\n";
+			out << "\nban groups: ";
 
 			out << *groups.begin();
 			std::ostream& (*fn)(std::ostream&,const std::string&) = &std::operator<<;
