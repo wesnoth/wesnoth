@@ -50,7 +50,7 @@ static void scan_deprecation_messages(const config &cfg)
 static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
 
-void show_intro_old(display &disp, const vconfig& data, const config& level)
+static void show_intro_old(display &disp, const vconfig& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
 	scan_deprecation_messages(data.get_parsed_config());
@@ -458,7 +458,7 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	return true;
 }
 
-void the_end_old(display &disp, std::string text, unsigned int duration)
+static void the_end_old(display &disp, std::string text, unsigned int duration)
 {
 	//
 	// Some sane defaults.
