@@ -307,6 +307,8 @@ SET(wesnoth-main_SRC
     statistics.cpp
     statistics_dialog.cpp
     storyscreen.cpp
+    storyscreen_controller.cpp
+    storyscreen_page.cpp
     team.cpp
     terrain_filter.cpp
     time_of_day.cpp

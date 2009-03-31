@@ -13,14 +13,13 @@
    See the COPYING file for more details.
 */
 
-/** @file storyscreen.hpp */
 // FIXME: textscreen.[ch]pp ??
-
-// This code is work in progress, and shouldn't be enabled for production
-// builds. It is supposed to completely replace the old story screens code
-// at intro.cpp, introducing new WML conventions while at it.
-//
-// Do not remove the #ifdef below.
+/**
+ * @file storyscreen.hpp
+ * This code is work in progress, and shouldn't be enabled for production
+ * builds. It is supposed to completely replace the old story screens code
+ * at intro.cpp, introducing new WML conventions while at it.
+ */
 #ifdef SHADOWM_STORYSCREEN
 
 #ifndef STORYSCREEN_HPP_INCLUDED
@@ -30,13 +29,12 @@ class config;
 class vconfig;
 class display;
 class t_string;
-#include "SDL.h"
 
 #include <string>
 
 /**
  * Function to show an introduction sequence using story WML.
- * The WML config data has a format similar to:
+ * The WML config data (story_cfg) has a format similar to:
  * @code
  * [part]
  *     id='id'
@@ -49,7 +47,7 @@ class t_string;
  * be displayed in turn, with the user able to go to the next part, or skip
  * it entirely.
  */
-void show_storyscreen(display& disp, const vconfig& data, const config& scenario_cfg);
+void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string& scenario_name);
 
 /**
  * Displays a simple fading screen with any user-provided text.

@@ -17,8 +17,6 @@
  * Introduction sequence at start of a scenario, End-screen after end of
  * campaign.
  */
-
-// Do not remove the #ifndef below. See storyscreen.hpp.
 #ifndef SHADOWM_STORYSCREEN
 
 #include "global.hpp"

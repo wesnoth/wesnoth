@@ -13,8 +13,9 @@
    See the COPYING file for more details.
 */
 
+// FIXME: textscreen.[ch]pp ??
 /**
- * @file storyscreen.cpp
+ * @file storyscreen_controller.cpp
  * This code is work in progress, and shouldn't be enabled for production
  * builds. It is supposed to completely replace the old story screens code
  * at intro.cpp, introducing new WML conventions while at it.
@@ -22,11 +23,14 @@
 #ifdef SHADOWM_STORYSCREEN
 
 #include "global.hpp"
+#include "SDL.h"
+
+#include "storyscreen_controller.hpp"
+#include "storyscreen_page.hpp"
+
+#include "asserts.hpp"
 #include "foreach.hpp"
 #include "variable.hpp"
-
-#include "storyscreen.hpp"
-#include "storyscreen_controller.hpp"
 
 #include "display.hpp"
 #include "game_events.hpp"
@@ -45,48 +49,54 @@
 // TODO: remove when completed
 #include "stub.hpp"
 
-namespace {
-	void generate_endscreen_page_config(config& append_to_cfg)
-	{
-		config& partcfg = append_to_cfg.add_child("story").add_child("page");
-		partcfg["text_align"] = "centered";
+namespace storyscreen {
+
+controller::controller(display& disp, const vconfig& data, const std::string& scenario_name)
+	: disp_(disp)
+	, disp_resize_lock_()
+	, evt_context_()
+	, data_(data)
+	, scenario_name_(scenario_name)
+	, pages_()
+	, gamestate_(game_events::get_state_of_game())
+{
+	ASSERT_LOG(gamestate_ != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
+	build_pages();
+}
+
+controller::~controller()
+{
+	clear_pages();
+}
+
+void controller::build_pages()
+{
+
+
+	for(vconfig::all_children_iterator i = data_.ordered_begin(); i != data_.ordered_end(); i++) {
+		const std::pair<const std::string, const vconfig> item = *i;
+
+		if(item.first == "page" && !item.second.empty()) {
+			vconfig cfg = item.second;
+			// Use scenario name as page title if the WML doesn't supply a custom one.
+// 			if(cfg["title"].empty()) {
+// 				cfg["title"] = scenario_name_;
+// 			}
+
+			page* story_page = new page(*gamestate_, cfg);
+		}
+		
 	}
-} // end anonymous namespace
-
-void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string& scenario_name)
-{
-	STUB();
-	LOG_NG << "entering storyscreen procedure...\n";
-
-	storyscreen::controller ctl(disp, story_cfg, scenario_name);
-
-	// FIXME: stub!
-
-	LOG_NG << "leaving storyscreen procedure...\n";
 }
 
-void show_endscreen(display& disp, const t_string& text, unsigned int duration)
+void controller::clear_pages()
 {
-	STUB();
-	LOG_NG << "show_endscreen() invoked...\n";
-
-	config story_cfg;
-
-	// FIXME: stub!
-
-	LOG_NG << "show_endscreen() completed...\n";
+	foreach(page* p, pages_) {
+		delete p;
+	}
+	pages_.clear();
 }
 
-// Trivial drop-in compatibility with intro.cpp
-void show_intro(display &disp, const vconfig& data, const config& level)
-{
-	const std::string scenario_name = level["name"];
-	show_storyscreen(disp,data,scenario_name);
-}
-
-void the_end(display &disp, std::string text, unsigned int duration)
-{
-	show_endscreen(disp, t_string(text) /* dumb! */, duration);
-}
+} // end namespace storyscreen
 
 #endif /* SHADOWM_STORYSCREEN */
