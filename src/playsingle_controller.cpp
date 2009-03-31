@@ -664,7 +664,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->draw(true,true);
 
 	if (save) {
-		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
+		menu_handler_.autosave(status_.turn());
 	}
 
 	if(preferences::turn_bell()) {

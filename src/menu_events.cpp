@@ -729,7 +729,7 @@ private:
 		gui_->labels().write(start);
 	}
 
-	void menu_handler::autosave(const std::string &label, unsigned turn, const config &starting_pos) const
+	void menu_handler::autosave(unsigned turn) const
 	{
 		if(game_config::disable_autosave)
 			return;
@@ -737,21 +737,18 @@ private:
 		Uint32 start, end;
 		start = SDL_GetTicks();
 		config snapshot;
-		std::string savename;
-		if (label.empty())
-			savename = _("Auto-Save");
-		else
-			savename = label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 		write_game_snapshot(snapshot);
+
 		try {
-			::save_game(savename, snapshot, gamestate_);
+			::save_autosave(turn, snapshot, gamestate_);
 		} catch(game::save_game_failed&) {
 			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
 		end = SDL_GetTicks();
-		LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
+		LOG_NG << "Milliseconds to save Autosave: " << end - start << "\n";
+		//LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
 
 		remove_old_auto_saves();
 	}

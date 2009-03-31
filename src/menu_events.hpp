@@ -117,7 +117,7 @@ public:
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void do_ai_formula(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
-	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
+	void autosave(unsigned turn) const;
 	bool has_team() const;
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
