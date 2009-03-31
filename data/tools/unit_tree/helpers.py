@@ -314,8 +314,10 @@ class WesnothList:
             try:
                 level = int(self.get_unit_value(unit, "level"))
             except TypeError:
-                level = 5
-            if level < 0: level = 5
+                level = 0
+            except ValueError:
+                level = 0
+            if level < 0: level = 0
             unit.level = level
 
         return len(newunits)
