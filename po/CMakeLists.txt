@@ -305,3 +305,47 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 endif(ENABLE_POT_UPDATE_TARGET)
 
+if(ENABLE_NLS)
+
+	foreach(DOMAIN ${DOMAINS})
+
+		foreach(LANG ${LANGUAGES})
+
+			add_custom_command(
+				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
+				COMMAND ${CMAKE_COMMAND} -E make_directory 
+						${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
+				COMMENT "mo-update [${LANG}]: Creating locale directory."
+			)
+
+			add_custom_command(
+				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+				COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} 
+						-o ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo ${LANG}.po
+				DEPENDS 
+					${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
+					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po
+				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
+				COMMENT "mo-update [${DOMAIN}-${LANG}]: Creating mo file."
+			)
+
+			set(mo-update-SRC ${mo-update-SRC} 
+				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+			)
+
+		endforeach(LANG ${LANGUAGES})
+
+	endforeach(DOMAIN ${DOMAINS})
+
+	# The target to call
+	add_custom_target(mo-update2 ALL
+		COMMENT "mo-update: Done."
+		DEPENDS ${mo-update-SRC}
+	)
+
+	set_directory_properties(properties 
+		ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}
+	)
+
+endif(ENABLE_NLS)
+
