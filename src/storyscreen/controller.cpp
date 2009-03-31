@@ -25,8 +25,8 @@
 #include "global.hpp"
 #include "SDL.h"
 
-#include "storyscreen_controller.hpp"
-#include "storyscreen_page.hpp"
+#include "storyscreen/controller.hpp"
+#include "storyscreen/page.hpp"
 
 #include "asserts.hpp"
 #include "foreach.hpp"

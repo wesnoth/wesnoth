@@ -25,8 +25,8 @@
 #include "foreach.hpp"
 #include "variable.hpp"
 
-#include "storyscreen.hpp"
-#include "storyscreen_controller.hpp"
+#include "storyscreen/interface.hpp"
+#include "storyscreen/controller.hpp"
 
 #include "display.hpp"
 #include "game_events.hpp"

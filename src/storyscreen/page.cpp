@@ -16,7 +16,7 @@
 #include "global.hpp"
 #include "asserts.hpp"
 #include "log.hpp"
-#include "storyscreen_page.hpp"
+#include "storyscreen/page.hpp"
 
 #include "config.hpp"
 #include "gamestatus.hpp"
