@@ -64,7 +64,7 @@ void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string
 	LOG_NG << "leaving storyscreen procedure...\n";
 }
 
-void show_endscreen(display& disp, const t_string& text, unsigned int duration)
+void show_endscreen(display& /*disp*/, const t_string& /*text*/, unsigned int /*duration*/)
 {
 	STUB();
 	LOG_NG << "show_endscreen() invoked...\n";
