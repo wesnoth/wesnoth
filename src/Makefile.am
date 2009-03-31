@@ -143,9 +143,9 @@ wesnoth_source = \
 	settings.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
-	storyscreen.cpp \
-	storyscreen_controller.cpp \
-	storyscreen_page.cpp \
+	storyscreen/interface.cpp \
+	storyscreen/controller.cpp \
+	storyscreen/page.cpp \
 	team.cpp \
 	terrain_filter.cpp \
 	text.cpp \
