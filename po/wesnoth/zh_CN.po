@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 23:43+0100\n"
+"POT-Creation-Date: 2009-03-31 15:28+0200\n"
 "PO-Revision-Date: 2009-03-27 22:47-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -457,47 +457,47 @@ msgid "Russian Translation"
 msgstr "俄语"
 
 #. [about]
-#: data/core/about.cfg:1925
+#: data/core/about.cfg:1931
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
 #. [about]
-#: data/core/about.cfg:1940
+#: data/core/about.cfg:1946
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
 #. [about]
-#: data/core/about.cfg:1966
+#: data/core/about.cfg:1972
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1985
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
 #. [about]
-#: data/core/about.cfg:2032
+#: data/core/about.cfg:2038
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
 #. [about]
-#: data/core/about.cfg:2061
+#: data/core/about.cfg:2067
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
 #. [about]
-#: data/core/about.cfg:2083
+#: data/core/about.cfg:2089
 msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
 #. [about]
-#: data/core/about.cfg:2096
+#: data/core/about.cfg:2102
 msgid "RACV's Translation"
 msgstr "巴伦西亚语"
 
 #. [about]
-#: data/core/about.cfg:2103
+#: data/core/about.cfg:2109
 msgid "Bots"
 msgstr "电脑"
 
@@ -1855,11 +1855,13 @@ msgstr "矮人们以活力著称，有些强壮的矮人甚至可以在移动同
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
-"the usual 2 HP after each turn they did not fight."
+"the usual 2 HP after each turn they did not fight. They also suffer a "
+"quarter less damage from poison."
 msgstr ""
 "\n"
 "\n"
@@ -6391,8 +6393,8 @@ msgstr "结束场景"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
-#: src/unit.cpp:2766
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2593
+#: src/unit.cpp:2767
 msgid "HP"
 msgstr "生命值"
 
@@ -7144,8 +7146,8 @@ msgid ""
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:491
-#: src/playsingle_controller.cpp:549
+#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "您想载入的文件已损坏"
 
@@ -8622,7 +8624,7 @@ msgstr "加入此游戏需要密码."
 msgid "Invalid Color"
 msgstr "无效颜色"
 
-#: src/multiplayer_ui.cpp:418
+#: src/multiplayer_ui.cpp:421
 msgid "Selected user: "
 msgstr "选择用户："
 
@@ -8768,43 +8770,43 @@ msgstr ""
 "\n"
 "您想保存错误日志吗?"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:186
+#: src/playsingle_controller.cpp:187
 msgid "Early finish bonus: "
 msgstr "提早结束奖励： "
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:189
 msgid "per turn"
 msgstr "金币/回合"
 
-#: src/playsingle_controller.cpp:189
+#: src/playsingle_controller.cpp:190
 msgid "Turns finished early: "
 msgstr "提早结束回合数： "
 
-#: src/playsingle_controller.cpp:191
+#: src/playsingle_controller.cpp:192
 msgid "Bonus: "
 msgstr "奖励： "
 
-#: src/playsingle_controller.cpp:194
+#: src/playsingle_controller.cpp:195
 msgid "Gold: "
 msgstr "金币： "
 
-#: src/playsingle_controller.cpp:198
+#: src/playsingle_controller.cpp:199
 msgid "Carry over percentage: "
 msgstr "资金转移到下一幕："
 
-#: src/playsingle_controller.cpp:201
+#: src/playsingle_controller.cpp:202
 msgid "Bonus Gold: "
 msgstr "奖励金钱: "
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:204
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:213
+#: src/playsingle_controller.cpp:214
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -8814,7 +8816,7 @@ msgid_plural ""
 msgstr[0] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
 msgstr[1] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
 
-#: src/playsingle_controller.cpp:221
+#: src/playsingle_controller.cpp:222
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -8824,33 +8826,33 @@ msgid_plural ""
 msgstr[0] "您将以 $gold 金子和预定的最小起始资金中较高那个开始下一幕。"
 msgstr[1] "您将以 $gold 金子和预定的最小起始资金中较高那个开始下一幕。"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:358
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:439
 msgid "Scenario Report"
 msgstr "场景报告"
 
-#: src/playsingle_controller.cpp:440
+#: src/playsingle_controller.cpp:441
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:442
 msgid "You have emerged victorious!"
 msgstr "您取得了胜利！"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:502
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:674
+#: src/playsingle_controller.cpp:676
 msgid "It is now $name|'s turn"
 msgstr "轮到$name|了"
 
@@ -9124,31 +9126,31 @@ msgstr "生成头像时，未知单位种类 '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
+#: src/unit.cpp:2550 src/unit.cpp:2755 src/unit.cpp:2827
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2561
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2626
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2643 src/unit.cpp:2781
+#: src/unit.cpp:2644 src/unit.cpp:2782
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2773
+#: src/unit.cpp:2774
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2789
+#: src/unit.cpp:2790
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2835
+#: src/unit.cpp:2836
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

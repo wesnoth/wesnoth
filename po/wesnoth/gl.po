@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 23:43+0100\n"
+"POT-Creation-Date: 2009-03-31 15:28+0200\n"
 "PO-Revision-Date: 2008-12-09 21:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -464,47 +464,47 @@ msgid "Russian Translation"
 msgstr "Tradución ó Ruso"
 
 #. [about]
-#: data/core/about.cfg:1925
+#: data/core/about.cfg:1931
 msgid "Serbian Translation"
 msgstr "Tradución ó Serbio"
 
 #. [about]
-#: data/core/about.cfg:1940
+#: data/core/about.cfg:1946
 msgid "Slovak Translation"
 msgstr "Tradución ó Eslovaco"
 
 #. [about]
-#: data/core/about.cfg:1966
+#: data/core/about.cfg:1972
 msgid "Slovenian Translation"
 msgstr "Tradución ó Esloveno"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1985
 msgid "Spanish Translation"
 msgstr "Tradución ó Castelán"
 
 #. [about]
-#: data/core/about.cfg:2032
+#: data/core/about.cfg:2038
 msgid "Swedish Translation"
 msgstr "Tradución ó Sueco"
 
 #. [about]
-#: data/core/about.cfg:2061
+#: data/core/about.cfg:2067
 msgid "Turkish Translation"
 msgstr "Tradución ó Turco"
 
 #. [about]
-#: data/core/about.cfg:2083
+#: data/core/about.cfg:2089
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradución ó Valenciano"
 
 #. [about]
-#: data/core/about.cfg:2096
+#: data/core/about.cfg:2102
 msgid "RACV's Translation"
 msgstr "Tradución ó RACV"
 
 #. [about]
-#: data/core/about.cfg:2103
+#: data/core/about.cfg:2109
 msgid "Bots"
 msgstr "Bots"
 
@@ -2022,11 +2022,13 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
-"the usual 2 HP after each turn they did not fight."
+"the usual 2 HP after each turn they did not fight. They also suffer a "
+"quarter less damage from poison."
 msgstr ""
 "\n"
 "\n"
@@ -6932,8 +6934,8 @@ msgstr "Rematar escenario"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
-#: src/unit.cpp:2766
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2593
+#: src/unit.cpp:2767
 msgid "HP"
 msgstr "HP"
 
@@ -7708,8 +7710,8 @@ msgstr ""
 "Esta partida gardada é dunha versión diferente do xogo. Desexas intentar "
 "cargala?"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:491
-#: src/playsingle_controller.cpp:549
+#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentou cargar está corrompido"
 
@@ -9223,7 +9225,7 @@ msgstr "Para unirse a esta partida hai que proporcionar un contrasinal"
 msgid "Invalid Color"
 msgstr "Cor Incorrecta"
 
-#: src/multiplayer_ui.cpp:418
+#: src/multiplayer_ui.cpp:421
 #, fuzzy
 msgid "Selected user: "
 msgstr "Seleccionar unidade:"
@@ -9373,43 +9375,43 @@ msgstr ""
 "\n"
 "Desexas gardar un rexistro de erros da túa partida?"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
 msgstr "Ouro conservado: "
 
-#: src/playsingle_controller.cpp:186
+#: src/playsingle_controller.cpp:187
 msgid "Early finish bonus: "
 msgstr "Plus por rematar cedo: "
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:189
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playsingle_controller.cpp:189
+#: src/playsingle_controller.cpp:190
 msgid "Turns finished early: "
 msgstr "Turnos rematados cedo: "
 
-#: src/playsingle_controller.cpp:191
+#: src/playsingle_controller.cpp:192
 msgid "Bonus: "
 msgstr "Plus: "
 
-#: src/playsingle_controller.cpp:194
+#: src/playsingle_controller.cpp:195
 msgid "Gold: "
 msgstr "Ouro: "
 
-#: src/playsingle_controller.cpp:198
+#: src/playsingle_controller.cpp:199
 msgid "Carry over percentage: "
 msgstr "Porcentaxe retida: "
 
-#: src/playsingle_controller.cpp:201
+#: src/playsingle_controller.cpp:202
 msgid "Bonus Gold: "
 msgstr "Plus de Ouro: "
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:204
 msgid "Retained Gold: "
 msgstr "Ouro Retido: "
 
-#: src/playsingle_controller.cpp:213
+#: src/playsingle_controller.cpp:214
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9423,7 +9425,7 @@ msgstr[1] ""
 "Comezará o seguinte escenario con $gold sumado ó ouro definido coma mínimo "
 "inicial."
 
-#: src/playsingle_controller.cpp:221
+#: src/playsingle_controller.cpp:222
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9437,27 +9439,27 @@ msgstr[1] ""
 "Comezará o seguinte escenario con $gold ou co ouro mínimo inicial que teña "
 "definido, o que sexa máis alto."
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid "Game Over"
 msgstr "Partida Rematada"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:358
 msgid "The game is over."
 msgstr "A partida rematou."
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:439
 msgid "Scenario Report"
 msgstr "Informe do Escenario"
 
-#: src/playsingle_controller.cpp:440
+#: src/playsingle_controller.cpp:441
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:442
 msgid "You have emerged victorious!"
 msgstr "Venciches!"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:502
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9465,7 +9467,7 @@ msgstr ""
 "Houbo unha interrupción da rede, e o xogo non pode continuar. Desexas gardar "
 "a partida?"
 
-#: src/playsingle_controller.cpp:674
+#: src/playsingle_controller.cpp:676
 msgid "It is now $name|'s turn"
 msgstr "Agora é o turno de $name|"
 
@@ -9748,31 +9750,31 @@ msgstr "Tipo de unidade '$type|' descoñecido mentres se xeraban os trazos"
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo de unidade descoñecido '$type|'"
 
-#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
+#: src/unit.cpp:2550 src/unit.cpp:2755 src/unit.cpp:2827
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2561
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2626
 msgid "moves"
 msgstr "movementos"
 
-#: src/unit.cpp:2643 src/unit.cpp:2781
+#: src/unit.cpp:2644 src/unit.cpp:2782
 msgid "XP to advance"
 msgstr "XP para avanzar"
 
-#: src/unit.cpp:2773
+#: src/unit.cpp:2774
 msgid " move"
 msgstr " mover"
 
-#: src/unit.cpp:2789
+#: src/unit.cpp:2790
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
-#: src/unit.cpp:2835
+#: src/unit.cpp:2836
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

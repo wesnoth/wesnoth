@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 23:43+0100\n"
+"POT-Creation-Date: 2009-03-31 15:28+0200\n"
 "PO-Revision-Date: 2009-02-28 18:32-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -470,47 +470,47 @@ msgid "Russian Translation"
 msgstr "Traducción rusa"
 
 #. [about]
-#: data/core/about.cfg:1925
+#: data/core/about.cfg:1931
 msgid "Serbian Translation"
 msgstr "Traducción serbia"
 
 #. [about]
-#: data/core/about.cfg:1940
+#: data/core/about.cfg:1946
 msgid "Slovak Translation"
 msgstr "Traducción eslovaca"
 
 #. [about]
-#: data/core/about.cfg:1966
+#: data/core/about.cfg:1972
 msgid "Slovenian Translation"
 msgstr "Traducción eslovena"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1985
 msgid "Spanish Translation"
 msgstr "Traducción española"
 
 #. [about]
-#: data/core/about.cfg:2032
+#: data/core/about.cfg:2038
 msgid "Swedish Translation"
 msgstr "Traducción sueca"
 
 #. [about]
-#: data/core/about.cfg:2061
+#: data/core/about.cfg:2067
 msgid "Turkish Translation"
 msgstr "Traducción turca"
 
 #. [about]
-#: data/core/about.cfg:2083
+#: data/core/about.cfg:2089
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducción valenciana (catalán del sur)"
 
 #. [about]
-#: data/core/about.cfg:2096
+#: data/core/about.cfg:2102
 msgid "RACV's Translation"
 msgstr "Traducción RACV"
 
 #. [about]
-#: data/core/about.cfg:2103
+#: data/core/about.cfg:2109
 msgid "Bots"
 msgstr "Robots"
 
@@ -2052,11 +2052,13 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
-"the usual 2 HP after each turn they did not fight."
+"the usual 2 HP after each turn they did not fight. They also suffer a "
+"quarter less damage from poison."
 msgstr ""
 "\n"
 "\n"
@@ -7013,8 +7015,8 @@ msgstr "Finalizar Escenario"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
-#: src/unit.cpp:2766
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2593
+#: src/unit.cpp:2767
 msgid "HP"
 msgstr "PV"
 
@@ -7796,8 +7798,8 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:491
-#: src/playsingle_controller.cpp:549
+#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "El archivo que ha intentado cargar está corrupto"
 
@@ -9320,7 +9322,7 @@ msgstr "Unirse a este juego requiere contraseña."
 msgid "Invalid Color"
 msgstr "Color inválido"
 
-#: src/multiplayer_ui.cpp:418
+#: src/multiplayer_ui.cpp:421
 msgid "Selected user: "
 msgstr "Usuario seleccionado: "
 
@@ -9469,43 +9471,43 @@ msgstr ""
 " \n"
 " ¿Quieres guardar un registro de errores de tu partida?"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
 msgstr "Oro restante: "
 
-#: src/playsingle_controller.cpp:186
+#: src/playsingle_controller.cpp:187
 msgid "Early finish bonus: "
 msgstr "Bonificación por finalizar pronto: "
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:189
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playsingle_controller.cpp:189
+#: src/playsingle_controller.cpp:190
 msgid "Turns finished early: "
 msgstr "Turnos finalizados pronto: "
 
-#: src/playsingle_controller.cpp:191
+#: src/playsingle_controller.cpp:192
 msgid "Bonus: "
 msgstr "Bonificación: "
 
-#: src/playsingle_controller.cpp:194
+#: src/playsingle_controller.cpp:195
 msgid "Gold: "
 msgstr "Oro: "
 
-#: src/playsingle_controller.cpp:198
+#: src/playsingle_controller.cpp:199
 msgid "Carry over percentage: "
 msgstr "Porcentaje aplazado: "
 
-#: src/playsingle_controller.cpp:201
+#: src/playsingle_controller.cpp:202
 msgid "Bonus Gold: "
 msgstr "Bonificación de Oro: "
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:204
 msgid "Retained Gold: "
 msgstr "Oro conservado: "
 
-#: src/playsingle_controller.cpp:213
+#: src/playsingle_controller.cpp:214
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9519,7 +9521,7 @@ msgstr[1] ""
 "Comenzará el siguiente escenario con $gold sumado al oro definido como el "
 "mínimo inicial."
 
-#: src/playsingle_controller.cpp:221
+#: src/playsingle_controller.cpp:222
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9533,27 +9535,27 @@ msgstr[1] ""
 "Comenzará el siguiente escenario con $gold o con el oro mínimo inicial que "
 "tenga definido, lo que sea más alto."
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid "Game Over"
 msgstr "Fin del juego"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:358
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:439
 msgid "Scenario Report"
 msgstr "Informe del escenario"
 
-#: src/playsingle_controller.cpp:440
+#: src/playsingle_controller.cpp:441
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:442
 msgid "You have emerged victorious!"
 msgstr "¡Ha vencido!"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:502
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9561,7 +9563,7 @@ msgstr ""
 "Se ha producido una desconexión de red y el juego no puede continuar. "
 "¿Quiere guardar la partida?"
 
-#: src/playsingle_controller.cpp:674
+#: src/playsingle_controller.cpp:676
 msgid "It is now $name|'s turn"
 msgstr "Es el turno de $name"
 
@@ -9841,31 +9843,31 @@ msgstr "Tipo de unidad desconocido «$type|»"
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo de unidad desconocido «$type|»"
 
-#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
+#: src/unit.cpp:2550 src/unit.cpp:2755 src/unit.cpp:2827
 msgid " and "
 msgstr "and"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2561
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2626
 msgid "moves"
 msgstr "movimientos"
 
-#: src/unit.cpp:2643 src/unit.cpp:2781
+#: src/unit.cpp:2644 src/unit.cpp:2782
 msgid "XP to advance"
 msgstr "PX para subir de nivel"
 
-#: src/unit.cpp:2773
+#: src/unit.cpp:2774
 msgid " move"
 msgstr "movimiento"
 
-#: src/unit.cpp:2789
+#: src/unit.cpp:2790
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
-#: src/unit.cpp:2835
+#: src/unit.cpp:2836
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

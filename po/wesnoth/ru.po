@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 23:43+0100\n"
+"POT-Creation-Date: 2009-03-31 15:28+0200\n"
 "PO-Revision-Date: 2009-03-24 22:33+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -461,47 +461,47 @@ msgid "Russian Translation"
 msgstr "Русский перевод"
 
 #. [about]
-#: data/core/about.cfg:1925
+#: data/core/about.cfg:1931
 msgid "Serbian Translation"
 msgstr "Сербский перевод"
 
 #. [about]
-#: data/core/about.cfg:1940
+#: data/core/about.cfg:1946
 msgid "Slovak Translation"
 msgstr "Словацкий перевод"
 
 #. [about]
-#: data/core/about.cfg:1966
+#: data/core/about.cfg:1972
 msgid "Slovenian Translation"
 msgstr "Словенский перевод"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1985
 msgid "Spanish Translation"
 msgstr "Испанский перевод"
 
 #. [about]
-#: data/core/about.cfg:2032
+#: data/core/about.cfg:2038
 msgid "Swedish Translation"
 msgstr "Шведский перевод"
 
 #. [about]
-#: data/core/about.cfg:2061
+#: data/core/about.cfg:2067
 msgid "Turkish Translation"
 msgstr "Турецкий перевод"
 
 #. [about]
-#: data/core/about.cfg:2083
+#: data/core/about.cfg:2089
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсийский (южнокаталанский) перевод"
 
 #. [about]
-#: data/core/about.cfg:2096
+#: data/core/about.cfg:2102
 msgid "RACV's Translation"
 msgstr "Перевод RACV"
 
 #. [about]
-#: data/core/about.cfg:2103
+#: data/core/about.cfg:2109
 msgid "Bots"
 msgstr "Боты"
 
@@ -1986,11 +1986,13 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
-"the usual 2 HP after each turn they did not fight."
+"the usual 2 HP after each turn they did not fight. They also suffer a "
+"quarter less damage from poison."
 msgstr ""
 "\n"
 "\n"
@@ -6824,8 +6826,8 @@ msgstr "Закончить сценарий"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
-#: src/unit.cpp:2766
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2593
+#: src/unit.cpp:2767
 msgid "HP"
 msgstr "ЗД"
 
@@ -7596,8 +7598,8 @@ msgid ""
 "load it?"
 msgstr "Это сохранение из другой версии игры. Попробовать его загрузить?"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:491
-#: src/playsingle_controller.cpp:549
+#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/playsingle_controller.cpp:551
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
@@ -9104,7 +9106,7 @@ msgstr "Присоединение к этой игре требует ввод�
 msgid "Invalid Color"
 msgstr "Неверный цвет"
 
-#: src/multiplayer_ui.cpp:418
+#: src/multiplayer_ui.cpp:421
 msgid "Selected user: "
 msgstr "Выберите пользователя:"
 
@@ -9252,43 +9254,43 @@ msgstr ""
 "\n"
 "Вы хотите сохранить журнал ошибки?"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
 msgstr "Остаток золота: "
 
-#: src/playsingle_controller.cpp:186
+#: src/playsingle_controller.cpp:187
 msgid "Early finish bonus: "
 msgstr "Бонус за быстрый финиш: "
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:189
 msgid "per turn"
 msgstr "за ход"
 
-#: src/playsingle_controller.cpp:189
+#: src/playsingle_controller.cpp:190
 msgid "Turns finished early: "
 msgstr "Количество оставшихся ходов: "
 
-#: src/playsingle_controller.cpp:191
+#: src/playsingle_controller.cpp:192
 msgid "Bonus: "
 msgstr "Бонус: "
 
-#: src/playsingle_controller.cpp:194
+#: src/playsingle_controller.cpp:195
 msgid "Gold: "
 msgstr "Золото: "
 
-#: src/playsingle_controller.cpp:198
+#: src/playsingle_controller.cpp:199
 msgid "Carry over percentage: "
 msgstr "Процент, сохраняющийся в следующем сценарии:"
 
-#: src/playsingle_controller.cpp:201
+#: src/playsingle_controller.cpp:202
 msgid "Bonus Gold: "
 msgstr "Бонус: "
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:204
 msgid "Retained Gold: "
 msgstr "Сохранённое золото: "
 
-#: src/playsingle_controller.cpp:213
+#: src/playsingle_controller.cpp:214
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -9305,7 +9307,7 @@ msgstr[2] ""
 "Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
 "сценария минимумом."
 
-#: src/playsingle_controller.cpp:221
+#: src/playsingle_controller.cpp:222
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -9322,34 +9324,34 @@ msgstr[2] ""
 "Вы начнёте следующий сценарий с $gold золотыми монетами, или с минимумом, "
 "заданном в этом сценарии (в зависимости от того, что больше)."
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:357
 msgid "Game Over"
 msgstr "Игра окончена"
 
-#: src/playsingle_controller.cpp:357
+#: src/playsingle_controller.cpp:358
 msgid "The game is over."
 msgstr "Игра окончена."
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:439
 msgid "Scenario Report"
 msgstr "Отчет о сценарии"
 
-#: src/playsingle_controller.cpp:440
+#: src/playsingle_controller.cpp:441
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:442
 msgid "You have emerged victorious!"
 msgstr "Вы победили!"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:502
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Произошло отключение, игра не может быть продолжена. Хотите сохранить игру?"
 
-#: src/playsingle_controller.cpp:674
+#: src/playsingle_controller.cpp:676
 msgid "It is now $name|'s turn"
 msgstr "Сейчас ход $name|"
 
@@ -9625,31 +9627,31 @@ msgstr "Неизвестный тип бойца: '$type|' в списке ос�
 msgid "Unknown unit type '$type|'"
 msgstr "Неизвестный тип бойца: '$type|'"
 
-#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
+#: src/unit.cpp:2550 src/unit.cpp:2755 src/unit.cpp:2827
 msgid " and "
 msgstr " и"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2561
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2626
 msgid "moves"
 msgstr "ходы"
 
-#: src/unit.cpp:2643 src/unit.cpp:2781
+#: src/unit.cpp:2644 src/unit.cpp:2782
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2773
+#: src/unit.cpp:2774
 msgid " move"
 msgstr " ход"
 
-#: src/unit.cpp:2789
+#: src/unit.cpp:2790
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
-#: src/unit.cpp:2835
+#: src/unit.cpp:2836
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
