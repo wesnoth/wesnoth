@@ -81,7 +81,7 @@ void controller::build_pages()
 // 				cfg["title"] = scenario_name_;
 // 			}
 
-			page* story_page = new page(*gamestate_, cfg);
+//			page* story_page = new page(*gamestate_, cfg);
 		}
 		
 	}
