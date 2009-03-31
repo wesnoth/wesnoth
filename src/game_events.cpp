@@ -800,10 +800,7 @@ namespace {
 		 * @todo also allow client to modify a side's colour if it is possible
 		 * to change it on the fly without causing visual glitches
 		 */
-		/**
-		 * @todo: rename this attribute and document it
-		 */
-		std::string redeploy_ai_from_location = cfg["redeploy_ai_from_location"];
+		std::string switch_ai = cfg["switch_ai"];
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -864,9 +861,8 @@ namespace {
 				(*teams)[team_index].set_ai_parameters(ai);
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
-			// @todo: this is probably SP-only and on human turn only
-			if (!redeploy_ai_from_location.empty()) {
-				ai_manager::add_ai_for_team_from_file(side_num,redeploy_ai_from_location);
+			if (!switch_ai.empty()) {
+				ai_manager::add_ai_for_team_from_file(side_num,switch_ai);
 			}
 		}
 	}
