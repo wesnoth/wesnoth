@@ -10,15 +10,15 @@ from wesnoth.wmliterator import *
 
 vctypes = (".svn", ".git")
 
-def interesting(fn):
-    "Is a file interesting for conversion purposes?"
+def cfgfile(fn):
+    "Is a file interesting for translation purposes?"
     return fn.endswith(".cfg")
 
 def allcfgfiles(dir):
-    "Get the names of all interesting files under dir."
+    "Get the names of all cfgfile files under dir."
     datafiles = []
     if not os.path.isdir(dir):
-        if interesting(dir):
+        if cfgfile(dir):
             if not os.path.exists(dir):
                 sys.stderr.write("wmllint: %s does not exist\n" % dir)
             else:
@@ -29,7 +29,7 @@ def allcfgfiles(dir):
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
             for name in files:
-                if interesting(os.path.join(root, name)):
+                if cfgfile(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
     return map(os.path.normpath, datafiles)
 
@@ -46,6 +46,13 @@ class WmllintIterator(WmlIterator):
         print >>sys.stderr #terminate line
 
 # Swiped code ends here
+
+def interesting(text):
+    "Is the given text line interesting to render as part of a context?"
+    # Ignore translatables, those are guaranteed to be nearby
+    if re.search('_ *"', text):
+        return False
+    return True
 
 if __name__ == "__main__":
     def help():
@@ -168,13 +175,27 @@ Usage: wmlxgettext [options] dirpath
                         continue
                 for nav in WmllintIterator(lines, fn):
                     handle_element(nav, fn)
-        # Generate a report from the dictionary.
-        print "Translatables:"
+        # Debugging output
+        if verbose:
+            print "Translatables:"
+            for (translatable, context) in translatables:
+                print "%s: %s" % (translatable, context)
+            print "Contexts:"
+            for (key, value) in contexts.items():
+                print key, "->", value
+        # Generate a report from the translattables
         for (translatable, context) in translatables:
-            print "%s: %s" % (translatable, context)
-        print "Contexts:"
-        for (key, value) in contexts.items():
-            print key, "->", value
+            attribs = ""
+            for (tag, file, line) in context[:-1]:
+                for (key, value) in contexts.items():
+                    value = filter(interesting, value)
+                    if key[0] == tag and key[1] == file and key[2] == line:
+                        attribs = " has " + ", ".join(value)
+                print "%s, line %d: %s%s" % (file, line, tag, attribs)
+            print "%s, line %d: %s" % (context[-1][1], context[-1][2], context[-1][0])
+            print 'msgid "%s"' % translatable
+            print 'msgstr ""'
+            print ""
     except KeyboardInterrupt:
         print >>sys.stderr, "wmlxgettext: aborted."
         
