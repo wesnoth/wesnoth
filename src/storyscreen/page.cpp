@@ -46,7 +46,7 @@ floating_image::floating_image(const config& cfg)
 {
 }
 
-page::page(game_state& state_of_game, const vconfig& page_cfg)
+page::page(game_state& /*state_of_game*/, const vconfig& page_cfg)
 	: scale_background_(utils::string_bool(page_cfg["scale_background"], true))
 	, background_file_(page_cfg["background"])
 	, show_title_(utils::string_bool(page_cfg["show_title"], false))
