@@ -9,7 +9,7 @@
 # 4. msgfmt(1) for making builds with i18n support.
 # 5. graph-includes for making the project dependency graph.
 
-import os, sys, shutil, sets, re, commands
+import os, sys, shutil, re, commands
 from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
