@@ -83,10 +83,12 @@ def isMacroOpener(elem):
     return type(elem) == type("") and elem.startswith("{")
 
 def isAttribute(elem):
-    "Are we looking at an attribute?"
+    "Are we looking at an attribute (or attribute tuple)?"
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    return type(elem) == type(()) or (type(elem) == type("") and elem.endswith("="))
+    if type(elem) == type(()):
+        elem = elem[0]
+    return type(elem) == type("") and elem.endswith("=")
 
 class WmlIterator(object):
     """Return an iterable WML navigation object.
@@ -254,7 +256,7 @@ Important Attributes:
                 if k:
                     elements.append((k+'=', m.start()+i, 0))
         for m in macroOpenPattern.finditer(text):
-            elements.append((m.group(1)+'}', m.start(), 1))
+            elements.append((m.group(1), m.start(), 1))
         for m in macroClosePattern.finditer(text):
             elements.append((closeMacroType, m.start(), -1))
         #sort by start position
