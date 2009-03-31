@@ -969,14 +969,6 @@ void ai::do_move()
 
 	raise_user_interact();
 
-       // Formula AI is first going to move everything that it can
-
-	if (master_) {
-		if (formula_ai_ != NULL) {
-			formula_ai_->play_turn();
-		}
-	}
-
 	typedef paths::route route;
 
 	typedef std::map<location,paths> moves_map;
