@@ -181,11 +181,13 @@ If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
 """ + opts.GenerateHelpText(env, sort=cmp))
 
+if GetOption("help"):
+    Return()
+
 if env["cachedir"] and not env['ccache']:
     CacheDir(env["cachedir"])
 
 if env["fast"]:
-    EnsureSConsVersion(0,98)
     env.Decider('MD5-timestamp')
     SetOption('max_drift', 1)
     SetOption('implicit_cache', 1)
