@@ -1679,7 +1679,7 @@ void formula_ai::play_turn()
                                 game_logic::map_formula_callable callable(this);
                                 callable.add_ref();
                                 callable.add("me", variant(new unit_callable(*i)));
-                                while ( make_move(loop_formula, callable) ) {}
+                                while ( make_move(loop_formula, callable) && i.valid() ) {}
                         }
                         catch(formula_error& e) {
                                 if(e.filename == "formula")
