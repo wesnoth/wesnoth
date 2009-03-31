@@ -52,4 +52,10 @@ void show_intro(display &disp, const vconfig& data, const config& level);
  */
 void the_end(display &disp, std::string text, unsigned int duration);
 
+/**
+ * Enables/disables the new (work in progress) story screen
+ * code.
+ */
+void set_new_storyscreen(bool enabled);
+
 #endif /* ! INTRO_HPP_INCLUDED */

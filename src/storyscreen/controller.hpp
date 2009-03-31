@@ -13,14 +13,12 @@
    See the COPYING file for more details.
 */
 
-// FIXME: textscreen.[ch]pp ??
 /**
- * @file storyscreen_controller.hpp
- * This code is work in progress, and shouldn't be enabled for production
- * builds. It is supposed to completely replace the old story screens code
+ * @file storyscreen/controller.hpp
+ * This code is work in progress, and the interfaces may change.
+ * It is supposed to completely replace the old story screens code
  * at intro.cpp, introducing new WML conventions while at it.
  */
-#ifdef SHADOWM_STORYSCREEN
 
 #ifndef STORYSCREEN_CONTROLLER_HPP_INCLUDED
 #define STORYSCREEN_CONTROLLER_HPP_INCLUDED
@@ -78,4 +76,3 @@ public:
 } // end namespace storyscreen
 
 #endif /* ! STORYSCREEN_CONTROLLER_HPP_INCLUDED */
-#endif /* SHADOWM_STORYSCREEN */

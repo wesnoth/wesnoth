@@ -12,7 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifdef SHADOWM_STORYSCREEN
+/**
+ * @file storyscreen/page.hpp
+ * This code is work in progress, and the interfaces may change.
+ * It is supposed to completely replace the old story screens code
+ * at intro.cpp, introducing new WML conventions while at it.
+ */
+
 #ifndef STORYSCREEN_PAGE_HPP_INCLUDED
 #define STORYSCREEN_PAGE_HPP_INCLUDED
 
@@ -100,4 +106,3 @@ private:
 
 
 #endif /* ! STORYSCREEN_PAGE_HPP_INCLUDED */
-#endif /* ! SHADOWM_STORYSCREEN */

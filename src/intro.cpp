@@ -17,7 +17,6 @@
  * Introduction sequence at start of a scenario, End-screen after end of
  * campaign.
  */
-#ifndef SHADOWM_STORYSCREEN
 
 #include "global.hpp"
 #include "foreach.hpp"
@@ -29,11 +28,14 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
+#include "storyscreen/interface.hpp"
 #include "game_events.hpp"
 #include "language.hpp"
 
 #define ERR_NG LOG_STREAM(err , engine)
 #define LOG_NG LOG_STREAM(info, engine)
+
+static bool use_shadowm_storyscreen = false;
 
 static void scan_deprecation_messages(const config &cfg)
 {
@@ -48,7 +50,7 @@ static void scan_deprecation_messages(const config &cfg)
 static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
 
-void show_intro(display &disp, const vconfig& data, const config& level)
+void show_intro_old(display &disp, const vconfig& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
 	scan_deprecation_messages(data.get_parsed_config());
@@ -456,7 +458,7 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	return true;
 }
 
-void the_end(display &disp, std::string text, unsigned int duration)
+void the_end_old(display &disp, std::string text, unsigned int duration)
 {
 	//
 	// Some sane defaults.
@@ -509,4 +511,30 @@ void the_end(display &disp, std::string text, unsigned int duration)
 	}
 }
 
-#endif /* ! SHADOWM_STORYSCREEN */
+void set_new_storyscreen(bool enabled)
+{
+	use_shadowm_storyscreen = enabled;
+	LOG_NG << "enabled experimental storyscreen code\n";
+}
+
+void show_intro(display &disp, const vconfig& data, const config& level)
+{
+	if(use_shadowm_storyscreen) {
+		const std::string scenario_name = level["name"];
+		show_storyscreen(disp,data,scenario_name);
+	}
+	else {
+		show_intro_old(disp,data,level);
+	}
+}
+
+void the_end(display &disp, std::string text, unsigned int duration)
+{
+	if(use_shadowm_storyscreen) {
+		show_endscreen(disp, t_string(text) /* dumb! */, duration);
+	}
+	else {
+		the_end_old(disp,text,duration);
+	}
+}
+

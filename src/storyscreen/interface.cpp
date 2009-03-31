@@ -14,12 +14,11 @@
 */
 
 /**
- * @file storyscreen.cpp
- * This code is work in progress, and shouldn't be enabled for production
- * builds. It is supposed to completely replace the old story screens code
+ * @file storyscreen/interface.cpp
+ * This code is work in progress, and the interfaces may change.
+ * It is supposed to completely replace the old story screens code
  * at intro.cpp, introducing new WML conventions while at it.
  */
-#ifdef SHADOWM_STORYSCREEN
 
 #include "global.hpp"
 #include "foreach.hpp"
@@ -76,17 +75,3 @@ void show_endscreen(display& disp, const t_string& text, unsigned int duration)
 
 	LOG_NG << "show_endscreen() completed...\n";
 }
-
-// Trivial drop-in compatibility with intro.cpp
-void show_intro(display &disp, const vconfig& data, const config& level)
-{
-	const std::string scenario_name = level["name"];
-	show_storyscreen(disp,data,scenario_name);
-}
-
-void the_end(display &disp, std::string text, unsigned int duration)
-{
-	show_endscreen(disp, t_string(text) /* dumb! */, duration);
-}
-
-#endif /* SHADOWM_STORYSCREEN */

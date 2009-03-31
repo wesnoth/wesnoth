@@ -389,6 +389,11 @@ game_controller::game_controller(int argc, char** argv) :
 			no_sound = true;
 		} else if(val == "--nomusic") {
 			no_music = true;
+		} else if(val == "--shadowm-storyscreen") {
+			// This is a hidden option to help testing
+			// the work-in-progress new storyscreen code.
+			// Don't document.
+			set_new_storyscreen(true);
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
