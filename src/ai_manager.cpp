@@ -490,7 +490,7 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << ai_manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	return new ai::ai(i);
+	return new ai(i);
 }
 
 std::vector<std::string> ai_manager::get_available_ais()
