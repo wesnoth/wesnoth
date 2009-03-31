@@ -320,7 +320,7 @@ enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 void write_players(game_state& gamestate, config& cfg);
-void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
+void write_game(config_writer &out, const config& snapshot, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
 /** Returns true iff there is already a savegame with that name. */
 bool save_game_exists(const std::string & name);

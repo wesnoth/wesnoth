@@ -29,6 +29,7 @@
 #include "map_exception.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
+#include "savegame.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
@@ -364,6 +365,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
+				//Add the player section to the starting position so we can get the correct recall list
+				//when loading the replay later on
+				write_players(gamestate, gamestate.starting_pos);
+
 				res = playsingle_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, end_level);
 				break;
 			case IO_SERVER:
@@ -409,17 +414,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				std::string label = gamestate.label + _(" replay");
 				if (dialogs::get_save_name(disp, "", _("Name: "), &label,
 					gui::OK_CANCEL, _("Save Replay"), false, false) == 0) {
+					gamestate.replay_data = recorder.get_replay_data();
 					try {
-						config snapshot;
-						//If the starting position contains player information, use this for
-						//the replay savegame (this originally comes from the gamestate constructor,
-						//where the player stuff is added to the starting position to be used here.
-						config::child_itors player_list =
-							gamestate.starting_pos.child_range("player");
-						if (player_list.first != player_list.second) {
-							recorder.set_save_info(gamestate, player_list);
-						}
-						recorder.save_game(label, snapshot, gamestate.starting_pos);
+						::save_replay(gamestate);
 					} catch(game::save_game_failed&) {
 						gui::show_error_message(disp, _("The replay could not be saved"));
 					}
@@ -539,9 +536,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Sends scenario data
 				config cfg;
 				cfg.add_child("store_next_scenario", *scenario);
-				//Add the player section to the starting position so we can get the correct recall list
-				//when loading the replay later on
-				write_players(gamestate, gamestate.starting_pos);
+
 				// Adds player information, and other state
 				// information, to the configuration object
 				assert(cfg.child("store_next_scenario") != NULL);

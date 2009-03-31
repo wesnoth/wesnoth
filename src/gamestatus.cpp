@@ -489,6 +489,12 @@ static void write_player(const player_info& player, config& cfg)
 
 void write_players(game_state& gamestate, config& cfg)
 {
+	// If there is already a player config available it means we are loading
+	// from a savegame. Don't do anything then, the information is already there
+	config::child_itors player_cfg = cfg.child_range("player");
+	if (player_cfg.first != player_cfg.second)
+		return;
+
 	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
 		i!=gamestate.players.end(); ++i)
 	{
@@ -695,7 +701,7 @@ void game_state::write_snapshot(config& cfg) const
 	}
 }
 
-void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode)
+void write_game(config_writer &out, const config& snapshot, const game_state& gamestate, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
 
@@ -747,7 +753,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 			out.write_child("replay", gamestate.replay_data);
 		}
 
-		out.write_child("snapshot",gamestate.snapshot);
+		out.write_child("snapshot",snapshot);
 		out.write_child("replay_start",gamestate.starting_pos);
 		out.open_child("statistics");
 		statistics::write_stats(out);
@@ -932,7 +938,7 @@ void save_game(const game_state& gamestate)
 	std::stringstream ss;
 	{
 		config_writer out(ss, preferences::compress_saves());
-		write_game(out, gamestate);
+		write_game(out, gamestate.snapshot, gamestate);
 		finish_save_game(out, gamestate, gamestate.label);
 	}
 	(*os) << ss.str();

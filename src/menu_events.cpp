@@ -39,6 +39,7 @@
 #include "mouse_events.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "savegame.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
 #include "unit_display.hpp"
@@ -608,10 +609,16 @@ private:
 
 		if(res == 0) {
 			config snapshot;
-			if (!replay)
+			if (!replay){
 				write_game_snapshot(snapshot);
+			}
+			gamestate_.replay_data = recorder.get_replay_data();
 			try {
-				recorder.save_game(label, snapshot, gamestate_.starting_pos);
+				if (replay)
+					::save_replay(label, gamestate_);
+				else
+					::save_game(label, snapshot, gamestate_);
+
 				if(dialog_type != gui::NULL_DIALOG) {
 					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
 				}
@@ -737,7 +744,7 @@ private:
 			savename = label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 		write_game_snapshot(snapshot);
 		try {
-			recorder.save_game(savename, snapshot, starting_pos);
+			::save_game(savename, snapshot, gamestate_);
 		} catch(game::save_game_failed&) {
 			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game

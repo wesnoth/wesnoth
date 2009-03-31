@@ -43,14 +43,14 @@ public:
 	explicit replay(const config& cfg);
 
 	void set_save_info(const game_state& save);
-	void set_save_info(const game_state &save, const config::const_child_itors &players);
+	//void set_save_info(const game_state &save, const config::const_child_itors &players);
 	void set_save_info_completion(const std::string &st);
 
 	void set_skip(bool skip);
 	bool is_skipping() const;
 
-	void save_game(const std::string& label, const config& snapshot,
-	               const config& starting_pos, bool include_replay = true);
+	//void save_game(const std::string& label, const config& snapshot,
+	//               const config& starting_pos, bool include_replay = true);
 
 	void add_start();
 	void add_recruit(int unit_index, const map_location& loc);
@@ -91,6 +91,7 @@ public:
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
 	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
 	config get_last_turn(int num_turns=1);
+	const config& get_replay_data() const { return cfg_; }
 
 	void undo();
 
