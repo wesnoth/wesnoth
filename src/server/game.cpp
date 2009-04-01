@@ -93,6 +93,8 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
+	// Hack to handle the pseudo games lobby_ and not_logged_in_.
+	if (owner_ == 0) return;
 	save_replay();
 
 	user_vector users = all_game_users();
@@ -966,7 +968,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	const bool observer = is_observer(player);
 	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
 	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
-	const bool game_ended = (players_.empty() || (host && !started_));
+	const bool game_ended = (players_.empty() && !observer) || (host && !started_);
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
