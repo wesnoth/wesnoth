@@ -984,8 +984,8 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< ". (socket: " << user->first << ")\n";
 	// No need to do anything more when the game gets destructed.
 	if (destruct) return true;
-	if (game_ended && started_) {
-		send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
+	if (game_ended) {
+		if (started_) send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
 		return true;
 	}
 	// Don't mark_available() since the player got already removed from the
