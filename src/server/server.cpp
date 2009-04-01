@@ -2146,14 +2146,6 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("leave_game")) {
 		if ((g->is_player(sock) && g->nplayers() == 1)
 			|| (g->is_owner(sock) && !g->started())) {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< (g->started() ? "\tended game:\t\"" : "\taborted game:\t\"")
-				<< g->name() << "\" (" << g->id() << ")"
-				<< (g->started() ? " at turn: "
-					+ lexical_cast_default<std::string,size_t>(g->current_turn())
-					+ " with reason: '" + g->termination_reason() + "'" : "")
-				<< ".\n";
-			g->send_server_message_to_all((pl->second.name() + " ended the game.").c_str(), pl->first);
 			// Remove the player in delete_game() with all other remaining
 			// ones so he gets the updated gamelist.
 			delete_game(itor);

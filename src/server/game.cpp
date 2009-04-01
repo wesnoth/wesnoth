@@ -984,7 +984,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< ". (socket: " << user->first << ")\n";
 	// No need to do anything more when the game gets destructed.
 	if (destruct) return true;
-	if (game_ended) {
+	if (game_ended && started_) {
 		send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
 		return true;
 	}
@@ -1209,7 +1209,7 @@ void game::send_history(const network::connection sock) const
 }
 
 void game::save_replay() {
-	if (!save_replays_) return;
+	if (!save_replays_ || !started_) return;
 
 	std::string replay_commands;
 	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
