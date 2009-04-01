@@ -279,7 +279,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\ai_configuration.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ai_dfool.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ai_manager.cpp"
 				>
 			</File>
 			<File
@@ -656,6 +664,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\reports.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\savegame.cpp"
 				>
 			</File>
 			<File
@@ -2682,6 +2694,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Storyscreen"
+				>
+				<File
+					RelativePath="..\..\src\storyscreen\controller.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\storyscreen\interface.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\storyscreen\page.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -2722,7 +2750,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\ai_configuration.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ai_dfool.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ai_manager.hpp"
 				>
 			</File>
 			<File
@@ -3090,6 +3126,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\savegame.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\scoped_resource.hpp"
 				>
 			</File>
@@ -3418,6 +3458,22 @@
 				>
 				<File
 					RelativePath="..\..\src\scripting\lua.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Storyscreen"
+				>
+				<File
+					RelativePath="..\..\src\storyscreen\controller.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\storyscreen\interface.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\storyscreen\page.hpp"
 					>
 				</File>
 			</Filter>
