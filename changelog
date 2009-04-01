@@ -2,6 +2,8 @@ Version 1.6+svn:
  * AI:
    * Fixed incorrect handling of poisoning attacks when suggesting best attack 
      in user interface
+   * Fixed bug #13295: made enemy_units formula return only those units which
+     are not incapacitated (for example, it now ignores stoned units )
  * Editor2:
    * New feature: exporting of selection coordinates to system clipboard
  * Graphics:
