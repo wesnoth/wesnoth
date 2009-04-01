@@ -682,14 +682,14 @@ config connect::side::get_config() const
 			assert(false);
 			break;
 		}
-		res["name"] = t_string(description, "wesnoth");
+		res["user_description"] = t_string(description, "wesnoth");
 	} else {
 		res["id"] = id_ + res["side"];
 		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 			res["save_id"] = id_ + res["side"].str();
 		}
 
-		res["name"] = id_;
+		res["user_description"] = id_;
 	}
 
 	if(enabled_) {
@@ -775,7 +775,7 @@ config connect::side::get_config() const
 */
 		if(controller_ != CNTR_COMPUTER) {
 			// Only override names for computer controlled players
-			trimmed["name"] = "";
+			trimmed["user_description"] = "";
 		}
 		trimmed.prune();
 		res.merge_with(trimmed);
