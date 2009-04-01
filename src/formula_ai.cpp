@@ -2334,7 +2334,9 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
 			if(current_team().is_enemy(i->second.side())) {
-				vars.push_back(variant(new unit_callable(*i)));
+				if (!i->second.incapacitated()) {
+					vars.push_back(variant(new unit_callable(*i)));
+				}
 			}
 		}
 		return variant(&vars);

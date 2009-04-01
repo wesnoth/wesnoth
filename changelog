@@ -19,6 +19,8 @@ Version 1.7.0-svn:
      via floating popups on the specified hex
    * Added run_file FormulaAI function to allow running .fai scripts directly
      from in-game console
+   * Fixed bug #13295: made enemy_units formula return only those units which
+     are not incapacitated (for example, it now ignores stoned units )
  * Graphics:
    * New type of animation : "recruiting" used by leaders when recruiting
      units
