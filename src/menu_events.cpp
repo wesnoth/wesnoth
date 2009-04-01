@@ -584,18 +584,13 @@ private:
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
-		const bool has_exit_button, const bool replay)
+		const bool has_exit_button)
 	{
 		std::stringstream stream;
 
 		const std::string ellipsed_name = font::make_text_ellipsis(gamestate_.label,
 				font::SIZE_NORMAL, 200);
-		if (replay) {
-			stream << ellipsed_name << " " << _("replay");
-		} else {
-			stream << ellipsed_name << " " << _("Turn")
-				   << " " << status_.turn();
-		}
+		stream << ellipsed_name << " " << _("Turn") << " " << status_.turn();
 		std::string label = stream.str();
 		if(dialog_type == gui::NULL_DIALOG && message != "") {
 			label = message;
@@ -609,15 +604,48 @@ private:
 
 		if(res == 0) {
 			config snapshot;
-			if (!replay){
-				write_game_snapshot(snapshot);
-			}
+			write_game_snapshot(snapshot);
 			gamestate_.replay_data = recorder.get_replay_data();
 			try {
-				if (replay)
-					::save_replay(label, gamestate_);
-				else
-					::save_game(label, snapshot, gamestate_);
+				::save_game(label, snapshot, gamestate_);
+
+				if(dialog_type != gui::NULL_DIALOG) {
+					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
+				}
+			} catch(game::save_game_failed&) {
+				gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
+				to_show.show();
+				//do not bother retrying, since the user can just try to save the game again
+			};
+		} else if(res == 2) {
+			throw end_level_exception(QUIT);
+		}
+	}
+
+	void menu_handler::save_replay(const std::string& message, gui::DIALOG_TYPE dialog_type,
+		const bool has_exit_button)
+	{
+		std::stringstream stream;
+
+		const std::string ellipsed_name = font::make_text_ellipsis(gamestate_.label,
+				font::SIZE_NORMAL, 200);
+		stream << ellipsed_name << " " << _("replay");
+		std::string label = stream.str();
+		if(dialog_type == gui::NULL_DIALOG && message != "") {
+			label = message;
+		}
+
+		label.erase(std::remove_if(label.begin(), label.end(),
+		            dialogs::is_illegal_file_char), label.end());
+
+		const int res = dialog_type == gui::NULL_DIALOG ? 0
+			: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
+
+		if(res == 0) {
+			config snapshot;
+			gamestate_.replay_data = recorder.get_replay_data();
+			try {
+				::save_replay(label, gamestate_);
 
 				if(dialog_type != gui::NULL_DIALOG) {
 					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
