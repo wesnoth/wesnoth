@@ -416,7 +416,8 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	}
 	sides_[side_num - 1] = 0;
 	// If the old player lost his last side, make him an observer.
-	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()) {
+	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()
+	&& is_player(old_player)) {
 		observers_.push_back(old_player);
 		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
 		// Tell others that the player becomes an observer.
@@ -443,7 +444,11 @@ void game::change_controller(const size_t side_num,
 		const std::string controller)
 {
 	DBG_GAME << __func__ << "...\n";
-	if (player == player_info_->end()) return;
+	if (player == player_info_->end()) {
+		ERR_GAME << "ERROR: Could not find player in player_info_."
+				" Can't change controller!\n";
+		return;
+	}
 
 	const network::connection sock = player->first;
 	const std::string& player_name = player->second.name();
@@ -899,6 +904,10 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 		// Send observer join to everyone except the new observer.
 		send_data(observer_join, player);
 	}
+	LOG_GAME << network::ip_address(player) << "\t" << user->second.name()
+		<< "\tjoined game:\t\"" << name_ << "\" (" << id_ << ")"
+		<< (observer || became_observer ? " as an observer" : "")
+		<< ". (socket: " << player << ")\n";
 	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.

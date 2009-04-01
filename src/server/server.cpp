@@ -1869,20 +1869,17 @@ void server::process_data_lobby(const network::connection sock,
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
+		// Hack to work around problems of players not getting properly removed
+		// from a game. Still need to figure out actual cause...
 		const std::vector<wesnothd::game*>::iterator g2 =
 			std::find_if(games_.begin(),games_.end(), wesnothd::game_is_member(sock));
 		if (g2 != games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join a second game. He's already in game:\t\""
-				<< (*g2)->name() << "\" (" << (*g2)->id() << ")." << "(socket: "
-				<< sock << ")\n";
-			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message(("Attempt to join a second game."
-					" You're already in game: \"" + (*g2)->name() + "\"."
-					" (You may have to log off and back on to get your client"
-					" in sync again.)").c_str(), sock);
-			send_doc(games_and_users_list_, sock);
-			return;
+				<< (*g2)->name() << "\" (" << (*g2)->id()
+				<< ") and the lobby. (socket: " << sock << ")\n"
+				<< "Removing him from that game to fix the inconsistency...\n";
+			(*g2)->remove_player(sock);
 		}
 		bool joined = (*g)->add_player(sock, observer, admin);
 		if (!joined) {
@@ -1894,10 +1891,6 @@ void server::process_data_lobby(const network::connection sock,
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
-		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-			<< "\tjoined game:\t\"" << (*g)->name()
-			<< "\" (" << game_id << ")" << (observer ? " as an observer" : "")
-			<< ". (socket: " << sock << ")\n";
 		lobby_.remove_player(sock);
 		(*g)->describe_slots();
 
