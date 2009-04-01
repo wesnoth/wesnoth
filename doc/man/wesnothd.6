@@ -138,8 +138,14 @@ The message of the day.
 .B passwd
 The password used to gain admin privileges. Usually it starts with `admin '.
 .TP
+.B replay_save_path
+The directory where the server stores game replays. (Don't forget the trailing /!) Defaults to `' which means the directory wesnothd was started in.
+.TP
 .B restart_command
 The command that the server uses to start a new server process via the `restart' command. (Can only be issued via the fifo.)
+.TP
+.B save_replays
+Defines whether the server will automatically save replays of games. (default: \fBfalse\fR)
 .TP
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.

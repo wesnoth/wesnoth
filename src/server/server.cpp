@@ -340,6 +340,8 @@ private:
 	size_t max_ip_log_size_;
 	std::string uh_name_;
 	bool deny_unregistered_login_;
+	bool save_replays_;
+	std::string replay_save_path_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
@@ -520,6 +522,9 @@ void server::load_config() {
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
 	input_.reset();
 	input_.reset(new input_stream(fifo_path));
+
+	save_replays_ = utils::string_bool(cfg_["save_replays"], false);
+	replay_save_path_ = cfg_["replay_save_path"];
 
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
@@ -1803,7 +1808,7 @@ void server::process_data_lobby(const network::connection sock,
 			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
-		games_.push_back(new wesnothd::game(players_, sock, game_name));
+		games_.push_back(new wesnothd::game(players_, sock, game_name, save_replays_, replay_save_path_));
 		wesnothd::game& g = *games_.back();
 		if(game_password.empty() == false) {
 			g.set_password(game_password);
@@ -2026,7 +2031,7 @@ void server::process_data_game(const network::connection sock,
 		//desc[""] = data["objectives"];
 		//desc[""] = data["random_start_time"];
 		//desc[""] = data["turns"];
-		//desc["client_version"] = data["version"];
+		//desc.set_attr_dup("client_version", data["version"]);
 
 		// Record the full scenario in g->level()
 
