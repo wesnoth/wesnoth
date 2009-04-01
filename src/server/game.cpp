@@ -14,6 +14,7 @@
 
 #include "../global.hpp"
 
+#include "../filesystem.hpp"
 #include "../game_config.hpp" // game_config::observer_team_name
 #include "../log.hpp"
 #include "../map.hpp" // gamemap::MAX_PLAYERS
@@ -53,7 +54,8 @@ namespace wesnothd {
 int game::id_num = 1;
 
 game::game(player_map& players, const network::connection host,
-		const std::string name) :
+		const std::string name, bool save_replays,
+		const std::string replay_save_path) :
 	player_info_(&players),
 	id_(id_num++),
 	name_(name),
@@ -72,7 +74,9 @@ game::game(player_map& players, const network::connection host,
 	end_turn_(0),
 	all_observers_muted_(false),
 	bans_(),
-	termination_()
+	termination_(),
+	save_replays_(save_replays),
+	replay_save_path_(replay_save_path)
 {
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
@@ -89,6 +93,8 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
+	save_replay();
+
 	user_vector users = all_game_users();
 	for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
 		remove_player(*u, false, true);
@@ -1191,6 +1197,43 @@ void game::send_history(const network::connection sock) const
 	network::send_raw_data(data.begin(), data.size(), sock,"game_history");
 	history_.clear();
 	history_.push_back(doc);
+}
+
+void game::save_replay() {
+	if (!save_replays_) return;
+
+	std::string replay_commands;
+	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
+			i != history_.end(); ++i) {
+		const simple_wml::node::child_list& turn_list = (*i)->root().children("turn");
+		for (simple_wml::node::child_list::const_iterator turn = turn_list.begin();
+				turn != turn_list.end(); ++turn) {
+			replay_commands += (*turn)->output();
+		}
+	}
+
+	std::stringstream name;
+	name << level_["name"] << " Turn " << current_turn() << " (" << id_ << ").gz";
+
+	std::stringstream replay_data;
+	replay_data << "campaign_type=\"multiplayer\"\n"
+	<< "difficulty=\"NORMAL\"\n"
+	<< "label=\"" << name.str() << "\"\n"
+	<< "version=\"" << level_["version"] << "\"\n"
+	<< "[replay]\n" << replay_commands << "[/replay]\n"
+	<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
+
+	simple_wml::document replay(replay_data.str().c_str(), simple_wml::INIT_STATIC);
+
+	std::string filename(name.str());
+	std::replace(filename.begin(), filename.end(), ' ', '_');
+	//filename.erase(std::remove(filename.begin(), filename.end(), '\''), filename.end());
+	DBG_GAME << "saving replay: " << filename << std::endl;
+	scoped_ostream os(ostream_file(replay_save_path_ + filename));
+	(*os) << replay.output_compressed();
+	if (!os->good()) {
+		LOG_GAME << "Could not save replay! (" << filename << ")\n";
+	}
 }
 
 void game::record_data(simple_wml::document* data) {

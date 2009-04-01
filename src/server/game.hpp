@@ -34,7 +34,9 @@ typedef std::vector<network::connection> side_vector;
 class game
 {
 public:
-	game(player_map& players, const network::connection host=0, const std::string name="");
+	game(player_map& players, const network::connection host=0,
+			const std::string name="", bool save_replays=false,
+			const std::string replay_save_path="");
 	~game();
 
 	int id() const { return id_; }
@@ -218,6 +220,7 @@ private:
 	void send_observerjoins(const network::connection sock=0) const;
 	void send_observerquit(const player_map::const_iterator observer) const;
 	void send_history(const network::connection sock) const;
+	void save_replay();
 
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
@@ -306,6 +309,9 @@ private:
 	std::vector<std::string> bans_;
 
 	std::string termination_;
+
+	bool save_replays_;
+	std::string replay_save_path_;
 };
 
 struct game_is_member {
