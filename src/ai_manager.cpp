@@ -536,12 +536,6 @@ void ai_manager::clear_ais()
 // GET active AI parameters
 // =======================================================================
 
-ai_interface& ai_manager::get_active_ai_for_team( int team, ai_interface::info& i )
-{
-	return get_active_ai_holder_for_team(team).get_ai_ref(i);
-}
-
-
 const std::vector<config>& ai_manager::get_active_ai_parameters_for_team( int team )
 {
 	return get_active_ai_holder_for_team(team).get_ai_parameters();
@@ -607,6 +601,20 @@ void ai_manager::set_active_ai_algorithm_type_for_team( int team, const std::str
 
 
 // =======================================================================
+// PROXY
+// =======================================================================
+
+void ai_manager::play_turn( int team, ai_interface::info& i, events::observer* event_observer ){
+	ai_interface& ai_obj = get_active_ai_for_team(team, i);
+	ai_obj.user_interact().attach_handler(event_observer);
+	ai_obj.unit_recruited().attach_handler(event_observer);
+	ai_obj.unit_moved().attach_handler(event_observer);
+	ai_obj.enemy_attacked().attach_handler(event_observer);
+	ai_obj.play_turn();
+}
+
+
+// =======================================================================
 // PRIVATE
 // =======================================================================
 // =======================================================================
@@ -668,6 +676,12 @@ ai_holder& ai_manager::get_or_create_active_ai_holder_for_team_without_fallback(
 // =======================================================================
 // AI POINTERS
 // =======================================================================
+
+ai_interface& ai_manager::get_active_ai_for_team( int team, ai_interface::info& i )
+{
+	return get_active_ai_holder_for_team(team).get_ai_ref(i);
+}
+
 
 ai_interface& ai_manager::get_or_create_active_ai_for_team_without_fallback( int team, ai_interface::info& i, const std::string& ai_algorithm_type )
 {

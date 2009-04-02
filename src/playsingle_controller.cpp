@@ -823,14 +823,8 @@ void playsingle_controller::play_ai_turn(){
 
 	ai_interface::info ai_info(*gui_,map_,units_,teams_,player_number_,status_, turn_data, gamestate_);
 
-	ai_interface& ai_obj = ai_manager::get_active_ai_for_team(player_number_ , ai_info ) ;
-
-	ai_obj.user_interact().attach_handler(this);
-	ai_obj.unit_recruited().attach_handler(this);
-	ai_obj.unit_moved().attach_handler(this);
-	ai_obj.enemy_attacked().attach_handler(this);
 	try {
-		ai_obj.play_turn();
+		ai_manager::play_turn(player_number_, ai_info, this);
 	} catch (end_turn_exception) {
 	}
 	recorder.end_turn();

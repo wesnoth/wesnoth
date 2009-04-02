@@ -201,7 +201,7 @@ public:
 	/**
 	 * Return a list of available AIs
 	 * @return the list of available AIs
-	 * @todo tet this list from a list of files in specified directory
+	 * @todo get this list from a list of files in specified directory
 	 */
 	static std::vector<std::string> get_available_ais();
 
@@ -238,16 +238,6 @@ public:
 	// =======================================================================
 	// GET active AI parameters
 	// =======================================================================
-
-	/**
-	 * Get active AI for specified team.
-	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @return a reference to the active ai
-	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
-	 * @param i game information for the AI. is used only if AI is to be created.
-	 */
-	static ai_interface& get_active_ai_for_team( int team, ai_interface::info& i );
 
 
 	/**
@@ -352,12 +342,26 @@ public:
 	static void set_active_ai_algorithm_type_for_team( int team, const std::string& ai_algorithm_type );
 
 
+	// =======================================================================
+	// PROXY
+	// =======================================================================
+
+	/**
+	 * Play a turn for the specified team using its active AI
+	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param i game information for the AI
+	 * @param event_observer controller which will observe events which are produced by the AI
+	 */
+	static void play_turn(int team, ai_interface::info& i, events::observer* event_observer);
+
+
 private:
 
 	typedef std::map< int, std::stack< ai_holder > > AI_map_of_stacks;
 	static AI_map_of_stacks ai_map_;
 	static std::deque< ai_command_history_item > history_;
 	static long history_item_counter;
+
 
 	// =======================================================================
 	// EVALUATION
@@ -419,6 +423,17 @@ private:
 	// =======================================================================
 	// AI POINTERS
 	// =======================================================================
+
+	/**
+	 * Get active AI for specified team.
+	 * @note: Running this command may invalidate references previously returned by AI Manager
+	 * @return a reference to the active ai
+	 * @note this reference may become invalid after specific ai_manager operations.
+	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param i game information for the AI. is used only if AI is to be created.
+	 */
+	static ai_interface& get_active_ai_for_team( int team, ai_interface::info& i );
+
 
 	/**
 	 * Get the command AI for the specified team
