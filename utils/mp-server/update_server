@@ -33,21 +33,24 @@ if ! [ -d $SOURCE ]; then
 	exit 1
 fi
 
+SCONS=yes
 case $SERVER in
 	1.2 )   cd $SOURCE/1.2   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3"
+		SCONS=no
 	;;
 	1.4 )   cd $SOURCE/1.4   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-		#SCONS=yes
+		SCONS=no
+	;;
+	1.6 )   cd $SOURCE/1.6   || exit 1
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
 	;;
 	trunk ) cd $SOURCE/trunk || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
-		SCONS=yes
 	;;
 	*   )   cd $SOURCE/trunk || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-		SCONS=yes
 	;;
 esac
 if [ $TYPE = campaignd ]; then
