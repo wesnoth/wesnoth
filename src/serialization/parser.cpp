@@ -120,9 +120,9 @@ void parser::operator()(std::string* error_log)
 				parse_variable();
 				break;
 			default:
-				if ((unsigned char)tok_->current_token().value[0] == 0xEF &&
-				    (unsigned char)tok_->next_token().value[0]    == 0xBB &&
-				    (unsigned char)tok_->next_token().value[0]    == 0xBF)
+				if (static_cast<unsigned char>(tok_->current_token().value[0]) == 0xEF &&
+				    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
+				    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
 				{
 					ERR_CF << "Skipping over a utf8 BOM\n";
 				} else {
