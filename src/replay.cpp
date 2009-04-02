@@ -143,7 +143,6 @@ replay::replay() :
 	cfg_(),
 	pos_(0),
 	current_(NULL),
-	saveInfo_(),
 	skip_(false),
 	message_locations()
 {}
@@ -152,7 +151,6 @@ replay::replay(const config& cfg) :
 	cfg_(cfg),
 	pos_(0),
 	current_(NULL),
-	saveInfo_(),
 	skip_(false),
 	message_locations()
 {}
@@ -164,26 +162,6 @@ void replay::throw_error(const std::string& msg)
 	if (!game_config::ignore_replay_errors) throw replay::error(msg);
 }
 
-void replay::set_save_info(const game_state& save)
-{
-	saveInfo_ = save;
-}
-
-//void replay::set_save_info(const game_state &save, const config::const_child_itors &players)
-//{
-//	saveInfo_ = save;
-//	saveInfo_.players.clear();
-//	saveInfo_.load_recall_list(players);
-//}
-
-void replay::set_save_info_completion(const std::string &st)
-// This function is a kluge to get around the fact that replay objects carry
-// around a copy of gamestate rather than a reference to the global gamestate.
-// That is probably a design bug that should be fixed.
-{
-	saveInfo_.completion = st;
-}
-
 void replay::set_skip(bool skip)
 {
 	skip_ = skip;
@@ -193,41 +171,6 @@ bool replay::is_skipping() const
 {
 	return skip_;
 }
-
-//void replay::save_game(const std::string& label, const config& snapshot,
-//                       const config& starting_pos, bool include_replay)
-//{
-//	log_scope("replay::save_game");
-//	saveInfo_.snapshot = snapshot;
-//	saveInfo_.starting_pos = starting_pos;
-//
-//	if(include_replay) {
-//		saveInfo_.replay_data = cfg_;
-//	} else {
-//		saveInfo_.replay_data = config();
-//	}
-//
-//	saveInfo_.label = label;
-//
-//	std::string filename = label;
-//	if(preferences::compress_saves()) {
-//		filename += ".gz";
-//	}
-//
-//	std::stringstream ss;
-//	{
-//		config_writer out(ss, preferences::compress_saves());
-//		::write_game(out, saveInfo_);
-//		finish_save_game(out, saveInfo_, saveInfo_.label);
-//	}
-//	scoped_ostream os(open_save_game(filename));
-//	(*os) << ss.str();
-//	saveInfo_.replay_data = config();
-//	saveInfo_.snapshot = config();
-//	if (!os->good()) {
-//		throw game::save_game_failed(_("Could not write to file"));
-//	}
-//}
 
 void replay::add_unit_checksum(const map_location& loc,config* const cfg)
 {

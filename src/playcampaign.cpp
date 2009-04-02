@@ -78,7 +78,6 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		assert(scenario != NULL);
 		gamestate.starting_pos = *scenario;
 	}
-	recorder.set_save_info(gamestate);
 	starting_pos = gamestate.starting_pos;
 	scenario = &starting_pos;
 
@@ -208,14 +207,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
-	recorder.set_save_info(gamestate);
-
 	// Do we have any snapshot data?
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
 		gamestate.completion = "running";
-		recorder.set_save_info_completion(gamestate.completion);
 		// Campaign or Multiplayer?
 		// If the gamestate already contains a starting_pos,
 		// then we are starting a fresh multiplayer game.
@@ -599,8 +595,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				gamestate.starting_pos = *scenario;
 			}
 		}
-
-		recorder.set_save_info(gamestate);
 	}
 
 	if (!gamestate.scenario.empty() && gamestate.scenario != "null") {

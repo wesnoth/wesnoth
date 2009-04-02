@@ -344,7 +344,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
 			gamestate_.completion = (end_level.result == VICTORY) ? "victory" : "defeat";
-			recorder.set_save_info_completion(gamestate_.completion);
 			// If we're a player, and the result is victory/defeat, then send
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
@@ -386,7 +385,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			gamestate_.completion = (!end_level.linger_mode ?
 			                         "running" : "victory");
-			recorder.set_save_info_completion(gamestate_.completion);
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
