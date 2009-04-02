@@ -123,15 +123,16 @@ bool ai_configuration::parse_side_config(const config& cfg,
 	return true;
 }
 
-const config& ai_configuration::get_default_ai_parameters(){
-	return default_ai_parameters_;
-}
-
 //some default values for the AI parameters following the default values listed
 //in the wiki at http://www.wesnoth.org/wiki/AiWML
 //@todo: think about reading this from config
-const config ai_configuration::create_default_ai_parameters(){
-	config default_cfg;
+const config& ai_configuration::get_default_ai_parameters(){
+	static config default_cfg;
+	if (!default_cfg["init"].empty()) {
+		return default_cfg;
+	}
+
+	default_cfg["init"] = "true";
 
 	default_cfg["al_algorithm"] = "default";
 
@@ -160,6 +161,3 @@ const config ai_configuration::create_default_ai_parameters(){
 	LOG_AI_CONFIGURATION << "AI default configuration is created" << std::endl;
 	return default_cfg;
 }
-
-
-const config ai_configuration::default_ai_parameters_(ai_configuration::create_default_ai_parameters());

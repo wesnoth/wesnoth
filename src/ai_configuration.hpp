@@ -85,9 +85,6 @@ public:
 	 */
 	static const config& get_default_ai_parameters();
 
-private:
-	static const config create_default_ai_parameters();
-	static const config default_ai_parameters_;
 };
 
 
