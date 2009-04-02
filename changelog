@@ -9,7 +9,8 @@ Version 1.7.0-svn:
    * Changed AI Lifecycle handling. Console AI is now persistent between 
      invocations.
    * Added AI Arena test map to test AIs in interactive mode ( ai_arena_small )
-   * Changed interaction between default AI an Formula AI - made default AI not fallback to formula AI
+   * Changed interaction between default AI an Formula AI - made default AI not
+     fallback to formula AI
  * Editor2:
    * New feature: exporting of selection coordinates to system clipboard
    * Made auto terrain transition mode tri-state: on (editor2's on), partial
@@ -39,6 +40,10 @@ Version 1.7.0-svn:
    * Fixed word wrapping in CJK languages (patch #1140 from sylecn)
  * Multiplayer server:
    * Implemented automatic saving of game replays.
+   * Implemented the adminmsg command to allow players to send messages to
+     currently available admins. (FR #9218)
+ * Savegames
+   * Providing a new simpler interface for dealing with savegames
  * User interface:
    * Fixed bug #13257: Attack dialog always uses the active name of a weapon
      special
@@ -51,8 +56,6 @@ Version 1.7.0-svn:
      now (bug #13170)
    * Added a "preload" WML event type.
    * Added support for Lua scripts in WML event actions ([lua] tag)
- * Savegames
-   * Providing a new simpler interface for dealing with savegames
  * Miscellaneous and bugfixes:
    * Fixed compilation with -D_GLIBCXX_PARALLEL
    * Fixed handling of floating-point WML constants on localized Windows

@@ -1216,12 +1216,13 @@ void server::process_query(const network::connection sock,
 	}
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
-	const std::string& help_msg = "Available commands are: help, games, metrics,"
+	const std::string& help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
 			" motd, netstats [all], stats, status, wml.";
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
-	} else if (command == "games"
+	} else if (command.to_string().find("adminmsg") == 0
+			|| command == "games"
 			|| command == "metrics"
 			|| command == "motd"
 			|| command == "netstats"
@@ -1292,10 +1293,11 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
-	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
-			" bans [deleted], clones, dul|deny_unregistered_login [yes|no],"
-			" kick <mask> [<reason>], k[ick]ban <mask> [<time>] <reason>,"
-			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
+	const std::string& help_msg = "Available commands are: adminmsg <msg>,"
+			" ban <mask> [<time>] <reason>, bans [deleted], clones,"
+			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
+			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
+			" netstats [all], [lobby]msg <message>, motd [<message>],"
 			" requests, stats, status [<mask>], searchlog <mask>, signout, unban <ipmask>";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
@@ -1361,6 +1363,19 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << network::get_bandwidth_stats_all();
 		else
 			out << network::get_bandwidth_stats(); // stats from previuos hour
+	} else if (command == "adminmsg") {
+		if (parameters == "") return "You must type a message.";
+		LOG_SERVER << "Admin message: <" << issuer_name << "> " << parameters << "\n";
+		if (admins_.size() < 1) return "Sorry, no admin available right now. But your message got logged.";
+
+		simple_wml::document data;
+		simple_wml::node& msg = data.root().add_child("whisper");
+		msg.set_attr_dup("sender", ("Admin message - " + issuer_name).c_str());
+		msg.set_attr_dup("message", parameters.c_str());
+		for (std::set<network::connection>::const_iterator i = admins_.begin(); i != admins_.end(); ++i) {
+			send_doc(data, *i);
+		}
+		out << "Message delivered to " << admins_.size() << " admins.";
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
