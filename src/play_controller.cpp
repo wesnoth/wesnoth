@@ -437,9 +437,8 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game, and this is not the player it started with.
-	// FIXME: This does not work correct if loading a save of turn 1 (turn_refresh should be false but is true for every subsequent side)
 	const bool turn_refresh = ( (status_.turn() > start_turn_) || (loading_game_ && team_index != (first_player_ - 1)) ) 
-								&& (start_turn_ > 1);
+								&& (status_.turn() > 1);
 
 
 	if(turn_refresh) {
