@@ -20,6 +20,8 @@
 
 #include "SDL.h"
 #include "cassert"
+
+#include <map>
 #include <string>
 #include <vector>
 #include <list>
@@ -97,14 +99,15 @@ namespace image {
 	//a generic image locator. Abstracts the location of an image.
 	class locator
 	{
+	public:		
+		enum type { NONE, FILE, SUB_FILE };
+
+
 	private:
 		// Called by each constructor after actual construction to
 		// initialize the index_ field
 		void init_index();
 		void parse_arguments();
-	public:
-		enum type { NONE, FILE, SUB_FILE };
-
 		struct value {
 			value();
 			value(const value &a);
@@ -125,6 +128,18 @@ namespace image {
 			int center_x_;
 			int center_y_;
 		};
+		
+		friend size_t hash_value(const value&);
+
+	public:
+
+		/**
+		 * @TODO replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
+		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it 
+		 *       requires boost 1.35 (preferably 1.36 or later)
+		 *
+		 **/
+		typedef std::map<size_t, std::map<value, int> > locator_finder_t;
 
 		// Constructing locators is somewhat slow, accessing image
 		// through locators is fast. The idea is that calling functions
@@ -192,6 +207,8 @@ namespace image {
 		int index_;
 		value val_;
 	};
+
+	size_t hash_value(const locator::value&);
 
 
 	typedef cache_type<surface> image_cache;

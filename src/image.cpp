@@ -31,6 +31,8 @@
 
 #include "SDL_image.h"
 
+#include <boost/functional/hash.hpp>
+
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
@@ -38,9 +40,7 @@
 
 namespace {
 
-typedef std::map<image::locator::value, int> locator_finder_t;
-typedef std::pair<image::locator::value, int> locator_finder_pair;
-locator_finder_t locator_finder;
+image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
 image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
@@ -103,13 +103,12 @@ int locator::last_index_ = 0;
 
 void locator::init_index()
 {
-	locator_finder_t::iterator i = locator_finder.find(val_);
+	std::map<value, int>& finder = locator_finder[hash_value(val_)];
+	std::map<value, int>::iterator i = finder.find(val_);
 
-	if(i == locator_finder.end()) {
+	if(i == finder.end()) {
 		index_ = last_index_++;
-		locator_finder.insert(locator_finder_pair(val_, index_));
-
-
+		finder.insert(std::make_pair(val_, index_));
 	} else {
 		index_ = i->second;
 	}
@@ -290,6 +289,25 @@ bool locator::value::operator<(const value& a) const
 	} else {
 		return false;
 	}
+}
+
+size_t hash_value(const locator::value& val) {
+	using boost::hash_value;
+	using boost::hash_combine;
+
+	size_t hash = hash_value(val.type_);
+	if (val.type_ == locator::FILE || val.type_ == locator::SUB_FILE) {
+		hash_combine(hash, val.filename_);
+	}
+	if (val.type_ == locator::SUB_FILE) {
+		hash_combine(hash, val.loc_.x);
+		hash_combine(hash, val.loc_.y);
+		hash_combine(hash, val.center_x_);
+		hash_combine(hash, val.center_y_);
+		hash_combine(hash, val.modifications_);
+	}
+
+	return hash;
 }
 
 surface locator::load_image_file() const
