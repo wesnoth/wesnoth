@@ -31,7 +31,9 @@ bool Connect(SOCKET sockfd, const SOCKADDR_IN& addr) {
 #ifdef _WIN32
    return bool(connect(sockfd, (sockaddr*)&addr, addr.get_size()) != SOCKET_ERROR);
 #else
-   return bool(connect(sockfd, (sockaddr*)&addr, addr.get_size()) == 0);
+   return bool(connect(sockfd,
+		const_cast<sockaddr *>(reinterpret_cast<const sockaddr*>(&addr)),
+		addr.get_size()) == 0);
 #endif
 }
 
