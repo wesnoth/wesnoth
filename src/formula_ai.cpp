@@ -1741,6 +1741,8 @@ void formula_ai::build_move_list() {
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
 	try{
+                move_maps_valid_ = false;
+
 		game_logic::formula f(formula_str, &function_table);
 
 		game_logic::map_formula_callable callable(this);
