@@ -48,7 +48,7 @@ void user_handler::init_mailer(config* c) {
 }
 
 std::string user_handler::create_salt(int length) {
-	srand((unsigned)time(NULL));
+	srand(static_cast<unsigned>(time(NULL)));
 
 	std::stringstream ss;
 
