@@ -97,7 +97,7 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 		src_beg += (-y) * src->w;
 		mask_beg += (-y) * mask->w;
 		dest_beg += x;
-		if (src_height < (size_t)-y)
+		if (src_height < static_cast<size_t>(-y))
 			return;
 		src_height += y;
 		y = 0;
@@ -174,7 +174,7 @@ void save_image(surface surf, const std::string &filename)
 	//TODO: review whether providing NULL error handlers is something
 	//sensible
 	png_struct* png_ptr = png_create_write_struct
-		(PNG_LIBPNG_VER_STRING, (png_voidp)png_voidp_NULL,
+		(PNG_LIBPNG_VER_STRING, reinterpret_cast<png_voidp>(png_voidp_NULL),
 		 png_error_ptr_NULL, png_error_ptr_NULL);
 	if(!png_ptr)
 		throw exploder_failure("Unable to initialize the png write structure");
@@ -182,7 +182,7 @@ void save_image(surface surf, const std::string &filename)
 	png_info* info_ptr = png_create_info_struct(png_ptr);
 	if(!info_ptr) {
 		png_destroy_write_struct(&png_ptr,
-				(png_infopp)NULL);
+				static_cast<png_infopp>(NULL));
 		throw exploder_failure("Unable to initialize the png info structure");
 	}
 
@@ -210,7 +210,7 @@ void save_image(surface surf, const std::string &filename)
 	Uint32 *surf_data = lock.pixels();
 	int pos = 0;
 	for(int y = 0; y < surf->h; ++y) {
-		row_pointers[y] = (png_byte*) (rgba_data + pos);
+		row_pointers[y] = reinterpret_cast<png_byte*>(rgba_data + pos);
 		for(int x = 0; x < surf->w; ++x) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*surf_data, surf->format, &red, &green, &blue, &alpha);
