@@ -141,7 +141,7 @@ namespace {
 
 			// execute the script, we run is a separate thread and share the
 			// output which will make the logging look ugly.
-			execlp(script.c_str(), script.c_str(), addon.c_str(), (char *)NULL);
+			execlp(script.c_str(), script.c_str(), addon.c_str(), static_cast<char *>(NULL));
 
 			// exec() and family never return; if they do, we have a problem
 			std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
@@ -665,7 +665,7 @@ namespace {
 							network::send_data(construct_error("No add-on with that name exists."), sock, gzipped);
 						} else if((*campaign)["passphrase"] != (*cpass)["passphrase"]) {
 							network::send_data(construct_error("Your old passphrase was incorrect."), sock, gzipped);
-						} else if((const t_string)(*cpass)["new_passphrase"] == "") {
+						} else if(static_cast<const t_string>((*cpass)["new_passphrase"]) == "") {
 							network::send_data(construct_error("No new passphrase was supplied."), sock, gzipped);
 						} else {
 							(*campaign)["passphrase"] = (*cpass)["new_passphrase"];
