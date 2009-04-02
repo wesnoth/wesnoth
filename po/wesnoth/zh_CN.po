@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-27 22:47-0500\n"
+"PO-Revision-Date: 2009-03-31 23:13-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -167,11 +167,11 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "治疗+4：\n"
-"允许单位在每回合开始时治疗相邻受伤的友好单位。\n"
+"允许单位在每回合开始时治疗相邻受伤的友好单位，或阻止毒药在该回合发作。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多4点生命值，或阻止毒药在该回合发作。\n"
-"治疗能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单位才"
-"能解毒。"
+"'治疗+4'能力无法解除附近单位的中毒效果，只有进入村庄或者被拥有疗毒能力的单位"
+"治疗。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -203,8 +203,8 @@ msgstr ""
 "度的。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多8点生命值，或阻止毒药在该回合发作。\n"
-"治疗能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单位才"
-"能解毒。"
+"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
+"位可以解毒"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -1850,6 +1850,7 @@ msgstr "矮人们以活力著称，有些强壮的矮人甚至可以在移动同
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1859,7 +1860,7 @@ msgstr ""
 "\n"
 "\n"
 "活力特质让单位天生拥有1点附加生命值上限，每次升级附带额外1点生命值，并且在每"
-"回合未战斗的回合之后恢复额外2点生命值。"
+"回合未战斗的回合之后恢复额外2点生命值。它们受毒素伤害也减少1/4。"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -4999,12 +5000,12 @@ msgstr ""
 "说记述了那个被人遗忘已久的远古年代，他们的族人穿过洞穴，从地下世界来到大陆，"
 "而有关他们在那之前的生活，一切都并不为人所知，其中也包括他们之所以会进入地表"
 "世界的原因，不过至此之后，矮人便成为了整个大陆历史不可或缺的一部分。矮人们从"
-"地底世界来到地表后不久，便和大陆上的原住民——精灵发生了冲突。这起纷争的真正原"
-"因早已流失与历史的长河之中，但可以肯定的是，此后两个种族之间爆发了三场旷日持"
-"久的战争，其间短暂的和平仅仅维系了数十年。漫长的战争期间，矮人始终无法将精灵"
-"从南方的密林之中驱离出去，但却成功地巩固了他们在大陆北方的山岳地区——也就是现"
-"如今的“北地”的势力范围。此后，他们在领地内的山峦崖壁深处构筑起了许多梦幻般的"
-"防御工事和居所。\n"
+"地底世界来到地表后不久，便和大陆上的原住民────精灵发生了冲突。这起纷争的真正"
+"原因早已流失与历史的长河之中，但可以肯定的是，此后两个种族之间爆发了三场旷日"
+"持久的战争，其间短暂的和平仅仅维系了数十年。漫长的战争期间，矮人始终无法将精"
+"灵从南方的密林之中驱离出去，但却成功地巩固了他们在大陆北方的山岳地区────也就"
+"是现如今的“北地”的势力范围。此后，他们在领地内的山峦崖壁深处构筑起了许多梦幻"
+"般的防御工事和居所。\n"
 "\n"
 "可能是由于与世隔绝的原因，矮人普遍对别的种族，尤其是精灵感到不堪信任甚至是怀"
 "有敌意，这一种族思维定势的唯一例外是人类。这可以追溯到哈德里克一世时代，当人"
@@ -5014,8 +5015,7 @@ msgstr ""
 "期所受到的迫害，这使得他们悻悻相惜。矮人们亦从他们和流亡者们之间的纽带关系中"
 "获益匪浅。他们会在矮人们不喜居住的地区定居下来，例如平原、树林以及沼泽，这让"
 "矮人们从防御这些地区的苦差事中解脱了出来。不久以后，当受到兽人的威胁时，矮人"
-"和他们的人类盟友结成了纳尔加（窃以为Knalga的K不发音）联盟以保卫他们共同的家"
-"园。\n"
+"和他们的人类盟友结成了纳尔迦联盟以保卫他们共同的家园。\n"
 "\n"
 "以人类的标准来衡量，矮人的身材都很短小，但他们一点儿都不脆弱，他们中的战士坚"
 "韧强悍，整个大陆的人们都对他们在战斗中表现出高超技艺敬畏有加。除此之外，矮人"
@@ -5025,8 +5025,8 @@ msgstr ""
 "种族。其中最有名也是最为骇人的矮人发明之一便是那一遇上火焰或是电花就能产生剧"
 "烈爆炸的神秘药粉。某些矮人战士使用这种药粉将小型物体以极高的速度推射出去。由"
 "于这种对于科技的倾向，许多矮人趋于不信任那些魔法使用者。但是有一些矮人练习一"
-"种以雕刻符文为基础的魔法形式，称之为符文术，他们使用这些雕刻的图案对物件进行"
-"附魔以增强其某些方面的自然特性。"
+"种以雕刻符文为基础的魔法形式，称之为符文术，这些雕刻的图案增强了物件的某些自"
+"然性质。"
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -5096,12 +5096,11 @@ msgstr ""
 "少数精灵，因为深入探索魔法而对冰冷的金属敏感，甚至会被毁灭。精灵传说这在以前"
 "是经常发生的。\n"
 "\n"
-"精灵花很多时间来锻炼技能和能力，对魔法不熟悉的就锻炼他们的体技。因此这样的精"
-"灵擅长箭术，或许这是战争重要的技术的关系。不管是在精准度或速度，通常没有一个"
-"种族可以跟精灵部队的射手匹敌。所有的精灵对自然都有种不能解释的情感。他们都很"
-"难适应暴露在空旷没有高大植被的地带，这就是为什么他们的家园会在大陆的森林中，"
-"像是Aethenwood西南地区，Wesmore西北地区，北部森林Lintanir 在北地最南部边"
-"缘。\n"
+"精灵花很多时间来锻炼技能和能力，对魔法不熟悉的就锻炼他们的体技。因而精灵擅长"
+"箭术，这可能是战争中最重要的战斗方式。不管是在精准度或速度，通常没有一个种族"
+"可以跟精灵部队的射手匹敌。所有的精灵对自然都有种不能解释的情感。他们都很难适"
+"应暴露在空旷没有高大植被的地带，这就是为什么他们的家园会在大陆的森林中，像是"
+"Aethenwood西南地区，Wesmore西北地区，北部森林Lintanir的南部边缘。\n"
 "\n"
 "精灵是这片大陆最古老的种族（也许除了巨魔），虽然没发现确切的时间记录，无可置"
 "疑的有上百万年的历史。"
@@ -5192,15 +5191,15 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
-"人类是一个非常不同的一个。虽然他们最初来自旧大陆，但却遍布世界各地，分裂成许"
-"多不同的文化和种族。虽然它们不是浸浴魔法的生物，人类同样可以学习掌握它，并能"
-"够进一步了解，比大多数其他种族学到的类型更多。他们没有特殊的能力或天赋，除了"
-"他们的毅力和驱动力。虽然往往不符合所有的种族，他们偶尔联盟的那么激进的种族，"
-"如精灵和矮人。但也不妨碍雇用兽人雇佣军。他们没有天敌，虽然大多数的种族一样本"
-"能的厌恶亡灵。人类矮于精灵，比矮人高。他们的皮肤颜色各不相同，从几乎白色至深"
-"棕色。 \n"
+"人类是一个与众不同的种族。虽然他们最初来自旧大陆，但却遍布大陆各地，分裂成许"
+"多不同的文化和种族。虽然不是浸浴魔法天性的生物，人类同样可以学习掌握它，并能"
+"够进一步了解，还比大多数其他种族学到的类型更多。他们没有特殊的能力或天赋，除"
+"了他们的毅力和驱动力。虽然往往与所有的种族不融洽，他们偶尔联盟一些相对平和的"
+"种族，如精灵和矮人；但也不妨碍雇用兽人雇佣军。他们没有天敌────同大多数的种族"
+"一样本能地厌恶亡灵。人类比精灵矮，比矮人高。他们的皮肤颜色各不相同，从几乎白"
+"色至深棕色。\n"
 "\n"
-"<header>text='皇冠主体'</header>\n"
+"<header>text='Wesnoth王国'</header>\n"
 "许多不同的团体的人类存在，但其中多数是在大陆Wesnoth皇权的统治下生活 。人类最"
 "早出现在伟大的大陆从土地远到大洋彼岸的西方，来自一个叫绿岛的地方，并很快建立"
 "了自己的内陆城市Weldyn 。在接下来的几个世纪，他们建立了一些城市的横跨整个大"
@@ -5208,12 +5207,12 @@ msgstr ""
 "要省份，在那里所有的人幼年都被征召。 \n"
 "\n"
 "<header>text='氏族'</header>\n"
-"东部省份的Wesnoth ，称为氏族家园，有一个地理组成更为开放的平原和连绵起伏的丘"
-"陵比西部，更加文明的省份。他们家的骑士一族，结盟与Wesnoth ，但独立运作，并保"
-"持自己的身份。有些人认为他们是国家的一个支流，它发送食品和士兵到Wesnoth，以换"
-"取保护。还有人说他们是在平等的基础与西方平分大陆 。东部各省没有采用Wesnoth应"
-"征军队的方式。操练为战的一部分，是生活方式备战的宗族；从幼年开始家长教导孩子"
-"骑木马，打击和拍摄弓。一般情况下，比西方军队组织性稍差。"
+"东部省份的Wesnoth ，称为氏族家园，有着更为开放的平原和连绵起伏的丘陵。他们的"
+"骑士一族结盟Wesnoth ，但独立运作，保持自己的身份。有些人认为他们是国家的一个"
+"支流，它发送食品和士兵到Wesnoth，以换取保护。还有人说他们是在平等的基础与西方"
+"平分大陆 。东部各省没有采用Wesnoth应征军队的方式。而是是以生活方式备战：从幼"
+"年开始家长就教导孩子骑马，格斗和射箭。或许因为这样，一般情况下，氏族部队比"
+"Wesnoth军队组织性稍差。"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
@@ -5298,17 +5297,17 @@ msgstr "食人魔"
 #. [race]: id=orc
 #: data/core/units.cfg:240
 msgid "race^Orc"
-msgstr "半兽人"
+msgstr "兽人"
 
 #. [race]: id=orc
 #: data/core/units.cfg:241
 msgid "race+female^Orc"
-msgstr "半兽人"
+msgstr "兽人"
 
 #. [race]: id=orc
 #: data/core/units.cfg:242
 msgid "race^Orcs"
-msgstr "半兽人"
+msgstr "兽人"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
@@ -5374,52 +5373,30 @@ msgstr ""
 "一个兽人永远不会独自旅行很远, 少于6个兽人的团体也不存在.\n"
 "\n"
 "<header>text='社会'</header>\n"
-"Almost every orc are a member of a tribe or a clan. Relations between "
-"neighboring tribes are usually violent, except in cases of a mutual enemy "
-"threatens their existence or prospects of great plunder override mutual "
-"animosity. Occasionally, a single strong chieftain may emerge to lead "
-"multiple tribes from time to time, usually through intimidation of "
-"followers. An orc tribe in times of peace tends to focus almost solely on "
-"strengthening itself in preparation for the next armed conflict. Orcs are "
-"known to possess a crude system of writing - usually in blood - although "
-"it's most commonly used to trade insults or threats among tribal leaders.\n"
+"几乎每一个兽人都是一个部落或氏族的成员。邻近的部落之间的关系通常是暴力对抗，"
+"但在一个共同的敌人或威胁他们的共通生存前景情况下会尽量掩饰相互的敌意。有时"
+"候，一个强大的头目出现领导多个部落时，通常通过恐吓的追随者办到的。一个兽人部"
+"落在和平时期往往集中关注如何加强自身以筹备下次武装冲突。兽人拥有原始的书写系"
+"统──血书，尽管最常用再贸易侮辱或部落头领相互威胁之时。\n"
 "\n"
-"Orc societies are based on little else but strength; might makes right, and "
-"a leader leads and survives only as long as no one manages to wrest the "
-"title from him. A constant struggle for power simmers among potential tribal "
-"chiefs. An orcish leader rarely lives more than a handful of years to enjoy "
-"his absolute authority before being killed for his position - although "
-"history knows some notable exceptions. Orcs hold no particular honor code "
-"and while indisputable raw strength is usually the preferred method of "
-"displaying power, assassination, poisoning and backstabbing are completely "
-"viable means to further one's own goals.\n"
+"兽人社会只依赖强力，力量最正确，首领会领导以及‘活到’谁能取代他。潜在的、恒定"
+"的权力斗争会吞没部落首领。一个兽人头领活不了几年，自然地享受完了绝对统治，然"
+"后就被杀 ── 尽管历史上也有几个著名的例外。兽人的荣誉没有特别的象征：力量就是"
+"一切，用喜欢的方式战士，刺杀，下毒或者背后一击都让它们达到自己目的。\n"
 "\n"
-"Orcs mostly live in rural areas, often in foothills or mountainous regions, "
-"sometimes in caves. They grow no crops nor keep livestock, but are competent "
-"hunters as a result of their physical stature and brutality. Due to their "
-"large numbers they are capable of hunting an area virtually clean of "
-"anything larger than rodents in relatively short period of time. Due to this "
-"and their unstable leadership, orcish tribes tend to lead a semi-nomadic "
-"lifestyle, never settling in one region for too long. The larger tribes may "
-"establish themselves firmly in an area for years or even decades and build "
-"large encampments almost resembling cities, but even these are easily "
-"dismantled and abandoned if there is a need to relocate the horde.\n"
+"兽人通常生活在野外，通常是山脚和多山区域，有时候在洞穴里。他们既不种植的作物"
+"也没有饲养禽畜，猎人是他们根基。由于其数量，在相对较短的时间内他们能够狩猎干"
+"净一块区域内的任何大于啮齿动物的猎物。由于这样，和他们不稳定的领导权，兽人部"
+"落往往使用半游牧的生活方式，不会在一个地区的时间太长。较大的部落可以建立自己"
+"牢固的领域多年甚至几十年，并建设大型营地，类似城市，但是，即使这些很容易被拆"
+"除和被遗弃的，如果有必要，就会搬迁部落。\n"
 "\n"
-"The oldest known orcs have been around 50 to 60 years of age, but very few "
-"individuals ever live to see over two or three decades before meeting their "
-"end either in war or by the hand of one of their kin. The oldest orcs are "
-"often shamans, which are perhaps the only ones most of their kind sees as "
-"being trustworthy and neutral. The origins of this custom are unknown, as "
-"the shamans do not directly contribute much to orcish societies but only act "
-"as advisors - not something orcs tend to otherwise tolerate. Shamans are in "
-"many ways the opposite of most other orcs: they are often physically "
-"withered and frail in comparison and lack skill in battle. Despite their "
-"reliance on raw strength, not nearly all orcs are destined to grow to "
-"possess any. Many orcs are born smaller and weaker than the rest, and "
-"already almost as newborns are put in their place by their stronger "
-"siblings. The stronger ones will routinely grab most of the food and thus "
-"grow stronger still, while their weaker siblings do not. Many of these "
-"individuals tend精通其他技术, 如射箭和暗杀."
+"兽人可以活到五、六十岁，但是只有少数能度过其前二、三十年，其间其姓名可能已经"
+"断送在战场上。年长的兽人多数是萨满，因为通常被认为中立可以信赖。这种风俗如何"
+"产生已被遗忘，萨满不直接涉及兽人社会，只是给出建议 ── 也是在能容忍的范围内。"
+"萨满和大多兽人相反：身体虚弱，缺乏战斗能力。尽管兽人依赖的身体力量，并非所有"
+"的兽人都有这样的命运。很多兽人生来虚弱瘦小，通常被更强的同胞取代。强壮的可以"
+"独占更多食物，瘦小的那些倾向于精通其他技术, 如射箭和暗杀。"
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
@@ -5651,12 +5628,12 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name桥,$name渡口"
+msgstr "$name桥,$name岔路"
 
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name's大道,$name隘口,$name小路"
+msgstr "$name大道,$name隘口,$name小路"
 
 #. [language]
 #: data/hardwired/english.cfg:21
@@ -5676,22 +5653,22 @@ msgstr "$name湖"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|伯里,$name|汉,$name|顿"
+msgstr "$name|,$name|,$name|"
 
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|harbor,$name|port"
-msgstr "$name|哈勃,$name|波特"
+msgstr "$name|港,$name|渡口"
 
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr "$name|汉,$name|福德,$name|克劳斯,$river|福德,$river|克劳斯"
+msgstr "$name|港,$name|浅滩,$name|路口,$river|浅滩,$river|路口"
 
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|布里奇,$river|布里奇,$river|布里奇,$name|汉,$name|布里奇"
+msgstr "$river|桥,$river|桥,$river|桥,$name|,$name|桥"
 
 #. [language]
 #: data/hardwired/english.cfg:28
@@ -5706,14 +5683,13 @@ msgstr "$name|汉,$name|顿,$name|伍德,$name弗里斯特"
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|汉,$name|伯里,$name|顿,$name|希尔,$name|克里斯特"
+msgstr "$name|,$name|,$name|,$name|岭,$name|顶"
 
 #. [language]
 #: data/hardwired/english.cfg:31
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr ""
-"$name|汉,$name|伯里,$name|顿,$name|蒙特,$name|蒙特,$name|克利夫,$name|克利夫"
+msgstr "$name|,$name|,$name|,$name|岭,$name|山,$name|悬崖,$name|壁"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -5785,7 +5761,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
-msgstr "- Great Mage Delfador, 516YW"
+msgstr "- 大法师Delfador, 516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5830,7 +5806,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
-msgstr "- King Konrad, 536YW"
+msgstr "- 孔列王, 536YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -6174,7 +6150,7 @@ msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们得
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
-msgstr "- Princess Li'sar, 515YW"
+msgstr "- 丽莎公主, 515YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
@@ -6225,7 +6201,7 @@ msgstr "奥术攻击会对不死亡灵造成强力伤害。"
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
-msgstr "- Great Sage Dacyn, 626YW"
+msgstr "- 先哲Dacyn, 626YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -6295,7 +6271,7 @@ msgstr "让低等级单位完成最后一击可以使它更快地升级"
 #. [tip]
 #: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
-msgstr "- Queen Li'sar, 528YW"
+msgstr "- 丽莎女王, 528YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -7929,7 +7905,7 @@ msgstr "抛弃昵称"
 
 #: src/menu_events.cpp:2207
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr "设置详细用户信息。输入/details 查看可设置的内容。"
+msgstr "设置详细用户信息。输入/details查看可设置的内容。"
 
 #: src/menu_events.cpp:2210
 msgid "Request information about a nick."
@@ -8049,7 +8025,7 @@ msgstr "显示单元格地形编码"
 
 #: src/menu_events.cpp:2444
 msgid "Unknown debug level: '$level'."
-msgstr "未知调试级别：'$level'。"
+msgstr "未知调试级别: '$level'."
 
 #: src/menu_events.cpp:2446 src/menu_events.cpp:2455
 msgid "error"
@@ -8057,11 +8033,11 @@ msgstr "错误"
 
 #: src/menu_events.cpp:2453
 msgid "Unknown debug domain: '$domain'."
-msgstr "未知调试域：'$domain'。"
+msgstr "未知调试域: '$domain'."
 
 #: src/menu_events.cpp:2462
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr "域已切换：'$domain' 切换到 '$level' 级别。"
+msgstr "域已切换: '$domain' 切换到 '$level' 级别。"
 
 #: src/menu_events.cpp:2546
 msgid "Added to ignore list: "
@@ -8181,11 +8157,11 @@ msgstr "用户名'$nick'被保留，无法被玩家使用。"
 
 #: src/multiplayer.cpp:360
 msgid "The nick '$nick' is not registered on this server."
-msgstr "用户名'$nick'没有在这个服务器上注册。"
+msgstr "昵称'$nick' 未在本服务器注册。"
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr "这个服务器不允许未注册用户(登陆)。"
+msgstr "本服务器不允许未注册用户使用昵称。"
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -8201,7 +8177,7 @@ msgstr ""
 #: src/multiplayer.cpp:369
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr "登录错误（the server had no seed for your connection）"
+msgstr "登录错误（服务器没有安排您连接的位置）/todo"
 
 #: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."

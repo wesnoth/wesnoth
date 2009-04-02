@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-13 19:36+0100\n"
+"PO-Revision-Date: 2009-04-02 11:50+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -24,13 +24,13 @@ msgstr ""
 #. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
 msgid "None"
-msgstr "brak"
+msgstr "Brak"
 
 #. [toggle_button]: id=shroud
 #. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:472
 msgid "Shroud"
-msgstr "Mgła"
+msgstr "Całun"
 
 #. [terrain]: id=fog
 #: data/core/terrain.cfg:31
@@ -1476,6 +1476,7 @@ msgstr "Nie zdefiniowano siatki."
 #: src/gui/widgets/window.cpp:609
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
+"Nie można wyświetlić okna dialogowego, które nie mieści się na ekranie."
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
@@ -2087,6 +2088,9 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "W sekcji '[$section|]' nie ustawiono obowiązkowego klucza '$key|'."
+
+#~ msgid "Export selected coordinates to system clipboard"
+#~ msgstr "Eksportuj wybrane współrzędne do schowka systemowego"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Ustaw współczynnik gamma"

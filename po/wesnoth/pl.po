@@ -8,14 +8,13 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-13 19:37+0100\n"
+"PO-Revision-Date: 2009-04-02 11:48+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
@@ -2011,6 +2010,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2020,8 +2020,9 @@ msgstr ""
 "\n"
 "\n"
 "Zdrowe jednostki mają o 1PŻ więcej od pozostałych jednostek, plus dodatkowy "
-"1PŻ za każdy poziom. Gdy odpoczywają, odzyskują 2PŻ po każdej turze, w "
-"której nie walczyły."
+"1PŻ za każdy poziom. Gdy odpoczywają, odzyskują zwykłe 2PŻ po każdej turze, "
+"w której nie walczyły. Odnoszą też o jedną czwartą mniejsze obrażenia z "
+"powodu  zatrucia."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -8770,13 +8771,12 @@ msgstr ""
 "Pseudonim \"$nick\" jest zarezerwowany i nie może być używany przez graczy."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Pseudonim \"$nick\" jest zarejestrowany na tym serwerze."
+msgstr "Pseudonim '$nick' nie jest zarejestrowany na tym serwerze."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Ten serwer nie dopuszcza niezarejestrowanych pseudonimów."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9847,6 +9847,9 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Tłumaczenie islandzkie"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Znaleziono następujące niesprawdzone skrypty:"
