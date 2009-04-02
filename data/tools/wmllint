@@ -926,6 +926,30 @@ def sanity_check(filename, lines):
                               % (filename, i+1, value)
                 except ValueError:
                     pass	# Ignore ill-formed integer literals
+            elif key == "number_of_possible_recruits_to_force_recruit" and value:
+                if not in_ai:
+                    print '"%s", line %d: number_of_possible_recruits_to_force_recruit outside [ai]' \
+                              % (filename, i+1)
+            elif key == "villages_per_scout" and value:
+                if not in_ai:
+                    print '"%s", line %d: villages_per_scout outside [ai]' \
+                              % (filename, i+1)
+            elif key == "leader_value" and value:
+                if not in_ai:
+                    print '"%s", line %d: leader_value outside [ai]' \
+                              % (filename, i+1)
+            elif key == "village_value" and value:
+                if not in_ai:
+                    print '"%s", line %d: village_value outside [ai]' \
+                              % (filename, i+1)
+            elif key == "aggression" and value:
+                if not in_ai:
+                    print '"%s", line %d: aggression outside [ai]' \
+                              % (filename, i+1)
+            elif key == "caution" and value:
+                if not in_ai:
+                    print '"%s", line %d: caution outside [ai]' \
+                              % (filename, i+1)
         except TypeError:
             pass
     # Interpret various magic comments
