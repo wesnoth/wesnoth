@@ -1065,19 +1065,19 @@ bool mailer::gethostaddresses(std::vector<SOCKADDR_IN>& adds) {
    // running a local nameserver and using it (as I used to do so I didn't
    // notice until now, oops)
    int ret;
-   if(!Send(ret, s, (char*)dns, dnspos, 0)) {
+   if(!Send(ret, s, reinterpret_cast<char*>(dns), dnspos, 0)) {
       returnstring = "451 Requested action aborted: server seems to have disconnected.";
       Closesocket(s); // clean up
       return false;
    }
-   if(Recv(ret, s, (char*)dns, 512, 0)) {
+   if(Recv(ret, s, reinterpret_cast<char*>(dns), 512, 0)) {
       Closesocket(s);
       // now parse the data sent back from the dns for MX records
       if(dnspos > 12) { // we got more than a dns header back
-         unsigned short numsitenames = ((unsigned short)dns[4]<<8) | dns[5];
-         unsigned short numanswerRR = ((unsigned short)dns[6]<<8) | dns[7];
-         unsigned short numauthorityRR = ((unsigned short)dns[8]<<8) | dns[9];
-         unsigned short numadditionalRR = ((unsigned short)dns[10]<<8) | dns[11];
+         unsigned short numsitenames =    (static_cast<unsigned short>(dns[4])  << 8) | dns[5];
+         unsigned short numanswerRR =     (static_cast<unsigned short>(dns[6] ) << 8) | dns[7];
+         unsigned short numauthorityRR =  (static_cast<unsigned short>(dns[8])  << 8) | dns[9];
+         unsigned short numadditionalRR = (static_cast<unsigned short>(dns[10]) << 8) | dns[11];
 
          if(!(dns[3] & 0x0F)) { // check for an error
             // int auth((dns[2] & 0x04)); // AA bit. the nameserver has given authoritive answer.
@@ -1162,19 +1162,19 @@ bool mailer::parseRR(int& pos, const unsigned char dns[], std::string& name, in_
    }
    // If I do not seperate getting the short values to different
    // lines of code, the optimizer in VC++ only increments pos once!!!
-   unsigned short a = ((unsigned short)dns[++pos]<<8);
+   unsigned short a = (static_cast<unsigned short>(dns[++pos]) << 8);
    unsigned short b = dns[++pos];
    unsigned short Type = a | b;
-   a = ((unsigned short)dns[++pos]<<8);
+   a = (static_cast<unsigned short>(dns[++pos]) << 8);
    b = dns[++pos];
    // unsigned short Class = a | b;
    pos += 4; // ttl
-   a = ((unsigned short)dns[++pos]<<8);
+   a = (static_cast<unsigned short>(dns[++pos]) << 8);
    b = dns[++pos];
    unsigned short Datalen = a | b;
    if(Type == 15) { // MX record
       // first two bytes the precedence of the MX server
-      a = ((unsigned short)dns[++pos]<<8);
+      a = (static_cast<unsigned short>(dns[++pos]) << 8);
       b = dns[++pos];
       // unsigned short order = a | b; // we don't use this here
       len = dns[++pos];
