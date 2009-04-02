@@ -123,13 +123,15 @@ struct SOCKADDR_IN {
   }
   operator const sockaddr () const {
     sockaddr addr;
-    std::copy((char*)&ADDR, (char*)&ADDR + sizeof(ADDR), (char*)&addr);
+    std::copy(const_cast<char *>(reinterpret_cast<const char*>(&ADDR)),
+			const_cast<char *>(reinterpret_cast<const char*>(&ADDR)) + sizeof(ADDR),
+			reinterpret_cast<char*>(&addr));
     return addr;
   }
 
   size_t get_size() const {return sizeof(ADDR);}
   char* get_sin_addr() {
-     return (char*)&ADDR.sin_addr;
+     return reinterpret_cast<char*>(&ADDR.sin_addr);
   }
   void set_port(unsigned short newport) {ADDR.sin_port = newport;}
   void set_ip(const std::string& newip) {
