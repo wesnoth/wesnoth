@@ -950,6 +950,26 @@ def sanity_check(filename, lines):
                 if not in_ai:
                     print '"%s", line %d: caution outside [ai]' \
                               % (filename, i+1)
+            elif key == "recruitment_ignore_bad_movement" and value:
+                if not in_ai:
+                    print '"%s", line %d: recruitment_ignore_bad_movement outside [ai]' \
+                              % (filename, i+1)
+            elif key == "recruitment_ignore_bad_combat" and value:
+                if not in_ai:
+                    print '"%s", line %d: recruitment_ignore_bad_combat outside [ai]' \
+                              % (filename, i+1)
+            elif key == "recruitment_pattern" and value:
+                if not in_ai:
+                    print '"%s", line %d: recruitment_pattern outside [ai]' \
+                              % (filename, i+1)
+            elif key == "attack_depth" and value:
+                if not in_ai:
+                    print '"%s", line %d: attack_depth outside [ai]' \
+                              % (filename, i+1)
+            elif key == "grouping" and value:
+                if not in_ai:
+                    print '"%s", line %d: grouping outside [ai]' \
+                              % (filename, i+1)
         except TypeError:
             pass
     # Interpret various magic comments
