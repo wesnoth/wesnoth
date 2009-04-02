@@ -8,13 +8,15 @@ Version 1.6+svn:
    * New feature: exporting of selection coordinates to system clipboard
  * Graphics:
    * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman,
-   Ogre/Young Ogre, Trapper
+     Ogre/Young Ogre, Trapper
  * Language and i18n:
    * new translations: Icelandic
    * updated translations: British English, Catalan, Chinese (Simplified),
      Czech, German, Finnish, Hebrew, Italian, Polish, Russian, Slovak, Turkish
  * Multiplayer server:
    * Implemented automatic saving of game replays.
+   * Implemented the adminmsg command to allow players to send messages to
+     currently available admins (FR #9218)
  * Miscellaneous and bugfixes:
    * Fixed an infinite loop issue when no music tracks could be loaded
    * Fixed compilation with -D_GLIBCXX_PARALLEL
