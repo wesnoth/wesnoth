@@ -623,8 +623,11 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	//if adjacent tiles are tiles and unnamed, name them
 	for (n = 0; n < 6; n++) {
 		//we do not care for tiles outside the middle part
-		if (adj[n].x >= (width / 3) ) {continue;}
-		if (adj[n].y >= (height / 3) ) {continue;}
+		if (adj[n].x >= static_cast<int>(width / 3)
+				|| adj[n].y >= static_cast<int>(height / 3) ) {
+
+			continue;
+		}
 
 		const t_translation::t_terrain terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
 		const location loc(adj[n].x, adj[n].y);
