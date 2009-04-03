@@ -380,22 +380,12 @@ double emergency_path_calculator::cost(const map_location&,const map_location& l
 	return unit_.movement_cost(map_[loc]);
 }
 
-int emergency_path_calculator::get_max_cost() const
-{
-	return unit_.movement_left();
-}
-
 dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 {}
 
 double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
 {
 	return 0.0;
-}
-
-int dummy_path_calculator::get_max_cost() const
-{
-	return 0;
 }
 
 std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {

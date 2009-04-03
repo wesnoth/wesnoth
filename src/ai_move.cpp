@@ -37,8 +37,6 @@ struct move_cost_calculator : cost_calculator
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
-	virtual int get_max_cost() const { return unit_.movement_left(); };
-
 	virtual double cost(const map_location&, const map_location& loc, const double) const
 	{
 		/*
