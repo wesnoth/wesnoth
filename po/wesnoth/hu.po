@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-05 00:46+0100\n"
+"PO-Revision-Date: 2009-04-03 18:02+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -2037,6 +2037,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -8793,13 +8794,13 @@ msgstr ""
 "használhatják."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "A megadott becenév („$nick”) regisztrálva van a kiszolgálón."
+msgstr "A megadott becenév („$nick”) nincs regisztrálva a kiszolgálón."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
 msgstr ""
+"Ehhez a kiszolgálóhoz csak regisztrált felhasználónévvel lehet csatlakozni."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9866,6 +9867,9 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Izlandi fordítás"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Ellenőrizetlen parancsköteg-állományt találtam:"
