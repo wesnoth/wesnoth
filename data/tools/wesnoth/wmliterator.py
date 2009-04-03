@@ -208,7 +208,7 @@ Important Attributes:
             #enddef - closes a scope
         macro calls: "{MACRO_NAME}"
             {MACRO_NAME - opens a scope
-            } - closes a scope (not an element)
+            } - closes a scope
         """
         elements = [] #(elementType, sortPos, scopeDelta)
         # first remove any quoted strings
