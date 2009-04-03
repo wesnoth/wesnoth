@@ -144,8 +144,9 @@ paths::route a_star_search(map_location const &src, map_location const &dst,
 /**
  * Function which, given a unit and a route the unit can move on,
  * will return the number of turns it will take the unit to traverse the route.
- * adds "turn waypoints" to rt.turn_waypoints.
- * Note that "end of path" is also added.
+ * adds rt.turn_waypoints (and also one at "end of path").
+ * move_left is updated, but to 0 if not reachable in more than 1 turn
+ * and to -1 if never reachable.
  */
 int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing_team,
 							const unit_map& units, const std::vector<team>& teams, const gamemap& map);

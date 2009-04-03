@@ -244,6 +244,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || map.on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(map[*(i+1)]);
+		bool capture = false;
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -263,6 +264,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 
 			movement = u.total_movement();
 			if(move_cost > movement) {
+				rt.move_left = -1;
 				return -1; //we can't reach destination
 			}
 		}
@@ -270,7 +272,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 		zoc = enemy_zoc(map,units,teams, *(i+1), viewing_team,u.side())
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
-		if (zoc) {
+		if (zoc || capture) {
 			movement = 0;
 		} else {
 			movement -= move_cost;
