@@ -1,4 +1,4 @@
-# translation of hu-manpages_1.5.po to Hungarian
+# translation of hu.manpages_1.6.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 #
@@ -9,10 +9,10 @@
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-manpages_1.5\n"
+"Project-Id-Version: hu.manpages_1.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-20 00:47+0100\n"
-"PO-Revision-Date: 2009-01-28 12:37+0100\n"
+"PO-Revision-Date: 2009-04-01 15:06+0000\n"
 "Last-Translator: Gabor Udvari <gabor.udvari@gmail.com>\n"
 "Language-Team: Hungarian <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,14 +93,14 @@ msgid ""
 "scenarios or campaigns, and share them with others."
 msgstr ""
 "Győzd le az összes ellenséges vezért egy jól összeállított sereggel, "
-"figyelmesen kezelve az aranyad és falvaid. Minden egységnek megvannak  a "
-"maga erősségei és gyengeségei; ahhoz, hogy nyerj, hozd ki seregedből a "
-"legjobbat, miközben ellenfeleidnek ugyanezt ne tedd lehetővé. Ahogy az "
-"egységek tapasztalatot szereznek, új képességekre tesznek szert, és egyre  "
-"erősebbé válnak. Játssz a saját anyanyelveden, mérettesd meg képességeidet "
-"az okos számítógépes ellenfél ellen, vagy csatlakozz a Wesnoth on-line "
-"játékosainak nagy közösségéhez! Hozd létre a saját egységeidet, pályáidat, "
-"hadjárataidat, és oszd meg őket másokkal is!"
+"figyelmesen kezelve az aranyad és falvaid. Minden egységnek megvannak a maga "
+"erősségei és gyengéi; ahhoz, hogy nyerj, hozd ki seregedből a legjobbat, "
+"miközben ellenfeleidnek ugyanezt ne tedd lehetővé. Ahogy az egységek "
+"tapasztalatot szereznek, új képességekre tesznek szert, és egyre erősebbé "
+"válnak. Játssz a saját anyanyelveden, mérettesd meg képességeidet az okos "
+"számítógépes ellenfél ellen, vagy csatlakozz a Wesnoth on-line játékosainak "
+"nagy közösségéhez! Hozd létre a saját egységeidet, pályáidat, hadjárataidat, "
+"és oszd meg őket másokkal is!"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
@@ -142,7 +142,7 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
-"a felhasználó beállítások könyvtárát I<név>-re állítja a $HOME könyvtárban "
+"a felhasználói beállítások könyvtárát I<név>-re állítja a $HOME könyvtárban "
 "vagy Windows alatt a \"Dokumentumok\\eJátékok\" könyvtárban."
 
 # type: TP
@@ -780,8 +780,8 @@ msgid ""
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
 "A Harc Wesnothért többjátékos mérkőzéseit kezeli. A klienstől (/query ...) "
-"vagy a fifoból  érkező elfogadott parancsokról itt tájékozódhatsz:  http://"
-"www.wesnoth.org/wiki/ServerAdministration ."
+"vagy a fifoból érkező elfogadott parancsokról itt tájékozódhatsz: http://www."
+"wesnoth.org/wiki/ServerAdministration ."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -1098,7 +1098,7 @@ msgstr "Példa: B<versions_accepted=\"*\"> bármilyen verziót elfogad."
 #: ../../doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:154
@@ -1109,6 +1109,11 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"A használandó felhasználókezelő neve. Jelenleg elérhető kezelők a 'forum' (a "
+"wesnothd egy phpbb fórum adatbázishoz való csatlakozástatásához) és a "
+"'sample' (a felhasználókezelő felület minta megvalósítása, ha ezt bármilyen "
+"valós környezetben használod, őrült vagy). Alapértelmezetten az értéke a "
+"'forum'. Emellett meg kell adnod egy B<user_handler> részt is, lásd később."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:155
@@ -1223,34 +1228,38 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<user_handler> Beállítja a felhasználókezelőt. Az elérhető változók a "
+"B<user_handler> kapcsolóban meghatározott értékektől függnek. Ha nincs "
+"[user_handler] rész a szerver konfigurálásában, akkor felhasználónév "
+"kezelés  nélkül fog futni."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:199
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:202
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(user_handler=forum esetén) Az adatbázis szerver kiszolgálóneve"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:202
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:205
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(user_handler=forum esetén) Az adatbázis neve"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1258,23 +1267,25 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(user_handler=forum esetén) A felhasználónév, amivel az adatbázisba "
+"jelentkezel be"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_passwd>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(user_handler=forum esetén) Ennek a felhasználónak a jelszava"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1283,12 +1294,15 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(user_handler=forum esetén) Az adattábla, amibe a phpbb fórumod elmenti a "
+"felhasználó adatait. Ez valószínűséggel E<tábla-előtag>E<gt>_users lesz (pl. "
+"phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:218
@@ -1299,12 +1313,17 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(user_handler=forum esetén) Az adattábla neve, amiben a wesnothd fogja "
+"eltárolni a felhasználókról készített saját adatait. Ezt a táblát magadtól "
+"kell létrehoznod, pl.: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR"
+"(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
@@ -1312,6 +1331,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(user_handle=sample esetén) Az idő, miután egy regisztrált felhasználónév "
+"lejár (napokban)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:225
@@ -1319,65 +1340,66 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Létrehoz egy SMTP szervert, amin keresztül a felhasználókezelő "
+"levelet küldhet. Jelenleg egyedül a minta felhasználókezelő használja."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:226
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:229
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Az e-mail szerver kiszolgálóneve"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:229
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:232
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Az e-mail szerverre bejelentkező felhasználó neve."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "This user's password."
-msgstr ""
+msgstr "Ennek a felhasználónak a jelszava."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "Az e-mailed válaszcíme."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "A port, amin az e-mail szervered fut. Az alapértelmezett 25."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1387,9 +1409,9 @@ msgid ""
 msgstr ""
 "Írta: David White E<lt>davidnwhite@verizon.netE<gt>.  Szerkesztették: Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> és "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.\n"
-"Ennek a dokumentumnak az eredetijét Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt> írta.\n"
+"Soliton E<lt>soliton.de@gmail.comE<gt> és ThomasBaumhauer E<lt>thomas. "
+"baumhauer@gmail.com<gt>. Ennek a dokumentumnak az eredetijét Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt> írta.\n"
 "Magyarra fordították: Gilluin E<lt>gilluin@citromail.huE<gt>, Széll Tamás "
 "E<lt>tomi@digiflex.huE<gt>, Pintér Csaba, Kádár-Németh Krisztián "
 "E<lt>krisztian.kad@gmail.comE<gt> és Udvari Gábor E<lt>gabor.udvari@gmail."
@@ -1399,35 +1421,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:260
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--python-api>"
-#~ msgstr "B<--python-api>"
-
-# type: Plain text
-#~ msgid "prints the runtime documentation for the python API."
-#~ msgstr "kiírja a python API futási dokumentációját."
-
-# type: TP
-#~ msgid "B<--python-shell>"
-#~ msgstr "B<--python-shell>"
-
-# type: Plain text
-#~ msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-#~ msgstr "elindítja wesnoth beépített python értelmezőjét interaktív módban."
-
-# type: TP
-#~ msgid ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-#~ msgstr ""
-#~ "Példa a saját MI-d tesztelésére az alapértelmezett MI ellen a grafikus "
-#~ "felhasználói felület (GUI) indítása nélkül:"
-
-# type: Plain text
-#~ msgid ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-#~ msgstr ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
