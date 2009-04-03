@@ -1365,13 +1365,29 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << network::get_bandwidth_stats(); // stats from previuos hour
 	} else if (command == "adminmsg") {
 		if (parameters == "") return "You must type a message.";
-		LOG_SERVER << "Admin message: <" << issuer_name << "> " << parameters << "\n";
+		std::string sender = issuer_name;
+		std::string message = parameters;
+		if (sender == "*socket*" && parameters.at(0) == '+') {
+			// The first argument might be "+<nick>: ".
+			// In that case we use <nick> as the sender.
+			std::string::iterator nick_end =
+					std::find(parameters.begin(), parameters.end(), ':');
+			std::string nick(parameters.begin() + 1, nick_end);
+			if (utils::isvalid_username(nick)) {
+				sender = nick;
+				message = std::string(nick_end + 1, parameters.end());
+				utils::strip(message);
+			}
+		}
+		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
+				? std::string(message.begin() + 3, message.end()) + ">"
+				: "> " + message) << "\n";
 		if (admins_.size() < 1) return "Sorry, no admin available right now. But your message got logged.";
 
 		simple_wml::document data;
 		simple_wml::node& msg = data.root().add_child("whisper");
-		msg.set_attr_dup("sender", ("admin message from " + issuer_name).c_str());
-		msg.set_attr_dup("message", parameters.c_str());
+		msg.set_attr_dup("sender", ("admin message from " + sender).c_str());
+		msg.set_attr_dup("message", message.c_str());
 		for (std::set<network::connection>::const_iterator i = admins_.begin(); i != admins_.end(); ++i) {
 			send_doc(data, *i);
 		}
@@ -1386,7 +1402,9 @@ std::string server::process_command(const std::string& query, const std::string&
 				(*g)->send_server_message_to_all(parameters.c_str());
 			}
 		}
-		LOG_SERVER << "<server> " + parameters + "\n";
+		LOG_SERVER << "<server" << (parameters.find("/me ") == 0
+				? std::string(parameters.begin() + 3, parameters.end()) + ">"
+				: "> " + parameters) << "\n";
 		out << "message '" << parameters << "' relayed to players";
 	} else if (command == "status") {
 		out << "STATUS REPORT";
