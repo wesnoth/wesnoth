@@ -373,8 +373,7 @@ private:
 	                   simple_wml::node& query);
 
 	/** Process commands from admins and users. */
-	std::string process_command(const std::string& cmd,
-			const std::string& issuer_name, const network::connection sock=0);
+	std::string process_command(const std::string& cmd, const std::string& issuer_name);
 
 	/** Handle private messages between players. */
 	void process_whisper(const network::connection sock,
@@ -1233,7 +1232,7 @@ void server::process_query(const network::connection sock,
 			|| command == "status " + pl->second.name()
 			|| command == "wml")
 	{
-		response << process_command(command.to_string(), pl->second.name(), pl->first);
+		response << process_command(command.to_string(), pl->second.name());
 	} else if (admins_.find(sock) != admins_.end()) {
 		if (command == "signout") {
 			LOG_SERVER << "Admin signed out: IP: "
@@ -1288,8 +1287,7 @@ void server::start_new_server() {
 	}
 }
 
-std::string server::process_command(const std::string& query,
-		const std::string& issuer_name, const network::connection sock) {
+std::string server::process_command(const std::string& query, const std::string& issuer_name) {
 	std::ostringstream out;
 	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
 	const std::string command(query.begin(),i);
@@ -1375,7 +1373,6 @@ std::string server::process_command(const std::string& query,
 		msg.set_attr_dup("sender", ("admin message from " + issuer_name).c_str());
 		msg.set_attr_dup("message", parameters.c_str());
 		for (std::set<network::connection>::const_iterator i = admins_.begin(); i != admins_.end(); ++i) {
-			if (*i == sock) continue;
 			send_doc(data, *i);
 		}
 		out << "Message delivered to " << admins_.size() << " admins.";
