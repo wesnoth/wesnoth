@@ -2,7 +2,7 @@
 die() {	echo >&2 "$@"; exit 1; }
 notfound() { echo >&2 "$SOCKET not found, sending to the '$1'."; SOCKET=$SERVERBASE/$1/var/run/socket; }
 
-[ $# -ge 1 ] || die "Syntax: $0 <server version> [message]"
+[ $# -ge 1 ] || die "Syntax: $0 <server version> [<message>]"
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
