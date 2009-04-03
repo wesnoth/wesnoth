@@ -129,7 +129,7 @@ team::team_info::team_info(const config& cfg) :
 	config effective_ai_params;//Needed only to set some legacy stuff in team_info
 
 	ai_configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_params );
-	ai_manager::add_ai_for_team(side,global_ai_parameters["ai_algorithm"]);
+	ai_manager::add_ai_for_team(side,ai_algorithm_type);
 
 	ai_manager::set_active_ai_effective_parameters_for_team(side,effective_ai_params);
 	ai_manager::set_active_ai_global_parameters_for_team(side,global_ai_parameters);
