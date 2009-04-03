@@ -613,6 +613,33 @@ static std::string generate_name(const unit_race& name_generator, const std::str
 	return "";
 }
 
+// "flood fill" a tile name to adjacent tiles of certain terrain
+static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
+	const t_translation::t_list& tile_types, const terrain_map& terrain, const size_t width, const size_t height,
+	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
+	map_location adj[6];
+	get_adjacent_tiles(start,adj);
+	size_t n;
+	//if adjacent tiles are tiles and unnamed, name them
+	for (n = 0; n < 6; n++) {
+		//we do not care for tiles outside the middle part
+		if (adj[n].x >= (width / 3) ) {continue;}
+		if (adj[n].y >= (height / 3) ) {continue;}
+
+		const t_translation::t_terrain terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
+		const location loc(adj[n].x, adj[n].y);
+		if( (std::count(tile_types.begin(), tile_types.end(), terr) > 0) && (tile_names.find(loc) == tile_names.end())) {
+			tile_names.insert(std::pair<location, std::string>(loc, name));
+			//labeling decision: this is result of trial and error on what looks best in game
+			if (label_count % 6 == 0) { //ensure that labels do not occur more often than every 6 recursions
+				labels->insert(std::pair<map_location, std::string>(loc, full_name));
+				label_count++; //ensure that no adjacent tiles get labeled
+			}
+			flood_name(adj[n], name, tile_names, tile_types, terrain, width, height, label_count++, labels, full_name);
+		}
+	}
+}
+
 namespace {
 
 // the configuration file should contain a number of [height] tags:
@@ -784,7 +811,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	// We will also attempt to source a river from each lake.
 	std::set<location> lake_locs;
 
-	std::map<location,std::string> river_names, lake_names;
+	std::map<location, std::string> river_names, lake_names, road_names, bridge_names, mountain_names, forest_names, swamp_names;
 
 	const size_t nlakes = max_lakes > 0 ? (rand()%max_lakes) : 0;
 	for(size_t lake = 0; lake != nlakes; ++lake) {
@@ -850,7 +877,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					for(i = locs.begin(); i != locs.end(); ++i) {
 						const location loc(i->x-width/3,i->y-height/3);
-						lake_names.insert(std::pair<location,std::string>(*i,base_name));
+						lake_names.insert(std::pair<location, std::string>(loc, base_name));
 					}
 				}
 
@@ -1035,7 +1062,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		// Search a path out for the road
 		const paths::route rt = a_star_search(src, dst, 10000.0, &calc, width, height);
 
-		const std::string& name = generate_name(name_generator,"road_name");
+		std::string road_base_name;
+		const std::string& name = generate_name(name_generator, "road_name", &road_base_name);
 		const int name_frequency = 20;
 		int name_count = 0;
 
@@ -1099,9 +1127,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					if(labels != NULL && on_bridge == false) {
 						on_bridge = true;
-						const std::string& name = generate_name(name_generator,"bridge_name");
-						const location loc(x-width/3,y-height/3);
+						std::string bridge_base_name;
+						const std::string& name = generate_name(name_generator, "bridge_name", &bridge_base_name);
+						const location loc(x - width / 3, y-height/3);
 						labels->insert(std::pair<map_location,std::string>(loc,name));
+						bridge_names.insert(std::pair<location,std::string>(loc, bridge_base_name)); //add to use for village naming
 						bridges.insert(loc);
 					}
 
@@ -1128,6 +1158,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					}
 
 					terrain[x][y] = letter;
+					const location loc(x - width / 3, y - height / 3); //add to use for village naming
+					road_names.insert(std::pair<location,std::string>(loc, road_base_name));
 				}
 			}
 		}
@@ -1172,6 +1204,80 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	LOG_NG << "placed castles\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
+	/*Random naming for landforms: mountains, forests, swamps, hills
+	 *we name these now that everything else is placed (as e.g., placing
+	 * roads could split a forest)
+	 */
+	t_translation::t_list
+		hill = t_translation::t_list(1, t_translation::HILL),
+		swamp    = t_translation::t_list(),
+		forest   = t_translation::t_list(1, t_translation::FOREST),
+		mountain = t_translation::t_list(1, t_translation::MOUNTAIN);
+
+	//additional forests
+	const t_translation::t_terrain forest2("Gs","Fp"); //savannah forest
+	const t_translation::t_terrain forest3("Gg","Fet"); //great tree forest
+	const t_translation::t_terrain forest4("Aa","Fpa"); //snow forest
+	const t_translation::t_terrain forest5("Gs","Ft"); //tropical forest
+	forest.push_back(forest2);
+	forest.push_back(forest3);
+	forest.push_back(forest4);
+	forest.push_back(forest5);
+	//additional mountains
+	const t_translation::t_terrain mountain2("Md"); //mountain (mountain)
+	mountain.push_back(mountain2);
+	//additional hills
+	const t_translation::t_terrain hill2("Ha"); //snow hills
+	hill.push_back(hill2);
+	const t_translation::t_terrain swmp("Ss"); //swamp
+	swamp.push_back(swmp);
+
+	for (x = width / 3; x < (width / 3)*2; x++) {
+		for (y = height / 3; y < (height / 3) * 2;y++) {
+		//check the terrain of the tile
+		const location loc(x - width / 3, y - height / 3);
+		const t_translation::t_terrain terr = terrain[x][y];
+		std::string name, base_name;
+		std::set<std::string> used_names;
+		if (std::count(mountain.begin(), mountain.end(), terr) > 0) {
+			//name every 15th mountain
+			if ((rand()%15) == 0) {
+				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+					name = generate_name(name_generator, "mountain_name", &base_name);
+				}
+				labels->insert(std::pair<map_location, std::string>(loc, name));
+				mountain_names.insert(std::pair<location, std::string>(loc, base_name));
+			}
+		}
+		else if (std::count(forest.begin(), forest.end(), terr) > 0) {
+			//if the forest tile is not named yet, name it
+			const std::map<location, std::string>::const_iterator forest_name = forest_names.find(loc);
+			if(forest_name == forest_names.end()) {
+				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+					name = generate_name(name_generator, "forest_name", &base_name);
+				}
+				//labels->insert(std::pair<map_location, std::string>(loc, name));
+				forest_names.insert(std::pair<location, std::string>(loc, base_name));
+				// name all connected forest tiles accordingly
+				flood_name(loc, base_name, forest_names, forest, terrain, width, height, 0, labels, name);
+			}
+		}
+		else if (std::count(swamp.begin(), swamp.end(), terr) > 0) {
+			//if the swamp tile is not named yet, name it
+			const std::map<location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
+			if(swamp_name == swamp_names.end()) {
+				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+					name = generate_name(name_generator, "swamp_name", &base_name);
+				}
+				swamp_names.insert(std::pair<location, std::string>(loc, base_name));
+				// name all connected swamp tiles accordingly
+				flood_name(loc, base_name, swamp_names, swamp, terrain, width, height, 0, labels, name);
+			}
+		}
+
+		}
+	}
 
 	if(nvillages > 0) {
 		const config* const naming = cfg.child("village_naming");
@@ -1247,15 +1353,32 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 								size_t n;
 								for(n = 0; n != 6; ++n) {
+									const std::map<location,std::string>::const_iterator road_name = road_names.find(adj[n]);
+									if(road_name != road_names.end()) {
+										symbols["road"] = road_name->second;
+										name_type = "village_name_road";
+										break;
+									}
+
 									const std::map<location,std::string>::const_iterator river_name = river_names.find(adj[n]);
 									if(river_name != river_names.end()) {
 										symbols["river"] = river_name->second;
 										name_type = "village_name_river";
 
-										if(bridges.count(loc)) {
-											name_type = "village_name_river_bridge";
+										const std::map<location,std::string>::const_iterator bridge_name = bridge_names.find(adj[n]);
+										if(bridge_name != bridge_names.end()) {
+										//we should always end up here, since if there is an adjacent bridge, there has to be an adjacent river too
+										symbols["bridge"] = bridge_name->second;
+										name_type = "village_name_river_bridge";
 										}
 
+										break;
+									}
+
+									const std::map<location,std::string>::const_iterator forest_name = forest_names.find(adj[n]);
+									if(forest_name != forest_names.end()) {
+										symbols["forest"] = forest_name->second;
+										name_type = "village_name_forest";
 										break;
 									}
 
@@ -1263,6 +1386,20 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 									if(lake_name != lake_names.end()) {
 										symbols["lake"] = lake_name->second;
 										name_type = "village_name_lake";
+										break;
+									}
+
+									const std::map<location,std::string>::const_iterator mountain_name = mountain_names.find(adj[n]);
+									if(mountain_name != mountain_names.end()) {
+										symbols["mountain"] = mountain_name->second;
+										name_type = "village_name_mountain";
+										break;
+									}
+
+									const std::map<location,std::string>::const_iterator swamp_name = swamp_names.find(adj[n]);
+									if(swamp_name != swamp_names.end()) {
+										symbols["swamp"] = swamp_name->second;
+										name_type = "village_name_swamp";
 										break;
 									}
 
@@ -1286,7 +1423,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 									} else if(forest_count >= 2) {
 										name_type = "village_name_forest";
 									} else if(mountain_count >= 1) {
-										name_type = "village_name_mountain";
+										name_type = "village_name_mountain_anonymous";
 									} else if(hill_count >= 2) {
 										name_type = "village_name_hill";
 									}

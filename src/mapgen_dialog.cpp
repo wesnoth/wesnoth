@@ -384,7 +384,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		try{
 			map = default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, labels, cfg_);
+				castle_size_, nplayers_, link_castles_, &labels_copy, cfg_);
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){
