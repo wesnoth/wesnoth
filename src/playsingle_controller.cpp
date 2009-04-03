@@ -530,7 +530,6 @@ void playsingle_controller::play_turn(bool save)
 				skip_next_turn_ = false;
 				throw end_turn_exception();
 			}
-			input_blocker blocker;
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
