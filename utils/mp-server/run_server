@@ -73,11 +73,13 @@ do
 	$COMMAND &> "$SERVERBASE/logs/$LOG" &
 
 	PID=$!
+	echo $PID > $SERVERBASE/current.pid
 	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) logging to: $LOG"
 	# create some convenient links
 	ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
-	rm -f $SERVERBASE/old.log
+	rm -f $SERVERBASE/old.{log,pid}
 	mv $SERVERBASE/current.log $SERVERBASE/old.log &> /dev/null
+	mv $SERVERBASE/current.pid $SERVERBASE/old.pid &> /dev/null
 	ln -s "logs/$LOG" $SERVERBASE/current.log
 	# wait for the server to terminate
 	wait $PID
