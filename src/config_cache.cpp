@@ -267,11 +267,11 @@ namespace game_config {
 
 		DBG_CACHE << "Reading cached defines from: " << path << "\n";
 
-		// use static preproc_define::read_pair(config*) to make a object
+		// use static preproc_define::read_pair(config) to make a object
 		// and pass that object config_cache_transaction::insert_to_active method
 		foreach (const config::any_child &value, cfg.all_children_range()) {
 			config_cache_transaction::instance().insert_to_active(
-				preproc_define::read_pair(&value.cfg));
+				preproc_define::read_pair(value.cfg));
 		}
 	}
 

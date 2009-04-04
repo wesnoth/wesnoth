@@ -90,18 +90,16 @@ void preproc_define::read(const config& cfg)
 		read_argument(arg);
 }
 
-preproc_map::value_type preproc_define::read_pair(const config* cfg)
+preproc_map::value_type preproc_define::read_pair(const config &cfg)
 {
-	std::string first = (*cfg)["name"];
-
 	preproc_define second;
-	second.read(*cfg);
-	return std::make_pair(first, second);
+	second.read(cfg);
+	return preproc_map::value_type(cfg["name"], second);
 }
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
 {
-	return stream << std::string("value: ") << def.value << std::string(" arguments: ") << def.location;
+	return stream << "value: " << def.value << " arguments: " << def.location;
 }
 
 std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def)

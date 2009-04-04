@@ -47,7 +47,7 @@ struct preproc_define
 	void write_argument(config_writer&, const std::string&) const;
 	void read(const config&);
 	void read_argument(const config &);
-	static preproc_map::value_type read_pair(const config*);
+	static preproc_map::value_type read_pair(const config &);
 	bool operator==(preproc_define const &) const;
 	bool operator<(preproc_define const &) const;
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
