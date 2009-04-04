@@ -175,6 +175,12 @@ public:
 	t_string& operator[](const std::string& key);
 	const t_string& operator[](const std::string& key) const;
 
+	/**
+	 * Returns a reference to the first child with the given @a key.
+	 * Creates the child if it does not yet exist.
+	 */
+	config &child_or_add(const std::string &key);
+
 	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
 	void remove_attribute(const std::string& key) {values.erase(key);}

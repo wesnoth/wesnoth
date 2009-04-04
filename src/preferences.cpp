@@ -585,12 +585,10 @@ void save_hotkeys() {
 	hotkey::save_hotkeys(prefs);
 }
 
-void add_alias(const std::string& alias, const std::string& command) {
-	config* alias_list = prefs.child("alias");
-	if (alias_list == NULL) {
-		alias_list = &(prefs.add_child("alias"));
-	}
-	(*alias_list)[alias] = command;
+void add_alias(const std::string &alias, const std::string &command)
+{
+	config &alias_list = prefs.child_or_add("alias");
+	alias_list[alias] = command;
 }
 
 

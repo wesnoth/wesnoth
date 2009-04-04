@@ -168,6 +168,15 @@ config config::child_or_empty(const std::string& key) const
 	return config();
 }
 
+config &config::child_or_add(const std::string &key)
+{
+	child_map::const_iterator i = children.find(key);
+	if (i != children.end() && !i->second.empty())
+		return *i->second.front();
+
+	return add_child(key);
+}
+
 config& config::add_child(const std::string& key)
 {
 	child_list& v = children[key];

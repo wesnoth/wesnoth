@@ -2633,36 +2633,27 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						set_state(remove,"");
 					}
 				} else if (apply_to == "movement_costs") {
-					config *mv = cfg_.child("movement_costs");
+					config &mv = cfg_.child_or_add("movement_costs");
 					const config *ap = effect.child("movement_costs");
 					const std::string &replace = effect["replace"];
-					if(!mv) {
-						mv = &cfg_.add_child("movement_costs");
-					}
 					if (ap) {
-						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
-					config *mv = cfg_.child("defense");
+					config &mv = cfg_.child_or_add("defense");
 					const config *ap = effect.child("defense");
 					const std::string &replace = effect["replace"];
-					if(!mv) {
-						mv = &cfg_.add_child("defense");
-					}
 					if (ap) {
-						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
 					}
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
-					config *mv = cfg_.child("resistance");
+					config &mv = cfg_.child_or_add("resistance");
 					const config *ap = effect.child("resistance");
 					const std::string &replace = effect["replace"];
-					if(!mv) {
-						mv = &cfg_.add_child("resistance");
-					}
 					if (ap) {
-						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
 					}
 				} else if (apply_to == "zoc") {
 					const std::string &zoc_value = effect["value"];
@@ -2670,10 +2661,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						emit_zoc_ = utils::string_bool(zoc_value);
 					}
 				} else if (apply_to == "new_ability") {
-					config *ab = cfg_.child("abilities");
-					if(!ab) {
-						ab = &cfg_.add_child("abilities");
-					}
+					config &ab = cfg_.child_or_add("abilities");
 					const config *ab_effect = effect.child("abilities");
 					if (ab_effect) {
 						config to_append;
@@ -2682,7 +2670,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 								to_append.add_child(ab.key, ab.cfg);
 							}
 						}
-						ab->append(to_append);
+						ab.append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
 					const config *ab_effect = effect.child("abilities");

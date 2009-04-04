@@ -178,13 +178,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		if ( mode != "append") {
 			cfg_.clear_children("specials");
 		}
-		config* new_specials = cfg_.child("specials");
-		if (new_specials == NULL) {
-			cfg_.add_child("specials");
-			new_specials = cfg_.child("specials");
-		}
+		config &new_specials = cfg_.child_or_add("specials");
 		foreach (const config::any_child &value, set_specials->all_children_range()) {
-			new_specials->add_child(value.key, value.cfg);
+			new_specials.add_child(value.key, value.cfg);
 		}
 	}
 

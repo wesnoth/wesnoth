@@ -658,10 +658,9 @@ config connect::side::get_config() const
 			}
 			{
 				res["id"] = res["save_id"];
-				config *ai = res.child("ai");
-				if (!ai) ai = &res.add_child("ai");
+				config &ai = res.child_or_add("ai");
 				if (ai_algorithm_ != "default")
-				     (*ai)["ai_algorithm"] = ai_algorithm_;
+					ai["ai_algorithm"] = ai_algorithm_;
 			}
 			description = N_("Computer player");
 			break;
