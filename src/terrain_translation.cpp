@@ -314,7 +314,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		result[x][y] = tile;
 
 		// Evaluate the separator
-		if(utils::isnewline(str[pos_separator]) || pos_separator == std::string::npos) {
+		if(pos_separator == std::string::npos || utils::isnewline(str[pos_separator])) {
 			// the first line we set the with the other lines we check the width
 			if(y == 0) {
 				// x contains the offset in the map
