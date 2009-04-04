@@ -49,9 +49,12 @@ public:
 
 
 private:
-	// Used by ctor; processes possible WML branching instructions
-	// ([if]/[else] and [switch]) and builds the page cache.
-	void build_pages();
+	// Executes WML flow instructions and inserts pages.
+	void resolve_wml(const vconfig& cfg);
+	// Used by ctor.
+	void build_pages() {
+		resolve_wml(data_);
+	}
 	// Used by dtor.
 	void clear_pages();
 

@@ -25,6 +25,8 @@
 #include <string>
 #include <vector>
 
+struct SDL_Rect;
+struct surface;
 class config;
 class vconfig;
 class game_state;
@@ -38,7 +40,22 @@ namespace storyscreen {
 class floating_image
 {
 public:
+	struct render_input
+	{
+		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
+		surface image;	/**< Surface, scaled if required. */
+	};
+
+	floating_image();
 	floating_image(const config& cfg);
+	floating_image(const floating_image& fi);
+
+	void assign(const floating_image& fi);
+
+	floating_image& operator=(const floating_image& fi) {
+		assign(fi);
+		return *this;
+	}
 
 	/** Returns the referential X coordinate of the image. */
 	int ref_x() const { return x_; }
@@ -51,9 +68,10 @@ public:
 	/** Delay before displaying, in milliseconds. */
 	int display_delay() const { return delay_; }
 
-private:
-	floating_image();
+	/** Render. */
+	render_input get_render_input(double scale, SDL_Rect& dst_rect) const;
 
+private:
 	std::string file_;
 	int x_, y_; // referential (non corrected) x,y
 	int delay_;
@@ -72,6 +90,9 @@ public:
 		MIDDLE,
 		BOTTOM
 	};
+	enum TITLE_ALIGNMENT {
+		LEFT, CENTERED, RIGHT
+	};
 
 	page(game_state& state_of_game, const vconfig& page_cfg);
 
@@ -82,12 +103,18 @@ public:
 	const std::string& text() const { return text_; }
 	const std::string& title() const { return text_title_; }
 
+	void set_text(const std::string& text) { text_ = text; }
+	void set_title(const std::string& title) { text_title_ = title; }
+
+	void render() const;
+
 private:
 	page();
 
-	void resolve_wml(const vconfig& page_cfg);
+	void resolve_wml(const vconfig& cfg, game_state& gamestate);
 
 	static TEXT_BLOCK_LOCATION string_tblock_loc(const std::string& s);
+	static TITLE_ALIGNMENT string_title_align(const std::string& s);
 
 	bool scale_background_;
 	std::string background_file_;
@@ -96,6 +123,7 @@ private:
 	std::string text_;
 	std::string text_title_;
 	TEXT_BLOCK_LOCATION text_block_loc_;
+	TITLE_ALIGNMENT title_alignment_;
 
 	std::string music_;
 

@@ -67,23 +67,72 @@ controller::~controller()
 	clear_pages();
 }
 
-void controller::build_pages()
+void controller::resolve_wml(const vconfig& cfg)
 {
+	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); i++)
+	{
+		// i->first and i->second are goddamn temporaries; do not make references
+		const std::string key = i->first;
+		const vconfig node = i->second;
 
+		// [page] and deprecated [part] (remove in 1.7.4)
+		if((key == "page" || key == "part") && !node.empty()) {
+			if(key == "part") {
+				lg::wml_error << "[part] in [story] has been deprecated and support for it will be removed in 1.7.4; use [page] instead.\n";
+			}
 
-	for(vconfig::all_children_iterator i = data_.ordered_begin(); i != data_.ordered_end(); i++) {
-		const std::pair<const std::string, const vconfig> item = *i;
-
-		if(item.first == "page" && !item.second.empty()) {
-			vconfig cfg = item.second;
+			page* const story_page = new page(*gamestate_, node);
 			// Use scenario name as page title if the WML doesn't supply a custom one.
-// 			if(cfg["title"].empty()) {
-// 				cfg["title"] = scenario_name_;
-// 			}
-
-//			page* story_page = new page(*gamestate_, cfg);
+			if((*story_page).show_title() && (*story_page).title().empty()) {
+				(*story_page).set_title( scenario_name_ );
+			}
+			pages_.push_back(story_page);
 		}
+		// [if]
+		else if(key == "if") {
+			const std::string branch_label =
+				game_events::conditional_passed(NULL, node) ?
+				"then" : "else";
+			const vconfig branch = node.child(branch_label);
+			resolve_wml(branch);
+		}
+		// [switch]
+		else if(key == "switch") {
+			const std::string var_name = node["variable"];
+			const std::string var_actual_value = (*gamestate_).get_variable_const(var_name);
+			bool case_not_found = true;
 
+			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
+				if(j->first != "case") continue;
+
+				// Enter all matching cases.
+				const std::string var_expected_value = (j->second)["value"];
+			    if(var_actual_value == var_expected_value) {
+					case_not_found = false;
+					resolve_wml(j->second);
+			    }
+			}
+
+			if(case_not_found) {
+				for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
+					if(j->first != "else") continue;
+
+					// Enter all elses.
+					resolve_wml(j->second);
+				}
+			}
+		}
+		// [deprecated_message]
+		else if(key == "deprecated_message") {
+			// Won't appear until the scenario start event finishes.
+			game_events::handle_deprecated_message(node.get_parsed_config());
+		}
+		// [wml_message]
+		else if(key == "wml_message") {
+			// Pass to game events handler. As with [deprecated_message],
+			// it won't appear until the scenario start event is complete.
+			game_events::handle_wml_log_message(node.get_parsed_config());
+		}
 	}
 }
 

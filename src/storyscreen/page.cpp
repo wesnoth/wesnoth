@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 #include "asserts.hpp"
+#include "image.hpp"
 #include "log.hpp"
 #include "storyscreen/page.hpp"
 
@@ -36,6 +37,27 @@
 
 namespace storyscreen {
 
+floating_image::floating_image()
+	: file_()
+	, x_(0)
+	, y_(0)
+	, delay_(0)
+	, autoscaled_(false)
+	, centered_(false)
+{
+}
+
+floating_image::floating_image(const floating_image& fi)
+	: file_()
+	, x_(0)
+	, y_(0)
+	, delay_(0)
+	, autoscaled_(false)
+	, centered_(false)
+{
+	this->assign(fi);
+}
+
 floating_image::floating_image(const config& cfg)
 	: file_(cfg["file"])
 	, x_(lexical_cast_default<int>(cfg["x"]))
@@ -46,88 +68,42 @@ floating_image::floating_image(const config& cfg)
 {
 }
 
-page::page(game_state& /*state_of_game*/, const vconfig& page_cfg)
-	: scale_background_(utils::string_bool(page_cfg["scale_background"], true))
-	, background_file_(page_cfg["background"])
-	, show_title_(utils::string_bool(page_cfg["show_title"], false))
-	, text_(page_cfg["story"])
-	, text_title_(page_cfg["title"])
-	, text_block_loc_(string_tblock_loc(page_cfg["text_layout"]))
-	, music_(page_cfg["music"])
-	, floating_images_()
+void floating_image::assign(const floating_image& fi)
 {
-	resolve_wml(page_cfg);
+	if(&fi == this)
+		return;
+
+	file_ = fi.file_; x_ = fi.x_; y_ = fi.y_; delay_ = fi.delay_;
+	autoscaled_ = fi.autoscaled_; centered_ = fi.centered_;
 }
 
-page::TEXT_BLOCK_LOCATION page::string_tblock_loc(const std::string& s)
+floating_image::render_input floating_image::get_render_input(double scale, SDL_Rect& dst_rect) const
 {
-	if(s.empty() != true) {
-		if(s == "top") {
-			return page::TOP;
+	render_input ri = {
+		{0,0,0,0},
+		file_.empty() ? NULL : image::get_image(file_)
+	};
+
+	if(!ri.image.null()) {
+		if(autoscaled_) {
+			ri.image = scale_surface(
+				ri.image,
+				static_cast<int>(ri.image->w * scale),
+				static_cast<int>(ri.image->h * scale)
+			);
 		}
-		else if(s == "middle" || s == "center") {
-			return page::MIDDLE;
+
+		ri.rect.x = static_cast<int>(x_*scale) + dst_rect.x;
+		ri.rect.y = static_cast<int>(y_*scale) + dst_rect.y;
+		ri.rect.w = ri.image->w;
+		ri.rect.h = ri.image->h;
+
+		if(centered_) {
+			ri.rect.x -= ri.rect.w / 2;
+			ri.rect.y -= ri.rect.h / 2;
 		}
 	}
-
-	return page::BOTTOM;
-}
-
-void page::resolve_wml(const vconfig& page_cfg)
-{
-	STUB();
-	for(vconfig::all_children_iterator i = page_cfg.ordered_begin(); i != page_cfg.ordered_end(); ++ i) {
-		const std::pair<const std::string, const vconfig> xi = *i;
-		if(xi.first == "image") {
-			floating_images_.push_back(xi.second.get_parsed_config());
-		}
-		else if(xi.first == "if") {
-			const std::string type = game_events::conditional_passed(
-				NULL, xi.second) ? "then":"else";
-			const vconfig branch = xi.second.child(type);
-			if(!branch.empty()) {
-				if(branch.has_attribute("background")) {
-					this->background_file_ = branch["background"];
-				}
-				if(branch.has_attribute("scale_background")) {
-					this->scale_background_ = utils::string_bool(branch["scale_background"], true);
-				}
-				if(branch.has_attribute("show_title")) {
-					this->show_title_ = utils::string_bool(branch["show_title"], false);
-				}
-				if(branch.has_attribute("title")) {
-					this->text_title_ = branch["title"];
-				}
-				if(branch.has_attribute("story")) {
-					this->text_ = branch["story"];
-				}
-				if(branch.has_attribute("text_layout")) {
-					this->text_block_loc_ = string_tblock_loc(branch["text_layout"]);
-				}
-				if(branch.has_attribute("music")) {
-					this->text_ = branch["music"];
-				}
-
-				// TODO recursive eval
-				// TODO image stack
-
-			}
-		}
-		else if(xi.first == "switch") {
-		}
-		else if(xi.first == "deprecated_message") {
-			const std::string dmsg = (xi.second)["message"];
-			if(!dmsg.empty()) {
-				lg::wml_error << dmsg << '\n';
-			}
-		}
-	}
-}
-
-floating_image::floating_image()
-	: file_(), x_(0), y_(0), delay_(0), autoscaled_(false), centered_(false)
-{
-	ASSERT_EQ(0xBAD,0xBEEF);
+	return ri;
 }
 
 page::page()
@@ -137,11 +113,144 @@ page::page()
 	, text_()
 	, text_title_()
 	, text_block_loc_()
+	, title_alignment_()
 	, music_()
 	, floating_images_()
 {
-	ASSERT_EQ(0xDEAD,0xBEEF);
+	ASSERT_LOG(0xDEADBEEF == 0x0, "Ouch: shouldn't happen");
 }
+
+page::page(game_state& state_of_game, const vconfig& page_cfg)
+	: scale_background_()
+	, background_file_()
+	, show_title_()
+	, text_()
+	, text_title_()
+	, text_block_loc_()
+	, title_alignment_()
+	, music_()
+	, floating_images_()
+{
+	// This method takes care of initializing
+	// and branching properties.
+	resolve_wml(page_cfg, state_of_game);
+}
+
+page::TEXT_BLOCK_LOCATION page::string_tblock_loc(const std::string& s)
+{
+	if(s.empty() != true) {
+		if(s == "top") {
+			return page::TOP;
+		}
+		else if(s == "centered" || s == "center" || s == "middle") {
+			return page::MIDDLE;
+		}
+	}
+	return page::BOTTOM;
+}
+
+page::TITLE_ALIGNMENT page::string_title_align(const std::string& s)
+{
+	if(s.empty() != true) {
+		if(s == "right") {
+			return page::RIGHT;
+		}
+		else if(s == "centered" || s == "center" || s == "middle") {
+			return page::CENTERED;
+		}
+	}
+	return page::LEFT;
+}
+
+void page::resolve_wml(const vconfig& cfg, game_state& gamestate)
+{
+	if(cfg.has_attribute("background")) {
+		background_file_ = cfg["background"];
+	}
+	if(cfg.has_attribute("scale_background")) {
+		scale_background_ = utils::string_bool(cfg["scale_background"], true);
+	}
+	if(cfg.has_attribute("show_title")) {
+		show_title_ = utils::string_bool(cfg["show_title"]);
+	}
+	if(cfg.has_attribute("story")) {
+		text_ = cfg["story"];
+	}
+	if(cfg.has_attribute("title")) {
+		text_title_ = cfg["title"];
+	}
+	if(cfg.has_attribute("text_layout")) {
+		text_block_loc_ = string_tblock_loc(cfg["text_layout"]);
+	}
+	if(cfg.has_attribute("title_alignment")) {
+		title_alignment_ = string_title_align(cfg["title_alignment"]);
+	}
+	if(cfg.has_attribute("music")) {
+		music_ = cfg["music"];
+	}
+
+	// Execution flow/branching/[image]
+	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++ i) {
+		// i->first and i->second are goddamn temporaries; do not make references
+		const std::string key = i->first;
+		const vconfig node = i->second;
+
+		// [image]
+		if(key == "image") {
+			floating_images_.push_back(node.get_parsed_config());
+		}
+		// [if]
+		else if(key == "if") {
+			const std::string branch_label =
+				game_events::conditional_passed(NULL, node) ?
+				"then" : "else";
+			const vconfig branch = node.child(branch_label);
+			resolve_wml(branch, gamestate);
+		}
+		// [switch]
+		else if(key == "switch") {
+			const std::string var_name = node["variable"];
+			const std::string var_actual_value = gamestate.get_variable_const(var_name);
+			bool case_not_found = true;
+
+			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
+				if(j->first != "case") continue;
+
+				// Enter all matching cases.
+				const std::string var_expected_value = (j->second)["value"];
+			    if(var_actual_value == var_expected_value) {
+					case_not_found = false;
+					resolve_wml(j->second, gamestate);
+			    }
+			}
+
+			if(case_not_found) {
+				for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
+					if(j->first != "else") continue;
+
+					// Enter all elses.
+					resolve_wml(j->second, gamestate);
+				}
+			}
+		}
+		// [deprecated_message]
+		else if(key == "deprecated_message") {
+			// Won't appear until the scenario start event finishes.
+			game_events::handle_deprecated_message(node.get_parsed_config());
+		}
+		// [wml_message]
+		else if(key == "wml_message") {
+			// Pass to game events handler. As with [deprecated_message],
+			// it won't appear until the scenario start event is complete.
+			game_events::handle_wml_log_message(node.get_parsed_config());
+		}
+	}
+}
+
+void page::render() const
+{
+}
+
 
 } // end namespace storyscreen
 
