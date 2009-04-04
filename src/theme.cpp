@@ -195,15 +195,12 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 				}
 
 				// cannot add [status] sub-elements, but who cares
-				if (const config &c = parent_stack.back()->child("add")) {
-					const config::child_map m = c.all_children();
-						for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
-							for(config::child_list::const_iterator k = j->second.begin();
-									k != j->second.end(); ++k) {
-								res_cfgs_.back().add_child(j->first, **k);
-							}
-						}
+				if (const config &c = parent_stack.back()->child("add"))
+				{
+					foreach (const config::any_child &j, c.all_children_range()) {
+						res_cfgs_.back().add_child(j.key, j.cfg);
 					}
+				}
 
 				parent_stack.pop_back();
 			}
@@ -617,10 +614,8 @@ void theme::add_object(const config& cfg)
 
 	if (const config &status_cfg = cfg.child("status"))
 	{
-		for(config::child_map::const_iterator i = status_cfg.all_children().begin(); i != status_cfg.all_children().end(); ++i) {
-			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				status_.insert(std::pair<std::string,status_item>(i->first,status_item(**j)));
-			}
+		foreach (const config::any_child &i, status_cfg.all_children_range()) {
+			status_.insert(std::pair<std::string, status_item>(i.key, status_item(i.cfg)));
 		}
 		if (const config &unit_image_cfg = status_cfg.child("unit_image")) {
 			unit_image_ = object(unit_image_cfg);
