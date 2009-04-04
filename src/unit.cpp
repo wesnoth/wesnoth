@@ -1602,26 +1602,24 @@ void unit::write(config& cfg) const
 
         if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
 
-            cfg.add_child("ai");
-            config* ai = cfg.child("ai");
+		config &ai = cfg.add_child("ai");
 
-            if (has_formula())
-                    (*ai)["formula"] = unit_formula_;
+		if (has_formula())
+			ai["formula"] = unit_formula_;
 
-            if (has_loop_formula())
-                    (*ai)["loop_formula"] = unit_loop_formula_;
+		if (has_loop_formula())
+			ai["loop_formula"] = unit_loop_formula_;
 
-            if (has_priority_formula())
-                    (*ai)["priority"] = unit_priority_formula_;
+		if (has_priority_formula())
+			ai["priority"] = unit_priority_formula_;
 
-            if (has_on_fail_formula())
-                    (*ai)["on_fail"] = unit_on_fail_formula_;
+		if (has_on_fail_formula())
+			ai["on_fail"] = unit_on_fail_formula_;
 
 
-            if (formula_vars_ && formula_vars_->empty() == false)
-            {
-                    (*ai).add_child("vars");
-                    config* ai_vars = (*ai).child("vars");
+		if (formula_vars_ && formula_vars_->empty() == false)
+		{
+			config &ai_vars = ai.add_child("vars");
 
                     std::string str;
                     for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
@@ -1629,7 +1627,7 @@ void unit::write(config& cfg) const
                             i->second.serialize_to_string(str);
                             if (!str.empty())
                             {
-                                    (*ai_vars)[i->first] = str;
+					ai_vars[i->first] = str;
                                     str.clear();
                             }
                     }
