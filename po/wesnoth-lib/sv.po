@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-26 12:25+0100\n"
-"PO-Revision-Date: 2009-02-04 17:22+0100\n"
-"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
+"PO-Revision-Date: 2009-03-28 09:24+0100\n"
+"Last-Translator: Kess Vargavind <vargavind@gmail.com>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -523,7 +523,7 @@ msgstr "Hålla att expandera / krympa"
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr "Kopiera kantterräng"
+msgstr "Kopiera kartterräng"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -535,12 +535,12 @@ msgstr "Ändra kartans storlek"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:105
 msgid "Editor Settings"
-msgstr "Editor-Snabbtangentsinställningar"
+msgstr "Editor-inställningar"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr "Förhandsinställning för tid på dagen-ljus"
+msgstr "Förhandsinställning av tid på dagen-ljus"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
@@ -576,7 +576,7 @@ msgstr "Blå:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr "Tillåt mer än en karta att vara öppen samtidigt (MDI)"
+msgstr "Tillåt fler än en karta att vara öppen samtidigt (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -606,7 +606,7 @@ msgstr "Språk"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr "Välj vilket språk du föredrar:"
+msgstr "Välj det språk du föredrar:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
@@ -627,7 +627,7 @@ msgstr "Meddelande"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr "Meddelande_"
+msgstr "Meddelande:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
@@ -716,12 +716,12 @@ msgstr "Spelets namn:"
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 msgid "Players: "
-msgstr "Spelare:"
+msgstr "Spelare: "
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr "Kartstorlek:"
+msgstr "Kartstorlek: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
@@ -786,7 +786,7 @@ msgstr "Skapa spel"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr "Logga in till flerspelsserver-dialog"
+msgstr "Logga in till gruppspelsserver"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -797,7 +797,7 @@ msgstr "Logga in"
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr "Inloggning:"
+msgstr "Användarnamn:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
@@ -821,7 +821,7 @@ msgstr "Lösenordspåminnelse"
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
 msgid "Multiplayer"
-msgstr "Gruppspels"
+msgstr "Gruppspel"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -958,7 +958,7 @@ msgstr "Radera fil"
 
 #: src/filechooser.cpp:79 src/filechooser.cpp:204
 msgid "New Folder"
-msgstr "Ny mapp"
+msgstr "Ny katalog"
 
 #: src/filechooser.cpp:192
 msgid "Deletion of the file failed."
@@ -982,11 +982,11 @@ msgstr "spelare"
 
 #: src/game_preferences_display.cpp:151 src/hotkeys.cpp:55
 msgid "Toggle Full Screen"
-msgstr "Helskärm på/av"
+msgstr "Helskärmsläge"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr "Aktivera rull-följning av trupphändelser"
+msgstr "Följ trupphändelser"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -994,7 +994,7 @@ msgstr "Accelererad"
 
 #: src/game_preferences_display.cpp:154
 msgid "Skip AI Moves"
-msgstr "Visa ej datorns steg"
+msgstr "Visa inte datorns steg"
 
 #: src/game_preferences_display.cpp:155
 msgid "Show Grid"
@@ -1010,7 +1010,7 @@ msgstr "Radera autosparade spel vid seger eller gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:158
 msgid "Do Not Show Lobby Joins"
-msgstr "Visa ej lobbyanslutningar"
+msgstr "Visa inte lobbyanslutningar"
 
 #: src/game_preferences_display.cpp:159
 msgid "Show Lobby Joins Of Friends Only"
@@ -1046,7 +1046,7 @@ msgstr "Visa svävande etiketter"
 
 #: src/game_preferences_display.cpp:171
 msgid "Turn Dialog"
-msgstr "Dragdialogruta"
+msgstr "Visa dragdialogruta"
 
 #: src/game_preferences_display.cpp:172
 msgid "Turn Bell"
@@ -1062,7 +1062,7 @@ msgstr "Visa pekare i färg"
 
 #: src/game_preferences_display.cpp:175
 msgid "Show Haloing Effects"
-msgstr "Visa halo-effekter"
+msgstr "Visa haloeffekter"
 
 #: src/game_preferences_display.cpp:176
 msgid "Change Resolution"
@@ -1244,7 +1244,7 @@ msgstr "Visa ikoner framför spelarnamn i lobbyn"
 
 #: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Avmarkera för att radera sparade lösenord (vid avslut)."
 
 #: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1416,57 +1416,56 @@ msgstr "Version"
 
 #: src/gui/widgets/canvas.cpp:308
 msgid "Line doesn't fit on canvas."
-msgstr "Linje ryms inte på canvas."
+msgstr "Linje ryms inte på ritytan."
 
 #: src/gui/widgets/canvas.cpp:443
 msgid "Rectangle doesn't fit on canvas."
-msgstr "Rektangel ryms inte på canvas."
+msgstr "Rektangel ryms inte på ritytan."
 
 #: src/gui/widgets/canvas.cpp:814
 msgid "Text has a font size of 0."
-msgstr "Text har fontstorlek 0."
+msgstr "Text har typsnittsstorlek 0."
 
 #: src/gui/widgets/canvas.cpp:879
 msgid "Text doesn't start on canvas."
-msgstr "Text startar ej på canvas."
+msgstr "Text börjar inte på ritytan."
 
 #: src/gui/widgets/helper.cpp:169
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Obligatoriska gränssnittskomponenten '$id' har inte definierats."
+msgstr "Obligatoriska gränssnittskomponenten ’$id’ har inte definierats."
 
 #: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
-msgstr "Inget standard-användargränssnitt definierat."
+msgstr "Inget standardanvändargränssnitt är definierat."
 
 #: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
-msgstr "Fönster ej definierat."
+msgstr "Fönstret är inte definierat."
 
 #: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
-"Gränssnittskomponenten-definitionen '$definition' innehåller inte "
-"definitionen för '$id'"
+"Gränssnittsdefinitionen ’$definition’ innehåller inte definitionen för ’$id’"
 
 #: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
-msgstr "Ingen upplösning definierad."
+msgstr "Ingen upplösning är definierad."
 
 #: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
-msgstr "Ingen tillstånd- eller ritsektion definierad."
+msgstr "Ingen tillstånds- eller ritsektion är definierad."
 
 #: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
 #: src/gui/widgets/window_builder.cpp:422
 #: src/gui/widgets/window_builder.cpp:932
 #: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
-msgstr "Inget rutnät definierat"
+msgstr "Inget rutnät är definierat."
 
 #: src/gui/widgets/window.cpp:609
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Kunde inte visa en dialog för att den ej fick plats på skärmen."
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
@@ -1474,24 +1473,24 @@ msgstr "En rad måste ha en kolumn."
 
 #: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
-msgstr "Antal kolumner skiljer sig åt."
+msgstr "Antalet kolumner är olika."
 
 #: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
-msgstr "Ingen lista definierad"
+msgstr "Ingen lista är definierad."
 
 #: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
-msgstr "En 'list_definition' måste innehålla en rad."
+msgstr "En ’list_definition’ bör ha en rad."
 
 #: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr "'list_data' måste ha samma antal kolumner som 'list_definition'."
+msgstr "’list_data’ måste ha samma antal kolumner som ’list_definition’."
 
 #: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
-msgstr "Antalet value_labels och values matchar inte."
+msgstr "Antalet ’value_label’ och antalet värden är olika."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1719,7 +1718,7 @@ msgstr "Kartinformation"
 
 #: src/hotkeys.cpp:114
 msgid "Swap fore- and background terrains"
-msgstr "Byt för- och bakgrundsterränger"
+msgstr "Växla terränger mellan för- och bakgrund"
 
 #: src/hotkeys.cpp:115
 msgid "Next Tool"
@@ -1735,7 +1734,7 @@ msgstr "Fyllnadsverktyg"
 
 #: src/hotkeys.cpp:118
 msgid "Selection Tool"
-msgstr "Markeringsverkty"
+msgstr "Markeringsverktyg"
 
 #: src/hotkeys.cpp:120
 msgid "Set Starting Positions Tool"
@@ -1763,11 +1762,11 @@ msgstr "Klistra in"
 
 #: src/hotkeys.cpp:126
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Skicka de markerade koordinaterna till systemets urklippshanterare"
 
 #: src/hotkeys.cpp:128
 msgid "Select All"
-msgstr "Markera alla"
+msgstr "Markera allt"
 
 #: src/hotkeys.cpp:130
 msgid "Select Inverse"
@@ -1775,7 +1774,7 @@ msgstr "Invertera markering"
 
 #: src/hotkeys.cpp:132
 msgid "Select None"
-msgstr "Markera ingen"
+msgstr "Ta bort markering"
 
 #: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
@@ -1823,7 +1822,7 @@ msgstr "Generera karta"
 
 #: src/hotkeys.cpp:158
 msgid "Apply a Mask"
-msgstr "Applicera en markering"
+msgstr "Applicera en maskering"
 
 #: src/hotkeys.cpp:160
 msgid "Create Mask"
@@ -1847,7 +1846,7 @@ msgstr "Uppdatera bildcache"
 
 #: src/hotkeys.cpp:170
 msgid "Draw Hex Coordinates"
-msgstr "Rita hex-koordinater"
+msgstr "Rita hexkoordinater"
 
 #: src/hotkeys.cpp:172
 msgid "Draw Terrain Codes"
@@ -1987,7 +1986,7 @@ msgstr "Maximal textbredd är mindre än 1."
 
 #: src/minimap.cpp:86
 msgid "Could not get image for terrain: $terrain."
-msgstr "Kunde inte hitta bild för terrängen $terrain."
+msgstr "Kunde inte hitta bild för terrängen ’$terrain’."
 
 #: src/minimap.cpp:115 src/minimap.cpp:127
 msgid "Error creating or aquiring an image."
@@ -2009,7 +2008,7 @@ msgstr "Snabbtangentsinställningar"
 
 #: src/preferences_display.cpp:212 src/preferences_display.cpp:280
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Tryck på önskad snabbtangent (Esc avbryter)"
+msgstr "Tryck på önskad snabbtangent (escape avbryter)"
 
 #: src/preferences_display.cpp:231
 msgid "Action"
@@ -2035,8 +2034,8 @@ msgstr "Den tangenten används redan till något annat."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
-"Varning: snabbtangenten för skärmdump är inte kombinerad med Control-, Alt- "
-"eller Meta-knappar."
+"Varning: snabbtangenten för skärmdump är inte kombinerad med kontroll-, alt- "
+"eller metaknappar."
 
 #: src/preferences_display.cpp:416
 msgid "There are no alternative video modes available"
@@ -2054,8 +2053,7 @@ msgstr "Fel"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
-"En terräng med fler än 4 tecken har hittats, den aktuella terrängen är "
+msgstr "En terräng med fler än fyra tecken har hittats:"
 
 #: src/wml_exception.cpp:52
 msgid ""
@@ -2063,119 +2061,21 @@ msgid ""
 "The error message is :"
 msgstr ""
 "Ett fel, möjligen på grund av ogiltig WML inträffade\n"
-"Felmeddelandet är :"
+"Felmeddelandet är:"
 
 #: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
-msgstr "När du rapporterar felet var god Inkludera följande felmeddelande :"
+msgstr "När du rapporterar felet var god inkludera följande felmeddelande:"
 
 #: src/wml_exception.cpp:72
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"I avsnitt '[$section|]' där '$primary_key| = $primary_value' är den the "
-"obligatoriska nyckeln '$key|' inte satt."
+"I avsnittet ’[$section|]’ där ’$primary_key| = $primary_value’ är den "
+"obligatoriska nyckeln ’$key|’ inte satt."
 
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-"I avsnittet '[$section|]' är den obligatoriska nyckeln '$key|' inte satt."
-
-#~ msgid "Adjust Gamma"
-#~ msgstr "Ställ in ljusstyrka"
-
-#~ msgid "Gamma:"
-#~ msgstr "Ljusstyrka:"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "Ändra bildskärmens ljusstyrka"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Lägg till ett användarnamn"
-
-#, fuzzy
-#~ msgid "No scrollbar defined."
-#~ msgstr "Kunde inte skapa karta."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr ""
-#~ "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Generera ny karta"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Inställningar för slumpgenerator"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Kunde inte skapa karta."
-
-#~ msgid "Video Mode"
-#~ msgstr "Videoläge"
-
-#~ msgid "X offset:"
-#~ msgstr "X-offset:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Y-offset:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Smart utvidgning"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-axel"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-axel"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Flippa (detta kan ändra kartans dimensioner):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Ange terräng"
-
-#~ msgid "Save As"
-#~ msgstr "Spara som..."
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Ange spelarens kärntorn"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Fyll allt"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Återställ från disk"
-
-#~ msgid "Flip Map"
-#~ msgstr "Flippa kartan"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Rita terräng"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Fördröj övergångsuppdateringarna"
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Rotera markerat"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Upplyst grotta"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Upplyst klippgrotta"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr ""
-#~ "Ogiltig terräng identifierad, troligtvis version 1.2-format; terrängkod "
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr "Spara repris vid singelspelsseger eller nederlag"
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr "Radera sparade spel vid singelspelsseger eller nederlag automatiskt"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Spara snabbtangenter"
+"I avsnittet ’[$section|]’ är den obligatoriska nyckeln ’$key|’ inte satt."

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-26 12:25+0100\n"
-"PO-Revision-Date: 2009-02-05 00:57+0100\n"
-"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
+"PO-Revision-Date: 2009-03-23 22:29+0100\n"
+"Last-Translator: Kess Vargavind <vargavind@gmail.com>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,57 +42,57 @@ msgstr "Hex-linje NV-SÖ"
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr "alla"
+msgstr "Samtliga terränger"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr "vatten"
+msgstr "Vattenterräng"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr "slätt"
+msgstr "Slätterräng"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr "öken"
+msgstr "Ökenterräng"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr "skog"
+msgstr "Skogsterräng"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr "frusen"
+msgstr "Frusen terräng"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr "oländig"
+msgstr "Oländig terräng"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr "grotta"
+msgstr "Grottor"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
 msgid "village"
-msgstr "by"
+msgstr "Byar"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr "slott"
+msgstr "Slott"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr "speciell"
+msgstr "Speciell terräng"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -104,8 +104,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
-"Använd vänster/höger musknapp för att rita för-/bakgrundsterräng. Håll ner "
-"shift för att enbart rita baslagret."
+"Använd vänster/höger musknapp för att rita för/bakgrundsterräng. Håll ner "
+"skift för att enbart rita grundlagret."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -114,7 +114,7 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
-"Vänster musknapp markerar, höger avmarkerar. Håll ner shift för trollspö-"
+"Vänster musknapp markerar, höger avmarkerar. Håll ner skift för luddig "
 "markering av rutor med samma terräng."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
@@ -125,9 +125,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Vänster musknapp visar spelarmarkering, höger musknapp rensar. Sifferknappar "
-"rullar till startposition, alt+siffra sätter respektive startposition under "
-"markören, delete rensar."
+"Vänster musknapp sätter startposition, höger musknapp tar bort "
+"startposition. Sifferknappar rullar till motsvarande startpositioner, alt "
+"plus sifferknapp sätter startpositionen för motsvarande spelare under "
+"markören, delete tar bort startpositionen under markören."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -136,7 +137,7 @@ msgid ""
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
 "Klicka för att klistra in, zooma ut för större noggrannhet vid inklistring "
-"av större ytor. Använd redigera-menyn för att transformera urklipp (rotera, "
+"av större ytor. Använd redigeramenyn för att transformera urklipp (rotera, "
 "spegla)."
 
 #. [menu]: id=menu-editor-file
@@ -174,7 +175,7 @@ msgstr "Åtgärd ej implementerad"
 
 #: src/editor2/editor_controller.cpp:124
 msgid "Quit Editor"
-msgstr "Vill du verkligen sluta?"
+msgstr "Avsluta karteditorn"
 
 #: src/editor2/editor_controller.cpp:276
 msgid "Fatal error"
@@ -215,7 +216,7 @@ msgstr "Fel"
 
 #: src/editor2/editor_controller.cpp:360
 msgid "No editor time-of-day found."
-msgstr "Ingen tid-på-dan för editorn hittades."
+msgstr "Ingen tid-på-dagen för editorn hittades."
 
 #: src/editor2/editor_controller.cpp:396
 msgid "Unsaved Changes"
@@ -328,93 +329,11 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Vilken spelare ska starta här? Använd Alt plus sifferknapp för att sätta "
+"startposition för en spelare och Delete för att ta bort den startposition "
+"som finns under muspekaren. Tryck på en sifferknapp för att rulla till "
+"motsvarande spelares startposition."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Egen inställning"
-
-#~ msgid ""
-#~ "Which player should start here? You can also use the 1-9 and delete keys "
-#~ "to set/clear starting positions."
-#~ msgstr ""
-#~ "Vilken spelare ska börja här? Du kan också använda knapparna 1 - 9 och "
-#~ "delete för att sätta/rensa startpositioner."
-
-#~ msgid "Settings"
-#~ msgstr "Inställningar"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Rita fält"
-
-#~ msgid "Fill"
-#~ msgstr "Fyll"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Ange spelarens startposition"
-
-#~ msgid "Zoom in"
-#~ msgstr "Zooma in"
-
-#~ msgid "Zoom out"
-#~ msgstr "Zooma ut"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Standardzoom"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Visa rutnät"
-
-#~ msgid "Resize the map"
-#~ msgstr "Ändra kartans storlek"
-
-#~ msgid "Flip map"
-#~ msgstr "Spegla kartan"
-
-#~ msgid "Update transitions"
-#~ msgstr "Uppdatera övergångar"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Fördröj övergångsuppdateringar"
-
-#~ msgid "Language"
-#~ msgstr "Språk"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Välj språk: "
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Kampen om Wesnoths karteditor"
-
-#~ msgid "None"
-#~ msgstr "Ingen"
-
-#~ msgid "Which Player?"
-#~ msgstr "Vilken spelare?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Vilken spelare skall börja här?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Varning: otillåtna tecken finns i kartnamnet. Du måste spara kartan under "
-#~ "ett annat namn."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Filen innehåller inte en giltig karta."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Vill du spara kartan innan du slutar?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Fel: otillåtet tecken i filnamnet."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Kartans storlek kan inte ändras; den önskade storleken är större än "
-#~ "maximal storlek, "
-
-#~ msgid " maximum="
-#~ msgstr " maximum = "
