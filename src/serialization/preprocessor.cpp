@@ -86,8 +86,8 @@ void preproc_define::read(const config& cfg)
 	linenum = lexical_cast<int>(cfg["linenum"]);
 	location = cfg["location"];
 
-	foreach (const config *arg, cfg.get_children("argument"))
-		read_argument(*arg);
+	foreach (const config &arg, cfg.child_range("argument"))
+		read_argument(arg);
 }
 
 preproc_map::value_type preproc_define::read_pair(const config* cfg)
