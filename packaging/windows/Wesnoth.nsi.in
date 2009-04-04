@@ -62,6 +62,7 @@
   !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX" 
   !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+  !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Battle for Wesnoth %version"
   
   !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
