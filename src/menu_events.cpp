@@ -2126,6 +2126,7 @@ private:
 		protected:
 			void do_emote();
 			void do_network_send();
+			void do_network_send_req_arg();
 			void do_whisper();
 			void do_log();
 			void do_ignore();
@@ -2178,23 +2179,25 @@ private:
 				register_command("query", &chat_command_handler::do_network_send,
 					_("Send a query to the server. Without arguments the server"
 					" should tell you the available commands."));
-				register_command("ban", &chat_command_handler::do_network_send,
+				register_command("ban", &chat_command_handler::do_network_send_req_arg,
 					_("Ban and kick a player or observer. If he is not in the"
 					" game but on the server he will only be banned."), "<nick>");
-				register_command("kick", &chat_command_handler::do_network_send,
+				register_command("kick", &chat_command_handler::do_network_send_req_arg,
 					_("Kick a player or observer."), "<nick>");
 				register_command("mute", &chat_command_handler::do_network_send,
-					_("Mute an observer."), "<nick>");
+					_("Mute an observer. Without an argument displays the mute status."), "<nick>");
 				register_command("muteall", &chat_command_handler::do_network_send,
 					_("Mute all observers."), "");
 				register_command("ping", &chat_command_handler::do_network_send,
 					"");
-				register_command("green", &chat_command_handler::do_network_send,
+				register_command("green", &chat_command_handler::do_network_send_req_arg,
 					"", "", "A");
-				register_command("red", &chat_command_handler::do_network_send,
+				register_command("red", &chat_command_handler::do_network_send_req_arg,
 					"", "", "A");
-				register_command("yellow", &chat_command_handler::do_network_send,
+				register_command("yellow", &chat_command_handler::do_network_send_req_arg,
 					"", "", "A");
+				register_command("adminmsg", &chat_command_handler::do_network_send_req_arg,
+					_("Send a message to the server admins currently online"), "");
 				register_command("emote", &chat_command_handler::do_emote,
 					_("Send an emotion or personal action in chat."), "<message>");
 				register_alias("emote", "me");
@@ -2498,6 +2501,8 @@ private:
 			data.add_child("query")["type"] = "lobbymsg #" + args;
 		} else if (cmd == "yellow") {
 			data.add_child("query")["type"] = "lobbymsg <255,255,0>" + args;
+		} else if (cmd == "adminmsg") {
+			data.add_child("query")["type"] = "adminmsg " + args;
 		}
 		network::send_data(data, 0, true);
 	}
@@ -2530,6 +2535,12 @@ private:
 	void chat_command_handler::do_network_send()
 	{
 		chat_handler_.send_command(get_cmd(), get_data());
+	}
+
+	void chat_command_handler::do_network_send_req_arg()
+	{
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		do_network_send();
 	}
 
 	void chat_command_handler::do_whisper()
