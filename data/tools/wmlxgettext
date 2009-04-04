@@ -61,9 +61,8 @@ Usage: wmlxgettext [options] dirpath
     Options may be any of these:
     -h, --help                   Emit this help message and quit
     -d dir, --directory=dir      operate on specified directory
-    -i dn, --initialdomain=dn    Set initialdomain
-    -s dn, --domain=dn           Set domain
-    -v val. --verbose=val      Set warning level
+    -s dn, --domain=dn           Generate only for specified domain
+    -v val. --verbose=val        Set warning level
    Options may be followed by any number of directiories to check.  If no
    directories are given, all files under the current directory are checked.
 """)
@@ -96,23 +95,19 @@ msgstr ""
 ''' % (version, time.strftime("%Y-%m-%d, %H:%M+0000", time.gmtime()))
 
     try:
-        initialdomain = 'wesnoth'
         domain = None
         verbose = 0
         # Process options
-        (options, arguments) = getopt.getopt(sys.argv[1:], "d:h:i:s:v:",
+        (options, arguments) = getopt.getopt(sys.argv[1:], "d:h:s:v:",
                                              [
                                               'directory=',
                                               'help',
-                                              'initialdomain=',
                                               'domain=',
                                               'verbose=',
                                               ])
         for (switch, val) in options:
             if switch in ('-d', '--directory'):
                 directory = val
-            elif switch in ('-i', '--initialdomain'):
-                initialdomain = val
             elif switch in ('-h', '--help'):
                 help()
                 sys.exit(0)
@@ -121,8 +116,6 @@ msgstr ""
             elif switch in ('-v', '--verbose'):
                 verbose = int(val)
 
-        if not domain:
-            domain = initialdomain
         if not arguments:
             arguments = '.'
 
@@ -199,12 +192,13 @@ msgstr ""
                 if verbose >= 2:
                     print fn + ":"
                 lines = file(fn).readlines()
-                if lines[0].startswith("#textdomain"):
-                    belongs_to = lines[0].split()[1]
-                    if belongs_to != domain:
-                        if verbose:
-                            print "wmlxgettext: skipping %s, wrong domain" % fn
-                        continue
+                if domain is not None:
+                    if lines[0].startswith("#textdomain"):
+                        belongs_to = lines[0].split()[1]
+                        if belongs_to != domain:
+                            if verbose:
+                                print "wmlxgettext: skipping %s, wrong domain" % fn
+                            continue
                 for nav in WmllintIterator(lines, fn):
                     handle_element(nav, fn)
         # Debugging output
