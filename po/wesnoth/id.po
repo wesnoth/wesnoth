@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-04-03 23:16+0530\n"
+"PO-Revision-Date: 2009-04-04 11:05+0530\n"
 "Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -2013,6 +2013,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -8824,13 +8825,12 @@ msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Nama '$nick' dilindungi dan tidak bisa digunakan oleh pemain."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Nama '$nick' terdaftar di server ini"
+msgstr "Nama '$nick' tidak terdaftar di server ini"
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "Server ini tidak membolehkan nama-nama tidak terdaftar."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9880,3 +9880,6 @@ msgstr "Bantu kami membuat Wesnoth lebih baik untuk anda!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Bolehkan upload ringkasan"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Bahasa Islandia"
