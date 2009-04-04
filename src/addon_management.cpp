@@ -34,7 +34,7 @@
 #include "formula_string_utils.hpp"
 
 
-#define DEFAULT_CAMPAIGND_PORT				15003
+#define DEFAULT_CAMPAIGND_PORT				15004
 
 #define ERR_CFG LOG_STREAM(err , config)
 #define LOG_CFG LOG_STREAM(info, config)
