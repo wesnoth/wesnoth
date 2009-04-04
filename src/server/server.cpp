@@ -2093,6 +2093,7 @@ void server::process_data_game(const network::connection sock,
 				<< ") while the scenario is not yet initialized.";
 			return;
 		}
+		g->save_replay();
 		size_t nsides = 0;
 		const simple_wml::node::child_list& sides = data.root().children("side");
 		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
