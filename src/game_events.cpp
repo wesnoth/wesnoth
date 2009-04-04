@@ -466,6 +466,13 @@ namespace game_events {
 		put_wml_message(logger,msg);
 	}
 
+	void handle_deprecated_message(const config& cfg)
+	{
+		// Note: no need to translate the string, since only used for deprecated things.
+		const std::string& message = cfg["message"];
+		lg::wml_error << message << '\n';
+	}
+
 } // end namespace game_events (1)
 
 namespace {
@@ -2080,9 +2087,7 @@ namespace {
 
 	WML_HANDLER_FUNCTION(deprecated_message,/*handler*/,/*event_info*/,cfg)
 	{
-		// Note: no need to translate the string, since only used for deprecated things.
-		const std::string message = cfg["message"];
-		lg::wml_error << message << '\n';
+		game_events::handle_deprecated_message( cfg.get_parsed_config() );
 	}
 
 	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
