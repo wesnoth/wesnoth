@@ -192,6 +192,8 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.total_movement());
 	} else if(key == "movement_left") {
 		return variant(u_.movement_left());
+	} else if(key == "attacks_left") {
+		return variant(u_.attacks_left());
 	} else if(key == "traits") {
 		const std::vector<std::string> traits = u_.get_traits_list();
 		std::vector<variant> res;
@@ -244,6 +246,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("level", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("movement_left", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("attacks_left", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("states", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
