@@ -194,21 +194,14 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
-	const config::child_map& list_map = abilities.all_children();
-	for (config::child_map::const_iterator i = list_map.begin(),
-	     i_end = list_map.end(); i != i_end; ++i) {
-		for (config::child_list::const_iterator j = i->second.begin(),
-		     j_end = i->second.end(); j != j_end; ++j)
-		{
-			std::string const &name = (
-				this->gender_ == unit_race::MALE || (**j)["female_name"].empty() ?
-				(**j)["name"] :
-				(**j)["female_name"]
-			);
-			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back((**j)["description"]);
-			}
+	foreach (const config::any_child &ab, abilities.all_children_range())
+	{
+		std::string const &name =
+			this->gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
+			ab.cfg["name"] : ab.cfg["female_name"];
+		if (!name.empty()) {
+			res.push_back(name);
+			res.push_back(ab.cfg["description"]);
 		}
 	}
 	return res;
@@ -220,14 +213,10 @@ std::vector<std::string> unit::get_ability_list() const
 
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
-	const config::child_map& list_map = abilities.all_children();
-	for (config::child_map::const_iterator i = list_map.begin(), i_end = list_map.end(); i != i_end; ++i) {
-		for (config::child_list::const_iterator j = i->second.begin(), j_end = i->second.end(); j != j_end; ++j) {
-			std::string const &id = (**j)["id"];
-
-			if (!id.empty())
-				res.push_back(id);
-		}
+	foreach (const config::any_child &ab, abilities.all_children_range()) {
+		std::string const &id = ab.cfg["id"];
+		if (!id.empty())
+			res.push_back(id);
 	}
 	return res;
 }
@@ -236,89 +225,34 @@ std::vector<std::string> unit::ability_tooltips(const map_location& loc) const
 {
 	std::vector<std::string> res;
 
-	if (const config &abilities = cfg_.child("abilities"))
+	const config &abilities = cfg_.child("abilities");
+	if (!abilities) return res;
+
+	foreach (const config::any_child &ab, abilities.all_children_range())
 	{
-		const config::child_map& list_map = abilities.all_children();
-		for (config::child_map::const_iterator i = list_map.begin(),
-		     i_end = list_map.end(); i != i_end; ++i) {
-			for (config::child_list::const_iterator j = i->second.begin(),
-			     j_end = i->second.end(); j != j_end; ++j) {
-				if (ability_active(i->first, **j, loc)) {
-					std::string const &name = (
-						gender_ == unit_race::MALE || (**j)["female_name"].empty() ?
-						(**j)["name"] :
-						(**j)["female_name"]
-					);
+		if (ability_active(ab.key, ab.cfg, loc))
+		{
+			std::string const &name =
+				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
+				ab.cfg["name"] : ab.cfg["female_name"];
 
-					if (!name.empty()) {
-						res.push_back(name);
-						res.push_back((**j)["description"]);
-					}
-				} else {
-					std::string const &name = (
-						gender_ == unit_race::MALE || (**j)["female_name_inactive"].empty() ?
-						(**j)["name_inactive"] :
-						(**j)["female_name_inactive"]
-					);
+			if (!name.empty()) {
+				res.push_back(name);
+				res.push_back(ab.cfg["description"]);
+			}
+		}
+		else
+		{
+			std::string const &name =
+				gender_ == unit_race::MALE || ab.cfg["female_name_inactive"].empty() ?
+				ab.cfg["name_inactive"] : ab.cfg["female_name_inactive"];
 
-					if (!name.empty()) {
-						res.push_back(name);
-						res.push_back((**j)["description_inactive"]);
-					}
-				}
+			if (!name.empty()) {
+				res.push_back(name);
+				res.push_back(ab.cfg["description_inactive"]);
 			}
 		}
 	}
-	/*
-	assert(units_ != NULL);
-	map_location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	for(int i = 0; i != 6; ++i) {
-		const unit_map::const_iterator it = units_->find(adjacent[i]);
-		if(it != units_->end() && 0 &&
-		!it->second.incapacitated()) {
-			const config* adj_abilities = it->second.cfg_.child("abilities");
-			if(adj_abilities) {
-				const config::child_map& adj_list_map = adj_abilities->all_children();
-				for(config::child_map::const_iterator k = adj_list_map.begin(); k != adj_list_map.end(); ++k) {
-					for(config::child_list::const_iterator j = k->second.begin(); j != k->second.end(); ++j) {
-						if(unit_abilities::affects_side(**j,*teams_,side(),it->second.side())) {
-							const config* adj_desc = (*j)->child("adjacent_description");
-							if(ability_affects_adjacent(k->first,**j,i,adjacent[i])) {
-								if(!adj_desc) {
-									if(it->second.ability_active(k->first,**j,loc)) {
-										if((**j)["name"] != "") {
-											res.push_back((**j)["name"].str());
-											res.push_back((**j)["description"].str());
-										}
-									} else {
-										if((**j)["name_inactive"] != "") {
-											res.push_back((**j)["name_inactive"].str());
-											res.push_back((**j)["description_inactive"].str());
-										}
-									}
-								} else {
-									if(it->second.ability_active(k->first,**j,loc)) {
-										if((*adj_desc)["name"] != "") {
-											res.push_back((*adj_desc)["name"].str());
-											res.push_back((*adj_desc)["description"].str());
-										}
-									} else {
-										if((*adj_desc)["name_inactive"] != "") {
-											res.push_back((*adj_desc)["name_inactive"].str());
-											res.push_back((*adj_desc)["description_inacive"].str());
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	*/
-
 	return res;
 }
 
@@ -599,23 +533,19 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
-	const config::child_map& list_map = specials.all_children();
-	for (config::child_map::const_iterator i = list_map.begin(),
-	     i_end = list_map.end(); i != i_end; ++i) {
-		for (config::child_list::const_iterator j = i->second.begin(),
-		     j_end = i->second.end(); j != j_end; ++j) {
-			if (force || special_active(**j, true)) {
-				t_string const &name = (**j)["name"];
-				if (!name.empty()) {
-					res.push_back(name);
-					res.push_back((**j)["description"]);
-				}
-			} else {
-				t_string const &name = (**j)["name_inactive"];
-				if (!name.empty()) {
-					res.push_back(name);
-					res.push_back((**j)["description_inactive"]);
-				}
+	foreach (const config::any_child &sp, specials.all_children_range())
+	{
+		if (force || special_active(sp.cfg, true)) {
+			const t_string &name = sp.cfg["name"];
+			if (!name.empty()) {
+				res.push_back(name);
+				res.push_back(sp.cfg["description"]);
+			}
+		} else {
+			t_string const &name = sp.cfg["name_inactive"];
+			if (!name.empty()) {
+				res.push_back(name);
+				res.push_back(sp.cfg["description_inactive"]);
 			}
 		}
 	}
@@ -628,19 +558,15 @@ std::string attack_type::weapon_specials(bool force) const
 	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
-	const config::child_map& list_map = specials.all_children();
-	for (config::child_map::const_iterator i = list_map.begin(),
-	     i_end = list_map.end(); i != i_end; ++i) {
-		for (config::child_list::const_iterator j = i->second.begin(),
-		     j_end = i->second.end(); j != j_end; ++j) {
-			char const *s = (force || special_active(**j, true))
-				? "name" : "name_inactive";
-			std::string const &name = (**j)[s];
+	foreach (const config::any_child &sp, specials.all_children_range())
+	{
+		char const *s = force || special_active(sp.cfg, true) ?
+			"name" : "name_inactive";
+		std::string const &name = sp.cfg[s];
 
-			if (!name.empty()) {
-				if (!res.empty()) res += ',';
-				res += name;
-			}
+		if (!name.empty()) {
+			if (!res.empty()) res += ',';
+			res += name;
 		}
 	}
 
