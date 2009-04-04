@@ -190,6 +190,9 @@ Section "Battle for Wesnoth" BfWSection
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk" "$INSTDIR\changelog.txt"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk" "$INSTDIR\players_changelog.txt"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\License.lnk" "$INSTDIR\COPYING.txt"
   
   !insertmacro MUI_STARTMENU_WRITE_END
 
@@ -264,6 +267,9 @@ Section "Uninstall"
 
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
 
+  Delete "$SMPROGRAMS\$StartMenuFolder\License.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Player's changelog.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Changelog.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Manual.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk"
