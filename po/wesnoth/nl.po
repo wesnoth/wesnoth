@@ -4,12 +4,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-11 17:15+0100\n"
+"PO-Revision-Date: 2009-04-04 20:30+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
-"Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
+"Language-Team: Dutch <AI0867@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2000,6 +2000,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2009,7 +2010,8 @@ msgstr ""
 "\n"
 "\n"
 "Gezonde eenheden hebben 1 HP plus 1 HP per rang meer dan gebruikelijk en "
-"iedere beurt rust geeft ze ook 2 HP meer."
+"iedere beurt rust geeft ze ook 2 HP meer. Ze ontvangen ook een kwart minder "
+"schade van vergif."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -8715,13 +8717,12 @@ msgstr ""
 "De bijnaam '$nick' is gereserveerd en kan niet door spelers worden gebruikt."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+msgstr "De bijnaam '$nick' is niet geregistreerd op deze server."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "Deze servers staat geen ongeregistreerde bijnamen toe."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9780,6 +9781,9 @@ msgstr "Help ons Wesnoth te verbeteren!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "IJslandse Vertaling"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Ongecontroleerde scriptbestanden gevonden:"
