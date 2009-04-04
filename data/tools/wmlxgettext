@@ -225,7 +225,8 @@ msgstr ""
                         if key[0] == tag and key[1] == file and key[2] == line:
                             attribs = " has " + ", ".join(value)
                     print "# %s, line %d: %s%s" % (file, line, tag, attribs)
-            print notes,
+            if notes:
+                print notes,
             notes = ""
             print 'msgid "%s"' % translatable
             print 'msgstr ""'
