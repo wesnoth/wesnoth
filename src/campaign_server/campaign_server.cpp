@@ -659,9 +659,15 @@ namespace {
 						write_file(campaign["filename"], std::string());
 						remove(campaign["filename"].c_str());
 
-						const config::child_list& campaigns_list = campaigns().get_children("campaign");
-						const size_t index = std::find(campaigns_list.begin(), campaigns_list.end(), &campaign) - campaigns_list.begin();
-						campaigns().remove_child("campaign",index);
+						config::child_itors itors = campaigns().child_range("campaign");
+						for (size_t index = 0; itors.first != itors.second;
+						     ++index, ++itors.first)
+						{
+							if (&campaign == &*itors.first) {
+								campaigns().remove_child("campaign", index);
+								break;
+							}
+						}
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Add-on deleted."), sock, gzipped);
