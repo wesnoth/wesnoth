@@ -152,6 +152,7 @@ public:
 	void send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type = "") const;
 
 	void record_data(simple_wml::document* data);
+	void save_replay();
 
 	/** The full scenario data. */
 	simple_wml::document& level() { return level_; }
@@ -220,7 +221,6 @@ private:
 	void send_observerjoins(const network::connection sock=0) const;
 	void send_observerquit(const player_map::const_iterator observer) const;
 	void send_history(const network::connection sock) const;
-	void save_replay();
 
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
