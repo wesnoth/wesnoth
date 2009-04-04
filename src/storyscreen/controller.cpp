@@ -144,4 +144,9 @@ void controller::clear_pages()
 	pages_.clear();
 }
 
+void controller::show_all_pages() const
+{
+	STUB();
+}
+
 } // end namespace storyscreen

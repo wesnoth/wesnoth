@@ -59,7 +59,7 @@ void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string
 
 	storyscreen::controller ctl(disp, story_cfg, scenario_name);
 
-	// FIXME: stub!
+	ctl.show_all_pages();
 
 	LOG_NG << "leaving storyscreen procedure...\n";
 }
