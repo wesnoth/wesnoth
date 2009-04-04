@@ -1004,7 +1004,7 @@ void game_display::parse_team_overlays()
 	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
 	foreach (const game_display::overlay_map::value_type i, overlays_) {
 		const overlay& ov = i.second;
-		if (!ov.team_name.empty() && 
+		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
 			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
 		{

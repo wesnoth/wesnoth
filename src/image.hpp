@@ -99,7 +99,7 @@ namespace image {
 	//a generic image locator. Abstracts the location of an image.
 	class locator
 	{
-	public:		
+	public:
 		enum type { NONE, FILE, SUB_FILE };
 
 
@@ -128,14 +128,14 @@ namespace image {
 			int center_x_;
 			int center_y_;
 		};
-		
+
 		friend size_t hash_value(const value&);
 
 	public:
 
 		/**
 		 * @TODO replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
-		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it 
+		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it
 		 *       requires boost 1.35 (preferably 1.36 or later)
 		 *
 		 **/

@@ -57,7 +57,7 @@ private:
 
 	std::string id_;
 	std::string file_path_;
-	
+
 	unsigned int ms_before_, ms_after_;
 
 	bool once_;

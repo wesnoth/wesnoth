@@ -43,7 +43,7 @@ private:
 		iterator_counter(const unit_map* map) : map_(map)
 			{ if (map_) map_->add_iter(); }
 
-		iterator_counter(const iterator_counter& i) : map_(i.map_) 
+		iterator_counter(const iterator_counter& i) : map_(i.map_)
 			{ if (map_) map_->add_iter(); }
 
 		iterator_counter& operator=(const iterator_counter &that) {
@@ -55,7 +55,7 @@ private:
 			return *this;
 		}
 
-		~iterator_counter() 
+		~iterator_counter()
 			{if (map_) map_->remove_iter(); }
 	private:
 		const unit_map* map_;
@@ -122,7 +122,7 @@ public:
 		bool valid() const { return policy_.valid(i_, map_); }
 
 		bool operator==(const iterator_base& rhs) const { return i_ == rhs.i_; }
-		bool operator!=(const iterator_base& rhs) const { return !operator==(rhs); }		
+		bool operator!=(const iterator_base& rhs) const { return !operator==(rhs); }
 
 		template <template <typename> class that_policy, typename that_types>
 		iterator_base(const iterator_base<that_policy, that_types>& that) :
@@ -130,7 +130,7 @@ public:
 			counter_(that.counter_),
 			map_(that.map_),
 			i_(that.i_)
-		{ 
+		{
 			BOOST_STATIC_ASSERT(sizeof(convertible<that_policy<that_types>, iter_policy<iter_types> >) != 0);
 			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
 		}
@@ -138,8 +138,8 @@ public:
 		map_type* get_map() const { return map_; }
 
 		template <template <typename> class X, typename Y> friend struct iterator_base;
-	
-	private:	 
+
+	private:
 		iter_policy<iter_types> policy_;
 		iterator_counter counter_;
 		map_type* map_;
@@ -168,14 +168,14 @@ public:
 
 		unit_policy() { }
 		unit_policy(const iterator_type&, const unit_map*) { }
-		
+
 		void update(const iterator_type&, const unit_map*) { }
 
 		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.valid(); }
 	};
 
 	template <typename iter_types>
-	struct unit_xy_policy {		
+	struct unit_xy_policy {
 		typedef typename iter_types::iterator_type iterator_type;
 
 		unit_xy_policy() { }
@@ -187,13 +187,13 @@ public:
 
 		bool valid(const iterator_type& iter, const unit_map* map) const {
 			return iter != map->map_.end() && iter->second.valid() && iter->second.get_location() == loc_;
-		} 		
+		}
 	private:
 		map_location loc_;
 	};
 
 	template <typename iter_types>
-	struct xy_accessor_base {		
+	struct xy_accessor_base {
 		typedef typename iter_types::map_type map_type;
 		typedef typename iter_types::iterator_type iterator_type;
 		typedef typename iter_types::reference_type reference_type;
@@ -205,7 +205,7 @@ public:
 		xy_accessor_base(const xy_accessor_base<that_types>& that) :
 			counter_(that.counter_),
 			loc_(that.loc_),
-			map_(that.map_) 
+			map_(that.map_)
 		{
 			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
 		}
@@ -245,9 +245,9 @@ public:
 	 * unit_iter -> xy_unit_iter
 	 * unit_iter -> xy_accessor
 	 */
-	
-	/** 
-	 * unit_iterators iterate over all units in the unit_map. A unit_iterator is invalidated if 
+
+	/**
+	 * unit_iterators iterate over all units in the unit_map. A unit_iterator is invalidated if
 	 * unit_map::erase, unit_map::extract, or unit_map::replace are called with the location of the
 	 * unit that the unit_iterator points to. It will become valid again if unit_map::add is called with
 	 * a pair containing the unit that the iterator points to. Basically, as long as the unit is on the
@@ -277,8 +277,8 @@ public:
 
 
 	/**
-	 * Lookups can be done by map_location, by unit::underlying_id(), or by unit::id(). 
-	 * Looking up with unit::id() is slow. 
+	 * Lookups can be done by map_location, by unit::underlying_id(), or by unit::id().
+	 * Looking up with unit::id() is slow.
 	 * Returned iterators can be implicitly converted to the other types.
 	 */
 	unit_iterator find(const map_location& loc) ;
@@ -299,7 +299,7 @@ public:
 
 	unit_iterator end() { return iterator(map_.end(), this); }
 	const_unit_iterator end() const { return const_iterator(map_.end(), this); }
-	
+
 	size_t size() const { return lmap_.size(); }
 
 	void clear();
@@ -406,7 +406,7 @@ unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_p
 
 	if (i_ != map_->map_.end()) policy_.update(i_, map_);
 
-	return *this;	
+	return *this;
 }
 
 template <template <typename> class iter_policy, typename iter_types>
@@ -419,13 +419,13 @@ unit_map::iterator_base<iter_policy, iter_types> unit_map::iterator_base<iter_po
 template <template <typename> class iter_policy, typename iter_types>
 unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator--() {
 	assert(i_ != map_->map_.begin());
-	
+
 	--i_;
 	while (i_ != map_->map_.begin() && !i_->second.valid()) --i_;
 
 	if (i_->second.valid()) policy_.update(i_, map_);
 
-	return *this;	
+	return *this;
 }
 
 template <template <typename> class iter_policy, typename iter_types>

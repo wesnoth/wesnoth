@@ -83,7 +83,7 @@ void controller::build_pages()
 
 //			page* story_page = new page(*gamestate_, cfg);
 		}
-		
+
 	}
 }
 

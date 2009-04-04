@@ -416,7 +416,7 @@ private:
 		if (args().size() > 3) weapon = args()[3]->evaluate(variables).as_int();
 		else weapon = -1;
 
-		map_location attacker_location = 
+		map_location attacker_location =
 			convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		if(ai_.get_info().units.count(attacker_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
@@ -424,7 +424,7 @@ private:
 			return variant();
 		}
 
-		map_location defender_location = 
+		map_location defender_location =
 			convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		if(ai_.get_info().units.count(defender_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
@@ -1009,7 +1009,7 @@ private:
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
-                        
+
                         if( un.movement() < un.movement_type().movement_cost(ai_.get_info().map, ai_.get_info().map[loc]) )
                             return variant();
 
@@ -1987,10 +1987,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                         } else {
                                                 throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
                                         }
-                                        
+
                                         LOG_AI << "MOVE: " << move->src().x+1 << "," << move->src().y+1 << " -> " << move->dst().x+1 << "," << move->dst().y+1 << "\n";
                                         made_move = true;
-                                        
+
                                     } else {
                                            ERR_AI << "IMPOSSIBLE MOVE ORDER - MOVE FAILED\n";
                                     }

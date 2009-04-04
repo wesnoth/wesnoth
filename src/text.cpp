@@ -227,7 +227,7 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 	// Now convert this offset to a column, this way is a bit hacky but haven't
 	// found a better solution yet.
 
-	/** 
+	/**
 	 * @todo There's still a bug left. When you select a text which is in the
 	 * ellipses on the right side the text gets reformatted with ellipses on
 	 * the left and the selected character is not the one under the cursor.

@@ -700,7 +700,7 @@ void editor_controller::refresh_after_action(bool drag_part)
 	} else {
 		if (get_map_context().needs_terrain_rebuild()) {
 			if ((auto_update_transitions_ == TransitionUpdateMode::on)
-			|| ((auto_update_transitions_ == TransitionUpdateMode::partial) 
+			|| ((auto_update_transitions_ == TransitionUpdateMode::partial)
 			&& (!drag_part || get_map_context().everything_changed()))) {
 				gui().rebuild_all();
 				get_map_context().set_needs_terrain_rebuild(false);
@@ -1130,7 +1130,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 				hotkey::get_hotkey(command).get_description());
 		gui().invalidate_game_status();
 	} else {
-		ERR_ED << "Invalid hotkey command (" 
+		ERR_ED << "Invalid hotkey command ("
 			<< static_cast<int>(command) << ") passed to set_mouse_action\n";
 	}
 }

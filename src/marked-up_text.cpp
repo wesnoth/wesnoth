@@ -252,7 +252,7 @@ bool is_cjk_char(const wchar_t ch)
 	 */
 
 	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
-	return 
+	return
 		//Han Ideographs: all except Supplement
 		(ch >= 0x4e00 && ch < 0x9fcf) ||
 		(ch >= 0x3400 && ch < 0x4dbf) ||
@@ -334,7 +334,7 @@ inline bool no_break_after(const wchar_t ch)
 		 * don't break after these Chinese characters
 		 * contains left side of different kinds of brackets and quotes
 		 */
-		ch == 0x3014 || ch == 0x3016 || ch == 0x3008 || ch == 0x301a || ch == 0x3008 || 
+		ch == 0x3014 || ch == 0x3016 || ch == 0x3008 || ch == 0x301a || ch == 0x3008 ||
 		ch == 0x300a || ch == 0x300c || ch == 0x300e || ch == 0x3010 || ch == 0x301d;
 }
 
@@ -353,7 +353,7 @@ inline bool no_break_before(const wchar_t ch)
 		ch == 0x30e3 || ch == 0x30e5 || ch == 0x30e7 || ch == 0x30ee || ch == 0x30f5 ||
 		ch == 0x30f6 || ch == 0x30fb || ch == 0x30fc || ch == 0x30fd || ch == 0x30fe ||
 		ch == 0xff01 || ch == 0xff09 || ch == 0xff0c || ch == 0xff0e || ch == 0xff1a ||
-		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d || 
+		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d ||
 
 		/**
 		 * FIXME don't break before these Korean characters

@@ -178,7 +178,7 @@ private:
 
                 const map_location location = convert_variant<location_callable>(var0)->loc();
                 std::string text;
-                
+
                 if(arguments.size() == 2) {
                         text = var1.to_debug_string();
                         display_float(location,text);
@@ -190,7 +190,7 @@ private:
                         return var2;
                 }
 
-        } 
+        }
 
         void display_float(const map_location& location, const std::string& text) const{
                 game_display::get_singleton()->float_label(location,text,255,0,0);

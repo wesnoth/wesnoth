@@ -41,7 +41,7 @@ std::string get_salt(const std::string& hash) {
 bool is_valid_hash(const std::string& hash) {
 	if(hash.size() != 34) return false;
 	if(hash.substr(0,3) != hash_prefix) return false;
-	
+
 	const int iteration_count = get_iteration_count(hash);
 	if(iteration_count < 7 || iteration_count > 30) return false;
 

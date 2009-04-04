@@ -599,9 +599,9 @@ void twindow::layout()
 		std::stringstream sstr;
 		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
 				<< "' found the following problem: Failed to size window;"
-				<< " wanted size " << size 
+				<< " wanted size " << size
 				<< " available size "
-				<< maximum_width << ',' << maximum_height 
+				<< maximum_width << ',' << maximum_height
 				<< " screen size "
 				<< settings::screen_width << ',' << settings::screen_height
 				<< '.';
@@ -856,7 +856,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *   this is controlled by a window. A widget has an internal size cache and
  *   if the value in the cache is not equal to 0,0 that value is its best
  *   size. This value gets set when the widget can honour a resize request.
- *   It will be set with the value which honours the request. 
+ *   It will be set with the value which honours the request.
  *
  * - Grid; A grid is an invisible container which holds one or more widgets.
  *   Several widgets have a grid in them to hold multiple widgets eg panels
@@ -910,7 +910,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the scrollbar_mode is
  *     ALWAYS.
- * - Handle shared sizes:  
+ * - Handle shared sizes:
  *   - Height and width:
  *     - Get the best size for all widgets that share height and width.
  *     - Set the maximum of width and height as best size for all these
@@ -924,7 +924,7 @@ void twindow::generate_dot_file(const std::string& generator,
  * - Start layout loop:
  *   - Get best size.
  *   - If width <= maximum_width && height <= maximum_height we're done.
- *   - If width > maximum_width, optimize the width: 
+ *   - If width > maximum_width, optimize the width:
  *     - For every grid cell in a grid row there will be a resize request:
  *       - Sort the widgets in the row on the resize priority.
  *         - Loop through this priority queue until the row fits
@@ -932,7 +932,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by either wrapping or using a
  *             scrollbar.
- *           - If the row fits in the wanted width this row is done.  
+ *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
  *         - Loop through this priority queue until the row fits.
@@ -940,11 +940,11 @@ void twindow::generate_dot_file(const std::string& generator,
  *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
  *             wanted. For labels, buttons etc. they get ellipsized .
- *           - If the row fits in the wanted width this row is done.  
+ *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
  *         - Throw a layout width doesn't fit exception.
- *   - If height > maximum_height, optimize the height: 
+ *   - If height > maximum_height, optimize the height:
  *     - For every grid cell in a grid column there will be a resize request:
  *       - Sort the widgets in the column on the resize priority.
  *         - Loop through this priority queue until the column fits:
@@ -953,8 +953,8 @@ void twindow::generate_dot_file(const std::string& generator,
  *           - Try to shrink the widgets by using a scrollbar.
  *             - If succeeded for a widget the width is influenced and the
  *               width might be invalid.
- *             - Throw a width modified exception. 
- *           - If the column fits in the wanted height this column is done.  
+ *             - Throw a width modified exception.
+ *           - If the column fits in the wanted height this column is done.
  *           - Else try the next priority.
  *         - All priorities done and the height still doesn't fit.
  *         - Loop through this priority queue until the column fits.
@@ -962,14 +962,14 @@ void twindow::generate_dot_file(const std::string& generator,
  *              widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
  *             wanted. For labels, buttons etc. they get ellipsized .
- *           - If the column fits in the wanted height this column is done.  
+ *           - If the column fits in the wanted height this column is done.
  *           - Else try the next priority.
  *         - All priorities done and the height still doesn't fit.
  *         - Throw a layout height doesn't fit exception.
  * - End layout loop.
  *
  * - Catch width modified exception:
- *   - Goto relayout. 
+ *   - Goto relayout.
  *
  * - Catch layout width doesn't fit exception:
  *   - If the window has a horizontal scrollbar which isn't shown but can be

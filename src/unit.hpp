@@ -283,7 +283,7 @@ public:
 		       	const map_location& second_loc = map_location::null_location,
 			const int damage=0,
 			const unit_animation::hit_type hit_type = unit_animation::INVALID,
-			const attack_type* attack=NULL,const attack_type* second_attack = NULL, 
+			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
 			int swing_num =0) const;
 
 	bool get_ability_bool(const std::string& ability, const map_location& loc) const;

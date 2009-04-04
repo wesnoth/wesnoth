@@ -529,10 +529,10 @@ void playsingle_controller::play_turn(bool save)
 				skip_next_turn_ = false;
 				throw end_turn_exception();
 			}
-			/* 
+			/*
 			 * Commented this out at dfranke's request,
 			 * effectively reverting his commit 34278,
-			 * because it introduced blocker bug #13298: 
+			 * because it introduced blocker bug #13298:
 			 * reproducible hang in dialog code
 			 */
 			//input_blocker blocker;

@@ -141,7 +141,7 @@ unit_map::const_unit_iterator unit_map::begin() const {
 void unit_map::add(const map_location &l, const unit &u) {
 	insert(new std::pair<map_location,unit>(l, u));
 }
-  
+
 void unit_map::move(const map_location &src, const map_location &dst) {
 	std::pair<map_location,unit> *p = extract(src);
 	assert(p && "attempt to move unit at location with no unit");
@@ -252,7 +252,7 @@ void unit_map::clear()
 }
 
 void unit_map::clean_invalid() {
-	if (num_iters_ > 0 || num_invalid_ < lmap_.size()) 
+	if (num_iters_ > 0 || num_invalid_ < lmap_.size())
 		return;
 
 	size_t num_cleaned = 0;

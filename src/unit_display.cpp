@@ -87,7 +87,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	// This code causes backwards teleport because the time > 150 causes offset > 1.0
 	// which will not match with the following -1.0
 	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
-	
+
 	animator.wait_until(target_time);
 		// debug code, see unit_frame::redraw()
 		// std::cout << "   end\n";
@@ -238,7 +238,7 @@ void unit_attack(
 		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp ||disp->video().update_locked() || disp->video().faked() || 
+	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
 		return;
 	}

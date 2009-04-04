@@ -110,7 +110,7 @@ void page::resolve_wml(const vconfig& page_cfg)
 
 				// TODO recursive eval
 				// TODO image stack
-				
+
 			}
 		}
 		else if(xi.first == "switch") {
