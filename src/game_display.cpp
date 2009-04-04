@@ -1000,13 +1000,15 @@ void game_display::write_overlays(config& cfg) const
 
 void game_display::parse_team_overlays()
 {
-	for (game_display::overlay_map::const_iterator overlay = overlays_.begin(); overlay != overlays_.end(); ++overlay) {
-
-		if (overlay->second.team_name != "" &&
-		bool(overlay->second.team_name.find(teams_[playing_team()].team_name())+1) !=
-		bool(overlay->second.team_name.find(teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1].team_name())+1))
+	const team& curr_team = teams_[playing_team()];
+	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
+	foreach (const game_display::overlay_map::value_type i, overlays_) {
+		const overlay& ov = i.second;
+		if (!ov.team_name.empty() && 
+			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
+			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
 		{
-			invalidate(overlay->first);
+			invalidate(i.first);
 		}
 	}
 }
