@@ -110,7 +110,8 @@ void set_child(const std::string& key, const config& val) {
 
 config* get_child(const std::string& key)
 {
-	return prefs.child(key);
+	config &cfg = prefs.child(key);
+	return cfg ? &cfg : NULL;
 }
 
 void erase(const std::string& key) {
@@ -593,7 +594,7 @@ void add_alias(const std::string &alias, const std::string &command)
 
 
 config* get_alias() {
-	return prefs.child("alias");
+	return get_child("alias");
 }
 
 unsigned int sample_rate()

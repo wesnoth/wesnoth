@@ -319,13 +319,13 @@ bool set_language(const language_def& locale)
 		throw e;
 	}
 
-	config* langp = cfg.child("language");
-	if (langp == NULL) {
+	config &langp = cfg.child("language");
+	if (!langp) {
 		std::cerr << "No [language] block found in english.cfg\n";
 		return false;
 	}
 
-	foreach (const config::attribute &j, langp->attribute_range()) {
+	foreach (const config::attribute &j, langp.attribute_range()) {
 		strings_[j.first] = j.second;
 	}
 	// end of string_table fill

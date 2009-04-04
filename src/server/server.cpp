@@ -597,9 +597,9 @@ void server::load_config() {
 	// NULL everytime we want to use it.
 	user_handler_.reset();
 
-	if (const config* user_handler = cfg_.child("user_handler")) {
+	if (const config &user_handler = cfg_.child("user_handler")) {
 		if(uh_name_ == "sample") {
-			user_handler_.reset(new suh(*user_handler));
+			user_handler_.reset(new suh(user_handler));
 		}
 #ifdef HAVE_MYSQLPP
 		else if(uh_name_ == "forum" || uh_name_.empty()) {

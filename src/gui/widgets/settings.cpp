@@ -334,7 +334,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * - Override the default and above per instance of the widget, some buttons
  *   can give a different sound.
  */
-	const config& settings = *cfg.child("settings");
+	const config &settings = cfg.child("settings");
 
 	popup_show_delay_ = lexical_cast_default<unsigned>(settings["popup_show_delay"]);
 	popup_show_time_ = lexical_cast_default<unsigned>(settings["popup_show_time"]);
@@ -504,7 +504,7 @@ void tcontrol_definition::load_resolutions(const config &cfg)
 	}
 }
 
-tstate_definition::tstate_definition(const config* cfg) :
+tstate_definition::tstate_definition(const config &cfg) :
 	canvas()
 {
 /*WIKI
@@ -522,11 +522,11 @@ tstate_definition::tstate_definition(const config* cfg) :
  *
  */
 
-	const config* draw = cfg ? cfg->child("draw") : 0;
+	const config &draw = *(cfg ? &cfg.child("draw") : &cfg);
 
 	VALIDATE(draw, _("No state or draw section defined."));
 
-	canvas.set_cfg(*draw);
+	canvas.set_cfg(draw);
 }
 
 tbutton_definition::tbutton_definition(const config& cfg) :
@@ -752,10 +752,10 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
 
-	const config* child = cfg.child("grid");
+	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(*child);
+	grid = new tbuilder_grid(child);
 }
 
 tmenubar_definition::tmenubar_definition(const config& cfg) :
@@ -906,10 +906,10 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
-	const config* child = cfg.child("grid");
+	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = new tbuilder_grid(*child);
+	grid = new tbuilder_grid(child);
 }
 
 tslider_definition::tslider_definition(const config& cfg) :

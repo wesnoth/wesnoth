@@ -883,7 +883,7 @@ void ai::find_threats()
 	foreach (const config &p, parms.child_range("protect_unit"))
 	{
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if (game_events::unit_matches_filter(u, &p)) {
+			if (game_events::unit_matches_filter(u, vconfig(p))) {
 				items.push_back(protected_item(
 							lexical_cast_default<double>(p["value"], 1.0),
 							lexical_cast_default<int>(p["radius"], 20),
@@ -1980,14 +1980,14 @@ bool ai::do_recruitment()
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 {
-	const config* const goal = current_team().ai_parameters().child("leader_goal");
+	const config &goal = current_team().ai_parameters().child("leader_goal");
 
-	if(goal == NULL) {
+	if (!goal) {
 		LOG_AI << "No goal found\n";
 		return;
 	}
 
-	const map_location dst(*goal, &get_info().game_state_);
+	const map_location dst(goal, &get_info().game_state_);
 	if (!dst.valid()) {
 		ERR_AI << "Invalid goal\n";
 		return;

@@ -175,12 +175,12 @@ vconfig::vconfig(const config* cfg, const config * cache_key) :
 	}
 }
 
-vconfig::vconfig(const config* cfg, bool is_volatile) :
-	cfg_(cfg), cache_key_(cfg)
+vconfig::vconfig(const config &cfg, bool is_volatile) :
+	cfg_(&cfg), cache_key_(&cfg)
 {
 	if(is_volatile) {
 		increment_config_usage(cache_key_);
-		if(cache_key_ != cfg) {
+		if (cache_key_ != &cfg) {
 			//location of volatile cfg has moved
 			cfg_ = cache_key_;
 		}
@@ -210,10 +210,10 @@ vconfig& vconfig::operator=(const vconfig& cfg)
 	return *this;
 }
 
-vconfig& vconfig::operator=(const config* cfg)
+vconfig& vconfig::operator=(const config &cfg)
 {
-	if(cfg_ != cfg) {
-		cfg_ = cfg;
+	if (cfg_ != &cfg) {
+		cfg_ = &cfg;
 		decrement_config_usage(cache_key_);
 		cache_key_ = NULL;
 	}
@@ -231,7 +231,7 @@ const config vconfig::get_parsed_config() const
 	foreach (const config::any_child &child, cfg_->all_children_range())
 	{
 		if (child.key == "insert_tag") {
-			vconfig insert_cfg(&child.cfg);
+			vconfig insert_cfg(child.cfg);
 			const t_string& name = insert_cfg["name"];
 			const t_string& vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
@@ -242,14 +242,14 @@ const config vconfig::get_parsed_config() const
 				if(!vinfo.is_valid) {
 					res.add_child(name); //add empty tag
 				} else if(vinfo.explicit_index) {
-					res.add_child(name, vconfig(&(vinfo.as_container())).get_parsed_config());
+					res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
 				} else {
 					variable_info::array_range range = vinfo.as_array();
 					if(range.first == range.second) {
 						res.add_child(name); //add empty tag
 					}
 					while(range.first != range.second) {
-						res.add_child(name, vconfig(*range.first++).get_parsed_config());
+						res.add_child(name, vconfig(**range.first++).get_parsed_config());
 					}
 				}
 				vconfig_recursion.erase(vname);
@@ -264,7 +264,7 @@ const config vconfig::get_parsed_config() const
 				}
 			}
 		} else {
-			res.add_child(child.key, vconfig(&child.cfg).get_parsed_config());
+			res.add_child(child.key, vconfig(child.cfg).get_parsed_config());
 		}
 	}
 	return res;
@@ -279,12 +279,12 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 		if (child.key == key) {
 			res.push_back(vconfig(&child.cfg, cache_key_));
 		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(&child.cfg);
+			vconfig insert_cfg(child.cfg);
 			if(insert_cfg["name"] == key) {
 				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 				if(!vinfo.is_valid) {
 					//push back an empty tag
-					res.push_back(vconfig(&empty_config));
+					res.push_back(vconfig(empty_config));
 				} else if(vinfo.explicit_index) {
 					config * cp = &(vinfo.as_container());
 					res.push_back(vconfig(cp, cp));
@@ -292,7 +292,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 					variable_info::array_range range = vinfo.as_array();
 					if(range.first == range.second) {
 						//push back an empty tag
-						res.push_back(vconfig(&empty_config));
+						res.push_back(vconfig(empty_config));
 					}
 					while(range.first != range.second) {
 						config * cp = *range.first++;
@@ -307,18 +307,16 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 
 vconfig vconfig::child(const std::string& key) const
 {
-	const config *natural = cfg_->child(key);
-	if(natural)
-	{
+	if (const config &natural = cfg_->child(key)) {
 		return vconfig(natural, cache_key_);
 	}
 	foreach (const config &ins, cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(&ins);
+		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
 			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 			if(!vinfo.is_valid) {
-				return vconfig(&empty_config);
+				return vconfig(empty_config);
 			}
 			config * cp = &(vinfo.as_container());
 			return vconfig(cp, cp);
@@ -332,12 +330,12 @@ bool vconfig::has_child(const std::string& key) const
 	if(!cfg_) {
 		return false;
 	}
-	if(cfg_->child(key) != NULL) {
+	if (cfg_->child(key)) {
 		return true;
 	}
 	foreach (const config &ins, cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(&ins);
+		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
 			return true;
 		}
@@ -368,7 +366,7 @@ vconfig::all_children_iterator::all_children_iterator(config::all_children_itera
 vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 {
 	if(i_.get_key() == "insert_tag") {
-		variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info vinfo(vconfig(i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
 		if(vinfo.is_valid && !vinfo.explicit_index) {
 			variable_info::array_range range = vinfo.as_array();
 			if(range.first != range.second && range.first + (++inner_index_) != range.second) {
@@ -403,7 +401,7 @@ std::string vconfig::all_children_iterator::get_key() const
 {
 	const std::string& key = i_.get_key();
 	if(key == "insert_tag") {
-		return vconfig(&i_.get_child())["name"];
+		return vconfig(i_.get_child())["name"];
 	}
 	return key;
 }
@@ -412,9 +410,9 @@ const vconfig vconfig::all_children_iterator::get_child() const
 {
 	if(i_.get_key() == "insert_tag") {
 		config * cp;
-		variable_info vinfo(vconfig(&i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info vinfo(vconfig(i_.get_child())["variable"], false, variable_info::TYPE_CONTAINER);
 		if(!vinfo.is_valid) {
-			return vconfig(&empty_config);
+			return vconfig(empty_config);
 		} else if(inner_index_ == 0) {
 			cp = &(vinfo.as_container());
 			return vconfig(cp, cp);
@@ -515,8 +513,8 @@ void scoped_xy_unit::activate()
 
 void scoped_weapon_info::activate()
 {
-	if(data_ != NULL) {
-		store(*data_);
+	if (data_) {
+		store(data_);
 	}
 }
 
@@ -628,7 +626,7 @@ variable_info::variable_info(const std::string& varname,
 			case variable_info::TYPE_CONTAINER:
 				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
 					<< varname << std::endl;
-				is_valid = force_valid || repos->temporaries.child(varname) != NULL;
+				is_valid = force_valid || repos->temporaries.child(varname);
 				break;
 			case variable_info::TYPE_SCALAR:
 			default:
@@ -674,7 +672,7 @@ variable_info::variable_info(const std::string& varname,
 		case variable_info::TYPE_ARRAY:
 			vars = vars->get_children(key)[index];
 			key = "__array";
-			is_valid = force_valid || vars->child(key) != NULL;
+			is_valid = force_valid || vars->child(key);
 			break;
 		case variable_info::TYPE_SCALAR:
 			vars = vars->get_children(key)[index];
@@ -720,10 +718,9 @@ config& variable_info::as_container() {
 		// Empty data for explicit index was already created if it was needed
 		return *vars->get_children(key)[index];
 	}
-	config *temp = vars->child(key);
-	if(temp) {
+	if (config &temp = vars->child(key)) {
 		// The container exists, index not specified, return index 0
-		return *temp;
+		return temp;
 	}
 	// Add empty data for the new variable, since it does not exist yet
 	return vars->add_child(key);

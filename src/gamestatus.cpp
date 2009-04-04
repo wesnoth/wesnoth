@@ -567,20 +567,20 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	n_unit::id_manager::instance().set_save_id(lexical_cast_default<size_t>(cfg["next_underlying_unit_id"],0));
 	log_scope("read_game");
 
-	const config* snapshot = cfg.child("snapshot");
-	const config* replay_start = cfg.child("replay_start");
+	const config &snapshot = cfg.child("snapshot");
+	const config &replay_start = cfg.child("replay_start");
 
 	// We have to load era id for MP games so they can load correct era.
 
 
-	if ((snapshot != NULL) && (!snapshot->empty()) && (!show_replay)) {
+	if (snapshot && !snapshot.empty() && !show_replay) {
 
-		this->snapshot = *snapshot;
+		this->snapshot = snapshot;
 
-		rng_.seed_random(lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
+		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
 
 		// Midgame saves have the recall list stored in the snapshot.
-		load_recall_list(snapshot->child_range("player"));
+		load_recall_list(snapshot.child_range("player"));
 
 	} else {
 		// Start of scenario save, replays and MP campaign network next scenario
@@ -590,9 +590,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		// have the player information stored in the starting position, others in the
 		// root of the config. If the starting position player information is available
 		// it will be preferred.
-		if (replay_start != NULL){
+		if (replay_start) {
 			// Check if we find some player information in the starting position
-			config::const_child_itors cfg_players = replay_start->child_range("player");
+			config::const_child_itors cfg_players = replay_start.child_range("player");
 			if (cfg_players.first != cfg_players.second)
 				load_recall_list(cfg_players);
 			else
@@ -614,19 +614,17 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		campaign_type = "scenario";
 	}
 
-	const config* const vars = cfg.child("variables");
-	if(vars != NULL) {
-		set_variables(*vars);
+	if (const config &vars = cfg.child("variables")) {
+		set_variables(vars);
 	}
 	set_menu_items(cfg.child_range("menu_item"));
 
-	const config* const replay = cfg.child("replay");
-	if(replay != NULL) {
-		replay_data = *replay;
+	if (const config &replay = cfg.child("replay")) {
+		replay_data = replay;
 	}
 
-	if(replay_start != NULL) {
-		starting_pos = *replay_start;
+	if (replay_start) {
+		starting_pos = replay_start;
 		//This is a quick hack to make replays for campaigns work again:
 		//The [player] information needs to be stored somewhere within the gamestate,
 		//because we need it later on when creating the replay savegame.
@@ -641,9 +639,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		}
 	}
 
-	if(cfg.child("statistics")) {
+	if (const config &stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
-		statistics::read_stats(*cfg.child("statistics"));
+		statistics::read_stats(stats);
 	}
 }
 
@@ -749,7 +747,7 @@ void write_game(config_writer &out, const config& snapshot, const game_state& ga
 	}
 
 	if(mode == WRITE_FULL_GAME) {
-		if(gamestate.replay_data.child("replay") == NULL) {
+		if (!gamestate.replay_data.child("replay")) {
 			out.write_child("replay", gamestate.replay_data);
 		}
 
@@ -863,13 +861,16 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 
 static void copy_era(config &cfg)
 {
-	if (cfg.child("replay_start")
-		&& cfg.child("replay_start")->child("era")
-		&& cfg.child("snapshot"))
-	{
-		config *snapshot = cfg.child("snapshot");
-		snapshot->add_child("era",*cfg.child("replay_start")->child("era"));
-	}
+	const config &replay_start = cfg.child("replay_start");
+	if (!replay_start) return;
+
+	const config &era = replay_start.child("era");
+	if (!era) return;
+
+	config &snapshot = cfg.child("snapshot");
+	if (!snapshot) return;
+
+	snapshot.add_child("era", era);
 }
 
 void load_game(const std::string& name, game_state& gamestate, std::string* error_log)
@@ -983,13 +984,12 @@ config& save_summary(std::string save)
 	}
 
 	config& cfg = save_index();
-	config* res = cfg.find_child("save","save",save);
-	if(res == NULL) {
-		res = &cfg.add_child("save");
-		(*res)["save"] = save;
-	}
+	if (config &sv = cfg.find_child("save", "save", save))
+		return sv;
 
-	return *res;
+	config &res = cfg.add_child("save");
+	res["save"] = save;
+	return res;
 }
 
 void write_save_index()
@@ -1006,7 +1006,7 @@ void write_save_index()
 void extract_summary_data_from_save(const game_state& gamestate, config& out)
 {
 	const bool has_replay = gamestate.replay_data.empty() == false;
-	const bool has_snapshot = gamestate.snapshot.child("side") != NULL;
+	const bool has_snapshot = gamestate.snapshot.child("side");
 
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
@@ -1069,11 +1069,11 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if(gamestate.snapshot.find_child("side","shroud","yes") == NULL) {
+			if (!gamestate.snapshot.find_child("side", "shroud", "yes")) {
 				out["map_data"] = gamestate.snapshot["map_data"];
 			}
 		} else if(has_replay) {
-			if(gamestate.starting_pos.find_child("side","shroud","yes") == NULL) {
+			if (!gamestate.starting_pos.find_child("side", "shroud", "yes")) {
 				out["map_data"] = gamestate.starting_pos["map_data"];
 			}
 		}
@@ -1082,11 +1082,12 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
-	const config* cfg_snapshot = cfg_save.child("snapshot");
-	const config* cfg_replay_start = cfg_save.child("replay_start");
+	const config &cfg_snapshot = cfg_save.child("snapshot");
+	const config &cfg_replay_start = cfg_save.child("replay_start");
 
-	const bool has_replay = (cfg_save.child("replay") != NULL && !cfg_save.child("replay")->empty());
-	const bool has_snapshot = (cfg_snapshot != NULL) && (cfg_snapshot->child("side") != NULL);
+	const config &cfg_replay = cfg_save.child("replay");
+	const bool has_replay = cfg_replay && !cfg_replay.empty();
+	const bool has_snapshot = cfg_snapshot && cfg_snapshot.child("side");
 
 	cfg_summary["replay"] = has_replay ? "yes" : "no";
 	cfg_summary["snapshot"] = has_snapshot ? "yes" : "no";
@@ -1100,9 +1101,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["corrupt"] = "";
 
 	if(has_snapshot) {
-		cfg_summary["turn"] = (*cfg_snapshot)["turn_at"];
-		if((*cfg_snapshot)["turns"] != "-1") {
-			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + (*cfg_snapshot)["turns"].str();
+		cfg_summary["turn"] = cfg_snapshot["turn_at"];
+		if (cfg_snapshot["turns"] != "-1") {
+			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + cfg_snapshot["turns"].str();
 		}
 	}
 
@@ -1120,10 +1121,11 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	bool shrouded = false;
 
-	if(leader == "") {
-		const config* snapshot = has_snapshot ? cfg_snapshot : cfg_replay_start;
-		if (snapshot != NULL){
-			foreach (const config &side, snapshot->child_range("side"))
+	if (!leader.empty())
+	{
+		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
+		{
+			foreach (const config &side, snapshot.child_range("side"))
 			{
 				if (side["controller"] != "human") {
 					continue;
@@ -1149,12 +1151,12 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if(cfg_snapshot->find_child("side","shroud","yes") == NULL) {
-				cfg_summary["map_data"] = (*cfg_snapshot)["map_data"];
+			if (!cfg_snapshot.find_child("side", "shroud", "yes")) {
+				cfg_summary["map_data"] = cfg_snapshot["map_data"];
 			}
 		} else if(has_replay) {
-			if(cfg_replay_start->find_child("side","shroud","yes") == NULL) {
-				cfg_summary["map_data"] = (*cfg_replay_start)["map_data"];
+			if (!cfg_replay_start.find_child("side","shroud","yes")) {
+				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			}
 		}
 	}
@@ -1370,9 +1372,8 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image = (*cfg)["image"];
 		description = (*cfg)["description"];
 		needs_select = utils::string_bool((*cfg)["needs_select"], false);
-		config const* temp;
-		if((temp = (*cfg).child("show_if")) != NULL) show_if = *temp;
-		if((temp = (*cfg).child("filter_location")) != NULL) filter_location = *temp;
-		if((temp = (*cfg).child("command")) != NULL) command = *temp;
+		if (const config &c = cfg->child("show_if")) show_if = c;
+		if (const config &c = cfg->child("filter_location")) filter_location = c;
+		if (const config &c = cfg->child("command")) command = c;
 	}
 }

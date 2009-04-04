@@ -85,7 +85,7 @@ public:
 		bool password_required;
 		bool have_era;
 	};
-	gamebrowser(CVideo& video,const config* map_hashes);
+	gamebrowser(CVideo& video, const config &map_hashes);
 	void scroll(unsigned int pos);
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
@@ -116,7 +116,7 @@ private:
 	image::locator observer_icon_locator_;
 	image::locator no_observer_icon_locator_;
 
-	const config* map_hashes_;
+	const config &map_hashes_;
 
 	unsigned int item_height_;
 	int margin_;

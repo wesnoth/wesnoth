@@ -84,12 +84,11 @@ namespace test_utils {
 
 			cfg_.merge_children("units");
 
-			config *units = cfg_.child("units");
-			if(units != NULL) {
-				unit_type_data::types().set_config(*units);
+			if (config &units = cfg_.child("units")) {
+				unit_type_data::types().set_config(units);
 			}
 
-			game_config::load_config(cfg_.child("game_config"));
+			game_config::load_config(&cfg_.child("game_config"));
 			hotkey::deactivate_all_scopes();
 			hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 			hotkey::set_scope_active(hotkey::SCOPE_GAME);

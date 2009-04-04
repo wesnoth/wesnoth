@@ -415,9 +415,8 @@ void create::process_event()
 
 		if(select > 0 && select <= user_maps_.size()) {
 			parameters_.saved_game = false;
-			const config* const generic_multiplayer = game_config().child("generic_multiplayer");
-			if(generic_multiplayer != NULL) {
-				parameters_.scenario_data = *generic_multiplayer;
+			if (const config &generic_multiplayer = game_config().child("generic_multiplayer")) {
+				parameters_.scenario_data = generic_multiplayer;
 				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
 			}
 

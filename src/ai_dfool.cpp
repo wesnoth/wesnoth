@@ -135,7 +135,7 @@ namespace dfool {
 	      config ff=**sf;
 	      LOG_STREAM(info, ai)<<"ff:"<<(**com)["type"]<<" "<<ff["type"]<<" "<<ff["x"]<<","<<ff["y"]<<std::endl;
 	      LOG_STREAM(info, ai)<<"ff?"<<u->second.type_id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
-	      if(! u->second.matches_filter(&ff,u->first)) {
+	      if (!u->second.matches_filter(vconfig(ff), u->first)) {
 		found=false;
 		break;
 	      }
@@ -193,7 +193,7 @@ namespace dfool {
       //      LOG_STREAM(info, ai)<<"j:"<<j->second.underlying_id()<<":"<<j->first.x<<","<<j->first.y<<std::endl;
       assert(j->second.underlying_id() >0);
 	//	LOG_STREAM(info, ai)<<"filter3:"<<std::endl;
-	if(j->second.matches_filter(&filter,j->first)) {
+	if (j->second.matches_filter(vconfig(filter), j->first)) {
 	  //	  LOG_STREAM(info, ai)<<"filter4:"<<std::endl;
 	  filtered_units_.push_back(*i);
 	}

@@ -155,9 +155,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	update_faction_combo();
 
-	config *ai = cfg_.child("ai");
-	if (ai)
-		ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
+	if (const config &ai = cfg_.child("ai"))
+		ai_algorithm_ = lexical_cast_default<std::string>(ai["ai_algorithm"], "default");
 	else
 		ai_algorithm_ = "default";
 	init_ai_algorithm_combo();
@@ -1273,18 +1272,18 @@ void connect::process_network_data(const config& data, const network::connection
 		}
 	}
 
-	const config* change_faction = data.child("change_faction");
-	if(change_faction != NULL) {
-		int side_taken = find_player_side(change_faction->get_attribute("name"));
+	if (const config &change_faction = data.child("change_faction")) {
+		int side_taken = find_player_side(change_faction["name"]);
 		if(side_taken != -1) {
-			sides_[side_taken].import_network_user(*change_faction);
+			sides_[side_taken].import_network_user(change_faction);
 			update_playerlist_state();
 			update_and_send_diff();
 		}
 	}
 
-	if(data.child("observer") != NULL) {
-		const t_string& observer_name = data.child("observer")->get_attribute("name");
+	if (const config &c = data.child("observer"))
+	{
+		const t_string &observer_name = c["name"];
 		if(!observer_name.empty()) {
 			connected_user_list::iterator player = find_player(observer_name);
 			if(player == users_.end()) {
@@ -1295,8 +1294,9 @@ void connect::process_network_data(const config& data, const network::connection
 			}
 		}
 	}
-	if(data.child("observer_quit") != NULL) {
-		const t_string& observer_name = data.child("observer_quit")->get_attribute("name");
+	if (const config &c = data.child("observer_quit"))
+	{
+		const t_string &observer_name = c["name"];
 		if(!observer_name.empty()) {
 			connected_user_list::iterator player = find_player(observer_name);
 			if(player != users_.end() && find_player_side(observer_name) == -1) {
@@ -1593,11 +1593,10 @@ void connect::load_game()
 		if(state_.snapshot.empty()){
 			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
 			//there should only be snapshots for midgame reloads
-			if(level_.child("replay_start") == NULL)
-			{
-				level_.add_child("replay_start") = start_data;
+			if (config &c = level_.child("replay_start")) {
+				c.merge_with(start_data);
 			} else {
-				level_.child("replay_data")->merge_with(start_data);
+				level_.add_child("replay_start") = start_data;
 			}
 			level_.add_child("snapshot") = config();
 		} else {
@@ -1650,20 +1649,15 @@ void connect::load_game()
 	append_to_title(" - " + level_["name"]);
 
 
-	std::string era;
-	if (params_.saved_game
-		&& level_.child("snapshot")->child("era"))
-	{
-		era = level_.child("snapshot")->child("era")->get_attribute("id");
-	}
-	else
-	{
-		era = params_.era;
+	std::string era = params_.era;
+	if (params_.saved_game) {
+		if (const config &c = level_.child("snapshot").child("era"))
+			era = c["id"];
 	}
 
 	// Initialize the list of sides available for the current era.
-	const config* const era_cfg = game_config().find_child("era", "id", era);
-	if(!era_cfg) {
+	const config &era_cfg = game_config().find_child("era", "id", era);
+	if (!era_cfg) {
 		if (!params_.saved_game)
 		{
 			utils::string_map i18n_symbols;
@@ -1672,15 +1666,14 @@ void connect::load_game()
 		}
 		// FIXME: @todo We should tell user about missing era but still load game
 		WRN_CF << "Missing era in MP load game " << era << "\n";
-
 	}
-	if (era_cfg)
+	else
 	{
 		era_sides_.clear();
-		foreach (const config &e, era_cfg->child_range("multiplayer_side")) {
+		foreach (const config &e, era_cfg.child_range("multiplayer_side")) {
 			era_sides_.push_back(&e);
 		}
-		level_.add_child("era", *era_cfg);
+		level_.add_child("era", era_cfg);
 	}
 
 	gold_title_label_.hide(params_.saved_game);
@@ -1702,10 +1695,11 @@ config* connect::current_config(){
 
 	//It might make sense to invent a mechanism of some sort to check whether a config node contains information
 	//that you can load from(side information, specifically)
-	if (level_.child("snapshot") != NULL && level_.child("snapshot")->child("side") != NULL){
+	config &snapshot = level_.child("snapshot");
+	if (snapshot && snapshot.child("side")) {
 		// Savegame
-		cfg_level = level_.child("snapshot");
-	} else if(level_.child("side") == NULL) {
+		cfg_level = &snapshot;
+	} else if (!level_.child("side")) {
 		// Start-of-scenario save, the info has to be taken from the starting_pos
 		cfg_level = &state_.starting_pos;
 	} else {

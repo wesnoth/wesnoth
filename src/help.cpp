@@ -746,8 +746,8 @@ void generate_contents()
 	toplevel.clear();
 	hidden_sections.clear();
 	if (game_cfg != NULL) {
-		const config *help_config = game_cfg->child("help");
-		if (help_config == NULL) {
+		const config *help_config = &game_cfg->child("help");
+		if (!*help_config) {
 			help_config = &dummy_cfg;
 		}
 		try {
@@ -818,15 +818,16 @@ help_manager::~help_manager()
 
 bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
-	const config *toplevel = cfg.child("toplevel");
-	if (toplevel != NULL) {
+	if (const config &toplevel = cfg.child("toplevel"))
+	{
 		const std::vector<std::string> toplevel_refs
-			= utils::quoted_split((*toplevel)["sections"]);
+			= utils::quoted_split(toplevel["sections"]);
 		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), section_id)
 			!= toplevel_refs.end()) {
 			return true;
 		}
 	}
+
 	foreach (const config &section, cfg.child_range("section"))
 	{
 		const std::vector<std::string> sections_refd
@@ -841,15 +842,16 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 
 bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 {
-	const config *toplevel = cfg.child("toplevel");
-	if (toplevel != NULL) {
+	if (const config &toplevel = cfg.child("toplevel"))
+	{
 		const std::vector<std::string> toplevel_refs
-			= utils::quoted_split((*toplevel)["topics"]);
+			= utils::quoted_split(toplevel["topics"]);
 		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), topic_id)
 			!= toplevel_refs.end()) {
 			return true;
 		}
 	}
+
 	foreach (const config &section, cfg.child_range("section"))
 	{
 		const std::vector<std::string> topics_refd
@@ -886,10 +888,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::vector<std::string>::const_iterator it;
 		// Find all child sections.
 		for (it = sections.begin(); it != sections.end(); it++) {
-			config const *child_cfg = help_cfg->find_child("section", "id", *it);
-			if (child_cfg != NULL) {
+			if (const config &child_cfg = help_cfg->find_child("section", "id", *it))
+			{
 				section child_section;
-				parse_config_internal(help_cfg, child_cfg, child_section, level + 1);
+				parse_config_internal(help_cfg, &child_cfg, child_section, level + 1);
 				sec.add_section(child_section);
 			}
 			else {
@@ -932,11 +934,11 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 
 		// Find all topics in this section.
 		for (it = topics_id.begin(); it != topics_id.end(); it++) {
-			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
-			if (topic_cfg != NULL) {
-				std::string text = (*topic_cfg)["text"];
-				text += generate_topic_text((*topic_cfg)["generator"], help_cfg, sec, generated_topics);
-				topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
+			if (const config &topic_cfg = help_cfg->find_child("topic", "id", *it))
+			{
+				std::string text = topic_cfg["text"];
+				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec, generated_topics);
+				topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
 				if (!is_valid_id(child_topic.id)) {
 					std::stringstream ss;
 					ss << "Invalid ID, used for internal purpose: '" << id << "'";
@@ -974,8 +976,8 @@ section parse_config(const config *cfg)
 {
 	section sec;
 	if (cfg != NULL) {
-		config const *toplevel_cfg = cfg->child("toplevel");
-		parse_config_internal(cfg, toplevel_cfg, sec);
+		config const &toplevel_cfg = cfg->child("toplevel");
+		parse_config_internal(cfg, toplevel_cfg ? &toplevel_cfg : NULL, sec);
 	}
 	return sec;
 }
@@ -1682,14 +1684,14 @@ std::string generate_about_text()
 
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg)
 {
-		std::stringstream res;
+	config const &section_cfg = help_cfg->find_child("section", "id", section_name);
+	if (!section_cfg) {
+		return std::string();
+	}
 
-		config const *section_cfg = help_cfg->find_child("section", "id", section_name);
-		if (section_cfg == NULL) {
-			return res.str();
-		}
+	std::ostringstream res;
 
-		std::vector<std::string> topics = utils::quoted_split((*section_cfg)["topics"]);
+		std::vector<std::string> topics = utils::quoted_split(section_cfg["topics"]);
 
 		// we use an intermediate structure to allow a conditional sorting
 		typedef std::pair<std::string,std::string> link;
@@ -1698,15 +1700,14 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		std::vector<std::string>::iterator t;
 		// Find all topics in this section.
 		for (t = topics.begin(); t != topics.end(); t++) {
-			config const *topic_cfg = help_cfg->find_child("topic", "id", *t);
-			if (topic_cfg != NULL) {
-				std::string id = (*topic_cfg)["id"];
+			if (config const &topic_cfg = help_cfg->find_child("topic", "id", *t)) {
+				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
-					topics_links.push_back(link((*topic_cfg)["title"], id));
+					topics_links.push_back(link(topic_cfg["title"], id));
 			}
 		}
 
-		if ((*section_cfg)["sort_topics"] == "yes") {
+		if (section_cfg["sort_topics"] == "yes") {
 			std::sort(topics_links.begin(),topics_links.end());
 		}
 
@@ -2098,34 +2099,22 @@ void help_text_area::set_items()
 				config cfg;
 				std::istringstream stream(*it);
 				read(cfg, stream);
-				config *child = cfg.child("ref");
-				if (child != NULL) {
-					handle_ref_cfg(*child);
-				}
-				child = cfg.child("img");
-				if (child != NULL) {
-					handle_img_cfg(*child);
-				}
-				child = cfg.child("bold");
-				if (child != NULL) {
-					handle_bold_cfg(*child);
-				}
-				child = cfg.child("italic");
-				if (child != NULL) {
-					handle_italic_cfg(*child);
-				}
-				child = cfg.child("header");
-				if (child != NULL) {
-					handle_header_cfg(*child);
-				}
-				child = cfg.child("jump");
-				if (child != NULL) {
-					handle_jump_cfg(*child);
-				}
-				child = cfg.child("format");
-				if (child != NULL) {
-					handle_format_cfg(*child);
-				}
+
+#define TRY(name) do { \
+				if (config &child = cfg.child(#name)) \
+					handle_##name##_cfg(child); \
+				} while (0)
+
+				TRY(ref);
+				TRY(img);
+				TRY(bold);
+				TRY(italic);
+				TRY(header);
+				TRY(jump);
+				TRY(format);
+
+#undef TRY
+
 			}
 			catch (config::error e) {
 				std::stringstream msg;

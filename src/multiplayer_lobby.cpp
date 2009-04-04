@@ -37,7 +37,7 @@ std::vector<std::string> empty_string_vector;
 }
 
 namespace mp {
-gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
+gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
 	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
@@ -405,7 +405,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	games_.clear();
 
-	foreach (const config &game, cfg.child("gamelist")->child_range("game"))
+	foreach (const config &game, cfg.child("gamelist").child_range("game"))
 	{
 		bool verified = true;
 		games_.push_back(game_item());
@@ -414,11 +414,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().have_era = true;
 		if (!game["mp_era"].empty())
 		{
-			const config *era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+			const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 			utils::string_map symbols;
 			symbols["era_id"] = game["mp_era"];
-			if (era_cfg != NULL) {
-				games_.back().map_info = era_cfg->get_attribute("name");
+			if (era_cfg) {
+				games_.back().map_info = era_cfg["name"];
 			} else {
 				if (game["require_era"] == "no") {
 					games_.back().have_era = true;
@@ -470,12 +470,12 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		if (!game["mp_scenario"].empty())
 		{
 			// check if it's a multiplayer scenario
-			const config *level_cfg = game_config.find_child("multiplayer", "id", game["mp_scenario"]);
-			if(level_cfg == NULL) {
+			const config *level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+			if (!*level_cfg) {
 				// check if it's a user map
-				level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
+				level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 			}
-			if(level_cfg) {
+			if (*level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
 				// reloaded games do not match the original scenario hash,
 				// so it makes no sense to test them, they always would appear
@@ -483,7 +483,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (map_hashes_ && !games_.back().reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					foreach (const config::attribute &i, map_hashes_->attribute_range()) {
+					foreach (const config::attribute &i, map_hashes_.attribute_range()) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -662,17 +662,17 @@ bool lobby::lobby_sorter::column_sortable(int column) const
 
 bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gui::menu::item& row2) const
 {
-	const config* const list = cfg_.child("gamelist");
-	if(list == NULL) {
+	const config &list = cfg_.child("gamelist");
+	if (!list) {
 		return false;
 	}
 
-	size_t nb = list->child_count("game");
+	size_t nb = list.child_count("game");
 	if(row1.id >= nb || row2.id >= nb) {
 		return false;
 	}
 
-	config::const_child_iterator gi = list->child_range("game").first, gs = gi;
+	config::const_child_iterator gi = list.child_range("game").first, gs = gi;
 	std::advance(gi, row1.id);
 	const config &game1 = *gi;
 	gi = gs;
@@ -848,8 +848,8 @@ void lobby::layout_children(const SDL_Rect& rect)
 void lobby::gamelist_updated(bool silent)
 {
 	ui::gamelist_updated(silent);
-	const config* list = gamelist().child("gamelist");
-	if(list == NULL) {
+	const config &list = gamelist().child("gamelist");
+	if (!list) {
 		// No gamelist yet. Do not update anything.
 		return;
 	}

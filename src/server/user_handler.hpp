@@ -135,7 +135,7 @@ class user_handler {
 		};
 
 		/** Initiate the mailer object. */
-		void init_mailer(config* c);
+		void init_mailer(const config &c);
 
 		/** Create a random string of digits for password encryption. */
 		std::string create_salt(int length =8);

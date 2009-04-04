@@ -165,44 +165,33 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		assert(false);
 	}
 
-	if (const config *c = cfg.child("button")) {
-		return new tbuilder_button(*c);
-	} else if (const config *c = cfg.child("horizontal_scrollbar")) {
-		return new tbuilder_horizontal_scrollbar(*c);
-	} else if (const config *c = cfg.child("image")) {
-		return new tbuilder_image(*c);
-	} else if (const config *c = cfg.child("label")) {
-		return new tbuilder_label(*c);
-	} else if (const config *c = cfg.child("listbox")) {
-		return new tbuilder_listbox(*c);
-	} else if (const config *c = cfg.child("menubar")) {
-		return new tbuilder_menubar(*c);
-	} else if (const config *c = cfg.child("minimap")) {
-		return new tbuilder_minimap(*c);
-	} else if (const config *c = cfg.child("panel")) {
-		return new tbuilder_panel(*c);
-	} else if (const config *c = cfg.child("scroll_label")) {
-		return new tbuilder_scroll_label(*c);
-	} else if (const config *c = cfg.child("slider")) {
-		return new tbuilder_slider(*c);
-	} else if (const config *c = cfg.child("spacer")) {
-		return new tbuilder_spacer(*c);
-	} else if (const config *c = cfg.child("text_box")) {
-		return new tbuilder_text_box(*c);
-	} else if (const config *c = cfg.child("password_box")) {
-		return new tbuilder_password_box(*c);
-	} else if (const config *c = cfg.child("toggle_button")) {
-		return new tbuilder_toggle_button(*c);
-	} else if (const config *c = cfg.child("toggle_panel")) {
-		return new tbuilder_toggle_panel(*c);
-	} else if (const config *c = cfg.child("vertical_scrollbar")) {
-		return new tbuilder_vertical_scrollbar(*c);
-	} else if (const config *c = cfg.child("grid")) {
-		return new tbuilder_grid(*c);
-	} else {
-		std::cerr << cfg;
-		ERROR_LOG(false);
-	}
+#define TRY(name) do { \
+	if (const config &c = cfg.child(#name)) \
+		return new tbuilder_##name(c); \
+	} while (0)
+
+	TRY(button);
+	TRY(horizontal_scrollbar);
+	TRY(image);
+	TRY(label);
+	TRY(listbox);
+	TRY(menubar);
+	TRY(minimap);
+	TRY(panel);
+	TRY(scroll_label);
+	TRY(slider);
+	TRY(spacer);
+	TRY(text_box);
+	TRY(password_box);
+	TRY(toggle_button);
+	TRY(toggle_panel);
+	TRY(vertical_scrollbar);
+	TRY(grid);
+
+#undef TRY
+
+	std::cerr << cfg;
+	ERROR_LOG(false);
 }
 
 /**
@@ -413,9 +402,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @end_table
  */
 
-	VALIDATE(cfg.child("grid"), _("No grid defined."));
+	const config &c = cfg.child("grid");
 
-	grid = new tbuilder_grid(*(cfg.child("grid")));
+	VALIDATE(c, _("No grid defined."));
+
+	grid = new tbuilder_grid(c);
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(),
@@ -711,8 +702,8 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
 	horizontal_scrollbar_mode(
 			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"])),
-	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
-	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
+	header(0),
+	footer(0),
 	list_builder(0),
 	list_data()
 {
@@ -759,15 +750,23 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *
  */
 
-	VALIDATE(cfg.child("list_definition"), _("No list defined."));
-	list_builder = new tbuilder_grid(*(cfg.child("list_definition")));
+	if (const config &h = cfg.child("header"))
+		header = new tbuilder_grid(h);
+
+	if (const config &f = cfg.child("footer"))
+		footer = new tbuilder_grid(f);
+
+	const config &l = cfg.child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+	list_builder = new tbuilder_grid(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
-	const config *data = cfg.child("list_data");
+	const config &data = cfg.child("list_data");
 	if (!data) return;
 
-	foreach (const config &row, data->child_range("row"))
+	foreach (const config &row, data.child_range("row"))
 	{
 		unsigned col = 0;
 
@@ -842,10 +841,10 @@ tbuilder_menubar::tbuilder_menubar(const config& cfg) :
  *                                     means no item selected.
  * @end_table
  */
-	const config* data = cfg.child("data");
+	const config &data = cfg.child("data");
 	if (!data) return;
 
-	foreach(const config &cell, data->child_range("cell")) {
+	foreach (const config &cell, data.child_range("cell")) {
 		cells_.push_back(tbuilder_gridcell(cell));
 	}
 }
@@ -916,9 +915,12 @@ tbuilder_panel::tbuilder_panel(const config& cfg) :
  * @end_table
  *
  */
-	VALIDATE(cfg.child("grid"), _("No grid defined."));
 
-	grid = new tbuilder_grid(*(cfg.child("grid")));
+	const config &c = cfg.child("grid");
+
+	VALIDATE(c, _("No grid defined."));
+
+	grid = new tbuilder_grid(c);
 }
 
 twidget* tbuilder_panel::build() const
@@ -1022,10 +1024,10 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  *                                    'maximum_value_label' are ignored.
  * @end_table
  */
-	const config* labels = cfg.child("value_labels");
+	const config &labels = cfg.child("value_labels");
 	if (!labels) return;
 
-	foreach (const config &label, labels->child_range("value")) {
+	foreach (const config &label, labels.child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -1122,9 +1124,12 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
  * @end_table
  *
  */
-	VALIDATE(cfg.child("grid"), _("No grid defined."));
 
-	grid = new tbuilder_grid(*(cfg.child("grid")));
+	const config &c = cfg.child("grid");
+
+	VALIDATE(c, _("No grid defined."));
+
+	grid = new tbuilder_grid(c);
 }
 
 twidget* tbuilder_toggle_panel::build() const

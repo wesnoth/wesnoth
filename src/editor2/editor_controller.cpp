@@ -220,8 +220,8 @@ void editor_controller::init_map_generators(const config& game_config)
 	foreach (const config &i, game_config.child_range("multiplayer"))
 	{
 		if (i["map_generation"] == "default") {
-			const config *generator_cfg = i.child("generator");
-			if (generator_cfg == NULL) {
+			const config &generator_cfg = i.child("generator");
+			if (!generator_cfg) {
 				ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
 					<< " has map_generation=default but no [generator] tag";
 			} else {
@@ -234,24 +234,24 @@ void editor_controller::init_map_generators(const config& game_config)
 
 void editor_controller::init_tods(const config& game_config)
 {
-	const config* cfg = game_config.child("editor_times");
-	if (cfg == NULL) {
+	const config &cfg = game_config.child("editor_times");
+	if (!cfg) {
 		ERR_ED << "No editor time-of-day defined\n";
 		return;
 	}
-	foreach (const config &i, cfg->child_range("time")) {
+	foreach (const config &i, cfg.child_range("time")) {
 		tods_.push_back(time_of_day(i));
 	}
 }
 
 void editor_controller::init_music(const config& game_config)
 {
-	const config* cfg = game_config.child("editor_music");
-	if (cfg == NULL) {
+	const config &cfg = game_config.child("editor_music");
+	if (!cfg) {
 		ERR_ED << "No editor music defined\n";
 		return;
 	}
-	foreach (const config &i, cfg->child_range("music")) {
+	foreach (const config &i, cfg.child_range("music")) {
 		sound::play_music_config(i);
 	}
 	sound::commit_music_changes();

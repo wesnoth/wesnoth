@@ -116,9 +116,9 @@ static bool affects_side(const config& cfg, const std::vector<team>& teams, size
 
 bool unit::get_ability_bool(const std::string& ability, const map_location& loc) const
 {
-	const config* abilities = cfg_.child("abilities");
-	if (abilities) {
-		foreach (const config &i, abilities->child_range(ability)) {
+	if (const config &abilities = cfg_.child("abilities"))
+	{
+		foreach (const config &i, abilities.child_range(ability)) {
 			if (ability_active(ability, i, loc) &&
 			    ability_affects_self(ability, i, loc))
 				return true;
@@ -132,10 +132,10 @@ bool unit::get_ability_bool(const std::string& ability, const map_location& loc)
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if (it == units_->end() || it->second.incapacitated())
 			continue;
-		const config* adj_abilities = it->second.cfg_.child("abilities");
+		const config &adj_abilities = it->second.cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
-		foreach (const config &j, adj_abilities->child_range(ability)) {
+		foreach (const config &j, adj_abilities.child_range(ability)) {
 			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->second.side()) &&
 			    it->second.ability_active(ability, j, adjacent[i]) &&
 			    ability_affects_adjacent(ability,  j, i, loc))
@@ -150,9 +150,9 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 {
 	unit_ability_list res;
 
-	const config *abilities = cfg_.child("abilities");
-	if(abilities) {
-		foreach (const config &i, abilities->child_range(ability)) {
+	if (const config &abilities = cfg_.child("abilities"))
+	{
+		foreach (const config &i, abilities.child_range(ability)) {
 			if (ability_active(ability, i, loc) &&
 			    ability_affects_self(ability, i, loc))
 				res.cfgs.push_back(std::pair<const config *, map_location>(&i, loc));
@@ -166,10 +166,10 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if (it == units_->end() || it->second.incapacitated())
 			continue;
-		const config* adj_abilities = it->second.cfg_.child("abilities");
+		const config &adj_abilities = it->second.cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
-		foreach (const config &j, adj_abilities->child_range(ability)) {
+		foreach (const config &j, adj_abilities.child_range(ability)) {
 			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->second.side()) &&
 			    it->second.ability_active(ability, j, adjacent[i]) &&
 			    ability_affects_adjacent(ability, j, i, loc))
@@ -183,9 +183,8 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 
 bool unit::abilities_affects_adjacent() const
 {
-	if (cfg_.child("abilities")
-		&& cfg_.child("abilities")->child("affects_adjacent"))
-		return true;
+	if (const config &ab = cfg_.child("abilities"))
+		return ab.child("affects_adjacent");
 	return false;
 }
 
@@ -193,9 +192,9 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 {
 	std::vector<std::string> res;
 
-	const config* abilities = cfg_.child("abilities");
+	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
-	const config::child_map& list_map = abilities->all_children();
+	const config::child_map& list_map = abilities.all_children();
 	for (config::child_map::const_iterator i = list_map.begin(),
 	     i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(),
@@ -219,9 +218,9 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	const config* abilities = cfg_.child("abilities");
+	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
-	const config::child_map& list_map = abilities->all_children();
+	const config::child_map& list_map = abilities.all_children();
 	for (config::child_map::const_iterator i = list_map.begin(), i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(), j_end = i->second.end(); j != j_end; ++j) {
 			std::string const &id = (**j)["id"];
@@ -237,9 +236,9 @@ std::vector<std::string> unit::ability_tooltips(const map_location& loc) const
 {
 	std::vector<std::string> res;
 
-	const config* abilities = cfg_.child("abilities");
-	if(abilities) {
-		const config::child_map& list_map = abilities->all_children();
+	if (const config &abilities = cfg_.child("abilities"))
+	{
+		const config::child_map& list_map = abilities.all_children();
 		for (config::child_map::const_iterator i = list_map.begin(),
 		     i_end = list_map.end(); i != i_end; ++i) {
 			for (config::child_list::const_iterator j = i->second.begin(),
@@ -340,8 +339,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	int illuminates = -1;
 	assert(units_ && map_ && gamestatus_);
 
-	if (const config* afilter = cfg.child("filter"))
-		if (!matches_filter(afilter,loc, cache_illuminates(illuminates, ability)))
+	if (const config &afilter = cfg.child("filter"))
+		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
 			return false;
 
 	map_location adjacent[6];
@@ -358,7 +357,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			unit_map::const_iterator unit = units_->find(adjacent[index]);
 			if (unit == units_->end())
 				return false;
-			if (!unit->second.matches_filter(&i, unit->first,
+			if (!unit->second.matches_filter(vconfig(i), unit->first,
 				cache_illuminates(illuminates, ability)))
 				return false;
 		}
@@ -372,9 +371,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			/* GCC-3.3 doesn't accept vconfig(&i) in adj_filter */
-			const vconfig& v = vconfig(&i);
-			terrain_filter adj_filter(v, *map_, *gamestatus_, *units_);
+			terrain_filter adj_filter(vconfig(i), *map_, *gamestatus_, *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -398,8 +395,8 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	{
 		std::vector<std::string> dirs = utils::split(i["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if (config const *filter = i.child("filter")) {
-				if (matches_filter(filter, loc,
+			if (const config &filter = i.child("filter")) {
+				if (matches_filter(vconfig(filter), loc,
 					cache_illuminates(illuminates, ability)))
 					return true;
 			} else
@@ -416,17 +413,16 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
-	config const *filter = cfg.child("filter_self");
+	const config &filter = cfg.child("filter_self");
 	bool affect_self = utils::string_bool(cfg["affect_self"], true);
-	if (filter == NULL || !affect_self) return affect_self;
-	return matches_filter(filter, loc,cache_illuminates(illuminates, ability));
+	if (!filter || !affect_self) return affect_self;
+	return matches_filter(vconfig(filter), loc,cache_illuminates(illuminates, ability));
 }
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	const config* list = cfg_.child("abilities");
-	if(list) {
-		config::const_child_itors itors = list->child_range(ability);
+	if (const config &list = cfg_.child("abilities")) {
+		config::const_child_itors itors = list.child_range(ability);
 		return itors.first != itors.second;
 	}
 	return false;
@@ -549,10 +545,10 @@ namespace {
 bool attack_type::get_special_bool(const std::string& special,bool force) const
 {
 //	log_scope("get_special_bool");
-	const config* specials = cfg_.child("specials");
-	if(specials) {
+	if (const config &specials = cfg_.child("specials"))
+	{
 		std::vector<const config*> list;
-		if (get_special_children(list, *specials, special, force)) return true;
+		if (get_special_children(list, specials, special, force)) return true;
 		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (special_active(**i, true))
@@ -560,10 +556,10 @@ bool attack_type::get_special_bool(const std::string& special,bool force) const
 		}
 	}
 	if (force || !other_attack_) return false;
-	specials = other_attack_->cfg_.child("specials");
-	if (specials) {
+	if (const config &specials = other_attack_->cfg_.child("specials"))
+	{
 		std::vector<const config*> list;
-		get_special_children(list, *specials, special);
+		get_special_children(list, specials, special);
 		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (other_attack_->special_active(**i, false))
@@ -577,18 +573,18 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 //	log_scope("get_specials");
 	unit_ability_list res;
-	const config* specials = cfg_.child("specials");
-	if(specials) {
-		foreach (const config &i, specials->child_range(special)) {
+	if (const config &specials = cfg_.child("specials"))
+	{
+		foreach (const config &i, specials.child_range(special)) {
 			if (special_active(i, true))
 				res.cfgs.push_back(std::pair<const config *, map_location>
 					(&i, attacker_ ? aloc_ : dloc_));
 		}
 	}
 	if (!other_attack_) return res;
-	specials = other_attack_->cfg_.child("specials");
-	if (specials) {
-		foreach (const config &i, specials->child_range(special)) {
+	if (const config &specials = other_attack_->cfg_.child("specials"))
+	{
+		foreach (const config &i, specials.child_range(special)) {
 			if (other_attack_->special_active(i, false))
 				res.cfgs.push_back(std::pair<const config *, map_location>
 					(&i, attacker_ ? dloc_ : aloc_));
@@ -600,10 +596,10 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 {
 //	log_scope("special_tooltips");
 	std::vector<t_string> res;
-	const config* specials = cfg_.child("specials");
+	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
-	const config::child_map& list_map = specials->all_children();
+	const config::child_map& list_map = specials.all_children();
 	for (config::child_map::const_iterator i = list_map.begin(),
 	     i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(),
@@ -629,10 +625,10 @@ std::string attack_type::weapon_specials(bool force) const
 {
 //	log_scope("weapon_specials");
 	std::string res;
-	const config* specials = cfg_.child("specials");
+	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
-	const config::child_map& list_map = specials->all_children();
+	const config::child_map& list_map = specials.all_children();
 	for (config::child_map::const_iterator i = list_map.begin(),
 	     i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(),
@@ -681,22 +677,24 @@ bool attack_type::special_active(const config& cfg, bool self) const
 			if (!active.empty() && active != "offense")
 				return false;
 		}
-		if (config const *filter_self = cfg.child("filter_self")) {
+		if (const config &filter_self = cfg.child("filter_self"))
+		{
 			if (att == unitmap_->end() ||
-			    !att->second.matches_filter(filter_self, aloc_))
+			    !att->second.matches_filter(vconfig(filter_self), aloc_))
 				return false;
-			if (config const *filter_weapon = filter_self->child("filter_weapon")) {
-				if (!matches_filter(*filter_weapon, true))
+			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
+				if (!matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
-		if (config const *filter_opponent = cfg.child("filter_opponent")) {
+		if (const config &filter_opponent = cfg.child("filter_opponent"))
+		{
 			if (def == unitmap_->end() ||
-			    !def->second.matches_filter(filter_opponent, dloc_))
+			    !def->second.matches_filter(vconfig(filter_opponent), dloc_))
 				return false;
-			if (config const *filter_weapon = filter_opponent->child("filter_weapon")) {
+			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter(*filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
@@ -706,52 +704,58 @@ bool attack_type::special_active(const config& cfg, bool self) const
 			if (!active.empty() && active != "defense")
 				return false;
 		}
-		if (config const *filter_self = cfg.child("filter_self")) {
+		if (const config &filter_self = cfg.child("filter_self"))
+		{
 			if (def == unitmap_->end() ||
-			    !def->second.matches_filter(filter_self, dloc_))
+			    !def->second.matches_filter(vconfig(filter_self), dloc_))
 				return false;
-			if (config const *filter_weapon = filter_self->child("filter_weapon")) {
-				if (!matches_filter(*filter_weapon, true))
+			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
+				if (!matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
-		if (config const *filter_opponent = cfg.child("filter_opponent")) {
+		if (const config &filter_opponent = cfg.child("filter_opponent"))
+		{
 			if (att == unitmap_->end() ||
-			    !att->second.matches_filter(filter_opponent, aloc_))
+			    !att->second.matches_filter(vconfig(filter_opponent), aloc_))
 				return false;
-			if (config const *filter_weapon = filter_opponent->child("filter_weapon")) {
+			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter(*filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
 	}
-	if (config const *filter_attacker = cfg.child("filter_attacker")) {
+	if (const config &filter_attacker = cfg.child("filter_attacker"))
+	{
 		if (att == unitmap_->end() ||
-		    !att->second.matches_filter(filter_attacker, aloc_))
+		    !att->second.matches_filter(vconfig(filter_attacker), aloc_))
 			return false;
-		if (config const *filter_weapon = filter_attacker->child("filter_weapon")) {
+		if (const config &filter_weapon = filter_attacker.child("filter_weapon"))
+		{
 			if (attacker_) {
-				if (!matches_filter(*filter_weapon, true))
+				if (!matches_filter(filter_weapon, true))
 					return false;
 			} else {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter(*filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
 	}
-	if (config const *filter_defender = cfg.child("filter_defender")) {
+	if (const config &filter_defender = cfg.child("filter_defender"))
+	{
 		if (def == unitmap_->end() ||
-		    !def->second.matches_filter(filter_defender, dloc_))
+		    !def->second.matches_filter(vconfig(filter_defender), dloc_))
 			return false;
-		if (config const *filter_weapon = filter_defender->child("filter_weapon")) {
+		if (const config &filter_weapon = filter_defender.child("filter_weapon"))
+		{
 			if (!attacker_) {
-				if(!matches_filter(*filter_weapon, true))
+				if(!matches_filter(filter_weapon, true))
 					return false;
 			} else {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter(*filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
@@ -773,7 +777,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 				continue;
 			unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
 			if (unit == unitmap_->end() ||
-			    !unit->second.matches_filter(&i, unit->first))
+			    !unit->second.matches_filter(vconfig(i), unit->first))
 				return false;
 		}
 	}
@@ -787,9 +791,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			/* GCC-3.3 doesn't accept vconfig(*i) in adj_filter */
-			const vconfig& v = vconfig(&i);
-			terrain_filter adj_filter(v, *map_, *game_status_, *unitmap_);
+			terrain_filter adj_filter(vconfig(i), *map_, *game_status_, *unitmap_);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
@@ -908,23 +910,24 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		if (!backstab && utils::string_bool(cfg["backstab"]))
 			continue;
 
-		if (config const *apply_filter = cfg.child("filter_base_value")) {
-			std::string const &cond_eq = (*apply_filter)["equals"];
+		if (const config &apply_filter = cfg.child("filter_base_value"))
+		{
+			std::string const &cond_eq = apply_filter["equals"];
 			if (!cond_eq.empty() && lexical_cast_default<int>(cond_eq) != def)
 				continue;
-			std::string const &cond_ne = (*apply_filter)["not_equals"];
+			std::string const &cond_ne = apply_filter["not_equals"];
 			if (!cond_ne.empty() && lexical_cast_default<int>(cond_ne) == def)
 				continue;
-			std::string const &cond_lt = (*apply_filter)["less_than"];
+			std::string const &cond_lt = apply_filter["less_than"];
 			if (!cond_lt.empty() && lexical_cast_default<int>(cond_lt) <= def)
 				continue;
-			std::string const &cond_gt = (*apply_filter)["greater_than"];
+			std::string const &cond_gt = apply_filter["greater_than"];
 			if (!cond_gt.empty() && lexical_cast_default<int>(cond_gt) >= def)
 				continue;
-			std::string const &cond_ge = (*apply_filter)["greater_than_equal_to"];
+			std::string const &cond_ge = apply_filter["greater_than_equal_to"];
 			if (!cond_ge.empty() && lexical_cast_default<int>(cond_ge) > def)
 				continue;
-			std::string const &cond_le = (*apply_filter)["less_than_equal_to"];
+			std::string const &cond_le = apply_filter["less_than_equal_to"];
 			if (!cond_le.empty() && lexical_cast_default<int>(cond_le) < def)
 				continue;
 		}

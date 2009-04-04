@@ -23,7 +23,7 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 
-map_generator* create_map_generator(const std::string& name, const config* cfg)
+map_generator* create_map_generator(const std::string& name, const config &cfg)
 {
 	if(name == "default" || name == "") {
 		return new default_map_generator(cfg);
@@ -36,7 +36,7 @@ map_generator* create_map_generator(const std::string& name, const config* cfg)
 
 //function to generate a random map, from a string which describes
 //the generator to use and its arguments
-std::string random_generate_map(const std::string& parms, const config* cfg)
+std::string random_generate_map(const std::string& parms, const config &cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
@@ -51,7 +51,7 @@ std::string random_generate_map(const std::string& parms, const config* cfg)
 	return generator.get()->create_map(parameters);
 }
 
-config random_generate_scenario(const std::string& parms, const config* cfg)
+config random_generate_scenario(const std::string& parms, const config &cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator

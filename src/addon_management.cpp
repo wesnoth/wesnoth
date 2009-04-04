@@ -467,16 +467,16 @@ namespace {
 		if(!sock) {
 			gui::show_error_message(disp, _("Connection timed out"));
 			return;
-		} else if(data.child("error")) {
+		} else if (const config &c = data.child("error")) {
 			std::string error_message = _("The server responded with an error: \"$error|\"");
 			utils::string_map symbols;
-			symbols["error"] = (*data.child("error"))["message"].str();
+			symbols["error"] = c["message"].str();
 			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
 			gui::show_error_message(disp, error_message);
 			return;
-		} else if(data.child("message")) {
+		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
+			gui::dialog dlg(disp,_("Terms"), c["message"], gui::OK_CANCEL);
 			const int res = dlg.show();
 			if(res != 0) {
 				return;
@@ -513,12 +513,12 @@ namespace {
 		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
 		if(!sock) {
 			return;
-		} else if(data.child("error")) {
+		} else if (const config &c = data.child("error")) {
 			gui::show_error_message(disp, _("The server responded with an error: \"") +
-									(*data.child("error"))["message"].str() + '"');
-		} else if(data.child("message")) {
+			                        c["message"].str() + '"');
+		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp,_("Response"),(*data.child("message"))["message"]);
+			gui::message_dialog dlg(disp, _("Response"), c["message"]);
 			dlg.show();
 		}
 	}
@@ -540,12 +540,12 @@ namespace {
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
 			gui::show_error_message(disp, _("Connection timed out"));
-		} else if(data.child("error")) {
+		} else if (const config &c = data.child("error")) {
 			gui::show_error_message(disp, _("The server responded with an error: \"") +
-									(*data.child("error"))["message"].str() + '"');
-		} else if(data.child("message")) {
+			                        c["message"].str() + '"');
+		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp,_("Response"),(*data.child("message"))["message"]);
+			gui::message_dialog dlg(disp, _("Response"), c["message"]);
 			dlg.show();
 		}
 	}
@@ -559,11 +559,11 @@ namespace {
 	                   bool show_result = true)
 	{
 		// Get all dependencies of the addon/campaign selected for download.
-		const config * const selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
-		assert(selected_campaign != NULL);
+		const config &selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
+		assert(selected_campaign);
 		// Get all dependencies which are not already installed.
 		// TODO: Somehow determine if the version is outdated.
-		std::vector<std::string> dependencies = utils::split((*selected_campaign)["dependencies"]);
+		std::vector<std::string> dependencies = utils::split(selected_campaign["dependencies"]);
 		if (!addon_dependencies_met(disp,dependencies)) return false;
 		// Proceed to download and install
 		config request;
@@ -582,9 +582,8 @@ namespace {
 			return false;
 		}
 
-		config const * const dlerror = cfg.child("error");
-		if(dlerror != NULL) {
-			gui::show_error_message(disp, (*dlerror)["message"]);
+		if (config const &dlerror = cfg.child("error")) {
+			gui::show_error_message(disp, dlerror["message"]);
 			return false;
 		}
 
@@ -594,8 +593,8 @@ namespace {
 		}
 
 		// add revision info to the addon archive
-		config* maindir = cfg.find_child("dir", "name", addon_id);
-		if(maindir == NULL) {
+		config *maindir = &cfg.find_child("dir", "name", addon_id);
+		if (!*maindir) {
 			LOG_CFG << "downloaded addon '" << addon_id << "' is missing its own directory, creating...\n";
 			maindir = &cfg.add_child("dir");
 			(*maindir)["name"] = addon_id;
@@ -821,12 +820,12 @@ namespace {
 		bool result = true;
 		std::vector<std::string> failed_titles;
 
-		assert(cfg.child("campaigns") != NULL);
+		assert(cfg.child("campaigns"));
 
 		if(upd_all) {
 			for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 			{
-				if(!install_addon(disp, * cfg.child("campaigns"), addons[i], titles[i],
+				if (!install_addon(disp, cfg.child("campaigns"), addons[i], titles[i],
 				                   types[i], uploads[i], newversions[i], net_manager, sock,
 				                   do_refresh, false)) {
 					result=false;
@@ -835,7 +834,7 @@ namespace {
 			}
 		} else {
 			const size_t i = static_cast<size_t>(index);
-			if(!install_addon(disp, * cfg.child("campaigns"), addons[i], titles[i],
+			if (!install_addon(disp, cfg.child("campaigns"), addons[i], titles[i],
 				               types[i], uploads[i], newversions[i], net_manager, sock,
 				               do_refresh, false)) {
 				result=false;
@@ -903,19 +902,18 @@ namespace {
 				return;
 			}
 
-			config const * const error = cfg.child("error");
-			if(error != NULL) {
-				gui::show_error_message(disp, (*error)["message"]);
+			if (config const &error = cfg.child("error")) {
+				gui::show_error_message(disp, error["message"]);
 				return;
 			}
 
-			config const * const addons_tree = cfg.child("campaigns");
-			if(addons_tree == NULL) {
+			config const &addons_tree = cfg.child("campaigns");
+			if (!addons_tree) {
 				gui::show_error_message(disp, _("An error occurred while communicating with the server."));
 				return;
 			}
 
-			const config::child_list& addon_cfgs = addons_tree->get_children("campaign");
+			const config::child_list &addon_cfgs = addons_tree.get_children("campaign");
 			if(update_mode) {
 				addons_update_dlg(disp, cfg, addon_cfgs, net_manager, sock, do_refresh);
 				return;
@@ -1013,7 +1011,7 @@ namespace {
 
 			int index = -1;
 			if(gui2::new_widgets) {
-				gui2::taddon_list dlg(*addons_tree);
+				gui2::taddon_list dlg(addons_tree);
 				dlg.show(disp.video());
 			} else {
 
@@ -1062,7 +1060,7 @@ namespace {
 			}
 
 			// Handle download
-			install_addon(disp, * addons_tree, addons[index], titles[index], types[index],
+			install_addon(disp, addons_tree, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 
 			// Show the dialog again, and position it on the same item installed
@@ -1236,11 +1234,11 @@ void refresh_addon_version_info_cache()
 			scoped_istream stream = istream_file(info_file);
 			read(cfg, *stream);
 
-			config const* const info_cfg = cfg.child("info");
-			if(info_cfg == NULL) {
+			config const &info_cfg = cfg.child("info");
+			if (!info_cfg) {
 				continue;
 			}
-			std::string const& version = (*info_cfg)["version"];
+			std::string const& version = info_cfg["version"];
 			LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
 			version_info_cache.insert(std::make_pair(addon, version_info(version)));
 		}

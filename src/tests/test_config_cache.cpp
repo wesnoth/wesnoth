@@ -172,13 +172,13 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 
 	test_scoped_define test_define_def("TEST_DEFINE");
 
-	config* child = &test_config.add_child("test_key2");
-	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
+	config &child = test_config.add_child("test_key2");
+	child["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 
 
 	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
 
-	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config(test_data_path)->child("test_key2"))["define"].str());
+	BOOST_CHECK_EQUAL(test_config.child("test_key2")["define"].str(), cache.get_config(test_data_path)->child("test_key2")["define"].str());
 }
 
 BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
@@ -196,8 +196,8 @@ BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
 	// test non-clean one then
 	{
 		config cfg;
-		config* child = &cfg.add_child("junk_data");
-		(*child)["some_junk"] = "hah";
+		config &child = cfg.add_child("junk_data");
+		child["some_junk"] = "hah";
 		cache.get_config(test_data_path, cfg);
 		BOOST_CHECK_EQUAL(test_config, cfg);
 	}
@@ -207,10 +207,10 @@ BOOST_AUTO_TEST_CASE( test_macrosubstitution )
 {
 	config test_config = setup_test_config();
 
-	config* child = &test_config.add_child("test_key3");
-	(*child)["define"] = "transaction";
-	child = &test_config.add_child("test_key4");
-	(*child)["defined"] = "parameter";
+	config &child = test_config.add_child("test_key3");
+	child["define"] = "transaction";
+	config &child2 = test_config.add_child("test_key4");
+	child2["defined"] = "parameter";
 
 	// test first that macro loading works
 	test_scoped_define macro("TEST_MACRO");

@@ -279,7 +279,7 @@ namespace game_events {
 	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
-	static bool matches_special_filter(const config* cfg, const vconfig filter);
+	static bool matches_special_filter(const config &cfg, const vconfig filter);
 
 	game_state* get_state_of_game()
 	{
@@ -1600,7 +1600,7 @@ namespace {
 					// merging multiple children into a single explicit index
 					// requires that they first be merged with each other
 					data.merge_children(dest.key);
-					dest.as_container().merge_with(*data.child(dest.key));
+					dest.as_container().merge_with(data.child(dest.key));
 				} else {
 					dest.vars->merge_with(data);
 				}
@@ -1622,7 +1622,7 @@ namespace {
 		// role= represents the instruction, so we can't filter on it
 		config item = cfg.get_config();
 		item.remove_attribute("role");
-		vconfig filter(&item);
+		vconfig filter(item);
 
 		// try to match units on the gamemap before the recall lists
 		std::vector<std::string> types = utils::split(filter["type"]);
@@ -1929,7 +1929,7 @@ namespace {
 		 */
 		temp_config["x"] = "";
 		temp_config["y"] = "";
-		vconfig unit_filter(&temp_config);
+		vconfig unit_filter(temp_config);
 		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
 			const std::string player_id = (*teams)[index].save_id();
@@ -2290,7 +2290,7 @@ namespace {
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
 		if(filter.null()) {
-			filter = &empty_filter;
+			filter = empty_filter;
 			lg::wml_error << "[store_unit] missing required [filter] tag\n";
 		}
 
@@ -2371,7 +2371,7 @@ namespace {
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(
-				(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : &var);
+				(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
@@ -2538,7 +2538,7 @@ namespace {
 				config temp_cfg(cfg.get_config());
 				temp_cfg["owner_side"] = temp_cfg["side"];
 				temp_cfg["side"] = "";
-				matches = terrain_filter(&temp_cfg, *game_map, *status_ptr, *units).match(*j);
+				matches = terrain_filter(vconfig(temp_cfg), *game_map, *status_ptr, *units).match(*j);
 			} else {
 				matches = terrain_filter(cfg, *game_map, *status_ptr, *units).match(*j);
 			}
@@ -3239,7 +3239,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
         if(!(utils::string_bool(behavior_flag,true)))
         {
         	const config &parsed = cfg.get_parsed_config();
-		    new_handlers.push_back(game_events::event_handler(vconfig(&parsed, true)));
+		    new_handlers.push_back(game_events::event_handler(vconfig(parsed, true)));
         }
         else
         {
@@ -3320,12 +3320,12 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				foreach(game_events::event_handler& hand, event_handlers) {
 					if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 						LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
-						hand.read(vconfig(&mref->command,true));
+						hand.read(vconfig(mref->command, true));
 					}
 				}
 			} else if(!is_empty_command) {
 				LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,true), true));
+				event_handlers.push_back(game_events::event_handler(vconfig(mref->command, true), true));
 			}
 
 			delete wcc.second;
@@ -3541,15 +3541,14 @@ namespace game_events {
 		return false;
 	}
 
-	bool matches_special_filter(const config* cfg, const vconfig filter)
+	bool matches_special_filter(const config &cfg, const vconfig filter)
 	{
-		if(!cfg) {
+		if (!cfg) {
 			WRN_NG << "attempt to filter attack for an event with no attack data.\n";
 			// better to not execute the event (so the problem is more obvious)
 			return false;
 		}
-		const config& attack_cfg = *cfg;
-		const attack_type attack(attack_cfg);
+		const attack_type attack(cfg);
 		bool matches = attack.matches_filter(filter.get_parsed_config());
 
 		// Handle [and], [or], and [not] with in-order precedence
@@ -3601,7 +3600,7 @@ namespace game_events {
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
-			event_handlers.push_back(game_events::event_handler(&ev));
+			event_handlers.push_back(game_events::event_handler(vconfig(ev)));
 		}
 		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
@@ -3628,7 +3627,7 @@ namespace game_events {
 		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 		while(itor != state_of_game->wml_menu_items.end()) {
 			if(!itor->second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,true), true));
+				event_handlers.push_back(game_events::event_handler(vconfig(itor->second->command, true), true));
 			}
 			++itor;
 			++wmi_count;
@@ -3725,7 +3724,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 			foreach (const config &new_ev, cfgs) {
 				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
-				temp.push_back(game_events::event_handler(vconfig(&new_ev, true)));
+				temp.push_back(game_events::event_handler(vconfig(new_ev, true)));
 			}
 		}
 	}

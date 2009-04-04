@@ -265,11 +265,11 @@ void wait::join_game(bool observe)
 		if(allow_changes) {
 			events::event_context context;
 
-			const config* era = level_.child("era");
+			const config &era = level_.child("era");
 			/** @todo Check whether we have the era. If we don't inform the user. */
-			if(era == NULL)
+			if (!era)
 				throw config::error(_("No era information found."));
-			config::const_child_itors possible_sides = era->child_range("multiplayer_side");
+			config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 			if (possible_sides.first == possible_sides.second) {
 				set_result(QUIT);
 				throw config::error(_("No multiplayer sides found"));
@@ -338,10 +338,9 @@ const game_state& wait::get_state()
 
 void wait::start_game()
 {
-	const config* stats = level_.child("statistics");
-	if(stats != NULL) {
+	if (const config &stats = level_.child("statistics")) {
 		statistics::fresh_stats();
-		statistics::read_stats(*stats);
+		statistics::read_stats(stats);
 	}
 
 	/**
@@ -425,10 +424,10 @@ void wait::process_network_data(const config& data, const network::connection so
 	} else if(data.child("leave_game")) {
 		set_result(QUIT);
 		return;
-	} else if(data.child("scenario_diff")) {
+	} else if (const config &c = data.child("scenario_diff")) {
 		LOG_NW << "received diff for scenario... applying...\n";
 		/** @todo We should catch config::error and then leave the game. */
-		level_.apply_diff(*data.child("scenario_diff"));
+		level_.apply_diff(c);
 		generate_menu();
 	} else if(data.child("side")) {
 		level_ = data;

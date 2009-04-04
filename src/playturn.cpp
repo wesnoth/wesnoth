@@ -68,21 +68,19 @@ void turn_info::send_data()
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
-	if (const config *msg = cfg.child("message"))
+	if (const config &msg = cfg.child("message"))
 	{
-		const config &cmessage = *msg;
-		const int side = lexical_cast_default<int>(cmessage["side"],0);
+		const int side = lexical_cast_default<int>(msg["side"],0);
 
-		gui_.add_chat_message(time(NULL), cmessage["sender"], side,
-				cmessage["message"], game_display::MESSAGE_PUBLIC,
+		gui_.add_chat_message(time(NULL), msg["sender"], side,
+				msg["message"], game_display::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 
-	if (const config *msg = cfg.child("whisper") /*&& is_observer()*/)
+	if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		const config &cwhisper = *msg;
-		gui_.add_chat_message(time(NULL), "whisper: " + cwhisper["sender"], 0,
-				cwhisper["message"], game_display::MESSAGE_PRIVATE,
+		gui_.add_chat_message(time(NULL), "whisper: " + msg["sender"], 0,
+				msg["message"], game_display::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
 
@@ -139,13 +137,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 	}
 
-	if(const config* change= cfg.child("change_controller")) {
+	if (const config &change= cfg.child("change_controller"))
+	{
 		//don't use lexical_cast_default it's "safer" to end on error
-		const int side = lexical_cast<int>((*change)["side"]);
+		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = static_cast<size_t>(side-1);
 
-		const std::string& controller = (*change)["controller"];
-		const std::string& player = (*change)["player"];
+		const std::string &controller = change["controller"];
+		const std::string &player = change["player"];
 
 		if(index < teams_.size()) {
 			if (!player.empty())
@@ -302,8 +301,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it
-	if (const config* cfg_host_transfer = cfg.child("host_transfer")){
-		if ( (*cfg_host_transfer)["value"] == "1"){
+	if (const config &cfg_host_transfer = cfg.child("host_transfer")){
+		if (cfg_host_transfer["value"] == "1") {
 			host_transfer_.notify_observers();
 		}
 	}

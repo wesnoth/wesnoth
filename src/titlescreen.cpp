@@ -194,12 +194,12 @@ static const config* get_tip_of_day(config& tips_of_day)
 	for (int nb_tips = tips_of_day.child_count("tip"); nb_tips > 0;
 	     --nb_tips, next_tip_of_day(tips_of_day))
 	{
-		const config *tip = tips_of_day.child("tip");
+		const config &tip = tips_of_day.child("tip");
 		assert(tip);
 
-		const std::vector<std::string> needed_units = utils::split((*tip)["encountered_units"],',');
+		const std::vector<std::string> needed_units = utils::split(tip["encountered_units"], ',');
 		if (needed_units.empty()) {
-			return tip;
+			return &tip;
 		}
 		const std::set<std::string>& seen_units = preferences::encountered_units();
 
@@ -210,10 +210,10 @@ static const config* get_tip_of_day(config& tips_of_day)
 			int needed_units_nb = lexical_cast_default<int>(*i,-1);
 			if (needed_units_nb !=-1) {
 				if (needed_units_nb <= static_cast<int>(seen_units.size())) {
-					return tip;
+					return &tip;
 				}
 			} else if (seen_units.find(*i) != seen_units.end()) {
-				return tip;
+				return &tip;
 			}
 		}
 	}

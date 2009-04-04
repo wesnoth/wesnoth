@@ -150,11 +150,10 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		}
 
 		// Check for "redirect" messages
-		if(data.child("redirect")) {
-			config* redirect = data.child("redirect");
-
-			host = (*redirect)["host"];
-			port = lexical_cast_default<unsigned int>((*redirect)["port"], 15000);
+		if (const config &redirect = data.child("redirect"))
+		{
+			host = redirect["host"];
+			port = lexical_cast_default<unsigned int>(redirect["port"], 15000);
 
 			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
 				throw network::error(_("Server-side redirect loop"));
@@ -207,10 +206,10 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					throw network::error(_("Connection timed out"));
 				}
 
-				config* error = data.child("error");
+				config *error = &data.child("error");
 
 				// ... and get us out of here if the server did not complain
-				if(!error) break;
+				if (!*error) break;
 
 				do {
 					std::string password = preferences::password();
@@ -262,10 +261,10 @@ static server_type open_connection(game_display& disp, const std::string& origin
 							throw network::error(_("Connection timed out"));
 						}
 
-						error = data.child("error");
+						error = &data.child("error");
 
 						// ... and get us out of here if the server is happy now
-						if(!error) break;
+						if (!*error) break;
 
 
 					}

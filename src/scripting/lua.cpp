@@ -347,7 +347,7 @@ static int lua_get_units(lua_State *L)
 	for (unit_map::const_unit_iterator ui = eh->units->begin(), ui_end = eh->units->end();
 	     ui != ui_end; ++ui)
 	{
-		if (has_filter && !ui->second.matches_filter(vconfig(&filter), ui->first))
+		if (has_filter && !ui->second.matches_filter(vconfig(filter), ui->first))
 			continue;
 		size_t *p = static_cast<size_t *>(lua_newuserdata(L, sizeof(size_t)));
 		*p = ui->second.underlying_id();
@@ -393,7 +393,7 @@ static int lua_fire(lua_State *L)
 	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
 
 	eh->handler->handle_event
-		(game_events::queued_event("_from_lua", l1, l2, config()), vconfig(&cfg, true));
+		(game_events::queued_event("_from_lua", l1, l2, config()), vconfig(cfg, true));
 	return 0;
 }
 
@@ -632,11 +632,11 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	if (!vargs.null()) {
 		args = vargs.get_parsed_config();
 	}
-	if (const config *weapon = ev.data.child("first")) {
-		args.add_child("weapon", *weapon);
+	if (const config &weapon = ev.data.child("first")) {
+		args.add_child("weapon", weapon);
 	}
-	if (const config *weapon = ev.data.child("first")) {
-		args.add_child("second_weapon", *weapon);
+	if (const config &weapon = ev.data.child("first")) {
+		args.add_child("second_weapon", weapon);
 	}
 	lua_newtable(L);
 	table_of_wml_config(L, args);

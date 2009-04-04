@@ -44,11 +44,11 @@ public:
  */
 	vconfig();
 	vconfig(const vconfig& v);
-	vconfig(const config* cfg, bool is_volatile=false);
+	explicit vconfig(const config &cfg, bool is_volatile=false);
 	~vconfig();
 
 	vconfig& operator=(const vconfig& cfg);
-	vconfig& operator=(const config* cfg);
+	vconfig& operator=(const config &cfg);
 
 	bool null() const { return cfg_ == NULL; }
 	bool is_volatile() const { return cache_key_ != NULL; }
@@ -148,11 +148,11 @@ private:
 class scoped_weapon_info : public scoped_wml_variable
 {
 public:
-	scoped_weapon_info(const std::string& var_name, const config* data)
+	scoped_weapon_info(const std::string& var_name, const config &data)
 		: scoped_wml_variable(var_name), data_(data) {}
 	void activate();
 private:
-	config const* const data_;
+	config const &data_;
 };
 
 class scoped_xy_unit : public scoped_wml_variable

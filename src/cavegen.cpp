@@ -28,7 +28,7 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) :
+cave_map_generator::cave_map_generator(const config &cfg) :
 	wall_(t_translation::CAVE_WALL),
 	clear_(t_translation::CAVE),
 	village_(t_translation::UNDERGROUND_VILLAGE),
@@ -40,33 +40,27 @@ cave_map_generator::cave_map_generator(const config* cfg) :
 	chambers_(),
 	passages_(),
 	res_(),
-	cfg_(cfg),
+	cfg_(cfg ? cfg : config()),
 	width_(50),
 	height_(50),
 	village_density_(0),
 	flipx_(false),
 	flipy_(false)
 {
-	if(cfg_ == NULL) {
-		static const config default_cfg;
-		cfg_ = &default_cfg;
-	}
-
-	width_ = atoi((*cfg_)["map_width"].c_str());
-	height_ = atoi((*cfg_)["map_height"].c_str());
+	width_ = atoi(cfg_["map_width"].c_str());
+	height_ = atoi(cfg_["map_height"].c_str());
 	width_ += 2 * gamemap::default_border;
 	height_ += 2 * gamemap::default_border;
 
-	village_density_ = atoi((*cfg_)["village_density"].c_str());
+	village_density_ = atoi(cfg_["village_density"].c_str());
 
 	const int r = rand()%100;
-	const int chance = atoi((*cfg_)["flipx_chance"].c_str());
+	const int chance = atoi(cfg_["flipx_chance"].c_str());
 
 	flipx_ = r < chance;
 
 	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
-	flipy_ = (rand()%100) < atoi((*cfg_)["flipy_chance"].c_str());
-
+	flipy_ = (rand()%100) < atoi(cfg_["flipy_chance"].c_str());
 }
 
 std::string cave_map_generator::config_name() const
@@ -105,9 +99,8 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	passages_.clear();
 
 	res_.clear();
-	const config* const settings = cfg_->child("settings");
-	if(settings != NULL) {
-		res_ = *settings;
+	if (const config &settings = cfg_.child("settings")) {
+		res_ = settings;
 	}
 
 	LOG_NG << "creating scenario....\n";
@@ -152,7 +145,7 @@ void cave_map_generator::build_chamber(map_location loc, std::set<map_location>&
 
 void cave_map_generator::generate_chambers()
 {
-	foreach (const config &ch, cfg_->child_range("chamber"))
+	foreach (const config &ch, cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
 		const std::string &chance = ch["chance"];
@@ -191,7 +184,8 @@ void cave_map_generator::generate_chambers()
 		new_chamber.center = map_location(x,y);
 		build_chamber(new_chamber.center,new_chamber.locs,chamber_size,jagged_edges);
 
-		new_chamber.items = ch.child("items");
+		const config &items = ch.child("items");
+		new_chamber.items = items ? &items : NULL;
 
 		const std::string &id = ch["id"];
 		if (!id.empty()) {
@@ -228,11 +222,11 @@ void cave_map_generator::place_chamber(const chamber& c)
 	foreach (const config::any_child &it, c.items->all_children_range())
 	{
 		config cfg = it.cfg;
-		config* const filter = cfg.child("filter");
-		config* const object = cfg.child("object");
+		config &filter = cfg.child("filter");
 		config* object_filter = NULL;
-		if(object != NULL) {
-			object_filter = object->child("filter");
+		if (config &object = cfg.child("object")) {
+			if (config &of = object.child("filter"))
+				object_filter = &of;
 		}
 
 		if(!utils::string_bool(cfg["same_location_as_previous"])) {
@@ -246,8 +240,8 @@ void cave_map_generator::place_chamber(const chamber& c)
 		char xbuf[50];
 		snprintf(xbuf,sizeof(xbuf),"%d",loc->x+1);
 		cfg["x"] = xbuf;
-		if(filter != NULL) {
-			(*filter)["x"] = xbuf;
+		if (filter) {
+			filter["x"] = xbuf;
 		}
 
 		if(object_filter != NULL) {
@@ -257,8 +251,8 @@ void cave_map_generator::place_chamber(const chamber& c)
 		char ybuf[50];
 		snprintf(ybuf,sizeof(ybuf),"%d",loc->y+1);
 		cfg["y"] = ybuf;
-		if(filter != NULL) {
-			(*filter)["y"] = ybuf;
+		if (filter) {
+			filter["y"] = ybuf;
 		}
 
 		if(object_filter != NULL) {

@@ -124,9 +124,9 @@ static config& find_ref(const std::string& id, config& cfg, bool remove = false)
 				if ((**j)["id"] == id) {
 					//DBG_DP << "Found a " << *(*i).first << "\n";
 					if (remove) {
-						const config* const res = cfg.find_child((*i).first,"id",id);
+						const config &res = cfg.find_child((*i).first,"id",id);
 						const size_t index = std::find((*i).second.begin(), (*i).second.end(),
-									       res) - (*i).second.begin();
+						                               &res) - (*i).second.begin();
 						cfg.remove_child((*i).first,index);
 						return empty_config;
 					} else {
@@ -170,9 +170,9 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			std::vector<const config*> parent_stack(1, (*i));
 			const config* parent;
 			const t_string* parent_id = &((**i)["inherits"]);
-			while((parent = top_cfg.find_child("resolution", "id", (*parent_id))) == NULL) {
-				parent = top_cfg.find_child("partialresolution", "id", (*parent_id));
-				if(parent == NULL)
+			while (!*(parent = &top_cfg.find_child("resolution", "id", (*parent_id)))) {
+				parent = &top_cfg.find_child("partialresolution", "id", (*parent_id));
+				if (!*parent)
 					throw config::error("[partialresolution] refers to non-existant [resolution] " + (*parent_id).str());
 				parent_stack.push_back(parent);
 				parent_id = &((*parent)["inherits"]);
@@ -194,11 +194,9 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 					target.merge_attributes(chg);
 				}
 
-				{
-					// cannot add [status] sub-elements, but who cares
-					const config* c = parent_stack.back()->child("add");
-					if (c != NULL) {
-						const config::child_map m = c->all_children();
+				// cannot add [status] sub-elements, but who cares
+				if (const config &c = parent_stack.back()->child("add")) {
+					const config::child_map m = c.all_children();
 						for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
 							for(config::child_list::const_iterator k = j->second.begin();
 									k != j->second.end(); ++k) {
@@ -206,7 +204,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 							}
 						}
 					}
-				}
+
 				parent_stack.pop_back();
 			}
 		}
@@ -474,9 +472,8 @@ theme::status_item::status_item(const config& cfg) :
 	if(font_ == 0)
 		font_ = DefaultFontSize;
 
-	const config* const label_child = cfg.child("label");
-	if(label_child != NULL) {
-		label_ = label(*label_child);
+	if (const config &label_child = cfg.child("label")) {
+		label_ = label(label_child);
 	}
 
 	if(cfg["font_rgb"].size()){
@@ -608,28 +605,25 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	return result;
 }
 
-void theme::add_object(const config& cfg){
-
-	const config* const main_map_cfg = cfg.child("main_map");
-	if(main_map_cfg != NULL) {
-		main_map_ = object(*main_map_cfg);
+void theme::add_object(const config& cfg)
+{
+	if (const config &c = cfg.child("main_map")) {
+		main_map_ = object(c);
 	}
 
-	const config* const mini_map_cfg = cfg.child("mini_map");
-	if(mini_map_cfg != NULL) {
-		mini_map_ = object(*mini_map_cfg);
+	if (const config &c = cfg.child("mini_map")) {
+		mini_map_ = object(c);
 	}
 
-	const config* const status_cfg = cfg.child("status");
-	if(status_cfg != NULL) {
-		for(config::child_map::const_iterator i = status_cfg->all_children().begin(); i != status_cfg->all_children().end(); ++i) {
+	if (const config &status_cfg = cfg.child("status"))
+	{
+		for(config::child_map::const_iterator i = status_cfg.all_children().begin(); i != status_cfg.all_children().end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 				status_.insert(std::pair<std::string,status_item>(i->first,status_item(**j)));
 			}
 		}
-		const config* const unit_image_cfg = status_cfg->child("unit_image");
-		if (unit_image_cfg != NULL) {
-			unit_image_ = object(*unit_image_cfg);
+		if (const config &unit_image_cfg = status_cfg.child("unit_image")) {
+			unit_image_ = object(unit_image_cfg);
 		} else {
 			unit_image_ = object();
 		}
@@ -661,9 +655,8 @@ void theme::add_object(const config& cfg){
 		DBG_DP << "done adding menu...\n";
 	}
 
-	const config* const border_cfg = cfg.child("main_map_border");
-	if (border_cfg != NULL) {
-		border_ = tborder(*border_cfg);
+	if (const config &c = cfg.child("main_map_border")) {
+		border_ = tborder(c);
 	} else {
 		border_ = tborder();
 	}

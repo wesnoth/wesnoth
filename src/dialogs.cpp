@@ -455,14 +455,14 @@ void save_preview_pane::draw_contents()
 
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
-		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
-		if(scenario != NULL && scenario->find_child("side","shroud","yes") == NULL) {
-			map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"].empty() == false) {
+		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
+		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
+			map_data = scenario["map_data"];
+			if (map_data.empty() && !scenario["map"].empty()) {
 				try {
-					map_data = read_map((*scenario)["map"]);
+					map_data = read_map(scenario["map"]);
 				} catch(io_exception& e) {
-					ERR_G << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
+					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
 				}
 			}
 		}
@@ -532,7 +532,11 @@ void save_preview_pane::draw_contents()
 
 		if(campaign_type == "scenario") {
 			const std::string campaign_id = summary["campaign"];
-			const config* campaign = campaign_id.empty() ? NULL : game_config_->find_child("campaign", "id", campaign_id);
+			const config *campaign = NULL;
+			if (!campaign_id.empty()) {
+				if (const config &c = game_config_->find_child("campaign", "id", campaign_id))
+					campaign = &c;
+			}
 			utils::string_map symbols;
 			if (campaign != NULL) {
 				symbols["campaign_name"] = (*campaign)["name"];

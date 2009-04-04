@@ -86,7 +86,7 @@ private:
 	tstate_definition();
 
 public:
-	tstate_definition(const config* cfg);
+	tstate_definition(const config &cfg);
 
 	tcanvas canvas;
 };

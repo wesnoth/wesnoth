@@ -247,7 +247,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	if(!skip_replay) {
 		foreach (const config &s, story) {
-			show_intro(*gui_, vconfig(&s, true), level_);
+			show_intro(*gui_, vconfig(s, true), level_);
 		}
 	}
 	gui_->labels().read(level_, game_events::get_state_of_game());

@@ -25,7 +25,7 @@
 class cave_map_generator : public map_generator
 {
 public:
-	cave_map_generator(const config* game_config);
+	cave_map_generator(const config &game_config);
 
 	bool allow_user_config() const { return true; }
 	// This is a pure virtual function in the base class, so must be here
@@ -88,7 +88,7 @@ private:
 	std::vector<passage> passages_;
 
 	config res_;
-	const config* cfg_;
+	config cfg_;
 	size_t width_, height_, village_density_;
 
 	// The scenario may have a chance to flip all x values or y values

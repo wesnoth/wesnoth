@@ -131,7 +131,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& del_specials = cfg["remove_specials"];
-	const config* set_specials = cfg.child("set_specials");
+	const config &set_specials = cfg.child("set_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
 	const std::string& set_attack_weight = cfg["attack_weight"];
@@ -158,10 +158,10 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config* specials = cfg_.child("specials");
-		if (specials != NULL) {
+		if (config &specials = cfg_.child("specials"))
+		{
 			config new_specials;
-			foreach (const config::any_child &vp, specials->all_children_range()) {
+			foreach (const config::any_child &vp, specials.all_children_range()) {
 				std::vector<std::string>::const_iterator found_id =
 					std::find(dsl.begin(), dsl.end(), vp.cfg["id"]);
 				if (found_id == dsl.end()) {
@@ -174,12 +174,12 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	}
 
 	if (set_specials) {
-		const std::string& mode = set_specials->get_attribute("mode");
-		if ( mode != "append") {
+		const std::string &mode = set_specials["mode"];
+		if (mode != "append") {
 			cfg_.clear_children("specials");
 		}
 		config &new_specials = cfg_.child_or_add("specials");
-		foreach (const config::any_child &value, set_specials->all_children_range()) {
+		foreach (const config::any_child &value, set_specials.all_children_range()) {
 			new_specials.add_child(value.key, value.cfg);
 		}
 	}
@@ -275,9 +275,9 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 }
 bool attack_type::has_special_by_id(const std::string& special) const
 {
-	const config* abil = cfg_.child("specials");
-	if(abil) {
-		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+	if (const config &abil = cfg_.child("specials"))
+	{
+		for(config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 				if((**j)["id"] == special) {
 					return true;
@@ -306,17 +306,14 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	if (!flies.empty())
 		cfg_["flies"]= cfg["flies"];
 
-	const config* movement_costs = cfg.child("movement_costs");
-	if (movement_costs!=NULL)
-		cfg_.add_child("movement_costs", *movement_costs);
+	if (const config &movement_costs = cfg.child("movement_costs"))
+		cfg_.add_child("movement_costs", movement_costs);
 
-	const config* defense = cfg.child("defense");
-	if (defense!=NULL)
-		cfg_.add_child("defense", *defense);
+	if (const config &defense = cfg.child("defense"))
+		cfg_.add_child("defense", defense);
 
-	const config* resistance = cfg.child("resistance");
-	if (resistance!=NULL)
-		cfg_.add_child("resistance", *resistance);
+	if (const config &resistance = cfg.child("resistance"))
+		cfg_.add_child("resistance", resistance);
 }
 
 unit_movement_type::unit_movement_type(): moveCosts_(), defenseMods_(), parent_(NULL), cfg_()
@@ -375,11 +372,10 @@ int unit_movement_type::movement_cost(const gamemap& map,
 		return ret_value;
 	}
 
-	const config* movement_costs = cfg_.child("movement_costs");
-
 	int res = -1;
 
-	if(movement_costs != NULL) {
+	if (const config &movement_costs = cfg_.child("movement_costs"))
+	{
 		if(underlying.size() != 1) {
 			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
@@ -389,9 +385,9 @@ int unit_movement_type::movement_cost(const gamemap& map,
 
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
 
-		const std::string& val = (*movement_costs)[id];
+		const std::string &val = movement_costs[id];
 
-		if(val != "") {
+		if (!val.empty()) {
 			res = atoi(val.c_str());
 		}
 	}
@@ -455,9 +451,8 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 	int res = -1;
 
-	const config* const defense = cfg_.child("defense");
-
-	if(defense != NULL) {
+	if (const config &defense = cfg_.child("defense"))
+	{
 		if(underlying.size() != 1) {
 			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
@@ -466,9 +461,9 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		}
 
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		const std::string& val = (*defense)[id];
+		const std::string &val = defense[id];
 
-		if(val != "") {
+		if (!val.empty()) {
 			res = atoi(val.c_str());
 		}
 	}
@@ -492,10 +487,10 @@ int unit_movement_type::resistance_against(const attack_type& attack) const
 	bool result_found = false;
 	int res = 100;
 
-	const config* const resistance = cfg_.child("resistance");
-	if(resistance != NULL) {
-		const std::string& val = (*resistance)[attack.type()];
-		if(val != "") {
+	if (const config &resistance = cfg_.child("resistance"))
+	{
+		const std::string &val = resistance[attack.type()];
+		if (!val.empty()) {
 			res = atoi(val.c_str());
 			result_found = true;
 		}
@@ -514,9 +509,9 @@ string_map unit_movement_type::damage_table() const
 	if(parent_ != NULL)
 		res = parent_->damage_table();
 
-	const config* const resistance = cfg_.child("resistance");
-	if(resistance != NULL) {
-		foreach (const config::attribute &i, resistance->attribute_range()) {
+	if (const config &resistance = cfg_.child("resistance"))
+	{
+		foreach (const config::attribute &i, resistance.attribute_range()) {
 			res[i.first] = i.second;
 		}
 	}
@@ -816,9 +811,9 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 		genders_.push_back(unit_race::MALE);
 	}
 
-	const config* abil_cfg = cfg.child("abilities");
-	if(abil_cfg) {
-		const config::child_map& abi = abil_cfg->all_children();
+	if (const config &abil_cfg = cfg.child("abilities"))
+	{
+		const config::child_map& abi = abil_cfg.all_children();
 		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
 			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
 				if((**k)["name"] != "") {
@@ -833,11 +828,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	{
 		foreach (const config &effect, adv.child_range("effect"))
 		{
-			const config *abil_cfg = effect.child("abilities");
+			const config &abil_cfg = effect.child("abilities");
 			if (!abil_cfg || effect["apply_to"] != "new_ability") {
 				continue;
 			}
-			const config::child_map& abi = abil_cfg->all_children();
+			const config::child_map &abi = abil_cfg.all_children();
 			for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
 				for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
 					if((**k)["name"] != "") {
@@ -870,28 +865,28 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
-	const config* const male_cfg = cfg.child("male");
-	if(male_cfg != NULL) {
+	if (const config &male_cfg = cfg.child("male"))
+	{
 		config m_cfg;
-		if(!utils::string_bool((*male_cfg)["inherit"], true)) {
-			m_cfg = *male_cfg;
+		if (!utils::string_bool(male_cfg["inherit"], true)) {
+			m_cfg = male_cfg;
 		} else {
 			m_cfg = cfg;
-			m_cfg.merge_with(*male_cfg);
+			m_cfg.merge_with(male_cfg);
 		}
 		m_cfg.clear_children("male");
 		m_cfg.clear_children("female");
 		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
 	}
 
-	const config* const female_cfg = cfg.child("female");
-	if(female_cfg != NULL) {
+	if (const config &female_cfg = cfg.child("female"))
+	{
 		config f_cfg;
-		if(!utils::string_bool((*female_cfg)["inherit"], true)) {
-			f_cfg = *female_cfg;
+		if (!utils::string_bool(female_cfg["inherit"], true)) {
+			f_cfg = female_cfg;
 		} else {
 			f_cfg = cfg;
-			f_cfg.merge_with(*female_cfg);
+			f_cfg.merge_with(female_cfg);
 		}
 		f_cfg.clear_children("male");
 		f_cfg.clear_children("female");
@@ -1013,17 +1008,17 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 
 bool unit_type::has_ability(const std::string& ability) const
 {
-	const config* abil = cfg_.child("abilities");
+	const config &abil = cfg_.child("abilities");
 	if (!abil) return false;
-	config::const_child_itors a = abil->child_range(ability);
+	config::const_child_itors a = abil.child_range(ability);
 	return a.first != a.second;
 }
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
-	const config* abil = cfg_.child("abilities");
-	if(abil) {
-		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+	if (const config &abil = cfg_.child("abilities"))
+	{
+		for (config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 				if((**j)["id"] == ability) {
 					return true;
@@ -1038,10 +1033,10 @@ std::vector<std::string> unit_type::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	const config* abilities = cfg_.child("abilities");
+	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
 
-	for(config::child_map::const_iterator i = abilities->all_children().begin(); i != abilities->all_children().end(); ++i) {
+	for (config::child_map::const_iterator i = abilities.all_children().begin(); i != abilities.all_children().end(); ++i) {
 		for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			std::string const &id = (**j)["id"];
 
@@ -1158,10 +1153,10 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 	foreach (config &ut, cfg.child_range("unit_type"))
 	{
 	    std::string id = ut["id"];
-		if (ut.child("base_unit"))
+		if (const config &bu = ut.child("base_unit"))
 		{
-            // Derive a new unit type from an existing base unit id
-			const std::string based_from = (*ut.child("base_unit"))["id"];
+			// Derive a new unit type from an existing base unit id
+			const std::string based_from = bu["id"];
 			config from_cfg = find_config(based_from);
 
             config merge_cfg = from_cfg;
@@ -1232,10 +1227,10 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
 
 const config& unit_type_data::unit_type_map_wrapper::find_config(const std::string& key) const
 {
-    const config* cfg = unit_cfg_->find_child("unit_type", "id", key);
+	const config &cfg = unit_cfg_->find_child("unit_type", "id", key);
 
-    if (cfg != NULL)
-        return *cfg;
+	if (cfg)
+		return cfg;
 
     ERR_CONFIG << "unit type not found: " << key << "\n";
     ERR_CONFIG << *unit_cfg_ << "\n";

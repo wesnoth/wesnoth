@@ -57,6 +57,21 @@ class config
 {
 	friend bool operator==(const config& a, const config& b);
 
+	static config invalid;
+
+	/**
+	 * Raises an exception if this is not valid.
+	 */
+	void check_valid() const;
+
+	/**
+	 * Raises an exception if this of @a cfg is not valid.
+	 */
+	void check_valid(const config &cfg) const;
+
+	struct safe_bool_impl { void nonnull() {}; };
+	typedef void (safe_bool_impl::*safe_bool)();
+
 public:
 	// Create an empty node.
 	config();
@@ -68,6 +83,9 @@ public:
 	~config();
 
 	config& operator=(const config& cfg);
+
+	operator safe_bool() const
+	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
@@ -167,8 +185,18 @@ public:
 	 */
 	config child_or_empty(const std::string &key) const;
 
-	config* child(const std::string& key);
-	const config* child(const std::string& key) const;
+	/**
+	 * Returns the first child with the given @a key, or
+	 * a reference to an invalid config if there is none.
+	 */
+	config &child(const std::string& key);
+
+	/**
+	 * Returns the first child with the given @a key, or
+	 * a reference to an invalid config if there is none.
+	 */
+	const config &child(const std::string& key) const;
+
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string& key, const config& val, size_t index);
@@ -188,9 +216,9 @@ public:
 
 	const_attr_itors attribute_range() const;
 
-	config* find_child(const std::string& key, const std::string& name,
+	config &find_child(const std::string& key, const std::string& name,
 	                   const t_string& value);
-	const config* find_child(const std::string& key, const std::string& name,
+	const config &find_child(const std::string& key, const std::string& name,
 	                         const t_string& value) const;
 
 	void clear_children(const std::string& key);

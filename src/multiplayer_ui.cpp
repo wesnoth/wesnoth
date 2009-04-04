@@ -71,9 +71,8 @@ void check_response(network::connection res, const config& data)
 		throw network::error(_("Connection timed out"));
 	}
 
-	const config* err = data.child("error");
-	if(err != NULL) {
-		throw network::error((*err)["message"]);
+	if (const config &err = data.child("error")) {
+		throw network::error(err["message"]);
 	}
 }
 
@@ -81,12 +80,12 @@ void level_to_gamestate(config& level, game_state& state)
 {
 	//any replay data is only temporary and should be removed from
 	//the level data in case we want to save the game later
-	config * const replay_data = level.child("replay");
+	const config &replay_data = level.child("replay");
 	config replay_data_store;
-	if(replay_data != NULL) {
-		replay_data_store = *replay_data;
+	if (replay_data) {
+		replay_data_store = replay_data;
 		LOG_NW << "setting replay\n";
-		state.replay_data = *replay_data;
+		state.replay_data = replay_data;
 		recorder = replay(replay_data_store);
 		if(!recorder.empty()) {
 			recorder.set_skip(false);
@@ -105,27 +104,27 @@ void level_to_gamestate(config& level, game_state& state)
 	}
 
 	//adds the starting pos to the level
-	if(level.child("replay_start") == NULL){
+	if (!level.child("replay_start")) {
 		level.add_child("replay_start", level);
 	}
 	//this is important, if it does not happen, the starting position is missing and
 	//will be drawn from the snapshot instead (which is not what we want since we have
 	//all needed information here already)
-	state.starting_pos = *(level.child("replay_start"));
+	state.starting_pos = level.child("replay_start");
 
 	level["campaign_type"] = "multiplayer";
 	state.campaign_type = "multiplayer";
 	state.completion = level["completion"];
 	state.version = level["version"];
 
-	const config* const vars = level.child("variables");
-	if(vars != NULL) {
-		state.set_variables(*vars);
+	if (const config &vars = level.child("variables")) {
+		state.set_variables(vars);
 	}
 	state.set_menu_items(level.child_range("menu_item"));
 
 	//Check whether it is a save-game by looking for snapshot data
-	const bool saved_game = (level.child("snapshot") && level.child("snapshot")->child("side"));
+	const config &snapshot = level.child("snapshot");
+	const bool saved_game = snapshot && snapshot.child("side");
 
 	//It might be a MP campaign start-of-scenario save
 	//In this case, it's not entirely a new game, but not a save, either
@@ -134,12 +133,12 @@ void level_to_gamestate(config& level, game_state& state)
 
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.
-	if (saved_game){
-		state.snapshot = *(level.child("snapshot"));
-		if (state.snapshot.child("variables") != NULL){
-			state.set_variables(*state.snapshot.child("variables"));
+	if (saved_game) {
+		state.snapshot = snapshot;
+		if (const config &v = snapshot.child("variables")) {
+			state.set_variables(v);
 		}
-		state.set_menu_items(state.snapshot.child_range("menu_item"));
+		state.set_menu_items(snapshot.child_range("menu_item"));
 	}
 
 	//If it is a start-of-scenario save, we need to load the player information from
@@ -543,12 +542,12 @@ void ui::process_message(const config& msg, const bool whisper) {
 
 void ui::process_network_data(const config& data, const network::connection /*sock*/)
 {
-	if(data.child("error")) {
-		throw network::error((*data.child("error"))["message"]);
-	} else if (data.child("message")) {
-		process_message(*data.child("message"));
-	} else if(data.child("whisper")){
-		process_message(*data.child("whisper"), true);
+	if (const config &c = data.child("error")) {
+		throw network::error(c["message"]);
+	} else if (const config &c = data.child("message")) {
+		process_message(c);
+	} else if (const config &c = data.child("whisper")) {
+		process_message(c, true);
 	} else if(data.child("gamelist")) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 		gamelist_initialized_ = true;
@@ -556,10 +555,10 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		gamelist_updated(false);
 		gamelist_refresh_ = false;
 		lobby_clock_ = SDL_GetTicks();
-	} else if(data.child("gamelist_diff")) {
+	} else if (const config &c = data.child("gamelist_diff")) {
 		if(gamelist_initialized_) {
 			try {
-				gamelist_.apply_diff(*data.child("gamelist_diff"));
+				gamelist_.apply_diff(c);
 			} catch(config::error& e) {
 				ERR_CF << "Error while applying the gamelist diff: '"
 					<< e.message << "' Getting a new gamelist.\n";
@@ -774,8 +773,8 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 
 std::string ui::get_selected_user_game()
 {
-	const config *u = gamelist_.find_child("user", "name", selected_user_);
-	if (u) return (*u)["game_id"];
+	const config &u = gamelist_.find_child("user", "name", selected_user_);
+	if (u) return u["game_id"];
 	return std::string();
 }
 

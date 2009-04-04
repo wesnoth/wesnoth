@@ -122,7 +122,7 @@ private:
 
 	void add_value(const std::string& type, int value);
 
-	void add_chat_log_entry(const config* speak, std::stringstream& str) const;
+	void add_chat_log_entry(const config &speak, std::ostream &str) const;
 
 	const config::child_list& commands() const;
 	void remove_command(int);

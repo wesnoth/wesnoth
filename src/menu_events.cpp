@@ -2632,9 +2632,10 @@ private:
 
 		if (get_data(1).empty()) return command_failed_need_arg(1);
 
-		nickserv.add_child("register")["password"] = get_arg(1);
+		config &reg = nickserv.add_child("register");
+		reg["password"] = get_arg(1);
 		if(!get_data(2).empty()) {
-			(*(nickserv.child("register")))["mail"] = get_arg(2);
+			reg["mail"] = get_arg(2);
 		}
 		print("nick registration", "registering with password *** and " +
 				(get_data(2).empty() ? "no email address" : "email address " + get_data(2)));

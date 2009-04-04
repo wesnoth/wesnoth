@@ -978,9 +978,9 @@ void unit::set_state(const std::string& state, const std::string& value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	const config* abil = cfg_.child("abilities");
-	if(abil) {
-		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+	if (const config &abil = cfg_.child("abilities"))
+	{
+		for (config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 				if((**j)["id"] == ability) {
 					return true;
@@ -993,12 +993,12 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 void unit::remove_ability_by_id(const std::string &ability)
 {
-	config* abil = cfg_.child("abilities");
-	if(abil) {
-		config::all_children_iterator i = abil->ordered_begin();
-		while(i != abil->ordered_end()) {
+	if (config &abil = cfg_.child("abilities"))
+	{
+		config::all_children_iterator i = abil.ordered_begin();
+		while(i != abil.ordered_end()) {
 			if(i.get_child()["id"] == ability) {
-				i = abil->erase(i);
+				i = abil.erase(i);
 			} else {
 				++i;
 			}
@@ -1353,9 +1353,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
 	}
-	const config* const variables = cfg.child("variables");
-	if(variables != NULL) {
-		variables_ = *variables;
+	if (const config &variables = cfg.child("variables")) {
+		variables_ = variables;
 		cfg_.remove_child("variables",0);
 	} else {
 		variables_.clear();
@@ -1369,9 +1368,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		recruits_.clear();
 	}
 
-	const config* mods = cfg.child("modifications");
-	if(mods) {
-		modifications_ = *mods;
+	if (const config &mods = cfg.child("modifications")) {
+		modifications_ = mods;
 		cfg_.remove_child("modifications",0);
 	}
 
@@ -1424,22 +1422,19 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		advances_to_ = temp_advances;
 	}
 
-        const config* ai = cfg.child("ai");
+	if (const config &ai = cfg.child("ai"))
+	{
+		unit_formula_ = ai["formula"];
+		unit_loop_formula_ = ai["loop_formula"];
+		unit_priority_formula_ = ai["priority"];
+		unit_on_fail_formula_ = ai["on_fail"];
 
-        if( ai )
-        {
-            unit_formula_ = (*ai)["formula"];
-            unit_loop_formula_ = (*ai)["loop_formula"];
-            unit_priority_formula_ = (*ai)["priority"];
-            unit_on_fail_formula_ = (*ai)["on_fail"];
-
-            const config* ai_vars = (*ai).child("vars");
-            if (ai_vars)
-            {
+		if (const config &ai_vars = ai.child("vars"))
+		{
                     formula_vars_ = new game_logic::map_formula_callable;
 
                     variant var;
-			foreach (const config::attribute &i, ai_vars->attribute_range()) {
+			foreach (const config::attribute &i, ai_vars.attribute_range()) {
 				var.serialize_from_string(i.second);
 				formula_vars_->add(i.first, var);
                     }
@@ -1504,9 +1499,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
-	const config* status_flags = cfg.child("status");
-	if(status_flags) {
-		foreach (const config::attribute &st, status_flags->attribute_range()) {
+	if (const config &status_flags = cfg.child("status"))
+	{
+		foreach (const config::attribute &st, status_flags.attribute_range()) {
 			states_[st.first] = st.second;
 		}
 		cfg_.remove_child("status",0);
@@ -2116,18 +2111,17 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 		return ret_value;
 	}
 
-	const config* movement_costs = cfg_.child("movement_costs");
-
 	int res = impassable;
-	if(movement_costs != NULL) {
+	if (const config &movement_costs = cfg_.child("movement_costs"))
+	{
 		if(underlying.size() != 1) {
 			ERR_CONFIG << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
-		const std::string& val = (*movement_costs)[id];
-		if(val != "") {
+		const std::string &val = movement_costs[id];
+		if (!val.empty()) {
 			res = atoi(val.c_str());
 		}
 	}
@@ -2195,9 +2189,8 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 
 	int res = -1;
 
-	const config* const defense = cfg_.child("defense");
-
-	if(defense != NULL) {
+	if (const config &defense = cfg_.child("defense"))
+	{
 		if(underlying.size() != 1) {
 			ERR_CONFIG << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
@@ -2205,8 +2198,8 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		}
 
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
-		const std::string& val = (*defense)[id];
-		if(val != "") {
+		const std::string &val = defense[id];
+		if (!val.empty()) {
 			res = atoi(val.c_str());
 		}
 	}
@@ -2250,10 +2243,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 {
 	int res = 0;
 
-	const config* const resistance = cfg_.child("resistance");
-	if(resistance != NULL) {
-		const std::string& val = (*resistance)[damage_name];
-		if(val != "") {
+	if (const config &resistance = cfg_.child("resistance")) {
+		const std::string& val = resistance[damage_name];
+		if (!val.empty()) {
 			res = 100 - lexical_cast_default<int>(val);
 		}
 	}
@@ -2276,10 +2268,10 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 string_map unit::get_base_resistances() const
 {
-	const config* const resistance = cfg_.child("resistance");
-	if(resistance != NULL) {
+	if (const config &resistance = cfg_.child("resistance"))
+	{
 		string_map res;
-		foreach (const config::attribute &i, resistance->attribute_range()) {
+		foreach (const config::attribute &i, resistance.attribute_range()) {
 			res[i.first] = i.second;
 		}
 		return res;
@@ -2475,8 +2467,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
 		// Apply SUF. (Filtering on location is probably a bad idea though.)
-		if (const config *afilter = effect.child("filter"))
-		    if (!matches_filter(afilter, map_location(cfg_, NULL))) continue;
+		if (const config &afilter = effect.child("filter"))
+		    if (!matches_filter(vconfig(afilter), map_location(cfg_, NULL))) continue;
 
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];
@@ -2634,26 +2626,23 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
-					const config *ap = effect.child("movement_costs");
-					const std::string &replace = effect["replace"];
-					if (ap) {
-						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
+					if (const config &ap = effect.child("movement_costs")) {
+						const std::string &replace = effect["replace"];
+						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
 					config &mv = cfg_.child_or_add("defense");
-					const config *ap = effect.child("defense");
-					const std::string &replace = effect["replace"];
-					if (ap) {
-						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
+					if (const config &ap = effect.child("defense")) {
+						const std::string &replace = effect["replace"];
+						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
 					}
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
 					config &mv = cfg_.child_or_add("resistance");
-					const config *ap = effect.child("resistance");
-					const std::string &replace = effect["replace"];
-					if (ap) {
-						mod_mdr_merge(mv, *ap, !utils::string_bool(replace));
+					if (const config &ap = effect.child("resistance")) {
+						const std::string &replace = effect["replace"];
+						mod_mdr_merge(mv, ap, !utils::string_bool(replace));
 					}
 				} else if (apply_to == "zoc") {
 					const std::string &zoc_value = effect["value"];
@@ -2662,10 +2651,9 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if (apply_to == "new_ability") {
 					config &ab = cfg_.child_or_add("abilities");
-					const config *ab_effect = effect.child("abilities");
-					if (ab_effect) {
+					if (const config &ab_effect = effect.child("abilities")) {
 						config to_append;
-						foreach (const config::any_child &ab, ab_effect->all_children_range()) {
+						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
 							if(!has_ability_by_id(ab.cfg["id"])) {
 								to_append.add_child(ab.key, ab.cfg);
 							}
@@ -2673,9 +2661,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						ab.append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
-					const config *ab_effect = effect.child("abilities");
-					if (ab_effect) {
-						foreach (const config::any_child &ab, ab_effect->all_children_range()) {
+					if (const config &ab_effect = effect.child("abilities")) {
+						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
 							remove_ability_by_id(ab.cfg["id"]);
 						}
 					}

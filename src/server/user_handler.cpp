@@ -39,9 +39,9 @@ bool user_handler::send_mail(const std::string& to_user,
 	return true;
 }
 
-void user_handler::init_mailer(config* c) {
-	if(c) {
-		mailer_ = new mailer(*c);
+void user_handler::init_mailer(const config &c) {
+	if (c) {
+		mailer_ = new mailer(c);
 	} else {
 		mailer_ = NULL;
 	}

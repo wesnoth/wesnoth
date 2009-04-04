@@ -1221,15 +1221,16 @@ void undraw_floating_labels(surface screen)
 
 }
 
-static bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name)
-	{
-		config* font = fonts_config->find_child("font", "name", name);
-		if(font == NULL)
-			return false;
+static bool add_font_to_fontlist(config &fonts_config,
+	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
+{
+	config &font = fonts_config.find_child("font", "name", name);
+	if (!font)
+		return false;
 
 		fontlist.push_back(font::subset_descriptor());
 		fontlist.back().name = name;
-		std::vector<std::string> ranges = utils::split((*font)["codepoints"]);
+		std::vector<std::string> ranges = utils::split(font["codepoints"]);
 
 		for(std::vector<std::string>::const_iterator itor = ranges.begin();
 				itor != ranges.end(); ++itor) {
@@ -1269,17 +1270,17 @@ bool load_font_config()
 		return false;
 	}
 
-	config* fonts_config = cfg.child("fonts");
-	if(fonts_config == NULL)
+	config &fonts_config = cfg.child("fonts");
+	if (!fonts_config)
 		return false;
 
 	std::set<std::string> known_fonts;
-	foreach (const config &font, fonts_config->child_range("font")) {
+	foreach (const config &font, fonts_config.child_range("font")) {
 		known_fonts.insert(font["name"]);
 	}
 
-	font_order = (*fonts_config)["order"];
-	const std::vector<std::string> font_order = utils::split((*fonts_config)["order"]);
+	font_order = fonts_config["order"];
+	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;
 	for(font = font_order.begin(); font != font_order.end(); ++font) {

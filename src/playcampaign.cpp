@@ -67,28 +67,25 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	if(type.empty())
 		type = "scenario";
 
-	config const* scenario = NULL;
-
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
 	if (gamestate.starting_pos.empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
-		scenario = game_config.find_child(type,"id",gamestate.scenario);
-		assert(scenario != NULL);
-		gamestate.starting_pos = *scenario;
+		const config &scenario = game_config.find_child(type,"id",gamestate.scenario);
+		assert(scenario);
+		gamestate.starting_pos = scenario;
 	}
 	starting_pos = gamestate.starting_pos;
-	scenario = &starting_pos;
 
 	try {
 		// Preserve old label eg. replay
 		if (gamestate.label.empty())
-			gamestate.label = (*scenario)["name"];
+			gamestate.label = starting_pos["name"];
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		play_replay_level(game_config,scenario,video,gamestate);
+		play_replay_level(game_config, &starting_pos, video, gamestate);
 
 		gamestate.snapshot = config();
 		recorder.clear();
@@ -222,11 +219,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			scenario = &starting_pos;
 		} else {
 			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
-			scenario = game_config.find_child(type,"id",gamestate.scenario);
-			if(scenario) {
+			scenario = &game_config.find_child(type, "id", gamestate.scenario);
+			if (*scenario) {
 				starting_pos = *scenario;
 				gamestate.starting_pos = *scenario;
-			}
+			} else
+				scenario = NULL;
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
@@ -236,8 +234,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		scenario = &gamestate.snapshot;
 		// When starting wesnoth --multiplayer there might be
 		// no variables which leads to a segfault
-		if(gamestate.snapshot.child("variables") != NULL) {
-			gamestate.set_variables(*gamestate.snapshot.child("variables"));
+		if (const config &vars = gamestate.snapshot.child("variables")) {
+			gamestate.set_variables(vars);
 		}
 		gamestate.set_menu_items(gamestate.snapshot.child_range("menu_item"));
 		// Replace game label with that from snapshot
@@ -457,17 +455,18 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				network::connection data_res = dialogs::network_receive_dialog(disp,
 						msg, cfg);
 				if(!data_res) return QUIT;
-			} while(cfg.child("next_scenario") == NULL);
+			} while (!cfg.child("next_scenario"));
 
-			if(cfg.child("next_scenario")) {
-				starting_pos = (*cfg.child("next_scenario"));
+			if (const config &c = cfg.child("next_scenario")) {
+				starting_pos = c;
 				scenario = &starting_pos;
 				gamestate = game_state(starting_pos);
 			} else {
 				return QUIT;
 			}
 		} else {
-			scenario = game_config.find_child(type,"id",gamestate.scenario);
+			scenario = &game_config.find_child(type, "id", gamestate.scenario);
+			if (!*scenario) scenario = NULL;
 
 			if(io_type == IO_SERVER && scenario != NULL) {
 				starting_pos = *scenario;
@@ -536,7 +535,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Adds player information, and other state
 				// information, to the configuration object
 				assert(cfg.child("store_next_scenario") != NULL);
-				gamestate.write_snapshot(*cfg.child("store_next_scenario"));
+				gamestate.write_snapshot(cfg.child("store_next_scenario"));
 				network::send_data(cfg, 0, true);
 			}
 		}

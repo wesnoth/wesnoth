@@ -422,10 +422,9 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 
 	static std::string terrain;
 	terrain = t_translation::write_terrain_code(c);
-	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = getNoPathValue();
-	if(child != NULL) {
-		res = double(atof((*child)["cost"].c_str()));
+	if (const config &child = cfg_.find_child("road_cost", "terrain", terrain)) {
+		res = atof(child["cost"].c_str());
 	}
 
 	cache_.insert(std::pair<t_translation::t_terrain, double>(c,res));
@@ -547,18 +546,17 @@ static map_location place_village(const t_translation::t_map& map,
 
 		const t_translation::t_terrain t = map[i->x][i->y];
 		const std::string str = t_translation::write_terrain_code(t);
-		const config* const child = cfg.find_child("village","terrain",str);
-		if(child != NULL) {
+		if (const config &child = cfg.find_child("village", "terrain", str)) {
 			tcode_list_cache::iterator l = adj_liked_cache.find(t);
 			t_translation::t_list *adjacent_liked;
 			if (l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
 			} else {
-				adj_liked_cache[t] = t_translation::read_list((*child)["adjacent_liked"]);
+				adj_liked_cache[t] = t_translation::read_list(child["adjacent_liked"]);
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
-			size_t rating = atoi((*child)["rating"].c_str());
+			size_t rating = atoi(child["rating"].c_str());
 			map_location adj[6];
 			get_adjacent_tiles(map_location(i->x,i->y),adj);
 			for(size_t n = 0; n != 6; ++n) {
@@ -940,10 +938,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "placing castles...\n";
 
 	/** Try to find configuration for castles. */
-	const config* const castle_config = cfg.child("castle");
-	if(castle_config == NULL) {
+	const config &castle_config = cfg.child("castle");
+	if (!castle_config) {
 		LOG_NG << "Could not find castle configuration\n";
-		return "";
+		return std::string();
 	}
 
 	/*
@@ -951,7 +949,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	 * list of terrains that the castle may appear on.
 	 */
 	const t_translation::t_list list =
-		t_translation::read_list((*castle_config)["valid_terrain"]);
+		t_translation::read_list(castle_config["valid_terrain"]);
 
 	const is_valid_terrain terrain_tester(terrain, list);
 
@@ -974,7 +972,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const int min_y = height/3 + 3;
 		const int max_x = (width/3)*2 - 4;
 		const int max_y = (height/3)*2 - 4;
-		const size_t min_distance = atoi((*castle_config)["min_distance"].c_str());
+		const size_t min_distance = atoi(castle_config["min_distance"].c_str());
 
 		location best_loc;
 		int best_ranking = 0;
@@ -1084,9 +1082,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 			// Find the configuration which tells us
 			// what to convert this tile to, to make it into a road.
-			const config* const child = cfg.find_child("road_cost", "terrain",
-					t_translation::write_terrain_code(terrain[x][y]));
-			if(child != NULL) {
+			if (const config &child = cfg.find_child("road_cost", "terrain",
+					t_translation::write_terrain_code(terrain[x][y])))
+			{
 				// Convert to bridge means that we want to convert
 				// depending upon the direction the road is going.
 				// Typically it will be in a format like,
@@ -1096,7 +1094,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				// '\' will be used if the road is going south east-north west
 				// The terrain will be left unchanged otherwise
 				// (if there is no clear direction).
-				const std::string& convert_to_bridge = (*child)["convert_to_bridge"];
+				const std::string &convert_to_bridge = child["convert_to_bridge"];
 				if(convert_to_bridge.empty() == false) {
 					if(step == rt.steps.begin() || step+1 == rt.steps.end())
 						continue;
@@ -1147,7 +1145,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 
 				// Just a plain terrain substitution for a road
-				const std::string& convert_to = (*child)["convert_to"];
+				const std::string &convert_to = child["convert_to"];
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
@@ -1320,10 +1318,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					const std::string str =
 						t_translation::write_terrain_code(terrain[res.x][res.y]);
-					const config* const child =
-						cfg.find_child("village","terrain",str);
-					if(child != NULL) {
-						const std::string& convert_to = (*child)["convert_to"];
+					if (const config &child = cfg.find_child("village", "terrain", str))
+					{
+						const std::string &convert_to = child["convert_to"];
 						if(convert_to != "") {
 							terrain[res.x][res.y] =
 								t_translation::read_terrain_code(convert_to);

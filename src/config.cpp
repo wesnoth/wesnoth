@@ -29,12 +29,27 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 
+config config::invalid;
+
+void config::check_valid() const
+{
+	if (!*this)
+		throw error("Mandatory WML child missing yet untested for. Please report.");
+}
+
+void config::check_valid(const config &cfg) const
+{
+	if (!*this || !cfg)
+		throw error("Mandatory WML child missing yet untested for. Please report.");
+}
+
 config::config() : values(), children(), ordered_children()
 {
 }
 
 config::config(const config& cfg) : values(), children(), ordered_children()
 {
+	cfg.check_valid();
 	append(cfg);
 }
 
@@ -54,25 +69,29 @@ config& config::operator=(const config& cfg)
 		return *this;
 	}
 
+	check_valid(cfg);
+
 	clear();
-
 	append(cfg);
-
 	return *this;
 }
 
 bool config::has_attribute(const std::string &key) const
 {
+	check_valid();
 	return values.find(key) != values.end();
 }
 
 void config::remove_attribute(const std::string &key)
 {
+	check_valid();
 	values.erase(key);
 }
 
 void config::append(const config& cfg)
 {
+	check_valid(cfg);
+
 	foreach (const any_child &value, cfg.all_children_range()) {
 		add_child(value.key, value.cfg);
 	}
@@ -84,6 +103,8 @@ void config::append(const config& cfg)
 
 void config::merge_children(const std::string& key)
 {
+	check_valid();
+
 	config merged_children;
 	const child_list& children = get_children(key);
 	if(children.size() < 2) {
@@ -100,6 +121,8 @@ void config::merge_children(const std::string& key)
 
 config::child_itors_bak config::child_range_bak(const std::string& key)
 {
+	check_valid();
+
 	child_map::iterator i = children.find(key);
 	if(i != children.end()) {
 		return child_itors_bak(i->second.begin(),i->second.end());
@@ -111,6 +134,8 @@ config::child_itors_bak config::child_range_bak(const std::string& key)
 
 config::child_itors config::child_range(const std::string& key)
 {
+	check_valid();
+
 	child_map::iterator i = children.find(key);
 	static child_list dummy;
 	child_list *p = &dummy;
@@ -120,6 +145,8 @@ config::child_itors config::child_range(const std::string& key)
 
 config::const_child_itors config::child_range(const std::string& key) const
 {
+	check_valid();
+
 	child_map::const_iterator i = children.find(key);
 	static child_list dummy;
 	const child_list *p = &dummy;
@@ -129,6 +156,8 @@ config::const_child_itors config::child_range(const std::string& key) const
 
 size_t config::child_count(const std::string& key) const
 {
+	check_valid();
+
 	child_map::const_iterator i = children.find(key);
 	if(i != children.end()) {
 		return i->second.size();
@@ -138,6 +167,8 @@ size_t config::child_count(const std::string& key) const
 
 const config::child_list& config::get_children(const std::string& key) const
 {
+	check_valid();
+
 	const child_map::const_iterator i = children.find(key);
 	if(i != children.end()) {
 		return i->second;
@@ -147,30 +178,41 @@ const config::child_list& config::get_children(const std::string& key) const
 	}
 }
 
-const config::child_map& config::all_children() const { return children; }
-
-config* config::child(const std::string& key)
+const config::child_map& config::all_children() const
 {
+	check_valid();
+
+	return children;
+}
+
+config &config::child(const std::string& key)
+{
+	check_valid();
+
 	const child_map::const_iterator i = children.find(key);
 	if(i != children.end() && i->second.empty() == false) {
-		return i->second.front();
+		return *i->second.front();
 	} else {
-		return NULL;
+		return invalid;
 	}
 }
 
-const config* config::child(const std::string& key) const
+const config &config::child(const std::string& key) const
 {
+	check_valid();
+
 	const child_map::const_iterator i = children.find(key);
 	if(i != children.end() && i->second.empty() == false) {
-		return i->second.front();
+		return *i->second.front();
 	} else {
-		return NULL;
+		return invalid;
 	}
 }
 
 config config::child_or_empty(const std::string& key) const
 {
+	check_valid();
+
 	child_map::const_iterator i = children.find(key);
 	if (i != children.end() && !i->second.empty())
 		return *i->second.front();
@@ -189,6 +231,8 @@ config &config::child_or_add(const std::string &key)
 
 config& config::add_child(const std::string& key)
 {
+	check_valid();
+
 	child_list& v = children[key];
 	v.push_back(new config());
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
@@ -197,6 +241,8 @@ config& config::add_child(const std::string& key)
 
 config& config::add_child(const std::string& key, const config& val)
 {
+	check_valid(val);
+
 	child_list& v = children[key];
 	v.push_back(new config(val));
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
@@ -205,6 +251,8 @@ config& config::add_child(const std::string& key, const config& val)
 
 config& config::add_child_at(const std::string& key, const config& val, size_t index)
 {
+	check_valid(val);
+
 	child_list& v = children[key];
 	if(index > v.size()) {
 		throw error("illegal index to add child at");
@@ -247,6 +295,8 @@ private:
 
 void config::clear_children(const std::string& key)
 {
+	check_valid();
+
 	ordered_children.erase(std::remove_if(ordered_children.begin(),ordered_children.end(),remove_ordered(key)),ordered_children.end());
 
 	child_map::iterator i = children.find(key);
@@ -260,6 +310,8 @@ void config::clear_children(const std::string& key)
 
 void config::recursive_clear_value(const std::string& key)
 {
+	check_valid();
+
 	values.erase(key);
 
 	foreach (const any_child &value, all_children_range()) {
@@ -269,6 +321,8 @@ void config::recursive_clear_value(const std::string& key)
 
 config::all_children_iterator config::erase(const config::all_children_iterator& i)
 {
+	check_valid();
+
 	config* found_config = NULL;
 	std::vector<child_pos>::iterator erase_pos, j, j_end = ordered_children.end();
 	for(j = ordered_children.begin(); j != j_end; ++j) {
@@ -295,6 +349,8 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 
 void config::remove_child(const std::string& key, size_t index)
 {
+	check_valid();
+
 	// Remove from the ordering
 	const child_pos pos(children.find(key),index);
 	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
@@ -321,16 +377,22 @@ void config::remove_child(const std::string& key, size_t index)
 
 t_string& config::operator[](const std::string& key)
 {
+	check_valid();
+
 	return values[key];
 }
 
 const t_string& config::operator[](const std::string& key) const
 {
+	check_valid();
+
 	return get_attribute(key);
 }
 
 const t_string& config::get_attribute(const std::string& key) const
 {
+	check_valid();
+
 	const string_map::const_iterator i = values.find(key);
 	if(i != values.end()) {
 		return i->second;
@@ -342,6 +404,8 @@ const t_string& config::get_attribute(const std::string& key) const
 
 void config::merge_attributes(const config &cfg)
 {
+	check_valid(cfg);
+
 	assert(this != &cfg);
 	for (string_map::const_iterator i = cfg.values.begin(),
 	     i_end = cfg.values.end(); i != i_end; ++i)
@@ -352,6 +416,8 @@ void config::merge_attributes(const config &cfg)
 
 config::const_attr_itors config::attribute_range() const
 {
+	check_valid();
+
 	return const_attr_itors(const_attribute_iterator(values.begin()),
 	                        const_attribute_iterator(values.end()));
 }
@@ -371,39 +437,43 @@ private:
 
 } // end namespace
 
-config* config::find_child(const std::string& key,
+config &config::find_child(const std::string& key,
                            const std::string& name,
                            const t_string& value)
 {
+	check_valid();
+
 	const child_map::iterator i = children.find(key);
 	if(i == children.end())
-		return NULL;
+		return invalid;
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
 	                                            config_has_value(name,value));
 	if(j != i->second.end())
-		return *j;
+		return **j;
 	else
-		return NULL;
+		return invalid;
 }
 
-const config* config::find_child(const std::string& key,
+const config &config::find_child(const std::string& key,
                                  const std::string& name,
                                  const t_string& value) const
 {
+	check_valid();
+
 	const child_map::const_iterator i = children.find(key);
 	if(i == children.end())
-		return NULL;
+		return invalid;
 
 	const child_list::const_iterator j = std::find_if(
 	                                            i->second.begin(),
 	                                            i->second.end(),
 	                                            config_has_value(name,value));
 	if(j != i->second.end())
-		return *j;
+		return **j;
 	else
-		return NULL;
+		return invalid;
 }
 
 namespace {
@@ -427,6 +497,8 @@ namespace {
 
 void config::clear()
 {
+	// No validity check for this function.
+
 	if (!children.empty()) {
 		//start with this node, the first entry in the child map,
 		//zeroeth element in that entry
@@ -475,6 +547,8 @@ void config::clear()
 
 bool config::empty() const
 {
+	check_valid();
+
 	return children.empty() && values.empty();
 }
 
@@ -517,6 +591,8 @@ config::all_children_itors config::all_children_range() const
 
 config config::get_diff(const config& c) const
 {
+	check_valid(c);
+
 	config res;
 	get_diff(c, res);
 	return res;
@@ -524,6 +600,9 @@ config config::get_diff(const config& c) const
 
 void config::get_diff(const config& c, config& res) const
 {
+	check_valid(c);
+	check_valid(res);
+
 	config* inserts = NULL;
 
 	string_map::const_iterator i;
@@ -628,17 +707,17 @@ void config::get_diff(const config& c, config& res) const
 
 void config::apply_diff(const config& diff)
 {
-	const config* const inserts = diff.child("insert");
-	if(inserts != NULL) {
-		for(string_map::const_iterator i = inserts->values.begin(); i != inserts->values.end(); ++i) {
-			values[i->first] = i->second;
+	check_valid(diff);
+
+	if (const config &inserts = diff.child("insert")) {
+		foreach (const attribute &v, inserts.attribute_range()) {
+			values[v.first] = v.second;
 		}
 	}
 
-	const config* const deletes = diff.child("delete");
-	if(deletes != NULL) {
-		for(string_map::const_iterator i = deletes->values.begin(); i != deletes->values.end(); ++i) {
-			values.erase(i->first);
+	if (const config &deletes = diff.child("delete")) {
+		foreach (const attribute &v, deletes.attribute_range()) {
+			values.erase(v.first);
 		}
 	}
 
@@ -679,6 +758,8 @@ void config::apply_diff(const config& diff)
 
 void config::merge_with(const config& c)
 {
+	check_valid(c);
+
 	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
@@ -712,6 +793,8 @@ void config::merge_with(const config& c)
 
 void config::merge_and_keep(const config& c)
 {
+	check_valid(c);
+
 	// Merge not existing attributes first
 	string_map::const_iterator attrib_it, attrib_end = c.values.end();
 	for(attrib_it = c.values.begin(); attrib_it != attrib_end; ++attrib_it) {
@@ -732,6 +815,8 @@ void config::merge_and_keep(const config& c)
 
 bool config::matches(const config &filter) const
 {
+	check_valid(filter);
+
 	// First match values. all values should match.
 	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
 		if(!this->values.count(j->first)) return false;
@@ -791,6 +876,8 @@ void config::prune() {
 
 void config::reset_translation() const
 {
+	check_valid();
+
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		val->second.reset_translation();
 	}
@@ -805,15 +892,18 @@ void config::reset_translation() const
 
 std::string config::debug() const
 {
+	check_valid();
+
 	std::ostringstream outstream;
 	outstream << *this;
 	return outstream.str();
 }
 
-std::ostream& operator << (std::ostream& outstream, const config& cfg) {
+std::ostream& operator << (std::ostream& outstream, const config& cfg)
+{
 	static int i = 0;
 	i++;
-	foreach (const config::attribute &val,  cfg.attribute_range()) {
+	foreach (const config::attribute &val, cfg.attribute_range()) {
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
@@ -831,6 +921,8 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 
 std::string config::hash() const
 {
+	check_valid();
+
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] =
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -892,6 +984,8 @@ std::string config::hash() const
 
 void config::swap(config& cfg)
 {
+	check_valid(cfg);
+
 	values.swap(cfg.values);
 	children.swap(cfg.children);
 	ordered_children.swap(cfg.ordered_children);
@@ -899,6 +993,8 @@ void config::swap(config& cfg)
 
 bool operator==(const config& a, const config& b)
 {
+	a.check_valid(b);
+
 	if (a.values != b.values)
 		return false;
 

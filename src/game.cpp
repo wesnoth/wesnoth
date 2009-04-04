@@ -592,7 +592,8 @@ bool game_controller::init_config(const bool force)
 		cache_.add_define("MULTIPLAYER");
 	load_game_cfg(force);
 
-	game_config::load_config(game_config_.child("game_config"));
+	const config &cfg = game_config_.child("game_config");
+	game_config::load_config(cfg ? &cfg : NULL);
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
@@ -732,8 +733,8 @@ bool game_controller::play_multiplayer_mode()
 		}
 	}
 
-	const config* const lvl = game_config_.find_child("multiplayer","id",scenario);
-	if(lvl == NULL) {
+	const config &lvl = game_config_.find_child("multiplayer", "id", scenario);
+	if (!lvl) {
 		std::cerr << "Could not find scenario '" << scenario << "'\n";
 		return false;
 	}
@@ -742,24 +743,24 @@ bool game_controller::play_multiplayer_mode()
 	state_.scenario = "";
 	state_.snapshot = config();
 
-	config level = *lvl;
+	config level = lvl;
 	std::vector<config*> story;
 
-	const config* const era_cfg = game_config_.find_child("era","id",era);
-	if(era_cfg == NULL) {
+	const config &era_cfg = game_config_.find_child("era","id",era);
+	if (!era_cfg) {
 		std::cerr << "Could not find era '" << era << "'\n";
 		return false;
 	}
 
 	level["turns"] = turns;
 
-	const config* const side = era_cfg->child("multiplayer_side");
-	if(side == NULL) {
+	const config &side = era_cfg.child("multiplayer_side");
+	if (!side) {
 		std::cerr << "Could not find multiplayer side\n";
 		return false;
 	}
 
-	while(level.get_children("side").size() < sides_counted) {
+	while (level.child_count("side") < sides_counted) {
 		std::cerr << "now adding side...\n";
 		level.add_child("side");
 	}
@@ -772,10 +773,10 @@ bool game_controller::play_multiplayer_mode()
 		                                          algorithm = side_algorithms.find(side_num);
 
 		const config* side = type == side_types.end() ?
-			era_cfg->find_child("multiplayer_side", "random_faction", "yes") :
-			era_cfg->find_child("multiplayer_side", "id", type->second);
+			&era_cfg.find_child("multiplayer_side", "random_faction", "yes") :
+			&era_cfg.find_child("multiplayer_side", "id", type->second);
 
-		if (side == NULL) {
+		if (!*side) {
 			std::string side_name = (type == side_types.end() ? "default" : type->second);
 			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
 			return false;
@@ -792,7 +793,7 @@ bool game_controller::play_multiplayer_mode()
 				faction_excepts.clear();
 			}
 			unsigned j = 0;
-			foreach (const config &faction, era_cfg->child_range("multiplayer_side"))
+			foreach (const config &faction, era_cfg.child_range("multiplayer_side"))
 			{
 				if (utils::string_bool(faction["random_faction"])) continue;
 				const std::string &faction_id = faction["id"];
@@ -994,7 +995,7 @@ bool game_controller::load_game()
 
 	LOG_CONFIG << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
 
-	if(state_.snapshot.child("side") == NULL) {
+	if (!state_.snapshot.child("side")) {
 		// No snapshot; this is a start-of-scenario
 		if (show_replay) {
 			// There won't be any turns to replay, but the
@@ -1465,11 +1466,11 @@ void game_controller::show_upload_begging()
 }
 
 
-void game_controller::set_unit_data(){
-    config *units = game_config_.child("units");
-    if(units != NULL) {
-        unit_type_data::types().set_config(*units);
-    }
+void game_controller::set_unit_data()
+{
+	if (config &units = game_config_.child("units")) {
+		unit_type_data::types().set_config(units);
+	}
 }
 
 void game_controller::reset_translations()
@@ -1480,7 +1481,8 @@ void game_controller::reset_translations()
 		game_config_.reset_translation();
 		// we may have translatable strings in [game_config]
 		// e.g. team color names are defined there
-		game_config::load_config(game_config_.child("game_config"));
+		config &cfg = game_config_.child("game_config");
+		game_config::load_config(cfg ? &cfg : NULL);
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +

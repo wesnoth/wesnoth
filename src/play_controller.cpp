@@ -182,9 +182,8 @@ void play_controller::init(CVideo& video){
 
 	init_managers();
 	// add era events for MP game
-	const config* era_cfg = level_.child("era");
-	if (era_cfg != NULL) {
-		game_events::add_events(era_cfg->child_range("event"), "era_events");
+	if (const config &era_cfg = level_.child("era")) {
+		game_events::add_events(era_cfg.child_range("event"), "era_events");
 	}
 
 
@@ -841,9 +840,9 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				config& show_if = itor->second->show_if;
 				config filter_location = itor->second->filter_location;
 				if ((show_if.empty()
-					|| game_events::conditional_passed(&units_, &show_if))
+					|| game_events::conditional_passed(&units_, vconfig(show_if)))
 				&& (filter_location.empty()
-					|| terrain_filter(&filter_location, map_, status_, units_)(hex))
+					|| terrain_filter(vconfig(filter_location), map_, status_, units_)(hex))
 				&& (!itor->second->needs_select
 					|| gamestate_.last_selected.valid()))
 				{

@@ -98,7 +98,8 @@ const config* rng::get_random_results()
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ <= 0 ||random_child_ > random.size()) return NULL;
-	return random[random_child_-1]->child("results");
+	const config &res = random[random_child_-1]->child("results");
+	return res ? &res : NULL;
 }
 
 void rng::set_random_results(const config& cfg)

@@ -301,9 +301,8 @@ namespace wesnothd {
 		}
 
 		// load deleted too
-		if (cfg.child("deleted"))
+		if (const config &cfg_del = cfg.child("deleted"))
 		{
-			const config& cfg_del = *cfg.child("deleted");
 			const config::child_list& del_bans = cfg_del.get_children("ban");
 			for (config::child_list::const_iterator itor = del_bans.begin();
 					itor != del_bans.end(); ++itor)

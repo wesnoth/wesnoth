@@ -368,29 +368,29 @@ void stats::write(config_writer &out) const
 
 void stats::read(const config& cfg)
 {
-	if(cfg.child("recruits")) {
-		recruits = read_str_int_map(*cfg.child("recruits"));
+	if (const config &c = cfg.child("recruits")) {
+		recruits = read_str_int_map(c);
 	}
-	if(cfg.child("recalls")) {
-		recalls = read_str_int_map(*cfg.child("recalls"));
+	if (const config &c = cfg.child("recalls")) {
+		recalls = read_str_int_map(c);
 	}
-	if(cfg.child("advances")) {
-		advanced_to = read_str_int_map(*cfg.child("advances"));
+	if (const config &c = cfg.child("advances")) {
+		advanced_to = read_str_int_map(c);
 	}
-	if(cfg.child("deaths")) {
-		deaths = read_str_int_map(*cfg.child("deaths"));
+	if (const config &c = cfg.child("deaths")) {
+		deaths = read_str_int_map(c);
 	}
-	if(cfg.child("killed")) {
-		killed = read_str_int_map(*cfg.child("killed"));
+	if (const config &c = cfg.child("killed")) {
+		killed = read_str_int_map(c);
 	}
-	if(cfg.child("recalls")) {
-		recalls = read_str_int_map(*cfg.child("recalls"));
+	if (const config &c = cfg.child("recalls")) {
+		recalls = read_str_int_map(c);
 	}
-	if(cfg.child("attacks")) {
-		attacks = read_battle_result_map(*cfg.child("attacks"));
+	if (const config &c = cfg.child("attacks")) {
+		attacks = read_battle_result_map(c);
 	}
-	if(cfg.child("defends")) {
-		defends = read_battle_result_map(*cfg.child("defends"));
+	if (const config &c = cfg.child("defends")) {
+		defends = read_battle_result_map(c);
 	}
 
 	recruit_cost = lexical_cast<long long>(cfg["recruit_cost"]);
