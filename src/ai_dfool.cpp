@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "ai_dfool.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "formula_string_utils.hpp"
 
@@ -27,7 +28,6 @@ namespace dfool {
     const config& parms = current_team().ai_parameters();
     config ai_mem = current_team().ai_memory();
 
-    const config::child_list& orders = parms.get_children("order");
     LOG_STREAM(info, ai)<<"dfool side:"<<team_num<<" of "<<current_team().nteams()<<std::endl;
 
     config side_filter;
@@ -72,11 +72,11 @@ namespace dfool {
       }
     }
 
-    for(config::child_list::const_iterator o = orders.begin(); o != orders.end(); ++o) {
-      std::string order_id=(**o)["id"];
-      std::string number=(**o)["number"];
+	foreach (const config &o, parms.child_range("order"))
+	{
+		std::string order_id = o["id"];
+		std::string number = o["number"];
       size_t num=atoi(number.c_str());
-      const config::child_list& filter = (**o).get_children("filter");
 
       LOG_STREAM(info, ai)<<"dfool order:"<<order_id<<std::endl;
 
@@ -88,9 +88,11 @@ namespace dfool {
 	// Need to populate orders
 	// Find units that match any filter.
 	// If no filters, then accept all units.
-	if(filter.size()){
-	  for(config::child_list::const_iterator f = filter.begin(); f != filter.end(); ++f) {
-	    config ff=**f;
+		config::const_child_itors filters = o.child_range("filter");
+		if (filters.first != filters.second)
+		{
+			foreach (const config &ff, filters)
+			{
 	    //            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
@@ -121,19 +123,20 @@ namespace dfool {
       }
 
       // Execute commands
-      for(unit_list::iterator ou = order_units.begin(); ou != order_units.end(); ou++){
-        const config::child_list& commands = (**o).get_children("command");
-	bool com_break=false;
+		foreach (size_t ou, order_units)
+		{
+			bool com_break = false;
 
-        for(config::child_list::const_iterator com = commands.begin(); com != commands.end() && !com_break; ++com) {
-	  unit_map::iterator u=unit(*ou,get_info().units);
+			foreach (const config &com, o.child_range("command"))
+			{
+				unit_map::iterator u = unit(ou, get_info().units);
 
-	  const config::child_list& com_filter = (**com).get_children("filter");
 	  bool found=true;
 	  if(u!=get_info().units.end()){
-	    for(config::child_list::const_iterator sf = com_filter.begin(); sf != com_filter.end(); ++sf) {
-	      config ff=**sf;
-	      LOG_STREAM(info, ai)<<"ff:"<<(**com)["type"]<<" "<<ff["type"]<<" "<<ff["x"]<<","<<ff["y"]<<std::endl;
+					foreach (const config &ff, com.child_range("filter"))
+					{
+						LOG_STREAM(info, ai) << "ff:" << com["type"] << ' '
+							<< ff["type"] << ' ' << ff["x"] << ',' << ff["y"] << '\n';
 	      LOG_STREAM(info, ai)<<"ff?"<<u->second.type_id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
 	      if (!u->second.matches_filter(vconfig(ff), u->first)) {
 		found=false;
@@ -143,8 +146,8 @@ namespace dfool {
 	  }
 
 	  if(found){
-	    std::string type=(**com)["type"];
-	    std::string e=(**com)["test"];
+					std::string type = com["type"];
+					std::string e = com["test"];
 	    std::map<std::string, evaluator*> function_map;
 	    arithmetic_evaluator eval(get_info().state.sog(),&function_map);
 	    distance_evaluator dist(get_info().state.sog(),&function_map);
@@ -157,7 +160,7 @@ namespace dfool {
 	      moveto(com,u);
 	    }
 	    if(type=="set_order"){
-	      std::string set_id=(**com)["id"];
+						std::string set_id = com["id"];
 	      std::string a=(u->second.get_ai_special());
 	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<"\t"<<a<<"->"<<set_id<<std::endl;
 	      (u->second.assign_ai_special(set_id));
@@ -231,8 +234,9 @@ namespace dfool {
     return(all);
   }
 
-  bool dfool_ai::moveto(config::child_list::const_iterator o, unit_map::const_iterator m){
-      location target(atoi((**o)["target_x"].c_str())-1,atoi((**o)["target_y"].c_str())-1);
+bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
+{
+	location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
       LOG_STREAM(info, ai)<<"\tmoving to:("<<target.x<<","<<target.y<<")"<<std::endl;
       if(m->second.movement_left()){
 	std::map<location,paths> possible_moves;
@@ -304,15 +308,14 @@ namespace dfool {
 	turns_(),
 	locations_()
   {
-    const config::child_list mem_list=cfg.get_children("unit_memory");
-    for(config::child_list::const_iterator mem = mem_list.begin(); mem != mem_list.end(); ++mem) {
-      config unit_cfg = (*mem)->child_or_empty("unit");
+	foreach (const config &mem, cfg.child_range("unit_memory"))
+	{
+		config unit_cfg = mem.child_or_empty("unit");
 
       unit u(unit_cfg);
 
-      int t = atoi((**mem)["turn"].c_str());
-
-      map_location l(atoi((**mem)["x"].c_str())-1,atoi((**mem)["y"].c_str())-1);
+		int t = atoi(mem["turn"].c_str());
+		map_location l(atoi(mem["x"].c_str()) - 1, atoi(mem["y"].c_str()) - 1);
       add_unit_sighting(u,l,t);
     }
   }

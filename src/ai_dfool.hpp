@@ -109,7 +109,7 @@ namespace dfool {
     unit_list visible_units();
     unit_list my_units();
     unit_list filter_units(const config& filter,unit_list& ul, unit_map& um);
-    bool moveto(config::child_list::const_iterator o, unit_map::const_iterator m);
+	bool moveto(const config &o, unit_map::const_iterator m);
     unit_map::iterator unit(size_t unit_id, unit_map& um);
 
     unit_memory unit_memory_;
