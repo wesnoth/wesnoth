@@ -869,7 +869,8 @@ namespace {
 		msg_dlg.show();
 	}
 
-	void download_addons(game_display& disp, std::string remote_host, bool update_mode, bool* do_refresh)
+	void download_addons(game_display& disp, std::string remote_host,
+			bool update_mode, bool* do_refresh, int old_index = 0)
 	{
 		const std::vector<std::string> address_components =
 			utils::split(remote_host, ':');
@@ -1034,6 +1035,9 @@ namespace {
 				gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
 				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
 				addon_dialog.set_textbox(filter);
+				
+				// Scroll the menu to the previous selection
+				addon_menu->move_selection(old_index);
 
 				index = addon_dialog.show();
 				index = filter->get_index(index);
@@ -1057,10 +1061,13 @@ namespace {
 				return;
 			}
 
-			// Handle download
+			// Handle download	
 			install_addon(disp, * addons_tree, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 
+			// Show the dialog again, and position it on the same item installed
+			download_addons(disp, remote_host, update_mode, do_refresh, index);
+			
 		} catch(config::error& e) {
 			ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
 			gui::show_error_message(disp, _("Network communication error."));
@@ -1072,7 +1079,7 @@ namespace {
 			gui::show_error_message(disp, _("A problem occurred when trying to create the files necessary to install this add-on."));
 		} catch(twml_exception& e) {
 			e.show(disp);
-		}
+		}		
 	}
 
 	void uninstall_local_addons(game_display& disp, bool* should_reload_cfg)
