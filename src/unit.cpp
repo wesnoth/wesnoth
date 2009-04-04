@@ -980,12 +980,9 @@ bool unit::has_ability_by_id(const std::string& ability) const
 {
 	if (const config &abil = cfg_.child("abilities"))
 	{
-		for (config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
-			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if((**j)["id"] == ability) {
-					return true;
-				}
-			}
+		foreach (const config::any_child &ab, abil.all_children_range()) {
+			if (ab.cfg["id"] == ability)
+				return true;
 		}
 	}
 	return false;
