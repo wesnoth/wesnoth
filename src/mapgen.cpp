@@ -765,11 +765,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "done generating height map...\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-	const config* const names_info = cfg.child("naming");
-	config naming;
-	if(names_info != NULL) {
-		naming = *names_info;
-	}
+	config naming = cfg.child_or_empty("naming");
 
 	// Make a dummy race for generating names
 	unit_race name_generator(naming);
@@ -1282,12 +1278,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	if(nvillages > 0) {
-		const config* const naming = cfg.child("village_naming");
-		config naming_cfg;
-		if(naming != NULL) {
-			naming_cfg = *naming;
-		}
+	if (nvillages > 0)
+	{
+		config naming_cfg = cfg.child_or_empty("village_naming");
 
 		const unit_race village_names_generator(naming_cfg);
 

@@ -306,7 +306,7 @@ namespace dfool {
   {
     const config::child_list mem_list=cfg.get_children("unit_memory");
     for(config::child_list::const_iterator mem = mem_list.begin(); mem != mem_list.end(); ++mem) {
-      config unit_cfg = *((*mem)->child("unit"));
+      config unit_cfg = (*mem)->child_or_empty("unit");
 
       unit u(unit_cfg);
 

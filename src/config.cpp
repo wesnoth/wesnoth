@@ -159,6 +159,15 @@ const config* config::child(const std::string& key) const
 	}
 }
 
+config config::child_or_empty(const std::string& key) const
+{
+	child_map::const_iterator i = children.find(key);
+	if (i != children.end() && !i->second.empty())
+		return *i->second.front();
+
+	return config();
+}
+
 config& config::add_child(const std::string& key)
 {
 	child_list& v = children[key];

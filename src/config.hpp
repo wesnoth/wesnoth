@@ -162,6 +162,11 @@ public:
 	const child_list& get_children(const std::string& key) const;
 	const child_map& all_children() const;
 
+	/**
+	 * Copies the first child with the given @a key, or an empty config if there is none.
+	 */
+	config child_or_empty(const std::string &key) const;
+
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;
 	config& add_child(const std::string& key);

@@ -405,12 +405,8 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 config default_map_generator::create_scenario(const std::vector<std::string>& args)
 {
 	DBG_NG << "creating scenario...\n";
-	config res;
 
-	const config* const scenario = cfg_.child("scenario");
-	if(scenario != NULL) {
-		res = *scenario;
-	}
+	config res = cfg_.child_or_empty("scenario");
 
 	DBG_NG << "got scenario data...\n";
 
