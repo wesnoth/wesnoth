@@ -829,6 +829,7 @@ void server::run() {
 				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
+			admins_.erase(e.socket);
 			const std::string ip = network::ip_address(e.socket);
 			if (proxy::is_proxy(e.socket)) {
 				LOG_SERVER << ip << "\tProxy user disconnected.\n";
@@ -1391,7 +1392,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		for (std::set<network::connection>::const_iterator i = admins_.begin(); i != admins_.end(); ++i) {
 			send_doc(data, *i);
 		}
-		out << "Message delivered to " << admins_.size() << " admins.";
+		out << "Message sent to " << admins_.size() << " admins.";
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
