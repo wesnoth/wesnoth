@@ -603,7 +603,7 @@ void server::load_config() {
 		}
 #ifdef HAVE_MYSQLPP
 		else if(uh_name_ == "forum" || uh_name_.empty()) {
-			user_handler_.reset(new fuh(*user_handler));
+			user_handler_.reset(new fuh(user_handler));
 		}
 #endif
 		// Initiate the mailer class with the [mail] tag
