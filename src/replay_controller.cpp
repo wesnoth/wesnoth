@@ -63,7 +63,7 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(1),
+	show_team_(state_of_game.campaign_type == "multiplayer" ? 0 : 1),
 	skip_next_turn_(false)
 {
 	init();
@@ -123,6 +123,8 @@ void replay_controller::init_gui(){
 
 	if (show_team_)
 		gui_->set_team(show_team_ - 1, show_everything_);
+	else
+		gui_->set_team(0, show_everything_);
 
 	gui_->scroll_to_leader(units_, player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
