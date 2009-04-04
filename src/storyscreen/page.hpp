@@ -102,6 +102,7 @@ public:
 	bool show_title() const { return show_title_; }
 	const std::string& text() const { return text_; }
 	const std::string& title() const { return text_title_; }
+	const std::string& music() const { return music_; }
 
 	void set_text(const std::string& text) { text_ = text; }
 	void set_title(const std::string& title) { text_title_ = title; }
