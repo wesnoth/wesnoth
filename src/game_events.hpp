@@ -283,6 +283,8 @@ namespace game_events
 
 	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 
+	void handle_wml_log_message(const config& cfg);
+
 	/**
 	 * Function to fire an event.
 	 *

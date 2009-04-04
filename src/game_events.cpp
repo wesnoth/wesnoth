@@ -458,6 +458,14 @@ namespace game_events {
 		return matches;
 	}
 
+	void handle_wml_log_message(const config& cfg)
+	{
+		const std::string& logger = cfg["logger"];
+		const std::string& msg = cfg["message"];
+
+		put_wml_message(logger,msg);
+	}
+
 } // end namespace game_events (1)
 
 namespace {
@@ -2079,10 +2087,7 @@ namespace {
 
 	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
 	{
-		const std::string& logger = cfg["logger"];
-		const std::string msg = cfg["message"];
-
-		put_wml_message(logger,msg);
+		game_events::handle_wml_log_message( cfg.get_parsed_config() );
 	}
 
 
