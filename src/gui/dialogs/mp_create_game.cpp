@@ -93,12 +93,12 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 
 	// Standard maps
 	int i = 0;
-	foreach(const config* map, cfg_.get_children("multiplayer")) {
-
-		if(utils::string_bool((*map)["allow_new_game"], true)) {
+	foreach (const config &map, cfg_.child_range("multiplayer"))
+	{
+		if (utils::string_bool(map["allow_new_game"], true)) {
 			string_map item;
-			item.insert(std::make_pair("label", (*map)["name"]));
-			item.insert(std::make_pair("tooltip", (*map)["name"]));
+			item.insert(std::make_pair("label", map["name"]));
+			item.insert(std::make_pair("tooltip", map["name"]));
 			list->add_row(item);
 
 			// This hack is needed since the next item is too wide to fit.
@@ -132,7 +132,9 @@ void tmp_create_game::update_map(twindow& window)
 	const int index = list->get_selected_row() - 1;
 
 	if(index >= 0) {
-		scenario_ = cfg_.get_children("multiplayer")[index];
+		config::const_child_itors children = cfg_.child_range("multiplayer");
+		std::advance(children.first, index);
+		scenario_ = &*children.first;
 		minimap->set_map_data((*scenario_)["map_data"]);
 	} else {
 		minimap->set_map_data("");
@@ -156,13 +158,14 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 	if(use_map_settings) {
 		if(scenario_) {
+			const config &side = scenario_->child("side");
 
-			fog_->set_widget_value(window, ::settings::use_fog((*(*scenario_).get_children("side").front())["fog"]));
-			shroud_->set_widget_value(window, ::settings::use_shroud((*(*scenario_).get_children("side").front())["shroud"]));
+			fog_->set_widget_value(window, ::settings::use_fog(side["fog"]));
+			shroud_->set_widget_value(window, ::settings::use_shroud(side["shroud"]));
 			start_time_->set_widget_value(window, ::settings::use_random_start_time((*scenario_)["random_start_time"]));
 
 			turns_->set_widget_value(window, ::settings::get_turns((*scenario_)["turns"]));
-			gold_->set_widget_value(window, ::settings::get_village_gold((*(*scenario_).get_children("side").front())["village_gold"]));
+			gold_->set_widget_value(window, ::settings::get_village_gold(side["village_gold"]));
 			experience_->set_widget_value(window, ::settings::get_xp_modifier((*scenario_)["experience_modifier"]));
 		}
 		// No scenario selected just leave the state unchanged for now.
