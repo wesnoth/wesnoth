@@ -9,8 +9,9 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-29 16:23-0000\n"
+"PO-Revision-Date: 2009-04-03 16:22-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2185,7 +2186,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:820
 msgid "Debug mode commands"
-msgstr ""
+msgstr "Aflúsunarhamsskipanir"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:824
@@ -5644,7 +5645,7 @@ msgstr ""
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 msgid "Point of view"
-msgstr ""
+msgstr "Sjónarhorf"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
@@ -5792,7 +5793,7 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:453
 msgid "Do you still want to download it?"
-msgstr ""
+msgstr "Viltu enn niðurhala það?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
@@ -5910,11 +5911,11 @@ msgstr "Uppfærslu lokið"
 
 #: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Viðbót uppfærð."
 
 #: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Allar viðbætur uppfærðar."
 
 #: src/addon_management.cpp:889
 msgid "Connecting to add-ons server..."
@@ -6064,7 +6065,7 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:259
 msgid "Total damage"
-msgstr ""
+msgstr "Samtals meiðsl"
 
 #: src/attack_prediction_display.cpp:266
 msgid "No usable weapon"
@@ -6092,7 +6093,7 @@ msgstr ""
 
 #: src/dialogs.cpp:222
 msgid "No objectives available"
-msgstr ""
+msgstr "Engin markmið til staðar"
 
 #: src/dialogs.cpp:247
 msgid "Save Game"
@@ -6138,11 +6139,11 @@ msgstr "Ekki spyrja mig aftur!"
 
 #: src/dialogs.cpp:508
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%d. %B %Y %H:%M"
 
 #: src/dialogs.cpp:528
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Ógilt)"
 
 #: src/dialogs.cpp:542
 msgid "Campaign: $campaign_name"
@@ -6186,11 +6187,11 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:601
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:604
 msgid "%b %d"
-msgstr ""
+msgstr "%d. %b"
 
 #: src/dialogs.cpp:632
 msgid "No Saved Games"
@@ -6473,7 +6474,7 @@ msgstr[1] ""
 #: src/generate_report.cpp:267
 #, no-c-format
 msgid "tooltip^% accuracy"
-msgstr ""
+msgstr "% nákvæmni"
 
 #: src/generate_report.cpp:273
 #, no-c-format
@@ -6838,11 +6839,11 @@ msgstr "Vistað"
 
 #: src/menu_events.cpp:615
 msgid "The game has been saved"
-msgstr ""
+msgstr "Leikurinn hefur verið vistaður"
 
 #: src/menu_events.cpp:618 src/playcampaign.cpp:604
 msgid "The game could not be saved"
-msgstr ""
+msgstr "Tókst ekki að vista leikinn"
 
 #: src/menu_events.cpp:633
 msgid "Save the Map As"
@@ -6858,11 +6859,11 @@ msgstr "Borð vistað."
 
 #: src/menu_events.cpp:654
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Gat ekki vist kort: $msg"
 
 #: src/menu_events.cpp:755
 msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
+msgstr "Gat ekki sjálfvistað leikinn. Vinsamlegast vistið leikinn handvirkt."
 
 #: src/menu_events.cpp:783
 msgid "Chat Log"
@@ -6963,7 +6964,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1610
 msgid "Team only"
-msgstr ""
+msgstr "Lið eingöngu"
 
 #: src/menu_events.cpp:1711
 msgid "Search"
@@ -7111,11 +7112,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2367
 msgid "Turn debug mode on."
-msgstr ""
+msgstr "Ræsa aflúsunarham."
 
 #: src/menu_events.cpp:2369
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Slökkva aflúsunarham."
 
 #: src/menu_events.cpp:2371
 msgid "Set the command used by the custom command hotkey"
@@ -7191,7 +7192,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2548 src/menu_events.cpp:2564
 msgid "Invalid username: "
-msgstr ""
+msgstr "Ógilt notandanafn:"
 
 #: src/menu_events.cpp:2562
 msgid "Added to friends list: "
@@ -7231,15 +7232,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2916
 msgid "Debug mode activated!"
-msgstr ""
+msgstr "Aflúsunarham virkt!"
 
 #: src/menu_events.cpp:2919
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Aflúsunarhamur ekki til staðar í netleikjum"
 
 #: src/menu_events.cpp:2924
 msgid "Debug mode deactivated!"
-msgstr ""
+msgstr "Aflúsunarham óvirkt!"
 
 #: src/menu_events.cpp:3086
 msgid "ai"

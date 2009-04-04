@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2009-03-29 21:25-0000\n"
+"PO-Revision-Date: 2009-04-04 13:50-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -47,17 +47,17 @@ msgstr "allt"
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr "vatn"
+msgstr "vötn"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr "flatt"
+msgstr "flatlendi"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr "eyðimörk"
+msgstr "eyðimerkur"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
@@ -72,7 +72,7 @@ msgstr "frost"
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr "ójöfnuður"
+msgstr "ójöfnuðir"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
@@ -87,7 +87,7 @@ msgstr "þorp"
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr "kastali"
+msgstr "kastalar"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
@@ -104,6 +104,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Notastu við vinstri/hægri músarhnappinn til að teikna for-/bakgrunn jörð. "
+"Haltu Shift niðri til að mála grunnlögin eingöngu."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -112,6 +114,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Vinstri músarhnappurinn velur, hægri hnappurinn sleppir vali. Haltu niðri "
+"Shift fyrir galdrasprotaval reita með sömu jarðartegund."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -121,6 +125,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Vinstri músarhnappurinn birtir val spilara, hægri hreinsar. Talnahnapparnir "
+"skruna til upphafsreita, Alt+Talnahnappur setur upphafsreit spilara á "
+"reitinn undir músarbendlinum, delete hreinsar."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -128,6 +135,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Smelltu til að líma, þysjaðu út fyrir frekari nákvæmni við límingu stærri "
+"svæða. Notastu við 'Breyta' valflokkinn til að vinna með klippiborðið."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -156,7 +165,7 @@ msgstr "þorp"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Villa við gerð verkahluts"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
@@ -205,7 +214,7 @@ msgstr "Villa"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Enginn tími dags fundinn."
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
@@ -235,23 +244,23 @@ msgstr "Skráin er nú þegar til staðar. Viltu yfirskrifa hana?"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "Gerð korts mistókst."
 
 #: src/editor2/editor_controller.cpp:497
 msgid "Choose a mask to apply"
-msgstr ""
+msgstr "Veldu skugga til setningar"
 
 #: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
-msgstr ""
+msgstr "Villa við hlöðun skugga"
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "Veldu miðkort"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
@@ -264,7 +273,7 @@ msgstr "Kort vistað."
 
 #: src/editor2/editor_controller.cpp:620
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Gat ekki vistað kortið: $msg"
 
 #: src/editor2/editor_controller.cpp:1011
 msgid "Undo"
@@ -292,7 +301,7 @@ msgstr "Spilari"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Stærð miðkortsins er ekki sú sama og núverandi kort"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
@@ -317,6 +326,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Hvaða leikaður hefur leik sinn hér? Þú getur notast við Alt hnappinn og "
+"talnahnapp til að stilla upphafsreit fyrir spilara, og Delete til að þurka "
+"út upphafsreitinn undir músarbendlinum. Þrýsting á talnahnapp mun skruna til "
+"upphafsreit þann spilara."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
