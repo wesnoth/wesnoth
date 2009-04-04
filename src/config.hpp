@@ -182,8 +182,8 @@ public:
 	config &child_or_add(const std::string &key);
 
 	const t_string& get_attribute(const std::string& key) const;
-	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
-	void remove_attribute(const std::string& key) {values.erase(key);}
+	bool has_attribute(const std::string &key) const;
+	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
 
 	const_attr_itors attribute_range() const;

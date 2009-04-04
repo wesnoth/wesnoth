@@ -61,6 +61,16 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
+bool config::has_attribute(const std::string &key) const
+{
+	return values.find(key) != values.end();
+}
+
+void config::remove_attribute(const std::string &key)
+{
+	values.erase(key);
+}
+
 void config::append(const config& cfg)
 {
 	foreach (const any_child &value, cfg.all_children_range()) {
