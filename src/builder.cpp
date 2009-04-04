@@ -823,23 +823,20 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 	// Build a config object
 	config cfg;
 
-	cfg.add_child("terrain_graphics");
-	config *item = cfg.child("terrain_graphics");
+	config &item = cfg.add_child("terrain_graphics");
 
-	(*item).add_child("tile");
-	config *tile = (*item).child("tile");
-	(*tile)["x"] = "0";
-	(*tile)["y"] = "0";
-	(*tile)["type"] = t_translation::write_terrain_code(t_translation::OFF_MAP_USER);
+	config &tile = item.add_child("tile");
+	tile["x"] = "0";
+	tile["y"] = "0";
+	tile["type"] = t_translation::write_terrain_code(t_translation::OFF_MAP_USER);
 
-	(*tile).add_child("image");
-	config *tile_image = (*tile).child("image");
-	(*tile_image)["layer"] = "-1000";
-	(*tile_image)["name"] = image;
+	config &tile_image = tile.add_child("image");
+	tile_image["layer"] = "-1000";
+	tile_image["name"] = image;
 
-	(*item)["probability"] = "100";
-	(*item)["no_flag"] = "base";
-	(*item)["set_flag"] = "base";
+	item["probability"] = "100";
+	item["no_flag"] = "base";
+	item["set_flag"] = "base";
 
 	// Parse the object
 	parse_config(cfg);
