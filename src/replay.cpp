@@ -512,7 +512,7 @@ void replay::undo()
 
 	if(cmd.first != cmd.second) {
 		config& cmd_second = (**(cmd.second-1));
-		if (config &child = cmd_second.child("move"))
+		if (const config &child = cmd_second.child("move"))
 		{
 			// A unit's move is being undone.
 			// Repair unsynced cmds whose locations depend on that unit's location.
@@ -761,7 +761,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 	team& current_team = teams[team_num-1];
 
 	for(;;) {
-		config* const cfg = get_replay_source().get_next_action();
+		const config *cfg = get_replay_source().get_next_action();
 
 		//do we need to recalculate shroud after this action is processed?
 
@@ -785,7 +785,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			//if there is a promotion, we process it and go onto the next command
 			//but if this isn't a promotion, we just keep waiting for the promotion
 			//command -- it may have been mixed up with other commands such as messages
-			if (config &child = cfg->child("choose")) {
+			if (const config &child = cfg->child("choose")) {
 
 				const int val = lexical_cast_default<int>(child["value"]);
 
@@ -841,7 +841,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 						preferences::message_bell());
 			}
 		}
-		else if (config &child = cfg->child("label"))
+		else if (const config &child = cfg->child("label"))
 		{
 			terrain_label label(disp.labels(), child, game_events::get_state_of_game());
 
@@ -850,11 +850,11 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 						label.team_name(),
 						label.colour());
 		}
-		else if (config &child = cfg->child("clear_labels"))
+		else if (const config &child = cfg->child("clear_labels"))
 		{
 			disp.labels().clear(std::string(child["team_name"]));
 		}
-		else if (config &child = cfg->child("rename"))
+		else if (const config &child = cfg->child("rename"))
 		{
 			const map_location loc(child, game_events::get_state_of_game());
 			const std::string &name = child["name"];
@@ -880,7 +880,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 		//if there is an end turn directive
 		else if (cfg->child("end_turn"))
 		{
-			if (config &child = cfg->child("verify")) {
+			if (const config &child = cfg->child("verify")) {
 				verify_units(child);
 			}
 
@@ -888,7 +888,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			return true;
 		}
 
-		else if (config &child = cfg->child("recruit"))
+		else if (const config &child = cfg->child("recruit"))
 		{
 			const std::string& recruit_num = child["value"];
 			const int val = lexical_cast_default<int>(recruit_num);
@@ -940,7 +940,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			check_checksums(disp,units,*cfg);
 		}
 
-		else if (config &child = cfg->child("recall"))
+		else if (const config &child = cfg->child("recall"))
 		{
 			player_info* player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
@@ -967,7 +967,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			check_checksums(disp,units,*cfg);
 		}
 
-		else if (config &child = cfg->child("disband"))
+		else if (const config &child = cfg->child("disband"))
 		{
 			player_info* const player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
@@ -984,7 +984,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error("illegal disband\n");
 			}
 		}
-		else if (config &child = cfg->child("countdown_update"))
+		else if (const config &child = cfg->child("countdown_update"))
 		{
 			const std::string &num = child["value"];
 			const int val = lexical_cast_default<int>(num);
@@ -1001,7 +1001,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				teams[tval-1].set_countdown_time(val);
 			}
 		}
-		else if (config &child = cfg->child("move"))
+		else if (const config &child = cfg->child("move"))
 		{
 			map_location src, dst;
 			std::vector<map_location> steps;
@@ -1102,7 +1102,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 		}
 
-		else if (config &child = cfg->child("attack"))
+		else if (const config &child = cfg->child("attack"))
 		{
 			const config &destination = child.child("destination");
 			const config &source = child.child("source");
@@ -1177,7 +1177,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 			fix_shroud = !get_replay_source().is_skipping();
 		}
-		else if (config &child = cfg->child("fire_event"))
+		else if (const config &child = cfg->child("fire_event"))
 		{
 			foreach (const config &v, child.child_range("set_variable")) {
 				state_of_game.set_variable(v["name"], v["value"]);
@@ -1194,7 +1194,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 
 		}
-		else if (config &child = cfg->child("advance_unit"))
+		else if (const config &child = cfg->child("advance_unit"))
 		{
 			const map_location loc(child, game_events::get_state_of_game());
 			advancing_units.push_back(loc);
@@ -1216,7 +1216,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			disp.draw();
 		}
 
-		if (config &child = cfg->child("verify")) {
+		if (const config &child = cfg->child("verify")) {
 			verify_units(child);
 		}
 	}
