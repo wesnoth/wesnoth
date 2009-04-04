@@ -277,12 +277,9 @@ bool attack_type::has_special_by_id(const std::string& special) const
 {
 	if (const config &abil = cfg_.child("specials"))
 	{
-		for(config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
-			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if((**j)["id"] == special) {
-					return true;
-				}
-			}
+		foreach (const config::any_child &ab, abil.all_children_range()) {
+			if (ab.cfg["id"] == special)
+				return true;
 		}
 	}
 	return false;
@@ -813,13 +810,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 
 	if (const config &abil_cfg = cfg.child("abilities"))
 	{
-		const config::child_map& abi = abil_cfg.all_children();
-		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
-			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-				if((**k)["name"] != "") {
-					abilities_.push_back((**k)["name"]);
-					ability_tooltips_.push_back((**k)["description"]);
-				}
+		foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
+			const std::string &name = ab.cfg["name"];
+			if (!name.empty()) {
+				abilities_.push_back(name);
+				ability_tooltips_.push_back(ab.cfg["description"]);
 			}
 		}
 	}
@@ -832,13 +827,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 			if (!abil_cfg || effect["apply_to"] != "new_ability") {
 				continue;
 			}
-			const config::child_map &abi = abil_cfg.all_children();
-			for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
-				for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-					if((**k)["name"] != "") {
-						adv_abilities_.push_back((**k)["name"]);
-						adv_ability_tooltips_.push_back((**k)["description"]);
-					}
+			foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
+				const std::string &name = ab.cfg["name"];
+				if (!name.empty()) {
+					adv_abilities_.push_back(name);
+					adv_ability_tooltips_.push_back(ab.cfg["description"]);
 				}
 			}
 		}
@@ -1018,12 +1011,9 @@ bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if (const config &abil = cfg_.child("abilities"))
 	{
-		for (config::child_map::const_iterator i = abil.all_children().begin(); i != abil.all_children().end(); ++i) {
-			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if((**j)["id"] == ability) {
-					return true;
-				}
-			}
+		foreach (const config::any_child &ab, abil.all_children_range()) {
+			if (ab.cfg["id"] == ability)
+				return true;
 		}
 	}
 	return false;
@@ -1036,13 +1026,10 @@ std::vector<std::string> unit_type::get_ability_list() const
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
 
-	for (config::child_map::const_iterator i = abilities.all_children().begin(); i != abilities.all_children().end(); ++i) {
-		for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			std::string const &id = (**j)["id"];
-
-			if (!id.empty())
-				res.push_back(id);
-		}
+	foreach (const config::any_child &ab, abilities.all_children_range()) {
+		const std::string &id = ab.cfg["id"];
+		if (!id.empty())
+			res.push_back(id);
 	}
 
 	return res;
