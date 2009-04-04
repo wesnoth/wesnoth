@@ -45,7 +45,7 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib fribidi.lib cairo.lib winmm.lib dxguid.lib ws2_32.lib zlib.lib libjpeg.lib libpng.lib libogg.lib libvorbisfile.lib libtiff.lib mikmod.lib native_midi.lib timidity.lib smpeg.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib dxguid.lib ws2_32.lib SDLmain.lib freetype.lib gobject-2.0.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
