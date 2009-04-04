@@ -240,6 +240,8 @@ Important Attributes:
             return (['#define'],)*2
         elif text.find('#enddef') >= 0:
             elements.append(('#enddef', text.find('#enddef'), -1))
+        elif text.startswith('#po:') or text.startswith('# po:'):
+            elements.append(("#po", 0, 0))
         else:
             commentSearch = 0
         begincomment = text.find('#', commentSearch)

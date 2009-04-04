@@ -79,6 +79,8 @@ Usage: wmlxgettext [options] dirpath
     else:
         version = string_strip(m.group(1))
 
+    os.chdir(directory)
+
     print '''\
 msgid ""
 msgstr ""
@@ -181,9 +183,15 @@ msgstr ""
                     print "Inline macro", nav
                 nav.element = nav.element[0]
                 get_translatables(nav, fn)
+            elif nav.element == "#po":
+                if verbose > 1:
+                    print "Passthrough for", nav
+                opener_stack.append((nav.element, fn, nav.lineno))
+                translatables.append((nav.text.lstrip(), opener_stack[:]))
+                opener_stack.pop()                
             elif verbose > 1:
                 print "Unhandled", nav
-        # Gather a dictionary describing the context of every
+        # Gather a list describing the context of every
         # translatable string.
         for dir in arguments:
             seqno = 0
@@ -208,7 +216,11 @@ msgstr ""
             for (key, value) in contexts.items():
                 print key, "->", value
         # Generate a report from the translatables
+        notes = ""
         for (translatable, context) in translatables:
+            if translatable.startswith("#po"):
+                notes += translatable.replace("po:", "")
+                continue
             attribs = ""
             for (i, (tag, file, line)) in enumerate(context):
                 if i == len(context)-1 or tag.startswith("{"):
@@ -219,6 +231,8 @@ msgstr ""
                         if key[0] == tag and key[1] == file and key[2] == line:
                             attribs = " has " + ", ".join(value)
                     print "# %s, line %d: %s%s" % (file, line, tag, attribs)
+            print notes,
+            notes = ""
             print 'msgid "%s"' % translatable
             print 'msgstr ""'
             print ""
