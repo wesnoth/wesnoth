@@ -310,6 +310,7 @@ SET(wesnoth-main_SRC
     storyscreen/interface.cpp
     storyscreen/controller.cpp
     storyscreen/page.cpp
+    storyscreen/render.cpp
     team.cpp
     terrain_filter.cpp
     time_of_day.cpp
