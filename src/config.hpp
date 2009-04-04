@@ -69,7 +69,12 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
-	struct safe_bool_impl { void nonnull() {}; };
+	struct safe_bool_impl { void nonnull() {} };
+	/**
+	 * Used as the return type of the conversion operator for boolean contexts.
+	 * Needed, since the compiler would otherwise consider the following
+	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
+	 */
 	typedef void (safe_bool_impl::*safe_bool)();
 
 public:
@@ -78,8 +83,11 @@ public:
 
 	config(const config& cfg);
 
-	// Create a config with an empty child of name 'child'.
-	config(const std::string& child);
+	/**
+	 * Creates a config object with an empty child of name @a child.
+	 */
+	explicit config(const std::string &child);
+
 	~config();
 
 	config& operator=(const config& cfg);
