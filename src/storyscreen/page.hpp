@@ -25,8 +25,8 @@
 #include <string>
 #include <vector>
 
-struct SDL_Rect;
-struct surface;
+#include "sdl_utils.hpp"
+
 class config;
 class vconfig;
 class game_state;
