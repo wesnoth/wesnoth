@@ -123,6 +123,8 @@ void replay_controller::init_gui(){
 
 	if (show_team_)
 		gui_->set_team(show_team_ - 1, show_everything_);
+	else
+		gui_->set_team(0, show_everything_);
 
 	gui_->scroll_to_leader(units_, player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
