@@ -158,8 +158,10 @@ tscrollbar_container::tscrollbar_mode
 
 tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
-	if(cfg.all_children().size() != 1) {
-		ERR_G_P << "Grid cell has " << cfg.all_children().size()
+	config::all_children_itors children = cfg.all_children_range();
+	size_t nb_children = std::distance(children.first, children.second);
+	if (nb_children != 1) {
+		ERR_G_P << "Grid cell has " << nb_children
 			<< " children instead of 1, aborting. Config :\n"
 			<< cfg;
 		assert(false);
