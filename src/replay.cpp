@@ -542,12 +542,12 @@ void replay::undo()
 		}
 		else
 		{
-			const config *child = &cmd_second.child("recruit");
-			if (!*child) child = &cmd_second.child("recall");
-			if (*child) {
+			const config *chld = &cmd_second.child("recruit");
+			if (!*chld) chld = &cmd_second.child("recall");
+			if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*child, game_events::get_state_of_game());
+			map_location src(*chld, game_events::get_state_of_game());
 			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
 				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
