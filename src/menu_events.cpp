@@ -2420,9 +2420,9 @@ private:
 					_("Toggle overlaying of terrain codes on hexes."));
 				register_alias("show_terrain_codes", "tc");
 
-				config* alias_list = preferences::get_alias();
-				if (alias_list != NULL) {
-					foreach (const config::attribute &a, alias_list->attribute_range()) {
+				if (const config &alias_list = preferences::get_alias())
+				{
+					foreach (const config::attribute &a, alias_list.attribute_range()) {
 						register_alias(a.second, a.first);
 					}
 				}

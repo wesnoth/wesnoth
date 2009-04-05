@@ -42,7 +42,7 @@ namespace preferences {
 	void set(const std::string& key, std::string value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
-	config* get_child(const std::string& key);
+	const config &get_child(const std::string &key);
 	std::string get(const std::string& key);
 	void erase(const std::string& key);
 
@@ -116,7 +116,7 @@ namespace preferences {
 	void save_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);
-	config* get_alias();
+	const config &get_alias();
 
 	bool use_colour_cursors();
 	void _set_colour_cursors(bool value);

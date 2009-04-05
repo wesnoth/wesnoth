@@ -72,8 +72,8 @@ manager::manager() :
 	std::copy(terrain.begin(), terrain.end(),
 			std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 
-	config* history = preferences::get_child("history");
-	if (history) {
+	if (const config &history = preferences::get_child("history"))
+	{
 /* Structure of the history
 	[history]
 		[history_id]
@@ -81,7 +81,7 @@ manager::manager() :
 				message = foobar
 			[/line]
 */
-		foreach (const config::any_child &h, history->all_children_range())
+		foreach (const config::any_child &h, history.all_children_range())
 		{
 			foreach (const config &l, h.cfg.child_range("line")) {
 				history_map[h.key].push_back(l["message"]);
