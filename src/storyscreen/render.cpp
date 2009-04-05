@@ -362,6 +362,10 @@ bool page_ui::render_floating_images()
 
 page_ui::RESULT page_ui::show()
 {
+	if(p_.music_.empty() != true) {
+		sound::play_music_repeatedly(p_.music_);
+	}
+
 	render_background();
 
 	if(p_.show_title_) {
