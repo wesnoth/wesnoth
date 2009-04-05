@@ -474,9 +474,8 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 
 void scoped_wml_variable::store(const config& var_value)
 {
-	// FIXME: this code isn't correct, as it concats all the children.
 	foreach (const config &i, repos->get_variables().child_range(var_name_)) {
-		previous_val_.append(i);
+		previous_val_.add_child(var_name_, i);
 	}
 	repos->clear_variable_cfg(var_name_);
 	repos->add_variable_cfg(var_name_, var_value);
@@ -488,7 +487,6 @@ scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
 		repos->clear_variable_cfg(var_name_);
-		// FIXME: this code isn't correct, as previous_val_ doesn't contain a var_name_ child.
 		foreach (const config &i, previous_val_.child_range(var_name_)) {
 			repos->add_variable_cfg(var_name_, i);
 		}
