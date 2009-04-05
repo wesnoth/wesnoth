@@ -21,16 +21,18 @@
 
 #include "global.hpp"
 #include "asserts.hpp"
-#include "image.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "storyscreen/page.hpp"
 
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "game_events.hpp"
+#include "image.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "variable.hpp"
+#include "video.hpp"
 
 // TODO: remove when completed
 #include "stub.hpp"
@@ -246,11 +248,6 @@ void page::resolve_wml(const vconfig& cfg, game_state& gamestate)
 		}
 	}
 }
-
-void page::render() const
-{
-}
-
 
 } // end namespace storyscreen
 

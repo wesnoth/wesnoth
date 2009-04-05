@@ -43,10 +43,14 @@ public:
 	~controller();
 
 	/**
-	* Display story screen pages.
-	*/
-	void show_all_pages() const;
-
+	 * Display all story screen pages in a first..last sequence.
+	 */
+	void show_all_pages();
+	/**
+	 * Display a single story screen page.
+	 * @return Next page requested by the user interface.
+	 */
+	size_t show_page(size_t page_num);
 
 private:
 	// Executes WML flow instructions and inserts pages.
@@ -73,6 +77,7 @@ private:
 
 public:
 	struct no_pages {};
+	struct quit {};
 
 };
 

@@ -54,12 +54,16 @@ namespace {
 
 void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string& scenario_name)
 {
-	STUB();
 	LOG_NG << "entering storyscreen procedure...\n";
 
 	storyscreen::controller ctl(disp, story_cfg, scenario_name);
 
-	ctl.show_all_pages();
+	try {
+		ctl.show_all_pages();
+	} catch(storyscreen::controller::quit const&) {
+		LOG_NG << "leaving storyscreen for titlescreen...\n";
+		STUB();
+	}
 
 	LOG_NG << "leaving storyscreen procedure...\n";
 }

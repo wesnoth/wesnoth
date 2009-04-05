@@ -21,10 +21,9 @@
  */
 
 #include "global.hpp"
-#include "SDL.h"
-
 #include "storyscreen/controller.hpp"
 #include "storyscreen/page.hpp"
+#include "storyscreen/render.hpp"
 
 #include "asserts.hpp"
 #include "foreach.hpp"
@@ -35,10 +34,8 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
-#include "language.hpp"
 #include "log.hpp"
-#include "sound.hpp"
-#include "text.hpp"
+#include "widgets/button.hpp"
 
 #define ERR_NG LOG_STREAM(err , engine)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -144,9 +141,47 @@ void controller::clear_pages()
 	pages_.clear();
 }
 
-void controller::show_all_pages() const
+void controller::show_all_pages()
 {
-	STUB();
+	if(pages_.empty()) {
+		LOG_NG << "no storyscreen pages to show\n";
+	}
+
+	size_t page_n = 0, pages_c = pages_.size();
+	while((page_n = show_page(page_n)) < pages_c)
+		;
+}
+
+size_t controller::show_page(size_t page_num)
+{
+	if(page_num >= pages_.size()) {
+		ERR_NG << "attempted to display inexistant storyscreen page: " << page_num+1 << " (of " << pages_.size() << ")\n";
+		return pages_.size();
+	}
+
+	LOG_NG << "displaying storyscreen page " << page_num+1 << " of " << pages_.size() << '\n';
+
+	page* const p = pages_[page_num];
+	ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen page in collection" );
+
+	// TODO:
+	//  gui::button back_button(disp_.video(),std::string("< ")+_("Next"));
+	gui::button next_button(disp_.video(),_("Next") + std::string(" >"));
+	gui::button skip_button(disp_.video(),_("Skip"));
+
+	page_ui ui(*p, disp_, next_button, skip_button);
+	switch(ui.show()) {
+	case page_ui::NEXT:
+		return page_num+1;
+	case page_ui::BACK:
+		return(page_num > 0 ? page_num-1 : page_num);
+	case page_ui::SKIP:
+		return pages_.size();
+	default:
+		throw quit();
+	}
+
+	return 0;
 }
 
 } // end namespace storyscreen

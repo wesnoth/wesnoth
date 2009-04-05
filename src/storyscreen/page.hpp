@@ -23,12 +23,14 @@
 #define STORYSCREEN_PAGE_HPP_INCLUDED
 
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "sdl_utils.hpp"
 
 class config;
 class vconfig;
+class display;
 class game_state;
 
 namespace storyscreen {
@@ -93,6 +95,11 @@ public:
 	enum TITLE_ALIGNMENT {
 		LEFT, CENTERED, RIGHT
 	};
+	enum RESULT {
+		NEXT,
+		SKIP,
+		QUIT
+	};
 
 	page(game_state& state_of_game, const vconfig& page_cfg);
 
@@ -107,7 +114,9 @@ public:
 	void set_text(const std::string& text) { text_ = text; }
 	void set_title(const std::string& title) { text_title_ = title; }
 
-	void render() const;
+	const std::vector<floating_image> get_floating_images() const {
+		return floating_images_;
+	}
 
 private:
 	page();
@@ -129,6 +138,8 @@ private:
 	std::string music_;
 
 	std::vector<floating_image> floating_images_;
+
+	friend class page_ui;
 };
 
 } // end namespace storyscreen
