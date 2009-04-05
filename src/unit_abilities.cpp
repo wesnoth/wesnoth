@@ -798,16 +798,6 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 namespace unit_abilities
 {
 
-
-individual_effect::individual_effect(value_modifier t, int val, const config *abil, const map_location &l) :
-	type(),
-	value(0),
-	ability(NULL),
-	loc()
-{
-	set(t,val,abil,l);
-}
-
 void individual_effect::set(value_modifier t, int val, const config *abil, const map_location &l)
 {
 	type=t;
