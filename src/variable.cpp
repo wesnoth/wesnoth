@@ -483,7 +483,7 @@ void scoped_wml_variable::store(const config& var_value)
 {
 	const config::child_list& children = repos->get_variables().get_children(var_name_);
 	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		previous_val_.append(**i);
+		previous_val_.add_child(var_name_, **i);
 	}
 	repos->clear_variable_cfg(var_name_);
 	repos->add_variable_cfg(var_name_, var_value);
