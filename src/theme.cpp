@@ -112,38 +112,33 @@ static std::string resolve_rect(const std::string& rect_str) {
 		return resolved.str();
 	}
 
-namespace {
-	config empty_config = config();
-}
+static config &find_ref(const std::string &id, config &cfg, bool remove = false)
+{
+	static config empty_config;
 
-static config& find_ref(const std::string& id, config& cfg, bool remove = false) {
-		for(config::child_map::const_iterator i = cfg.all_children().begin();
-		    i != cfg.all_children().end(); i++) {
-			for (config::child_list::const_iterator j = i->second.begin();
-			     j != i->second.end(); j++) {
-				if ((**j)["id"] == id) {
-					//DBG_DP << "Found a " << *(*i).first << "\n";
-					if (remove) {
-						const config &res = cfg.find_child((*i).first,"id",id);
-						const size_t index = std::find((*i).second.begin(), (*i).second.end(),
-						                               &res) - (*i).second.begin();
-						cfg.remove_child((*i).first,index);
-						return empty_config;
-					} else {
-						return **j;
-					}
-				}
-
-				// recursively look in children
-				config& c = find_ref(id, **j, remove);
-				if (!c["id"].empty()) {
-					return c;
-				}
+	config::all_children_itors itors = cfg.all_children_range();
+	for (config::all_children_iterator i = itors.first; i != itors.second; ++i)
+	{
+		config &icfg = const_cast<config &>(i->cfg);
+		if (i->cfg["id"] == id) {
+			if (remove) {
+				cfg.erase(i);
+				return empty_config;
+			} else {
+				return icfg;
 			}
 		}
-		// not found
-		return empty_config;
+
+		// Recursively look in children.
+		config &c = find_ref(id, icfg, remove);
+		if (&c != &empty_config) {
+			return c;
+		}
 	}
+
+	// Not found.
+	return empty_config;
+}
 
 #ifdef DEBUG
 
