@@ -123,13 +123,13 @@ page::page()
 }
 
 page::page(game_state& state_of_game, const vconfig& page_cfg)
-	: scale_background_()
+	: scale_background_(true)
 	, background_file_()
 	, show_title_()
 	, text_()
 	, text_title_()
-	, text_block_loc_()
-	, title_alignment_()
+	, text_block_loc_(text_block_loc_)
+	, title_alignment_(title_alignment_)
 	, music_()
 	, floating_images_()
 {
