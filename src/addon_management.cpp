@@ -281,14 +281,12 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 	make_directory(dir);
 
-	const config::child_list& dirs = cfg.get_children("dir");
-	for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		unarchive_dir(dir,**i);
+	foreach (const config &d, cfg.child_range("dir")) {
+		unarchive_dir(dir, d);
 	}
 
-	const config::child_list& files = cfg.get_children("file");
-	for(config::child_list::const_iterator j = files.begin(); j != files.end(); ++j) {
-		unarchive_file(dir,**j);
+	foreach (const config &f, cfg.child_range("file")) {
+		unarchive_file(dir, f);
 	}
 }
 
@@ -648,11 +646,11 @@ namespace {
 		return true;
 	}
 
-	void addons_update_dlg(game_display& disp, config& cfg, const config::child_list& remote_addons_list,
+	void addons_update_dlg(game_display &disp, config &cfg, const config::const_child_itors &remote_addons_list,
 	                       const network::manager& net_manager, const network::connection& sock,
 	                       bool* do_refresh)
 	{
-		std::vector< config* > remote_matches_cfgs;
+		std::vector<const config *> remote_matches_cfgs;
 		std::vector< std::string > safe_matches;
 		std::vector< std::string > unsafe_matches;
 		std::ostringstream unsafe_list;
@@ -663,10 +661,11 @@ namespace {
 		std::vector<version_info> safe_local_versions;
 		std::vector<version_info> unsafe_local_versions;
 		std::map<std::string, version_info> remote_version_map;
-		foreach(config* const remote_addon, remote_addons_list) {
+		foreach (const config &remote_addon, remote_addons_list)
+		{
 			if(remote_addon == NULL) continue; // shouldn't happen...
-			const std::string& name = (*remote_addon)["name"];
-			const std::string& version = (*remote_addon)["version"];
+			const std::string& name = remote_addon["name"];
+			const std::string& version = remote_addon["version"];
 			try {
 				remote_version_map.insert(std::make_pair(name, version_info(version)));
 			} catch(version_info::not_sane_exception const&) {
@@ -687,7 +686,7 @@ namespace {
 						} else {
 							safe_matches.push_back(name);
 							safe_local_versions.push_back(local_version);
-							remote_matches_cfgs.push_back(remote_addon);
+							remote_matches_cfgs.push_back(&remote_addon);
 						}
 					}
 				}
@@ -913,7 +912,7 @@ namespace {
 				return;
 			}
 
-			const config::child_list &addon_cfgs = addons_tree.get_children("campaign");
+			const config::const_child_itors &addon_cfgs = addons_tree.child_range("campaign");
 			if(update_mode) {
 				addons_update_dlg(disp, cfg, addon_cfgs, net_manager, sock, do_refresh);
 				return;
@@ -934,9 +933,8 @@ namespace {
 
 			std::vector< std::string > delete_options;
 
-			foreach(const config* i, addon_cfgs) {
-				const config& c = *i;
-
+			foreach(const config &c, addon_cfgs)
+			{
 				const std::string& name = c["name"];
 				const std::string& downloads = c["downloads"].str();
 				const std::string& size = c["size"];
