@@ -654,8 +654,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		gui().draw();
 
-		const bool defender_human = teams_[defender->second.side()-1].is_human();
-
 		recorder.add_attack(attacker_loc,defender_loc,att.attack_num,def.attack_num);
 
 		//MP_COUNTDOWN grant time bonus for attacking
@@ -667,12 +665,20 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance
 			dialogs::advance_unit(map_,units_,attacker_loc,gui());
-			dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
+			unit_map::const_iterator defu = units_.find(defender_loc);
+			if (defu != units_.end()) {
+				bool defender_human = teams_[defu->second.side()-1].is_human();
+				dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
+			}
 			throw;
 		}
 
 		dialogs::advance_unit(map_,units_,attacker_loc,gui());
-		dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
+		unit_map::const_iterator defu = units_.find(defender_loc);
+		if (defu != units_.end()) {
+			bool defender_human = teams_[defu->second.side()-1].is_human();
+			dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
+		}
 
 		check_victory(units_, teams_, gui());
 
