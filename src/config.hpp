@@ -281,9 +281,7 @@ public:
 		any_child operator*() const;
 		arrow_helper operator->() const { return *this; }
 
-		const std::string& get_key() const;
 		size_t get_index() const;
-		const config& get_child() const;
 
 		bool operator==(const all_children_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const all_children_iterator &i) const { return i_ != i.i_; }

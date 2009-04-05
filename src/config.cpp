@@ -319,7 +319,7 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	config* found_config = NULL;
 	std::vector<child_pos>::iterator erase_pos, j, j_end = ordered_children.end();
 	for(j = ordered_children.begin(); j != j_end; ++j) {
-		if(i.get_key() == j->pos->first) {
+		if (i->key == j->pos->first) {
 			if(i.get_index() == j->index) {
 				erase_pos = j;
 				found_config = *(j->pos->second.begin() + j->index);
@@ -329,12 +329,8 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 			}
 		}
 	}
-	child_list& vec = children[i.get_key()];
-	if(!found_config || erase_pos->index >= vec.size()) {
-		ERR_CF << "Error: attempting to delete non-existing child: "
-			<< i.get_key() << "[" << i.get_index() << "]\n";
-		return ordered_end();
-	}
+	child_list& vec = children[i->key];
+	assert(found_config && erase_pos->index < vec.size());
 	delete found_config;
 	vec.erase(vec.begin()+i.get_index());
 	return all_children_iterator(ordered_children.erase(erase_pos));
@@ -548,16 +544,6 @@ bool config::empty() const
 config::any_child config::all_children_iterator::operator*() const
 {
 	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
-}
-
-const std::string& config::all_children_iterator::get_key() const
-{
-	return i_->pos->first;
-}
-
-const config& config::all_children_iterator::get_child() const
-{
-	return *(i_->pos->second[i_->index]);
 }
 
 size_t config::all_children_iterator::get_index() const
