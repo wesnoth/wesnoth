@@ -123,7 +123,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 	std::set<hostpair> shown_hosts;
 	shown_hosts.insert(hostpair(host, port));
 
-	config::child_list redirects;
 	config data;
 	sock = dialogs::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
 
