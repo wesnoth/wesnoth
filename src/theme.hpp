@@ -195,7 +195,7 @@ public:
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);
 	bool set_resolution(const SDL_Rect& screen);
-	void modify(const config* cfg);
+	void modify(const config &cfg);
 
 	const std::vector<panel>& panels() const { return panels_; }
 	const std::vector<label>& labels() const { return labels_; }

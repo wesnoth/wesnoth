@@ -687,7 +687,8 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 	}
 }
 
-void theme::modify(const config* cfg){
+void theme::modify(const config &cfg)
+{
 	std::map<std::string,std::string> title_stash;
 	std::vector<theme::menu>::iterator m;
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
@@ -696,7 +697,7 @@ void theme::modify(const config* cfg){
 	}
 
 	// Change existing theme objects.
-	foreach (const config &c, cfg->child_range("change"))
+	foreach (const config &c, cfg.child_range("change"))
 	{
 		std::string id = c["id"];
 		std::string ref_id = c["ref"];
@@ -706,12 +707,12 @@ void theme::modify(const config* cfg){
 	}
 
 	// Add new theme objects.
-	foreach (const config &c, cfg->child_range("add")) {
+	foreach (const config &c, cfg.child_range("add")) {
 		add_object(c);
 	}
 
 	// Remove existent theme objects.
-	foreach (const config &c, cfg->child_range("remove")) {
+	foreach (const config &c, cfg.child_range("remove")) {
 		remove_object(c["id"]);
 	}
 
