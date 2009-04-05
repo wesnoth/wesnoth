@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:29+0100\n"
+"POT-Creation-Date: 2009-04-05 17:08+0200\n"
 "PO-Revision-Date: 2007-06-27 23:24+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -205,8 +205,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:311
-msgid "Reach the signpost"
-msgstr "Nå fram till vägskylten"
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
+#, fuzzy
+msgid "Kalenz must reach the signpost"
+msgstr "Kalenz når vägskylten"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:103
@@ -465,12 +467,6 @@ msgid ""
 msgstr ""
 "Hmm... Dvärgarna kanske fortfarande kan vara till hjälp. Framåt! Och vad ni "
 "än gör, gå INTE upp på flodens östra strand!"
-
-#. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
-#, fuzzy
-msgid "Kalenz must reach the signpost"
-msgstr "Kalenz når vägskylten"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:342
@@ -4403,6 +4399,13 @@ msgstr "Åh nej! Vi har hamnat emellan..."
 #, fuzzy
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Du erhåller {AMOUNT} guldstycken."
+
+#, fuzzy
+#~ msgid "Move Kalenz to the signpost"
+#~ msgstr "Kalenz når vägskylten"
+
+#~ msgid "Reach the signpost"
+#~ msgstr "Nå fram till vägskylten"
 
 #, fuzzy
 #~ msgid ""

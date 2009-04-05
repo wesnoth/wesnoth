@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:29+0100\n"
+"POT-Creation-Date: 2009-04-05 17:08+0200\n"
 "PO-Revision-Date: 2008-05-02 00:32+0100\n"
 "Last-Translator: Damien J <guydelatourATgloireetpouvoirPTcom>\n"
 "Language-Team: none\n"
@@ -207,8 +207,10 @@ msgstr "Graur-Tan"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:311
-msgid "Reach the signpost"
-msgstr "Atteindre le panneau"
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
+#, fuzzy
+msgid "Kalenz must reach the signpost"
+msgstr "Kalenz atteint le panneau."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:103
@@ -473,12 +475,6 @@ msgstr ""
 "Hum... Peut-être les nains peuvent-ils encore être d'un certain secours. En "
 "avant et quoi qu'il arrive, NE mettez PAS un pied sur la rive est de la "
 "rivière !"
-
-#. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
-#, fuzzy
-msgid "Kalenz must reach the signpost"
-msgstr "Kalenz atteint le panneau."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:342
@@ -4479,6 +4475,13 @@ msgstr "Oh non ! Nous arrivons trop tard..."
 #, fuzzy
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Vous récupérez {AMOUNT} pièces d'or."
+
+#, fuzzy
+#~ msgid "Move Kalenz to the signpost"
+#~ msgstr "Kalenz atteint le panneau."
+
+#~ msgid "Reach the signpost"
+#~ msgstr "Atteindre le panneau"
 
 #, fuzzy
 #~ msgid ""

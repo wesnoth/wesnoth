@@ -1,0 +1,267 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2009 wesnothd "Kampen om Wesnoths nätverksdaemon"
+.
+.SH NAMN
+.
+wesnothd – Kampen om \fBWesnoth\fPs nätverksdaemon
+.
+.SH SYNOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIsökväg\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIantal\fP\|] [\|\fB\-T\fP \fIantal\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH BESKRIVNING
+.
+Sköter Kampen om Wesnoths gruppspel. Se
+http://www.wesnoth.org/wiki/ServerAdministration för information om vilka
+kommandon servern accepterar via wesnoth\-klienten (/query ...) eller fifo.
+.
+.SH FLAGGOR
+.
+.TP 
+\fB\-c\ \fP\fIsökväg\fP\fB,\ \-\-config\fP\fI\ sökväg\fP
+anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
+\fBSERVERKONFIGURATION\fP nedan för syntaxen. Konfigurationen laddas om när
+signalen SIGHUP skickas till serverprocessen.
+.TP 
+\fB\-d, \-\-daemon\fP
+kör wesnothd som en daemon.
+.TP 
+\fB\-h, \-\-help\fP
+visar en sammanfattning av möjliga kommandoradsflaggor.
+.TP 
+\fB\-\-log\-\fP\fInivå\fP\fB=\fP\fIdomän1\fP\fB,\fP\fIdomän2\fP\fB,\fP\fI...\fP
+anger allvarlighetsgraden för loggdomänerna. För att se allt kan \fBall\fP
+användas. Möjliga nivåer: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. Standardnivå är \fBerror\fP och \fBinfo\fP för \fBserver\fP\-domänen.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+knyter servern till den specificerade porten. Om ingen port anges så används
+port \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIantal\fP\fB,\ \-\-threads\fP\fI\ antal\fP
+anger maximalt antal väntande trådar för nätverkstrafik (standardvärde:
+\fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIantal\fP\fB,\ \-\-max\-threads\fP\fI\ antal\fP
+anger maximalt antal trådar som skapas för nätverkstrafik. Om \fB0\fP anges
+sätts ingen övre gräns (standardvärde: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+visar versionen.
+.TP 
+\fB\-v, \-\-verbose\fP
+ger mer utförlig information.
+.
+.SH SERVERKONFIGURATION
+.
+.SS "Den allmänna syntaxen är:"
+.
+.P
+[\fItag\fP]
+.IP
+parameter="\fIvärde\fP"
+.IP
+parameter="\fIvärde\fP,\fIvärde\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Globala parametrar:"
+.
+.TP 
+\fBban_save_file\fP
+Fullständig eller relativ sökväg till en (gzip\-komprimerad) fil som servern
+kan läsa och skriva till. Avstängningar kommer att lagras i den här filen
+och läsas in vid start av servern.
+.TP 
+\fBconnections_allowed\fP
+Antal tillåtna anslutningar från samma IP\-adress. \fB0\fP för ingen
+gräns. (standardvärde: \fB5\fP).
+.TP 
+\fBdisallow_names\fP
+Spelarnamn som ej accepteras av servern. ’*’ och ’?’ är tillåtna för att
+matcha flera tecken. Se \fBglob\fP(7) för detaljer. Standardvärden (som används
+om inget anges) är
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Sökväg till fifo du kan eka (echo) serverkommandon till (samma som /query
+\&... inifrån Wesnoth). Om ingen sökväg angetts används den sökväg som angavs
+vid kompileringen (standardvärde: /var/run/socket/wesnothd/socket).
+.TP 
+\fBmax_messages\fP
+Antal tillåtna meddelanden inom \fBmessages_time_period\fP (standardvärde:
+\fB4\fP).
+.TP 
+\fBmessages_time_period\fP
+Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras
+(standardvärde: \fB10\fP sekunder).
+.TP 
+\fBmotd\fP
+Meddelandet för dagen.
+.TP 
+\fBpasswd\fP
+Lösenordet för administrationsrättigheter. Börjar ofta med ’admin ’.
+.TP 
+\fBreplay_save_path\fP
+The directory where the server stores game replays. (Don't forget the
+trailing /!) Defaults to `' which means the directory wesnothd was started
+in.
+.TP 
+\fBrestart_command\fP
+Kommando som servern använder för att starta en ny serverprocess med
+restart\-kommandot. (Kan endast ges via fifo.)
+.TP 
+\fBsave_replays\fP
+Defines whether the server will automatically save replays of
+games. (default: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+En komma\-separerad lista med versionssträngar som accepteras av servern. ’*’
+och ’?’ är tillåtna för att matcha flera tecken. (Standardvärdet är aktuell
+version av Wesnoth.)
+.br
+Exempel: \fBversions_accepted="*"\fP accepterar alla versionssträngar.
+.TP  
+\fBuser_handler\fP
+Namnet på användarhanteraren att använda. De användarhanterare som för
+närvarande finns tillgängliga är ’forum’ (för att ansluta wesnothd till en
+phpBB\-forumdatabas) och ’sample’ (ett implementeringsprov av
+användarhanterargränssnittet, du är galen om du använder den här på något
+verkligt). Standardvärde är ’forum’. Du måste också lägga till ett
+\fB[user_handler]\fP\-avsnitt, se nedan.
+.
+.SS "Globala taggar:"
+.
+.P
+\fB[redirect]\fP En tag som anger vart en server skall omdirigera vissa
+klientversioner.
+.RS
+.TP 
+\fBhost\fP
+Värdadressen att omdirigera till.
+.TP 
+\fBport\fP
+Porten att ansluta till.
+.TP 
+\fBversion\fP
+En komma\-separerad lista av versioner att omdirigera. Fungerar på samma sätt
+som \fBversions_accepted\fP vad gäller strängmatchning.
+.RE
+.P
+\fB[ban_time]\fP En tagg som definierar tillfälliga avstängningar med egna
+nyckelord.
+.RS
+.TP 
+\fBname\fP
+Namnet på nyckelordet som kommer att användas för avstängningstiden.
+.TP 
+\fBtime\fP
+Tidslängd. Format: %d[%s[%d%s[...]]] där %s är s (sekunder), m (minuter), h
+(timmar), D (dagar), M (månader) eller Y (år) och %d är ett nummer. Om inget
+anges antas minuter (m). Exempel: time="1D12h30m" vilket ger en avstängning
+på 1 dag, 12 timmar och 30 minuter.
+.RE
+.P
+\fB[proxy]\fP En tagg som anger att servern skall agera som proxy och
+vidarebefordra klientenförfrågningarna till den angiva servern. Accepterar
+samma parametrar som \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Ställer in användarhanteraren. Tillgängliga parametrar
+beror på vilken användarhanterare som satts med
+\fBuser_handler\fP\-parametern. Om inget [user_handler]\-avsnitt finns i
+inställningsfilen kommer servern köras utan tjänsten att registrera
+spelarnamn.
+.RS
+.TP  
+\fBdb_host\fP
+(för user_handler=forum) Databasserverns värdnamn
+.TP  
+\fBdb_name\fP
+(för user_handler=forum) Namnet på databasen
+.TP  
+\fBdb_user\fP
+(för user_handler=forum) Användarnamnet som loggar in i databasen
+.TP  
+\fBdb_password\fP
+(för user_handler=forum) Den här användarens lösenord
+.TP  
+\fBdb_users_table\fP
+(för user_handler=forum) Namnet på den tabell där phpBB\-forumet lagrar sina
+användardata. Troligtvis är detta <tabellprefix>_users (till exempel
+phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(för user_handler=forum) Namnet på den tabell där wesnothd lagrar sina
+användardata. Du behöver skapa denna tabell manuellt, till exempel: CREATE
+TABLE <tabellnamn>(username VARCHAR(255) PRIMARY KEY, user_lastvisit
+INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL
+DEFAULT 0);
+.TP  
+\fBuser_expiration\fP
+(för user_handler=sample) Efter vilken tid ett registrerat spelarnamn
+förfaller (i dagar).
+.RE
+.P
+\fB[mail]\fP Ställer in en SMTP\-server för användarhanteraren att skicka
+epost. Just nu används den bara av sample\-användarhanteraren.
+.RS
+.TP  
+\fBserver\fP
+Epostserverns värdnamn
+.TP  
+\fBusername\fP
+Det användarnamn som loggar in på epostservern.
+.TP  
+\fBpassword\fP
+Den här användarens lösenord.
+.TP  
+\fBfrom_address\fP
+Din eposts svara till\-adress.
+.TP  
+\fBmail_port\fP
+Vilken port din epostserver körs på. Standardvärde är 25.
+.
+.SH FÖRFATTARE
+.
+Skriven av David White <davidnwhite@verizon.net>. Redigerad av Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> och Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. Denna manualsida skrevs ursprungligen
+av Cyril Bouthors <cyril@bouthors.org>.
+.br
+Besök den officiella hemsidan: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Detta är fri mjukvara; denna mjukvara är licensierad under GPL version 2,
+såsom publicerad av Free Software Foundation. INGEN garanti ges; inte ens
+för SÄLJBARHET eller LÄMPLIGHET FÖR ETT VISST SYFTE.
+.
+.SH "SE ÄVEN"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

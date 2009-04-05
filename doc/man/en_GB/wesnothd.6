@@ -123,9 +123,18 @@ The message of the day.
 \fBpasswd\fP
 The password used to gain admin privileges. Usually it starts with `admin '.
 .TP 
+\fBreplay_save_path\fP
+The directory where the server stores game replays. (Don't forget the
+trailing /!) Defaults to `' which means the directory wesnothd was started
+in.
+.TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
 `restart' command. (Can only be issued via the fifo.)
+.TP 
+\fBsave_replays\fP
+Defines whether the server will automatically save replays of
+games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. `*'

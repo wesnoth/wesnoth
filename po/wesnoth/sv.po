@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-31 15:28+0200\n"
+"POT-Creation-Date: 2009-04-05 17:07+0200\n"
 "PO-Revision-Date: 2009-04-01 08:22+0100\n"
 "Last-Translator: Kess Vargavind <vargavind@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -428,72 +428,72 @@ msgid "Norwegian Translation"
 msgstr "Norsk översättning"
 
 #. [about]
-#: data/core/about.cfg:1784
+#: data/core/about.cfg:1787
 msgid "Polish Translation"
 msgstr "Polsk översättning"
 
 #. [about]
-#: data/core/about.cfg:1833
+#: data/core/about.cfg:1836
 msgid "Portuguese Translation"
 msgstr "Portugisisk översättning"
 
 #. [about]
-#: data/core/about.cfg:1840
+#: data/core/about.cfg:1843
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasiliansk-portugisisk översättning"
 
 #. [about]
-#: data/core/about.cfg:1875
+#: data/core/about.cfg:1878
 msgid "Romanian Translation"
 msgstr "Rumänsk översättning"
 
 #. [about]
-#: data/core/about.cfg:1883
+#: data/core/about.cfg:1886
 msgid "Russian Translation"
 msgstr "Rysk översättning"
 
 #. [about]
-#: data/core/about.cfg:1931
+#: data/core/about.cfg:1934
 msgid "Serbian Translation"
 msgstr "Serbisk översättning"
 
 #. [about]
-#: data/core/about.cfg:1946
+#: data/core/about.cfg:1949
 msgid "Slovak Translation"
 msgstr "Slovakisk översättning"
 
 #. [about]
-#: data/core/about.cfg:1972
+#: data/core/about.cfg:1975
 msgid "Slovenian Translation"
 msgstr "Slovensk översättning"
 
 #. [about]
-#: data/core/about.cfg:1985
+#: data/core/about.cfg:1988
 msgid "Spanish Translation"
 msgstr "Spansk översättning"
 
 #. [about]
-#: data/core/about.cfg:2038
+#: data/core/about.cfg:2041
 msgid "Swedish Translation"
 msgstr "Svensk översättning"
 
 #. [about]
-#: data/core/about.cfg:2067
+#: data/core/about.cfg:2070
 msgid "Turkish Translation"
 msgstr "Turkisk översättning"
 
 #. [about]
-#: data/core/about.cfg:2089
+#: data/core/about.cfg:2092
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencisk (sydkatalansk) översättning"
 
 #. [about]
-#: data/core/about.cfg:2102
+#: data/core/about.cfg:2105
 msgid "RACV's Translation"
 msgstr "RACVs översättning"
 
 #. [about]
-#: data/core/about.cfg:2109
+#: data/core/about.cfg:2112
 msgid "Bots"
 msgstr "Bots"
 
@@ -7148,7 +7148,7 @@ msgid "Do you still want to download it?"
 msgstr "Vill du hämta det ändå?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
-#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -7638,7 +7638,7 @@ msgstr ""
 "spelet ändå?"
 
 #: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
-#: src/playsingle_controller.cpp:551
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
@@ -8373,7 +8373,7 @@ msgstr ""
 msgid " No help available."
 msgstr "Ingen hjälp tillgänglig."
 
-#: src/menu_events.cpp:2161
+#: src/menu_events.cpp:2162
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -8381,7 +8381,7 @@ msgstr ""
 "Skicka en fråga till servern. Utan argument ska servern lista alla "
 "tillgängliga kommandon."
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2165
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -8389,23 +8389,27 @@ msgstr ""
 "Banlys eller kasta ut en spelare eller observatör. Om denne inte är i spelet "
 "utan bara på servern blir denne bara banlyst."
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2168
 msgid "Kick a player or observer."
 msgstr "Sparka en spelare eller en observatör."
 
-#: src/menu_events.cpp:2169
-msgid "Mute an observer."
-msgstr "Tysta en obervatör"
+#: src/menu_events.cpp:2170
+msgid "Mute an observer. Without an argument displays the mute status."
+msgstr ""
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2172
 msgid "Mute all observers."
 msgstr "Tysta alla observatörer."
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2182
+msgid "Send a message to the server admins currently online"
+msgstr ""
+
+#: src/menu_events.cpp:2184
 msgid "Send an emotion or personal action in chat."
 msgstr "Skicka en humörsymbol eller en personlig handling."
 
-#: src/menu_events.cpp:2184
+#: src/menu_events.cpp:2187
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8413,244 +8417,244 @@ msgstr ""
 "Skickar ett privat meddelande. Du kan inte skicka meddelanden till spelare "
 "som inte kontrollerar en sida i spelet du är i."
 
-#: src/menu_events.cpp:2190
+#: src/menu_events.cpp:2193
 msgid "Change the log level of a log domain."
 msgstr "Ändra loggnivån för en loggdomän."
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2195
 msgid "Add a nick to your ignores list."
 msgstr "Lägg till ett smeknamn till din ignoreralista."
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2197
 msgid "Add a nick to your friends list."
 msgstr "Lägg till ett smeknamn till din lista över vänner."
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2199
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Ta bort ett smeknamn från listan över vänner eller ignorerade."
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2201
 msgid "Show your ignores and friends list."
 msgstr "Visa dina listor över vänner och ignorerade."
 
-#: src/menu_events.cpp:2201
+#: src/menu_events.cpp:2204
 msgid "Display version information."
 msgstr "Visa versionsinformation."
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2206
 msgid "Register your nick"
 msgstr "Registrera ditt smeknamn"
 
-#: src/menu_events.cpp:2205
+#: src/menu_events.cpp:2208
 msgid "Drop your nick."
 msgstr "Slopa ditt smeknamn."
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2210
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "Uppdatera detaljer för ditt användarnamn. För möjliga detaljer se ”/details”."
 
-#: src/menu_events.cpp:2210
+#: src/menu_events.cpp:2213
 msgid "Request information about a nick."
 msgstr "Begär information om ett användarnamn."
 
-#: src/menu_events.cpp:2212
+#: src/menu_events.cpp:2215
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Begär en lista med detaljer du kan ställa in för ditt registrerade "
 "användarnamn."
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2339
 msgid "Refresh gui."
 msgstr "Rita om användargränssnittet."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
 msgstr "Byt en sida till/från AI-kontroll."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2344
 msgid "Assign control of a side to a different player or observer."
 msgstr "Ge kontroll av en sida till en annan spelare eller observatör."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2346
 msgid "Clear chat history."
 msgstr "Rensa chathistoriken."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2348
 msgid "Visualize the screen refresh procedure."
 msgstr "Visualisera skärmomritningsproceduren."
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2351
 msgid "Save game."
 msgstr "Spara spelet."
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2353
 msgid "Quit game."
 msgstr "Avsluta spelet."
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2357
 msgid "Save and quit."
 msgstr "Spara och avsluta."
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
 msgstr "Ignorerar omspelsfel."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2362
 msgid "Disable autosaves."
 msgstr "Avaktivera autospara spel."
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2364
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Fortsätt till nästa nästa scenario eller scenariot identifierat av ’id’"
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2367
 msgid "Choose next scenario"
 msgstr "Välj nästa scenario"
 
-#: src/menu_events.cpp:2367
+#: src/menu_events.cpp:2370
 msgid "Turn debug mode on."
 msgstr "Sätt på avlusningsläge."
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2372
 msgid "Turn debug mode off."
 msgstr "Stäng av avlusningsläge."
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2374
 msgid "Set the command used by the custom command hotkey"
 msgstr "Sätt kommandot som används av snabbtangenten inställbart kommando"
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2376
 msgid "Set or show alias to a command"
 msgstr "Sätt eller visa alias till ett kommando"
 
-#: src/menu_events.cpp:2375
+#: src/menu_events.cpp:2378
 msgid "Set a scenario variable."
 msgstr "Sätt en scenariovariabel."
 
-#: src/menu_events.cpp:2377
+#: src/menu_events.cpp:2380
 msgid "Show a scenario variable."
 msgstr "Visa en scenariovariabel."
 
-#: src/menu_events.cpp:2379
+#: src/menu_events.cpp:2382
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Ändra en truppvariabel. (Endast toppnivå-nycklar stöds.)"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2386
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr "Ta bort ett karaktärsdrag från en trupp. (Fungerar inte än.)"
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2388
 msgid "Create a unit."
 msgstr "Skapa en trupp."
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2390
 msgid "Toggle fog for the current player."
 msgstr "Sätt på/stäng av slöja för aktuell sida."
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2392
 msgid "Toggle shroud for the current player."
 msgstr "Sätt på/stäng av stridsdimma för aktuell sida."
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2394
 msgid "Give gold to the current player."
 msgstr "Ge guld till aktuell spelare."
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2396
 msgid "Fire a game event."
 msgstr "Aktivera en spelhändelse."
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2399
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Växla visning av x- och y-koordinater på hexagoner."
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2402
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Växa visning av terrängkoder på hexagoner."
 
-#: src/menu_events.cpp:2444
+#: src/menu_events.cpp:2447
 msgid "Unknown debug level: '$level'."
 msgstr "Okänd debugnivå ’$level’."
 
-#: src/menu_events.cpp:2446 src/menu_events.cpp:2455
+#: src/menu_events.cpp:2449 src/menu_events.cpp:2458
 msgid "error"
 msgstr "fel"
 
-#: src/menu_events.cpp:2453
+#: src/menu_events.cpp:2456
 msgid "Unknown debug domain: '$domain'."
 msgstr "Okänd debugdomän ’$domain’."
 
-#: src/menu_events.cpp:2462
+#: src/menu_events.cpp:2465
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Ändrade nivån för domänen ’$domain’ till ’$level’."
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2557
 msgid "Added to ignore list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:2548 src/menu_events.cpp:2564
+#: src/menu_events.cpp:2559 src/menu_events.cpp:2575
 msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
-#: src/menu_events.cpp:2562
+#: src/menu_events.cpp:2573
 msgid "Added to friends list: "
 msgstr "Lagd i vänlistan: "
 
-#: src/menu_events.cpp:2575
+#: src/menu_events.cpp:2586
 msgid "Removed from list: "
 msgstr "Borttagen från listan: "
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2604
 msgid "There are no players on your friends or ignore list."
 msgstr "Det finns inga spelare på dina listor över vänner och ignorerade."
 
-#: src/menu_events.cpp:2762
+#: src/menu_events.cpp:2773
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen ’$search’."
 
-#: src/menu_events.cpp:2791
+#: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
 msgstr "AI:n kan inte ta över ogiltiga sidan ’$side’."
 
-#: src/menu_events.cpp:2796
+#: src/menu_events.cpp:2807
 msgid "Can't droid networked side: '$side'."
 msgstr "AI:n kan inte ta över nätverkssidan ’$side’."
 
-#: src/menu_events.cpp:2833
+#: src/menu_events.cpp:2844
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Kan inte byta kontroll på ogiltig sidan ’$side’."
 
-#: src/menu_events.cpp:2839
+#: src/menu_events.cpp:2850
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan inte byta kontroll på icke-existerande sidan ’$side’."
 
-#: src/menu_events.cpp:2903
+#: src/menu_events.cpp:2914
 msgid "Choose Scenario (Debug!)"
 msgstr "Välj scenario (avlusning!)"
 
-#: src/menu_events.cpp:2916
+#: src/menu_events.cpp:2927
 msgid "Debug mode activated!"
 msgstr "Debugläge aktiverat!"
 
-#: src/menu_events.cpp:2919
+#: src/menu_events.cpp:2930
 msgid "Debug mode not available in network games"
 msgstr "Avlusningsläge är inte tillgängligt i nätverksspel"
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2935
 msgid "Debug mode deactivated!"
 msgstr "Debugläge avaktiverat!"
 
-#: src/menu_events.cpp:3086
+#: src/menu_events.cpp:3097
 msgid "ai"
 msgstr "ai"
 
-#: src/menu_events.cpp:3094 src/menu_events.cpp:3110
+#: src/menu_events.cpp:3105 src/menu_events.cpp:3121
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:3130
+#: src/menu_events.cpp:3141
 msgid "User-Command#3"
 msgstr "Användarkommandon #3"
 
@@ -9146,11 +9150,11 @@ msgstr "Hoppa till aktivt drag som observatör"
 msgid "Joining this game requires a password."
 msgstr "Du behöver ett lösenord för att gå med i det här spelet."
 
-#: src/multiplayer_ui.cpp:188
+#: src/multiplayer_ui.cpp:190
 msgid "Invalid Color"
 msgstr "Ogiltig färg"
 
-#: src/multiplayer_ui.cpp:421
+#: src/multiplayer_ui.cpp:423
 msgid "Selected user: "
 msgstr "Vald användare: "
 
@@ -9391,7 +9395,7 @@ msgstr ""
 "Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
-#: src/playsingle_controller.cpp:676
+#: src/playsingle_controller.cpp:675
 msgid "It is now $name|'s turn"
 msgstr "Nu är det $name|s drag"
 
@@ -9774,3 +9778,6 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#~ msgid "Mute an observer."
+#~ msgstr "Tysta en obervatör"

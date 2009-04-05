@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:29+0100\n"
+"POT-Creation-Date: 2009-04-05 17:08+0200\n"
 "PO-Revision-Date: 2009-03-19 03:22+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
@@ -207,8 +207,9 @@ msgstr "Graur-Tan"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:311
-msgid "Reach the signpost"
-msgstr "Saavuta tienviitta"
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
+msgid "Kalenz must reach the signpost"
+msgstr "Kalenzin on saavutettava tienviitta"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:103
@@ -434,11 +435,6 @@ msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern band of the river!"
 msgstr ""
-
-#. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:338
-msgid "Kalenz must reach the signpost"
-msgstr "Kalenzin on saavutettava tienviitta"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:342
@@ -3764,6 +3760,13 @@ msgstr "Voi ei! Olemme myöhässä..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:196
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Löydät $amount_gold kultarahaa."
+
+#, fuzzy
+#~ msgid "Move Kalenz to the signpost"
+#~ msgstr "Kalenz saavuttaa tienviitan"
+
+#~ msgid "Reach the signpost"
+#~ msgstr "Saavuta tienviitta"
 
 #, fuzzy
 #~ msgid "Defeat an enemy Leader!"

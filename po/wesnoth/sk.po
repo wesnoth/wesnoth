@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-31 15:28+0200\n"
+"POT-Creation-Date: 2009-04-05 17:07+0200\n"
 "PO-Revision-Date: 2009-03-29 15:57+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -432,72 +432,72 @@ msgid "Norwegian Translation"
 msgstr "Nórsky preklad"
 
 #. [about]
-#: data/core/about.cfg:1784
+#: data/core/about.cfg:1787
 msgid "Polish Translation"
 msgstr "Poľský preklad"
 
 #. [about]
-#: data/core/about.cfg:1833
+#: data/core/about.cfg:1836
 msgid "Portuguese Translation"
 msgstr "Portugalský preklad"
 
 #. [about]
-#: data/core/about.cfg:1840
+#: data/core/about.cfg:1843
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalský preklad (Brazília)"
 
 #. [about]
-#: data/core/about.cfg:1875
+#: data/core/about.cfg:1878
 msgid "Romanian Translation"
 msgstr "Rumunský preklad"
 
 #. [about]
-#: data/core/about.cfg:1883
+#: data/core/about.cfg:1886
 msgid "Russian Translation"
 msgstr "Ruský preklad"
 
 #. [about]
-#: data/core/about.cfg:1931
+#: data/core/about.cfg:1934
 msgid "Serbian Translation"
 msgstr "Srbský preklad"
 
 #. [about]
-#: data/core/about.cfg:1946
+#: data/core/about.cfg:1949
 msgid "Slovak Translation"
 msgstr "Slovenský preklad"
 
 #. [about]
-#: data/core/about.cfg:1972
+#: data/core/about.cfg:1975
 msgid "Slovenian Translation"
 msgstr "Slovinský preklad"
 
 #. [about]
-#: data/core/about.cfg:1985
+#: data/core/about.cfg:1988
 msgid "Spanish Translation"
 msgstr "Španielsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2038
+#: data/core/about.cfg:2041
 msgid "Swedish Translation"
 msgstr "Švédsky preklad"
 
 #. [about]
-#: data/core/about.cfg:2067
+#: data/core/about.cfg:2070
 msgid "Turkish Translation"
 msgstr "Turecký preklad"
 
 #. [about]
-#: data/core/about.cfg:2089
+#: data/core/about.cfg:2092
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský (Južné Katalánsko) preklad"
 
 #. [about]
-#: data/core/about.cfg:2102
+#: data/core/about.cfg:2105
 msgid "RACV's Translation"
 msgstr "RACV preklad"
 
 #. [about]
-#: data/core/about.cfg:2109
+#: data/core/about.cfg:2112
 msgid "Bots"
 msgstr "Roboti"
 
@@ -7073,7 +7073,7 @@ msgid "Do you still want to download it?"
 msgstr "Chceš ho naďalej stiahnuť?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
-#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
@@ -7560,7 +7560,7 @@ msgid ""
 msgstr "Toto je uložená hra z inej verzie programu. Mám sa ju pokúsiť načítať?"
 
 #: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
-#: src/playsingle_controller.cpp:551
+#: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
@@ -8292,35 +8292,39 @@ msgstr ""
 msgid " No help available."
 msgstr " Žiadna pomoc nie je k dispozícii."
 
-#: src/menu_events.cpp:2161
+#: src/menu_events.cpp:2162
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2165
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2168
 msgid "Kick a player or observer."
 msgstr "Vykopnúť hráča alebo diváka."
 
-#: src/menu_events.cpp:2169
-msgid "Mute an observer."
-msgstr "Umlčať diváka."
+#: src/menu_events.cpp:2170
+msgid "Mute an observer. Without an argument displays the mute status."
+msgstr ""
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2172
 msgid "Mute all observers."
 msgstr "Umlčať divákov."
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2182
+msgid "Send a message to the server admins currently online"
+msgstr ""
+
+#: src/menu_events.cpp:2184
 msgid "Send an emotion or personal action in chat."
 msgstr "Pošle v diskusii emóciu alebo osobnú akciu."
 
-#: src/menu_events.cpp:2184
+#: src/menu_events.cpp:2187
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8328,239 +8332,239 @@ msgstr ""
 "Posiela súkromné správy. Nemôžeš posielať správy hráčom, ktorí v tejto hre "
 "nehrajú za niektorú stranu."
 
-#: src/menu_events.cpp:2190
+#: src/menu_events.cpp:2193
 msgid "Change the log level of a log domain."
 msgstr "Prepne zapisovaciu doménu na inú úroveň závažnosti."
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2195
 msgid "Add a nick to your ignores list."
 msgstr "Pridaj hráča do svojho zoznamu ignorovaných."
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2197
 msgid "Add a nick to your friends list."
 msgstr "Pridaj hráča do svojho zoznamu priateľov."
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2199
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Odstráň hráča zo svojho zoznamu ignorovaných alebo priateľov."
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2201
 msgid "Show your ignores and friends list."
 msgstr "Zobraz svoj zoznam ignorovaných a priateľov."
 
-#: src/menu_events.cpp:2201
+#: src/menu_events.cpp:2204
 msgid "Display version information."
 msgstr "Zobraziť informácie o verzii."
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2206
 msgid "Register your nick"
 msgstr "Zaregistruj si prezývku"
 
-#: src/menu_events.cpp:2205
+#: src/menu_events.cpp:2208
 msgid "Drop your nick."
 msgstr ""
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2210
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2210
+#: src/menu_events.cpp:2213
 msgid "Request information about a nick."
 msgstr "Vyžiadaj informácie o nicku."
 
-#: src/menu_events.cpp:2212
+#: src/menu_events.cpp:2215
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2339
 msgid "Refresh gui."
 msgstr "Prekresli prostredie"
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
 msgstr "Vypni/zapni ovládanie strany počítačom."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2344
 msgid "Assign control of a side to a different player or observer."
 msgstr "Prideľ kontrolu nad stranou inému hráčovi alebo divákovi."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2346
 msgid "Clear chat history."
 msgstr "Vymaže všetky správy."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2348
 msgid "Visualize the screen refresh procedure."
 msgstr "Zviditeľniť proces prekresľovania obrazovky."
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2351
 msgid "Save game."
 msgstr "Ulož hru."
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2353
 msgid "Quit game."
 msgstr "Vypni hru."
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2357
 msgid "Save and quit."
 msgstr "Uložiť a vypnúť."
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2362
 msgid "Disable autosaves."
 msgstr "Vypnúť automatické ukladanie."
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2364
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Postúpiť do ďalšej scény alebo scény s názvom 'id'"
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2367
 msgid "Choose next scenario"
 msgstr "Vyber ďalšiu scénu"
 
-#: src/menu_events.cpp:2367
+#: src/menu_events.cpp:2370
 msgid "Turn debug mode on."
 msgstr "Zapni režim ladenia."
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2372
 msgid "Turn debug mode off."
 msgstr "Vypnúť režim ladenia."
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2374
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2376
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2375
+#: src/menu_events.cpp:2378
 msgid "Set a scenario variable."
 msgstr "Nastaví stavovú premennú scény."
 
-#: src/menu_events.cpp:2377
+#: src/menu_events.cpp:2380
 msgid "Show a scenario variable."
 msgstr "Zobrazí stavovú premennú scény."
 
-#: src/menu_events.cpp:2379
+#: src/menu_events.cpp:2382
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2386
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2388
 msgid "Create a unit."
 msgstr "Vytvor jednotku."
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2390
 msgid "Toggle fog for the current player."
 msgstr "Prepne hmlu pre aktuálneho hráča."
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2392
 msgid "Toggle shroud for the current player."
 msgstr "Prepne odkrývanie mapy pre aktuálneho hráča."
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2394
 msgid "Give gold to the current player."
 msgstr "Odovzdať zlato aktívnemu hráčovi."
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2396
 msgid "Fire a game event."
 msgstr "Spustí udalosť hry."
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2399
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Prepnúť zobrazovanie súradníc x,y na políčkach mapy."
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2402
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Prepnúť zobrazovanie kódov terénu na políčkach mapy."
 
-#: src/menu_events.cpp:2444
+#: src/menu_events.cpp:2447
 msgid "Unknown debug level: '$level'."
 msgstr "Neznáma ladiaca úroveň: '$level'."
 
-#: src/menu_events.cpp:2446 src/menu_events.cpp:2455
+#: src/menu_events.cpp:2449 src/menu_events.cpp:2458
 msgid "error"
 msgstr "chyba"
 
-#: src/menu_events.cpp:2453
+#: src/menu_events.cpp:2456
 msgid "Unknown debug domain: '$domain'."
 msgstr "Neznáma ladiaca doména: '$domain'."
 
-#: src/menu_events.cpp:2462
+#: src/menu_events.cpp:2465
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Doména: '$domain' prepnutá na úroveň: '$level'."
 
-#: src/menu_events.cpp:2546
+#: src/menu_events.cpp:2557
 msgid "Added to ignore list: "
 msgstr "Pridaný do zoznamu ignorovaných: "
 
-#: src/menu_events.cpp:2548 src/menu_events.cpp:2564
+#: src/menu_events.cpp:2559 src/menu_events.cpp:2575
 msgid "Invalid username: "
 msgstr "Neplatné používateľské meno: "
 
-#: src/menu_events.cpp:2562
+#: src/menu_events.cpp:2573
 msgid "Added to friends list: "
 msgstr "Pridaný do zoznamu priateľov: "
 
-#: src/menu_events.cpp:2575
+#: src/menu_events.cpp:2586
 msgid "Removed from list: "
 msgstr "Vyradený zo zoznamu: "
 
-#: src/menu_events.cpp:2593
+#: src/menu_events.cpp:2604
 msgid "There are no players on your friends or ignore list."
 msgstr "V zozname priateľov alebo ignorovaných nie sú žiadni hráči"
 
-#: src/menu_events.cpp:2762
+#: src/menu_events.cpp:2773
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Neviem nájsť značku ani jednotku, ktorá má v názve '$search'."
 
-#: src/menu_events.cpp:2791
+#: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
 msgstr "Nie je možné zmeniť neplatnú stranu '$side' na riadenie počítačom."
 
-#: src/menu_events.cpp:2796
+#: src/menu_events.cpp:2807
 msgid "Can't droid networked side: '$side'."
 msgstr "Nie je možné zmeniť sieťovú stranu '$side' na riadenie počítačom."
 
-#: src/menu_events.cpp:2833
+#: src/menu_events.cpp:2844
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Nie je možné nastaviť kontrolu neplatnej strany: '$side'."
 
-#: src/menu_events.cpp:2839
+#: src/menu_events.cpp:2850
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Nie je možné nastaviť kontrolu strany mimo rozsahu: '$side'."
 
-#: src/menu_events.cpp:2903
+#: src/menu_events.cpp:2914
 msgid "Choose Scenario (Debug!)"
 msgstr "Vybrať scénu (ladenie!)"
 
-#: src/menu_events.cpp:2916
+#: src/menu_events.cpp:2927
 msgid "Debug mode activated!"
 msgstr "Režim ladenia aktivovaný!"
 
-#: src/menu_events.cpp:2919
+#: src/menu_events.cpp:2930
 msgid "Debug mode not available in network games"
 msgstr "Režim ladenia nie je dostupný pri sieťových hrách"
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2935
 msgid "Debug mode deactivated!"
 msgstr "Režim ladenia deaktivovaný!"
 
-#: src/menu_events.cpp:3086
+#: src/menu_events.cpp:3097
 msgid "ai"
 msgstr "UI"
 
-#: src/menu_events.cpp:3094 src/menu_events.cpp:3110
+#: src/menu_events.cpp:3105 src/menu_events.cpp:3121
 msgid "prompt^Command:"
 msgstr "Príkaz:"
 
-#: src/menu_events.cpp:3130
+#: src/menu_events.cpp:3141
 msgid "User-Command#3"
 msgstr "Používateľský príkaz#3"
 
@@ -9051,11 +9055,11 @@ msgstr "Pri pozorovaní rýchlo preskoč na aktuálne kolo"
 msgid "Joining this game requires a password."
 msgstr "Vstup do tejto hry vyžaduje heslo."
 
-#: src/multiplayer_ui.cpp:188
+#: src/multiplayer_ui.cpp:190
 msgid "Invalid Color"
 msgstr "Neplatná farba"
 
-#: src/multiplayer_ui.cpp:421
+#: src/multiplayer_ui.cpp:423
 msgid "Selected user: "
 msgstr "Vyber používateľa: "
 
@@ -9300,7 +9304,7 @@ msgid ""
 msgstr ""
 "Prerušilo sa sieťové spojenie a hra nemôže pokračovať. Chceš ju uložiť?"
 
-#: src/playsingle_controller.cpp:676
+#: src/playsingle_controller.cpp:675
 msgid "It is now $name|'s turn"
 msgstr "Na ťahu je $name"
 
@@ -9683,6 +9687,9 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid "Mute an observer."
+#~ msgstr "Umlčať diváka."
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Našli sa neskontrolované skripty:"

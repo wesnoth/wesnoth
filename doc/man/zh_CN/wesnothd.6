@@ -109,8 +109,17 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 \fBpasswd\fP
 获取管理员权限的密码。通常以`admin '开头。
 .TP 
+\fBreplay_save_path\fP
+The directory where the server stores game replays. (Don't forget the
+trailing /!) Defaults to `' which means the directory wesnothd was started
+in.
+.TP 
 \fBrestart_command\fP
 这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）
+.TP 
+\fBsave_replays\fP
+Defines whether the server will automatically save replays of
+games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一致的wesnoth版本）
