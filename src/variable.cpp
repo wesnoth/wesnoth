@@ -472,9 +472,9 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 
 void scoped_wml_variable::store(const config& var_value)
 {
-	const config::child_list& children = repos->get_variables().get_children(var_name_);
-	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		previous_val_.append(**i);
+	// FIXME: this code isn't correct, as it concats all the children.
+	foreach (const config &i, repos->get_variables().child_range(var_name_)) {
+		previous_val_.append(i);
 	}
 	repos->clear_variable_cfg(var_name_);
 	repos->add_variable_cfg(var_name_, var_value);
@@ -486,9 +486,9 @@ scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
 		repos->clear_variable_cfg(var_name_);
-		config::child_list old_val =previous_val_.get_children(var_name_);
-		for(config::child_list::iterator j=old_val.begin(); j != old_val.end() ; j++){
-			repos->add_variable_cfg(var_name_,**j);
+		// FIXME: this code isn't correct, as previous_val_ doesn't contain a var_name_ child.
+		foreach (const config &i, previous_val_.child_range(var_name_)) {
+			repos->add_variable_cfg(var_name_, i);
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
