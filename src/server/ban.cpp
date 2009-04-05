@@ -13,6 +13,7 @@
 */
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "serialization/parser.hpp"
@@ -285,12 +286,10 @@ namespace wesnothd {
 		scoped_istream ban_file = istream_file(filename_);
 		read_gz(cfg, *ban_file);
 
-		const config::child_list& bans = cfg.get_children("ban");
-		for (config::child_list::const_iterator itor = bans.begin();
-				itor != bans.end(); ++itor)
+		foreach (const config &b, cfg.child_range("ban"))
 		{
 			try {
-				banned_ptr new_ban(new banned(**itor));
+				banned_ptr new_ban(new banned(b));
 				assert(bans_.insert(new_ban).second);
 
 				if (new_ban->get_end_time() != 0)
@@ -303,12 +302,10 @@ namespace wesnothd {
 		// load deleted too
 		if (const config &cfg_del = cfg.child("deleted"))
 		{
-			const config::child_list& del_bans = cfg_del.get_children("ban");
-			for (config::child_list::const_iterator itor = del_bans.begin();
-					itor != del_bans.end(); ++itor)
+			foreach (const config &b, cfg_del.child_range("ban"))
 			{
 				try {
-					banned_ptr new_ban(new banned(**itor));
+					banned_ptr new_ban(new banned(b));
 					deleted_bans_.push_back(new_ban);
 				} catch (banned::error& e) {
 					ERR_SERVER << e.message << " while reading deleted bans\n";
@@ -641,12 +638,9 @@ namespace wesnothd {
 	void ban_manager::load_config(const config& cfg)
 	{
 		ban_times_.clear();
-		const config::child_list& times = cfg.get_children("ban_time");
-		for (config::child_list::const_iterator itor = times.begin();
-				itor != times.end(); ++itor)
-		{
-			ban_times_.insert(default_ban_times::value_type((**itor)["name"],
-						parse_time((**itor)["time"])-time(NULL)));
+		foreach (const config &bt, cfg.child_range("ban_time")) {
+			ban_times_.insert(default_ban_times::value_type(bt["name"],
+				parse_time(bt["time"]) - time(NULL)));
 		}
 		init_ban_help();
 		if (filename_ != cfg["ban_save_file"])
