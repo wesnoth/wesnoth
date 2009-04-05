@@ -820,10 +820,11 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			return false;
 		}
 
+		config::all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag, create by pre_replay() or a start tag
-		else if ( (cfg->all_children().size() == 0) || (cfg->child("start") != NULL) ){
+		if (ch_itors.first == ch_itors.second || cfg->child("start"))
+		{
 			//do nothing
-
 		}
 		else if (const config &child = cfg->child("speak"))
 		{
