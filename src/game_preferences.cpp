@@ -81,18 +81,11 @@ manager::manager() :
 				message = foobar
 			[/line]
 */
-		const config::child_map& history_id_list = history->all_children();
-		typedef std::pair<std::string, config::child_list> hack;
-		foreach(const hack& history_id, history_id_list) {
-
-			std::vector<std::string> current_history;
-			foreach(const config* history_id_child, history_id.second) {
-				foreach (const config &line_data, history_id_child->child_range("line")) {
-					current_history.push_back(line_data["message"]);
-				}
+		foreach (const config::any_child &h, history->all_children_range())
+		{
+			foreach (const config &l, h.cfg.child_range("line")) {
+				history_map[h.key].push_back(l["message"]);
 			}
-
-			history_map[history_id.first] = current_history;
 		}
 	}
 
