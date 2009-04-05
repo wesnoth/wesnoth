@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/addon_list.hpp"
 
+#include "foreach.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
@@ -50,34 +51,30 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<tlistbox*>(window.find_widget("addon_list", false));
 	VALIDATE(list, missing_widget("addon_list"));
 
-	const config::child_list& cmps = cfg_.get_children("campaign");
-
-
-	for(config::child_list::const_iterator itor = cmps.begin();
-			itor != cmps.end(); ++itor) {
-
+	foreach (const config &c, cfg_.child_range("campaign"))
+	{
 		std::map<std::string, std::map<std::string, t_string> > data;
 		std::map<std::string, t_string> item;
 
-		std::string tmp = (**itor)["name"];
+		std::string tmp = c["name"];
 		utils::truncate_as_wstring(tmp, 20);
 		item["label"] = tmp;
 		data.insert(std::make_pair("name", item));
 
-		tmp = (**itor)["version"];
+		tmp = c["version"];
 		utils::truncate_as_wstring(tmp, 12);
 		item["label"] = tmp;
 		data.insert(std::make_pair("version", item));
 
-		tmp = (**itor)["author"];
+		tmp = c["author"];
 		utils::truncate_as_wstring(tmp, 16);
 		item["label"] = tmp;
 		data.insert(std::make_pair("author", item));
 
-		item["label"] = (**itor)["downloads"];
+		item["label"] = c["downloads"];
 		data.insert(std::make_pair("downloads", item));
 
-		item["label"] = (**itor)["size"];
+		item["label"] = c["size"];
 		data.insert(std::make_pair("size", item));
 
 		list->add_row(data);
