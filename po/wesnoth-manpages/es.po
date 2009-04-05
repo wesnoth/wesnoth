@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-01-17 03:54-0300\n"
+"PO-Revision-Date: 2009-04-05 12:11-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1204,7 +1204,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1213,6 +1213,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"El directorio donde el servidor almacena repeticiones de partidas. (¡No "
+"olvide el '/' al final!) De forma predeterminada es `' (vacío), es decir, el "
+"directorio donde wesnothd fue inicializado."
 
 # type: TP
 #. type: TP
@@ -1235,7 +1238,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
@@ -1243,6 +1246,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Define si el servidor almacenará automáticamente las repeticiones de las "
+"partidas. (predeterminado: B<false>)"
 
 # type: TP
 #. type: TP
@@ -1275,7 +1280,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #. type: Plain text
@@ -1287,6 +1292,12 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"El nombre del manejador de usuarios que utilizar. Los manejadores "
+"actualmente disponibles son 'forum' (para conectar wesnothd a una base de "
+"datos de foros phpBB) y 'sample' (una implementación de muestra de la "
+"interfaz del manejador, no es para utilizarlo en casos reales). El valor "
+"predeterminado es 'forum'. También debe agregar una sección B<[user_handler]"
+">, vea abajo."
 
 # type: SS
 #. type: SS
@@ -1415,39 +1426,45 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Configura el manejador de usuarios. Los atributos "
+"disponibles varían según el manejador seleccionado con el atributo "
+"B<user_handler>. Si no hay una sección [user_handler] presente en la "
+"configuración, el servidor funcionará sin ningún servicio de registro de "
+"usuarios."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
 msgstr ""
+"(para user_handler=forum) El nombre de host del servidor de la base de datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(para user_handler=forum) El nombre de la base de datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:211
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
@@ -1456,26 +1473,28 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(para user_handler=forum) El nombre del usuario para iniciar sesión en la "
+"base de datos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(para user_handler=forum) La contraseña de este usuario"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:217
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1485,13 +1504,16 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(para user_handler=forum) El nombre de la tabla en que su foro phpBB "
+"almacena los datos de sus usuarios. Probablemente sea E<lt>table-"
+"prefixE<gt>_users (e.g. phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:220
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1503,13 +1525,18 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(para user_handler=forum) El nombre de la tabla en que wesnothd almacenará "
+"sus propios datos sobre los usuarios. Tendrá que crear esta tabla "
+"manualmente, por ejemplo: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR"
+"(255) PRIMARY KEY user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #. type: Plain text
@@ -1518,6 +1545,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(para user_handler=sample) El tiempo tras el cual un nombre de usuario "
+"registrado expira (en días)."
 
 # type: Plain text
 #. type: Plain text
@@ -1526,76 +1555,80 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Configura un servidor SMTP a través del cual el manejador de "
+"usuarios (user handler) puede enviar correos electrónicos. Por ahora sólo es "
+"utilizado por el manejador de usuarios de muestra (sample)."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "El nombre del host del servidor de correos"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The user name under which to log into the mail server."
 msgstr ""
+"El nombre de usuario utilizado para iniciar sesión en el servidor de correos."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "This user's password."
-msgstr ""
+msgstr "La contraseña de este usuario."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:244
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "La dirección de respuesta (reply-to) de su correo."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:247
 msgid "The port on which your mail server is running. Default is 25."
 msgstr ""
+"El puerto en que su servidor de correos trabaja. El predeterminado es 25."
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:253
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1604,9 +1637,10 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> y "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.  Esta página de manual fue escrita "
-"inicialmente por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> y Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  Esta página de manual fue originalmente escrita "
+"por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
