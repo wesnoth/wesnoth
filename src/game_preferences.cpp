@@ -758,7 +758,7 @@ std::string upload_id()
 	// We create a unique id for each person, *when asked for* to increase
 	// randomness.
 	if (preferences::get("upload_id") == "") {
-		srand(time(NULL));
+		srand(static_cast<unsigned int>(time(NULL)));
 		preferences::set("upload_id",
 			lexical_cast<std::string>(rand())
 				 + lexical_cast<std::string>(SDL_GetTicks()));
