@@ -2058,28 +2058,30 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if ( ( unit == units_.end() ) || (unit->second.attacks_left() == 0) )
 				continue;
 
-			const map_location& src = attack_analysis->movements.front().second;
-			const map_location& dst = attack_analysis->target;
+			const map_location& move_from = attack_analysis->movements.front().first;
+			const map_location& att_src = attack_analysis->movements.front().second;
+			const map_location& att_dst = attack_analysis->target;
 
-			//now check if location to which we want to move is still unoccupied
-			unit = units_.find(src);
-			if ( unit != units_.end() )
-				continue;
-
-			//now check if target is still valid
-			unit = units_.find(dst);
+			//check if target is still valid
+			unit = units_.find(att_dst);
 			if ( unit == units_.end() )
 				continue;
 
-			move_unit(attack_analysis->movements.front().first,
-					  attack_analysis->movements.front().second,
-					  possible_moves_);
+                        //check if we need to move
+                        if( move_from != att_src ) {
+                            //now check if location to which we want to move is still unoccupied
+                            unit = units_.find(att_src);
+                            if ( unit != units_.end() )
+                                    continue;
 
-			if(get_info().units.count(src)) {
+                            move_unit(move_from, att_src, possible_moves_);
+                        }
+
+			if(get_info().units.count(att_src)) {
 				battle_context bc(get_info().map, get_info().teams,
 				                  get_info().units, get_info().state,
-				                  src, dst, -1, -1, 1.0, NULL,
-								  &get_info().units.find(src)->second);
+				                  att_src, att_dst, -1, -1, 1.0, NULL,
+								  &get_info().units.find(att_src)->second);
 				attack_enemy(attack_analysis->movements.front().second,
 				             attack_analysis->target,
 							 bc.get_attacker_stats().attack_num,
