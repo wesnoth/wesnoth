@@ -60,12 +60,12 @@ class config
 	static config invalid;
 
 	/**
-	 * Raises an exception if this is not valid.
+	 * Raises an exception if @a this is not valid.
 	 */
 	void check_valid() const;
 
 	/**
-	 * Raises an exception if this of @a cfg is not valid.
+	 * Raises an exception if @a this or @a cfg is not valid.
 	 */
 	void check_valid(const config &cfg) const;
 
@@ -186,7 +186,6 @@ public:
 	size_t child_count(const std::string& key) const;
 
 	const child_list& get_children(const std::string& key) const;
-	const child_map& all_children() const;
 
 	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.

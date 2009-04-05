@@ -178,13 +178,6 @@ const config::child_list& config::get_children(const std::string& key) const
 	}
 }
 
-const config::child_map& config::all_children() const
-{
-	check_valid();
-
-	return children;
-}
-
 config &config::child(const std::string& key)
 {
 	check_valid();
