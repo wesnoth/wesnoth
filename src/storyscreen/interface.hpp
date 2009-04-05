@@ -1,6 +1,5 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2009 by David White <dave@whitevine.net>
    Copyright (C) 2009 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
