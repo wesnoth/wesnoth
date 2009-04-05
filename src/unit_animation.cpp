@@ -147,11 +147,12 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	dst_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
-	config::child_map::const_iterator frame_itor =cfg.all_children().begin();
-	for( /*null*/; frame_itor != cfg.all_children().end() ; frame_itor++) {
-		if(frame_itor->first == frame_string) continue;
-		if(frame_itor->first.find("_frame",frame_itor->first.size() -6 ) == std::string::npos) continue;
-		sub_anims_[frame_itor->first] = particule(cfg,frame_itor->first.substr(0,frame_itor->first.size() -5));
+	foreach (const config::any_child &fr, cfg.all_children_range())
+	{
+		if (fr.key == frame_string) continue;
+		if (fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) continue;
+		if (sub_anims_.find(fr.key) != sub_anims_.end()) continue;
+		sub_anims_[fr.key] = particule(cfg, fr.key.substr(0, fr.key.size() - 5));
 	}
 	event_ =utils::split(cfg["apply_to"]);
 
