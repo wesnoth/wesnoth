@@ -141,11 +141,12 @@ void replay_controller::init_replay_display(){
 	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
-void replay_controller::rebuild_replay_theme(){
-	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	if (theme_cfg) {
-		const config &replay_theme_cfg = theme_cfg->child("resolution").child("replay");
-		if (replay_theme_cfg)
+void replay_controller::rebuild_replay_theme()
+{
+	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
+	if (const config &res = theme_cfg.child("resolution"))
+	{
+		if (const config &replay_theme_cfg = res.child("replay"))
 			gui_->get_theme().modify(&replay_theme_cfg);
 		//Make sure we get notified if the theme is redrawn completely. That way we have
 		//a chance to restore the replay controls of the theme as well.

@@ -230,16 +230,17 @@ int get_first_human_team(const config::child_list::const_iterator& cfg, const co
 	return result;
 }
 
-const config* get_theme(const config& game_config, std::string theme_name)
+const config &get_theme(const config& game_config, std::string theme_name)
 {
 	if (theme_name.empty()) theme_name = preferences::theme();
 
 	if (const config &c = game_config.find_child("theme", "name", theme_name))
-		return &c;
+		return c;
 
 	if (const config &c = game_config.find_child("theme", "name", "default"))
-		return &c;
+		return c;
 
-	return NULL;
+	static config empty;
+	return empty;
 }
 

@@ -147,11 +147,8 @@ void play_controller::init(CVideo& video){
 	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	if (theme_cfg)
-		gui_.reset(new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_));
-	else
-		gui_.reset(new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_));
+	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
+	gui_.reset(new game_display(units_, video, map_, status_, teams_, theme_cfg, game_config_, level_));
 	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
