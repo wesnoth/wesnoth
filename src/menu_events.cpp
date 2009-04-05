@@ -740,11 +740,8 @@ private:
 		game_events::write_events(start);
 
 		// Write terrain_graphics data in snapshot, too
-		const config::child_list& terrains = level_.get_children("terrain_graphics");
-		for(config::child_list::const_iterator tg = terrains.begin();
-				tg != terrains.end(); ++tg) {
-
-			start.add_child("terrain_graphics", **tg);
+		foreach (const config &tg, level_.child_range("terrain_graphics")) {
+			start.add_child("terrain_graphics", tg);
 		}
 
 		sound::write_music_play_list(start);
@@ -2917,15 +2914,14 @@ private:
 	}
 	void console_handler::do_choose_level() {
 		std::vector<std::string> options;
-		int next = 0;
-		const config::child_list& scenarios =
-			menu_handler_.game_config_.get_children("scenario");
-		for (config::child_list::const_iterator i = scenarios.begin(),
-		     	i_end = scenarios.end(); i != i_end; ++i) {
-		    const std::string id = (**i)["id"];
-		    options.push_back(id);
+		int next = 0, nb = 0;
+		foreach (const config &sc, menu_handler_.game_config_.child_range("scenario"))
+		{
+			const std::string &id = sc["id"];
+			options.push_back(id);
 			if (id == menu_handler_.gamestate_.next_scenario)
-		    	next = i - scenarios.begin();
+				next = nb;
+			++nb;
 		}
 		int choice = 0;
 		{
