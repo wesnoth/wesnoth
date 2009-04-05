@@ -1224,15 +1224,18 @@ void game::save_replay() {
 	}
 
 	std::stringstream name;
-	name << level_["name"] << " Turn " << current_turn() << " (" << id_ << ").gz";
+	name << level_["name"] << " Turn " << current_turn();
 
 	std::stringstream replay_data;
 	replay_data << "campaign_type=\"multiplayer\"\n"
 	<< "difficulty=\"NORMAL\"\n"
 	<< "label=\"" << name.str() << "\"\n"
+	<< "mp_game_title=\"" << name_ << "\"\n"
 	<< "version=\"" << level_["version"] << "\"\n"
 	<< "[replay]\n" << replay_commands << "[/replay]\n"
 	<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
+
+	name << " (" << id_ << ").gz";
 
 	std::string replay_data_str = replay_data.str();
 	simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
