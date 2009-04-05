@@ -14,9 +14,7 @@
 
 /**
  * @file storyscreen/page.hpp
- * This code is work in progress, and the interfaces may change.
- * It is supposed to completely replace the old story screens code
- * at intro.cpp, introducing new WML conventions while at it.
+ * Storyscreen pages and floating images representation.
  */
 
 #ifndef STORYSCREEN_PAGE_HPP_INCLUDED

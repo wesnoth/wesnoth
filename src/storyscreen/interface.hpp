@@ -15,9 +15,7 @@
 
 /**
  * @file storyscreen/interface.hpp
- * This code is work in progress, and the interfaces may change.
- * It is supposed to completely replace the old story screens code
- * at intro.cpp, introducing new WML conventions while at it.
+ * Storyscreen controller (wrapper interface).
  */
 
 #ifndef STORYSCREEN_HPP_INCLUDED
