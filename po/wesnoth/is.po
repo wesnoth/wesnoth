@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-04-03 16:22-0000\n"
+"PO-Revision-Date: 2009-04-04 21:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1484,8 +1484,7 @@ msgstr "Ódauði"
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr ""
-"Ódauðar einingar eru ónæmar eitri, einnig virkar ekki tæming né plágun á þá."
+msgstr "Ódauðar einingar eru ónæmar eitri, tæmingu og plágun."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:411
@@ -2264,7 +2263,7 @@ msgstr ""
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
-msgstr "læknar"
+msgstr "lækningar"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
@@ -2792,12 +2791,12 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "Setja markmið..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
 msgid "Set behavior..."
-msgstr ""
+msgstr "Setja hegðun..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
@@ -4024,9 +4023,8 @@ msgstr "ódauð"
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "Ónæm/ur tæmingu, eitrun og plágum."
+msgstr "Ónæmt tæmingu, eitrun og plágum."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -5027,7 +5025,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Konrad konungur, 536YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -5430,7 +5428,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Li'sar drottning, 528YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -5512,7 +5510,7 @@ msgstr "Ljúka umferð"
 #: data/themes/default.cfg:154 data/themes/default.cfg:764
 #: data/themes/default.cfg:1018 data/themes/dfool.cfg:161
 msgid "End Scenario"
-msgstr ""
+msgstr "Ljúka atburðarás"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -5747,11 +5745,11 @@ msgstr "Herferð"
 
 #: src/addon_management.cpp:404
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Atburðarás"
 
 #: src/addon_management.cpp:406
 msgid "addon_type^MP era"
-msgstr ""
+msgstr "MP tímabil"
 
 #: src/addon_management.cpp:408
 msgid "addon_type^MP faction"
@@ -5759,15 +5757,15 @@ msgstr ""
 
 #: src/addon_management.cpp:410
 msgid "addon_type^MP map-pack"
-msgstr ""
+msgstr "MP kortasafn"
 
 #: src/addon_management.cpp:412
 msgid "addon_type^MP scenario"
-msgstr ""
+msgstr "MP atburðarás"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "MP herferð"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^Resources"
@@ -5898,12 +5896,11 @@ msgid "Update failed"
 msgstr "Uppfærsla mistókst"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "Eftirfarandi viðbót var með villur og gat ekki verið hlöðuð:"
-msgstr[1] "Eftirfarandi viðbót var með villur og gat ekki verið hlöðuð:"
+msgstr[1] "Eftirfarandi viðbætur voru með villur og gátu ekki verið hlaðaðar:"
 
 #: src/addon_management.cpp:864
 msgid "Update succeeded"
@@ -5964,7 +5961,7 @@ msgstr "Sækja viðbætur"
 
 #: src/addon_management.cpp:1023
 msgid "Choose the add-on to download."
-msgstr ""
+msgstr "Veldu viðbót til niðurhals."
 
 #: src/addon_management.cpp:1035 src/dialogs.cpp:673 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
@@ -6021,7 +6018,7 @@ msgstr "Viðbót eytt"
 
 #: src/addon_management.cpp:1146
 msgid "Add-on could not be deleted properly:"
-msgstr ""
+msgstr "Viðbót gat ekki verið eytt eðlilega:"
 
 #: src/ai.cpp:1732
 msgid "Unknown unit type : "
@@ -6167,7 +6164,7 @@ msgstr "Umferð"
 
 #: src/dialogs.cpp:563
 msgid "Scenario Start"
-msgstr ""
+msgstr "Upphaf atburðarásar"
 
 #: src/dialogs.cpp:566
 msgid "Difficulty: "
@@ -6198,7 +6195,6 @@ msgid "No Saved Games"
 msgstr "Eingar vistaðir leikir"
 
 #: src/dialogs.cpp:633
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -6206,7 +6202,7 @@ msgid ""
 msgstr ""
 "Það eru engir leikir til hlöðunar.\n"
 "\n"
-"(Leikir eru sjálkrafa vistaðir þegar þú lýkur <scenario>)"
+"(Leikir eru sjálkrafa vistaðir þegar þú lýkur atburðarás)"
 
 #: src/dialogs.cpp:648
 msgid "Date"
@@ -6320,7 +6316,7 @@ msgstr ""
 
 #: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
-msgstr ""
+msgstr "Villa við spilun leiks: "
 
 #: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
@@ -6362,7 +6358,7 @@ msgstr "Leitar að uppsettum viðbótum."
 
 #: src/game.cpp:2027
 msgid "Loading title screen."
-msgstr ""
+msgstr "Hleð inn aðalval."
 
 #: src/game_config.cpp:287
 msgid "Invalid color range: "
@@ -6462,8 +6458,8 @@ msgstr ""
 #: src/generate_report.cpp:260
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "meiðsl"
+msgstr[1] "meiðsl"
 
 #: src/generate_report.cpp:261
 msgid "tooltip^attack"
@@ -6583,7 +6579,7 @@ msgstr "Mótstöður"
 
 #: src/help.cpp:1441
 msgid "Attack Type"
-msgstr ""
+msgstr "Tegund árásar"
 
 #: src/help.cpp:1442
 msgid "Resistance"
@@ -6747,7 +6743,7 @@ msgstr "Einingalisti"
 
 #: src/menu_events.cpp:317 src/menu_events.cpp:339
 msgid "Scroll To"
-msgstr ""
+msgstr "Skruna til"
 
 #: src/menu_events.cpp:371
 msgid "Leader"
@@ -6793,7 +6789,7 @@ msgstr "Leiðtogi"
 
 #: src/menu_events.cpp:499
 msgid "scenario settings^Side"
-msgstr ""
+msgstr "Hlið"
 
 #: src/menu_events.cpp:500
 msgid ""
@@ -6831,7 +6827,7 @@ msgstr "já"
 
 #: src/menu_events.cpp:568
 msgid "Scenario Settings"
-msgstr ""
+msgstr "Stillingar atburðarásar"
 
 #: src/menu_events.cpp:615
 msgid "Saved"
@@ -7036,7 +7032,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2198
 msgid "Show your ignores and friends list."
-msgstr ""
+msgstr "Birta vina og hunsunarlista."
 
 #: src/menu_events.cpp:2201
 msgid "Display version information."
@@ -7096,7 +7092,7 @@ msgstr "Vista og hætta."
 
 #: src/menu_events.cpp:2357
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Hunsa endurspilunarvillur."
 
 #: src/menu_events.cpp:2359
 msgid "Disable autosaves."
@@ -7108,7 +7104,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2364
 msgid "Choose next scenario"
-msgstr ""
+msgstr "Val næstu atburðarásar"
 
 #: src/menu_events.cpp:2367
 msgid "Turn debug mode on."
@@ -7128,11 +7124,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2375
 msgid "Set a scenario variable."
-msgstr ""
+msgstr "Setja breytu atburðarásar."
 
 #: src/menu_events.cpp:2377
 msgid "Show a scenario variable."
-msgstr ""
+msgstr "Birta breytu atburðarásar."
 
 #: src/menu_events.cpp:2379
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -7160,7 +7156,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2393
 msgid "Fire a game event."
-msgstr ""
+msgstr "Fullnusta leikjaratburð."
 
 #: src/menu_events.cpp:2396
 msgid "Toggle overlaying of x,y coordinates on hexes."
@@ -7180,7 +7176,7 @@ msgstr "villa"
 
 #: src/menu_events.cpp:2453
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Óþekkt aflúsunarlén: '$domain'."
 
 #: src/menu_events.cpp:2462
 msgid "Switched domain: '$domain' to level: '$level'."
@@ -7228,7 +7224,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2903
 msgid "Choose Scenario (Debug!)"
-msgstr ""
+msgstr "Velja atburðarás (Aflúsun!)"
 
 #: src/menu_events.cpp:2916
 msgid "Debug mode activated!"
@@ -7293,6 +7289,8 @@ msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Notendanafnið '$nick' inniheldur ógilda stafi. Eingöngu bókstafir, "
+"niðurstrik og bandstrik eru leyfðir."
 
 #: src/multiplayer.cpp:355
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
@@ -7314,7 +7312,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Notendanafnið '$nick' er skráð á þessum miðlara."
 
 #: src/multiplayer.cpp:366
 msgid ""
@@ -7373,7 +7371,7 @@ msgstr "(Laust hólf)"
 
 #: src/multiplayer_connect.cpp:673
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(Frátekið fyrir $playername)"
 
 #: src/multiplayer_connect.cpp:803
 msgid "Reserved"
@@ -7412,13 +7410,12 @@ msgid "Color"
 msgstr "Litur"
 
 #: src/multiplayer_connect.cpp:1014
-#, fuzzy
 msgid "I'm Ready"
-msgstr "Tilbúin/n."
+msgstr "Tilbúin"
 
 #: src/multiplayer_connect.cpp:1025
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Þessi atburðarás er ógild vegna þess að hún hefur engar hliðar."
 
 #: src/multiplayer_connect.cpp:1417
 msgid "Network Player"
@@ -7454,7 +7451,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1750
 msgid "Waiting for players to join..."
-msgstr ""
+msgstr "Bíð eftir spilurum..."
 
 #: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:683
 msgid "Create Game"
@@ -7587,7 +7584,7 @@ msgstr "Ekkert tímabil fannst"
 
 #: src/multiplayer_create.cpp:223
 msgid "$login's game"
-msgstr ""
+msgstr "Leikur ($login)"
 
 #: src/multiplayer_create.cpp:282
 msgid "Invalid era selected"
@@ -7672,11 +7669,11 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:499
 msgid "Unknown scenario: $scenario_id"
-msgstr ""
+msgstr "Óþekkt atburðarás: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:503
 msgid "Unknown scenario"
-msgstr ""
+msgstr "Óþekkt atburðarás"
 
 #: src/multiplayer_lobby.cpp:508
 msgid "Reloaded game"
@@ -7714,7 +7711,7 @@ msgstr "Athuga leik"
 
 #: src/multiplayer_lobby.cpp:682
 msgid "Join Game"
-msgstr ""
+msgstr "Tengjast leik"
 
 #: src/multiplayer_lobby.cpp:684
 msgid "Quick Replays"
@@ -7734,7 +7731,7 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:804
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Tenging við þennan leik þarfnast lykilorðs."
 
 #: src/multiplayer_ui.cpp:188
 msgid "Invalid Color"
@@ -7758,7 +7755,7 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:208
 msgid "Getting game data..."
-msgstr ""
+msgstr "Sæki leikjargögn..."
 
 #: src/multiplayer_wait.cpp:264
 msgid "No era information found."
@@ -7842,11 +7839,11 @@ msgstr "Endurspilun gat ekki verið vistuð"
 
 #: src/playcampaign.cpp:447
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "Þessi atburðarás hefur lokið. Viltu halda áfram við herferðina?"
 
 #: src/playcampaign.cpp:468
 msgid "Downloading next scenario..."
-msgstr ""
+msgstr "Niðurhel næstu atburðarás..."
 
 #: src/playcampaign.cpp:595
 msgid "Do you want to save your game?"
@@ -7858,7 +7855,7 @@ msgstr "Nafn:"
 
 #: src/playcampaign.cpp:620
 msgid "Unknown scenario: '$scenario|'"
-msgstr ""
+msgstr "Óþekkt atburðarás: '$scenario|'"
 
 #: src/playmp_controller.cpp:219
 msgid "Undoing moves not yet transmitted to the server."
@@ -7866,11 +7863,11 @@ msgstr ""
 
 #: src/playmp_controller.cpp:297
 msgid "End scenario"
-msgstr ""
+msgstr "Ljúka atburðarás"
 
 #: src/playmp_controller.cpp:401
 msgid "Waiting for next scenario..."
-msgstr ""
+msgstr "Bíð eftir næstu atburðarás..."
 
 #: src/playmp_controller.cpp:531
 msgid ""
@@ -7970,11 +7967,11 @@ msgstr ""
 
 #: src/playturn.cpp:219
 msgid "Replace with AI"
-msgstr ""
+msgstr "Skipta út fyrir gervigreind"
 
 #: src/playturn.cpp:220
 msgid "Replace with local player"
-msgstr ""
+msgstr "Skipta út fyrir staðarspilara"
 
 #: src/playturn.cpp:221
 msgid "Abort game"
@@ -7982,15 +7979,15 @@ msgstr "Hætta við leik"
 
 #: src/playturn.cpp:226 src/playturn.cpp:238
 msgid "Replace with $player"
-msgstr ""
+msgstr "Skipta út fyrir $player"
 
 #: src/playturn.cpp:244
 msgid "$player has left the game. What do you want to do?"
-msgstr ""
+msgstr "$player hætti úr leiknum. Hvað viltu gera?"
 
 #: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr ""
+msgstr "Skráin sem þú reyndir að hlaða er skemmd. Halda áfram leik?"
 
 #: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
@@ -8046,11 +8043,11 @@ msgstr ""
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, gildi '$value', fyrr '$previous_value' á $pos"
 
 #: src/serialization/parser.cpp:361
 msgid "$error, value '$value' at $pos"
-msgstr ""
+msgstr "$error, gildi '$value' á $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -8204,7 +8201,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:441
 msgid "View the credits"
-msgstr ""
+msgstr "Skoða þakkarorð"
 
 #: src/titlescreen.cpp:442
 msgid "Quit the game"
@@ -8232,7 +8229,7 @@ msgstr ""
 
 #: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr ""
+msgstr "Óþekkt tegund einingar '$type|' við gerð einkenna"
 
 #: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
@@ -8269,8 +8266,8 @@ msgstr ""
 #: src/unit_types.cpp:198 src/unit_types.cpp:264
 msgid "damage"
 msgid_plural "damage"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "meiðsl"
+msgstr[1] "meiðsl"
 
 #: src/unit_types.cpp:208 src/unit_types.cpp:271
 msgid "strike"
@@ -8330,7 +8327,7 @@ msgstr ""
 
 #: src/upload_log.cpp:328
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Þú getur skoðað niðurstöðurnar á:"
 
 #: src/upload_log.cpp:330
 msgid "Help us make Wesnoth better for you!"

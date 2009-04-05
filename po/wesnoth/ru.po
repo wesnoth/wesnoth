@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-24 22:33+0300\n"
+"PO-Revision-Date: 2009-04-04 22:17+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1980,6 +1980,7 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1988,9 +1989,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Живучие бойцы имеет на 2 очка ЗД больше, чем обычно кроме того, в процессе "
-"отдыха они излечиваются на 2 очка ЗД за каждый ход, в течение которого они "
-"не сражались."
+"Живучие бойцы имеет на 1 ЗД и на 1 за каждый уровень больше, чем обычно. "
+"Кроме того, в процессе отдыха они излечиваются на 2 очка ЗД за каждый ход, в "
+"течение которого они не сражались. Они также получают на четверть меньше "
+"вреда от яда."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -9726,6 +9728,9 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "Исландский перевод"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Нашёл непроверенные скрипты: "
