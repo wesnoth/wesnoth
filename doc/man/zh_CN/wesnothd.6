@@ -18,62 +18,54 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2009 wesnothd "Battle for Wesnoth multiplayer network daemon"
+.TH WESNOTHD 6 2009 wesnothd 韦诺之战多人游戏服务器
 .
-.SH NAME
+.SH 命名
 .
-wesnothd \- Battle for \fBWesnoth\fP multiplayer network daemon
+wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .
-.SH SYNOPSIS
+.SH 摘要
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH DESCRIPTION
+.SH 描述
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+管理韦诺之战多人游戏。查看http://www.wesnoth.org/wiki/ServerAdministration
+获取服务器接受的命令列表。客户端使用/query 或 fifo 会显示这一列表。
 .
-.SH OPTIONS
+.SH 选项
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
-tells wesnothd where to find the config file to use. See the section
-\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
-sending SIGHUP to the server process.
+指定wesnothd查找配置文件的目录。查看下面的\fBSERVER CONFIG\fP通过发送SIGHUP信号给服务进程可以重新装载配置文件。
 .TP 
 \fB\-d, \-\-daemon\fP
-runs wesnothd as a daemon.
+以守护进程方式(daemon)运行wesnothd
 .TP 
 \fB\-h, \-\-help\fP
-tells you what the command line options do.
+显示命令行选项的作用
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
-By default the \fBerror\fP level is used and the \fBinfo\fP level for the
-\fBserver\fP domain.
+设置日志记录的级别.\fBall\fP用来匹配任意日志域(log domain)级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\
+\fBinfo\fP,\ \fBdebug\fP。默认的级别是\fBerror\fP，对\fB服务器\fP域默认级别是\fBinfo\fP。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-binds the server to the specified port. If no port is specified, port
-\fB15000\fP will be used.
+绑定服务到指定的端口。如果不指定端口将使用\fB15000\fP端口。
 .TP 
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-sets the maximum number of waiting worker threads for network I/O to n
-(default: \fB5\fP,\ max:\ \fB30\fP).
+设置网络I/O的最大挂起线程数(waiting worker threads)为n (默认值为\fB5\fP，\ 最大为\ \fB30\fP)。
 .TP 
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-sets the maximum number of worker threads that will be created.  If set to
-\fB0\fP there will be no limit (default: \fB0\fP).
+设置允许创建的最大正常线程数(worker threads)。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
 .TP 
 \fB\-V, \-\-version\fP
-shows version number and exits.
+显示版本号并退出
 .TP 
 \fB\-v, \-\-verbose\fP
-turns debug logging on.
+开启调试日志记录
 .
 .SH "SERVER CONFIG"
 .
@@ -92,36 +84,30 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件，并在服务器重启时读取。
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. \fB0\fP means
-infinite. (default: \fB5\fP)
+同一IP允许的连接数。\fB0\fP 表示无限制。(默认值：\fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. `*' and `?' from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 \fBglob\fP(7) 。默认值(如果用户没有指定则自动使用)是：
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+你能通过调用服务器命令的fifo路径（与在客户端中使用 /query
+功能相同）。如果不指定，则默认为编译时指定的路径(默认：/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP. (default: \fB4\fP)
+\fBmessages_time_period\fP中允许存在的消息数。 (默认值: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-The time period (in seconds) message flooding is detected in. (default:
-\fB10\fP seconds)
+消息泛滥(message flooding)检测时间间隔(秒)。 (默认值: \fB10\fP 秒)
 .TP 
 \fBmotd\fP
-The message of the day.
+当日新闻
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges. Usually it starts with `admin '.
+获取管理员权限的密码。通常以`admin '开头。
 .TP 
 \fBreplay_save_path\fP
 The directory where the server stores game replays. (Don't forget the
@@ -129,19 +115,16 @@ trailing /!) Defaults to `' which means the directory wesnothd was started
 in.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）
 .TP 
 \fBsave_replays\fP
 Defines whether the server will automatically save replays of
 games. (default: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一致的wesnoth版本）
 .br
-Example: versions_accepted="*" accepts any version string.
+例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .TP  
 \fBuser_handler\fP
 The name of the user handler to use. Currently available user handlers are
@@ -153,39 +136,31 @@ add a \fB[user_handler]\fP section, see below.
 .SS "Global tags:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to.
+\fB[redirect]\fP 服务器用来重定向特定客户端版本的标签。
 .RS
 .TP 
 \fBhost\fP
-The address of the server to redirect to.
+重定向到的服务器地址
 .TP 
 \fBport\fP
-The port to connect to.
+连接端口
 .TP 
 \fBversion\fP
-A comma separated list of versions to redirect. Behaves the same way as
-\fBversions_accepted\fP in regard to wildcard patterns.
+用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP 这个标签定义一些常用的封禁时间长度的关键字。
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+给封禁时间起一个名字
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+时间长度定义。 格式为：%d[%s[%d%s[...]]]
+其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）例如：time="1D12h30m"结果是1天+12小时+30分钟的封禁。
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
 .RE
 .P
 \fB[user_handler]\fP Configures the user handler. Available keys vary depending
@@ -243,24 +218,26 @@ The reply\-to address of you mail.
 \fBmail_port\fP
 The port on which your mail server is running. Default is 25.
 .
-.SH AUTHOR
+.SH 作者
 .
-Written by David White <davidnwhite@verizon.net>.  Edited by Nils
-Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
-Soliton <soliton.de@gmail.com> and Thomas Baumhauer
-<thomas.baumhauer@gmail.com>.  This manual page was originally
-written by Cyril Bouthors <cyril@bouthors.org>.
+由 David White <davidnwhite@verizon.net>编写。经 Nils Kneuper
+<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, Soliton
+<soliton.de@gmail.com> 和 Thomas Baumhauer
+<thomas.baumhauer@gmail.com>. 修改。这个帮助页最早由Cyril Bouthors
+<cyril@bouthors.org>编写。
 .br
-Visit the official homepage: http://www.wesnoth.org/
+访问官方网站: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-This is Free Software; this software is licensed under the GPL version 2, as
-published by the Free Software Foundation.  There is NO warranty; not even
-for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free Software; this software is
+licensed under the GPL version 2, as published by the Free Software
+Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
 .
-.SH "SEE ALSO"
+.SH 参见
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
