@@ -613,7 +613,8 @@ static std::string generate_name(const unit_race& name_generator, const std::str
 
 // "flood fill" a tile name to adjacent tiles of certain terrain
 static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
-	const t_translation::t_list& tile_types, const terrain_map& terrain, const size_t width, const size_t height,
+	const t_translation::t_list& tile_types, const terrain_map& terrain,
+	unsigned width, unsigned height,
 	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
 	map_location adj[6];
 	get_adjacent_tiles(start,adj);
@@ -621,9 +622,7 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	//if adjacent tiles are tiles and unnamed, name them
 	for (n = 0; n < 6; n++) {
 		//we do not care for tiles outside the middle part
-		if (adj[n].x >= static_cast<int>(width / 3)
-				|| adj[n].y >= static_cast<int>(height / 3) ) {
-
+		if (unsigned(adj[n].x) >= width / 3 || unsigned(adj[n].y) >= height / 3) {
 			continue;
 		}
 
