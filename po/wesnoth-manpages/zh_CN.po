@@ -1,4 +1,5 @@
-# Ch YOUR NAME <E-MAIL@ADDRESS>\n"nese translations for Battle for Wesnoth package
+# Chinese translations for Battle for Wesnoth package
+# sylecn <sylecn AT gmail.com>\n"
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
 #
@@ -6,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-03-27 22:57-0500\n"
-"Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
+"PO-Revision-Date: 2009-04-06 16:21-0500\n"
+"Last-Translator: sylecn <sylecn AT gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1135,7 +1136,7 @@ msgstr "获取管理员权限的密码。通常以`admin '开头。"
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1144,6 +1145,7 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"存放游戏录像的目录。(必须以/结尾!)默认为`'(空),也就是wesnothd 启动时的目录。"
 
 # type: TP
 #. type: TP
@@ -1165,14 +1167,14 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
-msgstr ""
+msgstr "设置服务器是否自动保存游戏录像。(默认值: B<false>)"
 
 # type: TP
 #. type: TP
@@ -1215,6 +1217,9 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"希望使用的用户处理单元。/todo 目前可选的有'forum'(将wesnothd与phpbb 论坛的数"
+"据库连接起来) 和'sample'(一个实现用户处理的实例,如果你真的(直接)用这个那你一"
+"定是疯了)。默认值是'forum'。同时你必须添加一个B<[user_handler]>部分,看下面。"
 
 # type: SS
 #. type: SS
@@ -1334,6 +1339,9 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> 设置用户处理单元。可设置的键值很大程度上取决于通过"
+"B<user_handler>设置的用户处理单元的值。如果配置文件中没有[user_handler]部分,"
+"服务器以不提供昵称注册服务的方式运行。"
 
 # type: TP
 #. type: TP
@@ -1346,7 +1354,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(如果用户处理单元设置为 forum) 数据库服务器的主机名"
 
 # type: TP
 #. type: TP
@@ -1359,7 +1367,7 @@ msgstr "B<db_name>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(如果用户处理单元设置为 forum) 数据库名"
 
 # type: TP
 #. type: TP
@@ -1374,7 +1382,7 @@ msgstr "B<db_user>"
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr ""
+msgstr "(如果用户处理单元设置为 forum) 数据库登录用户名"
 
 # type: TP
 #. type: TP
@@ -1387,7 +1395,7 @@ msgstr "B<db_password>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(如果用户处理单元设置为 forum) 数据库登录密码"
 
 # type: TP
 #. type: TP
@@ -1404,6 +1412,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(如果用户处理单元设置为 forum) phpbb 论坛中存放用户数据的表名。很可能是"
+"E<lt>table-prefixE<gt>_users (例如phpbb3_users)。"
 
 # type: TP
 #. type: TP
@@ -1422,6 +1432,10 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(如果用户处理单元设置为 forum) wesnothd存放用户游戏数据的表名。你必须自己创建"
+"这个表,例如:(SQL 语句,不要翻译了。)CREATE TABLE E<lt>table-nameE<gt>"
+"(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL "
+"DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #. type: TP
@@ -1436,7 +1450,7 @@ msgstr "B<user_expiration>"
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
-msgstr ""
+msgstr "(如果用户处理单元设置为 sample) 注册昵称失效时间(天数)。"
 
 # type: Plain text
 #. type: Plain text
@@ -1445,6 +1459,8 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> 设置一个SMTP服务器,通过它用户处理单元可以发送邮件。目前只在sample "
+"用户处理单元中使用。"
 
 # type: TP
 #. type: TP
@@ -1457,7 +1473,7 @@ msgstr "B<server>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "邮件服务器的主机名"
 
 # type: TP
 #. type: TP
@@ -1470,7 +1486,7 @@ msgstr "B<username>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "登录到邮件服务器的用户名。"
 
 # type: TP
 #. type: TP
@@ -1483,7 +1499,7 @@ msgstr "B<password>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "This user's password."
-msgstr ""
+msgstr "这个用户的密码。"
 
 # type: TP
 #. type: TP
@@ -1496,7 +1512,7 @@ msgstr "B<from_address>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:244
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "\"回复到\"邮件地址"
 
 # type: TP
 #. type: TP
@@ -1509,7 +1525,7 @@ msgstr "B<mail_port>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:247
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "邮件服务器的端口。默认值位5。"
 
 # type: Plain text
 #. type: Plain text
