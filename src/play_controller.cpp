@@ -27,7 +27,7 @@
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "terrain_filter.hpp"
-
+#include "savegame.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -286,15 +286,30 @@ void play_controller::status_table(){
 }
 
 void play_controller::save_game(){
-	menu_handler_.save_game("",gui::OK_CANCEL);
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		menu_handler_.save_game("",gui::OK_CANCEL);
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_game);
+	}
 }
 
 void play_controller::save_replay(){
-	menu_handler_.save_replay("", gui::OK_CANCEL, false);
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		menu_handler_.save_game("", gui::OK_CANCEL, false);
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_replay);
+	}
 }
 
 void play_controller::save_map(){
-	menu_handler_.save_map();
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		menu_handler_.save_map();
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_map);
+	}
 }
 
 void play_controller::load_game(){

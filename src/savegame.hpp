@@ -18,8 +18,36 @@
 
 #include "global.hpp"
 #include "gamestatus.hpp"
+#include "play_controller.hpp"
 
 #include <string>
+
+#include "SDL_mutex.h"
+
+class save_blocker {
+public:
+	save_blocker();
+	~save_blocker();
+	static bool saves_are_blocked();
+	static void on_unblock(play_controller* controller, void (play_controller::*callback)());
+
+protected:
+	friend class play_controller;
+	static void block();
+	static bool try_block();
+	static void unblock();
+
+	class save_unblocker {
+	public:
+		save_unblocker() {}
+		~save_unblocker() { save_blocker::unblock(); }
+	};
+
+private:
+	static play_controller *controller_;
+	static void (play_controller::*callback_)();
+	static SDL_sem* sem_;
+};
 
 /** Autosave */
 std::string save_autosave(unsigned turn, const config& snapshot, game_state& gamestate);
