@@ -3020,10 +3020,18 @@ private:
 			command_failed("Invalid alignment: '" + value + "', needs to be one of lawful, neutral or chaotic.");
 			return;
 		}
-		config cfg;
-		i->second.write(cfg);
-		cfg[name] = value;
-		i->second = unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,cfg);
+		if (name == "advances" ){
+			int int_value = lexical_cast<int>(value);
+			for (int levels=0; levels<int_value; levels++) {
+				i->second.get_experience( i->second.max_experience() - i->second.experience() );
+				dialogs::advance_unit(menu_handler_.map_, menu_handler_.units_,i->first,*menu_handler_.gui_);
+			}
+		} else {
+			config cfg;
+			i->second.write(cfg);
+			cfg[name] = value;
+			i->second = unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,cfg);
+		}
 		menu_handler_.gui_->invalidate(i->first);
 		menu_handler_.gui_->invalidate_unit();
 	}
