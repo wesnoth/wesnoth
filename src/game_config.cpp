@@ -48,7 +48,7 @@ namespace game_config
 #else
 	const std::string revision = VERSION;
 #endif
-	std::string wesnothd_name;
+	std::string wesnoth_program_dir;
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, small_gui = false, disable_autosave = false;
 
 	bool use_dummylocales = false;
@@ -225,10 +225,6 @@ namespace game_config
 			sinf.name = (**server)["name"];
 			sinf.address = (**server)["address"];
 			server_list.push_back(sinf);
-		}
-		if (!v["wesnothd_name"].empty())
-		{
-			game_config::wesnothd_name = v["wesnothd_name"];
 		}
 	}
 

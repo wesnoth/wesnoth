@@ -1235,56 +1235,30 @@ namespace
 
 void game_controller::start_wesnothd()
 {
-	typedef std::vector<std::string> path_store;
-	// add all paths to try to list
-	path_store paths_to_try;
-
-	if (!preferences::get_mp_server_program_name().empty())
-		paths_to_try.push_back(preferences::get_mp_server_program_name());
-
-	std::string wesnothd_quess = game_config::wesnothd_name;
-
-	paths_to_try.push_back(wesnothd_quess);
-
-
-	std::string needle = "wesnothd";
-	size_t found = wesnothd_quess.rfind(needle);
-	if (found != std::string::npos)
-	{
-		wesnothd_quess = wesnothd_quess.substr(0, found + needle.size());
-#ifdef _WIN32
-		wesnothd_quess += ".exe";
-#endif
-		if (wesnothd_quess != game_config::wesnothd_name)
-		{
-			paths_to_try.push_back(wesnothd_quess);
-		}
-	}
+	const std::string wesnothd_program = 
+		preferences::get_mp_server_program_name().empty() ? 
+		get_program_invocation("wesnothd") : preferences::get_mp_server_program_name();
 
 	std::string config = get_user_data_dir() + "/lan_server.cfg";
-	if (!file_exists(config))
-	{
+	if (!file_exists(config)) {
 		// copy file if it isn't created yet
 		write_file(config, read_file(get_wml_location("lan_server.cfg")));
 	}
-	for (path_store::iterator iname = paths_to_try.begin();
-			iname != paths_to_try.end(); ++iname)
-	{
+	
 #ifndef _WIN32
-		std::string command = "\"" + *iname +"\" -c " + config + " -d -t 2 -T 5 ";
+	std::string command = "\"" + wesnothd_program +"\" -c " + config + " -d -t 2 -T 5 ";
 #else
-		// start wesnoth as background job
-		std::string command = "cmd /C start \"wesnoth server\" /B \"" + *iname + "\" -c " + config + " -t 2 -T 5 ";
+	// start wesnoth as background job
+	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c " + config + " -t 2 -T 5 ";
 #endif
-		LOG_GENERAL << "Starting wesnothd: "<< command << "\n";
-		if (std::system(command.c_str()) == 0)
-		{
-			// Give server a moment to start up
-			SDL_Delay(50);
-			return;
-		}
-		preferences::set_mp_server_program_name("");
+	LOG_GENERAL << "Starting wesnothd: "<< command << "\n";
+	if (std::system(command.c_str()) == 0) {
+		// Give server a moment to start up
+		SDL_Delay(50);
+		return;
 	}
+	preferences::set_mp_server_program_name("");
+
 	// Couldn't start server so throw error
 	WRN_GENERAL << "Failed to run server start script\n";
 	throw game::mp_server_error("Starting MP server failed!");
@@ -1751,6 +1725,9 @@ static void gzip_decode(const std::string & input_file, const std::string & outp
 
 /** Process commandline-arguments */
 static int process_command_args(int argc, char** argv) {
+	const std::string program = argv[0];
+	game_config::wesnoth_program_dir = directory_name(program);
+
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -2194,24 +2171,6 @@ int main(int argc, char** argv)
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		const time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
-
-		/**
-		 * @todo We try to guess the name of the server from the name of the
-		 * binary started. This is very fragile it breaks in at least the
-		 * following cases.
-		 * - Wesnoth got renamed to something without wesnoth in it.
-		 * - Wesnoth got a pre/suffix but the server not.
-		 */
-		std::string program = argv[0];
-		const std::string wesnoth = "wesnoth";
-		const size_t offset = program.rfind(wesnoth);
-		if(offset != std::string::npos) {
-			program.replace(offset, wesnoth.length(), "wesnothd");
-			game_config::wesnothd_name = program;
-		} else {
-			std::cerr << "Game executable doesn't have the name \"" << wesnoth
-			          << "\" or similar; impossible to guess the server executable name.\n";
-		}
 
 		const std::string exe_dir = get_exe_dir();
 		if(!exe_dir.empty() && file_exists(exe_dir + "/data/_main.cfg")) {
