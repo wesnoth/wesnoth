@@ -954,6 +954,7 @@ bool game_controller::load_game()
 			}
 		}
 
+		paths_manager_.set_paths(game_config_);
 		state_ = game_state(cfg, show_replay);
 
 		// Get the status of the random in the snapshot.
