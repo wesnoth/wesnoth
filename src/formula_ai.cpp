@@ -1553,7 +1553,7 @@ formula_ai::formula_ai(info& i) :
 		}
 	} else {
 		try{
-			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
+			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
 		}
 		catch(formula_error& e) {
 			handle_exception(e);

@@ -217,9 +217,6 @@ ai::ai(ai_interface::info& info) :
 	master_(info_.master),
 	formula_ai_(NULL)
 {
-       if (master_){
-    	   formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_info(),false));
-       }
 }
 
 ai::~ai(){
@@ -1887,7 +1884,13 @@ bool ai::do_recruitment()
 	// Let formula ai to do recruiting first
 	if (master_)
 	{
-		if (formula_ai_ != NULL){
+		if (!current_team().ai_parameters()["recruitment"].empty()){
+			if (formula_ai_ == NULL){
+    	   			formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_info(),false));
+			}
+
+			assert(formula_ai_ != NULL);
+
 			if (formula_ai_->do_recruitment()) {
 				LOG_AI << "Recruitment done by formula_ai\n";
 				return true;

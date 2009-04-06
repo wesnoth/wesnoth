@@ -9,7 +9,7 @@ Version 1.7.0-svn:
    * Changed AI Lifecycle handling. Console AI is now persistent between 
      invocations.
    * Added AI Arena test map to test AIs in interactive mode ( ai_arena_small )
-   * Changed interaction between default AI an Formula AI - made default AI not
+   * Changed interaction between default AI an Formula AI - made default AI fallback to formula recruitment if "recruitment" config option is set in AI config.
      fallback to formula AI
  * Campaigns:
    * Under the Burning Suns:
