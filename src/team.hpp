@@ -306,6 +306,12 @@ public:
 
 	void log_recruitable();
 
+	/**set the share view attribute */
+	void set_share_view( bool share_view );
+
+	/** clear the shroud, fog, and enemies cache for all teams*/
+	static void clear_caches();
+
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.
 	bool share_maps() const { return info_.share_maps; }

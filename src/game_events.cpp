@@ -816,6 +816,7 @@ namespace {
 		 * to change it on the fly without causing visual glitches
 		 */
 		std::string switch_ai = cfg["switch_ai"];
+		std::string share_view = cfg["share_view"];
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -879,6 +880,14 @@ namespace {
 			if (!switch_ai.empty()) {
 				ai_manager::add_ai_for_team_from_file(side_num,switch_ai);
 			}
+			// Add shared view to current team
+			if (!share_view.empty()){
+				(*teams)[team_index].set_share_view( utils::string_bool(share_view, true) );
+				team::clear_caches();
+				screen->recalculate_minimap();
+				screen->invalidate_all();
+			}
+
 		}
 	}
 

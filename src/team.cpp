@@ -574,6 +574,10 @@ bool team::calculate_is_enemy(size_t index) const
 	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
+void team::set_share_view( bool share_view ){
+	info_.share_view = share_view;
+}
+
 void team::change_controller(const std::string& controller)
 {
 	team::team_info::CONTROLLER cid;
@@ -605,6 +609,10 @@ void team::change_team(const std::string& name, const std::string& user_name)
 		info_.user_team_name = name;
 	}
 
+	clear_caches();	
+}
+
+void team::clear_caches(){
 	// Reset the cache of allies for all teams
 	if(teams != NULL) {
 		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
