@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2007-06-29 20:49+0530\n"
-"Last-Translator: Nicky Inkrais Witras <inkraiswitras@yahoo.com>\n"
+"PO-Revision-Date: 2009-04-07 19:18+0530\n"
+"Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,77 +19,77 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Satu Heks"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radius 1 Heks"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radius 2 Heks"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Garis Heks BL-T"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "semua"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "air"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "datar"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "gurun"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr ""
+msgstr "hutan"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr ""
+msgstr "beku"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "kasar"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "gua"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
 msgid "village"
-msgstr ""
+msgstr "desa"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr ""
+msgstr "istana"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "spesial"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -101,6 +101,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Gunakan tombol tetikus kiri/kanan untuk menggambar daerah later depan/latar "
+"belakang. Pegang Shift untuk hanya mengecat lapisan dasar."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -109,6 +111,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Tombol tetikus kiri memilih, tombol kanan merubah pilihan. Pegang Shift "
+"untuk pilihan ubin tongkat-ajaib dengan daerah yang sama."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -118,6 +122,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Tombol tetikus kiri menunjukkan pilihan pemain, tombol kanan "
+"menyingkirkannya. Tombol nomor menggulung ke posisi permulaan, alt+nomor "
+"memasang posisi permulaan masing-masing di bawah tetikus, delete "
+"menghapusnya."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -125,6 +133,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Klik untuk menyalin, mengecilkan untuk membantu akurasi ketika menyalin "
+"daerah-daerah besar. Gunakan menu edit untuk merubah papan tulis kecil "
+"(memutar, mencermin)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -139,26 +150,25 @@ msgstr "Edit"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Peta"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Batalkan aksi terakhir"
+msgstr "Jendela"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
 msgid "villages"
-msgstr ""
+msgstr "desa"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Error membuat obyek aksi"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Aksi tidak diterapkan"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -166,93 +176,96 @@ msgstr "Tutup Redaktur"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Error fatal"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "(Peta Baru)"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Apakah anda benar-benar mau keluar?"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Apakah anda benar-benar mau keluar? Perubahan di peta ini sejak simpanan "
+"terakhir akan hilang."
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Apakah anda benar-benar mau keluar? Peta-peta berikut sudah dirubah dan "
+"semua perubahan sejak simpanan terakhir akan hilang:"
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "Keluar"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Tidak ada redaktur jam hari yang ditemukan."
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Perubahan Tidak Tersimpan"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Apakah anda mau batalkan semua perubahan yang anda lakukan ke peta ini sejak "
+"simpanan terakhir?"
 
 #: src/editor2/editor_controller.cpp:409
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Pilih peta untuk dipakai"
+msgstr "Pilih Peta untuk Dibuka"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "Peta ini sudah terbuka."
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
-msgstr "Simpan peta sebagai"
+msgstr "Simpan Peta Sebagai"
 
 #: src/editor2/editor_controller.cpp:455
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Peta ini sudah ada. Apakah anda hendak menulisnya ulang?"
+msgstr "Peta ini sudah ada. Apakah anda mau menulisnya ulang?"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "Tidak ada generator peta acak ditemukan."
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "Penciptaan peta gagal."
 
 #: src/editor2/editor_controller.cpp:497
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Pilih peta untuk dipakai"
+msgstr "Pilih samaran untuk dipakai"
 
 #: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
-msgstr ""
+msgstr "Error meload samaran"
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "Pilih target peta"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Error meload peta"
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
@@ -268,7 +281,7 @@ msgstr "Batalkan aksi terakhir"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "Tidak Bisa Membatalkan"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
@@ -276,11 +289,11 @@ msgstr "Ulangi aksi terakhir"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "Tidak Bisa Mengulang"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "File peta kosong atau peta tidak ditemukan"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -288,7 +301,7 @@ msgstr "Pemain"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Ukuran target peta berbeda dengan peta yang dipakai sekarang"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
@@ -299,13 +312,12 @@ msgid "BG"
 msgstr "BG"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Pemain"
+msgstr "Tiada Siapapun"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Pilih pemain"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -314,10 +326,15 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Pemain mana yang harus memulai di sini? Anda bisa menggunakan alt dan sebuah "
+"tombol nomor untuk memasang posisi permulaan untuk seorang pemain, dan del "
+"untuk mennyingkirkan posisi permulaan tersebut dengan tetikus. Menekan "
+"tombol nomor dengan sendirinya akan menggulung ke posisi permulaan pemain "
+"itu."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Setting kustom"
 
 #~ msgid "Settings"
 #~ msgstr "Settings"
