@@ -55,13 +55,23 @@ private:
 class if_function : public function_expression {
 public:
 	explicit if_function(const args_list& args)
-	     : function_expression("if", args, 3, 3)
+	     : function_expression("if", args, 3, -1)
 	{}
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const int i = args()[0]->evaluate(variables).as_bool() ? 1 : 2;
-		return args()[i]->evaluate(variables);
+		for(size_t n = 0; n < args().size()-1; n += 2) {
+			if( args()[n]->evaluate(variables).as_bool() ) {
+				return args()[n+1]->evaluate(variables);
+			}
+		}
+                
+		if((args().size()%2) != 0) {
+			return args().back()->evaluate(variables);
+		} else {
+			return variant();
+		}
+
 	}
 };
 
