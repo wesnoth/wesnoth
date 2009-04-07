@@ -73,6 +73,7 @@ Version 1.7.0-svn:
    * Added ability to change the share_view team attribute using [modify_side] tag. 
      Be sure to use fog=yes for that side  (bug #13320)
    * Added support for Lua scripts in WML event actions ([lua] tag)
+   * [modify_side] can now change the share_view attribute
  * Miscellaneous and bugfixes:
    * Fixed compilation with -D_GLIBCXX_PARALLEL
    * Fixed handling of floating-point WML constants on localized Windows
