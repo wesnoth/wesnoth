@@ -95,6 +95,10 @@
 # "wmllint: display off".  The repair attempts (only) may also be
 # suppressed with the --stringfreeze option.
 #
+# A special comment "#wmllint: notecheck off" will disable error messages on
+# traits wiuth no corresponding {SPECIAL_NOTE} explanations.  The comment
+# "#wmllint: notecheck on" will re-enable this check.
+#
 # A magic comment of the form "wmllint: general spellings word1
 # word2..."  will declare the tokens word1, word2, etc. to be
 # acceptable spellings for anywhere in the Wesnoth tree that the
@@ -731,7 +735,13 @@ def sanity_check(filename, lines):
     # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
     in_unit_type = None
+    notecheck = True
     for nav in WmllintIterator(lines, filename):
+        if nav.text.startswith("wmllint: notecheck off"):
+            notecheck = False
+            continue
+        elif nav.text.startswith("wmllint: notecheck on"):
+            notecheck = True
         #print "Element = %s, text = %s" % (nav.element, `nav.text`)
         if nav.element == "[unit_type]":
             unit_race = ""
@@ -762,11 +772,11 @@ def sanity_check(filename, lines):
                 if (notes or traits) and not has_special_notes:
                     missing_notes = ["{SPECIAL_NOTES}"] + missing_notes
                 # If the unit didn't specify hitpoints, there is some wacky
-                # stuff going on (possibly psedo-[base_unit] behavior via
+                # stuff going on (possibly psuedo-[base_unit] behavior via
                 # macro generation) so disable some of the consistency checks.
                 if not hitpoints_specified:
                     continue
-                if missing_notes:
+                if notecheck and missing_notes:
                     print '"%s", line %d: unit %s is missing notes +%s' \
                           % (filename, in_unit_type, unit_id, "+".join(missing_notes))
                 if missing_traits:
