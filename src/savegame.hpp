@@ -55,6 +55,8 @@ class savegame
 public:
 	savegame(game_state& gamestate, const std::string title = "Save");
 
+	virtual ~savegame() {}
+
 	void save_game(const std::string& filename);
 	void save_game(display* gui = NULL);
 	void save_game_interactive(display& gui, const std::string& message, 
