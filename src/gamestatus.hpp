@@ -327,7 +327,6 @@ bool save_game_exists(const std::string & name);
 
 /** Throws game::save_game_failed. */
 scoped_ostream open_save_game(const std::string &label);
-void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label);
 
 /** Load/Save games. */
 void load_game(const std::string& name, game_state& gamestate, std::string* error_log);

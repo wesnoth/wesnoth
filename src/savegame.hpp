@@ -100,20 +100,20 @@ private:
 		data manipulation has to happen before calling this method */
 	void save_game_internal(const std::string& filename);
 
+	void finish_save_game(config_writer &out);
+	void extract_summary_data_from_save(config& out);
+
 	game_state& gamestate_;
 	
 	/** Gamestate information at the time of saving. Note that this object is needed here, since
 		even if it is empty the code relies on it to be there. */
 	config snapshot_;
 	
-	/** Filename of the savegame file on disk */
-	std::string filename_;
+	std::string filename_; /** Filename of the savegame file on disk */
 	
-	/** Title of the savegame dialog */
-	const std::string title_;
+	const std::string title_; /** Title of the savegame dialog */
 	
-	/** Error message to be displayed if the savefile could not be generated. */
-	std::string error_message_;
+	std::string error_message_; /** Error message to be displayed if the savefile could not be generated. */
 	
 	/** Determines if the save is done interactively or not. This controls if a filename is
 		generated automatically (interactive = false) and if a message is displayed that the

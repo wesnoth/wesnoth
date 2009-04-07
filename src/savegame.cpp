@@ -16,6 +16,7 @@
 #include "savegame.hpp"
 
 #include "dialogs.hpp" //FIXME: move illegal file character function here and get rid of this include
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -145,13 +146,111 @@ void savegame::save_game_internal(const std::string& filename)
 	{
 		config_writer out(ss, preferences::compress_saves());
 		::write_game(out, snapshot_, gamestate_);
-		finish_save_game(out, gamestate_, gamestate_.label);
+		finish_save_game(out);
 	}
 	scoped_ostream os(open_save_game(filename_));
 	(*os) << ss.str();
 
 	if (!os->good()) {
 		throw game::save_game_failed(_("Could not write to file"));
+	}
+}
+
+void savegame::finish_save_game(config_writer &out)
+{
+	std::string name = gamestate_.label;
+	std::replace(name.begin(),name.end(),' ','_');
+	std::string fname(get_saves_dir() + "/" + name);
+
+	try {
+		if(!out.good()) {
+			throw game::save_game_failed(_("Could not write to file"));
+		}
+
+		config& summary = save_summary(gamestate_.label);
+		extract_summary_data_from_save(summary);
+		const int mod_time = static_cast<int>(file_create_time(fname));
+		summary["mod_time"] = str_cast(mod_time);
+		write_save_index();
+	} catch(io_exception& e) {
+		throw game::save_game_failed(e.what());
+	}
+}
+
+void savegame::extract_summary_data_from_save(config& out)
+{
+	const bool has_replay = gamestate_.replay_data.empty() == false;
+	const bool has_snapshot = gamestate_.snapshot.child("side");
+
+	out["replay"] = has_replay ? "yes" : "no";
+	out["snapshot"] = has_snapshot ? "yes" : "no";
+
+	out["label"] = gamestate_.label;
+	out["campaign"] = gamestate_.campaign;
+	out["campaign_type"] = gamestate_.campaign_type;
+	out["scenario"] = gamestate_.scenario;
+	out["difficulty"] = gamestate_.difficulty;
+	out["version"] = gamestate_.version;
+	out["corrupt"] = "";
+
+	if(has_snapshot) {
+		out["turn"] = gamestate_.snapshot["turn_at"];
+		if(gamestate_.snapshot["turns"] != "-1") {
+			out["turn"] = out["turn"].str() + "/" + gamestate_.snapshot["turns"].str();
+		}
+	}
+
+	// Find the first human leader so we can display their icon in the load menu.
+
+	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
+	std::string leader;
+
+	for(std::map<std::string, player_info>::const_iterator p = gamestate_.players.begin();
+	    p!=gamestate_.players.end(); ++p) {
+		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
+			if(u->can_recruit()) {
+				leader = u->type_id();
+			}
+		}
+	}
+
+	bool shrouded = false;
+
+	if(leader == "") {
+		const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
+		foreach (const config &side, snapshot.child_range("side"))
+		{
+			if (side["controller"] != "human") {
+				continue;
+			}
+
+			if (utils::string_bool(side["shroud"])) {
+				shrouded = true;
+			}
+
+			foreach (const config &u, side.child_range("unit"))
+			{
+				if (utils::string_bool(u["canrecruit"], false)) {
+					leader = u["id"];
+					break;
+				}
+			}
+		}
+	}
+
+	out["leader"] = leader;
+	out["map_data"] = "";
+
+	if(!shrouded) {
+		if(has_snapshot) {
+			if (!gamestate_.snapshot.find_child("side", "shroud", "yes")) {
+				out["map_data"] = gamestate_.snapshot["map_data"];
+			}
+		} else if(has_replay) {
+			if (!gamestate_.starting_pos.find_child("side", "shroud", "yes")) {
+				out["map_data"] = gamestate_.starting_pos["map_data"];
+			}
+		}
 	}
 }
 
