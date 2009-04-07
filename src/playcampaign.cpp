@@ -571,11 +571,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 #endif /* TINY_GUI */
 					{
 						try {
-							//Add the player section to the starting position so we can get the correct recall list
-							//when loading the replay later on
-							write_players(gamestate, gamestate.starting_pos);
-
-							save_game(gamestate);
+							scenariostart_savegame save(gamestate);
+							save.save_game();
+							//save_game(gamestate);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;

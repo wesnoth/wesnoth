@@ -918,27 +918,6 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 	}
 }
 
-// Throws game::save_game_failed
-void save_game(const game_state& gamestate)
-{
-	std::string filename = gamestate.label;
-	if(preferences::compress_saves()) {
-		filename += ".gz";
-	}
-
-	scoped_ostream os(open_save_game(filename));
-	std::stringstream ss;
-	{
-		config_writer out(ss, preferences::compress_saves());
-		write_game(out, gamestate.snapshot, gamestate);
-		finish_save_game(out, gamestate, gamestate.label);
-	}
-	(*os) << ss.str();
-	if (!os->good()) {
-		throw game::save_game_failed(_("Could not write to file"));
-	}
-}
-
 namespace {
 bool save_index_loaded = false;
 config save_index_cfg;

@@ -50,8 +50,6 @@ private:
 	static SDL_sem* sem_;
 };
 
-/** Autosave */
-std::string save_autosave(unsigned turn, const config& snapshot, game_state& gamestate);
 class savegame
 {
 public:
@@ -128,6 +126,15 @@ public:
 
 private:
 	virtual void create_filename();
+};
+
+class scenariostart_savegame : public savegame
+{
+public:
+	scenariostart_savegame(game_state& gamestate);
+
+private:
+	virtual void before_save();
 };
 
 ///** Autosave */

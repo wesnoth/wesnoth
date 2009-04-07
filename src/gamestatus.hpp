@@ -333,9 +333,6 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 void load_game(const std::string& name, game_state& gamestate, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 
-/** Throws gamestatus::save_game_failed. */
-void save_game(const game_state& gamestate);
-
 /** Delete a savegame. */
 void delete_game(const std::string& name);
 
