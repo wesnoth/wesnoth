@@ -191,7 +191,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	}
 	const unit_map::iterator new_unit_itor = units.find(recruit_location);
 	if(new_unit_itor != units.end()) new_unit_itor->second.set_hidden(false);
-	if(show)unit_display::unit_recruited(recruit_location,u->first);
+	if(show && u.valid())unit_display::unit_recruited(recruit_location,u->first);
 	if (is_recall)
 	{
 		LOG_NG << "firing recall event\n";
