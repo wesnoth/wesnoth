@@ -505,38 +505,6 @@ void write_players(game_state& gamestate, config& cfg)
 	}
 }
 
-static void write_player(config_writer &out, const player_info& player)
-{
-	out.write_key_val("name", player.name);
-
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",player.gold);
-
-	out.write_key_val("gold", buf);
-
-	const std::string gold_add = player.gold_add ? "true" : "false";
-	out.write_key_val("gold_add", gold_add);
-
-	for(std::vector<unit>::const_iterator i = player.available_units.begin();
-	    i != player.available_units.end(); ++i) {
-		config new_cfg;
-		i->write(new_cfg);
-		out.write_child("unit",new_cfg);
-		DBG_NG << "added unit '" << new_cfg["id"] << "' to player '" << player.name << "'\n";
-	}
-
-	std::stringstream can_recruit;
-	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
-	std::string can_recruit_str = can_recruit.str();
-
-	// Remove the trailing comma
-	if(can_recruit_str.empty() == false) {
-		can_recruit_str.resize(can_recruit_str.size()-1);
-	}
-
-	out.write_key_val("can_recruit", can_recruit_str);
-}
-
 game_state::game_state(const config& cfg, bool show_replay) :
 		label(cfg["label"]),
 		version(cfg["version"]),
