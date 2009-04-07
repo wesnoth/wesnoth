@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="wesnothd"
 	ProjectGUID="{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}"
 	RootNamespace="wesnothd"
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib dxguid.lib ws2_32.lib SDLmain.lib freetype.lib gobject-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -135,7 +135,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib dxguid.lib ws2_32.lib SDLmain.lib freetype.lib gobject-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
