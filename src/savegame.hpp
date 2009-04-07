@@ -91,8 +91,6 @@ private:
 	/** Build the filename according to the specific savegame's needs. Subclasses will have to
 		override this to take effect. */
 	virtual void create_filename() {}
-	/** For normal game saves. Builds a snapshot config object out of the relevant information. */
-	virtual void write_game_snapshot(const display& /*gui*/) {}
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and 
 		data manipulation has to happen before calling this method */
@@ -128,6 +126,7 @@ private:
 	virtual void create_filename();
 	/** Builds the snapshot config. */
 	virtual void before_save();
+	/** For normal game saves. Builds a snapshot config object out of the relevant information. */
 	void write_game_snapshot();
 
 protected:
