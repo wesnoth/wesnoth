@@ -29,11 +29,13 @@
 
 #define LOG_SAVE LOG_STREAM(info, engine)
 
-savegame::savegame(game_state& gamestate, const std::string title) 
-	: gamestate_(gamestate), 
-	title_(title), 	snapshot_(),
-	error_message_(_("The game could not be saved")),
-	interactive_(false)
+savegame::savegame(game_state& gamestate, const std::string title)
+	: gamestate_(gamestate)
+	, snapshot_()
+	, filename_()
+	, title_(title)
+	, error_message_(_("The game could not be saved"))
+	, interactive_(false)
 {}
 
 play_controller* save_blocker::controller_ = NULL;
