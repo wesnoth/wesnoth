@@ -122,6 +122,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
+
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
@@ -213,7 +214,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// If the gamestate already contains a starting_pos,
 		// then we are starting a fresh multiplayer game.
 		// Otherwise this is the start of a campaign scenario.
-		if(gamestate.starting_pos.empty() == false) {
+		if(gamestate.starting_pos["id"].empty() == false) {
 			LOG_G << "loading starting position...\n";
 			starting_pos = gamestate.starting_pos;
 			scenario = &starting_pos;
@@ -222,7 +223,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			scenario = &game_config.find_child(type, "id", gamestate.scenario);
 			if (*scenario) {
 				starting_pos = *scenario;
-				gamestate.starting_pos = *scenario;
+				gamestate.starting_pos.merge_with(*scenario);
 			} else
 				scenario = NULL;
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
@@ -359,10 +360,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
-				//Add the player section to the starting position so we can get the correct recall list
-				//when loading the replay later on
-				write_players(gamestate, gamestate.starting_pos);
-
 				res = playsingle_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, end_level);
 				break;
 			case IO_SERVER:
@@ -405,16 +402,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				clean_saves(gamestate.label);
 
 			if (preferences::save_replays()) {
-				std::string label = gamestate.label + _(" replay");
-				if (dialogs::get_save_name(disp, "", _("Name: "), &label,
-					gui::OK_CANCEL, _("Save Replay"), false, false) == 0) {
-					gamestate.replay_data = recorder.get_replay_data();
-					try {
-						::save_replay(gamestate);
-					} catch(game::save_game_failed&) {
-						gui::show_error_message(disp, _("The replay could not be saved"));
-					}
-				}
+				replay_savegame save(gamestate);
+				save.save_game_interactive(disp, "", gui::OK_CANCEL, false, false);
+				//::save_replay(gamestate);
 			}
 		}
 
@@ -581,6 +571,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 #endif /* TINY_GUI */
 					{
 						try {
+							//Add the player section to the starting position so we can get the correct recall list
+							//when loading the replay later on
+							write_players(gamestate, gamestate.starting_pos);
+
 							save_game(gamestate);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));

@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
+#include "savegame.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
 #include "formula_string_utils.hpp"
@@ -499,7 +500,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		menu_handler_.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
+		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
+		save.save_game_interactive(*gui_, _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
+		//menu_handler_.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {
@@ -663,7 +666,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->draw(true,true);
 
 	if (save) {
-		menu_handler_.autosave(status_.turn());
+		menu_handler_.autosave();
 	}
 
 	if(preferences::turn_bell()) {

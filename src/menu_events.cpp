@@ -583,82 +583,65 @@ private:
 				status_table(selected);
 	}
 
-	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
-		const bool has_exit_button)
-	{
-		std::stringstream stream;
+	//void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
+	//	const bool has_exit_button)
+	//{
+	//	std::string label = ::create_filename(gamestate_.label, status_.turn());
 
-		const std::string ellipsed_name = font::make_text_ellipsis(gamestate_.label,
-				font::SIZE_NORMAL, 200);
-		stream << ellipsed_name << " " << _("Turn") << " " << status_.turn();
-		std::string label = stream.str();
-		if(dialog_type == gui::NULL_DIALOG && message != "") {
-			label = message;
-		}
+	//	if(dialog_type == gui::NULL_DIALOG && message != "") {
+	//		label = message;
+	//	}
 
-		label.erase(std::remove_if(label.begin(), label.end(),
-		            dialogs::is_illegal_file_char), label.end());
+	//	const int res = dialog_type == gui::NULL_DIALOG ? 0
+	//		: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
 
-		const int res = dialog_type == gui::NULL_DIALOG ? 0
-			: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
+	//	if(res == 0) {
+	//		save_game_internal(label, true, true);
+	//	} else if(res == 2) {
+	//		throw end_level_exception(QUIT);
+	//	}
+	//}
 
-		if(res == 0) {
-			config snapshot;
-			write_game_snapshot(snapshot);
-			gamestate_.replay_data = recorder.get_replay_data();
-			try {
-				::save_game(label, snapshot, gamestate_);
+	//void menu_handler::save_replay(const std::string& message, gui::DIALOG_TYPE dialog_type,
+	//	const bool has_exit_button)
+	//{
+	//	std::string label = ::create_replay_filename(gamestate_.label);
 
-				if(dialog_type != gui::NULL_DIALOG) {
-					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
-				}
-			} catch(game::save_game_failed&) {
-				gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
-				to_show.show();
-				//do not bother retrying, since the user can just try to save the game again
-			};
-		} else if(res == 2) {
-			throw end_level_exception(QUIT);
-		}
-	}
+	//	if(dialog_type == gui::NULL_DIALOG && message != "") {
+	//		label = message;
+	//	}
 
-	void menu_handler::save_replay(const std::string& message, gui::DIALOG_TYPE dialog_type,
-		const bool has_exit_button)
-	{
-		std::stringstream stream;
+	//	const int res = dialog_type == gui::NULL_DIALOG ? 0
+	//		: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
 
-		const std::string ellipsed_name = font::make_text_ellipsis(gamestate_.label,
-				font::SIZE_NORMAL, 200);
-		stream << ellipsed_name << " " << _("replay");
-		std::string label = stream.str();
-		if(dialog_type == gui::NULL_DIALOG && message != "") {
-			label = message;
-		}
+	//	if(res == 0) {
+	//		save_game_internal(label, false, true);
+	//	} else if(res == 2) {
+	//		throw end_level_exception(QUIT);
+	//	}
+	//}
 
-		label.erase(std::remove_if(label.begin(), label.end(),
-		            dialogs::is_illegal_file_char), label.end());
+	//void menu_handler::save_game_internal(const std::string& filename, bool write_snapshot, bool display_message)
+	//{
+	//	config snapshot;
+	//	if (write_snapshot)
+	//		write_game_snapshot(snapshot);
 
-		const int res = dialog_type == gui::NULL_DIALOG ? 0
-			: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
+	//	gamestate_.replay_data = recorder.get_replay_data();
+	//	try {
+	//		::save_replay(filename, gamestate_);
 
-		if(res == 0) {
-			config snapshot;
-			gamestate_.replay_data = recorder.get_replay_data();
-			try {
-				::save_replay(label, gamestate_);
-
-				if(dialog_type != gui::NULL_DIALOG) {
-					gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
-				}
-			} catch(game::save_game_failed&) {
-				gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
-				to_show.show();
-				//do not bother retrying, since the user can just try to save the game again
-			};
-		} else if(res == 2) {
-			throw end_level_exception(QUIT);
-		}
-	}
+	//		if (display_message) {
+	//			gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
+	//		}
+	//	} catch(game::save_game_failed&) {
+	//		if (display_message){
+	//			gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
+	//			to_show.show();
+	//			//do not bother retrying, since the user can just try to save the game again
+	//		}
+	//	};
+	//}
 
 	void menu_handler::save_map()
 	{
@@ -693,87 +676,83 @@ private:
 		}
 	}
 
-	void menu_handler::write_game_snapshot(config& start) const
-	{
-		start.merge_attributes(level_);
+	//void menu_handler::write_game_snapshot(config& start) const
+	//{
+	//	start.merge_attributes(level_);
 
-		start["snapshot"] = "yes";
+	//	start["snapshot"] = "yes";
 
-		std::stringstream buf;
-		buf << gui_->playing_team();
-		start["playing_team"] = buf.str();
+	//	std::stringstream buf;
+	//	buf << gui_->playing_team();
+	//	start["playing_team"] = buf.str();
 
-		for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-			const unsigned int side_num = t - teams_.begin() + 1;
+	//	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+	//		const unsigned int side_num = t - teams_.begin() + 1;
 
-			config& side = start.add_child("side");
-			t->write(side);
-			side["no_leader"] = "yes";
-			buf.str(std::string());
-			buf << side_num;
-			side["side"] = buf.str();
+	//		config& side = start.add_child("side");
+	//		t->write(side);
+	//		side["no_leader"] = "yes";
+	//		buf.str(std::string());
+	//		buf << side_num;
+	//		side["side"] = buf.str();
 
-			//current visible units
-			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-				if(i->second.side() == side_num) {
-					config& u = side.add_child("unit");
-					i->first.write(u);
-					i->second.write(u);
-				}
-			}
-			//recall list
-			{
-				for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin();
-				i!=gamestate_.players.end(); ++i) {
-					for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
-						j != i->second.available_units.end(); ++j) {
-						if (j->side() == side_num){
-							config& u = side.add_child("unit");
-							j->write(u);
-						}
-					}
-				}
-			}
-		}
+	//		//current visible units
+	//		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+	//			if(i->second.side() == side_num) {
+	//				config& u = side.add_child("unit");
+	//				i->first.write(u);
+	//				i->second.write(u);
+	//			}
+	//		}
+	//		//recall list
+	//		{
+	//			for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin();
+	//			i!=gamestate_.players.end(); ++i) {
+	//				for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
+	//					j != i->second.available_units.end(); ++j) {
+	//					if (j->side() == side_num){
+	//						config& u = side.add_child("unit");
+	//						j->write(u);
+	//					}
+	//				}
+	//			}
+	//		}
+	//	}
 
-		status_.write(start);
-		game_events::write_events(start);
+	//	status_.write(start);
+	//	game_events::write_events(start);
 
-		// Write terrain_graphics data in snapshot, too
-		foreach (const config &tg, level_.child_range("terrain_graphics")) {
-			start.add_child("terrain_graphics", tg);
-		}
+	//	// Write terrain_graphics data in snapshot, too
+	//	const config::child_list& terrains = level_.get_children("terrain_graphics");
+	//	for(config::child_list::const_iterator tg = terrains.begin();
+	//			tg != terrains.end(); ++tg) {
 
-		sound::write_music_play_list(start);
+	//		start.add_child("terrain_graphics", **tg);
+	//	}
 
-		gamestate_.write_snapshot(start);
+	//	sound::write_music_play_list(start);
 
-		//write out the current state of the map
-		start["map_data"] = map_.write();
+	//	gamestate_.write_snapshot(start);
 
-		gui_->labels().write(start);
-	}
+	//	//write out the current state of the map
+	//	start["map_data"] = map_.write();
 
-	void menu_handler::autosave(unsigned turn) const
+	//	gui_->labels().write(start);
+	//}
+
+	void menu_handler::autosave() const
 	{
 		if(game_config::disable_autosave)
 			return;
 
 		Uint32 start, end;
 		start = SDL_GetTicks();
-		config snapshot;
-		write_game_snapshot(snapshot);
 
-		try {
-			std::string savename = ::save_autosave(turn, snapshot, gamestate_);
-			end = SDL_GetTicks();
-			LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
-		} catch(game::save_game_failed&) {
-			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
-			//do not bother retrying, since the user can just save the game
-			//maybe show a yes-no dialog for "disable autosaves now"?
-		}
+		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
+		save.save_game(gui_);
 
+		end = SDL_GetTicks();
+		LOG_NG << "Milliseconds to save " << save.filename() << ": " << end - start << "\n";
 		remove_old_auto_saves();
 	}
 
@@ -2892,10 +2871,14 @@ private:
 		menu_handler_.gui_->toggle_benchmark();
 	}
 	void console_handler::do_save() {
-		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
+		savegame save(menu_handler_.gamestate_);
+		save.save_game(get_data());
+		//menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 	}
 	void console_handler::do_save_quit() {
-		menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
+		savegame save(menu_handler_.gamestate_);
+		save.save_game(get_data());
+		//menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 		throw end_level_exception(QUIT);
 	}
 	void console_handler::do_quit() {

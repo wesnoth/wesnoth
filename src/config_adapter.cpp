@@ -93,6 +93,8 @@ void get_player_info(const config& cfg, game_state& gamestate,
 		} else if(player->gold >= ngold) {
 			ngold = player->gold;
 		}
+
+		player->gold = ngold;
 	}
 
 	LOG_NG << "set gold to '" << ngold << "'\n";

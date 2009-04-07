@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "savegame.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "terrain_filter.hpp"
@@ -288,7 +289,9 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		menu_handler_.save_game("",gui::OK_CANCEL);
+		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
+		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
+		//menu_handler_.save_game("",gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -297,7 +300,9 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		menu_handler_.save_game("", gui::OK_CANCEL, false);
+		replay_savegame save(gamestate_);
+		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
+		//menu_handler_.save_game("", gui::OK_CANCEL, false);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}

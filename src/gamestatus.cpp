@@ -583,24 +583,15 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		load_recall_list(snapshot.child_range("player"));
 
 	} else {
-		// Start of scenario save, replays and MP campaign network next scenario
-		// have the recall list stored in root of the config.
-		// Edit:
-		// Unfortunately, the replay savegame format is not homogeneous. Some savegames
-		// have the player information stored in the starting position, others in the
-		// root of the config. If the starting position player information is available
-		// it will be preferred.
-		if (replay_start) {
-			// Check if we find some player information in the starting position
-			config::const_child_itors cfg_players = replay_start.child_range("player");
-			if (cfg_players.first != cfg_players.second)
-				load_recall_list(cfg_players);
-			else
-				load_recall_list(cfg.child_range("player"));
-		}
-		else{
-			load_recall_list(cfg.child_range("player"));
-		}
+		assert(replay_start != NULL);
+		
+		// The player information should no longer be saved to the root of the config.
+		// The game now looks for the info in just the snapshot or the starting position.
+		// Check if we find some player information in the starting position
+		config::const_child_itors cfg_players = replay_start.child_range("player");
+
+		if (cfg_players.first != cfg_players.second)
+			load_recall_list(cfg_players);
 	}
 
 	LOG_NG << "scenario: '" << scenario << "'\n";
@@ -738,13 +729,13 @@ void write_game(config_writer &out, const config& snapshot, const game_state& ga
 		out.close_child("menu_item");
 	}
 
-	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-	    i!=gamestate.players.end(); ++i) {
-		out.open_child("player");
-		out.write_key_val("save_id", i->first);
-		write_player(out, i->second);
-		out.close_child("player");
-	}
+	//for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+	//    i!=gamestate.players.end(); ++i) {
+	//	out.open_child("player");
+	//	out.write_key_val("save_id", i->first);
+	//	write_player(out, i->second);
+	//	out.close_child("player");
+	//}
 
 	if(mode == WRITE_FULL_GAME) {
 		if (!gamestate.replay_data.child("replay")) {

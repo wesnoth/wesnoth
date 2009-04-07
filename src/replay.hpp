@@ -45,9 +45,6 @@ public:
 	void set_skip(bool skip);
 	bool is_skipping() const;
 
-	//void save_game(const std::string& label, const config& snapshot,
-	//               const config& starting_pos, bool include_replay = true);
-
 	void add_start();
 	void add_recruit(int unit_index, const map_location& loc);
 	void add_recall(int unit_index, const map_location& loc);
