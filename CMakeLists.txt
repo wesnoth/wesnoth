@@ -69,7 +69,11 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of tranlations" ON)
 option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
-
+if (UNIX)
+  option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
+  set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
+  set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
+endif(UNIX)
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
@@ -248,6 +252,19 @@ else()
   install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
 
 endif()
+
+#
+# Install .desktop entries
+#
+if(ENABLE_DESKTOP_ENTRY)
+  # install a desktop file so wesnoth appears in the application start menu with an icon
+  install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
+  install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
+  if(ENABLE_EDITOR)
+    install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
+    install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
+  endif(ENABLE_EDITOR)
+endif(ENABLE_DESKTOP_ENTRY)
 
 
 if(ENABLE_SERVER AND FIFO_DIR)
