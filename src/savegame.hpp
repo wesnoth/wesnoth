@@ -73,7 +73,7 @@ protected:
 
 private:
 	virtual void create_filename() {}
-	virtual void write_game_snapshot(const display& gui) {}
+	virtual void write_game_snapshot(const display& /*gui*/) {}
 
 	void save_game_internal(const std::string& filename);
 
