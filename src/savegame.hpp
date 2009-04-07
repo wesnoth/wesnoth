@@ -63,10 +63,12 @@ public:
 	/** Save a game without any further user interaction. Atm, this is only used by the
 		console_handler save actions */
 	void save_game(const std::string& filename);
+	
 	/** Save a game without any further user interaction. This is used by autosaves and
 		automatically generated replay saves. If you want notifying messages or error messages
 		to appear, you have to provide the gui parameter. */
 	void save_game(display* gui = NULL);
+	
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. */
 	void save_game_interactive(display& gui, const std::string& message, 
@@ -79,9 +81,11 @@ protected:
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */
 	void set_filename(std::string filename);
+	
 	/** Customize the standard error message */
-	void set_error_message(std::string error_message) { error_message_ = error_message; }
-	game_state& gamestate() { return gamestate_; }
+	void set_error_message(const std::string error_message) { error_message_ = error_message; }
+	
+	game_state& gamestate() const { return gamestate_; }
 	config& snapshot() { return snapshot_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
@@ -97,15 +101,20 @@ private:
 	void save_game_internal(const std::string& filename);
 
 	game_state& gamestate_;
+	
 	/** Gamestate information at the time of saving. Note that this object is needed here, since
 		even if it is empty the code relies on it to be there. */
 	config snapshot_;
+	
 	/** Filename of the savegame file on disk */
 	std::string filename_;
+	
 	/** Title of the savegame dialog */
 	const std::string title_;
+	
 	/** Error message to be displayed if the savefile could not be generated. */
 	std::string error_message_;
+	
 	/** Determines if the save is done interactively or not. This controls if a filename is
 		generated automatically (interactive = false) and if a message is displayed that the
 		game was successfully saved (interactive = true). */
@@ -124,8 +133,10 @@ public:
 
 private:
 	virtual void create_filename();
+	
 	/** Builds the snapshot config. */
 	virtual void before_save();
+	
 	/** For normal game saves. Builds a snapshot config object out of the relevant information. */
 	void write_game_snapshot();
 
