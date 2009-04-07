@@ -697,14 +697,6 @@ void write_game(config_writer &out, const config& snapshot, const game_state& ga
 		out.close_child("menu_item");
 	}
 
-	//for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-	//    i!=gamestate.players.end(); ++i) {
-	//	out.open_child("player");
-	//	out.write_key_val("save_id", i->first);
-	//	write_player(out, i->second);
-	//	out.close_child("player");
-	//}
-
 	if(mode == WRITE_FULL_GAME) {
 		if (!gamestate.replay_data.child("replay")) {
 			out.write_child("replay", gamestate.replay_data);

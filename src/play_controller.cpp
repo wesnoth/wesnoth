@@ -291,7 +291,6 @@ void play_controller::save_game(){
 		save_blocker::save_unblocker unblocker;
 		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
 		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
-		//menu_handler_.save_game("",gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -302,7 +301,6 @@ void play_controller::save_replay(){
 		save_blocker::save_unblocker unblocker;
 		replay_savegame save(gamestate_);
 		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
-		//menu_handler_.save_game("", gui::OK_CANCEL, false);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}

@@ -541,7 +541,6 @@ void playmp_controller::process_oos(const std::string& err_msg){
 
 	game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
 	save.save_game_interactive(*gui_, temp_buf.str(), gui::YES_NO);
-	//menu_handler_.save_game(temp_buf.str(),gui::YES_NO, true);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){

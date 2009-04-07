@@ -573,7 +573,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						try {
 							scenariostart_savegame save(gamestate);
 							save.save_game();
-							//save_game(gamestate);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;

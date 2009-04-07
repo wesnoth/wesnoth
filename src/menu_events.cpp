@@ -583,66 +583,6 @@ private:
 				status_table(selected);
 	}
 
-	//void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
-	//	const bool has_exit_button)
-	//{
-	//	std::string label = ::create_filename(gamestate_.label, status_.turn());
-
-	//	if(dialog_type == gui::NULL_DIALOG && message != "") {
-	//		label = message;
-	//	}
-
-	//	const int res = dialog_type == gui::NULL_DIALOG ? 0
-	//		: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
-
-	//	if(res == 0) {
-	//		save_game_internal(label, true, true);
-	//	} else if(res == 2) {
-	//		throw end_level_exception(QUIT);
-	//	}
-	//}
-
-	//void menu_handler::save_replay(const std::string& message, gui::DIALOG_TYPE dialog_type,
-	//	const bool has_exit_button)
-	//{
-	//	std::string label = ::create_replay_filename(gamestate_.label);
-
-	//	if(dialog_type == gui::NULL_DIALOG && message != "") {
-	//		label = message;
-	//	}
-
-	//	const int res = dialog_type == gui::NULL_DIALOG ? 0
-	//		: dialogs::get_save_name(*gui_,message, _("Name: "), &label,dialog_type, "", has_exit_button);
-
-	//	if(res == 0) {
-	//		save_game_internal(label, false, true);
-	//	} else if(res == 2) {
-	//		throw end_level_exception(QUIT);
-	//	}
-	//}
-
-	//void menu_handler::save_game_internal(const std::string& filename, bool write_snapshot, bool display_message)
-	//{
-	//	config snapshot;
-	//	if (write_snapshot)
-	//		write_game_snapshot(snapshot);
-
-	//	gamestate_.replay_data = recorder.get_replay_data();
-	//	try {
-	//		::save_replay(filename, gamestate_);
-
-	//		if (display_message) {
-	//			gui::message_dialog(*gui_,_("Saved"),_("The game has been saved")).show();
-	//		}
-	//	} catch(game::save_game_failed&) {
-	//		if (display_message){
-	//			gui::message_dialog to_show(*gui_,_("Error"),_("The game could not be saved"));
-	//			to_show.show();
-	//			//do not bother retrying, since the user can just try to save the game again
-	//		}
-	//	};
-	//}
-
 	void menu_handler::save_map()
 	{
 		std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
@@ -675,70 +615,6 @@ private:
 			}
 		}
 	}
-
-	//void menu_handler::write_game_snapshot(config& start) const
-	//{
-	//	start.merge_attributes(level_);
-
-	//	start["snapshot"] = "yes";
-
-	//	std::stringstream buf;
-	//	buf << gui_->playing_team();
-	//	start["playing_team"] = buf.str();
-
-	//	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-	//		const unsigned int side_num = t - teams_.begin() + 1;
-
-	//		config& side = start.add_child("side");
-	//		t->write(side);
-	//		side["no_leader"] = "yes";
-	//		buf.str(std::string());
-	//		buf << side_num;
-	//		side["side"] = buf.str();
-
-	//		//current visible units
-	//		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-	//			if(i->second.side() == side_num) {
-	//				config& u = side.add_child("unit");
-	//				i->first.write(u);
-	//				i->second.write(u);
-	//			}
-	//		}
-	//		//recall list
-	//		{
-	//			for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin();
-	//			i!=gamestate_.players.end(); ++i) {
-	//				for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
-	//					j != i->second.available_units.end(); ++j) {
-	//					if (j->side() == side_num){
-	//						config& u = side.add_child("unit");
-	//						j->write(u);
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
-
-	//	status_.write(start);
-	//	game_events::write_events(start);
-
-	//	// Write terrain_graphics data in snapshot, too
-	//	const config::child_list& terrains = level_.get_children("terrain_graphics");
-	//	for(config::child_list::const_iterator tg = terrains.begin();
-	//			tg != terrains.end(); ++tg) {
-
-	//		start.add_child("terrain_graphics", **tg);
-	//	}
-
-	//	sound::write_music_play_list(start);
-
-	//	gamestate_.write_snapshot(start);
-
-	//	//write out the current state of the map
-	//	start["map_data"] = map_.write();
-
-	//	gui_->labels().write(start);
-	//}
 
 	void menu_handler::autosave() const
 	{
@@ -2873,12 +2749,10 @@ private:
 	void console_handler::do_save() {
 		savegame save(menu_handler_.gamestate_);
 		save.save_game(get_data());
-		//menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 	}
 	void console_handler::do_save_quit() {
 		savegame save(menu_handler_.gamestate_);
 		save.save_game(get_data());
-		//menu_handler_.save_game(get_data(),gui::NULL_DIALOG);
 		throw end_level_exception(QUIT);
 	}
 	void console_handler::do_quit() {
