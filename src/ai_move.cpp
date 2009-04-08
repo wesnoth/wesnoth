@@ -898,11 +898,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 		return *best_occupied_keep; // if there is an occupied keep reachable during current turn, return it
 	}
 
-	if (*best_occupied_keep != map_location::null_location){
-		return nearest_keep(leader_location); // return nearest keep
-	}
-
-	return map_location::null_location; // return dummy location
+	return nearest_keep(leader_location); // return nearest keep
 }
 
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
