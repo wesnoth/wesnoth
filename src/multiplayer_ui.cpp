@@ -33,9 +33,10 @@
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 
-#define MAX_MESSAGES 256
-
 namespace {
+
+	/** The maximum number of messages in the chat history. */
+	const size_t max_messages = 256;
 
 	class user_menu_style : public gui::menu::imgsel_style {
 	public:
@@ -204,7 +205,7 @@ void chat::add_message(const time_t& time, const std::string& user,
 {
 	message_history_.push_back(msg(time, user, message));
 
-	while (message_history_.size() > MAX_MESSAGES) {
+	while (message_history_.size() > max_messages) {
 		message_history_.pop_front();
 
 		if (last_update_ > 0)
