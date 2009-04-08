@@ -19,6 +19,7 @@
 #include "global.hpp"
 #include "show_dialog.hpp"
 #include "gamestatus.hpp"
+#include "unit_id.hpp"
 
 #include <string>
 
@@ -73,7 +74,8 @@ private:
 		data manipulation has to happen before calling this method */
 	void save_game_internal(const std::string& filename);
 
-	void finish_save_game(config_writer &out);
+	void write_game(config_writer &out) const;
+	void finish_save_game(const config_writer &out);
 	void extract_summary_data_from_save(config& out);
 
 	game_state& gamestate_;

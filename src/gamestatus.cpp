@@ -657,58 +657,6 @@ void game_state::write_snapshot(config& cfg) const
 	}
 }
 
-void write_game(config_writer &out, const config& snapshot, const game_state& gamestate, WRITE_GAME_MODE mode)
-{
-	log_scope("write_game");
-
-	out.write_key_val("label", gamestate.label);
-	out.write_key_val("history", gamestate.history);
-	out.write_key_val("abbrev", gamestate.abbrev);
-	out.write_key_val("version", game_config::version);
-	out.write_key_val("scenario", gamestate.scenario);
-	out.write_key_val("next_scenario", gamestate.next_scenario);
-	out.write_key_val("completion", gamestate.completion);
-	out.write_key_val("campaign", gamestate.campaign);
-	out.write_key_val("campaign_type", gamestate.campaign_type);
-	out.write_key_val("difficulty", gamestate.difficulty);
-	out.write_key_val("campaign_define", gamestate.campaign_define);
-	out.write_key_val("campaign_extra_defines", utils::join(gamestate.campaign_xtra_defines));
-	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate.rng().get_random_seed()));
-	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate.rng().get_random_calls()));
-	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
-	out.write_key_val("end_text", gamestate.end_text);
-	out.write_key_val("end_text_duration", str_cast<unsigned int>(gamestate.end_text_duration));
-	out.write_child("variables", gamestate.get_variables());
-
-	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
-	    j!=gamestate.wml_menu_items.end(); ++j) {
-		out.open_child("menu_item");
-		out.write_key_val("id", j->first);
-		out.write_key_val("image", j->second->image);
-		out.write_key_val("description", j->second->description);
-		out.write_key_val("needs_select", (j->second->needs_select) ? "yes" : "no");
-		if(!j->second->show_if.empty())
-			out.write_child("show_if", j->second->show_if);
-		if(!j->second->filter_location.empty())
-			out.write_child("filter_location", j->second->filter_location);
-		if(!j->second->command.empty())
-			out.write_child("command", j->second->command);
-		out.close_child("menu_item");
-	}
-
-	if(mode == WRITE_FULL_GAME) {
-		if (!gamestate.replay_data.child("replay")) {
-			out.write_child("replay", gamestate.replay_data);
-		}
-
-		out.write_child("snapshot",snapshot);
-		out.write_child("replay_start",gamestate.starting_pos);
-		out.open_child("statistics");
-		statistics::write_stats(out);
-		out.close_child("statistics");
-	}
-}
-
 /**
  * A structure for comparing to save_info objects based on their modified time.
  * If the times are equal, will order based on the name.

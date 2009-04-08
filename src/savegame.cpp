@@ -27,6 +27,7 @@
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 
 #define LOG_SAVE LOG_STREAM(info, engine)
 
@@ -101,7 +102,7 @@ void savegame::save_game_internal(const std::string& filename)
 	std::stringstream ss;
 	{
 		config_writer out(ss, preferences::compress_saves());
-		::write_game(out, snapshot_, gamestate_);
+		write_game(out);
 		finish_save_game(out);
 	}
 	scoped_ostream os(open_save_game(filename_));
@@ -112,7 +113,57 @@ void savegame::save_game_internal(const std::string& filename)
 	}
 }
 
-void savegame::finish_save_game(config_writer &out)
+void savegame::write_game(config_writer &out) const
+{
+	log_scope("write_game");
+
+	out.write_key_val("label", gamestate_.label);
+	out.write_key_val("history", gamestate_.history);
+	out.write_key_val("abbrev", gamestate_.abbrev);
+	out.write_key_val("version", game_config::version);
+	out.write_key_val("scenario", gamestate_.scenario);
+	out.write_key_val("next_scenario", gamestate_.next_scenario);
+	out.write_key_val("completion", gamestate_.completion);
+	out.write_key_val("campaign", gamestate_.campaign);
+	out.write_key_val("campaign_type", gamestate_.campaign_type);
+	out.write_key_val("difficulty", gamestate_.difficulty);
+	out.write_key_val("campaign_define", gamestate_.campaign_define);
+	out.write_key_val("campaign_extra_defines", utils::join(gamestate_.campaign_xtra_defines));
+	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate_.rng().get_random_seed()));
+	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate_.rng().get_random_calls()));
+	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
+	out.write_key_val("end_text", gamestate_.end_text);
+	out.write_key_val("end_text_duration", str_cast<unsigned int>(gamestate_.end_text_duration));
+	out.write_child("variables", gamestate_.get_variables());
+
+	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate_.wml_menu_items.begin();
+	    j!=gamestate_.wml_menu_items.end(); ++j) {
+		out.open_child("menu_item");
+		out.write_key_val("id", j->first);
+		out.write_key_val("image", j->second->image);
+		out.write_key_val("description", j->second->description);
+		out.write_key_val("needs_select", (j->second->needs_select) ? "yes" : "no");
+		if(!j->second->show_if.empty())
+			out.write_child("show_if", j->second->show_if);
+		if(!j->second->filter_location.empty())
+			out.write_child("filter_location", j->second->filter_location);
+		if(!j->second->command.empty())
+			out.write_child("command", j->second->command);
+		out.close_child("menu_item");
+	}
+
+	if (!gamestate_.replay_data.child("replay")) {
+		out.write_child("replay", gamestate_.replay_data);
+	}
+
+	out.write_child("snapshot",snapshot_);
+	out.write_child("replay_start",gamestate_.starting_pos);
+	out.open_child("statistics");
+	statistics::write_stats(out);
+	out.close_child("statistics");
+}
+
+void savegame::finish_save_game(const config_writer &out)
 {
 	std::string name = gamestate_.label;
 	std::replace(name.begin(),name.end(),' ','_');
