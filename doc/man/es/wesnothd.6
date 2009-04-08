@@ -1,0 +1,277 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2009 wesnothd "Demonio para juego en red multijugador de la batalla por Wesnoth"
+.
+.SH NOMBRE
+.
+wesnothd \- Demonio para juego en red multijugador de la batalla por
+\fBWesnoth\fP
+.
+.SH SINOPSIS
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIpuerto\fP\|] [\|\fB\-t\fP
+\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH DESCRIPCIÓN
+.
+Administra juegos multijugador de la batalla por Wesnoth. Vea
+http://www.wesnoth.org/wiki/ServerAdministration para saber que órdenes
+acepta el servidor a través del cliente de wesnoth (/query) o del FIFO.
+.
+.SH OPCIONES
+.
+.TP 
+\fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
+indica a wesnothd donde encontrar el archivo de configuración que debe
+usar. Vea la sección \fBSERVER CONFIG\fP más abajo para conocer la
+sintaxis. PUedes recargar la configuración enviando SIGHUP al proceso del
+servidor.
+.TP 
+\fB\-d, \-\-daemon\fP
+ejecuta wesnothd como demonio.
+.TP 
+\fB\-h, \-\-help\fP
+muestra las opciones de línea de órdenes.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+establece el nivel de gravedad de los dominios de depuración. \fBall\fP puede
+usarse para seleccionar todos los dominios. Niveles disponibles: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto el nivel \fBerror\fP es usado y
+el nivel \fBinfo\fP para el dominio \fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIpuerto\fP\fB,\ \-\-port\fP\fI\ puerto\fP
+conecta al servidor al puerto especificado. Si no se especifica ningún
+puerto, se usará el puerto \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
+establece el número máximo de hilos efectivos en espera para la entrada y
+salida de red a n (por defecto: \fB5\fP, máximo: \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
+establece el número máximo de hilos efectivos que se crearán, si se
+establece a \fB0\fP no habrá ningún límite (por defecto:  \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+muestra el número de versión y finaliza.
+.TP 
+\fB\-v, \-\-verbose\fP
+activa el registro de depuración
+.
+.SH "CONFIGURACIÓN DEL SERVIDOR"
+.
+.SS "La sintaxis general es:"
+.
+.P
+[\fIetiqueta\fP]
+.IP
+atributo="\fIvalor\fP"
+.IP
+atributo="\fIvalor\fP,\fIvalor\fP,..."
+.P
+[/\fIetiqueta\fP]
+.
+.SS "Atributos globales:"
+.
+.TP 
+\fBban_save_file\fP
+Ruta completa o relativa a un archivo (comprimido con gzip) que el servidor
+pueda leer y escribir.  Las denegaciones de acceso serán almacenadas en este
+archivo y leídas nuevamente al iniciar el servidor.
+.TP 
+\fBconnections_allowed\fP
+El número máximo de conexiones permitidas desde la misma IP. \fB0\fP significa
+infinito. (por defecto: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Nombres o apodos que no están permitidos por el servidor. `*' y `?' pueden
+usarse como comodín. Vea \fBglob\fP(7)  para más detalles.  Los valores por
+defecto (usados si no se especifica nada) son:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+La ruta al FIFO por el cual puede enviarle comandos al servidor (equivalente
+a /query ... desde Wesnoth).  Si no está especificada, se utiliza el valor
+especificado al compilar el servidor (predeterminado:
+/var/run/socket/wesnothd/socket).
+.TP 
+\fBmax_messages\fP
+El número de mensajes permitidos en un lapso de tiempo definido por
+\fBmessages_time_period\fP. (por defecto: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+El lapso de tiempo (en segundos) usado para detectar una inundación de
+mensajes. (por defecto: \fB10\fP segundos)
+.TP 
+\fBmotd\fP
+El mensaje del día.
+.TP 
+\fBpasswd\fP
+La contraseña utilizada para obtener privilegios de
+administrador. Habitualmente empieza por `admin '.
+.TP 
+\fBreplay_save_path\fP
+El directorio donde el servidor almacena repeticiones de partidas. (¡No
+olvide el '/' al final!) De forma predeterminada es `' (vacío), es decir, el
+directorio donde wesnothd fue inicializado.
+.TP 
+\fBrestart_command\fP
+El comando que utiliza el servidor para iniciar un nuevo proceso a través
+del comando `restart'. (Sólo puede ser enviado a través del FIFO.)
+.TP 
+\fBsave_replays\fP
+Define si el servidor almacenará automáticamente las repeticiones de las
+partidas. (predeterminado: \fBfalse\fP)
+.TP 
+\fBversions_accepted\fP
+Una lista separada por comas de cadenas de versión que serán admitidas por
+el servidor. `*' y `?' pueden usarse como comodín. (por defecto es la
+versión de wesnoth correspondiente)
+.br
+Ejemplo:  \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
+.TP  
+\fBuser_handler\fP
+El nombre del manejador de usuarios que utilizar. Los manejadores
+actualmente disponibles son 'forum' (para conectar wesnothd a una base de
+datos de foros phpBB) y 'sample' (una implementación de muestra de la
+interfaz del manejador, no es para utilizarlo en casos reales). El valor
+predeterminado es 'forum'. También debe agregar una sección
+\fB[user_handler]\fP, vea abajo.
+.
+.SS "Etiquetas globales:"
+.
+.P
+\fB[redirect]\fP Una etiqueta para especificar un servidor al que se
+redirigirán ciertas versiones de clientes.
+.RS
+.TP 
+\fBhost\fP
+La dirección del servidor hacia el que se hará la redirección.
+.TP 
+\fBport\fP
+El puerto al que se hará la conexión.
+.TP 
+\fBversion\fP
+Una lista separada por comas de las versiones a redirigir. Se usa la misma
+sintaxis que para \fBversions_accepted\fP en lo relativo a comodines.
+.RE
+.P
+\fB[ban_time]\fP Una etiqueta para definir palabras claves convenientes como
+sinónimos de duraciones de denegaciones.
+.RS
+.TP 
+\fBname\fP
+El nombre utilizado para hacer referencia al tiempo de denegación.
+.TP 
+\fBtime\fP
+La definición del intervalo de tiempo.  El formato es: %d[%s[%d%s[...]]],
+donde %s es s (segundos), m (minutos), h (horas), D (días), M (meses) o Y
+(años) y %d es un número.  Si no se especifica un modificador de tiempo, se
+asumen minutos (m).  Ejemplo: time="1D12h30m" resulta en un acceso denegado
+por un día, 12 horas y 30 minutos.
+.RE
+.P
+\fB[proxy]\fP Una etiqueta para indicar al servidor que actúe como proxy y
+reenvíe las peticiones de los clientes conectados al servidor especificado.
+Acepta los mismos atributos que \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configura el manejador de usuarios. Los atributos
+disponibles varían según el manejador seleccionado con el atributo
+\fBuser_handler\fP. Si no hay una sección [user_handler] presente en la
+configuración, el servidor funcionará sin ningún servicio de registro de
+usuarios.
+.RS
+.TP  
+\fBdb_host\fP
+(para user_handler=forum) El nombre de host del servidor de la base de datos
+.TP  
+\fBdb_name\fP
+(para user_handler=forum) El nombre de la base de datos
+.TP  
+\fBdb_user\fP
+(para user_handler=forum) El nombre del usuario para iniciar sesión en la
+base de datos
+.TP  
+\fBdb_password\fP
+(para user_handler=forum) La contraseña de este usuario
+.TP  
+\fBdb_users_table\fP
+(para user_handler=forum) El nombre de la tabla en que su foro phpBB
+almacena los datos de sus usuarios. Probablemente sea
+<table\-prefix>_users (e.g. phpbb3_users).
+.TP  
+\fBdb_extra_table\fP
+(para user_handler=forum) El nombre de la tabla en que wesnothd almacenará
+sus propios datos sobre los usuarios. Tendrá que crear esta tabla
+manualmente, por ejemplo: CREATE TABLE <table\-name>(username
+VARCHAR(255) PRIMARY KEY user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);
+.TP  
+\fBuser_expiration\fP
+(para user_handler=sample) El tiempo tras el cual un nombre de usuario
+registrado expira (en días).
+.RE
+.P
+\fB[mail]\fP Configura un servidor SMTP a través del cual el manejador de
+usuarios (user handler) puede enviar correos electrónicos. Por ahora sólo es
+utilizado por el manejador de usuarios de muestra (sample).
+.RS
+.TP  
+\fBserver\fP
+El nombre del host del servidor de correos
+.TP  
+\fBusername\fP
+El nombre de usuario utilizado para iniciar sesión en el servidor de
+correos.
+.TP  
+\fBpassword\fP
+La contraseña de este usuario.
+.TP  
+\fBfrom_address\fP
+La dirección de respuesta (reply\-to) de su correo.
+.TP  
+\fBmail_port\fP
+El puerto en que su servidor de correos trabaja. El predeterminado es 25.
+.
+.SH AUTOR
+.
+Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
+Soliton <soliton.de@gmail.com> y Thomas Baumhauer
+<thomas.baumhauer@gmail.com>.  Esta página de manual fue
+originalmente escrita por Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visite la página web oficial: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Esto es Software Libre; este software está licenciado bajo la GPL versión 2,
+tal y como ha sido publicada por la Free Software Foundation.  No existe
+NINGUNA garantía; ni siquiera para SU USO COMERCIAL o ADECUACIÓN A UN
+PROPÓSITO PARTICULAR.
+.
+.SH "VÉASE TAMBIÉN"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
