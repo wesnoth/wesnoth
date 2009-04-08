@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-04-02 12:09+0100\n"
+"PO-Revision-Date: 2009-04-08 15:05+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1197,7 +1197,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1206,6 +1206,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"Katalog na serwerze, w którym są zapisywane powtórki gier, koniecznie z "
+"ukośnikiem (/) na końcu. Domyślnie jest to katalog, w którym uruchomiono "
+"wesnothd."
 
 # type: TP
 #. type: TP
@@ -1228,7 +1231,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
@@ -1236,6 +1239,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Określa, czy serwer będzie automatycznie zapisywać powtórki gier. Domyślnie "
+"wyłączone (wartość B<false>)."
 
 # type: TP
 #. type: TP
