@@ -622,6 +622,7 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	//if adjacent tiles are tiles and unnamed, name them
 	for (n = 0; n < 6; n++) {
 		//we do not care for tiles outside the middle part
+		//cast to unsigned to skip x < 0 || y < 0 as well.
 		if (unsigned(adj[n].x) >= width / 3 || unsigned(adj[n].y) >= height / 3) {
 			continue;
 		}
