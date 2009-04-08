@@ -39,50 +39,6 @@ savegame::savegame(game_state& gamestate, const std::string title)
 	, interactive_(false)
 {}
 
-play_controller* save_blocker::controller_ = NULL;
-void (play_controller::*save_blocker::callback_)() = NULL;
-SDL_sem* save_blocker::sem_ = SDL_CreateSemaphore(1);
-
-save_blocker::save_blocker() {
-	block();
-}
-
-save_blocker::~save_blocker() {
-	unblock();
-	if(controller_ && callback_) {
-		(controller_->*callback_)();
-		controller_ = NULL;
-		callback_ = NULL;
-	}
-}
-
-void save_blocker::on_unblock(play_controller* controller, void (play_controller::*callback)()) {
-	if(try_block()) {
-		unblock();
-		(controller->*callback)();
-	} else {
-		controller_ = controller;
-		callback_ = callback;
-	}
-}
-
-bool save_blocker::saves_are_blocked() {
-	return SDL_SemValue(sem_) == 0;
-}
-
-void save_blocker::block() {
-	SDL_SemWait(sem_);
-}
-
-bool save_blocker::try_block() {
-	return SDL_SemTryWait(sem_) == 0;
-}
-
-void save_blocker::unblock() {
-	assert(SDL_SemValue(sem_) == 0);
-	SDL_SemPost(sem_);
-}
-
 void savegame::save_game_interactive(display& gui, const std::string& message, 
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button, 
 									 const bool ask_for_filename)

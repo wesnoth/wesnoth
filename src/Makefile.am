@@ -138,6 +138,7 @@ wesnoth_source = \
 	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
+	save_blocker.cpp \
 	savegame.cpp \
 	scripting/lua.cpp \
 	sha1.cpp \

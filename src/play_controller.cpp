@@ -28,7 +28,7 @@
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "terrain_filter.hpp"
-#include "savegame.hpp"
+#include "save_blocker.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
