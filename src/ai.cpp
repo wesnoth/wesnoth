@@ -756,7 +756,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		}
 		// Discount incapacitated units
 		if(un_it->second.incapacitated()
-			|| un_it->second.movement_left() == 0) {
+			|| (!assume_full_movement && un_it->second.movement_left() == 0)) {
 			continue;
 		}
 
@@ -976,7 +976,8 @@ void ai::do_move()
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false,false,&avoided_locations());
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
-	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"]);
+	const bool passive_leader_shares_keep = utils::string_bool(current_team().ai_parameters()["passive_leader_shares_keep"],false);
+	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
 
 
 	unit_map::iterator leader = find_leader(units_,team_num_);
@@ -1086,7 +1087,7 @@ void ai::do_move()
 
 	// Recruitment phase and leader movement phase.
 	if(leader != units_.end()) {
-		if(!passive_leader) {
+		if(!passive_leader||passive_leader_shares_keep) {
 			map_location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
 			leader = find_leader(units_,team_num_);
@@ -1116,7 +1117,7 @@ void ai::do_move()
 			}
 		}
 
-		if(!passive_leader) {
+		if(!passive_leader||passive_leader_shares_keep) {
 			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
 		}
 	}
@@ -2045,13 +2046,16 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 		return;
 	}
 
+	const bool passive_leader_shares_keep = utils::string_bool(current_team().ai_parameters()["passive_leader_shares_keep"],false);
+	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
+
 	const paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
 
 	std::map<map_location,paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
-	if(current_team().gold() < 20 && is_accessible(leader->first,enemy_dstsrc) == false) {
+	if(!passive_leader && current_team().gold() < 20 && is_accessible(leader->first,enemy_dstsrc) == false) {
 		// See if we want to ward any enemy units off from getting our villages.
 		for(move_map::const_iterator i = enemy_dstsrc.begin(); i != enemy_dstsrc.end(); ++i) {
 
@@ -2096,7 +2100,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 	// See if any friendly leaders can make it to our keep.
 	// If they can, then move off it, so that they can recruit if they want.
-	if(nearest_keep(leader->first) == leader->first) {
+	if((!passive_leader || passive_leader_shares_keep) && nearest_keep(leader->first) == leader->first) {
 		const location keep = leader->first;
 		std::pair<map_location,unit> *temp_leader;
 
@@ -2130,8 +2134,9 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 						leader_paths.routes.count(adj[n]) != 0 &&
 						is_accessible(adj[n],enemy_dstsrc) == false) {
 
-					move_unit(keep,adj[n],possible_moves);
-					return;
+					if (move_unit(keep,adj[n],possible_moves)!=keep) {
+						return;
+					}
 				}
 			}
 		}
@@ -2139,7 +2144,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 	// We didn't move: are we in trouble?
 	leader = find_leader(units_,team_num_);
-	if (!leader->second.has_moved() && leader->second.attacks_left()) {
+	if (!passive_leader && !leader->second.has_moved() && leader->second.attacks_left()) {
 		std::map<map_location,paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
 		move_map fullmove_dstsrc;
