@@ -873,7 +873,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 
 	for(std::map<location,paths::route>::const_iterator rt = leader_paths.routes.begin(); rt != leader_paths.routes.end(); ++rt) {
 		const map_location& loc = rt->first;
-		if (map_.is_keep(loc)){
+		if (keeps().find(loc)!=keeps().end()){
 			//@todo: .move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
 			const int cost_to_loc = rt->second.move_left;
 			if (units_.count(loc) == 0) {
