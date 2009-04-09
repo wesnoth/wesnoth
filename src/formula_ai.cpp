@@ -273,6 +273,50 @@ private:
 	const formula_ai& ai_;
 };
 
+/**
+ * timeofday_modifer formula function. Returns combat modifier, taking
+ * alignment, illuminate, time of day and fearless trait into account.
+ * 'leadership' and 'slowed' are not taken into account.
+ * arguments[0] - unit
+ * arguments[1] - location (optional, defaults to unit's current location.
+ */
+class timeofday_modifier_function : public function_expression {
+public:
+	timeofday_modifier_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("timeofday_modifier", args, 1, 2), ai_(ai) {
+	}
+private:
+	variant execute(const formula_callable& variables) const {
+		variant u = args()[0]->evaluate(variables);
+
+		if( u.is_null() ) {
+			return variant();
+		}
+
+		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
+
+		if (u_call == NULL) {
+			return variant();
+		}
+
+		const unit& un = u_call->get_unit();
+
+		map_location const* loc = NULL;
+
+		if(args().size()==2) {
+			loc = &convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		}
+
+		if (loc == NULL) {
+			loc = &u_call->get_location();
+		}
+
+		return variant(combat_modifier(ai_.get_info().state, ai_.get_info().units, *loc, un.alignment(), un.is_fearless(), ai_.get_info().map));
+	}
+
+	const formula_ai& ai_;
+};
+
 class nearest_keep_function : public function_expression {
 public:
 	nearest_keep_function(const args_list& args, const formula_ai& ai)
@@ -1428,6 +1472,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new adjacent_locs_function(args, ai_));
 	} else if(fn == "castle_locs") {
 		return expression_ptr(new castle_locs_function(args, ai_));
+	} else if(fn == "timeofday_modifier") {
+		return expression_ptr(new timeofday_modifier_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 	} else if(fn == "shortest_path") {

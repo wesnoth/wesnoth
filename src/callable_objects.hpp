@@ -202,6 +202,7 @@ public:
 	{}
 
 	const unit& get_unit() const { return u_; }
+	const location& get_location() const { return loc_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 private:
