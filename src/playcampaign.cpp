@@ -308,7 +308,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		bool save_game_after_scenario = true;
 
 		LEVEL_RESULT res = VICTORY;
-		end_level_exception *end_level = new end_level_exception(VICTORY);
+		end_level_exception end_level(VICTORY);
 
 		try {
 			// Preserve old label eg. replay
@@ -360,11 +360,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, end_level);
+				res = playsingle_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, &end_level);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, io_type, end_level);
+				res = playmp_scenario(game_config,scenario,disp,gamestate,story,log, skip_replay, io_type, &end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -426,7 +426,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		// Continue without saving is like a victory,
 		// but the save game dialog isn't displayed
-		if(!end_level->save)
+		if(!end_level.save)
 			save_game_after_scenario = false;
 
 		// Switch to the next scenario.
