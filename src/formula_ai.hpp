@@ -93,8 +93,7 @@ public:
 	{}
 
 	void register_candidate_move(const std::string name, const std::string type,
-			const_formula_ptr formula, const_formula_ptr eval,
-			const_formula_ptr precondition, const std::vector<std::string>& args);
+			const_formula_ptr formula, const_formula_ptr eval);
 
 	std::vector<candidate_move_ptr>::iterator candidate_move_begin() {
 		return candidate_moves.begin();

@@ -1501,13 +1501,10 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 }
 
 void ai_function_symbol_table::register_candidate_move(const std::string name,
-		const std::string type, const_formula_ptr formula, const_formula_ptr eval,
-		const_formula_ptr precondition, const std::vector<std::string>& args)
+		const std::string type, const_formula_ptr formula, const_formula_ptr eval)
 {
 	candidate_move_ptr new_move(new candidate_move(name,type,eval,formula));
 	candidate_moves.push_back(new_move);
-	function_symbol_table::add_formula_function(name, formula,
-			precondition, args);
 }
 
 
@@ -1546,8 +1543,6 @@ formula_ai::formula_ai(info& i) :
 	foreach (const config &rc_move, ai_param.child_range("register_candidate_move"))
 	{
 		const t_string &name = rc_move["name"];
-		const t_string &inputs = rc_move["inputs"];
-		std::vector<std::string> args = utils::split(inputs);
 
 		try{
 			game_logic::const_formula_ptr action_formula(
@@ -1556,13 +1551,8 @@ formula_ai::formula_ai(info& i) :
 			game_logic::const_formula_ptr eval_formula(
 					new game_logic::formula(rc_move["evaluation"], &function_table));
 
-			const formula_ptr precondition_formula =
-					game_logic::formula::create_optional_formula(rc_move["precondition"],
-							&function_table);
-
-			function_table.register_candidate_move(name, rc_move["type"],
-									action_formula, eval_formula,
-									precondition_formula, args);
+			function_table.register_candidate_move(
+                                    name, rc_move["type"], action_formula, eval_formula);
 		}
 		catch(formula_error& e) {
 			handle_exception(e, "Error while registering candidate move '" + name + "'");
