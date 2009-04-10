@@ -156,6 +156,8 @@ public:
 
 	const variant& get_keeps_cache() const { return keeps_cache_; }
 
+	void store_outcome_position(const variant& var);
+
 	// Check if given unit loc can reach attack range of enemy loc
 	bool can_attack (const map_location, const map_location) const;
 
@@ -178,6 +180,8 @@ private:
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	game_logic::const_formula_ptr recruit_formula_;
 	game_logic::const_formula_ptr move_formula_;
+
+        std::vector<variant> outcome_positions_;
 
 	mutable std::map<location,paths> possible_moves_;
 
