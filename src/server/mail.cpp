@@ -36,7 +36,7 @@ bool mailer::send_mail(const std::string& to_address, const std::string& subject
 	std::cout << "Sent email to " << to_address << " with response '" << m.response() << "'\n";
 	if(m.response().substr(0,3) != "250") {
 		return false;
-    	}
+	}
 
 	return true;
 }
