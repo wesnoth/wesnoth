@@ -22,13 +22,9 @@ class gamemap;
 
 #include "terrain.hpp"
 
-#include "serialization/string_utils.hpp"
-
-#include <iostream>
-#include <map>
+#include <iosfwd>
 #include <string>
 #include <vector>
-#include <set>
 
 #define MAX_MAP_AREA	65536
 

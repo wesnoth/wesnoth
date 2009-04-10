@@ -33,6 +33,7 @@
 
 #include <boost/functional/hash.hpp>
 
+#include <set>
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)

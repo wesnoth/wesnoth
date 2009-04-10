@@ -23,6 +23,7 @@
 #include "map.hpp"
 
 #include <cassert>
+#include <set>
 
 std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::vector<Uint32>& old_rgb){
 	std::map<Uint32, Uint32> map_rgb;
