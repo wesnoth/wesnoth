@@ -1,4 +1,4 @@
-SUBDIRS = wesnoth wesnoth-editor wesnoth-test wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-anl wesnoth-tutorial wesnoth-aoi wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-low wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs wesnoth-Delfadors_Memoirs
+SUBDIRS = wesnoth wesnoth-editor wesnoth-test wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-anl wesnoth-tutorial wesnoth-aoi wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-low wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-utbs wesnoth-dm
 
 PO4A_SUBDIRS = wesnoth-manpages
 PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"

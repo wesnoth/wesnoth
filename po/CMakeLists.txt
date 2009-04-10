@@ -13,6 +13,7 @@ set(TRANSLATION_DIRS
     wesnoth-anl
     wesnoth-aoi
     wesnoth-did
+    wesnoth-dm
     wesnoth-editor
     wesnoth-ei
     wesnoth-httt

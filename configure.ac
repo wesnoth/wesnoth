@@ -963,7 +963,9 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-multiplayer/Makefile.in
 		 po/wesnoth-anl/Makefile.in
 		 po/wesnoth-tutorial/Makefile.in
+		 po/wesnoth-aoi/Makefile.in
 		 po/wesnoth-did/Makefile.in
+		 po/wesnoth-dm/Makefile.in
 		 po/wesnoth-ei/Makefile.in
 		 po/wesnoth-httt/Makefile.in
 		 po/wesnoth-l/Makefile.in
@@ -976,8 +978,6 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-trow/Makefile.in
 		 po/wesnoth-tsg/Makefile.in
 		 po/wesnoth-utbs/Makefile.in
-		 po/wesnoth-aoi/Makefile.in
-po/wesnoth-Delfadors_Memoirs/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile
