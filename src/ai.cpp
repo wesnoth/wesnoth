@@ -769,7 +769,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
 
 		// Insert the trivial moves of staying on the same location.
-		if(un_it->second.movement_left() == un_it->second.total_movement()) {
+		if(un_it->second.movement_left() > 0 ) {
 			std::pair<location,location> trivial_mv(un_it->first,un_it->first);
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);

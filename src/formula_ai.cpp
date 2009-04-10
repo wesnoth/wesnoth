@@ -2394,12 +2394,12 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_moves")
 	{
 		prepare_move();
-		return variant(new move_map_callable(srcdst_, dstsrc_));
+		return variant(new move_map_callable(srcdst_, dstsrc_, get_info().units));
 
 	} else if(key == "enemy_moves")
 	{
 		prepare_move();
-		return variant(new move_map_callable(enemy_srcdst_, enemy_dstsrc_));
+		return variant(new move_map_callable(enemy_srcdst_, enemy_dstsrc_, get_info().units));
 
 	} else if(key == "my_leader")
 	{
