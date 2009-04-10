@@ -15,20 +15,12 @@
 #ifndef USER_HANDLER_HPP_INCLUDED
 #define USER_HANDLER_HPP_INCLUDED
 
+class config;
+class mailer;
+
 #include "../global.hpp"
 
-#include "../config.hpp"
-#include "../log.hpp"
-
-#include <vector>
 #include <string>
-#include <map>
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <sstream>
-
-#include "mail.hpp"
 
 #define ERR_UH LOG_STREAM(err, mp_user_handler)
 #define WRN_UH LOG_STREAM(warn, mp_user_handler)

@@ -14,6 +14,10 @@
 
 #include "sample_user_handler.hpp"
 
+#include "config.hpp"
+
+#include <iostream>
+
 suh::suh(config c)
 	: user_expiration_(0)
 	, users_()

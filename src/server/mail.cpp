@@ -1,4 +1,6 @@
-#include "user_handler.hpp"
+#include "mail.hpp"
+
+#include <iostream>
 
 void mailer::load_mail_cfg(const config& c) {
 	mail_cfg.from_address = c["from_address"].empty() ? "NOREPLY@wesnoth.org" : c["from_address"];

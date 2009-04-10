@@ -17,6 +17,9 @@
 
 #include "user_handler.hpp"
 
+#include <map>
+#include <vector>
+
 /**
  * @class An exmple how to implement user_handler to demonstrate the interface
  * If you use this on anything real you are insane
