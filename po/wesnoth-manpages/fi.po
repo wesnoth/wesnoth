@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-03-13 21:32+0200\n"
+"PO-Revision-Date: 2009-04-10 17:27+0200\n"
 "Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -1030,7 +1030,7 @@ msgstr "avain=\"I<arvo>,I<arvo>,...\""
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:107
 msgid "[/I<tag>]"
-msgstr "[/I<tag>]"
+msgstr "[/I<tagi>]"
 
 # type: SS
 #. type: SS
@@ -1179,7 +1179,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1188,6 +1188,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"Hakemisto, johon palvelin tallentaa pelien uusinnat. (Muista vinoviiva "
+"lopussa!) Oletus on '', joka tarkoittaa hakemistoa, jossa wesnothd "
+"käynnistettiin."
 
 # type: TP
 #. type: TP
@@ -1210,7 +1213,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
@@ -1218,6 +1221,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Valitsee, tallentaako palvelin automaattisesti pelien uusinnat. (Oletus: "
+"B<false>)"
 
 # type: TP
 #. type: TP
@@ -1249,7 +1254,7 @@ msgstr "Esimerkki: B<versions_accepted=\"*\"> hyväksyy minkä tahansa version."
 #: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #. type: Plain text
@@ -1261,6 +1266,11 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"Käyttäjäkäsittelijän nimi. Tällä hetkellä käytettävissä olevat käsittelijät "
+"ovat ”forum” (jolla wesnothd yhdistetään phpbb-foorumin tietokantaan) ja "
+"”sample” (esimerkkitoteutus käyttäjäkäsittelijän rajapinnasta; jos käytät "
+"tätä mihinkään todelliseen, olet hullu). Oletusarvo on ”forum”. Myös B<"
+"[user_handler]>-osio täytyy lisätä, ks. alla."
 
 # type: SS
 #. type: SS
@@ -1389,39 +1399,43 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Säätää käyttäjäkäsittelijän asetukset. Käytetyt avaimet "
+"riippuvat siitä, mikä käsittelijä on valittu avaimella B<user_handler>. Jos "
+"asetuksissa ei ole [user_handler]-osiota, palvelin käynnistyy ilman "
+"nimimerkkien rekisteröintipalvelua."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(user_handler=forum) Tietokantapalvelimen konenimi."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(user_handler=forum) Tietokannan nimi."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:211
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
@@ -1429,27 +1443,27 @@ msgstr ""
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr ""
+msgstr "(user_handler=forum) Käyttäjänimi, jolla kirjaudutaan tietokantaan."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(user_handler=forum) Kyseisen käyttäjän salasana."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:217
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1459,13 +1473,16 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(user_handler=forum) Taulun nimi, johon phpbb-foorumisi tallentaa "
+"käyttäjädatansa. Todennäköisimmin tämä on E<lt>tauluetuliiteE<gt>_users "
+"(esim. phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:220
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1477,13 +1494,18 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(user_handler=sample) Sen taulun nimi, johon wesnothd tallentaa oman datansa "
+"käyttäjistä. Tämä taulu pitää luoda manuaalisesti, esim.: CREATE TABLE "
+"E<lt>taulunnimiE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
+"UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
+"0);"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #. type: Plain text
@@ -1492,6 +1514,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(user_handler=sample) Aika, jonka kuluttua rekisteröity nimimerkki vanhenee "
+"(päivissä)."
 
 # type: Plain text
 #. type: Plain text
@@ -1500,76 +1524,78 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Säätää asetukset SMTP-palvelimelle, jonka kautta "
+"käyttäjäkäsittelijä voi lähettää postia. Tällä hetkellä vain "
+"esimerkkikäsittelijän käytössä."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Postipalvelimesi konenimi."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Käyttäjänimi, jolla kirjaudutaan postipalvelimelle."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "This user's password."
-msgstr ""
+msgstr "Kyseisen käyttäjän salasana."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:244
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "Postisi vastausosoite."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:247
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "Portti, jota postipalvelimesi käyttää. Oletus on 25."
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:253
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1578,9 +1604,10 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Kirjoittanut David White E<lt>davidnwhite@verizon.netE<gt>. Muokannut Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> ja "
-"Soliton E<lt>soliton.de@gmail.comE<gt>. Tämän manuaalin alkuperäisversion "
-"kirjoitti Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>.\n"
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> ja Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>. Tämän manuaalin alkuperäisversion kirjoitti Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>.\n"
 "Suomentanut Wesnothin suomennosryhmä (http://www.wesnoth.org/wiki/"
 "FinnishTranslation)."
 
