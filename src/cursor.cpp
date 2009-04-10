@@ -24,7 +24,7 @@
 #include "preferences_display.hpp"
 #include "video.hpp"
 
-
+#include <iostream>
 
 static bool use_colour_cursors()
 {

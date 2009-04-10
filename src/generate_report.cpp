@@ -28,6 +28,7 @@
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
 
+#include <iostream>
 
 namespace reports {
 

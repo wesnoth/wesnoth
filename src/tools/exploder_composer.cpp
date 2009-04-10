@@ -15,6 +15,8 @@
 #include "exploder_composer.hpp"
 #include "SDL_image.h"
 
+#include <iostream>
+
 composer::composer() : interactive_(false), verbose_(false)
 {
 }

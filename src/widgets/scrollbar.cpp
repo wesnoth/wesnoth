@@ -23,6 +23,7 @@
 #include "image.hpp"
 #include "video.hpp"
 
+#include <iostream>
 
 namespace {
 	const std::string scrollbar_top = "buttons/scrolltop.png";

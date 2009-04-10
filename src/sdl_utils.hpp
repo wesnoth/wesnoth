@@ -23,7 +23,7 @@
 #include "SDL.h"
 
 #include <cstdlib>
-#include <iostream>
+#include <iosfwd>
 #include <map>
 #include <string>
 #include <vector>

@@ -15,6 +15,8 @@
 #include "../game_config.hpp"
 #include "exploder_composer.hpp"
 
+#include <iostream>
+
 namespace {
 
 	void print_usage(std::string name)

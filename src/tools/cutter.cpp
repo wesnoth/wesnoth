@@ -22,6 +22,8 @@
 
 #include "SDL_image.h"
 
+#include <iostream>
+
 namespace {
 
 	void print_usage(std::string name)

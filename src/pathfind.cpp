@@ -26,6 +26,7 @@
 #include "map.hpp"
 #include "wml_exception.hpp"
 
+#include <iostream>
 
 #define LOG_PF LOG_STREAM(info, engine)
 
