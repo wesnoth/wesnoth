@@ -1588,33 +1588,22 @@ formula_ai::formula_ai(info& i) :
 			}
 		}
 
-	config::const_child_itors team_formula = ai_param.child_range("team_formula");
-	if(team_formula.first != team_formula.second) {
-		std::string formula_string = (*team_formula.first)["rulebase"];
-		try{
-			move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
-		}
-		catch(formula_error& e) {
-			handle_exception(e);
-			move_formula_ = game_logic::formula_ptr();
-		}
-	} else {
-		try{
-			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
-		}
-		catch(formula_error& e) {
-			handle_exception(e);
-			recruit_formula_ = game_logic::formula_ptr();
-		}
 
-		try{
-			move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
-		}
-		catch(formula_error& e) {
-			handle_exception(e);
-			move_formula_ = game_logic::formula_ptr();
-		}
-	}
+        try{
+                recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
+        }
+        catch(formula_error& e) {
+                handle_exception(e);
+                recruit_formula_ = game_logic::formula_ptr();
+        }
+
+        try{
+                move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
+        }
+        catch(formula_error& e) {
+                handle_exception(e);
+                move_formula_ = game_logic::formula_ptr();
+        }
 
 }
 
