@@ -168,12 +168,13 @@ class move_map_callable : public game_logic::formula_callable {
 	typedef std::multimap<map_location, map_location> move_map;
 	const move_map& srcdst_;
 	const move_map& dstsrc_;
+        const unit_map& units_;
 
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
-	move_map_callable(const move_map& srcdst, const move_map& dstsrc)
-	  : srcdst_(srcdst), dstsrc_(dstsrc)
+	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
+	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
 	{}
 
 	const move_map& srcdst() const { return srcdst_; }

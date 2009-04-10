@@ -81,8 +81,10 @@ variant move_map_callable::get_value(const std::string& key) const
 	if(key == "moves") {
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
-			move_callable* item = new move_callable(i->first, i->second);
-			vars.push_back(variant(item));
+                        if( i->first == i->second || units_.count(i->second) == 0) {
+                            move_callable* item = new move_callable(i->first, i->second);
+                            vars.push_back(variant(item));
+                        }
 		}
 
 		return variant(&vars);
