@@ -576,6 +576,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant position = args()[0]->evaluate(variables);
+                ai_.store_outcome_position(position);
 		position_callable* pos = convert_variant<position_callable>(position);
 		position_callable::swapper swapper(ai_, *pos);
 		return args()[1]->evaluate(variables);
@@ -1796,16 +1797,25 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
 		const variant v = f.execute(callable);
 
-		if ( execute_variant(v, true ) )
-			return "Made move: " + v.to_debug_string();
+                //first read info about move, then clear outcome_positions
+                std::string move_info = v.to_debug_string();
+                outcome_positions_.clear();
 
-		return v.to_debug_string();
+		if ( execute_variant(v, true ) )
+			return "Made move: " + move_info;
+
+		return move_info;
 	}
 	catch(formula_error& e) {
 		e.line = 0;
 		handle_exception(e);
 		throw;
 	}
+}
+
+void formula_ai::store_outcome_position(const variant& var)
+{
+    outcome_positions_.push_back(var);
 }
 
 void formula_ai::swap_move_map(move_map_backup& backup)
@@ -1866,7 +1876,12 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
 
-	return execute_variant(var);
+        bool res = execute_variant(var);
+
+        //remove outcome_positions
+        outcome_positions_.clear();
+
+	return res;
 }
 
 paths::route formula_ai::shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const {

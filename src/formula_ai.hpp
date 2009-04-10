@@ -170,6 +170,8 @@ public:
 
 	void invalidate_move_maps() const { move_maps_valid_ = false; }
 
+        void store_outcome_position(const variant& var);
+
 	/** Create a new formula from the string, using the symbol table which is stored in the AI.
 	*
 	*   @param formula_string the string from which a formula should be created
@@ -189,6 +191,8 @@ private:
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	game_logic::const_formula_ptr recruit_formula_;
 	game_logic::const_formula_ptr move_formula_;
+
+        std::vector<variant> outcome_positions_;
 
 	mutable std::map<location,paths> possible_moves_;
 
