@@ -20,9 +20,7 @@
 
 #include "global.hpp"
 
-#include <iostream>
 #include <iosfwd>
-#include <vector>
 
 class config;
 class t_string;

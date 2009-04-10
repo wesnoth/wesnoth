@@ -18,6 +18,8 @@
 #include "serialization/preprocessor.hpp"
 #include "SDL_image.h"
 
+#include <iostream>
+
 cutter::cutter()
 	: masks_()
 	, verbose_(false)
