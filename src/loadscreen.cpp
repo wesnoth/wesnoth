@@ -24,9 +24,11 @@
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
-
+#include "video.hpp"
 
 #include <SDL_image.h>
+
+#include <cassert>
 
 #define INFO_DISP LOG_STREAM(info, display)
 #define ERR_DISP LOG_STREAM(err, display)

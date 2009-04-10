@@ -17,16 +17,13 @@
 #ifndef JM_LOADSCREEN_HPP
 #define JM_LOADSCREEN_HPP
 
+class CVideo;
+
 #include "SDL.h"
 
 #include "global.hpp"
 
-//#include "font.hpp"
-#include "video.hpp"
-
-#include <iostream>
 #include <string>
-#include <cassert>
 
 class loadscreen {
 	public:

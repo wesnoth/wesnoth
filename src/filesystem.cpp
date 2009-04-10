@@ -57,9 +57,10 @@ BPath be_path;
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "log.hpp"
 #include "loadscreen.hpp"
-#include "game_preferences.hpp"
+#include "scoped_resource.hpp"
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
 #define LOG_FS LOG_STREAM(info, filesystem)
