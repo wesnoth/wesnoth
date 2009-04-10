@@ -50,6 +50,7 @@ void show_unit_help(display &disp, const std::string& unit_id, bool hidden = fal
 class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
 	help_button(display& disp, const std::string &help_topic);
+	~help_button();
 	int action(gui::dialog_process_info &info);
 	std::string topic() const { return topic_; }
 	void join();
