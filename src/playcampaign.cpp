@@ -34,6 +34,7 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
+#include <iostream>
 
 #define LOG_G LOG_STREAM(info, general)
 #define LOG_NG LOG_STREAM(info, engine)

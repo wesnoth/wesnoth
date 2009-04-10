@@ -21,6 +21,8 @@
 #include "log.hpp"
 #include "formula_string_utils.hpp"
 
+#include <iostream>
+
 namespace dfool {
   void dfool_ai::play_turn(){
     info info_ = get_info();

@@ -16,6 +16,7 @@
 #include "log.hpp"
 #include "thread.hpp"
 
+#include <iostream>
 
 #define ERR_G LOG_STREAM(err, general)
 

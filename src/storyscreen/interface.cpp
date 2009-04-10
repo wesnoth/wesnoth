@@ -34,6 +34,8 @@
 #include "sound.hpp"
 #include "text.hpp"
 
+#include <iostream>
+
 #define ERR_NG LOG_STREAM(err , engine)
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_DI LOG_STREAM(err , display)

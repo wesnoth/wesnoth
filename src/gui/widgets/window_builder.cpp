@@ -36,6 +36,7 @@
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <iostream>
 
 namespace gui2 {
 

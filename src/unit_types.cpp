@@ -27,6 +27,7 @@
 #include "map.hpp"
 #include "unit_types.hpp"
 
+#include <iostream>
 
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define WRN_CONFIG LOG_STREAM(warn, config)

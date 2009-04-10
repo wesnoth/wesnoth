@@ -34,8 +34,9 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
-
 #include <boost/scoped_ptr.hpp>
+
+#include <iostream>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)

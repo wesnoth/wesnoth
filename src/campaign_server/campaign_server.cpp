@@ -32,6 +32,7 @@
 #include "server/input_stream.hpp"
 
 #include <csignal>
+#include <iostream>
 
 #include <boost/iostreams/filter/gzip.hpp>
 

@@ -28,6 +28,7 @@
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 
+#include <iostream>
 
 #define ERR_G LOG_STREAM(err, general)
 #define LOG_G LOG_STREAM(info, general)
