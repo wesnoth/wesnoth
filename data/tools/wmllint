@@ -1357,7 +1357,7 @@ def hack_syntax(filename, lines):
             pass
         # RC -> PAL
         elif "RC" in lines[i]:
-            lines[i] = re.sub("~RC\(([^=]*)=([^)]*)\)",r"~PAL(\1>\2)",lines[i])
+            lines[i] = re.sub(r"~RC\(([^=\)]*)=([^)]*)\)",r"~PAL(\1>\2)",lines[i])
         elif "campaigns/" in lines[i]:
             lines[i] = lines[i].replace("{~campaigns/", "{~add-ons/")
             lines[i] = lines[i].replace("{@campaigns/", "{@add-ons/")
