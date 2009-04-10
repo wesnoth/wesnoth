@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 13:10+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2008-11-28 09:17+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -54,13 +54,18 @@ msgstr "Heer"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:22
+msgid "(Intermediate level, 13 scenarios.)"
+msgstr ""
+
+#. [campaign]: id=The_Hammer_of_Thursagan
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:22
+#, fuzzy
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
 "out their kin at Kal Kartha and to learn the fate of the legendary Hammer of "
 "Thursagan. The perils of their journey through the wild Northern Lands, "
 "though great, pale beside the evil they will face at its end.\n"
 "\n"
-"(Intermediate level, 13 scenarios.)"
 msgstr ""
 "In de eerste jaren van de Noordelijke Alliantie trekt een expeditie van "
 "Knalga erop uit op zoek naar hun verwanten bij Kal Kartha en het lot van de "
@@ -86,7 +91,7 @@ msgid "Art"
 msgstr "Kunst"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:44
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:47
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr "Brainstormen, testen, en steun"
 
@@ -149,7 +154,7 @@ msgstr "Aiglondur"
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:59
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:61
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:62
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:98
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:132
@@ -160,24 +165,24 @@ msgid "Orcs"
 msgstr "Orks"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:65
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:67
 msgid "Bashnark"
 msgstr "Bashnark"
 
 #. [unit]: type=Gryphon Rider, id=Pelmathidrol
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:83
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:85
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:95
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:97
 msgid "Defeat Bashnark"
 msgstr "Versla Bashnark"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:287
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:99
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:375
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:277
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:101
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:376
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:147
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:470
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:149
@@ -191,9 +196,9 @@ msgid "Death of Aiglondur"
 msgstr "Dood van Aiglondur"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:295
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:103
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:383
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:285
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:105
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:384
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:155
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:157
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:245
@@ -206,7 +211,7 @@ msgid "Time runs out"
 msgstr "Tijd loopt af"
 
 #. [part]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:115
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:117
 #, fuzzy
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
@@ -226,7 +231,7 @@ msgstr ""
 "te zoeken met hun verspreide verwanten."
 
 #. [part]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:120
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:122
 msgid ""
 "But the threat from hostile orcs, wild men, and remnant undead was not yet "
 "ended. The dwarves kept strong guards on the approaches to Knalga. In the "
@@ -240,18 +245,18 @@ msgstr ""
 "van opstandige Orks was gezien."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:133
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:135
 #, fuzzy
 msgid ""
-"Up axes! We will be the Northern Alliance's arm today, and kill or scatter "
-"these invaders."
+"<i>Up axes!</i> We will be the Northern Alliance's arm today, and kill or "
+"scatter these invaders."
 msgstr ""
 "Hef de bijlen! Wij zullen het leger van de Noordelijke Alliantie zijn "
 "vandaag, \n"
 "en we zullen deze indringers doden of verspreiden."
 
 #. [message]: speaker=Bashnark
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:139
 msgid ""
 "We are the true orcs, not the weaklings who ally with human-worms and stinky-"
 "midgets like you. You will be meat for our wolves."
@@ -260,7 +265,7 @@ msgstr ""
 "en stinkende dwergen als jullie. Jullie zullen vlees zijn voor onze wolven."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:148
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:150
 #, fuzzy
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
@@ -270,7 +275,7 @@ msgstr ""
 "mantelspeld. En het draagt het embleem van een leermeester."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:152
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:154
 msgid "The maker's mark is strange to me. We had best consult the lord Hamel."
 msgstr ""
 "Het teken van de maker is me onbekend. We zouden het best heer Hamel "
@@ -633,8 +638,8 @@ msgid "Help Marth-Tak defeat Gothras"
 msgstr "Help Marth-Tak Gothras te verslaan"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:291
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:379
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:281
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:380
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:151
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:474
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:153
@@ -820,7 +825,7 @@ msgstr ""
 "waarschijnlijk waar Gothras en zijn gevolg vandaan kwamen."
 
 #. [message]: role=Scout
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:344
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:345
 msgid ""
 "Nae sign o' bandits I can see, captain -- but there are three muckle hosts "
 "of orcs off to our east."
@@ -829,7 +834,7 @@ msgstr ""
 "gastheren van orks ten oosten van ons."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:348
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:349
 #, fuzzy
 msgid ""
 "What's this? Large orcish war-bands so close to the Alliance's border? That "
@@ -839,7 +844,7 @@ msgstr ""
 "Dat kan alleen maar problemen betekenen."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:352
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:353
 msgid ""
 "Well, boys, we were planning to invade the Northern Alliance anyway...these "
 "dwarves should make a tasty appetizer."
@@ -848,22 +853,22 @@ msgstr ""
 "dringen... deze dwergen zouden een smakelijk voorproefje kunnen zijn."
 
 #. [message]: speaker=Tan-Grolak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:356
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:357
 msgid "Yeah, boss. Anything to get away from those masked ones..."
 msgstr "Ja, baas. Alles om weg te komen van die gemaskerden."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:360
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:361
 msgid "Be silent. We are orc warriors; we do not flee foes."
 msgstr "Stil. We zijn orkkrijgers; we vluchten niet van vijanden."
 
 #. [message]: speaker=Tan-Uthkar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:364
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:365
 msgid "But, given a choice, we fight the weaker foe first."
 msgstr "Maar, als we de keuze hebben, bevechten we de zwakkere vijand eerst."
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:372
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:229
 msgid "Defeat all enemies"
 msgstr "Versla alle vijanden"
@@ -1230,10 +1235,10 @@ msgstr "Angst"
 #. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
 #. [event]
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:129
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:138
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:147
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:156
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:119
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:128
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:137
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:146
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:73
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:94
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:115
@@ -1759,7 +1764,7 @@ msgstr "Het Recht van Karrag"
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [unit]: type=Lich, id=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:45
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:246
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:236
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:51
 msgid "Karrag"
 msgstr "Karrag"
@@ -1772,27 +1777,29 @@ msgid "Kal Karthans"
 msgstr "Kal Karthans"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:166
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:156
+#, fuzzy
 msgid ""
-"(Psst, Angarthing...Karrag and those dwarves on the dais, they're all "
-"masked.)"
+"Psst, Angarthing...Karrag and those dwarves on the dais, they're all "
+"<i>masked</i>."
 msgstr ""
 "(Psst, Angarthing... Karrag en die dwergen op het podium, ze zijn allemaal "
 "gemaskerd.)"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:171
-msgid "(I see it. There is something very wrong here.)"
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:161
+#, fuzzy
+msgid "I see it. There is something very wrong here."
 msgstr "(Ik zie het. Er is iets heel fout hier.)"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:176
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:166
 msgid "Hail, fellow dwarves. All Kal Kartha thanks you for your timely rescue."
 msgstr ""
 "Gegroet, mede dwergen. Kal Kartha dankt jullie voor jullie tijdige redding."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:181
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:171
 msgid ""
 "We are from Knalga; your clans are kin to ours of old. We but did our duty "
 "to kin."
@@ -1801,7 +1808,7 @@ msgstr ""
 "niets anders dan onze plicht."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:186
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:176
 msgid ""
 "All dwarves are kin, and must prevail against orcs and humans and other "
 "dirtgrubbers. You can be part of the fist that smites them."
@@ -1811,14 +1818,14 @@ msgstr ""
 "vernietigd."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:191
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:181
 msgid "We did not come to smite anyone, but to re-open contact and trade."
 msgstr ""
 "We zijn hier niet gekomen om iemand te vernietigen, maar om het contact en "
 "de handel te heropenen."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:196
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:186
 #, fuzzy
 msgid ""
 "Trade? Your destruction of the besieging orcs was a far nobler act than "
@@ -1830,12 +1837,12 @@ msgstr ""
 "er zal de kracht zijn van ons oude erfgoed, de Hamer van Thursagan."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:201
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:191
 msgid "It is remembered in Knalga that Kal Kartha holds the Hammer."
 msgstr "Men herinnert zich in Knalga dat Kal Kartha de Hamer bijhoudt?-."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:206
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:196
 #, fuzzy
 msgid ""
 "Yes! And the Hammer holds the soul of the dwarves, the true people. "
@@ -1845,7 +1852,7 @@ msgstr ""
 "naar grotere overwinningen marcheren! Voegen jullie van Knalga zich bij ons?"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:211
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:201
 msgid ""
 "On one condition. You must take off that mask and show your true face. I am "
 "a witness."
@@ -1854,7 +1861,7 @@ msgstr ""
 "getuige."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:216
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:206
 msgid ""
 "You...do not wish to see what is beneath this mask. I was terribly wounded "
 "in an orcish attack. Disfigured."
@@ -1863,7 +1870,7 @@ msgstr ""
 "verschrikkelijk gewond in een orkse aanval. Misvormd."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:221
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:211
 msgid ""
 "But the Law must see. A dwarf must put his name and his face behind his "
 "deeds. I am a witness."
@@ -1872,7 +1879,7 @@ msgstr ""
 "daden stellen. Ik ben getuige."
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:226
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:216
 #, fuzzy
 msgid ""
 "Impertinent fool! It is not for you to dictate to a lord in his own holding, "
@@ -1882,7 +1889,7 @@ msgstr ""
 "bevelen, zeker niet een heer die de ziel van de dwergen in zijn handen houdt."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:231
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:221
 msgid ""
 "The Law speaks. Against him with the eyes to see, no deception can hold. I "
 "AM A WITNESS!"
@@ -1891,14 +1898,14 @@ msgstr ""
 "IK BEN GETUIGE!"
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:264
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:254
 #, fuzzy
 msgid "No...no...it is horrible! My lord, how did you come to this?"
 msgstr ""
 "Nee... nee... het is verschrikkelijk! Mijn heer, hoe bent u zo geworden?"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:269
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:259
 msgid ""
 "I lingered for weeks in agony. Only my hatred and the runelore of old "
 "sustained me, until I became as I am. I will have revenge; I will destroy "
@@ -1909,7 +1916,7 @@ msgstr ""
 "orks vernietigen, en de mensen, en de elven, en allen behalve het ware volk!"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:274
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:264
 #, fuzzy
 msgid ""
 "And you have sealed your doom. Hundreds of dirtgrubbers have already died to "
@@ -1923,13 +1930,13 @@ msgstr ""
 "het gehele dwergse ras aan mijn doel te binden. NEEM HEN!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:283
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:273
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:466
 msgid "Defeat Karrag"
 msgstr "Versla Karrag"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:305
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:295
 msgid ""
 "Neither side can recruit or recall. You must win with the troops you have."
 msgstr ""
@@ -1937,7 +1944,7 @@ msgstr ""
 "die je hebt."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:321
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:311
 msgid ""
 "Wait...the lich's apparent death was another illusion. In truth he ran "
 "through that doorway behind the throne."
@@ -1946,7 +1953,7 @@ msgstr ""
 "illusie. In het echt liep hij door die deur achter de troon."
 
 #. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:326
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:316
 msgid ""
 "Then Karrag has fled to the underlevels. None but his masked ones go there "
 "any more."
@@ -1955,7 +1962,7 @@ msgstr ""
 "gemaskerden gaan daar nog."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:331
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:321
 #, fuzzy
 msgid ""
 "We must follow. Quickly! It may be his talk of perverting the Hammer was "
@@ -1967,7 +1974,7 @@ msgstr ""
 "dwaze spel zou kunnen lukken."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:349
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:339
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1205
 msgid ""
 "Without Dulcatulos to explain our actions to the Kal Karthans we'll have to "
@@ -2084,7 +2091,8 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
 #, fuzzy
-msgid "Where *is* Karrag? We can't have been more than seconds behind him."
+msgid ""
+"Where <i>is</i> Karrag? We can't have been more than seconds behind him."
 msgstr "Waar *is* Karrag? We kunnen niet meer dan seconden achter hem zijn."
 
 #. [message]: speaker=Dulcatulos

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2009-03-14 18:44-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
@@ -53,6 +53,7 @@ msgstr "军阀"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -61,7 +62,6 @@ msgid ""
 "Council and call up the Great Horde to send the human-worms and their wose-"
 "born allies to the land of the dead!\n"
 "\n"
-"(Expert level, 18 scenarios.)"
 msgstr ""
 "你的父亲黑眼卡伦，是史上最伟大的兽人领袖。 现在，作为他的儿子，需要你挫败人类"
 "自私的计划，那些肮脏的家伙背叛了协议，他们像矮人爱抢金子一样乐于抢夺别人的土"
@@ -69,6 +69,11 @@ msgstr ""
 "和他们树丛里的盟友送到死亡世界去！\n"
 "\n"
 "(专家级别, 18 幕.)"
+
+#. [campaign]: id=Son_Of_The_Black_Eye
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+msgid "(Expert level, 18 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -597,17 +602,17 @@ msgid "Move Kapou'e to the signpost in the Northeast"
 msgstr "把卡破尔移动到东北山区的尽头标志。"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:270
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:262
 msgid "We'll be back, you foul mud-sucking humans!"
 msgstr "我们会回来的，你们这些肮脏的泥巴！"
 
 #. [message]: speaker=Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:275
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:267
 msgid "That's right, flee, you cowardly orcs! This land is mine!"
 msgstr "哈哈！这才对，逃吧，胆小鬼！这块土地是我的！"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:280
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:272
 msgid ""
 "In your dreams, worm. When the time comes you will pay for all this with "
 "your life!"
@@ -1456,22 +1461,22 @@ msgid "I'm thirsty ... *gulp* *gulp*"
 msgstr "我渴了……*咕**咕*"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:364
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:365
 msgid "Ahhh, that was yummy!"
 msgstr "啊，好东西！"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:385
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:386
 msgid "The day is coming, these night creatures will soon return to the pit."
 msgstr "天就要亮了，这些黑夜的产物就快回到深渊中去了。"
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:389
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:390
 msgid "Grüü, are you forgetting we are also night creatures?"
 msgstr "库鲁，你忘了我们也是属于黑夜吗？"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:393
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:394
 msgid "Err... well..."
 msgstr "嗯，这个……"
 
@@ -1690,7 +1695,7 @@ msgstr "亚单"
 #. [side]: type=Bandit, id=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:110
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:85
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:112
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:146
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:161
@@ -3112,7 +3117,8 @@ msgstr "让他们付出代价。铁和血！"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
-msgid "Victory...Grüü, what *is* that you are eating?"
+#, fuzzy
+msgid "Victory...Grüü, what <i>is</i> that you are eating?"
 msgstr "胜利...库鲁，你在吃── ？"
 
 #. [message]: speaker=Grüü

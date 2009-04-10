@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tsg_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-12-17 12:28+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
@@ -28,18 +28,23 @@ msgstr "ADŐ"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Egy fiatal lovagot, Deorant küldik parancsnokolni a Déli Őrhelyhez..."
 "Megjegyzés: ez a küldetés bevezetést nyújt a Wesnothba. A \"Civil\" "
 "nehézségi szint megfelelő lehet a játékkal még csak most ismerkedőknek is.\n"
 "\n"
 "(Újonc nehézségi szint, 9 vagy 10 pálya a döntéseidtől függően)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1799,8 +1804,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmmm... Ezt végig kell gondolnom..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1887,7 +1894,7 @@ msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Bolondok! Ez a delevény mindannyiunk halála lesz! Megpecsételődött a sorsunk!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "A tó szörnye"
@@ -4145,3 +4152,6 @@ msgstr ""
 "Sir Deorant, Wesnoth lovagját, tanácskozásra hívták Weldynbe magához Haldric "
 "királyhoz. Viharfelhők gyülekeztek a birodalom felett, és minden "
 "parancsnokra szükség volt, hogy átvészelhessék az eljövendőket..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmmm... Ezt végig kell gondolnom..."

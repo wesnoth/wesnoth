@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2006-07-14 19:04+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -36,11 +36,15 @@ msgid ""
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Un jove cavaller, Deoran, és encarregat d'ocupar-se de la defensa del sud. "
 "Nota: Esta campanya està dissenyada com una introducció a Wesnoht. El nivell "
 "de dificultat 'Civil' està dirigit a qui juga per primera vegada. "
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1936,8 +1940,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmmm...He de considerar este..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -2031,7 +2037,7 @@ msgstr ""
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr "Folls! Eixe lich serà la mort de tots nosaltres! Ens heu venut!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "La bèstia del llac."
@@ -4058,6 +4064,9 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the onslaught..."
 msgstr ""
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmmm...He de considerar este..."
 
 #~ msgid "Your aid will be most welcome."
 #~ msgstr "La vostra ajuda serà benvinguda"

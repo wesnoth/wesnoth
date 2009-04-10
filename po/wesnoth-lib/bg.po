@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-20 00:45+0100\n"
+"POT-Creation-Date: 2009-04-10 19:46+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -67,8 +67,9 @@ msgstr "Лагер"
 
 #. [terrain]: id=castle
 #. [terrain]: id=dwarven_castle
+#. [terrain]: id=castle_overlay
 #: data/core/terrain.cfg:173 data/core/terrain.cfg:183
-#: data/core/terrain.cfg:194
+#: data/core/terrain.cfg:194 data/core/terrain.cfg:359
 msgid "Castle"
 msgstr "Замък"
 
@@ -94,48 +95,49 @@ msgstr "Блатна развалина"
 #. [terrain]: id=ruined_keep
 #. [terrain]: id=sunken_keep
 #. [terrain]: id=swamp_keep
+#. [terrain]: id=keep_overlay
 #: data/core/terrain.cfg:253 data/core/terrain.cfg:265
 #: data/core/terrain.cfg:277 data/core/terrain.cfg:289
 #: data/core/terrain.cfg:301 data/core/terrain.cfg:313
-#: data/core/terrain.cfg:325
+#: data/core/terrain.cfg:325 data/core/terrain.cfg:347
 msgid "Keep"
 msgstr "Крепост"
 
 #. [terrain]: id=crater
-#: data/core/terrain.cfg:351
+#: data/core/terrain.cfg:374
 msgid "Crater"
 msgstr "Кратер"
 
 #. [terrain]: id=desert
-#: data/core/terrain.cfg:361
+#: data/core/terrain.cfg:384
 msgid "Desert"
 msgstr "Пустиня"
 
 #. [terrain]: id=sand_rubble
-#: data/core/terrain.cfg:371
+#: data/core/terrain.cfg:394
 msgid "Rubble"
 msgstr "Отломки"
 
 #. [terrain]: id=sand
-#: data/core/terrain.cfg:382
+#: data/core/terrain.cfg:405
 msgid "Sand"
 msgstr "Песъчлив терен"
 
 #. [terrain]: id=oasis
-#: data/core/terrain.cfg:390
+#: data/core/terrain.cfg:413
 msgid "Oasis"
 msgstr "Оазис"
 
 #. [terrain]: id=snow_forest
 #. [terrain]: id=deciduous_forest_winter_snow
 #. [terrain]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:405 data/core/terrain.cfg:475
-#: data/core/terrain.cfg:516
+#: data/core/terrain.cfg:428 data/core/terrain.cfg:498
+#: data/core/terrain.cfg:539
 msgid "Snow Forest"
 msgstr "Снежна гора"
 
 #. [terrain]: id=great_tree
-#: data/core/terrain.cfg:416
+#: data/core/terrain.cfg:439
 msgid "Great Tree"
 msgstr "Велико дърво"
 
@@ -146,15 +148,15 @@ msgstr "Велико дърво"
 #. [terrain]: id=mixed_forest_summer
 #. [terrain]: id=mixed_forest_fall
 #. [terrain]: id=mixed_forest_winter
-#: data/core/terrain.cfg:426 data/core/terrain.cfg:445
-#: data/core/terrain.cfg:455 data/core/terrain.cfg:465
-#: data/core/terrain.cfg:486 data/core/terrain.cfg:496
-#: data/core/terrain.cfg:506
+#: data/core/terrain.cfg:449 data/core/terrain.cfg:468
+#: data/core/terrain.cfg:478 data/core/terrain.cfg:488
+#: data/core/terrain.cfg:509 data/core/terrain.cfg:519
+#: data/core/terrain.cfg:529
 msgid "Forest"
 msgstr "Гора"
 
 #. [terrain]: id=tropical_forest
-#: data/core/terrain.cfg:435
+#: data/core/terrain.cfg:458
 msgid "Tropical Forest"
 msgstr "Джунгла"
 
@@ -165,10 +167,10 @@ msgstr "Джунгла"
 #. [terrain]: id=mixed_forest_summer_hills
 #. [terrain]: id=mixed_forest_fall_hills
 #. [terrain]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:531 data/core/terrain.cfg:551
-#: data/core/terrain.cfg:561 data/core/terrain.cfg:571
-#: data/core/terrain.cfg:591 data/core/terrain.cfg:601
-#: data/core/terrain.cfg:611
+#: data/core/terrain.cfg:554 data/core/terrain.cfg:574
+#: data/core/terrain.cfg:584 data/core/terrain.cfg:594
+#: data/core/terrain.cfg:614 data/core/terrain.cfg:624
+#: data/core/terrain.cfg:634
 #, fuzzy
 msgid "Forested Hills"
 msgstr "Гора"
@@ -176,8 +178,8 @@ msgstr "Гора"
 #. [terrain]: id=forested_snow_hills
 #. [terrain]: id=deciduous_forest_winter_snow_hills
 #. [terrain]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:541 data/core/terrain.cfg:581
-#: data/core/terrain.cfg:621
+#: data/core/terrain.cfg:564 data/core/terrain.cfg:604
+#: data/core/terrain.cfg:644
 #, fuzzy
 msgid "Forested Snow Hills"
 msgstr "Снежни хълмове"
@@ -185,105 +187,105 @@ msgstr "Снежни хълмове"
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
 #. [terrain]: id=windmill
-#: data/core/terrain.cfg:635 data/core/terrain.cfg:644
-#: data/core/terrain.cfg:653
+#: data/core/terrain.cfg:658 data/core/terrain.cfg:667
+#: data/core/terrain.cfg:676
 msgid "Grassland"
 msgstr "Тревист терен"
 
 #. [terrain]: id=savanna
-#: data/core/terrain.cfg:662
+#: data/core/terrain.cfg:685
 msgid "Savanna"
 msgstr "Савана"
 
 #. [terrain]: id=snow_hills
-#: data/core/terrain.cfg:675
+#: data/core/terrain.cfg:698
 msgid "Snow Hills"
 msgstr "Снежни хълмове"
 
 #. [terrain]: id=desert_hills
-#: data/core/terrain.cfg:685
+#: data/core/terrain.cfg:708
 msgid "Dunes"
 msgstr "Дюни"
 
 #. [terrain]: id=hills
-#: data/core/terrain.cfg:695
+#: data/core/terrain.cfg:718
 msgid "Hills"
 msgstr "Хълмове"
 
 #. [terrain]: id=desert_mountains
 #. [terrain]: id=mountains
 #. [terrain]: id=snow_mountains
-#: data/core/terrain.cfg:707 data/core/terrain.cfg:716
-#: data/core/terrain.cfg:724
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:739
+#: data/core/terrain.cfg:747
 msgid "Mountains"
 msgstr "Планини"
 
 #. [terrain]: id=canyon
-#: data/core/terrain.cfg:738
+#: data/core/terrain.cfg:761
 msgid "Chasm"
 msgstr "Бездна"
 
 #. [terrain]: id=lava_chasm
-#: data/core/terrain.cfg:747
+#: data/core/terrain.cfg:770
 msgid "Lava chasm"
 msgstr ""
 
 #. [terrain]: id=lava
-#: data/core/terrain.cfg:757
+#: data/core/terrain.cfg:780
 msgid "Lava"
 msgstr "Лава"
 
 #. [terrain]: id=road
 #. [terrain]: id=stone_path
-#: data/core/terrain.cfg:771 data/core/terrain.cfg:789
-#: data/core/terrain.cfg:798
+#: data/core/terrain.cfg:794 data/core/terrain.cfg:812
+#: data/core/terrain.cfg:821
 msgid "Road"
 msgstr "Път"
 
 #. [terrain]: id=dirt
-#: data/core/terrain.cfg:780
+#: data/core/terrain.cfg:803
 msgid "Dirt"
 msgstr "Прахоляк"
 
 #. [terrain]: id=farm
-#: data/core/terrain.cfg:807
+#: data/core/terrain.cfg:830
 msgid "Farmland"
 msgstr "Земеделска земя"
 
 #. [terrain]: id=swamp_water
-#: data/core/terrain.cfg:821
+#: data/core/terrain.cfg:844
 msgid "Swamp"
 msgstr "Блато"
 
 #. [terrain]: id=lit
-#: data/core/terrain.cfg:835
+#: data/core/terrain.cfg:858
 msgid "Lit"
 msgstr ""
 
 #. [terrain]: id=cave
-#: data/core/terrain.cfg:845
+#: data/core/terrain.cfg:868
 msgid "Cave"
 msgstr "Пещера"
 
 #. [terrain]: id=cave_path
-#: data/core/terrain.cfg:863
+#: data/core/terrain.cfg:886
 #, fuzzy
 msgid "Cave path"
 msgstr "Осветена пещера"
 
 #. [terrain]: id=fungus
-#: data/core/terrain.cfg:872
+#: data/core/terrain.cfg:895
 msgid "Mushroom Grove"
 msgstr "Гъбен масив"
 
 #. [terrain]: id=fungus_beam
-#: data/core/terrain.cfg:881
+#: data/core/terrain.cfg:904
 #, fuzzy
 msgid "Mushroom Grove Lit"
 msgstr "Гъбен масив"
 
 #. [terrain]: id=rocky_cave
-#: data/core/terrain.cfg:892
+#: data/core/terrain.cfg:915
 msgid "Rockbound Cave"
 msgstr "Скалиста пещера"
 
@@ -304,90 +306,93 @@ msgstr "Скалиста пещера"
 #. [terrain]: id=hut_hills_village
 #. [terrain]: id=hut_snow_hills_village
 #. [terrain]: id=hut_mountains_village
+#. [terrain]: id=logcabin_village
+#. [terrain]: id=logcabin_snow_village
 #. [terrain]: id=mermen_village
 #. [terrain]: id=swamp_village
 #. [terrain]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:919 data/core/terrain.cfg:930
-#: data/core/terrain.cfg:943 data/core/terrain.cfg:954
-#: data/core/terrain.cfg:967 data/core/terrain.cfg:978
-#: data/core/terrain.cfg:988 data/core/terrain.cfg:999
-#: data/core/terrain.cfg:1010 data/core/terrain.cfg:1022
-#: data/core/terrain.cfg:1033 data/core/terrain.cfg:1044
-#: data/core/terrain.cfg:1055 data/core/terrain.cfg:1068
-#: data/core/terrain.cfg:1079 data/core/terrain.cfg:1090
-#: data/core/terrain.cfg:1101 data/core/terrain.cfg:1112
-#: data/core/terrain.cfg:1123 data/core/terrain.cfg:1134
-#: data/core/terrain.cfg:1147 data/core/terrain.cfg:1162
-#: data/core/terrain.cfg:1173
+#: data/core/terrain.cfg:942 data/core/terrain.cfg:953
+#: data/core/terrain.cfg:966 data/core/terrain.cfg:977
+#: data/core/terrain.cfg:990 data/core/terrain.cfg:1001
+#: data/core/terrain.cfg:1011 data/core/terrain.cfg:1022
+#: data/core/terrain.cfg:1033 data/core/terrain.cfg:1045
+#: data/core/terrain.cfg:1056 data/core/terrain.cfg:1067
+#: data/core/terrain.cfg:1078 data/core/terrain.cfg:1091
+#: data/core/terrain.cfg:1102 data/core/terrain.cfg:1113
+#: data/core/terrain.cfg:1124 data/core/terrain.cfg:1135
+#: data/core/terrain.cfg:1146 data/core/terrain.cfg:1157
+#: data/core/terrain.cfg:1168 data/core/terrain.cfg:1179
+#: data/core/terrain.cfg:1192 data/core/terrain.cfg:1207
+#: data/core/terrain.cfg:1218
 msgid "Village"
 msgstr "Селище"
 
 #. [terrain]: id=deep_water
-#: data/core/terrain.cfg:1188
+#: data/core/terrain.cfg:1233
 msgid "Deep Water"
 msgstr "Дълбоки води"
 
 #. [terrain]: id=shallow_water
-#: data/core/terrain.cfg:1198
+#: data/core/terrain.cfg:1243
 msgid "Shallow Water"
 msgstr "Плитки води"
 
 #. [terrain]: id=ford
-#: data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1253
 msgid "River Ford"
 msgstr "Брод"
 
 #. [terrain]: id=reef
-#: data/core/terrain.cfg:1219
+#: data/core/terrain.cfg:1264
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Крайбрежна"
 
 #. [terrain]: id=cloud
-#: data/core/terrain.cfg:1233
+#: data/core/terrain.cfg:1278
 msgid "Impassable Mountains"
 msgstr "Непроходими планини"
 
 #. [terrain]: id=clouddesert
-#: data/core/terrain.cfg:1242
+#: data/core/terrain.cfg:1287
 msgid "Impassable Desert Mountains"
 msgstr "Непроходими пустинни планини"
 
 #. [terrain]: id=cavewall
-#: data/core/terrain.cfg:1251
+#: data/core/terrain.cfg:1296
 msgid "Cave Wall"
 msgstr "Пещерна стена"
 
 #. [terrain]: id=wall_stone
-#: data/core/terrain.cfg:1260
+#: data/core/terrain.cfg:1305
 #, fuzzy
 msgid "Wall"
 msgstr "Пещерна стена"
 
 #. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
-#: data/core/terrain.cfg:1270 data/core/terrain.cfg:1308
+#: data/core/terrain.cfg:1315 data/core/terrain.cfg:1353
 #, fuzzy
 msgid "Impassable"
 msgstr "Непроходими планини"
 
 #. [terrain]: id=void
-#: data/core/terrain.cfg:1281
+#: data/core/terrain.cfg:1326
 msgid "Void"
 msgstr ""
 
 #. [terrain]: id=flat
-#: data/core/terrain.cfg:1294
+#: data/core/terrain.cfg:1339
 msgid "Flat"
 msgstr ""
 
 #. [terrain]: id=frozen
-#: data/core/terrain.cfg:1301
+#: data/core/terrain.cfg:1346
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]: id=unwalkable
-#: data/core/terrain.cfg:1315
+#: data/core/terrain.cfg:1360
 msgid "Unwalkable"
 msgstr ""
 
@@ -479,19 +484,19 @@ msgstr "Генериране на нова карта"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:107
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:108
 msgid "New Map"
 msgstr "Нова карта"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:119
 msgid "Width:"
 msgstr "Ширина:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:120
 msgid "Height:"
 msgstr "Височина:"
 
@@ -504,7 +509,7 @@ msgstr "Създаване на нова карта"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:153
 msgid "Resize Map"
 msgstr "Размер на картата"
 
@@ -551,7 +556,7 @@ msgstr "Размер на картата"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:105
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Настройка на горещите клавиши"
@@ -613,7 +618,7 @@ msgstr "ОК "
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Apply"
 msgstr "Прилагане"
 
@@ -666,21 +671,21 @@ msgstr "Списък с приятели"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 msgid "Add As Friend"
 msgstr "Добавяне като приятел"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
 msgid "Add As Ignore"
 msgstr "Добавяне в черният списък"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:170
 msgid "Remove"
 msgstr "Премахване"
 
@@ -840,7 +845,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:164
 msgid "Save password to preferences (clear text)"
 msgstr ""
 
@@ -952,7 +957,7 @@ msgstr "Изход от редактора"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:50 src/hotkeys.cpp:76
+#: src/game_preferences_display.cpp:51 src/hotkeys.cpp:77
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -963,8 +968,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:651
-#: src/hotkeys.cpp:938
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:653
+#: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Изход"
 
@@ -1004,346 +1009,346 @@ msgstr "Име: "
 msgid "Creation of the directory failed."
 msgstr "Директорията не може да се създаде."
 
-#: src/game_preferences.cpp:297
+#: src/game_preferences.cpp:287
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:361
+#: src/game_preferences.cpp:349
 msgid "player"
 msgstr "играч"
 
-#: src/game_preferences_display.cpp:151 src/hotkeys.cpp:55
+#: src/game_preferences_display.cpp:152 src/hotkeys.cpp:56
 msgid "Toggle Full Screen"
 msgstr "Цял екран"
 
-#: src/game_preferences_display.cpp:152
+#: src/game_preferences_display.cpp:153
 msgid "Enable scroll tracking of unit actions"
 msgstr ""
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:154
 msgid "Accelerated Speed"
 msgstr "Ускорена скорост"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:155
 msgid "Skip AI Moves"
 msgstr "Пропускате ходовете на компютъра"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:156
 msgid "Show Grid"
 msgstr "Мрежа"
 
-#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:333
+#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:334
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:336
+#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:337
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:158
+#: src/game_preferences_display.cpp:159
 msgid "Do Not Show Lobby Joins"
 msgstr "Скриване на влизанията в чакалнята"
 
-#: src/game_preferences_display.cpp:159
+#: src/game_preferences_display.cpp:160
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Показване на влизанията в чакалнята само на приятели"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:161
 msgid "Show All Lobby Joins"
 msgstr "Показване на всички влизания в чакалнята"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:162
 msgid "Sort Lobby List"
 msgstr "Сортиране на списъка на чакалнята"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:163
 msgid "Iconize Lobby List"
 msgstr "Иконизиране на списъка на чакалнята "
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:165
 msgid "Set path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Friends List"
 msgstr "Списък с приятели"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Multiplayer Options"
 msgstr "Настройки на мрежовата игра"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:171
 msgid "Show Floating Labels"
 msgstr "Показване на летящи надписи"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:172
 msgid "Turn Dialog"
 msgstr "Диалог в началото на ход"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:173
 msgid "Turn Bell"
 msgstr "Ходов звънец"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:174
 msgid "Show Team Colors"
 msgstr "Показване цветовете на отборите"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:175
 msgid "Show Color Cursors"
 msgstr "Показване на цветни курсори"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:176
 msgid "Show Haloing Effects"
 msgstr "Ефекти "
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:177
 #, fuzzy
 msgid "Change Resolution"
 msgstr "Избор на резолюция"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:178
 msgid "Theme"
 msgstr "Тема"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:179
 msgid "Hotkeys"
 msgstr "Горещи клавиши"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:180
 msgid "Reverse Time Graphics"
 msgstr "Обръщане графиките на деня и нощта"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:182
 msgid "Sound effects"
 msgstr "Звукови ефекти"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Music"
 msgstr "Музика"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "Chat Timestamping"
 msgstr "Времеви маркери на разговорите"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "sound^Advanced Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "sound^Standard Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:187
 msgid "User Interface Sounds"
 msgstr "Звуци в потребителският интерфейс "
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:190
 msgid "Custom"
 msgstr "По избор"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:192
 msgid "Show Unit Idle Animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "Music Volume:"
 msgstr "Музика:"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "SFX Volume:"
 msgstr "Звукови ефекти:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "UI Sound Volume:"
 msgstr "Сила на звуковите ефекти:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Bell Volume:"
 msgstr "Камбанка:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Scroll Speed:"
 msgstr "Скорост на местене на изгледа:"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:199
 msgid "Sample Rate (Hz):"
 msgstr "Честота на обновяване (Hz):"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:200
 msgid "Frequency:"
 msgstr ""
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:224
 msgid "Sound effects on/off"
 msgstr "Звукови ефекти "
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:228
 msgid "Change the sound effects volume"
 msgstr "Промяна силата на звуковите ефекти"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:231
 msgid "Music on/off"
 msgstr "Музика "
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:235
 msgid "Change the music volume"
 msgstr "Сила на музиката"
 
-#: src/game_preferences_display.cpp:240
+#: src/game_preferences_display.cpp:241
 msgid "Change the bell volume"
 msgstr "Сила на камбанката"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:244
 msgid "Turn menu and button sounds on/off"
 msgstr "Включване/Изключване на звуците в менюто и на бутоните"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:248
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Промяна на силата на звука на щракания на бутони и др."
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:250
 msgid "Change the sample rate"
 msgstr "Настройка на честота на дискретизация "
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259
 msgid "User defined sample rate"
 msgstr "Честота на дискретизация "
 
-#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
 msgid "Change the buffer size"
 msgstr "Промяна размера на буфера"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:811
+#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:812
 msgid "Buffer Size: "
 msgstr "Размер на буфера"
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:277
 msgid "Change the speed of scrolling around the map"
 msgstr "Промяна скоростта на местенето на изгледа из картата"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
 msgid "Set the amount of chat lines shown"
 msgstr "Настройка на броят на редовете в разговор, които се показват"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:287
 msgid "Add a timestamp to chat messages"
 msgstr "Добавяне на времеви маркер в разроворите"
 
-#: src/game_preferences_display.cpp:289
+#: src/game_preferences_display.cpp:290
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Дали играта ще върви на пълен екран или в прозорец"
 
-#: src/game_preferences_display.cpp:292
+#: src/game_preferences_display.cpp:293
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 
-#: src/game_preferences_display.cpp:295
+#: src/game_preferences_display.cpp:296
 msgid "Make units move and fight faster"
 msgstr "Кара единиците да се движат и бият по-бързо"
 
-#: src/game_preferences_display.cpp:312
+#: src/game_preferences_display.cpp:313
 msgid "Units move and fight speed"
 msgstr "Скорост на движение и бой на единиците"
 
-#: src/game_preferences_display.cpp:315
+#: src/game_preferences_display.cpp:316
 #, fuzzy
 msgid "Show unit idle animations"
 msgstr "Прескачане на анимацията"
 
-#: src/game_preferences_display.cpp:321
+#: src/game_preferences_display.cpp:322
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:326
+#: src/game_preferences_display.cpp:327
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:331
 msgid "Do not animate AI units moving"
 msgstr "Спиране на анимациите на движение на единиците на компютъра"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:339
 msgid "Overlay a grid onto the map"
 msgstr "Покриване картата с координатна мрежа"
 
-#: src/game_preferences_display.cpp:341
+#: src/game_preferences_display.cpp:342
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Сортиране на списъка с играчите в чакалнята по групи"
 
-#: src/game_preferences_display.cpp:344
+#: src/game_preferences_display.cpp:345
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Показване на иконките на потребителите пред имената им в чакалнята."
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:348
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 
-#: src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:351
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Скриване на съобщенията за присъединяване на потребители към чакалнята за "
 "мрежова игра"
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:353
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Показване на съобщения за приятели, които влизат в чакалнята"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:355
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Показване на съобщения за всички играчи, които влизат в чакалнята"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:357
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:358
 msgid "View and edit your friends and ignores list"
 msgstr "Преглед и редакция на списъка с приятелите и черният списък"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:359
 msgid "Back to the multiplayer options"
 msgstr "Назад към настройки на мрежова игра"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:360
 msgid "Add this username to your friends list"
 msgstr "Добавяне на този потребител към списъка с приятели"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:361
 msgid "Add this username to your ignores list"
 msgstr "Добавяне на този потребител към черният списък"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:362
 msgid "Remove this username from your list"
 msgstr "Премахване на този потребител от списъка"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:365
 msgid "Insert a username"
 msgstr "Добавяне на потребител"
 
-#: src/game_preferences_display.cpp:367
+#: src/game_preferences_display.cpp:368
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Показване текст над единица когато бъде ударена, показващ понесеното "
 "поражение"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:370
 msgid "Change the resolution the game runs at"
 msgstr "Промяна на разделителната способност"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:371
 msgid "Change the theme the game runs with"
 msgstr "Промяна на темата на играта"
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:374
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показване на диалог в началото на хода "
 
-#: src/game_preferences_display.cpp:376
+#: src/game_preferences_display.cpp:377
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Звън на камбанка в началото на хода"
 
-#: src/game_preferences_display.cpp:379
+#: src/game_preferences_display.cpp:380
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1351,93 +1356,93 @@ msgstr ""
 "Показване на цветен кръг в основата на всяка единица, за да покаже на коя "
 "страна е"
 
-#: src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:383
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Избор дали слънцето се движи от ляво на дясно или от дясно на ляво"
 
-#: src/game_preferences_display.cpp:385
+#: src/game_preferences_display.cpp:386
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Използване не цветни курсори на мишката(може да забавя)"
 
-#: src/game_preferences_display.cpp:388
+#: src/game_preferences_display.cpp:389
 msgid "Use graphical special effects (may be slower)"
 msgstr "Използване не графични специални ефекти(може да забавя)"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:391
 msgid "View and configure keyboard shortcuts"
 msgstr "Преглед и настройка на горещите клавиши"
 
-#: src/game_preferences_display.cpp:679
+#: src/game_preferences_display.cpp:680
 msgid "Speed: "
 msgstr "Скорост: "
 
-#: src/game_preferences_display.cpp:684 src/game_preferences_display.cpp:686
+#: src/game_preferences_display.cpp:685 src/game_preferences_display.cpp:687
 msgid "Maximum Auto-Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr "Редове: "
 
-#: src/game_preferences_display.cpp:885 src/game_preferences_display.cpp:893
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
 #, fuzzy
 msgid "Invalid username"
 msgstr "Добавяне на потребител"
 
-#: src/game_preferences_display.cpp:965
+#: src/game_preferences_display.cpp:968
 msgid "yes"
 msgstr "да"
 
-#: src/game_preferences_display.cpp:967
+#: src/game_preferences_display.cpp:970
 msgid "no"
 msgstr "не"
 
-#: src/game_preferences_display.cpp:1000
+#: src/game_preferences_display.cpp:1003
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
 msgstr "Общи"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1120
 msgid "Prefs section^Display"
 msgstr "Графика"
 
-#: src/game_preferences_display.cpp:1118
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Multiplayer"
 msgstr "Мрежова игра"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1123
 msgid "Advanced section^Advanced"
 msgstr "Допълнителни"
 
-#: src/game_preferences_display.cpp:1155
+#: src/game_preferences_display.cpp:1158
 msgid "Saved Theme Preference: "
 msgstr "Запазена предпочитана тема: "
 
-#: src/game_preferences_display.cpp:1161
+#: src/game_preferences_display.cpp:1164
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Новата тема ще влезе в действие в следващата нова или заредена игра."
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1168
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Няма намерени теми. Пробвайте да смените тема в съществуваща игра."
 
-#: src/game_preferences_display.cpp:1207
+#: src/game_preferences_display.cpp:1210
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "Зареждане"
 
@@ -1450,19 +1455,19 @@ msgstr "Зареждане"
 msgid "Version"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:308
+#: src/gui/widgets/canvas.cpp:309
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:443
+#: src/gui/widgets/canvas.cpp:444
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:814
+#: src/gui/widgets/canvas.cpp:815
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:879
+#: src/gui/widgets/canvas.cpp:880
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -1470,32 +1475,32 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:135
+#: src/gui/widgets/settings.cpp:133
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:295
+#: src/gui/widgets/settings.cpp:288
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:393
+#: src/gui/widgets/settings.cpp:385
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
+#: src/gui/widgets/settings.cpp:501 src/gui/widgets/window_builder.cpp:313
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/settings.cpp:537
+#: src/gui/widgets/settings.cpp:527
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
-#: src/gui/widgets/window_builder.cpp:422
-#: src/gui/widgets/window_builder.cpp:932
-#: src/gui/widgets/window_builder.cpp:1141
+#: src/gui/widgets/settings.cpp:756 src/gui/widgets/settings.cpp:910
+#: src/gui/widgets/window_builder.cpp:409
+#: src/gui/widgets/window_builder.cpp:923
+#: src/gui/widgets/window_builder.cpp:1132
 msgid "No grid defined."
 msgstr ""
 
@@ -1503,543 +1508,547 @@ msgstr ""
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:533
+#: src/gui/widgets/window_builder.cpp:516
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:534
+#: src/gui/widgets/window_builder.cpp:517
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:772
+#: src/gui/widgets/window_builder.cpp:763
 #, fuzzy
 msgid "No list defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/window_builder.cpp:775
+#: src/gui/widgets/window_builder.cpp:766
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:794
+#: src/gui/widgets/window_builder.cpp:784
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1063
+#: src/gui/widgets/window_builder.cpp:1051
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/hotkeys.cpp:45
+#: src/hotkeys.cpp:46
 msgid "Next Unit"
 msgstr "Следваща единица"
 
-#: src/hotkeys.cpp:46
+#: src/hotkeys.cpp:47
 msgid "Previous Unit"
 msgstr "Предишна единица"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "Hold Position"
 msgstr "Задържане на позицията"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "End Unit Turn"
 msgstr "Край на хода на единицата"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Leader"
 msgstr "Водач"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Redo"
 msgstr "Възстановяване"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Zoom In"
 msgstr "Приближаване на изгледа"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom Out"
 msgstr "Отдалечаване на изгледа"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Default Zoom"
 msgstr "Стандартен изглед"
 
-#: src/hotkeys.cpp:56 src/hotkeys.cpp:893
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:895
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Accelerated"
 msgstr "Ускорено"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Unit Description"
 msgstr "Описание на единицата"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Rename Unit"
 msgstr "Преименуване на единица"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Save Game"
 msgstr "Запис"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 #, fuzzy
 msgid "Save Replay"
 msgstr "Запис"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Save The Map"
 msgstr "Запис на картата"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Recruit"
 msgstr "Набор"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Repeat Recruit"
 msgstr "Повтаряне на набора"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Recall"
 msgstr "Привикване"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "End Turn"
 msgstr "Край на хода"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Toggle Grid"
 msgstr "Мрежа"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Mouse Scrolling"
 msgstr "Местене на изгледа с мишката"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Status Table"
 msgstr "Състояние"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Mute"
 msgstr "Без звук"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Speak"
 msgstr "Говор"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Create Unit (Debug!)"
 msgstr "Създаване на единица(Debug!)"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Change Unit Side (Debug!)"
 msgstr "Смяна страната на единица(Debug!)"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Scenario Objectives"
 msgstr "Цел на мисията"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Unit List"
 msgstr "Списък с единици"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/hotkeys.cpp:80 src/hotkeys.cpp:90
+#: src/hotkeys.cpp:81 src/hotkeys.cpp:91
 msgid "Stop"
 msgstr "Спиране"
 
-#: src/hotkeys.cpp:81 src/hotkeys.cpp:88
+#: src/hotkeys.cpp:82 src/hotkeys.cpp:89
 msgid "Play"
 msgstr "Изпълнение"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Quit Game"
 msgstr "Изход от играта"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Set Team Label"
 msgstr "Надпис на отбор"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Label"
 msgstr "Слагане на надпис"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Clear Labels"
 msgstr "Изчистване на надписите"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Show Enemy Moves"
 msgstr "Ходове на противника"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Best Possible Enemy Moves"
 msgstr "Най-добри възможни ходове на противника"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Reset"
 msgstr "Отначало"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Next Turn"
 msgstr "Следващ ход"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Next Side"
 msgstr "Следваща страна"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 #, fuzzy
 msgid "Full map"
 msgstr "Завъртане на картата"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Each team"
 msgstr ""
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Team 1"
 msgstr ""
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Skip animation"
 msgstr "Прескачане на анимацията"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 #, fuzzy
 msgid "Close Map"
 msgstr "Затваряне"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Load Map"
 msgstr "Зареждане на карта"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Save Map"
 msgstr "Запис на карта"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 #, fuzzy
 msgid "Save Map As"
 msgstr "Запис на карта"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Map Information"
 msgstr "Генератор на карти"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 #, fuzzy
 msgid "Next Tool"
 msgstr "Следващ ход"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Избор на всичко"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 #, fuzzy
 msgid "Next Brush"
 msgstr "Следващ ход"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Default Brush"
 msgstr "Стандартен изглед"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Cut"
 msgstr "Отрязване"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Copy"
 msgstr "Копиране"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Paste"
 msgstr "Поставяне"
 
 #: src/hotkeys.cpp:127
+msgid "Export selected coordinates to system clipboard"
+msgstr ""
+
+#: src/hotkeys.cpp:129
 msgid "Select All"
 msgstr "Избор на всичко"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:133
 #, fuzzy
 msgid "Select None"
 msgstr "Избор на всичко"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:135
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:139
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:141
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:143
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:145
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:147
 msgid "Fill Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:149
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:151
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:155
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Зареждане на карта"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:157
 #, fuzzy
 msgid "Generate Map"
 msgstr "Генериране на нова карта"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:159
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Create Mask"
 msgstr "Запис"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Графика"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:169
 msgid "Refresh Image Cache"
 msgstr "Обновяване кеша на картинките"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:171
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Начертаване на терена"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Delay Shroud Updates"
 msgstr "Забавяне на промените във видимостта "
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Update Shroud Now"
 msgstr "Обновяване на видимостта"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 msgid "Continue Move"
 msgstr "Продължаване на хода"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:181
 msgid "Find Label or Unit"
 msgstr "Търсене на надпис или единица"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:182
 msgid "Speak to Ally"
 msgstr "Говорене със съюзник"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:183
 msgid "Speak to All"
 msgstr "Говорене на всички"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:184
 msgid "Help"
 msgstr "Помощ"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "View Chat Log"
 msgstr "Преглед на дневника на разговорите"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 msgid "Change the language"
 msgstr "Смяна на езика"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "Enter user command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 #, fuzzy
 msgid "Custom command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Clear messages"
 msgstr "Изчистване на надписите"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:193
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:194
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:651 src/hotkeys.cpp:938
+#: src/hotkeys.cpp:653 src/hotkeys.cpp:940
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/hotkeys.cpp:893
+#: src/hotkeys.cpp:895
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:900
+#: src/hotkeys.cpp:902
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:904
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Снимка на екрана"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:202
+#: src/mapgen_dialog.cpp:108 src/preferences_display.cpp:202
 msgid "Close Window"
 msgstr "Затваряне"
 
-#: src/mapgen_dialog.cpp:112
+#: src/mapgen_dialog.cpp:111
 msgid "Map Generator"
 msgstr "Генератор на карти"
 
-#: src/mapgen_dialog.cpp:119
+#: src/mapgen_dialog.cpp:118
 msgid "Players:"
 msgstr "Играчи:"
 
-#: src/mapgen_dialog.cpp:122
+#: src/mapgen_dialog.cpp:121
 msgid "Number of Hills:"
 msgstr "Брой хълмове:"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:122
 msgid "Max Hill Size:"
 msgstr "Максимален размер на хълмовете:"
 
-#: src/mapgen_dialog.cpp:124
+#: src/mapgen_dialog.cpp:123
 msgid "Villages:"
 msgstr "Селища:"
 
-#: src/mapgen_dialog.cpp:125
+#: src/mapgen_dialog.cpp:124
 msgid "Castle Size:"
 msgstr "Размер на замъците:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:125
 msgid "Landform:"
 msgstr "Вид на земята:"
 
-#: src/mapgen_dialog.cpp:244
+#: src/mapgen_dialog.cpp:243
 msgid "Roads Between Castles"
 msgstr "Пътища между замъците"
 
-#: src/mapgen_dialog.cpp:304
+#: src/mapgen_dialog.cpp:303
 msgid "/1000 tiles"
 msgstr "/1000 полета"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:313
 msgid "Coastal"
 msgstr "Крайбрежна"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:313
 msgid "Inland"
 msgstr "Континентална"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:313
 msgid "Island"
 msgstr "Островна"
 
-#: src/marked-up_text.cpp:332
+#: src/marked-up_text.cpp:395
 msgid "The maximum text width is less than 1."
 msgstr ""
 

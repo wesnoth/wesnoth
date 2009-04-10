@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2009-03-18 00:56+0100\n"
 "Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -46,6 +46,7 @@ msgstr ""
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/goblins/Pillager.cfg:34
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
@@ -213,7 +214,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
+#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
 #: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
 #: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
@@ -230,7 +231,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:45
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Sergeant.cfg:47
@@ -328,8 +329,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:75
 #: data/core/units/goblins/Rouser.cfg:37
-#: data/core/units/goblins/Spearman.cfg:28
-#: data/core/units/goblins/Spearman.cfg:38
+#: data/core/units/goblins/Spearman.cfg:42
+#: data/core/units/goblins/Spearman.cfg:52
 #: data/core/units/goblins/Impaler.cfg:28
 #: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/undead/Skele_Chocobone.cfg:25
@@ -671,11 +672,11 @@ msgstr ""
 #: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Woodsman_Trapper.cfg:70
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/humans/Outlaw_Thief.cfg:188
 #: data/core/units/humans/Woodsman.cfg:41
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
-#: data/core/units/humans/Woodsman_Poacher.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -971,13 +972,13 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Rider.cfg:57
 #: data/core/units/elves/Hero.cfg:44 data/core/units/elves/Champion.cfg:45
 #: data/core/units/elves/Fighter.cfg:45
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:54
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
 #: data/core/units/undead/Skeleton_Archer.cfg:40
 #: data/core/units/undead/Skele_Banebow.cfg:40
@@ -1103,7 +1104,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Silver.cfg:48
 #: data/core/units/humans/Mage_Arch.cfg:81
 #: data/core/units/humans/Mage_Red.cfg:66
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:38
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
 msgstr "bâton"
 
@@ -1649,7 +1650,7 @@ msgid "Goblin Spearman"
 msgstr "Porte-lance gobelin"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
-#: data/core/units/goblins/Spearman.cfg:20
+#: data/core/units/goblins/Spearman.cfg:21
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -2825,25 +2826,6 @@ msgstr "fronde"
 msgid "female^Outlaw"
 msgstr "Hors-la-loi"
 
-#. [female]
-#: data/core/units/humans/Outlaw.cfg:105
-msgid ""
-"female^After some years of service, former 'footpads' rise up in the ranks "
-"of their fellow outlaws. Having proven themselves in combat, they are given "
-"more dangerous tasks, and a greater share of the spoils. Though many "
-"opponents would mock their choice of weaponry, the outlaws are well aware of "
-"its deadly capacity, and also of the ready availability of ammunition. "
-"Outlaws are somewhat ill at ease fighting during the day, preferring the "
-"cover of nightfall."
-msgstr ""
-"Après quelques années de service, les anciennes petites frappes gravissent "
-"les rangs de leurs pairs hors-la-loi. Ayant prouvé leur habileté au combat, "
-"on leur donne des tâches plus dangereuses et une plus grande part du gâteau. "
-"Malgré le mépris que la plupart de leurs adversaires portent à leurs armes, "
-"les hors-la-loi les jugent comme parfaitement capables de tuer et comme "
-"ayant beaucoup de munitions disponibles. Les hors-la-loi n'aiment pas "
-"combattre le jour et préfèrent la protection de la nuit."
-
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
@@ -2932,24 +2914,6 @@ msgstr "gourdin"
 msgid "female^Footpad"
 msgstr "Petite frappe"
 
-#. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:166
-msgid ""
-"female^These petty criminals are often derisively called 'footpads' by their "
-"superiors, for they are tasked with any job that requires a great deal of "
-"running around, often being employed as couriers, or scouts. The endurance "
-"and agility they gain from this serves them well in combat, and despite "
-"their inferior weaponry they are quite good at harrying their enemies, "
-"especially under cover of darkness."
-msgstr ""
-"Ces petites criminelles sont souvent appelées « petites frappes » de façon "
-"moqueuse par leurs supérieurs, qui leur attribuent des tâches qui "
-"nécessitent de courir ça et là. Elles sont souvent employées comme courriers "
-"ou éclaireuses. Leur endurance et leur agilité leur sont bien utiles en "
-"combat et malgré leur armement misérable, elles peuvent harceler "
-"efficacement leurs ennemis, particulièrement sous la protection de "
-"l'obscurité."
-
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -2972,19 +2936,6 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:109
 msgid "female^Fugitive"
 msgstr "Fugitive"
-
-#. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:112
-msgid ""
-"female^Veteran criminals become notorious for both their ruthlessness and "
-"ability to elude capture. They can be dangerous and rightly fearful in their "
-"element, but are no match for the sheer numbers that law-abiding soldiery "
-"can throw at them."
-msgstr ""
-"Ces criminelles récidivistes deviennent célèbres parmi les autorités pour "
-"leur brutalité et leur faculté d'évasion. Dangereuses et effrayantes, elles "
-"peuvent susciter la crainte dans leur milieu, mais pas celle des "
-"professionnels du maintien de l'ordre."
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -3217,7 +3168,7 @@ msgid "Ranger"
 msgstr "Rôdeur"
 
 #. [unit_type]: id=Ranger, race=human
-#: data/core/units/humans/Woodsman_Ranger.cfg:22
+#: data/core/units/humans/Woodsman_Ranger.cfg:23
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3786,6 +3737,21 @@ msgstr ""
 "Les tentacules des profondeurs sont les appendices de quelque monstre "
 "gigantesque qui se tapit au-dessous des vagues."
 
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:5
+#, fuzzy
+msgid "Water Serpent"
+msgstr "Serpent de mer"
+
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:38
+msgid ""
+"Scholars differ as to the ancestry of the Water Serpent. Some hold that they "
+"are the immature young, or mature cousins, of Sea Serpents. Others hold them "
+"up as a primitive offshoot of the Nagas. What is certain is that it is wise "
+"to avoid waters where they are known to congregate."
+msgstr ""
+
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
@@ -3930,7 +3896,7 @@ msgid "Ogre"
 msgstr "Ogre"
 
 #. [unit_type]: id=Ogre, race=ogre
-#: data/core/units/ogres/Ogre.cfg:21
+#: data/core/units/ogres/Ogre.cfg:22
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -3943,7 +3909,7 @@ msgstr ""
 "leur force ne doit pas être sous-estimée."
 
 #. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
 msgstr "hachoir"
 
@@ -3953,7 +3919,7 @@ msgid "Young Ogre"
 msgstr "Jeune ogre"
 
 #. [unit_type]: id=Young Ogre, race=ogre
-#: data/core/units/ogres/Young_Ogre.cfg:21
+#: data/core/units/ogres/Young_Ogre.cfg:22
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -4594,7 +4560,7 @@ msgstr "tempête glaciale"
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:59
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
 msgstr "onde obscure"
 
@@ -4630,7 +4596,7 @@ msgstr ""
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necromancer.cfg:51
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:47
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
 msgid "chill wave"
 msgstr "onde glaciale"
 
@@ -4638,30 +4604,6 @@ msgstr "onde glaciale"
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
 msgid "female^Dark Adept"
 msgstr "Adepte des ténèbres"
-
-#. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:217
-msgid ""
-"female^To attract any practitioners, the lure of black magic must be a great "
-"prize indeed, for anyone caught practicing the art in the civilized world is "
-"subject to a death sentence. And yet there are those who pursue this art, "
-"for the prize offered is nothing less than immortality. Hidden away in "
-"secret cults, or initiated into the dark orders of the underworld, the "
-"training which these fanatics must endure often drives them to exhaustion "
-"and enfeeblement.\n"
-"\n"
-"In such condition, their only weapon is the craft they have so committed "
-"themselves to learning."
-msgstr ""
-"L'attrait de la magie noire doit être très élevé pour séduire ses adeptes, "
-"car toute personne surprise pratiquant cet art dans le monde civilisé est "
-"condamnée à mort. Certains persistent pourtant, car la récompense attendue "
-"n'est rien moins que l'immortalité. Cachées dans des sectes secrètes ou "
-"initiées dans des ordres sombres du monde occulte, ces fanatiques endurent "
-"souvent une formation qui les affaiblit souvent jusqu'à l'épuisent.\n"
-"\n"
-"Dans de telles conditions, leur seule arme est le sérieux qu'elles "
-"consacrent à l'apprentissage."
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
@@ -4702,12 +4644,12 @@ msgstr ""
 "fidélité comblerait tout tyran et peut tenter tous ceux avides de pouvoir."
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:190
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:243
 msgid "Dark Sorceress"
 msgstr "Sorcière des ténèbres"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:196
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:249
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -5197,6 +5139,74 @@ msgstr ""
 "\n"
 "Les woses sont complètement pacifiques, mais possèdent une grande force. Ils "
 "ne sont, malgré tout, ni rapides, ni prompts à se déplacer."
+
+#~ msgid ""
+#~ "female^After some years of service, former 'footpads' rise up in the "
+#~ "ranks of their fellow outlaws. Having proven themselves in combat, they "
+#~ "are given more dangerous tasks, and a greater share of the spoils. Though "
+#~ "many opponents would mock their choice of weaponry, the outlaws are well "
+#~ "aware of its deadly capacity, and also of the ready availability of "
+#~ "ammunition. Outlaws are somewhat ill at ease fighting during the day, "
+#~ "preferring the cover of nightfall."
+#~ msgstr ""
+#~ "Après quelques années de service, les anciennes petites frappes "
+#~ "gravissent les rangs de leurs pairs hors-la-loi. Ayant prouvé leur "
+#~ "habileté au combat, on leur donne des tâches plus dangereuses et une plus "
+#~ "grande part du gâteau. Malgré le mépris que la plupart de leurs "
+#~ "adversaires portent à leurs armes, les hors-la-loi les jugent comme "
+#~ "parfaitement capables de tuer et comme ayant beaucoup de munitions "
+#~ "disponibles. Les hors-la-loi n'aiment pas combattre le jour et préfèrent "
+#~ "la protection de la nuit."
+
+#~ msgid ""
+#~ "female^These petty criminals are often derisively called 'footpads' by "
+#~ "their superiors, for they are tasked with any job that requires a great "
+#~ "deal of running around, often being employed as couriers, or scouts. The "
+#~ "endurance and agility they gain from this serves them well in combat, and "
+#~ "despite their inferior weaponry they are quite good at harrying their "
+#~ "enemies, especially under cover of darkness."
+#~ msgstr ""
+#~ "Ces petites criminelles sont souvent appelées « petites frappes » de façon "
+#~ "moqueuse par leurs supérieurs, qui leur attribuent des tâches qui "
+#~ "nécessitent de courir ça et là. Elles sont souvent employées comme "
+#~ "courriers ou éclaireuses. Leur endurance et leur agilité leur sont bien "
+#~ "utiles en combat et malgré leur armement misérable, elles peuvent "
+#~ "harceler efficacement leurs ennemis, particulièrement sous la protection "
+#~ "de l'obscurité."
+
+#~ msgid ""
+#~ "female^Veteran criminals become notorious for both their ruthlessness and "
+#~ "ability to elude capture. They can be dangerous and rightly fearful in "
+#~ "their element, but are no match for the sheer numbers that law-abiding "
+#~ "soldiery can throw at them."
+#~ msgstr ""
+#~ "Ces criminelles récidivistes deviennent célèbres parmi les autorités pour "
+#~ "leur brutalité et leur faculté d'évasion. Dangereuses et effrayantes, "
+#~ "elles peuvent susciter la crainte dans leur milieu, mais pas celle des "
+#~ "professionnels du maintien de l'ordre."
+
+#~ msgid ""
+#~ "female^To attract any practitioners, the lure of black magic must be a "
+#~ "great prize indeed, for anyone caught practicing the art in the civilized "
+#~ "world is subject to a death sentence. And yet there are those who pursue "
+#~ "this art, for the prize offered is nothing less than immortality. Hidden "
+#~ "away in secret cults, or initiated into the dark orders of the "
+#~ "underworld, the training which these fanatics must endure often drives "
+#~ "them to exhaustion and enfeeblement.\n"
+#~ "\n"
+#~ "In such condition, their only weapon is the craft they have so committed "
+#~ "themselves to learning."
+#~ msgstr ""
+#~ "L'attrait de la magie noire doit être très élevé pour séduire ses "
+#~ "adeptes, car toute personne surprise pratiquant cet art dans le monde "
+#~ "civilisé est condamnée à mort. Certains persistent pourtant, car la "
+#~ "récompense attendue n'est rien moins que l'immortalité. Cachées dans des "
+#~ "sectes secrètes ou initiées dans des ordres sombres du monde occulte, ces "
+#~ "fanatiques endurent souvent une formation qui les affaiblit souvent "
+#~ "jusqu'à l'épuisent.\n"
+#~ "\n"
+#~ "Dans de telles conditions, leur seule arme est le sérieux qu'elles "
+#~ "consacrent à l'apprentissage."
 
 #, fuzzy
 #~ msgid "Dwarvish Masked Guardsman"

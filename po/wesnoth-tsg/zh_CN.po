@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2009-03-04 21:13-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -28,17 +28,22 @@ msgstr "TSG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "青年骑士迪奥兰，被派往接管南疆哨所...注意：本战役介绍韦诺基础。“平民”难度适合"
 "初学者。\n"
 "\n"
 "(新手难度，根据分支剧情有9或10关。)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1638,8 +1643,10 @@ msgstr "但是想想他们在你们边境造成的破坏！你不能和这些恶
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "恩...让我想想..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1720,7 +1727,7 @@ msgstr "现在我为罪行伏诛了。但为罪得报应者又有多少？"
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr "傻瓜们！那个巫妖将致我们所有人于死地！你已注定了我们的命运！"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "湖畔栖兽"
@@ -3772,6 +3779,9 @@ msgid ""
 msgstr ""
 "迪奥兰先生，韦诺的骑士，奉召回威尔丁参与哈得里克陛下主持的会议。暴风雨席卷了"
 "整个王国，每一个统领都需要面对这次攻击…"
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "恩...让我想想..."
 
 #~ msgid ""
 #~ "Minister Mefel, we are cheered by your presence. I trust that you and "

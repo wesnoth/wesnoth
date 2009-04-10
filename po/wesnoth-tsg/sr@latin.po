@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-06-22 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -30,18 +30,23 @@ msgstr "JG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Mladi vitez, Deoran, beše otposlat da preuzme zapovedanje Južnjačkom "
 "gardom... Napomena: Ovaj pohod je projektovan kao uvod u Vesnot. Nivo težine "
 "„civil“ namenjen je igračima koji igraju po prvi put.\n"
 "\n"
 "(Početnički nivo, 9 ili 10 scenarija prema izabranom račvanju.)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1802,8 +1807,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Sudbo... Moram dobro razmisliti..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1894,7 +1901,7 @@ msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Budale! Taj kosac će nam svima doneti smrt! Zapečatili ste nam sudbinu!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Zver od jezera"
@@ -4101,6 +4108,9 @@ msgstr ""
 "Ser Deoran, vitez Vesnota, beše sazvan u Veldin na savet sa kraljem "
 "Haldrikom lično. Olujni oblaci su se zahuktavali širom kraljevstva, i svaki "
 "zapovednik će biti potreban da se navala prebrodi..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Sudbo... Moram dobro razmisliti..."
 
 #~ msgid ""
 #~ "Minister Mefel, we are cheered by your presence. I trust that you and "

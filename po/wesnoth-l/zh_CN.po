@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 14:29+0100\n"
+"POT-Creation-Date: 2009-04-10 19:46+0200\n"
 "PO-Revision-Date: 2009-03-02 19:04-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: chinese\n"
@@ -47,17 +47,22 @@ msgstr "逃亡者"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
+#, fuzzy
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
 "marchlanders revolts against the tyranny of Queen Asheviere. To win their "
 "way to freedom, they must defeat not just the trained blades of Wesnothian "
 "troops but darker foes including orcs and undead.\n"
 "\n"
-"(Intermediate level, 9 scenarios)"
 msgstr ""
 "内战的阴影长时间笼罩着韦诺，一群勇敢的边界居民揭杆而起，反对Asheviere女王的暴"
 "政。为了赢得抉择的自由之路，他们不仅必须击败训练有素的韦诺正规军，而且还要挫"
 "败兽人、亡灵等黑暗面的敌人。"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:25
+msgid "(Intermediate level, 9 scenarios)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -144,7 +149,7 @@ msgstr "Annuvin的人民不愿放弃他们来之不易的自治权，特别是�
 
 #. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:30
 msgid "Baldras"
 msgstr "Baldras"
 
@@ -170,7 +175,7 @@ msgstr "地精们到达Dallben村庄"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:110
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:82
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:81
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 msgid "Death of Baldras"
 msgstr "Baldras死亡"
@@ -181,7 +186,7 @@ msgstr "Baldras死亡"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:114
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:86
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:85
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Harper死亡"
@@ -193,7 +198,7 @@ msgstr "Harper死亡"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:118
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:90
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:89
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
 msgid "Turns run out"
 msgstr "回合耗尽"
@@ -411,6 +416,13 @@ msgid ""
 "are done pillaging it."
 msgstr "地精们到达村庄了！他们肯定要掠夺一空了。"
 
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:390
+msgid ""
+"None remarked on the passing of the tiny, isolated frontier town. It was but "
+"a harbinger of the evil to come under the tyranny of Asheviere."
+msgstr ""
+
 #. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
@@ -435,14 +447,14 @@ msgstr "公民反抗"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:58
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:43
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:38
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:69
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 msgid "Rebels"
 msgstr "叛民"
 
 #. [side]: type=Cavalier, id=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:46
 msgid "Tarwen"
 msgstr "Tarwen"
 
@@ -458,41 +470,41 @@ msgstr "Tarwen"
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:70
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:52
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
 msgid "Asheviere"
 msgstr "Asheviere"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:77
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "杀掉韦诺军队指挥官，Tarwen"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:127
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:126
 msgid "Look, riders approach."
 msgstr "看，骑兵来了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:131
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:130
 msgid "Stand fast, nephew."
 msgstr "快站住，侄子。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:144
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:143
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
 "us to Elensefar for vetting."
 msgstr "奉女王之命，这个镇的长官被勒令随我们去Elensefar接受审查。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:148
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:147
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr "Garard是韦诺之王。统治我们的不是女王。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:152
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:151
 msgid ""
 "Insolent peasants, you will kneel before your betters! Asheviere is the "
 "queen of Wesnoth. The King fell three weeks ago at Abez. I shall not bandy "
@@ -504,46 +516,46 @@ msgstr ""
 "活。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:186
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:185
 msgid "Guard the gate."
 msgstr "守住大门。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:197
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:196
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "Harper，离开这里。这不是你的战斗。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:202
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:201
 msgid ""
 "I am the magistrate of Dallben, and it is YOU who will be leaving Dallben, "
 "be it dead or alive."
 msgstr "我是Dallben的长官，该离开Dallben的是你，不管是死是活。"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:217
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:216
 msgid "Get back, you cur!"
 msgstr "回来，你个狗杂种！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:231
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:230
 msgid "Get out of my village!"
 msgstr "从我的村子里滚出去！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:240
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:243
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
 "But now I fear things will be worse."
 msgstr "我们生活在王权的照料下已经够艰难的了。但现在恐怕还会更糟了。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:248
 msgid "We must tell the people of Delwyn about this."
 msgstr "我们必须把这些告诉Delwyn的人民。"
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:258
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:261
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
 "something we should face together."
@@ -551,7 +563,7 @@ msgstr ""
 "对。我们经常获得他们的援助，他们也同样有我们支持。这次是该我们共同面对了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:263
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:266
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
 "Wesnoth would fall into darkness. Now, not only do the orcs threaten our "
@@ -562,7 +574,7 @@ msgstr ""
 "了我们的土地，还有王后登上王位的不祥之兆。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:268
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:271
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
 "but we are now outlaws."
@@ -570,10 +582,17 @@ msgstr ""
 "今天我们不再是韦诺的公民了。我其实希望能有别的方式，但我们已经是罪犯了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:329
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:332
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "噢！不！我们没有时间了！他们的援军来了…."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:345
+msgid ""
+"They would be remembered only traitors rightly put down by the Queen's "
+"lances. And in the dark years to come, woe betide any who questioned it."
+msgstr ""
 
 #. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
@@ -761,6 +780,15 @@ msgid ""
 msgstr ""
 "我们逗留在这里太久了...在韦诺军毁掉我们家园前我们没法到达Elensefar带回援助"
 "了。撤退！！"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:273
+msgid ""
+"Baldras and Relnan returned to their villages to find them destroyed, with "
+"those who fought left dead and the few survivors born away to unguessable "
+"fates. It was a bitter doom, and as Wesnoth descended into darkness they "
+"would live to see worse."
+msgstr ""
 
 #. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
@@ -979,6 +1007,14 @@ msgid ""
 "Look, more riders come from the southeast. We cannot survive another "
 "assault. We are finished!"
 msgstr "看，更多的骑兵从东南方来了，我们抵不住再一轮的突袭了。我们完了！"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:608
+msgid ""
+"Indeed, Asheviere's armies had mustered and struck before the nascent "
+"rebellion could even be planned. Her power and ruthlessness - and their toll "
+"of death - would only grow greater with time."
+msgstr ""
 
 #. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
@@ -1397,7 +1433,7 @@ msgstr ""
 "直到..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:457
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:459
 msgid "My men... have failed to protect me! I perish..."
 msgstr "我的人...无法保护我！我死了..."
 
@@ -1923,48 +1959,48 @@ msgid ""
 msgstr "那个下午，另一队先头的韦诺主力军队到达了..."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:619
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:638
 msgid ""
 "I think... I think they're trying to storm Halstead itself... the fools!"
 msgstr "我想...我想他们要破坏Halstead...这群傻瓜！"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:636
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:655
 msgid "They have breached the fortress gate! Repulse them!"
 msgstr "他们已经破坏了城堡大门！击退他们！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:652
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:671
 msgid "I'm inside the tower! I'm going down to the catacombs - cover me."
 msgstr "我进到塔里了！我准备下到地下墓穴里 － 掩护我。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:662
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:681
 msgid "After about an hour..."
 msgstr "一个小时后..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:672
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:691
 msgid "It's done."
 msgstr "搞定了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:699
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:718
 msgid "The stronghold of Halstead began to shake..."
 msgstr "Halstead的堡垒开始震动..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:704
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:723
 msgid "We cannot stay here. The fortress has started to collapse!"
 msgstr "我们不能呆在这里。城堡开始倒塌了！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:735
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:754
 msgid "I think it's working! Everybody get clear NOW!"
 msgstr "我想起作用了！现在大家撤离！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:759
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:778
 msgid ""
 "With a thunderous earthquake and a vast billowing of dust, thousands of tons "
 "of stone and wood crashed in on itself. Some of it tumbled down the steep "
@@ -1975,12 +2011,12 @@ msgstr ""
 "的沉入几百尺的地下，在空心山的内部。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:764
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:783
 msgid "No one inside the fortress would make it out alive."
 msgstr "任何城堡内的人都不会活着出来了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:831
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:850
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere's host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -1990,12 +2026,12 @@ msgstr ""
 "束了。幸存的任何来自Annuvin省的人皆被处死。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:861
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:880
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "大家，帮我从这里逃出去！我陷在碎石堆里了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:865
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:884
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
@@ -2003,32 +2039,40 @@ msgstr ""
 "没人能及时救出Baldras。他和他许多的军队在那天都死在Halstead堡垒的下面。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:870
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:889
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr "我希望这个牺牲不会白费...但我们永远也不会知道了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:876
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:895
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "我们的自由之梦...消逝了...呃呃呃啊。"
 
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:902
+msgid ""
+"The rebellion had stakes its all on victory at Halstead, but win or lose, "
+"there would be no help for the villagers, ground beneath the wheels of "
+"Asheviere's wrath."
+msgstr ""
+
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:894
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:918
 msgid "Uncle!"
 msgstr "叔叔！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:898
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:922
 msgid "NO!"
 msgstr "不！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:902
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:926
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "我向你的父亲保证我会照顾你...但我没能。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:906
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:930
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2037,7 +2081,7 @@ msgstr ""
 "Harper。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:920
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:944
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
@@ -2045,13 +2089,13 @@ msgstr "继续，我的朋友们。与你们并肩作战是我做过的最光荣
 
 #. [message]: speaker=Baldras
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:940
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:964
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:970
 msgid "Your reign of terror is over, General."
 msgstr "你的恐怖统治结束了，将军。"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:952
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:976
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2061,19 +2105,19 @@ msgstr ""
 "时，今天的小胜不过是你暂缓忍受她的无法想象的痛苦。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:963
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:987
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr "这可不是小胜。你低估了自由之爱的力量。"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:967
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:991
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... unngh.."
 msgstr "你...低估了...你女王的残忍和野心...呃呃呃啊.."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:974
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:998
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2387,7 +2431,7 @@ msgid "Peasant Youth"
 msgstr "乡下青年"
 
 #. [unit_type]: id=Footpad_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:61
+#: data/campaigns/Liberty/units/Villagers.cfg:60
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
 "elsewhere in Wesnoth: reckless, cocky, and eager to explore."
@@ -2395,17 +2439,17 @@ msgstr ""
 "一头邋遢的头发的乡下青年如同其韦诺其他地方的年轻人：鲁莽，骄傲，并渴望探险。"
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:67
+#: data/campaigns/Liberty/units/Villagers.cfg:66
 msgid "female^Peasant Youth"
 msgstr "乡下青年"
 
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:77
+#: data/campaigns/Liberty/units/Villagers.cfg:76
 msgid "Watchman"
 msgstr "巡夜人"
 
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:82
+#: data/campaigns/Liberty/units/Villagers.cfg:81
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
 "human and otherwise, that prowl the Wesnoth countryside at night."
@@ -2414,17 +2458,17 @@ msgstr ""
 "家伙。"
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:84
+#: data/campaigns/Liberty/units/Villagers.cfg:83
 msgid "female^Watchwoman"
 msgstr "巡夜人"
 
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:94
+#: data/campaigns/Liberty/units/Villagers.cfg:93
 msgid "Borderer"
 msgstr "巡界人"
 
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:99
+#: data/campaigns/Liberty/units/Villagers.cfg:98
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
 "these borderers are not trained and armed to up to military standards, their "
@@ -2435,17 +2479,17 @@ msgstr ""
 "是他们天生的韧性和对本地情况的了解使得他们在自己的土地上异常强大。"
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:101
+#: data/campaigns/Liberty/units/Villagers.cfg:100
 msgid "female^Borderer"
 msgstr "巡界人"
 
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:116
+#: data/campaigns/Liberty/units/Villagers.cfg:115
 msgid "Peasant Hunter"
 msgstr "乡下偷猎者"
 
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:119
+#: data/campaigns/Liberty/units/Villagers.cfg:118
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
 "bring in much of their food supply. Their stealth and intimate knowledge of "
@@ -2455,12 +2499,12 @@ msgstr ""
 "地形的秘密知识在战斗中是有价值的财产。"
 
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:128
+#: data/campaigns/Liberty/units/Villagers.cfg:127
 msgid "Peasant Trapper"
 msgstr "乡下陷阱猎人"
 
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:133
+#: data/campaigns/Liberty/units/Villagers.cfg:131
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
 "Their hunting experience makes them most valuable at night and in forests "
@@ -2470,12 +2514,12 @@ msgstr ""
 "森林沼泽里最有价值。"
 
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:142
+#: data/campaigns/Liberty/units/Villagers.cfg:140
 msgid "Peasant Huntsman"
 msgstr "乡下丛林猎手"
 
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:147
+#: data/campaigns/Liberty/units/Villagers.cfg:145
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They can bullseye wamprats and track anything that moves "
@@ -2528,6 +2572,14 @@ msgstr "我生命结束了...我们是不是永远自由了？"
 #: data/campaigns/Liberty/utils/utils.cfg:172
 msgid "How can this be? We have lost."
 msgstr "怎么会这样？我们失败了。"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/utils/utils.cfg:188
+msgid ""
+"They returned to their village to find it destroyed, with those who fought "
+"left dead and the few survivors born away to unguessable fates. It was a "
+"bitter doom, but as Asheviere's grip tightened they would live to see worse."
+msgstr ""
 
 #~ msgid ""
 #~ "Goblins do not do well without their leaders. If we can kill this one, it "

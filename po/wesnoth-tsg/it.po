@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2009-01-04 18:17+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -26,12 +26,12 @@ msgstr "LGDS"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Un giovane cavaliere, Deoran, viene incaricato di prendere il comando della "
 "“Guardia del Sud”... Nota: questa campagna è stata preparata come "
@@ -40,6 +40,11 @@ msgstr ""
 "\n"
 "(Livello per principianti, 9 o 10 scenari a seconda del filone che "
 "sceglierai.)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1826,8 +1831,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Uhm... devo pensarci sopra..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1922,7 +1929,7 @@ msgstr ""
 "Sciocchi! Quel lich sarà la morte di noi tutti! Avete firmato la nostra "
 "condanna a morte!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Mostro del lago"
@@ -4191,6 +4198,9 @@ msgstr ""
 "Sir Deoran, cavaliere di Wesnoth, fu convocato a Weldyn per un consiglio con "
 "re Haldric in persona. Nuvole di tempesta si addensavano in tutto il reame e "
 "ogni comandante era necessario per arginare il massacro..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Uhm... devo pensarci sopra..."
 
 #~ msgid "Unead"
 #~ msgstr "Unead"

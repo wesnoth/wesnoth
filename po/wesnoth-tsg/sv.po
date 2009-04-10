@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2007-11-30 18:26+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -27,18 +27,23 @@ msgstr "TSG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Deoran, en ung riddare, sänds iväg för att ta befälet över Sydvakten... "
 "Denna kampanj är gjord som en introduktion till Wesnoth. Svårighetsgraden "
 "'Civilist' torde vara lagom för den som spelar sitt första spel.\n"
 "\n"
 "(Nybörjarnivå, 9 eller 10 scenarier, beroende på vilken väg du tar.)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1806,8 +1811,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmm... jag måste fundera på det här..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1898,7 +1905,7 @@ msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Dårar! Den där häxmästaren är slutet för oss alla! Du har beseglat vårt öde!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Sjömonstret"
@@ -4121,6 +4128,9 @@ msgstr ""
 "Sir Deoran, riddare av Wesnoth, kallades till rådslag tillsammans med "
 "självaste kung Haldric. Orosmoln hopade sig över riket och samtliga "
 "befälhavare skulle behövas för att rida ut stormen..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmm... jag måste fundera på det här..."
 
 #~ msgid ""
 #~ "Minister Mefel, we are cheered by your presence. I trust that you and "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 13:09+0100\n"
+"POT-Creation-Date: 2009-04-10 19:45+0200\n"
 "PO-Revision-Date: 2009-03-14 19:17-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -52,17 +52,22 @@ msgstr "皇室守卫"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
+#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 18 scenarios.)"
 msgstr ""
 "有传闻韦诺的北方边境受到了不死族的攻击。你，一名皇家军队的军官，被派到东方边"
 "境前线，保护村庄并查明原因。\n"
 "\n"
 "(中级难度, 18幕.)"
+
+#. [campaign]: id=Eastern_Invasion
+#: data/campaigns/Eastern_Invasion/_main.cfg:21
+msgid "(Intermediate level, 18 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -355,7 +360,7 @@ msgstr "坚持直到Dacyn两日内回来"
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:105
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:146
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:51
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:184
@@ -1530,18 +1535,24 @@ msgstr "喂，兽人，我们要么继续打，要么先压扁这些碍眼的杂
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:131
+#, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
-"fight later. (Perhaps he will die, and I will win our battle without "
-"fighting.)"
+"fight later. "
 msgstr ""
 "恩...我知道了。我们订个条约灭掉人类，然后继续我们的战斗。(也许他会死掉，我就"
 "不战而胜啦。）"
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:135
-msgid ""
-"Very well, we are allies, for now. (This foolish orc will surely perish.)"
+#, fuzzy
+msgid "This foolish orc will surely perish."
+msgstr "非常好，我们目前是联盟了。(这愚蠢的兽人一定会死。)"
+
+#. [message]: speaker=Mal-Arnai
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:135
+#, fuzzy
+msgid "Very well, we are allies, for now. "
 msgstr "非常好，我们目前是联盟了。(这愚蠢的兽人一定会死。)"
 
 #. [message]: speaker=Wak-Rano
@@ -2951,19 +2962,19 @@ msgstr "决斗"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:137
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:63
 msgid "Defeat Mal-Ravanal"
 msgstr "打败 Mal-Ravanal"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:78
 msgid ""
 "I have waited a long time for this day to come. Prepare to die, Gweddry of "
 "Wesnoth!"
 msgstr "我等这一天已经很长时间了。准备受死吧，韦诺的Gweddry！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:89
 msgid ""
 "The rules of the duel are these:\n"
 "You may recruit or recall up to 6 units.\n"
@@ -2977,26 +2988,26 @@ msgstr ""
 "最先失败的领袖会在决斗中输掉。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:124
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
 msgid ""
 "Wait - What just happened? He called more warriors out of the ground! That's "
 "not allowed!"
 msgstr "等等 － 刚发生什么了？他找来了更多勇士！那是不允许的！"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:128
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:141
 msgid ""
 "Stop talking and fight! The rules do not stop me from bringing up warriors "
 "that were already here."
 msgstr "闭嘴，给我战斗！规则并没说不能让我带更多已经在那儿的勇士。"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:152
 msgid "I... lose?..."
 msgstr "我....输了？..."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:165
 msgid "And more!"
 msgstr "和更多！"
 
@@ -3332,6 +3343,38 @@ msgstr "Grarrgg...."
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:62
 msgid "Wha'? Yah fail'd to give me protecshun..."
 msgstr "什么？你们没有给我庇护..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:73
+msgid ""
+"It was perhaps as well for the men of Gweddry's troop that they did not live "
+"to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
+"to all in its path."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:85
+msgid ""
+"Wesnoth never learned the fate of Gweddry's band, but all too soon they "
+"would suffer the rage and malice of marauding orcs and undead in a war that "
+"would end only in misery and death."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:97
+msgid ""
+"Their home country proved to be no refuge for Gweddry's weary men, and no "
+"more would it for the inhabitants of Wesnoth as foes pressed them on all "
+"sides to a final defense of the doomed kingdom."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:109
+msgid ""
+"With the staunchest defenders of Wesnoth bested on their home ground, the "
+"once-great kingdom was plunged into final darkness under the vengeful hand "
+"of Mal-Ravanal."
+msgstr ""
 
 #, fuzzy
 #~ msgid ""

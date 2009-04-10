@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2009-04-02 20:04+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -26,12 +26,12 @@ msgstr "DS"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Der junge Ritter Deoran wird entsandt, um das Kommando über die Südwacht zu "
 "übernehmen... Anmerkung: Diese Kampagne ist als Einführungskampagne für "
@@ -40,6 +40,11 @@ msgstr ""
 "\n"
 "(Einstufung: Einfach, 9 oder 10 Szenarien, abhängig vom Weg, den Ihr "
 "einschlagt)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1839,8 +1844,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmm... Ich muss nachdenken..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1938,7 +1945,7 @@ msgstr ""
 "Ihr Narren. Dieser Lich wird den Tod über uns alle bringen. Ihr habt unseren "
 "Untergang besiegelt!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Bestie des Sees"
@@ -4241,3 +4248,6 @@ msgstr ""
 "König Haldric an dessen Hof gerufen. Im ganzen Reich herrschte Unruhe und es "
 "würde jeder Anführer gebraucht werden, um wieder Ruhe und Ordnung "
 "herzustellen..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmm... Ich muss nachdenken..."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 13:09+0100\n"
+"POT-Creation-Date: 2009-04-10 19:45+0200\n"
 "PO-Revision-Date: 2008-06-24 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -60,18 +60,23 @@ msgstr "царигардејац"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
+#, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
 "the villagers and find out what is happening.\n"
 "\n"
-"(Intermediate level, 18 scenarios.)"
 msgstr ""
 "Шире се гласине о упадима немртвих на источној граници Веснота. Тебе, "
 "официра краљевске војске, послаше на поприште збивања да заштитиш сељане и "
 "извидиш шта се догађа.\n"
 "\n"
 "(Средњи ниво, 18 сценарија.)"
+
+#. [campaign]: id=Eastern_Invasion
+#: data/campaigns/Eastern_Invasion/_main.cfg:21
+msgid "(Intermediate level, 18 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:25
@@ -376,7 +381,7 @@ msgstr "Одупреш ли се до Десиновог повратка за �
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:105
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:146
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:51
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:184
@@ -1631,16 +1636,23 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
-"fight later. (Perhaps he will die, and I will win our battle without "
-"fighting.)"
+"fight later. "
 msgstr ""
 "Хм... знам. Удружимо се да уништимо ове људе, а сукоб међу нама нека сачека. "
 "(А можда ће и погинути, и ја тиме добити ову битку без даље борбе.)"
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:135
-msgid ""
-"Very well, we are allies, for now. (This foolish orc will surely perish.)"
+#, fuzzy
+msgid "This foolish orc will surely perish."
+msgstr ""
+"Врло добро, онда смо савезници, за сада. (Будаласти орк ће засигурно "
+"страдати.)"
+
+#. [message]: speaker=Mal-Arnai
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:135
+#, fuzzy
+msgid "Very well, we are allies, for now. "
 msgstr ""
 "Врло добро, онда смо савезници, за сада. (Будаласти орк ће засигурно "
 "страдати.)"
@@ -3155,12 +3167,12 @@ msgstr "Двобој"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:137
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:63
 msgid "Defeat Mal-Ravanal"
 msgstr "Поразиш ли Мал-Раванала"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:78
 msgid ""
 "I have waited a long time for this day to come. Prepare to die, Gweddry of "
 "Wesnoth!"
@@ -3168,7 +3180,7 @@ msgstr ""
 "Дуго сам чекао да овај дан дође. Спреми се да умреш, Гведри од Веснота!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:89
 msgid ""
 "The rules of the duel are these:\n"
 "You may recruit or recall up to 6 units.\n"
@@ -3183,7 +3195,7 @@ msgstr ""
 "Први вођа који падне губи двобој."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:124
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
 msgid ""
 "Wait - What just happened? He called more warriors out of the ground! That's "
 "not allowed!"
@@ -3191,7 +3203,7 @@ msgstr ""
 "Чекај — шта се то зби? Подигао је још ратника из земље! То није дозвољено!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:128
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:141
 msgid ""
 "Stop talking and fight! The rules do not stop me from bringing up warriors "
 "that were already here."
@@ -3200,12 +3212,12 @@ msgstr ""
 "који су већ ту."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:152
 msgid "I... lose?..."
 msgstr "Ја... изгубих...?"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:165
 msgid "And more!"
 msgstr "И још!"
 
@@ -3567,6 +3579,38 @@ msgstr "Грарррг..."
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:62
 msgid "Wha'? Yah fail'd to give me protecshun..."
 msgstr "Ш'а? Не пружист' ми зашт'ту..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:73
+msgid ""
+"It was perhaps as well for the men of Gweddry's troop that they did not live "
+"to see the grim tide of undead sweeping westward into Wesnoth, laying waste "
+"to all in its path."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:85
+msgid ""
+"Wesnoth never learned the fate of Gweddry's band, but all too soon they "
+"would suffer the rage and malice of marauding orcs and undead in a war that "
+"would end only in misery and death."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:97
+msgid ""
+"Their home country proved to be no refuge for Gweddry's weary men, and no "
+"more would it for the inhabitants of Wesnoth as foes pressed them on all "
+"sides to a final defense of the doomed kingdom."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Eastern_Invasion/utils/deaths.cfg:109
+msgid ""
+"With the staunchest defenders of Wesnoth bested on their home ground, the "
+"once-great kingdom was plunged into final darkness under the vengeful hand "
+"of Mal-Ravanal."
+msgstr ""
 
 #~ msgid "We have come all the way to Mal-Ravanal's capital!"
 #~ msgstr "Стигосмо све до Мал-Раваналове престонице!"

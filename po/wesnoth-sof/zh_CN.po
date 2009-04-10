@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:29+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2009-01-13 20:26+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: chinese\n"
@@ -42,16 +42,17 @@ msgstr "（挑战）"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "Lord"
-msgstr "领主"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "（困难）"
 
 #. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+msgid "Lord"
+msgstr "领主"
+
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
+#, fuzzy
 msgid ""
 "The land of Wesnoth's banner bold\n"
 "Comes not from its own land;\n"
@@ -62,7 +63,6 @@ msgid ""
 "And of the makers of the same,\n"
 "Their tale I now relate...\n"
 "\n"
-"(Expert level, 9 scenarios.)"
 msgstr ""
 "韦诺大陆的信物并不来自它自己的土地；\n"
 "它来自矮人王国，冷酷而古老，出自符文工匠之手。\n"
@@ -70,6 +70,11 @@ msgstr ""
 "它的打造者也同样伟大，我现在讲述他们的故事...\n"
 "\n"
 "(专家等级，9场景)"
+
+#. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
+msgid "(Expert level, 9 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:33
@@ -185,9 +190,6 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:120
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:301
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:338
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:152
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:454
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:76
@@ -201,8 +203,8 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:836
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:262
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:100
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:350
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:546
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:356
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:552
 msgid "Death of Rugnur"
 msgstr "Rugnur死亡"
 
@@ -230,8 +232,8 @@ msgstr "一辆大篷车被捕获（死亡）"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:570
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:270
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:112
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:366
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:566
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:372
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:572
 msgid "Time runs out"
 msgstr "回合耗尽"
 
@@ -618,8 +620,8 @@ msgstr "在大门关上后杀掉所有进了洞的精灵。"
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:80
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:552
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:108
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:358
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:554
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:364
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:560
 msgid "Death of Baglur"
 msgstr "Baglur死亡"
 
@@ -677,8 +679,10 @@ msgstr "Baglur"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:203
+#, fuzzy
 msgid ""
-"Wait! Rugnur, didn't they tell you ANYTHING when you took command here?!?"
+"Wait! Rugnur, dinna' they tell you <i>anything</i> when you took command "
+"here?!?"
 msgstr "等下！Rugnur，当你接受驻守命令的时候他们没告诉你的 什 么 吗？！"
 
 #. [message]: speaker=Rugnur
@@ -688,11 +692,13 @@ msgstr "确实没有。现在该是和平时期。你是谁？"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:211
+#, fuzzy
 msgid ""
-"Argh! I'm a retired warrior... it looks like I'll have to come out and help "
-"you, or we'll be overrun by the damn elves... argh again. Well, listen here. "
-"This entrance to the city can be closed. There's a gate. If we can close it, "
-"the elves will not be able to enter. And you elves; begone from here!"
+"Argh! I'm a retired warrior... it looks like I'll ha' to come out and help "
+"you, else we'll be overrun by the damn elves... argh again. Well, listen "
+"here. This entrance to the city can be closed. There's a gate. If we can "
+"close it, the elves will no' be able to enter. And you elves; begone from "
+"here!"
 msgstr ""
 "啊~我是一位退役的勇士...看样子我必须出山来帮帮你了，不然我们要被这该死的精灵"
 "蹂躏了...又来一次。好，听着。这个城市的入口是可以关闭的。这就是大门。如果我们"
@@ -712,10 +718,11 @@ msgstr "Baglur，你是怎么关上大门的？"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:223
+#, fuzzy
 msgid ""
-"Agh, well that's the difficulty. It's a magic gate. Indestructible. But that "
-"means it can only be closed by magic. You need to position a warrior on each "
-"of the six glyphs. When all are occupied, the gates will close. Then the "
+"Och, well that's the difficulty. It's a magic gate. Indestructible. But that "
+"means it can only be closed by magic. Ye need to position a warrior on each "
+"of the six glyphs. When all are occupied, the gates wi' close. Then the "
 "elves will be shut out of the caves forever, at least through this entrance."
 msgstr ""
 "啊，那还满困难的。这是个魔法大门，无法摧毁的。但就是说它只能靠魔法才能关上。"
@@ -729,8 +736,9 @@ msgstr "我们在魔法符号的附近驻有军队吗？可以叫他们去解封
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:231
+#, fuzzy
 msgid ""
-"Argh, well, no. Lately trolls have been more in charge of those caves where "
+"Och, well, no. Lately trolls have been more in charge of those caves where "
 "the glyphs are than we dwarves have."
 msgstr "啊~没有。最近是巨魔占着魔法符号附近的洞穴而不是矮人。"
 
@@ -788,9 +796,10 @@ msgstr "我们已经全部在文字上就位了！现在我们怎么做？"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:424
+#, fuzzy
 msgid ""
-"Just watch. The gates will close very soon. Then the elves outside - and, "
-"unfortunately, our dwarves who are still out there - will become irrelevant."
+"Just watch. The gates wi' close very soon. Then the elves outside - and, "
+"unfortunately, our dwarves who are still out there - wi' become irrelevant."
 msgstr ""
 "看好了。大门马上就要关上了。然后外面的精灵--还有，不幸的是，我们的矮人也在外"
 "面 － 就要变得和我们无关了。"
@@ -807,8 +816,9 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:502
+#, fuzzy
 msgid ""
-"If that is what you choose to do, fine, but be prepared to wait for many "
+"If that is what ye choose to do, fine, but be prepared to wait for many "
 "years."
 msgstr "如果你选择那么做，很好，但准备好等上几十年吧。"
 
@@ -1114,8 +1124,8 @@ msgstr "找到Thursagan并说服他回到矮人的城市里来"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:491
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:554
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:104
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:354
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:550
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:360
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:556
 msgid "Death of Alanin"
 msgstr "Alanin死亡"
 
@@ -1170,66 +1180,58 @@ msgid "Krawg"
 msgstr "Krawg"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:304
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:307
 msgid "Kwill yooo spakkk wit uuus?!?"
 msgstr "拟冷合沃们缩化吗？！？"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:309
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:312
 msgid "Aah! What is that?!?"
 msgstr "啊哈！那是什么？"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:313
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:316
 msgid "Is that... is that a gryphon?"
 msgstr "那是...那是个狮鹫？"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:317
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:321
 msgid "Kwes! Yooo spakkk wit uuus nuu?"
 msgstr "寺！拟野合沃们缩化？"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:321
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:325
 msgid "It's talking to us! What do you want, gryphon?"
 msgstr "他在和我们说话！你有什么需要吗，狮鹫？"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:325
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:330
 msgid "Myy namm ees Krawgg. Yooo ees oooking forr a uunmasta?"
 msgstr "沃名寺Krawgg。拟寺在早一位纹大思？"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:329
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:334
 msgid "Well, um, yes. Why, can you help us?"
 msgstr "恩，对。哎呀，你能帮我们？"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:333
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:339
 msgid "Ess... if yooo ills ka rolls aan ogras, us'll elp yoo!"
 msgstr "寺...如果拟撒掉巨诺合食人诺，沃门会板租拟！"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:337
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:343
 msgid "Sure, we'll help you fight trolls and ogres."
 msgstr "当然，我们会帮你与巨魔和食人魔战斗。"
 
-#. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:341
-msgid "Kwe... yoo ants to ide uuus, nooa? Kwe, uus kan..."
-msgstr "噫...要沃门搭栽拟，不？噫，沃门能..."
-
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:346
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:352
 msgid ""
 "Find Thursagan and convince him to come back to the dwarvish city, then "
 "bring him back to the caves"
 msgstr "找到Thursagan并说服他返回矮人城市，然后带他回洞"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:124
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:305
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:342
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:160
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:458
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:125
@@ -1239,90 +1241,87 @@ msgstr "找到Thursagan并说服他返回矮人城市，然后带他回洞"
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:172
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:469
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:840
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:362
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:558
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:368
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:564
 msgid "Death of Krawg"
 msgstr "Krawg死亡"
 
 #. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:384
 msgid "Kawn"
 msgstr "Kawn"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:399
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:405
 msgid "I see a house in the distance!"
 msgstr "我在远处看见了一栋房子！"
 
 #. [message]: speaker=narrator
 #. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:367
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:373
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:461
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:424
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:461
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:430
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:467
 msgid "Thursagan"
 msgstr "Thursagan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:426
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:432
 msgid "Go away, you birds! Or I shall burn you out of the air!"
 msgstr "走开！你这鸟。不然我把你从空中烧下来！"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:430
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:436
 msgid ""
 "He doesn't want to talk to the gryphons, apparently. I think we'll have to "
 "get someone there he will talk to..."
 msgstr "显然他不想和狮鹫谈。我想我们得找一位他愿意谈的人去..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:471
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:477
 msgid "What do you people want!? Leave me alone!"
 msgstr "你们这些人想干什么？别打搅我！"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:475
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:481
 msgid ""
 "Old mage, we come with a message from Lord Durstorn. He asks you to come "
 "back to the city."
 msgstr "老法师，我们来是带个Durstorn领主的消息的。他叫你回城市去。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:479
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:485
 msgid ""
 "Ha! That fool thinks he can order me around. Why does he want me to go back, "
 "anyway?"
 msgstr "哈！那个傻瓜想他能到处命令我。总之，他为什么叫我回去？"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:483
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:489
 msgid ""
 "We have entered into a bargain with the king of Wesnoth to craft a sceptre "
 "for him."
 msgstr "我们和韦诺之王达成一个交易帮他打造一个权杖。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:487
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:493
 msgid ""
 "Oh, and now I suppose Durstorn wants me to craft it, eh? Well I'm not going "
 "to."
 msgstr "哦，我猜Durstorn想让我去打造它，恩？我才不去呢。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:491
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:497
 msgid ""
 "You don't want to make a sceptre to contain the power of the ruby of fire? "
 "Very well, your choice is made."
 msgstr "你不想做个权杖包含着火焰红宝石的能量吗？非常好，反正你已经做了决定。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:495
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:501
 msgid "The ruby of fire, what is that, some worthless Wesnothian gem?"
 msgstr "火焰红宝石？那是什么东西？韦诺人的廉价宝石？"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:499
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:505
 msgid ""
 "It is a Wesnothian gem, but it is also supposedly the most powerful magical "
 "artifact ever seen. Even an untrained hand can use it to cast fiery bolts as "
@@ -1332,17 +1331,17 @@ msgstr ""
 "练的新手都能用它发出和大法师一样强力的火焰箭。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:503
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:509
 msgid "Oh, really? And what does Haldric want us to do with it?"
 msgstr "喔，真的？Haldric想要我们用它来做什么？"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:507
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:513
 msgid "Contain and intensify its power."
 msgstr "包含并强化它的能量。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:511
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:517
 msgid ""
 "I see. Fine then, I will help you craft this sceptre... into the most "
 "powerful magic artifact ever seen. This will be a true test of my skill. I "
@@ -1352,20 +1351,18 @@ msgstr ""
 "品。这会是对我技术一个真正的检验。我期待是个长久工程。"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:515
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:521
 msgid ""
 "Good. Now, there are still wild animals here... we have to get back into the "
 "caves."
 msgstr "好的。现在，这里还有野生动物...我们得回到洞里。"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:542
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:548
 msgid "Move Thursagan to the signpost"
 msgstr "移动Thursagan到路标"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:128
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:309
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:164
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:462
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:129
@@ -1376,12 +1373,12 @@ msgstr "移动Thursagan到路标"
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:473
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:844
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:266
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:562
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:568
 msgid "Death of Thursagan"
 msgstr "Thursagan死亡"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:584
+#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:590
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
 msgstr "好，现在我们又回洞里了！赶快，回南边，到城市去。"
 
@@ -1420,48 +1417,49 @@ msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
 msgstr "是的，我们完成了。这是Krawg，在北国是它帮助我们。"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:150
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:151
 msgid "Yaa! Mee Krawg!"
 msgstr "咿呀！沃Krawg！"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:154
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:155
 msgid "Now, where is this ruby that I am to work with, eh Durstorn?"
 msgstr "现在，我工作的红宝石在哪里？恩，Durstorn？"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:158
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:159
 msgid ""
 "In the treasury. And leave it there until you're ready to work with it - I "
 "still don't trust you."
 msgstr "在金库里，在你开始准备安装它前你离它远点 - 我还不相信你。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:162
-msgid "Ha! _You_ don't trust _me_?"
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:163
+#, fuzzy
+msgid "Ha! <i>You</i> don't trust <i>me</i>?"
 msgstr "哈！-你-不相信-我-？"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:166
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:167
 msgid ""
 "Exactly! Why would I? And I order you to stay out of the treasury, away from "
 "that ruby!"
 msgstr "当然！我为什么要？我命令你别插手金库，远离红宝石！"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:170
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:171
 msgid ""
 "You don't dictate what I am to do, Durstorn! I will do as I please, and "
 "don't stop me if you want me to make this sceptre."
 msgstr "你无法命令我做什么，Durstorn！我高兴才做，你要让我打造权杖就别阻止我。"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:174
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:175
 msgid "The ruby is mine, and don't touch it!"
 msgstr "红宝石是我的，你别碰！"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:178
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:179
 msgid ""
 "Uh, technically it's Haldric's, and I think that if Thursagan needs to see "
 "it to plan this sceptre, we must allow it."
@@ -1470,29 +1468,29 @@ msgstr ""
 "看。"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:182
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:183
 msgid "It will be as it must, then. *grumble grumble*"
 msgstr "一定会照着那样的，*咕哝嘟囔*"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:188
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:189
 msgid ""
 "Hm... a most interesting jewel. I can feel its magical power. I will start "
 "drawing up plans for the sceptre immediately."
 msgstr "恩...非常有趣的宝物。我可以感受到它的能量。我马上为这个权杖拟个计划。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:197
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:198
 msgid "Now, I will need certain materials to make this sceptre."
 msgstr "现在，我需要一些原料去打造这个权杖。"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:201
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:202
 msgid "Oh, what?"
 msgstr "噢，什么？"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:205
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:206
 msgid ""
 "I would say probably ten stone of artifact-quality gold and twenty stone of "
 "the finest coal, and many of the finest jewels in the land - we'll need "
@@ -1503,7 +1501,7 @@ msgstr ""
 "要人手去搜寻这些。我还要珠宝匠按我计划切割红宝石。"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:209
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:210
 msgid ""
 "Just use my gold and coal, I have enough! Or, if they're not 'good enough' "
 "for you, find them yourself."
@@ -1512,7 +1510,7 @@ msgstr ""
 "吧。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:213
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:214
 msgid ""
 "You try my patience, Durstorn. You know yours aren't acceptable, but you "
 "have to give me something or I can't make the sceptre!"
@@ -1521,22 +1519,23 @@ msgstr ""
 "不了这权杖了！"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:217
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:218
+#, fuzzy
 msgid ""
 "Wait, wait. The gold and coal... I think we can find those in the abandoned "
-"eastern mines, north of the Arkan-thoria. Trolls have overrun them, but "
+"eastern mines, north of the Arkan-thoria. Trolls ha' overrun them, but "
 "earlier they were the source of the finest smithing materials."
 msgstr ""
 "等等，等等。黄金和煤... 我想我们可以在废弃的东方矿坑找到。巨魔占领了那里，但"
 "以前那里是最好的锻造原料的来源地。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:221
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:222
 msgid "So, we will go to the eastern mines!"
 msgstr "所以，我们去东矿！"
 
 #. [message]: speaker=Durstorn
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:225
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:226
 msgid ""
 "Fine. As for the jewels, I will have others obtain those. That will cost "
 "quite a bit of our payment, but it can't be helped. Our people do not mine "
@@ -1545,7 +1544,7 @@ msgstr ""
 "好。至于珠宝，我有其他途径得到的。这要花不少钱，但也没办法。我们不挖珠宝。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:229
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:230
 msgid ""
 "That is acceptable. Durstorn, send some miners along with us to the Eastern "
 "Mines, and I will bring some runecrafters-in-training from the academy to "
@@ -1555,29 +1554,29 @@ msgstr ""
 "那里的敌人。"
 
 #. [unit]: type=Dwarvish Runesmith, id=Kinan    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:236
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:237
 msgid "Kinan"
 msgstr "Kinan"
 
 #. [unit]: type=Dwarvish Runesmith, id=Rynan    # wmllint: ignore
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:247
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:248
 msgid "Rynan"
 msgstr "Rynan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:255
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:256
 msgid "Two runesmiths from the academy have joined you!"
 msgstr "两位从学会来的符文工匠已经加入你"
 
 #. [message]: speaker=Alanin
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:260
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:261
 msgid ""
 "Fine, you all go to the eastern mines. Me, I'll stay here. No point going "
 "where I can't help!"
 msgstr "好，你们都去东矿。我，我呆在这里。但这决不表明我哪儿都帮不上忙！"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:265
+#: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:266
 msgid "M' 'u!"
 msgstr "促发！"
 
@@ -1643,7 +1642,8 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:302
-msgid "Also, the only coal that will melt this gold is also here."
+#, fuzzy
+msgid "Also, the only coal that wi' melt this gold is here."
 msgstr "同样地，能熔化那种黄金的煤也出自这里。"
 
 #. [message]: speaker=Rugnur
@@ -2101,33 +2101,37 @@ msgstr "2000，我没的低了！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:269
-msgid "(whispered) What are we going to do? We can't go much higher!"
+#, fuzzy
+msgid "What are we going to do? We can't go much higher!"
 msgstr "（耳语）我们怎么办？我们出不了那么高！"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:273
-msgid ""
-"(whispered) Offer him fifteen hundred, but don't go up, even if he refuses."
+#, fuzzy
+msgid "Offer him fifteen hundred, but don't go up, even if he refuses."
 msgstr "（耳语）给他1500，就算他拒绝也不加价了。"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:277
+#, fuzzy
 msgid ""
-"(whispered) Bah! Getting this cut isn't worth that much; what with Rugnur's "
-"mistake earlier, and all the other expenses, if we pay more than a thousand "
-"we'll barely even make a profit!"
+"Bah! Getting this cut isn't worth that much; what with Rugnur's mistake "
+"earlier, and all the other expenses, if we pay more than a thousand we'll "
+"barely even make a profit!"
 msgstr ""
 "（耳语）呸！切割工具值不了这么多；考虑到Rugnur早先的错误，还有其他的费用，要"
 "是我们出比1000还多我们就几乎捞不到一个子儿了！"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:281
-msgid "(whispered) So what are you going to do?"
+#, fuzzy
+msgid "So what are you going to do?"
 msgstr "（耳语）我们下步怎么办？"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:285
-msgid "(whispered) Fight him, and take the tools by force."
+#, fuzzy
+msgid "Fight him, and take the tools by force."
 msgstr "（耳语）攻击他，用武力夺得工具。"
 
 #. [message]: speaker=Thursagan
@@ -2394,10 +2398,9 @@ msgstr ""
 "他始终无法做好？恩，我们该尝试离开...但不是我们想走就能走的。我们被包围着！"
 
 #. [message]: speaker=Baglur
-#. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:212
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:222
-msgid "If you'll permit me to say so, sir, you're wrong. We could - "
+#, fuzzy
+msgid "If ye'll permit me to say so, sir, ye're wrong. We could - "
 msgstr "如果你允许我说的话，阁下，你错了。我们能..."
 
 #. [message]: speaker=Durstorn
@@ -2409,6 +2412,11 @@ msgid ""
 msgstr ""
 "闭嘴！Baglur！你根本不知道你在说什么。我分析了形势，我们完了。最好的希望是去"
 "投降。也许我们把权杖的设计图纸给精灵，他们会让我们免于一死。"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:222
+msgid "If you'll permit me to say so, sir, you're wrong. We could - "
+msgstr "如果你允许我说的话，阁下，你错了。我们能..."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:226
@@ -2771,221 +2779,6 @@ msgid ""
 msgstr ""
 "我知道了。好，快点进来。我不信他们有能力夺取这个据点，即使他们发动一场战争，"
 "我不信。"
-
-#. [scenario]: id=8_The_Dragon
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
-msgid "The Dragon"
-msgstr "巨龙"
-
-#. [side]: type=Elvish Marshal, id=Landar
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
-msgid "Landar"
-msgstr "Lyndar"
-
-#. [side]: type=Fire Dragon, id=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
-msgid "Khrakrahs"
-msgstr "Khrakrahs"
-
-#. [part]
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:100
-msgid ""
-"Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
-"lucky. I would say that, perhaps, their betrayal of Durstorn was coming back "
-"to haunt them. For the section of the old eastern mines that they reached in "
-"their flight had long since become the lair of Khrakrahs... the dragon."
-msgstr ""
-"虽然Alanin从他的精灵追击者的手中逃脱了。但矮人就没有这么幸运了。我要说，也"
-"许，是他们辜负的Durstorn回来闹鬼了。他们不知道，他们已经进入的洞窟长久以来属"
-"于Khrakrahs...巨龙。"
-
-#. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:116
-msgid "Get all heroes to the end of the tunnel"
-msgstr "让所有英雄到达地道尽头"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:178
-msgid ""
-"Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
-"our trail. What do we do now?"
-msgstr ""
-"喂，Thursagan，我们到了东边的矿洞了，但精灵还紧紧跟在我们后面。现在我们怎么"
-"办？"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:182
-msgid ""
-"Well, we have two choices. We may either stand and fight, and assuredly die, "
-"or run as quickly as possible down this path into the depths of the cave, "
-"where we may find something that will help us. Also, remember, the elves "
-"can't run as fast in caves as we can, so we may be able to get ahead of them "
-"and perhaps lay a trap."
-msgstr ""
-"恩，我们有两个选择。我们要么停下战斗，那样保证会死；要么沿这通道尽快地跑向洞"
-"的深处，说不定可以找到什么东西可以帮助我们。当然，记住，精灵在洞里没我们快，"
-"所以我们可以超过他们，说不定还可以安个陷阱。"
-
-#. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:186
-msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
-msgstr "拟门为森么不头降？塔门不过要拉个模法司头！"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:191
-msgid ""
-"If we give them the ruby, then what? They'll probably kill us anyway. And, "
-"that ruby has the power to do great things, evil things. We can't let it "
-"fall into the wrong hands."
-msgstr ""
-"如果我们给他们红宝石，然后呢？无论怎样他们都可能杀了我们。而且，如此强力的红"
-"宝石可以做正义的事，也可以做邪恶的事。我们不能让它落入魔掌。"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:195
-msgid ""
-"Then we shall run. I suggest calling to arms every last dwarf we possibly "
-"can here. This might be the last chance we'll get to do so."
-msgstr ""
-"我们该继续跑。我提议我们能行的话这里任何最后一位矮人都拿起武器。这也许是我们"
-"的最后一次机会这样做。"
-
-#. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:204
-msgid ""
-"So we're running away, eh? I don't like that, but it seems it's our only "
-"option."
-msgstr "所以我们要继续潜逃了，恩？我不喜欢如此，但看起来这是我们唯一的选择。"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:208
-msgid "If it makes you feel any better, we'll probably die this way, too."
-msgstr "我们也可能会死在这条路上，如果这能让你感觉好点的话。"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:227
-msgid "Look, there's a dragon in these caves!"
-msgstr "看！洞里有头巨龙！"
-
-#. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:231
-msgid "Ah, fresh meat!"
-msgstr "啊~鲜肉！"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:235
-msgid "And which of the great dragons are you?"
-msgstr "您是哪位巨龙？"
-
-#. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:240
-msgid ""
-"I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
-"brother, but he was weaker than me, and you will not find me so easy to "
-"defeat. Now get out of my volcano!"
-msgstr ""
-"我是Khrakrahs，历史上最伟大的巨龙！Haldric杀了我兄弟Shek'kahan，但他比我弱，"
-"你会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:244
-msgid ""
-"I'd rather face one powerful dragon than hundreds of mighty elves. Continue!"
-msgstr "我宁愿面对一头强力的巨龙也不愿面对数以百记的精灵。继续前进！"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:262
-msgid "What's this? A dwarf fighting against us with the elves?!"
-msgstr "这是？一位矮人和精灵一起对付我们？！"
-
-#. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:267
-msgid ""
-"It must be one of those Surghan mercenaries. I'll bet those elves have hired "
-"more of them. That's bad news for us, for they'll go as fast in caves as we "
-"do."
-msgstr ""
-"这绝对是个Surghan族的雇佣兵。我敢打赌那些精灵雇了更多的矮人。这对我们是个坏消"
-"息，因为他们和我们在洞里一样快。"
-
-#. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:284
-msgid ""
-"Look, I've found something here. It looks like a forge, heated by the lava. "
-"It looks magic, and it looks hot enough to make the Sceptre."
-msgstr ""
-"看，我在这儿发现了什么。看起来象个熔炉，被熔岩加热的。看起来真不可思议，而且"
-"热得可以打造权杖。"
-
-#. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:288
-msgid "That pretty metal rock is mine! Get away from it!"
-msgstr "那个漂亮的金属石是我的！从那滚开！"
-
-#. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:293
-msgid "Move Thursagan to the forge"
-msgstr "移动Thursagan到熔炉"
-
-#. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
-msgid "Defend Thursagan until the sceptre is complete"
-msgstr "保护Thursagan直到权杖完成"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:325
-msgid ""
-"This forge will work perfectly. Give me a few days here, and I can reforge "
-"the sceptre to fulfill its purpose."
-msgstr ""
-"这个熔炉会完美工作的。给我在这里几天时间，我可以改造这个权杖让它达到设计目"
-"标。"
-
-#. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:334
-msgid "Survive for 9 turns"
-msgstr "生存9回合"
-
-#. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:346
-msgid "An enemy moves onto the forge"
-msgstr "任一敌人进入熔炉"
-
-#. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:369
-msgid "You fool, you let the enemy get at me as I was unarmed!"
-msgstr "你这傻瓜，你竟让敌人够到赤手空拳的我！"
-
-#. [message]: speaker=narrator
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:375
-#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
-msgid "Ayahahh..."
-msgstr "啊呀啊..."
-
-#. [effect]: type=fire
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:412
-msgid "scepter of fire"
-msgstr "火焰权杖"
-
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:443
-msgid ""
-"I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
-"magical artifact."
-msgstr "我完成了我的工作。现在这是真正的火焰权杖，一个强力魔法物品。"
-
-#. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:447
-msgid ""
-"Good. Now, let's get out of this cave, before the elves, dwarves or bats "
-"kill us!"
-msgstr "好的。现在，在精灵，矮人或蝙蝠杀了我们之前，从这洞出去！"
-
-#. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:463
-msgid "In $turnsleft more turns I will have completed the sceptre."
-msgstr "还有$turnsleft回合我就能完成权杖"
 
 #. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
@@ -3592,6 +3385,163 @@ msgstr "啊..."
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "呃..."
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
+msgid "Ayahahh..."
+msgstr "啊呀啊..."
+
+#~ msgid "Kwe... yoo ants to ide uuus, nooa? Kwe, uus kan..."
+#~ msgstr "噫...要沃门搭栽拟，不？噫，沃门能..."
+
+#~ msgid "The Dragon"
+#~ msgstr "巨龙"
+
+#~ msgid "Landar"
+#~ msgstr "Lyndar"
+
+#~ msgid "Khrakrahs"
+#~ msgstr "Khrakrahs"
+
+#~ msgid ""
+#~ "Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
+#~ "lucky. I would say that, perhaps, their betrayal of Durstorn was coming "
+#~ "back to haunt them. For the section of the old eastern mines that they "
+#~ "reached in their flight had long since become the lair of Khrakrahs... "
+#~ "the dragon."
+#~ msgstr ""
+#~ "虽然Alanin从他的精灵追击者的手中逃脱了。但矮人就没有这么幸运了。我要说，也"
+#~ "许，是他们辜负的Durstorn回来闹鬼了。他们不知道，他们已经进入的洞窟长久以来"
+#~ "属于Khrakrahs...巨龙。"
+
+#~ msgid "Get all heroes to the end of the tunnel"
+#~ msgstr "让所有英雄到达地道尽头"
+
+#~ msgid ""
+#~ "Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
+#~ "our trail. What do we do now?"
+#~ msgstr ""
+#~ "喂，Thursagan，我们到了东边的矿洞了，但精灵还紧紧跟在我们后面。现在我们怎"
+#~ "么办？"
+
+#~ msgid ""
+#~ "Well, we have two choices. We may either stand and fight, and assuredly "
+#~ "die, or run as quickly as possible down this path into the depths of the "
+#~ "cave, where we may find something that will help us. Also, remember, the "
+#~ "elves can't run as fast in caves as we can, so we may be able to get "
+#~ "ahead of them and perhaps lay a trap."
+#~ msgstr ""
+#~ "恩，我们有两个选择。我们要么停下战斗，那样保证会死；要么沿这通道尽快地跑向"
+#~ "洞的深处，说不定可以找到什么东西可以帮助我们。当然，记住，精灵在洞里没我们"
+#~ "快，所以我们可以超过他们，说不定还可以安个陷阱。"
+
+#~ msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
+#~ msgstr "拟门为森么不头降？塔门不过要拉个模法司头！"
+
+#~ msgid ""
+#~ "If we give them the ruby, then what? They'll probably kill us anyway. "
+#~ "And, that ruby has the power to do great things, evil things. We can't "
+#~ "let it fall into the wrong hands."
+#~ msgstr ""
+#~ "如果我们给他们红宝石，然后呢？无论怎样他们都可能杀了我们。而且，如此强力的"
+#~ "红宝石可以做正义的事，也可以做邪恶的事。我们不能让它落入魔掌。"
+
+#~ msgid ""
+#~ "Then we shall run. I suggest calling to arms every last dwarf we possibly "
+#~ "can here. This might be the last chance we'll get to do so."
+#~ msgstr ""
+#~ "我们该继续跑。我提议我们能行的话这里任何最后一位矮人都拿起武器。这也许是我"
+#~ "们的最后一次机会这样做。"
+
+#~ msgid ""
+#~ "So we're running away, eh? I don't like that, but it seems it's our only "
+#~ "option."
+#~ msgstr ""
+#~ "所以我们要继续潜逃了，恩？我不喜欢如此，但看起来这是我们唯一的选择。"
+
+#~ msgid "If it makes you feel any better, we'll probably die this way, too."
+#~ msgstr "我们也可能会死在这条路上，如果这能让你感觉好点的话。"
+
+#~ msgid "Look, there's a dragon in these caves!"
+#~ msgstr "看！洞里有头巨龙！"
+
+#~ msgid "Ah, fresh meat!"
+#~ msgstr "啊~鲜肉！"
+
+#~ msgid "And which of the great dragons are you?"
+#~ msgstr "您是哪位巨龙？"
+
+#~ msgid ""
+#~ "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
+#~ "brother, but he was weaker than me, and you will not find me so easy to "
+#~ "defeat. Now get out of my volcano!"
+#~ msgstr ""
+#~ "我是Khrakrahs，历史上最伟大的巨龙！Haldric杀了我兄弟Shek'kahan，但他比我"
+#~ "弱，你会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
+
+#~ msgid ""
+#~ "I'd rather face one powerful dragon than hundreds of mighty elves. "
+#~ "Continue!"
+#~ msgstr "我宁愿面对一头强力的巨龙也不愿面对数以百记的精灵。继续前进！"
+
+#~ msgid "What's this? A dwarf fighting against us with the elves?!"
+#~ msgstr "这是？一位矮人和精灵一起对付我们？！"
+
+#~ msgid ""
+#~ "It must be one of those Surghan mercenaries. I'll bet those elves have "
+#~ "hired more of them. That's bad news for us, for they'll go as fast in "
+#~ "caves as we do."
+#~ msgstr ""
+#~ "这绝对是个Surghan族的雇佣兵。我敢打赌那些精灵雇了更多的矮人。这对我们是个"
+#~ "坏消息，因为他们和我们在洞里一样快。"
+
+#~ msgid ""
+#~ "Look, I've found something here. It looks like a forge, heated by the "
+#~ "lava. It looks magic, and it looks hot enough to make the Sceptre."
+#~ msgstr ""
+#~ "看，我在这儿发现了什么。看起来象个熔炉，被熔岩加热的。看起来真不可思议，而"
+#~ "且热得可以打造权杖。"
+
+#~ msgid "That pretty metal rock is mine! Get away from it!"
+#~ msgstr "那个漂亮的金属石是我的！从那滚开！"
+
+#~ msgid "Move Thursagan to the forge"
+#~ msgstr "移动Thursagan到熔炉"
+
+#~ msgid "Defend Thursagan until the sceptre is complete"
+#~ msgstr "保护Thursagan直到权杖完成"
+
+#~ msgid ""
+#~ "This forge will work perfectly. Give me a few days here, and I can "
+#~ "reforge the sceptre to fulfill its purpose."
+#~ msgstr ""
+#~ "这个熔炉会完美工作的。给我在这里几天时间，我可以改造这个权杖让它达到设计目"
+#~ "标。"
+
+#~ msgid "Survive for 9 turns"
+#~ msgstr "生存9回合"
+
+#~ msgid "An enemy moves onto the forge"
+#~ msgstr "任一敌人进入熔炉"
+
+#~ msgid "You fool, you let the enemy get at me as I was unarmed!"
+#~ msgstr "你这傻瓜，你竟让敌人够到赤手空拳的我！"
+
+#~ msgid "scepter of fire"
+#~ msgstr "火焰权杖"
+
+#~ msgid ""
+#~ "I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
+#~ "magical artifact."
+#~ msgstr "我完成了我的工作。现在这是真正的火焰权杖，一个强力魔法物品。"
+
+#~ msgid ""
+#~ "Good. Now, let's get out of this cave, before the elves, dwarves or bats "
+#~ "kill us!"
+#~ msgstr "好的。现在，在精灵，矮人或蝙蝠杀了我们之前，从这洞出去！"
+
+#~ msgid "In $turnsleft more turns I will have completed the sceptre."
+#~ msgstr "还有$turnsleft回合我就能完成权杖"
 
 #~ msgid ""
 #~ "Humans, halt! Don't come any closer, we dwarves don't like company..."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-20 00:47+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2006-08-31 21:52+0900\n"
 "Last-Translator: Takanobu Hirai <airhead@users.sourceforge.jp>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -62,13 +62,17 @@ msgstr "君主"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
+msgid "(Expert level, 25 scenarios.)"
+msgstr ""
+
+#. [campaign]: id=The_Rise_Of_Wesnoth
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 #, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
 "with Lich-Lord Jevyan awaits...\n"
 "\n"
-"(Expert level, 25 scenarios.)"
 msgstr ""
 "王子 Haldric を導いて滅びゆく Green 島から海を渡り、Wesnoth の王国そのものの"
 "樹立を目指せ。リッチの君主 Jevyan との対決が待ち構えている…"
@@ -254,25 +258,57 @@ msgstr "父上、僕ももう大人です。戦いで我が軍を率いさせて
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:105
+#, fuzzy
 msgid ""
-"You're showing initiative, son! I'm proud of you! You may lead our forces to "
-"battle, but I'll stay near to keep an eye on you."
+"You're showing initiative, son! I'm proud of you! Yes, you may lead our "
+"forces to battle, it is time - but I'll stay near to keep an eye on you. "
+"There is more to this raid than meets the eye, I think."
 msgstr ""
 "息子よ、お前も頼もしくなったものだな！ 私は誇りに思うぞ！ 我が軍を率いるのは"
 "お前に任せるが、お前が目の届かぬところに行かないように私は側に付いているから"
 "な。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:110
-msgid "Onward to victory!"
-msgstr "勝利に向かって進め！"
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:111
+msgid ""
+"They're Wesfolk, reavers and thieves by nature; rare is the summer they do "
+"not raid us. What mystery is in it now?"
+msgstr ""
+
+#. [message]: speaker=King Eldaric IV
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:115
+msgid ""
+"These are not normal times. When the Prince of Southbay has raised a host "
+"that could utterly destroy them, why would they compound their troubles by "
+"raising a quarrel with another king?"
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:120
+msgid "Perhaps these are refugees fleeing his advance?"
+msgstr ""
+
+#. [message]: speaker=King Eldaric IV
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:124
+msgid ""
+"Unlikely. The Prince they might evade in the wild country; south and east of "
+"here is more thickly settled with our folk, and a greater danger to them. "
+"Even supposing they could win through us, why court the wrath of the greater "
+"kingdoms?"
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:129
+msgid ""
+"We must inquire of the survivors after we defeat them. Onward to victory!"
+msgstr ""
 
 # # Outlaw Leader = Lady Outlaw = Lady Jessica 登場。
 # # 英語シナリオでは次章クリア時の「She's clever!」まで
 # # 性別を判断する手がかりがなく、ポートレイトでも判断しづらいが、
 # # 口調の統一のためここから一人称「アタシ」、二人称「アンタ」で訳した。
 #. [message]: speaker=Wesfolk Leader
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:114
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:133
 msgid ""
 "Look, a little princeling and his merry men! We'll teach you a lesson for "
 "what your kind did to us!"
@@ -281,13 +317,13 @@ msgstr ""
 "にどんな仕打ちをしたか、アタシたちが教えてやる！"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:129
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:148
 msgid ""
 "Don't forget about some of the more isolated villages, we'll need the gold!"
 msgstr "孤立したままの村のことも忘れるな、金は後々必要となるぞ！"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:137
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:156
 msgid "Make haste, son! We must win before the summer crop is in ruin."
 msgstr "息子よ、急げ！ この夏の作物を台無しにされる前に勝たねばならん！"
 
@@ -295,17 +331,17 @@ msgstr "息子よ、急げ！ この夏の作物を台無しにされる前に�
 # # 言い回しか。「under your customs of surrender」はこの
 # # ことを指していると思われる。
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:148
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:167
 msgid "I invoke the right of surrender! Don't kill me..."
 msgstr "降伏の権利を行使する！ 殺さないで…"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:152
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:171
 msgid "Why have you come to trouble our lands?"
 msgstr "なぜ僕たちの国土に厄介事を持ち込むんだ？"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:156
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:175
 msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice... They opened a gate... and..."
@@ -315,12 +351,12 @@ msgstr ""
 "かった… 門を開き… そして…"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:160
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:179
 msgid "And what?"
 msgstr "そして何だ？"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:164
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:183
 msgid ""
 "They pledged to visit all of the terrors of the hells upon the Isle. They "
 "built a great stone gate to the heart of the homeland of the orcs in the "
@@ -331,12 +367,12 @@ msgstr ""
 "Wesfolk も逃げるか奴隷になるか、二つに一つしかなかった。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:168
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:187
 msgid "Orcs are just creatures of tall tales!"
 msgstr "オークなんて、ホラ話に出てくる生き物に過ぎないよ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:172
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:191
 msgid ""
 "You've been on this island too long. I assure you that orcs exist. By now "
 "there are probably a half dozen gates to the orcish homeland. There is no "
@@ -347,7 +383,7 @@ msgstr ""
 "にもないわ。"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:176
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:195
 msgid ""
 "We must prepare the defenses! Haldric, stay at the keep. I must go and "
 "fortify our frontier."
@@ -356,14 +392,14 @@ msgstr ""
 "ばならん。"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:180
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:199
 msgid "My forces are defeated, under your customs of surrender I will go now."
 msgstr ""
 "アタシの軍は負けちまった。アンタたちの作法に則って降伏したんだし、アタシは行"
 "かせてもらうわ。"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:184
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:203
 msgid ""
 "You may go. See to it that you trouble us no more, for the custom states "
 "that you may invoke surrender but once. If we meet again, I won't be so "
@@ -373,17 +409,17 @@ msgstr ""
 "しておけ。ただし一度限りだ。次に会うときにこのような慈悲はないと思え。"
 
 #. [message]: speaker=King Eldaric IV
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:204
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:223
 msgid "We have run out of time... The crops shall spoil, we'll starve!"
 msgstr "時間を使い果たしてしまった… 作物は駄目になり、我々は飢えてしまう！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:215
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:234
 msgid "Die, Wesfolk scum!"
 msgstr "くたばれ、Wesfolk どもめ！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:227
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:246
 msgid "Feel my wrath, you fiend!"
 msgstr "思い知れ、この悪魔め！"
 
@@ -589,7 +625,7 @@ msgstr "Haldric、これについてどう思う？"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:283
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:362
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:361
 msgid "Hmm... after some thought..."
 msgstr "ふむ… しばし考えて…"
 
@@ -2276,16 +2312,17 @@ msgid "Bah, have it your way!"
 msgstr "あっそう、じゃ好きにすれば！"
 
 # #unit
-#. [unit]: id=Lady Jessica, type=$lady_store.type
+#. [unit]: id=Lady Jessene, type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:254
-msgid "Lady Jessica"
+#, fuzzy
+msgid "Lady Jessene"
 msgstr "Lady Jessica"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:285
 #, fuzzy
 msgid ""
-"I am the Lady Jessica, a noble, a princess of the Wesfolk! I was betrayed by "
+"I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
@@ -2294,7 +2331,7 @@ msgstr ""
 "リッチの不滅はもうお終いだと奴らに思い込ませた、アンタたちのお仲間の "
 "Southbay の馬鹿王子にも少なからず原因があるんだからね！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:289
 #, fuzzy
 msgid ""
@@ -2309,7 +2346,7 @@ msgstr ""
 "ないけど、奴隷鉱山やシチュー鍋に入るのを免れている人間を、オークが見過ごすは"
 "ずはないってことだけは確かだわ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:293
 #, fuzzy
 msgid "Young prince, it is time to go! We must flee before the winter snow!"
@@ -2436,7 +2473,8 @@ msgstr "英雄：すべての敵リーダーを倒す"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:293
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:224
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:120
-msgid "Death of Lady Jessica"
+#, fuzzy
+msgid "Death of Lady Jessene"
 msgstr "Lady Jessicaの死"
 
 # #cond
@@ -2580,7 +2618,7 @@ msgstr "ああ。彼らが僕たちの味方だってことを忘れないでく
 msgid "Yes, sir!"
 msgstr "仰せのままに、閣下！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:330
 #, fuzzy
 msgid "Yes sir, indeed! You need us to help hold out until the ships arrive."
@@ -2614,7 +2652,7 @@ msgstr ""
 msgid "You killed my family! Die!"
 msgstr "家族を殺しやがって！ 死ね！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:362
 #, fuzzy
 msgid ""
@@ -2750,7 +2788,7 @@ msgstr ""
 msgid "I know I mentioned I can't float."
 msgstr "俺は泳げないんだって、確か前にも言ったよな。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:984
 msgid "Might I suggest a bit of a detour?"
 msgstr "ちょっと回り道を提案してもいいかしら？"
@@ -2760,7 +2798,7 @@ msgstr "ちょっと回り道を提案してもいいかしら？"
 msgid "Why?"
 msgstr "どうして？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:994
 msgid ""
 "You have the Ruby of Fire, but you have no idea what it does, correct? You "
@@ -2778,7 +2816,7 @@ msgstr ""
 "ああ、リッチの地か！ あそこは僕たちが戦いの中で初めて魔術師を使った場所で、君"
 "たちの民との戦争も、あれで流れが変わったんだ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1005
 #, fuzzy
 msgid ""
@@ -2927,7 +2965,7 @@ msgstr ""
 "よし、それじゃあリッチの石化を解いて奴の本をいただいて、下水道に入るとしよう"
 "か。…その本って何語で書いてあるんだろう？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:269
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
 msgstr ""
@@ -2939,7 +2977,7 @@ msgstr ""
 msgid "Ohh."
 msgstr "それはそれは。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:277
 msgid "Just get the book, I think I should be able to translate it."
 msgstr "本を取ってくるだけよ。翻訳はアタシにもできると思うから。"
@@ -2950,7 +2988,7 @@ msgstr "本を取ってくるだけよ。翻訳はアタシにもできると思
 msgid "Then, into Southbay's sewer."
 msgstr "そして Southbay の下水道に逃げ込むと。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:285
 msgid "Right."
 msgstr "わかってるじゃない。"
@@ -2967,7 +3005,7 @@ msgstr ""
 msgid "There's an odd monolith standing near here."
 msgstr ""
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:321
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
@@ -2975,158 +3013,159 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:341
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:340
 #, fuzzy
 msgid ""
-"INSCRIPTION: This monolith was erected by me, <CHIPPED AWAY>, first Mage of "
-"the good people of the Green Isle. By its power the Lich-Lord is bound in "
-"stone. To end the spell a noble of the line of Kings should utter the "
-"following..."
+"INSCRIPTION: This monolith was erected by me, &lt;CHIPPED AWAY&gt;, first "
+"Mage of the good people of the Green Isle. By its power the Lich-Lord is "
+"bound in stone. To end the spell a noble of the line of Kings should utter "
+"the following..."
 msgstr ""
 "碑文：この石柱は、Green 島が輩出した最初の魔術師たる我輩（崩れて読み取れず）"
 "により建立されたものである。その力により、かのリッチが石に縛り付けられてい"
 "る。呪文を解くには、王の系譜に名を連ねる高貴な者が唱える以下の…"
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:364
 msgid "I think I'll say that magic phrase."
 msgstr "よし、魔法の呪文を唱えよう。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:399
+#, fuzzy
 msgid ""
 "The lich is free! Let's bash him and grab that book. That sounds like a job "
-"for you, Lady Jessica!"
+"for you, Lady Jessene!"
 msgstr ""
 "リッチが解き放たれた！ 奴を叩きのめして本を奪い取ろう。Lady Jessica、この仕事"
 "は君に向いてるんじゃない？"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:404
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:403
 msgid "Hmph! You're just happy because that monolith proves your paternity!"
 msgstr ""
 "もう！ 石柱がアンタの血統を証明したってだけで喜んでる場合じゃないでしょ！"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:408
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:407
 msgid "Free, I'm free, and I feel the Ruby of Fire! It will be mine."
 msgstr ""
 "自由だ、やっと自由になれた！ それに炎のルビーが近くにあるのを感じるぞ。そいつ"
 "は私がいただこう！"
 
 #. [message]: speaker=Minister Edmond
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:412
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:411
 msgid "No you won't, you soldier of darkness!"
 msgstr "いいやそうはいくか、この暗黒の兵士め！"
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:418
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:417
 msgid "I think I'll wait a while before uttering any magic phrases."
 msgstr "魔法の呪文を唱えるのは、もう少し待ってからでもいいかな。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:423
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:422
 msgid "We have more pressing matters to deal with before we free that lich."
 msgstr ""
 "リッチを解放する前に、もっと差し迫ってやらなきゃならない事があるんじゃないか"
 "な。"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:428
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:427
 msgid "Afraid you'll find out you're not of the line of Kings?"
 msgstr ""
 "アンタ、自分が王の系譜じゃないとわかったらどうしようとか、そんなことでため"
 "らってるんじゃないでしょうね？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:438
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:437
 msgid "This sounds like a job for Prince Haldric, hopefully."
 msgstr "これは Haldric 王子の役目のようだ――であればよいのだが。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:451
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:450
 msgid "The Lich-Lord is already free."
 msgstr "リッチ君主は既に解き放たれている。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:474
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:473
 msgid "NW - Southbay."
 msgstr "北西 - Southbay"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:479
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:478
 msgid "More Like NW - Every orc on the Isle. Hmph!"
 msgstr "やれやれ、「北西 - 島中のオーク」の間違いじゃないの？"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:510
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:509
 msgid "We have the book, let's get out of here!"
 msgstr "本は手に入れたし、ここから退散しよう！"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:515
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:514
 msgid "Sounds good to me."
 msgstr "それを聞いて安心したわ。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:545
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:544
 #, fuzzy
 msgid "I feel like I'm forgetting something. Ohh, the book!"
 msgstr "何か忘れている気がする。ああ、本！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:554
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
 msgid "Prince Haldric must be the first into the sewers of Southbay."
 msgstr "Southbay の下水道へは Haldric 王子が先頭となって入らねばならない。"
 
 # #unit
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:578
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:577
 msgid "Rarlg"
 msgstr "Rarlg"
 
 #. [message]: speaker=Rarlg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:583
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:582
 msgid "Rarlg - argh, a raul-rarlg!"
 msgstr "Rarlg - argh, a raul-rarlg!"
 
 #. [message]: speaker=Prince Haldric
 #. [message]: speaker=Ut'Tan-Grilg
 #. [message]: speaker=Tan-Pulk
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:587
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:591
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:595
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:586
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:590
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:594
 msgid "Oh my!"
 msgstr "何だあ！"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:599
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:598
 msgid "And he brought a friend."
 msgstr "あ、お友達も連れて来てるみたい。"
 
 # #unit
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:606
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:605
 msgid "Raul-Rarlg"
 msgstr "Raul-Rarlg"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:618
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:617
 msgid "So close. So close."
 msgstr "あと一歩、あと一歩のところだったのに。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:623
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:622
 msgid "I found the book in what was left of his robes! Let's get out of here!"
 msgstr "彼のローブの中に本を見つけた！ 早くここから退散しよう！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:676
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:675
 msgid "I can hear their reinforcements coming! We're trapped! All is lost!"
 msgstr "奴らの増援部隊が来たみたいだ！ もう逃げ場がない！ もうお終いだ！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:694
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:693
 msgid "Sewer - Danger Keep Out!"
 msgstr "下水道 - 危険につき立入り禁止！"
 
@@ -3242,7 +3281,7 @@ msgstr ""
 msgid "Nooo! The wizards are flooding the sewer. We're doomed!"
 msgstr "だめだ！ 魔術師が下水道を氾濫させている。僕たちはお終いだ！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:196
 #, fuzzy
 msgid ""
@@ -3400,7 +3439,7 @@ msgstr ""
 "ふん！ 今更どうでも良いことだ。こいつは何だ？ 君は Wesfolk の放浪者まで連れて"
 "いるのか。他の者もろともつまみ出せ！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:127
 #, fuzzy
 msgid "You've put my people out in the snow? Prepare to meet your fate you- -"
@@ -3429,7 +3468,7 @@ msgstr ""
 msgid "Let them all in! For the sake of humanity on this isle!"
 msgstr "皆をお入れください！ この島に生きる者の慈悲のために！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:143
 msgid ""
 "And because I can sweeten the deal. I can save the lives of all of the "
@@ -3446,7 +3485,7 @@ msgstr ""
 msgid "Hmm... Very well. I so swear. Speak."
 msgstr "ふむ… よかろう。であれば誓おう。話せ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:151
 msgid ""
 "First, I CAN translate the book that will allow Haldric to use the Ruby of "
@@ -3455,7 +3494,7 @@ msgstr ""
 "まず、Haldric が炎のルビーを使えるようになるための本を翻訳できるのは私だけで"
 "す。このアーティファクトは今後起こることにおいて役立つはずです。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:155
 msgid ""
 "Second, I know the way to the mysterious lands of the east. Addroran, I was "
@@ -3475,7 +3514,7 @@ msgstr "同行―― 何だって？"
 msgid "She's just full of surprises."
 msgstr "彼女といるとビックリすることばかりだな。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:167
 #, fuzzy
 msgid ""
@@ -3499,7 +3538,7 @@ msgstr ""
 "れになぜ東へ？ 我々は既にオークの襲撃を撃退しているし、それは冬の到来にも間に"
 "合った。我々は島の奪回に向けて邁進すべきだ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:175
 #, fuzzy
 msgid ""
@@ -3514,7 +3553,7 @@ msgstr ""
 "他の者がそこでどんな暮らしぶりをしているかをお考えください。奴隷となるか死"
 "か、いずれかしかないのです。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:179
 msgid ""
 "Learn the lesson of my people. If we had fled here while even one of our "
@@ -3542,7 +3581,7 @@ msgstr ""
 "収穫を取り入れていた。氷の下に棲む魚の大群を獲ることもできる。君たちが充分に"
 "食料を備えた船で出発することだってできるかもしれない！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:187
 msgid "Don't you intend to come with us?"
 msgstr "我々とともに行くと、お考えいただけないのですか？"
@@ -3589,12 +3628,12 @@ msgstr ""
 #, fuzzy
 msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
-"Kings of Southbay! Jessica, about that book?"
+"Kings of Southbay! Jessene, about that book?"
 msgstr ""
 "ああ、もし他に手がないのだとしたら、Southbay の王の勇敢さが吟遊詩人たちによっ"
 "て永遠に謳い継がれんことを！ Jessica、本はどうなってる？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:207
 msgid ""
 "I'll begin my translation. Oh, and you should seal up the sewer entrance."
@@ -3661,7 +3700,7 @@ msgstr "王 Addroran IX の死"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:292
 #, fuzzy
 msgid ""
-"Several months pass. Jessica has translated Lich-Lord Caror's Book of Fire "
+"Several months pass. Jessene has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
 "数ヶ月が過ぎた。Jessica はリッチ君主 Caror の本を翻訳し終えた。Haldric 王子は"
@@ -3682,7 +3721,7 @@ msgstr ""
 "いてっ！ 熱ち熱ち熱ち！ やれやれ、誰かに頼んでこいつを王笏か何かに付けてもら"
 "わないと！ 今のところは近距離の戦いに取っておいたほうが良さそうだな。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:324
 msgid "Watch it! Well, at least you're improving."
 msgstr "気をつけてよね！ あー、少なくとも上達してはいるけど。"
@@ -3740,7 +3779,7 @@ msgstr "皇太子はおられるか！ 捜しておるのだが。"
 msgid "Who is this fish man?"
 msgstr "この魚人間は何者だ？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:370
 #, fuzzy
 msgid ""
@@ -3758,7 +3797,7 @@ msgstr ""
 msgid "Indeed it is. But where is the Prince?"
 msgstr "いかにもその通り。しかし王子はいずこに？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:378
 msgid "The Crown Prince is dead. But we have need of your services again- -"
 msgstr "皇太子は死にました。しかし今一度あなたの助けが必要です――"
@@ -3769,7 +3808,7 @@ msgid "Under the same terms?"
 msgstr "同じ条件で？"
 
 # # 初出はJessicaの台詞だが、エルフ王たちと重複になっている。要注意。
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #. [message]: speaker=Lady Dionli
 #. [message]: speaker=Lord Aryad
 #. [message]: speaker=Lord El'Isomithir
@@ -3835,7 +3874,7 @@ msgstr ""
 "退屈しのぎに死から蘇らせてやるかも知れんがな。おや、これはなんだ？ 感じる、炎"
 "のルビーがあるのを感じるぞ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:469
 #, fuzzy
 msgid ""
@@ -3870,12 +3909,12 @@ msgstr "やめろ！"
 msgid "Fath-er! Join... us..."
 msgstr "父…上！ 我らの… もとに…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:489
 msgid "His older brother was more attractive..."
 msgstr "彼の兄のほうが魅力的ではあったがな…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:532
 #, fuzzy
 msgid ""
@@ -3894,7 +3933,8 @@ msgstr "Clearwater 港へ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:589
-msgid "To the Midlands & Oldwood"
+#, fuzzy
+msgid "To the Midlands &amp; Oldwood"
 msgstr "内陸府 および Oldwood へ"
 
 #. [message]: speaker=narrator
@@ -3941,7 +3981,7 @@ msgid ""
 msgstr ""
 "息子たちよ―― 前に話したとおりだ。私は最期のときまで Southbay を守り抜く。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:708
 msgid ""
 "With the help of the Merfolk, and my knowledge of an island that will make a "
@@ -3951,7 +3991,7 @@ msgstr ""
 "マーフォークの助力もあるし、アタシは再補給地点に丁度いい島を知っている。これ"
 "でいつでも東方の大陸に向けて出航できるはずだわ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:712
 #, fuzzy
 msgid ""
@@ -4040,7 +4080,7 @@ msgstr ""
 msgid "Land! Land! Bless the Lords of Light!"
 msgstr "陸だ！ 陸だ！ 光の神様ありがとう！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:205
 msgid ""
 "This is the Elder Prince's island all right. We had a heck of a time "
@@ -4056,12 +4096,6 @@ msgstr ""
 "僕たちは争いに来たのではありません。船の再補給ができるところを探しているだけ"
 "です。"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:213
-#, fuzzy
-msgid "(whispered) I don't think diplomacy is going to work."
-msgstr "（ささやく）外交儀礼は通じそうにないわよ。"
-
 #. [message]: speaker=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:218
 msgid ""
@@ -4071,7 +4105,7 @@ msgstr ""
 "なァァんだ人間ども、まァァた荒らしに来やがったのか。死ぬ覚悟はできてんだろう"
 "な！ Morogor の神々に栄光あれ！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:222
 #, fuzzy
 msgid "(whispered) Do I need to say, 'I told you so'?"
@@ -4102,7 +4136,7 @@ msgstr ""
 "やれやれ、向こうの戦士たちも戦うのをあきらめたようだ。これで船の再補給ができ"
 "るぞ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:263
 msgid ""
 "The nice thing is, they'll go back to guarding this island after we're gone "
@@ -4120,7 +4154,7 @@ msgstr ""
 "この島はゆっくりと沈んでいる。うーん、奴らが棲むのに相当小さくなったら一体ど"
 "うするつもりなんだろう？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:271
 #, fuzzy
 msgid ""
@@ -4145,7 +4179,7 @@ msgstr "それはちょっと勘弁して欲しいな。聞かなきゃよかっ
 msgid "Neep! Neep!"
 msgstr "Neep! Neep!"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:315
 #, fuzzy
 msgid ""
@@ -4249,7 +4283,7 @@ msgstr "Toothey the Serpent"
 msgid "We've defeated the nagas. The fleet should be able to regroup here."
 msgstr "ナーガを倒したぞ。ここで艦隊を再編成できるだろう。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:307
 msgid ""
 "The next time we see land, it should be the great continent to the east."
@@ -4263,12 +4297,12 @@ msgstr ""
 "この航海が終わったらホッとするだろうな。もうすぐそこだ、すぐそこまで来てい"
 "る。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:344
 msgid "I think we're being followed..."
 msgstr "何かがアタシたちを付けてるような…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:358
 msgid ""
 "We were too slow... The fleet will be scattered to the four corners of the "
@@ -4394,7 +4428,7 @@ msgstr "僕たちは争いに来たのではありません。どうか我が民
 msgid "Get them!"
 msgstr "やっちまえ！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:205
 msgid ""
 "Gee, and you were practicing that speech for days. I guess that's it for "
@@ -4485,7 +4519,7 @@ msgid "I am Prince Haldric. We come in peace. May our peoples-"
 msgstr ""
 "僕は Haldric 王子。僕たちは争いに来たのではありません。どうか我が民に――"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:253
 msgid "Haldric."
 msgstr "Haldric。"
@@ -4516,7 +4550,7 @@ msgstr ""
 "いらっしゃい。あなた方の乗員はここなら安全に上陸できるでしょう。"
 
 # # 「our little friend」はJevyan側近のFamiliarのこと。
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:290
 #, fuzzy
 msgid ""
@@ -4554,7 +4588,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:316
 #, fuzzy
 msgid ""
-"May the currents carry you swiftly, my friend. (whispered) Jessica, send "
+"May the currents carry you swiftly, my friend. (whispered) Jessene, send "
 "word that a third of the fleet is to return to the Green Isle, to look for "
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
@@ -4587,7 +4621,7 @@ msgstr ""
 "Eldaric に別れを告げることになるのは、これで二度目か。少なくとも今度は最初の"
 "ときほど辛くはない。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:370
 msgid "I bet this wasn't the welcome you were expecting."
 msgstr "これはどう見ても、アンタが期待していたような歓迎じゃないわね。"
@@ -4644,7 +4678,7 @@ msgstr "ドラゴンと戦おう！"
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "Logalmier 卿よ、ドラゴンは私が倒しましょう。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:175
 msgid "Umm, you already beat the dragon, Haldric."
 msgstr "ええと Haldric、アンタもうドラゴンをやっつけたじゃない。"
@@ -4660,7 +4694,7 @@ msgstr "トカゲとナーガを海岸から追い出そう！"
 msgid "Those cold blooded monsters will feel my wrath!"
 msgstr "冷血の怪物に我が力を思い知らせましょう！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:218
 msgid "Umm, you already cleared the beach."
 msgstr "うーん、アンタもう海岸を掃除したでしょ。"
@@ -4677,7 +4711,7 @@ msgstr "トロルの穴を一掃してしまおう！"
 msgid "So what exactly is a troll?"
 msgstr "それで、トロルって一体何だろう？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:260
 #, fuzzy
 msgid "Haldric, the trolls, scales and fangs - you don't remember?"
@@ -4694,7 +4728,7 @@ msgstr "呪われた島の亡霊たちを眠りにつかせよう！"
 msgid "Undead. Bah! We're pros at fighting them."
 msgstr "アンデッドだって？ フン！ 僕たちがそんなものに怯むものか！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:302
 #, fuzzy
 msgid "How could you possibly forget the horror of the Isle of Tears?"
@@ -5025,7 +5059,7 @@ msgstr ""
 "知らせをお持ちしました。「旧友たち」が何人か、お顔を見せにおいでになるようで"
 "す。「お出迎え」したほうがよろしかろうと存じます。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:681
 #, fuzzy
 msgid ""
@@ -5111,7 +5145,7 @@ msgstr "蚊だ、蚊だ、どこもかしこも蚊だらけだ！ うわっ！"
 msgid "'Prince Haldric the Dragonbane' sounds rather nice."
 msgstr "「討竜の王子 Haldric」ってのも悪くないな。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:265
 msgid "We'll see..."
 msgstr "どうなることやら…"
@@ -5125,7 +5159,7 @@ msgstr ""
 "終わってホッとしたよ。エルフたちが僕たちに楽をさせようとは思ってないのは確か"
 "だ。そもそも僕たちの中に生き残りがいるってだけでも奇跡だよ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:278
 msgid "I'm still not calling you 'the Dragonbane'."
 msgstr "アンタを「討竜」って呼ぶのはお預けにするわ。"
@@ -5139,7 +5173,7 @@ msgstr "でかい泥蟲に気をつけろ。そいつを倒すと二つに分か
 # #unit
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:355
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:383
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:387
 msgid "Shek'kahan"
 msgstr "Shek'kahan"
 
@@ -5155,51 +5189,51 @@ msgid "We shall see."
 msgstr "そうら来た。"
 
 #. [message]: speaker=Shek'kahan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:395
 msgid "Who dares disturb Shek'kahan the Terrible?"
 msgstr "誰だ？ この Shek'kahan the Terrible に逆らおうなどという畏れ知らずは？"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:399
 msgid "I do, you fiend!"
 msgstr "僕だ、この魔物め！"
 
-#. [message]: speaker=Lady Jessica
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:429
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:433
 msgid "We still have to slay the dragon!"
 msgstr "まだドラゴンを倒す任務が残っている！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:441
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:507
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:445
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:511
 #, fuzzy
 msgid "The dragon's cave has yielded some treasure!"
 msgstr "ドラゴンの洞穴に財宝があったぞ！"
 
 # # ドラゴンの断末魔。重複になりやすそうなので注意。
 #. [message]: speaker=Shek'kahan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:466
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:470
 msgid "No!"
 msgstr "馬鹿な！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:480
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:484
 #, fuzzy
 msgid "We've slain the dragon: "
 msgstr "我々はドラゴンを討ち取った："
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:483
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:487
 msgid "Let's get out of here!"
 msgstr "すぐにここから抜け出そう！"
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:494
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:498
 msgid "Let's finish off the rest of these monsters!"
 msgstr "残りの怪物どもも片付けてしまおう！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:526
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:530
 #, fuzzy
 msgid "More saurians are arriving. They've surrounded us! We're doomed."
 msgstr ""
@@ -5261,13 +5295,13 @@ msgstr "我々の友、ナーガが来てくれるまで、この海岸を守ら
 msgid "Us, monsters? Hmph... prepare to meet our blades."
 msgstr "僕たちが怪物だって？ フン… 我が刃を受ける覚悟をしろ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:158
 #, fuzzy
 msgid "(Sigh) I bet he sees none of the irony in that."
 msgstr "（ためいき）この皮肉な状況に気づきもしないなんて、気楽でいいわねえ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:166
 #, fuzzy
 msgid "We were too slow... Every naga in the sea will be upon us!"
@@ -5378,7 +5412,7 @@ msgstr ""
 "俺はよく知ってるぜ。あいつらは緑色で、でかくて、目が合ったら虫けらみたいに叩"
 "き潰そうとしてきやがるぞ。傷もやたら早く治りやがる。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:289
 msgid ""
 "Hmm... Do we really need to know that much about the trolls? I think it's "
@@ -5450,7 +5484,7 @@ msgstr "我に仕えさせてやろう… 我を崇拝せよ。我が愛を受�
 msgid "She is so..."
 msgstr "彼女はとても…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:164
 msgid "Haldric, think with your brain!"
 msgstr "Haldric、正気に戻って！"
@@ -5499,7 +5533,7 @@ msgstr ""
 msgid "I expect we'll be facing more undead. Be careful."
 msgstr "これまで以上にアンデッドが出てきそうだ。皆気をつけろ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:344
 msgid ""
 "These will be the long dead. Not like the undead that my people used, and "
@@ -5523,7 +5557,7 @@ msgstr ""
 "あのエルフたちもようやく眠りについた。彼らの掛けた呪いが僕たちにも効くような"
 "ものじゃなければいいけど。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:362
 msgid "Haldric, you're too paranoid."
 msgstr "Haldric、アンタ心配性すぎるんじゃない。"
@@ -5554,7 +5588,7 @@ msgstr "女王がいなければアンデッドも消えうせるだけだ！"
 msgid "Back, back to the grave with you!"
 msgstr "戻れ、汝らの墓穴に戻れ！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:449
 #, fuzzy
 msgid "We still have to defeat that vampire queen!"
@@ -5579,7 +5613,8 @@ msgstr "森の中の密偵"
 # #unit
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:90
-msgid "Jessica in Hiding"
+#, fuzzy
+msgid "Jessene in Hiding"
 msgstr "Jessica（潜伏中）"
 
 # # 「Outriders」の頭が大文字になっているのが気になる。
@@ -5646,7 +5681,7 @@ msgstr ""
 msgid "(Sigh) Agreed."
 msgstr "（ため息）同意。"
 
-#. [message]: speaker=Jessica in Hiding
+#. [message]: speaker=Jessene in Hiding
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:149
 #, fuzzy
 msgid "(whispered) Some friends. I must tell Haldric."
@@ -5682,14 +5717,14 @@ msgstr "Thruf"
 #, fuzzy
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
-"orcish threat. On the eve of battle, Lady Jessica catches up with Haldric on "
+"orcish threat. On the eve of battle, Lady Jessene catches up with Haldric on "
 "a fog-covered plain."
 msgstr ""
 "Haldric とその同行者たちは、再び舞い込んできたオークの脅威を迎え撃つべく平原"
 "を急いだ。戦闘前夜、Lady Jessica は霧の立ち込める平原で Hardric に追いつい"
 "た。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:243
 msgid "Haldric, the elves, we can't trust them!"
 msgstr "Haldric、あのエルフたち、信用できないわ！"
@@ -5699,7 +5734,7 @@ msgstr "Haldric、あのエルフたち、信用できないわ！"
 msgid "I could have told you that."
 msgstr "僕もそう言いそうになったけどさ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:252
 msgid ""
 "Haldric, it's bad. The elves are having second thoughts. They think we might "
@@ -5715,7 +5750,7 @@ msgstr ""
 msgid "That does not sound unreasonable."
 msgstr "ああ、そりゃもっともな話だ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:260
 #, fuzzy
 msgid ""
@@ -5728,7 +5763,7 @@ msgstr ""
 "いいと思ってるみたい。その後で「生き残った者と取引する」、なんて連中は言って"
 "たわ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:264
 msgid ""
 "Jevyan is here... His familiar, that bat. He won't let such a lucrative "
@@ -5743,13 +5778,13 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:268
 #, fuzzy
 msgid ""
-"I have a plan. Jessica, remember that troll-hole? Here, take the Ruby of "
+"I have a plan. Jessene, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
 "僕に考えがある。Jessica、例のトロルの穴を憶えてるだろう？この炎のルビーを、あ"
 "の穴に隠してきてくれ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:272
 msgid "Haldric! What! Why?"
 msgstr "Haldric！ 何言ってんの！ どうしてよ？"
@@ -5791,7 +5826,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:315
-msgid "Lady Jessica soon departs. In the distance a voice booms:"
+#, fuzzy
+msgid "Lady Jessene soon departs. In the distance a voice booms:"
 msgstr ""
 "Lady Jessica はすぐに出発した。遠く離れたところでは怒鳴り声が響いていた――"
 
@@ -5861,9 +5897,10 @@ msgstr "増援を！ 奴らを上陸地点まで行かせるわけにはいか�
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:464
+#, fuzzy
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
-"destroys them and captures the ships. I hope Jessica makes it back soon."
+"destroys them and captures the ships. I hope Jessene makes it back soon."
 msgstr ""
 "奴らの先鋭部隊を倒したぞ。Jevyan から攻撃を受けて船を奪われる前に艦隊と合流し"
 "なくては。Jessica が早く戻ってきてくれるといいけど。"
@@ -6024,7 +6061,7 @@ msgstr "規則に従って上陸し、南に向かってください"
 msgid "Hmm, they left off the 'or the orcs will eat you' part."
 msgstr "うーん、「さもないとオークに喰われます」が抜けてるね。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:415
 msgid ""
 "I'm back, things went well! Haldric, I sure hope you know what you're doing."
@@ -6041,7 +6078,7 @@ msgstr ""
 "ええと、話は後だ。今ちょっと手が離せないんだ。君が無事戻ってきてくれてありが"
 "たいよ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:423
 msgid "Yes, it looks like you could use all of the help you can get."
 msgstr "ほんと、助けになるなら何でも使おうってご様子ね。"
@@ -6053,7 +6090,7 @@ msgid ""
 "quickly-"
 msgstr "Jevyan の軍を撃退した。船の乗員をすぐに上陸させなきゃ――"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:435
 msgid "Haldric, what's going on? What's the plan?"
 msgstr "Haldric、一体どうなってるの？ どうするつもり？"
@@ -6064,7 +6101,7 @@ msgstr "Haldric、一体どうなってるの？ どうするつもり？"
 msgid "We're going to confront Jevyan and destroy him."
 msgstr "ええとつまり、Jevyan と対決して倒そうってのさ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:443
 msgid ""
 "That will be easier said than done. Even if we defeat him, the other Lich-"
@@ -6127,7 +6164,7 @@ msgstr "俺は―― 俺は死ぬのか？"
 msgid "The Plan"
 msgstr "計略"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:109
 msgid "So what is your plan?"
 msgstr "それでどうするつもり？"
@@ -6145,7 +6182,7 @@ msgstr ""
 "ず最初にあまり誠実でない僕たちの同盟、エルフの方に向かうようになってくれない"
 "かと期待してね。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:117
 msgid ""
 "Haldric, that's devious. I kind of like this plan. But you spoke a pact with "
@@ -6168,7 +6205,7 @@ msgstr ""
 "るとしたら、その襲撃の矛先はどこか他のところに向かうはずだ。なってみないこと"
 "にはわからないけど、おそらく僕は結局、彼らの救済に行くことにさえならない――"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:125
 #, fuzzy
 msgid ""
@@ -6190,7 +6227,7 @@ msgstr ""
 "最近の出来事で僕は一つ学んだよ。生存は名誉に勝る、って。それに、民が僕を罵る"
 "ことはないさ―― その頃僕は死んでる。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:134
 msgid "WHAT!"
 msgstr "何ですって！"
@@ -6201,7 +6238,7 @@ msgstr "何ですって！"
 msgid ""
 "I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
 "or send Jevyan a letter. Well, we are going to say it - but that's not the "
-"point. Jessica, you're going to forge a very official looking treaty, in "
+"point. Jessene, you're going to forge a very official looking treaty, in "
 "which we give the elves the Ruby of Fire, in return for our place here."
 msgstr ""
 "僕は死ぬ。つまり、僕たちが炎のルビーを手放したって言うだけじゃだめなんだ、手"
@@ -6222,7 +6259,7 @@ msgstr ""
 "が Jevyan を倒してくれ。アンデッドとなった僕の心を読まれてしまう前に奴を倒さ"
 "なければならないが…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:146
 #, fuzzy
 msgid ""
@@ -6243,7 +6280,7 @@ msgstr ""
 "君が導くんだ。君がいなければ僕はここまでやって来れなかった。僕たちはどんなこ"
 "とをしてでも Jevyan に確信させなければいけない――"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:154
 #, fuzzy
 msgid "Haldric, this is ridiculous! I -"
@@ -6254,12 +6291,12 @@ msgstr "Haldric、こんなのは馬鹿げているわ！ アタシは――"
 #, fuzzy
 msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
-"bodies, right Jessica?"
+"bodies, right Jessene?"
 msgstr ""
 "あなたにそんなことをやり遂げさせるわけにはいきません、閣下！Jessica、我々の死"
 "体が要るんでしょう？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:191
 msgid "Right!"
 msgstr "そうよ！"
@@ -6340,7 +6377,7 @@ msgstr ""
 msgid "We'll make sure. I promise."
 msgstr "僕たちに任せてくれ。約束する。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:234
 msgid ""
 "We'll have to be careful to let one of the orcish leaders escape back to the "
@@ -6458,7 +6495,7 @@ msgstr ""
 "フン！ 炎のルビーの力を隠す術を学んでいようが、死者となったお前に私のもとへ届"
 "けさせるまでだ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:333
 msgid ""
 "You're a fool, Jevyan. How do you think we secured our place here? We had to "
@@ -6562,7 +6599,7 @@ msgstr "（ささやく） 大尉、作戦はわかってるな？"
 msgid "(whispered) Yes, sir. I am ready."
 msgstr "（ささやく） はい閣下。準備はできてます。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:408
 msgid "He's raising our dead! Be careful!"
 msgstr "奴が我々の死者を甦らせてるわ！ 気をつけて！"
@@ -6590,12 +6627,12 @@ msgstr ""
 msgid "Come on, stay still, just for a second..."
 msgstr "さあ来い、ジッとしてろよ、すぐに済むからな…"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:457
 msgid "For the Wesfolk!"
 msgstr "Wesfolk のために！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:471
 #, fuzzy
 msgid "Be careful, Commander!"
@@ -6843,7 +6880,7 @@ msgstr "貴様、この償いはさせるからな！"
 msgid "Strike down these fools."
 msgstr "あの愚か者どもを討ち取ってしまえ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1214
 msgid "We did it! We won!"
 msgstr "やった！ アタシたちは勝ったわ！"
@@ -6906,9 +6943,10 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:163
+#, fuzzy
 msgid ""
 "But dark deeds have been done on all sides. There is now a secret that only "
-"Jessica and I share. I must have your word that what I say will never be "
+"Jessene and I share. I must have your word that what I say will never be "
 "uttered again."
 msgstr ""
 "だけど実は、皆にしてしまった悪行がある。今のところ僕と Jessica だけしか知らな"
@@ -6949,7 +6987,7 @@ msgstr ""
 "炎のルビーはエルフの元にはない。僕たちはオークを策略に嵌めたんだ。戻ってくる"
 "とすれは奴らはエルフを捜しだそうとするだろう。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:187
 #, fuzzy
 msgid ""
@@ -6975,11 +7013,12 @@ msgstr "汝に光の神々の慈悲があらんことを。しかしまあ、約
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
-msgid "Jessica, you hid the ruby away in that vile Troll Hole? Didn't you?"
+#, fuzzy
+msgid "Jessene, you hid the ruby away in that vile Troll Hole? Didn't you?"
 msgstr ""
 "Jessica、ルビーはあの卑しいトロルの穴に隠しておいたよな？ 一応聞くんだけど。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:206
 msgid "What? Why would you doubt me?"
 msgstr "何よ？ アンタなんでアタシを疑ってるわけ？"
@@ -7078,7 +7117,7 @@ msgstr ""
 "そうすると僕はこれから Haldric 王ということになるのかな。うーん… この新しい王"
 "国をなんて呼んだら良いだろう？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:271
 msgid "May I make a suggestion?"
 msgstr "提案してもよろしいかしら？"
@@ -7088,7 +7127,7 @@ msgstr "提案してもよろしいかしら？"
 msgid "Sure."
 msgstr "もちろん。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:280
 msgid ""
 "The word Wesfolk is from your old tongue. It means 'People of the West'. The "
@@ -7110,7 +7149,7 @@ msgstr ""
 "ふむむ、「Wesnoth」か。気に入ったよ。うん、「Wesnoth」は良さそうだ。じゃあ僕"
 "は、Wesnoth の最初の王ってことか！"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:288
 msgid "So, what is to become of me?"
 msgstr "じゃ、アタシはどうなるの？"
@@ -7127,7 +7166,7 @@ msgstr ""
 "なら、君が一緒にいてくれないとどうにもならないよ。さあ、僕たちがやらなくちゃ"
 "いけないことは一杯あるぞ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:296
 msgid "We!?"
 msgstr "僕たち!?"
@@ -7506,12 +7545,12 @@ msgstr ""
 
 # # 「アタシの眼の黒いうち」にしようとも思ったけれど、
 # # やはり違和感があるか。
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:17
 msgid "Not in my lifetime."
 msgstr "アタシの生きてるうちは無いわね。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:33
 msgid "It could be worse. We could be back in that Troll Hole!"
 msgstr "ヤバイみたい。これじゃまるでトロルの穴に戻ったような感じじゃない！"
@@ -7523,13 +7562,14 @@ msgstr "おい、責めるならトロルだけにしろよ、穴の悪口は言
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:54
+#, fuzzy
 msgid ""
-"Well, at least we don't have to contend with the undead. No offense Jessica."
+"Well, at least we don't have to contend with the undead. No offense Jessene."
 msgstr ""
 "ええと、少なくとも僕たちはアンデッドを相手にしなくてもいいんだよね。あっ、悪"
 "気はないんだ、Jessica。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:58
 msgid "Don't worry about it."
 msgstr "気を使わなくていいわよ。"
@@ -7540,7 +7580,7 @@ msgid "Too bad that this isn't going as well as the beach... I miss the beach."
 msgstr ""
 "残念だけど、あの海岸と同じようには行きそうにもないな… あの海岸に戻りたいよ。"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:90
 msgid ""
 "Haldric, just before we arrived here I got word that the your 'third of a "
@@ -7554,7 +7594,7 @@ msgstr ""
 msgid "You were planning on sharing this with me when?"
 msgstr "それをいつ僕に言おうか、迷ってたのかい？"
 
-#. [message]: speaker=Lady Jessica
+#. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:110
 msgid ""
 "Haldric, messengers just informed me that the fleet has returned from our "
@@ -7757,7 +7797,7 @@ msgstr ""
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
-"stormy seas, and the mysterious island that Lady Jessica has mentioned, and "
+"stormy seas, and the mysterious island that Lady Jessene has mentioned, and "
 "even more exotic lands even further to the East."
 msgstr ""
 "数日後 Haldric 王子は彼の船 Eldaric 号で出港し、彼の故郷と島との永遠の別れを"
@@ -7798,6 +7838,13 @@ msgid ""
 "gulls and feel the loom of the land. The Great Continent appears before them "
 "over the summer-lit seas."
 msgstr ""
+
+#~ msgid "Onward to victory!"
+#~ msgstr "勝利に向かって進め！"
+
+#, fuzzy
+#~ msgid "(whispered) I don't think diplomacy is going to work."
+#~ msgstr "（ささやく）外交儀礼は通じそうにないわよ。"
 
 # #unit
 #~ msgid "Hashnak"

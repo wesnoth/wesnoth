@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-03-02 10:48+0100\n"
 "Last-Translator: Grup de traducció de LinUV <traduccio@linuv.uv.es>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -30,12 +30,12 @@ msgstr "LDdS"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Al jove cavaller Deoran li encarreguen ocupar-se de la defensa del sud. "
 "Nota: aquesta campanya està dissenyada com una introducció a Wesnoht. El "
@@ -44,6 +44,11 @@ msgstr ""
 "\n"
 "(Nivell fàcil, 9 o 10 escenaris depenent de la bifurcació que trieu. "
 "Traducció incompleta.)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1937,8 +1942,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmmm...He de considerar aquest..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -2032,7 +2039,7 @@ msgstr ""
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr "Folls! Eixe lich serà la mort de tots nosaltres! Ens heu venut!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "La bèstia del llac."
@@ -4059,6 +4066,9 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the onslaught..."
 msgstr ""
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmmm...He de considerar aquest..."
 
 #~ msgid "Your aid will be most welcome."
 #~ msgstr "La vostra ajuda serà benvinguda"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-04-09 15:58+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: none <foppe.benedictus@gmail.com>\n"
@@ -24,16 +24,21 @@ msgstr "DZW"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Een jonge ridder, Deoran, is uitgezonden om het bevel over de Zuidelijke "
 "Wacht te voeren. Let op: Deze veldtocht is ontworpen als een inleiding voor "
 "Wesnoth. De 'Burger' moeilijkheidsgraad is bedoeld voor nieuwe spelers."
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1832,8 +1837,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Hmm...Ik moet hier over nadenken..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1928,7 +1935,7 @@ msgstr ""
 "Dwazen! Die lich zal ons aller dood betekenen! Jullie hebben ons lot "
 "bezegeld!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Beest uit het meer"
@@ -4200,6 +4207,9 @@ msgstr ""
 "vergadering met koning Haldric zelf.  Stormwolken kwamen samen boven het "
 "gehele koninkrijk, en elke bevelhebber zou nodig zijn om de aanslag te "
 "doorstaan..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Hmm...Ik moet hier over nadenken..."
 
 #~ msgid ""
 #~ "Minister Mefel, we are cheered by your presence. I trust that you and "

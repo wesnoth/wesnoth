@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2007-05-15 02:14+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -33,7 +33,6 @@ msgid ""
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "Младият рицар Диоран е изпратен да поеме командването на Южната Стража... "
 "Забележка: Тази кампания представлява въведение в Уеснот. Ниво на трудност "
@@ -41,6 +40,11 @@ msgstr ""
 "игра.\n"
 "\n"
 "(Начинаещ, 13 мисии.)"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1848,8 +1852,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "Хмм... Ще трябва да обмисля това..."
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1944,7 +1950,7 @@ msgstr ""
 msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr "Глупаци! Личът ще ни погуби всички! Вие ни обрекохте на смърт!"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Езерно чудовище"
@@ -4135,6 +4141,9 @@ msgstr ""
 "Сър Диоран, Рицар на Уеснот, беше призован в Уелдин, за да участва в Съвет "
 "със самия Крал. Изглежда, че над страната надвисваха буреносни облаци и беше "
 "необходима помощта на всеки командир, за да се избегне войната..."
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "Хмм... Ще трябва да обмисля това..."
 
 #, fuzzy
 #~ msgid ""

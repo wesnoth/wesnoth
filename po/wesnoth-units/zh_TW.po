@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-08-25 19:57+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <steven2880@gmail.com>\n"
@@ -44,6 +44,7 @@ msgstr ""
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/goblins/Pillager.cfg:34
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
@@ -202,7 +203,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
+#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
 #: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
 #: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
@@ -219,7 +220,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:45
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Sergeant.cfg:47
@@ -309,8 +310,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:75
 #: data/core/units/goblins/Rouser.cfg:37
-#: data/core/units/goblins/Spearman.cfg:28
-#: data/core/units/goblins/Spearman.cfg:38
+#: data/core/units/goblins/Spearman.cfg:42
+#: data/core/units/goblins/Spearman.cfg:52
 #: data/core/units/goblins/Impaler.cfg:28
 #: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/undead/Skele_Chocobone.cfg:25
@@ -619,11 +620,11 @@ msgstr ""
 #: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Woodsman_Trapper.cfg:70
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/humans/Outlaw_Thief.cfg:188
 #: data/core/units/humans/Woodsman.cfg:41
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
-#: data/core/units/humans/Woodsman_Poacher.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -895,13 +896,13 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Rider.cfg:57
 #: data/core/units/elves/Hero.cfg:44 data/core/units/elves/Champion.cfg:45
 #: data/core/units/elves/Fighter.cfg:45
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:54
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
 #: data/core/units/undead/Skeleton_Archer.cfg:40
 #: data/core/units/undead/Skele_Banebow.cfg:40
@@ -1017,7 +1018,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Silver.cfg:48
 #: data/core/units/humans/Mage_Arch.cfg:81
 #: data/core/units/humans/Mage_Red.cfg:66
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:38
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
 msgstr "法杖"
 
@@ -1514,7 +1515,7 @@ msgid "Goblin Spearman"
 msgstr "地精矛兵"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
-#: data/core/units/goblins/Spearman.cfg:20
+#: data/core/units/goblins/Spearman.cfg:21
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -2547,22 +2548,6 @@ msgstr "投石索"
 msgid "female^Outlaw"
 msgstr "匪徒"
 
-#. [female]
-#: data/core/units/humans/Outlaw.cfg:105
-msgid ""
-"female^After some years of service, former 'footpads' rise up in the ranks "
-"of their fellow outlaws. Having proven themselves in combat, they are given "
-"more dangerous tasks, and a greater share of the spoils. Though many "
-"opponents would mock their choice of weaponry, the outlaws are well aware of "
-"its deadly capacity, and also of the ready availability of ammunition. "
-"Outlaws are somewhat ill at ease fighting during the day, preferring the "
-"cover of nightfall."
-msgstr ""
-"效力多年后，以前的“走卒”在同伙中的地位有所提升。他們已經證明了自己在戰斗中的"
-"價值，所以被委以更加危險的任務，并能分到更大比例的贓物。雖然許多對手嘲笑他們"
-"的武器，他們自己卻很清楚它們的致命威力，武器補給也來源廣泛。游寇不善于白天作"
-"戰，而是喜歡在夜幕掩護之下行動。"
-
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
@@ -2643,20 +2628,6 @@ msgstr "棍棒"
 msgid "female^Footpad"
 msgstr "混混"
 
-#. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:166
-msgid ""
-"female^These petty criminals are often derisively called 'footpads' by their "
-"superiors, for they are tasked with any job that requires a great deal of "
-"running around, often being employed as couriers, or scouts. The endurance "
-"and agility they gain from this serves them well in combat, and despite "
-"their inferior weaponry they are quite good at harrying their enemies, "
-"especially under cover of darkness."
-msgstr ""
-"匪徒們常常戲稱那些小偷小摸的人為“走卒”。他們的職責往往需要他們四處奔波，如信"
-"使或偵察兵。由此而來的腳力在戰斗中對他們的幫助很大。他們盡管武器很爛，卻善于"
-"騷擾敵人，特別是在夜幕的掩護之下。"
-
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -2677,17 +2648,6 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:109
 msgid "female^Fugitive"
 msgstr "亡命之徒 "
-
-#. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:112
-msgid ""
-"female^Veteran criminals become notorious for both their ruthlessness and "
-"ability to elude capture. They can be dangerous and rightly fearful in their "
-"element, but are no match for the sheer numbers that law-abiding soldiery "
-"can throw at them."
-msgstr ""
-"因為他們的殘忍和逃避追捕的能力，這些老練的犯罪分子惡名昭彰。她們可能認為危險"
-"和恐懼是某種樂趣，但是這顯然無法平衡以多欺少的執法軍人帶來的危險。"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -2898,7 +2858,7 @@ msgid "Ranger"
 msgstr "游俠"
 
 #. [unit_type]: id=Ranger, race=human
-#: data/core/units/humans/Woodsman_Ranger.cfg:22
+#: data/core/units/humans/Woodsman_Ranger.cfg:23
 #, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
@@ -3414,6 +3374,21 @@ msgid ""
 "below the waves."
 msgstr "深淵觸手是屬于那些隱藏在海浪下的巨型怪物的附肢。"
 
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:5
+#, fuzzy
+msgid "Water Serpent"
+msgstr "大海蛇"
+
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:38
+msgid ""
+"Scholars differ as to the ancestry of the Water Serpent. Some hold that they "
+"are the immature young, or mature cousins, of Sea Serpents. Others hold them "
+"up as a primitive offshoot of the Nagas. What is certain is that it is wise "
+"to avoid waters where they are known to congregate."
+msgstr ""
+
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
@@ -3546,7 +3521,7 @@ msgid "Ogre"
 msgstr "食人魔"
 
 #. [unit_type]: id=Ogre, race=ogre
-#: data/core/units/ogres/Ogre.cfg:21
+#: data/core/units/ogres/Ogre.cfg:22
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -3557,7 +3532,7 @@ msgstr ""
 "以輕易在速度或智慧上超過他們，他們的力量還是不容小視。"
 
 #. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
 msgstr "切割"
 
@@ -3567,7 +3542,7 @@ msgid "Young Ogre"
 msgstr "小食人魔"
 
 #. [unit_type]: id=Young Ogre, race=ogre
-#: data/core/units/ogres/Young_Ogre.cfg:21
+#: data/core/units/ogres/Young_Ogre.cfg:22
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -4149,7 +4124,7 @@ msgstr "冰風暴"
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:59
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
 msgstr "暗影波"
 
@@ -4181,7 +4156,7 @@ msgstr ""
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necromancer.cfg:51
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:47
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
 msgid "chill wave"
 msgstr "寒冰旋風"
 
@@ -4189,26 +4164,6 @@ msgstr "寒冰旋風"
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
 msgid "female^Dark Adept"
 msgstr "暗影學徒"
-
-#. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:217
-msgid ""
-"female^To attract any practitioners, the lure of black magic must be a great "
-"prize indeed, for anyone caught practicing the art in the civilized world is "
-"subject to a death sentence. And yet there are those who pursue this art, "
-"for the prize offered is nothing less than immortality. Hidden away in "
-"secret cults, or initiated into the dark orders of the underworld, the "
-"training which these fanatics must endure often drives them to exhaustion "
-"and enfeeblement.\n"
-"\n"
-"In such condition, their only weapon is the craft they have so committed "
-"themselves to learning."
-msgstr ""
-"黑暗魔法的誘惑一定很大，才能引誘人們去研習，因為在文明社會，誰學習黑暗魔法被"
-"發現了，是可以處以死刑的。但總還是有人去學，因為學成以后就可以永生不死。瘋狂"
-"的學徒們隱身于密教，藏匿于地下的黑暗教會，承受着使自身虛弱枯竭的訓練。\n"
-"\n"
-"在這種身體條件下，她們只能使用自己的法朮當做武器。"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
@@ -4246,12 +4201,12 @@ msgstr ""
 "的吸引力。"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:190
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:243
 msgid "Dark Sorceress"
 msgstr "暗影術士"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:196
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:249
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -4690,6 +4645,60 @@ msgstr ""
 "然界的保護者，樹人的動機和行動方式現在仍亦未可知。\n"
 "\n"
 "他們完全不好戰，但擁有強大的力量。然而他們不善于迅速的移動。"
+
+#~ msgid ""
+#~ "female^After some years of service, former 'footpads' rise up in the "
+#~ "ranks of their fellow outlaws. Having proven themselves in combat, they "
+#~ "are given more dangerous tasks, and a greater share of the spoils. Though "
+#~ "many opponents would mock their choice of weaponry, the outlaws are well "
+#~ "aware of its deadly capacity, and also of the ready availability of "
+#~ "ammunition. Outlaws are somewhat ill at ease fighting during the day, "
+#~ "preferring the cover of nightfall."
+#~ msgstr ""
+#~ "效力多年后，以前的“走卒”在同伙中的地位有所提升。他們已經證明了自己在戰斗中"
+#~ "的價值，所以被委以更加危險的任務，并能分到更大比例的贓物。雖然許多對手嘲笑"
+#~ "他們的武器，他們自己卻很清楚它們的致命威力，武器補給也來源廣泛。游寇不善于"
+#~ "白天作戰，而是喜歡在夜幕掩護之下行動。"
+
+#~ msgid ""
+#~ "female^These petty criminals are often derisively called 'footpads' by "
+#~ "their superiors, for they are tasked with any job that requires a great "
+#~ "deal of running around, often being employed as couriers, or scouts. The "
+#~ "endurance and agility they gain from this serves them well in combat, and "
+#~ "despite their inferior weaponry they are quite good at harrying their "
+#~ "enemies, especially under cover of darkness."
+#~ msgstr ""
+#~ "匪徒們常常戲稱那些小偷小摸的人為“走卒”。他們的職責往往需要他們四處奔波，如"
+#~ "信使或偵察兵。由此而來的腳力在戰斗中對他們的幫助很大。他們盡管武器很爛，卻"
+#~ "善于騷擾敵人，特別是在夜幕的掩護之下。"
+
+#~ msgid ""
+#~ "female^Veteran criminals become notorious for both their ruthlessness and "
+#~ "ability to elude capture. They can be dangerous and rightly fearful in "
+#~ "their element, but are no match for the sheer numbers that law-abiding "
+#~ "soldiery can throw at them."
+#~ msgstr ""
+#~ "因為他們的殘忍和逃避追捕的能力，這些老練的犯罪分子惡名昭彰。她們可能認為危"
+#~ "險和恐懼是某種樂趣，但是這顯然無法平衡以多欺少的執法軍人帶來的危險。"
+
+#~ msgid ""
+#~ "female^To attract any practitioners, the lure of black magic must be a "
+#~ "great prize indeed, for anyone caught practicing the art in the civilized "
+#~ "world is subject to a death sentence. And yet there are those who pursue "
+#~ "this art, for the prize offered is nothing less than immortality. Hidden "
+#~ "away in secret cults, or initiated into the dark orders of the "
+#~ "underworld, the training which these fanatics must endure often drives "
+#~ "them to exhaustion and enfeeblement.\n"
+#~ "\n"
+#~ "In such condition, their only weapon is the craft they have so committed "
+#~ "themselves to learning."
+#~ msgstr ""
+#~ "黑暗魔法的誘惑一定很大，才能引誘人們去研習，因為在文明社會，誰學習黑暗魔法"
+#~ "被發現了，是可以處以死刑的。但總還是有人去學，因為學成以后就可以永生不死。"
+#~ "瘋狂的學徒們隱身于密教，藏匿于地下的黑暗教會，承受着使自身虛弱枯竭的訓"
+#~ "練。\n"
+#~ "\n"
+#~ "在這種身體條件下，她們只能使用自己的法朮當做武器。"
 
 #, fuzzy
 #~ msgid "Dwarvish Masked Guardsman"

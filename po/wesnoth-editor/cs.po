@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-15 22:05+0100\n"
+"POT-Creation-Date: 2009-04-10 19:45+0200\n"
 "PO-Revision-Date: 2009-02-23 20:40+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -178,30 +178,30 @@ msgstr "Chyba při vytváření objektu akce"
 msgid "Action not implemented"
 msgstr "Akce není implementována"
 
-#: src/editor2/editor_controller.cpp:123
+#: src/editor2/editor_controller.cpp:132
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/editor2/editor_controller.cpp:275
+#: src/editor2/editor_controller.cpp:285
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:299 src/editor2/editor_controller.cpp:998
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor2/editor_controller.cpp:295
+#: src/editor2/editor_controller.cpp:305
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přejete skončit?"
 
-#: src/editor2/editor_controller.cpp:297
+#: src/editor2/editor_controller.cpp:307
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor2/editor_controller.cpp:299
+#: src/editor2/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -209,93 +209,105 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor2/editor_controller.cpp:304
+#: src/editor2/editor_controller.cpp:314
 msgid "Quit"
 msgstr "Konec"
 
-#: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
-#: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
+#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:517 src/editor2/editor_controller.cpp:539
 msgid "Error"
 msgstr "Chyba"
 
-#: src/editor2/editor_controller.cpp:359
+#: src/editor2/editor_controller.cpp:369
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
-#: src/editor2/editor_controller.cpp:395
+#: src/editor2/editor_controller.cpp:405
 msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:406
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor2/editor_controller.cpp:409
+#: src/editor2/editor_controller.cpp:419
 msgid "Choose a Map to Open"
 msgstr "Vyber mapu k načtení"
 
-#: src/editor2/editor_controller.cpp:413
+#: src/editor2/editor_controller.cpp:423
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor2/editor_controller.cpp:451
+#: src/editor2/editor_controller.cpp:461
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor2/editor_controller.cpp:455
+#: src/editor2/editor_controller.cpp:465
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
-#: src/editor2/editor_controller.cpp:471
+#: src/editor2/editor_controller.cpp:481
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor2/editor_controller.cpp:482
+#: src/editor2/editor_controller.cpp:492
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
 # co je zase toto?
-#: src/editor2/editor_controller.cpp:497
+#: src/editor2/editor_controller.cpp:507
 msgid "Choose a mask to apply"
 msgstr "Vyber masku k aplikaci"
 
-#: src/editor2/editor_controller.cpp:504
+#: src/editor2/editor_controller.cpp:514
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor2/editor_controller.cpp:519
+#: src/editor2/editor_controller.cpp:529
 msgid "Choose target map"
 msgstr "vyber cílovou mapu"
 
-#: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
+#: src/editor2/editor_controller.cpp:536 src/editor2/editor_controller.cpp:649
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor2/editor_controller.cpp:615
+#: src/editor2/editor_controller.cpp:625
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor2/editor_controller.cpp:620
+#: src/editor2/editor_controller.cpp:630
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
-#: src/editor2/editor_controller.cpp:1011
+#: src/editor2/editor_controller.cpp:1025
 msgid "Undo"
 msgstr "Zpátky"
 
-#: src/editor2/editor_controller.cpp:1013
+#: src/editor2/editor_controller.cpp:1027
 msgid "Can't Undo"
 msgstr "Nelze vrátit"
 
-#: src/editor2/editor_controller.cpp:1017
+#: src/editor2/editor_controller.cpp:1031
 msgid "Redo"
 msgstr "Vrať"
 
-#: src/editor2/editor_controller.cpp:1019
+#: src/editor2/editor_controller.cpp:1033
 msgid "Can't Redo"
 msgstr "Nelze opakovat"
+
+#: src/editor2/editor_controller.cpp:1038
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1041
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1045
+msgid "Auto-update Terrain Transitions: No"
+msgstr ""
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
@@ -309,11 +321,11 @@ msgstr "Hráč"
 msgid "The size of the target map is different from the current map"
 msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
-#: src/editor2/editor_palettes.cpp:522
+#: src/editor2/editor_palettes.cpp:521
 msgid "FG"
 msgstr "Popředí"
 
-#: src/editor2/editor_palettes.cpp:524
+#: src/editor2/editor_palettes.cpp:523
 msgid "BG"
 msgstr "Pozadí"
 

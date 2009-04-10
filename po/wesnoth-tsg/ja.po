@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:30+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-04-22 03:49+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -31,18 +31,23 @@ msgstr "南部防衛隊"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players.\n"
 "\n"
-"(Novice level, 9 or 10 scenarios depending on the branch you take.)"
 msgstr ""
 "若い騎士 Deoran は南部防衛隊を指揮するために派遣された……。メモ：このキャン"
 "ペーンは Wesnoth の入門のためにデザインされました。「一般市民」の難易度は初め"
 "てのプレイヤーに照準をあわせています。\n"
 "\n"
 "（初心者レベル、選んだ分岐によって 9 あるいは 10 シナリオ）"
+
+#. [campaign]: id=The_South_Guard
+#: data/campaigns/The_South_Guard/_main.cfg:19
+msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
+msgstr ""
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1813,8 +1818,10 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:441
-msgid "Hmm...I have to consider this..."
-msgstr "ふーむ……よく考えなくては……"
+msgid ""
+"Hmm...I have to consider this... If I ally with the elves, I must fight the "
+"bandits, but if I ally with the bandits I will make enemies of the elves..."
+msgstr ""
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -1907,7 +1914,7 @@ msgstr ""
 "愚か者め！ あのリッチが我々全員を殺すだろう！ おまえは我々の運命を封印してし"
 "まった！"
 
-#. [unit]: type=Sea Serpent, id=Beast of the Lake
+#. [unit]: type=Water Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "湖の獣"
@@ -4132,6 +4139,9 @@ msgstr ""
 "Wesnoth の騎士 Deoran 卿は Haldric 王その人とともに評議会へ参加するために "
 "Weldyn に招集された。王国に嵐の雲が吹き荒れ、猛攻撃を乗り切るためにすべての司"
 "令官が必要だったのだ……"
+
+#~ msgid "Hmm...I have to consider this..."
+#~ msgstr "ふーむ……よく考えなくては……"
 
 #~ msgid "Mal M'brin"
 #~ msgstr "Mal M'brin"

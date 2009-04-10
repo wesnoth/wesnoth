@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-15 22:05+0100\n"
+"POT-Creation-Date: 2009-04-10 19:45+0200\n"
 "PO-Revision-Date: 2009-03-11 12:05-0400\n"
 "Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -169,23 +169,23 @@ msgstr "Erro criando objeto de ação"
 msgid "Action not implemented"
 msgstr "Ação não implementada"
 
-#: src/editor2/editor_controller.cpp:123
+#: src/editor2/editor_controller.cpp:132
 msgid "Quit Editor"
 msgstr "Sair do Editor"
 
-#: src/editor2/editor_controller.cpp:275
+#: src/editor2/editor_controller.cpp:285
 msgid "Fatal error"
 msgstr "Erro fatal"
 
-#: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:299 src/editor2/editor_controller.cpp:998
 msgid "(New Map)"
 msgstr "(Novo Mapa)"
 
-#: src/editor2/editor_controller.cpp:295
+#: src/editor2/editor_controller.cpp:305
 msgid "Do you really want to quit?"
 msgstr "Você realmente deseja sair?"
 
-#: src/editor2/editor_controller.cpp:297
+#: src/editor2/editor_controller.cpp:307
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -193,7 +193,7 @@ msgstr ""
 "Você realmente deseja sair? Mudanças feitas no mapa desde o último "
 "salvamento serão perdidas."
 
-#: src/editor2/editor_controller.cpp:299
+#: src/editor2/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -201,96 +201,109 @@ msgstr ""
 "Você realmente deseja sair? Os mapas seguintes foram modificados e todas as "
 "mudanças desde o último salvamento serão perdidas:"
 
-#: src/editor2/editor_controller.cpp:304
+#: src/editor2/editor_controller.cpp:314
 msgid "Quit"
 msgstr "Sair"
 
-#: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
-#: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
+#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:517 src/editor2/editor_controller.cpp:539
 msgid "Error"
 msgstr "Erro"
 
-#: src/editor2/editor_controller.cpp:359
+#: src/editor2/editor_controller.cpp:369
 msgid "No editor time-of-day found."
 msgstr "Nenhum editor tempo-do-dia encontrado."
 
-#: src/editor2/editor_controller.cpp:395
+#: src/editor2/editor_controller.cpp:405
 msgid "Unsaved Changes"
 msgstr "Mudanças não salvas"
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:406
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Você quer descartar todas as mudanças feitas no mapa desde o último "
 "salvamento?"
 
-#: src/editor2/editor_controller.cpp:409
+#: src/editor2/editor_controller.cpp:419
 msgid "Choose a Map to Open"
 msgstr "Escolha um mapa para carregar"
 
-#: src/editor2/editor_controller.cpp:413
+#: src/editor2/editor_controller.cpp:423
 msgid "This map is already open."
 msgstr "Esse mapa já está aberto."
 
-#: src/editor2/editor_controller.cpp:451
+#: src/editor2/editor_controller.cpp:461
 msgid "Save the Map As"
 msgstr "Salvar o mapa como"
 
-#: src/editor2/editor_controller.cpp:455
+#: src/editor2/editor_controller.cpp:465
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O mapa já existe. Você quer sobrescrevê-lo?"
 
-#: src/editor2/editor_controller.cpp:471
+#: src/editor2/editor_controller.cpp:481
 msgid "No random map generators found."
 msgstr "Nenhum gerador de mapas aleatórios encontrado."
 
-#: src/editor2/editor_controller.cpp:482
+#: src/editor2/editor_controller.cpp:492
 msgid "Map creation failed."
 msgstr "Criação de mapa mal-sucedida."
 
-#: src/editor2/editor_controller.cpp:497
+#: src/editor2/editor_controller.cpp:507
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Escolha uma máscara para aplicar"
 
-#: src/editor2/editor_controller.cpp:504
+#: src/editor2/editor_controller.cpp:514
 #, fuzzy
 msgid "Error loading mask"
 msgstr "Erro carregando a máscara"
 
-#: src/editor2/editor_controller.cpp:519
+#: src/editor2/editor_controller.cpp:529
 msgid "Choose target map"
 msgstr "Escolha o mapa alvo"
 
-#: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
+#: src/editor2/editor_controller.cpp:536 src/editor2/editor_controller.cpp:649
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Erro carregando o mapa"
 
-#: src/editor2/editor_controller.cpp:615
+#: src/editor2/editor_controller.cpp:625
 msgid "Map saved."
 msgstr "Mapa salvo."
 
-#: src/editor2/editor_controller.cpp:620
+#: src/editor2/editor_controller.cpp:630
 msgid "Could not save the map: $msg"
 msgstr "Não foi possível salvar o mapa: $msg"
 
-#: src/editor2/editor_controller.cpp:1011
+#: src/editor2/editor_controller.cpp:1025
 msgid "Undo"
 msgstr "Desfazer"
 
-#: src/editor2/editor_controller.cpp:1013
+#: src/editor2/editor_controller.cpp:1027
 msgid "Can't Undo"
 msgstr "Não pode desfazer"
 
-#: src/editor2/editor_controller.cpp:1017
+#: src/editor2/editor_controller.cpp:1031
 msgid "Redo"
 msgstr "Refazer"
 
-#: src/editor2/editor_controller.cpp:1019
+#: src/editor2/editor_controller.cpp:1033
 msgid "Can't Redo"
 msgstr "Não pode refazer"
+
+#: src/editor2/editor_controller.cpp:1038
+msgid "Auto-update Terrain Transitions: Yes"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1041
+msgid "Auto-update Terrain Transitions: Partial"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1045
+#, fuzzy
+msgid "Auto-update Terrain Transitions: No"
+msgstr "Atualizar transições"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
@@ -304,11 +317,11 @@ msgstr "Jogador"
 msgid "The size of the target map is different from the current map"
 msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
-#: src/editor2/editor_palettes.cpp:522
+#: src/editor2/editor_palettes.cpp:521
 msgid "FG"
 msgstr "Frente"
 
-#: src/editor2/editor_palettes.cpp:524
+#: src/editor2/editor_palettes.cpp:523
 msgid "BG"
 msgstr "Fundo"
 
@@ -365,9 +378,6 @@ msgstr "Configuração customizada"
 
 #~ msgid "Flip map"
 #~ msgstr "Espelhar mapa"
-
-#~ msgid "Update transitions"
-#~ msgstr "Atualizar transições"
 
 #~ msgid "Delay transition updates"
 #~ msgstr "Adiar a atualização de transições"

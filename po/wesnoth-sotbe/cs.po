@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2009-04-05 00:07+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -70,6 +70,7 @@ msgstr "Válečný lord"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+#, fuzzy
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it's up to you to thwart the selfish designs of the humans "
@@ -78,7 +79,6 @@ msgid ""
 "Council and call up the Great Horde to send the human-worms and their wose-"
 "born allies to the land of the dead!\n"
 "\n"
-"(Expert level, 18 scenarios.)"
 msgstr ""
 "Tvůj otec Karun Černé Oko byl největší skřetí velitel, jaký kdy žil. Teď je "
 "na tobě jako na jeho synovi, abys zkřížil plány sobecky vymyšlené lidmi, "
@@ -87,6 +87,11 @@ msgstr ""
 "lidské červy a jejich odporné spojence do země mrtvých.\n"
 "\n"
 "(Obtížnost: expert, 18 scénářů)"
+
+#. [campaign]: id=Son_Of_The_Black_Eye
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+msgid "(Expert level, 18 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -657,17 +662,17 @@ msgid "Move Kapou'e to the signpost in the Northeast"
 msgstr "Přesuň Kapou'eho k ukazateli na severovýchodě."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:270
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:262
 msgid "We'll be back, you foul mud-sucking humans!"
 msgstr "My se vrátíme, odporní blátožroutští lidé!"
 
 #. [message]: speaker=Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:275
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:267
 msgid "That's right, flee, you cowardly orcs! This land is mine!"
 msgstr "Tak je to správně, utíkejte, zbabělí skřeti! Tato země je moje!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:280
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:272
 msgid ""
 "In your dreams, worm. When the time comes you will pay for all this with "
 "your life!"
@@ -1571,22 +1576,22 @@ msgid "I'm thirsty ... *gulp* *gulp*"
 msgstr "Mám žízeň... *glo glo glo*"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:364
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:365
 msgid "Ahhh, that was yummy!"
 msgstr "Ahhh, to bylo dobré."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:385
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:386
 msgid "The day is coming, these night creatures will soon return to the pit."
 msgstr "Máme vyhráno. Přichází den, a ty noční potvory zalezou do svých děr."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:389
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:390
 msgid "Grüü, are you forgetting we are also night creatures?"
 msgstr "Grüü, zapomněl jsi, že jsme také noční tvorové?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:393
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:394
 msgid "Err... well..."
 msgstr "Eee... No jo..."
 
@@ -1817,7 +1822,7 @@ msgstr "Ar Dant"
 #. [side]: type=Bandit, id=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:110
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:85
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:112
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:146
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:161
@@ -3341,7 +3346,8 @@ msgstr "Přinutíme je zaplatit za to co udělali našim lidem. Krev a ocel!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
-msgid "Victory...Grüü, what *is* that you are eating?"
+#, fuzzy
+msgid "Victory...Grüü, what <i>is</i> that you are eating?"
 msgstr "Vítězství ... Grüü, co je to „to“, co jíš?"
 
 #. [message]: speaker=Grüü

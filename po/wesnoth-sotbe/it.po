@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:47+0200\n"
 "PO-Revision-Date: 2009-04-05 15:53+0200\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: none\n"
@@ -62,7 +62,6 @@ msgid ""
 "Council and call up the Great Horde to send the human-worms and their wose-"
 "born allies to the land of the dead!\n"
 "\n"
-"(Expert level, 18 scenarios.)"
 msgstr ""
 "Tuo padre Karun Occhionero è stato il più grande comandante della storia "
 "degli orchi. Ora spetta a te, come suo figlio, rovesciare le brame "
@@ -72,6 +71,11 @@ msgstr ""
 "e i loro alleati bacia-alberi nel regno dei morti!\n"
 "\n"
 "(Livello per esperti, 18 scenari.)"
+
+#. [campaign]: id=Son_Of_The_Black_Eye
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+msgid "(Expert level, 18 scenarios.)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -663,20 +667,20 @@ msgid "Move Kapou'e to the signpost in the Northeast"
 msgstr "Sposta Kapou'e al cartello a nord-est"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:270
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:262
 #, fuzzy
 msgid "We'll be back, you foul mud-sucking humans!"
 msgstr "Ritorneremo luridi uomini succhia-fango!"
 
 #. [message]: speaker=Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:275
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:267
 #, fuzzy
 msgid "That's right, flee, you cowardly orcs! This land is mine!"
 msgstr ""
 "Ah ah! Correte, orchi codardi! Questa terra ora appartiene agli uomini!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:280
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:272
 #, fuzzy
 msgid ""
 "In your dreams, worm. When the time comes you will pay for all this with "
@@ -1637,25 +1641,25 @@ msgid "I'm thirsty ... *gulp* *gulp*"
 msgstr "Ho sete... (beve)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:364
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:365
 msgid "Ahhh, that was yummy!"
 msgstr "Ahh, era buona!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:385
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:386
 msgid "The day is coming, these night creatures will soon return to the pit."
 msgstr ""
 "Sta arrivando il giorno, queste creature notturne presto torneranno nel loro "
 "abisso."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:389
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:390
 #, fuzzy
 msgid "Grüü, are you forgetting we are also night creatures?"
 msgstr "Grüü, ti stai dimenticando che ANCHE loro sono creature notturne?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:393
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:394
 msgid "Err... well..."
 msgstr "Err... già..."
 
@@ -1902,7 +1906,7 @@ msgstr "Ar Dant"
 #. [side]: type=Bandit, id=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:110
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:85
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:112
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:146
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:161
@@ -3504,7 +3508,7 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
-msgid "Victory...Grüü, what *is* that you are eating?"
+msgid "Victory...Grüü, what <i>is</i> that you are eating?"
 msgstr ""
 
 #. [message]: speaker=Grüü

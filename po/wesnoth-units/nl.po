@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-04-10 19:48+0200\n"
 "PO-Revision-Date: 2008-11-22 15:13+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -42,6 +42,7 @@ msgstr ""
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/goblins/Pillager.cfg:34
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
@@ -210,7 +211,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:34
+#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:34
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
 #: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
 #: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
@@ -227,7 +228,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:77
-#: data/core/units/humans/Woodsman_Ranger.cfg:45
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Sergeant.cfg:47
@@ -324,8 +325,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:75
 #: data/core/units/goblins/Rouser.cfg:37
-#: data/core/units/goblins/Spearman.cfg:28
-#: data/core/units/goblins/Spearman.cfg:38
+#: data/core/units/goblins/Spearman.cfg:42
+#: data/core/units/goblins/Spearman.cfg:52
 #: data/core/units/goblins/Impaler.cfg:28
 #: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/undead/Skele_Chocobone.cfg:25
@@ -663,11 +664,11 @@ msgstr ""
 #: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Woodsman_Trapper.cfg:70
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/humans/Outlaw_Thief.cfg:188
 #: data/core/units/humans/Woodsman.cfg:41
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
-#: data/core/units/humans/Woodsman_Poacher.cfg:36
+#: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -960,13 +961,13 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Rider.cfg:57
 #: data/core/units/elves/Hero.cfg:44 data/core/units/elves/Champion.cfg:45
 #: data/core/units/elves/Fighter.cfg:45
-#: data/core/units/humans/Woodsman_Trapper.cfg:79
-#: data/core/units/humans/Woodsman_Ranger.cfg:54
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
 #: data/core/units/undead/Skeleton_Archer.cfg:40
 #: data/core/units/undead/Skele_Banebow.cfg:40
@@ -1094,7 +1095,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Silver.cfg:48
 #: data/core/units/humans/Mage_Arch.cfg:81
 #: data/core/units/humans/Mage_Red.cfg:66
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:38
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
 msgstr "staf"
 
@@ -1635,7 +1636,7 @@ msgid "Goblin Spearman"
 msgstr "Kobold Speervechter"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
-#: data/core/units/goblins/Spearman.cfg:20
+#: data/core/units/goblins/Spearman.cfg:21
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -2783,24 +2784,6 @@ msgstr "slinger"
 msgid "female^Outlaw"
 msgstr "Brigante"
 
-#. [female]
-#: data/core/units/humans/Outlaw.cfg:105
-msgid ""
-"female^After some years of service, former 'footpads' rise up in the ranks "
-"of their fellow outlaws. Having proven themselves in combat, they are given "
-"more dangerous tasks, and a greater share of the spoils. Though many "
-"opponents would mock their choice of weaponry, the outlaws are well aware of "
-"its deadly capacity, and also of the ready availability of ammunition. "
-"Outlaws are somewhat ill at ease fighting during the day, preferring the "
-"cover of nightfall."
-msgstr ""
-"Na enkele jaren van dienen stijgen enkele voormalige voetscouts uit boven "
-"hun mede wettelozen. Na zich bewezen te hebben in veldslagen krijgen zij de "
-"gevaarlijker taken en een groter aandeel in plunderingen. Hoewel vijanden "
-"hun keuze van wapen bespotten zijn de wetteloze zich wel bewust van de "
-"dodelijke mogelijkheden en van de altijd aanwezige munitie. Wettelozen zijn "
-"wat zwakjes overdag en prefereren duister van de nacht."
-
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
@@ -2888,23 +2871,6 @@ msgstr "knuppel"
 msgid "female^Footpad"
 msgstr "Voetscout"
 
-#. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:166
-msgid ""
-"female^These petty criminals are often derisively called 'footpads' by their "
-"superiors, for they are tasked with any job that requires a great deal of "
-"running around, often being employed as couriers, or scouts. The endurance "
-"and agility they gain from this serves them well in combat, and despite "
-"their inferior weaponry they are quite good at harrying their enemies, "
-"especially under cover of darkness."
-msgstr ""
-"vrouwelijk^Deze kleine misdadigers worden vaak minachtend 'voetscouten' "
-"genoemd door hun superieuren. Dit vooral omdat het vaak hun taak is heel wat "
-"over en weer te rennen, ofwel als koerier ofwel als verkenner. Hun lenigheid "
-"en uithoudingsvermoging is ook zeer bruikbaar in gevecten waar ze ondanks "
-"hun minderwaardige bewapening hun vijanden toch goed kunnen tergen, vooral "
-"als het donker is."
-
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -2927,19 +2893,6 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:109
 msgid "female^Fugitive"
 msgstr "Voortvluchtige"
-
-#. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:112
-msgid ""
-"female^Veteran criminals become notorious for both their ruthlessness and "
-"ability to elude capture. They can be dangerous and rightly fearful in their "
-"element, but are no match for the sheer numbers that law-abiding soldiery "
-"can throw at them."
-msgstr ""
-"vrouwelijk^Doorwinterde criminelen worden berucht voor zowel hun "
-"genadeloosheid als voor hun ontsnappingskunsten. Ze kunnen gevaarlijk en "
-"angstaanjagend zijn wanneer ze zich in hun element voelen maar ze kunnen "
-"niet op tegen het numeriek veel grotere aantal gezagstrouwe soldaten."
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -3173,7 +3126,7 @@ msgid "Ranger"
 msgstr "Boswachter"
 
 #. [unit_type]: id=Ranger, race=human
-#: data/core/units/humans/Woodsman_Ranger.cfg:22
+#: data/core/units/humans/Woodsman_Ranger.cfg:23
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3738,6 +3691,21 @@ msgstr ""
 "De tentakels uit de diepte zijn de aanhangsels van gigantische monsters die "
 "beneden de waterspiegel huizen."
 
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:5
+#, fuzzy
+msgid "Water Serpent"
+msgstr "Zeeslang"
+
+#. [unit_type]: id=Water Serpent, race=monster
+#: data/core/units/monsters/Water_Serpent.cfg:38
+msgid ""
+"Scholars differ as to the ancestry of the Water Serpent. Some hold that they "
+"are the immature young, or mature cousins, of Sea Serpents. Others hold them "
+"up as a primitive offshoot of the Nagas. What is certain is that it is wise "
+"to avoid waters where they are known to congregate."
+msgstr ""
+
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
@@ -3883,7 +3851,7 @@ msgid "Ogre"
 msgstr "Boeman"
 
 #. [unit_type]: id=Ogre, race=ogre
-#: data/core/units/ogres/Ogre.cfg:21
+#: data/core/units/ogres/Ogre.cfg:22
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -3895,7 +3863,7 @@ msgstr ""
 "kracht valt niet te onderschatten."
 
 #. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
 msgid "cleaver"
 msgstr "vlees doorkluwer"
 
@@ -3905,7 +3873,7 @@ msgid "Young Ogre"
 msgstr "Jonge Boeman"
 
 #. [unit_type]: id=Young Ogre, race=ogre
-#: data/core/units/ogres/Young_Ogre.cfg:21
+#: data/core/units/ogres/Young_Ogre.cfg:22
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -4537,7 +4505,7 @@ msgstr "vriesstorm"
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:59
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
 msgstr "schaduwgolf"
 
@@ -4573,7 +4541,7 @@ msgstr ""
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necromancer.cfg:51
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:47
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
 msgid "chill wave"
 msgstr "koudegolf"
 
@@ -4581,30 +4549,6 @@ msgstr "koudegolf"
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
 msgid "female^Dark Adept"
 msgstr "Zwarte Adept"
-
-#. [female]
-#: data/core/units/undead/Necro_Dark_Adept.cfg:217
-msgid ""
-"female^To attract any practitioners, the lure of black magic must be a great "
-"prize indeed, for anyone caught practicing the art in the civilized world is "
-"subject to a death sentence. And yet there are those who pursue this art, "
-"for the prize offered is nothing less than immortality. Hidden away in "
-"secret cults, or initiated into the dark orders of the underworld, the "
-"training which these fanatics must endure often drives them to exhaustion "
-"and enfeeblement.\n"
-"\n"
-"In such condition, their only weapon is the craft they have so committed "
-"themselves to learning."
-msgstr ""
-"female^Dat er beoefenaars van zwarte magie zijn, duidt erop dat het voordeel "
-"ervan groot is, want wie deze kunst in de beschaafde wereld in de praktijk "
-"brengt krijgt de doodstraf. Het verkregen voordeel is dan ook niet minder "
-"dan onsterfelijkheid. Verborgen in geheime genootschappen of in de duistere "
-"gelederen van de onderwereld, ondergaan deze fanatiekelingen een opleiding "
-"die hen vaak volledig uitput.\n"
-"\n"
-"Derhalve is het enige wapen dat hun ter beschikking staat de magie waar ze "
-"zich met hart en ziel op toeleggen."
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
@@ -4647,12 +4591,12 @@ msgstr ""
 "zelfs hen die nauwelijks dromen van macht in verleiding brengt."
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:190
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:243
 msgid "Dark Sorceress"
 msgstr "Zwarte Magiër"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:196
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:249
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -5137,6 +5081,70 @@ msgstr ""
 "\n"
 "Enten zijn geenszins oorlogszuchtig, maar bezitten een enorme kracht. Ze "
 "zijn echter niet gewend veel te bewegen."
+
+#~ msgid ""
+#~ "female^After some years of service, former 'footpads' rise up in the "
+#~ "ranks of their fellow outlaws. Having proven themselves in combat, they "
+#~ "are given more dangerous tasks, and a greater share of the spoils. Though "
+#~ "many opponents would mock their choice of weaponry, the outlaws are well "
+#~ "aware of its deadly capacity, and also of the ready availability of "
+#~ "ammunition. Outlaws are somewhat ill at ease fighting during the day, "
+#~ "preferring the cover of nightfall."
+#~ msgstr ""
+#~ "Na enkele jaren van dienen stijgen enkele voormalige voetscouts uit boven "
+#~ "hun mede wettelozen. Na zich bewezen te hebben in veldslagen krijgen zij "
+#~ "de gevaarlijker taken en een groter aandeel in plunderingen. Hoewel "
+#~ "vijanden hun keuze van wapen bespotten zijn de wetteloze zich wel bewust "
+#~ "van de dodelijke mogelijkheden en van de altijd aanwezige munitie. "
+#~ "Wettelozen zijn wat zwakjes overdag en prefereren duister van de nacht."
+
+#~ msgid ""
+#~ "female^These petty criminals are often derisively called 'footpads' by "
+#~ "their superiors, for they are tasked with any job that requires a great "
+#~ "deal of running around, often being employed as couriers, or scouts. The "
+#~ "endurance and agility they gain from this serves them well in combat, and "
+#~ "despite their inferior weaponry they are quite good at harrying their "
+#~ "enemies, especially under cover of darkness."
+#~ msgstr ""
+#~ "vrouwelijk^Deze kleine misdadigers worden vaak minachtend 'voetscouten' "
+#~ "genoemd door hun superieuren. Dit vooral omdat het vaak hun taak is heel "
+#~ "wat over en weer te rennen, ofwel als koerier ofwel als verkenner. Hun "
+#~ "lenigheid en uithoudingsvermoging is ook zeer bruikbaar in gevecten waar "
+#~ "ze ondanks hun minderwaardige bewapening hun vijanden toch goed kunnen "
+#~ "tergen, vooral als het donker is."
+
+#~ msgid ""
+#~ "female^Veteran criminals become notorious for both their ruthlessness and "
+#~ "ability to elude capture. They can be dangerous and rightly fearful in "
+#~ "their element, but are no match for the sheer numbers that law-abiding "
+#~ "soldiery can throw at them."
+#~ msgstr ""
+#~ "vrouwelijk^Doorwinterde criminelen worden berucht voor zowel hun "
+#~ "genadeloosheid als voor hun ontsnappingskunsten. Ze kunnen gevaarlijk en "
+#~ "angstaanjagend zijn wanneer ze zich in hun element voelen maar ze kunnen "
+#~ "niet op tegen het numeriek veel grotere aantal gezagstrouwe soldaten."
+
+#~ msgid ""
+#~ "female^To attract any practitioners, the lure of black magic must be a "
+#~ "great prize indeed, for anyone caught practicing the art in the civilized "
+#~ "world is subject to a death sentence. And yet there are those who pursue "
+#~ "this art, for the prize offered is nothing less than immortality. Hidden "
+#~ "away in secret cults, or initiated into the dark orders of the "
+#~ "underworld, the training which these fanatics must endure often drives "
+#~ "them to exhaustion and enfeeblement.\n"
+#~ "\n"
+#~ "In such condition, their only weapon is the craft they have so committed "
+#~ "themselves to learning."
+#~ msgstr ""
+#~ "female^Dat er beoefenaars van zwarte magie zijn, duidt erop dat het "
+#~ "voordeel ervan groot is, want wie deze kunst in de beschaafde wereld in "
+#~ "de praktijk brengt krijgt de doodstraf. Het verkregen voordeel is dan ook "
+#~ "niet minder dan onsterfelijkheid. Verborgen in geheime genootschappen of "
+#~ "in de duistere gelederen van de onderwereld, ondergaan deze "
+#~ "fanatiekelingen een opleiding die hen vaak volledig uitput.\n"
+#~ "\n"
+#~ "Derhalve is het enige wapen dat hun ter beschikking staat de magie waar "
+#~ "ze zich met hart en ziel op toeleggen."
 
 #~ msgid ""
 #~ "\n"

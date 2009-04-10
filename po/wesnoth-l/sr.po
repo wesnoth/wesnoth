@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 14:29+0100\n"
+"POT-Creation-Date: 2009-04-10 19:46+0200\n"
 "PO-Revision-Date: 2008-06-23 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -55,13 +55,13 @@ msgstr "бегунац"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
+#, fuzzy
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
 "marchlanders revolts against the tyranny of Queen Asheviere. To win their "
 "way to freedom, they must defeat not just the trained blades of Wesnothian "
 "troops but darker foes including orcs and undead.\n"
 "\n"
-"(Intermediate level, 9 scenarios)"
 msgstr ""
 "Док се сенка грађанског рата надвија над Веснотом, дружина срчаних "
 "мочварљана устаде против тиранства краљице Ашевире. За пробој до слободе, "
@@ -69,6 +69,11 @@ msgstr ""
 "мрачније противнике у које спадају и оркови и немртви.\n"
 "\n"
 "(Средњи ниво, 9 сценарија)"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:25
+msgid "(Intermediate level, 9 scenarios)"
+msgstr ""
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -162,7 +167,7 @@ msgstr ""
 
 #. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:30
 msgid "Baldras"
 msgstr "Балдрас"
 
@@ -188,7 +193,7 @@ msgstr "Досегну ли гоблини село Далбен"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:110
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:82
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:81
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 msgid "Death of Baldras"
 msgstr "Настрада ли Балдрас"
@@ -199,7 +204,7 @@ msgstr "Настрада ли Балдрас"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:114
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:86
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:85
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Настрада ли Харпер"
@@ -211,7 +216,7 @@ msgstr "Настрада ли Харпер"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:118
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:90
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:89
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
 msgid "Turns run out"
 msgstr "Истекну ли потези"
@@ -447,6 +452,13 @@ msgstr ""
 "Гоблини стигоше до села! Засигурно ништа од њега остати неће кад доврше "
 "своје пустошење."
 
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:390
+msgid ""
+"None remarked on the passing of the tiny, isolated frontier town. It was but "
+"a harbinger of the evil to come under the tyranny of Asheviere."
+msgstr ""
+
 #. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
@@ -471,14 +483,14 @@ msgstr "Грађанска непослушност"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:58
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:43
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:38
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:69
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 msgid "Rebels"
 msgstr ""
 
 #. [side]: type=Cavalier, id=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:46
 msgid "Tarwen"
 msgstr "Тарвен"
 
@@ -494,29 +506,29 @@ msgstr "Тарвен"
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:70
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:52
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
 msgid "Asheviere"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:77
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "Убијеш ли капетана веснотске војске, Тарвена"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:127
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:126
 msgid "Look, riders approach."
 msgstr "Гледајте, пристижу јахачи."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:131
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:130
 msgid "Stand fast, nephew."
 msgstr "Без узмака, синовче."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:144
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:143
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
 "us to Elensefar for vetting."
@@ -525,12 +537,12 @@ msgstr ""
 "Еленсефар, на уверодостојавање."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:148
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:147
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr "Герард је краљ Веснота. Не влада нама никаква краљица."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:152
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:151
 msgid ""
 "Insolent peasants, you will kneel before your betters! Asheviere is the "
 "queen of Wesnoth. The King fell three weeks ago at Abez. I shall not bandy "
@@ -542,17 +554,17 @@ msgstr ""
 "намесник ће поћи с нама, а да ли жив или мртав, нама је свеједно."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:186
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:185
 msgid "Guard the gate."
 msgstr "Страже на капију."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:197
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:196
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "Херпере, бежи одавде. Ово није бој за тебе."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:202
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:201
 msgid ""
 "I am the magistrate of Dallben, and it is YOU who will be leaving Dallben, "
 "be it dead or alive."
@@ -561,17 +573,17 @@ msgstr ""
 "како изволиш."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:217
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:216
 msgid "Get back, you cur!"
 msgstr "Одбиј, псу!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:231
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:230
 msgid "Get out of my village!"
 msgstr "Напоље из мог села!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:240
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:243
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
 "But now I fear things will be worse."
@@ -580,12 +592,12 @@ msgstr ""
 "да ће сада бити још горе."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:248
 msgid "We must tell the people of Delwyn about this."
 msgstr "Морамо и овоме испричати Делвињанима."
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:258
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:261
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
 "something we should face together."
@@ -594,7 +606,7 @@ msgstr ""
 "заједно морамо суочити."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:263
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:266
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
 "Wesnoth would fall into darkness. Now, not only do the orcs threaten our "
@@ -606,7 +618,7 @@ msgstr ""
 "већ отпочиње и нешто злослутно с краљичиним успоном на престо."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:268
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:271
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
 "but we are now outlaws."
@@ -615,10 +627,17 @@ msgstr ""
 "али смо од сада одметници."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:329
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:332
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "О, не! Време нам је истекло, стижу им појачања..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:345
+msgid ""
+"They would be remembered only traitors rightly put down by the Queen's "
+"lances. And in the dark years to come, woe betide any who questioned it."
+msgstr ""
 
 #. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
@@ -820,6 +839,15 @@ msgid ""
 msgstr ""
 "Превише смо одуговлачили... Нема нам више изгледа да досегнемо Еленсефар и "
 "доведемо помоћ пре него што нам веснотска војска уништи домове. Повлачење!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:273
+msgid ""
+"Baldras and Relnan returned to their villages to find them destroyed, with "
+"those who fought left dead and the few survivors born away to unguessable "
+"fates. It was a bitter doom, and as Wesnoth descended into darkness they "
+"would live to see worse."
+msgstr ""
 
 #. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
@@ -1057,6 +1085,14 @@ msgid ""
 msgstr ""
 "Гледајте, стиже још јахача са југоистока. Не можемо преживети још један "
 "јуриш. С нама је свршено!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:608
+msgid ""
+"Indeed, Asheviere's armies had mustered and struck before the nascent "
+"rebellion could even be planned. Her power and ruthlessness - and their toll "
+"of death - would only grow greater with time."
+msgstr ""
 
 #. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
@@ -1505,7 +1541,7 @@ msgstr ""
 "тебе! До тада..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:457
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:459
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Моји... не успеше да ме заштите! Пропадох..."
 
@@ -2076,49 +2112,49 @@ msgstr ""
 "Тог поподнева, пристиже још једно истурено одељење главне војске Веснота..."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:619
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:638
 msgid ""
 "I think... I think they're trying to storm Halstead itself... the fools!"
 msgstr "Чини ми се... намеравају ли они то у препад на сам Халстед? Будале!"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:636
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:655
 #, fuzzy
 msgid "They have breached the fortress gate! Repulse them!"
 msgstr "Пробише се кроз опсадне капије! Одбијте их!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:652
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:671
 msgid "I'm inside the tower! I'm going down to the catacombs - cover me."
 msgstr "У кули сам! Спуштам се у катакомбе, чувајте ми леђа."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:662
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:681
 msgid "After about an hour..."
 msgstr "Око сат касније..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:672
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:691
 msgid "It's done."
 msgstr "Учињено је."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:699
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:718
 msgid "The stronghold of Halstead began to shake..."
 msgstr "Упориште Халстед поче да подрхтава..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:704
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:723
 msgid "We cannot stay here. The fortress has started to collapse!"
 msgstr "Не можемо остати овде. Тврђава само што се није обрушила!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:735
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:754
 msgid "I think it's working! Everybody get clear NOW!"
 msgstr "Мислим да ради! Сви на чистац, одмах!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:759
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:778
 msgid ""
 "With a thunderous earthquake and a vast billowing of dust, thousands of tons "
 "of stone and wood crashed in on itself. Some of it tumbled down the steep "
@@ -2130,12 +2166,12 @@ msgstr ""
 "сурва неколико стотина стопа под земљу, у гротло издубљене планине."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:764
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:783
 msgid "No one inside the fortress would make it out alive."
 msgstr "Нико ко је остао у тврђави неће се жив извући."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:831
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:850
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere's host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2146,12 +2182,12 @@ msgstr ""
 "погубљен."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:861
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:880
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "Људи, вадите ме одавде! Заробљен сам под рушевином."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:865
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:884
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
@@ -2160,33 +2196,41 @@ msgstr ""
 "тог дана, подно упоришта Халстед."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:870
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:889
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr "Надам се да ова жртва није узалудна... али никад нећемо сазнати."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:876
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:895
 #, fuzzy
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "Наш сан о слободи... крај му... уухх."
 
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:902
+msgid ""
+"The rebellion had stakes its all on victory at Halstead, but win or lose, "
+"there would be no help for the villagers, ground beneath the wheels of "
+"Asheviere's wrath."
+msgstr ""
+
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:894
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:918
 msgid "Uncle!"
 msgstr "Стриче!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:898
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:922
 msgid "NO!"
 msgstr "Не!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:902
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:926
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "Обећах твом оцу да ћу те чувати... и не испуних обећање."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:906
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:930
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2195,7 +2239,7 @@ msgstr ""
 "уживаш у нашој слободи. Збогом, Харпере."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:920
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:944
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
@@ -2204,13 +2248,13 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:940
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:964
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:970
 msgid "Your reign of terror is over, General."
 msgstr "Твојој страховлади је крај, генерале."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:952
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:976
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2221,19 +2265,19 @@ msgstr ""
 "њеног беса обруши на вас."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:963
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:987
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr "Није ово ни случајно мала победа. Потцењујеш моћ тежње ка слободи."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:967
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:991
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... unngh.."
 msgstr "Ти... потцењујеш... окрутност и славољубље своје краљице... ууррх."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:974
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:998
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2571,7 +2615,7 @@ msgid "Peasant Youth"
 msgstr "сељачки омладинац"
 
 #. [unit_type]: id=Footpad_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:61
+#: data/campaigns/Liberty/units/Villagers.cfg:60
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
 "elsewhere in Wesnoth: reckless, cocky, and eager to explore."
@@ -2580,17 +2624,17 @@ msgstr ""
 "непромишљени, дрски, жељни истраживања."
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:67
+#: data/campaigns/Liberty/units/Villagers.cfg:66
 msgid "female^Peasant Youth"
 msgstr "сељачка омладинка"
 
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:77
+#: data/campaigns/Liberty/units/Villagers.cfg:76
 msgid "Watchman"
 msgstr "надзорник"
 
 #. [unit_type]: id=Outlaw_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:82
+#: data/campaigns/Liberty/units/Villagers.cfg:81
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
 "human and otherwise, that prowl the Wesnoth countryside at night."
@@ -2599,17 +2643,17 @@ msgstr ""
 "што се ноћу шуњају веснотском дивљином."
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:84
+#: data/campaigns/Liberty/units/Villagers.cfg:83
 msgid "female^Watchwoman"
 msgstr "надзорница"
 
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:94
+#: data/campaigns/Liberty/units/Villagers.cfg:93
 msgid "Borderer"
 msgstr "граничар"
 
 #. [unit_type]: id=Fugitive_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:99
+#: data/campaigns/Liberty/units/Villagers.cfg:98
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
 "these borderers are not trained and armed to up to military standards, their "
@@ -2618,17 +2662,17 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/campaigns/Liberty/units/Villagers.cfg:101
+#: data/campaigns/Liberty/units/Villagers.cfg:100
 msgid "female^Borderer"
 msgstr "граничарка"
 
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:116
+#: data/campaigns/Liberty/units/Villagers.cfg:115
 msgid "Peasant Hunter"
 msgstr "сељачки ловац"
 
 #. [unit_type]: id=Poacher_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:119
+#: data/campaigns/Liberty/units/Villagers.cfg:118
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
 "bring in much of their food supply. Their stealth and intimate knowledge of "
@@ -2639,12 +2683,12 @@ msgstr ""
 "терена може им бити вредан иметак у борби."
 
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:128
+#: data/campaigns/Liberty/units/Villagers.cfg:127
 msgid "Peasant Trapper"
 msgstr "сељачки трапер"
 
 #. [unit_type]: id=Trapper_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:133
+#: data/campaigns/Liberty/units/Villagers.cfg:131
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
 "Their hunting experience makes them most valuable at night and in forests "
@@ -2654,12 +2698,12 @@ msgstr ""
 "Ловачко искуство чини их највреднијим ноћу и у шумама и мочварама."
 
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:142
+#: data/campaigns/Liberty/units/Villagers.cfg:140
 msgid "Peasant Huntsman"
 msgstr "сељачки ловодар"
 
 #. [unit_type]: id=Huntsman_Peasant
-#: data/campaigns/Liberty/units/Villagers.cfg:147
+#: data/campaigns/Liberty/units/Villagers.cfg:145
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They can bullseye wamprats and track anything that moves "
@@ -2712,6 +2756,14 @@ msgstr "Са мном је свршено... Хоћемо ли се икад о�
 #: data/campaigns/Liberty/utils/utils.cfg:172
 msgid "How can this be? We have lost."
 msgstr "Како дође довде? Изгубисмо."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Liberty/utils/utils.cfg:188
+msgid ""
+"They returned to their village to find it destroyed, with those who fought "
+"left dead and the few survivors born away to unguessable fates. It was a "
+"bitter doom, but as Asheviere's grip tightened they would live to see worse."
+msgstr ""
 
 #~ msgid ""
 #~ "Goblins do not do well without their leaders. If we can kill this one, it "
