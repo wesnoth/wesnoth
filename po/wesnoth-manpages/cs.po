@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-03-27 16:50+0100\n"
+"PO-Revision-Date: 2009-04-10 15:13+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
-"nastaví složku s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
+"nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
 "\\eMy Games\" pod Windows."
 
 # type: TP
@@ -320,9 +320,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
-"načte uloženou hru I<soubor> ze standardní složky pro uložené hry. Pokud je "
-"použit i přepínač B<-e> nebo B<--editor>, otevře editor s načtenou mapou ze "
-"I<soubor>."
+"načte uloženou hru I<soubor> ze standardního adresáře pro uložené hry. Pokud "
+"je použit i přepínač B<-e> nebo B<--editor>, otevře editor s načtenou mapou "
+"ze I<soubor>."
 
 # type: TP
 #. type: TP
@@ -1188,7 +1188,7 @@ msgstr "Heslo pro získání administrátorských práv. Obvykle začíná na �
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1197,6 +1197,8 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"Adresář, do nějž server ukládá záznamy her (nezapomeňte na / na konci!). "
+"Výchozí hodnota je `', neboli adresář v němž byl server spuštěn."
 
 # type: TP
 #. type: TP
@@ -1219,7 +1221,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
@@ -1227,6 +1229,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Určuje, zda bude server automaticky ukládat záznamy her (výchozí hodnota: "
+"B<false>)."
 
 # type: TP
 #. type: TP
@@ -1258,7 +1262,7 @@ msgstr "Příklad: B<versions_accepted=\"*\"> akceptuje všechny verze."
 #: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #. type: Plain text
@@ -1270,6 +1274,10 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"Název handleru uživatelů, jenž má být použit. V tuto chvíli jsou dostupné "
+"handlery 'forum' (propojení s databází phpbb) a 'sample' (vzorová "
+"implementace rozhraní, prakticky nepoužitelná). Výchozí hodnota je 'forum'. "
+"Handler musí být dále konfigurován v sekci B<[user_handler]> - viz níže."
 
 # type: SS
 #. type: SS
@@ -1398,39 +1406,43 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Knfiguruje uživatelský handler. Dostupné klíče se liší "
+"podle toho, který handler je použit - nastaveno klíčem B<user_handler>. "
+"Pokud není v konfiguraci nalezena žádná sekce [user_handler], server poběží "
+"bez služeb správy přezdívek."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(pro user_handler=forum) Hostitelský databázový server"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(pro user_handler=forum) Jméno databáze"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:211
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #. type: Plain text
@@ -1438,27 +1450,27 @@ msgstr ""
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr ""
+msgstr "(pro user_handler=forum) Uživatelské jméno pro přihlášení k databázi"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(pro user_handler=forum) Heslo pro databázi"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:217
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1468,13 +1480,16 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(pro user_handler=forum) Název tabulky, v níž ukládá vaše fórum (typu phpbb) "
+"data o uživatelích. Pravděpodobně to je E<lt>prefixE<gt>_users (například "
+"phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:220
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -1486,13 +1501,18 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(pro user_handler=forum) Název tabulky, v níž bude wesnothd ukládat svá "
+"vlastní data o uživatelích. Tuto tabulku budete muset vytvořit ručně - "
+"například: CREATE TABLE E<lt>jméno_tabulkyE<gt>(username VARCHAR(255) "
+"PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #. type: Plain text
@@ -1501,79 +1521,83 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(pro user_handler=sample) Čas, po němž vyprší platnost registrovaného "
+"uživatelského jména (dny)."
 
-# type: Plain text
+# handler?
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:231
 msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Konfiguruje SMTP server skrz nějž je možno odesílat poštu "
+"uživatelského handleru. V tuto chvíli jej používá pouze vzorový handler."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Hostitelský server emailu"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Uživatelské jméno pro emailový server."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "This user's password."
-msgstr ""
+msgstr "Heslo pro emailový server."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:244
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "Adresa vložená do hlavičky Reply-To odesílaných mailů."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:247
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "Port, na němž běží emailový server. Výchozí hodnota 25."
 
 # type: Plain text
 #. type: Plain text
