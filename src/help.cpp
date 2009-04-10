@@ -44,6 +44,10 @@ help_button::help_button(display& disp, const std::string &help_topic)
 	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic), help_hand_(NULL)
 {}
 
+help_button::~help_button() {
+	delete help_hand_;
+}
+
 int help_button::action(gui::dialog_process_info &info) {
 	if(!topic_.empty()) {
 		show_help();
