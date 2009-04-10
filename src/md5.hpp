@@ -41,7 +41,7 @@ documentation and/or software.
 
 #include <stdio.h>
 #include <fstream>
-#include <iostream>
+#include <iosfwd>
 
 class MD5 {
 
