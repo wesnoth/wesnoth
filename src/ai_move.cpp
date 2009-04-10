@@ -440,7 +440,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.incapacitated())) {
+		if(!(u->second.side() != get_side() || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.incapacitated())) {
 			break;
 		}
 	}
@@ -571,7 +571,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
-			if(u->second.side() != team_num_ || u->second.can_recruit() ||
+			if(u->second.side() != get_side() || u->second.can_recruit() ||
 			   u->second.movement_left() <= 0 || utils::string_bool(u->second.get_state("guardian")) || u->second.incapacitated()) {
 				continue;
 			}
@@ -903,7 +903,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
-	const unit_map::iterator leader = find_leader(units_,team_num_);
+	const unit_map::iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}

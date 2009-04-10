@@ -28,7 +28,7 @@ class formula_ai;
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public ai_interface {
 public:
-	idle_ai(info& i);
+	idle_ai(info& i, int side, bool master);
 	void play_turn();
 	virtual std::string describe_self();
 };
@@ -36,7 +36,7 @@ public:
 class ai : public ai_interface {
 public:
 
-	ai(ai_interface::info& info);
+	ai(ai_interface::info& info, int side, bool master);
 	virtual ~ai();
 
 	virtual void play_turn();
@@ -301,7 +301,6 @@ protected:
 	gamemap& map_;
 	unit_map& units_;
 	std::vector<team>& teams_;
-	unsigned int team_num_;
 	gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
@@ -395,7 +394,6 @@ private:
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
-	bool master_;
 	formula_ai* formula_ai_;
 };
 

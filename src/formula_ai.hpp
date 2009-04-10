@@ -40,7 +40,7 @@ public:
 		enemy_unit_()
 	{};
 
-	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_num);
+	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_number);
 
 	int get_score() const {return score_;}
 	std::string get_type() const {return type_;}
@@ -115,7 +115,7 @@ private:
 
 class formula_ai : public ai {
 public:
-	explicit formula_ai(info& i);
+	explicit formula_ai(info& i, int side, bool master);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();

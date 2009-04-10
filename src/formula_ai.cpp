@@ -402,7 +402,7 @@ private:
 		unit_map::const_iterator end = ai_.get_info().units.end();
 		while (un != end) {
 			if (distance_between(loc, un->first) <= range) {
-				if (un->second.side() != ai_.get_info().team_num) {
+				if (un->second.side() != ai_.get_side()) {
 					vars.push_back(variant(new unit_callable(*un)));
 				}
 			}
@@ -1510,8 +1510,8 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 
 }
 
-formula_ai::formula_ai(info& i) :
-	ai(i),
+formula_ai::formula_ai(info& i, int side, bool master) :
+	ai(i,side,master),
 	recruit_formula_(),
 	move_formula_(),
 	possible_moves_(),
@@ -1618,7 +1618,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	get_info().disp.add_chat_message(time(NULL), "fai", get_info(). team_num, msg,
+	get_info().disp.add_chat_message(time(NULL), "fai", get_side(), msg,
 				game_display::MESSAGE_PUBLIC, false);
 
 }
@@ -1647,7 +1647,7 @@ void formula_ai::play_turn()
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
-            if ( (i->second.side() == get_info().team_num)  )
+            if ( (i->second.side() == get_side())  )
             {
                 if ( i->second.has_formula() || i->second.has_loop_formula()) {
                     int priority = 0;
@@ -1759,7 +1759,7 @@ void formula_ai::build_move_list() {
 	candidate_moves_.clear();
 	std::vector<candidate_move_ptr>::iterator itor = function_table.candidate_move_begin();
 	for( ; itor != function_table.candidate_move_end(); ++itor) {
-		(*itor)->evaluate_move(this, units_, get_info().team_num);
+		(*itor)->evaluate_move(this, units_, get_side());
 		candidate_moves_.insert(*itor);
 	}
 }
@@ -1840,7 +1840,7 @@ void formula_ai::prepare_move() const
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
-		if(master_) {
+		if(get_master()) {
 			LOG_AI << "Falling back to default AI.\n";
 			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, get_info(),false));
 			if (fallback != NULL){
@@ -2141,7 +2141,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			LOG_AI << "setting unit var: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
 			unit_map::iterator unit = units_.find(set_unit_var_command->loc());
 			if(unit != units_.end()) {
-				if( unit->second.side() == get_info().team_num ) {
+				if( unit->second.side() == get_side() ) {
 					unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				}
 			} else {
@@ -2156,7 +2156,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && (i->as_string() == "end_turn" || i->as_string() == "end" )  ) {
 			return false;
 		} else if(fallback_command) {
-			if (master_)
+			if (get_master())
 			{
 				if(fallback_command->key() == "human")
 				{
@@ -2259,11 +2259,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(new team_callable((*get_info().state.teams)[get_info().team_num-1]));
+		return variant(new team_callable((*get_info().state.teams)[get_side()-1]));
 
 	} else if(key == "my_side_number")
 	{
-		return variant(get_info().team_num-1);
+		return variant(get_side()-1);
 
 	} else if(key == "teams")
 	{
@@ -2367,7 +2367,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
-			if(i->second.side() == get_info().team_num) {
+			if(i->second.side() == get_side()) {
 				vars.push_back(variant(new unit_callable(*i)));
 			}
 		}
@@ -2397,7 +2397,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_leader")
 	{
-		unit_map::const_iterator i = team_leader(get_info().team_num, get_info().units);
+		unit_map::const_iterator i = team_leader(get_side(), get_info().units);
 		if(i == get_info().units.end()) {
 			return variant();
 		}
@@ -2512,15 +2512,15 @@ bool formula_ai::can_attack(const map_location unit_loc,
 
 
 void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
-		size_t team_num) {
+		size_t team_number) {
 	score_ = -1000;
 	if(type_ == "attack") {
 		for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)
 		{
-			if( (me->second.side() == team_num) &&
+			if( (me->second.side() == team_number) &&
 					(me->second.has_moved() == false) ) {
 				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
-					if( (target->second.side() != team_num) &&
+					if( (target->second.side() != team_number) &&
 							(ai->can_attack(me->first, target->first)) ) {
                                                 int res = -1000;
 
@@ -2551,7 +2551,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 	} else {
 		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 		{
-			if( (i->second.side() == team_num) &&
+			if( (i->second.side() == team_number) &&
 					(i->second.has_moved() == false) ) {
                                 int res = -1000;
 				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));

@@ -25,8 +25,8 @@
 
 namespace dfool {
   void dfool_ai::play_turn(){
-    info info_ = get_info();
-    int team_num=get_info().team_num;
+    info& info_ = get_info();
+    int team_num = get_side();
     const config& parms = current_team().ai_parameters();
     config ai_mem = current_team().ai_memory();
 

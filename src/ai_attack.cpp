@@ -124,7 +124,7 @@ void ai::do_attack_analysis(
                        if(map_.on_board(adj[tile]))
                        {
                                accessible_tiles++;
-                               if(tmp_unit != units_.end() && team_num_ != tmp_unit->second.side())
+                               if(tmp_unit != units_.end() && get_side() != tmp_unit->second.side())
                                {
                                        enemy_units_around++;
                                        possible_flanked = true;
@@ -135,7 +135,7 @@ void ai::do_attack_analysis(
                         if(map_.on_board(adj[tile + 3]))
                        {
                                accessible_tiles++;
-                               if(tmp_opposite_unit != units_.end() && team_num_ != tmp_opposite_unit->second.side())
+                               if(tmp_opposite_unit != units_.end() && get_side() != tmp_opposite_unit->second.side())
                                {
                                        enemy_units_around++;
                                        if(possible_flanked)
@@ -608,7 +608,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 	std::vector<location> unit_locs;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == team_num_ && i->second.attacks_left()) {
+		if(i->second.side() == get_side() && i->second.attacks_left()) {
 			unit_locs.push_back(i->first);
 		}
 	}

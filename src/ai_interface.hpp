@@ -31,6 +31,11 @@ class gamemap;
 
 class ai_interface : public game_logic::formula_callable {
 public:
+	/** get the 1-based side number which is controlled by this AI */
+	int get_side() const { return side_;}
+
+	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
+	bool get_master() const { return master_;}
 
 	/** A convenient typedef for the often used 'location' object. */
 	typedef map_location location;
@@ -45,9 +50,9 @@ public:
 	 */
 	struct info {
 		info(game_display& disp, gamemap& map, unit_map& units,
-			std::vector<team>& teams, unsigned int team_num, gamestatus& state, class turn_info& turn_data, class game_state& game_state)
+			std::vector<team>& teams, gamestatus& state, class turn_info& turn_data, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
-			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state), master(true)
+			   state(state), turn_data_(turn_data), game_state_(game_state)
 		{}
 
 		/** The display object, used to draw the moves the AI makes. */
@@ -62,14 +67,6 @@ public:
 		/** A list of the teams in the game. */
 		std::vector<team>& teams;
 
-		/**
-		 * The number of the team the AI is.
-		 *
-		 * Note: this number is 1-based, so 1 must be subtracted for using it
-		 * as index of 'teams'.
-		 */
-		unsigned int team_num;
-
 		/** Information about what turn it is, and what time of day. */
 		gamestatus& state;
 
@@ -81,7 +78,6 @@ public:
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
-		bool master;
 	};
 
 	/**
@@ -90,7 +86,7 @@ public:
 	 * All derived classes should take an argument of type info& which they
 	 * should pass to this constructor.
 	 */
-	ai_interface(info& arg) : info_(arg), last_interact_(0), user_interact_("ai_user_interact"),
+	ai_interface(info& arg, int side, bool master) : info_(arg), side_(side), master_(master), last_interact_(0), user_interact_("ai_user_interact"),
 		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
 		enemy_attacked_("ai_enemy_attacked") {
 		add_ref(); //this class shouldn't be reference counted.
@@ -112,8 +108,8 @@ public:
 	}
 
 	/** Return a reference to the 'team' object for the AI. */
-	team& current_team() { return info_.teams[info_.team_num-1]; }
-	const team& current_team() const { return info_.teams[info_.team_num-1]; }
+	team& current_team() { return info_.teams[side_-1]; }
+	const team& current_team() const { return info_.teams[side_-1]; }
 
 	/** Show a diagnostic message on the screen. */
 	void diagnostic(const std::string& msg);
@@ -135,7 +131,7 @@ public:
         virtual bool manager_reap_ai() { return false ; } ;
 
         /** Set the team */
-        virtual void set_team(int team) { info_.team_num = team; }
+        virtual void set_team(int team) { side_ = team; }
 
         /** Evaluate */
         virtual std::string evaluate(const std::string& /*str*/)
@@ -251,6 +247,8 @@ protected:
 	virtual variant get_value(const std::string& key) const;
 private:
 	info info_;
+	int side_;
+	int master_;
 	int last_interact_;
 	events::generic_event user_interact_;
 	events::generic_event unit_recruited_;

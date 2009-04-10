@@ -177,7 +177,7 @@ bool ai_holder::is_mandate_ok( ai_interface::info &/*i*/ )
 ai_interface* ai_holder::create_ai( ai_interface::info& i )
 {
 	//@note: ai_params and ai_algorithm_type are supposed to be set before calling init(  );
-	return ai_manager::create_transient_ai(ai_algorithm_type_,i,true);
+	return ai_manager::create_transient_ai(ai_algorithm_type_,i,team_,true);
 
 }
 
@@ -251,7 +251,7 @@ ai_manager::AI_map_of_stacks ai_manager::ai_map_;
 // EVALUATION
 // =======================================================================
 
-const std::string ai_manager::evaluate_command( ai_interface::info& i, const std::string& str )
+const std::string ai_manager::evaluate_command( ai_interface::info& i, int side, const std::string& str )
 {
 	//insert new command into history
 	history_.push_back(ai_command_history_item(history_item_counter++,str));
@@ -263,11 +263,11 @@ const std::string ai_manager::evaluate_command( ai_interface::info& i, const std
 	}
 
 	if (!should_intercept(str)){
-		ai_interface& ai = get_command_ai(i.team_num,i);
+		ai_interface& ai = get_command_ai(side,i);
 		return ai.evaluate(str);
 	}
 
-	return internal_evaluate_command(i,str);
+	return internal_evaluate_command(i,side,str);
 }
 
 
@@ -293,7 +293,7 @@ long ai_manager::history_item_counter = 1;
 //yes, it doesn't look nice. but it is usable.
 //to be refactored at earliest opportunity
 //@todo: extract to separate class which will use fai or lua parser
-const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, const std::string& str ){
+const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, int side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 
 	//repeat last command
@@ -307,7 +307,7 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 			if (history_.empty()){
 				return "AI MANAGER: empty history";
 			}
-			return evaluate_command(i,history_.back().get_command());//no infinite loop since '!' commands are not present in history
+			return evaluate_command(i,side, history_.back().get_command());//no infinite loop since '!' commands are not present in history
 	};
 	//show last command
 	if (str=="?") {
@@ -381,7 +381,7 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 				j++;// this is *reverse* iterator
 			}
 			if (j!=history_.rend()){
-				return evaluate_command(i,j->get_command());//no infinite loop since '!' commands are not present in history
+				return evaluate_command(i,side,j->get_command());//no infinite loop since '!' commands are not present in history
 			}
 			return "AI MANAGER: no command with requested number found";
 		}
@@ -444,11 +444,8 @@ bool ai_manager::add_ai_for_team( int team, const std::string& ai_algorithm_type
 }
 
 
-ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, bool master )
+ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, int side, bool master )
 {
-	//honour the 'master' parameter
-	i.master = master;
-
 	//@todo: modify this code to use a 'factory lookup' pattern -
 	//a singleton which holds a map<string,ai_factory> of all functors which can create AIs.
 	//this will allow individual AI implementations to 'register' themselves.
@@ -456,33 +453,33 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	//: To add an AI of your own, put
 	//	if(ai_algorithm_type == "my_ai") {
 	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		return new my_ai(i);
+	//		return new my_ai(i,side,master);
 	//	}
 	// at the top of this function
 
 	//if(ai_algorithm_type == ai_manager::AI_TYPE_SAMPLE_AI) {
 	//  LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	return new sample_ai(i);
+	//	return new sample_ai(i,side,master);
 	//}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_IDLE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		return new idle_ai(i);
+		return new idle_ai(i,side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_FORMULA_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		return new formula_ai(i);
+		return new formula_ai(i,side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_DFOOL_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		return new dfool::dfool_ai(i);
+		return new dfool::dfool_ai(i,side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_AI2) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_AI2 << "]"<< std::endl;
-		return new ai2(i);
+		return new ai2(i,side,master);
 	}
 
 	if (!ai_algorithm_type.empty() && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
@@ -490,7 +487,7 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << ai_manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	return new ai(i);
+	return new ai(i,side,master);
 }
 
 std::vector<std::string> ai_manager::get_available_ais()
@@ -691,7 +688,6 @@ ai_interface& ai_manager::get_or_create_active_ai_for_team_without_fallback( int
 
 ai_interface& ai_manager::get_command_ai( int team, ai_interface::info& i )
 {
-	correct_team_in_info(team,i);
 	ai_holder& ai_holder = get_command_ai_holder(team);
 	ai_interface& ai = ai_holder.get_ai_ref(i);
 	ai.set_team(team);
@@ -700,7 +696,6 @@ ai_interface& ai_manager::get_command_ai( int team, ai_interface::info& i )
 
 ai_interface& ai_manager::get_fallback_ai( int team, ai_interface::info& i )
 {
-	correct_team_in_info(team,i);
 	ai_holder& ai_holder = get_fallback_ai_holder(team);
 	ai_interface& ai = ai_holder.get_ai_ref(i);
 	ai.set_team(team);
@@ -711,7 +706,3 @@ ai_interface& ai_manager::get_fallback_ai( int team, ai_interface::info& i )
 // MISC
 // =======================================================================
 
-void ai_manager::correct_team_in_info( int team, ai_interface::info& i )
-{
-	i.team_num = team;
-}

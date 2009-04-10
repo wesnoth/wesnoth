@@ -173,7 +173,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
 
-		if(u_itor->second.side() == team_num_
+		if(u_itor->second.side() == get_side()
 				&& u_itor->second.movement_left()) {
 			reachmap.insert(std::make_pair(u_itor->first,	std::vector<map_location>()));
 		}
@@ -222,7 +222,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 			if(units_.count(i->first) == 0) {
 				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
-				leader = find_leader(units_, team_num_);
+				leader = find_leader(units_, get_side());
 
 				// If we didn't make it to the destination, it means we were ambushed.
 				if(loc != i->first) {

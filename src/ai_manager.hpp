@@ -152,9 +152,10 @@ public:
 	 * and will try to evaluate them as internal commands
 	 * @return string result of evaluation
 	 * @param i game information for the AI
+	 * @param side side number (1-based)
 	 * @param str string to evaluate
 	 */
-	static const std::string evaluate_command( ai_interface::info& i, const std::string& str );
+	static const std::string evaluate_command( ai_interface::info& i, int side, const std::string& str );
 
 
 	// =======================================================================
@@ -192,10 +193,11 @@ public:
 	 * Return a pointer to a new AI. it is the sole responsibility of the caller to manage its lifecycle
 	 * @param ai_algorithm_type type of AI algorithm to create
 	 * @param i game information for the AI.
+	 * @param side side number (1-based)
 	 * @param master should this AI be a master AI ? (only master AIs are allowed to fallback. if you are not sure, pick 'false' here)
 	 * @return returns the reference to the created AI
 	 */
-	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, bool master = false);
+	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, int side, bool master = false);
 
 
 	/**
@@ -233,7 +235,6 @@ public:
 	 * it is necessary to do this if any of the info structures used by the AI go out of scope.
 	 */
 	static void clear_ais();
-
 
 	// =======================================================================
 	// GET active AI parameters
@@ -371,10 +372,11 @@ private:
 	 * Evaluate an internal AI manager command
 	 * @return string result of evaluation
 	 * @param i game information for the AI
+	 * @param side side number (1-based)
 	 * @param str string to evaluate
 	 * @todo: rewrite this function to use a fai or lua parser
 	 */
-	static const std::string internal_evaluate_command( ai_interface::info& i, const std::string& str );
+	static const std::string internal_evaluate_command( ai_interface::info& i, int side, const std::string& str );
 
 	/**
 	 * Determine if the command should be intercepted and evaluated as internal command

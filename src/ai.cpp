@@ -46,7 +46,7 @@
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(info& i) : ai_interface(i) {
+idle_ai::idle_ai(info& i, int side, bool master) : ai_interface(i,side,master) {
 
 }
 
@@ -63,7 +63,7 @@ void idle_ai::play_turn()
 /** Sample ai, with simple strategy. */
 class sample_ai : public ai_interface {
 public:
-	sample_ai(info& i) : ai_interface(i) {}
+	sample_ai(info& i, int side, bool master) : ai_interface(i,side,master) {}
 
 	void play_turn() {
 		game_events::fire("ai turn");
@@ -192,8 +192,8 @@ protected:
 	}
 };
 
-ai::ai(ai_interface::info& info) :
-	ai_interface(info),
+ai::ai(ai_interface::info& info, int side, bool master) :
+	ai_interface(info,side,master),
 	defensive_position_cache_(),
 	threats_found_(false),
 	attacks_(),
@@ -201,7 +201,6 @@ ai::ai(ai_interface::info& info) :
 	map_(info.map),
 	units_(info.units),
 	teams_(info.teams),
-	team_num_(info.team_num),
 	state_(info.state),
 	consider_combat_(true),
 	additional_targets_(),
@@ -214,7 +213,6 @@ ai::ai(ai_interface::info& info) :
 	unit_stats_cache_(),
 	attack_depth_(0),
 	recruiting_preferred_(0),
-	master_(info_.master),
 	formula_ai_(NULL)
 {
 }
@@ -312,7 +310,7 @@ bool ai::recruit_usage(const std::string& usage)
 			" available. Check the recruit and [ai]"
 			" recruitment_pattern keys for team '" +
 			current_team().name() + "' (" +
-			lexical_cast<std::string>(info_.team_num) + ")"
+			lexical_cast<std::string>(get_side()) + ")"
 			" against the usage key of the"
 			" units in question! Removing invalid"
 			" recruitment_pattern entry and continuing...\n";
@@ -353,17 +351,17 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	if(current_team().gold() < u->second.cost()) {
 		return false;
 	}
-	LOG_AI << "trying recruit: team=" << (info_.team_num) <<
+	LOG_AI << "trying recruit: team=" << (get_side()) <<
 	    " type=" << unit_name <<
 	    " cost=" << u->second.cost() <<
 	    " loc=(" << loc << ')' <<
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
-	unit new_unit(&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
+	unit new_unit(&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,get_side(),true);
 
 	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,false,preferences::show_ai_moves());
+	std::string recruit_err = recruit_unit(info_.map,get_side(),info_.units,new_unit,loc,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 
 		statistics::recruit_unit(new_unit);
@@ -373,9 +371,9 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		replay_guard.confirm_transaction();
 
 		raise_unit_recruited();
-		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
+		const team_data data = calculate_team_data(current_team(),get_side(),info_.units);
 		LOG_AI <<
-		"recruit confirmed: team=" << (info_.team_num) <<
+		"recruit confirmed: team=" << get_side() <<
 		" units=" << data.units <<
 		" gold=" << data.gold <<
 		((data.net_income < 0) ? "" : "+") <<
@@ -383,10 +381,10 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		recorder.add_checksum_check(loc);
 		return true;
 	} else {
-		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
+		const team_data data = calculate_team_data(current_team(),get_side(),info_.units);
 		LOG_AI << recruit_err << "\n";
 		LOG_AI <<
-		"recruit UNconfirmed: team=" << (info_.team_num) <<
+		"recruit UNconfirmed: team=" << (get_side()) <<
 		" units=" << data.units <<
 		" gold=" << data.gold <<
 		((data.net_income < 0) ? "" : "+") <<
@@ -418,7 +416,7 @@ void ai_interface::diagnostic(const std::string& msg)
 void ai_interface::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		info_.disp.add_chat_message(time(NULL), "ai", info_. team_num, msg,
+		info_.disp.add_chat_message(time(NULL), "ai", get_side(), msg,
 				game_display::MESSAGE_PUBLIC, false);
 	}
 }
@@ -585,9 +583,9 @@ map_location ai_interface::move_unit_partial(location from, location to,
 	p->second.set_standing(p->first);
 	if(info_.map.is_village(to)) {
 		// If a new village is captured, disallow any future movement.
-		if (!info_.teams[info_.team_num-1].owns_village(to))
+		if (!current_team().owns_village(to))
 			info_.units.find(to)->second.set_movement(-1);
-		get_village(to,info_.disp,info_.teams,info_.team_num-1,info_.units);
+		get_village(to,info_.disp,info_.teams,get_side()-1,info_.units);
 	}
 
 	if(show_move) {
@@ -750,7 +748,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		// If we are looking for movement of our own units, it must be on our side.
 		// If we are assuming full movement, then it may be a unit on our side, or allied.
 		if((enemy && current_team().is_enemy(un_it->second.side()) == false) ||
-		   (!enemy && !assume_full_movement && un_it->second.side() != info_.team_num) ||
+		   (!enemy && !assume_full_movement && un_it->second.side() != get_side()) ||
 		   (!enemy && assume_full_movement && current_team().is_enemy(un_it->second.side()))) {
 			continue;
 		}
@@ -797,7 +795,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			if(!enemy && info_.map.is_village(dst)) {
 				for(size_t n = 0; n != info_.teams.size(); ++n) {
 					if(info_.teams[n].owns_village(dst)) {
-						if(n+1 != info_.team_num && current_team().is_enemy(n+1) == false) {
+						if(n+1 != get_side() && current_team().is_enemy(n+1) == false) {
 							friend_owns = true;
 						}
 
@@ -859,7 +857,7 @@ void ai::find_threats()
 
 	// We want to protect our leader.
 	// FIXME: suokko tweaked these from (1.0, 20)->(2.0,15).  Should this have been kept?
-	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	const unit_map::const_iterator leader = find_leader(units_,get_side());
 	if(leader != units_.end()) {
 		items.push_back(protected_item(
 					lexical_cast_default<double>(parms["protect_leader"], 1.0),
@@ -980,7 +978,7 @@ void ai::do_move()
 	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
 
 
-	unit_map::iterator leader = find_leader(units_,team_num_);
+	unit_map::iterator leader = find_leader(units_,get_side());
 	if (leader != units_.end())
 	{
 		evaluate_recruiting_value(leader);
@@ -996,7 +994,7 @@ void ai::do_move()
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if(ui->second.get_goto() == ui->first) {
 			ui->second.set_goto(map_location());
-		} else if(ui->second.side() == team_num_ && map_.on_board(ui->second.get_goto())) {
+		} else if(ui->second.side() == get_side() && map_.on_board(ui->second.get_goto())) {
 			gotos.push_back(ui->first);
 		}
 	}
@@ -1040,7 +1038,7 @@ void ai::do_move()
 	LOG_AI << "get villages phase\n";
 
 	// Iterator could be invalidated by combat analysis or move_leader_to_goals.
-	leader = find_leader(units_,team_num_);
+	leader = find_leader(units_,get_side());
 
 	LOG_AI << "villages...\n";
 	if(get_villages(possible_moves, dstsrc, enemy_dstsrc, leader)) {
@@ -1059,7 +1057,7 @@ void ai::do_move()
 
 	LOG_AI << "retreating...\n";
 
-	leader = find_leader(units_,team_num_);
+	leader = find_leader(units_,get_side());
 	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(retreated_unit) {
 		do_move();
@@ -1090,7 +1088,7 @@ void ai::do_move()
 		if(!passive_leader||passive_leader_shares_keep) {
 			map_location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
-			leader = find_leader(units_,team_num_);
+			leader = find_leader(units_,get_side());
 			if(leader == units_.end()) {
 				return;
 			}
@@ -1295,7 +1293,7 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 		// If the unit is on our side, has lost as many or more than
 		// 1/2 round worth of healing, and doesn't regenerate itself,
 		// then try to find a vacant village for it to rest in.
-		if(u.side() == team_num_ &&
+		if(u.side() == get_side() &&
 		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
 		   || utils::string_bool(u.get_state("poisoned"))) &&
 		   !u.get_ability_bool("regenerate",u_it->first)) {
@@ -1380,7 +1378,7 @@ bool ai::retreat_units(std::map<map_location,paths>& possible_moves,
 	}
 
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == team_num_ &&
+		if(i->second.side() == get_side() &&
 				i->second.movement_left() == i->second.total_movement() &&
 				unit_map::const_iterator(i) != leader &&
 				!i->second.incapacitated()) {
@@ -1771,7 +1769,7 @@ void ai::analyze_potential_recruit_movements()
 		return;
 	}
 
-	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	const unit_map::const_iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end()) {
 		return;
 	}
@@ -1805,7 +1803,7 @@ void ai::analyze_potential_recruit_movements()
 		}
 
 		const unit temp_unit(&get_info().units,&get_info().map,
-				&get_info().state, &get_info().teams, &info->second, team_num_);
+				&get_info().state, &get_info().teams, &info->second, get_side());
 		// since we now use the ignore_units switch, no need to use a empty unit_map
 		// unit_map units;
 		// const temporary_unit_placer placer(units,start,temp_unit);
@@ -1876,14 +1874,14 @@ void ai::analyze_potential_recruit_movements()
 
 bool ai::do_recruitment()
 {
-	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	const unit_map::const_iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end()) {
 		return false;
 	}
 
 	raise_user_interact();
 	// Let formula ai to do recruiting first
-	if (master_)
+	if (get_master())
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
 			if (formula_ai_ == NULL){
@@ -1948,7 +1946,7 @@ bool ai::do_recruitment()
 		std::map<std::string,int> unit_types;
 
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(u->second.side() == team_num_) {
+			if(u->second.side() == get_side()) {
 				++unit_types[u->second.usage()];
 			}
 		}
@@ -1997,7 +1995,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const unit_map::iterator leader = find_leader(units_,team_num_);
+	const unit_map::iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		WRN_AI << "Leader not found\n";
 		return;
@@ -2041,7 +2039,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 		const move_map& /*dstsrc*/, const move_map& enemy_dstsrc)
 {
 
-	unit_map::iterator leader = find_leader(units_,team_num_);
+	unit_map::iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end() || leader->second.incapacitated() || leader->second.movement_left() == 0) {
 		return;
 	}
@@ -2143,7 +2141,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	}
 
 	// We didn't move: are we in trouble?
-	leader = find_leader(units_,team_num_);
+	leader = find_leader(units_,get_side());
 	if (!passive_leader && !leader->second.has_moved() && leader->second.attacks_left()) {
 		std::map<map_location,paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
@@ -2158,7 +2156,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 bool ai::leader_can_reach_keep()
 {
-	const unit_map::iterator leader = find_leader(units_,team_num_);
+	const unit_map::iterator leader = find_leader(units_,get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return false;
 	}
@@ -2197,7 +2195,7 @@ int ai::rate_terrain(const unit& u, const map_location& loc)
 	if(map_.is_village(terrain)) {
 		const int owner = village_owner(loc,teams_);
 
-		if(owner + 1 == static_cast<int>(team_num_)) {
+		if(owner + 1 == get_side()) {
 			rating += friendly_village_value;
 		} else if(owner == -1) {
 			rating += neutral_village_value;
