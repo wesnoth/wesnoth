@@ -2969,8 +2969,7 @@ private:
 		replay_network_sender dummy_sender(dummy_replay);
 		undo_list dummy_undo;
 
-		turn_info turn_data(gamestate_, status_, *gui_, const_cast<gamemap&>(map_), teams_, team_num, units_, dummy_sender, dummy_undo);
-		ai_interface::info info(*gui_, const_cast<gamemap&>(map_), units_, teams_, const_cast<gamestatus&>(status_), turn_data, gamestate_);
+		ai_interface::info info(*gui_, const_cast<gamemap&>(map_), units_, teams_, const_cast<gamestatus&>(status_), gamestate_);
 
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(info, team_num, str));

@@ -61,6 +61,7 @@ playsingle_controller::playsingle_controller(const config& level,
 		LOG_NG << "Setting linger mode.\n";
 		browse_ = linger_ = true;
 	}
+
 }
 
 
@@ -818,7 +819,7 @@ void playsingle_controller::play_ai_turn(){
 	turn_info turn_data(gamestate_,status_,*gui_,
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_);
 
-	ai_interface::info ai_info(*gui_,map_,units_,teams_,status_, turn_data, gamestate_);
+	ai_interface::info ai_info(*gui_,map_,units_,teams_,status_, gamestate_);
 
 	try {
 		ai_manager::play_turn(player_number_, ai_info, this);

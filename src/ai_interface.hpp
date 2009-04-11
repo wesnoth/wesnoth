@@ -50,9 +50,9 @@ public:
 	 */
 	struct info {
 		info(game_display& disp, gamemap& map, unit_map& units,
-			std::vector<team>& teams, gamestatus& state, class turn_info& turn_data, class game_state& game_state)
+			std::vector<team>& teams, gamestatus& state, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
-			   state(state), turn_data_(turn_data), game_state_(game_state)
+			   state(state), game_state_(game_state)
 		{}
 
 		/** The display object, used to draw the moves the AI makes. */
@@ -69,12 +69,6 @@ public:
 
 		/** Information about what turn it is, and what time of day. */
 		gamestatus& state;
-
-		/**
-		 * The object that allows the player to interact with the game.  Should
-		 * not be used outside of ai_interface.
-		 */
-		class turn_info& turn_data_;
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
