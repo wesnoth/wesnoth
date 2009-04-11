@@ -147,9 +147,6 @@ public:
 		variant attacks_cache;
 	};
 
-        // If the AI manager should manager the AI once constructed.
-        virtual bool manager_manage_ai() const { return true ; } ;
-
 	void swap_move_map(move_map_backup& backup);
 
 	variant get_keeps() const;

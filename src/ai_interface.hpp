@@ -117,13 +117,6 @@ public:
 	events::generic_event& unit_moved()     { return unit_moved_; }
 	events::generic_event& enemy_attacked() { return enemy_attacked_; }
 
-        // If the AI manager should manage the AI once constructed.
-        virtual bool manager_manage_ai() const { return false ; } ;
-
-        // If an AI manager should reap the AI at end of game
-        // Older AIs should use the default - false.
-        virtual bool manager_reap_ai() { return false ; } ;
-
         /** Set the side */
         virtual void set_side(unsigned int side) { side_ = side; }
 
