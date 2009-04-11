@@ -1,19 +1,20 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 #
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:48+0200\n"
-"PO-Revision-Date: 2008-04-02 12:00+0200\n"
+"PO-Revision-Date: 2009-04-11 16:13+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
@@ -25,6 +26,7 @@ msgstr ""
 msgid "Under the Burning Suns"
 msgstr "Pod užarenim suncima"
 
+# |, no-check-spell
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
 msgid "UtBS"
@@ -133,7 +135,7 @@ msgstr "Nim"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:145
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:98
 msgid "Monsters"
-msgstr ""
+msgstr "Nemani"
 
 #. [side]
 #. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
@@ -145,7 +147,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:156
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:188
 msgid "Evil"
-msgstr ""
+msgstr "Zlo"
 
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:827
@@ -355,13 +357,12 @@ msgstr "Šta je to za ime Urije?"
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:350
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:519
-#, fuzzy
 msgid ""
 "They came with the stones that fell from the sky. I know not what they are, "
 "but more seem to be emerging from the craters. If we don't stop them there "
 "will be nothing left of our village or our people."
 msgstr ""
-"Izašlo je iz kamenja što pade s neba. Ne znam šta je, ali još ih izgleda "
+"Pristigoše s kamenjem što pade s neba. Ne znam šta su, ali još ih izgleda "
 "izranja iz kratera. Ako ih ne zaustavimo, ništa neće ostati od našeg sela, "
 "niti od našeg naroda."
 
@@ -399,7 +400,7 @@ msgstr "Rejnor"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:407
 msgid "More of these muddy crawlies, let's get rid of them with haste."
-msgstr ""
+msgstr "Još muljavih gmizača, otarasimo ih se hitro."
 
 #. [unit]: type=Desert Captain, id=Garak
 #. [message]: speaker=narrator
@@ -563,6 +564,8 @@ msgid ""
 "swarm of tentacles in the moment that the first elf put a foot outside the "
 "island."
 msgstr ""
+"Jezerska voda najedanput se zamrači i uzburka, da bi iz nje sunuo roj pipaka "
+"u trenutku kad je prvi vilenjak kročio van ostrva."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:709
@@ -594,7 +597,6 @@ msgstr "Možda se skrivaju u štalama. Da proverimo."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:783
-#, fuzzy
 msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgstr "Ej, Nisa, kamenje je prestalo da pada. Izađi sada!"
 
@@ -638,22 +640,20 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:815
-#, fuzzy
 msgid ""
 "We'll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
 "of the people out in the desert have been able to round up some of the loose "
 "horses."
 msgstr ""
-"Trebaće nam tvoja pomoć da izvidimo kako stoje stvari sa drugim naseobinama. "
+"Trebaće nam tvoja pomoć da izvidimo jesu li preživele spoljašnje naseobine. "
 "Ko zna kakva su razaranja pretrpeli tokom noći? A možda su i neki od ovih u "
 "pustinji smogli da sakupe nešto odbeglih konja."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:819
-#, fuzzy
 msgid "We can only hope that hunting party returns soon."
-msgstr "Pa, nadajmo se da će se lovačka družina ubrzo vratiti."
+msgstr "Možemo se samo nadati da će se lovačka družina ubrzo vratiti."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:946
@@ -685,14 +685,13 @@ msgstr "Ksantos"
 
 #. [message]: speaker=Xanthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1074
-#, fuzzy
 msgid ""
 "This place reeks of death, I could smell it from miles away. Oh, how I love "
 "it, it is the smell of power, the inevitable triumph of death over life. "
 "Puny elves, I shall use the corpses of your families to create an army of "
 "undead! All shall bow down before Xanthos the Necromancer!"
 msgstr ""
-"Ovo mesto zaudara na smrt, mogu ga osetiti ligama daleko. Oh kako je to "
+"Ovo mesto zaudara na smrt, mogu ga osetiti ligama daleko. Oh, kako je to "
 "divno, miris moći, neizbežnog trijumfa smrti nad životom. Slabašni "
 "vilenjaci, upotrebiću leševe vaših porodica da stvorim vojsku nemrtvih! Svi "
 "će se pokoriti pred Ksantosom Nekromantom!"
@@ -710,7 +709,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1082
-#, fuzzy
 msgid ""
 "Have some more faith, girl, the goddess does not send us more than we can "
 "handle. With Eloh's grace we shall yet triumph over this pretender."
@@ -720,13 +718,12 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1086
-#, fuzzy
 msgid ""
 "Bah, I've fought these dark cultists before. They can be killed just like "
 "anyone else, and our elvish hunters can easily defeat their skeleton armies."
 msgstr ""
 "Tja, već se ja borih protiv tih mračnih kultista. Mogu biti posečeni kao i "
-"bilo ko drugi, a našim vilenjačkim lovcima je lako desetkovati njihove ćele-"
+"bilo ko drugi, a našim vilenjačkim lovcima je lako poraziti njihove ćele-"
 "vojske."
 
 #. [message]: speaker=Kaleh
@@ -804,7 +801,6 @@ msgstr "Prođosmo celim selom, mislim da smo spasili sve što je ostalo živo."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1250
-#, fuzzy
 msgid ""
 "Some of our people felt crowded in the village, and wanted to live out on "
 "the open sands. They thought they could flee to the safety of our walls if "
@@ -977,13 +973,12 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1352
-#, fuzzy
 msgid ""
 "I fear what dangers lurk in the harsh sands and beyond to the north, but "
 "because you are our leader, I will follow where you go."
 msgstr ""
 "Ne mogu zamisliti opasnosti koje vrebaju u ljutom pesku i dalje na severu, "
-"ali kako si ti naš vođ, pratiću tvoj naum."
+"ali kako si ti naš vođ, pratiću tvoje korake."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1356
@@ -1062,13 +1057,12 @@ msgstr "Preko surovog peska"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:46
 msgid "Bandits"
-msgstr ""
+msgstr "Razbojnici"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:134
-#, fuzzy
 msgid "Undead"
-msgstr "nemrtvi jahač"
+msgstr "Nemrtvi"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:184
@@ -1156,7 +1150,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:284
-#, fuzzy
 msgid ""
 "Unfortunately, because of our hasty flight from our village, we are short on "
 "water-skins and rations. We'll have enough if we move quickly and eat as "
@@ -1172,7 +1165,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:290
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1184,9 +1176,9 @@ msgstr ""
 "Tokom obdanice (zora, jutro, podne, popodne i sumrak) na početku svakog tvog "
 "poteza, svaka jedinica na pesku, putu, ruševini ili pečanoj dini, trpeće od "
 "žeđi. Svaki žedni potez jedinici umanjuje štetu u napadu i odnosi joj "
-"$dehydration_loss udarpoena na dehidraciju, koju vračarke i druidke ne mogu "
-"lečiti. Tek osvežavanjem u oazi (svako polje plitke vode) na početku poteza, "
-"jedinica će povratiti punu snagu u napadu i nešto izgubljenih udarpoena."
+"$dehydration_loss udarpoena. Tek dejstvom vidara ili osvežavanjem u oazi "
+"(svako polje plitke vode) na početku poteza, jedinica će povratiti punu "
+"snagu u napadu."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:296
@@ -1627,9 +1619,8 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1690
-#, fuzzy
 msgid "This ruin looks oddly familiar."
-msgstr "Znate, ove ruševine izgledaju neobično poznato."
+msgstr "Ove ruševine izgledaju neobično poznato."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1695
@@ -1822,7 +1813,6 @@ msgstr ""
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2056
-#, fuzzy
 msgid ""
 "Before the Great Fall, there were huge cities, with great schools of magery, "
 "libraries of books, vast repositories of knowledge. Most of it was destroyed "
@@ -1830,7 +1820,7 @@ msgid ""
 "fragments that are left. For example, have you ever heard of The Scepter of "
 "Fire?"
 msgstr ""
-"Pre velikog pada, postojahu neizmerni gradovi, sa visokim školama magije, "
+"Pre Velikog pada, postojahu neizmerni gradovi, sa visokim školama magije, "
 "bibliotekama punim knjiga, beskrajnim riznicama znanja. Većina toga je "
 "uništena u nastupajućem haosu i godinama raspada, ali ja tražim ono malo "
 "delića što je preostalo. Na primer, da li ste ikada čuli za Vatreno žezlo?"
@@ -2001,7 +1991,6 @@ msgstr "Ne bih..."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:335
-#, fuzzy
 msgid "We meet again, Ystara."
 msgstr "Ponovo se susrećemo, Istara."
 
@@ -2020,12 +2009,11 @@ msgstr ""
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:347
-#, fuzzy
 msgid ""
 "You always were an arrogant little bastard. Grak will swallow your soul, or "
 "what's left of it."
 msgstr ""
-"Oduvek si bio nadobudno malo kopile. Grek će progutati tvoju dušu, odnosno "
+"Oduvek si bio nadobudno malo kopile. Grak će progutati tvoju dušu, odnosno "
 "ono što je od nje ostalo."
 
 #. [message]: speaker=Azkotep
@@ -2179,36 +2167,32 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
 msgid ""
 "I bless you champion with the light that will come, I bless you with the "
 "memory and the promise. Lay down your bow, champion, and let your sword "
 "shine in the dark."
 msgstr ""
 "Blagoslovim te, junače, svetlošću što će doći, blagoslovim te sećanjem i "
-"obećanjem. Polomi luk, junače, i neka ti mač blista u tami."
+"obećanjem. Položi luk, junače, i neka ti mač blista u tami."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:834
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:946
-#, fuzzy
 msgid "You there! Creep! Stand and face me, shade! I challenge you!"
 msgstr "Ti tamo! Uštvo! Stani i suoči se sa mnom! Izazivam te!"
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:844
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:956
-#, fuzzy
 msgid ""
 "Foolish mortal... For daring to challenge me, I'll devour your soul and "
 "torment it for all eternity..."
 msgstr ""
-"Budalasti smrtniče... Zato što mi stade na put, proždraću tvoju dušu i "
+"Budalasti smrtniče... Za drskost što me izazva, proždraću tvoju dušu i "
 "mučiti je do kraja večnosti..."
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-#, fuzzy
 msgid ""
 "So you destroyed Zur... Come mortal, let's cross our blades... It's time for "
 "you to take his place..."
@@ -2241,7 +2225,6 @@ msgstr ""
 #. [message]: speaker=$challenged
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:893
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1005
-#, fuzzy
 msgid "And so it ends... Your champion is dead, elves... Come join him..."
 msgstr ""
 "I tako se završava... Vaš prvak je mrtav, vilenjaci... Dođite, pridružite mu "
@@ -2249,7 +2232,6 @@ msgstr ""
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:962
-#, fuzzy
 msgid ""
 "So you destroyed Zur... Come, mortal, let us cross our blades... It's time "
 "for you to take his place..."
@@ -2336,7 +2318,6 @@ msgstr ""
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1181
-#, fuzzy
 msgid "No, fool! Stop!"
 msgstr "Ne, budalo! Stoj!"
 
@@ -2351,19 +2332,17 @@ msgstr "Mračni gospodar... gotov je..."
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1201
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1657
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1951
-#, fuzzy
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr "Garak se sruči na tlo, sopstvenog sečiva gde mu štrči iz grudi."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1211
-#, fuzzy
 msgid ""
 "No! How dare you? I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
 msgstr ""
-"Ne! Kako se usuđuješ! Moja će vas osveta stići zbog narušavanja ove "
+"Ne! Kako se usuđuješ? Moja će vas osveta stići zbog narušavanja ove "
 "razmirice! Tama će vladati dok ja ne pobedim!"
 
 #. [message]: speaker=Nym
@@ -2417,12 +2396,11 @@ msgstr ""
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1250
-#, fuzzy
 msgid ""
 "In this I shall support you, the darkness will not lift until one of us is "
 "victorious."
 msgstr ""
-"U ovome ću te podržati, sunce neće izaći dok neko od nas ne bude pobednik."
+"U ovome ću te podržati, tama se neće podići dok neko od nas ne bude pobednik."
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1332
@@ -2440,7 +2418,6 @@ msgstr "Garače?"
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1351
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1518
-#, fuzzy
 msgid ""
 "Hahahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again, my minions and feast on the slaughter!"
@@ -2527,12 +2504,11 @@ msgstr "Poraziš li Istaru"
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1415
-#, fuzzy
 msgid ""
 "In this I shall support you, the darkness shall not break until one of us is "
 "victorious."
 msgstr ""
-"U ovome ću te podržati, sunce neće izaći dok neko od nas ne bude pobednik."
+"U ovome ću te podržati, tama se neće razići dok neko od nas ne bude pobednik."
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1499
@@ -2584,7 +2560,6 @@ msgstr ""
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1803
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2097
-#, fuzzy
 msgid ""
 "I told you, I will be back, you fools! Now I shall have my vengeance upon "
 "you all. Darkness shall reign until I have triumphed!"
@@ -2596,12 +2571,11 @@ msgstr ""
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1807
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2101
-#, fuzzy
 msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr ""
-"U ovome ću te podržati, sunce neće izaći dok neko od nas ne bude pobednik."
+"U ovome ću te podržati, tama se neće podići dok neko od nas ne bude pobednik."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1965
@@ -2647,7 +2621,6 @@ msgstr ""
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2278
-#, fuzzy
 msgid ""
 "You got me, elf... But you won't be so lucky with the tribes of the hills... "
 "(cough)"
@@ -2770,7 +2743,6 @@ msgstr "Raspitah se i potražih, ali nema traga ni njemu ni njegovom telu."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2492
-#, fuzzy
 msgid ""
 "He's probably dead, then, but he died as a warrior. Let's respect his wishes "
 "and remember him for that."
@@ -3253,9 +3225,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:874
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:999
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1042
-#, fuzzy
 msgid "Sssslay them all! In the name of the Ssscaled One!"
-msgstr "Posssecite ih sve! U ime onoga s krljuštima!"
+msgstr "Posssecite ih sve! U ime Onoga s Krljuštima!"
 
 #. [message]: speaker=Panok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:900
@@ -3372,7 +3343,7 @@ msgid ""
 "fireballs can blast him quick enough."
 msgstr ""
 "A ako naiđemo na posebno upornog orka koji zatvara prolaz, moje će mu "
-"vatrene kugle brzo doći glave."
+"vatrenice brzo doći glave."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1184
@@ -3593,16 +3564,15 @@ msgstr "Borba kroz podzemlje"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:95
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1520
 msgid "Trolls"
-msgstr ""
+msgstr "Trolovi"
 
 #. [side]
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:163
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:231
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1475
-#, fuzzy
 msgid "Dwarves"
-msgstr "patuljački opasač"
+msgstr "Patuljci"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:395
@@ -3631,7 +3601,6 @@ msgstr "Rigar"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:700
-#, fuzzy
 msgid ""
 "You mentioned that Dwarves and Trolls often lived underground, Elyssa. I've "
 "only heard myths, have you ever met a Dwarf or a Troll?"
@@ -3835,7 +3804,6 @@ msgstr "Uhvaćeni između pauka i njegovog plena. Nije najbolje mesto za biti."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:908
-#, fuzzy
 msgid ""
 "Whoa! Did you see that? That huge stalactite just fell and crushed the "
 "spider. Aren't we lucky!"
@@ -4000,7 +3968,6 @@ msgstr "trol-vođ"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1325
-#, fuzzy
 msgid "Whoa."
 msgstr "Auh."
 
@@ -4034,7 +4001,6 @@ msgstr ""
 
 #. [message]: speaker=Troll Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1390
-#, fuzzy
 msgid "Wait...What...Who are you?"
 msgstr "Čekaj, čekaj... Ko ste vi?"
 
@@ -4050,7 +4016,6 @@ msgstr "Šta su ovi, Moradina mu?"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1405
-#, fuzzy
 msgid "Wait a minute...blond hair, pointy ears, they must be Elves."
 msgstr "Čekaj malo... plavokosi, šiljouhi, mora da su — vilenjaci."
 
@@ -4596,23 +4561,21 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3110
-#, fuzzy
 msgid ""
 "Wait a moment Grimnir, we must deal with this mysterious cloaked figure "
 "before we can follow you."
 msgstr ""
-"Čekaj malo, Grendele, moramo se prvo razračunati sa ovom tajanstvenom "
+"Čekaj malo, Grimnire, moramo se prvo razračunati sa ovom tajanstvenom "
 "maskiranom osobom pre nego što pođemo s tobom."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3137
-#, fuzzy
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Grimnir."
 msgstr ""
 "Izgleda da naš posao ovde još nije gotov. Vrlo dobro, sakupite se, moramo "
-"krenuti za Grendelom."
+"krenuti za Grimnirom."
 
 #. [message]: speaker=Fundin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3162
@@ -4646,9 +4609,8 @@ msgstr "Arrrg!!!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2163
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3302
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3373
-#, fuzzy
 msgid "Grimnir"
-msgstr "Rogrimir"
+msgstr "Grimnir"
 
 #. [message]: speaker=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3343
@@ -4700,13 +4662,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3513
-#, fuzzy
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together, we must follow Grimnir."
 msgstr ""
 "S maskiranim likom je svršeno. Pa ipak, naš posao još uvek nije gotov. "
-"Sakupite se, moramo poći za Grendelom."
+"Sakupite se, moramo poći za Grimnir."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2501
@@ -4728,9 +4689,8 @@ msgstr "U tunelima trolova"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:51
-#, fuzzy
 msgid "Dwarf Ally"
-msgstr "Palatuljak"
+msgstr "patuljak saveznik"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:204
@@ -4940,7 +4900,6 @@ msgstr "Ima da cičiš, patuljče!"
 
 #. [message]: speaker=Rogrimir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1023
-#, fuzzy
 msgid ""
 "I owe you my life. I can't believe I was captured when those all around me "
 "died fighting gloriously. I'm so ashamed. I could not protect them...but I "
@@ -4954,9 +4913,8 @@ msgstr ""
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1284
-#, fuzzy
 msgid "Whoa. This place is hot."
-msgstr "Uuh. Ovde je baš vruće."
+msgstr "Auh. Ovde je baš vruće."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1289
@@ -4975,7 +4933,6 @@ msgstr ""
 
 #. [message]: speaker=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1294
-#, fuzzy
 msgid ""
 "They have broken through the outer guard-line. Destroy the bridge, they must "
 "not pass!"
@@ -5407,7 +5364,6 @@ msgstr "smaragdni štapić otrova"
 
 #. [object]: id=Troll Wand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2442
-#, fuzzy
 msgid "This wand makes this unit's melee attacks deal poison damage."
 msgstr "Ova štapić čini da jedinica u bliskoj borbi nanosi otrovnu štetu."
 
@@ -5437,7 +5393,7 @@ msgstr "U carstvu patuljaka"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:93
 msgid "Allies"
-msgstr ""
+msgstr "Saveznici"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:62
@@ -5445,7 +5401,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:190
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:248
 msgid "Enemies"
-msgstr ""
+msgstr "Neprijatelji"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:294
@@ -5779,7 +5735,6 @@ msgstr "patulj-pustinjak"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1502
-#, fuzzy
 msgid ""
 "Incoming! Ugh, it's big, hairy, and nasty. I hate bats, I really hate bats."
 msgstr ""
@@ -5846,12 +5801,10 @@ msgstr "Napokon ste došli. Neka se okonča, ovde i sada!"
 
 #. [message]: speaker=Dwarf Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1973
-#, fuzzy
 msgid ""
 "Faugh! Even in death I curse you! You will never escape these tunnels alive!"
 msgstr ""
-"Puh! Čak i u smrti proklinjem vas! Nikad se nećete živi izvući iz ovih "
-"tunela!"
+"Fu! Čak i u smrti proklinjem vas! Nikad se nećete živi izvući iz ovih tunela!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1983
@@ -5982,12 +5935,11 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2224
-#, fuzzy
 msgid ""
 "Whoa. That was pretty impressive. The amulet stopped glowing and the rune is "
 "gone, but what have they revealed? "
 msgstr ""
-"Au. To je bilo upečatljivo. Amajlija više ne svetli, i rune je nestalo, ali "
+"Auh. To je bilo upečatljivo. Amajlija više ne svetli, i rune je nestalo, ali "
 "šta su to otkrili?"
 
 #. [message]: speaker=unit
@@ -6084,7 +6036,7 @@ msgstr "Poslovanja s patuljcima"
 #. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:44
 msgid "King Thurongar"
-msgstr "Kralj Turongar"
+msgstr "kralj Turongar"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:78
@@ -6628,7 +6580,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:626
-#, fuzzy
 msgid ""
 "Thank you very much for your help. We were worried about getting lost in all "
 "these twisting tunnels. And we would be honored to have you come with us, "
@@ -6739,21 +6690,20 @@ msgstr "Iz zaprženog tiganja"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:305
 msgid "Elf Ally"
-msgstr ""
+msgstr "vilenjak saveznik"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:137
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:231
-#, fuzzy
 msgid "Human Ally"
-msgstr "ljudski vojnik"
+msgstr "čovek saveznik"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:89
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:273
 msgid "Cultists"
-msgstr ""
+msgstr "Okultisti"
 
 #. [event]: id=$ally_name misc/hero-icon.png}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:519
@@ -6977,7 +6927,6 @@ msgstr ""
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1548
-#, fuzzy
 msgid "Shut up and keep running, or we'll be fish-bait for sure!"
 msgstr "Začepi i nastavi da trčiš, ili zasigurno postajemo mamac za ribe!"
 
@@ -7004,27 +6953,23 @@ msgstr ""
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1596
-#, fuzzy
 msgid "Hey look! It's a dwarf!"
-msgstr "Gledajte! To je $ally_race"
+msgstr "Gledajte! To je patuljak!"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1600
-#, fuzzy
 msgid "Huh? A dwarf?"
-msgstr "Kako, $ally_race?"
+msgstr "Kako, patuljak?"
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1606
-#, fuzzy
 msgid "Hey look! It's a troll!"
-msgstr "Gledajte! To je $ally_race"
+msgstr "Gledajte! To je trol!"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1610
-#, fuzzy
 msgid "Huh? A troll?"
-msgstr "Kako, $ally_race?"
+msgstr "Kako, trol?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1628
@@ -7133,7 +7078,6 @@ msgstr "U redu. Samo nastavite ka zapadu, ali oprezno."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1865
-#, fuzzy
 msgid "Whoa, what is this place? It sure seems well protected."
 msgstr "Auh, kakvo je ovo mesto? Izgleda izvrsno zaštićeno."
 
@@ -7264,7 +7208,6 @@ msgstr "čuvar kapije"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2183
-#, fuzzy
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7273,7 +7216,7 @@ msgid ""
 msgstr ""
 "Ova pećina izgleda sasvim prazno, osim one dve sjajeće rune u središtu. Mora "
 "da je ova tvrđava nekada bila dobrano ispunjena, jer je bezbroj stopala "
-"utisnulo staze što vode u nekoliko pravaca. $ally_name, kuda sada?"
+"utisnulo staze što vode u nekoliko pravaca. $unittest.name|, kuda sada?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2188
@@ -7416,9 +7359,8 @@ msgstr "Da, gospodine."
 
 #. [message]: speaker=Blessed Kali
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2550
-#, fuzzy
 msgid "Dani, keep your feet moving. If you stand still you're a dead man."
-msgstr "Džarle, ne prestaj da se krećeš. Ukipiš li se, mrtav si čovek."
+msgstr "Dani, ne prestaj da se krećeš. Ukipiš li se, mrtav si čovek."
 
 #. [message]: speaker=Novice Dani
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2555
@@ -7706,7 +7648,6 @@ msgstr "Ne diraj to."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3243
-#, fuzzy
 msgid ""
 "All the paths lead to this chamber. Is this just a dead end? It seems to be "
 "some sort of temple, but it has obviously been abandoned for a long time. "
@@ -7730,12 +7671,11 @@ msgstr "Osećam nekakvo prisustvo... uh... koža mi se sva ježi."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3258
-#, fuzzy
 msgid ""
 "I though you said $intl_ally_name, that you'd been here before? Where are we "
 "supposed to go from here?"
 msgstr ""
-"Zar ne reče, $ally_name, da beše ovde ranije? Kuda bi trebalo da pođemo "
+"Zar ne reče, $intl_ally_name, da beše ovde ranije? Kuda bi trebalo da pođemo "
 "odavde?"
 
 #. [message]: speaker=$ally_name
@@ -7951,7 +7891,6 @@ msgstr "Posmatraj, Kaleh, sopstvenog najgoreg neprijatelja. Uviđaš li ironiju?
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3620
-#, fuzzy
 msgid "Oh Eloh save us, it's...it's an elf."
 msgstr "O, Eloh spasi nas, pa to je... to je vilenjak."
 
@@ -8003,7 +7942,6 @@ msgstr "I čini mi se da vidim tračak svetlosti desno."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3672
-#, fuzzy
 msgid ""
 "Could it be? Could we actually be almost out of this seemingly never-ending "
 "darkness?"
@@ -8012,19 +7950,17 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3714
-#, fuzzy
 msgid ""
 "$intl_ally_name, I want to thank you so much for guiding us out of the "
 "caves. We never would have found our way without your help. But with the "
 "tunnels flooded, how are you going to find your way back to your people?"
 msgstr ""
-" $ally_name, želim da ti zahvalim za to što nas dovede do izlaska iz pećina. "
-"Put nikada ne bismo pronašli bez tvoje pomoći. Ali pošto su tuneli "
+"$intl_ally_name, želim da ti zahvalim za to što nas dovede do izlaska iz "
+"pećina. Put nikada ne bismo pronašli bez tvoje pomoći. Ali pošto su tuneli "
 "poplavljeni, kako ćeš se vratiti nazad svom narodu?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3719
-#, fuzzy
 msgid ""
 "Och, it is I who should be congratulating you, laddie. I showed you the way, "
 "but it was you and your people who defeated the many perils and obstacles to "
@@ -8065,7 +8001,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3734
-#, fuzzy
 msgid ""
 "Your loyalty is a credit to your people. I am glad indeed to have you "
 "fighting by my side."
@@ -8075,30 +8010,27 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3741
-#, fuzzy
 msgid ""
 "$intl_ally_name, thank you so much for leading us out of the caves. We never "
 "would have found our way without your help. But with the tunnels flooded, "
 "how are you going to find your way back to your people?"
 msgstr ""
-" $ally_name, hvala ti što nas izvede iz pećina. Bez tvoje pomoći, nikada ne "
-"bismo pronašli put. Ali pošto su tuneli poplavljeni, kako ćeš se vratiti "
+"$intl_ally_name, hvala ti što nas izvede iz pećina. Bez tvoje pomoći, nikada "
+"ne bismo pronašli put. Ali pošto su tuneli poplavljeni, kako ćeš se vratiti "
 "svome narodu?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3746
-#, fuzzy
 msgid ""
 "$intl_ally_name proud of little elves too. He would not have made it this "
 "far without all your help. $intl_ally_name is surprised by your bravery and "
 "strength."
 msgstr ""
-"I $ally_name ponosan na male vilenjake. Ne bi stigao skroz dovde bez sve "
-"vaše pomoći. $ally_name iznenađen vašom hrabrošću i snagom."
+"I $intl_ally_name ponosan na male vilenjake. Ne bi stigao skroz dovde bez "
+"sve vaše pomoći. $intl_ally_name iznenađen vašom hrabrošću i snagom."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3751
-#, fuzzy
 msgid ""
 "Truth is that $intl_ally_name not know much of sunlight lands. Sun and stars "
 "are scary, everything is open, exposed, no safe places to hide. But "
@@ -8106,14 +8038,14 @@ msgid ""
 "doesn't know where to find other tunnels back to his home. He is as lost as "
 "elves are."
 msgstr ""
-"Istina je da $ally_name ne zna mnogo o osunčanim zemljama. Sunca i zvezde "
-"plaše, sve je otvoreno, izloženo, bez mesta za sakrivanje. Ali $ally_name ne "
-"može nazad kroz toliku vodu. I $ally_name ne zna gde da nađe druge tunele "
-"koji vode nazad kući. Izgubljen kao i vilenjaci što su."
+"Istina je da $intl_ally_name ne zna mnogo o osunčanim zemljama. Sunca i "
+"zvezde plaše, sve je otvoreno, izloženo, bez mesta za sakrivanje. Ali "
+"$intl_ally_name ne može nazad kroz toliku vodu. Ni $intl_ally_name ne zna "
+"gde da nađe druge tunele koji vode nazad kući. Izgubljen kao i vilenjaci što "
+"su."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3756
-#, fuzzy
 msgid ""
 "But $intl_ally_name not afraid. Great leader told $intl_ally_name to guide "
 "and protect elves, and $intl_ally_name will keep his oath. $intl_ally_name "
@@ -8122,11 +8054,11 @@ msgid ""
 "caves of his people. But for now, $intl_ally_name will continue to serve and "
 "protect you."
 msgstr ""
-"Ali $ally_name nije uplašen. Veliki vođa kaže $ally_name da vodi i štiti "
-"vilenjake, i $ally_name održava svoju zakletvu. $ally_name prati vilenjake "
-"kuda god da krenu, i štiti ih od opasnosti najbolje što ume. Možda kasnije, "
-"$ally_name nađe neki drugi put kroz pećine, do svog naroda. Ali za sada, "
-"$ally_name će nastaviti da služi i štiti."
+"Ali $intl_ally_name nije uplašen. Veliki vođa kaže $intl_ally_name da vodi i "
+"štiti vilenjake, i $intl_ally_name održava svoju zakletvu. $intl_ally_name "
+"prati vilenjake kuda god da krenu, i štiti ih od opasnosti najbolje što ume. "
+"Možda kasnije, $intl_ally_name nađe neki drugi put kroz pećine, do svog "
+"naroda. Ali za sada, $intl_ally_name će nastaviti da služi i štiti."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3761
@@ -8238,12 +8170,11 @@ msgstr "Od ljudi?"
 
 #. [message]: speaker=Keratur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3958
-#, fuzzy
 msgid ""
 "Faugh. No, I heard the screams of the dead, torn from their rest, their "
 "souls rose into the air howling in agony."
 msgstr ""
-"Puh. Ne, čuo sam vrištanje mrtvih, istrgnutih iz svojih počinaka, njihove "
+"Fu. Ne, čuo sam vrištanje mrtvih, istrgnutih iz svojih počinaka, njihove "
 "duše što se izdizaše u vazduh, ječeći u agoniji."
 
 #. [message]: speaker=Zhul
@@ -8439,13 +8370,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4378
-#, fuzzy
 msgid ""
 "We made it. Outside look strange to $intl_ally_name, $intl_ally_name not "
 "used to big open spaces."
 msgstr ""
-"Uspeli smo. $ally_name misli da spolja izgleda čudno, $ally_name nije "
-"navikao na veliki otvoreni prostor."
+"Uspeli smo. $intl_ally_name misli da spolja izgleda čudno, $intl_ally_name "
+"nije navikao na veliki otvoreni prostor."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4404
@@ -8549,9 +8479,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4627
-#, fuzzy
 msgid " $speaker.name|, be quiet, I'll explain it all later."
-msgstr " $speaker.user_description|, tišina, objasniću sve kasnije."
+msgstr " $speaker.name|, tišina, objasniću sve kasnije."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4644
@@ -8576,9 +8505,8 @@ msgstr "Kaleh, jedno brzo pitanje—"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4670
-#, fuzzy
 msgid "Not now $intl_ally_name, I'm busy."
-msgstr "Ne sada $ally_name, zauzet sam."
+msgstr "Ne sada $intl_ally_name, zauzet sam."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4675
@@ -8888,12 +8816,11 @@ msgstr "Pa, sada smo stvarno u nevolji. Nadam se da znaš šta činiš, Kaleh."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4928
-#, fuzzy
 msgid ""
 "$intl_ally_name no like humans either. They mean. But they sound great when "
 "they go squish."
 msgstr ""
-" $ally_name isto ne voli ljude. Oni zli. Ali mnogo dobro zvuči kad ih se "
+"$intl_ally_name isto ne voli ljude. Oni zli. Ali mnogo dobro zvuči kad ih se "
 "splješti."
 
 #. [message]: speaker=$ally_name
@@ -8986,7 +8913,6 @@ msgstr "izaslanik nemrtvih"
 
 #. [message]: speaker=Undead Emissary
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5236
-#, fuzzy
 msgid ""
 "Cursed Elves, you tracked your filth through our halls and you defiled our "
 "sanctuary. You have besmirched our honor, and we will have our revenge. We "
@@ -8995,7 +8921,7 @@ msgid ""
 msgstr ""
 "Prokleti vilenjaci, ispratiste svoju prljavštinu kroz naše dvorane i "
 "oskrnaviste naše utočište. Ukaljaste našu čast, i za to ćemo se osvetiti. Mi "
-"smo red crvene kandže, čak nas ni smrt ne može zaustaviti. Žalićete dan kada "
+"smo red Crvene kandže, čak nas ni smrt ne može zaustaviti. Žalićete dan kada "
 "ste prestupili u našu jazbinu!"
 
 #. [message]: speaker=Nym
@@ -9039,7 +8965,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5329
-#, fuzzy
 msgid ""
 "Humans aren't just the bandits and outlaws you're familiar with from the "
 "deserts, Kaleh. Remember that long ago the great human empire of Wesnoth "
@@ -9051,7 +8976,7 @@ msgstr ""
 "Ljudi nisu tek razbojnici i odmetnici s kojima si se nosio u pustinji, "
 "Kaleh. Seti se da se nekada davno, veliko ljudsko carstvo Vesnota prostiralo "
 "preko svih poznatih zemalja. Neki među nama vele da su ljudi ti koji su nam "
-"svima navukli veliki pad. Ali kriviti druge je uludo. Eloh kaže da nije tama "
+"svima navukli Veliki pad. Ali kriviti druge je uludo. Eloh kaže da nije tama "
 "izvana, već tama u nama ta koja je uzrokovala iskvarenje i propast."
 
 #. [message]: speaker=Zhul
@@ -9149,9 +9074,8 @@ msgstr ""
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5569
-#, fuzzy
 msgid "Faugh, boy, you know nothing! There are fates worse than death."
-msgstr "Dođavola, dečače, ništa ti ne znaš! Ima sudbina gorih od smrti."
+msgstr "Fu, dečače, ništa ti ne znaš! Ima sudbina gorih od smrti."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5580
@@ -9595,14 +9519,13 @@ msgstr "Darije"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:151
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:190
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:245
-#, fuzzy
 msgid "Human Allies"
-msgstr "ljudski vojnik"
+msgstr "ljudi saveznici"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:108
 msgid "Iron Council"
-msgstr ""
+msgstr "Gvozdeno veće"
 
 #. [side]: type=Shock Trooper, id=Zelgant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:139
@@ -9687,13 +9610,12 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:593
-#, fuzzy
 msgid ""
 "Trees look big and strong, like trolls. Dark, too. $intl_ally_name tired of "
 "walking under hot sun."
 msgstr ""
-"Drveće izgleda veliko i jako, kao trolovi. I tamno. $ally_name umoran od "
-"hoda pod vrelim suncem."
+"Drveće izgleda veliko i jako, kao trolovi. I tamno. $intl_ally_name umoran "
+"od hoda pod vrelim suncem."
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:599
@@ -9782,7 +9704,6 @@ msgstr "Opa, šta to imamo ovde?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:642
-#, fuzzy
 msgid "Uh...Uh..."
 msgstr "Ovaj... ovaj..."
 
@@ -9903,7 +9824,6 @@ msgstr "Tanstafale, gde si bio? Tražili smo te."
 
 #. [message]: speaker=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:823
-#, fuzzy
 msgid ""
 "I have gone on a journey and I have seen the light. No longer will I blindly "
 "follow in your footsteps, Kaleh. I have come back to lead our people on the "
@@ -10028,7 +9948,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:907
-#, fuzzy
 msgid ""
 "Wait, my people, do not be deceived. This thing that appears by Tanstafaal's "
 "side is not our god. I too was fooled at first, but I have come to realize "
@@ -10081,7 +10000,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:922
-#, fuzzy
 msgid ""
 "Wait, my people, do not be deceived. This thing that appears by Tanstafaal's "
 "side is not our god. I too was fooled at first, but I have come to realize "
@@ -10195,15 +10113,14 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:969
-#, fuzzy
 msgid ""
 "Great Leader told $intl_ally_name to serve you, and so $intl_ally_name will "
 "still follow your command. But other elves must be out on a separate island. "
 "How will we cross deep water?"
 msgstr ""
-"Veliki vođa kaže da ti $ally_name služi, i zato $ally_name i dalje sluša "
-"tvoju zapovest. Ali drugi vilenjaci mora da su na drugom ostrvu. Kako ćemo "
-"preći duboku vodu?"
+"Veliki vođa kaže da ti $intl_ally_name služi, i zato $intl_ally_name i dalje "
+"sluša tvoju zapovest. Ali drugi vilenjaci mora da su na drugom ostrvu. Kako "
+"ćemo preći duboku vodu?"
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:978
@@ -10329,7 +10246,6 @@ msgstr "Ja moram poći i izvestiti Gvozedno veće. Nastavite borbu!"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1263
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2321
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2392
-#, fuzzy
 msgid ""
 "I go to marshal reinforcements. Do not lose heart, we will crush these puny "
 "elves."
@@ -10596,17 +10512,16 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1958
-#, fuzzy
 msgid ""
 "Whoa, this water is warm. Imagine if we had this back home, more water than "
 "I could drink in a lifetime! Hey...wait a minute. Faugh! This water is "
 "salty! It tastes terrible, I can't drink this! What use is all this water if "
 "you can't drink it?"
 msgstr ""
-"Au, ala je ova voda topla. Zamislite da smo ovo imali nazad kod kuće, više "
-"vode nego što se može popiti za ceo život! Ovaj... čekaj malo. Bljak, pa "
-"voda je slana! Užasnog li ukusa, kako se ovo može piti? Kakva korist od "
-"tolike vode ako se ne može piti?"
+"Auh, ala je ova voda topla. Zamislite da smo ovo imali nazad kod kuće, više "
+"vode nego što se može popiti za ceo život! Ovaj... čekaj malo. Fu, pa voda "
+"je slana! Užasnog li ukusa, kako se ovo može piti? Kakva korist od tolike "
+"vode ako se ne može piti?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1989
@@ -11139,7 +11054,6 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2842
-#, fuzzy
 msgid ""
 "Ouch, being stuck between the water and the sun is a terrible place to be, "
 "but where you go I will follow."
@@ -11149,15 +11063,14 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2848
-#, fuzzy
 msgid ""
 "$intl_ally_name scared of big water and bright sun, but $intl_ally_name will "
 "not dishonor Great Leader. Great Leader say follow Kaleh, and "
 "$intl_ally_name will do so."
 msgstr ""
-" $ally_name uplašen velike vode i sjajnog sunca, ali $ally_name neće "
-"osramotiti Velikog vođa. Veliki vođ kaže da pratim Kaleh, i $ally_name će "
-"tako i učiniti."
+"$intl_ally_name uplašen velike vode i sjajnog sunca, ali $intl_ally_name "
+"neće osramotiti Velikog vođa. Veliki vođ kaže da pratim Kaleh, i "
+"$intl_ally_name će tako i učiniti."
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2854
@@ -11178,7 +11091,6 @@ msgstr ""
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2858
-#, fuzzy
 msgid ""
 "There are four boats in the lagoon. Once you have captured each of the four "
 "then we can help you steer them out into the open water and to freedom. Then "
@@ -11406,7 +11318,6 @@ msgstr "Sva četiri broda su naša!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3380
-#, fuzzy
 msgid ""
 "Good, then let's get out of here. The merfolk will help you guide the ships. "
 "I'll muster the rest of our people and retreat from this bloody battlefield. "
@@ -11485,7 +11396,6 @@ msgstr "Ovo je—"
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:206
-#, fuzzy
 msgid ""
 "No, you don't have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, $intl_ally_name, "
@@ -11493,8 +11403,9 @@ msgid ""
 "credit to your race."
 msgstr ""
 "Ne, ne morate se predstavljati. Već znam ko ste i zašto ste prevalili "
-"ovoliki put. Moram reći, $ally_name, da tvoja skorašnja dela i, uistinu, "
-"tvoje prisustvo među ovim valjanim narodom, služe na čast tvojoj vrsti."
+"ovoliki put. Moram reći, $intl_ally_name, da tvoja skorašnja dela i, "
+"uistinu, tvoje prisustvo među ovim valjanim narodom, služe na čast tvojoj "
+"vrsti."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:199
@@ -11503,9 +11414,8 @@ msgstr "Hvala vašoj milosti."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:211
-#, fuzzy
 msgid "$intl_ally_name says thank you."
-msgstr " $ally_name kaže hvala vam."
+msgstr "$intl_ally_name kaže hvala vam."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:220
@@ -11961,13 +11871,12 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:422
-#, fuzzy
 msgid ""
 "$intl_ally_name not sure if he trust fish lady. What if she just want you "
 "elves to fight her war for her?"
 msgstr ""
-" $ally_name nije siguran da li verovati ribolikoj gospi. Šta ako samo želi "
-"da se vilenjaci bore u njenom ratu?"
+"$intl_ally_name nije siguran da li verovati ribolikoj gospi. Šta ako samo "
+"želi da se vilenjaci bore u njenom ratu?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:429
@@ -12076,12 +11985,11 @@ msgstr "Da, seti se, momče, boj nije izgubljen dok ne povučemo poslednji udah.
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:488
-#, fuzzy
 msgid ""
 "Do not give up yet, little one. The battle is not yet lost while we still "
 "fight."
 msgstr ""
-" Ne odustaj još, maleni. Nijedna borba nije izgubljena dok se još možemo "
+"Ne odustaj još, maleni. Nijedna borba nije izgubljena dok se još možemo "
 "boriti."
 
 #. [message]: speaker=Kaleh
@@ -12142,7 +12050,6 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:524
-#, fuzzy
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth's power "
 "forever if she is not stopped. Against such evil I am sure the Great Leader "
@@ -12152,8 +12059,8 @@ msgid ""
 msgstr ""
 "U najdubljim tunelima ispod zemlje, moj narod ne može večno bežati moći "
 "Jehnagot, ako se ne prekine. Protiv takvog zla, sigurno bi Veliki vođ rado "
-"poslao celu vojsku trolova, ali trenutno imate samo $ally_name. Ipak, "
-"$ally_name će učiniti što treba da se ona uništi."
+"poslao celu vojsku trolova, ali trenutno imate samo $intl_ally_name|. Ipak, "
+"$intl_ally_name će učiniti što treba da se ona uništi."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:531
@@ -12205,7 +12112,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:559
-#, fuzzy
 msgid ""
 "Excellent. Due to our limited numbers, we cannot mount a full frontal "
 "assault against all her forces. Instead a sneak attack may allow us to "
@@ -12375,7 +12281,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:634
-#, fuzzy
 msgid ""
 "Yanqui appeared to them in the guise of a beautiful elven youth and told "
 "them that a great darkness was coming, which would destroy all the knowledge "
@@ -12602,7 +12507,7 @@ msgstr "Bojiht"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:223
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:264
 msgid "Eloh Cultists"
-msgstr ""
+msgstr "Elohini okultisti"
 
 #. [side]: type=Draug, id=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:105
@@ -12732,13 +12637,12 @@ msgstr "Prestupili ste na svetu zemlju, Jedina kaže da morate umreti!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:837
-#, fuzzy
 msgid ""
 "Faugh! Little one, you are not worth our time. We are the Quenoth Elves! "
 "Flee and trouble us no longer or we will squash you like a bug."
 msgstr ""
-"Tako? Maleni, nećemo gubiti vreme s tobom. Mi smo kvenotski vilenjaci! Beži "
-"i ne gnjavi nas više, ili ćemo te spljeskati kao bubu."
+"Fu! Maleni, nećemo gubiti vreme s tobom. Mi smo kvenotski vilenjaci! Beži i "
+"ne gnjavi nas više, ili ćemo te spljeskati kao bubu."
 
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:842
@@ -13245,17 +13149,16 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1865
-#, fuzzy
 msgid ""
 "$intl_ally_name not going to just sit here while Kaleh does all the "
 "fighting. Kaleh will need strong fighter like $intl_ally_name|. Other elves "
 "may be scared, but $intl_ally_name fear no dark place. $intl_ally_name just "
 "hope there still something to smash when he gets there."
 msgstr ""
-" $ally_name neće mirno da sedi dok se Kaleh sam bori. Kalehu treba jak borac "
-"kao $ally_name. Drugi vilenjaci možda uplašeni, ali se $ally_name ne boji "
-"mračnih mesta. $ally_name se samo nada da će biti još nešto da se razbije "
-"dok on stigne."
+"$intl_ally_name neće mirno da sedi dok se Kaleh sam bori. Kalehu treba jak "
+"borac kao $intl_ally_name. Drugi vilenjaci možda uplašeni, ali se "
+"$intl_ally_name ne boji mračnih mesta. $intl_ally_name se samo nada da će "
+"biti još nešto da se razbije dok on stigne."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:2030
@@ -13336,14 +13239,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:395
-#, fuzzy
 msgid "Nym, Zhul, $intl_ally_name|, you shouldn't have."
-msgstr "Nim, Žul, $ally_name , nije trebalo..."
+msgstr "Nim, Žul, $intl_ally_name|, nije trebalo."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:402
 msgid "Nym, Zhul, you shouldn't have."
-msgstr "Nim, Žul, nije trebalo..."
+msgstr "Nim, Žul, nije trebalo."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:409
@@ -13618,13 +13520,12 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1557
-#, fuzzy
 msgid ""
 "Ugh. $intl_ally_name is covered in blood and guts and nasty blue goo. "
 "Whatever creature was, she doesn't smell any better dead than she did alive."
 msgstr ""
-"Uh. $ally_name pokriven krvlju i iznutricama i ružnim plavim glibom. Šta god "
-"da je to stvorenje bilo, ne miriše ništa bolje mrtvo nego živo."
+"Uh. $intl_ally_name pokriven krvlju i iznutricama i ružnim plavim glibom. "
+"Šta god da je to stvorenje bilo, ne miriše ništa bolje mrtvo nego živo."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1582
@@ -13763,7 +13664,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:164
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -13776,9 +13676,9 @@ msgstr ""
 "Da mi je rečeno na početku putovanja kakva će cena u krvi biti plaćena, ne "
 "znam da li bih imao snage napraviti i prvi korak. Verovatno je trebalo da mi "
 "bude jasno kako mi prijatelji neće dopustiti da se sam suočim sa Jehnagot. "
-"Ali bih rado na mestu danas dao svoj život kada bi $ally_name mogao da se "
-"vrati. Sledio me je verno i borio se uz moju stranu toliko dugo, da strada "
-"na samom kraju... Kada bih mogao da se vratim i uradim sve iz početka."
+"Ali bih rado na mestu danas dao svoj život kada bi $intl_ally_name mogao da "
+"se vrati. Sledio me je verno i borio se uz moju stranu toliko dugo, da "
+"strada na samom kraju... Kada bih mogao da se vratim i uradim sve iz početka."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:180
@@ -13845,7 +13745,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:234
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of $intl_ally_name in that dark place. And "
@@ -13860,13 +13759,14 @@ msgid ""
 "underground, it seems a small consolation."
 msgstr ""
 "Iako verujem da je boj u crnoj citadeli bio naš najsvetliji čas, i dalje me "
-"proganja što $ally_name strada na tom mračnom mestu. Svako jutro po svitanju "
-"odem do jugoistočnog kraka ostrva i gledam preko mora, na svet za koji smo "
-"toliko žrtvovali da bismo ga sačuvali. Prisetim se šta je Žul rekla, i svi "
-"su oni verovali, da je uprkos stradanjima i borbama koje smo doživeli na "
-"putu, ovaj svet dovoljno lepo i valjano mesto da $ally_name bude voljan "
-"žrtvovati se ne bi li ga zaštitio. Posmatrajući napredak svog naroda od "
-"tada, i sam sebi kažem da je vredelo. Ali je ponekad sve to od male utehe."
+"proganja što $intl_ally_name strada na tom mračnom mestu. Svako jutro po "
+"svitanju odem do jugoistočnog kraka ostrva i gledam preko mora, na svet za "
+"koji smo toliko žrtvovali da bismo ga sačuvali. Prisetim se šta je Žul "
+"rekla, i svi su oni verovali, da je uprkos stradanjima i borbama koje smo "
+"doživeli na putu, ovaj svet dovoljno lepo i valjano mesto da $intl_ally_name "
+"bude voljan žrtvovati se ne bi li ga zaštitio. Posmatrajući napredak svog "
+"naroda od tada, i sam sebi kažem da je vredelo. Ali je ponekad sve to od "
+"male utehe."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:250
@@ -13941,7 +13841,6 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:308
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:316
-#, fuzzy
 msgid ""
 "I am saddened by the death of $intl_ally_name, but by saving my life in the "
 "end he did fulfill his life debt to me. I think he also would have been glad "
@@ -13954,15 +13853,15 @@ msgid ""
 "under some solid rock. And so we buried him with much honor and will long "
 "remember the service that his kind has done for our people."
 msgstr ""
-"Žalosti me što je $ally_name stradao, ali je spasivši moj život, na kraju "
-"odista odužio svoj dug. Verujem da bi mu i samom bilo drago što je poginuo u "
-"boju. Razmišljah se da povedem poslanstvo koje bi vratilo njegove mošti "
-"njegovom narodu, ali su moji vilenjaci iscrpljeni dugim putovanjem, i ne "
-"želim da izgubim još nekog od njih. Umesto toga, istražih sva ostrva, "
+"Žalosti me što je $intl_ally_name stradao, ali je spasivši moj život, na "
+"kraju odista odužio svoj dug. Verujem da bi mu i samom bilo drago što je "
+"poginuo u boju. Razmišljah se da povedem poslanstvo koje bi vratilo njegove "
+"mošti njegovom narodu, ali su moji vilenjaci iscrpljeni dugim putovanjem, i "
+"ne želim da izgubim još nekog od njih. Umesto toga, istražih sva ostrva, "
 "uspevši na obodima jednog od njih da pronađem lanac pećina. Nisu bile duboke "
-"kao njegova postojbina, ali bi $ally_name svejedno voleo da bude položen "
-"ispod čvrste stene. I tako ga ukopasmo uz mnoge počasti. Dugo ćemo se sećati "
-"usluga kojim je njegov narod zadužio naš."
+"kao njegova postojbina, ali bi $intl_ally_name svejedno voleo da bude "
+"položen ispod čvrste stene. I tako ga ukopasmo uz mnoge počasti. Dugo ćemo "
+"se sećati usluga kojim je njegov narod zadužio naš."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:334
@@ -14019,7 +13918,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:373
-#, fuzzy
 msgid ""
 "By saving my life, $intl_ally_name fulfilled his life debt to me, but we "
 "convinced him to hang around for a while and revel in the celebrations that "
@@ -14035,23 +13933,22 @@ msgid ""
 "All the same I treasure the memory of him and his kind, and I will long "
 "remember his steadfast loyalty and all that he did to aid us in our struggle."
 msgstr ""
-"Spasivši mi život, $ally_name je ispunio svoj dug prema meni, ali ga "
+"Spasivši mi život, $intl_ally_name je ispunio svoj dug prema meni, ali ga "
 "ubedismo da se još malo zadrži s nama i prisustvuje proslavama koje smo "
 "spremali posle naše velike pobede. Slavili smo danima i noćima, zahvaljujući "
 "Eloh i bogu morejaca, i radujući se izobilju i lepoti našeg novog doma. "
-"Potom se rešismo da sagradimo nova prebivališta za narod. $ally_name ostade "
-"da nam pomogne u izgradnji, i beše najvredniji radnik među nama. Ali posle "
-"izvesnog vremena, $ally_name dođe kod mene i zatraži da se vrati svom "
-"narodu. Reče mi i da mu je vreme provedeno među nama bilo kao predivan san, "
-"i obeća da će nas se uvek sećati, ali da je potreban svojima i da mora nazad "
-"k njima. Reče da će jednog dana doći ponovo da nas poseti, ali sumnjam da ću "
-"ga ikada više videti za života. Kako bilo, drago mi je sećanje na njega i "
-"njegov narod, i dugo ću pamtiti njegovu nepokolebljivu odanost i sve što je "
-"učinio da pomogne našim naporima."
+"Potom se rešismo da sagradimo nova prebivališta za narod. $intl_ally_name "
+"ostade da nam pomogne u izgradnji, i beše najvredniji radnik među nama. Ali "
+"posle izvesnog vremena, $intl_ally_name dođe kod mene i zatraži da se vrati "
+"svom narodu. Reče mi i da mu je vreme provedeno među nama bilo kao predivan "
+"san, i obeća da će nas se uvek sećati, ali da je potreban svojima i da mora "
+"nazad k njima. Reče da će jednog dana doći ponovo da nas poseti, ali sumnjam "
+"da ću ga ikada više videti za života. Kako bilo, drago mi je sećanje na "
+"njega i njegov narod, i dugo ću pamtiti njegovu nepokolebljivu odanost i sve "
+"što je učinio da pomogne našim naporima."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:381
-#, fuzzy
 msgid ""
 "By saving my life, $intl_ally_name fulfilled his life debt to me, but we "
 "convinced him to hang around for a while and revel in the celebrations that "
@@ -14068,30 +13965,29 @@ msgid ""
 "long remember his steadfast loyalty and all that he did to aid us in our "
 "struggle. "
 msgstr ""
-"Spasivši mi život, $ally_name je ispunio svoj dug prema meni, ali ga "
+"Spasivši mi život, $intl_ally_name je ispunio svoj dug prema meni, ali ga "
 "ubedismo da se još malo zadrži s nama i prisustvuje proslavama koje smo "
 "spremali posle naše velike pobede. Slavili smo danima i noćima, zahvaljujući "
 "Eloh i bogu morejaca, i radujući se izobilju i lepoti našeg novog doma. "
-"Potom se rešismo da sagradimo nova prebivališta za narod. $ally_name ostade "
-"da nam pomogne u izgradnji, i beše najvredniji radnik među nama. Ali posle "
-"izvesnog vremena, $ally_name dođe kod mene i zatraži da se vrati svom "
-"narodu. Reče mi i da mu je vreme provedeno među nama bilo kao predivan san, "
-"i obeća da će nas se uvek sećati, ali da je potreban svojima i da mora nazad "
-"k njima. Reče da će jednog dana doći ponovo da nas poseti, ali sumnjam da ću "
-"ga ikada više videti za života. Kako bilo, drago mi je sećanje na njega i "
-"njegov narod, i dugo ću pamtiti njegovu nepokolebljivu odanost i sve što je "
-"učinio da pomogne našim naporima."
+"Potom se rešismo da sagradimo nova prebivališta za narod. $intl_ally_name "
+"ostade da nam pomogne u izgradnji, i beše najvredniji radnik među nama. Ali "
+"posle izvesnog vremena, $intl_ally_name dođe kod mene i zatraži da se vrati "
+"svom narodu. Reče mi i da mu je vreme provedeno među nama bilo kao predivan "
+"san, i obeća da će nas se uvek sećati, ali da je potreban svojima i da mora "
+"nazad k njima. Reče da će jednog dana doći ponovo da nas poseti, ali sumnjam "
+"da ću ga ikada više videti za života. Kako bilo, drago mi je sećanje na "
+"njega i njegov narod, i dugo ću pamtiti njegovu nepokolebljivu odanost i sve "
+"što je učinio da pomogne našim naporima."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:411
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:419
-#, fuzzy
 msgid ""
 "And I will always remember $intl_ally_name who died along our journey. A "
 "braver warrior I have never seen, and though he was taken from us too soon, "
 "I am glad for the short time that I knew him."
 msgstr ""
-"I uvek će mi u sećanju ostati $ally_name koji strada uz nas na putu. "
+"I uvek će mi u sećanju ostati $intl_ally_name koji strada uz nas na putu. "
 "Hrabrijeg ratnika u životu ne videh, i iako nam ga prerano uzeše, cenim to "
 "kratko vreme tokom kojeg sam ga poznavao."
 
@@ -14544,7 +14440,6 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-#, fuzzy
 msgid "female^Desert Druid"
 msgstr "pustinjska druidka"
 
@@ -14830,9 +14725,8 @@ msgstr "pustinjska stražarka"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-#, fuzzy
 msgid "female^Desert Shaman"
-msgstr "pustinjska oštrooka"
+msgstr "pustinjska vračarka"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -14875,9 +14769,8 @@ msgstr "pustinjska dalekometašica"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-#, fuzzy
 msgid "female^Desert Shyde"
-msgstr "pustinjska strelašica"
+msgstr "pustinjska šejda"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -14906,9 +14799,8 @@ msgstr "vilin-dodir"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-#, fuzzy
 msgid "female^Desert Star"
-msgstr "pustinjski lovac"
+msgstr "pustinjska zvezda"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -14932,7 +14824,6 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-#, fuzzy
 msgid "female^Divine Avatar"
 msgstr "božanski avatar"
 
@@ -14955,7 +14846,6 @@ msgstr "svetlosnop"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-#, fuzzy
 msgid "female^Divine Incarnation"
 msgstr "božansko otelotvorenje"
 
@@ -14994,14 +14884,13 @@ msgstr "prašinsko obnavljanje"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:88
-#, fuzzy
 msgid ""
 "Dust Recuperation:\n"
 "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgstr ""
 "Prašinsko obnavljanje:\n"
 "Jedinica se zalečuje 6 UP po potezu kada je na peščanom ili prašnjavom "
-"terenu. Ako je otrovana, ovo će joj umesto lečenja isceliti trovanje."
+"terenu."
 
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:94
@@ -15025,7 +14914,6 @@ msgstr "patulj-istraživač"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:26
-#, fuzzy
 msgid ""
 "Dwarven Explorers often travel alone through unknown lands, slaying enemies "
 "and scouting out new deposits of ore and other precious minerals. They are "
@@ -15344,7 +15232,6 @@ msgstr "opstanak"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:258
-#, fuzzy
 msgid ""
 "Sustenance:\n"
 "This unit's resistances are increased by 20% in daylight, on defense and "
@@ -15383,20 +15270,18 @@ msgstr ""
 "Ne deluje u odbrani."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:322
-#, fuzzy
 msgid "skilled in surviving the desert"
-msgstr "vičan preživljavanju u pustinji"
+msgstr ""
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:330
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:331
 msgid "camouflage"
-msgstr "kamuflaža"
+msgstr ""
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:335
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:339
-#, fuzzy
 msgid ""
 "Camouflage:\n"
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
@@ -15407,13 +15292,6 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Kamuflaža:\n"
-"Jedinica ume da se skriva među peščanim dinama, planinama i kraterima, tako "
-"da je neprijatelji ne vide.\n"
-"\n"
-"Neprijateljske jedinice ne mogu videti ovu dok se nalazi u peščanim dinama, "
-"planinama i kraterima, osim ako stupe tačno do nje. Prva neprijateljska "
-"jedinica koja ju otkrije odmah gubi svo preostalo kretanje."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:355
 msgid "Kaleh of the Quenoth Elves"
@@ -15616,13 +15494,15 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr ""
+msgstr " Jedinica je sposobna za osnovno vidanje i usporavanje dehidracije."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
 msgid ""
 " This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
+" Jedinica je sposobna da vida one oko sebe, usporava dehidraciju, i "
+"isceljuje otrove."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:20
@@ -15636,7 +15516,6 @@ msgstr "Još mi nije vreme za umiranje. Šta će biti s mojim narodom?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:44
-#, fuzzy
 msgid "Save me, Kaleh, I'm dying..."
 msgstr "Spasi me, Kaleh, umirem..."
 
@@ -15658,9 +15537,8 @@ msgstr "Tako mi Moradina, sa mnom je svršeno!"
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:149
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:174
-#, fuzzy
 msgid "No, $unit.name can't die now!"
-msgstr "Ne, $ally_name ne može sada stradati!"
+msgstr "Ne, $unit.name ne može sada stradati!"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:167
@@ -15721,7 +15599,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
-#, fuzzy
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves' stats and the day/night cycle. "
@@ -15730,16 +15607,15 @@ msgid ""
 "strongly suggest that you occasionally save your game mid-scenario, so you "
 "won't lose all your progress if you get stuck and have to start over."
 msgstr ""
-"Napomena: Ovaj pohod verovatno nije najpogodniji za početnike. Menja izvesne "
+"Napomena: Ovaj pohod verovatno nije pogodan za početnike. Menja izvesne "
 "standarde Vesnota, kao što su osobine vilenjaka i ciklus dana i noći. Ovaj "
-"pohod stavlja težište na elemente igranja uloge, i teži dužim scenarijima sa "
-"čestom promenom ciljeva. Iz ovih razloga, najozbiljnije savetujem da "
+"pohod stavlja težište na elemente tumačenja uloga, i teži dužim scenarijima "
+"sa promenom ciljeva usred njih. Iz ovih razloga, najozbiljnije savetujemo da "
 "povremeno sačuvate poziciju tokom scenarija, kako ne biste ostali bez sveg "
 "učinjenog napretka i morali da krenete iz početka."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
-#, fuzzy
 msgid ""
 "This is the chronicle of the journey of the Quenoth elves from their "
 "homeland in the Great Southern Desert. I write this story so that our "
@@ -15748,11 +15624,11 @@ msgid ""
 msgstr ""
 "Ovo je hronika putovanja kvenotskih vilenjaka iz svoje domovine u Velikoj "
 "južnoj pustinji. Pišem ovu priču kako bi naši potomci znali o našim "
-"putešestvijima, i pamtili žrtve koje smo morali podneti."
+"putešestvijima, pamtili žrtve koje smo morali podneti, i imali koristi od "
+"teških pouka koje smo izučili."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:14
-#, fuzzy
 msgid ""
 "Chapter 1: I, Kaleh, grew up amid the shifting sands, under our two suns "
 "Sela and Naia. It was a land of hot dry days and cold nights, of roaming "
@@ -15768,17 +15644,16 @@ msgstr ""
 "Poglavlje 1: Ja, Kaleh, odrastao sam među nemirnim peskom, pod naša dva "
 "sunca, Selom i Najom. Beše to zemlja vrelih suvih dana i hladnih noći, "
 "vrebajućih užasa, gde je voda bila vrednija od zlata. Živeli smo s peskom od "
-"kada su se šume sasušile, čitavu večnost ranije. Teška i divlja zemlja, ali "
-"mi smo bili čvrsti, i uspeli da preživimo okupljeni oko retke oaze. Čvrsto "
-"smo utvrdili svoje selo protiv pljačkaša, i bili najveća naseobina za koju "
-"smo čuli. Moj ujak, Tanujil, predvodio nas je mnoge godine, i uvežbavao nas "
-"da budemo samodovoljni i jaki protiv svakog neprijatelja. Kao narod koji se "
-"održao u okeanu peska, osećali smo da smo spremni na sve. Sve se to izmeni "
-"jedne sudbinske noći, kada s neba sejaše vatra..."
+"kada su se šume sasušile, nebrojeno godina odavno. Teška i divlja zemlja, "
+"ali mi smo bili čvrsti, i uspeli da preživimo okupljeni oko retke oaze. "
+"Čvrsto smo utvrdili svoje selo protiv pljačkaša, i bili najveća naseobina za "
+"koju smo čuli. Moj ujak, Tanujil, predvodio nas je mnoge godine, i uvežbavao "
+"nas da budemo samodovoljni i jaki protiv svakog neprijatelja. Kao narod koji "
+"se održao u okeanu peska, osećali smo da smo spremni na sve. Sve se to "
+"izmeni jedne sudbinske noći, kada s neba sejaše vatra..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:18
-#, fuzzy
 msgid ""
 "I remember that night as if it were yesterday. I was not prone to dreaming, "
 "but as I slept I had a strange vision. I didn't have long to ponder it "
@@ -15800,7 +15675,7 @@ msgstr ""
 "vilenjaka koji viču. Te noći je s neba padalo užareno stenje, grumenovi veći "
 "nego što možete zamisliti. Izrovarili su pejzaž kao svetlosne munje, paleći "
 "sve što može da gori, slamajući kuće, zidove, i nas vilenjake. Nije bilo gde "
-"da se sakrije, da se zaštiti od toga. Bejah toliko uplašen, verovah da ću "
+"da se sakrije, da se zaštiti od toga. Bejah strašno uplašen, verovah da ću "
 "biti smožden ako samo pokušam da pobegnem, te se sakrih i molih Elohi. "
 "Nikada se nisam molio tako usrdno kao te noći. Čuo sam krike i vriskove "
 "napolju, ali se nisam mogao naterati da izađem. Napokon, tanki žuti pipci "
@@ -15822,7 +15697,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:29
-#, fuzzy
 msgid ""
 "Sneaking amongst the dunes we crept up to their camp and ambushed them at "
 "dawn. To a young boy the fighting was overwhelming: crashing blades, blood, "
@@ -15839,9 +15713,10 @@ msgstr ""
 "bojni pokliči, prijatelj i neprijatelj gde se rve ispred i iza. Orkovi se "
 "držaše svog vođa, sirovim brojem protivu naših nadmoćnih borbenih veština. "
 "Moj otac beše taj koji se naposletku probi do poganog orkovskog vođa, te ga "
-"poseče nad žutim peskom isprskanim krvlju. Preživeli orkovi iskazaše svoju "
-"kukavičku narav, pobegavši sa poprišta. Sve je ukazivalo na slavnu pobedu, "
-"da sam jedva i primetio našu vilenjačku sabraću što ležaše mrtva po pesku."
+"poseče nad žutim peskom isprskanim krvlju. Preživeli orkovi se rasturiše i "
+"pobegoše sa poprišta, da bi ih naši tragači polovili i pobili tako izdvojene "
+"ili u malim grupama. Sve je ukazivalo na slavnu pobedu, da sam jedva i "
+"primetio našu vilenjačku sabraću što ležaše mrtva po pesku."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:32
@@ -15923,7 +15798,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:50
-#, fuzzy
 msgid ""
 "I worried if I was doing the right thing, leading my people to strange "
 "lands. Despite Eloh's promises, I was not as confident as Zhul was that it "
@@ -15973,7 +15847,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:62
-#, fuzzy
 msgid ""
 "Chapter 4: We found the crumbling obsidian tower that Eloh had described, "
 "and we camped at the edge of the foothills before the mountains. I was still "
@@ -15993,7 +15866,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:66
-#, fuzzy
 msgid ""
 "A long, long time ago was the golden age among elves. Our people lived in "
 "harmony with nature in lands filled with trees, trees as far as the eye "
@@ -16015,7 +15887,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:70
-#, fuzzy
 msgid ""
 "Eventually peace and prosperity fostered corruption and decadence. Through "
 "her powers of deception and guile, Uria cultivated secret groups of "
@@ -16054,7 +15925,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:74
-#, fuzzy
 msgid ""
 "In this time of troubles Eloh first appeared to a select number of us, those "
 "few that still doggedly fought to preserve our homeland and our heritage. "
@@ -16080,13 +15950,12 @@ msgstr ""
 "nas je da je jedini način da se preživi u novom surovom svetu, taj da se "
 "potrebe većine stavljaju iznad želja pojedinaca. Moramo raditi svi zajedno, "
 "jer smo jedni bez drugih ništa. Čak i kada su ravnice počele da se suše, "
-"nastavili smo da pratimo njenu volju i hodimo njenim putem, pamteći naše "
-"pretke i žrtve koje su podneli da bismo mi živeli, i uvek tražeći načina da "
-"stvorimo bolji svet za svoje potomstvo."
+"pratili smo njenu volju i hodili njenim putem, pamteći naše pretke i žrtve "
+"koje su podneli da bismo mi živeli, i uvek tražeći načina da stvorimo bolji "
+"svet za svoje potomstvo."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:78
-#, fuzzy
 msgid ""
 "Had the golden age been just a story? What kind of world could I be able to "
 "create for future generations of our people? All I knew of the past were the "
@@ -16125,7 +15994,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:90
-#, fuzzy
 msgid ""
 "This seemed as alien an environment as we could ever imagine. We were a "
 "people of the open sands, and even during the long dark we could look up and "
@@ -16136,9 +16004,9 @@ msgid ""
 "and turned, and soon I lost all sense of direction, but since there were no "
 "side-passages, we had little choice but to keep going forward."
 msgstr ""
-"Okruženje je izgledalo onoliko tuđinsko koliko smo mogli zamisliti. Bili smo "
-"narod otvorenog peska, a čak i tokom duge tame mogli smo da podignemo pogled "
-"i upravljamo se prema zvezdama koje su blistale u svojim visinama. Um mi je "
+"Okruženje je izgledalo tuđinsko koliko smo mogli zamisliti. Bili smo narod "
+"otvorenog peska, a čak i tokom duge tame mogli smo da podignemo pogled i "
+"upravljamo se prema zvezdama koje su blistale na dalekom nebu. Um mi je "
 "govorio da nismo mogli preko zamrznutih planina, i da nismo mogli nazad, ali "
 "bih zadrhtao na pomisao o ligama stene nadamnom, i osetio težinu planine "
 "kako me ophrvava. Prolazi su izvijali i zaokretali, te ubrzo izgubih osećaj "
@@ -16147,7 +16015,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:94
-#, fuzzy
 msgid ""
 "Looking back, I think the bravest thing that my people ever did was to "
 "follow me into the darkness solely on the promises of Eloh and their faith "
@@ -16166,12 +16033,11 @@ msgstr ""
 "Nim mi je rekla kako se u narodu šapuće da ih mogu provesti kroz bilo šta, i "
 "zbilja, kad smo polazili teško da sam mogao zamisliti da ćemo se boriti "
 "protiv odmetnika, nemrtvih, orkova i goblina. Moj prethodni život činio se "
-"godinama udaljen, iako je od uništenja našeg sela do tada prošlo tek deset "
+"kao davnašnji san, iako je od uništenja našeg sela do tada prošlo tek deset "
 "dana."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:98
-#, fuzzy
 msgid ""
 "What lurked in the darkness? Who were the unbelievers that Eloh had so "
 "cryptically referred to? My heart beat loudly in my chest, everything seemed "
@@ -16188,7 +16054,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:106
-#, fuzzy
 msgid ""
 "Chapter 6: The dwarf Grimnir led us through a maze of twisting passages "
 "speaking scarcely a word. Finally, after what seemed like hours of marching, "
@@ -16199,7 +16064,7 @@ msgid ""
 "moment I despaired of ever seeing the sun again. Then I grabbed my sword "
 "with fresh determination and vowed to see this mission through."
 msgstr ""
-"Poglavlje 6: Patuljak Grendel nas povede kroz lavirint zavijajućih prolaza, "
+"Poglavlje 6: Patuljak Grimnir nas povede kroz lavirint zavijajućih prolaza, "
 "ne progovarajući gotovo ni reči. Napokon, posle kako je izgledalo sati "
 "hodanja, on stade. Uputi nas da budemo vrlo tihi, i stadosmo da se šunjamo; "
 "mogao samo čuti samo maki topot stopala i svoje teško disanje. I to malo "
@@ -16231,7 +16096,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:122
-#, fuzzy
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Seeing Grimnir with us, a troop "
@@ -16241,9 +16105,9 @@ msgid ""
 "home."
 msgstr ""
 "Poglavlje 7: Brzo se vratismo i nađosmo naš narod na bezbednom, kako smo ih "
-"i sakrili pre borbe. Kako videše Grendela uz nas, družina patuljaka nečujno "
+"i sakrili pre borbe. Kako videše Grimnira uz nas, družina patuljaka nečujno "
 "se okupi iz tajnih prilaza. Pošto smo raširili među ostalim vilenjacima da "
-"su patuljci prijatelji, Grendel nas brzo i u tišini povede kroz lavirint "
+"su patuljci prijatelji, Grimnir nas brzo i u tišini povede kroz lavirint "
 "tajnih hodnika, ka domu patuljaka."
 
 #. [part]
@@ -16282,7 +16146,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:134
-#, fuzzy
 msgid ""
 "The dwarf king was away cleaning up after the recent battle, and would not "
 "be back for several days. I happily spent what little time I had learning as "
@@ -16318,7 +16181,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:146
-#, fuzzy
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
 "seemed to flow differently down there, deep under the earth. But finally we "
@@ -16340,12 +16202,11 @@ msgstr ""
 "videsmo mrtve patuljke i druge, još strašnije naznake skorašnje bitke. Oko "
 "nas je mnoštvo trolova udarnički radilo na popravljanju zidina i druge "
 "odbrane. Zurg nas provede kroz metež do nekoliko skrajnutih pećina, koje su "
-"doskora korišćenje kao skladišta. Bilo je tu dosta prostora za nas da se "
-"privremeno sklonimo, a i za patuljcima je ostalo obilje namirnica."
+"doskora korišćenje kao skladišta. Bilo je tu dovoljno prostora da se "
+"sklonimo i primirimo, a i za patuljcima je ostalo obilje namirnica."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:150
-#, fuzzy
 msgid ""
 "Zurg told us that they had just captured this city from the dwarves, and "
 "that the Great Leader had moved here to set up his base of operations. They "
@@ -16360,8 +16221,8 @@ msgstr ""
 "Zurg nam reče da su grad upravo preuzeli od patuljaka, i da se Veliki vođa "
 "odlučio da ovde premesti svoje glavno uporište. Jasno je bilo da ih je "
 "brinuo mogući protivudar patuljaka. Na sreću, trolovi behu vrlo umešni u "
-"obradi kamena, i zidine su brzo popravljene. Trolovi ne pričaju puno, ali su "
-"vrlo oštroumni i ni u kom slučaju krvožedni divljaci kakvim ih se "
+"obradi kamena, i zidine su brzo popravljene. Trolovi ne pričaju puno, ali "
+"deluju vrlo oštroumno, nikako kao puki krvožedni divljaci kakvim ih se "
 "predstavlja. Uopšte su čak delovali miroljubivo, osim ako ih se razdraži. "
 "Saznao sam da se vođstvo deli između ratnika i vračeva; vojnog vođa trolova "
 "bira i savetuje veće njihovih vračeva."
@@ -16416,7 +16277,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:168
-#, fuzzy
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -16430,20 +16290,20 @@ msgid ""
 "won't help me, then I desperately need some answers. I pray to whatever gods "
 "may be left that I'm not leading my people into a trap..."
 msgstr ""
-"Što me dovodi do drugog tuđinskog pojma koji sam pokušavao da odgonetnem: "
+"Što me dovodi do drugog tuđinskog pojma u koji sam pokušavao da proniknem: "
 "naše boginje Eloh. Kakav je njen naum? Zašto je želela da se predam ljudima? "
 "Da li i ljudi nju obožavaju? Delovali su tako surovo i zlokobno, da ne mogu "
-"prihvatiti da veruju u istog boga. Mislio sam da je Eloh samo naša boginja, "
-"ne sećam se da je Žul pominjala bilo koju drugu rasu koja ju je obožavala "
-"posle Velikog pada, mada se to može biti izmenilo. Zapovesti Eloh nisu imale "
-"smisla; uopšte nije delovala kao boginja o kojoj mi je Žul besedila. I o "
-"čemu to Esanu priča? Kako je njegova gospodarica znala za „Jehnagot“ i "
-"„Jankija“? Ako mi Eloh neće pomoći, onda sam moram naći odgovore. Molim se "
-"kojim god bogovima da su još preostali, da ne vodim svoj narod u stupicu..."
+"prihvatiti da veruju u istog boga kao i mi. Mislio sam da je Eloh samo naša "
+"boginja, ne sećam se da je Žul pominjala bilo koju drugu rasu koja ju je "
+"obožavala posle Velikog pada, mada se to može biti izmenilo tokom godina. "
+"Zapovesti Eloh nisu imale smisla; uopšte nije delovala kao boginja o kojoj "
+"mi je Žul besedila. I o čemu to Esanu priča? Kako je njegova gospodarica "
+"znala za „Jehnagot“ i „Jankija“? Ako mi Eloh neće pomoći, onda mi očajnički "
+"trebaju ti odgovori. Molim se kojim god bogovima da su još preostali, da ne "
+"vodim svoj narod u stupicu..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:176
-#, fuzzy
 msgid ""
 "Chapter 8: I set out with a lightened heart and quickened step; we were "
 "going back up and I was sure that soon this underground gauntlet would be "
@@ -16480,7 +16340,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:184
-#, fuzzy
 msgid ""
 "At first I thought that if we could just leave the desert, we could find a "
 "peaceful place away from all the bloodshed and death. But even underground "
@@ -16496,8 +16355,8 @@ msgstr ""
 "trolova i patuljaka nastavljaju svoj krvavi sukob do smrti. Je li to sve što "
 "je preostalo od ovog sveta? I zašto me je Eloh uputila da „kažnjavam "
 "nevernike“? Da smo napali i na patuljke i na trolove, ne bismo stigli dovde. "
-"Gde god se osvrnem, vidim ostatke nekada velikih carstava. Ako pomognemo da "
-"se istrebe poslednji ostaci tih naroda, ko će ostati?"
+"Gde god se osvrnem, vidim ostatke nekada velikih carstava. Ako istrebimo i "
+"poslednje od tih naroda, šta će ostati oko nas do zjapeće praznine?"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:188
@@ -16531,7 +16390,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:200
-#, fuzzy
 msgid ""
 "Chapter 10: The merfolk helped us pilot our ships far into the ocean. Some "
 "of the younger elves were actually quite adept at climbing the rigging and "
@@ -16549,7 +16407,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:204
-#, fuzzy
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their master. Apparently it was a "
@@ -16583,7 +16440,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:221
-#, fuzzy
 msgid ""
 "Chapter 11: Our boats slipped softly through the water, shrouded in the pre-"
 "dawn darkness. At this moment the merfolk would be launching their "
@@ -16598,7 +16454,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:225
-#, fuzzy
 msgid ""
 "In the end, almost all of my people decided to join in this final battle. I "
 "was surprised. They had gone through so much, and yet they still had faith "
@@ -16620,7 +16475,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:229
-#, fuzzy
 msgid ""
 "But Zhul is right, if we had come all this way just for a chance to help the "
 "merfolk defeat Yechnagoth then our journey was not in vain. We were "
@@ -16642,7 +16496,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:233
-#, fuzzy
 msgid ""
 "This conflict is greater than just us. These lands were once places of "
 "beauty and hope. The great empires may be gone, but still people struggle to "
@@ -16654,7 +16507,7 @@ msgid ""
 msgstr ""
 "Ovaj je sukob veći od nas samih. Ova su ostrva nekada bila staništa lepote i "
 "nade. Velika carstva su možda prošla, ali se narodi i dalje bore za "
-"opstanak. Koliko god loše izgledalo, nešto lepote i svetlosti još uvek je "
+"opstanak. Koliko god rđavo izgledalo, nešto lepote i svetlosti još uvek je "
 "negde oko nas, skriveno. Neću dopustiti da tama sve proguta po drugi put. Ne "
 "marim šta će se zbiti sa mnom, ali se molim Eloh, ako me uopšte sluša, da "
 "ako stradam, onda to doprinese da se ove zemlje učine boljim mestom. Samo da "
@@ -16662,13 +16515,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:241
-#, fuzzy
 msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "
 "you can do for those you love."
 msgstr ""
-"Poglavlje 12: Prava se snaga ne meri moći ili znanjem, već koliko ćeš "
-"žrtvovati radi onih koje voliš."
+"Poglavlje 12: Prava se snaga ne meri moći ili znanjem, već time šta možeš "
+"učiniti za one koje voliš."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:249
@@ -16703,12 +16555,12 @@ msgstr "fantomska kula"
 #. [terrain]: id=InnerSummoningCircle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:82
 msgid "Inner Summoning Circle"
-msgstr ""
+msgstr "unutrašnji prizivni krug"
 
 #. [terrain]: id=OuterSummoningCircle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:94
 msgid "Outer Summoning Circle"
-msgstr ""
+msgstr "spoljašnji prizivni krug"
 
 #. [time]: id=dawn1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:16
@@ -16784,412 +16636,3 @@ msgstr "duga tama (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "duga tama (4)"
-
-#~ msgid ""
-#~ "Garak collapses to the ground with own blade sticking from his chest."
-#~ msgstr "Garak se sruči na tlo, sopstvenog sečiva gde mu štrči iz grudi."
-
-#, fuzzy
-#~ msgid ""
-#~ "Garak collapses to the ground with own blade sticking form his chest."
-#~ msgstr "Garak se sruči na tlo, sopstvenog sečiva gde mu štrči iz grudi."
-
-#~ msgid "Desert Shaman"
-#~ msgstr "pustinjska vračarka"
-
-#~ msgid "Desert Shyde"
-#~ msgstr "pustinjska šejda"
-
-#~ msgid "Desert Star"
-#~ msgstr "pustinjska zvezda"
-
-#~ msgid ""
-#~ "We'll need your help in checking to see if the outer settlements are "
-#~ "okay. Who knows what kinds of damage they suffered in the night? And "
-#~ "perhaps some of the people out in the desert have been able to round up "
-#~ "some of the loose horses."
-#~ msgstr ""
-#~ "Trebaće nam tvoja pomoć da izvidimo kako stoje stvari sa drugim "
-#~ "naseobinama. Ko zna kakva su razaranja pretrpeli tokom noći? A možda su i "
-#~ "neki od ovih u pustinji smogli da sakupe nešto odbeglih konja."
-
-#~ msgid "Well, let's hope that hunting party comes back soon."
-#~ msgstr "Pa, nadajmo se da će se lovačka družina ubrzo vratiti."
-
-#~ msgid "Goblin Raider"
-#~ msgstr "gobli-pljaškaš"
-
-#~ msgid "Orc Raider"
-#~ msgstr "orko-pljačkaš"
-
-#~ msgid ""
-#~ "Huh? What happened? Must have been another stupid elf trick! Well it "
-#~ "won't stop me from killing you!"
-#~ msgstr ""
-#~ "Ha? Šta se dogodi? Mora da je još jedan glup vilenjački trik! Ipak me "
-#~ "neće sprečiti da te ubijem!"
-
-#~ msgid "What happened? Where am I?"
-#~ msgstr "Šta se desilo? Gde sam?"
-
-#~ msgid "Where did you go?"
-#~ msgstr "Kuda nestade?"
-
-#~ msgid ""
-#~ "I don't know, someone just knocked me out. I didn't get a good look at "
-#~ "them."
-#~ msgstr "Ne znam, neko me je bio onesvestio. Ne uspeh ih dobro pogledati."
-
-#~ msgid "Huh? What happened? No time to think, must keep fighting!"
-#~ msgstr "Eh, šta to bi? Nema vremena za namišljanje, borba još traje!"
-
-#~ msgid "Where did you go? Do you remember anything?"
-#~ msgstr "Odakle dođe? Sećaš li se ičega?"
-
-#~ msgid ""
-#~ "No, someone grabbed me and knocked me out. I have no idea who it was."
-#~ msgstr "Ne, nešto me zgrabi i onesvesti. Predstave nemam ko je to bio."
-
-#~ msgid "A Stirring in the Night (development branch)"
-#~ msgstr "Komešanje u noći (razvojna grana)"
-
-#~ msgid ""
-#~ "Camouflage:\n"
-#~ "This unit can hide in desert dunes and desert mountains and craters, and "
-#~ "remain undetected by its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is in desert dunes and desert "
-#~ "mountains and craters, except if they have units next to it. Any enemy "
-#~ "unit that first discovers this unit immediately loses all its remaining "
-#~ "movement."
-#~ msgstr ""
-#~ "Kamuflaža:\n"
-#~ "Jedinica ume da se skriva među peščanim dinama, planinama i kraterima, "
-#~ "tako da je neprijatelji ne vide.\n"
-#~ "\n"
-#~ "Neprijateljske jedinice ne mogu videti ovu dok se nalazi u peščanim "
-#~ "dinama, planinama i kraterima, osim ako stupe tačno do nje. Prva "
-#~ "neprijateljska jedinica koja ju otkrije odmah gubi svo preostalo kretanje."
-
-#~ msgid "a charismatic leader - all adjacent units pay no upkeep"
-#~ msgstr "harizmatski vođ — sve susedne jedinice ne nanose izdatke"
-
-#~ msgid "charisma"
-#~ msgstr "harizma"
-
-#~ msgid ""
-#~ "Charisma:\n"
-#~ "Adjacent units will be treated loyal and not pay upkeep."
-#~ msgstr ""
-#~ "Harizma:\n"
-#~ "Susedne jedinice se uzimaju za odane i ne traže izdatke."
-
-#~ msgid "Grendel"
-#~ msgstr "Grendel"
-
-#~ msgid "Dread Bat"
-#~ msgstr "grozišišmiš"
-
-#~ msgid ""
-#~ "Dread Bats are fast and can drain the blood of those they attack, thereby "
-#~ "healing themselves, even to the point where they become stronger than "
-#~ "they began the battle. Bloated with blood they have grown to a huge size "
-#~ "and can feast on bigger and bigger victims."
-#~ msgstr ""
-#~ "Grozišišmiši su brzi i mogu ispijati krv svojih žrtava, tako olakšavajući "
-#~ "sopstvene povrede, pa čak i postajući jači nego što su bili pre upuštanja "
-#~ "u boj. Što više krvi proždiru to više rastu, tako da se vremenom "
-#~ "nameravaju na sve veće i veće plenove."
-
-#~ msgid "Rocky Horror"
-#~ msgstr "Kameni užas"
-
-#~ msgid "Raaaar!"
-#~ msgstr "Raaaar!"
-
-#~ msgid "I think I see movement in the stables. Is anyone there?"
-#~ msgstr "Čini mi se da se nešto mrda u štalama. Ima li koga tamo?"
-
-#~ msgid "Kaleh, wake up! Scouts report movement out in the sands."
-#~ msgstr "Kaleh, diži se! Izvidnice prijavljuju kretanja napolju na pesku."
-
-#~ msgid "Is it orc raiders?"
-#~ msgstr "Orkovski pljačkaši?"
-
-#~ msgid "I don't think so..."
-#~ msgstr "Ne bih baš rekla..."
-
-#~ msgid ""
-#~ "You always were an arrogant little bastard. Grek will swallow your soul "
-#~ "first, or what's left of it."
-#~ msgstr ""
-#~ "Oduvek si bio nadobudno malo kopile. Grek će progutati tvoju dušu pre "
-#~ "toga, odnosno ono što je od nje ostalo."
-
-#~ msgid ""
-#~ "You spurned me once; I will make you pay. But enough of the past--to "
-#~ "battle, my minions! Behold the wrath of the dead!"
-#~ msgstr ""
-#~ "Jednom si me odbacila; zbog toga ćeš platiti. Ali dosta o prošlosti — u "
-#~ "boj, sledbenici moji! Gledajte bes mrtvih!"
-
-#~ msgid ""
-#~ "Great, ringside seats for an all-out battle between two undead lords. You "
-#~ "really know how to pick a campsite, Kaleh."
-#~ msgstr ""
-#~ "Izvrsno, prva mesta pred pozornicom, za sveopštu bitku između dva "
-#~ "gospodara nemrtvih. Baš umeš da odabereš mesto za logorovanje, Kaleh."
-
-#~ msgid ""
-#~ "But our people's encampments are in danger, they'll be slaughtered by the "
-#~ "undead hordes!"
-#~ msgstr ""
-#~ "Ali, u opasnosti su konačišta našeg naroda, nemrtve horde će ih sve "
-#~ "poklati!"
-
-#~ msgid ""
-#~ "There's no way we can marshal our people to escape the battle in time. We "
-#~ "must protect our people's $village_counter encampments from the undead."
-#~ msgstr ""
-#~ "Nema načina da sakupimo sav narod i izbegnemo bitku na vreme. Stoga "
-#~ "moramo od nemrtvih zaštititi $village_counter podignutih logora."
-
-#~ msgid ""
-#~ "If the undead forces reach our encampments first, they will surely be "
-#~ "destroyed. I fear that if we lose more than half our encampments we will "
-#~ "not have the strength to go on. Garak, wake your men. We must hold off "
-#~ "the undead until dawn."
-#~ msgstr ""
-#~ "Ako snage nemrtvih prvo posegnu za našim logorima, zasigurno će biti "
-#~ "uništeni. Plašim se, izgubimo li preko polovine svih logora, nećemo imati "
-#~ "snage da nastavimo put. Garače, budi svoje vilenjake. Moramo zadržati "
-#~ "nemrtve do zore."
-
-#~ msgid ""
-#~ "But look, dawn is nigh, our salvation is almost at hand. Even the Long "
-#~ "Dark cannot last forever, and with the light of the sun the undeads' dark "
-#~ "power wanes and their magics unravel."
-#~ msgstr ""
-#~ "Ali gle, zora samo što nije, spas nam je nadohvat ruke. Čak ni duga tama "
-#~ "ne može zauvek potrajati, a sa zracima sunca čile mračne moći nemrtvih, i "
-#~ "njihova se magija raščinjava."
-
-#~ msgid ""
-#~ "No! I shall have my vengeance upon you all. Darkness shall reign until I "
-#~ "have triumphed!"
-#~ msgstr ""
-#~ "Ne! Moja će vas osveta sve skrhati. Tama će vladati dok ja ne pobedim!"
-
-#~ msgid "Kill Possessed Garak (or)"
-#~ msgstr "Ubiješ li posednutog Garaka, ili"
-
-#~ msgid "Defeat remaining Undead Lord"
-#~ msgstr "Poraziš li drugog gospodara nemrtvih"
-
-#~ msgid ""
-#~ "I can see the first rays of Naia shining over the horizon. She never "
-#~ "looked so beautiful. The undead forces have crumbled into dust and the "
-#~ "remaining orcs are retreating with the dawn. But what of Garak?"
-#~ msgstr ""
-#~ "Vidim prve zrake Naje gde sijaju preko obzorja. Nikada nije izgledala "
-#~ "tako ljupko. Nemrtve vojske se rastaču u prašinu, a preostali orkovi se "
-#~ "povlače sa zorom. Ali, šta je s Garakom?"
-
-#~ msgid ""
-#~ "Well, only $village_counter encampments remain, but we shall survive."
-#~ msgstr "Pa, samo je $village_counter logora preostalo, ali preživećemo."
-
-#~ msgid "Curse you! I will not forget this. You will rue this night."
-#~ msgstr "Prokleto bilo! Neću ovo zaboraviti. Okajaćeš ovu noć."
-
-#~ msgid "Noooooo! I shall have my revenge!"
-#~ msgstr "Neeee! Osveta će biti moja!"
-
-#~ msgid ""
-#~ "I can just barely see the sun poking over the dunes. It is almost dawn!"
-#~ msgstr "Jedva vidim, ali sunčevi zraci izviruju nad dinama. Skoro je zora!"
-
-#~ msgid ""
-#~ "No, I shall have my revenge. I shall show you that darkness is strongest "
-#~ "just before dawn. I call upon the lord of death and decay, grant me my "
-#~ "vengeance!"
-#~ msgstr ""
-#~ "Ne, izvršiću svoju osvetu. Pokazaću ti da je tama najjača tik pred zoru. "
-#~ "Dozivam Gospodara smrti i propadanja, podaj mi osvetu što ištem!"
-
-#~ msgid ""
-#~ "No, I shall have my revenge. I shall show you that darkness is strongest "
-#~ "just before dawn. I call upon the powers of disease and despair, grant me "
-#~ "my vengeance!"
-#~ msgstr ""
-#~ "Ne, izvršiću svoju osvetu. Pokazaću ti da je tama najjača tik pred zoru. "
-#~ "Prizivam moći pošasti i očajanja, podajte mi osvetu što ištem!"
-
-#~ msgid ""
-#~ "They're raising the corpses of our slain people! What a horrible fate!"
-#~ msgstr "Podižu leševe naših posečenih boraca! Grozne li sudbe!"
-
-#~ msgid ""
-#~ "This darkness will never end, and the undead will soon overwhelm us. I'm "
-#~ "sorry Garak, we couldn't save you."
-#~ msgstr ""
-#~ "Ova se tama nikada neće okončati, i nemrtvi će nas uskoro pregaziti. Žao "
-#~ "mi je, Garače, ne mogasmo te spasiti."
-
-#~ msgid ""
-#~ "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#~ "where they come from, but they are occasionally summoned by powerful "
-#~ "mages to do their bidding. When not being controlled they like to frolic "
-#~ "in pools of lava and take great delight in burning anything they can "
-#~ "reach."
-#~ msgstr ""
-#~ "Vatročuvari su duhovi dima i plamena. Niko ne zna odakle dolaze, ali ih "
-#~ "povremeno sazivaju moćni magovi da služe njihovim naumima. Kada ne služe "
-#~ "nekoj zapovesti, vole da se vesele u bazenima lave, i vrlo uživaju u "
-#~ "spaljivanju svega što im se nađe u dosegu."
-
-#~ msgid "Troll Shaman"
-#~ msgstr "trol-vračar"
-
-#~ msgid ""
-#~ "Troll shamans are the mystical leaders of the trolls. Though not as "
-#~ "strong or tough as other trolls, their true power lies in their fire "
-#~ "magic, which they use to blast enemies with gouts of fire."
-#~ msgstr ""
-#~ "Trolovi vračari su tajanstveni vođi trolova. Iako ne tako snažni i "
-#~ "otporni kao drugi trolovi, njihova prava moć leži u vatrenoj magiji, "
-#~ "kojom se obilno služe da rasteraju neprijatelje plamenim klobucima."
-
-#~ msgid "flame blast"
-#~ msgstr "plameni mlaz"
-
-#~ msgid "Bernard"
-#~ msgstr "Bernar"
-
-#~ msgid "Daryl"
-#~ msgstr "Daril"
-
-#~ msgid "Oswald"
-#~ msgstr "Osvald"
-
-#~ msgid "Blank"
-#~ msgstr "prazna"
-
-#~ msgid "wail"
-#~ msgstr "jauk"
-
-#~ msgid "baneblade"
-#~ msgstr "prokletnik"
-
-#~ msgid ""
-#~ "Desert Marshals are master commanders, able to inspire confidence in any "
-#~ "level 1 or 2 unit in adjacent hexes, causing them to fight with increased "
-#~ "skill. Desert Marshals prefer engaging the enemy in melee combat, but are "
-#~ "trained in archery as well.\n"
-#~ "\n"
-#~ "Special Notes: the leadership of a Marshal enables friendly units next to "
-#~ "it to deal more damage in combat, though this only applies to units of "
-#~ "lower level"
-#~ msgstr ""
-#~ "Pustinjski maršali su prekaljeni zapovednici, sposobni da udahnu "
-#~ "samopouzdanje svim jedinicama prvog i drugog nivoa na susednim poljima, "
-#~ "što čini da se one bolje iskažu u borbi. Maršali radije udaraju na "
-#~ "neprijatelja iz neposredne blizine, ali su uvežbani i u streljaštvu.\n"
-#~ "\n"
-#~ "Posebne napomene: Sposobnost vođena maršala čini da prijateljske jedinice "
-#~ "do njega nanose više štete u borbi, mada to važi samo za jedinice nižeg "
-#~ "nivoa od maršalovog."
-
-#~ msgid ""
-#~ "Desert Prowlers sneak across the sands, searching out enemies and "
-#~ "protecting their people. They are trained to slip past enemies unnoticed "
-#~ "and flank them. The combination of their bolas and blades allows them to "
-#~ "cripple and kill opponents with alarming ease.\n"
-#~ "\n"
-#~ "Special Notes: The skirmish ability allows the rogue to ignore enemy "
-#~ "units' zones of control and thus move unhindered around them."
-#~ msgstr ""
-#~ "Pustinjski tumarači se šunjaju preko peska, tražeći neprijatelje i "
-#~ "štiteći svoj narod. Uvežbani su da se neopaženo provuku pokraj "
-#~ "neprijateljskih redova, u njegovu pozadinu. Sadejstvom bolasa s mačem, "
-#~ "uznemiravajućom lakoćom mogu oni osakatiti i poseći neprijatelja.\n"
-#~ "\n"
-#~ "Posebne napomene: Čarkaška sposobnost omogućava tumaraču da zanemari "
-#~ "nadzorne pojaseve protivničkih jedinica, i tako se neometen provlači oko "
-#~ "njih."
-
-#~ msgid ""
-#~ "The purpose of the masks that these creatures wear is unknown, as is the "
-#~ "countenance that they obscure. These terrible forms are rarely seen by "
-#~ "the living, and those who live to speak of them had no leisure to study "
-#~ "their foe.\n"
-#~ "\n"
-#~ "Special Notes: while a unit with the same allegiance as the Nightgaunt "
-#~ "distracts an enemy, the Nightgaunt may strike at the opponent's back, "
-#~ "inflicting double damage. Nightgaunts have very unusual resistances to "
-#~ "damage, and move quite slowly over open water. While they can move "
-#~ "through solid walls, unlike normal Nightgaunts, Ethereal Nightgaunts "
-#~ "cannot hide at night."
-#~ msgstr ""
-#~ "Svrha masaka koje ova stvorenja nose nije poznata, kao ni naličja njima "
-#~ "zaklonjena. Ovi užasni oblici retko se viđaju među živima, i oni koji "
-#~ "prežive da o tome govore, zasigurno sebi nisu dozvolili luksuz "
-#~ "radoznalosti.\n"
-#~ "\n"
-#~ "Posebne napomene: Dok jedinica iste pripadnosti kao i noćorđav odvlači "
-#~ "pažnju neprijatelju, ovaj može udariti protivnika s leđa, nanoseći "
-#~ "dvostruku štetu. Noćorđavi su neobično otporni na oštećenja, i vrlo se "
-#~ "sporo kreću preko otvorene vode. Dok se mogu kretati kroz čvrste zidove, "
-#~ "za razliku od običnih noćorđavih, jezomorni se ne mogu skrivati po noći."
-
-#~ msgid ""
-#~ "When light came into the world and gave form to the unknown, fear was "
-#~ "forced to retreat into darkness. Since that day, the shadows of the world "
-#~ "have held terror for humanity, though it knows not why.\n"
-#~ "\n"
-#~ "That is a question which is easily answered by a necromancer.\n"
-#~ "\n"
-#~ "Special Notes: while a unit with the same allegiance as the shadow "
-#~ "distracts an enemy, the Shadow may strike at the opponent's back, "
-#~ "inflicting double damage. Shadows have very unusual resistances to "
-#~ "damage, and move quite slowly over open water. While they can move "
-#~ "through solid walls, unlike normal Shadows, Ethereal Shadows cannot hide "
-#~ "at night."
-#~ msgstr ""
-#~ "Kada svetlost nastupi u svet i daše obličje nepoznatom, strah beše "
-#~ "prisiljen povlačenju u tamu. Od tog dana, senke sveta ulivale su stravu "
-#~ "čovečanstvu, iako ne znaju zašto.\n"
-#~ "\n"
-#~ "Ovo je nedoumica koju s lakoćom razrešava nekromanser.\n"
-#~ "\n"
-#~ "Posebne napomene: Dok jedinica iste pripadnosti kao i senka odvlači "
-#~ "pažnju neprijatelju, ova može udariti protivnika s leđa, nanoseći "
-#~ "dvostruku štetu. Senke su neobično otporne na oštećenja, i vrlo se sporo "
-#~ "kreću preko otvorene vode. Dok se mogu kretati kroz čvrste zidove, za "
-#~ "razliku od običnih senki, jezomorne se ne mogu skrivati po noći."
-
-#~ msgid ""
-#~ "Desert Fighters make up the bulk of the Elven military in Quenoth. They "
-#~ "are trained in both sword and bow, though like most of their kin, they "
-#~ "prefer swordplay to archery. These Elves are deft of foot, and fight best "
-#~ "in the open sands."
-#~ msgstr ""
-#~ "Pustinjski borci čine glavninu vilenjačkih snaga u Kvenotu. Uvežbavani su "
-#~ "s mačem i lukom, ali kao i većina svog roda, radiji su mačevalaštvu nego "
-#~ "streljaštvu. Ovi su vilenjaci laki na nogama i ponajbolje se bore na "
-#~ "otvorenom pesku."
-
-#~ msgid "cold"
-#~ msgstr "mraz"
-
-#~ msgid "blade"
-#~ msgstr "sečivo"
-
-#~ msgid "pierce"
-#~ msgstr "proboj"
-
-#~ msgid "impact"
-#~ msgstr "udar"
-
-#~ msgid "web"
-#~ msgstr "mreža"

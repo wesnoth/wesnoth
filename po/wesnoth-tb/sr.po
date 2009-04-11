@@ -1,29 +1,30 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 #
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:47+0200\n"
-"PO-Revision-Date: 2008-03-22 12:00+0100\n"
+"PO-Revision-Date: 2009-04-10 21:46+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
-#, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "Прича о два брата"
 
+# |, no-check-spell
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
@@ -65,9 +66,8 @@ msgid ""
 "planned. Can you help?\n"
 "\n"
 msgstr ""
-"Зли маг прети локалном селу и његовим житељима. Када њихов вођ Бјарн посла "
-"по помоћ свог брата Арнеа, заједно победише, али сам Бјарн беше отет. Можеш "
-"ли га избавити?\n"
+"Зли маг прети засеоку Магреу и његовим житељима. Сеоски маг Бјарн посла по "
+"брата у помоћ, али не прође све како је наумио. Можеш ли ти помоћи?\n"
 "\n"
 "(Почетнички ниво, 4 сценарија; тежа верзија може бити изазов искуснијим "
 "играчима.)"
@@ -111,6 +111,10 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
+"Скрајнуто поседство Магре у западним забитима краљевства Веснота некада "
+"бејаше мирно место, чији су житељи мало шта знали о белосветским догађањима. "
+"Ратови и гласине о ратовима не дотицаше их се, до дана када се мрачни маг "
+"досели у област и поче да иска жртве за своја зла призивања."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:57
@@ -121,6 +125,11 @@ msgid ""
 "and their children even the bright day. But the nearest lord was more than a "
 "day's ride distant, and messengers sent to seek his help did not return."
 msgstr ""
+"Скелети и немртви почеше да кољу стоку и пале житницу. „Бојте се и штујте "
+"мага Мордака!“ нарицали су потмулим гласовима док су чинили своја злодела. "
+"Људи нестајаше са осамљених имања. И мушко и женско поче страховати од ноћи, "
+"а деца и од сунчана дана. Али најближи господара бејаше више од дана јахања "
+"удаљен, а гласници одаслати да затраже његову помоћ не вратише се."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:61
@@ -133,6 +142,13 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
+"Био је ту човек по имену Бјарн, који је у младости исказао надареност за "
+"мага, те прошао велику Академију на Острву Алдујин и вратио се да тврди "
+"своју магију у земљи у којој је рођен. Људи се окренуше к њему за помоћ и "
+"вођство. По многим кућама пронађе он оружје из времена отаца и праотаца где "
+"виси полузаборављено, те позва сељане да га поскидају, очисте и науље. "
+"Коваче Магреа понука да израђују врхове копаља и сечива секира, да се опреме "
+"и остали."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:65
@@ -144,6 +160,11 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Bjarn "
 "sent out that call."
 msgstr ""
+"Бјарн је имао брата, по имену Арне, који је такође напустио Магре у потрази "
+"за срећом, и постао вођ мале дружине коњаника најамника, обично у стражи "
+"трговачких каравана. Сретна околност за све беше је да је Бјарн, још као "
+"голобради маг шегрт, начинио пар амајлија за себе и свога брата, којима би "
+"могли дозвати један другог у невољи. Бјарн отпосла позив."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:69
@@ -151,6 +172,8 @@ msgid ""
 "Heeding the call of his amulet, Arne gathered such men as he could and "
 "hurried to Maghre to help Bjarn."
 msgstr ""
+"Одазвавши се зову своје амајлије, Арне окупи колико је људи могао и похита у "
+"Магре да помогне Бјарну."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:80
@@ -198,46 +221,55 @@ msgstr "Арне"
 msgid "Bjarn"
 msgstr "Бјарн"
 
+# |, no-check-spell
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:127
 msgid "Alwyn"
 msgstr "Алвин"
 
+# |, no-check-spell
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:138
 msgid "Brent"
 msgstr "Брент"
 
+# |, no-check-spell
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:149
 msgid "Cadell"
 msgstr "Кадел"
 
+# |, no-check-spell
 #. [unit]: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
 msgid "Dannen"
 msgstr "Данен"
 
+# |, no-check-spell
 #. [unit]: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:171
 msgid "Efran"
 msgstr "Ефран"
 
+# |, no-check-spell
 #. [unit]: type=Footpad
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:182
 msgid "Fargus"
 msgstr "Фаргус"
 
+# |, no-check-spell
 #. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:196
 msgid "Erik"
 msgstr "Ерик"
 
+# |, no-check-spell
 #. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:208
 msgid "Heine"
 msgstr "Хајне"
 
+# |, no-check-spell
 #. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:220
 msgid "Magnus"
@@ -251,7 +283,7 @@ msgstr "Магнус"
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:115
 msgid "Humans"
-msgstr ""
+msgstr "Људи"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:245
@@ -267,13 +299,12 @@ msgstr "Мордак"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:134
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:103
 msgid "Enemies"
-msgstr ""
+msgstr "Непријатељи"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:269
-#, fuzzy
 msgid "Greetings, my brother! How may my men and I be of aid?"
-msgstr "Здрав био, Бјарне. Ну, чему толика граја?"
+msgstr "Поздрав, брате! Како ти моји људи и ја можемо помоћи?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:273
@@ -283,6 +314,10 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; but we need your men, and you to lead them."
 msgstr ""
+"Мрачни маг надвио се над нас; његова створења га зову Мордак. Руше и пале "
+"подвојена имања, плашимо се да би ускоро могли ударити на само село! Сељани "
+"Магреа прихватише се оружја, али нису увежбани борци; требају нам твоји "
+"људи, и ти да их поведеш."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:277
@@ -290,6 +325,8 @@ msgid ""
 "I can feel Mordak's foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days' ride."
 msgstr ""
+"Могу да осетим Мордаков погани додир у скривеним струјама земље и ваздуха. "
+"Негде је на север одавде, рекао бих не више од два дана јахања."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:281
@@ -297,6 +334,8 @@ msgid ""
 "I will lead my men, and such villagers as can keep up with us, north to slay "
 "this Mordak! What will you do?"
 msgstr ""
+"Повешћу своје људе, и сељане који могу одржати корак с нама, на север да "
+"посечемо тог Мордака! Шта ћеш ти?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:285
@@ -306,15 +345,19 @@ msgid ""
 "his creatures, I will try to defeat Mordak himself with magic at an "
 "unguarded moment. Together we may accomplish what either alone may not."
 msgstr ""
+"Ти ћеш бити десна рука, а ја лева. Поћи ћу притајено, са шачицом наших "
+"најбољих извиђача и шумљака. Док му се ти испречиш и побијеш његова "
+"створења, ја ћу покушати да поразим Мордака лично, магијом, у приличном "
+"часу. Заједно ћемо постићи што један не би могао сам."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:296
-#, fuzzy
 msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
 msgstr ""
-"Бјарн већ треба да је на положају. Питам се, није ли му се нешто догодило?"
+"Бјарн би до сада требало да је на положају. Навалите, замајте посвећеника да "
+"Бјарн може да разапне замку!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:304
@@ -322,7 +365,10 @@ msgid ""
 "Bjarn has not made his attack! I begin to fear for him... and it means we "
 "must deal with this Mordak ourselves!"
 msgstr ""
+"Бјарн није ударио! Почињем да се плашим за њега... а и то значи да се с "
+"Мордаком сами обрачунати морамо!"
 
+# well-spelled: Аооо
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:315
 msgid "Argh!"
@@ -331,8 +377,9 @@ msgstr "Аооо!"
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:319
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "Ваљан посао, људи! Али шта би с мојим братом?"
 
+# well-spelled: ках, кх
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:323
 msgid "Worried about him, are you? E-he-he..hergh...gaargh..."
@@ -343,7 +390,7 @@ msgstr "Бринеш за њега, је ли? Х-а, кх, х-а... ках, к�
 msgid ""
 "There's nothing more to be had from this one; we will have to search for "
 "Bjarn ourselves!"
-msgstr ""
+msgstr "Ништа се више од овога извући не може; мораћемо сами потражити Бјарна!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:339
@@ -351,16 +398,19 @@ msgid ""
 "Sir, our scouts report that Bjarn was seen captured and carried away further "
 "north!"
 msgstr ""
+"Господару, извидница јавља да спазише Бјарна заробљена, где га носе даље на "
+"север!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:343
 msgid "That they should dare this! We will give chase at once."
-msgstr ""
+msgstr "Тако ли су се усудили! Одмах крећемо у потеру."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:357
 msgid "Your brother's plan to ambush me has failed. He is our prisoner now."
 msgstr ""
+"План твога брата да ме ухвати у ступицу пропаде. Сада је наш заточеник."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:361
@@ -368,17 +418,17 @@ msgid ""
 "My brother, kidnapped? I have failed you, Bjarn! And even now Mordak's "
 "forces descend upon the village!"
 msgstr ""
+"Мој брат, отет? Изневерих те, Бјарне! Ево и Мордакових снага, спуштају се к "
+"селу!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:376
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
 "Начух да ова створења готово не осећају челик наших оружја, да проверимо!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:391
-#, fuzzy
 msgid "That was not so hard!"
 msgstr "То не бејаше претешко!"
 
@@ -401,16 +451,18 @@ msgid ""
 "lost souls haunting the wood, hunting and killing anyone brave enough to "
 "enter it."
 msgstr ""
+"Потера зађе већ у неколики дан, кад гониоци стигоше до руба огромне шуме "
+"знане као Сивошумље. Древне приче упозоравале су на изгубљене душе што њоме "
+"лутају, ловећи и убијајући све довољно храбре да у шуму ступе."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:35
-#, fuzzy
 msgid ""
 "Heedless of those rumors, Arne followed them. His only worry was that his "
 "horsemen would be at disadvantage if attacked in the forest."
 msgstr ""
-"Отимачи побегоше ка северу кроз шуму, Арне их у прати у стопу, иако ће пут "
-"његовим коњаницима бити отежан."
+"Не осврћући се на те гласине, Арне је пратио даље. Једина му брига беше за "
+"коњанике, да ће бити у неприлици нападне их ли се у шуми."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:67
@@ -425,7 +477,7 @@ msgstr "Нил-Галион"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:129
 msgid "Elves"
-msgstr ""
+msgstr "Вилењаци"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:219
@@ -437,6 +489,7 @@ msgstr "Зазвучи као неко комешање из шуме."
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
+"Хајдете, људи. Шетња кроз дивну озелењену шуму, шта може бити пријатније?"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:227
@@ -444,6 +497,7 @@ msgid ""
 "It is whispered that hungry ghosts rule this forest, and kill everyone who "
 "dares to enter."
 msgstr ""
+"Шушка се да гладни духови владају шумом, убијају свакога ко се усуди да уђе."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:231
@@ -461,6 +515,8 @@ msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
 msgstr ""
+"Ти ми људи рекоше да је заробљеник покушао убити господара њихова, и "
+"упозорише ме да ће их зликовци следити по трагу. Ступите ли даље, помрећете."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:243
@@ -468,6 +524,8 @@ msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing my "
 "brother!"
 msgstr ""
+"Толико о причама и духовима. Неће ме пуки вилењаци спречити да ослободим "
+"брата!"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:247
@@ -476,6 +534,8 @@ msgid ""
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
+"Драго ми је што не морамо пред духове, али ти вилењаци су у предности над "
+"нама. Наши ће се коњи тешко пробијати и окретати међу дрвећем."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:251
@@ -484,11 +544,14 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
+"Само се ви држите стаза; копљаници и лукаши биће нам брана у дубљој шуми. "
+"Суочисмо и надвладасмо веће муке него што ти дилетанти могу да задају."
 
+# well-spelled: Торас
 #. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:266
 msgid "Muff Toras"
-msgstr "Маф Торас"
+msgstr "маф Торас"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:314
@@ -501,6 +564,8 @@ msgid ""
 "Curses! If they had been an hour slower our master's reinforcements would "
 "already be here to meet us."
 msgstr ""
+"Проклетство! Да су само сат задоцнили, појачања нашег господара већ би нас "
+"чекала овде."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:323
@@ -519,6 +584,9 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master's dungeons by now."
 msgstr ""
+"Ха! Зароби ме, али се нећеш окористити. Отпослах твога цењеног брата магу на "
+"север с половицом мојих људи, још дан раније. До сада већ чами безбедно "
+"закључан у господаревим тамницама."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:358
@@ -526,42 +594,52 @@ msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
+"Сечиво моје ти је под вратом. Покажи нам пут к моме брату, или ћу земљицу "
+"натопити твојом рђавом крвљу."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:361
 msgid "Sithrak"
 msgstr "Ситрак"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:362
 msgid "Eleben"
 msgstr "Елебен"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:363
 msgid "Jarlom"
 msgstr "Јарлом"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:364
 msgid "Hamik"
 msgstr "Хамик"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:367
 msgid "Akranbral"
 msgstr "Акранбрал"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:368
 msgid "Drakanal"
 msgstr "Драканал"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:369
 msgid "Xaskanat"
 msgstr "Ксасканат"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:370
 msgid "Katklagad"
@@ -581,7 +659,7 @@ msgstr ""
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:379
 msgid "Bind him and take him with us. If he has played us false, he will die."
-msgstr ""
+msgstr "Свежите га и поведите с нама. Ако нас је изиграо, умреће."
 
 #. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:391
@@ -594,6 +672,8 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Поздрави. Ја сам Брена, слуга витешки. Спазих да гоните и ударате на погане "
+"немртваце. Има ли их још да се сатру?"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:407
@@ -601,6 +681,7 @@ msgid ""
 "Aye. We think there's a nest of them north-east of here. They've captured my "
 "brother."
 msgstr ""
+"Уистину. Мислимо да их је гнездо североисточно одавде. Заробише мога брата."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:411
@@ -608,6 +689,8 @@ msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr ""
+"Гајим велику мржњу према њиховој сорти. Пратићу вас и борити се крај вас, "
+"ако допустите."
 
 #. [message]: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:415
@@ -616,14 +699,13 @@ msgstr "Само би нас задржавао!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:419
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "Ја сам тај који одлучује."
+msgstr "На мени је да одлучим о томе."
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:421
 msgid "Oh, all right then. Come along with us."
-msgstr "У реду, пођите с нама."
+msgstr "У реду, пођи с нама."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:425
@@ -663,25 +745,23 @@ msgstr "Измаче нам..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:490
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
-"Будаласти човече, мене уби, али достићи немртве не можеш. Испуних своју "
-"нагодбу и бићу убрзо посувраћен, да постанем господар њихових армија."
+"Будаласти човече, мене уби, али достићи немртве на време не можеш. Испуних "
+"своју нагодбу и бићу убрзо посувраћен, да постанем господар њихових армија."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:498
 msgid "Follow their back trail!"
-msgstr ""
+msgstr "Пратите њихов погани траг!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:503
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "Напред, људи, похватајмо те отимаче!"
+msgstr "Ухватиш ли отимаче"
 
 #. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
@@ -717,6 +797,7 @@ msgstr "Ротарик"
 msgid "Guard"
 msgstr "Стража"
 
+# |, no-check-spell
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:140
 msgid "Knago-Brek"
@@ -738,11 +819,10 @@ msgstr "Спасиш ли Бјарна"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:287
-#, fuzzy
 msgid ""
 "Arne's men arrived at the castle and were immediately challenged by some "
 "guards."
-msgstr "Арне стиже до замка, и тога часа га позваше стражари."
+msgstr "Како Арнеови људи стигоше до замка, тога часа их прозваше стражари."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:291
@@ -784,6 +864,7 @@ msgstr "Прођи, пријатељу."
 msgid "Wrong! Die!"
 msgstr "Погрешно! Умрите!"
 
+# well-spelled: хоћи, крвац
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:364
 msgid ""
@@ -793,12 +874,11 @@ msgstr "Ха-ха! Ми не убиј људи време дуго. Нож хо�
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:368
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let's kill "
 "some orcs."
 msgstr ""
-"Знадох да се морамо борити за слободу мога брата! Напред људи, да сравнимо "
+"И мој мач и рука питају се понешто ко ће умрети. Напред људи, да сравнимо "
 "орке неке."
 
 #. [message]: speaker=Guard2_leader
@@ -883,13 +963,10 @@ msgstr "Ето кључа у његовој одежди."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:624
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they're holding Bjarn in! I will take "
 "it."
-msgstr ""
-"То мора бити кључе ћелије где држе Бјарна! Дајте га мени. Не могу дочекати "
-"да видим брата, хајмо га избавити."
+msgstr "То лако може бити кључ ћелије где држе Бјарна! Дајте га мени."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:630
@@ -913,19 +990,17 @@ msgstr "Нађох Бјарна. Ето га у оној ћелији."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:732
-#, fuzzy
 msgid "Good to see you, Arne. Now get out of this dungeon, please?"
-msgstr "Драго ми је видети те, Арне. Помогни ми да се искобељам ове тамнице."
+msgstr "Драго ми је видети те, Арне. Хоћемо ли сада из ове тамнице?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:738
 msgid "You must be one of Arne's men. Please help me get out of this dungeon."
 msgstr ""
-"Ти мора да си од Арнеових људи. Молим те, помогни ми изађи из ове тамнице."
+"Ти мора да си од Арнеових људи. Молим те, помогни ми изаћи из ове тамнице."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:744
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
@@ -937,7 +1012,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:755
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Убијеш ли мрачног чаробњака и узмеш му кључ ћелије"
 
@@ -971,6 +1045,7 @@ msgstr "Сада кад умирем, све је изгубљено..."
 msgid "You are too late! Your brother is already dead! Muhahahaha..."
 msgstr "Стиже прекасно! Твој брат мртав је већ! Ха-ха-ха-ха..."
 
+# well-spelled: Аооо
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:844
 msgid "Argh!!!"
@@ -992,6 +1067,7 @@ msgstr "Извидиш ли шта се у селу збива"
 msgid "Death of Bjarn"
 msgstr "Настрада ли Бјарн"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:48
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:81
@@ -1014,20 +1090,18 @@ msgstr ""
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:144
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
-msgstr "Не. То они беже од нечега. Морамо изнаћи шта их је то снашло!"
+msgstr "Не, то они беже од нечега. Морамо изнаћи шта их је то снашло!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:148
 msgid "Men! Ready your weapons!"
-msgstr ""
+msgstr "Људи! На оружје!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:152
-#, fuzzy
 msgid ""
 "We should go there and talk to Counselor Hoban. Maybe he knows what is going "
 "on here."
@@ -1035,14 +1109,13 @@ msgstr "Пођимо тамо и потражимо већника Хобана;
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:163
-#, fuzzy
 msgid "I am glad to see you returned."
-msgstr "Драго ми је видети вас поново с нама."
+msgstr "Драго ми је видети вас назад."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:167
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
-msgstr ""
+msgstr "Не драже него мени што сам овде. Али шта се зби с Магреом?"
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:171
@@ -1050,10 +1123,11 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Убрзо пошто пођосте, опседнуше нас оркови. Без пола људи из Магреа, не "
+"могасмо их задржати."
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:175
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
@@ -1062,35 +1136,31 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:179
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"Пазите, учини тај изрод да многи од нас погине. Мало чељади што остаде може "
+"Пазите, његови су борци окрутни и побише многе. Мало чељади што остаде може "
 "оружјем руковати, али ћемо кога год нађемо послати вама на помоћ."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:184
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "Посечеш ли орковског ратовођа и тако ослободиш село"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:206
-#, fuzzy
 msgid "Finally the warlord is killed. Now you can go back to Maghre."
-msgstr "Напокон је орк усмрћен. Сада можеш натраг у село своје."
+msgstr "Напокон је ратовођ усмрћен. Сада можеш натраг у Магре."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:210
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"Тако је много тога разрушено. Треба ће нам напорног рада да надокнадимо "
-"штету коју су оркови и немртви направили. Да се ово више никада не догоди."
+"Тако је много тога разрушено. Биће тешко поправити све што су оркови и "
+"немртви разорили. А могли би се и навратити."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:214
@@ -1098,6 +1168,8 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
+"Морам се вратити зарађивању за живот. Али су нам ту амајлије, млађи брате. "
+"Опхрва ли те опет нешто, једнако ћу доћи."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:228
@@ -1116,9 +1188,8 @@ msgstr "Бејах преслаб да заштитим ове људе. Што 
 
 #. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"
-msgstr "Прича о два брата"
+msgstr "Прича о два брата — епилог"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:18
@@ -1127,6 +1198,9 @@ msgid ""
 "people of Maghre had to work very hard, but felt better knowing Arne's men "
 "would be their firm allies in troubled times."
 msgstr ""
+"Требаше године да се обнови село и уреде околна имања. Људи Магреа радише "
+"напорно, али уз пријатан осећај да ће им Арне и његови људи бити чврсти "
+"савезници у часовима невоља."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:22
@@ -1136,191 +1210,7 @@ msgid ""
 "even mention Arne's name together with that of the famous elvish lord "
 "Kalenz, but this is a different story..."
 msgstr ""
-
-#~ msgid ""
-#~ "Hurry, we have to track them down. Maybe we can still get them. They have "
-#~ "to be in the north!"
-#~ msgstr ""
-#~ "Хитајте, морамо их пратити. Можда их још увек досећи можемо — морају се "
-#~ "крити на северу!"
-
-#~ msgid "Hurry to the north and stop the kidnappers"
-#~ msgstr "Стигнеш ли на север на време да зауставиш отимаче"
-
-#~ msgid "Come on men. A bracing walk in the woods never hurt anyone, did it?"
-#~ msgstr ""
-#~ "Хајдете, људи. Окрепљујућа шетња шумом никоме није нашкодила, зар не?"
-
-#, fuzzy
-#~ msgid ""
-#~ "Those men had some great arguments persuading me to stop you and let them "
-#~ "pass my forest. Any further, and you will die."
-#~ msgstr ""
-#~ "Ти људи ме ваљаним разлозима убедише да те не пустим да уђеш у нашу шуму. "
-#~ "Крочи даље, и умрећеш."
-
-#, fuzzy
-#~ msgid "Curses! I hope the reinforcements get here to aid our escape."
-#~ msgstr "Сви клети! Надам се појачањима, па да могу побећи ускоро."
-
-#~ msgid ""
-#~ "Hah! You got me alright, but what does that help? No harm telling you "
-#~ "now, I suppose. Your precious mage is safely locked away in our dungeons. "
-#~ "I was set up to be a decoy."
-#~ msgstr ""
-#~ "Ха! Твој сам, засигурно, али како ти поможе то? Могу ти и рећи, није "
-#~ "битно више — твој вољени маг је већ заточен у нашим тамницама. Ја бејах "
-#~ "само мамац."
-
-#~ msgid ""
-#~ "Nooo! Tricked again. Tell us where he is and we shall spare your "
-#~ "miserable life."
-#~ msgstr "Не! Поново насамарен. Казуј нам где је, и поштедећу ти живот бедни."
-
-#, fuzzy
-#~ msgid "Thank you. Leave him, men, we ride east."
-#~ msgstr "Тако дакле. Остав'те га, људи, и похитајмо на исток."
-
-#~ msgid ""
-#~ "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
-#~ "better than smashing those foul skeletons and their ilk. Though I came "
-#~ "too late to help in this fight, I would like to aid you in your "
-#~ "forthcoming endeavors."
-#~ msgstr ""
-#~ "Поздрави, име ми је Брена. Видех како се борите против гадних немртваца. "
-#~ "Ништа ми драже није, него ли да ломим те грозне скелете и њихову сорту. "
-#~ "Иако стигох прекасно да вас потпомогнем у овој бици, радо бих вам био од "
-#~ "помоћи у прегнућима будућим."
-
-#~ msgid "I think your village is protected well, though."
-#~ msgstr "Ипак мислим да је твоје село ваљано заштићено."
-
-#~ msgid "So am I. But what is happening to our village?"
-#~ msgstr "И мени. Али шта се дешава у нашем селу?"
-
-#~ msgid ""
-#~ "In the time you have been away a looting band of orcs took over this "
-#~ "region. There was noone here to stop them."
-#~ msgstr ""
-#~ "Док ви не бисте са нама, банда орка пљачкаша преузе ову област. Не би "
-#~ "никога да их заустави."
-
-#~ msgid ""
-#~ "I have to leave you now. My men and I are needed by others, too. But "
-#~ "should you ever face another grim foe, send me a messenger. I'll come as "
-#~ "fast as I can, little brother."
-#~ msgstr ""
-#~ "Сада те морам напустити. Моји људи и ја смо потребни и другима. Али "
-#~ "суочиш ли се са још неком рђом, пошљи ми гласника, и доћи ћу што брже "
-#~ "стигнем, мали брате."
-
-#~ msgid ""
-#~ "In a remote part of Wesnoth, people lived their lives working hard and "
-#~ "caring for each other, but not knowing much about the world outside. But "
-#~ "there came a day when their peaceful world was shattered, as an evil mage "
-#~ "came to the region, spreading havoc and despair."
-#~ msgstr ""
-#~ "У удаљеном крају Веснота, људи живеше своје животе напорно радећи и "
-#~ "старајући се једни о другима, али не познавши много света вани. Али дође "
-#~ "дан кад њихово спокојно битисање би развејано, када у њихов крај зађе зли "
-#~ "маг, ширећи пустош и очајање."
-
-#~ msgid ""
-#~ "Bjarn, the local mage of the village, was the man who saw best how to "
-#~ "deal with this threat. He asked the help of his brother Arne, leader of a "
-#~ "mercenary band of horsemen, and outfitted several of the villagers with "
-#~ "gear from the armory."
-#~ msgstr ""
-#~ "Бјарн, локални сеоски маг, беше тај који увиде како је понајбоље носити "
-#~ "се са насталом претњом. Он позваше по помоћ свога брата Арнеа, вођа "
-#~ "плаћеничке скупине коњаника, и опреми неколико сељана опремом из "
-#~ "оружарнице."
-
-#~ msgid ""
-#~ "Mordak, an evil mage, threatens our lives and livelihoods. He is "
-#~ "terrorizing our countryside. I've already called the village to arms and "
-#~ "now it's up to you to lead them. You'll find him about two days' ride "
-#~ "north of here."
-#~ msgstr ""
-#~ "Мордак, зли маг, прети нашим животима и имањима, застрашује нашу "
-#~ "покрајину. Већ сам дигао село на оружје и сада је на теби да их поведеш. "
-#~ "Наћи ћете га два дана јахања на север."
-
-#~ msgid ""
-#~ "Very well. We will go there and slay this source of evil. Charge, men!"
-#~ msgstr "Врло добро. Отићи ћемо тамо и посећи тај извор злобе. Напред, људи!"
-
-#~ msgid ""
-#~ "I will attempt to sneak through the forest. If I can slay the evil one "
-#~ "while he is off his guard, the battle will be over in one stroke!"
-#~ msgstr ""
-#~ "Покушаћу да се прошуњам кроз шуму. Ако могу убити Злог док не пази будно, "
-#~ "битка ће бити готова у једном замаху!"
-
-#~ msgid ""
-#~ "This is worrying. What's happened to Bjarn? I suppose we must slay the "
-#~ "dark sorcerer ourselves."
-#~ msgstr ""
-#~ "Ово је већ за бригу, шта се зби с Бјарном? Изгледа, мораћемо сами да "
-#~ "посечемо тог чаробњака."
-
-#~ msgid "Good work, men. Now, where is Bjarn?"
-#~ msgstr "Добро чинисте, људи. Сада, куд се деде Бјарн?"
-
-#~ msgid "Nothing more to be had from him."
-#~ msgstr "Неће ни писнути више."
-
-#~ msgid ""
-#~ "Sir, he's been kidnapped! I just saw some men running off with him. They "
-#~ "looked like friends of this one."
-#~ msgstr ""
-#~ "Господару, отет је! Баш видох неке сподобе како отрчаше са њим. Изледаше "
-#~ "као садрузи овога овде."
-
-#~ msgid "Damn! I suppose we have to go after him, then."
-#~ msgstr "Проклетсво! Брзо, морамо за њим."
-
-#~ msgid ""
-#~ "Ha, so you thought to send a mage around and stab me in the back? Well, I "
-#~ "have news for you. We've kidnapped him!"
-#~ msgstr ""
-#~ "Ах, значи намеравао си послати мага да ми забије нож у леђа? Имам ти "
-#~ "понешто обзнанити — отесмо га!"
-
-#~ msgid ""
-#~ "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
-#~ msgstr "Шта? Бјарн отет? А зли маг и даље пустоши земљом? Не!"
-
-#~ msgid "A glorious combat at last, against mounted enemies!"
-#~ msgstr "Славна битка, коначно, против непријатеља на коњима!"
-
-#~ msgid "Alrek!"
-#~ msgstr "Алрек!"
-
-#~ msgid "Argol!"
-#~ msgstr "Аргол!"
-
-#~ msgid "Oh dear, that's wrong. Any last words?"
-#~ msgstr "Ох, судбо, погрешно је то. Последње жеље?"
-
-#~ msgid "Elbrethil."
-#~ msgstr "Елбретил."
-
-#~ msgid "Toras."
-#~ msgstr "Торас."
-
-#~ msgid "Wrong! So you thought to trick us into deserting our posts? Die!"
-#~ msgstr "Лоше! Значи, ти мишљаше преварити нас да одемо са положаја — умри!"
-
-#~ msgid "Villager"
-#~ msgstr "житељ"
-
-#~ msgid "The Black Mage"
-#~ msgstr "Црни маг"
-
-#~ msgid ""
-#~ "After a short journey the small band of troops is close to the hideout of "
-#~ "the evil mage."
-#~ msgstr ""
-#~ "По свршетку кратког путовања, мала скупина војника-невољника ближи се "
-#~ "скровишту злог мага."
+"Арне је са људима напустио село уверен да ће га Бјарн добро пазити. На "
+"својим путовањима суочише се с многим изазовима и бојевима. Приче чак помињу "
+"Арнеово име скупа са чувеним вилењачким господаром Калензом, али је то већ "
+"нека друга прича..."

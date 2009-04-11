@@ -1,20 +1,20 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # Branko Kokanovic, 2006.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:46+0200\n"
-"PO-Revision-Date: 2008-03-21 12:00+0100\n"
+"PO-Revision-Date: 2009-04-09 22:49+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
@@ -172,18 +172,16 @@ msgstr "tropska šuma"
 #: data/core/terrain.cfg:584 data/core/terrain.cfg:594
 #: data/core/terrain.cfg:614 data/core/terrain.cfg:624
 #: data/core/terrain.cfg:634
-#, fuzzy
 msgid "Forested Hills"
-msgstr "šuma"
+msgstr "šumovita brda"
 
 #. [terrain]: id=forested_snow_hills
 #. [terrain]: id=deciduous_forest_winter_snow_hills
 #. [terrain]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:564 data/core/terrain.cfg:604
 #: data/core/terrain.cfg:644
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "snežna brda"
+msgstr "šumovita snežna brda"
 
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
@@ -191,7 +189,7 @@ msgstr "snežna brda"
 #: data/core/terrain.cfg:658 data/core/terrain.cfg:667
 #: data/core/terrain.cfg:676
 msgid "Grassland"
-msgstr "ravnica"
+msgstr "livada"
 
 #. [terrain]: id=savanna
 #: data/core/terrain.cfg:685
@@ -261,7 +259,7 @@ msgstr "močvara"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:858
 msgid "Lit"
-msgstr ""
+msgstr "svetlo"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:868
@@ -270,9 +268,8 @@ msgstr "pećina"
 
 #. [terrain]: id=cave_path
 #: data/core/terrain.cfg:886
-#, fuzzy
 msgid "Cave path"
-msgstr "pećina osvetljena"
+msgstr "pećinska staza"
 
 #. [terrain]: id=fungus
 #: data/core/terrain.cfg:895
@@ -344,9 +341,8 @@ msgstr "rečni gaz"
 
 #. [terrain]: id=reef
 #: data/core/terrain.cfg:1264
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "priobalni"
+msgstr "obalski greben"
 
 #. [terrain]: id=cloud
 #: data/core/terrain.cfg:1278
@@ -365,16 +361,14 @@ msgstr "pećinski zid"
 
 #. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1305
-#, fuzzy
 msgid "Wall"
-msgstr "pećinski zid"
+msgstr "zid"
 
 #. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
 #: data/core/terrain.cfg:1315 data/core/terrain.cfg:1353
-#, fuzzy
 msgid "Impassable"
-msgstr "neprolazne planine"
+msgstr "neprolaz"
 
 #. [terrain]: id=void
 #: data/core/terrain.cfg:1326
@@ -384,17 +378,17 @@ msgstr "praznina"
 #. [terrain]: id=flat
 #: data/core/terrain.cfg:1339
 msgid "Flat"
-msgstr ""
+msgstr "ravnica"
 
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1346
 msgid "Frozen"
-msgstr ""
+msgstr "klizavica"
 
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1360
 msgid "Unwalkable"
-msgstr ""
+msgstr "rascep"
 
 #. [label]
 #. [column]
@@ -402,34 +396,31 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Nastavi potez"
+msgstr "Poveži se na server"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Sada ćete se povezati na server za preuzimanje dodataka."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Ažuriraj prelaze"
+msgstr "Ažuriraj dodatke"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Ukloni"
+msgstr "Ukloni dodatke"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
@@ -437,7 +428,7 @@ msgstr "Ukloni"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Poveži se"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -465,22 +456,19 @@ msgstr "Stvori nasumičnu mapu"
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Generator mapa"
+msgstr "Sledeći generator"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Postavke prečica"
+msgstr "Postavke"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Stvori novu mapu"
+msgstr "Stvori"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -503,7 +491,6 @@ msgstr "Visina:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
 msgstr "Napravi novu mapu"
 
@@ -515,95 +502,86 @@ msgstr "Promeni veličinu mape"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Širina:"
+msgstr "Nova širina:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Širina:"
+msgstr "Stara širina:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Visina:"
+msgstr "Nova visina:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Visina:"
+msgstr "Stara visina:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Raširi/sažmi pravac"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Kopiraj rubni teren"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "Promeni veličinu mape"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Postavke prečica"
+msgstr "Postavke uređivača"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Predefinisan osvetljaj za doba dana"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Sledeća jedinica"
+msgstr "Sledeće"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Postavka posebnog osvetljaja"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Samoažuriraj prikaz mape"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Ponovi"
+msgstr "crvena:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Učestanost:"
+msgstr "zelena:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "plava:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Dozvoli više od jedne otvorene mape istovremeno (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -628,46 +606,43 @@ msgstr "Primeni"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Izaberite željeni jezik:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
 #: data/gui/default/window/language_selection.cfg:120
-#, fuzzy
 msgid "Change language"
 msgstr "Promeni jezik"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Dijalog omotača višeigračkih naredbi"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Glasništvo"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Poruka:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Očisti poruke"
+msgstr "Pošalji privatnu poruku"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Spisak prijatelja"
+msgstr "Spisak prijatelja/ignorisanih"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -693,175 +668,165 @@ msgstr "Ukloni"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Moderisanje"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Razlog:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Tema"
+msgstr "Vreme:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Tabela stanja"
+msgstr "Status"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Izbaci"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Zabrani"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Sada ćete se povezati sa višeigračkim serverom."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Spisak prijatelja"
+msgstr "Prikaži spisak"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Sačuvaj igru"
+msgstr "Napravi igru"
 
 #. [label]
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Naziv igre:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
-msgstr "Igrači:"
+msgstr "Igrača: "
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Veličina mape: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Epoha:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Osnovno uvećanje"
+msgstr "Podrazumevano"
 
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Postavi lozinku"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Mapa za igranje:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
-msgstr ""
+msgstr "Sa postavkama mape"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:332
-#, fuzzy
 msgid "Number of turns"
-msgstr "Broj brda:"
+msgstr "Broj poteza"
 
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:355
 msgid "Unlimited"
-msgstr ""
+msgstr "neograničen"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:373
-#, fuzzy
 msgid "Village gold"
-msgstr "selo"
+msgstr "Zlata po selu"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:413
 msgid "Experience modifier"
-msgstr ""
+msgstr "Modifikator iskustva"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
-msgstr ""
+msgstr "Magla rata"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
 msgid "Random start time"
-msgstr ""
+msgstr "Nasumično vreme početka"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:536
-#, fuzzy
 msgid "Create game"
-msgstr "Napravi novu mapu"
+msgstr "Napravi igru"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Dijalog prijave na višeigrački server"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "Prijavljivanje"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Prijava:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "Lozinka:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:164
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Sačuvaj lozinku među postavkama (čist tekst)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Podsetnik lozinke"
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Višeigračke opcije"
+msgstr "Višeigranje"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -873,100 +838,98 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Na zvanični višeigrački server možete se prijaviti pod svojim forumskim "
+"imenom i lozinkom. Registracija nije neophodna za pristup serveru: lozinku "
+"treba da priložite samo ako želite da registrujete korisničko ime.\n"
+"\n"
+"Forum „Boja za Vesnot“ možete naći na http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
-msgstr ""
+msgstr "Na zvanični server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Prijavite se na Vesnotov zvanični višeigrački server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
-msgstr ""
+msgstr "Na drugi server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Domaćin mrežnoj igri"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Budite domaćin igre s namenskim serverom (wesnothd)"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
-#, fuzzy
 msgid "Local Game"
-msgstr "Učitaj igru"
+msgstr "Lokalna igra"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
+msgstr "Pokrenite višeigranje sa VI ili ljudima za istim računarom"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
-#, fuzzy
 msgid "Name"
-msgstr "Ime: "
+msgstr "Ime"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:202
-#, fuzzy
 msgid "Select"
-msgstr "Izaberi sve"
+msgstr "Izaberi"
 
-# кућица
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Dijalog poteza"
+msgstr "Podučavanje"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Pohod"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "drum"
+msgstr "Učitaj"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Dodaci"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Napusti uređivač"
+msgstr "Uređivač"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
 #: src/game_preferences_display.cpp:51 src/hotkeys.cpp:77
 msgid "Preferences"
-msgstr "Podešavanja"
+msgstr "Postavke"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Zasluge"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1025,7 +988,7 @@ msgstr "Preko celog ekrana"
 
 #: src/game_preferences_display.cpp:153
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Klizno praćenje dejstava jedinica"
 
 #: src/game_preferences_display.cpp:154
 msgid "Accelerated Speed"
@@ -1045,7 +1008,7 @@ msgstr "Sačuvaj snimak pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:337
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Briši samočuvanja pri ji./vi. pobedi ili vi. porazu"
+msgstr "Briši samoupise pri ji./vi. pobedi ili vi. porazu"
 
 #: src/game_preferences_display.cpp:159
 msgid "Do Not Show Lobby Joins"
@@ -1069,7 +1032,7 @@ msgstr "Spisak hola u ikonu"
 
 #: src/game_preferences_display.cpp:165
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Putanja do wesnothd"
 
 #: src/game_preferences_display.cpp:166
 msgid "Friends List"
@@ -1102,7 +1065,7 @@ msgstr "Boje timova"
 # кућица
 #: src/game_preferences_display.cpp:175
 msgid "Show Color Cursors"
-msgstr "Kursori u boji"
+msgstr "Pokazivači u boji"
 
 # кућица
 #: src/game_preferences_display.cpp:176
@@ -1254,6 +1217,7 @@ msgstr "Izaberi da li se igra preko celog ekrana ili u prozoru"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Treba li mapa da otkliza do jedinice pri animiranju dejstva ili pokreta."
 
 #: src/game_preferences_display.cpp:296
 msgid "Make units move and fight faster"
@@ -1273,7 +1237,7 @@ msgstr "Odredi učestanost stajaćih animacija jedinica"
 
 #: src/game_preferences_display.cpp:327
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Postavi najveći broj samočuvanja za zadržati"
+msgstr "Postavi najveći broj samoupisa za zadržavanje"
 
 #: src/game_preferences_display.cpp:331
 msgid "Do not animate AI units moving"
@@ -1293,7 +1257,7 @@ msgstr "Prikaži ikone ispred imena igrača u holu."
 
 #: src/game_preferences_display.cpp:348
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Ako je prazno, briše sačuvanu lozinku (pri napuštanju)."
 
 #: src/game_preferences_display.cpp:351
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1310,6 +1274,7 @@ msgstr "Prikaži poruke o svim igračima koji pristignu u višeigrački hol"
 #: src/game_preferences_display.cpp:357
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
+"Pronađite i postavite putanju do vi. servera, za udomljavanje LAN igara."
 
 #: src/game_preferences_display.cpp:358
 msgid "View and edit your friends and ignores list"
@@ -1363,15 +1328,15 @@ msgstr "Prikaži oko osnove svake jedinice krug u boji strane kojoj pripada"
 
 #: src/game_preferences_display.cpp:383
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Izaberi kretanje sunca s leva na desno ili obrnuto"
+msgstr "Kretanje sunca s leva na desno ili obrnuto"
 
 #: src/game_preferences_display.cpp:386
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Koristi obojene kursore miša (može usporavati)"
+msgstr "Obojeni pokazivači miša (može usporavati)"
 
 #: src/game_preferences_display.cpp:389
 msgid "Use graphical special effects (may be slower)"
-msgstr "Koristi specijalne grafičke efekte (može usporavati)"
+msgstr "Specijalni grafički efekti (može usporavati)"
 
 #: src/game_preferences_display.cpp:391
 msgid "View and configure keyboard shortcuts"
@@ -1383,7 +1348,7 @@ msgstr "Brzina: "
 
 #: src/game_preferences_display.cpp:685 src/game_preferences_display.cpp:687
 msgid "Maximum Auto-Saves: "
-msgstr "Najviše autočuvanja: "
+msgstr "Najviše samoupisa: "
 
 #: src/game_preferences_display.cpp:685
 msgid "infinite"
@@ -1423,7 +1388,7 @@ msgstr "Zvuk"
 
 #: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Multiplayer"
-msgstr "Višeigračko"
+msgstr "Višeigranje"
 
 #: src/game_preferences_display.cpp:1123
 msgid "Advanced section^Advanced"
@@ -1443,103 +1408,96 @@ msgstr "Nema poznatih tema. Pokušajte da promenite u okviru tekuće igre."
 
 #: src/game_preferences_display.cpp:1210
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Pronađite serversku izvršnu $filename, za udomljavanje mrežnih igara."
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "Učitaj igru"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
-#, fuzzy
 msgid "Load Game..."
-msgstr "Učitaj igru"
+msgstr "Učitaj igru..."
 
 #: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
-msgstr ""
+msgstr "verzija"
 
 #: src/gui/widgets/canvas.cpp:309
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Linija ne staje na platno."
 
 #: src/gui/widgets/canvas.cpp:444
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Pravougaonik ne staje na platno."
 
 #: src/gui/widgets/canvas.cpp:815
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Veličina fonta za tekst je 0."
 
 #: src/gui/widgets/canvas.cpp:880
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Tekst ne staje na platno."
 
 #: src/gui/widgets/helper.cpp:169
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Server nije zadat."
+msgstr "Obavezni vidžet „$id“ nije definisan."
 
 #: src/gui/widgets/settings.cpp:133
-#, fuzzy
 msgid "No default gui defined."
-msgstr "Server nije zadat."
+msgstr "Podrazumevano sučelje nije definisano."
 
 #: src/gui/widgets/settings.cpp:288
 msgid "Window not defined."
-msgstr ""
+msgstr "Prozor nije definisan."
 
 #: src/gui/widgets/settings.cpp:385
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Definicija vidžeta „$definition“ ne sadrži definiciju za „$id“."
 
 #: src/gui/widgets/settings.cpp:501 src/gui/widgets/window_builder.cpp:313
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Server nije zadat."
+msgstr "Rezolucija nije definisana."
 
 #: src/gui/widgets/settings.cpp:527
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Server nije zadat."
+msgstr "Odeljak stanja ili crtanja nije definisan."
 
 #: src/gui/widgets/settings.cpp:756 src/gui/widgets/settings.cpp:910
 #: src/gui/widgets/window_builder.cpp:409
 #: src/gui/widgets/window_builder.cpp:923
 #: src/gui/widgets/window_builder.cpp:1132
-#, fuzzy
 msgid "No grid defined."
-msgstr "Server nije zadat."
+msgstr "Mreža nije definisana."
 
 #: src/gui/widgets/window.cpp:609
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Ne mogu da prikažem dijalog koji ne staje na ekran."
 
 #: src/gui/widgets/window_builder.cpp:516
 msgid "A row must have a column."
-msgstr ""
+msgstr "Vrsta mora imati kolonu."
 
 #: src/gui/widgets/window_builder.cpp:517
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Broj kolona se razlikuje."
 
 #: src/gui/widgets/window_builder.cpp:763
-#, fuzzy
 msgid "No list defined."
-msgstr "Server nije zadat."
+msgstr "Spisak nije zadat."
 
 #: src/gui/widgets/window_builder.cpp:766
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Polje list_definition mora sadržati jednu vrstu."
 
 #: src/gui/widgets/window_builder.cpp:784
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "Polje list_data mora imati isti broj kolona kao list_definition."
 
 #: src/gui/widgets/window_builder.cpp:1051
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Broj value_labels i vrednosti se ne slaže."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1581,14 +1539,16 @@ msgstr "Umanji"
 msgid "Default Zoom"
 msgstr "Osnovno uvećanje"
 
+# >! contexts
+# >> Take screenshot
+# >> Base for screenshot file names
 #: src/hotkeys.cpp:57 src/hotkeys.cpp:895
 msgid "Screenshot"
-msgstr "Snimi ekran"
+msgstr "Snimak ekrana"
 
 #: src/hotkeys.cpp:58
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "Snimi ekran"
+msgstr "Snimak ekrana s mapom"
 
 #: src/hotkeys.cpp:59
 msgid "Accelerated"
@@ -1652,7 +1612,7 @@ msgstr "Pričaj"
 
 #: src/hotkeys.cpp:75
 msgid "Create Unit (Debug!)"
-msgstr "Stvori jedinicu (ispr.!)"
+msgstr "Napravi jedinicu (ispr.!)"
 
 #: src/hotkeys.cpp:76
 msgid "Change Unit Side (Debug!)"
@@ -1732,20 +1692,19 @@ msgstr "Preskoči animaciju"
 
 #: src/hotkeys.cpp:103
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Izađi na površ"
 
 #: src/hotkeys.cpp:104
-#, fuzzy
 msgid "Close Map"
-msgstr "Zatvori"
+msgstr "Zatvori mapu"
 
 #: src/hotkeys.cpp:105
 msgid "Switch Map"
-msgstr ""
+msgstr "Prebaci mapu"
 
 #: src/hotkeys.cpp:107
 msgid "Partial Undo"
-msgstr ""
+msgstr "Delimično opozovi"
 
 #: src/hotkeys.cpp:109
 msgid "Load Map"
@@ -1756,54 +1715,48 @@ msgid "Save Map"
 msgstr "Sačuvaj mapu"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
 msgid "Save Map As"
-msgstr "Sačuvaj mapu"
+msgstr "Sačuvaj mapu kao"
 
 #: src/hotkeys.cpp:112
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Vrati sve izmene"
 
 #: src/hotkeys.cpp:113
-#, fuzzy
 msgid "Map Information"
-msgstr "Generator mapa"
+msgstr "Podaci o mapi"
 
 #: src/hotkeys.cpp:115
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Razmeni teren spreda i pozadine"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Next Tool"
-msgstr "Sledeći potez"
+msgstr "Sledeća alatka"
 
 #: src/hotkeys.cpp:117
 msgid "Paint Tool"
-msgstr ""
+msgstr "Alatka slikanja"
 
 #: src/hotkeys.cpp:118
 msgid "Fill Tool"
-msgstr ""
+msgstr "Alatka ispune"
 
 #: src/hotkeys.cpp:119
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Izaberi sve"
+msgstr "Alatka izbora"
 
 #: src/hotkeys.cpp:121
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Alatka zadavanja početnih položaja"
 
 #: src/hotkeys.cpp:122
-#, fuzzy
 msgid "Next Brush"
-msgstr "Sledeći potez"
+msgstr "Sledeća četkica"
 
 #: src/hotkeys.cpp:123
-#, fuzzy
 msgid "Default Brush"
-msgstr "Osnovno uvećanje"
+msgstr "Podrazumevana četkica"
 
 #: src/hotkeys.cpp:124
 msgid "Cut"
@@ -1819,7 +1772,7 @@ msgstr "Nalepi"
 
 #: src/hotkeys.cpp:127
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Izvezi izabrane koordinate u sistemsku ostavu"
 
 #: src/hotkeys.cpp:129
 msgid "Select All"
@@ -1827,84 +1780,75 @@ msgstr "Izaberi sve"
 
 #: src/hotkeys.cpp:131
 msgid "Select Inverse"
-msgstr ""
+msgstr "Obrni izbor"
 
 #: src/hotkeys.cpp:133
-#, fuzzy
 msgid "Select None"
-msgstr "Izaberi sve"
+msgstr "Poništi izbor"
 
 #: src/hotkeys.cpp:135
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Zaokreni ostavu u smeru kazaljke"
 
 #: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Zaokreni ostavu suprotno smeru kazaljke"
 
 #: src/hotkeys.cpp:139
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Prevrni ostavu vodoravno"
 
 #: src/hotkeys.cpp:141
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Prevrni ostavu uspravno"
 
 #: src/hotkeys.cpp:143
 msgid "Rotate Selection"
 msgstr "Zaokreni izbor"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Ispuni izbor"
+msgstr "Prevrni izbor"
 
 #: src/hotkeys.cpp:147
 msgid "Fill Selection"
 msgstr "Ispuni izbor"
 
 #: src/hotkeys.cpp:149
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Zaokreni izbor"
+msgstr "Stvori pločice u izboru"
 
 #: src/hotkeys.cpp:151
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Nasumično pločice u izboru"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Učitaj mapu"
+msgstr "Zaokreni mapu"
 
 #: src/hotkeys.cpp:157
-#, fuzzy
 msgid "Generate Map"
-msgstr "Stvori novu mapu"
+msgstr "Stvori mapu"
 
 #: src/hotkeys.cpp:159
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Primeni masku"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Create Mask"
-msgstr "Sačuvaj igru"
+msgstr "Stvori masku"
 
 #: src/hotkeys.cpp:163
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Prikaz"
+msgstr "Osveži prikaz"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Ažuriraj prelaze"
+msgstr "Ažuriraj prelaze terena"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Ažuriraj prelaze"
+msgstr "Samoažuriraj prelaze terena"
 
 #: src/hotkeys.cpp:169
 msgid "Refresh Image Cache"
@@ -1912,12 +1856,11 @@ msgstr "Osveži keš slika"
 
 #: src/hotkeys.cpp:171
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Crtaj koordinate polja"
 
 #: src/hotkeys.cpp:173
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Iscrtaj teren"
+msgstr "Crtaj terenske kodove"
 
 #: src/hotkeys.cpp:178
 msgid "Delay Shroud Updates"
@@ -1957,16 +1900,15 @@ msgstr "Promeni jezik"
 
 #: src/hotkeys.cpp:188
 msgid "Enter user command"
-msgstr "Unesi korisničku naredbu"
+msgstr "Korisnička naredba"
 
 #: src/hotkeys.cpp:189
-#, fuzzy
 msgid "Custom command"
-msgstr "Unesi korisničku naredbu"
+msgstr "Posebna naredba"
 
 #: src/hotkeys.cpp:190
 msgid "Run AI formula"
-msgstr ""
+msgstr "Izvrši VI formulu"
 
 #: src/hotkeys.cpp:191
 msgid "Clear messages"
@@ -1984,20 +1926,18 @@ msgstr "Korisnička-naredba#3"
 msgid "Do you really want to quit?"
 msgstr "Stvarno bi da otiđeš?"
 
+# >> Base for map screenshot file names
 #: src/hotkeys.cpp:895
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "Snimi ekran"
+msgstr "snimak-s-mapom"
 
 #: src/hotkeys.cpp:902
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Snimi ekran"
+msgstr "Snimanje završeno"
 
 #: src/hotkeys.cpp:904
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Snimi ekran"
+msgstr "Snimanje neuspelo"
 
 #: src/mapgen_dialog.cpp:108 src/preferences_display.cpp:202
 msgid "Close Window"
@@ -2041,7 +1981,7 @@ msgstr "/1000 pločica"
 
 #: src/mapgen_dialog.cpp:313
 msgid "Coastal"
-msgstr "priobalni"
+msgstr "obalski"
 
 #: src/mapgen_dialog.cpp:313
 msgid "Inland"
@@ -2078,9 +2018,8 @@ msgid "Hotkey Settings"
 msgstr "Postavke prečica"
 
 #: src/preferences_display.cpp:212 src/preferences_display.cpp:280
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Pritisni željenu prečicu"
+msgstr "Pritisnite željenu prečicu (Escape odustaje)"
 
 #: src/preferences_display.cpp:231
 msgid "Action"
@@ -2095,9 +2034,8 @@ msgid "Change Hotkey"
 msgstr "Promeni prečicu"
 
 #: src/preferences_display.cpp:246
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Promeni prečicu"
+msgstr "Očisti prečicu"
 
 #: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
@@ -2107,6 +2045,8 @@ msgstr "Prečica je već u upotrebi."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Upozorenje: prečice za snimanje ekrana nisu kombinacije sa tasterima Ctrl, "
+"Alt ili Meta."
 
 #: src/preferences_display.cpp:416
 msgid "There are no alternative video modes available"
@@ -2127,7 +2067,6 @@ msgid ""
 msgstr "Nađen teren sa niskom dužom od četiri znaka. Teren na koji ovo utiče:"
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -2151,152 +2090,5 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "U odeljku ‘[$section|]’ nije postavljen obavezni ključ ‘$key|’."
 
-# кућица
-#~ msgid "Adjust Gamma"
-#~ msgstr "Štimanje game"
-
-#~ msgid "Gamma:"
-#~ msgstr "Gama:"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "Promeni svetlinu prikaza"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Umetni korisničko ime"
-
-#, fuzzy
-#~ msgid "No scrollbar defined."
-#~ msgstr "Server nije zadat."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Promene na mapi će biti izgubljene. Nastaviti?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Stvori novu mapu"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Postavke generatora nasumičnosti"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Neuspelo stvaranje mape."
-
-#~ msgid "Video Mode"
-#~ msgstr "Video režim"
-
-#~ msgid "X offset:"
-#~ msgstr "X-pomak:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Y-pomak:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Pametno proširi"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-osa"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-osa"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Prevrni (može promeniti dimenzije mape):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Postavi teren"
-
-#~ msgid "Save As"
-#~ msgstr "Sačuvaj kao"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Postavi igračev zamak"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Poplavi"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Vrati prema disku"
-
-#~ msgid "Flip Map"
-#~ msgstr "Prevrni mapu"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Iscrtaj teren"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Zastoj ažuriranja prelaza"
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Zaokreni izbor"
-
-#~ msgid "Cave Lit"
-#~ msgstr "pećina osvetljena"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "stenovita pećina osvetljena"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr "Nađen neispravan teren, verovatno u formatu 1.2, teren = "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Server nije zadat."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Server nije zadat."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Server nije zadat."
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "Server nije zadat."
-
-#, fuzzy
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr "Automatski briši samočuvanja na kraju scenarija."
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Sačuvaj prečice"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Briši samočuvanja"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Čuvaj snimke na kraju scenarija."
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Napredni režim"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Normalni režim"
-
-#~ msgid "Elven Castle"
-#~ msgstr "vilin-zamak"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "patulj-zamak"
-
-#~ msgid "Encampment keep"
-#~ msgstr "kula tabora"
-
-#~ msgid "Elven Keep"
-#~ msgstr "vilin-kula"
-
-#~ msgid "Dwarven keep"
-#~ msgstr "patulj-kula"
-
-#~ msgid "Ruined keep"
-#~ msgstr "urušena kula"
-
-#~ msgid "Sunken keep"
-#~ msgstr "potopljena kula"
-
-#~ msgid "Swamp keep"
-#~ msgstr "močvarna kula"
-
-#~ msgid "Desert road"
-#~ msgstr "pustinjski drum"
+#~ msgid "language code for localized resources^en_US"
+#~ msgstr "sr@latin"

@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Branko Kokanovic, 2006.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2008-05-04 12:00+0200\n"
+"PO-Revision-Date: 2009-04-09 22:46+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
@@ -31,14 +32,13 @@ msgstr "paniranje mišem"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:65
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "paniranje mišem"
+msgstr "paniranje srednjim klikom"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:72
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "paniranje se nastavlja kad miš napusti prozor"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:79
@@ -47,9 +47,8 @@ msgstr "animirana mapa"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:86
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Pohod"
+msgstr "animacija naslovnog ekrana"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:93
@@ -284,9 +283,8 @@ msgstr ""
 
 #. [effect]: type=fire
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:427
-#, fuzzy
 msgid "scepter of fire"
-msgstr "vatreni rubin"
+msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:458
@@ -370,9 +368,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
 #: src/actions.cpp:1063 src/actions.cpp:1338
-#, fuzzy
 msgid "female^slowed"
-msgstr "odanost"
+msgstr "usporena"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -390,14 +387,12 @@ msgstr "lečenje +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "zdravlje"
+msgstr "lečenje +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -408,7 +403,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Lečenje +4:\n"
-"Omogućava jedinici da leči susedne prijateljske jedinice na početku svakog "
+"Omogućava jedinici da leči susedne savezničke jedinice na početku našeg "
 "poteza.\n"
 "\n"
 "Jedinica pod uticajem ovog vidara može povratiti do 4 UP po potezu, ili ne "
@@ -425,9 +420,8 @@ msgstr "lečenje +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "zdravlje"
+msgstr "lečenje +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -503,9 +497,8 @@ msgstr "Upravljanje internacionalizacijom"
 
 #. [about]
 #: data/core/about.cfg:953
-#, fuzzy
 msgid "English strings edition"
-msgstr "Britanski engleski prevod"
+msgstr "Izdanje s britanskim niskama"
 
 #. [about]
 #: data/core/about.cfg:960
@@ -530,7 +523,7 @@ msgstr "Bugarski prevod"
 #. [about]
 #: data/core/about.cfg:1015
 msgid "Catalan Translation"
-msgstr "Katalanski prevod"
+msgstr "Katalonski prevod"
 
 #. [about]
 #: data/core/about.cfg:1053
@@ -544,9 +537,8 @@ msgstr "Kineski (Tajvan) prevod"
 
 #. [about]
 #: data/core/about.cfg:1098
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Katalanski prevod"
+msgstr "Hrvatski prevod"
 
 #. [about]
 #: data/core/about.cfg:1105
@@ -593,12 +585,14 @@ msgstr "Finski prevod"
 msgid "French Translation"
 msgstr "Francuski prevod"
 
+# каже овако на Википедији
+# well-spelled: Фурлански
 #. [about]
 #: data/core/about.cfg:1469
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Filipinski prevod"
+msgstr "Furlanski prevod"
 
+# well-spelled: Галицијански
 #. [about]
 #: data/core/about.cfg:1476
 msgid "Galician Translation"
@@ -626,9 +620,8 @@ msgstr "Mađarski prevod"
 
 #. [about]
 #: data/core/about.cfg:1668
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Italijanski prevod"
+msgstr "Islandski prevod"
 
 #. [about]
 #: data/core/about.cfg:1675
@@ -657,9 +650,8 @@ msgstr "Latinski prevod"
 
 #. [about]
 #: data/core/about.cfg:1757
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Latinski prevod"
+msgstr "Letonski prevod"
 
 #. [about]
 #: data/core/about.cfg:1764
@@ -668,15 +660,14 @@ msgstr "Litvanski prevod"
 
 #. [about]
 #: data/core/about.cfg:1772
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Indonežanski prevod"
+msgstr "Makedonski prevod"
 
+# well-spelled: Марати
 #. [about]
 #: data/core/about.cfg:1780
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latinski prevod"
+msgstr "Marati prevod"
 
 #. [about]
 #: data/core/about.cfg:1789
@@ -700,9 +691,8 @@ msgstr "Portugalski brazilski prevod"
 
 #. [about]
 #: data/core/about.cfg:1905
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Estonski prevod"
+msgstr "Rumunski prevod"
 
 #. [about]
 #: data/core/about.cfg:1913
@@ -739,16 +729,17 @@ msgstr "Švedski prevod"
 msgid "Turkish Translation"
 msgstr "Turski prevod"
 
+# well-spelled: јужнокаталонски
 #. [about]
 #: data/core/about.cfg:2119
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensijski (južnokatalonski) prevod"
 
+# well-spelled: РАЦВ
 #. [about]
 #: data/core/about.cfg:2132
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Kineski prevod"
+msgstr "Valensijski (RACV) prevod"
 
 #. [about]
 #: data/core/about.cfg:2139
@@ -888,9 +879,9 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Ove strane daju osvrt na sve što je nephodno znati da zaigrate „Boj za "
+"Ove stranice daju osvrt na sve što je nephodno znati da zaigrate „Boj za "
 "Vesnot“ — način igranja i osnovnu mehaniku koja pogoni igru. Dok budete "
-"igrali, strane će biti dopunjavane podacima koji će predstavljati nove "
+"igrali, stranice će biti dopunjavane podacima koji će predstavljati nove "
 "uglove igre na koje budete nailazili. Zaželite li detaljnije informacije o "
 "posebnim okolnostima i izuzecima, možete ispratiti ubačene veze."
 
@@ -917,7 +908,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -928,7 +918,7 @@ msgstr ""
 "Tokom igranja, imajte na umu da će vam prelaz mišem preko mnogih elemenata, "
 "kakvi su na primer podaci u statusnom oknu, dati kratak tekst sa dodatnim "
 "objašnjenjima. Ovo je posebno korisno kada se po prvi put susretnete sa "
-"<ref>dst=abilities text=sposobnostima</ref>."
+"<ref>dst='..abilities_section' text='sposobnostima'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -1016,7 +1006,6 @@ msgstr "Unajmljivanje i sazivanje"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1030,14 +1019,14 @@ msgid ""
 "recruit it."
 msgstr ""
 "Svaka strana započinje sa jednim vođem u svojoj kuli. Na početku svake "
-"bitke, a ponekad i tokom nje, moraćete da unajmljujete <ref>dst=units "
-"text=jedinice</ref> za svoju vojsku. Da biste najmili, vaš vođ (npr. Konrad "
-"u pohodu „Naslednik prestola“) mora stajati na polju kule u "
-"<ref>dst=terrain_castle text=zamku</ref>. Tada možete ili izabrati „Unajmi“ "
-"iz menija, ili kliknuti desnim na polje i izabrati <italic>text=Unajmi</"
-"italic>. Ovo će vam dati spisak jedinica koje možete unajmiti, zajedno sa "
-"cenom koju morate platiti za svaku. Kliknite na jedinicu da vidite njene "
-"karakteristike, a na dugme „Unajmi“ da je unajmite."
+"bitke, a ponekad i tokom nje, moraćete da unajmljujete <ref>dst='..units' "
+"text='jedinice'</ref> za svoju vojsku. Da biste najmili, vaš vođ (npr. "
+"Konrad u pohodu „Naslednik prestola“) mora stajati na polju kule u "
+"<ref>dst='terrain_castle' text='zamku'</ref>. Tada možete ili izabrati "
+"„Unajmi“ iz menija, ili kliknuti desnim na polje i izabrati "
+"<italic>text='Unajmi'</italic>. Ovo će vam dati spisak jedinica koje možete "
+"unajmiti, zajedno sa cenom koju morate platiti za svaku. Kliknite na "
+"jedinicu da vidite njene karakteristike, a na dugme „Unajmi“ da je unajmite."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -1059,7 +1048,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1068,8 +1056,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Unajmljene jedinice pristižu sa dve nasumične <ref>dst=..traits_section "
-"text=osobine</ref>, koje utiču na njihove karakteristike."
+"Unajmljene jedinice pristižu sa dve nasumične <ref>dst='..traits_section' "
+"text='osobine'</ref>, koje utiču na njihove karakteristike."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1088,7 +1076,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1099,7 +1086,7 @@ msgstr ""
 "\n"
 "\n"
 "Jedinice ne koštaju zlata samo pri unajmljivanju ili sazivanju, već im je "
-"ono neophodno i za izdatke. Pogledajte <ref>dst=income_and_upkeep "
+"ono neophodno i za izdatke. Pogledajte <ref>dst='income_and_upkeep' "
 "text='Prihodi i izdaci'</ref> za više detalja."
 
 #. [topic]: id=orbs
@@ -1170,7 +1157,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1180,7 +1166,7 @@ msgstr ""
 "Udarpoeni su takođe naznačeni energotrakom pored svake jedinice, koja može "
 "biti zelena, žuta ili crvena. Jedinica sa bar jednim iskustvenim poenom ima "
 "plavu traku, koja pobeli kada se jedinica približi "
-"<ref>dst=experience_and_advancement text=napredovanju</ref>."
+"<ref>dst='experience_and_advancement' text='napredovanju'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -1244,7 +1230,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1261,7 +1246,7 @@ msgstr ""
 "jedinica stvara nadzorni pojas u poljima koja je neposredno okružuju, i "
 "neprijateljska jedinica koja kroči u pojas odmah okončava svoje kretanje. "
 "Naučiti kako koristiti nadzorne pojaseve za sopstvenu dobit, važan je deo "
-"taktike Vesnota — samo malobrojni <ref>dst=ability_skirmisher "
+"taktike Vesnota — samo malobrojni <ref>dst='ability_skirmisher' "
 "text='čarkaši'</ref> mogu ignorisati nadzorne pojaseve."
 
 #. [topic]: id=movement
@@ -1350,7 +1335,7 @@ msgstr ""
 "dodirnu, borba će započeti. Napadač i branilac razmenjuju udarce, koliko ih "
 "imaju dodeljenih. Napadač bira oružje kojim napada, a branilac odgovara "
 "oružjem istog tipa. Postoje dva tipa napada: bliski, oružjem poput mača, "
-"sekira ili kandži, i odstupni, obično putem lukova, kopalja ili vatrokugli."
+"sekira ili kandži, i odstupni, obično putem lukova, kopalja ili vatrenica."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
@@ -1379,7 +1364,7 @@ msgstr ""
 "\n"
 "\n"
 "Napadač udara prvi, zatim branilac uzvraća. Svaki udar ili pogađa, nanoseći "
-"izvesnu štetu, ili promašuje, ne činići nikakvu štetu. Udari se smenjuju dok "
+"izvesnu štetu, ili promašuje, ne čineći nikakvu štetu. Udari se smenjuju dok "
 "obe jedinice ne istroše sve na raspolaganju. Broj udara koje jedinica ima "
 "promenljiv je; na primer, vilin-borac sa napadom 5-4 može udariti 4 puta, "
 "pri svakom pogotku nanoseći 5 štete, dok ork-groktaš sa napadom 9-2 može "
@@ -1421,7 +1406,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1433,10 +1417,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Postoje dva izuzetka od ovog pravila: <ref>dst=weaponspecial_magical "
-"text=magičnost</ref> i <ref>dst=weaponspecial_marksman text=oštrookost</"
-"ref>. Bez obzira na teren, magični napadi uvek imaju 70% izgleda da pogode, "
-"a oštrooki, kada se koriste ofanzivno, bar 60%."
+"Postoje dva izuzetka od ovog pravila: <ref>dst='weaponspecial_magical' "
+"text='magičnost'</ref> i <ref>dst='weaponspecial_marksman' "
+"text='oštrookost'</ref>. Bez obzira na teren, magični napadi uvek imaju 70% "
+"izgleda da pogode, a oštrooki, kada se koriste ofanzivno, bar 60%."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1451,7 +1435,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1467,14 +1450,13 @@ msgstr ""
 "\n"
 "Svaki udar koji pogodi nanosi osnovnu količinu štete, u zavisnosti od tipa "
 "napada. Na primer, vilin-borac sa napadom 5-4 čini 5 osnovne štete. Na ovaj "
-"broj mogu uticati dva faktora: <ref>dst=damage_types_and_resistance "
-"text=otpornost</ref> i <ref>dst=time_of_day text='doba dana'</ref>. Da biste "
-"videli kako okolnosti tačno utiču na osnovnu štetu, u meniju za izbor napada "
-"pogledajte <italic>text='Računanje štete'</italic>."
+"broj mogu uticati dva faktora: <ref>dst='damage_types_and_resistance' "
+"text='otpornost'</ref> i <ref>dst='time_of_day' text='doba dana'</ref>. Da "
+"biste videli kako okolnosti tačno utiču na osnovnu štetu, u meniju za izbor "
+"napada pogledajte <italic>text='Računanje štete'</italic>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1485,10 +1467,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nekoliko jedinica ima posebne <ref>dst=abilities text=sposobnosti</ref> koje "
-"utiču na štetu nanesenu u borbi. Najčešća je <ref>dst=weaponspecial_charge "
-"text=juriš</ref>, koji pri takvom napadu udvostručava oštećenje koje nanosi "
-"napadač, ali i ono koje nanosi branilac."
+"Nekoliko jedinica ima posebne <ref>dst='..abilities_section' "
+"text='sposobnosti'</ref> koje utiču na štetu nanesenu u borbi. Najčešća je "
+"<ref>dst='weaponspecial_charge' text='juriš'</ref>, koji pri takvom napadu "
+"udvostručava oštećenje koje nanosi napadač, ali i ono koje nanosi branilac."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1672,7 +1654,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1690,9 +1671,9 @@ msgstr ""
 "\n"
 "\n"
 "Iako većina jedinica ima tri nivoa, neke jedinice mogu imati četiri (npr. "
-"<ref>dst=unit_Mage text=magovi</ref>). Kada jedinica dostigne svoj najveći "
-"nivo, može imati i „napredovanje po najvećem nivou“ (NAPON). NAPON će "
-"izmeniti jedinicu svaki put kada dostigne ciljno iskustvo, ali će ipak "
+"<ref>dst='unit_Mage' text='magovi'</ref>). Kada jedinica dostigne svoj "
+"najveći nivo, može imati i „napredovanje po najvećem nivou“ (NAPON). NAPON "
+"će izmeniti jedinicu svaki put kada dostigne ciljno iskustvo, ali će ipak "
 "ostati na istom nivou. Uobičajen efekat NAPONA je da uveća maksimum UP za 3. "
 "Prvi NAPON će normalno biti dostignut sa 150 IP (120 IP za oštroumne "
 "jedinice). Međutim, dobijanje NAPONA postaje progresivno teže posle svakog "
@@ -1706,7 +1687,6 @@ msgstr "Lečenje"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1715,7 +1695,7 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Vaše jedinice će neizbežno trpeti oštećenja u borbi. Kada jedinica "
-"<ref>dst=experience_and_advancement text=isprednjači</ref>, biće potpuno "
+"<ref>dst='experience_and_advancement' text='isprednjači'</ref>, biće potpuno "
 "izlečena. Do ovoga može doći kad god završi borbu sa protivnikom, bez obzira "
 "da li je vaš potez ili ne. Vesnot pruža i nekoliko drugih mogućnosti za "
 "lečenje, koje se sve odigravaju na početku vašeg poteza, pre nego što "
@@ -1723,7 +1703,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1746,19 +1725,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Obnavljanje</ref>: Pojedine jedinice (npr. "
-"trolovi) automatski dobijaju 8 UP u svakom potezu."
+"<ref>dst='ability_regenerates' text='Obnavljanje'</ref>: Pojedine jedinice "
+"(npr. trolovi) automatski dobijaju 8 UP u svakom potezu."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1767,13 +1744,14 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Vidarske jedinice: Jedinice sa sposobnošću <ref>dst=ability_heals "
-"text=lečenja</ref> lečiće susedne prijateljske jedinice, obično 4 ili 8 UP "
-"po potezu, ili sprečavati otrov da ošteti otrovanu jedinicu."
+"Vidarske jedinice: Jedinice sa sposobnošću <ref>dst='ability_heals +4' "
+"text='lečenja'</ref> lečiće susedne prijateljske jedinice, obično "
+"<ref>dst='ability_heals +4' text='4'</ref> ili <ref>dst='ability_heals +8' "
+"text='8 UP'</ref> po potezu, ili sprečavati otrov da ošteti otrovanu "
+"jedinicu."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1781,8 +1759,8 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Isceliteljske jedinice: Jedinice sa sposobnošću <ref>dst=ability_cures "
-"text=iscelivanja</ref> oslobađaće otrova sve susedne prijateljske jedinice "
+"Isceliteljske jedinice: Jedinice sa sposobnošću <ref>dst='ability_cures' "
+"text='iscelivanja'</ref> oslobađaće otrova sve susedne prijateljske jedinice "
 "(kao prioritetno nad lečenjem, ako jedinica ima i tu sposobnost)."
 
 #. [topic]: id=healing
@@ -1896,7 +1874,6 @@ msgstr "Da zaokružimo"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1905,9 +1882,10 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Izloženim do sada, predstavljene su osnove Vesnota. Dalje možete čitati "
-"„Osnovne taktike“, ili se upoznavati sa <ref>dst=traits text=osobinama</ref> "
-"i <ref>dst=abilities text=sposobnostima</ref>, ali već znate sve što vam je "
-"neophodno da zaigrate pohod „Naslednik prestola“. Zabavite se, i srećno!"
+"„Osnovne taktike“, ili se upoznavati sa <ref>dst='..traits_section' "
+"text='osobinama'</ref> i <ref>dst='..abilities_section' "
+"text='sposobnostima'</ref>, ali već znate sve što vam je neophodno da "
+"zaigrate pohod „Naslednik prestola“. Zabavite se, i srećno!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1934,7 +1912,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1945,14 +1922,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Osobine dostupne jedinicama uključuju <ref>dst=traits_intelligent "
-"text=oštroumnost</ref>, <ref>dst=traits_quick text=hitrost</ref>, "
-"<ref>dst=traits_resilient text=žilavost</ref>, i <ref>dst=traits_strong "
-"text=kršnost</ref>."
+"Osobine dostupne jedinicama uključuju <ref>dst='traits_intelligent' "
+"text='oštroumnost'</ref>, <ref>dst='traits_quick' text='hitrost'</ref>, "
+"<ref>dst='traits_resilient' text='žilavost'</ref>, i "
+"<ref>dst='traits_strong' text='kršnost'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1963,9 +1939,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Još neke osobine koje jedinice mogu dobiti su <ref>dst=traits_dextrous "
-"text=spretnost</ref>, <ref>dst=traits_loyal text=odanost</ref>, i "
-"<ref>dst=traits_undead text=nemrtvost</ref>.\n"
+"Još neke osobine koje jedinice mogu dobiti su <ref>dst='traits_dextrous' "
+"text='spretnost'</ref>, <ref>dst='traits_loyal' text='odanost'</ref>, i "
+"<ref>dst='traits_undead' text='nemrtvost'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2164,7 +2140,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jedinice nemrtvih običo imaju nemrtvost kao jedinu osobinu. Pošto su ove "
+"Jedinice nemrtvih obično imaju nemrtvost kao jedinu osobinu. Pošto su ove "
 "jedinice nastale od tela mrtvih, povraćenih da se ponovo bore, otrov nema "
 "uticaja na njih. Ovo ih može učiniti izuzetno korisnim pri obračunavanju sa "
 "protivnicima koji svoje napade podržavaju otrovima."
@@ -2243,7 +2219,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2253,20 +2228,21 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jedinice istaknutog zdravlja imaju 2 udarpoena više nego obične, i dobijaju "
-"2 dodatna udarpoena posle svakog poteza u kome se nisu borile."
+"Jedinice istaknutog zdravlja imaju 1 UP plus 1 UP po nivou više nego obične, "
+"i zaceljuju uobičajena 2 UP posle svakog poteza u kome se nisu borile. "
+"Takođe trpe za četvrt manje štete od otrova."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "srednje"
+msgstr "priglupost"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Priglupe jedinice trpe 20% uvećanja neophodnog iskustva da bi isprednjačile."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2276,19 +2252,20 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Ograničenosti je na pretek među goblinima i drugim nižim rasama. Ove se rase "
+"ne zovu niže bez razloga, a ovo je jedan od njih."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "usporen"
+msgstr "tromost"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr ""
-"Hitre jedinice imaju 1 dodatan poen na kretanje, ali 5% manje UP nego obično."
+msgstr "Trome jedinice imaju -1 na kretanje, ali 5% više udarpoena."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2299,16 +2276,20 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Zamašne telesine i nespretni, tromiji među goblinima i drugim rasama trpe na "
+"pokretnosti, ali nadomeštaju to ponešto uvećanom izdržljivošću."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
 msgid "Weak"
-msgstr ""
+msgstr "krhkost"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
-msgstr ""
+msgstr "Krhke jedinice trpe -1 na udarpoene i štetu u bliskoj borbi."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2324,7 +2305,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:472
 msgid "Flat"
-msgstr ""
+msgstr "ravnica"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:477
@@ -2351,15 +2332,14 @@ msgstr "drum"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:487
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
 "Drumovi su staze ugažene zemlje, nastale prelascima mnogih putnika preko "
-"njih. Što se igranja tiče, drumovi su isti kao <ref>dst=terrain_grassland "
-"text=ravnica</ref>."
+"njih. Što se igranja tiče, drumovi dođu isto što i <ref>dst='terrain_flat' "
+"text='ravnica'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:494
@@ -2389,9 +2369,9 @@ msgstr ""
 "pružaju i veću zaštitu nego otvoren teren. Konjica, međutim, ima toliko "
 "problema u kretanju, da im je svaka koristi od prikrivenosti negirana. "
 "Vilenjaci su izuzetak ovih opštih pravila o šumi. Ne samo da se mogu "
-"neometano kretati u njoj, već imaju i značajanu odbrambenu dobit. Patuljci "
-"su još jedan izuzetak; iako mogu da se probijaju kroz šumu bez mnogo gubitka "
-"u brzini, njihova potpuna neupoznatost sa takvim terenom vodi maloj "
+"neometano kretati u njoj, već imaju i značajnu odbrambenu dobit. Patuljci su "
+"još jedan izuzetak; iako mogu da se probijaju kroz šumu bez mnogo gubitka u "
+"brzini, njihova potpuna neupoznatost sa takvim terenom vodi maloj "
 "zaštićenosti u borbi.\n"
 "\n"
 "Većina jedinica ima 50% zaštite u šumi, ali je konjica ograničena na 30%. "
@@ -2528,11 +2508,10 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:568
 msgid "Frozen"
-msgstr ""
+msgstr "klizavica"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2541,11 +2520,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Sneg označava svaku ravnu oblast koja je zamrznuta, ili trajno (tundra) ili "
-"privremeno (snežna ravnica). Sneg usporava većinu jedinica, i otežava im "
-"odbranu.\n"
+"Klizavi teren označava svaku ravničarsku oblast koja je prekrivena snegom "
+"ili ledom. Usporava većinu jedinica, i otežava im odbranu. Imajte u vidu da "
+"plivačke jedinice, čak i one što mogu da dišu pod vodom, ne mogu plivati pod "
+"ledom.\n"
 "\n"
-"Većina jedinica ima 20 do 40% zaštite na snegu."
+"Većina jedinica ima 20 do 40% zaštite na klizavici."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:580
@@ -2601,14 +2581,13 @@ msgstr "pustinja"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:609
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
 "Pustinje su ponešto različitog sastava od malih peščanih jama ili plaža, ali "
-"su u okviru igre istovetne. Vidi <ref>dst=terrain_sand text=pesak</ref>."
+"su u okviru igre istovetne. Vidi <ref>dst='terrain_sand' text='pesak'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:616
@@ -2617,7 +2596,6 @@ msgstr "pećina"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2634,8 +2612,8 @@ msgstr ""
 "usporene i ranjive u odbrani. Patuljci i trolovi, kojima su nasuprot tome "
 "domovi u pećinama, lako se kreću njima. Posebno uživaju patuljci, koji "
 "vrlinom svog niskog rasta mogu zaobilaziti prepreke nesavladive drugim "
-"rasama. Povremeno su pećine <ref>dst=terrain_illuminated_cave text=obasjane</"
-"ref>.\n"
+"rasama. Povremeno su pećine <ref>dst='terrain_illuminated_cave' "
+"text='obasjane'</ref>.\n"
 "\n"
 "Većina jedinica dobija 20 do 40% zaštite u pećinama, dok patuljci imaju 50%."
 
@@ -2646,7 +2624,6 @@ msgstr "stenovita pećina"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2664,7 +2641,7 @@ msgstr ""
 "kretanje otežano, ali se mogu dobro skrivati. Patuljci i trolovi, koji su "
 "glavni naseljenici pećina, lako se kreću ovim terenom. Patuljci posebno, "
 "usled svoje male visine, su u punoj prednosti u ovim pećinama. Povremeno su "
-"pećine <ref>dst=terrain_illuminated_cave text=obasjane</ref>.\n"
+"pećine <ref>dst='terrain_illuminated_cave' text='obasjane'</ref>.\n"
 "\n"
 "Većina jedinica ima oko 50% zaštite u stenovitim pećinama, konjica 40%, a "
 "patuljci čak 60%."
@@ -2775,20 +2752,20 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
 msgid "Unwalkable"
-msgstr ""
+msgstr "rascep"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Bezdan je rascep u zemlji, koji vodi do neznanih dubina. Bezdani su poznati "
-"tektonskim zidovima, za koje bi bili potrebni dani da se pređu. Što se "
-"igranja tiče, samo letačke jedinice mogu preći preko ovakvog terena."
+"U rascep se računa kakav bezdan ili klanac, onaj koji se, kako mu ime kaže, "
+"ne može peške prevaliti. Bezdani su poznati po tektonskim zidovima, za koje "
+"bi bili potrebni dani da se pređu. Što se igranja tiče, samo letačke "
+"jedinice mogu preći preko ovakvog terena."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -2797,7 +2774,6 @@ msgstr "lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2807,10 +2783,11 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"Opasnosti u pokušajima savladavanja lave očigledne su. Stoga je mogu preći "
-"samo jedinice koje mogu da lete povisoko iznad nje. Rastopljena magma takođe "
-"proizvodi značajno isijavanje, osvetljavajući okolnu oblast. Ovo pruža "
-"zakonitim jedinicama prednost u napadu, a oduzima je haotičnim."
+"Opasnosti u pokušajima savladavanja lave očigledne su. Što se kretanja tiče, "
+"lava spada u <ref>dst='terrain_unwalkable' text='neprohodan'</ref> teren, te "
+"je mogu preći samo jedinice koje mogu da lete povisoko iznad. Rastopljena "
+"magma takođe proizvodi značajno isijavanje, osvetljavajući okolnu oblast. "
+"Ovo pruža zakonitim jedinicama prednost u napadu, a oduzima je haotičnim."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:710
@@ -2827,7 +2804,7 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
-"Na mestim gde je reka vrlo plitka, kopnene jedinice je mogu lako pregaziti. "
+"Na mestima gde je reka vrlo plitka, kopnene jedinice je mogu lako pregaziti. "
 "Sva stvorenja prilagođena plivanju imaju punu pokretljivost u takvim "
 "pojasevima reke. U pogledu igranja, rečni gaz uzima se ili kao ravnica ili "
 "kao plitka voda, već prema tome koje pruža bolju zaštitu i pokretljivost "
@@ -2835,9 +2812,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "zamak"
+msgstr "obalski greben"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -2849,6 +2825,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Obalski grebeni su plićaci sačinjeni od kamena, korala i peska. Većini "
+"kopnenih jedinica pružaju bolji oslonac i odbrambeni položaj nego što je "
+"uobičajeno za gaženje kroz plitku vodu, a vodo-bivstvujućim rasama "
+"predstavljaju izvanrednu zaštitu.\n"
+"\n"
+"I morejci i nagajci uživaju 70% zaštite na obalskim grebenima."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2882,9 +2864,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:744
-#, fuzzy
 msgid "Impassable"
-msgstr "neprolazna planina"
+msgstr "neprolaz"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:747
@@ -2895,6 +2876,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"U prepreke koje ni najuporniji putnik ne može savladati spadaju čvrsti "
+"kameni bedemi i planine tako strme i visoke da su neprekidno ovenčane "
+"oblacima. Čak se ni leteća stvorenja ne mogu probiti između nazubljenih "
+"vrhova na proređenim visinama, niti najsuroviji trol razvaliti zbijeni zidni "
+"kamen."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -2913,7 +2899,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:769
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2923,7 +2908,7 @@ msgid ""
 msgstr ""
 "\n"
 "ulazi u ispravljački režim (ne radi u višeigračkom režimu); pogledajte "
-"<ref>dst=debug_commands text='Ispravljačke naredbe'</ref>.\n"
+"<ref>dst='debug_commands' text='Ispravljačke naredbe'</ref>.\n"
 "Ispravljanje se isključuje napuštanjem igre ili naredbom :nodebug.\n"
 "\n"
 
@@ -2939,7 +2924,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"zadaje ili obrće stranu igrača između čoveka i VI. Igrač/klijent koji "
+"zadaje ili prebacuje stranu igrača između čoveka i VI. Igrač/klijent koji "
 "kontroliše tu stranu mora da izda ovu naredbu. Ako se drugi parametar ne "
 "zada, obrće između čoveka i VI; ako je ‘on’, kontrolor postaje VI, a uz "
 "‘off’ čovek. Spada na trenutno aktivnu stranu ako se ne zada ni jedan "
@@ -2954,7 +2939,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"obrće prikaz trenutnog broja kadrova po sekundi.\n"
+"prikaz trenutnog broja kadrova po sekundi.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2975,6 +2960,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"ponovo iscrtava ekran i učitava sve izmenjene datoteke slika.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -3088,7 +3076,7 @@ msgid ""
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"obrće uključenost posmatrača u pisanje i razgovor."
+"uključenost svih posmatrača u pisanje i razgovor."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:820
@@ -3103,6 +3091,9 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"doziva meni za izbor scenarija u pohodu na koji odmah treba preći.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:827
@@ -3123,7 +3114,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"obrće maglu i pokrov za tekuću stranu.\n"
+"magla i pokrov za tekuću stranu.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3144,6 +3135,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"odmah prelazi na sledeći scenario u pohodu.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3195,9 +3189,8 @@ msgstr "isceljivanje"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "neustrašivost"
+msgstr "isceljivanje"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -3217,7 +3210,6 @@ msgstr "obnavljanje"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "obnavljanje"
 
@@ -3239,7 +3231,6 @@ msgstr "postojanost"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "postojanost"
 
@@ -3265,7 +3256,6 @@ msgstr "vođstvo"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "vođstvo"
 
@@ -3273,7 +3263,6 @@ msgstr "vođstvo"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3285,12 +3274,11 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Vođstvo:\n"
-"Jedinica može zapovedati prijateljskim jedinice do nje, kako bi se one bolje "
-"borile.\n"
+"Jedinica može zapovedati jedinicama do nje, kako bi se one bolje borile.\n"
 "\n"
-"Susedne prijateljske jedinice nižeg nivoa biće umešnije u borbi. Susedna "
-"jedinica nižeg nivoa od prijateljske jedinice-vođa, praviće 25% više štete u "
-"napadu po nivou razlike među njima."
+"Susedne jedinice nižeg nivoa biće umešnije u borbi. Susedna jedinica nižeg "
+"nivoa od prijateljske jedinice-vođa, praviće 25% više štete u napadu po "
+"nivou razlike među njima."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
@@ -3299,7 +3287,6 @@ msgstr "čarkanje"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "čarkanje"
 
@@ -3311,7 +3298,7 @@ msgid ""
 "Zones of Control."
 msgstr ""
 "Čarkanje:\n"
-"Jedinica je vešta u brzom izmicanju neprijateljima, ignorisaći sve "
+"Jedinica je vešta u brzom izmicanju neprijateljima, ignorišući sve "
 "protivničke nadzorne pojaseve."
 
 #. [illuminates]: id=illumination
@@ -3321,7 +3308,6 @@ msgstr "obasjavanje"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "obasjavanje"
 
@@ -3349,9 +3335,8 @@ msgstr "teleportacija"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "oštroumnost"
+msgstr "teleportacija"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
@@ -3371,9 +3356,8 @@ msgstr "zaseda"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "odanost"
+msgstr "zaseda"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3417,7 +3401,6 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "vrebanje"
 
@@ -3428,7 +3411,6 @@ msgstr "skrivanje"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "skrivanje"
 
@@ -3458,9 +3440,8 @@ msgstr "zaranjanje"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "kršnost"
+msgstr "zaranjanje"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3486,9 +3467,8 @@ msgstr "hranjenje"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "neustrašivost"
+msgstr "hranjenje"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3509,7 +3489,6 @@ msgid "backstab"
 msgstr "nož u leđa"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3519,7 +3498,7 @@ msgstr ""
 "Nož u leđa:\n"
 "Upotrebljen ofanzivno, ovaj napad nanosi dvostruku štetu ako prijateljska "
 "jedinica stoji sa naspramne strane napadnute, i pritom nije onesposobljena "
-"(npr. pretvorena u kamen)."
+"(pretvorena u kamen ili drukčije van stroja)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3596,7 +3575,6 @@ msgid "swarm"
 msgstr "roj"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3656,28 +3634,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Nastupi agresivnije"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "agresivno."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Nastupi odbrambenije"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "odbrana"
+msgstr "odbrambeno."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Gledaj da poraziš..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3691,12 +3668,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "Uput savezniku"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Na koju se neprijateljsku stranu usredsrediti?"
 
 #. [then]
 #. [else]
@@ -3705,24 +3682,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(strana $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (strana $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "strana $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "gleda da porazi $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3730,76 +3707,69 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "crna"
+msgstr "Nazad"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Gledaj da zaštitiš..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Koju prijateljsku stranu zaštititi?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "gleda da zaštiti $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "Indonežanski prevod"
+msgstr "Brani položaj..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Kliknite desnim da izaberete položaj za branjenje"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
-#, fuzzy
 msgid "Defend this location"
-msgstr "Indonežanski prevod"
+msgstr "Brani ovaj položaj"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "gleda da odbrani oblast oko $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Biranje položaja otkazano"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Odustani"
+msgstr "Očisti naređenja o ciljevima"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Odustani"
+msgstr "Očisti naređenja o ponašanju"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Odustani"
+msgstr "Očisti sva naređenja"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "nema"
+msgstr "ništa zadato."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3807,6 +3777,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (strana $ally_side|) nema nikakve upute i ponaša se "
+"uobičajeno."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3817,29 +3789,32 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Cilj: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Ponašanje: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (strana $ally_side|) izvršava sledeće upute:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "Postavi cilj..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Lozinka..."
+msgstr "Postavi ponašanje..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "Napusti"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3857,49 +3832,49 @@ msgid "Max HP bonus +"
 msgstr "Maks. bonus UP +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "bonus za rani završetak: "
+msgstr "Bonus za rani završetak."
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "bonus za rani završetak: "
+msgstr "Bez bonusa za rani završetak."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "bonus za rani završetak: "
+msgstr "(bonus za rani završetak)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Zlato se ne prenosi u sledeći scenario."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% zlata na kraju prenosi se u sledeći scenario."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% zlata na kraju prenosi se u sledeći scenario."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% zlata na kraju prenosi se u sledeći scenario."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
-"Nabasa na bunar želja.\n"
-"Koja ti je želja?"
+msgstr "Nabasa na bunar želja. Koja ti je želja?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3941,15 +3916,13 @@ msgstr "Ne poželi ništa."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Preimenuj jedinicu"
+msgstr "Uzmi"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Preimenuj jedinicu"
+msgstr "Ostavi"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -4055,7 +4028,7 @@ msgstr "Samo morejci mogu koristiti ovaj predmet!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Treba li $unit.name da pokupi trozubac?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
@@ -4073,6 +4046,7 @@ msgstr ""
 msgid "storm trident"
 msgstr "olujni trozubac"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:3
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
@@ -4094,6 +4068,7 @@ msgstr ""
 "Marito,Maritos,Merkuš,Meritos Gark,Morustej,Mur,Omatakej,Rešan,Vašit,Velnik,"
 "Veralon,Veramo,Verat,Verdit,Verkon,Verlin,Vermaj,Vertik,Vladnir"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:4
 msgid ""
 "Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
@@ -4104,6 +4079,7 @@ msgstr ""
 "Omaž,Omagra,Ora Ka,Oridan,Oridej,Ošibi,Valin,Valnira,Valnit,Velisp,Velin Ka,"
 "Vuštin,Vera,Vešter,Vilnis"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:8
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
@@ -4191,6 +4167,7 @@ msgstr ""
 "Tridris,Tridrsol,Tridrol,Tridrsol,Tridrus,Triduril,Triduring,Tridurlos,"
 "Tridurlol,Tridursil,Tridurus,Tritas,Tritajil,Tritajing,Tritasol,Tritaus"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:12
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
@@ -4310,6 +4287,7 @@ msgstr ""
 "Vebrilas,Vebrindujil,Vel,Vilit,Vol,Volas,Voldur,Vondel,Vorfin,Vorfindil,"
 "Vulas,Vuldur,Vundujil,Vilas,Vildor"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:13
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
@@ -4442,16 +4420,18 @@ msgstr ""
 "Vadrijeven,Varavijel,Vebritijen,Vil-Gandra,Violinde,Viovijel,Vitrang,"
 "Vitranijel,Vivijel,Vodija,Vong,Vorfiklija,Vorfing,Vorfirit,Vorfivijel,Vovijen"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr "Graa,Greaa,Gree,Kaa,Kaaš,Keeš,Koro,Kraa,Kuu,Kzaa,Kzuu"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:19
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kaja,Keja,Kiira,Kora"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4509,44 +4489,45 @@ msgstr ""
 "Etudri,Etugvin,Etun,Etunri,Etidri,Etinik,Blak,Bladok,Blajek,Blajedri,Blanri,"
 "Blebrin,Bledok,Blemir,Blenin,Blenvan,Bleolin,Blersin,Blid,Blidri,Blilin,"
 "Blinvan,Blolin,Blubrin,Blusin,Bludri,Blulin,Bluran,Blibrin,Blid,Bligvin,"
-"Blimir,Blir,Kak,Kadri,Kajebrin,Kajedri,Kajeran,Kajersin,Kar,Karak,Karadri,"
-"Karadok,Karajedri,Karajenin,Kararin,Kared,Karajedri,Karegvni,Karen,Kareobrin,"
-"Kareogvin,Kareonvan,Kareorajent,Kareorin,Karersin,Karik,Karidri,Karosin,,"
-"Karodin,Karor,Karoran,Karajent,Karudok,Karulin,Karigvni,Karin,Sajebrin,Semir,"
-"Senin,Seok,Seodri,Seodin,Seomir,Seonin,Seonri,Seorin,Sesin,Sin,Sinri,Kok,"
-"Konvan,Korsin,Kubrin,Kunri,Kerin,Sinik,Sirin,Dak,Dad,Dadok,Dajedri,Dajedok,"
-"Dajelin,Demir,Denvan,Deod,Deolin,Deonik,Derajent,Dibrin,Dinin,Dirsin,Disin,"
-"Didin,Gadri,Gajebrin,Gajedri,Gajersin,Gagvin,Gan,Ganin,Gar,Gesin,Gedin,"
-"Gegvin,Geodri,Ginvan,Glasin,Gladok,Glajersin,Glarajent,Gledri,Gelodin,Gleran,"
-"Glidin,Glilin,Glinri,Glirsin,Glodri,Glodin,Glonri,Glonvan,Glumir,Glun,Glunri,"
-"Glunvan,Glik,Glid,Glidok,Glinri,Glinvan,Gliran,Gok,Gor,Gubrin,Gud,Gulin,"
-"Gumir,Gur,Gvadok,Gvajek,Gvajedin,Gvan,Gvedin,Gvegvin,Gvelin,Gvenin,Gvenik,"
-"Gveosin,Gveod,Gveodok,Gveodri,Gveogvin,Gveoran,Gvidok,Gvod,Gvodin,Gvolin,"
-"Gvor,Gvusin,Gvudok,Gvumir,Gvuran,Gvibrin,Gvisin,Gvidri,Gvidok,Gvimir,Gvinin,"
-"Gidok,Gilin,Gimir,Labrin,Ladok,Lajelin,Lan,Lanin,Laran,Lek,Lemir,Lenvan,"
-"Leogvin,Lersin,Ligvin,Lin,Lirin,Lonin,Lorajent,Ludri,Ludok,Lunin,Lunvan,"
-"Lurajent,Mak,Madin,Majenin,Manri,Manik,Marsin,Mek,Menvan,Meolin,Meon,Meonin,"
-"Meorajent,Midri,Midri,Mimir,Mod,Modri,Monri,Moran,Morsin,Mubrin,Midok,Mugvin,"
-"Mursin,Midok,Migvin,Min,Mirajent,Ovak,Ovad,Ovadin,Ovajekin,Ovajedri,Ovarsin,"
-"Ovarin,Ovesin,Ovedri,Oveomir,Oveor,Oveorsin,Overan,Oversin,Ovidri,Ovinvan,"
-"Ovinik,Ovod,Ovodri,Ovogvin,Ovolin,Ovoran,Ovorsin,Ovorajent,Ovudri,Ovudin,"
-"Ovugvin,Ovur,Oviran,Rabrin,Rad,Ranvan,Rar,Reodin,Reodri,Rajesin,Rajedok,"
-"Rajemir,Rajerajent,Ranri,Rarsin,Renri,Renvan,Renik,Reod,Reodin,Reolin,Reor,"
-"Reoran,Reorajent,Reran,Rerajent,Robrin,Rodri,Rolin,Ronvan,Rubrin,Rugvin,"
-"Runik,Rur,Rigvin,Rilin,Rinik,Rirsin,Rirajent,Rosin,Rodin,Romir,Ron,Ronri,"
-"Rubrin,Rudri,Rumir,Run,Rursin,Ribrin,Risin,Ridri,Rigvin,Rinin,Rinri,Sajek,"
-"Sajelin,Sajemir,Sajenvan,Sajersin,Sanik,Saran,Sarajent,Sesin,Sedin,Sedri,"
-"Selin,Senin,Seodri,Seorsin,Sersin,Sidri,Simir,Sirin,Sod,Sodri,Soran,Suk,Sud,"
-"Sursin,Sid,Siran,Sirin,Tabrin,Tajek,Tajed,Tajedok,Tajemir,Tajenvan,Tajersin,"
-"Tanri,Tarsin,Tedin,Tegvin,Ten,Tenin,Tenvan,Teobrin,Teodin,Teor,Teorsin,"
-"Tarajent,Tinri,Tinvan,Tirin,Tod,Tud,Tudri,Tudok,Tunvan,Trajent,Tidin,Vadin,"
-"Vajedin,Vajedri,Vajenin,Varsin,Ven,Venin,Veosin,Veodin,Veodri,Veogvin,Veomir,"
-"Vinvan,Vinik,Virajent,Vobrin,Vogvin,Vonri,Vudin,Vugvin,Vik,Vigvin,Virsin,"
-"Irasin,Irajek,Iran,Iranin,Iranvan,Irarin,Ired,Iredin,Iregvin,Irerin,Irinvan,"
-"Irirajent,Irodri,Irulin,Irumir,Irunin,Irunvan,Irilin,Irimir,Irinik,Irirsin"
+"Blimir,Blir,Busin,Kak,Kadri,Kajebrin,Kajedri,Kajeran,Kajersin,Kar,Karak,"
+"Karadri,Karadok,Karajedri,Karajenin,Kararin,Kared,Karajedri,Karegvni,Karen,"
+"Kareobrin,Kareogvin,Kareonvan,Kareorajent,Kareorin,Karersin,Karik,Karidri,"
+"Karosin,,Karodin,Karor,Karoran,Karajent,Karudok,Karulin,Karigvni,Karin,"
+"Sajebrin,Semir,Senin,Seok,Seodri,Seodin,Seomir,Seonin,Seonri,Seorin,Sesin,"
+"Sin,Sinri,Kok,Konvan,Korsin,Kubrin,Kunri,Kerin,Sinik,Sirin,Dak,Dad,Dadok,"
+"Dajedri,Dajedok,Dajelin,Demir,Denvan,Deod,Deolin,Deonik,Derajent,Dibrin,"
+"Dinin,Dirsin,Disin,Didin,Gadri,Gajebrin,Gajedri,Gajersin,Gagvin,Gan,Ganin,"
+"Gar,Gesin,Gedin,Gegvin,Geodri,Ginvan,Glasin,Gladok,Glajersin,Glarajent,"
+"Gledri,Gelodin,Gleran,Glidin,Glilin,Glinri,Glirsin,Glodri,Glodin,Glonri,"
+"Glonvan,Glumir,Glun,Glunri,Glunvan,Glik,Glid,Glidok,Glinri,Glinvan,Gliran,"
+"Gok,Gor,Gubrin,Gud,Gulin,Gumir,Gur,Gvadok,Gvajek,Gvajedin,Gvan,Gvedin,"
+"Gvegvin,Gvelin,Gvenin,Gvenik,Gveosin,Gveod,Gveodok,Gveodri,Gveogvin,Gveoran,"
+"Gvidok,Gvilam,Gvod,Gvodin,Gvolin,Gvor,Gvusin,Gvudok,Gvumir,Gvuran,Gvibrin,"
+"Gvisin,Gvidri,Gvidok,Gvimir,Gvinin,Gidok,Gilin,Gimir,Haldar,Labrin,Ladok,"
+"Lajelin,Lan,Lanin,Laran,Lek,Lemir,Lenvan,Leogvin,Lersin,Ligvin,Lin,Lirin,"
+"Lonin,Lorajent,Ludri,Ludok,Lunin,Lunvan,Lurajent,Mak,Madin,Majenin,Manri,"
+"Manik,Marsin,Mek,Menvan,Meolin,Meon,Meonin,Meorajent,Midri,Midri,Mimir,Mod,"
+"Modri,Monri,Moran,Morsin,Mubrin,Midok,Mugvin,Mursin,Midok,Migvin,Min,"
+"Mirajent,Ovak,Ovad,Ovadin,Ovajekin,Ovajedri,Ovejn,Ovarsin,Ovarin,Ovesin,"
+"Ovedri,Oveomir,Oveor,Oveorsin,Overan,Oversin,Ovidri,Ovinvan,Ovinik,Ovod,"
+"Ovodri,Ovogvin,Ovolin,Ovoran,Ovorsin,Ovorajent,Ovudri,Ovudin,Ovugvin,Ovur,"
+"Oviran,Rabrin,Rad,Ranvan,Rar,Reodin,Reodri,Rajesin,Rajedok,Rajemir,"
+"Rajerajent,Ranri,Rarsin,Renri,Renvan,Renik,Reod,Reodin,Reolin,Reor,Reoran,"
+"Reorajent,Reran,Rerajent,Robrin,Rodri,Rolin,Ronvan,Rubrin,Rugvin,Runik,Rur,"
+"Rigvin,Rilin,Rinik,Rirsin,Rirajent,Rosin,Rodin,Romir,Ron,Ronri,Rubrin,Rudri,"
+"Rumir,Run,Rursin,Ribrin,Risin,Ridri,Rigvin,Rinin,Rinri,Sajek,Sajelin,Sajemir,"
+"Sajenvan,Sajersin,Sanik,Saran,Sarajent,Sesin,Sedin,Sedri,Selin,Senin,Seodri,"
+"Seorsin,Sersin,Sidri,Simir,Sirin,Sod,Sodri,Soran,Suk,Sud,Sursin,Sid,Siran,"
+"Sirin,Tabrin,Tajek,Tajed,Tajedok,Tajemir,Tajenvan,Tajersin,Tanri,Tarsin,"
+"Tedin,Tegvin,Ten,Tenin,Tenvan,Teobrin,Teodin,Teor,Teorsin,Tarajent,Tinri,"
+"Tinvan,Tirin,Tod,Tud,Tudri,Tudok,Tunvan,Trajent,Tidin,Vadin,Vajedin,Vajedri,"
+"Vajenin,Varsin,Ven,Venin,Veosin,Veodin,Veodri,Veogvin,Veomir,Vinvan,Vinik,"
+"Virajent,Vobrin,Vogvin,Vonri,Vudin,Vugvin,Vik,Vigvin,Virsin,Irasin,Irajek,"
+"Iran,Iranin,Iranvan,Irarin,Ired,Iredin,Iregvin,Irerin,Irinvan,Irirajent,"
+"Irodri,Irulin,Irumir,Irunin,Irunvan,Irilin,Irimir,Irinik,Irirsin"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4613,33 +4594,34 @@ msgstr ""
 "Elejanoik,Elejarka,Elenoik,Elerka,Elivijan,Elulona,Elurka,Elulira,Elulona,"
 "Elungven,Elura,Elikla,Elilira,Elingven,Eliniver,Elirka,Gvajera,Gvajesa,"
 "Gvangven,Gvejakla,Gveda,Gverka,Gvikla,Gvirka,Gvobrila,Gvol,Gvona,Gvongven,"
-"Gvonoik,Gvorijan,Gvulira,Gvusa,Guvakla,Gvina,Gvivijan,Gvikla,Gvida,Žakla,"
-"Žajena,Žajerka,Žajevijan,Žalijan,Žana,Žarka,Žasa,Žejabrila,Žejala,Žejanoik,"
-"Ženiver,Žirijan,Žisa,Žol,Žola,Žona,Žongven,Žonoik,Žora,Žorka,Žovijan,Žuda,"
-"Žul,Žulona,Žura,Žul,Žulijan,Žikla,Žiniver,Žinoik,Žirka,Živijan,Lajeniver,"
-"Lajenoik,Lajerijan,Langven,Larka,Lasa,Lejalona,Lejalijan,Leda,Lelona,Lelijan,"
-"Lengven,Lerka,Lesa,Lida,Lil,Lina,Lirka,Lirijan,Livijan,Lokla,Loda,Lolira,"
-"Lolona,Lula,Lulijan,Lungven,Lunoik,Lurijan,Luakla,Luala,Luanoik,Luarijan,"
-"Likla,Lila,Lilijan,Lina,Linoik,Majekla,Majeniver,Mavijan,Mejakla,Mejlijan,"
-"Mejana,Mejangven,Mejanoik,Meda,Melona,Mengven,Meniver,Merada,Merajekla,"
-"Merajelijan,Meral,Meralira,Meralona,Merana,Meranoik,Merejalona,Merjangven,"
-"Merejaniver,Merebrila,Merela,Merengven,Meresa,Merilijan,Merina,Merionik,"
-"Merisa,Merivijan,Merola,Merolijan,Merona,Meroniver,Merubrila,Meruda,Merurka,"
-"Meruala,Meruanoik,Meruarijan,Merida,Merilijan,Mesa,Milona,Molijan,Moniver,"
-"Mosa,Meda,Mulira,Mulijan,Murijan,Muabrila,Mualijan,Muangven,Muanoik,Mikla,"
-"Mil,Mila,Mura,Mivijan,Nabrila,Nejabrila,Najekla,Najel,Nalijan,Nangven,Nejala,"
-"Nejalira,Nejalona,Nejavijan,Nera,Nesa,Ninoik,Nirijan,Nivijan,Nobrila,Nola,"
-"Nonoik,Norka,Norijan,Nukla,Nola,Nulijan,Nungven,Nuvijan,Nualira,Nuarijan,"
-"Nuavijan,Nibrila,Nil,Nilijan,Nirijan,Nisava,Nivijan,Rajebrila,Rajera,Rajerka,"
-"Ralona,Rara,Rarka,Rasa,Rejakla,Rejala,Rejana,Rejangven,Rela,Relijan,Rengven,"
-"Rerka,Revijan,Rilona,Rilijan,Rirka,Rora,Rukla,Rurijan,Ruada,Ruala,Rualira,"
-"Rualona,Ruangven,Ribrila,Rina,Ringven,Sajel,Sajelira,Sajeniver,Sajerka,"
-"Sajesa,Salira,Sanoik,Sara,Sasa,Sajerka,Sena,Senoik,Sera,Silona,Sira,Sirijan,"
-"Sona,Sorka,Subrila,Sul,Sulona,Sulijan,Sura,Susa,Suala,Sualijan,Suangven,"
-"Suanoik,Suavijan,Silira,Silijan,Sesa,Isakla,Isajenoik,Isajerka,Isanoik,"
-"Isajekla,Isejalona,Isejalijan,Iseda,Isel,Iselona,Isilijan,Isionik,Isoda,"
-"Isongven,Isonoik,Isura,Isuaniver,Isikla,Isila,Isilijan,Isirka,Isasa"
+"Gvonoik,Gvorijan,Gvulira,Gvusa,Guvakla,Gvina,Gvivijan,Gvikla,Gvida,Heldra,"
+"Žakla,Žajena,Žajerka,Žajevijan,Žalijan,Žana,Žarka,Žasa,Žejabrila,Žejala,"
+"Žejanoik,Ženiver,Žirijan,Žisa,Žol,Žola,Žona,Žongven,Žonoik,Žora,Žorka,"
+"Žovijan,Žuda,Žul,Žulona,Žura,Žul,Žulijan,Žikla,Žiniver,Žinoik,Žirka,Živijan,"
+"Lajeniver,Lajenoik,Lajerijan,Langven,Larka,Lasa,Lejalona,Lejalijan,Leda,"
+"Lelona,Lelijan,Lengven,Lerka,Lesa,Lida,Lil,Lina,Lirka,Lirijan,Livijan,Lokla,"
+"Loda,Lolira,Lolona,Lula,Lulijan,Lungven,Lunoik,Lurijan,Luakla,Luala,Luanoik,"
+"Luarijan,Likla,Lila,Lilijan,Lina,Linoik,Majekla,Majeniver,Mavijan,Mejakla,"
+"Mejlijan,Mejana,Mejangven,Mejanoik,Meda,Melona,Mengven,Meniver,Merada,"
+"Merajekla,Merajelijan,Meral,Meralira,Meralona,Merana,Meranoik,Merejalona,"
+"Merjangven,Merejaniver,Merebrila,Merela,Merengven,Meresa,Merilijan,Merina,"
+"Merionik,Merisa,Merivijan,Merola,Merolijan,Merona,Meroniver,Merubrila,Meruda,"
+"Merurka,Meruala,Meruanoik,Meruarijan,Merida,Merilijan,Mesa,Milona,Molijan,"
+"Moniver,Mosa,Meda,Mulira,Mulijan,Murijan,Muabrila,Mualijan,Muangven,Muanoik,"
+"Mikla,Mil,Mila,Mura,Mivijan,Nabrila,Nejabrila,Najekla,Najel,Nalijan,Nangven,"
+"Nejala,Nejalira,Nejalona,Nejavijan,Nera,Nesa,Ninoik,Nirijan,Nivijan,Nobrila,"
+"Nola,Nonoik,Norka,Norijan,Nukla,Nola,Nulijan,Nungven,Nuvijan,Nualira,"
+"Nuarijan,Nuavijan,Nibrila,Nil,Nilijan,Nirijan,Nisava,Nivijan,Rajebrila,"
+"Rajera,Rajerka,Ralona,Rara,Rarka,Rasa,Rejakla,Rejala,Rejana,Rejangven,Rela,"
+"Relijan,Rengven,Rerka,Revijan,Rilona,Rilijan,Rirka,Rora,Rukla,Rurijan,Ruada,"
+"Ruala,Rualira,Rualona,Ruangven,Ribrila,Rina,Ringven,Sajel,Sajelira,Sajeniver,"
+"Sajerka,Sajesa,Salira,Sanoik,Sara,Sasa,Sajerka,Sena,Senoik,Sera,Silona,Sira,"
+"Sirijan,Sona,Sorka,Subrila,Sul,Sulona,Sulijan,Sura,Susa,Suala,Sualijan,"
+"Suangven,Suanoik,Suavijan,Silira,Silijan,Sesa,Isakla,Isajenoik,Isajerka,"
+"Isanoik,Isajekla,Isejalona,Isejalijan,Iseda,Isel,Iselona,Isilijan,Isionik,"
+"Isoda,Isongven,Isonoik,Isura,Isuaniver,Isikla,Isila,Isilijan,Isirka,Isasa"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:28
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
@@ -4664,6 +4646,7 @@ msgstr ""
 "Ksafraz,Ksartrez,Ksaz,Ksasteks,Kserksiks,Ksiraz,Ksir,Ksirtraz,Ksirtrez,Ksirz,"
 "Zandler,Zedriks,Zilriks,Zizaz,Zlap,Zalks,Zupde"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:32
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
@@ -4682,6 +4665,7 @@ msgstr ""
 "Tangaloa,Tangaroa,Taum,Tikitiki,Tini,Tinilau,Tinirau,Toniva,Triton,Vizi,"
 "Vodnik,Vorukasa"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:33
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
@@ -4694,6 +4678,7 @@ msgstr ""
 "Vata,Marina,Miranda,Mirijam,Molpe,Partenopa,Pelagija,Pizinoe,Ran,Sedna,Stela "
 "Maris,Telksijepija,Tirgata,Vateja,Ved-ava,Ven-emo,Vete-ema"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:37
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
@@ -4710,6 +4695,7 @@ msgstr ""
 "Sekol,Silas,Skel,Skeps,Slel,Snol,Soil,Sorkol,Srel,Triksoz,Vilajil,Visal,"
 "Vlanis,Ksabrak,Ksamalel,Ksinas,Ksnamos,Ksopkon,Zalsp,Zlek,Zepsek,Zekp"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:38
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
@@ -4728,6 +4714,7 @@ msgstr ""
 "Triksed,Vilajila,Visalaji,Vlanisa,Ksabrak,Ksamalija,Ksina,Kinasija,Ksnamas,"
 "Ksopkne,Zalsp,Zlek,Zepsek,Zekp"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:42
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
@@ -4743,6 +4730,7 @@ msgstr ""
 "Koruk,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,Markak,Markuk,"
 "Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakon,Urkar,Irkark"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:46
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
@@ -4810,6 +4798,7 @@ msgstr ""
 "Vrugduš,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vrurk,Vudiš,Vuk,Vulg,Vulo,Vunak,Vurag,"
 "Vurbag,Vurg,Vušnak"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:50
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
@@ -4822,6 +4811,7 @@ msgstr ""
 "Nak,Nuk,Kar,Pag,Rek,Rok,Ruk,Sark,Šak,Šuf,Štuh,Targ,Tog,Truf,Tur,Tog,Torg,"
 "Trok,Tsok,Tuh,Tuk,Ruh,Ug,Uh,Urg,Urgh,Urk,Vak,Zog,Zug"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:54
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
@@ -4850,6 +4840,7 @@ msgstr ""
 "Trumbadum,Tumtentantarun,Tumtonongatum,Tumtumgamtomtom,Vonrunmaldin,"
 "Vudadunopl"
 
+# |, no-check-spell
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
@@ -4864,6 +4855,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Računarski igrač možda neće umeti valjano da igra stranu $side_number u ovom "
+"scenariju. Ona je namenjena za ljudskog igrača."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4886,7 +4879,7 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Aveti imaju vrlo čudne otpornosti na šetu, i kreću se vrlo sporo preko "
+" Aveti imaju vrlo čudne otpornosti na štetu, i kreću se vrlo sporo preko "
 "otvorene vode."
 
 #: data/core/macros/special-notes.cfg:11
@@ -4929,13 +4922,12 @@ msgstr ""
 " Odlučnost ove jedinice smanjuje štetu od nekih napada, ali samo u odbrani."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Vođstvo ove jedinice omogućuje prijateljskim jedinicama do nje da nanose "
-"više štete u borbi, mada samo ako su nivoa nižeg od vođstva."
+" Vođstvo ove jedinice omogućuje susednim prijateljskim jedinicama da nanose "
+"više štete u borbi, mada samo ako su nižeg nivoa."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4963,7 +4955,7 @@ msgid ""
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
 " U šumama, veština zasede čini ovu jedinicu nevidljivom neprijateljima, osim "
-"ukoliko se ne nađu odmah do nje, ili ako se otrkije napadom."
+"ukoliko se ne nađu odmah do nje, ili ako se otkrije napadom."
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
@@ -5013,11 +5005,12 @@ msgstr ""
 "suprotne strane tog neprijatelja."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr " Neprijatelji koji nastradaju od kuge vaskrsnuće u neživot."
+msgstr ""
+" Neprijatelji koji nastradaju od kuge vaskrsnuće u neživot, osim ako se "
+"nalaze u selu."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -5192,9 +5185,8 @@ msgstr "zdravlje"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "odmaranje u toku kretanja"
+msgstr "može se odmarati u pokretu, trpi četvrt manje štete od otrova"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -5214,37 +5206,32 @@ msgstr "u boju bez zaostatka u nepovoljna doba dana/noći"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "nejakost"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "nemrtvost"
+msgstr "nejakost"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "usporavanje"
+msgstr "sporost"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "odanost"
+msgstr "sporost"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "srednje"
+msgstr "priglupost"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "neustrašivost"
+msgstr "priglupost"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
@@ -5338,7 +5325,6 @@ msgstr "zmagovi"
 
 #. [race]: id=drake
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5451,13 +5437,13 @@ msgstr ""
 "osigurali sebi mesto u herojskim predanjima svoje vrste.\n"
 "\n"
 "<header>text='Rasprostranjenost'</header>\n"
-"Postojbina zmagova je ostrvo Morogor u Velikom okeanu. Međutim, kako je "
-"ostrvo vekovima lagano tonulo, kolonije zmaške razmileše se do Velikog "
-"kontinenta. Zmagovi obično svijaju domove u planinskim pećinama, blizu "
-"vulkana radi zaštite svojih jaja, izleglih i kovnica. Dok zmagovi uživaju u "
-"toplom, unutrašnji im plam omogućava da se održe u srazmerno hladnim "
-"predelima. Ovo im je dopustilo da nastane čak i neke planine na dalekom "
-"severu Velikog kontinenta."
+"Postojbina zmagova beše lanac vulkanskih ostrva u Velikom okeanu. Sprega "
+"prenaseljenosti i postepenog tonjenja mnogih od tih ostrva učini da se "
+"kolonije zmaške razmile do Velikog kontinenta. Zmagovi obično svijaju domove "
+"u planinskim pećinama, blizu vulkana radi zaštite svojih jaja, izleglih i "
+"kovnica. Dok zmagovi uživaju u toplom, unutrašnji im plam omogućava da se "
+"održe u srazmerno hladnim predelima. Ovo im je dopustilo da nastane čak i "
+"neke planine na dalekom severu Velikog kontinenta."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
@@ -5476,7 +5462,6 @@ msgstr "patuljci"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5542,17 +5527,15 @@ msgstr ""
 "\n"
 "Može biti zbog svoje podvojenosti, patuljci su obično nepoverljivi ili "
 "neprijateljski nastrojeni prema većini drugih rasa, posebno vilenjacima. "
-"Jedini izuzetak ovakvom ophođenu čine prema ljudima, što se može ispratiti "
+"Jedini izuzetak ovakvom ophođenju čine prema ljudima, što se može ispratiti "
 "do razdoblja Haldrika I i pristizanja ljudi i orkova na kontinent. U to "
 "vreme patuljci počeše dopuštati nekim ljudima, ponajpre neistomišljenicima i "
-"odmetnicima od Krune Vesnota, da naseljavaju određena područja Severozemlja. "
-"Povod tome ne beše iznenađujuć; položaj ovih pojedinaca podsećaše patuljke "
-"na sopstvene prapočetke progona, izazivajući osećanje bliskosti. Patuljcima "
-"su imali i koristi od uspostavljanja veza sa izgnanicima. Ovi bi naseljavali "
-"predele koji patuljcima nisu bili po volji — ravnice, šume, močvare — "
-"rešavajući ih odbrane tih područja. Kasnije, pošto im zapretiše orkovi, "
-"patuljci i ljudski im saveznici oformiše Knalganski savez za odbranu svog "
-"zajedničkog carstva.\n"
+"odmetnicima iz Kraljevstva Vesnota, da naseljavaju određena područja "
+"Severozemlja. Povod tome ne beše iznenađujuć; položaj ovih pojedinaca "
+"podsećaše patuljke na sopstvene prapočetke progona, izazivajući osećanje "
+"bliskosti. Patuljcima su imali i koristi od uspostavljanja veza sa "
+"izgnanicima. Ovi bi naseljavali predele koji patuljcima nisu bili po volji — "
+"ravnice, šume, močvare — rešavajući ih odbrane tih područja.\n"
 "\n"
 "Patuljci su omanjeg stasa po ljudskim merilima, ali nipošto krhki. Njihovih "
 "se ratnika, žilavih i moćnih, širom kontinenta i plaši i poštuje po junaštvu "
@@ -5563,7 +5546,7 @@ msgstr ""
 "tehnički najnaprednijom rasom na kontinentu. Jedno od najčuvenijih i "
 "najstrašnijih otkrića im je tajanstveni crni prah koji izaziva zaglušujući "
 "prasak kada se izloži plamenu ili varnici. Pojedini patuljački ratnici "
-"koriste ovaj prah za upućivanje malih predmeta naizmernim brzinama ka "
+"koriste ovaj prah za upućivanje malih predmeta neizmernim brzinama ka "
 "protivniku. S obzirom na svoje tehnološke težnje, mnogi su patuljci "
 "nepoverljivi prema znalcima magije. Pa ipak, neki uvežbavaju oblike magije "
 "zasnovane na rezbarenju runâ; znani kao runokovci, gravurama mogu začarati "
@@ -5586,7 +5569,6 @@ msgstr "vilenjaci"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5627,28 +5609,36 @@ msgstr ""
 "Naspram ljudi, vilenjaci su nešto viši rastom, okretniji, ali nežnije građe. "
 "Uši su im neznatno zašiljene, ten bled, a kosa uglavnom plava. Malo je "
 "razlika između ljudi i vilenjaka izrazitijih od neobično dugog veka potonjih "
-"— ne ophrva li ih bolest, udes ili rat, obično požive dva stoleća. Dok su "
-"poznati vilenjaci visokih magijskih sklonosti koji su dočekali i kraj trećeg "
-"stoleća, većina počinje fizički da posustaje kako se bliži dvadeseta dekada, "
-"i doživi još koju potom. Vilenjaci su u maloj meri prirodno prožeti magijom. "
-"Iako se pretežno ne umeju njome neposredno služiti, njeno potajno prisustvo "
-"pruža im oštra čula i dug vek. Magija u vilenjaka potpomaže i izvesne "
-"veštine, poput streljaštva ili prikrivanja, omogućavajući postignuća u njima "
-"većini ovosvetskih bića zapanjujućim. Vilenjaci koji se nauče opštijim "
-"načinima upotrebe ove moći mogu postati njeni istinski vladari. Mnogi "
-"izaberu da svoj dar primene u vidanju drugih.\n"
+"— ne ophrva li ih bolest, udes ili rat, obično požive dva i po stoleća. Dok "
+"su poznati vilenjaci visokih magijskih sklonosti koji su dočekali i kraj "
+"trećeg stoleća, većina počinje fizički da posustaje između dvadesetpete i "
+"tridesete dekade, da bi potom ubrzano svenuli za nepunu godinu ili dve.\n"
+"\n"
+"Vilenjaci su u maloj meri prirodno prožeti magijom. Iako se pretežno ne "
+"umeju njome neposredno služiti, njeno potajno prisustvo pruža im oštra čula "
+"i dug vek. Magija u vilenjaka potpomaže i izvesne veštine, poput streljaštva "
+"ili prikrivanja, omogućavajući postignuća u njima većini ovosvetskih bića "
+"zapanjujućim. Vilenjaci koji se nauče opštijim načinima upotrebe ove moći "
+"mogu postati njeni istinski vladari. Mnogi izaberu da svoj dar primene u "
+"vidanju drugih.\n"
+"\n"
+"Poneki vilenjak, koji se duboko otisne stazama magije i misticizma, postane "
+"osetljiv na prisustvo hladnog gvožđa toliko da ga ovo može opeći. Vilenjačka "
+"predanja nagoveštavaju češću pojavu ovoga u dalekoj prošlosti.\n"
 "\n"
 "Vilenjaci provode puno vremena izoštravajući svoju nadarenost i veštine. Oni "
 "koji nisu pristali magijskim umećima obično se posvećuju fizičkim veštinama. "
 "Ishod toga je vilenjačko nenadmašno streljaštvo, možda njihov najznačajniji "
 "ratnički pravac. Gotovo svi vilenjački borci nose luk, a nijedna se druga "
 "rasa ne može meriti s vilin-strelcima po hitrosti i preciznosti. Svi "
-"vilenjaci takođe dele neobjašnjivu privrženost neiskvarenoj prirodi. Često "
-"se osećaju neprijatno na pustim neozelenjenim prostorima, što ih navodi da "
-"domove grade u šumama Velikog kontinenta, poput Etenvuda na jugozapadu i "
-"Vesmera na severozapadu. Vilenjaci su najdrevnija rasa kontinenta, moguće s "
-"izuzetkom trolova. Mnogim vilenjačkim naseobinama nije moguće pouzdano "
-"proceniti starost, koja se zasigurno proteže više od milenijuma."
+"vilenjaci takođe dele silnu privrženost neiskvarenoj prirodi. Često se "
+"osećaju neprijatno na pustim neozelenjenim prostorima. Uglavnom žive po "
+"šumama Velikog kontinenta: u Etenvudu na jugozapadu, Vesmeru na "
+"severozapadu, i velikim severnim šumama Lintanira.\n"
+"\n"
+"Vilenjaci su najdrevnija rasa kontinenta, moguće s izuzetkom trolova. Mnogim "
+"vilenjačkim naseobinama nije moguće pouzdano proceniti starost, koja se "
+"zasigurno proteže više od milenijuma."
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:128
@@ -5867,7 +5857,6 @@ msgstr "orkovi"
 
 #. [race]: id=orc
 #: data/core/units.cfg:251
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5961,7 +5950,7 @@ msgstr ""
 "nekom području, te podignu velike tabore skoro nalik gradovima, ali se čak i "
 "takva lako razobliče i napuste čim naiđe potreba za premeštanje horde.\n"
 "\n"
-"Najstariji poznati orkovi doživeli su 50 do 60 leta, ali tek šacica "
+"Najstariji poznati orkovi doživeli su 50 do 60 leta, ali tek šačica "
 "pojedinaca dočeka preko dve ili tri dekade pre susreta sa sudbinom, ili u "
 "ratu ili od ruke nekog od svojih sunarodnika. Stari orkovi su obično šamani, "
 "kao možda jedini na koje njihovi sunarodnici gledaju sa poverenjem i bez "
@@ -5993,7 +5982,6 @@ msgstr "trolovi"
 
 #. [race]: id=troll
 #: data/core/units.cfg:266
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6080,7 +6068,6 @@ msgstr "nemrtvi"
 
 #. [race]: id=undead
 #: data/core/units.cfg:288
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6132,15 +6119,13 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
-#, fuzzy
 msgid "race^Wolf"
-msgstr "vilenjak"
+msgstr "vuk"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolves"
-msgstr "vilenjaci"
+msgstr "vukovi"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
@@ -6201,7 +6186,7 @@ msgstr "teško"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "jezivo"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -6248,6 +6233,7 @@ msgstr "$name|ski most,$name|ski prelaz"
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name|ski drum,$name|ski prohod,$name|ski put"
 
+# |, no-check-spell
 #. [language]
 #: data/hardwired/english.cfg:21
 msgid "$name River,River $name"
@@ -6299,7 +6285,7 @@ msgstr "$name|em,$name|ford,$name|kros,$river|ford,$river|kros"
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$name|em,$name|bridž"
+msgstr "$river|bridž,$river|bridž,$river|bridž,$name|em,$name|bridž"
 
 #. [language]
 #: data/hardwired/english.cfg:30
@@ -6390,11 +6376,15 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"„Boj za Vesnot“ automatski šalje anonimnu statistiku vašeg napredovanja kroz "
+"igru serveru koji ih skladišti, što nam otvara nekoliko mogućnosti za rad na "
+"poboljšanju Vesnota. Da biste više saznali više o ovome, ili isključili "
+"slanje, kliknite na koverat u donjem desnom uglu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "— programeri Vesnota"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -6612,7 +6602,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -6623,8 +6612,8 @@ msgstr ""
 "Otrovane jedinice gubiće osam udarpoena po potezu, dok ne spadnu na jedan "
 "pred smrt. Stajaće tako na korak do smrti dok se otrov ne isceli. Vidari "
 "mogu sprečiti pogoršanje stanja otrovane jedinice, ali se otrova neće rešiti "
-"dok se ne obnovi (ako može), ili provede ceo potez u selu ili nadomak "
-"jedinice sa sposobnošću ‘isceljivanja’."
+"dok se ne obnovi (ako može), ili započne potez u selu ili nadomak jedinice "
+"sa sposobnošću ‘isceljivanja’."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -6815,7 +6804,7 @@ msgid ""
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Jedinice sa sposobnošću ‘vođstva’ čine da se susedne jedinice nižeg nivoa "
-"bore bolje. Koristite vođe da potpmognete napredovanje drugim jedinicama."
+"bore bolje. Koristite vođe da potpomognete napredovanje drugim jedinicama."
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
@@ -6841,7 +6830,7 @@ msgstr "— princeza Lizara, 515.gv."
 #. [tip]
 #: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
-msgstr "Pročitajte spisak prečica sa tastature u meniju podešavanja."
+msgstr "Pročitajte spisak prečica sa tastature u meniju postavki."
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
@@ -6882,7 +6871,7 @@ msgid ""
 "damage they do on all attacks until they end a turn."
 msgstr ""
 "Udar ‘usporenja’ usporava kretanje neprijateljske jedinice i prepolovljava "
-"štetu koju nanosi u svim napadama do kraja poteza."
+"štetu koju nanosi u svim napadima do kraja poteza."
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
@@ -7013,34 +7002,35 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"U mnogim scenarijima u pohodu, saveznicima kojima upravlja računar možete "
+"izdavati jednostavne upute preko kontekstnog menija na desni klik."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Pomozite nam da poboljšamo Vesnot za vas!"
+msgstr "Kačenje statistike u pripremi — pomozite nam da poboljšamo Vesnot!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Sačuvaj moj odgovor i ne pitaj opet"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Da ovu postavku kasnije promenite, kliknite na ikonu koverta u glavnom "
+"meniju."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "pesak"
+msgstr "Pošalji"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Ne pitaj me ponovo!"
+msgstr "Ne šalji"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Ne pitaj pred svako slanje podataka"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7139,6 +7129,7 @@ msgstr "Rad."
 msgid "short end-turn^E."
 msgstr "K."
 
+# well-spelled: ПП
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:252
 msgid "MP"
@@ -7156,7 +7147,6 @@ msgstr "Igraj"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
 msgstr "snimak bez pauze"
 
@@ -7232,14 +7222,12 @@ msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Izabrano neispravno oružje, možda krivicom pitonske VI."
 
 #: src/actions.cpp:1058 src/actions.cpp:1333
-#, fuzzy
 msgid "female^poisoned"
-msgstr "nemrtvost"
+msgstr "otrovana"
 
 #: src/actions.cpp:1070 src/actions.cpp:1345
-#, fuzzy
 msgid "female^stone"
-msgstr "kršnost"
+msgstr "okamenjena"
 
 #: src/actions.cpp:1070 src/actions.cpp:1345
 msgid "stone"
@@ -7306,66 +7294,65 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:367
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:400
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "pohod"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "scenario"
 
+# well-spelled: вигр
 #: src/addon_management.cpp:404
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "udaljeni scenario"
+msgstr "vigr. razdoblje"
 
+# well-spelled: вигр
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "udaljeni scenario"
+msgstr "vigr. frakcija"
 
+# well-spelled: вигр
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "udaljeni scenario"
+msgstr "vigr. paketa mapa"
 
+# well-spelled: вигр
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "udaljeni scenario"
+msgstr "vigr. scenario"
 
+# well-spelled: вигр
 #: src/addon_management.cpp:412
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "vigr. pohod"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "resursi"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(nepoznato)"
 
 #: src/addon_management.cpp:445
 msgid "Dependencies"
 msgstr "Zavisnosti"
 
 #: src/addon_management.cpp:446
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Ovaj dodatak se oslanja na sledeće:"
-msgstr[1] "Ovaj dodatak se oslanja na sledeće:"
-msgstr[2] "Ovaj dodatak se oslanja na sledeće:"
-msgstr[3] "Ovaj dodatak se oslanja na sledeće:"
+msgstr[0] "Ovaj dodatak se oslanja na sledeće koji još nisu instalirani:"
+msgstr[1] "Ovaj dodatak se oslanja na sledeće koji još nisu instalirani:"
+msgstr[2] "Ovaj dodatak se oslanja na sledeće koji još nisu instalirani:"
+msgstr[3] "Ovaj dodatak se oslanja na sledeći koji još nije instaliran:"
 
 #: src/addon_management.cpp:451
 msgid "Do you still want to download it?"
@@ -7398,28 +7385,26 @@ msgid "Response"
 msgstr "Odziv"
 
 #: src/addon_management.cpp:574
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Preuzimam dodatak..."
+msgstr "Preuzimam dodatak: $addon_title|..."
 
 #: src/addon_management.cpp:589
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Dodatak nema valjano ime datoteke ili fascikle i ne može se instalirati."
 
 #: src/addon_management.cpp:638
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "Dodatak je instaliran."
+msgstr "Dodatak ‘$addon_title|’ uspešno instaliran."
 
 #: src/addon_management.cpp:640
 msgid "Add-on Installed"
-msgstr "Dodatak je instaliran"
+msgstr "Dodatak instaliran"
 
 #: src/addon_management.cpp:699
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Šaljem dodatak"
+msgstr "Zastareli dodaci"
 
 #: src/addon_management.cpp:701
 msgid ""
@@ -7429,17 +7414,25 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Uz neke zastarele lokalne dodatke priloženi su podaci za objavljivanje. Neće "
+"biti ponuđeni za ažuriranje."
 msgstr[1] ""
+"Uz neke zastarele lokalne dodatke priloženi su podaci za objavljivanje. Neće "
+"biti ponuđeni za ažuriranje."
 msgstr[2] ""
+"Uz neke zastarele lokalne dodatke priloženi su podaci za objavljivanje. Neće "
+"biti ponuđeni za ažuriranje."
 msgstr[3] ""
+"Uz zastareli lokalni dodatak priloženi su podaci za objavljivanje. Neće biti "
+"ponuđen za ažuriranje."
 
 #: src/addon_management.cpp:710
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "Ne mogu da nađem nijedan ažurirani dodatak na ovom serveru."
 
 #: src/addon_management.cpp:710
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Nema dodataka za ažuriranje"
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
 #: src/dialogs.cpp:653 src/menu_events.cpp:201 src/menu_events.cpp:879
@@ -7447,14 +7440,12 @@ msgid "Name"
 msgstr "ime"
 
 #: src/addon_management.cpp:724
-#, fuzzy
 msgid "New version"
-msgstr "verzija"
+msgstr "nova verzija"
 
 #: src/addon_management.cpp:724
-#, fuzzy
 msgid "Old version"
-msgstr "verzija"
+msgstr "stara verzija"
 
 #: src/addon_management.cpp:725 src/addon_management.cpp:928
 msgid "Author"
@@ -7465,63 +7456,59 @@ msgid "Size"
 msgstr "veličina"
 
 #: src/addon_management.cpp:779
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Šaljem dodatak"
+msgstr "Ažuriraj dodatke"
 
 #: src/addon_management.cpp:780
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Izaberite dodatak za ažuriranje:"
 
 #: src/addon_management.cpp:794
-#, fuzzy
 msgid "Update all"
-msgstr "pećinski zid"
+msgstr "Ažuriraj sve"
 
 #: src/addon_management.cpp:851
-#, fuzzy
 msgid "Update failed"
-msgstr "pećinski zid"
+msgstr "Ažuriranje nije uspelo"
 
 #: src/addon_management.cpp:853
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
-msgstr[1] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
-msgstr[2] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
-msgstr[3] "Sledeći dodatak ima grešku i ne može se učitati:"
+msgstr[0] ""
+"Sledeći dodaci imaju grešku i ne mogu se uspešno preuzeti ili ažurirati:"
+msgstr[1] ""
+"Sledeći dodaci imaju grešku i ne mogu se uspešno preuzeti ili ažurirati:"
+msgstr[2] ""
+"Sledeći dodaci imaju grešku i ne mogu se uspešno preuzeti ili ažurirati:"
+msgstr[3] ""
+"Sledeći dodatak ima grešku i ne može se uspešno preuzeti ili ažurirati:"
 
 #: src/addon_management.cpp:862
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Dodaci"
+msgstr "Ažuriranje uspelo"
 
 #: src/addon_management.cpp:863
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Dodatak uspešno ažuriran."
 
 #: src/addon_management.cpp:864
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Svi dodaci uspešno ažurirani."
 
 #: src/addon_management.cpp:888
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "Povezujem se sa serverom..."
+msgstr "Povezujem se sa serverom dodataka..."
 
 #: src/addon_management.cpp:891
 msgid "Could not connect to host."
-msgstr "Nisam mogao da se povežem."
+msgstr "Ne mogu da se povežem."
 
 #: src/addon_management.cpp:899
-#, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Tražim spisak dodataka"
 
 #: src/addon_management.cpp:911
-#, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Greška u komunikaciji sa serverom."
 
@@ -7551,9 +7538,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Na ovom serveru nema dodataka spremnih za preuzimanje."
 
 #: src/addon_management.cpp:1019
-#, fuzzy
 msgid "Get add-ons"
-msgstr "Dodaci"
+msgstr "Dobavi dodatak"
 
 #: src/addon_management.cpp:1020
 msgid "Choose the add-on to download."
@@ -7573,7 +7559,6 @@ msgid "Remote host disconnected."
 msgstr "Udaljeni domaćin je prekinuo vezu."
 
 #: src/addon_management.cpp:1075
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7586,7 +7571,6 @@ msgid "Error"
 msgstr "Greška"
 
 #: src/addon_management.cpp:1094
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Nema instaliranih dodataka."
 
@@ -7595,9 +7579,8 @@ msgid "Choose the add-on to remove."
 msgstr "Izaberite dodatak za uklanjanje."
 
 #: src/addon_management.cpp:1106
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Šaljem dodatak"
+msgstr "Deinstaliraj dodatke"
 
 #: src/addon_management.cpp:1118
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -7616,9 +7599,8 @@ msgid "Add-on deleted"
 msgstr "Dodatak obrisan"
 
 #: src/addon_management.cpp:1149
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "Dodatak ne može biti obrisan — nema datoteke."
+msgstr "Dodatak se ne može uspešno obrisati:"
 
 #: src/ai.cpp:1715
 msgid "Unknown unit type : "
@@ -7823,9 +7805,8 @@ msgid "Show replay"
 msgstr "Pusti snimak"
 
 #: src/dialogs.cpp:689
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Odustani"
+msgstr "Poništi naređenja"
 
 #: src/dialogs.cpp:696
 msgid "Delete Save"
@@ -7899,25 +7880,22 @@ msgid "Select difficulty level:"
 msgstr "Izaberite nivo težine:"
 
 #: src/game.cpp:1296
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Želite li zaista da se otpusti?"
+msgstr "Želite li zaista da pokrenete server?"
 
 #: src/game.cpp:1297
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
-msgstr ""
+msgstr "Server će raditi kao pozadinski proces dok se ne otkače svi korisnici."
 
 #: src/game.cpp:1301
-#, fuzzy
 msgid "Don't show again"
-msgstr "Ne pitaj me ponovo!"
+msgstr "Ne pokazuj ponovo"
 
 #: src/game.cpp:1372
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Greška prilikom igranja igre: "
+msgstr "Greška pri pokretanju servera: "
 
 #: src/game.cpp:1374 src/playcampaign.cpp:95 src/playcampaign.cpp:371
 msgid "The game could not be loaded: "
@@ -7964,9 +7942,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "Vaspostavljam fontove za tekući jezik."
 
 #: src/game.cpp:2003
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Šaljem dodatak"
+msgstr "Tražim instalirane dodatke."
 
 #: src/game.cpp:2012
 msgid "Loading title screen."
@@ -7977,22 +7954,20 @@ msgid "Invalid color range: "
 msgstr "Neispravan opseg boja: "
 
 #: src/game_events.cpp:138
-#, fuzzy
 msgid "Error: "
-msgstr "Greška"
+msgstr "Greška: "
 
 #: src/game_events.cpp:141
-#, fuzzy
 msgid "Warning: "
-msgstr "jutro"
+msgstr "Upozorenje: "
 
 #: src/game_events.cpp:144
 msgid "Debug: "
-msgstr ""
+msgstr "Ispravljanje: "
 
 #: src/game_events.cpp:147
 msgid "Info: "
-msgstr ""
+msgstr "Podatak: "
 
 #: src/game_events.cpp:1115
 msgid "Victory:"
@@ -8021,12 +7996,12 @@ msgid "invisible: "
 msgstr "nevidljiva: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
-"Ova jedinica je usporena. Naneće samo polovinu normalne štete kada napada."
+"Ova jedinica je usporena. Naneće samo polovinu normalne štete kada napada, a "
+"trošak kretanja joj je udvostručen."
 
 #: src/generate_report.cpp:101
 msgid "slowed: "
@@ -8064,7 +8039,7 @@ msgstr "otpornosti: "
 
 #: src/generate_report.cpp:170
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(npd/obr)"
 
 #: src/generate_report.cpp:189 src/multiplayer_create.cpp:401
 msgid "Experience Modifier: "
@@ -8087,14 +8062,14 @@ msgstr[2] "napada"
 msgstr[3] "napad"
 
 #: src/generate_report.cpp:267
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "napad"
+msgstr "% preciznosti"
 
 #: src/generate_report.cpp:273
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "štete"
+msgstr "% pariranja"
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
@@ -8156,10 +8131,10 @@ msgstr "rasa: "
 msgid "Abilities: "
 msgstr "sposobnosti: "
 
+# well-spelled: спос
 #: src/help.cpp:1348
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "sposobnosti: "
+msgstr "dogradnje spos.: "
 
 #: src/help.cpp:1366
 msgid "Cost: "
@@ -8291,17 +8266,17 @@ msgstr "?"
 #: src/loadscreen.cpp:232
 #, fuzzy
 msgid "Verifying cache..."
-msgstr "Proveravam ostavu."
+msgstr "Overavam keš..."
 
 #: src/loadscreen.cpp:251
 #, fuzzy
 msgid "Reading unit files..."
-msgstr "Čitam datoteke jedinica."
+msgstr "Čitam datoteke jedinica..."
 
 #: src/loadscreen.cpp:270
 #, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Čitam datoteke i pravim ostavu."
+msgstr "Čitam datoteke i stvaram keš..."
 
 #: src/map.cpp:162
 msgid "A map without a header is not supported"
@@ -8313,20 +8288,19 @@ msgstr "Nasumične mape neparne širine nisu podržane."
 
 #: src/menu_events.cpp:58 src/play_controller.cpp:809 src/playcampaign.cpp:108
 msgid "Auto-Save"
-msgstr "Samočuvanje"
+msgstr "Samoupis"
 
 #: src/menu_events.cpp:98 src/menu_events.cpp:101 src/menu_events.cpp:105
 msgid "Do you really want to dismiss him?"
-msgstr "Želite li zaista da se otpusti?"
+msgstr "Želite li zaista da ga otpustite?"
 
 #: src/menu_events.cpp:98
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Gospodaru, ova jedinica je blizu napredovanju! "
+msgstr "Gospodaru, ova jedinica je odana i ne traži izdatke! "
 
 #: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
 msgid "Do you really want to dismiss her?"
-msgstr "Želite li zaista da se otpusti?"
+msgstr "Želite li zaista da je otpustite?"
 
 #: src/menu_events.cpp:101
 msgid "My lord, this unit is an experienced one, having advanced levels! "
@@ -8341,7 +8315,6 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: src/menu_events.cpp:202 src/menu_events.cpp:880
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "nv."
 
@@ -8585,247 +8558,216 @@ msgid "Search"
 msgstr "Traži"
 
 #: src/menu_events.cpp:1761
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Nema nijednog pohoda.\n"
+msgstr "Ova naredba trenutno nije dostupna."
 
 #: src/menu_events.cpp:1772
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Spisak dostupnih naredbi i pomoć za njih. Upotrebite „help all“ da uključite "
+"i trenutno nedostupne naredbe."
 
 #: src/menu_events.cpp:1877
-#, fuzzy
 msgid " No help available."
-msgstr "Nema ciljeva"
+msgstr " Pomoć nije dostupna."
 
 #: src/menu_events.cpp:2032
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Šalje upit serveru. Bez argumenata, server treba da nabroji dostupne naredbe."
 
 #: src/menu_events.cpp:2035
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Zabranjuje i izbacuje igrača ili posmatrača. Ako nije u igri, već na "
+"serveru, biće samo zabranjen."
 
 #: src/menu_events.cpp:2038
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Izbacuje igrača ili posmatrača."
 
 #: src/menu_events.cpp:2040
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Utišava posmatrača. Bez argumenata prikazuje stanje utišanosti."
 
 #: src/menu_events.cpp:2042
 msgid "Mute all observers."
-msgstr ""
+msgstr "Utišava sve posmatrače."
 
 #: src/menu_events.cpp:2052
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Šalje poruku administratorima servera trenutno na vezi."
 
 #: src/menu_events.cpp:2054
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Šalje emociju ili ličnu radnju u ćaskanje. Upotreba: /me <poruka>"
+msgstr "Šalje emociju ili ličnu radnju u ćaskanje."
 
 #: src/menu_events.cpp:2057
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Šalje privatnu poruku. Ne možete slati poruke igračima na bilo kojoj strani "
-"u igri. Upotreba: /msg <nadimak> <poruka>"
+"Šalje privatnu poruku. Ne možete slati poruke igračima koji ne upravljaju "
+"nekom stranom u tekućoj igri u kojoj ste i sami."
 
 #: src/menu_events.cpp:2063
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Menja nivo beleženja za domen beleženja."
 
 #: src/menu_events.cpp:2065
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "Dodaje nadimak na spisak ignorisanih. Upotreba: /list ignore <nadimak>"
+msgstr "Dodaje nadimak na spisak ignorisanih."
 
 #: src/menu_events.cpp:2067
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Dodat na spisak prijatelja: "
+msgstr "Dodaje nadimak na spisak prijatelja."
 
 #: src/menu_events.cpp:2069
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Uklanja igrača sa spiska ignorisanih ili prijatelja. Upotreba: /list remove "
-"<nadimak>"
+msgstr "Uklanja igrača sa spiska ignorisanih ili prijatelja."
 
 #: src/menu_events.cpp:2071
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Prikazuje spisak ignorisanih i prijatelja. Upotreba: /list display"
+msgstr "Prikazuje spisak ignorisanih i prijatelja."
 
 #: src/menu_events.cpp:2074
-#, fuzzy
 msgid "Display version information."
-msgstr "Nema podataka o epohama."
+msgstr "Prikazuje podatak o verziji."
 
 #: src/menu_events.cpp:2076
 msgid "Register your nick"
-msgstr ""
+msgstr "Registruje vaš nadimak."
 
 #: src/menu_events.cpp:2078
 msgid "Drop your nick."
-msgstr ""
+msgstr "Ispušta vaš nadimak."
 
 #: src/menu_events.cpp:2080
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr ""
+msgstr "Ažurira detalje vašeg nadimka. Za moguće detalje, izvršiti „/details“."
 
 #: src/menu_events.cpp:2083
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Nema podataka o epohama."
+msgstr "Zatražite podatke o nadimku."
 
 #: src/menu_events.cpp:2085
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "Zahteva spisak detalja koje možete zadati uz registrovani nadimak."
 
 #: src/menu_events.cpp:2209
 msgid "Refresh gui."
-msgstr ""
+msgstr "Osvežava sučelje."
 
 #: src/menu_events.cpp:2211
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Daje ili oduzima upravljanje stranom VI."
 
 #: src/menu_events.cpp:2214
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Dodeljuje upravljanje stranom drugom igraču ili posmatraču."
 
 #: src/menu_events.cpp:2216
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"čisti poruke u ćaskanju.\n"
+msgstr "Čisti istorijat ćaskanja."
 
 #: src/menu_events.cpp:2218
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Sagledava postupak osvežavanja ekrana."
 
 #: src/menu_events.cpp:2221
-#, fuzzy
 msgid "Save game."
-msgstr "Sačuvaj igru"
+msgstr "Upisuje igru."
 
 #: src/menu_events.cpp:2223
-#, fuzzy
 msgid "Quit game."
-msgstr "Napusti igru"
+msgstr "Napušta igru."
 
 #: src/menu_events.cpp:2227
 msgid "Save and quit."
-msgstr ""
+msgstr "Upisuje i napušta."
 
 #: src/menu_events.cpp:2230
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignoriše greške u snimku."
 
 #: src/menu_events.cpp:2232
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Isključuje samoupis."
 
 #: src/menu_events.cpp:2234
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Čekam na naredni scenario..."
+msgstr "Prelazi na sledeći scenario, ili onaj sa datim identifikatorom."
 
 #: src/menu_events.cpp:2237
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Preuzimam sledeći scenario..."
+msgstr "Izbor narednog scenarija."
 
 #: src/menu_events.cpp:2240
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Ispravljačke naredbe"
+msgstr "Uključuje ispravljački režim."
 
 #: src/menu_events.cpp:2242
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Isključuje ispravljački režim."
 
 #: src/menu_events.cpp:2244
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Postavlja naredbu na prečicu posebne naredbe."
 
 #: src/menu_events.cpp:2246
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Postavlja ili prikazuje alijas naredbe."
 
 #: src/menu_events.cpp:2248
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"prikazuje promenljivu stanja igre.\n"
-"\n"
+msgstr "Postavlja promenljivu scenarija."
 
 #: src/menu_events.cpp:2250
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"prikazuje promenljivu stanja igre.\n"
-"\n"
+msgstr "Prikazuje promenljivu scenarija."
 
 #: src/menu_events.cpp:2252
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Menja promenljivu jedinice. (Podržani su samo ključevi najvišeg nivoa.)"
 
 #: src/menu_events.cpp:2256
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Uklanja osobinu jedinice. (Još uvek ne radi.)"
 
 #: src/menu_events.cpp:2258
-#, fuzzy
 msgid "Create a unit."
-msgstr "Napravi igru"
+msgstr "Stvara jedinicu."
 
 #: src/menu_events.cpp:2260
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"obrće maglu i pokrov za tekuću stranu.\n"
-"\n"
+msgstr "Magla za tekućeg igrača."
 
 #: src/menu_events.cpp:2262
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"obrće maglu i pokrov za tekuću stranu.\n"
-"\n"
+msgstr "Sa ili bez pokrova za tekućeg igrača."
 
 #: src/menu_events.cpp:2264
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Daje zlato tekućem igraču."
 
 #: src/menu_events.cpp:2266
 msgid "Fire a game event."
-msgstr ""
+msgstr "Okida događaj u igri."
 
 #: src/menu_events.cpp:2269
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Preklapanje x- i y-koordinata po poljima."
 
 #: src/menu_events.cpp:2272
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Preklapanje terenskih kodova po poljima."
 
 #: src/menu_events.cpp:2316
 msgid "Unknown debug level: '$level'."
@@ -8867,10 +8809,12 @@ msgstr "Nema igrača ni na vašem spisku prijatelja ni ignorisanih."
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisam mogao da nađem etiketu ili jedinicu koja sadrži ‘$search|’."
 
+# well-spelled: дроидовати
 #: src/menu_events.cpp:2672
 msgid "Can't droid invalid side: '$side'."
 msgstr "Ne može se droidovati neispravna strana: ‘$side|’."
 
+# well-spelled: дроидовати
 #: src/menu_events.cpp:2677
 msgid "Can't droid networked side: '$side'."
 msgstr "Ne može se droidovati umrežena strana: ‘$side|’."
@@ -8884,9 +8828,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Ne može se promeniti kontrola nad stranom van granica: ‘$side|’."
 
 #: src/menu_events.cpp:2785
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Stvori jedinicu (ispr.!)"
+msgstr "Izbor scenarija (ispr.!)"
 
 #: src/menu_events.cpp:2798
 msgid "Debug mode activated!"
@@ -8894,7 +8837,7 @@ msgstr "Ispravljanje aktivirano!"
 
 #: src/menu_events.cpp:2801
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Ispravljanje nije dostupno u mrežnim igrama."
 
 #: src/menu_events.cpp:2806
 msgid "Debug mode deactivated!"
@@ -8902,7 +8845,7 @@ msgstr "Ispravljanje deaktivirano!"
 
 #: src/menu_events.cpp:2976
 msgid "ai"
-msgstr ""
+msgstr "VI"
 
 #: src/menu_events.cpp:2984 src/menu_events.cpp:3000
 msgid "prompt^Command:"
@@ -8939,54 +8882,57 @@ msgid "Server-side redirect loop"
 msgstr "Petlja preusmeravanja na strani servera"
 
 #: src/multiplayer.cpp:283
-#, fuzzy
 msgid "You must login first."
-msgstr "Morate se prijaviti na ovaj server"
+msgstr "Morate se prvo prijaviti."
 
 #: src/multiplayer.cpp:285
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Nadimak „$nick“ već je zauzet."
 
 #: src/multiplayer.cpp:287
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Nadimak „$nick“ sadrži nevaljane znakove. Dozvoljena su samo slova, brojevi, "
+"podvlake i crtice."
 
 #: src/multiplayer.cpp:291
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "Nadimak „$nick“ je predugačak. Ne može imati više od 18 znakova."
 
 #: src/multiplayer.cpp:294
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "Nadimak „$nick“ je rezervisan i igrači ga ne mogu uzeti."
 
 #: src/multiplayer.cpp:296
 msgid "The nick '$nick' is not registered on this server."
-msgstr ""
+msgstr "Nadimak „$nick“ nije registrovan na ovom serveru."
 
 #: src/multiplayer.cpp:297
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "Ovaj server ne dozvoljava neregistrovane nadimke."
 
 #: src/multiplayer.cpp:299 src/multiplayer.cpp:301
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Nadimak „$nick“ registrovan je na ovom serveru."
 
 #: src/multiplayer.cpp:302
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"UPOZORENJE: Jedan klijent već ima ovaj nadimak, prijavljivanjem ćete ga "
+"izbaciti!"
 
 #: src/multiplayer.cpp:305
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Greška u postupku prijavljivanja (server nema seme za vašu vezu)."
 
 #: src/multiplayer.cpp:308
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Dali ste neispravnu lozinku."
 
 #: src/multiplayer_connect.cpp:84 src/multiplayer_connect.cpp:487
 #: src/multiplayer_connect.cpp:615
@@ -9030,7 +8976,7 @@ msgstr "(prazno)"
 
 #: src/multiplayer_connect.cpp:674
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(rezervisano za $playername)"
 
 #: src/multiplayer_connect.cpp:679
 #, fuzzy
@@ -9038,13 +8984,12 @@ msgid "(empty)"
 msgstr "prazno"
 
 #: src/multiplayer_connect.cpp:805
-#, fuzzy
 msgid "Reserved"
-msgstr "rezervoar: "
+msgstr "rezervisano"
 
 #: src/multiplayer_connect.cpp:806
 msgid "--give--"
-msgstr ""
+msgstr "--daj--"
 
 #: src/multiplayer_connect.cpp:930
 msgid "Only random sides in the current era."
@@ -9209,7 +9154,7 @@ msgstr "Iskustvo jedinici potrebno za napredovanje"
 
 #: src/multiplayer_create.cpp:181
 msgid "Use scenario specific settings"
-msgstr "Koristi podešavanja scenarija"
+msgstr "Koristi postavke scenarija"
 
 #: src/multiplayer_create.cpp:184
 msgid "Randomize time of day in begin"
@@ -9271,7 +9216,7 @@ msgstr "Lozinka: "
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
-"Odredite lozinku koju moraju upisati oni koji žele da se pridruše igri kao "
+"Odredite lozinku koju moraju upisati oni koji žele da se pridruže igri kao "
 "igrači."
 
 #: src/multiplayer_create.cpp:340
@@ -9302,6 +9247,7 @@ msgstr "bonus radnji: "
 msgid "Village Gold: "
 msgstr "zlata po selu: "
 
+# well-spelled: иск
 #: src/multiplayer_create.cpp:399
 msgid "Exp. Mod.: "
 msgstr "mod. isk.: "
@@ -9319,9 +9265,8 @@ msgid "--no games open--"
 msgstr "--nema otvorenih igara--"
 
 #: src/multiplayer_lobby.cpp:150
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "nepoznata epoha"
+msgstr " (nepoznata epoha)"
 
 #: src/multiplayer_lobby.cpp:428
 msgid "Unknown era: $era_id"
@@ -9455,9 +9400,8 @@ msgid "Invalid Color"
 msgstr "Neispravna boja"
 
 #: src/multiplayer_ui.cpp:426
-#, fuzzy
 msgid "Selected user: "
-msgstr "Izaberite jedinicu:"
+msgstr "Izabrani korisnik:"
 
 #: src/multiplayer_wait.cpp:135
 msgid "Leader: "
@@ -9484,13 +9428,12 @@ msgid "No multiplayer sides found"
 msgstr "Nema strana za više igrača"
 
 #: src/multiplayer_wait.cpp:308
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Izaberite svoju stranu:"
+msgstr "Izaberite svoju frakciju:"
 
 #: src/multiplayer_wait.cpp:308
 msgid "Starting position: "
-msgstr ""
+msgstr "Početni položaj: "
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9513,26 +9456,24 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Nađen teren sa troškom kretanja manjim od 1."
 
 #: src/play_controller.cpp:99
-#, fuzzy
 msgid "Loading level"
-msgstr "Učitavam naslovni ekran."
+msgstr "Učitavam nivo..."
 
 #: src/play_controller.cpp:120
 msgid "Initializing teams"
-msgstr "Uspostavljam timove"
+msgstr "Uspostavljam timove..."
 
 #: src/play_controller.cpp:141
-#, fuzzy
 msgid "Loading units"
-msgstr "Čitam datoteke jedinica."
+msgstr "Učitavam jedinice..."
 
 #: src/play_controller.cpp:148 src/play_controller.cpp:153
 msgid "Initializing display"
-msgstr "Uspostavljam prikaz"
+msgstr "Uspostavljam prikaz..."
 
 #: src/play_controller.cpp:189
 msgid "Starting game"
-msgstr "Otpočinjem igru"
+msgstr "Otpočinjem igru..."
 
 #: src/play_controller.cpp:816
 msgid "Back to turn "
@@ -9576,7 +9517,7 @@ msgstr "Nepoznat scenario: ‘$scenario|’"
 
 #: src/playmp_controller.cpp:220
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Opoziv pokreta se ne može odaslati na server."
 
 # намерно кратко, на уском дугмету
 #: src/playmp_controller.cpp:298
@@ -9789,12 +9730,11 @@ msgstr " uključeno iz "
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, vrednost „$value“, prethodna „$previous_value“ kod $pos"
 
 #: src/serialization/parser.cpp:361
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error kod $pos"
+msgstr "$error, vrednost „$value“ kod $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -9877,9 +9817,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Dodaci"
 
 #: src/titlescreen.cpp:429
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Napusti"
+msgstr "Uređivač mapa"
 
 #: src/titlescreen.cpp:431
 msgid "TitleScreen button^Language"
@@ -9939,7 +9878,7 @@ msgstr "Preuzmite korisničke dodatke: pohode, epohe, ili pakete mapa"
 
 #: src/titlescreen.cpp:449
 msgid "Start the map editor"
-msgstr ""
+msgstr "Pokrenite uređivač mapa"
 
 #: src/titlescreen.cpp:451
 msgid "Change the language"
@@ -9970,18 +9909,16 @@ msgid "Upload statistics"
 msgstr "Statistika slanja"
 
 #: src/titlescreen.cpp:516
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Boj za Vesnot"
+msgstr "Pomozite Vesnot"
 
 #: src/titlescreen.cpp:517
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozite Vesnotu šaljući nam informacije"
 
 #: src/unit.cpp:602
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Nepoznat tip jedinice ‘$type|’"
+msgstr "Nepoznat tip jedinice ‘$type|’ pri stvaranju osobina"
 
 #: src/unit.cpp:782
 msgid "Unknown unit type '$type|'"
@@ -10034,17 +9971,16 @@ msgstr[3] "udar"
 #: src/unit_types.cpp:214
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% preciznosti"
 
 #: src/unit_types.cpp:224
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% pariranja"
 
 #: src/unit_types.cpp:931
-#, fuzzy
 msgid "No description available."
-msgstr "Nema ciljeva"
+msgstr "Opis nije dostupan."
 
 #: src/unit_types.cpp:989
 msgid "chaotic"
@@ -10059,19 +9995,16 @@ msgid "neutral"
 msgstr "neutralan"
 
 #: src/unit_types.cpp:990
-#, fuzzy
 msgid "female^chaotic"
-msgstr "mehaničnost"
+msgstr "haotična"
 
 #: src/unit_types.cpp:990
-#, fuzzy
 msgid "female^lawful"
-msgstr "odanost"
+msgstr "zakonita"
 
 #: src/unit_types.cpp:990
-#, fuzzy
 msgid "female^neutral"
-msgstr "nemrtvost"
+msgstr "neutralna"
 
 #: src/upload_log.cpp:325
 msgid ""
@@ -10118,1410 +10051,3 @@ msgstr "Uključi slanje sažetaka"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Snimak nije bilo moguće sačuvati"
-
-#, fuzzy
-#~ msgid "Reading cache"
-#~ msgstr "Čitam ostavu."
-
-#~ msgid "Back to start"
-#~ msgstr "Nazad na početak"
-
-#~ msgid "+  "
-#~ msgstr "+  "
-
-#, fuzzy
-#~ msgid "Unknown error."
-#~ msgstr "nepoznata epoha"
-
-#~ msgid "- King Konrad, 552YW"
-#~ msgstr "— kralj Konrad, 552.gv."
-
-#~ msgid "An invalid weapon is send, possibly due to the Python AI."
-#~ msgstr "Poslato neispravno oružje, možda krivicom pitonske VI."
-
-#, fuzzy
-#~ msgid "Update Add-ons"
-#~ msgstr "Dodaci"
-
-#~ msgid "Login: "
-#~ msgstr "prijava: "
-
-#, fuzzy
-#~ msgid "Choose a different username"
-#~ msgstr "Na neki drugi server"
-
-#~ msgid "Send a private message to "
-#~ msgstr "Pošalji privatnu poruku "
-
-#~ msgid "Whisper"
-#~ msgstr "Šapat"
-
-#~ msgid "Message: "
-#~ msgstr "Poruka: "
-
-#, fuzzy
-#~ msgid "Login"
-#~ msgstr "prijava: "
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "ponovno iscrtava ekran.\n"
-#~ "\n"
-
-#~ msgid "No server ping since $timeout second. Connection timed out."
-#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
-#~ msgstr[0] "Bez pinga sa servera već $timeout sekundu. Veza istekla."
-#~ msgstr[1] "Bez pinga sa servera već $timeout sekunde. Veza istekla."
-#~ msgstr[2] "Bez pinga sa servera već $timeout sekundi. Veza istekla."
-#~ msgstr[3] "Bez pinga sa servera već $timeout sekundu. Veza istekla."
-
-#, fuzzy
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr " Ova jedinica poznaje osnove lečenja."
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " Ova jedinica može i da leči jedinice oko sebe, i da ih isceljuje od "
-#~ "otrova."
-
-#~ msgid "Abilites"
-#~ msgstr "Sposobnosti"
-
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "Lokalna igra"
-
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "Odustani"
-
-#, fuzzy
-#~ msgid "value: "
-#~ msgstr "Ime: "
-
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
-#~ msgstr ""
-#~ "pobeda:\n"
-#~ "@Poraziš li protivničke vođe"
-
-#~ msgid "Grassland"
-#~ msgstr "ravnica"
-
-#~ msgid "Snow"
-#~ msgstr "sneg"
-
-#~ msgid "Ice"
-#~ msgstr "led"
-
-#, fuzzy
-#~ msgid ""
-#~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
-#~ msgstr ""
-#~ "Led čine zamrznuti pojasevi vode. U svrhe igranja, ledene površine "
-#~ "istovetne su <ref>dst=terrain_tundra text=snežnim</ref>. Jedinice "
-#~ "plivači, čak i one koje mogu disati pod vodom, ipak ne mogu plivati pod "
-#~ "ledom."
-
-#~ msgid "Savanna"
-#~ msgstr "savana"
-
-#, fuzzy
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "Savane su ravnice sa visokom travom, koje se mogu naći u toplijim "
-#~ "podnebljima. Za potrebe igranja, istovetne su <ref>dst=terrain_grassland "
-#~ "text=ravnicama</ref>."
-
-#~ msgid "Chasm"
-#~ msgstr "bezdan"
-
-#~ msgid "Cave Wall"
-#~ msgstr "pećinski zid"
-
-#~ msgid ""
-#~ "Cave walls are made of solid stone, renowned for its ability to impede "
-#~ "even the most determined traveler."
-#~ msgstr ""
-#~ "Zidovi pećina načinjeni su od tvrdog kamena, čuvenog po svojoj "
-#~ "sposobnosti da zaustavi i najodlučnije namernike."
-
-#~ msgid ""
-#~ "Impassable mountains are so tall and steep that they are constantly "
-#~ "wreathed in cloud. To cross such mountains is practically impossible. "
-#~ "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#~ "heights."
-#~ msgstr ""
-#~ "Neprolazne planine toliko su visoke i strme, da su neprekidno ovenčane "
-#~ "oblacima. Preći preko takve planine praktično je nemoguće. Čak ni leteća "
-#~ "stvorenja ne mogu jezditi između nazubljenih vrhova u tako razređenom "
-#~ "vazduhu."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Boj za Vesnot"
-
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "Nema nijedne strane za više igrača u ovoj igri"
-
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr "Upozorenje: Greške pri učitavanju postavnik datoteka igre: '"
-
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Estonski prevod"
-
-#, fuzzy
-#~ msgid "Connect to add-ons server"
-#~ msgstr "Poveži se na server"
-
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
-#~ msgstr "Sad ćete se povezati sa serverom za preuzimanje dodataka."
-
-#~ msgid "Server: "
-#~ msgstr "Server: "
-
-#~ msgid "Join Official Server"
-#~ msgstr "Na zvaničan server"
-
-#~ msgid "Log on to the official Wesnoth multiplayer server"
-#~ msgstr "Prijavite se na zvanični Vesnotov višeigrački server."
-
-#~ msgid "Connect to Server"
-#~ msgstr "Poveži se na server"
-
-#~ msgid "Join a different server"
-#~ msgstr "Na neki drugi server"
-
-#~ msgid "Host Networked Game"
-#~ msgstr "Domaćin mrežnoj igri"
-
-#, fuzzy
-#~ msgid "Host a game using dedicated server 'wesnothd'"
-#~ msgstr "Budite domaćin igri bez korišćenja servera"
-
-#~ msgid ""
-#~ "Play a multiplayer game with the AI or humans sharing the same machine"
-#~ msgstr "Zaigrajte protiv VI ili sa više ljudi na istom računaru"
-
-#~ msgid "Language"
-#~ msgstr "Jezik"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Izaberite jezik koji želite:"
-
-#~ msgid "View List"
-#~ msgstr "Prikaz spiska"
-
-#~ msgid "List of Servers"
-#~ msgstr "Spisak servera"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "Izaberite poznati server sa spiska"
-
-#~ msgid "Address"
-#~ msgstr "Adresa"
-
-#~ msgid "Connect to Host"
-#~ msgstr "Poveži se sa domaćinom"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "Izaberite domaćina za povezivanje: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Estonski prevod"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Portugalski prevod"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filter: "
-
-#, fuzzy
-#~ msgid "Map"
-#~ msgstr "Zap"
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "Ukloni dodatke"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "kretnji"
-
-#~ msgid "Level"
-#~ msgstr "nivo"
-
-#~ msgid "Screenshot"
-#~ msgstr "Snimak ekrana"
-
-#~ msgid ""
-#~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
-#~ "me/emote <message>. Type /help [<command>] for detailed instructions."
-#~ msgstr ""
-#~ "Naredbe: msg/whisper <nadimak> <poruka>, list <podnaredba> [<argument>], "
-#~ "me/emote <poruka>. Upišite /help [<naredba>] za detaljnije upute."
-
-#~ msgid ""
-#~ "Ignore messages from players on the ignore list and highlight players on "
-#~ "the friends list. Usage: /list <subcommand> [<argument>] Subcommands: "
-#~ "addfriend, addignore, remove, display, clear. Type /help list "
-#~ "<subcommand> for more info."
-#~ msgstr ""
-#~ "Ignoriše poruke od igrača na spisku ignorisanja i ističe poruke onih na "
-#~ "spisku prijatelja. Upotreba: /list <podnaredba> <razlog> Podnaredbe: "
-#~ "addfriend, addignore, remove, display, clear. Upišite /help list "
-#~ "[podnaredba] za više detalja."
-
-#~ msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
-#~ msgstr ""
-#~ "Dodaje nadimak na spisak prijatelja. Upotreba: /list addfriend <nadimak>"
-
-#~ msgid "Clear your complete ignores and friends list. Usage: /list clear"
-#~ msgstr "Briše ceo spisak ignorisanih i prijatelja. Upotreba: /list clear"
-
-#~ msgid "Unknown subcommand."
-#~ msgstr "Nepoznata podnaredba."
-
-#~ msgid "Unknown command."
-#~ msgstr "Nepoznata naredba."
-
-#~ msgid "Unknown command: "
-#~ msgstr "Nepoznata naredba: "
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Upotreba: control <strana> <nadimak>"
-
-#~ msgid ""
-#~ " This unit is capable of basic healing, though it can only delay the "
-#~ "effects of poison, not cure them entirely."
-#~ msgstr ""
-#~ " Ova jedinica sposobna je za osnovno lečenje. Može odlagati uticaj "
-#~ "otrova, ali ne i isceliti ga."
-
-#~ msgid ""
-#~ " This unit can teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
-#~ msgstr ""
-#~ " Ova jedinica može da se trenutno teleportuje između bilo koja dva sela "
-#~ "koja igrač poseduje (odredišno selo mora biti upražnjeno)."
-
-#~ msgid "Join a server or hosted game"
-#~ msgstr "Pridružite se serveru ili domaćinu"
-
-#~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-#~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-
-#~ msgid ""
-#~ "Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
-#~ "Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
-#~ "Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,"
-#~ "Gashöl,Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran "
-#~ "Kor,Kerath Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,"
-#~ "Gark,Gelknick,Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri "
-#~ "Kon,Kon Garashé,Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,"
-#~ "Vladnir,Velnick,Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,"
-#~ "Veramo,Grashen,Galeck,Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,"
-#~ "Ga'ash"
-#~ msgstr ""
-#~ "Krag,Gijan,Gišari,Karigan,Gron Ih,Krenli,Kegrid,Ma Toa,Griš,Garuši,Gauši,"
-#~ "Mur,Gakrej Om,Kan Ih,Kun,Garčin,Omatakej,Kraš,Grada,Morustej,Garadin,Kral "
-#~ "On,Merkuš,Grida,Garlan,Gret In,Ka,Karon,Markinos,Gašel,Gren On,Gekči,"
-#~ "Gadej In,Marito,Grelnit,Kraslar,Maritos,Kran Kor,Kerat Kor,Kerat In,Galš,"
-#~ "Garutin,Grej,Garlin On,Maritos Gark,Gark,Gelknik,Gojst,Gravlan,Marildijan,"
-#~ "Margijan,Gartlo,Rešan,Mali,Kari Kon,Kon Garašej,Egar,Elč,Mar On,Gelka Kon,"
-#~ "Markan,Grec,Gašinar,Gribel,Vladnir,Velnik,Vašit,Veralon,Vertik,Vermaj,"
-#~ "Verkon,Veret,Verlin,Veramo,Grašen,Galek,Gaust Un,Mara Dilek,Klaš,Krugen,"
-#~ "Kasp,Verdit,Gaš"
-
-#~ msgid ""
-#~ "Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin "
-#~ "Ka,Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,"
-#~ "Valnirra,Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
-#~ msgstr ""
-#~ "Velisp,Valnit,Vuštin,Ešij,Del,Valin,Demla,Auglan,Auginet Ka,Vejin Ka,"
-#~ "Omaže,Oridej,Vešter,Vilnis,Vera,Damel,Dinsil,Oridan,Ošibi,Valnira,Olat,"
-#~ "Omagra,Ašijt,Alen Ka,Alinaš Mal,Ora Ka"
-
-#~ msgid ""
-#~ "Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,"
-#~ "Trithaithus,Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,"
-#~ "Augaithing,Anthaas,Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,"
-#~ "Trithdurol,Glamcatil,Augthail,Trithduril,Dulthalos,Glamthasol,Aldrsol,"
-#~ "Glamaithol,Glamalil,Analus,Nardril,Augating,Dulaithsol,Aldrlos,Alalus,"
-#~ "Aigcatsol,Ancatas,Trithdris,Pelatol,Aigthasil,Anthais,Narcatis,Trithatil,"
-#~ "Aigaithing,Althail,Trithaithil,Naraithol,Duldrlos,Gomatas,Alcatis,"
-#~ "Naraithsil,Althalos,Aigdursol,Glamalsil,Nardrus,Aigalis,Aldurlos,"
-#~ "Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,Glamthaas,Dulcatsol,"
-#~ "Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,Peldrsol,Pelalsol,"
-#~ "Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,Augdris,Anthasol,"
-#~ "Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,Pelalis,Gomatlos,"
-#~ "Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,Gomcatil,"
-#~ "Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
-#~ "Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
-#~ "Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,"
-#~ "Trithdring,Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,"
-#~ "Dulaithlos,Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,"
-#~ "Trithcatlos,Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,"
-#~ "Aldurol,Aigatsil,Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,"
-#~ "Althaol,Aldrsol,Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,"
-#~ "Glamthaol,Ancatus,Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,"
-#~ "Naraithsil,Aldris,Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,"
-#~ "Aigdurlos,Aigaithol,Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,"
-#~ "Anthaing,Aigcatis,Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,"
-#~ "Gomdursil,Nardras,Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,"
-#~ "Anatol,Augdrsil,Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,"
-#~ "Augaling,Alating,Glamatil,Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,"
-#~ "Gomdursol,Naraithus,Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,"
-#~ "Aigduras,Nardrol,Nardurol,Pelalil,Gomalil,Aigatis,Analil,Dulthaus,"
-#~ "Gomaithil,Alduras,Trithduril,Ancatol,Alduras,Pelduril,Narcatsol,Pelating,"
-#~ "Dulcatsil,Augatol,Glamthasil,Gomthasol,Naraithsil,Alatsil,Dulcatol,"
-#~ "Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,Trithatas,Aigthais,"
-#~ "Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,Gomdras,Naraithsol,"
-#~ "Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,Gomating,"
-#~ "Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
-#~ "Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
-#~ "Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,"
-#~ "Augcatsil,Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,"
-#~ "Pelaling,Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,"
-#~ "Augthalos,Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,"
-#~ "Triththail,Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,"
-#~ "Glamalsil,Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,"
-#~ "Dulatsol,Naralus,Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,"
-#~ "Naraithil,Aigatsil,Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,"
-#~ "Pelcatlos,Glamduris,Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,"
-#~ "Pelthasil,Gomatis,Aldril,Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,"
-#~ "Narduras,Dulaithlos,Duldris,Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,"
-#~ "Anduril,Alaithol,Aigalis,Trithaithas,Aigcatil,Trithaithil,Naraithing,"
-#~ "Augatsol,Trithaithol,Dulalsil,Dulthasol,Glamcatas,Glamthaol,Gomaithsol,"
-#~ "Dulaithing,Naratlos,Naraithol,Gomthasol,Ancatas,Aigcatsil,Pelduris,"
-#~ "Trithdrus,Andurus,Trithdring,Glamthaas,Aigcating,Nardrsol,Glamaithol,"
-#~ "Dulaithsol,Althaus,Augduras,Aigaithas,Gomdurlos,Glamalus,Gomdrsil,"
-#~ "Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,Glamaling,Dulduras,"
-#~ "Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,Trithduring,"
-#~ "Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,Naratlos,"
-#~ "Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
-#~ "Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
-#~ "Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
-#~ "Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
-#~ "Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
-#~ "Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
-#~ "Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,"
-#~ "Glamcatil,Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,"
-#~ "Narcatis,Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,"
-#~ "Aigatsil,Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,"
-#~ "Narcatol,Augatlos,Pelaithil,Gomaithsol,Augaithsil"
-#~ msgstr ""
-#~ "Altas,Glomin,Glamkatus,Tritajtis,Gomdrol,Andurus,Pelajtol,Tritajtus,"
-#~ "Andris,Tritasol,Gomkatis,Pelkatol,Augkatil,Alating,Augajting,Antas,"
-#~ "Gomajtsol,Tritajtas,Ajgdris,Altalos,Analil,Tritdurol,Glamkatil,Augtajl,"
-#~ "Triduril,Dultalos,Glamtasol,Aldrosol,Glamajtol,Glamalil,Anales,Nardril,"
-#~ "Autating,Dulajtsol,Aldaros,Alalus,Ajgatsol,Ankatas,Tridris,Pelatol,"
-#~ "Ajgasil,Antajs,Narkatis,Tritatil,Ajgajting,Altajl,Tritajtil,Narajtol,"
-#~ "Daltros,Gomatas,Alkatis,Narajtsil,Altalos,Ajgdursol,Glamalsil,Nardrus,"
-#~ "Ajgalis,Aldurlos,Aukastsil,Ajgtajng,Augduril,Ajgajtas,Antajs,Glamtas,"
-#~ "Dalkatsol,Gomatil,Gomkatlos,Augdrisil,Tritidril,Daltrusil,Daltrol,"
-#~ "Peltrusol,Palasol,Gomtas,Dalkatsil,Ajkating,Aldril,Glamkating,Anatsol,"
-#~ "Augdris,Antasol,Glamkatsil,Aldras,Ajgatsol,Narajtol,Antaus,Gomtrusil,"
-#~ "Pelalis,Gomatlos,Narkating,Tritrulos,Ajkdursol,Narkatsil,Glamdras,"
-#~ "Ajgtajng,Gomkatil,Andurus,Peltajl,Trituaus,Augalas,Alalol,Ajgalas,Pelatis,"
-#~ "Anating,Alajtsol,Andrus,Ajgalsil,Dalatil,Ajgdris,Augatsil,Glamduring,"
-#~ "Triduril,Tridursol,Alalus,Glamatus,Altrol,Glamadril,Pelkatsil,Glamajtis,"
-#~ "Tridring,Peltril,Tridurus,Gomajtil,Trikatsol,Glamdursol,Augatajs,"
-#~ "Dalajtlos,Altasil,Ajgajtil,Andurlos,Dalatil,Dalalas,Daltsol,Analol,"
-#~ "Tritukatlos,Altasol,Alkatis,Glamduril,Peltursol,Pelalus,Glamtas,Alturol,"
-#~ "Ajgatsil,Ajgatus,Triduril,Plajtsol,Ajgkatis,Andursol,Naralsil,Altaol,"
-#~ "Aldrosol,Dalalas,Tritutas,Augatol,Pelaling,Dalkatlos,Augduril,Glamtaol,"
-#~ "Ankatus,Augkatol,Peldrus,Pelatil,Gomkatil,Anelos,Anajting,Narajtsil,"
-#~ "Aldris,Gomdris,Antril,Naratsil,Ajkating,Tritutas,Narduril,Ajgdurlos,"
-#~ "Ajgajtol,Glamajtol,Pelatil,Nardris,Augtaol,Augatol,Glamalos,Anatajng,"
-#~ "Ajgkatis,Peltasil,Dalkatil,Dalatol,Dalduring,Alajl,Peldrus,Gomdursil,"
-#~ "Nardras,Peltril,Gomkatlos,Gomalis,Glamtaus,Daldurus,Dalkating,Anatol,"
-#~ "Augdrisil,Analsil,Tridrus,Augajtus,Tritajsol,Ajgatus,Augaling,Alating,"
-#~ "Glamatil,Anajtus,Gomatis,Augdris,Pelajting,Augajting,Gomdursol,Narajtus,"
-#~ "Tritasol,Ankatil,Glamajtil,Augdurus,Gomalus,Ajgduras,Nardrol,Nardurol,"
-#~ "Pelalil,Gomalil,Ajgatis,Analil,Daltaus,Gomajtil,Alduras,Triduril,Ankatol,"
-#~ "Alduras,Pelduril,Narkatsol,Pelating,Dalkatsil,Augatol,Glamtasil,Gomtasol,"
-#~ "Narajtsil,Alatsil,Dalkatol,Gomtalos,Ajgaling,Ajkatus,Pelalus,Aukastsil,"
-#~ "Tritatas,Ajgasil,Gomajtas,Alkatsil,Ankatus,Pelatis,Ankatas,Dalating,"
-#~ "Gomtras,Narajtsol,Augkatis,Alajtis,Palasol,Dalursil,Pelkating,Dalaling,"
-#~ "Gomating,Ajgajtol,Alajtas,Peltras,Tritajing,Augdurol,Augajtas,Aukastsil,"
-#~ "Glamdurlos,Peldurol,Ajgdris,Pelajtas,Aukatas,Alalas,Anatajng,Naratlos,"
-#~ "Augdursol,Gomdril,Dalkatlos,Antasil,Tritasol,Naralus,Peltas,Aukastsil,"
-#~ "Anajtis,Andurus,Gomdring,Glamduras,Palalsil,Augtalos,Augduras,Pelaling,"
-#~ "Gomalis,Augalol,Gomdris,Glamasil,Augdrus,Alatlos,Tritidril,Augtalos,"
-#~ "Glamadril,Ajgatlos,Alatas,Plajtsol,Antaus,Tritidril,Aldrosol,Tritajl,"
-#~ "Glamajtsol,Augduring,Ajgatus,Anajtsil,Pelatus,Naratol,Glamalsil,Tritkatus,"
-#~ "Tritatil,Anelos,Augdras,Tritajsil,Narduril,Daltsol,Naralus,Narkatol,"
-#~ "Alkatlos,Tritalol,Daltasil,Andrus,Pelduring,Narajtil,Ajgatsil,Tridurlos,"
-#~ "Augdursol,Tritajtol,Gomatol,Ajkatus,Pelkatlos,Glamduris,Anajtas,Peltrus,"
-#~ "Glamduris,Naralil,Tritursil,Peltasil,Gomatis,Aldril,Augatol,Anajtus,"
-#~ "Anatsol,Tritajtlos,Daldrus,Narduras,Dalajtlos,Daltris,Dalajtsil,Antajs,"
-#~ "Gomduris,Nartalos,Ankatus,Anduril,Alajtol,Ajgalis,Tritajtas,Ajgatil,"
-#~ "Tritajtil,Narajting,Augatsol,Tritajtol,Dalalsil,Daltasol,Glamkatas,"
-#~ "Glamtaol,Gomajtsol,Dalajting,Naratlos,Narajtol,Gomtasol,Ankatas,Ajkatsil,"
-#~ "Pelduris,Tridrus,Andurus,Tridring,Glamtas,Ajkating,Nartsol,Glamajtol,"
-#~ "Dulajtsol,Altaus,Augduras,Ajgajtas,Gomdurlos,Glamalus,Gomtrusil,Tritodol,"
-#~ "Pelating,Pelatus,Ajdursol,Tritdurol,Glamaling,Dalduras,Dalating,Narajting,"
-#~ "Dalalis,Alajtus,Gomdurus,Glamkatus,Triduring,Anatis,Anajtsil,Glamduril,"
-#~ "Gomdursol,Narkatol,Tritajtis,Naratlos,Nardring,Ajgalol,Altajl,Anatas,"
-#~ "Antasol,Ajgatus,Dalajtil,Altalos,Aldring,Glamalil,Anating,Ajgadring,"
-#~ "Daltril,Andurol,Pelajtsil,Gomdurus,Gomkatil,Glamtas,Alalsol,Augdurus,"
-#~ "Triduril,Antaol,Augalas,Pelkatol,Nartsil,Alatil,Glamdursol,Alajtlos,"
-#~ "Pelatsil,Gomdurus,Dalatus,Alalsol,Glamaling,Dalatus,Alkatil,Ajgatus,"
-#~ "Daltril,Pelajtlos,Pelajtis,Dalatil,Tritalis,Narajtol,Pelating,Augkatol,"
-#~ "Gomatis,Andrus,Pelduris,Ajgadursil,Alatlos,Augdrisil,Anduril,Gomajtol,"
-#~ "Glamdursol,Tritajtil,Gomdril,Glamkatil,Tridrus,Naralas,Dalatol,Anajtil,"
-#~ "Anatol,Autating,Peltursol,Narkatis,Glamatus,Ajgajtas,Ajkatas,Tritalos,"
-#~ "Gomatil,Gomtalos,Dalaling,Ajgatsil,Aukatus,Tritajtus,Gomkatlos,Ajgajtol,"
-#~ "Naratsil,Nartaol,Narkatol,Augatlos,Pelajtil,Gomajtsol,Augajtsil"
-
-#, fuzzy
-#~ msgid ""
-#~ "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
-#~ "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
-#~ "Amowyn,Háriand,Beliril,Mylith,Giombor,Fer,Roldur,Cithraldur,Elvaramir,"
-#~ "Sénd,Cylas,Thrilmandel,Rorfindil,Uradrielas,Sénd,Hil-Garion,Fithraril,"
-#~ "Unorfiril,Eäryldur,Eärithrandil,Cithrand,Unálas,Elyrion,Glul,Vebrilas,"
-#~ "Lómorfindil,Hithrandel,Gil-Gang,Hilas,Gil-Gandel,Eowarar,Carang,Lómariand,"
-#~ "Isilmandel,Uril-Gambor,Hénduil,Unaraldur,Galithrariand,Hirion,Anilmambor,"
-#~ "Celadrieriand,Róldur,Eärérion,Calónduil,Anerion,Elvélith,Eliondil,"
-#~ "Lómebrind,Isándir,Eowówyn,Belel,Cáldur,Tadriendir,Vunduil,Belólad,Thrélad,"
-#~ "Isadrieng,Eowil-Garion,Tinyl,Tinun,Lómémbor,Urálith,Celong,Horfilad,"
-#~ "Iselas,Galálad,Norfildor,Thrithran,Unil-Gan,Gloldor,Celarandil,Delánd,"
-#~ "Maldur,Celyndel,Ról,Vandir,Glómir,Unadrieldor,Elvandir,Vebril,Unólith,"
-#~ "Maraldur,Elvilmaril,Isól,Legaran,Farandir,Nél,Glandil,Galalith,Galálas,"
-#~ "Elebrildor,Sóriand,Elvóriand,Pindir,Anán,Amiorion,Amorfimir,Isarandel,"
-#~ "Thril-Gamir,Taraldur,Amundil,Unorfildor,Glararil,Sólad,Fáwyn,Tinarambor,"
-#~ "Tinil-Ganduil,Padrieriand,Ameldor,Gyl,Unebrind,Celebririon,Corfildur,"
-#~ "Canduil,Glámbor,Urul,Elran,Glilmal,Porfildur,Cadrieriand,Delaraldur,"
-#~ "Galelas,Hebril,Varalas,Celér,Nóndel,Eladrieng,Elvorfiriand,Delandel,"
-#~ "Delorfilad,Méng,Lómowyn,Elélas,Unebrin,Anithranduil,Celáriand,Threbring,"
-#~ "Belyrion,Belilmand,Numbor,Vóldur,Tinorfind,Gambor,Thrambor,Táriand,"
-#~ "Eäradriendel,Rówyn,Elvémir,Elvorfiril,Calioriand,Delóldor,Tinóriand,"
-#~ "Eowaraldor,Vel,Galémbor,Elrithralith,Elánd,Fadriendel,Deláril,Fandel,"
-#~ "Cindil,Unalas,Delawyn,Fyrion,Eowylas,Eowithrawyn,Elvombor,Vuldur,"
-#~ "Legorfindil,Unombor,Gadrieng,Amilmandir,Elrioldor,Calil-Gawyn,Eäréldor,"
-#~ "Glólas,Norfindir,Unorfiwyn,Amind,Sóriand,Isóndel,Caliril,Eowaran,Elolas,"
-#~ "Fendel,Tówyn,Hiong,Elvebrindel,Eowar,Vulas,Legémir,Torfildur,Col,"
-#~ "Isorfilad,Elilmaldur,Celuwyn,Gymbor,Hundel,Elen,Isarar,Delán,Thrimir,"
-#~ "Tinilmand,Tinithrar,Elvioldur,Tendel,Harariand,Rithrandil,Garaldor,"
-#~ "Lómarand,Celór,Elvorfimir,Galar,Paraldor,Morfiriand,Celang,Amóldor,"
-#~ "Vararion,Belondel,Hywyn,Legiondel,Elyldor,Eärorfiriand,Glarang,Gor,"
-#~ "Throlas,Gararil,Norfilith,Deliwyn,Nyldur,Vólas,Isér,Eowanduil,Eowiomir,"
-#~ "Belithraldor,Elemir,Amiol,Urálas,Belil-Gandil,Nalith,Thréldur,Gán,"
-#~ "Eowimbor,Padrieril,Anorfing,Rebrir,Anilmariand,Rilmandil,Thryriand,"
-#~ "Isyndel,Celorion,Isóng,Sadrielas,Pór,Thraral,Miolith,Elil-Garil,Vándel,"
-#~ "Cówyn,Unóndel,Uniolith,Legówyn,Vylas,Unulad,Legal,Celelas,Galeldur,"
-#~ "Amendel,Amorfir,Elvilmaldur,Eäránduil,Til-Gan,Nilmar,Eäradrier,Celior,"
-#~ "Sebrin,Pyldur,Urér,Fioril,Anebrin,Hemir,Thrón,Glal,Mondir,Cénduil,Galur,"
-#~ "Glimir,Anior,Tinoldor,Ván,Hilmariand,Lómebrilad,Gyn,Legyn,Vol,Cun,"
-#~ "Lómadrieril,Amadrieriand,Eowémir,Belómir,Elrithranduil,Gumbor,Célad,"
-#~ "Anebrir,Téwyn,Táriand,Géril,Elreldur,Legil-Gal,Eärebrindel,Elvund,Unil,"
-#~ "Pilmalad,Deléng,Tinowyn,Cundir,Gadriendil,Eowariand,Ciong,Morfin,"
-#~ "Nadrieldor,Elrorfir,Hymir,Elvebrind,Urambor,Thrund,Anénduil,Anon,"
-#~ "Elrilmand,Cithraril,Mithrand,Caraldur,Eowóldur,Glior,Elváwyn,Legithralith,"
-#~ "Vólas,Calándel,Caldur,Lómariand,Elebriril,Celundir,Eoworfildor,Celiorion,"
-#~ "Elor,Elváwyn,Lómilmaril,Delilmaldor,Amelad,Tion,Unál,Calebrindel,"
-#~ "Amilmalith,Eäryriand,Unondir,Isuwyn,Elralith,Belilmang,Eowarar,Sil-Gal,"
-#~ "Calil-Gandir,Glon,Deliol,Sebriril,Elémbor,Calebrindir,Celilmalas,Elverion,"
-#~ "Cithrandel,Anémbor,Uradrierion,Ganduil,Parariand,Pumbor,Githral,Galoldur,"
-#~ "Rorfilad,Tinorfiriand,Vondel,Tinimir,Sorfind,Uróldor,Delithrar,Galurion,"
-#~ "Elval,Tinond,Delorion,Taral,Thróng,Madrieril,Isithral,Belarandel,Celendel,"
-#~ "Gladriendil,Lómiriand,Legéril,Nán,Vilith,Belén,Elriolith,Delundil,Anilad,"
-#~ "Celaral,Ameng,Mérion,Eowarion,Tilmalad,Elvil-Garion,Cithralad,Ryn,Tinén,"
-#~ "Elólas,Belandil,Golad,Miomir,Tolas,Urilmalith,Norfindil,Mánduil,Githralad,"
-#~ "Legorfirion,Móndir,Hyrion,Anundil,Tinilmawyn,Legyl,Elradrien,Anil-Gawyn,"
-#~ "Tinandir,Uneldor,Amulas,Válad,Amulas,Celiondir,Thradrieriand,Réndir,"
-#~ "Elvónduil,Urorfildor,Vyldor,Galelith,Caloril,Amáril,Belithrawyn,"
-#~ "Cadriembor,Tilmalas,Thril-Gar,Elálith,Vorfin,Eowebrind,Nil-Galas,Eowambor,"
-#~ "Morfilas,Thrion,Róldor,Filman,Unioril,Forfilas,Galadrieldor,Elorfilad,"
-#~ "Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,Eäromir,Delorfilith,"
-#~ "Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,Vorfindil,Cándir,"
-#~ "Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,Amithrarion,Cálad,"
-#~ "Legilad,Linduilas"
-#~ msgstr ""
-#~ "Tinararijand,Elandil,Mebrin,Tinindil,Deleng,Izirion,Pildur,Kaladrijelas,"
-#~ "Elebrindel,Unarion,Unadrijer,Izorfindir,Urimir,Seloril,Unaril,Horfindel,"
-#~ "Amovin,Harijand,Beliril,Milit,Gjombor,Fer,Roldur,Sitraldur,Elvaramir,Send,"
-#~ "Silas,Trilmandel,Rorfindil,Uradrijelas,Send,Hil-Garion,Fitraril,Unorfiril,"
-#~ "Erildur,Eritrandil,Sitrand,Unalas,Elirion,Glul,Vebrilas,Lomorfindil,"
-#~ "Hitrandel,Gil-Gang,Hilas,Gil-Gandel,Eovarar,Sarang,Lomarijand,Izlmandel,"
-#~ "Uril-Gambor,Henduil,Unaraldur,Galitrarijand,Hirion,Anilmambor,"
-#~ "Seladrijerijand,Roldur,Ererion,Kalonduil,Anerion,Evelilit,Eliondil,"
-#~ "Lomebrind,Izandir,Eovovin,Belel,Kaldur,Tadrijendir,Vunduil,Belolad,Trelad,"
-#~ "Izadrijeng,Eovil-Garion,Tinil,Tinun,Lomembor,Uralit,Selong,Horfilad,"
-#~ "Izelas,Galalad,Norfildor,Tritran,Unil-Gan,Gloldor,Selarandil,Deland,"
-#~ "Maldur,Selindel,Rol,Vandir,Glomir,Unadrijeldor,Elvandir,Vebril,Unolit,"
-#~ "Maraldur,Elvilmaril,Izol,Legaran,Farandir,Nel,Glandil,Galatil,Galalas,"
-#~ "Elebrildor,Sorijand,Elovrijand,Pindir,Anan,Amiorion,Amorfimir,Izarandel,"
-#~ "Tril-Gamir,Taraldur,Amundil,Unorfildor,Glararil,Solad,Favin,Tinarambor,"
-#~ "Tinil-Ganduil,Padrijerijand,Ameldor,Gil,Unebrind,Selebririon,Korfildur,"
-#~ "Kanduil,Glambor,Urul,Elran,Glilmal,Porfildur,Kadrijerijand,Delaraldur,"
-#~ "Galelas,Hebril,Varalas,Seler,Nondel,Eladrijeng,Elvorfirijand,Delandel,"
-#~ "Delorfilad,Meng,Lomovin,Elelas,Unebrin,Anitranduil,Selarijand,Trebring,"
-#~ "Belirion,Belilmand,Numbor,Voldur,Tinorfind,Gambor,Trambor,Tarijand,"
-#~ "Eradrijendel,Rovin,Elvemir,Elvorfiril,Kaliorijand,Deloldor,Tinorijand,"
-#~ "Eovaraldor,Vel,Galembor,Elritralit,Eland,Fadrijendel,Delaril,Fandel,"
-#~ "Sindil,Unalas,Delavin,Firion,Eovilas,Eovitravin,Elvombor,Vuldur,"
-#~ "Legorfindil,Unombor,Gadrijeng,Amilmandir,Elrioldor,Kalil-Gavin,Ereldor,"
-#~ "Glolas,Norfindir,Unorfivin,Amind,Sorijand,Izondel,Kaliril,Eovaran,Elolas,"
-#~ "Fendel,Tovin,Hiong,Elverbrindel,Eovar,Vulas,Legemir,Torfildur,Kol,"
-#~ "Izorfilad,Elimaldur,Seluvin,Gimbor,Hundel,Elen,Izarar,Delan,Trimir,"
-#~ "Tinilmand,Tinitrar,Elvioldur,Tendel,Hararijand,Ritrandil,Garaldor,"
-#~ "Lomarand,Selor,Elvorfimir,Galar,Paraldor,Morfirijand,Selang,Amoldor,"
-#~ "Vararion,Belondel,Hivin,Legiondel,Elildor,Erorfirijand,Glarang,Gor,Trolas,"
-#~ "Gararil,Norfilit,Delivin,Nildur,Volas,Izer,Eovaduil,Eoviomir,Belitraldor,"
-#~ "Elemir,Amiol,Uralas,Belil-Gandil,Nalit,Treldur,Gan,Eovimbor,Padrijeril,"
-#~ "Anorfing,Rebrir,Anilmarijand,Rilmandil,Tririjand,Izindel,Selorion,Izong,"
-#~ "Sadrijelas,Por,Traral,Miolit,Elil-Garil,Vandel,Kovin,Unondel,Uniolit,"
-#~ "Legovin,Vilas,Unulad,Legal,Selelas,Galeldur,Amendel,Amorfir,Elvilmadur,"
-#~ "Eranduil,Til-Gan,Nilmar,Eradrijer,Selior,Sebrin,Pildur,Urer,Fioril,"
-#~ "Anebrin,Hemir,Tran,Glal,Mondir,Senduil,Galur,Glimir,Anior,Tinoldor,Van,"
-#~ "Hilmarijand,Lomebrilad,Gin,Legin,Vol,Kun,Lomadrijeril,Amadrijand,Eoovemir,"
-#~ "Belomir,Eltranduil,Gumbol,Selad,Anebrir,Tevin,Tarijand,Geril,Elreldur,"
-#~ "Legil-Gal,Erebrindel,Elvund,Unil,Pilmalad,Deleng,Tinovin,Kundir,"
-#~ "Gadrijendil,Eovarijand,Siong,Morfin,Nadrijeldor,Elrorfir,Himir,Elvebrind,"
-#~ "Urambor,Trund,Anenduil,Anon,Elrilmand,Sitraril,Mitrand,Saraldur,Eovoldur,"
-#~ "Glior,Elvavin,Legitralit,Volas,Kalandel,Kaldur,Lomarijand,Elebriril,"
-#~ "Selundir,Evorfildor,Selerion,Elor,Elvavin,Lomilmaril,Delimaldor,Amelad,"
-#~ "Tion,Unal,Kalebrindel,Amilmalit,Eririjand,Unondir,Isuvin,Elralit,"
-#~ "Belilmang,Eovarar,Sil-Gal,Kalil-Gandir,Glon,Deliol,Sebriril,Elembor,"
-#~ "Selebrindir,Selilmalas,Elverion,Sitrandel,Anembor,Uradrijeron,Ganduil,"
-#~ "Pararijand,Pumbor,Gitral,Galoldur,Rorfilad,Tirijand,Vondel,Tinimir,"
-#~ "Sorfind,Uroldor,Delitrar,Galurion,Elval,Tinond,Delorion,Taral,Trong,"
-#~ "Madrijel,Isitral,Belrandel,Selendel,Glabrijend,Lomirijand,Legeril,Nan,"
-#~ "Vilit,Belen,Elriolit,Delundil,Anilad,Selaral,Ameng,Merion,Eovarion,"
-#~ "Tilmalad,Elvil-Garion,Sitralad,Rin,Tinen,Elolas,Belandil,Golad,Meomir,"
-#~ "Tolas,Urilmatil,Norfindil,Manduil,Gitralad,Legorfion,Mondir,Hirion,"
-#~ "Anundil,Tilmavin,Legil,Elradrijen,Anil-Gavin,Tinandir,Uneldor,Amulas,"
-#~ "Valad,Amulas,Seliondir,Tadrirand,Rendir,Elvonduil,Urorfildor,Vildor,"
-#~ "Galelit,Kaloril,Amaril,Belitravin,Sadrimbor,Tilmalas,Tril-Gar,Elalit,"
-#~ "Vorfin,Eovebrind,Nil-Galas,Eovambor,Morfilas,Trion,Roldor,Filman,Unioril,"
-#~ "Forfilas,Gadrijeldor,Elorfilad,Eralad,Ereng,Tril-Gandir,Belan,Gelad,Nil-"
-#~ "Galit,Eromir,Delorfilit,Tilad,Eliomir,Verinduil,Pamir,Amilmaldur,Nil-Gar,"
-#~ "Vorfindil,Sandir,Eranduil,Galuldur,Selenduil,Korfil,Beliolind,Anol,"
-#~ "Amitrarion,Selad,Legilad"
-
-#~ msgid ""
-#~ "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
-#~ "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
-#~ "Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
-#~ "Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
-#~ "Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
-#~ "Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
-#~ "Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
-#~ "Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,"
-#~ "Lómythien,Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,"
-#~ "Fadrielia,Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,"
-#~ "Anilmarith,Sáng,Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,"
-#~ "Fil-Gathiel,Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,"
-#~ "Eäriolith,Celarandra,Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,"
-#~ "Anaraclya,Mithradë,Eowylia,Celindë,Legádë,Amiolith,Urilmawiel,Elvil-"
-#~ "Gawien,Thrulith,Padriedith,Viowiel,Elrithradith,Elvánia,Violindë,Lómániel,"
-#~ "Pong,Mithralindë,Amithrawien,Mil-Gathiel,Celioniel,Uryrith,Soniel,"
-#~ "Lómulindë,Eärilmathien,Hódia,Tithrathien,Tówiel,Glowiel,Aniorith,Uniong,"
-#~ "Tinorfithien,Madrieclya,Sadrierith,Vówien,Reniel,Legil-Galindë,Amewien,"
-#~ "Nithrarith,Vebrithien,Ril-Gawien,Fólindë,Galebrindra,Pilindë,Nithraniel,"
-#~ "Gólia,Medien,Munia,Cithralith,Eärithrang,Throng,Eledë,Cithrawen,"
-#~ "Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,Lómebriniel,Ceclya,"
-#~ "Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,Eowebridith,Eärarawien,"
-#~ "Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,Elrithiel,"
-#~ "Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-Galia,"
-#~ "Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
-#~ "Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
-#~ "Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,"
-#~ "Glorfilith,Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,"
-#~ "Elrebridith,Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,"
-#~ "Isendra,Lómudia,Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,"
-#~ "Amil-Garith,Belowen,Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,"
-#~ "Fáwien,Lómithrarith,Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,"
-#~ "Módë,Hunia,Tinaraniel,Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,"
-#~ "Sithrang,Celadë,Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,"
-#~ "Tiniolith,Elelith,Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,"
-#~ "Náviel,Amithrawien,Caluclya,Galothiel,Paralindë,Celorfing,Elránia,"
-#~ "Mebriwiel,Anebriniel,Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,"
-#~ "Celylia,Thrithrandra,Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,"
-#~ "Elrilmathien,Unionia,Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,"
-#~ "Celéng,Isil-Garith,Lómudia,Thrérith,Amadrielindë,Eladrielia,Amuviel,"
-#~ "Legadrieclya,Legilmadith,Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,"
-#~ "Filmaclya,Naraniel,Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,"
-#~ "Legadrieniel,Galundra,Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,"
-#~ "Anundra,Lómorith,Delararith,Anywien,Saradith,Galédë,Háwien,Celérith,"
-#~ "Niothien,Elvilmathiel,Hewen,Isóthien,Hóthiel,Celebriviel,Moniel,"
-#~ "Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,Sethien,Sioclya,Hodia,"
-#~ "Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,Legithrania,Calewiel,"
-#~ "Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,Mádia,Isadrieng,"
-#~ "Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,Belithrawien,Amil-"
-#~ "Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,Terith,Calang,"
-#~ "Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,Lómilmawiel,"
-#~ "Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,Celorfiwien,"
-#~ "Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,Elrorfidia,"
-#~ "Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,Unebridë,"
-#~ "Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,Vorfiwiel,"
-#~ "Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
-#~ "Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
-#~ "Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
-#~ "Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
-#~ "Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
-#~ "Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
-#~ "Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
-#~ "Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
-#~ "Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
-#~ "Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
-#~ "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
-#~ "Eowathiel,Iséng,Legondra,Celorfilindë"
-#~ msgstr ""
-#~ "Vil-Gandra,Legrakleja,Tinakleja,Elvovijen,Delidijen,Selilit,Tinil-Gavijel,"
-#~ "Niodijen,Uniode,Tinitrajel,Unorfiven,Fatijen,Urebrikleja,Unil-Gedija,"
-#~ "Belravijel,Veodija,Vadrijeven,Legadijen,Glitijel,Noven,Elviondra,"
-#~ "Sitranija,Izitradijen,Legitrandra,Tilmakleja,Galtrijen,Rorfivijel,Tring,"
-#~ "Unindra,Lomenijel,Delioven,Korfijel,Eranijel,Erelija,Fekleja,Vorfing,"
-#~ "Tinong,Selit,Selelit,Sadrenija,Deletijen,Uredrija,Pulija,Lomutijel,"
-#~ "Evinijel,Revijel,Parandra,Glaranijel,Til-Gandra,Izilinde,Belendra,"
-#~ "Galorfijel,Mil-Gatijen,Lonilinde,Elvitrang,Urenija,Kade,Eradrijen,"
-#~ "Belarnija,Legelit,Lomitijen,Legetijel,Godijen,Gokleja,Eliven,Gitravijel,"
-#~ "Galoven,Gilmavijel,Fadrelija,Galadijen,Mioven,Tinofilit,Amuven,Silmatijel,"
-#~ "Holdija,Hivijen,Anilmarit,Sang,Amionija,Miovijel,Gedrikleja,Selodit,"
-#~ "Amorit,Amode,Tralija,Fil-Gatijel,Eravijel,Delil-Ganijel,Uninija,"
-#~ "Betranijel,Saldrijeng,Eriolit,Selrandra,Elorfing,Sotijen,Amiven,Delovijel,"
-#~ "Selalija,Glalija,Anarkleja,Mitrade,Eovilija,Selinde,Legade,Amiolit,"
-#~ "Ulmavijel,Elvil-Gavijen,Trulit,Padriedit,Viovijel,Elritadit,Elvanija,"
-#~ "Violinde,Lomanijel,Pong,Mitralinde,Amitravijen,Mil-Gatijel,Selionijel,"
-#~ "Uririt,Sonijel,Lomulinde,Erilmatijen,Holdija,Teratijen,Tovijel,Glovijel,"
-#~ "Aniorit,Uniong,Tinofitijen,Madrikleja,Sadrijerit,Vovijen,Renijel,Legil-"
-#~ "Galinde,Amevijen,Nitrarit,Vebritijen,Ril-Gavijen,Folinde,Galebrindra,"
-#~ "Pilinde,Nitranijel,Gaolija,Medijen,Munija,Sitralit,Eritrang,Trong,Elede,"
-#~ "Sitraven,Terandija,Salenijel,Elimalija,Rindra,Eladrede,Lobrinijel,Sekleja,"
-#~ "Salovijen,Hiode,Saleven,Gebririt,Tinerit,Sarandra,Eovidrit,Eravijen,"
-#~ "Eluvijel,Sendra,Hekleja,Salinde,Fode,Trolit,Varavijel,Elritijel,Selbrijel,"
-#~ "Hitijen,Mindra,Urilelinde,Salandra,Delofinde,Fil-Gaolija,Glovijel,"
-#~ "Eovidijen,Delebrinija,Putijen,Elvadija,Elrilinde,Lagrijede,Vitrenijel,"
-#~ "Modija,Lomitrade,Elraderit,Hitijel,Gilmadijen,Tredija,Vadririt,Belolija,"
-#~ "Gil-Gavijen,Lomunijel,Milinde,Elondra,Elvijel,Glorfilit,Pabrijen,Galandra,"
-#~ "Fulinde,Galotijel,Glendra,Salanija,Eovedit,Elbridit,Anutijel,Giovijel,"
-#~ "Mivijel,Tinavijel,Hedija,Abrilinde,Eraven,Izendra,Lomedija,Tiorit,"
-#~ "Lomorfing,Anitijen,Eovil-Galinde,Tritanijel,Amil-Garit,Beloven,Elinija,"
-#~ "Elvitrijen,Tinalinde,Helit,Beladrijen,Favijen,Lomirarit,Salorfindel,"
-#~ "Galevijel,Lomekleja,Lomolit,Anatijen,Mode,Hunija,Tirenijel,Vitrang,Pil-"
-#~ "Gedija,Eluvijel,Fatijel,Elravijel,Unenija,Sitrang,Selade,Beladilit,"
-#~ "Elriven,Mekleja,Padija,Lomondra,Elvil-Gavijen,Tiniolit,Elelit,Traravijel,"
-#~ "Eovarijen,Gioven,Erorvijen,Amarang,Naven,Navijel,Amitravijen,Salikleja,"
-#~ "Galotijel,Paralinde,Selorfing,Elranija,Mebrijel,Anbrijel,Tilmavijel,"
-#~ "Fedrijendra,Unulinde,Havijel,Elimavijen,Selilija,Tritrandra,Lomikleja,"
-#~ "Fetijel,Selalija,Eovalija,Hukleja,Horfivijen,Elimatijen,Uneonija,Gionijel,"
-#~ "Elirmandra,Delarit,Urekleja,Hutijen,Seleng,Izil-Garit,Lomedija,Trerit,"
-#~ "Amdrilinde,Eladrilija,Amuvijel,Lagrikleja,Legilmedit,Belerindra,Lomode,"
-#~ "Uniolija,Gadrivijel,Galimadija,Fimekleja,Neranijel,Salimalit,Hil-Ganija,"
-#~ "Anutijen,Elvinijel,Elebrindra,Legadrijel,Galundra,Anilinde,Selovijen,"
-#~ "Tridit,Niolija,Falinde,Milit,Anundra,Lomorit,Delarit,Anivijen,Saradit,"
-#~ "Galede,Havijen,Selerit,Niotijen,Elimatijel,Heven,Izotijen,Hotijel,"
-#~ "Selevijel,Monijel,Elitradijen,Vorfikleja,Gleritijen,Golinde,Vivijel,"
-#~ "Setijen,Siokleja,Haodija,Teradijen,Fadrenija,Gitranija,Sal-Galit,"
-#~ "Elretijel,Legitrija,Selavijel,Izebrijen,Tredijen,Tinedija,Tinedrijen,"
-#~ "Galiltrijen,Manedija,Izadrijeng,Selarit,Izebrinija,Amorfilit,Sedit,Erude,"
-#~ "Erenija,Beltavijen,Amil-Gadit,Vadrivijel,Lolmatijel,Tinebrijel,Eovilinde,"
-#~ "Terit,Salang,Selelarit,Glodit,Siorit,Belavrijen,Fionijel,Ameolija,Nijedit,"
-#~ "Lonimavijel,Gavijel,Belulinde,Legorfide,Unetijen,Perofindra,Salikleja,"
-#~ "Selorfijen,Anelija,Elitrekleja,Delondra,Unondra,Nilmadija,Riotrijen,"
-#~ "Guvijel,Elrofidija,Horfinija,Uriolija,Delitrijel,Legenijel,Sebrivijen,"
-#~ "Deloritijen,Unebride,Legeng,Trinija,Galolinde,Galinijel,Vorfirit,Sinijel,"
-#~ "Heravijel,Vorfivijel,Porfivijen,Izitrarit,Marekleja,Amijendra,Gilija,"
-#~ "Fadriedit,Amede,Selidijen,Legolit,Unuvijel,Nil-Gang,Selitradit,Pindra,"
-#~ "Povijel,Elil-Gang,Galebrija,Tatijel,Unadrijeng,Izitravijel,Amadrilija,"
-#~ "Naven,Tang,Sidija,Silmakleja,Sadriven,Tebinijel,Urilmodija,Tretijen,"
-#~ "Unikleja,Galolija,Sitraven,Elrodit,Trotijel,Lomedija,Paven,Lagivijel,"
-#~ "Legelija,Urarit,Enomadija,Morfilinde,Izavijel,Ametijen,Glokleja,Sing,"
-#~ "Legilinde,Izaven,Sotijel,Eovivijen,Urutijen,Amadriven,Vong,Rong,Erilmade,"
-#~ "Anovijen,Tunijel,Taratijel,Lominija,Seliode,Pil-Gadijen,Belatrijel,"
-#~ "Gatijen,Anang,Vorfing,Tinaratijen,Fil-Gavijen,Amilmadija,Amitranijel,"
-#~ "Setijen,Glokleja,Hikleja,Izitrade,Legidija,Selalinde,Galil-Ganija,Tinil-"
-#~ "Ganija,Eovinijel,Solinde,Belakleja,Nerenija,Geven,Elorfitijen,Sadrijerit,"
-#~ "Aning,Tadrijerit,Deletijen,Eovatijel,Izeng,Legondra,Selorfinde"
-
-#~ msgid ""
-#~ "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,"
-#~ "Owaecyn,Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,"
-#~ "Yryrcyn,Glynvan,Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,"
-#~ "Bladoc,Addreonyc,Rheoran,Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,"
-#~ "Caraennyn,Careorraent,Gwor,Cin,Goc,Glydd,Oweomyr,Carraent,Gubryn,Gannyn,"
-#~ "Aethadry,Aethonnyn,Blygwyn,Laellyn,Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,"
-#~ "Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,Owarcyn,Daeddry,Mubryn,Gwymyr,"
-#~ "Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,Addraecyn,Morcyn,Vugwyn,Rhenry,"
-#~ "Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,Gwaec,Rycyn,Rhobryn,Gwyddry,"
-#~ "Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,Owecyn,Blydd,Owinyc,"
-#~ "Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,Geodry,Midry,"
-#~ "Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,Aethenvan,"
-#~ "Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,Yrannyn,"
-#~ "Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,Addrenyc,"
-#~ "Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,Rharcyn,"
-#~ "Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,Gwudoc,"
-#~ "Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
-#~ "Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
-#~ "Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
-#~ "Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
-#~ "Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,"
-#~ "Ruddry,Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,"
-#~ "Cararyn,Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,"
-#~ "Aethoddyn,Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,"
-#~ "Maddyn,Gecyn,Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,"
-#~ "Saellyn,Surcyn,Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,"
-#~ "Addrocyn,Aethydry,Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,"
-#~ "Owaedry,Teor,Ceonnyn,Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,"
-#~ "Gwumyr,Owinvan,Maennyn,Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,"
-#~ "Aethanry,Lec,Blanry,Vaddyn,Modd,Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,"
-#~ "Saran,Gullyn,Owollyn,Aethiddry,Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,"
-#~ "Careoryn,Gegwyn,Gleddry,Tennyn,Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,"
-#~ "Yraryn,Oweor,Daellyn,Mec,Lannyn,Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,"
-#~ "Bledoc,Caregwyn,Tuddry,Careobryn,Addrenyc,Aethellyn,Veodry,Meonnyn,"
-#~ "Myrraent,Addraer,Aethun,Coc,Sarraent,Rheollyn,Reodry,Blucyn,Caedry,Mudoc,"
-#~ "Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,Owoddry,Owugwyn,Tarcyn,Owuddyn,"
-#~ "Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,Yrunnyn,Glircyn,Aetherraent,"
-#~ "Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,Rygwyn,Gagwyn,Addrynvan,"
-#~ "Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,Gwenyc,Corcyn,Gaebryn,"
-#~ "Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,Aethercyn,Caryn,"
-#~ "Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,Gwaec,Seorcyn,"
-#~ "Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,Vyrcyn,Terraent,"
-#~ "Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,Glumyr,Rheodd,"
-#~ "Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,Dadoc,Sellyn,"
-#~ "Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,Gaedry,Rhodry,"
-#~ "Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,Aethibryn,Gwaec,"
-#~ "Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,Gwycyn,Blebryn,"
-#~ "Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,Aethercyn,Middry,"
-#~ "Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,Car,Taemyr,"
-#~ "Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,Cubryn,"
-#~ "Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
-#~ "Gwaeddyn,Saenvan,Todd,Tegwyn"
-#~ msgstr ""
-#~ "Kanri,Bluran,Marsin,Adraenvan,Gad,Eteolin,Renik,Gilin,Dirsin,Ovesin,"
-#~ "Blolin,Gliran,Vigvin,Irasin,Raesin,Reor,Etagvin,Venin,Irirsin,Glinvan,"
-#~ "Ridri,Saemir,Dibrin,Ovudri,Glodin,Gladok,Irodri,Bladok,Adreonik,Reoran,"
-#~ "Tirin,Glinri,Raemir,Gvedin,Semir,Mimir,Karejnin,Kareorent,Gvor,Sin,Gok,"
-#~ "Glid,Oveomir,Karaent,Gabrin,Ganin,Etadri,Etonin,Bligvin,Laelin,Karudok,"
-#~ "Ladok,Blersin,Karosin,Eteok,Rumir,Gersin,Kareogvin,Karin,Karedri,Ovarsin,"
-#~ "Dedri,Mabrin,Gvimir,Bledri,Ovarin,Adredri,Ovarin,Taedok,Adresin,Morsin,"
-#~ "Vagvin,Renri,Blalin,Disin,Dedri,Blid,Sedin,Teodin,Gvajek,Risin,Robrin,"
-#~ "Gvidri,Tadok,Rodin,Overan,Seodin,Blabrin,Glonri,Sedri,Ovesin,Blid,Ovinik,"
-#~ "Gvaran,Irilin,Tanvan,Gvan,Karak,Sebrin,Marsin,Ronri,Gedri,Midri,Gveogvin,"
-#~ "Etek,Blinvan,Riraent,Etarin,Seodri,Karadok,Etenvan,Sanik,Etaek,Gvimir,"
-#~ "Teorsin,Lenvan,Rabrin,Irinik,Marsin,Midok,Iranin,Robrin,Ovorent,Ovak,"
-#~ "Vadin,Gvelin,Glersin,Iregvin,Oversin,Adrenik,Raedok,Karosin,Ronvan,"
-#~ "Oversin,Dad,Korsin,Adrosin,Irerin,Tinri,Rarsin,Rar,Adrorin,Tabrin,Blinvan,"
-#~ "Adrunvan,Derent,Leogvin,Viraent,Gvudok,Lersin,Glarent,Saren,Lirin,Gvegvin,"
-#~ "Ligvin,Gvibrin,Lin,Veodin,Ovod,Karidri,Glonvan,Gimir,Etuk,Kareonvan,"
-#~ "Etadri,Adreondin,Gveosin,Vonri,Rigvin,Rirsin,Rar,Deonik,Veosin,Sirin,"
-#~ "Teobrin,Iraek,Gvedri,Karoran,Karedri,Venin,Mondri,Vaedin,Kared,Sidri,"
-#~ "Etasin,Reorent,Rabrin,Adrursin,Sodri,Runik,Gveod,Reodin,Vinik,Glidok,Sod,"
-#~ "Didin,Dinin,Radri,Adrarin,Gvolin,Rarsin,Glinri,Blir,Etarsin,Blibrin,"
-#~ "Adrersin,Kararin,Karigvin,Menvan,Sarik,Tarent,Ovorsin,Gvenin,Meorent,"
-#~ "Ladok,Etodin,Glik,Ovoran,Simir,Etagvin,Gvinin,Glanri,Sinik,Adregvin,Madin,"
-#~ "Gesin,Deolin,Gvidok,Meon,Gok,Sad,Ired,Adredri,Kerean,Vobrin,Saelin,Sarsin,"
-#~ "Tersin,Labrin,Iran,Seomir,Karodin,Deod,Glanvan,Gvodin,Adrosin,Etidri,"
-#~ "Karigvin,Etinik,Eteorsin,Tek,Rosin,Laelin,Tinvan,Ovedri,Teor,Seonin,Rinri,"
-#~ "Lanin,Min,Rinin,Dak,Ovadin,Vik,Blidri,Gar,Gvimir,Ovinvan,Menin,Veogvin,"
-#~ "Blenvan,Ovar,Sarin,Gleodin,Etek,Etanri,Lek,Blanri,Vadin,Mod,Gadri,Irinvan,"
-#~ "Blid,Reran,Veomir,Ovad,Saran,Galin,Ovolin,Etidri,Glodri,Sarulin,Sekin,"
-#~ "Manik,Romir,Vinvan,Kareorin,Gegvin,Gledri,Tenin,Manri,Siran,Gor,Sedri,"
-#~ "Etobrin,Iranvan,Irarin,Oveor,Delin,Mek,Lanin,Oviran,Lemir,Raedok,Iralin,"
-#~ "Sirin,Bladri,Bledok,Saregvin,Tadri,Sareobrin,Adrenik,Etelin,Vadri,Meonin,"
-#~ "Mirent,Adrer,Etan,Kok,Sarent,Reolin,Redri,Blasin,Sedri,Madok,Sid,Karigvin,"
-#~ "Kedri,Gvisin,Ten,Ron,Lan,Ovodri,Ovagvin,Tarsin,Ovadin,Renvan,Tanri,Etonik,"
-#~ "Karadri,Blelek,Iranin,Glirsin,Eterent,Reodin,Senin,Ginvan,Gveoran,Gamir,"
-#~ "Blimir,Rigvin,Gagvin,Adrinvan,Raerent,Irimir,Laran,Rabrin,Seok,Gvod,"
-#~ "Gvadok,Gvenik,Korsin,Gebrin,Gvidok,Iramir,Saregvin,Reolin,Rolin,Glidin,"
-#~ "Ovedri,Etersin,Karin,Seak,Vogvin,Lorent,Migvin,Kak,Mak,Tarsin,Tenvan,"
-#~ "Ronri,Gvajek,Seorsin,Soran,Ladri,Adreran,Iranvan,Gvidok,Senri,Glasin,"
-#~ "Varsin,Virsin,Terent,Blilin,Ran,Ligvin,Rilin,Sersin,Denvan,Konvan,Ovogvin,"
-#~ "Gar,Glamir,Reod,Sikin,Blak,Dedok,Gvedok,Adreorsin,Sersin,Rinik,Lanin,"
-#~ "Dadok,Selin,Eteran,Gidok,Sodri,Tidin,Rerent,Gan,Lanvan,Sersin,Gedri,Rodri,"
-#~ "Tenvan,Rad,Saror,Monri,Magvin,Melin,Glan,Moran,Ribrin,Etibrin,Gvajek,"
-#~ "Adrilin,Sebrin,Sinri,Ranvan,Blemir,Adridin,Ragvin,Gvisin,Blebrin,Iranvan,"
-#~ "Tedin,Vadri,Adreodri,Tesed,Sirin,Irarent,Etersin,Midri,Larent,Bleolin,"
-#~ "Etirsin,Ven,Mod,Seorin,Karersin,Lonin,Kar,Taemir,Ovidri,Gedin,Etanri,"
-#~ "Iredin,Adribrin,Sak,Gleran,Adredri,Kabrin,Veosin,Karin,Demir,Tad,Romir,"
-#~ "Lenvan,Glilin,Senin,Ranri,Blenin,Gvedin,Senvan,Tod,Tegvin"
-
-#~ msgid ""
-#~ "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
-#~ "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
-#~ "Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
-#~ "Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,"
-#~ "Nera,Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,"
-#~ "Elulonna,Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,"
-#~ "Brera,Meanoic,Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,"
-#~ "Nyll,Clillyra,Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,"
-#~ "Lolonna,Lycla,Merydda,Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,"
-#~ "Merubrylla,Clwdda,Gwerka,Saessa,Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,"
-#~ "Dyssa,Cassa,Relyan,Gworyan,Dwdda,Alengwen,Lill,Raebrylla,Elwra,Joll,"
-#~ "Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,Merina,Rilonna,Gwangwen,Gwussa,"
-#~ "Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,Elaedda,Sull,Elyngwen,Mwbrylla,"
-#~ "Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,Clilyan,Daenoic,Naell,Brynoic,"
-#~ "Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,Dulonna,Gwirka,Dollyra,"
-#~ "Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,Ysyrka,Alearka,Jiryan,"
-#~ "Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,Gwonoic,Gwobrylla,"
-#~ "Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,Sallyra,"
-#~ "Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,Meraelyan,"
-#~ "Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,Merona,"
-#~ "Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,Myra,"
-#~ "Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,Dangwen,"
-#~ "Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,Aluryan,"
-#~ "Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
-#~ "Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
-#~ "Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
-#~ "Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,"
-#~ "Ysell,Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,"
-#~ "Jacla,Nungwen,Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,"
-#~ "Merella,Ysylyan,Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,"
-#~ "Merydda,Cibrylla,Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,"
-#~ "Dwbrylla,Dybrylla,Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,"
-#~ "Merall,Clill,Clungwen,Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,"
-#~ "Clara,Meradda,Dwra,Nolla,Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,"
-#~ "Rara,Cwngwen,Dara,Ysura,Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,"
-#~ "Mwlyan,Meralonna,Lerka,Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,"
-#~ "Sanoic,Ysanoic,Cyllyra,Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,"
-#~ "Nwllyra,Ysycla,Swngwen,Nyvyan,Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,"
-#~ "Laenoic,Mullyra,Judda,Mycla,Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,"
-#~ "Senoic,Rwngwen,Merwlla,Brera,Saeniver,Deassa,Meranoic,Bronoic,Aleacla,"
-#~ "Mavyan,Alora,Jarka,Elaelonna,Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,"
-#~ "Silonna,Ysealyan,Alora,Revyan,Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,"
-#~ "Mavyan,Jull,Syllyra,Swlyan,Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,"
-#~ "Raera,Gwedda,Lodda,Brell,Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,"
-#~ "Alabrylla,Nealonna,Alolla,Rirka,Jyniver,Elearka,Jaevyan,Melonna,Alengwen,"
-#~ "Sura,Cissa,Mossa,Norka,Nangwen,Saerka,Elycla,Della,Merallyra,Elyllyra,"
-#~ "Elenoic,Alussa,Elwngwen,Calla,Merina,Jynoic,Ysealonna,Sussa,Sulyan,Mossa,"
-#~ "Dissa,Daedda,Merinoic,Searka,Rella,Sira,Clillyra,Alwna,Lulla,Nulyan,"
-#~ "Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,Jealla,Gwwna,Gwullyra,"
-#~ "Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,Deassa,Jovyan,"
-#~ "Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,Jana,"
-#~ "Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
-#~ msgstr ""
-#~ "Jongven,Dalira,Alena,Nuerijan,Elikla,Salona,Bririjan,Kengven,Navijan,"
-#~ "Luekla,Jarka,Ruela,Aluakla,Breal,Nilijan,Silijan,Zisa,Žola,Gvol,Linojk,"
-#~ "Elvlira,Klarka,Klaula,Sira,Lila,Elavijan,Meroniver,Luela,Reakla,Nilira,"
-#~ "Mada,Brirka,Alirijan,Rengven,Sorka,Nalijan,Isilijan,Reala,Lina,Ruelira,"
-#~ "Elirka,Nera,Guekla,Kaela,Guevijan,Navijan,Sona,Merola,Nisa,Sera,Luerijan,"
-#~ "Izel,Elalona,Rerka,Zael,Duenojk,Klisa,Meda,Lesa,Ruelira,Leda,Žebrila,"
-#~ "Brera,Meanojk,Lelijan,Klobrila,Brelira,Nakla,Želijan,Dida,Sivijan,Revijan,"
-#~ "Nil,Slalira,Langven,Ževijan,Selira,Sera,Sara,Rakla,Ringven,Sikla,Lolona,"
-#~ "Likla,Merida,Nekla,Aleara,Ruela,Sirijan,Lina,Mila,Rarka,Meribrila,Klueda,"
-#~ "Guerka,Zaesa,Brangven,Žonojk,Elalona,Eluelona,Lida,Disa,Kasa,Relijan,"
-#~ "Gvorijan,Dueda,Alengven,Lil,Rebrila,Elvra,Žol,Brerka,Mengven,Sevijan,"
-#~ "Muenojk,Nivijan,Merina,Rilona,Gvangven,Gvisa,Lelona,Kueda,Žerka,Žasa,Zasa,"
-#~ "Elerka,Elede,Sal,Elingven,Muebrila,Livijan,Mekla,Kuelona,Izoda,Elarka,"
-#~ "Klila,Klilijan,Denojk,Nel,Brinojk,Zisa,Nala,Merebrila,Braebrila,Kal,Žikla,"
-#~ "Dalona,Guerka,Dolira,Alibrila,Elel,Žara,Dala,Merengven,Sinojk,Nel,Izirka,"
-#~ "Alearka,Žirijan,Izonojk,Izikla,Merilijan,Brorka,Žal,Aluelira,Selona,"
-#~ "Gvonojk,Gvobrila,Brelira,Sirijan,Moniver,Kleal,Elara,Lilijan,Delijan,"
-#~ "Relijan,Salura,Kleakla,Alalona,Elela,Izisa,Klakla,Rilijan,Ženiver,"
-#~ "Aleniver,Merelijan,Guekla,Žuel,Elela,Lirka,Milona,Lelijan,Mesa,Nabrila,"
-#~ "Lolira,Merona,Meresa,Bravijan,Elevijan,Serijan,Mereniver,Izenojk,Guesa,"
-#~ "Alearka,Mera,Nobrila,Žona,Žirka,Siniver,Lalijan,Rerka,Suela,Nibrila,"
-#~ "Izinver,Dangven,Guekla,Izekla,Elanojk,Muengven,Nevijan,Larka,Brelona,"
-#~ "Guekla,Aluran,Mekla,Brona,Ževijan,Bruera,Korijan,Keda,Elivijan,Nirijan,"
-#~ "Alira,Alilona,Merana,Merilijan,Kida,Diniver,Merolijan,Mil,Ruelona,Guekla,"
-#~ "Izila,Alebrila,Nebrila,Klenojk,Dengven,Reana,Alinojk,Žisa,Mivijan,Brora,"
-#~ "Alarijan,Rengven,Klavijan,Rina,Žal,Brolira,Brobrila,Izeda,Alingven,Izel,"
-#~ "Žeala,Lirijan,Merarka,Elalira,Klinojk,Ninojk,Merada,Gvongven,Žakla,"
-#~ "Nangven,Kaela,Gvona,Gvaera,Rora,Ninojk,Brikla,Kluevijan,Klarka,Klil,"
-#~ "Merela,Izilijan,Rueda,Lelona,Izelona,Klaela,Klalira,Dasa,Klelijan,Merida,"
-#~ "Sibrila,Denojk,Klenojk,Raza,Guevijan,Kakla,Luenojk,Alaniver,Duebrila,"
-#~ "Dibrila,Merisa,Izelijan,Klida,Meniver,Dalira,Nesa,Gvida,Meral,Klil,"
-#~ "Klangven,Iznogven,Kakla,Žora,Elinver,Meana,Salura,Izinojk,Klara,Merada,"
-#~ "Duera,Nola,Nera,Merelona,Klibrila,Aleniver,Nonojk,Žakla,Rara,Kvengven,"
-#~ "Dura,Izara,Salona,Disa,Klona,Ralona,Svivijan,Malijan,Langven,Melijan,"
-#~ "Meralona,Lerka,Norijan,Sirijan,Melijan,Nera,Silijan,Merivijan,Luenojk,"
-#~ "Sanojk,Izanojk,Silira,Izirka,Klenojk,Bronojk,Devijan,Izerka,Ruengven,"
-#~ "Nuelira,Izikla,Suengven,Nivijan,Kleana,Merilijan,Aluelijan,Lasa,Lokla,"
-#~ "Meniver,Lenojk,Malira,Žada,Mikla,Brasa,Izakla,Elakla,Marijan,Klolira,"
-#~ "Izanojk,Senojk,Ruengven,Meruela,Brera,Seniver,Deasa,Meranojk,Bronojk,"
-#~ "Alekla,Mavijan,Alora,Jarka,Elelona,Meruerijan,Lengven,Alilona,Mengven,"
-#~ "Klelijan,Silona,Izelijan,Alora,Revijan,Sera,Mernojk,Dekla,Lerijan,"
-#~ "Alabrila,Likla,Mavijan,Žal,Silira,Suelijan,Elesa,Kaena,Klavijan,Brerijan,"
-#~ "Leniver,Žorka,Rera,Gveda,Loda,Brel,Ribrila,Meanojk,Nirijan,Kila,Brikla,"
-#~ "Keda,Alabrila,Nelona,Alola,Rirka,Žiniver,Elarka,Ževijan,Melona,Alengven,"
-#~ "Seura,Kisa,Mosa,Norka,Nangven,Serka,Elikla,Dela,Meralira,Elilira,Elenojk,"
-#~ "Alasa,Eluengven,Kala,Merina,Žinojk,Izelona,Sasa,Salijan,Mosa,Disa,Deada,"
-#~ "Merinojk,Senaka,Rela,Sira,Slalira,Aluena,Lala,Nalijan,Žuelijan,Suenojk,"
-#~ "Klongven,Alala,Serijan,Braeda,Žeala,Guena,Guelira,Merengven,Melijan,Duena,"
-#~ "Lanojk,Breala,Rarijan,Alabrila,Deasa,Ževijan,Sabrila,Breana,Izara,Alolona,"
-#~ "Nela,Nesa,Suevijan,Kora,Larijan,Žijen,Merekla,Žinojk,Sena,Alola,Žana,"
-#~ "Žalona"
-
-#~ msgid ""
-#~ "Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
-#~ "Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,"
-#~ "Anexir,Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,"
-#~ "Jezzix,Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,"
-#~ "Flixta,Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,"
-#~ "Xartrez,Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,"
-#~ "Hesz,Xasz,Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,"
-#~ "Ssorix,Ssexur,Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,"
-#~ "Lixeez,Sklizle,Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,"
-#~ "Sailik,Salanix,Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
-#~ msgstr ""
-#~ "Ariks,Kez,Plaksis,Kreks,Trez,Tareks,Frikes,Kleksaz,Kerks,Tiriks,Meraks,"
-#~ "Spriz,Satras,Anitrac,Hezis,Plesiks,Presk,Tiraks,Tirask,Sapraz,Iriks,"
-#~ "Ineksis,Aneksir,Vris,Vaks,Fazis,Steriz,Kraraks,Kersez,Krineks,Krenareks,"
-#~ "Jiz,Hiks,Jeziks,Hefez,Talerez,Krises,Zedriks,Meksis,Aksic,Cilriks,"
-#~ "Ampriksta,Zalkzl,Fliksta,Moksanz,Bzkca,Flizil,Tarniks,Kserksiks,Ksirasc,"
-#~ "Ksirtras,Ksirc,Ksir,Ksartrec,Ksirtrec,Kerniks,Kertrasc,Kerkseniks,Naksisc,"
-#~ "Nertrazir,Hezir,Hasc,Hesc,Ksasc,Ksacteks,Tezac,Niks,Ksafrasc,Fiztraks,"
-#~ "Cizasc,Scasc,Sicer,Soriks,Saksur,Skrec,Cslap,Pekcs,Kepcs,Zupde,Venez,Klez,"
-#~ "Kleziks,Skeciks,Liksic,Sklicle,Slicilks,Skaliks,Skaciks,Lajciks,Skili,"
-#~ "Salik,Skandiks,Lacki,Sajlik,Salaniks,Kleci,Kalijec,Frizcle,Kamil,Candler,"
-#~ "Sandiks"
-
-#~ msgid ""
-#~ "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
-#~ "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
-#~ "Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,"
-#~ "Natat,Vourukasa,Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,"
-#~ "Atlahua,Jamm,Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,"
-#~ "Makara,Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,"
-#~ "Nudimmud,Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
-#~ msgstr ""
-#~ "Neptun,Posejdon,Triton,Okean,Nerej,Pontij,Forsej,Scila,Taumej,Tangaro,"
-#~ "Tangalo,Kalulu,Netuj,Protej,Okeanoj,Mauj,Rižin,Njord,Barint,Lir,Ler,"
-#~ "Egejon,Melisert,Dilan,Tanoa,Tikitiki,Alastin,Apam,Natat,Vorukasa,Vodnik,"
-#~ "Faro,Nun,Habek,Apsu,Abzu,Abzi,Sisiutl,Atla,Atlaha,Jam,Vizi,Ember,Toniva,"
-#~ "Apalala,Dakan,Nektan,Elkmar,Mimir,Enki,Makara,Aremata,Rorua,Popoa,Tinirau,"
-#~ "Tini,Rau,Kinilau,Sinilau,Tinilau,Nudimud,Tagaloa,Labuna,Jin,Laut,Raja,"
-#~ "Ikater,Nuada,Nad,Lad"
-
-#~ msgid ""
-#~ "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,"
-#~ "Rân,Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
-#~ "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
-#~ "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
-#~ msgstr ""
-#~ "Darketo,Mama Vata,Žengu,Miranda,Lori Lamaris,Arijel,Amfitrita,Atargatis,"
-#~ "Ran,Sedna,Tirgata,Afrodita,Pelagija,Delfina,Marina,Stela Maris,Mirijam,"
-#~ "Telksepija,Aglofema,Pizinoa,Molpa,Leukoszija,Ligija,Partenopa,Himeropa,"
-#~ "Kalipso,Elektra,Galatea,Ved-ava,Vete-ema,Ven-emo,Vatea,Diktina"
-
-#~ msgid ""
-#~ "Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
-#~ "Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
-#~ "Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,"
-#~ "Sassalia,Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,"
-#~ "Grissilai,Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,"
-#~ "Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,"
-#~ "Huzi,Poniazal,Klez,Zlek,Trixzed"
-#~ msgstr ""
-#~ "Ksamalija,Brisal,Saksijala,Lijabra,Rija,Grijama,Gaksmajl,Harksijas,"
-#~ "Aksmalija,Saksrija,Vlanisa,Malina,Niltlasi,Ksinasija,Ksina,Mila,Milbra,"
-#~ "Bli,Blijana,Brasas,Vilajla,Alijase,Amajlis,Hajna,Hajla,Lamaj,Lamajisa,"
-#~ "Majisa,Sasalija,Lilin,Linasa,Inaj,Inalaj,Isalaj,Visalaj,Blaj,Blanalaj,"
-#~ "Grisa,Grisalaj,Sral,Skal,Sla,Sal,Srak,Scak,Psen,Psal,Sek,Snelija,Skepc,"
-#~ "Cepsek,Cesekp,Kcap,Packp,Kreck,Calsp,Kras,Ksabrak,Lekspek,Ksanamas,"
-#~ "Ksopkne,Okspel,Huci,Ponijacal,Klec,Clek,Triksced"
-
-#~ msgid ""
-#~ "Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,"
-#~ "Saxrireii,Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,"
-#~ "Vilail,Aleiss,Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,"
-#~ "Ineii,Inaloss,Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,"
-#~ "Slell,Soill,Sorkol,Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,"
-#~ "Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,"
-#~ "Zlek,Trixoz"
-#~ msgstr ""
-#~ "Abraksas,Ksamalel,Bris,Saksil,Lobor,Rej,Grijam,Gaksmol,Harksos,Aksmajl,"
-#~ "Saksrirej,Silas,Vlanis,Malinos,Niltlos,Ksinas,Milej,Milbor,Blo,Bres,"
-#~ "Vilajl,Alejs,Amajl,Hajnos,Hajlos,Lamej,Lamajs,Majsol,Sasal,Lines,Inej,"
-#~ "Inalos,Isal,Visal,Blej,Blanal,Gris,Grisilej,Srel,Skel,Slel,Sojl,Sorkol,"
-#~ "Pson,Psel,Sekol,Snol,Skepc,Cepsek,Cesekp,Kcap,Packp,Kreck,Calsp,Kras,"
-#~ "Ksabrak,Lekspek,Ksanmos,Ksopkon,Okspej,Hucel,Ponijac,Klecel,Clek,Triksoc"
-
-#~ msgid ""
-#~ "Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,"
-#~ "Markaak,Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,"
-#~ "Kingrok,Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,"
-#~ "Borkuk,Orkut,Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,"
-#~ "Kramak,Goruk,Krog,Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,"
-#~ "Koruck,Gurm,Kayrak,Urkar"
-#~ msgstr ""
-#~ "Blokar,Merknik,Akoark,Delkak,Kalkniks,Akcalk,Korkar,Reknak,Krukrar,Markak,"
-#~ "Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnuk,Kuknuk,Kurkur,Kingrok,"
-#~ "Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukak,Borkuk,"
-#~ "Orkut,Trakon,Makron,Kokan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,"
-#~ "Krog,Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruk,Gurm,"
-#~ "Kajrak,Urkar"
-
-#~ msgid ""
-#~ "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,"
-#~ "Goshnak,Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,"
-#~ "Hunk,Goshnak,Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,"
-#~ "Prodush,Pidush,Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,"
-#~ "Prarg,Hurag,Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,"
-#~ "Eronk,Erulo,Rok,Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,"
-#~ "Groshnak,Eronk,Prilg,Erik,Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,"
-#~ "Vrik,Boshnak,Prong,Rugdish,Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,"
-#~ "Bogdush,Erurag,Vadush,Eruurk,Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,"
-#~ "Vraurk,Prarbag,Hidush,Ruol,Grugdish,Prodash,Gridish,Pulo,Bik,Rinak,Halg,"
-#~ "Erudish,Pirbag,Gank,Galo,Burk,Hunk,Bagdish,Pink,Bort,Gridash,Valo,Eruol,"
-#~ "Radash,Erarg,Vigor,Vudish,Vak,Grirg,Groshnak,Pronak,Punk,Grigar,Prolg,"
-#~ "Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,Vogdish,Rinak,Gagar,Borg,Virt,"
-#~ "Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,Gurt,Erarag,Rugar,Pridish,"
-#~ "Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,Granak,Vrodish,Hoshnak,"
-#~ "Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,Rok,Bolg,Vrishnak,"
-#~ "Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,Grork,Grong,"
-#~ "Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,Vrudish,"
-#~ "Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,Rodish,"
-#~ "Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,Eradish,"
-#~ "Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,Rarbag,"
-#~ "Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
-#~ "Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,"
-#~ "Virag,Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,"
-#~ "Prashnak,Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,"
-#~ "Ginak,Huol,Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,"
-#~ "Erishnak,Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,"
-#~ "Bidush,Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,"
-#~ "Vrork,Rak,Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,"
-#~ "Priol,Rodush,Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,"
-#~ "Raurk,Puurk,Rark,Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,"
-#~ "Vrugdush,Rarag,Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,"
-#~ "Hadush,Budush,Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,"
-#~ "Bilg,Vrart,Prunak,Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,"
-#~ "Buurk,Pagdish,Hirg,Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,"
-#~ "Vilg,Pulo,Gunak,Paol,Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,"
-#~ "Vragor,Rigor,Bung,Prourk,Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,"
-#~ "Vadish,Grilo,Ruol,Vrodish,Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,"
-#~ "Port,Bok,Porbag,Grilo,Bung,Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,"
-#~ "Grarbag,Vurg,Vurbag,Pung,Prolo,Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,"
-#~ "Gragor,Varbag,Erogdush,Erorbag,Bidish,Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,"
-#~ "Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,Hurk,Purg,Hilg,Vrudish,Grurk,"
-#~ "Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,Varag,Huurk,Vadush,Grok,Rank,"
-#~ "Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,Hudish,Gashnak,Ragdish,"
-#~ "Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
-#~ msgstr ""
-#~ "Erang,Bagdiš,Eradaš,Vrigor,Gruol,Gagduš,Gort,Grank,Rurag,Pošnak,Gošnak,"
-#~ "Rarbag,Prirbag,Biol,Vridiš,Erok,Grart,Vrorg,Grirk,Roduš,Prak,Hank,Gošnak,"
-#~ "Bogor,Varbag,Hort,Graol,Gork,Vragdaš,Gagor,Gadaš,Prong,Produš,Pidaš,"
-#~ "Grorag,Grolg,Pang,Harbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,Prarg,Harag,"
-#~ "Eragduš,Galg,Pragduš,Gragduš,Erirg,Griduš,Halo,Vrogar,Eronk,Erulo,Rok,"
-#~ "Prark,Prarg,Gralo,Prirg,Pragar,Bogar,Pradiš,Prank,Grošnak,Eronk,Prilg,"
-#~ "Erik,Roduš,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,Vrik,Bošnak,Prong,"
-#~ "Ragdiš,Erulo,Palo,Vrik,Hak,Vrarg,Garbag,Vrang,Pilg,Bogduš,Erarag,Vadaš,"
-#~ "Erurk,Vank,Ruk,Vrogor,Vrarg,Bagar,Vink,Prinak,Vraurk,Prarbag,Hiduš,Ruol,"
-#~ "Gragdiš,Prodaš,Gridiš,Palo,Bijk,Rinak,Halg,Eradiš,Pirbag,Gank,Galo,Bark,"
-#~ "Hank,Bagdiš,Pink,Bort,Gridaš,Valo,Eruol,Radaš,Erarg,Vigor,Vadiš,Vak,Grirg,"
-#~ "Grošnak,Pronak,Pank,Grigar,Prolg,Pigduš,Ging,Vong,Halg,Bašnak,Vork,Ruol,"
-#~ "Vogdiš,Rinak,Gagar,Borg,Virt,Banak,Hašnak,Ganak,Barbag,Vralo,Hidaš,Vrirt,"
-#~ "Gart,Erarag,Ragar,Pridiš,Pragdiš,Eruol,Vriurk,Gradaš,Varg,Eriol,Bok,"
-#~ "Granak,Vrodiš,Hošnak,Grogdiš,Bork,Hašnak,Hagduš,Parag,Eriurk,Vak,Rirg,Rok,"
-#~ "Bolg,Vrišnak,Vilo,Vragar,Baduš,Gruk,Bidiš,Praurk,Ganak,Hinak,Hak,Grork,"
-#~ "Grong,Erogdiš,Rolo,Vadaš,Palg,Vilg,Vrodaš,Varg,Gink,Grilg,Birt,Biol,"
-#~ "Vradiš,Hagor,Vragduš,Vogor,Valg,Erong,Rašnak,Garag,Grink,Vogdiš,Baduš,"
-#~ "Rodiš,Gradaš,Erart,Parbag,Pralo,Grigar,Baduš,Priurk,Rink,Purk,Vonak,"
-#~ "Eradiš,Vridaš,Poduš,Pruk,Pronk,Hiol,Gašnak,Gagdiš,Hašnak,Eragor,Rarbag,"
-#~ "Gagduš,Granak,Baduš,Vilg,Hort,Palg,Gaol,Podaš,Panak,Gogduš,Porg,Pogdiš,"
-#~ "Prigar,Gašnak,Prarbag,Gagar,Bogor,Gogdiš,Eranak,Gralo,Palg,Virag,Grišnak,"
-#~ "Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Bak,Barg,Prodiš,Prašnak,Ragar,"
-#~ "Parag,Bagdiš,Vigdiš,Grogdiš,Huol,Hank,Grurk,Rak,Radaš,Ginak,Huol,Erigduš,"
-#~ "Vraurk,Prul,Pragor,Grirag,Višnak,Grorg,Eronk,Vraurk,Erišnak,Erank,Bilo,"
-#~ "Hoduš,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidaš,Pigdiš,Biduš,Prašnak,Virag,"
-#~ "Bank,Vrarg,Hong,Rik,Hirg,Rašnak,Gink,Hadiš,Vilo,Vrork,Rak,Hak,Ronak,Vralg,"
-#~ "Vilg,Rogdiš,Prodaš,Erirt,Gragar,Gigor,Barag,Priol,Roduš,Rirg,Vrurk,Barag,"
-#~ "Podiš,Vanak,Hork,Grilg,Bogdiš,Vadaš,Raurk,Purk,Rark,Ronak,Grogar,Hašnak,"
-#~ "Bink,Grodiš,Hidiš,Bagar,Erinak,Vragdaš,Rarag,Eragadiš,Hirag,Vrolo,Hogor,"
-#~ "Erirbag,Vruol,Galg,Pralo,Hogar,Haduš,Baduš,Hadaš,Gigor,Gošnak,Hagor,Hadaš,"
-#~ "Biol,Vrarg,Pradiš,Pralg,Bilg,Vrart,Pranak,Prigdiš,Vrang,Vragdaš,Gradaš,"
-#~ "Ging,Pak,Graol,Prigor,Burk,Pagdiš,Hirg,Prang,Eragor,Gralg,Prart,Vrolo,"
-#~ "Prark,Pašnak,Pradiš,Vilg,Palo,Ganak,Paol,Gridaš,Erirag,Bart,Barag,Vrinak,"
-#~ "Vašnak,Prilo,Vragor,Rigor,Bang,Prourk,Vrork,Barg,Eragduš,Bogdiš,Prarg,"
-#~ "Prigor,Binak,Vediš,Grilo,Ruol,Vrodiš,Pinak,Pradiš,Eragor,Higduš,Parag,"
-#~ "Pink,Vrong,Port,Bok,Porbag,Grilo,Bang,Gragar,Rak,Galo,Grork,Bijk,Grodiš,"
-#~ "Polg,Pang,Grarbag,Varg,Varbag,Pang,Prolo,Vošnak,Ruk,Vigdiš,Vradaš,Vrarg,"
-#~ "Gong,Gragor,Varbag,Erogduš,Erorbag,Bidiš,Prirt,Haduš,Rirk,Vrart,Hing,"
-#~ "Gronk,Rang,Girt,Gronk,Vigar,Pragar,Raol,Eronk,Hark,Parg,Hilg,Vradiš,Grark,"
-#~ "Gigor,Grarg,Polg,Erarag,Eraduš,Vadaš,Vralg,Varag,Hurk,Vadaš,Grok,Rank,"
-#~ "Bašnak,Praol,Vrarg,Grigor,Hank,Hul,Rang,Grolg,Hadiš,Gašnak,Ragdiš,Pidaš,"
-#~ "Palg,Vring,Varag,Vrarg,Rilg,Pigduš,Hagor"
-
-#, fuzzy
-#~ msgid ""
-#~ "Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,"
-#~ "Grar,Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,"
-#~ "Borb,Ugg,Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,"
-#~ "Hug Bah,Kub,Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,"
-#~ "Urgh"
-#~ msgstr ""
-#~ "Gark,Trok,Nak Kar,Ka,Hak,Tuh,Tur,Ruk,Dak,Truf,Frok,Kuh,Grar,Šuf,Stuh,Hot,"
-#~ "Nak,Urk,Lok,Luk,Hask,Gulk,Tog,Urg,Torg,Targ,Borb,Ug,Sark,Drog,Gah,Rok,Rek,"
-#~ "Šak,Brag,Krug,Brok,Grok,Brag Goh,Zog,Hug Bah,Kub,Tog,Ag,Zof Te,Tso,Va,Zug,"
-#~ "Pag,Beg Eh,Ih,Eg,Ga,Gnarf,Grumf,Urg"
-
-#~ msgid ""
-#~ "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
-#~ "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
-#~ "Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
-#~ "Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
-#~ "Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
-#~ "Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
-#~ "Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
-#~ "Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
-#~ "Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,"
-#~ "Bludebalmen,Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,"
-#~ "Brendumadoak,Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,"
-#~ "Boladrumbadrum,Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
-#~ msgstr ""
-#~ "Buomdumdenlol,Muldondindal,Lolmadindel,Danmonlulbam,Nunmaldildun,"
-#~ "Dolmanumbil,Nanmildaldum,Vonrunmaldin,Bolvuldelman,Landunvonbam,"
-#~ "Munamdulbon,Monlamvimdan,Dulvulmendom,Delmdueldelom,Mundionalafla,"
-#~ "Lafalijamdijum,Ritramkamhan,Bregalad,Orofarnije,Lasemista,Karnimirije,"
-#~ "Tumtonongatum,Tumtentantarun,Tantoderintan,Bombempomgontor,"
-#~ "Pomtamkomtrobum,Bromantendronor,Damantongonur,Brumenarunom,Dumdamdumatum,"
-#~ "Tumtamgamtomtam,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
-#~ "Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunongetem,"
-#~ "Debundemun,Diblembumde,Bremdebubde,Pambedrumne,Drongonblemdu,Bludabalmen,"
-#~ "Temtundemben,Lefnublemde,Liblednum,Mundumblemdum,Brendumadoak,Dulmandarok,"
-#~ "Brumblebroak,Trombadom,Guladromadoak,Boladrumbadrum,Elmaromadrum,"
-#~ "Gumabeldrelem,Gremadrumbadum,Vudadonopl"
-
-#~ msgid ""
-#~ "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,"
-#~ "Bal,Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
-#~ msgstr ""
-#~ "Ok,Hol,Il,Del,El,Jork,Korn,Hel,Sel,Sil,Sal,Bal,Voter,Sen,Sed,Hek,Hok,Fok,"
-#~ "Bal,Vet,Erl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,Nju,Ol,Nel,Kem,Ruk,Rok,Ol"
-
-#~ msgid "Damage Taken"
-#~ msgstr "primljena šteta"
-
-#~ msgid "Damage Inflicted (EV)"
-#~ msgstr "naneta šteta (EV)"
-
-#~ msgid "Damage Taken (EV)"
-#~ msgstr "primljena šteta (EV)"
-
-#~ msgid "Commands: whisper list emote. Type /help [command] for more help."
-#~ msgstr "Naredbe: whisper list emote. Upišite /help [naredba] za pomoć."
-
-#~ msgid "Removed from ignore list: "
-#~ msgstr "Uklonjen sa spiska ignorisanih: "
-
-#~ msgid "Removed from friends list: "
-#~ msgstr "Uklonjen sa spiska prijatelja: "
-
-#, fuzzy
-#~ msgid ""
-#~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
-#~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
-#~ "next to a healer will not lose hitpoints on their next turn. If they are "
-#~ "in a village or next to a unit with the 'cures' ability, the poison will "
-#~ "be completely cured on their next turn."
-#~ msgstr ""
-#~ "Otrovane jedinice gube 8 udarpoena u svakom potezu, ali neće nastradati "
-#~ "od toga: otrov ih neće srozati ispod 1 udarpoena. Otrovane jedinice mogu "
-#~ "biti isceljene pomeranjem u selo, ili do jedinice sa sposobnošću "
-#~ "isceljivanja."
-
-#~ msgid "Contributors"
-#~ msgstr "Doprineli su"
-
-#, fuzzy
-#~ msgid "Heal to full, MAX XP +25%"
-#~ msgstr ", MAKS IP +25%"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Each scenario has some objectives, shown as the scenario starts. These "
-#~ "objectives list what you need to do to win, and what you should do to "
-#~ "avoid losing. Often the objective is to defeat all enemies, but other "
-#~ "times you need to reach a destination, to rescue someone, to solve a "
-#~ "puzzle, or just to survive a certain number of turns."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Svaki scenario ima neke ciljeve, koji vam se ukazuju kada scenario "
-#~ "otpočne. Oni navode šta morate učiniti da pobedite, kao i šta morate "
-#~ "izbeći da ne biste izgubili. Često je cilj poraziti sve neprijatelje, ali "
-#~ "ima i takvih gde morate doseći neko odredište, spasiti nekoga, rešiti "
-#~ "zagonetku, ili naprosto preživeti određeni broj poteza."
-
-#, fuzzy
-#~ msgid "Campaign Maintenance"
-#~ msgstr "Dovršavanje i održavanje"
-
-#~ msgid "Campaign Epilog and Continuity"
-#~ msgstr "Epilog pohoda i usklađenost"
-
-#, fuzzy
-#~ msgid "Artwork and Graphics Design"
-#~ msgstr "Dizajneri grafike i crteža"
-
-#~ msgid "Prose, Grammatical and WML Assistance"
-#~ msgstr "Proza, pomoć sa gramatikom i VML-om"
-
-#~ msgid "Translators"
-#~ msgstr "Prevodioci"
-
-#~ msgid "Code and Translation Assistance"
-#~ msgstr "Pomoć za programiranje i prevode"
-
-#, fuzzy
-#~ msgid "WML Assistance"
-#~ msgstr "otpornost"
-
-#~ msgid "Conception and Original Design"
-#~ msgstr "Početna zamisao i izvorni dizajn"
-
-#~ msgid "Completion and Maintenance"
-#~ msgstr "Dovršavanje i održavanje"
-
-#~ msgid "And special thanks to everyone else who I forgot to mention."
-#~ msgstr "I posebne zahvalnice svima koje sam zaboravio da pomenem."
-
-#~ msgid "Era not available"
-#~ msgstr "Epoha nije dostupna"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "— Slovo Vesnota"
-
-#, fuzzy
-#~ msgid "Masked Dwarf"
-#~ msgstr "patuljci"
-
-#~ msgid "Full Heal"
-#~ msgstr "Potpuno lečenje"
-
-#~ msgid ""
-#~ "In a campaign, you can use veteran units from previous scenarios by using "
-#~ "the 'recall' option."
-#~ msgstr ""
-#~ "Tokom pohoda možete koristiti veteranske jedinice iz prethodnih "
-#~ "scenarija, pomoću opcije sazivanja."
-
-#~ msgid ""
-#~ "Holding the mouse cursor on an ability or trait shows a description of "
-#~ "that ability or trait."
-#~ msgstr "Držanje miša iznad sposobnosti ili osobine prikazuje njen opis."
-
-#~ msgid "Binary Saves"
-#~ msgstr "binarni snimci"
-
-#~ msgid "time left"
-#~ msgstr "ost. vreme"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "Nema strana za više igrača."
-
-#~ msgid ""
-#~ "The games are out of sync and will have to exit. Do you want to save an "
-#~ "error log of your game?"
-#~ msgstr ""
-#~ "Igre su van usklađenosti i moraćemo da izađemo. Želite li da snimite "
-#~ "dnevnik grešaka?"
-
-#, fuzzy
-#~ msgid "TitleScreen button^More"
-#~ msgstr "Učitaj"
-
-#~ msgid ""
-#~ "The login name you chose is too long, please use a login with less than "
-#~ "18 characters"
-#~ msgstr ""
-#~ "Izabrali ste predugačko korisničko ime, ono mora imati manje od 18 znakova"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Preuzimam podatke..."
-
-#~ msgid "Campaign"
-#~ msgstr "Pohod"
-
-#~ msgid "race^Lizards"
-#~ msgstr "gušteri"
-
-#~ msgid "Based on version"
-#~ msgstr "na osnovu verzije"
-
-#~ msgid "Advance from:"
-#~ msgstr "napreduje iz:"
-
-#~ msgid "Choose the campaign you want to play:"
-#~ msgstr "Izaberite pohod koji želite da igrate:"
-
-#, fuzzy
-#~ msgid " per level"
-#~ msgstr "nivo"
-
-#, fuzzy
-#~ msgid "female^Elvish Lady"
-#~ msgstr "zdravlje"
-
-#~ msgid "; "
-#~ msgstr "; "
-
-#~ msgid "/level"
-#~ msgstr "/nivou"
-
-#~ msgid "This water will make melee weapons holy."
-#~ msgstr "Ova voda će učiniti svetim oružja za blisku borbu."
-
-#~ msgid ""
-#~ "and other people\n"
-#~ "this list is very incomplete\n"
-#~ msgstr ""
-#~ "i još mnogi\n"
-#~ "ovaj spisak je sasvim nepotpun\n"
-
-#~ msgid "Replace with "
-#~ msgstr "Zameni sa "
-
-#, fuzzy
-#~ msgid "Races"
-#~ msgstr "rasa"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "Dizajner pohoda"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Trenutni održavalac"
-
-#~ msgid "Music Development"
-#~ msgstr "Razvoj muzike"
-
-#~ msgid "WML Contributors"
-#~ msgstr "Doprineli u VML-u"
-
-#~ msgid "Elves"
-#~ msgstr "vilenjaci"
-
-#~ msgid "Orcs"
-#~ msgstr "orci"
-
-#~ msgid "her"
-#~ msgstr "njoj"
-
-#~ msgid "him"
-#~ msgstr "njemu"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "prema postavkama mape"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "Još uvek ne mogu da postavljam mogućnosti, izvini."
-
-#~ msgid "Map size: "
-#~ msgstr "veličina mape: "
-
-#~ msgid "Credits"
-#~ msgstr "Zasluge"

@@ -1,20 +1,20 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # Branko Kokanovic, 2006.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:45+0200\n"
-"PO-Revision-Date: 2008-03-21 12:00+0100\n"
+"PO-Revision-Date: 2009-04-10 11:20+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
@@ -22,22 +22,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "jedno polje"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "poluprečnik jedno polje"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "poluprečnik dva polja"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "linija polja SZ-JI"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -92,7 +92,7 @@ msgstr "zamak"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "specijalno"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -104,6 +104,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Levim/desnim dugmetom miša crtate teren spreda/u pozadini. Držite Shift za "
+"slikanje samo po osnovnom sloju."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -112,6 +114,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Levo dugme miša bira, desno poništava. Držite Shift za izbor magičnim "
+"štapićem pločica sa istim terenom."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -121,6 +125,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Levo dugme miša prikazuje izbor igrača, desno uklanja. Tasteri brojeva "
+"klizaju do početnih položaja, Alt+broj postavlja taj početni položaj pod "
+"pokazivač, Delete uklanja."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -128,6 +135,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Klikom nalepljujete; umanjite prikaz za više preciznosti pri nalepljivanju "
+"većih područja. Kroz meni „Uređivanje“ obrađujete ostavu (zaokretanje, "
+"prevrtanje)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -142,13 +152,12 @@ msgstr "Uređivanje"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Opozovi"
+msgstr "Prozor"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
@@ -157,11 +166,11 @@ msgstr "sela"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Greška pri stvaranju objekta radnje"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Radnja nije izvedena"
 
 #: src/editor2/editor_controller.cpp:132
 msgid "Quit Editor"
@@ -169,93 +178,98 @@ msgstr "Napusti uređivač"
 
 #: src/editor2/editor_controller.cpp:285
 msgid "Fatal error"
-msgstr ""
+msgstr "Kobna greška"
 
 #: src/editor2/editor_controller.cpp:299 src/editor2/editor_controller.cpp:998
 msgid "(New Map)"
-msgstr ""
+msgstr "(nova mapa)"
 
 #: src/editor2/editor_controller.cpp:305
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Želite li zaista da napustite?"
 
 #: src/editor2/editor_controller.cpp:307
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Želite li zaista da napustite? Izmene na mapi od poslednjeg upisa biće "
+"izgubljene."
 
 #: src/editor2/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Želite li zaista da napustite? Sledeće mape su izmenjene i sve izmene od "
+"poslednjeg upisa biće izgubljene:"
 
+# наслов
 #: src/editor2/editor_controller.cpp:314
 msgid "Quit"
-msgstr ""
+msgstr "Napuštanje"
 
 #: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:481
 #: src/editor2/editor_controller.cpp:517 src/editor2/editor_controller.cpp:539
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: src/editor2/editor_controller.cpp:369
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Nema doba dana u uređivaču."
 
 #: src/editor2/editor_controller.cpp:405
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Nesačuvane izmene"
 
 #: src/editor2/editor_controller.cpp:406
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "Želite li da odbacite sve izmene nad mapom od poslednjeg upisa?"
 
+# наслов
 #: src/editor2/editor_controller.cpp:419
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Izaberite mapu za učitavanje"
+msgstr "Izbor mape za otvaranje"
 
 #: src/editor2/editor_controller.cpp:423
 msgid "This map is already open."
-msgstr ""
+msgstr "Ova mapa je već otvorena."
 
 #: src/editor2/editor_controller.cpp:461
 msgid "Save the Map As"
 msgstr "Sačuvaj mapu kao"
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Mapa već postoji. Želite li da je prebrišete?"
+msgstr "Datoteka već postoji. Želite li da je prebrišete?"
 
 #: src/editor2/editor_controller.cpp:481
 msgid "No random map generators found."
-msgstr ""
+msgstr "Nema nijednog generatora nasumičnih mapa."
 
 #: src/editor2/editor_controller.cpp:492
 msgid "Map creation failed."
-msgstr ""
+msgstr "Stvaranje mape nije uspelo."
 
+# наслов
 #: src/editor2/editor_controller.cpp:507
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Izaberite mapu za učitavanje"
+msgstr "Izbor maske za primenjivanje"
 
 #: src/editor2/editor_controller.cpp:514
 msgid "Error loading mask"
-msgstr ""
+msgstr "Greška pri učitavanju maske"
 
+# наслов
 #: src/editor2/editor_controller.cpp:529
 msgid "Choose target map"
-msgstr ""
+msgstr "Izbor ciljne mape"
 
 #: src/editor2/editor_controller.cpp:536 src/editor2/editor_controller.cpp:649
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Greška pri učitavanju mape"
 
 #: src/editor2/editor_controller.cpp:625
 msgid "Map saved."
@@ -271,7 +285,7 @@ msgstr "Opozovi"
 
 #: src/editor2/editor_controller.cpp:1027
 msgid "Can't Undo"
-msgstr ""
+msgstr "Opoziv neizvodljiv"
 
 #: src/editor2/editor_controller.cpp:1031
 msgid "Redo"
@@ -279,7 +293,7 @@ msgstr "Ponovi"
 
 #: src/editor2/editor_controller.cpp:1033
 msgid "Can't Redo"
-msgstr ""
+msgstr "Ponavljanje neizvodljivo"
 
 #: src/editor2/editor_controller.cpp:1038
 msgid "Auto-update Terrain Transitions: Yes"
@@ -290,13 +304,12 @@ msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
 #: src/editor2/editor_controller.cpp:1045
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Ažuriraj prelaze"
+msgstr ""
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Datoteka mape je prazna ili nije nađena"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -304,24 +317,26 @@ msgstr "Igrač"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Veličina ciljne mape je različita od tekuće"
 
+# well-spelled: Исп
 #: src/editor2/editor_palettes.cpp:521
 msgid "FG"
 msgstr "Isp."
 
+# well-spelled: Поз
 #: src/editor2/editor_palettes.cpp:523
 msgid "BG"
 msgstr "Poz."
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Igrač"
+msgstr "nijedan"
 
+# наслов
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Izbor igrača"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -330,81 +345,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Koji igrač kreće odavde? tasterom Alt i brojem možete zadati početni "
+"položaj, a Delete uklanja onaj pod kursorom. Samo taster broja otklizaće "
+"mapu do početnog položaja toga igrača."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
-
-#~ msgid "Settings"
-#~ msgstr "Podešavanja"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Crtaj pločice"
-
-#~ msgid "Fill"
-#~ msgstr "Popuni"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Podesi početnu poziciju igrača"
-
-#~ msgid "Zoom in"
-#~ msgstr "Uvećaj"
-
-#~ msgid "Zoom out"
-#~ msgstr "Umanji"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Uvećaj na podrazumevano"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Obrni mrežu"
-
-#~ msgid "Resize the map"
-#~ msgstr "Promeni veličinu mape"
-
-#~ msgid "Flip map"
-#~ msgstr "Prevrni mapu"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Zastoj ažuriranja prelaza"
-
-#~ msgid "Language"
-#~ msgstr "Jezik"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Izaberite željeni jezik:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Boj za Vesnot — uređivač mapa"
-
-#~ msgid "None"
-#~ msgstr "ništa"
-
-#~ msgid "Which Player?"
-#~ msgstr "Koji igrač?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Koji igrač treba da pođe odavde?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Upozorenje: Neispravi znakovi nađeni u imenu mape. Sačuvajte mapu pod "
-#~ "drugim imenom."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Datoteka ne sadrži ispravnu mapu."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Želite li da sačuvate mapu pre napuštanja?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Greška: Neispravan znak u imenu datoteke."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr "Ne može se promeniti veličina mape na veću od najveće, size="
-
-#~ msgid " maximum="
-#~ msgstr " maximum="
+msgstr "Posebna postavka"

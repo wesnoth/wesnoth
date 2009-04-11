@@ -1,19 +1,20 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 #
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:47+0200\n"
-"PO-Revision-Date: 2007-06-23 12:00+0200\n"
+"PO-Revision-Date: 2009-04-11 13:34+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sr\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
@@ -25,6 +26,7 @@ msgstr ""
 msgid "The Rise of Wesnoth"
 msgstr "Подизање Веснота"
 
+# |, no-check-spell
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
 msgid "TRoW"
@@ -78,7 +80,7 @@ msgstr ""
 "успоставити сâмо краљевство Веснота. Окршај са господаром-косцем Џевијаном "
 "те очекује...\n"
 "\n"
-"(Средњи ниво, 25 сценарија.)"
+"(Зналачки ниво, 25 сценарија.)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
@@ -98,7 +100,7 @@ msgstr "Цртежи и графички дизајн"
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:54
 msgid "WML Contributors"
-msgstr ""
+msgstr "Доприноси ВМЛ-а"
 
 #. [scenario]: id=A_Summer_of_Storms
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
@@ -137,31 +139,29 @@ msgstr "Олујно лето"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:18
 msgid "Prince Haldric"
-msgstr "Принц Халдрик"
+msgstr "принц Халдрик"
 
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:32
-#, fuzzy
 msgid "Haldric"
-msgstr "Халдриче."
+msgstr "Халдрик"
 
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:38
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:42
 msgid "Wesfolk Leader"
-msgstr "Вођ Весноћана"
+msgstr "вођ Весноћана"
 
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:54
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:49
-#, fuzzy
 msgid "Wesfolk"
-msgstr "Вођ Весноћана"
+msgstr "Весноћани"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:62
 msgid "King Eldaric IV"
-msgstr "Краљ Елдарик IV"
+msgstr "краљ Елдарик IV"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:157
@@ -415,12 +415,13 @@ msgstr "Пад"
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:28
 msgid "Stormvale"
-msgstr ""
+msgstr "Олујни дол"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Rarbag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:62
 msgid "Tan-Rarbag"
-msgstr "Тан-Рарбаг"
+msgstr "тан Рарбаг"
 
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #. [side]: type=Orcish Warlord, id=Tan-Hork
@@ -469,12 +470,13 @@ msgstr "Тан-Рарбаг"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:40
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:65
 msgid "Orcs"
-msgstr ""
+msgstr "Окови"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:86
 msgid "Tan-Erang"
-msgstr "Тан-Еранг"
+msgstr "тан Еранг"
 
 #. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:137
@@ -496,16 +498,19 @@ msgstr "Хенри"
 msgid "Robert"
 msgstr "Роберт"
 
+# |, no-check-spell
 #. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:150
 msgid "Thegwyn"
 msgstr "Тегвин"
 
+# |, no-check-spell
 #. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:151
 msgid "Galdred"
 msgstr "Галдред"
 
+# |, no-check-spell
 #. [event]: (id=Wesfolk Leader) experience $wesfolk_leader_store.experience}
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:152
 msgid "Tromas"
@@ -629,11 +634,10 @@ msgstr "Госпа-одметница ће послужити."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:315
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:359
 msgid "Lady Outlaw"
-msgstr "Госпа-одметница"
+msgstr "госпа-одметница"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:339
-#, fuzzy
 msgid "Your word can't be trusted. Prepare to meet your gods!"
 msgstr "Твојој се речи не може веровати. Спреми се к својим боговима!"
 
@@ -726,18 +730,21 @@ msgstr "Мучни бег"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 msgid "Refugees"
-msgstr ""
+msgstr "Избеглице"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:35
 msgid "Tan-Schmog"
-msgstr "Тан-Шмог"
+msgstr "тан Шмог"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:60
 msgid "Tan-NauVong"
-msgstr "Тан-Наувонг"
+msgstr "тан Наувонг"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:88
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:92
@@ -745,6 +752,7 @@ msgstr "Тан-Наувонг"
 msgid "Snagakhan"
 msgstr "Снагакан"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:89
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:93
@@ -752,11 +760,13 @@ msgstr "Снагакан"
 msgid "Knafakhan"
 msgstr "Кнафакан"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:99
 msgid "Hoshnak"
 msgstr "Хошнак"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:100
 msgid "Gruumogth"
@@ -804,6 +814,7 @@ msgstr ""
 "Ја бих се манула болећивости и прихватила мача. Предстоји нам сасвим довољно "
 "борбе!"
 
+# well-spelled: Грррр
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:146
 msgid "You won't get much further boy. Grrrr!"
@@ -901,7 +912,7 @@ msgid ""
 "there now."
 msgstr ""
 "Сада, да ли да кренем југоисточно Речним путем, или југозападно кроз "
-"средопоља? Речни пут пресеца мочвару Естена, тако да сумњам да би чак и "
+"Средопоље? Речни пут пресеца мочвару Естена, тако да сумњам да би чак и "
 "оркови тамо зашли. Средоземље бејаху пријатне, али ко зна шта се сада у њима "
 "дешава."
 
@@ -913,7 +924,7 @@ msgstr "Мислим да ћу поћи Речним путем..."
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:279
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
-msgstr "Добро. Средопоља су вероватно већ у рушевинама под најездом оркова."
+msgstr "Добро. Средопоље је вероватно већ у рушевинама под најездом оркова."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:284
@@ -924,12 +935,12 @@ msgstr "МОЧВАРА! Нема ми ни пет стопа, а и не плу�
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:296
 msgid "We'll go through the Midlands..."
-msgstr "Кренућемо кроз Средопоља..."
+msgstr "Кренућемо кроз Средопоље..."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:300
 msgid "I suspect that the Midlands might be in ruins by now."
-msgstr "Сумњам да су Средопоља већ у рушевинама."
+msgstr "Сумњам да је Средопоље већ у рушевинама."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:305
@@ -987,6 +998,7 @@ msgstr ""
 msgid "The Swamp of Esten"
 msgstr "Мочвара Естена"
 
+# |, no-check-spell
 #. [side]: type=Dark Sorcerer, id=Cleon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:37
 msgid "Cleon"
@@ -999,13 +1011,15 @@ msgstr "Клион"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:79
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:108
 msgid "Cultists"
-msgstr ""
+msgstr "Окултисти"
 
+# |, no-check-spell
 #. [side]: type=Dark Sorcerer, id=Lollyra
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:58
 msgid "Lollyra"
 msgstr "Лолира"
 
+# |, no-check-spell
 #. [side]: type=Dark Sorcerer, id=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:86
 msgid "Clurka"
@@ -1046,7 +1060,6 @@ msgstr "шкорпија"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:169
-#, fuzzy
 msgid ""
 "With great trepidation, Prince Haldric leads his refugee band into the Swamp "
 "of Esten. In the center of that very swamp a shroud of fog descends over "
@@ -1102,7 +1115,7 @@ msgstr "Опрезно, не знамо шта нас вреба оданде!"
 #. [unit]: type=White Mage, id=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:245
 msgid "Minister Edmond"
-msgstr "Намесник Едмонд"
+msgstr "намесник Едмонд"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:257
@@ -1118,6 +1131,7 @@ msgstr ""
 msgid "Maybe they'll clear it some time after the APOCALYPSE is OVER!"
 msgstr "Можда ће је почистити једном пошто се ова АПОКАЛИПСА ОКОНЧА!"
 
+# well-spelled: Ааа
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:266
 msgid "Oooh! I take it you wouldn't mind if I helped out?"
@@ -1152,10 +1166,11 @@ msgstr "Оо! Да ме се васкрсне!"
 msgid "A prayer for life immortal!"
 msgstr "Молитва за живот вечни!"
 
+# |, no-check-spell
 #. [unit]: type=Knight, id=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:419
 msgid "Sir Ruddry"
-msgstr "Сер Радри"
+msgstr "сер Радри"
 
 #. [message]: speaker=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:438
@@ -1245,22 +1260,24 @@ msgstr "Немамо више времена... Заробиће нас у ов�
 #. [scenario]: id=The_Midlands
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:4
 msgid "The Midlands"
-msgstr "Средопоља"
+msgstr "Средопоље"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Vrodis
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:36
 msgid "Tan-Vrodis"
-msgstr "Тан-Вродис"
+msgstr "тан Вродис"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Bok
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:55
 msgid "Tan-Bok"
-msgstr "Тан-Бок"
+msgstr "тан Бок"
 
 #. [side]: type=Orcish Warlord, id=Tan-Hogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:89
 msgid "Tan-Hogar"
-msgstr "Тан-Хогар"
+msgstr "тан Хогар"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:161
@@ -1268,7 +1285,7 @@ msgid ""
 "Prince Haldric leads his refugee band into the Midlands and smoke is in the "
 "air."
 msgstr ""
-"Принц Халдрик поведе своју избегличку скупину у Средопоља, где се у ваздуху "
+"Принц Халдрик поведе своју избегличку скупину у Средопоље, где се у ваздуху "
 "осећаше дим."
 
 #. [message]: speaker=Prince Haldric
@@ -1278,7 +1295,7 @@ msgid ""
 "civilized way to fight a war! Look there, there are still orcs about... To "
 "arms!"
 msgstr ""
-"Као што смо се и плашили, оркови су већ опустошили Средопоља. Овако "
+"Као што смо се и плашили, оркови су већ опустошили Средопоље. Овако "
 "пристојни борци не воде ратове! Гледајте тамо, то оркови још увек шетају "
 "около... На оружје!"
 
@@ -1302,7 +1319,7 @@ msgstr "ЉУДИ... Видим људе!"
 msgid ""
 "Ha, Hogar! You said we wouldn't see any action this far back from the front."
 msgstr ""
-"Ха, Хогаре! А рече да нећемо нинашта наићи овако далеко иза првих редова."
+"Ха, Хогаре! А рече да нећемо ни на шта наићи овако далеко иза првих редова."
 
 #. [message]: speaker=Tan-Hogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:197
@@ -1319,6 +1336,7 @@ msgstr "ЈИ — Старопањска. Улазите на своју одго
 msgid "SW - Southbay."
 msgstr "ЈЗ — Југозалив."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:257
 msgid "Grilg"
@@ -1329,6 +1347,7 @@ msgstr "Грилг"
 msgid "What? More humans here? Get them!"
 msgstr "Шта? Још људи овде? Држ'те их!"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:286
 msgid "Vrogar"
@@ -1346,14 +1365,14 @@ msgstr "Боље он него ја! Појачања!"
 
 #. [message]: speaker=Tan-Bok
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:335
-#, fuzzy
 msgid "Hogar was a fool! Reserves!"
-msgstr "Холгар беше будала! Појачања!"
+msgstr "Хогар беше будала! Појачања!"
 
+# |, no-check-spell
 #. [unit]: type=Knight, id=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:355
 msgid "Sir Ladoc"
-msgstr "Сер Ладок"
+msgstr "сер Ладок"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:374
@@ -1423,22 +1442,24 @@ msgstr ""
 msgid ""
 "We have run out of time... We'll be trapped in the midlands when winter "
 "comes!"
-msgstr "Време нам је истекло... Заробиће нас у средопољима кад зима дође!"
+msgstr "Време нам је истекло... Заробиће нас у Средопољу кад зима дође!"
 
 #. [scenario]: id=The_Oldwood
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:4
 msgid "The Oldwood"
 msgstr "Старопањска"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Gralg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:37
 msgid "Tan-Gralg"
-msgstr "Тан-Гралг"
+msgstr "тан Гралг"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Rugar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:70
 msgid "Tan-Rugar"
-msgstr "Тан-Рагар"
+msgstr "тан Рагар"
 
 #. [side]: type=Ancient Wose, id=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:105
@@ -1446,6 +1467,7 @@ msgstr "Тан-Рагар"
 msgid "Elilmaldur-Rithrandil"
 msgstr "Елилмалдур-Ритрандил"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:159
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:167
@@ -1453,6 +1475,7 @@ msgstr "Елилмалдур-Ритрандил"
 msgid "Muldondindal"
 msgstr "Мулдондиндал"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:160
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:168
@@ -1460,6 +1483,7 @@ msgstr "Мулдондиндал"
 msgid "Landunwonbam"
 msgstr "Ландунвонбам"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:161
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:169
@@ -1467,17 +1491,20 @@ msgstr "Ландунвонбам"
 msgid "Bolwuldelman"
 msgstr "Болвулделман"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:170
 msgid "Laffalialomdium"
 msgstr "Лафалијаломдијум"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:163
 msgid "Wonrunmaldin"
 msgstr "Вонранмалдин"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:164
 msgid "Lassemista"
@@ -1623,6 +1650,7 @@ msgstr ""
 "Па, плашим се да нећете морати да бринете о таквима мени налик још дуго. "
 "Оркови пристигоше, и сада преузимају Острво!"
 
+# well-spelled: Хмммм
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:313
 msgid ""
@@ -1755,7 +1783,7 @@ msgid ""
 "scout the road ahead. We need to know if we can make it to Southbay. I'll "
 "return in a few days."
 msgstr ""
-"Одложимо ову распру за касније. И даље вам могу бити од користи. Извидићу "
+"Одложимо ову распру за касније. И даље вам могу бити од користи. Извидећу "
 "пут пред нама. Морамо знати да ли се Југозалив може досећи. Вратићу се за "
 "неколико дана."
 
@@ -1773,7 +1801,7 @@ msgstr "Храм у дубини"
 #. [side]: type=Lich, id=Lich-Lord Lenvan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:39
 msgid "Lich-Lord Lenvan"
-msgstr "Господар-косац Ленван"
+msgstr "господар-косац Ленван"
 
 #. [side]: type=Spectre, id=Isorfilad
 #. [side]: type=Spectre, id=Tinoldor
@@ -1784,7 +1812,7 @@ msgstr "Господар-косац Ленван"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:126
 msgid "Undead"
-msgstr ""
+msgstr "Немртви"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:111
@@ -1927,23 +1955,26 @@ msgstr "Изненађујуће-Дрволики"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:58
 msgid "Treefolk"
-msgstr ""
+msgstr "Дрвобивци"
 
 #. [side]: type=Wose, id=Theylook-Thesame-Toyou
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:43
 msgid "Theylook-Thesame-Toyou"
 msgstr "Изгледају-Теби-Исто"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:84
 msgid "Orofarnië"
 msgstr "Орофарније"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:86
 msgid "Bregalad"
 msgstr "Брегалад"
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:87
 msgid "Dolmannumbil"
@@ -2237,7 +2268,7 @@ msgstr "Лука Бистроморска"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:59
 msgid "Humans"
-msgstr ""
+msgstr "Људи"
 
 #. [then]
 #. [side]: type=Lieutenant, id=Commander Aethyr
@@ -2249,17 +2280,19 @@ msgstr "заповедник Етир"
 #. [side]: type=Orcish Warlord, id=Tan-Vragar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:68
 msgid "Tan-Vragar"
-msgstr "Тан-Врагар"
+msgstr "тан Врагар"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Burg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:104
 msgid "Tan-Burg"
-msgstr "Тан-Бург"
+msgstr "тан Бург"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Vrork
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:141
 msgid "Ut'Tan-Vrork"
-msgstr "Утан-Врорк"
+msgstr "утан Врорк"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:219
@@ -2487,7 +2520,7 @@ msgid ""
 "Push 'em into the sea! They're in our winter homes! Heh...Tan-Vragar, I 'm "
 "sure they will enjoy your little surprise!"
 msgstr ""
-"У море с њима! Заузимају нам зимска коначишта! Еј, Тан-Врагаре, надам се да "
+"У море с њима! Заузимају нам зимска коначишта! Еј, тан Врагаре, надам се да "
 "ће уживати у твојој малој смицалици!"
 
 #. [message]: speaker=narrator
@@ -2572,14 +2605,13 @@ msgid ""
 "Haldric must go to lead you to the ship. Until then, help us defend against "
 "the orcs."
 msgstr ""
-"Не изврдавај дужност, војниче. Када брод стигне, принц Халрик мора овде "
+"Не изврдавај дужност, војниче. Када брод стигне, принц Халдрик мора овде "
 "стићи да би се укрцали. Дотле, помогни у одбрани против оркова."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:956
-#, fuzzy
 msgid "Let me have peace in Death! My love, I'll be there soon--"
-msgstr "Ваљда ћу у Смрти наћи мира! Љубави, ево ме стиж—"
+msgstr "Ваљда ћу у Смрти наћи мира! Љубави, ево ме стижем—"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:961
@@ -2672,8 +2704,8 @@ msgid ""
 "from me there'll be nothing but rubble left!"
 msgstr ""
 "Не. Ова су чудовишта побила моју породицу. Моју жену, кћери. Ништа ми више "
-"није остало. Остаћу овде. Док ми оркови отму Бистролуку из шака, од ње неће "
-"остати ништа осим рушевина!"
+"није остало. Остаћу овде. Док ми оркови отму Бистроморску из шака, од ње "
+"неће остати ништа осим рушевина!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1030
@@ -2697,20 +2729,22 @@ msgstr ""
 msgid "Fallen Lich Point"
 msgstr "Кошчев конак"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:36
 msgid "Ut'Tan-Grilg"
-msgstr "Утан-Грилг"
+msgstr "утан Грилг"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Pulk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:72
 msgid "Tan-Pulk"
-msgstr "Тан-Пулк"
+msgstr "тан Пулк"
 
 #. [side]: type=Lich, id=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:116
 msgid "Lich-Lord Caror"
-msgstr "Господар-косац Карор"
+msgstr "господар-косац Карор"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:183
@@ -2801,7 +2835,6 @@ msgstr "У близини се уздиже чудан монолит."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:321
-#, fuzzy
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "lich. Maybe you should get yourself over here."
@@ -2907,11 +2940,13 @@ msgstr "Осећам да сам заборавио нешто. Па да, књ�
 msgid "Prince Haldric must be the first into the sewers of Southbay."
 msgstr "Принц Халдрик мора први ући у канализацију Југозалива."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:577
 msgid "Rarlg"
 msgstr "Рарлг"
 
+# |, no-check-spell
 #. [message]: speaker=Rarlg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:582
 msgid "Rarlg - argh, a raul-rarlg!"
@@ -2931,6 +2966,7 @@ msgstr "Забога!"
 msgid "And he brought a friend."
 msgstr "А повео је и пријатеља."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:605
 msgid "Raul-Rarlg"
@@ -2961,6 +2997,7 @@ msgstr "Канализација — опасност, ни корака бли�
 msgid "Sewer of Southbay"
 msgstr "Канализација Југозалива"
 
+# well-spelled: Даелин
 #. [side]: type=Arch Mage, id=Daellyn the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:39
 msgid "Daellyn the Red"
@@ -2971,8 +3008,9 @@ msgstr "Даелин Црвени"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:69
 msgid "Red Wizards"
-msgstr ""
+msgstr "Црвени чаробњаци"
 
+# well-spelled: Тинри
 #. [side]: type=Arch Mage, id=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:61
 msgid "Tinry the Red"
@@ -3143,7 +3181,7 @@ msgstr "Југозалив зими"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:34
 msgid "King Addroran IX"
-msgstr "Краљ Адроран IX"
+msgstr "краљ Адроран IX"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:93
@@ -3268,6 +3306,7 @@ msgstr ""
 "Друго, ја познајем тајновите земље на истоку. Адроране, била сам навигатор и "
 "дружбеница твога сина. Веруј ми, мораш поћи на исток."
 
+# well-spelled: Дружб
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:159
 msgid "Compan- - What?"
@@ -3328,6 +3367,7 @@ msgstr ""
 "њихови су бројеви несагледиви, и нема начина да их задржите када нахрупе у "
 "још већем мноштву."
 
+# well-spelled: Хмм
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:183
 msgid ""
@@ -3403,20 +3443,23 @@ msgstr ""
 msgid "A Final Spring"
 msgstr "Коначно пролеће"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Harak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:63
 msgid "Tan-Harak"
-msgstr "Тан-Харак"
+msgstr "тан Харак"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Hork
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:98
 msgid "Tan-Hork"
-msgstr "Тан-Хорк"
+msgstr "тан Хорк"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Gulo
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:133
 msgid "Tan-Gulo"
-msgstr "Тан-Гуло"
+msgstr "тан Гуло"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:215
@@ -3517,7 +3560,7 @@ msgstr "Добро онда. Учинићу најбоље како умем."
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:357
 msgid "Lord Typhon"
-msgstr "Господар Тифон"
+msgstr "господар Тифон"
 
 #. [message]: speaker=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:362
@@ -3550,7 +3593,7 @@ msgstr "Уистину јесте. Али где је принц?"
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:378
 msgid "The Crown Prince is dead. But we have need of your services again- -"
-msgstr "Крунски принц је мртав. Али су нам твоје услоге поново потребне—"
+msgstr "Крунски принц је мртав. Али су нам твоје услуге поново потребне—"
 
 #. [message]: speaker=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:382
@@ -3607,7 +3650,7 @@ msgstr "дружбеник"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:278
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:46
 msgid "Lich-Lord Jevyan"
-msgstr "Господар-косац Џевијан"
+msgstr "господар-косац Џевијан"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:465
@@ -3616,7 +3659,7 @@ msgid ""
 "lucky I may raise you from death for my own amusement. Oh, and what's this? "
 "I sense, I sense the Ruby of Fire."
 msgstr ""
-"Крау Адроране, твоји су дани истекли. Спреми се да будеш самлевен у прах. "
+"Краљу Адроране, твоји су дани истекли. Спреми се да будеш самлевен у прах. "
 "Ако будеш имао среће, дићи ћу те из мртвих ради своје забаве. О, а шта је "
 "ово? Осећам, осећам Ватрени рубин."
 
@@ -3777,6 +3820,7 @@ msgstr "Сине мој!"
 msgid "Peoples in Decline"
 msgstr "Народи у опадању"
 
+# |, no-check-spell
 #. [side]: type=Drake Flameheart, id=Kegrid
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:36
 msgid "Kegrid"
@@ -3789,13 +3833,15 @@ msgstr "Кегрид"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:66
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
 msgid "Drakes"
-msgstr ""
+msgstr "Змагови"
 
+# |, no-check-spell
 #. [side]: type=Drake Flameheart, id=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:60
 msgid "Gerrick"
 msgstr "Герик"
 
+# |, no-check-spell
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:90
 msgid "Merkush"
@@ -3821,7 +3867,7 @@ msgid ""
 "This is the Elder Prince's island all right. We had a heck of a time "
 "pacifying the Drakes who live here. Oh my, it looks like they've rearmed!"
 msgstr ""
-"Ова је заиста острво старијег принца. Добро смо се забавили примиравањем "
+"Ова је заиста острво старијег принца. Добро смо се забавили примиривањем "
 "змагова који овде живе. Ох, изгледа да су се поново наоружали!"
 
 #. [message]: speaker=Prince Haldric
@@ -3829,6 +3875,7 @@ msgstr ""
 msgid "We come in peace. We only seek to re-provision our ships."
 msgstr "Долазимо у миру. Тражимо само залихе за наше бродове."
 
+# well-spelled: дошшшли, сссте, нассс, Ссспремите, сссе, ссславу
 #. [message]: speaker=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:218
 msgid ""
@@ -3843,10 +3890,11 @@ msgstr ""
 msgid "(whispered) Do I need to say, 'I told you so'?"
 msgstr "[шапуће] Треба ли да поменем, „лепо ти рекох“?"
 
+# well-spelled: Грицко
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:237
 msgid "Bitey the Serpent"
-msgstr "Грицко Змијар"
+msgstr "Грицко змијар"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:227
@@ -3919,6 +3967,7 @@ msgstr ""
 msgid "Rough Landing"
 msgstr "Бурно искрцавање"
 
+# |, no-check-spell
 #. [side]: type=Naga Warrior, id=Abraxas
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:36
@@ -3933,13 +3982,15 @@ msgstr "Абракс"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:98
 msgid "Naga"
-msgstr ""
+msgstr "Нагајци"
 
+# |, no-check-spell
 #. [side]: type=Naga Warrior, id=Xamalia
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:64
 msgid "Xamalia"
 msgstr "Ксамалија"
 
+# |, no-check-spell
 #. [side]: type=Naga Warrior, id=Gaxmail
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:92
 msgid "Gaxmail"
@@ -3983,20 +4034,23 @@ msgstr "Плен! Држите их!"
 msgid "The fleet must regroup here. We have to defeat these monsters."
 msgstr "Флота се мора овде окупити. На нама је да поразимо ова чудовишта."
 
+# well-spelled: Жваћко
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:222
 msgid "Chompey the Serpent"
-msgstr "Жваћко Змијар"
+msgstr "Жваћко змијар"
 
+# well-spelled: Крљушко
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:251
 msgid "Scaly the Serpent"
-msgstr "Крљушко Змијар"
+msgstr "Крљушко змијар"
 
+# well-spelled: Зупко
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:280
 msgid "Toothey the Serpent"
-msgstr "Зупко Змијар"
+msgstr "Зупко змијар"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:302
@@ -4046,13 +4100,15 @@ msgstr "Глимир"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:60
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:79
 msgid "Continentals"
-msgstr ""
+msgstr "Копнаши"
 
+# |, no-check-spell
 #. [side]: type=Dwarvish Stalwart, id=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:54
 msgid "Dursil"
 msgstr "Дарсил"
 
+# |, no-check-spell
 #. [side]: type=Elvish Hero, id=Eowarar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:73
 msgid "Eowarar"
@@ -4069,6 +4125,8 @@ msgid ""
 "Alas, the shore of the Great Continent was not so tranquil a place as it had "
 "appeared from at sea."
 msgstr ""
+"Авај, обале Великог континента не показаше се онако спокојним каквим "
+"изгледаше с мора."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:114
@@ -4168,9 +4226,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:227
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:33
-#, fuzzy
 msgid "Lady Dionli"
-msgstr "Господар Дионли"
+msgstr "госпа Дионли"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:232
@@ -4329,25 +4386,26 @@ msgstr "Калијан"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:58
 msgid "Elves"
-msgstr ""
+msgstr "Вилењаци"
 
 #. [side]: type=Elvish Champion, id=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:43
 msgid "Lord Logalmier"
-msgstr "Господар Логалмијер"
+msgstr "господар Логалмијер"
 
 #. [side]: type=Elvish Sharpshooter, id=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:55
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:55
 msgid "Lord Aryad"
-msgstr "Господар Аријад"
+msgstr "господар Аријад"
 
+# well-spelled: Елисомитир
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:134
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:98
 msgid "Lord El'Isomithir"
-msgstr "Господар Елисомитир"
+msgstr "господар Елисомитир"
 
 #. [option]: id=Elf_Lords
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:142
@@ -4728,6 +4786,7 @@ msgstr ""
 msgid "The Dragon"
 msgstr "Змај"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Irix
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:39
 msgid "Irix"
@@ -4741,20 +4800,22 @@ msgstr "Ајрикс"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:78
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:111
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:145
-#, fuzzy
 msgid "Saurians"
-msgstr "Сатрас"
+msgstr "Сауријанци"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Vriss
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:72
 msgid "Vriss"
 msgstr "Врис"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Axiz
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:105
 msgid "Axiz"
 msgstr "Аксиз"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Satras
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:139
 msgid "Satras"
@@ -4882,6 +4943,7 @@ msgstr "Стиже још сауријанаца. Опкољавају нас! �
 msgid "Lizard Beach"
 msgstr "Гуштерска плажа"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Tirasch
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:37
 msgid "Tirasch"
@@ -4892,8 +4954,9 @@ msgstr "Тираш"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:69
 msgid "Monsters"
-msgstr ""
+msgstr "Немани"
 
+# |, no-check-spell
 #. [side]: type=Saurian Flanker, id=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:63
 msgid "Ssirk"
@@ -4960,6 +5023,7 @@ msgstr "Почистисмо плажу. Вратимо се сада вилењ
 msgid "Troll Hole"
 msgstr "Троловска јазбина"
 
+# |, no-check-spell
 #. [side]: type=Troll Warrior, id=Erart
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:38
 msgid "Erart"
@@ -4973,25 +5037,28 @@ msgstr "Ерарт"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:122
-#, fuzzy
 msgid "Trolls"
-msgstr "Тромас"
+msgstr "Тролови"
 
+# |, no-check-spell
 #. [side]: type=Troll Warrior, id=Raol
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:64
 msgid "Raol"
 msgstr "Раол"
 
+# |, no-check-spell
 #. [side]: type=Troll Warrior, id=Rilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:90
 msgid "Rilg"
 msgstr "Рилг"
 
+# |, no-check-spell
 #. [side]: type=Troll Warrior, id=Gulg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:116
 msgid "Gulg"
 msgstr "Гулг"
 
+# |, no-check-spell
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:174
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:178
@@ -5055,7 +5122,7 @@ msgid ""
 "The trolls are beaten, but they were no easy opponents. It is no wonder why "
 "the elves pressed us to do their dirty work."
 msgstr ""
-"Тролови су побеђени, али не бехоше лаки противници. Није ни чудо што нас "
+"Тролови су побеђени, али не бајаху лаки противници. Није ни чудо што нас "
 "вилењаци нагнаше да завршимо њихов прљав посао."
 
 #. [scenario]: id=Cursed_Isle
@@ -5063,11 +5130,13 @@ msgstr ""
 msgid "Cursed Isle"
 msgstr "Проклето острво"
 
+# |, no-check-spell
 #. [side]: type=Spectre, id=Isorfilad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:39
 msgid "Isorfilad"
 msgstr "Исорилад"
 
+# |, no-check-spell
 #. [side]: type=Spectre, id=Tinoldor
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:78
 msgid "Tinoldor"
@@ -5217,7 +5286,6 @@ msgstr "Џесика у заклону"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:115
-#, fuzzy
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
@@ -5225,22 +5293,21 @@ msgid ""
 "and never real at all."
 msgstr ""
 "Дакле, проклетство их допрати из њихове старе постојбине. Моји надјахачи "
-"извештавају да су се оркови искрцали. Оркови овде, први пут после толиких "
-"векова."
+"извештавају да су се оркови искрцали. Оркови! Дрвоубице из наших "
+"најдревнијих предања. Неки мишљаше да су само измишљотина за застрашивање "
+"деце, без икакве потпоре у стварности."
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:119
-#, fuzzy
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
 msgstr ""
-"А он носи предмет извесне моћи. Оркови не би могли да га осете. Вреба нека "
-"већа сила у позадини."
+"А он носи предмет извесне моћи. Оркови не би могли да га осете. Нека је нама "
+"невидљива рука на делу овде."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:123
-#, fuzzy
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
@@ -5261,7 +5328,6 @@ msgstr ""
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:132
-#, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, 'If "
@@ -5287,16 +5353,19 @@ msgstr "[шапуће] И то су ми пријатељи. Морам прен
 msgid "The Vanguard"
 msgstr "Претходница"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Erirt
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:40
 msgid "Tan-Erirt"
-msgstr "Тан-Ерирт"
+msgstr "тан Ерирт"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:77
 msgid "Tan-Gagar"
-msgstr "Тан-Гагар"
+msgstr "тан Гагар"
 
+# |, no-check-spell
 #. [side]: type=Troll Warrior, id=Thruf
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:114
 msgid "Thruf"
@@ -5434,6 +5503,7 @@ msgstr "Време нам је истекло... Сада никада неће�
 msgid "I've found the orcs' chest! It's filled with gold."
 msgstr "Нађох орковски ковчег! Испуњен је златом."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:374
 msgid "Rabbin"
@@ -5506,20 +5576,23 @@ msgstr ""
 msgid "Return of the Fleet"
 msgstr "Повратак флоте"
 
+# well-spelled: Хераван
 #. [side]: type=Draug, id=General Heravan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:41
 msgid "General Heravan"
-msgstr "Генерал Хераван"
+msgstr "генерал Хераван"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Halg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:79
 msgid "Tan-Halg"
-msgstr "Тан-Халг"
+msgstr "тан Халг"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:116
 msgid "Tan-Rinak"
-msgstr "Тан-Ринак"
+msgstr "тан Ринак"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:204
@@ -5697,11 +5770,13 @@ msgstr "Бућ, клик, клик, клик!"
 msgid "I don't know what that is, but it doesn't sound friendly."
 msgstr "Не знам шта је, али свакако не делује пријатељски."
 
+# |, no-check-spell
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:493
 msgid "Flixta"
 msgstr "Фликста"
 
+# well-spelled: сссвоје, нагајссски, Сссада
 #. [message]: speaker=Flixta
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:508
 msgid ""
@@ -5711,6 +5786,7 @@ msgstr ""
 "Поново ви. Платићете за сссвоје нападе на мој народ! Шек-каан, наши "
 "нагајссски пријатељи... Платићете! Сссада имамо нове пријатеље."
 
+# well-spelled: Ахсск
 #. [message]: speaker=Tan-Halg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:553
 msgid ""
@@ -5719,6 +5795,7 @@ msgstr ""
 "Мој народ је као лавина камења, можете бежати, али ћемо вас ипак смрвити... "
 "Ахсск!"
 
+# well-spelled: умммирем
 #. [message]: speaker=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:574
 msgid "I- I die?"
@@ -5774,7 +5851,7 @@ msgid ""
 "turned your back on your pact with the elves. It's not like you can tell "
 "people what I overheard."
 msgstr ""
-"Многи би те људи назваи кукавицом да ниси. Рекли би да си окренуо леђа "
+"Многи би те људи назвали кукавицом да ниси. Рекли би да си окренуо леђа "
 "сопственом споразуму са вилењацима. Не можеш баш испричати народу шта сам ја "
 "теби пренела."
 
@@ -5953,29 +6030,32 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:125
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:200
-#, fuzzy
 msgid "Evil"
-msgstr "Ериол"
+msgstr "Зло"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:82
 msgid "Tan-Vragish"
-msgstr "Тан-Врагиш"
+msgstr "тан Врагиш"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grorag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:109
 msgid "Ut'Tan-Grorag"
-msgstr "Утан-Грораг"
+msgstr "утан Грораг"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Erinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:146
 msgid "Tan-Erinak"
-msgstr "Тан-Еринак"
+msgstr "тан Еринак"
 
+# |, no-check-spell
 #. [side]: type=Orcish Warlord, id=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:184
 msgid "Tan-Prodash"
-msgstr "Тан-Продаш"
+msgstr "тан Продаш"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:277
@@ -6141,7 +6221,7 @@ msgid ""
 "going to stop me from destroying you. For my family! For the people of "
 "Clearwater Port!"
 msgstr ""
-"Осети моју срџбу, Џевијане, долазим по тебе! Никаквав папирић у мом џепу ме "
+"Осети моју срџбу, Џевијане, долазим по тебе! Никакав папирић у мом џепу ме "
 "неће спречити да те уништим. За моју породицу! За житеље луке Бистроморске!"
 
 #. [message]: speaker=Lich-Lord Jevyan
@@ -6215,7 +6295,7 @@ msgstr "Вилењаци имају Ватрени рубин, морамо са
 msgid ""
 "We have many kinsmen on the Green Isle- we will return for the Ruby of Fire!"
 msgstr ""
-"Мноштво нас сународника очекује на Зелонострву — вратићемо се ми још по "
+"Мноштво нас сународника очекује на Зеленострву — вратићемо се ми још по "
 "Рубин!"
 
 #. [message]: speaker=Tan-Prodash
@@ -6257,6 +6337,7 @@ msgstr ""
 "Етир! Не! Он нам је био кључан за убеђивање Џевијана да је Ватрени рубин "
 "сада код вилењака."
 
+# well-spelled: придру
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:701
 msgid ""
@@ -6327,6 +6408,7 @@ msgstr "Вилењаци имаду Ватрени рубин, а ви нема�
 msgid "We will suck the marrow from your bones human!"
 msgstr "Исисаћемо срж из ваших костију, људи!"
 
+# |, no-check-spell
 #. [unit]: id=Squiddy, type=Cuttle Fish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:826
 msgid "Squiddy"
@@ -6376,15 +6458,17 @@ msgstr "Похитајте из дубина, моји одани војници
 msgid "Rise, rise from the ground!"
 msgstr "Подигни се, подигни са земљице!"
 
+# |, no-check-spell
 #. [message]: speaker=Familiar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1127
 msgid "Neep! SPLAT!"
 msgstr "Ииип! ПЉУС!"
 
+# well-spelled: Аaaх
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1131
 msgid "Ahh... That almost makes it all worth while!"
-msgstr "Ахх... Због овога скоро да је вредело!"
+msgstr "Аaaх... Због овога скоро да је вредело!"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1135
@@ -6426,7 +6510,7 @@ msgstr "Епилог"
 #. [side]: type=Noble Commander, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:23
 msgid "Wesnothians"
-msgstr ""
+msgstr "Весноћани"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:140
@@ -6517,7 +6601,7 @@ msgstr ""
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:195
 msgid "May the Lords of Light have Mercy on you. But, I am bound by my word."
-msgstr "Нека се Господари светлости смилију над тобом. Али, веже ме моја реч."
+msgstr "Нека се Господари светлости смилују над тобом. Али, веже ме моја реч."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
@@ -6702,13 +6786,13 @@ msgstr ""
 #. [unit_type]: id=Fireball, race=mechanical
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:5
 msgid "Fireball"
-msgstr "ватрокугла"
+msgstr "ватреница"
 
 #. [unit_type]: id=Fireball, race=mechanical
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "Ватрокугла. Не треба користити ни за шта друго до ‘Move_Unit_Fake’!"
+msgstr "Ватреница. Не треба користити ни за шта друго до ‘Move_Unit_Fake’!"
 
 #. [attack]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
@@ -6876,9 +6960,8 @@ msgstr "праћка"
 
 #. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Leader"
-msgstr "весноћанска госпа"
+msgstr "весноћански вођ"
 
 #. [unit_type]: id=Wesfolk Outcast, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
@@ -6941,23 +7024,21 @@ msgstr "пометња"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
 msgid ""
 "Distract:\n"
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 "Пометња:\n"
-"Јединица потире непријатељске надзорне појасеве око себе за пријатељске "
+"Јединица потире непријатељске надзорне појасеве око себе за савезничке "
 "јединице (али не и за себе саму)."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:23
-#, fuzzy
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
-"Јединица уме одвраћати противнике, тако да пријатељске јединице могу "
+"Јединица уме одвраћати противнике, тако да савезничке јединице могу "
 "неометано пролазити кроз њихове надзорне појасеве."
 
 #. [message]: speaker=unit
@@ -7141,16 +7222,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:35
-#, fuzzy
 msgid ""
 "You must recall that the route from the western continent to our Green Isle "
 "was perilous at the best of times - so perilous that a stable trading "
 "relationship between the mainland and the Isle could never be maintained."
 msgstr ""
-"Потом се историја наставила без догађања још неколико векова. Морате имати "
-"на уму да је пут од западног континента до нашег Зеленострва био опасан и у "
-"најбоља времена — толико опасан, да се трајни трговачки односи између копна "
-"и Острва никада нису могли остварити."
+"Морате имати на уму да је пут од западног континента до нашег Зеленострва "
+"био опасан и у најбоља времена — толико опасан, да се трајни трговачки "
+"односи између копна и Острва никада нису могли остварити."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:44
@@ -7238,7 +7317,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:109
-#, fuzzy
 msgid ""
 "To the southwest lay the Midlands. These were prosperous kingdoms, nestled "
 "between hill and forest. These had been the breadbasket of the Green Isle, "
@@ -7246,11 +7324,10 @@ msgid ""
 "Southbay, the largest city on the Isle. The coming of the Orcs threatened to "
 "lay waste to all this."
 msgstr ""
-"На југозападу леже Средопоља. Она бејаху добростојећа краљевства, угњеждена "
-"између брда и шума. Служила су као житница народима, и као вредан извор "
-"дрвне грађе и драгуља. Некада она хранише Југозалив, највећи град на Острву. "
-"Међутим, уз најезду оркова, Средопоља су до сада вероватно тек огољена "
-"пустош."
+"На југозападу леже Средопоља, што бејаху добростојећа краљевства, угњеждена "
+"између брда и шума. Житница Зеленострва, као и извор дрвне грађе и драгуља, "
+"средопољска краљевства хранише Југозалив, највећи град на Острву. Приспеће "
+"оркова запрети да све опустоши."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:115
@@ -7277,14 +7354,12 @@ msgid ""
 "even more exotic lands even further to the East."
 msgstr ""
 "Неколико дана касније принц Халдрик се отисну на свом броду „Елдарику“, "
-"оставивши свој дом и Острво заувек иза себе. У срцу је осећао да никада више "
-"неће видети ту осамљену долину. Пред њим лежи непрегледно олујно море и "
-"тајанствено острво које госпа Џесика помену, а даље на истоку још "
-"егзотичнија пространства."
+"оставивши свој дом и Зеленострво заувек иза себе. Пред њим лежи непрегледно "
+"олујно море и тајанствено острво које госпа Џесика помену, а даље на истоку "
+"још егзотичнија пространства."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:133
-#, fuzzy
 msgid ""
 "The island that King Haldric and his crew are approaching was at one time a "
 "volcano that is now slowly sinking into the sea. The elder Crown Prince of "
@@ -7292,10 +7367,10 @@ msgid ""
 "belligerent nature of its reptilian inhabitants. There will be little left "
 "of that foothold by now."
 msgstr ""
-"Наизглед, острво којем се Халдрик и његова посада приближава, некада беше "
-"вулкан који сада полако тоне у море. Старији крунски принц Југозалива је "
-"успео да успостави превласт на овом острву, упркос ратоборној природи "
-"његових рептилских житеља. До сада је од те превласти већ мало остало."
+"Острво којем се Халдрик и његова посада приближава некада беше вулкан који "
+"сада полако тоне у море. Старији крунски принц Југозалива је успео да "
+"успостави превласт на овом острву, упркос ратоборној природи његових "
+"рептилских житеља. До сада је од те превласти већ мало остало."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:152
@@ -7304,6 +7379,9 @@ msgid ""
 "hunt small game, relieved to have land beneath their feet. When they depart, "
 "even the sea-weather is milder."
 msgstr ""
+"После пораза нагајаца, Халдрикове избеглице прибављају питку воду и лове "
+"ситну дивљач, са олакшањем због чврстог тла под ногама. Док се отискују, чак "
+"је и време над морем блаже."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:155
@@ -7312,135 +7390,12 @@ msgid ""
 "gulls and feel the loom of the land. The Great Continent appears before them "
 "over the summer-lit seas."
 msgstr ""
+"Након седмице устаљене пловидбе ка истоку, почињу да чују крике галебова и "
+"осећају близину копна. Велики континент развија се пред њима преко летом "
+"осунчаног мора."
 
 #~ msgid "Onward to victory!"
 #~ msgstr "Напред у победу!"
 
 #~ msgid "(whispered) I don't think diplomacy is going to work."
 #~ msgstr "[шапуће] Не мислим да ће преговарање уродити плодом."
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Разно"
-
-#~ msgid "Hashnak"
-#~ msgstr "Хашнак"
-
-#~ msgid "Grork"
-#~ msgstr "Грорк"
-
-#~ msgid "Vigdish"
-#~ msgstr "Вигдиш"
-
-#~ msgid "Rider"
-#~ msgstr "јахач"
-
-#~ msgid "Assassin"
-#~ msgstr "убица"
-
-#~ msgid "Crossbow"
-#~ msgstr "самострел"
-
-#~ msgid "Tentacle"
-#~ msgstr "пипак"
-
-#~ msgid "Rolassi"
-#~ msgstr "Роласи"
-
-#~ msgid "Porbag"
-#~ msgstr "Порбаг"
-
-#~ msgid "Eriol"
-#~ msgstr "Ериол"
-
-#~ msgid ""
-#~ "At last the distant shores of a great continent are spotted. The time for "
-#~ "landfall has arrived."
-#~ msgstr ""
-#~ "Коначно спазише удаљене хриди великог континента. Дошло је време за "
-#~ "искрцавање."
-
-#~ msgid "Liabra"
-#~ msgstr "Лијабра"
-
-#~ msgid "Brissal"
-#~ msgstr "Брисал"
-
-#~ msgid "Griama"
-#~ msgstr "Гријама"
-
-#~ msgid "Saxiala"
-#~ msgstr "Саксалија"
-
-#~ msgid "Malix"
-#~ msgstr "Маликс"
-
-#~ msgid "Cuttle Fish"
-#~ msgstr "сипа"
-
-#~ msgid "Bzz'Kza"
-#~ msgstr "Бзкза"
-
-#~ msgid "Kersezz"
-#~ msgstr "Керсез"
-
-#~ msgid "Tarex"
-#~ msgstr "Тарекс"
-
-#~ msgid "Zzalkz"
-#~ msgstr "Залкз"
-
-#~ msgid "Amprixta"
-#~ msgstr "Амприкста"
-
-#~ msgid "Anexir"
-#~ msgstr "Анексир"
-
-#~ msgid "mace"
-#~ msgstr "топуз"
-
-#~ msgid "female^Outlaw Princess"
-#~ msgstr "одметничка принцеза"
-
-#~ msgid ""
-#~ "A noble by birth, the Outlaw Princess has learnt swordplay with the "
-#~ "greatest generals, but she is the product of a failed aristocracy who has "
-#~ "opted for the life of an Outlaw. She dreams of founding her own Queendom "
-#~ "with the plunder she finds on the road."
-#~ msgstr ""
-#~ "Племенита рођењем, одметничка принцеза је учила мачевање са највећим "
-#~ "генералима, али је производ неуспеле аристократије која се одлучила на "
-#~ "одметнички живот. Сања да једног дана заснује сопствено краљевство, "
-#~ "помоћу плена који сакупи успут."
-
-#~ msgid "female^Outlaw Queen"
-#~ msgstr "одметничка краљица"
-
-#~ msgid ""
-#~ "A noble by birth, the Outlaw Queen has learnt swordplay with the greatest "
-#~ "generals and battle tactics with the greatest sages, making her both a "
-#~ "great combatant and leader. However, she is the product of a failed "
-#~ "aristocracy who has opted for the life of an Outlaw. She dreams of "
-#~ "founding her own Queendom with the plunder she finds on the road, and she "
-#~ "is ever so close to that goal."
-#~ msgstr ""
-#~ "Племенита рођењем, одметничка краљица је учила вештину мачевања са "
-#~ "највећим генералима и борбене тактике са највећим мудрацима, поставши и "
-#~ "велики борац и велики вођа. Међутим, производ је неуспеле аристократије "
-#~ "која се одлучила на одметнички живот. Сања да једног дана заснује "
-#~ "сопствено краљевство, помоћу плена који сакупи успут, и сваког дана је "
-#~ "све ближа томе."
-
-#~ msgid "Heroic: As above and defeat all enemy leaders"
-#~ msgstr "Јуначки: Поврх тога, поразиш ли све непријатељске вође"
-
-#~ msgid "The Dragon's Cave has yielded some treasure!"
-#~ msgstr "Змајева пећина је изнедрила нешто блага!"
-
-#~ msgid "blade"
-#~ msgstr "сечиво"
-
-#~ msgid "pierce"
-#~ msgstr "пробој"
-
-#~ msgid "impact"
-#~ msgstr "удар"
