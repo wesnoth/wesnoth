@@ -875,6 +875,67 @@ public:
 	int defender_weapon() const { return bc_.get_defender_stats().attack_num; }
 };
 
+
+class attack_map_callable : public formula_callable {
+public:
+	typedef std::multimap<map_location, map_location> move_map;
+	attack_map_callable(const formula_ai& ai, const move_map& srcdst, const unit_map& units)
+		: srcdst_(srcdst), units_(units), ai_(ai)
+	{}
+private:
+	const move_map& srcdst_;
+	const unit_map& units_;
+	const formula_ai& ai_;
+
+	variant get_value(const std::string& key) const {
+		if(key == "attacks") {
+			std::vector<variant> vars;
+			for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
+				/* for each possible move check all adjacent tiles for enemies */
+				if(units_.count(i->second) == 0) {
+					collect_possible_attacks(vars, i->first, i->second);
+				}
+			}
+			/* special case, when unit moved toward enemy and can only attack */
+			for(unit_map::const_iterator i = ai_.get_info().units.begin(); i != ai_.get_info().units.end(); ++i) {
+				if((i->second.side() == ai_.get_side()) && (i->second.attacks_left() > 0)) {
+					collect_possible_attacks(vars, i->first, i->first);
+				}
+			}
+			return variant(&vars);
+		} else {
+			return variant();
+		}
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("attacks", game_logic::FORMULA_READ_ONLY));
+	}
+
+	/* add to vars all attacks on enemy units around <attack_position> tile. attacker_location is tile where unit is currently standing. It's moved to attack_position first and then performs attack.*/
+	void collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const {
+		map_location adj[6];
+		get_adjacent_tiles(attack_position, adj);
+		for(int n = 0; n != 6; ++n) {
+			/* if adjacent tile is outside the board */
+			if (! ai_.get_info().map.on_board(adj[n]))
+				continue;
+			unit_map::const_iterator unit = units_.find(adj[n]);
+			/* if tile is empty */
+			if (unit == units_.end())
+				continue;
+			/* if tile is occupied by friendly or stoned/invisible unit */
+			if (! ai_.current_team().is_enemy(unit->second.side())  || 
+					unit->second.incapacitated() ||
+					unit->second.invisible(unit->first, units_, ai_.get_info().teams) )
+				continue;
+			/* add attacks with default weapon */
+			attack_callable* item = new attack_callable(ai_, attacker_location, attack_position, adj[n], -1);
+			vars.push_back(variant(item));
+		}
+	}
+};
+
 class attack_function : public function_expression {
 public:
 	explicit attack_function(const args_list& args, const formula_ai& ai)
@@ -2390,6 +2451,10 @@ variant formula_ai::get_value(const std::string& key) const
 		prepare_move();
 		return variant(new move_map_callable(srcdst_, dstsrc_, get_info().units));
 
+	} else if(key == "my_attacks")
+	{
+		prepare_move();
+		return variant(new attack_map_callable(*this, srcdst_, get_info().units));
 	} else if(key == "enemy_moves")
 	{
 		prepare_move();
@@ -2452,6 +2517,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_moves", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_recruits", FORMULA_READ_ONLY));
