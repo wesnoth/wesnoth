@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2009-04-05 15:44-0000\n"
+"PO-Revision-Date: 2009-04-11 21:25-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -315,7 +315,7 @@ msgstr "eitraður"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
-msgstr ""
+msgstr "berserk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
@@ -548,7 +548,7 @@ msgstr "Eistnesk þýðing"
 #. [about]
 #: data/core/about.cfg:1296
 msgid "Filipino Translation"
-msgstr ""
+msgstr "Filippeysk þýðing"
 
 #. [about]
 #: data/core/about.cfg:1306
@@ -598,7 +598,7 @@ msgstr "Íslensk þýðing"
 #. [about]
 #: data/core/about.cfg:1675
 msgid "Indonesian Translation"
-msgstr ""
+msgstr "Indónesísk þýðing"
 
 #. [about]
 #: data/core/about.cfg:1682
@@ -708,7 +708,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:2132
 msgid "RACV's Translation"
-msgstr ""
+msgstr "RACV þýðing"
 
 #. [about]
 #: data/core/about.cfg:2139
@@ -3007,13 +3007,12 @@ msgstr "ekkert sett."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
-#, fuzzy
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
-"$ally_leader.name (hlið $ally_side) hefur ekki verið gefin/nn neinar "
-"skipanir og hegðar sér eðlilega."
+"$ally_leader.name (hlið $ally_side) hefur ekki verið gefin neinar skipanir "
+"og hegðar sér eðlilega."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -5599,7 +5598,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Li'sar prinsessa, 515YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
@@ -5630,7 +5629,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "Chantal ritið, -516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -5775,7 +5774,7 @@ msgstr "Aðalval"
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
-msgstr ""
+msgstr "Aðgerðir"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
@@ -5986,14 +5985,14 @@ msgstr[1] ""
 #: src/actions.cpp:2493
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$friends vingjarnleg"
+msgstr[1] "$friends vingjarnlegir"
 
 #: src/actions.cpp:2494
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$enemies óvingjarnleg"
+msgstr[1] "$enemies óvingjarnlegir"
 
 #: src/actions.cpp:2495
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -6200,11 +6199,11 @@ msgstr "Tengist miðlara viðbóta"
 
 #: src/addon_management.cpp:891
 msgid "Could not connect to host."
-msgstr ""
+msgstr "Gat ekki tengst miðlara."
 
 #: src/addon_management.cpp:899
 msgid "Requesting list of add-ons"
-msgstr ""
+msgstr "Bið um lista yfir viðbætur"
 
 #: src/addon_management.cpp:911
 msgid "An error occurred while communicating with the server."
@@ -6455,7 +6454,7 @@ msgstr "Útgáfa: "
 
 #: src/dialogs.cpp:597 src/dialogs.cpp:613
 msgid "%b %d %y"
-msgstr ""
+msgstr "%d. %b '%y"
 
 #: src/dialogs.cpp:603
 msgid "%H:%M"
@@ -6587,11 +6586,11 @@ msgstr "Ekki sýna aftur"
 
 #: src/game.cpp:1372
 msgid "Error while starting server: "
-msgstr ""
+msgstr "Villa við ræsingu miðlara: "
 
 #: src/game.cpp:1374 src/playcampaign.cpp:95 src/playcampaign.cpp:371
 msgid "The game could not be loaded: "
-msgstr ""
+msgstr "Leikurinn gat ekki hlaðst: "
 
 #: src/game.cpp:1376 src/playcampaign.cpp:97 src/playcampaign.cpp:374
 msgid "Error while playing the game: "
@@ -6599,7 +6598,7 @@ msgstr "Villa við spilun leiks: "
 
 #: src/game.cpp:1396 src/playcampaign.cpp:99 src/playcampaign.cpp:377
 msgid "The game map could not be loaded: "
-msgstr ""
+msgstr "Kortið gat ekki hlaðst: "
 
 #: src/game.cpp:1463 src/game.cpp:1584
 msgid "Error loading game configuration files: '"
@@ -7285,15 +7284,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2065
 msgid "Add a nick to your ignores list."
-msgstr ""
+msgstr "Bæta við notendanafn á hunsunarlista."
 
 #: src/menu_events.cpp:2067
 msgid "Add a nick to your friends list."
-msgstr ""
+msgstr "Bæta við notendanafn á vinalista."
 
 #: src/menu_events.cpp:2069
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
+msgstr "Fjarlægja notendanafn úr husunar- og vinalista."
 
 #: src/menu_events.cpp:2071
 msgid "Show your ignores and friends list."
@@ -7628,7 +7627,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:664
 msgid "Computer player"
-msgstr ""
+msgstr "Gervigreind"
 
 #: src/multiplayer_connect.cpp:667
 msgid "(Empty slot)"
@@ -7689,15 +7688,15 @@ msgstr "Þessi atburðarás er ógild vegna þess að hún hefur engar hliðar."
 
 #: src/multiplayer_connect.cpp:1422
 msgid "Network Player"
-msgstr ""
+msgstr "Netspilari"
 
 #: src/multiplayer_connect.cpp:1424
 msgid "Local Player"
-msgstr ""
+msgstr "Staðarspilari"
 
 #: src/multiplayer_connect.cpp:1425
 msgid "Computer Player"
-msgstr ""
+msgstr "Gervigreind"
 
 #: src/multiplayer_connect.cpp:1426
 msgid "Empty"
@@ -8051,11 +8050,11 @@ msgstr "Tenging við þennan leik þarfnast lykilorðs."
 
 #: src/multiplayer_ui.cpp:193
 msgid "Invalid Color"
-msgstr ""
+msgstr "Ógildur litur"
 
 #: src/multiplayer_ui.cpp:426
 msgid "Selected user: "
-msgstr ""
+msgstr "Valinn notandi: "
 
 #: src/multiplayer_wait.cpp:135
 msgid "Leader: "
@@ -8067,7 +8066,7 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:186
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "Bíð eftir ræsingu leiks..."
 
 #: src/multiplayer_wait.cpp:209
 msgid "Getting game data..."
@@ -8475,7 +8474,7 @@ msgstr "Hjálp"
 
 #: src/titlescreen.cpp:441
 msgid "TitleScreen button^Help Wesnoth"
-msgstr ""
+msgstr "Hjálpaðu Wesnoth"
 
 #: src/titlescreen.cpp:443
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -8561,7 +8560,7 @@ msgstr ""
 
 #: src/unit.cpp:2606 src/unit.cpp:2724
 msgid "XP to advance"
-msgstr ""
+msgstr "XP til eflingar"
 
 #: src/unit.cpp:2716
 msgid " move"
@@ -8607,7 +8606,7 @@ msgstr ""
 
 #: src/unit_types.cpp:989
 msgid "lawful"
-msgstr ""
+msgstr "réttmætur"
 
 #: src/unit_types.cpp:989
 msgid "neutral"
@@ -8619,7 +8618,7 @@ msgstr ""
 
 #: src/unit_types.cpp:990
 msgid "female^lawful"
-msgstr ""
+msgstr "réttmæt"
 
 #: src/unit_types.cpp:990
 msgid "female^neutral"
