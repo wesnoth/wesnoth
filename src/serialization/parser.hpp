@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include <iosfwd>
+#include <string>
 
 class config;
 class t_string;

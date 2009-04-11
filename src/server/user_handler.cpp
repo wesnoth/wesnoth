@@ -16,6 +16,8 @@
 
 #include "mail.hpp"
 
+#include <ctime>
+
 bool user_handler::send_mail(const std::string& to_user,
 		const std::string& subject, const std::string& message) {
 
