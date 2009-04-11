@@ -46,7 +46,7 @@
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(info& i, int side, bool master) : ai_interface(i,side,master) {
+idle_ai::idle_ai(int side, bool master) : ai_interface(side,master) {
 
 }
 
@@ -63,7 +63,7 @@ void idle_ai::play_turn()
 /** Sample ai, with simple strategy. */
 class sample_ai : public ai_interface {
 public:
-	sample_ai(info& i, int side, bool master) : ai_interface(i,side,master) {}
+	sample_ai(int side, bool master) : ai_interface(side,master) {}
 
 	void play_turn() {
 		game_events::fire("ai turn");
@@ -192,19 +192,18 @@ protected:
 	}
 };
 
-ai::ai(ai_interface::info& info, int side, bool master) :
-	ai_interface(info,side,master),
+ai::ai(int side, bool master) :
+	ai_interface(side,master),
 	defensive_position_cache_(),
 	threats_found_(false),
 	attacks_(),
-	disp_(info.disp),
-	map_(info.map),
-	units_(info.units),
-	teams_(info.teams),
-	state_(info.state),
+	disp_(get_info().disp),
+	map_(get_info().map),
+	units_(get_info().units),
+	teams_(get_info().teams),
+	state_(get_info().state),
 	consider_combat_(true),
 	additional_targets_(),
-	info_(info),
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
@@ -358,10 +357,10 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
-	unit new_unit(&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,get_side(),true);
+	unit new_unit(&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&u->second,get_side(),true);
 
 	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(info_.map,get_side(),info_.units,new_unit,loc,false,preferences::show_ai_moves());
+	std::string recruit_err = recruit_unit(get_info().map,get_side(),get_info().units,new_unit,loc,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 
 		statistics::recruit_unit(new_unit);
@@ -371,7 +370,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		replay_guard.confirm_transaction();
 
 		raise_unit_recruited();
-		const team_data data = calculate_team_data(current_team(),get_side(),info_.units);
+		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
 		LOG_AI <<
 		"recruit confirmed: team=" << get_side() <<
 		" units=" << data.units <<
@@ -381,7 +380,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		recorder.add_checksum_check(loc);
 		return true;
 	} else {
-		const team_data data = calculate_team_data(current_team(),get_side(),info_.units);
+		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
 		LOG_AI << recruit_err << "\n";
 		LOG_AI <<
 		"recruit UNconfirmed: team=" << (get_side()) <<
@@ -391,6 +390,14 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		data.net_income << "\n";
 		return false;
 	}
+}
+
+ai_interface::info& ai_interface::get_info(){
+	return ai_manager::get_active_ai_info_for_side(get_side());
+}
+
+const ai_interface::info& ai_interface::get_info() const{
+	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
 void ai_interface::raise_user_interact()
@@ -409,14 +416,14 @@ void ai_interface::raise_user_interact()
 void ai_interface::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
-		info_.disp.set_diagnostic(msg);
+		get_info().disp.set_diagnostic(msg);
 	}
 }
 
 void ai_interface::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		info_.disp.add_chat_message(time(NULL), "ai", get_side(), msg,
+		get_info().disp.add_chat_message(time(NULL), "ai", get_side(), msg,
 				game_display::MESSAGE_PUBLIC, false);
 	}
 }
@@ -426,8 +433,8 @@ map_location ai_interface::move_unit(location from, location to,
 		std::map<location,paths>& possible_moves)
 {
 	const location loc = move_unit_partial(from,to,possible_moves);
-	const unit_map::iterator u = info_.units.find(loc);
-	if(u != info_.units.end()) {
+	const unit_map::iterator u = get_info().units.find(loc);
+	if(u != get_info().units.end()) {
 		if(u->second.movement_left()==u->second.total_movement()) {
 			u->second.set_movement(0);
 			u->second.set_state("not_moved","yes");
@@ -448,8 +455,8 @@ map_location ai_interface::move_unit_partial(location from, location to,
 	const events::command_disabler disable_commands;
 
 	log_scope2(ai, "move_unit");
-	unit_map::iterator u_it = info_.units.find(from);
-	if(u_it == info_.units.end()) {
+	unit_map::iterator u_it = get_info().units.find(from);
+	if(u_it == get_info().units.end()) {
 		LOG_STREAM(err, ai) << "Could not find unit at " << from << '\n';
 		assert(false);
 		return location();
@@ -483,9 +490,9 @@ map_location ai_interface::move_unit_partial(location from, location to,
 
 			steps = rt->second.steps;
 
-			while(steps.empty() == false && info_.units.find(to) != info_.units.end() && from != to){
+			while(steps.empty() == false && get_info().units.find(to) != get_info().units.end() && from != to){
 				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
-				LOG_AI << "\t" << info_.units.find(to)->second.underlying_id() <<" already on " << to << "\n";
+				LOG_AI << "\t" << get_info().units.find(to)->second.underlying_id() <<" already on " << to << "\n";
 				LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
 				to = *(steps.end()-1);
 				steps.pop_back();
@@ -493,8 +500,8 @@ map_location ai_interface::move_unit_partial(location from, location to,
 			}
 
 			if(steps.size()) { // First step is starting hex
-				unit_map::const_iterator utest=info_.units.find(*(steps.begin()));
-				if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
+				unit_map::const_iterator utest=get_info().units.find(*(steps.begin()));
+				if(utest != get_info().units.end() && current_team().is_enemy(utest->second.side())){
 					LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
 					//			    return(from);
 				}
@@ -512,11 +519,11 @@ map_location ai_interface::move_unit_partial(location from, location to,
 						// If it's not, we must be a skirmisher, otherwise AI wouldn't try.
 
 						// Or would it?  If it doesn't cheat, it might...
-						const unit_map::const_iterator u = info_.units.find(adj[n]);
+						const unit_map::const_iterator u = get_info().units.find(adj[n]);
 						// If level 0 is invisible it ambush us too
-						if (u != info_.units.end() && (u->second.emits_zoc() || u->second.invisible(adj[n], info_.units, info_.teams))
+						if (u != get_info().units.end() && (u->second.emits_zoc() || u->second.invisible(adj[n], get_info().units, get_info().teams))
 								&& current_team().is_enemy(u->second.side())) {
-							if (u->second.invisible(adj[n], info_.units, info_.teams)) {
+							if (u->second.invisible(adj[n], get_info().units, get_info().teams)) {
 								to = *i;
 								u->second.ambush();
 								steps.erase(i,steps.end());
@@ -528,7 +535,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 									to = *i;
 									LOG_AI << " to " << to;
 									steps.erase(i,steps.end());
-									while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
+									while(steps.empty() == false && (!(get_info().units.find(to) == get_info().units.end() || from == to))){
 										to = *(steps.end()-1);
 										steps.pop_back();
 										LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
@@ -554,13 +561,13 @@ map_location ai_interface::move_unit_partial(location from, location to,
 			}
 
 			if(show_move && unit_display::unit_visible_on_path(steps,
-						u_it->second, info_.units,info_.teams)) {
-				info_.disp.display_unit_hex(from);
+						u_it->second, get_info().units,get_info().teams)) {
+				get_info().disp.display_unit_hex(from);
 
-				unit_map::iterator up = info_.units.find(u_it->first);
-				unit_display::move_unit(steps,up->second,info_.teams);
+				unit_map::iterator up = get_info().units.find(u_it->first);
+				unit_display::move_unit(steps,up->second,get_info().teams);
 			} else if(steps.size()>1) {
-				unit_map::iterator up = info_.units.find(u_it->first);
+				unit_map::iterator up = get_info().units.find(u_it->first);
 				std::vector<map_location>::const_reverse_iterator last_step = steps.rbegin();
 				std::vector<map_location>::const_reverse_iterator before_last = last_step +1;
 				up->second.set_facing(before_last->get_relative_dir(*last_step));
@@ -576,34 +583,34 @@ map_location ai_interface::move_unit_partial(location from, location to,
 		steps.push_back(to);
 	}
 
-	std::pair<map_location,unit> *p = info_.units.extract(u_it->first);
+	std::pair<map_location,unit> *p = get_info().units.extract(u_it->first);
 
 	p->first = to;
-	info_.units.insert(p);
+	get_info().units.insert(p);
 	p->second.set_standing(p->first);
-	if(info_.map.is_village(to)) {
+	if(get_info().map.is_village(to)) {
 		// If a new village is captured, disallow any future movement.
 		if (!current_team().owns_village(to))
-			info_.units.find(to)->second.set_movement(-1);
-		get_village(to,info_.disp,info_.teams,get_side()-1,info_.units);
+			get_info().units.find(to)->second.set_movement(-1);
+		get_village(to,get_info().disp,get_info().teams,get_side()-1,get_info().units);
 	}
 
 	if(show_move) {
-		info_.disp.invalidate(to);
-		info_.disp.draw();
+		get_info().disp.invalidate(to);
+		get_info().disp.draw();
 	}
 
 	recorder.add_movement(steps);
 
 	game_events::fire("moveto",to,from);
 
-	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) &&
-			!info_.teams.front().fogged(to)) {
+	if((get_info().teams.front().uses_fog() || get_info().teams.front().uses_shroud()) &&
+			!get_info().teams.front().fogged(to)) {
 		game_events::fire("sighted",to);
 	}
 
 	// would have to go via mousehandler to make this work:
-	//info_.disp.unhighlight_reach();
+	//get_info().disp.unhighlight_reach();
 	raise_unit_moved();
 
 	return to;
@@ -733,7 +740,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const std::set<map_location>* remove_destinations) const
 {
-  calculate_moves(info_.units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void ai_interface::calculate_moves(const unit_map& units, std::map<location,paths>& res, move_map& srcdst,
@@ -759,7 +766,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		}
 
 		// We can't see where invisible enemy units might move.
-		if(enemy && un_it->second.invisible(un_it->first,units,info_.teams) && !see_all) {
+		if(enemy && un_it->second.invisible(un_it->first,units,get_info().teams) && !see_all) {
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
@@ -774,8 +781,8 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 		}
 		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
 		res.insert(std::pair<map_location,paths>(
-		                un_it->first,paths(info_.map,units,
-					 un_it->first,info_.teams,false,teleports,
+		                un_it->first,paths(get_info().map,units,
+					 un_it->first,get_info().teams,false,teleports,
 									current_team(),0,see_all)));
 	}
 
@@ -792,9 +799,9 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			bool friend_owns = false;
 
 			// Don't take friendly villages
-			if(!enemy && info_.map.is_village(dst)) {
-				for(size_t n = 0; n != info_.teams.size(); ++n) {
-					if(info_.teams[n].owns_village(dst)) {
+			if(!enemy && get_info().map.is_village(dst)) {
+				for(size_t n = 0; n != get_info().teams.size(); ++n) {
+					if(get_info().teams[n].owns_village(dst)) {
 						if(n+1 != get_side() && current_team().is_enemy(n+1) == false) {
 							friend_owns = true;
 						}
@@ -1225,22 +1232,22 @@ void ai_interface::attack_enemy(const location u,
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 
-	if(!info_.units.count(u))
+	if(!get_info().units.count(u))
 	{
 		ERR_AI << "attempt to attack without attacker\n";
 		return;
 	}
-	if (!info_.units.count(target))
+	if (!get_info().units.count(target))
 	{
 		ERR_AI << "attempt to attack without defender\n";
 		return;
 	}
 
-	if(info_.units.find(target)->second.incapacitated()) {
+	if(get_info().units.find(target)->second.incapacitated()) {
 		LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
 		return;
 	}
-	if(!info_.units.find(u)->second.attacks_left()) {
+	if(!get_info().units.find(u)->second.attacks_left()) {
 		LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
 		return;
 	}
@@ -1249,36 +1256,36 @@ void ai_interface::attack_enemy(const location u,
 		recorder.add_attack(u,target,weapon,def_weapon);
 	}
 	try {
-		attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
-				info_.units, info_.state);
+		attack(get_info().disp, get_info().map, get_info().teams, u, target, weapon, def_weapon,
+				get_info().units, get_info().state);
 	}
 	catch (end_level_exception&)
 	{
-		dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
+		dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
 
-		const unit_map::const_iterator defender = info_.units.find(target);
-		if(defender != info_.units.end()) {
+		const unit_map::const_iterator defender = get_info().units.find(target);
+		if(defender != get_info().units.end()) {
 			const size_t defender_team = size_t(defender->second.side()) - 1;
-			if(defender_team < info_.teams.size()) {
-				dialogs::advance_unit(info_.map, info_.units,
-						target, info_.disp, !info_.teams[defender_team].is_human());
+			if(defender_team < get_info().teams.size()) {
+				dialogs::advance_unit(get_info().map, get_info().units,
+						target, get_info().disp, !get_info().teams[defender_team].is_human());
 			}
 		}
 
 		throw;
 	}
-	dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
+	dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
 
-	const unit_map::const_iterator defender = info_.units.find(target);
-	if(defender != info_.units.end()) {
+	const unit_map::const_iterator defender = get_info().units.find(target);
+	if(defender != get_info().units.end()) {
 		const size_t defender_team = size_t(defender->second.side()) - 1;
-		if(defender_team < info_.teams.size()) {
-			dialogs::advance_unit(info_.map, info_.units,
-					target, info_.disp, !info_.teams[defender_team].is_human());
+		if(defender_team < get_info().teams.size()) {
+			dialogs::advance_unit(get_info().map, get_info().units,
+					target, get_info().disp, !get_info().teams[defender_team].is_human());
 		}
 	}
 
-	check_victory(info_.units,info_.teams, info_.disp);
+	check_victory(get_info().units,get_info().teams, get_info().disp);
 	raise_enemy_attacked();
 }
 
@@ -1885,7 +1892,7 @@ bool ai::do_recruitment()
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
 			if (formula_ai_ == NULL){
-    	   			formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_info(),false));
+				formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_side(),false));
 			}
 
 			assert(formula_ai_ != NULL);
@@ -2193,11 +2200,11 @@ int ai::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		const int owner = village_owner(loc,teams_);
+		const unsigned int owner = static_cast<unsigned int>(village_owner(loc,teams_)+1);
 
-		if(owner + 1 == get_side()) {
+		if(owner == get_side()) {
 			rating += friendly_village_value;
-		} else if(owner == -1) {
+		} else if(owner == 0) {
 			rating += neutral_village_value;
 		} else {
 			rating += enemy_village_value;
@@ -2345,7 +2352,7 @@ int ai::attack_depth()
 variant ai_interface::get_value(const std::string& key) const
 {
 	if(key == "map") {
-		return variant(new gamemap_callable(info_.map));
+		return variant(new gamemap_callable(get_info().map));
 	}
 	return variant();
 }

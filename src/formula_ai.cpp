@@ -1571,8 +1571,8 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 
 }
 
-formula_ai::formula_ai(info& i, int side, bool master) :
-	ai(i,side,master),
+formula_ai::formula_ai(int side, bool master) :
+	ai(side,master),
 	recruit_formula_(),
 	move_formula_(),
 	possible_moves_(),
@@ -1903,7 +1903,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 	if(!formula_) {
 		if(get_master()) {
 			LOG_AI << "Falling back to default AI.\n";
-			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, get_info(),false));
+			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, get_side(),false));
 			if (fallback != NULL){
 				fallback->play_turn();
 			}
@@ -2226,7 +2226,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					util::scoped_ptr< ai_interface > fallback ( ai_manager::create_transient_ai(fallback_command->key(), get_info(),false));
+					util::scoped_ptr< ai_interface > fallback ( ai_manager::create_transient_ai(fallback_command->key(), get_side(),false));
 					if(fallback != NULL) {
 						fallback->play_turn();
 					}

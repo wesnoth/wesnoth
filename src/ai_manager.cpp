@@ -55,10 +55,10 @@ ai_holder::ai_holder( int team, const std::string& ai_algorithm_type )
 }
 
 
-void ai_holder::init( ai_interface::info& i )
+void ai_holder::init()
 {
 	LOG_AI_MANAGER << describe_ai() << "Preparing to create new managed master AI" << std::endl;
-	this->ai_ = create_ai(i);
+	this->ai_ = create_ai();
 	if (this->ai_ == NULL) {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}
@@ -75,10 +75,10 @@ ai_holder::~ai_holder()
 }
 
 
-ai_interface& ai_holder::get_ai_ref( ai_interface::info& i )
+ai_interface& ai_holder::get_ai_ref()
 {
 	if (this->ai_ == NULL) {
-		this->init(i);
+		this->init();
 	}
 	assert(this->ai_ != NULL);
 
@@ -168,16 +168,16 @@ const std::string ai_holder::describe_ai()
 	}
 }
 
-bool ai_holder::is_mandate_ok( ai_interface::info &/*i*/ )
+bool ai_holder::is_mandate_ok()
 {
 	DBG_AI_MANAGER << describe_ai() << "AI mandate is ok" << std::endl;
 	return true;
 }
 
-ai_interface* ai_holder::create_ai( ai_interface::info& i )
+ai_interface* ai_holder::create_ai()
 {
 	//@note: ai_params and ai_algorithm_type are supposed to be set before calling init(  );
-	return ai_manager::create_transient_ai(ai_algorithm_type_,i,team_,true);
+	return ai_manager::create_transient_ai(ai_algorithm_type_,team_,true);
 
 }
 
@@ -245,16 +245,28 @@ ai_manager::~ai_manager()
 
 
 ai_manager::AI_map_of_stacks ai_manager::ai_map_;
+ai_interface::info *ai_info_;
 
 
+void ai_manager::set_ai_info(const ai_interface::info& i)
+{
+	ai_info_ = new ai_interface::info(i);
+}
+
+
+void ai_manager::clear_ai_info(){
+	if (ai_info_ != NULL){
+		delete ai_info_;
+	}
+}
 // =======================================================================
 // EVALUATION
 // =======================================================================
 
-const std::string ai_manager::evaluate_command( ai_interface::info& i, int side, const std::string& str )
+const std::string ai_manager::evaluate_command( int side, const std::string& str )
 {
 	//insert new command into history
-	history_.push_back(ai_command_history_item(history_item_counter++,str));
+	history_.push_back(ai_command_history_item(history_item_counter_++,str));
 
 	//prune history - erase 1/2 of it if it grows too large
 	if (history_.size()>MAX_HISTORY_SIZE){
@@ -263,11 +275,11 @@ const std::string ai_manager::evaluate_command( ai_interface::info& i, int side,
 	}
 
 	if (!should_intercept(str)){
-		ai_interface& ai = get_command_ai(side,i);
+		ai_interface& ai = get_command_ai(side);
 		return ai.evaluate(str);
 	}
 
-	return internal_evaluate_command(i,side,str);
+	return internal_evaluate_command(side,str);
 }
 
 
@@ -287,13 +299,13 @@ bool ai_manager::should_intercept( const std::string& str )
 }
 
 std::deque< ai_command_history_item > ai_manager::history_;
-long ai_manager::history_item_counter = 1;
+long ai_manager::history_item_counter_ = 1;
 
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 //yes, it doesn't look nice. but it is usable.
 //to be refactored at earliest opportunity
 //@todo: extract to separate class which will use fai or lua parser
-const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, int side, const std::string& str ){
+const std::string ai_manager::internal_evaluate_command( int side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 
 	//repeat last command
@@ -301,20 +313,20 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 			//this command should not be recorded in history
 			if (!history_.empty()){
 				history_.pop_back();
-				history_item_counter--;
+				history_item_counter_--;
 			}
 
 			if (history_.empty()){
 				return "AI MANAGER: empty history";
 			}
-			return evaluate_command(i,side, history_.back().get_command());//no infinite loop since '!' commands are not present in history
+			return evaluate_command(side, history_.back().get_command());//no infinite loop since '!' commands are not present in history
 	};
 	//show last command
 	if (str=="?") {
 		//this command should not be recorded in history
 		if (!history_.empty()){
 			history_.pop_back();
-			history_item_counter--;
+			history_item_counter_--;
 		}
 
 		if (history_.empty()){
@@ -371,7 +383,7 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 			//this command should not be recorded in history
 			if (!history_.empty()){
 				history_.pop_back();
-				history_item_counter--;
+				history_item_counter_--;
 			}
 
 			int command = lexical_cast<int>(cmd.at(1));
@@ -381,7 +393,7 @@ const std::string ai_manager::internal_evaluate_command( ai_interface::info& i, 
 				j++;// this is *reverse* iterator
 			}
 			if (j!=history_.rend()){
-				return evaluate_command(i,side,j->get_command());//no infinite loop since '!' commands are not present in history
+				return evaluate_command(side,j->get_command());//no infinite loop since '!' commands are not present in history
 			}
 			return "AI MANAGER: no command with requested number found";
 		}
@@ -444,7 +456,7 @@ bool ai_manager::add_ai_for_team( int team, const std::string& ai_algorithm_type
 }
 
 
-ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, int side, bool master )
+ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, int side, bool master )
 {
 	//@todo: modify this code to use a 'factory lookup' pattern -
 	//a singleton which holds a map<string,ai_factory> of all functors which can create AIs.
@@ -453,33 +465,33 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	//: To add an AI of your own, put
 	//	if(ai_algorithm_type == "my_ai") {
 	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		return new my_ai(i,side,master);
+	//		return new my_ai(side,master);
 	//	}
 	// at the top of this function
 
 	//if(ai_algorithm_type == ai_manager::AI_TYPE_SAMPLE_AI) {
 	//  LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	return new sample_ai(i,side,master);
+	//	return new sample_ai(side,master);
 	//}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_IDLE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		return new idle_ai(i,side,master);
+		return new idle_ai(side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_FORMULA_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		return new formula_ai(i,side,master);
+		return new formula_ai(side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_DFOOL_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		return new dfool::dfool_ai(i,side,master);
+		return new dfool::dfool_ai(side,master);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_AI2) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_AI2 << "]"<< std::endl;
-		return new ai2(i,side,master);
+		return new ai2(side,master);
 	}
 
 	if (!ai_algorithm_type.empty() && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
@@ -487,7 +499,7 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << ai_manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	return new ai(i,side,master);
+	return new ai(side,master);
 }
 
 std::vector<std::string> ai_manager::get_available_ais()
@@ -563,6 +575,13 @@ const std::string& ai_manager::get_active_ai_algorithm_type_for_team( int team )
 }
 
 
+ai_interface::info& ai_manager::get_active_ai_info_for_side( int /*side*/ )
+{
+	return *ai_info_;
+}
+
+
+
 // =======================================================================
 // SET active AI parameters
 // =======================================================================
@@ -601,8 +620,8 @@ void ai_manager::set_active_ai_algorithm_type_for_team( int team, const std::str
 // PROXY
 // =======================================================================
 
-void ai_manager::play_turn( int team, ai_interface::info& i, events::observer* event_observer ){
-	ai_interface& ai_obj = get_active_ai_for_team(team, i);
+void ai_manager::play_turn( int team, events::observer* event_observer ){
+	ai_interface& ai_obj = get_active_ai_for_team(team);
 	ai_obj.user_interact().attach_handler(event_observer);
 	ai_obj.unit_recruited().attach_handler(event_observer);
 	ai_obj.unit_moved().attach_handler(event_observer);
@@ -674,30 +693,30 @@ ai_holder& ai_manager::get_or_create_active_ai_holder_for_team_without_fallback(
 // AI POINTERS
 // =======================================================================
 
-ai_interface& ai_manager::get_active_ai_for_team( int team, ai_interface::info& i )
+ai_interface& ai_manager::get_active_ai_for_team( int team )
 {
-	return get_active_ai_holder_for_team(team).get_ai_ref(i);
+	return get_active_ai_holder_for_team(team).get_ai_ref();
 }
 
 
-ai_interface& ai_manager::get_or_create_active_ai_for_team_without_fallback( int team, ai_interface::info& i, const std::string& ai_algorithm_type )
+ai_interface& ai_manager::get_or_create_active_ai_for_team_without_fallback( int team, const std::string& ai_algorithm_type )
 {
 	ai_holder& ai_holder = get_or_create_active_ai_holder_for_team_without_fallback(team,ai_algorithm_type);
-	return ai_holder.get_ai_ref(i);
+	return ai_holder.get_ai_ref();
 }
 
-ai_interface& ai_manager::get_command_ai( int team, ai_interface::info& i )
+ai_interface& ai_manager::get_command_ai( int team )
 {
 	ai_holder& ai_holder = get_command_ai_holder(team);
-	ai_interface& ai = ai_holder.get_ai_ref(i);
+	ai_interface& ai = ai_holder.get_ai_ref();
 	ai.set_team(team);
 	return ai;
 }
 
-ai_interface& ai_manager::get_fallback_ai( int team, ai_interface::info& i )
+ai_interface& ai_manager::get_fallback_ai( int team )
 {
 	ai_holder& ai_holder = get_fallback_ai_holder(team);
-	ai_interface& ai = ai_holder.get_ai_ref(i);
+	ai_interface& ai = ai_holder.get_ai_ref();
 	ai.set_team(team);
 	return ai;
 }

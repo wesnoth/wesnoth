@@ -25,7 +25,7 @@
 class ai2 : public ai_interface
 {
 public:
-	ai2(ai_interface::info& info, int side, bool master) : ai_interface(info, side, master)
+	ai2(int side, bool master) : ai_interface(side, master)
 	{}
 	virtual ~ai2() {}
 	virtual void play_turn() {}

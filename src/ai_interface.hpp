@@ -32,7 +32,7 @@ class gamemap;
 class ai_interface : public game_logic::formula_callable {
 public:
 	/** get the 1-based side number which is controlled by this AI */
-	int get_side() const { return side_;}
+	unsigned int get_side() const { return side_;}
 
 	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
 	bool get_master() const { return master_;}
@@ -80,7 +80,7 @@ public:
 	 * All derived classes should take an argument of type info& which they
 	 * should pass to this constructor.
 	 */
-	ai_interface(info& arg, int side, bool master) : info_(arg), side_(side), master_(master), last_interact_(0), user_interact_("ai_user_interact"),
+	ai_interface(int side, bool master) : side_(side), master_(master), last_interact_(0), user_interact_("ai_user_interact"),
 		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
 		enemy_attacked_("ai_enemy_attacked") {
 		add_ref(); //this class shouldn't be reference counted.
@@ -102,8 +102,8 @@ public:
 	}
 
 	/** Return a reference to the 'team' object for the AI. */
-	team& current_team() { return info_.teams[side_-1]; }
-	const team& current_team() const { return info_.teams[side_-1]; }
+	team& current_team() { return get_info().teams[get_side()-1]; }
+	const team& current_team() const { return get_info().teams[get_side()-1]; }
 
 	/** Show a diagnostic message on the screen. */
 	void diagnostic(const std::string& msg);
@@ -125,7 +125,7 @@ public:
         virtual bool manager_reap_ai() { return false ; } ;
 
         /** Set the team */
-        virtual void set_team(int team) { side_ = team; }
+        virtual void set_team(unsigned int side) { side_ = side; }
 
         /** Evaluate */
         virtual std::string evaluate(const std::string& /*str*/)
@@ -221,8 +221,8 @@ protected:
 	 * Functions to retrieve the 'info' object.
 	 * Used by derived classes to discover all necessary game information.
 	 */
-	info& get_info() { return info_; }
-	const info& get_info() const { return info_; }
+	info& get_info();
+	const info& get_info() const;
 
 	/**
 	 * Function which should be called frequently to allow the user to interact
@@ -240,9 +240,8 @@ protected:
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	virtual variant get_value(const std::string& key) const;
 private:
-	info info_;
-	int side_;
-	int master_;
+	unsigned int side_;
+	bool master_;
 	int last_interact_;
 	events::generic_event user_interact_;
 	events::generic_event unit_recruited_;

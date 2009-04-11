@@ -36,11 +36,11 @@ class ai_holder{
 public:
 	ai_holder(int team, const std::string& ai_algorithm_type);
 
-	void init(ai_interface::info& i);
+	void init();
 
 	virtual ~ai_holder();
 
-	ai_interface& get_ai_ref(ai_interface::info& i);
+	ai_interface& get_ai_ref();
 
 	const std::string& get_ai_algorithm_type() const;
 	void set_ai_algorithm_type(const std::string& ai_algorithm_type);
@@ -64,7 +64,7 @@ public:
 	const std::string describe_ai();
 
 	//not used in the moment
-	bool is_mandate_ok(ai_interface::info &i);
+	bool is_mandate_ok();
 
 private:
 	ai_interface* ai_;
@@ -75,7 +75,7 @@ private:
 	std::vector<config> ai_parameters_;
 	int team_;
 
-	ai_interface* create_ai(ai_interface::info& info);
+	ai_interface* create_ai();
 };
 
 /**
@@ -132,6 +132,19 @@ public:
 	// LIFECYCLE
 	// =======================================================================
 
+	/*
+	 * Set ai information
+	 * @param info ai_information to be set
+	 */
+	static void set_ai_info(const ai_interface::info& info);
+
+	/*
+	 * Clear ai information
+	 * Should be called in playsingle_controller's destructor
+	 */
+	static void clear_ai_info();
+
+
 protected:
 
 	ai_manager();
@@ -151,11 +164,10 @@ public:
 	 * Will intercept those commands which start with '!' and '?',
 	 * and will try to evaluate them as internal commands
 	 * @return string result of evaluation
-	 * @param i game information for the AI
 	 * @param side side number (1-based)
 	 * @param str string to evaluate
 	 */
-	static const std::string evaluate_command( ai_interface::info& i, int side, const std::string& str );
+	static const std::string evaluate_command( int side, const std::string& str );
 
 
 	// =======================================================================
@@ -192,12 +204,11 @@ public:
 	/**
 	 * Return a pointer to a new AI. it is the sole responsibility of the caller to manage its lifecycle
 	 * @param ai_algorithm_type type of AI algorithm to create
-	 * @param i game information for the AI.
 	 * @param side side number (1-based)
 	 * @param master should this AI be a master AI ? (only master AIs are allowed to fallback. if you are not sure, pick 'false' here)
 	 * @return returns the reference to the created AI
 	 */
-	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai_interface::info& i, int side, bool master = false);
+	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, int side, bool master = false);
 
 
 	/**
@@ -264,12 +275,19 @@ public:
 	/**
 	 * Get global AI parameters for active AI of the specific team
 	 * @note; Running this command may invalidate references previously returned by AI Manager
-	 * @return a reference to global ai global parameters.
+	 * @return a reference to active ai global parameters.
 	 * @note this reference may become invalid after specific ai_manager operations.
 	 * @param team side number (1-based, as in ai_interface::info)
 	 */
 	static const config& get_active_ai_global_parameters_for_team( int team );
 
+
+	/**
+	 * Get AI info for active AI of the specific team
+	 * @return a reference to active ai info
+	 * @param side side number (1-based)
+	 */
+	static ai_interface::info& get_active_ai_info_for_side( int side );
 
 	/**
 	 * Get AI memory for active AI of the specific team
@@ -353,7 +371,7 @@ public:
 	 * @param i game information for the AI
 	 * @param event_observer controller which will observe events which are produced by the AI
 	 */
-	static void play_turn(int team, ai_interface::info& i, events::observer* event_observer);
+	static void play_turn(int team, events::observer* event_observer);
 
 
 private:
@@ -361,7 +379,8 @@ private:
 	typedef std::map< int, std::stack< ai_holder > > AI_map_of_stacks;
 	static AI_map_of_stacks ai_map_;
 	static std::deque< ai_command_history_item > history_;
-	static long history_item_counter;
+	static long history_item_counter_;
+	static ai_interface::info *ai_info;
 
 
 	// =======================================================================
@@ -376,7 +395,7 @@ private:
 	 * @param str string to evaluate
 	 * @todo: rewrite this function to use a fai or lua parser
 	 */
-	static const std::string internal_evaluate_command( ai_interface::info& i, int side, const std::string& str );
+	static const std::string internal_evaluate_command( int side, const std::string& str );
 
 	/**
 	 * Determine if the command should be intercepted and evaluated as internal command
@@ -434,34 +453,25 @@ private:
 	 * @param team side number (1-based, as in ai_interface::info)
 	 * @param i game information for the AI. is used only if AI is to be created.
 	 */
-	static ai_interface& get_active_ai_for_team( int team, ai_interface::info& i );
+	static ai_interface& get_active_ai_for_team( int team );
 
 
 	/**
 	 * Get the command AI for the specified team
 	 */
-	static ai_interface& get_command_ai(int team, ai_interface::info& i);
+	static ai_interface& get_command_ai( int team );
 
 
 	/**
 	 * Get the fallback AI for the specified team
 	 */
-	static ai_interface& get_fallback_ai(int team, ai_interface::info& i);
+	static ai_interface& get_fallback_ai( int team );
 
 	/**
 	 * Get or create active ai for specified team without fallback
 	 */
-	static ai_interface& get_or_create_active_ai_for_team_without_fallback(int team, ai_interface::info& i, const std::string& ai_algorithm_type);
+	static ai_interface& get_or_create_active_ai_for_team_without_fallback( int team, const std::string& ai_algorithm_type );
 
-
-	// =======================================================================
-	// MISC
-	// =======================================================================
-
-	/**
-	 * Correct team information inside the 'info' struct
-	 */
-	static void correct_team_in_info(int team, ai_interface::info& i);
 
 };
 

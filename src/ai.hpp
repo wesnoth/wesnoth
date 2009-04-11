@@ -28,7 +28,7 @@ class formula_ai;
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public ai_interface {
 public:
-	idle_ai(info& i, int side, bool master);
+	idle_ai(int side, bool master);
 	void play_turn();
 	virtual std::string describe_self();
 };
@@ -36,7 +36,7 @@ public:
 class ai : public ai_interface {
 public:
 
-	ai(ai_interface::info& info, int side, bool master);
+	ai(int side, bool master);
 	virtual ~ai();
 
 	virtual void play_turn();
@@ -304,8 +304,6 @@ protected:
 	gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
-
-ai_interface::info info_;
 
 	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 

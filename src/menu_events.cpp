@@ -2965,14 +2965,8 @@ private:
 	void menu_handler::do_ai_formula(const std::string& str,
 			const unsigned int team_num, mouse_handler& /*mousehandler*/)
 	{
-		replay dummy_replay;
-		replay_network_sender dummy_sender(dummy_replay);
-		undo_list dummy_undo;
-
-		ai_interface::info info(*gui_, const_cast<gamemap&>(map_), units_, teams_, const_cast<gamestatus&>(status_), gamestate_);
-
 		try {
-			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(info, team_num, str));
+			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(team_num, str));
 		} catch(...) {
 			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}

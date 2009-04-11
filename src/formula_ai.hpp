@@ -115,7 +115,7 @@ private:
 
 class formula_ai : public ai {
 public:
-	explicit formula_ai(info& i, int side, bool master);
+	explicit formula_ai(int side, bool master);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
