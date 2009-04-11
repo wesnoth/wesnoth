@@ -21,8 +21,7 @@
 #ifndef LOG_HPP_INCLUDED
 #define LOG_HPP_INCLUDED
 
-#include <iosfwd>
-#include <iostream>
+#include <iostream> // needed else all files including log.hpp need to do it.
 #include <string>
 #include <vector>
 
