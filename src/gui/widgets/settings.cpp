@@ -29,7 +29,6 @@
 #include "serialization/preprocessor.hpp"
 #include "formula_string_utils.hpp"
 
-#include <iostream>
 
 namespace gui2 {
 

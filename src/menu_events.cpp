@@ -47,8 +47,6 @@
 #include "formula_string_utils.hpp"
 #include "widgets/combo.hpp"
 
-#include <iostream>
-
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 #define DBG_NG LOG_STREAM(info, engine)

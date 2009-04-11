@@ -29,7 +29,6 @@
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
 
-#include <iostream>
 #include <sys/stat.h> // for setting the permissions of the preferences file
 
 namespace {

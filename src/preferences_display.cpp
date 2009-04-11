@@ -30,7 +30,6 @@
 #include "construct_dialog.hpp"
 #include "wml_separators.hpp"
 
-#include <iostream>
 
 namespace preferences {
 

@@ -24,8 +24,6 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 
-#include <iostream>
-
 namespace gui2 {
 
 /**

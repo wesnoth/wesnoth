@@ -16,7 +16,6 @@
 #include "unit_id.hpp"
 
 #include <cassert>
-#include <iostream>
 
 #define DBG_UT LOG_STREAM(debug, engine)
 

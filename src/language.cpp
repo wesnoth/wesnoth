@@ -23,11 +23,9 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
-#include <boost/scoped_array.hpp>
-
-#include <clocale>
-#include <iostream>
 #include <stdexcept>
+#include <clocale>
+#include <boost/scoped_array.hpp>
 
 #ifdef _WIN32
 #include <windows.h>

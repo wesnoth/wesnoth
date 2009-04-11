@@ -18,8 +18,6 @@
 
 #include "gui/widgets/selectable.hpp"
 
-#include <iostream>
-
 namespace gui2 {
 
 static void callback_select_item(twidget* caller)

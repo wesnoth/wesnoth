@@ -25,9 +25,8 @@
 
 #include "log.hpp"
 
-#include <ctime>
-#include <iostream>
 #include <sstream>
+#include <ctime>
 
 namespace {
 

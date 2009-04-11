@@ -35,8 +35,6 @@
 #include "text.hpp"
 #include "video.hpp"
 
-#include <iostream>
-
 // TODO: remove when completed
 #include "stub.hpp"
 

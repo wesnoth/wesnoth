@@ -36,8 +36,6 @@
 #include "events.hpp"
 #include "save_blocker.hpp"
 
-#include <iostream>
-
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 

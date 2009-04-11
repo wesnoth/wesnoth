@@ -32,7 +32,6 @@
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
 
-#include <iostream>
 #include <queue>
 
 #define DBG_HELP LOG_STREAM(debug, help)
