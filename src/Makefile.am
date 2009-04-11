@@ -43,6 +43,7 @@ wesnoth_source = \
 	addon_checks.cpp \
 	addon_management.cpp \
 	ai.cpp \
+	ai_actions.cpp \
 	ai_attack.cpp \
 	ai_configuration.cpp \
 	ai_dfool.cpp \
