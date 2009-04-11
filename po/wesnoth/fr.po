@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2009-03-17 22:34+0100\n"
-"Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
+"PO-Revision-Date: 2009-04-11 13:48+0200\n"
+"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -620,9 +620,8 @@ msgstr "Traduction hongroise"
 
 #. [about]
 #: data/core/about.cfg:1668
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Traduction italienne"
+msgstr "Traduction islandaise"
 
 #. [about]
 #: data/core/about.cfg:1675
@@ -737,7 +736,7 @@ msgstr "Traduction valencienne (Catalan du sud)"
 #. [about]
 #: data/core/about.cfg:2132
 msgid "RACV's Translation"
-msgstr ""
+msgstr "Traduction RACV"
 
 #. [about]
 #: data/core/about.cfg:2139
@@ -2247,7 +2246,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2258,19 +2256,21 @@ msgstr ""
 "\n"
 "\n"
 "Les unités vigoureuses ont 1 PV plus 1 PV par niveau de plus que la normale "
-"et peuvent récupérer 2 PV chaque tour où elles ne combattent pas."
+"et peuvent récupérer 2 PV chaque tour où elles ne combattent pas. Qui plus "
+"est, les dégâts du poison sont réduits d'un quart."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "faible"
+msgstr "Idiot"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Les unités avec le trait idiot subissent une augmentation de 20 % de "
+"l'expérience nécessaire pour progresser d'un niveau."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2280,6 +2280,11 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Le trait idiot est très répandu chez les gobelins et autres espèces "
+"inférieures. Ce n'est pas pour rien que ces espèces sont qualifiées "
+"d'inférieures."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -2301,6 +2306,10 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Empâtées et maladroites, les unités lentes, gobelins ou autres, compensent "
+"leur vitesse réduite par une légère augmentation de leur endurance."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
@@ -2311,6 +2320,8 @@ msgstr "Faible"
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Les unités avec le trait faible subissent une réduction de 1 aux points de "
+"vie et aux dégâts au corps-à-corps."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2865,6 +2876,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Les récifs côtiers sont formés de rochers, de coraux et de sable. Cela offre "
+"à la plupart des unités terrestres un terrain bien plus praticable que les "
+"eaux peu profondes. Quant aux unités aquatiques, elles y bénéficient d'une "
+"protection exceptionnellement haute.\n"
+"\n"
+"Les ondins et les nagas recoivent 70 % de défense sur les récifs côtiers."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2912,6 +2929,12 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Parmi les obstacles que même le plus obstiné des voyageurs ne pourra "
+"franchir se trouvent les murailles de pierre et des montagnes si élevées que "
+"leurs sommets se perdent dans les nuages. En effet, même le plus féroce des "
+"trolls ne pourra s'ouvrir un chemin au travers de solides fortifications ; "
+"et les créatures volantes sont incapables de voler aux altitudes des plus "
+"hauts sommets."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -3215,7 +3238,7 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 "\n"
-"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
+"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
 "hitpoints=100"
 
 #. [heals]: id=curing
@@ -3716,7 +3739,7 @@ msgstr "Donner les instructions à l'allié"
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr "Sur quel flanc de l'ennemi faut-il se concentrer ?"
+msgstr "Sur quel flanc de l'ennemi faut-il se concentrer ?"
 
 #. [then]
 #. [else]
@@ -3762,7 +3785,7 @@ msgstr "Concentrez-vous sur la protection…"
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr "Quel flanc ami faut-il défendre ?"
+msgstr "Quel flanc ami faut-il défendre ?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
@@ -3833,9 +3856,9 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
-"Objectif : $ai_controller.side_$ally_side|_current_settings."
+"Objectif : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Comportement : $ai_controller.side_$ally_side|_current_settings."
+"Comportement : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
@@ -3844,7 +3867,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
-"$ally_leader.name (camp $ally_side|) effectue les instructions suivantes :"
+"$ally_leader.name (camp $ally_side|) effectue les instructions suivantes :"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
@@ -4077,7 +4100,7 @@ msgstr "Seuls les ondins peuvent utiliser cet objet !"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr "Est-ce que $unit.name doit ramasser le trident ?"
+msgstr "Est-ce que $unit.name doit ramasser le trident ?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
@@ -6162,7 +6185,7 @@ msgstr ""
 "nécromancie créside dans la capacité du nécromancien à maintenir ses "
 "créatures animées sans fournir d'effort continu. Un mort-vivant n'a pas "
 "besoin d'une attention constante particulière de la part du "
-"nécromancien pour la commander et pour l'entretenir : elle peut fonctionner "
+"nécromancien pour la commander et pour l'entretenir : elle peut fonctionner "
 "de manière autonome aux ordres de son maître. En de rares occasions, le "
 "nécromancien doit entretenir sa créature, mais cela n'arrive pas plus que "
 "quelques fois par année.\n"
@@ -7588,7 +7611,7 @@ msgstr "Mettre à jour les extensions"
 
 #: src/addon_management.cpp:780
 msgid "Select an add-on to update:"
-msgstr "Sélectionnez une extension à mettre à jour :"
+msgstr "Sélectionner une extension à mettre à jour :"
 
 #: src/addon_management.cpp:794
 msgid "Update all"
@@ -7602,11 +7625,9 @@ msgstr "La mise à jour a échoué"
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] ""
-"L'extension suivante n'a pas pu être téléchargée ou être mise à jour :"
+msgstr[0] "L'extension suivante n'a pas pu être téléchargée ou mise à jour :"
 msgstr[1] ""
-"Les extensions suivantes n'ont pas pu être téléchargées ou être mises à "
-"jour :"
+"Les extensions suivantes n'ont pas pu être téléchargées ou mises à jour :"
 
 #: src/addon_management.cpp:862
 msgid "Update succeeded"
@@ -7728,7 +7749,7 @@ msgstr "Extension enlevée"
 
 #: src/addon_management.cpp:1149
 msgid "Add-on could not be deleted properly:"
-msgstr "L'extension n'a pu être supprimée proprement :"
+msgstr "L'extension n'a pu être supprimée proprement :"
 
 #: src/ai.cpp:1715
 msgid "Unknown unit type : "
@@ -8018,7 +8039,7 @@ msgstr "Choisissez le niveau de difficulté :"
 
 #: src/game.cpp:1296
 msgid "Do you really want to start the server?"
-msgstr "Voulez-vous vraiment démarrer le serveur ?"
+msgstr "Voulez-vous vraiment démarrer le serveur ?"
 
 #: src/game.cpp:1297
 msgid ""
@@ -8034,7 +8055,7 @@ msgstr "Ne plus afficher"
 
 #: src/game.cpp:1372
 msgid "Error while starting server: "
-msgstr "Erreur lors du démarrage du serveur :"
+msgstr "Erreur lors du démarrage du serveur : "
 
 #: src/game.cpp:1374 src/playcampaign.cpp:95 src/playcampaign.cpp:371
 msgid "The game could not be loaded: "
@@ -8092,19 +8113,19 @@ msgstr "Plage de couleur non valide : "
 
 #: src/game_events.cpp:138
 msgid "Error: "
-msgstr "Erreur :"
+msgstr "Erreur : "
 
 #: src/game_events.cpp:141
 msgid "Warning: "
-msgstr "Avertissement :"
+msgstr "Avertissement : "
 
 #: src/game_events.cpp:144
 msgid "Debug: "
-msgstr "Debogage :"
+msgstr "Debogage : "
 
 #: src/game_events.cpp:147
 msgid "Info: "
-msgstr "Infos :"
+msgstr "Infos : "
 
 #: src/game_events.cpp:1115
 msgid "Victory:"
@@ -8731,14 +8752,16 @@ msgstr "Éjecte un joueur ou un observateur."
 #: src/menu_events.cpp:2040
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
+"Rend muet un observateur. Affiche la situation courante en l'absence "
+"d'argument."
 
 #: src/menu_events.cpp:2042
 msgid "Mute all observers."
-msgstr "Rendre tous les observateurs muets"
+msgstr "Rend tous les observateurs muets"
 
 #: src/menu_events.cpp:2052
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Envoie un message aux administrateurs qui sont en ligne"
 
 #: src/menu_events.cpp:2054
 msgid "Send an emotion or personal action in chat."
@@ -8754,7 +8777,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2063
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Change le niveau de journalisation pour un domaine particulier."
 
 #: src/menu_events.cpp:2065
 msgid "Add a nick to your ignores list."
@@ -8806,7 +8829,7 @@ msgstr "Rafraîchit l'IHM."
 
 #: src/menu_events.cpp:2211
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Passe ou reprend le contrôle d'un camp à l'IA."
 
 #: src/menu_events.cpp:2214
 msgid "Assign control of a side to a different player or observer."
@@ -8910,7 +8933,7 @@ msgstr "Basculer la superpostion des coordonnées x,y sur les hexagones."
 
 #: src/menu_events.cpp:2272
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Active/désactive l'affichage des codes de terrain sur les hexagones."
 
 #: src/menu_events.cpp:2316
 msgid "Unknown debug level: '$level'."
@@ -9053,13 +9076,12 @@ msgstr ""
 "Le pseudonyme '$nick' est réservé et ne peut être utilisé par un joueur ."
 
 #: src/multiplayer.cpp:296
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Le pseudonyme '$nick' est enregistré sur le serveur."
+msgstr "Le pseudonyme '$nick' n'est pas connu de ce serveur."
 
 #: src/multiplayer.cpp:297
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Ce serveur n'accepte pas les identifiants inconnus."
 
 #: src/multiplayer.cpp:299 src/multiplayer.cpp:301
 msgid "The nick '$nick' is registered on this server."
@@ -9070,8 +9092,8 @@ msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
-"ATTENTION : un autre client utilise déjà ce pseudonyme, vous identifier "
-"provoquera l'expulsion de ce client !"
+"ATTENTION : un autre client utilise déjà ce pseudonyme, vous identifier "
+"provoquera l'expulsion de ce client !"
 
 #: src/multiplayer.cpp:305
 msgid ""
@@ -9549,7 +9571,7 @@ msgstr "Couleur non valide"
 
 #: src/multiplayer_ui.cpp:426
 msgid "Selected user: "
-msgstr "Utilisateur sélectionné :"
+msgstr "Utilisateur sélectionné : "
 
 #: src/multiplayer_wait.cpp:135
 msgid "Leader: "
@@ -9581,7 +9603,7 @@ msgstr "Choisissez votre faction :"
 
 #: src/multiplayer_wait.cpp:308
 msgid "Starting position: "
-msgstr "Commencer le positionnement :"
+msgstr "Commencer le positionnement : "
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -10056,7 +10078,7 @@ msgstr "Aider Wesnoth en envoyant des données"
 
 #: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Type d'unité inconnu lors de la génération des traits : '$type|'"
+msgstr "Type d'unité inconnu lors de la génération des traits : '$type|'"
 
 #: src/unit.cpp:782
 msgid "Unknown unit type '$type|'"
@@ -10183,14 +10205,14 @@ msgstr "Autoriser l'envoi de résumés"
 #~ "Impossible de sauver le jeu automatiquement. Vous devez le faire "
 #~ "manuellement."
 
-#~ msgid "Mute an observer."
-#~ msgstr "Rendre un observateur muet."
-
 #~ msgid "Save Replay"
 #~ msgstr "Sauvegarder le film"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Le film ne peut pas être sauvegardé"
+
+#~ msgid "Mute an observer."
+#~ msgstr "Rendre un observateur muet."
 
 #~ msgid "Reading cache"
 #~ msgstr "Lecture du cache"
