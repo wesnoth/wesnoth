@@ -129,12 +129,12 @@ team::team_info::team_info(const config& cfg) :
 	config effective_ai_params;//Needed only to set some legacy stuff in team_info
 
 	ai_configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_params );
-	ai_manager::add_ai_for_team(side,ai_algorithm_type);
+	ai_manager::add_ai_for_side(side,ai_algorithm_type,true);
 
-	ai_manager::set_active_ai_effective_parameters_for_team(side,effective_ai_params);
-	ai_manager::set_active_ai_global_parameters_for_team(side,global_ai_parameters);
-	ai_manager::set_active_ai_memory_for_team(side,ai_memory);
-	ai_manager::set_active_ai_parameters_for_team(side,ai_parameters);
+	ai_manager::set_active_ai_effective_parameters_for_side(side,effective_ai_params);
+	ai_manager::set_active_ai_global_parameters_for_side(side,global_ai_parameters);
+	ai_manager::set_active_ai_memory_for_side(side,ai_memory);
+	ai_manager::set_active_ai_parameters_for_side(side,ai_parameters);
 
 
 	//legacy parameters
@@ -254,13 +254,13 @@ team::team_info::team_info(const config& cfg) :
 
 void team::team_info::write(config& cfg) const
 {
-	const std::vector<config> &ai_params = ai_manager::get_active_ai_parameters_for_team(side);;
+	const std::vector<config> &ai_params = ai_manager::get_active_ai_parameters_for_side(side);;
 	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
 		cfg.add_child("ai",*ai);
 	}
-	const config &ai_memory_ = ai_manager::get_active_ai_memory_for_team(side);
+	const config &ai_memory_ = ai_manager::get_active_ai_memory_for_side(side);
 	if(!ai_memory_.empty()) cfg.add_child("ai_memory", ai_memory_ );
-	cfg["ai_algorithm"] = ai_manager::get_active_ai_algorithm_type_for_team(side);
+	cfg["ai_algorithm"] = ai_manager::get_active_ai_algorithm_type_for_side(side);
 
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
@@ -498,7 +498,7 @@ size_t team::average_recruit_price()
 void team::set_time_of_day(int turn, const time_of_day& tod)
 {
 	config aiparams_effective;//current effective_parameters_for_team are to be cleared
-	const std::vector<config>& ai_params = ai_manager::get_active_ai_parameters_for_team(info_.side);
+	const std::vector<config>& ai_params = ai_manager::get_active_ai_parameters_for_side(info_.side);
 
 	for(std::vector<config>::const_iterator i = ai_params.begin(); i != ai_params.end(); ++i) {
 		const std::string& time_of_day = (*i)["time_of_day"];
@@ -538,7 +538,7 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 	info_.aggression_ = lexical_cast_default<double>(aiparams_effective["aggression"],info_.aggression_);
 	info_.caution_ = lexical_cast_default<double>(aiparams_effective["caution"],info_.caution_);
 	info_.number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(aiparams_effective["number_of_possible_recruits_to_force_recruit"],info_.number_of_possible_recruits_to_force_recruit);
-	ai_manager::set_active_ai_effective_parameters_for_team(info_.side,aiparams_effective);
+	ai_manager::set_active_ai_effective_parameters_for_side(info_.side,aiparams_effective);
 }
 
 bool team::calculate_enemies(size_t index) const
@@ -632,21 +632,21 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 
 const std::string& team::ai_algorithm() const
 {
-	return ai_manager::get_active_ai_algorithm_type_for_team(info_.side);
+	return ai_manager::get_active_ai_algorithm_type_for_side(info_.side);
 }
 
 const config& team::ai_parameters() const
 {
-	return ai_manager::get_active_ai_effective_parameters_for_team(info_.side);
+	return ai_manager::get_active_ai_effective_parameters_for_side(info_.side);
 }
 
 const config& team::ai_memory() const
 {
-	return ai_manager::get_active_ai_memory_for_team(info_.side);
+	return ai_manager::get_active_ai_memory_for_side(info_.side);
 }
 
 void team::set_ai_memory(const config& ai_mem){
-	ai_manager::set_active_ai_memory_for_team(info_.side,ai_mem);
+	ai_manager::set_active_ai_memory_for_side(info_.side,ai_mem);
 }
 
 void team::set_ai_parameters(const config::const_child_itors &ai_parameters)
@@ -655,7 +655,7 @@ void team::set_ai_parameters(const config::const_child_itors &ai_parameters)
 	foreach (const config &p, ai_parameters) {
 		ai_params.push_back(p);
 	}
-	ai_manager::set_active_ai_parameters_for_team(info_.side,ai_params);
+	ai_manager::set_active_ai_parameters_for_side(info_.side,ai_params);
 }
 
 bool team::shrouded(const map_location& loc) const

@@ -34,7 +34,7 @@
  */
 class ai_holder{
 public:
-	ai_holder(int team, const std::string& ai_algorithm_type);
+	ai_holder(int side, const std::string& ai_algorithm_type);
 
 	void init();
 
@@ -73,7 +73,7 @@ private:
 	config ai_global_parameters_;
 	config ai_memory_;
 	std::vector<config> ai_parameters_;
-	int team_;
+	int side_;
 
 	ai_interface* create_ai();
 };
@@ -102,7 +102,7 @@ private:
 };
 
 /**
-* AI Manager - class that manages AI's for all teams and manages AI redeployment
+* AI Manager - class that manages AI's for all sides and manages AI redeployment
 * This class is responsible for managing the AI lifecycle
 * It can be accessed like this:   ai_manager:foo(...);
 */
@@ -175,30 +175,30 @@ public:
 	// =======================================================================
 
 	/**
-	 * Add active AI for specified team from 'file'.
+	 * Add active AI for specified side from 'file'.
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * AI is not initialized at this point.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param file file name, follows the usual WML convention
 	 * @return success?
 	 * @retval true all ok
 	 * @retval false not all ok
 	 */
-	static bool add_ai_for_team_from_file( int team, const std::string& file );
+	static bool add_ai_for_side_from_file( int side, const std::string& file, bool replace = true );
 
 
 	/**
-	 * Add active AI for specified team from parameters.
+	 * Add active AI for specified side from parameters.
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * AI is not initialized at this point.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_algorithm_type type of AI algorithm to create
 	 * @param ai_params AI parameters
 	 * @return success?
 	 * @retval true all ok
 	 * @retval false not all ok
 	 */
-	static bool add_ai_for_team( int team, const std::string& ai_algorithm_type);
+	static bool add_ai_for_side( int side, const std::string& ai_algorithm_type, bool replace = true);
 
 
 	/**
@@ -224,19 +224,19 @@ public:
 	// =======================================================================
 
 	/**
-	 * Remove top-level AI from team
+	 * Remove top-level AI from side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static void remove_ai_for_team( int team );
+	static void remove_ai_for_side( int side );
 
 
 	/**
-	 * Remove all AIs from team
+	 * Remove all AIs from side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static void remove_all_ais_for_team( int team );
+	static void remove_all_ais_for_side( int side );
 
 
 	/**
@@ -253,60 +253,60 @@ public:
 
 
 	/**
-	 * Get AI parameters for active AI of the specific team
+	 * Get AI parameters for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to active ai parameters.
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static const std::vector<config>& get_active_ai_parameters_for_team( int team );
+	static const std::vector<config>& get_active_ai_parameters_for_side( int side );
 
 
 	/**
-	 * Get effective AI parameters for active AI of the specific team
+	 * Get effective AI parameters for active AI of the specific side
 	 * @note; Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to active ai effective parameters.
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static const config& get_active_ai_effective_parameters_for_team( int team );
+	static const config& get_active_ai_effective_parameters_for_side( int side );
 
 
 	/**
-	 * Get global AI parameters for active AI of the specific team
+	 * Get global AI parameters for active AI of the specific side
 	 * @note; Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to active ai global parameters.
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static const config& get_active_ai_global_parameters_for_team( int team );
+	static const config& get_active_ai_global_parameters_for_side( int side );
 
 
 	/**
-	 * Get AI info for active AI of the specific team
+	 * Get AI info for active AI of the specific side
 	 * @return a reference to active ai info
 	 * @param side side number (1-based)
 	 */
 	static ai_interface::info& get_active_ai_info_for_side( int side );
 
 	/**
-	 * Get AI memory for active AI of the specific team
+	 * Get AI memory for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to active ai memory.
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static const config& get_active_ai_memory_for_team( int team );
+	static const config& get_active_ai_memory_for_side( int side );
 
 
 	/**
-	 * Get AI algorithm type for active AI of the specific team
+	 * Get AI algorithm type for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to active ai algorithm_type.
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 */
-	static const std::string& get_active_ai_algorithm_type_for_team( int team );
+	static const std::string& get_active_ai_algorithm_type_for_side( int side );
 
 
 	// =======================================================================
@@ -314,51 +314,51 @@ public:
 	// =======================================================================
 
 	/**
-	 * Set AI parameters for active AI of the specific team
+	 * Set AI parameters for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_parameters ai parameters to be set
 	 */
-	static void set_active_ai_parameters_for_team( int team, const std::vector<config>& ai_parameters );
+	static void set_active_ai_parameters_for_side( int side, const std::vector<config>& ai_parameters );
 
 
 	/**
-	 * Set effective AI parameters for active AI of the specific team
+	 * Set effective AI parameters for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_effective_parameters ai effective parameters to be set
-	 * @deprecated added only for bug-for-bug compatibility with team.cpp. Will be refactored away
+	 * @deprecated added only for bug-for-bug compatibility with side.cpp. Will be refactored away
 	 */
-	static void set_active_ai_effective_parameters_for_team( int team, const config& ai_effective_parameters );
+	static void set_active_ai_effective_parameters_for_side( int side, const config& ai_effective_parameters );
 
 
 	/**
-	 * Set global AI parameters for active AI of the specific team
+	 * Set global AI parameters for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_global_parameters ai global parameters to be set
-	 * @deprecated added only for bug-for-bug compatibility with team.cpp. Will be refactored away
+	 * @deprecated added only for bug-for-bug compatibility with side.cpp. Will be refactored away
 	 */
-	static void set_active_ai_global_parameters_for_team( int team, const config& ai_global_parameters );
+	static void set_active_ai_global_parameters_for_side( int side, const config& ai_global_parameters );
 
 
 	/**
-	 * Set AI memory for active AI of the specific team
+	 * Set AI memory for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_memory ai memory to be set
-	 * @deprecated added only for bug-for-bug compatibility with team.cpp. Will be refactored away
+	 * @deprecated added only for bug-for-bug compatibility with side.cpp. Will be refactored away
 	 */
-	static void set_active_ai_memory_for_team( int team, const config& ai_memory );
+	static void set_active_ai_memory_for_side( int side, const config& ai_memory );
 
 
 	/**
-	 * Set AI algorithm type for active AI of the specific team
+	 * Set AI algorithm type for active AI of the specific side
 	 * @note: Running this command may invalidate references previously returned by AI Manager
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_algorithm_type ai algorithm type to be set
 	 */
-	static void set_active_ai_algorithm_type_for_team( int team, const std::string& ai_algorithm_type );
+	static void set_active_ai_algorithm_type_for_side( int side, const std::string& ai_algorithm_type );
 
 
 	// =======================================================================
@@ -366,12 +366,12 @@ public:
 	// =======================================================================
 
 	/**
-	 * Play a turn for the specified team using its active AI
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * Play a turn for the specified side using its active AI
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param i game information for the AI
 	 * @param event_observer controller which will observe events which are produced by the AI
 	 */
-	static void play_turn(int team, events::observer* event_observer);
+	static void play_turn(int side, events::observer* event_observer);
 
 
 private:
@@ -412,9 +412,9 @@ private:
 
 
 	/**
-	 * Get the AI stack for the specified team, create it if it doesn't exist
+	 * Get the AI stack for the specified side, create it if it doesn't exist
 	 */
-	static std::stack< ai_holder >& get_or_create_ai_stack_for_team(int team);
+	static std::stack< ai_holder >& get_or_create_ai_stack_for_side(int side);
 
 	// =======================================================================
 	// AI HOLDERS
@@ -422,55 +422,55 @@ private:
 
 
 	/**
-	 * Get active AI holder for specified team
+	 * Get active AI holder for specified side
 	 */
-	static ai_holder& get_active_ai_holder_for_team( int team );
+	static ai_holder& get_active_ai_holder_for_side( int side );
 
 	/**
-	 * Get command AI holder for specified team
+	 * Get command AI holder for specified side
 	 */
-	static ai_holder& get_command_ai_holder( int team );
+	static ai_holder& get_command_ai_holder( int side );
 
 	/**
-	 * Get fallback AI holder for specified team
+	 * Get fallback AI holder for specified side
 	 */
-	static ai_holder& get_fallback_ai_holder( int team );
+	static ai_holder& get_fallback_ai_holder( int side );
 
 	/**
-	 * Get or create active AI holder for specified team without fallback
+	 * Get or create active AI holder for specified side without fallback
 	 */
-	static ai_holder& get_or_create_active_ai_holder_for_team_without_fallback(int team, const std::string& ai_algorithm_type);
+	static ai_holder& get_or_create_active_ai_holder_for_side_without_fallback(int side, const std::string& ai_algorithm_type);
 
 	// =======================================================================
 	// AI POINTERS
 	// =======================================================================
 
 	/**
-	 * Get active AI for specified team.
+	 * Get active AI for specified side.
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * @return a reference to the active ai
 	 * @note this reference may become invalid after specific ai_manager operations.
-	 * @param team side number (1-based, as in ai_interface::info)
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param i game information for the AI. is used only if AI is to be created.
 	 */
-	static ai_interface& get_active_ai_for_team( int team );
+	static ai_interface& get_active_ai_for_side( int side );
 
 
 	/**
-	 * Get the command AI for the specified team
+	 * Get the command AI for the specified side
 	 */
-	static ai_interface& get_command_ai( int team );
+	static ai_interface& get_command_ai( int side );
 
 
 	/**
-	 * Get the fallback AI for the specified team
+	 * Get the fallback AI for the specified side
 	 */
-	static ai_interface& get_fallback_ai( int team );
+	static ai_interface& get_fallback_ai( int side );
 
 	/**
-	 * Get or create active ai for specified team without fallback
+	 * Get or create active ai for specified side without fallback
 	 */
-	static ai_interface& get_or_create_active_ai_for_team_without_fallback( int team, const std::string& ai_algorithm_type );
+	static ai_interface& get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type );
 
 
 };

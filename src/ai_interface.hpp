@@ -124,8 +124,8 @@ public:
         // Older AIs should use the default - false.
         virtual bool manager_reap_ai() { return false ; } ;
 
-        /** Set the team */
-        virtual void set_team(unsigned int side) { side_ = side; }
+        /** Set the side */
+        virtual void set_side(unsigned int side) { side_ = side; }
 
         /** Evaluate */
         virtual std::string evaluate(const std::string& /*str*/)

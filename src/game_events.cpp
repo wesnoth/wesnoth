@@ -878,7 +878,7 @@ namespace {
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
-				ai_manager::add_ai_for_team_from_file(side_num,switch_ai);
+				ai_manager::add_ai_for_side_from_file(side_num,switch_ai,true);
 			}
 			// Add shared view to current team
 			if (!share_view.empty()){
