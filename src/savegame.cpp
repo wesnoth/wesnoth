@@ -102,24 +102,29 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
 		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
 		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
-			// do not load if too old, if either the savegame or the current game
-			// has the version 'test' allow loading
-			if(!game_config::is_compatible_savegame_version(gamestate_.version)) {
-				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::message_dialog dlg(gui_, "", _("This save is from a version too old to be loaded."));
-				dlg.show();
-				throw load_game_cancelled_exception();
-			}
-
-			const int res = gui::dialog(gui_,"",
-								_("This save is from a different version of the game. Do you want to try to load it?"),
-								gui::YES_NO).show();
-			if(res == 1) {
-				throw load_game_cancelled_exception();
-			}
+			   check_version_compatibility();
 		}
 	}
 
+}
+
+void loadgame::check_version_compatibility()
+{
+	// do not load if too old, if either the savegame or the current game
+	// has the version 'test' allow loading
+	if(!game_config::is_compatible_savegame_version(gamestate_.version)) {
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(gui_, "", _("This save is from a version too old to be loaded."));
+		dlg.show();
+		throw load_game_cancelled_exception();
+	}
+
+	const int res = gui::dialog(gui_,"",
+						_("This save is from a different version of the game. Do you want to try to load it?"),
+						gui::YES_NO).show();
+	if(res == 1) {
+		throw load_game_cancelled_exception();
+	}
 }
 
 void loadgame::set_gamestate()
@@ -137,53 +142,34 @@ void loadgame::set_gamestate()
 	gamestate_.rng().seed_random(seed, calls);
 }
 
-multiplayer_loadgame::multiplayer_loadgame(display& gui, const config& game_config, game_state& gamestate)
-	: loadgame(gui, game_config, gamestate)
-{}
-
-void multiplayer_loadgame::load_game()
+void loadgame::load_multiplayer_game()
 {
 	show_dialog(false, NULL);
 
-	if (this->filename().empty())
+	if (filename_.empty())
 		throw load_game_cancelled_exception();
 
 	std::string error_log;
 	{
 		cursor::setter cur(cursor::WAIT);
-		::load_game(this->filename(), gamestate(), &error_log);
+		::load_game(filename_, gamestate_, &error_log);
 	}
 
 	if(!error_log.empty()) {
-		gui::show_error_message(gui(),
+		gui::show_error_message(gui_,
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
 		throw load_game_cancelled_exception();
 	}
 
-	if(gamestate().campaign_type != "multiplayer") {
+	if(gamestate_.campaign_type != "multiplayer") {
 		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::message_dialog dlg(gui(), "", _("This is not a multiplayer save"));
+		gui::message_dialog dlg(gui_, "", _("This is not a multiplayer save"));
 		dlg.show();
 		throw load_game_cancelled_exception();
 	}
 
-	if(gamestate().version != game_config::version) {
-		// Do not load if too old, but if either the savegame or
-		// the current game has the version 'test' allow loading.
-		if(!game_config::is_compatible_savegame_version(gamestate().version)) {
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg2(gui(), "", _("This save is from a version too old to be loaded."));
-			dlg2.show();
-			throw load_game_cancelled_exception();
-		}
-
-		const int res = gui::dialog(gui(), "",
-				_("This save is from a different version of the game. Do you want to try to load it?"),
-				gui::YES_NO).show();
-		if(res == 1)
-			throw load_game_cancelled_exception();
-	}
+	check_version_compatibility();
 }
 
 savegame::savegame(game_state& gamestate, const std::string title)

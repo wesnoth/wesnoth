@@ -1516,8 +1516,8 @@ void connect::load_game()
 {
 	if(params_.saved_game) {
 		try{
-			multiplayer_loadgame load(disp(), game_config(), state_);
-			load.load_game();
+			loadgame load(disp(), game_config(), state_);
+			load.load_multiplayer_game();
 		}
 		catch (load_game_cancelled_exception){
 			set_result(CREATE);
