@@ -1303,7 +1303,6 @@ void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_c
 
 void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) const
 {
-    config::const_child_itors af;
     const config& cfg = to_unit.get_cfg();
 
     foreach (const config &af, cfg.child_range("advancefrom"))

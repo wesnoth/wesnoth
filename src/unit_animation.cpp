@@ -683,7 +683,6 @@ unit_animation::particule::particule(
 		invalidated_(false)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
-	config::const_child_iterator itor;
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
 		foreach (const config &frame, range) {
