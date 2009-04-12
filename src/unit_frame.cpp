@@ -465,22 +465,19 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
-	bool image_fit_hex = false;
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = current_data.image_diagonal;
-		image_fit_hex = image::is_in_hex(image_loc);
 	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = current_data.image;
-		image_fit_hex = image::is_in_hex(image_loc);
 	}
 
 	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	bool result = false;
-	if(image_fit_hex && tmp_offset==0 && current_data.x == 0 && current_data.y == 0) {
+	if(tmp_offset==0 && current_data.x == 0 && current_data.y == 0 && image::is_in_hex(image_loc)) {
 		if(force || need_update()) {
 			result |= disp->invalidate(src);
 		}
