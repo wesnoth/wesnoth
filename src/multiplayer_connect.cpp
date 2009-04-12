@@ -27,6 +27,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "multiplayer_connect.hpp"
+#include "savegame.hpp"
 #include "statistics.hpp"
 #include "unit_id.hpp"
 #include "wml_separators.hpp"
@@ -1514,56 +1515,13 @@ void connect::lists_init()
 void connect::load_game()
 {
 	if(params_.saved_game) {
-		bool show_replay = false;
-		//bool cancel_orders = false;
-		const std::string game = dialogs::load_game_dialog(disp(),
-								 game_config(), &show_replay,
-								 NULL);
-
-		if(game.empty()) {
+		try{
+			multiplayer_loadgame load(disp(), game_config(), state_);
+			load.load_game();
+		}
+		catch (load_game_cancelled_exception){
 			set_result(CREATE);
 			return;
-		}
-
-		std::string error_log;
-		{
-			cursor::setter cur(cursor::WAIT);
-			::load_game(game, state_, &error_log);
-		}
-		if(!error_log.empty()) {
-			gui::show_error_message(disp(),
-					_("The file you have tried to load is corrupt: '") +
-					error_log);
-			set_result(CREATE);
-			return;
-		}
-
-		if(state_.campaign_type != "multiplayer") {
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp(), "", _("This is not a multiplayer save"));
-			dlg.show();
-			set_result(CREATE);
-			return;
-		}
-
-		if(state_.version != game_config::version) {
-			// Do not load if too old, but if either the savegame or
-			// the current game has the version 'test' allow loading.
-			if(!game_config::is_compatible_savegame_version(state_.version)) {
-				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::message_dialog dlg2(disp(), "", _("This save is from a version too old to be loaded."));
-				dlg2.show();
-				set_result(CREATE);
-				return;
-			}
-
-			const int res = gui::dialog(disp(), "",
-					_("This save is from a different version of the game. Do you want to try to load it?"),
-					gui::YES_NO).show();
-			if(res == 1) {
-				set_result(CREATE);
-				return;
-			}
 		}
 
 		level_["savegame"] = "yes";

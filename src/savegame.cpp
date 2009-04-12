@@ -46,14 +46,11 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 	bool show_replay_dialog = show_replay;
 	bool cancel_orders_dialog = cancel_orders;
 
-	if (filename_.empty())
-	{
-		//FIXME: Integrate the load_game dialog into this class
-		filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
+	//FIXME: Integrate the load_game dialog into this class
+	filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
 
-		show_replay_ = show_replay;
-		cancel_orders_ = cancel_orders;
-	}
+	show_replay_ = show_replay;
+	cancel_orders_ = cancel_orders;
 }
 
 void loadgame::load_game()
@@ -67,12 +64,14 @@ void loadgame::load_game()
 void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_orders)
 {
 	filename_ = filename;
-	show_dialog(show_replay, cancel_orders);
-	show_replay_ = show_replay;
-	cancel_orders_ = cancel_orders;
 
-	if (filename_.empty())
+	if (filename_.empty()){
 		show_dialog(show_replay, cancel_orders);
+	}
+	else{
+		show_replay_ = show_replay;
+		cancel_orders_ = cancel_orders;
+	}
 
 	if (filename_.empty())
 		throw load_game_cancelled_exception();
@@ -136,6 +135,55 @@ void loadgame::set_gamestate()
 	const unsigned calls = show_replay_ ? 0 :
 		lexical_cast_default<unsigned> (gamestate_.snapshot["random_calls"]);
 	gamestate_.rng().seed_random(seed, calls);
+}
+
+multiplayer_loadgame::multiplayer_loadgame(display& gui, const config& game_config, game_state& gamestate)
+	: loadgame(gui, game_config, gamestate)
+{}
+
+void multiplayer_loadgame::load_game()
+{
+	show_dialog(false, NULL);
+
+	if (this->filename().empty())
+		throw load_game_cancelled_exception();
+
+	std::string error_log;
+	{
+		cursor::setter cur(cursor::WAIT);
+		::load_game(this->filename(), gamestate(), &error_log);
+	}
+
+	if(!error_log.empty()) {
+		gui::show_error_message(gui(),
+				_("The file you have tried to load is corrupt: '") +
+				error_log);
+		throw load_game_cancelled_exception();
+	}
+
+	if(gamestate().campaign_type != "multiplayer") {
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(gui(), "", _("This is not a multiplayer save"));
+		dlg.show();
+		throw load_game_cancelled_exception();
+	}
+
+	if(gamestate().version != game_config::version) {
+		// Do not load if too old, but if either the savegame or
+		// the current game has the version 'test' allow loading.
+		if(!game_config::is_compatible_savegame_version(gamestate().version)) {
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::message_dialog dlg2(gui(), "", _("This save is from a version too old to be loaded."));
+			dlg2.show();
+			throw load_game_cancelled_exception();
+		}
+
+		const int res = gui::dialog(gui(), "",
+				_("This save is from a different version of the game. Do you want to try to load it?"),
+				gui::YES_NO).show();
+		if(res == 1)
+			throw load_game_cancelled_exception();
+	}
 }
 
 savegame::savegame(game_state& gamestate, const std::string title)

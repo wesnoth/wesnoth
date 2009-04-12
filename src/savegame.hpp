@@ -32,16 +32,21 @@ public:
 	loadgame(display& gui, const config& game_config, game_state& gamestate);
 	virtual ~loadgame() {}
 
-	void load_game();
+	virtual void load_game();
 	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
 	void set_gamestate();
 
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
+	const std::string filename() const { return filename_; }
 
-private:
+protected:
 	void show_dialog(bool show_replay, bool cancel_orders);
 
+	game_state& gamestate() const { return gamestate_; }
+	display& gui() const { return gui_; }
+
+private:
 	const config& game_config_;
 	display& gui_;
 
@@ -50,6 +55,14 @@ private:
 	config load_config_;
 	bool show_replay_;
 	bool cancel_orders_;
+};
+
+class multiplayer_loadgame : public loadgame
+{
+public:
+	multiplayer_loadgame(display& gui, const config& game_config, game_state& gamestate);
+
+	virtual void load_game();
 };
 
 /** The base class for all savegame stuff */
