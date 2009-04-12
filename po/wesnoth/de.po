@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2009-04-06 10:52+0100\n"
+"PO-Revision-Date: 2009-04-12 13:34+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -8861,6 +8861,8 @@ msgstr "Entfernt einen Spieler oder Beobachter."
 #: src/menu_events.cpp:2040
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
+"Deaktiviert Textnachrichten eines Beobachters. Wird der Befehl ohne "
+"zusätzliches Argument verwendet, wird der aktuelle Status ausgegeben."
 
 #: src/menu_events.cpp:2042
 msgid "Mute all observers."
@@ -8869,6 +8871,7 @@ msgstr "Entzieht allen Beobachtern ihre Redefreiheit."
 #: src/menu_events.cpp:2052
 msgid "Send a message to the server admins currently online"
 msgstr ""
+"Versendet eine Nachricht an alle momentan verfügbaren Server Administratoren"
 
 #: src/menu_events.cpp:2054
 msgid "Send an emotion or personal action in chat."

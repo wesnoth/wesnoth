@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-03-21 13:56+0100\n"
+"PO-Revision-Date: 2009-04-12 13:39+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -1132,8 +1132,8 @@ msgid ""
 msgstr ""
 "Der Pfad zur FIFO-Datei, in die Befehle für den Server geschrieben werden "
 "können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht "
-"angegeben, wird die einkompilierte Voreinstellung verwendet (Standardwert: /"
-"var/run/socket/wesnothd/socket)."
+"angegeben, wird die einkompilierte Voreinstellung verwendet (Standard: /var/"
+"run/socket/wesnothd/socket)."
 
 # type: TP
 #. type: TP
@@ -1201,7 +1201,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1210,6 +1210,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"Legt den Ordner fest, in dem der Server Wiederholungen abspeichert. "
+"(Vergesst das abschließende /! nicht) Standardmäßig wird `' verwendet, was "
+"für den Ordner steht, in dem wesnothd gestartet wurde."
 
 # type: TP
 #. type: TP
@@ -1232,7 +1235,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:149
@@ -1240,6 +1243,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden "
+"sollen. (Standard: B<false>)"
 
 # type: TP
 #. type: TP
