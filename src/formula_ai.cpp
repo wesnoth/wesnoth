@@ -2413,16 +2413,19 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_attack(const map_location unit_loc,
-		const map_location enemy_loc) const {
+bool formula_ai::can_attack(const unit_map::unit_iterator unit,
+		const unit_map::unit_iterator enemy) const {
+	if( !current_team().is_enemy(enemy->second.side()) )
+		return false;
+
         prepare_move();
 	move_map::iterator i;
 	std::pair<move_map::iterator,
 			  move_map::iterator> unit_moves;
 
-	unit_moves = srcdst_.equal_range(unit_loc);
+	unit_moves = srcdst_.equal_range(unit->first);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		map_location diff(((*i).second).vector_difference(enemy_loc));
+		map_location diff(((*i).second).vector_difference(enemy->first));
 		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
 			return true;
 		}
@@ -2441,7 +2444,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 					(me->second.has_moved() == false) ) {
 				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
 					if( (target->second.side() != team_num) &&
-							(ai->can_attack(me->first, target->first)) ) {
+							(ai->can_attack(me, target)) ) {
                                                 int res = -1000;
 
 						game_logic::map_formula_callable callable((formula_callable*) ai);

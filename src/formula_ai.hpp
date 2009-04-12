@@ -158,8 +158,9 @@ public:
 
 	void store_outcome_position(const variant& var);
 
-	// Check if given unit loc can reach attack range of enemy loc
-	bool can_attack (const map_location, const map_location) const;
+	// Check if given unit can reach and attack enemy
+	bool can_attack (const unit_map::unit_iterator unit,
+				const unit_map::unit_iterator enemy) const;
 
 	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
 
