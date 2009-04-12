@@ -46,6 +46,8 @@ dist-hook:
 	for i in $(MAN_LANG); do \
 		mkdir -p $(distdir)/$$i ; \
 		for j in $(MAN_PAGES); do \
-			$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(distdir)/$$i/$$j ; \
+			if test -f $(srcdir)/$$i/$$j; then \
+				$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(distdir)/$$i/$$j ; \
+			fi \
 		done \
 	done
