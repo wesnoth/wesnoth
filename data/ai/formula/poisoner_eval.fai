@@ -7,6 +7,8 @@ if(
 	target.max_experience - target.experience <= 8,-1,
 	index_of('regenerates',target.abilities) != -1,-1,
 	index_of('poisoned',keys(target.states)) != -1,-1,
+	find( villages, 'vill', vill = target.loc ), -1,
+	target.leader, 5,
 	1
 )
 
