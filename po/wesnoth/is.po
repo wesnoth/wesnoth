@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2009-04-11 21:25-0000\n"
+"PO-Revision-Date: 2009-04-12 01:52-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:51
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Þjappaðar vistanir"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:58
@@ -325,6 +325,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Berserk:\n"
+"Þessi árásartegund þrýstir einvígið þar til annar hvor liggur dauður niðri, "
+"eða þar til 30 umferðir hafa átt sér stað."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
@@ -1834,7 +1837,7 @@ msgstr "Hægð"
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr ""
+msgstr "Hægðar einingar hafa -1 í hreyfingu en 5% fleiri lífstig."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2799,7 +2802,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:614
 msgid "stones"
-msgstr ""
+msgstr "steinar"
 
 #: data/core/macros/abilities.cfg:616
 msgid ""
@@ -2873,7 +2876,7 @@ msgstr ""
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "árásagjörn."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
@@ -3120,7 +3123,7 @@ msgstr "Fullt af gulli"
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "Ég óska þess að þessi gullpeningur yrði skilað mér tífalt."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
@@ -3206,7 +3209,7 @@ msgstr ""
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:371
 msgid "This poor unit drank something really bad."
-msgstr ""
+msgstr "Vesalings einingin drakk eitthvað voðalega slæmt."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
@@ -4171,6 +4174,8 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Hvert skipti sem notast er við berserk mun einingin þrýsta einvígið þar til "
+"annar hvort liggur dauður niðri."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -5750,7 +5755,7 @@ msgstr ""
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
-msgstr ""
+msgstr "Til að breyta stillingunum eftirá, smelltu á umslagið í aðalvali."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -5912,7 +5917,7 @@ msgstr ""
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
-msgstr ""
+msgstr "Næsta hlið"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
@@ -6032,7 +6037,7 @@ msgstr "MP tímabil"
 
 #: src/addon_management.cpp:406
 msgid "addon_type^MP faction"
-msgstr ""
+msgstr "MP klíka"
 
 #: src/addon_management.cpp:408
 msgid "addon_type^MP map-pack"
@@ -6352,11 +6357,11 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Útrekningar meiðsla"
 
 #: src/config_adapter.cpp:159
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Tvíföld skilgrining hliðar fyrir hliðina '$side|' fannst."
 
 #: src/dialogs.cpp:121
 msgid "Advance Unit"
@@ -6683,17 +6688,19 @@ msgstr ""
 
 #: src/generate_report.cpp:96
 msgid "invisible: "
-msgstr ""
+msgstr "ósýnilegar: "
 
 #: src/generate_report.cpp:101
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
+"Þessi eining hefur verið hægð. Hún mun nú eingöngu olla helming venjulegra "
+"meiðsla og kostnað heryfinga hefur tvöfaldast."
 
 #: src/generate_report.cpp:101
 msgid "slowed: "
-msgstr ""
+msgstr "hægðar: "
 
 #: src/generate_report.cpp:106
 msgid ""
@@ -6707,15 +6714,17 @@ msgstr ""
 
 #: src/generate_report.cpp:106
 msgid "poisoned: "
-msgstr ""
+msgstr "eitraðar: "
 
 #: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
+"Þessari einingu hefur verið breytt í stein. Hún getur ekki hreyft sig né "
+"hafið árás."
 
 #: src/generate_report.cpp:113
 msgid "stone: "
-msgstr ""
+msgstr "steingerðar: "
 
 #: src/generate_report.cpp:168
 msgid "Resistances: "
@@ -6765,15 +6774,15 @@ msgstr "vs."
 
 #: src/generate_report.cpp:355
 msgid "Lawful units: "
-msgstr ""
+msgstr "Réttmætar einingar: "
 
 #: src/generate_report.cpp:357
 msgid "Neutral units: "
-msgstr ""
+msgstr "Náttúrulegar einingar: "
 
 #: src/generate_report.cpp:358
 msgid "Chaotic units: "
-msgstr ""
+msgstr "Ringulreiðar einingar: "
 
 #: src/generate_report.cpp:505
 msgid "Observers:"
@@ -8256,7 +8265,7 @@ msgstr "Leik lokið."
 
 #: src/playsingle_controller.cpp:440
 msgid "Scenario Report"
-msgstr ""
+msgstr "Skýrsla atburðarásar"
 
 #: src/playsingle_controller.cpp:442
 msgid "Victory"
@@ -8496,7 +8505,7 @@ msgstr "Hlaða inn vistaðan leik"
 
 #: src/titlescreen.cpp:447
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Sóttu herferðir, tímabil og kortasöfn, gerðar af notendum"
 
 #: src/titlescreen.cpp:449
 msgid "Start the map editor"
@@ -8602,7 +8611,7 @@ msgstr "Engin lýsing til staðar."
 
 #: src/unit_types.cpp:989
 msgid "chaotic"
-msgstr ""
+msgstr "ringulreiður"
 
 #: src/unit_types.cpp:989
 msgid "lawful"
@@ -8614,7 +8623,7 @@ msgstr "náttúrulegur"
 
 #: src/unit_types.cpp:990
 msgid "female^chaotic"
-msgstr ""
+msgstr "ringulreið"
 
 #: src/unit_types.cpp:990
 msgid "female^lawful"
