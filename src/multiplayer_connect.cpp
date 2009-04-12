@@ -626,6 +626,11 @@ config connect::side::get_config() const
 		res.append(*(parent_->era_sides_[faction_]));
 	}
 	res.append(cfg_);
+
+	// res["name"] will be overwritten below by a 1.6.0 bug
+	// so, record it here in another key
+	res["faction_name"] = res["name"];
+
 	if (cfg_.get_attribute("side").empty()
 			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
 	{

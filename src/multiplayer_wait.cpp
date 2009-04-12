@@ -450,10 +450,17 @@ void wait::generate_menu()
 			continue;
 		}
 
-		std::string description = sd["description"];
+		// 1.6.0 incorrectly uses sd["description"] which is empty
+		// std::string description = sd["description"];
+		std::string description = sd["name"];
 		const std::string faction_id = sd["id"];
 
-		t_string side_name = sd["name"];
+		// 1.6.0 incorrectly uses sd["name"] which is the player's name
+		// t_string side_name = sd["name"];
+
+		// 1.6.0 host will not send this to us, so the column will be empty
+		t_string side_name = sd["faction_name"];
+		
 		std::string leader_type = sd["type"];
 		std::string gender_id = sd["gender"];
 
