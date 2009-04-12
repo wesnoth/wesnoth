@@ -23,13 +23,120 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
+#include "unit_id.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "version.hpp"
 
 #define LOG_SAVE LOG_STREAM(info, engine)
+
+loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
+	: gamestate_(gamestate)
+	, gui_(gui)
+	, game_config_(game_config)
+{
+	gamestate_ = game_state();
+}
+
+void loadgame::show_dialog(bool show_replay, bool cancel_orders)
+{
+	bool show_replay_dialog = show_replay;
+	bool cancel_orders_dialog = cancel_orders;
+
+	if (filename_.empty())
+	{
+		//FIXME: Integrate the load_game dialog into this class
+		filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
+
+		show_replay_ = show_replay;
+		cancel_orders_ = cancel_orders;
+	}
+}
+
+void loadgame::load_game()
+{
+	show_dialog(false, false);
+
+	if(filename_ != "")
+		throw game::load_game_exception(filename_, show_replay_, cancel_orders_);
+}
+
+void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_orders)
+{
+	filename_ = filename;
+	show_dialog(show_replay, cancel_orders);
+	show_replay_ = show_replay;
+	cancel_orders_ = cancel_orders;
+
+	if (filename_.empty())
+		show_dialog(show_replay, cancel_orders);
+
+	if (filename_.empty())
+		throw load_game_cancelled_exception();
+
+	std::string error_log;
+	::read_save_file(filename_, load_config_, &error_log);
+
+	if(!error_log.empty()) {
+        try {
+		    gui::show_error_message(gui_,
+				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
+				    error_log);
+        } catch (utils::invalid_utf8_exception&) {
+		    gui::show_error_message(gui_,
+				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
+                    std::string("(UTF-8 ERROR)"));
+        }
+	}
+
+	gamestate_.difficulty = load_config_["difficulty"];
+	gamestate_.campaign_define = load_config_["campaign_define"];
+	gamestate_.campaign_type = load_config_["campaign_type"];
+	gamestate_.campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
+	gamestate_.version = load_config_["version"];
+
+	if(gamestate_.version != game_config::version) {
+		const version_info parsed_savegame_version(gamestate_.version);
+		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
+		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
+		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
+			// do not load if too old, if either the savegame or the current game
+			// has the version 'test' allow loading
+			if(!game_config::is_compatible_savegame_version(gamestate_.version)) {
+				/* GCC-3.3 needs a temp var otherwise compilation fails */
+				gui::message_dialog dlg(gui_, "", _("This save is from a version too old to be loaded."));
+				dlg.show();
+				throw load_game_cancelled_exception();
+			}
+
+			const int res = gui::dialog(gui_,"",
+								_("This save is from a different version of the game. Do you want to try to load it?"),
+								gui::YES_NO).show();
+			if(res == 1) {
+				throw load_game_cancelled_exception();
+			}
+		}
+	}
+
+}
+
+void loadgame::set_gamestate()
+{
+	gamestate_ = game_state(load_config_, show_replay_);
+
+	// Get the status of the random in the snapshot.
+	// For a replay we need to restore the start only, the replaying gets at
+	// proper location.
+	// For normal loading also restore the call count.
+	const int seed = lexical_cast_default<int>
+		(load_config_["random_seed"], 42);
+	const unsigned calls = show_replay_ ? 0 :
+		lexical_cast_default<unsigned> (gamestate_.snapshot["random_calls"]);
+	gamestate_.rng().seed_random(seed, calls);
+}
 
 savegame::savegame(game_state& gamestate, const std::string title)
 	: gamestate_(gamestate)

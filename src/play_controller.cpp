@@ -316,7 +316,8 @@ void play_controller::save_map(){
 }
 
 void play_controller::load_game(){
-	menu_handler_.load_game();
+	loadgame load(*gui_, game_config_, gamestate_);
+	load.load_game();
 }
 
 void play_controller::preferences(){

@@ -19,10 +19,38 @@
 #include "global.hpp"
 #include "show_dialog.hpp"
 #include "gamestatus.hpp"
-#include "unit_id.hpp"
 
 #include <string>
 
+struct load_game_cancelled_exception
+{
+};
+
+class loadgame
+{
+public:
+	loadgame(display& gui, const config& game_config, game_state& gamestate);
+	virtual ~loadgame() {}
+
+	void load_game();
+	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
+	void set_gamestate();
+
+	const bool show_replay() const { return show_replay_; }
+	const bool cancel_orders() const { return cancel_orders_; }
+
+private:
+	void show_dialog(bool show_replay, bool cancel_orders);
+
+	const config& game_config_;
+	display& gui_;
+
+	game_state& gamestate_;
+	std::string filename_;
+	config load_config_;
+	bool show_replay_;
+	bool cancel_orders_;
+};
 
 /** The base class for all savegame stuff */
 class savegame

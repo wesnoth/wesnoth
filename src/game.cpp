@@ -56,6 +56,7 @@
 #include "preferences_display.hpp"
 #include "addon_management.hpp"
 #include "replay.hpp"
+#include "savegame.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "thread.hpp"
@@ -871,54 +872,21 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
-	state_ = game_state();
-
-	bool show_replay = loaded_game_show_replay_;
-	bool cancel_orders = loaded_game_cancel_orders_;
-
-	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,&show_replay,&cancel_orders) : loaded_game_;
-
-	loaded_game_ = "";
-
-	if(game == "") {
-		return false;
-	}
+	loadgame load(disp(), game_config_, state_);
 
 	try {
-		//to load a save file, we first load the file in, then we re-parse game
-		//data with the save's #defines, and then we finally parse the save file,
-		//with the game data ready to go.
-
-		config cfg;
-		std::string error_log;
-		read_save_file(game,cfg,&error_log);
-		if(!error_log.empty()) {
-            try {
-			    gui::show_error_message(disp(),
-					    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
-					    error_log);
-            } catch (utils::invalid_utf8_exception&) {
-			    gui::show_error_message(disp(),
-					    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
-                        std::string("(UTF-8 ERROR)"));
-            }
-		}
+		load.load_game(loaded_game_, loaded_game_show_replay_, loaded_game_cancel_orders_);
 
 		cache_.clear_defines();
-		game_config::scoped_preproc_define dificulty_def(cfg["difficulty"]);
+		game_config::scoped_preproc_define dificulty_def(state_.difficulty);
 
-		const std::string& campaign_define = cfg["campaign_define"];
+		game_config::scoped_preproc_define campaign_define_def(state_.campaign_define, !state_.campaign_define.empty());
 
-		game_config::scoped_preproc_define campaign_define_def(campaign_define, !campaign_define.empty());
-
-		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", campaign_define.empty() && (cfg["campaign_type"] == "multiplayer"));
-
-
-		const std::vector<std::string> campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
+		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", state_.campaign_define.empty() && (state_.campaign_type == "multiplayer"));
 
 		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
 		std::deque<define_ptr> extra_defines;
-		for(std::vector<std::string>::const_iterator i = campaign_xtra_defines.begin(); i != campaign_xtra_defines.end(); ++i) {
+		for(std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin(); i != state_.campaign_xtra_defines.end(); ++i) {
 			define_ptr newdefine(new game_config::scoped_preproc_define(*i));
 			extra_defines.push_back(newdefine);
 		}
@@ -931,43 +899,11 @@ bool game_controller::load_game()
 			return false;
 		}
 
-		const std::string version = cfg["version"];
-		if(version != game_config::version) {
-			const version_info parsed_savegame_version(version);
-			if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
-			   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
-			   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
-				// do not load if too old, if either the savegame or the current game
-				// has the version 'test' allow loading
-				if(!game_config::is_compatible_savegame_version(version)) {
-					/* GCC-3.3 needs a temp var otherwise compilation fails */
-					gui::message_dialog dlg(disp(), "", _("This save is from a version too old to be loaded."));
-					dlg.show();
-					return false;
-				}
-
-				const int res = gui::dialog(disp(),"",
-									_("This save is from a different version of the game. Do you want to try to load it?"),
-									gui::YES_NO).show();
-				if(res == 1) {
-					return false;
-				}
-			}
-		}
-
 		paths_manager_.set_paths(game_config_);
-		state_ = game_state(cfg, show_replay);
+		load.set_gamestate();
 
-		// Get the status of the random in the snapshot.
-		// For a replay we need to restore the start only, the replaying gets at
-		// proper location.
-		// For normal loading also restore the call count.
-		const int seed = lexical_cast_default<int>
-			(cfg["random_seed"], 42);
-		const unsigned calls = show_replay ? 0 :
-			lexical_cast_default<unsigned> (state_.snapshot["random_calls"]);
-		state_.rng().seed_random(seed, calls);
-
+	} catch(load_game_cancelled_exception&) {
+		return false;
 	} catch(config::error& e) {
 		if(e.message.empty()) {
 			gui::show_error_message(disp(), _("The file you have tried to load is corrupt"));
@@ -999,7 +935,7 @@ bool game_controller::load_game()
 
 	if (!state_.snapshot.child("side")) {
 		// No snapshot; this is a start-of-scenario
-		if (show_replay) {
+		if (load.show_replay()) {
 			// There won't be any turns to replay, but the
 			// user gets to watch the intro sequence again ...
 			LOG_CONFIG << "replaying (start of scenario)\n";
@@ -1009,7 +945,7 @@ bool game_controller::load_game()
 		}
 	} else {
 		// We have a snapshot. But does the user want to see a replay?
-		if(show_replay) {
+		if(load.show_replay()) {
 			statistics::clear_current_scenario();
 			LOG_CONFIG << "replaying (snapshot)\n";
 		} else {
@@ -1031,7 +967,7 @@ bool game_controller::load_game()
 		}
 	}
 
-	if (cancel_orders) {
+	if (load.cancel_orders()) {
 		foreach (config &side, state_.snapshot.child_range("side"))
 		{
 			if (side["controller"] != "human") continue;

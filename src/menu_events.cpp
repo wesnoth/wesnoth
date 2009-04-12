@@ -632,15 +632,6 @@ private:
 		remove_old_auto_saves();
 	}
 
-	void menu_handler::load_game(){
-		bool show_replay = false;
-		bool cancel_orders = false;
-		const std::string game = dialogs::load_game_dialog(*gui_, game_config_, &show_replay, &cancel_orders);
-		if(game != "") {
-			throw game::load_game_exception(game,show_replay,cancel_orders);
-		}
-	}
-
 	void menu_handler::preferences()
 	{
 		preferences::show_preferences_dialog(*gui_, game_config_);
