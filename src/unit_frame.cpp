@@ -493,10 +493,9 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
 			const SDL_Rect r = {x,y,image->w,image->h};
 			// check if our underlying hexes are invalidated
-			bool rect_need_update = disp->rectangle_need_update(r);
 			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
-			if(force || need_update() || rect_need_update) {
+			if(force || need_update() || disp->rectangle_need_update(r)) {
 				// invalidate ouself to be called at redraw time
 				result |= disp->invalidate(src);
 				result |= disp->invalidate_visible_locations_in_rect(r);
