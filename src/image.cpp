@@ -47,6 +47,9 @@ image::locator::locator_finder_t locator_finder;
 image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
+// cache storing if each image fit in a hex
+image::bool_cache in_hex_info_;
+
 // const int cache_version_ = 0;
 
 std::map<image::locator,bool> image_existence_map;
@@ -93,6 +96,7 @@ void flush_cache()
 	unmasked_images_.flush();
 	brightened_images_.flush();
 	semi_brightened_images_.flush();
+	in_hex_info_.flush();
 	mini_terrain_cache.clear();
 	mini_fogged_terrain_cache.clear();
 	reversed_images_.clear();
@@ -946,14 +950,21 @@ surface get_image(const image::locator& i_locator, TYPE type)
 
 bool is_in_hex(const locator& i_locator)
 {
-	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
-	const surface image(get_image(i_locator, UNSCALED));
+	if(i_locator.in_cache(in_hex_info_)) {
+		return i_locator.locate_in_cache(in_hex_info_);
+	} else {
+		const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
+		const surface image(get_image(i_locator, UNSCALED));
 
-	bool res = in_mask_surface(image, mask);
-	//std::cout << "in_hex : " << i_locator.get_filename()
-	//		<< " " << (res ? "yes" : "no") << "\n";
+		bool res = in_mask_surface(image, mask);
+		
+		i_locator.add_to_cache(in_hex_info_, res);
 
-	return res;
+		//std::cout << "in_hex : " << i_locator.get_filename()
+		//		<< " " << (res ? "yes" : "no") << "\n";
+
+		return res;
+	}
 }
 
 
