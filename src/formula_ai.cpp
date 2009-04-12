@@ -497,7 +497,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_attacker_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_defender_stats().stones && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
+		if (bc.get_defender_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
@@ -520,7 +520,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_defender_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_attacker_stats().stones && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
+		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
@@ -924,7 +924,7 @@ private:
 			/* if tile is empty */
 			if (unit == units_.end())
 				continue;
-			/* if tile is occupied by friendly or stoned/invisible unit */
+			/* if tile is occupied by friendly or petrified/invisible unit */
 			if (! ai_.current_team().is_enemy(unit->second.side())  || 
 					unit->second.incapacitated() ||
 					unit->second.invisible(unit->first, units_, ai_.get_info().teams) )

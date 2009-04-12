@@ -689,7 +689,7 @@ public:
 	 * x,y: pixel location on screen to draw the unit
 	 * image: the image of the unit
 	 * reverse: if the unit should be flipped across the x axis
-	 * greyscale: used when the unit is stoned
+	 * greyscale: used when the unit is petrified
 	 * alpha: the merging to use with the background
 	 * blendto: blend to this colour using blend_ratio
 	 * submerged: the amount of the unit out of 1.0 that is submerged

@@ -129,7 +129,7 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return utils::string_bool(cfg_["canrecruit"]); }
-	bool incapacitated() const { return utils::string_bool(get_state("stoned"),false); }
+	bool incapacitated() const { return utils::string_bool(get_state("petrified"),false); }
 	const std::vector<std::string>& recruits() const { return recruits_; }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }

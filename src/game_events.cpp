@@ -598,16 +598,16 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(unstone,/*handler*/,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(unpetrify,/*handler*/,/*event_info*/,cfg)
 	{
 		const vconfig filter = cfg.child("filter");
 		// Store which side will need a shroud/fog update
 		std::vector<bool> clear_fog_side(teams->size(),false);
 
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(utils::string_bool(i->second.get_state("stoned"))) {
+			if(utils::string_bool(i->second.get_state("petrified"))) {
 				if(filter.null() || game_events::unit_matches_filter(i, filter)) {
-					i->second.set_state("stoned","");
+					i->second.set_state("petrified","");
 					clear_fog_side[i->second.side()-1] = true;
 				}
 			}

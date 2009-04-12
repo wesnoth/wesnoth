@@ -109,9 +109,9 @@ report generate_report(TYPE type,
 Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(utils::string_bool(u->second.get_state("stoned"))) {
-			unit_status << "misc/stone.png";
-			tooltip << _("stone: ") << _("This unit has been turned to stone. It may not move or attack.");
+		if(utils::string_bool(u->second.get_state("petrified"))) {
+			unit_status << "misc/petrified.png";
+			tooltip << _("petrified: ") << _("This unit has been petrified. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
 		}
 

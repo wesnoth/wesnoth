@@ -555,7 +555,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 		result.diagonal_in_hex = engine_val.diagonal_in_hex;
 	}
 
-	/** engine provides a string for "stoned" and "team color" modifications */
+	/** engine provides a string for "petrified" and "team color" modifications */
 		result.image_mod = current_val.image_mod +animation_val.image_mod;
 	if(primary)	result.image_mod += engine_val.image_mod;
 

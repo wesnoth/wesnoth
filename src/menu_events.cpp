@@ -290,9 +290,9 @@ namespace events{
 			row << rgb2highlight(game_config::defense_color_scale[val]);
 			row << i->first << COLUMN_SEPARATOR;
 
-			// show icons if unit is slowed, poisoned, stoned, invisible:
-			if(utils::string_bool(i->second.get_state("stoned")))
-				row << IMAGE_PREFIX << "misc/stone.png"    << IMG_TEXT_SEPARATOR;
+			// show icons if unit is slowed, poisoned, petrified, invisible:
+			if(utils::string_bool(i->second.get_state("petrified")))
+				row << IMAGE_PREFIX << "misc/petrified.png"    << IMG_TEXT_SEPARATOR;
 			if(utils::string_bool(i->second.get_state("slowed")))
 				row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
 			if(utils::string_bool(i->second.get_state("poisoned")))

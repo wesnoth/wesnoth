@@ -766,7 +766,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	set_state("poisoned","");
 	set_state("slowed","");
-	set_state("stoned","");
+	set_state("petrified","");
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
@@ -911,7 +911,7 @@ void unit::new_scenario()
 	heal_all();
 	set_state("slowed","");
 	set_state("poisoned","");
-	set_state("stoned","");
+	set_state("petrified","");
 }
 void unit::remove_temporary_modifications()
 {
@@ -1836,7 +1836,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 	params.image= absolute_image();
 
 
-	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
+	if(utils::string_bool(get_state("petrified"))) params.image_mod +="~GS()";
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 

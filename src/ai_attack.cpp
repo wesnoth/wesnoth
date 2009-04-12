@@ -625,7 +625,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 		// Attack anyone who is on the enemy side,
-		// and who is not invisible or turned to stone.
+		// and who is not invisible or petrified.
 		if(current_team().is_enemy(j->second.side()) && !j->second.incapacitated() &&
 		   j->second.invisible(j->first,units_,teams_) == false) {
 			location adjacent[6];

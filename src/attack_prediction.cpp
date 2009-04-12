@@ -65,8 +65,8 @@ struct prob_matrix
 						bool b_slows, bool b_drains);
 
 	// We lied: actually did less damage, adjust matrix.
-	void remove_stone_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
-	void remove_stone_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
+	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
+	void remove_petrify_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
 
 	// Its over, and here's the bill.
 	void extract_results(std::vector<double> summary_a[2],
@@ -352,7 +352,7 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 }
 
 // We lied: actually did less damage, adjust matrix.
-void prob_matrix::remove_stone_distortion_a(unsigned damage, unsigned slow_damage,
+void prob_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_damage,
 											unsigned b_hp)
 {
 	for (int p = 0; p < 4; p++) {
@@ -372,7 +372,7 @@ void prob_matrix::remove_stone_distortion_a(unsigned damage, unsigned slow_damag
 	}
 }
 
-void prob_matrix::remove_stone_distortion_b(unsigned damage, unsigned slow_damage,
+void prob_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_damage,
 											unsigned a_hp)
 {
 	for (int p = 0; p < 4; p++) {
@@ -680,9 +680,9 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 
 	// To simulate stoning, we set to amount which kills, and re-adjust after.
 	/** @todo FIXME: This doesn't work for rolling calculations, just first battle. */
-	if (u_.stones)
+	if (u_.petrifies)
 		a_damage = a_slow_damage = opp.u_.max_hp;
-	if (opp.u_.stones)
+	if (opp.u_.petrifies)
 		b_damage = b_slow_damage = u_.max_hp;
 
 	do {
@@ -705,10 +705,10 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 		m.dump();
 	} while (--rounds && m.dead_prob() < 0.99);
 
-	if (u_.stones)
-		m.remove_stone_distortion_a(u_.damage, u_.slow_damage, opp.u_.hp);
-	if (opp.u_.stones)
-		m.remove_stone_distortion_b(opp.u_.damage, opp.u_.slow_damage, u_.hp);
+	if (u_.petrifies)
+		m.remove_petrify_distortion_a(u_.damage, u_.slow_damage, opp.u_.hp);
+	if (opp.u_.petrifies)
+		m.remove_petrify_distortion_b(opp.u_.damage, opp.u_.slow_damage, u_.hp);
 
 	// We extract results separately, then combine.
 	m.extract_results(summary, opp.summary);
@@ -792,7 +792,7 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 
 	// Optimize the simple cases.
 	if (rounds == 1 && !u_.slows && !opp.u_.slows &&
-		!u_.drains && !opp.u_.drains && !u_.stones && !opp.u_.stones &&
+		!u_.drains && !opp.u_.drains && !u_.petrifies && !opp.u_.petrifies &&
 		summary[1].empty() && opp.summary[1].empty()) {
 		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
 			one_strike_fight(opp);

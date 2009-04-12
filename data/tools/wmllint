@@ -450,6 +450,12 @@ linechanges = (
         ("LABEL_PERSISTANT", "LABEL_PERSISTENT"),
         # Changed just before 1.5.13
         ("targetting", "targeting"),
+        # Changed just after 1.7 fork
+        ("[stone]", "[petrify]"),
+        ("[unstone]", "[unpetrifyx]"),
+        ("WEAPON_SPECIAL_STONE", "WEAPON_SPECIAL_PETRIFY"),
+        ("SPECIAL_NOTE_STONE", "SPECIAL_NOTE_PETRIFY"),
+        (".stoned", "petrified"),
         )
 
 def validate_stack(stack, filename, lineno):
@@ -553,7 +559,7 @@ notepairs = (
     ("{WEAPON_SPECIAL_BACKSTAB}", "{SPECIAL_NOTES_BACKSTAB}"),
     ("{WEAPON_SPECIAL_PLAGUE", "{SPECIAL_NOTES_PLAGUE}"),	# No } deliberately
     ("{WEAPON_SPECIAL_SLOW}", "{SPECIAL_NOTES_SLOW}"),
-    ("{WEAPON_SPECIAL_STONE}", "{SPECIAL_NOTES_STONE}"),
+    ("{WEAPON_SPECIAL_PETRIFY}", "{SPECIAL_NOTES_PETRIFY}"),
     ("{WEAPON_SPECIAL_MARKSMAN}", "{SPECIAL_NOTES_MARKSMAN}"),
     ("{WEAPON_SPECIAL_MAGICAL}", "{SPECIAL_NOTES_MAGICAL}"),
     ("{WEAPON_SPECIAL_SWARM}", "{SPECIAL_NOTES_SWARM}"),

@@ -79,7 +79,7 @@ public:
 		bool is_slowed;			/**< True if the unit is slowed at the beginning of the battle. */
 		bool slows;				/**< Attack slows opponent when it hits. */
 		bool drains;			/**< Attack drains opponent when it hits. */
-		bool stones;			/**< Attack turns opponent to stone when it hits. */
+		bool petrifies;			/**< Attack petrifies opponent when it hits. */
 		bool plagues;			/**< Attack turns opponent into a zombie when fatal. */
 		bool poisons;			/**< Attack poisons opponent when it hits. */
 		bool backstab_pos;		/**<

@@ -484,7 +484,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		// Below current hitpoints value is orange.
 		else if(hp < static_cast<int>(stats.hp)) {
 			// Stone is grey.
-			if(opp_stats.stones) {
+			if(opp_stats.petrifies) {
 				SDL_Color color = {0x9a, 0x9a, 0x9a, 0};
 				row_color = color;
 			} else {

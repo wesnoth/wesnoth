@@ -335,7 +335,7 @@ def abilities_weights()
 	['skirmisher' -> 15, 'ambush' -> 10, 'nightstalk' -> 20, 'regenerates' -> 20, 'healing' -> 15, 'curing' -> 10, 'leadership' -> 20, 'illumination' -> 15, 'teleport' -> 10, 'steadfast' -> 15 ];
 
 def weapon_specials_weights()
-	[ 'backstab' -> 20 ,'slow' -> 10 ,'berserk' -> 20 ,'stones' -> 60 ,'plague' -> 10 ,'marksman' -> 30 ,'magical' -> 40 ,'charge' -> 30 ,'drains' -> 30,  'firststrike' -> 10, 'poison' -> 25 ];
+	[ 'backstab' -> 20 ,'slow' -> 10 ,'berserk' -> 20 ,'petrifies' -> 60 ,'plague' -> 10 ,'marksman' -> 30 ,'magical' -> 40 ,'charge' -> 30 ,'drains' -> 30,  'firststrike' -> 10, 'poison' -> 25 ];
 
 def apply_abilities_weights( units_map )
 	map( 

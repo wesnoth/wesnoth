@@ -589,7 +589,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 	is_slowed(utils::string_bool(u.get_state("slowed"))),
 	slows(false),
 	drains(false),
-	stones(false),
+	petrifies(false),
 	plagues(false),
 	poisons(false),
 	backstab_pos(false),
@@ -640,7 +640,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 			opp_weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &teams, !attacking, weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
-		stones = weapon->get_special_bool("stones");
+		petrifies = weapon->get_special_bool("petrifies");
 		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && utils::string_bool(opp.get_state("poisoned")) != true;
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
@@ -727,7 +727,7 @@ void battle_context::unit_stats::dump() const
 	printf("is_slowed:	%d\n", static_cast<int>(is_slowed));
 	printf("slows:		%d\n", static_cast<int>(slows));
 	printf("drains:		%d\n", static_cast<int>(drains));
-	printf("stones:		%d\n", static_cast<int>(stones));
+	printf("petrifies:	%d\n", static_cast<int>(petrifies));
 	printf("poisons:	%d\n", static_cast<int>(poisons));
 	printf("backstab_pos:	%d\n", static_cast<int>(backstab_pos));
 	printf("swarm:		%d\n", static_cast<int>(swarm));
@@ -1064,10 +1064,10 @@ attack::attack(game_display& gui, const gamemap& map,
 						float_text += '\n';
 					}
 
-					// If the defender is turned to stone, the fight stops immediately
-					static const std::string stone_string("stone");
-					if (a_stats_->stones) {
-						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^stone") : _("stone"));
+					// If the defender is petrified, the fight stops immediately
+					static const std::string petrify_string("petrified");
+					if (a_stats_->petrifies) {
+						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^petrified") : _("petrified"));
 						float_text += '\n';
 					}
 				}
@@ -1251,14 +1251,14 @@ attack::attack(game_display& gui, const gamemap& map,
 					LOG_NG << "defender slowed\n";
 				}
 
-				// If the defender is turned to stone, the fight stops immediately
-				static const std::string stone_string("stone");
-				if (a_stats_->stones) {
-					d_.get_unit().set_state("stoned","yes");
+				// If the defender is petrified, the fight stops immediately
+				static const std::string petrify_string("petrified");
+				if (a_stats_->petrifies) {
+					d_.get_unit().set_state("petrified","yes");
 					update_def_fog = true;
 					a_.n_attacks_ = 0;
 					d_.n_attacks_ = 0;
-					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string, d_.iter_->first, a_.iter_->first));
+					DELAY_END_LEVEL(delayed_exception, game_events::fire(petrify_string, d_.iter_->first, a_.iter_->first));
 					refresh_bc();
 
 				}
@@ -1339,10 +1339,10 @@ attack::attack(game_display& gui, const gamemap& map,
 						float_text += '\n';
 					}
 
-					// If the defender is turned to stone, the fight stops immediately
-					static const std::string stone_string("stone");
-					if (d_stats_->stones) {
-						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^stone") : _("stone"));
+					// If the defender is petrified, the fight stops immediately
+					static const std::string petrify_string("petrified");
+					if (d_stats_->petrifies) {
+						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^petrified") : _("petrified"));
 						float_text += '\n';
 					}
 				}
@@ -1521,15 +1521,15 @@ attack::attack(game_display& gui, const gamemap& map,
 				}
 
 
-				// If the attacker is turned to stone, the fight stops immediately
-				static const std::string stone_string("stone");
-				if (d_stats_->stones) {
-					a_.get_unit().set_state("stoned","yes");
+				// If the attacker is petrified, the fight stops immediately
+				static const std::string petrify_string("petrified");
+				if (d_stats_->petrifies) {
+					a_.get_unit().set_state("petrified","yes");
 					update_att_fog = true;
 					d_.n_attacks_ = 0;
 					a_.n_attacks_ = 0;
 
-					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string,a_.iter_->first,d_.iter_->first));
+					DELAY_END_LEVEL(delayed_exception, game_events::fire(petrify_string,a_.iter_->first,d_.iter_->first));
 					refresh_bc();
 				}
 			}
@@ -1537,7 +1537,7 @@ attack::attack(game_display& gui, const gamemap& map,
 			--d_.n_attacks_;
 		}
 
-		// Continue the fight to death; if one of the units got stoned,
+		// Continue the fight to death; if one of the units got petrified,
 		// either n_attacks or n_defends is -1
 		if(rounds > 0 && d_.n_attacks_ == 0 && a_.n_attacks_ == 0) {
 			a_.n_attacks_ = a_.orig_attacks_;
@@ -2087,7 +2087,7 @@ namespace {
 			std::vector<team>& teams, int team,
 			const std::set<map_location>* known_units = NULL,
 			std::set<map_location>* seen_units = NULL,
-			std::set<map_location>* stoned_units = NULL)
+			std::set<map_location>* petrified_units = NULL)
 	{
 		std::vector<map_location> cleared_locations;
 
@@ -2114,13 +2114,13 @@ namespace {
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
-					if (!utils::string_bool(sighted->second.get_state("stoned")))
+					if (!utils::string_bool(sighted->second.get_state("petrified")))
 					{
 						seen_units->insert(*it);
 					}
-					else if (stoned_units != NULL)
+					else if (petrified_units != NULL)
 					{
-						stoned_units->insert(*it);
+						petrified_units->insert(*it);
 					}
 				}
 			}
@@ -2230,7 +2230,7 @@ size_t move_unit(game_display* disp,
 	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
 	std::set<map_location> seen_units;
-	std::set<map_location> stoned_units;
+	std::set<map_location> petrified_units;
 	bool discovered_unit = false;
 	bool teleport_failed = false;
 	bool should_clear_stack = false;
@@ -2282,10 +2282,10 @@ size_t move_unit(game_display* disp,
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
 				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
+							ui->second.side()-1,&known_units,&seen_units,&petrified_units);
 				} else {
 					clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
+							ui->second.side()-1,&known_units,&seen_units,&petrified_units);
 				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
@@ -2407,8 +2407,8 @@ size_t move_unit(game_display* disp,
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
 
-		for (sight_it = stoned_units.begin();
-				sight_it != stoned_units.end(); ++sight_it)
+		for (sight_it = petrified_units.begin();
+				sight_it != petrified_units.end(); ++sight_it)
 		{
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
@@ -2620,12 +2620,12 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
-			std::set<map_location> stoned_units;
+			std::set<map_location> petrified_units;
 			cleared_shroud |= clear_shroud_unit(map,units,*step,teams,team,
-				&known_units,&seen_units,&stoned_units);
+				&known_units,&seen_units,&petrified_units);
 
 			// Fire sighted events
-			// Try to keep same order (stoned units after normal units)
+			// Try to keep same order (petrified units after normal units)
 			// as with move_unit for replay
 			for (std::set<map_location>::iterator sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
@@ -2637,8 +2637,8 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
 			}
-			for (std::set<map_location>::iterator sight_it = stoned_units.begin();
-				sight_it != stoned_units.end(); ++sight_it)
+			for (std::set<map_location>::iterator sight_it = petrified_units.begin();
+				sight_it != petrified_units.end(); ++sight_it)
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());

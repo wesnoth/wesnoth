@@ -1244,7 +1244,7 @@ void ai_interface::attack_enemy(const location u,
 	}
 
 	if(get_info().units.find(target)->second.incapacitated()) {
-		LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
+		LOG_STREAM(err, ai) << "attempt to attack unit that is petrified\n";
 		return;
 	}
 	if(!get_info().units.find(u)->second.attacks_left()) {
