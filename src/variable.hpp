@@ -77,7 +77,7 @@ public:
 		typedef std::auto_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef config::all_children_iterator Itor;
-		explicit all_children_iterator(Itor i=Itor(), const config* cache_key=NULL);
+		explicit all_children_iterator(const Itor &i, const config *cache_key = NULL);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);

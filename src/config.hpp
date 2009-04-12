@@ -266,7 +266,7 @@ public:
 		typedef any_child *pointer;
 		typedef any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
-		explicit all_children_iterator(const Itor &i = Itor()): i_(i) {}
+		explicit all_children_iterator(const Itor &i): i_(i) {}
 
 		all_children_iterator &operator++() { ++i_; return *this; }
 		all_children_iterator operator++(int) { return all_children_iterator(i_++); }

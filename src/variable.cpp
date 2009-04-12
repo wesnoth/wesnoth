@@ -358,7 +358,7 @@ const t_string vconfig::expand(const std::string& key) const
 	return t_string(val);
 }
 
-vconfig::all_children_iterator::all_children_iterator(config::all_children_iterator i, const config *cache_key)
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const config *cache_key)
 : i_(i), inner_index_(0), index_offset_(0), cache_key_(cache_key)
 {
 }
