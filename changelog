@@ -14,6 +14,9 @@ Version 1.6+svn:
    * updated translations: British English, Catalan, Chinese (Simplified),
       Czech, Dutch, German, Finnish, Hebrew, Hungarian, Indonesian, Italian,
       Norwegian, Polish, Russian, Serbian, Slovak, Swedish, Turkish
+ * Multiplayer
+   * Fixed missing faction column and misplaced player's name column
+     (but faction column is still missing if the host uses 1.6.0)
  * Multiplayer server:
    * Implemented automatic saving of game replays.
    * Implemented the adminmsg command to allow players to send messages to
@@ -24,6 +27,7 @@ Version 1.6+svn:
    * Fixed handling of floating-point WML constants on localized Windows
      (impacts "submerge" animations and AI settings)
    * Fixed a bug with auto-stored WML variables not being restored correctly
+   * Fixed a crash when sighted event killed the attacked unit
 
 Version 1.6a:
  * User interface:
