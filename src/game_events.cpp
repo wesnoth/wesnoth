@@ -336,68 +336,45 @@ namespace game_events {
 		// to see if the variable matches the conditions or not.
 		const vconfig::child_list& variables = cond.get_children("variable");
 		backwards_compat = backwards_compat && variables.empty();
-		for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
-			const vconfig& values = *var;
+		assert(state_of_game);
 
+		foreach (const vconfig &values, variables)
+		{
 			const std::string name = values["name"];
-			assert(state_of_game != NULL);
 			const std::string& value = state_of_game->get_variable_const(name);
 
 			const double num_value = atof(value.c_str());
 
-			const std::string equals = values["equals"];
-			if(values.get_attribute("equals") != "" && value != equals) {
-				return false;
-			}
+#define TEST_STR_ATTR(name, test) do { \
+			if (values.has_attribute(name)) { \
+				std::string attr_str = values[name].str(); \
+				if (!(test)) return false; \
+			} \
+			} while (0)
 
-			const std::string numerical_equals = values["numerical_equals"];
-			if(values.get_attribute("numerical_equals") != "" && atof(numerical_equals.c_str()) != num_value){
-				return false;
-			}
+#define TEST_NUM_ATTR(name, test) do { \
+			if (values.has_attribute(name)) { \
+				double attr_num = atof(values[name].c_str()); \
+				if (!(test)) return false; \
+			} \
+			} while (0)
 
-			const std::string not_equals = values["not_equals"];
-			if(values.get_attribute("not_equals") != "" && not_equals == value) {
-				return false;
-			}
+			TEST_STR_ATTR("equals",                value     == attr_str);
+			TEST_NUM_ATTR("numerical_equals",      num_value == attr_num);
+			TEST_STR_ATTR("not_equals",            value     != attr_str);
+			TEST_NUM_ATTR("numerical_not_equals",  num_value != attr_num);
+			TEST_NUM_ATTR("greater_than",          num_value >  attr_num);
+			TEST_NUM_ATTR("less_than",             num_value <  attr_num);
+			TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
+			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
+			TEST_STR_ATTR("boolean_equals",
+				utils::string_bool(value) == utils::string_bool(attr_str));
+			TEST_STR_ATTR("boolean_not_equals",
+				utils::string_bool(value) != utils::string_bool(attr_str));
+			TEST_STR_ATTR("contains", value.find(attr_str) != std::string::npos);
 
-			const std::string numerical_not_equals = values["numerical_not_equals"];
-			if(values.get_attribute("numerical_not_equals") != "" && atof(numerical_not_equals.c_str()) == num_value){
-				return false;
-			}
-
-			const std::string greater_than = values["greater_than"];
-			if(values.get_attribute("greater_than") != "" && atof(greater_than.c_str()) >= num_value){
-				return false;
-			}
-
-			const std::string less_than = values["less_than"];
-			if(values.get_attribute("less_than") != "" && atof(less_than.c_str()) <= num_value){
-				return false;
-			}
-
-			const std::string greater_than_equal_to = values["greater_than_equal_to"];
-			if(values.get_attribute("greater_than_equal_to") != "" && atof(greater_than_equal_to.c_str()) > num_value){
-				return false;
-			}
-
-			const std::string less_than_equal_to = values["less_than_equal_to"];
-			if(values.get_attribute("less_than_equal_to") != "" && atof(less_than_equal_to.c_str()) < num_value) {
-				return false;
-			}
-			const std::string boolean_equals = values["boolean_equals"];
-			if(values.get_attribute("boolean_equals") != ""
-					&& (utils::string_bool(value) != utils::string_bool(boolean_equals))) {
-				return false;
-			}
-			const std::string boolean_not_equals = values["boolean_not_equals"];
-			if(values.get_attribute("boolean_not_equals") != ""
-					&& (utils::string_bool(value) == utils::string_bool(boolean_not_equals))) {
-				return false;
-			}
-			const std::string contains = values["contains"];
-			if(values.get_attribute("contains") != "" && value.find(contains) == std::string::npos) {
-				return false;
-			}
+#undef TEST_STR_ATTR
+#undef TEST_NUM_ATTR
 		}
 		return true;
 	}
