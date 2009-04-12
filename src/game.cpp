@@ -402,11 +402,7 @@ game_controller::game_controller(int argc, char** argv) :
 			jump_to_editor_ = true;
 #endif
 		} else if(val == "--dummy-locales") {
-#ifdef USE_DUMMYLOCALES
 			game_config::use_dummylocales = true;
-#else
-			std::cerr << "Option --dummy-locales ignored: support was not compiled in.\n";
-#endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");

@@ -326,10 +326,6 @@ then
 	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR2"
 fi
 
-if test x$dummylocales = xyes; then
-  AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
-fi
-
 if test x$poolalloc = xno
 then
 	CFLAGS="$CFLAGS -DDISABLE_POOL_ALLOC"
