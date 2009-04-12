@@ -3,9 +3,13 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.6/changelog
 
 Version 1.6+svn:
-  * Graphics:
+  * Campaigns
+    * Sceptre of Fire
+      * Fixed a crash at the very end of 'Caverns of Flame'.
+  
+  * Graphics
     * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman,
-      Ogre/Young Ogre, Trapper, Ranger
+      Ogre/Young Ogre, Trapper, Ranger.
 
   * Language and translations
     * New translations: Icelandic.
@@ -17,7 +21,7 @@ Version 1.6+svn:
     * Fixed missing faction column and misplaced player's name column
       (but faction column is still missing if the host uses 1.6.0)
 
-  * Miscellaneous and bugfixes:
+  * Miscellaneous and bugfixes
     * Fix a lock-up issue when no music could be played.
     * Limit the maximum length of the mp command dialog as workaround for
       a 'crash'. (Windows and Mac only.)
