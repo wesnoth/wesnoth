@@ -84,7 +84,7 @@ if INSTALLDATA
 	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; \
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; cd ..; \
 	done
-#if DUMMYLOCALES
+if DUMMYLOCALES
 	@echo "Create dummy locales beneath the Wesnoth data directory"
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
 	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
@@ -94,7 +94,7 @@ if INSTALLDATA
 	  if test -L "$$loclnk" ; then rm "$$loclnk" ; fi; \
 	  ln -s C "$$loclnk"; done; \
 	true
-#endif
+endif
 if TINYGUI
 	@echo "Shrink installed images by a factor of two."
 	(cd $(top_srcdir) && find data/core/images data/campaigns images  \( $(findfilterflags) -a -name '*.png' -and -not -name 'bar-energy-tinygui.png' -print \) ) | while read p; do \
