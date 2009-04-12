@@ -46,7 +46,6 @@
 	 *     - if true, convert the string from ANSI to UTF-8.
 	 *     - if false, reverse. (convert it from UTF-8 to ANSI)
 	 */
-	/*
 	void conv_ansi_utf8(std::string &name, bool a2u) {
 		int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
 									   name.c_str(), -1, NULL, 0);
