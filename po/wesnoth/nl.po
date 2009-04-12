@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-08 12:19+0200\n"
+"POT-Creation-Date: 2009-04-12 18:22+0200\n"
 "PO-Revision-Date: 2009-04-05 22:37+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -5993,7 +5993,7 @@ msgstr "Alternatieve Wesnoth Server"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1113
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1118
 msgid "Play a campaign"
 msgstr "Speel een veldtocht"
 
@@ -6007,7 +6007,7 @@ msgstr "OK"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:688
-#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1015
+#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Annuleren"
@@ -7020,7 +7020,7 @@ msgstr "Gezichtspunt"
 msgid "Skip animation"
 msgstr "Niet animeren"
 
-#: src/about.cpp:188 src/help.cpp:3052 src/menu_events.cpp:319
+#: src/about.cpp:188 src/help.cpp:3056 src/menu_events.cpp:319
 #: src/menu_events.cpp:346 src/statistics_dialog.cpp:110
 msgid "Close"
 msgstr "Sluiten"
@@ -7319,7 +7319,7 @@ msgstr "Versie"
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/addon_management.cpp:930 src/help.cpp:1384 src/menu_events.cpp:198
+#: src/addon_management.cpp:930 src/help.cpp:1388 src/menu_events.cpp:198
 #: src/menu_events.cpp:1008 src/menu_events.cpp:1508
 msgid "Type"
 msgstr "Type"
@@ -7618,11 +7618,11 @@ msgstr "Spel verwijderen"
 msgid "Profile"
 msgstr "Profiel"
 
-#: src/dialogs.cpp:845 src/help.cpp:1238
+#: src/dialogs.cpp:845 src/help.cpp:1242
 msgid "level"
 msgstr "rang"
 
-#: src/dialogs.cpp:858 src/help.cpp:1358
+#: src/dialogs.cpp:858 src/help.cpp:1362
 msgid "HP: "
 msgstr "HP: "
 
@@ -7630,25 +7630,25 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:865 src/help.cpp:1359
+#: src/dialogs.cpp:865 src/help.cpp:1363
 msgid "Moves: "
 msgstr "Zetten: "
 
-#: src/game.cpp:612 src/game.cpp:1442
+#: src/game.cpp:617 src/game.cpp:1447
 msgid "The Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:900 src/game.cpp:904
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:941 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:946 src/multiplayer_connect.cpp:1559
 msgid "This save is from a version too old to be loaded."
 msgstr "Dit opgeslagen spel is van een te oude versie om te laden."
 
-#: src/game.cpp:947 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1566
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7656,36 +7656,36 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/game.cpp:974 src/game.cpp:982 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
-#: src/game.cpp:972 src/game.cpp:980 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:977 src/game.cpp:985 src/multiplayer_connect.cpp:1540
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
-#: src/game.cpp:984
+#: src/game.cpp:989
 msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
-#: src/game.cpp:1071 src/game.cpp:1109
+#: src/game.cpp:1076 src/game.cpp:1114
 msgid "No campaigns are available.\n"
 msgstr "Geen veldtochten beschikbaar.\n"
 
-#: src/game.cpp:1159
+#: src/game.cpp:1164
 msgid "Difficulty"
 msgstr "Niveau"
 
-#: src/game.cpp:1160
+#: src/game.cpp:1165
 msgid "Select difficulty level:"
 msgstr "Kies het spelniveau:"
 
-#: src/game.cpp:1321
+#: src/game.cpp:1326
 msgid "Do you really want to start the server?"
 msgstr "Wil je echt de server starten?"
 
-#: src/game.cpp:1322
+#: src/game.cpp:1327
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7693,61 +7693,61 @@ msgstr ""
 "De server zal in een achtergrondproces draaien tot alle gebruikers hun "
 "verbinding hebben verbroken."
 
-#: src/game.cpp:1326
+#: src/game.cpp:1331
 msgid "Don't show again"
 msgstr "Niet nog een keer laten zien"
 
-#: src/game.cpp:1397
+#: src/game.cpp:1402
 msgid "Error while starting server: "
 msgstr "Fout tijdens het starten van de server: "
 
-#: src/game.cpp:1399 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1404 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Het spel kon niet worden geladen: "
 
-#: src/game.cpp:1401 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1406 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Fout tijdens spelen van het spel: "
 
-#: src/game.cpp:1421 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1426 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "De kaart kon niet worden geladen: "
 
-#: src/game.cpp:1487 src/game.cpp:1608
+#: src/game.cpp:1492 src/game.cpp:1613
 msgid "Error loading game configuration files: '"
 msgstr "Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1488 src/game.cpp:1609
+#: src/game.cpp:1493 src/game.cpp:1614
 msgid "' (The game will now exit)"
 msgstr "' (Het spel wordt nu gesloten)"
 
-#: src/game.cpp:1583
+#: src/game.cpp:1588
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
 msgstr[1] "De volgende add-ons bevatten fouten en konden niet worden geladen:"
 
-#: src/game.cpp:1590
+#: src/game.cpp:1595
 msgid "ERROR DETAILS:"
 msgstr "DETAILS VAN DE FOUT:"
 
-#: src/game.cpp:1618
+#: src/game.cpp:1623
 msgid "Loading data files"
 msgstr "Inlezen databestanden."
 
-#: src/game.cpp:2010
+#: src/game.cpp:2015
 msgid "Loading game configuration."
 msgstr "Inlezen van de configuratiebestanden: "
 
-#: src/game.cpp:2016
+#: src/game.cpp:2021
 msgid "Re-initialize fonts for the current language."
 msgstr "Hermaak de lettertypes voor de huidige taal. "
 
-#: src/game.cpp:2024
+#: src/game.cpp:2029
 msgid "Searching for installed add-ons."
 msgstr "Bezig met zoeken naar geïnstalleerde add-ons."
 
-#: src/game.cpp:2033
+#: src/game.cpp:2038
 msgid "Loading title screen."
 msgstr "Inladen titelscherm."
 
@@ -7908,123 +7908,123 @@ msgstr "Toeschouwers:"
 msgid "Help"
 msgstr "Help"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Eenheden met deze specifieke aanval'</header>"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Eenheden met dit vermogen'</header>"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1262
 msgid "Advances from: "
 msgstr "Promoveert van: "
 
-#: src/help.cpp:1286
+#: src/help.cpp:1290
 msgid "Advances to: "
 msgstr "Promoveert tot: "
 
-#: src/help.cpp:1316 src/help.cpp:1591 src/help.cpp:1642
+#: src/help.cpp:1320 src/help.cpp:1595 src/help.cpp:1646
 msgid "race^Miscellaneous"
 msgstr "Allerlei"
 
-#: src/help.cpp:1318
+#: src/help.cpp:1322
 msgid "Race: "
 msgstr "Ras: "
 
-#: src/help.cpp:1325
+#: src/help.cpp:1329
 msgid "Abilities: "
 msgstr "Vermogens: "
 
-#: src/help.cpp:1342
+#: src/help.cpp:1346
 msgid "Ability Upgrades: "
 msgstr "Vermogen verbeteringen: "
 
-#: src/help.cpp:1360
+#: src/help.cpp:1364
 msgid "Cost: "
 msgstr "Prijs: "
 
-#: src/help.cpp:1361
+#: src/help.cpp:1365
 msgid "Alignment: "
 msgstr "Alliantie: "
 
-#: src/help.cpp:1367
+#: src/help.cpp:1371
 msgid "Required XP: "
 msgstr "Benodigde XP: "
 
-#: src/help.cpp:1376
+#: src/help.cpp:1380
 msgid "unit help^Attacks"
 msgstr "Aanvallen"
 
-#: src/help.cpp:1383
+#: src/help.cpp:1387
 msgid "unit help^Name"
 msgstr "Naam"
 
-#: src/help.cpp:1385
+#: src/help.cpp:1389
 msgid "Strikes"
 msgstr "Aanvallen"
 
-#: src/help.cpp:1386
+#: src/help.cpp:1390
 msgid "Range"
 msgstr "Bereik"
 
-#: src/help.cpp:1387
+#: src/help.cpp:1391
 msgid "Special"
 msgstr "Speciaal"
 
-#: src/help.cpp:1437
+#: src/help.cpp:1441
 msgid "Resistances"
 msgstr "Weerstand"
 
-#: src/help.cpp:1441
+#: src/help.cpp:1445
 msgid "Attack Type"
 msgstr "Aanvalstype"
 
-#: src/help.cpp:1442
+#: src/help.cpp:1446
 msgid "Resistance"
 msgstr "Weerstand"
 
-#: src/help.cpp:1479
+#: src/help.cpp:1483
 msgid "Terrain Modifiers"
 msgstr "Terreinspecificaties"
 
-#: src/help.cpp:1483
+#: src/help.cpp:1487
 msgid "Terrain"
 msgstr "Terrein"
 
-#: src/help.cpp:1484
+#: src/help.cpp:1488
 msgid "Defense"
 msgstr "Verdediging"
 
-#: src/help.cpp:1485
+#: src/help.cpp:1489
 msgid "Movement Cost"
 msgstr "Zetten"
 
-#: src/help.cpp:1648
+#: src/help.cpp:1652
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Eenheden van dit ras'</header>"
 
-#: src/help.cpp:2582 src/menu_events.cpp:571
+#: src/help.cpp:2586 src/menu_events.cpp:571
 msgid " < Back"
 msgstr " < Terug"
 
-#: src/help.cpp:2583
+#: src/help.cpp:2587
 msgid "Forward >"
 msgstr "Volgende >"
 
-#: src/help.cpp:2695
+#: src/help.cpp:2699
 msgid "Reference to unknown topic: "
 msgstr "Verwijzing naar onbekend onderwerp: "
 
-#: src/help.cpp:2949
+#: src/help.cpp:2953
 msgid "corrupted original file"
 msgstr "gebroken origineel bestand"
 
-#: src/help.cpp:3055
+#: src/help.cpp:3059
 msgid "The Battle for Wesnoth Help"
 msgstr "Strijd om Wesnoth Help"
 
-#: src/help.cpp:3111
+#: src/help.cpp:3115
 msgid "Parse error when parsing help text: "
 msgstr "Fout bij het verwerken van de helptekst: "
 
@@ -8149,12 +8149,12 @@ msgstr "Ga naar"
 msgid "Leader"
 msgstr "Leider"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1000
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1008
 msgid "Team"
 msgstr "Team"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1011
-#: src/multiplayer_wait.cpp:529
+#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
+#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Goud"
 
@@ -8170,8 +8170,8 @@ msgstr "Eenheden"
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1012
-#: src/multiplayer_wait.cpp:533
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1020
+#: src/multiplayer_wait.cpp:540
 msgid "Income"
 msgstr "Inkomen"
 
@@ -8761,17 +8761,17 @@ msgid "Normal"
 msgstr "Normaal"
 
 #: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
-#: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:533
+#: src/multiplayer_wait.cpp:532 src/multiplayer_wait.cpp:540
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
-#: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:536
+#: src/multiplayer_wait.cpp:532 src/multiplayer_wait.cpp:543
 msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:483 src/multiplayer_connect.cpp:611
-#: src/multiplayer_wait.cpp:535
+#: src/multiplayer_wait.cpp:542
 msgid "+"
 msgstr "+"
 
@@ -8779,95 +8779,95 @@ msgstr "+"
 msgid "Default AI"
 msgstr "Standaard AI"
 
-#: src/multiplayer_connect.cpp:642
+#: src/multiplayer_connect.cpp:649
 msgid "(Vacant slot)"
 msgstr "(Vrije plaats)"
 
-#: src/multiplayer_connect.cpp:650
+#: src/multiplayer_connect.cpp:657
 msgid "Anonymous local player"
 msgstr "Anonieme lokale speler"
 
-#: src/multiplayer_connect.cpp:663
+#: src/multiplayer_connect.cpp:670
 msgid "Computer player"
 msgstr "Computerspeler"
 
-#: src/multiplayer_connect.cpp:666
+#: src/multiplayer_connect.cpp:673
 msgid "(Empty slot)"
 msgstr "(Vacante plaats)"
 
-#: src/multiplayer_connect.cpp:673
+#: src/multiplayer_connect.cpp:680
 msgid "(Reserved for $playername)"
 msgstr "(Gereserveerd voor $playername)"
 
-#: src/multiplayer_connect.cpp:803
+#: src/multiplayer_connect.cpp:810
 msgid "Reserved"
 msgstr "Gereserveerd"
 
-#: src/multiplayer_connect.cpp:804
+#: src/multiplayer_connect.cpp:811
 msgid "--give--"
 msgstr "--geef--"
 
-#: src/multiplayer_connect.cpp:926
+#: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
 msgstr "Alleen willekeurige partijen in het huidige tijdperk."
 
-#: src/multiplayer_connect.cpp:950
+#: src/multiplayer_connect.cpp:957
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Geen leider gevonden voor de factie $faction"
 
-#: src/multiplayer_connect.cpp:987
+#: src/multiplayer_connect.cpp:994
 msgid "Game Lobby: "
 msgstr "Spellobby: "
 
-#: src/multiplayer_connect.cpp:1007
+#: src/multiplayer_connect.cpp:1015
 msgid "Player/Type"
 msgstr "Speler"
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:1016
 msgid "Faction"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:1009
+#: src/multiplayer_connect.cpp:1017
 msgid "Team/Gender"
 msgstr "Team/Geslacht"
 
-#: src/multiplayer_connect.cpp:1010
+#: src/multiplayer_connect.cpp:1018
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:1014
+#: src/multiplayer_connect.cpp:1022
 msgid "I'm Ready"
 msgstr "Klaar!"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1033
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dit scenario is ongeldig vermits het geen kanten bevat"
 
-#: src/multiplayer_connect.cpp:1417
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:1419
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Lokale speler"
 
-#: src/multiplayer_connect.cpp:1420
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Computerspeler"
 
-#: src/multiplayer_connect.cpp:1421
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Niemand"
 
-#: src/multiplayer_connect.cpp:1537
+#: src/multiplayer_connect.cpp:1548
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:1665
+#: src/multiplayer_connect.cpp:1676
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1686
+#: src/multiplayer_connect.cpp:1697
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8875,7 +8875,7 @@ msgstr ""
 "Overwinning\n"
 "@Dood de vijandelijke leider(s)"
 
-#: src/multiplayer_connect.cpp:1750
+#: src/multiplayer_connect.cpp:1761
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 

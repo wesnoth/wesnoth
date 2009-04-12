@@ -110,7 +110,7 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \fBfifo_path\fP
 Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
 können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht
-angegeben, wird die einkompilierte Voreinstellung verwendet (Standardwert:
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
 /var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
@@ -129,17 +129,17 @@ Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt
 per Konvention mit `admin '.
 .TP 
 \fBreplay_save_path\fP
-The directory where the server stores game replays. (Don't forget the
-trailing /!) Defaults to `' which means the directory wesnothd was started
-in.
+Legt den Ordner fest, in dem der Server Wiederholungen
+abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird `'
+verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
 .TP 
 \fBrestart_command\fP
 Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
 »restart«\-Befehl zu starten. (Kann nur über die FIFO angefordert werden.)
 .TP 
 \fBsave_replays\fP
-Defines whether the server will automatically save replays of
-games. (default: \fBfalse\fP)
+Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
+sollen. (Standard: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-08 12:19+0200\n"
+"POT-Creation-Date: 2009-04-12 18:22+0200\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -5567,7 +5567,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1113
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1118
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Felttog"
@@ -5582,7 +5582,7 @@ msgstr "OK"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:688
-#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1015
+#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Avbryt"
@@ -6550,7 +6550,7 @@ msgstr "Forråtnelsesbrygg"
 msgid "Skip animation"
 msgstr "Utelat animasjon"
 
-#: src/about.cpp:188 src/help.cpp:3052 src/menu_events.cpp:319
+#: src/about.cpp:188 src/help.cpp:3056 src/menu_events.cpp:319
 #: src/menu_events.cpp:346 src/statistics_dialog.cpp:110
 msgid "Close"
 msgstr "Lukk"
@@ -6861,7 +6861,7 @@ msgstr "Versjon"
 msgid "Downloads"
 msgstr "Nedlastinger"
 
-#: src/addon_management.cpp:930 src/help.cpp:1384 src/menu_events.cpp:198
+#: src/addon_management.cpp:930 src/help.cpp:1388 src/menu_events.cpp:198
 #: src/menu_events.cpp:1008 src/menu_events.cpp:1508
 msgid "Type"
 msgstr "Type"
@@ -7179,11 +7179,11 @@ msgstr "Slett lagringsfil"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:845 src/help.cpp:1238
+#: src/dialogs.cpp:845 src/help.cpp:1242
 msgid "level"
 msgstr "grad"
 
-#: src/dialogs.cpp:858 src/help.cpp:1358
+#: src/dialogs.cpp:858 src/help.cpp:1362
 msgid "HP: "
 msgstr "HP: "
 
@@ -7191,26 +7191,26 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:865 src/help.cpp:1359
+#: src/dialogs.cpp:865 src/help.cpp:1363
 msgid "Moves: "
 msgstr "Flytt: "
 
-#: src/game.cpp:612 src/game.cpp:1442
+#: src/game.cpp:617 src/game.cpp:1447
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:900 src/game.cpp:904
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Advarsel: Filen du prøvde å laste er i ustand. Laster likevel.\n"
 
-#: src/game.cpp:941 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:946 src/multiplayer_connect.cpp:1559
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Det lagrede spillet er fra en annen versjon av spillet. Vil du prøve å laste "
 "det inn likevel?"
 
-#: src/game.cpp:947 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1566
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7218,103 +7218,103 @@ msgstr ""
 "Det lagrede spillet er fra en annen versjon av spillet. Vil du prøve å laste "
 "det inn likevel?"
 
-#: src/game.cpp:969 src/game.cpp:977 src/playsingle_controller.cpp:492
+#: src/game.cpp:974 src/game.cpp:982 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/game.cpp:972 src/game.cpp:980 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:977 src/game.cpp:985 src/multiplayer_connect.cpp:1540
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du prøver å laste er i ustand: '"
 
-#: src/game.cpp:984
+#: src/game.cpp:989
 msgid "File I/O Error while reading the game"
 msgstr "I/O-feil ved lesing av spillet"
 
-#: src/game.cpp:1071 src/game.cpp:1109
+#: src/game.cpp:1076 src/game.cpp:1114
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Ingen mål tilgjengelig."
 
-#: src/game.cpp:1159
+#: src/game.cpp:1164
 msgid "Difficulty"
 msgstr "Vanskelighetsgrad"
 
-#: src/game.cpp:1160
+#: src/game.cpp:1165
 msgid "Select difficulty level:"
 msgstr "Velg vanskelighetsgrad:"
 
-#: src/game.cpp:1321
+#: src/game.cpp:1326
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Vil du virkelig slette dette spillet?"
 
-#: src/game.cpp:1322
+#: src/game.cpp:1327
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1326
+#: src/game.cpp:1331
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ikke spør meg igjen!"
 
-#: src/game.cpp:1397
+#: src/game.cpp:1402
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Feil under spill: "
 
-#: src/game.cpp:1399 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1404 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke lastes: "
 
-#: src/game.cpp:1401 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1406 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Feil under spill: "
 
-#: src/game.cpp:1421 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1426 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Kartet kunne ikke lastes: "
 
-#: src/game.cpp:1487 src/game.cpp:1608
+#: src/game.cpp:1492 src/game.cpp:1613
 msgid "Error loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1488 src/game.cpp:1609
+#: src/game.cpp:1493 src/game.cpp:1614
 msgid "' (The game will now exit)"
 msgstr "' (Spillet avsluttes)"
 
-#: src/game.cpp:1583
+#: src/game.cpp:1588
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 msgstr[1] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 
-#: src/game.cpp:1590
+#: src/game.cpp:1595
 msgid "ERROR DETAILS:"
 msgstr "FEILRAPPORT:"
 
-#: src/game.cpp:1618
+#: src/game.cpp:1623
 #, fuzzy
 msgid "Loading data files"
 msgstr "Leser enhetsbeskrivelser."
 
-#: src/game.cpp:2010
+#: src/game.cpp:2015
 msgid "Loading game configuration."
 msgstr "Feil ved lasting av spillkonfigurasjon."
 
-#: src/game.cpp:2016
+#: src/game.cpp:2021
 msgid "Re-initialize fonts for the current language."
 msgstr "Installer skrift for gjeldende språk på nytt."
 
-#: src/game.cpp:2024
+#: src/game.cpp:2029
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Sender spilltillegg"
 
-#: src/game.cpp:2033
+#: src/game.cpp:2038
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
@@ -7481,7 +7481,7 @@ msgstr "Observatører:"
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 #, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
 msgstr ""
@@ -7489,7 +7489,7 @@ msgstr ""
 "\n"
 "<header>text='Sjanse for å treffe'</header>"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 #, fuzzy
 msgid "<header>text='Units having this ability'</header>"
 msgstr ""
@@ -7497,96 +7497,96 @@ msgstr ""
 "\n"
 "<header>text='Sjanse for å treffe'</header>"
 
-#: src/help.cpp:1258
+#: src/help.cpp:1262
 #, fuzzy
 msgid "Advances from: "
 msgstr "Forfremmes til: "
 
-#: src/help.cpp:1286
+#: src/help.cpp:1290
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help.cpp:1316 src/help.cpp:1591 src/help.cpp:1642
+#: src/help.cpp:1320 src/help.cpp:1595 src/help.cpp:1646
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help.cpp:1318
+#: src/help.cpp:1322
 #, fuzzy
 msgid "Race: "
 msgstr "stridskølle"
 
-#: src/help.cpp:1325
+#: src/help.cpp:1329
 msgid "Abilities: "
 msgstr "Egenskaper: "
 
-#: src/help.cpp:1342
+#: src/help.cpp:1346
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Egenskaper: "
 
-#: src/help.cpp:1360
+#: src/help.cpp:1364
 msgid "Cost: "
 msgstr "Kostnad:"
 
-#: src/help.cpp:1361
+#: src/help.cpp:1365
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/help.cpp:1367
+#: src/help.cpp:1371
 msgid "Required XP: "
 msgstr "Nødvendig XP: "
 
-#: src/help.cpp:1376
+#: src/help.cpp:1380
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1383
+#: src/help.cpp:1387
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Avslutt spillet"
 
-#: src/help.cpp:1385
+#: src/help.cpp:1389
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1386
+#: src/help.cpp:1390
 msgid "Range"
 msgstr "Rekkevidde"
 
-#: src/help.cpp:1387
+#: src/help.cpp:1391
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help.cpp:1437
+#: src/help.cpp:1441
 msgid "Resistances"
 msgstr "Motstander"
 
-#: src/help.cpp:1441
+#: src/help.cpp:1445
 msgid "Attack Type"
 msgstr "Angrepstype"
 
-#: src/help.cpp:1442
+#: src/help.cpp:1446
 msgid "Resistance"
 msgstr "Motstand"
 
-#: src/help.cpp:1479
+#: src/help.cpp:1483
 msgid "Terrain Modifiers"
 msgstr "Terrengmodifikatorer"
 
-#: src/help.cpp:1483
+#: src/help.cpp:1487
 msgid "Terrain"
 msgstr "Terreng"
 
-#: src/help.cpp:1484
+#: src/help.cpp:1488
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help.cpp:1485
+#: src/help.cpp:1489
 msgid "Movement Cost"
 msgstr "Forflytningskostnad"
 
-#: src/help.cpp:1648
+#: src/help.cpp:1652
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
@@ -7594,27 +7594,27 @@ msgstr ""
 "\n"
 "<header>text='Sjanse for å treffe'</header>"
 
-#: src/help.cpp:2582 src/menu_events.cpp:571
+#: src/help.cpp:2586 src/menu_events.cpp:571
 msgid " < Back"
 msgstr " < Tilbake"
 
-#: src/help.cpp:2583
+#: src/help.cpp:2587
 msgid "Forward >"
 msgstr "Fremover >"
 
-#: src/help.cpp:2695
+#: src/help.cpp:2699
 msgid "Reference to unknown topic: "
 msgstr "Referanse til ukjent begrep: "
 
-#: src/help.cpp:2949
+#: src/help.cpp:2953
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3055
+#: src/help.cpp:3059
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjelp med Kampen om Wesnoth"
 
-#: src/help.cpp:3111
+#: src/help.cpp:3115
 msgid "Parse error when parsing help text: "
 msgstr "Feil med hjelpeteksten: "
 
@@ -7754,12 +7754,12 @@ msgstr "Rull til"
 msgid "Leader"
 msgstr "Leder"
 
-#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1000
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1008
 msgid "Team"
 msgstr "Lag"
 
-#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1011
-#: src/multiplayer_wait.cpp:529
+#: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
+#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Gull"
 
@@ -7775,8 +7775,8 @@ msgstr "Enheter"
 msgid "Upkeep"
 msgstr "Utgifter"
 
-#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1012
-#: src/multiplayer_wait.cpp:533
+#: src/menu_events.cpp:377 src/multiplayer_connect.cpp:1020
+#: src/multiplayer_wait.cpp:540
 msgid "Income"
 msgstr "Inntekt"
 
@@ -8402,17 +8402,17 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
-#: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:533
+#: src/multiplayer_wait.cpp:532 src/multiplayer_wait.cpp:540
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
-#: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:536
+#: src/multiplayer_wait.cpp:532 src/multiplayer_wait.cpp:543
 msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:483 src/multiplayer_connect.cpp:611
-#: src/multiplayer_wait.cpp:535
+#: src/multiplayer_wait.cpp:542
 msgid "+"
 msgstr "+"
 
@@ -8420,99 +8420,99 @@ msgstr "+"
 msgid "Default AI"
 msgstr "Standard AI"
 
-#: src/multiplayer_connect.cpp:642
+#: src/multiplayer_connect.cpp:649
 msgid "(Vacant slot)"
 msgstr "(Ledig plass)"
 
-#: src/multiplayer_connect.cpp:650
+#: src/multiplayer_connect.cpp:657
 msgid "Anonymous local player"
 msgstr "Lokal spiller"
 
-#: src/multiplayer_connect.cpp:663
+#: src/multiplayer_connect.cpp:670
 msgid "Computer player"
 msgstr "Datastyrt spiller"
 
-#: src/multiplayer_connect.cpp:666
+#: src/multiplayer_connect.cpp:673
 msgid "(Empty slot)"
 msgstr "(Tom plass)"
 
-#: src/multiplayer_connect.cpp:673
+#: src/multiplayer_connect.cpp:680
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:803
+#: src/multiplayer_connect.cpp:810
 #, fuzzy
 msgid "Reserved"
 msgstr "Tidsreservoar:"
 
-#: src/multiplayer_connect.cpp:804
+#: src/multiplayer_connect.cpp:811
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:926
+#: src/multiplayer_connect.cpp:933
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Ingen ikke-tilfeldige fraksjoner i gjeldende epoke"
 
-#: src/multiplayer_connect.cpp:950
+#: src/multiplayer_connect.cpp:957
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Klarer ikke finne en passende leder for fraksjonen $faction"
 
-#: src/multiplayer_connect.cpp:987
+#: src/multiplayer_connect.cpp:994
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Vestibyle"
 
-#: src/multiplayer_connect.cpp:1007
+#: src/multiplayer_connect.cpp:1015
 msgid "Player/Type"
 msgstr "Spiller/Type"
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:1016
 msgid "Faction"
 msgstr "Fraksjon"
 
-#: src/multiplayer_connect.cpp:1009
+#: src/multiplayer_connect.cpp:1017
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Forsvarer"
 
-#: src/multiplayer_connect.cpp:1010
+#: src/multiplayer_connect.cpp:1018
 msgid "Color"
 msgstr "Farge"
 
-#: src/multiplayer_connect.cpp:1014
+#: src/multiplayer_connect.cpp:1022
 msgid "I'm Ready"
 msgstr "Klar til kamp!"
 
-#: src/multiplayer_connect.cpp:1025
+#: src/multiplayer_connect.cpp:1033
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenariet er ugyldig fordi det ikke har noen spillerplasser."
 
-#: src/multiplayer_connect.cpp:1417
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Nettverksspiller"
 
-#: src/multiplayer_connect.cpp:1419
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Lokal spiller"
 
-#: src/multiplayer_connect.cpp:1420
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Datastyrt spiller"
 
-#: src/multiplayer_connect.cpp:1421
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Ingen spiller"
 
-#: src/multiplayer_connect.cpp:1537
+#: src/multiplayer_connect.cpp:1548
 msgid "This is not a multiplayer save"
 msgstr "Dette er ikke et lagret gruppespill"
 
-#: src/multiplayer_connect.cpp:1665
+#: src/multiplayer_connect.cpp:1676
 msgid "Cannot find era $era"
 msgstr "Finner ikke epoke $era"
 
-#: src/multiplayer_connect.cpp:1686
+#: src/multiplayer_connect.cpp:1697
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8520,7 +8520,7 @@ msgstr ""
 "Seier:\n"
 "@Overvinn fiendens leder(e)"
 
-#: src/multiplayer_connect.cpp:1750
+#: src/multiplayer_connect.cpp:1761
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere skal bli med..."
 
