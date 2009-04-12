@@ -397,10 +397,15 @@ game_controller::game_controller(int argc, char** argv) :
 			jump_to_editor_ = true;
 #endif
 		} else if(val == "--dummylocales") {
-			std::cerr << "--dummylocales is deprecated use --dummy-locales instead.\n";
-			game_config::use_dummylocales = true;
+			std::cerr << "Option --dummylocales is deprecated; use --dummy-locales instead.\n";
+			goto enable_dummy_locales;
 		} else if(val == "--dummy-locales") {
+			enable_dummy_locales:
+#ifdef USE_DUMMYLOCALES
 			game_config::use_dummylocales = true;
+#else
+			std::cerr << "Option --dummy-locales ignored: support was not compiled in.\n";
+#endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");

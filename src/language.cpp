@@ -218,8 +218,7 @@ static void wesnoth_setlocale(int category, std::string slocale,
 	locale = win_locale.c_str();
 #endif
 
-#ifndef _WIN32
-	// dummy locales aren't working in windows
+#ifdef USE_DUMMYLOCALES
 	if (game_config::use_dummylocales)
 	{
 		static enum { UNINIT, NONE, PRESENT } status = UNINIT;
