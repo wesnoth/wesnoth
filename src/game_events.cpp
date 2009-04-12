@@ -1174,7 +1174,7 @@ namespace {
 		const std::string name = cfg["name"];
 		t_string& var = state_of_game->get_variable(name);
 
-		const t_string& literal = cfg.get_attribute("literal");	// no $var substitution
+		const t_string &literal = cfg.get_config()["literal"]; // no $var substitution
 		if(literal.empty() == false) {
 			var = literal;
 		}
