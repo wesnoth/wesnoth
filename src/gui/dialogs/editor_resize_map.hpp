@@ -1,15 +1,15 @@
 /* $Id$ */
 /*
-   copyright (c) 2008 - 2009 by mark de wever <koraq@xs4all.nl>
-   part of the battle for wesnoth project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2009 by Mark de Wever <koraq@xs4all.nl>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
-   this program is free software; you can redistribute it and/or modify
-   it under the terms of the gnu general public license version 2
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
    or at your option any later version.
-   this program is distributed in the hope that it will be useful,
-   but without any warranty.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
 
-   see the copying file for more details.
+   See the COPYING file for more details.
 */
 
 #ifndef GUI_DIALOGS_EDITOR_RESIZE_MAP_HPP_INCLUDED
