@@ -96,7 +96,7 @@ public:
 	const std::string& undead_variation() const {return undead_variation_;}
 
 	/** The unit name for display */
-	const std::string& name() const {return (name_);}
+	const t_string &name() const { return name_; }
 	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
 
 	/** The unit's profile */
@@ -370,7 +370,7 @@ private:
 	std::string type_;
 	const unit_race* race_;
 	std::string id_;
-	std::string name_;
+	t_string name_;
 	size_t underlying_id_;
 	t_string type_name_;
 	std::string undead_variation_;
