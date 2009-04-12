@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "game_preferences.hpp"
 #include "replay.hpp"
+#include "savegame.hpp"	//FIXME: only because of replace_space2underbar
 #include "statistics.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
@@ -42,77 +43,9 @@
 #define ERR_NG lg::err(lg::engine)
 
 #ifdef _WIN32
-#include <windows.h>
 
 static void write_player(const player_info& player, config& cfg);
 
-/**
- * conv_ansi_utf8()
- *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
- *  string &name
- *     - filename to be converted
- *  bool a2u
- *     - if true, convert the string from ANSI to UTF-8.
- *     - if false, reverse. (convert it from UTF-8 to ANSI)
- */
-void conv_ansi_utf8(std::string &name, bool a2u) {
-	int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
-                                   name.c_str(), -1, NULL, 0);
-	if (wlen == 0) return;
-	WCHAR *wc = new WCHAR[wlen];
-	if (wc == NULL) return;
-	if (MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0, name.c_str(), -1,
-                            wc, wlen) == 0) {
-		delete wc;
-		return;
-	}
-	int alen = WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-                                   NULL, 0, NULL, NULL);
-	if (alen == 0) {
-		delete wc;
-		return;
-	}
-	CHAR *ac = new CHAR[alen];
-	if (ac == NULL) {
-		delete wc;
-		return;
-	}
-	WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-                        ac, alen, NULL, NULL);
-	delete wc;
-	if (ac == NULL) {
-		return;
-	}
-	name = ac;
-	delete ac;
-
-	return;
-}
-
-void replace_underbar2space(std::string &name) {
-    LOG_NG << "conv(A2U)-from:[" << name << "]" << std::endl;
-    conv_ansi_utf8(name, true);
-    LOG_NG << "conv(A2U)-to:[" << name << "]" << std::endl;
-    LOG_NG << "replace_underbar2space-from:[" << name << "]" << std::endl;
-    std::replace(name.begin(), name.end(), '_', ' ');
-    LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
-}
-
-static void replace_space2underbar(std::string &name) {
-    LOG_NG << "conv(U2A)-from:[" << name << "]" << std::endl;
-    conv_ansi_utf8(name, false);
-    LOG_NG << "conv(U2A)-to:[" << name << "]" << std::endl;
-    LOG_NG << "replace_underbar2space-from:[" << name << "]" << std::endl;
-    std::replace(name.begin(), name.end(), ' ', '_');
-    LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
-}
-#else /* ! _WIN32 */
-void replace_underbar2space(std::string &name) {
-    std::replace(name.begin(),name.end(),'_',' ');
-}
-static void replace_space2underbar(std::string &name) {
-    std::replace(name.begin(),name.end(),' ','_');
-}
 #endif /* _WIN32 */
 
 static void extract_summary_from_config(config& cfg_save, config& cfg_summary);
@@ -755,31 +688,6 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		ERR_NG << "Could not parse file data into config\n";
 		throw game::load_game_failed();
 	}
-}
-
-static void copy_era(config &cfg)
-{
-	const config &replay_start = cfg.child("replay_start");
-	if (!replay_start) return;
-
-	const config &era = replay_start.child("era");
-	if (!era) return;
-
-	config &snapshot = cfg.child("snapshot");
-	if (!snapshot) return;
-
-	snapshot.add_child("era", era);
-}
-
-void load_game(const std::string& name, game_state& gamestate, std::string* error_log)
-{
-	log_scope("load_game");
-
-	config cfg;
-	read_save_file(name,cfg,error_log);
-	copy_era(cfg);
-
-	gamestate = game_state(cfg);
 }
 
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){

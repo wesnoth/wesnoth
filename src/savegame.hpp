@@ -43,7 +43,9 @@ public:
 
 private:
 	void show_dialog(bool show_replay, bool cancel_orders);
+	void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 	void check_version_compatibility();
+	void copy_era(config& cfg);
 
 	const config& game_config_;
 	display& gui_;
@@ -188,5 +190,12 @@ private:
 	/** Adds the player information to the starting position (= [replay_start]). */
 	virtual void before_save();
 };
+
+#ifdef _WIN32
+	void conv_ansi_utf8(std::string &name, bool a2u);
+#endif
+
+void replace_underbar2space(std::string &name);
+void replace_space2underbar(std::string &name);
 
 #endif

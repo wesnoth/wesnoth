@@ -23,15 +23,89 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
-#include "unit_id.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/parser.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "unit_id.hpp"
 #include "version.hpp"
 
 #define LOG_SAVE LOG_STREAM(info, engine)
+
+#ifdef _WIN32
+	#include <windows.h>
+
+	/**
+	 * conv_ansi_utf8()
+	 *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
+	 *  string &name
+	 *     - filename to be converted
+	 *  bool a2u
+	 *     - if true, convert the string from ANSI to UTF-8.
+	 *     - if false, reverse. (convert it from UTF-8 to ANSI)
+	 */
+	/*
+	void conv_ansi_utf8(std::string &name, bool a2u) {
+		int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
+									   name.c_str(), -1, NULL, 0);
+		if (wlen == 0) return;
+		WCHAR *wc = new WCHAR[wlen];
+		if (wc == NULL) return;
+		if (MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0, name.c_str(), -1,
+								wc, wlen) == 0) {
+			delete wc;
+			return;
+		}
+		int alen = WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
+									   NULL, 0, NULL, NULL);
+		if (alen == 0) {
+			delete wc;
+			return;
+		}
+		CHAR *ac = new CHAR[alen];
+		if (ac == NULL) {
+			delete wc;
+			return;
+		}
+		WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
+							ac, alen, NULL, NULL);
+		delete wc;
+		if (ac == NULL) {
+			return;
+		}
+		name = ac;
+		delete ac;
+
+		return;
+	}
+
+	void replace_underbar2space(std::string &name) {
+		LOG_SAVE << "conv(A2U)-from:[" << name << "]" << std::endl;
+		conv_ansi_utf8(name, true);
+		LOG_SAVE << "conv(A2U)-to:[" << name << "]" << std::endl;
+		LOG_SAVE << "replace_underbar2space-from:[" << name << "]" << std::endl;
+		std::replace(name.begin(), name.end(), '_', ' ');
+		LOG_SAVE << "replace_underbar2space-to:[" << name << "]" << std::endl;
+	}
+
+	void replace_space2underbar(std::string &name) {
+		LOG_SAVE << "conv(U2A)-from:[" << name << "]" << std::endl;
+		conv_ansi_utf8(name, false);
+		LOG_SAVE << "conv(U2A)-to:[" << name << "]" << std::endl;
+		LOG_SAVE << "replace_underbar2space-from:[" << name << "]" << std::endl;
+		std::replace(name.begin(), name.end(), ' ', '_');
+		LOG_SAVE << "replace_underbar2space-to:[" << name << "]" << std::endl;
+	}
+#else /* ! _WIN32 */
+	void replace_underbar2space(std::string &name) {
+		std::replace(name.begin(),name.end(),'_',' ');
+	}
+	void replace_space2underbar(std::string &name) {
+		std::replace(name.begin(),name.end(),' ','_');
+	}
+#endif /* _WIN32 */
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
 	: game_config_(game_config)
@@ -108,6 +182,35 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 
 }
 
+void loadgame::read_save_file(const std::string& name, config& cfg, std::string* error_log)
+{
+	std::string modified_name = name;
+	::replace_space2underbar(modified_name);
+
+	// Try reading the file both with and without underscores
+	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
+	if (file_stream->fail())
+		file_stream = istream_file(get_saves_dir() + "/" + name);
+
+	cfg.clear();
+	try{
+		if(is_gzip_file(name)) {
+			read_gz(cfg, *file_stream, error_log);
+		} else {
+			detect_format_and_read(cfg, *file_stream, error_log);
+		}
+	} catch (config::error &err)
+	{
+		LOG_SAVE << err.message;
+		throw game::load_game_failed();
+	}
+
+	if(cfg.empty()) {
+		LOG_SAVE << "Could not parse file data into config\n";
+		throw game::load_game_failed();
+	}
+}
+
 void loadgame::check_version_compatibility()
 {
 	// do not load if too old, if either the savegame or the current game
@@ -152,7 +255,12 @@ void loadgame::load_multiplayer_game()
 	std::string error_log;
 	{
 		cursor::setter cur(cursor::WAIT);
-		::load_game(filename_, gamestate_, &error_log);
+		log_scope("load_game");
+
+		read_save_file(filename_, load_config_, &error_log);
+		copy_era(load_config_);
+
+		gamestate_ = game_state(load_config_);
 	}
 
 	if(!error_log.empty()) {
@@ -170,6 +278,20 @@ void loadgame::load_multiplayer_game()
 	}
 
 	check_version_compatibility();
+}
+
+void loadgame::copy_era(config &cfg)
+{
+	const config &replay_start = cfg.child("replay_start");
+	if (!replay_start) return;
+
+	const config &era = replay_start.child("era");
+	if (!era) return;
+
+	config &snapshot = cfg.child("snapshot");
+	if (!snapshot) return;
+
+	snapshot.add_child("era", era);
 }
 
 savegame::savegame(game_state& gamestate, const std::string title)
