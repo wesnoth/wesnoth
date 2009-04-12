@@ -2327,6 +2327,14 @@ bool display::rectangle_need_update(const SDL_Rect& rect) const
 	return false;
 }
 
+bool display::hex_need_update(const map_location& loc) const
+{
+	if(invalidateAll_)
+		return true;
+
+	return invalidated_.find(loc) != invalidated_.end();
+}
+
 void display::invalidate_animations() {
 	if (preferences::animate_map()) {
 		rect_of_hexes hexes = get_visible_hexes();

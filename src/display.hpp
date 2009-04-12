@@ -276,6 +276,9 @@ public:
 	/** check if an hexes under the rectangle is invalidated */
 	bool rectangle_need_update(const SDL_Rect& rect) const;
 
+	/** check if an hex is invalidated */
+	bool hex_need_update(const map_location& loc) const;
+
 	/**
 	 * Function to invalidate animated terrains which may have changed.
 	 */
