@@ -20,7 +20,7 @@ findsconscript=(cd $(top_srcdir) && find . -name "SConscript" -print )
 findsconstruct=(cd $(top_srcdir) && find . -name "SConstruct" -print )
 findsconsdir=(cd $(top_srcdir) && find scons $(findfilterflags) -print )
 # List all files required for cmake build recipe
-findcmakelists=(cd $(top_srcdir) && find . -name "CMakeLists.txt" -print )
+findcmakelists=(cd $(top_srcdir) && find . -name "CMakeLists.txt" -print -o -name config.h.cmake -print )
 findcmakedir=(cd $(top_srcdir) && find cmake $(findfilterflags) -print )
 findcmakeextrafiles=(cd $(top_srcdir) && find po -name "po-update.sh" -print -o -name "pot-update.sh.in" -print -o -name "LINGUAS" -print )
 
