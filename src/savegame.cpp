@@ -150,7 +150,7 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 		throw load_game_cancelled_exception();
 
 	std::string error_log;
-	::read_save_file(filename_, load_config_, &error_log);
+	read_save_file(filename_, load_config_, &error_log);
 
 	if(!error_log.empty()) {
         try {
@@ -184,7 +184,7 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 void loadgame::read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
 	std::string modified_name = name;
-	::replace_space2underbar(modified_name);
+	replace_space2underbar(modified_name);
 
 	// Try reading the file both with and without underscores
 	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
