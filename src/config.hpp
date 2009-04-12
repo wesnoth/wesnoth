@@ -108,7 +108,7 @@ public:
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
-		explicit child_iterator(const Itor &i = Itor()): i_(i) {}
+		explicit child_iterator(const Itor &i): i_(i) {}
 
 		child_iterator &operator++() { ++i_; return *this; }
 		child_iterator operator++(int) { return child_iterator(i_++); }
