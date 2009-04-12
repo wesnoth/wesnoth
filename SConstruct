@@ -62,6 +62,7 @@ opts.AddVariables(
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
+    BoolVariable('dummy_locales','enable support for dummy locales',False),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', ".wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('destdir', 'prefix to add to all installation paths.', "/", PathVariable.PathAccept),
@@ -290,6 +291,9 @@ if not have_msgfmt:
 if not env['nls']:
      print "NLS catalogue installation is disabled."
 
+env["LOCALEDEF"] = WhereIs("localedef")
+env["dummy_locales"] = env["dummy_locales"] and env["nls"] and env["LOCALEDEF"]
+
 #
 # Implement configuration switches
 #
@@ -328,6 +332,9 @@ for env in [test_env, env]:
 
     if not env['lua']:
         env.Append(CPPDEFINES = "DISABLE_LUA")
+
+    if env["dummy_locales"]:
+        env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False
@@ -414,8 +421,6 @@ env.Clean(all, 'TAGS')
 # Dummy locales
 #
 
-env["LOCALEDEF"] = WhereIs("localedef")
-env["dummy_locales"] = env["nls"] and env["LOCALEDEF"]
 if env["dummy_locales"]:
     env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | $LOCALEDEF -c \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
