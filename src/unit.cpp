@@ -2615,7 +2615,15 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					const std::string &remove = effect["remove"];
 
 					if(add.empty() == false) {
-						set_state(add,"yes");
+				 		// FIXME: 1.6 compatibility hack
+					  	// Remove after 1.7.2
+					  	// (and bump min_savegame))
+						if (add == "stoned") {
+							set_state("petrified","yes");;
+							lg::wml_error << "Usage of 'stoned' is deprecated use 'petrify' instead, "
+								"support will be removed in 1.7.2.\n";
+					  	} else
+							set_state(add,"yes");
 					}
 
 					if(remove.empty() == false) {
