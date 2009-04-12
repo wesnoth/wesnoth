@@ -360,18 +360,9 @@ public:
 
         private:
             unit_type_map_wrapper();
-            unit_type_map_wrapper(unit_type_map_wrapper& /*utf*/) :
-				types_(),
-				dummy_unit_map_(),
-				movement_types_(),
-				races_(),
-				unit_traits_(),
-				unit_cfg_(0)
-			{}
+			unit_type_map_wrapper(const unit_type_map_wrapper &);
 
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
-			void set_unit_traits(const config::const_child_itors &unit_traits)
-			{ unit_traits_ = unit_traits; }
 
 			const config& find_config(const std::string& key) const;
 			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
@@ -389,7 +380,6 @@ public:
             mutable unit_type_map dummy_unit_map_;
             movement_type_map movement_types_;
             race_map races_;
-			config::const_child_itors unit_traits_;
             const config* unit_cfg_;
 	};
 

@@ -1108,7 +1108,6 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 	dummy_unit_map_(),
 	movement_types_(),
 	races_(),
-	unit_traits_(),
 	unit_cfg_(NULL)
 {
     dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
@@ -1120,7 +1119,6 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 
     clear();
     set_unit_config(cfg);
-	set_unit_traits(cfg.child_range("trait"));
 
 	foreach (const config &mt, cfg.child_range("movetype"))
 	{
@@ -1251,12 +1249,12 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     switch (status){
         case unit_type::CREATED:
             ut->second.set_config(unit_cfg);
-            ut->second.build_created(unit_cfg, movement_types_, races_, unit_traits_);
+			ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
             break;
         case unit_type::HELP_INDEX:
             //build the stuff that is needed to feed the help index
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) )
-                ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_traits_);
+				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
 
             add_advancefrom(unit_cfg);
             break;
@@ -1266,7 +1264,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
                 (ut->second.build_status() == unit_type::CREATED) ||
                 (ut->second.build_status() == unit_type::HELP_INDEX) )
             {
-                ut->second.build_full(unit_cfg, movement_types_, races_, unit_traits_);
+				ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
 
                 if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
                     (ut->second.build_status() == unit_type::CREATED) )

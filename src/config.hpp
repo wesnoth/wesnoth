@@ -133,7 +133,6 @@ public:
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
-		const_child_iterator() {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
 		const_child_iterator &operator++() { ++i_; return *this; }
