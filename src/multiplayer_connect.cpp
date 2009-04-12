@@ -627,9 +627,11 @@ config connect::side::get_config() const
 	}
 	res.append(cfg_);
 
-	// res["name"] will be overwritten below by a 1.6.0 bug
-	// so, record it here in another key
-	res["faction_name"] = res["name"];
+	if (parent_->write_faction_name_) {
+		// res["name"] will be overwritten below by a 1.6.0 bug
+		// record it here in a key only used for MP UI communication
+		res["faction_name"] = res["name"];
+	}
 
 	if (cfg_.get_attribute("side").empty()
 			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
@@ -992,6 +994,7 @@ connect::connect(game_display& disp, const config& game_config,
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	local_only_(local_players_only),
 	level_(),
+	write_faction_name_(true),
 	state_(),
 	params_(params),
 	era_sides_(),
@@ -1120,6 +1123,9 @@ const game_state& connect::get_state()
 
 void connect::start_game()
 {
+	// Stop sending faction_name, not needed anymore
+	write_faction_name_ = false;
+
 	// Resolves the "random faction", "random gender" and "random message"
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {

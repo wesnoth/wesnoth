@@ -249,6 +249,13 @@ private:
 	bool local_only_;
 
 	config level_;
+	/**
+	 * Indicate if we define the 'faction_name' key.
+	 * 1.6.0 ignores this key and 1.6.1 uses it for MP UI communication
+	 * but we skip it when starting the game, to avoid adding it the level's WML
+	 * because we don't want this to be visible for UMC.
+	 */
+	bool write_faction_name_;
 
 	/** This is the "game state" object which is created by this dialog. */
 	game_state state_;
