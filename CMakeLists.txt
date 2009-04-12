@@ -88,15 +88,17 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
-# Set our own default debug flags at first run
-if(NOT CONFIGURED)
-  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
-endif(NOT CONFIGURED)
+if(CMAKE_COMPILER_IS_GNUCXX)
+	# Set our own default debug flags at first run
+	if(NOT CONFIGURED)
+		set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+	endif(NOT CONFIGURED)
 
-#Add build-type: DEBUGSTRICT
-set(CMAKE_CXX_FLAGS_DEBUGSTRICT "-O0 -DDEBUG -ggdb3 -W -Wall -ansi -Werror -Wno-unused -Wno-sign-compare" CACHE STRING "Flags used by the compiler during strict debug builds.")
-set(CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT "${CMAKE_EXE_LINKER_FLAGS_DEBUG}" CACHE STRING "Flags used for linking binaries during strict debug builds.")
-mark_as_advanced(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
+	#Add build-type: DEBUGSTRICT
+	set(CMAKE_CXX_FLAGS_DEBUGSTRICT "-O0 -DDEBUG -ggdb3 -W -Wall -ansi -Werror -Wno-unused -Wno-sign-compare" CACHE STRING "Flags used by the compiler during strict debug builds.")
+	set(CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT "${CMAKE_EXE_LINKER_FLAGS_DEBUG}" CACHE STRING "Flags used for linking binaries during strict debug builds.")
+	mark_as_advanced(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
+endif(CMAKE_COMPILER_IS_GNUCXX)
 
 # compose datadir path of datarootdir and datadirname
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
