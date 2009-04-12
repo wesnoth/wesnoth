@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:44+0200\n"
-"PO-Revision-Date: 2009-03-14 15:14+0300\n"
+"PO-Revision-Date: 2009-04-12 17:40+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -592,9 +592,8 @@ msgstr "Vengrų vertimas"
 
 #. [about]
 #: data/core/about.cfg:1668
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Italų vertimas"
+msgstr "Islandų vertimas"
 
 #. [about]
 #: data/core/about.cfg:1675
@@ -2345,7 +2344,7 @@ msgstr ""
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
 msgid "Coastal Reef"
-msgstr "Pakrantės povandeninės uolos"
+msgstr "Pakrantės rifas"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -2970,7 +2969,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:614
 msgid "stones"
-msgstr ""
+msgstr "sustingdo"
 
 #: data/core/macros/abilities.cfg:616
 msgid ""
@@ -2978,16 +2977,21 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Sustingdymas:\n"
+"Ši ataka taikinį paverčia akmeniu. Daliniai, kurie buvo paversti į akmenį, "
+"negali judėti ar pulti."
 
 #: data/core/macros/abilities.cfg:625
 msgid "marksman"
-msgstr ""
+msgstr "snaiperis"
 
 #: data/core/macros/abilities.cfg:627
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Snaiperis:\n"
+"Kai naudojama puolant, ši ataka visada turi bent 60% tikimybę pataikyti."
 
 #: data/core/macros/abilities.cfg:652
 msgid "swarm"
@@ -7625,15 +7629,16 @@ msgstr ""
 #: src/multiplayer.cpp:291
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"Slapyvardis „$nick“ yra per ilgas. Slapyvardžiai privalo būti neilgesni nei "
+"18 simbolių."
 
 #: src/multiplayer.cpp:294
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
 #: src/multiplayer.cpp:296
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Slapyvardis „$nick“ jau naudojamas."
+msgstr "Slapyvardis „$nick“ neužregistruotas šiame serveryje."
 
 #: src/multiplayer.cpp:297
 msgid " This server disallows unregistered nicks."
@@ -8349,7 +8354,7 @@ msgstr "Pergalė"
 
 #: src/playsingle_controller.cpp:443
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Jūs išėjote nugalėtoju!"
 
 #: src/playsingle_controller.cpp:504
 msgid ""
@@ -8754,11 +8759,11 @@ msgstr "Įgalinti santraukų siuntimą"
 #~ "Nepavyko automatiškai išsaugoti žaidimo. Prašome išsaugoti žaidimą "
 #~ "rankiniu būdu."
 
-#~ msgid "Mute an observer."
-#~ msgstr "Nutildyti stebėtoją."
-
 #~ msgid "Save Replay"
 #~ msgstr "Išsaugoti peržaidimą"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Peržaidimas negali būti išsaugotas"
+
+#~ msgid "Mute an observer."
+#~ msgstr "Nutildyti stebėtoją."

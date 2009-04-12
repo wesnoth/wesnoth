@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:48+0200\n"
-"PO-Revision-Date: 2008-12-27 17:36+0300\n"
+"PO-Revision-Date: 2009-04-12 17:55+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -1186,6 +1186,10 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
+"Yra legenda apie elfą, kuris sustabdė strėlę, iššaudamas į ją ore su savo "
+"strėle. Tai, kad šis pasakojimas gali būti priimtas rimtai, yra elfų "
+"meistiškumo įrodymas. Elfų snaiperiai, paprastai kalbant, įvaldė šaudymo "
+"meną."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
@@ -1773,6 +1777,8 @@ msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
+"Ištreniruoti kardais ir arbaletais, leitenantai vadovauja mažoms žmonių "
+"karių grupėms, koordinuodami jų atakas."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -2020,6 +2026,9 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Kažkada buvę puikūs, vyresnieji magai turi truputi sumažėjusias, nuo "
+"sekinančių metų mūšiuose, galias. Nepaisant to, jų yra bijoma mūšio lauke "
+"dėl galingų žaibų."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
@@ -2791,6 +2800,15 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Drakonas yra legendinė būtybė, paprastai matoma tik fantastinėse pasakose. "
+"Jie yra reti ir, jei ne istoriniai įvykiai, miestai ir miesteliai, kuriuos "
+"šios būtybės sunaikino be kieno nors pagalbos, jie galėtų būti laikomi "
+"paprasčiausiu mitu. Legendos labai tiksliai aprašo drakonų padarytus "
+"sugriovimus; pažymėdamos jų didžią jėgą, greitį ir jų antgamtišką "
+"klastingumą, ir, kas svarbiausia, didžią ugnį, degančią juose.\n"
+"\n"
+"Sakoma, kad kova su drakonu yra pavojaus viršūnė, tinkanti tik kvailiams "
+"arba drąsiausiems riteriams."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
@@ -2938,6 +2956,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"VIlkai yra agresyvūs gyvūnai, medžiojantys gaujomis. Nors silpni pavieniui, "
+"vilkų gauja gali užmušti kelių minučių bėgyje net stipriausią žmogų."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3047,6 +3067,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Žmogėdros yra milžiniškos būtybės, kurios paprastai gyvena po vieną "
+"dykynėje, pagal formą nepaprastai panašios į žmones, tačiau didelės ir "
+"deformuotos. Nors jos gali būti lengvai pralenktos ar pergudrautos, jų jėga "
+"neturi būti neįvertinama."
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
@@ -3065,6 +3089,9 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
+"Kol dar jauni, žmogėdros kartais yra sučiumpami ir paimami į armijas "
+"treniruoti. Jie negali meistriškai valdyti ginklų, bet jie tą trūkumą "
+"kompensuoja didele jėga."
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -3464,7 +3491,7 @@ msgstr ""
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr "Ghūlas"
+msgstr "Gūlas"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
@@ -3478,6 +3505,14 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
+"Tik labiausiai iškrypę ir sadistiški nekromantai žino, ką reikia padaryti "
+"norint paverti žmogų į gūlą, ir tai yra paslaptis, kurios jie nepasakoja. "
+"Tačiau rezultatas yra per gerai žinomas; tai yra žvėris, kuris nežino nieko "
+"apie savo, kaip žmogiškos būtybės, dienas, padaras, kuris kėblina beveik "
+"toks pat nuogas, kaip ir dieną, kai jis gimė, ir ryja mirusiųjų kūnus.\n"
+"\n"
+"Dėk tokių dalykų nekromantija yra smerkiama su beveik pirmykšte neapykanta "
+"visose civilizuotose šalyse."
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
