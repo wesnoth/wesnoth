@@ -161,8 +161,7 @@ public:
 		typedef const attribute *pointer;
 		typedef const attribute &reference;
 		typedef string_map::const_iterator Itor;
-		explicit const_attribute_iterator(const Itor &i = Itor()): i_(i) {}
-		const_attribute_iterator(const const_attribute_iterator &i): i_(i.i_) {}
+		explicit const_attribute_iterator(const Itor &i): i_(i) {}
 
 		const_attribute_iterator &operator++() { ++i_; return *this; }
 		const_attribute_iterator operator++(int) { return const_attribute_iterator(i_++); }
