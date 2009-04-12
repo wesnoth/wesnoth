@@ -36,8 +36,8 @@ public:
 	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
 	void set_gamestate();
 
-	const bool show_replay() const { return show_replay_; }
-	const bool cancel_orders() const { return cancel_orders_; }
+	bool show_replay() const { return show_replay_; }
+	bool cancel_orders() const { return cancel_orders_; }
 
 private:
 	void show_dialog(bool show_replay, bool cancel_orders);

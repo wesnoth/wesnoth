@@ -34,9 +34,9 @@
 #define LOG_SAVE LOG_STREAM(info, engine)
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
-	: gamestate_(gamestate)
+	: game_config_(game_config)
 	, gui_(gui)
-	, game_config_(game_config)
+	, gamestate_(gamestate)
 {
 	gamestate_ = game_state();
 }
