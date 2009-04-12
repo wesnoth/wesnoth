@@ -67,6 +67,7 @@ opts.AddOptions(
     BoolOption('editor', 'Enable editor', True),
     BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolOption('nls','enable compile/install of gettext message catalogs',True),
+    BoolOption('dummy_locales','enable support for dummy locales',False),
     PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
     PathOption('prefsdir', 'user preferences directory', ".wesnoth$version_suffix", PathOption.PathAccept),
     PathOption('destdir', 'prefix to add to all installation paths.', "/", PathOption.PathAccept),
@@ -285,6 +286,8 @@ if not have_msgfmt:
 if not env['nls']:
      print "NLS catalogue installation is disabled."
 
+env["dummy_locales"] = env["dummy_locales"] and env["nls"]
+
 #
 # Implement configuration switches
 #
@@ -320,6 +323,9 @@ for env in [test_env, env]:
 
     if not env["editor"]:
         env.Append(CPPDEFINES = "DISABLE_EDITOR2")
+
+    if env["dummy_locales"]:
+        env.Append(CPPDEFINES = "USE_DUMMYLOCALES")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False
@@ -406,8 +412,6 @@ env.Clean(all, 'TAGS')
 # Dummy locales
 #
 
-env["LOCALEDEF"] = WhereIs("localedef")
-env["dummy_locales"] = env["nls"] and env["LOCALEDEF"]
 if env["dummy_locales"]:
     env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | $LOCALEDEF -c \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
