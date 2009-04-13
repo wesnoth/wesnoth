@@ -108,7 +108,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
 if(NOT WIN32)
-  add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
+  add_definitions(-DWESNOTH_PATH=\\\"${DATADIR}\\\")
 endif(NOT WIN32)
 
 if(NOT ENABLE_POOL_ALLOC OR WIN32)
@@ -124,13 +124,13 @@ if(X11_FOUND)
 endif(X11_FOUND)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
-add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
+add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
-add_definitions(-DFIFODIR='\"${FIFO_DIR}\"')
+add_definitions(-DFIFODIR=\\\"${FIFO_DIR}\\\")
 
 if(PREFERENCES_DIR)
-  add_definitions(-DPREFERENCES_DIR='\"${PREFERENCES_DIR}\"')
+  add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
 endif(PREFERENCES_DIR)
 
 if(GUI STREQUAL "tiny")
