@@ -36,11 +36,12 @@ class ai_holder{
 public:
 	ai_holder(int side, const std::string& ai_algorithm_type);
 
-	void init();
+	void init( int side );
 
 	virtual ~ai_holder();
 
 	ai_interface& get_ai_ref();
+	ai_interface& get_ai_ref( int side );
 
 	const std::string& get_ai_algorithm_type() const;
 	void set_ai_algorithm_type(const std::string& ai_algorithm_type);
@@ -75,7 +76,7 @@ private:
 	std::vector<config> ai_parameters_;
 	int side_;
 
-	ai_interface* create_ai();
+	ai_interface* create_ai( int side );
 };
 
 /**

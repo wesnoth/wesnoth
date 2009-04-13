@@ -55,10 +55,10 @@ ai_holder::ai_holder( int side, const std::string& ai_algorithm_type )
 }
 
 
-void ai_holder::init()
+void ai_holder::init( int side )
 {
 	LOG_AI_MANAGER << describe_ai() << "Preparing to create new managed master AI" << std::endl;
-	this->ai_ = create_ai();
+	this->ai_ = create_ai(side);
 	if (this->ai_ == NULL) {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}
@@ -75,14 +75,19 @@ ai_holder::~ai_holder()
 }
 
 
-ai_interface& ai_holder::get_ai_ref()
+ai_interface& ai_holder::get_ai_ref( int side )
 {
 	if (this->ai_ == NULL) {
-		this->init();
+		this->init(side);
 	}
 	assert(this->ai_ != NULL);
 
 	return *this->ai_;
+}
+
+ai_interface& ai_holder::get_ai_ref()
+{
+	return get_ai_ref(this->side_);
 }
 
 
@@ -174,10 +179,11 @@ bool ai_holder::is_mandate_ok()
 	return true;
 }
 
-ai_interface* ai_holder::create_ai()
+ai_interface* ai_holder::create_ai( int side )
 {
+	assert (side > 0);
 	//@note: ai_params and ai_algorithm_type are supposed to be set before calling init(  );
-	return ai_manager::create_transient_ai(ai_algorithm_type_,side_,true);
+	return ai_manager::create_transient_ai(ai_algorithm_type_,side,true);
 
 }
 
@@ -713,16 +719,14 @@ ai_interface& ai_manager::get_or_create_active_ai_for_side_without_fallback( int
 ai_interface& ai_manager::get_command_ai( int side )
 {
 	ai_holder& ai_holder = get_command_ai_holder(side);
-	ai_interface& ai = ai_holder.get_ai_ref();
-	ai.set_side(side);
+	ai_interface& ai = ai_holder.get_ai_ref(side);
 	return ai;
 }
 
 ai_interface& ai_manager::get_fallback_ai( int side )
 {
 	ai_holder& ai_holder = get_fallback_ai_holder(side);
-	ai_interface& ai = ai_holder.get_ai_ref();
-	ai.set_side(side);
+	ai_interface& ai = ai_holder.get_ai_ref(side);
 	return ai;
 }
 
