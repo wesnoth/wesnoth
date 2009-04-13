@@ -448,6 +448,10 @@ bool ai_manager::add_ai_for_side_from_file( int side, const std::string& file, b
 		remove_ai_for_side (side);
 	}
 	ai_holder new_ai_holder(side,ai_algorithm_type);
+	new_ai_holder.set_ai_effective_parameters(effective_ai_parameters);
+	new_ai_holder.set_ai_global_parameters(global_ai_parameters);
+	new_ai_holder.set_ai_memory(ai_memory);
+	new_ai_holder.set_ai_parameters(ai_parameters);
 	std::stack<ai_holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
 	ai_stack_for_specific_side.push(new_ai_holder);
 	return true;
