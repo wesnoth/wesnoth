@@ -882,7 +882,7 @@ private:
 
 			for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 				std::stringstream option, option_to_filter;
-				const std::string& name = u->name().empty() ? "-" : u->name();
+				std::string name = u->name().empty() ? "-" : u->name();
 
 				option << IMAGE_PREFIX << u->absolute_image();
 #ifndef LOW_MEM
