@@ -274,8 +274,7 @@ namespace game_events {
 			(*itor->second)(eh, event_info, cfg);
 			return true;
 		}
-		// Return true if we have /^filter.*/ tag
-		return cmd.compare(0, strlen("filter"),"filter") == 0;
+		return false;
 	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
@@ -3447,10 +3446,15 @@ namespace game_events {
 			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg.get_config();
 		}
 
-		for(vconfig::all_children_iterator i = cfg.ordered_begin();
-				i != cfg.ordered_end(); ++i) {
+		for (vconfig::all_children_iterator i = cfg.ordered_begin(),
+		     i_end = cfg.ordered_end(); i != i_end; ++i)
+		{
+			const std::string &cmd = i.get_key();
+			// Skip if this is a /^filter.*/ tag
+			if (cmd.compare(0, 6, "filter") == 0)
+				continue;
 
-			handle_event_command(event_info, i.get_key(), i.get_child());
+			handle_event_command(event_info, cmd, i.get_child());
 		}
 
 		// We do this once the event has completed any music alterations
