@@ -61,6 +61,7 @@ static char const gettextKey = 0;
 static char const getunitKey = 0;
 static char const handlerKey = 0;
 static char const tstringKey = 0;
+static char const uactionKey = 0;
 
 /**
  * Converts a string into a Lua object pushed at the top of the stack.
@@ -516,6 +517,88 @@ static int lua_dofile(lua_State *L)
 	goto continue_call_destructor;
 }
 
+/**
+ * Proxy class for calling WML action handlers defined in Lua.
+ */
+struct lua_action_handler : game_events::action_handler
+{
+	lua_State *L;
+	unit_map *units;
+	int num;
+
+	lua_action_handler(lua_State *l, int n, unit_map *u)
+		: L(l), units(u), num(n) {}
+	void handle(game_events::event_handler &,
+		const game_events::queued_event &, const vconfig &);
+};
+
+void lua_action_handler::handle(game_events::event_handler &handler,
+	const game_events::queued_event &, const vconfig &cfg)
+{
+	// Store the event data in the registry.
+	lua_pushlightuserdata(L, (void *)&handlerKey);
+	event_handler_data *eh = static_cast<event_handler_data *>
+		(lua_newuserdata(L, sizeof(event_handler_data)));
+	eh->handler = &handler;
+	eh->units = units;
+	lua_settable(L, LUA_REGISTRYINDEX);
+
+	// Load the error handler from the registry.
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+
+	// Load the user function from the registry.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, num);
+	lua_remove(L, -2);
+
+	// Push the WML table argument.
+	lua_newtable(L);
+	table_of_wml_config(L, cfg.get_parsed_config());
+
+	int res = lua_pcall(L, 1, 0, -3);
+	if (res)
+	{
+		LOG_STREAM(err, lua)
+			<< "Failure while running Lua action handler: "
+			<< lua_tostring(L, -1) << '\n';
+		lua_pop(L, 2);
+		return;
+	}
+
+	lua_pop(L, 1);
+}
+
+/**
+ * Registers a function as WML action handler.
+ * - Arg 1: string containing the WML tag.
+ * - Arg 2: function taking a WML table as argument.
+ */
+static int lua_register_wml_action(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+
+	// Retrieve the unit map from the registry.
+	lua_pushlightuserdata(L, (void *)&handlerKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
+
+	// Retrieve the user action table from the registry.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	size_t length = lua_objlen(L, -1);
+
+	// Push the function on it so that it is not collected.
+	lua_pushvalue(L, 2);
+	lua_rawseti(L, -2, length + 1);
+
+	// Create the proxy C++ action handler.
+	game_events::register_action_handler(m,
+		new lua_action_handler(L, length + 1, eh->units));
+	return 0;
+}
+
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
@@ -546,14 +629,15 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
-		{ "fire",         &lua_fire         },
-		{ "fire_event",   &lua_fire_event   },
-		{ "get_units",    &lua_get_units    },
-		{ "get_variable", &lua_get_variable },
-		{ "message",      &lua_message      },
-		{ "dofile",       &lua_dofile       },
-		{ "set_variable", &lua_set_variable },
-		{ "textdomain",   &lua_textdomain   },
+		{ "fire",                     &lua_fire                     },
+		{ "fire_event",               &lua_fire_event               },
+		{ "get_units",                &lua_get_units                },
+		{ "get_variable",             &lua_get_variable             },
+		{ "message",                  &lua_message                  },
+		{ "dofile",                   &lua_dofile                   },
+		{ "set_variable",             &lua_set_variable             },
+		{ "textdomain",               &lua_textdomain               },
+		{ "register_wml_action",      &lua_register_wml_action      },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
@@ -592,6 +676,11 @@ LuaKernel::LuaKernel()
 	lua_setglobal(L, "dofile");
 	lua_pushnil(L);
 	lua_setglobal(L, "loadfile");
+
+	// Create the user action table.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_newtable(L);
+	lua_settable(L, LUA_REGISTRYINDEX);
 
 	// Store the error handler, then close debug.
 	lua_pushlightuserdata(L, (void *)&executeKey);
