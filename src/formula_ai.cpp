@@ -26,6 +26,7 @@
 #include "formula_ai.hpp"
 #include "log.hpp"
 #include "attack_prediction.hpp"
+#include "formula_candidates.hpp"
 
 #define LOG_AI LOG_STREAM(info, formula_ai)
 #define WRN_AI LOG_STREAM(warn, formula_ai)
@@ -1561,14 +1562,6 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 	}
 }
 
-void ai_function_symbol_table::register_candidate_move(const std::string name,
-		const std::string type, const_formula_ptr formula, const_formula_ptr eval)
-{
-	candidate_move_ptr new_move(new candidate_move(name,type,eval,formula));
-	candidate_moves.push_back(new_move);
-}
-
-
 }
 
 formula_ai::formula_ai(int side, bool master) :
@@ -1587,38 +1580,14 @@ formula_ai::formula_ai(int side, bool master) :
 	keeps_cache_(),
 	vars_(),
 	function_table(*this),
-	candidate_moves_(),
-	use_eval_lists_(false)
+	candidate_move_manager_()
 {
 	//make sure we don't run out of refcount
 	vars_.add_ref();
 	const config& ai_param = current_team().ai_parameters();
 
-	// Check to see if we want to use eval_lists
-
-	if( utils::string_bool( ai_param.get_attribute("eval_list") ) ) {
-		use_eval_lists_ = true;
-	}
-
-	// Register candidate moves in function symbol table
-	foreach (const config &rc_move, ai_param.child_range("register_candidate_move"))
-	{
-		const t_string &name = rc_move["name"];
-
-		try{
-			game_logic::const_formula_ptr action_formula(
-					new game_logic::formula(rc_move["action"], &function_table));
-
-			game_logic::const_formula_ptr eval_formula(
-					new game_logic::formula(rc_move["evaluation"], &function_table));
-
-			function_table.register_candidate_move(
-                                    name, rc_move["type"], action_formula, eval_formula);
-		}
-		catch(formula_error& e) {
-			handle_exception(e, "Error while registering candidate move '" + name + "'");
-		}
-	}
+	// load candidate moves from config
+	candidate_move_manager_.load_config(ai_param, this, &function_table);
 
 	foreach (const config &func, ai_param.child_range("function"))
 	{
@@ -1777,52 +1746,27 @@ void formula_ai::play_turn()
             }
 	}
 
-	if(use_eval_lists_) {
-		make_candidate_moves();
+	if( candidate_move_manager_.has_candidate_moves() ) {
+		move_maps_valid_ = false;
+		while( candidate_move_manager_.evaluate_candidate_moves(this, units_) )
+		{
+			game_logic::map_formula_callable callable(this);
+			callable.add_ref();
+
+			candidate_move_manager_.update_callable_map( callable );
+
+			const_formula_ptr move_formula(candidate_move_manager_.get_best_move_formula());
+
+			make_move(move_formula, callable);
+
+			move_maps_valid_ = false;
+		}
 	}
 
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
         while(make_move(move_formula_,callable)) { }
 
-}
-
-void formula_ai::make_candidate_moves() {
-        move_maps_valid_ = false;
-	build_move_list();
-	candidate_move_set::iterator best_move = candidate_moves_.begin();
-
-	while( best_move != candidate_moves_.end() ) {
-		int best_score = (*best_move)->get_score();
-		// If no evals > 0, fallback
-		if(best_score <= 0) {
-			return;
-		}
-		// Otherwise, make the best scoring move
-		game_logic::map_formula_callable callable(this);
-		callable.add_ref();
-		variant action_unit_callable(new unit_callable(*(*best_move)->get_action_unit()));
-		callable.add("me", action_unit_callable);
-		if((*best_move)->get_type() == "attack") {
-			variant enemy_unit_callable(new unit_callable(*(*best_move)->get_enemy_unit()));
-			callable.add("target", enemy_unit_callable);
-		}
-		const_formula_ptr move_formula((*best_move)->get_move());
-		make_move(move_formula, callable);
-		// And re-evaluate candidate moves
-		build_move_list();
-		best_move = candidate_moves_.begin();
-	}
-}
-
-
-void formula_ai::build_move_list() {
-	candidate_moves_.clear();
-	std::vector<candidate_move_ptr>::iterator itor = function_table.candidate_move_begin();
-	for( ; itor != function_table.candidate_move_end(); ++itor) {
-		(*itor)->evaluate_move(this, units_, get_side());
-		candidate_moves_.insert(*itor);
-	}
 }
 
 std::string formula_ai::evaluate(const std::string& formula_str)
@@ -2559,83 +2503,19 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_attack(const map_location unit_loc,
-		const map_location enemy_loc) const {
+bool formula_ai::can_reach_unit(unit_map::const_unit_iterator unit_A,
+		unit_map::const_unit_iterator unit_B) const {
         prepare_move();
 	move_map::iterator i;
 	std::pair<move_map::iterator,
 			  move_map::iterator> unit_moves;
 
-	unit_moves = srcdst_.equal_range(unit_loc);
+	unit_moves = srcdst_.equal_range(unit_A->first);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		map_location diff(((*i).second).vector_difference(enemy_loc));
+		map_location diff(((*i).second).vector_difference(unit_B->first));
 		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
 			return true;
 		}
 	}
 	return false;
-}
-
-
-void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
-		size_t team_number) {
-	score_ = -1000;
-	if(type_ == "attack") {
-		for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)
-		{
-			if( (me->second.side() == team_number) &&
-					(me->second.has_moved() == false) ) {
-				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
-					if( (target->second.side() != team_number) &&
-							(ai->can_attack(me->first, target->first)) ) {
-                                                int res = -1000;
-
-						game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-						callable.add_ref();
-						callable.add("me", variant(new unit_callable(*me)));
-						callable.add("target", variant(new unit_callable(*target)));
-
-                                                try {
-                                                    res = (formula::evaluate(eval_, callable)).as_int();
-                                                } catch(formula_error& e) {
-                                                        ai->handle_exception(e);
-                                                        res = -1000;
-                                                } catch(type_error& e) {
-                                                        res = -1000;
-                                                        ERR_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
-                                                }
-						if(res > score_) {
-							score_ = res;
-							action_unit_ = me;
-							enemy_unit_ = target;
-						}
-                                                ai->invalidate_move_maps();
-					}
-				}
-			}
-		}
-	} else {
-		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
-		{
-			if( (i->second.side() == team_number) &&
-					(i->second.has_moved() == false) ) {
-                                int res = -1000;
-				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-				callable.add_ref();
-				callable.add("me", variant(new unit_callable(*i)));
-                                try {
-                                    res = (formula::evaluate(eval_, callable)).as_int();
-                                } catch(formula_error& e) {
-                                    ai->handle_exception(e);
-                                } catch(type_error& e) {
-                                    ERR_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
-                                }
-				if(res > score_) {
-					score_ = res;
-					action_unit_ = i;
-				}
-                                ai->invalidate_move_maps();
-			}
-		}
-	}
 }

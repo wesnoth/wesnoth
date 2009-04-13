@@ -21,55 +21,13 @@
 #include "formula.hpp"
 #include "formula_fwd.hpp"
 #include "formula_callable.hpp"
+#include "formula_candidates.hpp"
 #include "formula_function.hpp"
 
 // Forward declaration needed for ai function symbol table
 class formula_ai;
 
 namespace game_logic {
-
-class candidate_move {
-public:
-	candidate_move(std::string name, std::string type, const_formula_ptr eval, const_formula_ptr move) :
-		name_(name),
-		type_(type),
-		eval_(eval),
-		move_(move),
-		score_(-1),
-		action_unit_(),
-		enemy_unit_()
-	{};
-
-	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_number);
-
-	int get_score() const {return score_;}
-	std::string get_type() const {return type_;}
-	unit_map::unit_iterator get_action_unit() {return action_unit_;}
-	unit_map::unit_iterator get_enemy_unit() {return enemy_unit_;}
-	const_formula_ptr get_move() {return move_;}
-
-	struct move_compare {
-		bool operator() (const boost::shared_ptr<candidate_move> lmove,
-				const boost::shared_ptr<candidate_move> rmove) const
-		{
-			return lmove->get_score() > rmove->get_score();
-		}
-	};
-
-private:
-
-	std::string name_;
-	std::string type_;
-	const_formula_ptr eval_;
-	const_formula_ptr move_;
-	int score_;
-	unit_map::unit_iterator action_unit_;
-	unit_map::unit_iterator enemy_unit_;
-};
-
-
-typedef boost::shared_ptr<candidate_move> candidate_move_ptr;
-typedef std::set<game_logic::candidate_move_ptr, game_logic::candidate_move::move_compare> candidate_move_set;
 
 typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
 
@@ -88,25 +46,12 @@ class ai_function_symbol_table : public function_symbol_table {
 public:
 	explicit ai_function_symbol_table(formula_ai& ai) :
 		ai_(ai),
-		move_functions(),
-		candidate_moves()
+		move_functions()
 	{}
-
-	void register_candidate_move(const std::string name, const std::string type,
-			const_formula_ptr formula, const_formula_ptr eval);
-
-	std::vector<candidate_move_ptr>::iterator candidate_move_begin() {
-		return candidate_moves.begin();
-	}
-
-	std::vector<candidate_move_ptr>::iterator candidate_move_end() {
-		return candidate_moves.end();
-	}
 
 private:
 	formula_ai& ai_;
 	std::set<std::string> move_functions;
-	std::vector<candidate_move_ptr> candidate_moves;
 	expression_ptr create_function(const std::string& fn,
 	                               const std::vector<expression_ptr>& args) const;
 };
@@ -153,8 +98,9 @@ public:
 
 	const variant& get_keeps_cache() const { return keeps_cache_; }
 
-	// Check if given unit loc can reach attack range of enemy loc
-	bool can_attack (const map_location, const map_location) const;
+	// Check if given unit can reach another unit
+	bool can_reach_unit(unit_map::const_unit_iterator unit_A,
+		unit_map::const_unit_iterator unit_B) const;
 
 	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
 
@@ -193,8 +139,6 @@ private:
 	mutable std::map<location,paths> possible_moves_;
 
 	void prepare_move() const;
-	void build_move_list();
-	void make_candidate_moves();
 
         map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable bool move_maps_valid_;
@@ -204,9 +148,8 @@ private:
 
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table;
+	game_logic::candidate_move_manager candidate_move_manager_;
 
-	game_logic::candidate_move_set candidate_moves_;
-	bool use_eval_lists_;
 	friend class ai;
 };
 
