@@ -288,7 +288,11 @@ void twindow::draw()
 			update_rect(rect);
 		}
 
-		layout();
+		if(gui2::new_widgets) {
+			NEW_layout();
+		} else {
+			layout();
+		}
 
 		// Get new surface for restoring
 		SDL_Rect rect = get_rect();
@@ -710,6 +714,95 @@ void twindow::layout2(
 			++run;
 		}
 	}
+}
+
+void twindow::NEW_layout()
+{
+	/**** Initialize and get initial size. *****/
+
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>
+		(config());
+	assert(conf);
+
+	log_scope2(gui_layout, "Window: Recalculate size");
+
+	NEW_layout_init(true);
+	generate_dot_file("layout_init", LAYOUT);
+
+	const game_logic::map_formula_callable variables =
+		get_screen_size_variables();
+
+	const int maximum_width = automatic_placement_ ?
+			settings::screen_width :  w_(variables);
+
+	const int maximum_height = automatic_placement_ ?
+			settings::screen_height :  h_(variables);
+
+	if(!NEW_layout(maximum_width, maximum_height)) {
+		/** @todo implement the scrollbars on the window. */
+		assert(false);
+	}
+
+	tpoint size = get_best_size();
+
+	assert(size.x <= maximum_width && size.y <= maximum_height);
+
+	/***** Get the best location for the window *****/
+
+	tpoint origin(0, 0);
+
+	if(automatic_placement_) {
+
+		switch(horizontal_placement_) {
+			case tgrid::HORIZONTAL_ALIGN_LEFT :
+				// Do nothing
+				break;
+			case tgrid::HORIZONTAL_ALIGN_CENTER :
+				origin.x = (settings::screen_width - size.x) / 2;
+				break;
+			case tgrid::HORIZONTAL_ALIGN_RIGHT :
+				origin.x = settings::screen_width - size.x;
+				break;
+			default :
+				assert(false);
+		}
+		switch(vertical_placement_) {
+			case tgrid::VERTICAL_ALIGN_TOP :
+				// Do nothing
+				break;
+			case tgrid::VERTICAL_ALIGN_CENTER :
+				origin.y = (settings::screen_height - size.y) / 2;
+				break;
+			case tgrid::VERTICAL_ALIGN_BOTTOM :
+				origin.y = settings::screen_height - size.y;
+				break;
+			default :
+				assert(false);
+		}
+	} else {
+		origin.x = x_(variables);
+		origin.y = y_(variables);
+
+		size.x = w_(variables);
+		size.y = h_(variables);
+	}
+
+	/***** Set the window size *****/
+	set_size(origin, size);
+
+	generate_dot_file("layout_finished", LAYOUT);
+	need_layout_ = false;
+
+	// The widgets might have moved so set the mouse location properly.
+	init_mouse_location();
+}
+
+bool twindow::NEW_layout(
+		const unsigned /*maximum_width*/, const unsigned /*maximum_height*/)
+{
+	/** @todo Do something. */
+	return true;
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)

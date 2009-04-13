@@ -434,7 +434,12 @@ private:
 	/** List of the widgets, whose size are linked together. */
 	std::map<std::string, tlinked_size> linked_size_;
 
-	/** Layouts the window. */
+	/** 
+	 * Layouts the window.
+	 *
+	 * @deprecated Will be removed after the new layout algorithm is
+	 * implemented.
+	 */
 	void layout();
 
 	/**
@@ -443,10 +448,38 @@ private:
 	 * This is a new routine which will be used as fallback when the normal
 	 * layout engine fails. In 1.7 this will become the real layout engine.
 	 *
+	 * @deprecated Will be removed after the new layout algorithm is
+	 * implemented.
+	 *
 	 * @param maximum_width       The maximum width of the window.
 	 * @param maximum_height      The maximum height of the window.
 	 */
 	void layout2(const unsigned maximum_width, const unsigned maximum_height);
+
+	/**
+	 * Layouts the window.
+	 *
+	 * This part does the pre and post processing for the actual layout
+	 * algorithm.
+	 *
+	 * @see layout_algorihm for more information.
+	 */
+	void NEW_layout();
+
+	/**
+	 * Layouts the window.
+	 *
+	 * This part handles the actual layouting of the window.
+	 *
+	 * @see layout_algorihm for more information.
+	 *
+	 * @param maximum_width       The maximum width of the window.
+	 * @param maximum_height      The maximum height of the window.
+	 *
+	 * @returns                   The result of the layouting.
+	 */
+	bool NEW_layout(
+			const unsigned maximum_width, const unsigned maximum_height);
 
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
