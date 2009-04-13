@@ -29,6 +29,11 @@ class gamemap;
 #include "gamestatus.hpp"
 #include "playturn.hpp"
 
+class ai_attack_result;
+class ai_move_result;
+class ai_recruit_result;
+class ai_stopunit_result;
+
 class ai_interface : public game_logic::formula_callable {
 public:
 	/** get the 1-based side number which is controlled by this AI */
@@ -37,11 +42,15 @@ public:
 	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
 	bool get_master() const { return master_;}
 
+
 	/** A convenient typedef for the often used 'location' object. */
 	typedef map_location location;
 
 	/** The standard way in which a map of possible moves is recorded. */
 	typedef std::multimap<location,location> move_map;
+	
+	/** The standard way in which a map of possible movement routes to location is recorded*/
+	typedef std::map<location,paths> moves_map;
 
 	/**
 	 * info is structure which holds references to all the important objects
@@ -127,9 +136,67 @@ public:
         /** Return a message with information about the ai. Useful for making debugging ai-independent. */
         virtual std::string describe_self() { return "? ai"; }
 protected:
+
+	/**
+	 * Ask the game to attack an enemy defender using our unit attacker from attackers current location,
+	 * @param attacker_loc location of attacker
+	 * @param defender_loc location of defender
+	 * @param attacker_weapon weapon of attacker
+	 * @retval possible result: ok
+	 * @retval possible result: something wrong
+	 * @retval possible result: attacker and/or defender are invalid
+	 * @retval possible result: attacker and/or defender are invalid
+	 * @retval possible result: attacker doesn't have the specified weapon
+	 */
+	std::auto_ptr<ai_attack_result> execute_attack_action(const location& attacker_loc, const location& defender_loc, int attacker_weapon);
+	std::auto_ptr<ai_attack_result> check_attack_action(const location& attacker_loc, const location& defender_loc, int attacker_weapon);
+
+
+	/**
+	 * Ask the game to move our unit from location 'from' to location 'to', optionally - doing a partial move
+	 * @param from location of our unit
+	 * @param to where to move
+	 * @param remove_movement set unit movement to 0 in case of successful move
+	 * @retval possible result: ok
+	 * @retval possible result: something wrong
+	 * @retval possible result: move is interrupted
+	 * @retval possible result: move is impossible
+	 */
+	std::auto_ptr<ai_move_result> execute_move_action(const location& from, const location& to, bool remove_movement=true);
+	std::auto_ptr<ai_move_result> check_move_action(const location& from, const location& to, bool remove_movement=true);
+
+
+	/**
+	 * Ask the game to recruit a unit for us on specified location
+	 * @param unit_name the name of the unit to be recruited.
+	 * @param where location where the unit is to be recruited.
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: leader not on keep
+	 * @retval possible_result: no free space on keep
+	 * @retval possible_result: not enough gold
+	 */
+	std::auto_ptr<ai_recruit_result> execute_recruit_action(const std::string& unit_name, const location &where);
+	std::auto_ptr<ai_recruit_result> check_recruit_action(const std::string& unit_name, const location &where);
+
+
+	/**
+	 * Ask the game to remove unit movements and/or attack
+	 * @param unit_location the location of our unit
+	 * @param remove_movement set remaining movements to 0
+	 * @param remove_attacks set remaining attacks to 0
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: nothing to do
+	 */
+	std::auto_ptr<ai_stopunit_result> execute_stopunit_action(const location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	std::auto_ptr<ai_stopunit_result> check_stopunit_action(const location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+
+
 	/**
 	 * This function should be called to attack an enemy.
-	 *
+	 * 
+	 * @deprecated
 	 * @param u            The location of the attacking unit. (Note this shouldn't
 	 *                     be a reference since attack::attack() can invalidate the
 	 *                     unit_map and references to the map are also invalid then.)
@@ -145,6 +212,7 @@ protected:
 	/**
 	 * This function should be called to move a unit.
 	 *
+	 * @deprecated
 	 * Once the unit has been moved, its movement allowance is set to 0.
 	 * @param from                The location of the unit being moved.
 	 * @param to                  The location to be moved to. This must be a
@@ -155,6 +223,7 @@ protected:
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
 	/**
+	 * @deprecated
 	 * Identical to 'move_unit', except that the unit's movement
 	 * isn't set to 0 after the move is complete.
 	 */

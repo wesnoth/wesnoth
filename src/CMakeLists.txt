@@ -207,9 +207,10 @@ SET(wesnoth-main_SRC
     addon_management.cpp
     ai.cpp
     ai_actions.cpp
-    ai_dfool.cpp
     ai_attack.cpp
     ai_configuration.cpp
+    ai_interface.cpp
+    ai_dfool.cpp
     ai_manager.cpp
     ai_move.cpp
     ai_village.cpp

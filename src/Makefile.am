@@ -47,6 +47,7 @@ wesnoth_source = \
 	ai_attack.cpp \
 	ai_configuration.cpp \
 	ai_dfool.cpp \
+	ai_interface.cpp \
 	ai_manager.cpp \
 	ai_move.cpp \
 	ai_village.cpp \
