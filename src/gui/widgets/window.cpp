@@ -1036,7 +1036,8 @@ void twindow::generate_dot_file(const std::string& generator,
  *
  * Here is the algorithm used to layout the window:
  *
- * - Perform a full initialization:
+ * - Perform a full initialization 
+ *   (@ref gui2::twidget::NEW_layout_init (full_initialization = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
@@ -1056,13 +1057,14 @@ void twindow::generate_dot_file(const std::string& generator,
  *   - Get best size.
  *   - If width <= maximum_width && height <= maximum_height we're done.
  *   - If width > maximum_width, optimize the width:
- *     - For every grid cell in a grid row there will be a resize request:
+ *     - For every grid cell in a grid row there will be a resize request
+ *       (@ref gui2::tgrid::NEW_reduce_width):
  *       - Sort the widgets in the row on the resize priority.
  *         - Loop through this priority queue until the row fits
  *           - If priority != 0 try to share the extra width else all
  *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by either wrapping or using a
- *             scrollbar.
+ *             scrollbar (@ref gui2::twidget::NEW_request_reduce_width).
  *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
@@ -1072,18 +1074,21 @@ void twindow::generate_dot_file(const std::string& generator,
  *           -Else:
  *             - All widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
- *             wanted. For labels, buttons etc. they get ellipsized .
+ *             wanted (@ref gui2::twidget::NEW_demand_reduce_width).
+ *             For labels, buttons etc. they get ellipsized.
  *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
  *         - Throw a layout width doesn't fit exception.
- *   - If height > maximum_height, optimize the height:
+ *   - If height > maximum_height, optimize the height
+ *       (@ref gui2::tgrid::NEW_reduce_height):
  *     - For every grid cell in a grid column there will be a resize request:
  *       - Sort the widgets in the column on the resize priority.
  *         - Loop through this priority queue until the column fits:
  *           - If priority != 0 try to share the extra height else all
  *              widgets are tried to reduce the full size.
- *           - Try to shrink the widgets by using a scrollbar.
+ *           - Try to shrink the widgets by using a scrollbar
+ *             (@ref gui2::twidget::NEW_request_reduce_height).
  *             - If succeeded for a widget the width is influenced and the
  *               width might be invalid.
  *             - Throw a width modified exception.
@@ -1092,9 +1097,10 @@ void twindow::generate_dot_file(const std::string& generator,
  *         - All priorities done and the height still doesn't fit.
  *         - Loop through this priority queue until the column fits.
  *           - If priority != 0 try to share the extra height else all
- *              widgets are tried to reduce the full size.
+ *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
- *             wanted. For labels, buttons etc. they get ellipsized .
+ *             wanted (@ref gui2::twidget::NEW_demand_reduce_width).
+ *             For labels, buttons etc. they get ellipsized .
  *           - If the column fits in the wanted height this column is done.
  *           - Else try the next priority.
  *         - All priorities done and the height still doesn't fit.
@@ -1120,7 +1126,8 @@ void twindow::generate_dot_file(const std::string& generator,
  *     - show a layout failure message.
  *
  * - Relayout:
- *   - Initialize all widgets.
+ *   - Initialize all widgets
+ *     (@ref gui2::twidget::NEW_layout_init (full_initialization = false))
  *   - Goto start layout loop.
  *
  * @section grid Grid
