@@ -937,42 +937,43 @@ void twindow::generate_dot_file(const std::string& generator,
 
 
 /**
- * @page layout_algorihm Layout algorithm.
+ * @page layout_algorihm Layout algorithm
  *
- * @section introduction Introduction.
+ * @section introduction Introduction
  *
  * This page describes how the layout engine for the dialogs works. First
  * a global overview of some terms used in this document.
  *
- * - Widget; Any item which can be used in the widget toolkit. Not all
- *   widgets are visible. In general widgets can not be sized directly, but
- *   this is controlled by a window. A widget has an internal size cache and
- *   if the value in the cache is not equal to 0,0 that value is its best
- *   size. This value gets set when the widget can honour a resize request.
- *   It will be set with the value which honours the request.
+ * - @ref gui2::twidget "Widget"; Any item which can be used in the widget
+ *   toolkit. Not all widgets are visible. In general widgets can not be
+ *   sized directly, but this is controlled by a window. A widget has an
+ *   internal size cache and if the value in the cache is not equal to 0,0
+ *   that value is its best size. This value gets set when the widget can
+ *   honour a resize request.  It will be set with the value which honours
+ *   the request.
  *
- * - Grid; A grid is an invisible container which holds one or more widgets.
- *   Several widgets have a grid in them to hold multiple widgets eg panels
- *   and windows.
+ * - @ref gui2::tgrid "Grid"; A grid is an invisible container which holds
+ *   one or more widgets.  Several widgets have a grid in them to hold
+ *   multiple widgets eg panels and windows.
  *
- * - Grid cell; Every widget which is in a grid is put in a grid cell. These
- *   cells also hold the information about the gaps between widgets the
- *   behaviour on growing etc. All grid cells must have a widget inside
- *   them.
+ * - @ref gui2::tgrid::tchild "Grid cell"; Every widget which is in a grid is
+ *   put in a grid cell. These cells also hold the information about the gaps
+ *   between widgets the behaviour on growing etc. All grid cells must have a
+ *   widget inside them.
  *
- * - Window; A window is a top level item which has a grid with its
- *   children. The window handles the sizing of the window and makes sure
- *   everything fits.
+ * - @ref gui2::twindow "Window"; A window is a top level item which has a
+ *   grid with its children. The window handles the sizing of the window and
+ *   makes sure everything fits.
  *
- * - Shared size group; A shared size group is a number of widgets which
- *   share width and or height. These widgets are handled separately in the
- *   layout algorithm. All grid cells width such a widget will get the same
- *   height and or width and these widgets won't be resized when there's not
- *   enough size. To be sure that these widgets don't cause trouble for the
- *   layout algorithm, they must be in a container with scrollbars so there
- *   will always be a way to properly layout them. The engine must enforce
- *   this restriction so the shared layout property must be set by the
- *   engine after validation.
+ * - @ref gui2::twindow::tlinked_size "Shared size group"; A shared size
+ *   group is a number of widgets which share width and or height. These
+ *   widgets are handled separately in the layout algorithm. All grid cells
+ *   width such a widget will get the same height and or width and these
+ *   widgets won't be resized when there's not enough size. To be sure that
+ *   these widgets don't cause trouble for the layout algorithm, they must be
+ *   in a container with scrollbars so there will always be a way to properly
+ *   layout them. The engine must enforce this restriction so the shared
+ *   layout property must be set by the engine after validation.
  *
  * - All visible grid cells; A grid cell is visible when the widget inside
  *   of it doesn't have the state INVISIBLE. Widgets which are HIDDEN are
@@ -995,14 +996,15 @@ void twindow::generate_dot_file(const std::string& generator,
  *   cells fit this algorithm makes sure the widgets are put in the optimal
  *   state in their grid cell.
  *
- * @section layout_algorihm_window Window.
+ * @section layout_algorihm_window Window
  *
  * Here is the algorithm used to layout the window:
  *
  * - Perform a full initialization:
  *   - Clear the internal best size cache for all widgets.
- *   - For widgets with scrollbars hide them unless the scrollbar_mode is
- *     ALWAYS.
+ *   - For widgets with scrollbars hide them unless the
+ *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
+ *     SHOW.
  * - Handle shared sizes:
  *   - Height and width:
  *     - Get the best size for all widgets that share height and width.
@@ -1029,8 +1031,10 @@ void twindow::generate_dot_file(const std::string& generator,
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
  *         - Loop through this priority queue until the row fits.
- *           - If priority != 0 try to share the extra width else all
- *             widgets are tried to reduce the full size.
+ *           - If priority != 0:
+ *             - try to share the extra width 
+ *           -Else:
+ *             - All widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
  *             wanted. For labels, buttons etc. they get ellipsized .
  *           - If the row fits in the wanted width this row is done.
@@ -1083,7 +1087,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *   - Initialize all widgets.
  *   - Goto start layout loop.
  *
- * @section grid Grid.
+ * @section grid Grid
  *
  * This section will be documented later.
  */
