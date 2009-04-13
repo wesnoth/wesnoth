@@ -2,6 +2,8 @@ Version 1.7.0-svn:
  * General:
    * The add-ons directory, <preferences>/data/campaigns, has been renamed
      and it is now <preferences>/data/add-ons
+   * Added --rng-seed command line option to specify a value to seed the random
+     number generator with.
  * AI:
    * Fixed incorrect handling of poisoning attacks when suggesting best attack
      in user interface

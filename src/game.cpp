@@ -386,6 +386,8 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--no-delay") {
 			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {
+		} else if (val == "--rng-seed") {
+			++arg_;
 		} else if(val == "--nosound") {
 			no_sound = true;
 		} else if(val == "--nomusic") {
@@ -1774,6 +1776,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --nosound                    runs the game without sounds and music.\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
+			<< "  --rng-seed <number>          seeds the random number generator with number\n"
+			<< "                               Example: --rng-seed 0\n"
 			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
 			<< "                               and resizes a few interface elements.\n"
 			<< "  -s, --server [<host>]        connects to the host if specified\n"
@@ -1861,7 +1865,13 @@ static int process_command_args(int argc, char** argv) {
 		} else if(val == "--logdomains") {
 			std::cout << lg::list_logdomains() << "\n";
 			return 0;
-		}
+		} else if(val == "--rng-seed") {
+			if (argc <= ++arg) {
+				std::cerr << "format of \" " << val << " " << argv[arg] << " \" is bad\n";
+				return 2;
+			}
+			srand(lexical_cast_default<unsigned int>(argv[arg]));
+ 		}
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
@@ -1895,12 +1905,13 @@ static void init_locale() {
  */
 static int do_gameloop(int argc, char** argv)
 {
+	srand(time(NULL));
+	
 	int finished = process_command_args(argc, argv);
 	if(finished != -1) {
 		return finished;
 	}
 
-	srand(time(NULL));
 
 	game_controller game(argc,argv);
 	const int start_ticks = SDL_GetTicks();
