@@ -1580,14 +1580,14 @@ formula_ai::formula_ai(int side, bool master) :
 	keeps_cache_(),
 	vars_(),
 	function_table(*this),
-	candidate_move_manager_()
+	candidate_action_manager_()
 {
 	//make sure we don't run out of refcount
 	vars_.add_ref();
 	const config& ai_param = current_team().ai_parameters();
 
-	// load candidate moves from config
-	candidate_move_manager_.load_config(ai_param, this, &function_table);
+	// load candidate actions from config
+	candidate_action_manager_.load_config(ai_param, this, &function_table);
 
 	foreach (const config &func, ai_param.child_range("function"))
 	{
@@ -1717,7 +1717,7 @@ void formula_ai::play_turn()
                             game_logic::map_formula_callable callable(this);
                             callable.add_ref();
                             callable.add("me", variant(new unit_callable(*i)));
-                            make_move(formula, callable);
+                            make_action(formula, callable);
                     }
                     catch(formula_error& e) {
                             if(e.filename == "formula")
@@ -1735,7 +1735,7 @@ void formula_ai::play_turn()
                                 game_logic::map_formula_callable callable(this);
                                 callable.add_ref();
                                 callable.add("me", variant(new unit_callable(*i)));
-                                while ( make_move(loop_formula, callable) && i.valid() ) {}
+                                while ( make_action(loop_formula, callable) && i.valid() ) {}
                         }
                         catch(formula_error& e) {
                                 if(e.filename == "formula")
@@ -1746,18 +1746,18 @@ void formula_ai::play_turn()
             }
 	}
 
-	if( candidate_move_manager_.has_candidate_moves() ) {
+	if( candidate_action_manager_.has_candidate_actions() ) {
 		move_maps_valid_ = false;
-		while( candidate_move_manager_.evaluate_candidate_moves(this, units_) )
+		while( candidate_action_manager_.evaluate_candidate_actions(this, units_) )
 		{
 			game_logic::map_formula_callable callable(this);
 			callable.add_ref();
 
-			candidate_move_manager_.update_callable_map( callable );
+			candidate_action_manager_.update_callable_map( callable );
 
-			const_formula_ptr move_formula(candidate_move_manager_.get_best_move_formula());
+			const_formula_ptr move_formula(candidate_action_manager_.get_best_action_formula());
 
-			make_move(move_formula, callable);
+			make_action(move_formula, callable);
 
 			move_maps_valid_ = false;
 		}
@@ -1765,7 +1765,7 @@ void formula_ai::play_turn()
 
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
-        while(make_move(move_formula_,callable)) { }
+        while(make_action(move_formula_,callable)) { }
 
 }
 
@@ -1842,7 +1842,7 @@ void formula_ai::prepare_move() const
 	move_maps_valid_ = true;
 }
 
-bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
+bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
 		if(get_master()) {

@@ -127,7 +127,7 @@ public:
 private:
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();
-	bool make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
+	bool make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
 	bool execute_variant(const variant& var, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
@@ -148,7 +148,7 @@ private:
 
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table;
-	game_logic::candidate_move_manager candidate_move_manager_;
+	game_logic::candidate_action_manager candidate_action_manager_;
 
 	friend class ai;
 };

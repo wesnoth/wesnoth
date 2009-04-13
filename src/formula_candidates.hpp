@@ -13,7 +13,7 @@
 
 /**
  * @file formula_candidates.hpp
- * Defines formula ai candidate moves - headers
+ * Defines formula ai candidate actions - headers
  * */
 
 #ifndef _FORMULA_CANDIDATES_HPP
@@ -21,20 +21,20 @@
 
 namespace game_logic {
 
-class base_candidate_move;
+class base_candidate_action;
 
-typedef std::map< std::string, game_logic::const_formula_ptr > candidate_move_filters;
-typedef boost::shared_ptr<game_logic::base_candidate_move> candidate_move_ptr;
+typedef std::map< std::string, game_logic::const_formula_ptr > candidate_action_filters;
+typedef boost::shared_ptr<game_logic::base_candidate_action> candidate_action_ptr;
 
-//every new candidate move type should be derived from this class
+//every new candidate action type should be derived from this class
 //and should complete evaluate and update_callable_map methods
-class base_candidate_move {
+class base_candidate_action {
 public:
-	base_candidate_move(const config& cfg, function_symbol_table* function_table);
+	base_candidate_action(const config& cfg, function_symbol_table* function_table);
 
-	virtual ~base_candidate_move() {}
+	virtual ~base_candidate_action() {}
 
-	//evaluate candidate move using eval_ formula
+	//evaluate candidate action using eval_ formula
 	virtual void evaluate(formula_ai* /*ai*/, unit_map& /*units*/) {}
 
 	//adds needed callable objects to callable map
@@ -57,68 +57,68 @@ protected:
 	int score_;
 };
 
-struct candidate_move_compare {
-	bool operator() (const candidate_move_ptr lmove,
-			const candidate_move_ptr rmove) const
+struct candidate_action_compare {
+	bool operator() (const candidate_action_ptr laction,
+			const candidate_action_ptr raction) const
 	{
-		return lmove->get_score() > rmove->get_score();
+		return laction->get_score() > raction->get_score();
 	}
 };
 
-typedef std::set<game_logic::candidate_move_ptr, game_logic::candidate_move_compare> candidate_move_set;
+typedef std::set<game_logic::candidate_action_ptr, game_logic::candidate_action_compare> candidate_action_set;
 
-//this class is responsible for managing candidate moves
-class candidate_move_manager {
+//this class is responsible for managing candidate actions
+class candidate_action_manager {
 public:
-	candidate_move_manager() {}
+	candidate_action_manager() {}
 	
-	//register candidate moves from config
+	//register candidate actions from config
 	void load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
 
-	//evaluate candidate moves, return true if we have candidate moves that have score > 0
-	bool evaluate_candidate_moves(formula_ai* ai, unit_map& units);
+	//evaluate candidate action, return true if we have candidate action that have score > 0
+	bool evaluate_candidate_actions(formula_ai* ai, unit_map& units);
 	
-	const_formula_ptr get_best_move_formula() {
-		if( evaluated_candidate_moves_.empty() )
+	const_formula_ptr get_best_action_formula() {
+		if( evaluated_candidate_actions_.empty() )
 			return game_logic::formula_ptr();
-		return (*evaluated_candidate_moves_.begin())->get_action();
+		return (*evaluated_candidate_actions_.begin())->get_action();
 	}
 
-	//calls same method from best candidate move
+	//calls same method from best candidate action
 	void update_callable_map(game_logic::map_formula_callable& callable){
-		if( evaluated_candidate_moves_.empty() )
+		if( evaluated_candidate_actions_.empty() )
 			return;
-		(*evaluated_candidate_moves_.begin())->update_callable_map(callable);
+		(*evaluated_candidate_actions_.begin())->update_callable_map(callable);
 	}
 
-	void register_candidate_move(candidate_move_ptr& candidate_move){
-		candidate_moves_.push_back(candidate_move);
+	void register_candidate_action(candidate_action_ptr& candidate_action){
+		candidate_actions_.push_back(candidate_action);
 	}
 
-	bool has_candidate_moves() { return !candidate_moves_.empty(); }
+	bool has_candidate_actions() { return !candidate_actions_.empty(); }
 
 	void clear() {
-		candidate_moves_.clear();
-		evaluated_candidate_moves_.clear();
+		candidate_actions_.clear();
+		evaluated_candidate_actions_.clear();
 	}
 
 private:
-	game_logic::candidate_move_set evaluated_candidate_moves_;
-	std::vector<candidate_move_ptr> candidate_moves_;
+	game_logic::candidate_action_set evaluated_candidate_actions_;
+	std::vector<candidate_action_ptr> candidate_actions_;
 };
 
 
-class candidate_move_with_filters : public base_candidate_move {
+class candidate_action_with_filters : public base_candidate_action {
 public:
-	candidate_move_with_filters(const config& cfg, function_symbol_table* function_table);
+	candidate_action_with_filters(const config& cfg, function_symbol_table* function_table);
 protected:
 
-	game_logic::candidate_move_filters filter_map_;
+	game_logic::candidate_action_filters filter_map_;
 };
 
-class move_candidate_move : public candidate_move_with_filters {
+class move_candidate_action : public candidate_action_with_filters {
 public:
-	move_candidate_move(const config& cfg, function_symbol_table* function_table);
+	move_candidate_action(const config& cfg, function_symbol_table* function_table);
 
 	virtual void evaluate(formula_ai* ai, unit_map& units);
 
@@ -128,9 +128,9 @@ protected:
 	unit_map::unit_iterator my_unit_;
 };
 
-class attack_candidate_move : public candidate_move_with_filters {
+class attack_candidate_action : public candidate_action_with_filters {
 public:
-	attack_candidate_move(const config& cfg, function_symbol_table* function_table);
+	attack_candidate_action(const config& cfg, function_symbol_table* function_table);
 
 	virtual void evaluate(formula_ai* ai, unit_map& units);
 
@@ -140,9 +140,9 @@ protected:
 	unit_map::const_unit_iterator enemy_unit_;
 };
 
-class support_candidate_move : public candidate_move_with_filters {
+class support_candidate_action : public candidate_action_with_filters {
 public:
-	support_candidate_move(const config& cfg, function_symbol_table* function_table);
+	support_candidate_action(const config& cfg, function_symbol_table* function_table);
 };
 
 }
