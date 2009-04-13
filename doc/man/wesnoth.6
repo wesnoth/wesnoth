@@ -66,8 +66,11 @@ enables additional command mode options in-game
 use special dummy locales to switch to any language even if that language
 isn't installed system-wide.
 .TP
-.B -e, --editor
-start the in-game map editor directly.
+.B -e, --editor \ file
+start the in-game map editor directly. If 
+.I file
+is specified, equivalent to 
+.B -e --load
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
@@ -101,7 +104,7 @@ or
 .B --editor
 option is used as well, starts the editor with the map from
 .I file
-open.
+open. If it is a directory, the editor will start with a load map dialog opened there.
 .TP
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.

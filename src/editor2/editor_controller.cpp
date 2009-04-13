@@ -409,10 +409,15 @@ bool editor_controller::confirm_discard()
 	}
 }
 
-void editor_controller::load_map_dialog()
+void editor_controller::set_default_dir(const std::string& str)
+{
+	default_dir_ = str;
+}
+
+void editor_controller::load_map_dialog(bool force_same_context /* = false */)
 {
 	if (!use_mdi_ && !confirm_discard()) return;
-	std::string fn = get_map_context().get_filename();
+	std::string fn = directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
@@ -425,7 +430,7 @@ void editor_controller::load_map_dialog()
 				return;
 			}
 		}
-		load_map(fn, use_mdi_);
+		load_map(fn, force_same_context ? false : use_mdi_);
 	}
 }
 

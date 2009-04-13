@@ -27,6 +27,10 @@ Version 1.7.0-svn:
    * New feature: exporting of selection coordinates to system clipboard
    * Made auto terrain transition mode tri-state: on (editor2's on), partial
      (1.4 editor's on / editor2's off) and off (1.4's off).
+   * Made "wesnoth -e FILE" work like "wesnoth -e --load FILE" (load the map)
+   * Made "wesnoth -e --load DIR" (and consequently "wesnoth -e DIR") set
+     DIR as the default map directory for the current session, and start with 
+     the map load dialog open
  * FormulaAI:
    * Fixed bug #13230: added debug_float FormulaAI function to allow debugging
      via floating popups on the specified hex

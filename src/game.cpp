@@ -401,6 +401,12 @@ game_controller::game_controller(int argc, char** argv) :
 #ifndef DISABLE_EDITOR2
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
+			if(arg_+1 != argc_) {
+				if (argv_[arg_ + 1][0] != '-') {
+					++arg_;
+					loaded_game_ = argv_[arg_];
+				}
+			}
 #endif
 		} else if(val == "--dummy-locales") {
 #ifdef USE_DUMMYLOCALES
@@ -1718,7 +1724,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --dummy-locales              enables dummy locales for switching to non-system\n"
 			<< "                               locales.\n"
 #ifndef DISABLE_EDITOR2
-			<< "  -e, --editor                 starts the in-game map editor directly.\n"
+			<< "  -e, --editor [<file>]        starts the in-game map editor directly. If <file>\n"
+			<< "                               is specified, equivalent to -e --load <file>.\n"
 #endif
 			<< "  --fps                        displays the number of frames per second the\n"
 			<< "                               game is currently running at, in a corner of\n"
@@ -1735,7 +1742,8 @@ static int process_command_args(int argc, char** argv) {
 #ifndef DISABLE_EDITOR2
 			<< "                               When launching the map editor via -e, the map\n"
 			<< "                               <file> is loaded, relative to the current\n"
-			<< "                               directory.\n"
+			<< "                               directory. If it is a directory, the editor\n"
+			<< "                               will start with a load map dialog opened there.\n"
 #endif
 			<< "  --log-<level>=<domain1>,<domain2>,...\n"
 			<< "                               sets the severity level of the log domains.\n"

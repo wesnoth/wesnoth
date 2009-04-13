@@ -123,8 +123,11 @@ class editor_controller : public controller_base,
 		/** Switches the context to the one under the specified index. */
 		void switch_context(const int index);
 
+		/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
+		void set_default_dir(const std::string& str);
+
 		/** Display a load map dialog and process user input. */
-		void load_map_dialog();
+		void load_map_dialog(bool force_same_context = false);
 
 		/** Display a new map dialog and process user input. */
 		void new_map_dialog();
