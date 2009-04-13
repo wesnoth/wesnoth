@@ -206,11 +206,11 @@ void ai_stopunit_result::do_init_for_execution()
 // STATELESS INTERFACE TO AI ACTIONS
 // =======================================================================
 
-std::auto_ptr< ai_attack_result > ai_actions::execute_attack_action( int side,
+std::auto_ptr< ai_attack_result > ai_actions::execute_attack_action( int /*side*/,
 	bool execute,
-	const map_location& attacker_loc,
-	const map_location& defender_loc,
-	int attacks ) 
+	const map_location& /*attacker_loc*/,
+	const map_location& /*defender_loc*/,
+	int /*attacks*/)
 {
 	std::auto_ptr< ai_attack_result > ai_action(new ai_attack_result());
 	execute ? ai_action->execute() : ai_action->check_before();
@@ -218,11 +218,11 @@ std::auto_ptr< ai_attack_result > ai_actions::execute_attack_action( int side,
 }
 
 
-std::auto_ptr< ai_move_result > ai_actions::execute_move_action( int side,
+std::auto_ptr< ai_move_result > ai_actions::execute_move_action( int /*side*/,
 	bool execute,
-	const map_location& from,
-	const map_location& to,
-	bool remove_movement )
+	const map_location& /*from*/,
+	const map_location& /*to*/,
+	bool /*remove_movement*/)
 {
 	std::auto_ptr< ai_move_result > ai_action(new ai_move_result());
 	execute ? ai_action->execute() : ai_action->check_before();
@@ -231,10 +231,10 @@ std::auto_ptr< ai_move_result > ai_actions::execute_move_action( int side,
 }
 
 
-std::auto_ptr< ai_recruit_result > ai_actions::execute_recruit_action( int side,
+std::auto_ptr< ai_recruit_result > ai_actions::execute_recruit_action( int /*side*/,
 	bool execute,
-	const std::string& unit_name,
-	const map_location& where )
+	const std::string& /*unit_name*/,
+	const map_location& /*where*/)
 {
 	std::auto_ptr< ai_recruit_result > ai_action(new ai_recruit_result());
 	execute ? ai_action->execute() : ai_action->check_before();
@@ -243,11 +243,11 @@ std::auto_ptr< ai_recruit_result > ai_actions::execute_recruit_action( int side,
 }
 
 
-std::auto_ptr< ai_stopunit_result > ai_actions::execute_stopunit_action( int side,
+std::auto_ptr< ai_stopunit_result > ai_actions::execute_stopunit_action( int /*side*/,
 	bool execute,
-	const map_location& unit_location,
-	bool remove_movement,
-	bool remove_attacks )
+	const map_location& /*unit_location*/,
+	bool /*remove_movement*/,
+	bool /*remove_attacks*/)
 {
 	std::auto_ptr< ai_stopunit_result > ai_action(new ai_stopunit_result());
 	execute ? ai_action->execute() : ai_action->check_before();
