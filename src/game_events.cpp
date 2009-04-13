@@ -232,50 +232,70 @@ static void show_wml_messages()
 	}
 }
 
+typedef void (*wml_handler_function)(game_events::event_handler &eh,
+	const game_events::queued_event &event_info, const vconfig &cfg);
+
+typedef std::map<std::string, wml_handler_function> static_wml_action_map;
+static static_wml_action_map static_wml_actions;
+
+/**
+ * Calls registered WML action handler.
+ * @return false if none was found.
+ */
+static bool call_wml_action_handler(const std::string &cmd,
+	game_events::event_handler &eh,
+	const game_events::queued_event &event_info,
+	const vconfig& cfg)
+{
+	static_wml_action_map::iterator itor = static_wml_actions.find(cmd);
+	if (itor == static_wml_actions.end()) return false;
+
+	(*itor->second)(eh, event_info, cfg);
+	return true;
+}
+
+/**
+ * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
+ *
+ * @param pname wml tag name
+ * @param peh the variable name of game_events::event_handler object inside function
+ * @param pei the variable name of game_events::queued_event object inside function
+ * @param pcfg the variable name of config object inside function
+ *
+ * You are warned! This is evil macro magic!
+ *
+ * For [foo] tag macro is used like:
+ *
+ * // comment out unused parameters to prevent compiler warnings
+ * WML_HANDLER_FUNCTION(foo, handler, event_info, cfg)
+ * {
+ *    // code for foo
+ * }
+ *
+ * ready code looks like for [foo]
+ * void wml_action_foo(...);
+ * struct wml_func_register_foo {
+ *   wml_func_register_foo() {
+ *     static_wml_actions["foo"] = &wml_func_foo;
+ *   } wml_func_register_foo;
+ * void wml_func_foo(...)
+ * {
+ *    // code for foo
+ * }
+ */
+#define WML_HANDLER_FUNCTION(pname, peh, pei, pcfg) \
+	void wml_func_##pname(game_events::event_handler &peh, \
+		const game_events::queued_event &pei, const vconfig &pcfg); \
+	struct wml_func_register_##pname \
+	{ \
+		wml_func_register_##pname() \
+		{ static_wml_actions[#pname] = &wml_func_##pname; } \
+	}; \
+	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
+	void wml_func_##pname(game_events::event_handler &peh, \
+		const game_events::queued_event& pei, const vconfig& pcfg)
+
 namespace game_events {
-
-
-	command_handlers command_handlers::manager_;
-
-	command_handlers& command_handlers::get()
-	{
-		return manager_;
-	}
-
-	command_handlers::command_handlers() :
-		function_call_map_()
-	{
-	}
-
-	command_handlers::~command_handlers()
-	{
-		clear_all();
-	}
-
-	void command_handlers::add_handler(const std::string& key, wml_handler_function func)
-	{
-		function_call_map_.insert(std::make_pair(key, func));
-	}
-
-	void command_handlers::clear_all()
-	{
-		function_call_map_.clear();
-	}
-
-	bool command_handlers::call_handler(
-			const std::string& cmd,
-			game_events::event_handler& eh,
-			const game_events::queued_event& event_info,
-			const vconfig& cfg)
-	{
-		call_map::iterator itor = function_call_map_.find(cmd);
-		if (itor != function_call_map_.end())
-		{
-			(*itor->second)(eh, event_info, cfg);
-			return true;
-		}
-		return false;
-	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
 	static bool matches_special_filter(const config &cfg, const vconfig filter);
@@ -3470,7 +3490,7 @@ namespace game_events {
 			<< std::hex << std::setiosflags(std::ios::uppercase)
 			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
-		if (!command_handlers::get().call_handler(cmd, *this, event_info, cfg))
+		if (!call_wml_action_handler(cmd, *this, event_info, cfg))
 		{
 			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
 		}
