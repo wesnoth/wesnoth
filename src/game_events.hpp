@@ -89,7 +89,6 @@ namespace game_events
 		config data;
 	};
 
-
 	class event_handler
 	{
 		public:
@@ -196,6 +195,22 @@ namespace game_events
 
 	// The count of game event mutations to the unit_map
 	Uint32 mutations();
+
+	/**
+	 * Abstract class for a WML action handler.
+	 */
+	struct action_handler
+	{
+		virtual void handle(event_handler &eh,
+			const queued_event &event_info, const vconfig &cfg) = 0;
+		virtual ~action_handler() {}
+	};
+
+	/**
+	 * Registers a WML action_handler for the lifetime of the current event manager.
+	 * The handler is automatically destroyed at the end or when overriden.
+	 */
+	void register_action_handler(const std::string &tag, action_handler *);
 
 } // end namespace game_events
 

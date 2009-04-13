@@ -236,7 +236,12 @@ typedef void (*wml_handler_function)(game_events::event_handler &eh,
 	const game_events::queued_event &event_info, const vconfig &cfg);
 
 typedef std::map<std::string, wml_handler_function> static_wml_action_map;
+/** Map of the default action handlers known of the engine. */
 static static_wml_action_map static_wml_actions;
+
+typedef std::map<std::string, game_events::action_handler *> dynamic_wml_action_map;
+/** Map of the action handlers either provided by the engine or added by the current scenario. */
+static dynamic_wml_action_map dynamic_wml_actions;
 
 /**
  * Calls registered WML action handler.
@@ -247,10 +252,10 @@ static bool call_wml_action_handler(const std::string &cmd,
 	const game_events::queued_event &event_info,
 	const vconfig& cfg)
 {
-	static_wml_action_map::iterator itor = static_wml_actions.find(cmd);
-	if (itor == static_wml_actions.end()) return false;
+	dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(cmd);
+	if (itor == dynamic_wml_actions.end()) return false;
 
-	(*itor->second)(eh, event_info, cfg);
+	itor->second->handle(eh, event_info, cfg);
 	return true;
 }
 
@@ -296,6 +301,17 @@ static bool call_wml_action_handler(const std::string &cmd,
 		const game_events::queued_event& pei, const vconfig& pcfg)
 
 namespace game_events {
+
+	void register_action_handler(const std::string &tag, action_handler *h)
+	{
+		dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(tag);
+		if (itor != dynamic_wml_actions.end()) {
+			delete itor->second;
+			itor->second = h;
+		} else {
+			dynamic_wml_actions[tag] = h;
+		}
+	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
 	static bool matches_special_filter(const config &cfg, const vconfig filter);
@@ -3611,6 +3627,15 @@ namespace game_events {
 
 	static std::set<std::string> unit_wml_ids;
 
+	struct static_action_handler : action_handler
+	{
+		wml_handler_function f_;
+		static_action_handler(wml_handler_function f): f_(f) {}
+		void handle(event_handler &eh, const queued_event &event_info, const vconfig &cfg)
+		{
+			f_(eh, event_info, cfg);
+		}
+	};
 
 	manager::manager(const config& cfg, gamemap& map_,
 			unit_map& units_,
@@ -3634,7 +3659,9 @@ namespace game_events {
 		lua_kernel = new LuaKernel;
 		manager_running = true;
 
-		used_items.clear();
+		foreach (static_wml_action_map::value_type &action, static_wml_actions) {
+			register_action_handler(action.first, new static_action_handler(action.second));
+		}
 
 		const std::string used = cfg["used_items"];
 		if(!used.empty()) {
@@ -3706,6 +3733,10 @@ namespace game_events {
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
+		foreach (dynamic_wml_action_map::value_type &action, dynamic_wml_actions) {
+			delete action.second;
+		}
+		dynamic_wml_actions.clear();
 		screen = NULL;
 		game_map = NULL;
 		units = NULL;
@@ -3714,6 +3745,7 @@ namespace game_events {
 		delete lua_kernel;
 		lua_kernel = NULL;
 		unit_wml_ids.clear();
+		used_items.clear();
 	}
 
 	void raise(const std::string& event,
