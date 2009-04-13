@@ -184,6 +184,25 @@ public:
 	void layout_init2(const bool full_initialization);
 	void NEW_layout_init(const bool full_initialization);
 
+	/**
+	 * Tries to reduce the width of a container.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_width       The wanted maximum width.
+	 */
+	void NEW_reduce_width(const unsigned maximum_width);
+
+	/**
+	 * Tries to reduce the height of a container.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_height      The wanted maximum height.
+	 */
+	void NEW_reduce_height(const unsigned maximum_height);
+
+
 private:
 
 	/** Inherited from twidget. */

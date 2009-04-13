@@ -226,6 +226,16 @@ void tgrid::NEW_layout_init(const bool full_initialization)
 	}
 }
 
+void tgrid::NEW_reduce_width(const unsigned /*maximum_width*/)
+{
+	/** @todo Implement. */
+}
+
+void tgrid::NEW_reduce_height(const unsigned /*maximum_height*/)
+{
+	/** @todo Implement. */
+}
+
 tpoint tgrid::calculate_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);

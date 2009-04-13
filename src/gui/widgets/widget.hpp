@@ -179,6 +179,61 @@ public:
 	virtual void NEW_layout_init(const bool full_initialization);
 
 	/**
+	 * Tries to reduce the width of a widget.
+	 *
+	 * This function tries to do it 'friendly' and only use scrollbars or
+	 * wrapping of the widget.
+	 *
+	 * @todo Make pure virtual.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_width       The wanted maximum width.
+	 */
+	virtual void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+
+	/**
+	 * Tries to reduce the width of a widget.
+	 *
+	 * This function does it more agressive and should only be used when
+	 * using scrollbars and wrapping failed.
+	 *
+	 * @todo Make pure virtual.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_width       The wanted maximum width.
+	 */
+	virtual void NEW_demand_reduce_width(const unsigned /*maximum_width*/) {}
+
+	/**
+	 * Tries to reduce the height of a widget.
+	 *
+	 * This function tries to do it 'friendly' and only use scrollbars.
+	 *
+	 * @todo Make pure virtual.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_height      The wanted maximum height.
+	 */
+	virtual void NEW_request_reduce_height(const unsigned /*maximum_height*/) {}
+
+	/**
+	 * Tries to reduce the height of a widget.
+	 *
+	 * This function does it more agressive and should only be used when
+	 * using scrollbars failed.
+	 *
+	 * @todo Make pure virtual.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_height      The wanted maximum height.
+	 */
+	virtual void NEW_demand_reduce_height(const unsigned /*maximum_height*/) {}
+
+	/**
 	 * Gets the best size for the widget.
 	 *
 	 * During the layout phase a best size will be determined, several stages

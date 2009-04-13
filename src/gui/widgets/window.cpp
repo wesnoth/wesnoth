@@ -739,6 +739,8 @@ void twindow::NEW_layout()
 	const int maximum_height = automatic_placement_ ?
 			settings::screen_height :  h_(variables);
 
+	/** @todo Handle linked widgets. */
+
 	if(!NEW_layout(maximum_width, maximum_height)) {
 		/** @todo implement the scrollbars on the window. */
 		assert(false);
@@ -799,9 +801,43 @@ void twindow::NEW_layout()
 }
 
 bool twindow::NEW_layout(
-		const unsigned /*maximum_width*/, const unsigned /*maximum_height*/)
+		const unsigned maximum_width, const unsigned maximum_height)
 {
-	/** @todo Do something. */
+	/*
+	 * For now we return the status, need to test later whether this can
+	 * entirely be converted to an exception based system as in 'promised' on
+	 * the algorithm page.
+	 */
+
+	tpoint size = get_best_size();
+
+	if(size.x <= static_cast<int>(maximum_width)
+			&& size.y <= static_cast<int>(maximum_height)) {
+
+		return true;
+	}
+
+	if(size.x > static_cast<int>(maximum_width)) {
+		NEW_reduce_width(maximum_width);
+
+		tpoint size = get_best_size();
+		if(size.x > static_cast<int>(maximum_width)) {
+			return false;
+		}
+	}
+
+	if(size.y > static_cast<int>(maximum_height)) {
+		NEW_reduce_height(maximum_height);
+
+		tpoint size = get_best_size();
+		if(size.y > static_cast<int>(maximum_height)) {
+			return false;
+		}
+	}
+
+	assert(size.x <= static_cast<int>(maximum_width)
+			&& size.y <= static_cast<int>(maximum_height));
+
 	return true;
 }
 
