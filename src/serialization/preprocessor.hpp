@@ -61,6 +61,7 @@ struct preproc_config {
 	};
 };
 
+std::string lineno_string(const std::string &lineno);
 
 std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def);
 

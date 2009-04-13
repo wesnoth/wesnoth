@@ -164,7 +164,6 @@ class preprocessor_streambuf: public streambuf
 	preprocessor_streambuf(preprocessor_streambuf const &);
 public:
 	preprocessor_streambuf(preproc_map *, std::string *);
-	std::string lineno_string(std::string const &);
 	void error(const std::string &, const std::string &);
 };
 
@@ -249,7 +248,7 @@ int preprocessor_streambuf::underflow()
 	return static_cast<unsigned char>(*(begin + sz));
 }
 
-std::string preprocessor_streambuf::lineno_string(std::string const &lineno)
+std::string lineno_string(const std::string &lineno)
 {
 	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
 	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
@@ -257,10 +256,13 @@ std::string preprocessor_streambuf::lineno_string(std::string const &lineno)
 	std::string res;
 	while (i != end) {
 		std::string const &line = *(i++);
-		std::string const &file = i != end ? *(i++) : "<unknown>";
 		if (!res.empty())
 			res += included_from;
-		res += file + ':' + line;
+		if (i != end)
+			res += *(i++);
+		else
+			res += "<unknown>";
+		res += ':' + line;
 	}
 	if (res.empty()) res = "???";
 	return res;
