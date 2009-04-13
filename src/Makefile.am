@@ -62,6 +62,7 @@ wesnoth_source = \
 	floating_textbox.cpp \
 	formula.cpp \
 	formula_ai.cpp \
+	formula_candidates.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
 	formula_string_utils.cpp \
