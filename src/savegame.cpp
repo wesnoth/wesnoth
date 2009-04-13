@@ -122,8 +122,8 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 	//FIXME: Integrate the load_game dialog into this class
 	filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
 
-	show_replay_ = show_replay;
-	cancel_orders_ = cancel_orders;
+	show_replay_ = show_replay_dialog;
+	cancel_orders_ = cancel_orders_dialog;
 }
 
 void loadgame::load_game()
