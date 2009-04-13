@@ -239,23 +239,10 @@ strategic_candidate_action::strategic_candidate_action(const std::string& name, 
 
 void strategic_candidate_action::evaluate(formula_ai* ai, unit_map& units)
 {
-	score_ = 0;
 
-
-	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
-	{
-		if( (i->second.side() == ai->get_side() ) &&
-				(i->second.has_moved() == false) ) {
-
-			game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-			callable.add_ref();
-			int res = execute_formula(eval_, callable, ai);
-
-			if(res > score_) {
-				score_ = res;
-			}
-		}
-	}
+	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+	callable.add_ref();
+	score_ = execute_formula(eval_, callable, ai);
 }
 
 support_candidate_action::support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
