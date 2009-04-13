@@ -48,6 +48,7 @@ class editor_action_whole_map : public editor_action
 		{
 		}
 		void perform_without_undo(map_context& m) const;
+		const char* get_name() const { return "whole_map"; }
 	protected:
 		editor_map m_;
 };
@@ -71,6 +72,7 @@ class editor_action_extendable : public editor_action
 		 * the drag.
 		 */
 		virtual void extend(const editor_map& map, const std::set<map_location>& locs) = 0;
+		const char* get_name() const { return "extendable"; }
 };
 
 /**
@@ -156,6 +158,8 @@ class editor_action_chain : public editor_action
 		 */
 		void perform_without_undo(map_context& m) const;
 
+		const char* get_name() const { return "chain"; }
+
 	protected:
 		/**
 		 * The action pointers owned by this action chain
@@ -175,6 +179,7 @@ class editor_action_location : public editor_action
 		: loc_(loc)
 		{
 		}
+		const char* get_name() const { return "location"; }
 	protected:
 		map_location loc_;
 };
@@ -190,6 +195,7 @@ class editor_action_location_terrain : public editor_action_location
 		: editor_action_location(loc), t_(t)
 		{
 		}
+		const char* get_name() const { return "location_terrain"; }
 	protected:
 		t_translation::t_terrain t_;
 };
@@ -207,6 +213,7 @@ class editor_action_area : public editor_action_extendable
 		bool add_location(const map_location& loc);
 		void add_locations(const std::set<map_location>& locs);
 		void extend(const editor_map& map, const std::set<map_location>& locs);
+		const char* get_name() const { return "area"; }
 	protected:
 		std::set<map_location> area_;
 };
@@ -224,6 +231,7 @@ class editor_action_paste : public editor_action_extendable
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		void extend(const editor_map& map, const std::set<map_location>& locs);
+		const char* get_name() const { return "paste"; }
 	protected:
 		map_location offset_;
 		map_fragment paste_;
@@ -243,6 +251,7 @@ class editor_action_paint_hex : public editor_action_location_terrain
 		}
 		editor_action_paint_hex* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "paint_hex"; }
 };
 
 /**
@@ -258,6 +267,7 @@ class editor_action_paint_area : public editor_action_area
 		}
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "paint_area"; }
 	protected:
 		t_translation::t_terrain t_;
 		bool one_layer_;
@@ -276,6 +286,7 @@ class editor_action_fill : public editor_action_location_terrain
 		}
 		editor_action_paint_area* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "fill"; }
 	protected:
 		bool one_layer_;
 };
@@ -292,6 +303,7 @@ class editor_action_starting_position : public editor_action_location
 		}
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "starting_pos"; }
 	protected:
 		int player_;
 };
@@ -309,6 +321,7 @@ class editor_action_select : public editor_action_area
 		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "select"; }
 };
 
 /**
@@ -324,6 +337,7 @@ class editor_action_deselect : public editor_action_area
 		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "deselect"; }
 };
 
 /**
@@ -337,6 +351,7 @@ class editor_action_select_all : public editor_action
 		}
 		editor_action_deselect* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "select_all"; }
 };
 
 /**
@@ -350,6 +365,7 @@ class editor_action_select_none : public editor_action
 		}
 		editor_action_select* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "select_none"; }
 };
 
 /**
@@ -363,6 +379,7 @@ class editor_action_select_inverse : public editor_action
 		}
 		editor_action_select_inverse* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "select_inverse"; }
 };
 
 /**
@@ -378,6 +395,7 @@ class editor_action_resize_map : public editor_action
 		{
 		}
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "resize"; }
 	protected:
 		int x_size_;
 		int y_size_;
@@ -399,6 +417,7 @@ class editor_action_rotate_map : public editor_action
 		}
 		editor_action_rotate_map* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "rotate"; }
 	protected:
 		int angle_;
 };
@@ -411,6 +430,7 @@ class editor_action_apply_mask : public editor_action
 		{
 		}
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "apply_mask"; }
 	private:
 		gamemap mask_;
 };
@@ -423,6 +443,7 @@ class editor_action_create_mask : public editor_action
 		{
 		}
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "create_mask"; }
 	private:
 		gamemap target_;
 };
@@ -439,6 +460,7 @@ class editor_action_plot_route : public editor_action_location_terrain
 		}
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "plot_route"; }
 	protected:
 		map_location loc2_;
 };
@@ -455,6 +477,7 @@ class editor_action_shuffle_area : public editor_action_area
 		}
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
+		const char* get_name() const { return "shuffle_area"; }
 };
 
 

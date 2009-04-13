@@ -60,7 +60,7 @@ int editor_action::action_count() const
 	return 1;
 }
 
-std::string editor_action::get_description()
+std::string editor_action::get_description() const
 {
 	return "Unknown action";
 }

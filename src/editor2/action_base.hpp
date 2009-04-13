@@ -70,13 +70,18 @@ class editor_action
 		virtual int action_count() const;
 
 		/**
+		 * @return a short name of this action type, defaults to unknown
+		 */
+		virtual const char* get_name() const { return "unknown"; }
+
+		/**
 		 * A textual description of the action. For use
 		 * e.g. in the undo menu, to have a "Undo: Fill with
 		 * Grassland" item rather than just "Undo". Should be
 		 * overriden by derived Actions, defaults to a debug
 		 * message.
 		 */
-		virtual std::string get_description();
+		virtual std::string get_description() const;
 
 		/**
 		 * Debugging aid. Return an unique identifier of this Action.
