@@ -20,6 +20,8 @@
 #include <map>
 #include <vector>
 
+#include <ctime>
+
 /**
  * @class An exmple how to implement user_handler to demonstrate the interface
  * If you use this on anything real you are insane
