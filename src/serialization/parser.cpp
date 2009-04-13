@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "wesconfig.h"
+#include "serialization/preprocessor.hpp"
 #include "serialization/tokenizer.hpp"
 #include "foreach.hpp"
 
@@ -324,19 +325,7 @@ void parser::parse_variable()
 std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string const &lineno,
 			          std::string const &error_string)
 {
-	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
-	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
-	std::string included_from = _(" included from ");
-	std::string res;
-	while (i != end) {
-		std::string const &line = *(i++);
-		std::string const &file = i != end ? *(i++) : "<unknown>";
-		if (!res.empty())
-			res += included_from;
-		res += file + ':' + line;
-	}
-	if (res.empty()) res = "???";
-	i18n_symbols["pos"] = res;
+	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = _(error_string.c_str());
 	foreach(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));

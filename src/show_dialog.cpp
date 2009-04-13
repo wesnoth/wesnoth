@@ -373,7 +373,8 @@ int show_dialog(display& screen, surface image,
 				const menu::sorter* sorter,
 				menu::style* menu_style)
 {
-	const std::string& title = (image.null())? caption : "";
+	std::string title;
+	if (image.null()) title = caption;
 	const dialog::style& style = (dialog_style)? *dialog_style : dialog::default_style;
 	CVideo &disp = screen.video();
 
