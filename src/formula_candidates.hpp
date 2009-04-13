@@ -143,12 +143,6 @@ protected:
 	unit_map::const_unit_iterator enemy_unit_;
 };
 
-class strategic_candidate_action : public base_candidate_action {
-public:
-	strategic_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
-	virtual void evaluate(formula_ai* ai, unit_map& units);
-};
-
 class support_candidate_action : public candidate_action_with_filters {
 public:
 	support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);

@@ -44,8 +44,6 @@ void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, fu
 				new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
 			} else if( type == "support") {
 				new_ca = candidate_action_ptr(new support_candidate_action(name, type, rc_action, function_table ));
-			} else if( type == "strategic") {
-				new_ca = candidate_action_ptr(new strategic_candidate_action(name, type, rc_action, function_table ));
 			} else {
 				ERR_AI << "Unknown candidate action type: " << type << "\n";
 				continue;
@@ -233,17 +231,6 @@ void attack_candidate_action::update_callable_map(game_logic::map_formula_callab
 	callable.add("target", enemy_unit_callable);
 }
 
-strategic_candidate_action::strategic_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
-	base_candidate_action(name, type, cfg, function_table)
-{}
-
-void strategic_candidate_action::evaluate(formula_ai* ai, unit_map& units)
-{
-
-	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
-	callable.add_ref();
-	score_ = execute_formula(eval_, callable, ai);
-}
 
 support_candidate_action::support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
 	candidate_action_with_filters(name, type, cfg, function_table)
