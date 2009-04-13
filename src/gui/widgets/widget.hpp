@@ -143,11 +143,19 @@ public:
 	 * that after the layout phase get_best_size() still returns this value.
 	 */
 
-	/** Initializes the layout phase. */
+	/** 
+	 * Initializes the layout phase.
+	 *
+	 * @deprecated Will be removed after the new layout algorithm is
+	 * implemented.
+	 */
 	virtual void layout_init() { layout_size_ = tpoint(0,0); }
 
 	/**
 	 * Initializes the layout phase.
+	 *
+	 * @deprecated Will be removed after the new layout algorithm is
+	 * implemented.
 	 *
 	 * @param full_initialization Reset the widget to its initial state. This
 	 *                            flag is used to change the status in the
@@ -156,6 +164,19 @@ public:
 	 */
 	virtual void layout_init2(const bool /*full_initialization*/)
 		{ layout_size_ = tpoint(0,0); }
+
+	/**
+	 * Initializes the layout phase.
+	 *
+	 * Clears the initial best size for the widgets.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param full_initialization For widgets with scrollbars it hides them
+	 *                            unless the mode is tscrollbar_mode::SHOW.
+	 *                            For other widgets this flag is a NOP.
+	 */
+	virtual void NEW_layout_init(const bool full_initialization);
 
 	/**
 	 * Gets the best size for the widget.

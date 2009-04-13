@@ -142,6 +142,32 @@ void tscrollbar_container::layout_init2(const bool full_initialization)
 
 }
 
+void tscrollbar_container::NEW_layout_init(const bool full_initialization)
+{
+	// Inherited.
+	tcontainer_::NEW_layout_init(full_initialization);
+
+	if(full_initialization) {
+
+		if(initial_vertical_scrollbar_mode_ == SHOW) {
+			vertical_scrollbar_mode_ = SHOW;
+		} else {
+			vertical_scrollbar_mode_ = HIDE;
+		}
+		show_vertical_scrollbar();
+
+		if(initial_vertical_scrollbar_mode_ == SHOW) {
+			horizontal_scrollbar_mode_ = SHOW;
+		} else {
+			horizontal_scrollbar_mode_ = HIDE;
+		}
+		show_horizontal_scrollbar();
+	}
+
+	assert(content_grid_);
+	content_grid_->NEW_layout_init(full_initialization);
+}
+
 void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 {
 	// Inherited.

@@ -213,6 +213,19 @@ void tgrid::layout_init2(const bool full_initialization)
 	}
 }
 
+void tgrid::NEW_layout_init(const bool full_initialization)
+{
+	// Inherited.
+	twidget::NEW_layout_init(full_initialization);
+
+	// Clear child caches.
+	foreach(tchild& child, children_) {
+
+		child.NEW_layout_init(full_initialization);
+
+	}
+}
+
 tpoint tgrid::calculate_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);
@@ -1081,6 +1094,15 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 		<< widget_orig << " x " << widget_size << ".\n";
 
 	widget()->set_size(widget_orig, widget_size);
+}
+
+void tgrid::tchild::NEW_layout_init(const bool full_initialization)
+{
+	assert(widget_);
+
+	if(widget_->get_visible() != twidget::INVISIBLE) {
+		widget_->NEW_layout_init(full_initialization);
+	}
 }
 
 void tgrid::tchild::layout_wrap(const unsigned maximum_width)

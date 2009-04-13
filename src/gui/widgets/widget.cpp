@@ -18,6 +18,13 @@
 
 namespace gui2 {
 
+void twidget::NEW_layout_init(const bool /*full_initialization*/)
+{
+	assert(visible_ != INVISIBLE);
+
+	layout_size_ = tpoint(0,0);
+}
+
 tpoint twidget::get_best_size() const
 {
 	assert(!is_invisible());

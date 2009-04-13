@@ -182,6 +182,7 @@ public:
 	/** Inherited from twidget. */
 	void layout_init();
 	void layout_init2(const bool full_initialization);
+	void NEW_layout_init(const bool full_initialization);
 
 private:
 
@@ -290,6 +291,9 @@ private:
 		 * @param size            The size for the widget.
 		 */
 		void set_size(tpoint origin, tpoint size);
+
+		/** Forwards NEW_layout_init() to the cell. */
+		void NEW_layout_init(const bool full_initialization);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const
