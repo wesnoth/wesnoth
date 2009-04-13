@@ -245,7 +245,8 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 				  const bool has_exit_button, const bool ask_for_filename)
 {
 	static int quit_prompt = 0;
-	const std::string& tmp_title = (title.empty()) ? _("Save Game") : title;
+	std::string tmp_title = title;
+	if (tmp_title.empty()) tmp_title = _("Save Game");
 	bool ignore_opt = false;
 	int overwrite=0;
 	int res=0;
