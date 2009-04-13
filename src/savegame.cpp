@@ -246,7 +246,7 @@ void loadgame::set_gamestate()
 
 void loadgame::load_multiplayer_game()
 {
-	show_dialog(false, NULL);
+	show_dialog(false, false);
 
 	if (filename_.empty())
 		throw load_game_cancelled_exception();
