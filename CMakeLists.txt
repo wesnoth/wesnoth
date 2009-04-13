@@ -28,10 +28,13 @@ find_package( Gettext REQUIRED )
 find_package( FriBiDi )
 find_package( X11 )
 
-#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
-set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
-exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
-add_definitions(${SDL_CFLAGS})
+if(NOT MSVC)
+	#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+	set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
+	exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
+	add_definitions(${SDL_CFLAGS})
+endif(NOT MSVC)
+
 
 #check for some compiler/arch specific things and export defines accordingly...
 INCLUDE (SearchForStuff)
