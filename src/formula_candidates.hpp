@@ -30,7 +30,7 @@ typedef boost::shared_ptr<game_logic::base_candidate_action> candidate_action_pt
 //and should complete evaluate and update_callable_map methods
 class base_candidate_action {
 public:
-	base_candidate_action(const config& cfg, function_symbol_table* function_table);
+	base_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 
 	virtual ~base_candidate_action() {}
 
@@ -45,6 +45,9 @@ public:
 	int get_score() const {return score_;}
 	
 	const_formula_ptr& get_action() {return action_;}
+
+	const std::string& get_name() { return name_;}
+	const std::string& get_type() { return type_;}
 	
 protected:
 	int execute_formula(const const_formula_ptr& formula, 
@@ -110,7 +113,7 @@ private:
 
 class candidate_action_with_filters : public base_candidate_action {
 public:
-	candidate_action_with_filters(const config& cfg, function_symbol_table* function_table);
+	candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 protected:
 
 	game_logic::candidate_action_filters filter_map_;
@@ -118,7 +121,7 @@ protected:
 
 class move_candidate_action : public candidate_action_with_filters {
 public:
-	move_candidate_action(const config& cfg, function_symbol_table* function_table);
+	move_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 
 	virtual void evaluate(formula_ai* ai, unit_map& units);
 
@@ -130,7 +133,7 @@ protected:
 
 class attack_candidate_action : public candidate_action_with_filters {
 public:
-	attack_candidate_action(const config& cfg, function_symbol_table* function_table);
+	attack_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 
 	virtual void evaluate(formula_ai* ai, unit_map& units);
 
@@ -140,11 +143,16 @@ protected:
 	unit_map::const_unit_iterator enemy_unit_;
 };
 
-class support_candidate_action : public candidate_action_with_filters {
+class strategic_candidate_action : public base_candidate_action {
 public:
-	support_candidate_action(const config& cfg, function_symbol_table* function_table);
+	strategic_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
+	virtual void evaluate(formula_ai* ai, unit_map& units);
 };
 
+class support_candidate_action : public candidate_action_with_filters {
+public:
+	support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
+};
 }
 
 #endif	/* _FORMULA_CANDIDATES_HPP */

@@ -39,11 +39,13 @@ void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, fu
 			candidate_action_ptr new_ca;
 
 			if( type == "movement") {
-				new_ca = candidate_action_ptr(new move_candidate_action(rc_action, function_table ));
+				new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
 			} else if( type == "attack") {
-				new_ca = candidate_action_ptr(new attack_candidate_action(rc_action, function_table ));
+				new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
 			} else if( type == "support") {
-				new_ca = candidate_action_ptr(new support_candidate_action(rc_action, function_table ));
+				new_ca = candidate_action_ptr(new support_candidate_action(name, type, rc_action, function_table ));
+			} else if( type == "strategic") {
+				new_ca = candidate_action_ptr(new strategic_candidate_action(name, type, rc_action, function_table ));
 			} else {
 				ERR_AI << "Unknown candidate action type: " << type << "\n";
 				continue;
@@ -76,7 +78,9 @@ bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_m
 	return true;
 }
 
-base_candidate_action::base_candidate_action(const config& cfg, function_symbol_table* function_table) :
+base_candidate_action::base_candidate_action(const std::string& name,const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	name_(name),
+	type_(type),
 	eval_(new game_logic::formula(cfg["evaluation"], function_table)),
 	action_(new game_logic::formula(cfg["action"], function_table))
 {}
@@ -98,8 +102,8 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 	return res;
 }
 
-candidate_action_with_filters::candidate_action_with_filters(const config& cfg, function_symbol_table* function_table) :
-	base_candidate_action(cfg, function_table)
+candidate_action_with_filters::candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	base_candidate_action(name, type, cfg, function_table)
 {
 	const config & filter_params = cfg.child("filter");
 
@@ -114,8 +118,8 @@ candidate_action_with_filters::candidate_action_with_filters(const config& cfg, 
 	}	
 }
 
-move_candidate_action::move_candidate_action(const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(cfg, function_table)
+move_candidate_action::move_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	candidate_action_with_filters(name, type, cfg, function_table)
 {}
 
 void move_candidate_action::evaluate(formula_ai* ai, unit_map& units)
@@ -154,8 +158,8 @@ void move_candidate_action::update_callable_map(game_logic::map_formula_callable
 	callable.add("me", my_unit_callable);
 }
 
-attack_candidate_action::attack_candidate_action(const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(cfg, function_table)
+attack_candidate_action::attack_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	candidate_action_with_filters(name, type, cfg, function_table)
 {}
 
 void attack_candidate_action::evaluate(formula_ai* ai, unit_map& units)
@@ -229,8 +233,33 @@ void attack_candidate_action::update_callable_map(game_logic::map_formula_callab
 	callable.add("target", enemy_unit_callable);
 }
 
-support_candidate_action::support_candidate_action(const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(cfg, function_table)
+strategic_candidate_action::strategic_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	base_candidate_action(name, type, cfg, function_table)
+{}
+
+void strategic_candidate_action::evaluate(formula_ai* ai, unit_map& units)
+{
+	score_ = 0;
+
+
+	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
+	{
+		if( (i->second.side() == ai->get_side() ) &&
+				(i->second.has_moved() == false) ) {
+
+			game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+			callable.add_ref();
+			int res = execute_formula(eval_, callable, ai);
+
+			if(res > score_) {
+				score_ = res;
+			}
+		}
+	}
+}
+
+support_candidate_action::support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
+	candidate_action_with_filters(name, type, cfg, function_table)
 {}
 
 }
