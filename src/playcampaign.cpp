@@ -583,6 +583,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			if (gamestate.campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
+				write_players(gamestate, gamestate.starting_pos);
 			}
 		}
 	}
