@@ -101,9 +101,7 @@ game::~game()
 	for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
 		remove_player(*u, false, true);
 	}
-	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
-		delete *i;
-	}
+	clear_history();
 }
 
 bool game::allow_observers() const {
@@ -192,7 +190,7 @@ void game::start_game(const player_map::const_iterator starter) {
 	}
 	end_turn_ = (turn - 1) * nsides_ + side - 1;
 	end_turn();
-	history_.clear();
+	clear_history();
 	if (advance) {
 		// Re-assign sides to allow correct filtering of commands.
 		update_side_data();
@@ -1230,7 +1228,9 @@ void game::save_replay() {
 				turn != turn_list.end(); ++turn) {
 			replay_commands += (*turn)->output();
 		}
+		delete *i;
 	}
+	history_.clear();
 
 	std::stringstream name;
 	name << level_["name"] << " Turn " << current_turn();
@@ -1263,6 +1263,13 @@ void game::save_replay() {
 void game::record_data(simple_wml::document* data) {
 	data->compress();
 	history_.push_back(data);
+}
+
+void game::clear_history() {
+	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
+		delete *i;
+	}
+	history_.clear();
 }
 
 void game::set_description(simple_wml::node* desc) {
