@@ -33,6 +33,9 @@ Version 1.7.0-svn:
    * Made "wesnoth -e --load DIR" (and consequently "wesnoth -e DIR") set
      DIR as the default map directory for the current session, and start with 
      the map load dialog open
+   * Added ability to load maps referenced in scenario files
+   * Added ability to work with maps embedded in scenario files (saving works 
+     in a limited scope)
  * FormulaAI:
    * Fixed bug #13230: added debug_float FormulaAI function to allow debugging
      via floating popups on the specified hex

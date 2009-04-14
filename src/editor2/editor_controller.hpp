@@ -165,6 +165,27 @@ class editor_controller : public controller_base,
 		void new_map(int width, int height, t_translation::t_terrain fill, bool new_context);
 
 		/**
+		 * Check if a map is already open.
+		 * @return index of the map context containg the given filename,
+		 *         or map_contexts_.size() if not found.
+		 */
+		size_t check_open_map(const std::string& fn) const;
+
+		/**
+		 * check_open_map shorthand
+		 * @return true if the map is open, false otherwise
+		 */
+		bool map_is_open(const std::string& fn) const {
+			return check_open_map(fn) < map_contexts_.size();
+		}
+
+		/**
+		 * Check if a map is already open. If yes, switch to it
+		 * and return true, return false otherwise.
+		 */
+		bool check_switch_open_map(const std::string& fn);
+
+		/**
 		 * Load a map given the filename
 		 */
 		void load_map(const std::string& filename, bool new_context);

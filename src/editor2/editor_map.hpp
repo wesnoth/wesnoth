@@ -50,6 +50,20 @@ struct editor_map_load_exception : public editor_exception
 	std::string filename;
 };
 
+struct editor_map_save_exception : public editor_exception
+{
+	editor_map_save_exception(const std::string& msg)
+	: editor_exception(msg)
+	{
+	}
+	~editor_map_save_exception() throw() {}
+};
+
+
+/**
+ * Exception wrapping utility
+ */
+editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename);
 
 /**
  * This class adds extra editor-specific functionality to a normal gamemap.
@@ -58,16 +72,36 @@ class editor_map : public gamemap
 {
 public:
 
+	/**
+	 * Empty map constructor
+	 */
+	explicit editor_map(const config& terrain_cfg);
+
+	/**
+	 * Create an editor map from a map data string 
+	 */
 	editor_map(const config& terrain_cfg, const std::string& data);
 
+	/**
+	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
+	 * and wraps them in a editor_map_load_exception
+	 */
+	static editor_map from_string(const config& terrain_cfg, const std::string& data);
+
+	/**
+	 * Create an editor map with the given dimensions and filler terrain
+	 */
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 
-	editor_map(const config& terrain_cfg, const gamemap& map);
-
+	/**
+	 * Create an editor_map by upgrading an existing gamemap. The map data is 
+	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
+	 */
 	explicit editor_map(const gamemap& map);
 
-	static editor_map load_from_file(const config& game_config, const std::string& filename);
-
+	/**
+	 * editor_map destructor
+	 */
 	~editor_map();
 
 	/**
@@ -137,7 +171,7 @@ public:
 
 	/**
 	 * Resize the map. If the filler is NONE, the border terrain will be copied
-	 * when expanding, otherwise the fill er terrain will be inserted there
+	 * when expanding, otherwise the filler terrain will be inserted there
 	 */
 	void resize(int width, int height, int x_offset, int y_offset,
 		t_translation::t_terrain filler = t_translation::NONE_TERRAIN);
@@ -148,11 +182,17 @@ public:
 	 */
 	gamemap mask_to(const gamemap& target) const;
 
+	/**
+	 * A precondition to several map operations
+	 * @return true if this map has the same dimensions as the other map
+	 */
 	bool same_size_as(const gamemap& other) const;
 
 protected:
 	void swap_starting_position(int x1, int y1, int x2, int y2);
 	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
+
+	//helper functions for resizing
 	void expand_right(int count, t_translation::t_terrain filler);
 	void expand_left(int count, t_translation::t_terrain filler);
 	void expand_top(int count, t_translation::t_terrain filler);

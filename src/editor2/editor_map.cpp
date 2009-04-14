@@ -27,10 +27,7 @@
 #include "../wml_exception.hpp"
 
 
-
 namespace editor2 {
-
-namespace {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
@@ -44,7 +41,11 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	return editor_map_load_exception(filename, msg);
 }
 
-} // namespace
+editor_map::editor_map(const config& terrain_cfg)
+	: gamemap(terrain_cfg, gamemap::default_map_header)
+	, selection_()
+{
+}
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 	: gamemap(terrain_cfg, data)
@@ -53,16 +54,22 @@ editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 	sanity_check();
 }
 
+editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data)
+{
+	try {
+		return editor_map(terrain_cfg, data);
+	} catch (incorrect_map_format_exception& e) {
+		throw wrap_exc("format", e.msg_, "");
+	} catch (twml_exception& e) {
+		throw wrap_exc("wml", e.user_message, "");
+	} catch (config::error& e) {
+		throw wrap_exc("config", e.message, "");
+	}
+}
+
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
 	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
-	, selection_()
-{
-	sanity_check();
-}
-
-editor_map::editor_map(const config& /*terrain_cfg*/, const gamemap& map)
-	: gamemap(map)
 	, selection_()
 {
 	sanity_check();
@@ -74,29 +81,6 @@ editor_map::editor_map(const gamemap& map)
 {
 	sanity_check();
 }
-
-editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
-{
-	log_scope2(editor, "Loading map " + filename);
-	std::string map_string = read_file(filename);
-
-
-	if (map_string.empty()) {
-		std::string message = _("Empty map file or file not found");
-		throw editor_map_load_exception(filename, message);
-	}
-	try {
-		editor_map new_map(game_config, map_string);
-		return new_map;
-	} catch (incorrect_map_format_exception& e) {
-		throw wrap_exc("format", e.msg_, filename);
-	} catch (twml_exception& e) {
-		throw wrap_exc("wml", e.user_message, filename);
-	} catch (config::error& e) {
-		throw wrap_exc("config", e.message, filename);
-	}
-}
-
 
 editor_map::~editor_map()
 {
