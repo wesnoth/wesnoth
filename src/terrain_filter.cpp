@@ -104,7 +104,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 {
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == NULL) {
-			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
+			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain_type"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
 			const t_translation::t_terrain letter = map_.get_terrain_info(loc).number();

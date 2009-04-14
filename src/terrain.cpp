@@ -79,16 +79,16 @@ terrain_type::terrain_type(const config& cfg) :
  *  @todo reenable these validations. The problem is that all MP
  *  scenarios/campaigns share the same namespace and one rogue scenario
  *  can avoid the player to create a MP game. So every scenario/campaign
- *  should get it's own namespace to be save.
+ *  should get it's own namespace to be safe.
  */
 #if 0
 	VALIDATE(number_ != t_translation::NONE_TERRAIN,
-		missing_mandatory_wml_key("terrain", "string"));
+		missing_mandatory_wml_key("terrain_type", "string"));
 	VALIDATE(!minimap_image_.empty(),
-		missing_mandatory_wml_key("terrain", "symbol_image", "string",
+		missing_mandatory_wml_key("terrain_type", "symbol_image", "string",
 		t_translation::write_terrain_code(number_)));
 	VALIDATE(!name_.empty(),
-		missing_mandatory_wml_key("terrain", "name", "string",
+		missing_mandatory_wml_key("terrain_type", "name", "string",
 		t_translation::write_terrain_code(number_)));
 #endif
 

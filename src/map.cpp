@@ -119,7 +119,7 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 		usage_(IS_MAP)
 {
 	DBG_G << "loading map: '" << data << "'\n";
-	const config::const_child_itors &terrains = cfg.child_range("terrain");
+	const config::const_child_itors &terrains = cfg.child_range("terrain_type");
 	create_terrain_maps(terrains, terrainList_, tcodeToTerrain_);
 
 	read(data);
@@ -330,7 +330,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			if (rule != rules.second)
 			{
 				const config &cfg = *rule;
-				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
+				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain_type"]);
 
 				tmerge_mode mode = BOTH;
 				if (cfg["layer"] == "base") {
