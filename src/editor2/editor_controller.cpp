@@ -606,7 +606,9 @@ void editor_controller::resize_map_dialog()
 bool editor_controller::save_map_as(const std::string& filename)
 {
 	size_t is_open = check_open_map(filename);
-	if (is_open < map_contexts_.size() && is_open != current_context_index_) {
+	if (is_open < map_contexts_.size()
+			&& is_open != static_cast<unsigned>(current_context_index_)) {
+
 		gui::dialog(gui(), _("This map is already open."), filename).show();
 		return false;
 	}
