@@ -1255,8 +1255,9 @@ def leader(s):
 def hack_syntax(filename, lines):
     # Syntax transformations go here.  This gets called once per WML file;
     # the name of the file is passed as filename, text of the file as the
-    # array of strings in lines.  Modify lines in place as needed, and
-    # set modcount to nonzero when you actually change any.
+    # array of strings in lines.  Modify lines in place as needed;
+    # changes will be detected by the caller.
+    #
     # Ensure that every attack has a translatable description.
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
