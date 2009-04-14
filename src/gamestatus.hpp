@@ -315,8 +315,6 @@ struct save_info {
 /** Get a list of available saves. */
 std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
 
-void read_save_file(const std::string& name, config& cfg, std::string* error_log);
-
 void write_players(game_state& gamestate, config& cfg);
 
 /** Returns true iff there is already a savegame with that name. */
@@ -324,10 +322,6 @@ bool save_game_exists(const std::string & name);
 
 /** Throws game::save_game_failed. */
 scoped_ostream open_save_game(const std::string &label);
-
-/** Load/Save games. */
-void load_game(const std::string& name, game_state& gamestate, std::string* error_log);
-void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 
 /** Delete a savegame. */
 void delete_game(const std::string& name);
@@ -337,5 +331,6 @@ config& save_summary(std::string save);
 void write_save_index();
 
 void replace_underbar2space(std::string &name);
+void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 #endif

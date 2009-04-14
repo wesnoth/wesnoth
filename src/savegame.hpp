@@ -26,6 +26,15 @@ struct load_game_cancelled_exception
 {
 };
 
+class save_summary
+{
+public:
+	save_summary() {}
+	virtual ~save_summary() {}
+
+	static void load_summary(const std::string& name, config& cfg_summary, std::string* error_log);
+};
+
 class loadgame
 {
 public:
@@ -43,7 +52,6 @@ public:
 
 private:
 	void show_dialog(bool show_replay, bool cancel_orders);
-	void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 	void check_version_compatibility();
 	void copy_era(config& cfg);
 

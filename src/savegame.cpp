@@ -106,6 +106,44 @@
 	}
 #endif /* _WIN32 */
 
+static void read_save_file(const std::string& name, config& cfg, std::string* error_log)
+{
+	std::string modified_name = name;
+	replace_space2underbar(modified_name);
+
+	// Try reading the file both with and without underscores
+	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
+	if (file_stream->fail())
+		file_stream = istream_file(get_saves_dir() + "/" + name);
+
+	cfg.clear();
+	try{
+		if(is_gzip_file(name)) {
+			read_gz(cfg, *file_stream, error_log);
+		} else {
+			detect_format_and_read(cfg, *file_stream, error_log);
+		}
+	} catch (config::error &err)
+	{
+		LOG_SAVE << err.message;
+		throw game::load_game_failed();
+	}
+
+	if(cfg.empty()) {
+		LOG_SAVE << "Could not parse file data into config\n";
+		throw game::load_game_failed();
+	}
+}
+
+void save_summary::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
+	log_scope("load_game_summary");
+
+	config cfg;
+	read_save_file(name,cfg,error_log);
+
+	::extract_summary_from_config(cfg, cfg_summary);
+}
+
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
 	: game_config_(game_config)
 	, gui_(gui)
@@ -179,35 +217,6 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 		}
 	}
 
-}
-
-void loadgame::read_save_file(const std::string& name, config& cfg, std::string* error_log)
-{
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
-	// Try reading the file both with and without underscores
-	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
-	if (file_stream->fail())
-		file_stream = istream_file(get_saves_dir() + "/" + name);
-
-	cfg.clear();
-	try{
-		if(is_gzip_file(name)) {
-			read_gz(cfg, *file_stream, error_log);
-		} else {
-			detect_format_and_read(cfg, *file_stream, error_log);
-		}
-	} catch (config::error &err)
-	{
-		LOG_SAVE << err.message;
-		throw game::load_game_failed();
-	}
-
-	if(cfg.empty()) {
-		LOG_SAVE << "Could not parse file data into config\n";
-		throw game::load_game_failed();
-	}
 }
 
 void loadgame::check_version_compatibility()
@@ -306,7 +315,7 @@ void savegame::save_game_interactive(display& gui, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button, 
 									 const bool ask_for_filename)
 {
-	interactive_ = true;
+	interactive_ = ask_for_filename;
 	create_filename();
 	const int res = dialogs::get_save_name(gui, message, _("Name: "), &filename_, dialog_type, title_, has_exit_button, ask_for_filename);
 

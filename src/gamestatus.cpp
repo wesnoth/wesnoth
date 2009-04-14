@@ -48,8 +48,6 @@ static void write_player(const player_info& player, config& cfg);
 
 #endif /* _WIN32 */
 
-static void extract_summary_from_config(config& cfg_save, config& cfg_summary);
-
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);
 	if (found == players.end()) {
@@ -659,44 +657,6 @@ void delete_game(const std::string& name)
 
 	remove((get_saves_dir() + "/" + name).c_str());
 	remove((get_saves_dir() + "/" + modified_name).c_str());
-}
-
-void read_save_file(const std::string& name, config& cfg, std::string* error_log)
-{
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
-	// Try reading the file both with and without underscores
-	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
-	if (file_stream->fail())
-		file_stream = istream_file(get_saves_dir() + "/" + name);
-
-	cfg.clear();
-	try{
-		if(is_gzip_file(name)) {
-			read_gz(cfg, *file_stream, error_log);
-		} else {
-			detect_format_and_read(cfg, *file_stream, error_log);
-		}
-	} catch (config::error &err)
-	{
-		ERR_NG << err.message;
-		throw game::load_game_failed();
-	}
-
-	if(cfg.empty()) {
-		ERR_NG << "Could not parse file data into config\n";
-		throw game::load_game_failed();
-	}
-}
-
-void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){
-	log_scope("load_game_summary");
-
-	config cfg;
-	read_save_file(name,cfg,error_log);
-
-	extract_summary_from_config(cfg, cfg_summary);
 }
 
 // Throws game::save_game_failed

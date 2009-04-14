@@ -34,6 +34,7 @@
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
+#include "savegame.hpp"
 #include "thread.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
@@ -420,7 +421,7 @@ void save_preview_pane::draw_contents()
 	config& summary = *(*summaries_)[index_];
 	if (summary["label"] == ""){
 		try {
-			load_game_summary((*info_)[index_].name, summary, &dummy);
+			save_summary::load_summary((*info_)[index_].name, summary, &dummy);
 			*(*summaries_)[index_] = summary;
 		} catch(game::load_game_failed&) {
 			summary["corrupt"] = "yes";
