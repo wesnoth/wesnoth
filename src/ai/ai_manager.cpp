@@ -13,11 +13,10 @@
 */
 
 /**
- * Managing the AI lifecycle
+ * Managing the AI lifecycle and interface for the rest of Wesnoth
  * @file ai/ai_manager.cpp
  */
 
-//@todo: shorten this list of includes, for this list is copypasted from ai.cpp
 #include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_configuration.hpp"
@@ -436,6 +435,11 @@ bool ai_manager::add_ai_for_side_from_file( int side, const std::string& file, b
 		ERR_AI_MANAGER << " unable to read [SIDE] config for side "<< side << "from file [" << file <<"]"<< std::endl;
 		return false;
 	}
+	return add_ai_for_side_from_config(side,cfg,replace);
+}
+
+
+bool ai_manager::add_ai_for_side_from_config( int side, const config& cfg, bool replace ){
 	config ai_memory;//AI memory
 	std::vector<config> ai_parameters;//AI parameters inside [ai] tags. May contain filters
 	config global_ai_parameters ;//AI parameters which do not have a filter applied

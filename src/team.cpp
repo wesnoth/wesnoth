@@ -19,7 +19,6 @@
 
 #include "global.hpp"
 
-#include "ai/ai_configuration.hpp"
 #include "ai/ai_manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
@@ -121,23 +120,12 @@ team::team_info::team_info(const config& cfg) :
 	if (!user_team_name.translatable())
 		user_team_name = user_team_name.from_serialized(user_team_name);
 
-	config ai_memory;
-	config global_ai_parameters;//AI parameters which do not have a filter applied
-	std::vector<config> ai_parameters;//AI parameters inside [ai] tags. May contain filters.
-	const config& default_ai_parameters = ai_configuration::get_default_ai_parameters();
-	std::string ai_algorithm_type;
-	config effective_ai_params;//Needed only to set some legacy stuff in team_info
-
-	ai_configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_params );
-	ai_manager::add_ai_for_side(side,ai_algorithm_type,true);
-
-	ai_manager::set_active_ai_effective_parameters_for_side(side,effective_ai_params);
-	ai_manager::set_active_ai_global_parameters_for_side(side,global_ai_parameters);
-	ai_manager::set_active_ai_memory_for_side(side,ai_memory);
-	ai_manager::set_active_ai_parameters_for_side(side,ai_parameters);
-
+	ai_manager::add_ai_for_side_from_config(side,cfg,true);
 
 	//legacy parameters
+	const config& global_ai_parameters =  ai_manager::get_active_ai_global_parameters_for_side(side);
+	const config& effective_ai_params =  ai_manager::get_active_ai_effective_parameters_for_side(side);
+
 	number_of_possible_recruits_to_force_recruit = lexical_cast<float>(effective_ai_params["number_of_possible_recruits_to_force_recruit"]);
 	villages_per_scout = lexical_cast<int>(effective_ai_params["villages_per_scout"]);
 	leader_value = lexical_cast<double>(effective_ai_params["leader_value"]);

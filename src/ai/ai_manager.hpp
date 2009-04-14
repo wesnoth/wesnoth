@@ -181,6 +181,7 @@ public:
 	 * AI is not initialized at this point.
 	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param file file name, follows the usual WML convention
+	 * @param replace should new ai replace the current ai or 'be placed on top of it'
 	 * @return success?
 	 * @retval true all ok
 	 * @retval false not all ok
@@ -193,8 +194,22 @@ public:
 	 * @note: Running this command may invalidate references previously returned by AI Manager
 	 * AI is not initialized at this point.
 	 * @param side side number (1-based, as in ai_interface::info)
+	 * @param config the config from which all ai parameters are to be read
+	 * @param replace should new ai replace the current ai or 'be placed on top of it'
+	 * @return success?
+	 * @retval true all ok
+	 * @retval false not all ok
+	 */
+	static bool add_ai_for_side_from_config( int side, const config& config, bool replace = true);
+
+
+	/**
+	 * Add active AI for specified side from parameters.
+	 * @note: Running this command may invalidate references previously returned by AI Manager
+	 * AI is not initialized at this point.
+	 * @param side side number (1-based, as in ai_interface::info)
 	 * @param ai_algorithm_type type of AI algorithm to create
-	 * @param ai_params AI parameters
+	 * @param replace should new ai replace the current ai or 'be placed on top of it'
 	 * @return success?
 	 * @retval true all ok
 	 * @retval false not all ok
