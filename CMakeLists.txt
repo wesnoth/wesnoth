@@ -7,6 +7,7 @@
 # * Test everything
 # * Fix tiny gui with processing the data directory
 # * Make translations work without installation
+# * install .desktop files taking binary prefix and suffix into account
 
 # set minimum version
 cmake_minimum_required(VERSION 2.6.0)
@@ -270,27 +271,30 @@ endif()
 
 #
 # Install desktop file so wesnoth appears in the application start menu with an icon
+# TODO: string replacement to have the real binary name in does not work atm, because in the Categories= block semicolons are lost...
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
   # do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-  file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
+#  file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
   #string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-  string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
+#  string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
+#  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
   
   #execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
   #exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
   # install the generated .desktop file
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+  install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
   install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
   
   if(ENABLE_EDITOR)
     # do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
-    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
-    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
+#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
+#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
+#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
     # install the generated .desktop file
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+    install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
     install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
   endif(ENABLE_EDITOR)
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
