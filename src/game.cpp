@@ -1940,13 +1940,13 @@ static int do_gameloop(int argc, char** argv)
 
 	gui2::init();
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
-
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
+
+	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
 
 	loadscreen::global_loadscreen->increment_progress(5, _("Loading game configuration."));
 	res = game.init_config();
