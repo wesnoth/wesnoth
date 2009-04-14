@@ -151,6 +151,7 @@ public:
 	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
 	void send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type = "") const;
 
+	void clear_history();
 	void record_data(simple_wml::document* data);
 	void save_replay();
 
