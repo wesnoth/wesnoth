@@ -209,7 +209,7 @@ namespace events{
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
-			  .set_numeric_sort(4).set_alpha_sort(5).set_numeric_sort(6);
+			  .set_xp_sort(4,2).set_alpha_sort(5).set_numeric_sort(6);
 
 		std::vector<std::string> items;
 		items.push_back(heading);
@@ -875,7 +875,7 @@ private:
 #endif
 
 			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4).set_alpha_sort(5);
+			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_xp_sort(4,3).set_alpha_sort(5);
 
 			options.push_back(heading.str());
 			options_to_filter.push_back(options.back());

@@ -47,6 +47,13 @@ menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
 	return *this;
 }
 
+menu::basic_sorter& menu::basic_sorter::set_xp_sort(int xp_column, int level_column)
+{
+	xp_sort_.insert(xp_column);
+	level_col_ = level_column;
+	return *this;
+}
+
 menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
 {
 	id_sort_.insert(column);
@@ -76,7 +83,7 @@ bool menu::basic_sorter::column_sortable(int column) const
 	}
 
 	return alpha_sort_.count(column) == 1 || numeric_sort_.count(column) == 1 ||
-		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1;
+		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1 || xp_sort_.count(column) == 1;
 }
 
 bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
@@ -129,6 +136,45 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		}
 
 		return atoi(a) > atoi(b);
+	} else if(xp_sort_.count(column) == 1) {
+		const std::string& item1 = font::del_tags(row1.fields[column]);
+		const std::string& item2 = font::del_tags(row2.fields[column]);
+		const std::string& item1_lev = font::del_tags(row1.fields[level_col_]);
+		const std::string& item2_lev = font::del_tags(row2.fields[level_col_]);
+
+		const char* digits[4] = {item1.c_str(),item2.c_str(),item1_lev.c_str(),item2_lev.c_str()};
+		//we must move past any non-digit characters for atoi() to work later
+		//outer loop iterates over the strings we have to fix, inner loop over characters
+		for(int i = 0; i < 4; i++) {
+			while(*digits[i] != 0 && !isdigit(*digits[i])) {
+				++digits[i];
+			}
+		}
+
+		//we need to further parse xp into x and y components instead of x/y
+		//so we grab the position of slash character
+		char *slash1 = strchr(digits[0],'/');
+		char *slash2 = strchr(digits[1],'/');
+		
+		int xp1_y,xp2_y;
+		if(slash1)
+			xp1_y = atoi(slash1+1);
+		else
+			xp1_y = 0;
+		if(slash2)
+			xp2_y = atoi(slash2+1);
+		else
+			xp2_y = 0;
+		int xp1_x = atoi(digits[0]); //atoi stops at the first invalid char, which is slash character
+		int xp2_x = atoi(digits[1]);
+		
+		int level1 = atoi(digits[2]);
+		int level2 = atoi(digits[3]);
+		if(level1 > level2)
+			return true;
+		if(level1 < level2)
+			return false;
+		return (xp1_y - xp1_x) < (xp2_y - xp2_x);
 	}
 
 	const std::map<int,std::vector<int> >::const_iterator itor = pos_sort_.find(column);
