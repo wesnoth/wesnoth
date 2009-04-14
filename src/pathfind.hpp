@@ -73,18 +73,12 @@ bool enemy_zoc(gamemap const &map,
 
 struct cost_calculator
 {
-	cost_calculator()
-		: max_cost_(0.0)
-	{
-	}
+	cost_calculator() {}
 
 	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
 
 	inline double getNoPathValue() const { return (42424242.0); }
-
-private:
-	double max_cost_;
 };
 
 /**
