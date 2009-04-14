@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:48+0200\n"
-"PO-Revision-Date: 2009-01-13 21:56+0100\n"
+"PO-Revision-Date: 2009-04-13 23:22+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -378,9 +378,10 @@ msgid ""
 "provide the gold needed to recruit units. Each turn, you gain two gold plus "
 "one for every village you own."
 msgstr ""
-"Táto dedina je teraz 'tvoja'. Vidíš, že je na nej tvoja vlajka; a čoskoro sa "
-"navrchu obrazovky pri ikone domčeka objaví číslo '1'. Dediny dávajú zlato. "
-"Každé kolo dostaneš dve zlatky, plus jednu za každú dedinu, ktorú vlastníš."
+"Táto dedina je teraz 'tvoja'. Vidíš, že je na nej vlajka tvojej farby; a "
+"čoskoro sa navrchu obrazovky pri ikone domčeka objaví číslo '1' (počet "
+"tvojich dedín). Dediny dávajú zlato potrebné na verbovanie jednotiek. Každé "
+"kolo dostaneš dve zlatky, plus jednu za každú dedinu, ktorú vlastníš."
 
 #. [event]
 #. [then]
@@ -399,18 +400,17 @@ msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
-"Dedina ti vylieči 8 bodov zdravia. Ale myslím, že budeš proti tomu panákovi "
-"potrebovať nejakú pomoc."
+"Dedina ti vylieči $hp_difference životov. Ale myslím, že budeš proti tomu "
+"panákovi potrebovať nejakú pomoc."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:564
-#, fuzzy
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
 msgstr ""
-"Dedina ti vylieči 8 bodov zdravia. Ale myslím, že budeš proti tomu panákovi "
-"potrebovať nejakú pomoc."
+"Dedina ti vylieči $hp_difference životov. Ale myslím, že budeš proti tomu "
+"panákovi potrebovať nejakú pomoc."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
@@ -1040,7 +1040,7 @@ msgstr "PRIVOLAJ $recall_name1"
 msgid "Right click on the tile north-east of you and recall $recall_name1"
 msgstr ""
 "Klikni pravým tlačidlom myši na políčko severovýchodne od teba a privolaj "
-"$recall_name2"
+"$recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
@@ -1050,7 +1050,7 @@ msgid ""
 "experience so it's more effecient to recruit new ones. Recruit an Elvish "
 "Fighter."
 msgstr ""
-"Keby nejakí elfi vojaci mali skúsenosti z predchádzajúcej bitky, privolali "
+"Keby nejakí elfskí vojaci mali skúsenosti z predchádzajúcej bitky, privolali "
 "by sme ich; ale keďže nemajú, je lacnejšie naverbovať nových. Takže naverbuj "
 "elfa vojaka."
 
