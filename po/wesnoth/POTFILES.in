@@ -47,6 +47,7 @@ src/generate_report.cpp
 src/generic_event.cpp
 src/gettext.cpp
 src/halo.cpp
+src/hash.cpp
 src/help.cpp
 src/intro.cpp
 src/key.cpp
@@ -57,9 +58,9 @@ src/loadscreen_empty.cpp
 src/log.cpp
 src/map.cpp
 src/map_create.cpp
-src/map_location.cpp
 src/mapgen.cpp
 src/map_label.cpp
+src/map_location.cpp
 src/md5.cpp
 src/menu_events.cpp
 src/mouse_events.cpp
@@ -86,6 +87,9 @@ src/random.cpp
 src/replay_controller.cpp
 src/replay.cpp
 src/reports.cpp
+src/save_blocker.cpp
+src/savegame.cpp
+src/scripting/lua.cpp
 src/sdl_utils.cpp
 src/serialization/binary_or_text.cpp
 src/serialization/binary_wml.cpp
@@ -111,9 +115,14 @@ src/server/user_handler.cpp
 src/settings.cpp
 src/sha1.cpp
 src/sound.cpp
+src/sound_music_track.cpp
 src/soundsource.cpp
 src/statistics.cpp
 src/statistics_dialog.cpp
+src/storyscreen/controller.cpp
+src/storyscreen/interface.cpp
+src/storyscreen/page.cpp
+src/storyscreen/render.cpp
 src/team.cpp
 src/terrain.cpp
 src/theme.cpp
@@ -132,10 +141,10 @@ src/tooltips.cpp
 src/tstring.cpp
 src/unit_abilities.cpp
 src/unit_animation.cpp
-src/unit_id.cpp
 src/unit.cpp
 src/unit_display.cpp
 src/unit_frame.cpp
+src/unit_id.cpp
 src/unit_map.cpp
 src/unit_types.cpp
 src/upload_log.cpp
@@ -144,3 +153,4 @@ src/variable.cpp
 src/variant.cpp
 src/version.cpp
 src/video.cpp
+
