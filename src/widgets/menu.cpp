@@ -153,8 +153,8 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 
 		//we need to further parse xp into x and y components instead of x/y
 		//so we grab the position of slash character
-		char *slash1 = strchr(digits[0],'/');
-		char *slash2 = strchr(digits[1],'/');
+		const char *slash1 = strchr(digits[0],'/');
+		const char *slash2 = strchr(digits[1],'/');
 		
 		int xp1_y,xp2_y;
 		if(slash1)
