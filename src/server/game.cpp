@@ -1210,6 +1210,14 @@ void game::send_history(const network::connection sock) const
 	history_.push_back(doc);
 }
 
+static bool is_invalid_filename_char(char c) {
+	return !(isalnum(c) || (c == '_') || (c == '-') || (c == '.')
+			|| (c == '(') || (c == ')') || (c == '#') || (c == ',')
+			|| (c == '!') || (c == '?') || (c == '^') || (c == '+')
+			|| (c == '*') || (c == ':') || (c == '=') || (c == '@')
+			|| (c == '%') || (c == '\''));
+}
+
 void game::save_replay() {
 	if (!save_replays_ || !started_) return;
 
@@ -1242,7 +1250,7 @@ void game::save_replay() {
 
 	std::string filename(name.str());
 	std::replace(filename.begin(), filename.end(), ' ', '_');
-	//filename.erase(std::remove(filename.begin(), filename.end(), '\''), filename.end());
+	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
 	DBG_GAME << "saving replay: " << filename << std::endl;
 	scoped_ostream os(ostream_file(replay_save_path_ + filename));
 	(*os) << replay.output_compressed();
