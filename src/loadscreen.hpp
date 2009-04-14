@@ -22,6 +22,7 @@ class CVideo;
 #include "SDL.h"
 
 #include "global.hpp"
+#include "sdl_utils.hpp"
 
 #include <string>
 
@@ -35,9 +36,6 @@ class loadscreen {
 		~loadscreen()
 		{
 			dump_counters();
-			if (logo_surface_) {
-				SDL_FreeSurface (logo_surface_);
-			}
 		}
 
 		/** Function to display a load progress bar. */
@@ -75,7 +73,7 @@ private:
 		// Data members
 		CVideo &screen_;
 		SDL_Rect textarea_;
-		SDL_Surface *logo_surface_;
+		surface logo_surface_;
 		bool logo_drawn_;
 		int pby_offset_;
 		int prcnt_;

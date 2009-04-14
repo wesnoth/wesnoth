@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "video.hpp"
+#include "image.hpp"
 
 #include <SDL_image.h>
 
@@ -71,16 +72,14 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	parser_counter(0),
 	screen_(screen),
 	textarea_(),
-	logo_surface_(NULL),
 	logo_drawn_(false),
 	pby_offset_(0),
 	prcnt_(percent)
 {
-	std::string path = get_binary_file_location("images","misc/logo.png");
-	logo_surface_ = IMG_Load(path.c_str());
-		if (!logo_surface_) {
-			ERR_DISP << "loadscreen: Failed to load the logo: " << path << std::endl;
-		}
+	logo_surface_ = image::get_image("misc/logo.png");
+	if (logo_surface_.null()) {
+		ERR_DISP << "loadscreen: Failed to load the logo" << std::endl;
+	}
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 }
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
@@ -115,15 +114,16 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
 	// Draw logo if it was succesfully loaded.
-	if (logo_surface_ && !logo_drawn_) {
-		area.x = (screen_.getx () - logo_surface_->w) / 2;
-		area.y = ((scry - logo_surface_->h) / 2) - pbh;
-		area.w = logo_surface_->w;
-		area.h = logo_surface_->h;
+	if (!logo_surface_.null() && !logo_drawn_) {
+		SDL_Surface *logo = logo_surface_.get();
+		area.x = (screen_.getx () - logo->w) / 2;
+		area.y = ((scry - logo->h) / 2) - pbh;
+		area.w = logo->w;
+		area.h = logo->h;
 		// Check if we have enough pixels to display it.
 		if (area.x > 0 && area.y > 0) {
 			pby_offset_ = (pbh + area.h)/2;
-			SDL_BlitSurface (logo_surface_, 0, gdis, &area);
+			SDL_BlitSurface (logo, 0, gdis, &area);
 		} else {
 			ERR_DISP << "loadscreen: Logo image is too big." << std::endl;
 		}
