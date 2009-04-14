@@ -12,16 +12,16 @@
    See the COPYING file for more details.
 */
 
-/** @file ai.hpp */
+/** @file ai/ai.hpp */
 
-#ifndef AI_HPP_INCLUDED
-#define AI_HPP_INCLUDED
+#ifndef AI_AI_HPP_INCLUDED
+#define AI_AI_HPP_INCLUDED
 
-#include "global.hpp"
+#include "../global.hpp"
 
-#include "actions.hpp"
+#include "../actions.hpp"
 #include "ai_interface.hpp"
-#include "formula_callable.hpp"
+#include "../formula_callable.hpp"
 
 class formula_ai;
 

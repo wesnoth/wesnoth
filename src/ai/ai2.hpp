@@ -13,12 +13,12 @@
 */
 
 /**
- * @file ai2.hpp
+ * @file ai/ai2.hpp
  * AI-interface part 2, virtual.
  */
 
-#ifndef AI2_HPP_INCLUDED
-#define AI2_HPP_INCLUDED
+#ifndef AI_AI2_HPP_INCLUDED
+#define AI_AI2_HPP_INCLUDED
 
 #include "ai_interface.hpp"
 

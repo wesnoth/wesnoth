@@ -13,16 +13,16 @@
 */
 
 /**
- * @file ai_attack.cpp
+ * @file ai/ai_attack.cpp
  * Calculate & analyse attacks.
  */
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include "ai.hpp"
-#include "attack_prediction.hpp"
-#include "map.hpp"
-#include "log.hpp"
+#include "../attack_prediction.hpp"
+#include "../map.hpp"
+#include "../log.hpp"
 
 
 #define LOG_AI LOG_STREAM(info, ai)

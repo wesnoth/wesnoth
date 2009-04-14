@@ -14,15 +14,15 @@
 
 /**
  * Managing the AIs configuration - headers
- * @file ai_configuration.hpp
+ * @file ai/ai_configuration.hpp
  * */
 
-#ifndef AI_CONFIGURATION_HPP_INCLUDED
-#define AI_CONFIGURATION_HPP_INCLUDED
+#ifndef AI_AI_CONFIGURATION_HPP_INCLUDED
+#define AI_AI_CONFIGURATION_HPP_INCLUDED
 
-#include "global.hpp"
+#include "../global.hpp"
 
-#include "config.hpp"
+#include "../config.hpp"
 
 
 #include <vector>

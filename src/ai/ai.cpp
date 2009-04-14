@@ -13,27 +13,27 @@
 */
 
 /**
- * @file ai.cpp
+ * @file ai/ai.cpp
  * Artificial intelligence - The computer commands the enemy.
  */
 
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
 #include "ai_manager.hpp"
-#include "array.hpp"
-#include "dialogs.hpp"
-#include "foreach.hpp"
+#include "../array.hpp"
+#include "../dialogs.hpp"
+#include "../foreach.hpp"
 #include "formula_ai.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_events.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "log.hpp"
-#include "mouse_handler_base.hpp"
-#include "replay.hpp"
-#include "statistics.hpp"
-#include "unit_display.hpp"
-#include "wml_exception.hpp"
+#include "../game_end_exceptions.hpp"
+#include "../game_events.hpp"
+#include "../game_preferences.hpp"
+#include "../gettext.hpp"
+#include "../log.hpp"
+#include "../mouse_handler_base.hpp"
+#include "../replay.hpp"
+#include "../statistics.hpp"
+#include "../unit_display.hpp"
+#include "../wml_exception.hpp"
 
 #include <fstream>
 

@@ -12,14 +12,14 @@
    See the COPYING file for more details.
 */
 
-/** @file ai_dfool.cpp */
+/** @file ai/ai_dfool.cpp */
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include "ai_dfool.hpp"
-#include "foreach.hpp"
-#include "log.hpp"
-#include "formula_string_utils.hpp"
+#include "../foreach.hpp"
+#include "../log.hpp"
+#include "../formula_string_utils.hpp"
 
 namespace dfool {
   void dfool_ai::play_turn(){

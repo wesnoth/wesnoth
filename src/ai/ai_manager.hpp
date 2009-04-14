@@ -14,13 +14,13 @@
 
 /**
  * Managing the AIs lifecycle - headers
- * @file ai_manager.hpp
+ * @file ai_ai_manager.hpp
  * */
 
-#ifndef AI_MANAGER_HPP_INCLUDED
-#define AI_MANAGER_HPP_INCLUDED
+#ifndef AI_AI_MANAGER_HPP_INCLUDED
+#define AI_AI_MANAGER_HPP_INCLUDED
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include "ai_interface.hpp"
 #include <map>

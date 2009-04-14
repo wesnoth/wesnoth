@@ -42,15 +42,15 @@ wesnoth_source = \
 	actions.cpp \
 	addon_checks.cpp \
 	addon_management.cpp \
-	ai.cpp \
-	ai_actions.cpp \
-	ai_attack.cpp \
-	ai_configuration.cpp \
-	ai_dfool.cpp \
-	ai_interface.cpp \
-	ai_manager.cpp \
-	ai_move.cpp \
-	ai_village.cpp \
+	ai/ai.cpp \
+	ai/ai_actions.cpp \
+	ai/ai_attack.cpp \
+	ai/ai_configuration.cpp \
+	ai/ai_dfool.cpp \
+	ai/ai_interface.cpp \
+	ai/ai_manager.cpp \
+	ai/ai_move.cpp \
+	ai/ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
 	attack_prediction_display.cpp \
@@ -61,8 +61,8 @@ wesnoth_source = \
 	dialogs.cpp \
 	floating_textbox.cpp \
 	formula.cpp \
-	formula_ai.cpp \
-	formula_candidates.cpp \
+	ai/formula_ai.cpp \
+	ai/formula_candidates.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
 	formula_string_utils.cpp \

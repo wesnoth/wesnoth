@@ -15,15 +15,15 @@
 
 /**
  * Managing the AI configuration
- * @file ai_configuration.cpp
+ * @file ai/ai_configuration.cpp
  */
 #include "ai_configuration.hpp"
-#include "filesystem.hpp"
-#include "foreach.hpp"
-#include "log.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
-#include "team.hpp"
+#include "../filesystem.hpp"
+#include "../foreach.hpp"
+#include "../log.hpp"
+#include "../serialization/parser.hpp"
+#include "../serialization/preprocessor.hpp"
+#include "../team.hpp"
 
 #define DBG_AI_CONFIGURATION LOG_STREAM(debug, ai_configuration)
 #define LOG_AI_CONFIGURATION LOG_STREAM(info, ai_configuration)

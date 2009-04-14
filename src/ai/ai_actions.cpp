@@ -14,11 +14,11 @@
 
 /**
  * Managing the AI-Game interaction - AI actions and their results
- * @file ai_actions.cpp
+ * @file ai/ai_actions.cpp
  */
 
 #include "ai_actions.hpp"
-#include "log.hpp"
+#include "../log.hpp"
 
 #define DBG_AI_ACTIONS LOG_STREAM(debug, ai_actions)
 #define LOG_AI_ACTIONS LOG_STREAM(info, ai_actions)

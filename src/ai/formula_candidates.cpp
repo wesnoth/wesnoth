@@ -12,13 +12,13 @@
 */
 
 /**
- * @file formula_candidates.cpp
+ * @file ai/formula_candidates.cpp
  * Defines formula ai candidate actions
  * */
 
 #include "formula_ai.hpp"
 #include "formula_candidates.hpp"
-#include "log.hpp"
+#include "../log.hpp"
 
 #define LOG_AI LOG_STREAM(info, formula_ai)
 #define WRN_AI LOG_STREAM(warn, formula_ai)

@@ -14,15 +14,15 @@
 
 /**
  * Managing the AI-Game interaction - AI actions and their results
- * @file ai_actions.hpp
+ * @file ai/ai_actions.hpp
  * */
 
-#ifndef AI_ACTIONS_HPP_INCLUDED
-#define AI_ACTIONS_HPP_INCLUDED
+#ifndef AI_AI_ACTIONS_HPP_INCLUDED
+#define AI_AI_ACTIONS_HPP_INCLUDED
 
-#include "global.hpp"
+#include "../global.hpp"
 
-#include "map_location.hpp"
+#include "../map_location.hpp"
 #include <memory>
 
 class ai_action_result {

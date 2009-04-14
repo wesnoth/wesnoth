@@ -12,13 +12,19 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
+/**
+ * AI Move decision support
+ * @file ai/ai_move.cpp
+ * */
+
+
+#include "../global.hpp"
 
 #include "ai.hpp"
-#include "gettext.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "wml_exception.hpp"
+#include "../gettext.hpp"
+#include "../log.hpp"
+#include "../map.hpp"
+#include "../wml_exception.hpp"
 
 
 #define LOG_AI LOG_STREAM(info, ai)

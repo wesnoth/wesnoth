@@ -14,7 +14,7 @@
 
 /**
  * Base class for the AI and AI-ai_manager contract.
- * @file ai_interface.cpp
+ * @file ai/ai_interface.cpp
  */
 
 #include "ai_actions.hpp"

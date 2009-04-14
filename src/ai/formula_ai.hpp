@@ -12,17 +12,23 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_AI_HPP_INCLUDED
-#define FORMULA_AI_HPP_INCLUDED
+/**
+ * @file ai/formula_ai.hpp
+ * Defines formula ai
+ * */
+
+
+#ifndef AI_FORMULA_AI_HPP_INCLUDED
+#define AI_FORMULA_AI_HPP_INCLUDED
 
 #include "ai.hpp"
 #include "ai_interface.hpp"
-#include "callable_objects.hpp"
-#include "formula.hpp"
-#include "formula_fwd.hpp"
-#include "formula_callable.hpp"
+#include "../callable_objects.hpp"
+#include "../formula.hpp"
+#include "../formula_fwd.hpp"
+#include "../formula_callable.hpp"
 #include "formula_candidates.hpp"
-#include "formula_function.hpp"
+#include "../formula_function.hpp"
 
 // Forward declaration needed for ai function symbol table
 class formula_ai;

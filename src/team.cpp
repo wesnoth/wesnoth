@@ -19,8 +19,8 @@
 
 #include "global.hpp"
 
-#include "ai_configuration.hpp"
-#include "ai_manager.hpp"
+#include "ai/ai_configuration.hpp"
+#include "ai/ai_manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"

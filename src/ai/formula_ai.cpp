@@ -12,20 +12,26 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file ai/formula_ai.cpp
+ * Defines formula ai candidate actions - headers
+ * */
+
+
 #include <boost/lexical_cast.hpp>
 #include <vector>
 #include <queue>
 
-#include "foreach.hpp"
-#include "unit.hpp"
+#include "../foreach.hpp"
+#include "../unit.hpp"
 
 #include "ai_manager.hpp"
-#include "menu_events.hpp"
-#include "filesystem.hpp"
-#include "foreach.hpp"
+#include "../menu_events.hpp"
+#include "../filesystem.hpp"
+#include "../foreach.hpp"
 #include "formula_ai.hpp"
-#include "log.hpp"
-#include "attack_prediction.hpp"
+#include "../log.hpp"
+#include "../attack_prediction.hpp"
 #include "formula_candidates.hpp"
 
 #define LOG_AI LOG_STREAM(info, formula_ai)

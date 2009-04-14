@@ -13,19 +13,19 @@
 */
 
 /**
- * @file ai_dfool.hpp
+ * @file ai/ai_dfool.hpp
  * This ai uses for its decisions only units it has "seen".
  */
 
-#ifndef AI_DFOOL_HPP_INCLUDED
-#define AI_DFOOL_HPP_INCLUDED
+#ifndef AI_AI_DFOOL_HPP_INCLUDED
+#define AI_AI_DFOOL_HPP_INCLUDED
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include "ai_interface.hpp"
-#include "map_location.hpp"
-#include "unit_map.hpp"
-#include "unit.hpp"
+#include "../map_location.hpp"
+#include "../unit_map.hpp"
+#include "../unit.hpp"
 
 #include <vector>
 #include <list>

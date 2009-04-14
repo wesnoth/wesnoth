@@ -14,7 +14,7 @@
 
 /**
  * Managing the AI lifecycle
- * @file ai_manager.cpp
+ * @file ai/ai_manager.cpp
  */
 
 //@todo: shorten this list of includes, for this list is copypasted from ai.cpp
@@ -24,12 +24,12 @@
 #include "ai_manager.hpp"
 #include "ai_dfool.hpp"
 #include "formula_ai.hpp"
-#include "game_events.hpp"
-#include "game_preferences.hpp"
-#include "log.hpp"
-#include "replay.hpp"
-#include "serialization/string_utils.hpp"
-#include "statistics.hpp"
+#include "../game_events.hpp"
+#include "../game_preferences.hpp"
+#include "../log.hpp"
+#include "../replay.hpp"
+#include "../serialization/string_utils.hpp"
+#include "../statistics.hpp"
 
 #include <map>
 #include <stack>

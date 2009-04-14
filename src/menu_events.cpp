@@ -21,7 +21,7 @@
 
 #include "global.hpp"
 
-#include "ai_manager.hpp"
+#include "ai/ai_manager.hpp"
 #include "dialogs.hpp"
 #include "formatter.hpp"
 #include "filechooser.hpp"

@@ -13,21 +13,21 @@
 */
 
 /**
- * @file ai_interface.hpp
+ * @file ai/ai_interface.hpp
  * Interface to the AI.
  */
 
-#ifndef AI_INTERFACE_HPP_INCLUDED
-#define AI_INTERFACE_HPP_INCLUDED
+#ifndef AI_AI_INTERFACE_HPP_INCLUDED
+#define AI_AI_INTERFACE_HPP_INCLUDED
 
 class game_display;
 class gamemap;
 
-#include "formula_callable.hpp"
-#include "generic_event.hpp"
-#include "pathfind.hpp"
-#include "gamestatus.hpp"
-#include "playturn.hpp"
+#include "../formula_callable.hpp"
+#include "../generic_event.hpp"
+#include "../pathfind.hpp"
+#include "../gamestatus.hpp"
+#include "../playturn.hpp"
 
 class ai_attack_result;
 class ai_move_result;
