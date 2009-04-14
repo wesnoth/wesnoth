@@ -968,17 +968,18 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	const bool observer = is_observer(player);
 	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
 	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
-	const bool game_ended = (players_.empty() && !observer) || (host && !started_);
+	const bool game_ended = players_.empty() || (host && !started_);
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
 			<< player << ")\n";
-		return false;
+		return game_ended;
 	}
 	LOG_GAME << network::ip_address(user->first) << "\t" << user->second.name()
-		<< (game_ended ? (started_ ? "\tended" : "\taborted") : "\thas left")
+		<< ((game_ended && !(observer && destruct))
+			? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
-		<< (game_ended && started_ ? " at turn: "
+		<< (game_ended && started_ && !(observer && destruct) ? " at turn: "
 			+ lexical_cast_default<std::string,size_t>(current_turn())
 			+ " with reason: '" + termination_reason() + "'" : "")
 		<< (observer ? " as an observer" : "")
