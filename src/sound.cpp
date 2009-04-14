@@ -795,7 +795,7 @@ void play_sound(const std::string& files, channel_group group, unsigned int repe
 // Play bell with separate volume setting
 void play_bell(const std::string& files)
 {
-	if(preferences::sound_on() && preferences::turn_bell()) {
+	if (preferences::turn_bell()) {
 		play_sound_internal(files, SOUND_BELL);
 	}
 }
