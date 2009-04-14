@@ -387,17 +387,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		gamestate.snapshot = config();
 
-		// Save-nagement ioptions fire on game end.
+		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
 		// or (b) we're multiplayer live, in which
 		// case defeat is also game end.  Someday,
 		// if MP campaigns ever work again, we might
 		// need to change this test.
-
-		// OBSERVER_END probably can be removed here if the observer disconnect
-		// bug (#10077) is fixed so that when the host ends the game observers
-		// again get asked if they want to save a replay of the game
-		if (res == VICTORY || (io_type != IO_NONE && (res == DEFEAT || res == OBSERVER_END))) {
+		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
 			if (preferences::delete_saves())
 				clean_saves(gamestate.label);
 
