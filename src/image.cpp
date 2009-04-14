@@ -28,6 +28,7 @@
 #include "image.hpp"
 #include "image_function.hpp"
 #include "log.hpp"
+#include "gettext.hpp"
 
 #include "SDL_image.h"
 
@@ -315,6 +316,58 @@ size_t hash_value(const locator::value& val) {
 	return hash;
 }
 
+// Return path to localized counterpart of the given file, if any, or empty string.
+// Localized counterpart may also be requested to have a suffix to base name.
+static std::string get_localized_path (const std::string& file, const std::string& suff = "")
+{
+	std::string dir = directory_name(file);
+	std::string base = file_name(file);
+	int pos_ext = base.rfind(".");
+	std::string loc_base;
+	if (pos_ext != std::string::npos) {
+		loc_base = base.substr(0, pos_ext) + suff + base.substr(pos_ext);
+	} else {
+		loc_base = base + suff;
+	}
+	// TRANSLATORS: This is the language code which will be used
+	// to store and fetch localized non-textual resources, such as images,
+	// when they exist. Normally it is just the code of the PO file itself,
+	// e.g. "de" of de.po for German. But it can also be a comma-separated
+	// list of language codes by priority, when the localized resource
+	// found for first of those languages will be used. This is useful when
+	// two languages share sufficient commonality, that they can use each
+	// other's resources rather than duplicating them. For example,
+	// Swedish (sv) and Danish (da) are such, so Swedish translator could
+	// translate this message as "sv,da", while Danish as "da,sv".
+	std::vector<std::string> langs = utils::split(_("language code for localized resources^en_US"));
+	// In case even the original image is split into base and overlay,
+	// add en_US with lowest priority, since the message above will
+	// not have it when translated.
+	langs.push_back("en_US");
+	foreach (const std::string &lang, langs) {
+		std::string loc_file = dir + "l10n" + "/" + lang + "/" + loc_base;
+		if (file_exists(loc_file)) {
+			return loc_file;
+		}
+	}
+	return "";
+}
+
+// Load overlay image and compose it with the original surface.
+static void add_localized_overlay (const std::string& ovr_file, const surface &orig_surf)
+{
+	surface ovr_surf = IMG_Load(ovr_file.c_str());
+	if (ovr_surf.null()) {
+		return;
+	}
+	SDL_Rect area;
+	area.x = 0;
+	area.y = 0;
+	area.w = ovr_surf->w;
+	area.h = ovr_surf->h;
+	SDL_BlitSurface(ovr_surf, 0, orig_surf, &area);
+}
+
 surface locator::load_image_file() const
 {
 	surface res;
@@ -324,7 +377,19 @@ surface locator::load_image_file() const
 
 	{
 		if (!location.empty()) {
+			// Check if there is a localized image.
+			const std::string loc_location = get_localized_path(location);
+			if (!loc_location.empty()) {
+				location = loc_location;
+			}
 			res = IMG_Load(location.c_str());
+			// If there was no standalone localized image, check if there is an overlay.
+			if (!res.null() && loc_location.empty()) {
+				const std::string ovr_location = get_localized_path(location, "--overlay");
+				if (!ovr_location.empty()) {
+					add_localized_overlay(ovr_location, res);
+				}
+			}
 		}
 	}
 
