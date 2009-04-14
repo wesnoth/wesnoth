@@ -111,7 +111,7 @@
 # A coment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
 
-import sys, os, re, getopt, string, copy, difflib, time
+import sys, os, re, getopt, string, copy, difflib, time, gzip
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
@@ -1413,10 +1413,14 @@ def outermap(func, inmap):
 def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
     global tagstack
-    unmodified = file(filename).readlines()
+    gzipped = filename.endswith(".gz")
+    if gzipped:
+        unmodified = gzip.open(filename).readlines()
+    else:
+        unmodified = file(filename).readlines()
     # Pull file into an array of lines, CR-stripping as needed
     mfile = []
-    map_only = not filename.endswith(".cfg")
+    map_only = filename.endswith(".map")
     terminator = "\n"
     for line in unmodified:
         if line.endswith("\n"):
@@ -1833,7 +1837,7 @@ vctypes = (".svn", ".git")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return fn.endswith(".cfg") or is_map(fn)
+    return fn.endswith(".cfg") or is_map(fn) or issave(fn)
 
 def allcfgfiles(dir):
     "Get the names of all interesting files under dir."
@@ -2024,9 +2028,14 @@ if __name__ == '__main__':
                             print "wmllint: converting", fn
                             if not dryrun:
                                 os.rename(fn, backup)
-                                ofp = open(fn, "w")
-                                ofp.write(changed)
-                                ofp.close()
+                                if fn.endswith(".gz"):
+                                    ofp = gzip.open(fn, "w")
+                                    ofp.write(changed)
+                                    ofp.close()
+                                else:
+                                    ofp = open(fn, "w")
+                                    ofp.write(changed)
+                                    ofp.close()
                     #except maptransform_error, e:
                     #    sys.stderr.write("wmllint: " + `e` + "\n")
                     except:
