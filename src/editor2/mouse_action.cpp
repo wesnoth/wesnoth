@@ -286,7 +286,7 @@ editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int 
 }
 
 editor_action* mouse_action_paint::click_perform_left(
-		editor_display& disp, const std::set<map_location>& hexes)
+		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier()) return NULL;
 	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_shift_modifier()));
