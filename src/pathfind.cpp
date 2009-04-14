@@ -101,7 +101,7 @@ bool enemy_zoc(gamemap const &map,
 }
 
 static void find_routes(const gamemap& map, const unit_map& units,
-		const unit& u, const map_location& loc,
+		const unit& u, const map_location& loc, const map_location& previous_loc,
 		int move_left, paths::routes_map& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
@@ -137,6 +137,12 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		const map_location& currentloc = *i;
 
 		if (!map.on_board(currentloc))
+			continue;
+
+		// we skip locations adjacent to the previous_loc (before loc)
+		// because previous_loc -> currentloc is always shorter
+		// than previous_loc -> loc -> currentloc
+		if(tiles_adjacent(currentloc, previous_loc))
 			continue;
 
 		// check if we can move on this terrain
@@ -196,7 +202,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		new_route.move_left = new_turns_moves + new_move_left;
 
 		if (new_route.move_left > 0) {
-			find_routes(map, units, u, currentloc,
+			find_routes(map, units, u, currentloc, loc,
 						new_move_left, routes, teams, force_ignore_zocs,
 						allow_teleport, new_turns_left, false, viewing_team,
 						see_all, ignore_units);
@@ -220,8 +226,13 @@ paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
+
+	const map_location previous_loc = map_location();
+	// dummy map_location() must not be adjacent to real hexes
+	assert(previous_loc.x < -1);
+
 	routes[loc].move_left = i->second.movement_left();
-	find_routes(map,units,i->second,loc,
+	find_routes(map,units,i->second,loc,previous_loc,
 		i->second.movement_left(),routes,teams,force_ignore_zoc,
 		allow_teleport,additional_turns,true,viewing_team,
 		see_all, ignore_units);
