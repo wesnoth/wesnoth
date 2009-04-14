@@ -23,6 +23,11 @@
 
 namespace editor2 {
 
+bool mouse_action::has_context_menu() const
+{
+	return false;
+}
+
 void mouse_action::move(editor_display& disp, const map_location& hex)
 {
 	if (hex != previous_move_hex_) {
@@ -130,6 +135,15 @@ bool mouse_action::has_alt_modifier() const
 bool mouse_action::has_shift_modifier() const
 {
 	return key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT];
+}
+
+bool mouse_action::has_ctrl_modifier() const
+{
+#ifdef __APPLE__
+	return key_[SDLK_RMETA] || key_[SDLK_LMETA];
+#else
+	return key_[SDLK_RCTRL] || key_[SDLK_LCTRL];
+#endif
 }
 
 void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
@@ -249,15 +263,39 @@ const brush& brush_drag_mouse_action::get_brush()
 }
 
 
-editor_action* mouse_action_paint::click_perform_left(
-		editor_display& /*disp*/, const std::set<map_location>& hexes)
+editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y)
 {
+	if (has_ctrl_modifier()) {
+		map_location hex = disp.hex_clicked_on(x, y);
+		terrain_left_ = disp.map().get_terrain(hex);
+		return NULL;
+	} else {
+		return brush_drag_mouse_action::click_left(disp, x, y);
+	}
+}
+
+editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int y)
+{
+	if (has_ctrl_modifier()) {
+		map_location hex = disp.hex_clicked_on(x, y);
+		terrain_right_ = disp.map().get_terrain(hex);
+		return NULL;
+	} else {
+		return brush_drag_mouse_action::click_right(disp, x, y);
+	}
+}
+
+editor_action* mouse_action_paint::click_perform_left(
+		editor_display& disp, const std::set<map_location>& hexes)
+{
+	if (has_ctrl_modifier()) return NULL;
 	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_shift_modifier()));
 }
 
 editor_action* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
+	if (has_ctrl_modifier()) return NULL;
 	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_right_, has_shift_modifier()));
 }
 
@@ -315,6 +353,11 @@ void mouse_action_select::set_mouse_overlay(editor_display& disp)
 }
 
 
+bool mouse_action_paste::has_context_menu() const
+{
+	return true;
+}
+
 std::set<map_location> mouse_action_paste::affected_hexes(
 	editor_display& /*disp*/, const map_location& hex)
 {
@@ -348,19 +391,30 @@ std::set<map_location> mouse_action_fill::affected_hexes(
 editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	//TODO only take the base terrain into account when searching for contigious terrain when painting base only
-	//or use a different key modifier for that
-	editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_shift_modifier());
-	return a;
+	if (has_ctrl_modifier()) {
+		terrain_left_ = disp.map().get_terrain(hex);
+		return NULL;
+	} else {
+		//TODO only take the base terrain into account when searching for contigious terrain when painting base only
+		//or use a different key modifier for that
+		editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_shift_modifier());
+		return a;
+	}
 }
 
 editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
-	//TODO only take the base terrain into account when searching for contigious terrain when painting base only
-	//or use a different key modifier for that
-	editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_shift_modifier());
-	return a;
+	if (has_ctrl_modifier()) {
+		map_location hex = disp.hex_clicked_on(x, y);
+		terrain_right_ = disp.map().get_terrain(hex);
+		return NULL;
+	} else {
+		//TODO only take the base terrain into account when searching for contigious terrain when painting base only
+		//or use a different key modifier for that
+		editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_shift_modifier());
+		return a;
+	}
 }
 
 void mouse_action_fill::set_mouse_overlay(editor_display& disp)
