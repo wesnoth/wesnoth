@@ -33,6 +33,7 @@ public:
 	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
+        const t_string& description() const { return description_.empty() ? name_ : description_; }
 	const std::string& id() const { return id_; }
 
 	bool hide_in_editor() const { return hide_in_editor_; }
@@ -84,11 +85,12 @@ private:
 	std::string editor_image_;
 	std::string id_;
 	t_string name_;
+	t_string description_;
 
 	//the 'number' is the number that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the number.
-	//This is the internal number used, WML still used characters
+	//This is the internal number used, WML still uses character strings.
 	t_translation::t_terrain number_;
 	t_translation::t_list mvt_type_;
 	t_translation::t_list def_type_;
