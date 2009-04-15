@@ -702,7 +702,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			const double threat = power_projection(*i,enemy_dstsrc);
 			//FIXME: sukko doubled the power-projection them in the second test.  ?
 			if((threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc)) ||
-			   (i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side()))) {
+			   (i+1 >= best_route.steps.end()-1 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side()))) {
 				dangerous = true;
 				break;
 			}
