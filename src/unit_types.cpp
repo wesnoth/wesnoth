@@ -1047,7 +1047,8 @@ const std::string& unit_type::race() const
 }
 
 bool unit_type::hide_help() const {
-	return (hide_help_ || unit_type_data::types().hide_types().count(id_)>0);
+	return hide_help_ || unit_type_data::types().hide_types().count(id_)>0
+			|| unit_type_data::types().hide_races().count(race_->id())>0;
 }
 
 // Allow storing "advances from" info for convenience in Help.
@@ -1180,6 +1181,10 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 		std::vector<std::string> hide_types_list =
 				utils::split(hide["types"]);
 		hide_types_.insert(hide_types_list.begin(), hide_types_list.end());
+		
+		std::vector<std::string> hide_races_list =
+				utils::split(hide["races"]);
+		hide_races_.insert(hide_races_list.begin(), hide_races_list.end());
 	}
 }
 

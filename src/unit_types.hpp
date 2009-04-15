@@ -359,6 +359,7 @@ public:
             void build_all(unit_type::BUILD_STATUS status) const;
 
             const std::set<std::string>& hide_types() const {return hide_types_;}
+            const std::set<std::string>& hide_races() const {return hide_races_;}
 
         private:
             unit_type_map_wrapper();
@@ -384,6 +385,7 @@ public:
             race_map races_;
 
 			std::set<std::string> hide_types_;
+			std::set<std::string> hide_races_;
 
             const config* unit_cfg_;
 	};
