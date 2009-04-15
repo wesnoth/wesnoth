@@ -298,7 +298,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 			continue;
 		}
 
-		if (res == 0 && save_game_exists(*fname)) {
+		if (res == 0 && savegame_manager::save_game_exists(*fname)) {
 			std::stringstream s;
 			s << _("Save already exists. Do you want to overwrite it?")
 			  << std::endl << _("Name: ") << *fname;
@@ -357,7 +357,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		filter_.delete_item(menu_selection);
 
 		// Delete the file
-		delete_game(saves_[index].name);
+		savegame_manager::delete_game(saves_[index].name);
 
 		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
@@ -421,7 +421,7 @@ void save_preview_pane::draw_contents()
 	config& summary = *(*summaries_)[index_];
 	if (summary["label"] == ""){
 		try {
-			save_summary::load_summary((*info_)[index_].name, summary, &dummy);
+			savegame_manager::load_summary((*info_)[index_].name, summary, &dummy);
 			*(*summaries_)[index_] = summary;
 		} catch(game::load_game_failed&) {
 			summary["corrupt"] = "yes";
@@ -631,7 +631,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	std::vector<save_info> games;
 	{
 		cursor::setter cur(cursor::WAIT);
-		games = get_saves_list();
+		games = savegame_manager::get_saves_list();
 	}
 
 	if(games.empty()) {

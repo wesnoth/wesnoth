@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "game_preferences.hpp"
 #include "replay.hpp"
-#include "savegame.hpp"	//FIXME: only because of replace_space2underbar
 #include "statistics.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
@@ -585,90 +584,6 @@ void game_state::write_snapshot(config& cfg) const
 		::write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
-	}
-}
-
-/**
- * A structure for comparing to save_info objects based on their modified time.
- * If the times are equal, will order based on the name.
- */
-struct save_info_less_time {
-	bool operator()(const save_info& a, const save_info& b) const {
-		if (a.time_modified > b.time_modified) {
-		        return true;
-		} else if (a.time_modified < b.time_modified) {
-			return false;
-		// Special funky case; for files created in the same second,
-		// a replay file sorts less than a non-replay file.  Prevents
-		// a timing-dependent bug where it may look like, at the end
-		// of a scenario, the replay and the autosave for the next
-		// scenario are displayed in the wrong order.
-		} else if (a.name.find(_(" replay"))==std::string::npos && b.name.find(_(" replay"))!=std::string::npos) {
-			return true;
-		} else if (a.name.find(_(" replay"))!=std::string::npos && b.name.find(_(" replay"))==std::string::npos) {
-			return false;
-		} else {
-			return  a.name > b.name;
-		}
-	}
-};
-
-std::vector<save_info> get_saves_list(const std::string *dir, const std::string* filter)
-{
-	// Don't use a reference, it seems to break on arklinux with GCC-4.3.
-	const std::string saves_dir = (dir) ? *dir : get_saves_dir();
-
-	std::vector<std::string> saves;
-	get_files_in_dir(saves_dir,&saves);
-
-	std::vector<save_info> res;
-	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
-		if(filter && std::search(i->begin(), i->end(), filter->begin(), filter->end()) == i->end()) {
-			continue;
-		}
-
-		const time_t modified = file_create_time(saves_dir + "/" + *i);
-
-		replace_underbar2space(*i);
-		res.push_back(save_info(*i,modified));
-	}
-
-	std::sort(res.begin(),res.end(),save_info_less_time());
-
-	return res;
-}
-
-bool save_game_exists(const std::string& name)
-{
-	std::string fname = name;
-	replace_space2underbar(fname);
-
-	if(preferences::compress_saves()) {
-		fname += ".gz";
-	}
-
-	return file_exists(get_saves_dir() + "/" + fname);
-}
-
-void delete_game(const std::string& name)
-{
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
-	remove((get_saves_dir() + "/" + name).c_str());
-	remove((get_saves_dir() + "/" + modified_name).c_str());
-}
-
-// Throws game::save_game_failed
-scoped_ostream open_save_game(const std::string &label)
-{
-	std::string name = label;
-	replace_space2underbar(name);
-
-	try {
-		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
-	} catch(io_exception& e) {
-		throw game::save_game_failed(e.what());
 	}
 }
 

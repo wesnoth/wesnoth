@@ -102,19 +102,6 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	}
 }
 
-static void clean_saves(const std::string &label)
-{
-	std::vector<save_info> games = get_saves_list();
-	std::string prefix = label + "-" + _("Auto-Save");
-	std::cerr << "Cleaning saves with prefix '" << prefix << "'\n";
-	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (i->name.compare(0, prefix.length(), prefix) == 0) {
-			std::cerr << "Deleting savegame '" << i->name << "'\n";
-			delete_game(i->name);
-		}
-	}
-}
-
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, upload_log &log,
@@ -395,12 +382,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// need to change this test.
 		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
 			if (preferences::delete_saves())
-				clean_saves(gamestate.label);
+				savegame_manager::clean_saves(gamestate.label);
 
 			if (preferences::save_replays()) {
 				replay_savegame save(gamestate);
-				save.save_game(""); //string is not used, noninteractive save
-				//::save_replay(gamestate);
+				save.save_game_interactive(disp, "", gui::OK_CANCEL, false, false);
 			}
 		}
 
@@ -595,7 +581,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 	if (gamestate.campaign_type == "scenario"){
 		if (preferences::delete_saves())
-			clean_saves(gamestate.label);
+			savegame_manager::clean_saves(gamestate.label);
 	}
 	return VICTORY;
 }

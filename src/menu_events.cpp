@@ -51,26 +51,6 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define DBG_NG LOG_STREAM(info, engine)
 
-namespace {
-
-void remove_old_auto_saves()
-{
-	const std::string auto_save = _("Auto-Save");
-	int countdown = preferences::autosavemax();
-	if (countdown == preferences::INFINITE_AUTO_SAVES)
-		return;
-
-	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
-	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (countdown-- <= 0) {
-			LOG_NG << "Deleting savegame '" << i->name << "'\n";
-			delete_game(i->name);
-		}
-	}
-}
-
-} // end anonymous namespace
-
 namespace events{
 
 	class delete_recall_unit : public gui::dialog_button_action
@@ -629,7 +609,7 @@ private:
 
 		end = SDL_GetTicks();
 		LOG_NG << "Milliseconds to save " << save.filename() << ": " << end - start << "\n";
-		remove_old_auto_saves();
+		savegame_manager::remove_old_auto_saves();
 	}
 
 	void menu_handler::preferences()

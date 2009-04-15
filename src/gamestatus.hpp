@@ -300,37 +300,12 @@ private:
 
 std::string generate_game_uuid();
 
-/**
- * Holds all the data needed to start a scenario.
- *
- * I.e. this is the object serialized to disk when saving/loading a game.
- * It is also the object which needs to be created to start a new game.
- */
-struct save_info {
-	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
-	std::string name;
-	time_t time_modified;
-};
-
-/** Get a list of available saves. */
-std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
-
 void write_players(game_state& gamestate, config& cfg);
-
-/** Returns true iff there is already a savegame with that name. */
-bool save_game_exists(const std::string & name);
-
-/** Throws game::save_game_failed. */
-scoped_ostream open_save_game(const std::string &label);
-
-/** Delete a savegame. */
-void delete_game(const std::string& name);
 
 config& save_summary(std::string save);
 
 void write_save_index();
 
-void replace_underbar2space(std::string &name);
 void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 #endif

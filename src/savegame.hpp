@@ -26,13 +26,37 @@ struct load_game_cancelled_exception
 {
 };
 
-class save_summary
+/**
+ * Holds all the data needed to start a scenario. YogiHH: really??
+ *
+ * I.e. this is the object serialized to disk when saving/loading a game.
+ * It is also the object which needs to be created to start a new game.
+ */
+struct save_info {
+	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
+	std::string name;
+	time_t time_modified;
+};
+
+class savegame_manager
 {
 public:
-	save_summary() {}
-	virtual ~save_summary() {}
-
 	static void load_summary(const std::string& name, config& cfg_summary, std::string* error_log);
+	static void read_save_file(const std::string& name, config& cfg, std::string* error_log);
+	
+	/** Returns true if there is already a savegame with that name. */
+	static bool save_game_exists(const std::string& name);
+	/** Get a list of available saves. */
+	static std::vector<save_info> get_saves_list(const std::string *dir = NULL, const std::string* filter = NULL);
+
+	static void clean_saves(const std::string &label);
+	static void remove_old_auto_saves();
+	/** Delete a savegame. */
+	static void delete_game(const std::string& name);
+
+private:
+	/** Default-Konstruktor (don't instantiate this class) */
+	savegame_manager() {}
 };
 
 class loadgame
@@ -117,6 +141,8 @@ private:
 
 	void write_game(config_writer &out) const;
 	void finish_save_game(const config_writer &out);
+	/** Throws game::save_game_failed. */
+	scoped_ostream open_save_game(const std::string &label);
 	void extract_summary_data_from_save(config& out);
 
 	game_state& gamestate_;
@@ -198,10 +224,6 @@ private:
 	/** Adds the player information to the starting position (= [replay_start]). */
 	virtual void before_save();
 };
-
-#ifdef _WIN32
-	void conv_ansi_utf8(std::string &name, bool a2u);
-#endif
 
 void replace_underbar2space(std::string &name);
 void replace_space2underbar(std::string &name);

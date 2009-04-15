@@ -106,7 +106,32 @@
 	}
 #endif /* _WIN32 */
 
-static void read_save_file(const std::string& name, config& cfg, std::string* error_log)
+/**
+ * A structure for comparing to save_info objects based on their modified time.
+ * If the times are equal, will order based on the name.
+ */
+struct save_info_less_time {
+	bool operator()(const save_info& a, const save_info& b) const {
+		if (a.time_modified > b.time_modified) {
+		        return true;
+		} else if (a.time_modified < b.time_modified) {
+			return false;
+		// Special funky case; for files created in the same second,
+		// a replay file sorts less than a non-replay file.  Prevents
+		// a timing-dependent bug where it may look like, at the end
+		// of a scenario, the replay and the autosave for the next
+		// scenario are displayed in the wrong order.
+		} else if (a.name.find(_(" replay"))==std::string::npos && b.name.find(_(" replay"))!=std::string::npos) {
+			return true;
+		} else if (a.name.find(_(" replay"))!=std::string::npos && b.name.find(_(" replay"))==std::string::npos) {
+			return false;
+		} else {
+			return  a.name > b.name;
+		}
+	}
+};
+
+void savegame_manager::read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
@@ -135,13 +160,88 @@ static void read_save_file(const std::string& name, config& cfg, std::string* er
 	}
 }
 
-void save_summary::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
+void savegame_manager::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
 	log_scope("load_game_summary");
 
 	config cfg;
 	read_save_file(name,cfg,error_log);
 
 	::extract_summary_from_config(cfg, cfg_summary);
+}
+
+bool savegame_manager::save_game_exists(const std::string& name)
+{
+	std::string fname = name;
+	replace_space2underbar(fname);
+
+	if(preferences::compress_saves()) {
+		fname += ".gz";
+	}
+
+	return file_exists(get_saves_dir() + "/" + fname);
+}
+
+std::vector<save_info> savegame_manager::get_saves_list(const std::string *dir, const std::string* filter)
+{
+	// Don't use a reference, it seems to break on arklinux with GCC-4.3.
+	const std::string saves_dir = (dir) ? *dir : get_saves_dir();
+
+	std::vector<std::string> saves;
+	get_files_in_dir(saves_dir,&saves);
+
+	std::vector<save_info> res;
+	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
+		if(filter && std::search(i->begin(), i->end(), filter->begin(), filter->end()) == i->end()) {
+			continue;
+		}
+
+		const time_t modified = file_create_time(saves_dir + "/" + *i);
+
+		replace_underbar2space(*i);
+		res.push_back(save_info(*i,modified));
+	}
+
+	std::sort(res.begin(),res.end(),save_info_less_time());
+
+	return res;
+}
+
+void savegame_manager::clean_saves(const std::string &label)
+{
+	std::vector<save_info> games = get_saves_list();
+	std::string prefix = label + "-" + _("Auto-Save");
+	std::cerr << "Cleaning saves with prefix '" << prefix << "'\n";
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+		if (i->name.compare(0, prefix.length(), prefix) == 0) {
+			std::cerr << "Deleting savegame '" << i->name << "'\n";
+			delete_game(i->name);
+		}
+	}
+}
+
+void savegame_manager::remove_old_auto_saves()
+{
+	const std::string auto_save = _("Auto-Save");
+	int countdown = preferences::autosavemax();
+	if (countdown == preferences::INFINITE_AUTO_SAVES)
+		return;
+
+	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+		if (countdown-- <= 0) {
+			LOG_SAVE << "Deleting savegame '" << i->name << "'\n";
+			delete_game(i->name);
+		}
+	}
+}
+
+void savegame_manager::delete_game(const std::string& name)
+{
+	std::string modified_name = name;
+	replace_space2underbar(modified_name);
+
+	remove((get_saves_dir() + "/" + name).c_str());
+	remove((get_saves_dir() + "/" + modified_name).c_str());
 }
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
@@ -188,7 +288,7 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 		throw load_game_cancelled_exception();
 
 	std::string error_log;
-	read_save_file(filename_, load_config_, &error_log);
+	savegame_manager::read_save_file(filename_, load_config_, &error_log);
 
 	if(!error_log.empty()) {
         try {
@@ -265,7 +365,7 @@ void loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		read_save_file(filename_, load_config_, &error_log);
+		savegame_manager::read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
 		gamestate_ = game_state(load_config_);
@@ -450,6 +550,19 @@ void savegame::finish_save_game(const config_writer &out)
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
 		write_save_index();
+	} catch(io_exception& e) {
+		throw game::save_game_failed(e.what());
+	}
+}
+
+// Throws game::save_game_failed
+scoped_ostream savegame::open_save_game(const std::string &label)
+{
+	std::string name = label;
+	replace_space2underbar(name);
+
+	try {
+		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
