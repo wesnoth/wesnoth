@@ -1046,6 +1046,10 @@ const std::string& unit_type::race() const
 	return race_->id();
 }
 
+bool unit_type::hide_help() const {
+	return (hide_help_ || unit_type_data::types().hide_types().count(id_)>0);
+}
+
 // Allow storing "advances from" info for convenience in Help.
 void unit_type::add_advancesfrom(const std::string& unit_id)
 {
@@ -1171,6 +1175,12 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 	}
 
 	build_all(unit_type::CREATED);
+
+	if (const config &hide = cfg.child("hide_help")) {
+		std::vector<std::string> hide_types_list =
+				utils::split(hide["types"]);
+		hide_types_.insert(hide_types_list.begin(), hide_types_list.end());
+	}
 }
 
 bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& key) const

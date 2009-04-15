@@ -261,7 +261,7 @@ public:
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
 	const std::string& race() const;
-	bool hide_help() const { return hide_help_; }
+	bool hide_help() const;
 
     enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 
@@ -358,6 +358,8 @@ public:
 
             void build_all(unit_type::BUILD_STATUS status) const;
 
+            const std::set<std::string>& hide_types() const {return hide_types_;}
+
         private:
             unit_type_map_wrapper();
 			unit_type_map_wrapper(const unit_type_map_wrapper &);
@@ -380,6 +382,9 @@ public:
             mutable unit_type_map dummy_unit_map_;
             movement_type_map movement_types_;
             race_map races_;
+
+			std::set<std::string> hide_types_;
+
             const config* unit_cfg_;
 	};
 
