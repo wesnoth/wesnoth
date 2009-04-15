@@ -1258,7 +1258,7 @@ public:
 		ss << "\n";
 
 		// Print cross-references to units that this unit advances from.
-		std::vector<std::string> from_units = type_.advances_from();
+		const std::vector<std::string>& from_units = type_.advances_from();
 		if (!from_units.empty())
 		{
 			ss << _("Advances from: ");
@@ -1287,7 +1287,7 @@ public:
 
 		// Print the units this unit can advance to. Cross reference
 		// to the topics containing information about those units.
-		std::vector<std::string> next_units = type_.advances_to();
+		const std::vector<std::string>& next_units = type_.advances_to();
 		if (!next_units.empty()) {
 			ss << _("Advances to: ");
 			for (std::vector<std::string>::const_iterator advance_it = next_units.begin(),

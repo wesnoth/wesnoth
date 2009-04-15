@@ -216,8 +216,8 @@ public:
 	const unit_movement_type& movement_type() const { return movementType_; }
 
 	int experience_needed(bool with_acceleration=true) const;
-	std::vector<std::string> advances_to() const { return advances_to_; }
-	std::vector<std::string> advances_from() const { return advances_from_; }
+	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	const std::vector<std::string>& advances_from() const { return advances_from_; }
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 

@@ -80,7 +80,7 @@ public:
 
 	/** Advances this unit to another type */
 	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
-	const std::vector<std::string> advances_to() const { return advances_to_; }
+	const std::vector<std::string>& advances_to() const { return advances_to_; }
 
 	/** The type id of the unit */
 	const std::string& type_id() const { return type_; }
