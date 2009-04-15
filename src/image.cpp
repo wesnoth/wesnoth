@@ -322,7 +322,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 {
 	std::string dir = directory_name(file);
 	std::string base = file_name(file);
-	int pos_ext = base.rfind(".");
+	const size_t pos_ext = base.rfind(".");
 	std::string loc_base;
 	if (pos_ext != std::string::npos) {
 		loc_base = base.substr(0, pos_ext) + suff + base.substr(pos_ext);
