@@ -91,9 +91,6 @@ public:
 	//animations for this attack. It will not return the same attack
 	//each time.
 	const unit_animation* animation(const game_display& disp, const map_location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
-	// made public to ease backward compatibility for WML syntax
-	// to be removed (with all corresponding code once 1.3.6 is reached
-	std::vector<unit_animation> animation_;
 private:
 	t_string description_;
 	std::string id_;

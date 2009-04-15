@@ -50,7 +50,6 @@ attack_type::attack_type(const config& cfg) :
 	teams_(NULL),
 	other_attack_(NULL),
 	cfg_(cfg),
-	animation_(),
 	description_(cfg["description"]),
 	id_(cfg["name"]),
 	type_(cfg["type"]),
