@@ -366,7 +366,6 @@ void ai_recruit_result::do_execute()
 {
 	assert(is_success());
 	const ai_interface::info& info = get_info();
-	const team& team = get_my_team(info);
 	// We have to add the recruit command now, because when the unit
 	// is created it has to have the recruit command in the recorder
 	// to be able to put random numbers into to generate unit traits.
