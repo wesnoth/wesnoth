@@ -13,7 +13,7 @@ dietail() {
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
-[ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
+[ -d "$SERVERBASE" ] || die "Server '$SERVER' not found."
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
 shift
