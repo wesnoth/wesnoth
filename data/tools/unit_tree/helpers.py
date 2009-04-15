@@ -29,7 +29,8 @@ class ParserWithCoreMacros:
         parser.parse_top(None)
         self.core_macros = parser.macros
                 
-    def parse(self, text_to_parse, ignore_macros = None):
+    def parse(self, text_to_parse, ignore_macros = None,
+        ignore_fatal_errors = False):
         # Create the real parser.
         parser = wmlparser.Parser(self.datadir, self.userdir)
         parser.gettext = self.gettext
@@ -47,9 +48,13 @@ class ParserWithCoreMacros:
         # Create a WML root element and parse the given text into it.
         WML = wmldata.DataSub("WML")
 
+        parser.ignore_fatal_errors = ignore_fatal_errors
+
         parser.parse_text(text_to_parse)
 
         parser.parse_top(WML)
+
+        parser.ignore_fatal_errors = False
  
         return WML
 
@@ -151,6 +156,7 @@ class WesnothList:
         self.era_lookup = {}
         self.campaign_lookup = {}
         self.parser = ParserWithCoreMacros(isocode, datadir, userdir, transdir)
+        self.ignore_fatal_errors = False
 
     def add_terrains(self):
         """
@@ -235,10 +241,11 @@ class WesnothList:
                 #define MULTIPLAYER\n#enddef
                 #define RANDOM_SIDE\n#enddef
                 {~campaigns}
-                """)
+                """, ignore_fatal_errors = self.ignore_fatal_errors)
         except wmlparser.Error, e:
             print e
             return n
+        
         for campaign in WML.find_all("campaign"):
             cid = self.add_campaign(campaign)
         

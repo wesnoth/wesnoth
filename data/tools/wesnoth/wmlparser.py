@@ -86,6 +86,8 @@ class Parser:
         # Whether to print current file, comments, and macro replacements.
         self.verbose = False
 
+        self.ignore_fatal_errors = False
+
     def read_encoded(self, filename):
         """
         Helper for gracefully handling non-utf8 files and fixing up non-unix
@@ -471,9 +473,16 @@ class Parser:
             text = macro.text
             for i in range(len(macro.params)):
                 if 1 + i >= len(params):
-                    raise Error(self, "Not enough parameters for macro %s. " % name +
-                        "%d given but %d needed %s." % (len(params) - 1,
-                            len(macro.params), macro.params))
+                    if self.ignore_fatal_errors:
+                        sys.stderr.write("***TRYING TO IGNORE FATAL ERROR ***\n")
+                        sys.stderr.write("Not enough parameters for macro %s. " % name +
+                            "%d given but %d needed %s.\n" % (len(params) - 1,
+                                len(macro.params), macro.params))
+                        params.append("")
+                    else:
+                        raise Error(self, "Not enough parameters for macro %s. " % name +
+                            "%d given but %d needed %s." % (len(params) - 1,
+                                len(macro.params), macro.params))
                 rep = params[1 + i]
                 # Handle gettext replacement here, since inside the macro
                 # the textdomain will be wrong.
@@ -748,7 +757,14 @@ class Parser:
                 if name[0] == '/':
                     if state == name[1:]:
                         return
-                    raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
+                    if self.ignore_fatal_errors:
+                        # This is just a hack to get broken addons to still show
+                        # up with wmlunits.
+                        sys.stderr.write("***TRYING TO IGNORE FATAL ERROR ***\n")
+                        sys.stderr.write("Mismatched closing tag [%s], expected [/%s]\n" % (name, state))
+                        continue
+                    else:
+                        raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
                 #TODO: make a [+tag] properly append to most recent [tag]
                 # The below is an ugly hack, but better than keeping the '+' in the tag name.
                 elif name[0] == '+':

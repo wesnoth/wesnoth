@@ -852,6 +852,8 @@ def output(isocode):
     print "WML parser language reset to %s." % isocode
 
     stuff = helpers.WesnothList(isocode, datadir, userdir, transdir)
+    if options.ignore_fatal_errors:
+        stuff.ignore_fatal_errors = True
 
     # Parse some stuff we may need.
     print "Parsing terrains ...",
@@ -961,6 +963,13 @@ if __name__ == '__main__':
     op.add_option("-t", "--transdir",
         help = "Specify the directory which has a po subfolder for translations. "+\
         "(Defaults to the current directory.)")
+    op.add_option("-E", "--ignore-fatal-errors", action = "store_true",
+        help = "This is strongly advised against and usually will just" +\
+        " result in everything blowing up. Do *not* use unless you have " +\
+        " first run without this option and informed the authors of broken " +\
+        " WML or of the Python WML Parser of it first. There is a very " +\
+        " small chance that with this option the parser can self-recover from " +\
+        " some normally fatal errors.")
     options, args = op.parse_args()
 
     if not options.output:
