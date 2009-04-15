@@ -1047,8 +1047,7 @@ const std::string& unit_type::race() const
 }
 
 bool unit_type::hide_help() const {
-	return hide_help_ || unit_type_data::types().hide_types().count(id_)>0
-			|| unit_type_data::types().hide_races().count(race_->id())>0;
+	return hide_help_ || unit_type_data::types().hide_help(id_, race_->id());
 }
 
 // Allow storing "advances from" info for convenience in Help.
@@ -1178,13 +1177,16 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 	build_all(unit_type::CREATED);
 
 	if (const config &hide = cfg.child("hide_help")) {
-		std::vector<std::string> hide_types_list =
-				utils::split(hide["types"]);
-		hide_types_.insert(hide_types_list.begin(), hide_types_list.end());
+		std::vector<std::string> types = utils::split(hide["type"]);
+		hide_types_.insert(types.begin(), types.end());
 		
-		std::vector<std::string> hide_races_list =
-				utils::split(hide["races"]);
-		hide_races_.insert(hide_races_list.begin(), hide_races_list.end());
+		std::vector<std::string> races = utils::split(hide["race"]);
+		hide_races_.insert(races.begin(), races.end());
+
+		if (const config &hide_not = hide.child("not")) {
+			std::vector<std::string> n_types = utils::split(hide_not["type"]);
+			hide_not_types_.insert(n_types.begin(), n_types.end());
+		}
 	}
 }
 
@@ -1291,6 +1293,12 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     }
 
     return ut->second;
+}
+
+bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type_id, const std::string& race_id) const
+{
+	return (hide_types_.count(type_id) || hide_races_.count(race_id))
+		&& !hide_not_types_.count(type_id);
 }
 
 void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const

@@ -358,8 +358,8 @@ public:
 
             void build_all(unit_type::BUILD_STATUS status) const;
 
-            const std::set<std::string>& hide_types() const {return hide_types_;}
-            const std::set<std::string>& hide_races() const {return hide_races_;}
+			// check if the root hide_help contains these ids
+			bool hide_help(const std::string& type_id, const std::string& race_id) const;
 
         private:
             unit_type_map_wrapper();
@@ -386,6 +386,7 @@ public:
 
 			std::set<std::string> hide_types_;
 			std::set<std::string> hide_races_;
+			std::set<std::string> hide_not_types_;
 
             const config* unit_cfg_;
 	};
