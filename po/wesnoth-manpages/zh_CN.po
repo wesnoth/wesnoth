@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-04-05 16:55+0300\n"
-"PO-Revision-Date: 2009-04-06 16:21-0500\n"
+"PO-Revision-Date: 2009-04-11 20:32-0500\n"
 "Last-Translator: sylecn <sylecn AT gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -95,9 +95,9 @@ msgid ""
 "scenarios or campaigns, and share them with others."
 msgstr ""
 "用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的"
-"长处和短处；要取得胜利，必须发挥出你的部队的优势， 同时阻止你的对手这么做。 "
-"随着单位获得经验，他们会学会新的技能，变得更强大。 游戏特性：使用本地语言进行"
-"游戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家"
+"优势和缺陷；要取得胜利，必须发挥出你的部队的优势，同时阻止你的对手这么做。 随"
+"着单位获得经验，他们会学会新的技能，变得更强大。 游戏特性：使用本地语言进行游"
+"戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家"
 "庭。你还可以创建自己的单位，关卡和战役，并与所有wesnoth玩家分享。"
 
 # type: SH
@@ -146,7 +146,7 @@ msgstr "B<--config-dir>I<\\ name>"
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
-msgstr "设置用户数据目录到 I<name> $HOME 或者 我的文档（Windows）下。"
+msgstr "设置用户数据目录为$HOME或者我的文档下的I<name>目录。"
 
 # type: TP
 #. type: TP
@@ -248,9 +248,7 @@ msgstr "B<--gunzip>I<\\ infile.gz>"
 msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
-msgstr ""
-"解压缩本应为gzip格式的文件，并保存为去掉 .gz 后缀的同名文件。文件I<infile.gz>"
-"将被删除。"
+msgstr "解压缩gzip文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
 
 # type: TP
 #. type: TP
@@ -265,7 +263,8 @@ msgstr "B<--gzip>I<\\ infile>"
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
-msgstr "用gzip格式压缩文件，文件名为I<infile>.gz，并删除I<infile>。"
+msgstr ""
+"将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删除。"
 
 # type: TP
 #. type: TP
@@ -296,8 +295,8 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
-"从游戏存档目录加载存档 I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，启"
-"动地图编辑器并打开存档 I<file> 所对应的地图。"
+"从游戏存档目录加载存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，启动"
+"地图编辑器并打开存档I<file>所对应的地图。"
 
 # type: TP
 #. type: TP
@@ -314,7 +313,7 @@ msgid ""
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"设置debug的级别.B<all>用来匹配任意bebug级别。可选的级别有：B<error>,\\ "
+"设置debug的级别。B<all>用来匹配任意级别。可选的级别有：B<error>,\\ "
 "B<warning>,\\ B<info>,\\ B<debug>. 默认的级别是B<error>。"
 
 # type: TP
@@ -440,7 +439,7 @@ msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:148
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr "设置屏幕分辨率。例如： B<-r 800x600>"
+msgstr "设置屏幕分辨率。例如：B<-r 800x600>"
 
 # type: TP
 #. type: TP
@@ -455,7 +454,7 @@ msgstr "B<--smallgui>"
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
-msgstr "允许屏幕分辨率降低到800x480，并调节一些界面元素的大小。"
+msgstr "可以使用低至800x480的屏幕分辨率，自动调节一些界面元素的大小。"
 
 # type: TP
 #. type: TP
@@ -471,8 +470,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
-"连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如： B<--"
-"server server.wesnoth.org>"
+"连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如：B<--server "
+"server.wesnoth.org>"
 
 # type: TP
 #. type: TP
@@ -498,7 +497,7 @@ msgstr "B<--validcache>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:161
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr "总是默认缓存是有效的（valid）。（危险）"
+msgstr "认为缓存是有效的。（危险）"
 
 # type: TP
 #. type: TP
@@ -537,7 +536,7 @@ msgstr "B<--with-replay>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:172
 msgid "replays the game loaded with the B<--load> option."
-msgstr "通过和 B<--load> 选项一起使用，播放游戏录像。"
+msgstr "通过和B<--load>选项一起使用，播放游戏录像。"
 
 # type: SH
 #. type: SH
@@ -571,8 +570,7 @@ msgstr "B<--algorithm>I<number>B<=>I<value>"
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
-msgstr ""
-"为这一阵营选择一个非标准的AI算法。可选值有：B<idle_ai> 和 B<sample_ai>."
+msgstr "为这一阵营选择一个非标准的AI算法。可选值有：B<idle_ai>和B<sample_ai>."
 
 # type: TP
 #. type: TP
@@ -603,8 +601,8 @@ msgid ""
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
-"使用这个选项选择一个模式来代替B<默认>模式。所选模式由id决定。模式在B<data/"
-"multiplayer/eras.cfg>文件中描述。"
+"使用这个选项选择一个时代(era)来代替B<默认>时代。所选时代由id确定。关于时代描"
+"述请参考B<data/multiplayer/eras.cfg>文件。"
 
 # type: TP
 #. type: TP
@@ -739,7 +737,9 @@ msgstr "这个帮助页最早由 Cyril Bouthors 撰写E<lt>cyril@bouthors.orgE<g
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:255
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr "访问官方网站: http://www.wesnoth.org/"
+msgstr ""
+"访问官方网站: http://www.wesnoth.org/\n"
+"以及Wesnoth中文网站：http://www.wesnoth.cn"
 
 # type: SH
 #. type: SH
@@ -1055,7 +1055,7 @@ msgid ""
 "computer,human,network,player>."
 msgstr ""
 "服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 "
-"B<glob>(7) 。默认值(如果用户没有指定则自动使用)是： B<*admin*,*admln*,"
+"B<glob>(7) 。默认值(如果用户没有指定则自动使用)是：B<*admin*,*admln*,"
 "*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
