@@ -1177,15 +1177,20 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 	build_all(unit_type::CREATED);
 
 	if (const config &hide = cfg.child("hide_help")) {
+		hide_help_all_ = utils::string_bool(hide["all"], false);
+
 		std::vector<std::string> types = utils::split(hide["type"]);
-		hide_types_.insert(types.begin(), types.end());
+		hide_help_[TYPE].insert(types.begin(), types.end());
 		
 		std::vector<std::string> races = utils::split(hide["race"]);
-		hide_races_.insert(races.begin(), races.end());
+		hide_help_[RACE].insert(races.begin(), races.end());
 
 		if (const config &hide_not = hide.child("not")) {
 			std::vector<std::string> n_types = utils::split(hide_not["type"]);
-			hide_not_types_.insert(n_types.begin(), n_types.end());
+			hide_help_[NOT_TYPE].insert(n_types.begin(), n_types.end());
+			
+			std::vector<std::string> n_races = utils::split(hide_not["race"]);
+			hide_help_[NOT_RACE].insert(n_races.begin(), n_races.end());
 		}
 	}
 }
@@ -1295,10 +1300,10 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     return ut->second;
 }
 
-bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type_id, const std::string& race_id) const
+bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type, const std::string& race) const
 {
-	return (hide_types_.count(type_id) || hide_races_.count(race_id))
-		&& !hide_not_types_.count(type_id);
+	return (hide_help_all_ || hide_help_[RACE].count(race) || hide_help_[TYPE].count(type))
+		&& !(hide_help_[NOT_RACE].count(race) || hide_help_[NOT_TYPE].count(type));
 }
 
 void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const

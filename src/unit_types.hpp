@@ -384,9 +384,9 @@ public:
             movement_type_map movement_types_;
             race_map races_;
 
-			std::set<std::string> hide_types_;
-			std::set<std::string> hide_races_;
-			std::set<std::string> hide_not_types_;
+			bool hide_help_all_;
+			enum HIDE_KEY {TYPE=0, RACE, NOT_TYPE, NOT_RACE, NB_HIDE_KEY};
+			std::set<std::string> hide_help_[NB_HIDE_KEY];
 
             const config* unit_cfg_;
 	};
