@@ -489,6 +489,9 @@ class Parser:
                 text = text.replace("{%s}" % macro.params[i], rep)
 
             if text:
+                # Hack: Ignore empty lines at beginning of a macro at least one
+                # addon breaks otherwise.
+                while len(text) >= 1 and text[0] == '\n': text = text[1:]
                 self.push_text(name, text, initial_textdomain = macro.textdomain)
             else:
                 pass # empty macro, nothing to do
