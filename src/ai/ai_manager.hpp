@@ -139,12 +139,54 @@ public:
 	 */
 	static void set_ai_info(const ai_interface::info& info);
 
+
 	/*
 	 * Clear ai information
 	 * Should be called in playsingle_controller's destructor
 	 */
 	static void clear_ai_info();
 
+
+	/*
+	 * Add observer of game events
+	 * Should be called in playsingle_controller's constructor
+	 */
+	static void add_observer( events::observer* event_observer);
+
+
+	/*
+	 * Remove observer of game events
+	 * Should be called in playsingle_controller's destructor
+	 */
+	static void remove_observer( events::observer* event_observer );
+
+
+	/*
+	 * Notify all observers of 'user interact' event
+	 * Function which should be called frequently to allow the user to interact
+	 * with the interface. This function will make sure that interaction
+	 * doesn't occur too often, so there is no problem with calling it very
+	 * regularly.
+	 */
+	static void raise_unit_interact();
+
+
+	/*
+	 * Notify all observers of 'unit recruited' event
+	 */
+	static void raise_unit_recruited();
+
+
+	/*
+	 * Notify all observers of 'unit moved' event
+	 */
+	static void raise_unit_moved();
+
+
+	/*
+	 * Notify all observers of 'enemy attack' event
+	 */
+	static void raise_enemy_attacked();
 
 protected:
 
@@ -396,7 +438,14 @@ private:
 	static AI_map_of_stacks ai_map_;
 	static std::deque< ai_command_history_item > history_;
 	static long history_item_counter_;
-	static ai_interface::info *ai_info;
+	static ai_interface::info *ai_info_;
+
+	static events::generic_event user_interact_;
+	static events::generic_event unit_recruited_;
+	static events::generic_event unit_moved_;
+	static events::generic_event enemy_attacked_;
+	static int last_interact_;
+
 
 
 	// =======================================================================

@@ -64,11 +64,13 @@ playsingle_controller::playsingle_controller(const config& level,
 
 	ai_interface::info ai_info(*gui_,map_,units_,teams_,status_, gamestate_);
 	ai_manager::set_ai_info(ai_info);
+	ai_manager::add_observer(this) ;
 }
 
 
 playsingle_controller::~playsingle_controller()
 {
+	ai_manager::remove_observer(this) ;
 	ai_manager::clear_ais() ;
 }
 

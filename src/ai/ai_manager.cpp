@@ -250,7 +250,12 @@ ai_manager::~ai_manager()
 
 
 ai_manager::AI_map_of_stacks ai_manager::ai_map_;
-ai_interface::info *ai_info_;
+ai_interface::info *ai_manager::ai_info_;
+events::generic_event ai_manager::user_interact_("ai_user_interact");
+events::generic_event ai_manager::unit_recruited_("ai_unit_recruited");
+events::generic_event ai_manager::unit_moved_("ai_unit_moved");
+events::generic_event ai_manager::enemy_attacked_("ai_enemy_attacked");
+int ai_manager::last_interact_ = 0;
 
 
 void ai_manager::set_ai_info(const ai_interface::info& i)
@@ -268,6 +273,47 @@ void ai_manager::clear_ai_info(){
 		ai_info_ = NULL;
 	}
 }
+
+void ai_manager::add_observer( events::observer* event_observer){
+	user_interact_.attach_handler(event_observer);
+	unit_recruited_.attach_handler(event_observer);
+	unit_moved_.attach_handler(event_observer);
+	enemy_attacked_.attach_handler(event_observer);
+}
+
+void ai_manager::remove_observer(events::observer* event_observer){
+	user_interact_.detach_handler(event_observer);
+	unit_recruited_.detach_handler(event_observer);
+	unit_moved_.detach_handler(event_observer);
+	enemy_attacked_.detach_handler(event_observer);
+}
+
+void ai_manager::raise_unit_interact() {
+        const int interact_time = 30;
+        const int time_since_interact = SDL_GetTicks() - last_interact_;
+        if(time_since_interact < interact_time) {
+                return;
+        }
+
+        user_interact_.notify_observers();
+
+        last_interact_ = SDL_GetTicks();
+
+}
+
+void ai_manager::raise_unit_recruited() {
+	unit_recruited_.notify_observers();
+}
+
+void ai_manager::raise_unit_moved() {
+	unit_moved_.notify_observers();
+}
+
+void ai_manager::raise_enemy_attacked() {
+	enemy_attacked_.notify_observers();
+}
+
+
 // =======================================================================
 // EVALUATION
 // =======================================================================
@@ -640,6 +686,7 @@ void ai_manager::set_active_ai_algorithm_type_for_side( int side, const std::str
 // =======================================================================
 
 void ai_manager::play_turn( int side, events::observer* event_observer ){
+	last_interact_ = 0;
 	ai_interface& ai_obj = get_active_ai_for_side(side);
 	ai_obj.user_interact().attach_handler(event_observer);
 	ai_obj.unit_recruited().attach_handler(event_observer);
