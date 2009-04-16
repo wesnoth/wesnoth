@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 
+#include "filesystem.hpp"
 #include "foreach.hpp"
 #include "map_exception.hpp"
 #include "marked-up_text.hpp"

@@ -298,7 +298,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 			continue;
 		}
 
-		if (res == 0 && savegame_manager::save_game_exists(*fname)) {
+		if (res == 0 && savegame_manager::save_game_exists(*fname, preferences::compress_saves())) {
 			std::stringstream s;
 			s << _("Save already exists. Do you want to overwrite it?")
 			  << std::endl << _("Name: ") << *fname;
@@ -644,7 +644,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	std::vector<config*> summaries;
 	std::vector<save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
-		config& cfg = save_summary(i->name);
+		config& cfg = save_index::save_summary(i->name);
 		summaries.push_back(&cfg);
 	}
 
@@ -702,7 +702,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	int res = lmenu.show();
 
-	write_save_index();
+	save_index::write_save_index();
 
 	if(res == -1)
 		return "";

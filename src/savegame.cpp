@@ -15,7 +15,7 @@
 
 #include "savegame.hpp"
 
-#include "dialogs.hpp" //FIXME: move illegal file character function here and get rid of this include
+#include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
-#include "preferences_display.hpp"
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
@@ -33,6 +32,7 @@
 #include "version.hpp"
 
 #define LOG_SAVE LOG_STREAM(info, engine)
+#define ERR_SAVE LOG_STREAM(err, engine)
 
 #ifdef _WIN32
 	#include <windows.h>
@@ -169,12 +169,12 @@ void savegame_manager::load_summary(const std::string& name, config& cfg_summary
 	::extract_summary_from_config(cfg, cfg_summary);
 }
 
-bool savegame_manager::save_game_exists(const std::string& name)
+bool savegame_manager::save_game_exists(const std::string& name, const bool compress_saves)
 {
 	std::string fname = name;
 	replace_space2underbar(fname);
 
-	if(preferences::compress_saves()) {
+	if(compress_saves) {
 		fname += ".gz";
 	}
 
@@ -219,11 +219,11 @@ void savegame_manager::clean_saves(const std::string &label)
 	}
 }
 
-void savegame_manager::remove_old_auto_saves()
+void savegame_manager::remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 {
 	const std::string auto_save = _("Auto-Save");
-	int countdown = preferences::autosavemax();
-	if (countdown == preferences::INFINITE_AUTO_SAVES)
+	int countdown = autosavemax;
+	if (countdown == infinite_auto_saves)
 		return;
 
 	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
@@ -242,6 +242,59 @@ void savegame_manager::delete_game(const std::string& name)
 
 	remove((get_saves_dir() + "/" + name).c_str());
 	remove((get_saves_dir() + "/" + modified_name).c_str());
+}
+
+bool save_index::save_index_loaded = false;
+config save_index::save_index_cfg;
+
+config& save_index::load()
+{
+	if(save_index_loaded == false) {
+		try {
+			scoped_istream stream = istream_file(get_save_index_file());
+			detect_format_and_read(save_index_cfg, *stream);
+		} catch(io_exception& e) {
+			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
+		} catch(config::error&) {
+			ERR_SAVE << "error parsing save index config file\n";
+			save_index_cfg.clear();
+		}
+
+		save_index_loaded = true;
+	}
+
+	return save_index_cfg;
+}
+
+config& save_index::save_summary(std::string save)
+{
+	/*
+	 * All saves are .gz files now so make sure we use that name when opening
+	 * a file. If not some parts of the code use the name with and some parts
+	 * without the .gz suffix.
+	 */
+	if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
+		save += ".gz";
+	}
+
+	config& cfg = load();
+	if (config &sv = cfg.find_child("save", "save", save))
+		return sv;
+
+	config &res = cfg.add_child("save");
+	res["save"] = save;
+	return res;
+}
+
+void save_index::write_save_index()
+{
+	log_scope("write_save_index()");
+	try {
+		scoped_ostream stream = ostream_file(get_save_index_file());
+		write(*stream, load());
+	} catch(io_exception& e) {
+		ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
+	}
 }
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
@@ -402,13 +455,14 @@ void loadgame::copy_era(config &cfg)
 	snapshot.add_child("era", era);
 }
 
-savegame::savegame(game_state& gamestate, const std::string title)
+savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string title)
 	: gamestate_(gamestate)
 	, snapshot_()
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved"))
 	, interactive_(false)
+	, compress_saves_(compress_saves)
 {}
 
 void savegame::save_game_interactive(display& gui, const std::string& message, 
@@ -466,13 +520,13 @@ void savegame::save_game_internal(const std::string& filename)
 
 	filename_ = filename;
 
-	if(preferences::compress_saves()) {
+	if (compress_saves_) {
 		filename_ += ".gz";
 	}
 
 	std::stringstream ss;
 	{
-		config_writer out(ss, preferences::compress_saves());
+		config_writer out(ss, compress_saves_);
 		write_game(out);
 		finish_save_game(out);
 	}
@@ -545,11 +599,11 @@ void savegame::finish_save_game(const config_writer &out)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 
-		config& summary = save_summary(gamestate_.label);
+		config& summary = save_index::save_summary(gamestate_.label);
 		extract_summary_data_from_save(summary);
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
-		write_save_index();
+		save_index::write_save_index();
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
@@ -652,8 +706,8 @@ void savegame::set_filename(std::string filename)
 	filename_ = filename;
 }
 
-scenariostart_savegame::scenariostart_savegame(game_state &gamestate) 
-	: savegame(gamestate) 
+scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const bool compress_saves) 
+	: savegame(gamestate, compress_saves) 
 {
 	set_filename(gamestate.label);
 }
@@ -665,8 +719,8 @@ void scenariostart_savegame::before_save()
 	write_players(gamestate(), gamestate().starting_pos);
 }
 
-replay_savegame::replay_savegame(game_state &gamestate) 
-	: savegame(gamestate, _("Save Replay")) 
+replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves) 
+	: savegame(gamestate, compress_saves, _("Save Replay")) 
 {}
 
 void replay_savegame::create_filename()
@@ -683,8 +737,8 @@ void replay_savegame::create_filename()
 autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg, 
 							 const game_display& gui, const std::vector<team>& teams, 
 							 const unit_map& units, const gamestatus& gamestatus,
-							 const gamemap& map)
-	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map)
+							 const gamemap& map, const bool compress_saves)
+	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 	create_filename();
@@ -704,8 +758,8 @@ void autosave_savegame::create_filename()
 game_savegame::game_savegame(game_state &gamestate, const config& level_cfg, 
 							 const game_display& gui, const std::vector<team>& teams, 
 							 const unit_map& units, const gamestatus& gamestatus,
-							 const gamemap& map) 
-	: savegame(gamestate, _("Save Game")),
+							 const gamemap& map, const bool compress_saves) 
+	: savegame(gamestate, compress_saves, _("Save Game")),
 	level_cfg_(level_cfg), gui_(gui),
 	teams_(teams), units_(units),
 	gamestatus_(gamestatus), map_(map)

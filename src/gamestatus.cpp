@@ -27,8 +27,6 @@
 #include "statistics.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
-#include "serialization/binary_or_text.hpp"
-#include "serialization/parser.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
@@ -584,61 +582,6 @@ void game_state::write_snapshot(config& cfg) const
 		::write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
-	}
-}
-
-namespace {
-bool save_index_loaded = false;
-config save_index_cfg;
-}
-
-static config& save_index()
-{
-	if(save_index_loaded == false) {
-		try {
-			scoped_istream stream = istream_file(get_save_index_file());
-			detect_format_and_read(save_index_cfg, *stream);
-		} catch(io_exception& e) {
-			ERR_NG << "error reading save index: '" << e.what() << "'\n";
-		} catch(config::error&) {
-			ERR_NG << "error parsing save index config file\n";
-			save_index_cfg.clear();
-		}
-
-		save_index_loaded = true;
-	}
-
-	return save_index_cfg;
-}
-
-config& save_summary(std::string save)
-{
-	/*
-	 * All saves are .gz files now so make sure we use that name when opening
-	 * a file. If not some parts of the code use the name with and some parts
-	 * without the .gz suffix.
-	 */
-	if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
-		save += ".gz";
-	}
-
-	config& cfg = save_index();
-	if (config &sv = cfg.find_child("save", "save", save))
-		return sv;
-
-	config &res = cfg.add_child("save");
-	res["save"] = save;
-	return res;
-}
-
-void write_save_index()
-{
-	log_scope("write_save_index()");
-	try {
-		scoped_ostream stream = ostream_file(get_save_index_file());
-		write(*stream, save_index());
-	} catch(io_exception& e) {
-		ERR_NG << "error writing to save index file: '" << e.what() << "'\n";
 	}
 }
 

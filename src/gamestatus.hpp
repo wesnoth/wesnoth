@@ -17,7 +17,6 @@
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
-#include "filesystem.hpp"
 #include "random.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"
@@ -301,10 +300,6 @@ private:
 std::string generate_game_uuid();
 
 void write_players(game_state& gamestate, config& cfg);
-
-config& save_summary(std::string save);
-
-void write_save_index();
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 

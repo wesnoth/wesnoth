@@ -604,12 +604,12 @@ private:
 		Uint32 start, end;
 		start = SDL_GetTicks();
 
-		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
+		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
 		save.save_game(gui_);
 
 		end = SDL_GetTicks();
 		LOG_NG << "Milliseconds to save " << save.filename() << ": " << end - start << "\n";
-		savegame_manager::remove_old_auto_saves();
+		savegame_manager::remove_old_auto_saves(preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
 	void menu_handler::preferences()
@@ -2718,11 +2718,11 @@ private:
 		menu_handler_.gui_->toggle_benchmark();
 	}
 	void console_handler::do_save() {
-		savegame save(menu_handler_.gamestate_);
+		savegame save(menu_handler_.gamestate_, preferences::compress_saves());
 		save.save_game(get_data());
 	}
 	void console_handler::do_save_quit() {
-		savegame save(menu_handler_.gamestate_);
+		savegame save(menu_handler_.gamestate_, preferences::compress_saves());
 		save.save_game(get_data());
 		throw end_level_exception(QUIT);
 	}

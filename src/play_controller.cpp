@@ -289,7 +289,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_);
+		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
 		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -299,7 +299,7 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		replay_savegame save(gamestate_);
+		replay_savegame save(gamestate_, preferences::compress_saves());
 		save.save_game_interactive(*gui_, "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
@@ -808,7 +808,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
 				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame_manager::save_game_exists(name)) {
+				if (savegame_manager::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {
 						newsaves.push_back(name + ".gz");
 					} else {

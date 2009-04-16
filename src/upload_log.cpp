@@ -22,6 +22,7 @@
 #define GETTEXT_DOMAIN "wesnoth"
 
 #include "construct_dialog.hpp"
+#include "filesystem.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"

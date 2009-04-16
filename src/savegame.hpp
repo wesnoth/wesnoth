@@ -17,8 +17,9 @@
 #define SAVEGAME_H_INCLUDED
 
 #include "global.hpp"
-#include "show_dialog.hpp"
+#include "filesystem.hpp"
 #include "gamestatus.hpp"
+#include "show_dialog.hpp"
 
 #include <string>
 
@@ -45,18 +46,34 @@ public:
 	static void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 	
 	/** Returns true if there is already a savegame with that name. */
-	static bool save_game_exists(const std::string& name);
+	static bool save_game_exists(const std::string& name, const bool compress_saves);
 	/** Get a list of available saves. */
 	static std::vector<save_info> get_saves_list(const std::string *dir = NULL, const std::string* filter = NULL);
 
 	static void clean_saves(const std::string &label);
-	static void remove_old_auto_saves();
+	static void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
 	/** Delete a savegame. */
 	static void delete_game(const std::string& name);
 
 private:
-	/** Default-Konstruktor (don't instantiate this class) */
+	/** Default-Constructor (don't instantiate this class) */
 	savegame_manager() {}
+};
+
+class save_index
+{
+public:
+	static config& save_summary(std::string save);
+	static void write_save_index();
+
+private:
+	/** Default-Constructor (don't instantiate this class) */
+	save_index() {}
+
+	static config& load();
+
+	static bool save_index_loaded;
+	static config save_index_cfg;
 };
 
 class loadgame
@@ -95,7 +112,7 @@ class savegame
 public:
 	/** The only constructor of savegame. The title parameter is only necessary if you 
 		intend to do interactive saves. */
-	savegame(game_state& gamestate, const std::string title = "Save");
+	savegame(game_state& gamestate, const bool compress_saves, const std::string title = "Save");
 
 	virtual ~savegame() {}
 
@@ -161,6 +178,9 @@ private:
 		generated automatically (interactive = false) and if a message is displayed that the
 		game was successfully saved (interactive = true). */
 	bool interactive_;
+
+	/** Determines, if compression is used for the savegame file */
+	bool compress_saves_;
 };
 
 /** Class for "normal" midgame saves. The additional members are needed for creating the snapshot
@@ -171,7 +191,7 @@ public:
 	game_savegame(game_state& gamestate, const config& level_cfg,
 		const game_display& gui, const std::vector<team>& teams,
 		const unit_map& units, const gamestatus& gamestatus,
-		const gamemap& map);
+		const gamemap& map, const bool compress_saves);
 
 private:
 	virtual void create_filename();
@@ -195,7 +215,7 @@ protected:
 class replay_savegame : public savegame
 {
 public:
-	replay_savegame(game_state& gamestate);
+	replay_savegame(game_state& gamestate, const bool compress_saves);
 
 private:
 	virtual void create_filename();
@@ -208,7 +228,7 @@ public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg, 
 							 const game_display& gui, const std::vector<team>& teams, 
 							 const unit_map& units, const gamestatus& gamestatus,
-							 const gamemap& map);
+							 const gamemap& map, const bool compress_saves);
 
 private:
 	virtual void create_filename();
@@ -218,7 +238,7 @@ private:
 class scenariostart_savegame : public savegame
 {
 public:
-	scenariostart_savegame(game_state& gamestate);
+	scenariostart_savegame(game_state& gamestate, const bool compress_saves);
 
 private:
 	/** Adds the player information to the starting position (= [replay_start]). */

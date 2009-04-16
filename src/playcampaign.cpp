@@ -385,7 +385,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				savegame_manager::clean_saves(gamestate.label);
 
 			if (preferences::save_replays()) {
-				replay_savegame save(gamestate);
+				replay_savegame save(gamestate, preferences::compress_saves());
 				save.save_game_interactive(disp, "", gui::OK_CANCEL, false, false);
 			}
 		}
@@ -553,7 +553,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 #endif /* TINY_GUI */
 					{
 						try {
-							scenariostart_savegame save(gamestate);
+							scenariostart_savegame save(gamestate, preferences::compress_saves());
 							save.save_game();
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
