@@ -108,11 +108,11 @@ void playsingle_controller::recall(){
 }
 
 void playsingle_controller::toggle_shroud_updates(){
-	menu_handler_.toggle_shroud_updates(player_number_);
+	menu_handler_.toggle_shroud_updates(gui_->viewing_team()+1);
 }
 
 void playsingle_controller::update_shroud_now(){
-	menu_handler_.update_shroud_now(player_number_);
+	menu_handler_.update_shroud_now(gui_->viewing_team()+1);
 }
 
 void playsingle_controller::end_turn(){
@@ -875,10 +875,13 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud())
+			return !linger_ && (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
 			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
-			return !linger_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;
+			return !linger_ 
+				&& player_number_-1 == gui_->viewing_team() 
+				&& !events::commands_disabled 
+				&& teams_[gui_->viewing_team()].auto_shroud_updates() == false;
 
 		// Commands we can only do if in debug mode
 		case hotkey::HOTKEY_CREATE_UNIT:

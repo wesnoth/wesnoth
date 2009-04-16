@@ -271,7 +271,7 @@ void play_controller::place_sides_in_preferred_locations(gamemap& map, const con
 }
 
 void play_controller::objectives(){
-	menu_handler_.objectives(player_number_);
+	menu_handler_.objectives(gui_->viewing_team()+1);
 }
 
 void play_controller::show_statistics(){
@@ -722,9 +722,9 @@ void play_controller::slice_before_scroll() {
 }
 
 void play_controller::slice_end() {
-	if(!browse_ && current_team().objectives_changed()) {
-		dialogs::show_objectives(*gui_, level_, current_team().objectives());
-		current_team().reset_objectives_changed();
+	if(!browse_ && teams_[gui_->viewing_team()].objectives_changed()) {
+		dialogs::show_objectives(*gui_, level_, teams_[gui_->viewing_team()].objectives());
+		teams_[gui_->viewing_team()].reset_objectives_changed();
 	}
 }
 
@@ -951,7 +951,7 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 {
 	switch(command) {
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return current_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return teams_[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}
