@@ -176,8 +176,8 @@ protected:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	std::auto_ptr<ai_recruit_result> execute_recruit_action(const std::string& unit_name, const location &where);
-	std::auto_ptr<ai_recruit_result> check_recruit_action(const std::string& unit_name, const location &where);
+	std::auto_ptr<ai_recruit_result> execute_recruit_action(const std::string& unit_name, const location &where = map_location::null_location);
+	std::auto_ptr<ai_recruit_result> check_recruit_action(const std::string& unit_name, const location &where = map_location::null_location);
 
 
 	/**

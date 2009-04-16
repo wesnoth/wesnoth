@@ -59,7 +59,7 @@ ai_action_result::ai_action_result( unsigned int side )
 ai_action_result::~ai_action_result()
 {
 	if (!return_value_checked_) {
-		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs!" << std::endl;
+		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " <<  std::endl;
 	}
 }
 
@@ -93,7 +93,7 @@ void ai_action_result::execute()
 void ai_action_result::init_for_execution()
 {
 	return_value_checked_ = false;
-	status_ = ai_action_result::AI_ACTION_STARTED;
+	status_ =  ai_action_result::AI_ACTION_SUCCESS;
 	do_init_for_execution();
 }
 
@@ -107,46 +107,47 @@ bool ai_action_result::is_ok()
 
 void ai_action_result::set_error(int error_code){
 	status_ = error_code;
+	ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
 }
 
 
-bool ai_action_result::is_success()
+bool ai_action_result::is_success() const
 {
 	return (status_ == ai_action_result::AI_ACTION_SUCCESS);
 }
 
 
-bool ai_action_result::is_execution()
+bool ai_action_result::is_execution() const
 {
 	return is_execution_;
 }
 
 
-unsigned int ai_action_result::get_side()
+unsigned int ai_action_result::get_side() const
 {
 	return side_;
 }
 
 
-ai_interface::info& ai_action_result::get_info()
+ai_interface::info& ai_action_result::get_info() const
 {
 	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
 
-ai_interface::info& ai_action_result::get_subjective_info()
+ai_interface::info& ai_action_result::get_subjective_info() const
 {
 	return get_info();
 }
 
 
-bool ai_action_result::using_subjective_info()
+bool ai_action_result::using_subjective_info() const
 {
 	return false;
 }
 
 
-team& ai_action_result::get_my_team(ai_interface::info info)
+team& ai_action_result::get_my_team(ai_interface::info info) const
 {
 	return info.teams[side_-1];
 }
@@ -163,6 +164,19 @@ void ai_attack_result::do_check_before()
 
 void ai_attack_result::do_check_after()
 {
+}
+
+
+std::string ai_attack_result::do_describe() const
+{
+	std::stringstream s;
+	s << "attack by side ";
+	s << get_side();
+	s << " from location "<<attacker_loc_;
+	s << " to location "<<defender_loc_;
+	s << " using weapon "<< attacker_weapon_;
+	s <<std::endl;
+	return s.str();
 }
 
 
@@ -188,6 +202,22 @@ void ai_move_result::do_check_before()
 
 void ai_move_result::do_check_after()
 {
+}
+
+
+std::string ai_move_result::do_describe() const
+{
+	std::stringstream s;
+	if (remove_movement_){
+		s << "full move by side ";
+	} else {
+		s << "partial move by side ";
+	}
+	s << get_side();
+	s << " from location "<<from_;
+	s << " to location "<<to_;
+	s <<std::endl;
+	return s.str();
 }
 
 
@@ -225,7 +255,6 @@ bool ai_recruit_result::test_unit_type_known( const std::set<std::string>::const
                 set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
                 return false;
         }
-	unit_type_ = &unit_type;
 	return true;
 }
 
@@ -276,6 +305,7 @@ bool ai_recruit_result::test_suitable_recruit_location( const gamemap& map, cons
 
 void ai_recruit_result::do_check_before()
 {
+	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const ai_interface::info& s_info = get_subjective_info();
 	const ai_interface::info& info = get_info();
 
@@ -361,9 +391,25 @@ void ai_recruit_result::do_check_after()
 	
 }
 
+std::string ai_recruit_result::do_describe() const
+{
+	std::stringstream s;
+	s << "recruitment by side ";
+	s << get_side();
+	s << " of unit type ["<<unit_name_;
+	if (where_ != map_location::null_location){
+		s << "] on location "<<where_;
+	} else {
+		s << "] on any suitable location";
+	}
+	s <<std::endl;
+	return s.str();
+}
+
 
 void ai_recruit_result::do_execute()
 {
+	DBG_AI_ACTIONS << " execute: " << do_describe() << std::endl;
 	assert(is_success());
 	const ai_interface::info& info = get_info();
 	// We have to add the recruit command now, because when the unit
@@ -374,11 +420,12 @@ void ai_recruit_result::do_execute()
 	// a confirmation for the transaction.
 	recorder.add_recruit(num_,recruit_location_);
 	replay_undo replay_guard(recorder);
-	unit new_unit(&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&(*unit_type_)->second,get_side(),true);
+	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name_);
+	unit new_unit(&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&u->second,get_side(),true);
 	std::string recruit_err = recruit_unit(get_info().map,get_side(),get_info().units,new_unit,recruit_location_,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 		statistics::recruit_unit(new_unit);
-		get_my_team(info).spend_gold((*unit_type_)->second.cost());
+		get_my_team(info).spend_gold(u->second.cost());
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		ai_manager::raise_unit_recruited();
@@ -393,6 +440,12 @@ void ai_recruit_result::do_execute()
 void ai_recruit_result::do_init_for_execution()
 {
 }
+
+std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
 
 
 // ai_stopunit_result
@@ -410,6 +463,21 @@ void ai_stopunit_result::do_check_after()
 {
 }
 
+std::string ai_stopunit_result::do_describe() const
+{
+	std::stringstream s;
+	s <<" stopunit by side ";
+	s << get_side();
+	if (remove_movement_){
+		s << " : remove movenent";
+	}
+	if (remove_attacks_){
+		s << " remove attacks";
+	} 
+	s << "from unit on location "<<unit_location_;
+	s <<std::endl;
+	return s.str();
+}
 
 void ai_stopunit_result::do_execute()
 {

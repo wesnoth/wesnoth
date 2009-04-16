@@ -39,6 +39,7 @@ public:
 	void check_before();
 	void execute();
 	bool is_ok();
+	virtual std::string do_describe() const =0; 
 protected:
 	ai_action_result( unsigned int side );
 	virtual void do_check_before() = 0;
@@ -46,14 +47,14 @@ protected:
 	virtual void do_execute() = 0;	
 	virtual void do_init_for_execution() = 0;
 
-	bool is_execution();
-	unsigned int get_side();
-	ai_interface::info& get_info();
-	ai_interface::info& get_subjective_info();
-	bool using_subjective_info();
-	team& get_my_team(ai_interface::info info);
+	bool is_execution() const;
+	unsigned int get_side() const;
+	ai_interface::info& get_info() const;
+	ai_interface::info& get_subjective_info() const;
+	bool using_subjective_info() const;
+	team& get_my_team(ai_interface::info info) const;
 	void set_error(int error_code);
-	bool is_success();
+	bool is_success() const;
 private:
 	void check_after();
 	void init_for_execution();
@@ -71,6 +72,7 @@ public:
 		const map_location& attacker_loc,
         	const map_location& defender_loc,
 		int attacker_weapon );
+	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
@@ -88,6 +90,7 @@ public:
 		const map_location& from,
 		const map_location& to,
 		bool remove_movement );
+	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
@@ -109,6 +112,7 @@ public:
 	static const int E_LEADER_NOT_ON_KEEP = 3005;
 	static const int E_BAD_RECRUIT_LOCATION = 3006;
 
+	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
@@ -153,6 +157,7 @@ public:
 		const map_location& unit_location,
 		bool remove_movement,
 		bool remove_attacks );
+	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
@@ -164,6 +169,7 @@ private:
 	const bool remove_attacks_;
 };
 
+std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r);
 
 class ai_actions {
 
