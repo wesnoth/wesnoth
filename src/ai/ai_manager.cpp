@@ -288,7 +288,7 @@ void ai_manager::remove_observer(events::observer* event_observer){
 	enemy_attacked_.detach_handler(event_observer);
 }
 
-void ai_manager::raise_unit_interact() {
+void ai_manager::raise_user_interact() {
         const int interact_time = 30;
         const int time_since_interact = SDL_GetTicks() - last_interact_;
         if(time_since_interact < interact_time) {
@@ -688,10 +688,6 @@ void ai_manager::set_active_ai_algorithm_type_for_side( int side, const std::str
 void ai_manager::play_turn( int side, events::observer* event_observer ){
 	last_interact_ = 0;
 	ai_interface& ai_obj = get_active_ai_for_side(side);
-	ai_obj.user_interact().attach_handler(event_observer);
-	ai_obj.unit_recruited().attach_handler(event_observer);
-	ai_obj.unit_moved().attach_handler(event_observer);
-	ai_obj.enemy_attacked().attach_handler(event_observer);
 	ai_obj.play_turn();
 }
 

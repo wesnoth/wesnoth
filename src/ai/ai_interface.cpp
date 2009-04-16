@@ -19,6 +19,7 @@
 
 #include "ai_actions.hpp"
 #include "ai_interface.hpp"
+#include "ai_manager.hpp"
 
 #define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
@@ -28,6 +29,26 @@
 // =======================================================================
 // 
 // =======================================================================
+void ai_interface::raise_user_interact() const
+{
+	ai_manager::raise_user_interact();
+}
+
+void ai_interface::raise_unit_recruited() const
+{
+	ai_manager::raise_unit_recruited();
+}
+
+void ai_interface::raise_unit_moved() const
+{
+	ai_manager::raise_unit_moved();
+}
+
+void ai_interface::raise_enemy_attacked() const
+{
+	ai_manager::raise_enemy_attacked();
+}
+
 
 std::auto_ptr<ai_attack_result> ai_interface::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	return ai_actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
@@ -63,3 +84,4 @@ std::auto_ptr<ai_stopunit_result> ai_interface::execute_stopunit_action(const ma
 std::auto_ptr<ai_stopunit_result> ai_interface::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	return ai_actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
 }
+

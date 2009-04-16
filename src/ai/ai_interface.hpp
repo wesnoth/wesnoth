@@ -24,7 +24,6 @@ class game_display;
 class gamemap;
 
 #include "../formula_callable.hpp"
-#include "../generic_event.hpp"
 #include "../pathfind.hpp"
 #include "../gamestatus.hpp"
 #include "../playturn.hpp"
@@ -89,9 +88,7 @@ public:
 	 * All derived classes should take an argument of type info& which they
 	 * should pass to this constructor.
 	 */
-	ai_interface(int side, bool master) : side_(side), master_(master), last_interact_(0), user_interact_("ai_user_interact"),
-		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
-		enemy_attacked_("ai_enemy_attacked") {
+	ai_interface(int side, bool master) : side_(side), master_(master) {
 		add_ref(); //this class shouldn't be reference counted.
 	}
 	virtual ~ai_interface() {}
@@ -107,7 +104,6 @@ public:
 	 * Derived persistant AIs should call this function each turn (expect first)
 	 */
 	virtual void new_turn() {
-		last_interact_ = 0;
 	}
 
 	/** Return a reference to the 'team' object for the AI. */
@@ -119,12 +115,6 @@ public:
 
 	/** Display a debug message as a chat message. */
 	void log_message(const std::string& msg);
-
-	// Exposes events to allow for attaching/detaching handlers.
-	events::generic_event& user_interact()  { return user_interact_; }
-	events::generic_event& unit_recruited() { return unit_recruited_; }
-	events::generic_event& unit_moved()     { return unit_moved_; }
-	events::generic_event& enemy_attacked() { return enemy_attacked_; }
 
         /** Set the side */
         virtual void set_side(unsigned int side) { side_ = side; }
@@ -292,23 +282,18 @@ protected:
 	 * doesn't occur too often, so there is no problem with calling it very
 	 * regularly.
 	 */
-	void raise_user_interact();
+	void raise_user_interact() const;
 
 	/** Notifies all interested observers of the event respectively. */
-	void raise_unit_recruited() { unit_recruited_.notify_observers(); }
-	void raise_unit_moved() {  unit_moved_.notify_observers(); }
-	void raise_enemy_attacked() { enemy_attacked_.notify_observers(); }
+	void raise_unit_recruited() const;
+	void raise_unit_moved() const;
+	void raise_enemy_attacked() const;
 protected:
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	virtual variant get_value(const std::string& key) const;
 private:
 	unsigned int side_;
 	bool master_;
-	int last_interact_;
-	events::generic_event user_interact_;
-	events::generic_event unit_recruited_;
-	events::generic_event unit_moved_;
-	events::generic_event enemy_attacked_;
 };
 
 #endif

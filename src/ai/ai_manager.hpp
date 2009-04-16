@@ -168,7 +168,7 @@ public:
 	 * doesn't occur too often, so there is no problem with calling it very
 	 * regularly.
 	 */
-	static void raise_unit_interact();
+	static void raise_user_interact();
 
 
 	/*

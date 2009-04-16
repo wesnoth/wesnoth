@@ -400,19 +400,6 @@ const ai_interface::info& ai_interface::get_info() const{
 	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
-void ai_interface::raise_user_interact()
-{
-	const int interact_time = 30;
-	const int time_since_interact = SDL_GetTicks() - last_interact_;
-	if(time_since_interact < interact_time) {
-		return;
-	}
-
-	user_interact_.notify_observers();
-
-	last_interact_ = SDL_GetTicks();
-}
-
 void ai_interface::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
