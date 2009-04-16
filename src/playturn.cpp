@@ -271,12 +271,20 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				throw end_level_exception(QUIT);
 			default:
 				if (action > 2) {
+					
+					{
+						// Server thinks this side is ours now so in case of error transfering side we have to make local state to same as what server thinks it is.
+						teams_[side_index].make_human();
+						teams_[side_index].set_current_player("human"+side_str);
+						if(have_leader) leader->second.rename("human"+side_str);
+					}
+
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
 						change_side_controller(side_str, observers[index], false /*not our own side*/);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
-						change_side_controller(side_str, allies[i]->save_id(), false /*not our own side*/);
+						change_side_controller(side_str, allies[i]->current_player(), false /*not our own side*/);
 					} else {
 						teams_[side_index].make_human_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
