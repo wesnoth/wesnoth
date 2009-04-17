@@ -685,7 +685,7 @@ void ai_manager::set_active_ai_algorithm_type_for_side( int side, const std::str
 // PROXY
 // =======================================================================
 
-void ai_manager::play_turn( int side, events::observer* event_observer ){
+void ai_manager::play_turn( int side, events::observer* /*event_observer*/ ){
 	last_interact_ = 0;
 	ai_interface& ai_obj = get_active_ai_for_side(side);
 	ai_obj.play_turn();
