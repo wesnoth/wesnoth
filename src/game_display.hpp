@@ -257,6 +257,9 @@ public:
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
+	bool auto_shroud_updates() const { return auto_shroud_updates_; }
+	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
+
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
 	std::string current_team_name() const;
 
@@ -331,6 +334,8 @@ private:
 
 	bool invalidateUnit_;
 	map_location displayedUnitHex_;
+
+	bool auto_shroud_updates_;
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,

@@ -626,7 +626,7 @@ namespace {
 		}
 
 		for (size_t side = 0; side != teams->size(); side++) {
-			if (clear_fog_side[side] && (*teams)[side].auto_shroud_updates()) {
+			if (clear_fog_side[side] && screen->auto_shroud_updates()) {
 				clear_shroud(*screen,*game_map,*units,*teams,side);
 			}
 		}

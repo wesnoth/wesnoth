@@ -356,7 +356,6 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		villages_(),
 		shroud_(),
 		fog_(),
-		auto_shroud_updates_(true),
 		info_(cfg),
 		countdown_time_(0),
 		action_bonus_count_(0),
