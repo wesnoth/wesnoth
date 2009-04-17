@@ -682,7 +682,7 @@ bool game_controller::play_multiplayer_mode()
 
 	std::string era = "era_default";
 	std::string scenario = "multiplayer_The_Freelands";
-	std::map<int,std::string> side_types, side_controllers, side_algorithms;
+	std::map<int,std::string> side_types, side_controllers, side_algorithms, side_ai_configs;
 	std::map<int,string_map> side_parameters;
 	std::string turns = "50";
 
@@ -720,6 +720,8 @@ bool game_controller::play_multiplayer_mode()
 				era = value;
 			} else if(last_digit && name_head == "--controller") {
 				side_controllers[side] = value;
+			} else if(last_digit && name_head == "--ai_config") {
+				side_ai_configs[side] = value;
 			} else if(last_digit && name_head == "--algorithm") {
 				side_algorithms[side] = value;
 			} else if(last_digit && name_head == "--side") {
@@ -780,7 +782,8 @@ bool game_controller::play_multiplayer_mode()
 	{
 		std::map<int,std::string>::const_iterator type = side_types.find(side_num),
 		                                          controller = side_controllers.find(side_num),
-		                                          algorithm = side_algorithms.find(side_num);
+		                                          algorithm = side_algorithms.find(side_num),
+							  ai_config = side_ai_configs.find(side_num);
 
 		const config* side = type == side_types.end() ?
 			&era_cfg.find_child("multiplayer_side", "random_faction", "yes") :
@@ -839,6 +842,10 @@ bool game_controller::play_multiplayer_mode()
 
 		if(algorithm != side_algorithms.end()) {
 			s["ai_algorithm"] = algorithm->second;
+		}
+
+		if(ai_config != side_ai_configs.end()) {
+			s["ai_config"] = ai_config->second;
 		}
 
 		config& ai_params = s.add_child("ai");
@@ -1757,6 +1764,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               should be between 1 and 1000, the default is 50.\n"
 			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
 			<< "                               options that can be used as explained below:\n"
+			<< "    --ai_config<number>=value  selects a configuration file to load for this side.\n"
 			<< "    --algorithm<number>=value  selects a non-standard algorithm to be used by\n"
 			<< "                               the AI controller for this side.\n"
 			<< "    --controller<number>=value selects the controller for this side.\n"

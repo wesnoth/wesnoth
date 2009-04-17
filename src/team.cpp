@@ -120,7 +120,11 @@ team::team_info::team_info(const config& cfg) :
 	if (!user_team_name.translatable())
 		user_team_name = user_team_name.from_serialized(user_team_name);
 
-	ai_manager::add_ai_for_side_from_config(side,cfg,true);
+	if(cfg.has_attribute("ai_config")) {
+		ai_manager::add_ai_for_side_from_file(side, cfg["ai_config"], true);
+	} else {
+		ai_manager::add_ai_for_side_from_config(side, cfg, true);
+	}
 
 	//legacy parameters
 	const config& global_ai_parameters =  ai_manager::get_active_ai_global_parameters_for_side(side);
