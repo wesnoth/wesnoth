@@ -21,7 +21,11 @@
 
 
 namespace {
+#ifdef LOW_MEM
+std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int /*team*/)
+#else
 std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int team)
+#endif
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
