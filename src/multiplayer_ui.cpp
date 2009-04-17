@@ -487,9 +487,13 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 }
 
 
+#ifdef USE_TINY_GUI
+void ui::handle_key_event(const SDL_KeyboardEvent& /*event*/)
+{
+}
+#else
 void ui::handle_key_event(const SDL_KeyboardEvent& event)
 {
-#ifndef USE_TINY_GUI
 	//On enter, adds the current chat message to the chat textbox.
 	if((event.keysym.sym == SDLK_RETURN || event.keysym.sym == SDLK_KP_ENTER) && !entry_textbox_.text().empty()) {
 
@@ -515,8 +519,8 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		}
 		entry_textbox_.set_text(text);
 	}
-#endif
 }
+#endif
 
 void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& sender = msg["sender"];
