@@ -67,8 +67,6 @@ static void exit_sigterm(int signal) {
 	exit(-1);
 }
 
-#define DEFAULT_CAMPAIGND_PORT          15003
-
 namespace {
 
 	config construct_message(const std::string& msg)
@@ -165,7 +163,7 @@ namespace {
  		/** Seems like compression level above 6 is waste of cpu cycle */
  		compress_level_ = lexical_cast_default<int>(cfg_["compress_level"],6);
  		cfg_["compress_level"] = lexical_cast<std::string>(compress_level_);
-		return lexical_cast_default<int>(cfg_["port"], DEFAULT_CAMPAIGND_PORT);
+		return lexical_cast_default<int>(cfg_["port"], default_campaignd_port);
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile,

@@ -22,6 +22,14 @@
 class config;
 
 /**
+ * Defaulr port number for the addon server.append(
+ *
+ * @Note, This might not be the best place to declare the variable, but it's
+ * one of the few files shared by the server and the game.
+ */
+extern const unsigned short default_campaignd_port;
+
+/**
  * Values used for add-on classification; UI-only
  * at the moment, in the future it could be used for
  * directory allocation too, removing the need for

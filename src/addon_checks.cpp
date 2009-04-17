@@ -20,6 +20,8 @@
 
 #include <cstring>
 
+const unsigned short default_campaignd_port = 15004;
+
 static bool two_dots(char a, char b)
 {
 	return a == '.' && b == '.';

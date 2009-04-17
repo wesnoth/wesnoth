@@ -33,9 +33,6 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
-
-#define DEFAULT_CAMPAIGND_PORT				15004
-
 #define ERR_CFG LOG_STREAM(err , config)
 #define LOG_CFG LOG_STREAM(info, config)
 #define WRN_CFG LOG_STREAM(warn, config)
@@ -878,7 +875,7 @@ namespace {
 
 		const std::string old_host = preferences::campaign_server();
 		const int remote_port = lexical_cast_default<int>(address_components.back(),
-		                                                  DEFAULT_CAMPAIGND_PORT);
+		                                                  default_campaignd_port);
 		remote_host = address_components.front();
 		preferences::set_campaign_server(remote_host);
 
