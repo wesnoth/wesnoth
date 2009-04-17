@@ -29,12 +29,16 @@
 #include "serialization/parser.hpp"
 #include "upload_log.hpp"
 #include "wesconfig.h"
-
-
+#include "log.hpp"
 
 #define TARGET_HOST "www.wesnoth.org"
 #define TARGET_URL "/cgi-bin/upload"
 #define TARGET_PORT 80
+
+#define DBG_UPLD LOG_STREAM(debug, uploader)
+#define LOG_UPLD LOG_STREAM(info, uploader)
+#define WRN_UPLD LOG_STREAM(warn, uploader)
+#define ERR_UPLD LOG_STREAM(err, uploader)
 
 struct upload_log::thread_info upload_log::thread_;
 upload_log::manager* upload_log::manager_ = 0;
@@ -74,8 +78,10 @@ static void send_string(TCPsocket sock, const std::string &str)
 // compatibility.
 static int upload_logs(void *_ti)
 {
+	DBG_UPLD << "attempting to upload game logs\n";
 	TCPsocket sock = NULL;
 	upload_log::thread_info *ti = static_cast<upload_log::thread_info*>(_ti);
+	int numfiles = 0;
 
 	const char *header =
 		"POST " TARGET_URL " HTTP/1.1\n"
@@ -101,8 +107,12 @@ static int upload_logs(void *_ti)
 				contents = read_file(*i);
 
 				sock = SDLNet_TCP_Open(&ip);
-				if (!sock)
+				if (!sock) {
+					ERR_UPLD << "error connecting to log server\n";
 					break;
+				} else {
+					DBG_UPLD << "successfully connected to log server\n";
+				}
 				send_string(sock, header);
 				send_string(sock, "Content-length: ");
 				send_string(sock, lexical_cast<std::string>(contents.length()));
@@ -113,6 +123,7 @@ static int upload_logs(void *_ti)
 				// Even if the server gives a bad response, we don't want to
 				// be sending the same bad data over and over to the server.
 				delete_directory(*i);
+				numfiles++;
 
 				if (SDLNet_TCP_Recv(sock, response, sizeof(response))
 					!= sizeof(response))
@@ -132,6 +143,8 @@ static int upload_logs(void *_ti)
 	if (sock)
 		SDLNet_TCP_Close(sock);
 	ti->shutdown = true;
+	DBG_UPLD << numfiles << " game logs successfully sent to server\n";
+	
 	return 0;
 }
 
