@@ -69,6 +69,12 @@ BPath be_path;
 
 namespace {
 	const mode_t AccessMode = 00770;
+
+	// These are the filenames that get special processing
+	const std::string maincfg_filename = "_main.cfg";
+	const std::string finalcfg_filename = "_final.cfg";
+	const std::string initialcfg_filename = "_initial.cfg";
+
 }
 
 #ifdef __APPLE__
@@ -81,11 +87,6 @@ bool ends_with(const std::string& str, const std::string& suffix)
 {
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }
-
-// These are the filenames that get special processing
-#define MAINCFG 	"_main.cfg"
-#define FINALCFG	"_final.cfg"
-#define INITIALCFG	"_initial.cfg"
 
 // Don't pass directory as reference, it seems to break on
 // arklinux with GCC-4.3.
@@ -120,9 +121,9 @@ void get_files_in_dir(const std::string directory,
 			|| (directory[directory.size()-1]==':')
 #endif /* __AMIGAOS4__ */
 		)
-			maincfg = directory + MAINCFG;
+			maincfg = directory + maincfg_filename;
 		else
-			maincfg = (directory + "/") + MAINCFG;
+			maincfg = (directory + "/") + maincfg_filename;
 
 		if (::stat(maincfg.c_str(), &st) != -1) {
 			LOG_FS << "_main.cfg found : " << maincfg << '\n';
@@ -130,7 +131,7 @@ void get_files_in_dir(const std::string directory,
 				if (mode == ENTIRE_FILE_PATH)
 					files->push_back(maincfg);
 				else
-					files->push_back(MAINCFG);
+					files->push_back(maincfg_filename);
 			}
 			return;
 		}
@@ -198,20 +199,20 @@ void get_files_in_dir(const std::string directory,
 					continue;
 
 				if (reorder == DO_REORDER &&
-						::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
+						::stat((fullname+"/"+maincfg_filename).c_str(), &st)!=-1 &&
 						S_ISREG(st.st_mode)) {
 					LOG_FS << "_main.cfg found : ";
 					if (files != NULL) {
 						if (mode == ENTIRE_FILE_PATH) {
-							files->push_back(fullname + "/" + MAINCFG);
-							LOG_FS << fullname << "/" << MAINCFG << '\n';
+							files->push_back(fullname + "/" + maincfg_filename);
+							LOG_FS << fullname << "/" << maincfg_filename << '\n';
 						} else {
-							files->push_back(basename + "/" + MAINCFG);
-							LOG_FS << basename << "/" << MAINCFG << '\n';
+							files->push_back(basename + "/" + maincfg_filename);
+							LOG_FS << basename << "/" << maincfg_filename << '\n';
 					}
 					} else {
 					// Show what I consider strange
-						LOG_FS << fullname << "/" << MAINCFG << " not used now but skip the directory \n";
+						LOG_FS << fullname << "/" << maincfg_filename << " not used now but skip the directory \n";
 					}
 				} else if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
@@ -232,18 +233,18 @@ void get_files_in_dir(const std::string directory,
 		std::sort(dirs->begin(),dirs->end());
 
 	if (files != NULL && reorder == DO_REORDER) {
-		// move FINALCFG, if present, to the end of the vector
+		// move finalcfg_filename, if present, to the end of the vector
 		for (unsigned int i = 0; i < files->size(); i++) {
-			if (ends_with((*files)[i], "/" FINALCFG)) {
+			if (ends_with((*files)[i], "/" + finalcfg_filename)) {
 				files->push_back((*files)[i]);
 				files->erase(files->begin()+i);
 				break;
 			}
 		}
-		// move INITIALCFG, if present, to the beginning of the vector
+		// move initialcfg_filename, if present, to the beginning of the vector
 		int foundit = -1;
 		for (unsigned int i = 0; i < files->size(); i++)
-			if (ends_with((*files)[i], "/" INITIALCFG)) {
+			if (ends_with((*files)[i], "/" + initialcfg_filename)) {
 				foundit = i;
 				break;
 			}
