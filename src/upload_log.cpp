@@ -31,14 +31,16 @@
 #include "wesconfig.h"
 #include "log.hpp"
 
-#define TARGET_HOST "www.wesnoth.org"
-#define TARGET_URL "/cgi-bin/upload"
-#define TARGET_PORT 80
-
 #define DBG_UPLD LOG_STREAM(debug, uploader)
 #define LOG_UPLD LOG_STREAM(info, uploader)
 #define WRN_UPLD LOG_STREAM(warn, uploader)
 #define ERR_UPLD LOG_STREAM(err, uploader)
+
+namespace {
+	const std::string target_host = "www.wesnoth.org";
+	const std::string target_url = "/cgi-bin/upload";
+	const Uint16 target_port = 80;
+} // namespace
 
 struct upload_log::thread_info upload_log::thread_;
 upload_log::manager* upload_log::manager_ = 0;
@@ -83,9 +85,9 @@ static int upload_logs(void *_ti)
 	upload_log::thread_info *ti = static_cast<upload_log::thread_info*>(_ti);
 	int numfiles = 0;
 
-	const char *header =
-		"POST " TARGET_URL " HTTP/1.1\n"
-		"Host: " TARGET_HOST "\n"
+	const std::string header =
+		"POST " + target_url + " HTTP/1.1\n"
+		"Host: " + target_host + "\n"
 		"User-Agent: Wesnoth " VERSION "\n"
 		"Content-Type: text/plain\n";
 
@@ -98,7 +100,7 @@ static int upload_logs(void *_ti)
 		IPaddress ip;
 		network::manager ensure_net_initialized;
 
-		if (SDLNet_ResolveHost(&ip, TARGET_HOST, TARGET_PORT) == 0) {
+		if (SDLNet_ResolveHost(&ip, target_host.c_str(), target_port) == 0) {
 			std::vector<std::string>::iterator i;
 			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
 				std::string contents;
@@ -113,7 +115,7 @@ static int upload_logs(void *_ti)
 				} else {
 					DBG_UPLD << "successfully connected to log server\n";
 				}
-				send_string(sock, header);
+				send_string(sock, header.c_str());
 				send_string(sock, "Content-length: ");
 				send_string(sock, lexical_cast<std::string>(contents.length()));
 				send_string(sock, "\n\n");
