@@ -284,6 +284,8 @@ public:
 	bool knows_about_team(size_t index, bool is_multiplayer) const;
 	bool copy_ally_shroud();
 
+	bool auto_shroud_updates() const { return auto_shroud_updates_; }
+	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() {return info_.disallow_observers; };
 	std::string map_colour_to() const { return info_.colour; };
 	bool no_leader() const { return info_.no_leader; }
@@ -322,6 +324,8 @@ private:
 	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;
+
+	bool auto_shroud_updates_;
 
 	team_info info_;
 

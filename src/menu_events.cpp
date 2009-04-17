@@ -1192,14 +1192,14 @@ private:
 
 	bool menu_handler::clear_shroud(const unsigned int team_num)
 	{
-		bool cleared = gui_->auto_shroud_updates() &&
+		bool cleared = teams_[team_num - 1].auto_shroud_updates() &&
 			::clear_shroud(*gui_,map_,units_,teams_,team_num-1);
 		return cleared;
 	}
 
 	void menu_handler::clear_undo_stack(const unsigned int team_num)
 	{
-		if(gui_->auto_shroud_updates() == false)
+		if(teams_[team_num - 1].auto_shroud_updates() == false)
 			apply_shroud_changes(undo_stack_,gui_,map_,units_,teams_,team_num-1);
 		undo_stack_.clear();
 	}
@@ -1225,10 +1225,10 @@ private:
 	}
 
 	void menu_handler::toggle_shroud_updates(const unsigned int team_num) {
-		bool auto_shroud = gui_->auto_shroud_updates();
+		bool auto_shroud = teams_[team_num - 1].auto_shroud_updates();
 		// If we're turning automatic shroud updates on, then commit all moves
 		if(auto_shroud == false) update_shroud_now(team_num);
-		gui_->set_auto_shroud_updates(!auto_shroud);
+		teams_[team_num - 1].set_auto_shroud_updates(!auto_shroud);
 	}
 
 	void menu_handler::update_shroud_now(const unsigned int team_num)

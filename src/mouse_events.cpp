@@ -349,7 +349,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
 
-	bool check_shroud = gui_->auto_shroud_updates();
+	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
 
 	//we use the last registered highlighted hex
 	//since it's what update our global state

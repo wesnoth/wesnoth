@@ -2213,7 +2213,7 @@ size_t move_unit(game_display* disp,
 	size_t team_num = ui->second.side()-1;
 	team& team = teams[team_num];
 
-	const bool check_shroud = should_clear_shroud && disp->auto_shroud_updates() &&
+	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
 
 	std::set<map_location> known_units;
@@ -2280,7 +2280,7 @@ size_t move_unit(game_display* disp,
 				// so we can put our unit there, then we'll swap back at the end.
 				unit temp_unit(ui->second);
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
-				if( disp->auto_shroud_updates()) {
+				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
 							ui->second.side()-1,&known_units,&seen_units,&petrified_units);
 				} else {
