@@ -31,8 +31,8 @@ wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 .
 韦诺之战(\fBWesnoth\fP)是一个非常好的回合制策略游戏。
 
-用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的长处和短处；要取得胜利，必须发挥出你的部队的优势，
-同时阻止你的对手这么做。 随着单位获得经验，他们会学会新的技能，变得更强大。
+用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的优势和缺陷；要取得胜利，必须发挥出你的部队的优势，同时阻止你的对手这么做。
+随着单位获得经验，他们会学会新的技能，变得更强大。
 游戏特性：使用本地语言进行游戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家庭。你还可以创建自己的单位，关卡和战役，并与所有wesnoth玩家分享。
 .
 .SH 选项
@@ -45,7 +45,7 @@ wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 直接进入战役选择菜单
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-设置用户数据目录到 \fIname\fP $HOME 或者 我的文档（Windows）下。
+设置用户数据目录为$HOME或者我的文档下的\fIname\fP目录。
 .TP 
 \fB\-\-config\-path\fP
 显示用户数据目录并退出
@@ -57,8 +57,9 @@ http://www.wesnoth.org/wiki/CommandMode
 \fB\-\-dummy\-locales\fP
 使用特殊区域(dummy locales)设置切换到任意语言，即使那种语言不是全局安装的。
 .TP 
-\fB\-e, \-\-editor\fP
-启动嵌入式游戏地图编辑器
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 在屏幕一角显示游戏fps(frames per second)
@@ -67,20 +68,22 @@ http://www.wesnoth.org/wiki/CommandMode
 使用全屏模式进入游戏
 .TP 
 \fB\-\-gunzip\fP\fI\ infile.gz\fP
-解压缩本应为gzip格式的文件，并保存为去掉 .gz 后缀的同名文件。文件\fIinfile.gz\fP将被删除。
+解压缩gzip文件，解压后去掉.gz后缀。文件\fIinfile.gz\fP将被删除。
 .TP 
 \fB\-\-gzip\fP\fI\ infile\fP
-用gzip格式压缩文件，文件名为\fIinfile\fP.gz，并删除\fIinfile\fP。
+将\fIinfile\fP压缩为gzip格式文件，文件名为\fIinfile\fP.gz。文件\fIinfile\fP将被删除。
 .TP 
 \fB\-h, \-\-help\fP
 显示命令行可用选项，然后退出。
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ file\fP
-从游戏存档目录加载存档 \fIfile\fP。如果与 \fB\-e\fP 或 \fB\-\-editor\fP 选项同时使用，启动地图编辑器并打开存档 \fIfile\fP
-所对应的地图。
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-设置debug的级别.\fBall\fP用来匹配任意bebug级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+设置debug的级别。\fBall\fP用来匹配任意级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 \fBdebug\fP. 默认的级别是\fBerror\fP。
 .TP 
 \fB\-\-logdomains\fP
@@ -108,19 +111,19 @@ http://www.wesnoth.org/wiki/CommandMode
 显示游戏数据目录(data directory)并退出
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-设置屏幕分辨率。例如： \fB\-r 800x600\fP
+设置屏幕分辨率。例如：\fB\-r 800x600\fP
 .TP 
 \fB\-\-smallgui\fP
-允许屏幕分辨率降低到800x480，并调节一些界面元素的大小。
+可以使用低至800x480的屏幕分辨率，自动调节一些界面元素的大小。
 .TP 
 \fB\-s,\ \-\-server\ [host]\fP
-连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如： \fB\-\-server server.wesnoth.org\fP
+连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如：\fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 使用一个小的测试场景启动游戏
 .TP 
 \fB\-\-validcache\fP
-总是默认缓存是有效的（valid）。（危险）
+认为缓存是有效的。（危险）
 .TP 
 \fB\-v, \-\-version\fP
 显示版本号并退出
@@ -129,7 +132,7 @@ http://www.wesnoth.org/wiki/CommandMode
 使用窗口模式进入游戏
 .TP 
 \fB\-\-with\-replay\fP
-通过和 \fB\-\-load\fP 选项一起使用，播放游戏录像。
+通过和\fB\-\-load\fP选项一起使用，播放游戏录像。
 .
 .SH \-\-multiplayer的额外选项
 .
@@ -137,13 +140,13 @@ http://www.wesnoth.org/wiki/CommandMode
 或者2。不过不同的场景可选的阵营数会有不同。具体的取决于你所玩的场景。
 .TP 
 \fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
-为这一阵营选择一个非标准的AI算法。可选值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
+为这一阵营选择一个非标准的AI算法。可选值有：\fBidle_ai\fP和\fBsample_ai\fP.
 .TP  
 \fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
 选择这一阵营的控制者。可选值有：\fBhuman\fP和\fBai\fP。
 .TP  
 \fB\-\-era=\fP\fIvalue\fP
-使用这个选项选择一个模式来代替\fB默认\fP模式。所选模式由id决定。模式在\fBdata/multiplayer/eras.cfg\fP文件中描述。
+使用这个选项选择一个时代(era)来代替\fB默认\fP时代。所选时代由id确定。关于时代描述请参考\fBdata/multiplayer/eras.cfg\fP文件。
 .TP 
 \fB\-\-exit\-at\-end\fP
 当场景结束时直接退出而不显示胜利/失败对话框。这个选项也可以用来进行脚本基准测试。
@@ -173,6 +176,7 @@ and Soliton <soliton.de@gmail.com>改动。
 这个帮助页最早由 Cyril Bouthors 撰写<cyril@bouthors.org>.
 .br
 访问官方网站: http://www.wesnoth.org/
+以及Wesnoth中文网站：http://www.wesnoth.cn
 .
 .SH COPYRIGHT
 .

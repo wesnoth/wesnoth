@@ -65,8 +65,9 @@ http://www.wesnoth.org/wiki/CommandMode).
 použije speciální falešné locale pro umožnění přepínání do jakéhokoliv
 jazyka, i pokud není nainstalován v systému.
 .TP 
-\fB\-e, \-\-editor\fP
-přeskočí hlavní menu a otevře vestavěný editor map.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu
@@ -87,9 +88,10 @@ jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
 zobrazuje nápovědu k parametrům příkazové řádky.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ soubor\fP
-načte uloženou hru \fIsoubor\fP ze standardního adresáře pro uložené hry. Pokud
-je použit i přepínač \fB\-e\fP nebo \fB\-\-editor\fP, otevře editor s načtenou mapou
-ze \fIsoubor\fP.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
 nastavuje úroveň závažnosti pro jednotlivé kategorie. \fBall\fP znamená, že

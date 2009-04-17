@@ -62,8 +62,9 @@ Informationen hierzu verfügbar).
 Verwendet spezielle Dummy\-Locales, um auf jede Sprache wechseln zu können,
 selbst wenn die Sprache nicht systemweit installiert ist.
 .TP 
-\fB\-e, \-\-editor\fP
-Startet direkt den enthaltenen Karteneditor.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
@@ -85,9 +86,10 @@ Datei \fIdateiname\fP.
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ Datei\fP
-Lädt den Spielstand \fIDatei\fP aus dem Standard\-Spielstand\-Verzeichnis. Falls
-auch die \fB\-e\fP oder \fB\-\-editor\fP Option verwendet wurde, wird der Editor mit
-der Karte aus \fIfile\fP geöffnet.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:48+0200\n"
+"POT-Creation-Date: 2009-04-17 12:51+0200\n"
 "PO-Revision-Date: 2009-04-10 16:17+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -755,19 +755,21 @@ msgstr ""
 "на „Крај“ да продужиш на следећи сценарио."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#, fuzzy
 msgid ""
-"*Remember:\n"
+"<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
 "*Запамти:\n"
 "Притиском ‘u’ можеш опозвати већину ствари — корисно за исправљање грешака."
 
+#. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
-#, fuzzy
-msgid "<big>Galdrad"
+msgid "Galdrad"
 msgstr "Галдрад"
 
 #. [then]
@@ -897,11 +899,6 @@ msgstr "Останеш ли без потезâ"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
 msgstr "Настрада ли Лиза́ра"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
-msgid "Galdrad"
-msgstr "Галдрад"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -1786,6 +1783,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "млатило"
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Галдрад"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

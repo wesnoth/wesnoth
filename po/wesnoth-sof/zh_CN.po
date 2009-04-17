@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:47+0200\n"
+"POT-Creation-Date: 2009-04-17 12:50+0200\n"
 "PO-Revision-Date: 2009-01-13 20:26+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: chinese\n"
@@ -42,13 +42,18 @@ msgstr "（挑战）"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+msgid "Lord"
+msgstr "领主"
+
+#. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "（困难）"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "Lord"
-msgstr "领主"
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
+msgid "(Expert level, 9 scenarios.)"
+msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
@@ -70,11 +75,6 @@ msgstr ""
 "它的打造者也同样伟大，我现在讲述他们的故事...\n"
 "\n"
 "(专家等级，9场景)"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
-msgid "(Expert level, 9 scenarios.)"
-msgstr ""
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:33
@@ -190,6 +190,9 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:120
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:316
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:353
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:152
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:454
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:76
@@ -1232,6 +1235,9 @@ msgid ""
 msgstr "找到Thursagan并说服他返回矮人城市，然后带他回洞"
 
 #. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:124
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:320
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:357
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:160
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:458
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:125
@@ -1258,6 +1264,9 @@ msgstr "我在远处看见了一栋房子！"
 
 #. [message]: speaker=narrator
 #. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:382
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:388
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:476
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:430
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:467
 msgid "Thursagan"
@@ -1363,6 +1372,8 @@ msgid "Move Thursagan to the signpost"
 msgstr "移动Thursagan到路标"
 
 #. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:128
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:324
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:164
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:462
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:129
@@ -2780,6 +2791,227 @@ msgstr ""
 "我知道了。好，快点进来。我不信他们有能力夺取这个据点，即使他们发动一场战争，"
 "我不信。"
 
+#. [scenario]: id=8_The_Dragon
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
+msgid "The Dragon"
+msgstr "巨龙"
+
+#. [side]: type=Elvish Marshal, id=Landar
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
+msgid "Landar"
+msgstr "Lyndar"
+
+#. [side]: type=Fire Dragon, id=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
+msgid "Khrakrahs"
+msgstr "Khrakrahs"
+
+#. [part]
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:100
+msgid ""
+"Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
+"lucky. I would say that, perhaps, their betrayal of Durstorn was coming back "
+"to haunt them. For the section of the old eastern mines that they reached in "
+"their flight had long since become the lair of Khrakrahs... the dragon."
+msgstr ""
+"虽然Alanin从他的精灵追击者的手中逃脱了。但矮人就没有这么幸运了。我要说，也"
+"许，是他们辜负的Durstorn回来闹鬼了。他们不知道，他们已经进入的洞窟长久以来属"
+"于Khrakrahs...巨龙。"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:116
+msgid "Get all heroes to the end of the tunnel"
+msgstr "让所有英雄到达地道尽头"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:178
+msgid ""
+"Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
+"our trail. What do we do now?"
+msgstr ""
+"喂，Thursagan，我们到了东边的矿洞了，但精灵还紧紧跟在我们后面。现在我们怎么"
+"办？"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:182
+msgid ""
+"Well, we have two choices. We may either stand and fight, and assuredly die, "
+"or run as quickly as possible down this path into the depths of the cave, "
+"where we may find something that will help us. Also, remember, the elves "
+"can't run as fast in caves as we can, so we may be able to get ahead of them "
+"and perhaps lay a trap."
+msgstr ""
+"恩，我们有两个选择。我们要么停下战斗，那样保证会死；要么沿这通道尽快地跑向洞"
+"的深处，说不定可以找到什么东西可以帮助我们。当然，记住，精灵在洞里没我们快，"
+"所以我们可以超过他们，说不定还可以安个陷阱。"
+
+#. [message]: speaker=Krawg
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:186
+msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
+msgstr "拟门为森么不头降？塔门不过要拉个模法司头！"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:191
+msgid ""
+"If we give them the ruby, then what? They'll probably kill us anyway. And, "
+"that ruby has the power to do great things, evil things. We can't let it "
+"fall into the wrong hands."
+msgstr ""
+"如果我们给他们红宝石，然后呢？无论怎样他们都可能杀了我们。而且，如此强力的红"
+"宝石可以做正义的事，也可以做邪恶的事。我们不能让它落入魔掌。"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:195
+msgid ""
+"Then we shall run. I suggest calling to arms every last dwarf we possibly "
+"can here. This might be the last chance we'll get to do so."
+msgstr ""
+"我们该继续跑。我提议我们能行的话这里任何最后一位矮人都拿起武器。这也许是我们"
+"的最后一次机会这样做。"
+
+#. [message]: speaker=Baglur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:204
+#, fuzzy
+msgid ""
+"So we're running away, eh? I dinna' like that, but it seems it's our only "
+"option."
+msgstr "所以我们要继续潜逃了，恩？我不喜欢如此，但看起来这是我们唯一的选择。"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:208
+msgid "If it makes you feel any better, we'll probably die this way, too."
+msgstr "我们也可能会死在这条路上，如果这能让你感觉好点的话。"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:227
+msgid "Look, there's a dragon in these caves!"
+msgstr "看！洞里有头巨龙！"
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:231
+msgid "Ah, fresh meat!"
+msgstr "啊~鲜肉！"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:235
+msgid "And which of the great dragons are you?"
+msgstr "您是哪位巨龙？"
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:240
+msgid ""
+"I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
+"brother, but he was weaker than me, and you will not find me so easy to "
+"defeat. Now get out of my volcano!"
+msgstr ""
+"我是Khrakrahs，历史上最伟大的巨龙！Haldric杀了我兄弟Shek'kahan，但他比我弱，"
+"你会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:244
+msgid ""
+"I'd rather face one powerful dragon than hundreds of mighty elves. Continue!"
+msgstr "我宁愿面对一头强力的巨龙也不愿面对数以百记的精灵。继续前进！"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:262
+msgid "What's this? A dwarf fighting against us with the elves?!"
+msgstr "这是？一位矮人和精灵一起对付我们？！"
+
+#. [message]: speaker=Baglur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:267
+msgid ""
+"It must be one of those Surghan mercenaries. I'll bet those elves have hired "
+"more of them. That's bad news for us, for they'll go as fast in caves as we "
+"do."
+msgstr ""
+"这绝对是个Surghan族的雇佣兵。我敢打赌那些精灵雇了更多的矮人。这对我们是个坏消"
+"息，因为他们和我们在洞里一样快。"
+
+#. [message]: speaker=Krawg
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:291
+msgid "Raaaawww! Loook! Forge heeeere!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
+msgid ""
+"Look, I've found something here. It looks like a forge, heated by the lava. "
+"It looks magic, and it looks hot enough to make the Sceptre."
+msgstr ""
+"看，我在这儿发现了什么。看起来象个熔炉，被熔岩加热的。看起来真不可思议，而且"
+"热得可以打造权杖。"
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:303
+msgid "That pretty metal rock is mine! Get away from it!"
+msgstr "那个漂亮的金属石是我的！从那滚开！"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:308
+msgid "Move Thursagan to the forge"
+msgstr "移动Thursagan到熔炉"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:312
+msgid "Defend Thursagan until the sceptre is complete"
+msgstr "保护Thursagan直到权杖完成"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:340
+msgid ""
+"This forge will work perfectly. Give me a few days here, and I can reforge "
+"the sceptre to fulfill its purpose."
+msgstr ""
+"这个熔炉会完美工作的。给我在这里几天时间，我可以改造这个权杖让它达到设计目"
+"标。"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:349
+msgid "Survive for 9 turns"
+msgstr "生存9回合"
+
+#. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
+msgid "An enemy moves onto the forge"
+msgstr "任一敌人进入熔炉"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:384
+msgid "You fool, you let the enemy get at me as I was unarmed!"
+msgstr "你这傻瓜，你竟让敌人够到赤手空拳的我！"
+
+#. [message]: speaker=narrator
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:390
+#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
+msgid "Ayahahh..."
+msgstr "啊呀啊..."
+
+#. [effect]: type=fire
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:427
+msgid "scepter of fire"
+msgstr "火焰权杖"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:458
+msgid ""
+"I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
+"magical artifact."
+msgstr "我完成了我的工作。现在这是真正的火焰权杖，一个强力魔法物品。"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:462
+msgid ""
+"Good. Now, let's get out of this cave, before the elves, dwarves or bats "
+"kill us!"
+msgstr "好的。现在，在精灵，矮人或蝙蝠杀了我们之前，从这洞出去！"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:478
+msgid "In $turnsleft more turns I will have completed the sceptre."
+msgstr "还有$turnsleft回合我就能完成权杖"
+
 #. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
@@ -3386,162 +3618,8 @@ msgstr "啊..."
 msgid "Kraa..."
 msgstr "呃..."
 
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
-msgid "Ayahahh..."
-msgstr "啊呀啊..."
-
 #~ msgid "Kwe... yoo ants to ide uuus, nooa? Kwe, uus kan..."
 #~ msgstr "噫...要沃门搭栽拟，不？噫，沃门能..."
-
-#~ msgid "The Dragon"
-#~ msgstr "巨龙"
-
-#~ msgid "Landar"
-#~ msgstr "Lyndar"
-
-#~ msgid "Khrakrahs"
-#~ msgstr "Khrakrahs"
-
-#~ msgid ""
-#~ "Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
-#~ "lucky. I would say that, perhaps, their betrayal of Durstorn was coming "
-#~ "back to haunt them. For the section of the old eastern mines that they "
-#~ "reached in their flight had long since become the lair of Khrakrahs... "
-#~ "the dragon."
-#~ msgstr ""
-#~ "虽然Alanin从他的精灵追击者的手中逃脱了。但矮人就没有这么幸运了。我要说，也"
-#~ "许，是他们辜负的Durstorn回来闹鬼了。他们不知道，他们已经进入的洞窟长久以来"
-#~ "属于Khrakrahs...巨龙。"
-
-#~ msgid "Get all heroes to the end of the tunnel"
-#~ msgstr "让所有英雄到达地道尽头"
-
-#~ msgid ""
-#~ "Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
-#~ "our trail. What do we do now?"
-#~ msgstr ""
-#~ "喂，Thursagan，我们到了东边的矿洞了，但精灵还紧紧跟在我们后面。现在我们怎"
-#~ "么办？"
-
-#~ msgid ""
-#~ "Well, we have two choices. We may either stand and fight, and assuredly "
-#~ "die, or run as quickly as possible down this path into the depths of the "
-#~ "cave, where we may find something that will help us. Also, remember, the "
-#~ "elves can't run as fast in caves as we can, so we may be able to get "
-#~ "ahead of them and perhaps lay a trap."
-#~ msgstr ""
-#~ "恩，我们有两个选择。我们要么停下战斗，那样保证会死；要么沿这通道尽快地跑向"
-#~ "洞的深处，说不定可以找到什么东西可以帮助我们。当然，记住，精灵在洞里没我们"
-#~ "快，所以我们可以超过他们，说不定还可以安个陷阱。"
-
-#~ msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
-#~ msgstr "拟门为森么不头降？塔门不过要拉个模法司头！"
-
-#~ msgid ""
-#~ "If we give them the ruby, then what? They'll probably kill us anyway. "
-#~ "And, that ruby has the power to do great things, evil things. We can't "
-#~ "let it fall into the wrong hands."
-#~ msgstr ""
-#~ "如果我们给他们红宝石，然后呢？无论怎样他们都可能杀了我们。而且，如此强力的"
-#~ "红宝石可以做正义的事，也可以做邪恶的事。我们不能让它落入魔掌。"
-
-#~ msgid ""
-#~ "Then we shall run. I suggest calling to arms every last dwarf we possibly "
-#~ "can here. This might be the last chance we'll get to do so."
-#~ msgstr ""
-#~ "我们该继续跑。我提议我们能行的话这里任何最后一位矮人都拿起武器。这也许是我"
-#~ "们的最后一次机会这样做。"
-
-#~ msgid ""
-#~ "So we're running away, eh? I don't like that, but it seems it's our only "
-#~ "option."
-#~ msgstr ""
-#~ "所以我们要继续潜逃了，恩？我不喜欢如此，但看起来这是我们唯一的选择。"
-
-#~ msgid "If it makes you feel any better, we'll probably die this way, too."
-#~ msgstr "我们也可能会死在这条路上，如果这能让你感觉好点的话。"
-
-#~ msgid "Look, there's a dragon in these caves!"
-#~ msgstr "看！洞里有头巨龙！"
-
-#~ msgid "Ah, fresh meat!"
-#~ msgstr "啊~鲜肉！"
-
-#~ msgid "And which of the great dragons are you?"
-#~ msgstr "您是哪位巨龙？"
-
-#~ msgid ""
-#~ "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
-#~ "brother, but he was weaker than me, and you will not find me so easy to "
-#~ "defeat. Now get out of my volcano!"
-#~ msgstr ""
-#~ "我是Khrakrahs，历史上最伟大的巨龙！Haldric杀了我兄弟Shek'kahan，但他比我"
-#~ "弱，你会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
-
-#~ msgid ""
-#~ "I'd rather face one powerful dragon than hundreds of mighty elves. "
-#~ "Continue!"
-#~ msgstr "我宁愿面对一头强力的巨龙也不愿面对数以百记的精灵。继续前进！"
-
-#~ msgid "What's this? A dwarf fighting against us with the elves?!"
-#~ msgstr "这是？一位矮人和精灵一起对付我们？！"
-
-#~ msgid ""
-#~ "It must be one of those Surghan mercenaries. I'll bet those elves have "
-#~ "hired more of them. That's bad news for us, for they'll go as fast in "
-#~ "caves as we do."
-#~ msgstr ""
-#~ "这绝对是个Surghan族的雇佣兵。我敢打赌那些精灵雇了更多的矮人。这对我们是个"
-#~ "坏消息，因为他们和我们在洞里一样快。"
-
-#~ msgid ""
-#~ "Look, I've found something here. It looks like a forge, heated by the "
-#~ "lava. It looks magic, and it looks hot enough to make the Sceptre."
-#~ msgstr ""
-#~ "看，我在这儿发现了什么。看起来象个熔炉，被熔岩加热的。看起来真不可思议，而"
-#~ "且热得可以打造权杖。"
-
-#~ msgid "That pretty metal rock is mine! Get away from it!"
-#~ msgstr "那个漂亮的金属石是我的！从那滚开！"
-
-#~ msgid "Move Thursagan to the forge"
-#~ msgstr "移动Thursagan到熔炉"
-
-#~ msgid "Defend Thursagan until the sceptre is complete"
-#~ msgstr "保护Thursagan直到权杖完成"
-
-#~ msgid ""
-#~ "This forge will work perfectly. Give me a few days here, and I can "
-#~ "reforge the sceptre to fulfill its purpose."
-#~ msgstr ""
-#~ "这个熔炉会完美工作的。给我在这里几天时间，我可以改造这个权杖让它达到设计目"
-#~ "标。"
-
-#~ msgid "Survive for 9 turns"
-#~ msgstr "生存9回合"
-
-#~ msgid "An enemy moves onto the forge"
-#~ msgstr "任一敌人进入熔炉"
-
-#~ msgid "You fool, you let the enemy get at me as I was unarmed!"
-#~ msgstr "你这傻瓜，你竟让敌人够到赤手空拳的我！"
-
-#~ msgid "scepter of fire"
-#~ msgstr "火焰权杖"
-
-#~ msgid ""
-#~ "I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
-#~ "magical artifact."
-#~ msgstr "我完成了我的工作。现在这是真正的火焰权杖，一个强力魔法物品。"
-
-#~ msgid ""
-#~ "Good. Now, let's get out of this cave, before the elves, dwarves or bats "
-#~ "kill us!"
-#~ msgstr "好的。现在，在精灵，矮人或蝙蝠杀了我们之前，从这洞出去！"
-
-#~ msgid "In $turnsleft more turns I will have completed the sceptre."
-#~ msgstr "还有$turnsleft回合我就能完成权杖"
 
 #~ msgid ""
 #~ "Humans, halt! Don't come any closer, we dwarves don't like company..."

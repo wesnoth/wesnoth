@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-23 14:13+0100\n"
+"POT-Creation-Date: 2009-04-17 12:52+0300\n"
 "PO-Revision-Date: 2009-03-18 01:32+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -2256,10 +2256,11 @@ msgstr "Coup dans le dos"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1509
+#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
-"incapacitated (e.g. turned to stone)."
+"incapacitated (e.g. petrified)."
 msgstr ""
 "Cette attaque occasionne des dégâts doublés si une unité ennemie, et non "
 "pétrifiée, de la cible se trouve en vis-à-vis de l'attaquant. Ne fonctionne "
@@ -2397,14 +2398,15 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1619
-msgid "Stone"
-msgstr "Pétrification"
+msgid "Petrify"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1623
+#, fuzzy
 msgid ""
-"This attack turns the target to stone. Units that have been turned to stone "
-"may not move or attack."
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
 msgstr ""
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
 "peuvent plus se déplacer ou attaquer."
@@ -4075,6 +4077,10 @@ msgstr ""
 "À l'exception des unités fidèles, les unités avancées nécessitent un "
 "entretien supérieur à celui des unités de faible niveau (1 pièce d'or par "
 "niveau)."
+
+# type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
+#~ msgid "Stone"
+#~ msgstr "Pétrification"
 
 # type: Content of: <book><glossary><title>
 #~ msgid "Glossary"

@@ -67,8 +67,9 @@ mode).
 naudoti specialias netikras lokales persijungimui į bet kurią kalbą, net jei
 ta kalba nepalaikoma jūsų sistemoje.
 .TP 
-\fB\-e, \-\-editor\fP
-tiesiogiai paleidžia integruotą žemėlapių redaktorių.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 ekrano kampe parodo tuo metu veikiančio žaidimo kadrų skaičių per sekundę.
@@ -89,9 +90,10 @@ išveda komandinės eilutės parametrų santrauką į standartinį išvedimą ir
 išeina.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ failas\fP
-įkelia išsaugojimą \fIfailas\fP išs standartinio išsaugojimų aplanko.  Jei taip
-pat naudojamas \fB\-e\fP arba \fB\-\-editor\fP parametras, paleidžia redaktorių su
-atvertu iš \fIfailo\fP žemėlapiu.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -132,7 +134,7 @@ nustato ekrano raišką. Pavyzdžiui: \fB\-r 800x600\fP
 leidžia mažinti ekrano raiškas iki 800x480 ir sumažina kelis naudotojo
 sąsajos elementus.
 .TP 
-\fB\-s,\ \-\-server\ [host]\fP
+\fB\-s,\ \-\-server\ [mazgas]\fP
 connects to the specified host if any, otherwise connect to the first server
 in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:48+0200\n"
+"POT-Creation-Date: 2009-04-17 12:51+0200\n"
 "PO-Revision-Date: 2008-10-09 21:28+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -646,16 +646,17 @@ msgstr ""
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
 msgid ""
-"*Remember:\n"
+"<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
 
+#. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
-#, fuzzy
-msgid "<big>Galdrad"
+msgid "Galdrad"
 msgstr "Galdradas"
 
 #. [then]
@@ -772,11 +773,6 @@ msgstr "Pasibaigia ėjimai"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
 msgstr "Li'sar mirtis"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
-msgid "Galdrad"
-msgstr "Galdradas"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -1518,6 +1514,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr ""
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Galdradas"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

@@ -65,8 +65,9 @@ edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız).
 Dil sistem genelinde tanımlı olmasa bile o dile geçmek için taklit yereller
 kullanılır.
 .TP 
-\fB\-e, \-\-editor\fP
-Harita düzenleyiciyi doğrudan oyunun içinden başlatır.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 Çalışmakta olan oyunda ekranın saniyede kaç kere yeniden çizildiğini ekranın
@@ -87,9 +88,10 @@ Bir dosyayı \fIgirdi\-dosyası\fP.gz adıyla sıkıştırarak kaydeder ve
 Komut satırı seçeneklerini standart çıktıya listeler ve çıkar.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ dosya\fP
-Kayıtlı oyun dosyası \fIdosya\fP, oyun kayıt dizininden yüklenir. Eğer \fB\-e\fP
-veya \fB\-\-editor\fP seçeneği de kullanılmışsa \fIdosya\fP'ya ait harita, harita
-düzenleyicide açılır.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
 Günlük alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını

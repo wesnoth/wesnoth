@@ -67,8 +67,9 @@ el modo de comandos).
 usar entradas de localización adicionales para cambiar a cualquier idioma
 incluso si no ha sido registrado en el sistema.
 .TP 
-\fB\-e, \-\-editor\fP
-inicia el juego directamente en el editor de mapas.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 muestra el número de cuadros por segundo a los que se está ejecutando el
@@ -90,9 +91,10 @@ muestra un resumen de las opciones de línea de órdenes en la salida
 estándar, y finaliza.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ archivo\fP
-carga la partida guardada en \fIfile\fP desde el directorio estándar de
-partidas guardadas. Si la opción \fB\-e\fP o \fB\-\-editor\fP se utiliza
-simultáneamente, se inicia el editor en el mapa \fIfile\fP.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 establece el nivel de gravedad de los dominios de depuración. \fBall\fP puede

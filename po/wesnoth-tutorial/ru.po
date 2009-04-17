@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:48+0200\n"
+"POT-Creation-Date: 2009-04-17 12:51+0200\n"
 "PO-Revision-Date: 2009-03-30 14:59+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -778,20 +778,22 @@ msgstr ""
 "ваших войск. Затем нажмите «Закончить сценарий», чтобы перейти к следующему."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#, fuzzy
 msgid ""
-"*Remember:\n"
+"<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
 "*Помните:\n"
 "Чаще всего вы можете отменить действие, нажав на клавишу «u» — очень полезно "
 "для исправления ошибок."
 
+#. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
-#, fuzzy
-msgid "<big>Galdrad"
+msgid "Galdrad"
 msgstr "Галдрад"
 
 #. [then]
@@ -921,11 +923,6 @@ msgstr "Закончились ходы"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
 msgstr "Смерть Лисар"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
-msgid "Galdrad"
-msgstr "Галдрад"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -1821,6 +1818,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "кистень"
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Галдрад"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

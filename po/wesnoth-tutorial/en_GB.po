@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:48+0200\n"
+"POT-Creation-Date: 2009-04-17 12:51+0200\n"
 "PO-Revision-Date: 2007-01-04 19:34+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -760,19 +760,21 @@ msgstr ""
 "scenario."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#, fuzzy
 msgid ""
-"*Remember:\n"
+"<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
 "*Remember:\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 
+#. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
-#, fuzzy
-msgid "<big>Galdrad"
+msgid "Galdrad"
 msgstr "Galdrad"
 
 #. [then]
@@ -902,11 +904,6 @@ msgstr "Turns run out"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
 msgstr "Death of Li'sar"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
-msgid "Galdrad"
-msgstr "Galdrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -1788,6 +1785,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "flail"
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Galdrad"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

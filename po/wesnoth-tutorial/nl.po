@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:48+0200\n"
+"POT-Creation-Date: 2009-04-17 12:51+0200\n"
 "PO-Revision-Date: 2009-04-04 20:13+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -776,19 +776,21 @@ msgstr ""
 "scenario te gaan."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#, fuzzy
 msgid ""
-"*Remember:\n"
+"<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
 "*Onthoud:\n"
 "Door op 'u' te drukken kunnen de meeste zetten ongedaan worden gemaakt."
 
+#. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
-#, fuzzy
-msgid "<big>Galdrad"
+msgid "Galdrad"
 msgstr "Galdrad"
 
 #. [then]
@@ -920,11 +922,6 @@ msgstr "Overschrijding van het aantal beurten"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
 msgstr "Dood van Li'sar"
-
-#. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
-msgid "Galdrad"
-msgstr "Galdrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -1832,6 +1829,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "strijdvlegel"
+
+#, fuzzy
+#~ msgid "<big>Galdrad"
+#~ msgstr "Galdrad"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

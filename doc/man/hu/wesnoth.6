@@ -68,8 +68,9 @@ http://www.wesnoth.org/CommandMode címen).
 ál\-lokalizációk használata bármilyen nyelvre váltáshoz, még ha az adott
 nyelv nincs is telepítve a rendszerre
 .TP 
-\fB\-e, \-\-editor\fP
-közvetlenül a játékban található térképszerkesztőt indítja el.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 a képernyő sarkában megjeleníti az aktuális képkockák számát másodpercenként
@@ -90,9 +91,10 @@ megjeleníti a parancssori lehetőségek rövid leírását az alapértelmezett
 kimenetre, majd kilép.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ fájl\fP
-betölti a \fIfájl\fP elmentést az alapértelmezett mentések könyvtárból. Ha az
-\fB\-e\fP vagy \fB\-\-editor\fP opciók szintén meg vannak adva, akkor elindítja a
-térképszerkesztőt a \fIfájl\fP elmentésben található térképpel.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási

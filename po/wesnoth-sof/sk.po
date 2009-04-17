@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:47+0200\n"
+"POT-Creation-Date: 2009-04-17 12:50+0200\n"
 "PO-Revision-Date: 2009-01-15 20:07+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -45,13 +45,18 @@ msgstr "pokročilá"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
+msgid "Lord"
+msgstr "Šľachtic"
+
+#. [campaign]: id=Sceptre_of_Fire
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "Náročná"
 
 #. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-msgid "Lord"
-msgstr "Šľachtic"
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
+msgid "(Expert level, 9 scenarios.)"
+msgstr ""
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
@@ -79,11 +84,6 @@ msgstr ""
 "Kampaň pre expertov s 9 úrovňami\n"
 "\n"
 "Preklad: Stanislav Hoferek"
-
-#. [campaign]: id=Sceptre_of_Fire
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
-msgid "(Expert level, 9 scenarios.)"
-msgstr ""
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:33
@@ -200,6 +200,9 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:120
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:316
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:353
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:152
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:454
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:76
@@ -1329,6 +1332,9 @@ msgstr ""
 "Nájdi Thursagana a priveď ho späť do trpasličieho mesta v hlbokých jaskyniach"
 
 #. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:124
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:320
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:357
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:160
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:458
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:125
@@ -1355,6 +1361,9 @@ msgstr "Vidím v diaľke akúsi chalupu!"
 
 #. [message]: speaker=narrator
 #. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:382
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:388
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:476
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:430
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:467
 msgid "Thursagan"
@@ -1473,6 +1482,8 @@ msgid "Move Thursagan to the signpost"
 msgstr "Presuň Thursagana na značku"
 
 #. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:128
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:324
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:164
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:462
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:129
@@ -3000,6 +3011,238 @@ msgstr ""
 "Pokračuj. A ak sa nejaký elf rozhodne zaútočiť na pevnosť, tak mu rozmlátim "
 "koleno!"
 
+#. [scenario]: id=8_The_Dragon
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
+msgid "The Dragon"
+msgstr "Drak"
+
+#. [side]: type=Elvish Marshal, id=Landar
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
+msgid "Landar"
+msgstr "Landar"
+
+#. [side]: type=Fire Dragon, id=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
+msgid "Khrakrahs"
+msgstr "Khrakrahs"
+
+#. [part]
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:100
+msgid ""
+"Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
+"lucky. I would say that, perhaps, their betrayal of Durstorn was coming back "
+"to haunt them. For the section of the old eastern mines that they reached in "
+"their flight had long since become the lair of Khrakrahs... the dragon."
+msgstr ""
+"A tak sa Alanin zbavil prenasledovateľov. Trpaslíci však nemali toľko "
+"šťastia. Zrada Durstorna narobila množstvo problémov. Táto časť baní má "
+"navyše svojho stáleho obyvateľa - draka Karakasa!"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:116
+msgid "Get all heroes to the end of the tunnel"
+msgstr "Dostať všetkých hrdinov na koniec tunela"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:178
+msgid ""
+"Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
+"our trail. What do we do now?"
+msgstr ""
+"No, Thursagan, dostali sme sa do jaskýň, ale elfovia sú nám stále v pätách. "
+"Čo urobíme?"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:182
+msgid ""
+"Well, we have two choices. We may either stand and fight, and assuredly die, "
+"or run as quickly as possible down this path into the depths of the cave, "
+"where we may find something that will help us. Also, remember, the elves "
+"can't run as fast in caves as we can, so we may be able to get ahead of them "
+"and perhaps lay a trap."
+msgstr ""
+"Máme dve možnosti. Môžeme ostať a pustiť sa s nimi do dopredu stratenej "
+"bitky, alebo utekať tak rýchlo ako sa bude dať do najhlbších jaskýň. Možno "
+"tam nájdeme niečo, čo by nám mohlo pomôcť. Elfovia nemôžu utekať podzemím "
+"tak rýchlo ako my, takže môžeme na nich niekde počkať a pripraviť im pascu."
+
+#. [message]: speaker=Krawg
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:186
+msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
+msgstr "Myyy vzdaa? Zaaabaaa naaaaaas!"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:191
+msgid ""
+"If we give them the ruby, then what? They'll probably kill us anyway. And, "
+"that ruby has the power to do great things, evil things. We can't let it "
+"fall into the wrong hands."
+msgstr ""
+"Ak im dáme ten rubín, tak potom čo? Aj tak nás povraždia. Navyše je v tom "
+"kameni ukrytá veľká moc. Strašná moc, ak bude v nesprávnych rukách."
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:195
+msgid ""
+"Then we shall run. I suggest calling to arms every last dwarf we possibly "
+"can here. This might be the last chance we'll get to do so."
+msgstr ""
+"Tak potom je čas na útek. Musíme zavolať do zbrane každého trpaslíka, to je "
+"naša jediná šanca."
+
+#. [message]: speaker=Baglur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:204
+#, fuzzy
+msgid ""
+"So we're running away, eh? I dinna' like that, but it seems it's our only "
+"option."
+msgstr ""
+"Takže mizneme odtiaľto? nepáči sa mi to, ale vyzerá to byť naša jediná "
+"možnosť."
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:208
+msgid "If it makes you feel any better, we'll probably die this way, too."
+msgstr "Ak ťa to poteší, pravdepodobne tu pomrieme tiež."
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:227
+msgid "Look, there's a dragon in these caves!"
+msgstr "Pozrite, v tých jaskyniach je drak!"
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:231
+msgid "Ah, fresh meat!"
+msgstr "Konečne, čerstvé mäso!"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:235
+msgid "And which of the great dragons are you?"
+msgstr "A ty si ktorý z veľkých drakov?"
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:240
+msgid ""
+"I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
+"brother, but he was weaker than me, and you will not find me so easy to "
+"defeat. Now get out of my volcano!"
+msgstr ""
+"Som Karakas, najmocnejší drak všetkých čias! Haldrik zabil Shekahana, môjho "
+"brata, no on bol slabší ako som ja. A vy ma tak ľahko neporazíte. A teraz "
+"zmiznite z mojej sopky!"
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:244
+msgid ""
+"I'd rather face one powerful dragon than hundreds of mighty elves. Continue!"
+msgstr ""
+"Radšej sa postavím jednému naštvanému a mocnému drakovi, ako celej záplave "
+"elfov. Pokračujme!"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:262
+msgid "What's this? A dwarf fighting against us with the elves?!"
+msgstr "A toto je čo? Trpaslík bojuje proti nám na strane elfov?!"
+
+#. [message]: speaker=Baglur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:267
+msgid ""
+"It must be one of those Surghan mercenaries. I'll bet those elves have hired "
+"more of them. That's bad news for us, for they'll go as fast in caves as we "
+"do."
+msgstr ""
+"To musia byť tí priblblí žoldnieri. Najali ich tie špicatouché otravné "
+"postavičky ktoré nás chcú zničiť! Zlá správa je tiež to, že títo trpaslíci "
+"poznajú jaskyne a rýchlo sa v nich pohybujú. Rovnako rýchlo ako my."
+
+#. [message]: speaker=Krawg
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:291
+msgid "Raaaawww! Loook! Forge heeeere!"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
+msgid ""
+"Look, I've found something here. It looks like a forge, heated by the lava. "
+"It looks magic, and it looks hot enough to make the Sceptre."
+msgstr ""
+"Pozri, našiel som tu niečo. Vyzerá to ako dielňa vyhrievaná lávou. Vyzerá to "
+"celé magicky, a tiež dosť horúce na to, aby sa tu vytvorilo žezlo."
+
+#. [message]: speaker=Khrakrahs
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:303
+msgid "That pretty metal rock is mine! Get away from it!"
+msgstr "Ten kameň je môj! Daj tie ruky preč!"
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:308
+msgid "Move Thursagan to the forge"
+msgstr "Presuň Thursagana do dielne."
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:312
+msgid "Defend Thursagan until the sceptre is complete"
+msgstr "zaisti bezpečnosť Thursagana, kým vytvorí ohnivé žezlo"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:340
+msgid ""
+"This forge will work perfectly. Give me a few days here, and I can reforge "
+"the sceptre to fulfill its purpose."
+msgstr ""
+"Táto dielňa vyzerá vynikajúco. Dajte mi pár dní a vytvorím také žezlo, ktoré "
+"dokonale splní svoj účel."
+
+#. [objective]: condition=win
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:349
+msgid "Survive for 9 turns"
+msgstr "Preži 9 kôl"
+
+#. [objective]: condition=lose
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
+msgid "An enemy moves onto the forge"
+msgstr "Nepriateľ sa dostal do dielne"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:384
+msgid "You fool, you let the enemy get at me as I was unarmed!"
+msgstr "Ty blázon, dostanú nás! Sme bezbranní!"
+
+#. [message]: speaker=narrator
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:390
+#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
+msgid "Ayahahh..."
+msgstr "Ayahahh..."
+
+#. [effect]: type=fire
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:427
+msgid "scepter of fire"
+msgstr "Ohnivé žezlo"
+
+#. [message]: speaker=Thursagan
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:458
+msgid ""
+"I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
+"magical artifact."
+msgstr ""
+"Dokončil som svoju prácu. Hľaďte, je to skutočne ohnivé žezlo, mocný magický "
+"artefakt."
+
+#. [message]: speaker=Rugnur
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:462
+msgid ""
+"Good. Now, let's get out of this cave, before the elves, dwarves or bats "
+"kill us!"
+msgstr ""
+"Fajn. A teraz vypadnime, kým nás nepovraždia tie tlupy elfov, trpaslíkov či "
+"netopierov!"
+
+#. [message]: speaker=narrator
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:478
+msgid "In $turnsleft more turns I will have completed the sceptre."
+msgstr "Za $turnsleft kôl bude hotové žezlo."
+
 #. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
@@ -3632,174 +3875,8 @@ msgstr "Ahhgg..."
 msgid "Kraa..."
 msgstr "Kraa... Kraa... Krawg mtvvvvv..."
 
-#. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
-msgid "Ayahahh..."
-msgstr "Ayahahh..."
-
 #~ msgid "Kwe... yoo ants to ide uuus, nooa? Kwe, uus kan..."
 #~ msgstr "Kwe... tebbbe issť myyyy s myyyy..."
-
-#~ msgid "The Dragon"
-#~ msgstr "Drak"
-
-#~ msgid "Landar"
-#~ msgstr "Landar"
-
-#~ msgid "Khrakrahs"
-#~ msgstr "Khrakrahs"
-
-#~ msgid ""
-#~ "Thus Alanin escaped from his Elvish pursuers. But the dwarves were not so "
-#~ "lucky. I would say that, perhaps, their betrayal of Durstorn was coming "
-#~ "back to haunt them. For the section of the old eastern mines that they "
-#~ "reached in their flight had long since become the lair of Khrakrahs... "
-#~ "the dragon."
-#~ msgstr ""
-#~ "A tak sa Alanin zbavil prenasledovateľov. Trpaslíci však nemali toľko "
-#~ "šťastia. Zrada Durstorna narobila množstvo problémov. Táto časť baní má "
-#~ "navyše svojho stáleho obyvateľa - draka Karakasa!"
-
-#~ msgid "Get all heroes to the end of the tunnel"
-#~ msgstr "Dostať všetkých hrdinov na koniec tunela"
-
-#~ msgid ""
-#~ "Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
-#~ "our trail. What do we do now?"
-#~ msgstr ""
-#~ "No, Thursagan, dostali sme sa do jaskýň, ale elfovia sú nám stále v "
-#~ "pätách. Čo urobíme?"
-
-#~ msgid ""
-#~ "Well, we have two choices. We may either stand and fight, and assuredly "
-#~ "die, or run as quickly as possible down this path into the depths of the "
-#~ "cave, where we may find something that will help us. Also, remember, the "
-#~ "elves can't run as fast in caves as we can, so we may be able to get "
-#~ "ahead of them and perhaps lay a trap."
-#~ msgstr ""
-#~ "Máme dve možnosti. Môžeme ostať a pustiť sa s nimi do dopredu stratenej "
-#~ "bitky, alebo utekať tak rýchlo ako sa bude dať do najhlbších jaskýň. "
-#~ "Možno tam nájdeme niečo, čo by nám mohlo pomôcť. Elfovia nemôžu utekať "
-#~ "podzemím tak rýchlo ako my, takže môžeme na nich niekde počkať a "
-#~ "pripraviť im pascu."
-
-#~ msgid "Wyy yoo no urrendrr? Alddey woont iz za wagic doun!"
-#~ msgstr "Myyy vzdaa? Zaaabaaa naaaaaas!"
-
-#~ msgid ""
-#~ "If we give them the ruby, then what? They'll probably kill us anyway. "
-#~ "And, that ruby has the power to do great things, evil things. We can't "
-#~ "let it fall into the wrong hands."
-#~ msgstr ""
-#~ "Ak im dáme ten rubín, tak potom čo? Aj tak nás povraždia. Navyše je v tom "
-#~ "kameni ukrytá veľká moc. Strašná moc, ak bude v nesprávnych rukách."
-
-#~ msgid ""
-#~ "Then we shall run. I suggest calling to arms every last dwarf we possibly "
-#~ "can here. This might be the last chance we'll get to do so."
-#~ msgstr ""
-#~ "Tak potom je čas na útek. Musíme zavolať do zbrane každého trpaslíka, to "
-#~ "je naša jediná šanca."
-
-#~ msgid ""
-#~ "So we're running away, eh? I don't like that, but it seems it's our only "
-#~ "option."
-#~ msgstr ""
-#~ "Takže mizneme odtiaľto? nepáči sa mi to, ale vyzerá to byť naša jediná "
-#~ "možnosť."
-
-#~ msgid "If it makes you feel any better, we'll probably die this way, too."
-#~ msgstr "Ak ťa to poteší, pravdepodobne tu pomrieme tiež."
-
-#~ msgid "Look, there's a dragon in these caves!"
-#~ msgstr "Pozrite, v tých jaskyniach je drak!"
-
-#~ msgid "Ah, fresh meat!"
-#~ msgstr "Konečne, čerstvé mäso!"
-
-#~ msgid "And which of the great dragons are you?"
-#~ msgstr "A ty si ktorý z veľkých drakov?"
-
-#~ msgid ""
-#~ "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek'kahan my "
-#~ "brother, but he was weaker than me, and you will not find me so easy to "
-#~ "defeat. Now get out of my volcano!"
-#~ msgstr ""
-#~ "Som Karakas, najmocnejší drak všetkých čias! Haldrik zabil Shekahana, "
-#~ "môjho brata, no on bol slabší ako som ja. A vy ma tak ľahko neporazíte. A "
-#~ "teraz zmiznite z mojej sopky!"
-
-#~ msgid ""
-#~ "I'd rather face one powerful dragon than hundreds of mighty elves. "
-#~ "Continue!"
-#~ msgstr ""
-#~ "Radšej sa postavím jednému naštvanému a mocnému drakovi, ako celej "
-#~ "záplave elfov. Pokračujme!"
-
-#~ msgid "What's this? A dwarf fighting against us with the elves?!"
-#~ msgstr "A toto je čo? Trpaslík bojuje proti nám na strane elfov?!"
-
-#~ msgid ""
-#~ "It must be one of those Surghan mercenaries. I'll bet those elves have "
-#~ "hired more of them. That's bad news for us, for they'll go as fast in "
-#~ "caves as we do."
-#~ msgstr ""
-#~ "To musia byť tí priblblí žoldnieri. Najali ich tie špicatouché otravné "
-#~ "postavičky ktoré nás chcú zničiť! Zlá správa je tiež to, že títo "
-#~ "trpaslíci poznajú jaskyne a rýchlo sa v nich pohybujú. Rovnako rýchlo ako "
-#~ "my."
-
-#~ msgid ""
-#~ "Look, I've found something here. It looks like a forge, heated by the "
-#~ "lava. It looks magic, and it looks hot enough to make the Sceptre."
-#~ msgstr ""
-#~ "Pozri, našiel som tu niečo. Vyzerá to ako dielňa vyhrievaná lávou. Vyzerá "
-#~ "to celé magicky, a tiež dosť horúce na to, aby sa tu vytvorilo žezlo."
-
-#~ msgid "That pretty metal rock is mine! Get away from it!"
-#~ msgstr "Ten kameň je môj! Daj tie ruky preč!"
-
-#~ msgid "Move Thursagan to the forge"
-#~ msgstr "Presuň Thursagana do dielne."
-
-#~ msgid "Defend Thursagan until the sceptre is complete"
-#~ msgstr "zaisti bezpečnosť Thursagana, kým vytvorí ohnivé žezlo"
-
-#~ msgid ""
-#~ "This forge will work perfectly. Give me a few days here, and I can "
-#~ "reforge the sceptre to fulfill its purpose."
-#~ msgstr ""
-#~ "Táto dielňa vyzerá vynikajúco. Dajte mi pár dní a vytvorím také žezlo, "
-#~ "ktoré dokonale splní svoj účel."
-
-#~ msgid "Survive for 9 turns"
-#~ msgstr "Preži 9 kôl"
-
-#~ msgid "An enemy moves onto the forge"
-#~ msgstr "Nepriateľ sa dostal do dielne"
-
-#~ msgid "You fool, you let the enemy get at me as I was unarmed!"
-#~ msgstr "Ty blázon, dostanú nás! Sme bezbranní!"
-
-#~ msgid "scepter of fire"
-#~ msgstr "Ohnivé žezlo"
-
-#~ msgid ""
-#~ "I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
-#~ "magical artifact."
-#~ msgstr ""
-#~ "Dokončil som svoju prácu. Hľaďte, je to skutočne ohnivé žezlo, mocný "
-#~ "magický artefakt."
-
-#~ msgid ""
-#~ "Good. Now, let's get out of this cave, before the elves, dwarves or bats "
-#~ "kill us!"
-#~ msgstr ""
-#~ "Fajn. A teraz vypadnime, kým nás nepovraždia tie tlupy elfov, trpaslíkov "
-#~ "či netopierov!"
-
-#~ msgid "In $turnsleft more turns I will have completed the sceptre."
-#~ msgstr "Za $turnsleft kôl bude hotové žezlo."
 
 #~ msgid ""
 #~ "Humans, halt! Don't come any closer, we dwarves don't like company..."

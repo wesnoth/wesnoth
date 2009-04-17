@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:45+0200\n"
+"POT-Creation-Date: 2009-04-17 12:49+0200\n"
 "PO-Revision-Date: 2009-02-23 19:16+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -99,9 +99,10 @@ msgstr "özel"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
+#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only."
+"paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Arazinin ön ve art alanlarını çizmek için farenin sol ve sağ düğmelerini "
 "kullanın. Sadece zemin katmanını boyamak isterseniz Shift tuşunu basılı "
@@ -180,7 +181,8 @@ msgstr "Düzenleyiciden çıkılsın mı?"
 msgid "Fatal error"
 msgstr "Ölümcül hata"
 
-#: src/editor2/editor_controller.cpp:299 src/editor2/editor_controller.cpp:998
+#: src/editor2/editor_controller.cpp:299
+#: src/editor2/editor_controller.cpp:1048
 msgid "(New Map)"
 msgstr "(Yeni Harita)"
 
@@ -208,8 +210,8 @@ msgstr ""
 msgid "Quit"
 msgstr "Çık"
 
-#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:481
-#: src/editor2/editor_controller.cpp:517 src/editor2/editor_controller.cpp:539
+#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:479
+#: src/editor2/editor_controller.cpp:515 src/editor2/editor_controller.cpp:537
 msgid "Error"
 msgstr "Hata"
 
@@ -228,92 +230,97 @@ msgstr ""
 "Son kayıttan beri haritada yaptığınız değişiklikleri iptal etmek mi "
 "istiyorsunuz?"
 
-#: src/editor2/editor_controller.cpp:419
+#: src/editor2/editor_controller.cpp:424
 msgid "Choose a Map to Open"
 msgstr "Açmak için Harita Seç"
 
-#: src/editor2/editor_controller.cpp:423
-msgid "This map is already open."
-msgstr "Bu harita zaten açık."
-
-#: src/editor2/editor_controller.cpp:461
+#: src/editor2/editor_controller.cpp:459
 msgid "Save the Map As"
 msgstr "Haritayı Farklı Kaydet"
 
-#: src/editor2/editor_controller.cpp:465
+#: src/editor2/editor_controller.cpp:463
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Bu isimde bir dosya zaten var. Üzerine yazmak ister misiniz?"
 
-#: src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:479
 msgid "No random map generators found."
 msgstr "Bir rasgele harita üreteci yok."
 
-#: src/editor2/editor_controller.cpp:492
+#: src/editor2/editor_controller.cpp:490
 msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
-#: src/editor2/editor_controller.cpp:507
+#: src/editor2/editor_controller.cpp:505
 msgid "Choose a mask to apply"
 msgstr "Uygulanacak örüntüyü seçiniz"
 
-#: src/editor2/editor_controller.cpp:514
+#: src/editor2/editor_controller.cpp:512
 msgid "Error loading mask"
 msgstr "Örüntü yüklenirken hata"
 
-#: src/editor2/editor_controller.cpp:529
+#: src/editor2/editor_controller.cpp:527
 msgid "Choose target map"
 msgstr "Hedef haritayı seçiniz"
 
-#: src/editor2/editor_controller.cpp:536 src/editor2/editor_controller.cpp:649
-#: src/editor2/editor_main.cpp:53
+#: src/editor2/editor_controller.cpp:534 src/editor2/editor_controller.cpp:698
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
-#: src/editor2/editor_controller.cpp:625
+#: src/editor2/editor_controller.cpp:612 src/editor2/editor_controller.cpp:654
+msgid "This map is already open."
+msgstr "Bu harita zaten açık."
+
+#: src/editor2/editor_controller.cpp:633
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/editor2/editor_controller.cpp:630
-msgid "Could not save the map: $msg"
-msgstr "Harita kaydedilemedi: $msg"
+#: src/editor2/editor_controller.cpp:677
+msgid "Loaded embedded map data"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:1025
+#: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:688
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/editor2/editor_controller.cpp:1027
+#: src/editor2/editor_controller.cpp:1080
 msgid "Can't Undo"
 msgstr "Geri Alınamaz"
 
-#: src/editor2/editor_controller.cpp:1031
+#: src/editor2/editor_controller.cpp:1084
 msgid "Redo"
 msgstr "Tekrar yap"
 
-#: src/editor2/editor_controller.cpp:1033
+#: src/editor2/editor_controller.cpp:1086
 msgid "Can't Redo"
 msgstr "Tekrarlanamaz"
 
-#: src/editor2/editor_controller.cpp:1038
+#: src/editor2/editor_controller.cpp:1091
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1041
+#: src/editor2/editor_controller.cpp:1094
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1045
+#: src/editor2/editor_controller.cpp:1098
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:85
-msgid "Empty map file or file not found"
-msgstr "Harita dosyası ya boş ya da yok."
-
-#: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
 msgid "Player"
 msgstr "Oyuncu"
 
-#: src/editor2/editor_map.cpp:285
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
@@ -325,15 +332,39 @@ msgstr "ÖP"
 msgid "BG"
 msgstr "AP"
 
-#: src/editor2/mouse_action.cpp:382
+#: src/editor2/map_context.cpp:70
+msgid "File not found"
+msgstr ""
+
+#: src/editor2/map_context.cpp:84
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+
+#: src/editor2/map_context.cpp:99
+#, fuzzy
+msgid "Empty map file"
+msgstr "Harita dosyası ya boş ya da yok."
+
+#: src/editor2/map_context.cpp:219
+#, fuzzy
+msgid "Could not save into scenario"
+msgstr "Harita kaydedilemedi: $msg"
+
+#: src/editor2/map_context.cpp:226
+msgid "Could not save the map: $msg"
+msgstr "Harita kaydedilemedi: $msg"
+
+#: src/editor2/mouse_action.cpp:436
 msgid "(Player)^None"
 msgstr "Hiçbiri"
 
-#: src/editor2/mouse_action.cpp:389
+#: src/editor2/mouse_action.cpp:443
 msgid "Choose player"
 msgstr "Oyuncu seçiniz"
 
-#: src/editor2/mouse_action.cpp:390
+#: src/editor2/mouse_action.cpp:444
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "

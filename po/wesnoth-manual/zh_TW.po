@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
-"POT-Creation-Date: 2009-02-23 14:13+0100\n"
+"POT-Creation-Date: 2009-04-17 12:52+0300\n"
 "PO-Revision-Date: 2008-08-10 15:11+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -1840,10 +1840,11 @@ msgid "Backstab"
 msgstr "背刺"
 
 #: ../../doc/manual/manual.en.xml:1509
+#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
-"incapacitated (e.g. turned to stone)."
+"incapacitated (e.g. petrified)."
 msgstr ""
 "當該士兵站在敵人背後時，背刺能產生雙倍攻擊力。但有些情況並不適用，例如敵人被"
 "石化。"
@@ -1949,14 +1950,16 @@ msgstr ""
 "這種攻擊可以緩慢目標士兵一回合。緩慢是對方攻擊减半，移動能力减半。被緩慢的士"
 "兵會在右側資訊欄中顯示一個蝸牛圖標。"
 
+# type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1619
-msgid "Stone"
-msgstr "石化"
+msgid "Petrify"
+msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1623
+#, fuzzy
 msgid ""
-"This attack turns the target to stone. Units that have been turned to stone "
-"may not move or attack."
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
 msgstr "這種攻擊把目標變成石頭。被石化的士兵不能移動或者攻擊。"
 
 #: ../../doc/manual/manual.en.xml:1630
@@ -3295,6 +3298,9 @@ msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr "高等級士兵比低等級士兵支出高（每等級高1點）。忠誠士兵除外。"
+
+#~ msgid "Stone"
+#~ msgstr "石化"
 
 #~ msgid "Glossary"
 #~ msgstr "辭彙表"
