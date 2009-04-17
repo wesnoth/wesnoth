@@ -88,11 +88,11 @@ def InstallData(env, datadir, component, source, subdir = ""):
     sources = map(Entry, Flatten([source]))
     dirs = []
     for source in sources:
-        if source.exists():
-            if source.isfile():
+        if isinstance(source, SCons.Node.FS.Dir) or source.isdir():
+            dirs.append(source)
+        else:
+            if source.exists():
                 env.Alias("install-" + component, env.Install(installdir, source))
-            else:
-                dirs.append(Dir(source))
     if dirs:
         if len(dirs) == 1:
             install = env.InstallFiltered(installdir.path, dirs[0].path)
