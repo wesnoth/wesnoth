@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2008-08-13 01:24+0800\n"
+"PO-Revision-Date: 2009-04-18 01:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -30,14 +30,13 @@ msgstr "畫面捲動速度"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:65
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "畫面捲動速度"
+msgstr "滾輪捲動畫面"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:72
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "當滑鼠指標離開視窗時繼續捲動"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:79
@@ -46,9 +45,8 @@ msgstr "地圖動畫"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:86
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "戰役"
+msgstr "顯示標題動畫"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:93
@@ -133,16 +131,15 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
 #: src/actions.cpp:1063 src/actions.cpp:1338
-#, fuzzy
 msgid "female^slowed"
-msgstr "忠誠"
+msgstr "緩速"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
 #: src/actions.cpp:1063 src/actions.cpp:1338
 msgid "slowed"
-msgstr "減速"
+msgstr "緩速"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -153,14 +150,12 @@ msgstr "治療+4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "活力"
+msgstr "治療 +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -186,9 +181,8 @@ msgstr "治療+8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "活力"
+msgstr "治療 +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -263,9 +257,8 @@ msgstr "國際化管理團隊"
 
 #. [about]
 #: data/core/about.cfg:963
-#, fuzzy
 msgid "English strings edition"
-msgstr "英文(英國)翻譯團隊"
+msgstr "英文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:970
@@ -360,7 +353,7 @@ msgstr "弗留利語翻譯團隊"
 #. [about]
 #: data/core/about.cfg:1486
 msgid "Galician Translation"
-msgstr "巴倫西亞語翻譯團隊"
+msgstr "加利西亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1521
@@ -384,9 +377,8 @@ msgstr "匈牙利文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1678
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "義大利文翻譯團隊"
+msgstr "冰島翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1685
@@ -430,9 +422,8 @@ msgstr "馬其頓語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1790
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "拉丁文翻譯團隊"
+msgstr "馬拉地翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1799
@@ -501,13 +492,11 @@ msgstr "南加泰羅尼亞語(西班牙)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2142
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "簡體中文翻譯團隊"
+msgstr "巴倫西亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2149
-#, fuzzy
 msgid "Bots"
 msgstr "電腦"
 
@@ -664,7 +653,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -753,7 +741,6 @@ msgstr "招募與徵召"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -791,7 +778,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -818,7 +804,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -896,7 +881,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -962,7 +946,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1110,7 +1093,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1123,8 +1105,8 @@ msgstr ""
 "\n"
 "\n"
 "以上規則有兩個例外：<ref>dst=weaponspecial_magical text='魔法攻撃'</ref>和"
-"<ref>dst=weaponspecial_marksman text=精准射撃</ref>。“魔法攻撃”可以無視地形，"
-"總是有70%的命中幾率，而精准射撃在進攻中也無視地形，且最少有60%的命中幾率。"
+"<ref>dst=weaponspecial_marksman text=精準射撃</ref>。“魔法攻撃”可以無視地形，"
+"總是有70%的命中幾率，而精準射撃在進攻中也無視地形，且最少有60%的命中幾率。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1137,10 +1119,8 @@ msgstr ""
 "\n"
 "<header>text=傷害</header>"
 
-# sometimes there are quotations in "text='Time of Day'", for example, but sometimes there aren't, as in "text=resistance". what's the difference? and shall i use quotations in a likewise manner in translation?
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1162,7 +1142,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1347,7 +1326,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1378,7 +1356,6 @@ msgstr "治療"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1393,7 +1370,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1415,7 +1391,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
@@ -1427,7 +1402,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1441,7 +1415,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1449,8 +1422,8 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"治愈單位：有<ref>dst=ability_cures text=治愈</ref>能力的單位可以治愈盟軍相鄰"
-"單位的中毒效果（如過本單位還有治療能力，則治愈優先於治療）。"
+"治癒單位：有<ref>dst=ability_cures text=治癒</ref>能力的單位可以治癒盟軍相鄰"
+"單位的中毒效果（如過本單位還有治療能力，則治癒優先於治療）。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
@@ -1554,7 +1527,6 @@ msgstr "總結"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1589,7 +1561,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1606,7 +1577,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1873,7 +1843,6 @@ msgstr "矮人們以活力著稱，有些强壯的矮人甚至可以在移動同
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1888,15 +1857,14 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "普通"
+msgstr "幽暗"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
-msgstr ""
+msgstr "具有幽暗特質的單位升級所需的經驗值比一般單位多20％。"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -1906,18 +1874,20 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"幽暗特質在地精等稀有種族中很常見。這些種族之所以数量較少是有原因的，幽暗特質"
+"便是其中之一。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "减速"
+msgstr "緩速"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr "擁有迅捷特質的單位有1點移動點數奬勵，但是會减少5%的生命值。"
+msgstr "擁有緩速特質的單位少1點移動點數奬勵，但是會多5%的生命值。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -1928,16 +1898,20 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"體型龐大笨拙，地精和其它種族中的慢速在移动上受到限制，但在耐力上得到少許補"
+"償。"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
 msgid "Weak"
-msgstr ""
+msgstr "虛弱"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
-msgstr ""
+msgstr "擁有虛弱特質的單位,攻擊次數和近戰傷害各-1。"
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -1953,7 +1927,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:472
 msgid "Flat"
-msgstr ""
+msgstr "平原"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:477
@@ -1979,13 +1953,12 @@ msgstr "道路"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:487
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
-"道路是有許許多多旅行者在松軟的泥土上行走時踩出來的。就有戲而言，道路和"
+"道路是有許許多多旅行者在鬆軟的泥土上行走時踩出來的。就遊戲而言，道路和"
 "<ref>dst=terrain_grassland text=草原</ref>没有兩様。"
 
 #. [topic]: id=terrain_forest
@@ -2090,7 +2063,7 @@ msgstr ""
 "不過，任何天生適應水中環境的種族都是例外；他們在沼澤裏行動自如，還能獲得防禦"
 "加乘。那些生活在沼澤地的生物也能將其化為天然防禦掩體。\n"
 "\n"
-"在沼澤中大多數單位有30%的閃避幾率，人魚，娜迦和蜥蜴人通常則有60%。"
+"在沼澤中大多數單位有30%的閃避幾率，魚人，納迦和蜥蜴人通常則有60%。"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:544
@@ -2114,7 +2087,7 @@ msgstr ""
 "敵人的攻撃之下。淺水會淹過矮人的頭頂，讓他們非常難受。那些天生會游泳的種族則"
 "是例外，他們在淺水裏行動自如，還能獲得防禦加乘。\n"
 "\n"
-"在淺水中大多數單位有20%到30%的閃避幾率，但娜迦和人魚則有60%。"
+"在淺水中大多數單位有20%到30%的閃避幾率，但納迦和魚人則有60%。"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:556
@@ -2133,16 +2106,15 @@ msgstr ""
 "深水指的是所有能淹過成人頭頂的水域。大多數單位不能進入深水。這是那些會飛或游"
 "泳技術高超的單位的領地。\n"
 "\n"
-"在深水中人魚和娜迦都有50%的閃避幾率，並且能自由移動。"
+"在深水中魚人和納迦都有50%的閃避幾率，並且能自由移動。"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:568
 msgid "Frozen"
-msgstr ""
+msgstr "冰凍的"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2207,7 +2179,6 @@ msgstr "沙漠"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:609
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2223,7 +2194,6 @@ msgstr "洞穴"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2248,7 +2218,6 @@ msgstr "岩石洞穴"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2261,7 +2230,7 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
-"岩石洞穴這種地形是由携帶腐蝕性粒子的水和風侵蝕而成的。它類似於凹凸不平的地下"
+"岩石洞穴這種地形是由攜帶腐蝕性粒子的水和風侵蝕而成的。它類似於凹凸不平的地下"
 "洞穴，降低了大部分兵種在其中的移動效率，不過防守却因此得到增强。矮人和巨魔是"
 "洞穴中的主要居民，穿行於這類地形之中也相對的輕巧一些。憑借自身矮小的特點，矮"
 "人在這類地形中穿行時占盡優勢。\n"
@@ -2356,20 +2325,19 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"水中村莊是那迦和人魚的家. 水中的生靈視此為家園,陸地的居民在這裏戰鬥移動十分困"
+"水中村莊是納迦和人魚的家. 水中的生靈視此為家園,陸地的居民在這裏戰鬥移動十分困"
 "難. 當然,像任何村莊一様,這裏也提供治愈創傷的設施. 在此處,單位每回合可以回復8"
 "點生命值(或療毒). \n"
 "\n"
-"那迦和人魚在水中村莊有60%的閃避率, 然而陸地為家的單位只得到較低程度的保護."
+"納迦和人魚在水中村莊有60%的閃避率, 然而陸地為家的單位只得到較低程度的保護."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
 msgid "Unwalkable"
-msgstr ""
+msgstr "無法行走的"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
@@ -2377,7 +2345,7 @@ msgid ""
 "capable of flying can cross this terrain."
 msgstr ""
 "深淵是平地上的凹陷，深不可測。深淵有着陡峭的山壁以至於要花費許多天才能通過。"
-"在遊戲中，只有那些能飛過峽榖的單位可以通過這種地形。"
+"在遊戲中，只有那些能飛過峽谷的單位可以通過這種地形。"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -2386,7 +2354,6 @@ msgstr "熔岩"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2421,9 +2388,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "城堡"
+msgstr "礁石"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -2435,6 +2401,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"礁石是由石頭、珊瑚和泥沙組成的淺灘。這為大部分路地單位提供比浅水更好的支撑和"
+"防御。同時為水生種族提供特别的高防御。\n"
+"\n"
+"魚人和納迦在礁石上都有70%的防御。"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2465,7 +2435,6 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:744
-#, fuzzy
 msgid "Impassable"
 msgstr "無法通過的山嶺"
 
@@ -2497,7 +2466,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:769
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2506,14 +2474,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"開啓調試模式（在多人對戰中無效）。查看<ref>dst=debug_commands text='調試模式"
+"開啟調試模式（在多人對戰中無效）。查看<ref>dst=debug_commands text='調試模式"
 "可用命令'</ref>。\n"
 "要關閉調試模式可以使用 :nodebug 或者退出遊戲。\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:772
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2525,7 +2492,7 @@ msgid ""
 msgstr ""
 "\n"
 "設置某一方由玩家或者AI來控制。控制那一方的玩家/客户端需要執行這條命令。如果不"
-"指定第二個參數，則在玩家控制和AI控制間切换。如果第二個參數是'on'，則設置為AI"
+"指定第二個參數，則在玩家控制和AI控制間切換。如果第二個參數是'on'，則設置為AI"
 "控制。如果第二個參數是'off'，則設置為玩家控制。如果不指定參數，則默認為當前活"
 "動方。\n"
 "\n"
@@ -2559,6 +2526,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"重新載入畫面並加入動畫。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2658,7 +2628,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"遮屁一個指定的觀察者。如果没有指定觀察者的用户名，則輸出被屏蔽的觀察者的名"
+"隱藏一個指定的觀察者。如果没有指定觀察者的用户名，則輸出被隱藏的觀察者的名"
 "單。\n"
 "\n"
 
@@ -2669,12 +2639,12 @@ msgid ""
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"屏蔽/取消屏蔽所有觀察者。"
+"隱藏/取消隱藏所有觀察者。"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:820
 msgid "Debug mode commands"
-msgstr ""
+msgstr "偵錯模式指令"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:824
@@ -2684,6 +2654,9 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"從選項中選擇一個任務進入下一個戰役。\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:827
@@ -2726,6 +2699,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"立即進入該戰役的下一個任務。\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -2774,13 +2750,12 @@ msgstr ""
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
-msgstr "治愈"
+msgstr "治癒"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "無畏"
+msgstr "治癒"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2789,9 +2764,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"治愈：\n"
-"擁有'治愈'能力的單位可以解除附近單位的中毒效果，但是該回合不會再為該單位恢復"
-"生命"
+"治癒：\n"
+"擁有'治癒'能力的單位可以解除附近單位的中毒效果，但是該回合不會再為該單位恢復"
+"生命。"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
@@ -2800,7 +2775,6 @@ msgstr "恢復"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "恢復"
 
@@ -2821,11 +2795,9 @@ msgstr "堅定"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "堅定"
 
-# not very sure about "vulnerabilities are not affected"
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
 msgid ""
@@ -2847,7 +2819,6 @@ msgstr "領導"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "領導"
 
@@ -2855,7 +2826,6 @@ msgstr "領導"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -2867,10 +2837,10 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "領導：\n"
-"本單位可以領導相鄰的友好單位，使之更好的戰鬥。\n"
+"本單位可以領導相鄰的同盟單位，發揮更強大的戰鬥力。\n"
 "\n"
-"相鄰的低等級友好單位獲得更多的傷害輸出。當有領袖與低等級友好單位相鄰時，這些"
-"單位的攻撃比平時增加原本的25%乘以與領袖等級差別。"
+"相鄰低等級的同盟單位可得到更強大的殺傷力。當領袖與低等級同盟單位相鄰時，這些"
+"單位的攻撃會比平時增加原本的25%乘以與領袖等級差。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
@@ -2879,7 +2849,6 @@ msgstr "游撃"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "游撃"
 
@@ -2896,13 +2865,12 @@ msgstr ""
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
-msgstr "照明"
+msgstr "光明"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
-msgstr "照明"
+msgstr "光明"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:367
@@ -2926,9 +2894,8 @@ msgstr "傳送"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "聰慧"
+msgstr "傳送"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
@@ -2947,9 +2914,8 @@ msgstr "伏撃"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "忠誠"
+msgstr "伏擊"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -2991,20 +2957,18 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "夜行"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 msgid "concealment"
-msgstr "隱蔽"
+msgstr "隱藏"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
-msgstr "隱蔽"
+msgstr "隱藏"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
@@ -3017,7 +2981,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"隱蔽：\n"
+"隱藏：\n"
 "本單位可以隱藏在村莊，不會被敵人發覺。\n"
 "\n"
 "敵人不能看見或攻撃這些在村莊中的單位，除非這些單位上個回合進行過攻撃，或是有"
@@ -3030,9 +2994,8 @@ msgstr "潜水"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "强壯"
+msgstr "潛水"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3057,9 +3020,8 @@ msgstr "祭祀"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "無畏"
+msgstr "食屍"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3080,7 +3042,6 @@ msgid "backstab"
 msgstr "背刺"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3089,7 +3050,7 @@ msgid ""
 msgstr ""
 "背刺：\n"
 "當該士兵站在敵人背後時，背刺能產生雙倍攻擊力。但有些情況並不適用，例如敵人被"
-"石化。"
+"石化或痲痹。"
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3165,7 +3126,6 @@ msgid "swarm"
 msgstr "連撃"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3174,8 +3134,8 @@ msgid ""
 "number of strikes."
 msgstr ""
 "連撃：\n"
-"這種攻撃的攻撃次數隨本單位的傷勢遞减，其攻撃次數與“當前生命值/最大生命值”的比"
-"值成正比。例如，一個剩下3/4生命值的單位，其攻撃次數也只有峰值的3/4。"
+"這種攻撃的攻撃次數會隨單位的傷勢遞减，其攻撃次數與“當前生命值/最大生命值”的比"
+"值成正比。例如，一個剩下3/4生命值的單位，其攻撃次數也只有3/4次。"
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3220,28 +3180,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "更注重進攻"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "注重進攻。"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "更注重防守"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "閃避幾率"
+msgstr "防禦。"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "重點攻擊..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3255,12 +3214,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "結盟"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "主要在對付哪個敵方單位？"
 
 #. [then]
 #. [else]
@@ -3269,24 +3228,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "($temp_i|陣營)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name ( $temp_i|陣營)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "$temp_i 陣營"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "重點攻擊 $this_enemy_description|。"
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3294,83 +3253,76 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "黑"
+msgstr "返回"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "重點防禦..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "主要保護哪個同盟單位？"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "重點防禦 $this_ally_description|。"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "印度尼西亞語翻譯團隊"
+msgstr "堅守陣地..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "右鍵點選要堅守的陣地"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
-#, fuzzy
 msgid "Defend this location"
-msgstr "印度尼西亞語翻譯團隊"
+msgstr "堅守陣地"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "重點防禦周圍 $x1|,$y1| 的區域。"
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "選擇地點已取消"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "取消"
+msgstr "取消目標指令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "取消"
+msgstr "取消行徑指令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "取消"
+msgstr "取消所有指令"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "無"
+msgstr "無設定。"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
-msgstr ""
+msgstr "$ally_leader.name ($ally_side|陣營)沒有被分派指令，目前可以行動。"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3381,29 +3333,32 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"目標:$ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"行徑:$ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name ($ally_side|陣營) 正在執行以下行動："
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "設定目標..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "設定密碼..."
+msgstr "設定行徑..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "離開"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3421,49 +3376,49 @@ msgid "Max HP bonus +"
 msgstr "最大生命值奬勵+"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "提早結束奬勵： "
+msgstr "時效奬勵： "
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "提早結束奬勵： "
+msgstr "無時效奬勵： "
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "提早結束奬勵： "
+msgstr "`（時效獎勵）"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "沒有剩餘金幣帶到下一個任務。"
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% 的金幣會帶到下一個任務。"
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% 的金幣會帶到下一個任務。"
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% 的金幣會帶到下一個任務。"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
-"您經過了一個許願井。\n"
-"你想許個什麽様的願望？"
+msgstr "您經過了一個許願井。你想許個什麽様的願望？"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3504,15 +3459,13 @@ msgstr "別許願。"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "承受傷害"
+msgstr "撿起"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "重新命名單位"
+msgstr "放下"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -3616,7 +3569,7 @@ msgstr "只有人魚可以使用本物品！"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "讓$unit.name拿起三叉戟嗎？"
 
 #. [object]
 #: data/core/macros/items.cfg:537
@@ -4433,6 +4386,7 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"電腦玩家不能在此任務中使用$side_number。$side_number將在此扮演一位玩家。"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4491,13 +4445,12 @@ msgid ""
 msgstr "本單位的堅忍不拔使得某些攻撃的傷害下降，但這支在本單位防守時有效。"
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"這個士兵的領導能力能使在他周圍的友軍更具戰鬥力。周圍比他等級低的友軍在戰鬥中"
-"會給對方造成更大的傷害。"
+"這個士兵的領導能力能使在他周圍的友軍更勇猛。周圍比他等級低的友軍在戰鬥中會給"
+"對方造成更大的傷害。"
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4556,7 +4509,6 @@ msgstr ""
 "倒下為止。"
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -4566,11 +4518,10 @@ msgstr ""
 "成雙倍傷害。"
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr "被瘟疫攻撃撃斃的敵方單位會重生為攻撃者一方的不死族的單位。"
+msgstr "被瘟疫效果攻撃撃斃的敵方單位會重生為我方的不死族單位，在敵方村莊除外。"
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4592,11 +4543,10 @@ msgid ""
 msgstr "本單位的'精准'攻撃保證其具有很高的命中率，但這只是在進攻時有效。"
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
-msgstr "本單位的遠程攻撃屬於魔法攻撃，總是有較高的命中率。"
+msgstr "本單位的遠程攻撃屬於魔法攻撃，而且有較高的命中率。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4737,9 +4687,8 @@ msgstr "活力"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "能在移動中休息"
+msgstr "能在移動中休息，中毒只有四分之三的效果。"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4759,37 +4708,32 @@ msgstr "在不適應的時段(白天/夜晚)也能正常作戰"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "虛弱"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "不死"
+msgstr "虛弱"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "减速"
+msgstr "緩速"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "忠誠"
+msgstr "緩速"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "普通"
+msgstr "幽暗"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "無畏"
+msgstr "幽暗"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
@@ -4883,7 +4827,6 @@ msgstr "龍族"
 
 #. [race]: id=drake
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4971,7 +4914,6 @@ msgstr "矮人"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5443,7 +5385,6 @@ msgstr "不死族"
 
 #. [race]: id=undead
 #: data/core/units.cfg:288
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5470,20 +5411,34 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"不死族並非單一種族，但大多人認為是這様。大多不死是被强大的巫師從死亡世界裡徵"
-"召回來的。它們無意識，是反抗自然的存在。只知道聽從召喚者的命令。"
+"儘管我們這樣分類，事實上，不死族並不是真正的「單一種族」生物。藉有足夠力量的"
+"死靈法師協助，幾乎所有生物都能夠在死後被重新賦與活力，並站到不死族的這邊。不"
+"死族大部份都是不自然的，同時也是缺乏心智的，他們會遵行創造者的任何命令，不會"
+"去思考或詢問問題。死靈術最神祕的地方，就是如何維持這樣的一個體系，而不需要死"
+"靈法師持續提供影響力。一個不死生物不需要死靈法師不斷注意他們、給予他們命令或"
+"維持他們，這些「生物」能自動地根據主人的指示而做任何事情。只有在極少數的時"
+"候--也許是隔好幾個月，死靈法師才需要去維護一次他的作品。\n"
+"\n"
+"死靈術的使用者幾乎只限於人類。即使是具有神奇魔法技藝的種族，如精靈或人魚，對"
+"這種黑暗的技巧也只有非常少的研究。或許是因為死靈魔法要求使用者心靈極大的適應"
+"能力與彈性，而這種極端的特質通常只有在人類中才找得到。絕大多數死靈魔法師的終"
+"極目標，是利用同樣技術，不計一切代價地改變自己，藉著保存自己的靈魂與心志達到"
+"永生不死的目的。\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"While undead lords arrived on the Great Continent in considerable numbers "
+"only in the wake of Haldric I, they were not completely unheard of by elves "
+"and dwarves before that."
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
-#, fuzzy
 msgid "race^Wolf"
-msgstr "精靈"
+msgstr "狼"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolves"
-msgstr "精靈"
+msgstr "狼"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
@@ -5544,7 +5499,7 @@ msgstr "困難"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "惡夢"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -5735,7 +5690,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "韋諾工程師"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5941,7 +5896,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -6295,35 +6249,32 @@ msgstr ""
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
-msgstr ""
+msgstr "在許多戰役中，你可以透過右鍵快捷鍵選單對盟友下達簡單指令。"
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "幫助我們改進韋諾，提升您的遊戲體驗！"
+msgstr "關於上傳的資料，會幫助我們讓韋諾更好！"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "記住我的選擇以後不再詢問。"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
-msgstr ""
+msgstr "如果往後想要更改設定，可以點選主畫面上的信封圖示。"
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "沙地"
+msgstr "寄送"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "不要再問我！"
+msgstr "不要寄送"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "傳送數據前將不在詢問"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -6437,7 +6388,6 @@ msgstr "開始播放"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
 msgstr "連續播放"
 
@@ -6513,14 +6463,13 @@ msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "選擇了一個無效的武器，可能是Python AI選擇的。"
 
 #: src/actions.cpp:1058 src/actions.cpp:1333
-#, fuzzy
 msgid "female^poisoned"
-msgstr "不死"
+msgstr "中毒"
 
 #: src/actions.cpp:1070 src/actions.cpp:1345
 #, fuzzy
 msgid "female^petrified"
-msgstr "不死"
+msgstr "中毒"
 
 #: src/actions.cpp:1070 src/actions.cpp:1345
 msgid "petrified"
@@ -6534,12 +6483,11 @@ msgstr "遭到伏撃！"
 msgid "Failed teleport! Exit not empty"
 msgstr "傳送失敗!出口阻塞"
 
-# what is the plural form all about?
 #: src/actions.cpp:2485
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "發現同盟單位"
-msgstr[1] "發現$friends個友好單位"
+msgstr[1] "發現$friends個同盟單位"
 
 #: src/actions.cpp:2488
 msgid "Enemy unit sighted!"
@@ -6547,17 +6495,16 @@ msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "發現敵方單位！"
 msgstr[1] "發現$enemies個敵方單位！"
 
-# Can someone show me an example of this line in real gameplay? Else I really can't understand it...
 #: src/actions.cpp:2493
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1個同盟單位"
-msgstr[1] "$friends個友好單位"
+msgstr[1] "$friends個同盟單位"
 
 #: src/actions.cpp:2494
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "1個敵方單位"
+msgstr[0] "被1個敵方單位發現"
 msgstr[1] "$enemies個敵方單位"
 
 #: src/actions.cpp:2495
@@ -6581,56 +6528,50 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:367
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:400
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "戰役"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "任務"
 
 #: src/addon_management.cpp:404
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "遠程場景"
+msgstr "多人遊戲時代"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "遠程場景"
+msgstr "多人遊戲陣營"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "遠程場景"
+msgstr "多人遊戲地圖"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "遠程場景"
+msgstr "多人遊戲任務"
 
 #: src/addon_management.cpp:412
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "多人遊戲戰役"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "資源"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "未知"
 
 #: src/addon_management.cpp:445
 msgid "Dependencies"
 msgstr "需求"
 
 #: src/addon_management.cpp:446
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -6671,28 +6612,25 @@ msgid "Response"
 msgstr "回應"
 
 #: src/addon_management.cpp:574
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "正在下載模組..."
+msgstr "正在下載模組:$addon_title|..."
 
 #: src/addon_management.cpp:589
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
-msgstr ""
+msgstr "模組的元件或目錄的名稱錯誤導致無法安裝。"
 
 #: src/addon_management.cpp:638
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "這個模組已經安裝。"
+msgstr "這個模組已經成功安裝。"
 
 #: src/addon_management.cpp:640
 msgid "Add-on Installed"
 msgstr "模組已安裝完成"
 
 #: src/addon_management.cpp:699
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "發送模組"
+msgstr "舊模組"
 
 #: src/addon_management.cpp:701
 msgid ""
@@ -6701,16 +6639,16 @@ msgid ""
 msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "一個舊模組附加的資訊。此模組將不會在升級。"
+msgstr[1] "一些舊模組附加的資訊。這些模組將不會在升級。"
 
 #: src/addon_management.cpp:710
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "無法在這個伺服器找到可以升級的模組。"
 
 #: src/addon_management.cpp:710
 msgid "No add-ons to update"
-msgstr ""
+msgstr "沒有要更新的模組"
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
 #: src/dialogs.cpp:655 src/menu_events.cpp:181 src/menu_events.cpp:850
@@ -6718,14 +6656,12 @@ msgid "Name"
 msgstr "名稱"
 
 #: src/addon_management.cpp:724
-#, fuzzy
 msgid "New version"
-msgstr "版本"
+msgstr "新版本"
 
 #: src/addon_management.cpp:724
-#, fuzzy
 msgid "Old version"
-msgstr "版本"
+msgstr "舊版本"
 
 #: src/addon_management.cpp:725 src/addon_management.cpp:928
 msgid "Author"
@@ -6736,47 +6672,41 @@ msgid "Size"
 msgstr "大小"
 
 #: src/addon_management.cpp:779
-#, fuzzy
 msgid "Update add-ons"
-msgstr "取得模組"
+msgstr "更新模組"
 
 #: src/addon_management.cpp:780
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "選擇要更新的模組:"
 
 #: src/addon_management.cpp:794
-#, fuzzy
 msgid "Update all"
-msgstr "洞穴墻壁"
+msgstr "全部更新"
 
 #: src/addon_management.cpp:851
-#, fuzzy
 msgid "Update failed"
-msgstr "洞穴墻壁"
+msgstr "更新失敗"
 
 #: src/addon_management.cpp:853
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "以下附加戰役有錯誤，無法加載："
-msgstr[1] "以下附加戰役有錯誤，無法加載："
+msgstr[0] "以下模組，無法下載或是已經下載成功："
+msgstr[1] "以下模組，無法下載或是已經下載成功："
 
 #: src/addon_management.cpp:862
-#, fuzzy
 msgid "Update succeeded"
-msgstr "取得模組"
+msgstr "更新成功"
 
 #: src/addon_management.cpp:863
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "模組已更新成功。"
 
 #: src/addon_management.cpp:864
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "全部的模組已更新成功。"
 
 #: src/addon_management.cpp:888
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "正在連接到伺服器..."
 
@@ -6785,12 +6715,10 @@ msgid "Could not connect to host."
 msgstr "無法連接到主機。"
 
 #: src/addon_management.cpp:899
-#, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "搜尋模組列表"
 
 #: src/addon_management.cpp:911
-#, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "與伺服器通訊錯誤。"
 
@@ -6820,7 +6748,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "這個伺服器上無可供下載的模組。"
 
 #: src/addon_management.cpp:1019
-#, fuzzy
 msgid "Get add-ons"
 msgstr "取得模組"
 
@@ -6842,11 +6769,10 @@ msgid "Remote host disconnected."
 msgstr "遠程主機關閉。"
 
 #: src/addon_management.cpp:1075
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "安裝這個戰役所需文件創建錯誤。"
+msgstr "安裝這個模組時發生錯誤。"
 
 #: src/addon_management.cpp:1093 src/addon_management.cpp:1148
 #: src/dialogs.cpp:286 src/dialogs.cpp:294 src/multiplayer_create.cpp:540
@@ -6855,7 +6781,6 @@ msgid "Error"
 msgstr "錯誤"
 
 #: src/addon_management.cpp:1094
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "您没有安裝任何模組。"
 
@@ -6864,9 +6789,8 @@ msgid "Choose the add-on to remove."
 msgstr "選擇要移除的模組。"
 
 #: src/addon_management.cpp:1106
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "發送模組"
+msgstr "移除模組"
 
 #: src/addon_management.cpp:1118
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -6885,9 +6809,8 @@ msgid "Add-on deleted"
 msgstr "模組已移除"
 
 #: src/addon_management.cpp:1149
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "無法移除模組 -- 有個檔案遺失。"
+msgstr "無法移除模組:"
 
 #: src/ai/ai.cpp:1707
 msgid "Unknown unit type : "
@@ -7089,9 +7012,8 @@ msgid "Show replay"
 msgstr "顯示遊戲錄影"
 
 #: src/dialogs.cpp:691
-#, fuzzy
 msgid "Cancel orders"
-msgstr "取消"
+msgstr "取消指令"
 
 #: src/dialogs.cpp:698
 msgid "Delete Save"
@@ -7135,9 +7057,8 @@ msgid "File I/O Error while reading the game"
 msgstr "當讀取遊戲時發生文件I/O錯誤。"
 
 #: src/game.cpp:1019 src/game.cpp:1055
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "無有效目標"
+msgstr "無有效目標。\n"
 
 #: src/game.cpp:1105
 msgid "Difficulty"
@@ -7148,25 +7069,22 @@ msgid "Select difficulty level:"
 msgstr "選擇難度："
 
 #: src/game.cpp:1241
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "您確定想解聘她？"
+msgstr "您確定開始遊戲？"
 
 #: src/game.cpp:1242
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
-msgstr ""
+msgstr "伺服器會一直運作，直到所有使用者都中斷連線。"
 
 #: src/game.cpp:1246
-#, fuzzy
 msgid "Don't show again"
-msgstr "不要再問我！"
+msgstr "不再顯示"
 
 #: src/game.cpp:1317
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "遊戲執行出錯： "
+msgstr "遊戲執行錯誤: "
 
 #: src/game.cpp:1319 src/playcampaign.cpp:95 src/playcampaign.cpp:358
 msgid "The game could not be loaded: "
@@ -7189,11 +7107,10 @@ msgid "' (The game will now exit)"
 msgstr "' （現在將退出遊戲）"
 
 #: src/game.cpp:1504
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "以下附加戰役有錯誤，無法加載："
-msgstr[1] "以下附加戰役有錯誤，無法加載："
+msgstr[0] "以下附加模組有錯誤，無法讀取："
+msgstr[1] "以下附加模組有錯誤，無法讀取："
 
 #: src/game.cpp:1511
 msgid "ERROR DETAILS:"
@@ -7212,9 +7129,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "為當前語言重置字體。"
 
 #: src/game.cpp:1965
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "發送模組"
+msgstr "搜尋已安裝模組。"
 
 #: src/game.cpp:1974
 msgid "Loading title screen."
@@ -7225,22 +7141,20 @@ msgid "Invalid color range: "
 msgstr "無效顔色"
 
 #: src/game_events.cpp:138
-#, fuzzy
 msgid "Error: "
-msgstr "錯誤"
+msgstr "錯誤:"
 
 #: src/game_events.cpp:141
-#, fuzzy
 msgid "Warning: "
-msgstr "上午"
+msgstr "警告:"
 
 #: src/game_events.cpp:144
 msgid "Debug: "
-msgstr ""
+msgstr "偵錯:"
 
 #: src/game_events.cpp:147
 msgid "Info: "
-msgstr ""
+msgstr "資訊:"
 
 #: src/game_events.cpp:1127
 msgid "Victory:"
@@ -7264,11 +7178,10 @@ msgid "invisible: "
 msgstr "隱形： "
 
 #: src/generate_report.cpp:102
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
-msgstr "本單位被减速了，攻撃因此减半。"
+msgstr "本單位被緩速了，移動和攻撃因此減半。"
 
 #: src/generate_report.cpp:102
 msgid "slowed: "
@@ -7307,7 +7220,7 @@ msgstr "抗性"
 
 #: src/generate_report.cpp:171
 msgid "(Att / Def)"
-msgstr ""
+msgstr "（攻擊/防禦）"
 
 #: src/generate_report.cpp:190 src/multiplayer_create.cpp:401
 msgid "Experience Modifier: "
@@ -7316,24 +7229,24 @@ msgstr "經驗值修正： "
 #: src/generate_report.cpp:261
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "點傷害"
-msgstr[1] "點傷害"
+msgstr[0] "傷害"
+msgstr[1] "傷害"
 
 #: src/generate_report.cpp:262
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] "次攻撃"
-msgstr[1] "次攻撃"
+msgstr[0] "攻撃"
+msgstr[1] "攻撃"
 
 #: src/generate_report.cpp:268
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "次攻撃"
+msgstr "精準度"
 
 #: src/generate_report.cpp:274
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "點傷害"
+msgstr "迴避"
 
 #: src/generate_report.cpp:285
 msgid "weapon range: "
@@ -7396,9 +7309,8 @@ msgid "Abilities: "
 msgstr "能力： "
 
 #: src/help.cpp:1348
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "能力： "
+msgstr "能力提升:"
 
 #: src/help.cpp:1366
 msgid "Cost: "
@@ -7530,7 +7442,7 @@ msgstr "？"
 #: src/loadscreen.cpp:234
 #, fuzzy
 msgid "Verifying cache..."
-msgstr "驗證暫存。"
+msgstr "正在驗證暫存"
 
 #: src/loadscreen.cpp:253
 #, fuzzy
@@ -7548,16 +7460,15 @@ msgstr "不支援不含標題的地圖"
 
 #: src/mapgen.cpp:739
 msgid "Random maps with an odd width aren't supported."
-msgstr "不支援寬度為奇數的隨機地圖(?)"
+msgstr "不支援寬度為奇數的隨機地圖"
 
 #: src/menu_events.cpp:78 src/menu_events.cpp:81 src/menu_events.cpp:85
 msgid "Do you really want to dismiss him?"
 msgstr "您確定想解聘他？"
 
 #: src/menu_events.cpp:78
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "陛下，這個單位就快升級了！"
+msgstr "陛下，這個士兵不要報酬！"
 
 #: src/menu_events.cpp:79 src/menu_events.cpp:82 src/menu_events.cpp:86
 msgid "Do you really want to dismiss her?"
@@ -7576,7 +7487,6 @@ msgid "Statistics"
 msgstr "統計"
 
 #: src/menu_events.cpp:182 src/menu_events.cpp:851
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "等級"
 
@@ -7816,244 +7726,212 @@ msgid "Search"
 msgstr "搜索"
 
 #: src/menu_events.cpp:1732
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "無有效目標"
+msgstr "目前無法使用這個指令。"
 
 #: src/menu_events.cpp:1743
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"目前可使用的指令列表和特殊指令說明。如果您要查詢目前不可用的命令，請使用"
+"\"help all\"。"
 
 #: src/menu_events.cpp:1848
-#, fuzzy
 msgid " No help available."
-msgstr "無有效目標"
+msgstr "無資料"
 
 #: src/menu_events.cpp:2003
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
-msgstr ""
+msgstr "向伺服器提出查詢。如果不帶參數，伺服器應該會告訴您可用的指令。"
 
 #: src/menu_events.cpp:2006
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
-msgstr ""
+msgstr "禁止並踢出一個玩家或觀察者。如果他不在遊戲中，則只會被禁止。"
 
 #: src/menu_events.cpp:2009
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "踢出一名玩家或觀察者。"
 
 #: src/menu_events.cpp:2011
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "禁止一個觀察者發言。不加參數則顯示禁言狀態。"
 
 #: src/menu_events.cpp:2013
 msgid "Mute all observers."
-msgstr ""
+msgstr "禁止所有觀察者發言。"
 
 #: src/menu_events.cpp:2023
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "發送簡訊給在線上的管理員。"
 
 #: src/menu_events.cpp:2025
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "在聊天中發送表情符號或者個人動作。用法： /me <消息>"
+msgstr "在聊天中傳送表情符號或者個人動作。用法： /me <消息>"
 
 #: src/menu_events.cpp:2028
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"發送私人消息。您不能發送消息給正在控制遊戲中任何一方的玩家。用法：/msg <玩家"
-"id> <消息>"
+"發送私人訊息。您不能傳送訊息給正在遊戲中任何一方的玩家。用法：/msg <玩家id> <"
+"消息>"
 
 #: src/menu_events.cpp:2034
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "更改日誌的級別。"
 
 #: src/menu_events.cpp:2036
-#, fuzzy
 msgid "Add a nick to your ignores list."
 msgstr "將玩家列入您的黑名單。用法：/list ignore <玩家id>"
 
 #: src/menu_events.cpp:2038
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "已加入好友名單："
+msgstr "加入您的好友名單。"
 
 #: src/menu_events.cpp:2040
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
 msgstr "將玩家從您的好友名單或黑名單中去除。用法：/list remove <玩家id>"
 
 #: src/menu_events.cpp:2042
-#, fuzzy
 msgid "Show your ignores and friends list."
 msgstr "顯示您的好友名單和黑名單。用法：/list display"
 
 #: src/menu_events.cpp:2045
-#, fuzzy
 msgid "Display version information."
-msgstr "没有找到這個時代的信息。"
+msgstr "顯示版本資訊。"
 
 #: src/menu_events.cpp:2047
 msgid "Register your nick"
-msgstr ""
+msgstr "註冊您的帳號"
 
 #: src/menu_events.cpp:2049
 msgid "Drop your nick."
-msgstr ""
+msgstr "刪除您的帳號。"
 
 #: src/menu_events.cpp:2051
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr ""
+msgstr "設定帳號資料。輸入/details可查看設定的内容。"
 
 #: src/menu_events.cpp:2054
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "没有找到這個時代的信息。"
+msgstr "查看一名玩家的資訊。"
 
 #: src/menu_events.cpp:2056
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "取得您註冊帳號的詳細資訊。"
 
 #: src/menu_events.cpp:2180
 msgid "Refresh gui."
-msgstr ""
+msgstr "刷新畫面。"
 
 #: src/menu_events.cpp:2182
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "切換其中一方的AI控制。"
 
 #: src/menu_events.cpp:2185
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "將其中一方控制權給予另一玩家或觀察者。"
 
 #: src/menu_events.cpp:2187
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"清除聊天記錄。\n"
-"\n"
+msgstr "清除聊天記錄。"
 
 #: src/menu_events.cpp:2189
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "顯示螢幕刷新程序。"
 
 #: src/menu_events.cpp:2192
-#, fuzzy
 msgid "Save game."
-msgstr "儲存遊戲"
+msgstr "儲存遊戲。"
 
 #: src/menu_events.cpp:2194
-#, fuzzy
 msgid "Quit game."
-msgstr "退出遊戲"
+msgstr "退出遊戲。"
 
 #: src/menu_events.cpp:2198
 msgid "Save and quit."
-msgstr ""
+msgstr "儲存並離開。"
 
 #: src/menu_events.cpp:2201
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "忽略錯誤回報。"
 
 #: src/menu_events.cpp:2203
 msgid "Disable autosaves."
-msgstr ""
+msgstr "停止自動儲存。"
 
 #: src/menu_events.cpp:2205
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
+msgstr "進入下一個任務。"
 
 #: src/menu_events.cpp:2208
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "正在下載下一幕……"
+msgstr "選擇下一個任務"
 
 #: src/menu_events.cpp:2211
 msgid "Turn debug mode on."
-msgstr ""
+msgstr "開啟除錯模式。"
 
 #: src/menu_events.cpp:2213
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "關閉除錯模式。"
 
 #: src/menu_events.cpp:2215
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "自定指令的快捷鍵"
 
 #: src/menu_events.cpp:2217
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "設定或顯示指令的名稱"
 
 #: src/menu_events.cpp:2219
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"顯示遊戲變量.\n"
-"\n"
+msgstr "設定遊戲變量。"
 
 #: src/menu_events.cpp:2221
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"顯示遊戲變量.\n"
-"\n"
+msgstr "顯示遊戲變量"
 
 #: src/menu_events.cpp:2223
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr ""
+msgstr "修改一個單位數值。（只能更動最大數值）"
 
 #: src/menu_events.cpp:2227
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "去除一個單位的特質。（目前這個功能尚未啟動）"
 
 #: src/menu_events.cpp:2229
-#, fuzzy
 msgid "Create a unit."
-msgstr "創造遊戲"
+msgstr "創造一個單位。"
 
 #: src/menu_events.cpp:2231
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"為當前玩家設置戰爭迷霧.\n"
-"\n"
+msgstr "為當前玩家設置戰爭迷霧。"
 
 #: src/menu_events.cpp:2233
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"為當前玩家設置戰爭迷霧.\n"
-"\n"
+msgstr "為當前玩家設置戰爭黑幕。"
 
 #: src/menu_events.cpp:2235
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "給玩家金幣。"
 
 #: src/menu_events.cpp:2237
 msgid "Fire a game event."
-msgstr ""
+msgstr "觸發遊戲事件。"
 
 #: src/menu_events.cpp:2240
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "顯示格狀地形X,Y座標。"
 
 #: src/menu_events.cpp:2243
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "顯示格狀地形編碼。"
 
 #: src/menu_events.cpp:2287
 msgid "Unknown debug level: '$level'."
@@ -8112,9 +7990,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "無法改變固定方的控制權：'$side'。"
 
 #: src/menu_events.cpp:2756
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "創造單位(測試!)"
+msgstr "選擇任務(測試!)"
 
 #: src/menu_events.cpp:2769
 msgid "Debug mode activated!"
@@ -8122,7 +7999,7 @@ msgstr "調試模式開啓！"
 
 #: src/menu_events.cpp:2772
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "在Debug模式下無法執行網路遊戲。"
 
 #: src/menu_events.cpp:2777
 msgid "Debug mode deactivated!"
@@ -8130,7 +8007,7 @@ msgstr "調試模式關閉！"
 
 #: src/menu_events.cpp:2940
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: src/menu_events.cpp:2948 src/menu_events.cpp:2964
 msgid "prompt^Command:"
@@ -8167,54 +8044,53 @@ msgid "Server-side redirect loop"
 msgstr "伺服器重定向循環"
 
 #: src/multiplayer.cpp:283
-#, fuzzy
 msgid "You must login first."
-msgstr "您必須登録這個伺服器"
+msgstr "您必須先登入。"
 
 #: src/multiplayer.cpp:285
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "此帳號名稱'$nick'已被註冊。"
 
 #: src/multiplayer.cpp:287
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
-msgstr ""
+msgstr "此帳號名稱'$nick'包含無效字元，只能與用數字與字母、底線和連字號。"
 
 #: src/multiplayer.cpp:291
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "此帳號名稱'$nick'太長，帳號名稱必須小於18個字元。"
 
 #: src/multiplayer.cpp:294
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "此帳號名稱 '$nick'已被保留，無法被玩家使用。"
 
 #: src/multiplayer.cpp:296
 msgid "The nick '$nick' is not registered on this server."
-msgstr ""
+msgstr "此帳號名稱'$nick'尚未在本伺服器註冊。"
 
 #: src/multiplayer.cpp:297
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "本伺服器無法註冊這個帳號名稱。"
 
 #: src/multiplayer.cpp:299 src/multiplayer.cpp:301
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "這個帳號'$nick'已經在這個伺服器上註冊。"
 
 #: src/multiplayer.cpp:302
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
-msgstr ""
+msgstr "警告：已經有一個客户端使用這個帳戶登入。如果繼續登入將擠掉先前使用者。"
 
 #: src/multiplayer.cpp:305
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "登入錯誤（伺服器沒有連結您的位置）。"
 
 #: src/multiplayer.cpp:308
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "您輸入的密碼錯誤。"
 
 #: src/multiplayer_connect.cpp:85 src/multiplayer_connect.cpp:488
 #: src/multiplayer_connect.cpp:616
@@ -8258,7 +8134,7 @@ msgstr "（空位）"
 
 #: src/multiplayer_connect.cpp:675
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "（預留給$playername）"
 
 #: src/multiplayer_connect.cpp:680
 #, fuzzy
@@ -8266,13 +8142,12 @@ msgid "(empty)"
 msgstr "空位"
 
 #: src/multiplayer_connect.cpp:806
-#, fuzzy
 msgid "Reserved"
-msgstr "蓄水池:"
+msgstr "保留"
 
 #: src/multiplayer_connect.cpp:807
 msgid "--give--"
-msgstr ""
+msgstr "--給予--"
 
 #: src/multiplayer_connect.cpp:931
 msgid "Only random sides in the current era."
@@ -8541,9 +8416,8 @@ msgid "--no games open--"
 msgstr "—當前没有已建立的遊戲—"
 
 #: src/multiplayer_lobby.cpp:151
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "未知時代"
+msgstr "（未知時代）"
 
 #: src/multiplayer_lobby.cpp:429
 msgid "Unknown era: $era_id"
@@ -8675,7 +8549,6 @@ msgid "Invalid Color"
 msgstr "無效顔色"
 
 #: src/multiplayer_ui.cpp:426
-#, fuzzy
 msgid "Selected user: "
 msgstr "選擇單位："
 
@@ -8704,13 +8577,12 @@ msgid "No multiplayer sides found"
 msgstr "没發現多人對戰陣營"
 
 #: src/multiplayer_wait.cpp:308
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "選擇陣營："
+msgstr "選擇您的陣營："
 
 #: src/multiplayer_wait.cpp:308
 msgid "Starting position: "
-msgstr ""
+msgstr "起始位置:"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -8733,18 +8605,16 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到耗費移動力小於1的地形"
 
 #: src/play_controller.cpp:99
-#, fuzzy
 msgid "Loading level"
-msgstr "讀取主畫面。"
+msgstr "讀取主畫面"
 
 #: src/play_controller.cpp:120
 msgid "Initializing teams"
 msgstr "初始化隊伍"
 
 #: src/play_controller.cpp:141
-#, fuzzy
 msgid "Loading units"
-msgstr "載入部隊資料。"
+msgstr "載入部隊資料"
 
 #: src/play_controller.cpp:148 src/play_controller.cpp:153
 msgid "Initializing display"
@@ -8801,7 +8671,7 @@ msgstr "未知任務： '"
 
 #: src/playmp_controller.cpp:220
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "取消還沒傳送至伺服器的移動。"
 
 #: src/playmp_controller.cpp:298
 msgid "End scenario"
@@ -9027,10 +8897,9 @@ msgstr "未終止的引用字串"
 
 #: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, 值 '$value', 之前 '$previous_value' 在 $pos"
 
 #: src/serialization/parser.cpp:350
-#, fuzzy
 msgid "$error, value '$value' at $pos"
 msgstr "在$pos處發生$error"
 
@@ -9115,9 +8984,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "模組下載"
 
 #: src/titlescreen.cpp:429
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "退出遊戲"
+msgstr "地圖編輯"
 
 #: src/titlescreen.cpp:431
 msgid "TitleScreen button^Language"
@@ -9175,7 +9043,7 @@ msgstr "下載玩家自定的戰役、時代或地圖集"
 
 #: src/titlescreen.cpp:449
 msgid "Start the map editor"
-msgstr ""
+msgstr "開啟地圖編輯器"
 
 #: src/titlescreen.cpp:451
 msgid "Change the language"
@@ -9206,18 +9074,16 @@ msgid "Upload statistics"
 msgstr "上傳統計資料"
 
 #: src/titlescreen.cpp:516
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Battle for Wesnoth"
+msgstr "幫助韋諾"
 
 #: src/titlescreen.cpp:517
 msgid "Help Wesnoth by sending us information"
 msgstr "回報資訊，幫助韋諾"
 
 #: src/unit.cpp:602
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "未知單位 '$type|'"
+msgstr "當創造性格時，未知單位 '$type|'"
 
 #: src/unit.cpp:782
 msgid "Unknown unit type '$type|'"
@@ -9266,17 +9132,16 @@ msgstr[1] "打撃"
 #: src/unit_types.cpp:213
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% 精準度"
 
 #: src/unit_types.cpp:223
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% 迴避"
 
 #: src/unit_types.cpp:930
-#, fuzzy
 msgid "No description available."
-msgstr "無有效目標"
+msgstr "沒有資料。"
 
 #: src/unit_types.cpp:988
 msgid "chaotic"
@@ -9291,19 +9156,16 @@ msgid "neutral"
 msgstr "中立"
 
 #: src/unit_types.cpp:989
-#, fuzzy
 msgid "female^chaotic"
-msgstr "機械"
+msgstr "混亂"
 
 #: src/unit_types.cpp:989
-#, fuzzy
 msgid "female^lawful"
-msgstr "忠誠"
+msgstr "守序"
 
 #: src/unit_types.cpp:989
-#, fuzzy
 msgid "female^neutral"
-msgstr "不死"
+msgstr "中立"
 
 #: src/upload_log.cpp:326
 msgid ""
@@ -9331,24 +9193,11 @@ msgstr "幫助我們改進韋諾，提升您的遊戲體驗！"
 msgid "Enable summary uploads"
 msgstr "開啟訊息回報"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "英雄"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "回合"
-
-#, fuzzy
-#~ msgid "scepter of fire"
-#~ msgstr "火之寶石"
-
 #~ msgid "stones"
 #~ msgstr "石化"
 
-#, fuzzy
 #~ msgid "female^stone"
-#~ msgstr "强壯"
+#~ msgstr "石化"
 
 #~ msgid "stone"
 #~ msgstr "石化"
@@ -9356,11 +9205,11 @@ msgstr "開啟訊息回報"
 #~ msgid "stone: "
 #~ msgstr "石化： "
 
-#~ msgid " included from "
-#~ msgstr "包含 "
-
 #~ msgid "The replay could not be saved"
 #~ msgstr "無法儲存遊戲錄影"
+
+#~ msgid " included from "
+#~ msgstr "包含 "
 
 #, fuzzy
 #~ msgid "Reading cache"
@@ -9584,6 +9433,9 @@ msgstr "開啟訊息回報"
 #, fuzzy
 #~ msgid "File"
 #~ msgstr "過濾： "
+
+#~ msgid "ruby of fire"
+#~ msgstr "火之寶石"
 
 #~ msgid "Screenshot"
 #~ msgstr "螢幕截圖"
