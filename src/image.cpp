@@ -1022,7 +1022,7 @@ bool is_in_hex(const locator& i_locator)
 		const surface image(get_image(i_locator, UNSCALED));
 
 		bool res = in_mask_surface(image, mask);
-		
+
 		i_locator.add_to_cache(in_hex_info_, res);
 
 		//std::cout << "in_hex : " << i_locator.get_filename()

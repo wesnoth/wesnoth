@@ -932,7 +932,7 @@ private:
 			if (unit == units_.end())
 				continue;
 			/* if tile is occupied by friendly or petrified/invisible unit */
-			if (! ai_.current_team().is_enemy(unit->second.side())  || 
+			if (! ai_.current_team().is_enemy(unit->second.side())  ||
 					unit->second.incapacitated() ||
 					unit->second.invisible(unit->first, units_, ai_.get_info().teams) )
 				continue;

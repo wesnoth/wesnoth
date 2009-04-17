@@ -35,18 +35,18 @@ class map_context
 {
 public:
 	/**
-	 * Create a map context from an existing map. The filename is set to be 
-	 * empty, indicating a new map. 
+	 * Create a map context from an existing map. The filename is set to be
+	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
 	explicit map_context(const editor_map& map);
 
 	/**
-	 * Create map_context from a map file. If the map cannot be loaded, an 
-	 * exception will be thrown and the object will not be constructed. If the 
+	 * Create map_context from a map file. If the map cannot be loaded, an
+	 * exception will be thrown and the object will not be constructed. If the
 	 * map file is a scenario, the map specified in its map_data key will be
-	 * loaded, and the stored filename updated accordingly. Maps embedded 
-	 * inside scenarios do not change the filename, but set the "embedded" flag 
+	 * loaded, and the stored filename updated accordingly. Maps embedded
+	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
 	map_context(const config& game_config, const std::string& filename);

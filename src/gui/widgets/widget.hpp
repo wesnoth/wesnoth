@@ -143,7 +143,7 @@ public:
 	 * that after the layout phase get_best_size() still returns this value.
 	 */
 
-	/** 
+	/**
 	 * Initializes the layout phase.
 	 *
 	 * @deprecated Will be removed after the new layout algorithm is
@@ -599,14 +599,14 @@ public:
 	void set_visible(const tvisible visible);
 	tvisible get_visible() const { return visible_; }
 
-	/** 
+	/**
 	 * Returns true if the widget is visible.
 	 *
 	 * @deprecated This function name and action is too confusing.
 	 */
 	bool is_visible() const { return visible_ == VISIBLE; }
 
-	/** 
+	/**
 	 * Returns true if the widget is invisible.
 	 *
 	 * @deprecated This function name and action is too confusing.

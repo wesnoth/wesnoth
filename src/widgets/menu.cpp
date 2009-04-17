@@ -155,7 +155,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		//so we grab the position of slash character
 		const char *slash1 = strchr(digits[0],'/');
 		const char *slash2 = strchr(digits[1],'/');
-		
+
 		int xp1_y,xp2_y;
 		if(slash1)
 			xp1_y = atoi(slash1+1);
@@ -167,7 +167,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 			xp2_y = 0;
 		int xp1_x = atoi(digits[0]); //atoi stops at the first invalid char, which is slash character
 		int xp2_x = atoi(digits[1]);
-		
+
 		int level1 = atoi(digits[2]);
 		int level2 = atoi(digits[3]);
 		if(level1 > level2)

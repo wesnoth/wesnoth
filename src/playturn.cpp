@@ -271,7 +271,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				throw end_level_exception(QUIT);
 			default:
 				if (action > 2) {
-					
+
 					{
 						// Server thinks this side is ours now so in case of error transfering side we have to make local state to same as what server thinks it is.
 						teams_[side_index].make_human();

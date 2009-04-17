@@ -39,12 +39,12 @@ public:
 	void check_before();
 	void execute();
 	bool is_ok();
-	virtual std::string do_describe() const =0; 
+	virtual std::string do_describe() const =0;
 protected:
 	ai_action_result( unsigned int side );
 	virtual void do_check_before() = 0;
 	virtual void do_check_after() = 0;
-	virtual void do_execute() = 0;	
+	virtual void do_execute() = 0;
 	virtual void do_init_for_execution() = 0;
 
 	bool is_execution() const;
@@ -68,7 +68,7 @@ private:
 
 class ai_attack_result : public ai_action_result {
 public:
-	ai_attack_result( unsigned int side, 
+	ai_attack_result( unsigned int side,
 		const map_location& attacker_loc,
         	const map_location& defender_loc,
 		int attacker_weapon );
@@ -76,7 +76,7 @@ public:
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
-	virtual void do_execute();	
+	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
 	const map_location& attacker_loc_;
@@ -86,7 +86,7 @@ private:
 
 class ai_move_result : public ai_action_result {
 public:
-	ai_move_result( unsigned int side, 
+	ai_move_result( unsigned int side,
 		const map_location& from,
 		const map_location& to,
 		bool remove_movement );
@@ -94,7 +94,7 @@ public:
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
-	virtual void do_execute();	
+	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
 	const map_location& from_;
@@ -116,12 +116,12 @@ public:
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
-	virtual void do_execute();	
+	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
 	bool test_available_for_recruiting(
-		const team& team, 
-		std::set<std::string>::const_iterator& recruit, 
+		const team& team,
+		std::set<std::string>::const_iterator& recruit,
 		bool update_knowledge = false );
 	bool test_unit_type_known(
 		const std::set<std::string>::const_iterator& recruit,
@@ -150,7 +150,7 @@ private:
 	unit_type_data::unit_type_map::const_iterator* unit_type_;
 	int num_;
 };
-	
+
 class ai_stopunit_result : public ai_action_result {
 public:
 	ai_stopunit_result( unsigned int side,
@@ -161,7 +161,7 @@ public:
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
-	virtual void do_execute();	
+	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
 	const map_location& unit_location_;
@@ -194,7 +194,7 @@ public:
 static std::auto_ptr<ai_attack_result> execute_attack_action( unsigned int side,
 	bool execute,
 	const map_location& attacker_loc,
-	const map_location& defender_loc, 
+	const map_location& defender_loc,
 	int attacker_weapon );
 
 

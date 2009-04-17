@@ -48,7 +48,7 @@ void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, fu
 				ERR_AI << "Unknown candidate action type: " << type << "\n";
 				continue;
 			}
-				
+
 
 			candidate_actions_.push_back(new_ca);
 
@@ -72,7 +72,7 @@ bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_m
 	if( evaluated_candidate_actions_.empty() ||
 		(*evaluated_candidate_actions_.begin())->get_score() < 1 )
 		return false;
-	
+
 	return true;
 }
 
@@ -113,7 +113,7 @@ candidate_action_with_filters::candidate_action_with_filters(const std::string& 
 
 			filter_map_[filter_param.first]=filter_formula;
 		}
-	}	
+	}
 }
 
 move_candidate_action::move_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
@@ -198,14 +198,14 @@ void attack_candidate_action::evaluate(formula_ai* ai, unit_map& units)
 			}
 		}
 	}
-	
+
 	score_ = 0;
 	foreach(unit_map::const_unit_iterator me, my_units)
 	{
 		foreach(unit_map::const_unit_iterator target, enemy_units)
 		{
 			if( ai->can_reach_unit(me, target) )
-			{	
+			{
 				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 				callable.add_ref();
 				callable.add("me", variant(new unit_callable(*me)));

@@ -47,7 +47,7 @@ public:
 
 	/** The standard way in which a map of possible moves is recorded. */
 	typedef std::multimap<location,location> move_map;
-	
+
 	/** The standard way in which a map of possible movement routes to location is recorded*/
 	typedef std::map<location,paths> moves_map;
 
@@ -185,7 +185,7 @@ protected:
 
 	/**
 	 * This function should be called to attack an enemy.
-	 * 
+	 *
 	 * @deprecated
 	 * @param u            The location of the attacking unit. (Note this shouldn't
 	 *                     be a reference since attack::attack() can invalidate the

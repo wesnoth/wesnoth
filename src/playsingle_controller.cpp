@@ -878,9 +878,9 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return !linger_ && (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
 			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
-			return !linger_ 
-				&& player_number_-1 == gui_->viewing_team() 
-				&& !events::commands_disabled 
+			return !linger_
+				&& player_number_-1 == gui_->viewing_team()
+				&& !events::commands_disabled
 				&& teams_[gui_->viewing_team()].auto_shroud_updates() == false;
 
 		// Commands we can only do if in debug mode

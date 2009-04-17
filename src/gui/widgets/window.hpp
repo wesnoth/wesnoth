@@ -434,7 +434,7 @@ private:
 	/** List of the widgets, whose size are linked together. */
 	std::map<std::string, tlinked_size> linked_size_;
 
-	/** 
+	/**
 	 * Layouts the window.
 	 *
 	 * @deprecated Will be removed after the new layout algorithm is

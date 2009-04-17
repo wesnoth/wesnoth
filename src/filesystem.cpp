@@ -1120,7 +1120,7 @@ std::string get_program_invocation(const std::string& program_name) {
 	return game_config::wesnoth_program_dir + "/" + real_program_name;
 #endif
 }
-	
+
 static bool is_path_sep(char c)
 {
 #ifdef _WIN32

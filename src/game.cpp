@@ -1188,8 +1188,8 @@ namespace
 
 void game_controller::start_wesnothd()
 {
-	const std::string wesnothd_program = 
-		preferences::get_mp_server_program_name().empty() ? 
+	const std::string wesnothd_program =
+		preferences::get_mp_server_program_name().empty() ?
 		get_program_invocation("wesnothd") : preferences::get_mp_server_program_name();
 
 	std::string config = get_user_data_dir() + "/lan_server.cfg";
@@ -1197,7 +1197,7 @@ void game_controller::start_wesnothd()
 		// copy file if it isn't created yet
 		write_file(config, read_file(get_wml_location("lan_server.cfg")));
 	}
-	
+
 #ifndef _WIN32
 	std::string command = "\"" + wesnothd_program +"\" -c " + config + " -d -t 2 -T 5 ";
 #else
@@ -1914,7 +1914,7 @@ static void init_locale() {
 static int do_gameloop(int argc, char** argv)
 {
 	srand(time(NULL));
-	
+
 	int finished = process_command_args(argc, argv);
 	if(finished != -1) {
 		return finished;

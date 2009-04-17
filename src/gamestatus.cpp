@@ -479,7 +479,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 	} else {
 		assert(replay_start != NULL);
-		
+
 		// The player information should no longer be saved to the root of the config.
 		// The game now looks for the info in just the snapshot or the starting position.
 		// Check if we find some player information in the starting position

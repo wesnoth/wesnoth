@@ -22,10 +22,10 @@
  * Each action has access to two ai_interface::info objects
  * First is 'info' - real information
  * Second is 'subjective info' - AIs perception of what's going on
- * So, when we check_before action, we use 'subjective info' and don't 
+ * So, when we check_before action, we use 'subjective info' and don't
  * touch real 'info' at all.
  * But when we actually want to execute an action, we firstly check
- * 'subjective info' and then (if subjective check is ok) do the same 
+ * 'subjective info' and then (if subjective check is ok) do the same
  * check on  real 'info'. There's a caveat: if we fail an action based
  * on real 'info', then we NEED to update AIs knowlegge to avoid the ai
  * doing the same thing again.
@@ -82,7 +82,7 @@ void ai_action_result::execute()
 	init_for_execution();
 	check_before();
 	if (is_success()){
-		do_execute();	
+		do_execute();
 	}
 	if (is_success()){
 		check_after();
@@ -331,11 +331,11 @@ void ai_recruit_result::do_check_before()
 
 	if ( !test_unit_type_known(s_recruit,s_unit_type) ||
 		( is_execution() && using_subjective_info() &&
-		!test_unit_type_known(recruit,s_unit_type,true) ) ){ 
+		!test_unit_type_known(recruit,s_unit_type,true) ) ){
 		return;
 	}
 
-	//Enough gold?		
+	//Enough gold?
 	if (!test_enough_gold(s_team,s_unit_type) ||
 		( is_execution() && using_subjective_info() &&
 		!test_enough_gold(team,unit_type,true) ) ){
@@ -378,7 +378,7 @@ void ai_recruit_result::do_check_after()
 	const gamemap& map = info.map;
 	if (!map.on_board(recruit_location_)){
 		set_error(AI_ACTION_FAILURE);
-	}	
+	}
 
 	const unit_map& units = info.units;
 	unit_map::const_iterator unit = units.find(recruit_location_);
@@ -388,7 +388,7 @@ void ai_recruit_result::do_check_after()
 	if (unit->second.side()!=get_side()){
 		set_error(AI_ACTION_FAILURE);
 	}
-	
+
 }
 
 std::string ai_recruit_result::do_describe() const
@@ -473,7 +473,7 @@ std::string ai_stopunit_result::do_describe() const
 	}
 	if (remove_attacks_){
 		s << " remove attacks";
-	} 
+	}
 	s << "from unit on location "<<unit_location_;
 	s <<std::endl;
 	return s.str();

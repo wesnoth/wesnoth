@@ -886,15 +886,15 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 				if ((*best_free_keep==map_location::null_location)||(cost_to_loc<cost_to_best_free_keep)){
 					best_free_keep = &loc;
 					cost_to_best_free_keep = cost_to_loc;
-				}	
+				}
 			} else {
 				if ((*best_occupied_keep==map_location::null_location)||(cost_to_loc<cost_to_best_occupied_keep)){
 					best_occupied_keep = &loc;
 					cost_to_best_occupied_keep = cost_to_loc;
-				}	
+				}
 			}
 		}
-	}	
+	}
 
 	if (*best_free_keep != map_location::null_location){
 		return *best_free_keep; // if there is a free keep reachable during current turn, return it

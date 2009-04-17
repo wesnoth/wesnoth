@@ -465,8 +465,8 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, compress_saves_(compress_saves)
 {}
 
-void savegame::save_game_interactive(display& gui, const std::string& message, 
-									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button, 
+void savegame::save_game_interactive(display& gui, const std::string& message,
+									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
 									 const bool ask_for_filename)
 {
 	interactive_ = ask_for_filename;
@@ -492,7 +492,7 @@ void savegame::save_game(const std::string& filename)
 	filename_ = filename;
 	if (!interactive_)
 		create_filename();
-	
+
 	save_game();
 }
 
@@ -706,8 +706,8 @@ void savegame::set_filename(std::string filename)
 	filename_ = filename;
 }
 
-scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const bool compress_saves) 
-	: savegame(gamestate, compress_saves) 
+scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const bool compress_saves)
+	: savegame(gamestate, compress_saves)
 {
 	set_filename(gamestate.label);
 }
@@ -719,8 +719,8 @@ void scenariostart_savegame::before_save()
 	write_players(gamestate(), gamestate().starting_pos);
 }
 
-replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves) 
-	: savegame(gamestate, compress_saves, _("Save Replay")) 
+replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves)
+	: savegame(gamestate, compress_saves, _("Save Replay"))
 {}
 
 void replay_savegame::create_filename()
@@ -734,8 +734,8 @@ void replay_savegame::create_filename()
 	set_filename(stream.str());
 }
 
-autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg, 
-							 const game_display& gui, const std::vector<team>& teams, 
+autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg,
+							 const game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
@@ -755,10 +755,10 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-game_savegame::game_savegame(game_state &gamestate, const config& level_cfg, 
-							 const game_display& gui, const std::vector<team>& teams, 
+game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
+							 const game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
-							 const gamemap& map, const bool compress_saves) 
+							 const gamemap& map, const bool compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	level_cfg_(level_cfg), gui_(gui),
 	teams_(teams), units_(units),

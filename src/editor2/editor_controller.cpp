@@ -689,7 +689,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 						"$new");
 					symbols["new"] = get_map_context().get_filename();
 					symbols["map_data"] = get_map_context().get_map_data_key();
-					gui::message_dialog(gui(), _("Map loaded from scenario"), 
+					gui::message_dialog(gui(), _("Map loaded from scenario"),
 						vgettext(msg, symbols)).show();
 				}
 			}

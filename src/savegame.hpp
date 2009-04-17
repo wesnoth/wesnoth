@@ -44,7 +44,7 @@ class savegame_manager
 public:
 	static void load_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 	static void read_save_file(const std::string& name, config& cfg, std::string* error_log);
-	
+
 	/** Returns true if there is already a savegame with that name. */
 	static bool save_game_exists(const std::string& name, const bool compress_saves);
 	/** Get a list of available saves. */
@@ -110,7 +110,7 @@ private:
 class savegame
 {
 public:
-	/** The only constructor of savegame. The title parameter is only necessary if you 
+	/** The only constructor of savegame. The title parameter is only necessary if you
 		intend to do interactive saves. */
 	savegame(game_state& gamestate, const bool compress_saves, const std::string title = "Save");
 
@@ -119,15 +119,15 @@ public:
 	/** Save a game without any further user interaction. Atm, this is only used by the
 		console_handler save actions */
 	void save_game(const std::string& filename);
-	
+
 	/** Save a game without any further user interaction. This is used by autosaves and
 		automatically generated replay saves. If you want notifying messages or error messages
 		to appear, you have to provide the gui parameter. */
 	void save_game(display* gui = NULL);
-	
+
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. */
-	void save_game_interactive(display& gui, const std::string& message, 
+	void save_game_interactive(display& gui, const std::string& message,
 		gui::DIALOG_TYPE dialog_type, const bool has_exit_button = false,
 		const bool ask_for_filename = true);
 
@@ -137,10 +137,10 @@ protected:
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */
 	void set_filename(std::string filename);
-	
+
 	/** Customize the standard error message */
 	void set_error_message(const std::string error_message) { error_message_ = error_message; }
-	
+
 	game_state& gamestate() const { return gamestate_; }
 	config& snapshot() { return snapshot_; }
 
@@ -152,7 +152,7 @@ private:
 		override this to take effect. */
 	virtual void create_filename() {}
 
-	/** The actual method for saving the game to disk. All interactive filename choosing and 
+	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method */
 	void save_game_internal(const std::string& filename);
 
@@ -163,17 +163,17 @@ private:
 	void extract_summary_data_from_save(config& out);
 
 	game_state& gamestate_;
-	
+
 	/** Gamestate information at the time of saving. Note that this object is needed here, since
 		even if it is empty the code relies on it to be there. */
 	config snapshot_;
-	
+
 	std::string filename_; /** Filename of the savegame file on disk */
-	
+
 	const std::string title_; /** Title of the savegame dialog */
-	
+
 	std::string error_message_; /** Error message to be displayed if the savefile could not be generated. */
-	
+
 	/** Determines if the save is done interactively or not. This controls if a filename is
 		generated automatically (interactive = false) and if a message is displayed that the
 		game was successfully saved (interactive = true). */
@@ -195,10 +195,10 @@ public:
 
 private:
 	virtual void create_filename();
-	
+
 	/** Builds the snapshot config. */
 	virtual void before_save();
-	
+
 	/** For normal game saves. Builds a snapshot config object out of the relevant information. */
 	void write_game_snapshot();
 
@@ -225,8 +225,8 @@ private:
 class autosave_savegame : public game_savegame
 {
 public:
-	autosave_savegame(game_state &gamestate, const config& level_cfg, 
-							 const game_display& gui, const std::vector<team>& teams, 
+	autosave_savegame(game_state &gamestate, const config& level_cfg,
+							 const game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
 							 const gamemap& map, const bool compress_saves);
 

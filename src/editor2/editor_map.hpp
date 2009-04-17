@@ -78,7 +78,7 @@ public:
 	explicit editor_map(const config& terrain_cfg);
 
 	/**
-	 * Create an editor map from a map data string 
+	 * Create an editor map from a map data string
 	 */
 	editor_map(const config& terrain_cfg, const std::string& data);
 
@@ -94,7 +94,7 @@ public:
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 
 	/**
-	 * Create an editor_map by upgrading an existing gamemap. The map data is 
+	 * Create an editor_map by upgrading an existing gamemap. The map data is
 	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
 	 */
 	explicit editor_map(const gamemap& map);

@@ -43,14 +43,14 @@ public:
 
 	//return score of last evaluation
 	int get_score() const {return score_;}
-	
+
 	const_formula_ptr& get_action() {return action_;}
 
 	const std::string& get_name() { return name_;}
 	const std::string& get_type() { return type_;}
-	
+
 protected:
-	int execute_formula(const const_formula_ptr& formula, 
+	int execute_formula(const const_formula_ptr& formula,
 			const game_logic::formula_callable& callable, const formula_ai* ai);
 
 	std::string name_;
@@ -74,13 +74,13 @@ typedef std::set<game_logic::candidate_action_ptr, game_logic::candidate_action_
 class candidate_action_manager {
 public:
 	candidate_action_manager() {}
-	
+
 	//register candidate actions from config
 	void load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
 
 	//evaluate candidate action, return true if we have candidate action that have score > 0
 	bool evaluate_candidate_actions(formula_ai* ai, unit_map& units);
-	
+
 	const_formula_ptr get_best_action_formula() {
 		if( evaluated_candidate_actions_.empty() )
 			return game_logic::formula_ptr();

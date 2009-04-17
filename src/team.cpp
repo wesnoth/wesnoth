@@ -601,7 +601,7 @@ void team::change_team(const std::string& name, const std::string& user_name)
 		info_.user_team_name = name;
 	}
 
-	clear_caches();	
+	clear_caches();
 }
 
 void team::clear_caches(){

@@ -146,7 +146,7 @@ static int upload_logs(void *_ti)
 		SDLNet_TCP_Close(sock);
 	ti->shutdown = true;
 	DBG_UPLD << numfiles << " game logs successfully sent to server\n";
-	
+
 	return 0;
 }
 

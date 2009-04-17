@@ -1180,14 +1180,14 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 
 		std::vector<std::string> types = utils::split(hide["type"]);
 		hide_help_[TYPE].insert(types.begin(), types.end());
-		
+
 		std::vector<std::string> races = utils::split(hide["race"]);
 		hide_help_[RACE].insert(races.begin(), races.end());
 
 		if (const config &hide_not = hide.child("not")) {
 			std::vector<std::string> n_types = utils::split(hide_not["type"]);
 			hide_help_[NOT_TYPE].insert(n_types.begin(), n_types.end());
-			
+
 			std::vector<std::string> n_races = utils::split(hide_not["race"]);
 			hide_help_[NOT_RACE].insert(n_races.begin(), n_races.end());
 		}

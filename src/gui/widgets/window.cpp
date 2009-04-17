@@ -1036,7 +1036,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *
  * Here is the algorithm used to layout the window:
  *
- * - Perform a full initialization 
+ * - Perform a full initialization
  *   (@ref gui2::twidget::NEW_layout_init (full_initialization = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
@@ -1070,7 +1070,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *         - All priorities done and the width still doesn't fit.
  *         - Loop through this priority queue until the row fits.
  *           - If priority != 0:
- *             - try to share the extra width 
+ *             - try to share the extra width
  *           -Else:
  *             - All widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really

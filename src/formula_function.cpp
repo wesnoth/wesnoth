@@ -65,7 +65,7 @@ private:
 				return args()[n+1]->evaluate(variables);
 			}
 		}
-                
+
 		if((args().size()%2) != 0) {
 			return args().back()->evaluate(variables);
 		} else {
