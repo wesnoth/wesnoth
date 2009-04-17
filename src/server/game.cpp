@@ -1217,7 +1217,7 @@ static bool is_invalid_filename_char(char c) {
 }
 
 void game::save_replay() {
-	if (!save_replays_ || !started_) return;
+	if (!save_replays_ || !started_ || history_.empty()) return;
 
 	std::string replay_commands;
 	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
@@ -1265,6 +1265,7 @@ void game::record_data(simple_wml::document* data) {
 }
 
 void game::clear_history() {
+	if (history_.empty()) return;
 	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
 		delete *i;
 	}
