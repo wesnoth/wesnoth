@@ -60,10 +60,18 @@ public:
 	vconfig child(const std::string& key) const;
 	bool has_child(const std::string& key) const;
 
-	/* Note: vconfig::operator[] returns const, and this should not be changed
-	   because vconfig is often used as a drop-in replacement for config, and
-	   this const will properly warn you if you try to assign vcfg["key"]=val;
-	*/
+	/**
+	 * Note: vconfig::operator[] returns const, and this should not be changed
+	 * because vconfig is often used as a drop-in replacement for config, and
+	 * this const will properly warn you if you try to assign vcfg["key"]=val;
+	 *
+	 * Note: The following construction is unsave:
+	 * const std::string& temp = vcfg["foo"];
+	 * This bind temp to a member of a temporary t_string. The lifetime of the
+	 * temporary is not extended by this reference binding and the temporary's
+	 * lifetime ends which causes UB. Instead use:
+	 * const std::string temp = vcfg["foo"];
+	 */
 	const t_string operator[](const std::string& key) const { return expand(key); }
 	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
