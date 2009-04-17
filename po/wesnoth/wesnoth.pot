@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp1.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-12 18:22+0200\n"
+"POT-Creation-Date: 2009-04-17 13:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-12 18:22+0200\n"
+"POT-Creation-Date: 2009-04-17 13:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4431,15 +4431,15 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:687
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:688
 #: src/multiplayer_create.cpp:84
 msgid "OK"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:688
-#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1023
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:689
+#: src/dialogs.cpp:1192 src/dialogs.cpp:1299 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr ""
@@ -5363,7 +5363,7 @@ msgstr ""
 msgid "B"
 msgstr ""
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1220
+#: src/addon_management.cpp:363 src/dialogs.cpp:1221
 msgid "KB"
 msgstr ""
 
@@ -5495,7 +5495,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
-#: src/dialogs.cpp:648 src/menu_events.cpp:199 src/menu_events.cpp:1009
+#: src/dialogs.cpp:649 src/menu_events.cpp:199 src/menu_events.cpp:1009
 msgid "Name"
 msgstr ""
 
@@ -5599,7 +5599,7 @@ msgstr ""
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/addon_management.cpp:1035 src/dialogs.cpp:673 src/menu_events.cpp:1067
+#: src/addon_management.cpp:1035 src/dialogs.cpp:674 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
 msgid "Filter: "
 msgstr ""
@@ -5619,7 +5619,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
-#: src/dialogs.cpp:283 src/dialogs.cpp:291 src/menu_events.cpp:618
+#: src/dialogs.cpp:284 src/dialogs.cpp:292 src/menu_events.cpp:618
 #: src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr ""
@@ -5728,156 +5728,156 @@ msgstr ""
 msgid "No objectives available"
 msgstr ""
 
-#: src/dialogs.cpp:247
+#: src/dialogs.cpp:248
 msgid "Save Game"
 msgstr ""
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:258
 msgid "Quit Game"
 msgstr ""
 
-#: src/dialogs.cpp:262
+#: src/dialogs.cpp:263
 msgid "Ignore All"
 msgstr ""
 
-#: src/dialogs.cpp:284
+#: src/dialogs.cpp:285
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/dialogs.cpp:292
+#: src/dialogs.cpp:293
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 
-#: src/dialogs.cpp:300
+#: src/dialogs.cpp:301
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/dialogs.cpp:301 src/menu_events.cpp:606 src/playcampaign.cpp:418
+#: src/dialogs.cpp:302 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
 msgstr ""
 
-#: src/dialogs.cpp:302
+#: src/dialogs.cpp:303
 msgid "Overwrite?"
 msgstr ""
 
-#: src/dialogs.cpp:339
+#: src/dialogs.cpp:340
 msgid "Do you really want to delete this game?"
 msgstr ""
 
-#: src/dialogs.cpp:341
+#: src/dialogs.cpp:342
 msgid "Don't ask me again!"
 msgstr ""
 
-#: src/dialogs.cpp:508
+#: src/dialogs.cpp:509
 msgid "%a %b %d %H:%M %Y"
 msgstr ""
 
-#: src/dialogs.cpp:528
+#: src/dialogs.cpp:529
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:542
+#: src/dialogs.cpp:543
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:550
 msgid "Multiplayer"
 msgstr ""
 
-#: src/dialogs.cpp:551
+#: src/dialogs.cpp:552
 msgid "Tutorial"
 msgstr ""
 
-#: src/dialogs.cpp:559 src/menu_events.cpp:592
+#: src/dialogs.cpp:560 src/menu_events.cpp:592
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:561 src/menu_events.cpp:594
+#: src/dialogs.cpp:562 src/menu_events.cpp:594
 msgid "Turn"
 msgstr ""
 
-#: src/dialogs.cpp:563
+#: src/dialogs.cpp:564
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:567
 msgid "Difficulty: "
 msgstr ""
 
-#: src/dialogs.cpp:568
+#: src/dialogs.cpp:569
 msgid "Version: "
 msgstr ""
 
-#: src/dialogs.cpp:592 src/dialogs.cpp:608
+#: src/dialogs.cpp:593 src/dialogs.cpp:609
 msgid "%b %d %y"
 msgstr ""
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:599
 msgid "%H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:601
+#: src/dialogs.cpp:602
 msgid "%A, %H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:604
+#: src/dialogs.cpp:605
 msgid "%b %d"
 msgstr ""
 
-#: src/dialogs.cpp:632
+#: src/dialogs.cpp:633
 msgid "No Saved Games"
 msgstr ""
 
-#: src/dialogs.cpp:633
+#: src/dialogs.cpp:634
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:649
 msgid "Date"
 msgstr ""
 
-#: src/dialogs.cpp:665 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:666 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr ""
 
-#: src/dialogs.cpp:666
+#: src/dialogs.cpp:667
 msgid "Choose the game to load"
 msgstr ""
 
-#: src/dialogs.cpp:680
+#: src/dialogs.cpp:681
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:685
 msgid "Cancel orders"
 msgstr ""
 
-#: src/dialogs.cpp:691
+#: src/dialogs.cpp:692
 msgid "Delete Save"
 msgstr ""
 
-#: src/dialogs.cpp:748
+#: src/dialogs.cpp:749
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:845 src/help.cpp:1242
+#: src/dialogs.cpp:846 src/help.cpp:1242
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:858 src/help.cpp:1362
+#: src/dialogs.cpp:859 src/help.cpp:1362
 msgid "HP: "
 msgstr ""
 
-#: src/dialogs.cpp:861
+#: src/dialogs.cpp:862
 msgid "XP: "
 msgstr ""
 
-#: src/dialogs.cpp:865 src/help.cpp:1363
+#: src/dialogs.cpp:866 src/help.cpp:1363
 msgid "Moves: "
 msgstr ""
 
@@ -7615,63 +7615,59 @@ msgstr ""
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr ""
 
-#: src/serialization/parser.cpp:129
+#: src/serialization/parser.cpp:130
 msgid "Unexpected characters at line start"
 msgstr ""
 
-#: src/serialization/parser.cpp:159
+#: src/serialization/parser.cpp:160
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:174
+#: src/serialization/parser.cpp:175
 msgid "Unterminated [element] tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
+#: src/serialization/parser.cpp:185 src/serialization/parser.cpp:223
 msgid "Invalid tag name"
 msgstr ""
 
-#: src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:188
 msgid "Unterminated [+element] tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:203
+#: src/serialization/parser.cpp:204
 msgid "Invalid closing tag name"
 msgstr ""
 
-#: src/serialization/parser.cpp:206
+#: src/serialization/parser.cpp:207
 msgid "Unterminated closing tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:209
 msgid "Unexpected closing tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:216
+#: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 
-#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
+#: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
 msgstr ""
 
-#: src/serialization/parser.cpp:247
+#: src/serialization/parser.cpp:248
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
+#: src/serialization/parser.cpp:283 src/serialization/parser.cpp:307
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:329
-msgid " included from "
-msgstr ""
-
-#: src/serialization/parser.cpp:357
+#: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:361
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value' at $pos"
 msgstr ""
 

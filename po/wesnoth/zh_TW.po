@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-12 18:22+0200\n"
+"POT-Creation-Date: 2009-04-17 13:27+0200\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -5500,15 +5500,15 @@ msgstr "戰役"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:687
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:688
 #: src/multiplayer_create.cpp:84
 msgid "OK"
 msgstr "確定"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:688
-#: src/dialogs.cpp:1191 src/dialogs.cpp:1298 src/multiplayer_connect.cpp:1023
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:689
+#: src/dialogs.cpp:1192 src/dialogs.cpp:1299 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "取消"
@@ -6522,7 +6522,7 @@ msgstr "（按$hotkey鍵繼續移動）"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1220
+#: src/addon_management.cpp:363 src/dialogs.cpp:1221
 msgid "KB"
 msgstr "KB"
 
@@ -6663,7 +6663,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
-#: src/dialogs.cpp:648 src/menu_events.cpp:199 src/menu_events.cpp:1009
+#: src/dialogs.cpp:649 src/menu_events.cpp:199 src/menu_events.cpp:1009
 msgid "Name"
 msgstr "名稱"
 
@@ -6778,7 +6778,7 @@ msgstr "取得模組"
 msgid "Choose the add-on to download."
 msgstr "選擇要下載的模組。"
 
-#: src/addon_management.cpp:1035 src/dialogs.cpp:673 src/menu_events.cpp:1067
+#: src/addon_management.cpp:1035 src/dialogs.cpp:674 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
 msgid "Filter: "
 msgstr "過濾： "
@@ -6799,7 +6799,7 @@ msgid ""
 msgstr "安裝這個戰役所需文件創建錯誤。"
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
-#: src/dialogs.cpp:283 src/dialogs.cpp:291 src/menu_events.cpp:618
+#: src/dialogs.cpp:284 src/dialogs.cpp:292 src/menu_events.cpp:618
 #: src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr "錯誤"
@@ -6911,109 +6911,109 @@ msgstr "該單位將升級為"
 msgid "No objectives available"
 msgstr "無有效目標"
 
-#: src/dialogs.cpp:247
+#: src/dialogs.cpp:248
 msgid "Save Game"
 msgstr "儲存遊戲"
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:258
 msgid "Quit Game"
 msgstr "退出遊戲"
 
-#: src/dialogs.cpp:262
+#: src/dialogs.cpp:263
 msgid "Ignore All"
 msgstr "全部忽略"
 
-#: src/dialogs.cpp:284
+#: src/dialogs.cpp:285
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "檔案名稱不能包含冒號，斜綫或反斜綫。請選擇一個不同的名字。"
 
-#: src/dialogs.cpp:292
+#: src/dialogs.cpp:293
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "檔案名稱不能包含'.gz'。請選擇一個不同的名字。"
 
-#: src/dialogs.cpp:300
+#: src/dialogs.cpp:301
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "檔案已存在，要覆蓋嗎？"
 
-#: src/dialogs.cpp:301 src/menu_events.cpp:606 src/playcampaign.cpp:418
+#: src/dialogs.cpp:302 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
 msgstr "名稱："
 
-#: src/dialogs.cpp:302
+#: src/dialogs.cpp:303
 msgid "Overwrite?"
 msgstr "覆蓋？"
 
-#: src/dialogs.cpp:339
+#: src/dialogs.cpp:340
 msgid "Do you really want to delete this game?"
 msgstr "您確定要删除這個遊戲嗎？"
 
-#: src/dialogs.cpp:341
+#: src/dialogs.cpp:342
 msgid "Don't ask me again!"
 msgstr "不要再問我！"
 
-#: src/dialogs.cpp:508
+#: src/dialogs.cpp:509
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:528
+#: src/dialogs.cpp:529
 msgid "#(Invalid)"
 msgstr "#（無效的）"
 
-#: src/dialogs.cpp:542
+#: src/dialogs.cpp:543
 msgid "Campaign: $campaign_name"
 msgstr "戰役: $campaign_name"
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:550
 msgid "Multiplayer"
 msgstr "多人對戰"
 
-#: src/dialogs.cpp:551
+#: src/dialogs.cpp:552
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:559 src/menu_events.cpp:592
+#: src/dialogs.cpp:560 src/menu_events.cpp:592
 msgid "replay"
 msgstr "遊戲錄影"
 
-#: src/dialogs.cpp:561 src/menu_events.cpp:594
+#: src/dialogs.cpp:562 src/menu_events.cpp:594
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:563
+#: src/dialogs.cpp:564
 msgid "Scenario Start"
 msgstr "場景開始"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:567
 msgid "Difficulty: "
 msgstr "難度： "
 
-#: src/dialogs.cpp:568
+#: src/dialogs.cpp:569
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:592 src/dialogs.cpp:608
+#: src/dialogs.cpp:593 src/dialogs.cpp:609
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:599
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:601
+#: src/dialogs.cpp:602
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:604
+#: src/dialogs.cpp:605
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:632
+#: src/dialogs.cpp:633
 msgid "No Saved Games"
 msgstr "没有存檔"
 
-#: src/dialogs.cpp:633
+#: src/dialogs.cpp:634
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7022,48 +7022,48 @@ msgstr ""
 "没有存檔，無法載入。\n"
 "（當您完成一個場景時會自動存檔）"
 
-#: src/dialogs.cpp:648
+#: src/dialogs.cpp:649
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:665 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:666 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "載入遊戲"
 
-#: src/dialogs.cpp:666
+#: src/dialogs.cpp:667
 msgid "Choose the game to load"
 msgstr "選擇要載入的遊戲"
 
-#: src/dialogs.cpp:680
+#: src/dialogs.cpp:681
 msgid "Show replay"
 msgstr "顯示遊戲錄影"
 
-#: src/dialogs.cpp:684
+#: src/dialogs.cpp:685
 #, fuzzy
 msgid "Cancel orders"
 msgstr "取消"
 
-#: src/dialogs.cpp:691
+#: src/dialogs.cpp:692
 msgid "Delete Save"
 msgstr "删除存檔"
 
-#: src/dialogs.cpp:748
+#: src/dialogs.cpp:749
 msgid "Profile"
 msgstr "資料"
 
-#: src/dialogs.cpp:845 src/help.cpp:1242
+#: src/dialogs.cpp:846 src/help.cpp:1242
 msgid "level"
 msgstr "等級"
 
-#: src/dialogs.cpp:858 src/help.cpp:1362
+#: src/dialogs.cpp:859 src/help.cpp:1362
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:861
+#: src/dialogs.cpp:862
 msgid "XP: "
 msgstr "經驗值："
 
-#: src/dialogs.cpp:865 src/help.cpp:1363
+#: src/dialogs.cpp:866 src/help.cpp:1363
 msgid "Moves: "
 msgstr "移動： "
 
@@ -8876,63 +8876,59 @@ msgstr "$player 已經離開遊戲，您想做什麽？"
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "您要讀取的文件已損壞。要繼續玩嗎?"
 
-#: src/serialization/parser.cpp:129
+#: src/serialization/parser.cpp:130
 msgid "Unexpected characters at line start"
 msgstr "啓始處出現非常規字符"
 
-#: src/serialization/parser.cpp:159
+#: src/serialization/parser.cpp:160
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr " 在$pos處缺少$tag標記的結束標識"
 
-#: src/serialization/parser.cpp:174
+#: src/serialization/parser.cpp:175
 msgid "Unterminated [element] tag"
 msgstr "未終止的:[element] 標記符"
 
-#: src/serialization/parser.cpp:184 src/serialization/parser.cpp:222
+#: src/serialization/parser.cpp:185 src/serialization/parser.cpp:223
 msgid "Invalid tag name"
 msgstr "無效標識名"
 
-#: src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:188
 msgid "Unterminated [+element] tag"
 msgstr "未終止的:[+element] 標記符"
 
-#: src/serialization/parser.cpp:203
+#: src/serialization/parser.cpp:204
 msgid "Invalid closing tag name"
 msgstr "無效結束標識名"
 
-#: src/serialization/parser.cpp:206
+#: src/serialization/parser.cpp:207
 msgid "Unterminated closing tag"
 msgstr "未終止的結束標識"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:209
 msgid "Unexpected closing tag"
 msgstr "意外的結束標識"
 
-#: src/serialization/parser.cpp:216
+#: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "發現無效的$tag標志的結束標志$tag2（打開於 $pos 處）"
 
-#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
+#: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
 msgstr "空變量名"
 
-#: src/serialization/parser.cpp:247
+#: src/serialization/parser.cpp:248
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "可變的姓名後出現無法識別的字符(expected , or =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
+#: src/serialization/parser.cpp:283 src/serialization/parser.cpp:307
 msgid "Unterminated quoted string"
 msgstr "未終止的引用字串"
 
-#: src/serialization/parser.cpp:329
-msgid " included from "
-msgstr "包含 "
-
-#: src/serialization/parser.cpp:357
+#: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:361
+#: src/serialization/parser.cpp:350
 #, fuzzy
 msgid "$error, value '$value' at $pos"
 msgstr "在$pos處發生$error"
@@ -9233,6 +9229,9 @@ msgstr "幫助我們改進韋諾，提升您的遊戲體驗！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "開啟訊息回報"
+
+#~ msgid " included from "
+#~ msgstr "包含 "
 
 #, fuzzy
 #~ msgid "Reading cache"
