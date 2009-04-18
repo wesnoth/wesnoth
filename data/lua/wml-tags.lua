@@ -22,6 +22,10 @@ local function child_range(cfg, tag)
 	return f, { i = 1 }
 end
 
+local function trim(s)
+	return string.gsub(s, "^%s*(.-)%s*$", "%1")
+end
+
 local function wml_objectives(cfg)
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
@@ -73,4 +77,38 @@ local function wml_objectives(cfg)
 	end
 end
 
+local function wml_show_objectives(cfg)
+	local side = cfg.side or 0
+	if side == 0 then
+		for team in all_teams() do
+			team.objectives_changed = true
+		end
+	else
+		local team = wesnoth.get_side(side)
+		team.objectives_changed = true
+	end
+end
+
+local function wml_gold(cfg)
+	local team = wesnoth.get_side(cfg.side)
+	team.gold = team.gold + cfg.amount
+end
+
+local function wml_store_gold(cfg)
+	local team = wesnoth.get_side(cfg.side)
+	local var = cfg.variable
+	if not var then var = "gold" end
+	wesnoth.set_variable(var, team.gold)
+end
+
+local function wml_clear_variable(cfg)
+	for w in string.gmatch(cfg.name, "[^%s,][^,]*") do
+		wesnoth.set_variable(trim(w))
+	end
+end
+
 wesnoth.register_wml_action("objectives", wml_objectives)
+wesnoth.register_wml_action("show_objectives", wml_show_objectives)
+wesnoth.register_wml_action("gold", wml_gold)
+wesnoth.register_wml_action("store_gold", wml_store_gold)
+wesnoth.register_wml_action("clear_variable", wml_clear_variable)
