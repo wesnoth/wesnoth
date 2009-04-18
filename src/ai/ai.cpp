@@ -1086,6 +1086,7 @@ void ai::do_move()
 			if(leader == units_.end()) {
 				return;
 			}
+			// if leaders move is interrupted while we were trying to get to the keep, then do another move , but this next move should not be a recruiting, even if we originally wanted to recruit"
 			if (leader->first != before
 				&& leader->second.movement_left() > 0
 				&& recruiting_preferred_)
