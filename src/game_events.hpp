@@ -30,6 +30,7 @@ class gamestatus;
 class team;
 class t_string;
 class unit;
+class LuaKernel;
 
 /**
  * @file game_events.hpp
@@ -46,6 +47,21 @@ class unit;
 
 namespace game_events
 {
+
+	struct resources_t
+	{
+		game_display *screen;
+		soundsource::manager *soundsources;
+		gamemap *game_map;
+		unit_map *units;
+		std::vector<team> *teams;
+		game_state *state_of_game;
+		gamestatus *status_ptr;
+		LuaKernel *lua_kernel;
+	};
+
+	extern const resources_t *resources;
+
 	// The game event manager loads the scenario configuration object,
 	// and ensures that events are handled according to the
 	// scenario configuration for its lifetime.
@@ -62,8 +78,8 @@ namespace game_events
 		void set_gui(game_display&);
 		void set_soundsource(soundsource::manager&);
 
-		private:
-
+	private:
+		resources_t resources;
 		variable::manager variable_manager;
 	};
 
