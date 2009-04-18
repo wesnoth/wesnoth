@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-26 12:25+0100\n"
-"PO-Revision-Date: 2009-04-05 15:38-0000\n"
+"PO-Revision-Date: 2009-04-18 14:54-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,7 @@ msgstr "Skógur"
 #. [terrain]: id=tropical_forest
 #: data/core/terrain.cfg:435
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Hitabeltisskógur"
 
 #. [terrain]: id=forested_hills
 #. [terrain]: id=deciduous_forest_summer_hills
@@ -202,7 +202,7 @@ msgstr "Snjóhólar"
 #. [terrain]: id=desert_hills
 #: data/core/terrain.cfg:685
 msgid "Dunes"
-msgstr ""
+msgstr "Sandauðnir"
 
 #. [terrain]: id=hills
 #: data/core/terrain.cfg:695
@@ -247,7 +247,7 @@ msgstr "Saur"
 #. [terrain]: id=farm
 #: data/core/terrain.cfg:807
 msgid "Farmland"
-msgstr ""
+msgstr "Ræktarland"
 
 #. [terrain]: id=swamp_water
 #: data/core/terrain.cfg:821
@@ -446,7 +446,7 @@ msgstr "Hætta við"
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
 msgid "Generate Random Map"
-msgstr ""
+msgstr "Skapa Handahófskennt kort"
 
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
@@ -518,12 +518,12 @@ msgstr "Gömul lengd:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Auka / minnka átt"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Afrita jaðar svæði"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -540,7 +540,7 @@ msgstr "Kortagerðarstillingar"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Tími dags frumstilltur"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
@@ -551,12 +551,12 @@ msgstr "Næsta"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Breyttar ljósta stillingar"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Sjálfvirkt-uppfærsla kortar"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -688,7 +688,7 @@ msgstr "Sparka"
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Banna"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -746,7 +746,7 @@ msgstr "Kort til spilunar:"
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
-msgstr ""
+msgstr "Nota stillingar korts"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:332
@@ -809,7 +809,7 @@ msgstr "Lykilorð:"
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Vista lykilorð í styllingar (hreinn texti)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
@@ -833,6 +833,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Þú mátt logga þig inn á Opinberan fjölspilunar server með notendanafni og "
+"lykilorði af Spjallsíðunni.\n"
+"Taktu eftir að skráning er ekki nauðsynleg til að tengjast miðlarann: Þú "
+"þarf að koma með lykilorð bara ef þú vilt nota skráð notendanafn.\n"
+"\n"
+"Bardaginn um Wesnoth spjallsíðuna má finna á http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
@@ -842,7 +848,7 @@ msgstr "Tengjast opinberann miðlara"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Skrá þig inn á opinbera Wesnoth fjölspilunar miðlarann"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:152
@@ -857,7 +863,7 @@ msgstr "Hýsa netleik"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Hýsa leik og notast við dedicated server'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
@@ -867,7 +873,7 @@ msgstr "Staðarleikur"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
+msgstr "Spila fjölspilunarleik með tölvu eða mönnum deilandi sömu tölvunni."
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
@@ -942,7 +948,7 @@ msgstr "Loka"
 
 #: src/filechooser.cpp:74
 msgid "File: "
-msgstr "Skrá:"
+msgstr "Skrá: "
 
 #: src/filechooser.cpp:77
 msgid "Delete File"
@@ -958,7 +964,7 @@ msgstr "Eyðing skráar mistókst."
 
 #: src/filechooser.cpp:205
 msgid "Name: "
-msgstr "Nafn:"
+msgstr "Nafn: "
 
 #: src/filechooser.cpp:210
 msgid "Creation of the directory failed."
@@ -974,19 +980,19 @@ msgstr "spilari"
 
 #: src/game_preferences_display.cpp:151 src/hotkeys.cpp:55
 msgid "Toggle Full Screen"
-msgstr ""
+msgstr "Setja á Fullan skjá"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Leyfa skjá að fylgja aðgerðum eininga"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "Aukinn hraði"
 
 #: src/game_preferences_display.cpp:154
 msgid "Skip AI Moves"
-msgstr ""
+msgstr "Sleppa hreyfingum tölvu"
 
 #: src/game_preferences_display.cpp:155
 msgid "Show Grid"
@@ -1002,23 +1008,23 @@ msgstr "Eyða sjálfvistunum eftir SP/MP sigur eða MP tap"
 
 #: src/game_preferences_display.cpp:158
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Ekki sýna þegar einhver kemur inní herbergið"
 
 #: src/game_preferences_display.cpp:159
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Sýna eingöngu þegar vinir koma inní herbergið"
 
 #: src/game_preferences_display.cpp:160
 msgid "Show All Lobby Joins"
-msgstr ""
+msgstr "Sýna alla sem koma inní herbergið"
 
 #: src/game_preferences_display.cpp:161
 msgid "Sort Lobby List"
-msgstr ""
+msgstr "Flokka herbergja lista"
 
 #: src/game_preferences_display.cpp:162
 msgid "Iconize Lobby List"
-msgstr ""
+msgstr "Merkja herberja lista"
 
 #: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
@@ -1038,11 +1044,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:171
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Lotu gluggi"
 
 #: src/game_preferences_display.cpp:172
 msgid "Turn Bell"
-msgstr ""
+msgstr "Lotu bjalla"
 
 #: src/game_preferences_display.cpp:173
 msgid "Show Team Colors"
@@ -1102,7 +1108,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:191
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Sýna hreyfingar kyrrstæðra eininga"
 
 #: src/game_preferences_display.cpp:193
 msgid "Music Volume:"
@@ -1154,11 +1160,11 @@ msgstr "Breyta hljóðstyrk bjöllu"
 
 #: src/game_preferences_display.cpp:243
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Setja valmyndar og takka hljóð á/af"
 
 #: src/game_preferences_display.cpp:247
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Breyta hljóðstyrk fyrir takka, osf."
 
 #: src/game_preferences_display.cpp:249
 msgid "Change the sample rate"
@@ -1190,12 +1196,12 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:289
 msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
+msgstr "Velja hvort leikur eigi að vera full skjár eða gluggi"
 
 #: src/game_preferences_display.cpp:292
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
-msgstr ""
+msgstr "Á kortið að sýna þegar aðgerð eða hreyfing einingar er sýnd"
 
 #: src/game_preferences_display.cpp:295
 msgid "Make units move and fight faster"
@@ -1203,11 +1209,11 @@ msgstr "Hreyfing eininga og árásarhraði"
 
 #: src/game_preferences_display.cpp:312
 msgid "Units move and fight speed"
-msgstr ""
+msgstr "Einingar hreyfingar og bardaga hraði"
 
 #: src/game_preferences_display.cpp:315
 msgid "Show unit idle animations"
-msgstr ""
+msgstr "Sýna hreyfingar kyrrstæðra eininga"
 
 #: src/game_preferences_display.cpp:321
 msgid "Set the frequency of unit idle animations"
@@ -1219,35 +1225,35 @@ msgstr "Setja mesta fjölda sjálfvistanna sem viðhalda á"
 
 #: src/game_preferences_display.cpp:330
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "Ekki sýna hreyfingar tölvustýrða einingar"
 
 #: src/game_preferences_display.cpp:338
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Setja grind yfir kort"
 
 #: src/game_preferences_display.cpp:341
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Flokka spilara í herbergjum eftir spilara hópum"
 
 #: src/game_preferences_display.cpp:344
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Sýna merki fyrir framan nöfn spilara í herberginu."
 
 #: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Taktu hakan af til að eyða vistuðu lykilorði (við útgang)."
 
 #: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Ekki sýna skilaboð varðandi spilara sem koma í fjölspilunar herbergið"
 
 #: src/game_preferences_display.cpp:352
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
+msgstr "Sýna skilaboð varðandi vini sem koma í fjölspilunar herbergið"
 
 #: src/game_preferences_display.cpp:354
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
+msgstr "Sýna skilaboð varðandi alla sem koma í fjölspilunar herbergið"
 
 #: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
@@ -1280,6 +1286,7 @@ msgstr "Bæta við notendanafni"
 #: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
+"Sýna texta fyrir ofan einingu þegar það fær högg á sig til að sýna meiðsl"
 
 #: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
@@ -1291,7 +1298,7 @@ msgstr "Breyta þemaið leikurinn keyrir með"
 
 #: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "Sýna glugga í byrjun þinnar umferðar"
 
 #: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
@@ -1302,26 +1309,27 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
+"Sýna litaðan hring að grunni hverjar einingar til að sýna í hvaða liði það er"
 
 #: src/game_preferences_display.cpp:382
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "velja hvort sólin fari frá vinstri-til-hægri eða hægri-til-vinstri"
 
 #: src/game_preferences_display.cpp:385
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Notast við litaða músarbendla"
+msgstr "Notast við litaða músarbendla (gæti hægt á)"
 
 #: src/game_preferences_display.cpp:388
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "Nota sérstök grafísk áhrif (gæti hægt á)"
 
 #: src/game_preferences_display.cpp:390
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Skoða og stilla flýtileiðir lyklaborðs"
 
 #: src/game_preferences_display.cpp:679
 msgid "Speed: "
-msgstr "Hraði:"
+msgstr "Hraði: "
 
 #: src/game_preferences_display.cpp:684 src/game_preferences_display.cpp:686
 msgid "Maximum Auto-Saves: "
@@ -1568,7 +1576,7 @@ msgstr "Ljúka umferð"
 
 #: src/hotkeys.cpp:69
 msgid "Toggle Grid"
-msgstr ""
+msgstr "Sýna grind"
 
 #: src/hotkeys.cpp:70
 msgid "Mouse Scrolling"
@@ -1620,11 +1628,11 @@ msgstr "Hætta úr leik"
 
 #: src/hotkeys.cpp:83
 msgid "Set Team Label"
-msgstr ""
+msgstr "Setja Liðs Merki"
 
 #: src/hotkeys.cpp:84
 msgid "Set Label"
-msgstr ""
+msgstr "Setja Merki"
 
 #: src/hotkeys.cpp:85
 msgid "Clear Labels"
@@ -1632,11 +1640,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:86
 msgid "Show Enemy Moves"
-msgstr ""
+msgstr "Sýna hreyfingar óvivna"
 
 #: src/hotkeys.cpp:87
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "bestu mögulegu hreyfingar"
 
 #: src/hotkeys.cpp:89
 msgid "Reset"
@@ -1664,7 +1672,7 @@ msgstr "Lið 1"
 
 #: src/hotkeys.cpp:99
 msgid "Skip animation"
-msgstr ""
+msgstr "Sleppa teikningum"
 
 #: src/hotkeys.cpp:102
 msgid "Quit to Desktop"
@@ -1680,7 +1688,7 @@ msgstr "Skipta kort"
 
 #: src/hotkeys.cpp:106
 msgid "Partial Undo"
-msgstr ""
+msgstr "afgera að hluta"
 
 #: src/hotkeys.cpp:108
 msgid "Load Map"
@@ -1724,7 +1732,7 @@ msgstr "Val"
 
 #: src/hotkeys.cpp:120
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Setja byrjnunarstaði tól"
 
 #: src/hotkeys.cpp:121
 msgid "Next Brush"
@@ -1772,11 +1780,11 @@ msgstr "Snúa klippiborð 90°"
 
 #: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "snúa réttsælis"
 
 #: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "snúa rangsælis"
 
 #: src/hotkeys.cpp:142
 msgid "Rotate Selection"
@@ -1848,11 +1856,11 @@ msgstr "Uppfæra hyljar núna"
 
 #: src/hotkeys.cpp:179
 msgid "Continue Move"
-msgstr ""
+msgstr "Halda hreyfingu áfram"
 
 #: src/hotkeys.cpp:180
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Finna örnefni eða einingu"
 
 #: src/hotkeys.cpp:181
 msgid "Speak to Ally"
@@ -1991,7 +1999,7 @@ msgstr "Stillingar flýtitakka"
 
 #: src/preferences_display.cpp:212 src/preferences_display.cpp:280
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr ""
+msgstr "Ýttu á ósksaðan flýtilykil (Esc hættir við)"
 
 #: src/preferences_display.cpp:231
 msgid "Action"
