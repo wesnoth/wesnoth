@@ -576,7 +576,7 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 WML_HANDLER_FUNCTION(lua, ev, cfg)
 {
 	const game_events::resources_t &rsrc = *game_events::resources;
-	rsrc.lua_kernel->run_event(cfg, ev, rsrc.units);
+	rsrc.lua_kernel->run_event(cfg, ev);
 }
 
 WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)

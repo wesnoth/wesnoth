@@ -26,7 +26,7 @@ class LuaKernel
 public:
 	LuaKernel();
 	~LuaKernel();
-	void run_event(vconfig const &, game_events::queued_event const &, unit_map *);
+	void run_event(vconfig const &, game_events::queued_event const &);
 	void run(char const *prog);
 };
 

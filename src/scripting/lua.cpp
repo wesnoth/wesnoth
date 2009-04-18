@@ -48,17 +48,10 @@ extern "C" {
 #include "scripting/lua.hpp"
 #include "unit.hpp"
 
-/** Userdata storing the event environment. */
-struct event_handler_data
-{
-	unit_map *units;
-};
-
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const executeKey = 0;
 static char const gettextKey = 0;
 static char const getunitKey = 0;
-static char const handlerKey = 0;
 static char const tstringKey = 0;
 static char const uactionKey = 0;
 
@@ -289,12 +282,7 @@ static int lua_getunit(lua_State *L)
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
 
-	// Retrieve the unit map from the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
-	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
-
-	unit_map::const_unit_iterator ui = eh->units->find(id);
+	unit_map::const_unit_iterator ui = game_events::resources->units->find(id);
 	if (!ui.valid()) return 0;
 	unit const &u = ui->second;
 
@@ -332,11 +320,6 @@ static int lua_get_units(lua_State *L)
 			goto error_call_destructors;
 	}
 
-	// Retrieve the unit map from the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
-	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
-
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
 	lua_settop(L, 0);
@@ -344,7 +327,8 @@ static int lua_get_units(lua_State *L)
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
-	for (unit_map::const_unit_iterator ui = eh->units->begin(), ui_end = eh->units->end();
+	unit_map &units = *game_events::resources->units;
+	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
 		if (has_filter && !ui->second.matches_filter(vconfig(filter), ui->first))
@@ -517,23 +501,14 @@ static int lua_dofile(lua_State *L)
 struct lua_action_handler : game_events::action_handler
 {
 	lua_State *L;
-	unit_map *units;
 	int num;
 
-	lua_action_handler(lua_State *l, int n, unit_map *u)
-		: L(l), units(u), num(n) {}
+	lua_action_handler(lua_State *l, int n) : L(l), num(n) {}
 	void handle(const game_events::queued_event &, const vconfig &);
 };
 
 void lua_action_handler::handle(const game_events::queued_event &, const vconfig &cfg)
 {
-	// Store the event data in the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	event_handler_data *eh = static_cast<event_handler_data *>
-		(lua_newuserdata(L, sizeof(event_handler_data)));
-	eh->units = units;
-	lua_settable(L, LUA_REGISTRYINDEX);
-
 	// Load the error handler from the registry.
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
@@ -570,11 +545,6 @@ static int lua_register_wml_action(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 
-	// Retrieve the unit map from the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
-	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
-
 	// Retrieve the user action table from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
@@ -585,8 +555,7 @@ static int lua_register_wml_action(lua_State *L)
 	lua_rawseti(L, -2, length + 1);
 
 	// Create the proxy C++ action handler.
-	game_events::register_action_handler(m,
-		new lua_action_handler(L, length + 1, eh->units));
+	game_events::register_action_handler(m, new lua_action_handler(L, length + 1));
 	return 0;
 }
 
@@ -693,17 +662,9 @@ LuaKernel::~LuaKernel()
 /**
  * Runs a script from an event handler.
  */
-void LuaKernel::run_event(vconfig const &cfg,
-	game_events::queued_event const &ev, unit_map *units)
+void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
-
-	// Store the event data in the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	event_handler_data *eh = static_cast<event_handler_data *>
-		(lua_newuserdata(L, sizeof(event_handler_data)));
-	eh->units = units;
-	lua_settable(L, LUA_REGISTRYINDEX);
 
 	// Get user-defined arguments; append locations and weapons to it.
 	config args;
@@ -737,11 +698,6 @@ void LuaKernel::run_event(vconfig const &cfg,
 	const std::string &prog = cfg.get_config()["code"];
 
 	execute(prog.c_str(), 1, 0);
-
-	// Clear registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	lua_pushnil(L);
-	lua_settable(L, LUA_REGISTRYINDEX);
 }
 
 /**
