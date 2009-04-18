@@ -3205,20 +3205,20 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				do_replay_handle(*screen,*game_map,*units,*teams,
 						side ,*status_ptr,*state_of_game,std::string("choose"));
 				const config* action = get_replay_source().get_next_action();
-				if(action == NULL || action->get_children("choose").empty()) {
+				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
 				}
-				const std::string& val = (*(action->get_children("choose").front()))["value"];
+				const std::string &val = (*action)["value"];
 				option_chosen = atol(val.c_str());
 			}
 			if(has_text_input) {
 				do_replay_handle(*screen,*game_map,*units,*teams,
 						side ,*status_ptr,*state_of_game,std::string("input"));
 				const config* action = get_replay_source().get_next_action();
-				if(action == NULL || action->get_children("input").empty()) {
+				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");
 				}
-				text_input_result = (*(action->get_children("input").front()))["text"];
+				text_input_result = (*action)["text"];
 			}
 		}
 
