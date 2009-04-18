@@ -210,6 +210,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			scenario = &game_config.find_child(type, "id", gamestate.scenario);
 			if (*scenario) {
 				starting_pos = *scenario;
+				scenario = &starting_pos;
+				foreach (const config &cfg, game_config.child_range("lua")) {
+					// Mark all the toplevel [lua] tag as preload events.
+					config &ev = starting_pos.add_child("event");
+					ev["name"] = "preload";
+					ev["first_time_only"] = "no";
+					ev.add_child("lua", cfg);
+				}
 				gamestate.starting_pos.merge_with(*scenario);
 			} else
 				scenario = NULL;
