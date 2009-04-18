@@ -101,7 +101,7 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
 		lua_newtable(L);
 		table_of_wml_config(L, ch.cfg);
 		lua_rawseti(L, -2, 2);
-		lua_rawseti(L, -2, k);
+		lua_rawseti(L, -2, k++);
 	}
 	foreach (const config::attribute &attr, cfg.attribute_range())
 	{
