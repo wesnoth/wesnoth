@@ -2185,7 +2185,7 @@ namespace {
 
 	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
-	WML_HANDLER_FUNCTION(kill,handler,event_info,cfg)
+	WML_HANDLER_FUNCTION(kill,/*handler*/,event_info,cfg)
 	{
 		// Use (x,y) iteration, because firing events ruins unit_map iteration
 		for(map_location loc(0,0); loc.x < game_map->w(); ++loc.x) {
@@ -2199,7 +2199,7 @@ namespace {
 						fire_event = true;
 						recursion_preventer_ptr recursion_prevent;
 
-						if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath") && !handler.first_time_only())
+						if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
 						{
 							recursion_prevent.reset(new recursion_preventer(death_loc));
 
