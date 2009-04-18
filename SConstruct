@@ -413,7 +413,7 @@ env.Clean(all, 'TAGS')
 #
 
 if env["dummy_locales"]:
-    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | $LOCALEDEF -c \"$TARGET\" 2> /dev/null")
+    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | localedef -c \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
     language_cfgs = glob("data/languages/*.cfg")
     languages = Flatten(map(language_cfg_re.findall, language_cfgs))
