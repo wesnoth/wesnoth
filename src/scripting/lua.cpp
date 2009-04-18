@@ -219,32 +219,45 @@ static int lua_textdomain(lua_State *L)
 }
 
 /**
+ * Converts a Lua value at position @a src and appends it to @a dst.
+ * @note This function is private to lua_tstring_concat. It expects two things.
+ *       First, the t_string metatable is at the top of the stack on entry. (It
+ *       is still there on exit.) Second, the caller hasn't any valuable object
+ *       with dynamic lifetime, since they would leaked on error.
+ */
+static void lua_tstring_concat_aux(lua_State *L, t_string &dst, int src)
+{
+	switch (lua_type(L, src)) {
+		case LUA_TNUMBER:
+		case LUA_TSTRING:
+			dst += lua_tostring(L, src);
+			break;
+		case LUA_TUSERDATA:
+			// Compare its metatable with t_string's metatable.
+			if (!lua_getmetatable(L, src) || !lua_rawequal(L, -1, -2))
+				luaL_typerror(L, src, "string");
+			dst += *static_cast<t_string *>(lua_touserdata(L, src));
+			lua_pop(L, 1);
+			break;
+		default:
+			luaL_typerror(L, src, "string");
+	}
+}
+
+/**
  * Appends a scalar to a t_string object.
  */
 static int lua_tstring_concat(lua_State *L)
 {
-	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
-	// Hidden metamethod, so *t has to be a t_string object. Copy it in a new t_string.
-	t = new(lua_newuserdata(L, sizeof(t_string))) t_string(*t);
+	// Create a new t_string.
+	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
 
 	lua_pushlightuserdata(L, (void *)&tstringKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 
-	switch (lua_type(L, 2)) {
-		case LUA_TNUMBER:
-		case LUA_TSTRING:
-			*t += lua_tostring(L, 2);
-			break;
-		case LUA_TUSERDATA:
-			// Compare its metatable with t_string's metatable.
-			if (!lua_getmetatable(L, 2) || !lua_rawequal(L, -1, -2))
-				return luaL_typerror(L, 2, "string");
-			*t += *static_cast<t_string *>(lua_touserdata(L, 2));
-			lua_pop(L, 1);
-			break;
-		default:
-			return luaL_typerror(L, 2, "string");
-	}
+	// Append both arguments to t.
+	lua_tstring_concat_aux(L, *t, 1);
+	lua_tstring_concat_aux(L, *t, 2);
 
 	lua_setmetatable(L, -2);
 	return 1;
