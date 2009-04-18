@@ -137,18 +137,26 @@ namespace game_events
 				return kids;
 			}
 
-			void handle_event(const queued_event& event_info,
-					const vconfig cfg = vconfig());
+			void handle_event(const queued_event& event_info);
 
 			const vconfig& get_vconfig() { return cfg_; }
 		private:
-			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg);
-
 			bool first_time_only_;
 			bool disabled_;
 			bool is_menu_item_;
 			vconfig cfg_;
 	};
+
+	/**
+	 * Runs the action handler associated to the command sequence @a cfg.
+	 */
+	void handle_event_commands(const queued_event &event_info, const vconfig &cfg);
+
+	/**
+	 * Runs the action handler associated to @a cmd with parameters @a cfg.
+	 */
+	void handle_event_command(const std::string &cmd,
+		const queued_event &event_info, const vconfig &cfg);
 
 	game_state* get_state_of_game();
 	void write_events(config& cfg);
@@ -185,8 +193,7 @@ namespace game_events
 	 */
 	struct action_handler
 	{
-		virtual void handle(event_handler &eh,
-			const queued_event &event_info, const vconfig &cfg) = 0;
+		virtual void handle(const queued_event &event_info, const vconfig &cfg) = 0;
 		virtual ~action_handler() {}
 	};
 

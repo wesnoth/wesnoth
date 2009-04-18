@@ -51,7 +51,6 @@ extern "C" {
 /** Userdata storing the event environment. */
 struct event_handler_data
 {
-	game_events::event_handler *handler;
 	unit_map *units;
 };
 
@@ -375,10 +374,10 @@ static int lua_fire(lua_State *L)
 		error_call_destructors:
 		return luaL_typerror(L, 2, "WML table");
 	}
-	config cfg, &args = cfg.add_child(m);
+	config cfg;
 	if (has_config) {
 		lua_pushvalue(L, 2);
-		if (!wml_config_of_table(L, args))
+		if (!wml_config_of_table(L, cfg))
 			goto error_call_destructors;
 		lua_pop(L, 1);
 	}
@@ -388,13 +387,8 @@ static int lua_fire(lua_State *L)
 	if (lua_gettop(L) >= 6)
 		l2 = map_location(lua_tointeger(L, 5) - 1, lua_tointeger(L, 6) - 1);
 
-	// Retrieve the event handler from the registry.
-	lua_pushlightuserdata(L, (void *)&handlerKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
-	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
-
-	eh->handler->handle_event
-		(game_events::queued_event("_from_lua", l1, l2, config()), vconfig(cfg, true));
+	game_events::handle_event_command
+		(m, game_events::queued_event("_from_lua", l1, l2, config()), vconfig(cfg, true));
 	return 0;
 }
 
@@ -528,18 +522,15 @@ struct lua_action_handler : game_events::action_handler
 
 	lua_action_handler(lua_State *l, int n, unit_map *u)
 		: L(l), units(u), num(n) {}
-	void handle(game_events::event_handler &,
-		const game_events::queued_event &, const vconfig &);
+	void handle(const game_events::queued_event &, const vconfig &);
 };
 
-void lua_action_handler::handle(game_events::event_handler &handler,
-	const game_events::queued_event &, const vconfig &cfg)
+void lua_action_handler::handle(const game_events::queued_event &, const vconfig &cfg)
 {
 	// Store the event data in the registry.
 	lua_pushlightuserdata(L, (void *)&handlerKey);
 	event_handler_data *eh = static_cast<event_handler_data *>
 		(lua_newuserdata(L, sizeof(event_handler_data)));
-	eh->handler = &handler;
 	eh->units = units;
 	lua_settable(L, LUA_REGISTRYINDEX);
 
@@ -702,8 +693,8 @@ LuaKernel::~LuaKernel()
 /**
  * Runs a script from an event handler.
  */
-void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev,
-                          game_events::event_handler *handler, unit_map *units)
+void LuaKernel::run_event(vconfig const &cfg,
+	game_events::queued_event const &ev, unit_map *units)
 {
 	lua_State *L = mState;
 
@@ -711,7 +702,6 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	lua_pushlightuserdata(L, (void *)&handlerKey);
 	event_handler_data *eh = static_cast<event_handler_data *>
 		(lua_newuserdata(L, sizeof(event_handler_data)));
-	eh->handler = handler;
 	eh->units = units;
 	lua_settable(L, LUA_REGISTRYINDEX);
 

@@ -267,7 +267,7 @@ static void show_wml_messages()
 	}
 }
 
-typedef void (*wml_handler_function)(game_events::event_handler &eh,
+typedef void (*wml_handler_function)(
 	const game_events::queued_event &event_info, const vconfig &cfg);
 
 typedef std::map<std::string, wml_handler_function> static_wml_action_map;
@@ -283,14 +283,13 @@ static dynamic_wml_action_map dynamic_wml_actions;
  * @return false if none was found.
  */
 static bool call_wml_action_handler(const std::string &cmd,
-	game_events::event_handler &eh,
 	const game_events::queued_event &event_info,
 	const vconfig& cfg)
 {
 	dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(cmd);
 	if (itor == dynamic_wml_actions.end()) return false;
 
-	itor->second->handle(eh, event_info, cfg);
+	itor->second->handle(event_info, cfg);
 	return true;
 }
 
@@ -307,7 +306,7 @@ static bool call_wml_action_handler(const std::string &cmd,
  * For [foo] tag macro is used like:
  *
  * // comment out unused parameters to prevent compiler warnings
- * WML_HANDLER_FUNCTION(foo, handler, event_info, cfg)
+ * WML_HANDLER_FUNCTION(foo, event_info, cfg)
  * {
  *    // code for foo
  * }
@@ -323,17 +322,15 @@ static bool call_wml_action_handler(const std::string &cmd,
  *    // code for foo
  * }
  */
-#define WML_HANDLER_FUNCTION(pname, peh, pei, pcfg) \
-	void wml_func_##pname(game_events::event_handler &peh, \
-		const game_events::queued_event &pei, const vconfig &pcfg); \
+#define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
+	static void wml_func_##pname(const game_events::queued_event &pei, const vconfig &pcfg); \
 	struct wml_func_register_##pname \
 	{ \
 		wml_func_register_##pname() \
 		{ static_wml_actions[#pname] = &wml_func_##pname; } \
 	}; \
 	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
-	void wml_func_##pname(game_events::event_handler &peh, \
-		const game_events::queued_event& pei, const vconfig& pcfg)
+	static void wml_func_##pname(const game_events::queued_event& pei, const vconfig& pcfg)
 
 namespace game_events {
 
@@ -554,6 +551,8 @@ namespace {
 
 	std::vector<game_events::event_handler> event_handlers;
 
+} // end anonymous namespace (4)
+
 	static void toggle_shroud(const bool remove, const vconfig& cfg)
 	{
 
@@ -581,23 +580,22 @@ namespace {
 		(screen)->invalidate_all();
 	}
 
-	WML_HANDLER_FUNCTION(lua, handler, ev, cfg)
-	{
-		lua_kernel->run_event(cfg, ev, &handler, units);
-	}
+WML_HANDLER_FUNCTION(lua, ev, cfg)
+{
+	lua_kernel->run_event(cfg, ev, units);
+}
 
-	WML_HANDLER_FUNCTION(remove_shroud, , , cfg)
+WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
 	{
 		toggle_shroud(true,cfg);
 	}
 
-	WML_HANDLER_FUNCTION(place_shroud,,,cfg)
+WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 	{
 		toggle_shroud(false,cfg );
 	}
 
-	//	WML_HANDLER_FUNCTION(teleport,/*handler*/,event_info,cfg)
-	WML_HANDLER_FUNCTION(teleport,,event_info ,cfg)
+WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	{
 		unit_map::iterator u = units->find(event_info.loc1);
 
@@ -644,7 +642,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(unpetrify,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 	{
 		const vconfig filter = cfg.child("filter");
 		// Store which side will need a shroud/fog update
@@ -666,7 +664,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(allow_recruit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -691,7 +689,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(disallow_recruit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -713,7 +711,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(set_recruit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -735,12 +733,12 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(music,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 	{
 		sound::play_music_config(cfg.get_parsed_config());
 	}
 
-	WML_HANDLER_FUNCTION(sound,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 	{
 		std::string sound = cfg["name"];
 		const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
@@ -748,7 +746,7 @@ namespace {
 		sound::play_sound(sound, sound::SOUND_FX, repeats);
 	}
 
-	WML_HANDLER_FUNCTION(colour_adjust,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	{
 		std::string red = cfg["red"];
 		std::string green = cfg["green"];
@@ -762,7 +760,7 @@ namespace {
 		(screen)->draw(true,true);
 	}
 
-	WML_HANDLER_FUNCTION(delay,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
 	{
 		std::string delay_string = cfg["time"];
 		assert(state_of_game != NULL);
@@ -770,7 +768,7 @@ namespace {
 		(screen)->delay(delay_time);
 	}
 
-	WML_HANDLER_FUNCTION(scroll,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 	{
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
@@ -781,7 +779,7 @@ namespace {
 		(screen)->draw(true,true);
 	}
 
-	WML_HANDLER_FUNCTION(scroll_to,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(scroll_to, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 		const map_location loc = cfg_to_loc(cfg);
@@ -789,7 +787,7 @@ namespace {
 		(screen)->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
-	WML_HANDLER_FUNCTION(scroll_to_unit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(scroll_to_unit, /*event_info*/, cfg)
 	{
 		unit_map::const_iterator u;
 		for(u = units->begin(); u != units->end(); ++u){
@@ -805,7 +803,7 @@ namespace {
 	// store time of day config in a WML variable; useful for those who
 	// are too lazy to calculate the corresponding time of day for a given turn,
 	// or if the turn / time-of-day sequence mutates in a scenario.
-	WML_HANDLER_FUNCTION(store_time_of_day,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 	{
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
@@ -827,7 +825,7 @@ namespace {
 		(*store.vars).add_child(store.key, tod_cfg);
 	}
 
-	WML_HANDLER_FUNCTION(gold,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(gold, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
@@ -840,7 +838,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(modify_side,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
@@ -974,17 +972,17 @@ namespace {
 	}
 
 
-	WML_HANDLER_FUNCTION(store_side,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 	{
 		store_gold_side(true, cfg);
 	}
 
-	WML_HANDLER_FUNCTION(store_gold,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_gold, /*event_info*/, cfg)
 	{
 		store_gold_side(false, cfg);
 	}
 
-	WML_HANDLER_FUNCTION(modify_turns,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 	{
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
@@ -1012,7 +1010,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(store_turns,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 	{
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
@@ -1026,7 +1024,7 @@ namespace {
 
 	// Moving a 'unit' - i.e. a dummy unit
 	// that is just moving for the visual effect
-	WML_HANDLER_FUNCTION(move_unit_fake,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	{
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
@@ -1139,7 +1137,7 @@ namespace {
 	 * but only to the player whose objectives did change,
 	 * and only when it's this player's turn.
 	 **/
-	WML_HANDLER_FUNCTION(objectives,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 	{
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
@@ -1211,7 +1209,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(show_objectives,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(show_objectives, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		const size_t side_num = lexical_cast_default<size_t>(side,0);
@@ -1236,7 +1234,7 @@ namespace {
 	}
 } // End anonymous namespace
 
-	WML_HANDLER_FUNCTION(set_variable,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 
@@ -1564,7 +1562,7 @@ namespace {
 	}
 
 
-	WML_HANDLER_FUNCTION(set_variables,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 
@@ -1685,7 +1683,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(role,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 	{
 		bool found = false;
 
@@ -1755,7 +1753,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(removeitem,/*handler*/,event_info,cfg)
+WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1773,7 +1771,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(unit_overlay,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(unit_overlay, /*event_info*/, cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1785,7 +1783,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(remove_unit_overlay,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(remove_unit_overlay, /*event_info*/, cfg)
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
@@ -1797,7 +1795,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(hide_unit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(hide_unit, /*event_info*/, cfg)
 	{
 		// Hiding units
 		const map_location loc = cfg_to_loc(cfg);
@@ -1809,7 +1807,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(unhide_unit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(unhide_unit, /*event_info*/, cfg)
 	{
 		const map_location loc = cfg_to_loc(cfg);
 		unit_map::iterator u;
@@ -1821,8 +1819,8 @@ namespace {
 		}
 	}
 
-	// Adding new items
-	WML_HANDLER_FUNCTION(item,/*handler*/,/*event_info*/,cfg)
+// Adding new items
+WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 	{
 		map_location loc = cfg_to_loc(cfg);
 		const std::string img = cfg["image"];
@@ -1837,7 +1835,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(sound_source,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 		assert(soundsources != NULL);
@@ -1845,13 +1843,13 @@ namespace {
 		(soundsources)->add(spec);
 	}
 
-	WML_HANDLER_FUNCTION(remove_sound_source,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 	{
 		(soundsources)->remove(cfg["id"]);
 	}
 
-	// Changing the terrain
-	WML_HANDLER_FUNCTION(terrain,/*handler*/,/*event_info*/,cfg)
+// Changing the terrain
+WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
 	{
 		const std::vector<map_location> locs = multiple_locs(cfg);
 
@@ -1898,8 +1896,8 @@ namespace {
 		}
 	}
 
-	// Creating a mask of the terrain
-	WML_HANDLER_FUNCTION(terrain_mask,/*handler*/,/*event_info*/,cfg)
+// Creating a mask of the terrain
+WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	{
 		map_location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1933,8 +1931,8 @@ namespace {
 		}
     }
 
-	// If we should spawn a new unit on the map somewhere
-	WML_HANDLER_FUNCTION(unit,/*handler*/,/*event_info*/,cfg)
+// If we should spawn a new unit on the map somewhere
+WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	{
 		assert(units != NULL);
 		assert(game_map != NULL);
@@ -1983,8 +1981,8 @@ namespace {
 		}
 	}
 
-	// If we should recall units that match a certain description
-	WML_HANDLER_FUNCTION(recall,/*handler*/,/*event_info*/,cfg)
+// If we should recall units that match a certain description
+WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	{
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
@@ -2027,8 +2025,9 @@ namespace {
 			}
 		}
 	}
-	WML_HANDLER_FUNCTION(object,handler,event_info,cfg)
-	{
+
+WML_HANDLER_FUNCTION(object, event_info, cfg)
+{
 		const vconfig filter = cfg.child("filter");
 
 		std::string id = cfg["id"];
@@ -2101,13 +2100,12 @@ namespace {
 			}
 		}
 
-		const vconfig::child_list commands = cfg.get_children(command_type);
-		for(vconfig::child_list::const_iterator cmd = commands.begin();
-				cmd != commands.end(); ++cmd) {
-			handler.handle_event(event_info, *cmd);
-		}
+	foreach (const vconfig &cmd, cfg.get_children(command_type)) {
+		handle_event_commands(event_info, cmd);
 	}
-	WML_HANDLER_FUNCTION(print,/*handler*/,/*event_info*/,cfg)
+}
+
+WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 	{
 		// Display a message on-screen
 		std::string text = cfg["text"];
@@ -2138,12 +2136,12 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(deprecated_message,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 	{
 		game_events::handle_deprecated_message( cfg.get_parsed_config() );
 	}
 
-	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 	{
 		game_events::handle_wml_log_message( cfg.get_parsed_config() );
 	}
@@ -2185,7 +2183,7 @@ namespace {
 
 	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
-	WML_HANDLER_FUNCTION(kill,/*handler*/,event_info,cfg)
+WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	{
 		// Use (x,y) iteration, because firing events ruins unit_map iteration
 		for(map_location loc(0,0); loc.x < game_map->w(); ++loc.x) {
@@ -2259,8 +2257,8 @@ namespace {
 		}
 	}
 
-	// Fire any events
-	WML_HANDLER_FUNCTION(fire_event,/*handler*/,/*event_info*/,cfg)
+// Fire any events
+WML_HANDLER_FUNCTION(fire_event, /*event_info*/, cfg)
 	{
 		map_location loc1,loc2;
 		config data;
@@ -2297,8 +2295,8 @@ namespace {
 		game_events::fire(cfg["name"],loc1,loc2,data);
 	}
 
-	// Setting of menu items
-	WML_HANDLER_FUNCTION(set_menu_item,/*handler*/,/*event_info*/,cfg)
+// Setting of menu items
+WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	{
 		/*
 		   [set_menu_item]
@@ -2344,9 +2342,10 @@ namespace {
 			wmi_command_changes.push_back(wmi_command_change(id, new_command));
 		}
 	}
-	// Unit serialization to and from variables
-	/** @todo FIXME: Check that store is automove bug safe */
-	WML_HANDLER_FUNCTION(store_unit,/*handler*/,/*event_info*/,cfg)
+
+// Unit serialization to and from variables
+/** @todo FIXME: Check that store is automove bug safe */
+WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 	{
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
@@ -2418,7 +2417,7 @@ namespace {
 		varinfo.vars->append(to_store);
 	}
 
-	WML_HANDLER_FUNCTION(unstore_unit,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
@@ -2535,7 +2534,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(store_map_dimensions,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_map_dimensions, /*event_info*/, cfg)
 	{
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2547,7 +2546,7 @@ namespace {
 		state_of_game->get_variable(variable + ".border_size") = str_cast<int>(game_map->border_size());
 	}
 
-	WML_HANDLER_FUNCTION(store_starting_location,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
@@ -2577,7 +2576,7 @@ namespace {
 	 * - side: if present, the village should be owned by this side (0=unowned villages)
 	 * - terrain: if present, filter the village types against this list of terrain types
 	 */
-	WML_HANDLER_FUNCTION(store_villages,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 	{
 		log_scope("store_villages");
 		std::string variable = cfg["variable"];
@@ -2615,7 +2614,7 @@ namespace {
 		varinfo.vars->append(to_store);
 	}
 
-	WML_HANDLER_FUNCTION(store_locations,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 	{
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
@@ -2642,8 +2641,8 @@ namespace {
 		}
 	}
 
-	// Command to take control of a village for a certain side
-	WML_HANDLER_FUNCTION(capture_village,/*handler*/,/*event_info*/,cfg)
+// Command to take control of a village for a certain side
+WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -2661,8 +2660,8 @@ namespace {
 		}
 	}
 
-	// Command to remove a variable
-	WML_HANDLER_FUNCTION(clear_variable,/*handler*/,/*event_info*/,cfg)
+// Command to remove a variable
+WML_HANDLER_FUNCTION(clear_variable, /*event_info*/, cfg)
 	{
 		const std::string name = cfg["name"];
 		std::vector<std::string> vars_to_clear =
@@ -2672,12 +2671,12 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(end_turn,/*handler*/,/*event_info*/,/*cfg*/)
+WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 	{
 		throw end_turn_exception();
 	}
 
-	WML_HANDLER_FUNCTION(endlevel,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	{
 		// Remove 0-hp units from the unit map to avoid the following problem:
 		// In case a die event triggers an endlevel the dead unit is still as a
@@ -2739,7 +2738,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(redraw,/*handler*/,/*event_info*/,cfg)
+WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -2757,15 +2756,15 @@ namespace {
 		(screen)->draw(true,true);
 	}
 
-	WML_HANDLER_FUNCTION(animate_unit,/*handler*/,event_info,cfg)
+WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 	{
 		assert(status_ptr != NULL);
 		assert(game_map != NULL);
 		unit_display::wml_animation(cfg,*units,*game_map,*status_ptr,event_info.loc1);
 	}
-	WML_HANDLER_FUNCTION(label,/*handler*/,/*event_info*/,cfg)
-	{
 
+WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
+	{
 		terrain_label label((screen)->labels(),
 				cfg.get_config(),
 				game_events::get_state_of_game());
@@ -2777,9 +2776,8 @@ namespace {
 				label.visible_in_fog());
 	}
 
-	WML_HANDLER_FUNCTION(heal_unit,/*handler*/,event_info,cfg)
+WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	{
-
 		const bool animated = utils::string_bool(cfg["animate"],false);
 
 		const vconfig healed_filter = cfg.child("filter");
@@ -2827,21 +2825,23 @@ namespace {
 		}
 	}
 
-		// Sub commands that need to be handled in a guaranteed ordering
-	WML_HANDLER_FUNCTION(command,handler,event_info,cfg)
-	{
-		handler.handle_event(event_info, cfg);
-	}
+// Sub commands that need to be handled in a guaranteed ordering
+WML_HANDLER_FUNCTION(command, event_info, cfg)
+{
+	handle_event_commands(event_info, cfg);
+}
 
 
-		// Allow undo sets the flag saying whether the event has mutated the game to false
-	WML_HANDLER_FUNCTION(allow_undo,/*handler*/,/*event_info*/,/*cfg*/)
-	{
-		current_context->mutated = false;
-	}
-		// Conditional statements
-	static void if_while_handler(bool is_if, game_events::event_handler& handler, const game_events::queued_event& event_info, const vconfig& cfg)
-	{
+// Allow undo sets the flag saying whether the event has mutated the game to false
+WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
+{
+	current_context->mutated = false;
+}
+
+// Conditional statements
+static void if_while_handler(bool is_if,
+	const game_events::queued_event &event_info, const vconfig &cfg)
+{
 		const size_t max_iterations = (is_if ? 1 : game_config::max_loop);
 		const std::string pass = (is_if ? "then" : "do");
 		const std::string fail = (is_if ? "else" : "");
@@ -2855,50 +2855,46 @@ namespace {
 
 			// If the if statement passed, then execute all 'then' statements,
 			// otherwise execute 'else' statements
-			const vconfig::child_list commands = cfg.get_children(type);
-			for(vconfig::child_list::const_iterator cmd = commands.begin();
-					cmd != commands.end(); ++cmd) {
-				handler.handle_event(event_info, *cmd);
+			foreach (const vconfig &cmd, cfg.get_children(type)) {
+				handle_event_commands(event_info, cmd);
 			}
 		}
 	}
 
-	WML_HANDLER_FUNCTION(if,handler,event_info,cfg)
-	{
-		log_scope("if");
-		if_while_handler(true, handler, event_info, cfg);
-	}
-	WML_HANDLER_FUNCTION(while,handler,event_info,cfg)
-	{
-		log_scope("while");
-		if_while_handler(false, handler, event_info, cfg);
-	}
+WML_HANDLER_FUNCTION(if, event_info, cfg)
+{
+	log_scope("if");
+	if_while_handler(true, event_info, cfg);
+}
 
-	WML_HANDLER_FUNCTION(switch,handler,event_info,cfg)
-	{
-		assert(state_of_game != NULL);
+WML_HANDLER_FUNCTION(while, event_info, cfg)
+{
+	log_scope("while");
+	if_while_handler(false, event_info, cfg);
+}
 
-		const std::string var_name = cfg["variable"];
-		const std::string& var = state_of_game->get_variable_const(var_name);
+WML_HANDLER_FUNCTION(switch, event_info, cfg)
+{
+	assert(state_of_game != NULL);
 
-		bool not_found = true;
-		const vconfig::child_list& cases = cfg.get_children("case");
-		// execute all cases where the value matches
-		for(vconfig::child_list::const_iterator c = cases.begin(); c != cases.end(); ++c) {
-			const std::string value = (*c)["value"];
-			if (var == value) {
-				not_found = false;
-				handler.handle_event(event_info, *c);
-			}
-		}
-		if (not_found) {
-			// otherwise execute 'else' statements
-			const vconfig::child_list elses = cfg.get_children("else");
-			for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
-				handler.handle_event(event_info, *e);
-			}
+	const std::string var_name = cfg["variable"];
+	const std::string& var = state_of_game->get_variable_const(var_name);
+
+	bool not_found = true;
+	// execute all cases where the value matches
+	foreach (const vconfig &c, cfg.get_children("cases")) {
+		if (var == c["value"]) {
+			not_found = false;
+			handle_event_commands(event_info, c);
 		}
 	}
+	if (not_found) {
+		// otherwise execute 'else' statements
+		foreach (const vconfig &e, cfg.get_children("else")) {
+			handle_event_commands(event_info, e);
+		}
+	}
+}
 
 // Helper namespace to do some subparts for message function
 namespace {
@@ -3024,8 +3020,8 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 } // namespace
 
-		// Display a message dialog
-	WML_HANDLER_FUNCTION(message,handler,event_info,cfg)
+// Display a message dialog
+WML_HANDLER_FUNCTION(message, event_info, cfg)
 	{
 		// Check if there is any input to be made, if not the message may be skipped
 		const vconfig::child_list menu_items = cfg.get_children("option");
@@ -3236,10 +3232,8 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				replay::throw_error(errbuf.str());
 			}
 
-			vconfig::child_list events = option_events[option_chosen];
-			for(vconfig::child_list::const_iterator itor = events.begin();
-					itor != events.end(); ++itor) {
-				handler.handle_event(event_info, *itor);
+			foreach (const vconfig &cmd, option_events[option_chosen]) {
+				handle_event_commands(event_info, cmd);
 			}
 		}
 		if(has_text_input) {
@@ -3250,9 +3244,8 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		}
 	}
 
-	// Adding/removing new time_areas dinamically with
-	// Standard Location Filters.
-	WML_HANDLER_FUNCTION(time_area,/*handler*/,/*event_info*/,cfg)
+// Adding/removing new time_areas dynamically with Standard Location Filters.
+WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	{
 		assert(state_of_game != NULL);
 		assert(status_ptr != NULL);
@@ -3290,8 +3283,8 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		}
 	}
 
-	// Adding of new events
-	WML_HANDLER_FUNCTION(event,/*handler*/,/*event_info*/,cfg)
+// Adding new events
+WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 	{
         std::string behavior_flag = cfg["delayed_variable_substitution"];
         if(!(utils::string_bool(behavior_flag,true)))
@@ -3305,8 +3298,8 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
         }
 	}
 
-	// Experimental map replace
-	WML_HANDLER_FUNCTION(replace_map,/*handler*/,/*event_info*/,cfg)
+// Experimental map replace
+WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	{
 		gamemap map(*game_map);
 		try {
@@ -3389,9 +3382,6 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			wmi_command_changes.erase(wmi_command_changes.begin());
 		}
 	}
-
-
-} // end anonymous namespace (4)
 
 static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
 {
@@ -3491,21 +3481,22 @@ static bool process_event(game_events::event_handler& handler, const game_events
 }
 
 namespace game_events {
-	void event_handler::handle_event(const game_events::queued_event& event_info, const vconfig conf)
+	void event_handler::handle_event(const game_events::queued_event& event_info)
 	{
 		if (first_time_only_)
 		{
 			disable();
 		}
 
-		vconfig cfg = conf;
-		if(cfg.null()) {
-			cfg = cfg_;
-		}
-		if(is_menu_item()) {
-			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg.get_config();
+		if (is_menu_item()) {
+			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_.get_config();
 		}
 
+		handle_event_commands(event_info, cfg_);
+	}
+
+	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
+	{
 		for (vconfig::all_children_iterator i = cfg.ordered_begin(),
 		     i_end = cfg.ordered_end(); i != i_end; ++i)
 		{
@@ -3514,15 +3505,15 @@ namespace game_events {
 			if (cmd.compare(0, 6, "filter") == 0)
 				continue;
 
-			handle_event_command(event_info, cmd, i.get_child());
+			handle_event_command(cmd, event_info, i.get_child());
 		}
 
 		// We do this once the event has completed any music alterations
 		sound::commit_music_changes();
 	}
 
-		void event_handler::handle_event_command(const game_events::queued_event& event_info,
-			const std::string& cmd, const vconfig cfg)
+	void handle_event_command(const std::string &cmd,
+		const game_events::queued_event &event_info, const vconfig &cfg)
 	{
 		log_scope2(engine, "handle_event_command");
 		LOG_NG << "handling command '" << cmd << "' from "
@@ -3530,7 +3521,7 @@ namespace game_events {
 			<< std::hex << std::setiosflags(std::ios::uppercase)
 			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
-		if (!call_wml_action_handler(cmd, *this, event_info, cfg))
+		if (!call_wml_action_handler(cmd, event_info, cfg))
 		{
 			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
 		}
@@ -3655,9 +3646,9 @@ namespace game_events {
 	{
 		wml_handler_function f_;
 		static_action_handler(wml_handler_function f): f_(f) {}
-		void handle(event_handler &eh, const queued_event &event_info, const vconfig &cfg)
+		void handle(const queued_event &event_info, const vconfig &cfg)
 		{
-			f_(eh, event_info, cfg);
+			f_(event_info, cfg);
 		}
 	};
 
