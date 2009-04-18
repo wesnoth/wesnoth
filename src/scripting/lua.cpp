@@ -287,6 +287,23 @@ static int lua_tstring_collect(lua_State *L)
 		return 1; \
 	}
 
+#define modify_tstring_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		if (lua_type(L, -1) == LUA_TUSERDATA) { \
+			lua_pushlightuserdata(L, (void *)&tstringKey); \
+			lua_gettable(L, LUA_REGISTRYINDEX); \
+			if (!lua_getmetatable(L, -2) || !lua_rawequal(L, -1, -2)) \
+				return luaL_typerror(L, -3, "(translatable) string"); \
+			const t_string &value = *static_cast<t_string *>(lua_touserdata(L, -3)); \
+			accessor; \
+		} else { \
+			const char *value = luaL_checkstring(L, -1); \
+			accessor; \
+		} \
+		return 0; \
+	}
+
+
 #define modify_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		int value = luaL_checkint(L, -1); \
@@ -622,6 +639,7 @@ static int lua_side_set(lua_State *L)
 
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.spend_gold(t.gold() - value));
+	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_bool_attrib("objectives_changed", if (value) t.set_objectives_changed(); else t.reset_objectives_changed());
 	return 0;
@@ -639,7 +657,7 @@ static int lua_get_side(lua_State *L)
 
 	size_t t = s - 1;
 	std::vector<team> &teams = *game_events::resources->teams;
-	if (t >= teams.size()) return luaL_typerror(L, 1, "side number");
+	if (t >= teams.size()) return 0;
 
 	// Create a full userdata containing a pointer to the team.
 	team **p = static_cast<team **>(lua_newuserdata(L, sizeof(team *)));
