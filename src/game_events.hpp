@@ -193,9 +193,6 @@ namespace game_events
 			const vconfig cond, bool backwards_compat=true);
 	bool pump();
 
-	// The count of game event mutations to the unit_map
-	Uint32 mutations();
-
 	/**
 	 * Abstract class for a WML action handler.
 	 */

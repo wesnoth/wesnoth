@@ -68,7 +68,6 @@ namespace {
 	gamestatus* status_ptr = NULL;
 	LuaKernel *lua_kernel = NULL;
 	int floating_label = 0;
-	Uint32 unit_mutations = 0;
 
 	std::vector< game_events::event_handler > new_handlers;
 	typedef std::pair< std::string, config* > wmi_command_change;
@@ -585,7 +584,6 @@ namespace {
 					const map_location src_loc = u->first;
 
 					units->move(src_loc, vacant_dst);
-					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
 						get_village(vacant_dst, *screen,*teams,side-1,*units);
 					}
@@ -1929,7 +1927,6 @@ namespace {
 
 				units->erase(loc);
 				units->add(loc, new_unit);
-				unit_mutations++;
 				if(game_map->is_village(loc)) {
 					get_village(loc,*screen,*teams,new_unit.side()-1,*units);
 				}
@@ -1987,7 +1984,6 @@ namespace {
 					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-					unit_mutations++;
 					recruit_unit(*game_map,index+1,*units,to_recruit,loc,true,utils::string_bool(cfg["show"],true),false,true,true);
 					unit_recalled = true;
 					break;
@@ -2192,12 +2188,10 @@ namespace {
 						un = units->find(death_loc);
 						if(un != units->end() && death_loc.matches_unit(un->second)) {
 							units->erase(un);
-							unit_mutations++;
 						}
 					}
 					if (! utils::string_bool(cfg["fire_event"])) {
 						units->erase(un);
-						unit_mutations++;
 					}
 				}
 			}
@@ -2347,7 +2341,6 @@ namespace {
 
 			if(kill_units) {
 				units->erase(i++);
-				unit_mutations++;
 			} else {
 				++i;
 			}
@@ -2410,7 +2403,6 @@ namespace {
 
 				units->erase(loc);
 				units->add(loc, u);
-				unit_mutations++;
 
 				std::string text = cfg["text"];
 				if(!text.empty())
@@ -2659,7 +2651,6 @@ namespace {
 		while(u != units->end()) {
 			if(u->second.hitpoints() <= 0) {
 				units->erase(u++);
-				++unit_mutations;
 			} else {
 				++u;
 			}
@@ -3311,7 +3302,6 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
                         lg::wml_error << "replace_map: Cannot add a unit that would become off-map to the recall list\n";
                     }
                     units->erase(itor++);
-                    unit_mutations++;
                 } else {
                     ++itor;
                 }
@@ -3848,10 +3838,6 @@ namespace game_events {
 		}
 
 		return result;
-	}
-
-	Uint32 mutations() {
-		return unit_mutations;
 	}
 
 	entity_location::entity_location(map_location loc, const size_t id)
