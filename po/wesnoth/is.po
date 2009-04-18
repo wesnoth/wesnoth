@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2009-04-12 01:52-0000\n"
+"PO-Revision-Date: 2009-04-18 20:39-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,32 +32,32 @@ msgstr "Músarskruna"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:65
 msgid "Middle-click Scrolling"
-msgstr ""
+msgstr "Skrun með miðjum músarhnappi"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:72
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Halda skrun áfram þegar mús yfirgefur glugga"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:79
 msgid "Animate Map"
-msgstr ""
+msgstr "Hreyfingar á korti"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:86
 msgid "Show Titlescreen Animation"
-msgstr ""
+msgstr "Hreyfingar í titil-skjá"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:93
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Hreyfingar á kyrrstöðum einingum"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:100
 msgid "Show Combat"
-msgstr ""
+msgstr "Sýna Bardaga"
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
@@ -100,7 +100,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
-msgstr ""
+msgstr "galdrar"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
@@ -110,12 +110,15 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"Galdrar:\n"
+"Þessi árás hefur alltaf 70% líkur á að hitta, hvað sem varnaraðstaðstöðu "
+"skotmarks líður."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
-msgstr ""
+msgstr "fyrsta högg"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
@@ -124,6 +127,8 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Fyrsta högg:\n"
+"Þessi eining fær alltaf að eiga fyrsta höggið, líka ef hún er í vörn"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
@@ -163,6 +168,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Læknar +4:\n"
+"Leyfir einingu að lækna nærliggjandi einingar í byrjun þinnar umferðar.\n"
+"\n"
+"Eining læknuð af þessum læknara má fá 4 lífspunkta hverja umferð, eða stoppa "
+"eitur í að virka þá umferð.\n"
+"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
+"í þorp eða heilara."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -189,6 +201,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Læknar +4:\n"
+"Þessi eining notar náttúrulegar lækningar með göldrum og læknar aðrar "
+"einingar hraðar enn venjulega á vígvellinum.\n"
+"\n"
+"Eining læknuð af þessum læknara má fá 8 lífspunkta hverja umferð, eða stoppa "
+"eitur í að virka þá umferð.\n"
+"Eitruð eining getur ekki læknað eitur af læknara og verður að sækja umönnun "
+"í þorp eða heilara."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -198,7 +218,7 @@ msgstr "Forritun"
 #. [about]
 #: data/core/about.cfg:191
 msgid "General Purpose Administration and Coordination"
-msgstr ""
+msgstr "Almenn stýring og samhæfing"
 
 #. [about]
 #: data/core/about.cfg:209
@@ -223,22 +243,22 @@ msgstr "Hönnun herferða"
 #. [about]
 #: data/core/about.cfg:634
 msgid "Multiplayer Maps and Balancing"
-msgstr ""
+msgstr "Fjölspilurnar kort og sanngirni"
 
 #. [about]
 #: data/core/about.cfg:675
 msgid "Packagers"
-msgstr ""
+msgstr "Pakkar"
 
 #. [about]
 #: data/core/about.cfg:741
 msgid "Miscellaneous contributors"
-msgstr ""
+msgstr "Öðruvísi aðstandendur"
 
 #. [about]
 #: data/core/about.cfg:938
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "Stjórnendur aðþjóðavæðingar"
 
 #. [about]
 #: data/core/about.cfg:963
@@ -333,12 +353,12 @@ msgstr "Frönsk þýðing"
 #. [about]
 #: data/core/about.cfg:1479
 msgid "Friulian Translation"
-msgstr ""
+msgstr "Friulísk Þýðing"
 
 #. [about]
 #: data/core/about.cfg:1486
 msgid "Galician Translation"
-msgstr ""
+msgstr "Galisísk Þýðing"
 
 #. [about]
 #: data/core/about.cfg:1521
@@ -408,7 +428,7 @@ msgstr "Makedónsk þýðing"
 #. [about]
 #: data/core/about.cfg:1790
 msgid "Marathi Translation"
-msgstr ""
+msgstr "Mararþísk Þýðing"
 
 #. [about]
 #: data/core/about.cfg:1799
@@ -473,7 +493,7 @@ msgstr "Tyrknesk þýðing"
 #. [about]
 #: data/core/about.cfg:2129
 msgid "Valencian (southern Catalan) Translation"
-msgstr ""
+msgstr "Valensísk (suður Katalónsk) Þýðing"
 
 #. [about]
 #: data/core/about.cfg:2142
@@ -500,7 +520,7 @@ msgstr "Inngangur"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
-msgstr ""
+msgstr "Leikspilun"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
@@ -525,7 +545,7 @@ msgstr "Hæfileikar"
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Sérhæfileikar vopna"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -547,6 +567,10 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"Sumar einingar hafa hæfileika sem ýmist hafa bein áhrif á aðrar einingar, "
+"eða áhrif á hvernig einingin hefur áhrif á aðrar einingar. Þessir hæfileikar "
+"verða í lista undir þessu umræðuefni þegar þú rekst á þá.\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:104
@@ -555,6 +579,8 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Sum vopn hafa sérstaka þætti sem gerir þau öflugri þegar þau eru notuð í "
+"sókn.\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:111
@@ -569,6 +595,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Þessi eining er óþekkt sem stendur. Þú verður að uppgvöta hana í leiknum til "
+"að geta lesið lýsingu hennar."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:119
@@ -586,11 +616,19 @@ msgid ""
 "make the game simple, however - from these simple rules arise a wealth of "
 "strategy, making the game easy to learn but a challenge to master."
 msgstr ""
+"\n"
+"\n"
+"Bardaginn um Wesnoth er lotuskiptur herkænsku leikur sem er frekar óalgengt "
+"í nútíma herkænsku leikjum. Meðan aðrir leikir sækjast eftir að vera "
+"flóknir, reynir Bardaginn um Wesnoth að vera einfaldur bæði í reglum og "
+"leikspilun. Það gerir þó ekki leikin einfaldan, því frá þessum reglum hetur "
+"risið sægur af herkænsku, sem gerir leikin auðveldan að læra á enn erfitt að "
+"verða meistari."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Grunnatriði Leikjaspilunar"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
@@ -601,6 +639,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
+"Þessar síður útsskýra allt sem þú þarft að vita til að spila Bardagan um "
+"Wesnoth. Þær lýsa hvernig á að spila og grunn-reglum leiksins. Meðan þú "
+"spilar leikin, er nýjum upplýsingum bætt við þessar síður þegar þú rekst á "
+"nýja hluti í leiknum. Fyrir nákvæmari upplýsingar á sérstökum aðstæðum og "
+"undantekningun, fylgdu hlekkjunum sem fylgja með."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:137
@@ -641,6 +684,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"Leikurinn tekur sér stað í röð bardaga, kallaðir leikir. Hver leikur etur "
+"þínum hermönnun gegn hermönnum eins eða fleiri andstæðinga. Þú getur spilað "
+"gegn tölvunni, eða með vinum og skipst á að sitja í tölvunni (staðarleikur). "
+"Ef tölvan þín er tengd við aðrar tölvur (LAN), geturu einnig spilað með "
+"öðrum tölvum tengdar á því lani. Ef tölvan er tengd við Internetið, geturu "
+"spilað við fólk í gegnum Internetið."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:148
@@ -652,6 +701,11 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Herferðir samanstanda af mörgum leikjum sem fylgja hver öðrum og segja sögu. "
+"Í herferð, verðuru oft að spila mun varlegar, haldandi bestu hermönnum þínum "
+"lifandi svo þeir geti gagnast þér í seinni leikjum í herferðinni."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
@@ -668,6 +722,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Lestu vandlega fyrirmæla pop-up gluggan í byrjun hvers leiks. Oftast sigraru "
+"með því að drepa alla leiðtöga andstæðinga og aðeins með því að missa þinn "
+"eigin geturu tapað. Enn í sumum leikjum geta verið öðruvísi fyrirmæli - koma "
+"leiðtoga þínum á ákveðin stað á kortinu, bjarga einhverjum, leysa þraut eða "
+"halda út gegn umsátri þar til settu marki af lotum er náð."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
@@ -679,6 +738,12 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Þegar þú sigrar atburðarás, verður kortið grátt og 'Ljúka Umferð' takkinn "
+"mun breytast í 'Ljúka Leik'. Þú getur þá gert hluti eins og að breyta "
+"vistunar stillingum þínum eða (ef þú ert í fjölspilunarleik) spjallað við "
+"aðra spilara áður enn ýtt er á takkan."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -710,6 +775,12 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Ef þú hægri-smellir á kastala reit og velur ráða, mun nýja einingin birtast "
+"á þeim reiti. Annarsvegar, mun hún birtast í fríjum reiti nærri hásætinu. Þú "
+"mátt eingöngu ráða eins margar einingar og þú hefur af lausum reitum í "
+"kastalanum og mátt ekki eyða meiri gulli enn þú átt í ráðningar."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -733,6 +804,11 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"Í seinni leikjum, máttu oft einnig Endurkalla eftirlifendur úr fyrri "
+"bardögum. Endurköllum kostar alltaf 20 gull og kemur með lista af öllum "
+"eftirlifandi einingum úr fyrri leikjum."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
@@ -755,6 +831,8 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Á toppi lífspunkta línurnar sýnda hliðin á einingu þinni er hnöttur. Fyrir "
+"einingar sem þú stjórnar, er hnötturinn:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
@@ -770,17 +848,19 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "Rauður ef einingin hefur notað alla hreyfipunkta sína þessa umferð."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
+"Hnötturinn er blár ef einingin er vinveitt enn ekki undir þinni stjórn."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr ""
+"óvinveittar einingar hafa engan hnött á toppi lífspunkta línunni sinni."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:193
@@ -797,7 +877,7 @@ msgid ""
 msgstr ""
 "Hver eining hefur ákveðin fjölda lífstiga (HP). Ef fjöldi lífstig einingar "
 "fer niður fyrir 1, deyr einingin. Hver eining hefur einnig ákveðin fjölda "
-"reynslustiga (XP). Nýráðin eining hefur leik með engin reynslustig, og fær "
+"reynslustiga (XP). Nýráðin eining hefur leik með engin reynslustig og fær "
 "reynslu með því að berjast við óvini."
 
 #. [topic]: id=hitpoints
@@ -807,6 +887,9 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Lífspunktarnir og reynslupunktarnir eru báðir sýnir í stöðu glugganum með "
+"tvem tölum (núverandi styrkleika og hámarksstyrkleika sem eining getur "
+"fengið)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
@@ -838,6 +921,17 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
+"Hreyfingar í Bardaginn um Wesnoth eru einfaldar. Smelltu á eininguna sem þú "
+"vilt hreyfa til að velja hana og smelltu svo á þann reit sem þú villt að hún "
+"fari á. Þegar eining er valin, lýsa allir reitir sem hún getur farið á, og "
+"allir aðrir reitir eru gerðir dökkir. Ef þú færir músina yfir lýsandi reit "
+"sérðu varnar-bónusin sem eining fengi ef þú færðir hana á þann reit. Að "
+"setja músina yfir dökkan reit sýnir einnig hve margar lotur það tæki að "
+"komast þangað, og að smella mun láta eininguna fara fljótlegustu leiðina "
+"þangað í núverandi og næstkomandi lotum. Að ráðast á einingu eyðir öllum "
+"hreyfi punktum. Að enda hreyfingu í þorpi sem þú ekki átt mun einnig eyða "
+"öllum hreyfipunktum, enn einingin má samt gera árás á óvinveittar einingar "
+"hliðstæðar þorpinu."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -877,6 +971,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"Til að sjá hvert óvinurinn getur farið næstu lotu þeirra, ýttu á Ctrl-V eða "
+"Cmd-v. Ctrl-B eða Cmd-b sýnir hvert óvinir gætu farið, ef þínar einingar "
+"væru ekki fyrir þeim."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:220
@@ -905,6 +1004,25 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
+"Í sumum leikjum, eru hlutar af kortinu faldir fyrir þér. Það eru tvö kerfi "
+"sem geta verið notað sjálfstæð eða saman. Hyl felur bæði landslag og allar "
+"einingar á þeim stað. Enn, þegar búið er að hreinsa hylið, geturu alltaf séð "
+"þann stað. Stríðsþokan felur einungis einingar og eigendafána á þorpum "
+"(öðrum enn þínum fánum og vinafánum). Þokan er hreinsuð tímabundið þegar "
+"þínar einingar eru nálægar, enn kemur aftur þegar einingarnar fara. Bæði "
+"Hylið og Stríðsþokan geru hreinsaðar af einingum. Hver eining hreinsar "
+"staðina sem hún gæti labbað á innan einnar lotu (hundsandi stórnsvæði og "
+"óvinveittar einingar).\n"
+"\n"
+"Venjulega geturu hætt við nýgerðar hreyfingar og látið einingu fara aftur á "
+"byrjunarreit sinn í þeirri lotu, svo lengi sem ekkert handahófskennt gerist "
+"t.d. bardagi eða ráðning (flestar reiningar fá handahófskennd einkenni þegar "
+"þau eru ráðin). Að kanna landslag falið af Hyli eða Stríðsþoku kemur í veg "
+"fyrir að hægt er að af-gera til fyrri stöðu. Þú gætir þá viljað kveikja á "
+"'tefja þoku breytingar' í aðgerða valmyndinni. Þetta kemur í veg fyrir að "
+"einingar hreinsa Hyl eða Þoku þar til næsta handahófskenndi atburður gerist "
+"eða með handstýrði breytinga með því að fara í 'uppfæra þoku núna (eða ljúka "
+"umferðinni) og þannig geyma eiginleikan að gera afgert hreyfingar."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:230
@@ -924,6 +1042,16 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Bardagar í Bardaginn um Wesnoth eiga sér alltaf stað milli eininga á "
+"samliggjandi reitum. Smelltu á þína einingu og smelltu á óvin sem þú villt "
+"ráðast á: Þín eining mun hreyfa sig að óvininum, og þegar þau eru hlið við "
+"hlið, mun bardagi byrjast. Árásaraðilinn og varnaraðilinn munu berjast þar "
+"til hver eining hefur notað allar árásinar sínar. Árásaraðilinn velur hvaða "
+"vopn skal nota, og varnaraðilinn lemur til baka með vopni með sömu hæfileika"
+"(ef sverðmaður ræðst á bogmann, mun bogmaður svara fyrir sig með eigin "
+"sverði enn ekki boga) Það eru tvær tegundir af árásum: skylmingar, sem "
+"innihalda oftast sverð, axir, eða vígtennur; og langdrægar, sem innihalda "
+"vopn eins og boga, spjót og eldhnetti."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
@@ -946,6 +1074,15 @@ msgid ""
 "5 damage, while an Orcish Grunt with a 9-2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
+"\n"
+"\n"
+"Árásaraðillinn fær fyrsta höggið, svo svarar varnaraðilinn fyrir sig. Hver "
+"árás annað hvort hittir, gerir þann skaða sem árásin á að gera, eða hittir "
+"ekki, gerandi engan skaða. Skipst er á árásum þar til báðar einingar hafa "
+"notað allar sínar árásir. Það er mismunandi hve margar árásir eining hefur; "
+"sem dæmi, Álfa stríðsmaður hefur 5-4 árás og má þá lemja 4 sinnum, hver árás "
+"sem hittir gerir 5 í skaða, meðan Orka Víglínumaður með 9-2 má aðeins gera 2 "
+"árásir (en hver árás sem hittir gerir 9 í skaða)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
@@ -1031,6 +1168,11 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"Í Wesnoth, eru 3 tegundir af skaða yfirleitt tengdar líkamlegur árásum: "
+"Eggvopn, Stungvopn og Höggvopna skaði. Að auki, eru 3 tegundir af skaða "
+"yfirleitt tengdar galdra árásum: Eldur, Kuldi og yfirnáttúrulegt. Mismunandi "
+"einingar geta haft mismunandi mótstöðu sem breytir hve mikil meiðsl þau "
+"hljóa af árásum af mismunandi gerð."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
@@ -1043,6 +1185,13 @@ msgid ""
 "unit has -100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
+"\n"
+"\n"
+"Móststöður verka mjög einfaldlega: ef eining hefur 40% móttstöðu gagnvart "
+"skaða tegund, mun sú eining hljóta 40% minni skaða þegar laminn með þeirri "
+"tegund af skaða. Það er einnig hægt að vera viðkvæmur gagnvart skaða "
+"tegundum. Ef eining hefur -100% gagnvart skaða tegund, mun sú hin sama "
+"hljóta 100% meiri meiðsla þegar laminn með þeirri tegund af skaða."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
@@ -1053,6 +1202,11 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Arcane "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Sem dæmi, Beinagrindur hafa mikla mótstöðu gagnvart Eggvopna og Stungvopna "
+"skaða, enn eru viðkvæmar fyrir höggvopna og eld skaða og skelfilega "
+"viðkvæmar gagnvart yfirnáttúrulegum skaða."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
@@ -1063,6 +1217,10 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Ef árás hittir, gerir hún alltaf að minsta kosti 1 punkt í skaða. Þetta á "
+"líka við ef varnaraðilinn hefur 100% mótsstöðu gagnvart skaða tegundinni."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:266
@@ -1077,6 +1235,13 @@ msgid ""
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
+"Tími dagsins hefur áhrif á skaða sem sumar einingar valda svona:\n"
+" Réttvísar einingar gera 25% meiri skaða að degi til, og 25% minni skaða að "
+"nóttu til.\n"
+" Ringulreiðar einingar gera 25% meiri skaða að nóttu til, og 25% minni skaða "
+"að degi til.\n"
+" Hlutlausar einingar verða ekki fyrir áhrifum að tímanum, og verða hvorki "
+"veikari né sterkari. "
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:273
@@ -1087,6 +1252,11 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"Núverandi tíma dagsins má sjá undir litla kortinu í stöðu glugganum. Fyrir "
+"venjulegan dag/nótt hring, teljast Morgunn og Síðdegi sem dagur, Fyrsta og "
+"Seinni Vakt sem nótt:\n"
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
@@ -1116,13 +1286,13 @@ msgstr "Rökkur"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:46
 msgid "First Watch"
-msgstr ""
+msgstr "Fyrsta vakt"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:278 data/core/macros/schedules.cfg:58
 msgid "Second Watch"
-msgstr ""
+msgstr "Seinni vakt"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:280
@@ -1130,6 +1300,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Hafðu í huga að sumir leikir eiga sér stað neðanjarðar, þar sem alltaf er "
+"nótt!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -1144,6 +1316,11 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Ef báðar einingar lifa af bardaga, fá þær númer af reynslu punktum "
+"jafngildandi styrkleikastigi einingarnar sem þeir börðust við. Ef eining "
+"drepur aðra í bardaga, fær hún mun meiri reynslu - 4 fyrir styrkleika 0 "
+"einingu, 8 fyrir styrkleika 1, 16, fyrir styrkleika 2, 24 fyrir styrkleika 3 "
+"og svo framvegis."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:290
@@ -1155,6 +1332,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Einingar þurfa ákveðið magn af reynslu til að þjálfast (sem er 20% minna "
+"fyrir einingar með snarpa eiginleikan). Þegar þau ná þessu magni, aukast þau "
+"um eitt styrkleikastig og fá fulla lífspunkta. Í sumum tilvikum, færðu að "
+"velja í hvað einingin breytist."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
@@ -1196,6 +1379,10 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2 HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Hvíld: Eining sem hvorki hreyfir sig, gerir árás né verður fyrir árás læknar "
+"sig um 2 lífspunkta í næstu umferð."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1242,6 +1429,12 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Hvíld má leggja saman við aðrar tegundiri af lækningu, enn þorp, "
+"endursköpun, lækning og heilun geta ekki laggst saman við hvort annað, "
+"einungis hvíld: besti valkosturinn verður alltaf notaður. Að lokur, læknast "
+"einingar til fulls á milli leikja(í herferð t.d.)"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
@@ -1256,6 +1449,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"Í Wesnoth, er ekki nóg að einfaldlega ráða einingar og berjast. Þú verður að "
+"fylgjast með gullinu þínu líka, sérstaklega í herferðum, þar sem þú getur "
+"tekið auka gull frá einni atburðarás yfir í næsta. Það eru tveir hlutir sem "
+"skipta máli hérna; Gróði og Uppihald."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
@@ -1267,6 +1464,12 @@ msgid ""
 "have ten villages, you would normally gain 12 gold each turn. Your Upkeep "
 "costs are subtracted from this income, as detailed below."
 msgstr ""
+"\n"
+"\n"
+"Gróði er einfaldur. Þú ert með grunn gróða af 2 gull hverja lotu. Fyrir "
+"hvert þorp sem þú stjórnar, færðu einn auka gull hverja lotu. Þar af "
+"leiðandi, ef þú hefur tíu þorp, færðu venjulega 12 gull hverja lotu. "
+"Uppihaldið er dregið af þessum gróða, eins og útskýrt er fyrir neðan."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:320
@@ -1290,6 +1493,11 @@ msgid ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
+"\n"
+"\n"
+"Uppihalds kostnaður er dreginn af Gróðanum, svo í dæmi þar sem þú hefur "
+"samanlagt 12 styrkleikastig af einingum (12 lvl 1 eða 4 lvl 3), verður loka "
+"staðan 10 gull á lotu."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
@@ -1302,6 +1510,13 @@ msgid ""
 "trait. The unit you are playing (such as Konrad) will almost always be a "
 "leader."
 msgstr ""
+"\n"
+"Það eru tvær mikilvægar undantekningar til uppihalds: eining sem er hefur "
+"Trygg/ur eiginleikar og leiðtogar þarfnast aldrei uppihalds. Einingar sem þú "
+"byrjar með í leiknum (eins og Delfador), eða einingar sem ganga til liðs við "
+"í leik (eins og Hestamaðurinn í seinni leik í Erfingi Krúnurnar herferðinni) "
+"verða næstum alltaf með Trygg/ur eiginleikan. Einingin sem þú ert að spila "
+"(eins og Konráð) eru næstum alltaf leiðtoginn."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -1326,7 +1541,7 @@ msgstr ""
 #. [topic]: id=license
 #: data/core/help.cfg:341
 msgid "License"
-msgstr ""
+msgstr "Leyfi"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
@@ -1336,6 +1551,10 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
+"Flestar einingar hafa 2 eiginleika. Enn, Ódauðar einingar eru alltaf með "
+"eitt sem er 'Ódauður' og Vosar fá enga eiginleika. Einkenni eru breytingar "
+"sem breyta lítillega hæfileikum einingar. Þeir eru oftast valdir af "
+"handahófi þegar eining er keypt."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
@@ -1368,6 +1587,8 @@ msgstr "Snerpa"
 #: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
+"Snarpar einingar þurfa 20% minni reynslu enn venjulega til að þjálfast í "
+"næsta styrkleikastig."
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
@@ -1380,6 +1601,15 @@ msgid ""
 "significant a change as advancing a level. If you have many 'maximum level' "
 "units you may wish to recall units with more desirable traits."
 msgstr ""
+"\n"
+"\n"
+"Snarpar einingar eru nokkuð gagnlegar í byrjun herferðar þar sem þær auka "
+"við styrkleikastig sín hraðar. Seinna í herferðum eru Snarpar einingar ekki "
+"eins gagnlegar vegna þess að Eftir Hæsta Styrkleikastig Þjálfunar (After "
+"Maximum Level Advancement, AMLA) EHSÞ er ekki jafn mikilvægt og gagnlegt og "
+"að auka við styrkleikastig sitt. Ef þú átt margar einingar á hæsta "
+"styrkleikastigi, viltu oftast endurkalla einingar sem eru með gagnlegri "
+"eiginleika."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -1390,6 +1620,8 @@ msgstr "Hraði"
 #: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
+"Snöggar einingar geta fá 1 auka hreyfi punkt, enn 5% minni lífspunkta enn "
+"venjulega."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
@@ -1403,6 +1635,14 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
+"\n"
+"\n"
+"Hraður er mest áberandi eiginleikinn, sérstaklega í hægförum einingum eins "
+"og Tröllum eða Þungum Fótgönguliða. Einingar með Hraður eiginleikan hafa oft "
+"mun betri hreyfigetu í erfiðu landsvæði, sem er mikilvægt þegar ákveðið er "
+"hvar á að setja hermennina. Einnig, Hraður einingar eru ekki eins hörð af "
+"sér og einingar án þessa hæfileika eru þess vegna ekki eins eftirsótt í að "
+"halda mikilvægum reitum."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
@@ -1427,6 +1667,13 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
+"\n"
+"\n"
+"Stældar einingar eru gagnlegar á öllum sviðum í herferðum og þetta er "
+"gagnlegur eiginleiki fyrir allar einingar. Stæld er oftast gagnlegust "
+"einingu þegar það kemur í einingu sem er með lítið af lífspunktum, góða vörn "
+"eða mikla mótstöðu. Stældar einingar eru sérstaklega gagnlegar í að halda "
+"hernaðarmikilvægum stöðum frá óvininum."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:386
@@ -1439,6 +1686,8 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
+"Sterkar einingar gera 1 meira í skaða fyrir hvera árás sem þeir hitta í "
+"skylminga bardaga og hafa 1 auka lífspunkt."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
@@ -1450,6 +1699,12 @@ msgid ""
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"Þótt þær séu gagnlegastar í skylmingum, eru Sterkar einingar bestar fyrir "
+"einingar sem hafa margar árásir, eins og Álfa Stríðsmann. Sterkar einingar "
+"geta verið gagnlegar þegar þessi litli auka skaði er allt sem þarf til að "
+"gera meiðandi högg í drepandi högg."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
@@ -1459,7 +1714,7 @@ msgstr "Óttaleysi"
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
+msgstr "Ljós eða myrkur hefur engin áhrif á þessa hugrökku einstaklinga."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
@@ -1473,6 +1728,9 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Tryggar einingar þurfa ekki uppihald. Flestar einingar þínar þurfa uppihalds "
+"kostnað á endanum á hverri lotu, sem er jöfn styrkleikastigi þeirra. Tryggar "
+"einingar þurfa það hins vegar ekki."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
@@ -1486,6 +1744,15 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"Í herferðum, gæti verið að sumar einingar ákveði að gangast til liðs við "
+"spilara af eigin ástæðum og vilja. Slíkar einingar eru merktar með Tryggur "
+"eiginleikanum. Þótt það gæti þurft peninga til að endurkalla þær, þurfa þær "
+"aldrei uppihalds kostnað. Þetta getur gert þær dýrmætar í löngum herferðum, "
+"þegar gull er af skornum skammti. Þessi eiginleiki fer aldrei til ráðinna "
+"eininga, svo það er ekki gáfulegt að reka þessar einingar eða senda þær í "
+"gagnlítin dauða."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:408
@@ -1509,6 +1776,12 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"Ódauðar einingar hafa venjulega bara 'Ódauður' sem eina eiginleika þeirra. "
+"Þar sem Ódauðar einingar eru líkamar hinna dauðu, reistir til að berjast á "
+"ný, hefur eitur engin áhrif á þær. Þetta getur reynst afskaplega vel þegar "
+"óvinirnir nota mikið af eitri í árásum sínum."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:416
@@ -1521,6 +1794,8 @@ msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
+"Vélrænar einingar eru ónæmar gagnvart eitri, tæming og plága virka heldur "
+"ekki á þær. "
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:419
@@ -1531,6 +1806,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Vélrænar einingar hafa venjulega 'Vélrænn' sem eina eiginleika þeirra. Þar "
+"sem vélrænar einingar hafa ekkert líf, hafa tæming, eitrun og plága engin "
+"áhrif á þær. "
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:424
@@ -1542,6 +1822,8 @@ msgstr "Fimi"
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
+"Fimar einingar gera 1 auka skaða fyrir hverja heppnaða árás í langdrægum "
+"bardaga."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:427
@@ -1553,6 +1835,11 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"Fimi er eiginleiki sem fer eingöngu til Álfa. Álfafólkið er þekkt fyrir "
+"mikla fimi og góða hæfileika með bogann. Sumir skara, samt sem áður, frammúr "
+"hinum álfunum með bogann. Þeir álfar gera meiri skaða með hverri ör."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:432
@@ -1565,6 +1852,8 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
+"Frægir fyrir harðsemi sína, sumir dvergar eru harðgerðari enn aðrir og geta "
+"hvílst jafnvel meðan þeir ferðast."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
@@ -1575,17 +1864,24 @@ msgid ""
 "the usual 2 HP after each turn they did not fight. They also suffer a "
 "quarter less damage from poison."
 msgstr ""
+"\n"
+"\n"
+"Heilbrygðar einingar hafa 1 auka lífspunkt og 1 auka lífspunkt fyrir hvert "
+"styrkleikastig umfram það sem eðlilegt er. Þau hvílast einnig, lækna 2 "
+"lífspunkta hverja lotu sem þeir berjast ekki og eitrun hefur aðeins 3/4 "
+"áhrif á þá."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
 msgid "Dim"
-msgstr "Dimma"
+msgstr "Tregð"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Tregar einingar þurfa 20% meiri reynslu til að auka við sig styrkleikastigi."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -1595,6 +1891,10 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Tregða er eiginleiki sem er alltof algengur í Durtum og öðrum óæðri verum. "
+"Það eru ástæður fyrir því að þessar verur séu óæðri og þetta er ein af þeim."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -1615,6 +1915,10 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Þykkir og klaufskir, hægir einstaklingar af Durtum og öðrum verum hreyfa sig "
+"hægar, enn fá það bætt með örlítið auknum lífspunktum"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
@@ -1624,7 +1928,7 @@ msgstr "Veikburði"
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
-msgstr ""
+msgstr "Veikburða einingar fá -1 í lífspunktum og í skylmingaskaða."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -1633,6 +1937,9 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"Leikja kort búa yfir margskonar landslagi sem hafa bæði áhrif á hreyfingu og "
+"varnargetu einingar í bardaga.\n"
+"\n"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:472
@@ -1650,6 +1957,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Gras stendur fyrir opinni sléttu, hvort sem er ræktuð, beitiland eða villt. "
+"Enn sem opið land, er auðvelt að komast yfir Gras, enn einnig erfitt að "
+"verja sig í. Venjulega, eru þær einingar sem standa sig best á grasi annað "
+"hvort hestamenn, eða mjög fimar einingar sem nýta sér opna rýmið.\n"
+"\n"
+"Flestar einingar hafa vörnina 30 til 40% á grasi."
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:484
@@ -1687,6 +2000,20 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
+"Skógar standa fyrir hvaða trésvæði sem hefur nægan vöxt, til að hindra "
+"yfirferð. Þótt þeir hægi á nánasst öllum, þá gefa þeir einnig betri vernd "
+"til flestra eininga enn opið svæði. Hestamenn, hinsvegar, hafa svo mikil "
+"vandræði að stýra sér í gegnum þetta svæði að þeir fá enga bónusa af því að "
+"fela sig þarna. Álfar eru undantekning á þessari almennu skógarreglu. Ekki "
+"bara geta þeir labbað yfir skógin eins og gegnum gras, heldur fá þeir einnig "
+"nokkuð mikla varnarbónusa. Dvergar eru önnur undantekning á þessari reglu; "
+"þótt þeir geti þrammað í gegnum skógin án mikils hraða taps, eru þeir svo "
+"ókunnugir landsslaginu að þeir fá ekkert meiri vörn þarna enn á graslendi.\n"
+"\n"
+"Flestar einingar fá 50% vörn í skógi, enn hestamenn eingöngu 30%. Álfar, á "
+"hinn bógin, fá 60 til 70% vörn, einnig hestamenn þeirra. Dvergar fá að "
+"meðaltali ekki nema 30% vörn í skógum.\n"
+"\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:508
@@ -1706,6 +2033,14 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Hæðir standa fyrir allt frekar óslétt landslag, með nóg af holum og hólum "
+"til að gefa eitthvað skjól. Hæðir eru frekar erfiðar yfirferðar fyrir flesta "
+"hermenn. Dvergar, Tröll og Orkar hafa hins vegar nógu mikla þekkingu á "
+"svæðinu að geta hlaupið yfir það án þess að hægja á sér. Hestamenn hafa "
+"erfiðleika að fóta sig og fá því ekki varnarbónusa.\n"
+"\n"
+"Flestar einingar fá 50% vörn í hæðum, meðan hestamenn fá engöngu 40%. "
+"Dvergar fá hins vegar 60% vörn í hæðum."
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:520
@@ -1725,6 +2060,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Fjöll eru nógu brött til að flestar einingar þurfi að klifra yfir hindranir "
+"til að hreyfa sig. Þetta veldur því, að þau gefa nokkuð góða varnar bónusa "
+"til flestra hermanna, enn getur einnig komið í veg fyrir að mörg þeirra "
+"eininga komists yfir fjöllin. Flestir hestamenn geta einfaldlega ekki farið "
+"inní fjöllót svæði; enn, álfa hestamenn eru undantekning, sem og Durta Úlf "
+"Riddarar. Bæði Dvergar og Tröll búa í fjöllunum og eiga auðvelt með að "
+"komast leiðar sinnar þar.\n"
+"\n"
+"Flestar einingar fá í kringum 60% vörn í fjöllum, meðan Dvergar fá 70%."
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:532
@@ -1743,6 +2087,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Mýrar sstanda fyrir allskonar votlendi. Mýrar hægja á nánast hverjum sem er "
+"og trufla þá við að verja sig. Undantekning við þetta er hvaða vera sem "
+"hefur líkamlega lögun til að hreyfa sig í vatni; þau fá bæði fulla hreyfingu "
+"og varnarbónus. Þeir sem búa í votlendinu eru einnig snjallir í að nota "
+"þetta landlag sér í hag.\n"
+"\n"
+"Flestar einingar þurfa að sætta sig við 30% vörn í mýrum. Hafmenn, Naga og "
+"Sauriar hafa hins vegar oftast kringum 60%"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:544
@@ -1762,6 +2114,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"Grunnt vatn stendur fyrir allt vatn sem er nógu djúpt til að koma upp að "
+"mitti á manni. Þetta er nóg til að hægja á hverjum sem er nánast og koma "
+"þeim í aðstöðu þar sem þeir er gjöropnir fyrir árás. Dvergar, þar sem vatnið "
+"nær þeim nánast upp að haus, eru í skelfilegri aðstöðu þarna. Undantekningin "
+"eru verur sem eru líkamlega lagaðar að sundi, og fá þær því ágætis "
+"varnarbónusa og fulla hreyfigetu.\n"
+"\n"
+"Flestar einingar fá 20 til 30% vörn í grunnu vatni, þar sem bæði Naga og "
+"Hafmenn fá 60%."
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:556
@@ -1777,6 +2138,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Djúpt vatn stendur fyrirr allt vatn sem er nóg til að ná yfir höfuð á manni. "
+"Flestar einingar geta ekki farið inní reiti með djúpu vatni: Þetta er svæði "
+"eininga sem geta annað hvort flogið, eða eru mjög góðir sundmenn.\n"
+"\n"
+"Hafmenn og Naga fá bæði 50% vörn í djúpu vatni og fulla hreyfigetu."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:568
@@ -1793,6 +2159,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"Frosið svæði stendur fyrir hvaða flatlendi sem er þakið snjó eða ís. Flestar "
+"einingar eru hægðar á því og eiga erfiðara með að verja sig. Taktu eftir að "
+"syndandi einingar, líka þær sem geta andað neðansjávar, geta ekki synt undir "
+"ís.\n"
+"\n"
+"Flestar einingar fá 20 til 40% í frosnu svæði."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:580
@@ -1812,6 +2184,14 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
+"Kastalar eru hvaða varanlega virki sem er. Nætum allar einingar fá góða "
+"varnarbónusa við að vera í kastala og allar einingar njóta fullrar "
+"hreyfigetu. Að koma einingu fyrir i kastala þýðir að það sé að verja "
+"kastalan. Án einingar á hverjum vegghluta, geta óvinir auðveldlega lumist "
+"inn í kastalann ótruflaðir og fá sömu varnarbónusana og allir aðrir inni.\n"
+"\n"
+"Flestar einingar fá 60% vörn í kastala.\n"
+"\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:594
@@ -1827,6 +2207,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Óstöðugleiki sandsins veldur flestum einingum erfiðleikum í yfirferð og "
+"opnar þau fyrir árásum. Hins vegar, breiðir fætur og snákalegir líkamar "
+"eðlulegra vera valda því að þau geta fótað sig betur í sandi.\n"
+"\n"
+"Flestar einingar fá 20 til 40% vörn í sandi."
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:606
@@ -1893,6 +2278,10 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units. In all "
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
+"Eintaka sinnum eru staðir neðanjarðar lýstir upp með ljósi frá yfirborðinu "
+"skínandi ofan í jörðina. Þetta gefur skaðabónus til allra réttvísra eininga "
+"og tekur bónusin af öllum ringulreiðum einingum. Að öðru leiti virkar þetta "
+"alveg eins og hver annar reitur í hellinum."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:650
@@ -1912,6 +2301,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Sveppa nýlendur eru stórir neðanjaðrar skógar af risa sveppum, sem dafna í "
+"röku myrkrinu. Flestar einingar hafa einhverja erfiðleika að fóta sig á "
+"mjúku svampkenndu yfirborði minni sveppa, enn fá fínasta skjól fyrir aftan "
+"stærri sveppastilkana. Hestamanna einingar, flækjast hinsvegar og skortir "
+"almennilegt ferðafrelsi í bardaga. Ódauðar einingar hafa náttúruleg tengs "
+"við rotnun og standa sig nokkuð vel í sveppa nýlendum.\n"
+"\n"
+"Flestar einingar fá 50% til 60% í sveppanýlendum, meðan hestamenn fá "
+"einungis 20%."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]: id=terrain_village
@@ -1933,6 +2331,14 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
+"Þorp standa fyrir hvaða hóps sem er af byggingum, menskum eða ekki. Næstum "
+"allar einingar, jafnvel hestamenn, eiga auðvelt með að fóta sig í þorpum og "
+"flestar einingar fá varnarbónus á því að vera í þorpi. Þorp leifa einingum "
+"að þrífa og hlúa að sárum sínum, sem leyfir hvaða einingu sem er staðsett í "
+"þorpinu að lækna átta lífspunkta hverja lotu, eða lækna sig af eitri.\n"
+"\n"
+"Flestar einingar fá 50 til 60% vörn í þorpum, meðan riddarar fá bara 40%.\n"
+"\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:678
@@ -1952,6 +2358,14 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"Neðansjávar þorp eru heimili Haffólksins og Naga. Meðan flestar vatns verur "
+"eiga heima hérna, eiga land-verur soldið erfitt með að fóta sig og vernda "
+"þessi þorp(af augljósum ástæðum). Enn, eins og í hverju þorpi, er allt sem "
+"til þarf til að hlúa að sárum sínum. Hvaða eining sem er staðsett þorpi "
+"getur læknað átta lífspunkta hverja lotu, eða verið læknuð af eitri.\n"
+"\n"
+"Haffólk og Naga fá 60% vörn í neðansjávar þorpum, meðan landverur fá að "
+"meðaltali litla vörn."
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
@@ -1966,6 +2380,10 @@ msgid ""
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
+"Óaðgengilegt svæði er bara hvaða gil eða hola sem, eins og nafnið gefur til "
+"kynna, ekki hægt að fara yfir með því einu að ganga. Gil eru þekkt fyrir "
+"mikla veggi sína, sem gæti tekið daga að fara yfir. Hvað leikspilun varðar, "
+"geta bara fljúgandi einingar farið yfir þetta svæði. "
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -1999,6 +2417,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Þegar á er mjög grunn, er eiginlega ekkert vandamál að fara yfir hana. "
+"Meira, flestar verur sem geta synt geta einnig farið auðveldlega yfir ána. "
+"Hvað leikspilun varðar, er lækjar vað annað hvort meðhöndlað sem gras, eða "
+"grunnsævi, veltandi á því hvað hentar einingunni sem er á reitnum best."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
@@ -2015,6 +2437,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Árif eru grunnsævi skapað af steinum, kóröllum og ssandi. Þetta gefur "
+"flestsum landverum ágætis fótastað og varnaraðstöður enn að vaða í vatni og "
+"gefur einnig syndandi verum mjög góða vörn.\n"
+"\n"
+"Hafmenn og Naga fá bæði 70% vörn á árifum."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2036,6 +2463,15 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Til þeirra sem geta smíðað eina, er hæfileikinn að byggja brú frelsi frá "
+"duttlungafullum nátturu vatnanna, þar sem vað getur komið og farið með "
+"yfirborði vatnsins. Svo ekki sé minnst á lúxusin við að hafa lappirnar "
+"þurrar, sem er ekkert til að hlægja að á kaldari mánuðum ársins.\n"
+"\n"
+"Fyrir þá sem fara á landi eða sjó, er brúin það besta úr báður heimum - hvað "
+"leikspilun varðar, er hún meðhöndluð annað hvort sem gras eða vatnið undir "
+"brúnni og fer eftir hvað hentar einingunni á brunni. Taktu samt eftir að "
+"sundvera og landvera geta ekki verið báðir á sama reit á brúnni á sama tíma."
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:744
@@ -2051,6 +2487,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Hindranir sem ekki einu sini ákveðnasti ferðalangur gæti komist yfir. Þetta "
+"gæti innihaldið sterka grjótveggi og fjöll svo stór og brött að alltaf eru "
+"þau umkringd skýjum. Jafnvel fljúgandi verur geta ekki komist yfir fjöll af "
+"þessari stærðargráðu og ekki einu sinni sterkasta tröll gæti barið sig í "
+"gegnum þykku steinveggina."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -2064,6 +2505,9 @@ msgid ""
 "Clear chat messages.\n"
 "\n"
 msgstr ""
+"\n"
+"Hreinsa spjall skilaboð.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:769
@@ -2094,6 +2538,9 @@ msgid ""
 "Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Sýna hve margar myndir eru framleiddar á sekúndu (FPS).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:778
@@ -2110,6 +2557,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Endurteiknar skjáin og hleður inn alla myndaskrár sem gætu hafa breyst.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2118,6 +2568,9 @@ msgid ""
 "Bring up theme selection menu.\n"
 "\n"
 msgstr ""
+"\n"
+"Kemur upp með þema valmynd.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:787
@@ -2126,6 +2579,9 @@ msgid ""
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"Fer útúr leik (án aðspurnar).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:790
@@ -2135,7 +2591,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vista leik.\n"
+"Vistar leik (án aðspurnar).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2144,6 +2600,8 @@ msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Vistar leik og lokar svo (án aðspurnar)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
@@ -2158,6 +2616,10 @@ msgid ""
 "kick him.\n"
 "\n"
 msgstr ""
+"\n"
+"Bannar spilara í fjölspilunar leik útfrá IP tölunni sem notuð er af hans "
+"notendanafni og sparkar honum.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:806
@@ -2179,6 +2641,11 @@ msgid ""
 "difficulties.\n"
 "\n"
 msgstr ""
+"\n"
+"Sparkar spilara í fjölspilunarleik. Þeir geta komið aftur inní leikin, nema "
+"þú bannir þá. Best er að láta vita fyrirfram og sparka þeim vingjarnlega ef "
+"tengingarvandamál eða aðrir erfiðleikar eru fyrir.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:812
@@ -2188,6 +2655,10 @@ msgid ""
 "displayed.\n"
 "\n"
 msgstr ""
+"\n"
+"Þaggar niður í ákveðnum áhorfenda. Ef ekkert notendanafn er til staðar eru "
+"niðurþögguð notendanöfn sýnd.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
@@ -2195,6 +2666,8 @@ msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Þaggar niður í eða leyfir áhorfendum að tala. Fer á milli Á/Af."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:820
@@ -2277,12 +2750,12 @@ msgstr ""
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
-msgstr "lækningar"
+msgstr "heilar"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
 msgid "female^cures"
-msgstr "læknar"
+msgstr "heilar"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2291,16 +2764,19 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Heilar:\n"
+"Heilari getur læknað einingu af eitrun, enn einingin sem var læknuð fær enga "
+"nýja lífspunkta þá lotu sem hún var læknuð af eitrinu."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr ""
+msgstr "endurskapar"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 msgid "female^regenerates"
-msgstr ""
+msgstr "endurskapar"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
@@ -2309,16 +2785,19 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Endurskapar:\n"
+"Þessi eining mun lækna sjálfa sig um 8 lífspunkta hverja lotu, ef eitrað, "
+"mun það fjarlægja eitrið í stað lækningar."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
 msgid "steadfast"
-msgstr ""
+msgstr "staðfastur"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 msgid "female^steadfast"
-msgstr ""
+msgstr "staðföst"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
@@ -2327,20 +2806,23 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Staðfastur:\n"
+"Þessi eining tvöfaldar mótsstöðu sína, að hámarki 50% þegar í vörn. Viðkvæmi "
+"tvöfaldast þó ekki."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
 #: data/core/macros/abilities.cfg:171 data/core/macros/abilities.cfg:218
 #: data/core/macros/abilities.cfg:277
 msgid "leadership"
-msgstr ""
+msgstr "leiðtogi"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
 msgid "female^leadership"
-msgstr ""
+msgstr "leiðtogi"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
@@ -2356,16 +2838,24 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Leiðtogi:\n"
+"Þessi eining getur stjórnað öðrum einingum sem standa næst, látandi þá "
+"berjast betur.\n"
+"\n"
+"Viðliggjandi einingar af lægri styrkleikastigi gera meiri skaða í bardaga. "
+"Þegar viðliggjandi eining, á lægri styrkleigastigi, og er í liði með "
+"leiðtogaeiningunni fer í bardaga, meiða árásir einingarinnar 25% meira "
+"sinnum munin á styrkleikastigunum á leiðtoga og óbreyttri einingu."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
-msgstr ""
+msgstr "truflar"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
 msgid "female^skirmisher"
-msgstr ""
+msgstr "truflar"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
@@ -2374,6 +2864,9 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Truflari:\n"
+"Þessar einingar eru sérhæfðar í að fara í gegnum línu óvinanna og trufla þá "
+"með því að ráðast á særða og veikburða aftast. Hundsar stjórnsvæði."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
@@ -2395,16 +2888,22 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Lýsir:\n"
+"Þessi eining lýsir svæðið í kringum sig, sem lætur réttvísar einingar "
+"berjast betur, og ringulreiðar berjast verr.\n"
+"\n"
+"Allar samliggjandi einingar við þessa einingu berjast eins og kvöld sé á "
+"nóttinni, og dagur sé á kvöldinu."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:377
 msgid "teleport"
-msgstr ""
+msgstr "fjarfluttur"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
 msgid "female^teleport"
-msgstr ""
+msgstr "fjarflutt"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
@@ -2413,16 +2912,19 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"Fjarflutningur:\n"
+"Þessi eining getur teleportað sig á milli tveggja tómra þorpa sem eru í eigu "
+"eiganda einingarinnar."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
 msgid "ambush"
-msgstr ""
+msgstr "fyrirsát"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 msgid "female^ambush"
-msgstr ""
+msgstr "fyrirsát"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -2434,6 +2936,12 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Fyrirsát:\n"
+"Þessi eining getur falið sig í skógi, óséð af óvinum sínum.\n"
+"\n"
+"Óvina einingar geta ekki séð þessa einingu þegar hún er í skógi, nema þeir "
+"standi við hlið hennar. Allar óvina einingar sem uppgvöta þessa einingu "
+"missa tafarlaust alla hreyfipunkta sína."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
@@ -2451,6 +2959,12 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Næturveiði:\n"
+"Þessi eining verður ósýnileg á nóttinni.\n"
+"\n"
+"Óvina einingar geta ekki séð þessa einingu á nótinni, nema þeir standi við "
+"hlið hennar. Allir óvinir sem uppgvöta þessa einingu missa tafarlaust alla "
+"hreyfipunkta sína."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
@@ -2478,16 +2992,23 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Leynd:\n"
+"Þessi eining getur falið sig í þorpum (fyrir utan neðansjávar þorp, ósýnileg "
+"fyrir óvinum, nema þeir standi við hliðin á henni.\n"
+"\n"
+"Óvina einingar geta ekki séð þessa einingu inní þorpi, nema þeir standi við "
+"hlið hennar. Allir óvinir sem uppgvöta þessa einingu missa tafarlaust alla "
+"hreyfipunkta sína."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
 msgid "submerge"
-msgstr ""
+msgstr "kafar"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
 msgid "female^submerge"
-msgstr ""
+msgstr "kafar"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -2499,16 +3020,22 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Kafar:\n"
+"Þessi eining getur falið sig í djúpu vatni, ósýnileg fyrir óvinum sínum.\n"
+"\n"
+"Óvina einingar geta ekki séð þessa einingu í djúpu vatni, nema þeir standi "
+"við hlið hennar. Allir óvinir sem uppgvöta þessa einingu missa tafarlaust "
+"alla hreyfipunkta sína."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
-msgstr ""
+msgstr "nærist"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 msgid "female^feeding"
-msgstr ""
+msgstr "nærist"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -2517,14 +3044,17 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Nærist:\n"
+"Þessi eining fær 1 lífspunkt ofan á hámarks lífspunkta sína þegar hún drepur "
+"aðra einingu. "
 
 #: data/core/macros/abilities.cfg:523
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 á hámarks lífspunkta"
 
 #: data/core/macros/abilities.cfg:565
 msgid "backstab"
-msgstr ""
+msgstr "bakstunga"
 
 #: data/core/macros/abilities.cfg:567
 msgid ""
@@ -2533,6 +3063,10 @@ msgid ""
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
+"Bakstunga:\n"
+"Þegar notað er í árás (ekki vörn), gerir þessi árás tvöfaldan skaða þegar "
+"óvina skotmarkið er mitt á milli annars vina einingar, og ef sú eining er "
+"ekki óbardaga hæf (breytt í stein eða öðruvísi lömuð)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -2545,6 +3079,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
+"Plága:\n"
+"þegar eining er drepin með plágu árás, breytist dauða einingin í samskonar "
+"einingu og í sama liði og einingin með plágu árásina. Þetta virkar ekki á "
+"ódauðar einingar og ekki á einingar inní þorpum."
 
 #: data/core/macros/abilities.cfg:593
 msgid ""
@@ -2553,6 +3091,10 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
+"Plága:\n"
+"Þegar eining er drepin með plágu árás, breytist sú eining í uppvakning í "
+"sama liði og einingin með plágu árásina. Þetta virkar ekki á ódauðar "
+"einingar eða einingar inní þorpum."
 
 #: data/core/macros/abilities.cfg:603
 msgid "slows"
@@ -2566,31 +3108,44 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"Hæging:\n"
+"Þessi áráss hægir á skotmarkinu þar til skotmarkil lýkur lotu. Hægðar "
+"einingar gera bara hálfan skaða og ferðir kosta tvöfallda hreyfipunkta. "
+"Hægðar einingar fá litla snígla mynd í hliðarsskjá upplýsingunum þegar þær "
+"eru valdar."
 
 #: data/core/macros/abilities.cfg:614
+#, fuzzy
 msgid "petrifies"
-msgstr ""
+msgstr "Högg"
 
 #: data/core/macros/abilities.cfg:616
+#, fuzzy
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
+"Steining:\n"
+"Þessi árás breytir skotmarkinu í stein. Einingar sem hafa breyst í stein "
+"mega ekki hreyfa sig né gera árásir."
 
 #: data/core/macros/abilities.cfg:625
 msgid "marksman"
-msgstr ""
+msgstr "skytta"
 
 #: data/core/macros/abilities.cfg:627
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Skytta:\n"
+"Þegar notað í árás(ekki vörn), hefur þessi árás alltaf að minsta kosti 60% "
+"líkur á að hitta."
 
 #: data/core/macros/abilities.cfg:652
 msgid "swarm"
-msgstr ""
+msgstr "svarmur"
 
 #: data/core/macros/abilities.cfg:654
 msgid ""
@@ -2600,10 +3155,15 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
+"Svarmur:\n"
+"Einingar með þennan eiginleika verða að gera færri árásir þegar búið er að "
+"meiða þær. Talan á árásunum er mæld út frá prósentum og prósentu lífspunkta "
+"árásirnar. Ef upprunalega voru árásirnar 10 og einingin hefur eingöngu 30% "
+"af lífspunktum sínum eftir, getur hún eingöngu gert 3 árásir."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
-msgstr ""
+msgstr "áhlaup"
 
 #: data/core/macros/abilities.cfg:665
 msgid ""
@@ -2611,6 +3171,10 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
+"Áhlaup:\n"
+"Þegar notað í árás(ekki vörn), gerir þessi árás tvöfaldan skaða á "
+"skotmarkið. Árásaraðillinn fær einnig á sig tvöfalldan skaða frá gagnárás "
+"skotmarksins."
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -2622,6 +3186,9 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Tæmir:\n"
+"Þessi eining tæmir líf úr lifandi einingum, læknandi sjálfan sig fyrir "
+"helmingin af skaðanum sem hún olli. (gerir 4 í skaða, læknar sjálfa sig um 2)"
 
 #: data/core/macros/abilities.cfg:699
 msgid "poison"
@@ -2634,11 +3201,15 @@ msgid ""
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
+"Eitrun:\n"
+"Þessi árás eitrar lifandi skomörk. Eitraðar einingar missa 8 lífspunkta "
+"hverja lotu þar til þau eru læknuð eða eiga 1 lífspunkt eftir. Eitur getur "
+"ekki, útaf fyrir sig, drepið einingu."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Vertu árásargjarnari"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
@@ -2648,17 +3219,17 @@ msgstr "árásagjörn."
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Vertu verndargjarnari"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
 msgid "defensive."
-msgstr ""
+msgstr "verndun."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Einbeittu þér að því að sigra..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -2672,12 +3243,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "Leiðbeina bandamanni"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Hvaða óvina liði á að einbeita sér að?"
 
 #. [then]
 #. [else]
@@ -2717,12 +3288,12 @@ msgstr "Til baka"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Einbeita að vernda..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Hvaða vina lið á að vernda?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
@@ -2737,12 +3308,12 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Hægri-smelltu til að velja stað til að vernda."
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
-msgstr ""
+msgstr "Verndaðu þennan stað."
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
@@ -2752,22 +3323,22 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Hætt við að velja stað"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
 msgid "Clear objective orders"
-msgstr ""
+msgstr "Hreinsa takmarka skipanir"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
 msgid "Clear behavior orders"
-msgstr ""
+msgstr "Hreinsa hegðunar skipanir"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
 msgid "Clear all orders"
-msgstr ""
+msgstr "Hreinsa allar skipanir"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
@@ -2845,7 +3416,7 @@ msgstr ""
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Ekkert gull tekið með yfir í næstu atburðarás."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
@@ -2868,12 +3439,12 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
+msgstr "Þú hefur rekist á óskabrunn. Hvers viltu óska þér?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
 msgid "A swift victory"
-msgstr ""
+msgstr "Skjótan sigur"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:49
@@ -2881,6 +3452,8 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
+"Með þessum gullpeningi, óska ég mér að þessi bardagi endi í skjótum og "
+"öruggum sigri."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
@@ -2895,12 +3468,12 @@ msgstr "Ég óska þess að þessi gullpeningur yrði skilað mér tífalt."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Frið í Wesnoth."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:75
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "Það eina sem er þess virði að óska sér, er að friður ríki í landinu."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:81
@@ -2910,27 +3483,27 @@ msgstr "Ekki óska þér."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
 msgid "Take it"
-msgstr ""
+msgstr "Taka hann"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
 msgid "Leave it"
-msgstr ""
+msgstr "Skilja hann eftir"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
 msgid "Potion of Healing"
-msgstr ""
+msgstr "Lækningar drykk"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:229
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr ""
+msgstr "Tilfinning hreystis og vellíðunnar yfirtekur drykkjarmannin."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:230
 msgid "You are not worthy of healing."
-msgstr ""
+msgstr "Þú ert ekki verðugur lækningar."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:264
@@ -2940,7 +3513,7 @@ msgstr "Eitur"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:267
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr ""
+msgstr "Eitur flæðir í æðum þessarar einingar á þessari stundu."
 
 #. [object]
 #: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
@@ -2948,10 +3521,12 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Þetta vatn lætur skylminga árásir hafa 'yfirnátturulega' skaða aðferð til "
+"enda þessa leiks."
 
 #: data/core/macros/items.cfg:290
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
+msgstr "Ég get ekki notað þennan hlut! látum aðra taka hann."
 
 #. [object]
 #: data/core/macros/items.cfg:292
@@ -2961,17 +3536,17 @@ msgstr "Heilagt vatn"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:325
 msgid "Potion of Strength"
-msgstr ""
+msgstr "Jötunseyði"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:328
 msgid "Strength is given to the drinker."
-msgstr ""
+msgstr "Drekkandinn verður Sterkur"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:368
 msgid "Potion of Decay"
-msgstr ""
+msgstr "Seyði rotnunar"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:371
@@ -2981,60 +3556,60 @@ msgstr "Vesalings einingin drakk eitthvað voðalega slæmt."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "Hring Endursköpunar"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:408
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Þessi hringur mun lækna þann er hann ber lítið hverja lotu."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:444
 msgid "Ring of Slowness"
-msgstr ""
+msgstr "Hring Þyngdarinnar"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:447
 msgid "The bearer of this ring is slowed."
-msgstr ""
+msgstr "Sá sem ber þennan hring er hægari."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:481
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "Staf Hraðans"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:484
 msgid "This staff will grant the bearer swift movement."
-msgstr ""
+msgstr "Þessi stafur mun auka hraða þess er hans ber."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:485
 msgid "Only magical beings can wield such an object."
-msgstr ""
+msgstr "Eingöngu göldróttar verur geta notað slíkan hlut."
 
 #: data/core/macros/items.cfg:535
 msgid "Only the mermen can use this item!"
-msgstr ""
+msgstr "Eingöngu hafmenn geta notað þennan hlut!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Ætti $unit.name að taka upp gaffalin?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
 msgid "Storm Trident"
-msgstr ""
+msgstr "Storm Gaffall"
 
 #. [object]
 #: data/core/macros/items.cfg:540
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr ""
+msgstr "Þessi gaffall leyfir hafmanninum að skjóta eldingum að óvinum sínum."
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:544
 msgid "storm trident"
-msgstr ""
+msgstr "Storm Gaffall"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -3853,6 +4428,8 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Andar búa yfir óeðlilegri mótstöðu til skaða og ferðast frekar hægt yfir "
+"opin vötn."
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
@@ -3862,79 +4439,100 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr ""
+msgstr " Þessi eining getur læknað lítillega."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+" Þessi eining getur læknað þá sem standa næst sér, og læknað þá af eitri."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
+msgstr " Þessi eining getur læknað eituráhrif af einingum nærri sér."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" Þessi eining endurskapar sig, sem leyfir henni að lækna sig alltaf eins og "
+"hún væri í þorpi. "
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Staðfesta þessarar einingar dregur úr meiðslum frá sumum árásum, enn bara "
+"þegar hún verst."
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
+" Leiðtogahæfileikar þessarar einingar leyfa öðrum samliggjandi einingum að "
+"gera meiri skaða í bardaga, séu þær á lægra styrkleikastigi."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Þessi eining er góð í að trufla óvini og getur hlaupið í gegnum stjórnsvæði "
+"óvinanna óhindrað."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Lýsing eykur ljósstyrk í nærliggjandi svæði."
 
 #: data/core/macros/special-notes.cfg:38
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
+" Þessi eining getur fjarflutt sig á milli hvaða tveggja þorpa sem er sem "
+"eigandi einingarinnar á, séu þorpin tóm."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" Í skóglendi, getur þessi eining verið ósýnileg fyrir óvinum sínum, nema "
+"þeir standi við hana eða hún sýnir sig með því að gera árás."
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Þessi eining getur falið sig að nóttu til, skiljandi engin ummerki eftir um "
+"nærveru sína."
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" Þessi eining getur falið sig í þorpum (nema neðansjávar þorpum) og verið "
+"ósýnileg óvinum sínum, nema þeir standi við hana."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Þessi eining getur ferðast óseð um djúpt vatn, þurfandi ekkert loft frá "
+"yfirborðinu."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+" Þessi eining fær 1 auka lífspunkt ofan á hámark lífspunkta sína í hvert "
+"skipti sem hún drepur einingu."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -3942,7 +4540,7 @@ msgid ""
 "until either it or its enemy lies dead."
 msgstr ""
 " Hvert skipti sem notast er við berserk mun einingin þrýsta einvígið þar til "
-"annar hvort liggur dauður niðri."
+"annar hvor liggur dauður niðri."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -3950,65 +4548,87 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
+" Ef óvinur skotmarksins er hinum megin við skotmarkið meðan ráðist er á það, "
+"má þessi eining bakstinga, sem gerir tvöfaldan skaða."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
+" Óvinir sem missa líf sitt til plágurnar, munu rísa aftur í Ódauða, nema "
+"þeir standi í þorpum."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" Þessi eining hægir á óvinum sínum, minkandi hreyfigetu þeirra og skaða um "
+"helming þar til skotmörkin enda lotu."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Hæfileikinn til að geta breytt lifandi verum í stein gerir þessa einingu "
+"mjög hættulega."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Hittni þessarar einingar leyfir henni að hitta andstæðing sinn nokkuð oft "
+"og vel, enn bara á sókninni."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
+" Þessi eining hefur galdra árásir, sem hafa alltaf góðar líkur á að hitta "
+"óvinin."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Svarmandi árásir þessarar einingar verða máttminni hvenær sem þessi eining "
+"er slösuð. "
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
+" Beitandi áhlaupi, getur þessi eining gert tvöfaldan skaða enn fær á sig "
+"tvöfaldan skaða; hefur ekki áhrif þegar þessi eining er í vörn."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Í bardaga, getur þessi eining tæmt líf úr óvinum sínum til að auka við sitt "
+"eigið."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" Lengd vopn þessarar einingar, leyfir þeim að eiga alltaf fyrsta höggið, "
+"líka í vörn."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" Fórnarlömb eiturárásar þessarar einingar munu taka skaða á sig þar til þau "
+"eru læknuð af þorpi eða einingu sem heilar."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -4114,7 +4734,7 @@ msgstr "heilbrygð"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr ""
+msgstr "Getur hvílt sig þó hann ferðist, eitur hefur bara 3/4 áhrif."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4129,17 +4749,17 @@ msgstr "óttalaus"
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Berst eðlilega þrátt fyrir nótt sem dag."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr "veikbyrður"
+msgstr "veikburða"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
 msgid "female^weak"
-msgstr "veikbyrð"
+msgstr "veikburða"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
@@ -4154,18 +4774,18 @@ msgstr "hæg"
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 msgid "dim"
-msgstr "dimmur"
+msgstr "tregur"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 msgid "female^dim"
-msgstr "dimm"
+msgstr "treg"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
 #, fuzzy
 msgid "aged"
-msgstr "skotmál"
+msgstr "langdræg"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4441,32 +5061,32 @@ msgstr ""
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:128
 msgid "race^Goblin"
-msgstr ""
+msgstr "Durtur"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
 msgid "race+female^Goblin"
-msgstr ""
+msgstr "Durta"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:130
 msgid "race^Goblins"
-msgstr ""
+msgstr "Durtar"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:143
 msgid "race^Gryphon"
-msgstr ""
+msgstr "Griffon"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
 msgid "race+female^Gryphon"
-msgstr ""
+msgstr "Griffon"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
 msgid "race^Gryphons"
-msgstr ""
+msgstr "Griffonar"
 
 #. [race]: id=human
 #: data/core/units.cfg:160
@@ -4528,42 +5148,42 @@ msgstr ""
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
 msgid "race^Saurian"
-msgstr ""
+msgstr "Saurií"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
 msgid "race+female^Saurian"
-msgstr ""
+msgstr "Sauría"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:179
 msgid "race^Saurians"
-msgstr ""
+msgstr "Sauríar"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:188
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Vélrænn"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race+plural^Mechanical"
-msgstr ""
+msgstr "Vélrænt"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:199
 msgid "race^Merman"
-msgstr ""
+msgstr "Hafmaður"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:200
 msgid "race^Mermaid"
-msgstr ""
+msgstr "Hafmeyja"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:201
 msgid "race^Mermen"
-msgstr ""
+msgstr "Haffólk"
 
 #. [race]: id=monster, description=
 #: data/core/units.cfg:209
@@ -4578,47 +5198,47 @@ msgstr "Skrímsli"
 #. [race]: id=naga, description=
 #: data/core/units.cfg:218
 msgid "race^Naga"
-msgstr ""
+msgstr "Naga"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:219
 msgid "race^Nagani"
-msgstr ""
+msgstr "Nagani"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:220
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nagas"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:228
 msgid "race^Ogre"
-msgstr ""
+msgstr "Þurs"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:229
 msgid "race+female^Ogre"
-msgstr ""
+msgstr "Þursa"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 msgid "race^Ogres"
-msgstr ""
+msgstr "Þursar"
 
 #. [race]: id=orc
 #: data/core/units.cfg:239
 msgid "race^Orc"
-msgstr ""
+msgstr "Orki"
 
 #. [race]: id=orc
 #: data/core/units.cfg:240
 msgid "race+female^Orc"
-msgstr ""
+msgstr "Orka"
 
 #. [race]: id=orc
 #: data/core/units.cfg:241
 msgid "race^Orcs"
-msgstr ""
+msgstr "Orkar"
 
 #. [race]: id=orc
 #: data/core/units.cfg:251
@@ -4791,22 +5411,22 @@ msgstr "Úlfar"
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
 msgid "race^Wose"
-msgstr ""
+msgstr "Vosi"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
 msgid "race^Woses"
-msgstr ""
+msgstr "Vosar"
 
 #. [server]
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
-msgstr ""
+msgstr "Opinber Wesnoth Server"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Óopinber Wesnoth Server"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4857,6 +5477,10 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Réttvísar einingar berjast betur að degi til, og verr á nóttunni.\n"
+"\n"
+"Dagur: +25% Skaði\n"
+"Nótt: -25% Skaði"
 
 #. [language]
 #: data/hardwired/english.cfg:12
@@ -4864,6 +5488,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Hlutlausar einingar berjast jafnvel, þrátt fyrir að það sé nótt eða dagur."
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -4873,6 +5498,10 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Ringulreiðar einingar berjast betur að nóttu til, enn verr á dagin.\n"
+"\n"
+"Dagur: -25% Skaði\n"
+"Nótt: +25% Skaði"
 
 #. [language]
 #: data/hardwired/english.cfg:19
@@ -4973,27 +5602,27 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:39
 msgid "melee"
-msgstr ""
+msgstr "skylming"
 
 #. [language]
 #: data/hardwired/english.cfg:40
 msgid "ranged"
-msgstr "skotmál"
+msgstr "langdræg"
 
 #. [language]
 #: data/hardwired/english.cfg:43
 msgid "blade"
-msgstr ""
+msgstr "eggvopn"
 
 #. [language]
 #: data/hardwired/english.cfg:44
 msgid "pierce"
-msgstr ""
+msgstr "stungvopn"
 
 #. [language]
 #: data/hardwired/english.cfg:45
 msgid "impact"
-msgstr ""
+msgstr "höggvopn"
 
 #. [language]
 #: data/hardwired/english.cfg:46
@@ -5008,7 +5637,7 @@ msgstr "kuldi"
 #. [language]
 #: data/hardwired/english.cfg:48
 msgid "arcane"
-msgstr ""
+msgstr "yfirnáttúrulegt"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5018,11 +5647,15 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Bardaginn um Wesnoth mun sjálfvirkt senda nafnlausa tölfræði um "
+"leikjareynslu þína á miðlara þar sem þær eru geymdar. Þetta leyfir nokkra "
+"hluti, og leyfir okkur að bæta Wesnoth. Til að læra meira um þetta eða "
+"slökkva á því, smelltu á umslagið í hægri-botn horninu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr "Forritarar Wesnoths"
+msgstr "- Forritarar Wesnoths"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5031,11 +5664,14 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Ekki halda leiðtoga þínum of mikið fjarri bardögum. Þú þarf að passa uppá "
+"hann, enn ef ef hann er á of lágu styrkleikastigi gæti hann ekki lifað af "
+"síðari bardaga."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Mikli Galdramaður Delfdador, 516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5045,6 +5681,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"Í ''Aðgerða'' valmyndinni, geturu valið 'sýna hreyfingar óvina' til að lýsa "
+"alla mögulega reiti sem óvinirnir geta farið á (tekið með í reikningin að "
+"þínar einingar verði óhreyfðar. Notaðu þetta til að vera viss um að "
+"óvinirnir geti ekki náð í veiku eða særðu einingarnar þínar í næstu lotu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -5063,7 +5703,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 #: data/hardwired/tips.cfg:209
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- Handbók Hernaðar í Wesnoth"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5072,6 +5712,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Einingar með 'Snarpur' eiginleikan þurfa minni reynslu til að auka við sig "
+"styrkleikastigi. Snemma í herferð, reyndu að leyfa þessum einingum að drepa "
+"óvinina til að fá nokkrar sterkar einingar fyrr."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -5085,11 +5728,14 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Umkringing er hentug hernaðaraðrferð, sérstaklega gagnvart snöggum óvinum. "
+"Með því að setja tvær einingar sitthvorum megin við óvin, mun stjórnarssvæði "
+"þeirra sjá til þess að óvinurinn má bara færa sig um einn reit í næstu lotu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Endurminningar Gweddry, 627YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -5098,6 +5744,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Þú getur farið inní 'Ráða' og 'Endurkalla' skipanirnar með því að hægri-"
+"smella á kastala reit. Það mun leyfa þér að velja í hvaða reit þú vilt setja "
+"nýju eininguna. Plantanti einingum gáfulega getur oft leyft þér að ná þorpi "
+"einni lotu fyrr enn hefði getað verið hægt. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5106,6 +5756,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Það eru oft gagnlegir upplýsingagluggar í aðalvalmyndinni: sem dæmi, 'Stöðu "
+"taflan' mun leyfa þér að sjá hvernig þú stendur þig, og hvernig óvinirnir "
+"standa sig í samanburði."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -5114,11 +5767,15 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Einingar með 'Hraður' eiginleikan hreyfa sig einum auka reit hverja lotu, "
+"þetta getur verið mikilvægt þegar farið er yfir erfitt landsslag eins og "
+"vatn eða hella. Þetta getur skipt sköpum í að geta hreyft sig einn reit eða "
+"tvo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Hálávarður Kalenz, 470YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -5126,6 +5783,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Eftir að hafa spilað nokkra leiki, lestu kaflann 'Leikjaspilun' í "
+"hjálparskjánum vel. Smáatriði verða mikilvæg eftir því sem leikirnir verða "
+"erfiðari!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5134,6 +5794,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Það er oftast betra að byrja næstu atburðarás í herferð með lág "
+"styrkleikjastigs einingum sem eru að komast á næsta stig enn þeim sem eru "
+"komnir á næsta stig nú þegar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -5141,11 +5804,13 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Á www.wesnoth.org geturu fundið herkænsku leiðbeiningar, tæknilegar "
+"upplýsingar, söguna af Wesnoth og margt fleira."
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
 msgid "- The Wesnoth Community"
-msgstr "Wesnoth samfélagið"
+msgstr "- Wesnoth samfélagið"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
@@ -5153,23 +5818,28 @@ msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"Réttvísar einingar berjast betur að degi til, og ringulreiðar einingar betur "
+"að nóttu til. Hlutlausar einingar verða ekki fyrir áhrifum af tíma "
+"sólarhringsins."
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Konunglegt Samansafn af Bardaga Upplýsingum - Bindi II, 212YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Nokkuð góð áætlun getur klúðrast ef þú framkvæmir hana á vitlausum tíma "
+"dagsins."
 
 #. [tip]
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Handbók um Herkænskulegt Yfirlit Bindi I - Haldric II, 42YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -5179,6 +5849,10 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Ef þú spilar með 'Hyl' eða 'Stríðsþoku' stillta á, muntu ekki vita á móti "
+"hverju þú ert. Í þessu máli, eru langdrægar könnunar einingar virði "
+"kostnaðinss. Reyndu að velja könnunar einingar sem geta auðveldlega farið "
+"yfir umliggjandi landsvæði, því það stjórnar því hve langt þær geta séð."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -5188,6 +5862,11 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
+"Það eru sex tegundir af árásum: stungvopn, eggvopn, höggvopn, eldur, kuldi "
+"og yfirnátturulegt. Mismunandi einingar hava veikleikja fyrir mismunandi "
+"tegundum af árásum. Hægri smelltu á einingu og veldu 'lýsing einingar' til "
+"að sjá hvaða árásir þeir hafa mótstöðu gagnvart, og hvaða árásir eru "
+"áhrifamestar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -5197,6 +5876,9 @@ msgid ""
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
+"Landslagið sem einingarnar þínar standa á ráða hve miklar líkur eru á að "
+"andstæðingur hitti þær í bardaga. Varnarstöðuna fyrir núverandi valda "
+"einingu má á núverandi landslagi má sjá í efri-hægri horninu á skjánum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
@@ -5207,6 +5889,11 @@ msgid ""
 "not be removed unless the unit regenerates, or begins a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Eitraðar einingar munu missa 8 lífspunkta hverja lotu þar til þau eru einn "
+"punkt frá dauðanum. Þau munu vera við dauðans dyr þar til eitrið er "
+"fjarlægt. Heilarar geta komið í veg fyrir áhrif eiturs, enn eitrið er ekki "
+"fjarlægt nema einingin endurskapi sig, hefur lotu í þorpi eða er hliðin á "
+"einingu með 'Heilar' hæfileikan."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -5215,6 +5902,9 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
+"Þú getur notað einingar frá fyrrverandi atburðarás með því að velja "
+"'endurkalla' í 'aðgerða' valmyndinni. Með því að endurkalla sömu einingarnar "
+"aftur og aftur, geturu byggt um sterkan og reyndan her."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -5225,6 +5915,11 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
+"Einingar á styrkleikastigi eitt og hærri hafa 'Stjórnsvæði' í hverjum reit "
+"sem er samliggjandi þeim. Ef eining fer inní óvina stjórnsvæði, má hún ekki "
+"fara lengra þá lotu. Þetta þýðir að einingar sem hafa tvo tóma reiti á milli "
+"þeirra og mynda ,,hindrun'' sem óvinirnir komast ekki í gegnum. Enn, "
+"truflarar eru nógu þjálfaðir til að geta hindrað þessi svæði."
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -5234,11 +5929,15 @@ msgid ""
 "always have a 70% chance to hit, and units with the 'marksman' ability will "
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
+"Líkurnar á að hitta einingu stjórnasts venjulega af því hve vel eining getur "
+"varið sig í landslaginu sem hún stendur í. Enn, galdraárásir hafa alltaf 70% "
+"líkur á að hitta, og einingar með 'skyttu' hæfileikan munu alltaf hafa að "
+"minsta kossti 60% líkur á að hitta þegar þeir eru á sókninni."
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Handbók um Herkænskulegt Yfirlit Bindi II - Haldric II, 43YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -5246,6 +5945,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
+"Einingar í þorpum munu annað hvort lækna átta lífspunkta í byrjun sinnar "
+"lotu, eða losna undan áhrifum eiturs."
 
 #. [tip]
 #: data/hardwired/tips.cfg:87
@@ -5254,6 +5955,9 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
+"Ekki hreyfa særða einingu ef þú kemst hjá því - láttu hana hvílast. Ef "
+"eining hvorki hreyfir sig né gerir árás, mun hún lækna sig um tvo lífspunkta "
+"í byrjun sinnar lotu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:91
@@ -5262,11 +5966,14 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
+"Fótgangandi einingar verjast oftast betur í þorpum og köstulum enn í öðrum "
+"landslögum, meðan flest hestmanna einingar fá ekki varnar bónusa frá þorpum "
+"og köstulum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Herra Kaylan, 498YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
@@ -5275,11 +5982,14 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"Hross-byggðar einingar hafa að oftast mótstöðu gagnvarn eggvopnum og "
+"höggvopnum, enn eru viðkvæmar gagnvart stungvöpnum, sem innihalda boga og "
+"spjót."
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Herra Kaylan, 502YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:99
@@ -5289,6 +5999,9 @@ msgid ""
 "every level of the unit they kill, or four experience points for a zero-"
 "level opponent."
 msgstr ""
+"Að veita náðarhöggið á óvin er besta leiðin til að afla sér reynslu. "
+"Einingar sem drepa óvin fá 8 reynslupunkta fyrir hvert styrkleikastig "
+"óvinins sem þeir drepa, eða 4 reynslu punkta fyrir styrkleikastig 0 óvin."
 
 #. [tip]
 #: data/hardwired/tips.cfg:103
@@ -5296,6 +6009,8 @@ msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
+"Álfa einingar hreyfa sig og berjast vel í skógum. Dverga einingar hreyfa sig "
+"og berjast vel í hæðum, fjöllum og hellum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:107
@@ -5303,6 +6018,9 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"Þolinmæðin þrautin vinnur allar, stundum. Í stað þess að gera árás í slæmri "
+"aðstöðu eða með fáa hermenn, er oft vænlegra að bíða eftir betri aðstöðum og "
+"gera svo árás."
 
 #. [tip]
 #: data/hardwired/tips.cfg:111
@@ -5310,17 +6028,21 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"Ef ráðist er á þig úr mörgum áttum, er oft góð hugmynd að senda ómerkilegar "
+"einingar í sumar áttir til að tefja óvinin."
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
+"Ekki vera hræddur við að hörfa og safna kröftum; það er oft lykillinn að "
+"sigri."
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, 123YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -5330,6 +6052,10 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"Í flestum herferðum, færðu auka gull fyrir að klára snemma, veltandi á "
+"fjölda þorpa á kortinu og hversu snemma þú kláraðir. Þú munt alltaf eignast "
+"meira gull á þennan hátt enn að hertaka öll þorpin og bíða eftir að tímin "
+"rennur út."
 
 #. [tip]
 #: data/hardwired/tips.cfg:123
@@ -5339,6 +6065,11 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"Leiðtoginn þinn getur ráðið og endurkallað einingar frá hvaða hásæti sem er "
+"inní kastala, ekki bara hásætinu sem þú byrjar á. Þú getur hertekið hásæti "
+"af óvini og ráðið hermenn þar. Einnig, einhver af vinum þínum væri kanski "
+"til í að búa til smá pláss fyrir þig í þeirra hásæti svo þú getur ráðið "
+"hermenn þar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -5346,6 +6077,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
+"Beinagrindur hafa mótstöðu gagnvart stungvopnum, eggvopnum og kulda árásum, "
+"enn eru viðkvæmar gagnvart höggvopnum, eldvopnum og yfirnáttúrulegum árásum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
@@ -5353,6 +6086,9 @@ msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
+"Einingar með 'Leiðtoga' hæfileikan hjálpa einingum á lægra styrkleikastigi "
+"sem eru nærliggjandi og í sama liði að berjast betur. Notaðu leiðtoga til að "
+"hjálpa öðrum einingum að fá styrkleikastig hraðar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
@@ -5361,11 +6097,16 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
+"Reyndu að forðast að stoppa hliðin á tómum þorpum. Óvina eining gæti farið "
+"inní þorpið og ráðist á þig, meðan hann nýtur varnarinnar og lækninganna af "
+"þorpinu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Notaðu línur af einingum til að vernda særðar einingar og leyfa þeim að ná "
+"sér."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
@@ -5375,7 +6116,7 @@ msgstr "- Li'sar prinsessa, 515YW"
 #. [tip]
 #: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
-msgstr ""
+msgstr "Lestu um flýtitakkana á listanum í stillingavalmyndinni."
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
@@ -5383,6 +6124,8 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"Ef þú hreyfir einingu, enn ræðst ekki á neinn eða uppgvötar einhverja nýjar "
+"upplýsingar, geturu afgert hreyfinguna með því að ýta á 'u'."
 
 #. [tip]
 #: data/hardwired/tips.cfg:151
@@ -5390,6 +6133,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Þú getur séð hve langt óvina einingar geta farið með því að færa "
+"músarbendilin fyrir þá."
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -5397,11 +6142,13 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Notaðu heilarana þína til að hjálpa til við árásirnar þínar - þeir munu "
+"sigra fyrir þig bardaga án þess að þurfa að ráðast á neinn sjálfir."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
-msgstr "Chantal ritið, -516YW"
+msgstr "- Chantal ritið, -516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -5409,16 +6156,18 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
+"'Hæging' árásar hæfileikinn lætur óvina einingar hreyfa sig hægar og minkar "
+"skaðan sem þeir valda um helming þar til þær enda lotu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
-msgstr ""
+msgstr "Yfirnáttúrulegar árásir eru mjög áhrifamiklar gagnvar ódauðum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- Mikli Spekingur Dacyn, 626YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -5426,6 +6175,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Einingar eru læknaðar þegar þær bæta á sig styrkleikastigi. Notað á "
+"gáfulegan hátt, getur þetta breytt tapi í sigur."
 
 #. [tip]
 #: data/hardwired/tips.cfg:171
@@ -5433,6 +6184,8 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Einingar sem beita áhlaupi eru best notaðar gagnvart óvinum sem þeir geta "
+"drepið í einu höggi."
 
 #. [tip]
 #: data/hardwired/tips.cfg:175
@@ -5443,6 +6196,11 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
+"Í stað þess að bæta á sig styrkleikastigi, munu einingar á háu "
+"styrkleikastigi fá 3 auka lífspunkta og fulla orku. Þetta er mun lélegra enn "
+"það sem maður græðir venjulega á því að láta einingu bæta á sig "
+"styrkleikastigi, svo það er oftast betra að reyna að láta lægri "
+"styrkleikastigs einingarnar bæta sig."
 
 #. [tip]
 #: data/hardwired/tips.cfg:179
@@ -5451,6 +6209,10 @@ msgid ""
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
+"Á kortum þar sem 'Hyl' eða 'Stríðsþoka' eru á, getur eining bara séð eins "
+"langt og hún gæti labbað frá þeim reiti sem hún er á ef hún hefði alla "
+"hreyfipunktana. Mundu þetta þegar þú ákveður hvaða eining er best til "
+"könnunar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -5458,6 +6220,9 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Næstum hvert einasta merki og orð í Wesnoth spilunarskjánum hafa "
+"einhverskonar upplýsingar. Færðu músarbendilinn þinn yfir eitthvað til að fá "
+"útskýringu eða lýsingu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -5467,6 +6232,10 @@ msgid ""
 "right-hand corner of the game main screen). This information is vital so we "
 "can adjust campaign difficulty."
 msgstr ""
+"Þú getur sent Wesnoth verkefninu nafnlaust yfirlit af framförum þínum með "
+"því að nota 'Help Wesnoth' takkan (sýnd af umslaginu nærri hægri-botni á "
+"skjánum í aðalvalmynd leiksins). Þessar upplýsingar eru mikilvægar svo við "
+"getum stillt erfiðleika herferðar."
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -5475,6 +6244,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Til að bæta einingar með lágt styrkleikastig á hraðan hátt, hafðu þau í "
+"fylgd með sterkari einingum sem meiðir óvinin og leyfir svo lélegri "
+"einingunni að taka náðarhöggið."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -5488,6 +6260,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Þú getur ekki afgert hreryfingu sem hreinsar burt Þoku eða Hyl. Stilltu 'Tef "
+"Hyl breytingar' valkostin á og þegar þú færir einingar geturu enn ýtt á 'u' "
+"og afgert."
 
 #. [tip]
 #: data/hardwired/tips.cfg:199
@@ -5495,6 +6270,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Ef óvinur græðir meira á sjaldgæfu landslagi enn þú, er oft gott að nota "
+"landslagið sjálfur svo óvinurinn geti það ekki."
 
 #. [tip]
 #: data/hardwired/tips.cfg:203
@@ -5503,6 +6280,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Fáar einingar hafa góða vörn í vatni; lína af hermönnum meðfram á getur "
+"valdið miklum skaða á óvinum. Álfar geta gert svipað með brúnina á skógum og "
+"dvergar í fjöllum."
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -5510,14 +6290,17 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Í mörgum atburðarásum herferðar, máttu gefa einfaldar leiðbeiningar til "
+"tölvu-stjórnaðra bandamenna með því að nota hægri-smell valmyndina."
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
 msgstr ""
+"Um að uphlaða tölfræði - Hjálpaðu okkur að gera Wesnoth betri fyrir þig."
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Vista svar mitt og ekki spyrja aftur. "
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
@@ -5659,17 +6442,17 @@ msgstr "Stoppa"
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
-msgstr ""
+msgstr "pása á endi lotu"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
-msgstr ""
+msgstr "Endurræsa"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
-msgstr ""
+msgstr "endurræsa til byrjunar"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
@@ -5679,7 +6462,7 @@ msgstr "Næsta umferð"
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
-msgstr ""
+msgstr "spila lotu"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
@@ -5699,7 +6482,7 @@ msgstr "Sjónarhorf"
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
-msgstr ""
+msgstr "Sleppa teikningum"
 
 #: src/about.cpp:198 src/help.cpp:3057 src/menu_events.cpp:301
 #: src/menu_events.cpp:328 src/statistics_dialog.cpp:110
@@ -5708,15 +6491,16 @@ msgstr "Loka"
 
 #: src/actions.cpp:142
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "Þú hefur ekki leiðtoga til að ráða einingar."
 
 #: src/actions.cpp:149
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
+"Þú verður að hafa leiðtoga í hásætinu til að ráða eða endurkalla einingar."
 
 #: src/actions.cpp:168
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "Það eru engir lausir kastala reitir til að ráða einingu í."
 
 #: src/actions.cpp:272 src/actions.cpp:292 src/actions.cpp:297
 msgid "An invalid weapon is selected, possibly by the Python AI."
@@ -5737,23 +6521,23 @@ msgstr ""
 
 #: src/actions.cpp:2439
 msgid "Ambushed!"
-msgstr ""
+msgstr "Fyrirsát!"
 
 #: src/actions.cpp:2446
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "Fjarflutingur mistókst! Útgangur ekki tómur"
 
 #: src/actions.cpp:2485
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vinaleg eining í sjónmáli"
+msgstr[1] "Vinalegar einingar í sjónmáli"
 
 #: src/actions.cpp:2488
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Óvinveitt eining í sjónmáli!"
+msgstr[1] "Óvinveittar einingar í sjónmáli!"
 
 #: src/actions.cpp:2493
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -5839,7 +6623,11 @@ msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
+"Þessi auka pakki þarfnast eftirfarandi auka pakka sem þú hefur ekki enn sett "
+"up:"
 msgstr[1] ""
+"Þessi auka pakki þarnast eftirfarandi aukapakka sem þú hefur ekki enn sett "
+"up:"
 
 #: src/addon_management.cpp:451
 msgid "Do you still want to download it?"
@@ -5856,7 +6644,7 @@ msgstr "Miðlarinn svaraði með villu: \"$error|\""
 
 #: src/addon_management.cpp:477
 msgid "Terms"
-msgstr ""
+msgstr "Skilyrði"
 
 #: src/addon_management.cpp:511
 msgid "Sending add-on"
@@ -5879,6 +6667,7 @@ msgstr "Niðurhel viðbót: $addon_title|..."
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Aukapakkinn hefur rangt skjal eða möppu nafn og getur ekki verið settur up."
 
 #: src/addon_management.cpp:638
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -6005,7 +6794,7 @@ msgstr "Eyða viðbót: "
 
 #: src/addon_management.cpp:1006
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Það eru engir aukapakkar í boði til niðurhlaðs frá þessum server"
 
 #: src/addon_management.cpp:1019
 msgid "Get add-ons"
@@ -6026,13 +6815,15 @@ msgstr "Villa við netsamskipti."
 
 #: src/addon_management.cpp:1072
 msgid "Remote host disconnected."
-msgstr ""
+msgstr "fjarlægur hýsill aftengdist."
 
 #: src/addon_management.cpp:1075
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
+"Vandamál kom upp þegar átti að skapa skjöl nauðsynlegar fyrir þennan "
+"aukapakka."
 
 #: src/addon_management.cpp:1093 src/addon_management.cpp:1148
 #: src/dialogs.cpp:286 src/dialogs.cpp:294 src/multiplayer_create.cpp:540
@@ -6082,27 +6873,27 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:113 src/attack_prediction_display.cpp:223
 msgid "Attacker"
-msgstr ""
+msgstr "Árásaraðili"
 
 #: src/attack_prediction_display.cpp:114 src/attack_prediction_display.cpp:222
 msgid "Defender"
-msgstr ""
+msgstr "Varnaraðili"
 
 #: src/attack_prediction_display.cpp:132
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Líklegar bardaga niðurstöður (lífspunktar)"
 
 #: src/attack_prediction_display.cpp:224
 msgid " resistance vs "
-msgstr ""
+msgstr " mótstaða gagnvart "
 
 #: src/attack_prediction_display.cpp:225
 msgid " vulnerability vs "
-msgstr ""
+msgstr " viðkvæmi gagnvart "
 
 #: src/attack_prediction_display.cpp:235
 msgid "Slowed"
-msgstr ""
+msgstr "Hægður"
 
 #: src/attack_prediction_display.cpp:242
 msgid "Time of day"
@@ -6110,7 +6901,7 @@ msgstr "Tími dags"
 
 #: src/attack_prediction_display.cpp:252
 msgid "Leadership"
-msgstr ""
+msgstr "Leiðtogi"
 
 #: src/attack_prediction_display.cpp:259
 msgid "Total damage"
@@ -6122,7 +6913,7 @@ msgstr "Engin nothæf vopn"
 
 #: src/attack_prediction_display.cpp:271
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Líkur á að vera ómeiddur"
 
 #: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
@@ -6138,7 +6929,7 @@ msgstr "Efld eining"
 
 #: src/dialogs.cpp:123
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "Hvað ætti sigursæl eining okkar að verða?"
 
 #: src/dialogs.cpp:224
 msgid "No objectives available"
@@ -6161,14 +6952,16 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Vistunarnöfn mega ekki innihalda skástrik, punkta eða tvípunkta. "
+"Vinsamlegast veldu annað nafn."
 
 #: src/dialogs.cpp:295
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr ""
+msgstr "Vistunarnöfn ættu ekki að enda á '.gz'. Vinsamlegast veldu annað nafn."
 
 #: src/dialogs.cpp:303
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Vistun er nú þegar til staðar. Viltu yfirrita?"
 
 #: src/dialogs.cpp:304 src/savegame.cpp:474
 msgid "Name: "
@@ -6274,7 +7067,7 @@ msgstr "Sýna endurspilun"
 
 #: src/dialogs.cpp:691
 msgid "Cancel orders"
-msgstr ""
+msgstr "Hætta við skipanir"
 
 #: src/dialogs.cpp:698
 msgid "Delete Save"
@@ -6298,11 +7091,11 @@ msgstr "XP: "
 
 #: src/dialogs.cpp:872 src/help.cpp:1365
 msgid "Moves: "
-msgstr ""
+msgstr "Hreyfipunktar: "
 
 #: src/game.cpp:628 src/game.cpp:1362
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "Bardaginn um Wesnoth"
 
 #: src/game.cpp:917 src/game.cpp:925 src/playsingle_controller.cpp:498
 #: src/playsingle_controller.cpp:558
@@ -6315,7 +7108,7 @@ msgstr "Skráin·sem·þú·reyndir·að·hlaða·er·skemmd: '"
 
 #: src/game.cpp:932
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "Skjal I/O Villa þegar lesa átti leikin."
 
 #: src/game.cpp:1019 src/game.cpp:1055
 msgid "No campaigns are available.\n"
@@ -6365,7 +7158,7 @@ msgstr "Villa við að hlaða inn stillingum: '"
 
 #: src/game.cpp:1409 src/game.cpp:1530
 msgid "' (The game will now exit)"
-msgstr ""
+msgstr "' (Leikurinn mun núna lokast)"
 
 #: src/game.cpp:1504
 msgid "The following add-on had errors and could not be loaded:"
@@ -6375,7 +7168,7 @@ msgstr[1] "Eftirfarandi viðbætur voru með villur og gátu ekki verið hlaða�
 
 #: src/game.cpp:1511
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "VILLU SMÁATRIÐI:"
 
 #: src/game.cpp:1539
 msgid "Loading data files"
@@ -6461,6 +7254,12 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Þessi eining er nú eitruð. Hún mun missa 8 lífspunkta hverja lotu þar til "
+"hún fær lækningu frá þorpi eða frá vinsamlegri einingu með 'heilar' "
+"hæfileikan.\n"
+"\n"
+"Einingar geta ekki drepist af eitrinu einu. Eitur mun ekki draga "
+"lífspunktana fyrir neðan 1."
 
 #: src/generate_report.cpp:107
 msgid "poisoned: "
@@ -6483,11 +7282,11 @@ msgstr "Mótstöður: "
 
 #: src/generate_report.cpp:171
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Árs / Vör)"
 
 #: src/generate_report.cpp:190 src/multiplayer_create.cpp:401
 msgid "Experience Modifier: "
-msgstr ""
+msgstr "Reynslu áhrifavaldar:"
 
 #: src/generate_report.cpp:261
 msgid "tooltip^damage"
@@ -6513,7 +7312,7 @@ msgstr ""
 
 #: src/generate_report.cpp:285
 msgid "weapon range: "
-msgstr ""
+msgstr "Drægi vopns:"
 
 #: src/generate_report.cpp:286
 msgid "damage type: "
@@ -6537,7 +7336,7 @@ msgstr "Ringulreiðar einingar: "
 
 #: src/generate_report.cpp:506
 msgid "Observers:"
-msgstr ""
+msgstr "Áhorfendur"
 
 #: src/help.cpp:44
 msgid "Help"
@@ -6561,7 +7360,7 @@ msgstr "Eflist í: "
 
 #: src/help.cpp:1322 src/help.cpp:1597 src/help.cpp:1648
 msgid "race^Miscellaneous"
-msgstr ""
+msgstr "Annað"
 
 #: src/help.cpp:1324
 msgid "Race: "
@@ -6573,7 +7372,7 @@ msgstr "Hæfileikar: "
 
 #: src/help.cpp:1348
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "Uppfærlsa hæfileika"
 
 #: src/help.cpp:1366
 msgid "Cost: "
@@ -6585,7 +7384,7 @@ msgstr ""
 
 #: src/help.cpp:1373
 msgid "Required XP: "
-msgstr ""
+msgstr "Nauðsynleg Reynsla: "
 
 #: src/help.cpp:1382
 msgid "unit help^Attacks"
@@ -6597,7 +7396,7 @@ msgstr "Nafn"
 
 #: src/help.cpp:1391
 msgid "Strikes"
-msgstr ""
+msgstr "Högg"
 
 #: src/help.cpp:1392
 msgid "Range"
@@ -6605,7 +7404,7 @@ msgstr "Skotmál"
 
 #: src/help.cpp:1393
 msgid "Special"
-msgstr ""
+msgstr "Sérstakt"
 
 #: src/help.cpp:1443
 msgid "Resistances"
@@ -6621,7 +7420,7 @@ msgstr "Mótstaða"
 
 #: src/help.cpp:1485
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Landslags Áhrifavaldar"
 
 #: src/help.cpp:1489
 msgid "Terrain"
@@ -6633,7 +7432,7 @@ msgstr "Vörn"
 
 #: src/help.cpp:1491
 msgid "Movement Cost"
-msgstr ""
+msgstr "Kostnaður Hreyfingar"
 
 #: src/help.cpp:1654
 msgid "<header>text='Units of this race'</header>"
@@ -6649,7 +7448,7 @@ msgstr "Áfram >"
 
 #: src/help.cpp:2688
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Tilvitnun í óþekkt umræðuefni:"
 
 #: src/help.cpp:2942
 msgid "corrupted original file"
@@ -6657,7 +7456,7 @@ msgstr "skemmd upprunaleg skrá"
 
 #: src/help.cpp:3060
 msgid "The Battle for Wesnoth Help"
-msgstr ""
+msgstr "Bardaginn um Wesnoth Hjálp"
 
 #: src/help.cpp:3116
 msgid "Parse error when parsing help text: "
@@ -6731,7 +7530,7 @@ msgstr "Ertu viss um að þú viljir vísa honum frá?"
 
 #: src/menu_events.cpp:78
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr ""
+msgstr "Herra, þessi eining er trygg og þarfnast ekki uppihalds!"
 
 #: src/menu_events.cpp:79 src/menu_events.cpp:82 src/menu_events.cpp:86
 msgid "Do you really want to dismiss her?"
@@ -6739,11 +7538,11 @@ msgstr "Ertu viss um að þú viljir vísa henni frá?"
 
 #: src/menu_events.cpp:81
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
+msgstr "Herra, þessi eining er reynd, hafandi hækkað styrkleikastig sitt!"
 
 #: src/menu_events.cpp:85
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
+msgstr "Herra, þessi eining er nálægt því að hækka styrkleikastig sitt!"
 
 #: src/menu_events.cpp:168
 msgid "Statistics"
@@ -6759,7 +7558,7 @@ msgstr "Einkenni"
 
 #: src/menu_events.cpp:186
 msgid "Moves"
-msgstr ""
+msgstr "Hreyfingar"
 
 #: src/menu_events.cpp:187
 msgid "Location^Loc."
@@ -6863,15 +7662,15 @@ msgstr "Stillingar atburðarásar"
 
 #: src/menu_events.cpp:572
 msgid "Save the Map As"
-msgstr "Vista borð sem"
+msgstr "Vista kort sem"
 
 #: src/menu_events.cpp:577
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Borðið er nú þegar til staðar. Viltu yfirskrifa það?"
+msgstr "Kortið er nú þegar til staðar. Viltu yfirskrifa það?"
 
 #: src/menu_events.cpp:589
 msgid "Map saved."
-msgstr "Borð vistað."
+msgstr "Kort vistað."
 
 #: src/menu_events.cpp:593
 msgid "Could not save the map: $msg"
@@ -6879,7 +7678,7 @@ msgstr "Gat ekki vist kort: $msg"
 
 #: src/menu_events.cpp:624
 msgid "Chat Log"
-msgstr ""
+msgstr "Spjall"
 
 #: src/menu_events.cpp:634
 msgid "Message:"
@@ -6887,11 +7686,11 @@ msgstr "Skilaboð:"
 
 #: src/menu_events.cpp:635
 msgid "Send to allies only"
-msgstr ""
+msgstr "Senda bara til vina"
 
 #: src/menu_events.cpp:635
 msgid "Send to observers only"
-msgstr ""
+msgstr "Senda bara til áhorfenda"
 
 #: src/menu_events.cpp:715
 msgid "unit^Gold"
@@ -6901,7 +7700,7 @@ msgstr[1] "Gull"
 
 #: src/menu_events.cpp:722
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Þú hefur engar einingar til að ráða."
 
 #: src/menu_events.cpp:734
 msgid "Recruit"
@@ -6909,21 +7708,23 @@ msgstr "Ráða"
 
 #: src/menu_events.cpp:735 src/menu_events.cpp:902
 msgid "Select unit:"
-msgstr "Veldu einingu: "
+msgstr "Veldu einingu:"
 
 #: src/menu_events.cpp:780
 msgid "You don't have enough gold to recruit that unit"
-msgstr ""
+msgstr "Þú hefur ekki nægt gull til að ráða þessa einingu."
 
 #: src/menu_events.cpp:823
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Þú ert aðskilin frá hermönnum þínum og getur ekki endurráðið þá."
 
 #: src/menu_events.cpp:844
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Það eru engir hermenn til endurráðninga\n"
+"(þú verður að hafa eftirlifendur úr fyrri atburðarás)"
 
 #: src/menu_events.cpp:901
 msgid "Recall"
@@ -6936,13 +7737,15 @@ msgstr "Vísa frá einingu"
 #: src/menu_events.cpp:930
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
+msgstr[0] "Þú verður að eiga að minsta kostsi 1 gull stykki til að endurkalla"
 msgstr[1] ""
+"Þú verður að eiga að minsta kosti $cost gull stykki til að endurkalla einingu"
 
 #: src/menu_events.cpp:1261
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
+"Þú hefur ekki byrjað lotuna þína enn. Viltu virkilega enda lotuna þína?"
 
 #: src/menu_events.cpp:1269 src/menu_events.cpp:1274
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -6968,11 +7771,11 @@ msgstr "Kyn: "
 
 #: src/menu_events.cpp:1443
 msgid "Place Label"
-msgstr ""
+msgstr "Settu örnefni"
 
 #: src/menu_events.cpp:1446 src/menu_events.cpp:1449
 msgid "Label: "
-msgstr ""
+msgstr "Örnefni: "
 
 #: src/menu_events.cpp:1451
 msgid "Team only"
@@ -6984,7 +7787,7 @@ msgstr "Leit"
 
 #: src/menu_events.cpp:1732
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "Þessi skipun er ekki til boða núna."
 
 #: src/menu_events.cpp:1743
 msgid ""
@@ -7007,6 +7810,8 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Banna og sparka spilara eða áhorfenda. Ef hann er ekki inní leiknun enn á "
+"servernum verður hann bara bannaður."
 
 #: src/menu_events.cpp:2009
 msgid "Kick a player or observer."
@@ -7014,25 +7819,27 @@ msgstr "Sparka spilara eða athugara"
 
 #: src/menu_events.cpp:2011
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Þaggar niður í áhorfenda. Birtir niðurþöggunar stöðu."
 
 #: src/menu_events.cpp:2013
 msgid "Mute all observers."
-msgstr ""
+msgstr "Þagga niður í öllur áhorfendum."
 
 #: src/menu_events.cpp:2023
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Senda skilaboð til þá stjórnendur serversins sem eru tengdir"
 
 #: src/menu_events.cpp:2025
 msgid "Send an emotion or personal action in chat."
-msgstr ""
+msgstr "Senda broskall í spjalli."
 
 #: src/menu_events.cpp:2028
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
+"Senda einkaskilaboð. Þú getur ekki sent skilaboð til spilara sem ekki "
+"stjórna liði í leiknum sem þú ert í."
 
 #: src/menu_events.cpp:2034
 msgid "Change the log level of a log domain."
@@ -7056,7 +7863,7 @@ msgstr "Birta vina og hunsunarlista."
 
 #: src/menu_events.cpp:2045
 msgid "Display version information."
-msgstr ""
+msgstr "Sýna útgáfu upplýsingar"
 
 #: src/menu_events.cpp:2047
 msgid "Register your nick"
@@ -7069,14 +7876,17 @@ msgstr "Afskrá notendanafn þitt."
 #: src/menu_events.cpp:2051
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
+"Uppfærir smáatriði fyrir gælunafn þitt. Fyrir möguleg smáatriði sjá '/"
+"details'."
 
 #: src/menu_events.cpp:2054
 msgid "Request information about a nick."
-msgstr ""
+msgstr "Biðja um upplýsingar um gælunafn."
 
 #: src/menu_events.cpp:2056
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
+"Biðja um lista af smáatriðum sem þú getur ssett fyrir skráð gælunafn þitt."
 
 #: src/menu_events.cpp:2180
 msgid "Refresh gui."
@@ -7088,11 +7898,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2185
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Setja stjórn liðs til annars spilara eða áhorfanda."
 
 #: src/menu_events.cpp:2187
 msgid "Clear chat history."
-msgstr ""
+msgstr "Hreinsa spjall sögu"
 
 #: src/menu_events.cpp:2189
 msgid "Visualize the screen refresh procedure."
@@ -7100,7 +7910,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2192
 msgid "Save game."
-msgstr "Vista leik"
+msgstr "Vista leik."
 
 #: src/menu_events.cpp:2194
 msgid "Quit game."
@@ -7156,7 +7966,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2227
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Fjarlægja hæfileika frá einingu (Virkar ekki.)"
 
 #: src/menu_events.cpp:2229
 msgid "Create a unit."
@@ -7204,7 +8014,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2397
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Bætt í hundsunarlista: "
 
 #: src/menu_events.cpp:2399 src/menu_events.cpp:2415
 msgid "Invalid username: "
@@ -7212,15 +8022,15 @@ msgstr "Ógilt notandanafn:"
 
 #: src/menu_events.cpp:2413
 msgid "Added to friends list: "
-msgstr ""
+msgstr "Bætt í vinalista: "
 
 #: src/menu_events.cpp:2426
 msgid "Removed from list: "
-msgstr ""
+msgstr "Fjarlægður frá lista: "
 
 #: src/menu_events.cpp:2444
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "það eru engin spilarar á vina né hundsunar listanum."
 
 #: src/menu_events.cpp:2614
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -7291,6 +8101,7 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Miðlarinn þarfnast útgáfu $version1 á meðan þú notast við útgáfu $version2."
 
 #: src/multiplayer.cpp:158
 msgid "Server-side redirect loop"
@@ -7328,7 +8139,7 @@ msgstr "Notendanafnið '$nick' er ekki skráð á þessum miðlara."
 
 #: src/multiplayer.cpp:297
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Miðlarinn leyfir ekki óskráð notendanöfn."
 
 #: src/multiplayer.cpp:299 src/multiplayer.cpp:301
 msgid "The nick '$nick' is registered on this server."
@@ -7339,6 +8150,8 @@ msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"AÐVÖRUN: það er nú þegar notandi með þessa gælunafn, að skrá sig inn verður "
+"til þess að þeim notenda verður sparkað!"
 
 #: src/multiplayer.cpp:305
 msgid ""
@@ -7375,7 +8188,7 @@ msgstr "Venjuleg gervigreind"
 
 #: src/multiplayer_connect.cpp:645
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(Laust pláss)"
 
 #: src/multiplayer_connect.cpp:653
 msgid "Anonymous local player"
@@ -7416,11 +8229,11 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:992
 msgid "Game Lobby: "
-msgstr ""
+msgstr "Leikjaherbergi: "
 
 #: src/multiplayer_connect.cpp:1012
 msgid "Player/Type"
-msgstr ""
+msgstr "Spilari/Tegund"
 
 #: src/multiplayer_connect.cpp:1013
 msgid "Faction"
@@ -7500,7 +8313,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:80
 msgid "Random start time"
-msgstr ""
+msgstr "Handahófskenndur upphafstími"
 
 #: src/multiplayer_create.cpp:81
 msgid "Fog Of War"
@@ -7513,11 +8326,11 @@ msgstr "Hyl"
 
 #: src/multiplayer_create.cpp:83
 msgid "Observers"
-msgstr "Athugarar"
+msgstr "Áhorfendur"
 
 #: src/multiplayer_create.cpp:86
 msgid "Regenerate"
-msgstr ""
+msgstr "Endurskapa"
 
 #: src/multiplayer_create.cpp:87
 msgid "Settings..."
@@ -7541,11 +8354,11 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:149
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Lengsti tími leyfður fyrstu lotu (sekondur)"
 
 #: src/multiplayer_create.cpp:155
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Lengsti tími leyfður fyrir hverja lotu (sekondur)"
 
 #: src/multiplayer_create.cpp:161
 msgid "Time for general tasks each turn (seconds)"
@@ -7577,15 +8390,15 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:190
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "Kortið er óþekkt þar til einingarnar þínar kanna það."
 
 #: src/multiplayer_create.cpp:193
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Leyfa notendum sem ekki eru að spila að horfa á."
 
 #: src/multiplayer_create.cpp:197
 msgid "Share View"
-msgstr ""
+msgstr "Deila útsýni (sjá sama og vinir)"
 
 #: src/multiplayer_create.cpp:198
 msgid "Share Maps"
@@ -7626,7 +8439,7 @@ msgstr "Lykilorð: "
 #: src/multiplayer_create.cpp:332
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
+msgstr "Setja lykilorð sem fólk sem vill spila með verður að setja inn."
 
 #: src/multiplayer_create.cpp:340
 msgid "Turns: "
@@ -7690,11 +8503,11 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:502
 msgid "Unknown scenario: $scenario_id"
-msgstr "Óþekkt atburðarás: $scenario_id"
+msgstr "Óþekktur leikur: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:506
 msgid "Unknown scenario"
-msgstr "Óþekkt atburðarás"
+msgstr "Óþekkt leikur"
 
 #: src/multiplayer_lobby.cpp:511
 msgid "Reloaded game"
@@ -7707,12 +8520,12 @@ msgstr "Umferð "
 #: src/multiplayer_lobby.cpp:531
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Laust pláss:"
+msgstr[1] "Laus Pláss:"
 
 #: src/multiplayer_lobby.cpp:534 src/multiplayer_lobby.cpp:897
 msgid "Password Required"
-msgstr ""
+msgstr "Þarfnast Lykilorðs"
 
 #: src/multiplayer_lobby.cpp:542
 msgid "Fog"
@@ -7724,7 +8537,7 @@ msgstr "ekkert"
 
 #: src/multiplayer_lobby.cpp:718 src/multiplayer_wait.cpp:184
 msgid "Game Lobby"
-msgstr ""
+msgstr "Leikherbergi"
 
 #: src/multiplayer_lobby.cpp:723
 msgid "Observe Game"
@@ -7736,7 +8549,7 @@ msgstr "Tengjast leik"
 
 #: src/multiplayer_lobby.cpp:726
 msgid "Quick Replays"
-msgstr ""
+msgstr "Snöggar endurspilanir"
 
 #: src/multiplayer_lobby.cpp:728
 msgid "Preferences"
@@ -7755,8 +8568,9 @@ msgid "Invert"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:734
+#, fuzzy
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Laust pláss:"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Friends in Game"
@@ -7949,19 +8763,19 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:191
 msgid "Remaining gold: "
-msgstr ""
+msgstr "Afgangs gull: "
 
 #: src/playsingle_controller.cpp:195
 msgid "Early finish bonus: "
-msgstr ""
+msgstr "Bónus fyrir að klára snemma: "
 
 #: src/playsingle_controller.cpp:197
 msgid "per turn"
-msgstr ""
+msgstr "hverja lotu"
 
 #: src/playsingle_controller.cpp:198
 msgid "Turns finished early: "
-msgstr ""
+msgstr "Lotur kláraðar fyrr: "
 
 #: src/playsingle_controller.cpp:200
 msgid "Bonus: "
@@ -7973,15 +8787,15 @@ msgstr "Gull: "
 
 #: src/playsingle_controller.cpp:207
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Prósentan sem færist yfir: "
 
 #: src/playsingle_controller.cpp:210
 msgid "Bonus Gold: "
-msgstr ""
+msgstr "Bónus gull: "
 
 #: src/playsingle_controller.cpp:212
 msgid "Retained Gold: "
-msgstr ""
+msgstr "Fengið gull: "
 
 #: src/playsingle_controller.cpp:222
 msgid ""
@@ -7991,7 +8805,11 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
 msgstr[1] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
 
 #: src/playsingle_controller.cpp:230
 msgid ""
@@ -8001,7 +8819,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
+"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
+"atburðarás, hvort sem er hærra."
 msgstr[1] ""
+"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
+"atburðarás, hvort sem er hærra."
 
 #: src/playsingle_controller.cpp:364
 msgid "Game Over"
@@ -8013,7 +8835,7 @@ msgstr "Leik lokið."
 
 #: src/playsingle_controller.cpp:445
 msgid "Scenario Report"
-msgstr "Skýrsla atburðarásar"
+msgstr "Skýrsla leikjar"
 
 #: src/playsingle_controller.cpp:447
 msgid "Victory"
@@ -8021,17 +8843,19 @@ msgstr "Sigur"
 
 #: src/playsingle_controller.cpp:448
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Þú sigraðir! Jey."
 
 #: src/playsingle_controller.cpp:509
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Tenging hefur dottið niður og leikurinn getur ekki haldið áfram. Viltu vista "
+"leikin?"
 
 #: src/playsingle_controller.cpp:683
 msgid "It is now $name|'s turn"
-msgstr ""
+msgstr "Nú er lota $name|"
 
 #: src/playturn.cpp:217
 msgid "Replace with AI"
@@ -8068,13 +8892,14 @@ msgstr ""
 
 #: src/savegame.cpp:381
 msgid "This save is from a version too old to be loaded."
-msgstr ""
+msgstr "Þessi vistun er úr of gamalli útgáfu til að hægt sé að hlaða."
 
 #: src/savegame.cpp:387
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Þessi vistun er úr annari útgáfu af leiknum. Viltu reyna að hlaða hana?"
 
 #: src/savegame.cpp:436
 msgid "This is not a multiplayer save"
@@ -8158,7 +8983,7 @@ msgstr "$error, gildi '$value' á $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
-msgstr ""
+msgstr "Nýliðar"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:128
 msgid "Recalls"
@@ -8178,7 +9003,7 @@ msgstr "Dráp"
 
 #: src/statistics_dialog.cpp:103
 msgid "Details"
-msgstr ""
+msgstr "Smáatriði"
 
 #: src/statistics_dialog.cpp:155
 msgid "Damage"
@@ -8202,15 +9027,15 @@ msgstr "Tekið"
 
 #: src/terrain.cpp:146
 msgid "Allied village"
-msgstr ""
+msgstr "Vinaþorp"
 
 #: src/terrain.cpp:151
 msgid "Enemy village"
-msgstr ""
+msgstr "Óvinaþorp"
 
 #: src/terrain.cpp:156
 msgid "Owned village"
-msgstr ""
+msgstr "Þitt þorp"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
@@ -8274,17 +9099,18 @@ msgstr "Hjálpaðu Wesnoth"
 
 #: src/titlescreen.cpp:443
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Byrjaðu í æfingu til að læra á leikin."
 
 #: src/titlescreen.cpp:444
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Byrja nýja herferð."
 
 #: src/titlescreen.cpp:445
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Fjölspilun (staðarleikur, LAN eða internet) eða einn leik móti tölvunni."
 
 #: src/titlescreen.cpp:446
 msgid "Load a saved game"
@@ -8304,7 +9130,7 @@ msgstr "Breyta tungumál"
 
 #: src/titlescreen.cpp:452
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Stilla stillingar leiks."
 
 #: src/titlescreen.cpp:453
 msgid "View the credits"
@@ -8316,15 +9142,15 @@ msgstr "Hætta úr leiknum"
 
 #: src/titlescreen.cpp:455
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Sýna næstu ráðleggingu dagsins."
 
 #: src/titlescreen.cpp:456
 msgid "Show Battle for Wesnoth help"
-msgstr ""
+msgstr "Sýna Bardaginn um Wesnoth hjálp."
 
 #: src/titlescreen.cpp:457
 msgid "Upload statistics"
-msgstr ""
+msgstr "Upphlaða tölfræði"
 
 #: src/titlescreen.cpp:516
 msgid "Help Wesnoth"
@@ -8332,7 +9158,7 @@ msgstr "Hjálpaðu Wesnoth"
 
 #: src/titlescreen.cpp:517
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Hjálpaðu Wesnoth með því að senda okkur upplýsingar"
 
 #: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
@@ -8352,7 +9178,7 @@ msgstr ""
 
 #: src/unit.cpp:2588
 msgid "moves"
-msgstr ""
+msgstr "Hreyfingar"
 
 #: src/unit.cpp:2606 src/unit.cpp:2732
 msgid "XP to advance"
@@ -8360,7 +9186,7 @@ msgstr "XP til eflingar"
 
 #: src/unit.cpp:2724
 msgid " move"
-msgstr ""
+msgstr "Hreyfing"
 
 #: src/unit.cpp:2740
 msgid "$effect_description per level"
@@ -8379,8 +9205,8 @@ msgstr[1] "meiðsl"
 #: src/unit_types.cpp:202 src/unit_types.cpp:265
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "högg"
+msgstr[1] "högg"
 
 #: src/unit_types.cpp:213
 #, no-c-format
@@ -8406,7 +9232,7 @@ msgstr "réttmætur"
 
 #: src/unit_types.cpp:988
 msgid "neutral"
-msgstr "náttúrulegur"
+msgstr "hlutlaus"
 
 #: src/unit_types.cpp:989
 msgid "female^chaotic"
@@ -8418,7 +9244,7 @@ msgstr "réttmæt"
 
 #: src/unit_types.cpp:989
 msgid "female^neutral"
-msgstr "náttúruleg"
+msgstr "hlutlaus"
 
 #: src/upload_log.cpp:326
 msgid ""
@@ -8438,22 +9264,17 @@ msgstr "Þú getur skoðað niðurstöðurnar á:"
 
 #: src/upload_log.cpp:331
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Hjálpaðu okkur að gera Wesnoth betri fyrir þig!"
 
 #: src/upload_log.cpp:333
 msgid "Enable summary uploads"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Leiðtogi"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Umferð"
-
 #~ msgid "stones"
 #~ msgstr "steinar"
+
+#~ msgid "female^stone"
+#~ msgstr "steinuð"
 
 #~ msgid "stone"
 #~ msgstr "steinn"
