@@ -260,6 +260,15 @@ static int lua_tstring_collect(lua_State *L)
 	return 0;
 }
 
+#define return_tstring_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		new(lua_newuserdata(L, sizeof(t_string))) t_string(accessor); \
+		lua_pushlightuserdata(L, (void *)&tstringKey); \
+		lua_gettable(L, LUA_REGISTRYINDEX); \
+		lua_setmetatable(L, -2); \
+		return 1; \
+	}
+
 #define return_string_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		lua_pushstring(L, accessor.c_str()); \
@@ -270,6 +279,26 @@ static int lua_tstring_collect(lua_State *L)
 	if (strcmp(m, name) == 0) { \
 		lua_pushinteger(L, accessor); \
 		return 1; \
+	}
+
+#define return_bool_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		lua_pushboolean(L, accessor); \
+		return 1; \
+	}
+
+#define modify_int_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		int value = luaL_checkint(L, -1); \
+		accessor; \
+		return 0; \
+	}
+
+#define modify_bool_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		int value = lua_toboolean(L, -1); \
+		accessor; \
+		return 0; \
 	}
 
 /**
@@ -571,6 +600,10 @@ static int lua_side_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_int_attrib("gold", t.gold());
+	return_tstring_attrib("objectives", t.objectives());
+	return_int_attrib("village_gold", t.village_gold());
+	return_int_attrib("income", t.income());
+	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return 0;
 }
 
@@ -585,7 +618,12 @@ static int lua_side_set(lua_State *L)
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
+	lua_settop(L, 3);
 
+	// Find the corresponding attribute.
+	modify_int_attrib("gold", t.spend_gold(t.gold() - value));
+	modify_int_attrib("village_gold", t.set_village_gold(value));
+	modify_bool_attrib("objectives_changed", if (value) t.set_objectives_changed(); else t.reset_objectives_changed());
 	return 0;
 }
 
