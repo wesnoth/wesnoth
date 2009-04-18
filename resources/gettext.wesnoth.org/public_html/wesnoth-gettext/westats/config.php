@@ -10,12 +10,14 @@
 // the msgfmt program path
 $msgfmt="/usr/bin/msgfmt";
 
-$branch="1.6";
+$branch="1.6"; //version of current stable (folder name of the checkout folder)
+$wescampbranchversion="1.6";
+$wescamptrunkversion="1.7";
 
 $trunkbasedir="/usr/src/svn-checkouts/trunk/";
 $branchbasedir="/usr/src/svn-checkouts/$branch/";
-$extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/trunk/"; //trunk
-$extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$branch/"; //branch
+$extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$wescamptrunkversion/"; //trunk addon server
+$extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$wescampbranchversion/"; //branch addon server
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);
