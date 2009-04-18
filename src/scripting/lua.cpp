@@ -50,6 +50,7 @@ extern "C" {
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const executeKey = 0;
+static char const getsideKey = 0;
 static char const gettextKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
@@ -297,9 +298,6 @@ static int lua_getunit(lua_State *L)
 	return_string_attrib("side_id", u.side_id());
 	return 0;
 }
-
-#undef return_string_attrib
-#undef return_int_attrib
 
 /**
  * Gets the numeric ids of all the units.
@@ -559,6 +557,64 @@ static int lua_register_wml_action(lua_State *L)
 	return 0;
 }
 
+/**
+ * Gets some data on a side (__index metamethod).
+ * - Arg 1: full userdata containing the team.
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+static int lua_side_get(lua_State *L)
+{
+	// Hidden metamethod, so arg1 has to be a pointer to a team.
+	team &t = **static_cast<team **>(lua_touserdata(L, 1));
+	char const *m = luaL_checkstring(L, 2);
+
+	// Find the corresponding attribute.
+	return_int_attrib("gold", t.gold());
+	return 0;
+}
+
+/**
+ * Sets some data on a side (__newindex metamethod).
+ * - Arg 1: full userdata containing the team.
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
+static int lua_side_set(lua_State *L)
+{
+	// Hidden metamethod, so arg1 has to be a pointer to a team.
+	team &t = **static_cast<team **>(lua_touserdata(L, 1));
+	char const *m = luaL_checkstring(L, 2);
+
+	return 0;
+}
+
+/**
+ * Gets a proxy userdata for a side.
+ * - Arg 1: integer for the side.
+ * - Ret 1: full userdata with __index pointing to lua_side_get
+ *          and __newindex pointing to lua_side_set.
+ */
+static int lua_get_side(lua_State *L)
+{
+	int s = luaL_checkint(L, 1);
+
+	size_t t = s - 1;
+	std::vector<team> &teams = *game_events::resources->teams;
+	if (t >= teams.size()) return luaL_typerror(L, 1, "side number");
+
+	// Create a full userdata containing a pointer to the team.
+	team **p = static_cast<team **>(lua_newuserdata(L, sizeof(team *)));
+	*p = &teams[t];
+
+	// Get the metatable from the registry and set it.
+	lua_pushlightuserdata(L, (void *)&getsideKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, 2);
+
+	return 1;
+}
+
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
@@ -598,9 +654,21 @@ LuaKernel::LuaKernel()
 		{ "set_variable",             &lua_set_variable             },
 		{ "textdomain",               &lua_textdomain               },
 		{ "register_wml_action",      &lua_register_wml_action      },
+		{ "get_side",                 &lua_get_side                 },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
+
+	// Create the getside metatable.
+	lua_pushlightuserdata(L, (void *)&getsideKey);
+	lua_createtable(L, 0, 1);
+	lua_pushcfunction(L, lua_side_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, lua_side_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "Hands off! (getside metatable)");
+	lua_setfield(L, -2, "__metatable");
+	lua_settable(L, LUA_REGISTRYINDEX);
 
 	// Create the gettext metatable.
 	lua_pushlightuserdata(L, (void *)&gettextKey);
