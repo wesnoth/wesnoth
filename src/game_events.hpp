@@ -94,9 +94,7 @@ namespace game_events
 		public:
 			event_handler(const vconfig& cfg, bool is_menu_item=false) :
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
-				disabled_(false), mutated_(true),
-				skip_messages_(false), rebuild_screen_(false),
-				is_menu_item_(is_menu_item), cfg_(cfg)
+				disabled_(false), is_menu_item_(is_menu_item), cfg_(cfg)
 			{}
 
 			void read(const vconfig& cfg) { cfg_ = cfg; }
@@ -142,23 +140,12 @@ namespace game_events
 			void handle_event(const queued_event& event_info,
 					const vconfig cfg = vconfig());
 
-			bool rebuild_screen() const {return rebuild_screen_;}
-			bool mutated() const {return mutated_;}
-			bool skip_messages() const {return skip_messages_;}
-
-			void set_rebuild_screen(bool newval) {rebuild_screen_ = newval;}
-			void set_mutated(bool newval) {mutated_ = newval;}
-			void set_skip_messages(bool newval) {skip_messages_ = newval;}
-
 			const vconfig& get_vconfig() { return cfg_; }
 		private:
 			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg);
 
 			bool first_time_only_;
 			bool disabled_;
-			bool mutated_;
-			bool skip_messages_;
-			bool rebuild_screen_;
 			bool is_menu_item_;
 			vconfig cfg_;
 	};

@@ -54,6 +54,42 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
+/**
+ * State when processing a flight of events or commands.
+ */
+struct event_context
+{
+	bool mutated;
+	bool skip_messages;
+};
+
+static event_context *current_context;
+
+/**
+ * Context state with automatic lifetime handling.
+ */
+struct scoped_context
+{
+	event_context *old_context;
+	event_context new_context;
+
+	scoped_context()
+		: old_context(current_context)
+	{
+		new_context.skip_messages = old_context ? old_context->skip_messages : false;
+		new_context.mutated = true;
+		current_context = &new_context;
+	}
+
+	~scoped_context()
+	{
+		if (old_context) old_context->mutated |= new_context.mutated;
+		current_context = old_context;
+	}
+};
+
+static bool screen_needs_rebuild;
+
 namespace {
 
 	std::stringstream wml_messages_stream;
@@ -1815,7 +1851,7 @@ namespace {
 	}
 
 	// Changing the terrain
-	WML_HANDLER_FUNCTION(terrain,handler,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(terrain,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::vector<map_location> locs = multiple_locs(cfg);
 
@@ -1858,12 +1894,12 @@ namespace {
 					};
 				}
 			}
-			handler.set_rebuild_screen(true);
+			screen_needs_rebuild = true;
 		}
 	}
 
 	// Creating a mask of the terrain
-	WML_HANDLER_FUNCTION(terrain_mask,handler,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(terrain_mask,/*handler*/,/*event_info*/,cfg)
 	{
 		map_location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1880,7 +1916,7 @@ namespace {
 		}
 		bool border = utils::string_bool(cfg["border"]);
 		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
-		handler.set_rebuild_screen(true);
+		screen_needs_rebuild = true;
 	}
 
     static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
@@ -2703,7 +2739,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(redraw,handler,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(redraw,/*handler*/,/*event_info*/,cfg)
 	{
 		std::string side = cfg["side"];
 		assert(state_of_game != NULL);
@@ -2712,8 +2748,8 @@ namespace {
 			clear_shroud(*screen,*game_map,*units,*teams,side_num-1);
 			(screen)->recalculate_minimap();
 		}
-		if(handler.rebuild_screen()) {
-			handler.set_rebuild_screen(false);
+		if (screen_needs_rebuild) {
+			screen_needs_rebuild = false;
 			(screen)->recalculate_minimap();
 			(screen)->rebuild_all();
 		}
@@ -2799,9 +2835,9 @@ namespace {
 
 
 		// Allow undo sets the flag saying whether the event has mutated the game to false
-	WML_HANDLER_FUNCTION(allow_undo,handler,/*event_info*/,/*cfg*/)
+	WML_HANDLER_FUNCTION(allow_undo,/*handler*/,/*event_info*/,/*cfg*/)
 	{
-		handler.set_mutated(false);
+		current_context->mutated = false;
 	}
 		// Conditional statements
 	static void if_while_handler(bool is_if, game_events::event_handler& handler, const game_events::queued_event& event_info, const vconfig& cfg)
@@ -2999,7 +3035,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 		bool has_input= (has_text_input || !menu_items.empty() );
 
-		if (handler.skip_messages() && !has_input ) {
+		if (current_context->skip_messages && !has_input ) {
 			return;
 		}
 
@@ -3135,7 +3171,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 					text_input_result = text_input_content;
 				}
 				if(dlg_result == gui2::twindow::CANCEL) {
-					handler.set_skip_messages(true);
+					current_context->skip_messages = true;
 				}
 
 				/**
@@ -3270,7 +3306,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 	}
 
 	// Experimental map replace
-	WML_HANDLER_FUNCTION(replace_map,handler,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(replace_map,/*handler*/,/*event_info*/,cfg)
 	{
 		gamemap map(*game_map);
 		try {
@@ -3309,7 +3345,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
         }
 		*game_map = map;
         screen->reload_map();
-		handler.set_rebuild_screen(true);
+		screen_needs_rebuild = true;
 	}
 
 	/** Handles all the different types of actions that can be triggered by an event. */
@@ -3436,24 +3472,22 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	}
 
 	// The event hasn't been filtered out, so execute the handler.
-	// First reset the skip_messages to avoid the escape of the previous event
-	// to be carried over into the next.
-	handler.set_skip_messages(false);
-	handler.set_mutated(true);
+	scoped_context evc;
 	handler.handle_event(ev);
+
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
 	}
 
-	if(handler.rebuild_screen()) {
-		handler.set_rebuild_screen(false);
+	if (screen_needs_rebuild) {
+		screen_needs_rebuild = false;
 		(screen)->recalculate_minimap();
 		(screen)->invalidate_all();
 		(screen)->rebuild_all();
 	}
 
 
-	return handler.mutated();
+	return current_context->mutated;
 }
 
 namespace game_events {
