@@ -83,8 +83,8 @@ bool ai_configuration::parse_side_config(const config& cfg,
 	}
 
 	//set some default config values.
-	//@todo: later, the entire 'ai parameter/ai memory/ai effective parameter' system should be refactored.
-	//@todo: the following can also be rewritten to use a loop and a better version of bind_config_parameter [for each in default parameters T do bind_config_parameter(T,cfg,global_ai_params,defaults) ]
+	//@todo 1.7 later, the entire 'ai parameter/ai memory/ai effective parameter' system should be refactored.
+	//@todo 1.7 the following can also be rewritten to use a loop and a better version of bind_config_parameter [for each in default parameters T do bind_config_parameter(T,cfg,global_ai_params,defaults) ]
 	ai_algorithm_type = bind_config_parameter(
 				cfg["ai_algorithm"],
 				global_ai_parameters["ai_algorithm"],
@@ -125,7 +125,7 @@ bool ai_configuration::parse_side_config(const config& cfg,
 
 //some default values for the AI parameters following the default values listed
 //in the wiki at http://www.wesnoth.org/wiki/AiWML
-//@todo: think about reading this from config
+//@todo 1.7 think about reading this from config
 const config& ai_configuration::get_default_ai_parameters(){
 	static config default_cfg;
 	if (!default_cfg["init"].empty()) {

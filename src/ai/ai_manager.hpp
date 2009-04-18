@@ -272,7 +272,7 @@ public:
 	/**
 	 * Return a list of available AIs
 	 * @return the list of available AIs
-	 * @todo get this list from a list of files in specified directory
+	 * @todo 1.7 get this list from a list of files in specified directory
 	 */
 	static std::vector<std::string> get_available_ais();
 
@@ -458,7 +458,7 @@ private:
 	 * @param i game information for the AI
 	 * @param side side number (1-based)
 	 * @param str string to evaluate
-	 * @todo: rewrite this function to use a fai or lua parser
+	 * @todo 1.7 rewrite this function to use a fai or lua parser
 	 */
 	static const std::string internal_evaluate_command( int side, const std::string& str );
 
@@ -540,8 +540,8 @@ private:
 
 };
 
-//@todo: Refactor history handling and internal commands
-//@todo: Refactor all the mess with those AI parameters
-//@todo: AI Interface command to clear the history
+//@todo 1.7 Refactor history handling and internal commands
+//@todo 1.7 Refactor all the mess with those AI parameters
+//@todo 1.7 AI Interface command to clear the history
 
 #endif

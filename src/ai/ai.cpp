@@ -902,7 +902,7 @@ void ai::play_turn()
 {
 	// Protect against a memory over commitment:
 	/**
-	 * @todo Not in the mood to figure out the exact cause:
+	 * @todo 2.0 Not in the mood to figure out the exact cause:
 	 * For some reason -1 hitpoints cause a segmentation fault.
 	 * If -1 hitpoints are sent, we crash :/
 	 */

@@ -157,7 +157,7 @@ void ai_holder::set_ai_algorithm_type( const std::string& ai_algorithm_type ){
 const std::string ai_holder::describe_ai()
 {
 	std::string sidestr;
-	//@todo: extract side naming to separate static function
+	//@todo 1.7 extract side naming to separate static function
 	if (this->side_ == ai_manager::AI_TEAM_FALLBACK_AI){
 		sidestr = "'fallback_side'";
 	} else if (this->side_ == ai_manager::AI_TEAM_COMMAND_AI){
@@ -359,7 +359,7 @@ long ai_manager::history_item_counter_ = 1;
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 //yes, it doesn't look nice. but it is usable.
 //to be refactored at earliest opportunity
-//@todo: extract to separate class which will use fai or lua parser
+//@todo 1.7 extract to separate class which will use fai or lua parser
 const std::string ai_manager::internal_evaluate_command( int side, const std::string& str ){
 	const int MAX_HISTORY_VISIBLE = 30;
 
@@ -473,7 +473,7 @@ const std::string ai_manager::internal_evaluate_command( int side, const std::st
 // ADD, CREATE AIs, OR LIST AI TYPES
 // =======================================================================
 
-//@todo: add error reporting
+//@todo 1.7 add error reporting
 bool ai_manager::add_ai_for_side_from_file( int side, const std::string& file, bool replace )
 {
 	config cfg;
@@ -508,7 +508,7 @@ bool ai_manager::add_ai_for_side_from_config( int side, const config& cfg, bool 
 }
 
 
-//@todo: add error reporting
+//@todo 1.7 add error reporting
 bool ai_manager::add_ai_for_side( int side, const std::string& ai_algorithm_type, bool replace )
 {
 	if (replace) {
@@ -523,7 +523,7 @@ bool ai_manager::add_ai_for_side( int side, const std::string& ai_algorithm_type
 
 ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, int side, bool master )
 {
-	//@todo: modify this code to use a 'factory lookup' pattern -
+	//@todo 1.7 modify this code to use a 'factory lookup' pattern -
 	//a singleton which holds a map<string,ai_factory> of all functors which can create AIs.
 	//this will allow individual AI implementations to 'register' themselves.
 

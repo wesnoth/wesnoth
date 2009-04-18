@@ -529,7 +529,6 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			if(tg->type == target::VILLAGE) {
 				if(current_team().ai_parameters().has_attribute("scout_village_targetting")) {
 					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
-					// TODO: re-enable next line after forking 1.6
 					//lg::wml_error << "[ai] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targeting' instead\n";
 				}
 				else {
@@ -565,7 +564,6 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 	bool simple_targeting = false;
 	if(current_team().ai_parameters().has_attribute("simple_targetting")) {
 		simple_targeting = utils::string_bool(current_team().ai_parameters()["simple_targetting"]);
-		// TODO: re-enable next line after forking 1.6
  		//lg::wml_error << "[ai] the 'simple_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'simple_targeting' instead\n";
 	}
 	else {
@@ -880,7 +878,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 	for(std::map<location,paths::route>::const_iterator rt = leader_paths.routes.begin(); rt != leader_paths.routes.end(); ++rt) {
 		const map_location& loc = rt->first;
 		if (keeps().find(loc)!=keeps().end()){
-			//@todo: .move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
+			//@todo 1.7 move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
 			const int cost_to_loc = rt->second.move_left;
 			if (units_.count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location)||(cost_to_loc<cost_to_best_free_keep)){

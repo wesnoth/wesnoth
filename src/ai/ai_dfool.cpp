@@ -95,7 +95,7 @@ namespace dfool {
 	    //            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
-	    /** @todo FIXME: add sorting */
+	    /** @todo 2.0: add sorting */
 
             for(unit_list::iterator i = filtered_units.begin(); i != filtered_units.end() && (num > order_units.size()); ++i) {
 	      unit_map::iterator ui=unit(*i,get_info().units);
@@ -255,7 +255,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
 
-	/** @todo This undoubtedly could be done more cleanly */
+	/** @todo 2.0 This undoubtedly could be done more cleanly */
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
