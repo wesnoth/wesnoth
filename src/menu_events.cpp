@@ -155,6 +155,11 @@ namespace events{
 	}
 	void menu_handler::objectives(const unsigned int team_num)
 	{
+		config cfg;
+		cfg["side"] = str_cast(team_num);
+		game_events::handle_event_command("show_objectives",
+			game_events::queued_event("_from_interface", map_location(),
+				map_location(), config()), vconfig(cfg));
 		dialogs::show_objectives(*gui_, level_, teams_[team_num - 1].objectives());
 		teams_[team_num - 1].reset_objectives_changed();
 	}
