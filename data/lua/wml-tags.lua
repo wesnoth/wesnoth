@@ -26,29 +26,38 @@ local function trim(s)
 	return string.gsub(s, "^%s*(.-)%s*$", "%1")
 end
 
-local function wml_objectives(cfg)
+local function generate_objectives(cfg, team, silent)
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
 	local win_objectives = ""
 	local lose_objectives = ""
 
-	local win_string = cfg.victory_string
-	if not win_string then
-		win_string = _ "Victory:"
-	end
-	local lose_string = cfg.defeat_string
-	if not lose_string then
-		lose_string = _ "Defeat:"
-	end
+	local win_string = cfg.victory_string or _ "Victory:"
+	local lose_string = cfg.defeat_string or _ "Defeat:"
 
 	for obj in child_range(cfg, "objective") do
-		local condition = obj.condition
-		if condition == "win" then
-			win_objectives = win_objectives .. "\n@" .. obj.description
-		elseif condition == "lose" then
-			lose_objectives = lose_objectives .. "\n#" .. obj.description
+		-- Check if the display condition is fulfilled
+		local show_if = obj[1]
+		if show_if and show_if[1] == "show_if" then
+			local test = show_if[2]
+			table.insert(test, { "then", {{ "lua", { code = "wesnoth.dummy_var = true" }}}})
+			wesnoth.dummy_var = nil
+			wesnoth.fire("if", test)
+			show_if = wesnoth.dummy_var
+			wesnoth.dummy_var = nil
 		else
-			wesnoth.message "Unknown condition, ignoring."
+			show_if = true
+		end
+
+		if show_if then
+			local condition = obj.condition
+			if condition == "win" then
+				win_objectives = win_objectives .. "\n@" .. obj.description
+			elseif condition == "lose" then
+				lose_objectives = lose_objectives .. "\n#" .. obj.description
+			else
+				wesnoth.message "Unknown condition, ignoring."
+			end
 		end
 	end
 
@@ -63,8 +72,20 @@ local function wml_objectives(cfg)
 		objectives = objectives .. "*" .. lose_string .. "\n" .. lose_objectives .. "\n"
 	end
 
-	local silent = cfg.silent
+	return objectives
+end
+
+local function wml_objectives(cfg)
 	local side = cfg.side or 0
+	local silent = cfg.silent
+
+	-- Save the objectives in a WML variable in case they have to be regenerated later.
+	cfg.side = nil
+	cfg.silent = nil
+	wesnoth.set_variable("__scenario_objectives_" .. side, cfg)
+
+	-- Generate objectives for the given sides
+	local objectives = generate_objectives(cfg)
 	if side == 0 then
 		for team in all_teams() do
 			team.objectives = objectives
@@ -75,16 +96,37 @@ local function wml_objectives(cfg)
 		team.objectives = objectives
 		if not silent then team.objectives_changed = true end
 	end
+
+	-- Prepare an event for removing objectives variables on output.
+	if not wesnoth.get_variable("__scenario_objectives_gc") then
+		wesnoth.set_variable("__scenario_objectives_gc", true)
+		local vars = "__scenario_objectives_gc,__scenario_objectives_0"
+		local side = 1
+		for team in all_teams() do
+			vars = vars .. ",__scenario_objectives_" .. side
+			side = side + 1
+		end
+		wesnoth.fire("event", { name="victory", { "clear_variable", { name = vars }}})
+	end
 end
 
 local function wml_show_objectives(cfg)
 	local side = cfg.side or 0
+	local cfg0 = wesnoth.get_variable("__scenario_objectives_0")
 	if side == 0 then
+		local objectives0 = cfg0 and generate_objectives(cfg0)
 		for team in all_teams() do
+			side = side + 1
+			cfg = wesnoth.get_variable("__scenario_objectives_" .. side)
+			local objectives = (cfg and generate_objectives(cfg)) or objectives0
+			if objectives then team.objectives = objectives end
 			team.objectives_changed = true
 		end
 	else
 		local team = wesnoth.get_side(side)
+		cfg = wesnoth.get_variable("__scenario_objectives_" .. side) or cfg0
+		local objectives = cfg and generate_objectives(cfg)
+		if objectives then team.objectives = objectives end
 		team.objectives_changed = true
 	end
 end
