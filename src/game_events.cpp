@@ -893,7 +893,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Modify total gold
 			if(!gold.empty()) {
-				(*teams)[team_index].spend_gold((*teams)[team_index].gold()-lexical_cast_default<int>(gold));
+				(*teams)[team_index].set_gold(lexical_cast_default<int>(gold));
 			}
 			// Set controller
 			if(!controller.empty()) {

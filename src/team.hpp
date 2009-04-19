@@ -149,6 +149,7 @@ public:
 	void new_turn() { gold_ += income(); }
 	void set_time_of_day(int turn, const struct time_of_day& tod);
 	void get_shared_maps();
+	void set_gold(int amount) { gold_ = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
 	void set_income(const int amount)
 		{ info_.income = lexical_cast<std::string>(amount); }
@@ -186,7 +187,7 @@ public:
 	const std::string& current_player() const { return info_.current_player; }
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
-	void set_objectives_changed() { info_.objectives_changed = true; }
+	void set_objectives_changed(bool c = true) { info_.objectives_changed = c; }
 	void reset_objectives_changed() { info_.objectives_changed = false; }
 
 	const t_string& objectives() const { return info_.objectives; }

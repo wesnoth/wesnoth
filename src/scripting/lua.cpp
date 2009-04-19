@@ -651,10 +651,10 @@ static int lua_side_set(lua_State *L)
 	lua_settop(L, 3);
 
 	// Find the corresponding attribute.
-	modify_int_attrib("gold", t.spend_gold(t.gold() - value));
+	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
-	modify_bool_attrib("objectives_changed", if (value) t.set_objectives_changed(); else t.reset_objectives_changed());
+	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	return 0;
 }
 
