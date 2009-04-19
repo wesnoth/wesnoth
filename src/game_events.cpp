@@ -1213,21 +1213,6 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 		}
 	}
 
-WML_HANDLER_FUNCTION(show_objectives, /*event_info*/, cfg)
-{
-	const game_events::resources_t &rsrc = *game_events::resources;
-
-		std::string side = cfg["side"];
-		const size_t side_num = lexical_cast_default<size_t>(side,0);
-		if(side_num == 0) {
-			foreach (team &t, *rsrc.teams) {
-				t.set_objectives_changed();
-			}
-		} else {
-			(*rsrc.teams)[side_num - 1].set_objectives_changed();
-		}
-	}
-
 // Helper function(s) for [set_variable]
 namespace {
 	bool isint(const std::string &var) {
