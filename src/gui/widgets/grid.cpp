@@ -33,12 +33,8 @@ tgrid::tgrid(const unsigned rows, const unsigned cols)
 
 tgrid::~tgrid()
 {
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		if(itor->widget()) {
-			delete itor->widget();
-		}
+	foreach(tchild& child, children_) {
+		delete child.widget();
 	}
 }
 
@@ -142,14 +138,11 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 
 void tgrid::remove_child(const std::string& id, const bool find_all)
 {
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
+	foreach(tchild& child, children_) {
 
-		if(itor->id() == id) {
-			if(itor->widget()) {
-				delete itor->widget();
-			}
-			itor->set_widget(0);
+		if(child.id() == id) {
+			delete child.widget();
+			child.set_widget(0);
 
 			if(!find_all) {
 				break;
@@ -160,10 +153,9 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 
 void tgrid::set_active(const bool active)
 {
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
+	foreach(tchild& child, children_) {
 
-		twidget* widget = itor->widget();
+		twidget* widget = child.widget();
 		if(!widget) {
 			continue;
 		}
@@ -393,11 +385,10 @@ void tgrid::layout_wrap(const unsigned maximum_width)
 
 bool tgrid::has_vertical_scrollbar() const
 {
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
+	foreach(const tchild& child, children_) {
 		// FIXME we should check per row and the entire row
 		// should have the flag!!!!
-		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
+		if(child.widget() && child.widget()->has_vertical_scrollbar()) {
 			return true;
 		}
 	}
@@ -476,11 +467,10 @@ void tgrid::layout_use_vertical_scrollbar(const unsigned maximum_height)
 
 bool tgrid::has_horizontal_scrollbar() const
 {
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
+	foreach(const tchild& child, children_) {
 		// FIXME we should check per column and the entire column
 		// should have the flag!!!!
-		if(itor->widget() && itor->widget()->has_horizontal_scrollbar()) {
+		if(child.widget() && child.widget()->has_horizontal_scrollbar()) {
 			return true;
 		}
 	}
@@ -872,10 +862,8 @@ const twidget* tgrid::find_widget(const std::string& id,
 
 bool tgrid::has_widget(const twidget* widget) const
 {
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		if(itor->widget() == widget) {
+	foreach(const tchild& child, children_) {
+		if(child.widget() == widget) {
 			return true;
 		}
 	}
