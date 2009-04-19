@@ -655,6 +655,8 @@ bool game_controller::play_test()
 
 	load_game_cfg();
 
+	paths_manager_.set_paths(game_config_);
+
 	try {
 		upload_log nolog(false);
 		play_game(disp(),state_,game_config_,nolog);
