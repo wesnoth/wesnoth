@@ -70,9 +70,9 @@ public:
 		team_info(const config& cfg);
 		void write(config& cfg) const;
 		std::string name;
-		std::string gold;
-		std::string start_gold;
-		std::string income;
+		int gold;
+		int start_gold;
+		int income;
 		int income_per_village;
 		size_t average_price;
 		float number_of_possible_recruits_to_force_recruit;
@@ -139,20 +139,17 @@ public:
 		{ return villages_.count(loc) > 0; }
 
 	int gold() const { return gold_; }
-	std::string start_gold() const { return info_.start_gold; }
-	int base_income() const
-		{ return atoi(info_.income.c_str()) + game_config::base_income; }
+	int start_gold() const { return info_.start_gold; }
+	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
-	int income() const
-		{ return atoi(info_.income.c_str()) + villages_.size()*info_.income_per_village+game_config::base_income; }
-	void new_turn() { gold_ += income(); }
+	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
+	void new_turn() { gold_ += total_income(); }
 	void set_time_of_day(int turn, const struct time_of_day& tod);
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
-	void set_income(const int amount)
-		{ info_.income = lexical_cast<std::string>(amount); }
+	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	int countdown_time() const {  return countdown_time_; }
 	void set_countdown_time(const int amount)
 		{ countdown_time_ = amount; }

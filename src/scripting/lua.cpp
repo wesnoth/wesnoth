@@ -632,7 +632,8 @@ static int lua_side_get(lua_State *L)
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
-	return_int_attrib("income", t.income());
+	return_int_attrib("base_income", t.base_income());
+	return_int_attrib("total_income", t.total_income());
 	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return 0;
 }

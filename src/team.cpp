@@ -78,10 +78,10 @@ void team::target::write(config& cfg) const
 
 team::team_info::team_info(const config& cfg) :
 		name(cfg["name"]),
-		gold(cfg["gold"]),
-		start_gold(),
-		income(cfg["income"]),
-		income_per_village(),
+		gold(lexical_cast_default<int>(cfg["gold"])),
+		start_gold(0),
+		income(lexical_cast_default<int>(cfg["income"])),
+		income_per_village(0),
 		average_price(0),
 		number_of_possible_recruits_to_force_recruit(),
 		can_recruit(),
@@ -174,11 +174,11 @@ team::team_info::team_info(const config& cfg) :
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
 	if (!cfg["start_gold"].empty())
-		start_gold = cfg["start_gold"];
-	else if (!this->gold.empty())
-		start_gold = this->gold;
+		start_gold = lexical_cast_default<int>(cfg["start_gold"]);
+	else if (!cfg["gold"].empty())
+		start_gold = gold;
 	else
-		start_gold = str_cast(default_team_gold);
+		start_gold = default_team_gold;
 
 	if(team_name.empty()) {
 		team_name = cfg["side"];
@@ -254,9 +254,9 @@ void team::team_info::write(config& cfg) const
 	if(!ai_memory_.empty()) cfg.add_child("ai_memory", ai_memory_ );
 	cfg["ai_algorithm"] = ai_manager::get_active_ai_algorithm_type_for_side(side);
 
-	cfg["gold"] = gold;
-	cfg["start_gold"] = start_gold;
-	cfg["income"] = income;
+	cfg["gold"] = str_cast(gold);
+	cfg["start_gold"] = str_cast(start_gold);
+	cfg["income"] = str_cast(income);
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
 	cfg["user_team_name"] = user_team_name;
@@ -374,12 +374,12 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 
 	// To ensure some mimimum starting gold,
 	// gold is the maximum of 'gold' and what is given in the config file
-	if(info_.gold.empty() == false)
-	{
-		gold_ = std::max(gold,::atoi(info_.gold.c_str()));
-		if (gold_ != ::atoi(info_.gold.c_str()))
-			info_.start_gold = str_cast(gold) + " (" + info_.start_gold + ")";
-	}
+	gold_ = std::max(gold, info_.gold);
+	if (gold_ != info_.gold)
+		info_.start_gold = gold;
+	// Old code was doing:
+	// info_.start_gold = str_cast(gold) + " (" + info_.start_gold + ")";
+	// Was it correct?
 
 	// Load in the villages the side controls at the start
 	foreach (const config &v, cfg.child_range("village"))

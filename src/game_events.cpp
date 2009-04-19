@@ -889,7 +889,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Modify income
 			if(!income.empty()) {
-				(*teams)[team_index].set_income(lexical_cast_default<int>(income));
+				(*teams)[team_index].set_base_income(lexical_cast_default<int>(income) + game_config::base_income);
 			}
 			// Modify total gold
 			if(!gold.empty()) {
@@ -962,8 +962,8 @@ static void store_gold_side(bool store_side, const vconfig &cfg)
 				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
 				state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
 
-				state_of_game->get_variable(var_name+".income") = lexical_cast_default<std::string>((*teams)[team_index].income(),"");
-				state_of_game->get_variable(var_name+".village_gold") = lexical_cast_default<std::string>((*teams)[team_index].village_gold(),"");
+				state_of_game->get_variable(var_name+".income") = str_cast((*teams)[team_index].total_income());
+				state_of_game->get_variable(var_name+".village_gold") = str_cast((*teams)[team_index].village_gold());
 				state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
 				state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
 				state_of_game->get_variable(var_name+".user_team_name") = (*teams)[team_index].user_team_name();
