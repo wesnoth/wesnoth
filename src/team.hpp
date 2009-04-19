@@ -239,9 +239,8 @@ public:
 	void change_controller(const std::string& controller);
 
 	const std::string& team_name() const { return info_.team_name; }
-	const std::string& user_team_name() const { return info_.user_team_name; }
-	void change_team(const std::string& name,
-					 const std::string& user_name);
+	const t_string &user_team_name() const { return info_.user_team_name; }
+	void change_team(const std::string &name, const t_string &user_name);
 
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }

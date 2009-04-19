@@ -589,7 +589,7 @@ void team::change_controller(const std::string& controller)
 	info_.controller = cid;
 }
 
-void team::change_team(const std::string& name, const std::string& user_name)
+void team::change_team(const std::string &name, const t_string &user_name)
 {
 	info_.team_name = name;
 	if (!user_name.empty())
