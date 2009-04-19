@@ -1574,6 +1574,7 @@ formula_ai::formula_ai(int side, bool master) :
 	ai(side,master),
 	recruit_formula_(),
 	move_formula_(),
+	outcome_positions_(),
 	possible_moves_(),
 	move_maps_valid_(false),
 	srcdst_(),
