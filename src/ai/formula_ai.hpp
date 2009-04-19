@@ -140,7 +140,7 @@ private:
 	game_logic::const_formula_ptr recruit_formula_;
 	game_logic::const_formula_ptr move_formula_;
 
-        std::vector<variant> outcome_positions_;
+	std::vector<variant> outcome_positions_;
 
 	mutable std::map<location,paths> possible_moves_;
 
