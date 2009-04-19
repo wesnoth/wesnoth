@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2009-04-05 22:37+0100\n"
+"PO-Revision-Date: 2009-04-19 15:05+0200\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -821,8 +821,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Gerekruteerde eenheden hebben twee willekeurig gekozen <ref>dst='traits' "
-"text='Kenmerken'</ref> die hun eigenschappen beïnvloeden."
+"Gerekruteerde eenheden hebben twee willekeurig gekozen "
+"<ref>dst='..traits_section' text='Kenmerken'</ref> die hun eigenschappen "
+"beïnvloeden."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -2714,7 +2715,7 @@ msgid ""
 msgstr ""
 "\n"
 "Debug-modus inschakelen (werkt niet bij multiplayer). Zie "
-"<ref>dst='debug_commands' text='Debug modus commando's'</ref>.\n"
+"<ref>dst='debug_commands' text='Debug modus commando\\'s'</ref>.\n"
 "Debug-modus word uitgeschakeld bij het verlaten van het spel of :nodebug.\n"
 "\n"
 
@@ -7118,29 +7119,29 @@ msgstr "Teleporteren mislukt! Uitgang niet vrij"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Bevriende eenheid in zicht!"
-msgstr[1] "Bevriende eenheden in zicht!"
+msgstr[1] "$friends bevriende eenheden in zicht!"
 
 #: src/actions.cpp:2488
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vijandelijke eenheid in zicht!"
-msgstr[1] "Vijandelijke eenheden in zicht!"
+msgstr[1] "$enemies vijandelijke eenheden in zicht!"
 
 #: src/actions.cpp:2493
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "vriend"
-msgstr[1] "$friends vrienden"
+msgstr[0] "1 vriendelijke"
+msgstr[1] "$friends vriendelijke"
 
 #: src/actions.cpp:2494
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "vijand"
-msgstr[1] "vijanden"
+msgstr[0] "1 vijandelijke"
+msgstr[1] "$enemies vijandelijke"
 
 #: src/actions.cpp:2495
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Troepen gesignaleerd! (($friends bevriende, $enemies vijandelijke)"
+msgstr "Troepen gesignaleerd! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2504
 msgid "(press $hotkey to keep moving)"
@@ -9547,7 +9548,7 @@ msgstr "Onverwachte karakters aan het begin van de lijn"
 
 #: src/serialization/parser.cpp:160
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Ontbrekende closing tag voor tag $tag (regel $line)"
+msgstr "Ontbrekende closing tag voor tag $tag op $pos"
 
 #: src/serialization/parser.cpp:175
 msgid "Unterminated [element] tag"
@@ -9575,7 +9576,7 @@ msgstr "Onverwachte closing tage"
 
 #: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "Vond ongeldige closing tag voor tag $tag (regel $line)"
+msgstr "Vond ongeldige sluit-tag $tag2 voor tag $tag (geopend op $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
