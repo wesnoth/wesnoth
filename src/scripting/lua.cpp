@@ -316,6 +316,12 @@ static int lua_tstring_collect(lua_State *L)
 		return 0; \
 	}
 
+#define modify_string_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		const char *value = luaL_checkstring(L, -1); \
+		accessor; \
+		return 0; \
+	}
 
 #define modify_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
@@ -635,6 +641,8 @@ static int lua_side_get(lua_State *L)
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());
 	return_bool_attrib("objectives_changed", t.objectives_changed());
+	return_tstring_attrib("user_team_name", t.user_team_name());
+	return_string_attrib("team_name", t.team_name());
 	return 0;
 }
 
@@ -655,7 +663,10 @@ static int lua_side_set(lua_State *L)
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
+	modify_int_attrib("base_income", t.base_income());
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
+	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
+	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	return 0;
 }
 
