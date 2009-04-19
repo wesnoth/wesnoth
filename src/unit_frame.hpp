@@ -85,7 +85,9 @@ class frame_parameters{
 	submerge(0.0),
 	x(0),
 	y(0),
-	drawing_layer(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST)
+	drawing_layer(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST),
+	in_hex(false),
+	diagonal_in_hex(false)
 	{};
 
 	image::locator image;
