@@ -92,6 +92,41 @@ struct tgrid_implementation
 
 		return 0;
 	}
+
+	/**
+	 * Implementation for the wrappers for 
+	 * [const] twidget* tgrid::find_widget(const std::string&,
+	 * const bool) [const].
+	 *
+	 * @param W                   twidget or const twidget.
+	 */
+	template<class W>
+	static W* find_widget(typename tconst_duplicator<W, tgrid>::type& grid,
+				const std::string& id, const bool must_be_active)
+	{
+		// Inherited.
+		W* widget = grid.twidget::find_widget(id, must_be_active);
+		if(widget) {
+			return widget;
+		}
+
+		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
+		foreach(hack& child, grid.children_) {
+
+			widget = child.widget();
+			if(!widget) {
+				continue;
+			}
+
+			widget = widget->find_widget(id, must_be_active);
+			if(widget) {
+				return widget;
+			}
+
+		}
+
+		return 0;
+	}
 };
 
 } // namespace gui2

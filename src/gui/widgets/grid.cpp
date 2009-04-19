@@ -809,55 +809,15 @@ const twidget* tgrid::find_widget(const tpoint& coordinate,
 
 twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
 {
-	// Inherited.
-	twidget* widget = twidget::find_widget(id, must_be_active);
-	if(widget) {
-		return widget;
-	}
-
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(id, must_be_active);
-		if(widget) {
-			return widget;
-		}
-
-	}
-
-	return 0;
+	return tgrid_implementation::find_widget<twidget>(
+			*this, id, must_be_active);
 }
 
 const twidget* tgrid::find_widget(const std::string& id,
 		const bool must_be_active) const
 {
-	// Inherited.
-	const twidget* widget = twidget::find_widget(id, must_be_active);
-	if(widget) {
-		return widget;
-	}
-
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(id, must_be_active);
-		if(widget) {
-			return widget;
-		}
-
-	}
-
-	return 0;
+	return tgrid_implementation::find_widget<const twidget>(
+			*this, id, must_be_active);
 }
 
 bool tgrid::has_widget(const twidget* widget) const
