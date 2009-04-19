@@ -37,6 +37,27 @@
 namespace gui2 {
 
 /**
+ * Helper struct to get the same constness for T and U.
+ * 
+ * @param T                       A type to determine the constness.
+ * @param U                       Non const type to set the constness off.
+ */
+template<class T, class U>
+struct tconst_duplicator
+{
+	/** The type to use, if T not const U is also not const. */
+	typedef U type;
+};
+
+/** Specialialized version of tconst_duplicator when T is a const type. */
+template<class T, class U>
+struct tconst_duplicator<const T, U>
+{
+	/** The type to use, const U. */
+	typedef const U type;
+};
+
+/**
  * Helper to implement private functions without modifing the header.         
  *  
  * The class is a helper to avoid recompilation and only has static           
@@ -44,47 +65,20 @@ namespace gui2 {
  */
 struct tgrid_implementation
 {
-	/** 
-	 * Wrapper function for
-	 * twidget* tgrid::find_widget(const tpoint&, const bool).
-	 */
-	static twidget* find_widget(
-			tgrid& grid, const tpoint& coordinate, const bool must_be_active)
-	{
-		return find_widget_implementation<twidget*, tgrid, tgrid::tchild>
-			(grid, coordinate, must_be_active);
-	}
-
-	/** 
-	 * Wrapper function for
-	 * const twidget* tgrid::find_widget(const tpoint&, const bool) const.
-	 */
-	static const twidget* find_widget(const tgrid& grid,
-			const tpoint& coordinate, const bool must_be_active)
-	{
-		return find_widget_implementation<const twidget*,
-				const tgrid, const tgrid::tchild>
-			(grid, coordinate, must_be_active);
-	}
-
-private:
-
 	/**
 	 * Implementation for the wrappers for 
 	 * [const] twidget* tgrid::find_widget(const tpoint&, const bool) [const].
 	 *
-	 * @param W                   twidget* or const twidget*.
-	 * @param G                   if W == twidget* -> tgrid else const tgrid
-	 * @param C                   if W == twidget* -> tgrid::tchild
-	 *                            else const tgrid::tchild.
+	 * @param W                   twidget or const twidget.
 	 */
-	template<class W, class G, class C>
-	static W find_widget_implementation(G& grid, const tpoint& coordinate,
-			const bool must_be_active)
+	template<class W>
+	static W* find_widget(typename tconst_duplicator<W, tgrid>::type& grid,
+			const tpoint& coordinate, const bool must_be_active)
 	{
-		foreach(C& child, grid.children_) {
+		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
+		foreach(hack& child, grid.children_) {
 
-			W widget = child.widget();
+			W* widget = child.widget();
 			if(!widget) {
 				continue;
 			}

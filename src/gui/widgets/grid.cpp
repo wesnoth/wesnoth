@@ -796,14 +796,14 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 twidget* tgrid::find_widget(const tpoint& coordinate,
 		const bool must_be_active)
 {
-	return tgrid_implementation::find_widget(
+	return tgrid_implementation::find_widget<twidget>(
 		*this, coordinate, must_be_active);
 }
 
 const twidget* tgrid::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	return tgrid_implementation::find_widget(
+	return tgrid_implementation::find_widget<const twidget>(
 		*this, coordinate, must_be_active);
 }
 
