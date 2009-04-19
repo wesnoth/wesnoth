@@ -649,14 +649,11 @@ bool game_controller::play_test()
 
 	state_.campaign_type = "test";
 	state_.scenario = test_scenario_;
+	state_.campaign_define = "TEST";
+	cache_.clear_defines();
+	cache_.add_define("TEST");
 
-	try {
-		load_game_cfg();
-	} catch(config::error&) {
-		cache_.clear_defines();
-		load_game_cfg();
-		return false;
-	}
+	load_game_cfg();
 
 	try {
 		upload_log nolog(false);
