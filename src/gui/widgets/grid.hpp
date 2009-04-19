@@ -31,6 +31,7 @@ namespace gui2 {
 class tgrid : public virtual twidget
 {
 	friend class tdebug_layout_graph;
+	friend struct tgrid_implementation;
 
 public:
 

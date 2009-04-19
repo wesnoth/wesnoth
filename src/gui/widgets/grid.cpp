@@ -14,9 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/grid.hpp"
-
-#include "foreach.hpp"
+#include "gui/widgets/grid_private.hpp"
 
 #include <numeric>
 
@@ -805,45 +803,18 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 
 }
 
-twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active)
+twidget* tgrid::find_widget(const tpoint& coordinate,
+		const bool must_be_active)
 {
-	for(std::vector<tchild>::iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(coordinate, must_be_active);
-		if(widget) {
-			return widget;
-		}
-
-	}
-
-	return 0;
+	return tgrid_implementation::find_widget(
+		*this, coordinate, must_be_active);
 }
 
 const twidget* tgrid::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-
-		const twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(coordinate, must_be_active);
-		if(widget) {
-			return widget;
-		}
-
-	}
-
-	return 0;
+	return tgrid_implementation::find_widget(
+		*this, coordinate, must_be_active);
 }
 
 twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
