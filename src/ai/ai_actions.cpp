@@ -232,8 +232,15 @@ void ai_move_result::do_init_for_execution()
 
 
 // ai_recruit_result
-ai_recruit_result::ai_recruit_result( unsigned int side, const std::string& unit_name, const map_location& where)
-	: ai_action_result(side), unit_name_(unit_name), where_(where), recruit_location_(where){
+ai_recruit_result::ai_recruit_result(unsigned int side,
+		const std::string& unit_name, const map_location& where)
+	: ai_action_result(side)
+	, unit_name_(unit_name)
+	, where_(where)
+	, recruit_location_(where)
+	, unit_type_(NULL)
+	, num_(0)
+{
 }
 
 bool ai_recruit_result::test_available_for_recruiting( const team& team, std::set<std::string>::const_iterator& recruit, bool /*update_knowledge*/ )
