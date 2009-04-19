@@ -76,11 +76,14 @@ bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_m
 	return true;
 }
 
-base_candidate_action::base_candidate_action(const std::string& name,const std::string& type,const config& cfg, function_symbol_table* function_table) :
+base_candidate_action::base_candidate_action(const std::string& name,
+		const std::string& type, const config& cfg,
+		function_symbol_table* function_table) :
 	name_(name),
 	type_(type),
 	eval_(new game_logic::formula(cfg["evaluation"], function_table)),
-	action_(new game_logic::formula(cfg["action"], function_table))
+	action_(new game_logic::formula(cfg["action"], function_table)),
+	score_(0)
 {}
 
 int base_candidate_action::execute_formula(const const_formula_ptr& formula,
@@ -100,8 +103,11 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 	return res;
 }
 
-candidate_action_with_filters::candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
-	base_candidate_action(name, type, cfg, function_table)
+candidate_action_with_filters::candidate_action_with_filters(
+		const std::string& name, const std::string& type,
+		const config& cfg, function_symbol_table* function_table)
+	: base_candidate_action(name, type, cfg, function_table)
+	, filter_map_()
 {
 	const config & filter_params = cfg.child("filter");
 
@@ -116,8 +122,11 @@ candidate_action_with_filters::candidate_action_with_filters(const std::string& 
 	}
 }
 
-move_candidate_action::move_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(name, type, cfg, function_table)
+move_candidate_action::move_candidate_action(const std::string& name,
+		const std::string& type, const config& cfg,
+		function_symbol_table* function_table)
+	: candidate_action_with_filters(name, type, cfg, function_table)
+	, my_unit_()
 {}
 
 void move_candidate_action::evaluate(formula_ai* ai, unit_map& units)
@@ -156,8 +165,12 @@ void move_candidate_action::update_callable_map(game_logic::map_formula_callable
 	callable.add("me", my_unit_callable);
 }
 
-attack_candidate_action::attack_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(name, type, cfg, function_table)
+attack_candidate_action::attack_candidate_action(const std::string& name,
+		const std::string& type, const config& cfg,
+		function_symbol_table* function_table)
+	: candidate_action_with_filters(name, type, cfg, function_table)
+	, my_unit_()
+	, enemy_unit_()
 {}
 
 void attack_candidate_action::evaluate(formula_ai* ai, unit_map& units)

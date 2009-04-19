@@ -73,7 +73,10 @@ typedef std::set<game_logic::candidate_action_ptr, game_logic::candidate_action_
 //this class is responsible for managing candidate actions
 class candidate_action_manager {
 public:
-	candidate_action_manager() {}
+	candidate_action_manager()
+		: evaluated_candidate_actions_()
+		, candidate_actions_()
+	{}
 
 	//register candidate actions from config
 	void load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
