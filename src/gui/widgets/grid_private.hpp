@@ -21,7 +21,7 @@
  *
  * @note This file should only be included by grid.cpp.
  *
- * This fils is being used for a small experiment in which some private
+ * This file is being used for a small experiment in which some private
  * functions of tgrid are no longer in tgrid but moved in a friend class with
  * static functions. The goal is to have less header recompilations, when
  * there's a need to add or remove a private function.
