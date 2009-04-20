@@ -343,7 +343,7 @@ static int lua_tstring_collect(lua_State *L)
  * - Arg 2: string containing the name of the property.
  * - Ret 1: something containing the attribute.
  */
-static int lua_getunit(lua_State *L)
+static int lua_unit_get(lua_State *L)
 {
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
@@ -359,8 +359,34 @@ static int lua_getunit(lua_State *L)
 	return_string_attrib("id", u.id());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
+	return_int_attrib("experience", u.experience());
+	return_int_attrib("max_experience", u.max_experience());
+	return_int_attrib("moves", u.movement_left());
+	return_int_attrib("max_moves", u.total_movement());
 	return_string_attrib("name", u.name());
 	return_string_attrib("side_id", u.side_id());
+	return 0;
+}
+
+/**
+ * Sets some data on a unit (__index metamethod).
+ * - Arg 1: full userdata containing the unit id.
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
+static int lua_unit_set(lua_State *L)
+{
+	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
+	char const *m = luaL_checkstring(L, 2);
+	lua_settop(L, 3);
+
+	unit_map::unit_iterator ui = game_events::resources->units->find(id);
+	if (!ui.valid()) return 0;
+	unit &u = ui->second;
+
+	// Find the corresponding attribute.
+	modify_int_attrib("side", u.set_side(value));
+	modify_int_attrib("moves", u.set_movement(value));
 	return 0;
 }
 
@@ -462,9 +488,9 @@ static int lua_fire_event(lua_State *L)
 
 /**
  * Gets a WML variable.
- * - Arg1: string containing the variable name.
- * - Arg2: optional bool indicating if tables for containers should be left empty.
- * - Ret1: value of the variable, if any.
+ * - Arg 1: string containing the variable name.
+ * - Arg 2: optional bool indicating if tables for containers should be left empty.
+ * - Ret 1: value of the variable, if any.
  */
 static int lua_get_variable(lua_State *L)
 {
@@ -763,8 +789,10 @@ LuaKernel::LuaKernel()
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_createtable(L, 0, 1);
-	lua_pushcfunction(L, lua_getunit);
+	lua_pushcfunction(L, lua_unit_get);
 	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, lua_unit_set);
+	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "Hands off! (getunit metatable)");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
