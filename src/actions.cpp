@@ -929,6 +929,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 
 	a_.get_unit().set_attacks(a_.get_unit().attacks_left()-1);
+	VALIDATE(attack_with < static_cast<int>(a_.get_unit().attacks().size()),
+		_("An invalid attacker weapon got selected."));
 	a_.get_unit().set_movement(a_.get_unit().movement_left()-a_.get_unit().attacks()[attack_with].movement_used());
 	a_.get_unit().set_state("not_moved","");
 	d_.get_unit().set_resting(false);
