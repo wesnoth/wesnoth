@@ -362,15 +362,14 @@ public:
             unit_type_map_wrapper();
 			unit_type_map_wrapper(const unit_type_map_wrapper &);
 
+			// parse the [hide_help] tag
+			void read_hide_help(const config& cfg);
+
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
 
 			const config& find_config(const std::string& key) const;
 			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
-			void clear() {
-			    types_.clear();
-			    movement_types_.clear();
-			    races_.clear();
-            }
+			void clear();
 
             unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const;
             void add_advancefrom(const config& unit_cfg) const;
@@ -381,9 +380,11 @@ public:
             movement_type_map movement_types_;
             race_map races_;
 
+			// if [hide_help] contains a 'all=yes' at its root
 			bool hide_help_all_;
-			enum HIDE_KEY {TYPE=0, RACE, NOT_TYPE, NOT_RACE, NB_HIDE_KEY};
-			std::set<std::string> hide_help_[NB_HIDE_KEY];
+			// vectors containing the [hide_help] and its sub-tags [not]
+			std::vector< std::set<std::string> > hide_help_type_;
+			std::vector< std::set<std::string> > hide_help_race_;
 
             const config* unit_cfg_;
 	};

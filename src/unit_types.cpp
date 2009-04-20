@@ -1111,6 +1111,7 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 	dummy_unit_map_(),
 	movement_types_(),
 	races_(),
+	hide_help_all_(false),
 	unit_cfg_(NULL)
 {
     dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
@@ -1175,22 +1176,9 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 
 	build_all(unit_type::CREATED);
 
-	if (const config &hide = cfg.child("hide_help")) {
-		hide_help_all_ = utils::string_bool(hide["all"], false);
-
-		std::vector<std::string> types = utils::split(hide["type"]);
-		hide_help_[TYPE].insert(types.begin(), types.end());
-
-		std::vector<std::string> races = utils::split(hide["race"]);
-		hide_help_[RACE].insert(races.begin(), races.end());
-
-		if (const config &hide_not = hide.child("not")) {
-			std::vector<std::string> n_types = utils::split(hide_not["type"]);
-			hide_help_[NOT_TYPE].insert(n_types.begin(), n_types.end());
-
-			std::vector<std::string> n_races = utils::split(hide_not["race"]);
-			hide_help_[NOT_RACE].insert(n_races.begin(), n_races.end());
-		}
+	if (const config &hide_help = cfg.child("hide_help")) {
+		hide_help_all_ = utils::string_bool(hide_help["all"], false);
+		read_hide_help(hide_help);
 	}
 }
 
@@ -1242,6 +1230,17 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
     ERR_CONFIG << *unit_cfg_ << "\n";
 
     ERROR_LOG("unit type not found");
+}
+
+void unit_type_data::unit_type_map_wrapper::clear()
+{
+	types_.clear();
+	movement_types_.clear();
+	races_.clear();
+
+	hide_help_all_ = false;
+	hide_help_race_.clear();
+	hide_help_type_.clear();
 }
 
 void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS status) const
@@ -1299,10 +1298,37 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     return ut->second;
 }
 
+void unit_type_data::unit_type_map_wrapper::read_hide_help(const config& cfg)
+{
+	if (!cfg)
+		return;
+
+	hide_help_race_.push_back(std::set<std::string>());
+	hide_help_type_.push_back(std::set<std::string>());
+
+	std::vector<std::string> races = utils::split(cfg["race"]);
+	hide_help_race_.back().insert(races.begin(), races.end());
+
+	std::vector<std::string> types = utils::split(cfg["type"]);
+	hide_help_type_.back().insert(types.begin(), types.end());
+
+	// we call recursively all the imbricated [not] tags
+	read_hide_help(cfg.child("not"));
+}
+
 bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type, const std::string& race) const
 {
-	return (hide_help_all_ || hide_help_[RACE].count(race) || hide_help_[TYPE].count(type))
-		&& !(hide_help_[NOT_RACE].count(race) || hide_help_[NOT_TYPE].count(type));
+	bool res = hide_help_all_;
+	int lvl = hide_help_all_ ? 1 : 0; // first level is covered by 'all=yes'
+
+	// supposed to be equal but let's be cautious
+	int lvl_nb = std::min(hide_help_race_.size(), hide_help_type_.size());
+
+	for (; lvl < lvl_nb; ++lvl) {
+		if (hide_help_race_[lvl].count(race) || hide_help_type_[lvl].count(type))
+			res = !res; // each level is a [not]
+	}
+	return res;
 }
 
 void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const
