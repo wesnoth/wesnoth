@@ -2141,7 +2141,7 @@ private:
 			void do_show_var();
 			void do_unit();
 //			void do_buff();
-			void do_unbuff();
+//			void do_unbuff();
 			void do_create();
 			void do_fog();
 			void do_shroud();
@@ -2227,9 +2227,9 @@ private:
 				register_command("unit", &console_handler::do_unit,
 					_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
 /*				register_command("buff", &console_handler::do_buff,
-					_("Add a trait to a unit."), "", "D");*/
+					_("Add a trait to a unit."), "", "D");
 				register_command("unbuff", &console_handler::do_unbuff,
-					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");
+					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");*/
 				register_command("create", &console_handler::do_create,
 					_("Create a unit."), "", "D");
 				register_command("fog", &console_handler::do_fog,
@@ -2878,7 +2878,7 @@ private:
 		} else {
 			command_failed("No unit selected");
 		}
-	}*/
+	}
 	void console_handler::do_unbuff() {
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if(i != menu_handler_.units_.end()) {
@@ -2889,7 +2889,7 @@ private:
 		} else {
 			command_failed("No unit selected");
 		}
-	}
+	}*/
 	void console_handler::do_create() {
 		const map_location &loc = mouse_handler_.get_last_hex();
 		if (menu_handler_.map_.on_board(loc)) {
