@@ -1257,20 +1257,23 @@ public:
 
 		ss << "\n";
 
-		// Print cross-references to units that this unit advances from.
-		const std::vector<std::string>& from_units = type_.advances_from();
-		if (!from_units.empty())
-		{
-			for (std::vector<std::string>::const_iterator from_iter = from_units.begin();
-					from_iter != from_units.end();
-					++from_iter)
+		// Print cross-references to units that this unit advances from/to.
+		// Cross reference to the topics containing information about those units.
+		const bool first_reverse_value = true;
+		bool reverse = first_reverse_value;
+		do {
+			const std::vector<std::string>& adv_units =
+					reverse ? type_.advances_from() : type_.advances_to();
+
+			std::vector<std::string>::const_iterator adv_iter = adv_units.begin();
+			for (; adv_iter != adv_units.end(); ++adv_iter)
 			{
-				std::string unit_id = *from_iter;
-				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
+				std::map<std::string,unit_type>::const_iterator type =
+						unit_type_data::types().find_unit_type(*adv_iter);
 				if (type != unit_type_data::types().end() && !type->second.hide_help())
 				{
-					if (from_iter == from_units.begin())
-						ss << _("Advances from: ");
+					if (adv_iter == adv_units.begin())
+						ss << (reverse ? _("Advances from: ") : _("Advances to: "));
 					else
 						ss << ", ";
 
@@ -1285,37 +1288,10 @@ public:
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
 				}
 			}
-			ss << "\n";
-		}
+			ss << "\n"; //added even if empty, to avoid shifting
 
-		// Print the units this unit can advance to. Cross reference
-		// to the topics containing information about those units.
-		const std::vector<std::string>& next_units = type_.advances_to();
-		if (!next_units.empty()) {
-			for (std::vector<std::string>::const_iterator advance_it = next_units.begin(),
-				 advance_end = next_units.end();
-				 advance_it != advance_end; ++advance_it) {
-				std::string unit_id = *advance_it;
-				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
-				if(type != unit_type_data::types().end() && !type->second.hide_help()) {
-					if (advance_it == next_units.begin())
-						ss << _("Advances to: ");
-					else
-						ss << ", ";
-
-					std::string lang_unit = type->second.type_name();
-					std::string ref_id;
-					if (description_type(type->second) == FULL_DESCRIPTION) {
-						ref_id = unit_prefix + type->second.id();
-					} else {
-						ref_id = unknown_unit_topic;
-						lang_unit += " (?)";
-					}
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
-				}
-			}
-			ss << "\n";
-		}
+			reverse = !reverse; //switch direction 
+		} while(reverse != first_reverse_value); // don't restart
 
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
