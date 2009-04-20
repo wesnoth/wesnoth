@@ -265,12 +265,6 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	const unit& defender = units.find(defender_loc)->second;
 	const double harm_weight = 1.0 - aggression;
 
-	// A Python AI can send an invalid weapon and crash Wesnoth.
-	// Haven't found a way for the Python API to prevent this problem.
-	// So instead of segfaulting it sends an assertion failure.
-	VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
-			_("An invalid weapon is selected, possibly by the Python AI."));
-
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
@@ -289,12 +283,12 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		const attack_type *ddef = NULL;
 		if (attacker_weapon >= 0) {
 			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
-					_("An invalid weapon is selected, possibly by the Python AI."));
+					_("An invalid attacker weapon got selected."));
 			adef = &attacker.attacks()[attacker_weapon];
 		}
 		if (defender_weapon >= 0) {
 			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
-					_("An invalid weapon is selected, possibly by the Python AI."));
+					_("An invalid defender weapon got selected."));
 			ddef = &defender.attacks()[defender_weapon];
 		}
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
@@ -350,6 +344,8 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		const map_location& attacker_loc, const map_location& defender_loc,
 		const combatant *prev_def)
 {
+	VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+			_("An invalid attacker weapon got selected."));
 	const attack_type &att = attacker.attacks()[attacker_weapon];
 	std::vector<unsigned int> choices;
 
