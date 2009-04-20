@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-04-18 14:54-0000\n"
+"PO-Revision-Date: 2009-04-19 17:17-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -760,7 +760,7 @@ msgstr "Breyta tungumáli"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Form fjölspilunarskipanna"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -929,7 +929,7 @@ msgstr "Búa til leik"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Innskráningarform fjölspilunarmiðlara"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -1171,7 +1171,7 @@ msgstr "Merkja herberja lista"
 
 #: src/game_preferences_display.cpp:165
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Setja slóð á wesnothd"
 
 #: src/game_preferences_display.cpp:166
 msgid "Friends List"
@@ -1183,7 +1183,7 @@ msgstr "Fjölspilunarstillingar"
 
 #: src/game_preferences_display.cpp:171
 msgid "Show Floating Labels"
-msgstr ""
+msgstr "Birta fljótandi örnefni"
 
 #: src/game_preferences_display.cpp:172
 msgid "Turn Dialog"
@@ -1203,7 +1203,7 @@ msgstr "Birta litaða músarbendla"
 
 #: src/game_preferences_display.cpp:176
 msgid "Show Haloing Effects"
-msgstr ""
+msgstr "Birta Halo-grafík"
 
 #: src/game_preferences_display.cpp:177
 msgid "Change Resolution"
@@ -1231,7 +1231,7 @@ msgstr "Tónlist"
 
 #: src/game_preferences_display.cpp:184
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Tímastimpill spjalls"
 
 #: src/game_preferences_display.cpp:185
 msgid "sound^Advanced Options"
@@ -1243,11 +1243,11 @@ msgstr "Venjulegar stillingar"
 
 #: src/game_preferences_display.cpp:187
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Hljóð notendaviðmóts"
 
 #: src/game_preferences_display.cpp:190
 msgid "Custom"
-msgstr ""
+msgstr "Nánari skilgreiningar"
 
 #: src/game_preferences_display.cpp:192
 msgid "Show Unit Idle Animations"
@@ -1315,11 +1315,11 @@ msgstr "Breyta tíðni"
 
 #: src/game_preferences_display.cpp:259
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Notendaskilgreind hljóðtíðni"
 
 #: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
 msgid "Change the buffer size"
-msgstr ""
+msgstr "Breyta stærð flýtiminnis"
 
 #: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:812
 msgid "Buffer Size: "
@@ -1331,11 +1331,11 @@ msgstr "Breyta hraða skrunu yfir kortið"
 
 #: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Setja fjölda birtra spjallskilaboða"
 
 #: src/game_preferences_display.cpp:287
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Bæta við tímastimpil við spjallskilaboð"
 
 #: src/game_preferences_display.cpp:290
 msgid "Choose whether the game should run full screen or in a window"
@@ -1400,7 +1400,7 @@ msgstr "Sýna skilaboð varðandi alla sem koma í fjölspilunar herbergið"
 
 #: src/game_preferences_display.cpp:357
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Finna og setja slóð á MP miðlara til að hýsa LAN leiki."
 
 #: src/game_preferences_display.cpp:358
 msgid "View and edit your friends and ignores list"
@@ -1520,7 +1520,7 @@ msgstr "Fjölspilun"
 
 #: src/game_preferences_display.cpp:1123
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Annað"
 
 #: src/game_preferences_display.cpp:1158
 msgid "Saved Theme Preference: "
@@ -1532,7 +1532,7 @@ msgstr "Ný þema mun taka gildi næsta leik."
 
 #: src/game_preferences_display.cpp:1168
 msgid "No known themes. Try changing from within an existing game."
-msgstr ""
+msgstr "Engin þekkt þema. Reyndu að breyta innan núverandi leik."
 
 #: src/game_preferences_display.cpp:1210
 msgid "Find $filename server binary to host networked games"
@@ -1552,11 +1552,11 @@ msgstr "Útgáfa"
 
 #: src/gui/widgets/canvas.cpp:309
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Lína passa ekki innan úthlutaðar marka."
 
 #: src/gui/widgets/canvas.cpp:444
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Ferhyrningur passar ekki innan úthlutaðar marka."
 
 #: src/gui/widgets/canvas.cpp:815
 msgid "Text has a font size of 0."
@@ -1564,7 +1564,7 @@ msgstr "Texti hefur leturstærðina 0."
 
 #: src/gui/widgets/canvas.cpp:880
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Texti passar ekki innan úthlutaðar marka."
 
 #: src/gui/widgets/helper.cpp:169
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -1572,7 +1572,7 @@ msgstr "Viðmósthluturinn '$id' hefur ekki verið skilgreind."
 
 #: src/gui/widgets/settings.cpp:133
 msgid "No default gui defined."
-msgstr ""
+msgstr "Ekkert sjálfgefið notendaviðmót skilgreint."
 
 #: src/gui/widgets/settings.cpp:288
 msgid "Window not defined."
@@ -1591,18 +1591,18 @@ msgstr "Engin upplausn skilgreind."
 
 #: src/gui/widgets/settings.cpp:527
 msgid "No state or draw section defined."
-msgstr ""
+msgstr "Enginn stöðu- eða teiknihluti skilgreindur."
 
 #: src/gui/widgets/settings.cpp:756 src/gui/widgets/settings.cpp:910
 #: src/gui/widgets/window_builder.cpp:409
 #: src/gui/widgets/window_builder.cpp:923
 #: src/gui/widgets/window_builder.cpp:1132
 msgid "No grid defined."
-msgstr ""
+msgstr "Engin grind skilgreind."
 
 #: src/gui/widgets/window.cpp:613
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Gat ekki birt glugga þar sem hann passaði ekki á skjáinn."
 
 #: src/gui/widgets/window_builder.cpp:516
 msgid "A row must have a column."
@@ -1667,7 +1667,7 @@ msgstr "Þysja út"
 
 #: src/hotkeys.cpp:55
 msgid "Default Zoom"
-msgstr ""
+msgstr "Sjálfgefið þys"
 
 #: src/hotkeys.cpp:57 src/hotkeys.cpp:895
 msgid "Screenshot"
@@ -1779,7 +1779,7 @@ msgstr "Setja Merki"
 
 #: src/hotkeys.cpp:86
 msgid "Clear Labels"
-msgstr ""
+msgstr "Hreinsa örnefni"
 
 #: src/hotkeys.cpp:87
 msgid "Show Enemy Moves"
@@ -1855,7 +1855,7 @@ msgstr "Upplýsingar um kort"
 
 #: src/hotkeys.cpp:115
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Víxla jarðir for- og bakgrunns"
 
 #: src/hotkeys.cpp:116
 msgid "Next Tool"
@@ -1867,7 +1867,7 @@ msgstr "Pensill"
 
 #: src/hotkeys.cpp:118
 msgid "Fill Tool"
-msgstr ""
+msgstr "Málningarfata"
 
 #: src/hotkeys.cpp:119
 msgid "Selection Tool"
@@ -1899,7 +1899,7 @@ msgstr "Líma"
 
 #: src/hotkeys.cpp:127
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Afrita valin staðsetningu yfir á klippiborðið"
 
 #: src/hotkeys.cpp:129
 msgid "Select All"
@@ -1943,11 +1943,11 @@ msgstr "Filla val"
 
 #: src/hotkeys.cpp:149
 msgid "Generate Tiles In Selection"
-msgstr ""
+msgstr "Búa til reiti innan valins svæðis"
 
 #: src/hotkeys.cpp:151
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Rugla reiti innan valins svæðis"
 
 #: src/hotkeys.cpp:155
 msgid "Rotate Map"
@@ -1971,11 +1971,11 @@ msgstr "Endurhlaða skjá"
 
 #: src/hotkeys.cpp:165
 msgid "Update Terrain Transitions"
-msgstr ""
+msgstr "Uppfæra hreyfingu jarðar"
 
 #: src/hotkeys.cpp:167
 msgid "Auto-update Terrain Transitions"
-msgstr ""
+msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
 
 #: src/hotkeys.cpp:169
 msgid "Refresh Image Cache"
@@ -2031,7 +2031,7 @@ msgstr "Sláðu inn notendaskipun"
 
 #: src/hotkeys.cpp:189
 msgid "Custom command"
-msgstr ""
+msgstr "Notendaskilgreind skipun"
 
 #: src/hotkeys.cpp:190
 msgid "Run AI formula"
@@ -2109,7 +2109,7 @@ msgstr "Stærð hallar:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Landform:"
-msgstr ""
+msgstr "Landslagsþáttur:"
 
 #: src/mapgen_dialog.cpp:243
 msgid "Roads Between Castles"
@@ -2149,6 +2149,9 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Gat ekki breytt skjáhami. Gluggaumhverfið þitt þarf að vera stillt á 16 bita "
+"á díl  til að geta keyrt leikinn í gluggaham. Skjárinn þinn þarf að styðja "
+"upplausnina 1024x768x16 til að keyra leikinn í fullskjáhami."
 
 #: src/preferences_display.cpp:206
 msgid "Hotkey Settings"
@@ -2164,7 +2167,7 @@ msgstr "Aðgerð"
 
 #: src/preferences_display.cpp:231
 msgid "Binding"
-msgstr ""
+msgstr "Tenging"
 
 #: src/preferences_display.cpp:243
 msgid "Change Hotkey"
@@ -2187,7 +2190,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:416
 msgid "There are no alternative video modes available"
-msgstr ""
+msgstr "Það eru engir aðrir skjáhamar í boði"
 
 #: src/preferences_display.cpp:445
 msgid "Choose Resolution"
