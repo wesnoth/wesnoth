@@ -1099,6 +1099,28 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	}
 }
 
+static void advancement_tree_internal(const std::string id, std::set<std::string>& tree)
+{
+	unit_type_data::unit_type_map::const_iterator ut =
+			unit_type_data::types().find_unit_type(id);
+	if (ut == unit_type_data::types().end())
+		return;
+
+	foreach(const std::string& adv, ut->second.advances_to()) {
+		if (tree.insert(adv).second) {
+			// insertion succeed, expand the new type
+			advancement_tree_internal(adv, tree);
+		}
+	}
+}
+
+std::set<std::string> unit_type::advancement_tree() const
+{
+	std::set<std::string> tree;
+	advancement_tree_internal(id_, tree);
+	return tree;
+}
+
 unit_type_data* unit_type_data::instance_ = NULL;
 
 unit_type_data::unit_type_data() :
@@ -1311,6 +1333,16 @@ void unit_type_data::unit_type_map_wrapper::read_hide_help(const config& cfg)
 
 	std::vector<std::string> types = utils::split(cfg["type"]);
 	hide_help_type_.back().insert(types.begin(), types.end());
+
+	std::vector<std::string> trees = utils::split(cfg["type_adv_tree"]);
+	hide_help_type_.back().insert(trees.begin(), trees.end());
+	foreach(const std::string& t_id, trees) {
+		unit_type_map::iterator ut = types_.find(t_id);
+		if (ut != types_.end()) {
+			std::set<std::string> adv_tree = ut->second.advancement_tree();
+			hide_help_type_.back().insert(adv_tree.begin(), adv_tree.end());
+		}
+	}
 
 	// we call recursively all the imbricated [not] tags
 	read_hide_help(cfg.child("not"));

@@ -182,6 +182,10 @@ public:
 	/** Adds units that this unit advances from, for help file purposes. */
 	void add_advancesfrom(const std::string& unit_id);
 
+	/** Get the advancement tree
+	 *  Build a set of unit type's id of this unit type's advancement tree */
+	std::set<std::string> advancement_tree() const;
+
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
 	/** Info on the type of unit that the unit reanimates as. */
