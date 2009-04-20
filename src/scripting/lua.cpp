@@ -663,7 +663,7 @@ static int lua_side_set(lua_State *L)
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
-	modify_int_attrib("base_income", t.base_income());
+	modify_int_attrib("base_income", t.set_base_income(value));
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
