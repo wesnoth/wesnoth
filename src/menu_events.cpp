@@ -2142,6 +2142,8 @@ private:
 			void do_unit();
 //			void do_buff();
 //			void do_unbuff();
+			void do_discover();
+			void do_undiscover();
 			void do_create();
 			void do_fog();
 			void do_shroud();
@@ -2230,6 +2232,10 @@ private:
 					_("Add a trait to a unit."), "", "D");
 				register_command("unbuff", &console_handler::do_unbuff,
 					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");*/
+				register_command("discover", &console_handler::do_discover,
+					_("Discover all units in help."), "");
+				register_command("undiscover", &console_handler::do_undiscover,
+					_("'Undiscover' all units in help."), "");
 				register_command("create", &console_handler::do_create,
 					_("Create a unit."), "", "D");
 				register_command("fog", &console_handler::do_fog,
@@ -2890,6 +2896,15 @@ private:
 			command_failed("No unit selected");
 		}
 	}*/
+	void console_handler::do_discover() {
+		unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
+		for(; i != unit_type_data::types().end(); ++i) {
+			preferences::encountered_units().insert(i->second.id());
+		}
+	}
+	void console_handler::do_undiscover() {
+		preferences::encountered_units().clear();
+	}
 	void console_handler::do_create() {
 		const map_location &loc = mouse_handler_.get_last_hex();
 		if (menu_handler_.map_.on_board(loc)) {
