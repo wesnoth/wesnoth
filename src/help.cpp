@@ -1261,7 +1261,6 @@ public:
 		const std::vector<std::string>& from_units = type_.advances_from();
 		if (!from_units.empty())
 		{
-			ss << _("Advances from: ");
 			for (std::vector<std::string>::const_iterator from_iter = from_units.begin();
 					from_iter != from_units.end();
 					++from_iter)
@@ -1270,7 +1269,11 @@ public:
 				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
 				if (type != unit_type_data::types().end() && !type->second.hide_help())
 				{
-					if (from_iter != from_units.begin()) ss << ", ";
+					if (from_iter == from_units.begin())
+						ss << _("Advances from: ");
+					else
+						ss << ", ";
+
 					std::string lang_unit = type->second.type_name();
 					std::string ref_id;
 					if (description_type(type->second) == FULL_DESCRIPTION) {
@@ -1289,14 +1292,17 @@ public:
 		// to the topics containing information about those units.
 		const std::vector<std::string>& next_units = type_.advances_to();
 		if (!next_units.empty()) {
-			ss << _("Advances to: ");
 			for (std::vector<std::string>::const_iterator advance_it = next_units.begin(),
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
 				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
 				if(type != unit_type_data::types().end() && !type->second.hide_help()) {
-					if (advance_it != next_units.begin()) ss << ", ";
+					if (advance_it == next_units.begin())
+						ss << _("Advances to: ");
+					else
+						ss << ", ";
+
 					std::string lang_unit = type->second.type_name();
 					std::string ref_id;
 					if (description_type(type->second) == FULL_DESCRIPTION) {
