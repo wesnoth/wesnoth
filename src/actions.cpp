@@ -344,7 +344,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		const map_location& attacker_loc, const map_location& defender_loc,
 		const combatant *prev_def)
 {
-	VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+	VALIDATE(attacker_weapon < attacker.attacks().size(),
 			_("An invalid attacker weapon got selected."));
 	const attack_type &att = attacker.attacks()[attacker_weapon];
 	std::vector<unsigned int> choices;
