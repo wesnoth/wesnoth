@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2009-04-12 17:40+0300\n"
+"PO-Revision-Date: 2009-04-20 17:39+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -522,7 +522,7 @@ msgstr "Gebėjimai"
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
-msgstr "Ginkų ypatybės"
+msgstr "Ginklų ypatybės"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -1584,8 +1584,8 @@ msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Nemirėliai daliniai yra atsparūs nuodams, be to išsiurbimas ir maras "
-"neveikia jų."
+"Nemirėlių daliniai yra atsparūs nuodams, be to jų neveikia išsiurbimas ir "
+"maras."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:411
@@ -4861,7 +4861,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name's tiltas,$name's brąsta"
+msgstr "$name's tiltas,$name's brasta"
 
 #. [language]
 #: data/hardwired/english.cfg:20
@@ -5441,7 +5441,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Paslaptingos atakos labai galingos prieš nemirėlius."
+msgstr "Paslaptingos atakos labai veiksmingos prieš nemirėlius."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
@@ -5759,7 +5759,7 @@ msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
 #: src/actions.cpp:272 src/actions.cpp:292 src/actions.cpp:297
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr "Pasirinktas netinkalas ginklas, gal būt dėt Python'o DI."
+msgstr "Pasirinktas netinkamas ginklas, gal būt dėl Python'o DI."
 
 #: src/actions.cpp:1058 src/actions.cpp:1333
 msgid "female^poisoned"
@@ -7195,7 +7195,7 @@ msgstr "Įjungti derinimo režimą."
 
 #: src/menu_events.cpp:2213
 msgid "Turn debug mode off."
-msgstr "Išjunti derinimo režimą."
+msgstr "Išjungti derinimo režimą."
 
 #: src/menu_events.cpp:2215
 msgid "Set the command used by the custom command hotkey"
@@ -7207,7 +7207,7 @@ msgstr "Nustatyti arba rodyti komandos sinonimą"
 
 #: src/menu_events.cpp:2219
 msgid "Set a scenario variable."
-msgstr "Nustatyti scenarijaus kintamajį."
+msgstr "Nustatyti scenarijaus kintamąjį."
 
 #: src/menu_events.cpp:2221
 msgid "Show a scenario variable."
@@ -7259,7 +7259,7 @@ msgstr "klaida"
 
 #: src/menu_events.cpp:2296
 msgid "Unknown debug domain: '$domain'."
-msgstr "Nežinomas derinimo domentas: „$domain“."
+msgstr "Nežinomas derinimo domenas: „$domain“."
 
 #: src/menu_events.cpp:2305
 msgid "Switched domain: '$domain' to level: '$level'."
@@ -7283,7 +7283,7 @@ msgstr "Pašalintas iš sąrašo: "
 
 #: src/menu_events.cpp:2444
 msgid "There are no players on your friends or ignore list."
-msgstr "Nėra žaidėjų jūsų draugų ar ignoruoamų sąraše."
+msgstr "Nėra žaidėjų jūsų draugų ar ignoruojamų sąraše."
 
 #: src/menu_events.cpp:2614
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -7604,11 +7604,11 @@ msgstr "Įgalina naudotojo laiko limitą"
 
 #: src/multiplayer_create.cpp:149
 msgid "Longest time allowed for first turn (seconds)"
-msgstr "Didžiausias laikas ledžiamas pirmam ėjimui (sekundėmis)"
+msgstr "Didžiausias laikas leidžiamas pirmam ėjimui (sekundėmis)"
 
 #: src/multiplayer_create.cpp:155
 msgid "Longest time possible for any turn (seconds)"
-msgstr "Didžiausias laikas ledžiamas bet kuriam ėjimui (sekundėmis)"
+msgstr "Didžiausias laikas leidžiamas bet kuriam ėjimui (sekundėmis)"
 
 #: src/multiplayer_create.cpp:161
 msgid "Time for general tasks each turn (seconds)"
@@ -8536,14 +8536,6 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Vadas"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Ėjimas"
-
 #~ msgid "stones"
 #~ msgstr "sustingdo"
 
@@ -8556,11 +8548,11 @@ msgstr "Įgalinti santraukų siuntimą"
 #~ msgid "stone: "
 #~ msgstr "akmuo: "
 
-#~ msgid " included from "
-#~ msgstr " įterpta iš "
-
 #~ msgid "The replay could not be saved"
 #~ msgstr "Peržaidimas negali būti išsaugotas"
+
+#~ msgid " included from "
+#~ msgstr " įterpta iš "
 
 #~ msgid "Mute an observer."
 #~ msgstr "Nutildyti stebėtoją."
