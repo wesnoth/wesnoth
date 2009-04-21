@@ -601,22 +601,6 @@ private:
 		}
 	}
 
-	void menu_handler::autosave() const
-	{
-		if(game_config::disable_autosave)
-			return;
-
-		Uint32 start, end;
-		start = SDL_GetTicks();
-
-		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
-		save.save_game(gui_);
-
-		end = SDL_GetTicks();
-		LOG_NG << "Milliseconds to save " << save.filename() << ": " << end - start << "\n";
-		savegame_manager::remove_old_auto_saves(preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
-	}
-
 	void menu_handler::preferences()
 	{
 		preferences::show_preferences_dialog(*gui_, game_config_);

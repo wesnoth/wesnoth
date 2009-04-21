@@ -670,7 +670,8 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->draw(true,true);
 
 	if (save) {
-		menu_handler_.autosave();
+		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
+		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
 	if(preferences::turn_bell()) {

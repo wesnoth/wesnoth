@@ -207,7 +207,7 @@ class game_savegame : public savegame
 {
 public:
 	game_savegame(game_state& gamestate, const config& level_cfg,
-		const game_display& gui, const std::vector<team>& teams,
+		game_display& gui, const std::vector<team>& teams,
 		const unit_map& units, const gamestatus& gamestatus,
 		const gamemap& map, const bool compress_saves);
 
@@ -223,7 +223,7 @@ private:
 
 protected:
 	const config& level_cfg_;
-	const game_display& gui_;
+	game_display& gui_;
 	const std::vector<team>& teams_;
 	const unit_map& units_;
 	const gamestatus& gamestatus_;
@@ -246,10 +246,11 @@ class autosave_savegame : public game_savegame
 {
 public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg,
-							 const game_display& gui, const std::vector<team>& teams,
+							 game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
 							 const gamemap& map, const bool compress_saves);
 
+	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
 	/** Create a filename for automatic saves */
 	virtual void create_filename();

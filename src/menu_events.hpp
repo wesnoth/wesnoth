@@ -115,7 +115,6 @@ public:
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void do_ai_formula(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
-	void autosave() const;
 	bool has_team() const;
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
@@ -130,8 +129,6 @@ private:
 	//void do_speak(const std::string& message, bool allies_only);
 	void do_recruit(const std::string& name, const unsigned int team_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
-	void save_game_internal(const std::string& filename, bool write_snapshot, bool display_message);
-	//void write_game_snapshot(config& start) const;
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
 	static void change_controller(const std::string& side, const std::string& controller);

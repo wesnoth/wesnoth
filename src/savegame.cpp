@@ -496,8 +496,14 @@ void savegame::save_game(const std::string& filename)
 void savegame::save_game(display* gui)
 {
 	try {
+		Uint32 start, end;
+		start = SDL_GetTicks();
+
 		before_save();
 		save_game_internal(filename_);
+
+		end = SDL_GetTicks();
+		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
 
 		if (gui != NULL && show_confirmation_)
 			gui::message_dialog(*gui,_("Saved"),_("The game has been saved")).show();
@@ -732,13 +738,23 @@ void replay_savegame::create_filename()
 }
 
 autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg,
-							 const game_display& gui, const std::vector<team>& teams,
+							 game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 	create_filename();
+}
+
+void autosave_savegame::autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves)
+{
+	if(disable_autosave)
+		return;
+
+	save_game(&gui_);
+
+	savegame_manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
 
 void autosave_savegame::create_filename()
@@ -753,7 +769,7 @@ void autosave_savegame::create_filename()
 }
 
 game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
-							 const game_display& gui, const std::vector<team>& teams,
+							 game_display& gui, const std::vector<team>& teams,
 							 const unit_map& units, const gamestatus& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
