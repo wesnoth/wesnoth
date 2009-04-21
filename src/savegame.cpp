@@ -461,7 +461,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved"))
-	, interactive_(false)
+	, show_confirmation_(false)
 	, compress_saves_(compress_saves)
 {}
 
@@ -469,7 +469,7 @@ void savegame::save_game_interactive(display& gui, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
 									 const bool ask_for_filename)
 {
-	interactive_ = ask_for_filename;
+	show_confirmation_ = ask_for_filename;
 	create_filename();
 	const int res = dialogs::get_save_name(gui, message, _("Name: "), &filename_, dialog_type, title_, has_exit_button, ask_for_filename);
 
@@ -499,7 +499,7 @@ void savegame::save_game(display* gui)
 		before_save();
 		save_game_internal(filename_);
 
-		if (gui != NULL && interactive_)
+		if (gui != NULL && show_confirmation_)
 			gui::message_dialog(*gui,_("Saved"),_("The game has been saved")).show();
 	} catch(game::save_game_failed&) {
 		if (gui != NULL){

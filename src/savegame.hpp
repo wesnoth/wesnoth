@@ -174,10 +174,8 @@ private:
 
 	std::string error_message_; /** Error message to be displayed if the savefile could not be generated. */
 
-	/** Determines if the save is done interactively or not. This controls if a filename is
-		generated automatically (interactive = false) and if a message is displayed that the
-		game was successfully saved (interactive = true). */
-	bool interactive_;
+	/** Determines if a confirmation of successful saving the game is shown. */
+	bool show_confirmation_;
 
 	/** Determines, if compression is used for the savegame file */
 	bool compress_saves_;
