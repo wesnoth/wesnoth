@@ -2234,8 +2234,9 @@ private:
 					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");*/
 				register_command("discover", &console_handler::do_discover,
 					_("Discover all units in help."), "");
-				register_command("undiscover", &console_handler::do_undiscover,
-					_("'Undiscover' all units in help."), "");
+				// Hide to prevent unwanted clearing of user's progress
+/*				register_command("undiscover", &console_handler::do_undiscover,
+					_("'Undiscover' all units in help."), "");*/
 				register_command("create", &console_handler::do_create,
 					_("Create a unit."), "", "D");
 				register_command("fog", &console_handler::do_fog,
