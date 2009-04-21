@@ -1422,7 +1422,7 @@ private:
 			units_.replace(loc, chosen);
 
 			if(map_.is_village(loc)) {
-				int team = chosen.side()- 1; // translate to 0-based team number
+				int team = chosen.side() - 1; // translate to 0-based team number
 				get_village(loc, *gui_, teams_, team, units_);
 			}
 
@@ -1441,7 +1441,7 @@ private:
 
 			// village_owner returns -1 for free village, so team 0 will get it
 			int team = village_owner(loc, teams_) + 1;
-			// team is 0-based so side=team::nteams() is not a team
+			// team is 0-based so team=team::nteams() is not a team
 			// but this will make get_village free it
 			if(team > team::nteams()) {
 				team = 0;
