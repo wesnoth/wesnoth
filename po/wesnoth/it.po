@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2009-04-11 23:02+0200\n"
+"PO-Revision-Date: 2009-04-21 01:07+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1270,8 +1270,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Alcune unità hanno speciali <ref>dst='abilities' text='abilità'</ref> che "
-"modificano il danno causato in battaglia. La più comune di queste è "
+"Alcune unità hanno speciali <ref>dst='..abilities_section' text='abilità'</"
+"ref> che modificano il danno causato in battaglia. La più comune di queste è "
 "<ref>dst='weaponspecial_charge' text='Carica'</ref> che raddoppia il danno "
 "sia dell'attaccante sia del difensore quando l'unità con l'abilità «carica» "
 "attacca."
@@ -7194,7 +7194,7 @@ msgstr "Teletrasporto non riuscito! L'uscita non è sgombra"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Avvistata un'unità alleata"
-msgstr[1] "Avvistate $friend unità alleate"
+msgstr[1] "Avvistate $friends unità alleate"
 
 #: src/actions.cpp:2488
 msgid "Enemy unit sighted!"
@@ -8699,7 +8699,7 @@ msgstr "Dominio di debug sconosciuto: «$domain»."
 
 #: src/menu_events.cpp:2305
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr "Impostato il dominio: «$domain» al livello «$livello»."
+msgstr "Impostato il dominio: «$domain» al livello «$level»."
 
 #: src/menu_events.cpp:2397
 msgid "Added to ignore list: "
@@ -9994,14 +9994,6 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Condottiero"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Turno"
-
 #~ msgid "stones"
 #~ msgstr "pietrifica"
 
@@ -10014,11 +10006,11 @@ msgstr "Abilita l'invio del sommario"
 #~ msgid "stone: "
 #~ msgstr "pietrifica: "
 
-#~ msgid " included from "
-#~ msgstr "incluso da"
-
 #~ msgid "The replay could not be saved"
 #~ msgstr "Il replay non può essere salvato"
+
+#~ msgid " included from "
+#~ msgstr "incluso da"
 
 #~ msgid "Mute an observer."
 #~ msgstr "Zittisci un osservatore."
