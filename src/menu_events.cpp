@@ -1417,9 +1417,16 @@ private:
 
 			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false,false,gender,"",random_gender);
 			chosen.new_turn();
-			units_.replace(mousehandler.get_last_hex(), chosen);
 
-			gui_->invalidate(mousehandler.get_last_hex());
+			const map_location& loc = mousehandler.get_last_hex();
+			units_.replace(loc, chosen);
+
+			if(map_.is_village(loc)) {
+				int team = chosen.side()- 1; // translate to 0-based team number
+				get_village(loc, *gui_, teams_, team, units_);
+			}
+
+			gui_->invalidate(loc);
 			gui_->invalidate_unit();
 		}
 	}
@@ -1432,14 +1439,14 @@ private:
 			if(!map_.is_village(loc))
 				return;
 
-			// village_owner returns -1 for free village, so side 0 will get it
-			int side = village_owner(loc, teams_) + 1;
-			// side is 0-based so side=team::nteams() is not a side
+			// village_owner returns -1 for free village, so team 0 will get it
+			int team = village_owner(loc, teams_) + 1;
+			// team is 0-based so side=team::nteams() is not a team
 			// but this will make get_village free it
-			if(side > team::nteams()) {
-				side = 0;
+			if(team > team::nteams()) {
+				team = 0;
 			}
-			get_village(loc, *gui_, teams_, side, units_);
+			get_village(loc, *gui_, teams_, team, units_);
 		} else {
 			int side = i->second.side();
 			++side;
@@ -1447,6 +1454,11 @@ private:
 				side = 1;
 			}
 			i->second.set_side(side);
+
+			if(map_.is_village(loc)) {
+				int team = side - 1; // translate to 0-based team number
+				get_village(loc, *gui_, teams_, team, units_);
+			}
 		}
 	}
 
