@@ -363,8 +363,11 @@ static int lua_unit_get(lua_State *L)
 	return_int_attrib("max_experience", u.max_experience());
 	return_int_attrib("moves", u.movement_left());
 	return_int_attrib("max_moves", u.total_movement());
-	return_string_attrib("name", u.name());
+	return_tstring_attrib("name", u.name());
 	return_string_attrib("side_id", u.side_id());
+	return_bool_attrib("canrecruit", u.can_recruit());
+	return_bool_attrib("petrified", u.incapacitated());
+	return_bool_attrib("resting", u.resting());
 	return 0;
 }
 
@@ -387,6 +390,7 @@ static int lua_unit_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
+	modify_bool_attrib("resting", u.set_resting(value));
 	return 0;
 }
 
