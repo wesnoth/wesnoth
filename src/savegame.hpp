@@ -27,22 +27,23 @@ struct load_game_cancelled_exception
 {
 };
 
-/**
- * Holds all the data needed to start a scenario. YogiHH: really??
- *
- * I.e. this is the object serialized to disk when saving/loading a game.
- * It is also the object which needs to be created to start a new game.
- */
+/** Filename and modification date for a file list */
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
 	std::string name;
 	time_t time_modified;
 };
 
+/** 
+Container for a couple of savefile manipulating methods. 
+Note: You are not supposed to instantiate this class.
+*/
 class savegame_manager
 {
 public:
+	/** Read summary information out of an existing savefile. */
 	static void load_summary(const std::string& name, config& cfg_summary, std::string* error_log);
+	/** Read the complete config information out of a savefile. */
 	static void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 	/** Returns true if there is already a savegame with that name. */
@@ -50,7 +51,9 @@ public:
 	/** Get a list of available saves. */
 	static std::vector<save_info> get_saves_list(const std::string *dir = NULL, const std::string* filter = NULL);
 
+	/** Delete all autosaves of a certain scenario. */
 	static void clean_saves(const std::string &label);
+	/** Remove autosaves that are no longer needed (according to the autosave policy in the preferences). */
 	static void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
 	/** Delete a savegame. */
 	static void delete_game(const std::string& name);
@@ -60,50 +63,66 @@ private:
 	savegame_manager() {}
 };
 
+/** 
+Container for methods dealing with the save_index file. 
+Note: You are not supposed to instantiate this class.
+*/
 class save_index
 {
 public:
+	/** Determines/Adds the "save"-child of the summary config. */
 	static config& save_summary(std::string save);
+	/** Update the save_index file with changed savegame information. */
 	static void write_save_index();
 
 private:
 	/** Default-Constructor (don't instantiate this class) */
 	save_index() {}
 
+	/** Read the complete config information out of the save_index file. */
 	static config& load();
 
-	static bool save_index_loaded;
-	static config save_index_cfg;
+	static bool save_index_loaded; /** Tells, if the save_index config has been already loaded. */
+	static config save_index_cfg; /** save_index config (who would have guessed that ;-). */
 };
 
+/** The class for loading a savefile. */
 class loadgame
 {
 public:
 	loadgame(display& gui, const config& game_config, game_state& gamestate);
 	virtual ~loadgame() {}
 
+	/** Load a game without providing any information. */
 	void load_game();
+	/** Load a game with pre-setting information for the load-game dialog. */
 	void load_game(std::string& filename, bool show_replay, bool cancel_orders);
+	/** Loading a game from within the multiplayer-create dialog. */
 	void load_multiplayer_game();
+	/** Generate the gamestate out of the loaded game config. */
 	void set_gamestate();
 
+	// Getter-methods
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 	const std::string filename() const { return filename_; }
 
 private:
+	/** Display the load-game dialog. */
 	void show_dialog(bool show_replay, bool cancel_orders);
+	/** Check if the version of the savefile is compatible with the current version. */
 	void check_version_compatibility();
+	/** Copy era information into the snapshot. */
 	void copy_era(config& cfg);
 
 	const config& game_config_;
 	display& gui_;
 
-	game_state& gamestate_;
-	std::string filename_;
-	config load_config_;
-	bool show_replay_;
-	bool cancel_orders_;
+	game_state& gamestate_; /** Primary output information. */
+	std::string filename_; /** Name of the savefile to be loaded. */
+	config load_config_; /** Config information of the savefile to be loaded. */
+	bool show_replay_; /** State of the "show_replay" checkbox in the load-game dialog. */
+	bool cancel_orders_; /** State of the "cancel_orders" checkbox in the load-game dialog. */
 };
 
 /** The base class for all savegame stuff */
@@ -153,13 +172,16 @@ private:
 	virtual void create_filename() {}
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
-		data manipulation has to happen before calling this method */
+		data manipulation has to happen before calling this method. */
 	void save_game_internal(const std::string& filename);
 
+	/** Writing the savegame config to a file. */
 	void write_game(config_writer &out) const;
+	/** Update the save_index */
 	void finish_save_game(const config_writer &out);
 	/** Throws game::save_game_failed. */
 	scoped_ostream open_save_game(const std::string &label);
+	/** Read the summary data from a savegame to display this information in the load-game dialog. */
 	void extract_summary_data_from_save(config& out);
 
 	game_state& gamestate_;
@@ -174,11 +196,9 @@ private:
 
 	std::string error_message_; /** Error message to be displayed if the savefile could not be generated. */
 
-	/** Determines if a confirmation of successful saving the game is shown. */
-	bool show_confirmation_;
+	bool show_confirmation_; /** Determines if a confirmation of successful saving the game is shown. */
 
-	/** Determines, if compression is used for the savegame file */
-	bool compress_saves_;
+	bool compress_saves_; /** Determines, if compression is used for the savegame file */
 };
 
 /** Class for "normal" midgame saves. The additional members are needed for creating the snapshot
@@ -192,6 +212,7 @@ public:
 		const gamemap& map, const bool compress_saves);
 
 private:
+	/** Create a filename for automatic saves */
 	virtual void create_filename();
 
 	/** Builds the snapshot config. */
@@ -216,6 +237,7 @@ public:
 	replay_savegame(game_state& gamestate, const bool compress_saves);
 
 private:
+	/** Create a filename for automatic saves */
 	virtual void create_filename();
 };
 
@@ -229,6 +251,7 @@ public:
 							 const gamemap& map, const bool compress_saves);
 
 private:
+	/** Create a filename for automatic saves */
 	virtual void create_filename();
 };
 
