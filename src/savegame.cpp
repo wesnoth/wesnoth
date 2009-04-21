@@ -490,9 +490,6 @@ void savegame::before_save()
 void savegame::save_game(const std::string& filename)
 {
 	filename_ = filename;
-	if (!interactive_)
-		create_filename();
-
 	save_game();
 }
 
