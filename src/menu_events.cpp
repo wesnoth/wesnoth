@@ -1424,20 +1424,30 @@ private:
 		}
 	}
 
-	void menu_handler::change_unit_side(mouse_handler& mousehandler)
+	void menu_handler::change_side(mouse_handler& mousehandler)
 	{
-		const unit_map::iterator i = units_.find(mousehandler.get_last_hex());
+		const map_location& loc = mousehandler.get_last_hex();
+		const unit_map::iterator i = units_.find(loc);
 		if(i == units_.end()) {
-			return;
-		}
+			if(!map_.is_village(loc))
+				return;
 
-		int side = i->second.side();
-		++side;
-		if(side > team::nteams()) {
-			side = 1;
+			// village_owner returns -1 for free village, so side 0 will get it
+			int side = village_owner(loc, teams_) + 1;
+			// side is 0-based so side=team::nteams() is not a side
+			// but this will make get_village free it
+			if(side > team::nteams()) {
+				side = 0;
+			}
+			get_village(loc, *gui_, teams_, side, units_);
+		} else {
+			int side = i->second.side();
+			++side;
+			if(side > team::nteams()) {
+				side = 1;
+			}
+			i->second.set_side(side);
 		}
-
-		i->second.set_side(side);
 	}
 
 	void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)

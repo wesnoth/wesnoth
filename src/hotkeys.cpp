@@ -73,7 +73,7 @@ const struct {
 	{ hotkey::HOTKEY_MUTE, "mute", N_("Mute"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_CHANGE_UNIT_SIDE, "changeside", N_("Change Unit Side (Debug!)"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CHANGE_SIDE, "changeside", N_("Change Side (Debug!)"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, hotkey::SCOPE_GAME },
@@ -751,8 +751,8 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_CREATE_UNIT:
 			create_unit();
 			break;
-		case HOTKEY_CHANGE_UNIT_SIDE:
-			change_unit_side();
+		case HOTKEY_CHANGE_SIDE:
+			change_side();
 			break;
 		case HOTKEY_PREFERENCES:
 			preferences();

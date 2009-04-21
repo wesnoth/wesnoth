@@ -89,7 +89,7 @@ public:
 	void unit_description(mouse_handler& mousehandler);
 	void rename_unit(mouse_handler& mousehandler);
 	void create_unit(mouse_handler& mousehandler);
-	void change_unit_side(mouse_handler& mousehandler);
+	void change_side(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
 	void continue_move(mouse_handler& mousehandler, const unsigned int team_num);
