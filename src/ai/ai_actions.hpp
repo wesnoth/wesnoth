@@ -37,32 +37,79 @@ public:
 
 	virtual ~ai_action_result();
 
+	/* check as must as possible without executing anything */
 	void check_before();
+
+	/* execute the action */
 	void execute();
+
+	/* check the return value of the action. mandatory to call. */
 	bool is_ok();
+
+	/* get the return value of the action */
+	int get_status();
+
+	/* describe the action */
 	virtual std::string do_describe() const =0;
 protected:
 	ai_action_result( unsigned int side );
+
+	/* do check before execution or just check. setting status_ via set_error to != cancels the execution.*/
 	virtual void do_check_before() = 0;
+
+	/* do some additional checks after execution. */
 	virtual void do_check_after() = 0;
+
+	/* execute. assert(is_success()) */
 	virtual void do_execute() = 0;
+
+	/* runs before cheching before execution */
 	virtual void do_init_for_execution() = 0;
 
+	/* are we going to execute the action now ? */
 	bool is_execution() const;
+
+	/* return the side number */
 	unsigned int get_side() const;
+
+	/* return real information about the game state */
 	ai_interface::info& get_info() const;
+
+	/* return subjective information about the game state */
 	ai_interface::info& get_subjective_info() const;
+
+	/* are we using the subjective info ? */
 	bool using_subjective_info() const;
+
+	/* get the team object corresponding to current side */
 	team& get_my_team(ai_interface::info info) const;
+
+	/* set error code */
 	void set_error(int error_code);
+
+	/* is error code equal to 0 (no errors)? */
 	bool is_success() const;
 private:
+
+	/* Check after the execution */
 	void check_after();
+
+	/* Initialization before execution */
 	void init_for_execution();
+
+	/* set the flag that the return value had been checked */
 	void set_ok_checked();
+
+	/* was the return value checked ? */
 	bool return_value_checked_;
+
+	/* current side number */
 	unsigned int side_;
+
+	/* execution status. if 0, all is ok. if !=0, then there were some problems. */
 	int status_;
+
+	/* are we going to execute the action now ? */
 	bool is_execution_;
 
 };
@@ -271,4 +318,7 @@ static std::auto_ptr<ai_stopunit_result> execute_stopunit_action( unsigned int s
 
 
 };
+
+
+//@todo 1.7 Add an ai action to send a chat message to a player
 #endif

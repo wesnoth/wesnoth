@@ -111,6 +111,10 @@ void ai_action_result::set_error(int error_code){
 }
 
 
+int ai_action_result::get_status(){
+	return status_;
+}
+
 bool ai_action_result::is_success() const
 {
 	return (status_ == ai_action_result::AI_ACTION_SUCCESS);
@@ -233,7 +237,7 @@ bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& 
 	//allowed teleports
 	std::set<map_location> allowed_teleports;
 
-	//@todo: calculate allowed teleports
+	//@todo 1.7: calculate allowed teleports
 
 	//do an A*-search
 	route_ = a_star_search(un->first, to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
