@@ -71,7 +71,7 @@ class ai_attack_result : public ai_action_result {
 public:
 	ai_attack_result( unsigned int side,
 		const map_location& attacker_loc,
-        	const map_location& defender_loc,
+		const map_location& defender_loc,
 		int attacker_weapon );
 	virtual std::string do_describe() const;
 protected:
@@ -165,6 +165,10 @@ public:
 		const map_location& unit_location,
 		bool remove_movement,
 		bool remove_attacks );
+	static const int E_NO_UNIT = 4002;
+	static const int E_NOT_OWN_UNIT = 4003;
+	static const int E_INCAPACITATED_UNIT = 4004;
+
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -172,14 +176,17 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
+	bool test_unit(unit_map::const_iterator& un, const unit_map& units, bool update_knowledge = false );
 	const map_location& unit_location_;
 	const bool remove_movement_;
 	const bool remove_attacks_;
 };
 
 
+std::ostream &operator<<(std::ostream &s, ai_attack_result const &r);
 std::ostream &operator<<(std::ostream &s, ai_move_result const &r);
 std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r);
+std::ostream &operator<<(std::ostream &s, ai_stopunit_result const &r);
 
 class ai_actions {
 

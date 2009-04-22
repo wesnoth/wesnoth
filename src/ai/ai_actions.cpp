@@ -190,6 +190,12 @@ void ai_attack_result::do_init_for_execution()
 }
 
 
+std::ostream &operator<<(std::ostream &s, ai_attack_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+
 // ai_move_result
 ai_move_result::ai_move_result( unsigned int side, const map_location& from, const map_location& to, bool remove_movement)
 	: ai_action_result(side), from_(from), to_(to), remove_movement_(remove_movement)
@@ -554,13 +560,61 @@ ai_stopunit_result::ai_stopunit_result( unsigned int side, const map_location& u
 {
 }
 
+
+bool ai_stopunit_result::test_unit(unit_map::const_iterator& un, const unit_map& units, bool /*update_knowledge*/) 
+{
+	un = units.find(unit_location_);
+	if (un==units.end()){
+		set_error(E_NO_UNIT);
+		return false;
+	}
+	if (un->second.side()!=get_side()){
+		set_error(E_NOT_OWN_UNIT);
+		return false;
+	}
+	if (un->second.incapacitated()){
+		set_error(E_INCAPACITATED_UNIT);
+		return false;
+	}
+	return true;
+}
+
 void ai_stopunit_result::do_check_before()
 {
+	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
+	const ai_interface::info& s_info = get_subjective_info();
+	const ai_interface::info& info = get_info();
+
+	const unit_map& s_units = s_info.units;
+	const unit_map& units = info.units;
+
+	unit_map::const_iterator s_unit;
+	unit_map::const_iterator unit;
+	if ( !test_unit(s_unit,s_units) ||
+		( is_execution() && using_subjective_info() &&
+		!test_unit(unit,units,true) ) ){
+		return;
+	}
+
 }
 
 
 void ai_stopunit_result::do_check_after()
 {
+	const ai_interface::info& info = get_info();
+	unit_map::const_iterator un = info.units.find(unit_location_);
+	if (un==info.units.end()){
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
+	if (remove_movement_ && (un->second.movement_left()!=0) ){
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
+	if (remove_attacks_ && (un->second.attacks_left()!=0) ) {
+		set_error(AI_ACTION_FAILURE);
+		return;
+	}
 }
 
 std::string ai_stopunit_result::do_describe() const
@@ -581,11 +635,27 @@ std::string ai_stopunit_result::do_describe() const
 
 void ai_stopunit_result::do_execute()
 {
+	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
+	assert(is_success());
+	const ai_interface::info& info = get_info();
+	unit_map::iterator un = info.units.find(unit_location_);
+	if (remove_movement_){
+		un->second.set_movement(0);
+	}
+	if (remove_attacks_){
+		un->second.set_attacks(0);
+	}
 }
 
 
 void ai_stopunit_result::do_init_for_execution()
 {
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai_stopunit_result const &r) {
+        s << r.do_describe();
+        return s;
 }
 
 
