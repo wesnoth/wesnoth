@@ -1295,7 +1295,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: adminmsg <msg>,"
-			" ban <mask> [<time>] <reason>, bans [deleted], clones,"
+			" ban <mask> <time> <reason>, bans [deleted], clones,"
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
 			" netstats [all], [lobby]msg <message>, motd [<message>],"
@@ -1472,10 +1472,10 @@ std::string server::process_command(const std::string& query, const std::string&
 			first_space = second_space;
 			second_space = std::find(first_space + 1, parameters.end(), ' ');
 		}
-		const std::string time(first_space + 1, second_space);
-		time_t parsed_time = ban_manager_.parse_time(time);
-		if (parsed_time == 0) {
-			second_space = first_space;
+		const std::string duration(first_space + 1, second_space);
+		time_t parsed_time = time(NULL);
+		if (ban_manager_.parse_time(duration, &parsed_time) == false) {
+			return ban_manager_.get_ban_help();
 		}
 
 		if (second_space == parameters.end()) {

@@ -342,19 +342,17 @@ namespace wesnothd {
 		writer.write(cfg);
 	}
 
-	time_t ban_manager::parse_time(std::string time_in) const
+	bool ban_manager::parse_time(const std::string& duration, time_t* time) const
 	{
-		time_t ret;
-		ret = time(NULL);
-		if (time_in.substr(0,4) == "TIME")
-		{
-			struct tm* loc;
-			loc = localtime(&ret);
+		if (!time) return false;
 
-			std::string::iterator i = time_in.begin() + 4;
+		if (duration.substr(0,4) == "TIME") {
+			struct tm* loc;
+			loc = localtime(time);
+
 			size_t number = 0;
-			for (; i != time_in.end(); ++i)
-			{
+			for (std::string::const_iterator i = duration.begin() + 4;
+					i != duration.end(); ++i) {
 				if (is_digit(*i))
 				{
 					number = number * 10 + to_digit(*i);
@@ -388,64 +386,94 @@ namespace wesnothd {
 					number = 0;
 				}
 			}
-			return mktime(loc);
+			*time = mktime(loc);
+			return true;
 		}
-		default_ban_times::const_iterator time_itor = ban_times_.find(time_in);
-		if (time_itor != ban_times_.end())
-			ret += time_itor->second;
-		else
-		{
-			const size_t default_multipler = 60; // default to minutes
-			size_t multipler = default_multipler;
-			std::string::iterator i = time_in.begin();
-			size_t number = 0;
-			for (; i != time_in.end(); ++i)
-			{
+		default_ban_times::const_iterator time_itor = ban_times_.find(duration);
+		if (utils::lowercase(duration) == "permanent" || duration == "0") {
+			*time = 0;
+		} else if (ban_times_.find(duration) != ban_times_.end()) {
+			*time += time_itor->second;
+		} else {
+			std::string::const_iterator i = duration.begin();
+			int number = -1;
+			for (std::string::const_iterator d_end = duration.end(); i != d_end; ++i) {
 				if (is_digit(*i))
 				{
+					if (number == -1) number = 0;
 					number = number * 10 + to_digit(*i);
 				} else {
+					if (number == -1) number = 1;
 					switch(*i)
 					{
 						case 'Y':
-							multipler = 365*24*60*60; // a year;
+						case 'y':
+							if (++i != d_end && tolower(*i) == 'e'
+							&&  ++i != d_end && tolower(*i) == 'a'
+							&&  ++i != d_end && tolower(*i) == 'r'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number * 365*24*60*60; // a year;
 							break;
 						case 'M':
-							multipler = 30*24*60*60; // 30 days
+							if (++i != d_end && tolower(*i) == 'o'
+							&&  ++i != d_end && tolower(*i) == 'n'
+							&&  ++i != d_end && tolower(*i) == 't'
+							&&  ++i != d_end && tolower(*i) == 'h'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number * 30*24*60*60; // 30 days
 							break;
 						case 'D':
-							multipler = 24*60*60;
+						case 'd':
+							if (++i != d_end && tolower(*i) == 'a'
+							&&  ++i != d_end && tolower(*i) == 'y'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number * 24*60*60;
 							break;
+						case 'H':
 						case 'h':
-							multipler = 60*60;
+							if (++i != d_end && tolower(*i) == 'o'
+							&&  ++i != d_end && tolower(*i) == 'u'
+							&&  ++i != d_end && tolower(*i) == 'r'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number * 60*60;
 							break;
 						case 'm':
-							multipler = 60;
+							if (++i != d_end && tolower(*i) == 'i'
+							&&  ++i != d_end && tolower(*i) == 'n'
+							&&  ++i != d_end && tolower(*i) == 'u'
+							&&  ++i != d_end && tolower(*i) == 't'
+							&&  ++i != d_end && tolower(*i) == 'e'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number * 60;
 							break;
+						case 'S':
 						case 's':
-							multipler = 1;
+							if (++i != d_end && tolower(*i) == 'e'
+							&&  ++i != d_end && tolower(*i) == 'c'
+							&&  ++i != d_end && tolower(*i) == 'o'
+							&&  ++i != d_end && tolower(*i) == 'n'
+							&&  ++i != d_end && tolower(*i) == 'd'
+							&&  ++i != d_end && tolower(*i) == 's') {
+							} else --i;
+							*time += number;
 							break;
 						default:
-							DBG_SERVER << "Invalid time modifier given: '" << *i << "'. Assuming this is the begin of the reason.\n";
-							ret = number = multipler = 0;
+							return false;
 							break;
 					}
-					if (multipler == 0)
-						break;
-					if (number == 0)
-						number = 1;
-					ret += number * multipler;
-					multipler = default_multipler;
-					number = 0;
+					number = -1;
 				}
 			}
-			--i;
-			if (is_digit(*i))
-			{
-					ret += number * multipler;
+			if (is_digit(*--i)) {
+					*time += number * 60; // default to minutes
 			}
 		}
-		return ret;
+		return true;
 	}
 
 	std::string ban_manager::ban(const std::string& ip,
@@ -613,8 +641,10 @@ namespace wesnothd {
 
 	void ban_manager::init_ban_help()
 	{
-		ban_help_ = "ban <ip|nickmask> [<time>] <reason>\n"
-				"The time format is: %d[%s[%d[%s[...]]]] where %s is a time modifier: s (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d is a number.\n"
+		ban_help_ = "ban <mask> <time> <reason>\n"
+				"The time format is: %d[%s[%d[%s[...]]]] where %s is a time"
+				" modifier: s or S (seconds), m (minutes), h or H (hours), d"
+				" or D (days), M (months) or y or Y (years) and %d is a number.\n"
 				"If no time is given then the ban is permanent.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
@@ -628,7 +658,7 @@ namespace wesnothd {
 		}
 		if (!ban_times_.empty())
 		{
-			ban_help_ += " for standard ban times.\n";
+			ban_help_ += " for standard ban times. (not combinable)\n";
 		}
 		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\n"
 				"kban suokko 5D flooded again\n"
@@ -639,8 +669,9 @@ namespace wesnothd {
 	{
 		ban_times_.clear();
 		foreach (const config &bt, cfg.child_range("ban_time")) {
-			ban_times_.insert(default_ban_times::value_type(bt["name"],
-				parse_time(bt["time"]) - time(NULL)));
+			time_t duration = 0;
+			parse_time(bt["time"], &duration);
+			ban_times_.insert(default_ban_times::value_type(bt["name"], duration));
 		}
 		init_ban_help();
 		if (filename_ != cfg["ban_save_file"])

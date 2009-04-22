@@ -151,7 +151,13 @@ namespace wesnothd {
 		void read();
 		void write();
 
-		time_t parse_time(std::string time_in) const;
+		/**
+		 * Parses the given duration and adds it to *time except if the
+		 * duration is '0' or 'permanent' in which case *time will be set to '0'.
+		 * @returns false if an invalid time modifier is encountered.
+		 * *time is undefined in that case.
+		 */
+		bool parse_time(const std::string& duration, time_t* time) const;
 
 		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
 		void unban(std::ostringstream& os, const std::string& ip);
