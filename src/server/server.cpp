@@ -1291,7 +1291,7 @@ void server::start_new_server() {
 std::string server::process_command(const std::string& query, const std::string& issuer_name) {
 	std::ostringstream out;
 	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
-	const std::string command(query.begin(),i);
+	const std::string command = utils::lowercase(std::string(query.begin(),i));
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: adminmsg <msg>,"
@@ -1299,7 +1299,10 @@ std::string server::process_command(const std::string& query, const std::string&
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
 			" netstats [all], [lobby]msg <message>, motd [<message>],"
-			" requests, stats, status [<mask>], searchlog <mask>, signout, unban <ipmask>";
+			" requests, stats, status [<mask>], searchlog <mask>, signout,"
+			" unban <ipmask>\n"
+			"Specific strings (those not inbetween <> like the command names)"
+			" are case insensitive.";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
 		if (issuer_name != "*socket*") return "";
@@ -1360,7 +1363,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Network stats:\nPending send buffers: "
 		    << stats.npending_sends << "\nBytes in buffers: "
 			<< stats.nbytes_pending_sends << "\n";
-		if (parameters == "all")
+		if (utils::lowercase(parameters) == "all")
 			out << network::get_bandwidth_stats_all();
 		else
 			out << network::get_bandwidth_stats(); // stats from previuos hour
@@ -1448,7 +1451,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			}
 		}
 	} else if (command == "bans") {
-		if (parameters == "deleted") {
+		if (utils::lowercase(parameters) == "deleted") {
 			ban_manager_.list_deleted_bans(out);
 		} else {
 			ban_manager_.list_bans(out);
@@ -1630,7 +1633,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters == "") {
 			out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 		} else {
-			deny_unregistered_login_ = (parameters == "yes");
+			deny_unregistered_login_ = (utils::lowercase(parameters) == "yes");
 			out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 		}
 	} else {
