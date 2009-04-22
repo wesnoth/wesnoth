@@ -27,7 +27,7 @@
  * But when we actually want to execute an action, we firstly check
  * 'subjective info' and then (if subjective check is ok) do the same
  * check on  real 'info'. There's a caveat: if we fail an action based
- * on real 'info', then we NEED to update AIs knowlegge to avoid the ai
+ * on real 'info', then we NEED to update AIs knowledge to avoid the ai
  * doing the same thing again.
  * So far the use of 'subjective info' is stubbed out.
  */
@@ -40,7 +40,7 @@
 #include "../pathfind.hpp"
 #include "../replay.hpp"
 #include "../statistics.hpp"
-
+#include "../team.hpp"
 
 #define DBG_AI_ACTIONS LOG_STREAM(debug, ai_actions)
 #define LOG_AI_ACTIONS LOG_STREAM(info, ai_actions)
@@ -192,11 +192,79 @@ void ai_attack_result::do_init_for_execution()
 
 // ai_move_result
 ai_move_result::ai_move_result( unsigned int side, const map_location& from, const map_location& to, bool remove_movement)
-	: ai_action_result(side), from_(from), to_(to), remove_movement_(remove_movement){
+	: ai_action_result(side), from_(from), to_(to), remove_movement_(remove_movement)
+{
+}
+
+
+bool ai_move_result::test_unit(unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/) 
+{
+	un = units.find(from_);
+	if (un==units.end()){
+		set_error(E_NO_UNIT);
+		return false;
+	}
+	if (un->second.side()!=get_side()){
+		set_error(E_NOT_OWN_UNIT);
+		return false;
+	}
+	if (un->second.incapacitated()){
+		set_error(E_INCAPACITATED_UNIT);
+		return false;
+	}
+	return true;
+}
+
+
+bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool /*update_knowledge*/ )
+{
+	if (from_==to_) {
+		set_error(E_EMPTY_MOVE);
+		return false;
+	}
+	const shortest_path_calculator calc(un->second,team,units,teams,map);
+
+	//allowed teleports
+	std::set<map_location> allowed_teleports;
+
+	//@todo: calculate allowed teleports
+
+	//do an A*-search
+	route_ = a_star_search(un->first, to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
+	return true;
 }
 
 void ai_move_result::do_check_before()
 {
+	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
+	const ai_interface::info& s_info = get_subjective_info();
+	const ai_interface::info& info = get_info();
+
+	const unit_map& s_units = s_info.units;
+	const unit_map& units = info.units;
+
+	const gamemap& s_map = s_info.map;
+	const gamemap& map = info.map;
+
+	const team& s_my_team = get_my_team(s_info);
+	const team& my_team = get_my_team(info);
+
+	const std::vector<team> &s_teams = s_info.teams;
+	const std::vector<team> &teams = info.teams;
+
+	unit_map::const_iterator s_unit;
+	unit_map::const_iterator unit;
+	if ( !test_unit(s_unit,s_my_team,s_units,s_teams) ||
+		( is_execution() && using_subjective_info() &&
+		!test_unit(unit,my_team,units,teams,true) ) ){
+		return;
+	}
+
+	if ( !test_route(s_unit,s_my_team,s_units,s_teams,s_map) ) {
+		//impossible to test using real info without revealing anything
+		//prematurely, since moves are done 'in steps'
+		return;
+	}
 }
 
 
@@ -223,11 +291,35 @@ std::string ai_move_result::do_describe() const
 
 void ai_move_result::do_execute()
 {
+	DBG_AI_ACTIONS << " execute "<< *this << std::endl;
+	assert(is_success());
+
+	ai_interface::info& info = get_info();
+
+	size_t number_of_steps = move_unit(
+		/*game_display* disp*/ NULL,
+                /*const gamemap& map*/ info.map,
+                /*unit_map& units*/ info.units,
+		/*std::vector<team>& teams*/ info.teams,
+                /*std::vector<map_location> route*/ route_.steps,
+                /*replay* move_recorder*/ &recorder,
+		/*undo_list* undo_stack*/ NULL,
+                /*map_location *next_unit*/ NULL,
+		/*bool continue_move*/ false,
+                /*bool should_clear_shroud*/ true,
+		/*bool is_replay*/ false);
+
 }
 
 
 void ai_move_result::do_init_for_execution()
 {
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai_move_result const &r) {
+        s << r.do_describe();
+        return s;
 }
 
 
@@ -319,16 +411,16 @@ void ai_recruit_result::do_check_before()
 	const unit_map& s_units = s_info.units;
 	const unit_map& units = info.units;
 
-	const team& s_team = get_my_team(s_info);
-	const team& team = get_my_team(info);
+	const team& s_my_team = get_my_team(s_info);
+	const team& my_team = get_my_team(info);
 
 	//Unit available for recruiting?
 	std::set<std::string>::const_iterator s_recruit;
 	std::set<std::string>::const_iterator recruit;
 
-	if ( !test_available_for_recruiting(s_team,s_recruit) ||
+	if ( !test_available_for_recruiting(s_my_team,s_recruit) ||
 		( is_execution() && using_subjective_info() &&
-		!test_available_for_recruiting(team,recruit,true) ) ){
+		!test_available_for_recruiting(my_team,recruit,true) ) ){
 		return;
 	}
 
@@ -343,9 +435,9 @@ void ai_recruit_result::do_check_before()
 	}
 
 	//Enough gold?
-	if (!test_enough_gold(s_team,s_unit_type) ||
+	if (!test_enough_gold(s_my_team,s_unit_type) ||
 		( is_execution() && using_subjective_info() &&
-		!test_enough_gold(team,unit_type,true) ) ){
+		!test_enough_gold(my_team,unit_type,true) ) ){
 		return;
 	}
 
@@ -416,7 +508,7 @@ std::string ai_recruit_result::do_describe() const
 
 void ai_recruit_result::do_execute()
 {
-	DBG_AI_ACTIONS << " execute: " << do_describe() << std::endl;
+	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
 	assert(is_success());
 	const ai_interface::info& info = get_info();
 	// We have to add the recruit command now, because when the unit
@@ -428,8 +520,8 @@ void ai_recruit_result::do_execute()
 	recorder.add_recruit(num_,recruit_location_);
 	replay_undo replay_guard(recorder);
 	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name_);
-	unit new_unit(&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&u->second,get_side(),true);
-	std::string recruit_err = recruit_unit(get_info().map,get_side(),get_info().units,new_unit,recruit_location_,false,preferences::show_ai_moves());
+	unit new_unit(&info.units,&info.map,&info.state,&info.teams,&u->second,get_side(),true);
+	std::string recruit_err = recruit_unit(info.map,get_side(),info.units,new_unit,recruit_location_,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 		statistics::recruit_unit(new_unit);
 		get_my_team(info).spend_gold(u->second.cost());
@@ -447,6 +539,7 @@ void ai_recruit_result::do_execute()
 void ai_recruit_result::do_init_for_execution()
 {
 }
+
 
 std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r) {
         s << r.do_describe();

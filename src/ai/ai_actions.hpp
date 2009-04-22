@@ -27,6 +27,7 @@
 #include "../map_location.hpp"
 #include "../team.hpp"
 #include <memory>
+#include <vector>
 
 class ai_action_result {
 public:
@@ -90,6 +91,10 @@ public:
 		const map_location& from,
 		const map_location& to,
 		bool remove_movement );
+	static const int E_EMPTY_MOVE = 2001;
+	static const int E_NO_UNIT = 2002;
+	static const int E_NOT_OWN_UNIT = 2003;
+	static const int E_INCAPACITATED_UNIT = 2004;
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -97,9 +102,12 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
+	bool test_unit(unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, bool update_knowledge = false );
+	bool test_route(const unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool update_knowledge = false );
 	const map_location& from_;
 	const map_location& to_;
 	bool remove_movement_;
+	paths::route route_;
 };
 
 class ai_recruit_result : public ai_action_result {
@@ -169,6 +177,8 @@ private:
 	const bool remove_attacks_;
 };
 
+
+std::ostream &operator<<(std::ostream &s, ai_move_result const &r);
 std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r);
 
 class ai_actions {
