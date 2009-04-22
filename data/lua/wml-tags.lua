@@ -149,8 +149,31 @@ local function wml_clear_variable(cfg)
 	end
 end
 
+local function wml_action_tag(cfg)
+   -- The new tag's name 
+   -- TODO make this attribute mandatory
+   local name = cfg.name
+   -- The lua function that is executed when the tag is called
+   -- TODO make this attribute mandatory
+
+   -- debug output
+   for tag in child_range(cfg, "tag") do
+      wesnoth.message(tag.name)
+   end
+
+   -- debug output
+   for attribute in child_range(cfg, "attribute") do
+      wesnoth.message(attribute.name)
+   end
+
+   local lua_function = assert(loadstring(cfg.lua_function)())
+   wesnoth.register_wml_action(name, lua_function)
+end
+
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
+wesnoth.register_wml_action("wml_action", wml_action_tag)
+
