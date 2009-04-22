@@ -395,7 +395,7 @@ namespace wesnothd {
 		}
 		default_ban_times::const_iterator time_itor = ban_times_.find(duration);
 		if (utils::lowercase(duration) == "permanent" || duration == "0") {
-			time = 0;
+			*time = 0;
 		} else if (time_itor != ban_times_.end()) {
 			*time += time_itor->second;
 		} else {
