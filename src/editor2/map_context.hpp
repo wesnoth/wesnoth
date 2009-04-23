@@ -35,17 +35,25 @@ class map_context
 {
 public:
 	/**
-	 * A map context can only by created from an existing map
+	 * Create a map context from an existing map. The filename is set to be 
+	 * empty, indicating a new map. 
+	 * Marked "explicit" to avoid automatic conversions.
 	 */
 	explicit map_context(const editor_map& map);
 
 	/**
-	 * Create map_context from a map file. If the map cannot be
-	 * loaded, an exception will be thrown and the object will
-	 * not be constructed.
+	 * Create map_context from a map file. If the map cannot be loaded, an 
+	 * exception will be thrown and the object will not be constructed. If the 
+	 * map file is a scenario, the map specified in its map_data key will be
+	 * loaded, and the stored filename updated accordingly. Maps embedded 
+	 * inside scenarios do not change the filename, but set the "embedded" flag 
+	 * instead.
 	 */
 	map_context(const config& game_config, const std::string& filename);
 
+	/**
+	 * Map context destructor
+	 */
 	~map_context();
 
 	/**
@@ -126,13 +134,17 @@ public:
 
 	void set_filename(const std::string& fn) { filename_ = fn; }
 
+	const std::string& get_map_data_key() const { return map_data_key_; }
+
+	bool is_embedded() const { return embedded_; }
+
+	void set_embedded(bool v) { embedded_ = v; }
+
 	/**
 	 * Saves the map under the current filename. Filename must be valid.
 	 * May throw an exception on failure.
 	 */
 	bool save();
-
-	void load_map(const config& game_config, const std::string& filename);
 
 	void set_map(const editor_map& map);
 
@@ -195,6 +207,23 @@ public:
 
 protected:
 	/**
+	 * The actual filename of this map. An empty string indicates a new map.
+	 */
+	std::string filename_;
+
+	/**
+	 * When a scenario file is loaded, the referenced map is loaded instead.
+	 * The verbatim form of the reference is kept here.
+	 */
+	std::string map_data_key_;
+
+	/**
+	 * Whether the map context refers to a map embedded in a scenario file.
+	 * This distinction is important in order to avoid overwriting the scenario.
+	 */
+	bool embedded_;
+
+	/**
 	 * The map object of this map_context.
 	 */
 	editor_map map_;
@@ -220,11 +249,6 @@ protected:
 	 * This is the implementation of both undo and redo which only differ in the direction.
 	 */
 	void perform_action_between_stacks(action_stack& from, action_stack& to);
-
-	/**
-	 * The actual filename of this map. An empty string indicates a new map.
-	 */
-	std::string filename_;
 
 	/**
 	 * The undo stack. A double-ended queues due to the need to add items to one end,

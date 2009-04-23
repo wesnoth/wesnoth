@@ -400,24 +400,21 @@ bool editor_controller::confirm_discard()
 	}
 }
 
-void editor_controller::load_map_dialog()
+void editor_controller::set_default_dir(const std::string& str)
+{
+	default_dir_ = str;
+}
+
+void editor_controller::load_map_dialog(bool force_same_context /* = false */)
 {
 	if (!use_mdi_ && !confirm_discard()) return;
-	std::string fn = get_map_context().get_filename();
+	std::string fn = directory_name(get_map_context().get_filename());
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Open"));
 	if (res == 0) {
-		for (size_t i = 0; i < map_contexts_.size(); ++i) {
-			if (map_contexts_[i]->get_filename() == fn) {
-				gui::dialog(gui(), "", _("This map is already open.") + std::string("\n") + fn).show();
-				switch_context(i);
-				return;
-			}
-		}
-		load_map(fn, use_mdi_);
-	}
+		load_map(fn, force_same_context ? false : use_mdi_);	}
 }
 
 void editor_controller::new_map_dialog()
@@ -498,8 +495,8 @@ void editor_controller::apply_mask_dialog()
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a mask to apply"));
 	if (res == 0) {
 		try {
-			editor_map mask = editor_map::load_from_file(game_config_, fn);
-			editor_action_apply_mask a(mask);
+			map_context mask(game_config_, fn);
+			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
 			gui::message_dialog(gui(), _("Error loading mask"), e.what()).show();
@@ -520,8 +517,8 @@ void editor_controller::create_mask_to_dialog()
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose target map"));
 	if (res == 0) {
 		try {
-			editor_map map = editor_map::load_from_file(game_config_, fn);
-			editor_action_create_mask a(map);
+			map_context map(game_config_, fn);
+			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
 			gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
@@ -598,10 +595,20 @@ void editor_controller::resize_map_dialog()
 
 bool editor_controller::save_map_as(const std::string& filename)
 {
+	size_t is_open = check_open_map(filename);
+	if (is_open < map_contexts_.size()
+			&& is_open != static_cast<unsigned>(current_context_index_)) {
+
+		gui::dialog(gui(), _("This map is already open."), filename).show();
+		return false;
+	}
 	std::string old_filename = get_map_context().get_filename();
+	bool embedded = get_map_context().is_embedded();
 	get_map_context().set_filename(filename);
+	get_map_context().set_embedded(false);
 	if (!save_map(true)) {
 		get_map_context().set_filename(old_filename);
+		get_map_context().set_embedded(embedded);
 		return false;
 	} else {
 		return true;
@@ -615,26 +622,67 @@ bool editor_controller::save_map(bool display_confirmation)
 		if (display_confirmation) {
 			gui::message_dialog(gui(), "", _("Map saved.")).show();
 		}
-	} catch (io_exception& e) {
-		utils::string_map symbols;
-		symbols["msg"] = e.what();
-		const std::string msg = vgettext("Could not save the map: $msg", symbols);
-		gui::message_dialog(gui(), "", msg).show();
+	} catch (editor_map_save_exception& e) {
+		gui::message_dialog(gui(), "", e.what()).show();
 		return false;
 	}
 	return true;
 }
 
+size_t editor_controller::check_open_map(const std::string& fn) const
+{
+	size_t i = 0;
+	while (i < map_contexts_.size() && map_contexts_[i]->get_filename() != fn) ++i;
+	return i;
+}
+
+
+bool editor_controller::check_switch_open_map(const std::string& fn)
+{
+	size_t i = check_open_map(fn);
+	if (i < map_contexts_.size()) {
+		gui::dialog(gui(), _("This map is already open."), fn).show();
+		switch_context(i);
+		return true;
+	}
+	return false;
+}
+
 void editor_controller::load_map(const std::string& filename, bool new_context)
 {
+	if (check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
+		std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
+		if (mc->get_filename() != filename) {
+			if (check_switch_open_map(mc->get_filename())) return;
+		}
 		if (new_context) {
-			std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
 			int new_id = add_map_context(mc.release());
 			switch_context(new_id);
 		} else {
-			replace_map_context(map_context(game_config_, filename));
+			replace_map_context(*mc);
+		}
+		if (get_map_context().is_embedded()) {
+			const char* msg = _("Loaded embedded map data");
+			gui::message_dialog(gui(), _("Map loaded from scenario"), msg).show();
+		} else {
+			if (get_map_context().get_filename() != filename) {
+				if (get_map_context().get_map_data_key().empty()) {
+					ERR_ED << "Internal error, map context filename changed: "
+						<< filename << " -> " << get_map_context().get_filename()
+						<< " with no apparent scenario load\n";
+				} else {
+					utils::string_map symbols;
+					symbols["old"] = filename;
+					const char* msg = _("Loaded referenced map file:\n"
+						"$new");
+					symbols["new"] = get_map_context().get_filename();
+					symbols["map_data"] = get_map_context().get_map_data_key();
+					gui::message_dialog(gui(), _("Map loaded from scenario"), 
+						vgettext(msg, symbols)).show();
+				}
+			}
 		}
 	} catch (editor_map_load_exception& e) {
 		gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
@@ -927,7 +975,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
-			if (get_map_context().get_filename().empty()) {
+			if (get_map_context().get_filename().empty()
+			|| is_directory(get_map_context().get_filename())) {
 				save_map_as_dialog();
 			} else {
 				save_map();
@@ -990,6 +1039,9 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 				}
 				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
 					+ filename;
+				if (map_contexts_[mci]->is_embedded()) {
+					label += " (E)";
+				}
 				contexts.push_back(label);
 			}
 			items.insert(items.begin() + i, contexts.begin(), contexts.end());

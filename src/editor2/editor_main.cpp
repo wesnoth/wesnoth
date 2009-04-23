@@ -17,6 +17,7 @@
 
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
+#include "../filesystem.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -30,27 +31,14 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
-		std::auto_ptr<map_context> mc(NULL);
-		std::string map_error;
+		editor_controller editor(game_conf, video, NULL);
 		if (!filename.empty()) {
-			try {
-				mc.reset(new map_context(game_conf, filename));
-				LOG_ED << "Map " << filename << " loaded. "
-					<< mc->get_map().w() << " by " << mc->get_map().h() << "\n";
-			} catch (editor_map_load_exception& e) {
-				std::stringstream ss;
-				ss << "\"" << boost::replace_all_copy(filename, "\\", "\\\\") << "\"";
-				ss << ":\n";
-				ss << e.what();
-				map_error = ss.str();
-				ERR_ED << map_error << "\n";
-				mc.reset();
+			if (is_directory(filename)) {
+				editor.set_default_dir(filename);
+				editor.load_map_dialog(true);
+			} else {
+				editor.load_map(filename, false);
 			}
-		}
-		editor_controller editor(game_conf, video, mc.get());
-		mc.release();
-		if (!map_error.empty()) {
-			gui::message_dialog(editor.gui(), _("Error loading map"), map_error).show();
 		}
 		e = editor.main_loop();
 	} catch (editor_exception& e) {

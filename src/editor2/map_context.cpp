@@ -19,8 +19,14 @@
 #include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
+#include "../map_exception.hpp"
 #include "../map_label.hpp"
+#include "../wml_exception.hpp"
 
+#include "formula_string_utils.hpp"
+
+#include <boost/regex.hpp>
 
 
 namespace editor2 {
@@ -28,8 +34,10 @@ namespace editor2 {
 const size_t map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map)
-	: map_(map)
-	, filename_()
+	: filename_()
+	, map_data_key_()
+	, embedded_(false)
+	, map_(map)
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
@@ -43,8 +51,10 @@ map_context::map_context(const editor_map& map)
 }
 
 map_context::map_context(const config& game_config, const std::string& filename)
-	: map_(editor_map::load_from_file(game_config, filename)) //will throw on error
-	, filename_(filename)
+	: filename_(filename)
+	, map_data_key_()
+	, embedded_(false)
+	, map_(game_config)
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
@@ -55,6 +65,41 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	, changed_locations_()
 	, everything_changed_(false)
 {
+	log_scope2(editor, "Loading map " + filename);
+	if (!file_exists(filename) || is_directory(filename)) {
+		throw editor_map_load_exception(filename, _("File not found"));
+	}
+	std::string map_string = read_file(filename);
+	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
+	boost::smatch m;
+	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
+		boost::regex re2("\\{(.+?)\\}");
+		boost::smatch m2;
+		std::string m1 = m[1];
+		if (boost::regex_search(m1, m2, re2)) {
+			map_data_key_ = m1;
+			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
+			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
+			if (new_filename.empty()) {
+				std::string message = _("The map file looks like a scenario, "
+					"but the map_data value does not point to an existing file")
+					+ std::string("\n") + m2[1];
+				throw editor_map_load_exception(filename, message);
+			}
+			LOG_ED << "New filename is: " << new_filename << "\n";
+			filename_ = new_filename;
+			map_string = read_file(filename_);
+		} else {
+			LOG_ED << "Loading embedded map file\n";
+			embedded_ = true;
+			map_string = m[1];
+		}
+	}
+	if (map_string.empty()) {
+		std::string message = _("Empty map file");
+		throw editor_map_load_exception(filename, message);
+	}
+	map_ = editor_map::from_string(game_config, map_string); //throws on error
 }
 
 map_context::~map_context()
@@ -157,19 +202,31 @@ void map_context::reset_starting_position_labels(display& disp)
 bool map_context::save()
 {
 	std::string data = map_.write();
-	write_file(get_filename(), data);
-	clear_modified();
+	try {
+		if (!is_embedded()) {
+			write_file(get_filename(), data);
+		} else {
+			std::string map_string = read_file(get_filename());
+			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+			boost::smatch m;
+			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
+				std::stringstream ss;
+				ss << m[1];
+				ss << data;
+				ss << m[3];
+				write_file(get_filename(), ss.str());
+			} else {
+				throw editor_map_save_exception(_("Could not save into scenario"));
+			}
+		}
+		clear_modified();
+	} catch (io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		throw editor_map_save_exception(msg);
+	}
 	return true;
-}
-
-void map_context::load_map(const config& game_config, const std::string& filename)
-{
-	editor_map new_map = editor_map::load_from_file(game_config, filename);
-	set_filename(filename);
-	set_map(new_map);
-	//TODO when this fails see if it's a scenario with a
-	//mapdata= key and give the user an option of loading
-	//that map instead of just failing
 }
 
 void map_context::set_map(const editor_map& map)

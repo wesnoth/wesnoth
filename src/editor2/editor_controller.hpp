@@ -123,8 +123,11 @@ class editor_controller : public controller_base,
 		/** Switches the context to the one under the specified index. */
 		void switch_context(const int index);
 
+		/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
+		void set_default_dir(const std::string& str);
+
 		/** Display a load map dialog and process user input. */
-		void load_map_dialog();
+		void load_map_dialog(bool force_same_context = false);
 
 		/** Display a new map dialog and process user input. */
 		void new_map_dialog();
@@ -160,6 +163,27 @@ class editor_controller : public controller_base,
 		 * Create a new map.
 		 */
 		void new_map(int width, int height, t_translation::t_terrain fill, bool new_context);
+
+		/**
+		 * Check if a map is already open.
+		 * @return index of the map context containg the given filename,
+		 *         or map_contexts_.size() if not found.
+		 */
+		size_t check_open_map(const std::string& fn) const;
+
+		/**
+		 * check_open_map shorthand
+		 * @return true if the map is open, false otherwise
+		 */
+		bool map_is_open(const std::string& fn) const {
+			return check_open_map(fn) < map_contexts_.size();
+		}
+
+		/**
+		 * Check if a map is already open. If yes, switch to it
+		 * and return true, return false otherwise.
+		 */
+		bool check_switch_open_map(const std::string& fn);
 
 		/**
 		 * Load a map given the filename
