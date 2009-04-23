@@ -318,12 +318,12 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 		return getNoPathValue();
 
 	const t_translation::t_terrain terrain = map_[loc];
-	int const base_cost = unit_.movement_cost(terrain);
+	int const terrain_cost = unit_.movement_cost(terrain);
 	// Pathfinding heuristic: the cost must be at least 1
-	VALIDATE(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
+	VALIDATE(terrain_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 
-	// costs more than the total movement of the unit, impassbale
-	if (total_movement_ < base_cost)
+	// total MP is not enough to move on this terrain: impassable
+	if (total_movement_ < terrain_cost)
 		return getNoPathValue();
 
 	int other_unit_subcost = 0;
@@ -353,23 +353,26 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 	if (remaining_movement < 0)
 		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
-	// we will always pay the terrain movement cost.
-	int move_cost = base_cost;
+	// this will sum all different costs of this move
+	int move_cost = 0;
 
-	// Supposing we had 2 movement left, and wanted to move onto a hex
-	// which takes 3 movement, it's going to cost us 5 movement in total,
-	// since we sacrifice this turn's movement. So check that.
-	bool need_new_turn = base_cost > remaining_movement;
-
-	// and if it happens, all remaining movements will be lost waiting the turn's end
-	if (need_new_turn)
+	// Suppose that we have only 2 remaining MP and want to move onto a hex
+	// costing 3 MP. We don't have enough MP now, so we must end our turn here,
+	// thus spend our remaining MP by waiting (next turn, with full MP, we will
+	// be able to move on that hex)
+	if (remaining_movement < terrain_cost) {
 		move_cost += remaining_movement;
+		remaining_movement = total_movement_; // we consider having full MP now
+	}
 
+	// check ZoC
 	if (!ignore_unit_ && enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
-		// the ZoC cost all remaining movements, but if we already use them
-		// in the sacrified turn, we will spend all our fresh total movement
-		move_cost += need_new_turn ? total_movement_ : remaining_movement;
+		// entering ZoC cost all remaining MP
+		move_cost += remaining_movement;
+	} else {
+		// empty hex, pay only the terrain cost
+		move_cost += terrain_cost;
 	}
 
 	// We will add a tiny cost based on terrain defense, so the pathfinding
