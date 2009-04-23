@@ -138,7 +138,6 @@ add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
 SET(libwesnoth-game_STAT_SRC
-    astarnode.cpp
     astarsearch.cpp
     builder.cpp
     cavegen.cpp

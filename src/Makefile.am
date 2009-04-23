@@ -351,7 +351,6 @@ libwesnoth_core_a_SOURCES = \
 	serialization/tokenizer.cpp
 
 libwesnoth_a_SOURCES = \
-	astarnode.cpp \
 	astarsearch.cpp \
 	builder.cpp \
 	cavegen.cpp \

@@ -61,7 +61,6 @@ libwesnoth_core_sources.extend([
 libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
 libwesnoth_sources = Split("""
-    astarnode.cpp
     astarsearch.cpp
     builder.cpp
     cavegen.cpp
