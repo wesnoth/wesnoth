@@ -53,10 +53,10 @@ public:
 		double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
 
 		// we assume a map with a maximum diagonal of 300 (bigger than a 200x200)
-		// and we divide by 300 * 10000 to avoid interfering with the defense subcost
+		// and we divide by 90000 * 10000 to avoid interfering with the defense subcost
 		// (see shortest_path_calculator::cost)
 		return distance_between(src, dst) -
-				(300.0 - sqrt( xdiff*xdiff + ydiff*ydiff)) / 3000000.0;
+				(90000.0 - ( xdiff*xdiff + ydiff*ydiff)) / 900000000.0;
 
 		// TODO: move the heuristic function into the cost_calculator
 		// so we can use case-specific heuristic
