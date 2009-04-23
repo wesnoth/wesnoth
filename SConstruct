@@ -248,7 +248,8 @@ if env["prereqs"]:
         conf.CheckCHeader("poll.h", "<>")
         conf.CheckCHeader("sys/poll.h", "<>")
         conf.CheckCHeader("sys/select.h", "<>")
-        conf.CheckFunc("sendfile")
+        if conf.CheckCHeader("sys/sendfile.h", "<>"):
+            conf.CheckFunc("sendfile")
 
     conf.CheckFunc("round")
 
