@@ -149,8 +149,8 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_unit(unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, bool update_knowledge = false );
-	bool test_route(const unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool update_knowledge = false );
+	bool test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& teams, bool update_knowledge = false );
+	bool test_route(const unit_map::const_iterator& un, const team& my_team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool update_knowledge = false );
 	const map_location& from_;
 	const map_location& to_;
 	bool remove_movement_;
@@ -175,7 +175,7 @@ protected:
 	virtual void do_init_for_execution();
 private:
 	bool test_available_for_recruiting(
-		const team& team,
+		const team& my_team,
 		std::set<std::string>::const_iterator& recruit,
 		bool update_knowledge = false );
 	bool test_unit_type_known(
@@ -183,7 +183,7 @@ private:
 		unit_type_data::unit_type_map::const_iterator& unit_type,
 		bool update_knowledge = false );
 	bool test_enough_gold(
-		const team& team,
+		const team& my_team,
 		const unit_type_data::unit_type_map::const_iterator& unit_type,
 		bool update_knowledge = false );
 	bool test_leader_present(

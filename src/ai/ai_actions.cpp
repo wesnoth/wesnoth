@@ -207,7 +207,7 @@ ai_move_result::ai_move_result( unsigned int side, const map_location& from, con
 }
 
 
-bool ai_move_result::test_unit(unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/) 
+bool ai_move_result::test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/) 
 {
 	un = units.find(from_);
 	if (un==units.end()){
@@ -226,13 +226,13 @@ bool ai_move_result::test_unit(unit_map::const_iterator& un, const team& team, c
 }
 
 
-bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool /*update_knowledge*/ )
+bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& my_team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool /*update_knowledge*/ )
 {
 	if (from_==to_) {
 		set_error(E_EMPTY_MOVE);
 		return false;
 	}
-	const shortest_path_calculator calc(un->second,team,units,teams,map);
+	const shortest_path_calculator calc(un->second,my_team,units,teams,map);
 
 	//allowed teleports
 	std::set<map_location> allowed_teleports;
@@ -264,9 +264,9 @@ void ai_move_result::do_check_before()
 
 	unit_map::const_iterator s_unit;
 	unit_map::const_iterator unit;
-	if ( !test_unit(s_unit,s_my_team,s_units,s_teams) ||
+	if ( !test_unit(s_unit,s_units,s_teams) ||
 		( is_execution() && using_subjective_info() &&
-		!test_unit(unit,my_team,units,teams,true) ) ){
+		!test_unit(unit,units,teams,true) ) ){
 		return;
 	}
 
@@ -345,9 +345,9 @@ ai_recruit_result::ai_recruit_result(unsigned int side,
 {
 }
 
-bool ai_recruit_result::test_available_for_recruiting( const team& team, std::set<std::string>::const_iterator& recruit, bool /*update_knowledge*/ )
+bool ai_recruit_result::test_available_for_recruiting( const team& my_team, std::set<std::string>::const_iterator& recruit, bool /*update_knowledge*/ )
 {
-    	const std::set<std::string>& recruit_set = team.recruits();
+    	const std::set<std::string>& recruit_set = my_team.recruits();
 	recruit = recruit_set.find(unit_name_);
         if(recruit == recruit_set.end()) {
                 set_error(E_NOT_AVAILABLE_FOR_RECRUITING);
@@ -367,9 +367,9 @@ bool ai_recruit_result::test_unit_type_known( const std::set<std::string>::const
 	return true;
 }
 
-bool ai_recruit_result::test_enough_gold( const team& team, const unit_type_data::unit_type_map::const_iterator& unit_type, bool /*update_knowledge*/ )
+bool ai_recruit_result::test_enough_gold( const team& my_team, const unit_type_data::unit_type_map::const_iterator& unit_type, bool /*update_knowledge*/ )
 {
-	if(team.gold() < unit_type->second.cost()) {
+	if(my_team.gold() < unit_type->second.cost()) {
 		set_error(E_NO_GOLD);
 		return false;
 	}
