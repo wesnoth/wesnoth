@@ -740,7 +740,8 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_STAT
 AC_FUNC_STRFTIME
 AC_CHECK_LIB(m, floor)
-AC_CHECK_FUNCS([round socket strtoul sendfile])
+AC_CHECK_FUNCS([round socket strtoul])
+AC_CHECK_HEADER([sys/sendfile.h], [AC_CHECK_FUNCS([sendfile])], [])
 
 
 #######################################################################
