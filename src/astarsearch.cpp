@@ -157,7 +157,7 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 	paths::route route;
 	if (nodes[index(dst)].g < stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
-		route.move_left = nodes[index(dst)].g;
+		route.move_left = (int)nodes[index(dst)].g;
 		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);
 		}
