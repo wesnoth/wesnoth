@@ -43,6 +43,8 @@ public:
 
 	virtual ~mouse_action() {}
 
+	virtual bool has_context_menu() const;
+
 	/**
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
@@ -114,6 +116,7 @@ public:
 protected:
 	bool has_alt_modifier() const;
 	bool has_shift_modifier() const;
+	bool has_ctrl_modifier() const;
 
 	/**
 	 * Helper function for derived classes that need a active-terrain mouse overlay
@@ -228,14 +231,24 @@ private:
 class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
-	mouse_action_paint(const t_translation::t_terrain& terrain_left,
-		const t_translation::t_terrain& terrain_right,
+	mouse_action_paint(t_translation::t_terrain& terrain_left,
+		t_translation::t_terrain& terrain_right,
 		const brush* const * const brush, const CKey& key)
 	: brush_drag_mouse_action(brush, key)
 	, terrain_left_(terrain_left)
 	, terrain_right_(terrain_right)
 	{
 	}
+
+	/**
+	 * Handle terrain sampling before calling generic handler
+	 */
+	editor_action* click_left(editor_display& disp, int x, int y);
+
+	/**
+	 * Handle terrain sampling before calling generic handler
+	 */
+	editor_action* click_right(editor_display& disp, int x, int y);
 
 	/**
 	 * Create an appropriate editor_action and return it
@@ -250,8 +263,8 @@ public:
 	void set_mouse_overlay(editor_display& disp);
 
 protected:
-	const t_translation::t_terrain& terrain_left_;
-	const t_translation::t_terrain& terrain_right_;
+	t_translation::t_terrain& terrain_left_;
+	t_translation::t_terrain& terrain_right_;
 };
 
 /**
@@ -299,6 +312,8 @@ public:
 	{
 	}
 
+	bool has_context_menu() const;
+
 	/**
 	 * Show an outline of where the paste will go
 	 */
@@ -329,8 +344,8 @@ protected:
 class mouse_action_fill : public mouse_action
 {
 public:
-	mouse_action_fill(const t_translation::t_terrain& terrain_left,
-		const t_translation::t_terrain& terrain_right, const CKey& key)
+	mouse_action_fill(t_translation::t_terrain& terrain_left,
+		t_translation::t_terrain& terrain_right, const CKey& key)
 	: mouse_action(key)
 	, terrain_left_(terrain_left)
 	, terrain_right_(terrain_right)
@@ -355,8 +370,8 @@ public:
 	virtual void set_mouse_overlay(editor_display& disp);
 
 protected:
-	const t_translation::t_terrain& terrain_left_;
-	const t_translation::t_terrain& terrain_right_;
+	t_translation::t_terrain& terrain_left_;
+	t_translation::t_terrain& terrain_right_;
 };
 
 /**

@@ -414,7 +414,8 @@ void editor_controller::load_map_dialog(bool force_same_context /* = false */)
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Open"));
 	if (res == 0) {
-		load_map(fn, force_same_context ? false : use_mdi_);	}
+		load_map(fn, force_same_context ? false : use_mdi_);
+	}
 }
 
 void editor_controller::new_map_dialog()
@@ -1314,7 +1315,7 @@ bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
 
 bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	return false;
+	return get_mouse_action()->has_context_menu();
 }
 
 bool editor_controller::left_click(int x, int y, const bool browse)
@@ -1327,6 +1328,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
+	palette_->draw(true);
 	return false;
 }
 
@@ -1354,6 +1356,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
+	palette_->draw(true);
 	return false;
 }
 
