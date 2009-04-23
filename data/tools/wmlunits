@@ -829,7 +829,7 @@ def copy_images():
     if not options.nocopy:
         print "Copying files."
         image_collector.copy_and_color_images(options.output)
-        shutil.copy2(os.path.join("data", "tools/unit_tree/style.css"), options.output)
+        shutil.copy2(os.path.join(datadir, "tools/unit_tree/style.css"), options.output)
         for grab in [
             "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
             "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
@@ -953,8 +953,7 @@ if __name__ == '__main__':
     op.add_option("-n", "--nocopy", action = "store_true",
         help = "No copying of files.")
     op.add_option("-d", "--datadir",
-        help = "Specify Wesnoth's data to use. Default is to search current "+\
-        "directory upwards.")
+        help = "Specify Wesnoth's data to use. Default is <current directory>/data.")
     op.add_option("-u", "--userdir",
         help = "Specify user data dir to use, which is automatically scanned "+\
         "for addons. For example -u ~/.wesnoth/data")
