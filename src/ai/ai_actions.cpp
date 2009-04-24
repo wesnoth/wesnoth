@@ -254,10 +254,8 @@ void ai_move_result::do_check_before()
 	const unit_map& units = info.units;
 
 	const gamemap& s_map = s_info.map;
-	const gamemap& map = info.map;
 
 	const team& s_my_team = get_my_team(s_info);
-	const team& my_team = get_my_team(info);
 
 	const std::vector<team> &s_teams = s_info.teams;
 	const std::vector<team> &teams = info.teams;
@@ -306,7 +304,7 @@ void ai_move_result::do_execute()
 
 	ai_interface::info& info = get_info();
 
-	size_t number_of_steps = move_unit(
+	move_unit(
 		/*game_display* disp*/ NULL,
                 /*const gamemap& map*/ info.map,
                 /*unit_map& units*/ info.units,
