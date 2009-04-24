@@ -27,8 +27,7 @@
 #include "scripting/lua.hpp"
 LuaKernel::LuaKernel() {LOG_STREAM(err, lua) << "Lua support disabled in this build";}
 LuaKernel::~LuaKernel() {}
-void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev,
-	game_events::event_handler *handler, unit_map *units) {}
+void LuaKernel::run_event(vconfig const&, game_events::queued_event const&) {}
 void LuaKernel::run(char const *prog) {}
 void LuaKernel::execute(char const *prog, int nArgs, int nRets) {}
 #else  // HAVE LUA
