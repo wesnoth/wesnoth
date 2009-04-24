@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:48+0200\n"
-"PO-Revision-Date: 2009-04-10 14:58+0100\n"
+"PO-Revision-Date: 2009-04-19 21:37+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1246,7 +1246,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Několik jednotek má speciální <ref>dst'..=abilities_section' "
+"Několik jednotek má speciální <ref>dst='..abilities_section' "
 "text='schopnosti'</ref>, které ovlivňují poškození během boje. Nejběžnější z "
 "nich je schopnost <ref>dst='weaponspecial_charge' text='výpadu'</ref>, která "
 "zvyšuje poškození jak útočníka, tak obránce, pokud útočí jednotka s touto "
@@ -1533,8 +1533,9 @@ msgstr ""
 "\n"
 "Léčitelé: Jednotky se schopností <ref>dst='ability_heals +4' text='Léčení'</"
 "ref> mohou léčit či chránit před jedy způsobujícími poškození. Budou "
-"vyléčeny pouze ty jednotky, které se nacházejí v těsné blízkosti a jsou na "
-"stejné straně jako léčitel a to pouze o 4 nebo 8HP na jednotku."
+"vyléčeny pouze vlastní a spřátelené jednotky, které se nacházejí v těsné "
+"blízkosti a to pouze o <ref>dst='ability_heals +4' text='4HP'</ref> nebo "
+"<ref>dst='ability_heals +8' text='8HP'</ref> na jednotku."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
@@ -2005,7 +2006,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -9882,14 +9882,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Vůdce"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Kolo"
-
 #~ msgid "stones"
 #~ msgstr "zkamenění"
 
@@ -9902,14 +9894,14 @@ msgstr "Povolit posílání souhrnů"
 #~ msgid "stone: "
 #~ msgstr "zkamenění: "
 
+#~ msgid "The replay could not be saved"
+#~ msgstr "Záznam se nepodařilo uložit"
+
 #~ msgid " included from "
 #~ msgstr "zahrnuté z"
 
 #~ msgid "Mute an observer."
 #~ msgstr "Umlčí daného pozorovatele."
-
-#~ msgid "The replay could not be saved"
-#~ msgstr "Záznam se nepodařilo uložit"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Nalezeny nezkontrolované skripty:"

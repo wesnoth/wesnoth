@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:51+0200\n"
-"PO-Revision-Date: 2009-03-27 16:50+0100\n"
+"PO-Revision-Date: 2009-04-19 21:42+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -1064,7 +1064,7 @@ msgstr "Přivolej jednotku $recall_name1"
 msgid "Right click on the tile north-east of you and recall $recall_name1"
 msgstr ""
 "Klikni pravým tlačítkem na políčko severovýchodně od tebe\n"
-"a přivolej $recall_name2|a"
+"a přivolej $recall_name1|a"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
@@ -1222,7 +1222,7 @@ msgid ""
 "$recruit.language_name|! Now try again..."
 msgstr ""
 "Ne! Říkal jsem aby jsi přivolal $recall_name1|a z minulé bitvy, a ne "
-"naverboval novou jednotku typu $recruit.type|! Zkus to znovu..."
+"naverboval novou jednotku typu $recruit.language_name|! Zkus to znovu..."
 
 # nevleze se na obrazovku
 #. [then]
@@ -1251,8 +1251,8 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"Cože, $recruit.type|? Říkal jsem aby jsi naverboval elfího BOJOVNÍKA! Zkus "
-"to znovu..."
+"Cože, $recruit.language_name|? Říkal jsem aby jsi naverboval elfího "
+"BOJOVNÍKA! Zkus to znovu..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1820,10 +1820,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "cep"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Galdrad"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "
