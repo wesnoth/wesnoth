@@ -66,7 +66,7 @@ void timestamps(bool);
 std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 
 extern logger err, warn, info, debug;
-extern log_domain general, ai, ai_actions, ai_configuration, ai_manager, formula_ai, cache, config,
+extern log_domain general, ai, ai_actions, ai_configuration, ai_manager, ai_testing, formula_ai, cache, config,
 	display, engine, network, mp_server, filesystem, audio, replay, help, gui, gui_parse,
 	gui_layout, gui_draw, gui_event, editor, wml, mp_user_handler, lua, uploader;
 
