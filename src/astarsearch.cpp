@@ -28,6 +28,7 @@
 #define DBG_PF LOG_STREAM(debug, engine)
 #define ERR_PF LOG_STREAM(err, engine)
 
+namespace {
 double heuristic(const map_location& src, const map_location& dst)
 {
 	// We will mainly use the distances in hexes
@@ -55,9 +56,12 @@ struct node {
 	double g, h, t;
 	map_location curr, prev;
 	bool in;
+	
 	node() : g(1e25), t(1e25), in(false) { }
 	node(double s, const map_location& c, const map_location& p, const map_location& dst, bool i) : g(s), 
-		h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(i) { }
+		h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(i) 
+		{ }
+		
 	bool operator<(const node& o) const {
 		return t < o.t;
 	}
@@ -66,22 +70,26 @@ struct node {
 	}
 };
 
-struct comp {
-	const std::vector<node>& nodes;
-	comp(const std::vector<node>& n) : nodes(n) { }
+class comp {
+	const std::vector<node>& nodes_;
+	
+public:
+	comp(const std::vector<node>& n) : nodes_(n) { }
 	bool operator()(int a, int b) {
-		return nodes[b] < nodes[a];
+		return nodes_[b] < nodes_[a];
 	}
 };
 
-struct indexer {
-	size_t h, w;
-	indexer(size_t a, size_t b) : h(a), w(b) { }
+class indexer {
+	size_t h_, w_;
+	
+public:
+	indexer(size_t a, size_t b) : h_(a), w_(b) { }
 	size_t operator()(const map_location& loc) {
-		return loc.y * h + loc.x;
+		return loc.y * h_ + loc.x;
 	}
 }; 
-
+}
 
 
 paths::route a_star_search(const map_location& src, const map_location& dst,
@@ -116,34 +124,38 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 	
 	indexer index(width, height);
 	comp node_comp(nodes);
+	
 	nodes[index(dst)].g = stop_at;
 	nodes[index(src)] = node(0, src, map_location::null_location, dst, true);
 	
 	std::vector<int> pq;
 	pq.push_back(index(src));
 	std::push_heap(pq.begin(), pq.end(), node_comp);
-	int c = 0;
+	
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
 		n.in = false;
 		std::pop_heap(pq.begin(), pq.end(), node_comp); 
 		pq.pop_back();
 		
-		if (n.t >= nodes[index(dst)].g) break;		
-		if (n.curr == dst) break;
+		if (n.t >= nodes[index(dst)].g) break;	
 		
 		get_adjacent_tiles(n.curr, &locs[0]);
 		
 		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0;) {
 			if (!locs[i].valid(width, height)) continue;
-			double thresh = nodes[index(locs[i])].g;
+			
+			node& next = nodes[index(locs[i])];
+			
+			double thresh = next.g;
 			if (n.g >= thresh) continue;
 			double cost = n.g + calc->cost(n.curr, locs[i], n.g);
 			if (cost >= thresh) continue;
 			
-			node& next = nodes[index(locs[i])];
 			bool in_list = next.in;
+			
 			next = node(cost, locs[i], n.curr, dst, true);	
+			
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
 			} else {
@@ -164,7 +176,7 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 		route.steps.push_back(src);
 		std::reverse(route.steps.begin(), route.steps.end());	
 	} else {	
-		LOG_PF << "aborted a* search  " << c << "\n";
+		LOG_PF << "aborted a* search  " << "\n";
 		route.move_left = (int)calc->getNoPathValue();
 	}
 	
