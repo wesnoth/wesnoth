@@ -52,14 +52,21 @@ double heuristic(const map_location& src, const map_location& dst)
 	// and clean the definition of these numbers
 }
 
+static unsigned search_counter;
+
 struct node {
 	double g, h, t;
 	map_location curr, prev;
-	bool in;
-	
-	node() : g(1e25), t(1e25), in(false) { }
-	node(double s, const map_location& c, const map_location& p, const map_location& dst, bool i) : g(s), 
-		h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(i) 
+	/**
+	 * If equal to search_counter, the node is off the list.
+	 * If equal to search_counter + 1, the node is on the list.
+	 * Otherwise it is outdated.
+	 */
+	unsigned in;
+
+	node() : g(1e25), t(1e25), in(search_counter) { }
+	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i) :
+		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
 		{ }
 		
 	bool operator<(const node& o) const {
@@ -117,9 +124,11 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 	
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
-	
+
+	search_counter += 2;
+	if (search_counter == 0) search_counter = 2;
+
 	static std::vector<node> nodes;
-	nodes.clear();
 	nodes.resize(width * height);
 	
 	indexer index(width, height);
@@ -130,11 +139,10 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 	
 	std::vector<int> pq;
 	pq.push_back(index(src));
-	std::push_heap(pq.begin(), pq.end(), node_comp);
-	
+
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
-		n.in = false;
+		n.in = search_counter;
 		std::pop_heap(pq.begin(), pq.end(), node_comp); 
 		pq.pop_back();
 		
@@ -146,14 +154,14 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 			if (!locs[i].valid(width, height)) continue;
 			
 			node& next = nodes[index(locs[i])];
-			
-			double thresh = next.g;
+
+			double thresh = (next.in - search_counter <= 1u) ? next.g : 1e25;
 			if (n.g >= thresh) continue;
 			double cost = n.g + calc->cost(n.curr, locs[i], n.g);
 			if (cost >= thresh) continue;
-			
-			bool in_list = next.in;
-			
+
+			bool in_list = next.in == search_counter + 1;
+
 			next = node(cost, locs[i], n.curr, dst, true);	
 			
 			if (in_list) {
