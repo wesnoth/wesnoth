@@ -25,12 +25,22 @@
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
 #include "preferences.hpp"
 #include "titlescreen.hpp"
 #include "video.hpp"
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
+#define ERR_G_L LOG_STREAM_INDENT(err, log_gui_layout)
+
+static lg::log_domain log_gui("gui");
+#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
+
+static lg::log_domain log_gui_draw("gui_draw");
 
 namespace gui2{
 
@@ -218,7 +228,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 
 int twindow::show(const bool restore, void* /*flip_function*/)
 {
-	log_scope2(gui_draw, "Window: show.");
+	log_scope2(log_gui_draw, "Window: show.");
 
 	generate_dot_file("show", SHOW);
 
@@ -485,7 +495,7 @@ void twindow::layout()
 		(config());
 	assert(conf);
 
-	log_scope2(gui_layout, "Window: Recalculate size");
+	log_scope2(log_gui_layout, "Window: Recalculate size");
 
 	layout_init();
 	generate_dot_file("layout_init", LAYOUT);
@@ -725,7 +735,7 @@ void twindow::NEW_layout()
 		(config());
 	assert(conf);
 
-	log_scope2(gui_layout, "Window: Recalculate size");
+	log_scope2(log_gui_layout, "Window: Recalculate size");
 
 	NEW_layout_init(true);
 	generate_dot_file("layout_init", LAYOUT);

@@ -26,9 +26,11 @@
 
 namespace wesnothd {
 
-#define ERR_SERVER LOG_STREAM(err, mp_server)
-#define LOG_SERVER LOG_STREAM(info, mp_server)
-#define DBG_SERVER LOG_STREAM(debug, mp_server)
+
+static lg::log_domain log_server("server");
+#define ERR_SERVER LOG_STREAM(err, log_server)
+#define LOG_SERVER LOG_STREAM(info, log_server)
+#define DBG_SERVER LOG_STREAM(debug, log_server)
 
 	std::ostream& operator<<(std::ostream& o, const banned& n)
 	{

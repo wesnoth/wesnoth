@@ -26,7 +26,8 @@
 #include "pathfind.hpp"
 #include "util.hpp"
 
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 cave_map_generator::cave_map_generator(const config &cfg) :
 	wall_(t_translation::CAVE_WALL),

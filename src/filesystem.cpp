@@ -62,10 +62,11 @@ BPath be_path;
 #include "loadscreen.hpp"
 #include "scoped_resource.hpp"
 
-#define DBG_FS LOG_STREAM(debug, filesystem)
-#define LOG_FS LOG_STREAM(info, filesystem)
-#define WRN_FS LOG_STREAM(warn, filesystem)
-#define ERR_FS LOG_STREAM(err, filesystem)
+static lg::log_domain log_filesystem("filesystem");
+#define DBG_FS LOG_STREAM(debug, log_filesystem)
+#define LOG_FS LOG_STREAM(info, log_filesystem)
+#define WRN_FS LOG_STREAM(warn, log_filesystem)
+#define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace {
 	const mode_t AccessMode = 00770;

@@ -18,7 +18,11 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
+#include "log.hpp"
 #include "sound.hpp"
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
 
 namespace gui2 {
 
@@ -35,7 +39,7 @@ static int distance(const int a, const int b)
 
 tpoint tslider::calculate_best_size() const
 {
-	log_scope2(gui_layout, std::string("tslider ") + __func__);
+	log_scope2(log_gui_layout, std::string("tslider ") + __func__);
 
 	// Inherited.
 	tpoint result = tcontrol::calculate_best_size();

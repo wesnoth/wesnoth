@@ -52,10 +52,11 @@
 #define SOCKET int
 #endif
 
-#define DBG_NW LOG_STREAM(debug, network)
-#define LOG_NW LOG_STREAM(info, network)
-#define WRN_NW LOG_STREAM(warn, network)
-#define ERR_NW LOG_STREAM(err, network)
+static lg::log_domain log_network("network");
+#define DBG_NW LOG_STREAM(debug, log_network)
+#define LOG_NW LOG_STREAM(info, log_network)
+#define WRN_NW LOG_STREAM(warn, log_network)
+#define ERR_NW LOG_STREAM(err, log_network)
 // Only warnings and not errors to avoid DoS by log flooding
 
 namespace {

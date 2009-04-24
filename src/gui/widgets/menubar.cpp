@@ -69,7 +69,7 @@ void tmenubar::set_state(const tstate state)
 
 void tmenubar::item_selected(twidget* widget)
 {
-	std::cerr << "click.\n";
+	//std::cerr << "click.\n";
 
 	tselectable_* item = dynamic_cast<tselectable_*>(widget);
 	assert(item);
@@ -141,7 +141,7 @@ void tmenubar::finalize_setup()
 			if(btn) {
 				btn->set_callback_state_change(callback_select_item);
 			} else {
-				std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
+				//std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
 				assert(false);
 			}
 		}

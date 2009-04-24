@@ -43,10 +43,11 @@
 #include <windows.h>
 #endif
 
-#define DBG_FT LOG_STREAM(debug, display)
-#define LOG_FT LOG_STREAM(info, display)
-#define WRN_FT LOG_STREAM(warn, display)
-#define ERR_FT LOG_STREAM(err, display)
+static lg::log_domain log_font("font");
+#define DBG_FT LOG_STREAM(debug, log_font)
+#define LOG_FT LOG_STREAM(info, log_font)
+#define WRN_FT LOG_STREAM(warn, log_font)
+#define ERR_FT LOG_STREAM(err, log_font)
 
 #ifdef	HAVE_FRIBIDI
 #include <fribidi/fribidi.h>

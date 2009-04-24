@@ -23,6 +23,9 @@
 #include "replay.hpp"
 #include "formula_string_utils.hpp"
 
+static lg::log_domain log_network("network");
+#define ERR_NW LOG_STREAM(err, log_network)
+
 turn_info::turn_info(game_state& state_of_game,
                      const gamestatus& status, game_display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
@@ -189,7 +192,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		bool restart = side_index == gui_.get_playing_team();
 
 		if(side_index >= teams_.size()) {
-			LOG_STREAM(err, network) << "unknown side " << side_index << " is dropping game\n";
+			ERR_NW << "unknown side " << side_index << " is dropping game\n";
 			throw network::error("");
 		}
 

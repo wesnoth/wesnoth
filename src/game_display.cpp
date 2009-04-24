@@ -30,10 +30,12 @@
 #include "gamestatus.hpp"
 #include "sound.hpp"
 
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
+#define LOG_DP LOG_STREAM(err, log_display)
 
-
-#define ERR_DP LOG_STREAM(err, display)
-#define INFO_DP LOG_STREAM(info, display)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
@@ -88,7 +90,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 			flag = game_config::flag_image;
 		}
 
-		LOG_STREAM(info, display) << "Adding flag for team " << i << " from animation " << flag << "\n";
+		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
 
 		// Must recolor flag image
 		animated<image::locator> temp_anim;
@@ -1105,7 +1107,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		// so now catch the exception and ignore the message.
 		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
 	} catch (utils::invalid_utf8_exception&) {
-		LOG_STREAM(err, engine) << "Invalid utf-8 found, chat message is ignored.\n";
+		ERR_NG << "Invalid utf-8 found, chat message is ignored.\n";
 		return;
 	}
 

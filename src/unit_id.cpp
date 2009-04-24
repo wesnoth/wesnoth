@@ -17,7 +17,8 @@
 
 #include <cassert>
 
-#define DBG_UT LOG_STREAM(debug, engine)
+static lg::log_domain log_unit("unit");
+#define DBG_UT LOG_STREAM(debug, log_unit)
 
 namespace n_unit {
 	id_manager id_manager::manager_;

@@ -32,8 +32,9 @@
 #include "game_events.hpp"
 #include "language.hpp"
 
-#define ERR_NG LOG_STREAM(err , engine)
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 static bool use_shadowm_storyscreen = false;
 
@@ -295,7 +296,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 		);
 
 	} catch (utils::invalid_utf8_exception&) {
-		LOG_STREAM(err, engine) << "Invalid utf-8 found, story message is ignored.\n";
+		ERR_NG << "Invalid utf-8 found, story message is ignored.\n";
 		// stop showing on an error, there might be more badly formed utf-8 messages
 		return false;
 	}

@@ -27,9 +27,10 @@
 #include "../wml_exception.hpp"
 
 
-#define LOG_AI LOG_STREAM(info, ai)
-#define DBG_AI LOG_STREAM(debug, ai)
-#define ERR_AI LOG_STREAM(err, ai)
+static lg::log_domain log_ai("ai");
+#define LOG_AI LOG_STREAM(info, log_ai)
+#define DBG_AI LOG_STREAM(debug, log_ai)
+#define ERR_AI LOG_STREAM(err, log_ai)
 
 struct move_cost_calculator : cost_calculator
 {
@@ -91,7 +92,7 @@ private:
 
 std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
 {
-	log_scope2(ai, "finding targets...");
+	log_scope2(log_ai, "finding targets...");
 
 	const bool has_leader = leader != units_.end();
 
@@ -427,7 +428,7 @@ double ai::compare_groups(const std::set<location>& our_group, const std::set<lo
 
 std::pair<map_location,map_location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
-	log_scope2(ai, "choosing move");
+	log_scope2(log_ai, "choosing move");
 
 	raise_user_interact();
 

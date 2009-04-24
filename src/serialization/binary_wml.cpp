@@ -26,8 +26,8 @@
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
 
-
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 // Data compression. Compression is designed for network traffic.
 // Assumptions the compression is based on:

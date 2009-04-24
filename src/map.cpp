@@ -31,9 +31,10 @@
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
 
-#define ERR_CF LOG_STREAM(err, config)
-#define LOG_G LOG_STREAM(info, general)
-#define DBG_G LOG_STREAM(debug, general)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define LOG_G LOG_STREAM(info, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general)
 
 const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;

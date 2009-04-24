@@ -88,20 +88,23 @@ clock_t get_cpu_time(bool active) {
 
 #endif
 
+static lg::log_domain log_server("server");
 /**
  * fatal and directly server related errors/warnings,
  * ie not caused by erroneous client data
  */
-#define ERR_SERVER LOG_STREAM(err, mp_server)
+#define ERR_SERVER LOG_STREAM(err, log_server)
 
 /** clients send wrong/unexpected data */
-#define WRN_SERVER LOG_STREAM(warn, mp_server)
+#define WRN_SERVER LOG_STREAM(warn, log_server)
 
 /** normal events */
-#define LOG_SERVER LOG_STREAM(info, mp_server)
-#define DBG_SERVER LOG_STREAM(debug, mp_server)
-#define ERR_CONFIG LOG_STREAM(err, config)
-#define WRN_CONFIG LOG_STREAM(warn, config)
+#define LOG_SERVER LOG_STREAM(info, log_server)
+#define DBG_SERVER LOG_STREAM(debug, log_server)
+
+static lg::log_domain log_config("config");
+#define ERR_CONFIG LOG_STREAM(err, log_config)
+#define WRN_CONFIG LOG_STREAM(warn, log_config)
 
 //compatibility code for MS compilers
 #ifndef SIGHUP

@@ -18,7 +18,8 @@
 #include "log.hpp"
 #include "wml_exception.hpp"
 
-#define WRN_CF LOG_STREAM(warn, config)
+static lg::log_domain log_config("config");
+#define WRN_CF LOG_STREAM(warn, log_config)
 
 static tportrait::tside get_side(const std::string& side)
 {

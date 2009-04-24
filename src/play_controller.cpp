@@ -30,7 +30,11 @@
 #include "terrain_filter.hpp"
 #include "save_blocker.hpp"
 
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 play_controller::play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video,
@@ -677,7 +681,7 @@ void play_controller::enter_textbox()
 		break;
 	default:
 		menu_handler_.get_textbox().close(*gui_);
-		LOG_STREAM(err, display) << "unknown textbox mode\n";
+		ERR_DP << "unknown textbox mode\n";
 	}
 
 }

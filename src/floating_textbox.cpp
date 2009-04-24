@@ -22,6 +22,9 @@
 
 #include <ctime>
 
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
+
 namespace gui{
 	floating_textbox::floating_textbox() :
 		box_(NULL),
@@ -158,7 +161,7 @@ namespace gui{
 			break;
 		}
 		default:
-			LOG_STREAM(err, display) << "unknown textbox mode\n";
+			ERR_DP << "unknown textbox mode\n";
 		}
 	}
 }

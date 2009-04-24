@@ -37,11 +37,17 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#define DBG_NG LOG_STREAM(debug, engine)
-#define LOG_NG LOG_STREAM(info, engine)
-#define ERR_NG LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
-#define LOG_AI_TESTING LOG_STREAM(info, ai_testing)
+static lg::log_domain log_config("config");
+#define LOG_CF LOG_STREAM(info, log_config)
+
+static lg::log_domain log_ai_testing("ai_testing");
+#define LOG_AI_TESTING LOG_STREAM(info, log_ai_testing)
+
 struct castle_cost_calculator : cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
@@ -611,7 +617,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		weapon = &u.attacks()[attack_num];
 	}
 	if(u.hitpoints() < 0) {
-		LOG_STREAM(info, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp as it's maximum the engine will fail
@@ -1095,7 +1101,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					: statistics::attack_context::MISSES, damage_done, drains_damage);
 
 			if(ran_results == NULL) {
-				log_scope2(engine, "setting random results");
+				log_scope2(log_engine, "setting random results");
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
@@ -1897,7 +1903,7 @@ void advance_unit(unit_map& units,
 	statistics::advance_unit(new_unit);
 
 	preferences::encountered_units().insert(new_unit.type_id());
-	LOG_STREAM(info, config) << "Added '" << new_unit.type_id() << "' to encountered units\n";
+	LOG_CF << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
 	units.replace(loc, new_unit);
 	LOG_NG << "firing post_advance event at " << loc << "\n";

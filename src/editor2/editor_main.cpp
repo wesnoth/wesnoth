@@ -21,6 +21,8 @@
 
 #include <boost/algorithm/string/replace.hpp>
 
+lg::log_domain log_editor("editor");
+
 namespace editor2 {
 
 EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */)

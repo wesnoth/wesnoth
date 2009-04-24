@@ -21,13 +21,15 @@
 #include "global.hpp"
 
 #include <map>
+#include <vector>
 
 #include "tstring.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 
-#define LOG_CF lg::info(lg::config)
-#define ERR_CF lg::err(lg::config)
+static lg::log_domain log_config("config");
+#define LOG_CF LOG_STREAM(info, log_config)
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace {
 	const char TRANSLATABLE_PART = 0x01;

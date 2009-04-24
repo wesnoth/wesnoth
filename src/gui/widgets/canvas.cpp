@@ -25,10 +25,23 @@
 #include "../../image.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "../../text.hpp"
 #include "wml_exception.hpp"
+
+static lg::log_domain log_gui_parse("gui_parse");
+#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
+#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
+
+static lg::log_domain log_gui_draw("gui_draw");
+#define DBG_G_D LOG_STREAM_INDENT(debug, log_gui_draw)
+#define WRN_G_D LOG_STREAM_INDENT(warn, log_gui_draw)
+#define ERR_G_D LOG_STREAM_INDENT(err, log_gui_draw)
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
 
 
 namespace gui2 {
@@ -925,7 +938,7 @@ void tcanvas::draw(const config& cfg)
 
 void tcanvas::draw(const bool force)
 {
-	log_scope2(gui_draw, "Canvas: drawing.");
+	log_scope2(log_gui_draw, "Canvas: drawing.");
 	if(!dirty_ && !force) {
 		DBG_G_D << "Canvas: nothing to draw.\n";
 		return;
@@ -944,7 +957,7 @@ void tcanvas::draw(const bool force)
 	// draw items
 	for(std::vector<tshape_ptr>::iterator itor =
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
-		log_scope2(gui_draw, "Canvas: draw shape.");
+		log_scope2(log_gui_draw, "Canvas: draw shape.");
 
 		(*itor)->draw(canvas_, variables_);
 	}
@@ -954,7 +967,7 @@ void tcanvas::draw(const bool force)
 
 void tcanvas::parse_cfg(const config& cfg)
 {
-	log_scope2(gui_parse, "Canvas: parsing config.");
+	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
 	foreach (const config::any_child &it, cfg.all_children_range())

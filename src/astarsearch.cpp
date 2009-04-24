@@ -23,10 +23,10 @@
 #include <queue>
 #include <map>
 
-
-#define LOG_PF LOG_STREAM(info, engine)
-#define DBG_PF LOG_STREAM(debug, engine)
-#define ERR_PF LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_PF LOG_STREAM(info, log_engine)
+#define DBG_PF LOG_STREAM(debug, log_engine)
+#define ERR_PF LOG_STREAM(err, log_engine)
 
 namespace {
 double heuristic(const map_location& src, const map_location& dst)

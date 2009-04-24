@@ -49,10 +49,17 @@
 
 #include <clocale>
 
-#define LOG_NG LOG_STREAM(info, engine)
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_G  LOG_STREAM(err, general)
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+
+#define ERR_G  LOG_STREAM(err, lg::general)
+
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace dialogs
 {
@@ -148,11 +155,11 @@ void advance_unit(const gamemap& map,
 			// doesn't handle multi advancemnet
 			advance_unit(map, units, loc, gui, random_choice, true);
 		} else {
-			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience()
+			ERR_CF << "Unit has an too high amount of " << u->second.experience()
 				<< " XP left, cascade leveling disabled\n";
 		}
 	} else {
-		LOG_STREAM(err, engine) << "Unit advanced no longer exists\n";
+		ERR_NG << "Unit advanced no longer exists\n";
 	}
 }
 
@@ -1108,7 +1115,7 @@ void campaign_preview_pane::draw_contents()
 		desc_text = font::word_wrap_text((*descriptions_)[index_].first,
 			font::SIZE_SMALL, area.w - 2 * campaign_preview_border);
 	} catch (utils::invalid_utf8_exception&) {
-		LOG_STREAM(err, engine) << "Invalid utf-8 found, campaign description is ignored.\n";
+		ERR_NG << "Invalid utf-8 found, campaign description is ignored.\n";
 	}
 	const std::vector<std::string> lines = utils::split(desc_text, '\n',utils::STRIP_SPACES);
 	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y+campaign_preview_border,0,0 };

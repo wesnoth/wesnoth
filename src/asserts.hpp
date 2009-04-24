@@ -18,6 +18,7 @@
 #define ASSERTS_HPP_INCLUDED
 
 #include <cstdlib>
+#include <iostream>
 
 #ifdef _MSC_VER
 #define BREAKPOINT() __debugbreak()

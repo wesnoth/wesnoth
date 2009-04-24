@@ -24,11 +24,12 @@
 #include "../log.hpp"
 #include <stdexcept>
 
-#define DBG_ED LOG_STREAM_INDENT(debug, editor)
-#define LOG_ED LOG_STREAM_INDENT(info, editor)
-#define WRN_ED LOG_STREAM_INDENT(warn, editor)
-#define ERR_ED LOG_STREAM_INDENT(err, editor)
-#define SCOPE_ED log_scope2(editor, __func__)
+extern lg::log_domain log_editor;
+#define DBG_ED LOG_STREAM_INDENT(debug, log_editor)
+#define LOG_ED LOG_STREAM_INDENT(info, log_editor)
+#define WRN_ED LOG_STREAM_INDENT(warn, log_editor)
+#define ERR_ED LOG_STREAM_INDENT(err, log_editor)
+#define SCOPE_ED log_scope2(log_editor, __func__)
 
 class display;
 class gamemap;

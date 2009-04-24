@@ -34,9 +34,8 @@
 
 #include <queue>
 
-#define DBG_HELP LOG_STREAM(debug, help)
-#define LOG_HELP LOG_STREAM(info, help)
-#define ERR_HELP LOG_STREAM(err, help)
+static lg::log_domain log_display("display");
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace help {
 
@@ -2342,7 +2341,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
-		LOG_STREAM(warn, display) << "Floating image with align HERE, aligning left.\n";
+		WRN_DP << "Floating image with align HERE, aligning left.\n";
 		align = LEFT;
 	}
 	const int width = surf->w + (box ? box_width * 2 : 0);

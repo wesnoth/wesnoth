@@ -28,11 +28,11 @@
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 
-
-#define ERR_G LOG_STREAM(err, general)
-#define LOG_G LOG_STREAM(info, general)
-#define DBG_G LOG_STREAM(debug, general)
-#define ERR_CONFIG LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_G LOG_STREAM(err, lg::general)
+#define LOG_G LOG_STREAM(info, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general)
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace {
 
@@ -287,7 +287,7 @@ void hotkey_item::load_from_config(const config& cfg)
 			keycode_ = sdl_keysym_from_name(key);
 			if (keycode_ == SDLK_UNKNOWN) {
 				if (tolower(key[0]) != 'f') {
-					ERR_CONFIG << "hotkey key '" << key << "' invalid\n";
+					ERR_CF << "hotkey key '" << key << "' invalid\n";
 				} else {
 					int num = lexical_cast_default<int>
 						(std::string(key.begin()+1,	key.end()), 1);

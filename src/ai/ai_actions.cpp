@@ -42,10 +42,11 @@
 #include "../statistics.hpp"
 #include "../team.hpp"
 
-#define DBG_AI_ACTIONS LOG_STREAM(debug, ai_actions)
-#define LOG_AI_ACTIONS LOG_STREAM(info, ai_actions)
-#define WRN_AI_ACTIONS LOG_STREAM(warn, ai_actions)
-#define ERR_AI_ACTIONS LOG_STREAM(err, ai_actions)
+static lg::log_domain log_ai_actions("ai_actions");
+#define DBG_AI_ACTIONS LOG_STREAM(debug, log_ai_actions)
+#define LOG_AI_ACTIONS LOG_STREAM(info, log_ai_actions)
+#define WRN_AI_ACTIONS LOG_STREAM(warn, log_ai_actions)
+#define ERR_AI_ACTIONS LOG_STREAM(err, log_ai_actions)
 
 // =======================================================================
 // AI ACTIONS

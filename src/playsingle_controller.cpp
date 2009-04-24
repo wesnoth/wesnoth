@@ -36,8 +36,9 @@
 #include "events.hpp"
 #include "save_blocker.hpp"
 
-#define ERR_NG LOG_STREAM(err, engine)
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 playsingle_controller::playsingle_controller(const config& level,
 		game_state& state_of_game, const int ticks, const int num_turns,

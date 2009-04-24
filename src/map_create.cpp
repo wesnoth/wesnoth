@@ -21,7 +21,8 @@
 #include "scoped_resource.hpp"
 
 
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 map_generator* create_map_generator(const std::string& name, const config &cfg)
 {

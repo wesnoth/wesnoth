@@ -24,7 +24,9 @@
 #include "SDL.h"
 
 #include "log.hpp"
+#include "foreach.hpp"
 
+#include <map>
 #include <sstream>
 #include <ctime>
 
@@ -45,54 +47,45 @@ static bool timestamp = true;
 
 namespace lg {
 
-std::vector< lg::logd > log_domains;
+typedef std::map<std::string, int> domain_map;
+static domain_map *domains;
 void timestamps(bool t) { timestamp = t; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
-log_domain general("general"), ai("ai"), ai_actions("ai_actions"), ai_configuration("ai_configuration"), ai_manager("ai_manager"), ai_testing("ai_testing"), formula_ai("formula_ai"), cache("cache"), config("config"), display("display"),
-	engine("engine"), network("network"), mp_server("server"),
-	filesystem("filesystem"), audio("audio"),
-	replay("replay"), help("help"), gui("gui"), gui_parse("gui_parse"),
-	gui_draw("gui_draw"), gui_layout("gui_layout"), gui_event("gui_event"), editor("editor"), wml("wml"),
-	mp_user_handler("user_handler"), uploader("uploader"), lua("lua");
+log_domain general("general");
 
-log_domain::log_domain(char const *name) : domain_(log_domains.size())
+log_domain::log_domain(char const *name)
 {
-	logd d = { name, 0 };
-	log_domains.push_back(d);
+	// Indirection to prevent initialization depending on link order.
+	if (!domains) domains = new domain_map;
+	domain_ = &*domains->insert(logd(name, 0)).first;
 }
 
 bool set_log_domain_severity(std::string const &name, int severity)
 {
-	std::vector< logd >::iterator
-		it = log_domains.begin(),
-		it_end = log_domains.end();
 	if (name == "all") {
-		for(; it != it_end; ++it)
-			it->severity_ = severity;
+		foreach (logd &l, *domains) {
+			l.second = severity;
+		}
 	} else {
-		for(; it != it_end; ++it)
-			if (name == it->name_) break;
-		if (it == it_end)
+		domain_map::iterator it = domains->find(name);
+		if (it == domains->end())
 			return false;
-		it->severity_ = severity;
+		it->second = severity;
 	}
 	return true;
 }
 
 std::string list_logdomains()
 {
-	std::vector< logd >::iterator
-		it_begin = log_domains.begin(),
-		it_end = log_domains.end(),
-		it;
-	std::string domainlist = "";
-	for(it = it_begin; it != it_end; ++it) {
-		if (it != it_begin)
-			domainlist += ", ";
-		domainlist += it->name_;
+	std::ostringstream res;
+	bool first = true;
+	foreach (logd &l, *domains) {
+		if (first) first = false;
+		else res << ", ";
+		res << l.first;
 	}
-	return domainlist;
+	return res.str();
 }
 
 std::string get_timestamp(const time_t& t, const std::string& format) {
@@ -106,8 +99,7 @@ std::string get_timestamp(const time_t& t, const std::string& format) {
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
-	logd const &d = log_domains[domain.domain_];
-	if (severity_ > d.severity_)
+	if (severity_ > domain.domain_->second)
 		return null_ostream;
 	else {
 		if(do_indent) {
@@ -118,7 +110,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 			std::cerr << get_timestamp(time(NULL));
 		}
 		if (show_names) {
-			std::cerr << name_ << ' ' << d.name_ << ": ";
+			std::cerr << name_ << ' ' << domain.domain_->first << ": ";
 		}
 		return std::cerr;
 	}

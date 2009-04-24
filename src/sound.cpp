@@ -24,8 +24,9 @@
 
 #include <list>
 
-#define LOG_AUDIO LOG_STREAM(info, audio)
-#define ERR_AUDIO LOG_STREAM(err, audio)
+static lg::log_domain log_audio("audio");
+#define LOG_AUDIO LOG_STREAM(info, log_audio)
+#define ERR_AUDIO LOG_STREAM(err, log_audio)
 
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk

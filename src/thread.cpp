@@ -13,11 +13,14 @@
 */
 
 #include "global.hpp"
+
+#include <vector>
+
 #include "log.hpp"
 #include "thread.hpp"
 
 
-#define ERR_G LOG_STREAM(err, general)
+#define ERR_G LOG_STREAM(err, lg::general)
 
 
 static int run_async_operation(void* data)

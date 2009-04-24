@@ -26,8 +26,9 @@
 #include "preferences_display.hpp"
 #include "video.hpp"
 
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_DP LOG_STREAM(err, display)
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+#define ERR_DP LOG_STREAM(err, log_display)
 
 #define TEST_VIDEO_ON 0
 

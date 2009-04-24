@@ -30,8 +30,7 @@
 #include <utility>
 #include <vector>
 
-#define ERR_GEN LOG_STREAM(err, general)
-#define INFO_GEN LOG_STREAM(info, general)
+#define ERR_GEN LOG_STREAM(err, lg::general)
 
 unsigned input_blocker::instance_count = 0; //static initialization
 

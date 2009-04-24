@@ -34,8 +34,9 @@
 #include "unit_id.hpp"
 #include "version.hpp"
 
-#define LOG_SAVE LOG_STREAM(info, engine)
-#define ERR_SAVE LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_SAVE LOG_STREAM(info, log_engine)
+#define ERR_SAVE LOG_STREAM(err, log_engine)
 
 #ifdef _WIN32
 	#include <windows.h>

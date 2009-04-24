@@ -31,10 +31,10 @@
 #include "wesconfig.h"
 #include "log.hpp"
 
-#define DBG_UPLD LOG_STREAM(debug, uploader)
-#define LOG_UPLD LOG_STREAM(info, uploader)
-#define WRN_UPLD LOG_STREAM(warn, uploader)
-#define ERR_UPLD LOG_STREAM(err, uploader)
+
+static lg::log_domain log_uploader("uploader");
+#define DBG_UPLD LOG_STREAM(debug, log_uploader)
+#define ERR_UPLD LOG_STREAM(err, log_uploader)
 
 namespace {
 	const std::string target_host = "www.wesnoth.org";

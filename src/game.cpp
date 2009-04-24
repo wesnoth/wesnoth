@@ -101,16 +101,17 @@
 const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
 #endif
 
-#define ERR_CONFIG LOG_STREAM(err, config)
-#define WRN_CONFIG LOG_STREAM(warn, config)
-#define DBG_CONFIG LOG_STREAM(debug, config)
-#define LOG_CONFIG LOG_STREAM(info, config)
-#define LOG_GENERAL LOG_STREAM(info, general)
-#define WRN_GENERAL LOG_STREAM(warn, general)
-#define DBG_GENERAL LOG_STREAM(debug, general)
-#define ERR_NET LOG_STREAM(err, network)
-#define LOG_NET LOG_STREAM(info, network)
-#define ERR_FS LOG_STREAM(err, filesystem)
+static lg::log_domain log_config("config");
+#define ERR_CONFIG LOG_STREAM(err, log_config)
+#define WRN_CONFIG LOG_STREAM(warn, log_config)
+#define LOG_CONFIG LOG_STREAM(info, log_config)
+
+#define LOG_GENERAL LOG_STREAM(info, lg::general)
+#define WRN_GENERAL LOG_STREAM(warn, lg::general)
+#define DBG_GENERAL LOG_STREAM(debug, lg::general)
+
+static lg::log_domain log_network("network");
+#define ERR_NET LOG_STREAM(err, log_network)
 
 static bool less_campaigns_rank(const config &a, const config &b) {
 	return lexical_cast_default<int>(a["rank"], 1000) <

@@ -27,8 +27,9 @@
 
 #include <climits>
 
-#define ERR_NG LOG_STREAM(err, engine)
-#define DEBUG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 
 /** The tile width used when using basex and basey. This is not,
  * necessarily, the tile width in pixels, this is totally
@@ -746,7 +747,7 @@ void terrain_builder::parse_config(const config &cfg)
 			if (!tc["pos"].empty()) {
 				int pos = atoi(tc["pos"].c_str());
 				if(anchors.find(pos) == anchors.end()) {
-					LOG_STREAM(warn, engine) << "Invalid anchor!\n";
+					WRN_NG << "Invalid anchor!\n";
 					continue;
 				}
 

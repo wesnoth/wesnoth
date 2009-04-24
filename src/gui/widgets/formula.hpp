@@ -17,7 +17,7 @@
 
 #include "formula_callable.hpp"
 #include "../../formula.hpp"
-#include "log.hpp"
+//#include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/static_assert.hpp>
@@ -88,9 +88,11 @@ inline T tformula<T>::operator() (const game_logic::map_formula_callable& variab
 {
 	if(has_formula()) {
 		const T& result = execute(variables);
+#if 0
 		LOG_G_D << "Formula: execute '" << formula_
 			<< "' result '" << result
 			<< "'.\n";
+#endif
 		return result;
 	} else {
 		return value_;

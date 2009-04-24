@@ -34,9 +34,10 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
+#define LOG_G LOG_STREAM(info, lg::general)
 
-#define LOG_G LOG_STREAM(info, general)
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 namespace {
 

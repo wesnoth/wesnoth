@@ -27,18 +27,24 @@
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
-#define ERR_CFG LOG_STREAM(err , config)
-#define LOG_CFG LOG_STREAM(info, config)
-#define WRN_CFG LOG_STREAM(warn, config)
-#define ERR_FS  LOG_STREAM(err , filesystem)
-#define ERR_NET LOG_STREAM(err , network)
-#define LOG_NET LOG_STREAM(info, network)
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(err , log_config)
+#define LOG_CFG LOG_STREAM(info, log_config)
+#define WRN_CFG LOG_STREAM(warn, log_config)
+
+static lg::log_domain log_filesystem("filesystem");
+#define ERR_FS  LOG_STREAM(err , log_filesystem)
+
+static lg::log_domain log_network("network");
+#define ERR_NET LOG_STREAM(err , log_network)
+#define LOG_NET LOG_STREAM(info, log_network)
 
 void get_addon_info(const std::string& addon_name, config& cfg)
 {

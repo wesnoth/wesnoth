@@ -28,8 +28,9 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
-#define LOG_NG LOG_STREAM(info, engine)
-#define ERR_NG LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
 {

@@ -21,20 +21,23 @@
 #include "../log.hpp"
 #include "../formula_string_utils.hpp"
 
+static lg::log_domain log_ai("ai");
+#define LOG_AI LOG_STREAM(info, log_ai)
+
 namespace dfool {
   void dfool_ai::play_turn(){
     int team_num = get_side();
     const config& parms = current_team().ai_parameters();
     config ai_mem = current_team().ai_memory();
 
-    LOG_STREAM(info, ai)<<"dfool side:"<<team_num<<" of "<<current_team().nteams()<<std::endl;
+		LOG_AI << "dfool side:" << team_num << " of " << current_team().nteams() << '\n';
 
     config side_filter;
     char buf[80];
     snprintf(buf, sizeof(buf), "%d", team_num);
     side_filter["side"]=buf;
 
-    LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
+		LOG_AI << "dfool sees:\n";
 
     //    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
     //        std::string t = ua->second.get_ai_special();
@@ -58,12 +61,12 @@ namespace dfool {
     //      }
     //    }
 
-    LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
+		LOG_AI << "Visible Units\n";
     for(unit_list::iterator ui = v_units.begin(); ui != v_units.end(); ++ui) {
       unit_map::iterator u = unit(*ui,get_info().units);
       if(u!=get_info().units.end()){
 	//	LOG_STREAM(info, ai)<<"\t"<<u->second.name()<<std::endl;
-	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<std::endl;
+				LOG_AI << "\t\t" << u->second.underlying_id() << '\n';
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
 
@@ -77,7 +80,7 @@ namespace dfool {
 		std::string number = o["number"];
       size_t num=atoi(number.c_str());
 
-      LOG_STREAM(info, ai)<<"dfool order:"<<order_id<<std::endl;
+			LOG_AI << "dfool order:" << order_id << '\n';
 
       // First find units where AI_SPECIAL matches order id
       config order_filter;
@@ -134,9 +137,10 @@ namespace dfool {
 	  if(u!=get_info().units.end()){
 					foreach (const config &ff, com.child_range("filter"))
 					{
-						LOG_STREAM(info, ai) << "ff:" << com["type"] << ' '
+						LOG_AI << "ff:" << com["type"] << ' '
 							<< ff["type"] << ' ' << ff["x"] << ',' << ff["y"] << '\n';
-	      LOG_STREAM(info, ai)<<"ff?"<<u->second.type_id()<<" "<<u->first.x<<","<<u->first.y<<std::endl;
+						LOG_AI << "ff?" << u->second.type_id() << " "
+							<< u->first.x << ',' << u->first.y << '\n';
 	      if (!u->second.matches_filter(vconfig(ff), u->first)) {
 		found=false;
 		break;
@@ -152,19 +156,19 @@ namespace dfool {
 	    distance_evaluator dist(get_info().state.sog(),&function_map);
 	    function_map["eval"]=&eval;
 	    function_map["distance"]=&dist;
-	    std::cout<<"eval: "<<type<<":"<<e<<" = "<<eval.value(e)<<"\n";
+					LOG_AI << "eval: " << type << ':' << e << " = " << eval.value(e) << '\n';
 
-	    LOG_STREAM(info, ai)<<"\tcommand: "<<type<<std::endl;
+					LOG_AI << "\tcommand: " << type << '\n';
 	    if(type=="moveto"){
 	      moveto(com,u);
 	    }
 	    if(type=="set_order"){
 						std::string set_id = com["id"];
 	      std::string a=(u->second.get_ai_special());
-	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<"\t"<<a<<"->"<<set_id<<std::endl;
+						LOG_AI << "\t\t" << u->second.underlying_id() << '\t' << a << "->" << set_id << '\n';
 	      (u->second.assign_ai_special(set_id));
 	      a=(u->second.get_ai_special());
-	      LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_id()<<"\t"<<a<<" =?= "<<set_id<<std::endl;
+						LOG_AI << "\t\t" << u->second.underlying_id() << '\t' << a << " =?= " << set_id << '\n';
 	    }
 	    if(type=="break"){
 	      com_break=true;
@@ -219,7 +223,7 @@ namespace dfool {
       }
     }
 
-    LOG_STREAM(info, ai) << "number of visible units: " << visible_units.size() << "\n";
+		LOG_AI << "number of visible units: " << visible_units.size() << '\n';
     return visible_units;
   }
 
@@ -236,7 +240,7 @@ namespace dfool {
 bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 {
 	location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
-      LOG_STREAM(info, ai)<<"\tmoving to:("<<target.x<<","<<target.y<<")"<<std::endl;
+	LOG_AI << "\tmoving to:(" << target.x << ',' << target.y << ")\n";
       if(m->second.movement_left()){
 	std::map<location,paths> possible_moves;
 	move_map srcdst, dstsrc;
@@ -245,9 +249,9 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	//	unit_memory_.known_map(known_units, get_info().state.turn());
 	unit_memory_.known_map(known_units, 0);
 
-	std::cout<<"known units:\n";
+	LOG_AI << "known units:\n";
 	for(unit_map::const_iterator uu = known_units.begin();uu!=known_units.end();uu++){
-	  std::cout<<"\t"<<uu->second.underlying_id()<<" "<<uu->first<<"\n";
+		LOG_AI << '\t' << uu->second.underlying_id() << ' ' << uu->first << '\n';
 	}
 
 	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false,false,NULL,true);
@@ -277,8 +281,10 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	  }
 	}
 
-	LOG_STREAM(info, ai)<<"\tmoving : "<< m->second.underlying_id() <<" "<<" from ("<<closest_move.first.x<<","<<closest_move.first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
-	LOG_STREAM(info, ai)<<"\tdistance: "<<closest_distance<<"\n";
+	LOG_AI << "\tmoving : " << m->second.underlying_id() << " from ("
+		<< closest_move.first.x << ',' << closest_move.first.y << ") to ("
+		<< target.x << ',' << target.y << ")\n";
+	LOG_AI << "\tdistance: " << closest_distance << '\n';
 
 	if(closest_distance != -1) {
 	  map_location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
@@ -436,8 +442,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 		  ptemp<<f.value(p[i]);
 		  p[i]=ptemp.str();
 		}else{ // error
-		  std::cout<<"function undefined: "<<func<<"\n";
-		  LOG_STREAM(info, ai)<<"error: evaluator function undefined: "<<func<<"\n";
+					LOG_AI << "error: evaluator function undefined: " << func << '\n';
 		  p[i]="ERR";
 		}
 	   }else if(p[i].size()>0 ){
@@ -455,8 +460,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	   }
 
 	   if(temp.size()>2){
-		LOG_STREAM(info, ai)<<"evaluator syntax error:\n\t" << val_string << std::endl;
-		std::cout<<"evaluator syntax error:\n\t" << val_string << std::endl;
+					LOG_AI << "evaluator syntax error:\n\t" << val_string << '\n';
 	   }
 	   std::cout<<"eval size:"<<temp.size()<<"\n";
 
@@ -482,15 +486,15 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
   std::string arithmetic_evaluator::value(const std::string& val_string){
     std::string temp = evaluator::value(val_string); // calculate WML variables
     std::list<std::string> tokens = parse_tokens(temp);
-    std::cout<<"tokens:\n";
+		LOG_AI << "tokens:\n";
     for(std::list<std::string>::const_iterator i=tokens.begin();i!=tokens.end();i++){
-	 std::cout<<"\t"<<(*i)<<"\n";
+			LOG_AI << '\t' << *i << '\n';
     }
     if(tokens.size()){
-	 std::cout<<"got here tokenless\n";
+		LOG_AI << "got here tokenless\n";
 	 temp=evaluate_tokens(tokens);
     }
-    std::cout<<"temp:"<<temp<<"\n";
+	LOG_AI << "temp:" << temp << '\n';
     return temp;
   }
 
@@ -500,7 +504,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
     op_priority.push_back("*/%");
     op_priority.push_back("+-");
     double temp=0;
-    std::cout<<"got here token\n";
+	LOG_AI << "got here token\n";
     for(size_t i=0;i<op_priority.size();i++){
 	 tlist.remove("");
 	 for(std::list<std::string>::iterator token = tlist.begin();token!=tlist.end();token++){

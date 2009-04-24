@@ -21,11 +21,12 @@
 #include "log.hpp"
 #include "replay_controller.hpp"
 
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
-#define DBG_NG LOG_STREAM(debug, engine)
-#define DBG_REPLAY LOG_STREAM(debug, replay)
-#define LOG_REPLAY LOG_STREAM(info, replay)
-#define ERR_REPLAY LOG_STREAM(err, replay)
+static lg::log_domain log_replay("replay");
+#define DBG_REPLAY LOG_STREAM(debug, log_replay)
+#define LOG_REPLAY LOG_STREAM(info, log_replay)
 
 LEVEL_RESULT play_replay_level(const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game)

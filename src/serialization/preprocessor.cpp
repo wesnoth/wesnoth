@@ -27,9 +27,10 @@
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 
-#define ERR_CF LOG_STREAM(err, config)
-#define LOG_CF LOG_STREAM(info, config)
-#define DBG_CF LOG_STREAM(debug, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define LOG_CF LOG_STREAM(info, log_config)
+#define DBG_CF LOG_STREAM(debug, log_config)
 
 using std::streambuf;
 

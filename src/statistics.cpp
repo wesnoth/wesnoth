@@ -25,8 +25,8 @@
 #include "unit.hpp"
 #include "util.hpp"
 
-#define ERR_NG lg::err(lg::engine)
-#define DBG_NG LOG_STREAM(debug, engine)
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 namespace {
 

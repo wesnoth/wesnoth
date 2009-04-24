@@ -41,7 +41,8 @@
 #include <errno.h>
 #endif
 
-#define LOG_CS lg::err(lg::network, false)
+static lg::log_domain log_network("network");
+#define LOG_CS if (lg::err.dont_log(log_network)) ; else lg::err(log_network, false)
 
 //compatibility code for MS compilers
 #ifndef SIGHUP

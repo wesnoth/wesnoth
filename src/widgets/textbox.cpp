@@ -21,10 +21,9 @@
 #include "log.hpp"
 #include "video.hpp"
 
-
-
-#define WRN_DISPLAY LOG_STREAM(warn, display)
-#define DBG_G LOG_STREAM(debug, general)
+static lg::log_domain log_display("display");
+#define WRN_DP LOG_STREAM(warn, log_display)
+#define DBG_G LOG_STREAM(debug, lg::general)
 
 namespace gui {
 
@@ -402,7 +401,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
-		WRN_DISPLAY << "out-of-boundary selection\n";
+		WRN_DP << "out-of-boundary selection\n";
 		selstart_ = selend_ = -1;
 	}
 

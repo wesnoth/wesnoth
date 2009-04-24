@@ -18,7 +18,8 @@
 #include "formula.hpp"
 #include "gettext.hpp"
 
-#define ERR_NG LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 

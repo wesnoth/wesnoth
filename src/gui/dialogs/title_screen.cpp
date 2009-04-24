@@ -18,12 +18,14 @@
 
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 
-#define ERR_CONFIG LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace gui2 {
 
@@ -77,7 +79,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 	if(game_title_list.empty()) {
-		ERR_CONFIG << "No title image defined\n";
+		ERR_CF << "No title image defined\n";
 	} else {
 		window.canvas()[0].set_variable("background_image",
 			variant(game_title_list[rand()%game_title_list.size()]));

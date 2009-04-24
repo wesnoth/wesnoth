@@ -16,6 +16,7 @@
 
 #include "dialogs.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/window.hpp"
@@ -30,7 +31,8 @@
 #include "upload_log.hpp"
 #include "formula_string_utils.hpp"
 
-#define LOG_NW LOG_STREAM(info, network)
+static lg::log_domain log_network("network");
+#define LOG_NW LOG_STREAM(info, log_network)
 
 namespace {
 

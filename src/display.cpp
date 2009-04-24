@@ -53,9 +53,10 @@
 #include <iostream>
 #include <sstream>
 
-#define ERR_DP LOG_STREAM(err, display)
-#define INFO_DP LOG_STREAM(info, display)
-#define DBG_DP LOG_STREAM(debug, display)
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
+#define DBG_DP LOG_STREAM(debug, log_display)
 
 namespace {
 #ifdef USE_TINY_GUI
@@ -1865,7 +1866,7 @@ void display::redraw_everything()
 	int ticks2 = SDL_GetTicks();
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
-	INFO_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
+	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
 	foreach (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);

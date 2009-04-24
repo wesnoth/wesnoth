@@ -34,10 +34,11 @@
 #include <sys/time.h>
 #endif
 
-#define DBG_NG lg::debug(lg::engine)
-#define LOG_NG lg::info(lg::engine)
-#define WRN_NG lg::warn(lg::engine)
-#define ERR_NG lg::err(lg::engine)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 #ifdef _WIN32
 
@@ -48,7 +49,7 @@ static void write_player(const player_info& player, config& cfg);
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);
 	if (found == players.end()) {
-		LOG_STREAM(warn, engine) << "player " << id << " does not exist.\n";
+		WRN_NG << "player " << id << " does not exist.\n";
 		return NULL;
 	} else
 		return &found->second;

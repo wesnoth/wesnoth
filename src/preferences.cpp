@@ -24,12 +24,16 @@
 #include "filesystem.hpp"
 #include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
+
+static lg::log_domain log_filesystem("filesystem");
+#define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace {
 
@@ -75,7 +79,7 @@ void write_preferences()
 		scoped_ostream prefs_file = ostream_file(get_prefs_file());
 		write(*prefs_file, prefs);
 	} catch(io_exception&) {
-		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
+		ERR_FS << "error writing to preferences file '" << get_prefs_file() << "'\n";
 	}
 
 
@@ -84,7 +88,7 @@ void write_preferences()
     if(!prefs_file_existed) {
 
         if(chmod(get_prefs_file().c_str(), 0600) == -1) {
-            std::cerr << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+			ERR_FS << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
         }
 
     }

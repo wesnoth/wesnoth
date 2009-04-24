@@ -37,10 +37,11 @@
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 
-#define DBG_REPLAY LOG_STREAM(debug, replay)
-#define LOG_REPLAY LOG_STREAM(info, replay)
-#define WRN_REPLAY LOG_STREAM(warn, replay)
-#define ERR_REPLAY LOG_STREAM(err, replay)
+static lg::log_domain log_replay("replay");
+#define DBG_REPLAY LOG_STREAM(debug, log_replay)
+#define LOG_REPLAY LOG_STREAM(info, log_replay)
+#define WRN_REPLAY LOG_STREAM(warn, log_replay)
+#define ERR_REPLAY LOG_STREAM(err, log_replay)
 
 std::string replay::last_replay_error;
 

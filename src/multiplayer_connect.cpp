@@ -35,11 +35,13 @@
 
 #include <boost/bind.hpp>
 
-#define LOG_NW LOG_STREAM(info, network)
-#define ERR_NW LOG_STREAM(err, network)
-#define LOG_CF LOG_STREAM(info, config)
-#define WRN_CF LOG_STREAM(warn, config)
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_network("network");
+#define LOG_NW LOG_STREAM(info, log_network)
+
+static lg::log_domain log_config("config");
+#define LOG_CF LOG_STREAM(info, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace {
 	const char* controller_names[] = {

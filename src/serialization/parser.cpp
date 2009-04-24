@@ -37,9 +37,10 @@
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/algorithm/string/replace.hpp>
 
-#define ERR_CF LOG_STREAM(err, config)
-#define WRN_CF LOG_STREAM(warn, config)
-#define LOG_CF LOG_STREAM(info, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
+#define LOG_CF LOG_STREAM(info, log_config)
 
 static const size_t max_recursion_levels = 1000;
 

@@ -28,13 +28,14 @@
 #include "unit_types.hpp"
 
 
-#define ERR_CONFIG LOG_STREAM(err, config)
-#define WRN_CONFIG LOG_STREAM(warn, config)
-#define LOG_CONFIG LOG_STREAM(info, config)
-#define DBG_CONFIG LOG_STREAM(debug, config)
-#define DBG_UT LOG_STREAM(debug, engine)
-#define LOG_UT LOG_STREAM(info, engine)
-#define ERR_UT LOG_STREAM(err, engine)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
+#define LOG_CONFIG LOG_STREAM(info, log_config)
+#define DBG_CF LOG_STREAM(debug, log_config)
+
+static lg::log_domain log_unit("unit");
+#define DBG_UT LOG_STREAM(debug, log_unit)
 
 namespace {
 	std::map< std::string, std::set< std::string > > future_advancefroms;
@@ -373,7 +374,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 	if (const config &movement_costs = cfg_.child("movement_costs"))
 	{
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			ERR_CF << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return impassable;
@@ -450,7 +451,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	if (const config &defense = cfg_.child("defense"))
 	{
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			ERR_CF << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return 100;
@@ -469,7 +470,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	}
 
 	if(res < 0) {
-		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defense).\n";
+		ERR_CF << "Defence '" << res << "' is '< 0' reset to 0 (100% defense).\n";
 		res = 0;
 	}
 
@@ -704,7 +705,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	else if(align == "neutral")
 		alignment_ = NEUTRAL;
 	else {
-		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
+		ERR_CF << "Invalid alignment found for " << id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
 
@@ -1081,7 +1082,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	for(int gender=0; gender<=1; ++gender) {
 		if(gender_types_[gender] == NULL) continue;
 		if(to_unit.gender_types_[gender] == NULL) {
-			WRN_CONFIG << to_id << " does not support gender " << gender << "\n";
+			WRN_CF << to_id << " does not support gender " << gender << "\n";
 			continue;
 		}
 		LOG_CONFIG << "gendered advancement " << gender << ": ";
@@ -1221,7 +1222,7 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
 
     unit_type_map::iterator itor = types_.find(key);
 
-    DBG_CONFIG << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
+	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
@@ -1248,8 +1249,8 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
 	if (cfg)
 		return cfg;
 
-    ERR_CONFIG << "unit type not found: " << key << "\n";
-    ERR_CONFIG << *unit_cfg_ << "\n";
+    ERR_CF << "unit type not found: " << key << "\n";
+    ERR_CF << *unit_cfg_ << "\n";
 
     ERROR_LOG("unit type not found");
 }

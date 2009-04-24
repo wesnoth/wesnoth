@@ -25,8 +25,9 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-#define ERR_GENERAL LOG_STREAM(err, general)
-#define ERR_NG LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_GENERAL LOG_STREAM(err, lg::general)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 variable_set::~variable_set()
 {

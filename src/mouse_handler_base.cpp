@@ -19,6 +19,8 @@
 #include "log.hpp"
 #include "preferences.hpp"
 
+static lg::log_domain log_display("display");
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace events {
 
@@ -252,7 +254,7 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 		if (m != NULL) {
 			show_menu_ = true;
 		} else {
-			LOG_STREAM(warn, display) << "no context menu found...\n";
+			WRN_DP << "no context menu found...\n";
 		}
 		return true;
 	}

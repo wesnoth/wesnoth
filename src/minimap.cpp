@@ -25,8 +25,9 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
-#define DBG_DP LOG_STREAM(debug, display)
-#define WRN_DP LOG_STREAM(warn, display)
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace image {
 

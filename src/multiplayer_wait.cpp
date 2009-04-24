@@ -25,10 +25,9 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
-
-#define DBG_NW LOG_STREAM(debug, network)
-#define LOG_NW LOG_STREAM(info, network)
-#define ERR_NW LOG_STREAM(err, network)
+static lg::log_domain log_network("network");
+#define DBG_NW LOG_STREAM(debug, log_network)
+#define LOG_NW LOG_STREAM(info, log_network)
 
 namespace {
 const SDL_Rect leader_pane_position = {-260,-370,260,370};

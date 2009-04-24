@@ -23,10 +23,9 @@
 #include "marked-up_text.hpp"
 
 
-
-#define ERR_DP LOG_STREAM(err, display)
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_G  LOG_STREAM(err, general)
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
+#define ERR_G  LOG_STREAM(err, lg::general)
 
 namespace {
 bool is_in_dialog = false;

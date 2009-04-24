@@ -25,10 +25,11 @@
 #include "../serialization/preprocessor.hpp"
 #include "../team.hpp"
 
-#define DBG_AI_CONFIGURATION LOG_STREAM(debug, ai_configuration)
-#define LOG_AI_CONFIGURATION LOG_STREAM(info, ai_configuration)
-#define WRN_AI_CONFIGURATION LOG_STREAM(warn, ai_configuration)
-#define ERR_AI_CONFIGURATION LOG_STREAM(err, ai_configuration)
+static lg::log_domain log_ai_configuration("ai_configuration");
+#define DBG_AI_CONFIGURATION LOG_STREAM(debug, log_ai_configuration)
+#define LOG_AI_CONFIGURATION LOG_STREAM(info, log_ai_configuration)
+#define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
+#define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
 
 static std::string bind_config_parameter( const std::string& value_from_config,

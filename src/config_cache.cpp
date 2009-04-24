@@ -29,9 +29,10 @@
 
 #include <boost/algorithm/string/replace.hpp>
 
-#define ERR_CACHE LOG_STREAM(err, cache)
-#define LOG_CACHE LOG_STREAM(info, cache)
-#define DBG_CACHE LOG_STREAM(debug, cache)
+static lg::log_domain log_cache("cache");
+#define ERR_CACHE LOG_STREAM(err, log_cache)
+#define LOG_CACHE LOG_STREAM(info, log_cache)
+#define DBG_CACHE LOG_STREAM(debug, log_cache)
 
 namespace game_config {
 

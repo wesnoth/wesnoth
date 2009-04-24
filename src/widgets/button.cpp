@@ -26,7 +26,8 @@
 #include "video.hpp"
 #include "wml_separators.hpp"
 
-#define ERR_DP LOG_STREAM(err, display)
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace gui {
 

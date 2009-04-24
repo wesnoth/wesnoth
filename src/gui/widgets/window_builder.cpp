@@ -19,6 +19,7 @@
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -36,6 +37,15 @@
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
 
+static lg::log_domain log_gui("gui");
+#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
+
+static lg::log_domain log_gui_parse("gui_parse");
+#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
+#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
+
+static lg::log_domain log_gui_event("gui_event");
+#define ERR_G_E LOG_STREAM_INDENT(err, log_gui_event)
 
 namespace gui2 {
 
@@ -252,7 +262,7 @@ twindow* build(CVideo& video, const std::string& type)
 		definition->definition);
 	assert(window);
 
-	log_scope2(gui, "Window builder: building grid for window");
+	log_scope2(log_gui, "Window builder: building grid for window");
 
 	window->set_easy_close(definition->easy_close);
 
@@ -488,7 +498,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @end_table
  *
  */
-	log_scope2(gui_parse, "Window builder: parsing a grid");
+	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
 	foreach (const config &row, cfg.child_range("row"))
 	{
@@ -935,7 +945,7 @@ twidget* tbuilder_panel::build() const
 		<< definition << "'.\n";
 
 
-	log_scope2(gui, "Window builder: building grid for panel.");
+	log_scope2(log_gui, "Window builder: building grid for panel.");
 
 	const unsigned rows = grid->rows;
 	const unsigned cols = grid->cols;
@@ -1145,7 +1155,7 @@ twidget* tbuilder_toggle_panel::build() const
 	DBG_GUI << "Window builder: placed toggle panel '"
 			<< id << "' with defintion '" << definition << "'.\n";
 
-	log_scope2(gui, "Window builder: building grid for toggle panel.");
+	log_scope2(log_gui, "Window builder: building grid for toggle panel.");
 
 	const unsigned rows = grid->rows;
 	const unsigned cols = grid->cols;
@@ -1230,7 +1240,7 @@ twidget* tbuilder_grid::build (tgrid* grid) const
 	grid->set_id(id);
 	grid->set_rows_cols(rows, cols);
 
-	log_scope2(gui, "Window builder: building grid");
+	log_scope2(log_gui, "Window builder: building grid");
 
 	DBG_GUI << "Window builder: grid '" << id
 		<< "' has " << rows << " rows and "

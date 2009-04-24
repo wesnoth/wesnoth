@@ -25,8 +25,9 @@
 #include "../log.hpp"
 
 
-#define LOG_AI LOG_STREAM(info, ai)
-#define ERR_AI LOG_STREAM(err, ai)
+static lg::log_domain log_ai("ai");
+#define LOG_AI LOG_STREAM(info, log_ai)
+#define ERR_AI LOG_STREAM(err, log_ai)
 
 const int max_positions = 10000;
 
@@ -602,7 +603,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
                 )
 {
-	log_scope2(ai, "analyzing targets...");
+	log_scope2(log_ai, "analyzing targets...");
 
 	std::vector<attack_analysis> res;
 

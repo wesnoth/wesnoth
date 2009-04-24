@@ -38,10 +38,10 @@ extern "C" int _putenv(const char*);
 #include <cerrno>
 #endif
 
-#define DBG_FS LOG_STREAM(debug, filesystem)
-#define DBG_GENERAL LOG_STREAM(debug, general)
-#define LOG_GENERAL LOG_STREAM(debug, general)
-#define WRN_GENERAL LOG_STREAM(debug, general)
+#define DBG_G LOG_STREAM(debug, lg::general)
+#define LOG_G LOG_STREAM(info, lg::general)
+#define WRN_G LOG_STREAM(warn, lg::general)
+#define ERR_G LOG_STREAM(err, lg::general)
 
 
 /** Tests one locale to be available. */
@@ -198,7 +198,7 @@ static void wesnoth_setlocale(int category, std::string slocale,
 
 #if defined(__BEOS__) || defined(__APPLE__)
 	if (category == LC_MESSAGES && setenv("LANG", locale, 1) == -1)
-		std::cerr << "setenv LANG failed: " << strerror(errno);
+		ERR_G << "setenv LANG failed: " << strerror(errno);
 #endif
 
 #ifdef _WIN32
@@ -232,7 +232,7 @@ static void wesnoth_setlocale(int category, std::string slocale,
 				setenv("LOCPATH", locpath.c_str(), 1);
 		else {
 			setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
-			DBG_GENERAL << "LOCPATH set to '" << (game_config::path + "/locales") << "'\n";
+			DBG_G << "LOCPATH set to '" << (game_config::path + "/locales") << "'\n";
 		}
 		std::string xlocale;
 		if (!slocale.empty()) {
@@ -281,13 +281,12 @@ static void wesnoth_setlocale(int category, std::string slocale,
 	}
 
 	if (res == NULL)
-		WRN_GENERAL << "WARNING: setlocale() failed for '"
-			  << locale << "'.\n";
+		WRN_G << "WARNING: setlocale() failed for '" << locale << "'.\n";
 	else
-		LOG_GENERAL << "set locale to '" << (try_loc.get()) << "' result: '" << res <<"'\n";
+		LOG_G << "set locale to '" << (try_loc.get()) << "' result: '" << res <<"'\n";
 
-	DBG_GENERAL << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
-	DBG_GENERAL << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
 
 }
 
@@ -351,7 +350,7 @@ const language_def& get_locale()
 			if (prefs_locale == i->localename)
 				return *i;
 		}
-		LOG_STREAM(info, general) << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale\n";
+		LOG_G << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];
 	}
 
@@ -373,7 +372,7 @@ const language_def& get_locale()
 	}
 #endif
 
-	LOG_STREAM(info, general) << "locale could not be determined; defaulting to system locale\n";
+	LOG_G << "locale could not be determined; defaulting to system locale\n";
 	return known_languages[0];
 }
 
@@ -392,8 +391,7 @@ void init_textdomains(const config& cfg)
 			if (location.empty()) {
 				//if location is empty, this causes a crash on Windows, so we
 				//disallow adding empty domains
-				LOG_STREAM(err, general) << "no location found for '" << path
-					<< "', not adding textdomain\n";
+				ERR_G << "no location found for '" << path << "', skipping textdomain\n";
 			} else {
 				t_string::add_textdomain(name, location);
 			}

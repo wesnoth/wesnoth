@@ -36,9 +36,9 @@
 
 #include <set>
 
-#define ERR_DP LOG_STREAM(err, display)
-#define INFO_DP LOG_STREAM(info, display)
-#define DBG_CACHE LOG_STREAM(debug, cache)
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
 
 namespace {
 
@@ -623,7 +623,7 @@ surface locator::load_image_sub_file() const
 						functor_queue.push_back(new cs_function(r,g,b));
 					}
 					else {
-						INFO_DP << "no arguments passed to the ~CS() function\n";
+						LOG_DP << "no arguments passed to the ~CS() function\n";
 					}
 				}
 				// Crop/slice (CROP)
@@ -795,7 +795,7 @@ void set_pixel_format(SDL_PixelFormat* format)
 		f.Rshift != l.Rshift || f.Gshift != l.Gshift || f.Bshift != l.Bshift ||
 		f.colorkey != l.colorkey || f.alpha != l.alpha)
 	{
-		INFO_DP << "detected a new display format\n";
+		LOG_DP << "detected a new display format\n";
 		flush_cache();
 	}
 	last_pixel_format = *format;

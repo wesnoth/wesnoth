@@ -23,26 +23,20 @@
 
 #include <iostream> // needed else all files including log.hpp need to do it.
 #include <string>
-#include <vector>
+#include <utility>
 
 namespace lg {
 
 class logger;
 
-struct logd {
-	char const *name_;
-	int severity_;
-};
+typedef std::pair<const std::string, int> logd;
 
 class log_domain {
-	int domain_;
+	logd *domain_;
 public:
 	log_domain(char const *name);
 	friend class logger;
 };
-
-//exposed to make inlining possible
-extern std::vector<logd> log_domains;
 
 bool set_log_domain_severity(std::string const &name, int severity);
 std::string list_logdomains();
@@ -57,8 +51,7 @@ public:
 
 	bool dont_log(log_domain const &domain) const
 	{
-		logd const &d = log_domains[domain.domain_];
-		return severity_ > d.severity_;
+		return severity_ > domain.domain_->second;
 	}
 };
 
@@ -66,9 +59,7 @@ void timestamps(bool);
 std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 
 extern logger err, warn, info, debug;
-extern log_domain general, ai, ai_actions, ai_configuration, ai_manager, ai_testing, formula_ai, cache, config,
-	display, engine, network, mp_server, filesystem, audio, replay, help, gui, gui_parse,
-	gui_layout, gui_draw, gui_event, editor, wml, mp_user_handler, lua, uploader;
+extern log_domain general;
 
 class scope_logger
 {
@@ -114,38 +105,11 @@ extern std::stringstream wml_error;
 } // namespace lg
 
 #define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);
-#define log_scope2(a,b) lg::scope_logger scope_logging_object__(lg::a, b);
+#define log_scope2(a,b) lg::scope_logger scope_logging_object__(a, b);
 
-#define LOG_STREAM(a, b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b)
+#define LOG_STREAM(a, b) if (lg::a.dont_log(b)) ; else lg::a(b)
 
 // When using log_scope/log_scope2 it is nice to have all output indented.
-#define LOG_STREAM_INDENT(a,b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b, true, true)
-
-
-// Define a list of standard loggers.
-#define DBG_GUI LOG_STREAM_INDENT(debug, gui)
-#define LOG_GUI LOG_STREAM_INDENT(info, gui)
-#define WRN_GUI LOG_STREAM_INDENT(warn, gui)
-#define ERR_GUI LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
-#define DBG_G_L LOG_STREAM_INDENT(debug, gui_layout)
-#define LOG_G_L LOG_STREAM_INDENT(info, gui_layout)
-#define WRN_G_L LOG_STREAM_INDENT(warn, gui_layout)
-#define ERR_G_L LOG_STREAM_INDENT(err, gui_layout)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
+#define LOG_STREAM_INDENT(a,b) if (lg::a.dont_log(b)) ; else lg::a(b, true, true)
 
 #endif

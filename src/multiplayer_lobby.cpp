@@ -31,7 +31,8 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace {
 std::vector<std::string> empty_string_vector;

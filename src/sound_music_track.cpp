@@ -20,8 +20,9 @@
 #include "log.hpp"
 #include "util.hpp"
 
-#define ERR_AUDIO LOG_STREAM(err , audio)
-#define LOG_AUDIO LOG_STREAM(info, audio)
+static lg::log_domain log_audio("audio");
+#define ERR_AUDIO LOG_STREAM(err, log_audio)
+#define LOG_AUDIO LOG_STREAM(info, log_audio)
 
 namespace sound {
 

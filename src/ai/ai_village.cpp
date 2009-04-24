@@ -26,9 +26,10 @@
 
 #include <numeric>
 
-#define DBG_AI LOG_STREAM(debug, ai)
-#define LOG_AI LOG_STREAM(info, ai)
-#define WRN_AI LOG_STREAM(warn, ai)
+static lg::log_domain log_ai("ai");
+#define DBG_AI LOG_STREAM(debug, log_ai)
+#define LOG_AI LOG_STREAM(info, log_ai)
+#define WRN_AI LOG_STREAM(warn, log_ai)
 
 // Basic strategy
 // 1. Store all our units that can move.
@@ -165,7 +166,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 		leader_loc = map_location::null_location;
 	}
 
-	debug = (!lg::debug.dont_log(lg::ai));
+	debug = !lg::debug.dont_log(log_ai);
 
 	// Find our units who can move.
 	treachmap reachmap;

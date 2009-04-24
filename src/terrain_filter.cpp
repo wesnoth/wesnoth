@@ -22,11 +22,8 @@
 #include "map.hpp"
 #include "terrain_filter.hpp"
 
-
-#define ERR_CF LOG_STREAM(err, config)
-#define LOG_G LOG_STREAM(info, general)
-#define ERR_NG LOG_STREAM(err, engine)
-
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 #ifdef _MSC_VER
 // This is a workaround for a VC bug; this constructor is never called

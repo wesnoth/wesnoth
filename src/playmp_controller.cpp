@@ -24,9 +24,8 @@
 #include "sound.hpp"
 #include "upload_log.hpp"
 
-
-
-#define LOG_NG LOG_STREAM(info, engine)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 unsigned int playmp_controller::replay_last_turn_ = 0;
 

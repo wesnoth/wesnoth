@@ -26,12 +26,16 @@
 #include "replay.hpp"
 #include "wml_separators.hpp"
 
-#define LOG_NG LOG_STREAM(info, engine)
-#define ERR_NG LOG_STREAM(err, engine)
-#define ERR_CF LOG_STREAM(err, config)
-#define DBG_NW LOG_STREAM(debug, network)
-#define LOG_NW LOG_STREAM(info, network)
-#define ERR_NW LOG_STREAM(err, network)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+
+static lg::log_domain log_network("network");
+#define LOG_NW LOG_STREAM(info, log_network)
+#define ERR_NW LOG_STREAM(err, log_network)
 
 namespace {
 

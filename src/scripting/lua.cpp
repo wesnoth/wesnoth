@@ -47,6 +47,10 @@ extern "C" {
 #include "scripting/lua.hpp"
 #include "unit.hpp"
 
+static lg::log_domain log_lua("lua");
+#define LOG_LUA LOG_STREAM(info, log_lua)
+#define ERR_LUA LOG_STREAM(err, log_lua)
+
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const executeKey = 0;
 static char const getsideKey = 0;
@@ -618,7 +622,7 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	int res = lua_pcall(L, 1, 0, -3);
 	if (res)
 	{
-		LOG_STREAM(err, lua)
+		ERR_LUA
 			<< "Failure while running Lua action handler: "
 			<< lua_tostring(L, -1) << '\n';
 		lua_pop(L, 2);
@@ -728,7 +732,7 @@ static int lua_get_side(lua_State *L)
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	LOG_STREAM(info, lua) << "Script says: \"" << m << "\"\n";
+	LOG_LUA << "Script says: \"" << m << "\"\n";
 	return 0;
 }
 
@@ -905,7 +909,7 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
-		LOG_STREAM(err, lua)
+		ERR_LUA
 			<< "Failure while loading Lua script: "
 			<< lua_tostring(L, -1) << '\n';
 		lua_pop(L, 2);
@@ -919,7 +923,7 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 	if (res)
 	{
-		LOG_STREAM(err, lua)
+		ERR_LUA
 			<< "Failure while running Lua script: "
 			<< lua_tostring(L, -1) << '\n';
 		lua_pop(L, 2);

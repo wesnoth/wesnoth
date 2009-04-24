@@ -46,13 +46,24 @@
 #include <iomanip>
 #include <iostream>
 
-#define DBG_NG LOG_STREAM(debug, engine)
-#define LOG_NG LOG_STREAM(info, engine)
-#define WRN_NG LOG_STREAM(warn, engine)
-#define ERR_NG LOG_STREAM(err, engine)
-#define DBG_DP LOG_STREAM(debug, display)
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
+
+static lg::log_domain log_wml("wml");
+#define DBG_WML LOG_STREAM(debug, log_wml)
+#define LOG_WML LOG_STREAM(info, log_wml)
+#define WRN_WML LOG_STREAM(warn, log_wml)
+#define ERR_WML LOG_STREAM(err, log_wml)
+
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 /**
  * State when processing a flight of events or commands.
@@ -163,16 +174,16 @@ namespace {
 static void put_wml_message(const std::string& logger, const std::string& message)
 {
 	if (logger == "err" || logger == "error") {
-		lg::err(lg::wml) << message << "\n";
+		ERR_WML << message << "\n";
 		wml_messages_stream << _("Error: ") << message << "\n";
 	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
-		lg::warn(lg::wml) << message << "\n";
+		WRN_WML << message << "\n";
 		wml_messages_stream << _("Warning: ") << message << "\n";
-	} else if((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(lg::wml)) {
-		lg::debug(lg::wml) << message << "\n";
+	} else if ((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(log_wml)) {
+		DBG_WML << message << "\n";
 		wml_messages_stream << _("Debug: ") << message << "\n";
-	} else if(!lg::info.dont_log(lg::wml)) {
-		lg::info(lg::wml) << message << "\n";
+	} else if (!lg::info.dont_log(log_wml)) {
+		LOG_WML << message << "\n";
 		wml_messages_stream << _("Info: ") << message << "\n";
 	}
 }
@@ -3540,7 +3551,7 @@ namespace game_events {
 	void handle_event_command(const std::string &cmd,
 		const game_events::queued_event &event_info, const vconfig &cfg)
 	{
-		log_scope2(engine, "handle_event_command");
+		log_scope2(log_engine, "handle_event_command");
 		LOG_NG << "handling command '" << cmd << "' from "
 			<< (cfg.is_volatile()?"volatile ":"") << "cfg 0x"
 			<< std::hex << std::setiosflags(std::ios::uppercase)

@@ -27,7 +27,6 @@
 #include "../game_end_exceptions.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
-#include "../gettext.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../replay.hpp"
@@ -38,10 +37,11 @@
 #include <fstream>
 
 
-#define DBG_AI LOG_STREAM(debug, ai)
-#define LOG_AI LOG_STREAM(info, ai)
-#define WRN_AI LOG_STREAM(warn, ai)
-#define ERR_AI LOG_STREAM(err, ai)
+static lg::log_domain log_ai("ai");
+#define DBG_AI LOG_STREAM(debug, log_ai)
+#define LOG_AI LOG_STREAM(info, log_ai)
+#define WRN_AI LOG_STREAM(warn, log_ai)
+#define ERR_AI LOG_STREAM(err, log_ai)
 
 typedef util::array<map_location,6> adjacent_tiles_array;
 
@@ -252,7 +252,7 @@ bool ai::recruit_usage(const std::string& usage)
 
 	const int min_gold = 0;
 
-	log_scope2(ai, "recruiting troops");
+	log_scope2(log_ai, "recruiting troops");
 	LOG_AI << "recruiting '" << usage << "'\n";
 
 	//make sure id, usage and cost are known for the coming evaluation of unit types
@@ -441,10 +441,10 @@ map_location ai_interface::move_unit_partial(location from, location to,
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
-	log_scope2(ai, "move_unit");
+	log_scope2(log_ai, "move_unit");
 	unit_map::iterator u_it = get_info().units.find(from);
 	if(u_it == get_info().units.end()) {
-		LOG_STREAM(err, ai) << "Could not find unit at " << from << '\n';
+		ERR_AI << "Could not find unit at " << from << '\n';
 		assert(false);
 		return location();
 	}
@@ -489,7 +489,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 			if(steps.size()) { // First step is starting hex
 				unit_map::const_iterator utest=get_info().units.find(*(steps.begin()));
 				if(utest != get_info().units.end() && current_team().is_enemy(utest->second.side())){
-					LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
+					ERR_AI << "AI tried to move onto existing enemy unit at" << *steps.begin() << '\n';
 					//			    return(from);
 				}
 
@@ -517,7 +517,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 								break;
 							} else {
 								if (!u_it->second.get_ability_bool("skirmisher",*i)){
-									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+									ERR_AI << "AI tried to skirmish with non-skirmisher\n";
 									LOG_AI << "\tresetting destination from " <<to;
 									to = *i;
 									LOG_AI << " to " << to;
@@ -952,7 +952,7 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 
 void ai::do_move()
 {
-	log_scope2(ai, "doing ai move");
+	log_scope2(log_ai, "doing ai move");
 
 	invalidate_defensive_position_cache();
 
@@ -1186,9 +1186,8 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to || units_.find(to) == units_.end()) {
-			LOG_STREAM(warn, ai) << "unit moving to attack has ended up unexpectedly at "
-			                     << arrived_at << " when moving to " << to << " moved from "
-			                     << from << '\n';
+			WRN_AI << "unit moving to attack has ended up unexpectedly at "
+				<< arrived_at << " when moving to " << to << " from " << from << '\n';
 			return true;
 		}
 
@@ -1232,11 +1231,11 @@ void ai_interface::attack_enemy(const location u,
 	}
 
 	if(get_info().units.find(target)->second.incapacitated()) {
-		LOG_STREAM(err, ai) << "attempt to attack unit that is petrified\n";
+		ERR_AI << "attempt to attack unit that is petrified\n";
 		return;
 	}
 	if(!get_info().units.find(u)->second.attacks_left()) {
-		LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
+		ERR_AI << "attempt to attack twice with the same unit\n";
 		return;
 	}
 
@@ -1509,14 +1508,14 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 		// We return true, meaning that the AI algorithm
 		// should be recalculated from the start.
 		if(arrived_at != move.second) {
-			LOG_STREAM(warn, ai) << "didn't arrive at destination\n";
+			WRN_AI << "didn't arrive at destination\n";
 			return true;
 		}
 
 		const unit_map::const_iterator u_it = units_.find(arrived_at);
 		// Event could have done anything: check
 		if (u_it == units_.end() || u_it->second.incapacitated()) {
-			LOG_STREAM(warn, ai) << "stolen or incapacitated\n";
+			WRN_AI << "stolen or incapacitated\n";
 		} else {
 			// FIXME: sukko's r29531 inserted the following line, is it correct?
  			// u_it->second.set_movement(0);
@@ -1671,8 +1670,8 @@ int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
 	const int b_effectiveness_vs_a = average_resistance_against(a,b);
 
 	LOG_AI << "comparison of '" << a.id() << " vs " << b.id() << ": "
-	          << a_effectiveness_vs_b << " - " << b_effectiveness_vs_a << " = "
-			  << (a_effectiveness_vs_b - b_effectiveness_vs_a) << "\n";
+		<< a_effectiveness_vs_b << " - " << b_effectiveness_vs_a << " = "
+		<< (a_effectiveness_vs_b - b_effectiveness_vs_a) << '\n';
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;
 }
 
@@ -1683,7 +1682,7 @@ void ai::analyze_potential_recruit_combat()
 		return;
 	}
 
-	log_scope2(ai, "analyze_potential_recruit_combat()");
+	log_scope2(log_ai, "analyze_potential_recruit_combat()");
 
 	// Records the best combat analysis for each usage type.
 	std::map<std::string,int> best_usage;
@@ -1705,7 +1704,7 @@ void ai::analyze_potential_recruit_combat()
 
 			unit const &un = j->second;
 			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id() + " while scoring units.");
+			VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
@@ -1774,7 +1773,7 @@ void ai::analyze_potential_recruit_movements()
 		return;
 	}
 
-	log_scope2(ai, "analyze_potential_recruit_movements()");
+	log_scope2(log_ai, "analyze_potential_recruit_movements()");
 
 	const unsigned int max_targets = 5;
 

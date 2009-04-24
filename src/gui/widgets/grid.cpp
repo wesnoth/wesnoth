@@ -18,6 +18,15 @@
 
 #include <numeric>
 
+#include "log.hpp"
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
+#define ERR_G_L LOG_STREAM_INDENT(err, log_gui_layout)
+
+static lg::log_domain log_gui("gui");
+#define WRN_GUI LOG_STREAM_INDENT(warn, log_gui)
+
 namespace gui2 {
 
 tgrid::tgrid(const unsigned rows, const unsigned cols)
@@ -228,7 +237,7 @@ void tgrid::NEW_reduce_height(const unsigned /*maximum_height*/)
 
 tpoint tgrid::calculate_best_size() const
 {
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 
 	// Reset the cached values.
 	row_height_.clear();
@@ -307,7 +316,7 @@ void tgrid::layout_wrap(const unsigned maximum_width)
 	 *    - Yes SUCCESS.
 	 */
 
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 	DBG_G_L << "tgrid:  maximum_width " << maximum_width << ".\n";
 
 	std::vector<int> widths(cols_);
@@ -325,12 +334,12 @@ void tgrid::layout_wrap(const unsigned maximum_width)
 				<< std::accumulate(widths.begin(), widths.end(), 0)
 				<< " available " << maximum_width
 				<< ", try to resize.\n";
-			log_scope2(gui_layout, "tgrid: testing all columns");
+			log_scope2(log_gui_layout, "tgrid: testing all columns");
 
 			int width = 0;
 			for(unsigned col = 0; col < cols_; ++col) {
 
-				log_scope2(gui_layout, "tgrid: column "
+				log_scope2(log_gui_layout, "tgrid: column "
 					+ lexical_cast<std::string>(col));
 
 				tchild& chld = child(row, col);
@@ -402,7 +411,7 @@ void tgrid::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	// Inherited.
 	twidget::layout_use_vertical_scrollbar(maximum_height);
 
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 	DBG_G_L << "tgrid: maximum height " << maximum_height << ".\n";
 
 	tpoint size = get_best_size();
@@ -484,7 +493,7 @@ void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	// Inherited.
 	twidget::layout_use_horizontal_scrollbar(maximum_width);
 
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 	DBG_G_L << "tgrid: maximum width " << maximum_width << ".\n";
 
 	tpoint size = get_best_size();
@@ -549,7 +558,7 @@ void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 void tgrid::layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 	DBG_G_L << "tgrid: maximum width " << maximum_width
 			<< " flags " << flags
 			<< ".\n";
@@ -590,7 +599,7 @@ void tgrid::layout_fit_width(const unsigned maximum_width,
 void tgrid::impl_layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
 	DBG_G_L << "tgrid: maximum width " << maximum_width
 			<< " flags " << flags
 			<< ".\n";
@@ -652,7 +661,7 @@ void tgrid::impl_layout_fit_width(const unsigned maximum_width,
 
 void tgrid::set_size(const tpoint& origin, const tpoint& size)
 {
-	log_scope2(gui_layout, "tgrid: set size");
+	log_scope2(log_gui_layout, "tgrid: set size");
 
 	/***** INIT *****/
 
@@ -867,7 +876,7 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 
 tpoint tgrid::tchild::get_best_size() const
 {
-	log_scope2(gui_layout, std::string("tgrid::tchild ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid::tchild ") + __func__);
 
 	if(!widget_) {
 		DBG_G_L << "tgrid::tchild:"
@@ -1078,7 +1087,7 @@ void tgrid::tchild::layout_fit_width(const unsigned maximum_width,
 	assert(widget_);
 	assert(widget_->get_visible() != twidget::INVISIBLE);
 
-	log_scope2(gui_layout, std::string("tgrid::tchild ") + __func__);
+	log_scope2(log_gui_layout, std::string("tgrid::tchild ") + __func__);
 	DBG_G_L << "tgrid: maximum width " << maximum_width
 			<< " flags " << flags
 			<< ".\n";

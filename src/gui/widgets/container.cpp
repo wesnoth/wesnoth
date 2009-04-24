@@ -16,6 +16,11 @@
 
 #include "gui/widgets/container.hpp"
 
+#include "log.hpp"
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
+
 namespace gui2 {
 
 void tcontainer_::layout_init()
@@ -57,7 +62,7 @@ void tcontainer_::layout_wrap(const unsigned maximum_width)
 	// Inherited.
 	twidget::layout_wrap(maximum_width);
 
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
@@ -91,7 +96,7 @@ void tcontainer_::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	// Inherited.
 	twidget::layout_use_vertical_scrollbar(maximum_height);
 
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
@@ -125,7 +130,7 @@ void tcontainer_::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	// Inherited.
 	twidget::layout_use_horizontal_scrollbar(maximum_width);
 
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
@@ -160,7 +165,7 @@ void tcontainer_::layout_fit_width(const unsigned maximum_width,
 	// Inherited.
 	twidget::layout_fit_width(maximum_width, flags);
 
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " flags " << flags
@@ -206,7 +211,7 @@ void tcontainer_::set_size(const tpoint& origin, const tpoint& size)
 
 tpoint tcontainer_::calculate_best_size() const
 {
-	log_scope2(gui_layout, "tcontainer(" +
+	log_scope2(log_gui_layout, "tcontainer(" +
 		get_control_type() + ") " + __func__);
 
 	tpoint result(grid_.get_best_size());

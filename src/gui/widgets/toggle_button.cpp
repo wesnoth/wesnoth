@@ -17,9 +17,12 @@
 #include "gui/widgets/toggle_button.hpp"
 
 #include "foreach.hpp"
+#include "log.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
+static lg::log_domain log_gui_event("gui_event");
+#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
 
 namespace gui2 {
 

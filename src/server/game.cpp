@@ -27,11 +27,10 @@
  #endif
 #endif
 
-
-#define ERR_GAME LOG_STREAM(err, mp_server)
-#define WRN_GAME LOG_STREAM(warn, mp_server)
-#define LOG_GAME LOG_STREAM(info, mp_server)
-#define DBG_GAME LOG_STREAM(debug, mp_server)
+static lg::log_domain log_server("server");
+#define ERR_GAME LOG_STREAM(err, log_server)
+#define LOG_GAME LOG_STREAM(info, log_server)
+#define DBG_GAME LOG_STREAM(debug, log_server)
 
 namespace chat_message {
 
@@ -279,7 +278,7 @@ void game::update_side_data() {
 	observers_.clear();
 
 	const simple_wml::node::child_list& level_sides = level_.root().children("side");
-	if (!lg::debug.dont_log(lg::mp_server)) {
+	if (!lg::debug.dont_log(log_server)) {
 		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
 				side != level_sides.end(); ++side)
 			DBG_GAME << "[side]\n" << (**side).output() << "[/side]\n";

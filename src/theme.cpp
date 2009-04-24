@@ -25,9 +25,10 @@
 #include "wml_exception.hpp"
 
 
-#define DBG_DP LOG_STREAM(debug, display)
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_DP LOG_STREAM(err, display)
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
+#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace {
 	const int XDim = 1024;
@@ -567,7 +568,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if(current == resolutions.end()) {
 		if(!resolutions.empty()) {
-			LOG_STREAM(err, display) << "No valid resolution found\n";
+			ERR_DP << "No valid resolution found\n";
 		}
 		return false;
 	}

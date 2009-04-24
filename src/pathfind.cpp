@@ -31,8 +31,8 @@
 #include <vector>
 #include <algorithm>
 
-#define LOG_PF LOG_STREAM(info, engine)
-#define ERR_PF LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define ERR_PF LOG_STREAM(err, log_engine)
 
 static map_location find_vacant(const gamemap& map,
 		const unit_map& units,

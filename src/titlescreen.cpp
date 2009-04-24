@@ -49,12 +49,16 @@
 
 #include "SDL_ttf.h"
 
-/** Log info-messages to stdout during the game, mainly for debugging */
-#define LOG_DP LOG_STREAM(info, display)
-/** Log error-messages to stdout during the game, mainly for debugging */
-#define ERR_DP LOG_STREAM(err, display)
-#define LOG_CONFIG LOG_STREAM(info, config)
-#define ERR_CONFIG LOG_STREAM(err, config)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+#define ERR_DP LOG_STREAM(err, log_display)
+
+static lg::log_domain log_config("config");
+#define LOG_CF LOG_STREAM(info, log_config)
+#define ERR_CF LOG_STREAM(err, log_config)
 
 /**
  *  Fade-in the wesnoth-logo.
@@ -135,12 +139,12 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 static void read_tips_of_day(config& tips_of_day)
 {
 	tips_of_day.clear();
-	LOG_CONFIG << "Loading tips of day\n";
+	LOG_CF << "Loading tips of day\n";
 	try {
 		scoped_istream stream = preprocess_file(get_wml_location("hardwired/tips.cfg"));
 		read(tips_of_day, *stream);
 	} catch(config::error&) {
-		ERR_CONFIG << "Could not read data/hardwired/tips.cfg\n";
+		ERR_CF << "Could not read data/hardwired/tips.cfg\n";
 	}
 
 	//we shuffle the tips after each initial loading. We only shuffle if
@@ -295,11 +299,11 @@ static void draw_tip_of_day(game_display& screen,
 							 next_tip_button->location().y - source_area.h - pad,
 							 false, TTF_STYLE_ITALIC);
 		} catch (utils::invalid_utf8_exception&) {
-			LOG_STREAM(err, engine) << "Invalid utf-8 found, tips of day aren't drawn.\n";
+			ERR_NG << "Invalid utf-8 found, tips of day aren't drawn.\n";
 			return;
 		}
 
-	    LOG_DP << "drew tip of day\n";
+		LOG_DP << "drew tip of day\n";
 	}
 }
 
@@ -319,7 +323,7 @@ static void draw_background(game_display& screen)
 			utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 		if(game_title_list.empty()) {
-			ERR_CONFIG << "No title image defined\n";
+			ERR_CF << "No title image defined\n";
 		} else {
 			surface const title_surface(scale_opaque_surface(
 				image::get_image(game_title_list[rand()%game_title_list.size()]),

@@ -33,13 +33,17 @@
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
 
+static lg::log_domain log_unit("unit");
+#define DBG_UT LOG_STREAM(debug, log_unit)
+#define LOG_UT LOG_STREAM(info, log_unit)
+#define WRN_UT LOG_STREAM(warn, log_unit)
 
-#define DBG_UT LOG_STREAM(debug, engine)
-#define LOG_UT LOG_STREAM(info, engine)
-#define WRN_UT LOG_STREAM(warn, engine)
-#define ERR_UT LOG_STREAM(err, engine)
-#define WRN_CONFIG LOG_STREAM(warn, config)
-#define ERR_CONFIG LOG_STREAM(err, config)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_config("config");
+#define WRN_CF LOG_STREAM(warn, log_config)
+#define ERR_CONFIG LOG_STREAM(err, log_config)
 
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
@@ -603,7 +607,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 		utils::string_map symbols;
 		symbols["type"] = type_id();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
+		ERR_NG << "unit of type " << type_id() << " not found!\n";
 		throw game::game_error(error_message);
 	}
 
@@ -783,7 +787,7 @@ const unit_type* unit::type() const
 		utils::string_map symbols;
 		symbols["type"] = type_id();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
+		ERR_NG << "unit of type " << type_id() << " not found!\n";
 		throw game::game_error(error_message);
 	}
 	return NULL;
@@ -2124,8 +2128,8 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 	}
 
 	if(res <= 0) {
-		WRN_CONFIG << "Terrain '" << terrain << "' has a movement cost of '"
-		<< res << "' which is '<= 0'; resetting to 1.\n";
+		WRN_CF << "Terrain '" << terrain << "' has a movement cost of '"
+			<< res << "' which is '<= 0'; resetting to 1.\n";
 		res = 1;
 	}
 

@@ -27,9 +27,9 @@
 #include "revision.hpp"
 #endif /* HAVE_REVISION */
 
-
-#define DBG_NG LOG_STREAM(debug, engine)
-#define ERR_NG LOG_STREAM(err, engine)
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace game_config
 {

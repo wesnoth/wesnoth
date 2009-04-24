@@ -16,11 +16,13 @@
 
 #include "gui/widgets/minimap.hpp"
 
+#include "log.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "../../minimap.hpp"
 
-#define ERR_C LOG_STREAM_INDENT(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM_INDENT(err, log_config)
 
 namespace gui2 {
 
@@ -63,7 +65,7 @@ void tminimap::draw_map(surface& surface)
 		blit_surface(surf, NULL, surface, &rect);
 
 	} catch (incorrect_map_format_exception& e) {
-		ERR_C << "Error while loading the map: " << e.msg_ << '\n';
+		ERR_CF << "Error while loading the map: " << e.msg_ << '\n';
 	}
 }
 

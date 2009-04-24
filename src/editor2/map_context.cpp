@@ -65,7 +65,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	, changed_locations_()
 	, everything_changed_(false)
 {
-	log_scope2(editor, "Loading map " + filename);
+	log_scope2(log_editor, "Loading map " + filename);
 	if (!file_exists(filename) || is_directory(filename)) {
 		throw editor_map_load_exception(filename, _("File not found"));
 	}

@@ -17,10 +17,17 @@
 #include "gui/widgets/scrollbar_container.hpp"
 
 #include "foreach.hpp"
+#include "log.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
+
+static lg::log_domain log_gui_event("gui_event");
+#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
 
 namespace gui2 {
 
@@ -238,7 +245,7 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 {
 	assert(get_visible() != twidget::INVISIBLE);
 
-	log_scope2(gui_layout,
+	log_scope2(log_gui_layout,
 			"tscrollbar_container(" + get_control_type() + ") " + __func__);
 	DBG_G_L << "maximum_width " << maximum_width
 			<< " flags " << flags
@@ -281,7 +288,7 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 
 tpoint tscrollbar_container::calculate_best_size() const
 {
-	log_scope2(gui_layout,
+	log_scope2(log_gui_layout,
 		std::string("tscrollbar_container ") + __func__);
 
 	/***** get vertical scrollbar size *****/

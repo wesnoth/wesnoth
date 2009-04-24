@@ -35,8 +35,8 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
-
-#define ERR_CF LOG_STREAM(err, config)
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};

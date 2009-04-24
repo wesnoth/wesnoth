@@ -18,12 +18,20 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "log.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
 
 #include <iomanip>
 
-#define WRN_CF LOG_STREAM(warn, config)
+static lg::log_domain log_gui("gui");
+#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
+
+static lg::log_domain log_gui_event("gui_event");
+#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
+
+static lg::log_domain log_gui_layout("gui_layout");
+#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
 
 namespace gui2 {
 
@@ -194,7 +202,7 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 {
 	assert(get_visible() != twidget::INVISIBLE);
 
-	log_scope2(gui_layout,
+	log_scope2(log_gui_layout,
 			"tcontrol(" + get_control_type() + ") " + __func__);
 	DBG_G_L << "maximum_width " << maximum_width
 			<< " flags " << flags
@@ -403,7 +411,7 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
 {
-	log_scope2(gui_layout, "tcontrol(" + get_control_type() + ") " + __func__);
+	log_scope2(log_gui_layout, "tcontrol(" + get_control_type() + ") " + __func__);
 
 	assert(!label_.empty());
 

@@ -31,8 +31,9 @@
 
 #include <cassert>
 
-#define INFO_DISP LOG_STREAM(info, display)
-#define ERR_DISP LOG_STREAM(err, display)
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+#define ERR_DP LOG_STREAM(err, log_display)
 
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
@@ -78,7 +79,7 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 {
 	logo_surface_ = image::get_image("misc/logo.png");
 	if (logo_surface_.null()) {
-		ERR_DISP << "loadscreen: Failed to load the logo" << std::endl;
+		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 }
@@ -125,7 +126,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 			pby_offset_ = (pbh + area.h)/2;
 			SDL_BlitSurface (logo, 0, gdis, &area);
 		} else {
-			ERR_DISP << "loadscreen: Logo image is too big." << std::endl;
+			ERR_DP << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
 		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
@@ -211,9 +212,9 @@ loadscreen *loadscreen::global_loadscreen = 0;
 
 void loadscreen::dump_counters() const
 {
-	INFO_DISP << "loadscreen: filesystem counter = " << filesystem_counter << '\n';
-	INFO_DISP << "loadscreen: setconfig counter = "  << setconfig_counter  << '\n';
-	INFO_DISP << "loadscreen: parser counter = "     << parser_counter     << '\n';
+	LOG_DP << "loadscreen: filesystem counter = " << filesystem_counter << '\n';
+	LOG_DP << "loadscreen: setconfig counter = "  << setconfig_counter  << '\n';
+	LOG_DP << "loadscreen: parser counter = "     << parser_counter     << '\n';
 }
 
 // Amount of work to expect during the startup-stages,
