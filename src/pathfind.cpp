@@ -25,10 +25,14 @@
 #include "gettext.hpp"
 #include "map.hpp"
 #include "wml_exception.hpp"
+#include "log.hpp"
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #define LOG_PF LOG_STREAM(info, engine)
+#define ERR_PF LOG_STREAM(err, engine)
 
 static map_location find_vacant(const gamemap& map,
 		const unit_map& units,
@@ -100,114 +104,147 @@ bool enemy_zoc(gamemap const &map,
 	return false;
 }
 
+namespace {
+struct node {
+	int movement_left, turns_left;
+	map_location prev, curr;
+	bool in;
+		
+	node(int moves, int turns, map_location p, map_location c) : movement_left(moves), turns_left(turns), prev(p), curr(c) { }
+	node() : movement_left(-1), turns_left(-1), prev(map_location::null_location), curr(map_location::null_location), in(false) { }
+	bool operator<(const node& o) const {
+		return turns_left > o.turns_left || (turns_left == o.turns_left && movement_left > o.movement_left);
+	}
+	bool operator>(const node& o) const {
+		return o < (*this);
+	}
+	bool operator<=(const node& o) const {
+		return !(o < (*this));
+	}
+};
+
+struct indexer {
+	int w, h;
+	indexer(int a, int b) : w(a), h(b) { }
+	int operator()(const map_location& loc) const {
+		return loc.y * w + loc.x;
+	}
+};
+
+struct comp {
+	const std::vector<node>& nodes;
+	comp(const std::vector<node>& n) : nodes(n) { }
+	bool operator()(int l, int r) const {
+		return nodes[l] > nodes[r];
+	}
+};
+}
+
 static void find_routes(const gamemap& map, const unit_map& units,
-		const unit& u, const map_location& loc, const map_location& previous_loc,
+		const unit& u, const map_location& loc,
 		int move_left, paths::routes_map& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
-		bool starting_pos, const team &viewing_team,
+		const team &viewing_team,
 		bool see_all, bool ignore_units)
 {
-	team const &current_team = teams[u.side()-1];
-
-	// Find adjacent tiles
-	std::vector<map_location> locs(6);
-	get_adjacent_tiles(loc,&locs[0]);
-
-	// Check for teleporting units -- we must be on a vacant village
-	// (or occupied by this unit), that is controlled by our team
-	// to be able to teleport.
-	if (allow_teleport && map.is_village(loc) && current_team.owns_village(loc) &&
-			(starting_pos || ignore_units ||
-			 find_visible_unit(units, loc, map, teams, viewing_team,see_all) == units.end())) {
-
-		// If we are on a village, search all known empty friendly villages
-		// that we can teleport to
-		const std::set<map_location>& villages = current_team.villages();
-		for(std::set<map_location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
-			if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
-					&& (ignore_units || find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end())) {
-				locs.push_back(*t);
+	const team& current_team = teams[u.side() - 1];
+	const std::set<map_location>& teleports = allow_teleport ? current_team.villages() : std::set<map_location>();
+	
+	const int total_movement = u.total_movement();
+	
+	std::vector<map_location> locs(6 + teleports.size());
+	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
+	
+	static std::vector<node> nodes;
+	nodes.clear();
+	nodes.resize(map.w() * map.h());
+	
+	indexer index(map.w(), map.h());
+	comp node_comp(nodes);
+	
+	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
+	std::vector<int> pq;
+	pq.push_back(index(loc));
+	
+	while (!pq.empty()) {
+		node& n = nodes[pq.front()];
+		std::pop_heap(pq.begin(), pq.end(), node_comp);
+		pq.pop_back();
+		n.in = false;
+		
+		get_adjacent_tiles(n.curr, &locs[0]);
+		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0; ) {
+			if (!locs[i].valid(map.w(), map.h())) continue;
+			
+			node& next = nodes[index(locs[i])];
+			
+			// test if the current path to locs[i] is better than this one could possibly be.
+			// we do this a couple more times below
+			if (next <= n) continue;
+			
+			const int move_cost = u.movement_cost(map[locs[i]]);
+			
+			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
+			if (t.movement_left < move_cost) {
+				t.movement_left = total_movement;
+				t.turns_left--;
 			}
-		}
-	}
-
-	// Iterate over all adjacent tiles
-	for(std::vector<map_location>::const_iterator i=locs.begin(); i != locs.end(); ++i) {
-		const map_location& currentloc = *i;
-
-		if (!map.on_board(currentloc))
-			continue;
-
-		// we skip locations adjacent to the previous_loc (before loc)
-		// because previous_loc -> currentloc is always shorter
-		// than previous_loc -> loc -> currentloc
-		if(tiles_adjacent(currentloc, previous_loc))
-			continue;
-
-		// check if we can move on this terrain
-		const int move_cost = u.movement_cost(map[currentloc]);
-		if (move_cost > move_left && (turns_left < 1 || move_cost > u.total_movement()))
-			continue;
-
-		int new_move_left = move_left - move_cost;
-		int new_turns_left = turns_left;
-		if (new_move_left < 0) {
-			--new_turns_left;
-			new_move_left = u.total_movement() - move_cost;
-		}
-		const int new_turns_moves = new_turns_left * u.total_movement();
-
-		// Search if we already have a route here, and how good it is
-		int old_move_left = -1;
-		const paths::routes_map::const_iterator old_rt = routes.find(currentloc);
-		if (old_rt != routes.end())
-			old_move_left = old_rt->second.move_left;
-
-		// Test if, even with no ZoC, we already have a better route,
-		// so no need to try with ZoC (and thus no need to search ZoC)
-		if(old_move_left >= new_turns_moves + new_move_left)
-			continue;
-
-		paths::route &src_route = routes[loc];
-
-		if (!ignore_units) {
-			// we can not traverse enemies
-			const unit_map::const_iterator unit_it =
-				find_visible_unit(units, currentloc, map, teams, viewing_team,see_all);
-			if (unit_it != units.end() && current_team.is_enemy(unit_it->second.side()))
-				continue;
-
-			// Evaluation order is optimized (this is the main bottleneck)
-			// Only check ZoC if asked and if there is move to remove.
-			// Do skirmisher test only on ZoC (expensive and supposed to be rare)
-			if (!force_ignore_zocs && new_move_left > 0
-					&& enemy_zoc(map,units,teams, currentloc, viewing_team,u.side(),see_all)
-					&& !u.get_ability_bool("skirmisher", currentloc)) {
-				new_move_left = 0;
-				// Recheck if we already have a better route, but now with the ZoC effect.
-				// Since the ZOC is cancelling the remaining move points, the game cannot
-				// notice a difference between a short and a long path. So check the path
-				// length too in case of equality.
-				if (old_move_left > new_turns_moves + 0 ||
-				    (old_move_left == new_turns_moves + 0 &&
-				     old_rt->second.steps.size() <= src_route.steps.size() + 1))
+			
+			if (t.movement_left < move_cost || t.turns_left < 0) continue;
+			
+			t.movement_left -= move_cost;
+			
+			if (next <= t) continue;
+						
+			if (!ignore_units) {
+				const unit_map::const_iterator unit_it =
+					find_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
+				if (unit_it != units.end() && current_team.is_enemy(unit_it->second.side()))
 					continue;
+					
+					
+				if (!force_ignore_zocs && t.movement_left > 0
+						&& enemy_zoc(map, units, teams, locs[i], viewing_team, u.side(), see_all)
+						&& !u.get_ability_bool("skirmisher", locs[i])) {
+					t.movement_left = 0;
+				}
+				
+				if (next <= t) continue;
+			}
+			
+			bool in_list = next.in;
+			next = t;
+			next.in = true;
+			
+			// if already in the priority queue then we just update it, else push it.
+			if (in_list) {
+				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
+			} else {
+				pq.push_back(index(locs[i]));
+				std::push_heap(pq.begin(), pq.end(), node_comp);
+			}		
+		}	
+	}
+	
+	// build the routes for every map_location that we reached 
+	foreach(const node& n, nodes) {
+		if (n.movement_left < 0 || n.turns_left < 0) continue;
+		paths::route route;
+		route.move_left = n.movement_left + n.turns_left * total_movement;
+		
+		// the ai expects that the destination map_location not actually be in the route...
+		if (n.prev != map_location::null_location) {
+			for (node curr = nodes[index(n.prev)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
+				assert(curr.curr != map_location::null_location);
+				route.steps.push_back(curr.curr);
 			}
 		}
-
-		paths::route& new_route = routes[currentloc];
-		new_route.steps = src_route.steps;
-		new_route.steps.push_back(loc);
-		new_route.move_left = new_turns_moves + new_move_left;
-
-		if (new_route.move_left > 0) {
-			find_routes(map, units, u, currentloc, loc,
-						new_move_left, routes, teams, force_ignore_zocs,
-						allow_teleport, new_turns_left, false, viewing_team,
-						see_all, ignore_units);
-		}
-	}
+		route.steps.push_back(loc);
+		std::reverse(route.steps.begin(), route.steps.end());	
+		
+		routes[n.curr] = route;		
+	}	
 }
 
 paths::paths(gamemap const &map, unit_map const &units,
@@ -218,7 +255,7 @@ paths::paths(gamemap const &map, unit_map const &units,
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
-		std::cerr << "unit not found\n";
+		ERR_PF << "paths::paths() -- unit not found\n";
 		return;
 	}
 
@@ -226,15 +263,10 @@ paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
-
-	const map_location previous_loc = map_location();
-	// dummy map_location() must not be adjacent to real hexes
-	assert(previous_loc.x < -1);
-
 	routes[loc].move_left = i->second.movement_left();
-	find_routes(map,units,i->second,loc,previous_loc,
+	find_routes(map,units,i->second,loc,
 		i->second.movement_left(),routes,teams,force_ignore_zoc,
-		allow_teleport,additional_turns,true,viewing_team,
+		allow_teleport,additional_turns,viewing_team,
 		see_all, ignore_units);
 }
 
