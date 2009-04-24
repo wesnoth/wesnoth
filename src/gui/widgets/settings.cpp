@@ -87,6 +87,8 @@ static void fill_window_types()
 	window_type_list[MP_CMD_WRAPPER] = "mp_cmd_wrapper";
 	window_type_list[MP_CREATE_GAME] = "mp_create_game";
 	window_type_list[TITLE_SCREEN] = "title_screen";
+	window_type_list[GAME_SAVE] = "game_save";
+	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
 #ifndef DISABLE_EDITOR2
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";

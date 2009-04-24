@@ -19,7 +19,10 @@
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
+#include "game_preferences.hpp" //FIXME: get rid of this one
 #include "gettext.hpp"
+#include "gui/dialogs/game_save.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
@@ -471,12 +474,60 @@ void savegame::save_game_interactive(display& gui, const std::string& message,
 {
 	show_confirmation_ = ask_for_filename;
 	create_filename();
-	const int res = dialogs::get_save_name(gui, message, _("Name: "), &filename_, dialog_type, title_, has_exit_button, ask_for_filename);
+
+
+	int res = 0;
+	int overwrite = 0;
+	bool exit = true;
+
+	do{ 
+		try{
+			if (ask_for_filename){
+				std::string filename = filename_;
+
+				if (has_exit_button)
+					res = dialogs::get_save_name_oos(gui, message, _("Name: "), &filename_, dialog_type, title_);
+				else{
+					if (dialog_type == gui::OK_CANCEL){
+						gui2::tgame_save dlg(title_, filename);
+						dlg.show(gui.video());
+						filename = dlg.filename();
+						res = dlg.get_retval();
+					}
+					else if (dialog_type == gui::YES_NO){
+						gui2::tgame_save_message dlg(title_, filename, message);
+						dlg.show(gui.video());
+						filename = dlg.filename();
+						res = dlg.get_retval();
+					}
+				}
+
+				check_filename(filename, gui);
+				set_filename(filename);
+			}
+
+			std::string filename = filename_;
+			if (res == gui2::twindow::OK && savegame_manager::save_game_exists(filename, preferences::compress_saves())) {
+				std::stringstream s;
+				s << _("Save already exists. Do you want to overwrite it?")
+				  << std::endl << _("Name: ") << filename;
+				overwrite = gui::dialog(gui,_("Overwrite?"),
+					s.str(), gui::YES_NO).show();
+				exit = (overwrite == 0);
+			} else {
+				exit = true;
+			}
+		}
+		catch (illegal_filename_exception){
+			exit = false;
+		}
+	}
+	while (!exit);
 
 	if (res == 2)
 		throw end_level_exception(QUIT);
 
-	if (res != 0)
+	if (res != gui2::twindow::OK)
 		return;
 
 	save_game(&gui);
@@ -699,6 +750,16 @@ void savegame::extract_summary_data_from_save(config& out)
 				out["map_data"] = gamestate_.starting_pos["map_data"];
 			}
 		}
+	}
+}
+
+void savegame::check_filename(const std::string& filename, display& gui)
+{
+	if (is_gzip_file(filename)) {
+		gui::message_dialog(gui, _("Error"),
+			_("Save names should not end on '.gz'. "
+			"Please choose a different name.")).show();
+		throw illegal_filename_exception();
 	}
 }
 

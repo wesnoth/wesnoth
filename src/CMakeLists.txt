@@ -239,6 +239,7 @@ SET(wesnoth-main_SRC
     gui/dialogs/addon_list.cpp
     gui/dialogs/campaign_selection.cpp
     gui/dialogs/dialog.cpp
+    gui/dialogs/game_save.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/message.cpp
     gui/dialogs/mp_connect.cpp

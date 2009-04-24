@@ -506,7 +506,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
-		save.save_game_interactive(*gui_, _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
+		save.save_game_interactive(*gui_, _("A network disconnection has occurred, and the game\ncannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {

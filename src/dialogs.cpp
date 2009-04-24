@@ -40,6 +40,7 @@
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "gui/dialogs/game_save.hpp"
 
 
 //#ifdef _WIN32
@@ -241,73 +242,37 @@ bool is_illegal_file_char(char c)
 	;
 }
 
-int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
-				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title,
-				  const bool has_exit_button, const bool ask_for_filename)
+int get_save_name_oos(display & disp,const std::string& message, const std::string& txt_label,
+				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title)
 {
 	static int quit_prompt = 0;
 	std::string tmp_title = title;
 	if (tmp_title.empty()) tmp_title = _("Save Game");
 	bool ignore_opt = false;
-	int overwrite=0;
 	int res=0;
-	bool ask = ask_for_filename;
-	do {
-		if (ask) {
-			gui::dialog d(disp, tmp_title, message, dialog_type);
-			d.set_textbox(txt_label, *fname);
-			if(has_exit_button) {
-				d.add_button(new gui::dialog_button(disp.video(), _("Quit Game"),
-					gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
-				if(quit_prompt < 0) {
-					res = 1;
-				} else if(quit_prompt > 5) {
-					d.add_button(new gui::dialog_button(disp.video(), _("Ignore All"),
-						gui::button::TYPE_CHECK), gui::dialog::BUTTON_CHECKBOX);
-					res = d.show();
-					ignore_opt = d.option_checked();
-				} else {
-					res = d.show();
-					if(res == 1) {
-						++quit_prompt;
-					} else {
-						quit_prompt = 0;
-					}
-				}
-			} else {
-				res = d.show();
-			}
-			*fname = d.textbox_text();
+
+	gui::dialog d(disp, tmp_title, message, dialog_type);
+	d.set_textbox(txt_label, *fname);
+
+	d.add_button(new gui::dialog_button(disp.video(), _("Quit Game"),
+		gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
+	if(quit_prompt < 0) {
+		res = 1;
+	} else if(quit_prompt > 5) {
+		d.add_button(new gui::dialog_button(disp.video(), _("Ignore All"),
+			gui::button::TYPE_CHECK), gui::dialog::BUTTON_CHECKBOX);
+		res = d.show();
+		ignore_opt = d.option_checked();
+	} else {
+		res = d.show();
+		if(res == 1) {
+			++quit_prompt;
 		} else {
-			ask = true;
+			quit_prompt = 0;
 		}
+	}
 
-		if (std::count_if(fname->begin(),fname->end(),is_illegal_file_char)) {
-			gui::message_dialog(disp, _("Error"),
-				_("Save names may not contain colons, slashes, or backslashes. "
-				"Please choose a different name.")).show();
-			overwrite = 1;
-			continue;
-		}
-
-		if (is_gzip_file(*fname)) {
-			gui::message_dialog(disp, _("Error"),
-				_("Save names should not end on '.gz'. "
-				"Please choose a different name.")).show();
-			overwrite = 1;
-			continue;
-		}
-
-		if (res == 0 && savegame_manager::save_game_exists(*fname, preferences::compress_saves())) {
-			std::stringstream s;
-			s << _("Save already exists. Do you want to overwrite it?")
-			  << std::endl << _("Name: ") << *fname;
-			overwrite = gui::dialog(disp,_("Overwrite?"),
-			    s.str(), gui::YES_NO).show();
-		} else {
-			overwrite = 0;
-		}
-	} while ((res == 0) && (overwrite != 0));
+	*fname = d.textbox_text();
 
 	if(ignore_opt) {
 		quit_prompt = -1;

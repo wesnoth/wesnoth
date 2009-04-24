@@ -23,9 +23,8 @@
 
 #include <string>
 
-struct load_game_cancelled_exception
-{
-};
+struct load_game_cancelled_exception {};
+struct illegal_filename_exception {};
 
 /** Filename and modification date for a file list */
 struct save_info {
@@ -170,6 +169,8 @@ private:
 	/** Build the filename according to the specific savegame's needs. Subclasses will have to
 		override this to take effect. */
 	virtual void create_filename() {}
+	/** Check, if the filename contains illegal constructs like ".gz". */
+	void check_filename(const std::string& filename, display& gui);
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method. */

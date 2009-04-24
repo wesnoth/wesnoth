@@ -65,6 +65,8 @@ enum twindow_type {
 	EDITOR_RESIZE_MAP,       /**< Editor resize map dialog. */
 	EDITOR_SETTINGS,         /**< Editor settings dialog. */
 #endif
+	GAME_SAVE,				 /**< Save game dialog. */
+	GAME_SAVE_MESSAGE,		 /**< Save game dialog with additional message. */
 	COUNT                    /**<
 	                          * The last one to hold the number of items and as
 	                          * sentinel.
