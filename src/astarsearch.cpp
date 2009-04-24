@@ -155,7 +155,7 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 			
 			node& next = nodes[index(locs[i])];
 
-			double thresh = (next.in - search_counter <= 1u) ? next.g : 1e25;
+			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at;
 			if (n.g >= thresh) continue;
 			double cost = n.g + calc->cost(n.curr, locs[i], n.g);
 			if (cost >= thresh) continue;
