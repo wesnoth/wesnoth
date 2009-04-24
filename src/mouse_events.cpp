@@ -680,7 +680,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 			dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
 		}
 
-		check_victory(units_, teams_, gui());
+		check_victory(status_, units_, teams_, gui());
 
 		gui().draw();
 

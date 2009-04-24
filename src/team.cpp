@@ -627,6 +627,11 @@ const std::string& team::ai_algorithm() const
 	return ai_manager::get_active_ai_algorithm_type_for_side(info_.side);
 }
 
+const std::string& team::ai_algorithm_identifier() const
+{
+	return ai_manager::get_active_ai_global_parameters_for_side(info_.side)["ai_identifier"];
+}
+
 const config& team::ai_parameters() const
 {
 	return ai_manager::get_active_ai_effective_parameters_for_side(info_.side);

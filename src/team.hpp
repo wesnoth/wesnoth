@@ -246,6 +246,7 @@ public:
 	const std::string& flag_icon() const { return info_.flag_icon; }
 
 	const std::string& ai_algorithm() const;
+	const std::string& ai_algorithm_identifier() const;
 	const config& ai_parameters() const;
 	const config& ai_memory() const;
 	void set_ai_memory(const config& ai_mem);

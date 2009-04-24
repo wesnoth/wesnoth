@@ -41,6 +41,7 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)
 
+#define LOG_AI_TESTING LOG_STREAM(info, ai_testing)
 struct castle_cost_calculator : cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
@@ -1903,7 +1904,7 @@ void advance_unit(unit_map& units,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
+void check_victory(const gamestatus& status, unit_map& units, std::vector<team>& teams, display& disp)
 {
 	std::vector<int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
@@ -1962,6 +1963,16 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 				std::cout << *i << " (using " << ai << ") ";
 			}
 			std::cout << "\n";
+			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
+				LOG_AI_TESTING << "WINNER: "<< *i <<std::endl;
+			}
+			LOG_AI_TESTING << "VICTORY_TURN: "<< status.turn() <<std::endl;
+			for (std::vector<team>::const_iterator tm = teams.begin(); tm != teams.end(); ++tm) {
+				int side = tm-teams.begin()+1;
+				LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;
+			}
+			LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
+
 		}
 
 		LOG_NG << "throwing end level exception...\n";

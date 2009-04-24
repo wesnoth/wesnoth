@@ -297,7 +297,7 @@ map_location under_leadership(const unit_map& units,
  * an end_level_exception if one has.
  * Will also remove control of villages from sides with dead leaders.
  */
-void check_victory(unit_map& units, std::vector<team>& teams, display& disp);
+void check_victory(const gamestatus& status, unit_map& units, std::vector<team>& teams, display& disp);
 
 /**
  * Gets the time of day at a certain tile.

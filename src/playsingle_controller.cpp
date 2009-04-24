@@ -581,7 +581,7 @@ void playsingle_controller::play_turn(bool save)
 				std::endl;
 		}
 
-		check_victory(units_, teams_, *gui_);
+		check_victory(status_, units_, teams_, *gui_);
 	}
 
 	// Time has run out
