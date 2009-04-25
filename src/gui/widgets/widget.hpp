@@ -173,8 +173,9 @@ public:
 	 * @see @ref layout_algorihm for more information.
 	 *
 	 * @param full_initialization For widgets with scrollbars it hides them
-	 *                            unless the mode is tscrollbar_mode::SHOW.
-	 *                            For other widgets this flag is a NOP.
+	 *                            unless the mode is
+	 *                            tscrollbar_mode::always_visible. For other
+	 *                            widgets this flag is a NOP.
 	 */
 	virtual void NEW_layout_init(const bool full_initialization);
 

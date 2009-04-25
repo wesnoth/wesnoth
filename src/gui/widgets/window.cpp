@@ -1060,7 +1060,7 @@ void twindow::generate_dot_file(const std::string& generator,
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
- *     SHOW.
+ *     always_visible or auto_visible.
  * - Handle shared sizes:
  *   - Height and width:
  *     - Get the best size for all widgets that share height and width.

@@ -251,15 +251,26 @@ tline::tline(const config& cfg) :
  *
  *     scrollbar_mode                  How to show the scrollbar of a widget.
  *                                     Possible values:
- *                                     @* always The scrollbar is always shown,
- *                                     regardless whether it's required or not.
- *                                     @* never  The scrollbar is never shown,
- *                                     even not when needed. (Note when setting
- *                                     this mode dialogs might not properly fit
- *                                     anymore).
- *                                     @* auto   Shows the scrollbar when
+ *                                     @* always       The scrollbar is always
+ *                                     shown, regardless whether it's required
+ *                                     or not.
+ *                                     @* never        The scrollbar is never
+ *                                     shown, even not when needed. (Note when
+ *                                     setting this mode dialogs might
+ *                                     not properly fit anymore).
+ *                                     @* auto         Shows the scrollbar when
  *                                     needed. The widget will reserve space for
  *                                     the scrollbar, but only show when needed.
+ *                                     @* initial_auto Like auto, but when the
+ *                                     scrollbar is not needed the space is not
+ *                                     reserved.
+ *                                     @-Use auto when the list can be changed
+ *                                     dynamically eg the game list in the
+ *                                     lobby. For optimization you can also
+ *                                     use auto when you really expect a
+ *                                     scrollbar, but don't want it to be shown
+ *                                     when not needed eg the language list
+ *                                     will need a scrollbar on most screens.
  * @end_table
  *
  * == Section types ==
