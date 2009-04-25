@@ -1754,26 +1754,40 @@ void formula_ai::play_turn()
             }
 	}
 
-	if( candidate_action_manager_.has_candidate_actions() ) {
-		move_maps_valid_ = false;
-		while( candidate_action_manager_.evaluate_candidate_actions(this, units_) )
-		{
-			game_logic::map_formula_callable callable(this);
-			callable.add_ref();
-
-			candidate_action_manager_.update_callable_map( callable );
-
-			const_formula_ptr move_formula(candidate_action_manager_.get_best_action_formula());
-
-			make_action(move_formula, callable);
-
+	try {
+		if( candidate_action_manager_.has_candidate_actions() ) {
 			move_maps_valid_ = false;
+			while( candidate_action_manager_.evaluate_candidate_actions(this, units_) )
+			{
+				game_logic::map_formula_callable callable(this);
+				callable.add_ref();
+
+				candidate_action_manager_.update_callable_map( callable );
+
+				const_formula_ptr move_formula(candidate_action_manager_.get_best_action_formula());
+
+				make_action(move_formula, callable);
+
+				move_maps_valid_ = false;
+			}
 		}
+	}
+	catch(formula_error& e) {
+		if(e.filename == "formula")
+			e.line = 0;
+			handle_exception( e, "Formula error in RCA loop");
 	}
 
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
-        while(make_action(move_formula_,callable)) { }
+	try {
+		while(make_action(move_formula_,callable)) { }
+	}
+	catch(formula_error& e) {
+		if(e.filename == "formula")
+			e.line = 0;
+			handle_exception( e, "Formula error");
+	}
 
 }
 
