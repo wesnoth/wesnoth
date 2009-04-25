@@ -472,8 +472,6 @@ void ttext::rerender(const bool force) const
 				CAIRO_FORMAT_ARGB32, width, height, stride);
 		cairo_t *cr = cairo_create(cairo_surface);
 
-		pango_cairo_update_context (cr, context_); // Needed?
-
 		/* set colour (used for foreground). */
 		cairo_set_source_rgba(cr,
 			 (foreground_colour_ >> 24)         / 256.0,
