@@ -16,7 +16,7 @@ def CheckLua(context, require_version):
         env.Append(LIBPATH = ["$luadir"], CPPPATH = ["$luadir/include"], LIBS = "lua" + version)
         found = True
     else:
-        found = run_pkg_config(context, "lua >= " + require_version) or run_pkg_config(context, "lua" + version + " >= " + require_version)
+        found = run_pkg_config(context, "lua >= " + require_version) or run_pkg_config(context, "lua" + version + " >= " + require_version) or run_pkg_config(context, "lua-" + version + " >= " + require_version)
         if not found:
             try:
                 prefix, include = find_include([env["prefix"]], "lualib.h", "", not env["host"])[0]
