@@ -107,7 +107,7 @@ if test "x$strict" = "xyes"
 then
 #   Strict compilation for C files is disabled until somebody wants to clean them.
 #	CFLAGS="$CFLAGS -Werror -Wno-unused -Wno-sign-compare"
-	CXXFLAGS="$CXXFLAGS -Werror -Wno-unused -Wno-sign-compare"
+	CXXFLAGS="$CXXFLAGS -Werror -Wno-unused-parameter"
 fi
 
 # Make tests default in svn version
