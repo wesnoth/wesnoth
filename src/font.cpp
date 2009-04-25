@@ -317,7 +317,7 @@ void manager::init() const
 			reinterpret_cast<const FcChar8*>
 			((game_config::path + "/fonts/").c_str()))) {
 
-		ERR_FT << "Could not load the  true type fonts\n";
+		ERR_FT << "Could not load the true type fonts\n";
 		throw error();
 	}
 #endif
