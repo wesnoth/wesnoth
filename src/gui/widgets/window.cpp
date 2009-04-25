@@ -822,7 +822,7 @@ bool twindow::NEW_layout(
 	if(size.x > static_cast<int>(maximum_width)) {
 		NEW_reduce_width(maximum_width);
 
-		tpoint size = get_best_size();
+		size = get_best_size();
 		if(size.x > static_cast<int>(maximum_width)) {
 			return false;
 		}
@@ -831,7 +831,7 @@ bool twindow::NEW_layout(
 	if(size.y > static_cast<int>(maximum_height)) {
 		NEW_reduce_height(maximum_height);
 
-		tpoint size = get_best_size();
+		size = get_best_size();
 		if(size.y > static_cast<int>(maximum_height)) {
 			return false;
 		}
