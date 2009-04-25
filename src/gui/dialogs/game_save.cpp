@@ -47,11 +47,11 @@ twindow* tgame_save::build_window(CVideo& video)
 	return build(video, get_id(GAME_SAVE));
 }
 
-void tgame_save::pre_show(CVideo& video, twindow& window)
+void tgame_save::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(txtFilename_);
 
-	tlabel* lblTitle =	dynamic_cast<tlabel*>(window.find_widget("lblTitle", false));
+	tlabel* lblTitle = dynamic_cast<tlabel*>(window.find_widget("lblTitle", false));
 	VALIDATE(lblTitle, missing_widget("lblTitle"));
 	lblTitle->set_label(title_);
 
