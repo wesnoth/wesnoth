@@ -1,4 +1,14 @@
 Version 1.6.1+svn:
+ * Editor2:
+   * Moved the clipboard actions to a context menu available in paste mode
+   * Added a terrain sampler feature -- ctrl+click when in paint or fill mode 
+   * Made "wesnoth -e FILE" work like "wesnoth -e --load FILE" (load the map)
+   * Made "wesnoth -e --load DIR" (and consequently "wesnoth -e DIR") set
+     DIR as the default map directory for the current session, and start with 
+     the map load dialog open
+   * Added ability to load maps referenced in scenario files
+   * Added ability to work with maps embedded in scenario files (saving works 
+     in a limited scope)   
  * Language and i18n:
    * updated translations: Chinese (Simplified), Chinese (Traditional), Czech,
       German, Icelandic, Indonesian, Italian, Lithuanian, Polish, Russian,
@@ -15,15 +25,6 @@ Version 1.6.1:
      are not incapacitated (for example, it now ignores stoned units )
  * Editor2:
    * New feature: exporting of selection coordinates to system clipboard
-   * Moved the clipboard actions to a context menu available in paste mode
-   * Added a terrain sampler feature -- ctrl+click when in paint or fill mode 
-   * Made "wesnoth -e FILE" work like "wesnoth -e --load FILE" (load the map)
-   * Made "wesnoth -e --load DIR" (and consequently "wesnoth -e DIR") set
-     DIR as the default map directory for the current session, and start with 
-     the map load dialog open
-   * Added ability to load maps referenced in scenario files
-   * Added ability to work with maps embedded in scenario files (saving works 
-     in a limited scope)   
  * Engine Changes
    * better detection of images fiting in a hex, should heavily reduce CPU
    usage
