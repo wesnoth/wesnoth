@@ -82,6 +82,12 @@ ttext::ttext() :
 	pango_cairo_context_set_resolution(context_, 72.0);
 
 	pango_layout_set_ellipsize(layout_, ellipse_mode_);
+
+	cairo_font_options_t *fo = cairo_font_options_create();
+	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
+	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
+	pango_cairo_context_set_font_options(context_, fo);
+	cairo_font_options_destroy(fo);
 }
 
 ttext::~ttext()
