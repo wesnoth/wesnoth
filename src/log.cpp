@@ -63,9 +63,15 @@ log_domain::log_domain(char const *name)
 
 bool set_log_domain_severity(std::string const &name, int severity)
 {
+	std::string::size_type s = name.size();
 	if (name == "all") {
 		foreach (logd &l, *domains) {
 			l.second = severity;
+		}
+	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
+		foreach (logd &l, *domains) {
+			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
+				l.second = severity;
 		}
 	} else {
 		domain_map::iterator it = domains->find(name);
