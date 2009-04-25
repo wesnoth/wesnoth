@@ -805,6 +805,8 @@ void twindow::NEW_layout()
 bool twindow::NEW_layout(
 		const unsigned maximum_width, const unsigned maximum_height)
 {
+	log_scope2(log_gui_layout, std::string("Window: ") + __func__);
+
 	/*
 	 * For now we return the status, need to test later whether this can
 	 * entirely be converted to an exception based system as in 'promised' on
@@ -813,9 +815,13 @@ bool twindow::NEW_layout(
 
 	tpoint size = get_best_size();
 
+	DBG_GUI_L << "Best size : " << size
+			<< " maximum size : " << maximum_width << ',' << maximum_height
+			<< ".\n";
 	if(size.x <= static_cast<int>(maximum_width)
 			&& size.y <= static_cast<int>(maximum_height)) {
 
+		DBG_GUI_L << "Result: Fits, nothing to do.\n";
 		return true;
 	}
 
@@ -824,8 +830,13 @@ bool twindow::NEW_layout(
 
 		size = get_best_size();
 		if(size.x > static_cast<int>(maximum_width)) {
+			DBG_GUI_L << "Result: Resize width failed."
+				<< " Wanted width " << maximum_width
+				<< " resulting width " << size.x
+				<< ".\n";
 			return false;
 		}
+		DBG_GUI_L << "Status: Resize width succeeded.\n";
 	}
 
 	if(size.y > static_cast<int>(maximum_height)) {
@@ -833,13 +844,19 @@ bool twindow::NEW_layout(
 
 		size = get_best_size();
 		if(size.y > static_cast<int>(maximum_height)) {
+			DBG_GUI_L << "Result: Resize height failed."
+				<< " Wanted height " << maximum_height
+				<< " resulting height " << size.y
+				<< ".\n";
 			return false;
 		}
+		DBG_GUI_L << "Status: Resize height succeeded.\n";
 	}
 
 	assert(size.x <= static_cast<int>(maximum_width)
 			&& size.y <= static_cast<int>(maximum_height));
 
+	DBG_GUI_L << "Result: Resizing succeeded.\n";
 	return true;
 }
 
