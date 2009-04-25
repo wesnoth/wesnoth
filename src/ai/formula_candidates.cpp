@@ -20,7 +20,7 @@
 #include "formula_candidates.hpp"
 #include "../log.hpp"
 
-static lg::log_domain log_formula_ai("formula_ai");
+static lg::log_domain log_formula_ai("ai/formula_ai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
 namespace game_logic {

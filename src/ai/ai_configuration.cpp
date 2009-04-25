@@ -25,7 +25,7 @@
 #include "../serialization/preprocessor.hpp"
 #include "../team.hpp"
 
-static lg::log_domain log_ai_configuration("ai_configuration");
+static lg::log_domain log_ai_configuration("ai/config");
 #define DBG_AI_CONFIGURATION LOG_STREAM(debug, log_ai_configuration)
 #define LOG_AI_CONFIGURATION LOG_STREAM(info, log_ai_configuration)
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)

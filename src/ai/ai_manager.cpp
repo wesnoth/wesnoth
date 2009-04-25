@@ -42,7 +42,7 @@ const std::string ai_manager::AI_TYPE_AI2 = "ai2";
 const std::string ai_manager::AI_TYPE_DEFAULT = "default";
 
 
-static lg::log_domain log_ai_manager("ai_manager");
+static lg::log_domain log_ai_manager("ai/manager");
 #define DBG_AI_MANAGER LOG_STREAM(debug, log_ai_manager)
 #define LOG_AI_MANAGER LOG_STREAM(info, log_ai_manager)
 #define ERR_AI_MANAGER LOG_STREAM(err, log_ai_manager)

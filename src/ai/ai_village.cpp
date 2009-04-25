@@ -26,7 +26,7 @@
 
 #include <numeric>
 
-static lg::log_domain log_ai("ai");
+static lg::log_domain log_ai("ai/village");
 #define DBG_AI LOG_STREAM(debug, log_ai)
 #define LOG_AI LOG_STREAM(info, log_ai)
 #define WRN_AI LOG_STREAM(warn, log_ai)

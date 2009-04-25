@@ -25,7 +25,7 @@
 #include "../log.hpp"
 
 
-static lg::log_domain log_ai("ai");
+static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
 #define ERR_AI LOG_STREAM(err, log_ai)
 

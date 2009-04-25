@@ -21,11 +21,6 @@
 #include "ai_interface.hpp"
 #include "ai_manager.hpp"
 
-#define DBG_AI LOG_STREAM(debug, ai)
-#define LOG_AI LOG_STREAM(info, ai)
-#define WRN_AI LOG_STREAM(warn, ai)
-#define ERR_AI LOG_STREAM(err, ai)
-
 // =======================================================================
 //
 // =======================================================================

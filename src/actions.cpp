@@ -45,7 +45,7 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 
-static lg::log_domain log_ai_testing("ai_testing");
+static lg::log_domain log_ai_testing("ai/testing");
 #define LOG_AI_TESTING LOG_STREAM(info, log_ai_testing)
 
 struct castle_cost_calculator : cost_calculator

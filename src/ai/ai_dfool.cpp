@@ -21,7 +21,7 @@
 #include "../log.hpp"
 #include "../formula_string_utils.hpp"
 
-static lg::log_domain log_ai("ai");
+static lg::log_domain log_ai("ai/dfool");
 #define LOG_AI LOG_STREAM(info, log_ai)
 
 namespace dfool {

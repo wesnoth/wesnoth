@@ -34,7 +34,7 @@
 #include "../attack_prediction.hpp"
 #include "formula_candidates.hpp"
 
-static lg::log_domain log_formula_ai("formula_ai");
+static lg::log_domain log_formula_ai("ai/formula_ai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
 #define WRN_AI LOG_STREAM(warn, log_formula_ai)
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
