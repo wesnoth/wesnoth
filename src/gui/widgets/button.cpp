@@ -16,12 +16,9 @@
 
 #include "gui/widgets/button.hpp"
 
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "sound.hpp"
-
-static lg::log_domain log_gui_event("gui_event");
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
 
 namespace gui2 {
 

@@ -16,15 +16,12 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
 
 #include "formula_string_utils.hpp"
-#include "log.hpp"
 
 #include "SDL_ttf.h"
-
-static lg::log_domain log_gui("gui");
-#define ERR_GUI LOG_STREAM_INDENT(err, log_gui)
 
 namespace gui2 {
 

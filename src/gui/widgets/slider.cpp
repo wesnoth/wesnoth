@@ -18,11 +18,8 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "sound.hpp"
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
 
 namespace gui2 {
 

@@ -26,21 +26,13 @@
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
 #include "preferences.hpp"
 #include "titlescreen.hpp"
 #include "video.hpp"
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
-#define ERR_G_L LOG_STREAM_INDENT(err, log_gui_layout)
-
-static lg::log_domain log_gui("gui");
-#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
-
-static lg::log_domain log_gui_draw("gui_draw");
 
 namespace gui2{
 

@@ -73,6 +73,7 @@ wesnoth_source = \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
+	gui/auxiliary/log.cpp \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
 	gui/dialogs/campaign_selection.cpp \

@@ -19,7 +19,7 @@
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -36,16 +36,6 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
-
-static lg::log_domain log_gui("gui");
-#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
-
-static lg::log_domain log_gui_parse("gui_parse");
-#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
-
-static lg::log_domain log_gui_event("gui_event");
-#define ERR_G_E LOG_STREAM_INDENT(err, log_gui_event)
 
 namespace gui2 {
 

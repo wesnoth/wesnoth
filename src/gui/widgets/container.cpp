@@ -16,10 +16,7 @@
 
 #include "gui/widgets/container.hpp"
 
-#include "log.hpp"
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
+#include "gui/auxiliary/log.hpp"
 
 namespace gui2 {
 

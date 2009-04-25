@@ -24,18 +24,11 @@
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "formula_string_utils.hpp"
-
-static lg::log_domain log_gui_parse("gui_parse");
-#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
-
-static lg::log_domain log_gui("gui");
-#define LOG_GUI LOG_STREAM_INDENT(info, log_gui)
 
 namespace gui2 {
 

@@ -16,16 +16,9 @@
 
 #include "gui/widgets/grid_private.hpp"
 
+#include "gui/auxiliary/log.hpp"
+
 #include <numeric>
-
-#include "log.hpp"
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
-#define ERR_G_L LOG_STREAM_INDENT(err, log_gui_layout)
-
-static lg::log_domain log_gui("gui");
-#define WRN_GUI LOG_STREAM_INDENT(warn, log_gui)
 
 namespace gui2 {
 

@@ -25,24 +25,11 @@
 #include "../../image.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "../../text.hpp"
 #include "wml_exception.hpp"
-
-static lg::log_domain log_gui_parse("gui_parse");
-#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
-
-static lg::log_domain log_gui_draw("gui_draw");
-#define DBG_G_D LOG_STREAM_INDENT(debug, log_gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, log_gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, log_gui_draw)
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
-
 
 namespace gui2 {
 

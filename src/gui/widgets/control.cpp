@@ -18,20 +18,11 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
 
 #include <iomanip>
-
-static lg::log_domain log_gui("gui");
-#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
-
-static lg::log_domain log_gui_event("gui_event");
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
 
 namespace gui2 {
 

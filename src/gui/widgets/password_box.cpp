@@ -17,10 +17,7 @@
 
 #include "gui/widgets/password_box.hpp"
 
-#include "log.hpp"
-
-static lg::log_domain log_gui_event("gui_event");
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
+#include "gui/auxiliary/log.hpp"
 
 namespace gui2 {
 

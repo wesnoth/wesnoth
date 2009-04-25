@@ -17,17 +17,11 @@
 #include "gui/widgets/scrollbar_container.hpp"
 
 #include "foreach.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
-
-static lg::log_domain log_gui_layout("gui_layout");
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
-
-static lg::log_domain log_gui_event("gui_event");
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
 
 namespace gui2 {
 

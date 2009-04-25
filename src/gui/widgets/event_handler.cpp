@@ -22,12 +22,8 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "clipboard.hpp"
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp"
-
-static lg::log_domain log_gui_event("gui_event");
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, log_gui_event)
 
 namespace gui2{
 
