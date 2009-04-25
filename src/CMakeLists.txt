@@ -30,11 +30,19 @@ include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 link_directories(${Boost_LIBRARY_DIRS})
 
-set( common-external-libs
-    ${SDL_LIBRARY}
-    ${Boost_IOSTREAMS_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-)
+if(MSVC)
+	# Since MSVC does autolinking of boost adding those files will duplicate
+	# the includes and cause build errors.
+	set( common-external-libs
+		${SDL_LIBRARY}
+	)
+else(MSVC)
+	set( common-external-libs
+		${SDL_LIBRARY}
+		${Boost_IOSTREAMS_LIBRARY}
+		${Boost_REGEX_LIBRARY}
+	)
+endif(MSVC)
 
 set( game-external-libs
     ${common-external-libs}
