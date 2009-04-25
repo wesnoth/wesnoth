@@ -17,9 +17,9 @@ CHECK_INCLUDE_FILES(poll.h HAVE_POLL_H)
 CHECK_INCLUDE_FILES(sys/poll.h HAVE_SYS_POLL_H)
 CHECK_INCLUDE_FILES(sys/select.h HAVE_SYS_SELECT_H)
 CHECK_INCLUDE_FILES(sys/sendfile.h HAVE_SYS_SENDFILE_H)
-if(HAVE_POLL_H OR HAVE_SYS_POLL_H OR HAVE_SYS_SELECT_H OR HAVE_SYS_SENDFILE_H)
+if(HAVE_SYS_SENDFILE_H)
   CHECK_FUNCTION_EXISTS(sendfile HAVE_SENDFILE)
-endif(HAVE_POLL_H OR HAVE_SYS_POLL_H OR HAVE_SYS_SELECT_H OR HAVE_SYS_SENDFILE_H)
+endif(HAVE_SYS_SENDFILE_H)
 
 #in configure.ac it is not explicitly tested, if it is in 'm', instead the first
 #test is if "floor" is available in m and later on it is checked if round,
