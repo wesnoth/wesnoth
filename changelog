@@ -1,4 +1,9 @@
 Version 1.6.1+svn:
+ * Campaigns:
+   * Heir to the Throne:
+     * The Scepter of Fire:
+       * Enforce a 7-hex starting castle to prevent units from appearing inside
+         a wall (bug #13377)
  * Editor2:
    * Moved the clipboard actions to a context menu available in paste mode
    * Added a terrain sampler feature -- ctrl+click when in paint or fill mode 
@@ -8,13 +13,19 @@ Version 1.6.1+svn:
      the map load dialog open
    * Added ability to load maps referenced in scenario files
    * Added ability to work with maps embedded in scenario files (saving works 
-     in a limited scope)   
+     in a limited scope)
+ * Graphics:
+   * New portrait for Huntsman
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Chinese (Traditional), Czech,
       German, Icelandic, Indonesian, Italian, Lithuanian, Polish, Russian,
-      Slovak
+      Slovak, Swedish
  * Miscellaneous and bugfixes:
-   * Fixed missing unit graphisms when loading a start-of-scenario savegame.
+   * Added --ignore-fatal-errors option to wmlunits
+   * Fixed control transfer after player leaves MP game (bug #13238)
+   * Fixed missing unit graphics when loading a start-of-scenario savegame
+   * Improved the sorting of the XP and traits columns in the unit list dialog
+     (part of bug #13360)
 
 Version 1.6.1:
   * Campaigns:
@@ -53,7 +64,6 @@ Version 1.6.1:
      (impacts "submerge" animations and AI settings)
    * Fixed a bug with auto-stored WML variables not being restored correctly
    * Fixed a crash when sighted event killed the attacked unit
-   * Fixed control transfer after player leaves MP game (bug #13238)
    * Limit the maximum length of the mp command dialog as workaround for bug
      #13333 (This workaround is only implemented for Windows and Mac)
 
