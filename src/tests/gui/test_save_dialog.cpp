@@ -102,7 +102,8 @@ namespace test {
 			BOOST_CHECK_MESSAGE(press_return_before->is_fired(), "Enter wasn't activated");
 			BOOST_CHECK_MESSAGE(!release_return_before->is_fired(), "Enter was released before test");
 
-			BOOST_CHECK_EQUAL(dialogs::get_save_name(test_utils::get_fake_display(), "Save game?", "file", &fname,gui::OK_CANCEL, "Save game", false, false), 0);
+			BOOST_CHECK_EQUAL(dialogs::get_save_name_oos(test_utils::get_fake_display(),
+					"Save game?", "file", &fname,gui::OK_CANCEL, "Save game"), 0);
 
 			BOOST_CHECK_MESSAGE(release_return_before->is_fired(), "get_save_name returned before releasing first enter.");
 			BOOST_CHECK_MESSAGE(press_return_after->is_fired(), "get_save_name returned before 2nd enter event was sent");
