@@ -483,6 +483,10 @@ void ttext::rerender(const bool force) const
 		cairo_t *cr = cairo_create(cairo_surface);
 
 		pango_cairo_update_context (cr, context_); // Needed?
+		cairo_font_options_t *fo = cairo_font_options_create();
+		cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
+		pango_cairo_context_set_font_options(context_, fo);
+		cairo_font_options_destroy(fo);
 
 		/* set colour (used for foreground). */
 		cairo_set_source_rgba(cr,
