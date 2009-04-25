@@ -1,12 +1,4 @@
 Version 1.7.0-svn:
- * General:
-   * The add-ons directory, <preferences>/data/campaigns, has been renamed
-     and it is now <preferences>/data/add-ons
-   * Added --rng-seed command line option to specify a value to seed the random
-     number generator with.
-   * New logdomain : uploader to see stat-upload related actions
-   * The --log-domain command-line option now allows for a bit of
-     pattern-matching, e.g., "--log-info=ai/*".
  * AI:
    * Added command-line option ai_config<number>=<value>
    * Fixed incorrect handling of poisoning attacks when suggesting best attack
@@ -22,6 +14,10 @@ Version 1.7.0-svn:
    * Delfador's Memoirs:
      * New campaign added to mainline from the Wesnoth-UMC-Dev repository.
        (Novice level, 24 scenarios)
+   * Heir to the Throne:
+     * The Scepter of Fire:
+       * Enforce a 7-hex starting castle to prevent units from appearing inside
+         a wall (bug #13377).
    * Under the Burning Suns:
      * Kaleh advancement:
        * Gave the Hero variation more HP.
@@ -56,7 +52,7 @@ Version 1.7.0-svn:
  * Graphics:
    * New type of animation : "recruiting" used by leaders when recruiting
      units
-   * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman
+   * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman,
      Ogre/Young Ogre, Trapper, Ranger, Huntsman
    * Image path functors:
      * New functor, ~NOP(), which does nothing.
@@ -89,6 +85,8 @@ Version 1.7.0-svn:
      installing one, and with its entry selected
    * Implemented FR #13321: added "unit advances=N" command to debug console
      to immediately level-up selected unit N times
+   * Improved the sorting of the XP and traits columns in the unit list dialog
+     (part of bug #13360)
  * WML Engine:
    * Added [show_objectives] tag and allowed [show_if] tag in [objective]
      tags. (bug #13042)
@@ -101,13 +99,22 @@ Version 1.7.0-svn:
    * Added support for Lua scripts in WML event actions ([lua] tag)
    * [modify_side] can now change the share_view attribute
  * Miscellaneous and bugfixes:
+   * Added --ignore-fatal-errors option to wmlunits
+   * Added --rng-seed command line option to specify a value to seed the random
+     number generator with
+   * Changes to logging:
+     * New logdomain : uploader to see stat-upload related actions
+     * The --log-domain command-line option now allows for a bit of
+       pattern-matching, e.g., "--log-info=ai/*"
    * Fixed compilation with -D_GLIBCXX_PARALLEL
    * Fixed handling of floating-point WML constants on localized Windows
      (impacts "submerge" animations and AI settings)
-   * Improved random village naming
    * Fixed control transfer after player leaves MP game (bug #13238)
    * Fixed a bug with auto-stored WML variables not being restored correctly
-   * Fixed missing unit graphisms when loading a start-of-scenario savegame.
+   * Fixed missing unit graphics when loading a start-of-scenario savegame.
+   * Improved random village naming
+   * The add-ons directory, <preferences>/data/campaigns, has been renamed
+     and it is now <preferences>/data/add-ons
 
 Version 1.6a:
  * User interface:

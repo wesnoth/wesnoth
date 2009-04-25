@@ -3,25 +3,28 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.7.0-svn:
-  * General:
-    * The add-ons directory, <preferences>/data/campaigns, has been renamed
-      and it is now <preferences>/data/add-ons.
   * Campaigns:
-    * Delfador's Memoirs: new campaign added to mainline
-      (Novice level, 24 scenarios)
-  * Units:
-    * Added the Water Serpent
-  * Under the Burning Suns:
-    * Kaleh advancement:
-      * Gave the Hero variation more HP.
-      * Reduced XP requirements for the Captain variation.
-      * Disabled the sword2 (and thus armor) AMLA for the Captain variation.
-      * Enabled the bolas AMLA for all variations.
-      * Added the camouflage AMLA back.
+    * Delfador's Memoirs: new campaign added to mainline (Novice level,
+      24 scenarios).
+   * Heir to the Throne
+     * The Scepter of Fire
+       * Enforce a 7-hex starting castle to prevent units from appearing inside
+         a wall (bug #13377).
+    * The Rise of Wesnoth:
+      * In TROW, the Lady Jessica is now the Lady Jessene. This was the last
+        major character in mainline (and probably the last named unit of any
+        kind) to have an earth-human name.
+    * Under the Burning Suns:
+      * Kaleh advancement:
+        * Gave the Hero variation more HP.
+        * Reduced XP requirements for the Captain variation.
+        * Disabled the sword2 (and thus armor) AMLA for the Captain variation.
+        * Enabled the bolas AMLA for all variations.
+        * Added the camouflage AMLA back.
 
   * Graphics:
-    * New portrait for Orc Grunt, Dwarf Fighter (alternative), Goblin Spearman,
-      Ogre/Young Ogre, Trapper, Ranger, Huntsman
+    * New portrait for Dwarf Fighter (alternative), Goblin Spearman, Huntsman,
+      Ogre/Young Ogre, Orc Grunt, Ranger, Trapper.
 
   * Language and translations
     * The term 'stoned' has been replaced with 'petrified'; also the
@@ -32,15 +35,21 @@ Version 1.7.0-svn:
       Indonesian, Italian, Lithuanian, Norwegian, Polish, Russian, Serbian,
       Slovak, Swedish, Turkish.
 
+  * Units:
+    * Added the Water Serpent.
+
   * User interface:
     * Fix missing faction column when waiting that the host start the game.
     * Making the game return to the add-on install dialog just before
       installing one, and with its entry selected.
+    * Improved the sorting of the XP and traits columns in the unit list dialog
+      (part of bug #13360).
 
-  * Continuity:
-    * In TROW, the Lady Jessica is now the Lady Jessene.  This was the
-      last major character in mainline (and probably the last named unit
-      of any kind) to have an earth-human name.
+  * Miscellaneous and bugfixes
+    * Fixed missing unit graphics when loading a start-of-scenario savegame.
+    * The add-ons directory, <preferences>/data/campaigns, has been renamed
+      and it is now <preferences>/data/add-ons.
+
 
 Version 1.6:
   * Graphics:
@@ -54,6 +63,7 @@ Version 1.6:
   * User interface:
    * Grey game titles out when we're missing the era.
 
+
 Version 1.5.14:
   * Campaigns:
     * Descent into Darkness:
@@ -63,7 +73,7 @@ Version 1.5.14:
       * Simplified Kaleh's AMLAs to have consistent requirements and effects.
 
   * Graphics:
-    * New portrait for the male and female Assassin, Gryphon Rider, Longbowman,
+    * New portraits for the male and female Assassin, Gryphon Rider, Longbowman,
       Master Bowman, Dwarf Runemaster.
   
   * Language and translations
@@ -80,12 +90,14 @@ Version 1.5.14:
     * Downloaded add-ons do now appear directly after download in the campaigns
       list. It is not required anymore to restart the game. (bug #13123)
 
+
 Version 1.5.13:
   * Graphics:
     * New portrait for the Woodsman, Bowman, male Thief
   * Language and translations
     * Updated translations: Chinese (Simplified), Czech, French, Finnish,
       Hungarian, Polish, Russian, Slovak, Turkish.
+
 
 Version 1.5.12:
   * Graphics
@@ -108,6 +120,7 @@ Version 1.5.12:
     * The multiplayer dialog shows tooltips again.
     * The textbox history now uses CTRL+TAB and CTRL+SHIFT+TAB.
 
+
 Version 1.5.11:
   * Graphics
     * New or updated unit grahpics: Merman Fighter line, Merman Hunter line.
@@ -123,6 +136,7 @@ Version 1.5.11:
       in the MP password dialog.
     * Fixed glitches with long [option] lists.
     * Added UI sounds to the new widgets.
+
 
 Version 1.5.10:
   * Campaigns
@@ -160,6 +174,7 @@ Version 1.5.10:
     * Removed the gamma correction option.
     * Fixed the problem that some dialogs terminated Wesnoth.
 
+
 Version 1.5.9:
   * Campaigns
     * The South Guard
@@ -191,6 +206,7 @@ Version 1.5.9:
     * Disable the "Network Player" option when playing a non-networked MP
       game.
     * All ingame message dialogs now use the new dialogs.
+
 
 Version 1.5.8:
   * Campaigns
@@ -236,6 +252,7 @@ Version 1.5.8:
 
   * Miscellaneous and bugfixes
     * Fixed a crash when more than one add-on is being updated.
+
 
 Version 1.5.7:
   * Campaigns
@@ -294,7 +311,7 @@ Version 1.5.7:
       * Flipped the Ka'lian map horizontaly.	
       * Updated overview map to LoW's time.
       * Redone journey that is displayed on the overview map.	
-	
+
   * Editor2
     * The map editor is automatically started if the binary file used
       to start Wesnoth contains "editor" somewhere in its name (useful
@@ -332,6 +349,7 @@ Version 1.5.7:
       due to story screens.
     * The reset-to-beginning replay control button does not cause
       a crash anymore.
+
 
 Version 1.5.6:
   * Campaigns
@@ -416,6 +434,7 @@ Version 1.5.6:
     * The excessive AI cautiousness that afflicted 1.5.5 has been fixed.
       Also, the algorithms for leader movement are significantly better.
 
+
 Version 1.5.5:
   * Campaigns
     * A new experimental gold carryover system is now supported in Heir to the
@@ -470,6 +489,7 @@ Version 1.5.5:
       Available in-game via :sc and :tc commands, and in editor2's menu.
     * Make sure the attack indicator is never obscured by the terrain.
 
+
 Version 1.5.4:
   * Editor2
     * Rotate clipboard 60 degrees clockwise or counter-clockwise, ctrl+r
@@ -516,6 +536,7 @@ Version 1.5.4:
     sides get activated.  This should make the last battle more of
     a climax.
 
+
 Version 1.5.3:
   * Campaigns
     * Descent into Darkness
@@ -560,6 +581,7 @@ Version 1.5.3:
   * Music and sound effects
     * Special music is played on player victory/defeat.
 
+
 Version 1.5.2:
   * Campaigns
     * Son of the Black Eye
@@ -599,6 +621,7 @@ Version 1.5.2:
     * Fix an old pathfinding bug causing a inconsistency between the path used
       and the one showed to others players. Also valid in replay.
     * Fix missing last publish/remove add-on option
+
 
 Version 1.5.1:
   * Campaigns
@@ -655,6 +678,7 @@ Version 1.5.1:
     * Fixed load-games dialog not displaying correct campaign info for
       non-compressed saves.
 
+
 Version 1.5.0:
   * Graphics
     * Terrains can be rendered in front of units again.
@@ -691,6 +715,7 @@ Version 1.5.0:
 
   * Miscellaneous and bug fixes
     * Fixed shroud not directly cleared in minimap after a move+attack action.
+
 
 Version 1.4:
   * Language and translations
