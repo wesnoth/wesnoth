@@ -271,42 +271,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ai\ai.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_actions.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_attack.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_configuration.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_dfool.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_interface.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_manager.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_move.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_village.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\animated_game.cpp"
 				>
 			</File>
@@ -400,14 +364,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\formula.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\formula_ai.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\formula_candidates.cpp"
 				>
 			</File>
 			<File
@@ -2762,6 +2718,54 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="AI"
+				>
+				<File
+					RelativePath="..\..\src\ai\ai.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_actions.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_attack.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_configuration.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_dfool.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_interface.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_manager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_move.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_village.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\formula_ai.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\formula_candidates.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -2791,34 +2795,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\addon_management.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai2.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_actions.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_configuration.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_dfool.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_interface.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\ai_manager.hpp"
 				>
 			</File>
 			<File
@@ -2922,15 +2898,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ai\formula_ai.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\formula_callable.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ai\formula_candidates.hpp"
 				>
 			</File>
 			<File
@@ -3412,6 +3380,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\game_save.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\language_selection.hpp"
 						>
 					</File>
@@ -3471,6 +3443,10 @@
 				<Filter
 					Name="Auxiliary"
 					>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\log.hpp"
+						>
+					</File>
 				</Filter>
 			</Filter>
 			<Filter
@@ -3546,6 +3522,46 @@
 				</File>
 				<File
 					RelativePath="..\..\src\storyscreen\render.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="AI"
+				>
+				<File
+					RelativePath="..\..\src\ai\ai.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai2.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_actions.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_configuration.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_dfool.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_interface.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\ai_manager.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\formula_ai.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\ai\formula_candidates.hpp"
 					>
 				</File>
 			</Filter>
