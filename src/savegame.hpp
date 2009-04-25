@@ -135,17 +135,20 @@ public:
 	virtual ~savegame() {}
 
 	/** Save a game without any further user interaction. Atm, this is only used by the
-		console_handler save actions */
-	void save_game(const std::string& filename);
+		console_handler save actions. The return value denotes, if the save was successful or not. */
+	bool save_game(const std::string& filename);
 
-	/** Save a game without any further user interaction. This is used by autosaves and
+	/** 
+		Save a game without any further user interaction. This is used by autosaves and
 		automatically generated replay saves. If you want notifying messages or error messages
-		to appear, you have to provide the gui parameter. */
-	void save_game(display* gui = NULL);
+		to appear, you have to provide the gui parameter. 
+		The return value denotes, if the save was successful or not.
+	*/
+	bool save_game(display* gui = NULL);
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
-		saves. */
-	void save_game_interactive(display& gui, const std::string& message,
+		saves. The return value denotes, if the save was successful or not. */
+	bool save_game_interactive(display& gui, const std::string& message,
 		gui::DIALOG_TYPE dialog_type, const bool has_exit_button = false,
 		const bool ask_for_filename = true);
 

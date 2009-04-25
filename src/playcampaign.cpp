@@ -548,28 +548,20 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					gamestate.starting_pos = config();
 				}
 
+				scenariostart_savegame save(gamestate, preferences::compress_saves());
+
+#ifdef TINY_GUI
 				bool retry = true;
 
 				while(retry) {
 					retry = false;
-
-#ifdef TINY_GUI
-					const int should_save = dialogs::get_save_name(disp,
+					retry = !save.save_game_interactive(disp,
 						_("Do you want to save your game?"),
-						_("Name:"),
-						&gamestate.label);
-					if(should_save == 0)
-#endif /* TINY_GUI */
-					{
-						try {
-							scenariostart_savegame save(gamestate, preferences::compress_saves());
-							save.save_game();
-						} catch(game::save_game_failed&) {
-							gui::show_error_message(disp, _("The game could not be saved"));
-							retry = true;
-						}
-					}
+						gui::YES_NO)
 				}
+#else
+				save.save_game();
+#endif /* TINY_GUI */
 			}
 
 			if (gamestate.campaign_type != "multiplayer"){

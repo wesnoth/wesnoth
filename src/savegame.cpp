@@ -469,7 +469,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, compress_saves_(compress_saves)
 {}
 
-void savegame::save_game_interactive(display& gui, const std::string& message,
+bool savegame::save_game_interactive(display& gui, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
 									 const bool ask_for_filename)
 {
@@ -529,9 +529,9 @@ void savegame::save_game_interactive(display& gui, const std::string& message,
 		throw end_level_exception(QUIT);
 
 	if (res != gui2::twindow::OK)
-		return;
+		return false;
 
-	save_game(&gui);
+	return save_game(&gui);
 }
 
 void savegame::before_save()
@@ -539,13 +539,13 @@ void savegame::before_save()
 	gamestate_.replay_data = recorder.get_replay_data();
 }
 
-void savegame::save_game(const std::string& filename)
+bool savegame::save_game(const std::string& filename)
 {
 	filename_ = filename;
-	save_game();
+	return save_game();
 }
 
-void savegame::save_game(display* gui)
+bool savegame::save_game(display* gui)
 {
 	try {
 		Uint32 start, end;
@@ -559,6 +559,8 @@ void savegame::save_game(display* gui)
 
 		if (gui != NULL && show_confirmation_)
 			gui::message_dialog(*gui,_("Saved"),_("The game has been saved")).show();
+		
+		return true;
 	} catch(game::save_game_failed&) {
 		if (gui != NULL){
 			gui::message_dialog to_show(*gui,_("Error"), error_message_);
@@ -566,6 +568,8 @@ void savegame::save_game(display* gui)
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
+
+		return false;
 	};
 }
 
