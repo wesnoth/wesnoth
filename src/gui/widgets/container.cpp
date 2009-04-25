@@ -46,12 +46,12 @@ void tcontainer_::NEW_layout_init(const bool full_initialization)
 
 void tcontainer_::NEW_reduce_width(const unsigned maximum_width)
 {
-	grid_.NEW_reduce_width(maximum_width);
+	grid_.NEW_reduce_width(maximum_width - border_space().x);
 }
 
 void tcontainer_::NEW_reduce_height(const unsigned maximum_height)
 {
-	grid_.NEW_reduce_height(maximum_height);
+	grid_.NEW_reduce_height(maximum_height - border_space().y);
 }
 
 void tcontainer_::layout_wrap(const unsigned maximum_width)
