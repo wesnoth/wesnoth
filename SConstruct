@@ -308,9 +308,9 @@ for env in [test_env, env]:
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-W -Wall -Wno-unused -Wno-sign-compare"), CFLAGS = ["-std=c99"], CXXFLAGS="-std=c++98")
+        env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"], CXXFLAGS="-std=c++98")
         if env['strict']:
-            env.AppendUnique(CCFLAGS = "-Werror")
+            env.AppendUnique(CCFLAGS = Split("-Werror -Wno-unused-parameter"))
 
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
