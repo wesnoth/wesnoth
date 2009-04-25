@@ -71,6 +71,9 @@ public:
 	void layout_init2(const bool full_initialization);
 	void NEW_layout_init(const bool full_initialization);
 
+	/** Inherited from twidget. */
+	void NEW_request_reduce_height(const unsigned maximum_height);
+
 	/** Inherited from tcontainer_. */
 	bool can_wrap() const
 	{

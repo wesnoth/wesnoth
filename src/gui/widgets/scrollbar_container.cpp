@@ -150,23 +150,49 @@ void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 
 	if(full_initialization) {
 
-		if(initial_vertical_scrollbar_mode_ == SHOW) {
-			vertical_scrollbar_mode_ = SHOW;
-		} else {
+		if(initial_vertical_scrollbar_mode_ == HIDE) {
 			vertical_scrollbar_mode_ = HIDE;
+		} else {
+			vertical_scrollbar_mode_ = SHOW;
 		}
 		show_vertical_scrollbar();
 
-		if(initial_vertical_scrollbar_mode_ == SHOW) {
-			horizontal_scrollbar_mode_ = SHOW;
-		} else {
+		if(initial_vertical_scrollbar_mode_ == HIDE) {
 			horizontal_scrollbar_mode_ = HIDE;
+		} else {
+			horizontal_scrollbar_mode_ = SHOW;
 		}
 		show_horizontal_scrollbar();
 	}
 
 	assert(content_grid_);
 	content_grid_->NEW_layout_init(full_initialization);
+}
+
+void tscrollbar_container::NEW_request_reduce_height(
+		const unsigned maximum_height)
+{
+	if(initial_horizontal_scrollbar_mode_ == HIDE) {
+		return;
+	}
+
+	assert(vertical_scrollbar_grid_);
+
+	tpoint size = get_best_size();
+	if(static_cast<unsigned>(size.y) < maximum_height) {
+		return;
+	}
+
+	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
+	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
+		size.y = maximum_height;
+	} else {
+		size.y = scrollbar_size.y;
+	}
+
+	// FIXME adjust for the step size of the scrollbar
+
+	set_layout_size(size);
 }
 
 void tscrollbar_container::layout_wrap(const unsigned maximum_width)
