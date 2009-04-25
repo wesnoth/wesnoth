@@ -22,6 +22,12 @@
 #include <stdlib.h>
 #include <sstream>
 
+static lg::log_domain log_mp_user_handler("mp_user_handler");
+#define ERR_UH LOG_STREAM(err, log_mp_user_handler)
+#define WRN_UH LOG_STREAM(warn, log_mp_user_handler)
+#define LOG_UH LOG_STREAM(info, log_mp_user_handler)
+#define DBG_UH LOG_STREAM(debug, log_mp_user_handler)
+
 fuh::fuh(const config& c) {
 	db_name_ = c["db_name"];
 	db_host_ = c["db_host"];
