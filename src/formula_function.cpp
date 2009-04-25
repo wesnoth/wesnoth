@@ -23,8 +23,8 @@
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
-static lg::log_domain log_formula_ai("formula_ai");
-#define LOG_AI LOG_STREAM(info, log_formula_ai)
+static lg::log_domain log_scripting_formula("scripting/formula");
+#define LOG_AI LOG_STREAM(info, log_scripting_formula)
 
 namespace game_logic {
 
