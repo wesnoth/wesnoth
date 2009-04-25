@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -1849,6 +1849,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\game_save.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\language_selection.cpp"
 						>
 						<FileConfiguration
@@ -1959,6 +1963,38 @@
 					<File
 						RelativePath="..\..\src\gui\dialogs\wml_message.cpp"
 						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Auxiliary"
+					>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\log.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
 					</File>
 				</Filter>
 			</Filter>
@@ -3431,6 +3467,10 @@
 						RelativePath="..\..\src\gui\widgets\window.hpp"
 						>
 					</File>
+				</Filter>
+				<Filter
+					Name="Auxiliary"
+					>
 				</Filter>
 			</Filter>
 			<Filter
