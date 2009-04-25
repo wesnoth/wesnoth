@@ -4,7 +4,9 @@ Version 1.7.0-svn:
      and it is now <preferences>/data/add-ons
    * Added --rng-seed command line option to specify a value to seed the random
      number generator with.
-   * new logdomain : uploader to see stat-upload related actions
+   * New logdomain : uploader to see stat-upload related actions
+   * The --log-domain command-line option now allows for a bit of
+     pattern-matching, e.g., "--log-info=ai/*".
  * AI:
    * Added command-line option ai_config<number>=<value>
    * Fixed incorrect handling of poisoning attacks when suggesting best attack
@@ -62,8 +64,8 @@ Version 1.7.0-svn:
        ~RC(palette1=palette2) syntax anymore. ~PAL(palette1>palette2) should
        be used instead
  * Language and i18n:
-   * new translations: Icelandic
-   * updated translations: British English, Catalan, Chinese (Simplified),
+   * New translations: Icelandic
+   * Updated translations: British English, Catalan, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, German, Finnish, Hebrew, Hungarian,
      Indonesian, Italian, Lithuanian, Norwegian, Polish, Russian, Serbian,
      Slovak, Swedish, Turkish
@@ -105,6 +107,7 @@ Version 1.7.0-svn:
    * Improved random village naming
    * Fixed control transfer after player leaves MP game (bug #13238)
    * Fixed a bug with auto-stored WML variables not being restored correctly
+   * Fixed missing unit graphisms when loading a start-of-scenario savegame.
 
 Version 1.6a:
  * User interface:
