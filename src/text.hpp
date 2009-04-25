@@ -36,12 +36,6 @@ namespace font {
 // add background colour and also font markup.
 
 /**
- * The classes in this namespace should not be used directly.
- *
- * Use the typedef which sets the policy instead.
- */
-namespace internal {
-/**
  * Text class.
  *
  * This class stores the text to draw and uses pango with the cairo backend to
@@ -278,26 +272,7 @@ private:
 	void create_surface_buffer(const size_t size) const;
 };
 
-} // namespace internal
-
-
-/**
- * Note the deepcopy might not be used on all compilers due to RVO [1].
- * This means the code might be less tested, gcc does this optimization and
- * thus I didn't test it on my platform -- Mordante.
- *
- * [1] http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.9
- */
-//typedef policies::tcopy_policy<internal::ttext, policies::tdeep_copy> ttext;
-
-/**
- * Due to changes to the widgets the copying of a ttext object is no longer
- * needed so just made the base itself not copyable. For now keep a typedef.
- *
- * @todo once stable clean up this header.
- */
-typedef internal::ttext ttext;
-
 } // namespace font
 
 #endif
+

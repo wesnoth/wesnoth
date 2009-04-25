@@ -24,8 +24,6 @@
 
 namespace font {
 
-namespace internal {
-
 namespace {
 
 /**
@@ -540,8 +538,6 @@ void ttext::create_surface_buffer(const size_t size) const
 	surface_buffer_ = new unsigned char [size];
 	memset(surface_buffer_, 0, size);
 }
-
-} // namespace internal
 
 } // namespace font
 
