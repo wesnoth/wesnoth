@@ -24,14 +24,14 @@ namespace gui2 {
 
 void ttext_::mouse_move(tevent_handler&)
 {
-	DBG_G_E << "Text: mouse move.\n";
+	DBG_GUI_E << "Text: mouse move.\n";
 
 	// if in select mode select text and move cursor
 }
 
 void ttext_::mouse_left_button_down(tevent_handler& event)
 {
-	DBG_G_E << "Text: left mouse button down.\n";
+	DBG_GUI_E << "Text: left mouse button down.\n";
 
 	event.keyboard_capture(this);
 	event.mouse_capture();
@@ -40,12 +40,12 @@ void ttext_::mouse_left_button_down(tevent_handler& event)
 void ttext_::mouse_left_button_up(tevent_handler&)
 {
 	// reset select  mode
-	DBG_G_E << "Text: left mouse button up.\n";
+	DBG_GUI_E << "Text: left mouse button up.\n";
 }
 
 void ttext_::mouse_left_button_double_click(tevent_handler&)
 {
-	DBG_G_E << "Text: left mouse button double click.\n";
+	DBG_GUI_E << "Text: left mouse button double click.\n";
 
 	selection_start_ = 0;
 	selection_length_ = text_.get_length();
@@ -54,7 +54,7 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 
 void ttext_::mouse_middle_button_click(tevent_handler&)
 {
-	DBG_G_E << "Text: middle mouse button click.\n";
+	DBG_GUI_E << "Text: middle mouse button click.\n";
 #ifdef __unix__
 		// pastes on UNIX systems.
 		paste_selection(true);
@@ -64,14 +64,14 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 void ttext_::receive_keyboard_focus(tevent_handler& /*event_handler*/)
 {
-	DBG_G_E << "Text: receive focus.\n";
+	DBG_GUI_E << "Text: receive focus.\n";
 
 	set_state(FOCUSSED);
 }
 
 void ttext_::lose_keyboard_focus(tevent_handler& /*event_handler*/)
 {
-	DBG_G_E << "Text: lose focus.\n";
+	DBG_GUI_E << "Text: lose focus.\n";
 
 	set_state(ENABLED);
 }
@@ -79,7 +79,7 @@ void ttext_::lose_keyboard_focus(tevent_handler& /*event_handler*/)
 void ttext_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
-	DBG_G_E << "Text: key press.\n";
+	DBG_GUI_E << "Text: key press.\n";
 
 // For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
 // be modifed seems not to be required when I read the comment in
@@ -334,7 +334,7 @@ void ttext_::set_state(const tstate state)
 void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_G_E << "Text: key press: left arrow.\n";
+	DBG_GUI_E << "Text: key press: left arrow.\n";
 
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
@@ -346,7 +346,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_G_E << "Text: key press: right arrow.\n";
+	DBG_GUI_E << "Text: key press: right arrow.\n";
 
 	handled = true;
 	const size_t offset = selection_start_ + 1 + selection_length_;
@@ -357,7 +357,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text: key press: home.\n";
+	DBG_GUI_E << "Text: key press: home.\n";
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -369,7 +369,7 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text: key press: end.\n";
+	DBG_GUI_E << "Text: key press: end.\n";
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -381,7 +381,7 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 
 void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_G_E << "Text: key press: backspace.\n";
+	DBG_GUI_E << "Text: key press: backspace.\n";
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -393,7 +393,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_G_E << "Text: key press: delete.\n";
+	DBG_GUI_E << "Text: key press: delete.\n";
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -406,7 +406,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 void ttext_::handle_key_default(
 		bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
 {
-	DBG_G_E << "Text: key press: default.\n";
+	DBG_GUI_E << "Text: key press: default.\n";
 
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;

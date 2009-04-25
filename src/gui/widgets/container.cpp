@@ -79,7 +79,7 @@ void tcontainer_::layout_wrap(const unsigned maximum_width)
 		size.y += border_size.y;
 	}
 
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " border size " << border_size
 		<< " returning " << size
@@ -113,7 +113,7 @@ void tcontainer_::layout_use_vertical_scrollbar(const unsigned maximum_height)
 		size.y += border_size.y;
 	}
 
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_height " << maximum_height
 		<< " border size " << border_size
 		<< " returning " << size
@@ -147,7 +147,7 @@ void tcontainer_::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 		size.y += border_size.y;
 	}
 
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " border size " << border_size
 		<< " returning " << size
@@ -163,7 +163,7 @@ void tcontainer_::layout_fit_width(const unsigned maximum_width,
 	twidget::layout_fit_width(maximum_width, flags);
 
 	log_scope2(log_gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " flags " << flags
 		<< ".\n";
@@ -186,7 +186,7 @@ void tcontainer_::layout_fit_width(const unsigned maximum_width,
 		size.y += border_size.y;
 	}
 
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " flags " << flags
 		<< " border size " << border_size
@@ -224,7 +224,7 @@ tpoint tcontainer_::calculate_best_size() const
 		result.y += border_size.y;
 	}
 
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+	DBG_GUI_L << "tcontainer(" + get_control_type() + "):"
 		<< " border size " << border_size
 		<< " returning " << result
 		<< ".\n";

@@ -30,7 +30,7 @@ tpoint timage::calculate_best_size() const
 		result = tpoint(image->w, image->h);
 	}
 
-	DBG_G_L << "timage " << __func__ << ":"
+	DBG_GUI_L << "timage " << __func__ << ":"
 		<< " empty image " << !image
 		<< " result " << result
 		<< ".\n";

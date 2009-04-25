@@ -52,7 +52,7 @@ tpoint tslider::calculate_best_size() const
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_G_L << "tslider " << __func__ << ":"
+	DBG_GUI_L << "tslider " << __func__ << ":"
 		<< " best_slider_length " << best_slider_length_
 		<< " result " << result
 		<< ".\n";

@@ -18,11 +18,11 @@
 
 namespace gui2 {
 
-lg::log_domain log_gui("gui");
-lg::log_domain log_gui_draw("gui_draw");
-lg::log_domain log_gui_event("gui_event");
-lg::log_domain log_gui_layout("gui_layout");
-lg::log_domain log_gui_parse("gui_parse");
+lg::log_domain log_gui_draw   ("gui/draw");
+lg::log_domain log_gui_event  ("gui/event");
+lg::log_domain log_gui_general("gui/general");
+lg::log_domain log_gui_layout ("gui/layout");
+lg::log_domain log_gui_parse  ("gui/parse");
 
 } // namespace gui2
 

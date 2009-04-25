@@ -49,7 +49,7 @@ unsigned get_v_align(const std::string& v_align)
 		return tgrid::VERTICAL_ALIGN_BOTTOM;
 	} else {
 		if(!v_align.empty() && v_align != "center") {
-			ERR_G_E << "Invalid vertical alignment '"
+			ERR_GUI_E << "Invalid vertical alignment '"
 				<< v_align << "' falling back to 'center'.\n";
 		}
 		return tgrid::VERTICAL_ALIGN_CENTER;
@@ -64,7 +64,7 @@ unsigned get_h_align(const std::string& h_align)
 		return tgrid::HORIZONTAL_ALIGN_RIGHT;
 	} else {
 		if(!h_align.empty() && h_align != "center") {
-			ERR_G_E << "Invalid horizontal alignment '"
+			ERR_GUI_E << "Invalid horizontal alignment '"
 				<< h_align << "' falling back to 'center'.\n";
 		}
 		return tgrid::HORIZONTAL_ALIGN_CENTER;
@@ -106,7 +106,7 @@ unsigned read_flags(const config& cfg)
 		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
 
 		if(! (cfg["vertical_alignment"]).empty()) {
-			ERR_G_P << "vertical_grow and vertical_alignment "
+			ERR_GUI_P << "vertical_grow and vertical_alignment "
 				"can't be combined, alignment is ignored.\n";
 		}
 	} else {
@@ -117,7 +117,7 @@ unsigned read_flags(const config& cfg)
 		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
 
 		if(! (cfg["horizontal_alignment"]).empty()) {
-			ERR_G_P << "horizontal_grow and horizontal_alignment "
+			ERR_GUI_P << "horizontal_grow and horizontal_alignment "
 				"can't be combined, alignment is ignored.\n";
 		}
 	} else {
@@ -134,7 +134,7 @@ tmenubar::tdirection read_direction(const std::string& direction)
 	} else if(direction == "horizontal") {
 		return tmenubar::HORIZONTAL;
 	} else {
-		ERR_G_E << "Invalid direction "
+		ERR_GUI_E << "Invalid direction "
 				<< direction << "' falling back to 'horizontal'.\n";
 		return tmenubar::HORIZONTAL;
 	}
@@ -149,7 +149,7 @@ tscrollbar_container::tscrollbar_mode
 		return tscrollbar_container::HIDE;
 	} else {
 		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
-			ERR_G_E << "Invalid scrollbar mode '"
+			ERR_GUI_E << "Invalid scrollbar mode '"
 				<< scrollbar_mode << "' falling back to 'auto'.\n";
 		}
 		return tscrollbar_container::SHOW_WHEN_NEEDED;
@@ -161,7 +161,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	config::all_children_itors children = cfg.all_children_range();
 	size_t nb_children = std::distance(children.first, children.second);
 	if (nb_children != 1) {
-		ERR_G_P << "Grid cell has " << nb_children
+		ERR_GUI_P << "Grid cell has " << nb_children
 			<< " children instead of 1, aborting. Config :\n"
 			<< cfg;
 		assert(false);
@@ -211,7 +211,7 @@ int get_retval(const std::string& retval_id,
 		if(result) {
 			return result;
 		} else {
-			ERR_G_E << "Window builder: retval_id '"
+			ERR_GUI_E << "Window builder: retval_id '"
 					<< retval_id << "' is unknown.\n";
 		}
 	}
@@ -252,7 +252,7 @@ twindow* build(CVideo& video, const std::string& type)
 		definition->definition);
 	assert(window);
 
-	log_scope2(log_gui, "Window builder: building grid for window");
+	log_scope2(log_gui_general, "Window builder: building grid for window");
 
 	window->set_easy_close(definition->easy_close);
 
@@ -307,7 +307,7 @@ const std::string& twindow_builder::read(const config& cfg)
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
 
-	DBG_G_P << "Window builder: reading data for window " << id_ << ".\n";
+	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
@@ -417,7 +417,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 			missing_mandatory_wml_key("resolution", "height"));
 	}
 
-	DBG_G_P << "Window builder: parsing resolution "
+	DBG_GUI_P << "Window builder: parsing resolution "
 		<< window_width << ',' << window_height << '\n';
 
 	if(definition.empty()) {
@@ -519,7 +519,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 	}
 
-	DBG_G_P << "Window builder: grid has "
+	DBG_GUI_P << "Window builder: grid has "
 		<< rows << " rows and " << cols << " columns.\n";
 }
 
@@ -590,7 +590,7 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	}
 
 
-	DBG_G_P << "Window builder: found control with id '"
+	DBG_GUI_P << "Window builder: found control with id '"
 		<< id << "' and definition '" << definition << "'.\n";
 }
 
@@ -646,7 +646,7 @@ twidget* tbuilder_button::build() const
 
 	button->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed button '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed button '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return button;
@@ -658,7 +658,7 @@ twidget* tbuilder_horizontal_scrollbar::build() const
 
 	init_control(horizontal_scrollbar);
 
-	DBG_GUI << "Window builder:"
+	DBG_GUI_G << "Window builder:"
 		<< " placed horizontal scrollbar '" << id
 		<< "' with defintion '" << definition
 		<< "'.\n";
@@ -672,7 +672,7 @@ twidget* tbuilder_image::build() const
 
 	init_control(widget);
 
-	DBG_GUI << "Window builder: placed image '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed image '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return widget;
@@ -692,7 +692,7 @@ twidget* tbuilder_label::build() const
 
 	init_control(tmp_label);
 
-	DBG_GUI << "Window builder: placed label '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed label '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return tmp_label;
@@ -798,7 +798,7 @@ twidget* tbuilder_listbox::build() const
 	listbox->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	listbox->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI << "Window builder: placed listbox '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
@@ -858,7 +858,7 @@ twidget* tbuilder_menubar::build() const
 	init_control(menubar);
 
 
-	DBG_GUI << "Window builder: placed menubar '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed menubar '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	if(direction_ == tmenubar::HORIZONTAL) {
@@ -891,7 +891,7 @@ twidget* tbuilder_minimap::build() const
 
 	init_control(minimap);
 
-	DBG_GUI << "Window builder: placed minimap '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed minimap '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return minimap;
@@ -931,11 +931,11 @@ twidget* tbuilder_panel::build() const
 
 	init_control(panel);
 
-	DBG_GUI << "Window builder: placed panel '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed panel '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 
-	log_scope2(log_gui, "Window builder: building grid for panel.");
+	log_scope2(log_gui_general, "Window builder: building grid for panel.");
 
 	const unsigned rows = grid->rows;
 	const unsigned cols = grid->cols;
@@ -972,7 +972,7 @@ twidget* tbuilder_scroll_label::build() const
 	conf->grid->build(&widget->grid());
 	widget->finalize_setup();
 
-	DBG_GUI << "Window builder: placed scroll label '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed scroll label '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return widget;
@@ -1057,7 +1057,7 @@ twidget* tbuilder_slider::build() const
 		slider->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_GUI << "Window builder: placed slider '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed slider '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return slider;
@@ -1077,7 +1077,7 @@ twidget* tbuilder_spacer::build() const
 		spacer->set_best_size(tpoint(width, height));
 	}
 
-	DBG_GUI << "Window builder: placed spacer '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed spacer '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return spacer;
@@ -1092,7 +1092,7 @@ twidget* tbuilder_toggle_button::build() const
 	toggle_button->set_icon_name(icon_name_);
 	toggle_button->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed toggle button '"
+	DBG_GUI_G << "Window builder: placed toggle button '"
 			<< id << "' with defintion '" << definition << "'.\n";
 
 	return toggle_button;
@@ -1142,10 +1142,10 @@ twidget* tbuilder_toggle_panel::build() const
 
 	toggle_panel->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed toggle panel '"
+	DBG_GUI_G << "Window builder: placed toggle panel '"
 			<< id << "' with defintion '" << definition << "'.\n";
 
-	log_scope2(log_gui, "Window builder: building grid for toggle panel.");
+	log_scope2(log_gui_general, "Window builder: building grid for toggle panel.");
 
 	const unsigned rows = grid->rows;
 	const unsigned cols = grid->cols;
@@ -1181,7 +1181,7 @@ twidget* tbuilder_text_box::build() const
 		text_box->set_history(history_);
 	}
 
-	DBG_GUI << "Window builder: placed text box '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed text box '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return text_box;
@@ -1200,7 +1200,7 @@ twidget* tbuilder_password_box::build() const
 		password_box->set_history(history_);
 	}
 
-	DBG_GUI << "Window builder: placed password box '" << id << "' with defintion '"
+	DBG_GUI_G << "Window builder: placed password box '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
 	return password_box;
@@ -1212,7 +1212,7 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 	init_control(vertical_scrollbar);
 
-	DBG_GUI << "Window builder:"
+	DBG_GUI_G << "Window builder:"
 		<< " placed vertical scrollbar '" << id
 		<< "' with defintion '" << definition
 		<< "'.\n";
@@ -1230,9 +1230,9 @@ twidget* tbuilder_grid::build (tgrid* grid) const
 	grid->set_id(id);
 	grid->set_rows_cols(rows, cols);
 
-	log_scope2(log_gui, "Window builder: building grid");
+	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI << "Window builder: grid '" << id
+	DBG_GUI_G << "Window builder: grid '" << id
 		<< "' has " << rows << " rows and "
 		<< cols << " columns.\n";
 
@@ -1244,7 +1244,7 @@ twidget* tbuilder_grid::build (tgrid* grid) const
 				grid->set_col_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI << "Window builder: adding child at " << x << ',' << y << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";
 
 			twidget* widget = widgets[x * cols + y]->build();
 			grid->set_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);

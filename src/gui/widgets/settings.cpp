@@ -106,7 +106,7 @@ const std::string& get_id(const twindow_type window_type)
 
 void load_settings()
 {
-	LOG_GUI << "Setting: init gui.\n";
+	LOG_GUI_G << "Setting: init gui.\n";
 
 	// Init.
 	fill_window_types();
@@ -122,7 +122,7 @@ void load_settings()
 
 		read(cfg, *stream);
 	} catch(config::error&) {
-		ERR_G_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
+		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
 
 	// Parse guis
@@ -251,7 +251,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	DBG_G_P << "Parsing gui " << id << '\n';
+	DBG_GUI_P << "Parsing gui " << id << '\n';
 
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg);
@@ -492,7 +492,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *
  */
 
-	DBG_G_P << "Parsing resolution "
+	DBG_GUI_P << "Parsing resolution "
 		<< window_width << ", " << window_height << '\n';
 }
 
@@ -534,7 +534,7 @@ tstate_definition::tstate_definition(const config &cfg) :
 tbutton_definition::tbutton_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing button " << id << '\n';
+	DBG_GUI_P << "Parsing button " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -569,7 +569,7 @@ thorizontal_scrollbar_definition::
 		thorizontal_scrollbar_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing horizontal scrollbar " << id << '\n';
+	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -631,7 +631,7 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 timage_definition::timage_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing image " << id << '\n';
+	DBG_GUI_P << "Parsing image " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -660,7 +660,7 @@ timage_definition::tresolution::tresolution(const config& cfg) :
 tlabel_definition::tlabel_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing label " << id << '\n';
+	DBG_GUI_P << "Parsing label " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -691,7 +691,7 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 tlistbox_definition::tlistbox_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing listbox " << id << '\n';
+	DBG_GUI_P << "Parsing listbox " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -763,7 +763,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 tmenubar_definition::tmenubar_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing menubar " << id << '\n';
+	DBG_GUI_P << "Parsing menubar " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -792,7 +792,7 @@ tmenubar_definition::tresolution::tresolution(const config& cfg) :
 tminimap_definition::tminimap_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing minimap " << id << '\n';
+	DBG_GUI_P << "Parsing minimap " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -820,7 +820,7 @@ tpanel_definition::tpanel_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 
-	DBG_G_P << "Parsing panel " << id << '\n';
+	DBG_GUI_P << "Parsing panel " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -863,7 +863,7 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
 tscroll_label_definition::tscroll_label_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing scroll label " << id << '\n';
+	DBG_GUI_P << "Parsing scroll label " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -917,7 +917,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
 tslider_definition::tslider_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing slider " << id << '\n';
+	DBG_GUI_P << "Parsing slider " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -979,7 +979,7 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
 tspacer_definition::tspacer_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing spacer " << id << '\n';
+	DBG_GUI_P << "Parsing spacer " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1004,7 +1004,7 @@ tspacer_definition::tresolution::tresolution(const config& cfg) :
 ttext_box_definition::ttext_box_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing text_box " << id << '\n';
+	DBG_GUI_P << "Parsing text_box " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1049,7 +1049,7 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 ttoggle_button_definition::ttoggle_button_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing toggle button " << id << '\n';
+	DBG_GUI_P << "Parsing toggle button " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1089,7 +1089,7 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
 ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing toggle panel " << id << '\n';
+	DBG_GUI_P << "Parsing toggle panel " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1145,7 +1145,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
 ttooltip_definition::ttooltip_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing tooltip " << id << '\n';
+	DBG_GUI_P << "Parsing tooltip " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1174,7 +1174,7 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 tvertical_scrollbar_definition::tvertical_scrollbar_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
-	DBG_G_P << "Parsing vertical scrollbar " << id << '\n';
+	DBG_GUI_P << "Parsing vertical scrollbar " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
@@ -1247,7 +1247,7 @@ twindow_definition::twindow_definition(const config& cfg) :
  *
  */
 
-	DBG_G_P << "Parsing window " << id << '\n';
+	DBG_GUI_P << "Parsing window " << id << '\n';
 }
 
 tresolution_definition_ptr get_control(
@@ -1263,7 +1263,7 @@ tresolution_definition_ptr get_control(
 		control = control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {
-		LOG_GUI << "Control: type '" << control_type << "' definition '"
+		LOG_GUI_G << "Control: type '" << control_type << "' definition '"
 			<< definition << "' not found, falling back to 'default'.\n";
 		control = control_definition->second.find("default");
 		assert(control != control_definition->second.end());

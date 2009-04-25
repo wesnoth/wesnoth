@@ -80,7 +80,7 @@ void tscrollbar_::mouse_move(tevent_handler& event)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	DBG_G_E << "Scrollbar: mouse move at " << mouse << ".\n";
+	DBG_GUI_E << "Scrollbar: mouse move at " << mouse << ".\n";
 
 	switch(state_) {
 		case ENABLED :
@@ -113,7 +113,7 @@ void tscrollbar_::mouse_move(tevent_handler& event)
 
 void tscrollbar_::mouse_leave(tevent_handler&)
 {
-	DBG_G_E << "Scrollbar: mouse leave.\n";
+	DBG_GUI_E << "Scrollbar: mouse leave.\n";
 
 	if(state_ == FOCUSSED) {
 		set_state(ENABLED);
@@ -126,7 +126,7 @@ void tscrollbar_::mouse_left_button_down(tevent_handler& event)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	DBG_G_E << "Scrollbar: mouse down at " << mouse << ".\n";
+	DBG_GUI_E << "Scrollbar: mouse down at " << mouse << ".\n";
 
 	if(on_positioner(mouse)) {
 		mouse_ = mouse;
@@ -157,7 +157,7 @@ void tscrollbar_::mouse_left_button_up(tevent_handler& event)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	DBG_G_E << "Scrollbar: mouse up at " << mouse << ".\n";
+	DBG_GUI_E << "Scrollbar: mouse up at " << mouse << ".\n";
 
 	if(state_ != PRESSED) {
 		return;

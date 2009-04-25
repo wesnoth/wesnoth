@@ -67,7 +67,7 @@ void tcontrol::set_block_easy_close(const bool block)
 		 * the listbox is finalized. In that case that widget should do set the
 		 * state in its finalizer.
 		 */
-		DBG_GUI << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
+		DBG_GUI_G << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
 			"No window set, this might be a bug.\n";
 		return;
 	}
@@ -89,7 +89,7 @@ tpoint tcontrol::get_config_minimum_size() const
 
 	tpoint result(config_->min_width, config_->min_height);
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 		<< " result " << result
 		<< ".\n";
 	return result;
@@ -101,7 +101,7 @@ tpoint tcontrol::get_config_default_size() const
 
 	tpoint result(config_->default_width, config_->default_height);
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 		<< " result " << result
 		<< ".\n";
 	return result;
@@ -113,7 +113,7 @@ tpoint tcontrol::get_config_maximum_size() const
 
 	tpoint result(config_->max_width, config_->max_height);
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 		<< " result " << result
 		<< ".\n";
 	return result;
@@ -166,7 +166,7 @@ void tcontrol::layout_wrap(const unsigned maximum_width)
 
 		set_layout_size(size);
 
-		DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 				<< " maximum_width " << maximum_width
 				<< " result " << size
 				<< ".\n";
@@ -176,7 +176,7 @@ void tcontrol::layout_wrap(const unsigned maximum_width)
 
 void tcontrol::layout_shrink_width(const unsigned maximum_width)
 {
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 			<< " maximum_width " << maximum_width
 			<< ".\n";
 
@@ -195,13 +195,13 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 
 	log_scope2(log_gui_layout,
 			"tcontrol(" + get_control_type() + ") " + __func__);
-	DBG_G_L << "maximum_width " << maximum_width
+	DBG_GUI_L << "maximum_width " << maximum_width
 			<< " flags " << flags
 			<< ".\n";
 
 	// Already fits.
 	if(get_best_size().x <= static_cast<int>(maximum_width)) {
-		DBG_G_L << "Already fits.\n";
+		DBG_GUI_L << "Already fits.\n";
 		return;
 	}
 
@@ -210,7 +210,7 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 		layout_wrap(maximum_width);
 
 		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_G_L << "Success: Wrapped.\n";
+			DBG_GUI_L << "Success: Wrapped.\n";
 			return;
 		}
 	}
@@ -220,7 +220,7 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 		layout_use_horizontal_scrollbar(maximum_width);
 
 		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_G_L << "Success: Horizontal scrollbar.\n";
+			DBG_GUI_L << "Success: Horizontal scrollbar.\n";
 			return;
 		}
 	}
@@ -228,10 +228,10 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 	// Shrink.
 	if((flags & twidget::SHRINK) && can_shrink_width()) {
 		layout_shrink_width(maximum_width);
-		DBG_G_L << "Success: Shrunken.\n";
+		DBG_GUI_L << "Success: Shrunken.\n";
 	}
 
-	DBG_G_L << "Failed.\n";
+	DBG_GUI_L << "Failed.\n";
 }
 
 tpoint tcontrol::calculate_best_size() const
@@ -248,7 +248,7 @@ tpoint tcontrol::calculate_best_size() const
 		result = get_best_text_size(result);
 	}
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
 		<< " empty label " << label_.empty()
 		<< " result " << result
 		<< ".\n";
@@ -280,13 +280,13 @@ void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 
 void tcontrol::mouse_hover(tevent_handler& event)
 {
-	DBG_G_E << "Control: mouse hover.\n";
+	DBG_GUI_E << "Control: mouse hover.\n";
 	event.show_tooltip(tooltip_, settings::popup_show_time);
 }
 
 void tcontrol::help_key(tevent_handler& event)
 {
-	DBG_G_E << "Control: help key.\n";
+	DBG_GUI_E << "Control: help key.\n";
 	event.show_help_popup(help_message_, settings::help_show_time);
 }
 
@@ -437,8 +437,8 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 	}
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") status:\n";
-	DBG_G_L << "minimum_size " << minimum_size
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") status:\n";
+	DBG_GUI_L << "minimum_size " << minimum_size
 		<< " maximum_size " << maximum_size
 		<< " text_maximum_width_ " << text_maximum_width_
 		<< " can_wrap " << can_wrap()
@@ -464,7 +464,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		size.y = minimum_size.y;
 	}
 
-	DBG_G_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
+	DBG_GUI_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
 	return size;
 }
 

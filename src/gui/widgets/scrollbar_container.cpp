@@ -241,13 +241,13 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 
 	log_scope2(log_gui_layout,
 			"tscrollbar_container(" + get_control_type() + ") " + __func__);
-	DBG_G_L << "maximum_width " << maximum_width
+	DBG_GUI_L << "maximum_width " << maximum_width
 			<< " flags " << flags
 			<< ".\n";
 
 	// Already fits.
 	if(get_best_size().x <= static_cast<int>(maximum_width)) {
-		DBG_G_L << "Already fits.\n";
+		DBG_GUI_L << "Already fits.\n";
 		return;
 	}
 
@@ -256,7 +256,7 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 		layout_wrap(maximum_width);
 
 		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_G_L << "Success: Wrapped.\n";
+			DBG_GUI_L << "Success: Wrapped.\n";
 			return;
 		}
 	}
@@ -266,7 +266,7 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 		layout_use_horizontal_scrollbar(maximum_width);
 
 		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_G_L << "Success: Horizontal scrollbar.\n";
+			DBG_GUI_L << "Success: Horizontal scrollbar.\n";
 			return;
 		}
 	}
@@ -274,10 +274,10 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 	// Shrink.
 	if((flags & twidget::TRUNCATE) && can_shrink_width()) {
 		layout_shrink_width(maximum_width);
-		DBG_G_L << "Success: Shrunken.\n";
+		DBG_GUI_L << "Success: Shrunken.\n";
 	}
 */
-	DBG_G_L << "Failed.\n";
+	DBG_GUI_L << "Failed.\n";
 }
 
 tpoint tscrollbar_container::calculate_best_size() const
@@ -307,7 +307,7 @@ tpoint tscrollbar_container::calculate_best_size() const
 			horizontal_scrollbar.y +
 				std::max(vertical_scrollbar.y,  content.y));
 
-	DBG_G_L << "tscrollbar_container"
+	DBG_GUI_L << "tscrollbar_container"
 		<< " vertical_scrollbar " << vertical_scrollbar
 		<< " horizontal_scrollbar " << horizontal_scrollbar
 		<< " content " << content
@@ -425,7 +425,7 @@ void tscrollbar_container::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key,
 		SDLMod modifier, Uint16 /*unicode*/)
 {
-	DBG_G_E << "Scrollbar container: key press.\n";
+	DBG_GUI_E << "Scrollbar container: key press.\n";
 
 	switch(key) {
 		case SDLK_HOME :

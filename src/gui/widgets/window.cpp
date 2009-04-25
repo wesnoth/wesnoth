@@ -68,7 +68,7 @@ static int draw_interval = 0;
  */
 static Uint32 draw_timer(Uint32, void*)
 {
-//	DBG_G_E << "Pushing draw event in queue.\n";
+//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;
@@ -543,7 +543,7 @@ void twindow::layout()
 	tpoint size = get_best_size();
 	generate_dot_file("get_initial_best_size", LAYOUT);
 
-	DBG_G_L << "twindow " << __func__ << ": " << size << " maximum size "
+	DBG_GUI_L << "twindow " << __func__ << ": " << size << " maximum size "
 			<< maximum_width << ',' << maximum_height << ".\n";
 
 	/***** Does the width fit in the available width? *****/
@@ -564,7 +564,7 @@ void twindow::layout()
 
 	// *** failed?
 	if(size.x > maximum_width) {
-		ERR_G_L << "Failed to resize window, wanted width "
+		ERR_GUI_L << "Failed to resize window, wanted width "
 			<< size.x << " available width "
 			<< maximum_width << ".\n";
 
@@ -591,7 +591,7 @@ void twindow::layout()
 
 	// *** failed?
 	if(size.y > maximum_height) {
-		ERR_G_L << "Failed to resize window, wanted height "
+		ERR_GUI_L << "Failed to resize window, wanted height "
 			<< size.y << " available height "
 			<< maximum_height << ".\n";
 
@@ -674,7 +674,7 @@ void twindow::layout2(
 	 * - Linked widget support.
 	 */
 
-	DBG_G_L << "twindow " << __func__ << ": maximum size "
+	DBG_GUI_L << "twindow " << __func__ << ": maximum size "
 			<< maximum_width << ',' << maximum_height << ".\n";
 
 	layout_init2(true);
@@ -845,7 +845,7 @@ bool twindow::NEW_layout(
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 {
-	DBG_GUI << "Showing tooltip message: '" << tooltip << "'.\n";
+	DBG_GUI_G << "Showing tooltip message: '" << tooltip << "'.\n";
 
 	assert(!tooltip.empty());
 
@@ -904,7 +904,7 @@ void twindow::do_remove_tooltip()
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
 {
 	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
-	DBG_GUI << "Showing help message: '" << help_popup << "'.\n";
+	DBG_GUI_G << "Showing help message: '" << help_popup << "'.\n";
 
 	if(help_popup.empty()) {
 		return;

@@ -43,7 +43,7 @@ void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_backspace()
-	DBG_G_E << "Text: key press: backspace.\n";
+	DBG_GUI_E << "Text: key press: backspace.\n";
 
 	handled = true;
 	if(get_selection_length() != 0) {
@@ -59,7 +59,7 @@ void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_delete()
-	DBG_G_E << "Text: key press: delete.\n";
+	DBG_GUI_E << "Text: key press: delete.\n";
 
 	handled = true;
 	if(get_selection_length() != 0) {

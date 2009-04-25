@@ -24,21 +24,21 @@ namespace gui2 {
 
 void tbutton::mouse_enter(tevent_handler&)
 {
-	DBG_G_E << "Button: mouse enter.\n";
+	DBG_GUI_E << "Button: mouse enter.\n";
 
 	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_leave(tevent_handler&)
 {
-	DBG_G_E << "Button: mouse leave.\n";
+	DBG_GUI_E << "Button: mouse leave.\n";
 
 	set_state(ENABLED);
 }
 
 void tbutton::mouse_left_button_down(tevent_handler& event)
 {
-	DBG_G_E << "Button: left mouse button down.\n";
+	DBG_GUI_E << "Button: left mouse button down.\n";
 
 	event.mouse_capture();
 
@@ -47,14 +47,14 @@ void tbutton::mouse_left_button_down(tevent_handler& event)
 
 void tbutton::mouse_left_button_up(tevent_handler&)
 {
-	DBG_G_E << "Button: left mouse button up.\n";
+	DBG_GUI_E << "Button: left mouse button up.\n";
 
 	set_state(FOCUSSED);
 }
 
 void tbutton::mouse_left_button_click(tevent_handler&)
 {
-	DBG_G_E << "Button: left mouse button click.\n";
+	DBG_GUI_E << "Button: left mouse button click.\n";
 
 	sound::play_UI_sound(settings::sound_button_click);
 

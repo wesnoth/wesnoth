@@ -280,7 +280,7 @@ tline::tline(const config& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Line: found debug message '" << debug << "'.\n";
 	}
 }
 
@@ -298,7 +298,7 @@ void tline::draw(surface& canvas,
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
 
-	DBG_G_D << "Line: draw from "
+	DBG_GUI_D << "Line: draw from "
 		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
@@ -415,7 +415,7 @@ trectangle::trectangle(const config& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_G_P << "Rectangle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.\n";
 	}
 }
 
@@ -433,7 +433,7 @@ void trectangle::draw(surface& canvas,
 	const unsigned w = w_(variables);
 	const unsigned h = h_(variables);
 
-	DBG_G_D << "Rectangle: draw from " << x << ',' << y
+	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y
 		<< " width " << w << " height " << h
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
@@ -602,7 +602,7 @@ timage::timage(const config& cfg) :
 		surface tmp(image::get_image(image::locator(cfg["name"])));
 
 		if(!tmp) {
-			ERR_G_D << "Image: '" << cfg["name"]
+			ERR_GUI_D << "Image: '" << cfg["name"]
 				<< "'not found and won't be drawn.\n";
 			return;
 		}
@@ -614,14 +614,14 @@ timage::timage(const config& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_G_P << "Image: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Image: found debug message '" << debug << "'.\n";
 	}
 }
 
 void timage::draw(surface& canvas,
 	const game_logic::map_formula_callable& variables)
 {
-	DBG_G_D << "Image: draw.\n";
+	DBG_GUI_D << "Image: draw.\n";
 
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -632,14 +632,14 @@ void timage::draw(surface& canvas,
 		const std::string& name = image_name_(variables);
 
 		if(name.empty()) {
-			DBG_G_D << "Image: formula returned no value, will not be drawn.\n";
+			DBG_GUI_D << "Image: formula returned no value, will not be drawn.\n";
 			return;
 		}
 
 		surface tmp(image::get_image(image::locator(name)));
 
 		if(!tmp) {
-			ERR_G_D << "Image: formula returned name '"
+			ERR_GUI_D << "Image: formula returned name '"
 				<< name << "'not found and won't be drawn.\n";
 			return;
 		}
@@ -676,7 +676,7 @@ void timage::draw(surface& canvas,
 		bool stretch = stretch_ && (!!w ^ !!h);
 		if(!w) {
 			if(stretch) {
-				DBG_G_D << "Image: vertical stretch from " << image_->w
+				DBG_GUI_D << "Image: vertical stretch from " << image_->w
 					<< ',' << image_->h << " to a height of " << h << ".\n";
 
 				surf = stretch_surface_vertical(image_, h, false);
@@ -687,7 +687,7 @@ void timage::draw(surface& canvas,
 
 		if(!h) {
 			if(stretch) {
-				DBG_G_D << "Image: horizontal stretch from " << image_->w
+				DBG_GUI_D << "Image: horizontal stretch from " << image_->w
 					<< ',' << image_->h << " to a width of " << w << ".\n";
 
 				surf = stretch_surface_horizontal(image_, w, false);
@@ -698,7 +698,7 @@ void timage::draw(surface& canvas,
 
 		if(!done) {
 
-			DBG_G_D << "Image: scaling from " << image_->w
+			DBG_GUI_D << "Image: scaling from " << image_->w
 				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
 
 			surf = scale_surface(image_, w, h, false);
@@ -816,7 +816,7 @@ ttext::ttext(const config& cfg) :
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_G_P << "Text: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Text: found debug message '" << debug << "'.\n";
 	}
 }
 
@@ -832,7 +832,7 @@ void ttext::draw(surface& canvas,
 	const t_string text = text_(variables);
 
 	if(text.empty()) {
-		DBG_G_D << "Text: no text to render, leave.\n";
+		DBG_GUI_D << "Text: no text to render, leave.\n";
 		return;
 	}
 
@@ -870,7 +870,7 @@ void ttext::draw(surface& canvas,
 	const unsigned w = w_(local_variables);
 	const unsigned h = h_(local_variables);
 
-	DBG_G_D << "Text: drawing text '" << text
+	DBG_GUI_D << "Text: drawing text '" << text
 		<< "' drawn from " << x << ',' << y
 		<< " width " << w << " height " << h
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
@@ -881,11 +881,11 @@ void ttext::draw(surface& canvas,
 
 	// A text might be to long and will be clipped.
 	if(surf->w > static_cast<int>(w)) {
-		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
+		WRN_GUI_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
 
 	if(surf->h > static_cast<int>(h)) {
-		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
+		WRN_GUI_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
 
 	SDL_Rect dst = { x, y, canvas->w, canvas->h };
@@ -927,7 +927,7 @@ void tcanvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
 	if(!dirty_ && !force) {
-		DBG_G_D << "Canvas: nothing to draw.\n";
+		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
 
@@ -938,7 +938,7 @@ void tcanvas::draw(const bool force)
 	}
 
 	// create surface
-	DBG_G_D << "Canvas: create new empty canvas.\n";
+	DBG_GUI_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
 	// draw items
@@ -962,7 +962,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		const std::string &type = it.key;
 		const config &data = it.cfg;
 
-		DBG_G_P << "Canvas: found shape of the type " << type << ".\n";
+		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
 			shapes_.push_back(new tline(data));
@@ -973,7 +973,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "text") {
 			shapes_.push_back(new ttext(data));
 		} else {
-			ERR_G_P << "Canvas: found a shape of an invalid type " << type << ".\n";
+			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type << ".\n";
 			assert(false); // FIXME remove in production code.
 		}
 	}
@@ -998,7 +998,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
 
-	DBG_G_D << "Shape: draw line from "
+	DBG_GUI_D << "Shape: draw line from "
 		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
 		<< " canvas width " << w << " canvas height "
 		<< canvas->h << ".\n";

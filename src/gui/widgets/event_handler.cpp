@@ -39,7 +39,7 @@ namespace gui2{
  */
 static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 {
-	DBG_G_E << "Pushing hover event in queue.\n";
+	DBG_GUI_E << "Pushing hover event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;
@@ -68,7 +68,7 @@ static Uint32 hover_callback(Uint32 /*interval*/, void *param)
  */
 static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 {
-	DBG_G_E << "Pushing popup removal event in queue.\n";
+	DBG_GUI_E << "Pushing popup removal event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;
@@ -181,20 +181,20 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT :
-					DBG_G_E << "Event: Left button down.\n";
+					DBG_GUI_E << "Event: Left button down.\n";
 					mouse_button_down(event, mouse_over, left_);
 					break;
 				case SDL_BUTTON_MIDDLE :
-					DBG_G_E << "Event: Middle button down.\n";
+					DBG_GUI_E << "Event: Middle button down.\n";
 					mouse_button_down(event, mouse_over, middle_);
 					break;
 				case SDL_BUTTON_RIGHT :
-					DBG_G_E << "Event: Right button down.\n";
+					DBG_GUI_E << "Event: Right button down.\n";
 					mouse_button_down(event, mouse_over, right_);
 					break;
 				default:
 					// cast to avoid being printed as char.
-					WRN_G_E << "Unhandled 'mouse button down' event for button "
+					WRN_GUI_E << "Unhandled 'mouse button down' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
 					break;
 			}
@@ -218,28 +218,28 @@ void tevent_handler::handle_event(const SDL_Event& event)
 				 * unconditionally is safe.
 				 */
 				case SDL_BUTTON_LEFT :
-					DBG_G_E << "Event: Left button up.\n";
+					DBG_GUI_E << "Event: Left button up.\n";
 					mouse_button_up(event, mouse_over, left_);
 					break;
 				case SDL_BUTTON_MIDDLE :
-					DBG_G_E << "Event: Middle button up.\n";
+					DBG_GUI_E << "Event: Middle button up.\n";
 					mouse_button_up(event, mouse_over, middle_);
 					break;
 				case SDL_BUTTON_RIGHT :
-					DBG_G_E << "Event: Right button up.\n";
+					DBG_GUI_E << "Event: Right button up.\n";
 					mouse_button_up(event, mouse_over, right_);
 					break;
 				case SDL_BUTTON_WHEELUP :
 				case SDL_BUTTON_WHEELDOWN :
 				case SDL_BUTTON_WHEELLEFT :
 				case SDL_BUTTON_WHEELRIGHT :
-					DBG_G_E << "Event: Wheel\n";
+					DBG_GUI_E << "Event: Wheel\n";
 					mouse_wheel(event,
 							find_widget(tpoint(mouse_x_, mouse_y_), false));
 					break;
 				default:
 					// cast to avoid being printed as char.
-					WRN_G_E << "Unhandled 'mouse button up' event for button "
+					WRN_GUI_E << "Unhandled 'mouse button up' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
 					break;
 			}
@@ -268,7 +268,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
-				DBG_G_E << "Event: System event.\n";
+				DBG_GUI_E << "Event: System event.\n";
 				//clipboard support for X11
 				handle_system_event(event);
 				break;
@@ -278,7 +278,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 		default:
 
 			// cast to avoid being printed as char.
-			WRN_G_E << "Unhandled event " << static_cast<Uint32>(event.type) << ".\n";
+			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type) << ".\n";
 			break;
 		}
 }
@@ -346,7 +346,7 @@ void tevent_handler::remove_from_keyboard_chain(twidget* widget)
 
 void tevent_handler::show_tooltip(const t_string& message, const unsigned timeout)
 {
-	DBG_G_E << "Event: show tooltip.\n";
+	DBG_GUI_E << "Event: show tooltip.\n";
 
 	assert(!tooltip_);
 
@@ -376,10 +376,10 @@ void tevent_handler::remove_tooltip()
 
 void tevent_handler::show_help_popup(const t_string& message, const unsigned timeout)
 {
-	DBG_G_E << "Event: show help popup.\n";
+	DBG_GUI_E << "Event: show help popup.\n";
 
 	if(help_popup_) {
-		DBG_G_E << "Help is already there, bailing out.\n";
+		DBG_GUI_E << "Help is already there, bailing out.\n";
 		return;
 	}
 
@@ -418,7 +418,7 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 		return;
 	}
 
-	DBG_G_E << "Event: mouse enter.\n";
+	DBG_GUI_E << "Event: mouse enter.\n";
 
 	assert(mouse_over);
 
@@ -471,7 +471,7 @@ void tevent_handler::mouse_hover(
 void tevent_handler::mouse_leave(
 		const SDL_Event& /*event*/, twidget* /*mouse_over*/)
 {
-	DBG_G_E << "Event: mouse leave.\n";
+	DBG_GUI_E << "Event: mouse leave.\n";
 
 	assert(mouse_focus_);
 
@@ -492,7 +492,7 @@ void tevent_handler::mouse_button_down(
 		const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
 {
 	if(button.is_down) {
-		WRN_G_E << "In 'button down' for button '" << button.name
+		WRN_GUI_E << "In 'button down' for button '" << button.name
 			<< "' but the mouse button is already down, we missed an event.\n";
 		return;
 	}
@@ -508,7 +508,7 @@ void tevent_handler::mouse_button_down(
 		}
 
 		if(mouse_over != mouse_focus_) {
-			WRN_G_E << "Mouse down event on non focussed widget "
+			WRN_GUI_E << "Mouse down event on non focussed widget "
 				<< "and mouse not captured, we missed events.\n";
 			mouse_focus_ = mouse_over;
 		}
@@ -522,7 +522,7 @@ void tevent_handler::mouse_button_up(
 	const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
 {
 	if(!button.is_down) {
-		WRN_G_E << "In 'button up' for button '" << button.name
+		WRN_GUI_E << "In 'button up' for button '" << button.name
 			<< "' but the mouse button is already up, we missed an event.\n";
 		return;
 	}
@@ -590,24 +590,24 @@ void tevent_handler::mouse_wheel(const SDL_Event& event, twidget* widget)
 
 			switch(event.button.button) {
 				case SDL_BUTTON_WHEELUP :
-					DBG_G_E << "Event: Wheel up.\n";
+					DBG_GUI_E << "Event: Wheel up.\n";
 					widget->mouse_wheel_up(*this, handled);
 					break;
 				case SDL_BUTTON_WHEELDOWN :
-					DBG_G_E << "Event: Wheel down.\n";
+					DBG_GUI_E << "Event: Wheel down.\n";
 					widget->mouse_wheel_down(*this, handled);
 					break;
 				case SDL_BUTTON_WHEELLEFT :
-					DBG_G_E << "Event: Wheel left.\n";
+					DBG_GUI_E << "Event: Wheel left.\n";
 					widget->mouse_wheel_left(*this, handled);
 					break;
 				case SDL_BUTTON_WHEELRIGHT :
-					DBG_G_E << "Event: Wheel right.\n";
+					DBG_GUI_E << "Event: Wheel right.\n";
 					widget->mouse_wheel_right(*this, handled);
 					break;
 				default:
 					// cast to avoid being printed as char.
-					WRN_G_E << "Unhandled wheel event for button "
+					WRN_GUI_E << "Unhandled wheel event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
 					assert(false);
 					break;

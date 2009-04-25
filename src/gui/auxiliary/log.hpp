@@ -19,35 +19,35 @@
 
 namespace gui2 {
 
-extern lg::log_domain log_gui;
-#define DBG_G_L LOG_STREAM_INDENT(debug, log_gui_layout)
-#define LOG_G_L LOG_STREAM_INDENT(info, log_gui_layout)
-#define WRN_G_L LOG_STREAM_INDENT(warn, log_gui_layout)
-#define ERR_G_L LOG_STREAM_INDENT(err, log_gui_layout)
-
 extern lg::log_domain log_gui_draw;
-#define DBG_G_D LOG_STREAM_INDENT(debug, log_gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, log_gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, log_gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, log_gui_draw)
+#define DBG_GUI_D LOG_STREAM_INDENT(debug, log_gui_draw)
+#define LOG_GUI_D LOG_STREAM_INDENT(info,  log_gui_draw)
+#define WRN_GUI_D LOG_STREAM_INDENT(warn,  log_gui_draw)
+#define ERR_GUI_D LOG_STREAM_INDENT(err,   log_gui_draw)
 
 extern lg::log_domain log_gui_event;
-#define DBG_G_E LOG_STREAM_INDENT(debug, log_gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, log_gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, log_gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, log_gui_event)
+#define DBG_GUI_E LOG_STREAM_INDENT(debug, log_gui_event)
+#define LOG_GUI_E LOG_STREAM_INDENT(info,  log_gui_event)
+#define WRN_GUI_E LOG_STREAM_INDENT(warn,  log_gui_event)
+#define ERR_GUI_E LOG_STREAM_INDENT(err,   log_gui_event)
+
+extern lg::log_domain log_gui_general;
+#define DBG_GUI_G LOG_STREAM_INDENT(debug, log_gui_general)
+#define LOG_GUI_G LOG_STREAM_INDENT(info,  log_gui_general)
+#define WRN_GUI_G LOG_STREAM_INDENT(warn,  log_gui_general)
+#define ERR_GUI_G LOG_STREAM_INDENT(err,   log_gui_general)
 
 extern lg::log_domain log_gui_layout;
-#define DBG_GUI LOG_STREAM_INDENT(debug, log_gui)
-#define LOG_GUI LOG_STREAM_INDENT(info, log_gui)
-#define WRN_GUI LOG_STREAM_INDENT(warn, log_gui)
-#define ERR_GUI LOG_STREAM_INDENT(err, log_gui)
+#define DBG_GUI_L LOG_STREAM_INDENT(debug, log_gui_layout)
+#define LOG_GUI_L LOG_STREAM_INDENT(info,  log_gui_layout)
+#define WRN_GUI_L LOG_STREAM_INDENT(warn,  log_gui_layout)
+#define ERR_GUI_L LOG_STREAM_INDENT(err,   log_gui_layout)
 
 extern lg::log_domain log_gui_parse;
-#define DBG_G_P LOG_STREAM_INDENT(debug, log_gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, log_gui)_parse
-#define WRN_G_P LOG_STREAM_INDENT(warn, log_gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, log_gui_parse)
+#define DBG_GUI_P LOG_STREAM_INDENT(debug, log_gui_parse)
+#define LOG_GUI_P LOG_STREAM_INDENT(info,  log_gui_parse)
+#define WRN_GUI_P LOG_STREAM_INDENT(warn,  log_gui_parse)
+#define ERR_GUI_P LOG_STREAM_INDENT(err,   log_gui_parse)
 
 } // namespace gui2
 

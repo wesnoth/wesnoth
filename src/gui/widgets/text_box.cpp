@@ -150,7 +150,7 @@ void ttext_box::update_canvas()
 
 void ttext_box::mouse_move(tevent_handler& event)
 {
-	DBG_G_E << "Text box: mouse move.\n";
+	DBG_GUI_E << "Text box: mouse move.\n";
 
 	if(!dragging_) {
 		return;
@@ -164,21 +164,21 @@ void ttext_box::mouse_left_button_down(tevent_handler& event)
 	// Inherited.
 	ttext_::mouse_left_button_down(event);
 
-	DBG_G_E << "Text box: left mouse down.\n";
+	DBG_GUI_E << "Text box: left mouse down.\n";
 
 	handle_mouse_selection(event, true);
 }
 
 void ttext_box::mouse_left_button_up(tevent_handler& /*event*/)
 {
-	DBG_G_E << "Text box: left mouse up.\n";
+	DBG_GUI_E << "Text box: left mouse up.\n";
 
 	dragging_ = false;
 }
 
 void ttext_box::mouse_left_button_double_click(tevent_handler&)
 {
-	DBG_G_E << "Text box: left mouse double click.\n";
+	DBG_GUI_E << "Text box: left mouse double click.\n";
 
 	select_all();
 }
