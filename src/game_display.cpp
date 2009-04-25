@@ -32,7 +32,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
-#define LOG_DP LOG_STREAM(err, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
