@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 13:27+0200\n"
-"PO-Revision-Date: 2009-03-29 15:57+0100\n"
+"PO-Revision-Date: 2009-04-25 21:35+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -377,9 +377,8 @@ msgstr "Maďarský preklad"
 
 #. [about]
 #: data/core/about.cfg:1641
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Taliansky preklad"
+msgstr "Islandský preklad"
 
 #. [about]
 #: data/core/about.cfg:1648
@@ -1154,12 +1153,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Šanca na zásah danej jednotky určená <ref>dst=terrain text='terénom'</ref>, "
-"na ktorom práve stojí. Dá sa zistiť ťuknutím na jednotku pravým tlačidlom, "
-"voľbou \"Popis jednotky\", v časti <italic>text='Vplyv terénu'</italic>. "
-"Napríklad elfovia majú v lese obranu 70%, čo znamená, že jednotka, ktorá na "
-"nich útočí, má šancu zasiahnuť ich iba 30%. Podobne, elfova šanca zasiahnuť "
-"útočníka počas protiúderu záleží na teréne, v ktorom je útočník."
+"Šanca zasiahnuť danú jednotku je určená terénom, na ktorom práve stojí. Dá "
+"sa zistiť ťuknutím na jednotku pravým tlačidlom, voľbou \"Popis jednotky\", "
+"v časti <italic>text='Vplyv terénu'</italic>. Napríklad elfovia majú v lese "
+"obranu 70%, čo znamená, že jednotka, ktorá na nich útočí, má šancu zasiahnuť "
+"ich iba 30%. Podobne, elfova šanca zasiahnuť útočníka počas protiúderu "
+"záleží na teréne, v ktorom je útočník."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
@@ -1969,7 +1968,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1979,8 +1977,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Životaschopné jednotky majú o viac o 1 život za každú úroveň ako obyčajne a "
-"oddychovanie im uzdraví o 2 životy viac v každom kole, v ktorom nebojujú."
+"Životaschopné jednotky majú o 1 život a ešte o 1 život za každú úroveň viac "
+"ako obyčajne a oddychovanie im uzdraví 2 životy v každom kole, v ktorom "
+"nebojujú. Jed im spôsobuje o štvrtinu menšie zranenia."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
@@ -8023,7 +8022,7 @@ msgstr "Štatistika"
 
 #: src/menu_events.cpp:200 src/menu_events.cpp:1010
 msgid "Level^Lvl."
-msgstr "Úroveň^Úr."
+msgstr "Úr."
 
 #: src/menu_events.cpp:203
 msgid "unit list^Traits"
@@ -8287,6 +8286,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Zoznam dostupných príkazov a popis príkazov. \"help all\" zobrazí aj práve "
+"dostupné príkazy."
 
 #: src/menu_events.cpp:2007
 msgid " No help available."
@@ -8367,14 +8368,17 @@ msgstr ""
 #: src/menu_events.cpp:2210
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
+"Aktualizovať údaje o tvojej prezývke. Pre zoznam možných údajov pozri '/"
+"details'."
 
 #: src/menu_events.cpp:2213
 msgid "Request information about a nick."
-msgstr "Vyžiadaj informácie o nicku."
+msgstr "Vyžiadaj informácie o prezývke."
 
 #: src/menu_events.cpp:2215
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
+"Vyžiadaj zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
 
 #: src/menu_events.cpp:2339
 msgid "Refresh gui."
@@ -8410,7 +8414,7 @@ msgstr "Uložiť a vypnúť."
 
 #: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignorovať chyby záznamu."
 
 #: src/menu_events.cpp:2362
 msgid "Disable autosaves."
@@ -8641,10 +8645,9 @@ msgstr ""
 "vykopnutie tohto používateľa!"
 
 #: src/multiplayer.cpp:369
-#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr "Chyba pri prihlasovaní (server nemal seed pre toto pripojenie)."
+msgstr "Chyba pri prihlasovaní (server nemal 'seed' pre toto pripojenie)."
 
 #: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."
