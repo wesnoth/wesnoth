@@ -154,9 +154,6 @@ public:
 	 */
 	size_t get_length() const { return length_; }
 
-	/** Helper for policies::tdeep_copy. */
-	void clone();
-
 	/***** ***** ***** ***** Setters / getters ***** ***** ***** *****/
 
 	ttext& set_text(const std::string& text, const bool markedup);
