@@ -67,8 +67,9 @@ kommandoradsläget).
 använd speciella låtsaslokaler för att byta till vilket språk som helst,
 även om det inte är installerat för hela systemet.
 .TP 
-\fB\-e, \-\-editor\fP
-startar karteditorn direkt.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 visar antalet ramar per sekund som spelet körs i för närvarande i ena hörnet
@@ -89,9 +90,10 @@ komprimerar en fil till gzip\-format, sparar den som \fIinfil\fP.gz och raderar
 visar en sammanfattning av möjliga kommandoradsflaggor.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ fil\fP
-öppnar ett sparat spel från \fIfil\fP (måste finnas i standardkatalogen för
-sparade spel). Om den anges tillsammans med flaggan \fB\-\-editor\fP (\fB\-e\fP)
-kommer karteditorn startas med kartan från \fIfil\fP öppen.
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fInivå\fP\fB=\fP\fIdomän1\fP\fB,\fP\fIdomän2\fP\fB,\fP\fI...\fP
 anger allvarlighetsgraden för loggdomänerna. För att se allt kan \fBall\fP

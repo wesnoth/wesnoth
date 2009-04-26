@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:29+0100\n"
+"POT-Creation-Date: 2009-04-26 11:33+0200\n"
 "PO-Revision-Date: 2008-12-23 20:50+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -201,8 +201,8 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:120
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:301
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:338
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:316
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:353
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:152
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:454
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:76
@@ -1331,8 +1331,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:124
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:305
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:342
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:320
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:357
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:160
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:458
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:125
@@ -1359,9 +1359,9 @@ msgstr "Jeg kan se et hus i det fjerne!"
 
 #. [message]: speaker=narrator
 #. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:367
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:373
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:461
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:382
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:388
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:476
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:424
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:461
 msgid "Thursagan"
@@ -1482,7 +1482,7 @@ msgstr "Flyt Thursagan til signalposten"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:128
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:309
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:324
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:164
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:462
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:129
@@ -3164,8 +3164,13 @@ msgstr ""
 "med at elverne har hyret flere af dem. Det er dårligt nyt for os, for de er "
 "lige så hurtige som os i hulerne."
 
+#. [message]: speaker=Krawg
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:291
+msgid "Raaaawww! Loook! Forge heeeere!"
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:284
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
 msgid ""
 "Look, I've found something here. It looks like a forge, heated by the lava. "
 "It looks magic, and it looks hot enough to make the Sceptre."
@@ -3174,22 +3179,22 @@ msgstr ""
 "magisk ud, og den virker varm nok til at kunne lave scepteret."
 
 #. [message]: speaker=Khrakrahs
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:288
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:303
 msgid "That pretty metal rock is mine! Get away from it!"
 msgstr "Det smukke metalsten er mit! Væk fra det!"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:293
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:308
 msgid "Move Thursagan to the forge"
 msgstr "Flyt Thursagan til smedjen"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:297
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:312
 msgid "Defend Thursagan until the sceptre is complete"
 msgstr "Forsvar Thuragan indtil scepteret er færdig"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:325
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:340
 msgid ""
 "This forge will work perfectly. Give me a few days here, and I can reforge "
 "the sceptre to fulfill its purpose."
@@ -3198,34 +3203,34 @@ msgstr ""
 "smede denne scepter til sit formål."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:334
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:349
 msgid "Survive for 9 turns"
 msgstr "Overlev i 9 runder"
 
 #. [objective]: condition=lose
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:346
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
 msgid "An enemy moves onto the forge"
 msgstr "En fjende flytter ind i smedjen"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:369
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:384
 msgid "You fool, you let the enemy get at me as I was unarmed!"
 msgstr "Dit fjols, du lader fjenden komme tæt på mig mens jeg er ubevæbnet!"
 
 #. [message]: speaker=narrator
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:375
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:390
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:84
 msgid "Ayahahh..."
 msgstr "Ayahahh..."
 
 #. [effect]: type=fire
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:412
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:427
 msgid "scepter of fire"
 msgstr "ildscepter"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:443
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:458
 msgid ""
 "I have completed my work. Now it is truly the Sceptre of Fire, a powerful "
 "magical artifact."
@@ -3234,7 +3239,7 @@ msgstr ""
 "magisk artefakt."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:447
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:462
 msgid ""
 "Good. Now, let's get out of this cave, before the elves, dwarves or bats "
 "kill us!"
@@ -3243,7 +3248,7 @@ msgstr ""
 "dræber os!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:463
+#: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:478
 msgid "In $turnsleft more turns I will have completed the sceptre."
 msgstr "Om $turnsleft runder vil jeg være færdig med scepteret."
 

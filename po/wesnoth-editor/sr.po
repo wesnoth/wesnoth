@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 12:25+0100\n"
+"POT-Creation-Date: 2009-04-26 11:32+0200\n"
 "PO-Revision-Date: 2009-04-10 11:20+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -100,9 +100,10 @@ msgstr "специјално"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
+#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only."
+"paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Левим/десним дугметом миша цртате терен спреда/у позадини. Држите Shift за "
 "сликање само по основном слоју."
@@ -179,7 +180,8 @@ msgstr "Напусти уређивач"
 msgid "Fatal error"
 msgstr "Кобна грешка"
 
-#: src/editor2/editor_controller.cpp:290 src/editor2/editor_controller.cpp:989
+#: src/editor2/editor_controller.cpp:290
+#: src/editor2/editor_controller.cpp:1039
 msgid "(New Map)"
 msgstr "(нова мапа)"
 
@@ -208,8 +210,8 @@ msgstr ""
 msgid "Quit"
 msgstr "Напуштање"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:472
-#: src/editor2/editor_controller.cpp:508 src/editor2/editor_controller.cpp:530
+#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:506 src/editor2/editor_controller.cpp:528
 msgid "Error"
 msgstr "Грешка"
 
@@ -227,82 +229,87 @@ msgid ""
 msgstr "Желите ли да одбаците све измене над мапом од последњег уписа?"
 
 # наслов
-#: src/editor2/editor_controller.cpp:410
+#: src/editor2/editor_controller.cpp:415
 msgid "Choose a Map to Open"
 msgstr "Избор мапе за отварање"
 
-#: src/editor2/editor_controller.cpp:414
-msgid "This map is already open."
-msgstr "Ова мапа је већ отворена."
-
-#: src/editor2/editor_controller.cpp:452
+#: src/editor2/editor_controller.cpp:450
 msgid "Save the Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor2/editor_controller.cpp:456
+#: src/editor2/editor_controller.cpp:454
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Датотека већ постоји. Желите ли да је пребришете?"
 
-#: src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:470
 msgid "No random map generators found."
 msgstr "Нема ниједног генератора насумичних мапа."
 
-#: src/editor2/editor_controller.cpp:483
+#: src/editor2/editor_controller.cpp:481
 msgid "Map creation failed."
 msgstr "Стварање мапе није успело."
 
 # наслов
-#: src/editor2/editor_controller.cpp:498
+#: src/editor2/editor_controller.cpp:496
 msgid "Choose a mask to apply"
 msgstr "Избор маске за примењивање"
 
-#: src/editor2/editor_controller.cpp:505
+#: src/editor2/editor_controller.cpp:503
 msgid "Error loading mask"
 msgstr "Грешка при учитавању маске"
 
 # наслов
-#: src/editor2/editor_controller.cpp:520
+#: src/editor2/editor_controller.cpp:518
 msgid "Choose target map"
 msgstr "Избор циљне мапе"
 
-#: src/editor2/editor_controller.cpp:527 src/editor2/editor_controller.cpp:640
-#: src/editor2/editor_main.cpp:53
+#: src/editor2/editor_controller.cpp:525 src/editor2/editor_controller.cpp:689
 msgid "Error loading map"
 msgstr "Грешка при учитавању мапе"
 
-#: src/editor2/editor_controller.cpp:616
+#: src/editor2/editor_controller.cpp:603 src/editor2/editor_controller.cpp:645
+msgid "This map is already open."
+msgstr "Ова мапа је већ отворена."
+
+#: src/editor2/editor_controller.cpp:624
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor2/editor_controller.cpp:621
-msgid "Could not save the map: $msg"
-msgstr "Не могу да сачувам мапу: $msg"
+#: src/editor2/editor_controller.cpp:668
+msgid "Loaded embedded map data"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:1016
+#: src/editor2/editor_controller.cpp:669 src/editor2/editor_controller.cpp:683
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:679
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1069
 msgid "Undo"
 msgstr "Опозови"
 
-#: src/editor2/editor_controller.cpp:1018
+#: src/editor2/editor_controller.cpp:1071
 msgid "Can't Undo"
 msgstr "Опозив неизводљив"
 
-#: src/editor2/editor_controller.cpp:1022
+#: src/editor2/editor_controller.cpp:1075
 msgid "Redo"
 msgstr "Понови"
 
-#: src/editor2/editor_controller.cpp:1024
+#: src/editor2/editor_controller.cpp:1077
 msgid "Can't Redo"
 msgstr "Понављање неизводљиво"
 
-#: src/editor2/editor_map.cpp:85
-msgid "Empty map file or file not found"
-msgstr "Датотека мапе је празна или није нађена"
-
-#: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
 msgid "Player"
 msgstr "Играч"
 
-#: src/editor2/editor_map.cpp:285
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "Величина циљне мапе је различита од текуће"
 
@@ -316,16 +323,40 @@ msgstr "Исп."
 msgid "BG"
 msgstr "Поз."
 
-#: src/editor2/mouse_action.cpp:382
+#: src/editor2/map_context.cpp:70
+msgid "File not found"
+msgstr ""
+
+#: src/editor2/map_context.cpp:84
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+
+#: src/editor2/map_context.cpp:99
+#, fuzzy
+msgid "Empty map file"
+msgstr "Датотека мапе је празна или није нађена"
+
+#: src/editor2/map_context.cpp:219
+#, fuzzy
+msgid "Could not save into scenario"
+msgstr "Не могу да сачувам мапу: $msg"
+
+#: src/editor2/map_context.cpp:226
+msgid "Could not save the map: $msg"
+msgstr "Не могу да сачувам мапу: $msg"
+
+#: src/editor2/mouse_action.cpp:436
 msgid "(Player)^None"
 msgstr "ниједан"
 
 # наслов
-#: src/editor2/mouse_action.cpp:389
+#: src/editor2/mouse_action.cpp:443
 msgid "Choose player"
 msgstr "Избор играча"
 
-#: src/editor2/mouse_action.cpp:390
+#: src/editor2/mouse_action.cpp:444
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "

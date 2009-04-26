@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-26 12:25+0100\n"
+"POT-Creation-Date: 2009-04-26 11:32+0200\n"
 "PO-Revision-Date: 2009-02-27 17:18-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -99,9 +99,10 @@ msgstr "特殊的"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
+#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only."
+"paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "使用鼠标左（右）键绘制前（背）景地形。按下Shift键可以只绘制基层（base "
 "layer）。"
@@ -176,7 +177,8 @@ msgstr "退出编辑器"
 msgid "Fatal error"
 msgstr "严重错误"
 
-#: src/editor2/editor_controller.cpp:290 src/editor2/editor_controller.cpp:989
+#: src/editor2/editor_controller.cpp:290
+#: src/editor2/editor_controller.cpp:1039
 msgid "(New Map)"
 msgstr "（新建地图）"
 
@@ -200,8 +202,8 @@ msgstr "确定要退出吗？下面的地图已经被修改，上次保存之后
 msgid "Quit"
 msgstr "退出"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:472
-#: src/editor2/editor_controller.cpp:508 src/editor2/editor_controller.cpp:530
+#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:506 src/editor2/editor_controller.cpp:528
 msgid "Error"
 msgstr "错误"
 
@@ -218,80 +220,85 @@ msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "放弃上次保存之后所作的修改吗？"
 
-#: src/editor2/editor_controller.cpp:410
+#: src/editor2/editor_controller.cpp:415
 msgid "Choose a Map to Open"
 msgstr "选择要打开的地图"
 
-#: src/editor2/editor_controller.cpp:414
-msgid "This map is already open."
-msgstr "这张地图已经被打开。"
-
-#: src/editor2/editor_controller.cpp:452
+#: src/editor2/editor_controller.cpp:450
 msgid "Save the Map As"
 msgstr "地图另存为"
 
-#: src/editor2/editor_controller.cpp:456
+#: src/editor2/editor_controller.cpp:454
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "文件已存在，要覆盖吗？"
 
-#: src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:470
 msgid "No random map generators found."
 msgstr "没有找到随机地图生成器。"
 
-#: src/editor2/editor_controller.cpp:483
+#: src/editor2/editor_controller.cpp:481
 msgid "Map creation failed."
 msgstr "创建地图失败。"
 
-#: src/editor2/editor_controller.cpp:498
+#: src/editor2/editor_controller.cpp:496
 msgid "Choose a mask to apply"
 msgstr "选择要使用的遮照"
 
-#: src/editor2/editor_controller.cpp:505
+#: src/editor2/editor_controller.cpp:503
 msgid "Error loading mask"
 msgstr "加载遮照时错误"
 
-#: src/editor2/editor_controller.cpp:520
+#: src/editor2/editor_controller.cpp:518
 msgid "Choose target map"
 msgstr "选择目标地图"
 
-#: src/editor2/editor_controller.cpp:527 src/editor2/editor_controller.cpp:640
-#: src/editor2/editor_main.cpp:53
+#: src/editor2/editor_controller.cpp:525 src/editor2/editor_controller.cpp:689
 msgid "Error loading map"
 msgstr "加载地图时错误"
 
-#: src/editor2/editor_controller.cpp:616
+#: src/editor2/editor_controller.cpp:603 src/editor2/editor_controller.cpp:645
+msgid "This map is already open."
+msgstr "这张地图已经被打开。"
+
+#: src/editor2/editor_controller.cpp:624
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor2/editor_controller.cpp:621
-msgid "Could not save the map: $msg"
-msgstr "不能保存地图： $msg"
+#: src/editor2/editor_controller.cpp:668
+msgid "Loaded embedded map data"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:1016
+#: src/editor2/editor_controller.cpp:669 src/editor2/editor_controller.cpp:683
+msgid "Map loaded from scenario"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:679
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1069
 msgid "Undo"
 msgstr "撤销"
 
-#: src/editor2/editor_controller.cpp:1018
+#: src/editor2/editor_controller.cpp:1071
 msgid "Can't Undo"
 msgstr "无法撤销"
 
-#: src/editor2/editor_controller.cpp:1022
+#: src/editor2/editor_controller.cpp:1075
 msgid "Redo"
 msgstr "重复"
 
-#: src/editor2/editor_controller.cpp:1024
+#: src/editor2/editor_controller.cpp:1077
 msgid "Can't Redo"
 msgstr "无法重复"
 
-#: src/editor2/editor_map.cpp:85
-msgid "Empty map file or file not found"
-msgstr "无法找到地图文件或地图文件为空"
-
-#: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
 msgid "Player"
 msgstr "玩家"
 
-#: src/editor2/editor_map.cpp:285
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "目标地图尺寸与当前地图不同"
 
@@ -303,15 +310,39 @@ msgstr "前置地形"
 msgid "BG"
 msgstr "后置地形"
 
-#: src/editor2/mouse_action.cpp:382
+#: src/editor2/map_context.cpp:70
+msgid "File not found"
+msgstr ""
+
+#: src/editor2/map_context.cpp:84
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+
+#: src/editor2/map_context.cpp:99
+#, fuzzy
+msgid "Empty map file"
+msgstr "无法找到地图文件或地图文件为空"
+
+#: src/editor2/map_context.cpp:219
+#, fuzzy
+msgid "Could not save into scenario"
+msgstr "不能保存地图： $msg"
+
+#: src/editor2/map_context.cpp:226
+msgid "Could not save the map: $msg"
+msgstr "不能保存地图： $msg"
+
+#: src/editor2/mouse_action.cpp:436
 msgid "(Player)^None"
 msgstr "(玩家)"
 
-#: src/editor2/mouse_action.cpp:389
+#: src/editor2/mouse_action.cpp:443
 msgid "Choose player"
 msgstr "选择玩家"
 
-#: src/editor2/mouse_action.cpp:390
+#: src/editor2/mouse_action.cpp:444
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "

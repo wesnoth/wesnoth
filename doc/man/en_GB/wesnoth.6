@@ -65,8 +65,9 @@ mode).
 use special dummy locales to switch to any language even if that language
 isn't installed system\-wide.
 .TP 
-\fB\-e, \-\-editor\fP
-start the in\-game map editor directly.
+\fB\-e, \-\-editor \ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 displays the number of frames per second the game is currently running at,
@@ -89,7 +90,8 @@ displays a summary of command line options to standard output, and exits.
 \fB\-l,\ \-\-load\fP\fI\ file\fP
 loads the savegame \fIfile\fP from the standard save game directory.  If the
 \fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open.
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
