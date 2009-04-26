@@ -45,10 +45,10 @@ namespace game_config {
 				std::string path_;
 			public:
 				/**
-				 * adds normal preproc define
-				 * @params name of preproc define to add
-				 * @aprams true if we should add this
-				 **/
+				 * Adds normal preproc define.
+				 * @param name name of preproc define to add.
+				 * @param add true if we should add this.
+				 */
 				scoped_preproc_define_internal(const std::string& name, bool add = true) : name_(name), add_(add), path_()
 				{
 					if (add_)
@@ -87,11 +87,11 @@ namespace game_config {
 	/**
 	 * Singleton class to manage game config file caching.
 	 * It uses paths to config files as key to find correct cache
-	 * @TODO: Make smarter filetree checksum caching so only required parts
-	 * 		  of tree are checked at startup. Trees are overlapping so have
-	 * 		  to split trees to subtrees to only do check once per file.
-	 * @TODO: Make cache system easily allow validation of in memory cache objects
-	 * 		  using hash checksum of preproc_map.
+	 * @todo Make smarter filetree checksum caching so only required parts
+	 *       of tree are checked at startup. Trees are overlapping so have
+	 *       to split trees to subtrees to only do check once per file.
+	 * @todo Make cache system easily allow validation of in memory cache objects
+	 *       using hash checksum of preproc_map.
 	 **/
 	class config_cache : private boost::noncopyable {
 		public:
@@ -131,17 +131,15 @@ namespace game_config {
 
 		const preproc_map& get_preproc_map() const;
 		/**
-		 * get config object from given path
-		 * @param path which to load. Should be _main.cfg.
-		 * @param config object that is writen to, It should be empty
-		 * 	      because there is no quarentee how filled in config is handled
-		 **/
+		 * Gets a config object from given @a path.
+		 * @param path file to load. Should be _main.cfg.
+		 * @param cfg config object that is written to. Should be empty on entry.
+		 */
 		void get_config(const std::string& path, config& cfg);
 		/**
-		 * get config_ptr from given path
-		 * @return shread_ptr config object
-		 * @param config object that is writen to
-		 **/
+		 * Gets config_ptr from given @a path.
+		 * @return config object.
+		 */
 		config_ptr get_config(const std::string& path);
 
 		/**

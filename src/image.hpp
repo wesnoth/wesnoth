@@ -132,7 +132,7 @@ namespace image {
 	public:
 
 		/**
-		 * @TODO replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
+		 * @todo replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
 		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it
 		 *       requires boost 1.35 (preferably 1.36 or later)
 		 *

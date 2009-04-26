@@ -16,7 +16,7 @@
 /**
  * @file log.cpp
  * Standard logging facilities (implementation).
- * See also the command line switches --logdomains and --log-<level>="domain".
+ * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
 #include "global.hpp"

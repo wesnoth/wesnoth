@@ -320,7 +320,7 @@ which is that of
 <a href="http://www.wesnoth.org/wiki/WesnothPhilosophy">KISS</a>.
 
 Other than at the forum, developers may also hang out
-in IRC #wesnoth-dev at irc.freenode.net
+in IRC @#wesnoth-dev at irc.freenode.net
 
 */
 

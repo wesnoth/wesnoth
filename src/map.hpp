@@ -100,7 +100,7 @@ public:
 	enum tmerge_mode {
 		BASE,
 		OVERLAY,
-        BOTH
+		BOTH
 		};
 
 	/**
@@ -110,10 +110,10 @@ public:
 	 * hex on the map.  Starting locations are represented by numbers, and will
 	 * be of type keep.
 	 *
-	 * @param cfg                 The game config.
-	 * @param data			      The mapdata to load.
+	 * @param cfg the game config.
+	 * @param data the map data to load.
 	 */
-	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+	gamemap(const config &cfg, const std::string &data); //throw(incorrect_format_exception)
 
 	virtual ~gamemap();
 

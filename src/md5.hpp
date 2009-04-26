@@ -83,9 +83,9 @@ private:
   uint1 finalized;
 
 // last, the private methods, mostly static:
-  void init             ();               // called by all constructors
-  void transform        (uint1 *buffer);  // does the real update work.  Note
-                                          // that length is implied to be 64.
+  void init             ();                 // called by all constructors
+  void transform        (uint1 buffer[64]); // does the real update work.  Note
+                                            // that length is implied to be 64.
 
   static void encode    (uint1 *dest, uint4 *src, uint4 length);
   static void decode    (uint4 *dest, uint1 *src, uint4 length);

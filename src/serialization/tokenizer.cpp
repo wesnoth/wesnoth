@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file serialization/tokenizer.cpp. */
+/** @file serialization/tokenizer.cpp */
 
 #include "global.hpp"
 

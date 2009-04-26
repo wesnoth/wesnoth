@@ -8,8 +8,6 @@
 
 #include <string>
 
-/** @class A helper classe for sending email using the jwsmtp library. */
-
 // The [mail] section in the server configuration
 // file could look like this:
 //
@@ -20,6 +18,9 @@
 //	from_address=noreply@wesnoth.org
 //[/mail]
 
+/**
+ * A helper classe for sending email using the jwsmtp library.
+ */
 class mailer {
 	public:
 		mailer(const config& c) :

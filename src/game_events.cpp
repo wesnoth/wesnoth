@@ -302,21 +302,22 @@ static bool call_wml_action_handler(const std::string &cmd,
  * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
  *
  * @param pname wml tag name
- * @param peh the variable name of game_events::event_handler object inside function
  * @param pei the variable name of game_events::queued_event object inside function
  * @param pcfg the variable name of config object inside function
  *
  * You are warned! This is evil macro magic!
  *
- * For [foo] tag macro is used like:
- *
+ * The following code registers a [foo] tag:
+ * \code
  * // comment out unused parameters to prevent compiler warnings
  * WML_HANDLER_FUNCTION(foo, event_info, cfg)
  * {
  *    // code for foo
  * }
+ * \endcode
  *
- * ready code looks like for [foo]
+ * Generated code looks like this:
+ * \code
  * void wml_action_foo(...);
  * struct wml_func_register_foo {
  *   wml_func_register_foo() {
@@ -326,6 +327,7 @@ static bool call_wml_action_handler(const std::string &cmd,
  * {
  *    // code for foo
  * }
+ * \endcode
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
 	static void wml_func_##pname(const game_events::queued_event &pei, const vconfig &pcfg); \
@@ -1121,31 +1123,35 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 
 	/**
 	 * Provide a means of specifying win/loss conditions:
-	 * [event]
-	 * name=prestart
-	 * [objectives]
-	 *   side=1
-	 *   summary="Escape the forest alive"
-	 *   victory_string="Victory:"
-	 *    defeat_string="Defeat:"
-	 *   [objective]
-	 *     condition=win
-	 *     description="Defeat all enemies"
-	 *   [/objective]
-	 *   [objective]
-	 *     description="Death of Konrad"
-	 *     condition=lose
-	 *   [/objective]
-	 * [/objectives]
-	 * [/event]
+	 * \verbatim
+[event]
+	name=prestart
+	[objectives]
+		side=1
+		summary="Escape the forest alive"
+		victory_string="Victory:"
+		defeat_string="Defeat:"
+		[objective]
+			condition=win
+			description="Defeat all enemies"
+		[/objective]
+		[objective]
+			description="Death of Konrad"
+			condition=lose
+		[/objective]
+	[/objectives]
+[/event]
+\endverbatim
 	 * instead of the current (but still supported):
-	 * objectives= _ "
-	 * Victory:
-	 * @Move Konrad to the signpost in the north-west
-	 * Defeat:
-	 * #Death of Konrad
-	 * #Death of Delfador
-	 * #Turns run out"
+\verbatim
+	objectives= _ "
+Victory:
+@Move Konrad to the signpost in the north-west
+Defeat:
+#Death of Konrad
+#Death of Delfador
+#Turns run out"
+\endverbatim
 	 *
 	 * If side is set to 0, the new objectives are added to each player.
 	 *

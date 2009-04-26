@@ -145,7 +145,7 @@ public:
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
 	void new_turn() { gold_ += total_income(); }
-	void set_time_of_day(int turn, const struct time_of_day& tod);
+	void set_time_of_day(int turn, const time_of_day &tod);
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }

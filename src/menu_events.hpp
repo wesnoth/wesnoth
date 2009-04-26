@@ -77,7 +77,7 @@ public:
 	void whisper();
 	void shout();
 	void recruit(const bool browse, const unsigned int team_num, const map_location& last_hex);
-	void repeat_recruit(const unsigned int team_num, const map_location& last_hex);
+	void repeat_recruit(unsigned team_num, const map_location& last_hex);
 	void recall(const unsigned int team_num, const map_location& last_hex);
 	void undo(const unsigned int team_num);
 	void redo(const unsigned int team_num);
@@ -127,7 +127,7 @@ private:
 	friend class console_handler;
 
 	//void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, const unsigned int team_num, const map_location& last_hex);
+	void do_recruit(const std::string& name, unsigned team_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);

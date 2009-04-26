@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file multiplayer_lobby.hpp. */
+/** @file multiplayer_lobby.hpp */
 
 #ifndef MULTIPLAYER_LOBBY_HPP_INCLUDED
 #define MULTIPLAYER_LOBBY_HPP_INCLUDED

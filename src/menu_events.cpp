@@ -736,13 +736,13 @@ private:
 		}
 	}
 
-	void menu_handler::repeat_recruit(const unsigned int team_num, const map_location& last_hex)
+	void menu_handler::repeat_recruit(const unsigned team_num, const map_location& last_hex)
 	{
 		if(last_recruit_.empty() == false)
 			do_recruit(last_recruit_, team_num, last_hex);
 	}
 
-	void menu_handler::do_recruit(const std::string& name, const int unsigned team_num, const map_location& last_hex)
+	void menu_handler::do_recruit(const std::string& name, const unsigned team_num, const map_location& last_hex)
 	{
 		team& current_team = teams_[team_num-1];
 
@@ -2285,7 +2285,7 @@ private:
 	/**
 	 * Change the log level of a log domain.
 	 *
-	 * @param data               String of the form: '<level> <domain>'
+	 * @param data string of the form: "@<level@> @<domain@>"
 	 */
 	void chat_handler::change_logging(const std::string& data) {
 		const std::string::const_iterator j =

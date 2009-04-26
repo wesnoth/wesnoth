@@ -21,11 +21,6 @@
 
 #include <mysql/mysql.h>
 
-/**
- * @class A user_handler implementation to link the server
- * with a phpbb3 forum.
- */
-
 // The [user_handler] section in the server configuration
 // file could look like this:
 //
@@ -38,7 +33,9 @@
 //	db_extra_table=extra_data
 //[/user_handler]
 
-
+/**
+ * A user_handler implementation to link the server with a phpbb3 forum.
+ */
 class fuh : public user_handler {
 	public:
 		fuh(const config& c);

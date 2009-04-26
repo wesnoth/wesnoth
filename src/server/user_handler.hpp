@@ -23,11 +23,10 @@ class mailer;
 #include <string>
 
 /**
- * @class An interface class to handle nick registration
+ * An interface class to handle nick registration
  * To activate it put a [user_handler] section into the
  * server configuration file
  */
-
 class user_handler {
 
 	// public functions are called by the server

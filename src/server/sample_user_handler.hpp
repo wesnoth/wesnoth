@@ -23,10 +23,9 @@
 #include <ctime>
 
 /**
- * @class An exmple how to implement user_handler to demonstrate the interface
- * If you use this on anything real you are insane
+ * An example of how to implement user_handler.
+ * If you use this on anything real, you are insane.
  */
-
 class suh : public user_handler {
 	public:
 		suh(config c);

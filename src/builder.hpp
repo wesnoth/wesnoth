@@ -512,11 +512,11 @@ private:
 	 * (has_flag, set_flag and no_flag) contained in all constraints
 	 * of the building_rule.
 	 *
-	 * @param s            The building_rule  in which to do the replacement
+	 * @param rule         The building_rule in which to do the replacement
 	 * @param token        The token to substitute
 	 * @param replacement  The replacement string
 	 */
-	void replace_token(building_rule &s, const std::string &token,
+	void replace_token(building_rule &rule, const std::string &token,
 			const std::string& replacement);
 
 	/**
