@@ -147,7 +147,8 @@ tscrollbar_container::tscrollbar_mode
 		return tscrollbar_container::always_visible;
 	} else if(scrollbar_mode == "never") {
 		return tscrollbar_container::always_invisible;
-	} else if(scrollbar_mode == "initial_auto") {
+	} else if(scrollbar_mode == "initial_auto"
+			|| (gui2::new_widgets && scrollbar_mode.empty())) {
 		return tscrollbar_container::auto_visible_first_run;
 	} else {
 		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
@@ -721,12 +722,18 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *
  * List with the listbox specific variables:
  * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = auto)
+ *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
  *                                     Determines whether or not to show the
- *                                     scrollbar.
- *     horizontal_scrollbar_mode (scrollbar_mode = auto)
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     auto.
+ *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
  *                                     Determines whether or not to show the
- *                                     scrollbar.
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     initial_auto.
  *
  *     header (grid = [])              Defines the grid for the optional
  *                                     header. (This grid will automatically

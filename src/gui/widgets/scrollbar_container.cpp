@@ -97,6 +97,12 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, content_(NULL)
 	, content_visible_area_()
 {
+	if(gui2::new_widgets) {
+		vertical_scrollbar_mode_ = auto_visible_first_run;
+		horizontal_scrollbar_mode_ = auto_visible_first_run;
+		initial_vertical_scrollbar_mode_ = auto_visible_first_run;
+		initial_horizontal_scrollbar_mode_ = auto_visible_first_run;
+	}
 }
 
 void tscrollbar_container::layout_init()
