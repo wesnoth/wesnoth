@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/layout_exception.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -813,51 +814,60 @@ bool twindow::NEW_layout(
 	 * the algorithm page.
 	 */
 
-	tpoint size = get_best_size();
+	try {
+		tpoint size = get_best_size();
 
-	DBG_GUI_L << "Best size : " << size
-			<< " maximum size : " << maximum_width << ',' << maximum_height
-			<< ".\n";
-	if(size.x <= static_cast<int>(maximum_width)
-			&& size.y <= static_cast<int>(maximum_height)) {
+		DBG_GUI_L << "Best size : " << size
+				<< " maximum size : " << maximum_width
+				<< ',' << maximum_height
+				<< ".\n";
+		if(size.x <= static_cast<int>(maximum_width)
+				&& size.y <= static_cast<int>(maximum_height)) {
 
-		DBG_GUI_L << "Result: Fits, nothing to do.\n";
-		return true;
-	}
+			DBG_GUI_L << "Result: Fits, nothing to do.\n";
+			return true;
+		}
 
-	if(size.x > static_cast<int>(maximum_width)) {
-		NEW_reduce_width(maximum_width);
-
-		size = get_best_size();
 		if(size.x > static_cast<int>(maximum_width)) {
-			DBG_GUI_L << "Result: Resize width failed."
-				<< " Wanted width " << maximum_width
-				<< " resulting width " << size.x
-				<< ".\n";
-			return false;
+			NEW_reduce_width(maximum_width);
+
+			size = get_best_size();
+			if(size.x > static_cast<int>(maximum_width)) {
+				DBG_GUI_L << "Result: Resize width failed."
+					<< " Wanted width " << maximum_width
+					<< " resulting width " << size.x
+					<< ".\n";
+				return false;
+			}
+			DBG_GUI_L << "Status: Resize width succeeded.\n";
 		}
-		DBG_GUI_L << "Status: Resize width succeeded.\n";
-	}
 
-	if(size.y > static_cast<int>(maximum_height)) {
-		NEW_reduce_height(maximum_height);
-
-		size = get_best_size();
 		if(size.y > static_cast<int>(maximum_height)) {
-			DBG_GUI_L << "Result: Resize height failed."
-				<< " Wanted height " << maximum_height
-				<< " resulting height " << size.y
-				<< ".\n";
-			return false;
+			NEW_reduce_height(maximum_height);
+
+			size = get_best_size();
+			if(size.y > static_cast<int>(maximum_height)) {
+				DBG_GUI_L << "Result: Resize height failed."
+					<< " Wanted height " << maximum_height
+					<< " resulting height " << size.y
+					<< ".\n";
+				return false;
+			}
+			DBG_GUI_L << "Status: Resize height succeeded.\n";
 		}
-		DBG_GUI_L << "Status: Resize height succeeded.\n";
+
+		assert(size.x <= static_cast<int>(maximum_width)
+				&& size.y <= static_cast<int>(maximum_height));
+
+
+		DBG_GUI_L << "Result: Resizing succeeded.\n";
+		return true;
+
+	} catch (tlayout_exception_width_modified&) {
+		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
+		NEW_layout_init(false);
+		return NEW_layout(maximum_width, maximum_height);
 	}
-
-	assert(size.x <= static_cast<int>(maximum_width)
-			&& size.y <= static_cast<int>(maximum_height));
-
-	DBG_GUI_L << "Result: Resizing succeeded.\n";
-	return true;
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
