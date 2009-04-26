@@ -313,10 +313,9 @@ void manager::update_font_path() const
 void manager::init() const
 {
 #ifdef CAIRO_HAS_FT_FONT
-	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(),
-			reinterpret_cast<const FcChar8*>
-			((game_config::path + "/fonts/").c_str()))) {
-
+	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
+		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
+	{
 		ERR_FT << "Could not load the true type fonts\n";
 		throw error();
 	}
