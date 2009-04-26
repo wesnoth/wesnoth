@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu.manpages_1.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 12:51+0300\n"
+"POT-Creation-Date: 2009-04-26 11:39+0300\n"
 "PO-Revision-Date: 2009-04-11 08:35+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -523,12 +523,24 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
+#, fuzzy, no-wrap
+msgid "B<--ai_config>I<number>B<=>I<value>"
+msgstr "B<--side>I<szám>B<=>I<érték>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:186
+msgid ""
+"selects a configuration file to load for the AI controller for this side."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<szám>B<=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -537,13 +549,13 @@ msgstr ""
 "értékek: B<idle_ai> és B<sample_ai>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<szám>B<=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
@@ -551,13 +563,13 @@ msgstr ""
 "B<ai> (mesterséges intelligencia)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -568,13 +580,13 @@ msgstr ""
 "meg. A korszakok leírásai a B<data/multiplayer/eras.cfg> fájlban találhatóak."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -585,13 +597,13 @@ msgstr ""
 "kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet hasznos."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -600,13 +612,13 @@ msgstr ""
 "multiplayer> opció előtt kell beírnod, hogy a kívánt hatást érd el."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<szám>B<=>I<név>B<:>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -618,13 +630,13 @@ msgstr ""
 "nem készült hozzá teljes dokumentáció)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -633,13 +645,13 @@ msgstr ""
 "B<multiplayer_The_Freelands> (Szabad földek)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<szám>B<=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -649,31 +661,31 @@ msgstr ""
 "multiplayer.cfg fájlban találhatóak."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<érték>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:237
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 "megadja az adott játszma köreinek maximális számát. Ez alapértelmezetten "
 "B<50>."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnothd.6:248
+#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:248
 #, no-wrap
 msgid "AUTHOR"
 msgstr "SZERZŐ"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:238
+#: ../../doc/man/wesnoth.6:241
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Írta: David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:240
+#: ../../doc/man/wesnoth.6:243
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -686,7 +698,7 @@ msgstr ""
 "comE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:245
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -695,27 +707,27 @@ msgstr ""
 "orgE<gt> írta."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:244 ../../doc/man/wesnothd.6:255
+#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:255
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar "
 "közösségi portált: http://wesnoth.fsf.hu/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnothd.6:256
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:256
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "SZERZŐI JOGOK"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:259
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:259
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "A szerzői jogok \\(co 2003-2007 David White-ot E<lt>davidnwhite@verizon."
 "netE<gt> illetik meg"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:262
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:262
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -729,13 +741,13 @@ msgstr ""
 "származtatott garanciát is beleértve."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:252 ../../doc/man/wesnothd.6:263
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:263
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "LÁSD MÉG"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:255
+#: ../../doc/man/wesnoth.6:258
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 

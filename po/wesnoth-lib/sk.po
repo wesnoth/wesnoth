@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-17 12:49+0200\n"
+"POT-Creation-Date: 2009-04-26 11:38+0200\n"
 "PO-Revision-Date: 2009-03-29 14:23+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -424,8 +424,8 @@ msgid "Rockbound Cave"
 msgstr "Skalnatá jaskyňa"
 
 #. [terrain_type]: id=desert_village
-#. [terrain_type]: id=elven_snow_village
 #. [terrain_type]: id=village
+#. [terrain_type]: id=elven_snow_village
 #. [terrain_type]: id=snow_village
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -446,84 +446,84 @@ msgstr "Skalnatá jaskyňa"
 #. [terrain_type]: id=swamp_village
 #. [terrain_type]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:968 data/core/terrain.cfg:979
-#: data/core/terrain.cfg:992 data/core/terrain.cfg:1003
-#: data/core/terrain.cfg:1016 data/core/terrain.cfg:1027
-#: data/core/terrain.cfg:1037 data/core/terrain.cfg:1048
-#: data/core/terrain.cfg:1059 data/core/terrain.cfg:1071
-#: data/core/terrain.cfg:1082 data/core/terrain.cfg:1093
-#: data/core/terrain.cfg:1104 data/core/terrain.cfg:1117
-#: data/core/terrain.cfg:1128 data/core/terrain.cfg:1139
-#: data/core/terrain.cfg:1150 data/core/terrain.cfg:1161
-#: data/core/terrain.cfg:1172 data/core/terrain.cfg:1183
-#: data/core/terrain.cfg:1194 data/core/terrain.cfg:1205
-#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1233
-#: data/core/terrain.cfg:1244
+#: data/core/terrain.cfg:992 data/core/terrain.cfg:1005
+#: data/core/terrain.cfg:1016 data/core/terrain.cfg:1029
+#: data/core/terrain.cfg:1040 data/core/terrain.cfg:1050
+#: data/core/terrain.cfg:1061 data/core/terrain.cfg:1072
+#: data/core/terrain.cfg:1084 data/core/terrain.cfg:1095
+#: data/core/terrain.cfg:1106 data/core/terrain.cfg:1117
+#: data/core/terrain.cfg:1130 data/core/terrain.cfg:1141
+#: data/core/terrain.cfg:1152 data/core/terrain.cfg:1163
+#: data/core/terrain.cfg:1174 data/core/terrain.cfg:1185
+#: data/core/terrain.cfg:1196 data/core/terrain.cfg:1207
+#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1231
+#: data/core/terrain.cfg:1246 data/core/terrain.cfg:1257
 msgid "Village"
 msgstr "Dedina"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:1259
+#: data/core/terrain.cfg:1272
 msgid "Deep Water"
 msgstr "Hlboká voda"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:1269
+#: data/core/terrain.cfg:1282
 msgid "Shallow Water"
 msgstr "Plytká voda"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:1279
+#: data/core/terrain.cfg:1292
 msgid "River Ford"
 msgstr "Riečny brod"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:1290
+#: data/core/terrain.cfg:1303
 msgid "Coastal Reef"
 msgstr "Pobrežný útes"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1304
+#: data/core/terrain.cfg:1317
 msgid "Impassable Mountains"
 msgstr "Neprekročiteľné hory"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1313
+#: data/core/terrain.cfg:1326
 msgid "Impassable Desert Mountains"
 msgstr "Neprekročiteľné púštne hory"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1335
 msgid "Cave Wall"
 msgstr "Stena jaskyne"
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1344
 msgid "Wall"
 msgstr "Stena"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1341 data/core/terrain.cfg:1379
+#: data/core/terrain.cfg:1354 data/core/terrain.cfg:1392
 msgid "Impassable"
 msgstr "Neprekročiteľné"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1352
+#: data/core/terrain.cfg:1365
 msgid "Void"
 msgstr "Prázdnota"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1365
+#: data/core/terrain.cfg:1378
 msgid "Flat"
 msgstr "Rovina"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1372
+#: data/core/terrain.cfg:1385
 msgid "Frozen"
 msgstr "Zamrznuté"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1386
+#: data/core/terrain.cfg:1399
 msgid "Unwalkable"
 msgstr "Nepriechodné"
 
@@ -574,6 +574,8 @@ msgstr "Pripojiť"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
+#: data/gui/default/window/game_save.cfg:134
+#: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
@@ -615,13 +617,13 @@ msgstr "Nová mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:119
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "Šírka:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:120
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
 msgstr "Výška:"
 
@@ -723,6 +725,10 @@ msgstr "Umožni otvoriť viac máp naraz (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_save.cfg:119
+#: data/gui/default/window/game_save.cfg:120
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
@@ -737,6 +743,25 @@ msgstr "OK"
 #: src/game_preferences_display.cpp:191
 msgid "Apply"
 msgstr "Použi"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_save.cfg:32
+#: data/gui/default/window/game_save_message.cfg:32 src/hotkeys.cpp:62
+msgid "Save Game"
+msgstr "Ulož hru"
+
+#. [label]
+#: data/gui/default/window/game_save.cfg:62
+#: data/gui/default/window/game_save_message.cfg:82
+#, fuzzy
+msgid "Name:"
+msgstr "Meno:"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_message.cfg:52
+msgid "x"
+msgstr ""
 
 #. [grid]
 #. [label]
@@ -758,7 +783,8 @@ msgstr "Zmeň jazyk"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-msgid "Multiplayer command wrapper dialog"
+#, fuzzy
+msgid "Multiplayer command dialog"
 msgstr "Dialógové okno pre príkazy v zápase"
 
 #. [label]
@@ -1547,85 +1573,85 @@ msgstr "Načítaj hru"
 msgid "Load Game..."
 msgstr "Načítaj hru..."
 
-#: src/gui/dialogs/title_screen.cpp:73
+#: src/gui/dialogs/title_screen.cpp:75
 msgid "Version"
 msgstr "Verzia"
 
-#: src/gui/widgets/canvas.cpp:309
+#: src/gui/widgets/canvas.cpp:320
 msgid "Line doesn't fit on canvas."
 msgstr "Čiara sa nezmestí na plochu."
 
-#: src/gui/widgets/canvas.cpp:444
+#: src/gui/widgets/canvas.cpp:455
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Štvorec sa nezmestí na plochu."
 
-#: src/gui/widgets/canvas.cpp:815
+#: src/gui/widgets/canvas.cpp:826
 msgid "Text has a font size of 0."
 msgstr "Text má veľkosť písma 0."
 
-#: src/gui/widgets/canvas.cpp:880
+#: src/gui/widgets/canvas.cpp:891
 msgid "Text doesn't start on canvas."
 msgstr "Text sa nezmestí na plochu."
 
-#: src/gui/widgets/helper.cpp:169
+#: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
-#: src/gui/widgets/settings.cpp:133
+#: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
-#: src/gui/widgets/settings.cpp:288
+#: src/gui/widgets/settings.cpp:290
 msgid "Window not defined."
 msgstr "Nie je definované okno."
 
-#: src/gui/widgets/settings.cpp:385
+#: src/gui/widgets/settings.cpp:387
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 
-#: src/gui/widgets/settings.cpp:501 src/gui/widgets/window_builder.cpp:313
+#: src/gui/widgets/settings.cpp:503 src/gui/widgets/window_builder.cpp:315
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
-#: src/gui/widgets/settings.cpp:527
+#: src/gui/widgets/settings.cpp:529
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 
-#: src/gui/widgets/settings.cpp:756 src/gui/widgets/settings.cpp:910
-#: src/gui/widgets/window_builder.cpp:409
-#: src/gui/widgets/window_builder.cpp:923
-#: src/gui/widgets/window_builder.cpp:1132
+#: src/gui/widgets/settings.cpp:758 src/gui/widgets/settings.cpp:912
+#: src/gui/widgets/window_builder.cpp:411
+#: src/gui/widgets/window_builder.cpp:925
+#: src/gui/widgets/window_builder.cpp:1134
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/widgets/window.cpp:613
+#: src/gui/widgets/window.cpp:615
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Nepodarilo sa zobraziť dialógové okno, ktoré sa nezmestilo na obrazovku."
 
-#: src/gui/widgets/window_builder.cpp:516
+#: src/gui/widgets/window_builder.cpp:518
 msgid "A row must have a column."
 msgstr "Riadok musí mať stĺpec."
 
-#: src/gui/widgets/window_builder.cpp:517
+#: src/gui/widgets/window_builder.cpp:519
 msgid "Number of columns differ."
 msgstr "Počet stĺpcov sa líši."
 
-#: src/gui/widgets/window_builder.cpp:763
+#: src/gui/widgets/window_builder.cpp:765
 msgid "No list defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/widgets/window_builder.cpp:766
+#: src/gui/widgets/window_builder.cpp:768
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' musí obsahovať jeden riadok."
 
-#: src/gui/widgets/window_builder.cpp:784
+#: src/gui/widgets/window_builder.cpp:786
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musí mať rovnaký počet stĺpcov ako 'list_definition'."
 
-#: src/gui/widgets/window_builder.cpp:1051
+#: src/gui/widgets/window_builder.cpp:1053
 msgid "The number of value_labels and values don't match."
 msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 
@@ -1689,10 +1715,6 @@ msgstr "Popis jednotky"
 msgid "Rename Unit"
 msgstr "Premenuj jednotku"
 
-#: src/hotkeys.cpp:62
-msgid "Save Game"
-msgstr "Ulož hru"
-
 #: src/hotkeys.cpp:63
 msgid "Save Replay"
 msgstr "Ulož záznam"
@@ -1742,7 +1764,8 @@ msgid "Create Unit (Debug!)"
 msgstr "Vytvor jednotku (ladenie!)"
 
 #: src/hotkeys.cpp:76
-msgid "Change Unit Side (Debug!)"
+#, fuzzy
+msgid "Change Side (Debug!)"
 msgstr "Zmeň stranu jednotky (ladenie!)"
 
 #: src/hotkeys.cpp:78
@@ -2079,55 +2102,55 @@ msgstr "Snímanie obrazovky zlyhalo"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:108 src/preferences_display.cpp:202
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:202
 msgid "Close Window"
 msgstr "Zavri okno"
 
-#: src/mapgen_dialog.cpp:111
+#: src/mapgen_dialog.cpp:112
 msgid "Map Generator"
 msgstr "Generátor mapy"
 
-#: src/mapgen_dialog.cpp:118
+#: src/mapgen_dialog.cpp:119
 msgid "Players:"
 msgstr "Hráči:"
 
-#: src/mapgen_dialog.cpp:121
+#: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
 msgstr "Počet kopcov:"
 
-#: src/mapgen_dialog.cpp:122
+#: src/mapgen_dialog.cpp:123
 msgid "Max Hill Size:"
 msgstr "Max. veľkosť kopca:"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:124
 msgid "Villages:"
 msgstr "Dedín:"
 
-#: src/mapgen_dialog.cpp:124
+#: src/mapgen_dialog.cpp:125
 msgid "Castle Size:"
 msgstr "Veľkosť hradu:"
 
-#: src/mapgen_dialog.cpp:125
+#: src/mapgen_dialog.cpp:126
 msgid "Landform:"
 msgstr "Tvar zeme:"
 
-#: src/mapgen_dialog.cpp:243
+#: src/mapgen_dialog.cpp:244
 msgid "Roads Between Castles"
 msgstr "Cesty medzi hradmi"
 
-#: src/mapgen_dialog.cpp:303
+#: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
 msgstr "/1000 polí"
 
-#: src/mapgen_dialog.cpp:313
+#: src/mapgen_dialog.cpp:314
 msgid "Coastal"
 msgstr "Pobrežie"
 
-#: src/mapgen_dialog.cpp:313
+#: src/mapgen_dialog.cpp:314
 msgid "Inland"
 msgstr "Vnútrozemie"
 
-#: src/mapgen_dialog.cpp:313
+#: src/mapgen_dialog.cpp:314
 msgid "Island"
 msgstr "Ostrov"
 
@@ -2135,11 +2158,11 @@ msgstr "Ostrov"
 msgid "The maximum text width is less than 1."
 msgstr "Maximálna šírka textu je menšia ako 1."
 
-#: src/minimap.cpp:86
+#: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
 msgstr "Nepodarilo sa získať obrázok pre terén: $terrain."
 
-#: src/minimap.cpp:115 src/minimap.cpp:127
+#: src/minimap.cpp:116 src/minimap.cpp:128
 msgid "Error creating or aquiring an image."
 msgstr "Chyba pri vytváraní alebo získavaní obrázka."
 
@@ -2196,7 +2219,7 @@ msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
 msgid "Choose Resolution"
 msgstr "Vyber si rozlíšenie"
 
-#: src/show_dialog.cpp:357
+#: src/show_dialog.cpp:356
 msgid "Error"
 msgstr "Chyba"
 
