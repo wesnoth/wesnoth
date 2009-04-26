@@ -19,7 +19,6 @@
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
-#include "game_preferences.hpp" //FIXME: get rid of this one
 #include "gettext.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/widgets/window.hpp"
@@ -508,7 +507,7 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 			}
 
 			std::string filename = filename_;
-			if (res == gui2::twindow::OK && savegame_manager::save_game_exists(filename, preferences::compress_saves())) {
+			if (res == gui2::twindow::OK && savegame_manager::save_game_exists(filename, compress_saves_)) {
 				std::stringstream s;
 				s << _("Save already exists. Do you want to overwrite it?")
 				  << std::endl << _("Name: ") << filename;
