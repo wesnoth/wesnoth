@@ -87,6 +87,12 @@ Version 1.7.0-svn:
      to immediately level-up selected unit N times
    * Improved the sorting of the XP and traits columns in the unit list dialog
      (part of bug #13360)
+   * New console command ":discover" make the help considers that you
+     discovered all the units of the current campaign/era
+   * Debug action "Change unit side" allows to change owner of empty village
+     and is now renamed "Change side".
+   * Debug actions "Create unit" and "Change side" used on unit in a village
+     now causes a capture of that village.
  * WML Engine:
    * Added [show_objectives] tag and allowed [show_if] tag in [objective]
      tags. (bug #13042)
@@ -98,6 +104,11 @@ Version 1.7.0-svn:
      Be sure to use fog=yes for that side  (bug #13320)
    * Added support for Lua scripts in WML event actions ([lua] tag)
    * [modify_side] can now change the share_view attribute
+   * new tag [hide_help] in [units] allows to hide units in help when you can't
+     change these unit types (main use: hide mainline units). Keys supported:
+     'type' (list of types), 'race' (list of races) and 'type_adv_tree' (list
+     of unit types which the whole advancement tree will be hidden. [hide_help]
+     also allow to use sub-tag [not] (to hide a race but not a specific type)
  * Miscellaneous and bugfixes:
    * Added --ignore-fatal-errors option to wmlunits
    * Added --rng-seed command line option to specify a value to seed the random
