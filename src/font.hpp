@@ -167,7 +167,7 @@ void undraw_floating_labels(surface screen);
 bool load_font_config();
 
 /** Returns the currently defined fonts. */
-const t_string& get_fonts();
+const t_string& get_font_families();
 
 enum CACHE { CACHE_LOBBY, CACHE_GAME };
 void cache_mode(CACHE mode);
