@@ -215,6 +215,7 @@ void tscrollbar_container::NEW_request_reduce_height(
 
 	// Always set the bar visible, is a nop is already visible.
 	vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	vertical_scrollbar_mode_ = always_visible;
 
 	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
 	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
