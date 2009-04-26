@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:37+0200\n"
-"PO-Revision-Date: 2009-04-21 00:12-0000\n"
+"PO-Revision-Date: 2009-04-26 14:04-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -7719,9 +7719,10 @@ msgstr "Vísa frá einingu"
 #: src/menu_events.cpp:919
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Þú verður að eiga að minsta kostsi 1 gull stykki til að endurkalla"
+msgstr[0] ""
+"Þú verður að eiga að minsta kosti $cost gull til að geta endurkallað einingu"
 msgstr[1] ""
-"Þú verður að eiga að minsta kosti $cost gull stykki til að endurkalla einingu"
+"Þú verður að eiga að minsta kosti $cost gull til að geta endurkallað einingu"
 
 #: src/menu_events.cpp:1250
 msgid ""
@@ -8654,7 +8655,7 @@ msgstr ""
 
 #: src/pathfind.cpp:355
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Fann jörð með kostnað hreyfingar minni en 1."
 
 #: src/play_controller.cpp:103
 msgid "Loading level"
@@ -9265,6 +9266,15 @@ msgstr "Hjálpaðu okkur að gera Wesnoth betri fyrir þig!"
 msgid "Enable summary uploads"
 msgstr ""
 
+#~ msgid "stones"
+#~ msgstr "steinar"
+
+#~ msgid "female^stone"
+#~ msgstr "steinuð"
+
+#~ msgid "stone"
+#~ msgstr "steinn"
+
 #~ msgid "Unknown unit type : "
 #~ msgstr "Óþekkt tegund einingar : "
 
@@ -9275,23 +9285,14 @@ msgstr ""
 #~ "Vistunarnöfn mega ekki innihalda skástrik, punkta eða tvípunkta. "
 #~ "Vinsamlegast veldu annað nafn."
 
-#~ msgid "Remove a trait from a unit. (Does not work yet.)"
-#~ msgstr "Fjarlægja hæfileika frá einingu (Virkar ekki.)"
-
-#~ msgid "Name:"
-#~ msgstr "Nafn:"
-
-#~ msgid "stones"
-#~ msgstr "steinar"
-
-#~ msgid "female^stone"
-#~ msgstr "steinuð"
-
-#~ msgid "stone"
-#~ msgstr "steinn"
-
 #~ msgid "stone: "
 #~ msgstr "steingerðar: "
 
+#~ msgid "Remove a trait from a unit. (Does not work yet.)"
+#~ msgstr "Fjarlægja hæfileika frá einingu (Virkar ekki.)"
+
 #~ msgid "The replay could not be saved"
 #~ msgstr "Endurspilun gat ekki verið vistuð"
+
+#~ msgid "Name:"
+#~ msgstr "Nafn:"

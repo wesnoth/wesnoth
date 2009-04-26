@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-04-04 15:59-0000\n"
+"PO-Revision-Date: 2009-04-26 12:35-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -100,15 +100,13 @@ msgstr "sérstakt"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Notastu við vinstri/hægri músarhnappinn til að teikna for-/bakgrunn jörð. "
-"Haltu Shift niðri til að mála grunnlögin eingöngu.Notastu við vinstri/hægri "
-"músarhnappinn til að teikna for-/bakgrunn jörð. Haltu Shift niðri til að "
-"mála grunnlögin eingöngu."
+"Haltu Shift niðri til að mála grunnlögin eingöngu. Ctrl + Smell til að "
+"afrita tegund jarðar undir músarbendlinum."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -283,17 +281,19 @@ msgstr "Kort vistað."
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Hlóð fylgigögn korts"
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Kort hlaðið úr atburðarás"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Hlóð ávísað kort:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -341,23 +341,23 @@ msgstr "BG"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Skrá ekki fundin"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Þetta kort lýtur út fyrir að vera atburðarás, en breytan map_data vísar ekki "
+"yfir í gilda skrá"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Tómt kort eða kort ekki fundið"
+msgstr "Tómt kort"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Gat ekki vistað kortið: $msg"
+msgstr "Gat ekki vistað yfir í atburðarás"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
