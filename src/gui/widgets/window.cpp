@@ -1126,17 +1126,19 @@ void twindow::generate_dot_file(const std::string& generator,
  *         - Throw a layout height doesn't fit exception.
  * - End layout loop.
  *
- * - Catch width modified exception:
+ * - Catch @ref gui2::tlayout_exception_width_modified "width modified":
  *   - Goto relayout.
  *
- * - Catch layout width doesn't fit exception:
+ * - Catch
+ *   @ref gui2::tlayout_exception_width_resize_failed "width resize failed":
  *   - If the window has a horizontal scrollbar which isn't shown but can be
  *     shown.
  *     - Show the scrollbar.
  *     - goto relayout.
  *   - Else show a layout failure message.
  *
- * - Catch layout height doesn't fit exception:
+ * - Catch
+ *   @ref gui2::tlayout_exception_height_resize_failed "height resize failed":
  *   - If the window has a vertical scrollbar which isn't shown but can be
  *     shown:
  *     - Show the scrollbar.

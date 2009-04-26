@@ -18,6 +18,7 @@
 
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/layout_exception.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
@@ -208,7 +209,7 @@ void tscrollbar_container::NEW_request_reduce_height(
 	set_layout_size(size);
 
 	if(unhide) {
-		/** @todo Throw a width change exception. */
+		throw tlayout_exception_width_modified();
 	}
 }
 
