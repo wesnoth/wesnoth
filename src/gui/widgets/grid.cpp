@@ -17,6 +17,7 @@
 #include "gui/widgets/grid_private.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/layout_exception.hpp"
 
 #include <numeric>
 
@@ -223,10 +224,91 @@ void tgrid::NEW_reduce_width(const unsigned /*maximum_width*/)
 	/** @todo Implement. */
 }
 
-void tgrid::NEW_reduce_height(const unsigned /*maximum_height*/)
+void tgrid::NEW_request_reduce_width(const unsigned /*maximum_width*/)
 {
 	/** @todo Implement. */
 }
+
+void tgrid::NEW_demand_reduce_width(const unsigned /*maximum_width*/)
+{
+	/** @todo Implement. */
+}
+
+void tgrid::NEW_reduce_height(const unsigned maximum_height)
+{
+	/***** ***** ***** ***** INIT ***** ***** ***** *****/
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
+	DBG_GUI_L << "tgrid: maximum height " << maximum_height << ".\n";
+
+	tpoint size = get_best_size();
+	if(size.y <= static_cast<int>(maximum_height)) {
+		DBG_GUI_L << "tgrid: Already fits.\n";
+		return;
+	}
+
+	/***** ***** ***** ***** Request resize ***** ***** ***** *****/
+
+	NEW_request_reduce_height(maximum_height);
+
+	size = get_best_size();
+	if(size.y <= static_cast<int>(maximum_height)) {
+		DBG_GUI_L << "tgrid: Resize request honoured.\n";
+		return;
+	}
+
+	/***** ***** ***** ***** Demand resize ***** ***** ***** *****/
+
+	/** @todo Implement. */
+
+	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+
+	DBG_GUI_L << "tgrid: Resizing failed.\n";
+
+	throw tlayout_exception_height_resize_failed();
+}
+
+void tgrid::NEW_request_reduce_height(const unsigned maximum_height)
+{
+	tpoint size = get_best_size();
+	if(size.y <= static_cast<int>(maximum_height)) {
+		assert(false);
+	}
+
+	const unsigned too_high = size.y - maximum_height;
+	unsigned reduced = 0;
+	for(size_t row = 0; row < rows_; ++row) {
+		if(too_high - reduced >=  row_height_[row]) {
+			DBG_GUI_L << "tgrid: row " << row
+					<< " is too small to be reduced.\n";
+			continue;
+		}
+
+		const unsigned wanted_height = row_height_[row] - (too_high - reduced);
+		const unsigned height = tgrid_implementation::
+				NEW_row_request_reduce_height(*this, row, wanted_height);
+
+		if(height < row_height_[row]) {
+			DBG_GUI_L << "tgrid: reduced " << row_height_[row] - height
+					<< " pixels for row " << row << ".\n";
+
+			size.y -= row_height_[row] - height;
+			row_height_[row] = height;
+		}
+
+		if(size.y <= static_cast<int>(maximum_height)) {
+			break;
+		}
+	}
+
+	set_layout_size(calculate_best_size());
+}
+
+void tgrid::NEW_demand_reduce_height(const unsigned /*maximum_height*/)
+{
+	/** @todo Implement. */
+}
+
+
 
 tpoint tgrid::calculate_best_size() const
 {
@@ -1209,6 +1291,44 @@ unsigned tgrid::column_use_horizontal_scrollbar(
 		<< " returning " << required_width << ".\n";
 
 	return required_width;
+}
+
+unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,
+		const unsigned row, const unsigned maximum_height)
+{
+	// The minimum height required.
+	unsigned required_height = 0;
+
+	for(size_t x = 0; x < grid.cols_; ++x) {
+		tgrid::tchild& cell = grid.child(row, x);
+		NEW_cell_request_reduce_height(cell, maximum_height);
+
+		const tpoint size(cell.get_best_size());
+
+		if(required_height == 0
+				|| static_cast<size_t>(size.y) > required_height) {
+
+			required_height = size.y;
+		}
+	}
+
+	DBG_GUI_L << "tgrid: maximum row height " << maximum_height
+		<< " returning " << required_height << ".\n";
+
+	return required_height;
+}
+
+void tgrid_implementation::NEW_cell_request_reduce_height(
+		tgrid::tchild& child, const unsigned maximum_height)
+{
+	assert(child.widget_);
+
+	if(child.widget_->get_visible() == twidget::INVISIBLE) {
+		return;
+	}
+
+	child.widget_->NEW_request_reduce_height(
+			maximum_height - child.border_space().y);
 }
 
 } // namespace gui2

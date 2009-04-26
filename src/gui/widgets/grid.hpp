@@ -194,6 +194,12 @@ public:
 	 */
 	void NEW_reduce_width(const unsigned maximum_width);
 
+	/** Inherited from twidget. */
+	void NEW_request_reduce_width(const unsigned maximum_width);
+
+	/** Inherited from twidget. */
+	void NEW_demand_reduce_width(const unsigned maximum_width);
+
 	/**
 	 * Tries to reduce the height of a container.
 	 *
@@ -203,6 +209,11 @@ public:
 	 */
 	void NEW_reduce_height(const unsigned maximum_height);
 
+	/** Inherited from twidget. */
+	void NEW_request_reduce_height(const unsigned maximum_height);
+
+	/** Inherited from twidget. */
+	void NEW_demand_reduce_height(const unsigned maximum_height);
 
 private:
 
@@ -291,6 +302,7 @@ private:
 	/** Child item of the grid. */
 	class tchild
 	{
+		friend struct tgrid_implementation;
 	public:
 		tchild() :
 			flags_(0),
