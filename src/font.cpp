@@ -1254,7 +1254,7 @@ static bool add_font_to_fontlist(config &fonts_config,
 namespace font {
 
 namespace {
-	t_string font_order;
+	t_string family_order;
 } // namespace
 
 bool load_font_config()
@@ -1280,7 +1280,7 @@ bool load_font_config()
 		known_fonts.insert(font["name"]);
 	}
 
-	font_order = fonts_config["order"];
+	family_order = fonts_config["family_order"];
 	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;
@@ -1300,9 +1300,9 @@ bool load_font_config()
 	return true;
 }
 
-const t_string& get_fonts()
+const t_string& get_font_families()
 {
-	return font_order;
+	return family_order;
 }
 
 void cache_mode(CACHE mode)

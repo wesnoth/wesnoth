@@ -430,7 +430,7 @@ void ttext::recalculate(const bool force) const
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		tfont font(get_fonts(), font_size_, font_style_);
+		tfont font(get_font_families(), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
 
 		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
