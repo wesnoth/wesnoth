@@ -183,7 +183,7 @@ void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 void tscrollbar_container::NEW_request_reduce_height(
 		const unsigned maximum_height)
 {
-	if(initial_horizontal_scrollbar_mode_ == always_invisible) {
+	if(initial_vertical_scrollbar_mode_ == always_invisible) {
 		return;
 	}
 
@@ -195,12 +195,12 @@ void tscrollbar_container::NEW_request_reduce_height(
 	}
 
 	const bool unhide =
-		initial_horizontal_scrollbar_mode_ == auto_visible_first_run
+		initial_vertical_scrollbar_mode_ == auto_visible_first_run
 		&& vertical_scrollbar_mode_ == always_invisible;
 
 	if(unhide) {
-		horizontal_scrollbar_mode_ = always_visible;
-		show_horizontal_scrollbar();
+		vertical_scrollbar_mode_ = always_visible;
+		show_vertical_scrollbar();
 	}
 
 	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
