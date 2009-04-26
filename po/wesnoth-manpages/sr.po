@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-10 15:26+0200\n"
+"PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -157,16 +157,17 @@ msgstr ""
 "није инсталиран на систему."
 
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e, --editor \\ датотека>"
 
-# type: Plain text
 #: ../../doc/man/wesnoth.6:74
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"директно покреће уређивач мапа у игри. Ако је задата I<датотека>, истоветно "
+"са B<-e --load>."
 
 #: ../../doc/man/wesnoth.6:74
 #, no-wrap
@@ -230,7 +231,6 @@ msgid "B<-l,\\ --load>I<\\ file>"
 msgstr "B<-l,\\ --load>I<\\ датотека>"
 
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -239,7 +239,8 @@ msgid ""
 msgstr ""
 "учитава сачувану игру I<датотека> из стандардног директоријума сачуваних "
 "игара. Ако је задата и опција B<-e> или B<--editor>, покреће се уређивач са "
-"отвореном мапом из те датотеке."
+"отвореном мапом из те датотеке. Ако је I<датотека> у ствари директоријум, "
+"уређивач ће на њему отворити дијалог за учитавање мапе."
 
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
 #, no-wrap
@@ -1231,6 +1232,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "започиње игру директно на уређивачу мапа."

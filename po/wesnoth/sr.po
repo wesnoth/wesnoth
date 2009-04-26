@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:37+0200\n"
-"PO-Revision-Date: 2009-04-09 22:46+0200\n"
+"PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -5536,12 +5536,12 @@ msgstr "сауријанци"
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:188
 msgid "race^Mechanical"
-msgstr "механички"
+msgstr "машина"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race+plural^Mechanical"
-msgstr "механички"
+msgstr "машине"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:199
@@ -6134,7 +6134,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -6712,7 +6712,7 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Можете слати Пројекту Веснота анонимне сажетке свог напретка, путем дугмета "
-"„Помозите Весноту“ (означеног иконом коверте близу доњег десног угла главног "
+"„Помогните Веснот“ (означеног иконом коверте близу доњег десног угла главног "
 "екрана). Ови подаци су нам суштински за подешавање нивоа тежине у походима."
 
 #. [tip]
@@ -7870,6 +7870,7 @@ msgstr "поредак: "
 msgid "Required XP: "
 msgstr "тражи ИП: "
 
+# >> Title to table of attacks.
 #: src/help.cpp:1363
 msgid "unit help^Attacks"
 msgstr "Напади"
@@ -7890,6 +7891,7 @@ msgstr "домет"
 msgid "Special"
 msgstr "посебно"
 
+# >> Title to table of resistances.
 #: src/help.cpp:1424
 msgid "Resistances"
 msgstr "Отпорности"
@@ -8111,7 +8113,7 @@ msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
-"scenario settings^почетно\n"
+"почетно\n"
 "злата"
 
 #: src/menu_events.cpp:488
@@ -8119,7 +8121,7 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
-"scenario settingsôсновни\n"
+"основни\n"
 "приход"
 
 #: src/menu_events.cpp:489
@@ -8127,7 +8129,7 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
-"scenario settings^злата\n"
+"злата\n"
 "по селу"
 
 #: src/menu_events.cpp:490
@@ -9579,7 +9581,7 @@ msgstr "Поход"
 
 #: src/titlescreen.cpp:429
 msgid "TitleScreen button^Multiplayer"
-msgstr "Више играча"
+msgstr "Вишеиграње"
 
 #: src/titlescreen.cpp:430
 msgid "TitleScreen button^Load"
@@ -9683,7 +9685,7 @@ msgstr "Статистика слања"
 
 #: src/titlescreen.cpp:520
 msgid "Help Wesnoth"
-msgstr "Помозите Веснот"
+msgstr "Помогните Веснот"
 
 #: src/titlescreen.cpp:521
 msgid "Help Wesnoth by sending us information"
@@ -9806,8 +9808,17 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
 
+#~ msgid "stones"
+#~ msgstr "окамењивање"
+
 #~ msgid "An invalid weapon is selected, possibly by the Python AI."
 #~ msgstr "Изабрано неисправно оружје, можда кривицом питонске ВИ."
+
+#~ msgid "female^stone"
+#~ msgstr "окамењена"
+
+#~ msgid "stone"
+#~ msgstr "окамењен"
 
 #~ msgid "Unknown unit type : "
 #~ msgstr "Непознат тип јединице: "
@@ -9819,34 +9830,14 @@ msgstr "Укључи слање сажетака"
 #~ "Имена позиција не могу садржати двотачке, косе и обрнуте косе црте. "
 #~ "Задајте другачије име."
 
-#~ msgid "Remove a trait from a unit. (Does not work yet.)"
-#~ msgstr "Уклања особину јединице. (Још увек не ради.)"
-
-#~ msgid "Name:"
-#~ msgstr "Име:"
-
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "вођ"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "потез"
-
-#~ msgid "stones"
-#~ msgstr "окамењивање"
-
-#~ msgid "female^stone"
-#~ msgstr "окамењена"
-
-#~ msgid "stone"
-#~ msgstr "окамењен"
-
 #~ msgid "stone: "
 #~ msgstr "окамењена: "
 
-#~ msgid " included from "
-#~ msgstr " укључено из "
+#~ msgid "Remove a trait from a unit. (Does not work yet.)"
+#~ msgstr "Уклања особину јединице. (Још увек не ради.)"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Снимак није било могуће сачувати"
+
+#~ msgid "Name:"
+#~ msgstr "Име:"

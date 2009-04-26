@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-04-10 11:20+0200\n"
+"PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -100,13 +100,13 @@ msgstr "специјално"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Левим/десним дугметом миша цртате терен спреда/у позадини. Држите Shift за "
-"сликање само по основном слоју."
+"сликање само по основном слоју. Ctrl+кликом узимате узорак терена испод "
+"показивача."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -277,17 +277,20 @@ msgstr "Мапа је сачувана."
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Учитани угњеждени подаци мапе."
 
+# >> @title:window
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Мапа учитана из сценарија"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Учитана поменута датотека мапе:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -337,23 +340,23 @@ msgstr "Поз."
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Датотека није нађена."
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Датотека мапе личи на сценарио, али вредност map_data не показује на "
+"постојећу датотеку."
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Датотека мапе је празна или није нађена"
+msgstr "Празна датотека мапе."
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Не могу да сачувам мапу: $msg"
+msgstr "Не могу да сачувам у сценарио."
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
