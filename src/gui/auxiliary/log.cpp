@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+/** @file gui/auxiliary/log.cpp */
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/auxiliary/log.hpp"

@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+/** @file gui/auxiliary/log.hpp */
+
 #ifndef GUI_AUXILIRY_LOG_HPP_INCLUDED
 #define GUI_AUXILIRY_LOG_HPP_INCLUDED
 

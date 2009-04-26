@@ -47,18 +47,17 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 struct end_level_exception;
 
 /**
- * Function which recruits a unit into the game.
- * A copy of u will be created and inserted as the new recruited unit.
- * If need_castle is true, then the new unit must be on the same castle
+ * Recruits a unit into the game.
+ * A copy of @a u will be created and inserted as the new recruited unit.
+ * If @a need_castle is true, then the new unit must be on the same castle
  * as the leader of the team is on the keep of.
  *
- * If preferred_location is in a valid location, it will be used,
+ * If @a preferred_location is a valid location, it will be used,
  * otherwise a valid location will be arbitrarily chosen.
- * If disp is not NULL, the new unit will be faded in.
+ * If @a disp is not NULL, the new unit will be faded in.
  *
- * If the unit cannot be recruited, then a human-readable message
- * describing the reason will be returned.
- * On success, the return string is empty.
+ * @return an empty string on success. Otherwise a human-readable message
+ *         describing the failure is returned.
  */
 std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		unit u, map_location& recruit_location,const bool is_recall,

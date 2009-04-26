@@ -14,7 +14,7 @@
 */
 
 /**
- * @file log.cpp
+ * @file src/log.cpp
  * Standard logging facilities (implementation).
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
