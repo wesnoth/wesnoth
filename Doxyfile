@@ -535,6 +535,7 @@ WARN_LOGFILE           =
 # with spaces.
 
 INPUT                  = src \
+                         src/ai \
                          src/campaign_server \
                          src/editor2 \
                          src/serialization \
@@ -543,6 +544,7 @@ INPUT                  = src \
                          src/widgets \
                          doc/doxygen/doxygen.cpp \
                          src/animated.i \
+                         src/gui/auxiliary \
                          src/gui/dialogs \
                          src/gui/widgets \
                          src/tests \
