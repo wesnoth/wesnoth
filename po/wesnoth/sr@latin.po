@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:32+0200\n"
-"PO-Revision-Date: 2009-04-09 22:46+0200\n"
+"PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -5529,12 +5529,12 @@ msgstr "saurijanci"
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race^Mechanical"
-msgstr "mehanički"
+msgstr "mašina"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:190
 msgid "race+plural^Mechanical"
-msgstr "mehanički"
+msgstr "mašine"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:200
@@ -6090,7 +6090,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -6669,7 +6669,7 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Možete slati Projektu Vesnota anonimne sažetke svog napretka, putem dugmeta "
-"„Pomozite Vesnotu“ (označenog ikonom koverte blizu donjeg desnog ugla "
+"„Pomognite Vesnot“ (označenog ikonom koverte blizu donjeg desnog ugla "
 "glavnog ekrana). Ovi podaci su nam suštinski za podešavanje nivoa težine u "
 "pohodima."
 
@@ -7877,6 +7877,7 @@ msgstr "poredak: "
 msgid "Required XP: "
 msgstr "traži IP: "
 
+# >> Title to table of attacks.
 #: src/help.cpp:1380
 msgid "unit help^Attacks"
 msgstr "Napadi"
@@ -7897,6 +7898,7 @@ msgstr "domet"
 msgid "Special"
 msgstr "posebno"
 
+# >> Title to table of resistances.
 #: src/help.cpp:1441
 msgid "Resistances"
 msgstr "Otpornosti"
@@ -8120,7 +8122,7 @@ msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
-"scenario settings^početno\n"
+"početno\n"
 "zlata"
 
 #: src/menu_events.cpp:501
@@ -8128,7 +8130,7 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
-"scenario settingsôsnovni\n"
+"osnovni\n"
 "prihod"
 
 #: src/menu_events.cpp:502
@@ -8136,7 +8138,7 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
-"scenario settings^zlata\n"
+"zlata\n"
 "po selu"
 
 #: src/menu_events.cpp:503
@@ -9497,7 +9499,7 @@ msgstr "Pohod"
 
 #: src/titlescreen.cpp:413
 msgid "TitleScreen button^Multiplayer"
-msgstr "Više igrača"
+msgstr "Višeigranje"
 
 #: src/titlescreen.cpp:414
 msgid "TitleScreen button^Load"
@@ -9601,7 +9603,7 @@ msgstr "Statistika slanja"
 
 #: src/titlescreen.cpp:504
 msgid "Help Wesnoth"
-msgstr "Pomozite Vesnot"
+msgstr "Pomognite Vesnot"
 
 #: src/titlescreen.cpp:505
 msgid "Help Wesnoth by sending us information"
@@ -9724,6 +9726,3 @@ msgstr "Pomozite nam da poboljšamo Vesnot za vas!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Uključi slanje sažetaka"
-
-#~ msgid " included from "
-#~ msgstr " uključeno iz "
