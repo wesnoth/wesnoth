@@ -68,6 +68,8 @@ Version 1.7.0-svn:
    * Updated CJK character range
    * Fixed word wrapping in CJK languages (patch #1140 from sylecn)
    * Remove female^ descriptions of Outlaw, Footpad, Fugitive, Dark Adept
+   * The term 'stoned' has been replaced with 'petrified'; also the
+     related verb.
  * Multiplayer server:
    * Implemented automatic saving of game replays.
    * Implemented the adminmsg command to allow players to send messages to
@@ -109,6 +111,8 @@ Version 1.7.0-svn:
      'type' (list of types), 'race' (list of races) and 'type_adv_tree' (list
      of unit types which the whole advancement tree will be hidden. [hide_help]
      also allow to use sub-tag [not] (to hide a race but not a specific type)
+   * [stone] and [unstone] have been replaced with [petrify] and [unpetrify];
+     the units' "stoned" status variable has been renamed to "petrified"
  * Miscellaneous and bugfixes:
    * Added --ignore-fatal-errors option to wmlunits
    * Added --rng-seed command line option to specify a value to seed the random
