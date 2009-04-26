@@ -452,10 +452,10 @@ linechanges = (
         ("targetting", "targeting"),
         # Changed just after 1.7 fork
         ("[stone]", "[petrify]"),
-        ("[unstone]", "[unpetrifyx]"),
+        ("[unstone]", "[unpetrify]"),
         ("WEAPON_SPECIAL_STONE", "WEAPON_SPECIAL_PETRIFY"),
         ("SPECIAL_NOTE_STONE", "SPECIAL_NOTE_PETRIFY"),
-        (".stoned", "petrified"),
+        (".stoned", ".petrified"),
         )
 
 def validate_stack(stack, filename, lineno):
