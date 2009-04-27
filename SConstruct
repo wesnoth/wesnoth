@@ -227,6 +227,9 @@ if env["prereqs"]:
         else:
             return True
 
+    env = conf.Finish()
+    client_env = env.Clone()
+    conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
@@ -241,8 +244,8 @@ if env["prereqs"]:
     if env["PLATFORM"] != "win32":
         have_X = conf.CheckLib('X11')
 
-    if env['fribidi']:
-        env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
+    if client_env['fribidi']:
+        client_env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     if env["PLATFORM"] == "posix":
         conf.CheckCHeader("poll.h", "<>")
@@ -257,9 +260,9 @@ if env["prereqs"]:
         env.ParseConfig("mysql_config --libs --cflags")
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
 
-    env = conf.Finish()
+    client_env = conf.Finish()
 
-    test_env = env.Clone()
+    test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
@@ -283,6 +286,7 @@ else:
     have_server_prereqs = True
     have_test_prereqs = True
     test_env = env.Clone()
+    client_env = env.Clone()
 
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
@@ -299,11 +303,8 @@ env["dummy_locales"] = env["dummy_locales"] and env["nls"] and env["LOCALEDEF"]
 # Implement configuration switches
 #
 
-for env in [test_env, env]:
+for env in [test_env, client_env, env]:
     env.Append(CPPPATH = ["#/", "#/src"])
-
-    if "gnulink" in env["TOOLS"]:
-        env.Append(LINKFLAGS = "-Wl,--as-needed")
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
@@ -375,7 +376,7 @@ else:
     except:
         env["svnrev"] = ""
 
-Export(Split("env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
@@ -389,7 +390,7 @@ builds = {
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
 
-for env in [test_env, env]:
+for env in [test_env, client_env, env]:
     env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
     env.AppendUnique(**builds[build])
     env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))

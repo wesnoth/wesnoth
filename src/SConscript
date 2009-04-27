@@ -6,8 +6,8 @@ from glob import glob
 
 Import("*")
 
-env.Append(CPPDEFINES = "$EXTRA_DEFINE")
-test_env.Append(CPPDEFINES = "$EXTRA_DEFINE")
+for env in [test_env, client_env, env]:
+    env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -114,10 +114,10 @@ libwesnoth_sources = Split("""
     wml_exception.cpp
     """)
 libwesnoth_sources.extend([
-    env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
+    client_env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
     ])
 
-libwesnoth = env.Library("wesnoth", libwesnoth_sources)
+libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 
 libwesnothd_sources = Split("""
     loadscreen_empty.cpp
@@ -128,18 +128,18 @@ libwesnothd = env.Library("wesnothd", libwesnothd_sources)
 libcampaignd_sources = Split("""
     addon_checks.cpp
     """)
-libcampaignd = env.Library("campaignd", libcampaignd_sources)
+libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
     """)
-libwesnoth_sdl = env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
+libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
 libcutter_sources = Split("""
     tools/exploder_utils.cpp
     tools/exploder_cutter.cpp
     """)
-libcutter = env.Library("cutter", libcutter_sources)
+libcutter = client_env.Library("cutter", libcutter_sources)
 
 # Used by both 'wesnoth' and 'test' targets
 wesnoth_sources = Split("""
@@ -161,6 +161,7 @@ wesnoth_sources = Split("""
     attack_prediction_display.cpp
     callable_objects.cpp
     config_adapter.cpp
+    config_cache.cpp
     controller_base.cpp
     dialogs.cpp
     floating_textbox.cpp
@@ -187,6 +188,7 @@ wesnoth_sources = Split("""
     multiplayer_wait.cpp
     multiplayer_create.cpp
     multiplayer_lobby.cpp
+    multiplayer_connect.cpp
     pathfind.cpp
     playcampaign.cpp
     play_controller.cpp
@@ -273,11 +275,7 @@ wesnoth_sources = Split("""
     gui/widgets/window_builder.cpp
     """)
 
-wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
-wesnoth_sources.extend(env.Object(Split("""
-    config_cache.cpp
-    multiplayer_connect.cpp
-    """)))
+wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 wesnoth_editor2_sources = Split("""
     gui/dialogs/editor_generate_map.cpp
@@ -300,7 +298,7 @@ wesnoth_editor2_sources = Split("""
 if env["editor"]:
     wesnoth_sources += wesnoth_editor2_sources
 
-libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
+libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 #
 # Target declarations
 #
@@ -317,12 +315,12 @@ def WesnothProgram(env, target, source, can_build, **kw):
     exec target + " = bin"
     Export(target)
 
-env.AddMethod(WesnothProgram)
-test_env.AddMethod(WesnothProgram)
+for env in [test_env, client_env, env]:
+    env.AddMethod(WesnothProgram)
 
-game_cpp = env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
+game_cpp = client_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
-env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
+client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp
@@ -332,8 +330,6 @@ if env["PLATFORM"] == "win32": env["fifodir"] = ""
 campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
-
-# I don't know Scons so I just add jwsmtp here...
 
 wesnothd_sources = Split("""
     server/ban.cpp
@@ -359,15 +355,13 @@ env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd]
 cutter_sources = Split("""
     tools/cutter.cpp
     """)
-env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs,
-    LIBS = env["LIBS"] + ["png"])
+client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 exploder_sources = Split("""
     tools/exploder.cpp
     tools/exploder_composer.cpp
     """)
-env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs,
-    LIBS = env["LIBS"] + ["png"])
+client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 test_utils_sources = Split("""
     tests/utils/game_config_manager.cpp
@@ -375,7 +369,7 @@ test_utils_sources = Split("""
     tests/utils/fake_display.cpp
     """)
 
-libtest_utils = env.Library("test_utils", test_utils_sources)
+libtest_utils = test_env.Library("test_utils", test_utils_sources)
 
 test_sources = Split("""
     tests/main.cpp
