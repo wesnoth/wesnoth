@@ -175,7 +175,7 @@ private:
 	/** Check, if the filename contains illegal constructs like ".gz". */
 	void check_filename(const std::string& filename, display& gui);
 	/** Ask the user if an existing file should be overwritten. */
-	bool savegame::check_overwrite(display& gui);
+	bool check_overwrite(display& gui);
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method. */
