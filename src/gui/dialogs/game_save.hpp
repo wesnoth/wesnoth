@@ -63,7 +63,7 @@ class tgame_save_oos : public tgame_save_message
 public:
 	tgame_save_oos(const std::string& title, const std::string& filename="", const std::string& message="");
 
-	const bool ignore_all() const { return ignore_all_; }
+	bool ignore_all() const { return ignore_all_; }
 
 private:
 	/** Inherited from tgame_save. */

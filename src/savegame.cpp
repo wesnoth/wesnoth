@@ -480,14 +480,13 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 	int overwrite = 0;
 	bool exit = true;
 	static bool ignore_all = false;
-	bool has_exit = true;
 
 	do{ 
 		try{
 			if (ask_for_filename){
 				std::string filename = filename_;
 
-				if (has_exit){
+				if (has_exit_button){
 					gui2::tgame_save_oos dlg(title_, filename, message);
 					dlg.show(gui.video());
 					filename = dlg.filename();
