@@ -83,5 +83,23 @@ void tgame_save_message::pre_show(CVideo& video, twindow& window)
 	tgame_save::pre_show(video, window);
 }
 
+tgame_save_oos::tgame_save_oos(const std::string& title, const std::string& filename, const std::string& message)
+	: tgame_save_message(title, filename, message),
+	btnIgnoreAll_(register_bool("ignore_all", false)),
+	ignore_all_(false)
+{}
+
+twindow* tgame_save_oos::build_window(CVideo& video)
+{
+	return build(video, get_id(GAME_SAVE_OOS));
+}
+
+void tgame_save_oos::post_show(twindow& window)
+{
+	tgame_save::post_show(window);
+
+	ignore_all_ = btnIgnoreAll_->get_widget_value(window);
+}
+
 } // namespace gui2
 

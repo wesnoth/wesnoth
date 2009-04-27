@@ -67,6 +67,7 @@ enum twindow_type {
 #endif
 	GAME_SAVE,				 /**< Save game dialog. */
 	GAME_SAVE_MESSAGE,		 /**< Save game dialog with additional message. */
+	GAME_SAVE_OOS,			 /**< Save game dialog for processing OOS. */
 	COUNT                    /**<
 	                          * The last one to hold the number of items and as
 	                          * sentinel.

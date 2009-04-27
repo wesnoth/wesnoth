@@ -31,13 +31,12 @@ protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-private:
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
-
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
+private:
+	/** Inherited from tdialog. */
+	twindow* build_window(CVideo& video);
 
 	tfield_text* txtFilename_;
 	std::string title_;
@@ -51,12 +50,30 @@ public:
 
 private:
 	/** Inherited from tgame_save. */
-	twindow* build_window(CVideo& video);
-
-	/** Inherited from tgame_save. */
 	void pre_show(CVideo& video, twindow& window);
 
+	/** Inherited from tgame_save. */
+	twindow* build_window(CVideo& video);
+
 	std::string message_;
+};
+
+class tgame_save_oos : public tgame_save_message
+{
+public:
+	tgame_save_oos(const std::string& title, const std::string& filename="", const std::string& message="");
+
+	const bool ignore_all() const { return ignore_all_; }
+
+private:
+	/** Inherited from tgame_save. */
+	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
+
+	tfield_bool* btnIgnoreAll_;
+	bool ignore_all_;
 };
 
 }

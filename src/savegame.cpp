@@ -479,14 +479,21 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 	int res = 0;
 	int overwrite = 0;
 	bool exit = true;
+	static bool ignore_all = false;
+	bool has_exit = true;
 
 	do{ 
 		try{
 			if (ask_for_filename){
 				std::string filename = filename_;
 
-				if (has_exit_button)
-					res = dialogs::get_save_name_oos(gui, message, _("Name: "), &filename_, dialog_type, title_);
+				if (has_exit){
+					gui2::tgame_save_oos dlg(title_, filename, message);
+					dlg.show(gui.video());
+					filename = dlg.filename();
+					ignore_all = dlg.ignore_all();
+					res = dlg.get_retval();
+				}
 				else{
 					if (dialog_type == gui::OK_CANCEL){
 						gui2::tgame_save dlg(title_, filename);
