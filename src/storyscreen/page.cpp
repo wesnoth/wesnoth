@@ -13,15 +13,15 @@
 */
 
 /**
- * @file storyscreen/page.cpp
- * Storyscreen pages and floating images representation.
+ * @file storyscreen/part.cpp
+ * Storyscreen parts and floating images representation.
  */
 
 #include "global.hpp"
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
-#include "storyscreen/page.hpp"
+#include "storyscreen/part.hpp"
 
 #include "config.hpp"
 #include "gamestatus.hpp"

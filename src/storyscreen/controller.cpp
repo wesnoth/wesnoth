@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 #include "storyscreen/controller.hpp"
-#include "storyscreen/page.hpp"
+#include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
 #include "asserts.hpp"

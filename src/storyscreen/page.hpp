@@ -13,12 +13,12 @@
 */
 
 /**
- * @file storyscreen/page.hpp
- * Storyscreen pages and floating images representation.
+ * @file storyscreen/part.hpp
+ * Storyscreen parts and floating images representation.
  */
 
-#ifndef STORYSCREEN_PAGE_HPP_INCLUDED
-#define STORYSCREEN_PAGE_HPP_INCLUDED
+#ifndef STORYSCREEN_PART_HPP_INCLUDED
+#define STORYSCREEN_PART_HPP_INCLUDED
 
 #include <string>
 #include <utility>
@@ -143,4 +143,4 @@ private:
 } // end namespace storyscreen
 
 
-#endif /* ! STORYSCREEN_PAGE_HPP_INCLUDED */
+#endif /* ! STORYSCREEN_PART_HPP_INCLUDED */
