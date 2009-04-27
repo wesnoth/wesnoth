@@ -43,7 +43,7 @@ static lg::log_domain log_engine("engine");
 namespace {
 	void generate_endscreen_page_config(config& append_to_cfg)
 	{
-		config& partcfg = append_to_cfg.add_child("story").add_child("page");
+		config& partcfg = append_to_cfg.add_child("story").add_child("part");
 		partcfg["text_align"] = "centered";
 	}
 } // end anonymous namespace

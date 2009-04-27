@@ -70,12 +70,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		const std::string key = i->first;
 		const vconfig node = i->second;
 
-		// [page] and deprecated [part] (remove in 1.7.4)
-		if((key == "page" || key == "part") && !node.empty()) {
-			if(key == "part") {
-				lg::wml_error << "[part] in [story] has been deprecated and support for it will be removed in 1.7.4; use [page] instead.\n";
-			}
-
+		if(key == "part" && !node.empty()) {
 			page* const story_page = new page(*gamestate_, node);
 			// Use scenario name as page title if the WML doesn't supply a custom one.
 			if((*story_page).show_title() && (*story_page).title().empty()) {
