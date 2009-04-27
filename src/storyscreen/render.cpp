@@ -23,7 +23,7 @@
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
-#include "storyscreen/page.hpp"
+#include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
 
 #include "display.hpp"
