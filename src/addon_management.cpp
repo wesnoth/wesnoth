@@ -451,7 +451,7 @@ namespace {
 												count_missing);
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg(disp, msg_title, msg_entrytxt + "\n" + missing +
-			                "\n" + _("Do you still want to download it?"), gui::OK_CANCEL);
+			                "\n" + _("Do you want to download this add-on? (You will still have to install the dependencies in order to play.)"), gui::OK_CANCEL);
 			if (dlg.show())
 				return false;
 		}
