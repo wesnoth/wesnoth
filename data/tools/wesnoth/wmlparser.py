@@ -544,8 +544,14 @@ class Parser:
             elif c == "\n":
                 break
             elif c == "#":
+                # FIXME
+                # Assume something like:
+                # name="picture.png="+
+                # #textdomain blah
+                # "translateable name"
+                #
+                # For now, we ignore the textdomain...
                 self.read_until("\n")
-                break
             elif c == "+":
                 value = value.rstrip() # remove whitespace before +
                 self.skip_whitespace_inside_statement() # read over newline
