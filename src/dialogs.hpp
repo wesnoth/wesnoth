@@ -55,14 +55,6 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 bool is_illegal_file_char(char c);
 
 /**
- * Ask user if I should really save the game and what name I should use returns
- * 0 if user wants to save the game.
- */
-int get_save_name_oos(display & disp,const std::string& message, const std::string& txt_label,
-				  std::string* fname, gui::DIALOG_TYPE dialog_type=gui::YES_NO,
-				  const std::string& title="");
-
-/**
  * Allow user to select the game they want to load. Returns the name of the
  * save they want to load. Stores whether the user wants to show a replay of
  * the game in show_replay. If show_replay is NULL, then the user will not be
