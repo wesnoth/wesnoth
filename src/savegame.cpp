@@ -477,7 +477,6 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 
 
 	int res = 0;
-	int overwrite = 0;
 	bool exit = true;
 	static bool ignore_all = false;
 
@@ -512,17 +511,8 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 				set_filename(filename);
 			}
 
-			std::string filename = filename_;
-			if (res == gui2::twindow::OK && savegame_manager::save_game_exists(filename, compress_saves_)) {
-				std::stringstream s;
-				s << _("Save already exists. Do you want to overwrite it?")
-				  << std::endl << _("Name: ") << filename;
-				overwrite = gui::dialog(gui,_("Overwrite?"),
-					s.str(), gui::YES_NO).show();
-				exit = (overwrite == 0);
-			} else {
-				exit = true;
-			}
+			if (res == gui2::twindow::OK)
+				exit = check_overwrite(gui);
 		}
 		catch (illegal_filename_exception){
 			exit = false;
@@ -530,7 +520,7 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 	}
 	while (!exit);
 
-	if (res == 2)
+	if (res == 2) //Quit game
 		throw end_level_exception(QUIT);
 
 	if (res != gui2::twindow::OK)
@@ -760,6 +750,21 @@ void savegame::extract_summary_data_from_save(config& out)
 				out["map_data"] = gamestate_.starting_pos["map_data"];
 			}
 		}
+	}
+}
+
+bool savegame::check_overwrite(display& gui)
+{
+	std::string filename = filename_;
+	if (savegame_manager::save_game_exists(filename, compress_saves_)) {
+		std::stringstream s;
+		s << _("Save already exists. Do you want to overwrite it?")
+		  << std::endl << _("Name: ") << filename;
+		int overwrite = gui::dialog(gui,_("Overwrite?"),
+			s.str(), gui::YES_NO).show();
+		return overwrite == 0;
+	} else {
+		return true;
 	}
 }
 
