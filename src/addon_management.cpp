@@ -870,11 +870,11 @@ namespace {
 		msg_dlg.show();
 	}
 
-	void download_addons(game_display& disp, std::string remote_host,
+	void download_addons(game_display& disp, const std::string& remote_address,
 			bool update_mode, bool* do_refresh, int old_index = 0)
 	{
 		const std::vector<std::string> address_components =
-			utils::split(remote_host, ':');
+			utils::split(remote_address, ':');
 		if(address_components.empty()) {
 			return;
 		}
@@ -882,8 +882,8 @@ namespace {
 		const std::string old_host = preferences::campaign_server();
 		const int remote_port = lexical_cast_default<int>(address_components.back(),
 		                                                  default_campaignd_port);
-		remote_host = address_components.front();
-		preferences::set_campaign_server(remote_host);
+		std::string remote_host = address_components.front();
+		preferences::set_campaign_server(remote_address);
 
 		try {
 			const network::manager net_manager;
@@ -1065,7 +1065,7 @@ namespace {
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 
 			// Show the dialog again, and position it on the same item installed
-			download_addons(disp, remote_host, update_mode, do_refresh, index);
+			download_addons(disp, remote_address, update_mode, do_refresh, index);
 
 		} catch(config::error& e) {
 			ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
