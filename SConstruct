@@ -477,7 +477,7 @@ def InstallManpages(env, component):
 # Now the actual installation productions
 
 env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
-env.InstallData("docdir",  "wesnoth", Dir("doc/manual"))
+env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"))
 
