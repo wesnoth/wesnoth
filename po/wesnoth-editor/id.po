@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-04-07 19:18+0530\n"
+"PO-Revision-Date: 2009-04-27 14:27+0530\n"
 "Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -97,13 +97,13 @@ msgstr "spesial"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Gunakan tombol tetikus kiri/kanan untuk menggambar daerah later depan/latar "
-"belakang. Pegang Shift untuk hanya mengecat lapisan dasar."
+"Gunakan tombol tetikus kiri/kanan untuk menggambar daerah latar depan/latar "
+"belakang. Pegang Shift untuk hanya mengecat lapisan dasar. Ctrl+klik untuk "
+"mengecek daerah di bawah tetikus."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -274,17 +274,19 @@ msgstr "Peta tersimpan."
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Data peta termasuk diload"
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Peta diload dari skenario"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"File peta referensi diload:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -332,23 +334,23 @@ msgstr "BG"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "File tidak ditemukan"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"File peta mirip seperti skenario, tetapi nomor map_data tidak menunjukkan ke "
+"file yang sudah ada"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "File peta kosong atau peta tidak ditemukan"
+msgstr "File peta kosong"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Tidak bisa menyimpan peta: $msg"
+msgstr "Tidak bisa menyimpan ke dalam skenario"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:51+0200\n"
-"PO-Revision-Date: 2007-02-19 17:35+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2009-04-09 18:45+0530\n"
+"Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr ""
+msgstr "Kelelawar Darah"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:19
@@ -30,6 +30,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Kelelawar Darah diberikan nama begitu karena warna mereka, yang dianggap "
+"oleh beberapa orang sebagai simbul makanan pilihan mereka. Makhluk ini cepat "
+"dan bisa menghisap darah makhluk yang mereka serang, memperoleh sebagian "
+"kesehatan yang hilang dari korbannya."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -45,12 +49,12 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 msgid "fangs"
-msgstr ""
+msgstr "gigi taring"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "Kelelawar Seram"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -60,11 +64,15 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Kelelawar Seram cepat dan bisa menghisap darah korbannya, mengobati diri "
+"mereka sendiri, bahkan sampai mereka menjadi lebih kuat dari ketika mereka "
+"memulai pertarungan. Tergembung oleh darah, mereka tumbuh besar dan bisa "
+"memakan korban yang lebih besar dan kuat."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr ""
+msgstr "Kelelawar Vampir"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
@@ -73,11 +81,14 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Kelelawar Vampir adalah makhluk terbang yang menghisap darah makhluk lain. "
+"Meskipun gigi taring mereka tidak begitu kuat, kesehatan korban mereka "
+"dihisap beserta dengan darah mereka, dan diberikan ke Kelelawar tersebut."
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
-msgstr ""
+msgstr "Perahu"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -85,21 +96,25 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Sering didorong oleh dayung atau layar kecil, perahu digunakan untuk "
+"menempuh jarak dekat dan di perairan dangkal di mana kapal besar tidak bisa "
+"berlayar."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr ""
+msgstr "Galeon"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
+"Galeon adalah kapal perairan biru dibuat untuk perdagangan dan transportasi."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Galeon Pembajak"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -108,17 +123,20 @@ msgid ""
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
+"Galeon Pembajak adalah ke kapal transportasi apa serigala adalah ke domba. "
+"Bajak laut yang mengawak mereka sangat senang membantu meringankan kapal-"
+"kapal lain dari kargo berat mereka."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
-msgstr ""
+msgstr "mesin busur"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Galeon Pengangkut"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -126,11 +144,13 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Galeon Transpor adalah kapal bersenjata yang membawa pasukan. Jika mereka "
+"mencapai pantai, mereka bisa mendaratkan pasukan tersebut untuk menyerang."
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "Drake Kiamat"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
@@ -140,6 +160,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Jika bukan untuk baju baja yang mereka pakai, beberapa drake barangkali "
+"tidak dapat dibedakan dari naga asli, paling tidak kepada manusia biasa. "
+"Makhluk-makhluk yang diketahui sebagai 'Drake Kiamat' adalah makhluk "
+"menjulang, kebal kepada dan memiliki api yang luar biasa."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
@@ -155,7 +179,7 @@ msgstr ""
 #: data/core/units/undead/Spirit_Shadow.cfg:122
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 msgid "claws"
-msgstr ""
+msgstr "cakar"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Dragon.cfg:46
@@ -168,12 +192,12 @@ msgstr ""
 #: data/core/units/drakes/Blademaster.cfg:78
 #: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Fighter.cfg:75
 msgid "fire breath"
-msgstr ""
+msgstr "nafas berapi"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "Drake Pendekar"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
@@ -182,6 +206,9 @@ msgid ""
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
+"Drake yang menguasai penggunaan pedang disumpah ke dalam orde spesial. Tanda "
+"inisiasi mereka adalah cat peperangan hitam-dan-putih yang mereka tunjukkan "
+"di pertarungan."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -218,12 +245,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 msgid "sword"
-msgstr ""
+msgstr "pedang"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "Drake Pembakar"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:19
@@ -233,11 +260,15 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
+"Drake Pembakar adalah beberapa makhluk bangga di dalam siapa darah dan "
+"kekuatan leluhur terdahulu mereka mengalir, memberikan mereka kemampuan "
+"bernafas api. Ini, ditambah dengan ukuran besar dan cakar menakutkan mereka, "
+"membuat mereka musuh yang sangat berbahaya di pertempuran."
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Drake Penusuk"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
@@ -257,6 +288,20 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"Seorang Penusuk Drake tidak bisa terbang atau bernafas api, dan hampir semua "
+"menganggap keturunan pangkat mereka kepada pertempuran jarak dekat "
+"disebabkan oleh ketidakmampuan - percobaan menyimpan guna dari apa yang "
+"dengan kata lain adalah liabilitas. Mungkin mereka memiliki sedikit "
+"kelemahan pada keahlian tersebut, tetapi mereka yang mendukung teori ini "
+"gagal mempertimbangkan betapa sesuai mereka bertarung dengan saudara drake "
+"yang lain.\n"
+"Mereka adalah, sebetulnya, Juri Hirarki Drake, dan meskipun senjata mereka "
+"sekarang adalah sebagian besar hanya untuk upacara, tetap saja mereka ampuh. "
+"Di dalam perjumpaan mereka dengan ras yang lebih rendah, mereka menemukan "
+"bahwa ukuran alamiah dan kekuatan mereka adalah senjata ampuh dengan "
+"sendirinya, dan ketika digabungkan dengan senjata yang digunakan oleh kasta "
+"ini, pasukan hasilannya kekurangan beberapa kelemahan umum yang dimiliki "
+"oleh jenis mereka, seperti kelemahan terhadap tombak dan anak panah."
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:133
@@ -288,12 +333,12 @@ msgstr ""
 #: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/undead/Skele_Chocobone.cfg:25
 msgid "spear"
-msgstr ""
+msgstr "tombak"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "Drake Penghukum"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:20
@@ -302,6 +347,9 @@ msgid ""
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
+"Drake Penghukum hebat melambangkan kekuatan mentah jenis mereka. Waktu lama "
+"dihabiskan di pandai besi memperlengkapi mereka dengan susunan senjata yang "
+"banyak, dan mereka berperisai mengkilat tahan uji, dari kepala ke kaki."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:75
@@ -314,12 +362,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
-msgstr ""
+msgstr "gada"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "Drake Petarung"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:19
@@ -329,16 +377,20 @@ msgid ""
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
+"Drake Petarung menggunakan surik bengkok, dan memiliki kemampuan bernafas "
+"api seperti leluhur mereka. Mereka juga bisa terbang, dan kemampuan ini "
+"mencemaskan musuh manapun. Kekuatan hebat mereka, digabungkan dengan sisik "
+"keras mereka, sangat menakutkan kepada samurai ras manapun."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:66
 msgid "scimitar"
-msgstr ""
+msgstr "surik"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "Drake Api"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:18
@@ -347,11 +399,14 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"Drake Api hebat adalah penguasa api terdalam mereka. Berperisai baja "
+"mengkilat, mereka menyembur kolom api ke siapapun yang melawan mereka, "
+"sebuah kesaksian kepada kekuatan dan keagungan jenis mereka."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Drake Hatiapi"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
@@ -361,11 +416,16 @@ msgid ""
 "That they can breathe fire as they do lends credence to this belief, though, "
 "for some reason, no one has tried cutting one open to find out."
 msgstr ""
+"Ada legenda bahwa keturunan drake tertua - keturunan langsung dari bangsa "
+"naga - memiliki urat beralir api dan bukan darah. Fakta bahwa mereka bisa "
+"bernafas api seperta mereka lakukan membuktikan kepercayaan ini, meskipun, "
+"untuk suatu alasan, tidak ada seorangpun yang mencoba memotong satu untuk "
+"menyelidikinya."
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Drake Kobaran"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:25
@@ -374,11 +434,14 @@ msgid ""
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
+"Bangsa drake adalah bangsa tua, cukup bijak untuk mematuhi pemimpin alamiah "
+"mereka. Mereka yang dipanggil 'kobaran' oleh musuh mereka adalah drake yang "
+"bercita-cita menjadi pemimpin seperti itu, di dalam peperangan dan damai."
 
 #. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Drake Gladiator"
 
 #. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
@@ -391,11 +454,18 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
+"Gladiator menempuh jalan jauh berbeda dibandingkan dengan Penghujam. "
+"Daripada menekankan kepentingan berlatih, mereka memilih memusatkan "
+"perhatian kepada keahlian senjata mereka. Mereka adalah pandai besi "
+"masyarakat Drake, dan karena itu mereka memiliki senjata terbaik - senjata "
+"tajam dan tombak tertajam, dan gada yang melengkapi persenjataan hebat "
+"mereka. Fokus kesungguhan mereka kepada senjata mereka menganugerahkan "
+"kemampuan menyerang dengan mengorbankan sedikit kemampuan melindung mereka."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Drake Pelayang"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:20
@@ -407,17 +477,25 @@ msgid ""
 "vantage point, these drakes can see past most defensive cover. Their skill "
 "at flying allows them the precision to target enemies under such cover."
 msgstr ""
+"Drake Pelayang membawa beban seringan mungkin, membebaskan diri mereka untuk "
+"terbang ke kapasitas penuh mereka. Drake ini adalah petarung tangkas, "
+"memiliki api terdalam yang dimiliki oleh banyak saudara mereka. Pelayang "
+"juga bisa menggunakan kecepatan mereka dengan efektif membanting musuh "
+"mereka sampai mereka menyerah. Dari tempat peninjauan mereka di udara, drake "
+"ini bisa melihat melewati hampir semua perlindungan. Keahlian mereka terbang "
+"menganugerahkan mereka ketepatan mengincar musuh di dalam perlindungan "
+"seperti tersebut."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:76
 #: data/core/units/drakes/Hurricane.cfg:91 data/core/units/drakes/Sky.cfg:90
 msgid "slam"
-msgstr ""
+msgstr "membanting"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "Drake Topan"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:28
@@ -426,11 +504,15 @@ msgid ""
 "drakes which are gifted with flight. Soaring high in the air, they can see "
 "past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Penguasa kerajaan udara, Drake Topan adalah elit di antara drake yang "
+"berbakat terbang. Membumbung tinggi di udara, ia bisa melihat melewati "
+"hampir semua perlindungan dan menghemburkan api kepada musuh mereka dengan "
+"dengan bebas."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Drake Neraka"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:19
@@ -441,11 +523,16 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"Kebakaran terbang diketahui sebagai Drake Neraka adalah penguasa api yang "
+"mereka nafas, dan menyaingi leluhur mereka Bangsa Naga di dalam kemampuan "
+"mereka menggunakannya. Kemampuan alamiah ini membuat mereka hampir kebal "
+"terhadap api. Baju baja mengkilat, berwarna api adalah tanda kasta bangga "
+"dan kuat mereka, sebuah idaman yang dicita-citai oleh saudara-saudara mereka."
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr ""
+msgstr "Drake Angkasa"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:27
@@ -456,11 +543,15 @@ msgid ""
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
 msgstr ""
+"Drake Angkasa adalah benar-benar raja angkasa. Momentum tukikan mengerikan "
+"dan nafas api mereka bergabung menjadi senjata menakutkan. Dengan menyerang "
+"dari udara, mereka bisa menyemburkan api dengan tepat kepada posisi yang "
+"biasanya memberikan perlindungan besar kepada musuh mereka."
 
 #. [unit_type]: id=Drake Slasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Drake Penghujam"
 
 #. [unit_type]: id=Drake Slasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:19
@@ -471,6 +562,12 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"Penghujam adalah Penusuk yang memilih menguasai penggunaan tombak pedang "
+"daripada membawa pedang dan tombak. Ukuran besar mereka menyanggupkan mereka "
+"menggunakan senjata yang berukuran sama, cukup besar untuk menusuk seekor "
+"kuda seperti seorang manusia akan lakukan kepada seekor babi hutan. Latihan "
+"mereka juga meningkatkan daya tahan dan keahlian perlindungan mereka, yang "
+"adalah keuntungan besar di atas sepupu dekat mereka Gladiator."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -479,12 +576,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
-msgstr ""
+msgstr "tombak pedang"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "Drake Penjaga"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
@@ -494,11 +591,15 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"Penjaga mewakili puncak kasta penusuk, dipilih dari Penghujam terbaik. "
+"Mereka melatih kekuatan mereka sampai-sampai jarang sekali ada petarung di "
+"bumi yang berani melawan mereka. Senjata pilihan Penjaga adalah tombak "
+"pedang, yang mereka gunakan dengan ahli."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Drake Prajurit"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:18
@@ -507,11 +608,15 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike devastating blows, and to withstand punishment in equal measure."
 msgstr ""
+"Drake Prajurit menggunakan pedang secara mahir, dan memiliki kemampuan "
+"bernafas api seperti leluhur mereka. Kekuatan besar jenis mereka "
+"menyanggupkan mereka menyerang dengan pukulan membinasakan, dan melawan "
+"serangan dengan ahli."
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "Kurcaci Pengamuk"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
@@ -520,17 +625,21 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"Pengamuk adalah kasta langka Kurcaci, yang membuat diri mereka sendiri "
+"mengamuk besar sebelum pertempuran. Petarung ini melupakan semua pikiran "
+"melindungi diri, hanya memikirkan serangan tak kenal henti yang mereka "
+"lakukan secara legendaris."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:45
 msgid "berserker frenzy"
-msgstr ""
+msgstr "amukan gila"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Kurcaci Nagawan"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
@@ -544,6 +653,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Tidak diketahui mengapa Kurcaci Nagawan dipanggil secara tersebut, sebuah "
+"nama diberikan oleh saudara-saudara mereka. Beberapa berspekulasi bahwa nama "
+"tersebut diberikan dari senjata pilihan mereka, tongkat aneh ini yang "
+"menyemburkan api dan kematian. Yang lain menduga bahwa nama ini diberikan "
+"karena senjata seperti itu berbahaya bahkan melawan Naga sungguhan, jika "
+"makhluk tersebut masih bisa dilihat di bumi ini. Apapun alasannya, karena "
+"senjata ini pengawal benteng kota Kurcaci megah terkenal dan ditakuti; "
+"senjata yang menghancurkan petarung terhebat dengan satu tembakan."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
@@ -561,17 +678,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
-msgstr ""
+msgstr "pisau belati"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
-msgstr ""
+msgstr "tongkat naga"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "Kurcaci Petarung"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
@@ -581,6 +698,10 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Kurcaci Petarung menggunakan kapak perang dan palu sangat besar, yang "
+"membuat mereka musuh ditakuti di pertarungan jarak dekat. Mereka sangat "
+"bagus di daerah pegunungan atau di bawah tanah. Meskipun tidak cepat, "
+"kekuatan dan daya tahan mereka lebih dari mengimbangi."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:47
@@ -589,19 +710,19 @@ msgstr ""
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
-msgstr ""
+msgstr "kapak"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:51
 #: data/core/units/dwarves/Lord.cfg:51 data/core/units/dwarves/Fighter.cfg:55
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
-msgstr ""
+msgstr "palu"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Kurcaci Penjaga"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
@@ -612,6 +733,13 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"Bangsa kurcaci selalu terkenal untuk ketegapan mereka, dan banyak prajurit "
+"mereka melengkapi diri mereka sendiri untuk mengambil keuntungan dari fakta "
+"ini. Penjaga kurcaci bergerak ke dalam pertempuran dengan perisai menara dan "
+"tombak. Seringkali, tugas mereka adalah melindungi barisan, dan meminta "
+"banyak korban kepada siapapun yang mencoba menembusnya. Ketika barisannya "
+"bergerak ke depan, mereka mengamankan kemajuan yang mereka peroleh dengan "
+"darah dan jiwa."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:55
@@ -620,12 +748,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:87
 msgid "javelin"
-msgstr ""
+msgstr "lembing"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "Kurcaci Majikan"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
@@ -635,23 +763,28 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Berperisai baju baja berkilat, kurcaci-kurcaci ini kelihatan seperti raja-"
+"raja dari bawah pegunungan. Mereka menggunakan kapak dan palu secara ahli, "
+"dan bisa mengenai sasaran dengan melempar kapak dari beberapa meter. "
+"Meskipun lambat berjalan kaki, kurcaci-kurcaci ini adalah bukti kegagahan "
+"saudara-saudara mereka."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:42
 #: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
-msgstr ""
+msgstr "kapak perang"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:60
 msgid "hatchet"
-msgstr ""
+msgstr "kapak kayu"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Kurcaci Aksarawan"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:21
@@ -661,21 +794,25 @@ msgid ""
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
+"Sihir kurcaci seringkali ditemukan di dalam tulisan rahasia rune di "
+"permukaan sebuah obyek, yang dengan suatu cara memenuhinya dengan kekuasaan "
+"hanya dengan keberadaan mereka. Meskipun jarang sekali dilihat di "
+"pertempuran, penguasa rune tersebut bisa menggunakannya secara mengerikan."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:38
 msgid "runic hammer"
-msgstr ""
+msgstr "palu runik"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
 msgid "lightning bolt"
-msgstr ""
+msgstr "petir"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Kurcaci Pelindung"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -686,11 +823,17 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"Jagoan di antara pasukan mereka, kurcaci-kurcaci pelindung membentuk "
+"perlindungan di sekeliling barisan pertempuran mereka. Memimpin serangan "
+"langsung melawan sebuah barisan yang mereka lindungi, sering tak mungkin; "
+"ini biasanya cenderung membunuh diri sendiri, dan bukan hanya tidak efektif. "
+"Kurcaci-kurcaci ini adalah ahli pertarungan jarak dekat, dan bisa melindungi "
+"sebuah tanah dengan ketangguhan sebuah pohon ek."
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Kurcaci Pengawal"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
@@ -700,11 +843,16 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"Akal, pengalaman dan latihan membentuk pengawal menjadi prajurit berharga. "
+"Pasukan tinggi dan kuat ini diperlengkapi sesuai dengan kemampuannya, dan "
+"bisa bertahan melawan semua, kecuali serangan yang terhebat. Sangat "
+"berbahaya hilang pijakan melawan salah satu prajurit seperti ini, karena "
+"pijakan tersebut tidak gampang dimenangkan kembali."
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Kurcaci Bajubesi"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:20
@@ -712,11 +860,13 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
+"Petarung Kurcaci Bajubesi yang lebih berpengalaman memakai baju baja dan dan "
+"baju besi berantai, yang membuat mereka terkenal."
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Kurcaci Geledek"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
@@ -727,17 +877,23 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
+"Ketika penghuni Wesnoth pertama-tama bertemu dengan bangsa kurcaci, mereka "
+"tertakjub oleh keperkasaan Kurcaci Geledek, yang bisa melemparkan kematian "
+"dari jarak jauh melalui alat tongkat aneh ini yang mereka bawa ke dalam "
+"pertempuran. Suara menulikan 'tongkat guntur' tersebut sangat mengerikan "
+"untuk dilihat, dan menjadi lebih mengerikan karena rahasia yang disimpan "
+"oleh kurcaci-kurcaci tentang cara berfungsinya."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:119
 #: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
-msgstr ""
+msgstr "tongkat guntur"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Kurcaci Petir"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
@@ -753,11 +909,23 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Kurcaci Petir terkenal untuk persenjataan aneh mereka, tongkat kayu dan besi "
+"aneh ini yang membuat suara bergemuruh di dalam kemarahannya. Masinasi di "
+"belakang persenjataan ini adalah sebuah misteri, sebuah rahasia dibawa "
+"sampai perkuburan oleh kurcaci Knalga yang memakainya, dan bahkan yang "
+"dianggap membuatnya. Yang palih diketahui adalah laporan-laporan tentang "
+"kurcaci-kurcaci menuangkan debu hitam aneh ke dalam mulut senjata mereka, "
+"yang beberapa bilang adalah makanan untuk memberi makan binatang buas yang "
+"terpenjara di dalam.\n"
+"\n"
+"Meskipun sebuah tembakan dari 'tongkat guntur' ini bisa menghabiskan "
+"beberapa menit untuk disiapkan, hasilnya dilihat oleh Kurcaci-kurcaci "
+"berharga."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Kurcaci Pemarah"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
@@ -767,11 +935,15 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"Bangsa Kurcaci adalah sebuah bangsa petarung purba. Pemarah-pemarah adalah "
+"yang paling ganas dari mereka semua; di pertempuran, mereka akan menjadi "
+"sangat marah di dalam mana mereka tidak merasa takut atau pedih, dan tidak "
+"akan memperhatikan luka apapn yang mereka derita."
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr ""
+msgstr "Elf Pemanah"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:21
@@ -783,6 +955,13 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Bangsa elf selalu terkenal untuk seni memanah, sebuah keahlian yang, untuk "
+"banyak alasan, dikuasai secara alamiah untuk mereka. Bahkan yang berbadan "
+"lemah bisa menjadi berbahaya membawa panah di tangan, dan ketika "
+"pertempuran, banyak yang akan membawa senjata ini. Meskipun "
+"kekurangpengalaman mereka di dalam pertempuran membuat mereka agak mudah "
+"diserang, keanggunan alamiah mereka memastikan bahwa mereka bisa menjadi "
+"rekrutan baru terbaik untuk umat manusia."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -807,17 +986,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 msgid "bow"
-msgstr ""
+msgstr "panah"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:183
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "Elf Pemanah"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "Elf Balasdendam"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -832,16 +1011,26 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
+"Nama aneh elf 'Balasdendam' diberikan dari sebuah taktik yang sering "
+"digunakan oleh penjaga hutan ahli ini. Musuh dibolehkan menembus "
+"perlindungan tipuan, dan ketika pasukan mudah diserang yang di belakang "
+"barisan depan mengikuti, pemanah ini keluar dari persembunyiannya dan "
+"menyerang, memotong persediaan dan mengelilingi musuh dengan satu serangan "
+"mematikan.\n"
+"\n"
+"Ini sudah, beberapa kali, ditafsirkan sebagai bentuk pembalasan dendam untuk "
+"saudara-saudara mereka yang terbunuh di pertempuran. Meskipun desainnya "
+"tidak begitu dasar, ini tidak begitu salah."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:192
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "Elf Balasdendam"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr ""
+msgstr "Elf Kapten"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
@@ -853,11 +1042,15 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves."
 msgstr ""
+"Bangsa elf, berbeda dari banyak bangsa lain, akan mengakui dan mengikuti "
+"dengan cepat saudaranya yang manapun yang berpengalaman di peperangan. Di "
+"dalam aspek ini, mereka sangat berbeda dari manusia, untuk siapa "
+"kepemimpinan seringkali diperoleh dengan paksaan dan gertakan."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr ""
+msgstr "Elf Utama"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -868,11 +1061,16 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
+"Beberapa elf yang mengasah diri mereka sendiri menjadi senjata pertempuran "
+"menjadi sesuatu yang memberi kesan keliru tentang reputasi jinak bangsa "
+"mereka. Pengabdian dan kemampuan digabungkan dengan bentuk kemurnian, dan "
+"hasilnya adalah keahlian berpedang yang hanya beberapa bisa tandingi. Bahkan "
+"pemanahan, dianggap sebagai keahlian sampingan, dilaksanakan dengan mantap."
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "Elf Cenayang"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
@@ -884,6 +1082,12 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people."
 msgstr ""
+"Sihir elf hutan tidak begitu cocok untuk peperangan, tetapi tetap saja "
+"efektif. Hutan-hutan di mana mereka tinggal bisa dibangunkan dengan sebuah "
+"kata perintah, dan akan menyerang siapapun yang mengancam kedamaian mereka.\n"
+"\n"
+" Kemampuan terpenting mereka adalah pengobatan, dan untuk kemampuan ini, elf "
+"cenayang dihormati oleh orang-orangnya."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:38 data/core/units/elves/Druid.cfg:40
@@ -903,22 +1107,22 @@ msgstr ""
 #: data/core/units/humans/Mage_Red.cfg:66
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
-msgstr ""
+msgstr "tongkat"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
 msgid "ensnare"
-msgstr ""
+msgstr "membelit"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
 msgid "thorns"
-msgstr ""
+msgstr "duri-duri"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "Elf Pemantra"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -929,24 +1133,29 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
+"Sihir elf jauh berbeda dari sihir manusia, sangat berbeda sampai-sampai "
+"manusia hampir tidak bisa mengertinya, jangankan memakainya. Begitu juga, "
+"semua yang menguasainya sama-sama aneh; meskipun bisa dibilang bahwa mereka "
+"dihormati oleh orang-orang mereka, sangat sedikit yang bisa dibilang tentang "
+"kegunaan atau kedudukan sebenarnya di dalam masyarakat itu."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:48
 #: data/core/units/elves/Shaman.cfg:51 data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
-msgstr ""
+msgstr "melilit"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:59 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/High_Lord.cfg:82
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
-msgstr ""
+msgstr "api peri"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "Elf Petarung"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -956,11 +1165,16 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Bangsa elf tidak menyukai peperangan secara alami, tetapi ketika diperlukan, "
+"keanggunan alamiah dan ketangkasan mereka membantu mereka dengan baik, "
+"seperti ketrampilan ahli mereka. Seorang elf bisa mempelajari dasar-dasar "
+"keahlian berpedang dan pemanahan dalam waktu yang sangat pendek, dan "
+"menggunakannya di dalam peperangan secara efektif."
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr ""
+msgstr "Elf Pahlawan"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
@@ -970,11 +1184,15 @@ msgid ""
 "with both sword and bow, and their skill once acquired does not fade for "
 "lack of practice."
 msgstr ""
+"Sedikit pengalaman akan merubah seorang elf dari petarung kompeten menjadi "
+"ahli pertempuran. Mereka yang dihormati sebagai pahlawan ahli memakai pedang "
+"dan panah, dan kemampuan mereka sekali dipelajari tidak pudar karena kurang "
+"latihan."
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Elf Raja"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -984,11 +1202,15 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Pemimpin elf tidak menjadi pucat dan lemah dengan umur. Malah, ketika itu "
+"mereka menguasai potensi mereka yang sebenarnya. Tenang dan suka merenung "
+"ketika damai, seorang Elf Raja yang benar-benar murka adalah pemandangan "
+"yang benar-benar mengagumkan."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "Elf Ratu"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
@@ -998,11 +1220,16 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Bangsa elf memilih pemimpin-pemimpin mereka untuk kekuatan dan dan "
+"kebijaksanaan mereka; tinjauan ke masa depan adalah hal yang melindungi "
+"mereka pada waktu ketidaktentuan. Pemerintahan adil mereka dihadiahi dengan "
+"kesetiaan terus-menerus orang-orang mereka, yang adalah hadiah terbesar yang "
+"pernah diingini oleh penguasa manapun."
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "Elf Majikan"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1011,11 +1238,14 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Kemuliaan bangsa elf dimiliki oleh keunggulan untuk menentukan jabatan "
+"mereka di masyarakat. Elf Majikan adalah yang terbijak dan terkuat dari "
+"orang-orangnya, memiliki kekuasaan sihir yang menakutkan."
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "Elf Penembak"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:22
@@ -1028,22 +1258,29 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
+"Salah satu hal yang berkontribusi kepada kemampuan mereka dengan panah "
+"adalah penglihatan jelas elf yang aneh. Seorang elf terlatih di dalam "
+"pemanahan bisa mengenai sasaran yang tidak bisa terlihat oleh manusia, "
+"bahkan pada malam hari, dan bisa memasang anak panah kedua hampir segera "
+"setelah yang pertama dilepaskan.\n"
+"\n"
+"Menguasai kemampuan luar biasa ini mengorbankan latihan ahli berpedang."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
 msgid "longbow"
-msgstr ""
+msgstr "panah panjang"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:185
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "Elf Penembak"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "Elf Marsekal"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
@@ -1055,11 +1292,18 @@ msgid ""
 "when an elf sets his mind to war, the strategy that results is the work of a "
 "master."
 msgstr ""
+"Umur panjang dan kepandaian alamiah elf membuat mereka sesuai untuk hal-hal "
+"militer, bahkan cukup untuk menentang rasa tidak senang umum mereka untuk "
+"hal-hal tersebut. Elf mengingat hal-hal jauh lebih jelas daripada manusia, "
+"dan sering bisa mengetahui apa yang lain hanya bisa dilatih untuk melakukan. "
+"Pasti, di dalam kesempatan-kesempatan langka tersebut ketika seorang elf "
+"memusatkan perhatiannya terhadap peperangan, strategi yang dihasilkan adalah "
+"buah hasil ahli."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "Elf Pemburu "
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1074,11 +1318,20 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"Elf Pemburu dilatih sebagai kurir kerajaan elf. Meskipun orang-orang mereka "
+"damai, pengalaman mereka membuat mereka lumayan berbahaya di dalam "
+"pertempuran. Tidak ada manusia yang pernah menandingi kemampuan mereka "
+"menggunakan panah ketika menunggang kuda - bahkan, hampir semua akan susah "
+"menandinginya berdiri di atas tanah padat.\n"
+"\n"
+"Kecepatan prajurit ini menyanggupkan elf menyerang kapanpun dan di manapun "
+"ketika berperang di lapangan sendiri, sebuah fakta yang menyelamatkan banyak "
+"elf dari kematian."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "Elf Jagahutan"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
@@ -1089,16 +1342,22 @@ msgid ""
 "fitting master of them. This, combined with a considerable skill at archery "
 "and swordsmanship, is very useful in warfare."
 msgstr ""
+"Meskipun seorang manusia bisa hidup bertahun-tahun di dalam hutan, ia tidak "
+"akan pernah mengibaskan perasaan bahwa ia adalah tamu di mana ia adalah "
+"orang asing. Dengan elf, ini malah sebaliknya. Elf manapun yang mempelajari "
+"pengetahuan kehutanan menguasainya dengan gampang. Ini, digabungkan dengan "
+"kemampuan memanah dan berahli pedang yang penting, sangat berguna di "
+"pertempuran."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "Elf Jagahutan"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr ""
+msgstr "Elf Penunggang"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
@@ -1111,11 +1370,19 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
+"Pasukan berkuda ahli elf bisa menjelajahi hutan dengan kecepatan yang "
+"berbahaya untuk manusia siapapun. Kekaguman terhadap penunggang tersebut "
+"lumayan beralasan - tetapi pertanyaan-pertanyaan juga sudah ditanyakan "
+"tentang asal-usul kuda-kudanya, karena perbuatan yang mereka lakukan hampir "
+"luar biasa.\n"
+"\n"
+"Kombinasi mobilitas luar biasa dan kekuatan bertempur adalah salah satu "
+"asset terbesar yang dimiliki oleh bangsa elf di dalam pertempuran."
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr ""
+msgstr "Elf Pengintai"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
@@ -1126,11 +1393,17 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
+"Pasukan berkuda elf hutan bisa menggunakan panah dan pedang, tetapi "
+"kemampuan mereka yang sebenarnya adalah menunggang kuda. Bahkan elf lain "
+"mengagumi kecepatan luar biasa mereka di hutan, dan kemampuan mereka "
+"menembus kelebatan hutan tanpa dilambatkan. Mereka barangkali adalah satu-"
+"satunya pasukan berkuda yang pernah ada yang bergerak di dalam hutan lebih "
+"baik daripada di tanah luas."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "Elf Dukun"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
@@ -1144,11 +1417,18 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
+"Karena mereka adalah sebagian peri, elf memiliki kemampuan inheren untuk "
+"sihir. Ini dicapai dengan kedekatan mereka dengan alam, yang mereka panggil "
+"sebagai sekutu di peperangan. Musuh-musuh yang tersesat di hutan-hutan "
+"mereka akan biasanya dililit oleh akar-akar dan dilambatkan oleh tanah di "
+"mana mereka berdiri.\n"
+"\n"
+"Kemampuan mengobati elf juga hebat, dan sangat berguna di peperangan."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "Elf Sniper"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1158,16 +1438,20 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
+"Ada legenda tentang seorang elf yang menghentikan sebuah anak panah dengan "
+"menembaknya di udara dengan salah satu anak panahnya. Ini adalah bukti "
+"keampuan bangsa elf sampai-sampai cerita seperti tersebut bisa dipercaya. "
+"Sniper elf sudah, secara jelas, menguasai keahlian memanah."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "Elf Sniper"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Elf Peri"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
@@ -1177,16 +1461,20 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people."
 msgstr ""
+"Pengabdian terhadap sisi perinya akan akhirnya merubah seorang gadis elf "
+"menjadi makhluk dari dunia dua-duanya. Dibimbing oleh alam yang sedikit "
+"dimengerti, penjaga hutan elf cantik ini melambangkan keanggunan dan misteri "
+"bangsa mereka."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
 msgid "faerie touch"
-msgstr ""
+msgstr "sentuhan peri"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "Elf Penyihir"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1199,11 +1487,19 @@ msgid ""
 "Those able to do so are roughly titled as 'sorceresses' by other races; and "
 "certainly are capable of acting the part."
 msgstr ""
+"Dunia peri jauh lebih poten daripada dunia jasmaniah. Semata-mata membawa "
+"beberapa dari dunia ini ke dalam dunia kita bisa menyebabkan hasil "
+"berbahaya. Ini dipahami oleh elf, meskipun jarang digunakan dengan maksud "
+"jahat; melakukan hal ini tidak gampang, dan adalah penggunaan salah kekuatan "
+"mereka.\n"
+"\n"
+"Semua yang bisa melakukan hal ini dinamakan 'penyihir' oleh bangsa lain; dan "
+"dengan pasti bisa melakukan bagian mereka."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "Elf Peri"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -1213,21 +1509,25 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"Jarang sekali terlihat, Peri bijaksana adalah penguasa sifat peri dan "
+"jasmaniahnya. Mereka memiliki kekuatan mengagumkan, dan kadang-kadang "
+"mengerikan. Legenda-legenda tentang mereka memberikan bangsa-bangsa lain "
+"ketakutan wajar terhadap bangsa elf."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:53
 msgid "gossamer"
-msgstr ""
+msgstr "baju beri"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Penyingkir Kabut"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "Penunggang Serigala Elit"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
