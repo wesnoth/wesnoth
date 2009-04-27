@@ -7,14 +7,14 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
-				<Option output="..\..\wesnoth_cb" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\wesnoth" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="..\..\" />
 				<Option object_output=".objs-release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 			</Target>
 			<Target title="Debug">
-				<Option output="..\..\wesnoth_cb-debug" prefix_auto="1" extension_auto="1" />
+				<Option output="..\..\wesnoth-debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="..\..\" />
 				<Option object_output=".objs-debug" />
 				<Option type="0" />
@@ -101,8 +101,6 @@
 		<Unit filename="..\..\src\animated_game.cpp" />
 		<Unit filename="..\..\src\array.hpp" />
 		<Unit filename="..\..\src\asserts.hpp" />
-		<Unit filename="..\..\src\astarnode.cpp" />
-		<Unit filename="..\..\src\astarnode.hpp" />
 		<Unit filename="..\..\src\astarsearch.cpp" />
 		<Unit filename="..\..\src\attack_prediction.cpp" />
 		<Unit filename="..\..\src\attack_prediction.hpp" />
@@ -201,6 +199,9 @@
 		<Unit filename="..\..\src\gettext.cpp" />
 		<Unit filename="..\..\src\gettext.hpp" />
 		<Unit filename="..\..\src\global.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\layout_exception.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\log.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\log.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_list.cpp" />
@@ -212,6 +213,8 @@
 		<Unit filename="..\..\src\gui\dialogs\editor_new_map.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\editor_resize_map.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\editor_settings.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\game_save.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\game_save.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\message.cpp" />
@@ -237,6 +240,8 @@
 		<Unit filename="..\..\src\gui\widgets\event_handler.cpp" />
 		<Unit filename="..\..\src\gui\widgets\generator.cpp" />
 		<Unit filename="..\..\src\gui\widgets\grid.cpp" />
+		<Unit filename="..\..\src\gui\widgets\grid.hpp" />
+		<Unit filename="..\..\src\gui\widgets\grid_private.hpp" />
 		<Unit filename="..\..\src\gui\widgets\helper.cpp" />
 		<Unit filename="..\..\src\gui\widgets\helper.hpp" />
 		<Unit filename="..\..\src\gui\widgets\horizontal_scrollbar.cpp" />
