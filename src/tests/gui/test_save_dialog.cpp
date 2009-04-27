@@ -23,6 +23,7 @@
 #include "key.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
+#include "savegame.hpp"
 #include "unit_types.hpp"
 //
 
@@ -102,9 +103,22 @@ namespace test {
 			BOOST_CHECK_MESSAGE(press_return_before->is_fired(), "Enter wasn't activated");
 			BOOST_CHECK_MESSAGE(!release_return_before->is_fired(), "Enter was released before test");
 
+
+			/*
+			After moving the savegame code to savegame.cpp, there need to be a lot more parameters to pass to the 
+			savegame class, that are not available here. Just to give an impression, this could be the code to call
+			the dialog:
+
+			game_savegame save(gamestate, level, gui, teams, units, gamestatus, map, game_preferences::compress_saves());
+			save.save_game_interactive(gui, "Save game", gui::OK_CANCEL, false, false);
+
+			This code however does not compile anymore:
+
 			BOOST_CHECK_EQUAL(dialogs::get_save_name_oos(test_utils::get_fake_display(),
 					"Save game?", "file", &fname,gui::OK_CANCEL, "Save game"), 0);
-
+			
+			Not sure how to fix it best.
+			*/
 			BOOST_CHECK_MESSAGE(release_return_before->is_fired(), "get_save_name returned before releasing first enter.");
 			BOOST_CHECK_MESSAGE(press_return_after->is_fired(), "get_save_name returned before 2nd enter event was sent");
 			BOOST_CHECK_MESSAGE(!release_return_after->is_fired(), "get_save_name returned after 2nd release event was sent");
