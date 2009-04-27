@@ -1976,6 +1976,7 @@ void check_victory(const gamestatus& status, unit_map& units, std::vector<team>&
 			for (std::vector<team>::const_iterator tm = teams.begin(); tm != teams.end(); ++tm) {
 				int side = tm-teams.begin()+1;
 				LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;
+				LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
 			}
 			LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
 
