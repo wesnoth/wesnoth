@@ -114,7 +114,7 @@ libwesnoth_sources = Split("""
     wml_exception.cpp
     """)
 libwesnoth_sources.extend([
-    client_env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
+    client_env.Object("font.cpp", EXTRA_DEFINE = client_env['fribidi'] and "HAVE_FRIBIDI" or None),
     ])
 
 libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
