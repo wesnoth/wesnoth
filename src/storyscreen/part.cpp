@@ -106,7 +106,7 @@ floating_image::render_input floating_image::get_render_input(double scale, SDL_
 	return ri;
 }
 
-page::page()
+part::part()
 	: scale_background_()
 	, background_file_()
 	, show_title_()
@@ -120,7 +120,7 @@ page::page()
 	ASSERT_LOG(0xDEADBEEF == 0x0, "Ouch: shouldn't happen");
 }
 
-page::page(game_state& state_of_game, const vconfig& page_cfg)
+part::part(game_state& state_of_game, const vconfig& part_cfg)
 	: scale_background_(true)
 	, background_file_()
 	, show_title_()
@@ -133,36 +133,36 @@ page::page(game_state& state_of_game, const vconfig& page_cfg)
 {
 	// This method takes care of initializing
 	// and branching properties.
-	resolve_wml(page_cfg, state_of_game);
+	resolve_wml(part_cfg, state_of_game);
 }
 
-page::TEXT_BLOCK_LOCATION page::string_tblock_loc(const std::string& s)
+part::TEXT_BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 {
 	if(s.empty() != true) {
 		if(s == "top") {
-			return page::TOP;
+			return part::TOP;
 		}
 		else if(s == "centered" || s == "center" || s == "middle") {
-			return page::MIDDLE;
+			return part::MIDDLE;
 		}
 	}
-	return page::BOTTOM;
+	return part::BOTTOM;
 }
 
-page::TITLE_ALIGNMENT page::string_title_align(const std::string& s)
+part::TITLE_ALIGNMENT part::string_title_align(const std::string& s)
 {
 	if(s.empty() != true) {
 		if(s == "right") {
-			return page::RIGHT;
+			return part::RIGHT;
 		}
 		else if(s == "centered" || s == "center" || s == "middle") {
-			return page::CENTERED;
+			return part::CENTERED;
 		}
 	}
-	return page::LEFT;
+	return part::LEFT;
 }
 
-void page::resolve_wml(const vconfig& cfg, game_state& gamestate)
+void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
 {
 	if(cfg.has_attribute("background")) {
 		background_file_ = cfg["background"];

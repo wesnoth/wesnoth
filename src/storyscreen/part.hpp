@@ -35,7 +35,7 @@ namespace storyscreen {
 
 /**
  * Represents and contains informations about image labels used
- * in story screen pages.
+ * in story screen parts.
  */
 class floating_image
 {
@@ -80,9 +80,9 @@ private:
 };
 
 /**
- * Represents and contains information about a single storyscreen page.
+ * Represents and contains information about a single storyscreen part.
  */
-class page
+class part
 {
 public:
 	enum TEXT_BLOCK_LOCATION {
@@ -99,7 +99,7 @@ public:
 		QUIT
 	};
 
-	page(game_state& state_of_game, const vconfig& page_cfg);
+	part(game_state& state_of_game, const vconfig& part_cfg);
 
 	bool scale_background() const { return scale_background_; }
 	const std::string& background() const { return background_file_; }
@@ -117,7 +117,7 @@ public:
 	}
 
 private:
-	page();
+	part();
 
 	void resolve_wml(const vconfig& cfg, game_state& gamestate);
 
@@ -137,7 +137,7 @@ private:
 
 	std::vector<floating_image> floating_images_;
 
-	friend class page_ui;
+	friend class part_ui;
 };
 
 } // end namespace storyscreen

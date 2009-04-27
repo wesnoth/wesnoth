@@ -30,7 +30,7 @@ class game_state;
 
 namespace storyscreen {
 
-class page;
+class part;
 class floating_image;
 
 class controller
@@ -40,24 +40,24 @@ public:
 	~controller();
 
 	/**
-	 * Display all story screen pages in a first..last sequence.
+	 * Display all story screen parts in a first..last sequence.
 	 */
-	void show_all_pages();
+	void show_all_parts();
 	/**
-	 * Display a single story screen page.
-	 * @return Next page requested by the user interface.
+	 * Display a single story screen part.
+	 * @return Next part requested by the user interface.
 	 */
-	size_t show_page(size_t page_num);
+	size_t show_part(size_t part_num);
 
 private:
-	// Executes WML flow instructions and inserts pages.
+	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
 	// Used by ctor.
-	void build_pages() {
+	void build_parts() {
 		resolve_wml(data_);
 	}
 	// Used by dtor.
-	void clear_pages();
+	void clear_parts();
 
 	display& disp_;
 	const resize_lock disp_resize_lock_;
@@ -66,14 +66,14 @@ private:
 	vconfig data_;
 	std::string scenario_name_;
 
-	// The page cache.
-	std::vector<page*> pages_;
+	// The part cache.
+	std::vector<part*> parts_;
 
 	// The state of the world.
 	game_state* gamestate_;
 
 public:
-	struct no_pages {};
+	struct no_parts {};
 	struct quit {};
 
 };

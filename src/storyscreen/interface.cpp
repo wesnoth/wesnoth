@@ -41,7 +41,7 @@ static lg::log_domain log_engine("engine");
 #include "stub.hpp"
 
 namespace {
-	void generate_endscreen_page_config(config& append_to_cfg)
+	void generate_endscreen_part_config(config& append_to_cfg)
 	{
 		config& partcfg = append_to_cfg.add_child("story").add_child("part");
 		partcfg["text_align"] = "centered";
@@ -55,7 +55,7 @@ void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string
 	storyscreen::controller ctl(disp, story_cfg, scenario_name);
 
 	try {
-		ctl.show_all_pages();
+		ctl.show_all_parts();
 	} catch(storyscreen::controller::quit const&) {
 		LOG_NG << "leaving storyscreen for titlescreen...\n";
 		STUB();

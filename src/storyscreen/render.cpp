@@ -55,7 +55,7 @@ namespace {
 
 namespace storyscreen {
 
-page_ui::page_ui(page& p, display& disp, gui::button& next_button, gui::button& skip_button)
+part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& skip_button)
 	: p_(p)
 	, disp_(disp)
 	, video_(disp.video())
@@ -89,7 +89,7 @@ page_ui::page_ui(page& p, display& disp, gui::button& next_button, gui::button& 
 	background_ =
 		scale_surface(background_, static_cast<int>(background_->w*scale_factor_), static_cast<int>(background_->h*scale_factor_));
 
-	ASSERT_LOG(background_.null() == false, "Ouch: storyscreen page background got NULL");
+	ASSERT_LOG(background_.null() == false, "Ouch: storyscreen part background got NULL");
 
 	base_rect_.x = (video_.getx() - background_->w) / 2;
 	base_rect_.y = (video_.gety() - background_->h) / 2;
@@ -121,7 +121,7 @@ page_ui::page_ui(page& p, display& disp, gui::button& next_button, gui::button& 
 	}
 }
 
-void page_ui::render_text_box()
+void part_ui::render_text_box()
 {
 	const bool rtl = current_language_rtl();
 
@@ -272,7 +272,7 @@ void page_ui::render_text_box()
 	);
 }
 
-void page_ui::render_title_box()
+void part_ui::render_title_box()
 {
 	// Text color
 	const int r = 0, g = 0, b = 0;
@@ -291,7 +291,7 @@ void page_ui::render_title_box()
 	));
 }
 
-void page_ui::render_background()
+void part_ui::render_background()
 {
 	draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
@@ -300,7 +300,7 @@ void page_ui::render_background()
 	SDL_BlitSurface(background_, NULL, video_.getSurface(), &base_rect_);
 }
 
-bool page_ui::render_floating_images()
+bool part_ui::render_floating_images()
 {
 	events::raise_draw_event();
 	update_whole_screen();
@@ -361,7 +361,7 @@ bool page_ui::render_floating_images()
 	return true;
 }
 
-page_ui::RESULT page_ui::show()
+part_ui::RESULT part_ui::show()
 {
 	if(p_.music_.empty() != true) {
 		sound::play_music_repeatedly(p_.music_);
@@ -383,7 +383,7 @@ page_ui::RESULT page_ui::show()
 		render_text_box();
 	}
 	catch(utils::invalid_utf8_exception const&) {
-		ERR_NG << "invalid UTF-8 sequence in story text, skipping page...\n";
+		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";
 	}
 
 	return ret_;

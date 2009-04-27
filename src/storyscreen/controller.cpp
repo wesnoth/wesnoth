@@ -50,16 +50,16 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 	, evt_context_()
 	, data_(data)
 	, scenario_name_(scenario_name)
-	, pages_()
+	, parts_()
 	, gamestate_(game_events::get_state_of_game())
 {
 	ASSERT_LOG(gamestate_ != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
-	build_pages();
+	build_parts();
 }
 
 controller::~controller()
 {
-	clear_pages();
+	clear_parts();
 }
 
 void controller::resolve_wml(const vconfig& cfg)
@@ -71,12 +71,12 @@ void controller::resolve_wml(const vconfig& cfg)
 		const vconfig node = i->second;
 
 		if(key == "part" && !node.empty()) {
-			page* const story_page = new page(*gamestate_, node);
-			// Use scenario name as page title if the WML doesn't supply a custom one.
-			if((*story_page).show_title() && (*story_page).title().empty()) {
-				(*story_page).set_title( scenario_name_ );
+			part* const story_part = new part(*gamestate_, node);
+			// Use scenario name as part title if the WML doesn't supply a custom one.
+			if((*story_part).show_title() && (*story_part).title().empty()) {
+				(*story_part).set_title( scenario_name_ );
 			}
-			pages_.push_back(story_page);
+			parts_.push_back(story_part);
 		}
 		// [if]
 		else if(key == "if") {
@@ -126,50 +126,50 @@ void controller::resolve_wml(const vconfig& cfg)
 	}
 }
 
-void controller::clear_pages()
+void controller::clear_parts()
 {
-	foreach(page* p, pages_) {
+	foreach(part* p, parts_) {
 		delete p;
 	}
-	pages_.clear();
+	parts_.clear();
 }
 
-void controller::show_all_pages()
+void controller::show_all_parts()
 {
-	if(pages_.empty()) {
-		LOG_NG << "no storyscreen pages to show\n";
+	if(parts_.empty()) {
+		LOG_NG << "no storyscreen parts to show\n";
 	}
 
-	size_t page_n = 0, pages_c = pages_.size();
-	while((page_n = show_page(page_n)) < pages_c)
+	size_t part_n = 0, parts_c = parts_.size();
+	while((part_n = show_part(part_n)) < parts_c)
 		;
 }
 
-size_t controller::show_page(size_t page_num)
+size_t controller::show_part(size_t part_num)
 {
-	if(page_num >= pages_.size()) {
-		ERR_NG << "attempted to display inexistant storyscreen page: " << page_num+1 << " (of " << pages_.size() << ")\n";
-		return pages_.size();
+	if(part_num >= parts_.size()) {
+		ERR_NG << "attempted to display inexistant storyscreen part: " << part_num+1 << " (of " << parts_.size() << ")\n";
+		return parts_.size();
 	}
 
-	LOG_NG << "displaying storyscreen page " << page_num+1 << " of " << pages_.size() << '\n';
+	LOG_NG << "displaying storyscreen part " << part_num+1 << " of " << parts_.size() << '\n';
 
-	page* const p = pages_[page_num];
-	ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen page in collection" );
+	part* const p = parts_[part_num];
+	ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen part in collection" );
 
 	// TODO:
 	//  gui::button back_button(disp_.video(),std::string("< ")+_("Next"));
 	gui::button next_button(disp_.video(),_("Next") + std::string(" >"));
 	gui::button skip_button(disp_.video(),_("Skip"));
 
-	page_ui ui(*p, disp_, next_button, skip_button);
+	part_ui ui(*p, disp_, next_button, skip_button);
 	switch(ui.show()) {
-	case page_ui::NEXT:
-		return page_num+1;
-	case page_ui::BACK:
-		return(page_num > 0 ? page_num-1 : page_num);
-	case page_ui::SKIP:
-		return pages_.size();
+	case part_ui::NEXT:
+		return part_num+1;
+	case part_ui::BACK:
+		return(part_num > 0 ? part_num-1 : part_num);
+	case part_ui::SKIP:
+		return parts_.size();
 	default:
 		throw quit();
 	}

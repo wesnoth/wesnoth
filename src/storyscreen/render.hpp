@@ -33,22 +33,22 @@ namespace gui { class button; }
 namespace storyscreen {
 
 /**
- * Storyscreen page user interface.
+ * Storyscreen part user interface.
  * This works on the assumption, like the old one, that the screen
  * cannot be resized while we are at this. More specifically, it is
  * assumed that the screen dimensions remain constant between the
  * constructor call, and the destruction of the objects.
  */
-class page_ui
+class part_ui
 {
 public:
 	enum RESULT { NEXT, BACK, SKIP, QUIT };
 
-	page_ui(page& p, display& disp, gui::button& next_button, gui::button& skip_button);
+	part_ui(part& p, display& disp, gui::button& next_button, gui::button& skip_button);
 	RESULT show();
 
 private:
-	page& p_;
+	part& p_;
 	display& disp_;
 	CVideo& video_;
 	CKey keys_;
