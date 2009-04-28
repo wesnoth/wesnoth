@@ -268,7 +268,7 @@ SDL_Color chat::color_message(const msg& message) {
 	    c = font::LABEL_COLOUR;
 	}
 	return c;
-};
+}
 
 ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp.video()),
