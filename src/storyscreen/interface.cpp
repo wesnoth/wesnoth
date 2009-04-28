@@ -55,7 +55,7 @@ void show_storyscreen(display& disp, const vconfig& story_cfg, const std::string
 	storyscreen::controller ctl(disp, story_cfg, scenario_name);
 
 	try {
-		ctl.show_all_parts();
+		ctl.show();
 	} catch(storyscreen::controller::quit const&) {
 		LOG_NG << "leaving storyscreen for titlescreen...\n";
 		STUB();

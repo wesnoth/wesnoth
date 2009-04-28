@@ -24,6 +24,8 @@
 #include "variable.hpp"
 #include "video.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 class display;
 class game_state;
 // class vconfig;
@@ -31,25 +33,25 @@ class game_state;
 namespace storyscreen {
 
 class part;
+class part_ui;
 class floating_image;
 
 class controller
 {
 public:
 	controller(display& disp, const vconfig& data, const std::string& scenario_name);
-	~controller();
 
 	/**
 	 * Display all story screen parts in a first..last sequence.
 	 */
-	void show_all_parts();
-	/**
-	 * Display a single story screen part.
-	 * @return Next part requested by the user interface.
-	 */
-	size_t show_part(size_t part_num);
+	void show();
 
 private:
+	typedef boost::shared_ptr< part    > part_pointer_type;
+	typedef boost::shared_ptr< part_ui > render_pointer_type;
+	typedef part_ui                      render_value_type;
+	typedef part_ui&                     render_reference_type;
+
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
 	// Used by ctor.
@@ -67,7 +69,7 @@ private:
 	std::string scenario_name_;
 
 	// The part cache.
-	std::vector<part*> parts_;
+	std::vector< part_pointer_type > parts_;
 
 	// The state of the world.
 	game_state* gamestate_;
