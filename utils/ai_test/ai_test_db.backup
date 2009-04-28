@@ -1,0 +1,188 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Started on 2009-04-28 03:24:33 EEST
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+
+--
+-- TOC entry 296 (class 2612 OID 45054)
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: pgsql
+--
+
+CREATE PROCEDURAL LANGUAGE plpgsql;
+
+
+ALTER PROCEDURAL LANGUAGE plpgsql OWNER TO pgsql;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 1469 (class 1259 OID 44782)
+-- Dependencies: 1739 1740 1741 1742 1743 1744 1745 1746 1747 1748 1749 1750 1751 1752 1753 1754 1755 6
+-- Name: game; Type: TABLE; Schema: public; Owner: wesnoth_ai_test_user; Tablespace: 
+--
+
+CREATE TABLE game (
+    id bigint NOT NULL,
+    svn_release integer DEFAULT 0 NOT NULL,
+    datetime timestamp with time zone DEFAULT now() NOT NULL,
+    winner_side integer DEFAULT 0 NOT NULL,
+    ai_config1 text DEFAULT ''::text NOT NULL,
+    ai_config2 text DEFAULT ''::text NOT NULL,
+    local_modifications boolean DEFAULT false NOT NULL,
+    turn integer DEFAULT 1 NOT NULL,
+    ai_ident1 text DEFAULT ''::text NOT NULL,
+    ai_ident2 text DEFAULT ''::text NOT NULL,
+    is_success boolean DEFAULT true NOT NULL,
+    version_string text DEFAULT ''::text NOT NULL,
+    duration double precision DEFAULT 0 NOT NULL,
+    map text DEFAULT ''::text NOT NULL,
+    faction1 text DEFAULT ''::text NOT NULL,
+    faction2 text DEFAULT ''::text NOT NULL,
+    test text DEFAULT 'default'::text NOT NULL,
+    CONSTRAINT winner_side_gte_0 CHECK ((winner_side >= 0))
+);
+
+
+ALTER TABLE public.game OWNER TO wesnoth_ai_test_user;
+
+--
+-- TOC entry 1470 (class 1259 OID 45085)
+-- Dependencies: 1546 6
+-- Name: games_side; Type: VIEW; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+CREATE VIEW games_side AS
+    SELECT game.id, game.svn_release, game.datetime, game.duration, game.map, 1 AS my_side, CASE WHEN (game.winner_side = 1) THEN 1 WHEN (game.winner_side = 2) THEN -1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config1 AS ai_config_me, game.ai_config2 AS ai_config_enemy, game.ai_ident1 AS ai_ident_me, game.ai_ident2 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.svn_release <> 0) UNION SELECT game.id, game.svn_release, game.datetime, game.duration, game.map, 2 AS my_side, CASE WHEN (game.winner_side = 1) THEN -1 WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS outcome, CASE WHEN (game.winner_side = 2) THEN 1 ELSE 0 END AS win, CASE WHEN (game.winner_side = 0) THEN 1 ELSE 0 END AS draw, CASE WHEN (game.winner_side = 1) THEN 1 ELSE 0 END AS loss, CASE WHEN (game.winner_side = 2) THEN game.turn ELSE 0 END AS win_turns, CASE WHEN (game.winner_side = 1) THEN game.turn ELSE 0 END AS loss_turns, game.is_success, game.version_string, game.ai_config2 AS ai_config_me, game.ai_config1 AS ai_config_enemy, game.ai_ident2 AS ai_ident_me, game.ai_ident1 AS ai_ident_enemy, game.local_modifications, game.turn, game.faction1 AS faction_me, game.faction2 AS faction_enemy FROM game WHERE (game.svn_release <> 0);
+
+
+ALTER TABLE public.games_side OWNER TO wesnoth_ai_test_user;
+
+--
+-- TOC entry 20 (class 1255 OID 45064)
+-- Dependencies: 296 6
+-- Name: avg_from(bigint, bigint); Type: FUNCTION; Schema: public; Owner: pgsql
+--
+
+CREATE FUNCTION avg_from(bigint, bigint) RETURNS double precision
+    AS $_$
+BEGIN
+IF $2=0 THEN
+    RETURN 0;
+ELSE
+    RETURN cast($1 as double precision)/$2;
+END IF;
+END;
+$_$
+    LANGUAGE plpgsql IMMUTABLE;
+
+
+ALTER FUNCTION public.avg_from(bigint, bigint) OWNER TO pgsql;
+
+--
+-- TOC entry 1468 (class 1259 OID 44780)
+-- Dependencies: 1469 6
+-- Name: game_id_seq; Type: SEQUENCE; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+CREATE SEQUENCE game_id_seq
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.game_id_seq OWNER TO wesnoth_ai_test_user;
+
+--
+-- TOC entry 1765 (class 0 OID 0)
+-- Dependencies: 1468
+-- Name: game_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+ALTER SEQUENCE game_id_seq OWNED BY game.id;
+
+
+--
+-- TOC entry 1738 (class 2604 OID 44785)
+-- Dependencies: 1469 1468 1469
+-- Name: id; Type: DEFAULT; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+ALTER TABLE game ALTER COLUMN id SET DEFAULT nextval('game_id_seq'::regclass);
+
+
+--
+-- TOC entry 1757 (class 2606 OID 44794)
+-- Dependencies: 1469 1469
+-- Name: pk_game; Type: CONSTRAINT; Schema: public; Owner: wesnoth_ai_test_user; Tablespace: 
+--
+
+ALTER TABLE ONLY game
+    ADD CONSTRAINT pk_game PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1762 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: pgsql
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM pgsql;
+GRANT ALL ON SCHEMA public TO pgsql;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- TOC entry 1763 (class 0 OID 0)
+-- Dependencies: 1469
+-- Name: game; Type: ACL; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+REVOKE ALL ON TABLE game FROM PUBLIC;
+REVOKE ALL ON TABLE game FROM wesnoth_ai_test_user;
+GRANT ALL ON TABLE game TO wesnoth_ai_test_user;
+GRANT SELECT ON TABLE game TO wesnoth_ai_test_viewer;
+
+
+--
+-- TOC entry 1764 (class 0 OID 0)
+-- Dependencies: 1470
+-- Name: games_side; Type: ACL; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+REVOKE ALL ON TABLE games_side FROM PUBLIC;
+REVOKE ALL ON TABLE games_side FROM wesnoth_ai_test_user;
+GRANT ALL ON TABLE games_side TO wesnoth_ai_test_user;
+GRANT SELECT ON TABLE games_side TO wesnoth_ai_test_viewer;
+
+
+--
+-- TOC entry 1766 (class 0 OID 0)
+-- Dependencies: 1468
+-- Name: game_id_seq; Type: ACL; Schema: public; Owner: wesnoth_ai_test_user
+--
+
+REVOKE ALL ON SEQUENCE game_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE game_id_seq FROM wesnoth_ai_test_user;
+GRANT ALL ON SEQUENCE game_id_seq TO wesnoth_ai_test_user;
+GRANT SELECT ON SEQUENCE game_id_seq TO wesnoth_ai_test_viewer;
+
+
+-- Completed on 2009-04-28 03:24:36 EEST
+
+--
+-- PostgreSQL database dump complete
+--
+
