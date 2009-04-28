@@ -173,7 +173,9 @@ private:
 		override this to take effect. */
 	virtual void create_filename() {}
 	/** Check, if the filename contains illegal constructs like ".gz". */
-	void check_filename(const std::string& filename, display& gui);
+	void check_filename(const std::string& filename, CVideo& video);
+	/** Display the save game dialog. */
+	int show_save_dialog(CVideo& video, bool is_oos, const std::string& message, const gui::DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
 	bool check_overwrite(display& gui);
 
