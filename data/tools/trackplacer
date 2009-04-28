@@ -7,11 +7,11 @@ usage: trackplacer [-vh?] [filename]
 A journey is an object containing a map file name and a (possibly
 empty) list of tracks, each with a name and each consisting of a
 sequence of track markers. This program exists to visually edit
-journeys represented as specially delimited sections in in .cfg files.
+journeys represented as specially delimited sections in .cfg files.
 
 If the .cfg filename is not specified, trackplacer will enter a loop
 in which it repeatedly pops up a file selector.  Canceling the file
-selecct ends the program; Selecting a file takes you to a main screen.
+select ends the program; Selecting a file takes you to a main screen.
 For command help on the main screen, click the Help button.
 
 Can be started with a map image, in which case we are editing a new journey.
