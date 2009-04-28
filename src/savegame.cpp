@@ -479,7 +479,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, compress_saves_(compress_saves)
 {}
 
-bool savegame::save_game_interactive(display& gui, const std::string& message,
+bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
 									 const bool ask_for_filename)
 {
@@ -492,12 +492,12 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 	do{ 
 		try{
 			if (ask_for_filename){
-				res = show_save_dialog(gui.video(), has_exit_button, message, dialog_type);
+				res = show_save_dialog(video, has_exit_button, message, dialog_type);
 				exit = true;
 			}
 
 			if (res == gui2::twindow::OK)
-				exit = check_overwrite(gui.video());
+				exit = check_overwrite(video);
 		}
 		catch (illegal_filename_exception){
 			exit = false;
@@ -511,7 +511,7 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 	if (res != gui2::twindow::OK)
 		return false;
 
-	return save_game(&gui);
+	return save_game(&video);
 }
 
 int savegame::show_save_dialog(CVideo& video, bool is_oos, const std::string& message, const gui::DIALOG_TYPE dialog_type)
@@ -588,7 +588,7 @@ bool savegame::save_game(const std::string& filename)
 	return save_game();
 }
 
-bool savegame::save_game(display* gui)
+bool savegame::save_game(CVideo* video)
 {
 	try {
 		Uint32 start, end;
@@ -600,14 +600,13 @@ bool savegame::save_game(display* gui)
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
 
-		if (gui != NULL && show_confirmation_)
-			gui::message_dialog(*gui,_("Saved"),_("The game has been saved")).show();
+		if (video != NULL && show_confirmation_)
+			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
 		
 		return true;
 	} catch(game::save_game_failed&) {
-		if (gui != NULL){
-			gui::message_dialog to_show(*gui,_("Error"), error_message_);
-			to_show.show();
+		if (video != NULL){
+			gui2::show_message(*video,_("Error"), error_message_);
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
@@ -844,7 +843,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 	if(disable_autosave)
 		return;
 
-	save_game(&gui_);
+	save_game(&gui_.video());
 
 	savegame_manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
 }

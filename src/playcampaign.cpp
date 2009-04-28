@@ -395,7 +395,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			if (preferences::save_replays()) {
 				replay_savegame save(gamestate, preferences::compress_saves());
-				save.save_game_interactive(disp, "", gui::OK_CANCEL, false, false);
+				save.save_game_interactive(disp.video(), "", gui::OK_CANCEL, false, false);
 			}
 		}
 

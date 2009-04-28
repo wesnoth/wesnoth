@@ -144,11 +144,11 @@ public:
 		to appear, you have to provide the gui parameter. 
 		The return value denotes, if the save was successful or not.
 	*/
-	bool save_game(display* gui = NULL);
+	bool save_game(CVideo* video = NULL);
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
-	bool save_game_interactive(display& gui, const std::string& message,
+	bool save_game_interactive(CVideo& gui, const std::string& message,
 		gui::DIALOG_TYPE dialog_type, const bool has_exit_button = false,
 		const bool ask_for_filename = true);
 
