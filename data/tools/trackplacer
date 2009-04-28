@@ -121,20 +121,22 @@ def distance(x1, y1, x2, y2):
 
 def within(x, y, (l, t, r, d)):
     "Is point within specified rectangle?"
-    if x >= l and x < l + r and y >= t and y < t + d:
+    if x >= l and x <= l + r - 1 and y >= t and y <= t + d - 1:
         return True
     return False
 
 def overlaps((x1,y1,x1d,y1d),(x2,y2,x2d,y2d)):
     "Do two rectangles overlap?"
-    return within(x1, y1, (x2, y2, x2, y2d)) or \
-           within(x1+x1d-1, y1, (x2, y2, x2, y2d)) or \
-           within(x1, y1+y1d-1, (x2, y2, x2, y2d)) or \
-           within(x1+x1d-1, y1+y1d+1, (x2, y2, x2, y2d)) or \
-           within(x2, y2, (x1, y1, x1, y1d)) or \
-           within(x2+x2d-2, y2, (x1, y1, x1, y1d)) or \
-           within(x2, y2+y2d-2, (x1, y1, x1, y1d)) or \
-           within(x2+x2d-2, y2+y2d+2, (x1, y1, x1, y1d))
+    (x1,y1,x1d,y1d) = p1
+    (x2,y2,x2d,y2d) = p2
+    return within(x1,     y1,     p2) or \
+           within(x1+x1d, y1,     p2) or \
+           within(x1,     y1+y1d, p2) or \
+           within(x1+x1d, y1+y1d, p2) or \
+           within(x2,     y2,     p1) or \
+           within(x2+x2d, y2,     p1) or \
+           within(x2,     y2+y2d, p1) or \
+           within(x2+x2d, y2+y2d, p1)
 
 class JourneyTracks:
     "Represent a set of named journey tracks on a map."
@@ -719,7 +721,7 @@ class TracksEditor:
 
     def box(self, (action, x, y)):
         "Compute the bounding box for an icon of type ACTION at X, Y."
-        # Assumers selected and unselected icons are the same size
+        # Assumes selected and unselected icons are the same size
         return self.selected_dictionary[action].bounding_box(x, y)
 
     def snap_to(self, x, y):
