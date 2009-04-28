@@ -99,8 +99,9 @@ Version 1.7.0-svn:
    * Added [show_objectives] tag and allowed [show_if] tag in [objective]
      tags. (bug #13042)
    * Made moveto events set $x2,$y2 to the source hex. (bug #13140)
-   * [switch] and [case]/[else] can be used to wrap story [part]s in [story]
-     now (bug #13170)
+   * Story screen and parts allow using [switch], [if], [wml_message]
+     and [deprecated_message] consistently at [part] and [story] levels.
+     (feature/bugs #13170, #13290)
    * Added a "preload" WML event type.
    * Added ability to change the share_view team attribute using [modify_side] tag. 
      Be sure to use fog=yes for that side  (bug #13320)
