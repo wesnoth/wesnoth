@@ -111,7 +111,7 @@ twindow* tgame_save_overwrite::build_window(CVideo& video)
 	return build(video, get_id(GAME_SAVE_OVERWRITE));
 }
 
-void tgame_save_overwrite::pre_show(CVideo& video, twindow& window)
+void tgame_save_overwrite::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlabel* lblMessage = dynamic_cast<tlabel*>(window.find_widget("lblMessage", false));
 	VALIDATE(lblMessage, missing_widget("lblMessage"));
