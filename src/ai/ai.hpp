@@ -77,6 +77,9 @@ public:
 	/** Return true iff there has been another attack this turn 'close' to this one. */
 	bool attack_close(const location& loc) const;
 
+	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
+	const map_location& suitable_keep( const location& leader_location, const paths& leader_paths );
+
 protected:
 
 	std::map<location,defensive_position> defensive_position_cache_;
@@ -348,8 +351,6 @@ protected:
 	/** Functions to deal with keeps. */
 	const std::set<location>& keeps();
 	const location& nearest_keep(const location& loc);
-	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	const map_location& suitable_keep( const location& leader_location, const paths& leader_paths );
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location>&);
 
 	void evaluate_recruiting_value(unit_map::iterator leader);

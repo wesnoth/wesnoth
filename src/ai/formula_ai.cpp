@@ -358,6 +358,29 @@ private:
 	const formula_ai& ai_;
 };
 
+/**
+* Find suitable keep for unit at location
+* arguments[0] - location for unit on which the suitable keep is to be found
+*/
+class suitable_keep_function : public function_expression {
+public:
+	suitable_keep_function(const args_list& args, formula_ai& ai)
+	  : function_expression("suitable_keep", args, 1, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
+			return variant();
+		}
+		const paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
+	}
+
+	formula_ai& ai_;
+};
+
 class find_shroud_function : public function_expression {
 public:
 	find_shroud_function(const args_list& args, const formula_ai& ai)
@@ -1552,6 +1575,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new simplest_path_function(args, ai_));
 	} else if(fn == "nearest_keep") {
 		return expression_ptr(new nearest_keep_function(args, ai_));
+	} else if(fn == "suitable_keep") {
+		return expression_ptr(new suitable_keep_function(args, ai_));
 	} else if(fn == "nearest_loc") {
 		return expression_ptr(new nearest_loc_function(args, ai_));
 	} else if(fn == "find_shroud") {
