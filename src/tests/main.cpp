@@ -114,7 +114,7 @@ init_unit_test_suite( int argc, char* argv[] ) { \
 
 #endif
 
-BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture);
+BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture)
 
 /*
  * This is a main compilation unit for the test program.
