@@ -333,14 +333,15 @@ struct undo_action {
 			countdown_time_bonus(timebonus)
 			{}
 
-	undo_action(const unit& u, const map_location& loc, const int pos) :
+	undo_action(const unit& u, const map_location& loc, const int pos, const bool dismiss=false) :
 		route(),
 		starting_moves(),
 		original_village_owner(),
 		recall_loc(loc),
 		recall_pos(pos),
 		affected_unit(u),
-		countdown_time_bonus(1)
+		countdown_time_bonus(1),
+		is_dismiss(dismiss)
 		{}
 
 	std::vector<map_location> route;
@@ -350,6 +351,7 @@ struct undo_action {
 	int recall_pos; // set to RECRUIT_POS for an undo-able recruit
 	unit affected_unit;
 	int countdown_time_bonus;
+	bool is_dismiss; //set to true if the action is a dismissal of a recallable unit
 	bool is_recall() const { return recall_pos >= 0; }
 	bool is_recruit() const { return recall_pos == RECRUIT_POS; }
 };

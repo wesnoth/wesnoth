@@ -56,13 +56,15 @@ namespace events{
 	class delete_recall_unit : public gui::dialog_button_action
 	{
 	public:
-		delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units) : disp_(disp), filter_(filter), units_(units) {}
+		delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units, undo_list& undo_stack, undo_list& redo_stack) : disp_(disp), filter_(filter), units_(units), undo_stack_(undo_stack), redo_stack_(redo_stack) {}
 	private:
 		gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 		game_display& disp_;
 		gui::filter_textbox& filter_;
 		std::vector<unit>& units_;
+		undo_list& undo_stack_;
+		undo_list& redo_stack_;
 	};
 
 	gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
@@ -94,9 +96,12 @@ namespace events{
 			}
 			// Remove the item from filter_textbox memory
 			filter_.delete_item(menu_selection);
-
+			//add dismissal to the undo stack
+			undo_stack_.push_back(undo_action(u, map_location(), static_cast<int>(index), true));
 			units_.erase(units_.begin() + index);
 			recorder.add_disband(index);
+			//clear the redo stack to avoid duplication of dismissals
+			redo_stack_.clear();
 			return gui::DELETE_ITEM;
 		} else {
 			return gui::CONTINUE_DIALOG;
@@ -897,7 +902,7 @@ private:
 				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
 				rmenu.set_textbox(filter);
 
-				delete_recall_unit recall_deleter(*gui_, *filter, recall_list);
+				delete_recall_unit recall_deleter(*gui_, *filter, recall_list, undo_stack_, redo_stack_);
 				gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 				rmenu.add_button(delete_button);
 
@@ -961,7 +966,18 @@ private:
 		const events::command_disabler disable_commands;
 
 		undo_action& action = undo_stack_.back();
-		if(action.is_recall()) {
+		if (action.is_dismiss) {
+			//undo a dismissal
+			player_info* const player = gamestate_.get_player(teams_[team_num - 1].save_id());
+
+			if(player == NULL) {
+				ERR_NG << "trying to undo a dismissal for side " << team_num
+					<< ", which has no recall list!\n";
+			} else {
+				std::vector<unit>& recall_list = player->available_units;
+				recall_list.insert(recall_list.begin()+action.recall_pos,action.affected_unit);
+			}
+		} else if(action.is_recall()) {
 			player_info* const player = gamestate_.get_player(teams_[team_num - 1].save_id());
 
 			if(player == NULL) {
@@ -1069,7 +1085,18 @@ private:
 		const events::command_disabler disable_commands;
 
 		undo_action& action = redo_stack_.back();
-		if(action.is_recall()) {
+		if (action.is_dismiss) {
+			player_info *player=gamestate_.get_player(teams_[team_num - 1].save_id());
+			if(!player) {
+				ERR_NG << "trying to redo a dismiss for side " << team_num
+					<< ", which has no recall list!\n";
+			} else {
+			//redo a dismissal
+			std::vector<unit>& recall_list = player->available_units;
+			recorder.add_disband(action.recall_pos);
+			recall_list.erase(recall_list.begin()+action.recall_pos);
+			}
+		} else if(action.is_recall()) {
 			player_info *player=gamestate_.get_player(teams_[team_num - 1].save_id());
 			if(!player) {
 				ERR_NG << "trying to redo a recall for side " << team_num
