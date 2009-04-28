@@ -21,8 +21,10 @@ foreach(IMAGE ${IMAGES})
     execute_process(COMMAND ${CMAKE_COMMAND} 
                     -E copy_if_different  ${IMAGE} ${IMAGE_BUILD_DIR}/${IMAGE})
 
-    execute_process(COMMAND ${IMAGEMAGICK_CONVERT_EXECUTABLE} 
+    if(NOT ${IMAGE} STREQUAL "images/misc/bar-energy-tinygui.png")
+        execute_process(COMMAND ${IMAGEMAGICK_CONVERT_EXECUTABLE} 
                     -filter point -resize ${SIZE} ${IMAGE} ${IMAGE_BUILD_DIR}/${IMAGE})
+    endif(NOT ${IMAGE} STREQUAL "images/misc/bar-energy-tinygui.png")
 
     message(STATUS "Generating ${IMAGE}")
 
