@@ -167,6 +167,7 @@ void controller::show()
 			break;
 		case part_ui::SKIP:
 			k = parts_.size();
+			break;
 		default:
 			throw quit();
 		}
