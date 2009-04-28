@@ -15,14 +15,17 @@ select ends the program; Selecting a file takes you to a main screen.
 For command help on the main screen, click the Help button.
 
 Can be started with a map image, in which case we are editing a new journey.
-Can be started with a .cfg file, in which case iit will look for 
+Can be started with a .cfg file, in which case it will look for 
 track information enclosed in special comments that look like this:
 
    # trackplacer: tracks begin
    # trackplacer: tracks end
 
-trackplacer will not alter anything it finds outside these comments,
-and will always enclose everything it writes in them.
+trackplacer will alter only what it finds inside these comments, except tht it
+will also generate a fuile epilog for undefining local symbols.  The
+epilog will begin with this comment:
+
+   # trackplacer: epilog begins
 
 Special comments may appear in the track section, looking like this:
 
@@ -162,6 +165,7 @@ class JourneyTracks:
             for (key, val) in self.properties.items():
                 fp.write("# trackplacer: %s=%s\n" % (key, val))
             fp.write("#\n")
+            definitions = []
             for name in self.track_order:
                 track = self.tracks[name]
                 index_tuples = zip(range(len(track)), track)
@@ -173,6 +177,7 @@ class JourneyTracks:
                 outname = name.replace(" ", "_").upper()
                 for (i, e) in enumerate(endpoints):
                     stagename = "%s_STAGE%d" % (outname, i+1,)
+                    definitions.append(stagename)
                     fp.write("#define %s\n" % stagename)
                     for j in range(0, e+1):
                         age="OLD"
@@ -182,7 +187,9 @@ class JourneyTracks:
                         marker = "    {%s_%s %d %d}\n" % waypoint
                         fp.write(marker)
                     fp.write("#enddef\n\n")
-                    fp.write("#define %s_END\n" % stagename)
+                    endname = "%s_END" % stagename
+                    fp.write("#define %s\n" % endname)
+                    definitions.append(endname)
                     for j in range(0, e+1):
                         age="OLD"
                         if j == endpoints[i]:
@@ -191,17 +198,23 @@ class JourneyTracks:
                         marker = "    {%s_%s %d %d}\n" % waypoint
                         fp.write(marker)
                     fp.write("#enddef\n\n")
-                fp.write("#define %s_COMPLETE\n" % name)
+                completename = "%s_COMPLETE" % name
+                fp.write("#define %s\n" % completename)
+                definitions.append(completename)
                 for j in range(len(track)):
                     waypoint = track[j]
                     fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
                 fp.write("#enddef\n\n")
             fp.write("# trackplacer: tracks end\n")
             fp.write(self.after)
+            fp.write ("# trackplacer: epilog begins\n\n")
+            for name in definitions:
+                fp.write("#undef %s\n" % name)
+            fp.write ("\n# trackplacer: epilog ends\n")
             fp.close()
             self.modified = 0
         else:
-            raise IOException("File must have a .trk or .cfg extension.", fp.name)
+            raise IOException("File must have .cfg extension.", fp.name)
     def read(self, fp):
         "Initialize a journey from map and track information."
         if type(fp) == type(""):
@@ -226,6 +239,8 @@ class JourneyTracks:
         state = "before"
         ignore = False
         for line in fp:
+            if line.startswith("# trackplacer: epilog begins"):
+                break
             # This is how we ignore stuff outside of track sections
             if state == "before":
                 if line.startswith("# trackplacer: tracks begin"):
