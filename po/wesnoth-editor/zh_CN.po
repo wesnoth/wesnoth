@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-02-27 17:18-0600\n"
+"PO-Revision-Date: 2009-04-28 01:03-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -99,13 +99,12 @@ msgstr "特殊的"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "使用鼠标左（右）键绘制前（背）景地形。按下Shift键可以只绘制基层（base "
-"layer）。"
+"layer）。Ctrl+单击对当前光标位置地形取样。"
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -266,17 +265,19 @@ msgstr "地图已保存。"
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "已加载嵌入的地图数据"
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "已从场景加载地图"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"已加载引用的地图文件：\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -303,9 +304,8 @@ msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
 #: src/editor2/editor_controller.cpp:1098
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "更新转型"
+msgstr ""
 
 #: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
 msgid "Player"
@@ -325,23 +325,21 @@ msgstr "后置地形"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "文件不存在"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
-msgstr ""
+msgstr "地图文件看起来像是一个场景,但是map_data的值指向一个不存在的文件。"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "无法找到地图文件或地图文件为空"
+msgstr "空地图文件"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "不能保存地图： $msg"
+msgstr "无法保存到场景"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
@@ -368,75 +366,3 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "自定义设置"
-
-#~ msgid "Settings"
-#~ msgstr "设置"
-
-#~ msgid "Draw tiles"
-#~ msgstr "描绘地形"
-
-#~ msgid "Fill"
-#~ msgstr "填充"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "设置玩家启始点"
-
-#~ msgid "Zoom in"
-#~ msgstr "放大"
-
-#~ msgid "Zoom out"
-#~ msgstr "缩小"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "恢复默认视角"
-
-#~ msgid "Toggle grid"
-#~ msgstr "切换格子"
-
-#~ msgid "Resize the map"
-#~ msgstr "调整地图大小"
-
-#~ msgid "Flip map"
-#~ msgstr "翻转地图"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "延迟更新转型"
-
-#~ msgid "Language"
-#~ msgstr "语言"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "选择你最爱的语言"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "韦诺之战地图编辑器"
-
-#~ msgid "None"
-#~ msgstr "无"
-
-#~ msgid "Which Player?"
-#~ msgstr "哪个玩家？"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "哪个玩家在这里开始？"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr "警告：地图名中有非法字符。请以另外的名字保存。"
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "当前文件不包含有效地图。"
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "你想在退出游戏之前保存地图吗？"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "错误：文件名中有非法字符。"
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr "不能地图重定义大小, 您的要求超出最大范围, 尺寸="
-
-#~ msgid " maximum="
-#~ msgstr " 最大="

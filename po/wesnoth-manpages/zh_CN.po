@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-11 20:32-0500\n"
+"PO-Revision-Date: 2009-04-28 01:03-0500\n"
 "Last-Translator: sylecn <sylecn AT gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -172,16 +172,16 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e, --editor \\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
-msgstr ""
+msgstr "直接启动内置的地图编辑器。如果指定了I<file>，则和B<-e --load>等价。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -254,15 +254,15 @@ msgstr "B<-l,\\ --load>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"从游戏存档目录加载存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，启动"
-"地图编辑器并打开存档I<file>所对应的地图。"
+"从默认游戏存档目录加载存档I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，"
+"启动地图编辑器并打开存档I<file>所对应的地图。如果是一个目录，则编辑器启动后自"
+"动在那里打开装载地图对话框。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -1363,7 +1363,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "启动嵌入式游戏地图编辑器"
