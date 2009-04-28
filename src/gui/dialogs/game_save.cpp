@@ -17,6 +17,7 @@
 #include "gui/dialogs/game_save.hpp"
 
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -99,6 +100,22 @@ void tgame_save_oos::post_show(twindow& window)
 	tgame_save::post_show(window);
 
 	ignore_all_ = btnIgnoreAll_->get_widget_value(window);
+}
+
+tgame_save_overwrite::tgame_save_overwrite(const std::string& filename)
+	: filename_(filename)
+{}
+
+twindow* tgame_save_overwrite::build_window(CVideo& video)
+{
+	return build(video, get_id(GAME_SAVE_OVERWRITE));
+}
+
+void tgame_save_overwrite::pre_show(CVideo& video, twindow& window)
+{
+	tlabel* lblMessage = dynamic_cast<tlabel*>(window.find_widget("lblMessage", false));
+	VALIDATE(lblMessage, missing_widget("lblMessage"));
+	lblMessage->set_label(lblMessage->label() + "\n" + _("Name: ") + filename_);
 }
 
 } // namespace gui2

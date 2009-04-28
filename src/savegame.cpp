@@ -39,6 +39,16 @@ static lg::log_domain log_engine("engine");
 #define ERR_SAVE LOG_STREAM(err, log_engine)
 
 #ifdef _WIN32
+	#ifdef INADDR_ANY
+		#undef INADDR_ANY
+	#endif
+	#ifdef INADDR_BROADCAST
+		#undef INADDR_BROADCAST
+	#endif
+	#ifdef INADDR_NONE
+		#undef INADDR_NONE
+	#endif
+
 	#include <windows.h>
 
 	/**
@@ -481,11 +491,13 @@ bool savegame::save_game_interactive(display& gui, const std::string& message,
 
 	do{ 
 		try{
-			if (ask_for_filename)
+			if (ask_for_filename){
 				res = show_save_dialog(gui.video(), has_exit_button, message, dialog_type);
+				exit = true;
+			}
 
 			if (res == gui2::twindow::OK)
-				exit = check_overwrite(gui);
+				exit = check_overwrite(gui.video());
 		}
 		catch (illegal_filename_exception){
 			exit = false;
@@ -537,16 +549,13 @@ int savegame::show_save_dialog(CVideo& video, bool is_oos, const std::string& me
 	return res;
 }
 
-bool savegame::check_overwrite(display& gui)
+bool savegame::check_overwrite(CVideo& video)
 {
 	std::string filename = filename_;
 	if (savegame_manager::save_game_exists(filename, compress_saves_)) {
-		std::stringstream s;
-		s << _("Save already exists. Do you want to overwrite it?")
-		  << std::endl << _("Name: ") << filename;
-		int overwrite = gui::dialog(gui,_("Overwrite?"),
-			s.str(), gui::YES_NO).show();
-		return overwrite == 0;
+		gui2::tgame_save_overwrite dlg(filename);
+		dlg.show(video);
+		return dlg.get_retval() == gui2::twindow::OK;
 	} else {
 		return true;
 	}
@@ -557,9 +566,6 @@ void savegame::check_filename(const std::string& filename, CVideo& video)
 	if (is_gzip_file(filename)) {
 		gui2::show_message(video, _("Error"), _("Save names should not end on '.gz'. "
 			"Please choose a different name."));
-		//gui::message_dialog(gui, _("Error"), 
-		//	_("Save names should not end on '.gz'. "
-		//	"Please choose a different name.")).show();
 		throw illegal_filename_exception();
 	}
 }

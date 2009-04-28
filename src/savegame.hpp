@@ -177,7 +177,7 @@ private:
 	/** Display the save game dialog. */
 	int show_save_dialog(CVideo& video, bool is_oos, const std::string& message, const gui::DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
-	bool check_overwrite(display& gui);
+	bool check_overwrite(CVideo& video);
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method. */

@@ -90,6 +90,7 @@ static void fill_window_types()
 	window_type_list[GAME_SAVE] = "game_save";
 	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
 	window_type_list[GAME_SAVE_OOS] = "game_save_oos";
+	window_type_list[GAME_SAVE_OVERWRITE] = "game_save_overwrite";
 #ifndef DISABLE_EDITOR2
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
