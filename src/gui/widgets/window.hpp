@@ -22,8 +22,8 @@
 #define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
 #include "cursor.hpp"
+#include "gui/auxiliary/formula.hpp"
 #include "gui/widgets/event_handler.hpp"
-#include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"

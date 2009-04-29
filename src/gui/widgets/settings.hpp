@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include "gui/auxiliary/canvas.hpp"
-#include "gui/widgets/formula.hpp"
+#include "gui/auxiliary/formula.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "tstring.hpp"
 
