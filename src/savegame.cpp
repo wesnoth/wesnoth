@@ -481,7 +481,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 
 bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
-									 const bool ask_for_filename)
+									 bool ask_for_filename)
 {
 	show_confirmation_ = ask_for_filename;
 	create_filename();
@@ -496,8 +496,14 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 				exit = true;
 			}
 
-			if (res == gui2::twindow::OK)
+			if (res == gui2::twindow::OK){
 				exit = check_overwrite(video);
+
+				if (!exit){
+					ask_for_filename = true;
+					show_confirmation_ = true;
+				}
+			}
 		}
 		catch (illegal_filename_exception){
 			exit = false;

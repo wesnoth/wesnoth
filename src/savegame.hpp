@@ -150,7 +150,7 @@ public:
 		saves. The return value denotes, if the save was successful or not. */
 	bool save_game_interactive(CVideo& gui, const std::string& message,
 		gui::DIALOG_TYPE dialog_type, const bool has_exit_button = false,
-		const bool ask_for_filename = true);
+		bool ask_for_filename = true);
 
 	const std::string filename() const { return filename_; }
 
