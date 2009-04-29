@@ -35,6 +35,10 @@ total_original_size=0
 total_savings_size=0
 total_savings_filecount=0
 
+if [test -e "/proc/cpuinfo"] && [`grep processor /proc/cpuinfo | wc -l` -gt 1]; then
+        max_number_threads=`grep processor /proc/cpuinfo | wc -l`
+fi
+
 ####### PROCEDURES #######
 
 report_absent_tool()
@@ -147,7 +151,7 @@ Wesnoth automatic PNG optimization helper script
 Part of the Battle for Wesnoth project <www.wesnoth.org>
 
 Usage:
-  $(basename ${0}) [{--nice|n} <value>] [{--help|-h}]
+  $(basename ${0}) [{--nice|n} <value>] [{--threads} <value>] [{--help|-h}]
 
 Switches:
   --nice / -n   Sets the process nice <value> under which the optimization
@@ -156,8 +160,8 @@ Switches:
 
   --help / -h   Displays this help text.
 
-  --threads     Run script with <value> worker threads. If not specified, only
-                one thread is used by default.
+  --threads     Run script with <value> worker threads. If not specified, the
+                amount of CPUs detected will be used.
 
 This tool requires OptiPNG (http://www.cs.toronto.edu/~cosmin/pngtech/optipng/),
 Advdef (http://advancemame.sourceforge.net/comp-readme.html) and ImageMagick's
