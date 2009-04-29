@@ -403,7 +403,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	}
 	// Is he in this game?
 	if (newplayer == player_info_->end() || !is_member(newplayer->first)) {
-		send_server_message("Player/Observer not in this game", sock);
+		send_server_message((newplayer_name.to_string() + " is not in this game").c_str(), sock);
 		return;
 	}
 
@@ -655,7 +655,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
-		<< banner->second.name() << "\tbanned: " << name << "\tfrom game:\t"
+		<< banner->second.name() << "\tbanned: " << name << "\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
 	send_and_record_server_message((name.to_string() + " has been banned.").c_str());
