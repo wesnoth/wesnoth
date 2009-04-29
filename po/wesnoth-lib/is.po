@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:38+0200\n"
-"PO-Revision-Date: 2009-04-19 17:17-0000\n"
+"PO-Revision-Date: 2009-04-29 00:05-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1002,9 +1002,9 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
-"Þú mátt logga þig inn á Opinberan fjölspilunar server með notendanafni og "
+"Þú mátt logga þig inn á Opinberan fjölspilunarmiðlara með notendanafni og "
 "lykilorði af Spjallsíðunni.\n"
-"Taktu eftir að skráning er ekki nauðsynleg til að tengjast miðlarann: Þú "
+"Taktu eftir að skráning er ekki nauðsynleg til að tengjast miðlaranum: Þú "
 "þarf að koma með lykilorð bara ef þú vilt nota skráð notendanafn.\n"
 "\n"
 "Bardaginn um Wesnoth spjallsíðuna má finna á http://www.wesnoth.org/forum/"
@@ -1032,7 +1032,7 @@ msgstr "Hýsa netleik"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Hýsa leik og notast við dedicated server'wesnothd'"
+msgstr "Hýsa leik og notast við sérnota miðlara 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
@@ -1169,7 +1169,7 @@ msgstr "Sýna útlínur reita"
 
 #: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:334
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr "Vista endurspilun eftir SP/MP sigur eða MP tap"
+msgstr "Vista endurinningu eftir SP/MP sigur eða MP tap"
 
 #: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:337
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
@@ -1301,7 +1301,7 @@ msgstr "Skrunhraði:"
 
 #: src/game_preferences_display.cpp:199
 msgid "Sample Rate (Hz):"
-msgstr "Tíðni (Hz):"
+msgstr "Hljóðtökutíðni (Hz):"
 
 #: src/game_preferences_display.cpp:200
 msgid "Frequency:"
@@ -1337,11 +1337,11 @@ msgstr "Breyta hljóðstyrk fyrir takka, osf."
 
 #: src/game_preferences_display.cpp:250
 msgid "Change the sample rate"
-msgstr "Breyta tíðni"
+msgstr "Breyta hljóðtölutíðninni"
 
 #: src/game_preferences_display.cpp:259
 msgid "User defined sample rate"
-msgstr "Notendaskilgreind hljóðtíðni"
+msgstr "Notendaskilgreind hljóðtökutíðni"
 
 #: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
 msgid "Change the buffer size"
@@ -1717,7 +1717,7 @@ msgstr "Endurskýra einingu"
 
 #: src/hotkeys.cpp:63
 msgid "Save Replay"
-msgstr "Vista enduspilun"
+msgstr "Vista endurinningu"
 
 #: src/hotkeys.cpp:64
 msgid "Save The Map"
@@ -1810,7 +1810,7 @@ msgstr "Sýna hreyfingar óvivna"
 
 #: src/hotkeys.cpp:88
 msgid "Best Possible Enemy Moves"
-msgstr "bestu mögulegu hreyfingar"
+msgstr "Bestu mögulegu hreyfingar"
 
 #: src/hotkeys.cpp:90
 msgid "Reset"
@@ -1990,7 +1990,7 @@ msgstr "Búa til skugga"
 
 #: src/hotkeys.cpp:163
 msgid "Refresh Display"
-msgstr "Endurhlaða skjá"
+msgstr "Glæða skjá"
 
 #: src/hotkeys.cpp:165
 msgid "Update Terrain Transitions"
@@ -2002,11 +2002,11 @@ msgstr "Uppfæra sjálkrafa hreyfingu jarðar"
 
 #: src/hotkeys.cpp:169
 msgid "Refresh Image Cache"
-msgstr "Endurhlaða flýtigögn mynda"
+msgstr "Glæða flýtigögn mynda"
 
 #: src/hotkeys.cpp:171
 msgid "Draw Hex Coordinates"
-msgstr "Teikna útlínur reita"
+msgstr "Teikna hnit reita"
 
 #: src/hotkeys.cpp:173
 msgid "Draw Terrain Codes"
