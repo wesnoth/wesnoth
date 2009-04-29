@@ -34,6 +34,18 @@ void ai_testing::log_draw()
 
 void ai_testing::log_victory()
 {
+/*
+	for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
+		LOG_AI_TESTING << "WINNER: "<< *i <<std::endl;
+	}
+	LOG_AI_TESTING << "VICTORY_TURN: "<< status.turn() <<std::endl;
+	for (std::vector<team>::const_iterator tm = teams.begin(); tm != teams.end(); ++tm) {
+		int side = tm-teams.begin()+1;
+		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;
+		LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
+	}
+	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
+*/
 }
 
 void ai_testing::log_unknown_error_while_playing_level()

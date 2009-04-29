@@ -17,6 +17,7 @@
  * Recruiting, Fighting.
  */
 
+#include "ai/testing.hpp"
 #include "attack_prediction.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -1969,6 +1970,8 @@ void check_victory(const gamestatus& status, unit_map& units, std::vector<team>&
 				std::cout << *i << " (using " << ai << ") ";
 			}
 			std::cout << "\n";
+			ai_testing::log_victory();
+			//@todo 1.7 remove this code, as it will be in log_victory
 			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
 				LOG_AI_TESTING << "WINNER: "<< *i <<std::endl;
 			}

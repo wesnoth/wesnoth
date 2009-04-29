@@ -22,6 +22,7 @@
 #include "playsingle_controller.hpp"
 
 #include "ai/ai_manager.hpp"
+#include "ai/testing.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
@@ -580,6 +581,7 @@ void playsingle_controller::play_turn(bool save)
 			std::cout << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
+			ai_testing::log_turn_start();
 		}
 
 		check_victory(status_, units_, teams_, *gui_);
@@ -853,6 +855,7 @@ void playsingle_controller::check_time_over(){
 
 		if(non_interactive()) {
 			std::cout << "time over (draw)\n";
+			ai_testing::log_draw();
 		}
 
 		LOG_NG << "firing time over event...\n";
