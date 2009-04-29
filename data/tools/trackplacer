@@ -211,7 +211,8 @@ class JourneyTracks:
             fp.write(self.after)
             fp.write ("# trackplacer: epilog begins\n\n")
             for name in definitions:
-                fp.write("#undef %s\n" % name)
+                if "{" + name + "}" not in self.after:
+                    fp.write("#undef %s\n" % name)
             fp.write ("\n# trackplacer: epilog ends\n")
             fp.close()
             self.modified = 0
@@ -485,8 +486,9 @@ class TrackController:
         del self.editor.controller[track_id]
 
 class TracksEditor:
-    def __init__(self, path=None, verbose=False):
+    def __init__(self, path=None, verbose=False, force_save=False):
         self.verbose = verbose
+        self.force_save = force_save
         # Initialize our info about the map and track 
         self.journey = JourneyTracks()
         self.last_read = None
@@ -916,7 +918,7 @@ class TracksEditor:
 
     def save_handler(self, w):
         "Save track data,"
-        if not self.journey.has_unsaved_changes():
+        if not self.journey.has_unsaved_changes() and not self.force_save:
             w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                                   flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                                   buttons=gtk.BUTTONS_OK)
@@ -1177,18 +1179,20 @@ class TracksEditor:
         sys.exit(1)
 
 if __name__ == "__main__":
-    (options, arguments) = getopt.getopt(sys.argv[1:], "d:hv?",
-                                         ['directory=', 'help', 'verbose'])
-    verbose = False
+    (options, arguments) = getopt.getopt(sys.argv[1:], "d:fhv?",
+                                         ['directory=', 'force', 'help', 'verbose'])
+    verbose = force_save = False
     top = None
     for (opt, val) in options:
         if opt in ('-d', '--directory'):
             top = val
+        elif opt in ('-f', '--force'):
+            force_save = True
         elif opt in ('-?', '-h', '--help'):
             print __doc__
             sys.exit(0)
         elif opt in ('-v', '--verbose'):
-            verbose=True
+            verbose = True
 
     here = os.getcwd()
     if top:
@@ -1201,7 +1205,7 @@ if __name__ == "__main__":
             # Relativize file path to current directory
             if filename.startswith(os.getcwd() + os.sep):
                 filename = filename[len(os.getcwd())+1:]
-            TracksEditor(path=filename, verbose=verbose)
+            TracksEditor(path=filename, verbose=verbose, force_save=force_save)
         except IOException, e:
             if e.lineno:
                 sys.stderr.write(('"%s", line %d: ' % (e.path, e.lineno)) + e.message + "\n")
@@ -1260,7 +1264,7 @@ if __name__ == "__main__":
                 if filename.startswith(os.getcwd() + os.sep):
                     filename = filename[len(os.getcwd())+1:]
 
-                TracksEditor(filename, verbose=verbose)
+                TracksEditor(filename, verbose=verbose, force_save=force_save)
             except IOException, e:
                 w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR,
                                       flags=gtk.DIALOG_DESTROY_WITH_PARENT,
