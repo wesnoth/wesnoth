@@ -229,6 +229,7 @@ wesnoth_sources = Split("""
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
+    gui/auxiliary/canvas.cpp
     gui/auxiliary/log.cpp
     gui/dialogs/addon_connect.cpp
     gui/dialogs/addon_list.cpp
@@ -244,7 +245,6 @@ wesnoth_sources = Split("""
     gui/dialogs/title_screen.cpp
     gui/dialogs/wml_message.cpp
     gui/widgets/button.cpp
-    gui/widgets/canvas.cpp
     gui/widgets/control.cpp
     gui/widgets/container.cpp
     gui/widgets/event_handler.cpp

@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_CONTROL_HPP_INCLUDED
 #define GUI_WIDGETS_CONTROL_HPP_INCLUDED
 
-#include "gui/widgets/canvas.hpp"
+#include "gui/auxiliary/canvas.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "../../text.hpp"

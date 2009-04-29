@@ -18,8 +18,8 @@
  * draw (tempory) images on.
  */
 
-#ifndef GUI_WIDGETS_CANVAS_HPP_INCLUDED
-#define GUI_WIDGETS_CANVAS_HPP_INCLUDED
+#ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED
+#define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
 #include "formula_callable.hpp"
 #include "reference_counted_object.hpp"

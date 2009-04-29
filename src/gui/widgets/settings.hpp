@@ -21,7 +21,7 @@
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
 
 #include "config.hpp"
-#include "gui/widgets/canvas.hpp"
+#include "gui/auxiliary/canvas.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "tstring.hpp"

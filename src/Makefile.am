@@ -74,6 +74,7 @@ wesnoth_source = \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
+	gui/auxiliary/canvas.cpp \
 	gui/auxiliary/log.cpp \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
@@ -89,7 +90,6 @@ wesnoth_source = \
 	gui/dialogs/title_screen.cpp \
 	gui/dialogs/wml_message.cpp \
 	gui/widgets/button.cpp \
-	gui/widgets/canvas.cpp \
 	gui/widgets/control.cpp \
 	gui/widgets/container.cpp \
 	gui/widgets/debug.cpp \

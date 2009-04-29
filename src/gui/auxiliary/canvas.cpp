@@ -19,7 +19,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/canvas.hpp"
+#include "gui/auxiliary/canvas.hpp"
 
 #include "config.hpp"
 #include "../../image.hpp"
