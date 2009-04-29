@@ -221,6 +221,7 @@ SET(wesnoth-main_SRC
     ai/ai_manager.cpp
     ai/ai_move.cpp
     ai/ai_village.cpp
+    ai/testing.cpp
     animated_game.cpp
     attack_prediction.cpp
     attack_prediction_display.cpp
