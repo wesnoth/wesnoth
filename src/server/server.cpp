@@ -1414,29 +1414,35 @@ std::string server::process_command(const std::string& query, const std::string&
 				: "> " + parameters) << "\n";
 		out << "message '" << parameters << "' relayed to players";
 	} else if (command == "status") {
-		out << "STATUS REPORT";
+		out << "STATUS REPORT for '" << parameters << "'";
+		bool found_something = false;
 		// If a simple username is given we'll check for its IP instead.
 		if (utils::isvalid_username(parameters)) {
-			bool found = false;
 			for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 				if (parameters == pl->second.name()) {
 					parameters = network::ip_address(pl->first);
-					found = true;
+					found_something = true;
 					break;
 				}
 			}
-			if (!found) return out.str();
+			if (!found_something) {
+				out << "\nNo match found. You may want to check with 'searchlog'.";
+				return out.str();
+			}
 		}
 		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (parameters == "" || parameters == "*"
 			|| (match_ip && utils::wildcard_string_match(network::ip_address(pl->first), parameters))
 			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), parameters))) {
+				found_something = true;
 				out << std::endl << player_status(pl);
 			}
 		}
+		if (!found_something) out << "\nNo match found. You may want to check with 'searchlog'.";
 	} else if (command == "clones") {
 		out << "CLONES STATUS REPORT";
+		bool found_something = false;
 		std::set<std::string> clones;
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
@@ -1448,11 +1454,13 @@ std::string server::process_command(const std::string& query, const std::string&
 						found = true;
 						clones.insert(network::ip_address(pl->first));
 						out << std::endl << player_status(pl);
+						found_something = true;
 					}
 					out << std::endl << player_status(clone);
 				}
 			}
 		}
+		if (!found_something) return "No clones found.";
 	} else if (command == "bans") {
 		if (utils::lowercase(parameters) == "deleted") {
 			ban_manager_.list_deleted_bans(out);
@@ -1608,9 +1616,25 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters.empty()) {
 			return "You must enter a mask to search for.";
 		}
-		out << "IP/NICK LOG";
+		out << "IP/NICK LOG for '" << parameters << "'";
 
 		bool found_something = false;
+
+		// If a simple username is given we'll check for its IP instead.
+		if (utils::isvalid_username(parameters)) {
+			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
+					i != ip_log_.end(); ++i) {
+				if (parameters == i->second) {
+					parameters = i->first;
+					found_something = true;
+					break;
+				}
+			}
+			if (!found_something) {
+				out << "\nNo match found.";
+				return out.str();
+			}
+		}
 
 		// If this looks like an IP look up which nicks have been connected from it
 		// Otherwise look for the last IP the nick used to connect
@@ -1631,7 +1655,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 		}
-		if (!found_something) out << "\nNo results found for '" << parameters << "'.";
+		if (!found_something) out << "\nNo match found.";
 	} else if (command == "deny_unregistered_login" || command == "dul") {
 		if (parameters == "") {
 			out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
