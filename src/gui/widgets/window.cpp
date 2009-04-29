@@ -150,17 +150,20 @@ void twindow::update_screen_size()
 		settings::screen_width = rect.w;
 		settings::screen_height = rect.h;
 
+		settings::gamemap_width = settings::screen_width;
+		settings::gamemap_height = settings::screen_height;
+
 		game_display* display = game_display::get_singleton();
 		if(display) {
-			settings::gamemap_width = display->map_outside_area().w;
-			settings::gamemap_height = display->map_outside_area().h;
-		} else {
-			settings::gamemap_width = settings::screen_width;
-			settings::gamemap_height = settings::screen_height;
+			const unsigned w = display->map_outside_area().w;
+			const unsigned h = display->map_outside_area().h;
+			if(w && h) {
+				settings::gamemap_width = w;
+				settings::gamemap_height = h;
+			}
 		}
 	}
 }
-
 twindow::tretval twindow::get_retval_by_id(const std::string& id)
 {
 /*WIKI
