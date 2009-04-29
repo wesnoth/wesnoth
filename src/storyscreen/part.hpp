@@ -85,18 +85,33 @@ private:
 class part
 {
 public:
+	/**
+	 * Where the text block should be placed.
+	 * Note that it will always take as much space as it is
+	 * possible horizontally.
+	 */
 	enum TEXT_BLOCK_LOCATION {
-		TOP,
-		MIDDLE,
-		BOTTOM
+		TOP,		/**< Top of the screen. */
+		MIDDLE,		/**< Center of the screen. */
+		BOTTOM		/**< Bottom of the screen. This is the default. */
 	};
+	/**
+	 * Where the page title should be placed.
+	 * It always takes as little space (horizontally) as possible,
+	 * and it is always placed at the top of the screen.
+	 */
 	enum TITLE_ALIGNMENT {
-		LEFT, CENTERED, RIGHT
+		LEFT,		/**< Top-left corner. */
+		CENTERED,	/**< Center on the topmost edge of the screen. */
+		RIGHT		/**< Top-right corner. */
 	};
+	/**
+	 * Used to signal user actions.
+	 */
 	enum RESULT {
-		NEXT,
-		SKIP,
-		QUIT
+		NEXT,		/**< Jump to next story part. */
+		SKIP,		/**< Skip all story parts for this set. */
+		QUIT		/**< Quit game and go back to main menu. */
 	};
 
 	part(game_state& state_of_game, const vconfig& part_cfg);
