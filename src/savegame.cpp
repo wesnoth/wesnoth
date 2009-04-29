@@ -15,7 +15,7 @@
 
 #include "savegame.hpp"
 
-#include "dialogs.hpp"
+#include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -391,9 +391,7 @@ void loadgame::check_version_compatibility()
 	// do not load if too old, if either the savegame or the current game
 	// has the version 'test' allow loading
 	if(!game_config::is_compatible_savegame_version(gamestate_.version)) {
-		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::message_dialog dlg(gui_, "", _("This save is from a version too old to be loaded."));
-		dlg.show();
+		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
 		throw load_game_cancelled_exception();
 	}
 
@@ -446,9 +444,7 @@ void loadgame::load_multiplayer_game()
 	}
 
 	if(gamestate_.campaign_type != "multiplayer") {
-		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::message_dialog dlg(gui_, "", _("This is not a multiplayer save"));
-		dlg.show();
+		gui2::show_message(gui_.video(), "", _("This is not a multiplayer save"));
 		throw load_game_cancelled_exception();
 	}
 
@@ -576,10 +572,19 @@ void savegame::check_filename(const std::string& filename, CVideo& video)
 	}
 }
 
+bool savegame::is_illegal_file_char(char c)
+{
+	return c == '/' || c == '\\' || c == ':'
+ 	#ifdef _WIN32
+	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
+	#endif
+	;
+}
+
 void savegame::set_filename(std::string filename)
 {
 	filename.erase(std::remove_if(filename.begin(), filename.end(),
-	            dialogs::is_illegal_file_char), filename.end());
+	            is_illegal_file_char), filename.end());
 	filename_ = filename;
 }
 

@@ -51,9 +51,6 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 
 void show_objectives(game_display& disp, const config& level, const std::string& objectives);
 
-/** check if a character is valid for a filename. */
-bool is_illegal_file_char(char c);
-
 /**
  * Allow user to select the game they want to load. Returns the name of the
  * save they want to load. Stores whether the user wants to show a replay of

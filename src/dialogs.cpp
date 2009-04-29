@@ -240,15 +240,6 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 	                ).show();
 }
 
-bool is_illegal_file_char(char c)
-{
-	return c == '/' || c == '\\' || c == ':'
- 	#ifdef _WIN32
-	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
-	#endif
-	;
-}
-
 namespace {
 
 /** Class to handle deleting a saved game. */

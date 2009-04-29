@@ -169,6 +169,9 @@ protected:
 	virtual void before_save();
 
 private:
+	/** Checks if a certain character is allowed in a savefile name. */
+	static bool is_illegal_file_char(char c);
+
 	/** Build the filename according to the specific savegame's needs. Subclasses will have to
 		override this to take effect. */
 	virtual void create_filename() {}
