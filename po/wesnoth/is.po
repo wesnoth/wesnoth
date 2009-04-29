@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:32+0200\n"
-"PO-Revision-Date: 2009-04-26 14:04-0000\n"
+"PO-Revision-Date: 2009-04-29 00:14-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1883,8 +1883,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tregða er eiginleiki sem er alltof algengur í Durtum og öðrum óæðri verum. "
-"Það eru ástæður fyrir því að þessar verur séu óæðri og þetta er ein af þeim."
+"Tregða er eiginleiki sem er mjög algengur á meðal durtna og öðrum óæðri "
+"verum. Það eru ástæður fyrir því að þessar verur séu óæðri og þetta er ein "
+"af þeim."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -2089,7 +2090,7 @@ msgstr ""
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:544
 msgid "Shallow Water"
-msgstr "Grunnt vatn"
+msgstr "Grunn vötn"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:549
@@ -2680,6 +2681,9 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Búa til einingu af eftirnefndri tegund á valin reit.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:830
@@ -2696,6 +2700,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Bætir við eftirnefndri fjölda gullpeninga við núverandi hlið.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:836
@@ -3352,6 +3359,10 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Markmið: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Hegðun: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
@@ -5403,12 +5414,12 @@ msgstr "Vosar"
 #. [server]
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
-msgstr "Opinber Wesnoth Server"
+msgstr "Opinber Wesnoth Miðlari"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
-msgstr "Óopinber Wesnoth Server"
+msgstr "Óopinber Wesnoth Miðlari"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5599,7 +5610,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -6384,7 +6395,7 @@ msgstr "MP"
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
 msgid "Replay"
-msgstr "Endurspilun"
+msgstr "Endurinning"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
@@ -6394,7 +6405,7 @@ msgstr "Spila"
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 msgid "continuous replay"
-msgstr ""
+msgstr "áframhaldandi endirinning"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -6404,7 +6415,7 @@ msgstr "Stoppa"
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
-msgstr "pása á endi lotu"
+msgstr "pása á enda lotu"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
@@ -6466,7 +6477,7 @@ msgstr "Það eru engir lausir kastala reitir til að ráða einingu í."
 
 #: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "Ógilt vopn er valið, mögulega eftir Python gervigreindinni."
 
 #: src/actions.cpp:1052 src/actions.cpp:1327
 msgid "female^poisoned"
@@ -6574,7 +6585,7 @@ msgstr "(óþekkt)"
 
 #: src/addon_management.cpp:447
 msgid "Dependencies"
-msgstr ""
+msgstr "Ákvæði"
 
 #: src/addon_management.cpp:448
 msgid ""
@@ -6755,7 +6766,7 @@ msgstr "Eyða viðbót: "
 
 #: src/addon_management.cpp:1009
 msgid "There are no add-ons available for download from this server."
-msgstr "Það eru engir aukapakkar í boði til niðurhlaðs frá þessum server"
+msgstr "Það eru engar viðbætur í boði til niðurhlaðs frá þessum miðlara."
 
 #: src/addon_management.cpp:1022
 msgid "Get add-ons"
@@ -6962,7 +6973,7 @@ msgstr "Sýnikennsla"
 
 #: src/dialogs.cpp:560 src/menu_events.cpp:592
 msgid "replay"
-msgstr "endurspilun"
+msgstr "endurinning"
 
 #: src/dialogs.cpp:562 src/menu_events.cpp:594
 msgid "Turn"
@@ -7024,7 +7035,7 @@ msgstr "Veldu leik til hlöðunar"
 
 #: src/dialogs.cpp:681
 msgid "Show replay"
-msgstr "Sýna endurspilun"
+msgstr "Sýna endurinningu"
 
 #: src/dialogs.cpp:685
 msgid "Cancel orders"
@@ -7157,7 +7168,7 @@ msgstr "Hleð inn stillingum."
 
 #: src/game.cpp:2029
 msgid "Re-initialize fonts for the current language."
-msgstr ""
+msgstr "Endurfrumstilla leturgerðir fyrir núverandi tungumál."
 
 #: src/game.cpp:2037
 msgid "Searching for installed add-ons."
@@ -7169,7 +7180,7 @@ msgstr "Hleð inn aðalval."
 
 #: src/game_config.cpp:287
 msgid "Invalid color range: "
-msgstr ""
+msgstr "Ógilt gildi lits: "
 
 #: src/game_events.cpp:134
 msgid "Error: "
@@ -7202,7 +7213,7 @@ msgstr "Enginn tími dags hefur verið stilltur."
 
 #: src/gamestatus.cpp:786 src/gamestatus.cpp:788 src/playcampaign.cpp:417
 msgid " replay"
-msgstr " endurspilun"
+msgstr " endurinning"
 
 #: src/gamestatus.cpp:923 src/gamestatus.cpp:953 src/replay.cpp:227
 msgid "Could not write to file"
@@ -7364,7 +7375,7 @@ msgstr "Kostnaður: "
 
 #: src/help.cpp:1365
 msgid "Alignment: "
-msgstr ""
+msgstr "Stilling: "
 
 #: src/help.cpp:1371
 msgid "Required XP: "
@@ -7499,11 +7510,11 @@ msgstr "Les skrár og bý til flýtigögn."
 
 #: src/map.cpp:162
 msgid "A map without a header is not supported"
-msgstr ""
+msgstr "Kort án hauss er ekki stutt"
 
 #: src/mapgen.cpp:710
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Slembikort með breidd í oddatölu er ekki stutt."
 
 #: src/menu_events.cpp:56 src/menu_events.cpp:748 src/menu_events.cpp:750
 #: src/play_controller.cpp:790 src/playcampaign.cpp:110
@@ -7548,7 +7559,7 @@ msgstr "Hreyfingar"
 
 #: src/menu_events.cpp:205
 msgid "Location^Loc."
-msgstr ""
+msgstr "Hnit"
 
 #: src/menu_events.cpp:206
 msgid "Status"
@@ -7814,7 +7825,7 @@ msgid ""
 "server he will only be banned."
 msgstr ""
 "Banna og sparka spilara eða áhorfenda. Ef hann er ekki inní leiknun enn á "
-"servernum verður hann bara bannaður."
+"miðlaranum verður hann bara bannaður."
 
 #: src/menu_events.cpp:2168
 msgid "Kick a player or observer."
@@ -7830,7 +7841,7 @@ msgstr "Þagga niður í öllur áhorfendum."
 
 #: src/menu_events.cpp:2182
 msgid "Send a message to the server admins currently online"
-msgstr "Senda skilaboð til þá stjórnendur serversins sem eru tengdir"
+msgstr "Senda skilaboð til þá stjórnendur miðlarans sem eru tengdir"
 
 #: src/menu_events.cpp:2184
 msgid "Send an emotion or personal action in chat."
@@ -7893,7 +7904,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2339
 msgid "Refresh gui."
-msgstr ""
+msgstr "Glæða myndrænt viðmót."
 
 #: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
@@ -7925,7 +7936,7 @@ msgstr "Vista og hætta."
 
 #: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
-msgstr "Hunsa endurspilunarvillur."
+msgstr "Hunsa endurinningarvillur."
 
 #: src/menu_events.cpp:2362
 msgid "Disable autosaves."
@@ -7953,7 +7964,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2376
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Setja eða birta samnefni skipanna"
 
 #: src/menu_events.cpp:2378
 msgid "Set a scenario variable."
@@ -8038,6 +8049,7 @@ msgstr "það eru engin spilarar á vina né hundsunar listanum."
 #: src/menu_events.cpp:2773
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
+"Gat ekki fundið örnefni eða einingu sem inniheldur strenginn '$search'."
 
 #: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
@@ -8195,7 +8207,7 @@ msgstr "(Laust pláss)"
 
 #: src/multiplayer_connect.cpp:657
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Ónafngreindur staðalspilari"
 
 #: src/multiplayer_connect.cpp:670
 msgid "Computer player"
@@ -8219,11 +8231,11 @@ msgstr "--gefa--"
 
 #: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
-msgstr ""
+msgstr "Eingöngu slembihliðar á núverandi tímabili."
 
 #: src/multiplayer_connect.cpp:957
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Gat ekki fundið tegunt leiðtoga fyrir klíkuna $faction"
 
 #: src/multiplayer_connect.cpp:994
 msgid "Game Lobby: "
@@ -8372,11 +8384,11 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:171
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Fjöldi tekna hvert þorp afkastar hverja lotu"
 
 #: src/multiplayer_create.cpp:177
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "Fjöldi reynslustiga sem eining þarfnast til eflingar"
 
 #: src/multiplayer_create.cpp:180
 msgid "Use scenario specific settings"
@@ -8384,11 +8396,11 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:183
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "Slemba tíma dags í upphafi"
 
 #: src/multiplayer_create.cpp:186
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
+msgstr "Óvinir sjást eingöngu ef þeir eru innan við sjóndeild eininga þinna"
 
 #: src/multiplayer_create.cpp:189
 msgid "The map is unknown until your units explore it"
@@ -8469,7 +8481,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:386
 msgid "Village Gold: "
-msgstr ""
+msgstr "Tekjur þorps: "
 
 #: src/multiplayer_create.cpp:394
 msgid "Exp. Mod.: "
@@ -8501,7 +8513,7 @@ msgstr "Óþekkt tímabil"
 
 #: src/multiplayer_lobby.cpp:492
 msgid "Remote scenario"
-msgstr ""
+msgstr "Fjarlæg atburðarás"
 
 #: src/multiplayer_lobby.cpp:499
 msgid "Unknown scenario: $scenario_id"
@@ -8551,7 +8563,7 @@ msgstr "Tengjast leik"
 
 #: src/multiplayer_lobby.cpp:684
 msgid "Quick Replays"
-msgstr "Snöggar endurspilanir"
+msgstr "Snöggar endurinningar"
 
 #: src/multiplayer_lobby.cpp:686
 msgid "Preferences"
@@ -8603,7 +8615,7 @@ msgstr "Engar fjölspilunarhliðar fundust"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Choose your faction:"
-msgstr ""
+msgstr "Veldu klíku:"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "
@@ -8619,7 +8631,7 @@ msgstr "Biðlari aftengdist"
 
 #: src/network.cpp:568
 msgid "Could not add socket to socket set"
-msgstr ""
+msgstr "Gat ekki bætt tengil við tenglalistann"
 
 #: src/network.cpp:581
 msgid "Could not send initial handshake"
@@ -8635,7 +8647,7 @@ msgstr "Hleð inn kort"
 
 #: src/play_controller.cpp:119
 msgid "Initializing teams"
-msgstr "Hleð inn lið"
+msgstr "Frumstilli lið"
 
 #: src/play_controller.cpp:140
 msgid "Loading units"
@@ -8643,7 +8655,7 @@ msgstr "Hleð inn einingar"
 
 #: src/play_controller.cpp:147 src/play_controller.cpp:155
 msgid "Initializing display"
-msgstr "Hleð inn skjá"
+msgstr "Frumstilli skjá"
 
 #: src/play_controller.cpp:192
 msgid "Starting game"
@@ -8651,7 +8663,7 @@ msgstr "Ræsa leik"
 
 #: src/play_controller.cpp:797
 msgid "Back to turn "
-msgstr ""
+msgstr "Hoppa yfir í lotu "
 
 #: src/playcampaign.cpp:134 src/playcampaign.cpp:169
 msgid "Defeat"
@@ -8667,11 +8679,11 @@ msgstr "Villa við lesningu WML: "
 
 #: src/playcampaign.cpp:419
 msgid "Save Replay"
-msgstr "Vista endurspilun"
+msgstr "Vista endurinningu"
 
 #: src/playcampaign.cpp:431
 msgid "The replay could not be saved"
-msgstr "Endurspilun gat ekki verið vistuð"
+msgstr "Endurinnigin gat ekki verið vistuð"
 
 #: src/playcampaign.cpp:447
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -8695,7 +8707,7 @@ msgstr "Óþekkt atburðarás: '$scenario|'"
 
 #: src/playmp_controller.cpp:219
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Afturkallar hreyfingar enn ekki sentar til miðlara."
 
 #: src/playmp_controller.cpp:297
 msgid "End scenario"
@@ -8841,27 +8853,27 @@ msgstr ""
 
 #: src/serialization/parser.cpp:160
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr ""
+msgstr "Vantar lokunartag fyrir tagið $tag á $pos"
 
 #: src/serialization/parser.cpp:175
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Ófrágengið [element] tag"
 
 #: src/serialization/parser.cpp:185 src/serialization/parser.cpp:223
 msgid "Invalid tag name"
-msgstr ""
+msgstr "Ógilt nafn tags"
 
 #: src/serialization/parser.cpp:188
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Ófrágengið [+element] tag"
 
 #: src/serialization/parser.cpp:204
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Ógilt nafn lokunartags"
 
 #: src/serialization/parser.cpp:207
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Ófrágengið lokun tags"
 
 #: src/serialization/parser.cpp:209
 msgid "Unexpected closing tag"
@@ -8869,7 +8881,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr ""
+msgstr "Fann ógilt lokunartag, $tag2 fyrir tagið $tag (opnað á $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
@@ -9084,7 +9096,7 @@ msgstr " og "
 
 #: src/unit.cpp:2561
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2626
 msgid "moves"
@@ -9104,7 +9116,7 @@ msgstr ""
 
 #: src/unit.cpp:2836
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:198 src/unit_types.cpp:264
 msgid "damage"
