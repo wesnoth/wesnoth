@@ -154,11 +154,11 @@ Usage:
   $(basename ${0}) [{--nice|n} <value>] [{--threads} <value>] [{--help|-h}]
 
 Switches:
+  --help / -h   Displays this help text.
+
   --nice / -n   Sets the process nice <value> under which the optimization
                 shall be done. If not specified, 19 (the lowest priority) is
                 assumed by default.
-
-  --help / -h   Displays this help text.
 
   --threads     Run script with <value> worker threads. If not specified, the
                 amount of CPUs detected will be used.
