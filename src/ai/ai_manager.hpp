@@ -353,6 +353,14 @@ public:
 	 */
 	static ai_interface::info& get_active_ai_info_for_side( int side );
 
+
+	/**
+	 * Gets global AI-game info
+	 * @return a reference to the AI-game info.
+	 */
+	static ai_interface::info& get_ai_info();
+
+
 	/**
 	 * Gets AI memory for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned

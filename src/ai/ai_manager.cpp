@@ -646,6 +646,10 @@ ai_interface::info& ai_manager::get_active_ai_info_for_side( int /*side*/ )
 }
 
 
+ai_interface::info& ai_manager::get_ai_info()
+{
+	return *ai_info_;
+}
 
 // =======================================================================
 // SET active AI parameters
