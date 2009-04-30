@@ -330,7 +330,8 @@ struct undo_action {
 			recall_loc(),
 			recall_pos(-1),
 			affected_unit(u),
-			countdown_time_bonus(timebonus)
+			countdown_time_bonus(timebonus),
+			is_dismiss(false)
 			{}
 
 	undo_action(const unit& u, const map_location& loc, const int pos, const bool dismiss=false) :
