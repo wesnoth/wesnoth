@@ -538,8 +538,8 @@ void playmp_controller::process_oos(const std::string& err_msg){
 		temp_buf << " \n";
 	}
 
-	game_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
-	save.save_game_interactive((*gui_).video(), temp_buf.str(), gui::YES_NO, true);
+	oos_savegame save(gamestate_, level_, *gui_, teams_, units_, status_, map_, preferences::compress_saves());
+	save.save_game_interactive((*gui_).video(), temp_buf.str(), gui::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){

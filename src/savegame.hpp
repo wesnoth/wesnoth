@@ -136,7 +136,7 @@ public:
 
 	/** Save a game without any further user interaction. Atm, this is only used by the
 		console_handler save actions. The return value denotes, if the save was successful or not. */
-	bool save_game(const std::string& filename);
+	//bool save_game(const std::string& filename);
 
 	/** 
 		Save a game without any further user interaction. This is used by autosaves and
@@ -144,24 +144,26 @@ public:
 		to appear, you have to provide the gui parameter. 
 		The return value denotes, if the save was successful or not.
 	*/
-	bool save_game(CVideo* video = NULL);
+	bool save_game(CVideo* video = NULL, const std::string& filename = "");
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
 	bool save_game_interactive(CVideo& gui, const std::string& message,
-		gui::DIALOG_TYPE dialog_type, const bool has_exit_button = false,
-		bool ask_for_filename = true);
+		gui::DIALOG_TYPE dialog_type, bool ask_for_filename = true);
 
-	const std::string filename() const { return filename_; }
+	const std::string& filename() const { return filename_; }
 
 protected:
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */
 	void set_filename(std::string filename);
+	/** Check, if the filename contains illegal constructs like ".gz". */
+	void check_filename(const std::string& filename, CVideo& video);
 
 	/** Customize the standard error message */
 	void set_error_message(const std::string error_message) { error_message_ = error_message; }
 
+	const std::string& title() const { return title_; }
 	game_state& gamestate() const { return gamestate_; }
 	config& snapshot() { return snapshot_; }
 
@@ -175,10 +177,8 @@ private:
 	/** Build the filename according to the specific savegame's needs. Subclasses will have to
 		override this to take effect. */
 	virtual void create_filename() {}
-	/** Check, if the filename contains illegal constructs like ".gz". */
-	void check_filename(const std::string& filename, CVideo& video);
 	/** Display the save game dialog. */
-	int show_save_dialog(CVideo& video, bool is_oos, const std::string& message, const gui::DIALOG_TYPE dialog_type);
+	virtual int show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
 	bool check_overwrite(CVideo& video);
 
@@ -257,14 +257,27 @@ class autosave_savegame : public game_savegame
 {
 public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg,
-							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, const gamestatus& gamestatus,
-							 const gamemap& map, const bool compress_saves);
+					 game_display& gui, const std::vector<team>& teams,
+					 const unit_map& units, const gamestatus& gamestatus,
+					 const gamemap& map, const bool compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
 	/** Create a filename for automatic saves */
 	virtual void create_filename();
+};
+
+class oos_savegame : public game_savegame
+{
+public:
+	oos_savegame(game_state &gamestate, const config& level_cfg,
+				 game_display& gui, const std::vector<team>& teams,
+				 const unit_map& units, const gamestatus& gamestatus,
+				 const gamemap& map, const bool compress_saves);
+
+private:
+	/** Display the save game dialog. */
+	virtual int show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type);
 };
 
 /** Class for start-of-scenario saves */

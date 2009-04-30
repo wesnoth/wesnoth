@@ -476,8 +476,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 {}
 
 bool savegame::save_game_interactive(CVideo& video, const std::string& message,
-									 gui::DIALOG_TYPE dialog_type, const bool has_exit_button,
-									 bool ask_for_filename)
+									 gui::DIALOG_TYPE dialog_type, bool ask_for_filename)
 {
 	show_confirmation_ = ask_for_filename;
 	create_filename();
@@ -488,7 +487,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	do{ 
 		try{
 			if (ask_for_filename){
-				res = show_save_dialog(video, has_exit_button, message, dialog_type);
+				res = show_save_dialog(video, message, dialog_type);
 				exit = true;
 			}
 
@@ -516,33 +515,23 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	return save_game(&video);
 }
 
-int savegame::show_save_dialog(CVideo& video, bool is_oos, const std::string& message, const gui::DIALOG_TYPE dialog_type)
+int savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type)
 {
-	static bool ignore_all = false;
 	int res = 0;
 
 	std::string filename = filename_;
 
-	if (is_oos && (!ignore_all)){
-		gui2::tgame_save_oos dlg(title_, filename, message);
+	if (dialog_type == gui::OK_CANCEL){
+		gui2::tgame_save dlg(title_, filename);
 		dlg.show(video);
 		filename = dlg.filename();
-		ignore_all = dlg.ignore_all();
 		res = dlg.get_retval();
 	}
-	else{
-		if (dialog_type == gui::OK_CANCEL){
-			gui2::tgame_save dlg(title_, filename);
-			dlg.show(video);
-			filename = dlg.filename();
-			res = dlg.get_retval();
-		}
-		else if (dialog_type == gui::YES_NO){
-			gui2::tgame_save_message dlg(title_, filename, message);
-			dlg.show(video);
-			filename = dlg.filename();
-			res = dlg.get_retval();
-		}
+	else if (dialog_type == gui::YES_NO){
+		gui2::tgame_save_message dlg(title_, filename, message);
+		dlg.show(video);
+		filename = dlg.filename();
+		res = dlg.get_retval();
 	}
 
 	check_filename(filename, video);
@@ -593,17 +582,14 @@ void savegame::before_save()
 	gamestate_.replay_data = recorder.get_replay_data();
 }
 
-bool savegame::save_game(const std::string& filename)
-{
-	filename_ = filename;
-	return save_game();
-}
-
-bool savegame::save_game(CVideo* video)
+bool savegame::save_game(CVideo* video, const std::string& filename)
 {
 	try {
 		Uint32 start, end;
 		start = SDL_GetTicks();
+
+		if (filename_ == "")
+			filename_ = filename;
 
 		before_save();
 		save_game_internal(filename_);
@@ -868,6 +854,34 @@ void autosave_savegame::create_filename()
 		filename = gamestate().label + "-" + _("Auto-Save") + lexical_cast<std::string>(gamestatus_.turn());
 
 	set_filename(filename);
+}
+
+oos_savegame::oos_savegame(game_state &gamestate, const config& level_cfg,
+							 game_display& gui, const std::vector<team>& teams,
+							 const unit_map& units, const gamestatus& gamestatus,
+							 const gamemap& map, const bool compress_saves)
+	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
+{}
+
+int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type)
+{
+	static bool ignore_all = false;
+	int res = 0;
+
+	std::string filename = this->filename();
+
+	if (!ignore_all){
+		gui2::tgame_save_oos dlg(title(), filename, message);
+		dlg.show(video);
+		filename = dlg.filename();
+		ignore_all = dlg.ignore_all();
+		res = dlg.get_retval();
+	}
+
+	check_filename(filename, video);
+	set_filename(filename);
+
+	return res;
 }
 
 game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
