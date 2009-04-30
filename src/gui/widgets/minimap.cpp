@@ -37,9 +37,16 @@ void tminimap::set_borders(const unsigned left,
 	set_dirty();
 }
 
-void tminimap::impl_draw_background(surface& /*frame_buffer*/)
+void tminimap::impl_draw_foreground(surface& surface)
 {
-	assert(false); // FIXME implement.
+	draw_map(surface);
+}
+
+void tminimap::impl_draw_background(surface& frame_buffer)
+{
+   	canvas(0).draw();
+	SDL_Rect rect = get_rect();
+	SDL_BlitSurface(canvas(0).surf(), NULL, frame_buffer, &rect);
 }
 
 void tminimap::draw_map(surface& surface)
