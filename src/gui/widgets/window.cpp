@@ -222,7 +222,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	}
 }
 
-int twindow::show(const bool restore, void* /*flip_function*/)
+int twindow::show(const bool restore)
 {
 	log_scope2(log_gui_draw, "Window: show.");
 

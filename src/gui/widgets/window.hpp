@@ -122,16 +122,11 @@ public:
 	 *
 	 * @param restore             Restore the screenarea the window was on
 	 *                            after closing it?
-	 * @param flip_function       If not NULL this function is used to do the
-	 *                            flipping of the video buffer, otherwise
-	 *                            twindow::flip() is used. @todo Evaluate
-	 *                            whether this is still needed and if so
-	 *                            implement.
 	 *
 	 * @returns                   The close code of the window, predefined
 	 *                            values are listed in tretval.
 	 */
-	int show(const bool restore = true, void* flip_function = NULL);
+	int show(const bool restore = true);
 
 	/**
 	 * Draws the window.
