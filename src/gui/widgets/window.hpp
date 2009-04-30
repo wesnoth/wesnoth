@@ -133,11 +133,17 @@ public:
 	 *
 	 * @param restore             Restore the screenarea the window was on
 	 *                            after closing it?
+	 * @param auto_close_time     The time in ms after which the window will
+	 *                            automatically close, if 0 it doesn't close.
+	 *                            @note the timeout is a minimum time and
+	 *                            there's no quarantee about how fast it closes
+	 *                            after the minimum.
 	 *
 	 * @returns                   The close code of the window, predefined
 	 *                            values are listed in tretval.
 	 */
-	int show(const bool restore = true);
+	int show(const bool restore = true,
+			const unsigned auto_close_timeout = 0);
 
 	/**
 	 * Draws the window.

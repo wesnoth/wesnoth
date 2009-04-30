@@ -43,8 +43,18 @@ public:
 
 	virtual ~tdialog();
 
-	/** Shows the window */
-	void show(CVideo& video);
+	/** 
+	 * Shows the window.
+	 *
+	 * @param video               The video which contains the surface to draw
+	 *                            upon.
+	 * @param auto_close_time     The time in ms after which the dialog will
+	 *                            automatically close, if 0 it doesn't close.
+	 *                            @note the timeout is a minimum time and
+	 *                            there's no quarantee about how fast it closes
+	 *                            after the minimum.
+	 */
+	void show(CVideo& video, const unsigned auto_close_time = 0);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

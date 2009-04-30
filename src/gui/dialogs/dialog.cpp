@@ -29,7 +29,7 @@ tdialog::~tdialog()
 	}
 }
 
-void tdialog::show(CVideo& video)
+void tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	std::auto_ptr<twindow> window(build_window(video));
 	assert(window.get());
@@ -40,7 +40,7 @@ void tdialog::show(CVideo& video)
 
 	pre_show(video, *window);
 
-	retval_ = window->show(restore_);
+	retval_ = window->show(restore_, auto_close_time);
 
 	if(retval_ ==  twindow::OK) {
 		finalize_fields(*window);

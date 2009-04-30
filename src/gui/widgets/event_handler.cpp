@@ -258,6 +258,15 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			get_window().draw();
 			break;
 
+		case CLOSE_WINDOW_EVENT:
+			{
+				twindow* window = twindow::window_instance(event.user.code);
+				if(window) {
+					window->set_retval(twindow::AUTO_CLOSE);
+				}
+			}
+			break;
+
 		case SDL_KEYDOWN:
 			key_down(event);
 			break;

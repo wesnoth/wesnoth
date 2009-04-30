@@ -87,6 +87,33 @@ static Uint32 draw_timer(Uint32, void*)
 }
 
 /**
+ * SDL_AddTimer() callback for delay_event.
+ *
+ * @param event                   The event to push in the event queue.
+ *
+ * @return                        The new timer interval (always 0).
+ */
+static Uint32 delay_event_callback(const Uint32, void* event)
+{
+	SDL_PushEvent(static_cast<SDL_Event*>(event));
+	return 0;
+}
+
+/**
+ * Allows an event to be delayed a certain amount of time.
+ *
+ * @note the delay is the minimum time, after the time has passed the event
+ * will be pushed in the SDL event queue, so it might delay more.
+ *
+ * @param event                   The event to delay.
+ * @param delay                   The number of ms to delay the event.
+ */
+static void delay_event(const SDL_Event& event, const Uint32 delay)
+{
+	SDL_AddTimer(delay, delay_event_callback, new SDL_Event(event));
+}
+
+/**
  * Small helper class to get an unique id for every window instance.
  *
  * This is used to send event to the proper window, this allows windows to post
@@ -322,7 +349,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	}
 }
 
-int twindow::show(const bool restore)
+int twindow::show(const bool restore, const unsigned auto_close_timeout)
 {
 	log_scope2(log_gui_draw, "Window: show.");
 
@@ -347,6 +374,25 @@ int twindow::show(const bool restore)
 	 */
 	invalidate_layout();
 	suspend_drawing_ = false;
+
+	if(auto_close_timeout) {
+		// Make sure we're drawn before we try to close ourselves, which can
+		// happen if the timeout is small.
+		draw();
+
+		SDL_Event event;
+		SDL_UserEvent data;
+
+		data.type = CLOSE_WINDOW_EVENT;
+		data.code = tmanager::instance().get_id(*this);
+		data.data1 = NULL;
+		data.data2 = NULL;
+
+		event.type = CLOSE_WINDOW_EVENT;
+		event.user = data;
+
+		delay_event(event, auto_close_timeout);
+	}
 
 	// Start our loop drawing will happen here as well.
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
