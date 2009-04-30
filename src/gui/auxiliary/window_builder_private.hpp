@@ -18,10 +18,10 @@
  * should only be included by window_builder.cpp.
  */
 
-#ifndef GUI_WIDGETS_WINDOW_BUILDER_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_WINDOW_BUILDER_PRIVATE_HPP_INCLUDED
+#ifndef GUI_AUXILIARY_WINDOW_BUILDER_PRIVATE_HPP_INCLUDED
+#define GUI_AUXILIARY_WINDOW_BUILDER_PRIVATE_HPP_INCLUDED
 
-#include "gui/widgets/window_builder.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 
 #include "config.hpp"
 #include "gui/widgets/menubar.hpp"

@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/window_builder_private.hpp"
+#include "gui/auxiliary/window_builder_private.hpp"
 
 #include "asserts.hpp"
 #include "foreach.hpp"

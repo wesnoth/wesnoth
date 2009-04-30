@@ -76,6 +76,7 @@ wesnoth_source = \
 	generic_event.cpp \
 	gui/auxiliary/canvas.cpp \
 	gui/auxiliary/log.cpp \
+	gui/auxiliary/window_builder.cpp \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/addon_list.cpp \
 	gui/dialogs/campaign_selection.cpp \
@@ -119,7 +120,6 @@ wesnoth_source = \
 	gui/widgets/vertical_scrollbar.cpp \
 	gui/widgets/widget.cpp \
 	gui/widgets/window.cpp \
-	gui/widgets/window_builder.cpp \
 	halo.cpp \
 	help.cpp \
 	intro.cpp \

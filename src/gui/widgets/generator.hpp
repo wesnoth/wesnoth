@@ -15,9 +15,9 @@
 #ifndef GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 #define GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 
+#include "gui/auxiliary/window_builder.hpp"
 #include "widget.hpp"
 #include "config.hpp"
-#include "gui/widgets/window_builder.hpp"
 
 namespace gui2 {
 
