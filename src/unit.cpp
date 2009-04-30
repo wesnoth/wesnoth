@@ -2979,6 +2979,18 @@ int team_units(const unit_map& units, unsigned int side)
 	return res;
 }
 
+int team_units_cost(const unit_map& units, unsigned int side)
+{
+	int res = 0;
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == side) {
+			res += i->second.cost();
+		}
+	}
+
+	return res;
+}
+
 int team_upkeep(const unit_map& units, unsigned int side)
 {
 	int res = 0;

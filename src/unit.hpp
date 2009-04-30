@@ -484,6 +484,10 @@ void sort_units(std::vector< unit > &);
 
 /** Returns the number of units of the given side (team). */
 int team_units(const unit_map& units, unsigned int team_num);
+
+/** Returns the total cost of units of the given side (team, 1-based). */
+int team_units_cost(const unit_map& units, unsigned int team_num);
+
 int team_upkeep(const unit_map& units, unsigned int team_num);
 unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
