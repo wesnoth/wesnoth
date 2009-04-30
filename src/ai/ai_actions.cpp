@@ -19,7 +19,7 @@
 
 /**
  * A small explanation about what's going on here:
- * Each action has access to two ai_interface::info objects
+ * Each action has access to two ai_game_info objects
  * First is 'info' - real information
  * Second is 'subjective info' - AIs perception of what's going on
  * So, when we check_before action, we use 'subjective info' and don't
@@ -134,13 +134,13 @@ unsigned int ai_action_result::get_side() const
 }
 
 
-ai_interface::info& ai_action_result::get_info() const
+ai_game_info& ai_action_result::get_info() const
 {
 	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
 
-ai_interface::info& ai_action_result::get_subjective_info() const
+ai_game_info& ai_action_result::get_subjective_info() const
 {
 	return get_info();
 }
@@ -152,7 +152,12 @@ bool ai_action_result::using_subjective_info() const
 }
 
 
-team& ai_action_result::get_my_team(ai_interface::info info) const
+team& ai_action_result::get_my_team(ai_game_info& info) const
+{
+	return info.teams[side_-1];
+}
+
+const team& ai_action_result::get_my_team(const ai_game_info& info) const
 {
 	return info.teams[side_-1];
 }
@@ -248,8 +253,8 @@ bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& 
 void ai_move_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const ai_interface::info& s_info = get_subjective_info();
-	const ai_interface::info& info = get_info();
+	const ai_game_info& s_info = get_subjective_info();
+	const ai_game_info& info = get_info();
 
 	const unit_map& s_units = s_info.units;
 	const unit_map& units = info.units;
@@ -303,7 +308,7 @@ void ai_move_result::do_execute()
 	DBG_AI_ACTIONS << " execute "<< *this << std::endl;
 	assert(is_success());
 
-	ai_interface::info& info = get_info();
+	ai_game_info& info = get_info();
 
 	move_unit(
 		/*game_display* disp*/ NULL,
@@ -414,8 +419,8 @@ bool ai_recruit_result::test_suitable_recruit_location( const gamemap& map, cons
 void ai_recruit_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const ai_interface::info& s_info = get_subjective_info();
-	const ai_interface::info& info = get_info();
+	const ai_game_info& s_info = get_subjective_info();
+	const ai_game_info& info = get_info();
 
 	const unit_map& s_units = s_info.units;
 	const unit_map& units = info.units;
@@ -482,7 +487,7 @@ void ai_recruit_result::do_check_before()
 
 void ai_recruit_result::do_check_after()
 {
-	const ai_interface::info& info = get_info();
+	const ai_game_info& info = get_info();
 	const gamemap& map = info.map;
 	if (!map.on_board(recruit_location_)){
 		set_error(AI_ACTION_FAILURE);
@@ -519,7 +524,7 @@ void ai_recruit_result::do_execute()
 {
 	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
 	assert(is_success());
-	const ai_interface::info& info = get_info();
+	ai_game_info& info = get_info();
 	// We have to add the recruit command now, because when the unit
 	// is created it has to have the recruit command in the recorder
 	// to be able to put random numbers into to generate unit traits.
@@ -585,8 +590,8 @@ bool ai_stopunit_result::test_unit(unit_map::const_iterator& un, const unit_map&
 void ai_stopunit_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const ai_interface::info& s_info = get_subjective_info();
-	const ai_interface::info& info = get_info();
+	const ai_game_info& s_info = get_subjective_info();
+	const ai_game_info& info = get_info();
 
 	const unit_map& s_units = s_info.units;
 	const unit_map& units = info.units;
@@ -604,7 +609,7 @@ void ai_stopunit_result::do_check_before()
 
 void ai_stopunit_result::do_check_after()
 {
-	const ai_interface::info& info = get_info();
+	const ai_game_info& info = get_info();
 	unit_map::const_iterator un = info.units.find(unit_location_);
 	if (un==info.units.end()){
 		set_error(AI_ACTION_FAILURE);
@@ -640,7 +645,7 @@ void ai_stopunit_result::do_execute()
 {
 	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
 	assert(is_success());
-	const ai_interface::info& info = get_info();
+	const ai_game_info& info = get_info();
 	unit_map::iterator un = info.units.find(unit_location_);
 	if (remove_movement_){
 		un->second.set_movement(0);

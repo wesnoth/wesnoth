@@ -46,8 +46,8 @@ static lg::log_domain log_ai("ai/general");
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(int side, bool master) : ai_interface(side,master) {
-
+idle_ai::idle_ai(int side, bool master) : ai_interface(side,master)
+{
 }
 
 std::string idle_ai::describe_self(){
@@ -321,288 +321,6 @@ bool ai::recruit_usage(const std::string& usage)
 	return false;
 }
 
-bool ai_interface::recruit(const std::string& unit_name, location loc)
-{
-	const std::set<std::string>& recruits = current_team().recruits();
-
-	const std::set<std::string>::const_iterator i = recruits.find(unit_name);
-	if(i == recruits.end()) {
-		return false;
-	}
-
-	const int num = std::distance(recruits.begin(),i);
-
-	// We have to add the recruit command now, because when the unit
-	// is created it has to have the recruit command in the recorder
-	// to be able to put random numbers into to generate unit traits.
-	// However, we're not sure if the transaction will be successful,
-	// so use a replay_undo object to cancel it if we don't get
-	// a confirmation for the transaction.
-	recorder.add_recruit(num,loc);
-	replay_undo replay_guard(recorder);
-
-	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name);
-	if(u == unit_type_data::types().end() || u->first == "dummy_unit") {
-		return false;
-	}
-
-	// Check if we have enough money
-	if(current_team().gold() < u->second.cost()) {
-		return false;
-	}
-	LOG_AI << "trying recruit: team=" << (get_side()) <<
-	    " type=" << unit_name <<
-	    " cost=" << u->second.cost() <<
-	    " loc=(" << loc << ')' <<
-	    " gold=" << (current_team().gold()) <<
-	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
-
-	unit new_unit(&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&u->second,get_side(),true);
-
-	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(get_info().map,get_side(),get_info().units,new_unit,loc,false,preferences::show_ai_moves());
-	if(recruit_err.empty()) {
-
-		statistics::recruit_unit(new_unit);
-		current_team().spend_gold(u->second.cost());
-
-		// Confirm the transaction - i.e. don't undo recruitment
-		replay_guard.confirm_transaction();
-
-		raise_unit_recruited();
-		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
-		LOG_AI <<
-		"recruit confirmed: team=" << get_side() <<
-		" units=" << data.units <<
-		" gold=" << data.gold <<
-		((data.net_income < 0) ? "" : "+") <<
-		data.net_income << "\n";
-		recorder.add_checksum_check(loc);
-		return true;
-	} else {
-		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
-		LOG_AI << recruit_err << "\n";
-		LOG_AI <<
-		"recruit UNconfirmed: team=" << (get_side()) <<
-		" units=" << data.units <<
-		" gold=" << data.gold <<
-		((data.net_income < 0) ? "" : "+") <<
-		data.net_income << "\n";
-		return false;
-	}
-}
-
-ai_interface::info& ai_interface::get_info(){
-	return ai_manager::get_active_ai_info_for_side(get_side());
-}
-
-const ai_interface::info& ai_interface::get_info() const{
-	return ai_manager::get_active_ai_info_for_side(get_side());
-}
-
-void ai_interface::diagnostic(const std::string& msg)
-{
-	if(game_config::debug) {
-		get_info().disp.set_diagnostic(msg);
-	}
-}
-
-void ai_interface::log_message(const std::string& msg)
-{
-	if(game_config::debug) {
-		get_info().disp.add_chat_message(time(NULL), "ai", get_side(), msg,
-				game_display::MESSAGE_PUBLIC, false);
-	}
-}
-
-
-map_location ai_interface::move_unit(location from, location to,
-		std::map<location,paths>& possible_moves)
-{
-	const location loc = move_unit_partial(from,to,possible_moves);
-	const unit_map::iterator u = get_info().units.find(loc);
-	if(u != get_info().units.end()) {
-		if(u->second.movement_left()==u->second.total_movement()) {
-			u->second.set_movement(0);
-			u->second.set_state("not_moved","yes");
-		} else if (from == loc) {
-			u->second.set_movement(0);
-		}
-	}
-
-	return loc;
-}
-
-map_location ai_interface::move_unit_partial(location from, location to,
-		std::map<location,paths>& possible_moves)
-{
-	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
-	assert(to.valid() && to.x <= MAX_MAP_AREA && to.y <= MAX_MAP_AREA);
-	// Stop the user from issuing any commands while the unit is moving.
-	const events::command_disabler disable_commands;
-
-	log_scope2(log_ai, "move_unit");
-	unit_map::iterator u_it = get_info().units.find(from);
-	if(u_it == get_info().units.end()) {
-		ERR_AI << "Could not find unit at " << from << '\n';
-		assert(false);
-		return location();
-	}
-
-	if(from == to) {
-		LOG_AI << "moving unit at " << from << " on spot. resetting moves\n";
-		return to;
-	}
-
-	const bool show_move = preferences::show_ai_moves();
-
-	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
-
-	std::vector<location> steps;
-
-	if(p_it != possible_moves.end()) {
-		paths& p = p_it->second;
-		std::map<location,paths::route>::iterator rt = p.routes.begin();
-		for(; rt != p.routes.end(); ++rt) {
-			if(rt->first == to) {
-				break;
-			}
-		}
-
-		if(rt != p.routes.end()) {
-			if (static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()) {
-		  		LOG_AI<<"Trying to move unit without enough move points left\n";
-			}
-			u_it->second.set_movement(rt->second.move_left);
-
-			steps = rt->second.steps;
-
-			while(steps.empty() == false && get_info().units.find(to) != get_info().units.end() && from != to){
-				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
-				LOG_AI << "\t" << get_info().units.find(to)->second.underlying_id() <<" already on " << to << "\n";
-				LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
-				to = *(steps.end()-1);
-				steps.pop_back();
-				LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-			}
-
-			if(steps.size()) { // First step is starting hex
-				unit_map::const_iterator utest=get_info().units.find(*(steps.begin()));
-				if(utest != get_info().units.end() && current_team().is_enemy(utest->second.side())){
-					ERR_AI << "AI tried to move onto existing enemy unit at" << *steps.begin() << '\n';
-					//			    return(from);
-				}
-
-				// Check if there are any invisible units that we uncover
-				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
-					location adj[6];
-					get_adjacent_tiles(*i,adj);
-
-					size_t n;
-					for(n = 0; n != 6; ++n) {
-
-						// See if there is an enemy unit next to this tile.
-						// If it's invisible, we need to stop: we're ambushed.
-						// If it's not, we must be a skirmisher, otherwise AI wouldn't try.
-
-						// Or would it?  If it doesn't cheat, it might...
-						const unit_map::const_iterator u = get_info().units.find(adj[n]);
-						// If level 0 is invisible it ambush us too
-						if (u != get_info().units.end() && (u->second.emits_zoc() || u->second.invisible(adj[n], get_info().units, get_info().teams))
-								&& current_team().is_enemy(u->second.side())) {
-							if (u->second.invisible(adj[n], get_info().units, get_info().teams)) {
-								to = *i;
-								u->second.ambush();
-								steps.erase(i,steps.end());
-								break;
-							} else {
-								if (!u_it->second.get_ability_bool("skirmisher",*i)){
-									ERR_AI << "AI tried to skirmish with non-skirmisher\n";
-									LOG_AI << "\tresetting destination from " <<to;
-									to = *i;
-									LOG_AI << " to " << to;
-									steps.erase(i,steps.end());
-									while(steps.empty() == false && (!(get_info().units.find(to) == get_info().units.end() || from == to))){
-										to = *(steps.end()-1);
-										steps.pop_back();
-										LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-									}
-
-									break;
-								}
-							}
-						}
-					}
-
-					if(n != 6) {
-						u_it->second.set_movement(0); // Enter enemy ZoC, no movement left
-						break;
-					}
-				}
-			}
-
-			if(steps.empty() || steps.back() != to) {
-				//Add the destination to the end of the steps if it's not
-				//already there.
-				steps.push_back(to);
-			}
-
-			if(show_move && unit_display::unit_visible_on_path(steps,
-						u_it->second, get_info().units,get_info().teams)) {
-				get_info().disp.display_unit_hex(from);
-
-				unit_map::iterator up = get_info().units.find(u_it->first);
-				unit_display::move_unit(steps,up->second,get_info().teams);
-			} else if(steps.size()>1) {
-				unit_map::iterator up = get_info().units.find(u_it->first);
-				std::vector<map_location>::const_reverse_iterator last_step = steps.rbegin();
-				std::vector<map_location>::const_reverse_iterator before_last = last_step +1;
-				up->second.set_facing(before_last->get_relative_dir(*last_step));
-			}
-		}
-	}
-	//FIXME: probably missing some "else" here
-	// It looks like if the AI doesn't find a route in possible_move,
-	// she will just teleport her unit between 'from' and 'to'
-	// I suppose this never happen, but in the meantime, add code for replay
-	if (steps.empty()) {
-		steps.push_back(from);
-		steps.push_back(to);
-	}
-
-	std::pair<map_location,unit> *p = get_info().units.extract(u_it->first);
-
-	p->first = to;
-	get_info().units.insert(p);
-	p->second.set_standing(p->first);
-	if(get_info().map.is_village(to)) {
-		// If a new village is captured, disallow any future movement.
-		if (!current_team().owns_village(to))
-			get_info().units.find(to)->second.set_movement(-1);
-		get_village(to,get_info().disp,get_info().teams,get_side()-1,get_info().units);
-	}
-
-	if(show_move) {
-		get_info().disp.invalidate(to);
-		get_info().disp.draw();
-	}
-
-	recorder.add_movement(steps);
-
-	game_events::fire("moveto",to,from);
-
-	if((get_info().teams.front().uses_fog() || get_info().teams.front().uses_shroud()) &&
-			!get_info().teams.front().fogged(to)) {
-		game_events::fire("sighted",to);
-	}
-
-	// would have to go via mousehandler to make this work:
-	//get_info().disp.unhighlight_reach();
-	raise_unit_moved();
-
-	return to;
-}
-
 bool ai::multistep_move_possible(const location& from,
 	const location& to, const location& via,
 	const std::map<location,paths>& possible_moves) const
@@ -660,7 +378,7 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 
 		// If we can make it back to the keep and then to our original destination, do so.
 		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
-			from = ai_interface::move_unit(from,start_pos,possible_moves);
+			from = ai_readwrite_context::move_unit(from,start_pos,possible_moves);
 			if(from != start_pos) {
 				return from;
 			}
@@ -682,7 +400,7 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 	}
 
 	if(units_.count(to) == 0 || from == to) {
-		const location res = ai_interface::move_unit(from,to,*possible_moves_ptr);
+		const location res = ai_readwrite_context::move_unit(from,to,*possible_moves_ptr);
 		if(res != to) {
 			// We've been ambushed; find the ambushing unit and attack them.
 			adjacent_tiles_array locs;
@@ -720,95 +438,9 @@ void ai::attack_enemy(const location& attacking_unit, const location& target,
 		int att_weapon, int def_weapon)
 {
 	attacks_.insert(attacking_unit);
-	ai_interface::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
+	ai_readwrite_context::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
 }
 
-void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst,
-		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<map_location>* remove_destinations) const
-{
-  calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
-}
-
-void ai_interface::calculate_moves(const unit_map& units, std::map<location,paths>& res, move_map& srcdst,
-		move_map& dstsrc, bool enemy, bool assume_full_movement,
-	     const std::set<map_location>* remove_destinations,
-		bool see_all
-          ) const
-{
-
-	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {
-		// If we are looking for the movement of enemies, then this unit must be an enemy unit.
-		// If we are looking for movement of our own units, it must be on our side.
-		// If we are assuming full movement, then it may be a unit on our side, or allied.
-		if((enemy && current_team().is_enemy(un_it->second.side()) == false) ||
-		   (!enemy && !assume_full_movement && un_it->second.side() != get_side()) ||
-		   (!enemy && assume_full_movement && current_team().is_enemy(un_it->second.side()))) {
-			continue;
-		}
-		// Discount incapacitated units
-		if(un_it->second.incapacitated()
-			|| (!assume_full_movement && un_it->second.movement_left() == 0)) {
-			continue;
-		}
-
-		// We can't see where invisible enemy units might move.
-		if(enemy && un_it->second.invisible(un_it->first,units,get_info().teams) && !see_all) {
-			continue;
-		}
-		// If it's an enemy unit, reset its moves while we do the calculations.
-		unit* held_unit = const_cast<unit*>(&(un_it->second));
-		const unit_movement_resetter move_resetter(*held_unit,enemy || assume_full_movement);
-
-		// Insert the trivial moves of staying on the same location.
-		if(un_it->second.movement_left() > 0 ) {
-			std::pair<location,location> trivial_mv(un_it->first,un_it->first);
-			srcdst.insert(trivial_mv);
-			dstsrc.insert(trivial_mv);
-		}
-		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
-		res.insert(std::pair<map_location,paths>(
-		                un_it->first,paths(get_info().map,units,
-					 un_it->first,get_info().teams,false,teleports,
-									current_team(),0,see_all)));
-	}
-
-	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		for(paths::routes_map::iterator rtit =
-		    m->second.routes.begin(); rtit != m->second.routes.end(); ++rtit) {
-			const location& src = m->first;
-			const location& dst = rtit->first;
-
-			if(remove_destinations != NULL && remove_destinations->count(dst) != 0) {
-				continue;
-			}
-
-			bool friend_owns = false;
-
-			// Don't take friendly villages
-			if(!enemy && get_info().map.is_village(dst)) {
-				for(size_t n = 0; n != get_info().teams.size(); ++n) {
-					if(get_info().teams[n].owns_village(dst)) {
-						if(n+1 != get_side() && current_team().is_enemy(n+1) == false) {
-							friend_owns = true;
-						}
-
-						break;
-					}
-				}
-			}
-
-			if(friend_owns) {
-				continue;
-			}
-
-			if(src != dst && units.find(dst) == units.end()) {
-				srcdst.insert(std::pair<location,location>(src,dst));
-				dstsrc.insert(std::pair<location,location>(dst,src));
-			}
-		}
-	}
-}
 
 void ai::remove_unit_from_moves(const map_location& loc, move_map& srcdst, move_map& dstsrc)
 {
@@ -1213,68 +845,6 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 	}
 }
 
-void ai_interface::attack_enemy(const location u,
-		const location target, int weapon, int def_weapon)
-{
-	// Stop the user from issuing any commands while the unit is attacking
-	const events::command_disabler disable_commands;
-
-	if(!get_info().units.count(u))
-	{
-		ERR_AI << "attempt to attack without attacker\n";
-		return;
-	}
-	if (!get_info().units.count(target))
-	{
-		ERR_AI << "attempt to attack without defender\n";
-		return;
-	}
-
-	if(get_info().units.find(target)->second.incapacitated()) {
-		ERR_AI << "attempt to attack unit that is petrified\n";
-		return;
-	}
-	if(!get_info().units.find(u)->second.attacks_left()) {
-		ERR_AI << "attempt to attack twice with the same unit\n";
-		return;
-	}
-
-	if(weapon >= 0) {
-		recorder.add_attack(u,target,weapon,def_weapon);
-	}
-	try {
-		attack(get_info().disp, get_info().map, get_info().teams, u, target, weapon, def_weapon,
-				get_info().units, get_info().state);
-	}
-	catch (end_level_exception&)
-	{
-		dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
-
-		const unit_map::const_iterator defender = get_info().units.find(target);
-		if(defender != get_info().units.end()) {
-			const size_t defender_team = size_t(defender->second.side()) - 1;
-			if(defender_team < get_info().teams.size()) {
-				dialogs::advance_unit(get_info().map, get_info().units,
-						target, get_info().disp, !get_info().teams[defender_team].is_human());
-			}
-		}
-
-		throw;
-	}
-	dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
-
-	const unit_map::const_iterator defender = get_info().units.find(target);
-	if(defender != get_info().units.end()) {
-		const size_t defender_team = size_t(defender->second.side()) - 1;
-		if(defender_team < get_info().teams.size()) {
-			dialogs::advance_unit(get_info().map, get_info().units,
-					target, get_info().disp, !get_info().teams[defender_team].is_human());
-		}
-	}
-
-	check_victory(get_info().state,get_info().units,get_info().teams, get_info().disp);
-	raise_enemy_attacked();
-}
 
 bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 		const move_map& srcdst, const move_map& enemy_dstsrc)

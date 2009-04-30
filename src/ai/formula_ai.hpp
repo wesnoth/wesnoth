@@ -72,9 +72,9 @@ public:
 	virtual void new_turn();
 	virtual std::string describe_self();
 
-	using ai_interface::get_info;
-	using ai_interface::current_team;
-	using ai_interface::move_map;
+	using ai_readwrite_context::get_info;
+	using ai_readwrite_context::current_team;
+	using ai_readonly_context::move_map;
 
 	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
 

@@ -100,7 +100,7 @@ namespace dfool {
    */
   class dfool_ai : public ai_interface {
   public:
-    dfool_ai(int side, bool master) : ai_interface(side, master),unit_memory_(current_team().ai_memory()){}
+    dfool_ai(int side, bool master) : ai_interface(side, master), unit_memory_(current_team().ai_memory()){}
     void play_turn();
     virtual std::string describe_self();
   private:

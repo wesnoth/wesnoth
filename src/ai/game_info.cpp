@@ -14,12 +14,10 @@
 
 /**
  * Base class for the AI and AI-ai_manager contract.
- * @file ai/ai_interface.cpp
+ * @file ai/game_info.cpp
  */
 
-#include "ai_actions.hpp"
-#include "ai_interface.hpp"
-#include "ai_manager.hpp"
+#include "game_info.hpp"
 
 // =======================================================================
 //

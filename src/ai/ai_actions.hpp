@@ -22,7 +22,7 @@
 
 #include "../global.hpp"
 
-#include "ai_interface.hpp"
+#include "game_info.hpp"
 #include "../map.hpp"
 #include "../map_location.hpp"
 #include "../team.hpp"
@@ -73,16 +73,19 @@ protected:
 	unsigned int get_side() const;
 
 	/* return real information about the game state */
-	ai_interface::info& get_info() const;
+	ai_game_info& get_info() const;
 
 	/* return subjective information about the game state */
-	ai_interface::info& get_subjective_info() const;
+	ai_game_info& get_subjective_info() const;
 
 	/* are we using the subjective info ? */
 	bool using_subjective_info() const;
 
 	/* get the team object corresponding to current side */
-	team& get_my_team(ai_interface::info info) const;
+	team& get_my_team(ai_game_info& info) const;
+
+	/* get the team object corresponding to current side */
+	const team& get_my_team(const ai_game_info& info) const;
 
 	/* set error code */
 	void set_error(int error_code);

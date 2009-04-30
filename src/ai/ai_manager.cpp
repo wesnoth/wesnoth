@@ -250,7 +250,7 @@ ai_manager::~ai_manager()
 
 
 ai_manager::AI_map_of_stacks ai_manager::ai_map_;
-ai_interface::info *ai_manager::ai_info_;
+ai_game_info *ai_manager::ai_info_;
 events::generic_event ai_manager::user_interact_("ai_user_interact");
 events::generic_event ai_manager::unit_recruited_("ai_unit_recruited");
 events::generic_event ai_manager::unit_moved_("ai_unit_moved");
@@ -258,12 +258,12 @@ events::generic_event ai_manager::enemy_attacked_("ai_enemy_attacked");
 int ai_manager::last_interact_ = 0;
 
 
-void ai_manager::set_ai_info(const ai_interface::info& i)
+void ai_manager::set_ai_info(const ai_game_info& i)
 {
 	if (ai_info_!=NULL){
 		clear_ai_info();
 	}
-	ai_info_ = new ai_interface::info(i);
+	ai_info_ = new ai_game_info(i);
 }
 
 
@@ -640,13 +640,13 @@ const std::string& ai_manager::get_active_ai_algorithm_type_for_side( int side )
 }
 
 
-ai_interface::info& ai_manager::get_active_ai_info_for_side( int /*side*/ )
+ai_game_info& ai_manager::get_active_ai_info_for_side( int /*side*/ )
 {
 	return *ai_info_;
 }
 
 
-ai_interface::info& ai_manager::get_ai_info()
+ai_game_info& ai_manager::get_ai_info()
 {
 	return *ai_info_;
 }

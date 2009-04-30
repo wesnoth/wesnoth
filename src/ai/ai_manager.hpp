@@ -141,7 +141,7 @@ public:
 	 * Sets AI information.
 	 * @param info ai_information to be set.
 	 */
-	static void set_ai_info(const ai_interface::info& info);
+	static void set_ai_info(const ai_game_info& info);
 
 
 	/**
@@ -225,7 +225,7 @@ public:
 	 * Adds active AI for specified @a side from @a file.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager. AI is not initialized at this point.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param file file name, follows the usual WML convention.
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
@@ -237,7 +237,7 @@ public:
 	 * Adds active AI for specified @a side from @a cfg.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager. AI is not initialized at this point.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param cfg the config from which all ai parameters are to be read.
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
@@ -249,7 +249,7 @@ public:
 	 * Adds active AI for specified @a side from parameters.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager. AI is not initialized at this point.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_algorithm_type type of AI algorithm to create.
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
@@ -285,7 +285,7 @@ public:
 	 * Removes top-level AI from @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 */
 	static void remove_ai_for_side( int side );
 
@@ -294,7 +294,7 @@ public:
 	 * Removes all AIs from @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 */
 	static void remove_all_ais_for_side( int side );
 
@@ -317,7 +317,7 @@ public:
 	 * Gets AI parameters for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to active AI parameters.
 	 * @note This reference may become invalid after specific ai_manager operations.
 	 */
@@ -328,7 +328,7 @@ public:
 	 * Gets effective AI parameters for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to active AI effective parameters.
 	 * @note this reference may become invalid after specific ai_manager operations.
 	 */
@@ -339,7 +339,7 @@ public:
 	 * Get global AI parameters for active AI of the @a given side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to active ai global parameters.
 	 * @note This reference may become invalid after specific ai_manager operations.
 	 */
@@ -351,21 +351,21 @@ public:
 	 * @param side side number (1-based).
 	 * @return a reference to active AI info.
 	 */
-	static ai_interface::info& get_active_ai_info_for_side( int side );
+	static ai_game_info& get_active_ai_info_for_side( int side );
 
 
 	/**
 	 * Gets global AI-game info
 	 * @return a reference to the AI-game info.
 	 */
-	static ai_interface::info& get_ai_info();
+	static ai_game_info& get_ai_info();
 
 
 	/**
 	 * Gets AI memory for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to active AI memory.
 	 * @note This reference may become invalid after specific ai_manager operations.
 	 */
@@ -376,7 +376,7 @@ public:
 	 * Gets AI algorithm type for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to active AI algorithm_type.
 	 * @note This reference may become invalid after specific ai_manager operations.
 	 */
@@ -391,7 +391,7 @@ public:
 	 * Sets AI parameters for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_parameters AI parameters to be set.
 	 */
 	static void set_active_ai_parameters_for_side( int side, const std::vector<config>& ai_parameters );
@@ -401,7 +401,7 @@ public:
 	 * Sets effective AI parameters for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_effective_parameters AI effective parameters to be set.
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
@@ -413,7 +413,7 @@ public:
 	 * Sets global AI parameters for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_global_parameters AI global parameters to be set.
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
@@ -425,7 +425,7 @@ public:
 	 * Sets AI memory for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_memory AI memory to be set.
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
@@ -437,7 +437,7 @@ public:
 	 * Sets AI algorithm type for active AI of the given @a side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param ai_algorithm_type AI algorithm type to be set.
 	 */
 	static void set_active_ai_algorithm_type_for_side( int side, const std::string& ai_algorithm_type );
@@ -449,7 +449,7 @@ public:
 
 	/**
 	 * Plays a turn for the specified side using its active AI.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @param event_observer controller which will observe events produced by the AI.
 	 */
 	static void play_turn(int side, events::observer* event_observer);
@@ -461,7 +461,7 @@ private:
 	static AI_map_of_stacks ai_map_;
 	static std::deque< ai_command_history_item > history_;
 	static long history_item_counter_;
-	static ai_interface::info *ai_info_;
+	static ai_game_info *ai_info_;
 
 	static events::generic_event user_interact_;
 	static events::generic_event unit_recruited_;
@@ -534,7 +534,7 @@ private:
 	 * Gets active AI for specified side.
 	 * @note Running this command may invalidate references previously returned
 	 *       by ai_manager.
-	 * @param side side number (1-based, as in ai_interface::info).
+	 * @param side side number (1-based, as in ai_game_info).
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific ai_manager operations.
 	 */

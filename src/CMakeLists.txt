@@ -221,6 +221,10 @@ SET(wesnoth-main_SRC
     ai/ai_manager.cpp
     ai/ai_move.cpp
     ai/ai_village.cpp
+    ai/contexts.cpp
+    ai/formula_ai.cpp
+    ai/formula_candidates.cpp
+    ai/game_info.cpp
     ai/testing.cpp
     animated_game.cpp
     attack_prediction.cpp
@@ -232,8 +236,6 @@ SET(wesnoth-main_SRC
     dialogs.cpp
     floating_textbox.cpp
     formula.cpp
-    ai/formula_ai.cpp
-    ai/formula_candidates.cpp
     formula_function.cpp
     formula_tokenizer.cpp
     formula_string_utils.cpp

@@ -22,6 +22,7 @@
 #include "playsingle_controller.hpp"
 
 #include "ai/ai_manager.hpp"
+#include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
@@ -64,7 +65,7 @@ playsingle_controller::playsingle_controller(const config& level,
 		browse_ = linger_ = true;
 	}
 
-	ai_interface::info ai_info(*gui_,map_,units_,teams_,status_, gamestate_);
+	ai_game_info ai_info(*gui_,map_,units_,teams_,status_, gamestate_);
 	ai_manager::set_ai_info(ai_info);
 	ai_manager::add_observer(this) ;
 }
