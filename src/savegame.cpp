@@ -863,7 +863,7 @@ oos_savegame::oos_savegame(game_state &gamestate, const config& level_cfg,
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {}
 
-int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type)
+int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
 {
 	static bool ignore_all = false;
 	int res = 0;
