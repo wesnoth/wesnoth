@@ -344,7 +344,7 @@ private:
 	 * on the resolution widgets can look different, use different fonts.
 	 * Windows can use extra scrollbars use abbreviations as text etc.
 	 */
- 	tresolution_definition_ptr config_;
+	tresolution_definition_ptr config_;
 
 	/**
 	 * Load class dependant config settings.
