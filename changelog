@@ -118,6 +118,7 @@ Version 1.7.0-svn:
      also allow to use sub-tag [not] (to hide a race but not a specific type)
    * [stone] and [unstone] have been replaced with [petrify] and [unpetrify];
      the units' "stoned" status variable has been renamed to "petrified"
+   * Added the 'sub' key to [set_variable] to subtract from the variable.
  * Miscellaneous and bugfixes:
    * Added --ignore-fatal-errors option to wmlunits
    * Added --rng-seed command line option to specify a value to seed the random

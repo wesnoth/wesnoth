@@ -1276,6 +1276,15 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			}
 		}
 
+		const std::string sub = cfg["sub"];
+		if(sub.empty() == false) {
+			if(isint(var.str()) && isint(sub)) {
+				var = str_cast( std::atoi(var.c_str()) - std::atoi(sub.c_str()) );
+			} else {
+				var = str_cast( std::atof(var.c_str()) - std::atof(sub.c_str()) );
+			}
+		}
+
 		const std::string multiply = cfg["multiply"];
 		if(multiply.empty() == false) {
 			if(isint(var) && isint(multiply)) {
