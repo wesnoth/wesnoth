@@ -1911,7 +1911,7 @@ void advance_unit(unit_map& units,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(const gamestatus& status, unit_map& units, std::vector<team>& teams, display& disp)
+void check_victory(const gamestatus& /*status*/, unit_map& units, std::vector<team>& teams, display& disp)
 {
 	std::vector<unsigned int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
