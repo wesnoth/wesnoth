@@ -55,7 +55,7 @@ void tscroll_label::finalize_subclass()
 {
 	assert(content_grid());
 	tlabel* lbl = dynamic_cast<tlabel*>(
-		   	content_grid()->find_widget("_label", false));
+			content_grid()->find_widget("_label", false));
 
 	assert(lbl);
 	lbl->set_label(label());
