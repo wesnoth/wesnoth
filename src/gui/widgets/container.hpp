@@ -61,6 +61,12 @@ public:
 	 */
 	void NEW_reduce_width(const unsigned maximum_width);
 
+	/** Inherited from tcontrol. */
+	void NEW_request_reduce_width(const unsigned maximum_width);
+
+	/** Inherited from twidget. */
+	void NEW_demand_reduce_width(const unsigned maximum_width);
+
 	/**
 	 * Tries to reduce the height of a container.
 	 *
@@ -69,6 +75,12 @@ public:
 	 * @param maximum_height      The wanted maximum height.
 	 */
 	void NEW_reduce_height(const unsigned maximum_height);
+
+	/** Inherited from twidget. */
+	void NEW_request_reduce_height(const unsigned maximum_height);
+
+	/** Inherited from twidget. */
+	void NEW_demand_reduce_height(const unsigned maximum_height);
 
 private:
 	/** Inherited from twidget. */

@@ -49,9 +49,29 @@ void tcontainer_::NEW_reduce_width(const unsigned maximum_width)
 	grid_.NEW_reduce_width(maximum_width - border_space().x);
 }
 
+void tcontainer_::NEW_request_reduce_width(const unsigned maximum_width)
+{
+	grid_.NEW_request_reduce_width(maximum_width - border_space().x);
+}
+
+void tcontainer_::NEW_demand_reduce_width(const unsigned maximum_width)
+{
+	grid_.NEW_demand_reduce_width(maximum_width - border_space().x);
+}
+
 void tcontainer_::NEW_reduce_height(const unsigned maximum_height)
 {
 	grid_.NEW_reduce_height(maximum_height - border_space().y);
+}
+
+void tcontainer_::NEW_request_reduce_height(const unsigned maximum_height)
+{
+	grid_.NEW_request_reduce_height(maximum_height - border_space().y);
+}
+
+void tcontainer_::NEW_demand_reduce_height(const unsigned maximum_height)
+{
+	grid_.NEW_demand_reduce_height(maximum_height - border_space().y);
 }
 
 void tcontainer_::layout_wrap(const unsigned maximum_width)
