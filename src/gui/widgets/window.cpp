@@ -740,10 +740,10 @@ void twindow::NEW_layout()
 		get_screen_size_variables();
 
 	const int maximum_width = automatic_placement_ ?
-			settings::screen_width :  w_(variables);
+			settings::screen_width : w_(variables);
 
 	const int maximum_height = automatic_placement_ ?
-			settings::screen_height :  h_(variables);
+			settings::screen_height : h_(variables);
 
 	/** @todo Handle linked widgets. */
 
