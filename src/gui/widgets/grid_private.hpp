@@ -135,10 +135,23 @@ struct tgrid_implementation
 	 * @param row                 The row to resize.
 	 * @param maximum_height      The wanted maximum height.
 	 *
-	 * @returns                   The reqired row height after resizing.
+	 * @returns                   The required row height after resizing.
 	 */
 	static unsigned NEW_row_request_reduce_height(tgrid& grid,
 			const unsigned row, const unsigned maximum_height);
+
+	/**
+	 * Helper function to do the resizing of a column.
+	 *
+	 * @param grid                The grid to operate upon.
+	 * @param column              The column to resize.
+	 * @param maximum_width       The wanted maximum width.
+	 *
+	 * @returns                   The required column width after resizing.
+	 */
+	static unsigned NEW_column_request_reduce_width(tgrid& grid,
+			const unsigned column, const unsigned maximum_width);
+
 private:
 
 	/**
@@ -149,6 +162,15 @@ private:
 	 */
 	static void NEW_cell_request_reduce_height(tgrid::tchild& child,
 			const unsigned maximum_height);
+
+	/**
+	 * Helper function to do the resizing of a widget.
+	 *
+	 * @param child               The cell whose widget needs to be resized.
+	 * @param maximum_width      The wanted maximum width.
+	 */
+	static void NEW_cell_request_reduce_width(tgrid::tchild& child,
+			const unsigned maximum_width);
 };
 
 } // namespace gui2

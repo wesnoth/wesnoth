@@ -219,14 +219,74 @@ void tgrid::NEW_layout_init(const bool full_initialization)
 	}
 }
 
-void tgrid::NEW_reduce_width(const unsigned /*maximum_width*/)
+void tgrid::NEW_reduce_width(const unsigned maximum_width)
 {
+	/***** ***** ***** ***** INIT ***** ***** ***** *****/
+	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
+	DBG_GUI_L << "tgrid: maximum width " << maximum_width << ".\n";
+
+	tpoint size = get_best_size();
+	if(size.x <= static_cast<int>(maximum_width)) {
+		DBG_GUI_L << "tgrid: Already fits.\n";
+		return;
+	}
+
+	/***** ***** ***** ***** Request resize ***** ***** ***** *****/
+
+	NEW_request_reduce_width(maximum_width);
+
+	size = get_best_size();
+	if(size.x <= static_cast<int>(maximum_width)) {
+		DBG_GUI_L << "tgrid: Resize request honoured.\n";
+		return;
+	}
+
+	/***** ***** ***** ***** Demand resize ***** ***** ***** *****/
+
 	/** @todo Implement. */
+
+	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+
+	DBG_GUI_L << "tgrid: Resizing failed.\n";
+
+	throw tlayout_exception_width_resize_failed();
 }
 
-void tgrid::NEW_request_reduce_width(const unsigned /*maximum_width*/)
+void tgrid::NEW_request_reduce_width(const unsigned maximum_width)
 {
-	/** @todo Implement. */
+	tpoint size = get_best_size();
+	if(size.x <= static_cast<int>(maximum_width)) {
+		/** @todo this point shouldn't be reached, find out why it does. */
+		return;
+	}
+
+	const unsigned too_wide = size.x - maximum_width;
+	unsigned reduced = 0;
+	for(size_t col = 0; col < cols_; ++col) {
+		if(too_wide - reduced >=  col_width_[col]) {
+			DBG_GUI_L << "tgrid: column " << col
+					<< " is too small to be reduced.\n";
+			continue;
+		}
+
+		const unsigned wanted_width = col_width_[col] - (too_wide - reduced);
+		const unsigned width = tgrid_implementation::
+				NEW_column_request_reduce_width(*this, col, wanted_width);
+
+		if(width < col_width_[col]) {
+			DBG_GUI_L << "tgrid: reduced " << col_width_[col] - width
+					<< " pixels for col " << col << ".\n";
+
+			size.x -= col_width_[col] - width;
+			col_width_[col] = width;
+		}
+
+		if(size.x <= static_cast<int>(maximum_width)) {
+			break;
+		}
+	}
+
+	set_layout_size(calculate_best_size());
 }
 
 void tgrid::NEW_demand_reduce_width(const unsigned /*maximum_width*/)
@@ -1318,6 +1378,31 @@ unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,
 	return required_height;
 }
 
+unsigned tgrid_implementation::NEW_column_request_reduce_width(tgrid& grid,
+		const unsigned column, const unsigned maximum_width)
+{
+	// The minimum width required.
+	unsigned required_width = 0;
+
+	for(size_t y = 0; y < grid.rows_; ++y) {
+		tgrid::tchild& cell = grid.child(y, column);
+		NEW_cell_request_reduce_width(cell, maximum_width);
+
+		const tpoint size(cell.get_best_size());
+
+		if(required_width == 0
+				|| static_cast<size_t>(size.x) > required_width) {
+
+			required_width = size.x;
+		}
+	}
+
+	DBG_GUI_L << "tgrid: maximum column width " << maximum_width
+		<< " returning " << required_width << ".\n";
+
+	return required_width;
+}
+
 void tgrid_implementation::NEW_cell_request_reduce_height(
 		tgrid::tchild& child, const unsigned maximum_height)
 {
@@ -1329,6 +1414,19 @@ void tgrid_implementation::NEW_cell_request_reduce_height(
 
 	child.widget_->NEW_request_reduce_height(
 			maximum_height - child.border_space().y);
+}
+
+void tgrid_implementation::NEW_cell_request_reduce_width(
+		tgrid::tchild& child, const unsigned maximum_width)
+{
+	assert(child.widget_);
+
+	if(child.widget_->get_visible() == twidget::INVISIBLE) {
+		return;
+	}
+
+	child.widget_->NEW_request_reduce_width(
+			maximum_width - child.border_space().x);
 }
 
 } // namespace gui2
