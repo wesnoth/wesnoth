@@ -103,10 +103,15 @@ public:
 										* message popup can do it.
 										*/
 		OK = -1,                       /**< Dialog is closed with ok button. */
-		CANCEL = -2                    /**<
+		CANCEL = -2,                   /**<
 										* Dialog is closed with the cancel
 										* button.
 										*/
+		AUTO_CLOSE = -3                /**< 
+		                                * The dialog is closed automatically
+		                                * since it's timeout has been
+		                                * triggered.
+		                                */
 		};
 
 	/** Gets the retval for the default buttons. */
