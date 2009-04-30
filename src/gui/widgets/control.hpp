@@ -155,6 +155,9 @@ public:
 	void NEW_layout_init(const bool full_initialization);
 
 	/** Inherited from twidget. */
+	void NEW_request_reduce_width(const unsigned maximum_width);
+
+	/** Inherited from twidget. */
 	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
