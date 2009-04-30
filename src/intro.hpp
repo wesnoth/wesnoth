@@ -25,23 +25,6 @@ class display;
 #include <string>
 
 /**
- * Function to show an introduction sequence using story WML.
- * The WML config data has a format similar to:
- * @code
- * [part]
- *     id='id'
- *     story='story'
- *     image='img'
- * [/part]
- * @endcode
- * Where 'id' is a unique identifier, 'story' is text describing the
- * storyline,and 'img' is a background image. Each part of the sequence will
- * be displayed in turn, with the user able to go to the next part, or skip
- * it entirely.
- */
-void show_intro(display &disp, const vconfig& data, const config& level);
-
-/**
  * Displays a simple fading screen with any user-provided text.
  * Used after the end of single-player campaigns.
  *

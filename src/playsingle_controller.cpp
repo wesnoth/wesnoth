@@ -26,7 +26,6 @@
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
-#include "intro.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
@@ -36,6 +35,7 @@
 #include "formula_string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
+#include "storyscreen/interface.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -256,7 +256,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	if(!skip_replay) {
 		foreach (const config &s, story) {
-			show_intro(*gui_, vconfig(s, true), level_);
+			show_storyscreen(*gui_, vconfig(s, true), level_["name"]);
 		}
 	}
 	gui_->labels().read(level_, game_events::get_state_of_game());

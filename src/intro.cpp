@@ -97,12 +97,6 @@ void set_new_storyscreen(bool enabled)
 	LOG_NG << "enabled experimental story/endscreen code\n";
 }
 
-void show_intro(display &disp, const vconfig& data, const config& level)
-{
-	const std::string scenario_name = level["name"];
-	show_storyscreen(disp,data,scenario_name);
-}
-
 void the_end(display &disp, std::string text, unsigned int duration)
 {
 	if(use_shadowm_storyscreen) {
