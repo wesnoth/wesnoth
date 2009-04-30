@@ -85,7 +85,15 @@ class CVideo : private boost::noncopyable {
 	int getBpp();
 
 	void make_fake();
-	void make_test_fake();
+	/**
+	 * Creates a fake frame buffer for the unit tests.
+	 *
+	 * @param width               The width of the buffer.
+	 * @param height              The heigth of the buffer.
+	 * @param bpp                 The bpp of the buffer.
+	 */
+	void make_test_fake(const unsigned width = 1024,
+			const unsigned height = 768, const unsigned bpp = 32);
 	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears

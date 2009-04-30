@@ -293,11 +293,11 @@ void CVideo::make_fake()
 	image::set_pixel_format(frameBuffer->format);
 }
 
-void CVideo::make_test_fake()
+void CVideo::make_test_fake(const unsigned width,
+			const unsigned height, const unsigned bpp)
 {
-	// Create fake screen that is 1024x768 24bpp
-	// We can then use this in tests to draw
-	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1024,768,32,0xFF0000,0xFF00,0xFF,0);
+	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,
+			width, height, bpp, 0xFF0000, 0xFF00, 0xFF, 0);
 	image::set_pixel_format(frameBuffer->format);
 
 	fake_interactive = true;
