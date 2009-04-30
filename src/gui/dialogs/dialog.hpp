@@ -136,6 +136,8 @@ private:
 	 * Every dialog shows it's own kind of window, this function should return
 	 * the window to show.
 	 *
+	 * @param video               The video which contains the surface to draw
+	 *                            upon.
 	 * @returns                   The window to show.
 	 */
 	virtual twindow* build_window(CVideo& video) = 0;
