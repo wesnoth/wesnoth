@@ -102,7 +102,7 @@ twindow::twindow(CVideo& video,
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
 	, status_(NEW)
-	, retval_(0)
+	, retval_(NONE)
 	, owner_(0)
 	, need_layout_(true)
 	, suspend_drawing_(true)
