@@ -81,6 +81,9 @@ public:
 	/** Inherited from twidget. */
 	void NEW_request_reduce_height(const unsigned maximum_height);
 
+	/** Inherited from tcontrol. */
+	void NEW_request_reduce_width(const unsigned maximum_width);
+
 	/** Inherited from tcontainer_. */
 	bool can_wrap() const
 	{

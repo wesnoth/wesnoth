@@ -233,6 +233,47 @@ void tscrollbar_container::NEW_request_reduce_height(
 	}
 }
 
+void tscrollbar_container::NEW_request_reduce_width(
+		const unsigned maximum_width)
+{
+	// First ask our content, it might be able to wrap which looks better as
+	// a scrollbar.
+	assert(content_grid_);
+	const unsigned offset = vertical_scrollbar_grid_
+			&& vertical_scrollbar_grid_->get_visible() != twidget::INVISIBLE
+				?  vertical_scrollbar_grid_->get_best_size().x
+				: 0;
+	content_grid_->NEW_request_reduce_width(maximum_width - offset);
+
+	// Did we manage to achieve the wanted size?
+	assert(horizontal_scrollbar_grid_);
+
+	tpoint size = get_best_size();
+	if(static_cast<unsigned>(size.x) < maximum_width) {
+		return;
+	}
+
+	if(initial_horizontal_scrollbar_mode_ == always_invisible) {
+		return;
+	}
+
+	// Always set the bar visible, is a nop when it's already visible.
+	horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	horizontal_scrollbar_mode_ = always_visible;
+	size = get_best_size();
+
+	const tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+	if(maximum_width > static_cast<unsigned>(scrollbar_size.x)) {
+		size.x = maximum_width;
+	} else {
+		size.x = scrollbar_size.x;
+	}
+
+	// FIXME adjust for the step size of the scrollbar
+
+	set_layout_size(size);
+}
+
 void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 {
 	// Inherited.
