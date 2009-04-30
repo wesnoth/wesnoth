@@ -1913,7 +1913,7 @@ void advance_unit(unit_map& units,
 
 void check_victory(const gamestatus& status, unit_map& units, std::vector<team>& teams, display& disp)
 {
-	std::vector<int> seen_leaders;
+	std::vector<unsigned int> seen_leaders;
 	for(unit_map::const_iterator i = units.begin();
 			i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
@@ -1964,25 +1964,13 @@ void check_victory(const gamestatus& status, unit_map& units, std::vector<team>&
 
 		if(non_interactive()) {
 			std::cout << "winner: ";
-			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
+			for(std::vector<unsigned int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
 				std::string ai = teams[*i - 1].ai_algorithm();
 				if (ai == "") ai = "default ai";
 				std::cout << *i << " (using " << ai << ") ";
 			}
 			std::cout << "\n";
-			ai_testing::log_victory();
-			//@todo 1.7 remove this code, as it will be in log_victory
-			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
-				LOG_AI_TESTING << "WINNER: "<< *i <<std::endl;
-			}
-			LOG_AI_TESTING << "VICTORY_TURN: "<< status.turn() <<std::endl;
-			for (std::vector<team>::const_iterator tm = teams.begin(); tm != teams.end(); ++tm) {
-				int side = tm-teams.begin()+1;
-				LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;
-				LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
-			}
-			LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
-
+			ai_testing::log_victory(seen_leaders);
 		}
 
 		LOG_NG << "throwing end level exception...\n";

@@ -322,6 +322,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
 		bool save = !loading_game_;
+		ai_testing::log_game_start();
 		for(; ; first_player_ = 1) {
 			play_turn(save);
 			save = true;
@@ -332,6 +333,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		log.quit(status_.turn());
 		throw;
 	} catch(end_level_exception& end_level) {
+		ai_testing::log_game_end();
 		*end_level_result = end_level;
 		if(!end_level.custom_endlevel_music.empty()) {
 			switch(end_level.result) {
@@ -572,6 +574,7 @@ void playsingle_controller::play_turn(bool save)
 				turn_data.sync_network();
 				continue;
 			}
+			ai_testing::log_turn_start(player_number_);
 			play_side(player_number_, save);
 		}
 
@@ -581,7 +584,7 @@ void playsingle_controller::play_turn(bool save)
 			std::cout << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
-			ai_testing::log_turn_start();
+			ai_testing::log_turn_end(player_number_);
 		}
 
 		check_victory(status_, units_, teams_, *gui_);

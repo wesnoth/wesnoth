@@ -22,13 +22,20 @@
 
 #include "../global.hpp"
 
+#include <vector>
+
 class ai_testing{
 public:
 	/*
 	 * Log at start of the turn
 	*/
-	static void log_turn_start();
+	static void log_turn_start( unsigned int side );
 
+
+	/*
+	 * Log at end of the turn
+	*/
+	static void log_turn_end( unsigned int side );
 
 	/*
 	 * Log in case of draw
@@ -38,14 +45,26 @@ public:
 	
 	/*
 	 * Log in case of victory
+	 * teams vector of winner teams
 	 */
-	static void log_victory();
+	static void log_victory( std::vector<unsigned int> teams );
 
 
 	/*
-	 * Log in case of unknown error while playing level
+	 * Log at game start
 	 */
-	static void log_unknown_error_while_playing_level();
+	static void log_game_start();
+
+
+	/*
+	 * Log at game end
+	 */
+	static void log_game_end();
+
+protected:
+
+	static void log_turn( const char *msg, unsigned int side );
+
 };
 
 #endif
