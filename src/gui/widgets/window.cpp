@@ -86,6 +86,88 @@ static Uint32 draw_timer(Uint32, void*)
 	return draw_interval;
 }
 
+/**
+ * Small helper class to get an unique id for every window instance.
+ *
+ * This is used to send event to the proper window, this allows windows to post
+ * messages to themselves and let them delay for a certain amount of time.
+ */
+class tmanager
+{
+	tmanager();
+public:
+
+	static tmanager& instance();
+
+	void add(twindow& window);
+
+	void remove(twindow& window);
+
+	unsigned get_id(twindow& window);
+
+	twindow* window(const unsigned id);
+
+private:
+
+	// The number of active window should be rather small
+	// so keep it simple and don't add a reverse lookup map.
+	std::map<unsigned, twindow*> windows_;
+};
+
+tmanager::tmanager()
+	: windows_()
+{
+}
+
+tmanager& tmanager::instance()
+{
+	static tmanager window_manager;
+	return window_manager;
+}
+
+void tmanager::add(twindow& window)
+{
+	static unsigned id;
+	++id;
+	windows_[id] = &window;
+}
+
+void tmanager::remove(twindow& window)
+{
+	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
+			itor != windows_.end(); ++itor) {
+
+		if(itor->second == &window) {
+			windows_.erase(itor);
+			return;
+		}
+	}
+	assert(false);
+}
+
+unsigned tmanager::get_id(twindow& window)
+{
+	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
+			itor != windows_.end(); ++itor) {
+
+		if(itor->second == &window) {
+			return itor->first;
+		}
+	}
+	assert(false);
+}
+
+twindow* tmanager::window(const unsigned id)
+{
+	std::map<unsigned, twindow*>::iterator itor = windows_.find(id);
+
+	if(itor == windows_.end()) {
+		return NULL;
+	} else {
+		return itor->second;
+	}
+}
+
 } // namespace
 
 twindow::twindow(CVideo& video,
@@ -139,6 +221,24 @@ twindow::twindow(CVideo& video,
 	help_popup_.set_definition("default");
 	help_popup_.set_parent(this);
 	help_popup_.set_visible(twidget::HIDDEN);
+
+	tmanager::instance().add(*this);
+}
+
+twindow::~twindow()
+{
+	tmanager::instance().remove(*this);
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+
+	delete debug_layout_;
+
+#endif
+}
+
+twindow* twindow::window_instance(const unsigned handle)
+{
+	return tmanager::instance().window(handle);
 }
 
 void twindow::update_screen_size()
@@ -990,10 +1090,6 @@ void twindow::draw(surface& /*surf*/, const bool /*force*/,
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-twindow::~twindow()
-{
-	delete debug_layout_;
-}
 
 void twindow::generate_dot_file(const std::string& generator,
 		const unsigned domain)

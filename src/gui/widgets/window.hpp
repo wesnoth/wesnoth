@@ -75,6 +75,8 @@ public:
 		const unsigned vertical_placement,
 		const std::string& definition);
 
+	~twindow();
+
 	/**
 	 * Update the size of the screen variables in settings.
 	 *
@@ -84,6 +86,15 @@ public:
 	 * event.
 	 */
 	static void update_screen_size();
+
+	/**
+	 * Returns the intance of a window.
+	 *
+	 * @param handle              The instance id of the window.
+	 *
+	 * @returns                   The window or NULL.
+	 */
+	static twindow* window_instance(const unsigned handle);
 
 	/**
 	 * Default return values.
@@ -521,8 +532,6 @@ private:
 	tdebug_layout_graph* debug_layout_;
 
 public:
-	// The destructor only needs to delete the debug_layout_ so declared here.
-	~twindow();
 
 	/** wrapper for tdebug_layout_graph::generate_dot_file. */
 	void generate_dot_file(
