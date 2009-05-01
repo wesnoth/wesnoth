@@ -503,8 +503,9 @@ SET(test_SRC
     tests/test_util.cpp
     tests/test_serialization.cpp
     tests/test_version.cpp
+    tests/gui/test_drop_target.cpp
+    tests/gui/test_gui2.cpp
 	tests/gui/test_save_dialog.cpp
-	tests/gui/test_drop_target.cpp
     ${wesnoth-main_SRC}
 )
 
