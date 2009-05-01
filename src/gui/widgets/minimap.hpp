@@ -92,15 +92,9 @@ private:
 	unsigned top_border_;
 	unsigned bottom_border_;
 
-	/** Draws the minimap itself. */
-	virtual void draw_map(surface& surface);
-
 	/** Inherited from tcontrol. */
 	void impl_draw_background(surface& frame_buffer);
 
-	/** Inherited from tcontrol. */
-	void impl_draw_foreground(surface& surface);
-	
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
 		{ static const std::string type = "minimap"; return type; }

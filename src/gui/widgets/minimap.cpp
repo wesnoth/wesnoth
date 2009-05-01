@@ -37,19 +37,7 @@ void tminimap::set_borders(const unsigned left,
 	set_dirty();
 }
 
-void tminimap::impl_draw_foreground(surface& surface)
-{
-	draw_map(surface);
-}
-
 void tminimap::impl_draw_background(surface& frame_buffer)
-{
-   	canvas(0).draw();
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(canvas(0).surf(), NULL, frame_buffer, &rect);
-}
-
-void tminimap::draw_map(surface& surface)
 {
 	assert(terrain_);
 
@@ -69,7 +57,7 @@ void tminimap::draw_map(surface& surface)
 
 		const ::surface surf = image::getMinimap(rect.w, rect.h, map, NULL);
 
-		blit_surface(surf, NULL, surface, &rect);
+		blit_surface(surf, NULL, frame_buffer, &rect);
 
 	} catch (incorrect_map_format_exception& e) {
 		ERR_CF << "Error while loading the map: " << e.msg_ << '\n';
