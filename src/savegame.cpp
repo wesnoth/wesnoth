@@ -493,10 +493,8 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 	if (ask_for_overwrite){
 		overwrite = check_overwrite(video);
 
-		if (!overwrite){
-			show_confirmation_ = true;
+		if (!overwrite)
 			return save_game_interactive(video, "", gui::OK_CANCEL);
-		}
 	}
 
 	return save_game(&video);
