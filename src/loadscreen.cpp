@@ -73,11 +73,11 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	parser_counter(0),
 	screen_(screen),
 	textarea_(),
+	logo_surface_(image::get_image("misc/logo.png")),
 	logo_drawn_(false),
 	pby_offset_(0),
 	prcnt_(percent)
 {
-	logo_surface_ = image::get_image("misc/logo.png");
 	if (logo_surface_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
