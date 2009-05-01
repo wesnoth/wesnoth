@@ -331,7 +331,8 @@ void tgrid::NEW_request_reduce_height(const unsigned maximum_height)
 {
 	tpoint size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		assert(false);
+		/** @todo this point shouldn't be reached, find out why it does. */
+		return;
 	}
 
 	const unsigned too_high = size.y - maximum_height;
