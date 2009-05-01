@@ -106,6 +106,10 @@ endif(SVNVERSION_EXECUTABLE)
 
 ########### libwesnoth-core ###############
 
+add_executable(lexical_cast 
+	lexical_cast/util.cpp
+)
+
 SET(libwesnoth-core_STAT_SRC
     color_range.cpp
     config.cpp
