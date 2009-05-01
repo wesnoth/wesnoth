@@ -440,11 +440,7 @@ void twindow::draw()
 			update_rect(rect);
 		}
 
-		if(gui2::new_widgets) {
-			NEW_layout();
-		} else {
-			layout();
-		}
+		NEW_layout();
 
 		// Get new surface for restoring
 		SDL_Rect rect = get_rect();
