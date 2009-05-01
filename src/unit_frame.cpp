@@ -176,7 +176,7 @@ frame_parameters::frame_parameters() :
 	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST),
 	in_hex(false),
 	diagonal_in_hex(false)
-{};
+{}
 
 frame_builder::frame_builder() :
 	image_(image::locator()),
@@ -198,7 +198,7 @@ frame_builder::frame_builder() :
 	x_(""),
 	y_(""),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
-{};
+{}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
 	image_(image::locator()),
