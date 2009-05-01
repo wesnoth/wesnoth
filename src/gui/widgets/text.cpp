@@ -339,7 +339,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
 	if(offset >= 0) {
-		set_cursor(offset, modifier & KMOD_SHIFT);
+		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
 
@@ -351,7 +351,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	handled = true;
 	const size_t offset = selection_start_ + 1 + selection_length_;
 	if(offset <= text_.get_length()) {
-		set_cursor(offset, modifier & KMOD_SHIFT);
+		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
 
@@ -361,9 +361,9 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
-		goto_start_of_data(modifier & KMOD_SHIFT);
+		goto_start_of_data((modifier & KMOD_SHIFT) != 0);
 	} else {
-		goto_start_of_line(modifier & KMOD_SHIFT);
+		goto_start_of_line((modifier & KMOD_SHIFT) != 0);
 	}
 }
 
@@ -373,9 +373,9 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
-		goto_end_of_data(modifier & KMOD_SHIFT);
+		goto_end_of_data((modifier & KMOD_SHIFT) != 0);
 	} else {
-		goto_end_of_line(modifier & KMOD_SHIFT);
+		goto_end_of_line((modifier & KMOD_SHIFT) != 0);
 	}
 }
 
