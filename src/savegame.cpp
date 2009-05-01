@@ -475,10 +475,31 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, compress_saves_(compress_saves)
 {}
 
-bool savegame::save_game_interactive(CVideo& video, const std::string& message,
-									 gui::DIALOG_TYPE dialog_type, bool ask_for_filename)
+bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const std::string& filename)
 {
-	show_confirmation_ = ask_for_filename;
+	bool overwrite = true;
+
+	if (filename == "")
+		create_filename();
+	else
+		filename_ = filename;
+
+	if (ask_for_overwrite){
+		overwrite = check_overwrite(video);
+
+		if (!overwrite){
+			show_confirmation_ = true;
+			return save_game_interactive(video, "", gui::OK_CANCEL);
+		}
+	}
+
+	return save_game(&video);
+}
+
+bool savegame::save_game_interactive(CVideo& video, const std::string& message,
+									 gui::DIALOG_TYPE dialog_type)
+{
+	show_confirmation_ = true;
 	create_filename();
 
 	int res = gui2::twindow::OK;
@@ -486,18 +507,11 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 
 	do{ 
 		try{
-			if (ask_for_filename){
-				res = show_save_dialog(video, message, dialog_type);
-				exit = true;
-			}
+			res = show_save_dialog(video, message, dialog_type);
+			exit = true;
 
 			if (res == gui2::twindow::OK){
 				exit = check_overwrite(video);
-
-				if (!exit){
-					ask_for_filename = true;
-					show_confirmation_ = true;
-				}
 			}
 		}
 		catch (illegal_filename_exception){
@@ -592,7 +606,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 			filename_ = filename;
 
 		before_save();
-		save_game_internal(filename_);
+		write_game_to_disk(filename_);
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
@@ -612,7 +626,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 	};
 }
 
-void savegame::save_game_internal(const std::string& filename)
+void savegame::write_game_to_disk(const std::string& filename)
 {
 	LOG_SAVE << "savegame::save_game";
 
@@ -832,7 +846,6 @@ autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
-	create_filename();
 }
 
 void autosave_savegame::autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves)
@@ -840,7 +853,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 	if(disable_autosave)
 		return;
 
-	save_game(&gui_.video());
+	save_game_automatic(gui_.video());
 
 	savegame_manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
 }

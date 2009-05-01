@@ -138,22 +138,27 @@ public:
 		console_handler save actions. The return value denotes, if the save was successful or not. */
 	//bool save_game(const std::string& filename);
 
-	/** 
-		Save a game without any further user interaction. This is used by autosaves and
-		automatically generated replay saves. If you want notifying messages or error messages
-		to appear, you have to provide the gui parameter. 
-		The return value denotes, if the save was successful or not.
+	/** Saves a game without user interaction, unless the file exists and it should be asked
+		to overwrite it. The return value denotes, if the save was successful or not. 
+		This is used by automatically generated replays, start-of-scenario saves and autosaves.
 	*/
-	bool save_game(CVideo* video = NULL, const std::string& filename = "");
+	bool save_game_automatic(CVideo& video, bool ask_for_overwrite = false, const std::string& filename = "");
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
-	bool save_game_interactive(CVideo& gui, const std::string& message,
-		gui::DIALOG_TYPE dialog_type, bool ask_for_filename = true);
+	bool save_game_interactive(CVideo& video, const std::string& message,
+		gui::DIALOG_TYPE dialog_type);
 
 	const std::string& filename() const { return filename_; }
 
 protected:
+	/** 
+		Save a game without any further user interaction. If you want notifying messages 
+		or error messages to appear, you have to provide the gui parameter. 
+		The return value denotes, if the save was successful or not.
+	*/
+	bool save_game(CVideo* video = NULL, const std::string& filename = "");
+
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */
 	void set_filename(std::string filename);
@@ -184,7 +189,7 @@ private:
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method. */
-	void save_game_internal(const std::string& filename);
+	void write_game_to_disk(const std::string& filename);
 
 	/** Writing the savegame config to a file. */
 	void write_game(config_writer &out) const;
