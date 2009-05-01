@@ -164,6 +164,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_image_(overlay.editor_image_),
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
+	description_(overlay.description_),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
 	def_type_(overlay.def_type_),
