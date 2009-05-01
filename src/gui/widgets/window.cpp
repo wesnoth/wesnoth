@@ -893,9 +893,24 @@ void twindow::NEW_layout()
 
 	/** @todo Handle linked widgets. */
 
-	if(!NEW_layout(maximum_width, maximum_height)) {
+	try {
+		NEW_layout(maximum_width, maximum_height);
+	} catch(tlayout_exception_resize_failed&) {
+
 		/** @todo implement the scrollbars on the window. */
-		assert(false);
+
+		std::stringstream sstr;
+		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
+				<< "' found the following problem: Failed to size window;"
+				<< " wanted size " << get_best_size()
+				<< " available size "
+				<< maximum_width << ',' << maximum_height
+				<< " screen size "
+				<< settings::screen_width << ',' << settings::screen_height
+				<< '.';
+
+		throw twml_exception(_("Failed to show a dialog, "
+				"which doesn't fit on the screen."), sstr.str());
 	}
 
 	tpoint size = get_best_size();
@@ -986,7 +1001,7 @@ bool twindow::NEW_layout(
 					<< " Wanted width " << maximum_width
 					<< " resulting width " << size.x
 					<< ".\n";
-				return false;
+				throw tlayout_exception_width_resize_failed();
 			}
 			DBG_GUI_L << "Status: Resize width succeeded.\n";
 		}
@@ -1000,7 +1015,7 @@ bool twindow::NEW_layout(
 					<< " Wanted height " << maximum_height
 					<< " resulting height " << size.y
 					<< ".\n";
-				return false;
+				throw tlayout_exception_height_resize_failed();
 			}
 			DBG_GUI_L << "Status: Resize height succeeded.\n";
 		}

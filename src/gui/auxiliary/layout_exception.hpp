@@ -24,19 +24,28 @@ namespace gui2 {
  */
 struct tlayout_exception_width_modified {};
 
+/** Basic exception when the layout doesn't fit. */
+struct tlayout_exception_resize_failed {};
+
 /**
  * Exception thrown when the width resizing has failed.
  *
  * @see layout_algorihm for more information.
  */
-struct tlayout_exception_width_resize_failed {};
+struct tlayout_exception_width_resize_failed
+	: public tlayout_exception_resize_failed
+{
+};
 
 /**
  * Exception thrown when the height resizing has failed.
  *
  * @see layout_algorihm for more information.
  */
-struct tlayout_exception_height_resize_failed {};
+struct tlayout_exception_height_resize_failed
+	: public tlayout_exception_resize_failed
+{
+};
 
 } // namespace gui2
 
