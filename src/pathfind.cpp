@@ -104,22 +104,26 @@ bool enemy_zoc(gamemap const &map,
 	return false;
 }
 
+static unsigned search_counter;
+
 namespace {
+
 struct node {
 	int movement_left, turns_left;
 	map_location prev, curr;
-	bool in;
-		
-	node(int moves, int turns, map_location p, map_location c) : movement_left(moves), turns_left(turns), prev(p), curr(c), in(false) { }
-	node() : movement_left(-1), turns_left(-1), prev(map_location::null_location), curr(map_location::null_location), in(false) { }
+
+	/**
+	 * If equal to search_counter, the node is off the list.
+	 * If equal to search_counter + 1, the node is on the list.
+	 * Otherwise it is outdated.
+	 */
+	unsigned in;
+
+	node(int moves, int turns, const map_location &p, const map_location &c)
+		: movement_left(moves), turns_left(turns), prev(p), curr(c) { }
+	node() : in(0) { }
 	bool operator<(const node& o) const {
 		return turns_left > o.turns_left || (turns_left == o.turns_left && movement_left > o.movement_left);
-	}
-	bool operator>(const node& o) const {
-		return o < (*this);
-	}
-	bool operator<=(const node& o) const {
-		return !(o < (*this));
 	}
 };
 
@@ -135,7 +139,7 @@ struct comp {
 	const std::vector<node>& nodes;
 	comp(const std::vector<node>& n) : nodes(n) { }
 	bool operator()(int l, int r) const {
-		return nodes[l] > nodes[r];
+		return nodes[r] < nodes[l];
 	}
 };
 }
@@ -155,14 +159,18 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
-	
+
+	search_counter += 2;
+	if (search_counter == 0) search_counter = 2;
+
 	static std::vector<node> nodes;
-	nodes.clear();
 	nodes.resize(map.w() * map.h());
 	
 	indexer index(map.w(), map.h());
 	comp node_comp(nodes);
-	
+
+	int xmin = map.w(), xmax = 0, ymin = map.h(), ymax = 0;
+
 	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
 	std::vector<int> pq;
 	pq.push_back(index(loc));
@@ -171,18 +179,20 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		node& n = nodes[pq.front()];
 		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
-		n.in = false;
+		n.in = search_counter;
 		
 		get_adjacent_tiles(n.curr, &locs[0]);
 		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0; ) {
 			if (!locs[i].valid(map.w(), map.h())) continue;
 			
 			node& next = nodes[index(locs[i])];
-			
+
+			bool next_visited = next.in - search_counter <= 1u;
+
 			// test if the current path to locs[i] is better than this one could possibly be.
 			// we do this a couple more times below
-			if (next <= n) continue;
-			
+			if (next_visited && !(n < next)) continue;
+
 			const int move_cost = u.movement_cost(map[locs[i]]);
 			
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
@@ -194,9 +204,9 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			if (t.movement_left < move_cost || t.turns_left < 0) continue;
 			
 			t.movement_left -= move_cost;
-			
-			if (next <= t) continue;
-						
+
+			if (next_visited && !(t < next)) continue;
+
 			if (!ignore_units) {
 				const unit_map::const_iterator unit_it =
 					find_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
@@ -209,14 +219,21 @@ static void find_routes(const gamemap& map, const unit_map& units,
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
-				
-				if (next <= t) continue;
+
+				if (next_visited && !(t < next)) continue;
 			}
-			
-			bool in_list = next.in;
+
+			int x = locs[i].x;
+			if (x < xmin) xmin = x;
+			if (xmax < x) xmax = x;
+			int y = locs[i].y;
+			if (y < ymin) ymin = y;
+			if (ymax < y) ymax = y;
+
+			bool in_list = next.in == search_counter + 1;
+			t.in = search_counter + 1;
 			next = t;
-			next.in = true;
-			
+
 			// if already in the priority queue then we just update it, else push it.
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
@@ -228,23 +245,29 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 	
 	// build the routes for every map_location that we reached 
-	foreach(const node& n, nodes) {
-		if (n.movement_left < 0 || n.turns_left < 0) continue;
-		paths::route route;
-		route.move_left = n.movement_left + n.turns_left * total_movement;
-		
-		// the ai expects that the destination map_location not actually be in the route...
-		if (n.prev != map_location::null_location) {
-			for (node curr = nodes[index(n.prev)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
-				assert(curr.curr != map_location::null_location);
-				route.steps.push_back(curr.curr);
+	for (int y = ymin; y <= ymax; ++y) {
+		for (int x = xmin; x <= xmax; ++x)
+		{
+			const node &n = nodes[index(map_location(x, y))];
+			if (n.in - search_counter > 1u) continue;
+			paths::route route;
+			route.move_left = n.movement_left + n.turns_left * total_movement;
+
+			// the ai expects that the destination map_location not actually be in the route...
+			if (n.prev.valid())
+			{
+				for (const node *curr = &nodes[index(n.prev)];
+				     curr->prev.valid(); curr = &nodes[index(curr->prev)])
+				{
+					assert(curr->curr.valid());
+					route.steps.push_back(curr->curr);
+				}
 			}
+			route.steps.push_back(loc);
+			std::reverse(route.steps.begin(), route.steps.end());
+			routes[n.curr] = route;
 		}
-		route.steps.push_back(loc);
-		std::reverse(route.steps.begin(), route.steps.end());	
-		
-		routes[n.curr] = route;		
-	}	
+	}
 }
 
 paths::paths(gamemap const &map, unit_map const &units,
