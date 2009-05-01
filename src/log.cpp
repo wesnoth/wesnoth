@@ -55,6 +55,7 @@ logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general");
 
 log_domain::log_domain(char const *name)
+	: domain_(NULL)
 {
 	// Indirection to prevent initialization depending on link order.
 	if (!domains) domains = new domain_map;
