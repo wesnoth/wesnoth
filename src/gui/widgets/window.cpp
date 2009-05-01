@@ -891,7 +891,7 @@ void twindow::NEW_layout()
 	const int maximum_height = automatic_placement_ ?
 			settings::screen_height : h_(variables);
 
-	/** @todo Handle linked widgets. */
+	NEW_layout_linked_widgets();
 
 	try {
 		twindow_implementation::NEW_layout(*this, maximum_width, maximum_height);
@@ -965,6 +965,44 @@ void twindow::NEW_layout()
 
 	// The widgets might have moved so set the mouse location properly.
 	init_mouse_location();
+}
+
+void twindow::NEW_layout_linked_widgets()
+{
+	// evaluate the group sizes
+	typedef std::pair<const std::string, tlinked_size> hack;
+	foreach(hack& linked_size, linked_size_) {
+
+		tpoint max_size(0, 0);
+
+		// Determine the maximum size.
+		foreach(twidget* widget, linked_size.second.widgets) {
+
+			const tpoint size = widget->get_best_size();
+
+			if(size.x > max_size.x) {
+				max_size.x = size.x;
+			}
+			if(size.y > max_size.y) {
+				max_size.y = size.y;
+			}
+		}
+
+		// Set the maximum size.
+		foreach(twidget* widget, linked_size.second.widgets) {
+
+			tpoint size = widget->get_best_size();
+
+			if(linked_size.second.width) {
+				size.x = max_size.x;
+			}
+			if(linked_size.second.height) {
+				size.y = max_size.y;
+			}
+
+			widget->set_layout_size(size);
+		}
+	}
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
@@ -1155,6 +1193,7 @@ void twindow_implementation::NEW_layout(twindow& window,
 	} catch (tlayout_exception_width_modified&) {
 		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
 		window.NEW_layout_init(false);
+		window.NEW_layout_linked_widgets();
 		NEW_layout(window, maximum_width, maximum_height);
 		return;
 	}
@@ -1321,6 +1360,7 @@ void twindow_implementation::NEW_layout(twindow& window,
  * - Relayout:
  *   - Initialize all widgets
  *     (@ref gui2::twidget::NEW_layout_init (full_initialization = false))
+ *   - Handle shared sizes, since the reinitialization resets that state.
  *   - Goto start layout loop.
  *
  * @section grid Grid

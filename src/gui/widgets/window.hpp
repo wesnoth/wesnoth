@@ -484,6 +484,13 @@ private:
 	 */
 	void NEW_layout();
 
+	/**
+	 * Layouts the linked widgets.
+	 *
+	 * @see layout_algorihm for more information.
+	 */
+	void NEW_layout_linked_widgets();
+
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
 
