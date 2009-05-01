@@ -207,8 +207,13 @@ std::ostream &operator<<(std::ostream &s, ai_attack_result const &r) {
 
 
 // ai_move_result
-ai_move_result::ai_move_result( unsigned int side, const map_location& from, const map_location& to, bool remove_movement)
-	: ai_action_result(side), from_(from), to_(to), remove_movement_(remove_movement)
+ai_move_result::ai_move_result(unsigned int side, const map_location& from,
+		const map_location& to, bool remove_movement)
+	: ai_action_result(side)
+	, from_(from)
+	, to_(to)
+	, remove_movement_(remove_movement)
+	, route_()
 {
 }
 
