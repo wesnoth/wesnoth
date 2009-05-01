@@ -64,11 +64,19 @@ struct node {
 	 */
 	unsigned in;
 
-	node() : g(1e25), t(1e25), in(search_counter) { }
+	node()
+		: g(1e25)
+		, h(1e25)
+		, t(1e25)
+		, curr()
+		, prev()
+		, in(search_counter)
+	{
+	}
 	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i) :
 		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
 		{ }
-		
+
 	bool operator<(const node& o) const {
 		return t < o.t;
 	}
