@@ -110,7 +110,7 @@ struct node {
 	map_location prev, curr;
 	bool in;
 		
-	node(int moves, int turns, map_location p, map_location c) : movement_left(moves), turns_left(turns), prev(p), curr(c) { }
+	node(int moves, int turns, map_location p, map_location c) : movement_left(moves), turns_left(turns), prev(p), curr(c), in(false) { }
 	node() : movement_left(-1), turns_left(-1), prev(map_location::null_location), curr(map_location::null_location), in(false) { }
 	bool operator<(const node& o) const {
 		return turns_left > o.turns_left || (turns_left == o.turns_left && movement_left > o.movement_left);
