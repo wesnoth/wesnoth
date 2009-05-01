@@ -86,6 +86,7 @@ struct scoped_context
 
 	scoped_context()
 		: old_context(current_context)
+		, new_context()
 	{
 		new_context.skip_messages = old_context ? old_context->skip_messages : false;
 		new_context.mutated = true;
@@ -3706,8 +3707,9 @@ namespace game_events {
 	manager::manager(const config& cfg, gamemap& map_,
 			unit_map& units_,
 			std::vector<team>& teams_,
-			game_state& state_of_game_, gamestatus& status) :
-		variable_manager(&state_of_game_)
+			game_state& state_of_game_, gamestatus& status)
+		: resources()
+		, variable_manager(&state_of_game_)
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
