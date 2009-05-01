@@ -312,7 +312,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 vconfig vconfig::child(const std::string& key) const
 {
 	if (const config &natural = cfg_->child(key)) {
-		return vconfig(natural, cache_key_);
+		return vconfig(&natural, cache_key_);
 	}
 	foreach (const config &ins, cfg_->child_range("insert_tag"))
 	{
