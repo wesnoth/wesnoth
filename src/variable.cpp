@@ -21,11 +21,14 @@
 
 #include "global.hpp"
 
+#include "variable.hpp"
+
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
-#include "formula_string_utils.hpp"
-
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)

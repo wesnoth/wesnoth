@@ -19,18 +19,21 @@
  */
 
 #include "global.hpp"
-#include "foreach.hpp"
-#include "gamestatus.hpp"
+
 #include "intro.hpp"
-#include "variable.hpp"
+
 #include "display.hpp"
+#include "foreach.hpp"
+#include "game_events.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 #include "storyscreen/interface.hpp"
-#include "game_events.hpp"
-#include "language.hpp"
+#include "unit.hpp"
+#include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

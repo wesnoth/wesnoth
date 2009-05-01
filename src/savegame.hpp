@@ -23,6 +23,9 @@
 
 #include <string>
 
+class config_writer;
+class game_display;
+
 struct load_game_cancelled_exception {};
 struct illegal_filename_exception {};
 

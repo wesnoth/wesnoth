@@ -17,6 +17,7 @@
 
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -31,6 +32,7 @@
 #include "serialization/parser.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "unit.hpp"
 #include "unit_id.hpp"
 #include "version.hpp"
 

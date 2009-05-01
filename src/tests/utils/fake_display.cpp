@@ -16,8 +16,10 @@
 
 #include "fake_display.hpp"
 
+#include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
+#include "unit_map.hpp"
 
 namespace test_utils {
 

@@ -25,6 +25,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "unit.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 

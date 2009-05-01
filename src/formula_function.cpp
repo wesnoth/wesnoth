@@ -18,6 +18,7 @@
 //#include "foreach.hpp"
 #include "callable_objects.hpp"
 #include "formula_function.hpp"
+#include "game_display.hpp"
 #include "log.hpp"
 
 

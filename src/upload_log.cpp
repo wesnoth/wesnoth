@@ -21,15 +21,18 @@
 
 #define GETTEXT_DOMAIN "wesnoth"
 
+#include "upload_log.hpp"
+
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "serialization/parser.hpp"
-#include "upload_log.hpp"
-#include "wesconfig.h"
 #include "log.hpp"
+#include "serialization/parser.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
+#include "wesconfig.h"
 
 
 static lg::log_domain log_uploader("uploader");

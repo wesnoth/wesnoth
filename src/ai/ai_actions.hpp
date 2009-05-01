@@ -25,7 +25,9 @@
 #include "game_info.hpp"
 #include "../map.hpp"
 #include "../map_location.hpp"
+#include "pathfind.hpp"
 #include "../team.hpp"
+
 #include <memory>
 #include <vector>
 

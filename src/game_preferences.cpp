@@ -17,6 +17,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
@@ -24,6 +25,8 @@
 #include "map.hpp"
 #include "network.hpp" // ping_timeout
 #include "settings.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 #include "wml_exception.hpp"
 
 

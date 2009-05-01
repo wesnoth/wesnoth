@@ -25,6 +25,7 @@
 #include "game_preferences.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
+#include "unit.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
 #include "wml_exception.hpp"
@@ -45,6 +46,14 @@ static lg::log_domain log_engine("engine");
 static void write_player(const player_info& player, config& cfg);
 
 #endif /* _WIN32 */
+
+player_info::player_info() :
+	name(),
+	gold(-1) ,
+	gold_add(false),
+	available_units(),
+	can_recruit()
+{}
 
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);

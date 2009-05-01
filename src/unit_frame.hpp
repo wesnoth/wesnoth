@@ -24,7 +24,6 @@
 #include "util.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
-#include "game_display.hpp"
 
 class config;
 
@@ -66,29 +65,7 @@ typedef progressive_<double> progressive_double;
 /** All parameters from a frame at a given instant */
 class frame_parameters{
 	public:
-	frame_parameters():
-	image(""),
-	image_diagonal(""),
-	image_mod(""),
-	halo(""),
-	halo_x(0),
-	halo_y(0),
-	halo_mod(""),
-	sound(""),
-	text(""),
-	text_color(0),
-	duration(0),
-	blend_with(0),
-	blend_ratio(0.0),
-	highlight_ratio(1.0),
-	offset(0),
-	submerge(0.0),
-	x(0),
-	y(0),
-	drawing_layer(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST),
-	in_hex(false),
-	diagonal_in_hex(false)
-	{};
+	frame_parameters();
 
 	image::locator image;
 	image::locator image_diagonal;
@@ -118,28 +95,7 @@ class frame_parameters{
  */
 class frame_builder {
 	public:
-		/** initial constructor */
-		frame_builder():
-		image_(image::locator()),
-		image_diagonal_(image::locator()),
-		image_mod_(""),
-		halo_(""),
-		halo_x_(""),
-		halo_y_(""),
-		halo_mod_(""),
-		sound_(""),
-		text_(""),
-		text_color_(0),
-		duration_(1),
-		blend_with_(0),
-		blend_ratio_(""),
-		highlight_ratio_(""),
-		offset_(""),
-		submerge_(""),
-		x_(""),
-		y_(""),
-		drawing_layer_(lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST))
-	{};
+		frame_builder();
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
 		frame_builder & image(const image::locator image ,const std::string & image_mod="");

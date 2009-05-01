@@ -24,6 +24,7 @@
 class game_display;
 class gamemap;
 
+#include "game_display.hpp"
 #include "game_info.hpp"
 #include "../pathfind.hpp"
 #include "../gamestatus.hpp"

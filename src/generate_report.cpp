@@ -27,6 +27,7 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
+#include "reports.hpp"
 
 #include <iostream>
 

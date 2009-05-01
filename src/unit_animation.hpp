@@ -23,8 +23,9 @@
 #include <string>
 #include <vector>
 
-class game_display;
 class attack_type;
+class game_display;
+class unit;
 
 class unit_animation
 {

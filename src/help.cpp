@@ -19,11 +19,13 @@
 
 #include "global.hpp"
 
+#include "help.hpp"
+
 #include "about.hpp"
+#include "display.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "help.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "log.hpp"

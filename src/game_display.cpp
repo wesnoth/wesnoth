@@ -19,6 +19,8 @@
 
 #include "global.hpp"
 
+#include "game_display.hpp"
+
 #include "actions.hpp"
 #include "foreach.hpp"
 #include "halo.hpp"

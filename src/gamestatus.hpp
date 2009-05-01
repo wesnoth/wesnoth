@@ -20,13 +20,13 @@
 #include "random.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"
-#include "unit.hpp"
 #include "variable.hpp"
 
 #include <time.h>
 #include <string>
 #include <vector>
 
+class unit;
 
 class scoped_wml_variable;
 
@@ -45,13 +45,7 @@ struct wml_menu_item
 /** Information on a particular player of the game. */
 struct player_info
 {
-	player_info() :
-		name(),
-		gold(-1) ,
-		gold_add(false),
-		available_units(),
-		can_recruit()
-	{}
+	player_info();
 
 	std::string name;                  /**< Stores the current_player name */
 	int gold;                          /**< Amount of gold the player has saved */

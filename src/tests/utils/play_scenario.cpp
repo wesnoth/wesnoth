@@ -18,10 +18,12 @@
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_display.hpp"
 
+#include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "playcampaign.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 #include "upload_log.hpp"
-
 
 
 

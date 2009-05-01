@@ -19,13 +19,15 @@
 
 #include "global.hpp"
 
+#include "unit_types.hpp"
+
 #include "asserts.hpp"
 #include "foreach.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "unit_types.hpp"
 
 
 static lg::log_domain log_config("config");

@@ -13,10 +13,14 @@
    */
 
 #include "global.hpp"
-#include "map.hpp"
-#include "halo.hpp"
-#include "unit.hpp"
+
+#include "unit_animation.hpp"
+
 #include "foreach.hpp"
+#include "game_display.hpp"
+#include "halo.hpp"
+#include "map.hpp"
+#include "unit.hpp"
 
 struct tag_name_manager {
 	tag_name_manager() : names() {
