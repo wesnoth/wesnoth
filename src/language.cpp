@@ -180,11 +180,10 @@ language_list get_languages()
 	return known_languages;
 }
 
-static void wesnoth_setlocale(int category, std::string slocale,
+static void wesnoth_setlocale(int category, std::string const &slocale,
 	std::vector<std::string> const *alternates)
 {
-	const char *locale = slocale.c_str();
-	std::string extra;
+	std::string locale = slocale;
 	// FIXME: ideally we should check LANGUAGE and on first invocation
 	// use that value, so someone with es would get the game in Spanish
 	// instead of en_US the first time round
@@ -197,22 +196,23 @@ static void wesnoth_setlocale(int category, std::string slocale,
 #endif
 
 #if defined(__BEOS__) || defined(__APPLE__)
-	if (category == LC_MESSAGES && setenv("LANG", locale, 1) == -1)
+	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1)
 		ERR_G << "setenv LANG failed: " << strerror(errno);
 #endif
 
 #ifdef _WIN32
-	std::string win_locale = locale;
-	win_locale = win_locale.substr(0,2);
+	std::string win_locale(locale, 0, 2);
 	#include "language_win32.ii"
 	if(category == LC_MESSAGES) {
-		std::string env = "LANG=" + slocale;
+		std::string env = "LANG=" + locale;
 		_putenv(env.c_str());
 		SetEnvironmentVariable("LANG", win_locale.c_str());
 		return;
 	}
-	locale = win_locale.c_str();
+	locale = win_locale;
 #endif
+
+	std::string extra;
 
 #ifdef USE_DUMMYLOCALES
 	if (game_config::use_dummylocales)
@@ -225,69 +225,54 @@ static void wesnoth_setlocale(int category, std::string slocale,
 				status = PRESENT;
 			} else status = NONE;
 		}
-		if (slocale.empty())
+		if (locale.empty())
 			if (status == NONE)
 				unsetenv("LOCPATH");
 			else
 				setenv("LOCPATH", locpath.c_str(), 1);
 		else {
-			setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
-			DBG_G << "LOCPATH set to '" << (game_config::path + "/locales") << "'\n";
+			std::string path = game_config::path + "/locales";
+			setenv("LOCPATH", path.c_str(), 1);
+			DBG_G << "LOCPATH set to '" << path << "'\n";
 		}
 		std::string xlocale;
-		if (!slocale.empty()) {
+		if (!locale.empty()) {
 			// dummy suffix to prevent locale aliasing from kicking in
 			extra = "@wesnoth";
-			xlocale = slocale + "@wesnoth";
+			xlocale = locale + "@wesnoth";
 			locale = xlocale.c_str();
 		}
 	}
 #endif
 
 	char *res = NULL;
-	std::string orig_locale;
-	orig_locale.assign(locale);
-
-	typedef boost::scoped_array<char> char_array;
-	size_t length = orig_locale.length()+1;
-	char_array try_loc(new char[length]);
-	orig_locale.copy(try_loc.get(), orig_locale.length());
-	try_loc[orig_locale.length()] = 0;
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
-	while (true) {
-		res = std::setlocale(category, try_loc.get());
+
+	for (;;)
+	{
+		res = std::setlocale(category, locale.c_str());
 		if (res) break;
 
-		std::string utf8 = orig_locale + std::string(".utf-8");
+		std::string utf8 = locale + ".utf-8";
 		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
-		utf8 = orig_locale + std::string(".UTF-8");
+		utf8 = locale + ".UTF-8";
 		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
-		if (!alternates) break;
-		if (i == alternates->end()) break;
-		orig_locale = *i + extra;
-		if (length < orig_locale.length()+1)
-		{
-			length = orig_locale.length()+1;
-			try_loc.reset(new char[length]);
-		}
-		orig_locale.copy(try_loc.get(), orig_locale.length());
-		try_loc[orig_locale.length()] = 0;
-		i++;
+		if (!alternates || i == alternates->end()) break;
+		locale = *(++i) + extra;
 	}
 
-	if (res == NULL)
-		WRN_G << "WARNING: setlocale() failed for '" << locale << "'.\n";
+	if (res)
+		LOG_G << "Set locale to '" << locale << "' result: '" << res <<"'.\n";
 	else
-		LOG_G << "set locale to '" << (try_loc.get()) << "' result: '" << res <<"'\n";
+		WRN_G << "setlocale() failed for '" << slocale << "'.\n";
 
 	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
 	DBG_G << "Full locale: " << std::setlocale(LC_ALL, NULL) << '\n';
-
 }
 
 bool set_language(const language_def& locale)
