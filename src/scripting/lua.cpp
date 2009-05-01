@@ -737,8 +737,8 @@ static int lua_message(lua_State *L)
 }
 
 LuaKernel::LuaKernel()
+	: mState(luaL_newstate())
 {
-	mState = luaL_newstate();
 	lua_State *L = mState;
 
 	// Open safe libraries. (Debug is not, but it will be closed below.)
