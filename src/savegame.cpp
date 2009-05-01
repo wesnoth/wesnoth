@@ -315,6 +315,10 @@ loadgame::loadgame(display& gui, const config& game_config, game_state& gamestat
 	: game_config_(game_config)
 	, gui_(gui)
 	, gamestate_(gamestate)
+	, filename_()
+	, load_config_()
+	, show_replay_(false)
+	, cancel_orders_(false)
 {
 	gamestate_ = game_state();
 }
