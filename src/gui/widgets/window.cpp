@@ -19,7 +19,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/window_private.hpp"
 
 #include "font.hpp"
 #include "foreach.hpp"
@@ -894,7 +894,7 @@ void twindow::NEW_layout()
 	/** @todo Handle linked widgets. */
 
 	try {
-		NEW_layout(maximum_width, maximum_height);
+		twindow_implementation::NEW_layout(*this, maximum_width, maximum_height);
 	} catch(tlayout_exception_resize_failed&) {
 
 		/** @todo implement the scrollbars on the window. */
@@ -965,73 +965,6 @@ void twindow::NEW_layout()
 
 	// The widgets might have moved so set the mouse location properly.
 	init_mouse_location();
-}
-
-bool twindow::NEW_layout(
-		const unsigned maximum_width, const unsigned maximum_height)
-{
-	log_scope2(log_gui_layout, std::string("Window: ") + __func__);
-
-	/*
-	 * For now we return the status, need to test later whether this can
-	 * entirely be converted to an exception based system as in 'promised' on
-	 * the algorithm page.
-	 */
-
-	try {
-		tpoint size = get_best_size();
-
-		DBG_GUI_L << "Best size : " << size
-				<< " maximum size : " << maximum_width
-				<< ',' << maximum_height
-				<< ".\n";
-		if(size.x <= static_cast<int>(maximum_width)
-				&& size.y <= static_cast<int>(maximum_height)) {
-
-			DBG_GUI_L << "Result: Fits, nothing to do.\n";
-			return true;
-		}
-
-		if(size.x > static_cast<int>(maximum_width)) {
-			NEW_reduce_width(maximum_width);
-
-			size = get_best_size();
-			if(size.x > static_cast<int>(maximum_width)) {
-				DBG_GUI_L << "Result: Resize width failed."
-					<< " Wanted width " << maximum_width
-					<< " resulting width " << size.x
-					<< ".\n";
-				throw tlayout_exception_width_resize_failed();
-			}
-			DBG_GUI_L << "Status: Resize width succeeded.\n";
-		}
-
-		if(size.y > static_cast<int>(maximum_height)) {
-			NEW_reduce_height(maximum_height);
-
-			size = get_best_size();
-			if(size.y > static_cast<int>(maximum_height)) {
-				DBG_GUI_L << "Result: Resize height failed."
-					<< " Wanted height " << maximum_height
-					<< " resulting height " << size.y
-					<< ".\n";
-				throw tlayout_exception_height_resize_failed();
-			}
-			DBG_GUI_L << "Status: Resize height succeeded.\n";
-		}
-
-		assert(size.x <= static_cast<int>(maximum_width)
-				&& size.y <= static_cast<int>(maximum_height));
-
-
-		DBG_GUI_L << "Result: Resizing succeeded.\n";
-		return true;
-
-	} catch (tlayout_exception_width_modified&) {
-		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
-		NEW_layout_init(false);
-		return NEW_layout(maximum_width, maximum_height);
-	}
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
@@ -1158,6 +1091,75 @@ void twindow::generate_dot_file(const std::string& generator,
 	debug_layout_->generate_dot_file(generator, domain);
 }
 #endif
+
+void twindow_implementation::NEW_layout(twindow& window,
+		const unsigned maximum_width, const unsigned maximum_height)
+{
+	log_scope2(log_gui_layout, std::string("Window: ") + __func__);
+
+	/*
+	 * For now we return the status, need to test later whether this can
+	 * entirely be converted to an exception based system as in 'promised' on
+	 * the algorithm page.
+	 */
+
+	try {
+		tpoint size = window.get_best_size();
+
+		DBG_GUI_L << "Best size : " << size
+				<< " maximum size : " << maximum_width
+				<< ',' << maximum_height
+				<< ".\n";
+		if(size.x <= static_cast<int>(maximum_width)
+				&& size.y <= static_cast<int>(maximum_height)) {
+
+			DBG_GUI_L << "Result: Fits, nothing to do.\n";
+			return;
+		}
+
+		if(size.x > static_cast<int>(maximum_width)) {
+			window.NEW_reduce_width(maximum_width);
+
+			size = window.get_best_size();
+			if(size.x > static_cast<int>(maximum_width)) {
+				DBG_GUI_L << "Result: Resize width failed."
+					<< " Wanted width " << maximum_width
+					<< " resulting width " << size.x
+					<< ".\n";
+				throw tlayout_exception_width_resize_failed();
+			}
+			DBG_GUI_L << "Status: Resize width succeeded.\n";
+		}
+
+		if(size.y > static_cast<int>(maximum_height)) {
+			window.NEW_reduce_height(maximum_height);
+
+			size = window.get_best_size();
+			if(size.y > static_cast<int>(maximum_height)) {
+				DBG_GUI_L << "Result: Resize height failed."
+					<< " Wanted height " << maximum_height
+					<< " resulting height " << size.y
+					<< ".\n";
+				throw tlayout_exception_height_resize_failed();
+			}
+			DBG_GUI_L << "Status: Resize height succeeded.\n";
+		}
+
+		assert(size.x <= static_cast<int>(maximum_width)
+				&& size.y <= static_cast<int>(maximum_height));
+
+
+		DBG_GUI_L << "Result: Resizing succeeded.\n";
+		return;
+
+	} catch (tlayout_exception_width_modified&) {
+		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
+		window.NEW_layout_init(false);
+		NEW_layout(window, maximum_width, maximum_height);
+		return;
+	}
+}
+
 } // namespace gui2
 
 

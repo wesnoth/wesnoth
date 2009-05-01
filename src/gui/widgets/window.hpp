@@ -59,6 +59,7 @@ class twindow
 	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
+	friend class twindow_implementation;
 
 	// Wants to use layout().
 	friend class tmessage;
@@ -482,21 +483,6 @@ private:
 	 * @see layout_algorihm for more information.
 	 */
 	void NEW_layout();
-
-	/**
-	 * Layouts the window.
-	 *
-	 * This part handles the actual layouting of the window.
-	 *
-	 * @see layout_algorihm for more information.
-	 *
-	 * @param maximum_width       The maximum width of the window.
-	 * @param maximum_height      The maximum height of the window.
-	 *
-	 * @returns                   The result of the layouting.
-	 */
-	bool NEW_layout(
-			const unsigned maximum_width, const unsigned maximum_height);
 
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
