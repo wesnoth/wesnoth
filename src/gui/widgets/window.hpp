@@ -59,7 +59,7 @@ class twindow
 	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
-	friend class twindow_implementation;
+	friend struct twindow_implementation;
 
 	// Wants to use layout().
 	friend class tmessage;

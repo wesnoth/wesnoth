@@ -532,7 +532,7 @@ namespace {
 
 } // end anonymous namespace (2)
 
-static bool events_init() { return game_events::resources->screen; }
+static bool events_init() { return game_events::resources->screen != 0; }
 
 namespace {
 
