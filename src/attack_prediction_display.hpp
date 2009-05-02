@@ -20,9 +20,9 @@
 
 #include "actions.hpp"
 #include "display.hpp"
-#include "pathfind.hpp"
 #include "show_dialog.hpp"
 #include "unit_map.hpp"
+
 // This preview pane is shown in the "Damage Calculations" dialog.
 class battle_prediction_pane : public gui::preview_pane
 {
