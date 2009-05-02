@@ -173,7 +173,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	indexer index(map.w(), map.h());
 	comp node_comp(nodes);
 
-	int xmin = loc.x, xmax = loc.x, ymin = loc.y, ymax = loc.y;
+	int xmin = loc.x, xmax = loc.x, ymin = loc.y, ymax = loc.y, nb_dest = 1;
 
 	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
 	std::vector<int> pq;
@@ -227,12 +227,16 @@ static void find_routes(const gamemap& map, const unit_map& units,
 				if (next_visited && !(t < next)) continue;
 			}
 
-			int x = locs[i].x;
-			if (x < xmin) xmin = x;
-			if (xmax < x) xmax = x;
-			int y = locs[i].y;
-			if (y < ymin) ymin = y;
-			if (ymax < y) ymax = y;
+			if (!next_visited)
+			{
+				++nb_dest;
+				int x = locs[i].x;
+				if (x < xmin) xmin = x;
+				if (xmax < x) xmax = x;
+				int y = locs[i].y;
+				if (y < ymin) ymin = y;
+				if (ymax < y) ymax = y;
+			}
 
 			bool in_list = next.in == search_counter + 1;
 			t.in = search_counter + 1;
@@ -250,6 +254,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 	// Build the routes for every map_location that we reached.
 	// The ordering must be compatible with map_location::operator<.
+	destinations.reserve(nb_dest);
 	for (int x = xmin; x <= xmax; ++x) {
 		for (int y = ymin; y <= ymax; ++y)
 		{
