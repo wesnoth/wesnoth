@@ -696,7 +696,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	}
 }
 
-void mouse_handler::show_attack_options(unit_map::const_iterator u)
+void mouse_handler::show_attack_options(unit_map::const_iterator /*u*/)
 {
 #if 0
 	team& current_team = teams_[team_num_-1];
