@@ -25,13 +25,13 @@
 
 #include "../global.hpp"
 
-#include "ai_interface.hpp"
 #include "game_info.hpp"
 #include <map>
 #include <stack>
 #include <vector>
 #include <deque>
 
+class ai_interface;
 
 /**
  * Base class that holds the AI and current AI parameters.
