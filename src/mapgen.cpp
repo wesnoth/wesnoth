@@ -613,7 +613,7 @@ static std::string generate_name(const unit_race& name_generator, const std::str
 
 // "flood fill" a tile name to adjacent tiles of certain terrain
 static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
-	const t_translation::t_list& tile_types, const terrain_map& terrain,
+	const t_translation::t_match& tile_types, const terrain_map& terrain,
 	unsigned width, unsigned height,
 	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
 	map_location adj[6];
@@ -629,7 +629,7 @@ static void flood_name(const map_location& start, const std::string& name, std::
 
 		const t_translation::t_terrain terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
 		const location loc(adj[n].x, adj[n].y);
-		if( (std::count(tile_types.begin(), tile_types.end(), terr) > 0) && (tile_names.find(loc) == tile_names.end())) {
+		if((t_translation::terrain_matches(terr, tile_types)) && (tile_names.find(loc) == tile_names.end())) {
 			tile_names.insert(std::pair<location, std::string>(loc, name));
 			//labeling decision: this is result of trial and error on what looks best in game
 			if (label_count % 6 == 0) { //ensure that labels do not occur more often than every 6 recursions
@@ -1206,30 +1206,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	 *we name these now that everything else is placed (as e.g., placing
 	 * roads could split a forest)
 	 */
-	t_translation::t_list
-		hill = t_translation::t_list(1, t_translation::HILL),
-		swamp    = t_translation::t_list(),
-		forest   = t_translation::t_list(1, t_translation::FOREST),
-		mountain = t_translation::t_list(1, t_translation::MOUNTAIN);
-
-	//additional forests
-	const t_translation::t_terrain forest2("Gs","Fp"); //savannah forest
-	const t_translation::t_terrain forest3("Gg","Fet"); //great tree forest
-	const t_translation::t_terrain forest4("Aa","Fpa"); //snow forest
-	const t_translation::t_terrain forest5("Gs","Ft"); //tropical forest
-	forest.push_back(forest2);
-	forest.push_back(forest3);
-	forest.push_back(forest4);
-	forest.push_back(forest5);
-	//additional mountains
-	const t_translation::t_terrain mountain2("Md"); //mountain (mountain)
-	mountain.push_back(mountain2);
-	//additional hills
-	const t_translation::t_terrain hill2("Ha"); //snow hills
-	hill.push_back(hill2);
-	const t_translation::t_terrain swmp("Ss"); //swamp
-	swamp.push_back(swmp);
-
 	for (x = width / 3; x < (width / 3)*2; x++) {
 		for (y = height / 3; y < (height / 3) * 2;y++) {
 		//check the terrain of the tile
@@ -1237,7 +1213,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const t_translation::t_terrain terr = terrain[x][y];
 		std::string name, base_name;
 		std::set<std::string> used_names;
-		if (std::count(mountain.begin(), mountain.end(), terr) > 0) {
+		if (t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
 			//name every 15th mountain
 			if ((rand()%15) == 0) {
 				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
@@ -1247,20 +1223,19 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				mountain_names.insert(std::pair<location, std::string>(loc, base_name));
 			}
 		}
-		else if (std::count(forest.begin(), forest.end(), terr) > 0) {
+		else if (t_translation::terrain_matches(terr, t_translation::ALL_FORESTS)) {
 			//if the forest tile is not named yet, name it
 			const std::map<location, std::string>::const_iterator forest_name = forest_names.find(loc);
 			if(forest_name == forest_names.end()) {
 				for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 					name = generate_name(name_generator, "forest_name", &base_name);
 				}
-				//labels->insert(std::pair<map_location, std::string>(loc, name));
 				forest_names.insert(std::pair<location, std::string>(loc, base_name));
 				// name all connected forest tiles accordingly
-				flood_name(loc, base_name, forest_names, forest, terrain, width, height, 0, labels, name);
+				flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, width, height, 0, labels, name);
 			}
 		}
-		else if (std::count(swamp.begin(), swamp.end(), terr) > 0) {
+		else if (t_translation::terrain_matches(terr, t_translation::ALL_SWAMPS)) {
 			//if the swamp tile is not named yet, name it
 			const std::map<location, std::string>::const_iterator swamp_name = swamp_names.find(loc);
 			if(swamp_name == swamp_names.end()) {
@@ -1269,7 +1244,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 				swamp_names.insert(std::pair<location, std::string>(loc, base_name));
 				// name all connected swamp tiles accordingly
-				flood_name(loc, base_name, swamp_names, swamp, terrain, width, height, 0, labels, name);
+				flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, width, height, 0, labels, name);
 			}
 		}
 

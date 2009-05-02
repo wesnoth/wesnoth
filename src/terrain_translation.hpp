@@ -135,6 +135,11 @@ namespace t_translation {
 	extern const t_terrain STAR;	// *
 	extern const t_terrain BASE;	// references the base terrain in movement/defense aliases
 
+	extern const t_match ALL_FORESTS;
+	extern const t_match ALL_HILLS;
+	extern const t_match ALL_MOUNTAINS; //excluding impassable mountains
+	extern const t_match ALL_SWAMPS;
+
 	/**
 	 * Reads a single terrain from a string.
 	 *

@@ -140,6 +140,11 @@ const t_terrain NOT = string_to_number_("!");
 const t_terrain STAR = string_to_number_("*");
 const t_terrain BASE = string_to_number_("_bas");
 
+const t_match ALL_FORESTS("F*,*^F*");
+const t_match ALL_HILLS("!,*^V*,!,H*");
+const t_match ALL_MOUNTAINS("!,*^V*,!,M*"); //excluding impassable mountains
+const t_match ALL_SWAMPS("!,*^V*,*^B*,!,S*"); //excluding swamp villages and bridges
+
 /***************************************************************************************/
 
 t_terrain::t_terrain(const std::string& b) :
