@@ -111,7 +111,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 	if (update) {
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
-			if (!current_paths_.routes.empty() && !show_partial_move_) {
+			if (!current_paths_.destinations.empty() && !show_partial_move_) {
 				unit_map::iterator u = find_unit(selected_hex_);
 				if(selected_hex_.valid() && u != units_.end() ) {
 					// reselect the unit without firing events (updates current_paths_)
@@ -155,7 +155,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			   && !selected_unit->second.incapacitated() && !browse) {
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-				} else if (mouseover_unit==units_.end() && current_paths_.routes.count(new_hex)) {
+				}
+				else if (mouseover_unit==units_.end() &&
+				         current_paths_.destinations.contains(new_hex))
+				{
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
 					// selecte unit can't attack or move there
@@ -189,9 +192,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
 			gui().set_route(NULL);
-		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
-		   map_.on_board(new_hex)) {
-
+		}
+		else if (!current_paths_.destinations.empty() &&
+		         map_.on_board(selected_hex_) && map_.on_board(new_hex))
+		{
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(selected_unit->second,
@@ -205,7 +209,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		unit_map::iterator un = mouseover_unit;
 
-		if(un != units_.end() && current_paths_.routes.empty() && !gui().fogged(un->first)) {
+		if (un != units_.end() && current_paths_.destinations.empty() &&
+		    !gui().fogged(un->first))
+		{
 			if (un->second.side() != team_num_) {
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
@@ -280,7 +286,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 			continue;
 		}
 
-		if(current_paths_.routes.count(adj[n])) {
+		if (current_paths_.destinations.contains(adj[n]))
+		{
 			static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
 			unsigned int difference = abs(int(preferred - n));
 			if(difference > NDIRECTIONS/2) {
@@ -691,6 +698,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 void mouse_handler::show_attack_options(unit_map::const_iterator u)
 {
+#if 0
 	team& current_team = teams_[team_num_-1];
 
 	if(u == units_.end() || u->second.attacks_left() == 0)
@@ -702,6 +710,7 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
+#endif
 }
 
 bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)

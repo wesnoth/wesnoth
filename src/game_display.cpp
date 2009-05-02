@@ -741,11 +741,9 @@ void game_display::highlight_reach(const paths &paths_list)
 
 void game_display::highlight_another_reach(const paths &paths_list)
 {
-	paths::routes_map::const_iterator r;
-
 	// Fold endpoints of routes into reachability map.
-	for (r = paths_list.routes.begin(); r != paths_list.routes.end(); ++r) {
-		reach_map_[r->first]++;
+	foreach (const paths::step &dest, paths_list.destinations) {
+		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
 }

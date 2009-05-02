@@ -150,7 +150,7 @@ struct comp {
 
 static void find_routes(const gamemap& map, const unit_map& units,
 		const unit& u, const map_location& loc,
-		int move_left, paths::routes_map& routes,
+		int move_left, paths::dest_vect &destinations,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
@@ -173,7 +173,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	indexer index(map.w(), map.h());
 	comp node_comp(nodes);
 
-	int xmin = map.w(), xmax = 0, ymin = map.h(), ymax = 0;
+	int xmin = loc.x, xmax = loc.x, ymin = loc.y, ymax = loc.y;
 
 	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
 	std::vector<int> pq;
@@ -247,38 +247,67 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			}		
 		}	
 	}
-	
-	// build the routes for every map_location that we reached 
-	for (int y = ymin; y <= ymax; ++y) {
-		for (int x = xmin; x <= xmax; ++x)
+
+	// Build the routes for every map_location that we reached.
+	// The ordering must be compatible with map_location::operator<.
+	for (int x = xmin; x <= xmax; ++x) {
+		for (int y = ymin; y <= ymax; ++y)
 		{
 			const node &n = nodes[index(map_location(x, y))];
 			if (n.in - search_counter > 1u) continue;
-			paths::route route;
-			route.move_left = n.movement_left + n.turns_left * total_movement;
-
-			// the ai expects that the destination map_location not actually be in the route...
-			if (n.prev.valid())
-			{
-				for (const node *curr = &nodes[index(n.prev)];
-				     curr->prev.valid(); curr = &nodes[index(curr->prev)])
-				{
-					assert(curr->curr.valid());
-					route.steps.push_back(curr->curr);
-				}
-			}
-			route.steps.push_back(loc);
-			std::reverse(route.steps.begin(), route.steps.end());
-			routes[n.curr] = route;
+			paths::step s =
+				{ n.curr, n.prev, n.movement_left + n.turns_left * total_movement };
+			destinations.push_back(s);
 		}
 	}
+}
+
+paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
+{
+	size_t sz = size(), pos = 0;
+	while (sz)
+	{
+		if ((*this)[pos + sz / 2].curr < loc) {
+			pos = pos + sz / 2 + 1;
+			sz = sz - sz / 2 - 1;
+		} else sz = sz / 2;
+	}
+
+	const_iterator i_end = end(), i = begin() + pos;
+	if (i != i_end && i->curr != loc) i = i_end;
+	return i;
+}
+
+/**
+ * Returns the path going from the source point (included) to the
+ * destination point @a j (excluded).
+ */
+std::vector<map_location> paths::dest_vect::get_path(const const_iterator &j) const
+{
+	std::vector<map_location> path;
+	if (!j->prev.valid()) {
+		path.push_back(j->curr);
+	} else {
+		const_iterator i = j;
+		do {
+			i = find(i->prev);
+			assert(i != end());
+			path.push_back(i->curr);
+		} while (i->prev.valid());
+	}
+	std::reverse(path.begin(), path.end());
+	return path;
+}
+
+bool paths::dest_vect::contains(const map_location &loc) const
+{
+	return find(loc) != end();
 }
 
 paths::paths(gamemap const &map, unit_map const &units,
 		map_location const &loc, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
-		int additional_turns, bool see_all, bool ignore_units) :
-	routes()
+		int additional_turns, bool see_all, bool ignore_units)
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
@@ -290,9 +319,8 @@ paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
-	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,units,i->second,loc,
-		i->second.movement_left(),routes,teams,force_ignore_zoc,
+		i->second.movement_left(), destinations, teams, force_ignore_zoc,
 		allow_teleport,additional_turns,viewing_team,
 		see_all, ignore_units);
 }
@@ -460,19 +488,4 @@ dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
 {
 	return 0.0;
-}
-
-std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
-	outstream << "\n[route]\n\tsteps=\"";
-	bool first_loop = true;
-	foreach(map_location const& loc, rt.steps) {
-		if(first_loop) {
-			first_loop = false;
-		} else {
-			outstream << "->";
-		}
-		outstream << '(' << loc << ')';
-	}
-	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n[/route]";
-	return outstream;
 }

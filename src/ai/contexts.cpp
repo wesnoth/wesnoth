@@ -249,31 +249,25 @@ map_location ai_readwrite_context::move_unit_partial(map_location from, map_loca
 
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
-		std::map<map_location,paths::route>::iterator rt = p.routes.begin();
-		for(; rt != p.routes.end(); ++rt) {
-			if(rt->first == to) {
-				break;
-			}
-		}
+		paths::dest_vect::const_iterator rt = p.destinations.find(to);
+		if (rt != p.destinations.end())
+		{
+			u_it->second.set_movement(rt->move_left);
 
-		if(rt != p.routes.end()) {
-			if (static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()) {
-		  		LOG_AI<<"Trying to move unit without enough move points left\n";
-			}
-			u_it->second.set_movement(rt->second.move_left);
-
-			steps = rt->second.steps;
-
-			while(steps.empty() == false && get_info().units.find(to) != get_info().units.end() && from != to){
+			while (rt != p.destinations.end() &&
+			       get_info().units.find(to) != get_info().units.end() && from != to)
+			{
 				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
 				LOG_AI << "\t" << get_info().units.find(to)->second.underlying_id() <<" already on " << to << "\n";
-				LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
-				to = *(steps.end()-1);
-				steps.pop_back();
+				LOG_AI <<"\tremoving last step\n";
+				to = rt->prev;
+				rt = p.destinations.find(to);
 				LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
 			}
 
-			if(steps.size()) { // First step is starting hex
+			if (rt != p.destinations.end()) // First step is starting hex
+			{
+				steps = p.destinations.get_path(rt);
 				unit_map::const_iterator utest=get_info().units.find(*(steps.begin()));
 				if(utest != get_info().units.end() && current_team().is_enemy(utest->second.side())){
 					ERR_AI << "AI tried to move onto existing enemy unit at" << *steps.begin() << '\n';
@@ -441,10 +435,10 @@ void ai_readonly_context::calculate_moves(const unit_map& units, std::map<map_lo
 	}
 
 	for(std::map<map_location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
-		for(paths::routes_map::iterator rtit =
-		    m->second.routes.begin(); rtit != m->second.routes.end(); ++rtit) {
+		foreach (const paths::step &dest, m->second.destinations)
+		{
 			const map_location& src = m->first;
-			const map_location& dst = rtit->first;
+			const map_location& dst = dest.curr;
 
 			if(remove_destinations != NULL && remove_destinations->count(dst) != 0) {
 				continue;

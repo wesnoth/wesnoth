@@ -1994,8 +1994,8 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
     map_location destination = dst;
 
     //check if destination is within unit's reach, if not, calculate where to move
-    if( path->second.routes.count(dst) == 0) {
-
+	if (!path->second.destinations.contains(dst))
+	{
             std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
             //destination is too far, check where unit can go
 
@@ -2120,7 +2120,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
                             std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
 
-                            if( path->second.routes.count(attack->src()) == 0) {
+				if (!path->second.destinations.contains(attack->src())) {
                                 ERR_AI << "IMPOSSIBLE ATTACK ORDER\n";
                                 continue;
                             }

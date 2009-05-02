@@ -87,7 +87,7 @@ struct cost_calculator
  */
 struct paths
 {
-	paths() : routes() {}
+	paths() {}
 
 	// Construct a list of paths for the unit at loc.
 	// - force_ignore_zocs: find the path ignoring ZOC entirely,
@@ -104,16 +104,20 @@ struct paths
 		 const team &viewing_team,int additional_turns = 0,
 		 bool see_all = false, bool ignore_units = false);
 
-	/** Structure which holds a single route between one location and another. */
-	struct route
+	struct step
 	{
-		route() : steps(), move_left(0) {}
-		std::vector<map_location> steps;
-		int move_left; // movement unit will have left at end of the route.
+		map_location curr, prev;
+		int move_left;
 	};
 
-	typedef std::map<map_location,route> routes_map;
-	routes_map routes;
+	/** Ordered vector of possible destinations. */
+	struct dest_vect : std::vector<step>
+	{
+		const_iterator find(const map_location &) const;
+		bool contains(const map_location &) const;
+		std::vector<map_location> get_path(const const_iterator &) const;
+	};
+	dest_vect destinations;
 };
 
 /** Structure which holds a single route and waypoints for special events. */
@@ -134,9 +138,6 @@ struct marked_route
 	std::vector<map_location> steps;
 	waypoint_map waypoints;
 };
-
-
-//std::ostream& operator << (std::ostream& os, const paths::route& rt);
 
 /** Structure which holds a single route between one location and another. */
 struct plain_route

@@ -336,23 +336,22 @@ bool ai::multistep_move_possible(const location& from,
 
 				LOG_AI << "found leader moves..\n";
 
-				int move_left = 0;
-
 				// See if the unit can make it to 'via', and if it can,
 				// how much movement it will have left when it gets there.
-				const paths::routes_map::const_iterator itor = moves->second.routes.find(via);
-				if(itor != moves->second.routes.end()) {
-					move_left = itor->second.move_left;
-					LOG_AI << "can make it to keep with " << move_left << " movement left\n";
+				paths::dest_vect::const_iterator itor =
+					moves->second.destinations.find(via);
+				if (itor != moves->second.destinations.end())
+				{
+					LOG_AI << "Can make it to keep with " << itor->move_left << " movement left.\n";
 					unit temp_unit(i->second);
-					temp_unit.set_movement(move_left);
+					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
 					const paths unit_paths(map_,units_,via,teams_,false,false,current_team());
 
-					LOG_AI << "found " << unit_paths.routes.size() << " moves for temp leader\n";
+					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
 					// See if this leader could make it back to the keep.
-					if(unit_paths.routes.count(to) != 0) {
+					if (unit_paths.destinations.contains(to)) {
 						LOG_AI << "can make it back to the keep\n";
 						return true;
 					}
@@ -589,8 +588,6 @@ void ai::do_move()
 	invalidate_defensive_position_cache();
 
 	raise_user_interact();
-
-	typedef paths::route route;
 
 	typedef std::map<location,paths> moves_map;
 	moves_map possible_moves, enemy_possible_moves;
@@ -1584,12 +1581,12 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
 	map_location loc;
-	for(std::vector<map_location>::const_iterator itor = route.steps.begin();
-			itor != route.steps.end(); ++itor) {
-
-		if(leader_paths.routes.count(*itor) == 1 &&
-				power_projection(*itor,enemy_dstsrc) < double(leader->second.hitpoints()/2)) {
-			loc = *itor;
+	foreach (const map_location &l, route.steps)
+	{
+		if (leader_paths.destinations.contains(l) &&
+		    power_projection(l, enemy_dstsrc) < double(leader->second.hitpoints() / 2))
+		{
+			loc = l;
 		}
 	}
 
@@ -1629,13 +1626,14 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 				int current_distance = distance_between(i->first,leader->first);
 				location current_loc;
 
-				for(paths::routes_map::const_iterator j = leader_paths.routes.begin();
-						j != leader_paths.routes.end(); ++j) {
-
-					const int distance = distance_between(i->first,j->first);
-					if(distance < current_distance && is_accessible(j->first,enemy_dstsrc) == false) {
+				foreach (const paths::step &dest, leader_paths.destinations)
+				{
+					const int distance = distance_between(i->first, dest.curr);
+					if (distance < current_distance &&
+					    !is_accessible(dest.curr, enemy_dstsrc))
+					{
 						current_distance = distance;
-						current_loc = j->first;
+						current_loc = dest.curr;
 					}
 				}
 
@@ -1649,7 +1647,8 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 					const paths p(map_, temp_units, current_loc, teams_, false,
 					              false, current_team());
 
-					if(p.routes.count(i->first)) {
+					if (p.destinations.contains(i->first))
+					{
 						move_unit(leader->first,current_loc,possible_moves);
 						// FIXME: suokko's r29531 included this line
 						// leader->second.set_movement(0);
@@ -1692,10 +1691,10 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 			for(size_t n = 0; n != 6; ++n) {
 				// Vacate to the first location found that is on the board,
 				// our leader can move to, and no enemies can reach.
-				if(map_.on_board(adj[n]) &&
-						leader_paths.routes.count(adj[n]) != 0 &&
-						is_accessible(adj[n],enemy_dstsrc) == false) {
-
+				if (map_.on_board(adj[n]) &&
+				    leader_paths.destinations.contains(adj[n]) &&
+				    !is_accessible(adj[n], enemy_dstsrc))
+				{
 					if (move_unit(keep,adj[n],possible_moves)!=keep) {
 						return;
 					}
@@ -1738,7 +1737,7 @@ bool ai::leader_can_reach_keep()
 	const paths leader_paths(map_,units_,leader->first,teams_,false,false,current_team());
 
 
-	return leader_paths.routes.count(start_pos) > 0;
+	return leader_paths.destinations.contains(start_pos);
 }
 
 int ai::rate_terrain(const unit& u, const map_location& loc)

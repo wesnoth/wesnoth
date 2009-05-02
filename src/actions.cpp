@@ -19,6 +19,7 @@
 
 #include "ai/testing.hpp"
 #include "attack_prediction.hpp"
+#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -2102,9 +2103,8 @@ namespace {
 		}
 
 		paths p(map,units,loc,teams,true,false,teams[team],0,false,true);
-		for(paths::routes_map::const_iterator i = p.routes.begin();
-				i != p.routes.end(); ++i) {
-			clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
+		foreach (const paths::step &dest, p.destinations) {
+			clear_shroud_loc(map, teams[team], dest.curr, &cleared_locations);
 		}
 
 		// clear_shroud_loc is supposed not introduce repetition in cleared_locations

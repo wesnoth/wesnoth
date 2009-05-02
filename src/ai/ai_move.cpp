@@ -21,6 +21,7 @@
 #include "../global.hpp"
 
 #include "ai.hpp"
+#include "foreach.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
@@ -876,11 +877,12 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 	map_location const* best_occupied_keep = &map_location::null_location;
 	double cost_to_best_occupied_keep = 0.0;
 
-	for(std::map<location,paths::route>::const_iterator rt = leader_paths.routes.begin(); rt != leader_paths.routes.end(); ++rt) {
-		const map_location& loc = rt->first;
+	foreach (const paths::step &dest, leader_paths.destinations)
+	{
+		const map_location &loc = dest.curr;
 		if (keeps().find(loc)!=keeps().end()){
 			//@todo 1.7 move_left for 1-turn-moves is really "cost_to_get_there", it is just not renamed there yet. see r34430 for more detais.
-			const int cost_to_loc = rt->second.move_left;
+			const int cost_to_loc = dest.move_left;
 			if (units_.count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location)||(cost_to_loc<cost_to_best_free_keep)){
 					best_free_keep = &loc;
@@ -923,8 +925,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 	// If the leader is not on keep, move him there.
 	if(leader->first != keep) {
-		const paths::routes_map::const_iterator itor = leader_paths.routes.find(keep);
-		if(itor != leader_paths.routes.end() && units_.count(keep) == 0) {
+		if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
 			move_unit(leader->first,keep,possible_moves);
 		} else {
 			// Make a map of the possible locations the leader can move to,
@@ -934,12 +935,11 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
 			const int current_distance = distance_between(leader->first,keep);
-			for(paths::routes_map::const_iterator i = leader_paths.routes.begin();
-			    i != leader_paths.routes.end(); ++i) {
-
-				const int new_distance = distance_between(i->first,keep);
+			foreach (const paths::step &dest, leader_paths.destinations)
+			{
+				const int new_distance = distance_between(dest.curr,keep);
 				if(new_distance < current_distance) {
-					moves_toward_keep.insert(std::pair<int,map_location>(new_distance,i->first));
+					moves_toward_keep.insert(std::make_pair(new_distance, dest.curr));
 			 	}
 	 		}
 
