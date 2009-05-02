@@ -159,7 +159,7 @@ private:
 	const map_location& from_;
 	const map_location& to_;
 	bool remove_movement_;
-	paths::route route_;
+	plain_route route_;
 };
 
 class ai_recruit_result : public ai_action_result {

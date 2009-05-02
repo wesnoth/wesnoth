@@ -107,7 +107,7 @@ public:
 }
 
 
-paths::route a_star_search(const map_location& src, const map_location& dst,
+plain_route a_star_search(const map_location& src, const map_location& dst,
                             double stop_at, const cost_calculator *calc, const size_t width,
                             const size_t height, const std::set<map_location>* teleports_ptr) {
 	//----------------- PRE_CONDITIONS ------------------
@@ -122,8 +122,8 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 
 	if (calc->cost(src,dst, 0) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
-		paths::route locRoute;
-		locRoute.move_left = int(calc->getNoPathValue());
+		plain_route locRoute;
+		locRoute.move_cost = int(calc->getNoPathValue());
 		return locRoute;
 	}
 
@@ -180,12 +180,11 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 			}
 		}
 	}
-	
-	
-	paths::route route;
+
+	plain_route route;
 	if (nodes[index(dst)].g < stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
-		route.move_left = (int)nodes[index(dst)].g;
+		route.move_cost = (int)nodes[index(dst)].g;
 		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);
 		}
@@ -193,11 +192,10 @@ paths::route a_star_search(const map_location& src, const map_location& dst,
 		std::reverse(route.steps.begin(), route.steps.end());	
 	} else {	
 		LOG_PF << "aborted a* search  " << "\n";
-		route.move_left = (int)calc->getNoPathValue();
+		route.move_cost = (int)calc->getNoPathValue();
 	}
 	
 	return route;
-		
 }
 
 static void get_tiles_radius_internal(const map_location& a, size_t radius,

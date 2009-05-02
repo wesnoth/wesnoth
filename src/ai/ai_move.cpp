@@ -437,7 +437,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		assert(map_.on_board(ittg->loc));
 	}
 
-	paths::route best_route;
+	plain_route best_route;
 	unit_map::iterator best = units_.end();
 	double best_rating = 0.1;
 
@@ -480,32 +480,32 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		// to it seeming futile. Be very cautious about changing this value,
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
-		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
+		plain_route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
-		if (cur_route.move_left == cost_calc.getNoPathValue()) {
+		if (cur_route.steps.empty()) {
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg->value << "/" << best_rating << "\n";
 			continue;
 		}
 
-		if (cur_route.move_left < locStopValue)
+		if (cur_route.move_cost < locStopValue)
 		{
 			// if this unit can move to that location this turn, it has a very very low cost
 			typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
 			std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
 			while (locRange.first != locRange.second) {
 				if (locRange.first->second == u->first) {
-					cur_route.move_left = 0;
+					cur_route.move_cost = 0;
 				}
 				++locRange.first;
 			}
 		}
 
-		double rating = tg->value/std::max<int>(1,cur_route.move_left);
+		double rating = tg->value / std::max<int>(1, cur_route.move_cost);
 
 		//for 'support' targets, they are rated much higher if we can get there within two turns,
 		//otherwise they are worthless to go for at all.
 		if(tg->type == target::SUPPORT) {
-			if(cur_route.move_left <= u->second.movement_left()*2) {
+			if(cur_route.move_cost <= u->second.movement_left()*2) {
 				rating *= 10.0;
 			} else {
 				rating = 0.0;
@@ -538,7 +538,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			}
 		}
 
-		LOG_AI << tg->value << "/" << cur_route.move_left << " = " << rating << "\n";
+		LOG_AI << tg->value << "/" << cur_route.move_cost << " = " << rating << "\n";
 		if(best_target == targets.end() || rating > best_rating) {
 			best_rating = rating;
 			best_target = tg;
@@ -585,27 +585,27 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 
 			const move_cost_calculator calc(u->second, map_, units_, u->first, dstsrc, enemy_dstsrc);
 			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
-			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
+			plain_route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
-			if (cur_route.move_left < locStopValue)
+			if (cur_route.move_cost < locStopValue)
 			{
 				// if this unit can move to that location this turn, it has a very very low cost
 				typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
 				std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
 				while (locRange.first != locRange.second) {
 					if (locRange.first->second == u->first) {
-						cur_route.move_left = 0;
+						cur_route.move_cost = 0;
 					}
 					++locRange.first;
 				}
 			}
 
-			double rating = best_target->value/std::max<int>(1,cur_route.move_left);
+			double rating = best_target->value / std::max<int>(1, cur_route.move_cost);
 
 			//for 'support' targets, they are rated much higher if we can get there within two turns,
 			//otherwise they are worthless to go for at all.
 			if(best_target->type == target::SUPPORT) {
-				if(cur_route.move_left <= u->second.movement_left()*2) {
+				if (cur_route.move_cost <= u->second.movement_left()*2) {
 					rating *= 10.0;
 				} else {
 					rating = 0.0;
@@ -857,7 +857,7 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 		const location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->second.total_movement()) {
 			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_);
-			const paths::route& rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
+			plain_route rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}

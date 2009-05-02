@@ -322,7 +322,7 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 			allowed_teleports.insert(*i);
 		}
 	}
-	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+	plain_route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 	return mark_route(route, un->second, viewing_team(), units_,teams_,map_);
 }
 

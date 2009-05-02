@@ -1057,7 +1057,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 
 		// Search a path out for the road
-		const paths::route rt = a_star_search(src, dst, 10000.0, &calc, width, height);
+		plain_route rt = a_star_search(src, dst, 10000.0, &calc, width, height);
 
 		std::string road_base_name;
 		const std::string& name = generate_name(name_generator, "road_name", &road_base_name);

@@ -1092,7 +1092,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 					break;
 				}
 
-				paths::route route = a_star_search(src, dst, 10000, &calc,
+				plain_route route = a_star_search(src, dst, 10000, &calc,
 					game_map->w(), game_map->h());
 
 				if (route.steps.size() == 0) {

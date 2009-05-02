@@ -325,7 +325,7 @@ void cave_map_generator::place_passage(const passage& p)
 
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 
-	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
+	plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
 
 	const size_t width = std::max<size_t>(1,atoi(p.cfg["width"].c_str()));
 

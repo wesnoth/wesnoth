@@ -136,9 +136,18 @@ struct marked_route
 };
 
 
-std::ostream& operator << (std::ostream& os, const paths::route& rt);
+//std::ostream& operator << (std::ostream& os, const paths::route& rt);
 
-paths::route a_star_search(map_location const &src, map_location const &dst,
+/** Structure which holds a single route between one location and another. */
+struct plain_route
+{
+	plain_route() : steps(), move_cost(0) {}
+	std::vector<map_location> steps;
+	/** Movement cost for reaching the end of the route. */
+	int move_cost;
+};
+
+plain_route a_star_search(map_location const &src, map_location const &dst,
                            double stop_at, cost_calculator const *costCalculator,
                            const size_t parWidth, const size_t parHeight,
                            std::set<map_location> const *teleports = NULL);
@@ -146,7 +155,7 @@ paths::route a_star_search(map_location const &src, map_location const &dst,
 /**
  * Marks a route @a rt with waypoints assuming that a @unit u travels along it.
  */
-marked_route mark_route(const paths::route &rt, const unit &u,
+marked_route mark_route(const plain_route &rt, const unit &u,
 	const team &viewing_team, const unit_map &units,
 	const std::vector<team> &teams, const gamemap &map);
 

@@ -113,7 +113,7 @@ public:
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
 
         std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
-        paths::route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
+	plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
 
 	void invalidate_move_maps() const { move_maps_valid_ = false; }
 

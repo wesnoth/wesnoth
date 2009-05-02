@@ -297,7 +297,7 @@ paths::paths(gamemap const &map, unit_map const &units,
 		see_all, ignore_units);
 }
 
-marked_route mark_route(const paths::route &rt, const unit &u,
+marked_route mark_route(const plain_route &rt, const unit &u,
 	const team &viewing_team, const unit_map &units,
 	const std::vector<team> &teams, const gamemap &map)
 {

@@ -1381,12 +1381,12 @@ void ai::analyze_potential_recruit_movements()
 
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
-			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc,
+			plain_route route = a_star_search(start, t->loc, 100.0, &calc,
 					get_info().map.w(), get_info().map.h());
 
-			if(route.steps.empty() == false) {
-				LOG_AI << "made it: " << route.move_left << "\n";
-				cost += route.move_left;
+			if (!route.steps.empty()) {
+				LOG_AI << "made it: " << route.move_cost << "\n";
+				cost += route.move_cost;
 				++targets_reached;
 			} else {
 				LOG_AI << "failed\n";
@@ -1570,7 +1570,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	do_recruitment();
 
 	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
-	const paths::route route = a_star_search(leader->first, dst, 1000.0, &calc,
+	plain_route route = a_star_search(leader->first, dst, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";

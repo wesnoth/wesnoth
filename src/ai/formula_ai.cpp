@@ -696,7 +696,7 @@ private:
 
                 std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-                paths::route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+		plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
@@ -747,7 +747,7 @@ private:
 
                 emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
 
-                paths::route route = a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
+                plain_route route = a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
@@ -1915,8 +1915,10 @@ bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_
 	return res;
 }
 
-paths::route formula_ai::shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const {
-
+plain_route formula_ai::shortest_path_calculator(const map_location &src,
+	const map_location &dst, unit_map::iterator &unit_it,
+	std::set<map_location> & allowed_teleports) const
+{
     map_location destination = dst;
 
     ::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
@@ -1960,7 +1962,7 @@ paths::route formula_ai::shortest_path_calculator(const map_location& src, const
         destination = res;
     }
 
-    paths::route route = a_star_search(src, destination, 1000.0, &calc,
+	plain_route route = a_star_search(src, destination, 1000.0, &calc,
             get_info().map.w(), get_info().map.h(), &allowed_teleports);
 
     return route;
@@ -1997,7 +1999,7 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
             std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
             //destination is too far, check where unit can go
 
-             paths::route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
+		plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
             if( route.steps.size() == 0 ) {
                 emergency_path_calculator em_calc(unit_it->second, get_info().map);
