@@ -145,12 +145,6 @@ paths::route a_star_search(map_location const &src, map_location const &dst,
 
 /**
  * Marks a route @a rt with waypoints assuming that a @unit u travels along it.
-
- * Function which, given a unit @a u and a route @a rt the unit can move on,
- * will return the number of turns it will take the unit to traverse the route.
- * adds rt.turn_waypoints (and also one at "end of path").
- * move_left is updated, but to 0 if not reachable in more than 1 turn
- * and to -1 if never reachable.
  */
 marked_route mark_route(const paths::route &rt, const unit &u,
 	const team &viewing_team, const unit_map &units,
