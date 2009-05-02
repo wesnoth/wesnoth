@@ -2492,7 +2492,7 @@ variant formula_ai::get_value(const std::string& key) const
 		return villages_from_set(get_info().map.villages(), &current_team().villages());
 	}
 
-	return ai_interface::get_value(key);
+	return ai_readonly_context::get_value(key);
 }
 
 void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
@@ -2522,7 +2522,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 
-	ai_interface::get_inputs(inputs);
+	ai_readonly_context::get_inputs(inputs);
 }
 
 variant formula_ai::get_keeps() const

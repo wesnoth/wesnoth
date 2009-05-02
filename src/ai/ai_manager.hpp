@@ -26,6 +26,7 @@
 #include "../global.hpp"
 
 #include "ai_interface.hpp"
+#include "game_info.hpp"
 #include <map>
 #include <stack>
 #include <vector>

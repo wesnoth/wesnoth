@@ -20,16 +20,33 @@
 #ifndef AI_AI_INTERFACE_HPP_INCLUDED
 #define AI_AI_INTERFACE_HPP_INCLUDED
 
-#include "contexts.hpp"
 #include "../formula_callable.hpp"
 
-class ai_interface : public game_logic::formula_callable, public ai_readwrite_context {
+class side_context {
+public:
+
+	side_context(unsigned int side) : side_(side) {}
+
+	virtual ~side_context() {}
+
+	/** get the 1-based side number which is controlled by this AI */
+	unsigned int get_side() const { return side_;}
+
+        /** Set the side */
+        virtual void set_side(unsigned int side) { side_ = side; }
+
+private:
+	unsigned int side_;
+
+};
+
+
+class ai_interface : public side_context {
 public:
 	/**
 	 * The constructor.
 	 */
-	ai_interface(int side, bool master) : ai_readwrite_context(side,master) {
-		add_ref(); //this class shouldn't be reference counted.
+	ai_interface(unsigned int side, bool master) : side_context(side), master_(master) {
 	}
 	virtual ~ai_interface() {}
 
@@ -46,9 +63,18 @@ public:
 	virtual void new_turn() {
 	}
 
-protected:
-	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-	virtual variant get_value(const std::string& key) const;
+	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
+	bool get_master() const { return master_;}
+
+        /** Evaluate */
+        virtual std::string evaluate(const std::string& /*str*/)
+			{ return "evaluate command not implemented by this AI"; }
+
+	/** Describe self*/
+	virtual std::string describe_self() const;
+
+private:
+	bool master_;
 };
 
 #endif

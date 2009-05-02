@@ -22,7 +22,6 @@
 #define AI_FORMULA_AI_HPP_INCLUDED
 
 #include "ai.hpp"
-#include "ai_interface.hpp"
 #include "../callable_objects.hpp"
 #include "../formula.hpp"
 #include "../formula_fwd.hpp"

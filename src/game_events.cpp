@@ -24,6 +24,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

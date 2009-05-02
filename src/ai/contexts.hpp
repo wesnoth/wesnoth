@@ -24,10 +24,11 @@
 class game_display;
 class gamemap;
 
-#include "game_display.hpp"
+#include "ai_interface.hpp"
 #include "game_info.hpp"
-#include "../pathfind.hpp"
+#include "../game_display.hpp"
 #include "../gamestatus.hpp"
+#include "../pathfind.hpp"
 #include "../playturn.hpp"
 
 class ai_attack_result;
@@ -35,7 +36,7 @@ class ai_move_result;
 class ai_recruit_result;
 class ai_stopunit_result;
 
-class ai_readonly_context {
+class ai_readonly_context: public game_logic::formula_callable, public ai_interface {
 public:
 	/** A convenient typedef for the often used 'location' object. */
 	typedef map_location location;
@@ -46,19 +47,11 @@ public:
 	/** The standard way in which a map of possible movement routes to location is recorded*/
 	typedef std::map<location,paths> moves_map;
 
-	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
-	bool get_master() const { return master_;}
-
-	/** get the 1-based side number which is controlled by this AI */
-	unsigned int get_side() const { return side_;}
-
-        /** Set the side */
-        virtual void set_side(unsigned int side) { side_ = side; }
-
 	/**
 	 * The constructor.
 	 */
-	ai_readonly_context(unsigned int side, bool master) : side_(side), master_(master){
+	ai_readonly_context(unsigned int side, bool master) : ai_interface(side,master) {
+		add_ref(); //this class shouldn't be reference counted.
 	}
 	virtual ~ai_readonly_context() {}
 
@@ -71,8 +64,6 @@ public:
 	/** Display a debug message as a chat message. */
 	void log_message(const std::string& msg);
 
-	/** Describe self*/
-	virtual std::string describe_self() const;
 
 	/**
 	 * Check if it is possible to attack enemy defender using our unit attacker from attackers current location,
@@ -176,9 +167,10 @@ public:
 	 */
 	void raise_user_interact() const;
 
-private:
-	unsigned int side_;
-	bool master_;
+	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+	virtual variant get_value(const std::string& key) const;
+
 };
 
 class ai_readwrite_context : public ai_readonly_context {
@@ -277,9 +269,6 @@ public:
 	 */
 	map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves);
 
-        /** Evaluate */
-        virtual std::string evaluate(const std::string& /*str*/)
-			{ return "evaluate command not implemented by this AI"; }
 
 	/**
 	 * Recruit a unit. It will recruit the unit with the given name,

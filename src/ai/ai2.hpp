@@ -20,12 +20,12 @@
 #ifndef AI_AI2_HPP_INCLUDED
 #define AI_AI2_HPP_INCLUDED
 
-#include "ai_interface.hpp"
+#include "contexts.hpp"
 
-class ai2 : public ai_interface
+class ai2 : public ai_readwrite_context
 {
 public:
-	ai2(int side, bool master) : ai_interface(side, master)
+	ai2(int side, bool master) : ai_readwrite_context(side, master)
 	{}
 	virtual ~ai2() {}
 	virtual void play_turn() {}

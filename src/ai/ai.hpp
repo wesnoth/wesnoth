@@ -20,20 +20,20 @@
 #include "../global.hpp"
 
 #include "../actions.hpp"
-#include "ai_interface.hpp"
+#include "contexts.hpp"
 #include "../formula_callable.hpp"
 
 class formula_ai;
 
 /** A trivial ai that sits around doing absolutely nothing. */
-class idle_ai : public ai_interface {
+class idle_ai : public ai_readwrite_context {
 public:
 	idle_ai(int side, bool master);
 	void play_turn();
 	virtual std::string describe_self();
 };
 
-class ai : public ai_interface {
+class ai : public ai_readwrite_context {
 public:
 
 	ai(int side, bool master);

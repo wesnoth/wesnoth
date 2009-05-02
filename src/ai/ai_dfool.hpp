@@ -22,7 +22,7 @@
 
 #include "../global.hpp"
 
-#include "ai_interface.hpp"
+#include "contexts.hpp"
 #include "../map_location.hpp"
 #include "../unit_map.hpp"
 #include "../unit.hpp"
@@ -98,9 +98,9 @@ namespace dfool {
    * does not target units that it has not "seen",
    * and does not make decisions based on unseen units.
    */
-  class dfool_ai : public ai_interface {
+  class dfool_ai : public ai_readwrite_context {
   public:
-    dfool_ai(int side, bool master) : ai_interface(side, master), unit_memory_(current_team().ai_memory()){}
+    dfool_ai(int side, bool master) : ai_readwrite_context(side, master), unit_memory_(current_team().ai_memory()){}
     void play_turn();
     virtual std::string describe_self();
   private:

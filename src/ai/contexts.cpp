@@ -21,7 +21,12 @@
 #include "contexts.hpp"
 #include "ai_actions.hpp"
 #include "ai_manager.hpp"
+#include "../callable_objects.hpp"
 #include "../dialogs.hpp"
+#include "../formula.hpp"
+#include "../formula_callable.hpp"
+#include "../formula_function.hpp"
+#include "../formula_fwd.hpp"
 #include "../game_end_exceptions.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
@@ -40,10 +45,6 @@ static lg::log_domain log_ai("ai/general");
 // =======================================================================
 //
 // =======================================================================
-std::string ai_readonly_context::describe_self() const
-{
-	return "? [ai]";
-}
 
 
 void ai_readonly_context::raise_user_interact() const
@@ -538,4 +539,18 @@ void ai_readwrite_context::attack_enemy(const map_location u,
 
 	check_victory(get_info().state,get_info().units,get_info().teams, get_info().disp);
 	raise_enemy_attacked();
+}
+
+variant ai_readonly_context::get_value(const std::string& key) const
+{
+	if(key == "map") {
+		return variant(new gamemap_callable(get_info().map));
+	}
+	return variant();
+}
+
+void ai_readonly_context::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
 }

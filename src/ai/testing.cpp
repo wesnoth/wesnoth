@@ -16,7 +16,6 @@
  * Gather statistics important for AI testing and output them
  * @file ai/testing.cpp
  */
-#include "ai_interface.hpp"
 #include "ai_manager.hpp"
 #include "testing.hpp"
 #include "../log.hpp"

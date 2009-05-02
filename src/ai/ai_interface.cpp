@@ -17,11 +17,13 @@
  * @file ai/ai_interface.cpp
  */
 
-#include "ai_actions.hpp"
 #include "ai_interface.hpp"
-#include "ai_manager.hpp"
 
 // =======================================================================
 //
 // =======================================================================
+std::string ai_interface::describe_self() const
+{
+	return "? [ai]";
+}
 

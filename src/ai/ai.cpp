@@ -46,7 +46,7 @@ static lg::log_domain log_ai("ai/general");
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(int side, bool master) : ai_interface(side,master)
+idle_ai::idle_ai(int side, bool master) : ai_readwrite_context(side,master)
 {
 }
 
@@ -61,9 +61,9 @@ void idle_ai::play_turn()
 
 
 /** Sample ai, with simple strategy. */
-class sample_ai : public ai_interface {
+class sample_ai : public ai_readwrite_context {
 public:
-	sample_ai(int side, bool master) : ai_interface(side,master) {}
+	sample_ai(int side, bool master) : ai_readwrite_context(side,master) {}
 
 	void play_turn() {
 		game_events::fire("ai turn");
@@ -193,7 +193,7 @@ protected:
 };
 
 ai::ai(int side, bool master) :
-	ai_interface(side,master),
+	ai_readwrite_context(side,master),
 	defensive_position_cache_(),
 	threats_found_(false),
 	attacks_(),
@@ -1906,19 +1906,6 @@ int ai::attack_depth()
 	return attack_depth_;
 }
 
-variant ai_interface::get_value(const std::string& key) const
-{
-	if(key == "map") {
-		return variant(new gamemap_callable(get_info().map));
-	}
-	return variant();
-}
-
-void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) const
-{
-	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
-}
 
 variant ai::attack_analysis::get_value(const std::string& key) const
 {
