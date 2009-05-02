@@ -55,7 +55,7 @@ public:
 	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
-	paths::route get_route(unit_map::const_iterator un, map_location go_to, team &team);
+	marked_route get_route(unit_map::const_iterator un, map_location go_to, team &team);
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -103,7 +103,7 @@ private:
 	map_location previous_free_hex_;
 	map_location selected_hex_;
 	map_location next_unit_;
-	paths::route current_route_;
+	marked_route current_route_;
 	paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;

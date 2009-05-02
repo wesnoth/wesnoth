@@ -115,10 +115,10 @@ public:
 
 	/**
 	 * Sets the route along which footsteps are drawn to show movement of a
-	 * unit. If NULL, no route is displayed. route does not have to remain
+	 * unit. If NULL, no route is displayed. @a route does not have to remain
 	 * valid after being set.
 	 */
-	void set_route(const paths::route* route);
+	void set_route(const marked_route *route);
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text,
@@ -319,7 +319,7 @@ private:
 	const SDL_Rect& calculate_energy_bar(surface surf);
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 
-	paths::route route_;
+	marked_route route_;
 
 	const gamestatus& status_;
 

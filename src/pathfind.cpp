@@ -297,11 +297,14 @@ paths::paths(gamemap const &map, unit_map const &units,
 		see_all, ignore_units);
 }
 
-int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing_team,
-							const unit_map& units, const std::vector<team>& teams, const gamemap& map)
+marked_route mark_route(const paths::route &rt, const unit &u,
+	const team &viewing_team, const unit_map &units,
+	const std::vector<team> &teams, const gamemap &map)
 {
-	if(rt.steps.empty())
-		return 0;
+	marked_route res;
+
+	if (rt.steps.empty()) return res;
+	res.steps = rt.steps;
 
 	int turns = 0;
 	int movement = u.movement_left();
@@ -329,14 +332,13 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 
 			bool invisible = u.invisible(*i,units,teams,false);
 
-			rt.waypoints[*i] = paths::route::waypoint(turns, zoc, capture, invisible);
+			res.waypoints[*i] = marked_route::waypoint(turns, zoc, capture, invisible);
 
 			if (last_step) break; // finished and we used dummy move_cost
 
 			movement = u.total_movement();
 			if(move_cost > movement) {
-				rt.move_left = -1;
-				return -1; //we can't reach destination
+				return res; //we can't reach destination
 			}
 		}
 
@@ -349,12 +351,8 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 			movement -= move_cost;
 		}
 	}
-	if (turns == 1)
-		rt.move_left = movement;
-	else
-		rt.move_left = 0;
 
-	return turns;
+	return res;
 }
 
 
@@ -475,16 +473,6 @@ std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
 		}
 		outstream << '(' << loc << ')';
 	}
-	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n";
-	typedef std::pair<map_location, paths::route::waypoint> loc_waypoint;
-	foreach(loc_waypoint const& lw, rt.waypoints) {
-		outstream << "\t[waypoint]\n\t\tx,y=\"" << lw.first
-		<< "\"\n\t\tturns=\"" << lw.second.turns
-		<< "\"\n\t\tzoc=\"" << (lw.second.zoc?"yes":"no")
-		<< "\"\n\t\tcapture=\"" << (lw.second.capture?"yes":"no")
-		<< "\"\n\t\tinvisible=\"" << (lw.second.invisible?"yes":"no")
-		<< "\"\n\t[/waypoint]\n";
-	}
-	outstream << "[/route]";
+	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n[/route]";
 	return outstream;
 }

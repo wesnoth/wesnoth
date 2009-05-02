@@ -107,26 +107,34 @@ struct paths
 	/** Structure which holds a single route between one location and another. */
 	struct route
 	{
-		route() : steps(), move_left(0), waypoints() {}
+		route() : steps(), move_left(0) {}
 		std::vector<map_location> steps;
 		int move_left; // movement unit will have left at end of the route.
-		struct waypoint
-		{
-			waypoint(int turns_number = 0, bool in_zoc = false,
-					bool do_capture = false, bool is_invisible = false)
-				: turns(turns_number), zoc(in_zoc),
-					capture(do_capture), invisible(is_invisible) {}
-			int turns;
-			bool zoc;
-			bool capture;
-			bool invisible;
-		};
-		std::map<map_location, waypoint> waypoints;
 	};
 
 	typedef std::map<map_location,route> routes_map;
 	routes_map routes;
 };
+
+/** Structure which holds a single route and waypoints for special events. */
+struct marked_route
+{
+	struct waypoint
+	{
+		waypoint(int turns_number = 0, bool in_zoc = false,
+		         bool do_capture = false, bool is_invisible = false)
+			: turns(turns_number), zoc(in_zoc),
+			  capture(do_capture), invisible(is_invisible) {}
+		int turns;
+		bool zoc;
+		bool capture;
+		bool invisible;
+	};
+	typedef std::map<map_location, waypoint> waypoint_map;
+	std::vector<map_location> steps;
+	waypoint_map waypoints;
+};
+
 
 std::ostream& operator << (std::ostream& os, const paths::route& rt);
 
@@ -136,14 +144,17 @@ paths::route a_star_search(map_location const &src, map_location const &dst,
                            std::set<map_location> const *teleports = NULL);
 
 /**
- * Function which, given a unit and a route the unit can move on,
+ * Marks a route @a rt with waypoints assuming that a @unit u travels along it.
+
+ * Function which, given a unit @a u and a route @a rt the unit can move on,
  * will return the number of turns it will take the unit to traverse the route.
  * adds rt.turn_waypoints (and also one at "end of path").
  * move_left is updated, but to 0 if not reachable in more than 1 turn
  * and to -1 if never reachable.
  */
-int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing_team,
-							const unit_map& units, const std::vector<team>& teams, const gamemap& map);
+marked_route mark_route(const paths::route &rt, const unit &u,
+	const team &viewing_team, const unit_map &units,
+	const std::vector<team> &teams, const gamemap &map);
 
 struct shortest_path_calculator : cost_calculator
 {

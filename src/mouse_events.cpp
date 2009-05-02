@@ -219,7 +219,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//unit is on our team, show path if the unit has one
 				const map_location go_to = un->second.get_goto();
 				if(map_.on_board(go_to)) {
-					paths::route route = get_route(un, go_to, current_team());
+					marked_route route = get_route(un, go_to, current_team());
 					gui().set_route(&route);
 				}
 				over_route_ = true;
@@ -301,7 +301,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 	return res;
 }
 
-paths::route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, team &team)
+marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
@@ -323,8 +323,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 		}
 	}
 	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
-	route_turns_to_complete(un->second, route, viewing_team(), units_,teams_,map_);
-	return route;
+	return mark_route(route, un->second, viewing_team(), units_,teams_,map_);
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)

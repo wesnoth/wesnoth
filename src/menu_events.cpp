@@ -1530,7 +1530,7 @@ private:
 	{
 		assert(ui != units_.end());
 
-		paths::route route = mousehandler.get_route(ui, target, teams_[team_num - 1]);
+		marked_route route = mousehandler.get_route(ui, target, teams_[team_num - 1]);
 
 		if(route.steps.empty())
 			return;

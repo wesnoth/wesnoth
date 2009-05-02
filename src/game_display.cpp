@@ -588,7 +588,8 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 void game_display::draw_movement_info(const map_location& loc)
 {
 	// Search if there is a waypoint here
-	std::map<map_location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
+	std::map<map_location, marked_route::waypoint>::iterator w =
+		route_.waypoints.find(loc);
 
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.waypoints.end()
@@ -805,7 +806,7 @@ void game_display::invalidate_route()
 	}
 }
 
-void game_display::set_route(const paths::route* route)
+void game_display::set_route(const marked_route *route)
 {
 	invalidate_route();
 
