@@ -25,6 +25,7 @@
 #ifdef DISABLE_LUA
 #include "log.hpp"
 #include "scripting/lua.hpp"
+static lg::log_domain lua("scripting/lua");
 LuaKernel::LuaKernel() {LOG_STREAM(err, lua) << "Lua support disabled in this build";}
 LuaKernel::~LuaKernel() {}
 void LuaKernel::run_event(vconfig const&, game_events::queued_event const&) {}
