@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-12 13:39+0100\n"
+"PO-Revision-Date: 2009-05-03 11:29+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e, --editor>I<\\ Datei>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -188,6 +188,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"Den in das Spiel integrierten Karteneditor direkt starten. Falls I<Datei> "
+"angegeben wurde, verhält es sich äquivalent zu B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -265,7 +267,6 @@ msgstr "B<-l,\\ --load>I<\\ Datei>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -274,7 +275,9 @@ msgid ""
 msgstr ""
 "Lädt den Spielstand I<Datei> aus dem Standard-Spielstand-Verzeichnis. Falls "
 "auch die B<-e> oder B<--editor> Option verwendet wurde, wird der Editor mit "
-"der Karte aus I<file> geöffnet."
+"der Karte aus I<file> geöffnet. Falls ein Verzeichnis angegeben wurde, wird "
+"der Editor mit einem Dialog zum Laden einer Karte aus eben diesem "
+"Verzeichnis gestartet."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -1461,7 +1464,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "Startet direkt den enthaltenen Karteneditor."
