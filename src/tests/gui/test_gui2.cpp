@@ -97,7 +97,7 @@ const tresolution_list& get_tiny_gui_resolutions()
 template<class T>
 void test()
 {
-	test_resolutions<T>(get_small_tiny_resolutions());
+	test_resolutions<T>(get_tiny_gui_resolutions());
 }
 
 #else
