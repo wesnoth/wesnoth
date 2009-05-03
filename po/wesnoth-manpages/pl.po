@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-08 15:05+0100\n"
+"PO-Revision-Date: 2009-05-02 20:10+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -186,9 +186,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e, --editor \\ plik>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -196,6 +196,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"bezpośrednio uruchamia wbudowany edytor map. Jeśli podano parametr |<plik>, "
+"działanie opcji jest równoważne B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -273,16 +275,17 @@ msgstr "B<-l,\\ --load>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"ładuje plik zapisu gry I<file> z domyślnego katalogu zapisanych gier. Jeśli "
+"ładuje plik zapisu gry I<plik> z domyślnego katalogu zapisanych gier. Jeśli "
 "dodatkowo podano opcję B<-e> lub B<--editor>, zostanie uruchomiony edytor z "
-"załadowaną mapą z pliku I<file>."
+"załadowaną mapą z pliku I<plik>. Jeśli wskazano katalog, po uruchomieniu "
+"edytora zostanie wyświetlone okno dialogowe ładowania mapy z zawartością "
+"tego katalogu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -1452,7 +1455,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "powoduje bezpośrednie uruchomienie edytora map."

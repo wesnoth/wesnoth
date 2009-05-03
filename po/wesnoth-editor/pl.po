@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-02-22 11:06+0100\n"
+"PO-Revision-Date: 2009-05-02 20:04+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -99,13 +99,13 @@ msgstr "specjalne"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Używaj lewego/prawego przycisku myszy do rysowania terenu na pierwszym/"
-"drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową."
+"drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową. Ctrl"
+"+kliknięcie umożliwia pobranie próbki terenu pod kursorem."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -331,23 +331,23 @@ msgstr "2P"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Nie znaleziono pliku"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
+"istniejący plik"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Nie znaleziono pliku mapy lub był pusty"
+msgstr "Pusty plik mapy"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Zapisanie mapy nie powiodło się: $msg"
+msgstr "Zapisanie do scenariusza nie powiodło się"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
