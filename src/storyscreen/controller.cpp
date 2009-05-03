@@ -150,7 +150,7 @@ void controller::show()
 #ifndef LOW_MEM
 		render_reference_type render_interface = *uis_[k];
 #else
-		render_value_type render_interface(parts_[k], disp_, next_button, skip_button);
+		render_value_type render_interface(*parts_[k], disp_, next_button, skip_button);
 #endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
