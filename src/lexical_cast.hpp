@@ -155,22 +155,20 @@ struct tlexical_cast<std::string, From>
 {
 	typedef tlexical_cast<std::string, From> tclass;
 
-	template <class T>
-	SIGNATURE_2(std::string, cast, T value, const boost::true_type&)
+	SIGNATURE_2(std::string, cast, From value, const boost::true_type&)
 		std::stringstream sstr;
 		sstr << value;
 		return sstr.str();
 	}
 
-	template <class T>
-	SIGNATURE_2(std::string, cast, T value, const boost::false_type&)
+	SIGNATURE_2(std::string, cast, From value, const boost::false_type&)
 
-		return lexical_cast_generic<std::string, T>(value);
+		return lexical_cast_generic<std::string, From>(value);
 	}
 
 	std::string operator()(From value)
 	{
-		return this->cast<From>(value, boost::is_integral<
+		return this->cast(value, boost::is_integral<
 				typename boost::remove_pointer<From>::type>());
 	}
 };
