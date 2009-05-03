@@ -267,6 +267,8 @@ if env["prereqs"]:
 
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
     test_env = conf.Finish()
+    if not have_test_prereqs and "test" in env["default_targets"]:
+        env["default_targets"].remove("test")
 
 #    have_boost_asio = \
 #        conf.CheckBoost("system", require_version = "1.35.0") and \
@@ -476,13 +478,12 @@ def InstallManpages(env, component):
 
 # Now the actual installation productions
 
+# The game and associated resources
+env.InstallBinary(wesnoth)
 env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"))
-
-# The game and associated resources
-env.InstallBinary(wesnoth)
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
