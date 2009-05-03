@@ -63,13 +63,29 @@
  * @namespace implementation
  * Contains the implementation details for lexical_cast and shouldn't be used
  * directly.
- *//*
+ */
 namespace implementation {
 
 template<typename To, typename From>
 struct tlexical_cast;
 
-} // namespace implementation */
+} // namespace implementation
+
+/**
+ * Lexical cast converts one type to another.
+ *
+ * @tparam To                     The type to convert to.
+ * @tparam From                   The type to convert from.
+ *
+ * @param value                   The value to convert.
+ *
+ * @returns                       The converted value.
+ */
+template<typename To, typename From>
+inline To lexical_cast(From value)
+{
+	return implementation::tlexical_cast<To, From>().operator()(value);
+}
 
 /** Thrown when a lexical_cast fails. */
 struct bad_lexical_cast {};
@@ -160,22 +176,6 @@ struct tlexical_cast<std::string, From>
 };
 
 } // namespace implementation
-
-/**
- * Lexical cast converts one type to another.
- *
- * @tparam To                     The type to convert to.
- * @tparam From                   The type to convert from.
- *
- * @param value                   The value to convert.
- *
- * @returns                       The converted value.
- */
-template<typename To, typename From>
-inline To lexical_cast(From value)
-{
-	return implementation::tlexical_cast<To, From>().operator()(value);
-}
 
 #endif
 
