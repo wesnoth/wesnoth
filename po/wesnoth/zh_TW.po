@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:32+0200\n"
+"POT-Creation-Date: 2009-05-03 10:52+0200\n"
 "PO-Revision-Date: 2009-04-18 01:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -73,13 +73,13 @@ msgid "poisoned"
 msgstr "中毒"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -90,13 +90,13 @@ msgstr ""
 "不論選擇進攻或者防守，狂暴的效力都將持續到三十次交戰之後或者一方倒下為止。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -107,13 +107,13 @@ msgstr ""
 "無論目標防禦能力為何，此攻擊永遠有百分之七十的機會對敵人造成傷害。"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "先發制人"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -6536,8 +6536,10 @@ msgstr[0] "這個模組需要以下額外的需求:"
 msgstr[1] "這個模組需要以下額外的需求:"
 
 #: src/addon_management.cpp:453
-msgid "Do you still want to download it?"
-msgstr "您確定要下載這個檔案？"
+msgid ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
+msgstr ""
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -9094,6 +9096,9 @@ msgstr "幫助我們改進韋諾，提升您的遊戲體驗！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "開啟訊息回報"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "您確定要下載這個檔案？"
 
 #~ msgid " included from "
 #~ msgstr "包含 "

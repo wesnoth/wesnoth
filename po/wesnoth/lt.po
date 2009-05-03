@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:32+0200\n"
+"POT-Creation-Date: 2009-05-03 10:52+0200\n"
 "PO-Revision-Date: 2009-04-20 17:39+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
@@ -71,13 +71,13 @@ msgid "poisoned"
 msgstr "apnuodytas"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr ""
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -86,13 +86,13 @@ msgid ""
 msgstr ""
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magiška"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -104,13 +104,13 @@ msgstr ""
 "dalinio gynybinių gebėjimų."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr ""
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -5847,8 +5847,10 @@ msgstr[1] "Šis priedas reikalauja šių priedų, kurių jūs dar neįdiegėte:"
 msgstr[2] "Šis priedas reikalauja šių priedų, kurių jūs dar neįdiegėte:"
 
 #: src/addon_management.cpp:453
-msgid "Do you still want to download it?"
-msgstr "Ar vis tiek jį norite atsisiųsti?"
+msgid ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
+msgstr ""
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -8443,6 +8445,9 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Ar vis tiek jį norite atsisiųsti?"
 
 #~ msgid " included from "
 #~ msgstr " įterpta iš "

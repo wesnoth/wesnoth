@@ -67,9 +67,9 @@ poleceń można znaleźć na stronie http://www.wesnoth.org/wiki/CommandMode).
 używa specjalnych atrap ustawień regionalnych, by umożliwić przełączenie na
 dowolny język, nawet jeśli nie jest on zainstalowany w systemie.
 .TP 
-\fB\-e, \-\-editor \ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-e \-\-load\fP
+\fB\-e,\ \-\-editor\fP\fI\ file\fP
+bezpośrednio uruchamia wbudowany edytor map. Jeśli podano parametr \fIplik\fP,
+działanie opcji jest równoważne \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 wyświetla bieżącą liczbę klatek na sekundę w rogu ekranu.
@@ -90,10 +90,11 @@ wyświetla podsumowanie opcji wiersza poleceń na standardowym wyjściu i
 kończy działanie.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ file\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+ładuje plik zapisu gry \fIplik\fP z domyślnego katalogu zapisanych gier. Jeśli
+dodatkowo podano opcję \fB\-e\fP lub \fB\-\-editor\fP, zostanie uruchomiony edytor z
+załadowaną mapą z pliku \fIplik\fP. Jeśli wskazano katalog, po uruchomieniu
+edytora zostanie wyświetlone okno dialogowe ładowania mapy z zawartością
+tego katalogu.
 .TP 
 \fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
 określa poziom istotności domen debugowania. \fBall\fP oznacza dopasowanie

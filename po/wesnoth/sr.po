@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:32+0200\n"
+"POT-Creation-Date: 2009-05-03 10:52+0200\n"
 "PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -75,13 +75,13 @@ msgid "poisoned"
 msgstr "отрован"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "безглавост"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -93,13 +93,13 @@ msgstr ""
 "упетљана јединица не настрада, или прође 30 рунди напада."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "магичност"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -111,13 +111,13 @@ msgstr ""
 "нападнуте јединице."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "први удар"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -7071,8 +7071,10 @@ msgstr[2] "Овај додатак се ослања на следеће кој�
 msgstr[3] "Овај додатак се ослања на следећи који још није инсталиран:"
 
 #: src/addon_management.cpp:453
-msgid "Do you still want to download it?"
-msgstr "Желите ли још увек да га преузмете?"
+msgid ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
+msgstr ""
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -9714,3 +9716,6 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Желите ли још увек да га преузмете?"

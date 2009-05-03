@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:32+0200\n"
+"POT-Creation-Date: 2009-05-03 10:52+0200\n"
 "PO-Revision-Date: 2009-04-19 15:05+0200\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -73,13 +73,13 @@ msgid "poisoned"
 msgstr "vergiftigd"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "razernij"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -92,13 +92,13 @@ msgstr ""
 "gevechtsrondes)."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magisch"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -110,13 +110,13 @@ msgstr ""
 "aan te vallen eenheid."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "initiatief"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -7170,8 +7170,10 @@ msgstr[1] ""
 "geïnstalleerd hebt:"
 
 #: src/addon_management.cpp:453
-msgid "Do you still want to download it?"
-msgstr "Wilt je het nog steeds downloaden?"
+msgid ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
+msgstr ""
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -9791,6 +9793,9 @@ msgstr "Help ons Wesnoth te verbeteren!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Wilt je het nog steeds downloaden?"
 
 #~ msgid " included from "
 #~ msgstr " geïncludeerd vanuit "

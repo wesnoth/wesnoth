@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:32+0200\n"
+"POT-Creation-Date: 2009-05-03 10:52+0200\n"
 "PO-Revision-Date: 2009-04-28 01:06-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -78,13 +78,13 @@ msgid "poisoned"
 msgstr "中毒"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -96,13 +96,13 @@ msgstr ""
 "击达到30个来回。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -113,13 +113,13 @@ msgstr ""
 "本攻击总是有70%的击中率。"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "先机"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -6650,8 +6650,10 @@ msgstr[0] "这个插件要求以下额外的依赖:"
 msgstr[1] "这个插件要求以下额外的依赖:"
 
 #: src/addon_management.cpp:453
-msgid "Do you still want to download it?"
-msgstr "您真的想下载这个游戏？"
+msgid ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
+msgstr ""
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -9209,3 +9211,6 @@ msgstr "大家一起把Wesnoth变得更好！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "启用摘要上传"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "您真的想下载这个游戏？"
