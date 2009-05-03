@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:38+0200\n"
+"POT-Creation-Date: 2009-05-03 11:08+0200\n"
 "PO-Revision-Date: 2009-04-05 12:09-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -578,7 +578,6 @@ msgstr "Conectar"
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
-#: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
@@ -730,8 +729,6 @@ msgstr "Mantener más de un mapa abierto a la vez (MDI)"
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
-#: data/gui/default/window/game_save_message.cfg:139
-#: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
@@ -750,13 +747,15 @@ msgstr "Aplicar"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
-#: data/gui/default/window/game_save_message.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_message.cfg:32
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
 msgid "Save Game"
 msgstr "Guardar partida"
 
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
+#: data/gui/default/window/game_save_oos.cfg:82
 #, fuzzy
 msgid "Name:"
 msgstr "Nombre: "
@@ -764,6 +763,53 @@ msgstr "Nombre: "
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
+#: data/gui/default/window/game_save_oos.cfg:186
+#: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_overwrite.cfg:88
+#: data/gui/default/window/game_save_overwrite.cfg:89
+#: src/construct_dialog.cpp:128
+msgid "Yes"
+msgstr "Sí"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/game_save_message.cfg:154
+#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_overwrite.cfg:103
+#: src/construct_dialog.cpp:129
+msgid "No"
+msgstr "No"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_oos.cfg:52
+msgid "OOS error"
+msgstr ""
+
+#. [toggle_button]: id=ignore_all
+#: data/gui/default/window/game_save_oos.cfg:134
+msgid "Ignore All"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit_game
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+msgid "Quit Game"
+msgstr "Salir del juego"
+
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_save_overwrite.cfg:32
+msgid "Overwrite?"
+msgstr ""
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_overwrite.cfg:52
+msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [grid]
@@ -1110,14 +1156,6 @@ msgstr "Créditos"
 msgid "Quit"
 msgstr "Salir"
 
-#: src/construct_dialog.cpp:128
-msgid "Yes"
-msgstr "Sí"
-
-#: src/construct_dialog.cpp:129
-msgid "No"
-msgstr "No"
-
 #: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Cerrar"
@@ -1138,7 +1176,7 @@ msgstr "Nueva carpeta"
 msgid "Deletion of the file failed."
 msgstr "Ha habido algún fallo en el proceso de borrado."
 
-#: src/filechooser.cpp:205
+#: src/filechooser.cpp:205 src/gui/dialogs/game_save.cpp:118
 msgid "Name: "
 msgstr "Nombre: "
 
@@ -1146,11 +1184,11 @@ msgstr "Nombre: "
 msgid "Creation of the directory failed."
 msgstr "Ha fallado la creación del directorio."
 
-#: src/game_preferences.cpp:287
+#: src/game_preferences.cpp:290
 msgid "No server has been defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:352
 msgid "player"
 msgstr "jugador"
 
@@ -1596,6 +1634,63 @@ msgid "Find $filename server binary to host networked games"
 msgstr ""
 "Seleccione binario $filename del servidor para alojar partidas multijugador"
 
+#: src/gui/auxiliary/canvas.cpp:320
+msgid "Line doesn't fit on canvas."
+msgstr "La línea no cabe en el lienzo."
+
+#: src/gui/auxiliary/canvas.cpp:455
+msgid "Rectangle doesn't fit on canvas."
+msgstr "El rectángulo no cabe en el lienzo."
+
+#: src/gui/auxiliary/canvas.cpp:826
+msgid "Text has a font size of 0."
+msgstr "El texto tiene un tamaño de fuente nulo."
+
+#: src/gui/auxiliary/canvas.cpp:891
+msgid "Text doesn't start on canvas."
+msgstr "El texto no empieza en el lienzo."
+
+#: src/gui/auxiliary/window_builder.cpp:316 src/gui/widgets/settings.cpp:505
+msgid "No resolution defined."
+msgstr "No se ha definido ninguna resolución."
+
+#: src/gui/auxiliary/window_builder.cpp:412
+#: src/gui/auxiliary/window_builder.cpp:932
+#: src/gui/auxiliary/window_builder.cpp:1141 src/gui/widgets/settings.cpp:760
+#: src/gui/widgets/settings.cpp:914
+msgid "No grid defined."
+msgstr "No se ha definido ninguna malla."
+
+#: src/gui/auxiliary/window_builder.cpp:519
+msgid "A row must have a column."
+msgstr "Una fila debe tener una columna."
+
+#: src/gui/auxiliary/window_builder.cpp:520
+msgid "Number of columns differ."
+msgstr "El número de columnas es distinto."
+
+#: src/gui/auxiliary/window_builder.cpp:772
+msgid "No list defined."
+msgstr "No se ha definido una lista."
+
+#: src/gui/auxiliary/window_builder.cpp:775
+msgid "A 'list_definition' should contain one row."
+msgstr ""
+"Una definición de lista («list_definition») debe contener al menos una fila."
+
+#: src/gui/auxiliary/window_builder.cpp:793
+msgid ""
+"'list_data' must have the same number of columns as the 'list_definition'."
+msgstr ""
+"Los datos de lista («list_data») deben tener el mismo número de columnas que "
+"la definición de lista («list_definition»)."
+
+#: src/gui/auxiliary/window_builder.cpp:1060
+msgid "The number of value_labels and values don't match."
+msgstr ""
+"El número de etiquetas de valor («value_labels») y valores («values») no es "
+"idéntico."
+
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "Cargar partida"
@@ -1608,87 +1703,30 @@ msgstr "Cargar partida..."
 msgid "Version"
 msgstr "Versión"
 
-#: src/gui/widgets/canvas.cpp:320
-msgid "Line doesn't fit on canvas."
-msgstr "La línea no cabe en el lienzo."
-
-#: src/gui/widgets/canvas.cpp:455
-msgid "Rectangle doesn't fit on canvas."
-msgstr "El rectángulo no cabe en el lienzo."
-
-#: src/gui/widgets/canvas.cpp:826
-msgid "Text has a font size of 0."
-msgstr "El texto tiene un tamaño de fuente nulo."
-
-#: src/gui/widgets/canvas.cpp:891
-msgid "Text doesn't start on canvas."
-msgstr "El texto no empieza en el lienzo."
-
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "El widget obligatorio «$id» no ha sido definido."
 
-#: src/gui/widgets/settings.cpp:135
+#: src/gui/widgets/settings.cpp:137
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
-#: src/gui/widgets/settings.cpp:290
+#: src/gui/widgets/settings.cpp:292
 msgid "Window not defined."
 msgstr "Ventana no definida."
 
-#: src/gui/widgets/settings.cpp:387
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:503 src/gui/widgets/window_builder.cpp:315
-msgid "No resolution defined."
-msgstr "No se ha definido ninguna resolución."
-
-#: src/gui/widgets/settings.cpp:529
+#: src/gui/widgets/settings.cpp:531
 msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 
-#: src/gui/widgets/settings.cpp:758 src/gui/widgets/settings.cpp:912
-#: src/gui/widgets/window_builder.cpp:411
-#: src/gui/widgets/window_builder.cpp:925
-#: src/gui/widgets/window_builder.cpp:1134
-msgid "No grid defined."
-msgstr "No se ha definido ninguna malla."
-
-#: src/gui/widgets/window.cpp:615
+#: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "No se pudo mostrar un diálogo, que no cabe en la pantalla."
-
-#: src/gui/widgets/window_builder.cpp:518
-msgid "A row must have a column."
-msgstr "Una fila debe tener una columna."
-
-#: src/gui/widgets/window_builder.cpp:519
-msgid "Number of columns differ."
-msgstr "El número de columnas es distinto."
-
-#: src/gui/widgets/window_builder.cpp:765
-msgid "No list defined."
-msgstr "No se ha definido una lista."
-
-#: src/gui/widgets/window_builder.cpp:768
-msgid "A 'list_definition' should contain one row."
-msgstr ""
-"Una definición de lista («list_definition») debe contener al menos una fila."
-
-#: src/gui/widgets/window_builder.cpp:786
-msgid ""
-"'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
-"Los datos de lista («list_data») deben tener el mismo número de columnas que "
-"la definición de lista («list_definition»)."
-
-#: src/gui/widgets/window_builder.cpp:1053
-msgid "The number of value_labels and values don't match."
-msgstr ""
-"El número de etiquetas de valor («value_labels») y valores («values») no es "
-"idéntico."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1822,10 +1860,6 @@ msgstr "Detener"
 #: src/hotkeys.cpp:82 src/hotkeys.cpp:89
 msgid "Play"
 msgstr "Reproducir"
-
-#: src/hotkeys.cpp:83
-msgid "Quit Game"
-msgstr "Salir del juego"
 
 #: src/hotkeys.cpp:84
 msgid "Set Team Label"
@@ -2258,7 +2292,7 @@ msgstr "Seleccione resolución"
 msgid "Error"
 msgstr "Error"
 
-#: src/terrain_translation.cpp:701
+#: src/terrain_translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"

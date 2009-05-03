@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:39+0200\n"
+"POT-Creation-Date: 2009-05-03 11:08+0200\n"
 "PO-Revision-Date: 2009-01-07 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -154,7 +154,7 @@ msgstr "Ond"
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:827
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:843
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:183
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:208
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:76
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:76
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:497
@@ -176,7 +176,7 @@ msgid "Rescue Surviving Elves"
 msgstr "Red overlevende elver"
 
 #. [objective]: condition=lose
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:197
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:219
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:148
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1106
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:188
@@ -745,13 +745,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4222
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4969
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5116
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1219
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1375
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1542
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1675
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1831
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1969
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2125
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1244
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1549
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1673
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1820
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1949
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1025
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2872
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1095
@@ -1948,440 +1948,23 @@ msgstr "Azkotep"
 msgid "Ystara"
 msgstr "Ystara"
 
-#. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:185
-msgid "Survive Until Dawn (or)"
-msgstr "Overlev indtil solen står op (eller)"
-
-#. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:189
-msgid "Defeat all Undead Leaders"
-msgstr "Besejr alle udøde ledere"
-
 #. [objective]: condition=lose
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:193
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1226
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1386
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1553
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1682
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1842
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1976
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2136
-msgid "You Control Less Than 6 Villages"
-msgstr "Du kontrollerer mindre end 6 landsbyer"
-
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:299
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:313
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:318
-msgid "Zur"
-msgstr "Zur"
-
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:300
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:314
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:319
-msgid "Grak"
-msgstr "Grak"
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:324
-msgid "Kaleh, wake up! Sentries report movement in the sands!"
-msgstr "Kaleh, vågn op! Vagterne rapporterer om bevægelse ude i sandet."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:328
-msgid "Orcs?"
-msgstr "Orker?"
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:332
-msgid "I don't..."
-msgstr "Jeg nej..."
-
-#. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:336
-msgid "We meet again, Ystara."
-msgstr "Vi mødes igen, Ystara."
-
-#. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:340
-msgid "You think you can take me, Azkotep?"
-msgstr "Du tror du kan overvinde mig, Azkotep?"
-
-#. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:344
-msgid ""
-"My champion, Zur shall slice you to shreds like the puny adept you once were."
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:176
+msgid "You lose control (even temporarily) of more than 6 villages."
 msgstr ""
-"Min mester, Zur vil skære dig i stykker til den lille ekspert du engang var."
-
-#. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:348
-msgid ""
-"You always were an arrogant little bastard. Grak will swallow your soul, or "
-"what's left of it."
-msgstr ""
-"Du har altid været en lille arrogant møgunge. Grek vil sluge din sjæl, eller "
-"hvad der er tilbage af den."
-
-#. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:352
-msgid ""
-"You spurned me once and I will make you pay. To battle, my minions! Become "
-"my wrath!"
-msgstr ""
-"Du afviste mig med foragt; du vil komme til at betale. Klar til kamp mine "
-"følgesvende! Her kommer dødens vrede!"
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:356
-msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "Du forstår virkelig at vælge lejrområde, Kaleh."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:360
-msgid ""
-"Where did they come from? I swear those castles weren't there at sunset."
-msgstr ""
-"Hvor kom de fra? Jeg sværger på, at de borge ikke var der, da solen gik ned."
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:364
-msgid ""
-"Many strange things can happen during the long dark. But despite their "
-"wraith-like forms, I have no doubt that their cold steel can still bite "
-"flesh."
-msgstr ""
-"Mange mærkelige ting kan ske om natten. Men på trods af deres "
-"genfærdudseende, er jeg ikke i tvivl om, at deres kolde stål kan trænge "
-"igennem kød."
-
-#. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:368
-msgid ""
-"Like I haven't killed enough undead recently. Why can't these guys just stay "
-"dead?"
-msgstr ""
-"Som om jeg ikke har slået nok udøde ihjel. Hvorfor kan disse fyre ikke bare "
-"forblive døde?"
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:372
-msgid ""
-"Our encampment is out of the direct line of attack, so we should be somewhat "
-"safe, at least."
-msgstr ""
-"Vores bosættelse er ikke i frontlinjen, så vi vil i det mindste være "
-"nogenlunde sikret."
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:376
-msgid ""
-"But if the battle spills around our people will be slaughtered by the undead "
-"hordes!"
-msgstr ""
-"Hvis slaget spreder sig vil vort folk blive slagtet af de udøde horder!"
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:380
-msgid ""
-"There's no way we can escape the battle in time. We must protect the camp "
-"from the undead."
-msgstr ""
-"Vi kan på ingen måde undslippe slaget i tide. Vi må beskytte lejren fra de "
-"udøde."
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:384
-msgid ""
-"I fear that if we lose more than half of the tents we will not have the "
-"strength to go on. Garak, wake your men. We must hold off the undead until "
-"dawn."
-msgstr ""
-"Jeg frygter at hvis vi mister mere end halvdelen af vores telte, vil vi ikke "
-"have nok styrke til at fortsætte. Gark, væk dine mænd. Vi må holde de udøde "
-"tilbage indtil daggry."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:388
-msgid "To arms my people, to arms!"
-msgstr "Grib våbene folk, grib våbene!"
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:524
-msgid "They're raising the corpses of our fallen! What a horrible fate!"
-msgstr "De hidkalder ligene af vores døde! Hvilken frygtelig skæbne!"
-
-#. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:528
-msgid "Then we shall have to give them a proper cremation."
-msgstr "Så må vi give dem en ordentlig kremering."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:621
-msgid ""
-"Too many of our people have been killed. We will surely be overwhelmed by "
-"the undead now. All is lost!"
-msgstr ""
-"Alt for mange fra vores folk er blevet dræbt. Vi vil blive overmandet af de "
-"udøde nu. Alt er tabt!"
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:684
-msgid ""
-"These champions... I will challenge them. Zhul, bless my weapons with light "
-"of Eloh."
-msgstr ""
-"Disse mestre... Jeg vil udfordre dem. Zhul, velsign mine våben med Elohs lys."
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-msgid "Garak, but the suns..."
-msgstr "Garak, men solene..."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:692
-msgid ""
-"You will not do any such thing, anyone trying to fight these creeps "
-"singlehanded will surely die. We need you, we will not make it without you."
-msgstr ""
-"Du vil ikke gennemføre dette, enhver som forsøger at kæmpe mod disse kryb "
-"alene vil dø. Vi har brug for dig, vi kommer ikke igennem uden dig."
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:696
-msgid ""
-"I had dreams this night Kaleh, full of gloom and darkness, my journey will "
-"end here one way or another."
-msgstr ""
-"Jeg havde drømme i nat Kaleh, fuld af mørke og elendighed, min rejse vil "
-"afsluttes her på den ene eller anden måde."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:700
-msgid ""
-"No! That's not true, our future is what we make of it, stay behind for this "
-"fight and... "
-msgstr ""
-"Nej! Det er ikke sandt, vores fremtid er hvad vi gør den til, hold dig "
-"tilbage i denne kamp og..."
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
-msgid ""
-"And what? You'll help me become a coward? I lived long, I'm not afraid of "
-"the end, just let me give it some meaning."
-msgstr ""
-"Og hvad? Du vil lade mig være en kujon? Jeg har levet længe, jeg er ikke "
-"bange for døden, bare jeg kan give den mening."
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-msgid ""
-"I bless you champion with the light that will come, I bless you with the "
-"memory and the promise. Lay down your bow, champion, and let your sword "
-"shine in the dark."
-msgstr ""
-"Jeg velsigner dig mester med lysets komme, jeg velsigner dig med hukommelsen "
-"og løftet. Læg din bue ned, mester, og lad dit sværd skinne i natten."
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:947
-msgid "You there! Creep! Stand and face me, shade! I challenge you!"
-msgstr "Du der! Afskum! Mød mig skygge! Jeg udfordrer dig!"
-
-#. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:845
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:957
-msgid ""
-"Foolish mortal... For daring to challenge me, I'll devour your soul and "
-"torment it for all eternity..."
-msgstr ""
-"Tåbelige dødelig... Jeg vil æde din sjæl og tortere den i al evighed..."
-
-#. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
-msgid ""
-"So you destroyed Zur... Come mortal, let's cross our blades... It's time for "
-"you to take his place..."
-msgstr ""
-"Så du knuste Zur... Kom dødelige, lad os krydse klinger... Tiden er kommet "
-"for, at du skal overtage hans plads..."
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:859
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:971
-msgid "You there! Pile of bones! I challenge you, stand and face me!"
-msgstr "Du der! Knoglesæk! Jeg udfordrer dig, bliv og mød mig!"
-
-#. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:869
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:981
-msgid "Puny elf... Time to die..."
-msgstr "Ynkelige elv... Tid til at dø..."
-
-#. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:875
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:987
-msgid ""
-"Grak was weak... But still you deserve respect... Meet my axe and take his "
-"place..."
-msgstr ""
-"Grak var svag... Men du fortjener respekt... Mød min økse og overtag hans "
-"plads..."
-
-#. [message]: speaker=$challenged
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:894
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1006
-msgid "And so it ends... Your champion is dead, elves... Come join him..."
-msgstr ""
-"Og sådan ender det... Jeres mester er død elverfolk... Slut jer til ham..."
-
-#. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:963
-msgid ""
-"So you destroyed Zur... Come, mortal, let us cross our blades... It's time "
-"for you to take his place..."
-msgstr ""
-"Så du knuste Zur... Kom dødelige, lad os krydse klinger... Det er tid for "
-"dig at overtage hans plads..."
-
-#. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1047
-msgid "Where is Garak? Has anybody seen him?"
-msgstr "Hvor er Garak? Har nogen set ham?"
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1051
-msgid ""
-"I saw him jumping into deep darkness pursuing a group of enemies. Let's hope "
-"nothing happened to him."
-msgstr ""
-"Jeg så han sprang ned i mørket på jagt efter en gruppe fjender. Lad os håbe "
-"at der ikke er sket ham noget."
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1101
-msgid ""
-"Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
-"can't last forever, and with the light of the sun the undead power wanes and "
-"their dark magics unravel."
-msgstr ""
-"Men se, daggryet er nært forstående, vores redning er indenfor rækkevidde. "
-"Selv det lange mørke varer ikke evigt, og med lyset fra solen vil de udødes "
-"mørke magt formindskes og deres magi opløses."
-
-#. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1118
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1579
-msgid ""
-"No! This contest is not over yet, Azkotep. I shall show you a taste of my "
-"true power."
-msgstr ""
-"Nej! Denne konkurrence er ikke forbi endnu Azkotep. Jeg skal vise dig en "
-"smagsprøve på min sande magt."
-
-#. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1150
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1179
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1288
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1455
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1606
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1635
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1736
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1900
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1930
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2030
-msgid "Possessed Garak"
-msgstr "Besat Garak"
-
-#. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1153
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1337
-msgid "Eloh protect us, what has he done?"
-msgstr "Eloh beskytter os, hvad har han gjort?"
-
-#. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1157
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1344
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1511
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1613
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1792
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1908
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2086
-msgid "I live again! I can feel!"
-msgstr "Jeg lever igen! Jeg kan føle!"
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1172
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1628
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1923
-msgid ""
-"I will... not... yield... I defeated... your... champion... I... will... "
-"overcome... you..."
-msgstr ""
-"Jeg vil... ikke... gi' mig... Jeg besejrede... din... mester... jeg... "
-"vil... besejre... dig..."
-
-#. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1182
-msgid "No, fool! Stop!"
-msgstr "Nej, fjols! Stop!"
-
-#. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1197
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1653
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1948
-msgid "The dark lord... is no more..."
-msgstr "Den mørke herre... er ikke mere..."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1202
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1658
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1952
-msgid ""
-"Garak collapses to the ground with his own blade sticking from his chest."
-msgstr ""
-"Garak synker om på jorden med sin egen klinge stikkende ud fra sit bryst."
-
-#. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1212
-msgid ""
-"No! How dare you? I shall have my vengeance upon you for spoiling this "
-"contest! Darkness shall reign until I have triumphed!"
-msgstr ""
-"Nej! Hvor vover du! Jeg vil få hævn over jer alle! Mørket skal regere indtil "
-"jeg har vundet!"
-
-#. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1216
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1672
-msgid ""
-"Maybe I spoke too soon. Curse Uria, he has even blotted out the stars, all "
-"is darkness. Kaleh, our course is clear, we must destroy that abomination."
-msgstr ""
-"Måske var jeg for hurtig. Forbandet være Uria, han har enddog fjernet "
-"stjernerne, alt er i mørke. Kaleh, vores mission er klar, vi må ødelægge den "
-"vederstyggelighed."
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1222
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1549
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1678
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:182
 msgid "Defeat Azkotep"
 msgstr "Besejr Azkotep"
 
+#. [objective]: condition=win
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:188
+msgid "Defeat Ystara"
+msgstr "Besejr Ystara"
+
 #. [objective]: condition=lose
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1230
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1390
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1557
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1686
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1846
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1980
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2140
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:194
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:208
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:230
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:299
@@ -2393,11 +1976,417 @@ msgstr "Besejr Azkotep"
 msgid "Death of Kaleh, Nym or Zhul"
 msgstr "Kaleh, Nym eller Zhuls død"
 
+#. [objective]: condition=win
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:210
+msgid "Survive Until Dawn (or)"
+msgstr "Overlev indtil solen står op (eller)"
+
+#. [objective]: condition=win
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:214
+msgid "Defeat all Undead Leaders"
+msgstr "Besejr alle udøde ledere"
+
+#. [event]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:321
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:335
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:340
+msgid "Zur"
+msgstr "Zur"
+
+#. [event]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:322
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:341
+msgid "Grak"
+msgstr "Grak"
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:346
+msgid "Kaleh, wake up! Sentries report movement in the sands!"
+msgstr "Kaleh, vågn op! Vagterne rapporterer om bevægelse ude i sandet."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:350
+msgid "Orcs?"
+msgstr "Orker?"
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:354
+msgid "I don't..."
+msgstr "Jeg nej..."
+
+#. [message]: speaker=Azkotep
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:358
+msgid "We meet again, Ystara."
+msgstr "Vi mødes igen, Ystara."
+
+#. [message]: speaker=Ystara
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:362
+msgid "You think you can take me, Azkotep?"
+msgstr "Du tror du kan overvinde mig, Azkotep?"
+
+#. [message]: speaker=Azkotep
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:366
+msgid ""
+"My champion, Zur shall slice you to shreds like the puny adept you once were."
+msgstr ""
+"Min mester, Zur vil skære dig i stykker til den lille ekspert du engang var."
+
+#. [message]: speaker=Ystara
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:370
+msgid ""
+"You always were an arrogant little bastard. Grak will swallow your soul, or "
+"what's left of it."
+msgstr ""
+"Du har altid været en lille arrogant møgunge. Grek vil sluge din sjæl, eller "
+"hvad der er tilbage af den."
+
+#. [message]: speaker=Azkotep
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:374
+msgid ""
+"You spurned me once and I will make you pay. To battle, my minions! Become "
+"my wrath!"
+msgstr ""
+"Du afviste mig med foragt; du vil komme til at betale. Klar til kamp mine "
+"følgesvende! Her kommer dødens vrede!"
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:378
+msgid "... think so. You really know how to pick a campsite, Kaleh."
+msgstr "Du forstår virkelig at vælge lejrområde, Kaleh."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:382
+msgid ""
+"Where did they come from? I swear those castles weren't there at sunset."
+msgstr ""
+"Hvor kom de fra? Jeg sværger på, at de borge ikke var der, da solen gik ned."
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:386
+msgid ""
+"Many strange things can happen during the long dark. But despite their "
+"wraith-like forms, I have no doubt that their cold steel can still bite "
+"flesh."
+msgstr ""
+"Mange mærkelige ting kan ske om natten. Men på trods af deres "
+"genfærdudseende, er jeg ikke i tvivl om, at deres kolde stål kan trænge "
+"igennem kød."
+
+#. [message]: speaker=Elyssa
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:390
+msgid ""
+"Like I haven't killed enough undead recently. Why can't these guys just stay "
+"dead?"
+msgstr ""
+"Som om jeg ikke har slået nok udøde ihjel. Hvorfor kan disse fyre ikke bare "
+"forblive døde?"
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:394
+msgid ""
+"Our encampment is out of the direct line of attack, so we should be somewhat "
+"safe, at least."
+msgstr ""
+"Vores bosættelse er ikke i frontlinjen, så vi vil i det mindste være "
+"nogenlunde sikret."
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:398
+msgid ""
+"But if the battle spills around our people will be slaughtered by the undead "
+"hordes!"
+msgstr ""
+"Hvis slaget spreder sig vil vort folk blive slagtet af de udøde horder!"
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:402
+msgid ""
+"There's no way we can escape the battle in time. We must protect the camp "
+"from the undead."
+msgstr ""
+"Vi kan på ingen måde undslippe slaget i tide. Vi må beskytte lejren fra de "
+"udøde."
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:406
+msgid ""
+"I fear that if we lose more than half of the tents we will not have the "
+"strength to go on. Garak, wake your men. We must hold off the undead until "
+"dawn."
+msgstr ""
+"Jeg frygter at hvis vi mister mere end halvdelen af vores telte, vil vi ikke "
+"have nok styrke til at fortsætte. Gark, væk dine mænd. Vi må holde de udøde "
+"tilbage indtil daggry."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:410
+msgid "To arms my people, to arms!"
+msgstr "Grib våbene folk, grib våbene!"
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:546
+msgid "They're raising the corpses of our fallen! What a horrible fate!"
+msgstr "De hidkalder ligene af vores døde! Hvilken frygtelig skæbne!"
+
+#. [message]: speaker=Elyssa
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:550
+msgid "Then we shall have to give them a proper cremation."
+msgstr "Så må vi give dem en ordentlig kremering."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:643
+msgid ""
+"Too many of our people have been killed. We will surely be overwhelmed by "
+"the undead now. All is lost!"
+msgstr ""
+"Alt for mange fra vores folk er blevet dræbt. Vi vil blive overmandet af de "
+"udøde nu. Alt er tabt!"
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:706
+msgid ""
+"These champions... I will challenge them. Zhul, bless my weapons with light "
+"of Eloh."
+msgstr ""
+"Disse mestre... Jeg vil udfordre dem. Zhul, velsign mine våben med Elohs lys."
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:710
+msgid "Garak, but the suns..."
+msgstr "Garak, men solene..."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:714
+msgid ""
+"You will not do any such thing, anyone trying to fight these creeps "
+"singlehanded will surely die. We need you, we will not make it without you."
+msgstr ""
+"Du vil ikke gennemføre dette, enhver som forsøger at kæmpe mod disse kryb "
+"alene vil dø. Vi har brug for dig, vi kommer ikke igennem uden dig."
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:718
+msgid ""
+"I had dreams this night Kaleh, full of gloom and darkness, my journey will "
+"end here one way or another."
+msgstr ""
+"Jeg havde drømme i nat Kaleh, fuld af mørke og elendighed, min rejse vil "
+"afsluttes her på den ene eller anden måde."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:722
+msgid ""
+"No! That's not true, our future is what we make of it, stay behind for this "
+"fight and... "
+msgstr ""
+"Nej! Det er ikke sandt, vores fremtid er hvad vi gør den til, hold dig "
+"tilbage i denne kamp og..."
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:726
+msgid ""
+"And what? You'll help me become a coward? I lived long, I'm not afraid of "
+"the end, just let me give it some meaning."
+msgstr ""
+"Og hvad? Du vil lade mig være en kujon? Jeg har levet længe, jeg er ikke "
+"bange for døden, bare jeg kan give den mening."
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:730
+msgid ""
+"I bless you champion with the light that will come, I bless you with the "
+"memory and the promise. Lay down your bow, champion, and let your sword "
+"shine in the dark."
+msgstr ""
+"Jeg velsigner dig mester med lysets komme, jeg velsigner dig med hukommelsen "
+"og løftet. Læg din bue ned, mester, og lad dit sværd skinne i natten."
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:860
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:972
+msgid "You there! Creep! Stand and face me, shade! I challenge you!"
+msgstr "Du der! Afskum! Mød mig skygge! Jeg udfordrer dig!"
+
+#. [message]: speaker=Grak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:870
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:982
+msgid ""
+"Foolish mortal... For daring to challenge me, I'll devour your soul and "
+"torment it for all eternity..."
+msgstr ""
+"Tåbelige dødelig... Jeg vil æde din sjæl og tortere den i al evighed..."
+
+#. [message]: speaker=Grak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:876
+msgid ""
+"So you destroyed Zur... Come mortal, let's cross our blades... It's time for "
+"you to take his place..."
+msgstr ""
+"Så du knuste Zur... Kom dødelige, lad os krydse klinger... Tiden er kommet "
+"for, at du skal overtage hans plads..."
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:884
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:996
+msgid "You there! Pile of bones! I challenge you, stand and face me!"
+msgstr "Du der! Knoglesæk! Jeg udfordrer dig, bliv og mød mig!"
+
+#. [message]: speaker=Zur
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:894
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1006
+msgid "Puny elf... Time to die..."
+msgstr "Ynkelige elv... Tid til at dø..."
+
+#. [message]: speaker=Zur
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:900
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1012
+msgid ""
+"Grak was weak... But still you deserve respect... Meet my axe and take his "
+"place..."
+msgstr ""
+"Grak var svag... Men du fortjener respekt... Mød min økse og overtag hans "
+"plads..."
+
+#. [message]: speaker=$challenged
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:919
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1031
+msgid "And so it ends... Your champion is dead, elves... Come join him..."
+msgstr ""
+"Og sådan ender det... Jeres mester er død elverfolk... Slut jer til ham..."
+
+#. [message]: speaker=Grak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:988
+msgid ""
+"So you destroyed Zur... Come, mortal, let us cross our blades... It's time "
+"for you to take his place..."
+msgstr ""
+"Så du knuste Zur... Kom dødelige, lad os krydse klinger... Det er tid for "
+"dig at overtage hans plads..."
+
+#. [message]: speaker=Kaleh
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1072
+msgid "Where is Garak? Has anybody seen him?"
+msgstr "Hvor er Garak? Har nogen set ham?"
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1076
+msgid ""
+"I saw him jumping into deep darkness pursuing a group of enemies. Let's hope "
+"nothing happened to him."
+msgstr ""
+"Jeg så han sprang ned i mørket på jagt efter en gruppe fjender. Lad os håbe "
+"at der ikke er sket ham noget."
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1126
+msgid ""
+"Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
+"can't last forever, and with the light of the sun the undead power wanes and "
+"their dark magics unravel."
+msgstr ""
+"Men se, daggryet er nært forstående, vores redning er indenfor rækkevidde. "
+"Selv det lange mørke varer ikke evigt, og med lyset fra solen vil de udødes "
+"mørke magt formindskes og deres magi opløses."
+
+#. [message]: speaker=Ystara
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1143
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1577
+msgid ""
+"No! This contest is not over yet, Azkotep. I shall show you a taste of my "
+"true power."
+msgstr ""
+"Nej! Denne konkurrence er ikke forbi endnu Azkotep. Jeg skal vise dig en "
+"smagsprøve på min sande magt."
+
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1175
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1204
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1304
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1462
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1604
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1633
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1880
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1910
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2001
+msgid "Possessed Garak"
+msgstr "Besat Garak"
+
+#. [message]: speaker=Zhul
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1178
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1353
+msgid "Eloh protect us, what has he done?"
+msgstr "Eloh beskytter os, hvad har han gjort?"
+
+#. [message]: speaker=Possessed Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1360
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1518
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1781
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1888
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2057
+msgid "I live again! I can feel!"
+msgstr "Jeg lever igen! Jeg kan føle!"
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1197
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1626
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1903
+msgid ""
+"I will... not... yield... I defeated... your... champion... I... will... "
+"overcome... you..."
+msgstr ""
+"Jeg vil... ikke... gi' mig... Jeg besejrede... din... mester... jeg... "
+"vil... besejre... dig..."
+
+#. [message]: speaker=Possessed Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1207
+msgid "No, fool! Stop!"
+msgstr "Nej, fjols! Stop!"
+
+#. [message]: speaker=Garak
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1222
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1928
+msgid "The dark lord... is no more..."
+msgstr "Den mørke herre... er ikke mere..."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1227
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1932
+msgid ""
+"Garak collapses to the ground with his own blade sticking from his chest."
+msgstr ""
+"Garak synker om på jorden med sin egen klinge stikkende ud fra sit bryst."
+
+#. [message]: speaker=Azkotep
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1237
+msgid ""
+"No! How dare you? I shall have my vengeance upon you for spoiling this "
+"contest! Darkness shall reign until I have triumphed!"
+msgstr ""
+"Nej! Hvor vover du! Jeg vil få hævn over jer alle! Mørket skal regere indtil "
+"jeg har vundet!"
+
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1241
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1670
+msgid ""
+"Maybe I spoke too soon. Curse Uria, he has even blotted out the stars, all "
+"is darkness. Kaleh, our course is clear, we must destroy that abomination."
+msgstr ""
+"Måske var jeg for hurtig. Forbandet være Uria, han har enddog fjernet "
+"stjernerne, alt er i mørke. Kaleh, vores mission er klar, vi må ødelægge den "
+"vederstyggelighed."
+
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1247
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1412
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1868
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1263
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1419
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1848
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. Death and decay, grant me my vengeance!"
@@ -2406,7 +2395,7 @@ msgstr ""
 "før solopgang. Død og nedbrydels, giv mig min hævn!"
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1251
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1267
 msgid ""
 "In this I shall support you, the darkness will not lift until one of us is "
 "victorious."
@@ -2414,21 +2403,21 @@ msgstr ""
 "Det er vi enige om, solen skal ikke stå op igen før en af os har sejret."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1333
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1349
 msgid "Hahaha!..."
 msgstr "Hahaha!..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1348
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1515
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1796
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2090
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1364
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1522
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2061
 msgid "Garak?"
 msgstr "Garak?"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1352
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1519
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1368
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1526
 msgid ""
 "Hahahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again, my minions and feast on the slaughter!"
@@ -2437,10 +2426,10 @@ msgstr ""
 "alle. Rejs jer igen følgesvende og deltag i slagteriet!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1356
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1523
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1812
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2106
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1530
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1801
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2077
 msgid ""
 "Maybe I spoke too soon. Curse Uria, they have even blotted out the stars, "
 "all is darkness. Kaleh, our course is clear, we must destroy one of these "
@@ -2455,18 +2444,18 @@ msgstr ""
 "slutte. Vi har intet valg."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1360
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1527
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1816
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2110
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1376
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1805
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2081
 msgid "But to kill Garak? How can we?"
 msgstr "Men dræbe Garak? Hvordan?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1364
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1531
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1820
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1380
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1538
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1809
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2085
 msgid ""
 "That thing is not Garak. This night has lasted long enough, and too many of "
 "our people have died. How many more would you sacrifice for Garak's sake? "
@@ -2484,38 +2473,31 @@ msgstr ""
 
 #. [message]: speaker=Ystara
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1368
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1535
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1824
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2118
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1384
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1542
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1813
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2089
 msgid "The stench of death is in the air."
 msgstr "Lugten af død er over os."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1372
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1539
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1828
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2122
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1388
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1546
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2093
 msgid "Yes, let us end this once and for all."
 msgstr "Ja lad os afslutte dette en gang for alle."
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1378
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1545
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1834
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1552
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1823
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2099
 msgid "Defeat Possessed Garak (or)"
 msgstr "Besejr besat Garak (eller)"
 
-#. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1382
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1972
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2132
-msgid "Defeat Ystara"
-msgstr "Besejr Ystara"
-
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1423
 msgid ""
 "In this I shall support you, the darkness shall not break until one of us is "
 "victorious."
@@ -2523,28 +2505,28 @@ msgstr ""
 "Det er vi enige om, solen skal ikke stå op igen før en af os har sejret."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1500
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1781
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2075
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1507
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1770
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2046
 msgid "Hahaha!.."
 msgstr "Hahaha!.."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1504
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1609
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1511
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1607
 msgid "Eloh protect us, what has she done?"
 msgstr "Må Eloh beskytte os, hvad har hun gjort?"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1638
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1933
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1636
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1913
 msgid "No fool! Stop!"
 msgstr "Intet fjols! Stop!"
 
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1668
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1942
 msgid ""
 "No! How dare you! I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
@@ -2553,15 +2535,15 @@ msgstr ""
 "jeg har vundet!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1785
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1903
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2079
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1774
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1883
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2050
 msgid "Eloh protect us, what is happening?"
 msgstr "Må Eloh beskytte os, hvad sker der?"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1800
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2094
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1789
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2065
 msgid ""
 "Hahahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
@@ -2570,8 +2552,8 @@ msgstr ""
 "alle. Rejs jer igen følgesvende og deltag i slagteriet!"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1804
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2098
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1793
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2069
 msgid ""
 "I told you, I will be back, you fools! Now I shall have my vengeance upon "
 "you all. Darkness shall reign until I have triumphed!"
@@ -2581,8 +2563,8 @@ msgstr ""
 
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1808
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2102
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2073
 msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
@@ -2590,7 +2572,7 @@ msgstr ""
 "Det er vi enige om, solen skal ikke stå op igen før en af os har sejret."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1966
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1946
 msgid ""
 "Maybe I spoke too soon. Curse Uria, she has even blotted out the stars, all "
 "is darkness. Kaleh, our course is clear, we must destroy that abomination."
@@ -2600,22 +2582,22 @@ msgstr ""
 "vederstyggelighed."
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2179
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2141
 msgid "Wounded Elven Scout"
 msgstr "Såret elverspejder"
 
 #. [message]: speaker=Elven Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2144
 msgid "Orcs... Not far behind me... From the hills..."
 msgstr "Orker... Ikke langt bag mig... Fra bakkerne..."
 
 #. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2210
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2172
 msgid "Ganthos"
 msgstr "Ganthos"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2255
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2217
 msgid ""
 "What's this on our borders? Stinkin' elves and more undead? We'll teach them "
 "a lesson they won't soon forget. Attack!"
@@ -2624,7 +2606,7 @@ msgstr ""
 "dem en lærestreg de ikke vil glemme. Angrib!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2259
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2221
 msgid ""
 "If those raiders capture any of our encampments, I fear our people's fate "
 "will be just as bad as if it was captured by the undead."
@@ -2633,7 +2615,7 @@ msgstr ""
 "vort folks skæbne vil blive lige så slem, som hvis vi blev fanget af udøde."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2279
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2241
 msgid ""
 "You got me, elf... But you won't be so lucky with the tribes of the hills... "
 "(cough)"
@@ -2642,29 +2624,29 @@ msgstr ""
 "bakkerne... (host)"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2245
 msgid "I deeply regret... I won't be able to see that..."
 msgstr "Jeg fortryder bittert... Jeg vil ikke komme til at se det..."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2251
 msgid "Killed by a dead creep... (cough)"
 msgstr "Dræbt af en død lort... (host)"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2261
 msgid "Look, he dropped something! I wonder what it is..."
 msgstr "Se han tabte noget! Hvad mon det er..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2317
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2279
 msgid ""
 "It's some sort of a map. I think I recognize some of those hills ahead on it."
 msgstr ""
 "Det er en slags kort. Tror jeg kan genkende nogle af bakkerne på kortet."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2321
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2283
 msgid ""
 "And these look like camps and patrol routes. A lot of camps and patrol "
 "routes. Kaleh, do you think we could sneak up between them?"
@@ -2673,34 +2655,34 @@ msgstr ""
 "Kaleh tror du vi kan snige os forbi dem?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2325
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2287
 msgid ""
 "Difficult, but worth a try I guess. But first we must try to survive this "
 "mess."
 msgstr "Svært, men et forsøg værd. Men først skal vi overleve dette inferno."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2291
 msgid "Right, sorry. Damn creeps."
 msgstr "Ja forbandede lorte."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2298
 msgid "And now we'll never know what was on that parchment. Shame."
 msgstr "Og nu finder vi aldrig ud af hvad der stod på det pergament. En skam."
 
 #. [message]: race=orc
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2355
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2317
 msgid "Chief has fallen! Flee!"
 msgstr "Kaptajnen er faldet! Flygt for jeres liv!"
 
 #. [message]: race=goblin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2366
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2328
 msgid "Boss dead! Run!"
 msgstr "Chef død! Løb!"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2421
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2383
 msgid ""
 "You think you have defeated me, don't you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
@@ -2709,7 +2691,7 @@ msgstr ""
 "ny form mere magtfuld og frygtelig end du kan forestille dig!"
 
 #. [message]: speaker=$other_creep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2425
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2387
 msgid ""
 "How dare you interfere in our contest! I did not need your help. I shall "
 "teach you not to cross a lord of darkness."
@@ -2718,13 +2700,13 @@ msgstr ""
 "hjælp. Jeg skal lære dig ikke at gå mod en mørkets lensherre."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2442
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2404
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2708
 msgid "Finally. It is over."
 msgstr "Endelig. Det er slut."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2451
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2413
 msgid ""
 "See, I told you I was more powerful. This game is over, now I can leave this "
 "shell of a body."
@@ -2733,31 +2715,31 @@ msgstr ""
 "indpakning af en krop."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2464
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2754
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2426
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2716
 msgid "He's...He's still breathing!"
 msgstr "Han... Han trækker stadig vejret!"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2468
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2666
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2758
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2430
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2628
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2720
 msgid "Protect the boy for me Zhul, (cough) I go to a better place."
 msgstr "Beskyt drengen for mig Zhul (host). Jeg går til et bedre sted."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2479
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2441
 msgid "What about Garak?"
 msgstr "Hvad med Garak?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2489
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2451
 msgid "I've asked and looked around, there is no sign of him or his body"
 msgstr ""
 "Jeg har spurgt mig omkring og der er ingen spor efter ham eller hans lig."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2493
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2455
 msgid ""
 "He's probably dead, then, but he died as a warrior. Let's respect his wishes "
 "and remember him for that."
@@ -2766,16 +2748,16 @@ msgstr ""
 "ønske og huske ham for netop det."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2499
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2461
 msgid "He died as a hero. Remember that and tell the tale, for it's worth it."
 msgstr ""
 "Han døde som en helt. Husk det og fortæl hans sagn, for det er historien "
 "værd."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2507
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2687
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2469
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2649
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2729
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain. "
@@ -2784,25 +2766,25 @@ msgstr ""
 "offer, og jeg sværger at hans død ikke vil være forgæves. "
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2511
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2691
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2473
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2653
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2733
 msgid "Goodbye old friend, may Eloh shine her light eternal upon you."
 msgstr "Farvel gamle ven, må Eloh skinne sit evige lys over dig."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2515
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2695
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2775
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2477
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2657
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2737
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr ""
 "Han var den modigste og mest ærefulde kriger jeg har mødt på mine rejser."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2519
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2699
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2779
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2741
 msgid ""
 "He was a bastard at times.... But...but why did he have to die? It...it just "
 "doesn't make sense. "
@@ -2811,15 +2793,15 @@ msgstr ""
 "giver bare ikke nogen mening. "
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2529
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2790
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2491
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2752
 msgid "Miraculously, all of our encampments survived the night."
 msgstr "Mirakuløst, alle vores bosættelser overlevede natten."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2533
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2637
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2794
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2495
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2756
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2834,20 +2816,20 @@ msgstr ""
 "dette tilfælde."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2540
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2801
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2502
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2763
 msgid "Well, only $elven_camps encampments remain, but we will survive."
 msgstr "Kun $elven_camps bosættelser er tilbage, men vi overlever."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2544
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2805
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2506
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2767
 msgid "Yes, but at what cost?"
 msgstr "Ja men til hvilken pris?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2554
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2815
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2777
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2862,8 +2844,8 @@ msgstr ""
 "dette tilfælde."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2567
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2828
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2529
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2790
 msgid ""
 "We have suffered losses, but we we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2878,8 +2860,8 @@ msgstr ""
 "dette tilfælde."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2574
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2536
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2797
 msgid ""
 "We have suffered grievous losses, but we we are not broken yet. Long will "
 "this slaughter be remembered by our people. Where was Eloh during the "
@@ -2896,8 +2878,8 @@ msgstr ""
 "til dette tilfælde."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2585
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2846
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2547
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2808
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
@@ -2906,8 +2888,8 @@ msgstr ""
 "kun et sygt spil?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2589
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2551
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2812
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
@@ -2916,8 +2898,8 @@ msgstr ""
 "sandheden om hvad der skete i aftes."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2593
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2555
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2816
 msgid ""
 "I don't want to be here tomorrow night to find out. The hills to the north "
 "are close. Let's be far away before another nightfall."
@@ -2926,12 +2908,12 @@ msgstr ""
 "mod nord er tæt på. Lad os komme væk før endnu en nat ankommer."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2583
 msgid "The undead lords are defeated at last."
 msgstr "De udøde lensherrer er endelig besejret."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2625
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2587
 msgid ""
 "There's too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
@@ -2940,7 +2922,7 @@ msgstr ""
 "tilbage!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2629
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2591
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
@@ -2951,7 +2933,7 @@ msgstr ""
 "orker trækker sig tilbage med daggryet."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2633
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2595
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -2966,7 +2948,7 @@ msgstr ""
 "havde måttet holde ud hele den lange nat."
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2603
 msgid ""
 "You have triumphed for the moment, but think not that the dark lords can be "
 "so easily vanquished. We shall return, and shall rule long after your bones "
@@ -2978,7 +2960,7 @@ msgstr ""
 "uskadt."
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2645
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2607
 msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
@@ -2987,22 +2969,22 @@ msgstr ""
 "gerning bør gå forbi uden straf."
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2654
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2616
 msgid "A token to remember us by..."
 msgstr "Et symbol hvorved du kan huske os..."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2620
 msgid "Aaaauuugggghhhh!"
 msgstr "Aaaauuugggghhhh!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2662
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2624
 msgid "He just collapsed!"
 msgstr "Han faldt bare sammen!"
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2639
 msgid ""
 "You will never see your champion again. And we will torment his soul for the "
 "rest of the eternity."
@@ -3010,7 +2992,7 @@ msgstr ""
 "Du vil aldrig se din mester igen. Og vi vil tortere hans sjæl for evigt."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2643
 msgid ""
 "Don't listen to them, they are powerless in their defeat. Even if Garak fell "
 "in battle his soul went to a better place and they can't reach him there."
@@ -3019,14 +3001,14 @@ msgstr ""
 "slaget er hans sjæl på et bedre sted, og de kan ikke nå ham der."
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2696
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
 msgstr "Ha, nu har du lært at kødet er altid svagere end de udødes magt."
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2740
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2702
 msgid "My undead zombies shall always defeat the living."
 msgstr "Mine udøde zombier vil altid besejre de levende."
 
@@ -16626,6 +16608,9 @@ msgstr "Det lange mørke (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "Det lange mærke (4)"
+
+#~ msgid "You Control Less Than 6 Villages"
+#~ msgstr "Du kontrollerer mindre end 6 landsbyer"
 
 #~ msgid ""
 #~ "Garak collapses to the ground with own blade sticking from his chest."

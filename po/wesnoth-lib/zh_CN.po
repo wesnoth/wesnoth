@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:38+0200\n"
+"POT-Creation-Date: 2009-05-03 11:08+0200\n"
 "PO-Revision-Date: 2009-03-27 22:50-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -575,7 +575,6 @@ msgstr "连接"
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
-#: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
@@ -727,8 +726,6 @@ msgstr "允许同时打开多张地图（MDI）"
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
-#: data/gui/default/window/game_save_message.cfg:139
-#: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
@@ -747,13 +744,15 @@ msgstr "应用"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
-#: data/gui/default/window/game_save_message.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_message.cfg:32
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
 msgid "Save Game"
 msgstr "保存游戏"
 
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
+#: data/gui/default/window/game_save_oos.cfg:82
 #, fuzzy
 msgid "Name:"
 msgstr "名字:"
@@ -761,6 +760,53 @@ msgstr "名字:"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
+#: data/gui/default/window/game_save_oos.cfg:186
+#: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_overwrite.cfg:88
+#: data/gui/default/window/game_save_overwrite.cfg:89
+#: src/construct_dialog.cpp:128
+msgid "Yes"
+msgstr "是"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/game_save_message.cfg:154
+#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_overwrite.cfg:103
+#: src/construct_dialog.cpp:129
+msgid "No"
+msgstr "否"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_oos.cfg:52
+msgid "OOS error"
+msgstr ""
+
+#. [toggle_button]: id=ignore_all
+#: data/gui/default/window/game_save_oos.cfg:134
+msgid "Ignore All"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit_game
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+msgid "Quit Game"
+msgstr "退出游戏"
+
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_save_overwrite.cfg:32
+msgid "Overwrite?"
+msgstr ""
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_overwrite.cfg:52
+msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [grid]
@@ -1101,14 +1147,6 @@ msgstr "Credits"
 msgid "Quit"
 msgstr "退出"
 
-#: src/construct_dialog.cpp:128
-msgid "Yes"
-msgstr "是"
-
-#: src/construct_dialog.cpp:129
-msgid "No"
-msgstr "否"
-
 #: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "关闭"
@@ -1129,7 +1167,7 @@ msgstr "新建文件夹"
 msgid "Deletion of the file failed."
 msgstr "删除文件失败。"
 
-#: src/filechooser.cpp:205
+#: src/filechooser.cpp:205 src/gui/dialogs/game_save.cpp:118
 msgid "Name: "
 msgstr "名字:"
 
@@ -1137,11 +1175,11 @@ msgstr "名字:"
 msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
-#: src/game_preferences.cpp:287
+#: src/game_preferences.cpp:290
 msgid "No server has been defined."
 msgstr "服务器未定义"
 
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:352
 msgid "player"
 msgstr "玩家"
 
@@ -1560,6 +1598,59 @@ msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 msgid "Find $filename server binary to host networked games"
 msgstr "查找 $filename 服务器可执行文件以便建立联网游戏"
 
+#: src/gui/auxiliary/canvas.cpp:320
+msgid "Line doesn't fit on canvas."
+msgstr "线条无法在画布上显示"
+
+#: src/gui/auxiliary/canvas.cpp:455
+msgid "Rectangle doesn't fit on canvas."
+msgstr "矩形无法在画布上显示"
+
+#: src/gui/auxiliary/canvas.cpp:826
+msgid "Text has a font size of 0."
+msgstr "字体大小是0。"
+
+#: src/gui/auxiliary/canvas.cpp:891
+msgid "Text doesn't start on canvas."
+msgstr "文字没有从画布上开始。"
+
+#: src/gui/auxiliary/window_builder.cpp:316 src/gui/widgets/settings.cpp:505
+msgid "No resolution defined."
+msgstr "分辨率未定义"
+
+#: src/gui/auxiliary/window_builder.cpp:412
+#: src/gui/auxiliary/window_builder.cpp:932
+#: src/gui/auxiliary/window_builder.cpp:1141 src/gui/widgets/settings.cpp:760
+#: src/gui/widgets/settings.cpp:914
+msgid "No grid defined."
+msgstr "网格未定义"
+
+#: src/gui/auxiliary/window_builder.cpp:519
+msgid "A row must have a column."
+msgstr "一行至少要有一个栏目"
+
+#: src/gui/auxiliary/window_builder.cpp:520
+msgid "Number of columns differ."
+msgstr "分栏数目不一致"
+
+#: src/gui/auxiliary/window_builder.cpp:772
+msgid "No list defined."
+msgstr "列表未定义"
+
+#: src/gui/auxiliary/window_builder.cpp:775
+msgid "A 'list_definition' should contain one row."
+msgstr "list_definition (列表定义）应该包含一行。"
+
+#: src/gui/auxiliary/window_builder.cpp:793
+msgid ""
+"'list_data' must have the same number of columns as the 'list_definition'."
+msgstr ""
+"'list_data' (列表数据) 与 'list_definition' （列表定义）中栏目数量必须一致。"
+
+#: src/gui/auxiliary/window_builder.cpp:1060
+msgid "The number of value_labels and values don't match."
+msgstr "value_labels （值标签）与 values (值) 数量不匹配。"
+
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "读取游戏"
@@ -1572,83 +1663,30 @@ msgstr "读取游戏..."
 msgid "Version"
 msgstr "版本"
 
-#: src/gui/widgets/canvas.cpp:320
-msgid "Line doesn't fit on canvas."
-msgstr "线条无法在画布上显示"
-
-#: src/gui/widgets/canvas.cpp:455
-msgid "Rectangle doesn't fit on canvas."
-msgstr "矩形无法在画布上显示"
-
-#: src/gui/widgets/canvas.cpp:826
-msgid "Text has a font size of 0."
-msgstr "字体大小是0。"
-
-#: src/gui/widgets/canvas.cpp:891
-msgid "Text doesn't start on canvas."
-msgstr "文字没有从画布上开始。"
-
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "未定义"
 
-#: src/gui/widgets/settings.cpp:135
+#: src/gui/widgets/settings.cpp:137
 msgid "No default gui defined."
 msgstr "没有指定默认GUI（图形界面）"
 
-#: src/gui/widgets/settings.cpp:290
+#: src/gui/widgets/settings.cpp:292
 msgid "Window not defined."
 msgstr "窗口未定义"
 
-#: src/gui/widgets/settings.cpp:387
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Widget 定义 '$definition' 不包含 '$id' 的定义。"
 
-#: src/gui/widgets/settings.cpp:503 src/gui/widgets/window_builder.cpp:315
-msgid "No resolution defined."
-msgstr "分辨率未定义"
-
-#: src/gui/widgets/settings.cpp:529
+#: src/gui/widgets/settings.cpp:531
 msgid "No state or draw section defined."
 msgstr "状态或绘制区域未定义"
 
-#: src/gui/widgets/settings.cpp:758 src/gui/widgets/settings.cpp:912
-#: src/gui/widgets/window_builder.cpp:411
-#: src/gui/widgets/window_builder.cpp:925
-#: src/gui/widgets/window_builder.cpp:1134
-msgid "No grid defined."
-msgstr "网格未定义"
-
-#: src/gui/widgets/window.cpp:615
+#: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示一个对话框，屏幕大小不适。"
-
-#: src/gui/widgets/window_builder.cpp:518
-msgid "A row must have a column."
-msgstr "一行至少要有一个栏目"
-
-#: src/gui/widgets/window_builder.cpp:519
-msgid "Number of columns differ."
-msgstr "分栏数目不一致"
-
-#: src/gui/widgets/window_builder.cpp:765
-msgid "No list defined."
-msgstr "列表未定义"
-
-#: src/gui/widgets/window_builder.cpp:768
-msgid "A 'list_definition' should contain one row."
-msgstr "list_definition (列表定义）应该包含一行。"
-
-#: src/gui/widgets/window_builder.cpp:786
-msgid ""
-"'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
-"'list_data' (列表数据) 与 'list_definition' （列表定义）中栏目数量必须一致。"
-
-#: src/gui/widgets/window_builder.cpp:1053
-msgid "The number of value_labels and values don't match."
-msgstr "value_labels （值标签）与 values (值) 数量不匹配。"
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1782,10 +1820,6 @@ msgstr "停止"
 #: src/hotkeys.cpp:82 src/hotkeys.cpp:89
 msgid "Play"
 msgstr "播放"
-
-#: src/hotkeys.cpp:83
-msgid "Quit Game"
-msgstr "退出游戏"
 
 #: src/hotkeys.cpp:84
 msgid "Set Team Label"
@@ -2216,7 +2250,7 @@ msgstr "选择分辨率"
 msgid "Error"
 msgstr "错误"
 
-#: src/terrain_translation.cpp:701
+#: src/terrain_translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"

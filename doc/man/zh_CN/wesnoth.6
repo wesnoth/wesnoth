@@ -57,9 +57,8 @@ http://www.wesnoth.org/wiki/CommandMode
 \fB\-\-dummy\-locales\fP
 使用特殊区域(dummy locales)设置切换到任意语言，即使那种语言不是全局安装的。
 .TP 
-\fB\-e, \-\-editor \ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-e \-\-load\fP
+\fB\-e,\ \-\-editor\fP\fI\ file\fP
+直接启动内置的地图编辑器。如果指定了\fIfile\fP，则和\fB\-e \-\-load\fP等价。
 .TP 
 \fB\-\-fps\fP
 在屏幕一角显示游戏fps(frames per second)
@@ -77,10 +76,8 @@ to \fB\-e \-\-load\fP
 显示命令行可用选项，然后退出。
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ file\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+从默认游戏存档目录加载存档\fIfile\fP。如果与 \fB\-e\fP 或 \fB\-\-editor\fP
+选项同时使用，启动地图编辑器并打开存档\fIfile\fP所对应的地图。如果是一个目录，则编辑器启动后自动在那里打开装载地图对话框。
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 设置debug的级别。\fBall\fP用来匹配任意级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\

@@ -90,31 +90,45 @@ msgstr "special"
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
-#: data/core/editor/tool-hints.cfg:7
-#: data/core/editor/tool-hints.cfg:13
-#: data/themes/editor2.cfg:179
-#: data/themes/editor2.cfg:192
-msgid "Use left/right mouse button to draw fore-/background terrain. Hold Shift to paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr "Use left/right mouse button to draw fore-/background terrain. Hold Shift to paint base layer only. Ctrl+click to sample terrain under cursor."
+#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only. Ctrl+click to sample terrain under cursor."
+msgstr ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only. Ctrl+click to sample terrain under cursor."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19
-#: data/themes/editor2.cfg:214
-msgid "Left mouse button selects, right deselects. Hold Shift for magic-wand selection of tiles with same terrain."
-msgstr "Left mouse button selects, right deselects. Hold Shift for magic-wand selection of tiles with same terrain."
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
+msgstr ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25
-#: data/themes/editor2.cfg:203
-msgid "Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears."
-msgstr "Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears."
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-msgid "Click to paste, zoom out for more accuracy when pasting large areas. Use the edit menu to transform the clipboard (rotate, mirror)."
-msgstr "Click to paste, zoom out for more accuracy when pasting large areas. Use the edit menu to transform the clipboard (rotate, mirror)."
+msgid ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
+msgstr ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -167,21 +181,27 @@ msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
 #: src/editor2/editor_controller.cpp:307
-msgid "Do you really want to quit? Changes in the map since the last save will be lost."
-msgstr "Do you really want to quit? Changes in the map since the last save will be lost."
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
 
 #: src/editor2/editor_controller.cpp:309
-msgid "Do you really want to quit? The following maps were modified and all changes since the last save will be lost:"
-msgstr "Do you really want to quit? The following maps were modified and all changes since the last save will be lost:"
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
 
 #: src/editor2/editor_controller.cpp:314
 msgid "Quit"
 msgstr "Quit"
 
-#: src/editor2/editor_controller.cpp:369
-#: src/editor2/editor_controller.cpp:479
-#: src/editor2/editor_controller.cpp:515
-#: src/editor2/editor_controller.cpp:537
+#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:479
+#: src/editor2/editor_controller.cpp:515 src/editor2/editor_controller.cpp:537
 msgid "Error"
 msgstr "Error"
 
@@ -194,8 +214,10 @@ msgid "Unsaved Changes"
 msgstr "Unsaved Changes"
 
 #: src/editor2/editor_controller.cpp:406
-msgid "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Do you want to discard all changes you made to the map since the last save?"
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Do you want to discard all changes you made to the map since the last save?"
 
 #: src/editor2/editor_controller.cpp:424
 msgid "Choose a Map to Open"
@@ -229,13 +251,11 @@ msgstr "Error loading mask"
 msgid "Choose target map"
 msgstr "Choose target map"
 
-#: src/editor2/editor_controller.cpp:534
-#: src/editor2/editor_controller.cpp:698
+#: src/editor2/editor_controller.cpp:534 src/editor2/editor_controller.cpp:698
 msgid "Error loading map"
 msgstr "Error loading map"
 
-#: src/editor2/editor_controller.cpp:612
-#: src/editor2/editor_controller.cpp:654
+#: src/editor2/editor_controller.cpp:612 src/editor2/editor_controller.cpp:654
 msgid "This map is already open."
 msgstr "This map is already open."
 
@@ -247,8 +267,7 @@ msgstr "Map saved."
 msgid "Loaded embedded map data"
 msgstr "Loaded embedded map data"
 
-#: src/editor2/editor_controller.cpp:678
-#: src/editor2/editor_controller.cpp:692
+#: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
 msgstr "Map loaded from scenario"
 
@@ -288,8 +307,7 @@ msgstr "Auto-update Terrain Transitions: Partial"
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Auto-update Terrain Transitions: No"
 
-#: src/editor2/editor_map.cpp:150
-#: src/editor2/mouse_action.cpp:439
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
 msgid "Player"
 msgstr "Player"
 
@@ -310,8 +328,12 @@ msgid "File not found"
 msgstr "File not found"
 
 #: src/editor2/map_context.cpp:84
-msgid "The map file looks like a scenario, but the map_data value does not point to an existing file"
-msgstr "The map file looks like a scenario, but the map_data value does not point to an existing file"
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
 
 #: src/editor2/map_context.cpp:99
 msgid "Empty map file"
@@ -334,8 +356,16 @@ msgid "Choose player"
 msgstr "Choose player"
 
 #: src/editor2/mouse_action.cpp:444
-msgid "Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player's starting position."
-msgstr "Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player's starting position."
+msgid ""
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
+msgstr ""
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
@@ -347,46 +377,64 @@ msgstr "Custom setting"
 #~ msgstr ""
 #~ "Which player should start here? You can also use the 1-9 and delete keys "
 #~ "to set/clear starting positions."
+
 #~ msgid "Settings"
 #~ msgstr "Settings"
+
 #~ msgid "Draw tiles"
 #~ msgstr "Draw tiles"
+
 #~ msgid "Fill"
 #~ msgstr "Fill"
+
 #~ msgid "Set player's starting position"
 #~ msgstr "Set player's starting position"
+
 #~ msgid "Zoom in"
 #~ msgstr "Zoom in"
+
 #~ msgid "Zoom out"
 #~ msgstr "Zoom out"
+
 #~ msgid "Zoom to default view"
 #~ msgstr "Zoom to default view"
+
 #~ msgid "Toggle grid"
 #~ msgstr "Toggle grid"
+
 #~ msgid "Resize the map"
 #~ msgstr "Resize the map"
+
 #~ msgid "Flip map"
 #~ msgstr "Flip map"
+
 #~ msgid "Language"
 #~ msgstr "Language"
+
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Choose your preferred language:"
+
 #~ msgid "Battle for Wesnoth Map Editor"
 #~ msgstr "Battle for Wesnoth Map Editor"
+
 #~ msgid "Which Player?"
 #~ msgstr "Which Player?"
+
 #~ msgid "Which player should start here?"
 #~ msgstr "Which player should start here?"
+
 #~ msgid ""
 #~ "Warning: Illegal characters found in the map name. Please save under a "
 #~ "different name."
 #~ msgstr ""
 #~ "Warning: Illegal characters found in the map name. Please save under a "
 #~ "different name."
+
 #~ msgid "The file does not contain a valid map."
 #~ msgstr "The file does not contain a valid map."
+
 #~ msgid "Do you want to save the map before quitting?"
 #~ msgstr "Do you want to save the map before quitting?"
+
 #~ msgid "Error: Illegal character in filename."
 #~ msgstr "Error: Illegal character in filename."
-

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:38+0200\n"
+"POT-Creation-Date: 2009-05-03 11:08+0200\n"
 "PO-Revision-Date: 2009-04-09 22:49+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -576,7 +576,6 @@ msgstr "Повежи се"
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
-#: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
@@ -728,8 +727,6 @@ msgstr "Дозволи више од једне отворене мапе ист
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
-#: data/gui/default/window/game_save_message.cfg:139
-#: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
@@ -748,13 +745,15 @@ msgstr "Примени"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
-#: data/gui/default/window/game_save_message.cfg:32 src/hotkeys.cpp:62
+#: data/gui/default/window/game_save_message.cfg:32
+#: data/gui/default/window/game_save_oos.cfg:32 src/hotkeys.cpp:62
 msgid "Save Game"
 msgstr "Сачувај игру"
 
 #. [label]
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
+#: data/gui/default/window/game_save_oos.cfg:82
 #, fuzzy
 msgid "Name:"
 msgstr "Име: "
@@ -762,6 +761,53 @@ msgstr "Име: "
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
+#: data/gui/default/window/game_save_oos.cfg:186
+#: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_overwrite.cfg:88
+#: data/gui/default/window/game_save_overwrite.cfg:89
+#: src/construct_dialog.cpp:128
+msgid "Yes"
+msgstr "Да"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/game_save_message.cfg:154
+#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_overwrite.cfg:103
+#: src/construct_dialog.cpp:129
+msgid "No"
+msgstr "Не"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_oos.cfg:52
+msgid "OOS error"
+msgstr ""
+
+#. [toggle_button]: id=ignore_all
+#: data/gui/default/window/game_save_oos.cfg:134
+msgid "Ignore All"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit_game
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+msgid "Quit Game"
+msgstr "Напусти игру"
+
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_save_overwrite.cfg:32
+msgid "Overwrite?"
+msgstr ""
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_save_overwrite.cfg:52
+msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
 #. [grid]
@@ -1102,14 +1148,6 @@ msgstr "Заслуге"
 msgid "Quit"
 msgstr "Напуштање"
 
-#: src/construct_dialog.cpp:128
-msgid "Yes"
-msgstr "Да"
-
-#: src/construct_dialog.cpp:129
-msgid "No"
-msgstr "Не"
-
 #: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Затвори"
@@ -1130,7 +1168,7 @@ msgstr "Нова фасцикла"
 msgid "Deletion of the file failed."
 msgstr "Брисање датотеке није успело."
 
-#: src/filechooser.cpp:205
+#: src/filechooser.cpp:205 src/gui/dialogs/game_save.cpp:118
 msgid "Name: "
 msgstr "Име: "
 
@@ -1138,11 +1176,11 @@ msgstr "Име: "
 msgid "Creation of the directory failed."
 msgstr "Стварање директоријума није успело."
 
-#: src/game_preferences.cpp:287
+#: src/game_preferences.cpp:290
 msgid "No server has been defined."
 msgstr "Сервер није задат."
 
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:352
 msgid "player"
 msgstr "играч"
 
@@ -1573,6 +1611,58 @@ msgstr "Нема познатих тема. Покушајте да промен
 msgid "Find $filename server binary to host networked games"
 msgstr "Пронађите серверску извршну $filename, за удомљавање мрежних игара."
 
+#: src/gui/auxiliary/canvas.cpp:320
+msgid "Line doesn't fit on canvas."
+msgstr "Линија не стаје на платно."
+
+#: src/gui/auxiliary/canvas.cpp:455
+msgid "Rectangle doesn't fit on canvas."
+msgstr "Правоугаоник не стаје на платно."
+
+#: src/gui/auxiliary/canvas.cpp:826
+msgid "Text has a font size of 0."
+msgstr "Величина фонта за текст је 0."
+
+#: src/gui/auxiliary/canvas.cpp:891
+msgid "Text doesn't start on canvas."
+msgstr "Текст не стаје на платно."
+
+#: src/gui/auxiliary/window_builder.cpp:316 src/gui/widgets/settings.cpp:505
+msgid "No resolution defined."
+msgstr "Резолуција није дефинисана."
+
+#: src/gui/auxiliary/window_builder.cpp:412
+#: src/gui/auxiliary/window_builder.cpp:932
+#: src/gui/auxiliary/window_builder.cpp:1141 src/gui/widgets/settings.cpp:760
+#: src/gui/widgets/settings.cpp:914
+msgid "No grid defined."
+msgstr "Мрежа није дефинисана."
+
+#: src/gui/auxiliary/window_builder.cpp:519
+msgid "A row must have a column."
+msgstr "Врста мора имати колону."
+
+#: src/gui/auxiliary/window_builder.cpp:520
+msgid "Number of columns differ."
+msgstr "Број колона се разликује."
+
+#: src/gui/auxiliary/window_builder.cpp:772
+msgid "No list defined."
+msgstr "Списак није задат."
+
+#: src/gui/auxiliary/window_builder.cpp:775
+msgid "A 'list_definition' should contain one row."
+msgstr "Поље list_definition мора садржати једну врсту."
+
+#: src/gui/auxiliary/window_builder.cpp:793
+msgid ""
+"'list_data' must have the same number of columns as the 'list_definition'."
+msgstr "Поље list_data мора имати исти број колона као list_definition."
+
+#: src/gui/auxiliary/window_builder.cpp:1060
+msgid "The number of value_labels and values don't match."
+msgstr "Број value_labels и вредности се не слаже."
+
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "Учитај игру"
@@ -1585,82 +1675,30 @@ msgstr "Учитај игру..."
 msgid "Version"
 msgstr "верзија"
 
-#: src/gui/widgets/canvas.cpp:320
-msgid "Line doesn't fit on canvas."
-msgstr "Линија не стаје на платно."
-
-#: src/gui/widgets/canvas.cpp:455
-msgid "Rectangle doesn't fit on canvas."
-msgstr "Правоугаоник не стаје на платно."
-
-#: src/gui/widgets/canvas.cpp:826
-msgid "Text has a font size of 0."
-msgstr "Величина фонта за текст је 0."
-
-#: src/gui/widgets/canvas.cpp:891
-msgid "Text doesn't start on canvas."
-msgstr "Текст не стаје на платно."
-
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обавезни виџет „$id“ није дефинисан."
 
-#: src/gui/widgets/settings.cpp:135
+#: src/gui/widgets/settings.cpp:137
 msgid "No default gui defined."
 msgstr "Подразумевано сучеље није дефинисано."
 
-#: src/gui/widgets/settings.cpp:290
+#: src/gui/widgets/settings.cpp:292
 msgid "Window not defined."
 msgstr "Прозор није дефинисан."
 
-#: src/gui/widgets/settings.cpp:387
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Дефиниција виџета „$definition“ не садржи дефиницију за „$id“."
 
-#: src/gui/widgets/settings.cpp:503 src/gui/widgets/window_builder.cpp:315
-msgid "No resolution defined."
-msgstr "Резолуција није дефинисана."
-
-#: src/gui/widgets/settings.cpp:529
+#: src/gui/widgets/settings.cpp:531
 msgid "No state or draw section defined."
 msgstr "Одељак стања или цртања није дефинисан."
 
-#: src/gui/widgets/settings.cpp:758 src/gui/widgets/settings.cpp:912
-#: src/gui/widgets/window_builder.cpp:411
-#: src/gui/widgets/window_builder.cpp:925
-#: src/gui/widgets/window_builder.cpp:1134
-msgid "No grid defined."
-msgstr "Мрежа није дефинисана."
-
-#: src/gui/widgets/window.cpp:615
+#: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу да прикажем дијалог који не стаје на екран."
-
-#: src/gui/widgets/window_builder.cpp:518
-msgid "A row must have a column."
-msgstr "Врста мора имати колону."
-
-#: src/gui/widgets/window_builder.cpp:519
-msgid "Number of columns differ."
-msgstr "Број колона се разликује."
-
-#: src/gui/widgets/window_builder.cpp:765
-msgid "No list defined."
-msgstr "Списак није задат."
-
-#: src/gui/widgets/window_builder.cpp:768
-msgid "A 'list_definition' should contain one row."
-msgstr "Поље list_definition мора садржати једну врсту."
-
-#: src/gui/widgets/window_builder.cpp:786
-msgid ""
-"'list_data' must have the same number of columns as the 'list_definition'."
-msgstr "Поље list_data мора имати исти број колона као list_definition."
-
-#: src/gui/widgets/window_builder.cpp:1053
-msgid "The number of value_labels and values don't match."
-msgstr "Број value_labels и вредности се не слаже."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1797,10 +1835,6 @@ msgstr "Стани"
 #: src/hotkeys.cpp:82 src/hotkeys.cpp:89
 msgid "Play"
 msgstr "Играј"
-
-#: src/hotkeys.cpp:83
-msgid "Quit Game"
-msgstr "Напусти игру"
 
 #: src/hotkeys.cpp:84
 msgid "Set Team Label"
@@ -2234,7 +2268,7 @@ msgstr "Изабери резолуцију"
 msgid "Error"
 msgstr "Грешка"
 
-#: src/terrain_translation.cpp:701
+#: src/terrain_translation.cpp:706
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
