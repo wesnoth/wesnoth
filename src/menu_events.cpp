@@ -45,6 +45,7 @@
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "scripting/lua.hpp"
 #include "widgets/combo.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -2168,6 +2169,7 @@ private:
 			void do_choose_level();
 			void do_debug();
 			void do_nodebug();
+			void do_lua();
 			void do_custom();
 			void do_set_alias();
 			void do_set_var();
@@ -2251,6 +2253,8 @@ private:
 					_("Turn debug mode on."));
 				register_command("nodebug", &console_handler::do_nodebug,
 					_("Turn debug mode off."), "", "D");
+				register_command("lua", &console_handler::do_lua,
+					_("Execute a Lua statement."));
 				register_command("custom", &console_handler::do_custom,
 					_("Set the command used by the custom command hotkey"), "<command>[;<command>...]");
 				register_command("alias", &console_handler::do_set_alias,
@@ -2822,6 +2826,9 @@ private:
 			print(get_cmd(), _("Debug mode deactivated!"));
 			game_config::debug = false;
 		}
+	}
+	void console_handler::do_lua() {
+		game_events::resources->lua_kernel->run(get_data().c_str());
 	}
 	void console_handler::do_custom() {
 		preferences::set("custom_command", get_data());
