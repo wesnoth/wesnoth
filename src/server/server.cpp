@@ -747,7 +747,7 @@ void server::run() {
 				const std::string ip = network::ip_address(sock);
 				const std::string reason = is_ip_banned(ip);
 				if (!reason.empty()) {
-					LOG_SERVER << ip << "\trejected banned user.\n";
+					LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
 					send_error(sock, ("You are banned. Reason: " + reason).c_str());
 					network::disconnect(sock);
 				} else if (ip_exceeds_connection_limit(ip)) {
