@@ -36,10 +36,12 @@ Using a simple stack to keep track of the current tag is Ayin's idea.
 
 while ( <> ) {
     s/\s+//g;
-    next if /^#/;
+    next if /^\s*#/;
+    # ignore [tag][/tag]
+    next if /\[\+?(\w+)\]\s*\[\/(\w+)\]/;
     chomp;
-    unshift @tags,$1 if /\[\+?(\w*)\]/;
-    if ( /\[\/(\w*)\]/ ) {
+    unshift @tags,$1 if /^\s*\[\+?(\w+)\]\s*(|#.*)$/;
+    if ( /\[\/(\w+)\]/ ) {
 	die "bad WML in $ARGV, [/$1] found inside [@tags[0]], quitting"
 	    if $1 ne @tags[0];
 	shift @tags;
