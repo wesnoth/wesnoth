@@ -115,6 +115,7 @@ struct paths
 	{
 		const_iterator find(const map_location &) const;
 		bool contains(const map_location &) const;
+		void insert(const map_location &);
 		std::vector<map_location> get_path(const const_iterator &) const;
 	};
 	dest_vect destinations;

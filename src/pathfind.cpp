@@ -267,20 +267,32 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 }
 
-paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
+static paths::dest_vect::iterator lower_bound(paths::dest_vect &v, const map_location &loc)
 {
-	size_t sz = size(), pos = 0;
+	size_t sz = v.size(), pos = 0;
 	while (sz)
 	{
-		if ((*this)[pos + sz / 2].curr < loc) {
+		if (v[pos + sz / 2].curr < loc) {
 			pos = pos + sz / 2 + 1;
 			sz = sz - sz / 2 - 1;
 		} else sz = sz / 2;
 	}
+	return v.begin() + pos;
+}
 
-	const_iterator i_end = end(), i = begin() + pos;
+paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc) const
+{
+	const_iterator i = lower_bound(const_cast<dest_vect &>(*this), loc), i_end = end();
 	if (i != i_end && i->curr != loc) i = i_end;
 	return i;
+}
+
+void paths::dest_vect::insert(const map_location &loc)
+{
+	iterator i = lower_bound(*this, loc), i_end = end();
+	if (i != i_end && i->curr == loc) return;
+	paths::step s = { loc, map_location(), 0 };
+	std::vector<step>::insert(i, s);
 }
 
 /**
