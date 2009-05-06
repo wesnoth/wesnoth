@@ -333,7 +333,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				// Somewhat hacky...
 				// If we broke out of the do-while loop above error
 				// is still going to be NULL
-				if(!error) break;
+				if(!*error) break;
 			} // end login loop
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
