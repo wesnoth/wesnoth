@@ -83,7 +83,7 @@ protected:
 	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
 	// the real function but can throw bad_alloc
 	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
-	void show_attack_options(unit_map::const_iterator u);
+	void show_attack_options(const unit_map::const_iterator &u);
 	map_location current_unit_attacks_from(const map_location& loc);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);

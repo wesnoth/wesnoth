@@ -13,10 +13,13 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "mouse_events.hpp"
 
 #include "attack_prediction_display.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -696,21 +699,24 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	}
 }
 
-void mouse_handler::show_attack_options(unit_map::const_iterator /*u*/)
+void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 {
-#if 0
-	team& current_team = teams_[team_num_-1];
+	const team &current_team = teams_[team_num_ - 1];
 
-	if(u == units_.end() || u->second.attacks_left() == 0)
+	if (u == units_.end() || u->second.attacks_left() == 0)
 		return;
 
-	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
-		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && !target->second.incapacitated()) {
-			current_paths_.routes[target->first] = paths::route();
-		}
+	map_location adj[6];
+	get_adjacent_tiles(u->first, adj);
+	foreach (const map_location &loc, adj)
+	{
+		if (!map_.on_board(loc)) continue;
+		unit_map::const_iterator i = units_.find(loc);
+		if (i == units_.end()) continue;
+		const unit &target = i->second;
+		if (current_team.is_enemy(target.side()) && !target.incapacitated())
+			current_paths_.destinations.insert(loc);
 	}
-#endif
 }
 
 bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
