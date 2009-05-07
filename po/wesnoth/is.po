@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:08+0200\n"
-"PO-Revision-Date: 2009-04-29 00:14-0000\n"
+"PO-Revision-Date: 2009-05-03 23:57-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2716,6 +2716,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Samstundis fer yfir í næstu atburðarás herferðar.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3377,6 +3380,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (hlið $ally_side|) er að framfylgja eftirfarandi "
+"fyrirmælum:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
@@ -4428,6 +4433,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"\n"
+"\n"
+"Athugasemd:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -6579,7 +6587,7 @@ msgstr ""
 
 #: src/actions.cpp:2509
 msgid "(press $hotkey to keep moving)"
-msgstr ""
+msgstr "($hotkey til að halda áfram)"
 
 #: src/addon_management.cpp:361
 msgid "B"
@@ -6656,6 +6664,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Viltu niðurhala þessari viðbót? (Þú munt samt þurfa að uppsetja ákvæðin til "
+"að geta spilað það.)"
 
 #: src/addon_management.cpp:469 src/addon_management.cpp:543
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:262 src/multiplayer_ui.cpp:76
@@ -8913,7 +8923,7 @@ msgstr "Vista leik"
 
 #: src/serialization/parser.cpp:131
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Óvæntir stafir við upphaf línu"
 
 #: src/serialization/parser.cpp:161
 msgid "Missing closing tag for tag $tag at $pos"
@@ -8941,7 +8951,7 @@ msgstr "Ófrágengið lokun tags"
 
 #: src/serialization/parser.cpp:210
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Óvænt lokunartag"
 
 #: src/serialization/parser.cpp:218
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
@@ -8953,7 +8963,7 @@ msgstr "Autt nafn breytu"
 
 #: src/serialization/parser.cpp:249
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Óvæntir stafir eftir nafn breytu (væntist , eða =)"
 
 #: src/serialization/parser.cpp:284 src/serialization/parser.cpp:308
 msgid "Unterminated quoted string"
@@ -9264,24 +9274,6 @@ msgstr "Hjálpaðu okkur að gera Wesnoth betri fyrir þig!"
 msgid "Enable summary uploads"
 msgstr ""
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Viltu enn niðurhala það?"
-
-#~ msgid "Quit Game"
-#~ msgstr "Ljúka leik"
-
-#~ msgid "Ignore All"
-#~ msgstr "Hunsa allt"
-
-#~ msgid "Name: "
-#~ msgstr "Nafn: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Vistun er nú þegar til staðar. Viltu yfirrita?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Yfirskrifa?"
-
 #~ msgid "stones"
 #~ msgstr "steinar"
 
@@ -9297,12 +9289,27 @@ msgstr ""
 #~ msgid "Unknown unit type : "
 #~ msgstr "Óþekkt tegund einingar : "
 
+#~ msgid "Quit Game"
+#~ msgstr "Ljúka leik"
+
+#~ msgid "Ignore All"
+#~ msgstr "Hunsa allt"
+
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr ""
 #~ "Vistunarnöfn mega ekki innihalda skástrik, punkta eða tvípunkta. "
 #~ "Vinsamlegast veldu annað nafn."
+
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Vistun er nú þegar til staðar. Viltu yfirrita?"
+
+#~ msgid "Name: "
+#~ msgstr "Nafn: "
+
+#~ msgid "Overwrite?"
+#~ msgstr "Yfirskrifa?"
 
 #~ msgid "stone: "
 #~ msgstr "steingerðar: "
@@ -9315,3 +9322,6 @@ msgstr ""
 
 #~ msgid "Name:"
 #~ msgstr "Nafn:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Viltu enn niðurhala það?"

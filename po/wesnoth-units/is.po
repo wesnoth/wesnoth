@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:51+0200\n"
-"PO-Revision-Date: 2009-04-28 20:03-0000\n"
+"PO-Revision-Date: 2009-05-06 22:57-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Blóðblökur eru kallaðar svo útaf ryðrauðum lit, sem margir tengja við "
+"mataræði þeirra. Þessar verur eru snöggar og getur sogið blóð úr þeim sem "
+"hún ræðst á, fáandi þannig hluta af því lífi sem hún dregur úr fórnarlömbum "
+"sínum."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -41,12 +45,12 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 msgid "fangs"
-msgstr ""
+msgstr "vígtennur"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "Hrollblaka"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -56,6 +60,10 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Hrollblökur eru snöggar og geta sogið blóð úr þeim er þær ráðast á, læknandi "
+"sjálfan sig á sama tíma, jafnvel til þess punkt að þær verða sterkari enn "
+"þegar þær komu í bardagann. Útbelgdar af blóði hafa þær orðið nógu stórar "
+"til að geta ráðist á og étið stærri og sterkari fórnarlömb."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -69,6 +77,9 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Vampírublökur eru fljúgandi kvikindi sem nærast á blóði annara vera. Þótt að "
+"vígtennur þeirra séu ekki mjög öflugar, geta þær sogið lífið úr óvinum sínum "
+"með blóðinu, sem færir það sama líf til blakana. "
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
@@ -81,21 +92,24 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Oft drifnir áfram af árum eða litlum seglum, eru bátar notaðir til að "
+"ferðast stuttar vegalengdir og í grynningum sem stærri skip komast ekki í "
+"gegnum."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr ""
+msgstr "Galeiða"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "Galeiður eru úthafsskip byggð fyrir viðskipti og flutninga."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Sjóræningja Galeiða"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -104,17 +118,20 @@ msgid ""
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
+"Sjóræningja galeiður eru til flutninga á skipum, það sama og úlfar eru til "
+"sauða. Sjóræningjarnir sem manna þau eru meira enn ánægðir að hjálpa öðrum "
+"skipum að losna við þungan farangur."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
-msgstr ""
+msgstr "Risalásbogi"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Flutninga Galeiða"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -122,11 +139,13 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Flutninga Galeiður eru vel vopnuð skip sem flytja hermenn. Ef þau komast að "
+"fjörunni, geta þau sleppt hermönnum til árásar."
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "Eldhafs Dreiki"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
@@ -136,6 +155,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Ef ekki væri fyrir brynjuna sem þeir klæðast, væru margir dreikar "
+"óþekkjanlegir frá alvöru drekum, að minsta kosti fyrir meðaljón. Verurnar "
+"þekktar sem 'Eldhafs Dreikar' eru risastórar, og bæði ónæmar gegn og búa "
+"yfir ótrúlegum eldi."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
@@ -164,12 +187,12 @@ msgstr "klær"
 #: data/core/units/drakes/Blademaster.cfg:78
 #: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Fighter.cfg:75
 msgid "fire breath"
-msgstr ""
+msgstr "eldspúði"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "Dreika Skylmingameistari"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
@@ -178,6 +201,9 @@ msgid ""
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
+"Dreikarnir sem standa sig best í notkun sverða eru teknir inní sérstaka "
+"reglu. Svart-hvíta stríðsmálningin sem þeir sjást með í bardaga eru merki "
+"þessarar reglu."
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -219,7 +245,7 @@ msgstr "sverð"
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "Dreika Brennir"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:19
@@ -229,11 +255,14 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
+"Dreika Brennar eru hópur fárra stoltra, sem blóð og styrkur forfeðranna er "
+"hvað sterkastur í, sem leyfir þeim að spúa eldi. Þetta, laggt saman við "
+"stærðina eina á klónun þeirra, gerir þá stórhættulega óvini í bardaga."
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Dreika Skylmingamaður"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
@@ -253,6 +282,19 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"Dreika Skylmingamaður getur hvorki flogið né spúð eldi, og flestir hafa "
+"giskað á að ástæða vopnaburðar þeirra sé útaf þessari fötlun - tilraun til "
+"að vera að gagni þrátt fyrir fötlunina. Það er mögulegt að þeir séu frekar "
+"illa að sér í þessum hlutum, enn þeir sem styðja þá kenningu hefur mistekist "
+"að taka með í reikninginn hve vel þessir dreikar berjast gegn öðrum "
+"dreikum.\n"
+"\n"
+"Þeir eru í raun, Dómararnir í Dreika samfélaginu, og þrátt fyrir að vopn "
+"þeirra séu aðallega táknræn nú, eru þau þó mjög áhrifaverð. Þegar þeir mættu "
+"minni verum, uppgvötuðu þeir fljótlega að náttúruleg stærð þeirra og styrkur "
+"væru í sjálfu sér öflug vopn, og þegar laggt saman við vopnaburðinn sem þeir "
+"bera, er útkoman stríðsmenn sem ekki þjást af sömu veikleikum og systkini "
+"sín, til dæmis viðkvæmni gagnvart spjótum og örvum."
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:133
@@ -289,7 +331,7 @@ msgstr "spjót"
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "Dreika Einherji"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:20
@@ -298,6 +340,10 @@ msgid ""
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
+"Hinir miklu Dreika Einherjar eru dæmi um hráan styrkleika þeirra tegundar. "
+"Langar stundir eyddar við steðjan hefur skilað sér í öflugum flota af "
+"vopnum, og klæða þeir sig frá toppi til táar í skínandi brynju til frekari "
+"sönnunar."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:75
@@ -310,12 +356,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
-msgstr ""
+msgstr "kylfa"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "Dreika Stríðsmaður"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:19
@@ -325,16 +371,20 @@ msgid ""
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
+"Dreika Stríðsmenn notast við bognar sveðjur, og búa yfir eldhæfileikum "
+"forfeðra sinna. Þeir geta einnig flogið, sem veldur óvinum þeirra mikilli "
+"gremju. Styrkleiki þeirra, lagður saman við hart hreystrið, er réttilega "
+"ógnandi til sverðmanns af hvaða tegund sem er."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:66
 msgid "scimitar"
-msgstr ""
+msgstr "sveðja"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "Eld Dreiki"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:18
@@ -343,11 +393,14 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"Hinir miklu eld-dreikar eru meistarar innbyggða eldsins. Klæddir í skínandi "
+"brynju, þá spúa þeir súlum af eld gegn öllum sem snúast gegn þeim, "
+"sönnunargagn yfir styrk- og göfugleika þeirrar tegundar."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Dreika Eldhjarta"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
@@ -357,11 +410,15 @@ msgid ""
 "That they can breathe fire as they do lends credence to this belief, though, "
 "for some reason, no one has tried cutting one open to find out."
 msgstr ""
+"Það er sagt að elstu dreikarnir - beinir afkomendur sjálfra drekanna - hafa "
+"æðar sem innihalda eld frekar en blóð. Staðreyndir að þeir spúa eldi hjálpar "
+"bara til við þessar sögur, þó af einhverji ástæðu, hefur enginn prófað að "
+"skera einn þeirra upp til að komast að sannleikanum."
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Dreika Blys"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:25
@@ -370,11 +427,14 @@ msgid ""
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
+"Dreikar eru gömul tegund, nógu vísir til að trúa sínum náttúrulegu "
+"leiðtogum. Þeir sem kallast 'blys' af óvinum sínum eru dreikar sem búa yfir "
+"leiðtogahæfileikum, bæði í stríði og friði."
 
 #. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Dreika Skylmingaþræll"
 
 #. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
@@ -387,6 +447,13 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
+"Skylmingaþrællinn hefur valið allt aðra þeið frá (Slasher óþýtt). Í stað "
+"þess að leggja áherslu á þjálfun, hafa þeir valið að einbeita sér að gæðum "
+"vopnana. Þeir eru smiðirnir í Dreika þjóðfélaginu (þrátt fyrir villandi "
+"nafn) og það fylgir með að þeir búa yfir bestu vopnunum - beyttustu "
+"sverðunum og spjótunum, og kylfunum sem þeir bæta inní þegar tilkomumikið "
+"vopnabúr. Þessi mikla einbeiting að vopnunum þeirra hjálpar til í árásum "
+"þrátt fyrir örlítinn veikleika hvað varnaraðstöðu þeirra varðar."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -475,7 +542,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
-msgstr ""
+msgstr "atgeiri"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -521,7 +588,7 @@ msgstr ""
 #: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:45
 msgid "berserker frenzy"
-msgstr ""
+msgstr "berserksæði"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
@@ -557,12 +624,12 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
-msgstr ""
+msgstr "rýtingur"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
-msgstr ""
+msgstr "drekastafur"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
@@ -585,7 +652,7 @@ msgstr ""
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
-msgstr "öx"
+msgstr "öxi"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:51
@@ -616,7 +683,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:87
 msgid "javelin"
-msgstr ""
+msgstr "kastspjót"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
@@ -637,12 +704,12 @@ msgstr ""
 #: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
-msgstr ""
+msgstr "stríðsöxi"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:60
 msgid "hatchet"
-msgstr ""
+msgstr "sax"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
@@ -666,7 +733,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
 msgid "lightning bolt"
-msgstr ""
+msgstr "elding"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -728,7 +795,7 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:119
 #: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
-msgstr ""
+msgstr "þrumuprik"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
@@ -909,7 +976,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
 msgid "thorns"
-msgstr ""
+msgstr "þyrnir"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
@@ -937,7 +1004,7 @@ msgstr ""
 #: data/core/units/elves/High_Lord.cfg:82
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
-msgstr ""
+msgstr "álfaeldur"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
@@ -1450,7 +1517,7 @@ msgstr ""
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr ""
+msgstr "Musterisriddari"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
@@ -1601,7 +1668,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
 msgid "saber"
-msgstr ""
+msgstr "bjúgsverð"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
@@ -1866,7 +1933,7 @@ msgstr ""
 #: data/core/units/humans/Mage_of_Light.cfg:111
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
 msgid "morning star"
-msgstr "morgunstjarna"
+msgstr ""
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2228,7 +2295,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
 msgid "club"
-msgstr ""
+msgstr "lurkur"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:163
@@ -2533,7 +2600,7 @@ msgstr ""
 #: data/core/units/merfolk/Fighter.cfg:25
 #: data/core/units/merfolk/Hoplite.cfg:36
 msgid "trident"
-msgstr ""
+msgstr "gaffall"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -2727,7 +2794,7 @@ msgstr ""
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 msgid "tentacle"
-msgstr ""
+msgstr "armur"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
@@ -2785,7 +2852,7 @@ msgstr ""
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
-msgstr ""
+msgstr "hnefi"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:47
@@ -2808,12 +2875,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
-msgstr ""
+msgstr "stinga"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
-msgstr ""
+msgstr "klemmarar"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -2856,7 +2923,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "kjálki"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
@@ -3056,7 +3123,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
-msgstr ""
+msgstr "kasthnífar"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
@@ -3174,7 +3241,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "Orka Stríðsherra"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
@@ -3187,7 +3254,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "Orka Stríðsmaður"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
@@ -3196,11 +3263,14 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"Hafandi lært að berjast með tvem sverðum, Orka Stríðsmenn eru mjög virtir "
+"meðal orkanna, og alræmdir meðal óvina sinna. Eini veikleiki þeirra er sá að "
+"þeir geta ekki notað boga."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Saurískur Fyrirsátari"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
@@ -3213,6 +3283,12 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
+"Sauríar eru léttir á fæti, og geta farið gegnum landssvæði sem óvinir þeirra "
+"geta oft ekki. Þegar þetta er lagt saman við reynslu, styrk og útbúnað, "
+"getur einn stríðsmanna þeirra orðið frekar hættulegur í bardaga, líklegast "
+"því mun erfiðara er að hlaupa þá uppi fyrir óvini þeirra. Jafnvel í brynju, "
+"geta þessir saurísku stríðsmenn notfært sér minnstu opnun í línu óvinanna, "
+"og sjá þá óvinir þeirra oft eftir hertæknilegum mistökum sínum. "
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -3252,7 +3328,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr ""
+msgstr "Saurískur Spámaður"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
@@ -3264,11 +3340,17 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
+"Sumir sauríar sjást klæddir í undarlegum búnaði og hyldir frá hausi til táa "
+"í hræðilegum, óþekktum merkjum og táknum, bæði með málningu og húðflúri. "
+"Sumir halda að þeir séu hugsjónamenn, eða spámenn meðal þeirra fólks. Enn "
+"hvað sem 'þjóðfélagslegum' tilgangi þeir gegna, eru þeir óneitanlega "
+"voldugir í skrýtnum göldrum sem þeir búa yfir, og ætti að varast ef þeir "
+"sjást."
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "Saurískur Truflari"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
@@ -3285,7 +3367,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Saurískur Galdralæknir"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
@@ -3295,11 +3377,15 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
+"Sauríar eru þekktir fyrir að búa yfir skrýtnum hæfilekur, listum "
+"samliggjandi við það yfirnáttúrulega og dularfulla. Það er ljóst að sumir "
+"þeirra eru lærðir í einhverskonar lækningum, sem hjálpar mikið til hvenær "
+"sem einhver ræðst á þá."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr ""
+msgstr "Mikið Tröll"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:19
@@ -3310,11 +3396,16 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"Þegar tröll, þegar gefnir óeðlilegan lífsstyrk, parar það saman við aldur og "
+"visku, verður það að einhverju ótrúlegu, veru sem verður munað eftir "
+"kynslóðum saman. Styrkleiki þeirra og gáfur eru uppspretta flestra sagna um "
+"tröll, og að sjá slíkar sögur holdi klæddar gerir lítið annað en að auka á "
+"stórkostleik þeirra."
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr ""
+msgstr "Trölla Hetja"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:18
@@ -3323,11 +3414,14 @@ msgid ""
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
+"Sum tröll fæðast með meiri hluta af þeim styrk og lífi sem einkennir þeirra "
+"tegund. Í samfélagi þar sem styrkur jafngildir valdi, líta sambúar þeirra "
+"ávallt á þá einstaklinga sem hetjur."
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Trölla Grjótkastari"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
@@ -3338,6 +3432,11 @@ msgid ""
 "in sacks slung over their shoulders. The same leather out of which the sack "
 "is formed is easily adapted to a crude sling."
 msgstr ""
+"Hugmyndin að fleygja grjóti í bardaga hefur sannarlega flogið í höfuð marga "
+"trölla, og sum þeirra hafa ákveðið að gera það að aðalvopni sínu. Vegna þess "
+"að stundum getur verið erfitt að finna nógu stór grjót, hafa grjótkastarar "
+"tekið uppá því að hafa þau í poka yfir axlinar. Sama leður og pokinn er úr "
+"er oft einnig notað í frumstæða steinslöngvu."
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -3354,11 +3453,17 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
+"Tröll hafa lengi farið í taugarnar á mönnum og dvergum. Sagnfræðingar standa "
+"enn á gati yfir upptökum þessara vera og drifkraftinum yfir ónátturulegri "
+"lífskrafti og styrki. Fullvaxið tröll stendur langt yfir manni, og jafnvel "
+"óvopnað, skapar mikla hættu í bardaga. Stórir lurkar eru venjulega það vopn "
+"sem þau kjósa sem framlenging af höndunum þeirra, notuð í sama tilgangi að "
+"berja fórnarlömb þeirra til hlýðni, eða dauða."
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
 msgid "Troll Shaman"
-msgstr ""
+msgstr "Trölla Galdralæknir"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -3376,7 +3481,7 @@ msgstr ""
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr ""
+msgstr "Trölla Stríðsmaður"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:20
@@ -3390,11 +3495,19 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
+"Tröll þurfa venjulega hvorki vilja né almennileg vopn í bardaga, þar sem "
+"stór 'grjót og prik' henta þeim hvort sem eð of vel. Enn samt, hafa tröll "
+"sést oft klædda í frumstæða brynju með málm hamra sem vopn. Það er giskað á "
+"að orkneskir vinir séu uppspretta og smiðir þessara vopna; leiðangar inní "
+"þónokkrar tæmdar (með valdi) trölla holum hafa sýnt frammá lítil "
+"sönnunargögn um einhvers konar tól, og auðvitað enga málmsmiðju af engri "
+"gerð. Tekið með hve hættuleg tröll eru bara berhent, er tilhugsunin ein um "
+"tröll með almennileg vopn algjörlega skelfileg."
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Trölla Hvolpur"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:20
@@ -3405,6 +3518,11 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
+"Að lýsa trölli sem hvolp er frekar fáránlegt, þegar tekið er mið af því að "
+"líkamar þeirra eru núþegar mun harðari en fullvaxins manns. Þau eru klaufsk "
+"og geta ekki enn gengið almennilega, og neyðast í stað að ýta sér áfram á "
+"fjórum fótum, en allir erfiðleikar sem þetta veldur er meira enn uppbætt af "
+"hráum styrkleika þeirrar tegundar."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -3463,7 +3581,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:48
 #: data/core/units/undead/Corpse_Soulless.cfg:26
 msgid "touch"
-msgstr ""
+msgstr "snerting"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
@@ -3494,7 +3612,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
 msgid "chill tempest"
-msgstr ""
+msgstr "kuldastormur"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:55
@@ -3503,12 +3621,12 @@ msgstr ""
 #: data/core/units/undead/Necromancer.cfg:63
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
-msgstr ""
+msgstr "skuggabylgja"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "Skuggalærlingur"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
@@ -3524,13 +3642,23 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"Til að laða að sér áhangendur, er tælan bakvið svartagaldur ábyggilega mikil "
+"verðlaun, því allir sem leggja stund á hann og eru uppgvötaðir eiga á hættu "
+"dauðadóm. Og samt, eru þeir til sem leggja stund á þessa list, því "
+"verðlaunin sem standa á bakvið eru ekkert minna enn ódauðlegleiki. Faldir í "
+"leynilegum hópum, og innteknir í svartar reglur undirheimana, hefur "
+"þjálfunin sem þessir bókstafsmenn leggja á sig oft keyrt þá að örmagni og "
+"sljóleika.\n"
+"\n"
+"Í slíkum dæmum, er eina vörn þeirra galdrarnir sem þeir hafa laggt á sig að "
+"læra."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necromancer.cfg:51
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
 msgid "chill wave"
-msgstr ""
+msgstr "kuldabylgja"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:212
@@ -3540,7 +3668,7 @@ msgstr ""
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Seiðskratti"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
@@ -3561,11 +3689,25 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Hræðslan sem kemur frá svartagaldri er oftast komin frá því hve lítið "
+"almennur maður veit um hann. Seiðskrattar hafa byrjað að læra leyndarmál "
+"lífs og dauða, og hvernig auðvelt er að valda því síðarnefnda. Þessi vinna "
+"hefur gefið þeim grunnskylning á tengingunni milli sálarinnar og dauðs "
+"efnis, og fyrstu heppnuðu tilraunirnar í að hafa áhrif á þá tengingu. Hin "
+"hræðilega óvissa um hvaða liggur fyrir aftan dauðan hafa þeir séð glitta í, "
+"og munu án efa seinna læra.\n"
+"\n"
+"Þrátt fyrir allar tilraunir þeirra til að hrifsa ódauðleikan frá náttúrunni, "
+"hafa fyrstu verk þeirra tafarlausar, og oftast óþægilegar verkanir. Lífið "
+"sem þeir blása inní dauða hluti getur búið til þjóna fyrir þá, þjóna sem "
+"munu vinna, og einnig drepa, og aldrei neita húsbónda sínum. Þessar verur "
+"hafa tryggð sem hvaða harðstjóra myndi dreima um, og er freistandi til allra "
+"með jafnvel minnstu þrá um vald."
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:243
 msgid "Dark Sorceress"
-msgstr ""
+msgstr "Seiðkerling"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:249
@@ -3586,6 +3728,20 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Hræðslan sem kemur frá svartagaldri er oftast komin frá því hve lítið "
+"almennur maður veit um hann. Seiðkerlingar hafa byrjað að læra leyndarmál "
+"lífs og dauða, og hvernig auðvelt er að valda því síðarnefnda. Þessi vinna "
+"hefur gefið þeim grunnskylning á tengingunni milli sálarinnar og dauðs "
+"efnis, og fyrstu heppnuðu tilraunirnar í að hafa áhrif á þá tengingu. Hin "
+"hræðilega óvissa um hvaða liggur fyrir aftan dauðan hafa þeir séð glitta í, "
+"og munu án efa seinna læra.\n"
+"\n"
+"Þrátt fyrir allar tilraunir þeirra til að hrifsa ódauðleikan frá náttúrunni, "
+"hafa fyrstu verk þeirra tafarlausar, og oftast óþægilegar verkanir. Lífið "
+"sem þeir blása inní dauða hluti getur búið til þjóna fyrir þá, þjóna sem "
+"munu vinna, og einnig drepa, og aldrei neita húsmæðrum sínum. Þessar verur "
+"hafa tryggð sem hvaða harðstjóra myndi dreima um, og er freistandi til allra "
+"með jafnvel minnstu þrá um vald."
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
@@ -3627,7 +3783,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:39
 msgid "plague staff"
-msgstr ""
+msgstr "plágustafur"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:194
@@ -3782,13 +3938,20 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"Það er eitt af meiri misknunum sköpunar að sál manna er óbreytanleg, og "
+"getur ekki verið eytt. Þó, það eru margir hlutir sem seiðskrattar geta gert "
+"þrátt fyrir það sem eru algjörlega ógeðslegir.\n"
+"\n"
+"Hnepptir í þrældóm innan í skýji galdra, má líkja fastri sál með segl á "
+"skipi. Þessi dæmda vera verður að óbilandi þjóni sem getur sinnt hvaða verki "
+"sem meistarar þeirra velja."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:57
 msgid "wail"
-msgstr ""
+msgstr "grátur"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
@@ -3818,11 +3981,16 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
+"Þegar ljós kom inní heimin og gaf hinu óþekkta lögun og lit, varð óttinn að "
+"hörfa inní myrkrið. Síðan þann dag, hafa skuggar heimsins skelft allt "
+"mannkyn, þótt mannkynið veit ekki af hverju.\n"
+"\n"
+"Það er spurning sem seiðskratti ætti þó auðveldlega að geta svarað."
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
-msgstr ""
+msgstr "Vofa"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:20
@@ -3835,17 +4003,23 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
+"Stundum kallaðir 'glærir menn', eru vofur hægri hendi húsbónda sinna. Þeir "
+"eru vanhelgur hryllingur til þeirra lifandi, því þær eru jafn hættulegar og "
+"útlitið bendir til.\n"
+"\n"
+"Tilvera þessarar vera er ekki vandamálið; aðalhættan við að rekast á eina er "
+"að líklega er hún bara boðberi mun hættulegra valds sem mun fylgja henni."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:21
 #: data/core/units/undead/Spirit_Spectre.cfg:46
 msgid "baneblade"
-msgstr ""
+msgstr "banablað"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr ""
+msgstr "Móri"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
@@ -3856,11 +4030,15 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
+"Þessir skuggar af því sem áður voru stríðssmenn, eru eitt af því "
+"hræðilegasta sem seiðskrattar geta búið til, því sverð munu fara beint í "
+"gegnun þá, oftast án nokkurns skaða. Það er tilhugsunin að þessar verur séu "
+"ósigrandi sem er svo hræðileg, þótt hún sé fjarri sannleikanum."
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr ""
+msgstr "Forn Vosi"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:20
@@ -3874,17 +4052,25 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
+"Það er forvitnileg saga af bónda sem hafði mikið eikartré á lóð sinni, tré "
+"sem hafði staðið síðan faðir hans plantaði fyrstu uppskerunni á því landi, "
+"og sem fjölskyldan átti margar minnigar sem gerðust undir trénu. Það var því "
+"sjokk þegar einn morgun að hann vaknaði, og tréð hafði horfið á braut, með "
+"ekkert eftir nema auðan blett af mold þar sem það hafði staðið.\n"
+"\n"
+"Slík kynni eru allt sem vitað er um af því sem talði er að séu fornustu "
+"vosarnir."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
 #: data/core/units/wose/Elder.cfg:91
 msgid "crush"
-msgstr ""
+msgstr "kremja"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr ""
+msgstr "Öldungs Vosi"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:19
@@ -3901,11 +4087,20 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"Vosar eru sagðir geta tekið á sig hvaða form sem er, enn allt í tré-líku "
+"formi, og með aldrinu, aukast í stærð. Sögur segja frá vosum sem líkjast "
+"trjám furðu vel, gnæfandi yfir aðrar verur sem gengu á jörðinni undir þeim. "
+"Þetta er aðalástæðan fyrir því að þeir sjást svo sjaldan - standandi í "
+"svefni sem þeir gera oftast, þá sést vosi oft sem lítið annað enn undarlega "
+"lagað tré. Jafnvel óeinbeittir álfar láta stundum blekkjast.\n"
+"\n"
+"Vosar eru ekki stríðsmenn á neinn hátt, enn þeirra mikla styrk má oft nýta í "
+"ofbeldi, skyldi einhverjum takast að reita þá nóg til reiði."
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr ""
+msgstr "Vosi"
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:20
@@ -3921,3 +4116,12 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+"Sjaldséðir jafnvel af álfum, er vosinn lífvera sem lítið er vitað um. "
+"Álfarnir eru uppspretta flestrar þessarar þekkingar; þeir vita að þessar "
+"verur eru ekki afkomendur trjáa, þrátt fyrir hve líkir þeir séu þeim í "
+"útliti, og að vosi er meira skyldur náttúrunni enn álfarnir sjálfir, enn þó "
+"á annan hátt. Drifkraftur þeirrar tegundar er óþekktur, þó flestir trúa "
+"augljósu kenningunni að vosar eru einbeittir verðir náttúrunnar.\n"
+"\n"
+"Vosar eru engan vegin herskáir, en búa yfir miklum styrki. Þeir eru þó, "
+"hvorki vanir, né fljótir að hreyfa sig um."
