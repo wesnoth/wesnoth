@@ -850,7 +850,7 @@ SDL_Colour unit::xp_color() const
 	const SDL_Color near_amla_colour	  = {225,0,255,0};
 	const SDL_Color mid_amla_colour	  = {169,30,255,0};
 	const SDL_Color far_amla_colour	  = {139,0,237,0};
-	const SDL_Color amla_colour		  = {100,0,150,0};
+	const SDL_Color amla_colour		  = {170,0,255,0};
 	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
 	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
 	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;

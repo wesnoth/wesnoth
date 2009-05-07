@@ -980,7 +980,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	foreach (const config &adv, t->modification_advancements())
 	{
 		if (!utils::string_bool(adv["strict_amla"]) || !t->can_advance()) {
-			det.xp_color = "<100,0,150>"; // from unit::xp_color()
+			det.xp_color = "<170,0,255>"; // from unit::xp_color()
 			break;
 		}
 	}
