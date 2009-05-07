@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:16+0200\n"
-"PO-Revision-Date: 2009-04-29 00:14-0000\n"
+"PO-Revision-Date: 2009-05-03 23:57-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2711,6 +2711,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Samstundis fer yfir í næstu atburðarás herferðar.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3370,6 +3373,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (hlið $ally_side|) er að framfylgja eftirfarandi "
+"fyrirmælum:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
@@ -4421,6 +4426,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"\n"
+"\n"
+"Athugasemd:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -6529,7 +6537,7 @@ msgstr ""
 
 #: src/actions.cpp:2498
 msgid "(press $hotkey to keep moving)"
-msgstr ""
+msgstr "($hotkey til að halda áfram)"
 
 #: src/addon_management.cpp:360
 msgid "B"
@@ -6606,6 +6614,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Viltu niðurhala þessari viðbót? (Þú munt samt þurfa að uppsetja ákvæðin til "
+"að geta spilað það.)"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:70
@@ -8851,7 +8861,7 @@ msgstr "Skráin sem þú reyndir að hlaða er skemmd. Halda áfram leik?"
 
 #: src/serialization/parser.cpp:130
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Óvæntir stafir við upphaf línu"
 
 #: src/serialization/parser.cpp:160
 msgid "Missing closing tag for tag $tag at $pos"
@@ -8879,7 +8889,7 @@ msgstr "Ófrágengið lokun tags"
 
 #: src/serialization/parser.cpp:209
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Óvænt lokunartag"
 
 #: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
@@ -8891,7 +8901,7 @@ msgstr "Autt nafn breytu"
 
 #: src/serialization/parser.cpp:248
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Óvæntir stafir eftir nafn breytu (væntist , eða =)"
 
 #: src/serialization/parser.cpp:283 src/serialization/parser.cpp:307
 msgid "Unterminated quoted string"
