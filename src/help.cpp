@@ -500,7 +500,6 @@ private:
 // see.
 
 /// Dispatch generators to their appropriate functions.
-// FIXME: Must generalize the "append" behavior used for sections
 static void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 static std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 static std::string generate_topic_text(const std::string &generator, const config *help_cfg,
@@ -508,6 +507,14 @@ const section &sec, const std::vector<topic>& generated_topics);
 static std::string generate_about_text();
 static std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
 static std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
+
+/// return a hyperlink with the unit's name and pointing to the unit page
+/// return empty string if this unit is hidden. If not yet discovered add the (?) suffix
+static std::string make_unit_link(const std::string& type_id);
+/// return a list of hyperlinks to unit's pages (ordered or not)
+static std::vector<std::string> make_unit_links_list(
+		const std::vector<std::string>& type_id_list, bool ordered = false);
+
 static void generate_races_sections(const config *help_cfg, section &sec, int level);
 static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
@@ -518,6 +525,7 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 static std::vector<topic> generate_ability_topics(const bool);
 static std::vector<topic> generate_weapon_special_topics(const bool);
+static std::vector<topic> generate_faction_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
@@ -603,6 +611,7 @@ namespace {
 	const std::string unknown_unit_topic = ".unknown_unit";
 	const std::string unit_prefix = "unit_";
 	const std::string race_prefix = "race_";
+	const std::string faction_prefix = "faction_";
 
 	// id starting with '.' are hidden
 	static std::string hidden_symbol(bool hidden = true) {
@@ -654,6 +663,13 @@ namespace {
 }
 
 	// Helpers for making generation of topics easier.
+
+static std::string make_link(const std::string& text, const std::string& dst)
+	{
+		// some sorting done on list of links may rely on the fact that text is first
+		return "<ref>text='" + help::escape(text) + "' dst='" + help::escape(dst) + "'</ref>";
+	}
+
 static std::string jump_to(const unsigned pos)
 	{
 		std::stringstream ss;
@@ -998,6 +1014,8 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
+	} else if (generator == "factions") {
+		res = generate_faction_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
@@ -1207,6 +1225,75 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
+
+std::vector<topic> generate_faction_topics(const bool sort_generated)
+{
+	std::vector<topic> topics;
+	const config& era = game_cfg->child("era");
+	if (era) {
+		std::vector<std::string> faction_links;
+		foreach (const config &f, era.child_range("multiplayer_side")) {
+			const std::string& id = f["id"];
+			if (id == "Random")
+				continue;
+
+			std::stringstream text;
+
+			const std::string& description = f["description"];
+			if (!description.empty()) {
+				text << description << "\n";
+				text << "\n";
+			}
+
+			text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
+			const std::vector<std::string> leaders =
+					make_unit_links_list( utils::split(f["leader"]), true );
+			foreach (const std::string &link, leaders) {
+				text << link << "\n";
+			}
+
+			text << "\n";
+
+			text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
+			const std::vector<std::string> recruits =
+					make_unit_links_list( utils::split(f["recruit"]), true );
+			foreach (const std::string &link, recruits) {
+				text << link << "\n";
+			}
+
+			const std::string name = f["name"];
+			const std::string ref_id = faction_prefix + id;
+			topics.push_back( topic(name, ref_id, text.str()) );
+			faction_links.push_back(make_link(name, ref_id));
+		}
+
+		std::stringstream text;
+		text << "<header>text='" << _("Era:") << " " << era["name"] << "'</header>" << "\n";
+		text << "\n";
+		const std::string& description = era["description"];
+		if (!description.empty()) {
+			text << description << "\n";
+			text << "\n";
+		}
+
+		text << "<header>text='" << _("Factions:") << "'</header>" << "\n";
+
+		std::sort(faction_links.begin(), faction_links.end());
+		foreach (const std::string &link, faction_links) {
+			text << link << "\n";
+		}
+
+		topics.push_back( topic(_("Factions"), "..factions_section", text.str()) );
+	} else {
+		topics.push_back( topic( _("Factions"), "..factions_section",
+			_("Factions are only used in multiplayer")) );
+	}
+
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
+	return topics;
+}
+
 
 class unit_topic_generator: public topic_generator
 {
@@ -1545,6 +1632,47 @@ public:
 		return ss.str();
 	}
 };
+
+std::string make_unit_link(const std::string& type_id)
+{
+	std::string link;
+
+	std::map<std::string,unit_type>::const_iterator type =
+			unit_type_data::types().find_unit_type(type_id);
+	if (type == unit_type_data::types().end()) {
+		std::cerr << "Unknown unit type : " << type_id << "\n";
+		// don't return an hyperlink (no page)
+		// instead show the id (as hint)
+		link = type_id;
+	} else if (!type->second.hide_help()) {
+		std::string name = type->second.type_name();
+		std::string ref_id;
+		if (description_type(type->second) == FULL_DESCRIPTION) {
+			ref_id = unit_prefix + type->second.id();
+		} else {
+			ref_id = unknown_unit_topic;
+			name += " (?)";
+		}
+		link =  make_link(name, ref_id);
+	} // if hide_help then link is an empty string
+
+	return link;
+}
+
+std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
+{
+	std::vector<std::string> links_list;
+	foreach (const std::string &type_id, type_id_list) {
+		std::string unit_link = make_unit_link(type_id);
+		if (!unit_link.empty())
+			links_list.push_back(unit_link);
+	}
+
+	if (ordered)
+		std::sort(links_list.begin(), links_list.end());
+
+	return links_list;
+}
 
 void generate_races_sections(const config *help_cfg, section &sec, int level)
 {
