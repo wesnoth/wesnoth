@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:08+0200\n"
-"PO-Revision-Date: 2009-05-02 20:02+0100\n"
+"PO-Revision-Date: 2009-05-07 13:11+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -7258,15 +7258,23 @@ msgid ""
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Ten dodatek wymaga następujących zależności dodatkowych:"
-msgstr[1] "Te dodatki wymagają następujących zależności dodatkowych:"
-msgstr[2] "Te dodatki wymagają następujących zależności dodatkowych:"
+msgstr[0] ""
+"Ten dodatek jest zależny od następującego dodatku, który jeszcze nie został "
+"zainstalowany:"
+msgstr[1] ""
+"Ten dodatek jest zależny od następujących dodatków, które jeszcze nie "
+"zostały zainstalowane:"
+msgstr[2] ""
+"Ten dodatek jest zależny od następujących dodatków, które jeszcze nie "
+"zostały zainstalowane:"
 
 #: src/addon_management.cpp:454
 msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Czy chcesz pobrać ten dodatek? (Aby w niego zagrać, musisz jeszcze "
+"zainstalować jego zależności)."
 
 #: src/addon_management.cpp:469 src/addon_management.cpp:543
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:262 src/multiplayer_ui.cpp:76
@@ -9940,24 +9948,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Czy nadal chcesz go pobrać?"
-
-#~ msgid "Quit Game"
-#~ msgstr "Opuść grę"
-
-#~ msgid "Ignore All"
-#~ msgstr "Ignoruj wszystkich"
-
-#~ msgid "Name: "
-#~ msgstr "Nazwa: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Zapisana gra już istnieje. Czy ma zostać nadpisana?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Nadpisać?"
-
 #~ msgid "stones"
 #~ msgstr "zamienia w kamień"
 
@@ -9973,12 +9963,27 @@ msgstr "Włącz wysyłanie podsumowań"
 #~ msgid "Unknown unit type : "
 #~ msgstr "Nieznany typ jednostki: "
 
+#~ msgid "Quit Game"
+#~ msgstr "Opuść grę"
+
+#~ msgid "Ignore All"
+#~ msgstr "Ignoruj wszystkich"
+
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr ""
 #~ "Nazwy zapisanych gier nie mogą zawierać dwukropków, ukośników ani "
 #~ "ukośników odwrotnych. Wybierz inną nazwę."
+
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Zapisana gra już istnieje. Czy ma zostać nadpisana?"
+
+#~ msgid "Name: "
+#~ msgstr "Nazwa: "
+
+#~ msgid "Overwrite?"
+#~ msgstr "Nadpisać?"
 
 #~ msgid "stone: "
 #~ msgstr "skamieniała: "
@@ -9991,6 +9996,9 @@ msgstr "Włącz wysyłanie podsumowań"
 
 #~ msgid "Name:"
 #~ msgstr "Nazwa:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Czy nadal chcesz go pobrać?"
 
 #~ msgid " included from "
 #~ msgstr " dołączone z "
