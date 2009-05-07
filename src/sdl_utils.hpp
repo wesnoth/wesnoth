@@ -58,14 +58,14 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 
 /**
- * Returns the union of two rectangles.
+ * Returns the smallest rectangle containing the union of two rectangles.
  *
  * @param rect1                   The first rectangle.
  * @param rect2                   The second rectangle.
  *
- * @returns                       The union of rect1 and rect2.
+ * @returns                       The smallest rectangle that contains both rect1 and rect2.
  */
-SDL_Rect get_rect_union(const SDL_Rect& rect1, const SDL_Rect& rect2);
+SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
 /**
  *  Creates an empty SDL_Rect.
