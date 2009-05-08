@@ -1722,7 +1722,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 			unit_map::iterator itor;
 			for (itor = rsrc.units->begin(); itor != rsrc.units->end(); ++itor) {
 				if(game_events::unit_matches_filter(itor, filter)) {
-					itor->second.assign_role(cfg["role"]);
+					itor->second.set_role(cfg["role"]);
 					found = true;
 					break;
 				}
@@ -1761,7 +1761,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 						u.set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams);
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
-							u.assign_role(cfg["role"]);
+							u.set_role(cfg["role"]);
 							found=true;
 							break;
 						}

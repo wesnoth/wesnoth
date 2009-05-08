@@ -187,7 +187,9 @@ public:
 	void write(config& cfg) const;
 //	void write(config_writer& out) const;
 
-	void assign_role(const std::string& role) { role_ = role; }
+	void set_role(const std::string& role) { role_ = role; }
+	const std::string &get_role() const { return role_; }
+
 	void assign_ai_special(const std::string& s) { ai_special_ = s;}
             std::string get_ai_special() const { return(ai_special_); }
 	const std::vector<attack_type>& attacks() const { return attacks_; }
