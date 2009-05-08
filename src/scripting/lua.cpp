@@ -304,6 +304,15 @@ static int lua_tstring_collect(lua_State *L)
 		return 1; \
 	}
 
+#define return_cfg_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		config cfg; \
+		accessor; \
+		lua_newtable(L); \
+		table_of_wml_config(L, cfg); \
+		return 1; \
+	}
+
 #define modify_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		if (lua_type(L, -1) == LUA_TUSERDATA) { \
@@ -372,6 +381,7 @@ static int lua_unit_get(lua_State *L)
 	return_bool_attrib("canrecruit", u.can_recruit());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
+	return_cfg_attrib("__cfg", u.write(cfg));
 	return 0;
 }
 
