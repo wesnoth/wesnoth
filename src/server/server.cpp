@@ -2508,8 +2508,6 @@ int main(int argc, char** argv) {
 		} else if (val[0] == '-') {
 			ERR_SERVER << "unknown option: " << val << "\n";
 			return 0;
-		} else {
-			port = atoi(argv[arg]);
 		}
 	}
 
