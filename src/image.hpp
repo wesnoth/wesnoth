@@ -207,7 +207,6 @@ namespace image {
 
 
 	typedef cache_type<surface> image_cache;
-	typedef cache_type<locator> locator_cache;
 	typedef cache_type<bool> bool_cache;
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
