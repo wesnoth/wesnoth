@@ -176,6 +176,13 @@ namespace image {
 		void add_to_cache(cache_type<surface>& cache, const surface &image) const
 			{ if(index_ != -1 ) cache.get_element(index_) = cache_item<surface>(image); cache.on_load(index_); }
 
+		bool in_cache(cache_type<bool>& cache) const
+			{ return index_ == -1 ? false : cache.get_element(index_).loaded; }
+		bool locate_in_cache(cache_type<bool>& cache) const
+			{ return index_ == -1 ? false : cache.get_element(index_).item; }
+		void add_to_cache(cache_type<bool>& cache, bool st) const
+			{ if(index_ != -1 ) cache.get_element(index_) = cache_item<bool>(st); cache.on_load(index_); }
+
 		bool in_cache(cache_type<locator>& cache) const
 			{ return index_ == -1 ? false : cache.get_element(index_).loaded; cache.on_load(index_); }
 		locator locate_in_cache(cache_type<locator>& cache) const
@@ -196,6 +203,7 @@ namespace image {
 
 	typedef cache_type<surface> image_cache;
 	typedef cache_type<locator> locator_cache;
+	typedef cache_type<bool> bool_cache;
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
