@@ -215,7 +215,7 @@ AC_ARG_ENABLE([game],
 AC_ARG_ENABLE([server],
               AS_HELP_STRING([--enable-server], [enable compilation of server]),
 	      [server=$enableval],
-	      [server=no])
+	      [server=yes])
 
 AC_ARG_WITH([fifodir],
 	         AS_HELP_STRING([--with-fifodir], [directory for the wesnothd fifo socket file]),
