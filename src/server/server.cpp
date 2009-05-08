@@ -2505,9 +2505,9 @@ int main(int argc, char** argv) {
 			max_threads = atoi(argv[++arg]);
 		} else if(val == "--request_sample_frequency" && arg+1 != argc) {
 			request_sample_frequency = atoi(argv[++arg]);
-		} else if (val[0] == '-') {
+		} else {
 			ERR_SERVER << "unknown option: " << val << "\n";
-			return 0;
+			//return 0;
 		}
 	}
 
