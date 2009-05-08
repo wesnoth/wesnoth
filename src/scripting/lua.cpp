@@ -381,6 +381,8 @@ static int lua_unit_get(lua_State *L)
 	return_bool_attrib("canrecruit", u.can_recruit());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
+	return_string_attrib("role", u.get_role());
+	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg));
 	return 0;
 }
@@ -405,6 +407,8 @@ static int lua_unit_set(lua_State *L)
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_bool_attrib("resting", u.set_resting(value));
+	modify_string_attrib("role", u.set_role(value));
+	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	return 0;
 }
 
