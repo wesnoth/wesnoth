@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-12 17:41+0300\n"
+"PO-Revision-Date: 2009-05-09 11:10+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "PAVADINIMAS"
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
-"wesnoth – Mūšis dėl Wesnoth, ėjimais pagrįstas fantastinis strateginis "
+"wesnoth - Mūšis dėl Wesnoth, ėjimais pagrįstas fantastinis strateginis "
 "žaidimas"
 
 # type: SH
@@ -87,14 +87,14 @@ msgid ""
 "scenarios or campaigns, and share them with others."
 msgstr ""
 "Nugalėkite visus priešų vadus naudodami gerai parinktą karių rinkinį, "
-"rūpindamiesi savo aukso ir kaimų resursais. Visi daliniai turi savo stiprias "
-"ir silpnas puses; kad nugalėtumėte, pasinaudokite geriausiais savo pajėgų "
-"privalumais, neleisdami to paties padaryti priešams. Daliniams įgaunant "
-"patirties, jie įgyja naujų galimybių ir tampa galingesni. Žaiskite savo "
-"gimtąja kalba ir išbandykite savo meistriškumą prieš protingą kompiuterinį "
-"priešininką arba prisijunkite prie didelės Wesnoth tinklo žaidėjų "
-"bendruomenės. Kurkite savo paties dalinius, scenarijus ar kampanijas ir "
-"dalinkitės jais su kitais."
+"rūpindamiesi savo aukso ir kaimų resursais. Visi daliniai turi savo "
+"stipriąsias ir silpnąsias puses; kad nugalėtumėte, pasinaudokite geriausiais "
+"savo pajėgų privalumais, neleisdami to paties padaryti priešams. Daliniams "
+"įgaunant patirties, jie įgyja naujų galimybių ir tampa galingesni. Žaiskite "
+"savo gimtąja kalba ir išbandykite savo meistriškumą prieš protingą "
+"kompiuterinį priešininką arba prisijunkite prie didelės Wesnoth tinklo "
+"žaidėjų bendruomenės. Kurkite savo paties dalinius, scenarijus ar kampanijas "
+"ir dalinkitės jais su kitais."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
@@ -162,6 +162,9 @@ msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
+"įjungia papildomas komandinio režimo opcijas žaidimo metu (daugiau "
+"informacijos apie komandinį režimą rasite viki puslapyje šiuo adresu: http://"
+"www.wesnoth.org/wiki/CommandMode)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
@@ -182,7 +185,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e,\\ --editor>I<\\ failas>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -229,7 +232,7 @@ msgid ""
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
 "išspaudžia failą, kuris turi būti gzip formatu ir išsaugo jį be .gz "
-"plėtinio.  I<infile.gz> bus pašalintas."
+"plėtinio. I<infile.gz> bus pašalintas."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
@@ -243,7 +246,7 @@ msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
 msgstr ""
-"suspaudžia failą gzip formatu, išsaugo kaip  I<infile>.gz ir pašalina  "
+"suspaudžia failą gzip formatu, išsaugo kaip I<infile>.gz ir pašalina  "
 "I<infile>."
 
 # type: TP
@@ -268,16 +271,16 @@ msgstr "B<-l,\\ --load>I<\\ failas>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
-"įkelia išsaugojimą I<failas> išs standartinio išsaugojimų aplanko.  Jei taip "
+"įkelia išsaugojimą I<failas> iš standartinio išsaugojimų aplanko.  Jei taip "
 "pat naudojamas B<-e> arba B<--editor> parametras, paleidžia redaktorių su "
-"atvertu iš I<failo> žemėlapiu."
+"atvertu iš I<failo> žemėlapiu. Jei tai yra aplankas, žemėlapių redaktorius "
+"pasileis su žemėlapių įkėlimo dialogu atvertu ten."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -358,7 +361,7 @@ msgstr "B<--nocache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
 msgid "disables caching of game data."
-msgstr ""
+msgstr "išjungia žaidimo duomenų podėlį"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -391,7 +394,7 @@ msgstr "B<--path>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the name of the game data directory and exits."
-msgstr "atsausdina žaidimo duomenų aplanko pavadinimą ir išeina."
+msgstr "atspausdina žaidimo duomenų aplanko pavadinimą ir išeina."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
@@ -431,6 +434,9 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"jungiasi prie nurodyto kompiuterio, jei kas nurodyta; jeigu ne, jungiasi "
+"prie pirmo serverio, rasto nuostatose. Pavyzdys: B<--server server.wenoth."
+"org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:158
@@ -491,7 +497,7 @@ msgstr "pakartoja žaidimą įkeltą su B<--load> parinktimi."
 #: ../../doc/man/wesnoth.6:176
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr "-- multiplayer parinktys"
+msgstr "--multiplayer parinktys"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -500,6 +506,10 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
+"Daugelio žaidėjų opcijos, skirtos kažkuriai vienai pusei, žymimos "
+"I<skaičiumi>. I<skaičių> pakeiskite tikruoju žaidėjo numeriu. Dažniausiai "
+"tai bus 1 arba 2, bet gali būti ir daugiau, priklausomai nuo galimo žaidėjų "
+"skaičiaus scenarijuje."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
@@ -602,6 +612,9 @@ msgid ""
 "options used with B<--controller> and B<--algorithm>.  It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
+"nustato papildomus šios pusės parametrus. Šis parametras priklauso nuo "
+"opcijų, panaudotų su B<--controller> ir B<--algorithm>. Jis turėtų būti "
+"naudingas tik žmonėms, kuriantiems nuosavą DI. (dar pilnai nedokumentuota)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:224
@@ -640,7 +653,7 @@ msgstr "B<--turns=>I<vertė>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:237
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
-msgstr "nustato ėjimų skaičių pasitinktam scenerijui. Numatyta B<50>."
+msgstr "nustato ėjimų skaičių pasirinktam scenarijui. Numatyta B<50>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:248
@@ -875,7 +888,7 @@ msgstr "SERVERIO KONFIGŪRACIJA"
 #: ../../doc/man/wesnothd.6:97
 #, no-wrap
 msgid "The general syntax is:"
-msgstr "Bandra sintaksė yra:"
+msgstr "Bendra sintaksė:"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:101
@@ -928,7 +941,7 @@ msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr ""
-"Leidižamų prisijungimų skaičius iš to paties IP. B<0> reiškia begalybė.  "
+"Leidižamų prisijungimų skaičius iš to paties IP. B<0> reiškia begalybė. "
 "(numatyta: B<5>)"
 
 # type: TP
@@ -1023,6 +1036,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"Direktorija, kur serveris saugos žaidimų pakartojimus (nepamirškite "
+"pasvirojo brūkšnelio gale!). Numatyta „“, kas reiškia tą pačią direktoriją, "
+"kur buvo paleistas serveris."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1049,6 +1065,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Nurodo ar serveris automatiškai saugos žaidimų pakartojimus. (numatyta: "
+"B<false>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:149
@@ -1063,6 +1081,9 @@ msgid ""
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
+"Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia "
+"naudoti `*' ir `?' kaip pakaitos šablonus.  (numatytoji reikšmė: tokia pati "
+"versija, kaip ir serverio)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:155
@@ -1130,13 +1151,12 @@ msgstr "B<version>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:178
-#, fuzzy
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
-"Kablelais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Elgiasi "
-"taip pat, kaip ir B<versions_accepted> ."
+"Kableliais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Pakaitos "
+"šablonų atžvilgiu, elgiasi taip pat, kaip ir B<versions_accepted>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:182
@@ -1201,7 +1221,7 @@ msgstr "B<db_host>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(skirtas user_handler=forum) Duomenų bazės serverio vardas"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
@@ -1212,7 +1232,7 @@ msgstr "B<db_name>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr "(skirtas user_handler=forum) Duombazės pavadinimas"
+msgstr "(skirtas user_handler=forum) Duomenų bazės pavadinimas"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
@@ -1226,7 +1246,8 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
-"(skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duombazės"
+"(skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duomenų "
+"bazės"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
@@ -1252,9 +1273,9 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
-"(skirtas user_handler=forum) Lentelės pavadinimas, kuriuoje jūsų phpbb "
+"(skirtas user_handler=forum) Lentelės pavadinimas, kurioje jūsų phpbb "
 "forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus "
-"E<lt>lentelės-priesagaE<gt>_users (pavyzdžiui, phpbb3_users)."
+"E<lt>lentelės-priešdėlisE<gt>_users (pavyzdžiui, phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:220
@@ -1271,6 +1292,11 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos "
+"savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui, "
+"šitaip: CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
+"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
+"NOT NULL DEFAULT 0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:224
@@ -1284,6 +1310,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(skirtas user_handler=sample) Laikas, per kiek pasensta vartotojo "
+"registracija (dienomis)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:231
@@ -1301,7 +1329,7 @@ msgstr "B<server>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Pašto serverio vardas"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
@@ -1333,7 +1361,6 @@ msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy
 msgid "The reply-to address of you mail."
 msgstr "Jūsų pašto atbulinio atsakymo adresas."
 
@@ -1367,7 +1394,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "tiesiogiai paleidžia integruotą žemėlapių redaktorių."

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:08+0200\n"
-"PO-Revision-Date: 2009-04-20 17:39+0300\n"
+"PO-Revision-Date: 2009-05-09 11:02+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -140,13 +140,13 @@ msgstr "sulėtintas"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr ""
+msgstr "gydo +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr ""
+msgstr "gydo +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
@@ -165,13 +165,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr ""
+msgstr "gydo +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr ""
+msgstr "gydo +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -1233,7 +1233,7 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:299
 msgid "Healing"
-msgstr ""
+msgstr "Gydymas"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
@@ -2418,12 +2418,12 @@ msgstr ""
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
-msgstr ""
+msgstr "atnuodija"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
 msgid "female^cures"
-msgstr ""
+msgstr "atnuodija"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2432,6 +2432,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Atnuodija:\n"
+"Atnuodytojas gali iš dalinio pašalinti nuodus, tačiau tas dalinys nebegaus "
+"jokio papildomo gydymo tą ėjimą, kai jis buvo atnuodytas."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
@@ -2450,6 +2453,9 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Regeneruojasi:\n"
+"Dalinys gydysis 8 GT per ėjimą. Jei jis yra apnuodytas, tai vietoj gydymosi "
+"pasišalins nuodus."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
@@ -3104,7 +3110,7 @@ msgstr "Palikti"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
 msgid "Potion of Healing"
-msgstr ""
+msgstr "Gydymo eliksyras"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:229
@@ -4998,7 +5004,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5858,9 +5864,8 @@ msgid "addon_type^MP era"
 msgstr "DŽ era"
 
 #: src/addon_management.cpp:409
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "DŽ scenarijus"
+msgstr ""
 
 #: src/addon_management.cpp:411
 msgid "addon_type^MP map-pack"
@@ -6532,9 +6537,9 @@ msgid "tooltip^% accuracy"
 msgstr "% taiklumas"
 
 #: src/generate_report.cpp:275
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "žalos"
+msgstr ""
 
 #: src/generate_report.cpp:286
 msgid "weapon range: "
@@ -6853,7 +6858,7 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
-"scenario settings^Bazinės\n"
+"Bazinės\n"
 "pajamos"
 
 #: src/menu_events.cpp:495
@@ -6861,7 +6866,7 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
-"scenario settings^Auksas\n"
+"Auksas\n"
 "kaimui"
 
 #: src/menu_events.cpp:496
@@ -7866,9 +7871,8 @@ msgid "No multiplayer sides found"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:307
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Pasirinkite savo:"
+msgstr ""
 
 #: src/multiplayer_wait.cpp:307
 msgid "Starting position: "
@@ -8517,29 +8521,26 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Ar vis tiek jį norite atsisiųsti?"
+#~ msgid "stones"
+#~ msgstr "sustingdo"
+
+#~ msgid "An invalid weapon is selected, possibly by the Python AI."
+#~ msgstr "Pasirinktas netinkamas ginklas, gal būt dėl Python'o DI."
+
+#~ msgid "female^stone"
+#~ msgstr "akmuo"
+
+#~ msgid "stone"
+#~ msgstr "akmuo"
+
+#~ msgid "Unknown unit type : "
+#~ msgstr "Nežinomas dalinio tipas: "
 
 #~ msgid "Quit Game"
 #~ msgstr "Išjungti žaidimą"
 
 #~ msgid "Ignore All"
 #~ msgstr "Ignoruoti viską"
-
-#~ msgid "Name: "
-#~ msgstr "Vardas: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Išsaugojimas jau egzistuoja. Ar norite jį perrašyti?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Perrašyti?"
-
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr "Pasirinktas netinkamas ginklas, gal būt dėl Python'o DI."
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Nežinomas dalinio tipas: "
 
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
@@ -8548,26 +8549,29 @@ msgstr "Įgalinti santraukų siuntimą"
 #~ "Išsaugojimų vardai negali turėti dvitaškių, slešų arba atbulinių slešų. "
 #~ "Prašome pasirinkti kitą pavadinimą."
 
-#~ msgid "Remove a trait from a unit. (Does not work yet.)"
-#~ msgstr "Pašalinti dalinio bruožą. (Dar neveikia.)"
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Išsaugojimas jau egzistuoja. Ar norite jį perrašyti?"
 
-#~ msgid "Name:"
-#~ msgstr "Vardas:"
+#~ msgid "Name: "
+#~ msgstr "Vardas: "
 
-#~ msgid "stones"
-#~ msgstr "sustingdo"
-
-#~ msgid "female^stone"
-#~ msgstr "akmuo"
-
-#~ msgid "stone"
-#~ msgstr "akmuo"
+#~ msgid "Overwrite?"
+#~ msgstr "Perrašyti?"
 
 #~ msgid "stone: "
 #~ msgstr "akmuo: "
 
+#~ msgid "Remove a trait from a unit. (Does not work yet.)"
+#~ msgstr "Pašalinti dalinio bruožą. (Dar neveikia.)"
+
 #~ msgid "The replay could not be saved"
 #~ msgstr "Peržaidimas negali būti išsaugotas"
+
+#~ msgid "Name:"
+#~ msgstr "Vardas:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Ar vis tiek jį norite atsisiųsti?"
 
 #~ msgid " included from "
 #~ msgstr " įterpta iš "
