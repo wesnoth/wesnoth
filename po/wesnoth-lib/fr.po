@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:09+0200\n"
-"PO-Revision-Date: 2009-03-18 01:03+0100\n"
-"Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
+"PO-Revision-Date: 2009-05-06 13:50+0100\n"
+"Last-Translator: Thierry Bothorel <thierrybothorel@yahoo.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -720,8 +720,9 @@ msgstr "Bleu :"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
+#, fuzzy
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Permettre l'ouverture de plusieurs cartes en même temps (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -788,12 +789,12 @@ msgstr "Non"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Erreur de synchronisation"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Tout ignorer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -804,12 +805,12 @@ msgstr "Quitter la partie"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr ""
+msgstr "Écraser ?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "La sauvegarde existe déjà. Voulez-vous la remplacer ?"
 
 #. [grid]
 #. [label]
@@ -1093,6 +1094,8 @@ msgstr "Jeu local"
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Jouer une partie multi-joueurs avec l'IA ou des humains partageant la même "
+"machine"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
@@ -1195,7 +1198,7 @@ msgstr "Plein écran"
 
 #: src/game_preferences_display.cpp:153
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Activer le suivi des unités sur la carte"
 
 #: src/game_preferences_display.cpp:154
 msgid "Accelerated Speed"
@@ -1415,6 +1418,8 @@ msgstr "Choisir entre le mode plein écran et le mode fenêtré"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"La carte doit elle défiler vers une unité en cas d'animation d'une action ou "
+"d'un déplacement."
 
 #: src/game_preferences_display.cpp:296
 msgid "Make units move and fight faster"
@@ -1454,7 +1459,7 @@ msgstr "Afficher une icône devant le nom des joueurs connectés"
 
 #: src/game_preferences_display.cpp:348
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Décocher pour supprimer le mot de passe enregistré (en quittant)."
 
 #: src/game_preferences_display.cpp:351
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1622,7 +1627,7 @@ msgstr "Le rectangle ne tient pas dans le cadre."
 
 #: src/gui/auxiliary/canvas.cpp:826
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Le texte a une taille de police de 0."
 
 #: src/gui/auxiliary/canvas.cpp:891
 msgid "Text doesn't start on canvas."
@@ -1704,6 +1709,7 @@ msgstr "Aucun état ou zone de dessin défini."
 #: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
+"Impossible d'afficher une boîte de dialogue qui ne tient pas dans l'écran."
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1814,7 +1820,6 @@ msgid "Create Unit (Debug!)"
 msgstr "Créer une unité (débug !)"
 
 #: src/hotkeys.cpp:76
-#, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Changer le camp de l'unité (débug !)"
 
@@ -1924,7 +1929,7 @@ msgstr "Information de la carte"
 
 #: src/hotkeys.cpp:115
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Inverser les terrains d'avant et d'arrière-plan"
 
 #: src/hotkeys.cpp:116
 msgid "Next Tool"
@@ -1968,7 +1973,7 @@ msgstr "Coller"
 
 #: src/hotkeys.cpp:127
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Exporter les coordonnées sélectionnées vers le presse-papier"
 
 #: src/hotkeys.cpp:129
 msgid "Select All"
