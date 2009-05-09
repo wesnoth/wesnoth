@@ -1538,8 +1538,8 @@ bool display::tile_nearly_on_screen(const map_location& loc)
 	int y = get_location_y(loc);
 	const SDL_Rect &area = map_area();
 	int hw = hex_width(), hs = hex_size();
-	return !(x + hs >= area.x - hw && x < area.x + area.w - hw &&
-	         y + hs >= area.y - hs && y < area.y - area.h - hs);
+	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
+	       y + hs >= area.y - hs && y < area.y + area.h + hs;
 }
 
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
