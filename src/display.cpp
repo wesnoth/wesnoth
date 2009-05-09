@@ -1532,6 +1532,16 @@ bool display::tile_on_screen(const map_location& loc)
 	return !outside_area(map_area(), x, y);
 }
 
+bool display::tile_nearly_on_screen(const map_location& loc)
+{
+	int x = get_location_x(loc);
+	int y = get_location_y(loc);
+	const SDL_Rect &area = map_area();
+	int hw = hex_width(), hs = hex_size();
+	return !(x + hs >= area.x - hw && x < area.x + area.w - hw &&
+	         y + hs >= area.y - hs && y < area.y - area.h - hs);
+}
+
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && !preferences::scroll_to_action()) return;
