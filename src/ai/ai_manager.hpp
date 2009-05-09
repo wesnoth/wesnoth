@@ -469,6 +469,7 @@ private:
 	static events::generic_event unit_moved_;
 	static events::generic_event enemy_attacked_;
 	static int last_interact_;
+	static int num_interact_;
 
 
 

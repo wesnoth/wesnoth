@@ -256,6 +256,7 @@ events::generic_event ai_manager::unit_recruited_("ai_unit_recruited");
 events::generic_event ai_manager::unit_moved_("ai_unit_moved");
 events::generic_event ai_manager::enemy_attacked_("ai_enemy_attacked");
 int ai_manager::last_interact_ = 0;
+int ai_manager::num_interact_ = 0;
 
 
 void ai_manager::set_ai_info(const ai_game_info& i)
@@ -295,6 +296,7 @@ void ai_manager::raise_user_interact() {
                 return;
         }
 
+	++num_interact_;
         user_interact_.notify_observers();
 
         last_interact_ = SDL_GetTicks();
@@ -691,8 +693,10 @@ void ai_manager::set_active_ai_algorithm_type_for_side( int side, const std::str
 
 void ai_manager::play_turn( int side, events::observer* /*event_observer*/ ){
 	last_interact_ = 0;
+	num_interact_ = 0;
 	ai_interface& ai_obj = get_active_ai_for_side(side);
 	ai_obj.play_turn();
+	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
 }
 
 
