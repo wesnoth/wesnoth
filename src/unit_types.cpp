@@ -39,10 +39,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
-namespace {
-	std::map< std::string, std::set< std::string > > future_advancefroms;
-}
-
 attack_type::attack_type(const config& cfg) :
 	aloc_(),
 	dloc_(),
@@ -554,7 +550,6 @@ unit_type::unit_type() :
 	zoc_(false),
 	hide_help_(false),
 	advances_to_(),
-	advances_from_(),
 	experience_needed_(0),
 	alignment_(),
 	movementType_(),
@@ -594,7 +589,6 @@ unit_type::unit_type(const unit_type& o) :
 	zoc_(o.zoc_),
 	hide_help_(o.hide_help_),
 	advances_to_(o.advances_to_),
-	advances_from_(o.advances_from_),
 	experience_needed_(o.experience_needed_),
 	alignment_(o.alignment_),
 	movementType_(o.movementType_),
@@ -641,7 +635,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	zoc_(false),
 	hide_help_(false),
 	advances_to_(),
-	advances_from_(),
 	experience_needed_(0),
 	alignment_(),
 	movementType_(),
@@ -842,16 +835,6 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	hide_help_= utils::string_bool(cfg["hide_help"],false);
 
 	build_status_ = HELP_INDEX;
-
-	std::map< std::string, std::set< std::string > >::const_iterator adv_froms = future_advancefroms.find(id_);
-	if (adv_froms != future_advancefroms.end()) {
-		std::set< std::string >::const_iterator adv_it,
-			adv_end = adv_froms->second.end();
-		for(adv_it = adv_froms->second.begin(); adv_it != adv_end; ++adv_it) {
-			add_advancesfrom(*adv_it);
-		}
-		future_advancefroms.erase(id_);
-	}
 }
 
 void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
@@ -984,8 +967,6 @@ int unit_type::experience_needed(bool with_acceleration) const
 	return experience_needed_;
 }
 
-
-
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
 	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
@@ -1052,14 +1033,6 @@ bool unit_type::hide_help() const {
 	return hide_help_ || unit_type_data::types().hide_help(id_, race_->id());
 }
 
-// Allow storing "advances from" info for convenience in Help.
-void unit_type::add_advancesfrom(const std::string& unit_id)
-{
-	if (find(advances_from_.begin(), advances_from_.end(), unit_id) == advances_from_.end())
-		advances_from_.push_back(unit_id);
-}
-
-
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
 	const std::string &to_id =  to_unit.cfg_["id"];
@@ -1123,6 +1096,25 @@ std::set<std::string> unit_type::advancement_tree() const
 	advancement_tree_internal(id_, tree);
 	return tree;
 }
+
+const std::vector<std::string> unit_type::advances_from() const
+{
+	// currently not needed (only help call us and already did it)
+	unit_type_data::types().build_all(unit_type::HELP_INDEX);
+
+	std::vector<std::string> adv_from;
+	for(unit_type_data::unit_type_map::const_iterator ut = unit_type_data::types().begin();
+	    ut != unit_type_data::types().end(); ut++) {
+
+		foreach(const std::string& adv, ut->second.advances_to()) {
+			if (adv == id_)
+				adv_from.push_back(ut->second.id());
+		}
+	}
+	return adv_from;
+}
+
+
 
 unit_type_data* unit_type_data::instance_ = NULL;
 
@@ -1303,7 +1295,6 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) ) {
 				const config& unit_cfg = find_config(key);
 				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-				add_advancefrom(unit_cfg);
 			}
             break;
         }
@@ -1315,10 +1306,6 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
             {
 				const config& unit_cfg = find_config(key);
 				ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-
-                if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
-                    (ut->second.build_status() == unit_type::CREATED) )
-                    add_advancefrom(unit_cfg);
             }
             break;
         }
@@ -1372,27 +1359,6 @@ bool unit_type_data::unit_type_map_wrapper::hide_help(const std::string& type, c
 	return res;
 }
 
-void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const
-{
-    //find the units this one can advance into and add advancefrom information for them
-    const std::vector<std::string> advances_to = utils::split(unit_cfg["advances_to"]);
-    if ( (advances_to.size() > 0) && (advances_to[0] != "null") ){
-        int count = 0;
-        for (std::vector<std::string>::const_iterator i_adv = advances_to.begin(); i_adv != advances_to.end(); i_adv++){
-            count++;
-            DBG_UT << "Unit: " << unit_cfg["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
-            unit_type_map::iterator itor_advances_to = types_.find(*i_adv);
-            if(itor_advances_to == types_.end()) {
-            	// if we can't add the advancefrom information yet, we should
-            	// just remember it for later (to prevent infinite recursion)
-            	future_advancefroms[*i_adv].insert(unit_cfg["id"]);
-            } else {
-				itor_advances_to->second.add_advancesfrom(unit_cfg["id"]);
-            }
-        }
-    }
-}
-
 void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) const
 {
     const config& cfg = to_unit.get_cfg();
@@ -1408,9 +1374,6 @@ void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) 
         from_unit->second.add_advancement(to_unit, xp);
 
         DBG_UT << "Added advancement ([advancefrom]) from " << from << " to " << to_unit.id() << "\n";
-
-        // Store what unit this type advances from
-		to_unit.add_advancesfrom(from);
     }
 }
 

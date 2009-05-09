@@ -181,12 +181,15 @@ public:
 	 */
 	void add_advancement(const unit_type &advance_to,int experience);
 
-	/** Adds units that this unit advances from, for help file purposes. */
-	void add_advancesfrom(const std::string& unit_id);
-
 	/** Get the advancement tree
 	 *  Build a set of unit type's id of this unit type's advancement tree */
 	std::set<std::string> advancement_tree() const;
+
+	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	const std::vector<std::string> advances_from() const;
+
+	config::const_child_itors modification_advancements() const
+	{ return cfg_.child_range("advancement"); }
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
@@ -219,10 +222,6 @@ public:
 	const unit_movement_type& movement_type() const { return movementType_; }
 
 	int experience_needed(bool with_acceleration=true) const;
-	const std::vector<std::string>& advances_to() const { return advances_to_; }
-	const std::vector<std::string>& advances_from() const { return advances_from_; }
-	config::const_child_itors modification_advancements() const
-	{ return cfg_.child_range("advancement"); }
 
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
@@ -313,7 +312,6 @@ private:
 	bool zoc_, hide_help_;
 
 	std::vector<std::string> advances_to_;
-	std::vector<std::string> advances_from_;
 	int experience_needed_;
 
 
