@@ -2970,6 +2970,36 @@ unit& unit::clone(bool is_temporary)
 	return *this;
 }
 
+void unit::refresh(const game_display &disp,const map_location &loc)
+{
+	if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
+		set_standing(loc);
+		return;
+	}
+	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_
+	    || incapacitated())
+		return;
+	if (get_current_animation_tick() > next_idling_ + 1000) {
+		// prevent all units animating at the same time
+		set_standing(loc);
+	} else {
+		set_idling(disp, loc);
+	}
+}
+
+unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
+	u_(u), moves_(u.movement_)
+{
+	if (operate) {
+		u.movement_ = u.total_movement();
+	}
+}
+
+unit_movement_resetter::~unit_movement_resetter()
+{
+	u_.movement_ = moves_;
+}
+
 int team_units(const unit_map& units, unsigned int side)
 {
 	int res = 0;

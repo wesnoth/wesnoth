@@ -145,18 +145,7 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh(const game_display& disp,const map_location& loc) {
-		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
-			set_standing( loc);
-			return;
-		}
-		if (state_ != STATE_STANDING || (get_current_animation_tick() < next_idling_) || incapacitated()) return;
-		if (get_current_animation_tick() > next_idling_ + 1000) { // prevent all units animating at the same
-			set_standing(loc);
-		} else {
-			set_idling(disp, loc);
-		}
-	}
+	void refresh(const game_display& disp,const map_location& loc);
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
@@ -465,17 +454,8 @@ private:
 /** Object which temporarily resets a unit's movement */
 struct unit_movement_resetter
 {
-	unit_movement_resetter(unit& u, bool operate=true) : u_(u), moves_(u.movement_)
-	{
-		if(operate) {
-			u.movement_ = u.total_movement();
-		}
-	}
-
-	~unit_movement_resetter()
-	{
-		u_.movement_ = moves_;
-	}
+	unit_movement_resetter(unit& u, bool operate=true);
+	~unit_movement_resetter();
 
 private:
 	unit& u_;
