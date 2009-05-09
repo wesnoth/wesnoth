@@ -1137,10 +1137,9 @@ std::string game::has_same_ip(const network::connection& user, bool observer) co
 	std::string clones;
 	for (user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (ip == network::ip_address(*i) && user != *i) {
-			if (i != users.begin()) clones += ", ";
 			const player_map::const_iterator pl = player_info_->find(*i);
 			if (pl != player_info_->end()) {
-				clones += pl->second.name();
+				clones += (clones.empty() ? "" : ", ") + pl->second.name();
 			}
 		}
 	}
