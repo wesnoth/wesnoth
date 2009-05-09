@@ -887,24 +887,18 @@ void game_display::invalidate_animations()
 {
 	new_animation_frame();
 	display::invalidate_animations();
-	for (unit_map::iterator u = units_.begin(),
-	     u_end = units_.end(); u != u_end; ++u)
-	{
-		if (!tile_nearly_on_screen(u->first)) continue;
-		u->second.refresh(*this, u->first);
-	}
-	if (temp_unit_ && tile_nearly_on_screen(temp_unit_loc_))
+	unit_map::iterator unit;
+	for(unit=units_.begin() ; unit != units_.end() ; unit++)
+		unit->second.refresh(*this, unit->first);
+	if (temp_unit_ )
 		temp_unit_->refresh(*this, temp_unit_loc_);
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
-		for (unit_map::iterator u = units_.begin(),
-		     u_end = units_.end(); u != u_end; ++u)
-		{
-			if (!tile_nearly_on_screen(u->first)) continue;
-			new_inval |= u->second.invalidate(u->first);
+		for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+			new_inval |= unit->second.invalidate(unit->first);
 		}
-		if (temp_unit_ && tile_nearly_on_screen(temp_unit_loc_)) {
+		if (temp_unit_ ) {
 			//new_inval |=invalidate(temp_unit_loc_);
 			new_inval |=temp_unit_->invalidate(temp_unit_loc_);
 		}
