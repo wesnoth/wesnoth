@@ -1291,26 +1291,29 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
 
     DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
 
-    const config& unit_cfg = find_config(key);
-
     switch (status){
-        case unit_type::CREATED:
+        case unit_type::CREATED: {
+			const config& unit_cfg = find_config(key);
             ut->second.set_config(unit_cfg);
 			ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
             break;
-        case unit_type::HELP_INDEX:
+        }
+        case unit_type::HELP_INDEX: {
             //build the stuff that is needed to feed the help index
-            if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) )
+            if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) ) {
+				const config& unit_cfg = find_config(key);
 				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
-
-            add_advancefrom(unit_cfg);
+				add_advancefrom(unit_cfg);
+			}
             break;
+        }
         case unit_type::WITHOUT_ANIMATIONS:
-        case unit_type::FULL:
+        case unit_type::FULL: {
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
                 (ut->second.build_status() == unit_type::CREATED) ||
                 (ut->second.build_status() == unit_type::HELP_INDEX) )
             {
+				const config& unit_cfg = find_config(key);
 				ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
 
                 if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
@@ -1318,6 +1321,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
                     add_advancefrom(unit_cfg);
             }
             break;
+        }
         default:
             break;
     }
