@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:51+0200\n"
-"PO-Revision-Date: 2009-03-30 14:59+0200\n"
+"PO-Revision-Date: 2009-05-10 14:16+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
@@ -468,8 +468,7 @@ msgid ""
 msgstr ""
 "Когда вы в своём лагере, вы можете нанимать воинов на окружающих клетках "
 "замка. Для этого вам надо щёлкнуть правой кнопкой мышки и выбрать пункт "
-"«Вербовать». Сейчас вы можете выбрать лишь один тип солдат: эльфийских "
-"ополченцев."
+"«Вербовать». Сейчас вы можете выбрать лишь один тип солдат: эльфийских воинов."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
@@ -519,8 +518,8 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Но прежде, чем ты отправишь своих ополченцев против манекена, обрати "
-"внимание, что у них есть два типа атаки..."
+"Но прежде, чем ты отправишь своих воинов против манекена, обрати внимание, "
+"что у них есть два типа атаки..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
@@ -539,7 +538,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
 msgid "Left click on an Elvish Fighter"
-msgstr "Кликните левой кнопкой на ополченце"
+msgstr "Кликните левой кнопкой на воине"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:728
@@ -555,8 +554,7 @@ msgid ""
 msgstr ""
 "Ты ведь не станешь делать глупостей, например, снова в одиночку нападать на "
 "манекен, так ведь?\n"
-"Пусть этим займутся нанятые тобой ополченцы; они здорово облегчат тебе "
-"задачу."
+"Пусть этим займутся нанятые тобой воины; они здорово облегчат тебе задачу."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:758
@@ -684,10 +682,9 @@ msgid ""
 msgstr ""
 "Примечание:\n"
 "Когда боец наберёт достаточно опыта (небольшая полоса справа), он "
-"продвигается на следующий уровень. Эльфийские ополченцы могут развиваться "
-"двумя способами; какой из них выбрать — решать вам. Заметим, что солдаты "
-"второго уровня требуют в два раза больше содержания, чем бойцы первого "
-"уровня."
+"продвигается на следующий уровень. Эльфийские воины могут развиваться двумя "
+"способами; какой из них выбрать — решать вам. Заметим, что солдаты второго "
+"уровня требуют в два раза больше содержания, чем бойцы первого уровня."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:979
@@ -827,8 +824,8 @@ msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
 msgstr ""
-"А теперь приведи здорового воина, желательно ополченца, к участку леса на "
-"юго-востоке острова — это хорошее, защищённое место. "
+"А теперь приведи здорового воина, желательно воина, к участку леса на юго-"
+"востоке острова — это хорошее, защищённое место. "
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
@@ -849,7 +846,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
 msgid "Move a unit (fighter if possible) to the patch of forest"
-msgstr "Приведите воина (по возможности, ополченца) в отмеченное место в лесу"
+msgstr "Приведите воина (по возможности, воина) в отмеченное место в лесу"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
@@ -1027,7 +1024,7 @@ msgid ""
 "One Elvish Shaman"
 msgstr ""
 "Для начала нам понадобится несколько солдат:\n"
-"два ополченца\n"
+"два воина\n"
 "два лучника\n"
 "одна шаманка"
 
@@ -1039,7 +1036,7 @@ msgid ""
 "gain more experience, rather than recruiting new ones."
 msgstr ""
 "За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
-"опыта, а $recall_name2 — $recall_xp2. Лучше не нанимай новых ополченцев, а "
+"опыта, а $recall_name2 — $recall_xp2. Лучше не нанимай новых воинов, а "
 "призови этих, чтобы они могли получить ещё больше опыта."
 
 #. [else]
@@ -1050,8 +1047,7 @@ msgid ""
 "than recalling, anyway)."
 msgstr ""
 "За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
-"опыта. Призови его, а затем завербуй другого ополченца (кстати, второе "
-"дешевле)."
+"опыта. Призови его, а затем завербуй другого воина (кстати, второе дешевле)."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:531
@@ -1073,9 +1069,9 @@ msgid ""
 "experience so it's more effecient to recruit new ones. Recruit an Elvish "
 "Fighter."
 msgstr ""
-"Если бы у тех ополченцев, что остались у тебя после прошлой битвы, был опыт, "
-"мы бы призвали их и на эту битвы. Однако же, у них обоих опыта не так много, "
-"так что лучше нанять новых. Найми ополченца."
+"Если бы у тех воинов, что остались у тебя после прошлой битвы, был опыт, мы "
+"бы призвали их и на эту битвы. Однако же, у них обоих опыта не так много, "
+"так что лучше нанять новых. Найми воина."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:544
@@ -1084,21 +1080,21 @@ msgid ""
 "them. Instead we must recruit a new Elvish Fighter."
 msgstr ""
 "Если бы у тебя после прошлой битвы остались воины, мы бы призвали их и на "
-"эту битвы. А так придётся вербовать нового ополченца."
+"эту битвы. А так придётся вербовать нового воина."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:547
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:803
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
 msgid "Elvish Fighter"
-msgstr "Ополченец"
+msgstr "Воин"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
 "Кликните правой кнопкой мышки на ячейке на северо-востоке от себя и "
-"завербуйте ополченца"
+"завербуйте воина"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
@@ -1198,7 +1194,7 @@ msgstr "Завербуйте двух лучников в ячейках к за
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:724
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr "Нет! Я же сказал — нанять ОПОЛЧЕНЦА! Давай еще раз..."
+msgstr "Нет! Я же сказал — нанять ВОИНА! Давай еще раз..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
@@ -1240,8 +1236,7 @@ msgstr "ПРИЗОВИ $recall_name2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
-"Нажмите правой кнопкой мыши на ячейке к востоку от тебя и завербуйте "
-"ополченца"
+"Нажмите правой кнопкой мыши на ячейке к востоку от тебя и завербуйте воина"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:827
@@ -1249,8 +1244,8 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.language_name|? Я же сказал — ЗАВЕРБОВАТЬ нового ОПОЛЧЕНЦА. "
-"Попробуй ещё раз..."
+"$recruit.language_name|? Я же сказал — ЗАВЕРБОВАТЬ нового ВОИНА. Попробуй "
+"ещё раз..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1357,7 +1352,7 @@ msgstr "Атакуйте орка другим лучником"
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
 msgid "Fighter to HERE"
-msgstr "Ополченца СЮДА"
+msgstr "Воина СЮДА"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
@@ -1365,9 +1360,8 @@ msgid ""
 "Your other units cannot reach that Orc this turn. Send a Fighter to the "
 "village to the far east. It will take two turns to reach it."
 msgstr ""
-"Больше никому на этом ходу до орка не добраться. Пошли ополченца в "
-"отдалённую деревню на востоке. Ему потребуется два хода, чтобы до неё "
-"добраться."
+"Больше никому на этом ходу до орка не добраться. Пошли воина в отдалённую "
+"деревню на востоке. Ему потребуется два хода, чтобы до неё добраться."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:947
@@ -1383,7 +1377,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
 msgid "Tell a Fighter to move to the far east village"
-msgstr "Отправьте ополченца к отдалённой деревне на востоке"
+msgstr "Отправьте воина к отдалённой деревне на востоке"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:966
@@ -1391,23 +1385,23 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
-"Отправь другого ополченца и шаманку на юг, и они смогут атаковать на "
-"следующем ходу. Затем вернись в укрытие и завербуй еще солдат!"
+"Отправь другого воина и шаманку на юг, и они смогут атаковать на следующем "
+"ходу. Затем вернись в укрытие и завербуй еще солдат!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:967
 msgid "Move your Fighter and Shaman south, then return Konrad to the Keep"
-msgstr "Отправьте ополченца и шаманку на юг, затем верните Конрада в укрытие"
+msgstr "Отправьте воина и шаманку на юг, затем верните Конрада в укрытие"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:968
 msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
-msgstr "Отправьте ополченца и шаманку на юг, затем верните Лисар в укрытие"
+msgstr "Отправьте воина и шаманку на юг, затем верните Лисар в укрытие"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
 msgid "Recruit another Archer and a Fighter"
-msgstr "Завербуйте еще одного лучника и ополченца"
+msgstr "Завербуйте еще одного лучника и воина"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:993
@@ -1527,8 +1521,8 @@ msgid ""
 "Don't forget about your fighter in the east; you can move him south to that "
 "last village near the channel."
 msgstr ""
-"Не забывай о своем ополченце на востоке. Можно переместить его на юг, к "
-"деревне у реки."
+"Не забывай о своем воине на востоке. Можно переместить его на юг, к деревне "
+"у реки."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1142
@@ -1818,10 +1812,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "кистень"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Галдрад"
 
 #~ msgid ""
 #~ "Hello translators! Tutorial is meant to be a little funny at the start, "

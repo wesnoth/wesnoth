@@ -6,26 +6,26 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Azamat Hackimov (Izek) - azazello1984@mail.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# Valentina Mukhamedzhanova - umirra@gmail.com
 #
 #
 # Automatically generated, 2004.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2009.
 # Valentina Mukhamedzhanova <umirra@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:39+0200\n"
-"PO-Revision-Date: 2009-04-12 17:43+0400\n"
+"PO-Revision-Date: 2009-05-10 01:29+0400\n"
 "Last-Translator: Valentina Mukhamedzhanova <umirra@gmail.com>\n"
-"Language-Team: Russian <>\n"
+"Language-Team: ru <wesnoth-i18n@gna.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 0.3\n"
 
 #. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -106,7 +106,7 @@ msgstr "Поддержка кампании"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:48
 msgid "Prose, Grammatical and WML Assistance"
-msgstr ""
+msgstr "Тексты, помощь в грамматике и WML"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:54
@@ -335,7 +335,7 @@ msgid ""
 "leadership of it to his son-in-law Baron Albert."
 msgstr ""
 "Орки мстили, устраивая массовые побоища в деревнях и поселениях людей. Тогда "
-"граф Ланбекх, самый могущественный военачальник людей Севера, решил "
+"граф Ланбек'х, самый могущественный военачальник людей Севера, решил "
 "устранить угрозу, исходящую от орков. Он собрал армию и доверил командование "
 "своему зятю, барону Альберту."
 
@@ -513,12 +513,12 @@ msgstr "Армия людей"
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:22
 msgid "Defeat Lanbec'h"
-msgstr "Победите Ланбекха"
+msgstr "Победите Ланбек'ха"
 
 #. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:58
 msgid "Lanbec'h"
-msgstr "Ланбекх"
+msgstr "Ланбек'х"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:75
@@ -1823,9 +1823,8 @@ msgstr "Ар-Дант"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:114
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:80
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:92
-#, fuzzy
 msgid "Villains"
-msgstr "Крестьяне"
+msgstr "Преступники"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:106
@@ -2122,7 +2121,7 @@ msgstr ""
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:169
 msgid "What happened? Why did people stop coming here?"
-msgstr ""
+msgstr "Что случилось? Почему это место стали избегать?"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:173
@@ -2130,6 +2129,8 @@ msgid ""
 "The fact is that few people entered this forest and returned home safe. I am "
 "not sure, but most likely, this forest is full of elvish renegades."
 msgstr ""
+"Мало кто из пришедших сюда вернулся домой. Я не уверен, но скорее всего этот "
+"лес полон эльфийских изменников."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:177
@@ -2138,66 +2139,66 @@ msgid ""
 "rest. We are sufficiently armed to cope with a bunch of elvish poachers. If "
 "we meet any, we'll cut them to pieces."
 msgstr ""
+"Да что эльфам делать так далеко в землях орков? Ладно, нам надо отдохнуть. "
+"Мы достаточно вооружены, чтобы справиться с кучкой эльфийских браконьеров. "
+"Если они нам попадутся, мы их порежем на кусочки."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:190
-#, fuzzy
 msgid ""
 "Elves! You were right, Pirk, this place is infested with the skinny "
 "weaklings."
-msgstr "Эльфы."
+msgstr ""
+"Эльфы! Ты был прав, Пирк. Это место кишмя кишит этими тощими слабаками."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:195
 msgid "Blast it, the orcs have discovered us."
-msgstr ""
+msgstr "Проклятье, орки нас заметили."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
 msgid "What is your purpose for trespassing on orcish territory?"
-msgstr ""
+msgstr "С какой целью вы вторглись во владения орков?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:205
 msgid "Fool, do you really think we are going to tell you?"
-msgstr ""
+msgstr "Глупец, неужели ты думаешь, что мы откроемся тебе?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:210
-#, fuzzy
 msgid ""
 "Men, capture one of these elves and interrogate him. I am sure that will get "
 "us some answers."
-msgstr "его."
+msgstr ""
+"Взять одного из этих эльфов и допросить его. Не сомневаюсь, некоторые ответы "
+"мы всё же получим."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
-#, fuzzy
 msgid "Ok, pal, we want some answers."
 msgstr "Ладно, приятель, нам нужны ответы."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
-#, fuzzy
 msgid "You might as well go ahead and kill me, I'm not telling you anything."
-msgstr "Вы можете пытать меня до смерти, но я ничего не скажу."
+msgstr "Пытайте меня до смерти, но я ничего не скажу."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:233
-#, fuzzy
 msgid "Very well then..."
 msgstr "Ну что же..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:238
-#, fuzzy
 msgid "Some time later..."
 msgstr "Некоторое время спустя..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:244
 msgid "So you elves have set up an enclave here have you. Why is that?"
-msgstr ""
+msgstr "Так значит вы решили создать здесь анклав. Для чего?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:249
@@ -2207,6 +2208,9 @@ msgid ""
 "them they would give us a large chunk of your territory once the battle was "
 "over."
 msgstr ""
+"Мы заключили соглашение с людьми. Они планировали крупное нападение на вас, "
+"разжигатели войны, и пообещали нам немалую часть ваших земель, если мы "
+"поможем им победить."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:254
@@ -2214,14 +2218,17 @@ msgid ""
 "Why would you elves want still more territory? You guys already have the "
 "undisputed rule of the whole elvish forest."
 msgstr ""
+"Зачем вам ещё земли? Вы и так владеете целым эльфийским лесом, на который "
+"никто больше не претендует."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:259
-#, fuzzy
 msgid ""
 "Yes, but our prince has been banished from those lands for collaborating "
 "with humans. He now seeks to carve out an empire for himself."
-msgstr "Да."
+msgstr ""
+"Да, но наш принц был изган за то, что имел дело с людьми. Теперь он хочет "
+"основать собственную империю."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:264
@@ -2229,12 +2236,13 @@ msgid ""
 "Hmmm, interesting. So you set up a base here to launch your attacks on us. "
 "Is that right?"
 msgstr ""
+"Хммм, интересно. Значит, вы обосновались здесь, чтобы совершать на нас "
+"нападения. Так?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:269
-#, fuzzy
 msgid "Yes, that is correct."
-msgstr "Да, все верно."
+msgstr "Да, всё верно."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:274
@@ -2242,21 +2250,20 @@ msgid ""
 "Well folks, it looks like we have our work cut out for us. We must destroy "
 "this enclave."
 msgstr ""
+"Что ж, парни, похоже, нам предстоит неплохая работка. Уничтожим этот анклав!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
 msgid "With pleasure. But what should I do with this guy?"
-msgstr ""
+msgstr "С удовольствием. А с этим что делать?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-#, fuzzy
 msgid "Behead him."
-msgstr "Отрубить ему голову."
+msgstr "Отрубите ему голову."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:289
-#, fuzzy
 msgid "Ahhhhh!"
 msgstr "Ахххх!"
 
@@ -2266,34 +2273,35 @@ msgid ""
 "Good work, men, we've done it! Now we don't have to worry about these elves "
 "attacking us. Let's get some rest and continue our journey."
 msgstr ""
+"Хорошая работа, ребята, молодцы! Больше нам не придётся беспокоиться о "
+"нападениях эльфов. Теперь надо отдохнуть, а потом продолжим наш путь. "
 
 #. [message]: speaker=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:316
 msgid ""
 "Ahhh! Flee; warn the prince that I have been slain and the enclave destroyed."
 msgstr ""
+"Аххх! Беги! Предупреди принца, что я повержена, а наш анклав уничтожен."
 
 #. [unit]: type=Elvish Scout, id=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:325
 msgid "Linduilas"
-msgstr ""
+msgstr "Линдуилас"
 
 #. [message]: speaker=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:330
 msgid "As you command, my lady."
-msgstr ""
+msgstr "Я исполню, госпожа."
 
 #. [scenario]: id=Shan_Taum_The_Smug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:4
-#, fuzzy
 msgid "Shan Taum The Smug"
-msgstr "Шан Таум Смуг"
+msgstr "Шан Таум Щёголь"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:20
-#, fuzzy
 msgid "Survive the Shan Taum menace for 20 turns"
-msgstr "Останьтесь в живых против угроз Шан Таума в течение 20 ходов"
+msgstr "Продержитесь против Шан Таума в течение 20 ходов"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:26
@@ -2302,71 +2310,75 @@ msgid ""
 "@Defeat Shan Taum\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Или же:\n"
+"@Победите Шан Таума\n"
+"`(бонус за быстрый финиш)"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:125
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:164
-#, fuzzy
 msgid "Shan Taum"
 msgstr "Шан Таум"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:83
-#, fuzzy
 msgid ""
 "After clearing out the elves from the Silent Forest, Kapou'e and his party "
 "set out on the last leg of their journey. Within a few days they finally "
 "reached the city of Lmarig in the Mourned Hills, which was then ruled by "
 "Shan Taum the Smug."
-msgstr "Лес Холмы."
+msgstr ""
+"Расправившись с эльфами Безмолвного Леса, Капу'е и его войско приступили к "
+"последнему этапу их долгого путешствия. Через несколько дней они достигли "
+"города Лмариг в Траурных Холмах, где правил Шан Таум Щёголь."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:112
-#, fuzzy
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
-msgstr "Холмы."
+msgstr "Вот и Траурные Холмы! Теперь нам остаётся только надеяться на лучшее."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:116
-#, fuzzy
 msgid "Why?"
 msgstr "Почему?"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:120
-#, fuzzy
 msgid ""
 "You are a troll, so you don't know. These lands are ruled by Shan Taum the "
 "Smug, who was a rival of Black-Eye Karun."
-msgstr "Черный."
+msgstr ""
+"Ты тролль, и поэтому не знаешь. Этой землёй правит Шан Таум по прозвищу "
+"Щёголь, давний враг Каруна Чёрного Глаза."
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:124
-#, fuzzy
 msgid "I doubt he would welcome the son of the Black-Eye."
-msgstr "Черный."
+msgstr "Сомневаюсь, что он обрадуется сыну Чёрного Глаза."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:128
 msgid ""
 "Who is that? Kapou'e! What are you doing in my lands, you weakling runt?"
-msgstr ""
+msgstr "Это ещё кто? Капу'е! Что ты делаешь на моей земле, задохлик?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:132
 msgid "Hold on, Shan Taum. We seek the Great Council, not a quarrel with you."
 msgstr ""
+"Подожди, Шан Таум. Я пришёл, чтобы найти Великий Совет, а не для того, чтобы "
+"ссориться с тобой."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:137
-#, fuzzy
 msgid ""
 "Bwahaha! You are nothing! Where is your land? You became a beggar. You are "
 "as pathetic as your father!"
 msgstr ""
-"Хахаха! Ты ничто! Где твои земли? Ты стал нищим. Ты жалок, как и твой отец!"
+"Хахаха! Да ты ничто! Где твои земли? Ты стал нищим. Ты так же жалок, как и "
+"твой отец!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:141
@@ -2374,81 +2386,81 @@ msgid ""
 "How can you talk that way about my father, you miserable coward?! I'll make "
 "a mug from your skull!"
 msgstr ""
+"Да как ты смеешь так говорить о моём отце, жалкий трус?! Я убью тебя и "
+"сделаю из твоего черепа кружку!"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:146
-#, fuzzy
 msgid "Really? What would you drink with it? Mint cordial?"
-msgstr "Правда? И что ты будешь пить из него? Мятный ликёр?"
+msgstr "Правда? И что ты будешь из неё пить? Мятную наливку?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:150
-#, fuzzy
 msgid ""
 "Exasperated, Kapou'e launched an attack on his fellow orc Shan Taum the Smug."
-msgstr "Разозлившись, Капоу'е напал на своего собрата Шам Таум Смуга."
+msgstr "Разозлившись, Капу'е напал на своего собрата Шан Таума Щёголя."
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:158
 msgid "Fabstep"
-msgstr ""
+msgstr "Фабстеп"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:159
 msgid "Klebar"
-msgstr ""
+msgstr "Клебар"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:160
 msgid "Echarp"
-msgstr ""
+msgstr "Эчарп"
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:166
-#, fuzzy
 msgid ""
 "What is this? Are you mad!? Humans are to besiege our fortress at Prestim "
 "and you are fighting each other!?"
-msgstr "Люди?"
+msgstr ""
+"Что это? Вы с ума сошли!? Люди готовятся захватить нашу крепость в Престиме, "
+"а вы тут сражаетесь друг против друга!?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:171
-#, fuzzy
 msgid "Well, ermmm..."
 msgstr "Ну, ээээ..."
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:175
-#, fuzzy
 msgid ""
 "Kapou'e, rumors tell of you making a long trip to seek assistance from us, "
 "and escorting Pirk, Gork and Vraurk. The council is grateful for that."
-msgstr "Горк."
+msgstr ""
+"Капу'е, мы слышали, что ты проделал долгий путь, чтобы получить нашу помощь. "
+"Ты привёл сюда Пирка, Горка и Враурка. Совет благодарен тебе за это."
 
 #. [message]: speaker=Fabstep
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:179
-#, fuzzy
 msgid "I know what you want from us but I'm afraid we can't help you."
 msgstr "Я знаю, что тебе нужно от нас, но боюсь, что мы не сможем помочь тебе."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:183
-#, fuzzy
 msgid "Really? But my people..."
-msgstr "Правда? Но мои орки..."
+msgstr "Правда? Но мой народ..."
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:187
-#, fuzzy
 msgid ""
 "You don't understand. Orcs have been divided for ages. The only one who gave "
 "us some unity was your father, Black-Eye Karun. Hearing rumors of your "
 "exploits, we understood you are a worthy son of your father."
-msgstr "Орки Черный."
+msgstr ""
+"Ты не понимаешь. Издавна между орками не было единства, и лишь твой отец, "
+"Карун Чёрный Глаз, смог это изменить. О твоих подвигах уже ходят слухи, и мы "
+"видим, что ты достойный сын своего отца."
 
 #. [message]: speaker=Vraurk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:191
-#, fuzzy
 msgid ""
 "This is true. Now we are pressed from all sides by humans and elves; we need "
 "a leader that can unite all banners. This one is YOU!"
@@ -2459,64 +2471,65 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:195
 msgid "Thank you."
-msgstr ""
+msgstr "Благодарю."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:199
-#, fuzzy
 msgid "Did you hear? There is a battle waiting for us at Prestim!"
-msgstr "Ты слышишь? Это битва ждёт нас в Престиме!"
+msgstr "Вы слышали? В Престиме нас ждёт битва!"
 
 #. [message]: speaker=Echarp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:203
-#, fuzzy
 msgid ""
 "Kapou'e, if Prestim falls, humans will have a strong bridgehead on this side "
 "of the river and your people won't be safe. You are the only one that can "
 "help us defend Prestim!"
 msgstr ""
-"Капоу'е, если Престим падёт, люди будут иметь надёжную переправу на этой "
-"стороне реки, и твои орки не будут в безопасности. Ты единственный, кто "
+"Капу'е, если Престим падёт, у людей будет надёжное предмостное укрепление на "
+"этой стороне реки, и твой народ будет в опасности. Ты единственный, кто "
 "сможет помочь нам защитить Престим!"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:207
-#, fuzzy
 msgid ""
 "Leave your people here Kapou'e - they are safe for the moment - and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
 "leadership on it."
-msgstr "лидер."
+msgstr ""
+"Оставь своих орков здесь, Капу'е, пока что им ничто не угрожает, и встань на "
+"защиту Престима. Тем временем совет, теперь уже в полном составе, примет "
+"решение. Возможно, нам придётся созвать Великую Орду, а ты станешь её "
+"предводителем."
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:252
 msgid "Nooo! Don't kill me, I surrender to you little earthworm."
-msgstr ""
+msgstr "Нееет! Не убивай меня, я сдаюсь тебе, червяк."
 
 #. [scenario]: id=Saving_Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:10
-#, fuzzy
 msgid "Saving Inarix"
-msgstr "Спасая Инарикса"
+msgstr "Спасение Инарикса"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:31
 msgid "Destroy the southern part of the bridge"
-msgstr ""
+msgstr "Разрушьте южную часть моста"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:35
-#, fuzzy
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety"
-msgstr "Горк"
+msgstr ""
+"Чтобы нанимать ящеров, приведите Инарикса и хотя бы четверых ящеров в "
+"безопасное место"
 
 #. [objectives]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:52
 msgid "Note: whoever detonates the bridge will die.\n"
-msgstr ""
+msgstr "Примечание: тот, кто взорвёт мост, погибнет.\n"
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
@@ -2525,59 +2538,53 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:77
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:189
 msgid "Thelarion"
-msgstr ""
+msgstr "Тэларион"
 
 #. [side]: type=Dwarvish Steelclad, id=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:94
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:100
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:75
 msgid "Darstang"
-msgstr ""
+msgstr "Дарстанг"
 
 #. [unit]: type=Orcish Slayer, id=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:132
-#, fuzzy
 msgid "Plonk"
 msgstr "Плонк"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:179
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:141
-#, fuzzy
 msgid "Eastern Tower"
-msgstr "Наблюдательная башня"
+msgstr "Восточная башня"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:180
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:142
-#, fuzzy
 msgid "Western Tower"
-msgstr "Наблюдательная башня"
+msgstr "Западная башня"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:181
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:143
-#, fuzzy
 msgid "Southern Tower"
-msgstr "Наблюдательная башня"
+msgstr "Южная башня"
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
-#, fuzzy
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the Bork river was taken this morning by a small "
 "commando of elves, we have already tried to assault it twice without success."
 msgstr ""
 "Наконец-то, подкрепление! Кто бы вы ни были, добро пожаловать в Престим! "
-"Укреплённый мост через реку Горк был взят этим утром небольшим отрядом "
+"Укреплённый мост через реку Борк был взят этим утром небольшим отрядом "
 "эльфов, мы уже дважды пытались отбить его, но безрезультатно."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:190
-#, fuzzy
 msgid "Ah! They are no match against my hammer."
-msgstr "А! Они не устоят против моей булавы."
+msgstr "А! Они не устоят против моего молота."
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:194
@@ -2586,16 +2593,17 @@ msgid ""
 "still trapped on the other side of the river some miles away. They won't be "
 "able to cross the river."
 msgstr ""
+"Всё хуже. Наши разведчики доложили, что наши союзники-ящеры всё ещё по ту "
+"сторону реки, в нескольких милях отсюда. Им не пересечь реку."
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:198
-#, fuzzy
 msgid ""
 "Elves and dwarves have joined humans against us and have set up camp nearby. "
 "Humans will arrive soon. We must destroy the southern bridge on the river."
 msgstr ""
 "Эльфы и гномы присоединились к альянсу людей против нас и разбили лагерь "
-"неподалёку. Люди скоро прибудут. Мы должны разрушить южный мост через реку."
+"неподалёку. Люди скоро прибудут. Мы должны разрушить южную часть моста."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:202
@@ -2603,50 +2611,56 @@ msgid ""
 "If Inarix falls prey to those humans then we won't be able to count on their "
 "help in this struggle. We must do something!"
 msgstr ""
+"Если Инарикс падёт жертвой этих людей, то мы не сможем рассчитывать на его "
+"помощь. Надо что-то предпринять!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:207
 msgid "I know what we must do. Kill elves and help Inarix cross."
 msgstr ""
+"Я знаю, что надо сделать. Убить эльфов и помочь Инариксу пересечь реку."
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:211
-#, fuzzy
 msgid "It won't be that easy! Our enemies are well entrenched."
-msgstr "Это будет не так легко! Наши враги хорошо укрепились."
+msgstr "Это не так-то просто! Наши враги хорошо укрепились."
 
 #. [message]: speaker=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:215
-#, fuzzy
 msgid ""
 "We can sabotage the southern bridge to slow them down. When the bulk of the "
 "saurians have crossed, someone needs to go and light the barrel of oil we "
 "have set up beside the bridge to destroy it. Any warriors trapped on the "
 "bridge or on the other side of the river will perish!"
-msgstr "Любой воин, оставшийся на мосту или на другой стороне реки, погибнет!"
+msgstr ""
+"Мы можем подорвать южную часть моста, чтобы задержать их. Мы приготовили "
+"бочку с маслом рядом с мостом. Когда ящеры перейдут мост, её нужно будет "
+"поджечь. Все, кто останется на мосту или на другой стороне реки, погибнут!"
 
 #. [message]: speaker=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:222
-#, fuzzy
 msgid ""
 "Hey look, that tribe of orcs that destroyed my enclave in the Silent Forest "
 "have reinforced Prestim. It is time to avenge the death of our fallen kin my "
 "friends - get them!"
-msgstr "Лес!"
+msgstr ""
+"Смотрите, это те самые орки, что уничтожили мой анклав в Безмолвном Лесу, а "
+"теперь они пришли на помощь Престиму. Друзья, пришло время отомстить за "
+"смерть наших близких! Взять их!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:226
-#, fuzzy
 msgid ""
 "Ahhh, it's 'the Prince' from the Silent Forest. Unfortunately, I don't think "
 "we can deal with him now, we have to focus on saving Inarix."
-msgstr "Лес его."
+msgstr ""
+"Ааа, это тот самый «Принц» из Безмолвного Леса. Жаль, сейчас нам не до него, "
+"нужно спасти Инарикса."
 
 #. [unit]: type=Saurian Ambusher, id=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:236
-#, fuzzy
 msgid "Inarix"
-msgstr "Спасая Инарикса"
+msgstr "Инарикс"
 
 #. [message]: speaker=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:259
@@ -2654,42 +2668,44 @@ msgid ""
 "Hurry-hurry, friends. Lanbec'h and his kind are right on our tails, we must "
 "reach Prestim quickly."
 msgstr ""
+"Быстрее, быстрее, друзья. Ланбек'х и его люди наступают нам на хвосты, мы "
+"должны попасть в Престим как можно скорее."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:335
 msgid "Bah! I'm not going to blow myself to bits!"
-msgstr ""
+msgstr "Ба! Я не хочу разлететься на кусочки!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:353
 msgid "Grüü, stay away from that thing! I still have a use for you!"
-msgstr ""
+msgstr "Груу, держись от этой штуки подальше! Ты мне всё ещё нужен!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:360
-#, fuzzy
 msgid "Uh... OK, Chief!"
-msgstr "Хорошо, шеф."
+msgstr "Э... Хорошо, вождь!"
 
 #. [message]: speaker=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:378
 msgid "I'm not going to do it!"
-msgstr ""
+msgstr "Я этого делать не стану!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:415
 msgid "Get away from there you idiot, I'm still over here!"
-msgstr ""
+msgstr "Уйди оттуда, идиот, я всё ещё здесь!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:430
 msgid "Hey, don't light it up, I'm not safe!"
-msgstr ""
+msgstr "Эй, не поджигай её, я ещё здесь!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:484
 msgid "Chief, we can't be blowing the bridge before Inarix is here, can we?"
 msgstr ""
+"Вождь, ведь нельзя поджигать мост, пока Инарикс не перейдёт через него?"
 
 #. [then]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:496
@@ -2697,48 +2713,47 @@ msgid ""
 "Chief, Inarix hasn't yet made it across! Are you really sure you want to do "
 "this?"
 msgstr ""
+"Вождь, Инарикс ещё не перешёл через мост! Ты уверен, что уже можно взрывать?"
 
 #. [else]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:500
-#, fuzzy
 msgid "I'm ready, Chief!"
-msgstr "Я здесь, шеф!"
+msgstr "Я готов, вождь!"
 
 #. [option]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:509
-#, fuzzy
 msgid "Let her blow!"
 msgstr "Взрывайте!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:514
 msgid "Bye bye, $unit.name|!"
-msgstr ""
+msgstr "Пока, $unit.name|!"
 
 #. [message]: speaker=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:526
 msgid "Damn you, Son of the Black-Eye! You'll pay for this!"
-msgstr ""
+msgstr "Будь ты проклят, сын Чёрного Глаза! Ты поплатишься за это!"
 
 #. [message]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:540
 msgid "No, wait!"
-msgstr ""
+msgstr "Нет, подождите!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:547
 msgid "Aaaaaaaargh!"
-msgstr ""
+msgstr "Аааааааааа!"
 
 #. [option]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:563
 msgid "Wait a moment."
-msgstr ""
+msgstr "Подожди."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:568
 msgid " *phew*"
-msgstr ""
+msgstr "*Фффф*"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:623
@@ -2746,22 +2761,22 @@ msgid ""
 "Blast it! The saurians have had too many casualties in order for them to be "
 "of any real help to us. We won't be able to recruit them in the future."
 msgstr ""
+"Проклятье! Ящеры понесли слишком сильные потери, настоящей помощи от них "
+"ожидать нельзя. Мы не сможем их нанимать."
 
 #. [message]: speaker=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:637
-#, fuzzy
 msgid ""
 "This has taken too much time, we should send all of our troops and send "
 "these creatures back to hell."
 msgstr ""
-"Это заняло слишком много времени, мы должны отправить все наши отряды и "
-"отправим эти создания обратно в ад."
+"Это заняло слишком много времени, мы отправим все наши войска и ввергнем "
+"этих существ в ад, откуда они и пришли."
 
 #. [message]: speaker=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:641
-#, fuzzy
 msgid "It won't be said that Elves were braver than us, everyone attack!"
-msgstr "Это не говорит о том, что Эльфы смелее чем мы, все атакуют!"
+msgstr "Никто не скажет, что эльфы смелее нас! В атаку!"
 
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
@@ -2770,68 +2785,63 @@ msgstr "Это не говорит о том, что Эльфы смелее ч�
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:90
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:659
-#, fuzzy
 msgid "Earl Lanbec'h"
-msgstr "Лорд Ланбекх"
+msgstr "Граф Ланбек'х"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:675
 msgid "At them! Rip them to the last!"
-msgstr ""
+msgstr "В атаку! Вырезать всех до последнего!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:679
-#, fuzzy
 msgid "It is too late, we are defeated."
 msgstr "Слишком поздно, мы проиграли."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:723
 msgid "The green earth will curse you for this..."
-msgstr ""
+msgstr "Да падёт на тебя проклятие земли!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:735
 msgid "Curse you, foul orc!"
-msgstr ""
+msgstr "Будь проклят, грязный орк!"
 
 #. [scenario]: id=Clash_of_armies
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:4
-#, fuzzy
 msgid "Clash of Armies"
 msgstr "Столкновение Армий"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:25
-#, fuzzy
 msgid "Defend Prestim successfully for four days"
-msgstr "Защищайте Престим 4 дня"
+msgstr "Защищайте Престим четыре дня"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:29
-#, fuzzy
 msgid "Destruction of a tower of Prestim"
-msgstr "Уничтожение башни Престим"
+msgstr "Уничтожение одной из башен Престима"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:202
 msgid "Telamir"
-msgstr ""
+msgstr "Теламир"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:203
 msgid "Angthur"
-msgstr ""
+msgstr "Ангтур"
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:224
 msgid "So here we are, and they are preparing to assault."
-msgstr ""
+msgstr "Итак, мы здесь, а они готовятся к нападению."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:229
 msgid "Prestim's walls are rock-hard, they'll waste themselves on them."
-msgstr ""
+msgstr "Стены Престима очень крепкие, они впустую растратят силы."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:234
@@ -2840,34 +2850,36 @@ msgid ""
 "built on three towers. If one of them is destroyed, a breach will allow "
 "humans to enter Prestim... which would be the end for us."
 msgstr ""
+"Не уверен. У любой крепости есть свои уязвимые места. Стены Престима "
+"соединют три башни. Достаточно разрушить одну из них, и люди смогут "
+"проникнуть в Престим через эту брешь... и тогда нам конец."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:239
 msgid ""
 "We've received messengers from the Council, saying that they are gathering "
 "tribes into the Great Horde."
-msgstr ""
+msgstr "Прибыли гонцы от Совета. Совет собирает племена в Великую Орду."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:244
-#, fuzzy
 msgid "Great! When do they arrive?"
-msgstr "Превосходно! Когда они прибудут?"
+msgstr "Это хорошо! Когда они прибудут?"
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:249
 msgid "In four days. I fear it will be too late."
-msgstr ""
+msgstr "Через четыре дня. Боюсь, будет уже поздно."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:254
 msgid "Fool! We can hold that long."
-msgstr ""
+msgstr "Дурак! Мы продержимся."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:259
 msgid "How?"
-msgstr ""
+msgstr "Как?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:264
@@ -2875,12 +2887,13 @@ msgid ""
 "Most of their forces will cross the river by the ford where the bridge "
 "previously stood. If we can hold that ford, we can hold the fortress."
 msgstr ""
+"Большая часть их войск пойдёт по реке вброд, там где раньше был мост. "
+"Удержим брод — удержим крепость."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:269
-#, fuzzy
 msgid "And if we fail?"
-msgstr "А если мы проиграем?"
+msgstr "А если не удержим?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:274
@@ -2888,22 +2901,21 @@ msgid ""
 "Then, they will assault Prestim at five troops to our one. We'll just have "
 "to do the best we can."
 msgstr ""
+"Тогда они проникнут в Престим. Их впятеро больше, чем нас. Нам просто "
+"придётся сделать всё, на что мы способны."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:279
-#, fuzzy
 msgid "Great."
-msgstr "Отлично."
+msgstr "Превосходно."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:284
-#, fuzzy
 msgid "Then, the battle for Prestim began."
 msgstr "Битва за Престим началась."
 
 #. [unit]: type=Merman Warrior, id=Plouf
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:296
-#, fuzzy
 msgid "Plouf"
 msgstr "Плуф"
 
@@ -2911,46 +2923,39 @@ msgstr "Плуф"
 #. [message]: speaker=J'rem
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:308
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:342
-#, fuzzy
 msgid "We arrive to honor our alliance, Earl Lanbec'h."
-msgstr "Мы прибыли ради чести нашего альянса, Ланбекх Юный."
+msgstr "Мы прибыли во имя нашего альянса, граф Ланбек'х."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:313
 msgid "Curses! They have fish-men on their side."
-msgstr ""
+msgstr "Проклятье! Им помогают рыбочеловеки."
 
 #. [unit]: type=Duelist, id=J'rem
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:335
-#, fuzzy
 msgid "J'rem"
 msgstr "Дж'рем"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:346
-#, fuzzy
 msgid ""
 "Reinforcements, at last. We don't have much time, the Orcish hordes are on "
 "their way. To the attack!"
 msgstr ""
-"Подкрепление. У нас нет достаточно много времени, орды Орков в пути. В атаку!"
+"Подкрепление, давно пора! У нас мало времени, орды Орков в пути. В атаку!"
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:371
-#, fuzzy
 msgid "Here we are! Hold on Prestim, we arrive to push them to the river!"
-msgstr ""
-"Наконец мы здесь! Удерживайте Престим, а мы выбьем их в реку поплескаться!"
+msgstr "Мы здесь! Удерживайте Престим, мы сейчас столкнём их в реку!"
 
 #. [message]: speaker=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:376
-#, fuzzy
 msgid "They are too numerous now, RETREAT!"
 msgstr "Их слишком много, ОТСТУПАЕМ!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:398
-#, fuzzy
 msgid ""
 "The Great Horde at last! I was beginning to think they would never come."
 msgstr ""
@@ -2958,15 +2963,14 @@ msgstr ""
 
 #. [message]: speaker=Gork
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:403
-#, fuzzy
 msgid ""
 "Your defense of Prestim was heroic, facing such opposition surely undermined "
 "the morale of humans. Now they are retreating to their fortresses and will "
 "not venture out anytime soon."
 msgstr ""
 "Ты героически защищал Престим, твоё сопротивление действительно подорвало "
-"боевой дух людей. Теперь они отступают к своим крепостям и не решатся больше "
-"высунуть нос из них."
+"боевой дух людей. Теперь они отступают к своим крепостям и ещё не скоро "
+"решат высунуть свой нос."
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:408
@@ -2974,12 +2978,13 @@ msgid ""
 "It is now time to show them who we are and to lead the Great Horde in "
 "pursuit. We will not rest until we destroy Earl Lanbec'h. Smite, stab, slay!"
 msgstr ""
+"Настало время показать им, кто мы и повести Великую Орду в погоню. Мы не "
+"остановимся, пока не уничтожим графа Ланбек'ха. Бейте, режьте, убивайте!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:425
-#, fuzzy
 msgid "No! The walls of Prestim are destroyed, we are done!"
-msgstr "Нет! Стены Престима разрушены, мы проиграли!"
+msgstr "Нет! Стены Престима разрушены, нам конец!"
 
 #. [scenario]: id=Giving_Some_Back
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:5
