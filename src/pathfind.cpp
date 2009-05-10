@@ -505,5 +505,5 @@ dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 
 double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
 {
-	return 0.0;
+	return 1.0;
 }
