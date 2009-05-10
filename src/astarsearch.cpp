@@ -164,7 +164,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			node& next = nodes[index(locs[i])];
 
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at;
-			if (n.g >= thresh) continue;
+			// cost() is always >= 1  (assumed and needed by the heuristic)
+			if (n.g + 1 >= thresh) continue;
 			double cost = n.g + calc->cost(n.curr, locs[i], n.g);
 			if (cost >= thresh) continue;
 
