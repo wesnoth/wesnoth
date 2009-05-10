@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-05-03 17:23-0000\n"
+"PO-Revision-Date: 2009-05-10 12:58-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<STILLINGAR>] [I<SLÓÐ_TIL_GAGNA>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnothd.6:40
@@ -97,12 +97,12 @@ msgstr "STILLINGAR"
 #: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
-msgstr ""
+msgstr "B<--bpp>I<\\ tala>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr ""
+msgstr "setur gildi BitsPerPixel. Til dæmis: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
@@ -113,13 +113,13 @@ msgstr "B<-c, --campaign>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "fer beint yfir í valmynd herferðar."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
 #, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr ""
+msgstr "B<--config-dir>I<\\ nafn>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -177,6 +177,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"ræsir kortagerðaforritið beint. Ef I<skrá> er skilgreind, samnefnt B<-e --"
+"load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -190,6 +192,7 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
+"birtir fjölda ramma á sekondu sem leikurinn keyrir á í einu horni á skjánum."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78
@@ -200,13 +203,13 @@ msgstr "B<-f, --fullscreen>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:81
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "keyrir leikinn í fullskjáham."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:81
 #, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
-msgstr ""
+msgstr "B<--gunzip>|<\\ skrá.gz>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:87
@@ -214,19 +217,21 @@ msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
+"afþjappar skrá sem ætii að vera í gzip formi og geymir hana án .gz "
+"endingarinnar. Skráin I<skrá.gz> mun verða eytt."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:87
 #, no-wrap
 msgid "B<--gzip>I<\\ infile>"
-msgstr ""
+msgstr "B<--gzip>I<\\ skrá>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:93
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
-msgstr ""
+msgstr "þjappar skrá í gzip formi, geymir það sem I<skrá>.gz og eyðir I<skrá>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93 ../../doc/man/wesnothd.6:55
@@ -238,13 +243,13 @@ msgstr "B<-h, --help>"
 #: ../../doc/man/wesnoth.6:96
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr ""
+msgstr "birtir yfirlit af skipanalínuskipunum til stdout og hættir."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:96
 #, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr ""
+msgstr "B<-l,\\ --load>I<\\ skrá>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
@@ -292,6 +297,8 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
 msgstr ""
+"fjöldi ramma á sekondu sem leikurinn getur teiknað. Gildið skal vera á milli "
+"1 og 1000. Sjálfgefna gildið er B<50>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:125
@@ -305,6 +312,8 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"keyrir fjölspilunarleik. Það eru auka stillingar sem hægt er að notast "
+"samhliða við B<--multiplayer> eins og lýst er fyrir neðan."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:131
@@ -328,7 +337,7 @@ msgstr "B<--nocache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
 msgid "disables caching of game data."
-msgstr ""
+msgstr "óvirkir gerð flýtigagna."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -367,12 +376,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:147
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
-msgstr ""
+msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:151
 msgid "sets the screen resolution. Example: B<-r 800x600>"
-msgstr ""
+msgstr "setur upplausn skjás. Til dæmis: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
@@ -391,7 +400,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:154
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr ""
+msgstr "B<-s,\\ --server\\ [hýsill]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:158
@@ -409,7 +418,7 @@ msgstr "B<-t, --test>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
 msgid "runs the game in a small test scenario."
-msgstr ""
+msgstr "keyrir leikinn í litlu prufuatburðarás."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
@@ -431,7 +440,7 @@ msgstr "B<-v, --version>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "birtir útgáfunúmerið og hættir."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
@@ -453,13 +462,13 @@ msgstr "B<--with-replay>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:175
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "endurinnir leikinn hlaðinn með B<--load> skipuninnni."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:176
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr ""
+msgstr "Stillingar fyrir --multiplayer"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -471,9 +480,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:183
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--side>I<tala>B<=>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:186
@@ -485,7 +494,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--algorithm>I<tala>B<=>|<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:193
@@ -498,19 +507,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--controller>I<tala>B<=>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:199
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
-msgstr ""
+msgstr "velur stjórnanda þessarar hliðar. Leyfð gildi eru: B<human> og B<ai>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--era=>I<value>"
-msgstr ""
+msgstr "B<--era=>|<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:206
@@ -551,7 +560,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
-msgstr ""
+msgstr "B<--parm>I<tala>B<=>I<nafn>B<:>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:224
@@ -565,7 +574,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:224
 #, no-wrap
 msgid "B<--scenario=>I<value>"
-msgstr ""
+msgstr "B<--scenario=>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:228
@@ -578,7 +587,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
-msgstr ""
+msgstr "B<--side>I<tala>B<=>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:233
@@ -591,18 +600,18 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:233
 #, no-wrap
 msgid "B<--turns=>I<value>"
-msgstr ""
+msgstr "B<--turns=>I<gildi>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:237
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
-msgstr ""
+msgstr "setur fjöldi lotna fyrir valda atburðarás. Sjálfgefið gildi er B<50>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:248
 #, no-wrap
 msgid "AUTHOR"
-msgstr ""
+msgstr "HÖFUNDUR"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:241
@@ -632,7 +641,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:256
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "HÖFUNDARRÉTTUR"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:259
@@ -687,6 +696,8 @@ msgid ""
 "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
 "B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgstr ""
+"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<slóð>\\|] [\\|B<-p> I<gátt>\\|] [\\|"
+"B<-t> I<tala>\\|] [\\|B<-T> I<tala>\\|]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:39
@@ -705,7 +716,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:47
 #, no-wrap
 msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
-msgstr ""
+msgstr "B<-c\\ >I<slóð>B<,\\ --config>I<\\ slóð>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:52
@@ -724,12 +735,12 @@ msgstr "B<-d, --daemon>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
-msgstr ""
+msgstr "keyrir wesnothd sem ára."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:58
 msgid "tells you what the command line options do."
-msgstr ""
+msgstr "segir þér hvað skipanalínuskipanir gera."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
@@ -744,7 +755,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:72
 #, no-wrap
 msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
-msgstr ""
+msgstr "B<-p\\ >I<gátt>B<,\\ --port>I<\\ gátt>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:77
@@ -752,12 +763,14 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
 msgstr ""
+"bindir miðlarann við ákveðið gátt. Ef engin gátt er skilgreind, gáttin "
+"B<15000> er notað."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:77
 #, no-wrap
 msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-msgstr ""
+msgstr "B<-t\\ >I<tala>B<,\\ --threads>I<\\ tala>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:81
@@ -770,7 +783,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:81
 #, no-wrap
 msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-msgstr ""
+msgstr "B<-T\\ >I<tala>B<,\\ --max-threads>I<\\ tala>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:88
@@ -788,7 +801,7 @@ msgstr "B<-V, --version>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
 msgid "shows version number and exits."
-msgstr ""
+msgstr "birtir útgáfunúmer og hættir."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
@@ -816,22 +829,22 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnothd.6:101
 msgid "[I<tag>]"
-msgstr ""
+msgstr "[I<tag>]"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
 msgid "key=\"I<value>\""
-msgstr ""
+msgstr "lykill=\"I<gildi>\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:105
 msgid "key=\"I<value>,I<value>,...\""
-msgstr ""
+msgstr "lykill=\"I<gildi>,I<gildi>,...\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:107
 msgid "[/I<tag>]"
-msgstr ""
+msgstr "[/I<tag>]"
 
 # type: SS
 #: ../../doc/man/wesnothd.6:108
@@ -864,6 +877,8 @@ msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr ""
+"Fjöldi leyfðra tenginga frá sömu IP tölu. B<0> merkir óendanleiki. "
+"(sjálfgefið: B<5>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:117
@@ -977,6 +992,8 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Skilgreinir hvort miðlarinn skuli sjálkrafa vista endurinningu leikja. "
+"(sjálfgefið: B<false>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:149
@@ -1046,7 +1063,7 @@ msgstr "B<port>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:173
 msgid "The port to connect to."
-msgstr ""
+msgstr "Gátt til tengingar."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:173
@@ -1121,7 +1138,7 @@ msgstr "B<db_host>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(fyrir user_handler=forum) Tengislóð gagnagrunns"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
@@ -1132,7 +1149,7 @@ msgstr "B<db_name>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(fyrir user_handler=forum) Nafn gagnagrunns"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
@@ -1146,6 +1163,7 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(fyrir user_handler=forum) Notendanafn til innskráningar við gagnagrunn"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
@@ -1156,7 +1174,7 @@ msgstr "B<db_password>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(fyrir user_handler=forum) Lykilorð til innskráningar við gagnagrunn"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:217
@@ -1171,6 +1189,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(fyrir user_handler=forum) Nafn töflunnar sem PHPBB vistar notendagögn sín. "
+"Í flestum tilvikum er það E<lt>table-prefixE<gt>_users (t.d. phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:220
@@ -1187,6 +1207,11 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(fyrir user_handler=forum) Nafn töflunnar sem wesnothd getur vistað sínar "
+"eigin upplýsingar um notendur. Þú verður að búa til þessa töflu handvirkt: "
+"CREATE TABLE E<lt>nafn-töfluE<gt>(username VARCHAR(255) PRIMARY KEY, "
+"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
+"NOT NULL DEFAULT 0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:224
@@ -1200,6 +1225,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(fyrir user_handler=sample) Tíminn sem líða þarf til að skráð notendanafn "
+"þyrnist (í dögum)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:231
@@ -1217,7 +1244,7 @@ msgstr "B<server>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Tengingarslóð tölvupóstsmiðlara"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
@@ -1229,6 +1256,7 @@ msgstr "B<username>"
 #: ../../doc/man/wesnothd.6:238
 msgid "The user name under which to log into the mail server."
 msgstr ""
+"Notendanafnið sem notast skal við til innskráningu við tölvupóstsmiðlara."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
@@ -1261,7 +1289,7 @@ msgstr "B<mail_port>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "Gáttið sem tölvupóstsmiðlarinn keyrir á. Sjálfgefið gildi er 25."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:253
