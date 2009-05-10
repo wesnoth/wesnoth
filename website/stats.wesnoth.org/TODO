@@ -1,3 +1,6 @@
 -change hacked up query syntax into one with variable substitution and character escaping
--switch from 10k row DB to huge db
+	mysqldb variable substitution only works correctly for column values - may NOT be used on statements, table names
 -make the prototype scale to the huge db
+	finished stubbed out scale_query()
+	include a cron.daily entry that can be used to regenerate the subsamples
+-add new views

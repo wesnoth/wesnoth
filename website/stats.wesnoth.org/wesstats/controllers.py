@@ -34,6 +34,18 @@ class Root(controllers.RootController):
 			return [l]
 		return l
 
+	def scaled_query(self,curs,query,threshold):
+		#list of all the sample sizes
+		curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
+		results = curs.fetchall()
+		sizes = []
+		for result in results:
+			sizes.append(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):])
+		sizes.sort()
+		#try query on all the sample sizes in increasing order until we get one that meets the threshold
+		for size in sizes:
+			pass	
+
 	def fconstruct(self,filters,colname,list):
 		if list[0] == "all":
 			return filters
@@ -51,14 +63,13 @@ class Root(controllers.RootController):
 		return filters
 		
 	@expose(template="wesstats.templates.platform")
-	def platform(self, versions=["all"], **kw):
-		
+	def platform(self, versions=["all"], **kw):	
 		#hack to work around how a single value in a GET is interpreted
 		versions = Root.listfix(self,versions)
 		
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
 		curs = conn.cursor()
-	
+		Root.scaled_query(self,curs,"a","b")
 		filters = ""
 
 		filters = Root.fconstruct(self,filters,"version",versions)
