@@ -3,20 +3,22 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.7.0-svn:
-  * Campaigns:
+  * Campaigns
     * Delfador's Memoirs: new campaign added to mainline (Novice level,
       24 scenarios).
+    * Eastern Invasion
+      * Fixed the liches not being revealed properly in 'Weldyn Besieged'
     * Heir to the Throne
       * The Scepter of Fire
         * Enforce a 7-hex starting castle to prevent units from appearing inside
           a wall (bug #13377).
       * Test of the Clans:
         * Made the number of enemies to defeat depend on the difficulty.
-    * The Rise of Wesnoth:
+    * The Rise of Wesnoth
       * In TROW, the Lady Jessica is now the Lady Jessene. This was the last
         major character in mainline (and probably the last named unit of any
         kind) to have an earth-human name.
-    * Under the Burning Suns:
+    * Under the Burning Suns
       * Kaleh advancement:
         * Gave the Hero variation more HP.
         * Reduced XP requirements for the Captain variation.
@@ -24,7 +26,7 @@ Version 1.7.0-svn:
         * Enabled the bolas AMLA for all variations.
         * Added the camouflage AMLA back.
 
-  * Graphics:
+  * Graphics
     * New portrait for Dwarf Fighter (alternative), Goblin Spearman, Huntsman,
       Ogre/Young Ogre, Orc Grunt, Ranger, Trapper.
 
@@ -37,10 +39,10 @@ Version 1.7.0-svn:
       Hungarian, Indonesian, Italian, Lithuanian, Norwegian, Polish, Russian,
       Serbian, Slovak, Swedish, Turkish.
 
-  * Units:
+  * Units
     * Added the Water Serpent.
 
-  * User interface:
+  * User interface
     * Fix missing faction column when waiting that the host start the game.
     * Making the game return to the add-on install dialog just before
       installing one, and with its entry selected.
