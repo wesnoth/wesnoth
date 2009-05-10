@@ -2,15 +2,18 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.6/changelog
 
-Version 1.6.1+svn:
+Version 1.6.2:
  * Campaigns
    * Eastern Invasion
      * Fixed the liches not being revealed properly in 'Weldyn Besieged'.
-     
    * Heir to the Throne
      * The Scepter of Fire
        * Enforce a 7-hex starting castle to prevent units from appearing inside
          a wall (bug #13377).
+     * Under The Burning Suns:
+       * Properly team-color caged merfolk (bug #13367).
+     * Scepter of Fire:
+       * Properly conditionalize some dialog (bug #13343).
 
   * Graphics
     * New portrait for Huntsman.
