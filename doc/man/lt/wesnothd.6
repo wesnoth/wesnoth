@@ -77,7 +77,7 @@ turns debug logging on.
 .
 .SH "SERVERIO KONFIGŪRACIJA"
 .
-.SS "Bandra sintaksė yra:"
+.SS "Bendra sintaksė:"
 .
 .P
 [\fIelementas\fP]
@@ -96,8 +96,8 @@ Full or relative path to a (gzip compressed) file that the server can read
 and write.  Bans will be saved to this file and read again on server start.
 .TP 
 \fBconnections_allowed\fP
-Leidižamų prisijungimų skaičius iš to paties IP. \fB0\fP reiškia begalybė.
-(numatyta: \fB5\fP)
+Leidižamų prisijungimų skaičius iš to paties IP. \fB0\fP reiškia
+begalybė. (numatyta: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. `*' and `?' from wildcard
@@ -126,22 +126,22 @@ Slaptažodis naudojamas gauti administratoriaus teises. Paparstai jis
 prasideda „admin “.
 .TP 
 \fBreplay_save_path\fP
-The directory where the server stores game replays. (Don't forget the
-trailing /!) Defaults to `' which means the directory wesnothd was started
-in.
+Direktorija, kur serveris saugos žaidimų pakartojimus (nepamirškite
+pasvirojo brūkšnelio gale!). Numatyta „“, kas reiškia tą pačią direktoriją,
+kur buvo paleistas serveris.
 .TP 
 \fBrestart_command\fP
 Komandos, kurias serveris naudoja paleisti naują serverio procesą su
 „restart“ komanda. (gali būti iškviesta per fifo.)
 .TP 
 \fBsave_replays\fP
-Defines whether the server will automatically save replays of
-games. (default: \fBfalse\fP)
+Nurodo ar serveris automatiškai saugos žaidimų pakartojimus. (numatyta:
+\fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia
+naudoti `*' ir `?' kaip pakaitos šablonus.  (numatytoji reikšmė: tokia pati
+versija, kaip ir serverio)
 .br
 Pavyzdys: \fBversions_accepted="*"\fP priima bet kokią versiją.
 .TP  
@@ -166,8 +166,8 @@ Serverio, į kurį peradresuoti, adresas.
 Prievadas, prie kurio jungtis.
 .TP 
 \fBversion\fP
-A comma separated list of versions to redirect. Behaves the same way as
-\fBversions_accepted\fP in regard to wildcard patterns.
+Kableliais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Pakaitos
+šablonų atžvilgiu, elgiasi taip pat, kaip ir \fBversions_accepted\fP.
 .RE
 .P
 \fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
@@ -197,32 +197,33 @@ without any nick registration service.
 .RS
 .TP  
 \fBdb_host\fP
-(for user_handler=forum) The hostname of the database server
+(skirtas user_handler=forum) Duomenų bazės serverio vardas
 .TP  
 \fBdb_name\fP
-(skirtas user_handler=forum) Duombazės pavadinimas
+(skirtas user_handler=forum) Duomenų bazės pavadinimas
 .TP  
 \fBdb_user\fP
-(skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duombazės
+(skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duomenų
+bazės
 .TP  
 \fBdb_password\fP
 (skirtas user_handler=forum) Šio naudotojo slaptažodis
 .TP  
 \fBdb_users_table\fP
-(skirtas user_handler=forum) Lentelės pavadinimas, kuriuoje jūsų phpbb
+(skirtas user_handler=forum) Lentelės pavadinimas, kurioje jūsų phpbb
 forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus
-<lentelės\-priesaga>_users (pavyzdžiui, phpbb3_users).
+<lentelės\-priešdėlis>_users (pavyzdžiui, phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-CREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+(skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos
+savo duomenis apie vartotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
+šitaip: CREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);
 .TP  
 \fBuser_expiration\fP
-(for user_handler=sample) The time after which a registered nick expires (in
-days).
+(skirtas user_handler=sample) Laikas, per kiek pasensta vartotojo
+registracija (dienomis).
 .RE
 .P
 \fB[mail]\fP Configures an SMTP server through which the user handler can send
@@ -230,7 +231,7 @@ mail. Currently only used by the sample user handler.
 .RS
 .TP  
 \fBserver\fP
-The hostname of the mail server
+Pašto serverio vardas
 .TP  
 \fBusername\fP
 Naudotojo vardas, kuriuo bus jungiamasi prie pašto serverio.
@@ -239,7 +240,7 @@ Naudotojo vardas, kuriuo bus jungiamasi prie pašto serverio.
 Naudotojo slaptažodis.
 .TP  
 \fBfrom_address\fP
-The reply\-to address of you mail.
+Jūsų pašto atbulinio atsakymo adresas.
 .TP  
 \fBmail_port\fP
 Prievadas, kuriame veikia jūsų pašto serveris. Numatytas yra 25.
