@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-06 15:08+0200\n"
-"PO-Revision-Date: 2009-05-06 00:49-0500\n"
+"PO-Revision-Date: 2009-05-10 01:10-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -36,17 +36,17 @@ msgstr "鼠标滚屏"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Middle-click Scrolling"
-msgstr "单击鼠标中键滚屏"
+msgstr "鼠标中键移动屏幕"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
 msgid "Keep scrolling when mouse leaves window"
-msgstr "鼠标离开窗口时继续滚动"
+msgstr "鼠标离开窗口后继续移动"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
 msgid "Animate Map"
-msgstr "地图的动画效果"
+msgstr "地图动画效果"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:91
@@ -97,8 +97,7 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "狂暴：\n"
-"无论是用于攻击还是防御，攻击将一直持续进行，直到一个战斗单位被杀死，或持续攻"
-"击达到30个来回。"
+"无论是进攻还是防御，战斗将一直持续进行，直到其中一个倒下，或者连续30个来回。"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
@@ -650,8 +649,8 @@ msgstr ""
 "\n"
 "开始玩时，建议您在主菜单选择<italic>text=教学模式</italic>。您将来到一个能与"
 "您互动的学习环境，在其中学习韦诺的基本战略。在这之后，建议您先玩战役：“继位"
-"者”。先选<italic>text=战役</italic>，再选<italic>text=“继位者”</italic>。“韦"
-"诺之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
+"者”。先选<italic>text=战役</italic>，再选<italic>text=继位者</italic>。“韦诺"
+"之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
@@ -3322,12 +3321,12 @@ msgstr "地点选择已取消"
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
 msgid "Clear objective orders"
-msgstr "取消目标性命令"
+msgstr "取消目标命令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
 msgid "Clear behavior orders"
-msgstr "取消行为性命令"
+msgstr "取消行为命令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
@@ -3338,7 +3337,7 @@ msgstr "取消所有命令"
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
 msgid "none set."
-msgstr "无"
+msgstr "无设置"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3396,7 +3395,7 @@ msgstr "， 进阶所需经验值+25%"
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid "Max HP bonus +"
-msgstr "最大生命值奖励+"
+msgstr "最大生命值奖励 +"
 
 #: data/core/macros/carryover-utils.cfg:9
 msgid "Early finish bonus."
@@ -3503,7 +3502,7 @@ msgstr "饮用者心里充满幸福。"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:230
 msgid "You are not worthy of healing."
-msgstr "您不值得治疗。"
+msgstr "你不值得治疗。"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:264
@@ -3520,7 +3519,7 @@ msgstr "毒素此刻正渗透到这个单位的全身。"
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
-msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一幕开始."
+msgstr "这瓶水使得饮用者的近战武器类型变为'奥术'，直到这场战斗结束"
 
 #: data/core/macros/items.cfg:290
 msgid "I am not suited to the use of this item! Let another take it."
@@ -4406,7 +4405,9 @@ msgstr ""
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
-msgstr "电脑玩家不能在此场景使用 $side_number 很好发挥。 $side_number "
+msgstr ""
+"电脑玩家不能在此场景使用 $side_number 很好发挥。 $side_number 为人类玩家设"
+"计。"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4571,7 +4572,7 @@ msgstr "本单位拥有高命中率的魔法攻击能力。"
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr "本单位的'连击'攻击在自己受伤的情况下会被削弱。"
+msgstr "本单位的'连击'攻击威力在自己受伤的情况下会被削弱。"
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
@@ -4591,17 +4592,14 @@ msgstr "本单位在作战时可以从对手身上吸血以补充自己的生命
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
-msgstr ""
-"本单位'毒素'攻击的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单"
-"位治好为止。"
+msgstr "这个单位的武器长度让使用者在近战中首先发动攻击，攻击防御都一样。"
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-"本单位毒药的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单位治好"
-"为止。"
+"本单位毒药的受害者将受到持续伤害，直到在村庄或被拥有治愈能力的单位治好为止。"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -5204,28 +5202,28 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
-"人类是一个与众不同的种族。虽然他们最初来自旧大陆，但却遍布大陆各地，分裂成许"
-"多不同的文化和种族。虽然不是浸浴魔法天性的生物，人类同样可以学习掌握它，并能"
-"够进一步了解，还比大多数其他种族学到的类型更多。他们没有特殊的能力或天赋，除"
-"了他们的毅力和驱动力。虽然往往与所有的种族不融洽，他们偶尔联盟一些相对平和的"
-"种族，如精灵和矮人；但也不妨碍雇用兽人雇佣军。他们没有天敌────同大多数的种族"
-"一样本能地厌恶亡灵。人类比精灵矮，比矮人高。他们的皮肤颜色各不相同，从几乎白"
-"色至深棕色。\n"
+"人类是一个与众不同的种族。虽然他们最初来自旧大陆，但却遍布这个世界，并分裂成"
+"许多不同的文化和种族。尽管没有天生的魔力，人类同样可以学习并且掌握它，还能够"
+"进一步地了解，比大多数其他种族学到的类型更多。他们没有任何特殊的能力或天赋，"
+"除了他们的毅力和驱动力。虽然往往与所有其他种族相处并不融洽，他们也偶尔联盟一"
+"些相对平和的种族，如精灵和矮人；但也不妨碍雇用兽人雇佣军。他们没有天敌────不"
+"过同大多数的种族一样本能地厌恶亡灵。通常人类比兽人和精灵矮。他们的皮肤颜色各"
+"不相同，从近乎白色至深棕色都有。\n"
 "\n"
 "<header>text='Wesnoth王国'</header>\n"
-"许多不同的团体的人类存在，但其中多数是在大陆Wesnoth皇权的统治下生活 。人类最"
-"早出现在伟大的大陆从土地远到大洋彼岸的西方，来自一个叫绿岛的地方，并很快建立"
-"了自己的内陆城市Weldyn 。在接下来的几个世纪，他们建立了一些城市的横跨整个大"
-"陆。Wesnoth皇权为保护国家，在已知的世界形成最有组织性的军事部队。勇士来自其主"
-"要省份，在那里所有的人幼年都被征召。 \n"
+"这片大陆附近许多不同的团体的人类存在，但其中多数是在大陆Wesnoth皇权的统治下生"
+"活 。人类来自一个叫绿岛的地方，是一块远在大洋彼岸的西方土地，到来后很快建立了"
+"自己的内陆城市Weldyn。在接下来的几个世纪，他们建立了一些横跨整个大陆的城市。"
+"Wesnoth皇权为保护国家，在已知的世界形成最有组织性的军事部队。勇士来自其中心省"
+"份，在那里所有的人幼年起就被征召。\n"
 "\n"
 "<header>text='氏族'</header>\n"
-"东部省份的Wesnoth ，称为氏族家园，有着更为开放的平原和连绵起伏的丘陵。他们的"
-"骑士一族结盟Wesnoth ，但独立运作，保持自己的身份。有些人认为他们是国家的一个"
-"支流，它发送食品和士兵到Wesnoth，以换取保护。还有人说他们是在平等的基础与西方"
-"平分大陆 。东部各省没有采用Wesnoth应征军队的方式。而是是以生活方式备战：从幼"
-"年开始家长就教导孩子骑马，格斗和射箭。或许因为这样，一般情况下，氏族部队比"
-"Wesnoth军队组织性稍差。"
+"Wesnoth的东部省份称为氏族家园，有着更为开放的平原和连绵起伏的丘陵。那里的骑士"
+"一族结盟Wesnoth王国，但独立运作，保持自己的身份。有些人认为他们是国家的一个支"
+"流，它发送食品和士兵到Wesnoth，以换取保护。还有人说他们是在平等的基础上与西方"
+"平分大陆。东部各省没有采用应征军队的方式。他们全民皆兵：从幼年开始家长就教导"
+"孩子骑马，格斗和射箭。或许因为这样，一般情况下，氏族部队比Wesnoth军队组织性要"
+"差。"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
@@ -5468,17 +5466,17 @@ msgstr ""
 "久，深入高山洞穴之中。最特殊的是他们内部维持和恢复自身的神秘能力。使得他们完"
 "全不同于其他的已知生物。他们只有很少的实际需求：很少的食物和水，以及保护自"
 "己。它们没有什么忧虑，大多时间睡觉以及沉思。巨魔有一种天生的好奇心。他们不和"
-"任何其他生物如精灵有亲戚关系，不过和土地和岩石非常亲切。他们关心周围，小崽子"
-"们乐于旅行亲眼见识世界。变老之后逐渐消极，不断淡忘了这种探索外界的乐趣，更多"
-"安静的睡眠在熟悉的洞穴角落。直到他们逝去，缓慢变成无生命的石像。\n"
+"任何其他生物如精灵有亲戚关系，不过和土地和岩石非常亲切。他们关心自身周围，小"
+"崽子们乐于旅行亲眼见识世界。变老之后逐渐消极，逐渐淡忘了这种探索外界的乐趣，"
+"更多安静的睡眠在熟悉的洞穴角落。直到他们逝去，缓慢变成无生命的石像。\n"
 "\n"
 "巨魔是常常被认为野蛮的怪物。通常这种误解因为兽人劝说巨魔加入他们的军队。因为"
 "他们相对简单的思维不了解其他种族，常常见到一股兽人部队中有一些巨魔，对付与兽"
-"人有纷争的‘敌人’。但是巨魔还是有最常见的敌人的，就是矮人，远古起就是仇敌。\n"
+"人有纷争的‘敌人’。但是巨魔还是有最常见的敌人，矮人，远古起双方就是仇敌。\n"
 "\n"
 "<header>text='地理'</header>\n"
-"巨魔定居在大陆高山上，远比矮人早到。从Wesnoth东边到北边的山脉中，经常可见，或"
-"者是到处行动的兽人部队里。"
+"巨魔远比矮人早到，他们定居在大陆高山上。从Wesnoth东边到北边的山脉中经常可见，"
+"或者是到处行动的兽人部队里。"
 
 #. [race]: id=undead
 #: data/core/units.cfg:280
@@ -5523,16 +5521,18 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"不死族并非单一种族，尽管被当成那样。大多不死是被足够强大的巫师从死亡世界召"
-"回。它们无意识，是反抗自然的存在。只知道听从召唤者的命令。一个死灵法术的重要"
-"秘密就是如何不用法师的力量就能维持召唤物的持续活动。不死族不需关注命令维护，"
-"但是自动依据主人前个命令工作。很少，至少几个月，巫师需要维持一下这些东西。\n"
+"不死族并非单一种族，尽管被当成那样。大多不死生物是被足够强大的巫师从死亡世界"
+"召回。它们并无意识，是反抗自然的存在，只知道听从召唤者的命令。一个死灵法术的"
+"重要秘密就是如何不用法师的力量就能维持召唤物的持续活动。不死族不需持续关注，"
+"指挥和维护，它们自动依据主人上一个命令行动。很少情况下，至少几个月，巫师才需"
+"要维持一次这些东西。\n"
 "\n"
-"不只在人类中出现死灵法术。其他任何有魔法的种族如精灵人鱼都曾研习过此类法术. "
-"推测道, 死灵法术需要很好的适应能力以及灵活的思维, 通常情况在人类身上较为常"
-"见. 最终目的是永生, 不论以什么样的代价, 即使遗弃自己的思想和灵魂来取得. \n"
+"不只在人类中出现死灵法术。其他任何有魔法的种族如精灵人鱼都曾研习过此类法术。"
+"推测道，死灵法术需要很好的适应能力以及灵活的思维，通常情况在人类身上较为常"
+"见。研习这种法术的最终目的是永生，不论以什么样的代价，即使遗弃自己的思想和灵"
+"魂来取得。\n"
 "<header>text='地理'</header>\n"
-"Haldric I来到这片大陆时, 死灵法师才大量出现, 不过之前精灵和矮人都有所耳闻."
+"Haldric I来到这片大陆时，死灵法师才大量出现，不过之前精灵和矮人都有所耳闻。"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
@@ -5942,8 +5942,8 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
-"在 www.wesnoth.org 您可以找到 策略指导, 技术支持, Wesnoth 韦诺历史, 还有其它"
-"很多东西。"
+"在www.wesnoth.org，您可以找到策略指导，技术支持，Wesnoth(韦诺)历史，还有其它"
+"很多东西。如果习惯中文，尝试wesnoth.cn。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
@@ -5973,7 +5973,7 @@ msgstr "如果进攻的时间不对，再好的战术也是白搭。"
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr "- 战术分析手册- 第一辑 Volume I - Haldric II, 42YW"
+msgstr "- 战术分析手册- 第一辑 - Haldric II, 42YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -6556,7 +6556,7 @@ msgstr "视角"
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
-msgstr "省略动画"
+msgstr "略过动画"
 
 #: src/about.cpp:198 src/help.cpp:3040 src/menu_events.cpp:312
 #: src/menu_events.cpp:339 src/statistics_dialog.cpp:114
@@ -6710,7 +6710,7 @@ msgstr[1] "这个插件要求以下额外的依赖:"
 msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
-msgstr "你确定要下载这个插件吗？（你仍然需要安装那些依赖才能进行游戏。）"
+msgstr "你要下载这个扩展插件吗？（你仍然需要安装它的依赖才能玩。）"
 
 #: src/addon_management.cpp:469 src/addon_management.cpp:543
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:262 src/multiplayer_ui.cpp:76
@@ -8535,7 +8535,7 @@ msgstr "回合"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空槽："
-msgstr[1] "空位："
+msgstr[1] "空槽："
 
 #: src/multiplayer_lobby.cpp:535 src/multiplayer_lobby.cpp:898
 msgid "Password Required"
@@ -9289,26 +9289,7 @@ msgstr "大家一起把Wesnoth变得更好！"
 
 #: src/upload_log.cpp:351
 msgid "Enable summary uploads"
-msgstr "启用摘要上传"
-
-#, fuzzy
-#~ msgid "Do you still want to download it?"
-#~ msgstr "您真的想解散他吗？"
-
-#~ msgid "Quit Game"
-#~ msgstr "退出游戏"
-
-#~ msgid "Ignore All"
-#~ msgstr "全部忽略"
-
-#~ msgid "Name: "
-#~ msgstr "名称："
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "存档已存在，要覆盖吗？"
-
-#~ msgid "Overwrite?"
-#~ msgstr "覆盖？"
+msgstr "开启摘要上传"
 
 #~ msgid "stones"
 #~ msgstr "石化"
@@ -9325,10 +9306,25 @@ msgstr "启用摘要上传"
 #~ msgid "Unknown unit type : "
 #~ msgstr "未知单位"
 
+#~ msgid "Quit Game"
+#~ msgstr "退出游戏"
+
+#~ msgid "Ignore All"
+#~ msgstr "全部忽略"
+
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr "存档名不能包含冒号，斜线或反斜线。请选择一个不同的名字。"
+
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "存档已存在，要覆盖吗？"
+
+#~ msgid "Name: "
+#~ msgstr "名称："
+
+#~ msgid "Overwrite?"
+#~ msgstr "覆盖？"
 
 #~ msgid "stone: "
 #~ msgstr "石化： "
