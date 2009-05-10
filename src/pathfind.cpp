@@ -468,7 +468,8 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 	}
 
 	// check ZoC
-	if (!ignore_unit_ && enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
+	if (!ignore_unit_ && remaining_movement != terrain_cost
+			&& enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;
