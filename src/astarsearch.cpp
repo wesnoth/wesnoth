@@ -105,8 +105,9 @@ static void a_star_explore_neighbours(map_location const &dst, const double stop
 		if (locLocation.valid(int(parWidth), int(parHeight)) == false)
 			continue;
 		locNextNode = aStarGameWorld.getNodeFromLocation(locLocation, locIsCreated);
-		locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather);
 		if (locIsCreated) {
+			locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather);
+
 			locNextNode->initNode(locLocation, dst, locCost, parCurNode, teleports);
 			if (locNextNode->g + locNextNode->h < stop_at) {
 				openList.push_back(locNextNode);
@@ -114,17 +115,20 @@ static void a_star_explore_neighbours(map_location const &dst, const double stop
 			} else
 				locNextNode->isInCloseList = true;
 
-		} else if (locCost < locNextNode->g) {
+		} else if (locCostFather + 1 < locNextNode->g) { // cost() always >= 1 (see below)
+			locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather);
 
-			if (locNextNode->isInCloseList) {
-				locNextNode->isInCloseList = false;
-				openList.push_back(locNextNode);
-				++locNbAdded;
-			} else
-				broken_heap = true;
+			if (locCost < locNextNode->g) {
+				if (locNextNode->isInCloseList) {
+					locNextNode->isInCloseList = false;
+					openList.push_back(locNextNode);
+					++locNbAdded;
+				} else
+					broken_heap = true;
 
-			locNextNode->g = locCost;
-			locNextNode->nodeParent = parCurNode;
+				locNextNode->g = locCost;
+				locNextNode->nodeParent = parCurNode;
+			}
 		}
 	}
 
