@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-01-25 22:50+0100\n"
+"PO-Revision-Date: 2009-05-09 20:36+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -99,14 +99,13 @@ msgstr "spécial"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Utilisez les boutons gauche/droite de la souris pour dessiner l'avant/"
-"arrière plan des terrains. Appuyez sur Shift pour ne dessiner que la couche "
-"de base."
+"arrière-plan des terrains. Maintenez Shift appuyée pour ne dessiner que la "
+"couche de base. Utilisez Ctrl+clic pour prélever le terrain sous le curseur."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -283,7 +282,7 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Carte chargée depuis le scénario"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
@@ -340,7 +339,7 @@ msgstr "AP"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Fichier non trouvé"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
@@ -349,14 +348,12 @@ msgid ""
 msgstr ""
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Fichier de carte vide ou absent"
+msgstr "Fichier de carte vide"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Impossible de sauvegarder la carte : $msg"
+msgstr "Impossible de sauvegarder dans le scénario"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"

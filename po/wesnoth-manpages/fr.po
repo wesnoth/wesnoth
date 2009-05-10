@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2008-09-27 22:37+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2009-05-09 20:56+0200\n"
+"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,9 +23,9 @@ msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -116,9 +116,9 @@ msgstr "Définit la valeur de bits par pixel (couleurs). Exemple : B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
@@ -127,9 +127,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--load>I<\\ sauvegarde>"
+msgstr "B<--config-dir>I<\\ répertoire>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -140,15 +140,16 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "Affiche le nom du répertoire principal du jeu et quitte le programme."
+msgstr ""
+"Affiche le nom du répertoire de configuration utilisateur et quitte le "
+"programme."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -158,20 +159,19 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"Affiche des informations supplémentaires de débogage et permet d'utiliser "
-"des options en ligne de commande dans le jeu (voir Wiki : http://www.wesnoth."
-"org/wiki/CommandMode pour plus d'informations sur la ligne de commande)."
+"Active des options supplémentaires pour la ligne de commande dans le jeu (se "
+"reporter au Wiki : http://www.wesnoth.org/wiki/CommandMode pour plus "
+"d'informations sur la ligne de commande)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -265,9 +265,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:96
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ sauvegarde>"
+msgstr "B<--load>I<\\ fichier>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
@@ -323,9 +323,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:125
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:131
@@ -344,13 +344,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"Lance le jeu sans délai pour la mesure des performances graphiques. "
-"Automatique avec B<--nogui>."
+"Lance le jeu sans pause pour mesurer les performances graphiques. Cette "
+"options est activée automatiquement par B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
@@ -365,15 +364,14 @@ msgstr "Désactive le cache des données de jeu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:141
-#, fuzzy
 msgid "runs the game without music."
-msgstr "Lance le jeu sans son ni musique."
+msgstr "Lance le jeu sans musique."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:141
@@ -410,9 +408,9 @@ msgstr "Définit la résolution de l'écran. Exemple : B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:154
@@ -423,9 +421,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [hôte]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:158
@@ -447,9 +445,9 @@ msgstr "Lance le jeu avec un petit scénario de test."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
@@ -480,14 +478,14 @@ msgstr "Lance le jeu dans une fenêtre séparée."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:170
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:175
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "Rejoue la partie chargée avec l'option B<--load>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:176
@@ -1051,7 +1049,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #: ../../doc/man/wesnothd.6:143
 msgid ""
@@ -1078,7 +1076,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #: ../../doc/man/wesnothd.6:149
 msgid ""
@@ -1112,7 +1110,7 @@ msgstr "Exemple : B<versions_accepted=\"*\"> autorise tout type de version."
 #: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:160
@@ -1237,9 +1235,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1248,9 +1246,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
@@ -1261,7 +1259,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:211
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1272,9 +1270,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:217
@@ -1283,9 +1281,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:217
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:220
@@ -1299,7 +1297,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:220
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:224
@@ -1315,7 +1313,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:227
@@ -1333,9 +1331,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
@@ -1344,9 +1342,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
@@ -1355,9 +1353,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
@@ -1368,7 +1366,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:244
@@ -1377,9 +1375,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
@@ -1388,7 +1386,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:253
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1397,9 +1394,10 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Écrit par David White E<lt>davidnwhite@verizon.netE<gt>. Édité par Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> et "
-"Soliton E<lt>soliton.de@gmail.comE<gt>. Ce manuel a été à l'origine écrit "
-"par Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> et Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>. Ce manuel a été à l'origine écrit par Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:266
