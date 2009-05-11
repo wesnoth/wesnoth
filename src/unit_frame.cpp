@@ -156,8 +156,8 @@ template class progressive_<double>;
 
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
-	image_(image::locator()),
-	image_diagonal_(image::locator()),
+	image_(),
+	image_diagonal_(),
 	image_mod_(""),
 	halo_(""),
 	halo_x_(""),

@@ -67,8 +67,8 @@ typedef progressive_<double> progressive_double;
 class frame_parameters{
 	public:
 	frame_parameters():
-	image(""),
-	image_diagonal(""),
+	image(),
+	image_diagonal(),
 	image_mod(""),
 	halo(""),
 	halo_x(0),
