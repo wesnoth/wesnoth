@@ -273,11 +273,8 @@ public:
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
 	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
 
-	/** check if an hexes under the rectangle is invalidated */
+	/** check if visible hexes under the rectangle is invalidated */
 	bool rectangle_need_update(const SDL_Rect& rect) const;
-
-	/** check if an hex is invalidated */
-	bool hex_need_update(const map_location& loc) const;
 
 	/**
 	 * Function to invalidate animated terrains which may have changed.
