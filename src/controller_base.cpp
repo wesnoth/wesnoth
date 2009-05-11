@@ -179,7 +179,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	return scrolling;
 }
 
-void controller_base::play_slice()
+void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
 	events::pump();
@@ -206,7 +206,9 @@ void controller_base::play_slice()
 			// scrolling ended, update the cursor and the brightened hex
 			get_mouse_handler_base().mouse_update(browse_);
 		}
-		get_display().delay(20);
+		if (is_delay_enabled){
+			get_display().delay(20);
+		}
 	}
 	slice_end();
 }
