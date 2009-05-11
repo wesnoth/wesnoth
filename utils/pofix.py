@@ -160,6 +160,18 @@ stringfixes = {
 
 "wesnoth-low" :(
 ("offensive war. This is the council's decision", "offensive war. This is the council's decision."),
+('bring in reinforcements"', 'bring in reinforcements."'),
+('Sure, minus expenses"', 'Sure, minus expenses."'),
+('I told ye I\'d be here"', 'I told ye I\'d be here."'),
+('is bringing with him, though"','is bringing with him, though."'),
+),
+
+"wesnoth-sotbe" :(
+("can from from each", "can from each"),
+),
+
+"wesnoth-tb" :(
+("mage Bjarn send for", "mage Bjarn sends for"),
 ),
 }
 
