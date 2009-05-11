@@ -45,7 +45,8 @@ inline int div100rounded(int num) {
  *  but up or down towards base_damage
  */
 inline int round_damage(int base_damage, int bonus, int divisor) {
-	const int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
+	if (base_damage==0) return 0;
+	const int rounding = divisor / 2 - (bonus < divisor || divisor==1 ? 0 : 1);
 	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
 }
 
