@@ -345,7 +345,7 @@ msgstr ""
 "verlassene Ruine im Wald und sammelte seine Bauernfreunde um sich. "
 
 # Hauptperson der Kampagne (kommt auch in THOT vor), Sohn eines Waffenschmieds, damit von den Orkherrschern privilegiert weil nicht zur Feldarbeit herangezogen . ernt lesen und schreiben, und gehört damit zur intellektuellen Elite von Zwergenpforte. , Anführertyp, aber nicht eitel. Kokettiert aber durchaus mit seiner »niederen Herkunft« und sieht sich nicht als Mitglied der Oberschicht. (»Herren« sind die Orks) Schlüsselerlebnis ist der Durchzug Konrads I bei dessen Suche nach dem Feuerzepter. T. entwickelt sich vom Anführer eines Bauernaufstandes zum Heerführer allierter Truppen und als Einiger der Rassen zum ungekrönten König der Nordallianz.
-# Sprachlich sollte er sich von einfacher aber gewählter Sprache am Anfang zum höfisch-hochsprachlichen Ende entwickeln. (Insbesondere nach der Rettung von Anita)
+# Sprachlich sollte er sich von einfacher aber gewählter Sprache am Anfang zum höfisch-hochsprachlichen Ende entwickeln. (Insbesondere nach der Rettung von Eryssa)
 # Anmerkung des Verfassers der Kampagne:»Tallin: The typical hero steryotype, and also the main character of this campaign. He originally starts out as a peasant but over the course of the campaign Hamel trains him up and he switches over to being a leutinent. He is young - between 20 and 30, and has all that usual hero stuff around him - brave, intelligent, good looking bla bla bla.«
 #. [side]: type=Peasant, id=Tallin
 #. [side]: type=Lieutenant, id=Tallin
@@ -1218,7 +1218,7 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:586
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1623
@@ -2222,17 +2222,17 @@ msgstr "Sie versuchen die Gefangenen zu befreien! Haltet sie auf!"
 msgid "Good luck, my friend."
 msgstr "Viel Glück mein Freund."
 
-# Adliger weißer Magier, ehemaliger Ratgeber und Heiler der adligen Zwerge von Knalga, formaler als Theta. liebt seine Frau sehr und verzeiht ihre daramatischen Auftritte sofort, auch wenn er sie als unprofessionell ansieht.
-#. [unit]: type=White Mage, id=Father Marcus
-#. [unit]: type=$type_check.type, id=Father Marcus
+# Adliger weißer Magier, ehemaliger Ratgeber und Heiler der adligen Zwerge von Knalga, formaler als Thera. liebt seine Frau sehr und verzeiht ihre daramatischen Auftritte sofort, auch wenn er sie als unprofessionell ansieht.
+#. [unit]: type=White Mage, id=Father Morvin
+#. [unit]: type=$type_check.type, id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:539
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:400
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:608
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:668
-msgid "Father Marcus"
-msgstr "Vater Marcus"
+msgid "Father Morvin"
+msgstr "Vater Morvin"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:551
 msgid ""
 "Finally! I am free. Lord Tallin, I am forever in your debt! We will follow "
@@ -2246,17 +2246,17 @@ msgstr ""
 msgid "It's just Tallin, no Lord. And no problem."
 msgstr "Nur Tallin, bitte. Nicht Fürst. Aber seid willkommen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:566
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:679
-msgid "Marcus!"
-msgstr "Marcus!"
+msgid "Morvin!"
+msgstr "Morvin!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:570
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:683
-msgid "Theta!"
-msgstr "Theta!"
+msgid "Thera!"
+msgstr "Thera!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:574
@@ -2264,7 +2264,7 @@ msgstr "Theta!"
 msgid "Please, folks, not now."
 msgstr "Bitte, Leute, nicht jetzt."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:578
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:691
 msgid "Oh, sorry."
@@ -2276,15 +2276,15 @@ msgstr "Oh, Entschuldigung."
 msgid "Who are you? How did you end up down here?"
 msgstr "Wer bist du? Und was machst du hier unten?"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:589
 msgid ""
-"I am called Father Marcus. My wife, Theta and I were advisers and healers "
+"I am called Father Morvin. My wife, Thera and I were advisers and healers "
 "for the dwarvish nobles. We could not shield them from the wrath of Khazg "
 "Black-Tusk, but we survived the orcs and trolls -- only to be captured by "
 "these skeletons."
 msgstr ""
-"Ich heiße Vater Marcus. Meine Gattin Theta und ich waren Ratgeber und Heiler "
+"Ich heiße Vater Morvin. Meine Gattin Thera und ich waren Ratgeber und Heiler "
 "der zwergischen Adligen. Wir konnten sie nicht vor der Rache von Khazg Black-"
 "Tusk retten, aber wir sind den Trollen und Orks irgendwie entkommen, doch "
 "wurden wir leider von den Skeletten gefangen."
@@ -2298,7 +2298,7 @@ msgstr ""
 "Seltsam, warum hat Malifor euch als Gefangene gehalten? Er wirkte nicht, als "
 "sei er einer von der besonders gnädigen Sorte."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:597
 msgid ""
 "He didn't keep us alive out of mercy, he wanted to study us to see if there "
@@ -2319,7 +2319,7 @@ msgstr ""
 "Tatsache, gut zu wissen. Aber nun seid ihr frei zu gehen, wohin es euch "
 "beliebt. Mögen die Götter des Lichtes über euch wachen und den Weg weisen."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:605
 msgid ""
 "As I have said, Tallin, I am eternally in your debt, and I take my debts "
@@ -2340,8 +2340,8 @@ msgstr ""
 "schließt euch uns an, um die Nordlande wieder zu einem lebenswerten Ort zu "
 "machen!"
 
-#. [message]: speaker=Father Marcus
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Sister Thera
 #. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:613
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:725
@@ -2358,24 +2358,24 @@ msgstr ""
 "Donnerkeil! Das ist unglaublich! Nun weiß ich, warum der Lich euch gefangen "
 "gehalten hat. Er konnte euch einfach nicht töten!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:630
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:173
 msgid " *giggle*"
 msgstr " *kicher*"
 
 # Adlige, weißer Magier, Frohnatur und liebt den dramatischen Auftritt, Frau von Vater Markus, die beide stark verliebt ineinander sind. Ehemals Heiler und Ratgeber der adligen Zwerge von Knalga. Waren von Malifor gefangengesetzt.
-# Anmerkung des Kampagnengestalters »Sister Theta - The deticated wife of Father Marcus (white mage of course). She doesen't quite fit the profile of a saintly subdued holy lady however, as she is very spirited and takes great pleasure in blowing evil creatures to peices as well as occasional theatratical displays of drama. «
-#. [unit]: type=White Mage, id=Sister Theta
-#. [unit]: type=$type_check.type, id=Sister Theta
+# Anmerkung des Kampagnengestalters »Sister Thera - The deticated wife of Father Morvin (white mage of course). She doesen't quite fit the profile of a saintly subdued holy lady however, as she is very spirited and takes great pleasure in blowing evil creatures to peices as well as occasional theatratical displays of drama. «
+#. [unit]: type=White Mage, id=Sister Thera
+#. [unit]: type=$type_check.type, id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:654
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:418
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:626
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:383
-msgid "Sister Theta"
-msgstr "Schwester Theta"
+msgid "Sister Thera"
+msgstr "Schwester Thera"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:666
 msgid "Freedom at last. Thank you, Lord Tallin."
 msgstr "Endlich Frei! Danke, Fürst Tallin!"
@@ -2389,15 +2389,15 @@ msgstr ""
 "Tallin reicht, ich bin kein Fürst. Nur ein einfacher Bauer, der versucht "
 "seinen Leuten die Freiheit wiederzubringen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:701
 msgid ""
-"I am called Sister Theta. My husband Marcus and I were advisers and healers "
+"I am called Sister Thera. My husband Morvin and I were advisers and healers "
 "for the dwarvish nobles of Knalga. We could not save them from Khazg Black-"
 "Tusk's troops, but we survived the orcs and trolls only to be captured when "
 "these skeletons appeared."
 msgstr ""
-"Ich heiße Schwester Theta. Mein Gemahl Marcus und ich waren Ratgeber und "
+"Ich heiße Schwester Thera. Mein Gemahl Morvin und ich waren Ratgeber und "
 "Heiler der zwergischen Adligen von Knalga. Wir konnten sie nicht vor den "
 "Truppen von Khazg Black-Tusk schützen, aber wir überlebten die Angriffe der "
 "Orks und Trolle bis diese Skelette auftauchten."
@@ -2411,7 +2411,7 @@ msgstr ""
 "Seltsam, warum hat Malifor euch als Gefangene gehalten? Er wirkte nicht, als "
 "sei er einer von der besonders gnädigen Sorte."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:709
 msgid ""
 "He didn't keep us alive out of mercy, he wanted to study us to see if there "
@@ -2422,7 +2422,7 @@ msgstr ""
 "herauszufinden, wie er unsere magischen Angriffe kontern kann. Untote sind "
 "äußert verletzlich gegen diese Angriffe, wie du sicher weißt."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:717
 msgid ""
 "If you have no objection, Tallin, we would like to join you. These "
@@ -2438,7 +2438,7 @@ msgstr ""
 msgid "Very well, you are most welcome to join us."
 msgstr "Ihr seid äußerst willkommen!"
 
-# Schwester von Anita, Elfe von hohem Adel.
+# Schwester von Eryssa, Elfe von hohem Adel.
 #. [unit]: type=Elvish Druid, id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:749
 msgid "Elenia"
@@ -2449,7 +2449,7 @@ msgstr "Elenia"
 msgid "Oh my, she is almost dead!"
 msgstr "Oh nein, sie ist so gut wie tot!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:772
 msgid "Here, let me see her."
 msgstr "Lass mich mal sehen."
@@ -2461,12 +2461,12 @@ msgstr ""
 "War das gerade eine Teleportation, die meine Augen gerade eben sahen? "
 "Unglaublich! Ihr seid wirklich mächtige Leute!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:788
 msgid " *wink* *wink*"
 msgstr " *zwinkert und lächelt*"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:792
 msgid "Here, this will help her."
 msgstr "Hier, das wird ihr helfen."
@@ -2477,7 +2477,7 @@ msgstr "Hier, das wird ihr helfen."
 msgid "Uh....... where..... am..... I...?"
 msgstr "Uh... Wo.... bin.... ich?"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:803
 msgid ""
 "You are in the dungeons of Malifor. These brave people have just released "
@@ -2495,10 +2495,10 @@ msgstr "... Danke."
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:811
 msgid ""
-"No problem. Sister Theta, you take care of her. If she wants to join us she "
+"No problem. Sister Thera, you take care of her. If she wants to join us she "
 "would make a powerful ally."
 msgstr ""
-"Keine Ursache. Schwester Theta, kümmert euch um sie. Wenn sie uns begleiten "
+"Keine Ursache. Schwester Thera, kümmert euch um sie. Wenn sie uns begleiten "
 "möchte wäre sie eine wertvolle Verbündete."
 
 #. [message]: speaker=Elenia
@@ -2623,7 +2623,7 @@ msgstr ""
 msgid "The bastards!"
 msgstr "Diese Mistkerle!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:943
 msgid "Probably another one of Malifor's experiments."
 msgstr "Vermutlich ein weiteres von Malifors Experimenten."
@@ -3517,7 +3517,7 @@ msgid "Go for it!"
 msgstr "Fang an!"
 
 #. [message]: speaker=unit
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2387
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2438
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2524
@@ -3616,7 +3616,7 @@ msgstr ""
 "Verliese überfallen und meine Schatzkammer geplündert. Eure Dreistigkeit "
 "endet hier!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2620
 msgid ""
 "You are wrong, Malifor, for you shall be the one who is destroyed. You are "
@@ -3627,7 +3627,7 @@ msgstr ""
 "grausam, hartherzig und eine Bedrohung für alles Leben. Die Welt wird ein "
 "schönerer Ort sein, ohne euch."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2624
 msgid ""
 "To feed your greed and hunger you have terrorized all that is good. You have "
@@ -3673,7 +3673,7 @@ msgstr ""
 "AM ARSCH WACHSEN UND DEINE ARME ZU KURZ SEIN DICH ZU KRATZEN! MÖGE..."
 
 #. [message]: speaker=Tallin
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2741
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:461
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:670
@@ -3692,7 +3692,7 @@ msgstr ""
 "AUSFALLEN! MÖGEST DU EIN SCHWACHER UND DÜRRER GREIS WERDEN! MÖGE..."
 
 #. [message]: speaker=second_unit
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2749
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:476
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:685
@@ -3704,7 +3704,7 @@ msgstr "Er zerfiel zu Staub!"
 msgid "At last! Victory is ours! Good work, men!"
 msgstr "Endlich! Der Sieg ist unser! Gute Arbeit, Männer!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2757
 msgid "So, where to now, Tallin?"
 msgstr "So, was nun, Tallin?"
@@ -3824,7 +3824,7 @@ msgstr ""
 "Er ist schon wieder verschwunden. Lasst uns ihn finden und eine andere Waffe "
 "ausprobieren."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2931
 msgid "I see now. It is impossible to destroy him by ordinary means."
 msgstr "Ja, es ist unmöglich ihn auf gewöhnliche Weise zu vernichten."
@@ -3834,27 +3834,27 @@ msgstr "Ja, es ist unmöglich ihn auf gewöhnliche Weise zu vernichten."
 msgid "Then how are we going to destroy him? Surely there must be a way."
 msgstr "Wie wollen wir ihn dann besiegen? Es muss einen Weg geben!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2939
 msgid ""
-"Yes, I think there is, but only myself or Theta have the means to do it. "
-"Come on Theta, let's destroy that old skeleton."
+"Yes, I think there is, but only myself or Thera have the means to do it. "
+"Come on Thera, let's destroy that old skeleton."
 msgstr ""
-"Ja, ich denke es gibt einen. Aber nur Theta und ich sind dazu in der Lage. "
-"Komm Theta, lass uns dieses alte Skelett endgültig vernichten."
+"Ja, ich denke es gibt einen. Aber nur Thera und ich sind dazu in der Lage. "
+"Komm Thera, lass uns dieses alte Skelett endgültig vernichten."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2943
 msgid "Yeah, I can't wait to get my hands on that bastard!"
 msgstr ""
 "Ja, ich kann es kaum erwarten diesen Mistkerl zwischen die Finger zu kriegen!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2947
 msgid "That was very unladylike of you."
 msgstr "Das war nicht besonders damenhaft!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2951
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:514
 msgid " *giggle* Sorry."
@@ -4557,7 +4557,7 @@ msgstr ""
 "Zum Henker, wir bekämpfen sie nun schon seit drei Tagen und Nächten und es "
 "nimmt kein Ende. Die vierte Nacht senkt sich herab. Was sollen wir tun?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:644
 msgid ""
 "It seems hopeless to continue on like this. The orcs' numbers are unlimited "
@@ -4567,7 +4567,7 @@ msgstr ""
 "Es ist hoffnungslos so fortzufahren. Die Orks sind zahllos und Rakshas wird "
 "gut beschützt. Hier erreichen wir nur eins, nämlich weiteres Gemetzel."
 
-#. [message]: id=Sister Theta
+#. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:648
 msgid ""
 "I propose that we retreat back into the caves and consult with the dwarves."
@@ -5037,8 +5037,8 @@ msgstr " *Verdreht die Augen*"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:149
-msgid "Father Marcus, what are you trying to say?"
-msgstr "Was wolltet ihr sagen, Vater Marcus?"
+msgid "Father Morvin, what are you trying to say?"
+msgstr "Was wolltet ihr sagen, Vater Morvin?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
@@ -5210,7 +5210,7 @@ msgstr ""
 msgid "Hold it! What's going on here!"
 msgstr "Haltet ein! Was geht hier vor?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:386
 msgid "Ro'Sothian, is that you?"
 msgstr "Ro'Sothian, bist du das?"
@@ -5256,7 +5256,7 @@ msgstr " *leise* Und wie! Sein Bruder Ro'Arthian war mein Zaubermeister!"
 msgid " *aside* Oh....!"
 msgstr " *flüsternd* Ohh...."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:422
 msgid "Hang on a sec, Ro'Sothian, you don't want to kill him."
 msgstr "Einen Moment Ro'Sothian, du möchtest ihn nicht töten."
@@ -5266,7 +5266,7 @@ msgstr "Einen Moment Ro'Sothian, du möchtest ihn nicht töten."
 msgid "Huh!? He killed me!"
 msgstr "So? ER hat MICH getötet!"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:430
 msgid ""
 "Oh.... I see. But we come on more pressing business. We are in desperate "
@@ -5291,7 +5291,7 @@ msgstr ""
 "So? Und was hat das mit mir zu tun? Und beil dich, mein Stab brennt darauf "
 "diese Kröte endgültig zu zerlegen."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:438
 msgid ""
 "Don't! Please, my friend, listen. The orcs are on the rise again and they "
@@ -5347,12 +5347,12 @@ msgstr ""
 "der Rest, macht euch vom Acker und bleibt weg, es sei denn ihr brennt darauf "
 "vor euren Schöpfer zu treten!"
 
-#. [message]: id=Sister Theta
+#. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:465
 msgid "Uh oh, he is gathering energy for a cold blast."
 msgstr "Ohoh, er sammelt Energie für einen Kälteschlag."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:469
 msgid "Quick, honey, we've got to stop him. Let's go!"
 msgstr "Schnell Liebling, wir müssen ihn aufhalten!"
@@ -5362,7 +5362,7 @@ msgstr "Schnell Liebling, wir müssen ihn aufhalten!"
 msgid "Hey, are you two going to hog all the fun for yourselves?"
 msgstr "Hej, wollt ihr beiden etwa den ganzen Spaß für euch allein?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:482
 msgid "Alright, alright, hang on!"
 msgstr "Schon gut, schon gut, warte einen Moment!"
@@ -5381,7 +5381,7 @@ msgstr ""
 " *von überall herkommende, dröhnende Stimme* IHR MAGIER HABT DIE "
 "DREISTIGKEIT MEINEN BRUDER ANZUGREIFEN! IHR WERDET FÜR EURE TORHEIT STERBEN!"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:546
 msgid ""
 "Ro'Arthian, listen to me. We don't want to fight with you, we have come here "
@@ -5396,7 +5396,7 @@ msgstr ""
 msgid "No answer"
 msgstr "Stille."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:555
 msgid ""
 "I know you can hear me, Ro'Arthian. Please, the fate of every creature in "
@@ -5414,7 +5414,7 @@ msgstr ""
 "Lasst es gut sein, Vater, er antwortet nicht. Ich fürchte wir müssen, äh, "
 "schlagendere Argumente verwenden, um ihn zu überzeugen."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:568
 msgid " *sigh* Yes, you are right."
 msgstr " *seufz* Ich fürchte ihr habt Recht."
@@ -5448,7 +5448,7 @@ msgstr "Oh nein, er ist geflohen! Schnell, wir müssen ihn wieder einfangen!"
 msgid "Ahhhh! Not again!"
 msgstr "Nein, nicht schon wieder!"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:634
 msgid ""
 "Come on, Ro'Sothian, we really don't have to be doing this. Come, join us!"
@@ -5559,7 +5559,7 @@ msgid ""
 "do that without your help. Will you join us?"
 msgstr "Um jedoch die Orks zu vernichten brauchen wir deine Hilfe, Ro'Arthian."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:726
 msgid ""
 "Think of it, Ro'Arthian, it is a fair bargain. If you don't agree to "
@@ -5629,7 +5629,7 @@ msgstr ""
 "Moment mal, Tallin. Sagtest du gerade, dass wir unsere Heimat an diese "
 "scheußlichen Magier abtreten sollen?"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #. [message]: id=Ro'Sothian
 #. [message]: speaker=Ro'Sothian
 #. [message]: id=Ro'Arthian
@@ -5825,7 +5825,7 @@ msgstr " *DONG*"
 msgid "What the.... NO!!!"
 msgstr "Was zum...NEIN!!!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:431
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:640
 msgid "HEEEEE-YAAAAA!!!"
@@ -5863,7 +5863,7 @@ msgstr ""
 msgid "Hey, there goes the traitor Tallin!"
 msgstr "Seht, dort geht der Verräter Tallin!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:492
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:706
 msgid ""
@@ -5876,7 +5876,7 @@ msgstr ""
 "Doch wenn er uns in Zukunft Schwierigkeiten macht, wird er nicht verschont "
 "werden. "
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:497
 msgid ""
 "Besides, he will probably just go and drown himself in the nearest river "
@@ -5936,7 +5936,7 @@ msgstr ""
 "*seufzt* und gerade noch rechtzeitig - ich hätte es fast nicht mehr "
 "geschafft."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:711
 msgid ""
 "Besides, he will probably just go and drown himself in the nearest river "
@@ -6341,12 +6341,12 @@ msgid "INTRUDERS! KILL THEM!!!"
 msgstr "EINDRINGLINGE! TÖTET SIE!"
 
 # Elfenprinzessin, spätere Frau Tallins, Mündel von ->Hidel, Hochadel, kämpferisch, Schwester von Elenia
-#. [unit]: type=Elvish Sorceress, id=Anita
+#. [unit]: type=Elvish Sorceress, id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:504
-msgid "Anita"
-msgstr "Anita"
+msgid "Eryssa"
+msgstr "Eryssa"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:515
 msgid ""
 "I am free! Thank you, my saviors. Who has come to rescue me from vile "
@@ -6364,7 +6364,7 @@ msgstr ""
 "Später Prinzessin, bevor sie uns an den Arsc... äh.. verlassen wir diese "
 "Räumlichkeiten so geschwind als möglich."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:524
 msgid "Lead; I will follow."
 msgstr "Geht voran, ich folge euch."
@@ -7194,7 +7194,7 @@ msgstr ""
 "Nach der Rettung der Prinzessin, zog sich die Gruppe schnell in die Höhlen "
 "zurück."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:104
 msgid ""
 "Now that we are well shut of that dungeon, do you mind telling me who you "
@@ -7208,7 +7208,7 @@ msgstr ""
 msgid "Sister! Don't you recognize me?"
 msgstr "Schwester! Erkennst du mich nicht?"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:117
 msgid ""
 "Gods of Light! Elenia! It's you! It has been years! What in the world "
@@ -7226,7 +7226,7 @@ msgstr ""
 "Ja, das habe ich mir schon gedacht, das ihr das glauben könntet. Ich wurden "
 "von einem Totenbeschwörer gefangen gehalten, einem ekligen Skelett."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:125
 msgid "You mean Malifor?"
 msgstr "Du sprichst von Malifor?"
@@ -7245,7 +7245,7 @@ msgstr ""
 "entschlossen, ihnen als Gegenleistung für meine Befreiung zu helfen. Seitdem "
 "bin ich bei ihnen."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:133
 msgid "Really, and who are these people?"
 msgstr "Wirklich? Und wer sind diese Leute?"
@@ -7262,7 +7262,7 @@ msgid ""
 "nothing but pitchforks."
 msgstr "Er führte seine Männer gegen die Orks, mit nichts als Mistforken!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:149
 msgid "Wow!"
 msgstr "Unglaublich!"
@@ -7290,7 +7290,7 @@ msgstr ""
 "Bündnis aus Menschen, Zwergen, untoten Magiern und allen Lebewesen, die sich "
 "so finden lassen, aufzubauen, um die Orks zu zerschmettern."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:161
 msgid "You're right, Elenia, Tallin is truly a hero."
 msgstr "Du hast recht Elenia, Tallin ist wirklich ein Held."
@@ -7304,12 +7304,12 @@ msgstr ""
 "Nicht im geringsten, Prinzessin. Ich bin bloß ein einfacher Bauer, der "
 "versucht seine Leute aus der Sklaverei zu befreien."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:169
 msgid "And a modest one too!"
 msgstr "Und bescheiden ist er auch noch!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:177
 msgid ""
 "Tallin, not only have you freed me and my sister from captivity, but you "
@@ -7326,7 +7326,7 @@ msgstr ""
 msgid "Ahh, it was nothing, princess."
 msgstr "Oh, das war doch eine Selbstverständlichkeit, Prinzessin."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:185
 msgid ""
 "No, it was far from nothing, Tallin. The Northern Elves will always be in "
@@ -7346,7 +7346,7 @@ msgstr ""
 "einem Krieg mit den Orks, welche von Rakshas angeführt werden. Schließt euch "
 "uns an, damit wir diese orkische Bedrohung ein für allemal beenden können."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:193
 msgid ""
 "That could hardly count as repayment of our debt to you, Tallin. This "
@@ -7375,7 +7375,7 @@ msgstr ""
 "leben können. Daher sollten wir gar nicht erst anfangen in Schuld und "
 "Tilgung zu denken."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:201
 msgid ""
 "Well and nobly spoken, Tallin. Very well, I shall join you in your quest to "
@@ -7390,15 +7390,15 @@ msgstr ""
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:206
 msgid ""
-"Er, Anita...there is a large elvish force moving this direction. By now they "
+"Er, Eryssa...there is a large elvish force moving this direction. By now they "
 "can be more then two days' march from here. It seems that our father sent "
 "them to either free you or bargain for your release."
 msgstr ""
-"Oh, Prinzessin Anita, wir vergaßen zu sagen, dass sich bereits eine große "
+"Oh, Prinzessin Eryssa, wir vergaßen zu sagen, dass sich bereits eine große "
 "elfische Armee in der Gegend befindet. Vermutlich hat euer Vater sie "
 "gesandt, um euch zu befreien oder über eure Freiheit zu verhandeln."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:210
 msgid ""
 "Why did you not speak of this before? Let us immediately send out the "
@@ -7426,7 +7426,7 @@ msgstr ""
 "mit dem Zwergenfürsten Hamel, dem Magier Ro'Arthian und seinem Bruder "
 "versuchen wir Frieden und Freiheit in Knalga wieder herzustellen..."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:225
 msgid "Uh huh. Good for you."
 msgstr "Oho, gut für dich."
@@ -7445,7 +7445,7 @@ msgstr ""
 "Menschen, die sich ihnen in den Weg stellen, zu töten und den Rest zu "
 "versklaven."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:233
 msgid "So what does this have to do with me?"
 msgstr "Und, was hat das mit mir zu tun?"
@@ -7461,7 +7461,7 @@ msgstr ""
 "welche, wie wir annehmen, ausgesandt wurde um euch zu retten. Wir hofften, "
 "dass eure Befreiung uns die Hilfe der Elfen versichern könnte."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:242
 msgid "Pff, foolish human. What in the world gave you that idea."
 msgstr ""
@@ -7473,7 +7473,7 @@ msgstr ""
 msgid "Ungrateful minx! I'm sorely tempted to break your neck!"
 msgstr "Du undankbare Ziege! Ich bekomme große Lust dir das Genick zu brechen!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:250
 msgid ""
 "Make one move towards me, lich, and you'll find yourself dangling off the "
@@ -7493,7 +7493,7 @@ msgstr ""
 "anzugreifen wird diese Situation auch nicht retten. Am allerwenigsten ein "
 "Angriff von jemand so Unfähigem wie dir!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:258
 msgid "Peace! Peace!"
 msgstr "Beruhigt euch!"
@@ -7506,7 +7506,7 @@ msgstr ""
 "Was ist denn mit den Orks, Prinzessin? Würdet ihr sie nicht auch gerne "
 "loswerden?"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:266
 msgid "How we deal with the orcs is none of your concern!"
 msgstr ""
@@ -7519,7 +7519,7 @@ msgstr ""
 "Was für eine eitle Glucke. Ich verspüre den dringenden Wunsch sie zu "
 "flambieren!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:280
 msgid "Mind your betters, mage!"
 msgstr "Überleg es dir gut, Magier!"
@@ -7529,7 +7529,7 @@ msgstr "Überleg es dir gut, Magier!"
 msgid "Mind your tongue, elf!"
 msgstr "Hüte deine Zunge, Elf!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:290
 msgid ""
 "Frankly, princess, I am disappointed. I was always under the impression that "
@@ -7538,7 +7538,7 @@ msgstr ""
 "Ehrlich, Prinzessin, ich bin enttäuscht. Ich dachte immer, Elfen seien ein "
 "aufrichtiges Volk, welche ihre Schulden ernst nähmen."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:294
 msgid ""
 "Who said that I wasn't going to repay you? When I get back to the elves, we "
@@ -7553,7 +7553,7 @@ msgstr ""
 msgid "We already have a hoard of gold! We don't need more!"
 msgstr "Wir haben bereits Tonnen von Gold. Wir brauchen nicht noch mehr!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:302
 msgid "That is your concern, not mine, human."
 msgstr "Das ist euer Problem, Mensch, nicht meines."
@@ -8009,8 +8009,8 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:116
-msgid "Anita, what news of the elves?"
-msgstr "Anita, gibt es Neuigkeiten von den Elfen?"
+msgid "Eryssa, what news of the elves?"
+msgstr "Eryssa, gibt es Neuigkeiten von den Elfen?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:120
@@ -8201,10 +8201,10 @@ msgstr "Wer ist denn diese kleine Nervensäge?"
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:239
 msgid ""
-"This is the famous and benevolent princess Anita, in whose rescue we "
+"This is the famous and benevolent princess Eryssa, in whose rescue we "
 "sacrificed many lives and MUCH gold."
 msgstr ""
-"Dies ist die berühmte Prinzessin Anita, für deren Rettung wir viele Leben "
+"Dies ist die berühmte Prinzessin Eryssa, für deren Rettung wir viele Leben "
 "und noch viel mehr Gold opfern mussten."
 
 #. [part]
@@ -8363,7 +8363,7 @@ msgstr "Hej? Wo ist er hin?"
 msgid "Krash man, you are gonna miss all the fun!"
 msgstr "Hej, Krash, du wirst den ganzen Spaß verpassen!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:628
 msgid "I think he has decided that it is time for him to part ways with us."
 msgstr ""
@@ -8374,7 +8374,7 @@ msgstr ""
 msgid "Such a fierce yet gentle creature. He will be sorely missed."
 msgstr "Solch eine wilde und dennoch freundliche Kreatur. Er wird uns fehlen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:636
 msgid "Farewell, Krash, may the Lords of Light guide your path."
 msgstr "Lebewohl, Krash, mögen die Götter des Lichtes über dich wachen."
@@ -8389,7 +8389,7 @@ msgstr "Singe"
 msgid "Bak'man"
 msgstr "Bak'man"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:702
 msgid "Hey! Look who's back!"
 msgstr "Hej, seht mal wer da ist!"
@@ -8419,7 +8419,7 @@ msgstr "Schnell Freunde, lasst uns das Lager aufschlagen!"
 msgid "Yeah, man! I knew we could count on you!"
 msgstr "Jau Kumpel, ich wusste, dass wir auf dich zählen können!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:726
 msgid ""
 "Hmmm, he must have smelled the scent of other drakes and gone to them to "
@@ -8428,7 +8428,7 @@ msgstr ""
 "Hmm, er muss die anderen Draken gerochen haben und es ist ihm irgendwie "
 "gelungen, sie für unsere Sache zu gewinnen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:730
 msgid "Awww, what a darling!"
 msgstr "Was für ein Schatz!"
@@ -8453,7 +8453,7 @@ msgstr "Klappe du Weichei!"
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "Helft Tallin die gegnerischen Anführer zu besiegen oder"
 
-# elfischer hochadel, Vaterfigur für Anita, großer Held, stirbt im epischen zweikampf
+# elfischer hochadel, Vaterfigur für Eryssa, großer Held, stirbt im epischen zweikampf
 #. [unit]: type=Elvish Marshal, id=Hidel
 #. [unit]: id=Hidel, type=Elvish Marshal
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:217
@@ -8467,7 +8467,7 @@ msgstr "Hidel"
 msgid "Princess! We have finally found you!"
 msgstr "Prinzessin! Endlich haben wir euch gefunden!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:840
 msgid "Good work, Hidel! How do your forces march?"
 msgstr "Gute Arbeit, Hidel! Wie stehts um eure Truppen?"
@@ -8483,7 +8483,7 @@ msgstr ""
 "nehmen, persönlich die besten und tapfersten Krieger der Elfen für diesen "
 "Auftrag auszuwählen. Notfalls folgen wir euch bis ans Ende der Welt."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:848
 msgid ""
 "Very good. Or first task is to give brave Tallin here full support in "
@@ -8551,10 +8551,10 @@ msgstr "Welcher von euch Lumpen ist Tallin?"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:945
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1246
 msgid ""
-"Princess Anita sends you this gold along with the order to stay clear of any "
+"Princess Eryssa sends you this gold along with the order to stay clear of any "
 "Northern Elf if you know what's good for you."
 msgstr ""
-"Prinzessin Anita sendet euch dieses Gold, zusammen mit dem Befehl, euch von "
+"Prinzessin Eryssa sendet euch dieses Gold, zusammen mit dem Befehl, euch von "
 "allen Nordelfen entfernt zu halten – wenn ihr wisst, was gut für euch ist."
 
 #. [message]: speaker=Tallin
@@ -8643,7 +8643,7 @@ msgstr "Besiegt die gegnerischen Anführer"
 msgid "Pew, they are defeated at last."
 msgstr "Pff, endlich haben wir sie besiegt."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1065
 msgid "Hidel, let me introduce to you my savior: Tallin."
 msgstr "Hidel, lass mich dir meinen Befreier vorstellen: Tallin."
@@ -8723,7 +8723,7 @@ msgstr ""
 "Prinzessin! Endlich haben wir euch gefunden. Dank den Göttern für eure "
 "Freiheit! Euer Vater hatte uns ausgesandt euch zu retten."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1162
 msgid ""
 "Yes, or so I have heard. You honor me, but this brave man reached the mark "
@@ -8767,7 +8767,7 @@ msgstr ""
 msgid "Thank you, sir."
 msgstr "Vielen Dank."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1190
 msgid "What is the status of our troops, Hidel?"
 msgstr "Wie ist die Verfassung unserer Truppen, Hidel?"
@@ -8782,7 +8782,7 @@ msgstr ""
 "nehmen persönlich die besten und tapfersten Krieger der Elfen für diesen "
 "Auftrag auszuwählen. Notfalls folgen wir euch bis zum Ende der Welt."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1198
 msgid ""
 "Excellent! We shall assist Tallin to the fullest in crushing the orcish "
@@ -8861,7 +8861,7 @@ msgstr ""
 "Angthurim ist in Wirklichkeit sogar noch furchteinflößender als in den "
 "Erzählungen."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:211
 msgid ""
 "I was not idle in my captivity; I watched, and listened, and learned. The "
@@ -8964,15 +8964,15 @@ msgstr ""
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:304
 msgid ""
-"Blast it. The coward has fled. Anita, your elves are good at moving quickly "
+"Blast it. The coward has fled. Eryssa, your elves are good at moving quickly "
 "through the forests. Do you think they can overtake and pin him down while "
 "we deal with this fortress?"
 msgstr ""
-"So eine Sch..., äh, Schande. Er ist geflohen. Anita, ihr Elfen könnt flink "
+"So eine Sch..., äh, Schande. Er ist geflohen. Eryssa, ihr Elfen könnt flink "
 "durch das Unterholz huschen. Glaubst du, ihr könntet den Feigling einholen "
 "und ihm den Weg abschneiden? Inzwischen kümmern wir uns um die Festung."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:308
 msgid "Hidel?"
 msgstr "Hidel?"
@@ -8986,7 +8986,7 @@ msgstr ""
 "Eine unserer leichtesten Übungen, Prinzessin. Wir werden ungesehen durch den "
 "Wald huschen, ihn überholen und festnageln."
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:316
 msgid ""
 "Then do it. I shall stay with Tallin and... um... because he could use my "
@@ -9000,7 +9000,7 @@ msgstr ""
 msgid " *blushes slightly*"
 msgstr " *errötet leicht*"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:324
 msgid " *wink wink*"
 msgstr " *zwinker zwinker*"
@@ -9055,7 +9055,7 @@ msgstr ""
 msgid "Suit yourself, you dumb troll!"
 msgstr "Wie du willst, dummer Troll!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:447
 msgid ""
 "Awww, aren't they the most loving, sharing bunch of orcs you have ever seen?"
@@ -9151,11 +9151,11 @@ msgstr ""
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:37
 msgid ""
-"With tears streaming down her face, Anita approached the fallen hero and "
+"With tears streaming down her face, Eryssa approached the fallen hero and "
 "cradled his head in her lap. As she stroked his face, his eyes fluttered "
 "open."
 msgstr ""
-"Mit Tränen in den Augen eilt Anita zu dem gefallenen Helden und bettet sein "
+"Mit Tränen in den Augen eilt Eryssa zu dem gefallenen Helden und bettet sein "
 "Haupt in ihren Schoß. Als sie schluchzend seine Wangen streift, öffnen sich "
 "seine Augen."
 
@@ -9172,13 +9172,13 @@ msgstr ""
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:44
 msgid ""
-"Her face streaked with tears, Anita gazed imploringly at Father Marcus and "
-"Sister Theta. They simply sighed and shook their heads. It was too late to "
-"save Hidel. In a broken voice Anita addressed him:"
+"Her face streaked with tears, Eryssa gazed imploringly at Father Morvin and "
+"Sister Thera. They simply sighed and shook their heads. It was too late to "
+"save Hidel. In a broken voice Eryssa addressed him:"
 msgstr ""
-"Flehend blickt Anita tränenüberströmt auf Vater Markus und Schwester Theta. "
+"Flehend blickt Eryssa tränenüberströmt auf Vater Markus und Schwester Thera. "
 "Doch beide schüttelten nur leicht ihre Köpfe. Es war bereits zu spät für "
-"Hidel. Mit brechender Stimme wandte sich Anita an ihn:"
+"Hidel. Mit brechender Stimme wandte sich Eryssa an ihn:"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:47
@@ -9239,19 +9239,19 @@ msgstr "Zu Diensten, edler Herr."
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:74
 msgid ""
-"Anita has been... my charge ever... since she was born.... I now return... "
+"Eryssa has been... my charge ever... since she was born.... I now return... "
 "to the earth... from which.... I sprang... Please take care... of her."
 msgstr ""
-"Anita... mein Mündel... seit ihrer Geburt... ich kehre zur Erde ... aus der "
+"Eryssa... mein Mündel... seit ihrer Geburt... ich kehre zur Erde ... aus der "
 "ich... kam... Bitte, gebt ... auf sie Acht..."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:78
 msgid ""
-"Rest assured, sir, I will place myself between Anita and any ill that "
+"Rest assured, sir, I will place myself between Eryssa and any ill that "
 "strength or love may counter."
 msgstr ""
-"Seid versichert, edler Hidel, ich werde mich immer zwischen Anita und jedem "
+"Seid versichert, edler Hidel, ich werde mich immer zwischen Eryssa und jedem "
 "Leide stellen."
 
 #. [part]
@@ -9265,23 +9265,23 @@ msgstr ""
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:87
 msgid ""
-"With these words Hidel closed his eyes and breathed his last. As Anita wept "
+"With these words Hidel closed his eyes and breathed his last. As Eryssa wept "
 "with Hidel's head in her lap, Tallin approached her, hesitating, and then "
 "wrapped her gently in his arms."
 msgstr ""
-"Hidel schloß seine Augen ein letztes Mal - und starb. Anita weinte mit "
+"Hidel schloß seine Augen ein letztes Mal - und starb. Eryssa weinte mit "
 "Hidels Haupt in ihrem Schoß. Tallin zögert kurz und nam sie dann sanft in "
 "seine Arme."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:90
 msgid ""
-"Sobbing against Tallin's chest, Anita told him of the many ways Hidel had "
+"Sobbing against Tallin's chest, Eryssa told him of the many ways Hidel had "
 "cherished and warded her since the hour of her birth. How he had comforted "
 "her childhood hurts; how in later years, he had guided her in the green "
 "paths of the forest, and taught her the deep mysteries of Elven-kind."
 msgstr ""
-"Schluchzend an Tallins Schulter gelehnt spricht Anita von ihrer Kindheit und "
+"Schluchzend an Tallins Schulter gelehnt spricht Eryssa von ihrer Kindheit und "
 "wie Hidel immer für sie da war und ihr Schutz und Heimstatt bot. Hidel war "
 "es, der ihre Tränen trocknete, wenn sie mit aufgeschlagenen Knien nach Hause "
 "kam, Hidel erklärte ihr die grünen Wälder der Heimat und er war ihr "
@@ -9294,19 +9294,19 @@ msgid ""
 "to speak. She and Tallin sat together silently holding each-other for some "
 "time."
 msgstr ""
-"Der Strom ihrer Erinnerungen und ihre tiefe Trauer ließ Anita verstummen. "
+"Der Strom ihrer Erinnerungen und ihre tiefe Trauer ließ Eryssa verstummen. "
 "Beide saßen schweigend zusammen und ihre Umarmung gab ihnen Kraft. "
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:96
 msgid ""
-"As Tallin comforted Anita, the rest of the party spread out and rallied the "
+"As Tallin comforted Eryssa, the rest of the party spread out and rallied the "
 "scattered elves, and tending to the wounded. This being done, they once "
-"again came before Tallin and Anita."
+"again came before Tallin and Eryssa."
 msgstr ""
 "Unterdessen schwärmte der Rest der Truppe aus, sammelten die versprengten "
 "Elfen und versorgten die Verwundeten. Nachdem dies erledigt war, traten sie "
-"vor Tallin und Anita."
+"vor Tallin und Eryssa."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:99
@@ -9332,13 +9332,13 @@ msgstr ""
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:107
 msgid ""
-"At these words, Anita arose and wiped away her tears. She took command of "
+"At these words, Eryssa arose and wiped away her tears. She took command of "
 "the surviving elvish forces, for all knew she was a princess of high rank "
 "and looked to Hidel's ward as their leader by right. Scarcely a face among "
 "them was less grim than her own as they took arms and started down Rakshas's "
 "back-trail."
 msgstr ""
-"Anita erhob sich und wischte sich die Tränen aus ihrem Gesicht. Mit starker "
+"Eryssa erhob sich und wischte sich die Tränen aus ihrem Gesicht. Mit starker "
 "Hand ergriff sie ihr Schwert und blickte in die grimmen Gesichter der "
 "versammelten elfischen Truppen. Sie übernahm das Kommando, ohne ein Wort und "
 "führte die Elfen auf Rakshas Fährte. "
@@ -9379,7 +9379,7 @@ msgstr ""
 "In eilender Hast brach die Truppe durch den Wald und bald erreichten sie das "
 "Schlachtfeld."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:386
 msgid "Sisal, how do you fare?"
 msgstr "Sisal! Wie ist es euch ergangen?"
@@ -9389,7 +9389,7 @@ msgstr "Sisal! Wie ist es euch ergangen?"
 msgid "Princess! You are here! How fares Hidel?"
 msgstr "Prinzessin! Ihr seid hier! Was ist mit Hidel?"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:394
 msgid " *sheds a tear*"
 msgstr " *lässt eine Träne kullern*"
@@ -9477,7 +9477,7 @@ msgstr ""
 msgid "Ahhhh! Farewell, friends. I now go to join Hidel."
 msgstr "Lebt wohl meine Freunde. Ich schließe mich nun Hidel an."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:527
 msgid "Sisal! Noooo!"
 msgstr "Sisal! Nein! Nicht du auch noch!"
@@ -9496,7 +9496,7 @@ msgstr ""
 "Hahaha! Auftrag ausgeführt, Männer! Nun lasst uns den Rest dieses Abschaums "
 "zu Brei schlagen und dem Meister davon Bericht erstatten."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:539
 msgid ""
 "I don't think so, you bastard orcs! That gold belongs to us. Besides, we now "
@@ -9597,10 +9597,10 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:719
 msgid ""
-"Anita and the remaining elves, eager to avenge Hidel, went south, while "
+"Eryssa and the remaining elves, eager to avenge Hidel, went south, while "
 "Tallin himself led the western group."
 msgstr ""
-"Die verbliebenen Elfen, mit Anita an der Spitze und wild entschlossen, "
+"Die verbliebenen Elfen, mit Eryssa an der Spitze und wild entschlossen, "
 "Hidels Tod zu rächen, marschierten in den Süden, während die westliche "
 "Abteilung von Tallin selbst angeführt wurde."
 
@@ -9633,7 +9633,7 @@ msgstr ""
 msgid "What the...? How did he get here?"
 msgstr "Was zum... Wo kommt der denn her?"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:798
 msgid ""
 "We have crushed and scattered your entire eastern flank, and now it's your "
@@ -9649,7 +9649,7 @@ msgstr ""
 "Du schleimiger kleiner Elf! Du hast dich also mit den Menschen verbündet? "
 "Nun gut, ich werde euch allesamt zerstampfen."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:806
 msgid ""
 "Good luck, you monster. You are cut off and surrounded. We shall kill you "
@@ -9749,7 +9749,7 @@ msgstr "FÜR DIE EWIGE RUHE!"
 msgid "FOR FUN!"
 msgstr "ZUM SPASS!"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:906
 msgid "FOR HIDEL!!!"
 msgstr "FÜR HIDEL!"
@@ -9798,7 +9798,7 @@ msgstr ""
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr "Stell dich dem Schicksal dessen, der die Zwerge Knalgas beleidigt!"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1020
 msgid "Or the elves of the Northern Forests."
 msgstr "Oder, die Elfen des nördlichen Waldes."
@@ -9814,7 +9814,7 @@ msgid ""
 " *gurggle* No!... this.... cannot.... be... happening.... to.... me....."
 msgstr " *röchel* Nein ... Das ist unmöglich ..."
 
-#. [message]: id=Sister Theta
+#. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1033
 msgid "Such were the last words of of Rakshas the great!"
 msgstr "Dies waren die letzten Worten Rakshas des Großen."
@@ -9845,7 +9845,7 @@ msgstr ""
 " *dünnes Stimmchen, welches im Aufruhr untergeht* Oh, ist es schon vorbei?"
 
 #. [message]: id=Hamel
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1124
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:552
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:563
@@ -9867,7 +9867,7 @@ msgstr ""
 msgid "Ahhhh! Farewell friends. I now go to join Hidel."
 msgstr "Lebt wohl meine Freunde. Ich folge nun Hidel."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1146
 msgid "Sisal! Noooo! Not you too!"
 msgstr "Sisal! Nein! Nicht du auch noch!"
@@ -9899,7 +9899,7 @@ msgstr ""
 "Großteil unserer Probleme, aber wenn wir uns nicht vorsehen, werden wir "
 "schon bald wieder Schwierigkeiten haben."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:75
 msgid "How is that, Tallin?"
 msgstr "Wie kommst du darauf, Tallin?"
@@ -9923,7 +9923,7 @@ msgstr ""
 "Ordnung. Unter einem Kriegsherren wie Rakshas jedoch werden sie zu einer "
 "Bedrohung. "
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:92
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:98
@@ -9962,12 +9962,12 @@ msgstr ""
 "Guter Einwand, aber auch ein vertracktes Ziel. Hat irgendjemand einen "
 "Vorschlag?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:116
 msgid "I do have a suggestion."
 msgstr "In der Tat, ich habe einen Vorschlag."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:120
 msgid ""
 "The orcs are too hardy and fast-breeding to be exterminated, even if we "
@@ -9978,7 +9978,7 @@ msgstr ""
 "ausrotten, selbst wenn wir einen derartigen Massenmord wollten. Daher müssen "
 "wir eine Lösung finden von der auch die Orks einen Vorteil haben. "
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:124
 msgid ""
 "I propose the creation of a neutral council of warders, composed of humans, "
@@ -9989,7 +9989,7 @@ msgstr ""
 "Trollen, Draken und überhaupt jedermann, der sich ihm anschließen möchte – "
 "selbst Orks."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:128
 msgid ""
 "This body would not claim sovereignty over any peoples or lands, but exist "
@@ -10001,7 +10001,7 @@ msgstr ""
 "den Länder südlich und östlich des Großen Ozeans, nördlich Wesnoths und "
 "westlich der Elfenwälder zu verhindern."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:132
 msgid ""
 "The first task of the warders would be to go to each orcish tribe and make a "
@@ -10012,7 +10012,7 @@ msgstr ""
 "schicken und diesen von einem Vertrag zu überzeugen, welcher Schwierigkeiten "
 "wie jene, die wir gerade überwunden haben, in Zukunft verhindern soll."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:136
 msgid ""
 "The orcs have just experienced a crushing defeat; it shouldn't be too hard "
@@ -10026,7 +10026,7 @@ msgstr ""
 "Rates als Marschall und im Namen der Allianz eine Armee aufstellen und sie "
 "gegen die Störenfriede ins Feld führen."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:140
 msgid ""
 "That is the basic outline of my proposal. Shall the Council of Warders "
@@ -10117,13 +10117,13 @@ msgstr ""
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:187
 msgid ""
-"Father Marcus, this whole plan is your idea. Would you and your wife be "
+"Father Morvin, this whole plan is your idea. Would you and your wife be "
 "willing to stand by my side and support me?"
 msgstr ""
 "Vater Markus, da dieser ganze Plan eure Idee war, gewährt mir die Bitte: "
 "Würdet ihr und eure Frau mir beistehen und mich beraten?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:191
 msgid ""
 "Gladly, Tallin. We will stand with the Warders till the end of days if need "
@@ -10147,7 +10147,7 @@ msgstr "Ich unterwerfe mich eurem Befehl, Fürst Tallin."
 msgid " 'Lord' Oh no!"
 msgstr "»Fürst«, oh nein!"
 
-#. [message]: id=Sister Theta
+#. [message]: id=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:212
 msgid " *giggle* Better get used to it."
 msgstr " *kichert* Gewöhn’ dich besser dran."
@@ -10185,7 +10185,7 @@ msgstr "Elenia?"
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:246
 msgid ""
 "Tallin, as you know, I have been separated from my race and kinsmen - well, "
-"except Anita - for many years now. I wish to go back to the elvish forests "
+"except Eryssa - for many years now. I wish to go back to the elvish forests "
 "and live among my kinsmen again. Perhaps I will return someday."
 msgstr ""
 "Um ehrlich zu sein, Tallin, würde ich lieber in die Elfenwälder "
@@ -10194,7 +10194,7 @@ msgstr ""
 "Volk verbringen. Vielleicht führt mich das Schicksal in fernen Tagen wieder "
 "hier an diesen Ort."
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:255
 msgid ""
 "Knowing you and your spirit of adventure, Elenia, I am certain that you are "
@@ -10300,13 +10300,13 @@ msgstr ""
 "hat mich in diesen Körper gezwungen und ich weiß nicht, wie ich von ihm "
 "loskomme."
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:329
 msgid ""
-"I believe Theta and I can help you with that, Abhai. Have no worries, you "
+"I believe Thera and I can help you with that, Abhai. Have no worries, you "
 "shall soon be home."
 msgstr ""
-"Ich denke, Theta und ich können dir bei diesem Problem helfen. Keine Sorge "
+"Ich denke, Thera und ich können dir bei diesem Problem helfen. Keine Sorge "
 "Alfred, du wirst bald zu Hause sein."
 
 #. [message]: id=Abhai
@@ -10368,14 +10368,14 @@ msgstr "Möge deine Ruhe friedlich und ungestört sein, Ro'Arthian."
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:371
 msgid ""
-"And Anita... I may be rash and bold to ask this but... *goes to his knees in "
-"front of Anita and takes her hand* Will you marry me?"
+"And Eryssa... I may be rash and bold to ask this but... *goes to his knees in "
+"front of Eryssa and takes her hand* Will you marry me?"
 msgstr ""
-"Und Anita... Es mag sein, dass ich ungestüm und tollkühn bin dies zu fragen, "
+"Und Eryssa... Es mag sein, dass ich ungestüm und tollkühn bin dies zu fragen, "
 "doch...*fällt vor ihr auf die Knie und nimmt ihre Hand* Willst du mich "
 "heiraten?"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:375
 msgid " *struck speechless*"
 msgstr " *Steht verdutzt und sprachlos da*"
@@ -10394,20 +10394,20 @@ msgstr ""
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:383
 msgid ""
-" *eyes on Anita* I know, Hamel. Then may the coming seventy years be the "
+" *eyes on Eryssa* I know, Hamel. Then may the coming seventy years be the "
 "most happiest and fulfilling years in our lives. Should we deny ourselves "
 "happiness out of the fear of loss?"
 msgstr ""
-" *Mit Augen auf Anita* Ich weiß Hamel. Aber dann sollen die folgenden 70 "
+" *Mit Augen auf Eryssa* Ich weiß Hamel. Aber dann sollen die folgenden 70 "
 "Jahre die Glücklichsten in unserem Leben sein. Sollen wir diesem Glück aus "
 "Angst vor Verlust entsagen?"
 
-#. [message]: id=Father Marcus
+#. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:387
 msgid "Well spoken!"
 msgstr "Gut gesprochen!"
 
-#. [message]: id=Anita
+#. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:391
 msgid "I may be foolish to say this, Tallin, but... yes."
 msgstr "Es mag närrisch sein, das zu sagen Tallin, aber... Ja!"
@@ -10416,30 +10416,30 @@ msgstr "Es mag närrisch sein, das zu sagen Tallin, aber... Ja!"
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:395
 msgid ""
 "The joy of the multitude could not be contained, and the ensuing celebration "
-"lasted for a full five days. At that time Tallin and Anita were duly married "
-"by Father Marcus and Sister Theta."
+"lasted for a full five days. At that time Tallin and Eryssa were duly married "
+"by Father Morvin and Sister Thera."
 msgstr ""
 "Der nachfolgende Tumult konnte nicht mehr beruhigt werden und steigerte sich "
 "in eine fünftägige Feier hinein. Als sich alle wieder beruhigt hatten, "
-"wurden Tallin und Anita von Vater Markus und Schwester Theta getraut."
+"wurden Tallin und Eryssa von Vater Markus und Schwester Thera getraut."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:400
 msgid ""
-"After the wedding, Tallin and Anita went back to Dwarven Doors where they "
+"After the wedding, Tallin and Eryssa went back to Dwarven Doors where they "
 "founded the Council of Warders of the Northern Alliance, a body dedicated to "
 "ensuring peace and justice in the Northlands. It was soon settled that the "
 "main headquarters of the Northern Alliance would be the new city of Dwarven "
 "Doors."
 msgstr ""
-"Nach der Hochzeit kehrten Tallin und Anita nach Zwergenpforte zurück. Die "
+"Nach der Hochzeit kehrten Tallin und Eryssa nach Zwergenpforte zurück. Die "
 "Stadt wurde so zum Zentrum der Nordallianz und zur inoffiziellen Hauptstadt."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:405
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:426
 msgid ""
-"On Father Marcus's advice, the Council approached all the different orcish "
+"On Father Morvin's advice, the Council approached all the different orcish "
 "tribes and made treaties with them. If a chieftain refused to cooperate with "
 "the Alliance, he was forcibly removed from his post and another more "
 "favorably disposed put in his place."
@@ -10453,11 +10453,11 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:410
 msgid ""
 "Although Tallin faced many challenges as the head of the Northern Alliance, "
-"his marriage with Anita was serene and filled with happiness. Together they "
+"his marriage with Eryssa was serene and filled with happiness. Together they "
 "had one son, about whom were written many legends."
 msgstr ""
 "Obwohl Tallin als Vorsitzender der Nordallianz viele Aufgaben lösen musste, "
-"lief in seiner Ehe mit Anita alles gut und beide lebten glücklich zusammen. "
+"lief in seiner Ehe mit Eryssa alles gut und beide lebten glücklich zusammen. "
 "Sie hatten einen Sohn, der in späterer Zeit selbst zu einer Legende "
 "aufsteigen sollte."
 
@@ -10521,7 +10521,7 @@ msgstr " *Brüllt vor Schmerzen*"
 msgid "Krash!"
 msgstr "Krash!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:33
 msgid "It's no good, Tallin, he is gone."
 msgstr "Es ist sinnlos Tallin, er ist tot."
@@ -10599,82 +10599,82 @@ msgstr ""
 msgid "No, Tallin, we can't do it without you!"
 msgstr "Nein, Tallin, ohne dich können wir es nicht schaffen!"
 
-#. [message]: speaker=Anita
+#. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:190
 msgid "Alas, you must continue your mission without me!"
 msgstr "Ach, du musst deinen Auftrag ohne mich erfüllen!"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:199
-msgid "Anita, no! Please don't die!"
-msgstr "Anita, nein! Bitte, stirb nicht!"
+msgid "Eryssa, no! Please don't die!"
+msgstr "Eryssa, nein! Bitte, stirb nicht!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:203
 msgid ""
-"I am sorry, Elenia, we tried our best. *sigh* I will never forget you, Anita."
+"I am sorry, Elenia, we tried our best. *sigh* I will never forget you, Eryssa."
 msgstr ""
 "Es tut mir leid, Elenia! Wir haben alles versucht was in unserer Macht "
-"stand. *Seufzt* Anita, ich werde dich niemals vergessen."
+"stand. *Seufzt* Eryssa, ich werde dich niemals vergessen."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:209
 msgid "You wretches are going to pay for this! FORWARD, MEN!"
 msgstr "Ihr verfluchten Trolle werden dafür bezahlen! Auf sie, Männer!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:231
 msgid "Ahhhh! Save me, my husband!"
 msgstr "Ahhhh! Rette mich, mein Ehemann!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:235
 msgid " *rolls eyes* Dramatic as always."
 msgstr " *Rollt die Augen* Dramatisch, wie immer."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:242
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:253
 msgid "Ahhhhhhh!"
 msgstr "Ahhhhhhh!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:246
 msgid "You monsters think you are so tough don't you? Well check this out."
 msgstr ""
 "Ihr Ungeheuer glaubt, ihr seid ganz harte Brocken, was? Hier, nimm dies!"
 
-#. [message]: speaker=Father Marcus
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Father Morvin
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:257
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:556
 msgid "You incompetent fools, you think you can kill us? Good luck!"
 msgstr "Du unfähiger Trottel, du glaubst, du könntest uns töten? Viel Glück!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:265
 msgid "Ack! Stupid slobbering beast!"
 msgstr "Pah! Dummes sabberndes Biest!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:269
 msgid "Your efforts to destroy us are in vain, you foul creature."
 msgstr "Deine Anstrengungen uns zu besiegen sind sinnlos, finstere Kreatur!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:281
-msgid "Oh no, Marcus! We have failed in our mission to help Tallin!"
+msgid "Oh no, Morvin! We have failed in our mission to help Tallin!"
 msgstr "Oh nein, Markus! Wir konnten Tallin nicht retten! Wir haben versagt."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:285
 msgid "Failed? Never! The word failure is not in our dictionary."
 msgstr "Versagt? Niemals! Ich weiß nicht einmal, was dieses Wort bedeutet."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:294
 msgid ""
-"Alas! I am dying! Marcus darling, I wish you were beside me so that I may "
+"Alas! I am dying! Morvin darling, I wish you were beside me so that I may "
 "die in your arms! So that I may feel the kiss of your lips on mine one last "
 "time!"
 msgstr ""
@@ -10682,25 +10682,25 @@ msgstr ""
 "dass ich in deinen Armen stürbe! So dass ich ein letztes mal den Kuss deiner "
 "Lippen auf meinen spüren könnte!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:303
-msgid " *rolls eyes* Theta, do you always have to be so dramatic?"
+msgid " *rolls eyes* Thera, do you always have to be so dramatic?"
 msgstr ""
-" *verdreht die Augen* Theta, musst du immer gleich so überdramatisieren?"
+" *verdreht die Augen* Thera, musst du immer gleich so überdramatisieren?"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:307
 msgid "Um..... Father? Your wife just got killed..."
 msgstr "Äh, Vater Markus? Eure Gattin wurde gerade getötet..."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:311
 msgid "Oh right. I CALL UPON THE LORDS OF LIGHT TO GRANT YOU LIFE!"
 msgstr ""
 "Oh, ja, stimmt. HIERMIT RUFE ICH DIE GÖTTER DES LICHTS AN, DIR NEUES LEBEN "
 "ZU SCHENKEN!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:319
 msgid ""
 "You cruel creature! How dare you use your brute strength against such a "
@@ -10709,120 +10709,120 @@ msgstr ""
 "Du bösartiges Wesen! Wie kannst du es wagen einer so zarten Person wie mir "
 "Gewalt anzutun!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:323
 msgid ""
-"Don't worry, Theta, you will have plenty of opportunities to set him "
+"Don't worry, Thera, you will have plenty of opportunities to set him "
 "straight."
 msgstr ""
-"Keine Sorge, Theta. Du wirst ausreichend Gelegenheiten bekommen, um es ihm "
+"Keine Sorge, Thera. Du wirst ausreichend Gelegenheiten bekommen, um es ihm "
 "heimzuzahlen."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:407
 msgid ""
-"Theta, when this is all over, you should paint your face and join a theater."
+"Thera, when this is all over, you should paint your face and join a theater."
 msgstr ""
-"Theta, wenn dies vorbei ist, solltest du dich einem Theater anschließen."
+"Thera, wenn dies vorbei ist, solltest du dich einem Theater anschließen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:411
 msgid "Hey, don't you always say that life is nothing but a drama?"
 msgstr "He, sagst du nicht immer, das Leben wäre nichts als ein Drama?"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:415
 msgid "Yes, it may be a drama, but that's no excuse for overacting!"
 msgstr ""
 "Es mag ja ein Drama sein, aber das ist keine Entschuldigung für dein "
 "ständiges Überdramatisieren!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:419
 msgid " *giggle* Who needs an excuse for overacting?"
 msgstr " *kicher* Für's Überdramatisieren braucht man keine Entschuldigung!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:428
 msgid "Whoa! That trick is a bit hard on the constitution."
 msgstr "Puh, der Trick zehrt übel an der Gesundheit."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:437
 msgid "Well, be grateful that you are alive."
 msgstr "Nun, sei dankbar dass du lebst."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:441
 msgid " *giggle* Thank you honey."
 msgstr " *kicher* Danke mein Schatz."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:445
 msgid "Thank the Lords of Light, not me!"
 msgstr "Danke den Göttern des Lichtes, nicht mir!"
 
-#. [message]: speaker=Sister Theta
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Sister Thera
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:454
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:699
 msgid "Ouch! That hurts. Let's try not to do that again, shall we?"
 msgstr "Aua! Das tat ganz schön weh. Bitte nicht noch einmal, Okay?"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:461
 msgid "There we go, payback time!"
 msgstr "Los gehts, Zeit zur Revanche."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:468
 msgid "There we go, let's give this one more shot!"
 msgstr "Auf geht’s, auf einen neuen Versuch."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:472
 msgid "Just try not to kill yourself again."
 msgstr "Aber versuch bitte, dich nicht noch einmal töten zu lassen."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:485
 msgid ""
-"Theta, you should know by now that it is very unclerical to make such a "
+"Thera, you should know by now that it is very unclerical to make such a "
 "spectacle of yourself."
 msgstr ""
-"Theta, du solltest inzwischen wissen, dass solche dramatischen Ausbrüche in "
+"Thera, du solltest inzwischen wissen, dass solche dramatischen Ausbrüche in "
 "der Öffentlichkeit besonders ungehörig wirken."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:489
 msgid "Come on, honey! Those were my dying words, after all!"
 msgstr "Ach Schatz! Das waren immerhin meine letzten Worte!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:493
 msgid " *rolls eyes* Women!"
 msgstr " *rollt mit den Augen* Frauen!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:506
 msgid "That's darned right!"
 msgstr "Das ist verdammt nochmal richtig!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:510
 msgid ""
-"Theta! Language like that coming from you! You should really stop hanging "
+"Thera! Language like that coming from you! You should really stop hanging "
 "around the dwarves so much."
 msgstr ""
-"Theta! Was für Gossensprache verwendest du hier? Wir sollten wirklich nicht "
+"Thera! Was für Gossensprache verwendest du hier? Wir sollten wirklich nicht "
 "mehr so häufig mit Zwergen rumhängen."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:541
 msgid "Alas! So.... close."
 msgstr "Ach je... So kurz vorm Ziel."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:545
 msgid ""
 "Hey, that's not right. The good guys aren't supposed to die. Oh well, I'll "
@@ -10832,22 +10832,22 @@ msgstr ""
 "früh sterben. Nun gut! Ich werde dieses Problemchen mal eben schnell wieder "
 "gut machen."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:567
 msgid ""
-"Oh dear. Did you just go and get yourself killed again, Marcus? Well, I'll "
+"Oh dear. Did you just go and get yourself killed again, Morvin? Well, I'll "
 "fix that."
 msgstr ""
 "Oh je, Schatz! Hast du dich schon wieder umbringen lassen, Markus? Warte, "
 "ich biege das wieder hin."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:574
 msgid "The forces of good can never be defeated by the likes of you!"
 msgstr ""
 "Die Kräfte des Lichtes können niemals von deinesgleichen überwunden werden!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:578
 msgid ""
 "Yeah, try taking a bath and you MIGHT be able to kill him for good *wink "
@@ -10857,7 +10857,7 @@ msgstr ""
 "ihn zu töten. *zwinker, zwinker*. Aber bis dahin, Abrakadabra, Hokus, Pokus, "
 "Fidibus!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:589
 msgid ""
 "Stupid troll, maybe next time you should try killing someone who can be "
@@ -10866,84 +10866,84 @@ msgstr ""
 "Dummer Troll, vielleicht solltest du nächstes mal lieber jemanden töten, der "
 "getötet werden kann."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:596
 msgid "Argh! I'll just come back and finish you in my next life."
 msgstr ""
 "Ahh! Ich werde zurückkehren und dich in meinem nächsten Leben vernichten!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:600
 msgid "Which might be sooner than you think."
 msgstr "Dazu könnte es schneller kommen als du denkst..."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:606
 msgid "Ack! I have been brained!"
 msgstr "Igitt! Ich habe mich mit Gehirn bekleckert!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:611
 msgid "Eeeeww! Gross! Ahh never mind, I'll get you cleaned up good."
 msgstr ""
 "Iiiihhh... Eklig. Aber keine Angst, ich kriege die Flecken wieder raus."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:692
 msgid "Ahh yes, that's better."
 msgstr "Oh ja, das ist besser."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:711
-msgid "Marcus! You bad boy, always getting into trouble."
+msgid "Morvin! You bad boy, always getting into trouble."
 msgstr "Markus! Du böser Junge, immer steckst du in Schwierigkeiten."
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:715
 msgid "Sorry, won't do it again. Promise!"
 msgstr "Tschuldigung, kommt nicht wieder vor. Versprochen!"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:729
-msgid "I heard that, Theta."
-msgstr "Ich habe das gehört, Theta."
+msgid "I heard that, Thera."
+msgstr "Ich habe das gehört, Thera."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:733
 msgid "Hey, just trying to give him an incentive to drown himself."
 msgstr ""
 "Hej, ich versuche ihm doch bloß einen Anreiz zu geben, sich selbst zu "
 "ertränken!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:746
 msgid "See?"
 msgstr "Siehste?"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:750
 msgid "Now where did he go!?"
 msgstr "Wo ist er hin?"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:761
-msgid "Ahhh, Theta, you would make such a good housewife!"
-msgstr "Oh Theta, du würdest eine spitzenmäßige Hausfrau abgeben!"
+msgid "Ahhh, Thera, you would make such a good housewife!"
+msgstr "Oh Thera, du würdest eine spitzenmäßige Hausfrau abgeben!"
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:766
 msgid "Yes, if you would ever buy me a house! *pouty face*"
 msgstr "Ja, solltest du mir jemals ein Haus kaufen... *Schmollmund*"
 
-#. [message]: speaker=Father Marcus
+#. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:770
 msgid ""
-"Theta, don't you think that this isn't really a good time to talk about that?"
+"Thera, don't you think that this isn't really a good time to talk about that?"
 msgstr ""
 "Himmel, Arsch und Zwirn, das ist nun wirklich nicht der richtige Zeitpunkt, "
-"davon anzufangen, Theta."
+"davon anzufangen, Thera."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:774
 msgid " *giggle* Sorry!"
 msgstr " *kicher* Entschuldigung!"
@@ -10958,7 +10958,7 @@ msgstr "Nun endlich! Meine Reise neigt sich dem Ende."
 msgid "Blast it, we have lost a valuable ally."
 msgstr "Nein. Wir haben eine wertvolle Verbündete verloren."
 
-#. [message]: speaker=Sister Theta
+#. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:808
 msgid "Farewell Elenia. May you find peace in your final journey."
 msgstr ""
