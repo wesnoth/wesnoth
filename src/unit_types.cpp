@@ -101,12 +101,17 @@ std::string attack_type::accuracy_parry_description() const
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
 	const std::vector<std::string>& filter_range = utils::split(cfg["range"]);
+	const std::string& filter_damage = cfg["damage"];
 	const std::vector<std::string> filter_name = utils::split(cfg["name"]);
 	const std::vector<std::string> filter_type = utils::split(cfg["type"]);
 	const std::string filter_special = cfg["special"];
 
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
+
+	if(filter_damage.empty() == false && !in_ranges(damage(), utils::parse_ranges(filter_damage))) {
+		return false;
+	}
 
 	if(filter_name.empty() == false && std::find(filter_name.begin(),filter_name.end(),id()) == filter_name.end())
 		return false;
