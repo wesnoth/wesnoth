@@ -849,8 +849,7 @@ void playsingle_controller::play_ai_turn(){
 
 void playsingle_controller::handle_generic_event(const std::string& name){
 	if (name == "ai_user_interact"){
-		play_slice();
-		gui_->draw();
+		play_slice(false);
 	}
 }
 

@@ -35,7 +35,7 @@ public:
 	controller_base(int ticks, const config& game_config, CVideo& video);
 	virtual ~controller_base();
 
-	void play_slice();
+	void play_slice(bool is_delay_enabled = true);
 
 	int get_ticks();
 
