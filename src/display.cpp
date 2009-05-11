@@ -381,6 +381,17 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 {
 	rect_of_hexes res;
 
+	if (r.w<=0 || r.h<=0) {
+		// empty rect, return dummy values giving begin=end
+		res.left = 0;
+		res.right = -1; // end is right+1
+		res.top[0] = 0;
+		res.top[1] = 0;
+		res.bottom[0] = 0;
+		res.bottom[1] = 0;
+		return res;
+	}
+
 	SDL_Rect map_rect = map_area();
 	// translate rect coordinates from screen-based to map_area-based
 	int x = xpos_ - map_rect.x + r.x;
