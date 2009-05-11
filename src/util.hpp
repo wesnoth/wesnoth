@@ -129,7 +129,7 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 }
 
 template<typename Cmp>
-bool in_ranges(Cmp c, std::vector<std::pair<Cmp, Cmp> >&ranges) {
+bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp> >&ranges) {
 	typename std::vector<std::pair<Cmp,Cmp> >::const_iterator range,
 		range_end = ranges.end();
 	for (range = ranges.begin(); range != range_end; ++range) {
