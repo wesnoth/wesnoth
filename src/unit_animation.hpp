@@ -22,6 +22,7 @@
 #include <climits>
 #include <string>
 #include <vector>
+#include <set>
 
 class attack_type;
 class game_display;
@@ -78,15 +79,14 @@ class unit_animation
 				accelerate(true),
 				parameters_(),
 				halo_id_(0),
-				last_frame_begin_time_(0),
-				invalidated_(false)
+				last_frame_begin_time_(0)
 				{};
 			explicit particule(const config& cfg,const std::string frame_string ="frame");
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,int duration, const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="",const std::string layer="");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
-			bool invalidate(const frame_parameters& value,const map_location &src, const map_location &dst,  const bool primary = false);
+			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
@@ -96,8 +96,6 @@ class unit_animation
 			frame_builder parameters_;
 			int halo_id_;
 			int last_frame_begin_time_;
-			// optimisation
-			bool invalidated_;
 
 	};
 		t_translation::t_list terrain_types_;
@@ -117,6 +115,9 @@ class unit_animation
 		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
 		map_location src_;
 		map_location dst_;
+		// optimisation
+		bool invalidated_;
+		std::set<map_location> overlaped_hex_;
 };
 
 class unit_animator

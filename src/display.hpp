@@ -287,6 +287,14 @@ public:
 	 */
 	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
 
+	/**
+	 * What hex are currently invalidated (read only)
+	 * used for some fine grained invalidation algorithm which need recurstion
+	 */
+	const std::set<map_location> & get_invalidated() { return invalidated_; }
+
+
+
 	const gamemap& get_map() const { return *map_; }
 
 	/**

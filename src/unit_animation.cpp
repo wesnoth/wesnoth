@@ -21,6 +21,7 @@
 #include "halo.hpp"
 #include "map.hpp"
 #include "unit.hpp"
+#include <algorithm>
 
 struct tag_name_manager {
 	tag_name_manager() : names() {
@@ -127,7 +128,9 @@ unit_animation::unit_animation(int start_time,
 		sub_anims_(),
 		unit_anim_(start_time),
 		src_(),
-		dst_()
+		dst_(),
+		invalidated_(false),
+		overlaped_hex_()
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
@@ -683,8 +686,7 @@ unit_animation::particule::particule(
 		accelerate(true),
 		parameters_(cfg,frame_string),
 		halo_id_(0),
-		last_frame_begin_time_(0),
-		invalidated_(false)
+		last_frame_begin_time_(0)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
@@ -812,6 +814,8 @@ void unit_animation::restart_animation()
 void unit_animation::redraw(const frame_parameters& value)
 {
 
+	invalidated_=false;
+	overlaped_hex_ = std::set<map_location>();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	unit_anim_.redraw(value,src_,dst_,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
@@ -820,18 +824,36 @@ void unit_animation::redraw(const frame_parameters& value)
 }
 bool unit_animation::invalidate(const frame_parameters& value)
 {
-
-	bool result = false;
-	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	result |= unit_anim_.invalidate(value,src_,dst_,true);
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		result |= anim_itor->second.invalidate(value,src_,dst_);
+	if(invalidated_) return false;
+	game_display*disp = game_display::get_singleton();
+	if(overlaped_hex_.empty()) {
+		std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+		overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_,true);
+		for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+			std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_,true);
+			overlaped_hex_.insert(tmp.begin(),tmp.end());
+		}
 	}
-	return result;
+	if(need_update() ) {
+		disp->invalidate(overlaped_hex_);
+		invalidated_ = true;
+		return true;
+	} else {
+		std::vector<map_location> intersection;
+		set_intersection(overlaped_hex_.begin(),overlaped_hex_.end(), 
+				disp->get_invalidated().begin(),disp->get_invalidated().end(),
+				std::back_inserter(intersection));
+		if(!intersection.empty()) {
+			disp->invalidate(overlaped_hex_);
+			invalidated_ = true;
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary)
 {
-	invalidated_=false;
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
@@ -841,13 +863,12 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value,primary);
 	}
 }
-bool unit_animation::particule::invalidate(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary )
+std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary )
 {
-	if(invalidated_) return false;
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	invalidated_ = current_frame.invalidate(need_update(),get_current_frame_time(),src,dst,default_val,value,primary);
-	return invalidated_;
+	return current_frame.get_overlaped_hex(get_current_frame_time(),src,dst,default_val,value,primary);
+
 }
 
 unit_animation::particule::~particule()

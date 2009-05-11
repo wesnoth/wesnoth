@@ -29,6 +29,7 @@ class config;
 
 #include <string>
 #include <vector>
+#include <set>
 
 class progressive_string {
 	public:
@@ -152,7 +153,7 @@ class unit_frame {
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
-		bool invalidate(const bool force,const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
+		std::set<map_location> get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
 	private:
 		frame_builder builder_;
 

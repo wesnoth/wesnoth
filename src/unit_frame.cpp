@@ -155,8 +155,8 @@ template class progressive_<double>;
 #include "unit_frame.hpp"
 
 frame_parameters::frame_parameters() :
-	image(""),
-	image_diagonal(""),
+	image(),
+	image_diagonal(),
 	image_mod(""),
 	halo(""),
 	halo_x(0),
@@ -179,8 +179,8 @@ frame_parameters::frame_parameters() :
 {}
 
 frame_builder::frame_builder() :
-	image_(image::locator()),
-	image_diagonal_(image::locator()),
+	image_(),
+	image_diagonal_(),
 	image_mod_(""),
 	halo_(""),
 	halo_x_(""),
@@ -201,8 +201,8 @@ frame_builder::frame_builder() :
 {}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
-	image_(image::locator()),
-	image_diagonal_(image::locator()),
+	image_(),
+	image_diagonal_(),
 	image_mod_(""),
 	halo_(""),
 	halo_x_(""),
@@ -498,7 +498,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		}
 	}
 }
-bool unit_frame::invalidate(const bool force,const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
+std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
 {
 	game_display* disp = game_display::get_singleton();
 	const int xsrc = disp->get_location_x(src);
@@ -521,11 +521,9 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 
 	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
-	bool result = false;
+	std::set<map_location> result;
 	if(tmp_offset==0 && current_data.x == 0 && current_data.y == 0 && image::is_in_hex(image_loc)) {
-		if(force || need_update()) {
-			result |= disp->invalidate(src);
-		}
+		result.insert(src);
 	} else {
 		surface image;
 		if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
@@ -540,19 +538,16 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
-			if(force || need_update() || disp->rectangle_need_update(r)) {
-				// invalidate ouself to be called at redraw time
-				result |= disp->invalidate(src);
-				result |= disp->invalidate_visible_locations_in_rect(r);
-			}
+			// invalidate ouself to be called at redraw time
+			result.insert(src);
+			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
+			result.insert(underlying_hex.begin(),underlying_hex.end());
 		} else {
 			// we have no "redraw surface" but we still need to invalidate our own hex
 			// in case we have a halo and/or sound that needs a redraw
-			if(force || need_update() ){
-				// invalidate ouself to be called at redraw time
-				result |= disp->invalidate(src);
-				result |= disp->invalidate(dst);
-			}
+			// invalidate ouself to be called at redraw time
+			result.insert(src);
+			result.insert(dst);
 		}
 	}
 	return result;
