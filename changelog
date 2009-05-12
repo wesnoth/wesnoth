@@ -102,6 +102,7 @@ Version 1.7.0-svn:
    * Debug actions "Create unit" and "Change side" used on unit in a village
      now causes a capture of that village.
    * Rewrote the layout algoritm (still a work in progress)
+   * Fixed an multi-character UTF-8 handling bug in the password textbox
  * WML Engine:
    * Added [show_objectives] tag and allowed [show_if] tag in [objective]
      tags. (bug #13042)

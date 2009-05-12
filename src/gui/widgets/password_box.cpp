@@ -18,13 +18,23 @@
 #include "gui/widgets/password_box.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace gui2 {
+
+namespace {
+
+size_t get_text_length(const std::string& str)
+{
+	return utils::string_to_wstring(str).size();
+}
+
+} // namespace
 
 void tpassword_box::set_value(const std::string& text) {
 	ttext_box::set_value(text);
 	real_value_ = get_value();
-	ttext_box::set_value(std::string(real_value_.size(), '*'));
+	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
 }
 
 void tpassword_box::insert_char(const Uint16 unicode) {
@@ -64,7 +74,7 @@ void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
 	handled = true;
 	if(get_selection_length() != 0) {
 		delete_selection();
-	} else if (get_selection_start() < text().size()) {
+	} else if (get_selection_start() < get_text_length(text())) {
 		delete_char(false);
 	}
 
@@ -98,7 +108,7 @@ void tpassword_box::post_function() {
 
 	// Get the input back and make ttext_box forget it
 	real_value_ = get_value();
-	ttext_box::set_value(std::string(real_value_.size(), '*'));
+	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
 
 	// See above
 	set_selection_start(selection_start);
