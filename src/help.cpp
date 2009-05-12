@@ -1378,7 +1378,7 @@ public:
 			}
 			ss << "\n"; //added even if empty, to avoid shifting
 
-			reverse = !reverse; //switch direction 
+			reverse = !reverse; //switch direction
 		} while(reverse != first_reverse_value); // don't restart
 
 		// Print the race of the unit, cross-reference it to the

@@ -840,7 +840,7 @@ bool unit_animation::invalidate(const frame_parameters& value)
 		return true;
 	} else {
 		std::vector<map_location> intersection;
-		set_intersection(overlaped_hex_.begin(),overlaped_hex_.end(), 
+		set_intersection(overlaped_hex_.begin(),overlaped_hex_.end(),
 				disp->get_invalidated().begin(),disp->get_invalidated().end(),
 				std::back_inserter(intersection));
 		if(!intersection.empty()) {

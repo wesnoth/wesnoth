@@ -42,7 +42,7 @@ public:
 	 */
 	static void log_draw();
 
-	
+
 	/*
 	 * Log in case of victory
 	 * teams vector of winner teams

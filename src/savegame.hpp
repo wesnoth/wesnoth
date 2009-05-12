@@ -36,8 +36,8 @@ struct save_info {
 	time_t time_modified;
 };
 
-/** 
-Container for a couple of savefile manipulating methods. 
+/**
+Container for a couple of savefile manipulating methods.
 Note: You are not supposed to instantiate this class.
 */
 class savegame_manager
@@ -65,8 +65,8 @@ private:
 	savegame_manager() {}
 };
 
-/** 
-Container for methods dealing with the save_index file. 
+/**
+Container for methods dealing with the save_index file.
 Note: You are not supposed to instantiate this class.
 */
 class save_index
@@ -142,7 +142,7 @@ public:
 	//bool save_game(const std::string& filename);
 
 	/** Saves a game without user interaction, unless the file exists and it should be asked
-		to overwrite it. The return value denotes, if the save was successful or not. 
+		to overwrite it. The return value denotes, if the save was successful or not.
 		This is used by automatically generated replays, start-of-scenario saves and autosaves.
 	*/
 	bool save_game_automatic(CVideo& video, bool ask_for_overwrite = false, const std::string& filename = "");
@@ -155,9 +155,9 @@ public:
 	const std::string& filename() const { return filename_; }
 
 protected:
-	/** 
-		Save a game without any further user interaction. If you want notifying messages 
-		or error messages to appear, you have to provide the gui parameter. 
+	/**
+		Save a game without any further user interaction. If you want notifying messages
+		or error messages to appear, you have to provide the gui parameter.
 		The return value denotes, if the save was successful or not.
 	*/
 	bool save_game(CVideo* video = NULL, const std::string& filename = "");

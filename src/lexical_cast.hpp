@@ -126,7 +126,7 @@ struct tlexical_cast
 	 *
 	 * @tparam To                 The type to convert to.
 	 * @tparam From               The type to convert from.
-	 * 
+	 *
 	 * @param value               The value to convert.
 	 *
 	 * @returns                   The converted value.

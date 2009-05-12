@@ -119,7 +119,7 @@ public:
 										* Dialog is closed with the cancel
 										* button.
 										*/
-		AUTO_CLOSE = -3                /**< 
+		AUTO_CLOSE = -3                /**<
 		                                * The dialog is closed automatically
 		                                * since it's timeout has been
 		                                * triggered.

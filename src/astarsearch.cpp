@@ -87,7 +87,7 @@ struct node {
 
 class comp {
 	const std::vector<node>& nodes_;
-	
+
 public:
 	comp(const std::vector<node>& n) : nodes_(n) { }
 	bool operator()(int a, int b) {
@@ -97,13 +97,13 @@ public:
 
 class indexer {
 	size_t h_, w_;
-	
+
 public:
 	indexer(size_t a, size_t b) : h_(a), w_(b) { }
 	size_t operator()(const map_location& loc) {
 		return loc.y * h_ + loc.x;
 	}
-}; 
+};
 }
 
 
@@ -116,8 +116,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	assert(calc != NULL);
 	assert(stop_at <= calc->getNoPathValue());
 	//---------------------------------------------------
-	
-	
+
+
 	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
 	if (calc->cost(src,dst, 0) >= stop_at) {
@@ -128,8 +128,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	}
 
 	const std::set<map_location>& teleports = teleports_ptr ? *teleports_ptr : std::set<map_location>();
-	
-	
+
+
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
@@ -138,29 +138,29 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	static std::vector<node> nodes;
 	nodes.resize(width * height);
-	
+
 	indexer index(width, height);
 	comp node_comp(nodes);
-	
+
 	nodes[index(dst)].g = stop_at;
 	nodes[index(src)] = node(0, src, map_location::null_location, dst, true);
-	
+
 	std::vector<int> pq;
 	pq.push_back(index(src));
 
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
 		n.in = search_counter;
-		std::pop_heap(pq.begin(), pq.end(), node_comp); 
+		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
-		
-		if (n.t >= nodes[index(dst)].g) break;	
-		
+
+		if (n.t >= nodes[index(dst)].g) break;
+
 		get_adjacent_tiles(n.curr, &locs[0]);
-		
+
 		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0;) {
 			if (!locs[i].valid(width, height)) continue;
-			
+
 			node& next = nodes[index(locs[i])];
 
 			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at;
@@ -171,8 +171,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 			bool in_list = next.in == search_counter + 1;
 
-			next = node(cost, locs[i], n.curr, dst, true);	
-			
+			next = node(cost, locs[i], n.curr, dst, true);
+
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
 			} else {
@@ -190,12 +190,12 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			route.steps.push_back(curr.curr);
 		}
 		route.steps.push_back(src);
-		std::reverse(route.steps.begin(), route.steps.end());	
-	} else {	
+		std::reverse(route.steps.begin(), route.steps.end());
+	} else {
 		LOG_PF << "aborted a* search  " << "\n";
 		route.move_cost = (int)calc->getNoPathValue();
 	}
-	
+
 	return route;
 }
 

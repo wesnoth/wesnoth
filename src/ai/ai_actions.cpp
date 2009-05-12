@@ -218,7 +218,7 @@ ai_move_result::ai_move_result(unsigned int side, const map_location& from,
 }
 
 
-bool ai_move_result::test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/) 
+bool ai_move_result::test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/)
 {
 	un = units.find(from_);
 	if (un==units.end()){
@@ -574,7 +574,7 @@ ai_stopunit_result::ai_stopunit_result( unsigned int side, const map_location& u
 }
 
 
-bool ai_stopunit_result::test_unit(unit_map::const_iterator& un, const unit_map& units, bool /*update_knowledge*/) 
+bool ai_stopunit_result::test_unit(unit_map::const_iterator& un, const unit_map& units, bool /*update_knowledge*/)
 {
 	un = units.find(unit_location_);
 	if (un==units.end()){

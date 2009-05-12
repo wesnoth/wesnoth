@@ -38,7 +38,7 @@ namespace gui2 {
 
 /**
  * Helper struct to get the same constness for T and U.
- * 
+ *
  * @param T                       A type to determine the constness.
  * @param U                       Non const type to set the constness off.
  */
@@ -58,15 +58,15 @@ struct tconst_duplicator<const T, U>
 };
 
 /**
- * Helper to implement private functions without modifing the header.         
- *  
- * The class is a helper to avoid recompilation and only has static           
- * functions.                                                                 
+ * Helper to implement private functions without modifing the header.
+ *
+ * The class is a helper to avoid recompilation and only has static
+ * functions.
  */
 struct tgrid_implementation
 {
 	/**
-	 * Implementation for the wrappers for 
+	 * Implementation for the wrappers for
 	 * [const] twidget* tgrid::find_widget(const tpoint&, const bool) [const].
 	 *
 	 * @param W                   twidget or const twidget.
@@ -94,7 +94,7 @@ struct tgrid_implementation
 	}
 
 	/**
-	 * Implementation for the wrappers for 
+	 * Implementation for the wrappers for
 	 * [const] twidget* tgrid::find_widget(const std::string&,
 	 * const bool) [const].
 	 *

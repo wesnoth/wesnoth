@@ -509,7 +509,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	int res = gui2::twindow::OK;
 	bool exit = true;
 
-	do{ 
+	do{
 		try{
 			res = show_save_dialog(video, message, dialog_type);
 			exit = true;
@@ -617,7 +617,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 
 		if (video != NULL && show_confirmation_)
 			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
-		
+
 		return true;
 	} catch(game::save_game_failed&) {
 		if (video != NULL){

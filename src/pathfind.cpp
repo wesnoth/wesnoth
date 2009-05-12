@@ -158,9 +158,9 @@ static void find_routes(const gamemap& map, const unit_map& units,
 {
 	const team& current_team = teams[u.side() - 1];
 	const std::set<map_location>& teleports = allow_teleport ? current_team.villages() : std::set<map_location>();
-	
+
 	const int total_movement = u.total_movement();
-	
+
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
@@ -169,7 +169,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 	static std::vector<node> nodes;
 	nodes.resize(map.w() * map.h());
-	
+
 	indexer index(map.w(), map.h());
 	comp node_comp(nodes);
 
@@ -178,17 +178,17 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	nodes[index(loc)] = node(move_left, turns_left, map_location::null_location, loc);
 	std::vector<int> pq;
 	pq.push_back(index(loc));
-	
+
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
 		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
 		n.in = search_counter;
-		
+
 		get_adjacent_tiles(n.curr, &locs[0]);
 		for (int i = teleports.count(n.curr) ? locs.size() : 6; i-- > 0; ) {
 			if (!locs[i].valid(map.w(), map.h())) continue;
-			
+
 			node& next = nodes[index(locs[i])];
 
 			bool next_visited = next.in - search_counter <= 1u;
@@ -198,15 +198,15 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			if (next_visited && !(n < next)) continue;
 
 			const int move_cost = u.movement_cost(map[locs[i]]);
-			
+
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
 			if (t.movement_left < move_cost) {
 				t.movement_left = total_movement;
 				t.turns_left--;
 			}
-			
+
 			if (t.movement_left < move_cost || t.turns_left < 0) continue;
-			
+
 			t.movement_left -= move_cost;
 
 			if (next_visited && !(t < next)) continue;
@@ -216,8 +216,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 					find_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
 				if (unit_it != units.end() && current_team.is_enemy(unit_it->second.side()))
 					continue;
-					
-					
+
+
 				if (!force_ignore_zocs && t.movement_left > 0
 						&& enemy_zoc(map, units, teams, locs[i], viewing_team, u.side(), see_all)
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
@@ -248,8 +248,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			} else {
 				pq.push_back(index(locs[i]));
 				std::push_heap(pq.begin(), pq.end(), node_comp);
-			}		
-		}	
+			}
+		}
 	}
 
 	// Build the routes for every map_location that we reached.

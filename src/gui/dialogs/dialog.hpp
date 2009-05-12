@@ -43,7 +43,7 @@ public:
 
 	virtual ~tdialog();
 
-	/** 
+	/**
 	 * Shows the window.
 	 *
 	 * @param video               The video which contains the surface to draw
