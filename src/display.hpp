@@ -818,6 +818,9 @@ protected:
 private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
+	/** Count work done for the debug info displayed under fps */
+	int invalidated_hexes_;
+	int drawn_hexes_;
 
 	bool idle_anim_;
 	double idle_anim_rate_;

@@ -121,6 +121,8 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 #endif
 	map_screenshot_(false),
 	fps_handle_(0),
+	invalidated_hexes_(0),
+	drawn_hexes_(0),
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0),
 	map_screenshot_surf_(NULL),
@@ -883,8 +885,8 @@ void display::update_display()
 		static int last_sample = SDL_GetTicks();
 		static int frames = 0;
 		++frames;
-
-		if(frames == 10) {
+		const int sample_freq = 10;
+		if(frames == sample_freq) {
 			const int this_sample = SDL_GetTicks();
 
 			const int fps = (frames*1000)/(this_sample - last_sample);
@@ -896,7 +898,15 @@ void display::update_display()
 				fps_handle_ = 0;
 			}
 			std::ostringstream stream;
-			stream << fps << "fps";
+			stream << "fps: " << fps;
+			if (game_config::debug) {
+				stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
+				if (drawn_hexes_ != invalidated_hexes_)
+					stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
+			}
+			drawn_hexes_ = 0;
+			invalidated_hexes_ = 0;
+
 			fps_handle_ = font::add_floating_label(stream.str(),12,
 				benchmark ? font::BAD_COLOUR : font::NORMAL_COLOUR,
 				10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
@@ -904,6 +914,8 @@ void display::update_display()
 	} else if(fps_handle_ != 0) {
 		font::remove_floating_label(fps_handle_);
 		fps_handle_ = 0;
+		drawn_hexes_ = 0;
+		invalidated_hexes_ = 0;
 	}
 
 	flip();
@@ -1984,11 +1996,13 @@ void display::draw_invalidated() {
 			continue;
 		}
 		draw_hex(loc);
+		drawn_hexes_+=1;
 		// If the tile is at the border, we start to blend it
 		if(!on_map && !off_map_tile) {
 			 draw_border(loc, xpos, ypos);
 		}
 	}
+	invalidated_hexes_ += invalidated_.size();
 }
 
 void display::draw_hex(const map_location& loc) {
