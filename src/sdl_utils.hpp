@@ -68,12 +68,14 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
 /**
- * Returns the intersection of two rectangles...
+ * Returns the union of two rectangles.
  *
  * @param rect1                   The first rectangle.
  * @param rect2                   The second rectangle.
  *
- * @returns                       The intersection of the two rectangles
+ * @returns                       The union of the two rectangles. If the
+ *                                rectangles don't intersect and empty
+ *                                rectangle is returned.
  */
 SDL_Rect get_rect_union(const SDL_Rect& rect1, const SDL_Rect& rect2);
 /**
