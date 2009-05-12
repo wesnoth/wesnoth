@@ -2043,15 +2043,6 @@ bool unit::invalidate(const map_location &loc)
 		result |= get_animation()->invalidate(params);
 	}
 
-
-	if (abilities_affects_adjacent())
-	{
-		map_location arr[6];
-		get_adjacent_tiles(loc, arr);
-		for (unsigned int i = 0; i < 6; i++) {
-			result |= game_display::get_singleton()->invalidate(arr[i]);
-		}
-	}
 	return result;
 
 }

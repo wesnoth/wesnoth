@@ -283,7 +283,6 @@ public:
 	std::vector<std::string> unit_ability_tooltips() const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
-	bool abilities_affects_adjacent() const;
 
 	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
 	void add_formula_var(std::string str, variant var);
