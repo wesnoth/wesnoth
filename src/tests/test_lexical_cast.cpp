@@ -13,6 +13,11 @@
 */
 
 #include "utils/test_support.hpp"
+#include <boost/mpl/vector.hpp>
+#include <boost/mpl/copy.hpp>
+#include <boost/mpl/back_inserter.hpp>
+#include <boost/mpl/contains.hpp>
+#include <boost/test/test_case_template.hpp>
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
@@ -54,10 +59,34 @@ namespace test_throw {
 	} while(0)
 
 
-template<class T>
-void test_intergral(const bool match = true)
+typedef boost::mpl::vector<
+	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
+
+	bool,
+
+	/*
+	* We don't want chars to match since a string cast of a char is
+	* ambiguous; does the user want it interpreted as a char or as a number?
+	* But as long as that hasn't been fixed, leave the char.
+	*/
+	char, signed char, unsigned char,
+	short, int, long, long long,
+	unsigned short, unsigned int, unsigned long, unsigned long long
+	> test_match_types;
+
+typedef boost::mpl::vector<
+	float, double, long double
+	> test_nomatch_types;
+
+typedef boost::mpl::copy<
+	test_nomatch_types,
+	boost::mpl::back_inserter<test_match_types>
+	>::type test_types;
+
+BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
+	bool match = boost::mpl::contains<test_match_types, T>::value;
 
 	TEST_CASE(T, T, );
 	TEST_CASE(const T, T, );
@@ -72,36 +101,6 @@ void test_intergral(const bool match = true)
 	TEST_CASE(const T* const, const T*, &);
 }
 #undef TEST_CASE
-
-BOOST_AUTO_TEST_CASE(test_lexical_cast_throw)
-{
-	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
-
-	test_intergral<bool>();
-
-	/*
-	 * We don't want chars to match since a string cast of a char is
-	 * ambiguous; does the user want it interpreted as a char or as a number?
-	 * But as long as that hasn't been fixed, leave the char.
-	 */
-	test_intergral<char>();
-	test_intergral<signed char>();
-	test_intergral<unsigned char>();
-
-	test_intergral<short>();
-	test_intergral<int>();
-	test_intergral<long>();
-	test_intergral<long long>();
-
-	test_intergral<unsigned short>();
-	test_intergral<unsigned int>();
-	test_intergral<unsigned long>();
-	test_intergral<unsigned long long>();
-
-	test_intergral<float>(false);
-	test_intergral<double>(false);
-	test_intergral<long double>(false);
-}
 
 } //  namespace test_throw
 
