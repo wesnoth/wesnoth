@@ -47,7 +47,7 @@ namespace test_throw {
 						(TU, const boost::true_type&)) &tclass::cast);         \
                                                                                \
 			BOOST_REQUIRE_MESSAGE((*type == expected_type) == match,           \
-					"Test failed : Excpected result "                          \
+					"Test failed : Expected result "                          \
 					<< (match ? "equal " : "not equal") << '\n'                \
 					<< "type:     " << typeid(TS).name() << '\n'               \
 					<< "caught:   " <<type->name() << '\n'                     \
