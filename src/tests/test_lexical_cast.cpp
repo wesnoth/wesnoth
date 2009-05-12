@@ -106,12 +106,12 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 {
-	BOOST_CHECK(lexical_cast<std::string>(true) == "1");
-	BOOST_CHECK(lexical_cast<std::string>(false) == "0");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(true), "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(false), "0");
 
-	BOOST_CHECK(lexical_cast<std::string>(1) == "1");
-	BOOST_CHECK(lexical_cast<std::string>(1u) == "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1), "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1u), "1");
 
-	BOOST_CHECK(lexical_cast<std::string>(1.2f) == "1.2");
-	BOOST_CHECK(lexical_cast<std::string>(1.2) == "1.2");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2f), "1.2");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2), "1.2");
 }
