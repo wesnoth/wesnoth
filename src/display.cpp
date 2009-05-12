@@ -1538,9 +1538,8 @@ void display::set_default_zoom()
 
 bool display::tile_on_screen(const map_location& loc)
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
-	return !outside_area(map_area(), x, y);
+	SDL_Rect r = { get_location_x(loc), get_location_y(loc), hex_size(), hex_size()};
+	return rects_overlap(r, map_area());
 }
 
 bool display::tile_nearly_on_screen(const map_location& loc)
