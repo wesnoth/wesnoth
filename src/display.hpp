@@ -436,8 +436,8 @@ public:
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
 
-	/** Check if a tile is fully on screen. */
-	bool tile_on_screen(const map_location& loc);
+	/** Check if a tile is fully visible on screen. */
+	bool tile_fully_on_screen(const map_location& loc);
 
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc);

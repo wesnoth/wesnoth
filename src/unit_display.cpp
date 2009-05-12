@@ -173,7 +173,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 				temp_unit.invisible(path[i+1],units,teams);
 
 		if(!invisible) {
-			if (!disp->tile_on_screen(path[i]) || !disp->tile_on_screen(path[i+1])) {
+			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
 				// prevent the unit from dissappearing if we scroll here with i == 0
 				disp->place_temporary_unit(temp_unit,path[i]);
 				// scroll in as much of the remaining path as possible
