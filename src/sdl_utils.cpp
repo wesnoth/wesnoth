@@ -84,18 +84,6 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	return res;
 }
 
-SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	SDL_Rect result;
-
-	result.x = std::min(rect1.x, rect2.x);
-	result.w = std::max(rect1.x + rect1.w, rect2.x + rect2.w) - result.x;
-
-	result.y = std::min(rect1.y, rect2.y);
-	result.h = std::max(rect1.y + rect1.h, rect2.y + rect2.h) - result.y;
-
-	return result;
-}
 SDL_Rect get_rect_union(SDL_Rect const &rect1, SDL_Rect const& rect2) {
 	const int left_side = std::max(rect1.x, rect2.x);
 	const int right_side = std::min(rect1.x + rect1.w, rect2.x + rect2.w);
