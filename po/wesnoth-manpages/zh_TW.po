@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2008-08-13 14:46+0800\n"
+"PO-Revision-Date: 2009-05-13 15:51+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,9 @@ msgid "WESNOTH"
 msgstr "WESNOTH"
 
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
@@ -91,9 +91,9 @@ msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
 msgstr "設定每個像素佔多少位子。例如：B<--bpp 32>"
 
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
@@ -101,9 +101,9 @@ msgid "goes directly to the campaign selection menu."
 msgstr ""
 
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--path>"
+msgstr "B<--config-dir>I<\\ name>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -113,12 +113,11 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
 msgstr "顯示遊戲資料庫目錄並退出。"
 
@@ -128,7 +127,6 @@ msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
@@ -137,9 +135,9 @@ msgstr ""
 "wiki: http://www.wesnoth.org/wiki/CommandMode 。"
 
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -151,7 +149,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-t, --test>"
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -215,9 +213,9 @@ msgid ""
 msgstr "顯示指令可用選項，然後退出。"
 
 #: ../../doc/man/wesnoth.6:96
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ savegame>"
+msgstr "B<-l,\\ --load>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
@@ -263,9 +261,9 @@ msgid ""
 msgstr "遊戲每秒能顯示的幀幅數，可以設為1－1000的數，預設為B<50>。"
 
 #: ../../doc/man/wesnoth.6:125
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 #: ../../doc/man/wesnoth.6:131
 msgid ""
@@ -280,7 +278,6 @@ msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -297,12 +294,11 @@ msgid "disables caching of game data."
 msgstr "禁止建立遊戲資料庫的暫存。"
 
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 #: ../../doc/man/wesnoth.6:141
-#, fuzzy
 msgid "runs the game without music."
 msgstr "以無音樂和音效的方式啟動游戲。"
 
@@ -334,9 +330,9 @@ msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "設定螢幕解析度。例如： B<-r 800x600>"
 
 #: ../../doc/man/wesnoth.6:151
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:154
@@ -346,9 +342,9 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [host]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:158
@@ -367,9 +363,9 @@ msgid "runs the game in a small test scenario."
 msgstr "執行游戲測試任務。"
 
 #: ../../doc/man/wesnoth.6:161
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
@@ -395,9 +391,9 @@ msgid "runs the game in windowed mode."
 msgstr "使用視窗模式執行遊戲。"
 
 #: ../../doc/man/wesnoth.6:170
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -630,14 +626,13 @@ msgid "B<wesnothd> B<-V>"
 msgstr "B<wesnothd> B<-V>"
 
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
 "控制韋諾之戰多人遊戲。 官方wiki上的ServerAdministration頁面上取得更多可以經由"
-"韋諾之戰客戶端或者socket在伺服器上運行的指令。對應wiki: http://www.wesnoth."
+"韋諾之戰客戶端或者socket在伺服器上運行的指令。連結wiki: http://www.wesnoth."
 "org/wiki/ServerAdministration"
 
 #: ../../doc/man/wesnothd.6:47
@@ -763,11 +758,10 @@ msgstr "[/I<tag>]"
 msgid "Global keys:"
 msgstr "全球關鍵字:"
 
-# type: TP
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -804,9 +798,9 @@ msgstr ""
 "*server*,ai,ai?,computer,human,network,player>。"
 
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -859,7 +853,7 @@ msgstr "取得管理員權限的密碼。通常以\"admin\"開頭。"
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #: ../../doc/man/wesnothd.6:143
 msgid ""
@@ -868,11 +862,10 @@ msgid ""
 "in."
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:146
@@ -884,7 +877,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #: ../../doc/man/wesnothd.6:149
 msgid ""
@@ -910,11 +903,10 @@ msgstr ""
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "例如: B<versions_accepted=\"*\"> 允許所有版本連接。"
 
-# type: TP
 #: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:160
@@ -976,20 +968,19 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:183
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:186
 msgid "The name used to reference the ban time."
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:186
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:192
@@ -1002,7 +993,6 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:198
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1021,9 +1011,9 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1031,20 +1021,19 @@ msgid "(for user_handler=forum) The hostname of the database server"
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<--nocache>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) The name of the database"
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:211
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1054,20 +1043,19 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:217
 msgid "(for user_handler=forum) This user's password"
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:217
 #, no-wrap
 msgid "B<db_users_table>"
-msgstr ""
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:220
@@ -1077,11 +1065,10 @@ msgid ""
 "(e.g. phpbb3_users)."
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:220
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:224
@@ -1093,11 +1080,10 @@ msgid ""
 "NOT NULL DEFAULT 0);"
 msgstr ""
 
-# type: TP
 #: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:227
@@ -1114,9 +1100,9 @@ msgid ""
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
@@ -1124,9 +1110,9 @@ msgid "The hostname of the mail server"
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<--nocache>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
@@ -1134,20 +1120,18 @@ msgid "The user name under which to log into the mail server."
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
-# type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "This user's password."
-msgstr ""
+msgstr "使用者密碼。"
 
-# type: TP
 #: ../../doc/man/wesnothd.6:241
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:244
@@ -1155,9 +1139,9 @@ msgid "The reply-to address of you mail."
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:244
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
@@ -1165,7 +1149,6 @@ msgid "The port on which your mail server is running. Default is 25."
 msgstr ""
 
 #: ../../doc/man/wesnothd.6:253
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
