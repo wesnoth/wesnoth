@@ -15,22 +15,18 @@
 #ifndef GUI_DIALOGS_MESSAGE_HPP_INCLUDED
 #define GUI_DIALOGS_MESSAGE_HPP_INCLUDED
 
-#include "gui/widgets/widget.hpp"
 #include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
-class tbutton;
-
 /**
  * Main class to show messages to the user.
  *
- * It can be used to show a message or ask a result from the user. For the
- * most common usage cases there are helper functions defined.
+ * It can be used to show a message or ask a result from the user. For the most
+ * common usage cases there are helper functions defined.
  */
 class tmessage : public tdialog
 {
-	friend struct tmessage_implementation;
 public:
 	tmessage(const std::string& title, const std::string& message,
 			const bool auto_close)
@@ -38,25 +34,7 @@ public:
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)
-		, buttons_(count)
 	{}
-
-	enum tbutton_id {
-		  left_1 = 0
-		, cancel
-		, ok
-		, right_1
-		, count
-	};
-
-	void set_button_caption(const tbutton_id button,
-			const std::string& caption);
-
-	void set_button_visible(const tbutton_id button,
-			const twidget::tvisible visible);
-
-	void set_button_retval(const tbutton_id button,
-			const int retval);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -71,9 +49,6 @@ public:
 protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 
 private:
 	/** The title for the dialog. */
@@ -94,19 +69,6 @@ private:
 	 * scrollbar.
 	 */
 	bool auto_close_;
-
-	struct tbutton_status
-	{
-		tbutton_status();
-
-		tbutton* button;
-		std::string caption;
-		twidget::tvisible visible;
-		int retval;
-	};
-
-	/** Holds a pointer to the buttons. */
-	std::vector<tbutton_status> buttons_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);

@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/message.hpp"
 
-#include "foreach.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -24,53 +23,8 @@
 
 namespace gui2 {
 
-/**
- * Helper to implement private functions without modifing the header.
- *
- * The class is a helper to avoid recompilation and only has static
- * functions.
- */
-struct tmessage_implementation
-{
-	/**
-	 * Initialiazes a button.
-	 * 
-	 * @param window              The window that contains the button.
-	 * @param button_status       The button status to modify.
-	 * @param id                  The id of the button.
-	 */
-	static void
-	init_button(twindow& window, tmessage::tbutton_status& button_status,
-			const std::string& id)
-	{
-		button_status.button =
-			dynamic_cast<tbutton*>(window.find_widget(id, false));
-		VALIDATE(button_status.button, missing_widget(id));
-		button_status.button->set_visible(button_status.visible);
-
-		if(!button_status.caption.empty()) {
-			button_status.button->set_label(button_status.caption);
-		}
-
-		if(button_status.retval != twindow::NONE) {
-			button_status.button->set_retval(button_status.retval);
-		}
-	}
-};
-
 void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 {
-	// ***** Validate the required buttons ***** ***** ***** *****
-	tmessage_implementation::
-			init_button(window, buttons_[left_1], "left_side");
-	tmessage_implementation::
-			init_button(window, buttons_[cancel], "cancel");
-	tmessage_implementation::
-			init_button(window, buttons_[ok] ,"ok");
-	tmessage_implementation::
-			init_button(window, buttons_[right_1], "right_side");
-
-	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!title_.empty()) {
 		tlabel* title =
 			dynamic_cast<tlabel*>(window.find_widget("title", false));
@@ -104,54 +58,16 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 * and thus not need a scrollbar. Also when the button is visible
 		 * easy_close will always return false.
 		 */
+		tbutton* button =
+			dynamic_cast<tbutton*>(window.find_widget("ok", false));
+		VALIDATE(button, missing_widget("ok"));
+		button->set_visible(twidget::INVISIBLE);
 		window.layout();
 
 		if(! window.does_easy_close()) {
-			set_button_visible(ok, twidget::VISIBLE);
+			button->set_visible(twidget::VISIBLE);
 		}
 	}
-}
-
-void tmessage::post_show(twindow& /*window*/)
-{
-	foreach(tbutton_status& button_status, buttons_) {
-		button_status.button = NULL;
-	}
-}
-
-void tmessage::set_button_caption(const tbutton_id button,
-		const std::string& caption)
-{
-	buttons_[button].caption = caption;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_label(caption);
-	}
-}
-
-void tmessage::set_button_visible(const tbutton_id button,
-		const twidget::tvisible visible)
-{
-	buttons_[button].visible = visible;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_visible(visible);
-	}
-}
-
-void tmessage::set_button_retval(const tbutton_id button,
-		const int retval)
-{
-	buttons_[button].retval = retval;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_retval(retval);
-	}
-}
-
-tmessage::tbutton_status::tbutton_status()
-	: button(NULL)
-	, caption()
-	, visible(twidget::INVISIBLE)
-	, retval(twindow::NONE)
-{
 }
 
 twindow* tmessage::build_window(CVideo& video)
