@@ -32,32 +32,27 @@ namespace test_throw {
 #define LEXICAL_CAST_DEBUG
 #include "lexical_cast.hpp"
 
-#define TEST_CASE(type_send, type_used, initializer)                           \
-	do {                                                                       \
-		typedef type_send TS;                                                  \
-		TS val = initializer value;                                            \
-                                                                               \
-		typedef type_used TU;                                                  \
-		typedef implementation::tlexical_cast<std::string, TU> tclass;         \
-		try {                                                                  \
-			lexical_cast<std::string>(val);                                    \
-		} catch(const std::type_info* type) {                                  \
-			static const std::type_info& expected_type =                       \
-					typeid((std::string (tclass::*)                            \
-						(TU, const boost::true_type&)) &tclass::cast);         \
-                                                                               \
-			BOOST_REQUIRE_MESSAGE((*type == expected_type) == match,           \
-					"Test failed : Expected result "                          \
-					<< (match ? "equal " : "not equal") << '\n'                \
-					<< "type:     " << typeid(TS).name() << '\n'               \
-					<< "caught:   " <<type->name() << '\n'                     \
-					<< "expected: " << expected_type.name() << '\n');          \
-			break;                                                             \
-		}                                                                      \
-                                                                               \
-		BOOST_CHECK(false);                                                    \
-	} while(0)
+template<class TU, class TS, bool match> boost::test_tools::predicate_result
+exception_matches(const std::type_info* type)
+{
+	typedef implementation::tlexical_cast<std::string, TU> tclass;
+	static const std::type_info& expected_type =
+		typeid((std::string (tclass::*)	(TU, const boost::true_type&)) &tclass::cast);
+	boost::test_tools::predicate_result res((*type == expected_type) == match);
+	if(!res)
+		res.message() << "Wrong type_info. Expected: " << (match ? "equal" : "not equal") << '\n'
+	        	      << "type:     " << typeid(TS).name() << '\n'
+	        	      << "caught:   " << type->name() << '\n'
+	        	      << "expected: " << expected_type.name() << '\n';
+	return res;
+}
 
+#define TEST_CASE(type_send, type_used, initializer)                           \
+	{                                                                       \
+		type_send val = initializer value;                                            \
+                                                                               \
+		BOOST_CHECK_EXCEPTION(lexical_cast<std::string>(val), const std::type_info*, (exception_matches<type_used, type_send, match::value>)); \
+	}
 
 typedef boost::mpl::vector<
 	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
@@ -86,7 +81,7 @@ typedef boost::mpl::copy<
 BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
-	bool match = boost::mpl::contains<test_match_types, T>::value;
+	typedef boost::mpl::contains<test_match_types, T> match;
 
 	TEST_CASE(T, T, );
 	TEST_CASE(const T, T, );
