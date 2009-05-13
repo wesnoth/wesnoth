@@ -342,11 +342,11 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
-	std::string tod_hex_mask = timeofday_at(status_,units_,loc,get_map()).image_mask;
+	const std::string& tod_hex_mask = status_.get_time_of_day(0, loc).image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
-	} else if(tod_hex_mask != "") {
+	} else if(!tod_hex_mask.empty()) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
 			image::get_image(tod_hex_mask,image::UNMASKED)));
 	}
