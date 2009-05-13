@@ -1287,11 +1287,11 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
         }
         case unit_type::HELP_INDEX: {
             //build the stuff that is needed to feed the help index
+            const config& unit_cfg = find_config(key);
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) ) {
-				const config& unit_cfg = find_config(key);
-                ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_traits_);
-				add_advancefrom(unit_cfg);
+				ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_traits_);
             }
+			add_advancefrom(unit_cfg);
             break;
         }
         case unit_type::WITHOUT_ANIMATIONS:
