@@ -52,7 +52,9 @@ double heuristic(const map_location& src, const map_location& dst)
 	// and clean the definition of these numbers
 }
 
-static unsigned search_counter;
+// values 0 and 1 mean uninitialized
+const unsigned bad_search_counter = 0;
+static unsigned search_counter = bad_search_counter;
 
 struct node {
 	double g, h, t;
@@ -70,7 +72,7 @@ struct node {
 		, t(1e25)
 		, curr()
 		, prev()
-		, in(search_counter)
+		, in(bad_search_counter)
 	{
 	}
 	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i) :
@@ -133,11 +135,13 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	std::vector<map_location> locs(6 + teleports.size());
 	std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
 
+	// increment search_counter but skip the range equivalent to uninitialized
 	search_counter += 2;
-	if (search_counter == 0) search_counter = 2;
+	if (search_counter - bad_search_counter <= 1u)
+		search_counter += 2;
 
 	static std::vector<node> nodes;
-	nodes.resize(width * height);
+	nodes.resize(width * height);  // this create uninitalized nodes
 
 	indexer index(width, height);
 	comp node_comp(nodes);
