@@ -17,6 +17,7 @@
 #include "gui/dialogs/wml_message.hpp"
 
 #include "foreach.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -33,8 +34,6 @@ void twml_message_::set_input(const std::string& caption,
 	input_caption_ = caption;
 	input_text_ = text;
 	input_maximum_lenght_ = maximum_length;
-
-	set_auto_close(false);
 }
 
 void twml_message_::set_option_list(
@@ -45,8 +44,6 @@ void twml_message_::set_option_list(
 
 	option_list_ = option_list;
 	chosen_option_ = choosen_option;
-
-	set_auto_close(false);
 }
 
 /**
@@ -55,11 +52,8 @@ void twml_message_::set_option_list(
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(CVideo& video, twindow& window)
+void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 {
-	// Inherited.
-	tmessage::pre_show(video, window);
-
 	window.canvas(1).set_variable("portrait_image", variant(portrait_));
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
@@ -67,12 +61,17 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 	tlabel* title =
 			dynamic_cast<tlabel*>(window.find_widget("title", false));
 	assert(title);
+	title->set_label(title_);
 	title->set_markup_mode(tcontrol::WML_MARKUP);
 
 	tcontrol* label =
 			dynamic_cast<tcontrol*>(window.find_widget("label", false));
 	assert(label);
+	label->set_label(message_);
 	label->set_markup_mode(tcontrol::PANGO_MARKUP);
+	// The label might not always be a scroll_label but the capturing
+	// shouldn't hurt.
+	window.keyboard_capture(label);
 
 	// Find the input box related fields.
 	tlabel* caption = dynamic_cast<tlabel*>(
@@ -196,6 +195,25 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		}
 	} else {
 		options->set_visible(twidget::INVISIBLE);
+	}
+
+	if(!has_input_) {
+		/*
+		 * Hide the buttton and do the layout, if window.does_easy_close() is
+		 * false the scroll_label has a scrollbar so we need to show the
+		 * button. When the button is hidden the text for the label is bigger
+		 * and thus not need a scrollbar. Also when the button is visible
+		 * easy_close will always return false.
+		 */
+		tbutton* button =
+			dynamic_cast<tbutton*>(window.find_widget("ok", false));
+		VALIDATE(button, missing_widget("ok"));
+		button->set_visible(twidget::INVISIBLE);
+		window.layout();
+
+		if(! window.does_easy_close()) {
+			button->set_visible(twidget::VISIBLE);
+		}
 	}
 }
 

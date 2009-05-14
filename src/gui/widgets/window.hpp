@@ -63,6 +63,7 @@ class twindow
 
 	// Wants to use layout().
 	friend class tmessage;
+	friend class twml_message_;
 
 public:
 

@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
 #define GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
 
-#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/dialog.hpp"
 
 namespace gui2 {
 
@@ -24,12 +24,14 @@ namespace gui2 {
  *
  * We have a separate sub class for left and right images.
  */
-class twml_message_ : public tmessage
+class twml_message_
+	: public tdialog
 {
 public:
 	twml_message_(const std::string& title, const std::string& message,
 			const std::string portrait, const bool mirror)
-		: tmessage(title, message, true)
+		: title_(title)
+		, message_(message)
 		, portrait_(portrait)
 		, mirror_(mirror)
 		, has_input_(false)
@@ -57,6 +59,18 @@ public:
 
 private:
 
+	/** The title for the dialog. */
+	std::string title_;
+
+	/**
+	 * The image which is shown in the dialog.
+	 *
+	 * This image can be an icon or portrait or any other image.
+	 */
+	std::string image_;
+
+	/** The message to show to the user. */
+	std::string message_;
 	/** Filename of the portrait. */
 	std::string portrait_;
 
@@ -82,13 +96,13 @@ private:
 	int *chosen_option_;
 
 	/**
-	 * Inherited from tmessage.
+	 * Inherited from tdialog.
 	 *
 	 * The subclasses need to implement the left or right definition.
 	 */
 	twindow* build_window(CVideo& /*video*/) = 0;
 
-	/** Inherited from tmessage. */
+	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
