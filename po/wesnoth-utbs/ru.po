@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-03 11:08+0200\n"
-"PO-Revision-Date: 2009-05-10 13:28+0300\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2009-05-10 06:17+0300\n"
+"Last-Translator: Alexandr Gridnev <alexandr-gridnev@yandex.ru>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,6 +73,7 @@ msgstr "Пустынный бродяга"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -614,7 +615,7 @@ msgstr "Нару"
 #. [message]: speaker=Naru
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:800
 msgid "Is it safe to come out? I was so scared."
-msgstr "Уже можно выходить? Я так напуган."
+msgstr "Уже можно выходить? Было так страшно..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:804
@@ -1394,14 +1395,14 @@ msgstr ""
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1148
 msgid "Black Lieutenant"
-msgstr "Черный лейтенант"
+msgstr "Чёрный лейтенант"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1149
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1150
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1151
 msgid "Black Hand Bandit"
-msgstr "Разбойник Черной Руки"
+msgstr "Разбойник Чёрной Руки"
 
 #. [message]: type=Thug
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1176
@@ -1428,7 +1429,7 @@ msgid ""
 "We don't know who you are, and we don't much care. Tremble before the might "
 "of the Black Hand!"
 msgstr ""
-"Мы не знаем кто вы, но нам всё равно. Трепещите перед могуществом Черной "
+"Мы не знаем кто вы, но нам всё равно. Трепещите перед могуществом Чёрной "
 "руки!"
 
 #. [unit]: type=Red Mage, id=Elyssa
@@ -1629,7 +1630,7 @@ msgstr "Ишь, на камнях осталась засохшая кровь. 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1726
 msgid "This land belongs to the Black Hand. Trespass and you will die."
-msgstr "Эта земля принадлежит Черной руке. Нарушители будут убиты."
+msgstr "Эта земля принадлежит Чёрной руке. Нарушители будут убиты."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1733
@@ -1653,9 +1654,9 @@ msgid ""
 "there. I think we're being watched. I suspect there are more of these "
 "bandits lurking in these dunes than we originally thought."
 msgstr ""
-"Вы видели это? Мне кажется, что я только что видел как кто-то исчез за той "
-"дюной. Похоже,что за нами следят. Подозреваю, что в этих дюнах скрывается "
-"больше бандитов,чем мы думали."
+"Вы видели это? Мне кажется, что только что кто-то исчез за той дюной. "
+"Похоже, что за нами следят. Подозреваю, что в этих дюнах скрывается больше "
+"бандитов, чем мы думали."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1755
@@ -1758,9 +1759,9 @@ msgid ""
 "fights we won't be able to get all our people across the sands safely. We "
 "must deal with the Black Hand before we can progress further."
 msgstr ""
-"Разбойники Черной Руки все еще угрожают остальным. Пока их главарь жив мы не "
+"Разбойники Чёрной Руки все еще угрожают остальным. Пока их главарь жив мы не "
 "сможем безопасно провести наших людей через пески. Мы должны разобраться с "
-"Черной Рукой прежде, чем двигаться дальше."
+"Чёрной Рукой прежде, чем двигаться дальше."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2007
@@ -1823,7 +1824,7 @@ msgid ""
 "fragments that are left. For example, have you ever heard of The Scepter of "
 "Fire?"
 msgstr ""
-"До великого падения здесь были огромные города с могущественными школами "
+"До Великого Падения здесь были огромные города с могущественными школами "
 "магии, библиотеками, полными книг, неисчерпаемыми кладезями мудрости. "
 "Большинство их было уничтожено пришедшим хаосом и годами упадка, но я "
 "пытаюсь найти то немногое, что осталось. Слышали ли вы когда-нибудь, к "
@@ -1943,7 +1944,7 @@ msgstr "Истара"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:176
 msgid "You lose control (even temporarily) of more than 6 villages."
-msgstr ""
+msgstr "Вы потеряли (даже если временно) более 6 деревень."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:182
@@ -2005,7 +2006,7 @@ msgstr "Орки?"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:354
 msgid "I don't..."
-msgstr "Я так..."
+msgstr "Я не..."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:358
@@ -2023,7 +2024,7 @@ msgid ""
 "My champion, Zur shall slice you to shreds like the puny adept you once were."
 msgstr ""
 "Мой чемпион, Зур, порежет тебя на кусочки как мелкого адептишку каким ты "
-"когда-то был."
+"когда-то была."
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:370
@@ -2040,20 +2041,20 @@ msgid ""
 "You spurned me once and I will make you pay. To battle, my minions! Become "
 "my wrath!"
 msgstr ""
-"Однажды ты отверг меня и ты поплатишься за это. В бою, мои слуги! Станьте "
+"Однажды ты отвергла меня и ты поплатишься за это. В бой, мои слуги! Станьте "
 "моим гневом!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:378
 msgid "... think so. You really know how to pick a campsite, Kaleh."
-msgstr "...не думаю. Умеешь же ты выбирать место, где разбить лагерь, Кале."
+msgstr "...не думаю. Умеешь же ты выбрать место для лагеря, Кале."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:382
 msgid ""
 "Where did they come from? I swear those castles weren't there at sunset."
 msgstr ""
-"Откуда они пришлин? Могу поклясться, что этих замков не было на закате."
+"Откуда они взялись? Могу поклясться, что на закате этих замков не было."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:386
@@ -2071,8 +2072,8 @@ msgid ""
 "Like I haven't killed enough undead recently. Why can't these guys just stay "
 "dead?"
 msgstr ""
-"Как будто за последнне время я упокоила недостаточно мертвяков. Почему они "
-"просто не могут оставться мертвыми?"
+"Как будто за последнее время я упокоила недостаточно умертвий. Почему бы им "
+"просто не оставаться мёртвыми?"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:394
@@ -2943,8 +2944,8 @@ msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
 msgstr ""
-"Ты совсем забыл о зашите своего народа, молодой эльф. Ни одино великое "
-"деяние не остается безнаказанным."
+"Ты совсем забыл о защите своего народа, молодой эльф. Ни одно великое деяние "
+"не остается безнаказанным."
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2616
@@ -2954,12 +2955,12 @@ msgstr "Чтобы вы запомнили нас..."
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2620
 msgid "Aaaauuugggghhhh!"
-msgstr "Аааууу!"
+msgstr "Ааарррргггггххххх!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2624
 msgid "He just collapsed!"
-msgstr "Он просто рассыпался!"
+msgstr "Он умирает!"
 
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2639
@@ -2976,7 +2977,7 @@ msgid ""
 "in battle his soul went to a better place and they can't reach him there."
 msgstr ""
 "Не слушай его, они бессильны в своем поражении. Даже если Гарак пал в битве, "
-"его душа уже в лучшем месте, и они не смогут жостать его там."
+"его душа уже в лучшем месте, и они не смогут достать его там."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2696
@@ -3069,9 +3070,9 @@ msgid ""
 msgstr ""
 "Орки и гоблины живут здесь уже сотни лет и их система туннелей намного "
 "обширнее, чем ты думаешь. Кто знает как далеко под землю они ведут? Мы "
-"слишком плохо подготовленны, что бы пройти через морозные вершины. Как бы "
-"мне не нравились эти темные пещеры, у нас нет выбора, если мы хотим пересечь "
-"горы."
+"слишком плохо подготовлены, что бы пройти через морозные вершины. Хотя эти "
+"тёмные пещеры мне сильно не нравятся, у нас нет выбора, если мы хотим "
+"пересечь горы."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:539
@@ -3083,11 +3084,11 @@ msgid ""
 "mountains. I fear no darkness, and you won't be lacking a source of fire or "
 "light."
 msgstr ""
-"Не орки вырыли эти туннели в земле. Давным давно гномы изрыли горы наподобие "
-"этих, да и тролли любят прятаться в глубоких и темных местах под землей. "
-"Если твоя богиня настолько всеведуща, как ты думаешь, Кале, я не удивлюсь, "
-"если там есть проход, ведущий через горы. Я не боюсь темноты, и у тебя не "
-"будет недостатка ни в огне, ни в свете свете."
+"Не орки вырыли эти туннели в земле. С давних времен гномы живут в горах "
+"наподобие этих, да и тролли любят прятаться в глубоких и темных местах под "
+"землей. Если твоя богиня настолько всеведуща, как ты думаешь, Кале, я не "
+"удивлюсь, если там есть проход, ведущий через горы. Я не боюсь темноты, и у "
+"тебя не будет недостатка ни в огне, ни в свете."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:544
@@ -3095,7 +3096,7 @@ msgid ""
 "Well if we are going to go under these mountains, we're certainly going to "
 "have our hands full fighting all those orcs and goblins."
 msgstr ""
-"Ну, если мы собираемся пройти под этими горами, мы точно придется много "
+"Ну, если мы собираемся пройти под этими горами, нам точно придётся много "
 "сражаться с орками и гоблинами."
 
 #. [message]: speaker=Zhul
@@ -3111,17 +3112,17 @@ msgid ""
 msgstr ""
 "Верно. Кале, хочу предостеречь тебя- это не пустыня. Орки любят сражаться в "
 "холмах и пещерах, у нас не будет преимущества, которое мы имели бы при "
-"сражении в пустыне. ИТак же с нашими потерями у нас нету численного "
+"сражении в пустыне. А с нашими потерями у нас нету уже численного "
 "превосходства, к которому мы привыкли. Поэтому нам надо быть очень "
-"осторожными. Если мы сможем расчистить путь через холмы впереди нас, тогда "
-"мы сможем провести наш народ в туннели. Надеюсь под землей нам будет легче "
-"их защитить, чем на открытой местности."
+"осторожными. Если мы расчистим путь через холмы впереди, тогда мы сможем "
+"провести наш народ в туннели. Надеюсь под землей нам будет легче их "
+"защитить, чем на открытой местности."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:554
 msgid ""
 "Strike hard and fast and also be careful--right, this is going to be fun."
-msgstr "Ударить сильно и быстро и быть осторожным-- хорошо, это будет весело."
+msgstr "Бить сильно, быстро и аккуратно — хорошо! Это будет весело."
 
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:735
@@ -6235,8 +6236,8 @@ msgid ""
 "This is a marvelous city, but I for one can't wait to feel the sun upon my "
 "face again and the wind in my hair."
 msgstr ""
-"Этот город удивителен, но мне не терпится вновь ощутить свет солнца на моем "
-"лице и дуновение ветра в моих волосах."
+"Этот город удивителен, но мне не терпится вновь ощутить свет солнца на лице "
+"и развевающий волосы ветер."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:761
@@ -6861,8 +6862,8 @@ msgid ""
 "No time for questions now, the water shows no signs of stopping. We've got "
 "to get out of here while we still can!"
 msgstr ""
-"Нет времени на вопросы, вода не показывает знаков остановки. Мы должны "
-"выбираться отсюда, пока можем."
+"Нет времени на вопросы. Вода, похоже, продолжает прибывать. Надо выбираться "
+"отсюда, пока можем."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1804
@@ -7468,7 +7469,7 @@ msgid ""
 "back door somewhere."
 msgstr ""
 "Я никогда не забредал в комплекс так далеко. Но в каждом убежище где-то "
-"должен быть черный ход."
+"должен быть чёрный ход."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3268
@@ -7529,7 +7530,7 @@ msgid ""
 "What?!? Two secret passages? What do you think this once was, a trap? Or "
 "possibly a back door?"
 msgstr ""
-"Что?!? Два секретных хода? Что вы думаете об этом? Это ловушка? Или черный "
+"Что?!? Два секретных хода? Что вы думаете об этом? Это ловушка? Или чёрный "
 "ход?"
 
 #. [message]: speaker=Zhul
@@ -10892,7 +10893,7 @@ msgid ""
 "She has many names. We call her the Eater of Souls. But in the old tongue "
 "her name is Yechnagoth."
 msgstr ""
-"У нее много имен. Мы называем ее Пожирательницей Душ. Но на старом языке ее "
+"У неё много имен. Мы называем ее Пожирательницей Душ. Но на старом языке ее "
 "зовут Йечанагот."
 
 #. [message]: speaker=Melusand
@@ -11783,7 +11784,7 @@ msgid ""
 "keys needed to enter the black citadel."
 msgstr ""
 "Смотрите, на его шее висит цепочка с золотым ключом. Должно быть, это один "
-"из ключей, необходимых для входа в черную крепость."
+"из ключей, необходимых для входа в чёрную крепость."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1419
@@ -11806,7 +11807,7 @@ msgid ""
 "the keys needed to enter the black citadel."
 msgstr ""
 "Смотрите, на его шее висит цепочка с железным ключом. Должно быть, это один "
-"из ключей, необходимых для входа в черную крепость."
+"из ключей, необходимых для входа в чёрную крепость."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1479
@@ -13143,6 +13144,9 @@ msgid ""
 "fighting at close range with the sword, but also have some skill with the "
 "bow."
 msgstr ""
+"Пустынные герои сосредоточены на искусстве единоборства, их боевые навыки "
+"доведены до совершенства. Пустынные герои предпочитают сражаться мечом, но "
+"также довольно умело пользуются луком."
 
 #. [unit_type]: id=Desert Horseman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:4
@@ -13157,11 +13161,11 @@ msgid ""
 "suited towards mounted combat than their old forests were, and through the "
 "generations the Elves have greatly increased their equestrian skills."
 msgstr ""
-"Жертвуя скоростью в обмен на защищенность и лучшее вооружение, эльфийские "
-"кавалеристы наслаждаются столкновением с опасностью, вместо того чтобы "
-"избегать её. Открытые пески гораздо лучше подходят для кавалерии чем прежние "
-"эльфийские леса, поэтому эльфы поколение за поколением значительно улучшили "
-"свои способности к сражению верхом."
+"Жертвуя скоростью ради более тяжёлого вооружения и доспехов, эльфийские "
+"кавалеристы наслаждаются столкновением с опасностью, а не избегают её. "
+"Открытые пески гораздо лучше подходят для кавалерии, чем прежние эльфийские "
+"леса, поэтому эльфы на протяжении поколений значительно усовершенствовали "
+"искусство кавалерийского боя."
 
 #. [unit_type]: id=Desert Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:31
@@ -13496,17 +13500,17 @@ msgstr ""
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:55
 msgid "twister"
-msgstr "вращение"
+msgstr "смерч"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:67
 msgid "sand storm"
-msgstr "песчаный шторм"
+msgstr "песчаная буря"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:86
 msgid "dust recuperation"
-msgstr "Пыльная регенерация"
+msgstr "пыльная регенерация"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:88
@@ -13520,17 +13524,17 @@ msgstr ""
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:94
 msgid "a stronger Dust Devil"
-msgstr "Песчаный Дьявол, сильнее"
+msgstr "стать сильнее"
 
 #. [advancement]: id=Dust2
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:113
 msgid "a taller Dust Devil"
-msgstr "Песчаный Дьявол, выше"
+msgstr "стать быстрее"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:127
 msgid "a fully-healed Dust Devil"
-msgstr "Песчаный Дьявол, полностью излечён"
+msgstr "полное исцеление (с потерей всего опыта за уровень)"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:4
@@ -13825,6 +13829,7 @@ msgstr "ошеломление"
 #. [chance_to_hit]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:305
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:308
+#, fuzzy
 msgid ""
 "Stun:\n"
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
@@ -14037,6 +14042,8 @@ msgid ""
 "skeletal horses were raised from the sands by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Когда-то великие воины равнин, эти всадники, со скелетами их лошадей, были "
+"подняты из песков дьявольской магией, чтобы нести страх и гибель."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid " This unit is capable of basic healing and slowing dehydration."
@@ -14336,6 +14343,13 @@ msgid ""
 "afraid. I had lived my entire life in the sands; they were my home, and the "
 "rocky hills and white glistening mountaintops seemed foreign and foreboding."
 msgstr ""
+"Глава 3: По мере продвижения на север через пустыню, очертания холмов и гор "
+"впереди предвещали блаженный отдых от, казалось, бесконечного песка.Вскоре, "
+"однако мы дошли до границы предгорий и решили сделать привал на ночь. Я "
+"очень устал от похода через пески, но кроме сильной усталости чувствовал не "
+"менее сильный и странный страх. Всю свою жизнь я прожил в песках, они были "
+"моим домом, поэтому каменистые холмы и белые сияющие вершины казались "
+"чужими, предвещающими новые беды."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:50
@@ -14347,6 +14361,12 @@ msgid ""
 "more about day to day matters than the other-worldly ones. But who was I to "
 "question a god?"
 msgstr ""
+"Я не был уверен правильно ли поступаю, ведя свой народ в эти странные земли. "
+"Несмотря на обещания Эло, я не не разделял уверенности Жул в том, что всё "
+"закончится хорошо. Если подумать — то, что Эло показалась лишь мне одному, "
+"было очень странным. Я ведь не был особо набожным, больше беспокоясь об "
+"обыденных вещах чем о чем-то потустороннем. Но кто я такой, чтобы задавать "
+"вопросы богу?"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:54
@@ -14366,6 +14386,18 @@ msgid ""
 "fear not the dark.' And again, just like before, I was woken up by a shout "
 "in the night. "
 msgstr ""
+"Этой ночью я впервые опять видел сон - после той роковой ночи. Эло снова "
+"посетила меня, на этот раз она предстала в образе красивой светящейся, как "
+"светила, фигуры. «Будь храбр, и вскоре вы пройдете через тёмные времена, а "
+"ваши усилия будут вознаграждены. Вы должны спуститься под северные горы, а "
+"не идти по поверхности. На краю холмов, в пустыне, вы найдёте руины древней "
+"башни из чёрного обсидиана. Именно в ней будет вход в нужные вам тоннели. "
+"После того, как вы пройдёте по ровным древним тоннелям и вновь окажетесь под "
+"моими светилами, я явлюсь вам опять. Остерегайтесь тех, кто скрывается во "
+"тьме, они боятся моего света, им нельзя верить. Во тьме у меня нет силы, "
+"поэтому вы будете руками моего правосудия. Накажите неверных. А теперь иди, "
+"и не бойся тьмы» — вот что сказала она мне. И вновь, как и прежде я был "
+"разбужен криком в ночи."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:62
@@ -14378,6 +14410,13 @@ msgid ""
 "Great Fall and I remembered the tale that had been told to me many times "
 "since I was a child:"
 msgstr ""
+"Глава 4: Мы всё-таки нашли эту рассыпающуюся обсидиановую башню, которую нам "
+"описала Эло - и разбили рядом лагерь в холмах у предгорий. Я всё ещё не мог "
+"прийти в себя после потери Гарака и других эльфов, павших в битве прошлой "
+"ночью. Эти земли несут столько смерти, неужели нет другого пути? Всю дорогу "
+"я пытался представить себе - как же эти земли могли выглядеть до Великого "
+"Падения, и тогда я вспомнил одну легенду, которую слышал много раз когда был "
+"еще ребенком:"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:66
@@ -14391,6 +14430,13 @@ msgid ""
 "lengthened and dark hours were few. Happy indeed were our people during "
 "these long years, but it was not to last forever."
 msgstr ""
+"Много, много лет назад для эльфов был золотой век. Наш народ жил в гармонии "
+"с природой в стране, покрытой деревьями, деревьями вплоть до горизонта. И "
+"был мир между Эльфами и другими расами, такими как Люди и Гномы, а злые "
+"создания прятались в самых глубоких недрах. Проклятое имя Урии еще не было "
+"известно моему народу, а наша сила была столь велика, что мы создали новое "
+"светило в небе, чтобы дни были длиннее, а тьма ночей короче. Мой народ был "
+"счастлив долгие годы, но ничто не длится вечно."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:70
@@ -14413,6 +14459,21 @@ msgid ""
 "fought over what few resources remained, and chaos threatened to overwhelm "
 "us all."
 msgstr ""
+"В конце концов мир и процветание привели к разложению и упадку. Обманом и "
+"хитростью Урия воспитала тайную группу последователей, которые могли "
+"исполнить её тёмные желания. Она опутывала тёмными сетями весь мир и ждала "
+"своего времени. Вначале мелкие споры между людьми, эльфами и гномами выросли "
+"в конфликты, вовлекшие наши народы в первые за многие столетия войны. Затем "
+"орки и другие отвратительные создания вернулись в наш мир, совершая набеги "
+"на поселения, сжигая деревни и убивая сотни жителей. Последователи Урии "
+"изучали искусство некромантии и поднимали армии нежити. За времена мира и "
+"изобилия наш народ стали слабым и мягким, неспособным справиться с этими "
+"новыми испытаниями. Даже природа, казалось сдавала под натиском: урожай гиб, "
+"деревья болели и наши леса начали умирать. Сильнее всего беспокоило то, что "
+"ночи становились длиннее, создавая долгую тьму, от которой мы страдаем "
+"сейчас. Многие наши люди от отчаяния переходили на сторону Урии в надежде "
+"спастись. Бывшие союзники сражались за остатки ресурсов, хаос грозил "
+"поглотить нас всех."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:74
@@ -14431,6 +14492,18 @@ msgid ""
 "remembering our ancestors and the sacrifices they made that we might live, "
 "and always striving to create a better world for our children."
 msgstr ""
+"В эти горькие времена Эло впервые показалась избранным из нас, тем немногим, "
+"кто упорно сражался за сохранение нашей родины и нашего наследия. Она "
+"говорила, что прежние времена ушли навсегда, и только строгая дисциплина и "
+"сила помогут нам выжить в этом новом мире. Она увела нас из немногих "
+"остававшихся ещё лесов, которые вырубали и сжигали орки, в открытые равнины, "
+"где мы могли свободно кочевать. Она учила нас, что мы слабы поодиночке, но "
+"вместе мы способны вселить страх в сердца наших врагов. Мы научились тому, "
+"что единственный способ выжить в этом новом мире - поставить потребности "
+"народа выше желаний отдельных личностей. Ведь порознь — мы были ничем. "
+"Несмотря на то, что равнины стали пустынями, мы продолжали следовать воле "
+"Эло, помня наших предков и те жертвы, которые они принесли, чтобы мы могли "
+"жить, стараясь создать лучший мир для своих детей."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:78
@@ -14443,6 +14516,13 @@ msgid ""
 "unforgiving. Was there anywhere left in this world that I could take my "
 "people which would be better than the land we were born into?"
 msgstr ""
+"Был ли золотой век всего лишь легендой? Что за мир могу я создать для "
+"следующих поколений моего народа? Всё, что я знал о прошлом - руины великих "
+"твердынь и легенды о временах, когда жизнь была чем-то большим, чем борьба "
+"за существование. Похоже, за последние несколько поколений жизнь не стала "
+"проще для моего народа - наша земля становилась все более беспощадной. "
+"Остались ли в этом мире еще такие места, в которых моему народу жилось бы "
+"лучше, чем там, где мы родились?"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:86
@@ -14924,6 +15004,7 @@ msgstr "Длинная ночь (3)"
 msgid "The Long Dark (4)"
 msgstr "Длинная ночь (4)"
 
+# Temporary uncommented because it is no a new string's version inside a compain's *.cfg file, i don't know why...
 #~ msgid "You Control Less Than 6 Villages"
 #~ msgstr "Под вашим контролем меньше 6 деревень"
 
@@ -15095,7 +15176,7 @@ msgstr "Длинная ночь (4)"
 
 #, fuzzy
 #~ msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
-#~ msgstr "Эй, Ниса, камнепад закончился, можно выходить!"
+#~ msgstr "Эй, Нару, камнепад закончился, можно выходить!"
 
 #~ msgid ""
 #~ "Please, have mercy on us. We'm just trying to survive in this horrible "

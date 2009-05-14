@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-04-17 18:19+0800\n"
+"PO-Revision-Date: 2009-05-14 16:20+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,22 +19,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "單一方格"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "半徑為1的方格"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "半徑為2的方格"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "方格以西北－東南排列"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -101,6 +101,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"使用滑鼠左（右）鍵繪製前（背）景地形。按下Shift鍵可以只繪製地表圖形。Ctrl+右"
+"鍵點選可對點選方格做地形位置取樣。"
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -109,6 +111,7 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"使用滑鼠左鍵選擇，右鍵取消選擇。按下Shift鍵可以自動選擇同一地形的地面。"
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -118,13 +121,15 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"點選滑鼠左鍵選擇玩家設置，右鍵取消。使用數字鍵移動地圖到起始點，Alt+數字鍵設"
+"置玩家起始點。delete清除起始點。"
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
-msgstr ""
+msgstr "點選貼上，貼上區域呈鏡面效果。"
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -153,11 +158,11 @@ msgstr "村莊"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "新增事件時錯誤"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "事件未執行"
 
 #: src/editor2/editor_controller.cpp:132
 msgid "Quit Editor"
@@ -165,7 +170,7 @@ msgstr "退出編輯器"
 
 #: src/editor2/editor_controller.cpp:285
 msgid "Fatal error"
-msgstr ""
+msgstr "嚴重錯誤"
 
 #: src/editor2/editor_controller.cpp:299
 #: src/editor2/editor_controller.cpp:1048
@@ -174,19 +179,19 @@ msgstr "（新地圖）"
 
 #: src/editor2/editor_controller.cpp:305
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "您確定要退出嗎？"
 
 #: src/editor2/editor_controller.cpp:307
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
-msgstr ""
+msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
 #: src/editor2/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
-msgstr ""
+msgstr "您確定要退出嗎？對地圖所作的更動將遺失:"
 
 #: src/editor2/editor_controller.cpp:314
 msgid "Quit"
@@ -199,16 +204,16 @@ msgstr "錯誤"
 
 #: src/editor2/editor_controller.cpp:369
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "沒有找到時間編輯器。"
 
 #: src/editor2/editor_controller.cpp:405
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "未儲存的更動"
 
 #: src/editor2/editor_controller.cpp:406
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "您確定要放棄所有對地圖的更動？"
 
 #: src/editor2/editor_controller.cpp:424
 msgid "Choose a Map to Open"
@@ -224,32 +229,31 @@ msgstr "地圖名稱已存在，確定要覆蓋？"
 
 #: src/editor2/editor_controller.cpp:479
 msgid "No random map generators found."
-msgstr ""
+msgstr "沒有找到隨機地圖產生器？"
 
 #: src/editor2/editor_controller.cpp:490
 msgid "Map creation failed."
-msgstr ""
+msgstr "創造地圖失敗。"
 
 #: src/editor2/editor_controller.cpp:505
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "選擇地圖載入"
+msgstr "選擇要套用的遮罩"
 
 #: src/editor2/editor_controller.cpp:512
 msgid "Error loading mask"
-msgstr ""
+msgstr "讀取遮罩食錯誤"
 
 #: src/editor2/editor_controller.cpp:527
 msgid "Choose target map"
-msgstr ""
+msgstr "選擇目標地圖"
 
 #: src/editor2/editor_controller.cpp:534 src/editor2/editor_controller.cpp:698
 msgid "Error loading map"
-msgstr ""
+msgstr "讀取地圖錯誤"
 
 #: src/editor2/editor_controller.cpp:612 src/editor2/editor_controller.cpp:654
 msgid "This map is already open."
-msgstr ""
+msgstr "這個地圖已被開啟。"
 
 #: src/editor2/editor_controller.cpp:633
 msgid "Map saved."
@@ -257,17 +261,19 @@ msgstr "地圖已儲存。"
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "以讀取嵌入地圖的資料"
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "以從任務中讀取地圖"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"以讀取地圖引用檔案:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -304,7 +310,7 @@ msgstr "玩家"
 
 #: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "目標地圖尺寸與當前地圖不同"
 
 #: src/editor2/editor_palettes.cpp:521
 msgid "FG"
@@ -316,22 +322,21 @@ msgstr "後置地形"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "檔案不存在"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
-msgstr ""
+msgstr "這份地圖檔案像是一個任務，但是地圖資料連結一個不存在的檔案。"
 
 #: src/editor2/map_context.cpp:99
 msgid "Empty map file"
-msgstr ""
+msgstr "空白地圖檔案"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "無法儲存地圖： $msg"
+msgstr "無法儲存地圖"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
@@ -352,6 +357,8 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"哪個玩家從這裡開始遊戲？您可以使用alt+數字鍵設定起始點，使用delete鍵清除起始"
+"點。使用數字鍵可以移動到對應的起始點。"
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
