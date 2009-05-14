@@ -98,19 +98,19 @@ report generate_report(TYPE type,
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(utils::string_bool(u->second.get_state("slowed"))) {
+		if(u->second.get_state(unit::STATE_SLOWED)) {
 			unit_status << "misc/slowed.png";
 			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking and its movement cost is doubled.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(utils::string_bool(u->second.get_state("poisoned"))) {
+		if(u->second.get_state(unit::STATE_POISONED)) {
 			unit_status << "misc/poisoned.png";
 			tooltip << _("poisoned: ") << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
 \n\
 Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(utils::string_bool(u->second.get_state("petrified"))) {
+		if(u->second.get_state(unit::STATE_PETRIFIED)) {
 			unit_status << "misc/petrified.png";
 			tooltip << _("petrified: ") << _("This unit has been petrified. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
@@ -231,7 +231,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
-			if(utils::string_bool(u->second.get_state("slowed"))) {
+			if(u->second.get_state(unit::STATE_SLOWED)) {
 				str << round_damage(at_it->damage(),1,2) << "-" ;
 			} else {
 				str << at_it->damage() << "-" ;
@@ -254,7 +254,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << " " << at_it->name() << " " << at_it->accuracy_parry_description();
 			tooltip << at_it->name() << "\n";
 			int effdmg;
-			if(utils::string_bool(u->second.get_state("slowed"))) {
+			if(u->second.get_state(unit::STATE_SLOWED)) {
 				effdmg = round_damage(at_it->damage(),1,2);
 			} else {
 				effdmg = at_it->damage();

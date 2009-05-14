@@ -423,7 +423,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_losses += cost * prob_died;
 
 		// add half of cost for poisoned unit so it might get chance to heal
-		avg_losses += cost * utils::string_bool(up->second.get_state("poisoned")) /2;
+		avg_losses += cost * up->second.get_state(unit::STATE_POISONED) /2;
 
 		// Double reward to emphasize getting onto villages if they survive.
 		if (on_village) {

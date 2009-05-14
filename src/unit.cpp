@@ -124,6 +124,7 @@ unit::unit(const unit& o):
            max_attacks_(o.max_attacks_),
 
            states_(o.states_),
+           known_boolean_states_(o.known_boolean_states_),
            variables_(o.variables_),
            emit_zoc_(o.emit_zoc_),
            state_(o.state_),
@@ -206,6 +207,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
+	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
@@ -285,6 +287,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
+	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
@@ -392,6 +395,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
+	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
@@ -491,6 +495,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
+	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
@@ -771,9 +776,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	game_events::add_events(cfg_.child_range("event"), type_);
 
-	set_state("poisoned","");
-	set_state("slowed","");
-	set_state("petrified","");
+	set_state(STATE_POISONED,false);
+	set_state(STATE_SLOWED,false);
+	set_state(STATE_PETRIFIED,false);
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
@@ -890,7 +895,7 @@ void unit::new_turn()
 	end_turn_ = false;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
-	set_state("hidden","yes");
+	set_state(STATE_HIDDEN,true);
 
 	if (hold_position_) {
 		end_turn_ = true;
@@ -898,11 +903,11 @@ void unit::new_turn()
 }
 void unit::end_turn()
 {
-	set_state("slowed","");
-	if((movement_ != total_movement()) && !utils::string_bool(get_state("not_moved")) && (!is_healthy_ || attacks_left_ < max_attacks_)) {
+	set_state(STATE_SLOWED,false);
+	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED)) && (!is_healthy_ || attacks_left_ < max_attacks_)) {
 		resting_ = false;
 	}
-	set_state("not_moved","");
+	set_state(STATE_NOT_MOVED,false);
 	// Clear interrupted move
 	set_interrupted_move(map_location());
 }
@@ -916,9 +921,9 @@ void unit::new_scenario()
 	remove_temporary_modifications();
 
 	heal_all();
-	set_state("slowed","");
-	set_state("poisoned","");
-	set_state("petrified","");
+	set_state(STATE_SLOWED,false);
+	set_state(STATE_POISONED,false);
+	set_state(STATE_PETRIFIED,false);
 }
 void unit::remove_temporary_modifications()
 {
@@ -957,27 +962,80 @@ void unit::heal(int amount)
 	}
 }
 
-const std::map<std::string,std::string>& unit::get_states() const
+const std::map<std::string,std::string> unit::get_states() const
 {
-	return states_;
+	std::map<std::string,std::string> all_states = states_;
+	for (std::map<std::string,size_t>::const_iterator i = known_boolean_state_names_.begin(); i!=known_boolean_state_names_.end(); ++i){
+		if (get_state(i->second)){	
+			all_states.insert(make_pair(i->first, "yes" ));
+		}
+	
+	}
+	return all_states;
 }
 
 std::string unit::get_state(const std::string& state) const
 {
+	size_t known_boolean_state_id = get_known_boolean_state_id(state);
+	if (known_boolean_state_id!=STATE_UNKNOWN){
+		return get_state(known_boolean_state_id) ? "yes" : "";
+	}
 	std::map<std::string,std::string>::const_iterator i = states_.find(state);
 	if(i != states_.end()) {
 		return i->second;
 	}
 	return "";
 }
+
+void unit::set_state(size_t state, bool value)
+{
+	known_boolean_states_[state] = value;
+}
+
+bool unit::get_state(size_t state) const
+{
+	return known_boolean_states_[state];
+}
+
+size_t unit::get_known_boolean_state_id(const std::string &state) {
+	std::map<std::string,size_t>::const_iterator i = known_boolean_state_names_.find(state);
+	if (i !=known_boolean_state_names_.end()){
+		return i->second;
+	}	
+	return STATE_UNKNOWN;	
+}
+
+std::map<std::string,size_t> unit::known_boolean_state_names_ = get_known_boolean_state_names();
+
+std::map<std::string,size_t> unit::get_known_boolean_state_names(){
+	std::map<std::string,size_t> *known_boolean_state_names_map = new std::map<std::string,size_t>();
+	known_boolean_state_names_map->insert(std::make_pair("slowed",STATE_SLOWED));
+	known_boolean_state_names_map->insert(std::make_pair("poisoned",STATE_POISONED));
+	known_boolean_state_names_map->insert(std::make_pair("petrified",STATE_PETRIFIED));
+	known_boolean_state_names_map->insert(std::make_pair("hidden",STATE_HIDDEN));
+	known_boolean_state_names_map->insert(std::make_pair("not_moved",STATE_NOT_MOVED));
+	//not sure if "guardian" is a yes/no state.
+	//known_boolean_state_names_map->insert(std::make_pair("guardian",STATE_GUARDIAN));
+	return *known_boolean_state_names_map;
+}
+
 void unit::set_state(const std::string& state, const std::string& value)
 {
+	size_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if(value == "") {
+		if (known_boolean_state_id!=STATE_UNKNOWN){
+			set_state(known_boolean_state_id,false);
+			return;
+		}
 		std::map<std::string,std::string>::iterator i = states_.find(state);
 		if(i != states_.end()) {
 			states_.erase(i);
 		}
 	} else {
+		if (known_boolean_state_id!=STATE_UNKNOWN){
+			set_state(known_boolean_state_id,true);
+			return;
+		}
 		states_[state] = value;
 	}
 }
@@ -1506,7 +1564,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if (const config &status_flags = cfg.child("status"))
 	{
 		foreach (const config::attribute &st, status_flags.attribute_range()) {
-			states_[st.first] = st.second;
+			set_state(st.first,st.second);
 		}
 		cfg_.remove_child("status",0);
 	}
@@ -1642,7 +1700,8 @@ void unit::write(config& cfg) const
 	cfg["flying"] = flying_ ? "yes" : "no";
 
 	config status_flags;
-	for(std::map<std::string,std::string>::const_iterator st = states_.begin(); st != states_.end(); ++st) {
+	std::map<std::string,std::string> all_states = get_states();
+	for(std::map<std::string,std::string>::const_iterator st = all_states.begin(); st != all_states.end(); ++st) {
 		status_flags[st->first] = st->second;
 	}
 
@@ -1835,7 +1894,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 	}
 	params.y -= height_adjust;
 	params.halo_y -= height_adjust;
-	if (utils::string_bool(get_state("poisoned")) ){
+	if (get_state(STATE_POISONED)){
 		params.blend_with = disp.rgb(0,255,0);
 		params.blend_ratio = 0.25;
 	}
@@ -1843,7 +1902,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 	params.image= absolute_image();
 
 
-	if(utils::string_bool(get_state("petrified"))) params.image_mod +="~GS()";
+	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 
@@ -2032,7 +2091,7 @@ bool unit::invalidate(const map_location &loc)
 		}
 		params.y -= height_adjust;
 		params.halo_y -= height_adjust;
-		if (utils::string_bool(get_state("poisoned")) ){
+		if (get_state(STATE_POISONED) ){
 			params.blend_with = disp->rgb(0,255,0);
 			params.blend_ratio = 0.25;
 		}
@@ -2134,7 +2193,7 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 int unit::movement_cost(const t_translation::t_terrain terrain) const
 {
 	const int res = movement_cost_internal(terrain, 0);
-	if(utils::string_bool(get_state("slowed"))) {
+	if(get_state(STATE_SLOWED)) {
 		return res*2;
 	}
 	return res;
@@ -2903,7 +2962,7 @@ bool unit::invisible(const map_location& loc,
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = (utils::string_bool(get_state("hidden")) && get_ability_bool(hides,loc));
+	bool is_inv = get_state(STATE_HIDDEN && get_ability_bool(hides,loc));
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {

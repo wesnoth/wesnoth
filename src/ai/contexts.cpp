@@ -211,7 +211,7 @@ map_location ai_readwrite_context::move_unit(map_location from, map_location to,
 	if(u != get_info().units.end()) {
 		if(u->second.movement_left()==u->second.total_movement()) {
 			u->second.set_movement(0);
-			u->second.set_state("not_moved","yes");
+			u->second.set_state(unit::STATE_NOT_MOVED,true);
 		} else if (from == loc) {
 			u->second.set_movement(0);
 		}

@@ -282,11 +282,11 @@ namespace events{
 			row << i->first << COLUMN_SEPARATOR;
 
 			// show icons if unit is slowed, poisoned, petrified, invisible:
-			if(utils::string_bool(i->second.get_state("petrified")))
+			if(i->second.get_state(unit::STATE_PETRIFIED))
 				row << IMAGE_PREFIX << "misc/petrified.png"    << IMG_TEXT_SEPARATOR;
-			if(utils::string_bool(i->second.get_state("slowed")))
+			if(i->second.get_state(unit::STATE_SLOWED))
 				row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
-			if(utils::string_bool(i->second.get_state("poisoned")))
+			if(i->second.get_state(unit::STATE_POISONED))
 				row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
 
 			/** @todo FIXME: condition for "invisible" does not work */

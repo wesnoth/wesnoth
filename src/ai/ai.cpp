@@ -856,7 +856,7 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 		// then try to find a vacant village for it to rest in.
 		if(u.side() == get_side() &&
 		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
-		   || utils::string_bool(u.get_state("poisoned"))) &&
+		   || u.get_state(unit::STATE_POISONED)) &&
 		   !u.get_ability_bool("regenerate",u_it->first)) {
 
 			// Look for the village which is the least vulnerable to enemy attack.

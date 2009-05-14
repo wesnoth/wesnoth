@@ -588,8 +588,8 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 	weapon(0),
 	attack_num(u_attack_num),
 	is_attacker(attacking),
-	is_poisoned(utils::string_bool(u.get_state("poisoned"))),
-	is_slowed(utils::string_bool(u.get_state("slowed"))),
+	is_poisoned(u.get_state(unit::STATE_POISONED)),
+	is_slowed(u.get_state(unit::STATE_SLOWED)),
 	slows(false),
 	drains(false),
 	petrifies(false),
@@ -644,7 +644,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		petrifies = weapon->get_special_bool("petrifies");
-		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && utils::string_bool(opp.get_state("poisoned")) != true;
+		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && opp.get_state(unit::STATE_POISONED) != true;
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
@@ -939,11 +939,11 @@ attack::attack(game_display& gui, const gamemap& map,
 	VALIDATE(attack_with < static_cast<int>(a_.get_unit().attacks().size()),
 		_("An invalid attacker weapon got selected."));
 	a_.get_unit().set_movement(a_.get_unit().movement_left()-a_.get_unit().attacks()[attack_with].movement_used());
-	a_.get_unit().set_state("not_moved","");
+	a_.get_unit().set_state(unit::STATE_NOT_MOVED,false);
 	d_.get_unit().set_resting(false);
 
 	// If the attacker was invisible, she isn't anymore!
-	a_.get_unit().set_state("hidden","");
+	a_.get_unit().set_state(unit::STATE_HIDDEN,false);
 
 	bc_ = new battle_context(map_, teams_, units_, state_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
@@ -1059,12 +1059,12 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string float_text = "";
 				if(hits) {
 					if (a_stats_->poisons &&
-							!utils::string_bool(d_.get_unit().get_state("poisoned"))) {
+							!(d_.get_unit().get_state(unit::STATE_POISONED))) {
 						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned"));
 						float_text += '\n';
 					}
 
-					if(a_stats_->slows && !utils::string_bool(d_.get_unit().get_state("slowed"))) {
+					if(a_stats_->slows && !(d_.get_unit().get_state(unit::STATE_SLOWED))) {
 						float_text += (d_.get_unit().gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed"));
 						float_text += '\n';
 					}
@@ -1244,13 +1244,13 @@ attack::attack(game_display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (a_stats_->poisons &&
-						!utils::string_bool(d_.get_unit().get_state("poisoned"))) {
-					d_.get_unit().set_state("poisoned","yes");
+						!(d_.get_unit().get_state(unit::STATE_POISONED))) {
+					d_.get_unit().set_state(unit::STATE_POISONED,true);
 					LOG_NG << "defender poisoned\n";
 				}
 
-				if(a_stats_->slows && !utils::string_bool(d_.get_unit().get_state("slowed"))) {
-					d_.get_unit().set_state("slowed","yes");
+				if(a_stats_->slows && !(d_.get_unit().get_state(unit::STATE_SLOWED))) {
+					d_.get_unit().set_state(unit::STATE_SLOWED,true);
 					update_def_fog = true;
 					d_.damage_ = d_stats_->slow_damage;
 					LOG_NG << "defender slowed\n";
@@ -1259,7 +1259,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				// If the defender is petrified, the fight stops immediately
 				static const std::string petrify_string("petrified");
 				if (a_stats_->petrifies) {
-					d_.get_unit().set_state("petrified","yes");
+					d_.get_unit().set_state(unit::STATE_PETRIFIED,true);
 					update_def_fog = true;
 					a_.n_attacks_ = 0;
 					d_.n_attacks_ = 0;
@@ -1334,17 +1334,17 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string float_text = "";
 				if(hits) {
 					if (d_stats_->poisons &&
-							!utils::string_bool(a_.get_unit().get_state("poisoned"))) {
+							!(a_.get_unit().get_state(unit::STATE_POISONED))) {
 						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned"));
 						float_text += '\n';
 					}
 
-					if(d_stats_->slows && !utils::string_bool(a_.get_unit().get_state("slowed"))) {
+					if(d_stats_->slows && !(a_.get_unit().get_state(unit::STATE_SLOWED))) {
 						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed"));
 						float_text += '\n';
 					}
 
-					// If the defender is petrified, the fight stops immediately
+					// If the attacker is petrified, the fight stops immediately
 					static const std::string petrify_string("petrified");
 					if (d_stats_->petrifies) {
 						float_text += (a_.get_unit().gender() == unit_race::FEMALE ?  _("female^petrified") : _("petrified"));
@@ -1513,13 +1513,13 @@ attack::attack(game_display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (d_stats_->poisons &&
-						!utils::string_bool(a_.get_unit().get_state("poisoned"))) {
-					a_.get_unit().set_state("poisoned","yes");
+						!(a_.get_unit().get_state(unit::STATE_POISONED))) {
+					a_.get_unit().set_state(unit::STATE_POISONED,true);
 					LOG_NG << "attacker poisoned\n";
 				}
 
-				if(d_stats_->slows && !utils::string_bool(a_.get_unit().get_state("slowed"))) {
-					a_.get_unit().set_state("slowed","yes");
+				if(d_stats_->slows && !(a_.get_unit().get_state(unit::STATE_SLOWED))) {
+					a_.get_unit().set_state(unit::STATE_SLOWED,true);
 					update_att_fog = true;
 					a_.damage_ = a_stats_->slow_damage;
 					LOG_NG << "attacker slowed\n";
@@ -1529,7 +1529,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				// If the attacker is petrified, the fight stops immediately
 				static const std::string petrify_string("petrified");
 				if (d_stats_->petrifies) {
-					a_.get_unit().set_state("petrified","yes");
+					a_.get_unit().set_state(unit::STATE_PETRIFIED,true);
 					update_att_fog = true;
 					d_.n_attacks_ = 0;
 					a_.n_attacks_ = 0;
@@ -1707,7 +1707,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
 
-		const bool is_poisoned = utils::string_bool(i->second.get_state("poisoned"));
+		const bool is_poisoned = i->second.get_state(unit::STATE_POISONED);
 		if(is_poisoned) {
 			// Remove the enemies' healers to determine if poison is slowed or cured
 			for (std::vector<std::pair<const config *, map_location> >::iterator
@@ -1799,7 +1799,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		}
 		if(is_poisoned) {
 			if(curing == "cured") {
-				i->second.set_state("poisoned","");
+				i->second.set_state(unit::STATE_POISONED,false);
 				healing = rest_healing;
 				healers.clear();
 				if (curer != units.end())
@@ -2119,7 +2119,7 @@ namespace {
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
-					if (!utils::string_bool(sighted->second.get_state("petrified")))
+					if (!(sighted->second.get_state(unit::STATE_PETRIFIED)))
 					{
 						seen_units->insert(*it);
 					}

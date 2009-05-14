@@ -661,9 +661,9 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 		std::vector<bool> clear_fog_side(rsrc.teams->size(), false);
 
 		for(unit_map::iterator i = rsrc.units->begin(); i != rsrc.units->end(); ++i) {
-			if(utils::string_bool(i->second.get_state("petrified"))) {
+			if(i->second.get_state(unit::STATE_PETRIFIED)) {
 				if(filter.null() || game_events::unit_matches_filter(i, filter)) {
-					i->second.set_state("petrified","");
+					i->second.set_state(unit::STATE_PETRIFIED,false);
 					clear_fog_side[i->second.side()-1] = true;
 				}
 			}
