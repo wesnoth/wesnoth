@@ -31,6 +31,10 @@ stringfixes = {
 # Typo fix.
 #
 ("Edition", "Editing"),
+("the  pass was crossed", "the pass was crossed"),
+("furtherest-faring", "furthermost-faring"),
+("hit and run", "hit-and-run"),
+("well defended", "well-defended"),
 ),
 
 "wesnoth-did" : (
@@ -55,6 +59,13 @@ stringfixes = {
 ("remnants of the Lich's once-mortal skin", "remnants of the lich's once-mortal skin"),
 # Bad English usage.  Translators probably got this right from context
 ("lodged loose", "dislodged"),
+("sea sick", "seasick"),
+# Concisted capitalization of species names
+("Loyal Merfolk","Loyal merfolk"),
+("move along, Elf", "move along, elf"),
+)"fight our way through the Orcs or the Undead.", "fight our way through the orcs or the undead."),
+("Elven allies", "elven allies"),
+("Drake base", "drake base"),
 ),
 
 "wesnoth-manual" : (
@@ -101,11 +112,13 @@ stringfixes = {
 ("Kill the Lich to get his book and", "Kill the lich to get his book and"),
 ("The Lich is free!", "The lich is free!"),
 ("before we free that Lich","before we free that lich"),
+("great river", "Great River"),
 ),
 
 "wesnoth-httt" :(
 # See the explanation of the changes for TROW.
 ("A final blow destroys the Lich,", "A final blow destroys the lich,"),
+("back yard", "back-yard"),
 ),
 
 "wesnoth-tsg" :(
@@ -168,16 +181,24 @@ stringfixes = {
 
 "wesnoth-sotbe" :(
 ("can from from each", "can from each"),
+("go check it out.", "go look."),
 ),
 
 "wesnoth-tb" :(
 ("mage Bjarn send for", "mage Bjarn sends for"),
 ),
+
+"wesnoth-ei" :(
+("Wait - What just happened?", "Wait - what just happened?"),
+("attack ME?", "attack <i>me?</i>"),
+("passage way", "passageway"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1235216999	# Sat Feb 21 06:49:59 2009
+timecheck = 1242378306	# Fri May 15 05:04:26 EDT 2009
 
 import os, sys, time, stat
 
