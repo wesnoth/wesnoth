@@ -63,7 +63,7 @@ stringfixes = {
 # Concisted capitalization of species names
 ("Loyal Merfolk","Loyal merfolk"),
 ("move along, Elf", "move along, elf"),
-)"fight our way through the Orcs or the Undead.", "fight our way through the orcs or the undead."),
+("fight our way through the Orcs or the Undead.", "fight our way through the orcs or the undead."),
 ("Elven allies", "elven allies"),
 ("Drake base", "drake base"),
 ),
