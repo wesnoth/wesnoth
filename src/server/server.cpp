@@ -20,6 +20,7 @@
 #include "../global.hpp"
 
 #include "../config.hpp"
+#include "../foreach.hpp"
 #include "../game_config.hpp"
 #include "../log.hpp"
 #include "../map.hpp" // gamemap::MAX_PLAYERS
@@ -604,27 +605,27 @@ void server::run() {
 
 				// send a 'ping' to all players to detect ghosts
 				DBG_SERVER << "Pinging inactive players.\n" ;
- 				std::ostringstream strstr ;
- 				strstr << "ping=\"" << lexical_cast<std::string>(now) << "\"" ;
- 				simple_wml::document ping( strstr.str().c_str(),
- 							   simple_wml::INIT_COMPRESSED ) ;
- 				simple_wml::string_span s = ping.output_compressed() ;
- 				for (wesnothd::player_map::const_iterator i = ghost_players_.begin();
- 				     i != ghost_players_.end(); ++i)
- 				  {
- 				    DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n" ;
- 				    network::send_raw_data( s.begin(),
- 							    s.size(),
- 							    i->first, "ping" ) ;
- 				  }
+				std::ostringstream strstr ;
+				strstr << "ping=\"" << lexical_cast<std::string>(now) << "\"" ;
+				simple_wml::document ping( strstr.str().c_str(),
+							   simple_wml::INIT_COMPRESSED );
+				simple_wml::string_span s = ping.output_compressed();
+				foreach (network::connection sock, ghost_players_) {
+					wesnothd::player_map::const_iterator i = players_.find(sock);
+					if (i != players_.end()) {
+						DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n";
+						network::send_raw_data(s.begin(), s.size(), i->first, "ping") ;
+					} else {
+						ERR_SERVER << "Player " << sock << " is in ghost_players_ but not in players_\n";
+					}
+				}
 
  				// Copy new player list on top of ghost_players_ list.
  				// Only a single thread should be accessing this
-				{
- 				  // Erase before we copy - speeds inserts
- 				  ghost_players_.clear() ;
- 				  std::copy( players_.begin(), players_.end(),
- 					     std::inserter( ghost_players_, ghost_players_.begin() ) ) ;
+				// Erase before we copy - speeds inserts
+				ghost_players_.clear();
+				foreach (const wesnothd::player_map::value_type v, players_) {
+					ghost_players_.insert(v.first);
 				}
 				last_ping_ = now;
 			}
@@ -813,9 +814,14 @@ void server::process_data(const network::connection sock,
 	// We know the client is alive for this interval
 	// Remove player from ghost_players map if selective_ping
 	// is enabled for the player.
-	const wesnothd::player_map::const_iterator pl = ghost_players_.find( sock ) ;
-	if( pl != ghost_players_.end() && pl->second.selective_ping() ) {
-	  ghost_players_.erase( sock ) ;
+
+	if (ghost_players_.find(sock) != ghost_players_.end()) {
+		const wesnothd::player_map::const_iterator pl = players_.find(sock);
+		if (pl != players_.end()) {
+			if (pl->second.selective_ping() ) {
+				ghost_players_.erase(sock);
+			}
+		}
 	}
 
 	// Process the message
@@ -1061,11 +1067,10 @@ void server::process_login(const network::connection sock,
 	// a client-side disconnection.
 	players_.insert(std::pair<network::connection,player>(sock, new_player));
 	if( !selective_ping )
-	  ghost_players_.insert( std::pair<network::connection,player>(sock, new_player) ) ;
+	  ghost_players_.insert(sock) ;
 
 	not_logged_in_.remove_player(sock);
 	lobby_.add_player(sock, true);
-
 	// Send the new player the entire list of games and players
 	send_doc(games_and_users_list_, sock);
 

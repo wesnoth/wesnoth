@@ -34,7 +34,7 @@ private:
 
 	/** std::map<network::connection,player>. */
 	wesnothd::player_map players_;
-	wesnothd::player_map ghost_players_ ;
+	std::set<network::connection> ghost_players_;
 
 	std::vector<wesnothd::game*> games_;
 	wesnothd::game not_logged_in_;
