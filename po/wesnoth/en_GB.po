@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-12 11:15+0200\n"
-"PO-Revision-Date: 2009-03-20 16:14-0500\n"
-"Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
+"PO-Revision-Date: 2009-05-10 15:50-0000\n"
+"Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -382,9 +382,8 @@ msgstr "Hungarian Translation"
 
 #. [about]
 #: data/core/about.cfg:1689
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "Italian Translation"
+msgstr "Icelandic Translation"
 
 #. [about]
 #: data/core/about.cfg:1699
@@ -1988,7 +1987,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:442
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1999,7 +1997,8 @@ msgstr ""
 "\n"
 "\n"
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
-"the usual 2 HP after each turn they did not fight."
+"the usual 2 HP after each turn they did not fight. They also suffer a "
+"quarter less damage from poison."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
@@ -2110,8 +2109,8 @@ msgid ""
 "text='Flat'</ref> terrain."
 msgstr ""
 "Roads are beaten paths of dirt, formed by many travellers passing over them. "
-"As far as gameplay is concerned, Roads are identical to "
-"<ref>dst=terrain_grassland text=Grassland</ref>."
+"As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
+"text='Flat'</ref> terrain."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:501
@@ -2561,13 +2560,13 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"The dangers inherent in trying to walk on lava are fairly obvious. This "
-"terrain can only be crossed by those units capable of flying a considerable "
-"distance above it. The molten magma also produces a substantial glow, "
-"illuminating the area immediately above it.  The molten magma also produces "
-"a substantial glow, illuminating the area immediately above it. This "
-"provides an attack bonus for lawful units and removes the attack bonus from "
-"chaotic units."
+"The dangers inherent in trying to walk on lava are fairly obvious.As far as "
+"movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
+"text='Unwalkable'</ref> terrain, and can only be crossed by those units "
+"capable of flying a considerable distance above it. The molten magma also "
+"produces a substantial glow, illuminating the area immediately above it. "
+"This provides an attack bonus for lawful units and removes the attack bonus "
+"from chaotic units."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:717
@@ -6178,7 +6177,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -7065,24 +7064,24 @@ msgstr "Failed teleport! Exit not empty"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Friendly unit sighted"
-msgstr[1] "Friendly unit sighted"
+msgstr[1] "$friends friendly units sighted"
 
 #: src/actions.cpp:2493
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Enemy unit sighted!"
-msgstr[1] "Enemy unit sighted!"
+msgstr[1] "$enemies enemy units sighted!"
 
 #: src/actions.cpp:2498
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "a friendly"
+msgstr[0] "1 friendly"
 msgstr[1] "$friends friendly"
 
 #: src/actions.cpp:2499
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "an enemy"
+msgstr[0] "1 enemy"
 msgstr[1] "$enemies enemy"
 
 #: src/actions.cpp:2500
@@ -7168,6 +7167,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Do you want to download this add-on? (You will still have to install the "
+"dependencies in order to play.)"
 
 #: src/addon_management.cpp:469 src/addon_management.cpp:543
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:262 src/multiplayer_ui.cpp:76
@@ -8141,7 +8142,7 @@ msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
-"scenario settings^Start\n"
+"Start\n"
 "Gold"
 
 #: src/menu_events.cpp:494
@@ -8149,7 +8150,7 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
-"scenario settings^Base\n"
+"Base\n"
 "Income"
 
 #: src/menu_events.cpp:495
@@ -8157,7 +8158,7 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
-"scenario settings^Gold Per\n"
+"Gold Per\n"
 "Village"
 
 #: src/menu_events.cpp:496
@@ -8340,7 +8341,7 @@ msgstr "Kick a player or observer."
 
 #: src/menu_events.cpp:2050
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Mute an observer. Without an argument displays the mute status."
 
 #: src/menu_events.cpp:2052
 msgid "Mute all observers."
@@ -8348,7 +8349,7 @@ msgstr "Mute all observers."
 
 #: src/menu_events.cpp:2062
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Send a message to the server admins currently online"
 
 #: src/menu_events.cpp:2064
 msgid "Send an emotion or personal action in chat."
@@ -9813,29 +9814,26 @@ msgstr "Help us make Wesnoth better for you!"
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Do you really want to download it?"
+#~ msgid "stones"
+#~ msgstr "stones"
+
+#~ msgid "An invalid weapon is selected, possibly by the Python AI."
+#~ msgstr "An invalid weapon is selected, possibly by the Python AI."
+
+#~ msgid "female^stone"
+#~ msgstr "stone"
+
+#~ msgid "stone"
+#~ msgstr "stone"
+
+#~ msgid "Unknown unit type : "
+#~ msgstr "Unknown unit type : "
 
 #~ msgid "Quit Game"
 #~ msgstr "Quit Game"
 
 #~ msgid "Ignore All"
 #~ msgstr "Ignore all"
-
-#~ msgid "Name: "
-#~ msgstr "Name: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Save already exists. Do you want to overwrite it?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Overwrite?"
-
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr "An invalid weapon is selected, possibly by the Python AI."
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Unknown unit type : "
 
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
@@ -9844,40 +9842,35 @@ msgstr "Enable summary uploads"
 #~ "Save names may not contain colons, slashes or backslashes. Please choose "
 #~ "a different name."
 
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Save already exists. Do you want to overwrite it?"
+
+#~ msgid "Name: "
+#~ msgstr "Name: "
+
+#~ msgid "Overwrite?"
+#~ msgstr "Overwrite?"
+
+#~ msgid "stone: "
+#~ msgstr "stone: "
+
 #~ msgid "Remove a trait from a unit. (Does not work yet.)"
 #~ msgstr "Remove a trait from a unit. (Does not work yet.)"
+
+#~ msgid "The replay could not be saved"
+#~ msgstr "The replay could not be saved"
 
 #~ msgid "Name:"
 #~ msgstr "Name:"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Leader"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Turn"
-
-#~ msgid "stones"
-#~ msgstr "stones"
-
-#~ msgid "female^stone"
-#~ msgstr "stone"
-
-#~ msgid "stone"
-#~ msgstr "stone"
-
-#~ msgid "stone: "
-#~ msgstr "stone: "
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Do you really want to download it?"
 
 #~ msgid " included from "
 #~ msgstr " included from "
 
 #~ msgid "Mute an observer."
 #~ msgstr "Mute an observer."
-
-#~ msgid "The replay could not be saved"
-#~ msgstr "The replay could not be saved"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Unchecked script files found:"
