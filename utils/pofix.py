@@ -112,7 +112,7 @@ stringfixes = {
 ("Kill the Lich to get his book and", "Kill the lich to get his book and"),
 ("The Lich is free!", "The lich is free!"),
 ("before we free that Lich","before we free that lich"),
-("great river", "Great River"),
+#("great river", "Great River"),
 ),
 
 "wesnoth-httt" :(
@@ -172,7 +172,7 @@ stringfixes = {
 ),
 
 "wesnoth-low" :(
-("offensive war. This is the council's decision", "offensive war. This is the council's decision."),
+("offensive war. This is the council's decision\"", "offensive war. This is the council's decision.\""),
 ('bring in reinforcements"', 'bring in reinforcements."'),
 ('Sure, minus expenses"', 'Sure, minus expenses."'),
 ('I told ye I\'d be here"', 'I told ye I\'d be here."'),
