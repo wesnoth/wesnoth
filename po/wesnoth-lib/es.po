@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-05-15 11:43+0200\n"
 "PO-Revision-Date: 2009-04-05 12:09-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -599,6 +599,7 @@ msgstr "Conectar"
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
+#: data/gui/default/window/message.cfg:122
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
@@ -849,6 +850,12 @@ msgstr "Escoja su idioma preferido:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Cambiar idioma"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Cerrar"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1175,10 +1182,6 @@ msgstr "Créditos"
 #: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Salir"
-
-#: src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Cerrar"
 
 #: src/filechooser.cpp:74
 msgid "File: "

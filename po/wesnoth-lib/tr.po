@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-05-15 11:43+0200\n"
 "PO-Revision-Date: 2009-04-12 14:55+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -596,6 +596,7 @@ msgstr "Bağlan"
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
+#: data/gui/default/window/message.cfg:122
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
@@ -846,6 +847,12 @@ msgstr "Dil tercihinizi belirtin:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Dili değiştir"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Kapat"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1168,10 +1175,6 @@ msgstr "Teşekkür"
 #: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Çık"
-
-#: src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Kapat"
 
 #: src/filechooser.cpp:74
 msgid "File: "

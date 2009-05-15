@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-03 11:07+0200\n"
+"POT-Creation-Date: 2009-05-15 11:42+0200\n"
 "PO-Revision-Date: 2008-08-29 00:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -145,7 +145,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "In the days of the king Garard I, two strong-points had been built along the "
-"near bank of the Weldyn, south of Soradoc, to stop bandits and Orcish "
+"near bank of the Weldyn, south of Soradoc, to stop bandits and orcish "
 "raiders out of the Estmarks from entering Wesnoth. But in later years the "
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
@@ -1053,7 +1053,7 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:290
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:258
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:259
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:161
 msgid "Hmm..."
 msgstr "恩.."
@@ -1213,7 +1213,8 @@ msgstr "仍然有五人被囚禁在監獄中。如果你能救他們，我們就
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:531
-msgid "You dare to attack ME?!? Go back to your master!"
+#, fuzzy
+msgid "You dare to attack <i>me</i>!? Go back to your master!"
 msgstr "你膽敢攻擊我？！？滾回你的主人那裡吧！"
 
 #. [message]: speaker=Gweddry
@@ -1849,7 +1850,8 @@ msgstr ""
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
-msgid "You human! Call us foul, will you?!?!"
+#, fuzzy
+msgid "You human! Call us foul, will you!?"
 msgstr "你們，人類！說我們骯臟邪惡，是嗎？！？！"
 
 #. [message]: speaker=Pelathsil
@@ -2255,9 +2257,10 @@ msgstr "摧毀橋梁或擊敗所有敵人"
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
+#, fuzzy
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
-"destroyed will be lost (including not recalled units)"
+"destroyed will be lost (including non-recalled units)"
 msgstr ""
 "小提示：當橋樑被摧毀時，您將失去所有不在\"南岸\"的單位（包括沒有被徵召的單"
 "位）"
@@ -2269,37 +2272,38 @@ msgstr "工兵"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:209
+#, fuzzy
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
-"Run for your - what the...?!? Who are you?"
+"Run for your - what the...!? Who are you?"
 msgstr "一切都逝去了！我們得離開北國越快越好！ 快跑 － 這是...？！？你是誰？"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:214
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
 msgstr "我是一名工兵。你現在可能需要我了。我敢打賭你現在想要我炸掉這座橋。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:217
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:218
 msgid "Why would we want to do that?!?"
 msgstr "為什麼我們會想這樣做？！？"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:221
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:222
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you to escape."
 msgstr "我看到獸人追捕你們，如果我摧毀橋梁，他們不可能通過。我要幫助你們逃脫。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:225
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:226
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "我明白了...我想燒掉它是個好主意。你要多少報酬？"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:229
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:230
 msgid ""
 "I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
 "undead. 'T'aint safe 'round 'ere!"
@@ -2307,7 +2311,7 @@ msgstr ""
 "我不需要金子- 我要護衛！每個地方我都看到獸人、不死族。根本沒有一處安全！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:233
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:234
 msgid ""
 "Very well, we'll protect you from the undead. But we can't help you until we "
 "get across this river. Now let's go!"
@@ -2316,7 +2320,7 @@ msgstr ""
 "吧！"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:237
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:238
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
 "my eq'pment is. But ev'ryone not ov'r theah on that side when it blows w'll "
@@ -2326,56 +2330,56 @@ msgstr ""
 "面的人肯定會被獸人殺死！"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:255
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "所以，你想讓我現在炸掉它，是吧？"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:261
 msgid "Yes, blow it up."
 msgstr "沒錯，炸掉它。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:264
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:265
 msgid "Alright! Blast'n time!"
 msgstr "好！爆炸開始！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:277
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:278
 msgid "BOOM!!!"
 msgstr "碰！！！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:297
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:298
 msgid ""
 "Good, we have escaped from these orcs. But where will we go? There are "
 "undead in Wesnoth."
 msgstr "好的，我們從獸人那裡逃出來了。但是現在我們要去哪呢？不死族在韋諾。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:301
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:302
 msgid ""
 "It is not safe here, but we cannot go back north. The orcs are a more "
 "immediate threat."
 msgstr "這兒並不安全，但我們不能回到北方，獸人是更直接的威脅。"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:311
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:312
 msgid "No, wait until later."
 msgstr "不，等一會。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:315
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:316
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "啊？這個時候，我們還得等，呃？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:328
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:329
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "我們沒有足夠的時間炸倒這座橋！獸人會殺了我們！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:337
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "leave the northlands. More orcs will come. But where will we go? There are "
@@ -2385,12 +2389,12 @@ msgstr ""
 "們去哪里？不死族在韋諾。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:350
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:351
 msgid "So what do you propose?"
 msgstr "那你打算怎麼辦？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:355
 msgid ""
 "We cannot go north, for that is where orcs are... we cannot go east, for "
 "that is where the undead come from... we cannot go west, for the ocean lies "
@@ -2402,19 +2406,19 @@ msgstr ""
 "仍然會找到我們。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:359
 msgid ""
 "We could go south, and return to Wesnoth... but I do not know what that "
 "would accomplish."
 msgstr "我們可以往南，返回韋諾...但我不知道怎樣能做到這一點。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:362
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:363
 msgid "It would accomplish nothing! The undead will kill us all!"
 msgstr "什麼也不能做到！不死族會殺掉我們所有人！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:366
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:367
 #, fuzzy
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
@@ -2427,7 +2431,7 @@ msgstr ""
 "沒有機會再這樣做了，希望已經消逝..."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:370
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:371
 msgid ""
 "There is still some hope left. If we return to Wesnoth, we may be able to "
 "aid the king in defeating these invaders. We saw them attack us. And, I "
@@ -2437,21 +2441,21 @@ msgstr ""
 "他們攻擊的洗禮。而且，曾經...給國王提供建議。我知道些不死的弱點。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:374
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:375
 msgid ""
 "Very well. If returning to Wesnoth has any chance of success, it is our best "
 "option. We will go south."
 msgstr "很好，如果回韋諾有成功的機會，這是我們最好的選擇。向南方前進。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:378
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:379
 msgid ""
 "I do not like this. But it appears we will die no matter our course of "
 "action."
 msgstr "我不喜歡這樣。可是看上去不論如何行動，我們都會死。"
 
 #. [message]: speaker=Engineer
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:382
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:383
 msgid ""
 "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
 "c'n stop runnin'..."
@@ -2929,9 +2933,10 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:278
+#, fuzzy
 msgid ""
 "Gweddry, I don't think you should accept. He is bound to bring more than six "
-"Undead to the battle; he will bring an army!"
+"undead to the battle; he will bring an army!"
 msgstr ""
 "柯維卓，我不認為你應該接受。他在戰場上能帶領超過六個的不死族：他能召回你的士"
 "兵！"
@@ -3004,8 +3009,9 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:137
+#, fuzzy
 msgid ""
-"Wait - What just happened? He called more warriors out of the ground! That's "
+"Wait - what just happened? He called more warriors out of the ground! That's "
 "not allowed!"
 msgstr "等等 － 剛發生什麼了？他找來了更多勇士！那是不允許的！"
 

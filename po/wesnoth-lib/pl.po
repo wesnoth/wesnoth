@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-05-15 11:43+0200\n"
 "PO-Revision-Date: 2009-04-02 11:50+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -601,6 +601,7 @@ msgstr "Połącz"
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
+#: data/gui/default/window/message.cfg:122
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
@@ -851,6 +852,12 @@ msgstr "Wybierz preferowany język:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Zmień język"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Zamknij"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1174,10 +1181,6 @@ msgstr "Autorzy"
 #: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Wyjdź"
-
-#: src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Zamknij"
 
 #: src/filechooser.cpp:74
 msgid "File: "

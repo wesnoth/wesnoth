@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-05-15 11:43+0200\n"
 "PO-Revision-Date: 2008-06-06 13:40+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -606,6 +606,7 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
+#: data/gui/default/window/message.cfg:122
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
@@ -870,6 +871,12 @@ msgstr ""
 #, fuzzy
 msgid "Change language"
 msgstr "Muuda kasutatavat keelt"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Sulge"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1203,10 +1210,6 @@ msgstr ""
 #: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Lõpeta"
-
-#: src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Sulge"
 
 #: src/filechooser.cpp:74
 msgid "File: "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-05-15 11:43+0200\n"
 "PO-Revision-Date: 2009-04-09 22:49+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -597,6 +597,7 @@ msgstr "Повежи се"
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
+#: data/gui/default/window/message.cfg:122
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
@@ -847,6 +848,12 @@ msgstr "Изаберите жељени језик:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Промени језик"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Затвори"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1167,10 +1174,6 @@ msgstr "Заслуге"
 #: src/hotkeys.cpp:940
 msgid "Quit"
 msgstr "Напуштање"
-
-#: src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Затвори"
 
 #: src/filechooser.cpp:74
 msgid "File: "
