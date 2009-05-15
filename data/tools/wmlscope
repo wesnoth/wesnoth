@@ -91,7 +91,7 @@
 #
 # sets the warning level.
 
-import sys, os, time, re, getopt, md5
+import sys, os, time, re, getopt, hashlib
 from wesnoth.wmltools import *
 
 def interpret(lines, css):
@@ -438,7 +438,7 @@ Usage: macroscope [options] dirpath
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
                 ifp = open(filename)
-                collisions.append(md5.new(ifp.read()).digest())
+                collisions.append(hashlib.md5(ifp.read()).digest())
                 ifp.close()
             collisions = zip(xref.filelist.flatten(), collisions)
             hashcounts = {}

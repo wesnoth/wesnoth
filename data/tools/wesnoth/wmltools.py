@@ -3,7 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
-import sys, os, re, sre_constants, md5, glob, gzip
+import sys, os, re, sre_constants, hashlib, glob, gzip
 
 resource_extensions = ("png", "jpg", "jpeg", "ogg", "wav", "map", "mask")
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
@@ -403,7 +403,7 @@ class CrossRef:
                         else:
                             name = tokens[1]
                             here = Reference(namespace, filename, n+1, line, args=tokens[2:])
-                            here.hash = md5.new()
+                            here.hash = hashlib.md5()
                             here.docstring = line.lstrip()[8:]	# Strip off #define_
                             state = "macro_header"
                         continue
