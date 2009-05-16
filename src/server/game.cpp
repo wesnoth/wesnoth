@@ -94,13 +94,19 @@ game::~game()
 {
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
-	save_replay();
 
-	user_vector users = all_game_users();
-	for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
-		remove_player(*u, false, true);
+	try {
+		save_replay();
+
+		user_vector users = all_game_users();
+		for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
+			remove_player(*u, false, true);
+		}
+		clear_history();
+	} catch (...) {
+		LOG_GAME << "Caught unknown error while destructing game:\t\""
+			<< name_ << "\" (" << id_ << ")\n";
 	}
-	clear_history();
 }
 
 bool game::allow_observers() const {
