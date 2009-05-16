@@ -16,6 +16,8 @@ import turbogears as tg
 import MySQLdb
 import types
 import configuration
+import evaluators
+
 from turbogears import controllers, expose, flash
 # from wesstats import model
 from turbogears import identity, redirect
@@ -34,17 +36,28 @@ class Root(controllers.RootController):
 			return [l]
 		return l
 
-	def scaled_query(self,curs,query,threshold):
+	def scaled_query(self,curs,query,threshold,evaluator):
 		#list of all the sample sizes
 		curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
 		results = curs.fetchall()
 		sizes = []
 		for result in results:
-			sizes.append(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):])
+			sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):]))
 		sizes.sort()
+		#print sizes
 		#try query on all the sample sizes in increasing order until we get one that meets the threshold
 		for size in sizes:
-			pass	
+			tblname = configuration.DB_TABLE_PREFIX+"SMPL"+str(size)
+			nquery = query.replace("GAMES",tblname)
+			print nquery
+			curs.execute(nquery)
+			results = curs.fetchall()
+			length = evaluator(results)
+			if length > threshold:
+				return results
+		print "samples too small, using entire table"
+		curs.execute(query)
+		return curs.fetchall()
 
 	def fconstruct(self,filters,colname,list):
 		if list[0] == "all":
@@ -69,13 +82,12 @@ class Root(controllers.RootController):
 		
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
 		curs = conn.cursor()
-		Root.scaled_query(self,curs,"a","b")
 		filters = ""
 
 		filters = Root.fconstruct(self,filters,"version",versions)
-
-		curs.execute("SELECT platform, COUNT(platform) FROM GAMES " + filters + " GROUP BY platform")
-		results = curs.fetchall()
+		query = "SELECT platform, COUNT(platform) FROM GAMES "+filters+" GROUP BY platform"
+		results = Root.scaled_query(self,curs,query,100,evaluators.count_eval)
+		
 		total = 0
 		for result in results:
 			total += result[1]
@@ -117,9 +129,9 @@ class Root(controllers.RootController):
 		filters = Root.fconstruct(self,filters,"version",versions)
 		filters = Root.fconstruct(self,filters,"scenario",scens)
 
-		curs.execute("SELECT result, COUNT(result) FROM GAMES " + filters + " GROUP BY result")
-		#curs.execute("SELECT result, COUNT(result) FROM GAMES GROUP BY result")
-		results = curs.fetchall()
+		query = "SELECT result, COUNT(result) FROM GAMES " + filters + " GROUP BY result"
+		#curs.execute("SELECT result, COUNT(result) FROM GAMES " + filters + " GROUP BY result")
+		results = Root.scaled_query(self,curs,query,100,evaluators.count_eval)
 		total = 0
 		for result in results:
 			total += result[1]
