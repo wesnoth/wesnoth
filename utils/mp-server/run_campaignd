@@ -24,7 +24,7 @@ case $VERSION in
 	;;
 esac
 
-SERVERBASE=$HOME/campaignd/$VERSION/
+SERVERBASE=$HOME/campaignd/$VERSION
 
 [ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
 [ -d "$SERVERBASE/data" ] || die "Server '$VERSION' has no data/ dir."
@@ -44,9 +44,8 @@ do
 	EXIT_CODE="$?"
 	echo "exit code: $EXIT_CODE"
 	mv gmon.out gmon.$DATE.out &> /dev/null
-	[ "$EXIT_CODE" != "0" ] || exit
-	[ "$EXIT_CODE" != "1" ] || dietail #"File I/O error."
-	[ "$EXIT_CODE" != "2" ] || dietail #"Could not parse config file."
-	[ "$EXIT_CODE" != "3" ] || dietail #"Could not bind to port."
-	[ "$EXIT_CODE" != "127" ] || dietail #cannot open shared object file
+	case $EXIT_CODE in
+		0)	exit ;;
+		1|2|3|127)	dietail ;; #"File I/O error." #"Could not parse config file." #"Could not bind to port." #cannot open shared object file
+	esac
 done

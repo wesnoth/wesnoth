@@ -89,6 +89,8 @@ do
 	# need to use the recorded path since the build/ symlink might have changed
 	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" &> /dev/null
 	# check for return code if not zero or 98 (port in use) the server should be restarted
-	[ "$EXIT_CODE" != "0" ] || exit 0
-	[ "$EXIT_CODE" != "98" ] || dietail #Could not bind to port
+	case $EXIT_CODE in
+		0)	exit ;;
+		98)	dietail ;; #Could not bind to port
+	esac
 done
