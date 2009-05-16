@@ -43,8 +43,9 @@
 
 #include <string>
 #include <sstream>
-#include <boost/utility/enable_if.hpp>
+#include <boost/mpl/set.hpp>
 #include <boost/type_traits.hpp>
+#include <boost/utility/enable_if.hpp>
 
 #define DEBUG_THROW(id)
 #endif
@@ -143,6 +144,209 @@ struct tlexical_cast<
 		std::stringstream sstr;
 		sstr << value;
 		return sstr.str();
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a long long from a (const) char*.
+ * @note is separate from the other signed types since a long long has a
+ * performance penalty at 32 bit systems.
+ */
+template <class From>
+struct tlexical_cast<
+	  long long
+	, From
+	, void
+	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From> >::type
+	>
+{
+	long long operator()(From value)
+	{
+		DEBUG_THROW("specialized - To long long - From (const) char*");
+
+		char* endptr;
+		int res = strtoll(value, &endptr, 10);
+
+		if (*value == '\0' || *endptr != '\0') {
+			throw bad_lexical_cast();
+		} else {
+			return res;
+		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a long long from a std::string.
+ * @note is separate from the other signed types since a long long has a
+ * performance penalty at 32 bit systems.
+ */
+template <>
+struct tlexical_cast<
+	  long long
+	, std::string
+	>
+{
+	long long operator()(const std::string& value)
+	{
+		DEBUG_THROW("specialized - To long long - From std::string");
+
+		return lexical_cast<long long>(value.c_str());
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a signed type from a (const) char*.
+ */
+template <class To, class From>
+struct tlexical_cast<
+	  To
+	, From
+	, typename boost::enable_if<boost::is_signed<To> >::type
+	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From> >::type
+	>
+{
+	To operator()(From value)
+	{
+		DEBUG_THROW("specialized - To signed - From (const) char*");
+
+		char* endptr;
+		int res = strtol(value, &endptr, 10);
+
+		if (*value == '\0' || *endptr != '\0') {
+			throw bad_lexical_cast();
+		} else {
+			return res;
+		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a signed type from a std::string.
+ */
+template <class To>
+struct tlexical_cast<
+	  To
+	, std::string
+	, typename boost::enable_if<boost::is_signed<To> >::type
+	>
+{
+	To operator()(const std::string& value)
+	{
+		DEBUG_THROW("specialized - To signed - From std::string");
+
+		return lexical_cast<To>(value.c_str());
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a unsigned long long from a (const) char*.
+ * @note is separate from the other unsigned types since a unsigned long long
+ * has a performance penalty at 32 bit systems.
+ */
+template <class From>
+struct tlexical_cast<
+	  unsigned long long
+	, From
+	, void
+	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From> >::type
+	>
+{
+	long long operator()(From value)
+	{
+		DEBUG_THROW(
+				"specialized - To unsigned long long - From (const) char*");
+
+		char* endptr;
+		int res = strtoull(value, &endptr, 10);
+
+		if (*value == '\0' || *endptr != '\0') {
+			throw bad_lexical_cast();
+		} else {
+			return res;
+		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a unsigned long long from a std::string.
+ * @note is separate from the other unsigned types since a unsigned long long
+ * has a performance penalty at 32 bit systems.
+ */
+template <>
+struct tlexical_cast<
+	  unsigned long long
+	, std::string
+	>
+{
+	long long operator()(const std::string& value)
+	{
+		DEBUG_THROW("specialized - To unsigned long long - From std::string");
+
+		return lexical_cast<unsigned long long>(value.c_str());
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a unsigned type from a (const) char*.
+ */
+template <class To, class From>
+struct tlexical_cast<
+	  To
+	, From
+	, typename boost::enable_if<boost::is_unsigned<To> >::type
+	, typename boost::enable_if<boost::mpl::has_key<boost::mpl::set<
+			char*, const char*> , From> >::type
+	>
+{
+	To operator()(From value)
+	{
+		DEBUG_THROW("specialized - To unsigned - From (const) char*");
+
+		char* endptr;
+		int res = strtoul(value, &endptr, 10);
+
+		if (*value == '\0' || *endptr != '\0') {
+			throw bad_lexical_cast();
+		} else {
+			return res;
+		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning a unsigned type from a std::string.
+ */
+template <class To>
+struct tlexical_cast<
+	  To
+	, std::string
+	, typename boost::enable_if<boost::is_unsigned<To> >::type
+	>
+{
+	To operator()(const std::string& value)
+	{
+		DEBUG_THROW("specialized - To unsigned - From std::string");
+
+		return lexical_cast<To>(value.c_str());
 	}
 };
 

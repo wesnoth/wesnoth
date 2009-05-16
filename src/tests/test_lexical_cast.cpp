@@ -12,16 +12,19 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-test"
+
+#include "lexical_cast.hpp"
+
 #include "utils/test_support.hpp"
+
 #include <boost/mpl/vector.hpp>
 #include <boost/mpl/copy.hpp>
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/test/test_case_template.hpp>
 
-#define GETTEXT_DOMAIN "wesnoth-test"
-
-#include "lexical_cast.hpp"
+#include <iostream>
 
 namespace test_throw {
 
@@ -59,7 +62,13 @@ namespace {
 
 bool validate(const char* str)
 {
-	return str == result;
+	if(str != result) {
+		std::cerr << "Received " << str << '\n'
+				<< "Expected " << result << '\n';
+		return false;
+	} else {
+		return true;
+	}
 }
 
 } // namespace
@@ -95,7 +104,88 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 	TEST_CASE(T* const, &);
 	TEST_CASE(const T* const, &);
 }
+
 #undef TEST_CASE
+
+typedef boost::mpl::vector<
+	  signed char
+	, short
+	, int
+	, long> test_lexical_cast_signed_types;
+
+BOOST_AUTO_TEST_CASE_TEMPLATE(
+		test_lexical_cast_signed, T, test_lexical_cast_signed_types)
+{
+	result = "specialized - To signed - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To signed - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			std::string(value)), const char*, validate);
+}
+
+BOOST_AUTO_TEST_CASE(test_lexical_cast_long_long)
+{
+	result = "specialized - To long long - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To long long - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
+			std::string(value)), const char*, validate);
+}
+
+typedef boost::mpl::vector<
+	  bool
+	, unsigned char
+	, unsigned short
+	, unsigned int
+	, unsigned long> test_lexical_cast_unsigned_types;
+
+BOOST_AUTO_TEST_CASE_TEMPLATE(
+		test_lexical_cast_unsigned, T, test_lexical_cast_unsigned_types)
+{
+	result = "specialized - To unsigned - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To unsigned - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			std::string(value)), const char*, validate);
+
+}
+
+BOOST_AUTO_TEST_CASE(test_lexical_cast_unsigned_long_long)
+{
+	result = "specialized - To unsigned long long - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To unsigned long long - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
+			std::string(value)), const char*, validate);
+}
 
 } //  namespace test_throw
 
@@ -109,4 +199,8 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 
 	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2f), "1.2");
 	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2), "1.2");
+
+	BOOST_CHECK_EQUAL(lexical_cast<int>("1"), 1);
+	BOOST_CHECK_EQUAL(lexical_cast<int>("-1"), -1);
+	BOOST_CHECK_EQUAL(lexical_cast<unsigned>("1"), 1);
 }
