@@ -269,6 +269,12 @@ public:
 
 	bool invalidate(const std::set<map_location>& locs);
 
+	/**
+	 * If this set is partially invalidated, invalidate all its hexes.
+	 * Returns if any new invalidation was needed
+	 */
+	bool propagate_invalidation(const std::set<map_location>& locs);
+
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
 	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);

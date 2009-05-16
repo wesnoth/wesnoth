@@ -2329,6 +2329,32 @@ bool display::invalidate(const std::set<map_location>& locs)
 	return ret;
 }
 
+bool display::propagate_invalidation(const std::set<map_location>& locs)
+{
+	if(invalidateAll_)
+		return false;
+
+	bool has_inval = false;
+	std::set<map_location>::const_iterator i = locs.begin();
+	for(; i != locs.end() && !has_inval; ++i) {
+		has_inval = invalidated_.count(*i);
+	}
+
+	// if no invalidation or one but nothing to propagate, return false
+	if (!has_inval || locs.size()<=1)
+		return false;
+
+	// propagate invalidation (but skip the already invalidated hex)
+	bool res = false;
+	std::set<map_location>::const_iterator j = locs.begin();
+	for(; j != locs.end(); ++j) {
+		if(j != i)
+			res |= invalidated_.insert(*j).second;
+	}
+
+	return res; // always true, but cleaner like that
+}
+
 bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 {
 	return invalidate_locations_in_rect(intersect_rects(map_area(),rect));
