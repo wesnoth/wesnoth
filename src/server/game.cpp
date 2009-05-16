@@ -576,7 +576,8 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 			if (muted_nicks != "") {
 				muted_nicks += ", ";
 			}
-			muted_nicks += player_info_->find(*muted_obs)->second.name();
+			muted_nicks += (player_info_->find(*muted_obs) != player_info_->end()
+					? player_info_->find(*muted_obs)->second.name() : "");
 		}
 
 		send_server_message(("Muted observers: " + muted_nicks).c_str(), muter->first);
