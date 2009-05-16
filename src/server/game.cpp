@@ -661,7 +661,7 @@ network::connection game::kick_member(const simple_wml::node& kick,
 	const simple_wml::string_span& username = kick["username"];
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end() || !is_member(user->first)) {
-		send_server_message("Not a member of this game.", kicker->first);
+		send_server_message(("'" + username.to_string() + "' is not a member of this game.").c_str(), kicker->first);
 		return 0;
 	}
 	if (user->first == kicker->first) {
@@ -692,7 +692,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	const simple_wml::string_span& username = ban["username"];
 	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end()) {
-		send_server_message("User not found", banner->first);
+		send_server_message(("User '" + username.to_string() + "' not found.").c_str(), banner->first);
 		return 0;
 	}
 	if (user->first == banner->first) {
@@ -700,9 +700,7 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		return 0;
 	}
 	if (player_is_banned(user->first)) {
-		std::ostringstream stream;
-		stream << username << " is already banned.";
-		send_server_message(stream.str().c_str(), banner->first);
+		send_server_message(("'" + username.to_string() + "' is already banned.").c_str(), banner->first);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
@@ -721,6 +719,35 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	}
 	// Don't return the user if he wasn't in this game.
 	return 0;
+}
+
+void game::unban_user(const simple_wml::node& unban,
+		const player_map::const_iterator unbanner)
+{
+	if (unbanner->first != owner_) {
+		send_server_message("You cannot unban: not the game host.", unbanner->first);
+		return;
+	}
+	const simple_wml::string_span& username = unban["username"];
+	const player_map::const_iterator user = find_user(username);
+	if (user == player_info_->end()) {
+		send_server_message(("User '" + username.to_string() + "' not found.").c_str(), unbanner->first);
+		return;
+	}
+	if (user->first == unbanner->first) {
+		send_server_message("Don't ban yourself, silly.", unbanner->first);
+		return;
+	}
+	if (!player_is_banned(user->first)) {
+		send_server_message(("'" + username.to_string() + "' is not banned.").c_str(), unbanner->first);
+		return;
+	}
+	LOG_GAME << network::ip_address(unbanner->first) << "\t"
+		<< unbanner->second.name() << "\tunbanned: " << username << " ("
+		<< network::ip_address(user->first) << ")\tfrom game:\t\""
+		<< name_ << "\" (" << id_ << ")\n";
+	bans_.erase(std::remove(bans_.begin(), bans_.end(), network::ip_address(user->first)), bans_.end());
+	send_and_record_server_message((username.to_string() + " has been unbanned.").c_str());
 }
 
 void game::process_message(simple_wml::document& data, const player_map::iterator user) {

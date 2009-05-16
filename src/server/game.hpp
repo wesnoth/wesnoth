@@ -86,6 +86,8 @@ public:
 	 */
 	network::connection ban_user(const simple_wml::node& ban, const player_map::const_iterator banner);
 
+	void unban_user(const simple_wml::node& unban, const player_map::const_iterator unbanner);
+
 	/**
 	 * Add a user to the game.
 	 *

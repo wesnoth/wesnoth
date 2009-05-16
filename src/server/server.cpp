@@ -2199,6 +2199,9 @@ void server::process_data_game(const network::connection sock,
 			send_doc(games_and_users_list_, user);
 		}
 		return;
+	} else if (const simple_wml::node* unban = data.child("unban")) {
+		g->unban_user(*unban, pl);
+		return;
 	// If info is being provided about the game state.
 	} else if (const simple_wml::node* info = data.child("info")) {
 		if (!g->is_player(sock)) return;
