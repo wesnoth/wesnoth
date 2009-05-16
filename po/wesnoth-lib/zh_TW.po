@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-15 11:43+0200\n"
-"PO-Revision-Date: 2008-08-11 01:15+0800\n"
+"PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -266,60 +266,58 @@ msgstr "雪地森林"
 #: data/core/terrain.cfg:608 data/core/terrain.cfg:619
 #: data/core/terrain.cfg:641 data/core/terrain.cfg:652
 #: data/core/terrain.cfg:662
-#, fuzzy
 msgid "Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:587 data/core/terrain.cfg:630
 #: data/core/terrain.cfg:673
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "雪丘"
+msgstr "森林雪丘"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:598
 #, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:609
 #, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:620
 #, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:631
 #, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:642
 #, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:663
 #, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:674
 #, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "森林"
+msgstr "森林山丘"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=grassland_flowers
@@ -497,9 +495,8 @@ msgstr "河灘"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:1342
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "濱海"
+msgstr "沿海珊瑚礁"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1356
@@ -525,7 +522,7 @@ msgstr "牆壁"
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:1393 data/core/terrain.cfg:1431
 msgid "Impassable"
-msgstr "高不可攀的大山"
+msgstr "無法通行"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:1404
@@ -553,34 +550,31 @@ msgstr "無法步行"
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "繼續移動"
+msgstr "連結伺服器"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "現在您將連結到伺服器下載模組。"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "伺服器:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "刷新戰爭迷霧"
+msgstr "更新模組"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "移除"
+msgstr "移除模組"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
@@ -588,7 +582,7 @@ msgstr "移除"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "連結"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -618,22 +612,19 @@ msgstr "隨機地圖"
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "地圖生成器"
+msgstr "地圖產生器"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "快捷鍵設定"
+msgstr "設定"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "新地圖"
+msgstr "產生"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -656,7 +647,6 @@ msgstr "高度："
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
 msgstr "創造新地圖"
 
@@ -668,95 +658,86 @@ msgstr "改變地圖大小"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "寬度："
+msgstr "新寬度："
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "寬度："
+msgstr "舊寬度："
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "高度："
+msgstr "新高度："
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "高度："
+msgstr "舊高度："
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "展開/收回方向"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "複製邊界地形"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "改變地圖大小"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
-#, fuzzy
 msgid "Editor Settings"
-msgstr "快捷鍵設定"
+msgstr "編輯器設定"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "使用預設時間系統"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
 msgstr "下一個"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "自定時間設定"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "自動刷新地圖顯示"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "重作"
+msgstr "紅:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "頻率:"
+msgstr "綠:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "藍:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "允許同時開啟多張地圖（MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -851,19 +832,18 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "語言"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "選擇您預設的語言:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
 #: data/gui/default/window/language_selection.cfg:120
-#, fuzzy
 msgid "Change language"
-msgstr "切換語言"
+msgstr "選擇語言"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -875,29 +855,27 @@ msgstr "關閉"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 #, fuzzy
 msgid "Multiplayer command dialog"
-msgstr "多人遊戲設定"
+msgstr "多人對戰封包對話框"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "訊息"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "訊息:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "清除所有信息"
+msgstr "傳送個人訊息"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "好友列表"
+msgstr "好友/封鎖列表"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -923,175 +901,165 @@ msgstr "移除"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "中等"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "原因:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "主題"
+msgstr "時間:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "狀態列表"
+msgstr "狀態"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "踢除"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "封鎖"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "現在您將連線到多人對戰伺服器。"
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "好友列表"
+msgstr "顯示列表"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "儲存遊戲"
+msgstr "新遊戲"
 
 #. [label]
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "遊戲名稱:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
 msgstr "玩家數量："
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "地圖大小:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "時代:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "預設縮放比例"
+msgstr "預設"
 
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "設定密碼"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "使用地圖:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
-msgstr ""
+msgstr "地圖設定"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:332
-#, fuzzy
 msgid "Number of turns"
-msgstr "山地的數量："
+msgstr "回合數："
 
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:355
 msgid "Unlimited"
-msgstr ""
+msgstr "不限"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:373
-#, fuzzy
 msgid "Village gold"
-msgstr "村莊"
+msgstr "村莊資金"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:413
 msgid "Experience modifier"
-msgstr ""
+msgstr "經驗修正"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
-msgstr ""
+msgstr "戰爭迷霧"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
 msgid "Random start time"
-msgstr ""
+msgstr "隨機開始"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:536
-#, fuzzy
 msgid "Create game"
-msgstr "創造新地圖"
+msgstr "新遊戲"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "多人對戰伺服器登入對話框"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "登入"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "登入:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "密碼:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:164
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "儲存密碼"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "密碼提示"
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "多人遊戲設定"
+msgstr "多人對戰"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -1103,87 +1071,86 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"您可以使用官方論壇的帳號和密碼登入官方多人對戰的伺服器。\n"
+"請注意您並不用註冊就可以登入伺服器:但是您如果想要一個帳號時就需要輸入密碼。\n"
+"\n"
+"韋諾之戰官方論壇:http://www.wesnoth.org/forum/繁體中文翻譯團隊:http://"
+"wesnoth-tw.blogspot.com/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
-msgstr ""
+msgstr "登入官方伺服器"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "登錄至韋諾之戰多人對戰伺服器"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
-msgstr ""
+msgstr "登入其他伺服器"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
-msgstr ""
+msgstr "建立伺服器"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "使用官方提供伺服器建立"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
-#, fuzzy
 msgid "Local Game"
-msgstr "讀取遊戲"
+msgstr "單機遊戲"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
+msgstr "在同一台電腦上和AI或別的玩家遊戲"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
-#, fuzzy
 msgid "Name"
-msgstr "名字:"
+msgstr "名字"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
-msgstr ""
+msgstr "地址"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:202
-#, fuzzy
 msgid "Select"
-msgstr "全選"
+msgstr "選擇"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "顯示回合對話框"
+msgstr "教學"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "戰役"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "道路"
+msgstr "讀取"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "模組"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "退出編輯器"
+msgstr "編輯器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1195,7 +1162,7 @@ msgstr "選項"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "製作團隊"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1242,7 +1209,7 @@ msgstr "全螢幕顯示"
 
 #: src/game_preferences_display.cpp:153
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "允許記錄單位動作"
 
 #: src/game_preferences_display.cpp:154
 msgid "Accelerated Speed"
@@ -1459,7 +1426,7 @@ msgstr "選擇遊戲是以視窗模式還是全螢幕模式執行"
 #: src/game_preferences_display.cpp:293
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
-msgstr ""
+msgstr "是否移動地圖視角至目前動作的單位。"
 
 #: src/game_preferences_display.cpp:296
 msgid "Make units move and fight faster"
@@ -1499,7 +1466,7 @@ msgstr "在遊戲大廳玩家列表的玩家的名字前顯示圖標"
 
 #: src/game_preferences_display.cpp:348
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "取消刪除以儲存的密碼（離開時）"
 
 #: src/game_preferences_display.cpp:351
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1514,9 +1481,8 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "顯示所有玩家進入多人遊戲大廳的信息"
 
 #: src/game_preferences_display.cpp:357
-#, fuzzy
 msgid "Find and set path to MP server to host LAN games."
-msgstr "搜尋在多人連線伺服器"
+msgstr "搜尋多人對戰伺服器建立區網遊戲。"
 
 #: src/game_preferences_display.cpp:358
 msgid "View and edit your friends and ignores list"
@@ -1662,7 +1628,7 @@ msgstr "矩形無法置於畫面上"
 
 #: src/gui/auxiliary/canvas.cpp:826
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "字體大小是0。"
 
 #: src/gui/auxiliary/canvas.cpp:891
 msgid "Text doesn't start on canvas."
@@ -1702,20 +1668,19 @@ msgstr "'list_data' 的數值必須跟 'list_definition'有相同的數列。"
 
 #: src/gui/auxiliary/window_builder.cpp:1060
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "標籤值與數值不符。"
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
 msgstr "讀取遊戲"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
-#, fuzzy
 msgid "Load Game..."
-msgstr "讀取遊戲"
+msgstr "讀取遊戲..."
 
 #: src/gui/dialogs/title_screen.cpp:75
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
@@ -1740,7 +1705,7 @@ msgstr "没有設定狀態或界線"
 
 #: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "無法顯示對話框，畫面尺寸不符。"
 
 #: src/hotkeys.cpp:46
 msgid "Next Unit"
@@ -1925,20 +1890,19 @@ msgstr "略過動畫"
 
 #: src/hotkeys.cpp:103
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "離開至桌面"
 
 #: src/hotkeys.cpp:104
-#, fuzzy
 msgid "Close Map"
-msgstr "關閉"
+msgstr "關閉地圖"
 
 #: src/hotkeys.cpp:105
 msgid "Switch Map"
-msgstr ""
+msgstr "切換地圖"
 
 #: src/hotkeys.cpp:107
 msgid "Partial Undo"
-msgstr ""
+msgstr "部份復原"
 
 #: src/hotkeys.cpp:109
 msgid "Load Map"
@@ -1949,54 +1913,48 @@ msgid "Save Map"
 msgstr "儲存地圖"
 
 #: src/hotkeys.cpp:111
-#, fuzzy
 msgid "Save Map As"
-msgstr "儲存地圖"
+msgstr "儲存地圖至"
 
 #: src/hotkeys.cpp:112
 msgid "Revert All Changes"
-msgstr ""
+msgstr "取消所有更動"
 
 #: src/hotkeys.cpp:113
-#, fuzzy
 msgid "Map Information"
-msgstr "地圖生成器"
+msgstr "地圖資訊"
 
 #: src/hotkeys.cpp:115
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "轉換前景和背景地形"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Next Tool"
-msgstr "下一回合"
+msgstr "下一個"
 
 #: src/hotkeys.cpp:117
 msgid "Paint Tool"
-msgstr ""
+msgstr "繪圖"
 
 #: src/hotkeys.cpp:118
 msgid "Fill Tool"
-msgstr ""
+msgstr "填充"
 
 #: src/hotkeys.cpp:119
-#, fuzzy
 msgid "Selection Tool"
-msgstr "全選"
+msgstr "選擇"
 
 #: src/hotkeys.cpp:121
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "設定起始點"
 
 #: src/hotkeys.cpp:122
-#, fuzzy
 msgid "Next Brush"
-msgstr "下一回合"
+msgstr "下一個"
 
 #: src/hotkeys.cpp:123
-#, fuzzy
 msgid "Default Brush"
-msgstr "預設縮放比例"
+msgstr "預設"
 
 #: src/hotkeys.cpp:124
 msgid "Cut"
@@ -2012,7 +1970,7 @@ msgstr "貼上"
 
 #: src/hotkeys.cpp:127
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "匯出選擇座標範圍到剪貼簿"
 
 #: src/hotkeys.cpp:129
 msgid "Select All"
@@ -2020,35 +1978,33 @@ msgstr "全選"
 
 #: src/hotkeys.cpp:131
 msgid "Select Inverse"
-msgstr ""
+msgstr "反向選擇"
 
 #: src/hotkeys.cpp:133
-#, fuzzy
 msgid "Select None"
-msgstr "全選"
+msgstr "取消選擇"
 
 #: src/hotkeys.cpp:135
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "順時針旋轉"
 
 #: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "逆時針旋轉"
 
 #: src/hotkeys.cpp:139
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "水平翻轉"
 
 #: src/hotkeys.cpp:141
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "垂直翻轉"
 
 #: src/hotkeys.cpp:143
 msgid "Rotate Selection"
 msgstr "旋轉選擇區域"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Flip Selection"
 msgstr "填滿選擇區域"
 
@@ -2057,47 +2013,40 @@ msgid "Fill Selection"
 msgstr "填滿選擇區域"
 
 #: src/hotkeys.cpp:149
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "旋轉選擇區域"
+msgstr "產生選擇"
 
 #: src/hotkeys.cpp:151
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "隨機選擇"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
 msgid "Rotate Map"
-msgstr "載入地圖"
+msgstr "旋轉地圖"
 
 #: src/hotkeys.cpp:157
-#, fuzzy
 msgid "Generate Map"
-msgstr "新地圖"
+msgstr "產生地圖"
 
 #: src/hotkeys.cpp:159
 msgid "Apply a Mask"
-msgstr ""
+msgstr "套用遮罩"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Create Mask"
-msgstr "儲存遊戲"
+msgstr "創造遮罩"
 
 #: src/hotkeys.cpp:163
-#, fuzzy
 msgid "Refresh Display"
-msgstr "顯示設定"
+msgstr "刷新顯示"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "刷新戰爭迷霧"
+msgstr "更新地形"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "刷新戰爭迷霧"
+msgstr "自動更新地形"
 
 #: src/hotkeys.cpp:169
 msgid "Refresh Image Cache"
@@ -2105,12 +2054,11 @@ msgstr "圖像刷新暫存"
 
 #: src/hotkeys.cpp:171
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "繪製方格座標"
 
 #: src/hotkeys.cpp:173
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "繪制地形"
+msgstr "繪製地形"
 
 #: src/hotkeys.cpp:178
 msgid "Delay Shroud Updates"
@@ -2280,7 +2228,6 @@ msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
 #: src/preferences_display.cpp:212 src/preferences_display.cpp:280
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "請輸入您要設定的快捷鍵（按Esc取消）"
 
@@ -2328,12 +2275,11 @@ msgid ""
 msgstr "找到一個由超過4個字符描述的地形，受影響的地形是："
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"發現一個錯誤，可能是由于無效的WML導致的\n"
+"發現一個錯誤，可能是由於無效的WML導致的\n"
 "錯誤信息如下："
 
 #: src/wml_exception.cpp:54
