@@ -2131,11 +2131,11 @@ void server::process_data_game(const network::connection sock,
 		}
 		return;
 	// If this is data describing side changes by the host.
-	} else if (data.child("scenario_diff")) {
+	} else if (const simple_wml::node* diff = data.child("scenario_diff")) {
 		if (!g->is_owner(sock)) return;
-		g->level().root().apply_diff(*data.child("scenario_diff"));
-		const simple_wml::node* cfg_change = data.child("scenario_diff")->child("change_child");
-		if ((cfg_change != NULL) && (cfg_change->child("side") != NULL)) {
+		g->level().root().apply_diff(*diff);
+		const simple_wml::node* cfg_change = diff->child("change_child");
+		if (cfg_change && cfg_change->child("side")) {
 			g->update_side_data();
 		}
 		if (g->describe_slots()) {
@@ -2148,9 +2148,8 @@ void server::process_data_game(const network::connection sock,
 		g->send_data(data, sock);
 		return;
 	// If the owner of a side is changing the controller.
-	} else if (data.child("change_controller")) {
-		const simple_wml::node& change = *data.child("change_controller");
-		g->transfer_side_control(sock, change);
+	} else if (const simple_wml::node *change = data.child("change_controller")) {
+		g->transfer_side_control(sock, *change);
 		if (g->describe_slots()) {
 			update_game_in_lobby(g);
 		}
@@ -2165,8 +2164,12 @@ void server::process_data_game(const network::connection sock,
 		g->mute_all_observers();
 		return;
 	// If an observer should be muted.
-	} else if (data.child("mute")) {
-		g->mute_observer(*data.child("mute"), pl);
+	} else if (const simple_wml::node* mute = data.child("mute")) {
+		g->mute_observer(*mute, pl);
+		return;
+	// If an observer should be unmuted.
+	} else if (const simple_wml::node* unmute = data.child("unmute")) {
+		g->unmute_observer(*unmute, pl);
 		return;
 	// The owner is kicking/banning someone from the game.
 	} else if (data.child("kick") || data.child("ban")) {
@@ -2197,11 +2200,10 @@ void server::process_data_game(const network::connection sock,
 		}
 		return;
 	// If info is being provided about the game state.
-	} else if (data.child("info")) {
+	} else if (const simple_wml::node* info = data.child("info")) {
 		if (!g->is_player(sock)) return;
-		const simple_wml::node& info = *data.child("info");
-		if (info["type"] == "termination") {
-			g->set_termination_reason(info["condition"].to_string());
+		if ((*info)["type"] == "termination") {
+			g->set_termination_reason((*info)["condition"].to_string());
 		}
 		return;
 	} else if (data.child("turn")) {

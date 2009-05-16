@@ -66,6 +66,8 @@ public:
 	 */
 	void mute_observer(const simple_wml::node& mute, const player_map::const_iterator muter);
 
+	void unmute_observer(const simple_wml::node& unmute, const player_map::const_iterator unmuter);
+
 	/**
 	 * Kick a member by name.
 	 *
@@ -190,6 +192,7 @@ private:
 	{ return (current_player() == player); }
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
+	void send_muted_observers(const player_map::const_iterator user) const;
 
 	/**
 	 * Figures out which side to take and tells that side to the game owner.

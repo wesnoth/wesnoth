@@ -557,37 +557,46 @@ void game::mute_all_observers() {
 	}
 }
 
-void game::mute_observer(const simple_wml::node& mute, const player_map::const_iterator muter) {
+void game::send_muted_observers(const player_map::const_iterator user) const
+{
+	if (all_observers_muted_) {
+		send_server_message("All observers are muted.", user->first);
+		return;
+	}
+	std::string muted_nicks = "";
+	for (user_vector::const_iterator muted_obs = muted_observers_.begin();
+			muted_obs != muted_observers_.end(); ++muted_obs)
+	{
+		if (muted_nicks != "") {
+			muted_nicks += ", ";
+		}
+		muted_nicks += (player_info_->find(*muted_obs) != player_info_->end()
+				? player_info_->find(*muted_obs)->second.name() : "");
+	}
+
+	send_server_message(("Muted observers: " + muted_nicks).c_str(), user->first);
+}
+
+void game::mute_observer(const simple_wml::node& mute,
+		const player_map::const_iterator muter)
+{
 	if (muter->first != owner_) {
 		send_server_message("You cannot mute: not the game host.", muter->first);
 		return;
 	}
-	const simple_wml::string_span& name = mute["username"];
-	if (name.empty()) {
-		if (all_observers_muted_) {
-			send_server_message("All observers are muted.", muter->first);
-			return;
-		}
-		std::string muted_nicks = "";
-		for (user_vector::const_iterator muted_obs = muted_observers_.begin();
-			 muted_obs != muted_observers_.end(); ++muted_obs)
-		{
-			if (muted_nicks != "") {
-				muted_nicks += ", ";
-			}
-			muted_nicks += player_info_->find(*muted_obs)->second.name();
-		}
-
-		send_server_message(("Muted observers: " + muted_nicks).c_str(), muter->first);
+	const simple_wml::string_span& username = mute["username"];
+	if (username.empty()) {
+		send_muted_observers(muter);
 		return;
 	}
-	const player_map::const_iterator user = find_user(name);
+
+	const player_map::const_iterator user = find_user(username);
 	/**
-	 * @todo FIXME: Maybe rather save muted nicks as a vector of strings and
+	 * @todo FIXME: Maybe rather save muted nicks as a set of strings and
 	 * also allow muting of usernames not in the game.
 	 */
 	if (user == player_info_->end() || !is_observer(user->first)) {
-		send_server_message("Observer not found.", muter->first);
+		send_server_message(("Observer '" + username.to_string() + "' not found.").c_str(), muter->first);
 		return;
 	}
 
@@ -597,15 +606,49 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 		return;
 	}
 	if (is_muted_observer(user->first)) {
-		send_server_message((user->second.name() + " is already muted.").c_str(), muter->first);
+		send_server_message((username.to_string() + " is already muted.").c_str(), muter->first);
 		return;
 	}
-	muted_observers_.push_back(user->first);
 	LOG_GAME << network::ip_address(muter->first) << "\t"
-		<< muter->second.name() << " muted: " << name << " ("
+		<< muter->second.name() << " muted: " << username << " ("
 		<< network::ip_address(user->first) << ")\tin game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
-	send_and_record_server_message((user->second.name() + " has been muted.").c_str());
+	muted_observers_.push_back(user->first);
+	send_and_record_server_message((username.to_string() + " has been muted.").c_str());
+}
+
+void game::unmute_observer(const simple_wml::node& unmute,
+		const player_map::const_iterator unmuter)
+{
+	if (unmuter->first != owner_) {
+		send_server_message("You cannot unmute: not the game host.", unmuter->first);
+		return;
+	}
+	const simple_wml::string_span& username = unmute["username"];
+	if (username.empty()) {
+		muted_observers_.clear();
+		send_and_record_server_message("Everyone has been unmuted.");
+		return;
+	}
+
+	const player_map::const_iterator user = find_user(username);
+	if (user == player_info_->end() || !is_observer(user->first)) {
+		send_server_message(("Observer '" + username.to_string() + "' not found.").c_str(), unmuter->first);
+		return;
+	}
+
+	if (!is_muted_observer(user->first)) {
+		send_server_message((username.to_string() + " is not muted.").c_str(), unmuter->first);
+		return;
+	}
+
+	LOG_GAME << network::ip_address(unmuter->first) << "\t"
+		<< unmuter->second.name() << " unmuted: " << username << " ("
+		<< network::ip_address(user->first) << ")\tin game:\t\""
+		<< name_ << "\" (" << id_ << ")\n";
+	muted_observers_.erase(std::remove(muted_observers_.begin(),
+				muted_observers_.end(), user->first), muted_observers_.end());
+	send_and_record_server_message((username.to_string() + " has been unmuted.").c_str());
 }
 
 network::connection game::kick_member(const simple_wml::node& kick,
@@ -615,8 +658,8 @@ network::connection game::kick_member(const simple_wml::node& kick,
 		send_server_message("You cannot kick: not the game host", kicker->first);
 		return 0;
 	}
-	const simple_wml::string_span& name = kick["username"];
-	const player_map::const_iterator user = find_user(name);
+	const simple_wml::string_span& username = kick["username"];
+	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end() || !is_member(user->first)) {
 		send_server_message("Not a member of this game.", kicker->first);
 		return 0;
@@ -626,10 +669,10 @@ network::connection game::kick_member(const simple_wml::node& kick,
 		return 0;
 	}
 	LOG_GAME << network::ip_address(kicker->first) << "\t"
-		<< kicker->second.name() << "\tkicked: " << name << " ("
+		<< kicker->second.name() << "\tkicked: " << username << " ("
 		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
-	send_and_record_server_message((name.to_string() + " has been kicked.").c_str());
+	send_and_record_server_message((username.to_string() + " has been kicked.").c_str());
 
 	// Tell the user to leave the game.
 	static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
@@ -646,8 +689,8 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		send_server_message("You cannot ban: not the game host", banner->first);
 		return 0;
 	}
-	const simple_wml::string_span& name = ban["username"];
-	const player_map::const_iterator user = find_user(name);
+	const simple_wml::string_span& username = ban["username"];
+	const player_map::const_iterator user = find_user(username);
 	if (user == player_info_->end()) {
 		send_server_message("User not found", banner->first);
 		return 0;
@@ -658,16 +701,16 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	}
 	if (player_is_banned(user->first)) {
 		std::ostringstream stream;
-		stream << name << " is already banned.";
+		stream << username << " is already banned.";
 		send_server_message(stream.str().c_str(), banner->first);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
-		<< banner->second.name() << "\tbanned: " << name << " ("
+		<< banner->second.name() << "\tbanned: " << username << " ("
 		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
-	send_and_record_server_message((name.to_string() + " has been banned.").c_str());
+	send_and_record_server_message((username.to_string() + " has been banned.").c_str());
 	if (is_member(user->first)) {
 		//tell the user to leave the game.
 		static simple_wml::document leave_game("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
