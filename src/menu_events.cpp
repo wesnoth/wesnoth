@@ -2044,12 +2044,17 @@ private:
 				register_command("ban", &chat_command_handler::do_network_send_req_arg,
 					_("Ban and kick a player or observer. If he is not in the"
 					" game but on the server he will only be banned."), "<nick>");
+				register_command("unban", &chat_command_handler::do_network_send_req_arg,
+					_("Unban a user. He does not have to be in the game but on"
+					" the server."), "<nick>");
 				register_command("kick", &chat_command_handler::do_network_send_req_arg,
 					_("Kick a player or observer."), "<nick>");
 				register_command("mute", &chat_command_handler::do_network_send,
 					_("Mute an observer. Without an argument displays the mute status."), "<nick>");
+				register_command("unmute", &chat_command_handler::do_network_send,
+					_("Unmute an observer. Without an argument unmutes everyone."), "<nick>");
 				register_command("muteall", &chat_command_handler::do_network_send,
-					_("Mute all observers."), "");
+					_("Mute/Unmute all observers. (toggles)"), "");
 				register_command("ping", &chat_command_handler::do_network_send,
 					"");
 				register_command("green", &chat_command_handler::do_network_send_req_arg,
@@ -2363,7 +2368,8 @@ private:
 			data.add_child(cmd);
 		} else if (cmd == "query") {
 			data.add_child(cmd)["type"] = args;
-		} else if (cmd == "ban" || cmd == "kick" || cmd == "mute") {
+		} else if (cmd == "ban" || cmd == "unban" || cmd == "kick"
+		|| cmd == "mute" || cmd == "unmute") {
 			data.add_child(cmd)["username"] = args;
 		} else if (cmd == "ping") {
 			data[cmd] = lexical_cast<std::string>(time(NULL));
