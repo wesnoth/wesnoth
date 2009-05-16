@@ -23,36 +23,10 @@
 
 #include "lexical_cast.hpp"
 
-
-
-
-
 namespace test_throw {
 
 #define LEXICAL_CAST_DEBUG
 #include "lexical_cast.hpp"
-
-template<class TU, class TS, bool match> boost::test_tools::predicate_result
-exception_matches(const std::type_info* type)
-{
-	typedef implementation::tlexical_cast<std::string, TU> tclass;
-	static const std::type_info& expected_type =
-		typeid((std::string (tclass::*)	(TU, const boost::true_type&)) &tclass::cast);
-	boost::test_tools::predicate_result res((*type == expected_type) == match);
-	if(!res)
-		res.message() << "Wrong type_info. Expected: " << (match ? "equal" : "not equal") << '\n'
-	        	      << "type:     " << typeid(TS).name() << '\n'
-	        	      << "caught:   " << type->name() << '\n'
-	        	      << "expected: " << expected_type.name() << '\n';
-	return res;
-}
-
-#define TEST_CASE(type_send, type_used, initializer)                           \
-	{                                                                       \
-		type_send val = initializer value;                                            \
-                                                                               \
-		BOOST_CHECK_EXCEPTION(lexical_cast<std::string>(val), const std::type_info*, (exception_matches<type_used, type_send, match::value>)); \
-	}
 
 typedef boost::mpl::vector<
 	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
@@ -78,22 +52,48 @@ typedef boost::mpl::copy<
 	boost::mpl::back_inserter<test_match_types>
 	>::type test_types;
 
+
+namespace {
+
+	std::string result;
+
+bool validate(const char* str)
+{
+	return str == result;
+}
+
+} // namespace
+
+#define TEST_CASE(type_send, initializer)                           \
+	{                                                               \
+	type_send val = initializer value;                              \
+                                                                    \
+	BOOST_CHECK_EXCEPTION(                                          \
+			lexical_cast<std::string>(val), const char*, validate); \
+	}
+
 BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
-	typedef boost::mpl::contains<test_match_types, T> match;
 
-	TEST_CASE(T, T, );
-	TEST_CASE(const T, T, );
+	typedef typename boost::mpl::contains<test_match_types, T>::type test;
+	typedef typename boost::mpl::contains<test_match_types, int >::type match;
 
-	TEST_CASE(T&, T, );
-	TEST_CASE(const T&, T, );
+	result = typeid(test) == typeid(match)
+			? "specialized - To std::string - From integral (pointer)"
+			: "generic";
 
-	TEST_CASE(T*, T*, &);
-	TEST_CASE(const T*, const T*, &);
+	TEST_CASE(T, );
+	TEST_CASE(const T, );
 
-	TEST_CASE(T* const, T*, &);
-	TEST_CASE(const T* const, const T*, &);
+	TEST_CASE(T&, );
+	TEST_CASE(const T&, );
+
+	TEST_CASE(T*, &);
+	TEST_CASE(const T*, &);
+
+	TEST_CASE(T* const, &);
+	TEST_CASE(const T* const, &);
 }
 #undef TEST_CASE
 

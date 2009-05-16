@@ -28,35 +28,25 @@
 #ifndef LEXICAL_CAST_HPP_INCLUDED
 #define LEXICAL_CAST_HPP_INCLUDED
 
-
 #ifdef LEXICAL_CAST_DEBUG
 
-#undef SIGNATURE_2
-
+#undef DEBUG_THROW
 /**
- * Signature for a function with two parameters.
+ * Throws an exception for debugging.
  *
- * This version throws an exception with the typeid of the function used.
- *
- * @param res                     The result type.
- * @param name                    The name of the function.
- * @param p1                      Parameter 1, both type and variable name.
- * @param p2                      Parameter 2, both type and variable name.
+ * @param id                      The unique name to identify the function.
+ *                                @note this name is a user defined string and
+ *                                should not be modified once used!
  */
-#define SIGNATURE_2(res, name, p1, p2) res name(p1, p2) {                      \
-	static const std::type_info& type =                                        \
-		typeid((res (tclass::*)(p1, p2)) &tclass::name);                       \
-	throw(&type);
-
+#define DEBUG_THROW(id) throw id;
 #else
 
 #include <string>
 #include <sstream>
-#include <typeinfo>
+#include <boost/utility/enable_if.hpp>
 #include <boost/type_traits.hpp>
 
-#define SIGNATURE_2(res, name, p1, p2) res name(p1, p2) {
-
+#define DEBUG_THROW(id)
 #endif
 
 /**
@@ -66,8 +56,13 @@
  */
 namespace implementation {
 
-template<typename To, typename From>
-struct tlexical_cast;
+	template<
+		  typename To
+		, typename From
+		, typename ToEnable = void
+		, typename FromEnable = void
+	>
+	struct tlexical_cast;
 
 } // namespace implementation
 
@@ -92,84 +87,62 @@ struct bad_lexical_cast {};
 
 namespace implementation {
 
-/** Fallback if no specialized cast exists. */
-template<typename To, typename From>
-To lexical_cast_generic(From value)
-{
-	To result;
-	std::stringstream sstr;
-
-	if(!(sstr << value && sstr >> result)) {
-		throw bad_lexical_cast();
-	} else {
-		return result;
-	}
-}
-
 /**
- * Base class for the conversion.
+ * Base class for the conversion.                                             
  *
  * Since functions can't be partially specialized we use a class, which can be
  * partially specialized for the conversion.
  *
  * @tparam To                     The type to convert to.
  * @tparam From                   The type to convert from.
+ * @tparam ToEnable               Filter to enable the To type.
+ * @tparam FromEnable             Filter to enable the From type.
  */
-template<typename To, typename From>
+template<
+	  typename To
+	, typename From
+	, typename ToEnable
+	, typename FromEnable
+>
 struct tlexical_cast
 {
-	/**
-	 * The conversion operator.
-	 *
-	 * All (partially) specialized classes need to implement this function to
-	 * do the conversion.
-	 *
-	 * @tparam To                 The type to convert to.
-	 * @tparam From               The type to convert from.
-	 *
-	 * @param value               The value to convert.
-	 *
-	 * @returns                   The converted value.
-	 */
 	To operator()(From value)
 	{
-		return lexical_cast_generic<To/*,
-				typename boost::add_reference<
-				typename boost::add_const<From>::type>::type*/>(value);
+		DEBUG_THROW("generic");
+
+		To result;
+		std::stringstream sstr;
+
+		if(!(sstr << value && sstr >> result)) {
+			throw bad_lexical_cast();
+		} else {
+			return result;
+		}
 	}
 };
-/*
-template<typename To, typename From>
-struct tlexical_cast<To, From*>
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning strings from an integral type or a pointer to an
+ * intergral type.
+ */
+template <typename From>
+struct tlexical_cast<
+	  std::string
+	, From
+	, void
+	, typename boost::enable_if<boost::is_integral<
+			typename boost::remove_pointer<From>::type> >::type
+>
 {
-	To operator()(From* value)
+	std::string operator()(From value)
 	{
-		return lexical_cast_generic<To, const From*>(value);
-	}
-};
-*/
+		DEBUG_THROW("specialized - To std::string - From integral (pointer)");
 
-/** Specialized class to return strings. */
-template<typename From>
-struct tlexical_cast<std::string, From>
-{
-	typedef tlexical_cast<std::string, From> tclass;
-
-	SIGNATURE_2(std::string, cast, From value, const boost::true_type&)
 		std::stringstream sstr;
 		sstr << value;
 		return sstr.str();
-	}
-
-	SIGNATURE_2(std::string, cast, From value, const boost::false_type&)
-
-		return lexical_cast_generic<std::string, From>(value);
-	}
-
-	std::string operator()(From value)
-	{
-		return this->cast(value, boost::is_integral<
-				typename boost::remove_pointer<From>::type>());
 	}
 };
 
