@@ -602,8 +602,9 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 	}
 	muted_observers_.push_back(user->first);
 	LOG_GAME << network::ip_address(muter->first) << "\t"
-		<< muter->second.name() << " muted: " << user->second.name()
-		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
+		<< muter->second.name() << " muted: " << name << " ("
+		<< network::ip_address(user->first) << ")\tin game:\t\""
+		<< name_ << "\" (" << id_ << ")\n";
 	send_and_record_server_message((user->second.name() + " has been muted.").c_str());
 }
 
@@ -625,8 +626,9 @@ network::connection game::kick_member(const simple_wml::node& kick,
 		return 0;
 	}
 	LOG_GAME << network::ip_address(kicker->first) << "\t"
-		<< kicker->second.name() << "\tkicked: " << user->second.name()
-		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
+		<< kicker->second.name() << "\tkicked: " << name << " ("
+		<< network::ip_address(user->first) << ")\tfrom game:\t\""
+		<< name_ << "\" (" << id_ << ")\n";
 	send_and_record_server_message((name.to_string() + " has been kicked.").c_str());
 
 	// Tell the user to leave the game.
@@ -661,7 +663,8 @@ network::connection game::ban_user(const simple_wml::node& ban,
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
-		<< banner->second.name() << "\tbanned: " << name << "\tfrom game:\t\""
+		<< banner->second.name() << "\tbanned: " << name << " ("
+		<< network::ip_address(user->first) << ")\tfrom game:\t\""
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
 	send_and_record_server_message((name.to_string() + " has been banned.").c_str());
