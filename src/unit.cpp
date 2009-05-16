@@ -2962,7 +2962,7 @@ bool unit::invisible(const map_location& loc,
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = get_state(STATE_HIDDEN && get_ability_bool(hides,loc));
+	bool is_inv = get_state(STATE_HIDDEN) && get_ability_bool(hides,loc);
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
