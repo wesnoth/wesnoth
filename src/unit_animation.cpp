@@ -130,6 +130,7 @@ unit_animation::unit_animation(int start_time,
 		src_(),
 		dst_(),
 		invalidated_(false),
+		play_offscreen_(true),
 		overlaped_hex_()
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
@@ -151,7 +152,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	sub_anims_(),
 	unit_anim_(cfg,frame_string),
 	src_(),
-	dst_()
+	dst_(),
+	invalidated_(false),
+	play_offscreen_(true),
+	overlaped_hex_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	foreach (const config::any_child &fr, cfg.all_children_range())
@@ -207,6 +211,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	foreach (const config &filter, cfg.child_range("filter_second_attack")) {
 		secondary_attack_filter_.push_back(filter);
 	}
+	play_offscreen_=utils::string_bool(cfg["offscreen"],true);
 
 }
 
@@ -333,6 +338,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		tmp_anim = *itor;
 		tmp_anim.event_ = utils::split("standing");
+		tmp_anim.play_offscreen_ = false;
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
@@ -477,6 +483,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("standing_anim"))
 	{
 		anim["apply_to"] = "standing,default";
+		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
@@ -485,6 +492,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("idle_anim"))
 	{
 		anim["apply_to"] = "idling";
+		if (anim["offscreen"].empty()) anim["offscreen"] = "no";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
@@ -680,6 +688,14 @@ bool unit_animation::particule::need_update() const
 	return false;
 }
 
+bool unit_animation::particule::need_minimal_update() const
+{
+	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
+		return true;
+	} 
+	return false;
+}
+
 unit_animation::particule::particule(
 	const config& cfg, const std::string frame_string ) :
 		animated<unit_frame>(),
@@ -715,6 +731,19 @@ bool unit_animation::need_update() const
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		if(anim_itor->second.need_update()) return true;
+	}
+	return false;
+}
+
+bool unit_animation::need_minimal_update() const
+{
+	if(!play_offscreen_) {
+		return false;
+	}
+	if(unit_anim_.need_minimal_update()) return true;
+	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		if(anim_itor->second.need_minimal_update()) return true;
 	}
 	return false;
 }
@@ -826,24 +855,33 @@ bool unit_animation::invalidate(const frame_parameters& value)
 {
 	if(invalidated_) return false;
 	game_display*disp = game_display::get_singleton();
+	bool complete_redraw =disp->tile_nearly_on_screen(src_) || disp->tile_nearly_on_screen(dst_);
 	if(overlaped_hex_.empty()) {
-		std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-		overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_,true);
-		for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-			std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_,true);
-			overlaped_hex_.insert(tmp.begin(),tmp.end());
+		if(complete_redraw) {
+			std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+			overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_,true);
+			for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+				std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_,true);
+				overlaped_hex_.insert(tmp.begin(),tmp.end());
+			}
+		} else {
+			// off screen animations only invalidate their own hex, no propagation,
+			// but we stil need this to play sounds
+			overlaped_hex_.insert(src_);
 		}
+
 	}
-	if(need_update() ) {
-		disp->invalidate(overlaped_hex_);
-		invalidated_ = true;
-		return true;
+	if(complete_redraw) {
+		if( need_update()) {
+			disp->invalidate(overlaped_hex_);
+			invalidated_ = true;
+			return true;
+		} else {
+			invalidated_ = disp->propagate_invalidation(overlaped_hex_);
+			return invalidated_;
+		}
 	} else {
-		std::vector<map_location> intersection;
-		set_intersection(overlaped_hex_.begin(),overlaped_hex_.end(),
-				disp->get_invalidated().begin(),disp->get_invalidated().end(),
-				std::back_inserter(intersection));
-		if(!intersection.empty()) {
+		if(need_minimal_update()) {
 			disp->invalidate(overlaped_hex_);
 			invalidated_ = true;
 			return true;
@@ -852,6 +890,9 @@ bool unit_animation::invalidate(const frame_parameters& value)
 		}
 	}
 }
+
+
+
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary)
 {
 	const unit_frame& current_frame= get_current_frame();

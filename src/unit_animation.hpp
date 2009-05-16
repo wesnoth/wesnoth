@@ -47,6 +47,7 @@ class unit_animation
 		void add_frame(int duration, const unit_frame& value,bool force_change =false){ unit_anim_.add_frame(duration,value,force_change) ; };
 
 		bool need_update() const;
+		bool need_minimal_update() const;
 		bool animation_finished() const;
 		bool animation_finished_potential() const;
 		void update_last_draw_time();
@@ -84,6 +85,7 @@ class unit_animation
 			explicit particule(const config& cfg,const std::string frame_string ="frame");
 			virtual ~particule();
 			bool need_update() const;
+			bool need_minimal_update() const;
 			void override(int start_time,int duration, const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="",const std::string layer="");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
@@ -117,6 +119,7 @@ class unit_animation
 		map_location dst_;
 		// optimisation
 		bool invalidated_;
+		bool play_offscreen_;
 		std::set<map_location> overlaped_hex_;
 };
 

@@ -2076,29 +2076,15 @@ bool unit::invalidate(const map_location &loc)
 		const gamemap & map = disp->get_map();
 		const t_translation::t_terrain terrain = map.get_terrain(loc);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
-		if(!params.submerge) params.submerge=	is_flying() ? 0.0 : terrain_info.unit_submerge();
 
-		if(invisible(loc,disp->get_units(),disp->get_teams()) &&
-				params.highlight_ratio > 0.5) {
-			params.highlight_ratio = 0.5;
-		}
-		if(loc == disp->selected_hex() && params.highlight_ratio == 1.0) {
-			params.highlight_ratio = 1.5;
-		}
 		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp->get_zoom_factor());
 		if (is_flying() && height_adjust < 0) {
 			height_adjust = 0;
 		}
 		params.y -= height_adjust;
 		params.halo_y -= height_adjust;
-		if (get_state(STATE_POISONED) ){
-			params.blend_with = disp->rgb(0,255,0);
-			params.blend_ratio = 0.25;
-		}
 		params.image_mod = image_mods();
 
-                //get_animation()->update_last_draw_time();
-		frame_parameters adjusted_params= get_animation()->get_current_params(params);
 		result |= get_animation()->invalidate(params);
 	}
 
@@ -3020,22 +3006,6 @@ unit& unit::clone(bool is_temporary)
 	return *this;
 }
 
-void unit::refresh(const game_display &disp,const map_location &loc)
-{
-	if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
-		set_standing(loc);
-		return;
-	}
-	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_
-	    || incapacitated())
-		return;
-	if (get_current_animation_tick() > next_idling_ + 1000) {
-		// prevent all units animating at the same time
-		set_standing(loc);
-	} else {
-		set_idling(disp, loc);
-	}
-}
 
 unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
 	u_(u), moves_(u.movement_)
