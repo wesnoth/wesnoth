@@ -2336,8 +2336,11 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 
 	bool has_inval = false;
 	std::set<map_location>::const_iterator i = locs.begin();
-	for(; i != locs.end() && !has_inval; ++i) {
-		has_inval = invalidated_.count(*i);
+	for(; i != locs.end(); ++i) {
+		if (invalidated_.count(*i)) {
+			has_inval = true;
+			break; // 'i' will be used later
+		}
 	}
 
 	// if no invalidation or one but nothing to propagate, return false
