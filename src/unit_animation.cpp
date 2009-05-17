@@ -844,7 +844,7 @@ void unit_animation::redraw(const frame_parameters& value)
 {
 
 	invalidated_=false;
-	overlaped_hex_ = std::set<map_location>();
+	overlaped_hex_.clear();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	unit_anim_.redraw(value,src_,dst_,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
