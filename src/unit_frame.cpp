@@ -276,13 +276,13 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	return result;
 }
-frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
+frame_builder & frame_builder::image(const image::locator& image ,const std::string & image_mod)
 {
 	image_ = image;
 	image_mod_ = image_mod;
 	return *this;
 }
-frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal,const std::string& image_mod)
+frame_builder & frame_builder::image_diagonal(const image::locator& image_diagonal,const std::string& image_mod)
 {
 	image_diagonal_ = image_diagonal;
 	image_mod_ = image_mod;

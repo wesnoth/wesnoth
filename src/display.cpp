@@ -686,7 +686,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		for(std::vector<animated<image::locator> >::const_iterator it =
 				terrains->begin(); it != terrains->end(); ++it) {
 
-			image::locator image = preferences::animate_map() ?
+			const image::locator& image = preferences::animate_map() ?
 				it->get_current_frame() : it->get_first_frame();
 
 			// We prevent ToD colouring and brightening of off-map tiles,

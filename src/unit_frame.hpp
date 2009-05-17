@@ -99,8 +99,8 @@ class frame_builder {
 		frame_builder();
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
-		frame_builder & image(const image::locator image ,const std::string & image_mod="");
-		frame_builder & image_diagonal(const image::locator image_diagonal,const std::string & image_mod="");
+		frame_builder & image(const image::locator& image ,const std::string & image_mod="");
+		frame_builder & image_diagonal(const image::locator& image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
 		frame_builder & text(const std::string& text,const  Uint32 text_color);
 		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string& halo_mod);
