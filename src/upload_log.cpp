@@ -227,7 +227,7 @@ config &upload_log::add_game_result(const std::string &str, int turn)
 
 // User starts a game (may be new campaign or saved).
 void upload_log::start(game_state &state, const team &team,
-					   unsigned team_number,
+                       int side_number,
 					   const unit_map &units,
 					   const t_string &turn,
 					   int num_turns)
@@ -256,7 +256,7 @@ void upload_log::start(game_state &state, const team &team,
 	// We seem to have to walk the map to find some units,
 	// and the player's available_units for the rest.
 	for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
-		if (un->second.side() == team_number) {
+		if (un->second.side() == side_number) {
 			all_units.push_back(&un->second);
 		}
 	}

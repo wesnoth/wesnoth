@@ -25,18 +25,18 @@
 class side_context {
 public:
 
-	side_context(unsigned int side) : side_(side) {}
+	side_context(int side) : side_(side) {}
 
 	virtual ~side_context() {}
 
 	/** get the 1-based side number which is controlled by this AI */
-	unsigned int get_side() const { return side_;}
+	int get_side() const { return side_;}
 
-        /** Set the side */
-        virtual void set_side(unsigned int side) { side_ = side; }
+	/** Set the side */
+	virtual void set_side(int side) { side_ = side; }
 
 private:
-	unsigned int side_;
+	int side_;
 
 };
 

@@ -37,7 +37,7 @@ report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
                        const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
-                       unsigned int current_side, unsigned int playing_side,
+                       int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
                        const gamestatus& status, const std::set<std::string>& observers,
                        const config& level, bool show_everything)
@@ -393,7 +393,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		break;
 	}
 	case NUM_UNITS: {
-		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << team_units(units,current_side);
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << side_units(units, current_side);
 		break;
 	}
 	case UPKEEP: {
@@ -422,7 +422,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const t_translation::t_list& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
-			const unsigned int owner = village_owner(mouseover,teams)+1;
+			int owner = village_owner(mouseover, teams) + 1;
 			if(owner == 0 || current_team.fogged(mouseover)) {
 				str << map.get_terrain_info(terrain).income_description();
 			} else if(owner == current_side) {

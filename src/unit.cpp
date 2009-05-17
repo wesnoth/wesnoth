@@ -1205,7 +1205,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if(cfg.has_attribute("side")) {
 		const t_string& t_side = cfg["side"];
 		const std::string& side = t_side;
-		if(this->side() == lexical_cast_default<unsigned>(side)) {
+		if (this->side() == lexical_cast_default<int>(side)) {
 			// pass
 		} else if(std::find(side.begin(),side.end(),',') != side.end()) {
 			const std::vector<std::string>& vals = utils::split(side);
@@ -3020,7 +3020,7 @@ unit_movement_resetter::~unit_movement_resetter()
 	u_.movement_ = moves_;
 }
 
-int team_units(const unit_map& units, unsigned int side)
+int side_units(const unit_map& units, int side)
 {
 	int res = 0;
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -3032,7 +3032,7 @@ int team_units(const unit_map& units, unsigned int side)
 	return res;
 }
 
-int team_units_cost(const unit_map& units, unsigned int side)
+int side_units_cost(const unit_map& units, int side)
 {
 	int res = 0;
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -3044,7 +3044,7 @@ int team_units_cost(const unit_map& units, unsigned int side)
 	return res;
 }
 
-int team_upkeep(const unit_map& units, unsigned int side)
+int side_upkeep(const unit_map& units, int side)
 {
 	int res = 0;
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -3101,8 +3101,8 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 {
 	team_data res;
-	res.units = team_units(units,side);
-	res.upkeep = team_upkeep(units,side);
+	res.units = side_units(units, side);
+	res.upkeep = side_upkeep(units, side);
 	res.villages = tm.villages().size();
 	res.expenses = std::max<int>(0,res.upkeep - res.villages);
 	res.net_income = tm.total_income() - res.expenses;

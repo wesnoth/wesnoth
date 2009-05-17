@@ -120,7 +120,7 @@ public:
 	SDL_Colour xp_color() const;
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
-	unsigned int side() const { return side_; }
+	int side() const { return side_; }
 	std::string side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
 	Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
 	const std::string& team_color() const { return flag_rgb_; }
@@ -404,7 +404,7 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
-	unsigned int side_;
+	int side_;
 	unit_race::GENDER gender_;
 
 	fixed_t alpha_;
@@ -493,13 +493,13 @@ private:
 
 void sort_units(std::vector< unit > &);
 
-/** Returns the number of units of the given side (team). */
-int team_units(const unit_map& units, unsigned int team_num);
+/** Returns the number of units of the side @a side_num. */
+int side_units(const unit_map& units, int side_num);
 
-/** Returns the total cost of units of the given side (team, 1-based). */
-int team_units_cost(const unit_map& units, unsigned int team_num);
+/** Returns the total cost of units of side @a side_num. */
+int side_units_cost(const unit_map& units, int side_num);
 
-int team_upkeep(const unit_map& units, unsigned int team_num);
+int side_upkeep(const unit_map& units, int side_num);
 
 unit_map::iterator find_visible_unit(unit_map& units,
 		const map_location loc,

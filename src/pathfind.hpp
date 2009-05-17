@@ -69,7 +69,7 @@ map_location find_vacant_tile(const gamemap& map,
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams, map_location const &loc,
-               team const &viewing_team, unsigned int side, bool see_all=false);
+               team const &viewing_team, int side, bool see_all=false);
 
 struct cost_calculator
 {

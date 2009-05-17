@@ -534,7 +534,8 @@ void playsingle_controller::play_turn(bool save)
 		std::cout << "Turn " << status_.turn() << ":" << std::endl;
 
 
-	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
+	for (player_number_ = first_player_; player_number_ <= int(teams_.size()); ++player_number_)
+	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
 		try {
@@ -567,7 +568,7 @@ void playsingle_controller::play_turn(bool save)
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			// If a side is dead end the turn.
-			if ((current_team().is_human() && team_units(units_, player_number_) == 0))
+			if (current_team().is_human() && side_units(units_, player_number_) == 0)
 			{
 				turn_info turn_data(gamestate_, status_, *gui_, map_,
 						teams_, player_number_, units_, replay_sender_, undo_stack_);
@@ -887,7 +888,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger_
-				&& player_number_-1 == gui_->viewing_team()
+				&& player_number_ == gui_->viewing_side()
 				&& !events::commands_disabled
 				&& teams_[gui_->viewing_team()].auto_shroud_updates() == false;
 

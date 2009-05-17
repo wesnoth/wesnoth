@@ -54,7 +54,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	current_paths_(),
 	enemy_paths_(false),
 	path_turns_(0),
-	team_num_(1),
+	side_num_(1),
 	enemies_visible_(false),
 	undo_(false),
 	over_route_(false),
@@ -70,9 +70,9 @@ mouse_handler::~mouse_handler()
 	singleton_ = NULL;
 }
 
-void mouse_handler::set_team(const int team_number)
+void mouse_handler::set_side(int side_number)
 {
-	team_num_ = team_number;
+	side_num_ = side_number;
 }
 
 int mouse_handler::drag_threshold() const
@@ -154,8 +154,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		//If the cursor is on WAIT, we don't change it and let the setter
 		//of this state end it
 		if (cursor::get() != cursor::WAIT) {
-			if(selected_unit != units_.end() && selected_unit->second.side() == team_num_
-			   && !selected_unit->second.incapacitated() && !browse) {
+			if (selected_unit != units_.end() &&
+			    selected_unit->second.side() == side_num_ &&
+			    !selected_unit->second.incapacitated() && !browse)
+			{
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
 				}
@@ -202,7 +204,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(selected_unit->second,
-						selected_unit->second.side() != team_num_);
+						selected_unit->second.side() != side_num_);
 				current_route_ = get_route(selected_unit, dest, viewing_team());
 				if(!browse) {
 					gui().set_route(&current_route_);
@@ -215,7 +217,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if (un != units_.end() && current_paths_.destinations.empty() &&
 		    !gui().fogged(un->first))
 		{
-			if (un->second.side() != team_num_) {
+			if (un->second.side() != side_num_) {
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
 
@@ -260,7 +262,7 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
-	if(current == units_.end() || current->second.side() != team_num_
+	if(current == units_.end() || current->second.side() != side_num_
 		|| current->second.attacks_left()==0) {
 		return map_location();
 	}
@@ -358,7 +360,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
 
-	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
+	bool check_shroud = current_team().auto_shroud_updates();
 
 	//we use the last registered highlighted hex
 	//since it's what update our global state
@@ -368,7 +370,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
-	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == team_num_) {
+	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == side_num_) {
 		u->second.set_goto(map_location());
 	}
 
@@ -389,7 +391,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			// so make sure they're valid before attacking
 			u = find_unit(attack_from);
 			unit_map::iterator enemy = find_unit(hex);
-			if(u != units_.end() && u->second.side() == team_num_ &&
+			if(u != units_.end() && u->second.side() == side_num_ &&
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()
 				&& !commands_disabled) {
 
@@ -421,7 +423,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	//otherwise we're trying to move to a hex
 	else if(!commands_disabled && !browse && selected_hex_.valid() && selected_hex_ != hex &&
-		     u != units_.end() && u->second.side() == team_num_ &&
+		     u != units_.end() && u->second.side() == side_num_ &&
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
@@ -455,7 +457,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		next_unit_ = u->first;
 
 		// if it's not the unit's turn, we reset its moves
-		unit_movement_resetter move_reset(u->second, u->second.side() != team_num_);
+		unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
 		const bool teleport = u->second.get_ability_bool("teleport",u->first);
 		current_paths_ = paths(map_,units_,hex,teams_,
 						   false,teleport,viewing_team(),path_turns_);
@@ -467,7 +469,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!browse && !commands_disabled && u->second.side() == gui().viewing_team()+1) {
+		if (!browse && !commands_disabled && u->second.side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 			u->second.set_selecting(gui(), u->first);
 			game_events::fire("select", hex);
@@ -486,7 +488,7 @@ void mouse_handler::deselect_hex() {
 
 void mouse_handler::clear_undo_stack()
 {
-	apply_shroud_changes(undo_stack_,&gui(),map_,units_,teams_,team_num_-1);
+	apply_shroud_changes(undo_stack_, &gui(), map_, units_, teams_, side_num_ - 1);
 	undo_stack_.clear();
 }
 
@@ -701,8 +703,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 {
-	const team &current_team = teams_[team_num_ - 1];
-
 	if (u == units_.end() || u->second.attacks_left() == 0)
 		return;
 
@@ -714,7 +714,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 		unit_map::const_iterator i = units_.find(loc);
 		if (i == units_.end()) continue;
 		const unit &target = i->second;
-		if (current_team.is_enemy(target.side()) && !target.incapacitated())
+		if (current_team().is_enemy(target.side()) && !target.incapacitated())
 			current_paths_.destinations.insert(loc);
 	}
 }
@@ -724,7 +724,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 	if (it == units_.end())
 		return false;
 
-	if(it->second.side() != team_num_ || it->second.user_end_turn()
+	if (it->second.side() != side_num_ || it->second.user_end_turn()
 			|| gui().fogged(it->first) || !unit_can_move(it->first,it->second,units_,map_,teams_))
 		return false;
 

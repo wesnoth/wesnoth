@@ -1655,7 +1655,7 @@ bool get_village(const map_location& loc, game_display& disp,
 }
 
 // Simple algorithm: no maximum number of patients per healer.
-void reset_resting(unit_map& units, unsigned int side)
+void reset_resting(unit_map& units, int side)
 {
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 		if (i->second.side() == side)
@@ -1664,7 +1664,7 @@ void reset_resting(unit_map& units, unsigned int side)
 }
 
 void calculate_healing(game_display& disp, const gamemap& map,
-		unit_map& units, unsigned int side,
+		unit_map& units, int side,
 		const std::vector<team>& teams, bool update_display)
 {
 	DBG_NG << "beginning of healing calculations\n";

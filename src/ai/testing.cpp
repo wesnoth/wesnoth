@@ -42,8 +42,8 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	team& current_team = i.teams[side-1];
 
 	size_t _turn_number = i.state.turn();
-	int _units = team_units(i.units,side);
-	int _units_cost = team_units_cost(i.units,side);
+	int _units = side_units(i.units,side);
+	int _units_cost = side_units_cost(i.units,side);
 	int _gold = current_team.gold();
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();

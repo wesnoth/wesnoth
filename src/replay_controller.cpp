@@ -351,7 +351,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 			// This is necessary for replays in order to show possible movements.
 			for (unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-				if (uit->second.side() != static_cast<size_t>(player_number_)) {
+				if (uit->second.side() != player_number_) {
 					uit->second.new_turn();
 				}
 			}

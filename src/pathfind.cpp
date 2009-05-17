@@ -90,7 +90,7 @@ map_location find_vacant_tile(const gamemap& map,
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams,
-               map_location const &loc, team const &viewing_team, unsigned int side, bool see_all)
+               map_location const &loc, team const &viewing_team, int side, bool see_all)
 {
 	map_location locs[6];
 	const team &current_team = teams[side-1];
@@ -350,7 +350,7 @@ paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
-	if(i->second.side() < 1 || i->second.side() > teams.size()) {
+	if(i->second.side() < 1 || i->second.side() > int(teams.size())) {
 		return;
 	}
 

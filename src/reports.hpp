@@ -94,7 +94,7 @@ namespace reports {
 			       std::map<reports::TYPE, std::string> report_contents,
 			       const gamemap& map, unit_map& units,
 			       const std::vector<team>& teams, const team& current_team,
-			       unsigned int current_side, int unsigned active_side,
+			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
 			       const gamestatus& status, const std::set<std::string>& observers,
 			       const config& level, bool show_everything = false);

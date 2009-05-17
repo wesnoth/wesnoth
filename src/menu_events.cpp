@@ -159,29 +159,28 @@ namespace events{
 		}
 		return msg.str();
 	}
-	void menu_handler::objectives(const unsigned int team_num)
+	void menu_handler::objectives(int side_num)
 	{
 		config cfg;
-		cfg["side"] = str_cast(team_num);
+		cfg["side"] = str_cast(side_num);
 		game_events::handle_event_command("show_objectives",
 			game_events::queued_event("_from_interface", map_location(),
 				map_location(), config()), vconfig(cfg));
-		dialogs::show_objectives(*gui_, level_, teams_[team_num - 1].objectives());
-		teams_[team_num - 1].reset_objectives_changed();
+		team &current_team = teams_[side_num - 1];
+		dialogs::show_objectives(*gui_, level_, current_team.objectives());
+		current_team.reset_objectives_changed();
 	}
 
-	void menu_handler::show_statistics(const unsigned int team_num)
+	void menu_handler::show_statistics(int side_num)
 	{
+		team &current_team = teams_[side_num - 1];
 		// Current Player name
-		const std::string player = teams_[team_num - 1].current_player();
+		const std::string &player = current_team.current_player();
 		//add player's name to title of dialog
 		std::stringstream title_str;
 		title_str <<  _("Statistics") << " (" << player << ")";
-		statistics_dialog stats_dialog(*gui_,
-					       title_str.str(),
-					       team_num,
-					       teams_[team_num - 1].save_id(),
-					       player);
+		statistics_dialog stats_dialog(*gui_, title_str.str(),
+			side_num, current_team.save_id(), player);
 		stats_dialog.show();
 	}
 
@@ -211,7 +210,7 @@ namespace events{
 		int selected = 0;
 
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-			if(i->second.side() != (gui_->viewing_team()+1))
+			if (i->second.side() != gui_->viewing_side())
 				continue;
 
 			std::stringstream row;
@@ -673,12 +672,12 @@ private:
 		return false;
 	}
 
-	void menu_handler::recruit(const bool browse, const unsigned int team_num, const map_location& last_hex)
+	void menu_handler::recruit(bool browse, int side_num, const map_location &last_hex)
 	{
 		if(browse)
 			return;
 
-		team& current_team = teams_[team_num-1];
+		team &current_team = teams_[side_num - 1];
 
 		std::vector<const unit_type*> sample_units;
 
@@ -704,7 +703,8 @@ private:
 			std::stringstream description;
 			description << font::IMAGE << type->image();
 #ifndef LOW_MEM
-			description << "~RC(" << type->flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
+			description << "~RC(" << type->flag_rgb() << '>'
+				<< team::get_side_colour_index(side_num) << ')';
 #endif
 			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
 					<< prefix << type->cost() << " " << sngettext("unit^Gold", "Gold", type->cost());
@@ -722,11 +722,12 @@ private:
 		int recruit_res = 0;
 
 		{
-			dialogs::unit_types_preview_pane unit_preview(*gui_,&map_,sample_units,NULL,team_num);
+			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_,
+				sample_units, NULL, side_num);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			gui::dialog rmenu(*gui_,_("Recruit") + get_title_suffix(team_num),
+			gui::dialog rmenu(*gui_, _("Recruit") + get_title_suffix(side_num),
 					  _("Select unit:") + std::string("\n"),
 					  gui::OK_CANCEL,
 					  gui::dialog::default_style);
@@ -738,19 +739,20 @@ private:
 		}
 
 		if(recruit_res != -1) {
-			do_recruit(item_keys[recruit_res], team_num, last_hex);
+			do_recruit(item_keys[recruit_res], side_num, last_hex);
 		}
 	}
 
-	void menu_handler::repeat_recruit(const unsigned team_num, const map_location& last_hex)
+	void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 	{
 		if(last_recruit_.empty() == false)
-			do_recruit(last_recruit_, team_num, last_hex);
+			do_recruit(last_recruit_, side_num, last_hex);
 	}
 
-	void menu_handler::do_recruit(const std::string& name, const unsigned team_num, const map_location& last_hex)
+	void menu_handler::do_recruit(const std::string &name, int side_num,
+		const map_location &last_hex)
 	{
-		team& current_team = teams_[team_num-1];
+		team &current_team = teams_[side_num - 1];
 
 		//search for the unit to be recruited in recruits
 		int recruit_num = 0;
@@ -778,9 +780,10 @@ private:
 
 			//create a unit with traits
 			recorder.add_recruit(recruit_num, last_hex);
-			unit new_unit(&units_,&map_,&status_,&teams_,&(u_type->second),team_num,true);
+			unit new_unit(&units_, &map_, &status_, &teams_, &u_type->second, side_num, true);
 			map_location loc = last_hex;
-			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,false,(gui_!=NULL));
+			const std::string &msg = recruit_unit(map_, side_num, units_,
+				new_unit, loc, false, gui_);
 			if(msg.empty()) {
 				current_team.spend_gold(u_type->second.cost());
 				statistics::recruit_unit(new_unit);
@@ -793,10 +796,10 @@ private:
 
 				// Dissallow undoing of recruits. Can be enabled again once the unit's
 				// description= key doesn't use random anymore.
-				const bool shroud_cleared = clear_shroud(team_num);
+				const bool shroud_cleared = clear_shroud(side_num);
 				if(shroud_cleared || new_unit.type()->genders().size() > 1
 						|| new_unit.type()->has_random_traits()) {
-					clear_undo_stack(team_num);
+					clear_undo_stack(side_num);
 				} else {
 					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
 				}
@@ -812,21 +815,21 @@ private:
 		}
 	}
 
-	void menu_handler::recall(const unsigned int team_num, const map_location& last_hex)
+	void menu_handler::recall(int side_num, const map_location &last_hex)
 	{
 		if(utils::string_bool(level_["disallow_recall"])) {
 			gui::message_dialog(*gui_,"",_("You are separated from your soldiers and may not recall them")).show();
 			return;
 		}
 
-		player_info *player = gamestate_.get_player(teams_[team_num-1].save_id());
+		team &current_team = teams_[side_num - 1];
+		player_info *player = gamestate_.get_player(current_team.save_id());
 		if(!player) {
-			ERR_NG << "cannot recall a unit for side " << team_num
+			ERR_NG << "cannot recall a unit for side " << side_num
 				<< ", which has no recall list!\n";
 			return;
 		}
 
-		team& current_team = teams_[team_num-1];
 		std::vector<unit>& recall_list = player->available_units;
 
 		//sort the available units into order by value
@@ -861,7 +864,8 @@ private:
 
 				option << IMAGE_PREFIX << u->absolute_image();
 #ifndef LOW_MEM
-				option << "~RC("  << u->team_color() << ">" << team::get_side_colour_index(team_num) << ")";
+				option << "~RC("  << u->team_color() << '>'
+					<< team::get_side_colour_index(side_num) << ')';
 #endif
 				option << COLUMN_SEPARATOR
 					<< u->type_name() << COLUMN_SEPARATOR
@@ -893,7 +897,7 @@ private:
 			int res = 0;
 
 			{
-				gui::dialog rmenu(*gui_,_("Recall") + get_title_suffix(team_num),
+				gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL,
 						  gui::dialog::default_style);
@@ -933,7 +937,8 @@ private:
 					map_location loc = last_hex;
 					recorder.add_recall(res,loc);
 					un.set_game_context(&units_,&map_,&status_,&teams_);
-					const std::string err = recruit_unit(map_,team_num,units_,un,loc,true,(gui_!=NULL));
+					const std::string &err = recruit_unit(map_, side_num, units_,
+						un, loc, true, gui_);
 					if(!err.empty()) {
 						recorder.undo();
 						gui::dialog(*gui_,"",err,gui::OK_ONLY).show();
@@ -941,9 +946,9 @@ private:
 						statistics::recall_unit(un);
 						current_team.spend_gold(game_config::recall_cost);
 
-						const bool shroud_cleared = clear_shroud(team_num);
+						bool shroud_cleared = clear_shroud(side_num);
 						if (shroud_cleared) {
-							clear_undo_stack(team_num);
+							clear_undo_stack(side_num);
 						} else {
 							undo_stack_.push_back(undo_action(un,loc,res));
 						}
@@ -959,30 +964,31 @@ private:
 			}
 		}
 	}
-	void menu_handler::undo(const unsigned int team_num)
+	void menu_handler::undo(int side_num)
 	{
 		if(undo_stack_.empty())
 			return;
 
 		const events::command_disabler disable_commands;
+		team &current_team = teams_[side_num - 1];
 
 		undo_action& action = undo_stack_.back();
 		if (action.is_dismiss) {
 			//undo a dismissal
-			player_info* const player = gamestate_.get_player(teams_[team_num - 1].save_id());
+			player_info *player = gamestate_.get_player(current_team.save_id());
 
 			if(player == NULL) {
-				ERR_NG << "trying to undo a dismissal for side " << team_num
+				ERR_NG << "trying to undo a dismissal for side " << side_num
 					<< ", which has no recall list!\n";
 			} else {
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,action.affected_unit);
 			}
 		} else if(action.is_recall()) {
-			player_info* const player = gamestate_.get_player(teams_[team_num - 1].save_id());
+			player_info *player = gamestate_.get_player(current_team.save_id());
 
 			if(player == NULL) {
-				ERR_NG << "trying to undo a recall for side " << team_num
+				ERR_NG << "trying to undo a recall for side " << side_num
 					<< ", which has no recall list!\n";
 			} else {
 				// Undo a recall action
@@ -992,7 +998,7 @@ private:
 
 				const unit& un = units_.find(action.recall_loc)->second;
 				statistics::un_recall_unit(un);
-				teams_[team_num - 1].spend_gold(-game_config::recall_cost);
+				current_team.spend_gold(-game_config::recall_cost);
 
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,un);
@@ -1004,7 +1010,6 @@ private:
 			}
 		} else if(action.is_recruit()) {
 			// Undo a recruit action
-			team& current_team = teams_[team_num-1];
 			if(units_.count(action.recall_loc) == 0) {
 				return;
 			}
@@ -1017,7 +1022,7 @@ private:
 			//MP_COUNTDOWN take away recruit bonus
 			if(action.countdown_time_bonus)
 			{
-				teams_[team_num-1].set_action_bonus_count(teams_[team_num-1].action_bonus_count() - 1);
+				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
 			}
 
 			// invalidate before erasing allow us
@@ -1043,7 +1048,7 @@ private:
 				//MP_COUNTDOWN take away capture bonus
 				if(action.countdown_time_bonus)
 				{
-					teams_[team_num-1].set_action_bonus_count(teams_[team_num-1].action_bonus_count() - 1);
+					current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
 				}
 			}
 
@@ -1069,7 +1074,7 @@ private:
 
 		recorder.undo();
 
-		const bool shroud_cleared = clear_shroud(team_num);
+		const bool shroud_cleared = clear_shroud(side_num);
 
 		if(shroud_cleared) {
 			gui_->recalculate_minimap();
@@ -1078,18 +1083,19 @@ private:
 		}
 	}
 
-	void menu_handler::redo(const unsigned int team_num)
+	void menu_handler::redo(int side_num)
 	{
 		if(redo_stack_.empty())
 			return;
 
 		const events::command_disabler disable_commands;
+		team &current_team = teams_[side_num - 1];
 
 		undo_action& action = redo_stack_.back();
 		if (action.is_dismiss) {
-			player_info *player=gamestate_.get_player(teams_[team_num - 1].save_id());
+			player_info *player = gamestate_.get_player(current_team.save_id());
 			if(!player) {
-				ERR_NG << "trying to redo a dismiss for side " << team_num
+				ERR_NG << "trying to redo a dismiss for side " << side_num
 					<< ", which has no recall list!\n";
 			} else {
 			//redo a dismissal
@@ -1098,9 +1104,9 @@ private:
 			recall_list.erase(recall_list.begin()+action.recall_pos);
 			}
 		} else if(action.is_recall()) {
-			player_info *player=gamestate_.get_player(teams_[team_num - 1].save_id());
+			player_info *player = gamestate_.get_player(current_team.save_id());
 			if(!player) {
-				ERR_NG << "trying to redo a recall for side " << team_num
+				ERR_NG << "trying to redo a recall for side " << side_num
 					<< ", which has no recall list!\n";
 			} else {
 				// Redo recall
@@ -1109,10 +1115,11 @@ private:
 
 				recorder.add_recall(action.recall_pos,action.recall_loc);
 				un.set_game_context(&units_,&map_,&status_,&teams_);
-				const std::string& msg = recruit_unit(map_,team_num,units_,un,action.recall_loc,true,(gui_!=NULL));
+				const std::string &msg = recruit_unit(map_, side_num,
+					units_, un, action.recall_loc, true, gui_);
 				if(msg.empty()) {
 					statistics::recall_unit(un);
-					teams_[team_num - 1].spend_gold(game_config::recall_cost);
+					current_team.spend_gold(game_config::recall_cost);
 					recall_list.erase(recall_list.begin()+action.recall_pos);
 
 					gui_->invalidate(action.recall_loc);
@@ -1125,7 +1132,6 @@ private:
 			}
 		} else if(action.is_recruit()) {
 			// Redo recruit action
-			team& current_team = teams_[team_num-1];
 			map_location loc = action.recall_loc;
 			const std::string name = action.affected_unit.type_id();
 
@@ -1134,7 +1140,7 @@ private:
 			const std::set<std::string>& recruits = current_team.recruits();
 			for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 				if (r == recruits.end()) {
-					ERR_NG << "trying to redo a recruit for side " << team_num
+					ERR_NG << "trying to redo a recruit for side " << side_num
 						<< ", which does not recruit type \"" << name << "\"\n";
 					assert(false);
 					return;
@@ -1148,7 +1154,8 @@ private:
 			recorder.add_recruit(recruit_num,loc);
 			unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
-			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,false,(gui_!=NULL));
+			const std::string &msg = recruit_unit(map_, side_num, units_,
+				new_unit, loc, false, gui_);
 			if(msg.empty()) {
 				current_team.spend_gold(new_unit.type()->cost());
 				statistics::recruit_unit(new_unit);
@@ -1191,7 +1198,7 @@ private:
 				//MP_COUNTDOWN restore capture bonus
 				if(action.countdown_time_bonus)
 				{
-					teams_[team_num-1].set_action_bonus_count(1 + teams_[team_num-1].action_bonus_count());
+					current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 				}
 			}
 
@@ -1207,22 +1214,22 @@ private:
 		redo_stack_.pop_back();
 	}
 
-	bool menu_handler::clear_shroud(const unsigned int team_num)
+	bool menu_handler::clear_shroud(int side_num)
 	{
-		bool cleared = teams_[team_num - 1].auto_shroud_updates() &&
-			::clear_shroud(*gui_,map_,units_,teams_,team_num-1);
+		bool cleared = teams_[side_num - 1].auto_shroud_updates() &&
+			::clear_shroud(*gui_, map_, units_, teams_, side_num - 1);
 		return cleared;
 	}
 
-	void menu_handler::clear_undo_stack(const unsigned int team_num)
+	void menu_handler::clear_undo_stack(int side_num)
 	{
-		if(teams_[team_num - 1].auto_shroud_updates() == false)
-			apply_shroud_changes(undo_stack_,gui_,map_,units_,teams_,team_num-1);
+		if (!teams_[side_num - 1].auto_shroud_updates())
+			apply_shroud_changes(undo_stack_, gui_, map_, units_, teams_, side_num - 1);
 		undo_stack_.clear();
 	}
 
 	// Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
-	void menu_handler::show_enemy_moves(bool ignore_units, const unsigned int team_num)
+	void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 	{
 		gui_->unhighlight_reach();
 
@@ -1230,7 +1237,9 @@ private:
 		for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 			bool invisible = u->second.invisible(u->first, units_, teams_);
 
-			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible) {
+			if (teams_[side_num - 1].is_enemy(u->second.side()) &&
+			    !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible)
+			{
 				const unit_movement_resetter move_reset(u->second);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
 				const paths& path = paths(map_,units_,
@@ -1241,24 +1250,26 @@ private:
 		}
 	}
 
-	void menu_handler::toggle_shroud_updates(const unsigned int team_num) {
-		bool auto_shroud = teams_[team_num - 1].auto_shroud_updates();
-		// If we're turning automatic shroud updates on, then commit all moves
-		if(auto_shroud == false) update_shroud_now(team_num);
-		teams_[team_num - 1].set_auto_shroud_updates(!auto_shroud);
-	}
-
-	void menu_handler::update_shroud_now(const unsigned int team_num)
+	void menu_handler::toggle_shroud_updates(int side_num)
 	{
-		clear_undo_stack(team_num);
+		team &current_team = teams_[side_num - 1];
+		bool auto_shroud = current_team.auto_shroud_updates();
+		// If we're turning automatic shroud updates on, then commit all moves
+		if (!auto_shroud) update_shroud_now(side_num);
+		current_team.set_auto_shroud_updates(!auto_shroud);
 	}
 
-	bool menu_handler::end_turn(const unsigned int team_num)
+	void menu_handler::update_shroud_now(int side_num)
+	{
+		clear_undo_stack(side_num);
+	}
+
+	bool menu_handler::end_turn(int side_num)
 	{
 		bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 		int units_alive = 0;
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
-			if(un->second.side() == team_num) {
+			if (un->second.side() == side_num) {
 				units_alive++;
 				if(unit_can_move(un->first,un->second,units_,map_,teams_)) {
 					if(!un->second.has_moved()) {
@@ -1317,7 +1328,7 @@ private:
 	void menu_handler::rename_unit(mouse_handler& mousehandler)
 	{
 		const unit_map::iterator un = current_unit(mousehandler);
-		if(un == units_.end() || gui_->viewing_team()+1 != un->second.side())
+		if (un == units_.end() || gui_->viewing_side() != un->second.side())
 			return;
 		if(un->second.unrenamable())
 			return;
@@ -1499,7 +1510,7 @@ private:
 			if (d.option_checked()) {
 				team_name = gui_->labels().team_name();
 			} else {
-				colour = int_to_color(team::get_side_rgb(gui_->viewing_team()+1));
+				colour = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 			}
 			const terrain_label *res = gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), team_name, colour);
 			if (res)
@@ -1517,21 +1528,24 @@ private:
 		}
 	}
 
-	void menu_handler::continue_move(mouse_handler& mousehandler, const unsigned int team_num)
+	void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
 	{
 		unit_map::iterator i = current_unit(mousehandler);
 		if(i == units_.end() || i->second.move_interrupted() == false) {
 			i = units_.find(mousehandler.get_selected_hex());
 			if (i == units_.end() || i->second.move_interrupted() == false) return;
 		}
-		move_unit_to_loc(i,i->second.get_interrupted_move(),true, team_num, mousehandler);
+		move_unit_to_loc(i, i->second.get_interrupted_move(), true,
+			side_num, mousehandler);
 	}
 
-	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target, bool continue_move, const unsigned int team_num, mouse_handler& mousehandler)
+	void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
+		const map_location& target, bool continue_move, int side_num,
+		mouse_handler &mousehandler)
 	{
 		assert(ui != units_.end());
 
-		marked_route route = mousehandler.get_route(ui, target, teams_[team_num - 1]);
+		marked_route route = mousehandler.get_route(ui, target, teams_[side_num - 1]);
 
 		if(route.steps.empty())
 			return;
@@ -1549,10 +1563,12 @@ private:
 		gui_->invalidate_all();
 	}
 
-	void menu_handler::unit_hold_position(mouse_handler& mousehandler, const unsigned int team_num)
+	void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 	{
 		const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-		if(un != units_.end() && un->second.side() == team_num && un->second.movement_left() >= 0) {
+		if (un != units_.end() && un->second.side() == side_num &&
+		    un->second.movement_left() >= 0)
+		{
 			un->second.set_hold_position(!un->second.hold_position());
 			gui_->invalidate(mousehandler.get_selected_hex());
 
@@ -1566,10 +1582,12 @@ private:
 		}
 	}
 
-	void menu_handler::end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num)
+	void menu_handler::end_unit_turn(mouse_handler &mousehandler, int side_num)
 	{
 		const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-		if(un != units_.end() && un->second.side() == team_num && un->second.movement_left() >= 0) {
+		if (un != units_.end() && un->second.side() == side_num &&
+		    un->second.movement_left() >= 0)
+		{
 			un->second.set_user_end_turn(!un->second.user_end_turn());
 			if(un->second.hold_position() && !un->second.user_end_turn()){
 			  un->second.set_hold_position(false);
@@ -2574,7 +2592,7 @@ private:
 		cfg["id"] = preferences::login();
 		cfg["message"] = message;
 
-		const int side = is_observer() ? 0 : gui_->viewing_team()+1;
+		const int side = is_observer() ? 0 : gui_->viewing_side();
 		if(!is_observer()) {
 			cfg["side"] = lexical_cast<std::string>(side);
 		}
@@ -2673,9 +2691,9 @@ private:
 	}
 
 	void menu_handler::do_command(const std::string& str,
-			const unsigned int team_num, mouse_handler& mousehandler)
+			int side_num, mouse_handler &mousehandler)
 	{
-		console_handler ch(*this, mousehandler, team_num);
+		console_handler ch(*this, mousehandler, side_num);
 		ch.dispatch(str);
 	}
 
@@ -3001,10 +3019,10 @@ private:
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,
-			const unsigned int team_num, mouse_handler& /*mousehandler*/)
+		int side_num, mouse_handler& /*mousehandler*/)
 	{
 		try {
-			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(team_num, str));
+			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(side_num, str));
 		} catch(...) {
 			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}
@@ -3015,12 +3033,12 @@ private:
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 	}
 
-	void menu_handler::custom_command(mouse_handler& mousehandler, const unsigned int team_num)
+	void menu_handler::custom_command(mouse_handler &mousehandler, int side_num)
 	{
 		std::vector<std::string> commands = utils::split(preferences::custom_command(), ';');
 		std::vector<std::string>::iterator c = commands.begin();
 		for (; c != commands.end() ; ++c) {
-			do_command(*c, team_num, mousehandler);
+			do_command(*c, side_num, mousehandler);
 		}
 	}
 

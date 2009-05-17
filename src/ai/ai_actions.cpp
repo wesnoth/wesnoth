@@ -127,13 +127,6 @@ bool ai_action_result::is_execution() const
 	return is_execution_;
 }
 
-
-unsigned int ai_action_result::get_side() const
-{
-	return side_;
-}
-
-
 ai_game_info& ai_action_result::get_info() const
 {
 	return ai_manager::get_active_ai_info_for_side(get_side());

@@ -253,6 +253,7 @@ public:
 
 	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
+	int viewing_side() const { return currentTeam_ + 1; }
 
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }

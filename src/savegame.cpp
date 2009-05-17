@@ -938,7 +938,7 @@ void game_savegame::write_game_snapshot()
 	snapshot()["playing_team"] = buf.str();
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		const unsigned int side_num = t - teams_.begin() + 1;
+		int side_num = t - teams_.begin() + 1;
 
 		config& side = snapshot().add_child("side");
 		t->write(side);

@@ -450,7 +450,8 @@ void ai_readonly_context::calculate_moves(const unit_map& units, std::map<map_lo
 			if(!enemy && get_info().map.is_village(dst)) {
 				for(size_t n = 0; n != get_info().teams.size(); ++n) {
 					if(get_info().teams[n].owns_village(dst)) {
-						if(n+1 != get_side() && current_team().is_enemy(n+1) == false) {
+						int side = n + 1;
+						if (get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
 						}
 

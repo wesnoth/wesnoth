@@ -416,7 +416,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
-	mouse_handler_.set_team(team_index+1);
+	mouse_handler_.set_side(team_index + 1);
 
 	// If we are observers we move to watch next team if it is allowed
 	if (team_manager_.is_observer()
@@ -444,7 +444,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		game_events::fire("turn " + str_cast<size_t>(start_turn_));
 		game_events::fire("new turn");
 		game_events::fire("side turn");
-	} else if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
+	} else if (int(team_index) + 1 != first_player_ || status_.turn() > start_turn_) {
 		// Fire side turn event only if real side change occurs,
 		// not counting changes from void to a side
 		game_events::fire("side turn");
@@ -456,13 +456,15 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game, and this is not the player it started with.
-	const bool turn_refresh = ( (status_.turn() > start_turn_) || (loading_game_ && team_index != (first_player_ - 1)) )
+	bool turn_refresh =
+		(status_.turn() > start_turn_ ||
+			(loading_game_ && int(team_index) + 1 != first_player_))
 								&& (status_.turn() > 1);
 
 
 	if(turn_refresh) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-			if(i->second.side() == static_cast<size_t>(player_number_)) {
+			if (i->second.side() == player_number_) {
 				i->second.new_turn();
 			}
 		}
@@ -471,7 +473,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 
 		// If the expense is less than the number of villages owned,
 		// then we don't have to pay anything at all
-		const int expense = team_upkeep(units_,player_number_) -
+		int expense = side_upkeep(units_, player_number_) -
 								current_team.villages().size();
 		if(expense > 0) {
 			current_team.spend_gold(expense);
@@ -487,7 +489,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	const time_of_day &tod = status_.get_time_of_day();
 	current_team.set_time_of_day(int(status_.turn()), tod);
 
-	if(team_index == first_player_ - 1)
+	if (int(team_index) + 1 == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
@@ -644,7 +646,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return !events::commands_disabled &&
 			menu_handler_.current_unit(mouse_handler_) != units_.end() &&
 			!(menu_handler_.current_unit(mouse_handler_)->second.unrenamable()) &&
-			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_team()+1 &&
+			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_side() &&
 			teams_[menu_handler_.current_unit(mouse_handler_)->second.side() - 1].is_human();
 
 	default:
@@ -688,13 +690,13 @@ void play_controller::enter_textbox()
 
 team& play_controller::current_team()
 {
-	assert(player_number_ > 0 && player_number_ <= teams_.size());
+	assert(player_number_ > 0 && player_number_ <= int(teams_.size()));
 	return teams_[player_number_-1];
 }
 
 const team& play_controller::current_team() const
 {
-	assert(player_number_ > 0 && player_number_ <= teams_.size());
+	assert(player_number_ > 0 && player_number_ <= int(teams_.size()));
 	return teams_[player_number_-1];
 }
 

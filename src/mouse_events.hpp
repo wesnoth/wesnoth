@@ -35,7 +35,7 @@ public:
 		gamestatus& status, undo_list& undo_stack, undo_list& redo_stack);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
-	void set_team(const int team_number);
+	void set_side(int side_number);
 	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	void cycle_units(const bool browse, const bool reverse = false);
 	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
@@ -67,7 +67,7 @@ protected:
 
 	team& viewing_team() { return teams_[gui().viewing_team()]; }
 	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
-	team& current_team() { return teams_[team_num_-1]; }
+	team &current_team() { return teams_[side_num_ - 1]; }
 
 	int drag_threshold() const;
 	/**
@@ -107,7 +107,7 @@ private:
 	paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;
-	unsigned int team_num_;
+	int side_num_;
 
 	//cached value indicating whether any enemy units are visible.
 	//computed with enemies_visible()

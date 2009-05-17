@@ -1756,7 +1756,7 @@ int ai::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		const unsigned int owner = static_cast<unsigned int>(village_owner(loc,teams_)+1);
+		int owner = village_owner(loc, teams_) + 1;
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;

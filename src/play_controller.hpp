@@ -149,8 +149,8 @@ protected:
 	const bool loading_game_;
 
 	int first_human_team_;
-	unsigned int player_number_;
-	unsigned int first_player_;
+	int player_number_;
+	int first_player_;
 	unsigned int start_turn_;
 	bool is_host_;
 	bool skip_replay_;

@@ -66,8 +66,8 @@ public:
 	void set_gui(game_display* gui) { gui_ = gui; }
 
 	std::string get_title_suffix(int side_num);
-	void objectives(const unsigned int team_num);
-	void show_statistics(const unsigned int team_num);
+	void objectives(int side_num);
+	void show_statistics(int side_num);
 	void unit_list();
 	void status_table(int selected=0);
 	void save_map();
@@ -77,15 +77,15 @@ public:
 	void speak();
 	void whisper();
 	void shout();
-	void recruit(const bool browse, const unsigned int team_num, const map_location& last_hex);
-	void repeat_recruit(unsigned team_num, const map_location& last_hex);
-	void recall(const unsigned int team_num, const map_location& last_hex);
-	void undo(const unsigned int team_num);
-	void redo(const unsigned int team_num);
-	void show_enemy_moves(bool ignore_units, const unsigned int team_num);
-	void toggle_shroud_updates(const unsigned int team_num);
-	void update_shroud_now(const unsigned int team_num);
-	bool end_turn(const unsigned int team_num);
+	void recruit(bool browse, int side_num, const map_location &last_hex);
+	void repeat_recruit(int side_num, const map_location &last_hex);
+	void recall(int side_num, const map_location& last_hex);
+	void undo(int side_num);
+	void redo(int side_num);
+	void show_enemy_moves(bool ignore_units, int side_num);
+	void toggle_shroud_updates(int side_num);
+	void update_shroud_now(int side_num);
+	bool end_turn(int side_num);
 	void goto_leader(int side_num);
 	void unit_description(mouse_handler& mousehandler);
 	void rename_unit(mouse_handler& mousehandler);
@@ -93,13 +93,13 @@ public:
 	void change_side(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
-	void continue_move(mouse_handler& mousehandler, const unsigned int team_num);
+	void continue_move(mouse_handler &mousehandler, int side_num);
 	void toggle_grid();
-	void unit_hold_position(mouse_handler& mousehandler, const unsigned int team_num);
-	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
+	void unit_hold_position(mouse_handler &mousehandler, int side_num);
+	void end_unit_turn(mouse_handler &mousehandler, int side_num);
 	void search();
 	void user_command();
-	void custom_command(mouse_handler& mousehandler, const unsigned int team_num);
+	void custom_command(mouse_handler& mousehandler, int side_num);
 	void ai_formula();
 	void clear_messages();
 #ifdef USRCMD2
@@ -110,12 +110,12 @@ public:
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
-		bool continue_move, const unsigned int team_num, mouse_handler& mousehandler);
+		bool continue_move, int side_num, mouse_handler &mousehandler);
 	void do_speak();
 	void do_search(const std::string& new_search);
-	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
-	void do_ai_formula(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
-	void clear_undo_stack(const unsigned int team_num);
+	void do_command(const std::string &str, int side_num, mouse_handler &mousehandler);
+	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
+	void clear_undo_stack(int side_num);
 	bool has_team() const;
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
@@ -128,10 +128,10 @@ private:
 	friend class console_handler;
 
 	//void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, unsigned team_num, const map_location& last_hex);
+	void do_recruit(const std::string& name, int side_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
-	bool clear_shroud(const unsigned int team_num);
+	bool clear_shroud(int side_num);
 	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 	void scenario_settings_table(int selected=0);

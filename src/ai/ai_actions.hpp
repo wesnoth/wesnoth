@@ -72,7 +72,7 @@ protected:
 	bool is_execution() const;
 
 	/* return the side number */
-	unsigned int get_side() const;
+	int get_side() const { return side_; }
 
 	/* return real information about the game state */
 	ai_game_info& get_info() const;
@@ -109,7 +109,7 @@ private:
 	bool return_value_checked_;
 
 	/* current side number */
-	unsigned int side_;
+	int side_;
 
 	/* execution status. if 0, all is ok. if !=0, then there were some problems. */
 	int status_;

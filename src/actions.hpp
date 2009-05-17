@@ -245,14 +245,14 @@ bool get_village(const map_location& loc, game_display& disp,
  * Resets resting for all units on this side: should be called after calculate_healing().
  * @todo FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
  */
-void reset_resting(unit_map& units, unsigned int side);
+void reset_resting(unit_map& units, int side);
 
 /**
  * Calculates healing for all units for the given side.
  * Should be called at the beginning of a side's turn.
  */
 void calculate_healing(game_display& disp, const gamemap& map,
-                       unit_map& units, unsigned int side,
+                       unit_map& units, int side,
 					   const std::vector<team>& teams, bool update_display);
 
 /**
