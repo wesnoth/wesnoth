@@ -2576,7 +2576,11 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 
 		// Make a temporary unit move in map and hide the original
 		unit_map::iterator unit_itor = units.find(un->affected_unit.underlying_id());
-		assert(unit_itor != units.end());
+		// check if the unit is still existing (maybe killed by an event)
+		// FIXME: A wml-killed unit will not update the shroud explored before its death
+		if(unit_itor == units.end())
+			continue;
+		
 		unit temporary_unit(unit_itor->second);
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.
