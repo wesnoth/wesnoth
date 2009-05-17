@@ -132,9 +132,6 @@ private:
  * Normally the dialog won't have a button only when the text doesn't fit in
  * the dialog and a scrollbar is used the button will be shown.
  *
- * @todo Since the click close function isn't implemented yet a button is
- * always shown.
- *
  * @param video               The video which contains the surface to draw upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
