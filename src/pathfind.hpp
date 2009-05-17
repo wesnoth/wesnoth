@@ -87,7 +87,10 @@ struct cost_calculator
  */
 struct paths
 {
-	paths() {}
+	paths()
+		: destinations()
+	{
+	}
 
 	// Construct a list of paths for the unit at loc.
 	// - force_ignore_zocs: find the path ignoring ZOC entirely,
@@ -124,6 +127,12 @@ struct paths
 /** Structure which holds a single route and waypoints for special events. */
 struct marked_route
 {
+	marked_route()
+		: steps()
+		, waypoints()
+	{
+	}
+
 	struct waypoint
 	{
 		waypoint(int turns_number = 0, bool in_zoc = false,

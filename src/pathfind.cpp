@@ -124,10 +124,27 @@ struct node {
 	unsigned in;
 
 	node(int moves, int turns, const map_location &p, const map_location &c)
-		: movement_left(moves), turns_left(turns), prev(p), curr(c) { }
-	node() : in(0) { }
+		: movement_left(moves)
+		, turns_left(turns)
+		, prev(p)
+		, curr(c)
+		, in(0)
+	{
+	}
+
+	node()
+		: movement_left(0)
+		, turns_left(0)
+		, prev()
+		, curr()
+		, in(0)
+	{
+	}
+
 	bool operator<(const node& o) const {
-		return turns_left > o.turns_left || (turns_left == o.turns_left && movement_left > o.movement_left);
+		return turns_left > o.turns_left
+				|| (turns_left == o.turns_left
+						&& movement_left > o.movement_left);
 	}
 };
 
@@ -325,6 +342,7 @@ paths::paths(gamemap const &map, unit_map const &units,
 		map_location const &loc, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
+	: destinations()
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
