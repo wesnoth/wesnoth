@@ -283,11 +283,14 @@ public:
 	unit_iterator find(const map_location& loc) ;
 	unit_iterator find(const unit_id_type& id);
 
-	const_unit_iterator find(const map_location& loc) const;
-	const_unit_iterator find(const unit_id_type& id) const;
+	const_unit_iterator find(const map_location &loc) const
+	{ return const_cast<unit_map *>(this)->find(loc); }
+	const_unit_iterator find(const unit_id_type &id) const
+	{ return const_cast<unit_map *>(this)->find(id); }
 
-	const_unit_iterator find_leader(int side) const;
 	unit_iterator find_leader(int side);
+	const_unit_iterator find_leader(int side) const
+	{ return const_cast<unit_map *>(this)->find_leader(side); }
 
 	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 

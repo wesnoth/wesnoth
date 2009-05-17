@@ -68,31 +68,11 @@ unit_map::unit_iterator unit_map::find(const map_location &loc) {
 	return unit_iterator(iter, this);
 }
 
-
-unit_map::const_unit_iterator unit_map::find(const map_location &loc) const {
-	lmap::const_iterator loc_iter = lmap_.find(loc);
-	if (loc_iter == lmap_.end()) {
-		return const_unit_iterator(map_.end(), this);
-	}
-
-	umap::const_iterator iter = map_.find(loc_iter->second);
-
-	assert(is_valid(iter));
-	return const_unit_iterator(iter, this);
-}
-
 unit_map::unit_iterator unit_map::find(const size_t &id) {
 	umap::iterator iter = map_.find(id);
 	iter = is_valid(iter) ? iter : map_.end();
 
 	return unit_iterator(iter, this);
-}
-
-unit_map::const_unit_iterator unit_map::find(const size_t &id) const {
-	umap::const_iterator iter = map_.find(id);
-	iter = is_valid(iter) ? iter : map_.end();
-
-	return const_unit_iterator(iter, this);
 }
 
 unit_map::unit_iterator unit_map::begin() {
@@ -249,16 +229,6 @@ void unit_map::clean_invalid() {
 	num_invalid_ -= num_cleaned;
 
 	LOG_NG << "unit_map::clean_invalid - removed " << num_cleaned << " invalid map entries.\n";
-}
-
-unit_map::const_unit_iterator unit_map::find_leader(int side) const
-{
-	unit_map::const_iterator i = begin(), i_end = end();
-	for (; i != i_end; ++i) {
-		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit())
-			return i;
-	}
-	return i_end;
 }
 
 unit_map::unit_iterator unit_map::find_leader(int side)
