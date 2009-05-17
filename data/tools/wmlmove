@@ -211,8 +211,12 @@ overwrite()
                 print vcdelete(filename)
     else:
         if iclass == None:
-            print "# Defaulting image subclass to 'monsters', use -i to set it."
-            iclass = 'monsters'
+            if not iclass:
+                if uclass:
+                    iclass = uclass
+                else:
+                    iclass = 'monsters'
+                print "# Defaulting image subclass to '%s', use -i to set it." % iclass
         print "# Image moves:"
         for (name, defloc) in srcrefs.fileref.items():
             source = directory_namespace(name)
