@@ -17,6 +17,7 @@ import MySQLdb
 import types
 import configuration
 import evaluators
+import time
 
 from turbogears import controllers, expose, flash
 # from wesstats import model
@@ -37,6 +38,7 @@ class Root(controllers.RootController):
 		return l
 
 	def scaled_query(self,curs,query,threshold,evaluator):
+		s_time = time.time()
 		#list of all the sample sizes
 		curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
 		results = curs.fetchall()
@@ -54,9 +56,11 @@ class Root(controllers.RootController):
 			results = curs.fetchall()
 			length = evaluator(results)
 			if length > threshold:
+				print "query took " + str(time.time()-s_time) + " seconds"
 				return results
 		print "samples too small, using entire table"
 		curs.execute(query)
+		print "query took " + str(time.time()-s_time) + " seconds"
 		return curs.fetchall()
 
 	def fconstruct(self,filters,colname,list):

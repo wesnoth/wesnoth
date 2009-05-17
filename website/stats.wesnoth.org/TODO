@@ -1,6 +1,9 @@
 -change hacked up query syntax into one with variable substitution and character escaping
 	mysqldb variable substitution only works correctly for column values - may NOT be used on statements, table names
 -make the prototype scale to the huge db
-	finished stubbed out scale_query()
 	include a cron.daily entry that can be used to regenerate the subsamples
+	add more evaluator functions - these test whether a query returned enough results
 -add new views
+-code clean up
+	-make object oriented
+	-add a debug mode and a production mode

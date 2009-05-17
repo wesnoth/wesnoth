@@ -45,3 +45,4 @@ def sample(size):
 
 sample(10**6) #1 mil row subsample
 sample(10**5) #100k row subsample
+sample(10**4) #10k row subsample
