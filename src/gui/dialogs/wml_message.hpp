@@ -31,6 +31,7 @@ public:
 	twml_message_(const std::string& title, const std::string& message,
 			const std::string portrait, const bool mirror)
 		: title_(title)
+		, image_("")
 		, message_(message)
 		, portrait_(portrait)
 		, mirror_(mirror)
