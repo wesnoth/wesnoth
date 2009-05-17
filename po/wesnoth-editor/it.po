@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:49+0200\n"
-"PO-Revision-Date: 2009-03-01 11:41+0100\n"
+"PO-Revision-Date: 2009-05-17 12:30+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -100,14 +100,13 @@ msgstr "speciale"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Usa i tasti del mouse sinistro/destro per disegnare terreno 'in primo "
-"piano'/'sullo sfondo'. Tieni premuto Shift per disegnare soltanto sul "
-"livello base."
+"Usa i tasti del mouse sinistro/destro per disegnare terreno di primo piano/"
+"sfondo. Tieni premuto Shift per disegnare soltanto sul livello base. Fai "
+"clic con Ctrl premuto per saggiare il terreno sotto il cursore."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -277,17 +276,19 @@ msgstr "Mappa salvata."
 
 #: src/editor2/editor_controller.cpp:677
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Caricati dati della mappa integrata"
 
 #: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mappa caricata dallo scenario"
 
 #: src/editor2/editor_controller.cpp:688
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Caricato il file di mappa referenziato:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1078
 msgid "Undo"
@@ -335,23 +336,23 @@ msgstr "Sfondo"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "File non trovato"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Il file di mappa sembra uno scenario, ma il valore di map_data non punta ad "
+"un file esistente"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Il file della mappa è vuoto o non è stato trovato"
+msgstr "File di mappa vuoto"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Impossibile salvare la mappa: $msg"
+msgstr "Impossibile salvare nello scenario"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
