@@ -35,7 +35,6 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/language_selection.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -2061,9 +2060,6 @@ static int do_gameloop(int argc, char** argv)
 		} else if(res == gui::TUTORIAL) {
 			game.set_tutorial();
 		} else if(res == gui::NEW_CAMPAIGN) {
-			gui2::show_message(game.disp().video(),
-					"Title", "Message", gui2::tmessage::yes_no_buttons);
-			continue;
 			if(game.new_campaign() == false) {
 				continue;
 			}
