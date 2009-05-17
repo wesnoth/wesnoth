@@ -159,12 +159,13 @@ twindow* tmessage::build_window(CVideo& video)
 	return build(video, get_id(MESSAGE));
 }
 
-/** @todo the caption is ignored. */
 void show_message(CVideo& video, const std::string& title,
-	const std::string& message, const std::string& /*button_caption*/,
+	const std::string& message, const std::string& button_caption,
 	const bool auto_close)
 {
-	tmessage(title, message, auto_close).show(video);
+	tmessage dlg(title, message, auto_close);
+	dlg.set_button_caption(tmessage::ok, button_caption);
+	dlg.show(video);
 }
 
 } // namespace gui2
