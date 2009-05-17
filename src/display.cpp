@@ -2334,28 +2334,22 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 	if(invalidateAll_)
 		return false;
 
-	bool has_inval = false;
+	if(locs.size()<=1)
+		return false; // propagation never needed
+
+	// search the first hex invalidated (if any)
 	std::set<map_location>::const_iterator i = locs.begin();
-	for(; i != locs.end(); ++i) {
-		if (invalidated_.count(*i)) {
-			has_inval = true;
-			break; // 'i' will be used later
-		}
-	}
+	for(; i != locs.end() && invalidated_.count(*i) == 0 ; ++i) {}
 
-	// if no invalidation or one but nothing to propagate, return false
-	if (!has_inval || locs.size()<=1)
-		return false;
+	if (i == locs.end())
+		return false; // no invalidation, don't propagate
 
-	// propagate invalidation (but skip the already invalidated hex)
-	bool res = false;
-	std::set<map_location>::const_iterator j = locs.begin();
-	for(; j != locs.end(); ++j) {
-		if(j != i)
-			res |= invalidated_.insert(*j).second;
-	}
-
-	return res; // always true, but cleaner like that
+	// propagate invalidation
+	// 'i' is already in, but I suspect that splitting the range is bad
+	// especially because locs are often adjacents
+	size_t previous_size = invalidated_.size();
+	invalidated_.insert(locs.begin(), locs.end());
+	return previous_size < invalidated_.size();
 }
 
 bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
