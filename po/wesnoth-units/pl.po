@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-17 12:51+0200\n"
+"POT-Creation-Date: 2009-05-17 17:42+0200\n"
 "PO-Revision-Date: 2009-03-13 19:34+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -683,6 +683,43 @@ msgstr "sztylet"
 msgid "dragonstaff"
 msgstr "smoczy kij"
 
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
+#: data/core/units/dwarves/Explorer.cfg:4
+#, fuzzy
+msgid "Dwarvish Explorer"
+msgstr "Krasnoludzki ulfserker"
+
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
+#: data/core/units/dwarves/Explorer.cfg:26
+msgid ""
+"Dwarven Explorers often travel alone through unknown lands, slaying enemies "
+"and scouting out new deposits of ore and other precious minerals. They are "
+"strong enough to wear full battle armor, giving them added protection "
+"against physical attacks. They are powerful fighters, second only to the "
+"Dwarven lords, and their amazing maneuverability makes them dangerous indeed."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Explorer.cfg:31
+#: data/core/units/dwarves/Steelclad.cfg:42
+#: data/core/units/dwarves/Lord.cfg:42
+#: data/core/units/undead/Skele_Death_Knight.cfg:59
+msgid "battle axe"
+msgstr "topór bojowy"
+
+#. [attack]: type=blade
+#: data/core/units/dwarves/Scout.cfg:26 data/core/units/dwarves/Scout.cfg:34
+#: data/core/units/dwarves/Pathfinder.cfg:27
+#: data/core/units/dwarves/Pathfinder.cfg:35
+#: data/core/units/dwarves/Explorer.cfg:40
+#: data/core/units/dwarves/Fighter.cfg:47
+#: data/core/units/undead/Skele_Deathblade.cfg:149
+#: data/core/units/undead/Skele_Revenant.cfg:30
+#: data/core/units/undead/Skeleton.cfg:106
+#: data/core/units/undead/Skele_Draug.cfg:30
+msgid "axe"
+msgstr "topór"
+
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
@@ -699,15 +736,6 @@ msgstr ""
 "Krasnoludzcy wojownicy dzierżą potężne topory bojowe i młoty, co sprawia, że "
 "sieją postrach w walce wręcz. Najlepiej sprawdzają się w górach i pod "
 "ziemią. Choć są powolni, z nadwyżką nadrabiają to siłą i wytrzymałością."
-
-#. [attack]: type=blade
-#: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/undead/Skele_Deathblade.cfg:149
-#: data/core/units/undead/Skele_Revenant.cfg:30
-#: data/core/units/undead/Skeleton.cfg:106
-#: data/core/units/undead/Skele_Draug.cfg:30
-msgid "axe"
-msgstr "topór"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:51
@@ -764,16 +792,23 @@ msgstr ""
 "przemieszczają się powoli, są żywym dowodem waleczności ich ludu."
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Steelclad.cfg:42
-#: data/core/units/dwarves/Lord.cfg:42
-#: data/core/units/undead/Skele_Death_Knight.cfg:59
-msgid "battle axe"
-msgstr "topór bojowy"
-
-#. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:60
 msgid "hatchet"
 msgstr "siekiera"
+
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
+#: data/core/units/dwarves/Pathfinder.cfg:4
+#, fuzzy
+msgid "Dwarvish Pathfinder"
+msgstr "Krasnoludzki grzmotomiot"
+
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
+#: data/core/units/dwarves/Pathfinder.cfg:22
+msgid ""
+"Dwarvish Pathfinders are faster, stronger and even deadlier with their axes "
+"than normal dwarvish scouts. They often race ahead of the main force, "
+"scouting out unfamiliar terrain and securing villages and chokepoints."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
@@ -802,6 +837,20 @@ msgstr "młot runiczny"
 #: data/core/units/dwarves/Runemaster.cfg:47
 msgid "lightning bolt"
 msgstr "błyskawica"
+
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
+#: data/core/units/dwarves/Scout.cfg:4
+#, fuzzy
+msgid "Dwarvish Scout"
+msgstr "Elficki zwiadowca"
+
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
+#: data/core/units/dwarves/Scout.cfg:21
+msgid ""
+"Dwarvish Scouts explore both above and below ground. They are adept at both "
+"fighting hand to hand with their axes and throwing them, but trade away the "
+"full endurance of dwarvish line fighters in return for superior mobility."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
