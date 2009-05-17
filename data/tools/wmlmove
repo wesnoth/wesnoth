@@ -39,24 +39,21 @@ The --delete option removes a unit and its associated resources.
 
 The --listspaces option lists all namespace identifiers.
 
-The --imageclass option may be used to insert a directory path
-segment into each destination filename just before the basename.
-This is useful for moves to core; you typically will need to say
-(for example) --imageclass monsters or --imageclass undead to get
-images associated with a campaign to the right subdirectory of
-core/images/units.
+The --imageclass option may be used to insert a directory path segment
+into each destination filename just before the basename.  Normally you
+will not need to do this, as the image class will be deduced from the
+second argument.
 
 Note: After performing a move generated with this command, use
 wmlscope to check that you have not left any references to the moved
 units dangling.
 
 Also be aware that this tool does nothing to update the unit
-translation files, nor does it fix the textdomain directive
-of the unit.
+translation files.
 
 Here is an example:
 
-   wmlmove --imageclass=elves-wood --unitclass=elves Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core::humans 
+   wmlmove Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core::elves
 
 ''' 
 
