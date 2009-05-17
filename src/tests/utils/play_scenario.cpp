@@ -116,14 +116,17 @@ namespace test_utils {
 		play_game(get_fake_display(), state, game_config_, no_upload);
 	}
 
-	map_location play_scenario::find_unit_loc(const std::string& id)
+	std::string play_scenario::get_unit_id(const map_location &loc)
 	{
 		if (!end_pos_)
-			return map_location(-133,-133);
+			return std::string();
 
 		end_position_collector* end = static_cast<end_position_collector*>(end_pos_.get());
 
-		return end->get_units().find(id)->first;
+		unit_map::iterator it = end->get_units().find(loc);
+		if (it == end->get_units().end())
+			return std::string();
+		return it->second.id();
 	}
 
 }

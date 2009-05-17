@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE( test_move )
 	scenario.play();
 
 	// Remember that map_location() handles automaticaly transition to 1 based from 0 based locations
-	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), map_location(14,4));
+	BOOST_CHECK_EQUAL(scenario.get_unit_id(map_location(14, 4)), "side_1_leader");
 }
 
 

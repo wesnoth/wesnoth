@@ -88,7 +88,7 @@ namespace test_utils {
 
 			void add_formula_command(const std::string& command);
 
-			map_location find_unit_loc(const std::string& id);
+			std::string get_unit_id(const map_location &loc);
 	};
 }
 
