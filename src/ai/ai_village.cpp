@@ -222,7 +222,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 			if(units_.count(i->first) == 0) {
 				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
-				leader = find_leader(units_, get_side());
+				leader = units_.find_leader(get_side());
 
 				// If we didn't make it to the destination, it means we were ambushed.
 				if(loc != i->first) {

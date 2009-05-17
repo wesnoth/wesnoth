@@ -1622,7 +1622,7 @@ bool get_village(const map_location& loc, game_display& disp,
 		return false;
 	}
 
-	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
+	const bool has_leader = units.find_leader(team_num + 1) != units.end();
 	bool grants_timebonus = false;
 
 	// We strip the village off all other sides, unless it is held by an ally
@@ -1652,26 +1652,6 @@ bool get_village(const map_location& loc, game_display& disp,
 	}
 
 	return false;
-}
-
-unit_map::iterator find_leader(unit_map& units, int side)
-{
-	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if(static_cast<int>(i->second.side()) == side && i->second.can_recruit())
-			return i;
-	}
-
-	return units.end();
-}
-
-unit_map::const_iterator find_leader(const unit_map& units, int side)
-{
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(static_cast<int>(i->second.side()) == side && i->second.can_recruit())
-			return i;
-	}
-
-	return units.end();
 }
 
 // Simple algorithm: no maximum number of patients per healer.

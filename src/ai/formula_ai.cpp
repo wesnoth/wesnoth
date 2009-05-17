@@ -2455,7 +2455,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_leader")
 	{
-		unit_map::const_iterator i = team_leader(get_side(), get_info().units);
+		unit_map::const_iterator i = get_info().units.find_leader(get_side());
 		if(i == get_info().units.end()) {
 			return variant();
 		}

@@ -500,7 +500,7 @@ int team_units(const unit_map& units, unsigned int team_num);
 int team_units_cost(const unit_map& units, unsigned int team_num);
 
 int team_upkeep(const unit_map& units, unsigned int team_num);
-unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
+
 unit_map::iterator find_visible_unit(unit_map& units,
 		const map_location loc,
 		const gamemap& map,

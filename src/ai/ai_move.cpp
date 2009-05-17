@@ -910,7 +910,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
-	const unit_map::iterator leader = find_leader(units_,get_side());
+	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}

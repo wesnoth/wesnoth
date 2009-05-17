@@ -289,6 +289,9 @@ public:
 	const_unit_iterator find(const unit_id_type& id) const;
 	const_unit_iterator find(const std::string& id) const;
 
+	const_unit_iterator find_leader(int side) const;
+	unit_iterator find_leader(int side);
+
 	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 
 	/**

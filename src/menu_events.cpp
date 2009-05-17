@@ -141,18 +141,18 @@ namespace events{
 		return textbox_info_;
 	}
 
-	std::string menu_handler::get_title_suffix(int team_num)
+	std::string menu_handler::get_title_suffix(int side_num)
 	{
 		int controlled_recruiters = 0;
 		for(size_t i = 0; i < teams_.size(); ++i) {
 			if(teams_[i].is_human() && !teams_[i].recruits().empty()
-			&& team_leader(i+1, units_) != units_.end()) {
+			&& units_.find_leader(i + 1) != units_.end()) {
 			++controlled_recruiters;
 			}
 		}
 		std::stringstream msg;
 		if(controlled_recruiters >= 2) {
-			const unit_map::const_iterator leader = team_leader(team_num, units_);
+			unit_map::const_iterator leader = units_.find_leader(side_num);
 			if(leader != units_.end() && !leader->second.name().empty()) {
 				msg << " (" << leader->second.name(); msg << ")";
 			}
@@ -401,7 +401,7 @@ private:
 
 			const team_data data = calculate_team_data(teams_[n],n+1,units_);
 
-			const unit_map::const_iterator leader = team_leader(n+1,units_);
+			unit_map::const_iterator leader = units_.find_leader(n + 1);
 			std::string leader_name;
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
@@ -515,7 +515,7 @@ private:
 			settings_table_empty = false;
 
 			std::stringstream str;
-			const unit_map::const_iterator leader = team_leader(n+1, units_);
+			unit_map::const_iterator leader = units_.find_leader(n + 1);
 
 			if(leader != units_.end()) {
 				// Add leader image. If it's fogged
@@ -1297,11 +1297,11 @@ private:
 		return true;
 	}
 
-	void menu_handler::goto_leader(const unsigned int team_num)
+	void menu_handler::goto_leader(int side_num)
 	{
-		const unit_map::const_iterator i = team_leader(team_num,units_);
+		unit_map::const_iterator i = units_.find_leader(side_num);
 		if(i != units_.end()) {
-			clear_shroud(team_num);
+			clear_shroud(side_num);
 			gui_->scroll_to_tile(i->first,game_display::WARP);
 		}
 	}

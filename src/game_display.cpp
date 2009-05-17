@@ -248,7 +248,7 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 
 void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type,bool force)
 {
-	const unit_map::iterator leader = find_leader(units,side);
+	unit_map::const_iterator leader = units.find_leader(side);
 
 	if(leader != units_.end()) {
 		// YogiHH: I can't see why we need another key_handler here,

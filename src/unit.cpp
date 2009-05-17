@@ -3056,17 +3056,6 @@ int team_upkeep(const unit_map& units, unsigned int side)
 	return res;
 }
 
-unit_map::const_iterator team_leader(unsigned int side, const unit_map& units)
-{
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.can_recruit() && i->second.side() == side) {
-			return i;
-		}
-	}
-
-	return units.end();
-}
-
 unit_map::iterator find_visible_unit(unit_map& units,
 		const map_location loc,
 		const gamemap& map,

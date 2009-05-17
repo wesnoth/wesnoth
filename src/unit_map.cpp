@@ -273,3 +273,22 @@ void unit_map::clean_invalid() {
 	LOG_NG << "unit_map::clean_invalid - removed " << num_cleaned << " invalid map entries.\n";
 }
 
+unit_map::const_unit_iterator unit_map::find_leader(int side) const
+{
+	unit_map::const_iterator i = begin(), i_end = end();
+	for (; i != i_end; ++i) {
+		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit())
+			return i;
+	}
+	return i_end;
+}
+
+unit_map::unit_iterator unit_map::find_leader(int side)
+{
+	unit_map::iterator i = begin(), i_end = end();
+	for (; i != i_end; ++i) {
+		if (static_cast<int>(i->second.side()) == side && i->second.can_recruit())
+			return i;
+	}
+	return i_end;
+}

@@ -153,7 +153,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if(index < teams_.size()) {
 			if (!player.empty())
 				teams_[index].set_current_player(player);
-			const unit_map::iterator leader = find_leader(units_, side);
+			unit_map::iterator leader = units_.find_leader(side);
 			bool restart = gui_.get_playing_team() == index;
 			if(!player.empty() && leader != units_.end())
 				leader->second.rename(player);
@@ -197,7 +197,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			throw network::error("");
 		}
 
-		const unit_map::iterator leader = find_leader(units_,side);
+		unit_map::iterator leader = units_.find_leader(side);
 		const bool have_leader = (leader != units_.end());
 
 		if (controller == "ai"){

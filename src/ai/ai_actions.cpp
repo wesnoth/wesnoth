@@ -387,7 +387,7 @@ bool ai_recruit_result::test_enough_gold( const team& my_team, const unit_type_d
 
 bool ai_recruit_result::test_leader_present( const unit_map& units, unit_map::const_iterator& my_leader, bool /*update_knowledge*/ )
 {
-	my_leader = find_leader(units,get_side());
+	my_leader = units.find_leader(get_side());
 	if (my_leader == units.end()){
 		set_error(E_NO_LEADER);
 		return false;

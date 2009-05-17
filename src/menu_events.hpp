@@ -65,7 +65,7 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
-	std::string get_title_suffix(int team_num);
+	std::string get_title_suffix(int side_num);
 	void objectives(const unsigned int team_num);
 	void show_statistics(const unsigned int team_num);
 	void unit_list();
@@ -86,7 +86,7 @@ public:
 	void toggle_shroud_updates(const unsigned int team_num);
 	void update_shroud_now(const unsigned int team_num);
 	bool end_turn(const unsigned int team_num);
-	void goto_leader(const unsigned int team_num);
+	void goto_leader(int side_num);
 	void unit_description(mouse_handler& mousehandler);
 	void rename_unit(mouse_handler& mousehandler);
 	void create_unit(mouse_handler& mousehandler);

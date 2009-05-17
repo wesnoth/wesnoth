@@ -482,7 +482,7 @@ void ai::find_threats()
 
 	// We want to protect our leader.
 	// FIXME: suokko tweaked these from (1.0, 20)->(2.0,15).  Should this have been kept?
-	const unit_map::const_iterator leader = find_leader(units_,get_side());
+	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader != units_.end()) {
 		items.push_back(protected_item(
 					lexical_cast_default<double>(parms["protect_leader"], 1.0),
@@ -601,7 +601,7 @@ void ai::do_move()
 	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
 
 
-	unit_map::iterator leader = find_leader(units_,get_side());
+	unit_map::iterator leader = units_.find_leader(get_side());
 	if (leader != units_.end())
 	{
 		evaluate_recruiting_value(leader);
@@ -661,7 +661,7 @@ void ai::do_move()
 	LOG_AI << "get villages phase\n";
 
 	// Iterator could be invalidated by combat analysis or move_leader_to_goals.
-	leader = find_leader(units_,get_side());
+	leader = units_.find_leader(get_side());
 
 	LOG_AI << "villages...\n";
 	if(get_villages(possible_moves, dstsrc, enemy_dstsrc, leader)) {
@@ -680,7 +680,7 @@ void ai::do_move()
 
 	LOG_AI << "retreating...\n";
 
-	leader = find_leader(units_,get_side());
+	leader = units_.find_leader(get_side());
 	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(retreated_unit) {
 		do_move();
@@ -711,7 +711,7 @@ void ai::do_move()
 		if(!passive_leader||passive_leader_shares_keep) {
 			map_location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
-			leader = find_leader(units_,get_side());
+			leader = units_.find_leader(get_side());
 			if(leader == units_.end()) {
 				return;
 			}
@@ -1330,7 +1330,7 @@ void ai::analyze_potential_recruit_movements()
 		return;
 	}
 
-	const unit_map::const_iterator leader = find_leader(units_,get_side());
+	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end()) {
 		return;
 	}
@@ -1435,7 +1435,7 @@ void ai::analyze_potential_recruit_movements()
 
 bool ai::do_recruitment()
 {
-	const unit_map::const_iterator leader = find_leader(units_,get_side());
+	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end()) {
 		return false;
 	}
@@ -1556,7 +1556,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const unit_map::iterator leader = find_leader(units_,get_side());
+	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		WRN_AI << "Leader not found\n";
 		return;
@@ -1600,7 +1600,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 		const move_map& /*dstsrc*/, const move_map& enemy_dstsrc)
 {
 
-	unit_map::iterator leader = find_leader(units_,get_side());
+	unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated() || leader->second.movement_left() == 0) {
 		return;
 	}
@@ -1704,7 +1704,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	}
 
 	// We didn't move: are we in trouble?
-	leader = find_leader(units_,get_side());
+	leader = units_.find_leader(get_side());
 	if (!passive_leader && !leader->second.has_moved() && leader->second.attacks_left()) {
 		std::map<map_location,paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
@@ -1719,7 +1719,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 bool ai::leader_can_reach_keep()
 {
-	const unit_map::iterator leader = find_leader(units_,get_side());
+	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return false;
 	}

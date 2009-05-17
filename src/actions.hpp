@@ -242,14 +242,6 @@ bool get_village(const map_location& loc, game_display& disp,
                  const unit_map& units, int *time_bonus = NULL);
 
 /**
- * Given the 1-based side, will find the leader of that side,
- * and return an iterator to the leader
- */
-unit_map::iterator find_leader(unit_map& units, int side);
-
-unit_map::const_iterator find_leader(const unit_map& units, int side);
-
-/**
  * Resets resting for all units on this side: should be called after calculate_healing().
  * @todo FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
  */
