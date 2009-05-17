@@ -7,13 +7,13 @@ Version 1.7.0-svn:
     * Delfador's Memoirs: new campaign added to mainline (Novice level,
       24 scenarios).
     * Eastern Invasion
-      * Fixed the liches not being revealed properly in 'Weldyn Besieged'
+      * Fixed the liches not being revealed properly in 'Weldyn Besieged'.
     * Heir to the Throne
-      * The Scepter of Fire
-        * Enforce a 7-hex starting castle to prevent units from appearing inside
-          a wall (bug #13377).
-      * Test of the Clans:
-        * Made the number of enemies to defeat depend on the difficulty.
+      * Made snow fall gradually every turn in 'Northern Winter'.
+      * Enforce a 7-hex starting castle to prevent units from appearing inside
+        a wall in 'The Scepter of Fire' (bug #13377).
+      * Made the number of enemies to defeat depend on the difficulty in
+        'Test of the Clan'.
     * The Rise of Wesnoth
       * In TROW, the Lady Jessica is now the Lady Jessene. This was the last
         major character in mainline (and probably the last named unit of any
@@ -44,6 +44,9 @@ Version 1.7.0-svn:
     * Implemented the adminmsg command to allow players to send messages to
       currently available admins. (FR #9218)
     * Fixed bug #7547: Add possibility to unban/unmute in a multiplayer game
+
+  * Terrains
+    * New terrains: orcish fort and orcish village.
 
   * Units
     * Added the Water Serpent.
@@ -88,7 +91,7 @@ Version 1.5.14:
   * Graphics:
     * New portraits for the male and female Assassin, Gryphon Rider, Longbowman,
       Master Bowman, Dwarf Runemaster.
-  
+
   * Language and translations
     * Updated translations: Catalan, Chinese (Simplified), Czech, Dutch,
       Finnish, German, Hebrew, Hungarian, Lithuanian, Norwegian, Polish,
@@ -168,16 +171,16 @@ Version 1.5.10:
     * New idle animations: Dwarvish Thunderer, Naga Fighter.
     * Rewrote the rendering engine which should fix the drawing order.
     * New graphical variations for the water villages.
-    
+
   * Language and translations
     * New translations: Marathi.
     * Updated translations: British English, Dutch, French, German, Hungarian,
       Italian, Russian, Slovenian, Spanish, Swedish.
-    
+
   * Multiplayer
     * Updated maps: Clash, Cynsaun Battlefield, Den of Onis, Silverhead
       Crossing, Howling Ghost Badlands, The Wilderlands, Forest of Fear.
-      
+
   * Terrains
     * Enabled mixed deciduous-pine forest terrains.
     * Forested hills variations now available for the deciduous and mixed
@@ -235,7 +238,7 @@ Version 1.5.8:
       * Renamed "Lord Dionli" to "Lady Dionli".
     * Son of the Black Eye
       * Made scenarios 'Silent Forest' and 'Shan Taum the Smug' harder.
-    * Legend of Wesmere 
+    * Legend of Wesmere
       * Fixed the bug with savegames in scenario 3.
 
   * Graphics
@@ -305,7 +308,7 @@ Version 1.5.7:
 
     * The South Guard
       * Made 'Into the Depths' a bit easier on the easiest difficulties.
-      
+
     * Two Brothers
       * Converted to the new gold carryover system.
 
@@ -316,14 +319,14 @@ Version 1.5.7:
 
     * Legend of Wesmere
       * Marked the guards in scenario 05 to be killed.
-      * Many Bug fixes(recruiting, village ownership) 	
+      * Many Bug fixes(recruiting, village ownership)
       * Made Olurf's side persistent.
       * New 400*400 pixel sized portrait images.
       * All portraits are now displayed without scaleing.
       * Updated music playlists.
-      * Flipped the Ka'lian map horizontaly.	
+      * Flipped the Ka'lian map horizontaly.
       * Updated overview map to LoW's time.
-      * Redone journey that is displayed on the overview map.	
+      * Redone journey that is displayed on the overview map.
 
   * Editor2
     * The map editor is automatically started if the binary file used

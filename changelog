@@ -4,7 +4,7 @@ Version 1.7.0-svn:
    * Fixed incorrect handling of poisoning attacks when suggesting best attack
      in user interface
    * Added basic history and hot-redeployment capabilities to in-game console.
-   * Changed AI Lifecycle handling. Console AI is now persistent between 
+   * Changed AI Lifecycle handling. Console AI is now persistent between
      invocations.
    * Added AI Arena test map to test AIs in interactive mode ( ai_arena_small )
    * Changed interaction between default AI and Formula AI - made default AI
@@ -17,11 +17,11 @@ Version 1.7.0-svn:
    * Eastern Invasion:
      * Fixed the liches not being revealed properly in 'Weldyn Besieged'
    * Heir to the Throne:
-     * The Scepter of Fire:
-       * Enforce a 7-hex starting castle to prevent units from appearing inside
-         a wall (bug #13377).
-     * Test of the Clans:
-       * Made the number of enemies to defeat depend on the difficulty.
+     * Made snow fall gradually every turn in 'Northern Winter'.
+     * Enforce a 7-hex starting castle to prevent units from appearing inside
+       a wall in 'The Scepter of Fire' (bug #13377).
+     * Made the number of enemies to defeat depend on the difficulty in
+       'Test of the Clan'.
    * Under the Burning Suns:
      * Kaleh advancement:
        * Gave the Hero variation more HP.
@@ -35,13 +35,13 @@ Version 1.7.0-svn:
      (1.4 editor's on / editor2's off) and off (1.4's off).
    * Made "wesnoth -e FILE" work like "wesnoth -e --load FILE" (load the map)
    * Made "wesnoth -e --load DIR" (and consequently "wesnoth -e DIR") set
-     DIR as the default map directory for the current session, and start with 
+     DIR as the default map directory for the current session, and start with
      the map load dialog open
    * Added ability to load maps referenced in scenario files
-   * Added ability to work with maps embedded in scenario files (saving works 
+   * Added ability to work with maps embedded in scenario files (saving works
      in a limited scope)
    * Moved the clipboard actions to a context menu available in paste mode
-   * Added a terrain sampler feature -- ctrl+click when in paint or fill mode 
+   * Added a terrain sampler feature -- ctrl+click when in paint or fill mode
  * FormulaAI:
    * Fixed bug #13230: added debug_float FormulaAI function to allow debugging
      via floating popups on the specified hex
@@ -51,7 +51,7 @@ Version 1.7.0-svn:
      are not incapacitated (for example, it now ignores petrified units )
    * Implemented FR #13348: added timeofday_modifier function to formula AI
    * Added attacks_left attribute to unit callable
-   * New variable: my_attacks with all possible attacks 
+   * New variable: my_attacks with all possible attacks
    * Added a new type of candidate move : strategic
    * Added suitable_keep FormulaAI function to allow easier selection of
      suitable keep for leader
@@ -83,12 +83,14 @@ Version 1.7.0-svn:
    * Fixed bug #7547: Add possibility to unban/unmute in a multiplayer game
  * Savegames
    * Providing a new simpler interface for dealing with savegames
+ * Terrains:
+   * New terrains: orcish fort, orcish village
  * User interface:
    * Fixed bug #13257: Attack dialog always uses the active name of a weapon
      special
    * Fix missing faction column when waiting that the host start the game,
      plus some other unwanted changes there (bug #13243)
-   * Make delayed shroud updates and scenarion objectives to change and 
+   * Make delayed shroud updates and scenarion objectives to change and
      show information for viewing team. (help in bug #13313)
    * Making the game return to the add-on install dialog just before
      installing one, and with its entry selected
@@ -186,7 +188,7 @@ Version 1.6:
  * Miscellaneous and bug fixes:
    * Fixed bug #13204: NR: Death event doesn't re-spawn Malifor as expected
    * Fixed bug #13198: Corrupt replay in MP
-   * Fixed bug #13199: Map generation in mp fails when hills and size of hills 
+   * Fixed bug #13199: Map generation in mp fails when hills and size of hills
      sliders are at max
    * Fixed bug #13179: Unit's move have sometimes a jumpy start
    * Stop resetting the alternate default zoom level after each reload
@@ -332,7 +334,7 @@ Version 1.5.11:
  * Music and sound effects:
    * Added a campfire sound file for use with [sound_source] in
      sounds/ambient/.
-   * The game will no longer restart the music on a scenario change or game 
+   * The game will no longer restart the music on a scenario change or game
      load if the currently played track is on the new scenario's playlist
  * User interface:
    * Fixed the assertion failure which could happen when clicking on a button.
@@ -401,7 +403,7 @@ Version 1.5.10:
    * Removed the gamma correction option (code is only disabled not removed)
    * Fixed the assertion failure with long options (bug #12970)
  * WML Engine
-   * [replace_map] changes the map completely, changing the map size is 
+   * [replace_map] changes the map completely, changing the map size is
      posible - off-map units go into the recall list
  * Miscellaneous and bug fixes:
    * Fix bug #12946: [menu_item]/[command] losing function when called again
@@ -411,7 +413,7 @@ Version 1.5.10:
    * AmigaOS4: Minimum stack cookie to prevent stack overflow (patch #1107)
    * Additional screenmodes when SDL can't guess them (patch #1108)
    * Python AI works again. (bug #12955, bug #12913)
-   * Fixed the :query command to work while in a multiplayer game, not only 
+   * Fixed the :query command to work while in a multiplayer game, not only
      when in chat (as /query)
    * Fixed invalid memory access with AMLAs (bug #12911)
    * Closing a message with escape caused the message to skip on the next
@@ -493,7 +495,7 @@ Version 1.5.8:
      * Renamed "Lord Dionli" to "Lady Dionli".
    * Son of the Black Eye
      * Made scenarios 'Silent Forest' and 'Shan Taum the Smug' harder.
-   * Legend of Wesmere 
+   * Legend of Wesmere
      * Fixed the bug with savegames in scenario 3
  * Graphics:
    * New portraits for Royal Guard, Heavy Infantry, Iron Mauler, Sergeant,
@@ -618,16 +620,16 @@ Version 1.5.7:
      * Gave the Shyde/Star appropriate healing frames.
      * Added updated Desert Hunter sprites.
    * Legend of Wesmere
-     * Recoded Olurf in scenario 02	
+     * Recoded Olurf in scenario 02
      * Marked the guards in scenario 05 to be killed.
-     * Many Bug fixes(recruiting, village ownership) 	
+     * Many Bug fixes(recruiting, village ownership)
      * Made Olurf's side persistent.
      * New 400*400 pixel sized portrait images.
      * All portraits are now displayed without scaleing.
      * Updated music playlists.
-     * Flipped the Ka'lian map horizontaly.	
+     * Flipped the Ka'lian map horizontaly.
      * Updated overview map to LoW's time.
-     * Redone journey that is displayed on the overview map.	
+     * Redone journey that is displayed on the overview map.
  * Editor2:
    * The map editor is automatically started if the binary file used
      to start Wesnoth contains "editor" somewhere in its name (useful
@@ -708,7 +710,7 @@ Version 1.5.7:
    * If there is a file called _initial.cfg in an included directory, and
      no _main.cfg, _initial.cfg is guaranteed to be processed before other
      files in the directory.
-   * [endlevel] has been expanded by the carryover_report=, save= and 
+   * [endlevel] has been expanded by the carryover_report=, save= and
      linger_mode= attribute.
  * Miscellaneous and bug fixes:
    * Compressed start-of-scenario saves are properly recognized by the
@@ -730,7 +732,7 @@ Version 1.5.7:
    * Improved the drawing routine for the ttext class.
    * Pressing Escape to exit the game from the title screen now requires a
      discrete keypress (bug #12747)
-   * Properly implement the CFLAGS for autotools. 
+   * Properly implement the CFLAGS for autotools.
 
 Version 1.5.6:
  * Authoring tools:
