@@ -277,17 +277,14 @@ public:
 
 
 	/**
-	 * Lookups can be done by map_location, by unit::underlying_id(), or by unit::id().
-	 * Looking up with unit::id() is slow.
+	 * Lookups can be done by map_location, by unit::underlying_id().
 	 * Returned iterators can be implicitly converted to the other types.
 	 */
 	unit_iterator find(const map_location& loc) ;
 	unit_iterator find(const unit_id_type& id);
-	unit_iterator find(const std::string& id);
 
 	const_unit_iterator find(const map_location& loc) const;
 	const_unit_iterator find(const unit_id_type& id) const;
-	const_unit_iterator find(const std::string& id) const;
 
 	const_unit_iterator find_leader(int side) const;
 	unit_iterator find_leader(int side);

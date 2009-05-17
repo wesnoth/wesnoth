@@ -95,28 +95,6 @@ unit_map::const_unit_iterator unit_map::find(const size_t &id) const {
 	return const_unit_iterator(iter, this);
 }
 
-static bool match_unit_id(std::string id, unit_map::umap::value_type val) {
-	return val.second.valid() && val.second.get_unit().id() == id;
-}
-
-unit_map::unit_iterator unit_map::find(const std::string& id) {
-	WRN_NG << "Finding using id is slow operation\n";
-
-	umap::iterator iter = std::find_if(map_.begin(), map_.end(), std::bind1st(std::ptr_fun(match_unit_id), id));
-	iter = is_valid(iter) ? iter : map_.end();
-
-	return unit_iterator(iter, this);
-}
-
-unit_map::const_unit_iterator unit_map::find(const std::string& id) const {
-	WRN_NG << "Finding using id is slow operation\n";
-
-	umap::const_iterator iter = std::find_if(map_.begin(), map_.end(), std::bind1st(std::ptr_fun(match_unit_id), id));
-	iter = is_valid(iter) ? iter : map_.end();
-
-	return const_unit_iterator(iter, this);
-}
-
 unit_map::unit_iterator unit_map::begin() {
 	// This call just needs to go somewhere that is likely to be
 	// called when num_iters_ == 0. This seems as good a place as any.
