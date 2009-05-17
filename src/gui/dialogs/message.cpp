@@ -17,6 +17,7 @@
 #include "gui/dialogs/message.hpp"
 
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -166,6 +167,43 @@ void show_message(CVideo& video, const std::string& title,
 	tmessage dlg(title, message, auto_close);
 	dlg.set_button_caption(tmessage::ok, button_caption);
 	dlg.show(video);
+}
+
+int show_message(CVideo& video, const std::string& title,
+	const std::string& message, const tmessage::tbutton_style button_style,
+	const tbutton::tmarkup_mode /*message_markup_mode*/,
+	const tbutton::tmarkup_mode /*message_title_mode*/)
+{
+	/** @todo implement the markup mode. */
+	tmessage dlg(title, message, button_style == tmessage::auto_close);
+
+	switch(button_style) {
+		case tmessage::auto_close :
+			break;
+		case tmessage::ok_button :
+			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_caption(tmessage::ok, _("OK"));
+			break;
+		case tmessage::close_button :
+			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			break;
+		case tmessage::ok_cancel_buttons :
+			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_caption(tmessage::ok, _("OK"));
+			/* FALL DOWN */
+		case tmessage::cancel_button :
+			dlg.set_button_visible(tmessage::cancel, twidget::VISIBLE);
+			break;
+		case tmessage::yes_no_buttons :
+			dlg.set_button_visible(tmessage::ok, twidget::VISIBLE);
+			dlg.set_button_caption(tmessage::ok, _("Yes"));
+			dlg.set_button_visible(tmessage::cancel, twidget::VISIBLE);
+			dlg.set_button_caption(tmessage::cancel, _("No"));
+			break;
+	}
+
+	dlg.show(video);
+	return dlg.get_retval();
 }
 
 } // namespace gui2

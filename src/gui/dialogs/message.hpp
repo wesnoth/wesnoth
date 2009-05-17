@@ -15,12 +15,10 @@
 #ifndef GUI_DIALOGS_MESSAGE_HPP_INCLUDED
 #define GUI_DIALOGS_MESSAGE_HPP_INCLUDED
 
-#include "gui/widgets/widget.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "gui/widgets/button.hpp"
 
 namespace gui2 {
-
-class tbutton;
 
 /**
  * Main class to show messages to the user.
@@ -47,6 +45,22 @@ public:
 		, ok
 		, right_1
 		, count
+	};
+
+	/**
+	 * Selects the style of the buttons to be shown.
+	 *
+	 * These values are not directly implemented in this class but are used
+	 * by our helper functions.
+	 */
+	enum tbutton_style
+	{
+		  auto_close        /**< Enables auto close. */
+		, ok_button         /**< Shows an ok button. */
+		, close_button      /**< Shows a close button. */
+		, ok_cancel_buttons /**< Shows an ok and cancel button. */
+		, cancel_button     /**< Shows a cancel button. */
+		, yes_no_buttons    /**< Shows a yes and no button. */
 	};
 
 	void set_button_caption(const tbutton_id button,
@@ -132,6 +146,27 @@ private:
 void show_message(CVideo& video, const std::string& title,
 	const std::string& message, const std::string& button_caption = "",
 	const bool auto_close = true);
+
+/**
+ * Shows a message to the user.
+ *
+ * @note this function is rather untested, and the API might change in the
+ * near future.
+ *
+ * @param video               The video which contains the surface to draw
+ *                            upon.
+ * @param title               The title of the dialog.
+ * @param message             The message to show in the dialog.
+ * @param button_style        The style of the button(s) shown.    
+ * @param message_markup_mode The markup mode used for the title.
+ * @param title_markup_mod    The markup mode used for the title.
+ * 
+ * @returns                   The retval of the dialog shown.    
+ */
+int show_message(CVideo& video, const std::string& title,
+	const std::string& message, const tmessage::tbutton_style button_style,
+	const tbutton::tmarkup_mode message_markup_mode = tbutton::NO_MARKUP,
+	const tbutton::tmarkup_mode title_markup_mode = tbutton::NO_MARKUP);
 
 } // namespace gui2
 
