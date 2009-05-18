@@ -235,6 +235,8 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 			if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK)
+#elif defined(_WIN32) && defined(WSAEWOULDBLOCK)
+			if(WSAGetLastError() == WSAEWOULDBLOCK)
 #else
 			// Ignore the error.
 			if(true)
