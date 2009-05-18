@@ -238,8 +238,8 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 #elif defined(_WIN32) && defined(WSAEWOULDBLOCK)
 			if(WSAGetLastError() == WSAEWOULDBLOCK)
 #else
-			// Ignore the error.
-			if(true)
+			// assume non-recoverable error.
+			if(false)
 #endif
 			{
 #ifdef USE_POLL
