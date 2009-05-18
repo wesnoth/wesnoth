@@ -407,7 +407,11 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 		}
 		send_len = static_cast<int>(size - upto);
 		const int res = SDLNet_TCP_Send(sock, &buf[upto],send_len);
-
+		if (res < send_len) {
+			// according to http://www.libsdl.org/cgi/docwiki.cgi/SDLNet_TCP_Send
+			// if the return value is less than len, it's an error
+			return SOCKET_ERRORED;
+		}
 
 		if( res == send_len) {
 			if (!raw_data_only)
