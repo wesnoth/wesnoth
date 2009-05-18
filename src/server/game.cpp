@@ -22,6 +22,8 @@
 #include "game.hpp"
 #include "player_network.hpp"
 
+#include <boost/bind.hpp>
+
 #ifndef __func__
  #ifdef __FUNCTION__
   #define __func__ __FUNCTION__
@@ -1159,15 +1161,11 @@ void game::send_data_team(simple_wml::document& data,
 						  std::string packet_type) const
 {
 	DBG_GAME << __func__ << "...\n";
-	if (packet_type.empty())
-		packet_type = data.root().first_child().to_string();
-	simple_wml::string_span s = data.output_compressed();
-	for(user_vector::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude && is_on_team(team,*i)) {
-			network::send_raw_data(s.begin(), s.size(), *i, packet_type);
-		}
-	}
+	wesnothd::send_to_many(data, players_,
+		boost::bind(&game::is_on_team, this, boost::ref(team), _1),
+		exclude, packet_type);
 }
+
 
 bool game::is_on_team(const simple_wml::string_span& team, const network::connection player) const {
 	const simple_wml::node::child_list& side_list = level_.root().children("side");

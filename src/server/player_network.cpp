@@ -36,13 +36,14 @@ void send_to_many(simple_wml::document& data, const connection_vector& vec,
 }
 
 void send_to_many(simple_wml::document& data, const connection_vector& vec,
-				  boost::function<bool (network::connection)> except_pred, std::string packet_type)
+				  boost::function<bool (network::connection)> except_pred,
+				  const network::connection exclude, std::string packet_type)
 {
 	if (packet_type.empty())
 		packet_type = data.root().first_child().to_string();
 	simple_wml::string_span s = data.output_compressed();
 	for(connection_vector::const_iterator i = vec.begin(); i != vec.end(); ++i) {
-		if (!except_pred(*i)) {
+		if ((*i != exclude) && !except_pred(*i)) {
 			network::send_raw_data(s.begin(), s.size(), *i, packet_type);
 		}
 	}

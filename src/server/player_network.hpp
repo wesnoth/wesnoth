@@ -43,7 +43,8 @@ void send_to_many(simple_wml::document& data,
 void send_to_many(simple_wml::document& data,
 				  const connection_vector& vec,
 				  boost::function<bool (network::connection)> except_pred,
-				  std::string packet_type);
+				  const network::connection exclude = 0,
+				  std::string packet_type = "");
 } //end namespace wesnothd
 
 #endif
