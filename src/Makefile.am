@@ -232,6 +232,7 @@ wesnothd_SOURCES = \
 	server/mail.cpp \
 	server/metrics.cpp \
 	server/player.cpp \
+	server/player_network.cpp \
 	server/proxy.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
