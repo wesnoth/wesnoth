@@ -2193,6 +2193,8 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 	}
 
 	assert(map_ != NULL);
+	int res = 100;
+
 	// If this is an alias, then select the best of all underlying terrains
 	const t_translation::t_list& underlying = map_->underlying_def_terrain(terrain);
 	assert(underlying.size() > 0);
@@ -2202,10 +2204,10 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 			ERR_CONFIG << "infinite defense_modifier recursion: " << t_translation::write_terrain_code(terrain) << " depth " << recurse_count << "\n";
 		}
 		if(recurse_count >= 100) {
-			return 100;
+			return res;
 		}
 
-		int ret_value = revert?0:100;
+		res = revert ? 0 : 100;
 		t_translation::t_list::const_iterator i = underlying.begin();
 		for(; i != underlying.end(); ++i) {
 			if(*i == t_translation::PLUS) {
@@ -2216,25 +2218,23 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 				continue;
 			}
 			const int value = defense_modifier(*i,recurse_count+1);
-			if(value < ret_value && !revert) {
-				ret_value = value;
-			} else if(value > ret_value && revert) {
-				ret_value = value;
+			if (value < res && !revert) {
+				res = value;
+			} else if (value > res && revert) {
+				res = value;
 			}
 		}
 
-		defense_mods_.insert(std::pair<t_translation::t_terrain,int>(terrain,ret_value));
-		return ret_value;
+		defense_mods_.insert(std::pair<t_translation::t_terrain,int>(terrain, res));
+		return res;
 	}
-
-	int res = -1;
 
 	if (const config &defense = cfg_.child("defense"))
 	{
 		if(underlying.size() != 1) {
 			ERR_CONFIG << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
-			return 100;
+			return res;
 		}
 
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
