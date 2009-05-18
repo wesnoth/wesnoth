@@ -84,7 +84,7 @@ clock_t get_cpu_time(bool active) {
 #else
 
 // on Windows we don't calculate CPU time
-clock_t get_cpu_time(bool active) {
+clock_t get_cpu_time(bool /*active*/) {
 	return 0;
 }
 
