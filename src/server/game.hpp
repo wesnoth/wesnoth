@@ -153,7 +153,6 @@ public:
 	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
 	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
-	void send_to_one(simple_wml::document& data, const network::connection sock, std::string packet_type = "") const;
 
 	void clear_history();
 	void record_data(simple_wml::document* data);
@@ -231,7 +230,7 @@ private:
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
 
-	/** Convenience function for finding a user by name. */
+	/** Shortcut to a convenience function for finding a user by name. */
 	player_map::const_iterator find_user(const simple_wml::string_span& name) const;
 
 	bool observers_can_label() const { return false; }
