@@ -296,7 +296,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	players_(),
 	ghost_players_(),
 	games_(),
-	not_logged_in_(players_),
+	not_logged_in_(),
 	lobby_(),
 	input_(),
 	config_file_(config_file),
@@ -648,7 +648,7 @@ void server::run() {
 					DBG_SERVER << ip << "\tnew connection accepted. (socket: "
 						<< sock << ")\n";
 					send_doc(version_query_response_, sock);
-					not_logged_in_.add_player(sock, true);
+					not_logged_in_.insert(sock);
 				}
 			}
 
@@ -737,9 +737,10 @@ void server::run() {
 			// Was the user already logged in?
 			const wesnothd::player_map::iterator pl_it = players_.find(e.socket);
 			if (pl_it == players_.end()) {
-				if (not_logged_in_.is_observer(e.socket)) {
+				std::set<network::connection>::iterator i = not_logged_in_.find(e.socket);
+				if (i != not_logged_in_.end()) {
 					DBG_SERVER << ip << "\tNot logged in user disconnected.\n";
-					not_logged_in_.remove_player(e.socket);
+					not_logged_in_.erase(i);
 				} else {
 					WRN_SERVER << ip << "\tWarning: User disconnected right after the connection was accepted.\n";
 				}
@@ -829,7 +830,7 @@ void server::process_data(const network::connection sock,
 	if(root.has_attr("ping")) {
 		// Ignore client side pings for now.
 		return;
-	} else if(not_logged_in_.is_observer(sock)) {
+	} else if(not_logged_in_.find(sock) != not_logged_in_.end()) {
 		// Someone who is not yet logged in is sending login details.
 		process_login(sock, data);
 	} else if (simple_wml::node* query = root.child("query")) {
@@ -1069,7 +1070,7 @@ void server::process_login(const network::connection sock,
 	if( !selective_ping )
 	  ghost_players_.insert(sock) ;
 
-	not_logged_in_.remove_player(sock);
+	not_logged_in_.erase(sock);
 	lobby_.add_player(sock);
 	// Send the new player the entire list of games and players
 	send_doc(games_and_users_list_, sock);

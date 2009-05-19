@@ -38,7 +38,7 @@ private:
 	std::set<network::connection> ghost_players_;
 
 	std::vector<wesnothd::game*> games_;
-	wesnothd::game not_logged_in_;
+	std::set<network::connection> not_logged_in_;
 
 	/** The lobby is implemented as a room. */
 	wesnothd::room lobby_;
