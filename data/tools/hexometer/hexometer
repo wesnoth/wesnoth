@@ -1,5 +1,5 @@
 #!/bin/sh
-scriptname="hexometer"
+scriptname=$(basename $0)
 help ()
 {
 	echo "Search png images not fitting in a hex"
@@ -20,7 +20,7 @@ help ()
 	echo "(-1 if the image is not a standard 72x72 image and -f was not used"
 }
 
-mask="alphamask.png"
+mask="$(dirname $0)/alphamask.png"
 format=0
 quiet=0
 
@@ -30,55 +30,37 @@ anim=".*-attack.*|.*-defend.*|.*-melee.*|.*-ranged.*|.*-magic.*|.*-idle.*|.*-die
 
 until [ -z "$1" ]
 do
-	if [ "$1" == "--help" -o "$1" == "-h" ]
-	then
-		help
-		exit
-	fi
-
-	if [ "$1" == "--mask" -o "$1" == "-m" ]
-	then
-		shift
-		mask="$1"
-		shift
-		continue
-	fi
-
-	if [ "$1" == "--regex" -o "$1" == "-r" ]
-	then
-		shift
-		regex="$regex|$1"
-		shift
-		continue
-	fi
-
-	if [ "$1" == "--anim" -o "$1" == "-a" ]
-	then
-		regex="$regex|$anim"
-		shift
-		continue
-	fi
-
-	if [ "$1" == "--suffix" -o "$1" == "-s" ]
-	then
-		regex="$regex|$suffix"
-		shift
-		continue
-	fi
-
-	if [ "$1" == "--format" -o "$1" == "-f" ]
-	then
-		format=1
-		shift
-		continue
-	fi
-
-	if [ "$1" == "--quiet" -o "$1" == "-q" ]
-	then
-		quiet=1
-		shift
-		continue
-	fi
+	case $1 in
+		-h|--help)
+			help
+			exit;;
+		-m|--mask)
+			shift
+			mask="$1"
+			shift
+			continue;;
+		-r|--regex)
+			shift
+			regex="$regex|$1"
+			shift
+			continue;;
+		-a|--anim)
+			regex="$regex|$anim"
+			shift
+			continue;;
+		-s|--suffix)
+			regex="$regex|$suffix"
+			shift
+			continue;;
+		-f|--format)
+			format=1
+			shift
+			continue;;
+		-q|--quiet)
+			quiet=1
+			shift
+			continue;;
+	esac
 
 	# record all given directories
 	dir="$dir $1"
@@ -87,23 +69,23 @@ do
 done
 
 # if no directory, use current
-if [ "$dir" == "" ]
+if [ "$dir" = "" ]
 then
 	dir='.'
 fi
 
 if [ ! -r $mask ]
 then
-	echo "$scriptname : cannot access $mask : No such file or directory "
+	echo "$scriptname: cannot access $mask: No such file or directory"
 	exit 1
 fi
 
 
-if [ "$quiet" == 0 ]
+if [ "$quiet" = 0 ]
 then
 	echo "Search 72x72 images not fitting in a hex"
-	echo "in directories : $dir"
-	echo "Using alphamask image : $mask"
+	echo "in directories: $dir"
+	echo "Using alphamask image: $mask"
 	echo "Skipping files matching regex: $regex"
 	echo "Pixels out of hex : filename"
 fi
@@ -112,7 +94,7 @@ test_img()
 {
 	if [ `identify -format "%wx%h" $img` != '72x72' ]
 	then
-		if [ $format == 0 ]
+		if [ $format = 0 ]
 		then
 			px=-1
 		else
@@ -125,7 +107,7 @@ test_img()
 
 	if [ "$px" != 0 ]
 	then
-		echo -e "$px\t : $img"
+		echo "$px	: $img"
 	fi
 }
 
