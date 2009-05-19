@@ -281,14 +281,15 @@ namespace {
 
 		// Copy over COPYING.txt
 		std::string contents = read_file("COPYING.txt");
+		if (contents.empty()) {
+			LOG_CS << "Could not find COPYING.txt, path is \""
+				<< game_config::path << "\"\n";
+			return;
+		}
 		config &copying = dir.add_child("file");
 		copying["name"] = "COPYING.txt";
 		copying["contents"] = contents;
 
-		if (contents.empty()) {
-			LOG_CS << "Could not find COPYING.txt, path is \""
-				<< game_config::path << "\"\n";
-		}
 	}
  	void campaign_server::convert_binary_to_gzip()
  	{
