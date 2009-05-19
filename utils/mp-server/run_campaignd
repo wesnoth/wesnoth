@@ -27,6 +27,7 @@ esac
 SERVERBASE=$HOME/campaignd/$VERSION
 
 [ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
+[ -r "$SERVERBASE"/COPYING.txt ] || die "GPL file (COPYING.txt) is missing."
 [ -d "$SERVERBASE/data" ] || die "Server '$VERSION' has no data/ dir."
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
