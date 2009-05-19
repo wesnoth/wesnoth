@@ -63,8 +63,7 @@ game::game(player_map& players, const network::connection host,
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path)
 {
-	// Hack to handle the pseudo games lobby_ and not_logged_in_.
-	if (owner_ == 0) return;
+	assert(owner_);
 	players_.push_back(owner_);
 	const player_map::iterator pl = player_info_->find(owner_);
 	if (pl == player_info_->end()) {
@@ -78,9 +77,6 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
-	// Hack to handle the pseudo games lobby_ and not_logged_in_.
-	if (owner_ == 0) return;
-
 	try {
 		save_replay();
 
@@ -918,11 +914,6 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 			<< player << ")\n";
 		return false;
 	}
-	// Hack to handle the pseudo games lobby_ and not_logged_in_.
-	if (owner_ == 0) {
-		observers_.push_back(player);
-		return true;
-	}
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
@@ -990,18 +981,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	if (!is_member(player)) {
 		ERR_GAME << "ERROR: User is not in this game. (socket: "
 			<< player << ")\n";
-		return false;
-	}
-	// Hack to handle the pseudo games lobby_ and not_logged_in_.
-	if (owner_ == 0) {
-		const user_vector::iterator itor =
-			std::find(observers_.begin(), observers_.end(), player);
-		if (itor != observers_.end()) {
-			observers_.erase(itor);
-		} else {
-			ERR_GAME << "ERROR: Observer is not in this game. (socket: "
-				<< player << ")\n";
-		}
 		return false;
 	}
 	DBG_GAME << debug_player_info();
@@ -1303,16 +1282,6 @@ void game::set_termination_reason(const std::string& reason) {
 		termination_ = "out of sync - " + era.to_string();
 	}
 	if (termination_.empty()) { termination_ = reason; }
-}
-
-void game::add_players(const game& other_game, const bool observer) {
-	user_vector users = other_game.all_game_users();
-	if (observer){
-		observers_.insert(observers_.end(), users.begin(), users.end());
-	}
-	else{
-		players_.insert(players_.end(), users.begin(), users.end());
-	}
 }
 
 const user_vector game::all_game_users() const {

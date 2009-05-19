@@ -107,14 +107,6 @@ public:
 	/** Adds players and observers into one vector and returns that. */
 	const user_vector all_game_users() const;
 
-	/**
-	 * Adds players from one game to another. This is used to add players and
-	 * observers from a game to the lobby (which is also implemented as a game),
-	 * if that game ends. The second parameter controls, wether the players are
-	 * added to the players_ or observers_ vector (default observers_).
-	 */
-	void add_players(const game& other_game, const bool observer = true);
-
 	void start_game(const player_map::const_iterator starter);
 
 	/** A user (player only?) asks for the next scenario to advance to. */
