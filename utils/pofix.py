@@ -112,6 +112,8 @@ stringfixes = {
 ("Kill the Lich to get his book and", "Kill the lich to get his book and"),
 ("The Lich is free!", "The lich is free!"),
 ("before we free that Lich","before we free that lich"),
+# Banish an Earth-human name.
+("Edmond", "Edren"),
 #("great river", "Great River"),
 ),
 
