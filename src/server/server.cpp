@@ -297,7 +297,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	ghost_players_(),
 	games_(),
 	not_logged_in_(players_),
-	lobby_(players_),
+	lobby_(),
 	input_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -530,7 +530,7 @@ void server::dump_stats(const time_t& now) {
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
 		 << "\tnumber_of_ghost_users = " << ghost_players_.size()
-		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
+		<< "\tlobby_users = " << lobby_.size() << "\n";
 }
 
 void server::clean_user_handler(const time_t& now) {
@@ -838,7 +838,7 @@ void server::process_data(const network::connection sock,
 		process_nickserv(sock, *nickserv);
     } else if (simple_wml::node* whisper = root.child("whisper")) {
 		process_whisper(sock, *whisper);
-	} else if (lobby_.is_observer(sock)) {
+	} else if (lobby_.is_member(sock)) {
 		process_data_lobby(sock, data);
 	} else {
 		process_data_game(sock, data);
@@ -1070,7 +1070,7 @@ void server::process_login(const network::connection sock,
 	  ghost_players_.insert(sock) ;
 
 	not_logged_in_.remove_player(sock);
-	lobby_.add_player(sock, true);
+	lobby_.add_player(sock);
 	// Send the new player the entire list of games and players
 	send_doc(games_and_users_list_, sock);
 
@@ -1250,7 +1250,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Number of games = " << games_.size()
 			<< "\nTotal number of users = " << players_.size()
 			<< "\nNumber of ghost users = " << ghost_players_.size()
-			<< "\nNumber of users in the lobby = " << lobby_.nobservers();
+			<< "\nNumber of users in the lobby = " << lobby_.size();
 		return out.str();
 	} else if (command == "metrics") {
 		out << metrics_;
@@ -2113,7 +2113,7 @@ void server::process_data_game(const network::connection sock,
 			delete_game(itor);
 		} else {
 			g->remove_player(sock);
-			lobby_.add_player(sock, true);
+			lobby_.add_player(sock);
 			g->describe_slots();
 
 			// Send all other players in the lobby the update to the gamelist.
@@ -2178,7 +2178,7 @@ void server::process_data_game(const network::connection sock,
 				(ban ? g->ban_user(*data.child("ban"), pl)
 				: g->kick_member(*data.child("kick"), pl));
 		if (user) {
-			lobby_.add_player(user, true);
+			lobby_.add_player(user);
 			if (g->describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -2285,7 +2285,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	(*game_it)->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
-	lobby_.add_players(**game_it, true);
+	lobby_.add_players(**game_it);
 
 	(*game_it)->send_data(games_and_users_list_);
 

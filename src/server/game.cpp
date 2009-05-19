@@ -35,23 +35,6 @@ static lg::log_domain log_server("server");
 #define LOG_GAME LOG_STREAM(info, log_server)
 #define DBG_GAME LOG_STREAM(debug, log_server)
 
-namespace chat_message {
-
-const size_t max_message_length = 256;
-static void truncate_message(const simple_wml::string_span& str, simple_wml::node& message) {
-	// testing for msg.size() is not sufficient but we're not getting false negatives
-	// and it's cheaper than always converting to wstring.
-	if(str.size() > static_cast<int>(chat_message::max_message_length)) {
-		std::string tmp(str.begin(), str.end());
-		// The string can contain utf-8 characters so truncate as wide_string otherwise
-		// a corrupted utf-8 string can be returned.
-		utils::truncate_as_wstring(tmp, max_message_length);
-		message.set_attr_dup("message", tmp.c_str());
-	}
-}
-
-} // end chat_message namespace
-
 namespace wesnothd {
 int game::id_num = 1;
 
@@ -754,15 +737,8 @@ void game::unban_user(const simple_wml::node& unban,
 }
 
 void game::process_message(simple_wml::document& data, const player_map::iterator user) {
-	// Hack to handle the pseudo game lobby_.
-	if (owner_ != 0) {
-	} else if (user->second.silenced()) {
-		return;
-	} else if (user->second.is_message_flooding()) {
-		send_server_message(
-				"Warning: you are sending too many messages too fast. "
-				"Your message has not been relayed.", user->first);
-		return;
+	if (owner_ == 0) {
+		ERR_GAME << "No owner in game::process_message\n";
 	}
 
 	simple_wml::node* const message = data.root().child("message");
@@ -772,19 +748,7 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
 
-	// Only log in the lobby_.
-	std::string game_prefix;
-	if (owner_ != 0) {
-		game_prefix = "game ";
-	} else if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
-		LOG_GAME << network::ip_address(user->first) << "\t<"
-			<< user->second.name() << simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">\n";
-        } else {
-		LOG_GAME << network::ip_address(user->first) << "\t<"
-			<< user->second.name() << "> " << msg << "\n";
-	}
-
-	send_data(data, user->first, game_prefix + "message");
+	send_data(data, user->first, "game message");
 }
 
 bool game::is_legal_command(const simple_wml::node& command, bool is_player) {

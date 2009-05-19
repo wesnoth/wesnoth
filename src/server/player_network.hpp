@@ -23,6 +23,11 @@
 
 namespace wesnothd {
 
+namespace chat_message {
+	void truncate_message(const simple_wml::string_span& str,
+		simple_wml::node& message);
+} // end chat_message namespace
+
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> connection_vector;
 
