@@ -1033,7 +1033,7 @@ void unit::set_state(const std::string& state, const std::string& value)
 		}
 	} else {
 		if (known_boolean_state_id!=STATE_UNKNOWN){
-			set_state(known_boolean_state_id,true);
+			set_state(known_boolean_state_id,utils::string_bool(value));
 			return;
 		}
 		states_[state] = value;
