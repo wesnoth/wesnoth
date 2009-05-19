@@ -79,6 +79,7 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
   set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
   set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
+option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 
 #misc options
 if(NOT MSVC)
@@ -94,15 +95,29 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 #
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-	# Set our own default debug flags at first run
+	# Set our own default flags at first run.
 	if(NOT CONFIGURED)
-		set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+
+		if(ENABLE_STRICT_COMPILATION)
+			set(STRICT_FLAGS "-Werror -Wno-unused-parameter")
+		else(ENABLE_STRICT_COMPILATION)
+			set(STRICT_FLAGS "")
+		endif(ENABLE_STRICT_COMPILATION)
+
+
+		# Strict compilation for C files is disabled until somebody wants to clean them.
+		set(CMAKE_C_FLAGS "-O2 -W -Wall -ansi" 
+				CACHE STRING "Flags used by the C compiler during normal builds." FORCE)
+		set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi" 
+				CACHE STRING "Flags used by the C compiler during debug builds." FORCE)
+
+		set(CMAKE_CXX_FLAGS "-O2 -W -Wall -ansi ${STRICT_FLAGS}" 
+				CACHE STRING "Flags used by the CXX compiler during normal builds." FORCE)
+		set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi ${STRICT_FLAGS}" 
+				CACHE STRING "Flags used by the CXX compiler during debug builds." FORCE)
+
 	endif(NOT CONFIGURED)
 
-	#Add build-type: DEBUGSTRICT
-	set(CMAKE_CXX_FLAGS_DEBUGSTRICT "-O0 -DDEBUG -ggdb3 -W -Wall -ansi -Werror -Wno-unused-parameter" CACHE STRING "Flags used by the compiler during strict debug builds.")
-	set(CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT "${CMAKE_EXE_LINKER_FLAGS_DEBUG}" CACHE STRING "Flags used for linking binaries during strict debug builds.")
-	mark_as_advanced(CMAKE_CXX_FLAGS_DEBUGSTRICT CMAKE_EXE_LINKER_FLAGS_DEBUGSTRICT)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 # compose datadir path of datarootdir and datadirname
