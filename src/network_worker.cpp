@@ -538,9 +538,9 @@ static SOCKET_STATE send_file(buffer* buf)
 
 	}
 	if (upto != filesize && !file_stream->good()) {
-		ERR_NW << "send_file failed because stream not good from file "
-			<< buf->config_error << " upto: " << upto
-			<< " size: " << filesize << "\n";
+		ERR_NW << "send_file failed because the stream from file '"
+			<< buf->config_error << "' is not good. Sent up to: " << upto
+			<< " of file size: " << filesize << "\n";
 	}
 	return result;
 }
