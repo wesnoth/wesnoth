@@ -611,7 +611,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		if (filename_ == "")
 			filename_ = filename;
 
-		bool overwriting = (gamestate_.parent == filename_);
+		bool overwriting = (filename_ == parent);
 
 		before_save();
 
@@ -624,21 +624,17 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		LOG_SAVE << "While saving '" << filename_ << "', parent is '" << gamestate_.parent << "' and grandparent is '" << grandparent << "'\n";
 
 		if (overwriting) {
-			parent = gamestate_.parent;
 			gamestate_.parent = grandparent;
-			LOG_SAVE << "Temporarily setting parent to '" << grandparent << "'\n";
+		} else {
+			gamestate_.parent = parent;
 		}
+		LOG_SAVE << "Setting file parent to " << gamestate_.parent << "\n";
 
 		write_game_to_disk(filename_);
 
-		if (overwriting) {
-			gamestate_.parent = parent;
-			LOG_SAVE << "Reverting parent to " << gamestate_.parent << "\n";
-		} else {
-		  	grandparent = gamestate_.parent;
-			gamestate_.parent = filename_;
-			LOG_SAVE << "Setting parent to '" << gamestate_.parent << "' and grandpaerent to '" << grandparent << "'\n";
-		}
+		grandparent = parent;
+		parent = filename_;
+		LOG_SAVE << "Setting parent to '" << parent << "' and grandparent to '" << grandparent << "'\n";
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
