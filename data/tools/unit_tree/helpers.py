@@ -234,7 +234,7 @@ class WesnothList:
             WML = self.parser.parse("""
                 #define MULTIPLAYER\n#enddef
                 #define RANDOM_SIDE\n#enddef
-                {~campaigns}
+                {~add-ons}
                 """)
         except wmlparser.Error, e:
             print e

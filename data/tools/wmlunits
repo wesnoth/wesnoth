@@ -888,7 +888,7 @@ def output(isocode):
         define = campaign.get_text_val("define")
         WML = stuff.parser.parse("""
             #define %s\n#enddef
-            {~campaigns}""" % define,
+            {~add-ons}""" % define,
             ignore_macros = lambda x: x.find("/scenarios") == -1)
         n = stuff.add_units(WML, cname)
         image_collector.add_binary_pathes_from_WML(cname, WML)

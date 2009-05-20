@@ -115,7 +115,7 @@ if __name__ == '__main__':
         parser.verbose = True
 
     if options.userpath:
-        parser.parse_text("{~campaigns}")
+        parser.parse_text("{~add-ons}")
     for file in args:
         parser.parse_file(file)
     for macro in options.defines:
