@@ -618,6 +618,13 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		if (video != NULL && show_confirmation_)
 			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
 
+		// The magic moment that does save threading; after each
+		// save, the filename of the saved file becomes the parent
+		// for the next. *Unless* user loads a savegame, in which
+		// case we preserve its parent link by doing nothing.
+		gamestate_.parent = filename_;
+		// FIXME: This transformation probably should be done earlier.
+		replace_space2underbar(gamestate_.parent);
 		return true;
 	} catch(game::save_game_failed&) {
 		if (video != NULL){
@@ -659,6 +666,7 @@ void savegame::write_game(config_writer &out) const
 	log_scope("write_game");
 
 	out.write_key_val("label", gamestate_.label);
+	out.write_key_val("parent", gamestate_.parent);
 	out.write_key_val("history", gamestate_.history);
 	out.write_key_val("abbrev", gamestate_.abbrev);
 	out.write_key_val("version", game_config::version);
@@ -707,7 +715,7 @@ void savegame::write_game(config_writer &out) const
 void savegame::finish_save_game(const config_writer &out)
 {
 	std::string name = gamestate_.label;
-	std::replace(name.begin(),name.end(),' ','_');
+	replace_space2underbar(name);
 	std::string fname(get_saves_dir() + "/" + name);
 
 	try {
