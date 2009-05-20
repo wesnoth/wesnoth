@@ -446,7 +446,7 @@ public:
 	bool tile_fully_on_screen(const map_location& loc);
 
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
-	bool tile_nearly_on_screen(const map_location &loc);
+	bool tile_nearly_on_screen(const map_location &loc) const;
 
 	/**
 	 * Draws invalidated items.

@@ -1555,7 +1555,7 @@ bool display::tile_fully_on_screen(const map_location& loc)
 	return !outside_area(map_area(), x, y);
 }
 
-bool display::tile_nearly_on_screen(const map_location& loc)
+bool display::tile_nearly_on_screen(const map_location& loc) const
 {
 	int x = get_location_x(loc);
 	int y = get_location_y(loc);

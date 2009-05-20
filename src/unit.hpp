@@ -146,12 +146,15 @@ public:
 	void new_scenario();
 	/** Called on every draw */
 	void refresh(const game_display& disp,const map_location& loc) {
-		if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ || incapacitated())
-			return;
 		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
 			set_standing(loc);
 			return;
 		}
+		if (state_ != STATE_STANDING ||
+			       	get_current_animation_tick() < next_idling_ ||
+			       	!disp.tile_nearly_on_screen(loc) ||
+			       	incapacitated())
+			return;
 		if (get_current_animation_tick() > next_idling_ + 1000) {
 			// prevent all units animating at the same time
 			if (disp.idle_anim()) {
