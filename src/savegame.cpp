@@ -602,7 +602,7 @@ void savegame::before_save()
 
 bool savegame::save_game(CVideo* video, const std::string& filename)
 {
-  static std::string parent, grandparent;
+	static std::string parent, grandparent;
 
 	try {
 		Uint32 start, end;
@@ -611,30 +611,25 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		if (filename_ == "")
 			filename_ = filename;
 
-		bool overwriting = (filename_ == parent);
-
 		before_save();
 
 		// The magic moment that does save threading; after
 		// each save, the filename of the save file becomes
 		// the parent for the next. *Unless* the parent file
 		// has the same name as the savefile, in which case we
-		// restore the grandparent name. When user loads a
-		// savegame, we load its correct parent link along with it.
-		LOG_SAVE << "While saving '" << filename_ << "', parent is '" << gamestate_.parent << "' and grandparent is '" << grandparent << "'\n";
-
-		if (overwriting) {
+		// use the grandparent name. When user loads a savegame,
+		// we load its correct parent link along with it.
+		if (filename_ == parent) {
 			gamestate_.parent = grandparent;
 		} else {
 			gamestate_.parent = parent;
 		}
-		LOG_SAVE << "Setting file parent to " << gamestate_.parent << "\n";
+		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.parent << "\n";
 
 		write_game_to_disk(filename_);
 
 		grandparent = parent;
 		parent = filename_;
-		LOG_SAVE << "Setting parent to '" << parent << "' and grandparent to '" << grandparent << "'\n";
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
@@ -771,6 +766,7 @@ void savegame::extract_summary_data_from_save(config& out)
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 
 	out["label"] = gamestate_.label;
+	out["parent"] = gamestate_.parent;
 	out["campaign"] = gamestate_.campaign;
 	out["campaign_type"] = gamestate_.campaign_type;
 	out["scenario"] = gamestate_.scenario;

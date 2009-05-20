@@ -568,8 +568,11 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	std::vector<config*> summaries;
 	std::vector<save_info>::const_iterator i;
+	//FIXME: parent_to_child is not used yet
+	std::map<std::string,std::string> parent_to_child;
 	for(i = games.begin(); i != games.end(); ++i) {
 		config& cfg = save_index::save_summary(i->name);
+		parent_to_child[cfg["parent"]] = i->name;
 		summaries.push_back(&cfg);
 	}
 
