@@ -16,6 +16,7 @@
 
 #include "tests/utils/test_support.hpp"
 
+#include "config_cache.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
@@ -147,6 +148,15 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 {
 	gui2::init();
 
+	game_config::config_cache& cache = game_config::config_cache::instance();
+	config game_config;
+
+	cache.clear_defines();
+#ifdef USE_TINY_GUI
+	cache.add_define("TINY");
+#endif
+	cache.get_config(game_config::path +"/data", game_config);
+
 	test<gui2::taddon_connect>();
 //	test<gui2::taddon_list>();
 //	test<gui2::tcampaign_selection>();
@@ -162,7 +172,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 //	test<gui2::tmp_cmd_wrapper>();
 ////	test<gui2::tmp_connect>();
 //	test<gui2::tmp_create_game>();
-////	test<gui2::tmp_method_selection>();
+	test<gui2::tmp_method_selection>();
 ////	test<gui2::ttitle_screen>();
 //	test<gui2::twml_message_left>();
 //	test<gui2::twml_message_right>();
