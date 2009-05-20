@@ -1106,7 +1106,7 @@ void server::process_login(const network::connection sock,
 	// Log the IP
 	ip_log_.push_back(std::pair<std::string, std::string>(username,network::ip_address(sock)));
 	// Remove the oldest entry if the size of the IP log exceeds the maximum size
-	if(ip_log_.size() > max_ip_log_size_) ip_log_.erase(ip_log_.begin());
+	if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
 }
 
 void server::process_query(const network::connection sock,
@@ -1522,8 +1522,8 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (utils::isvalid_username(parameters)) {
 			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); ++i) {
-				if (parameters == i->second) {
-					parameters = i->first;
+				if (parameters == i->first) {
+					parameters = i->second;
 					found_something = true;
 					break;
 				}
