@@ -602,6 +602,8 @@ void savegame::before_save()
 
 bool savegame::save_game(CVideo* video, const std::string& filename)
 {
+  static std::string parent, grandparent;
+
 	try {
 		Uint32 start, end;
 		start = SDL_GetTicks();
@@ -609,22 +611,40 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		if (filename_ == "")
 			filename_ = filename;
 
+		bool overwriting = (gamestate_.parent == filename_);
+
 		before_save();
+
+		// The magic moment that does save threading; after
+		// each save, the filename of the save file becomes
+		// the parent for the next. *Unless* the parent file
+		// has the same name as the savefile, in which case we
+		// restore the grandparent name. When user loads a
+		// savegame, we load its correct parent link along with it.
+		LOG_SAVE << "While saving '" << filename_ << "', parent is '" << gamestate_.parent << "' and grandparent is '" << grandparent << "'\n";
+
+		if (overwriting) {
+			parent = gamestate_.parent;
+			gamestate_.parent = grandparent;
+			LOG_SAVE << "Temporarily setting parent to '" << grandparent << "'\n";
+		}
+
 		write_game_to_disk(filename_);
+
+		if (overwriting) {
+			gamestate_.parent = parent;
+			LOG_SAVE << "Reverting parent to " << gamestate_.parent << "\n";
+		} else {
+		  	grandparent = gamestate_.parent;
+			gamestate_.parent = filename_;
+			LOG_SAVE << "Setting parent to '" << gamestate_.parent << "' and grandpaerent to '" << grandparent << "'\n";
+		}
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
 
 		if (video != NULL && show_confirmation_)
 			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
-
-		// The magic moment that does save threading; after each
-		// save, the filename of the saved file becomes the parent
-		// for the next. *Unless* user loads a savegame, in which
-		// case we preserve its parent link by doing nothing.
-		gamestate_.parent = filename_;
-		// FIXME: This transformation probably should be done earlier.
-		replace_space2underbar(gamestate_.parent);
 		return true;
 	} catch(game::save_game_failed&) {
 		if (video != NULL){
