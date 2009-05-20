@@ -547,7 +547,6 @@ void game_state::write_snapshot(config& cfg) const
 {
 	log_scope("write_game");
 	cfg["label"] = label;
-	cfg["parent"] = parent;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
 	cfg["version"] = game_config::version;
