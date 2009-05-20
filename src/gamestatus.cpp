@@ -367,6 +367,7 @@ static player_info read_player(const config &cfg)
 
 game_state::game_state()  :
 		label(),
+		parent(),
 		version(),
 		campaign_type(),
 		campaign_define(),
@@ -444,6 +445,7 @@ void write_players(game_state& gamestate, config& cfg)
 
 game_state::game_state(const config& cfg, bool show_replay) :
 		label(cfg["label"]),
+		parent(cfg["parent"]),
 		version(cfg["version"]),
 		campaign_type(cfg["campaign_type"]),
 		campaign_define(cfg["campaign_define"]),
@@ -545,6 +547,7 @@ void game_state::write_snapshot(config& cfg) const
 {
 	log_scope("write_game");
 	cfg["label"] = label;
+	cfg["parent"] = parent;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
 	cfg["version"] = game_config::version;
@@ -608,6 +611,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["snapshot"] = has_snapshot ? "yes" : "no";
 
 	cfg_summary["label"] = cfg_save["label"];
+	cfg_summary["parent"] = cfg_save["parent"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 	cfg_summary["scenario"] = cfg_save["scenario"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
@@ -762,6 +766,7 @@ game_state::game_state(const game_state& state) :
 	/* default construct everything to silence compiler warnings. */
 	variable_set(),
 	label(),
+	parent(),
 	version(),
 	campaign_type(),
 	campaign_define(),
@@ -799,6 +804,7 @@ game_state& game_state::operator=(const game_state& state)
 	history = state.history;
 	abbrev = state.abbrev;
 	label = state.label;
+	parent = state.parent;
 	version = state.version;
 	campaign_type = state.campaign_type;
 	campaign_define = state.campaign_define;
