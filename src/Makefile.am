@@ -234,7 +234,7 @@ wesnothd_SOURCES = \
 	server/player.cpp \
 	server/player_network.cpp \
 	server/proxy.cpp \
-	server/room.cpp
+	server/room.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
 	server/user_handler.cpp \
