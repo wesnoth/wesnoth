@@ -229,19 +229,6 @@ void tscrollbar_container::NEW_request_reduce_width(
 	set_layout_size(size);
 }
 
-void tscrollbar_container::layout_wrap(const unsigned maximum_width)
-{
-	// Inherited.
-	twidget::layout_wrap(maximum_width);
-
-	assert(content_grid_ && vertical_scrollbar_grid_);
-	const unsigned offset = vertical_scrollbar_mode_ == always_invisible
-			? 0
-			: vertical_scrollbar_grid_->get_best_size().x;
-
-	content_grid_->layout_wrap(maximum_width - offset);
-}
-
 tpoint tscrollbar_container::calculate_best_size() const
 {
 	log_scope2(log_gui_layout,

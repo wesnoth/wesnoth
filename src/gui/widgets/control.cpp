@@ -158,35 +158,6 @@ void tcontrol::NEW_request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-void tcontrol::layout_wrap(const unsigned maximum_width)
-{
-	// Inherited.
-	twidget::layout_wrap(maximum_width);
-
-	assert(config_);
-
-	if(label_.empty()) {
-		// FIXME see what to do on an empty label later.
-		return;
-	} else {
-
-		tpoint size = get_best_text_size(
-				tpoint(0,0),
-				tpoint(maximum_width - config_->text_extra_width, 0));
-
-		size.x += config_->text_extra_width;
-		size.y += config_->text_extra_height;
-
-		set_layout_size(size);
-
-		DBG_GUI_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-				<< " maximum_width " << maximum_width
-				<< " result " << size
-				<< ".\n";
-
-	}
-}
-
 tpoint tcontrol::calculate_best_size() const
 {
 	assert(config_);

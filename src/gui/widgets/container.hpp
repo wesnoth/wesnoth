@@ -89,9 +89,6 @@ public:
 	bool can_wrap() const { return grid_.can_wrap() || twidget::can_wrap(); }
 
 	/** Inherited from twidget. */
-	void layout_wrap(const unsigned maximum_width);
-
-	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

@@ -250,18 +250,6 @@ public:
 	virtual bool can_wrap() const { return false; }
 
 	/**
-	 * Wraps the contents of the widget.
-	 *
-	 * @todo implement this function properly.
-	 *
-	 * @param maximum_width       The wanted maximum width of the widget.
-	 *
-	 * @pre                       can_wrap() == true.
-	 */
-	virtual void layout_wrap(const unsigned /*maximum_width*/)
-		{ assert(can_wrap()); }
-
-	/**
 	 * Sets the size of the widget.
 	 *
 	 * @param origin              The position of top left of the widget.

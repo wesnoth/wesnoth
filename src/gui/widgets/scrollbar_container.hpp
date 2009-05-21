@@ -91,9 +91,6 @@ public:
 			: false;
 	}
 
-	/** Inherited from twidget (not tcontainer_). */
-	void layout_wrap(const unsigned maximum_width);
-
 private:
 	/** Inherited from tcontainer_. */
 	tpoint calculate_best_size() const;

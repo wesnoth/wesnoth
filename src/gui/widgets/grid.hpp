@@ -222,9 +222,6 @@ public:
 	/** Inherited from twidget. */
 	bool can_wrap() const;
 
-	/** Inherited from twidget. */
-	void layout_wrap(const unsigned maximum_width);
-
 public:
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
@@ -309,9 +306,6 @@ private:
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const
 			{ return widget_ ? widget_->can_wrap() : false; }
-
-		/** Forwards layout_wrap() to the cell. */
-		void layout_wrap(const unsigned maximum_width);
 
 		/** Returns the id of the widget/ */
 		const std::string& id() const;
