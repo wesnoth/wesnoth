@@ -47,6 +47,8 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/bind.hpp>
+
 #include <memory>
 
 namespace {
@@ -173,6 +175,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	game_config::config_cache& cache = game_config::config_cache::instance();
 
 	cache.clear_defines();
+#ifndef DISABLE_EDITOR2
+	cache.add_define("EDITOR2");
+#endif
 	cache.add_define("MULTIPLAYER");
 #ifdef USE_TINY_GUI
 	cache.add_define("TINY");
@@ -190,13 +195,13 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	/**** Run the tests. *****/
 	test<gui2::taddon_connect>();
-	//	test<gui2::taddon_list>();
-	//	test<gui2::tcampaign_selection>();
+	test<gui2::taddon_list>();
+	test<gui2::tcampaign_selection>();
 #ifndef DISABLE_EDITOR2
 	test<gui2::teditor_generate_map>();
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
-	//	test<gui2::teditor_settings>();
+	test<gui2::teditor_settings>();
 #endif
 	test<gui2::tgame_save>();
 	test<gui2::tlanguage_selection>();
@@ -213,17 +218,27 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 namespace {
 
 template<>
+struct twrapper<gui2::taddon_list>
+{
+	static gui2::taddon_list* create()
+	{
+		/** @todo Would nice to add one or more dummy addons in the list. */
+		static config cfg;
+		return new gui2::taddon_list(cfg);
+	}
+};
+
+template<>
 struct twrapper<gui2::tcampaign_selection>
 {
 	static gui2::tcampaign_selection* create()
 	{
 		const config::const_child_itors &ci =
 				main_config.child_range("campaign");
-		std::vector<config> campaigns(ci.first, ci.second);
+		static std::vector<config> campaigns(ci.first, ci.second);
 
 		return new gui2::tcampaign_selection(campaigns);
 	}
-
 };
 
 template<>
@@ -243,7 +258,6 @@ struct twrapper<gui2::tmessage>
 	{
 		return new gui2::tmessage("Title", "Message", false);
 	}
-
 };
 
 template<>
@@ -253,7 +267,6 @@ struct twrapper<gui2::tmp_cmd_wrapper>
 	{
 		return new gui2::tmp_cmd_wrapper("foo");
 	}
-
 };
 
 template<>
@@ -263,7 +276,6 @@ struct twrapper<gui2::tmp_create_game>
 	{
 		return new gui2::tmp_create_game(main_config);
 	}
-
 };
 
 template<>
@@ -296,6 +308,8 @@ struct twrapper<gui2::teditor_generate_map>
 template<>
 struct twrapper<gui2::teditor_settings>
 {
+	static void dummy_callback(int, int, int) {}
+
 	static gui2::teditor_settings* create()
 	{
 		gui2::teditor_settings* result = new gui2::teditor_settings();
@@ -310,6 +324,7 @@ struct twrapper<gui2::teditor_settings>
 		}
 		result->set_tods(tods);
 
+		result->set_redraw_callback(boost::bind(dummy_callback, _1, _2, _3));
 
 		return result;
 	}
@@ -322,7 +337,6 @@ struct twrapper<gui2::twml_message_left>
 	{
 		return new gui2::twml_message_left("Title", "Message", "", false);
 	}
-
 };
 
 template<>
@@ -332,7 +346,7 @@ struct twrapper<gui2::twml_message_right>
 	{
 		return new gui2::twml_message_right("Title", "Message", "", false);
 	}
-
 };
 
 } // namespace
+
