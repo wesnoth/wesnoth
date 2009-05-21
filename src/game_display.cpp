@@ -47,7 +47,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		display(video, &map, theme_cfg, cfg, level),
 		units_(units),
 		temp_unit_(NULL),
-		temp_unit_loc_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		energy_bar_rects_(),
@@ -272,7 +271,9 @@ void game_display::pre_draw() {
 std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
 	foreach (const map_location& loc, invalidated_) {
-		if ((temp_unit_ && temp_unit_loc_ == loc) || units_.find(loc) != units_.end()) {
+		if ((temp_unit_ && temp_unit_->get_location() == loc) ||
+		    units_.find(loc) != units_.end())
+		{
 			unit_locations.push_back(loc);
 		}
 	}
@@ -406,8 +407,8 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 			u_it->second.redraw_unit(*this, loc);
 			//simulate_delay += 1;
 		}
-		if (temp_unit_ && temp_unit_loc_ == loc) {
-			temp_unit_->redraw_unit(*this, temp_unit_loc_);
+		if (temp_unit_ && temp_unit_->get_location() == loc) {
+			temp_unit_->redraw_unit(*this, loc);
 			//simulate_delay += 1;
 		}
 	}
@@ -893,8 +894,8 @@ void game_display::invalidate_animations()
 		if (!tile_nearly_on_screen(u->first)) continue;
 		u->second.refresh(*this, u->first);
 	}
-	if (temp_unit_ && tile_nearly_on_screen(temp_unit_loc_))
-		temp_unit_->refresh(*this, temp_unit_loc_);
+	if (temp_unit_ && tile_nearly_on_screen(temp_unit_->get_location()))
+		temp_unit_->refresh(*this, temp_unit_->get_location());
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;
@@ -904,9 +905,9 @@ void game_display::invalidate_animations()
 			if (!tile_nearly_on_screen(u->first)) continue;
 			new_inval |= u->second.invalidate(u->first);
 		}
-		if (temp_unit_ && tile_nearly_on_screen(temp_unit_loc_)) {
+		if (temp_unit_ && tile_nearly_on_screen(temp_unit_->get_location())) {
 			//new_inval |=invalidate(temp_unit_loc_);
-			new_inval |=temp_unit_->invalidate(temp_unit_loc_);
+			new_inval |=temp_unit_->invalidate(temp_unit_->get_location());
 		}
 	}
 }
@@ -917,18 +918,17 @@ void game_display::debug_highlight(const map_location& loc, fixed_t amount)
 	debugHighlights_[loc] += amount;
 }
 
-void game_display::place_temporary_unit(unit &u, const map_location& loc)
+void game_display::place_temporary_unit(unit &u)
 {
 	temp_unit_ = &u;
-	temp_unit_loc_ = loc;
-	invalidate(loc);
+	invalidate(u.get_location());
 }
 
 void game_display::remove_temporary_unit()
 {
 	if(!temp_unit_) return;
 
-	invalidate(temp_unit_loc_);
+	invalidate(temp_unit_->get_location());
 	// Redraw with no location to get rid of haloes
 	temp_unit_->clear_haloes();
 	temp_unit_ = NULL;

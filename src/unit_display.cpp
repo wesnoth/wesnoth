@@ -34,16 +34,19 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	}
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
 
+	temp_unit.set_location(a);
 	if (!disp->fogged(a)) { // teleport
-		disp->place_temporary_unit(temp_unit,a);
+		disp->place_temporary_unit(temp_unit);
 		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
+
+	temp_unit.set_location(b);
 	if (!disp->fogged(b)) { // teleport
-		disp->place_temporary_unit(temp_unit,b);
+		disp->place_temporary_unit(temp_unit);
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
 		unit_animator animator;
@@ -51,7 +54,8 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 		animator.start_animations();
 		animator.wait_for_end();
 	}
-	temp_unit.set_standing(b);
+
+	temp_unit.set_standing();
 	disp->update_display();
 	events::pump();
 }
@@ -64,7 +68,8 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	}
 
 
-	disp->place_temporary_unit(temp_unit,a);
+	temp_unit.set_location(a);
+	disp->place_temporary_unit(temp_unit);
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b);
@@ -143,9 +148,10 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
 	u.set_hidden(true);
-	temp_unit.set_standing(path[0],false);
+	u.set_location(path[0]);
+	temp_unit.set_standing(false);
 	temp_unit.set_hidden(false);
-	disp->place_temporary_unit(temp_unit,path[0]);
+	disp->place_temporary_unit(temp_unit);
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
@@ -175,7 +181,8 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 		if(!invisible) {
 			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
 				// prevent the unit from dissappearing if we scroll here with i == 0
-				disp->place_temporary_unit(temp_unit,path[i]);
+				temp_unit.set_location(path[i]);
+				disp->place_temporary_unit(temp_unit);
 				// scroll in as much of the remaining path as possible
 				std::vector<map_location> remaining_path;
 				for(size_t j = i; j < path.size(); j++) {
@@ -197,8 +204,9 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 		}
 	}
 	disp->remove_temporary_unit();
+	u.set_location(path[path.size() - 1]);
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
-	u.set_standing(path[path.size()-1]);
+	u.set_standing();
 
 	u.set_hidden(was_hidden);
 	disp->invalidate_unit_after_move(path[0], path[path.size()-1]);
@@ -260,7 +268,7 @@ void unit_attack(
 	unit defender = def->second;
 	bool was_hidden = defender.get_hidden();
 	def->second.set_hidden(true);
-	disp->place_temporary_unit(defender,def->first);
+	disp->place_temporary_unit(defender);
 
 
 	att->second.set_facing(a.get_relative_dir(b));

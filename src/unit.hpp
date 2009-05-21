@@ -204,10 +204,7 @@ public:
 	/** Clear unit_halo_  */
 	void clear_haloes();
 
-
-	void set_standing(const map_location& loc, bool with_bars = true);
-	void set_standing(bool with_bars = true)
-	{ set_standing(loc_, with_bars); }
+	void set_standing(bool with_bars = true);
 
 	void set_idling(const game_display& disp,const map_location& loc);
 	void set_selecting();
@@ -223,7 +220,7 @@ public:
 	int cost () const { return unit_value_; }
 
 	const map_location &get_location() const { return loc_; }
-	/** To be called by unit_map only. (For now.) */
+	/** To be called by unit_map or for temporary units only. */
 	void set_location(const map_location &loc) { loc_ = loc; }
 
 	const map_location& get_goto() const { return goto_; }

@@ -1080,6 +1080,6 @@ void unit_animator::restart_animation()
 void unit_animator::set_all_standing()
 {
         for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
-                anim->my_unit->set_standing(anim->src);
+		anim->my_unit->set_standing();
         }
 }

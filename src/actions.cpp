@@ -1577,13 +1577,13 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 
 	if(a_.valid()) {
-		a_.get_unit().set_standing(a_.iter_->first);
+		a_.get_unit().set_standing();
 		if(a_.xp_)
 			a_.get_unit().get_experience(a_.xp_);
 	}
 
 	if(d_.valid()) {
-		d_.get_unit().set_standing(d_.iter_->first);
+		d_.get_unit().set_standing();
 		if(d_.xp_)
 			d_.get_unit().get_experience(d_.xp_);
 	}

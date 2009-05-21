@@ -186,7 +186,7 @@ protected:
 
 public:
 	/** Temporarily place a unit on map (moving: can overlap others). */
-	void place_temporary_unit(unit &u, const map_location& loc);
+	void place_temporary_unit(unit &u);
 	void remove_temporary_unit();
 
 	/** Set the attack direction indicator. */
@@ -306,7 +306,6 @@ private:
 	unit_map& units_;
 
 	unit *temp_unit_;
-	map_location temp_unit_loc_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;

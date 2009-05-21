@@ -1792,15 +1792,17 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(const map_location& loc, bool with_bars)
+void unit::set_standing(bool with_bars)
 {
 	game_display * disp =  game_display::get_singleton();
 	map_location arr[6];
-	get_adjacent_tiles(loc, arr);
+	get_adjacent_tiles(loc_, arr);
 	if (preferences::show_standing_animations()&& !incapacitated()) {
-		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
+		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "standing"),
+			with_bars, true, "", 0, STATE_STANDING);
 	} else {
-		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"_disabled_"),with_bars,true,"",0,STATE_STANDING);
+		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "_disabled_"),
+			with_bars, true, "", 0, STATE_STANDING);
 	}
 }
 
@@ -1830,7 +1832,7 @@ void unit::start_animation(const int start_time, const map_location &loc,const u
     // everything except standing select and idle
     const bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	if(!animation) {
-		set_standing(loc,with_bars);
+		set_standing(with_bars);
 		return ;
 	}
 	state_ =state;
@@ -1876,7 +1878,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 
 
 	if(!anim_) {
-		set_standing(loc);
+		set_standing();
 	}
 	anim_->update_last_draw_time();
 	frame_parameters params;
@@ -3116,7 +3118,7 @@ void unit::refresh(const game_display &disp, const map_location &loc)
 {
 	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
 	{
-		set_standing(loc);
+		set_standing();
 		return;
 	}
 	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
