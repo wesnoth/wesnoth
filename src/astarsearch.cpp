@@ -189,7 +189,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	plain_route route;
 	if (nodes[index(dst)].g < stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
-		route.move_cost = (int)nodes[index(dst)].g;
+		route.move_cost = static_cast<int>(nodes[index(dst)].g);
 		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);
 		}
@@ -197,7 +197,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		std::reverse(route.steps.begin(), route.steps.end());
 	} else {
 		LOG_PF << "aborted a* search  " << "\n";
-		route.move_cost = (int)calc->getNoPathValue();
+		route.move_cost = static_cast<int>(calc->getNoPathValue());
 	}
 
 	return route;
