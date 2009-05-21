@@ -210,7 +210,7 @@ public:
 	{ set_standing(loc_, with_bars); }
 
 	void set_idling(const game_display& disp,const map_location& loc);
-	void set_selecting(const game_display& disp,const map_location& loc);
+	void set_selecting();
 	unit_animation* get_animation() {  return anim_;};
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_facing(map_location::DIRECTION dir);

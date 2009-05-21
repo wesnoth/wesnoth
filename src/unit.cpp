@@ -1812,12 +1812,15 @@ void unit::set_idling(const game_display &disp,const map_location& loc)
 	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,false,"",0,STATE_FORGET);
 }
 
-void unit::set_selecting(const game_display &disp,const map_location& loc)
+void unit::set_selecting()
 {
+	const game_display *disp =  game_display::get_singleton();
 	if (preferences::show_standing_animations()) {
-		start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,false,"",0,STATE_FORGET);
+		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "selected"),
+			true, false, "", 0, STATE_FORGET);
 	} else {
-		start_animation(INT_MAX,loc,choose_animation(disp,loc,"_disabled_selected_"),true,false,"",0,STATE_FORGET);
+		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "_disabled_selected_"),
+			true, false, "", 0, STATE_FORGET);
 	}
 }
 
