@@ -101,9 +101,6 @@ public:
 	bool has_vertical_scrollbar() const
 		{ return grid_.has_vertical_scrollbar(); }
 
-	/** Inherited from twidget. */
-	void layout_use_vertical_scrollbar(const unsigned maximum_height);
-
 	/**
 	 * Inherited from twidget.
 	 *

@@ -97,9 +97,6 @@ public:
 	/** Inherited from twidget (not tcontainer_). */
 	bool has_vertical_scrollbar() const;
 
-	/** Inherited from tcontainer_. */
-	void layout_use_vertical_scrollbar(const unsigned maximum_height);
-
 	/** Inherited from twidget (not tcontainer_). */
 	bool has_horizontal_scrollbar() const;
 

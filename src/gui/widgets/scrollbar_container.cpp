@@ -257,31 +257,6 @@ bool tscrollbar_container::has_horizontal_scrollbar() const
 }
 
 void tscrollbar_container::
-		layout_use_vertical_scrollbar(const unsigned maximum_height)
-{
-	assert(vertical_scrollbar_grid_);
-
-	// Inherited.
-	twidget::layout_use_vertical_scrollbar(maximum_height);
-
-	tpoint size = get_best_size();
-	if(static_cast<unsigned>(size.y) < maximum_height) {
-		return;
-	}
-
-	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
-	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
-		size.y = maximum_height;
-	} else {
-		size.y = scrollbar_size.y;
-	}
-
-	// FIXME adjust for the step size of the scrollbar
-
-	set_layout_size(size);
-}
-
-void tscrollbar_container::
 		layout_use_horizontal_scrollbar(const unsigned maximum_width)
 {
 	// Inherited.

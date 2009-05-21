@@ -229,9 +229,6 @@ public:
 	bool has_vertical_scrollbar() const;
 
 	/** Inherited from twidget. */
-	void layout_use_vertical_scrollbar(const unsigned maximum_height);
-
-	/** Inherited from twidget. */
 	bool has_horizontal_scrollbar() const;
 
 	/** Inherited from twidget. */
@@ -324,9 +321,6 @@ private:
 
 		/** Forwards layout_wrap() to the cell. */
 		void layout_wrap(const unsigned maximum_width);
-
-		/** Forwards layout_use_vertical_scrollbar() to the cell. */
-		void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
 		/** Forwards layout_use_horizontal_scrollbar() to the cell. */
 		void layout_use_horizontal_scrollbar(const unsigned maximum_width);
@@ -434,18 +428,6 @@ private:
 
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);
-
-	/**
-	 * Gets the best height for a row.
-	 *
-	 * @param row                 The row to get the best height for.
-	 * @param maximum_height      The wanted maximum height.
-	 *
-	 * @returns                   The best height for a row, if possible
-	 *                            smaller as the maximum.
-	 */
-	unsigned row_use_vertical_scrollbar(
-			const unsigned row, const unsigned maximum_height);
 
 	/**
 	 * Gets the best width for a column.

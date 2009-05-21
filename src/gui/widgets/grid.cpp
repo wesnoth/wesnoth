@@ -512,74 +512,6 @@ bool tgrid::has_vertical_scrollbar() const
 	return twidget::has_vertical_scrollbar();
 }
 
-void tgrid::layout_use_vertical_scrollbar(const unsigned maximum_height)
-{
-	// Inherited.
-	twidget::layout_use_vertical_scrollbar(maximum_height);
-
-	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
-	DBG_GUI_L << "tgrid: maximum height " << maximum_height << ".\n";
-
-	tpoint size = get_best_size();
-
-	// If we honoured the size or can't resize return the result.
-	if(size.y <= static_cast<int>(maximum_height) || !has_vertical_scrollbar()) {
-		DBG_GUI_L << "tgrid: maximum height "
-			<< maximum_height << " returning " << size << ".\n";
-		return;
-	}
-
-	// Try to resize.
-
-	// The amount we're too high.
-	const unsigned too_high = size.y - maximum_height;
-	// The amount we reduced
-	unsigned reduced = 0;
-	for(size_t y = 0; y < rows_; ++y) {
-
-		if(too_high - reduced >=  row_height_[y]) {
-			DBG_GUI_L << "tgrid: row " << y << " is too small to be reduced.\n";
-			continue;
-		}
-
-		const unsigned wanted_height = row_height_[y] - (too_high - reduced);
-
-		const unsigned height = row_use_vertical_scrollbar(y, wanted_height);
-
-		if(height < row_height_[y]) {
-			DBG_GUI_L << "tgrid: reduced " << row_height_[y] - height
-				<< " pixels for row " << y << ".\n";
-
-			reduced += row_height_[y] - height;
-			row_height_[y] = height;
-		}
-
-		if(reduced >= too_high) {
-			break;
-		}
-	}
-
-	size.y -= reduced;
-	if(reduced >= too_high) {
-		DBG_GUI_L << "tgrid: maximum height " << maximum_height
-			<< " need to reduce " << too_high
-			<< " reduced " << reduced
-			<< " resizing succeeded returning " << size.y << ".\n";
-	} else if(reduced == 0) {
-		DBG_GUI_L << "tgrid: maximum height " << maximum_height
-			<< " need to reduce " << too_high
-			<< " reduced " << reduced
-			<< " resizing completely failed returning " << size.y << ".\n";
-	} else {
-		DBG_GUI_L << "tgrid: maximum height " << maximum_height
-			<< " need to reduce " << too_high
-			<< " reduced " << reduced
-			<< " resizing partly failed returning " << size.y << ".\n";
-	}
-
-	set_layout_size(calculate_best_size());
-}
-
 bool tgrid::has_horizontal_scrollbar() const
 {
 	foreach(const tchild& child, children_) {
@@ -1056,19 +988,6 @@ void tgrid::tchild::layout_wrap(const unsigned maximum_width)
 	widget_->layout_wrap(maximum_width - border_space().x);
 }
 
-
-void tgrid::tchild::layout_use_vertical_scrollbar(const unsigned maximum_height)
-{
-
-	assert(widget_);
-
-	if(! widget_->has_vertical_scrollbar()) {
-		return;
-	}
-
-	widget_->layout_use_vertical_scrollbar(maximum_height - border_space().y);
-}
-
 void tgrid::tchild::layout_use_horizontal_scrollbar(
 		const unsigned maximum_width)
 {
@@ -1146,31 +1065,6 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 		widget->draw_foreground(frame_buffer);
 		widget->set_dirty(false);
 	}
-}
-
-unsigned tgrid::row_use_vertical_scrollbar(
-		const unsigned row, const unsigned maximum_height)
-{
-	// The minimum height required.
-	unsigned required_height = 0;
-
-	for(size_t x = 0; x < cols_; ++x) {
-		tchild& cell = child(row, x);
-		cell.layout_use_vertical_scrollbar(maximum_height);
-
-		const tpoint size(cell.get_best_size());
-
-		if(required_height == 0
-				|| static_cast<size_t>(size.y) > required_height) {
-
-			required_height = size.y;
-		}
-	}
-
-	DBG_GUI_L << "tgrid: maximum row height " << maximum_height
-		<< " returning " << required_height << ".\n";
-
-	return required_height;
 }
 
 unsigned tgrid::column_use_horizontal_scrollbar(

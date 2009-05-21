@@ -294,18 +294,6 @@ public:
 	virtual bool has_vertical_scrollbar() const { return false; }
 
 	/**
-	 * Tries to use a vertical scrollbar with the widget.
-	 *
-	 * @todo implement this function properly.
-	 *
-	 * @param maximum_height      The wanted maximum height of the widget.
-	 *
-	 * @pre                       has_vertical_scrollbar() == true.
-	 */
-	virtual void layout_use_vertical_scrollbar(const unsigned /*maximum_height*/)
-		{ assert(has_vertical_scrollbar()); }
-
-	/**
 	 * Sets the size of the widget.
 	 *
 	 * @param origin              The position of top left of the widget.
