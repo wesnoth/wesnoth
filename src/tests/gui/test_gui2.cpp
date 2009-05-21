@@ -42,6 +42,7 @@
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/settings.hpp"
+#include "language.hpp"
 #include "map_create.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "video.hpp"
@@ -185,6 +186,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	cache.get_config(game_config::path +"/data", main_config);
 
 	const binary_paths_manager bin_paths_manager(main_config);
+
+	load_language_list();
 
 	{
 		const config &cfg = main_config.child("game_config");
