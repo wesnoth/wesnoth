@@ -515,6 +515,10 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const std::vector<team>& teams, const team& current_team,
 		bool see_all=false);
 
+const unit *get_visible_unit(const unit_map &units, const map_location &loc,
+	const gamemap &map, const std::vector<team> &teams, const team &current_team,
+	bool see_all = false);
+
 struct team_data
 {
 	team_data() :

@@ -95,14 +95,14 @@ bool enemy_zoc(gamemap const &map,
 	map_location locs[6];
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
-	for(int i = 0; i != 6; ++i) {
-	  unit_map::const_iterator it;
-	  it = find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
-
-	  if (it != units.end() && it->second.side() != side &&
-		 current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
-	    return true;
-	  }
+	for (int i = 0; i != 6; ++i)
+	{
+		const unit *u = get_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
+		if (u && u->side() != side && current_team.is_enemy(u->side()) &&
+		    u->emits_zoc())
+		{
+			return true;
+		}
 	}
 
 	return false;
@@ -229,11 +229,10 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			if (next_visited && !(t < next)) continue;
 
 			if (!ignore_units) {
-				const unit_map::const_iterator unit_it =
-					find_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
-				if (unit_it != units.end() && current_team.is_enemy(unit_it->second.side()))
+				const unit *v =
+					get_visible_unit(units, locs[i], map, teams, viewing_team, see_all);
+				if (v && current_team.is_enemy(v->side()))
 					continue;
-
 
 				if (!force_ignore_zocs && t.movement_left > 0
 						&& enemy_zoc(map, units, teams, locs[i], viewing_team, u.side(), see_all)
@@ -448,15 +447,16 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
-		unit_map::const_iterator
-			other_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_);
+		const unit *other_unit =
+			get_visible_unit(units_, loc, map_, teams_, viewing_team_);
 
 		// We can't traverse visible enemy and we also prefer empty hexes
 		// (less blocking in multi-turn moves and better when exploring fog,
 		// because we can't stop on a friend)
 
-		if (other_unit != units_.end()) {
-			if (teams_[unit_.side()-1].is_enemy(other_unit->second.side()))
+		if (other_unit)
+		{
+			if (teams_[unit_.side() - 1].is_enemy(other_unit->side()))
 				return getNoPathValue();
 			else
 				// This value will be used with the defense_subcost (see below)

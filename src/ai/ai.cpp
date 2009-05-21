@@ -1144,14 +1144,12 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 #endif
 
 			for(int n = 0; n != 6; ++n) {
-				const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
-																   map_,
-																   teams_,current_team());
+				const unit *enemy = get_visible_unit(units_,adj[n], map_, teams_,current_team());
 
-				if(enemy != units_.end() &&
-					current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-					// Current behavior is to only make risk-free attacks.
-					battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
+				if (!enemy || !current_team().is_enemy(enemy->side()) || enemy->incapacitated())
+					continue;
+				// Current behavior is to only make risk-free attacks.
+				battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
 #ifndef SUOKKO
 					if (bc.get_defender_stats().damage == 0) {
 						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,
@@ -1172,7 +1170,6 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 						selected = n;
 					}
 #endif
-				}
 			}
 #ifdef SUOKKO
 			// FIXME: This code was in sukko's r29531 and was backed out. Correct?

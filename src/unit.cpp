@@ -3098,6 +3098,16 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 	return u;
 }
 
+const unit *get_visible_unit(const unit_map &units, const map_location &loc,
+	const gamemap &map, const std::vector<team> &teams, const team &current_team,
+	bool see_all)
+{
+	unit_map::const_iterator ui = find_visible_unit(units, loc, map, teams,
+		current_team, see_all);
+	if (ui == units.end()) return NULL;
+	return &ui->second;
+}
+
 team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 {
 	team_data res;
