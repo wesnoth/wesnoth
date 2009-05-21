@@ -456,14 +456,6 @@ private:
 	/**
 	 * Layouts the window.
 	 *
-	 * @deprecated Will be removed after the new layout algorithm is
-	 * implemented.
-	 */
-	void layout();
-
-	/**
-	 * Layouts the window.
-	 *
 	 * This is a new routine which will be used as fallback when the normal
 	 * layout engine fails. In 1.7 this will become the real layout engine.
 	 *
