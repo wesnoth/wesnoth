@@ -404,11 +404,11 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 	foreach (map_location loc, invalidated_unit_locations) {
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
-			u_it->second.redraw_unit(*this, loc);
+			u_it->second.redraw_unit();
 			//simulate_delay += 1;
 		}
 		if (temp_unit_ && temp_unit_->get_location() == loc) {
-			temp_unit_->redraw_unit(*this, loc);
+			temp_unit_->redraw_unit();
 			//simulate_delay += 1;
 		}
 	}
@@ -892,10 +892,10 @@ void game_display::invalidate_animations()
 	     u_end = units_.end(); u != u_end; ++u)
 	{
 		if (!tile_nearly_on_screen(u->first)) continue;
-		u->second.refresh(*this, u->first);
+		u->second.refresh();
 	}
 	if (temp_unit_ && tile_nearly_on_screen(temp_unit_->get_location()))
-		temp_unit_->refresh(*this, temp_unit_->get_location());
+		temp_unit_->refresh();
 	bool new_inval = true;
 	while(new_inval) {
 		new_inval = false;

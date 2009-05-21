@@ -991,7 +991,8 @@ void unit_animator::start_animations()
 	}
 	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 		if(anim->animation) {
-			anim->my_unit->start_animation(begin_time,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
+			anim->my_unit->start_animation(begin_time, anim->animation,
+				anim->with_bars, anim->cycles, anim->text, anim->text_color);
 			anim->animation = NULL;
 		} else {
 			anim->my_unit->get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));

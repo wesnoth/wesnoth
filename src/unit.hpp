@@ -145,7 +145,7 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh(const game_display &disp, const map_location &loc);
+	void refresh();
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
@@ -200,13 +200,13 @@ public:
 	const surface still_image(bool scaled = false) const;
 
 	/** draw a unit.  */
-	void redraw_unit(game_display& disp, const map_location& loc);
+	void redraw_unit();
 	/** Clear unit_halo_  */
 	void clear_haloes();
 
 	void set_standing(bool with_bars = true);
 
-	void set_idling(const game_display& disp,const map_location& loc);
+	void set_idling();
 	void set_selecting();
 	unit_animation* get_animation() {  return anim_;};
 	const unit_animation* get_animation() const {  return anim_;};
@@ -270,7 +270,9 @@ public:
 		STATE_STANDING,   /** anim must fit in a hex */
 		STATE_FORGET,     /** animation will be automaticaly replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
-	void start_animation(const int start_time , const map_location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
+	void start_animation(int start_time, const unit_animation *animation,
+		bool with_bars, bool cycles = false, const std::string &text = "",
+		Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
 	const std::string& absolute_image() const { return cfg_["image"]; }

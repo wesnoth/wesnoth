@@ -1794,14 +1794,14 @@ const surface unit::still_image(bool scaled) const
 
 void unit::set_standing(bool with_bars)
 {
-	game_display * disp =  game_display::get_singleton();
+	game_display *disp = game_display::get_singleton();
 	map_location arr[6];
 	get_adjacent_tiles(loc_, arr);
 	if (preferences::show_standing_animations()&& !incapacitated()) {
-		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "standing"),
+		start_animation(INT_MAX, choose_animation(*disp, loc_, "standing"),
 			with_bars, true, "", 0, STATE_STANDING);
 	} else {
-		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "_disabled_"),
+		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_"),
 			with_bars, true, "", 0, STATE_STANDING);
 	}
 }
@@ -1809,24 +1809,27 @@ void unit::set_standing(bool with_bars)
 
 
 
-void unit::set_idling(const game_display &disp,const map_location& loc)
+void unit::set_idling()
 {
-	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,false,"",0,STATE_FORGET);
+	game_display *disp = game_display::get_singleton();
+	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
+		true, false, "", 0, STATE_FORGET);
 }
 
 void unit::set_selecting()
 {
 	const game_display *disp =  game_display::get_singleton();
 	if (preferences::show_standing_animations()) {
-		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "selected"),
+		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
 			true, false, "", 0, STATE_FORGET);
 	} else {
-		start_animation(INT_MAX, loc_, choose_animation(*disp, loc_, "_disabled_selected_"),
+		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_selected_"),
 			true, false, "", 0, STATE_FORGET);
 	}
 }
 
-void unit::start_animation(const int start_time, const map_location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
+void unit::start_animation(int start_time, const unit_animation *animation,
+	bool with_bars, bool cycles, const std::string &text, Uint32 text_color, STATE state)
 {
 	const game_display * disp =  game_display::get_singleton();
     // everything except standing select and idle
@@ -1840,7 +1843,8 @@ void unit::start_animation(const int start_time, const map_location &loc,const u
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
-	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color,accelerate);
+	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
+		cycles, text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()
@@ -1858,11 +1862,12 @@ void unit::set_facing(map_location::DIRECTION dir) {
 	// Else look at yourself (not available so continue to face the same direction)
 }
 
-void unit::redraw_unit(game_display& disp, const map_location& loc)
+void unit::redraw_unit()
 {
-	const gamemap & map = disp.get_map();
-	if(!loc.valid() || hidden_ || disp.fogged(loc)
-	|| (invisible(loc,disp.get_units(),disp.get_teams())
+	game_display &disp = *game_display::get_singleton();
+	const gamemap &map = disp.get_map();
+	if (!loc_.valid() || hidden_ || disp.fogged(loc_) ||
+	    (invisible(loc_, disp.get_units(), disp.get_teams())
 	&& disp.get_teams()[disp.viewing_team()].is_enemy(side())))
 	{
 		clear_haloes();
@@ -1882,16 +1887,16 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 	}
 	anim_->update_last_draw_time();
 	frame_parameters params;
-	const t_translation::t_terrain terrain = map.get_terrain(loc);
+	const t_translation::t_terrain terrain = map.get_terrain(loc_);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 	// do not set to 0 so we can distinguih the flying from the "not on submerge terrain"
 	 params.submerge= is_flying() ? 0.01 : terrain_info.unit_submerge();
 
-	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
+	if (invisible(loc_, disp.get_units(), disp.get_teams()) &&
 			params.highlight_ratio > 0.5) {
 		params.highlight_ratio = 0.5;
 	}
-	if(loc == disp.selected_hex() && params.highlight_ratio == 1.0) {
+	if (loc_ == disp.selected_hex() && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
 	}
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
@@ -1914,9 +1919,9 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 
 
 
-	const map_location dst = loc.get_direction(facing_);
-	const int xsrc = disp.get_location_x(loc);
-	const int ysrc = disp.get_location_y(loc);
+	const map_location dst = loc_.get_direction(facing_);
+	const int xsrc = disp.get_location_x(loc_);
+	const int ysrc = disp.get_location_y(loc_);
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
 	int d2 = disp.hex_size() / 2;
@@ -1962,7 +1967,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 			ellipse="misc/ellipse";
 		}
 
-		const char* const selected = disp.selected_hex() == loc ? "selected-" : "";
+		const char* const selected = disp.selected_hex() == loc_ ? "selected-" : "";
 
 		// Load the ellipse parts recolored to match team color
 		char buf[100];
@@ -1976,13 +1981,13 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
 	}
 
 	if (ellipse_front != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
 	}
 
@@ -2002,7 +2007,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					movement_file = &game_config::unmoved_ball_image;
-				} else if(unit_can_move(loc,*this,disp.get_units(),map,disp.get_teams())) {
+				} else if (unit_can_move(loc_, *this, disp.get_units(), map, disp.get_teams())) {
 					movement_file = &game_config::partmoved_ball_image;
 				}
 			}
@@ -2011,7 +2016,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
+				loc_, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
 		}
 
 		double unit_energy = 0.0;
@@ -2025,10 +2030,10 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 #endif
 		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
 
-		const fixed_t bar_alpha = (loc == disp.mouseover_hex() || loc == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
+		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
-			loc, hp_bar_height, unit_energy,hp_color(), bar_alpha);
+			loc_, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
@@ -2037,7 +2042,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 
 			SDL_Color colour=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				loc, xp_bar_height, filled, colour, bar_alpha);
+				loc_, xp_bar_height, filled, colour, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -2047,7 +2052,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
+					loc_, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
 			}
 		}
 
@@ -2055,7 +2060,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
+					loc_, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
 			}
 		}
 	}
@@ -3114,15 +3119,16 @@ const unit *get_visible_unit(const unit_map &units, const map_location &loc,
 	return &ui->second;
 }
 
-void unit::refresh(const game_display &disp, const map_location &loc)
+void unit::refresh()
 {
 	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
 	{
 		set_standing();
 		return;
 	}
+	game_display &disp = *game_display::get_singleton();
 	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
-	    !disp.tile_nearly_on_screen(loc) || incapacitated())
+	    !disp.tile_nearly_on_screen(loc_) || incapacitated())
 	{
 		return;
 	}
@@ -3136,7 +3142,7 @@ void unit::refresh(const game_display &disp, const map_location &loc)
 			next_idling_ = INT_MAX;
 		}
 	} else {
-		set_idling(disp, loc);
+		set_idling();
 	}
 }
 
