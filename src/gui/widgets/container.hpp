@@ -91,16 +91,6 @@ public:
 	/** Inherited from twidget. */
 	void layout_wrap(const unsigned maximum_width);
 
-	/**
-	 * Inherited from twidget.
-	 *
-	 * Since we can't define a good default behaviour we force the inheriting
-	 * classes to define this function. So inheriting classes act as one widget
-	 * others as a collection of multiple objects.
-	 */
-	bool has_horizontal_scrollbar() const
-		{ return grid_.has_horizontal_scrollbar(); }
-
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 

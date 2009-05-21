@@ -262,22 +262,12 @@ public:
 		{ assert(can_wrap()); }
 
 	/**
-	 * Does the widget have a horizontal scrollbar.
-	 *
-	 * See has_vertical_scrollbar for more info.
-	 * @returns                   Whether or not the widget has a horizontal
-	 *                            scrollbar.
-	 */
-	virtual bool has_horizontal_scrollbar() const { return false; }
-
-	/**
 	 * Sets the size of the widget.
 	 *
 	 * @param origin              The position of top left of the widget.
 	 * @param size                The size of the widget.
 	 */
 	virtual void set_size(const tpoint& origin, const tpoint& size);
-
 
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 

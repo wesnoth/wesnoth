@@ -345,10 +345,6 @@ void tdebug_layout_graph::widget_generate_size_info(
 		<< "can wrap=" << widget->can_wrap() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "has horizontal scrollbar="
-			<< widget->has_horizontal_scrollbar() << '\n'
-		<< "</td></tr>\n"
-		<< "<tr><td>\n"
 		<< "size=" << widget->get_size() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"

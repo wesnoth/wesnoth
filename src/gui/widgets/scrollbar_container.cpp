@@ -242,11 +242,6 @@ void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 	content_grid_->layout_wrap(maximum_width - offset);
 }
 
-bool tscrollbar_container::has_horizontal_scrollbar() const
-{
-	return is_visible() && horizontal_scrollbar_mode_ != always_invisible;
-}
-
 tpoint tscrollbar_container::calculate_best_size() const
 {
 	log_scope2(log_gui_layout,
