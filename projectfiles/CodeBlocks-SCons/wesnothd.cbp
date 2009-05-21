@@ -8,29 +8,29 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="release">
-				<Option output="../../wesnothd" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../" />
+				<Option output="..\..\wesnothd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option object_output="." />
 				<MakeCommands>
-					<Build command="scons -C ../.. build=$target wesnothd" />
-					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
-					<Clean command="scons -C ../.. build=$target -c" />
-					<DistClean command="rm -rf ../../build" />
+					<Build command="scons -C ..\.. build=$target wesnothd" />
+					<CompileFile command="TARGET=$file;scons -C ..\.. build=$target build/$target/${TARGET:6}" />
+					<Clean command="scons -C ..\.. build=$target -c" />
+					<DistClean command="rm -rf ..\..\build" />
 				</MakeCommands>
 			</Target>
 			<Target title="debug">
-				<Option output="../../wesnothd-debug" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../../" />
+				<Option output="..\..\wesnothd-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option object_output="." />
 				<MakeCommands>
-					<Build command="scons -C ../.. build=$target wesnothd" />
-					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
-					<Clean command="scons -C ../.. build=$target -c" />
-					<DistClean command="rm -rf ../../build" />
+					<Build command="scons -C ..\.. build=$target wesnothd" />
+					<CompileFile command="TARGET=$file;scons -C ..\.. build=$target build/$target/${TARGET:6}" />
+					<Clean command="scons -C ..\.. build=$target -c" />
+					<DistClean command="rm -rf ..\..\build" />
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -86,12 +86,16 @@
 		<Unit filename="..\..\src\server\metrics.hpp" />
 		<Unit filename="..\..\src\server\player.cpp" />
 		<Unit filename="..\..\src\server\player.hpp" />
-		<Unit filename="..\..\src\server\proxy.cpp" />
-		<Unit filename="..\..\src\server\proxy.hpp" />
+        <Unit filename="..\..\src\server\player_network.cpp" />
+        <Unit filename="..\..\src\server\player_network.hpp" />
+        <Unit filename="..\..\src\server\proxy.cpp" />
+        <Unit filename="..\..\src\server\proxy.hpp" />
+		<Unit filename="..\..\src\server\room.cpp" />
+		<Unit filename="..\..\src\server\room.hpp" />
 		<Unit filename="..\..\src\server\sample_user_handler.cpp" />
 		<Unit filename="..\..\src\server\sample_user_handler.hpp" />
 		<Unit filename="..\..\src\server\server.cpp" />
-        <Unit filename="..\..\src\server\server.hpp" />
+		<Unit filename="..\..\src\server\server.hpp" />
 		<Unit filename="..\..\src\server\simple_wml.cpp" />
 		<Unit filename="..\..\src\server\simple_wml.hpp" />
 		<Unit filename="..\..\src\server\user_handler.cpp" />
