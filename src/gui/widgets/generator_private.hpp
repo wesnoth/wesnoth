@@ -597,14 +597,6 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void layout_init()
-	{
-		foreach(titem* item, items_) {
-			item->grid.layout_init();
-		}
-	}
-
-	/** Inherited from tgenerator_. */
 	void layout_init2(const bool full_initialization)
 	{
 		foreach(titem* item, items_) {

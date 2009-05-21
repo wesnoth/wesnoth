@@ -176,21 +176,6 @@ void tgrid::set_active(const bool active)
 	}
 }
 
-void tgrid::layout_init()
-{
-	// Inherited.
-	twidget::layout_init();
-
-	// Clear child caches.
-	foreach(tchild& child, children_) {
-
-		twidget* widget = child.widget();
-		if(widget) {
-			widget->layout_init();
-		}
-	}
-}
-
 void tgrid::layout_init2(const bool full_initialization)
 {
 	// Inherited.

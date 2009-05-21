@@ -119,12 +119,6 @@ tpoint tcontrol::get_config_maximum_size() const
 	return result;
 }
 
-void tcontrol::layout_init()
-{
-	twidget::layout_init();
-	shrunken_ = false;
-}
-
 void tcontrol::layout_init2(const bool full_initialization)
 {
 	// Inherited.

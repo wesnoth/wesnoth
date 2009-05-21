@@ -74,7 +74,6 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from tcontainer_. */
-	void layout_init();
 	void layout_init2(const bool full_initialization);
 	void NEW_layout_init(const bool full_initialization);
 

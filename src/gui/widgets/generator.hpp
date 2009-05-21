@@ -199,7 +199,6 @@ public:
 	 */
 
 	/** Inherited from twidget. */
-	virtual void layout_init() = 0;
 	virtual void layout_init2(const bool /*full_initialization*/) = 0;
 	virtual void NEW_layout_init(const bool full_initialization) = 0;
 

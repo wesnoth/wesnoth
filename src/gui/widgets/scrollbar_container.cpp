@@ -105,21 +105,6 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	}
 }
 
-void tscrollbar_container::layout_init()
-{
-	// Inherited.
-	tcontainer_::layout_init();
-
-	vertical_scrollbar_mode_ = initial_vertical_scrollbar_mode_;
-	horizontal_scrollbar_mode_ = initial_horizontal_scrollbar_mode_;
-
-	show_vertical_scrollbar();
-	show_horizontal_scrollbar();
-
-	assert(content_grid_);
-	content_grid_->layout_init();
-}
-
 void tscrollbar_container::layout_init2(const bool full_initialization)
 {
 	// Inherited.
