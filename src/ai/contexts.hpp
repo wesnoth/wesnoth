@@ -41,7 +41,7 @@ namespace ai {
 // recursion counter
 class recursion_counter {
 public:
-	recursion_counter(int counter)	
+	recursion_counter(int counter)
 		: counter_(counter++)
 	{
 		if (counter > MAX_COUNTER_VALUE ) {
@@ -52,7 +52,7 @@ public:
 	int get_count() const{
 		return counter_;
 	}
-		
+
 	static const int MAX_COUNTER_VALUE = 100;//max recursion depth
 private:
 	int counter_;
@@ -71,7 +71,6 @@ public:
 
 	virtual side_context& get_side_context() = 0;
 	virtual int get_recursion_count() const = 0;
-	
 };
 
 class readonly_context;
@@ -350,7 +349,7 @@ public:
 	/**
 	 * Unwrap - this class is not a proxy, so return *this
 	 */
-	virtual readonly_context& get_readonly_context() 
+	virtual readonly_context& get_readonly_context()
 	{
 		return *this;
 	}
@@ -479,7 +478,7 @@ public:
 	/**
 	 * Unwrap - this class is not a proxy, so return *this
 	 */
-	virtual readwrite_context& get_readwrite_context() 
+	virtual readwrite_context& get_readwrite_context()
 	{
 		return *this;
 	}

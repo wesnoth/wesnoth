@@ -101,7 +101,7 @@ namespace dfool {
    */
   class dfool_ai : public ai::readwrite_context_proxy, public ai_interface {
   public:
-	dfool_ai(ai::readwrite_context &context) 
+	dfool_ai(ai::readwrite_context &context)
 		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count()), unit_memory_(current_team().ai_memory()){}
 	void play_turn();
 	virtual std::string describe_self();

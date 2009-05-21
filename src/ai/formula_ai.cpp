@@ -1623,6 +1623,7 @@ formula_ai::formula_ai(ai::readwrite_context &context) :
 	function_table(*this),
 	candidate_action_manager_()
 {
+	add_ref();
 }
 
 void formula_ai::handle_exception(game_logic::formula_error& e) const

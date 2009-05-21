@@ -243,6 +243,7 @@ ai_default::ai_default(ai::readwrite_context &context) :
 	recruiting_preferred_(0),
 	formula_ai_(NULL)
 {
+	add_ref();
 }
 
 ai_default::~ai_default(){

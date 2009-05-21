@@ -34,7 +34,7 @@ public:
 		set_side(side);
 	}
 	int get_recursion_count() const{
-		return recursion_counter_.get_count();		
+		return recursion_counter_.get_count();
 	}
 private:
 	ai::recursion_counter recursion_counter_;

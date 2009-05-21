@@ -49,19 +49,19 @@ namespace ai {
 
 int side_context_impl::get_recursion_count() const
 {
-	return recursion_counter_.get_count();	
+	return recursion_counter_.get_count();
 }
 
 
 int readonly_context_impl::get_recursion_count() const
 {
-	return recursion_counter_.get_count();	
+	return recursion_counter_.get_count();
 }
 
 
 int readwrite_context_impl::get_recursion_count() const
 {
-	return recursion_counter_.get_count();	
+	return recursion_counter_.get_count();
 }
 
 
