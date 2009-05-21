@@ -320,8 +320,8 @@ public:
 	void remove_temporary_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	std::string generate_name( rand_rng::simple_rng* rng = 0) const
-		{ return race_->generate_name(string_gender(cfg_["gender"]), rng); }
+	std::string generate_name(rand_rng::simple_rng *rng = 0) const
+	{ return race_->generate_name(gender_, rng); }
 
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc,
