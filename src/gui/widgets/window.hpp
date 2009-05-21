@@ -456,20 +456,6 @@ private:
 	/**
 	 * Layouts the window.
 	 *
-	 * This is a new routine which will be used as fallback when the normal
-	 * layout engine fails. In 1.7 this will become the real layout engine.
-	 *
-	 * @deprecated Will be removed after the new layout algorithm is
-	 * implemented.
-	 *
-	 * @param maximum_width       The maximum width of the window.
-	 * @param maximum_height      The maximum height of the window.
-	 */
-	void layout2(const unsigned maximum_width, const unsigned maximum_height);
-
-	/**
-	 * Layouts the window.
-	 *
 	 * This part does the pre and post processing for the actual layout
 	 * algorithm.
 	 *

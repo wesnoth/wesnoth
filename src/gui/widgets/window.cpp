@@ -624,58 +624,6 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 	linked_size_[id].widgets.push_back(widget);
 }
 
-void twindow::layout2(
-		const unsigned maximum_width, const unsigned maximum_height)
-{
-	/**
-	 * @todo The following features are not done yet:
-	 * - Linked widget support.
-	 */
-
-	DBG_GUI_L << "twindow " << __func__ << ": maximum size "
-			<< maximum_width << ',' << maximum_height << ".\n";
-
-	layout_init2(true);
-
-	bool done = false;
-	unsigned run = 1;
-	while(!done) {
-		done = true;
-
-		tpoint size = get_best_size();
-		generate_dot_file("get_initial_best_size-"
-				+ lexical_cast<std::string>(run), LAYOUT);
-
-		try {
-
-			/***** Does the width fit in the available width? *****/
-			if(size.x > static_cast<int>(maximum_width)) {
-				layout_fit_width(maximum_width, FORCE);
-				size = get_best_size();
-				generate_dot_file("layout_fit_width-"
-						+ lexical_cast<std::string>(run), LAYOUT);
-				assert(size.x <= static_cast<int>(maximum_width));
-			}
-
-			/***** Does the height fit in the available height? *****/
-			// This part hasn't been implemented yet.
-#if 0
-			if(size.y > maximum_height) {
-				layout_fit_height(maximum_height);
-				size = get_best_size();
-				generate_dot_file("layout_fit_height-"
-						+ lexical_cast<std::string>(run), LAYOUT);
-				assert(size.y <= maximum_height);
-			}
-#endif
-		} catch(trelayout_exception&) {
-			layout_init2(false);
-			done = false;
-			++run;
-		}
-	}
-}
-
 void twindow::NEW_layout()
 {
 	/**** Initialize and get initial size. *****/
