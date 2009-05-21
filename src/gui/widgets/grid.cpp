@@ -661,110 +661,6 @@ void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	set_layout_size(calculate_best_size());
 }
 
-void tgrid::layout_fit_width(const unsigned maximum_width,
-		const tfit_flags flags)
-{
-	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
-	DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " flags " << flags
-			<< ".\n";
-
-	// Do we already fit?
-	if(get_best_size().x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << "Already fits.\n";
-		return;
-	}
-
-	// Try to reduce our size; friendly first.
-	tfit_flags current_flags =
-			static_cast<tfit_flags>(flags & (WRAP | SCROLLBAR));
-
-	if(current_flags) {
-		impl_layout_fit_width(maximum_width, current_flags);
-		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_GUI_L << "Success: Friendly.\n";
-			return;
-		}
-	}
-
-	// Try to reduce our size; the aggresive way.
-	current_flags = static_cast<tfit_flags>(flags & SHRINK);
-	if(current_flags) {
-		impl_layout_fit_width(maximum_width, current_flags);
-		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_GUI_L << "Success: Forced.\n";
-			return;
-		}
-	}
-
-	DBG_GUI_L << "Failed.\n";
-	assert(flags != FORCE
-			|| static_cast<unsigned>(get_best_size().x) <= maximum_width);
-}
-
-void tgrid::impl_layout_fit_width(const unsigned maximum_width,
-		const tfit_flags flags)
-{
-	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
-	DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " flags " << flags
-			<< ".\n";
-
-	for(unsigned col = 0; col < cols_; ++col) {
-
-		// Find out how much size there still has to be reduced.
-		unsigned current_size = get_best_size().x;
-		int too_wide = current_size - maximum_width;
-
-		DBG_GUI_L << "tgrid: col " << col
-				<< " maximum_width " << maximum_width
-				<< " current_size " << current_size
-				<< " too_wide " << too_wide
-				<< ".\n";
-
-		if(too_wide < 0) {
-			DBG_GUI_L << "tgrid: col " << col << " fits stop searching.\n";
-			break;
-		}
-
-		// If the current column too small to be reduced the entire width
-		// skip it. This can be optimized later by only trying to reduce
-		// it partially, especially if multiple columns can be reduced.
-		if(static_cast<int>(col_width_[col]) < too_wide) {
-			DBG_GUI_L << "tgrid: col " << col
-					<< " col_width_ " << col_width_[col]
-					<< " too small to be resized.\n";
-			continue;
-		}
-
-		// Try to reduce all widgets too wide in this column. We don't care
-		// whether or not we succeeded, if we fail there might be the
-		// aggressive run that finishes the task, but that means we tried
-		// nicely before.
-		const unsigned wanted_width = col_width_[col] - too_wide;
-
-		DBG_GUI_L << "tgrid: col " << col
-				<< " try to fit the rows in " << wanted_width
-				<< ".\n";
-
-		for(unsigned row = 0; row < rows_; ++row) {
-			tchild& chld = child(row, col);
-			const twidget* widget = chld.widget();
-			assert(widget);
-
-			if(widget->get_visible() != twidget::INVISIBLE
-					&& widget->get_best_size().x
-					> static_cast<int>(wanted_width)) {
-
-				chld.layout_fit_width(wanted_width, flags);
-			}
-		}
-	}
-
-	// Update the status.
-	set_layout_size(calculate_best_size());
-}
-
 void tgrid::set_size(const tpoint& origin, const tpoint& size)
 {
 	log_scope2(log_gui_layout, "tgrid: set size");
@@ -1185,28 +1081,6 @@ void tgrid::tchild::layout_use_horizontal_scrollbar(
 
 	widget_->layout_use_horizontal_scrollbar(
 			maximum_width - border_space().x);
-}
-
-void tgrid::tchild::layout_fit_width(const unsigned maximum_width,
-		const tfit_flags flags)
-{
-	assert(widget_);
-	assert(widget_->get_visible() != twidget::INVISIBLE);
-
-	log_scope2(log_gui_layout, std::string("tgrid::tchild ") + __func__);
-	DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " flags " << flags
-			<< ".\n";
-
-	widget_->layout_fit_width(maximum_width - border_space().x, flags);
-	if(widget_->get_best_size().x
-			+ border_space().x
-			<= static_cast<int>(maximum_width)) {
-
-		DBG_GUI_L << "Succeeded.\n";
-	} else {
-		DBG_GUI_L << "Failed.\n";
-	}
 }
 
 const std::string& tgrid::tchild::id() const

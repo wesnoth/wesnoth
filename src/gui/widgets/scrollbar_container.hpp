@@ -106,10 +106,6 @@ public:
 	/** Inherited from tcontainer_. */
 	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
-	/** Inherited from tcontainer. */
-	void layout_fit_width(const unsigned maximum_width,
-			const tfit_flags flags);
-
 private:
 	/** Inherited from tcontainer_. */
 	tpoint calculate_best_size() const;

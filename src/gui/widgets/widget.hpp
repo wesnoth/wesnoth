@@ -297,26 +297,6 @@ public:
 	virtual void layout_shrink_width(const unsigned /*maximum_width*/)
 		{ assert(can_shrink_width()); }
 
-	/** Flags to decide how to try to fit the widget in the layout. */
-	enum tfit_flags {
-		  WRAP      = 1 /**< Try to wrap the widget. */
-		, SCROLLBAR = 2 /**< Try to use scrollbars. */
-		, SHRINK    = 4 /**< Try to shrink the widget. */
-		, FORCE     = 7 /**< Try all of the above. */
-	};
-
-	/**
-	 * Fits the layout in the wanted width.
-	 *
-	 * @param maximum_width       The maximum width of the window.
-	 * @param flags               The flags for the fitting.
-	 */
-	virtual void layout_fit_width(const unsigned /*maximum_width*/,
-			const tfit_flags /*flags*/)
-	{
-		//FIXME should be pure abstract but gives linker errors.
-	}
-
 	/**
 	 * Does the widget have a vertical scrollbar.
 	 *

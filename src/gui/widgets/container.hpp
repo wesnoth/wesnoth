@@ -118,10 +118,6 @@ public:
 	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
-	void layout_fit_width(const unsigned maximum_width,
-			const tfit_flags flags);
-
-	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

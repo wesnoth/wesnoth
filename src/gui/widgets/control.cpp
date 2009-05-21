@@ -201,52 +201,6 @@ void tcontrol::layout_shrink_width(const unsigned maximum_width)
 	assert(static_cast<unsigned>(get_best_size().x) == maximum_width);
 }
 
-void tcontrol::layout_fit_width(const unsigned maximum_width,
-		const tfit_flags flags)
-{
-	assert(get_visible() != twidget::INVISIBLE);
-
-	log_scope2(log_gui_layout,
-			"tcontrol(" + get_control_type() + ") " + __func__);
-	DBG_GUI_L << "maximum_width " << maximum_width
-			<< " flags " << flags
-			<< ".\n";
-
-	// Already fits.
-	if(get_best_size().x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << "Already fits.\n";
-		return;
-	}
-
-	// Wrap.
-	if((flags & twidget::WRAP) && can_wrap()) {
-		layout_wrap(maximum_width);
-
-		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_GUI_L << "Success: Wrapped.\n";
-			return;
-		}
-	}
-
-	// Horizontal scrollbar.
-	if((flags & twidget::SCROLLBAR) && has_horizontal_scrollbar()) {
-		layout_use_horizontal_scrollbar(maximum_width);
-
-		if(get_best_size().x <= static_cast<int>(maximum_width)) {
-			DBG_GUI_L << "Success: Horizontal scrollbar.\n";
-			return;
-		}
-	}
-
-	// Shrink.
-	if((flags & twidget::SHRINK) && can_shrink_width()) {
-		layout_shrink_width(maximum_width);
-		DBG_GUI_L << "Success: Shrunken.\n";
-	}
-
-	DBG_GUI_L << "Failed.\n";
-}
-
 tpoint tcontrol::calculate_best_size() const
 {
 	assert(config_);
