@@ -884,7 +884,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.traits = u.traits_description();
 
 	//we filter to remove the tooltips (increment by 2)
-	const std::vector<std::string>& abilities = u.unit_ability_tooltips();
+	const std::vector<std::string> &abilities = u.ability_tooltips(true);
 	for(std::vector<std::string>::const_iterator a = abilities.begin();
 		 a != abilities.end(); a+=2) {
 		det.abilities.push_back(*a);

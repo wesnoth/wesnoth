@@ -299,8 +299,7 @@ public:
 	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const;
 	unit_ability_list get_abilities(const std::string &ability) const
 	{ return get_abilities(ability, loc_); }
-	std::vector<std::string> ability_tooltips(const map_location& loc) const;
-	std::vector<std::string> unit_ability_tooltips() const;
+	std::vector<std::string> ability_tooltips(bool force_active = false) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 

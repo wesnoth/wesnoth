@@ -181,25 +181,6 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 	return res;
 }
 
-std::vector<std::string> unit::unit_ability_tooltips() const
-{
-	std::vector<std::string> res;
-
-	const config &abilities = cfg_.child("abilities");
-	if (!abilities) return res;
-	foreach (const config::any_child &ab, abilities.all_children_range())
-	{
-		std::string const &name =
-			this->gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
-			ab.cfg["name"] : ab.cfg["female_name"];
-		if (!name.empty()) {
-			res.push_back(name);
-			res.push_back(ab.cfg["description"]);
-		}
-	}
-	return res;
-}
-
 std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
@@ -214,7 +195,7 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
-std::vector<std::string> unit::ability_tooltips(const map_location& loc) const
+std::vector<std::string> unit::ability_tooltips(bool force_active) const
 {
 	std::vector<std::string> res;
 
@@ -223,7 +204,7 @@ std::vector<std::string> unit::ability_tooltips(const map_location& loc) const
 
 	foreach (const config::any_child &ab, abilities.all_children_range())
 	{
-		if (ability_active(ab.key, ab.cfg, loc))
+		if (force_active || ability_active(ab.key, ab.cfg, loc_))
 		{
 			std::string const &name =
 				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
