@@ -34,9 +34,6 @@ public:
 	/** Inherited from twidget. */
 	bool can_wrap() const { return can_wrap_; }
 
-	/** Inherited from twidget. */
-	bool can_shrink_width() const { return true; }
-
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); }

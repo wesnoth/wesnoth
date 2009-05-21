@@ -280,9 +280,6 @@ public:
 	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/)
 		{ assert(has_horizontal_scrollbar()); }
 
-	/** Can the widget reduce its width. */
-	virtual bool can_shrink_width() const { return false; }
-
 	/**
 	 * Does the widget have a vertical scrollbar.
 	 *
