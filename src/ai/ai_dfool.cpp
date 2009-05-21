@@ -179,7 +179,7 @@ namespace dfool {
     }
 
     unit_memory_.write(ai_mem);
-    current_team().set_ai_memory(ai_mem);
+    current_team_w().set_ai_memory(ai_mem);
 
     return;
   }
@@ -239,11 +239,11 @@ namespace dfool {
 
 bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 {
-	location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
+	map_location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
 	LOG_AI << "\tmoving to:(" << target.x << ',' << target.y << ")\n";
       if(m->second.movement_left()){
-	std::map<location,paths> possible_moves;
-	move_map srcdst, dstsrc;
+	ai::moves_map possible_moves;
+	ai::move_map srcdst, dstsrc;
 	unit_map known_units;
 
 	//	unit_memory_.known_map(known_units, get_info().state.turn());
@@ -257,10 +257,10 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	calculate_moves(known_units,possible_moves,srcdst,dstsrc,false,false,NULL,true);
 
 	int closest_distance = -1;
-	std::pair<location,location> closest_move;
+	std::pair<map_location,map_location> closest_move;
 
 	/** @todo 2.0 This undoubtedly could be done more cleanly */
-	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+	for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
 	    const int distance = distance_between(target,i->first);

@@ -24,6 +24,7 @@
 #define AI_AI_MANAGER_HPP_INCLUDED
 
 #include "../global.hpp"
+#include "contexts.hpp"
 
 #include "game_info.hpp"
 #include <map>
@@ -73,7 +74,10 @@ public:
 	bool is_mandate_ok();
 
 private:
-	ai_interface* ai_;
+	ai_interface *ai_;
+	ai::side_context *side_context_;
+	ai::readonly_context *readonly_context_;
+	ai::readwrite_context *readwrite_context_;
 	std::string ai_algorithm_type_;
 	config ai_effective_parameters_;
 	config ai_global_parameters_;
@@ -262,12 +266,10 @@ public:
 	 * Returns a pointer to a new AI. It is the sole responsibility of the caller
 	 * to manage its lifetime.
 	 * @param ai_algorithm_type type of AI algorithm to create
-	 * @param side side number (1-based)
-	 * @param master should this AI be a master AI ? Only master AIs are
-	 *        allowed to fallback. If you are not sure, pick false here.
+	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, int side, bool master = false);
+	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai::readwrite_context *rw_context);
 
 
 	/**

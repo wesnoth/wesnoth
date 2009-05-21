@@ -31,6 +31,17 @@ class gamemap;
  * that an AI might need access to, in order to make and implement its
  * decisions.
  */
+namespace ai {
+typedef unsigned int side_number;
+
+/** The standard way in which a map of possible moves is recorded. */
+typedef std::multimap<map_location,map_location> move_map;
+
+/** The standard way in which a map of possible movement routes to location is recorded*/
+typedef std::map<map_location,paths> moves_map;
+} //of namespace ai
+
+
 class ai_game_info {
 public:
 

@@ -45,65 +45,91 @@ static lg::log_domain log_ai("ai/general");
 // =======================================================================
 //
 // =======================================================================
+namespace ai {
+
+int side_context_impl::get_recursion_count() const
+{
+	return recursion_counter_.get_count();	
+}
 
 
-void ai_readonly_context::raise_user_interact() const
+int readonly_context_impl::get_recursion_count() const
+{
+	return recursion_counter_.get_count();	
+}
+
+
+int readwrite_context_impl::get_recursion_count() const
+{
+	return recursion_counter_.get_count();	
+}
+
+
+void readonly_context_impl::raise_user_interact() const
 {
 	ai_manager::raise_user_interact();
 }
 
-void ai_readwrite_context::raise_unit_recruited() const
+
+void readwrite_context_impl::raise_unit_recruited() const
 {
 	ai_manager::raise_unit_recruited();
 }
 
-void ai_readwrite_context::raise_unit_moved() const
+
+void readwrite_context_impl::raise_unit_moved() const
 {
 	ai_manager::raise_unit_moved();
 }
 
-void ai_readwrite_context::raise_enemy_attacked() const
+
+void readwrite_context_impl::raise_enemy_attacked() const
 {
 	ai_manager::raise_enemy_attacked();
 }
 
 
-std::auto_ptr<ai_attack_result> ai_readwrite_context::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
+ai_attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	return ai_actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
 }
 
-std::auto_ptr<ai_attack_result> ai_readonly_context::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
+
+ai_attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
 	return ai_actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon);
 }
 
 
-std::auto_ptr<ai_move_result> ai_readwrite_context::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
+ai_move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
 	return ai_actions::execute_move_action(get_side(),true,from,to,remove_movement);
 }
 
-std::auto_ptr<ai_move_result> ai_readonly_context::check_move_action(const map_location& from, const map_location& to, bool remove_movement){
+
+ai_move_result_ptr readonly_context_impl::check_move_action(const map_location& from, const map_location& to, bool remove_movement){
 	return ai_actions::execute_move_action(get_side(),false,from,to,remove_movement);
 }
 
 
-std::auto_ptr<ai_recruit_result> ai_readwrite_context::execute_recruit_action(const std::string& unit_name, const map_location &where){
+ai_recruit_result_ptr readwrite_context_impl::execute_recruit_action(const std::string& unit_name, const map_location &where){
 	return ai_actions::execute_recruit_action(get_side(),true,unit_name,where);
 }
 
-std::auto_ptr<ai_recruit_result> ai_readonly_context::check_recruit_action(const std::string& unit_name, const map_location &where){
+
+ai_recruit_result_ptr readonly_context_impl::check_recruit_action(const std::string& unit_name, const map_location &where){
 	return ai_actions::execute_recruit_action(get_side(),false,unit_name,where);
 }
 
 
-std::auto_ptr<ai_stopunit_result> ai_readwrite_context::execute_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
+ai_stopunit_result_ptr readwrite_context_impl::execute_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	return ai_actions::execute_stopunit_action(get_side(),true,unit_location,remove_movement,remove_attacks);
 }
 
-std::auto_ptr<ai_stopunit_result> ai_readonly_context::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
+
+ai_stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	return ai_actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
 }
 
-bool ai_readwrite_context::recruit(const std::string& unit_name, map_location loc)
+
+bool readwrite_context_impl::recruit(const std::string& unit_name, map_location loc)
 {
 	const std::set<std::string>& recruits = current_team().recruits();
 
@@ -146,7 +172,7 @@ bool ai_readwrite_context::recruit(const std::string& unit_name, map_location lo
 	if(recruit_err.empty()) {
 
 		statistics::recruit_unit(new_unit);
-		current_team().spend_gold(u->second.cost());
+		current_team_w().spend_gold(u->second.cost());
 
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
@@ -174,27 +200,25 @@ bool ai_readwrite_context::recruit(const std::string& unit_name, map_location lo
 	}
 }
 
-const ai_game_info& ai_readonly_context::get_info() const{
+
+const ai_game_info& readonly_context_impl::get_info() const{
 	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
 
-ai_game_info& ai_readwrite_context::get_info(){
+ai_game_info& readwrite_context_impl::get_info_w(){
 	return ai_manager::get_active_ai_info_for_side(get_side());
 }
 
-const ai_game_info& ai_readwrite_context::get_info() const{
-	return ai_manager::get_active_ai_info_for_side(get_side());
-}
-
-void ai_readonly_context::diagnostic(const std::string& msg)
+void readonly_context_impl::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
 		get_info().disp.set_diagnostic(msg);
 	}
 }
 
-void ai_readonly_context::log_message(const std::string& msg)
+
+void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
 		get_info().disp.add_chat_message(time(NULL), "ai", get_side(), msg,
@@ -203,7 +227,7 @@ void ai_readonly_context::log_message(const std::string& msg)
 }
 
 
-map_location ai_readwrite_context::move_unit(map_location from, map_location to,
+map_location readwrite_context_impl::move_unit(map_location from, map_location to,
 		std::map<map_location,paths>& possible_moves)
 {
 	const map_location loc = move_unit_partial(from,to,possible_moves);
@@ -220,10 +244,11 @@ map_location ai_readwrite_context::move_unit(map_location from, map_location to,
 	return loc;
 }
 
-map_location ai_readwrite_context::move_unit_partial(map_location from, map_location to,
+
+map_location readwrite_context_impl::move_unit_partial(map_location from, map_location to,
 		std::map<map_location,paths>& possible_moves)
 {
-	LOG_AI << "ai_readwrite_context::move_unit " << from << " -> " << to << '\n';
+	LOG_AI << "readwrite_context_impl::move_unit " << from << " -> " << to << '\n';
 	assert(to.valid() && to.x <= MAX_MAP_AREA && to.y <= MAX_MAP_AREA);
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
@@ -384,14 +409,15 @@ map_location ai_readwrite_context::move_unit_partial(map_location from, map_loca
 	return to;
 }
 
-void ai_readonly_context::calculate_possible_moves(std::map<map_location,paths>& res, move_map& srcdst,
+
+void readonly_context_impl::calculate_possible_moves(std::map<map_location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const std::set<map_location>* remove_destinations) const
 {
   calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
-void ai_readonly_context::calculate_moves(const unit_map& units, std::map<map_location,paths>& res, move_map& srcdst,
+void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 	     const std::set<map_location>* remove_destinations,
 		bool see_all
@@ -473,7 +499,7 @@ void ai_readonly_context::calculate_moves(const unit_map& units, std::map<map_lo
 }
 
 
-void ai_readwrite_context::attack_enemy(const map_location u,
+void readwrite_context_impl::attack_enemy(const map_location u,
 		const map_location target, int weapon, int def_weapon)
 {
 	// Stop the user from issuing any commands while the unit is attacking
@@ -536,16 +562,4 @@ void ai_readwrite_context::attack_enemy(const map_location u,
 	raise_enemy_attacked();
 }
 
-variant ai_readonly_context::get_value(const std::string& key) const
-{
-	if(key == "map") {
-		return variant(new gamemap_callable(get_info().map));
-	}
-	return variant();
-}
-
-void ai_readonly_context::get_inputs(std::vector<game_logic::formula_input>* inputs) const
-{
-	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
-}
+} //of namespace ai

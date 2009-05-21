@@ -32,7 +32,7 @@ static lg::log_domain log_ai("ai/attack");
 const int max_positions = 10000;
 
 /** Analyze possibility of attacking target on 'loc'. */
-void ai::do_attack_analysis(
+void ai_default::do_attack_analysis(
 	                 const location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
 					 const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
@@ -296,10 +296,10 @@ void ai::do_attack_analysis(
 }
 
 
-void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
+void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status,
-								  class ai& ai_obj,
+								  class ai_default& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
 {
@@ -512,7 +512,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 }
 
-double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
+double ai_default::attack_analysis::rating(double aggression, ai_default& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -598,7 +598,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	return value;
 }
 
-std::vector<ai::attack_analysis> ai::analyze_targets(
+std::vector<ai_default::attack_analysis> ai_default::analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
                 )
@@ -651,7 +651,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	return res;
 }
 
-double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bool use_terrain) const
+double ai_default::power_projection(const map_location& loc,  const move_map& dstsrc, bool use_terrain) const
 {
 	map_location used_locs[6];
 	int ratings[6];
@@ -762,7 +762,7 @@ double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bo
  * There is no real hope for us: we should try to do some damage to the enemy.
  * We can spend some cycles here, since it's rare.
  */
-bool ai::desperate_attack(const map_location &loc)
+bool ai_default::desperate_attack(const map_location &loc)
 {
 	const unit &u = units_.find(loc)->second;
 	LOG_AI << "desperate attack by '" << u.type_id() << "' " << loc << "\n";

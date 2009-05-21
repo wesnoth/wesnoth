@@ -91,7 +91,7 @@ private:
 	const bool avoid_enemies_;
 };
 
-std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
+std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
 {
 	log_scope2(log_ai, "finding targets...");
 
@@ -182,7 +182,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		}
 	}
 
-	std::vector<team::target>& team_targets = current_team().targets();
+	std::vector<team::target>& team_targets = current_team_w().targets();
 
 	//find the enemy leaders and explicit targets
 	unit_map::const_iterator u;
@@ -233,7 +233,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	return targets;
 }
 
-map_location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
+map_location ai_default::form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	if(route.empty()) {
 		return location();
@@ -274,7 +274,7 @@ map_location ai::form_group(const std::vector<location>& route, const move_map& 
 	return *i;
 }
 
-void ai::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
+void ai_default::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	for(std::vector<location>::const_iterator i = route.begin(); i != route.end(); ++i) {
 		map_location adj[6];
@@ -288,7 +288,7 @@ void ai::enemies_along_path(const std::vector<location>& route, const move_map& 
 	}
 }
 
-bool ai::move_group(const location& dst, const std::vector<location>& route, const std::set<location>& units)
+bool ai_default::move_group(const location& dst, const std::vector<location>& route, const std::set<location>& units)
 {
 	const std::vector<location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
 	if(itor == route.end()) {
@@ -388,7 +388,7 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 	return res;
 }
 
-double ai::rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const
+double ai_default::rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const
 {
 	double strength = 0.0;
 	for(std::set<location>::const_iterator i = group.begin(); i != group.end(); ++i) {
@@ -420,14 +420,14 @@ double ai::rate_group(const std::set<location>& group, const std::vector<locatio
 	return strength;
 }
 
-double ai::compare_groups(const std::set<location>& our_group, const std::set<location>& their_group, const std::vector<location>& battlefield) const
+double ai_default::compare_groups(const std::set<location>& our_group, const std::set<location>& their_group, const std::vector<location>& battlefield) const
 {
 	const double a = rate_group(our_group,battlefield);
 	const double b = std::max<double>(rate_group(their_group,battlefield),0.01);
 	return a/b;
 }
 
-std::pair<map_location,map_location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
+std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
 	log_scope2(log_ai, "choosing move");
 
@@ -531,7 +531,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			if(tg->type == target::VILLAGE) {
 				if(current_team().ai_parameters().has_attribute("scout_village_targetting")) {
 					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
-					lg::wml_error << "[ai] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targeting' instead\n";
+					lg::wml_error << "[ai_default] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targeting' instead\n";
 				}
 				else {
 					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targeting"],3);
@@ -566,7 +566,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 	bool simple_targeting = false;
 	if(current_team().ai_parameters().has_attribute("simple_targetting")) {
 		simple_targeting = utils::string_bool(current_team().ai_parameters()["simple_targetting"]);
-		lg::wml_error << "[ai] the 'simple_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'simple_targeting' instead\n";
+		lg::wml_error << "[ai_default] the 'simple_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'simple_targeting' instead\n";
 	}
 	else {
 		simple_targeting = utils::string_bool(current_team().ai_parameters()["simple_targeting"]);
@@ -844,7 +844,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 	return std::pair<location,location>();
 }
 
-void ai::access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out)
+void ai_default::access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out)
 {
 	const unit_map::const_iterator u_it = units_.find(u);
 	if(u_it == units_.end()) {
@@ -866,7 +866,7 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 	}
 }
 
-const map_location& ai::suitable_keep(const map_location& leader_location, const paths& leader_paths){
+const map_location& ai_default::suitable_keep(const map_location& leader_location, const paths& leader_paths){
 	if (map_.is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}
@@ -908,7 +908,7 @@ const map_location& ai::suitable_keep(const map_location& leader_location, const
 	return nearest_keep(leader_location); // return nearest keep
 }
 
-void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
+void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
@@ -957,7 +957,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-int ai::count_free_hexes_in_castle(const map_location& loc, std::set<map_location>& checked_hexes)
+int ai_default::count_free_hexes_in_castle(const map_location& loc, std::set<map_location>& checked_hexes)
 {
 	int ret = 0;
 	location adj[6];

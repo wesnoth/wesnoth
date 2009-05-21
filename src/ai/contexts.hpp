@@ -24,7 +24,7 @@
 class game_display;
 class gamemap;
 
-#include "ai_interface.hpp"
+#include "ai_actions.hpp"
 #include "game_info.hpp"
 #include "../game_display.hpp"
 #include "../gamestatus.hpp"
@@ -36,24 +36,324 @@ class ai_move_result;
 class ai_recruit_result;
 class ai_stopunit_result;
 
-class ai_readonly_context: public game_logic::formula_callable, public ai_interface {
+namespace ai {
+
+// recursion counter
+class recursion_counter {
 public:
-	/** A convenient typedef for the often used 'location' object. */
-	typedef map_location location;
+	recursion_counter(int counter)	
+		: counter_(counter++)
+	{
+		if (counter > MAX_COUNTER_VALUE ) {
+			throw game::game_error("maximum recursion depth reached!");
+		}
+	}
 
-	/** The standard way in which a map of possible moves is recorded. */
-	typedef std::multimap<location,location> move_map;
+	int get_count() const{
+		return counter_;
+	}
+		
+	static const int MAX_COUNTER_VALUE = 100;//max recursion depth
+private:
+	int counter_;
+};
 
-	/** The standard way in which a map of possible movement routes to location is recorded*/
-	typedef std::map<location,paths> moves_map;
+// side context
 
+class side_context;
+
+class side_context{
+public:
+	virtual side_number get_side() const  = 0;
+	virtual void set_side(side_number side) = 0;
+	virtual ~side_context(){}
+	side_context() {}
+
+	virtual side_context& get_side_context() = 0;
+	virtual int get_recursion_count() const = 0;
+	
+};
+
+class readonly_context;
+class readonly_context : public virtual side_context {
+public:
+	readonly_context(){}
+	virtual ~readonly_context(){}
+	virtual readonly_context& get_readonly_context() = 0;
+	virtual const team& current_team() const = 0;
+	virtual void diagnostic(const std::string& msg) = 0;
+	virtual void log_message(const std::string& msg) = 0;
+	virtual ai_attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
+	virtual ai_move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual ai_recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual ai_stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
+		move_map& srcdst, move_map& dstsrc, bool enemy,
+		bool assume_full_movement=false,
+		const std::set<map_location>* remove_destinations=NULL) const = 0;
+	virtual void calculate_moves(const unit_map& units,
+		std::map<map_location,paths>& possible_moves, move_map& srcdst,
+		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
+		const std::set<map_location>* remove_destinations=NULL,
+		bool see_all=false) const = 0;
+	const virtual ai_game_info& get_info() const = 0;
+	virtual void raise_user_interact() const = 0;
+
+};
+
+class readwrite_context;
+class readwrite_context : public virtual readonly_context {
+public:
+	readwrite_context(){}
+	virtual ~readwrite_context(){}
+	virtual readwrite_context& get_readwrite_context() = 0;
+	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
+	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+	virtual team& current_team_w() = 0;
+	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
+	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves) = 0;
+	virtual map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves) = 0;
+	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()) = 0;
+	virtual void raise_unit_recruited() const = 0;
+	virtual void raise_unit_moved() const = 0;
+	virtual void raise_enemy_attacked() const = 0;
+	virtual ai_game_info& get_info_w() = 0;
+};
+
+//proxies
+
+class side_context_proxy : public virtual side_context {
+public:
+	side_context_proxy(side_context& target)
+		:target_(target.get_side_context())
+	{
+	}
+
+	virtual ~side_context_proxy(){}
+
+
+	virtual side_number get_side() const
+	{
+		return target_.get_side();
+	}
+
+	virtual void set_side(side_number side)
+	{
+		return target_.set_side(side);
+	}
+
+	virtual side_context& get_side_context()
+	{
+		return target_.get_side_context();
+	}
+
+	virtual int get_recursion_count(){
+		return target_.get_recursion_count();
+	}
+
+private:
+	side_context& target_;
+};
+
+
+class readonly_context_proxy : public virtual readonly_context, public virtual side_context_proxy {
+public:
+	readonly_context_proxy(readonly_context &target)
+		: side_context_proxy(target.get_side_context()), target_(target.get_readonly_context())
+	{
+	}
+
+	virtual ~readonly_context_proxy() {}
+
+	virtual readonly_context& get_readonly_context()
+	{
+		return target_.get_readonly_context();
+	}
+
+	virtual const team& current_team() const{
+		return target_.current_team();
+	}
+
+	virtual void diagnostic(const std::string& msg){
+		target_.diagnostic(msg);
+	}
+
+	virtual void log_message(const std::string& msg){
+		target_.log_message(msg);
+	}
+
+	virtual ai_attack_result_ptr check_attack_action(const map_location &attacker_loc, const map_location &defender_loc, int attacker_weapon) {
+		return target_.check_attack_action(attacker_loc, defender_loc, attacker_weapon);
+	}
+
+	virtual ai_move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true){
+		return target_.check_move_action(from, to, remove_movement);
+	}
+
+	virtual ai_recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location){
+		return target_.check_recruit_action(unit_name, where);
+	}
+
+	virtual ai_stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false){
+		return target_.check_stopunit_action(unit_location, remove_movement, remove_attacks);
+	}
+
+	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
+		move_map& srcdst, move_map& dstsrc, bool enemy,
+		bool assume_full_movement=false,
+		const std::set<map_location>* remove_destinations=NULL) const{
+		target_.calculate_possible_moves(possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations);
+	}
+
+	virtual void calculate_moves(const unit_map& units,
+		std::map<map_location,paths>& possible_moves, move_map& srcdst,
+		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
+		const std::set<map_location>* remove_destinations=NULL,
+		bool see_all=false) const{
+		target_.calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
+	}
+
+	const virtual ai_game_info& get_info() const{
+		return target_.get_info();
+	}
+
+	virtual void raise_user_interact() const{
+		target_.raise_user_interact();
+	}
+
+	virtual int get_recursion_count(){
+		return target_.get_recursion_count();
+	}
+
+private:
+	readonly_context& target_;
+};
+
+
+class readwrite_context_proxy : public virtual readwrite_context, public virtual readonly_context_proxy {
+public:
+	readwrite_context_proxy(readwrite_context &target)
+		: side_context_proxy(target.get_side_context()), readonly_context_proxy(target.get_readonly_context()),target_(target.get_readwrite_context())
+	{
+	}
+
+	virtual readwrite_context& get_readwrite_context()
+	{
+		return target_.get_readwrite_context();
+	}
+	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
+		return target_.execute_attack_action(attacker_loc,defender_loc,attacker_weapon);
+	}
+	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true)
+	{
+		return target_.execute_move_action(from, to, remove_movement);
+	}
+	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location){
+		return target_.execute_recruit_action(unit_name,where);
+	}
+	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false){
+		return target_.execute_stopunit_action(unit_location,remove_movement,remove_attacks);
+	}
+
+	virtual team& current_team_w(){
+		return target_.current_team_w();
+	}
+
+	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon){
+		target_.attack_enemy(u, target, att_weapon, def_weapon);
+	}
+
+	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves){
+		return target_.move_unit(from, to, possible_moves);
+	}
+
+	virtual map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves){
+		return target_.move_unit_partial(from, to, possible_moves);
+	}
+
+	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()){
+		return target_.recruit(unit_name, loc);
+	}
+	virtual void raise_unit_recruited() const{
+		target_.raise_unit_recruited();
+	}
+
+	virtual void raise_unit_moved() const{
+		target_.raise_unit_moved();
+	}
+
+	virtual void raise_enemy_attacked() const{
+		target_.raise_enemy_attacked();
+	}
+	virtual ai_game_info& get_info_w() {
+		return target_.get_info_w();
+	}
+
+	virtual int get_recursion_count(){
+		return target_.get_recursion_count();
+	}
+private:
+	readwrite_context& target_;
+};
+
+
+//implementation
+class side_context_impl : public side_context {
+public:
+	side_context_impl(side_number side)
+		: side_(side), recursion_counter_(0)
+	{
+	}
+
+	virtual ~side_context_impl(){}
+
+	virtual side_number get_side() const
+	{
+		return side_;
+	}
+
+	virtual void set_side(side_number side)
+	{
+		side_ = side;
+	}
+
+
+	virtual side_context& get_side_context()
+	{
+		return *this;
+	}
+
+
+	virtual int get_recursion_count() const;
+
+private:
+	side_number side_;
+	recursion_counter recursion_counter_;
+};
+
+
+//@todo: public game_logic::formula_callable
+class readonly_context_impl : public virtual side_context_proxy, public readonly_context {
+public:
 	/**
 	 * The constructor.
 	 */
-	ai_readonly_context(unsigned int side, bool master) : ai_interface(side,master) {
-		add_ref(); //this class shouldn't be reference counted.
+	readonly_context_impl( side_context &context )
+		: side_context_proxy(context), recursion_counter_(context.get_recursion_count())
+	{
+		//add_ref(); //this class shouldn't be reference counted.
 	}
-	virtual ~ai_readonly_context() {}
+	virtual ~readonly_context_impl() {}
+
+	/**
+	 * Unwrap - this class is not a proxy, so return *this
+	 */
+	virtual readonly_context& get_readonly_context() 
+	{
+		return *this;
+	}
 
 	/** Return a reference to the 'team' object for the AI. */
 	const team& current_team() const { return get_info().teams[get_side()-1]; }
@@ -76,7 +376,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	std::auto_ptr<ai_attack_result> check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	ai_attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
 
 
 	/**
@@ -89,7 +389,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	std::auto_ptr<ai_move_result> check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	ai_move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
 
 
 	/**
@@ -102,7 +402,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	std::auto_ptr<ai_recruit_result> check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	ai_recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
 
 
 	/**
@@ -114,7 +414,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	std::auto_ptr<ai_stopunit_result> check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	ai_stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
 
 
 	/**
@@ -167,14 +467,22 @@ public:
 	 */
 	void raise_user_interact() const;
 
-	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	virtual int get_recursion_count() const;
 
-	virtual variant get_value(const std::string& key) const;
+private:
+	recursion_counter recursion_counter_;
 
 };
 
-class ai_readwrite_context : public ai_readonly_context {
+class readwrite_context_impl :  public virtual side_context_proxy, public virtual readonly_context_proxy, public readwrite_context {
 public:
+	/**
+	 * Unwrap - this class is not a proxy, so return *this
+	 */
+	virtual readwrite_context& get_readwrite_context() 
+	{
+		return *this;
+	}
 
 
 	/**
@@ -188,7 +496,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	std::auto_ptr<ai_attack_result> execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
 
 
 	/**
@@ -201,7 +509,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	std::auto_ptr<ai_move_result> execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
 
 
 	/**
@@ -214,7 +522,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	std::auto_ptr<ai_recruit_result> execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
 
 
 	/**
@@ -226,12 +534,11 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	std::auto_ptr<ai_stopunit_result> execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
 
 
 	/** Return a reference to the 'team' object for the AI. */
-	team& current_team() { return get_info().teams[get_side()-1]; }
-	const team& current_team() const { return get_info().teams[get_side()-1]; }
+	virtual team& current_team_w() { return get_info_w().teams[get_side()-1]; }
 
 	/**
 	 * This function should be called to attack an enemy.
@@ -247,7 +554,7 @@ public:
 	 * @param def_weapon   The number of the weapon (0-based) which should be used
 	 *                     by the defender. (It must be a valid weapon of the defender.)
 	 */
-	void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon);
+	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon);
 
 	/**
 	 * This function should be called to move a unit.
@@ -260,7 +567,7 @@ public:
 	 * @param possible_moves      The map of possible moves, as obtained from
 	 *                            'calculate_possible_moves'.
 	 */
-	map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves);
+	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves);
 
 	/**
 	 * @deprecated
@@ -289,16 +596,25 @@ public:
 	/**
 	 * The constructor.
 	 */
-	ai_readwrite_context(unsigned int side, bool master) : ai_readonly_context(side,master){
+	readwrite_context_impl(readonly_context &context)
+                : side_context_proxy(context), readonly_context_proxy(context), recursion_counter_(context.get_recursion_count()) 
+	{
 	}
-	virtual ~ai_readwrite_context() {}
+	virtual ~readwrite_context_impl() {}
 
 	/**
 	 * Functions to retrieve the 'info' object.
 	 * Used by derived classes to discover all necessary game information.
 	 */
-	const virtual ai_game_info& get_info() const;
-	virtual ai_game_info& get_info();
+	virtual ai_game_info& get_info_w();
+
+	virtual int get_recursion_count() const;
+
+private:
+	recursion_counter recursion_counter_;
 };
+
+} //end of namespace ai
+
 
 #endif

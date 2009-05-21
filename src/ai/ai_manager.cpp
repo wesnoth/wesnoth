@@ -22,6 +22,7 @@
 #include "ai_configuration.hpp"
 #include "ai_manager.hpp"
 #include "ai_dfool.hpp"
+#include "contexts.hpp"
 #include "formula_ai.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
@@ -48,7 +49,7 @@ static lg::log_domain log_ai_manager("ai/manager");
 #define ERR_AI_MANAGER LOG_STREAM(err, log_ai_manager)
 
 ai_holder::ai_holder( int side, const std::string& ai_algorithm_type )
-	: ai_(NULL), ai_algorithm_type_(ai_algorithm_type), ai_effective_parameters_(),  ai_global_parameters_(), ai_memory_(), ai_parameters_(), side_(side)
+	: ai_(NULL), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), ai_algorithm_type_(ai_algorithm_type), ai_effective_parameters_(),  ai_global_parameters_(), ai_memory_(), ai_parameters_(), side_(side)
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
@@ -57,6 +58,17 @@ ai_holder::ai_holder( int side, const std::string& ai_algorithm_type )
 void ai_holder::init( int side )
 {
 	LOG_AI_MANAGER << describe_ai() << "Preparing to create new managed master AI" << std::endl;
+	if (side_context_ == NULL) {
+		side_context_ = new ai::side_context_impl(side);
+	} else {
+		side_context_->set_side(side);
+	}
+	if (readonly_context_ == NULL){
+		readonly_context_ = new ai::readonly_context_impl(*side_context_);
+	}
+	if (readwrite_context_ == NULL){
+		readwrite_context_ = new ai::readwrite_context_impl(*readonly_context_);
+	}
 	this->ai_ = create_ai(side);
 	if (this->ai_ == NULL) {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
@@ -69,8 +81,11 @@ ai_holder::~ai_holder()
 {
 	if (this->ai_ != NULL) {
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted" << std::endl;
-		delete this->ai_;
 	}
+	delete this->ai_;
+	delete this->readwrite_context_;
+	delete this->readonly_context_;
+	delete this->side_context_;
 }
 
 
@@ -181,8 +196,9 @@ bool ai_holder::is_mandate_ok()
 ai_interface* ai_holder::create_ai( int side )
 {
 	assert (side > 0);
-	//@note: ai_params and ai_algorithm_type are supposed to be set before calling init(  );
-	return ai_manager::create_transient_ai(ai_algorithm_type_,side,true);
+	assert (readwrite_context_!=NULL);
+	//@note: ai_params, contexts, and ai_algorithm_type are supposed to be set before calling init(  );
+	return ai_manager::create_transient_ai(ai_algorithm_type_,readwrite_context_);
 
 }
 
@@ -523,42 +539,45 @@ bool ai_manager::add_ai_for_side( int side, const std::string& ai_algorithm_type
 }
 
 
-ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_type, int side, bool master )
+ai_interface* ai_manager::create_transient_ai( const std::string &ai_algorithm_type, ai::readwrite_context *rw_context )
 {
+	assert(rw_context!=NULL);
 	//@todo 1.7 modify this code to use a 'factory lookup' pattern -
-	//a singleton which holds a map<string,ai_factory> of all functors which can create AIs.
+	//a singleton which holds a map<string,ai_factory_ptr> of all functors which can create AIs.
 	//this will allow individual AI implementations to 'register' themselves.
+
+
 
 	//: To add an AI of your own, put
 	//	if(ai_algorithm_type == "my_ai") {
 	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		return new my_ai(side,master);
+	//		return new my_ai(rw_context);
 	//	}
 	// at the top of this function
 
 	//if(ai_algorithm_type == ai_manager::AI_TYPE_SAMPLE_AI) {
 	//  LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	return new sample_ai(side,master);
+	//	return new sample_ai(*rw_context);
 	//}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_IDLE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		return new idle_ai(side,master);
+		return new idle_ai(*rw_context);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_FORMULA_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		return new formula_ai(side,master);
+		return new formula_ai(*rw_context);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_DFOOL_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		return new dfool::dfool_ai(side,master);
+		return new dfool::dfool_ai(*rw_context);
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_AI2) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_AI2 << "]"<< std::endl;
-		return new ai2(side,master);
+		return new ai2(*rw_context);
 	}
 
 	if (!ai_algorithm_type.empty() && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
@@ -566,7 +585,7 @@ ai_interface* ai_manager::create_transient_ai( const std::string& ai_algorithm_t
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << ai_manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	return new ai(side,master);
+	return new ai_default(*rw_context);
 }
 
 std::vector<std::string> ai_manager::get_available_ais()

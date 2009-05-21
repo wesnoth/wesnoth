@@ -20,28 +20,36 @@
 #include "../global.hpp"
 
 #include "../actions.hpp"
+#include "ai_interface.hpp"
 #include "contexts.hpp"
 #include "../formula_callable.hpp"
 
 class formula_ai;
 
 /** A trivial ai that sits around doing absolutely nothing. */
-class idle_ai : public ai_readwrite_context {
+class idle_ai : public ai::readwrite_context_proxy, public ai_interface {
 public:
-	idle_ai(int side, bool master);
+	idle_ai(ai::readwrite_context &context);
 	void play_turn();
 	virtual std::string describe_self();
+	void switch_side(ai::side_number side);
+	int get_recursion_count() const;
+private:
+	ai::recursion_counter recursion_counter_;
 };
 
-class ai : public ai_readwrite_context {
+class ai_default : public virtual ai::readwrite_context_proxy, public ai_interface, public game_logic::formula_callable {
 public:
+	typedef ai::move_map move_map;
+	typedef map_location location;//will get rid of this later
 
-	ai(int side, bool master);
-	virtual ~ai();
+	ai_default(ai::readwrite_context &context);
+	virtual ~ai_default();
 
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
+	void switch_side(ai::side_number side);
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
@@ -72,14 +80,21 @@ public:
 
 	void invalidate_defensive_position_cache() { defensive_position_cache_.clear(); }
 
+	virtual variant get_value(const std::string& key) const;
+	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
 	bool leader_can_reach_keep();
 
-	/** Return true iff there has been another attack this turn 'close' to this one. */
+	/** Return true if there has been another attack this turn 'close' to this one. */
 	bool attack_close(const location& loc) const;
 
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
 	const map_location& suitable_keep( const location& leader_location, const paths& leader_paths );
 
+	/** get the recursion counter */
+	int get_recursion_count() const;
+private:
+	ai::recursion_counter recursion_counter_;
 protected:
 
 	std::map<location,defensive_position> defensive_position_cache_;
@@ -175,11 +190,11 @@ public:
 		void analyze(const gamemap& map, unit_map& units,
 					 const std::vector<team>& teams,
 					 const gamestatus& status,
-					 class ai& ai_obj,
+					 class ai_default& ai_obj,
 					 const move_map& dstsrc, const move_map& srcdst,
 					 const move_map& enemy_dstsrc, double aggression);
 
-		double rating(double aggression, class ai& ai_obj) const;
+		double rating(double aggression, class ai_default& ai_obj) const;
 		variant get_value(const std::string& key) const;
 		void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 

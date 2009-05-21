@@ -240,6 +240,11 @@ std::ostream &operator<<(std::ostream &s, ai_move_result const &r);
 std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r);
 std::ostream &operator<<(std::ostream &s, ai_stopunit_result const &r);
 
+typedef boost::shared_ptr<ai_attack_result> ai_attack_result_ptr;
+typedef boost::shared_ptr<ai_move_result> ai_move_result_ptr;
+typedef boost::shared_ptr<ai_recruit_result> ai_recruit_result_ptr;
+typedef boost::shared_ptr<ai_stopunit_result> ai_stopunit_result_ptr;
+
 class ai_actions {
 
 public:
@@ -260,7 +265,7 @@ public:
  * @retval possible result: attacker and/or defender are invalid
  * @retval possible result: attacker doesn't have the specified weapon
  */
-static std::auto_ptr<ai_attack_result> execute_attack_action( unsigned int side,
+static ai_attack_result_ptr execute_attack_action( unsigned int side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
@@ -279,7 +284,7 @@ static std::auto_ptr<ai_attack_result> execute_attack_action( unsigned int side,
  * @retval possible result: move is interrupted
  * @retval possible result: move is impossible
  */
-static std::auto_ptr<ai_move_result > execute_move_action( unsigned int side,
+static ai_move_result_ptr execute_move_action( unsigned int side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
@@ -298,7 +303,7 @@ static std::auto_ptr<ai_move_result > execute_move_action( unsigned int side,
  * @retval possible_result: no free space on keep
  * @retval possible_result: not enough gold
  */
-static std::auto_ptr<ai_recruit_result> execute_recruit_action( unsigned int side,
+static ai_recruit_result_ptr execute_recruit_action( unsigned int side,
 	bool execute,
 	const std::string& unit_name,
 	const map_location& where );
@@ -315,7 +320,7 @@ static std::auto_ptr<ai_recruit_result> execute_recruit_action( unsigned int sid
  * @retval possible_result: something wrong
  * @retval possible_result: nothing to do
  */
-static std::auto_ptr<ai_stopunit_result> execute_stopunit_action( unsigned int side,
+static ai_stopunit_result_ptr execute_stopunit_action( unsigned int side,
 	bool execute,
 	const map_location& unit_location,
 	bool remove_movement,
@@ -325,5 +330,7 @@ static std::auto_ptr<ai_stopunit_result> execute_stopunit_action( unsigned int s
 };
 
 
+//@todo 1.7 Add an ai action to set a goto on a unit
 //@todo 1.7 Add an ai action to send a chat message to a player
+
 #endif

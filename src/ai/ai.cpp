@@ -46,13 +46,25 @@ static lg::log_domain log_ai("ai/general");
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(int side, bool master) : ai_readwrite_context(side,master)
+idle_ai::idle_ai(ai::readwrite_context &context) : ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count())
 {
 }
 
-std::string idle_ai::describe_self(){
+std::string idle_ai::describe_self()
+{
 	return "[idle_ai]";
 }
+
+void idle_ai::switch_side(ai::side_number side)
+{
+	set_side(side);
+}
+
+int idle_ai::get_recursion_count() const
+{
+	return recursion_counter_.get_count();
+}
+
 
 void idle_ai::play_turn()
 {
@@ -61,11 +73,12 @@ void idle_ai::play_turn()
 
 
 /** Sample ai, with simple strategy. */
-class sample_ai : public ai_readwrite_context {
+class sample_ai : public ai::readwrite_context_proxy, public ai_interface {
 public:
-	sample_ai(int side, bool master) : ai_readwrite_context(side,master) {}
+	sample_ai(ai::readwrite_context &context)
+		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count()) {}
 
-	void play_turn() {
+	virtual void play_turn() {
 		game_events::fire("ai turn");
 		do_attacks();
 		get_villages();
@@ -73,31 +86,36 @@ public:
 		do_recruitment();
 	}
 
-	std::string describe_self(){
+	virtual std::string describe_self(){
 		return "[sample_ai]";
+	}
+
+	virtual int get_recursion_count() const
+	{
+		return recursion_counter_.get_count();
 	}
 
 
 protected:
 	void do_attacks() {
-		std::map<location,paths> possible_moves;
-		move_map srcdst, dstsrc;
+		std::map<map_location,paths> possible_moves;
+		ai::move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
 			if(current_team().is_enemy(i->second.side())) {
-				location adjacent_tiles[6];
+				map_location adjacent_tiles[6];
 				get_adjacent_tiles(i->first,adjacent_tiles);
 
 				int best_defense = -1;
-				std::pair<location,location> best_movement;
+				std::pair<map_location,map_location> best_movement;
 
 				for(size_t n = 0; n != 6; ++n) {
-					typedef move_map::const_iterator Itor;
+					typedef ai::move_map::const_iterator Itor;
 					std::pair<Itor,Itor> range = dstsrc.equal_range(adjacent_tiles[n]);
 					while(range.first != range.second) {
-						const location& dst = range.first->first;
-						const location& src = range.first->second;
+						const map_location& dst = range.first->first;
+						const map_location& src = range.first->second;
 						const unit_map::const_iterator un = get_info().units.find(src);
 
 						const t_translation::t_terrain terrain = get_info().map.get_terrain(dst);
@@ -130,11 +148,11 @@ protected:
 	}
 
 	void get_villages() {
-        std::map<location,paths> possible_moves;
-        move_map srcdst, dstsrc;
+        std::map<map_location,paths> possible_moves;
+        ai::move_map srcdst, dstsrc;
         calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
-        for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+        for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
             if(get_info().map.is_village(i->first) && current_team().owns_village(i->first) == false) {
                 move_unit(i->second,i->first,possible_moves);
                 get_villages();
@@ -154,14 +172,14 @@ protected:
 		if(leader == get_info().units.end())
 			return;
 
-		std::map<location,paths> possible_moves;
-		move_map srcdst, dstsrc;
+		std::map<map_location,paths> possible_moves;
+		ai::move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
 		int closest_distance = -1;
-		std::pair<location,location> closest_move;
+		std::pair<map_location,map_location> closest_move;
 
-		for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+		for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 			const int distance = distance_between(i->first,leader->first);
 			if(closest_distance == -1 || distance < closest_distance) {
 				closest_distance = distance;
@@ -174,6 +192,11 @@ protected:
 			do_moves();
 		}
 	}
+
+	void switch_side(ai::side_number side){
+		set_side(side);
+	}
+
 
 	bool do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
@@ -190,10 +213,16 @@ protected:
 		}
 		return false;
 	}
+private:
+	ai::recursion_counter recursion_counter_;
 };
 
-ai::ai(int side, bool master) :
-	ai_readwrite_context(side,master),
+ai_default::ai_default(ai::readwrite_context &context) :
+	ai::side_context_proxy(context),
+	ai::readonly_context_proxy(context),
+	ai::readwrite_context_proxy(context),
+	game_logic::formula_callable(),
+	recursion_counter_(context.get_recursion_count()),
 	defensive_position_cache_(),
 	threats_found_(false),
 	attacks_(),
@@ -216,13 +245,18 @@ ai::ai(int side, bool master) :
 {
 }
 
-ai::~ai(){
+ai_default::~ai_default(){
 	if (formula_ai_!=NULL) {
 		delete formula_ai_;
 	}
 }
 
-void ai::new_turn()
+void ai_default::switch_side(ai::side_number side){
+	set_side(side);
+}
+
+
+void ai_default::new_turn()
 {
 	defensive_position_cache_.clear();
 	threats_found_ = false;
@@ -242,11 +276,16 @@ void ai::new_turn()
 	ai_interface::new_turn();
 }
 
-std::string ai::describe_self(){
+std::string ai_default::describe_self(){
 	return "[default_ai]";
 }
 
-bool ai::recruit_usage(const std::string& usage)
+int ai_default::get_recursion_count() const
+{
+	return recursion_counter_.get_count();
+}
+
+bool ai_default::recruit_usage(const std::string& usage)
 {
 	raise_user_interact();
 
@@ -316,14 +355,14 @@ bool ai::recruit_usage(const std::string& usage)
 		WRN_AI << warning;
 		// Uncommented until the recruitment limiting macro can be fixed to not trigger this warning.
 		//lg::wml_error << warning;
-		return current_team().remove_recruitment_pattern_entry(usage);
+		return current_team_w().remove_recruitment_pattern_entry(usage);
 	}
 	return false;
 }
 
-bool ai::multistep_move_possible(const location& from,
-	const location& to, const location& via,
-	const std::map<location,paths>& possible_moves) const
+bool ai_default::multistep_move_possible(const map_location& from,
+	const map_location& to, const map_location& via,
+	const std::map<map_location,paths>& possible_moves) const
 {
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end()) {
@@ -331,7 +370,7 @@ bool ai::multistep_move_possible(const location& from,
 			LOG_AI << "when seeing if leader can move from "
 				<< from << " -> " << to
 				<< " seeing if can detour to keep at " << via << '\n';
-			const std::map<location,paths>::const_iterator moves = possible_moves.find(from);
+			const std::map<map_location,paths>::const_iterator moves = possible_moves.find(from);
 			if(moves != possible_moves.end()) {
 
 				LOG_AI << "found leader moves..\n";
@@ -363,10 +402,10 @@ bool ai::multistep_move_possible(const location& from,
 	return false;
 }
 
-map_location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
+map_location ai_default::move_unit(map_location from, map_location to, ai::moves_map& possible_moves)
 {
-	std::map<location,paths> temp_possible_moves;
-	std::map<location,paths>* possible_moves_ptr = &possible_moves;
+	ai::moves_map temp_possible_moves;
+	ai::moves_map* possible_moves_ptr = &possible_moves;
 
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end() && i->second.can_recruit()) {
@@ -377,7 +416,7 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 
 		// If we can make it back to the keep and then to our original destination, do so.
 		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
-			from = ai_readwrite_context::move_unit(from,start_pos,possible_moves);
+			from = readwrite_context_proxy::move_unit(from,start_pos,possible_moves);
 			if(from != start_pos) {
 				return from;
 			}
@@ -399,7 +438,7 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 	}
 
 	if(units_.count(to) == 0 || from == to) {
-		const location res = ai_readwrite_context::move_unit(from,to,*possible_moves_ptr);
+		const map_location res = readwrite_context_proxy::move_unit(from,to,*possible_moves_ptr);
 		if(res != to) {
 			// We've been ambushed; find the ambushing unit and attack them.
 			adjacent_tiles_array locs;
@@ -422,9 +461,9 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 	}
 }
 
-bool ai::attack_close(const map_location& loc) const
+bool ai_default::attack_close(const map_location& loc) const
 {
-	for(std::set<location>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		if(distance_between(*i,loc) < 4) {
 			return true;
 		}
@@ -433,15 +472,15 @@ bool ai::attack_close(const map_location& loc) const
 	return false;
 }
 
-void ai::attack_enemy(const location& attacking_unit, const location& target,
+void ai_default::attack_enemy(const map_location& attacking_unit, const map_location& target,
 		int att_weapon, int def_weapon)
 {
 	attacks_.insert(attacking_unit);
-	ai_readwrite_context::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
+	readwrite_context_proxy::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
 }
 
 
-void ai::remove_unit_from_moves(const map_location& loc, move_map& srcdst, move_map& dstsrc)
+void ai_default::remove_unit_from_moves(const map_location& loc, move_map& srcdst, move_map& dstsrc)
 {
 	srcdst.erase(loc);
 	for(move_map::iterator i = dstsrc.begin(); i != dstsrc.end(); ) {
@@ -468,7 +507,7 @@ struct protected_item {
 }
 
 
-void ai::find_threats()
+void ai_default::find_threats()
 {
 	if(threats_found_) {
 		return;
@@ -529,7 +568,7 @@ void ai::find_threats()
 	}
 }
 
-void ai::play_turn()
+void ai_default::play_turn()
 {
 	// Protect against a memory over commitment:
 	/**
@@ -546,7 +585,7 @@ void ai::play_turn()
 	}
 }
 
-void ai::evaluate_recruiting_value(unit_map::iterator leader)
+void ai_default::evaluate_recruiting_value(unit_map::iterator leader)
 {
 	if (recruiting_preferred_ == 2)
 	{
@@ -560,10 +599,10 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 
 	float free_slots = 0.0f;
 	const float gold = current_team().gold();
-	const float unit_price = current_team().average_recruit_price();
+	const float unit_price = current_team_w().average_recruit_price();
 	if (map_.is_keep(leader->first))
 	{
-		std::set<location> checked_hexes;
+		std::set<map_location> checked_hexes;
 		checked_hexes.insert(leader->first);
 		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
 	} else {
@@ -581,7 +620,7 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
 }
 
-void ai::do_move()
+void ai_default::do_move()
 {
 	log_scope2(log_ai, "doing ai move");
 
@@ -745,7 +784,7 @@ void ai::do_move()
 	}
 }
 
-bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map& srcdst,
+bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const move_map& srcdst,
 		const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	int ticks = SDL_GetTicks();
@@ -806,14 +845,14 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 	// Bad mistake -- the AI became extremely reluctant to attack anything.
 	// Documenting this in case someone has this bright idea again...*don't*...
 	if(choice_rating > 0.0) {
-		location from   = choice_it->movements[0].first;
-		location to     = choice_it->movements[0].second;
-		location target_loc = choice_it->target;
+		map_location from   = choice_it->movements[0].first;
+		map_location to     = choice_it->movements[0].second;
+		map_location target_loc = choice_it->target;
 
 		// Never used:
 		//		const unit_map::const_iterator tgt = units_.find(target_loc);
 
-		const location arrived_at = move_unit(from,to,possible_moves);
+		const map_location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to || units_.find(to) == units_.end()) {
 			WRN_AI << "unit moving to attack has ended up unexpectedly at "
 				<< arrived_at << " when moving to " << to << " from " << from << '\n';
@@ -843,7 +882,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 }
 
 
-bool ai::get_healing(std::map<map_location,paths>& possible_moves,
+bool ai_default::get_healing(std::map<map_location,paths>& possible_moves,
 		const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	// Find units in need of healing.
@@ -900,7 +939,7 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 	return false;
 }
 
-bool ai::should_retreat(const map_location& loc, const unit_map::const_iterator un,
+bool ai_default::should_retreat(const map_location& loc, const unit_map::const_iterator un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
@@ -922,7 +961,7 @@ bool ai::should_retreat(const map_location& loc, const unit_map::const_iterator 
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-bool ai::retreat_units(std::map<map_location,paths>& possible_moves,
+bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 		const move_map& srcdst, const move_map& dstsrc,
 		const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
@@ -1033,7 +1072,7 @@ bool ai::retreat_units(std::map<map_location,paths>& possible_moves,
 	return false;
 }
 
-bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
+bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::const_iterator leader)
 {
@@ -1153,7 +1192,7 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 	return false;
 }
 
-int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
+int ai_default::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
@@ -1231,7 +1270,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	return sum/weight_sum;
 }
 
-int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
+int ai_default::compare_unit_types(const unit_type& a, const unit_type& b) const
 {
 	const int a_effectiveness_vs_b = average_resistance_against(b,a);
 	const int b_effectiveness_vs_a = average_resistance_against(a,b);
@@ -1242,7 +1281,7 @@ int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;
 }
 
-void ai::analyze_potential_recruit_combat()
+void ai_default::analyze_potential_recruit_combat()
 {
 	if(unit_combat_scores_.empty() == false ||
 			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_combat"])) {
@@ -1313,7 +1352,7 @@ namespace {
 struct target_comparer_distance {
 	target_comparer_distance(const map_location& loc) : loc_(loc) {}
 
-	bool operator()(const ai::target& a, const ai::target& b) const {
+	bool operator()(const ai_default::target& a, const ai_default::target& b) const {
 		return distance_between(a.loc,loc_) < distance_between(b.loc,loc_);
 	}
 
@@ -1323,7 +1362,7 @@ private:
 
 }
 
-void ai::analyze_potential_recruit_movements()
+void ai_default::analyze_potential_recruit_movements()
 {
 	if(unit_movement_scores_.empty() == false ||
 			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_movement"])) {
@@ -1433,7 +1472,7 @@ void ai::analyze_potential_recruit_movements()
 	}
 }
 
-bool ai::do_recruitment()
+bool ai_default::do_recruitment()
 {
 	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end()) {
@@ -1442,11 +1481,11 @@ bool ai::do_recruitment()
 
 	raise_user_interact();
 	// Let formula ai to do recruiting first
-	if (get_master())
+	if (get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE)
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
 			if (formula_ai_ == NULL){
-				formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, get_side(),false));
+				formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, this));
 			}
 
 			assert(formula_ai_ != NULL);
@@ -1541,7 +1580,7 @@ bool ai::do_recruitment()
 	return ret;
 }
 
-void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
+void ai_default::move_leader_to_goals( const move_map& enemy_dstsrc)
 {
 	const config &goal = current_team().ai_parameters().child("leader_goal");
 
@@ -1596,7 +1635,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	}
 }
 
-void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
+void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 		const move_map& /*dstsrc*/, const move_map& enemy_dstsrc)
 {
 
@@ -1717,7 +1756,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	}
 }
 
-bool ai::leader_can_reach_keep()
+bool ai_default::leader_can_reach_keep()
 {
 	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
@@ -1740,7 +1779,7 @@ bool ai::leader_can_reach_keep()
 	return leader_paths.destinations.contains(start_pos);
 }
 
-int ai::rate_terrain(const unit& u, const map_location& loc)
+int ai_default::rate_terrain(const unit& u, const map_location& loc)
 {
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
@@ -1770,7 +1809,7 @@ int ai::rate_terrain(const unit& u, const map_location& loc)
 	return rating;
 }
 
-const ai::defensive_position& ai::best_defensive_position(const map_location& loc,
+const ai_default::defensive_position& ai_default::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	const unit_map::const_iterator itor = units_.find(loc);
@@ -1816,7 +1855,7 @@ const ai::defensive_position& ai::best_defensive_position(const map_location& lo
 	return defensive_position_cache_[loc];
 }
 
-bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
+bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) const
 {
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
@@ -1830,7 +1869,7 @@ bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
 }
 
 
-const std::set<map_location>& ai::keeps()
+const std::set<map_location>& ai_default::keeps()
 {
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
@@ -1855,7 +1894,7 @@ const std::set<map_location>& ai::keeps()
 	return keeps_;
 }
 
-const map_location& ai::nearest_keep(const map_location& loc)
+const map_location& ai_default::nearest_keep(const map_location& loc)
 {
 	const std::set<map_location>& keeps = this->keeps();
 	if(keeps.empty()) {
@@ -1876,7 +1915,7 @@ const map_location& ai::nearest_keep(const map_location& loc)
 	return *res;
 }
 
-const std::set<map_location>& ai::avoided_locations()
+const std::set<map_location>& ai_default::avoided_locations()
 {
 	if(avoid_.empty()) {
 		foreach (const config &av, current_team().ai_parameters().child_range("avoid"))
@@ -1894,7 +1933,7 @@ const std::set<map_location>& ai::avoided_locations()
 	return avoid_;
 }
 
-int ai::attack_depth()
+int ai_default::attack_depth()
 {
 	if(attack_depth_ > 0) {
 		return attack_depth_;
@@ -1905,8 +1944,22 @@ int ai::attack_depth()
 	return attack_depth_;
 }
 
+variant ai_default::get_value(const std::string& key) const
+{
+       if(key == "map") {
+               return variant(new gamemap_callable(get_info().map));
+       }
+       return variant();
+}
 
-variant ai::attack_analysis::get_value(const std::string& key) const
+void ai_default::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+       using game_logic::FORMULA_READ_ONLY;
+       inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
+}
+
+
+variant ai_default::attack_analysis::get_value(const std::string& key) const
 {
 	using namespace game_logic;
 	if(key == "target") {
@@ -1961,7 +2014,7 @@ variant ai::attack_analysis::get_value(const std::string& key) const
 	}
 }
 
-void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+void ai_default::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
 {
 	using namespace game_logic;
 	inputs->push_back(formula_input("target", FORMULA_READ_ONLY));

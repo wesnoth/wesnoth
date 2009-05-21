@@ -63,17 +63,15 @@ private:
 
 }
 
-class formula_ai : public ai {
+class formula_ai : public ai_default, public virtual ai::readwrite_context_proxy {
 public:
-	explicit formula_ai(int side, bool master);
+	explicit formula_ai(ai::readwrite_context &context);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
 
-	using ai_readwrite_context::get_info;
-	using ai_readwrite_context::current_team;
-	using ai_readonly_context::move_map;
+	using ai_default::move_map;
 
 	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
 
@@ -101,13 +99,15 @@ public:
 
 	variant get_keeps() const;
 
+	int get_recursion_count() const;
+
 	const variant& get_keeps_cache() const { return keeps_cache_; }
 
 	// Check if given unit can reach another unit
 	bool can_reach_unit(unit_map::const_unit_iterator unit_A,
 		unit_map::const_unit_iterator unit_B) const;
 
-	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
+	const std::map<map_location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
 
 	void handle_exception(game_logic::formula_error& e) const;
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
@@ -130,6 +130,7 @@ public:
 
 
 private:
+	ai::recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();
 	bool make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
@@ -141,7 +142,7 @@ private:
 
 	std::vector<variant> outcome_positions_;
 
-	mutable std::map<location,paths> possible_moves_;
+	mutable std::map<map_location,paths> possible_moves_;
 
 	void prepare_move() const;
 
@@ -155,7 +156,7 @@ private:
 	game_logic::ai_function_symbol_table function_table;
 	game_logic::candidate_action_manager candidate_action_manager_;
 
-	friend class ai;
+	friend class ai_default;
 };
 
 #endif

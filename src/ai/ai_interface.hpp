@@ -21,32 +21,14 @@
 #define AI_AI_INTERFACE_HPP_INCLUDED
 
 #include "../formula_callable.hpp"
+#include "game_info.hpp"
 
-class side_context {
-public:
-
-	side_context(int side) : side_(side) {}
-
-	virtual ~side_context() {}
-
-	/** get the 1-based side number which is controlled by this AI */
-	int get_side() const { return side_;}
-
-	/** Set the side */
-	virtual void set_side(int side) { side_ = side; }
-
-private:
-	int side_;
-
-};
-
-
-class ai_interface : public side_context {
+class ai_interface {
 public:
 	/**
 	 * The constructor.
 	 */
-	ai_interface(unsigned int side, bool master) : side_context(side), master_(master) {
+	ai_interface() {
 	}
 	virtual ~ai_interface() {}
 
@@ -63,8 +45,7 @@ public:
 	virtual void new_turn() {
 	}
 
-	/** get the 'master' flag of the AI. 'master' AI is the top-level-AI. */
-	bool get_master() const { return master_;}
+	virtual void switch_side(ai::side_number side) = 0;
 
         /** Evaluate */
         virtual std::string evaluate(const std::string& /*str*/)
@@ -73,8 +54,6 @@ public:
 	/** Describe self*/
 	virtual std::string describe_self() const;
 
-private:
-	bool master_;
 };
 
 #endif

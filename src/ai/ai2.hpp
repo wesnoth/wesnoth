@@ -20,15 +20,24 @@
 #ifndef AI_AI2_HPP_INCLUDED
 #define AI_AI2_HPP_INCLUDED
 
+#include "ai_interface.hpp"
 #include "contexts.hpp"
 
-class ai2 : public ai_readwrite_context
-{
+class ai2 : public ai::readwrite_context_proxy, public ai_interface {
 public:
-	ai2(int side, bool master) : ai_readwrite_context(side, master)
+	ai2(ai::readwrite_context &context)
+		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context),recursion_counter_(context.get_recursion_count())
 	{}
 	virtual ~ai2() {}
 	virtual void play_turn() {}
+	virtual void switch_side(ai::side_number side){
+		set_side(side);
+	}
+	int get_recursion_count() const{
+		return recursion_counter_.get_count();		
+	}
+private:
+	ai::recursion_counter recursion_counter_;
 
 };
 

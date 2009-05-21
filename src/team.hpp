@@ -161,7 +161,7 @@ public:
 		{ info_.current_player = player; }
 
 	size_t average_recruit_price();
-	float num_pos_recruits_to_force()
+	float num_pos_recruits_to_force() const
 	{ return info_.number_of_possible_recruits_to_force_recruit; }
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }

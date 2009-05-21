@@ -15,7 +15,7 @@
 /**
  * @file ai/ai_village.cpp
  * The village capturing part of the AI.
- * ai::get_villages and ai::find_villages are based on ai::get_villages in ai.cpp
+ * ai_default::get_villages and ai_default::find_villages are based on ai_default::get_villages in ai.cpp
  */
 
 #include "../global.hpp"
@@ -151,7 +151,7 @@ static void full_dispatch(treachmap& reachmap, tmoves& moves);
 /** Shows which villages every unit can reach (debug function). */
 static void dump_reachmap(treachmap& reachmap);
 
-bool ai::get_villages(std::map<map_location,paths>& possible_moves,
+bool ai_default::get_villages(std::map<map_location,paths>& possible_moves,
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::iterator &leader)
 {
@@ -255,7 +255,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 	return false;
 }
 
-void ai::find_villages(
+void ai_default::find_villages(
 	treachmap& reachmap,
 	tmoves& moves,
 	const std::multimap<map_location,map_location>& dstsrc,

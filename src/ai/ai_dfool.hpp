@@ -22,6 +22,7 @@
 
 #include "../global.hpp"
 
+#include "ai_interface.hpp"
 #include "contexts.hpp"
 #include "../map_location.hpp"
 #include "../unit_map.hpp"
@@ -98,15 +99,22 @@ namespace dfool {
    * does not target units that it has not "seen",
    * and does not make decisions based on unseen units.
    */
-  class dfool_ai : public ai_readwrite_context {
+  class dfool_ai : public ai::readwrite_context_proxy, public ai_interface {
   public:
-    dfool_ai(int side, bool master) : ai_readwrite_context(side, master), unit_memory_(current_team().ai_memory()){}
-    void play_turn();
-    virtual std::string describe_self();
+	dfool_ai(ai::readwrite_context &context) 
+		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count()), unit_memory_(current_team().ai_memory()){}
+	void play_turn();
+	virtual std::string describe_self();
+	virtual int get_recursion_count() const{
+		return recursion_counter_.get_count();
+	}
   private:
+	ai::recursion_counter recursion_counter_;
     //    std::map<std::string,target> target_map_;
     unit_list all_units();
     unit_list visible_units();
+	void switch_side(ai::side_number /*side*/)
+	{}
     unit_list my_units();
     unit_list filter_units(const config& filter,unit_list& ul, unit_map& um);
 	bool moveto(const config &o, unit_map::const_iterator m);

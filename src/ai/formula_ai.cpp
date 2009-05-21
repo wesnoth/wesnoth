@@ -572,7 +572,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant attack = args()[0]->evaluate(variables);
-		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
+		ai_default::attack_analysis* analysis = convert_variant<ai_default::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
 		foreach (const mv &m, analysis->movements) {
@@ -1073,8 +1073,8 @@ private:
 		}
 
 		const map_location& loc = convert_variant<location_callable>(res)->loc();
-		const formula_ai::move_map& srcdst = ai_.srcdst();
-		typedef formula_ai::move_map::const_iterator Itor;
+		const ai::move_map& srcdst = ai_.srcdst();
+		typedef ai::move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
 
 		for(Itor i = range.first; i != range.second; ++i) {
@@ -1096,7 +1096,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		variant dstsrc_var = args()[0]->evaluate(variables);
-		const ai::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
+		const ai_default::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 		    dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables))->loc());
 		while(range.first != range.second) {
@@ -1517,6 +1517,10 @@ std::string formula_ai::describe_self(){
 	return "[formula_ai]";
 }
 
+int formula_ai::get_recursion_count() const{
+	return recursion_counter_.get_count();
+}
+
 
 namespace game_logic {
 expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
@@ -1596,8 +1600,12 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 
 }
 
-formula_ai::formula_ai(int side, bool master) :
-	ai(side,master),
+formula_ai::formula_ai(ai::readwrite_context &context) :
+	side_context_proxy(context),
+	readonly_context_proxy(context),
+	readwrite_context_proxy(context),
+	ai_default(context),
+	recursion_counter_(context.get_recursion_count()),
 	recruit_formula_(),
 	move_formula_(),
 	outcome_positions_(),
@@ -1699,7 +1707,7 @@ formula_ptr formula_ai::create_optional_formula(const std::string& formula_strin
 void formula_ai::new_turn()
 {
 	move_maps_valid_ = false;
-	ai::new_turn();
+	ai_default::new_turn();
 }
 
 void formula_ai::play_turn()
@@ -1892,9 +1900,9 @@ void formula_ai::prepare_move() const
 bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
-		if(get_master()) {
+		if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
 			LOG_AI << "Falling back to default AI.\n";
-			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, get_side(),false));
+			util::scoped_ptr< ai_interface > fallback( ai_manager::create_transient_ai(ai_manager::AI_TYPE_DEFAULT, this));
 			if (fallback != NULL){
 				fallback->play_turn();
 			}
@@ -2058,7 +2066,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		const move_callable* move = try_convert_variant<move_callable>(*i);
 		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(*i);
 		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
-		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
+		const ai_default::attack_analysis* attack_analysis = try_convert_variant<ai_default::attack_analysis>(*i);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(*i);
@@ -2210,8 +2218,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && (i->as_string() == "end_turn" || i->as_string() == "end" )  ) {
 			return false;
 		} else if(fallback_command) {
-			if (get_master())
-			{
+			if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
 				if(fallback_command->key() == "human")
 				{
 					//we want give control of the side to human for the rest of this turn
@@ -2219,7 +2226,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					util::scoped_ptr< ai_interface > fallback ( ai_manager::create_transient_ai(fallback_command->key(), get_side(),false));
+					util::scoped_ptr< ai_interface > fallback ( ai_manager::create_transient_ai(fallback_command->key(), this));
 					if(fallback != NULL) {
 						fallback->play_turn();
 					}
@@ -2494,7 +2501,7 @@ variant formula_ai::get_value(const std::string& key) const
 		return villages_from_set(get_info().map.villages(), &current_team().villages());
 	}
 
-	return ai_readonly_context::get_value(key);
+	return ai_default::get_value(key);
 }
 
 void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
@@ -2524,7 +2531,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 
-	ai_readonly_context::get_inputs(inputs);
+	ai_default::get_inputs(inputs);
 }
 
 variant formula_ai::get_keeps() const
