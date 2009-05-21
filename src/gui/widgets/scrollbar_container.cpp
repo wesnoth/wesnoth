@@ -105,36 +105,6 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	}
 }
 
-void tscrollbar_container::layout_init2(const bool full_initialization)
-{
-	// Inherited.
-	tcontainer_::layout_init2(full_initialization);
-
-	if(full_initialization) {
-		/*
-		 * When the scrollbars should be shown when needed, assume they're not
-		 * needed and unhide them when needed.
-		 */
-		if(initial_vertical_scrollbar_mode_ == auto_visible) {
-			vertical_scrollbar_mode_ = always_invisible;
-		} else {
-			vertical_scrollbar_mode_ = initial_vertical_scrollbar_mode_;
-		}
-		show_vertical_scrollbar();
-
-		if(initial_vertical_scrollbar_mode_ == auto_visible) {
-			horizontal_scrollbar_mode_ = always_invisible;
-		} else {
-			horizontal_scrollbar_mode_ = initial_horizontal_scrollbar_mode_;
-		}
-		show_horizontal_scrollbar();
-	}
-
-	assert(content_grid_);
-	content_grid_->layout_init2(full_initialization);
-
-}
-
 void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 {
 	// Inherited.

@@ -146,20 +146,6 @@ public:
 	/**
 	 * Initializes the layout phase.
 	 *
-	 * @deprecated Will be removed after the new layout algorithm is
-	 * implemented.
-	 *
-	 * @param full_initialization Reset the widget to its initial state. This
-	 *                            flag is used to change the status in the
-	 *                            first layout run, but keep the status when a
-	 *                            relayout phase happens.
-	 */
-	virtual void layout_init2(const bool /*full_initialization*/)
-		{ layout_size_ = tpoint(0,0); }
-
-	/**
-	 * Initializes the layout phase.
-	 *
 	 * Clears the initial best size for the widgets.
 	 *
 	 * @see @ref layout_algorihm for more information.

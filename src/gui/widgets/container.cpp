@@ -20,14 +20,6 @@
 
 namespace gui2 {
 
-void tcontainer_::layout_init2(const bool full_initialization)
-{
-	// Inherited.
-	tcontrol::layout_init2(full_initialization);
-
-	grid_.layout_init2(full_initialization);
-}
-
 void tcontainer_::NEW_layout_init(const bool full_initialization)
 {
 	// Inherited.

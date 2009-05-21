@@ -597,16 +597,6 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void layout_init2(const bool full_initialization)
-	{
-		foreach(titem* item, items_) {
-			if(item->grid.get_visible() != twidget::INVISIBLE) {
-				item->grid.layout_init2(full_initialization);
-			}
-		}
-	}
-
-	/** Inherited from tgenerator_. */
 	void NEW_layout_init(const bool full_initialization)
 	{
 		foreach(titem* item, items_) {
