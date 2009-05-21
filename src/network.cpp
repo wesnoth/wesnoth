@@ -387,7 +387,8 @@ void connect_operation::run()
 	{
 	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
 	int no = 0;
-	setsockopt(raw_sock->channel, IPPROTO_TCP, TCP_NODELAY, (char*)&no, sizeof(no));
+	setsockopt(raw_sock->channel,
+			IPPROTO_TCP, TCP_NODELAY, static_cast<char*>(&no), sizeof(no));
 	}
 #endif
 
@@ -650,7 +651,8 @@ connection receive_data(config& cfg, connection connection_num, unsigned int tim
 {
 	unsigned int start_ticks = SDL_GetTicks();
 	while(true) {
-		const connection res = receive_data(cfg,connection_num,(bool*)0 , bandwidth_in);
+		const connection res = receive_data(
+				cfg,connection_num, static_cast<bool*>(0) , bandwidth_in);
 		if(res != 0) {
 			return res;
 		}
