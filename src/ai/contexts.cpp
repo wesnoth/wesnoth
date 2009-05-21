@@ -380,7 +380,7 @@ map_location readwrite_context_impl::move_unit_partial(map_location from, map_lo
 
 	p->first = to;
 	get_info().units.insert(p);
-	p->second.set_standing(p->first);
+	p->second.set_standing();
 	if(get_info().map.is_village(to)) {
 		// If a new village is captured, disallow any future movement.
 		if (!current_team().owns_village(to))

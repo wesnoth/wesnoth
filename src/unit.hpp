@@ -206,6 +206,9 @@ public:
 
 
 	void set_standing(const map_location& loc, bool with_bars = true);
+	void set_standing(bool with_bars = true)
+	{ set_standing(loc_, with_bars); }
+
 	void set_idling(const game_display& disp,const map_location& loc);
 	void set_selecting(const game_display& disp,const map_location& loc);
 	unit_animation* get_animation() {  return anim_;};

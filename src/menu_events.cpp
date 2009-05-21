@@ -1061,7 +1061,7 @@ private:
 			up->first = route.back();
 			units_.insert(up);
 			unit::clear_status_caches();
-			up->second.set_standing(up->first);
+			up->second.set_standing();
 			gui_->invalidate(route.back());
 			gui_->draw();
 		}
@@ -1191,7 +1191,7 @@ private:
 			up->first = route.back();
 			units_.insert(up);
 			unit::clear_status_caches();
-			up->second.set_standing(up->first);
+			up->second.set_standing();
 
 			if(map_.is_village(route.back())) {
 				get_village(route.back(),*gui_,teams_,up->second.side()-1,units_);

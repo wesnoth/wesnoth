@@ -645,7 +645,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 		teleport_path.push_back(vacant_dst);
 		unit_display::move_unit(teleport_path, u->second, *rsrc.teams);
 	} else {
-		u->second.set_standing(vacant_dst);
+		u->second.set_standing();
 		rsrc.screen->invalidate(src_loc);
 		rsrc.screen->invalidate(dst);
 		rsrc.screen->draw();

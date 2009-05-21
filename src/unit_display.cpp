@@ -333,8 +333,7 @@ void unit_attack(
 	animator.set_all_standing();
 	disp->remove_temporary_unit();
 	def->second.set_hidden(was_hidden);
-	def->second.set_standing(def->first);
-
+	def->second.set_standing();
 }
 
 
