@@ -306,16 +306,6 @@ public:
 		{ assert(has_vertical_scrollbar()); }
 
 	/**
-	 * Tries to shrink a widget so it fits in the wanted height.
-	 *
-	 * @todo implement this function properly.
-	 *
-	 * @param maximum_height      The wanted maximum height of the widget.
-	 *
-	 */
-	virtual void layout_shrink_height(const unsigned /*maximum_height*/) { }
-
-	/**
 	 * Sets the size of the widget.
 	 *
 	 * @param origin              The position of top left of the widget.
