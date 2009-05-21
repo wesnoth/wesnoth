@@ -498,20 +498,6 @@ void tgrid::layout_wrap(const unsigned maximum_width)
 	DBG_GUI_L << "tgrid: found solution.\n";
 }
 
-bool tgrid::has_vertical_scrollbar() const
-{
-	foreach(const tchild& child, children_) {
-		// FIXME we should check per row and the entire row
-		// should have the flag!!!!
-		if(child.widget() && child.widget()->has_vertical_scrollbar()) {
-			return true;
-		}
-	}
-
-	// Inherit
-	return twidget::has_vertical_scrollbar();
-}
-
 bool tgrid::has_horizontal_scrollbar() const
 {
 	foreach(const tchild& child, children_) {

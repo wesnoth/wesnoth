@@ -56,9 +56,6 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tcontainer_. */
-	bool has_vertical_scrollbar() const { return false; }
-
 	/**
 	 * Update our state when a widget selected or deselected an item.
 	 *

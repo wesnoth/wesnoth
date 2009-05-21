@@ -271,19 +271,6 @@ public:
 	virtual bool has_horizontal_scrollbar() const { return false; }
 
 	/**
-	 * Does the widget have a vertical scrollbar.
-	 *
-	 * We want to use the best size for a widget, when the best size for all
-	 * widgets doesn't fit inside the window some widgets need to be reduced in
-	 * size. Widgets that have a scrollbar in the wanted direction are resized
-	 * first. The next option is to look at the minimum size.
-	 *
-	 * @returns                   Whether or not the widget has a vertical
-	 *                            scrollbar.
-	 */
-	virtual bool has_vertical_scrollbar() const { return false; }
-
-	/**
 	 * Sets the size of the widget.
 	 *
 	 * @param origin              The position of top left of the widget.

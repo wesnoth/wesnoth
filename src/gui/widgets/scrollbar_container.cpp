@@ -242,15 +242,6 @@ void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 	content_grid_->layout_wrap(maximum_width - offset);
 }
 
-bool tscrollbar_container::has_vertical_scrollbar() const
-{
-	/**
-	 * @todo look at cleaning the has_X_scrollbar and can_wrap to do the
-	 * visibility test in a more generic way, preferably in the grid.
-	 */
-	return is_visible() && vertical_scrollbar_mode_ != always_invisible;
-}
-
 bool tscrollbar_container::has_horizontal_scrollbar() const
 {
 	return is_visible() && horizontal_scrollbar_mode_ != always_invisible;

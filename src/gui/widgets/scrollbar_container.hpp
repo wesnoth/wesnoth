@@ -95,9 +95,6 @@ public:
 	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget (not tcontainer_). */
-	bool has_vertical_scrollbar() const;
-
-	/** Inherited from twidget (not tcontainer_). */
 	bool has_horizontal_scrollbar() const;
 
 private:
