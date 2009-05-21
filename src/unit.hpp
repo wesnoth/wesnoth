@@ -219,6 +219,10 @@ public:
 
 	int cost () const { return unit_value_; }
 
+	const map_location &get_location() const { return loc_; }
+	/** To be called by unit_map only. (For now.) */
+	void set_location(const map_location &loc) { loc_ = loc; }
+
 	const map_location& get_goto() const { return goto_; }
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
@@ -365,6 +369,7 @@ private:
 	void set_underlying_id();
 
 	config cfg_;
+	map_location loc_;
 
 	std::vector<std::string> advances_to_;
 	std::string type_;

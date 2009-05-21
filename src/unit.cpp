@@ -80,6 +80,7 @@ void sort_units(std::vector< unit > &units)
 // Copy constructor
 unit::unit(const unit& o):
            cfg_(o.cfg_),
+           loc_(o.loc_),
            advances_to_(o.advances_to_),
            type_(o.type_),
            race_(o.race_),
