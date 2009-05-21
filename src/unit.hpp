@@ -145,28 +145,7 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh(const game_display& disp,const map_location& loc) {
-		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
-			set_standing(loc);
-			return;
-		}
-		if (state_ != STATE_STANDING ||
-			       	get_current_animation_tick() < next_idling_ ||
-			       	!disp.tile_nearly_on_screen(loc) ||
-			       	incapacitated())
-			return;
-		if (get_current_animation_tick() > next_idling_ + 1000) {
-			// prevent all units animating at the same time
-			if (disp.idle_anim()) {
-				next_idling_ = get_current_animation_tick()
-					+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
-			} else {
-				next_idling_ = INT_MAX;
-			}
-		} else {
-			set_idling(disp, loc);
-		}
-	}
+	void refresh(const game_display &disp, const map_location &loc);
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
