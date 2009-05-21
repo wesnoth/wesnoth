@@ -277,8 +277,8 @@ void unit_attack(
 
 
 	unit_animator animator;
-	unit_ability_list leaders = attacker.get_abilities("leadership",a);
-	unit_ability_list helpers = defender.get_abilities("resistance",b);
+	unit_ability_list leaders = attacker.get_abilities("leadership");
+	unit_ability_list helpers = defender.get_abilities("resistance");
 
 	{
 		std::string text ;

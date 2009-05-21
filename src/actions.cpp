@@ -255,7 +255,7 @@ map_location under_leadership(const unit_map& units,
 	if(un == units.end()) {
 		return map_location::null_location;
 	}
-	unit_ability_list abil = un->second.get_abilities("leadership",loc);
+	unit_ability_list abil = un->second.get_abilities("leadership");
 	if(bonus) {
 		*bonus = abil.highest("value").first;
 	}
@@ -1685,7 +1685,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 
 		std::string curing;
 
-		unit_ability_list heal = i->second.get_abilities("heals",i->first);
+		unit_ability_list heal = i->second.get_abilities("heals");
 
 		const bool is_poisoned = i->second.get_state(unit::STATE_POISONED);
 		if(is_poisoned) {
@@ -1746,7 +1746,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		}
 
 		if(i->second.side() == side) {
-			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
+			unit_ability_list regen = i->second.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen,0,false);
 			if(regen_effect.get_composite_value() > healing) {
 				healing = regen_effect.get_composite_value();
@@ -1976,7 +1976,7 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ma
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 					itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
-				unit_ability_list illum = itor->second.get_abilities("illuminates",itor->first);
+				unit_ability_list illum = itor->second.get_abilities("illuminates");
 				unit_abilities::effect illum_effect(illum,lighten,false);
 				int mod = illum_effect.get_composite_value();
 				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
@@ -2301,7 +2301,7 @@ size_t move_unit(game_display* disp,
 				should_clear_stack = true;
 				moves_left = 0;
 
-				unit_ability_list hides = it->second.get_abilities("hides",it->first);
+				unit_ability_list hides = it->second.get_abilities("hides");
 
 				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
