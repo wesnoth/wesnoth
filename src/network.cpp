@@ -388,7 +388,7 @@ void connect_operation::run()
 	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
 	int no = 0;
 	setsockopt(raw_sock->channel,
-			IPPROTO_TCP, TCP_NODELAY, static_cast<char*>(&no), sizeof(no));
+			IPPROTO_TCP, TCP_NODELAY, reinterpret_cast<char*>(&no), sizeof(no));
 	}
 #endif
 
