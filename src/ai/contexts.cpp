@@ -453,7 +453,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
-		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
+		bool teleports = un_it->second.get_ability_bool("teleport");
 		res.insert(std::pair<map_location,paths>(
 		                un_it->first,paths(get_info().map,units,
 					 un_it->first,get_info().teams,false,teleports,

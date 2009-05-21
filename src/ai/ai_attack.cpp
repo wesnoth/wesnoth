@@ -208,7 +208,7 @@ void ai_default::do_attack_analysis(
 					}
 
 					// No surround bonus if target is skirmisher
-					if (!itor->second.get_ability_bool("skirmisker", itor->first))
+					if (!itor->second.get_ability_bool("skirmisker"))
 						surround_bonus = 1.2;
 				}
 

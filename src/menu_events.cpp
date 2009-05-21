@@ -1241,7 +1241,7 @@ private:
 			    !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible)
 			{
 				const unit_movement_resetter move_reset(u->second);
-				const bool teleports = u->second.get_ability_bool("teleport",u->first);
+				bool teleports = u->second.get_ability_bool("teleport");
 				const paths& path = paths(map_,units_,
 										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
 

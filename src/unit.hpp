@@ -294,6 +294,8 @@ public:
 			int swing_num =0) const;
 
 	bool get_ability_bool(const std::string& ability, const map_location& loc) const;
+	bool get_ability_bool(const std::string &ability) const
+	{ return get_ability_bool(ability, loc_); }
 	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const;
 	unit_ability_list get_abilities(const std::string &ability) const
 	{ return get_abilities(ability, loc_); }

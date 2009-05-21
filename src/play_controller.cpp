@@ -770,7 +770,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 			const unit_map::iterator u = mouse_handler_.selected_unit();
 
 			if(u != units_.end()) {
-				const bool teleport = u->second.get_ability_bool("teleport",u->first);
+				bool teleport = u->second.get_ability_bool("teleport");
 
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(u->second, u->second.side() != player_number_);

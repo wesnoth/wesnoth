@@ -897,8 +897,8 @@ bool ai_default::get_healing(std::map<map_location,paths>& possible_moves,
 		if(u.side() == get_side() &&
 		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
 		   || u.get_state(unit::STATE_POISONED)) &&
-		   !u.get_ability_bool("regenerate",u_it->first)) {
-
+		    !u.get_ability_bool("regenerate"))
+		{
 			// Look for the village which is the least vulnerable to enemy attack.
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);

@@ -221,7 +221,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
 
-				const bool teleport = un->second.get_ability_bool("teleport",un->first);
+				bool teleport = un->second.get_ability_bool("teleport");
 				current_paths_ = paths(map_,units_,new_hex,teams_,
 									false,teleport,viewing_team(),path_turns_);
 				gui().highlight_reach(current_paths_);
@@ -320,7 +320,8 @@ marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 
 	std::set<map_location> allowed_teleports;
 
-	if(un->second.get_ability_bool("teleport",un->first)) {
+	if (un->second.get_ability_bool("teleport"))
+	{
 		// search all known empty friendly villages
 		for(std::set<map_location>::const_iterator i = team.villages().begin();
 				i != team.villages().end(); ++i) {
@@ -458,7 +459,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 
 		// if it's not the unit's turn, we reset its moves
 		unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
-		const bool teleport = u->second.get_ability_bool("teleport",u->first);
+		bool teleport = u->second.get_ability_bool("teleport");
 		current_paths_ = paths(map_,units_,hex,teams_,
 						   false,teleport,viewing_team(),path_turns_);
 		show_attack_options(u);

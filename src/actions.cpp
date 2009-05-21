@@ -1975,7 +1975,9 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ma
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-					itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
+			    itor->second.get_ability_bool("illuminates") &&
+			    !itor->second.incapacitated())
+			{
 				unit_ability_list illum = itor->second.get_abilities("illuminates");
 				unit_abilities::effect illum_effect(illum,lighten,false);
 				int mod = illum_effect.get_composite_value();

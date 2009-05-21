@@ -1937,7 +1937,8 @@ plain_route formula_ai::shortest_path_calculator(const map_location &src,
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const {
     std::set<map_location> allowed_teleports;
 
-    if(unit_it->second.get_ability_bool("teleport",unit_it->first)) {
+	if (unit_it->second.get_ability_bool("teleport"))
+	{
             for(std::set<map_location>::const_iterator i = current_team().villages().begin();
                             i != current_team().villages().end(); ++i) {
                     //if (viewing_team().is_enemy(unit_it->second.side()) && viewing_team().fogged(*i))
