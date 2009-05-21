@@ -256,19 +256,6 @@ bool tscrollbar_container::has_horizontal_scrollbar() const
 	return is_visible() && horizontal_scrollbar_mode_ != always_invisible;
 }
 
-void tscrollbar_container::
-		layout_use_horizontal_scrollbar(const unsigned maximum_width)
-{
-	// Inherited.
-	twidget::layout_use_horizontal_scrollbar(maximum_width);
-
-	tpoint size = get_best_size();
-
-	size.x = maximum_width;
-
-	set_layout_size(size);
-}
-
 tpoint tscrollbar_container::calculate_best_size() const
 {
 	log_scope2(log_gui_layout,

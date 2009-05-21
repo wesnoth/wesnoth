@@ -100,9 +100,6 @@ public:
 	/** Inherited from twidget (not tcontainer_). */
 	bool has_horizontal_scrollbar() const;
 
-	/** Inherited from tcontainer_. */
-	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
-
 private:
 	/** Inherited from tcontainer_. */
 	tpoint calculate_best_size() const;

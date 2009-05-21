@@ -526,73 +526,6 @@ bool tgrid::has_horizontal_scrollbar() const
 	return twidget::has_horizontal_scrollbar();
 }
 
-void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
-{
-	// Inherited.
-	twidget::layout_use_horizontal_scrollbar(maximum_width);
-
-	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
-	DBG_GUI_L << "tgrid: maximum width " << maximum_width << ".\n";
-
-	tpoint size = get_best_size();
-
-	// If we honoured the size or can't resize return the result.
-	if(size.x <= static_cast<int>(maximum_width) || !has_horizontal_scrollbar()) {
-		DBG_GUI_L << "tgrid: maximum width "
-			<< maximum_width << " returning " << size << ".\n";
-		return;
-	}
-
-	// Try to resize.
-
-	// The amount we're too wide.
-	const unsigned too_wide = size.x - maximum_width;
-	// The amount we reduced
-	unsigned reduced = 0;
-	for(size_t x = 0; x < cols_; ++x) {
-
-		if(too_wide - reduced >= col_width_[x]) {
-			DBG_GUI_L << "tgrid: col " << x << " is too small to be reduced.\n";
-			continue;
-		}
-		const unsigned wanted_width = col_width_[x] - (too_wide - reduced);
-
-		const unsigned width = column_use_horizontal_scrollbar(x, wanted_width);
-
-		if(width < col_width_[x]) {
-			DBG_GUI_L << "tgrid: reduced " << col_width_[x] - width
-				<< " pixels for column " << x << ".\n";
-
-			reduced += col_width_[x] - width;
-			col_width_[x] = width;
-		}
-
-		if(reduced >= too_wide) {
-			break;
-		}
-	}
-
-	size.x -= reduced;
-	if(reduced >= too_wide) {
-		DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " need to reduce " << too_wide
-			<< " reduced " << reduced
-			<< " resizing succeeded returning " << size.x << ".\n";
-	} else if(reduced == 0) {
-		DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " need to reduce " << too_wide
-			<< " reduced " << reduced
-			<< " resizing completely failed returning " << size.x << ".\n";
-	} else {
-		DBG_GUI_L << "tgrid: maximum width " << maximum_width
-			<< " need to reduce " << too_wide
-			<< " reduced " << reduced
-			<< " resizing partly failed returning " << size.x << ".\n";
-	}
-
-	set_layout_size(calculate_best_size());
-}
-
 void tgrid::set_size(const tpoint& origin, const tpoint& size)
 {
 	log_scope2(log_gui_layout, "tgrid: set size");
@@ -988,20 +921,6 @@ void tgrid::tchild::layout_wrap(const unsigned maximum_width)
 	widget_->layout_wrap(maximum_width - border_space().x);
 }
 
-void tgrid::tchild::layout_use_horizontal_scrollbar(
-		const unsigned maximum_width)
-{
-
-	assert(widget_);
-
-	if(! widget_->has_horizontal_scrollbar()) {
-		return;
-	}
-
-	widget_->layout_use_horizontal_scrollbar(
-			maximum_width - border_space().x);
-}
-
 const std::string& tgrid::tchild::id() const
 {
 	assert(widget_);
@@ -1065,31 +984,6 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 		widget->draw_foreground(frame_buffer);
 		widget->set_dirty(false);
 	}
-}
-
-unsigned tgrid::column_use_horizontal_scrollbar(
-		const unsigned column, const unsigned maximum_width)
-{
-	// The minimum width required.
-	unsigned required_width = 0;
-
-	for(size_t y = 0; y < rows_; ++y) {
-		tchild& cell = child(y, column);
-		cell.layout_use_horizontal_scrollbar(maximum_width);
-
-		const tpoint size(cell.get_best_size());
-
-		if(required_width == 0
-				|| static_cast<size_t>(size.x) > required_width) {
-
-			required_width = size.x;
-		}
-	}
-
-	DBG_GUI_L << "tgrid: maximum column width " << maximum_width
-		<< " returning " << required_width << ".\n";
-
-	return required_width;
 }
 
 unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,

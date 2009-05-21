@@ -231,9 +231,6 @@ public:
 	/** Inherited from twidget. */
 	bool has_horizontal_scrollbar() const;
 
-	/** Inherited from twidget. */
-	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
-
 public:
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
@@ -321,9 +318,6 @@ private:
 
 		/** Forwards layout_wrap() to the cell. */
 		void layout_wrap(const unsigned maximum_width);
-
-		/** Forwards layout_use_horizontal_scrollbar() to the cell. */
-		void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
 		/** Returns the id of the widget/ */
 		const std::string& id() const;
@@ -428,18 +422,6 @@ private:
 
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);
-
-	/**
-	 * Gets the best width for a column.
-	 *
-	 * @param column              The column to get the best width for.
-	 * @param maximum_width       The wanted maximum width.
-	 *
-	 * @returns                   The best width for a column, if possible
-	 *                            smaller as the maximum.
-	 */
-	unsigned column_use_horizontal_scrollbar(
-			const unsigned column, const unsigned maximum_width);
 
 };
 

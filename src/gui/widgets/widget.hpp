@@ -271,16 +271,6 @@ public:
 	virtual bool has_horizontal_scrollbar() const { return false; }
 
 	/**
-	 * Tries to use a horizontal scrollbar with the widget.
-	 *
-	 * @param maximum_width       The wanted maximum width of the widget.
-	 *
-	 * @pre                       has_horizontal_scrollbar() == true.
-	 */
-	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/)
-		{ assert(has_horizontal_scrollbar()); }
-
-	/**
 	 * Does the widget have a vertical scrollbar.
 	 *
 	 * We want to use the best size for a widget, when the best size for all

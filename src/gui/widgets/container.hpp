@@ -112,9 +112,6 @@ public:
 		{ return grid_.has_horizontal_scrollbar(); }
 
 	/** Inherited from twidget. */
-	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
-
-	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
