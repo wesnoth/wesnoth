@@ -17,8 +17,10 @@
 #include "tests/utils/test_support.hpp"
 
 #include "config_cache.hpp"
+#include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
+#include "game_display.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
@@ -40,10 +42,29 @@
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/settings.hpp"
+#include "map_create.hpp"
+#include "tests/utils/fake_display.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <memory>
+
 namespace {
+
+	/** The main config, which contains the entire WML tree. */
+	config main_config;
+
+	/**
+	 * Helper class to generate a dialog.
+	 *
+	 * This class makes sure the dialog is properly created and initialized.
+	 * The specialized versions are at the end of this file.
+	 */
+	template<class T>
+	struct twrapper
+	{
+		static T* create() { return new T(); }
+	};
 
 	typedef std::pair<unsigned, unsigned> tresolution;
 	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
@@ -56,10 +77,12 @@ namespace {
 		foreach(const tresolution& resolution, resolutions) {
 			video.make_test_fake(resolution.first, resolution.second);
 
-			T dlg;
+			std::auto_ptr<T> dlg(twrapper<T>::create());
+			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
+
 			std::string exception;
 			try {
-				dlg.show(video, 1);
+				dlg->show(video, 1);
 			} catch(gui2::tlayout_exception_width_modified&) {
 				exception = "gui2::tlayout_exception_width_modified";
 			} catch(gui2::tlayout_exception_width_resize_failed&) {
@@ -146,35 +169,170 @@ void test()
 
 BOOST_AUTO_TEST_CASE(test_gui2)
 {
-	gui2::init();
-
+	/**** Initialize the environment. *****/
 	game_config::config_cache& cache = game_config::config_cache::instance();
-	config game_config;
 
 	cache.clear_defines();
+	cache.add_define("MULTIPLAYER");
 #ifdef USE_TINY_GUI
 	cache.add_define("TINY");
 #endif
-	cache.get_config(game_config::path +"/data", game_config);
+	cache.get_config(game_config::path +"/data", main_config);
 
+	const binary_paths_manager bin_paths_manager(main_config);
+
+	{
+		const config &cfg = main_config.child("game_config");
+		game_config::load_config(cfg ? &cfg : NULL);
+	}
+
+	gui2::init();
+
+	/**** Run the tests. *****/
 	test<gui2::taddon_connect>();
-//	test<gui2::taddon_list>();
-//	test<gui2::tcampaign_selection>();
+	//	test<gui2::taddon_list>();
+	//	test<gui2::tcampaign_selection>();
 #ifndef DISABLE_EDITOR2
-////	test<gui2::teditor_generate_map>();
+	test<gui2::teditor_generate_map>();
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
-////	test<gui2::teditor_settings>();
+	//	test<gui2::teditor_settings>();
 #endif
-//	test<gui2::tgame_save>();
+	test<gui2::tgame_save>();
 	test<gui2::tlanguage_selection>();
-//	test<gui2::tmessage>();
-//	test<gui2::tmp_cmd_wrapper>();
-////	test<gui2::tmp_connect>();
-//	test<gui2::tmp_create_game>();
+	test<gui2::tmessage>();
+	test<gui2::tmp_cmd_wrapper>();
+	test<gui2::tmp_connect>();
+	test<gui2::tmp_create_game>();
 	test<gui2::tmp_method_selection>();
-////	test<gui2::ttitle_screen>();
-//	test<gui2::twml_message_left>();
-//	test<gui2::twml_message_right>();
-
+	test<gui2::ttitle_screen>();
+	test<gui2::twml_message_left>();
+	test<gui2::twml_message_right>();
 }
+
+namespace {
+
+template<>
+struct twrapper<gui2::tcampaign_selection>
+{
+	static gui2::tcampaign_selection* create()
+	{
+		const config::const_child_itors &ci =
+				main_config.child_range("campaign");
+		std::vector<config> campaigns(ci.first, ci.second);
+
+		return new gui2::tcampaign_selection(campaigns);
+	}
+
+};
+
+template<>
+struct twrapper<gui2::tgame_save>
+{
+	static gui2::tgame_save* create()
+	{
+		return new gui2::tgame_save("Title", "filename");
+	}
+
+};
+
+template<>
+struct twrapper<gui2::tmessage>
+{
+	static gui2::tmessage* create()
+	{
+		return new gui2::tmessage("Title", "Message", false);
+	}
+
+};
+
+template<>
+struct twrapper<gui2::tmp_cmd_wrapper>
+{
+	static gui2::tmp_cmd_wrapper* create()
+	{
+		return new gui2::tmp_cmd_wrapper("foo");
+	}
+
+};
+
+template<>
+struct twrapper<gui2::tmp_create_game>
+{
+	static gui2::tmp_create_game* create()
+	{
+		return new gui2::tmp_create_game(main_config);
+	}
+
+};
+
+template<>
+struct twrapper<gui2::teditor_generate_map>
+{
+	static gui2::teditor_generate_map* create()
+	{
+		gui2::teditor_generate_map* result = new gui2::teditor_generate_map();
+		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
+
+		std::vector<map_generator*> map_generators;
+		foreach (const config &i, main_config.child_range("multiplayer")) {
+			if(i["map_generation"] == "default") {
+				const config &generator_cfg = i.child("generator");
+				if (generator_cfg) {
+					map_generators.push_back(
+							create_map_generator("", generator_cfg));
+				}
+			}
+		}
+		result->set_map_generators(map_generators);
+
+		result->set_gui(
+				static_cast<display*>(&test_utils::get_fake_display()));
+
+		return result;
+	}
+};
+
+template<>
+struct twrapper<gui2::teditor_settings>
+{
+	static gui2::teditor_settings* create()
+	{
+		gui2::teditor_settings* result = new gui2::teditor_settings();
+		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
+
+		const config &cfg = main_config.child("editor_times");
+		BOOST_REQUIRE_MESSAGE(cfg, "No editor time-of-day defined");
+
+		std::vector<time_of_day> tods;
+		foreach (const config &i, cfg.child_range("time")) {
+			tods.push_back(time_of_day(i));
+		}
+		result->set_tods(tods);
+
+
+		return result;
+	}
+};
+
+template<>
+struct twrapper<gui2::twml_message_left>
+{
+	static gui2::twml_message_left* create()
+	{
+		return new gui2::twml_message_left("Title", "Message", "", false);
+	}
+
+};
+
+template<>
+struct twrapper<gui2::twml_message_right>
+{
+	static gui2::twml_message_right* create()
+	{
+		return new gui2::twml_message_right("Title", "Message", "", false);
+	}
+
+};
+
+} // namespace
