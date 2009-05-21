@@ -32,7 +32,7 @@ class gamemap;
  * decisions.
  */
 namespace ai {
-typedef unsigned int side_number;
+typedef int side_number;
 
 /** The standard way in which a map of possible moves is recorded. */
 typedef std::multimap<map_location,map_location> move_map;

@@ -551,33 +551,45 @@ ai_interface* ai_manager::create_transient_ai( const std::string &ai_algorithm_t
 	//: To add an AI of your own, put
 	//	if(ai_algorithm_type == "my_ai") {
 	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		return new my_ai(rw_context);
+	//		ai_interface *a = new my_ai(*rw_context);
+	//		a->on_create();
+	//		return a;
 	//	}
 	// at the top of this function
 
 	//if(ai_algorithm_type == ai_manager::AI_TYPE_SAMPLE_AI) {
 	//  LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	return new sample_ai(*rw_context);
+	//	ai_interface *a = new sample_ai(*rw_context);
+	//	a->on_create();
+	//	return a;
 	//}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_IDLE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		return new idle_ai(*rw_context);
+		ai_interface *a = new idle_ai(*rw_context);
+		a->on_create();
+		return a;
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_FORMULA_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		return new formula_ai(*rw_context);
+		ai_interface *a = new formula_ai(*rw_context);
+		a->on_create();
+		return a;
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_DFOOL_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		return new dfool::dfool_ai(*rw_context);
+		ai_interface *a = new dfool::dfool_ai(*rw_context);
+		a->on_create();
+		return a;
 	}
 
 	if(ai_algorithm_type == ai_manager::AI_TYPE_AI2) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << ai_manager::AI_TYPE_AI2 << "]"<< std::endl;
-		return new ai2(*rw_context);
+		ai_interface *a = new ai2(*rw_context);
+		a->on_create();
+		return a;
 	}
 
 	if (!ai_algorithm_type.empty() && ai_algorithm_type != ai_manager::AI_TYPE_DEFAULT) {
@@ -585,7 +597,9 @@ ai_interface* ai_manager::create_transient_ai( const std::string &ai_algorithm_t
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << ai_manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	return new ai_default(*rw_context);
+	ai_interface *a = new ai_default(*rw_context);
+	a->on_create();
+	return a;
 }
 
 std::vector<std::string> ai_manager::get_available_ais()

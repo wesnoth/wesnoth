@@ -1623,49 +1623,6 @@ formula_ai::formula_ai(ai::readwrite_context &context) :
 	function_table(*this),
 	candidate_action_manager_()
 {
-	//make sure we don't run out of refcount
-	vars_.add_ref();
-	const config& ai_param = current_team().ai_parameters();
-
-	// load candidate actions from config
-	candidate_action_manager_.load_config(ai_param, this, &function_table);
-
-	foreach (const config &func, ai_param.child_range("function"))
-	{
-		const t_string &name = func["name"];
-		const t_string &inputs = func["inputs"];
-		const t_string &formula_str = func["formula"];
-
-		std::vector<std::string> args = utils::split(inputs);
-
-		try {
-			function_table.add_formula_function(name,
-				game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)),
-				game_logic::formula::create_optional_formula(func["precondition"], &function_table),
-				args);
-			}
-			catch(formula_error& e) {
-				handle_exception(e, "Error while registering function '" + name + "'");
-			}
-		}
-
-
-        try{
-                recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
-        }
-        catch(formula_error& e) {
-                handle_exception(e);
-                recruit_formula_ = game_logic::formula_ptr();
-        }
-
-        try{
-                move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
-        }
-        catch(formula_error& e) {
-                handle_exception(e);
-                move_formula_ = game_logic::formula_ptr();
-        }
-
 }
 
 void formula_ai::handle_exception(game_logic::formula_error& e) const
@@ -2574,4 +2531,50 @@ bool formula_ai::can_reach_unit(unit_map::const_unit_iterator unit_A,
 		}
 	}
 	return false;
+}
+
+void formula_ai::on_create(){
+	//make sure we don't run out of refcount
+	vars_.add_ref();
+	const config& ai_param = current_team().ai_parameters();
+
+	// load candidate actions from config
+	candidate_action_manager_.load_config(ai_param, this, &function_table);
+
+	foreach (const config &func, ai_param.child_range("function"))
+	{
+		const t_string &name = func["name"];
+		const t_string &inputs = func["inputs"];
+		const t_string &formula_str = func["formula"];
+
+		std::vector<std::string> args = utils::split(inputs);
+
+		try {
+			function_table.add_formula_function(name,
+				game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)),
+				game_logic::formula::create_optional_formula(func["precondition"], &function_table),
+				args);
+			}
+			catch(formula_error& e) {
+				handle_exception(e, "Error while registering function '" + name + "'");
+			}
+		}
+
+
+        try{
+                recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
+        }
+        catch(formula_error& e) {
+                handle_exception(e);
+                recruit_formula_ = game_logic::formula_ptr();
+        }
+
+        try{
+                move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
+        }
+        catch(formula_error& e) {
+                handle_exception(e);
+                move_formula_ = game_logic::formula_ptr();
+        }
+
 }

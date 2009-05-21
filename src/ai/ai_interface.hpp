@@ -45,6 +45,13 @@ public:
 	virtual void new_turn() {
 	}
 
+	/**
+	 * Function called after the new ai is created
+	 *
+	 */
+	virtual void on_create() {
+	}
+
 	virtual void switch_side(ai::side_number side) = 0;
 
         /** Evaluate */

@@ -99,6 +99,8 @@ public:
 
 	variant get_keeps() const;
 
+	void on_create();
+
 	int get_recursion_count() const;
 
 	const variant& get_keeps_cache() const { return keeps_cache_; }
