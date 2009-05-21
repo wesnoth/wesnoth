@@ -284,20 +284,6 @@ public:
 	virtual bool can_shrink_width() const { return false; }
 
 	/**
-	 * Shrinks the contents of the widget so it can fit the wanted width
-	 *
-	 * @todo implement this function properly at the moment it kind of works
-	 * for a label but should also work for a button and maybe some other
-	 * classes.
-	 *
-	 * @param maximum_width       The wanted maximum width of the widget.
-	 *
-	 * @pre                       can_shrink_width() == true.
-	 */
-	virtual void layout_shrink_width(const unsigned /*maximum_width*/)
-		{ assert(can_shrink_width()); }
-
-	/**
 	 * Does the widget have a vertical scrollbar.
 	 *
 	 * We want to use the best size for a widget, when the best size for all
