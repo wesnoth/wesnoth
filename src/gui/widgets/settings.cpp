@@ -80,6 +80,7 @@ static void fill_window_types()
 	window_type_list[WML_MESSAGE_LEFT] = "wml_message_left";
 	window_type_list[WML_MESSAGE_RIGHT] = "wml_message_right";
 	window_type_list[MESSAGE] = "message";
+	window_type_list[TRANSIENT_MESSAGE] = "transient_message";
 	window_type_list[MP_CONNECT] = "mp_connect";
 	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";

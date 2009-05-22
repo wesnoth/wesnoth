@@ -39,6 +39,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/settings.hpp"
@@ -330,6 +331,17 @@ struct twrapper<gui2::teditor_settings>
 		result->set_redraw_callback(boost::bind(dummy_callback, _1, _2, _3));
 
 		return result;
+	}
+};
+
+template<>
+struct twrapper<gui2::ttransient_message>
+{
+	static gui2::ttransient_message* create()
+	{
+		return new gui2::ttransient_message(
+				"Title", gui2::tcontrol::NO_MARKUP,
+				"Message", gui2::tcontrol::NO_MARKUP);
 	}
 };
 

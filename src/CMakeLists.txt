@@ -261,6 +261,7 @@ SET(wesnoth-main_SRC
     gui/dialogs/mp_method_selection.cpp
     gui/dialogs/mp_cmd_wrapper.cpp
     gui/dialogs/title_screen.cpp
+    gui/dialogs/transient_message.cpp
     gui/dialogs/wml_message.cpp
     gui/widgets/button.cpp
     gui/widgets/control.cpp

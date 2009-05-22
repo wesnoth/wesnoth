@@ -42,6 +42,7 @@ enum twindow_type {
 	CAMPAIGN_SELECTION,      /**< The campaign selection dialog. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
 	MESSAGE,                 /**< A generic message dialog. */
+	TRANSIENT_MESSAGE,       /**< A transient message dialog. */
 	WML_MESSAGE_LEFT,        /**<
 	                          * A WML message dialog with the portrait on
 	                          * the left side.
