@@ -23,6 +23,7 @@
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "../clipboard.hpp"
@@ -366,7 +367,8 @@ void editor_controller::replace_map_context(const map_context& new_mc)
 void editor_controller::editor_settings_dialog()
 {
 	if (tods_.empty()) {
-		gui::message_dialog(gui(), _("Error"), _("No editor time-of-day found.")).show();
+		gui2::show_error_message(gui().video(),
+				_("No editor time-of-day found."));
 		return;
 	}
 
@@ -476,7 +478,8 @@ void editor_controller::save_map_as_dialog()
 void editor_controller::generate_map_dialog()
 {
 	if (map_generators_.empty()) {
-		gui::message_dialog(gui(), _("Error"), _("No random map generators found.")).show();
+		gui2::show_error_message(gui().video(),
+				_("No random map generators found."));
 		return;
 	}
 	gui2::teditor_generate_map dialog;
@@ -512,7 +515,7 @@ void editor_controller::apply_mask_dialog()
 			gui::message_dialog(gui(), _("Error loading mask"), e.what()).show();
 			return;
 		} catch (editor_action_exception& e) {
-			gui::message_dialog(gui(), _("Error"), e.what()).show();
+			gui2::show_error_message(gui().video(), e.what());
 			return;
 		}
 	}
@@ -534,7 +537,7 @@ void editor_controller::create_mask_to_dialog()
 			gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
 			return;
 		} catch (editor_action_exception& e) {
-			gui::message_dialog(gui(), _("Error"), e.what()).show();
+			gui2::show_error_message(gui().video(), e.what());
 			return;
 		}
 	}

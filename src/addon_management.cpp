@@ -1092,8 +1092,7 @@ namespace {
 		prepare_addons_list_for_display(addons, addon_dirs, parentdir);
 
 		if (addons.empty()) {
-			/** @todo should use a dialog which always shows the close button. */
-			gui2::show_message(disp.video(), _("Error"),
+			gui2::show_error_message(disp.video(),
 				_("You have no add-ons installed."));
 			return;
 		}
@@ -1148,13 +1147,10 @@ namespace {
 		}
 		else
 		{
-			const std::string err_msg_title = _("Error");
 			std::string err_msg = _("Add-on could not be deleted properly:");
 			err_msg += '\n';
 			err_msg += removal_log;
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg2(disp, err_msg_title, err_msg, gui::OK_ONLY);
-			dlg2.show();
+			gui2::show_error_message(disp.video(), err_msg);
 		}
 	}
 

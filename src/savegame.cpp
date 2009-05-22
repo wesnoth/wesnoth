@@ -573,7 +573,7 @@ bool savegame::check_overwrite(CVideo& video)
 void savegame::check_filename(const std::string& filename, CVideo& video)
 {
 	if (is_gzip_file(filename)) {
-		gui2::show_message(video, _("Error"), _("Save names should not end on '.gz'. "
+		gui2::show_error_message(video, _("Save names should not end on '.gz'. "
 			"Please choose a different name."));
 		throw illegal_filename_exception();
 	}
@@ -639,7 +639,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		return true;
 	} catch(game::save_game_failed&) {
 		if (video != NULL){
-			gui2::show_message(*video,_("Error"), error_message_);
+			gui2::show_error_message(*video,error_message_);
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
