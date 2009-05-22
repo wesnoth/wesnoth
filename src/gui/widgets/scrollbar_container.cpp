@@ -85,10 +85,8 @@ void callback_horizontal_scrollbar(twidget* caller)
 tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	: tcontainer_(canvas_count)
 	, state_(ENABLED)
-	, vertical_scrollbar_mode_(auto_visible)
-	, horizontal_scrollbar_mode_(auto_visible)
-	, initial_vertical_scrollbar_mode_(auto_visible)
-	, initial_horizontal_scrollbar_mode_(auto_visible)
+	, vertical_scrollbar_mode_(auto_visible_first_run)
+	, horizontal_scrollbar_mode_(auto_visible_first_run)
 	, vertical_scrollbar_grid_(NULL)
 	, horizontal_scrollbar_grid_(NULL)
 	, vertical_scrollbar_(NULL)
@@ -97,12 +95,6 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, content_(NULL)
 	, content_visible_area_()
 {
-	if(gui2::new_widgets) {
-		vertical_scrollbar_mode_ = auto_visible_first_run;
-		horizontal_scrollbar_mode_ = auto_visible_first_run;
-		initial_vertical_scrollbar_mode_ = auto_visible_first_run;
-		initial_horizontal_scrollbar_mode_ = auto_visible_first_run;
-	}
 }
 
 void tscrollbar_container::NEW_layout_init(const bool full_initialization)
@@ -113,36 +105,30 @@ void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 	if(full_initialization) {
 
 		assert(vertical_scrollbar_grid_);
-		switch(initial_vertical_scrollbar_mode_) {
+		switch(vertical_scrollbar_mode_) {
 			case always_visible :
-				vertical_scrollbar_mode_ = always_visible;
 				vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
 				break;
 
 			case auto_visible :
-				vertical_scrollbar_mode_ = always_visible;
 				vertical_scrollbar_grid_->set_visible(twidget::HIDDEN);
 				break;
 
 			default :
-				vertical_scrollbar_mode_ = always_invisible;
 				vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
 		}
 
 		assert(horizontal_scrollbar_grid_);
-		switch(initial_horizontal_scrollbar_mode_) {
+		switch(horizontal_scrollbar_mode_) {
 			case always_visible :
-				horizontal_scrollbar_mode_ = always_visible;
 				horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
 				break;
 
 			case auto_visible :
-				horizontal_scrollbar_mode_ = always_visible;
 				horizontal_scrollbar_grid_->set_visible(twidget::HIDDEN);
 				break;
 
 			default :
-				horizontal_scrollbar_mode_ = always_invisible;
 				horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
 		}
 	}
@@ -154,7 +140,7 @@ void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 void tscrollbar_container::NEW_request_reduce_height(
 		const unsigned maximum_height)
 {
-	if(initial_vertical_scrollbar_mode_ == always_invisible) {
+	if(vertical_scrollbar_mode_ == always_invisible) {
 		return;
 	}
 
@@ -170,7 +156,6 @@ void tscrollbar_container::NEW_request_reduce_height(
 
 	// Always set the bar visible, is a nop is already visible.
 	vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
-	vertical_scrollbar_mode_ = always_visible;
 
 	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
 	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
@@ -208,13 +193,12 @@ void tscrollbar_container::NEW_request_reduce_width(
 		return;
 	}
 
-	if(initial_horizontal_scrollbar_mode_ == always_invisible) {
+	if(horizontal_scrollbar_mode_ == always_invisible) {
 		return;
 	}
 
 	// Always set the bar visible, is a nop when it's already visible.
 	horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
-	horizontal_scrollbar_mode_ = always_visible;
 	size = get_best_size();
 
 	const tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
@@ -236,13 +220,13 @@ tpoint tscrollbar_container::calculate_best_size() const
 
 	/***** get vertical scrollbar size *****/
 	const tpoint vertical_scrollbar =
-			vertical_scrollbar_mode_ == always_invisible
+			vertical_scrollbar_grid_->get_visible() == twidget::INVISIBLE
 			? tpoint(0, 0)
 			: vertical_scrollbar_grid_->get_best_size();
 
 	/***** get horizontal scrollbar size *****/
 	const tpoint horizontal_scrollbar =
-			horizontal_scrollbar_mode_ == always_invisible
+			horizontal_scrollbar_grid_->get_visible() == twidget::INVISIBLE
 			? tpoint(0, 0)
 			: horizontal_scrollbar_grid_->get_best_size();
 
@@ -272,29 +256,23 @@ static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
 {
 
 	assert(scrollbar_grid && scrollbar);
-	if(scrollbar_mode != tscrollbar_container::always_invisible) {
-
-		scrollbar->set_item_count(items);
-		scrollbar->set_visible_items(visible_items);
-
-		const bool scrollbar_needed =
-			items > visible_items;
-
-		if(!scrollbar_needed) {
-
-			// Hide the scrollbar
-			if(scrollbar_mode == tscrollbar_container::auto_visible) {
-				if(true) { // extra setting
-					scrollbar_mode = tscrollbar_container::always_invisible;
-				} else {
-					scrollbar_grid->set_visible(twidget::HIDDEN);
-				}
-			}
-		}
-	}
 
 	if(scrollbar_mode == tscrollbar_container::always_invisible) {
 		scrollbar_grid->set_visible(twidget::INVISIBLE);
+		return;
+	}
+
+
+	scrollbar->set_item_count(items);
+	scrollbar->set_visible_items(visible_items);
+
+	if(scrollbar_mode == tscrollbar_container::auto_visible) {
+
+		const bool scrollbar_needed = items > visible_items;
+
+		scrollbar_grid->set_visible(scrollbar_needed
+				? twidget::VISIBLE
+				: twidget::HIDDEN);
 	}
 }
 
@@ -566,7 +544,6 @@ void tscrollbar_container::
 {
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
-		initial_vertical_scrollbar_mode_ = scrollbar_mode;
 		show_vertical_scrollbar();
 	}
 }
@@ -576,7 +553,6 @@ void tscrollbar_container::
 {
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
-		initial_horizontal_scrollbar_mode_ = scrollbar_mode;
 		show_horizontal_scrollbar();
 	}
 }
@@ -606,10 +582,17 @@ void tscrollbar_container::show_vertical_scrollbar()
 		return;
 	}
 
-	if(vertical_scrollbar_mode_ == always_invisible) {
-		vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
-	} else {
-		vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	switch(vertical_scrollbar_mode_) {
+		case always_visible :
+			vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
+			break;
+
+		case auto_visible :
+			vertical_scrollbar_grid_->set_visible(twidget::HIDDEN);
+			break;
+
+		default :
+			vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
 	}
 }
 
@@ -619,10 +602,17 @@ void tscrollbar_container::show_horizontal_scrollbar()
 		return;
 	}
 
-	if(horizontal_scrollbar_mode_ == always_invisible) {
-		horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
-	} else {
-		horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	switch(horizontal_scrollbar_mode_) {
+		case always_visible :
+			horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
+			break;
+
+		case auto_visible :
+			horizontal_scrollbar_grid_->set_visible(twidget::HIDDEN);
+			break;
+
+		default :
+			horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
 	}
 }
 
