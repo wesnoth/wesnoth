@@ -167,6 +167,27 @@ void get_screen_size_variables(game_logic::map_formula_callable& variable);
  */
 game_logic::map_formula_callable get_screen_size_variables();
 
+/**
+ * Helper struct to get the same constness for T and U.
+ *
+ * @param T                       A type to determine the constness.
+ * @param U                       Non const type to set the constness off.
+ */
+template<class T, class U>
+struct tconst_duplicator
+{
+	/** The type to use, if T not const U is also not const. */
+	typedef U type;
+};
+
+/** Specialialized version of tconst_duplicator when T is a const type. */
+template<class T, class U>
+struct tconst_duplicator<const T, U>
+{
+	/** The type to use, const U. */
+	typedef const U type;
+};
+
 } // namespace gui2
 
 #endif
