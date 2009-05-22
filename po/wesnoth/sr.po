@@ -1,15 +1,15 @@
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 #
 # Branko Kokanovic, 2006.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-11 23:58+0200\n"
-"PO-Revision-Date: 2009-05-03 13:59+0200\n"
+"PO-Revision-Date: 2009-05-21 00:40+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:53
 msgid "Compressed Saves"
-msgstr "компресовани снимци"
+msgstr "компресовани уписи"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:60
@@ -753,8 +753,7 @@ msgstr ""
 "\n"
 "Када добијете сценарио, мапа ће се засивети и дугме „Готово“ при дну "
 "променити у „Крај“. Пре него што кликнете на дугме да наставите, можете "
-"променити опције чувања, или (у вишеиграчком окружењу) попричати са "
-"саиграчима."
+"променити опције уписивања, или (у вишеигрању) попричати са саиграчима."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -858,7 +857,7 @@ msgid ""
 "units you control, this orb is:"
 msgstr ""
 "Поврх енерготраке приказане поред сваке ваше јединице, стоји куглица. За "
-"јединице под вашом контролом, куглица је:"
+"јединице под вашом управом, куглица је:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
@@ -878,7 +877,7 @@ msgstr "црвена, ако је истрошила сву покретљиво
 #. [topic]: id=orbs
 #: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr "Куглица је плава ако је јединица савезник, којег не контролишете."
+msgstr "Куглица је плава ако је јединица савезник којим не управљате."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:186
@@ -2659,7 +2658,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"улази у исправљачки режим (не ради у вишеиграчком режиму); погледајте "
+"улази у исправљачки режим (не ради у вишеигрању); погледајте "
 "<ref>dst='debug_commands' text='Исправљачке наредбе'</ref>.\n"
 "Исправљање се искључује напуштањем игре или наредбом :nodebug.\n"
 "\n"
@@ -2677,10 +2676,9 @@ msgid ""
 msgstr ""
 "\n"
 "задаје или пребацује страну играча између човека и ВИ. Играч/клијент који "
-"контролише ту страну мора да изда ову наредбу. Ако се други параметар не "
-"зада, обрће између човека и ВИ; ако је ‘on’, контролор постаје ВИ, а уз "
-"‘off’ човек. Спада на тренутно активну страну ако се не зада ни један "
-"параметар.\n"
+"управља том страном мора да изда ову наредбу. Ако се други параметар не "
+"зада, обрће између човека и ВИ; ако је ‘on’, управљач постаје ВИ, а уз ‘off’ "
+"човек. Спада на тренутно активну страну ако се не зада ни један параметар.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2746,7 +2744,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"чува игру (без упита).\n"
+"уписује игру (без питања).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2756,7 +2754,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"напушта сценарио уз чување игре (без упита)."
+"напушта сценарио уз уписивање игре (без питања)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
@@ -2787,10 +2785,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"мења контролора стране (задате бројем) на дато корисничко име (надимак "
-"играча или посматрача). Који играч припада којој страни можете проверити у "
-"дијалогу „Поставке сценарија“; притисните дугме за више у табели стања "
-"(подразумевно алт+S) да дођете дотле.\n"
+"мења управљача стране (задате бројем) на дато корисничко име (надимак играча "
+"или посматрача). Који играч припада којој страни можете проверити у дијалогу "
+"„Поставке сценарија“; притисните дугме за више у табели стања (подразумевно "
+"алт+S) да дођете дотле.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -5994,47 +5992,57 @@ msgstr "$name|ска шума,$name|ска гора"
 msgid "$name Lake"
 msgstr "$name-језеро"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|бери,$name|ем,$name|тон"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|harbor,$name|port"
-msgstr "$name|харбор,$name|порт"
+msgstr "Лука $name|,$name|ски стај"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr "$name|ем,$name|форд,$name|крос,$river|форд,$river|крос"
+msgstr "$name|ем,$name|форд,$name|ски прелаз,$river|форд,$river|ски прелаз"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|бриџ,$river|бриџ,$river|бриџ,$name|ем,$name|бриџ"
+msgstr ""
+"$river|ски мост,$river|ски мост,$river|ски мост,$name|ем,$name|ски мост"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|ем,$name|тон,$name|филд"
+msgstr "$name|ем,$name|тон,$name|ско поље"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|ем,$name|тон,$name|вуд"
+msgstr "$name|ем,$name|тон,$name|вуд,$name|ска шума"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ем,$name|бери,$name|тон,$name|хил,$name|крест"
+msgstr "$name|ем,$name|бери,$name|тон,$name|ско брдо,$name|ски венац"
 
+# >> village names
 #. [language]
 #: data/hardwired/english.cfg:31
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|ем,$name|бери,$name|тон,$name|монт,$name|монт,$name|клиф,$name|клиф"
+"$name|ем,$name|бери,$name|тон,$name|,Мон $name|,$name|ска литица,$name|ска "
+"литица"
 
 #. [language]
 #: data/hardwired/english.cfg:34
@@ -6935,7 +6943,7 @@ msgstr "У замку нема више слободних поља за нов�
 
 #: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr "Изабрано неисправно оружје, можда кривицом питонске ВИ."
+msgstr "Изабрано неваљано оружје, можда кривицом питонске ВИ."
 
 #: src/actions.cpp:1052 src/actions.cpp:1327
 msgid "female^poisoned"
@@ -7411,16 +7419,16 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Имена позиција не могу садржати двотачке, косе и обрнуте косе црте. Задајте "
+"Имена уписа не могу садржати двотачке, косе и обрнуте косе црте. Задајте "
 "другачије име."
 
 #: src/dialogs.cpp:293
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr "Имена позиција не треба завршавати са ‘.gz’. Задајте другачије име."
+msgstr "Имена уписа не треба завршавати са ‘.gz’. Задајте другачије име."
 
 #: src/dialogs.cpp:301
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Позиција већ постоји. Желите ли да је пребришете?"
+msgstr "Упис већ постоји. Желите ли да га пребришете?"
 
 #: src/dialogs.cpp:302 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
@@ -7444,7 +7452,7 @@ msgstr "%a %b %d %H.%M %Y"
 
 #: src/dialogs.cpp:529
 msgid "#(Invalid)"
-msgstr "#(неисправно)"
+msgstr "#(неваљано)"
 
 #: src/dialogs.cpp:543
 msgid "Campaign: $campaign_name"
@@ -7452,7 +7460,7 @@ msgstr "Поход: $campaign_name"
 
 #: src/dialogs.cpp:550
 msgid "Multiplayer"
-msgstr "Више играча"
+msgstr "Вишеиграње"
 
 #: src/dialogs.cpp:552
 msgid "Tutorial"
@@ -7564,14 +7572,14 @@ msgstr ""
 
 #: src/game.cpp:951 src/multiplayer_connect.cpp:1559
 msgid "This save is from a version too old to be loaded."
-msgstr "Ова позиција је сачувана верзијом игре престаром да би се учитала."
+msgstr "Овај упис је сачуван верзијом игре престаром да би се учитао."
 
 #: src/game.cpp:957 src/multiplayer_connect.cpp:1566
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Ова позиција је сачувана различитом верзијом игре. Желите ли да покушате "
+"Овај упис је сачуван различитом верзијом игре. Желите ли да покушате "
 "учитавање?"
 
 #: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:492
@@ -7671,7 +7679,7 @@ msgstr "Учитавам насловни екран."
 
 #: src/game_config.cpp:287
 msgid "Invalid color range: "
-msgstr "Неисправан опсег боја: "
+msgstr "Неваљан опсег боја: "
 
 #: src/game_events.cpp:134
 msgid "Error: "
@@ -7750,7 +7758,7 @@ msgstr "отрована: "
 
 #: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Ова јединица је претворена у камен. Не може се кретати нити нападати."
+msgstr "Ова јединица је окамењена. Не може се кретати нити нападати."
 
 #: src/generate_report.cpp:113
 msgid "stone: "
@@ -8181,7 +8189,7 @@ msgstr "Мапа сачувана."
 
 #: src/menu_events.cpp:654
 msgid "Could not save the map: $msg"
-msgstr "Не могу да снимим мапу: $msg"
+msgstr "Не могу да сачувам мапу: $msg"
 
 #: src/menu_events.cpp:755
 msgid "Could not auto save the game. Please save the game manually."
@@ -8529,7 +8537,7 @@ msgstr "Додат на списак игнорисаних: "
 
 #: src/menu_events.cpp:2559 src/menu_events.cpp:2575
 msgid "Invalid username: "
-msgstr "Неисправно корисничко име: "
+msgstr "Неваљано корисничко име: "
 
 #: src/menu_events.cpp:2573
 msgid "Added to friends list: "
@@ -8550,7 +8558,7 @@ msgstr "Нисам могао да нађем етикету или једини
 # well-spelled: дроидовати
 #: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
-msgstr "Не може се дроидовати неисправна страна: ‘$side|’."
+msgstr "Не може се дроидовати неваљана страна: ‘$side|’."
 
 # well-spelled: дроидовати
 #: src/menu_events.cpp:2807
@@ -8559,11 +8567,11 @@ msgstr "Не може се дроидовати умрежена страна: �
 
 #: src/menu_events.cpp:2844
 msgid "Can't change control of invalid side: '$side'."
-msgstr "Не може се променити контрола над неисправном страном: ‘$side|’."
+msgstr "Не може се променити управљање над неваљаном страном: ‘$side|’."
 
 #: src/menu_events.cpp:2850
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "Не може се променити контрола над страном ван граница: ‘$side|’."
+msgstr "Не може се променити управљање над страном ван граница: ‘$side|’."
 
 #: src/menu_events.cpp:2914
 msgid "Choose Scenario (Debug!)"
@@ -8649,7 +8657,7 @@ msgstr "Надимак „$nick“ није регистрован на овом
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr "Овај сервер не дозвољава нерегистроване надимке."
+msgstr " Овај сервер не дозвољава нерегистроване надимке."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -8758,7 +8766,7 @@ msgstr "У бој!"
 
 #: src/multiplayer_connect.cpp:1033
 msgid "The scenario is invalid because it has no sides."
-msgstr "Сценарио није исправан јер нема страна."
+msgstr "Сценарио није није ваљан јер нема страна."
 
 #: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
@@ -8778,7 +8786,7 @@ msgstr "празно"
 
 #: src/multiplayer_connect.cpp:1548
 msgid "This is not a multiplayer save"
-msgstr "Ово није позиција вишеиграчке сесије"
+msgstr "Ово није вишеиграчки упис"
 
 #: src/multiplayer_connect.cpp:1676
 msgid "Cannot find era $era"
@@ -8931,7 +8939,7 @@ msgstr "$login-ова игра"
 
 #: src/multiplayer_create.cpp:282
 msgid "Invalid era selected"
-msgstr "Изабрана је неисправна епоха"
+msgstr "Изабрана је неваљана епоха"
 
 #: src/multiplayer_create.cpp:321
 msgid "You must enter a name."
@@ -9075,7 +9083,7 @@ msgstr "Напусти"
 
 #: src/multiplayer_lobby.cpp:694
 msgid "Skip quickly to the active turn when observing"
-msgstr "Брзо скочи на активни потез при посматрању"
+msgstr "Брзо скочи на активни потез при посматрању."
 
 #: src/multiplayer_lobby.cpp:804
 msgid "Joining this game requires a password."
@@ -9083,7 +9091,7 @@ msgstr "Придруживање овој игри само уз лозинку.
 
 #: src/multiplayer_ui.cpp:190
 msgid "Invalid Color"
-msgstr "Неисправна боја"
+msgstr "Неваљана боја"
 
 #: src/multiplayer_ui.cpp:423
 msgid "Selected user: "
@@ -9111,7 +9119,7 @@ msgstr "Нема података о епохама."
 
 #: src/multiplayer_wait.cpp:269
 msgid "No multiplayer sides found"
-msgstr "Нема страна за више играча"
+msgstr "Нема вишеиграчких страна"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Choose your faction:"
@@ -9123,7 +9131,7 @@ msgstr "Почетни положај: "
 
 #: src/network.cpp:103
 msgid "invalid network handle"
-msgstr "неисправна мрежна ручка"
+msgstr "неваљана мрежна ручка"
 
 #: src/network.cpp:136
 msgid "Client disconnected"
@@ -9335,8 +9343,8 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
-"игру?"
+"Мрежна веза је прекинута и игра се не може наставити.\n"
+"Желите ли да сачувате игру?"
 
 #: src/playsingle_controller.cpp:675
 msgid "It is now $name|'s turn"
@@ -9380,7 +9388,7 @@ msgstr "Недовршена ознака [element]"
 
 #: src/serialization/parser.cpp:185 src/serialization/parser.cpp:223
 msgid "Invalid tag name"
-msgstr "Неисправно име ознаке"
+msgstr "Неваљано име ознаке"
 
 #: src/serialization/parser.cpp:188
 msgid "Unterminated [+element] tag"
@@ -9388,7 +9396,7 @@ msgstr "Недовршена ознака [+element]"
 
 #: src/serialization/parser.cpp:204
 msgid "Invalid closing tag name"
-msgstr "Неисправно име затварајуће ознаке"
+msgstr "Неваљано име затварајуће ознаке"
 
 #: src/serialization/parser.cpp:207
 msgid "Unterminated closing tag"
@@ -9400,7 +9408,7 @@ msgstr "Неочекивана затварајућа ознака"
 
 #: src/serialization/parser.cpp:217
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "Нађена неисправна затварајућа ознака $tag2 за $tag (отворено код $pos)"
+msgstr "Нађена неваљана затварајућа ознака $tag2 за $tag (отворено код $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
