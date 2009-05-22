@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/scrollbar_container.hpp"
+#include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
@@ -404,31 +404,15 @@ void tscrollbar_container::focus(tevent_handler&)
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
-	assert(content_ && content_grid_);
-
-	twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-	if(result != content_) {
-		return result;
-	} else if(result == content_) {
-		return content_grid_->find_widget(coordinate, must_be_active);
-	}
-	return NULL;
+	return tscrollbar_container_implementation
+			::find_widget<twidget>(*this, coordinate, must_be_active);
 }
 
 const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	assert(content_ && content_grid_);
-
-	const twidget* result =
-		tcontainer_::find_widget(coordinate, must_be_active);
-
-	if(result != content_) {
-		return result;
-	} else if(result == content_) {
-		return content_grid_->find_widget(coordinate, must_be_active);
-	}
-	return NULL;
+	return tscrollbar_container_implementation
+			::find_widget<const twidget>(*this, coordinate, must_be_active);
 }
 
 bool tscrollbar_container::does_block_easy_close() const
