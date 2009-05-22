@@ -172,8 +172,8 @@ void show_message(CVideo& video, const std::string& title,
 
 int show_message(CVideo& video, const std::string& title,
 	const std::string& message, const tmessage::tbutton_style button_style,
-	const tbutton::tmarkup_mode /*message_markup_mode*/,
-	const tbutton::tmarkup_mode /*message_title_mode*/)
+	const tcontrol::tmarkup_mode /*message_markup_mode*/,
+	const tcontrol::tmarkup_mode /*message_title_mode*/)
 {
 	/** @todo implement the markup mode. */
 	tmessage dlg(title, message, button_style == tmessage::auto_close);
@@ -208,7 +208,7 @@ int show_message(CVideo& video, const std::string& title,
 }
 
 void show_error_message(CVideo& video, const std::string& message,
-		const tbutton::tmarkup_mode message_markup_mode)
+		const tcontrol::tmarkup_mode message_markup_mode)
 {
 	LOG_STREAM(err, lg::general) << message << '\n';
 	show_message(video, _("Error"), message,
