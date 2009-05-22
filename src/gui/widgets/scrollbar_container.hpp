@@ -136,10 +136,12 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	/** @note shouldn't be called after being shown in a dialog. */
 	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
 	tscrollbar_mode get_vertical_scrollbar_mode() const
 		{ return vertical_scrollbar_mode_; }
 
+	/** @note shouldn't be called after being shown in a dialog. */
 	void set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
 	tscrollbar_mode get_horizontal_scrollbar_mode() const
 		{ return horizontal_scrollbar_mode_; }
@@ -376,12 +378,6 @@ private:
 	/** Inherited from tcontainer_. */
 	void child_populate_dirty_list(twindow& caller,
 		const std::vector<twidget*>& call_stack);
-
-	/** Sets the visible state of the vertical scrollbar. */
-	void show_vertical_scrollbar();
-
-	/** Sets the visible state of the horizontal scrollbar. */
-	void show_horizontal_scrollbar();
 
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();

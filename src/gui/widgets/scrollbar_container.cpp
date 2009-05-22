@@ -484,8 +484,6 @@ void tscrollbar_container::finalize_setup()
 	vertical_scrollbar_->
 		set_callback_positioner_move(callback_vertical_scrollbar);
 
-	show_vertical_scrollbar();
-
 	/***** Setup horizontal scrollbar *****/
 	horizontal_scrollbar_grid_ =
 		find_widget<tgrid>("_horizontal_scrollbar_grid", false, true);
@@ -495,8 +493,6 @@ void tscrollbar_container::finalize_setup()
 
 	horizontal_scrollbar_->
 		set_callback_positioner_move(callback_horizontal_scrollbar);
-
-	show_horizontal_scrollbar();
 
 	/***** Setup the scrollbar buttons *****/
 	typedef std::pair<std::string, tscrollbar_::tscroll> hack;
@@ -544,7 +540,6 @@ void tscrollbar_container::
 {
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
-		show_vertical_scrollbar();
 	}
 }
 
@@ -553,7 +548,6 @@ void tscrollbar_container::
 {
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
-		show_horizontal_scrollbar();
 	}
 }
 
@@ -574,46 +568,6 @@ void tscrollbar_container::child_populate_dirty_list(twindow& caller,
 	assert(content_grid_);
 	std::vector<twidget*> child_call_stack(call_stack);
 	content_grid_->populate_dirty_list(caller, child_call_stack);
-}
-
-void tscrollbar_container::show_vertical_scrollbar()
-{
-	if(!vertical_scrollbar_grid_) {
-		return;
-	}
-
-	switch(vertical_scrollbar_mode_) {
-		case always_visible :
-			vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
-			break;
-
-		case auto_visible :
-			vertical_scrollbar_grid_->set_visible(twidget::HIDDEN);
-			break;
-
-		default :
-			vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
-	}
-}
-
-void tscrollbar_container::show_horizontal_scrollbar()
-{
-	if(!horizontal_scrollbar_grid_) {
-		return;
-	}
-
-	switch(horizontal_scrollbar_mode_) {
-		case always_visible :
-			horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
-			break;
-
-		case auto_visible :
-			horizontal_scrollbar_grid_->set_visible(twidget::HIDDEN);
-			break;
-
-		default :
-			horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
-	}
 }
 
 void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
