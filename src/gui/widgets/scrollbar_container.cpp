@@ -158,6 +158,13 @@ void tscrollbar_container::NEW_request_reduce_height(
 	vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
 
 	const tpoint scrollbar_size = vertical_scrollbar_grid_->get_best_size();
+
+	// If showing the scrollbar increased the height, hide and abort.
+	if(resized && scrollbar_size.y > size.y) {
+		vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+		return;
+	}
+
 	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
 		size.y = maximum_height;
 	} else {
@@ -202,6 +209,15 @@ void tscrollbar_container::NEW_request_reduce_width(
 	size = get_best_size();
 
 	const tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+
+	// If showing the scrollbar increased the width, hide and abort.
+	if(horizontal_scrollbar_mode_ == auto_visible_first_run
+			&& scrollbar_size.x > size.x) {
+
+		horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+		return;
+	}
+
 	if(maximum_width > static_cast<unsigned>(scrollbar_size.x)) {
 		size.x = maximum_width;
 	} else {
