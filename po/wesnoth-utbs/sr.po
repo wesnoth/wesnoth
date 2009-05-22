@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-17 17:42+0200\n"
-"PO-Revision-Date: 2009-05-03 13:59+0200\n"
+"PO-Revision-Date: 2009-05-21 00:29+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,6 @@ msgstr "пустињски тумарач"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -81,12 +80,11 @@ msgstr ""
 "рушевина палих царстава. Поведи свој народ из пустиње, на епско путовање у "
 "потрази за новим домом.\n"
 "\n"
-"(Зналачки ниво, 11 сценарија, неки се преправљају)\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 msgid "(Expert level, 11 scenarios, some under reconstruction)\n"
-msgstr ""
+msgstr "(Зналачки ниво, 11 сценарија, неки се преправљају.)\n"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
@@ -8108,8 +8106,8 @@ msgid ""
 " Your loyalty is a credit to your people. I am glad indeed to have you "
 "fighting by my side."
 msgstr ""
-"Твоја оданост служи на част твоме народу. Збиља ми је драго да се нађеш крај "
-"мене у борбама које предстоје."
+" Твоја оданост служи на част твоме народу. Збиља ми је драго да се нађеш "
+"крај мене у борбама које предстоје."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3855
@@ -15250,7 +15248,6 @@ msgstr "ошамућивање"
 #. [chance_to_hit]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:305
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:308
-#, fuzzy
 msgid ""
 "Stun:\n"
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
@@ -15258,18 +15255,17 @@ msgid ""
 msgstr ""
 "Ошамућивање:\n"
 "Овај удар неизмерно притиска непријатеља, кварећи му НАПОЈ кад год дође до "
-"поготка. Као резултат напора, и сам нападач се отвара за напад и успорава. "
-"Не делује у одбрани."
+"поготка. Не делује у одбрани."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:322
 msgid "skilled in surviving the desert"
-msgstr ""
+msgstr "вешт у преживљавању у пустињи"
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:330
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:331
 msgid "camouflage"
-msgstr ""
+msgstr "прикривање"
 
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:335
@@ -15284,6 +15280,13 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Прикривање:\n"
+"Ова јединица уме да се сакрива у пешчаним динама, пустињским планинама и "
+"кратерима, тако да је непријатељ не може открити.\n"
+"\n"
+"Непријатељске јединице не могу уочити ову док је у пешчаним динама, "
+"пустињским планинама, оазама и кратерима, осим ако ступе тачно до ње. Она "
+"непријатељска јединица која је открије одмах губи све преостало кретање."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:355
 msgid "Kaleh of the Quenoth Elves"
@@ -16634,49 +16637,3 @@ msgstr "дуга тама (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "дуга тама (4)"
-
-#~ msgid "Dwarvish Explorer"
-#~ msgstr "патуљ-истраживач"
-
-#~ msgid ""
-#~ "Dwarven Explorers often travel alone through unknown lands, slaying "
-#~ "enemies and scouting out new deposits of ore and other precious minerals. "
-#~ "They are strong enough to wear thicker armor, giving them added "
-#~ "protection against physical attacks. They are powerful fighters, second "
-#~ "only to the Dwarven lords, and their amazing maneuverability makes them "
-#~ "dangerous indeed."
-#~ msgstr ""
-#~ "Патуљачки истраживачи често сами путују непознатим земљама, "
-#~ "разрачунавајући се с непријатељима и извиђајући нова налазишта руда и "
-#~ "драгоцених минерала. Довољно су снажи да понесу дебљи оклоп, што им пружа "
-#~ "већу заштиту од физичких напада. Моћни су борци, слабији једино према "
-#~ "патуљ-господарима, што их у склопу са запањујућом покретљивошћу чини "
-#~ "уистину опасним."
-
-#~ msgid "battle axe"
-#~ msgstr "бојна секира"
-
-#~ msgid "Dwarvish Pathfinder"
-#~ msgstr "патуљ-ловотрагач"
-
-#~ msgid ""
-#~ "Dwarvish Pathfinders are faster, stronger and even deadlier with their "
-#~ "axes than normal dwarvish scouts. They often race ahead of the main "
-#~ "force, scouting out unfamiliar terrain and securing villages and "
-#~ "chokepoints."
-#~ msgstr ""
-#~ "Ловотрагачи су бржи, јачи и још смртоноснији са својим секирама од "
-#~ "обичних патуљачких извиђача. Често претходе главним снагама, извиђајући "
-#~ "непознати терен и обезбеђујући села и друге кључне тачке."
-
-#~ msgid "Dwarvish Scout"
-#~ msgstr "патуљ-извиђач"
-
-#~ msgid ""
-#~ "Moving faster than other dwarves Dwarvish Scouts love to explore both "
-#~ "above and below ground. They are adept at both fighting hand to hand with "
-#~ "their axes and throwing them."
-#~ msgstr ""
-#~ "Патуљачки извиђачи су покретнији од други патуљака, и уживају у "
-#~ "истраживању како испод, тако и изнад земље. Пристали су и борби прса у "
-#~ "прса и бацању секире за даљинске нападе."

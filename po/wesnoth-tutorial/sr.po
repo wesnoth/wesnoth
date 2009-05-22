@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 12:51+0200\n"
-"PO-Revision-Date: 2009-04-10 16:17+0200\n"
+"PO-Revision-Date: 2009-05-20 23:35+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -84,9 +84,8 @@ msgstr "Лиза́ра"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Добро нам дође у Веснот!"
+msgstr "<big>Добро нам дође у Веснот!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
@@ -120,13 +119,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:641
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:674
-#, fuzzy
 msgid ""
 "\n"
 "<big>Left click or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Кликни левим или притисни размак да наставиш..."
+"<big>Кликни левим или притисни размак да наставиш...</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:199
@@ -157,22 +155,20 @@ msgstr "Кликни левим на Лиза́ру"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:225
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Одабра Конрада.\n"
+"<big>Одабра Конрада.</big>\n"
 "Конрад може достигнути истакнута поља."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:233
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Одабра Лиза́ру.\n"
+"<big>Одабра Лиза́ру.</big>\n"
 "Лиза́ра може достигнути истакнута поља."
 
 #. [event]
@@ -197,13 +193,12 @@ msgstr "Кликни левим на поље где пише ОВДЕ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:283
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Чек'!\n"
+"<big>Чек'!</big>\n"
 "Оде на погрешно место! Чим нестане ова порука, можеш да притиснеш ‘u’ да "
 "опозовеш потез, и потом урадиш како ти рекох."
 
@@ -755,12 +750,11 @@ msgstr ""
 "на „Крај“ да продужиш на следећи сценарио."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Запамти:\n"
+"<big>Запамти:</big>\n"
 "Притиском ‘u’ можеш опозвати већину ствари — корисно за исправљање грешака."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
@@ -1293,12 +1287,12 @@ msgstr "Оркови немају одступни напад, зато кори
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:910
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Нападни орка стрелцем (помери миш преко јединице да видиш њен опис десно)"
+"Нападни орка стрелцем\n"
+"(помери миш преко јединице да видиш њен опис десно)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
@@ -1783,16 +1777,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "млатило"
-
-#, fuzzy
-#~ msgid "<big>Galdrad"
-#~ msgstr "Галдрад"
-
-#~ msgid ""
-#~ "Hello translators! Tutorial is meant to be a little funny at the start, "
-#~ "welcoming new players. Please keep friendly fun feeling! Any questions "
-#~ "email rusty@rustcorp.com.au!"
-#~ msgstr "Па, кад тако велиш..."
-
-#~ msgid "*Galdrad"
-#~ msgstr "*Галдрад"

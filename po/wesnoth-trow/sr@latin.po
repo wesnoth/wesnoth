@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-15 11:44+0200\n"
-"PO-Revision-Date: 2009-04-11 13:34+0200\n"
+"PO-Revision-Date: 2009-05-20 23:35+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -65,11 +65,10 @@ msgstr "gospodar"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
 msgid "(Expert level, 25 scenarios.)"
-msgstr ""
+msgstr "(Znalački nivo, 25 scenarija.)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -80,7 +79,6 @@ msgstr ""
 "uspostaviti sâmo kraljevstvo Vesnota. Okršaj sa gospodarom-koscem Dževijanom "
 "te očekuje...\n"
 "\n"
-"(Znalački nivo, 25 scenarija.)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
@@ -252,14 +250,14 @@ msgstr "Oče, odrastao sam već. Mogu li ja povesti našu vojsku u boj?"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:105
-#, fuzzy
 msgid ""
 "You're showing initiative, son! I'm proud of you! Yes, you may lead our "
 "forces to battle, it is time - but I'll stay near to keep an eye on you. "
 "There is more to this raid than meets the eye, I think."
 msgstr ""
 "Iskazuješ preduzimljivost, sine, da se dičim tobom! Možeš povesti naše "
-"snage, ali ću i ja biti u blizini da pazim kako stvari teku."
+"snage, vreme je — ali ću i ja biti u blizini da pazim kako stvari teku. Čini "
+"mi se, više je u ovom upadu nego što deluje na prvi pogled."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:111
@@ -267,6 +265,8 @@ msgid ""
 "They're Wesfolk, reavers and thieves by nature; rare is the summer they do "
 "not raid us. What mystery is in it now?"
 msgstr ""
+"Vesnoćani su to, razbojnici i lopovi po prirodi; retko je leto da nas ne "
+"pohode. Kakva bi to sada zagonetka bila?"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:115
@@ -275,11 +275,14 @@ msgid ""
 "that could utterly destroy them, why would they compound their troubles by "
 "raising a quarrel with another king?"
 msgstr ""
+"Ovo nisu obična vremena. Pošto je princ Jugozaliva podigao vojsku koja bi ih "
+"mogla potpuno istrebiti, zašto bi dodavali na svoju nevolju zapodevajući "
+"kavgu sa još jednim kraljem?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:120
 msgid "Perhaps these are refugees fleeing his advance?"
-msgstr ""
+msgstr "Možda su ovo izbeglice pred njegovim napredovanjem?"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:124
@@ -289,12 +292,16 @@ msgid ""
 "Even supposing they could win through us, why court the wrath of the greater "
 "kingdoms?"
 msgstr ""
+"Malo verovatno. Princu mogu izmaknuti u divljini; južno i istočno odavde "
+"više je naseljeno našeg naroda, što im je veća opasnost. Pretpostavimo li "
+"čak i da se mogu probiti kroz nas, čemu izazivanje besa velikih kraljevstava?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:129
 msgid ""
 "We must inquire of the survivors after we defeat them. Onward to victory!"
 msgstr ""
+"Moramo o tome ispitati zarobljenike pošto ih porazimo. Napred u pobedu!"
 
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:133
@@ -332,7 +339,7 @@ msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice... They opened a gate... and..."
 msgstr ""
-"Uznemiravam vaše zemlje! Ha! Vaš budalasti Princ Jugozaliva je napao naše "
+"Uznemiravam vaše zemlje! Ha! Vaš budalasti princ Jugozaliva napao je naše "
 "zemlje. Gospodari-kosci nisu imali izbora. Otvorili su dveri... i..."
 
 #. [message]: speaker=King Eldaric IV
@@ -1113,6 +1120,7 @@ msgstr "Pa, čini mi se da čujem nešto... Na oružje!"
 msgid "Careful, you don't know what's lurking in there!"
 msgstr "Oprezno, ne znamo šta nas vreba odande!"
 
+# |, no-check-spell
 #. [unit]: type=White Mage, id=Minister Edren
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:245
 msgid "Minister Edren"
@@ -2196,19 +2204,17 @@ msgstr "Dođavola, neka bude po tvome!"
 
 #. [unit]: id=Lady Jessene, type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:254
-#, fuzzy
 msgid "Lady Jessene"
-msgstr "Gospa Džesika"
+msgstr "Gospa Džesin"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:285
-#, fuzzy
 msgid ""
 "I am the Lady Jessene, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
-"Ja sam gospa Džesika, plemkinja, princeza Vesnoćana! Izdadoše me gospodari-"
+"Ja sam gospa Džesin, plemkinja, princeza Vesnoćana! Izdadoše me gospodari-"
 "kosci tajnim dogovorom sa orkovima, do čega dođe nemalom zaslugom vašeg "
 "budalastog princa Jugozaliva, koji ih ubedi da je njihovim besmrtnim ne-"
 "životima došao kraj!"
@@ -2341,9 +2347,8 @@ msgstr "Junački: Poraziš li neprijateljske vođe"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:293
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:224
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:120
-#, fuzzy
 msgid "Death of Lady Jessene"
-msgstr "Nastrada li gospa Džesika"
+msgstr "Nastrada li gospa Džesin"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
@@ -2790,7 +2795,6 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:265
-#, fuzzy
 msgid ""
 "Okay. Let's un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
@@ -2849,7 +2853,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:340
-#, fuzzy
 msgid ""
 "INSCRIPTION: This monolith was erected by me, &lt;CHIPPED AWAY&gt;, first "
 "Mage of the good people of the Green Isle. By its power the Lich-Lord is "
@@ -2867,13 +2870,12 @@ msgstr "Mislim da ću izgovoriti tu magičnu rečenicu."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:399
-#, fuzzy
 msgid ""
 "The lich is free! Let's bash him and grab that book. That sounds like a job "
 "for you, Lady Jessene!"
 msgstr ""
 "Kosac je slobodan! Izudarajmo ga i zgrabimo tu knjigu. Zvuči kao posao za "
-"tebe, gospo Džesika!"
+"tebe, gospo Džesin!"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:403
@@ -3428,13 +3430,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:203
-#, fuzzy
 msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessene, about that book?"
 msgstr ""
 "Ako nema drugog načina. Neka bardovi zauvek opevaju valjanost kraljeva "
-"jugozalivskih! Džesika, šta je s tom knjigom?"
+"jugozalivskih! Džesin, šta je s tom knjigom?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:207
@@ -3496,12 +3497,11 @@ msgstr "Nastrada li kralj Adroran IX"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:292
-#, fuzzy
 msgid ""
 "Several months pass. Jessene has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
-"Prođe nekoliko meseci. Uz Džesikin prevod Knjige vatre i tmine gospodara-"
+"Prođe nekoliko meseci. Uz Džesinin prevod Knjige vatre i tmine gospodara-"
 "kosca Karora, princ Haldrik se upire da spozna tajne Vatrenog rubina."
 
 #. [message]: speaker=Prince Haldric
@@ -3725,7 +3725,6 @@ msgstr "Ka luci Bistromorskoj"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:589
-#, fuzzy
 msgid "To the Midlands &amp; Oldwood"
 msgstr "Ka Sredopolju i Staropanjskoj"
 
@@ -4271,7 +4270,7 @@ msgid ""
 "far from here."
 msgstr ""
 "Zabrinjavajuća dešavanja. Čoveče, sama ti se sreća osmehnula da budem u "
-"blizini i poštedim te. Jer, na ovaj se dan održava Savet gospodara, u šumi "
+"blizini i poštedim te. Jer, na ovaj se dan održava Veće gospodara, u šumi "
 "nedaleko odavde."
 
 #. [message]: speaker=Prince Haldric
@@ -4341,14 +4340,13 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:316
-#, fuzzy
 msgid ""
 "May the currents carry you swiftly, my friend. (whispered) Jessene, send "
 "word that a third of the fleet is to return to the Green Isle, to look for "
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Neka te morske struje hitro ponesu, prijatelju. [šapuće] Džesika, naredi da "
+"Neka te morske struje hitro ponesu, prijatelju. [šapuće] Džesin, naredi da "
 "se trećina flote ima vratiti na Zelenostrvo, da potraži preživele, ako ih "
 "ima. I reci im da ne odustaju dok ne pokupe i poslednjeg preživelog."
 
@@ -4555,7 +4553,7 @@ msgid ""
 "Haldric and his companions find themselves before the Ka'lian, or the "
 "Council of Elven Lords."
 msgstr ""
-"Haldrik i njegova družina nađoše se pred Kalijanom, Savetom vilenjačkih "
+"Haldrik i njegova družina nađoše se pred Kalijanom, Većem vilenjačkih "
 "gospodara."
 
 #. [message]: speaker=Lord Logalmier
@@ -4569,7 +4567,7 @@ msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
 msgstr ""
-"Oni su od istog naroda kao i Princ Jugozaliva. Dolaze kao izbeglice. Mogu "
+"Oni su od istog naroda kao i princ Jugozaliva. Dolaze kao izbeglice. Mogu "
 "nam biti od koristi."
 
 #. [message]: speaker=Lord Aryad
@@ -4634,7 +4632,6 @@ msgstr ""
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:481
-#, fuzzy
 msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
 "the Great River."
@@ -5290,9 +5287,8 @@ msgstr "Uhoda u šumi"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:90
-#, fuzzy
 msgid "Jessene in Hiding"
-msgstr "Džesika u zaklonu"
+msgstr "Džesin u zaklonu"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:115
@@ -5383,14 +5379,13 @@ msgstr "Truf"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:238
-#, fuzzy
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
 "orcish threat. On the eve of battle, Lady Jessene catches up with Haldric on "
 "a fog-covered plain."
 msgstr ""
 "Haldrik i njegova svita žure preko ravnica da se suoče sa novoponiklom "
-"orkovskom pretnjom. Na veče pred boj, gospa Džesika stiže Haldrika na maglom "
+"orkovskom pretnjom. Na veče pred boj, gospa Džesin stiže Haldrika na maglom "
 "pokrivenom ravnicom."
 
 #. [message]: speaker=Lady Jessene
@@ -5441,13 +5436,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:268
-#, fuzzy
 msgid ""
 "I have a plan. Jessene, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
-"Imam plan. Džesika, sećaš li se trolovske jazbine? Drži, ponesi Vatreni "
-"rubin i sakrij ga u jazbini."
+"Imam plan. Džesin, sećaš li se trolovske jazbine? Drži, ponesi Vatreni rubin "
+"i sakrij ga u jazbini."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:272
@@ -5490,9 +5484,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:315
-#, fuzzy
 msgid "Lady Jessene soon departs. In the distance a voice booms:"
-msgstr "Gospa Džesika ubrzo ode. U daljini odjekuje glas:"
+msgstr "Gospa Džesin ubrzo ode. U daljini odjekuje glas:"
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:321
@@ -5558,13 +5551,12 @@ msgstr "Pojačanja! Ne smemo im dopustiti da se dokopaju mesta iskrcavanja."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:464
-#, fuzzy
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them and captures the ships. I hope Jessene makes it back soon."
 msgstr ""
 "Porazismo njihovu prethodnicu. Moramo se susresti sa flotom, pre nego ih "
-"Dževijan uništi i zaposedne brodove. Nadam se Džesikinom brzom povratku."
+"Dževijan uništi i zaposedne brodove. Nadam se Džesininom brzom povratku."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:533
@@ -5689,7 +5681,7 @@ msgid ""
 "war, but you're the real monster! You sacrificed your own people to preserve "
 "your immortal un-life."
 msgstr ""
-"Videćemo i to. Budalasti Princ Jugozaliva je pogrešio započinjući ovaj rat, "
+"Videćemo i to. Budalasti princ Jugozaliva je pogrešio započinjući ovaj rat, "
 "ali si ti ono pravo čudovište! Žrtvovao si sopstveni narod da sačuvaš svoj "
 "besmrtni neživot."
 
@@ -5881,7 +5873,6 @@ msgstr "ŠTA!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:138
-#, fuzzy
 msgid ""
 "I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
 "or send Jevyan a letter. Well, we are going to say it - but that's not the "
@@ -5890,7 +5881,7 @@ msgid ""
 msgstr ""
 "Biću mrtav. Mislim, ne možemo tek tako reći da smo otuđili Vatreni rubin, "
 "ili poslati pismo Dževijanu. Odnosno, reći ćemo... ali nije to glavno. "
-"Džesika, moraćeš da krivotvoriš vrlo uverljiv sporazum, po kome vilenjacima "
+"Džesin, moraćeš da krivotvoriš vrlo uverljiv sporazum, po kome vilenjacima "
 "predajemo Vatreni rubin, u zamenu za naše posede ovde."
 
 #. [message]: speaker=Prince Haldric
@@ -5931,13 +5922,12 @@ msgstr "Haldriče, ovo je besmisleno! Ja —"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:187
-#, fuzzy
 msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessene?"
 msgstr ""
 "Nema ni govora da vas pustim u vašem naumu, gospodine! Preko naših mrtvih "
-"tela, je li tako gospo Džesika?"
+"tela, je li tako gospo Džesin?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:191
@@ -6549,14 +6539,13 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:163
-#, fuzzy
 msgid ""
 "But dark deeds have been done on all sides. There is now a secret that only "
 "Jessene and I share. I must have your word that what I say will never be "
 "uttered again."
 msgstr ""
 "Ali su učinjena i mračna dela, na svim stranama. Sada je tu tajna koju "
-"delimo samo Džesika i ja. Moram imati vašu reč da ono što sada izgovorim, "
+"delimo samo Džesin i ja. Moram imati vašu reč da ono što sada izgovorim, "
 "niko više nikada neće čuti."
 
 #. [message]: speaker=Burin the Lost
@@ -6616,9 +6605,8 @@ msgstr "Neka se Gospodari svetlosti smiluju nad tobom. Ali, veže me moja reč."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
-#, fuzzy
 msgid "Jessene, you hid the ruby away in that vile Troll Hole? Didn't you?"
-msgstr "Džesika, sakrila si Rubin u jazbini poganih trolova, zar ne?"
+msgstr "Džesin, sakrila si Rubin u jazbini poganih trolova, zar ne?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:206
@@ -7137,10 +7125,9 @@ msgstr "Vi tamo, ponižavajte trolove, NE jazbine!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:54
-#, fuzzy
 msgid ""
 "Well, at least we don't have to contend with the undead. No offense Jessene."
-msgstr "Pa, barem ne moramo da se nosimo sa nemrtvima. Bez uvrede, Džesika."
+msgstr "Pa, barem ne moramo da se nosimo sa nemrtvima. Bez uvrede, Džesin."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:58
@@ -7358,7 +7345,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:127
-#, fuzzy
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
@@ -7367,8 +7353,8 @@ msgid ""
 msgstr ""
 "Nekoliko dana kasnije princ Haldrik se otisnu na svom brodu „Eldariku“, "
 "ostavivši svoj dom i Zelenostrvo zauvek iza sebe. Pred njim leži nepregledno "
-"olujno more i tajanstveno ostrvo koje gospa Džesika pomenu, a dalje na "
-"istoku još egzotičnija prostranstva."
+"olujno more i tajanstveno ostrvo koje gospa Džesin pomenu, a dalje na istoku "
+"još egzotičnija prostranstva."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:133
@@ -7405,9 +7391,3 @@ msgstr ""
 "Nakon sedmice ustaljene plovidbe ka istoku, počinju da čuju krike galebova i "
 "osećaju blizinu kopna. Veliki kontinent razvija se pred njima preko letom "
 "osunčanog mora."
-
-#~ msgid "Onward to victory!"
-#~ msgstr "Napred u pobedu!"
-
-#~ msgid "(whispered) I don't think diplomacy is going to work."
-#~ msgstr "[šapuće] Ne mislim da će pregovaranje uroditi plodom."

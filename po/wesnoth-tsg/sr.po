@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:48+0200\n"
-"PO-Revision-Date: 2009-04-11 14:41+0200\n"
+"PO-Revision-Date: 2009-05-20 23:35+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,6 @@ msgstr "ЈГ"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
-#, fuzzy
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
 "Note: This campaign is designed as an introduction to Wesnoth. The "
@@ -43,12 +42,11 @@ msgstr ""
 "Напомена: Овај поход је пројектован као увод у Веснот. Ниво тежине „цивил“ "
 "намењен је играчима који играју по први пут.\n"
 "\n"
-"(Почетнички ниво, 9 или 10 сценарија према изабраном рачвању.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 msgid "(Novice level, 9 or 10 scenarios depending on the branch you take.)"
-msgstr ""
+msgstr "(Почетнички ниво, 9 или 10 сценарија према изабраном рачвању.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
@@ -1821,6 +1819,9 @@ msgid ""
 "Hmm...I have to consider this... If I ally with the elves, I must fight the "
 "bandits, but if I ally with the bandits I will make enemies of the elves..."
 msgstr ""
+"Хм... Морам промислити о овоме... Ако се приклоним вилењацима, морам ударити "
+"на разбојнике, а ако се приклоним разбојницима, начинићу вилењаке "
+"непријатељима..."
 
 #. [option]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:443
@@ -2357,16 +2358,16 @@ msgid ""
 "I will hasten back to Kerlath Province now and seek the advice of the "
 "Council of Westin..."
 msgstr ""
-"Похитаћу сада назад у покрајину Керлат, и потражити смернице од Савета "
-"Вестина..."
+"Похитаћу сада назад у покрајину Керлат, и потражити смернице од Вестинског "
+"већа..."
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:445
 msgid ""
 "We too will return to our councils. We have much to tell them... Much indeed."
 msgstr ""
-"И ми ћемо се вратити својим саветима. Имамо им о много чему зборити... "
-"Уистину много."
+"И ми ћемо се вратити својим већима. Имамо им о много чему зборити... Уистину "
+"много."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:449
@@ -2374,7 +2375,7 @@ msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin's fortress..."
 msgstr ""
-"Док савет расправљаше о најбољем смеру деловања, Деоран и Етилијел се "
+"Док веће расправљаше о најбољем смеру деловања, Деоран и Етилијел се "
 "спремаше да зароне у пећине подно Мебринове тврђаве..."
 
 #. [scenario]: id=6b_The_Long_March
@@ -3071,7 +3072,7 @@ msgid ""
 "Westin while I prepare the city's defenses. We shall return as soon as we "
 "can in force and relieve you."
 msgstr ""
-"Намесниче Хиласе, пођи са мном у Вестин — мораш сазвати Савет Вестина, док "
+"Намесниче Хиласе, пођи са мном у Вестин — мораш сазвати Вестинско веће, док "
 "ја спремам одбрану града. Вратићемо се што пре можемо са војском да вас "
 "одменимо."
 
@@ -3301,7 +3302,7 @@ msgstr "Заиста господару, спремни смо да браним
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:363
 msgid "I have summoned the great Council of Westin!"
-msgstr "Ја сазвах велики Савет Вестина!"
+msgstr "Ја сазвах велико Вестинско веће!"
 
 # well-spelled: Мефел
 #. [then]
@@ -3317,7 +3318,7 @@ msgid ""
 "Hylas, I have made all possible haste, but my Council brethren are not as "
 "swift as I. It will take more time for them to arrive."
 msgstr ""
-"Хиласе, журио сам колико сам могао, али моја сабраћа из Савета нису хитра "
+"Хиласе, журио сам колико сам могао, али моја сабраћа већници нису хитри "
 "колико ја. Требаће им још времена да пристигну."
 
 #. [message]: speaker=Minister Hylas
@@ -3326,7 +3327,7 @@ msgid ""
 "And I have summoned the great Council of Westin! They will battle with all "
 "their might!"
 msgstr ""
-"А ја сам сазвао велики Савет Вестина! И они ће се борити свим својим умећем!"
+"А ја сам сазвао велико Вестинско веће! И они ће се борити свим својим умећем!"
 
 # well-spelled: Романд
 #. [else]
@@ -3361,7 +3362,7 @@ msgstr ""
 msgid ""
 "Council of Westin, we are cheered by your presence. Your aid will be most "
 "welcome."
-msgstr "Савете Веснота, соколи нас ваше присуство. Ваша помоћ ће добро доћи."
+msgstr "Већници Вестина, соколи нас ваше присуство. Ваша помоћ ће добро доћи."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:398
@@ -3382,7 +3383,7 @@ msgstr "Поразиш ли мал Мебрина"
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:421
 msgid "The Council of Westin will arrive on turn $council_arrive_turn|."
-msgstr "Савет Вестина стиже у потезу $council_arrive_turn|."
+msgstr "Вестинско веће стиже у потезу $council_arrive_turn|."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:302
@@ -3434,8 +3435,8 @@ msgid ""
 "Commander! I took your message to the council, and your deeds have pleased "
 "them. Are the undead finally gone from our lands?"
 msgstr ""
-"Заповедниче! Представих вашу поруку савету, и ваша су им дела угодила. Јесу "
-"ли немртви на концу одстрањени из наших земаља?"
+"Заповедниче! Представих вашу поруку већу, и ваша су им дела угодила. Јесу ли "
+"немртви на концу одстрањени из наших земаља?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:118
@@ -4046,7 +4047,7 @@ msgid ""
 msgstr ""
 "Ово су услови за мир међу нама: било који човек да се затекне у шумама или "
 "брдима што припадају вилењацима, крај ће му бити. Вилењаци више неће слати "
-"посланике и саветнике у Вестин, а људи више неће лутати зеленим шумама."
+"посланике и већнике у Вестин, а људи више неће лутати зеленим шумама."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:151
@@ -4068,9 +4069,9 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the storm..."
 msgstr ""
-"Сер Деоран, витез Веснота, беше сазван у Велдин на савет са краљем Халдриком "
-"лично. Олујни облаци су се захуктавали широм краљевства, и сваки заповедник "
-"ће бити потребан да се олуја преброди..."
+"Сер Деоран, витез Веснота, беше сазван у Велдин на већање са краљем "
+"Халдриком лично. Олујни облаци су се захуктавали широм краљевства, и сваки "
+"заповедник ће бити потребан да се олуја преброди..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:165
@@ -4132,7 +4133,7 @@ msgid ""
 "many generations."
 msgstr ""
 "Гериково име беше уписано на зачељу свитка палих хероја, и гласно читано на "
-"почетку сваког великог савета. Спомен на његово очајничко последње упориште "
+"почетку сваког великог већа. Спомен на његово очајничко последње упориште "
 "код пограничних постаја пређе у песму, и не беше заборављено у будућим "
 "генерацијама."
 
@@ -4155,9 +4156,6 @@ msgid ""
 "King Haldric himself. Storm clouds were brewing throughout the realm, and "
 "every commander would be needed to weather the onslaught..."
 msgstr ""
-"Сер Деоран, витез Веснота, беше сазван у Велдин на савет са краљем Халдриком "
-"лично. Олујни облаци су се захуктавали широм краљевства, и сваки заповедник "
-"ће бити потребан да се навала преброди..."
-
-#~ msgid "Hmm...I have to consider this..."
-#~ msgstr "Судбо... Морам добро размислити..."
+"Сер Деоран, витез Веснота, беше сазван у Велдин на већање са краљем "
+"Халдриком лично. Олујни облаци су се захуктавали широм краљевства, и сваки "
+"заповедник ће бити потребан да се навала преброди..."
