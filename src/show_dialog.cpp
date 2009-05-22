@@ -350,12 +350,6 @@ private:
 namespace gui
 {
 
-void show_error_message(display &disp, std::string const &message)
-{
-	ERR_G << message << std::endl;
-	dialog(disp, _("Error"), message, OK_ONLY).show();
-}
-
 int show_dialog(display& screen, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type,

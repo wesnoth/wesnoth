@@ -199,8 +199,6 @@ int show_dialog(display &screen, surface image,
 				menu::style* menu_style=NULL
 			 );
 
-void show_error_message(display &disp, std::string const &message);
-
 void check_quit(CVideo &video);
 
 }
