@@ -22,6 +22,7 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
 
 namespace gui2 {
 
@@ -204,6 +205,14 @@ int show_message(CVideo& video, const std::string& title,
 
 	dlg.show(video);
 	return dlg.get_retval();
+}
+
+void show_error_message(CVideo& video, const std::string& message,
+		const tbutton::tmarkup_mode message_markup_mode)
+{
+	LOG_STREAM(err, lg::general) << message << '\n';
+	show_message(video, _("Error"), message,
+			tmessage::ok_button, message_markup_mode);
 }
 
 } // namespace gui2

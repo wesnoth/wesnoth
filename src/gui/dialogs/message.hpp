@@ -165,6 +165,17 @@ int show_message(CVideo& video, const std::string& title,
 	const tbutton::tmarkup_mode message_markup_mode = tbutton::NO_MARKUP,
 	const tbutton::tmarkup_mode title_markup_mode = tbutton::NO_MARKUP);
 
+/** 
+ * Shows an error message to the user.
+ * 
+ * @param video               The video which contains the surface to draw
+ *                            upon.
+ * @param message             The message to show in the dialog.
+ * @param message_markup_mode The markup mode used for the title.
+ */
+void show_error_message(CVideo& video, const std::string& message,
+		const tbutton::tmarkup_mode message_markup_mode = tbutton::NO_MARKUP);
+
 } // namespace gui2
 
 #endif
