@@ -5,9 +5,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-05-09 11:10+0300\n"
+"PO-Revision-Date: 2009-05-22 00:17+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konf.lt>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -193,6 +193,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"tiesiogiai paleidžia ingertuotą žemėlapių redaktorių. Jei nurodytas "
+"I<failas>, tai yra ekvivalentu B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -458,7 +460,7 @@ msgstr "B<--validcache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "daro prielaidą, kad podėlis yra tinkamas. (pavojinga)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
@@ -876,7 +878,7 @@ msgstr "B<-v, --verbose>"
 # type: Plain text
 #: ../../doc/man/wesnothd.6:94
 msgid "turns debug logging on."
-msgstr ""
+msgstr "įjungia derinimo režimo išvestį."
 
 # type: SH
 #: ../../doc/man/wesnothd.6:95
@@ -995,10 +997,13 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:134
+#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
+"Laiko trukmė (sekundėmis), kurioje aptinkamas užliejimas žinutėmis. "
+"(numatyta: B<10> sekundžių)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:134
@@ -1082,7 +1087,7 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia "
-"naudoti `*' ir `?' kaip pakaitos šablonus.  (numatytoji reikšmė: tokia pati "
+"naudoti „*“ ir „?“ kaip pakaitos šablonus.  (numatytoji reikšmė: tokia pati "
 "versija, kaip ir serverio)"
 
 # type: Plain text
