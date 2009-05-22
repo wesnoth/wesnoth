@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "foreach.hpp"
+#include "gui/dialogs/message.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
 #include "playmp_controller.hpp"
@@ -93,11 +94,11 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		gamestate.replay_data.clear();
 
 	} catch(game::load_game_failed& e) {
-		gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
+		gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
-		gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
+		gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
 	} catch(incorrect_map_format_exception& e) {
-		gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
+		gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(twml_exception& e) {
 		e.show(disp);
 	}
@@ -364,17 +365,17 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				break;
 			}
 		} catch(game::load_game_failed& e) {
-			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
+			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 			return QUIT;
 		} catch(game::game_error& e) {
-			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
+			gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
 			return QUIT;
 		} catch(incorrect_map_format_exception& e) {
-			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
+			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
 		} catch(config::error& e) {
 			std::cerr << "caught config::error...\n";
-			gui::show_error_message(disp, _("Error while reading the WML: ") + e.message);
+			gui2::show_error_message(disp.video(), _("Error while reading the WML: ") + e.message);
 			return QUIT;
 		} catch(twml_exception& e) {
 			e.show(disp);
@@ -576,7 +577,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		utils::string_map symbols;
 		symbols["scenario"] = gamestate.scenario;
 		message = utils::interpolate_variables_into_string(message, &symbols);
-		gui::show_error_message(disp, message);
+		gui2::show_error_message(disp.video(), message);
 		return QUIT;
 	}
 

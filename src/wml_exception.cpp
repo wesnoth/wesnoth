@@ -22,8 +22,9 @@
 #include "global.hpp"
 #include "wml_exception.hpp"
 
+#include "display.hpp"
 #include "gettext.hpp"
-#include "show_dialog.hpp"
+#include "gui/dialogs/message.hpp"
 #include "formula_string_utils.hpp"
 
 
@@ -54,7 +55,7 @@ void twml_exception::show(display &disp)
 		<< _("When reporting the bug please include the following error message :")
 		<< "\n" << dev_message;
 
-	gui::show_error_message(disp, sstr.str());
+	gui2::show_error_message(disp.video(), sstr.str());
 }
 
 t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,

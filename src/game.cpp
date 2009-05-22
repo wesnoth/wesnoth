@@ -35,6 +35,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/language_selection.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -921,22 +922,22 @@ bool game_controller::load_game()
 		return false;
 	} catch(config::error& e) {
 		if(e.message.empty()) {
-			gui::show_error_message(disp(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
-			gui::show_error_message(disp(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	} catch(io_exception&) {
-		gui::show_error_message(disp(), _("File I/O Error while reading the game"));
+		gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
 		return false;
 	} catch(twml_exception& e) {
 		e.show(disp());
@@ -1022,7 +1023,7 @@ bool game_controller::new_campaign()
 	if(gui2::new_widgets) {
 
 		if(campaigns.begin() == campaigns.end()) {
-		  gui::show_error_message(disp(),
+		  gui2::show_error_message(disp().video(),
 					  _("No campaigns are available.\n"));
 			return false;
 		}
@@ -1058,7 +1059,7 @@ bool game_controller::new_campaign()
 		}
 
 		if(campaign_names.size() <= 0) {
-		  gui::show_error_message(disp(),
+		  gui2::show_error_message(disp().video(),
 					  _("No campaigns are available.\n"));
 			return false;
 		}
@@ -1321,11 +1322,11 @@ bool game_controller::play_multiplayer()
 		}
 
 	} catch(game::mp_server_error& e) {
-		gui::show_error_message(disp(), _("Error while starting server: ") + e.message);
+		gui2::show_error_message(disp().video(), _("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
-		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
+		gui2::show_error_message(disp().video(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
-		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
+		gui2::show_error_message(disp().video(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network::error: " << e.message << "\n";
@@ -1345,7 +1346,7 @@ bool game_controller::play_multiplayer()
 			ERR_CONFIG << "caught config::error\n";
 		}
 	} catch(incorrect_map_format_exception& e) {
-		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
+		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
@@ -1412,7 +1413,7 @@ void game_controller::reset_translations()
 		game_config::load_config(cfg ? &cfg : NULL);
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
-		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
+		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +
 			font::nullify_markup(e.message) + _("' (The game will now exit)"));
 		throw;
 	}
@@ -1517,7 +1518,7 @@ void game_controller::load_game_cfg(const bool force)
 
 				msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
 
-				gui::show_error_message(disp(),msg.str());
+				gui2::show_error_message(disp().video(),msg.str());
 			}
 		}
 
@@ -1533,7 +1534,7 @@ void game_controller::load_game_cfg(const bool force)
 
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
-		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
+		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +
 			font::nullify_markup(e.message) + _("' (The game will now exit)"));
 		throw;
 	}

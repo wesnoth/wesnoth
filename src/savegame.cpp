@@ -365,11 +365,11 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 
 	if(!error_log.empty()) {
         try {
-		    gui::show_error_message(gui_,
+		    gui2::show_error_message(gui_.video(),
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 				    error_log);
         } catch (utils::invalid_utf8_exception&) {
-		    gui::show_error_message(gui_,
+		    gui2::show_error_message(gui_.video(),
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
                     std::string("(UTF-8 ERROR)"));
         }
@@ -443,7 +443,7 @@ void loadgame::load_multiplayer_game()
 	}
 
 	if(!error_log.empty()) {
-		gui::show_error_message(gui_,
+		gui2::show_error_message(gui_.video(),
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
 		throw load_game_cancelled_exception();

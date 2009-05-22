@@ -3067,7 +3067,7 @@ private:
 	void menu_handler::user_command_3()
 	{
 		gui::message_dialog(*gui_, "Info", _("User-Command#3")).show();
-		//gui::show_error_message(disp(), "User-Command#3");
+		//gui2::show_error_message(disp().video(), "User-Command#3");
 		//sound::play_sound("heal.wav");
 		sound::play_sound("select.wav");
 	}

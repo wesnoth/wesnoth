@@ -17,6 +17,7 @@
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/window.hpp"
@@ -503,7 +504,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 				enter_wait_mode(disp, game_config, chat, gamelist, false);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
-					gui::show_error_message(disp, error.message);
+					gui2::show_error_message(disp.video(), error.message);
 				}
 				//update lobby content
 				network::send_data(config("refresh_lobby"), 0, true);
@@ -514,7 +515,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 				enter_wait_mode(disp, game_config, chat, gamelist, true);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
-					gui::show_error_message(disp, error.message);
+					gui2::show_error_message(disp.video(), error.message);
 				}
 			}
 			// update lobby content unconditionally because we might have left only after the
@@ -526,7 +527,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 				enter_create_mode(disp, game_config, chat, gamelist, mp::CNTR_NETWORK);
 			} catch(config::error& error) {
 				if (!error.message.empty())
-					gui::show_error_message(disp, error.message);
+					gui2::show_error_message(disp.video(), error.message);
 				//update lobby content
 				network::send_data(config("refresh_lobby"), 0, true);
 			}

@@ -466,14 +466,14 @@ namespace {
 		config data;
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
-			gui::show_error_message(disp, _("Connection timed out"));
+			gui2::show_error_message(disp.video(), _("Connection timed out"));
 			return;
 		} else if (const config &c = data.child("error")) {
 			std::string error_message = _("The server responded with an error: \"$error|\"");
 			utils::string_map symbols;
 			symbols["error"] = c["message"].str();
 			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-			gui::show_error_message(disp, error_message);
+			gui2::show_error_message(disp.video(), error_message);
 			return;
 		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
@@ -515,7 +515,7 @@ namespace {
 		if(!sock) {
 			return;
 		} else if (const config &c = data.child("error")) {
-			gui::show_error_message(disp, _("The server responded with an error: \"") +
+			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
 		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
@@ -540,9 +540,9 @@ namespace {
 
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
-			gui::show_error_message(disp, _("Connection timed out"));
+			gui2::show_error_message(disp.video(), _("Connection timed out"));
 		} else if (const config &c = data.child("error")) {
-			gui::show_error_message(disp, _("The server responded with an error: \"") +
+			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
 		} else if (const config &c = data.child("message")) {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
@@ -584,12 +584,12 @@ namespace {
 		}
 
 		if (config const &dlerror = cfg.child("error")) {
-			gui::show_error_message(disp, dlerror["message"]);
+			gui2::show_error_message(disp.video(), dlerror["message"]);
 			return false;
 		}
 
 		if(!check_names_legal(cfg)) {
-			gui::show_error_message(disp, _("The add-on has an invalid file or directory name and can not be installed."));
+			gui2::show_error_message(disp.video(), _("The add-on has an invalid file or directory name and can not be installed."));
 			return false;
 		}
 
@@ -891,7 +891,7 @@ namespace {
 				dialogs::network_connect_dialog(disp, _("Connecting to add-ons server..."),
 				                                remote_host, remote_port);
 			if(!sock) {
-				gui::show_error_message(disp, _("Could not connect to host."));
+				gui2::show_error_message(disp.video(), _("Could not connect to host."));
 				preferences::set_campaign_server(old_host);
 				return;
 			}
@@ -905,13 +905,13 @@ namespace {
 			}
 
 			if (config const &error = cfg.child("error")) {
-				gui::show_error_message(disp, error["message"]);
+				gui2::show_error_message(disp.video(), error["message"]);
 				return;
 			}
 
 			config const &addons_tree = cfg.child("campaigns");
 			if (!addons_tree) {
-				gui::show_error_message(disp, _("An error occurred while communicating with the server."));
+				gui2::show_error_message(disp.video(), _("An error occurred while communicating with the server."));
 				return;
 			}
 
@@ -1006,7 +1006,7 @@ namespace {
 			}
 
 			if(addons.empty() && publish_options.empty()) {
-				gui::show_error_message(disp, _("There are no add-ons available for download from this server."));
+				gui2::show_error_message(disp.video(), _("There are no add-ons available for download from this server."));
 				return;
 			}
 
@@ -1069,13 +1069,13 @@ namespace {
 
 		} catch(config::error& e) {
 			ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
-			gui::show_error_message(disp, _("Network communication error."));
+			gui2::show_error_message(disp.video(), _("Network communication error."));
 		} catch(network::error& e) {
 			ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
-			gui::show_error_message(disp, _("Remote host disconnected."));
+			gui2::show_error_message(disp.video(), _("Remote host disconnected."));
 		} catch(io_exception& e) {
 			ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"\n";
-			gui::show_error_message(disp, _("A problem occurred when trying to create the files necessary to install this add-on."));
+			gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
 		} catch(twml_exception& e) {
 			e.show(disp);
 		}
