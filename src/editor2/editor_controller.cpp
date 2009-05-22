@@ -487,8 +487,14 @@ void editor_controller::generate_map_dialog()
 	dialog.set_gui(&gui());
 	dialog.show(gui().video());
 	if (dialog.get_retval() == gui2::twindow::OK) {
-		std::string map_string =
-			dialog.get_selected_map_generator()->create_map(std::vector<std::string>());
+		std::string map_string;
+		try {
+			map_string = dialog.get_selected_map_generator()
+				->create_map(std::vector<std::string>());
+		} catch (mapgen_exception& e) {
+			gui::message_dialog(gui(), _("Map creation failed."), e.what()).show();
+			return;
+		}
 		if (map_string.empty()) {
 			gui::message_dialog(gui(), "", _("Map creation failed.")).show();
 		} else {
