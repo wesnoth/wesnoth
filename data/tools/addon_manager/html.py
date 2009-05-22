@@ -45,9 +45,10 @@ Select the add-on you want to install from the list and click "OK". The download
 <p>Note: Hover over the icons to see the description of the add-on.</p>
 """)
 
+    am_dir = os.path.dirname(__file__) + "/"
     for name in ["style.css", "jquery.js", "tablesorter.js",
         "asc.gif", "bg.gif", "desc.gif"]:
-        os.system("cp -u data/tools/addon_manager/" + name + " " + path)
+        os.system("cp -u " + am_dir + name + " " + path)
 
     campaigns = data.get_or_create_sub("campaigns")
     w("<table class=\"tablesorter\" id=\"campaigns\">")
@@ -70,22 +71,21 @@ Select the add-on you want to install from the list and click "OK". The download
             try: os.mkdir(path + "/icons")
             except OSError: pass
             if "." not in icon: icon += ".png"
-            src = "./data/core/images/" + icon
+            src = am_dir + "../../core/images/" + icon
             if os.path.exists(icon): src = icon
             if not os.path.exists(src):
-                src = glob.glob("./data/campaigns/*/images/" + icon)
+                src = glob.glob(am_dir + "../../campaigns/*/images/" + icon)
                 if src: src = src[0]
                 if not src or not os.path.exists(src):
                     sys.stderr.write("Cannot find icon " + icon + "\n")
-                    src = "./images/misc/missing-image.png"
+                    src = am_dir + "../../../images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
                 else:
                     imgurl = "icons/" + os.path.basename(icon)
             else:
                 imgurl = "icons/" + os.path.basename(icon)
-            command = os.path.join(os.path.dirname(__file__),
-                "../unit_tree/TeamColorizer '" + src + "' '" + path + "/"
-                + imgurl + "'")
+            command = os.path.join(am_dir, "../unit_tree/TeamColorizer '"
+                + src + "' '" + path + "/" + imgurl + "'")
             os.system(command)
                 
         type = v("type", "none")
