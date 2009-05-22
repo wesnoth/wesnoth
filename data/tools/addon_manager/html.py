@@ -41,8 +41,11 @@ $(document).ready(function()
 </div>
 <div class="main">
 <p>To install an add-on please go to the title screen of Battle for Wesnoth. Select "Add-ons" from the menu and click "OK" to connect to add-ons.wesnoth.org.
-Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it.</p>
+Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it. Remember that not all add-ons are campaigns!</p>
 <p>Note: Hover over the icons to see the description of the add-on.</p>
+""")
+    if url:
+        w("""<p>PS: If you really have to download an add-on from here uncompress it to the <a href="http://www.wesnoth.org/wiki/EditingWesnoth#Where_is_my_user_data_directory.3F">userdata</a>/data/add-ons/ directory for wesnoth to find it.
 """)
 
     am_dir = os.path.dirname(__file__) + "/"
