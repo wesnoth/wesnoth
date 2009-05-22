@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:32+0200\n"
-"PO-Revision-Date: 2009-05-09 20:36+0200\n"
+"PO-Revision-Date: 2009-05-22 20:31+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -278,7 +278,7 @@ msgstr "Carte sauvegardée."
 
 #: src/editor2/editor_controller.cpp:668
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Carte incluse chargée"
 
 #: src/editor2/editor_controller.cpp:669 src/editor2/editor_controller.cpp:683
 msgid "Map loaded from scenario"
@@ -289,6 +289,8 @@ msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Fichier référencé chargé :\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1069
 msgid "Undo"
@@ -333,6 +335,8 @@ msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Ce fichier de carte ressemble à un scénario, mais la valeur de map_data "
+"n'indique pas un nom de fichier existant"
 
 #: src/editor2/map_context.cpp:99
 msgid "Empty map file"
