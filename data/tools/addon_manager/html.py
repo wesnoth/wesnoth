@@ -62,31 +62,34 @@ Select the add-on you want to install from the list and click "OK". The download
     w("</tr>")
     w("</thead>")
     w("<tbody>")
+    root_dir = am_dir + "../../../"
     for campaign in campaigns.get_all("campaign"):
         v = campaign.get_text_val
         translations = campaign.get_all("translation")
         languages = [x.get_text_val("language") for x in translations]
         w("<tr>")
         icon = v("icon", "")
+        imgurl = ""
         if icon:
+            icon = icon.strip()
             tilde = icon.find("~")
             if tilde >= 0: icon = icon[:tilde]
             try: os.mkdir(path + "/icons")
             except OSError: pass
             if "." not in icon: icon += ".png"
-            src = am_dir + "../../core/images/" + icon
-            if os.path.exists(icon): src = icon
+            src = root_dir + icon
+            imgurl = "icons/" + os.path.basename(icon)
             if not os.path.exists(src):
-                src = glob.glob(am_dir + "../../campaigns/*/images/" + icon)
+                src = root_dir + "data/core/images/" + icon
+            if not os.path.exists(src):
+                src = root_dir + "images/" + icon
+            if not os.path.exists(src):
+                src = glob.glob(root_dir + "data/campaigns/*/images/" + icon)
                 if src: src = src[0]
                 if not src or not os.path.exists(src):
                     sys.stderr.write("Cannot find icon " + icon + "\n")
-                    src = am_dir + "../../../images/misc/missing-image.png"
+                    src = root_dir + "images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
-                else:
-                    imgurl = "icons/" + os.path.basename(icon)
-            else:
-                imgurl = "icons/" + os.path.basename(icon)
             command = os.path.join(am_dir, "../unit_tree/TeamColorizer '"
                 + src + "' '" + path + "/" + imgurl + "'")
             os.system(command)
