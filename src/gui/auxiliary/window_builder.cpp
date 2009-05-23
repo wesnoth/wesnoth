@@ -182,6 +182,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(listbox);
 	TRY(menubar);
 	TRY(minimap);
+	TRY(multi_page);
 	TRY(panel);
 	TRY(scroll_label);
 	TRY(slider);
@@ -925,6 +926,107 @@ twidget* tbuilder_minimap::build() const
 		<< definition << "'.\n";
 
 	return minimap;
+}
+
+tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
+	tbuilder_control(cfg),
+	vertical_scrollbar_mode(
+			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
+	horizontal_scrollbar_mode(
+			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"])),
+	builder(0),
+	data()
+{
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_multi_page
+ *
+ * == Multi page ==
+ *
+ * Instance of a multi page.
+ *
+ * List with the multi page specific variables:
+ * @start_table = config
+ *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     auto.
+ *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
+ *                                     Determines whether or not to show the
+ *                                     scrollbar. The default of initial_auto
+ *                                     is used when --new-widgets is used.
+ *                                     In the future the default will be
+ *                                     initial_auto.
+ *
+ *     list_definition (section)       This defines how a listbox item
+ *                                     looks. It must contain the grid
+ *                                     definition for 1 row of the list.
+ *
+ *     list_data(section = [])         A grid alike section which stores the
+ *                                     initial data for the listbox. Every row
+ *                                     must have the same number of columns as
+ *                                     the 'list_definition'.
+ * @end_table
+ */
+
+	const config &l = cfg.child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+	builder = new tbuilder_grid(l);
+	assert(builder);
+	VALIDATE(builder->rows == 1,
+			_("A 'list_definition' should contain one row."));
+
+	const config &data_cfg = cfg.child("list_data");
+	if (!data_cfg) return;
+
+	foreach (const config &row, data_cfg.child_range("row"))
+	{
+		unsigned col = 0;
+
+		foreach (const config &c, row.child_range("column"))
+		{
+			data.push_back(string_map());
+			foreach (const config::attribute &i, c.attribute_range()) {
+				data.back()[i.first] = i.second;
+			}
+			++col;
+		}
+
+		VALIDATE(col == builder->cols, _("'list_data' must have "
+			"the same number of columns as the 'list_definition'."));
+	}
+}
+
+twidget* tbuilder_multi_page::build() const
+{
+	tlistbox *listbox = new tlistbox(
+			true, true, tgenerator_::independant, false);
+
+	init_control(listbox);
+
+	listbox->set_list_builder(builder); // FIXME in finalize???
+
+	listbox->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	listbox->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	DBG_GUI_G << "Window builder: placed listbox '"
+		<< id << "' with defintion '"
+		<< definition << "'.\n";
+
+	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
+		boost::dynamic_pointer_cast
+		<const tlistbox_definition::tresolution>(listbox->config());
+	assert(conf);
+
+
+	conf->grid->build(&listbox->grid());
+
+	listbox->finalize(NULL, NULL, data);
+
+	return listbox;
 }
 
 tbuilder_panel::tbuilder_panel(const config& cfg) :

@@ -240,6 +240,20 @@ struct tminimap_definition : public tcontrol_definition
 	};
 };
 
+struct tmulti_page_definition
+	: public tcontrol_definition
+{
+	tmulti_page_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+
+	};
+};
+
 struct tpanel_definition : public tcontrol_definition
 {
 

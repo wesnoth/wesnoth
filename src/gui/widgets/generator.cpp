@@ -243,6 +243,51 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
+tpoint tindependant::calculate_best_size() const
+{
+	/*
+	 * The best size is the combination of the greatest width and greatest
+	 * height.
+	 */
+	tpoint result(0, 0);
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		const tgrid& grid = get_item(i);
+
+		const tpoint best_size = grid.get_best_size();
+
+		if(best_size.x > result.x) {
+			result.x = best_size.x;
+		}
+
+		if(best_size.y > result.y) {
+			result.y = best_size.y;
+		}
+	}
+
+	return result;
+}
+
+void tindependant::set_size(const tpoint& origin, const tpoint& size)
+{
+	/*
+	 * Set every item to it's best size, need to evaluate whether
+	 * this is the best idea or that the size works better.
+	 */
+
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+
+		tpoint best_size = grid.get_best_size();
+		assert(best_size.x <= size.x);
+		assert(best_size.y <= size.y);
+
+		grid.set_size(origin, best_size);
+
+	}
+}
+
 } // namespace placement
 
 /***** ***** ***** ***** Select action ***** ***** ***** *****/

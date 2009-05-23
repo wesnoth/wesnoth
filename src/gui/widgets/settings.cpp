@@ -196,6 +196,10 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   options. This version is used for map
  *                                   previews, there will be a another version
  *                                   which allows interaction.
+ *     Multi_page                    A multi page is a control that contains
+ *                                   serveral 'pages' of which only one is
+ *                                   visible. The pages can contain the same
+ *                                   of different info.
  *     Panel                         A panel is a container with can have it's
  *                                   own visual attributes.
  *     Scroll_label                  A label which can have scrollbars.
@@ -264,6 +268,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tlistbox_definition>("listbox", cfg);
 	load_definitions<tmenubar_definition>("menubar", cfg);
 	load_definitions<tminimap_definition>("minimap", cfg);
+	load_definitions<tmulti_page_definition>("multi_page", cfg);
 	load_definitions<tpanel_definition>("panel", cfg);
 	load_definitions<tscroll_label_definition>("scroll_label", cfg);
 	load_definitions<tslider_definition>("slider", cfg);
@@ -826,6 +831,37 @@ tpanel_definition::tpanel_definition(const config& cfg) :
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
+}
+
+tmulti_page_definition::tmulti_page_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing multipage " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+tmulti_page_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	grid(NULL)
+{
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_multi_page
+ *
+ * == Multi page ==
+ *
+ * The documentation is not written yet.
+ */
+
+	// Note the order should be the same as the enum tstate is listbox.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+
+	const config &child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
 }
 
 tpanel_definition::tresolution::tresolution(const config& cfg) :

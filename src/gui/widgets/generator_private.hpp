@@ -350,48 +350,70 @@ struct tindependant
 	: public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
+	void create_item(const unsigned /*index*/)
+	{
+		/* DO NOTHING */
+	}
 
 	/** See thorizontal_list::calculate_best_size(). */
-	tpoint calculate_best_size() const
-		{ ERROR_LOG(false); }
+	tpoint calculate_best_size() const;
 
 	/** See thorizontal_list::set_size(). */
-	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ ERROR_LOG(false); }
+	void set_size(const tpoint& origin, const tpoint& size);
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+		/** @todo Evaluate what we need to do here. */
+	}
 
 	/** See thorizontal_list::set_visible_area(). */
 	void set_visible_area(const SDL_Rect& /*area*/)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+		/** @todo Evaluate what we need to do here. */
+	}
 
 	/** See thorizontal_list::find_widget(). */
-	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
+	twidget* find_widget(const tpoint&, const bool)
+	{
+		/** @todo implement. */
+		return NULL;
+	}
 
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint&, const bool) const
-		{ ERROR_LOG(false); }
+	{
+		/** @todo implement. */
+		return NULL;
+	}
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
 	void handle_key_up_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_down_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_left_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+	}
 
 	/** Inherited from tgenerator_. */
 	void handle_key_right_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	{
+		/* DO NOTHING */
+	}
 };
 
 } // namespace placement

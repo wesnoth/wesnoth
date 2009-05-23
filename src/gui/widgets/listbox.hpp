@@ -26,6 +26,7 @@ class tlistbox
 		: public tscrollbar_container
 {
 	friend struct tbuilder_listbox;
+	friend struct tbuilder_multi_page;
 	friend class tdebug_layout_graph;
 
 	/** @todo Remove this item, part of the markup hack. */

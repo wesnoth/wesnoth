@@ -167,6 +167,7 @@ public:
 	std::vector<string_map>list_data;
 };
 
+
 struct tbuilder_menubar : public tbuilder_control
 {
 	tbuilder_menubar(const config& cfg);
@@ -200,6 +201,32 @@ struct tbuilder_minimap : public tbuilder_control
 	}
 
 	twidget* build () const;
+};
+
+struct tbuilder_multi_page
+	: public tbuilder_control
+{
+
+private:
+	tbuilder_multi_page();
+public:
+	tbuilder_multi_page(const config& cfg);
+
+	twidget* build () const;
+
+	tscrollbar_container::tscrollbar_mode
+			vertical_scrollbar_mode,
+			horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr builder;
+
+	/**
+	 * Multi page data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<string_map> data;
 };
 
 struct tbuilder_panel : public tbuilder_control
