@@ -41,6 +41,7 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 #include "gui/dialogs/game_save.hpp"
+#include "gui/dialogs/transient_message.hpp"
 
 
 //#ifdef _WIN32
@@ -234,10 +235,11 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 	std::string campaign_name = std::string(level["campaign"]);
 	replace_underbar2space(campaign_name);
 
-	gui::message_dialog(disp, "", "*~" + name +
+	/** @todo We can now allow pango markup for the objectives if wanted. */
+	gui2::show_transient_message(disp.video(), "", "*~" + name +
 			(campaign_name.empty() ? "\n" : " - " + campaign_name + "\n") +
 	                (objectives.empty() ? no_objectives : objectives)
-	                ).show();
+	                );
 }
 
 namespace {
@@ -560,9 +562,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	}
 
 	if(games.empty()) {
-		gui::message_dialog(disp,
+		gui2::show_transient_message(disp.video(),
 		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)")).show();
+				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
 		return "";
 	}
 

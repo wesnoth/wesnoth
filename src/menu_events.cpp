@@ -29,6 +29,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
@@ -596,12 +597,12 @@ private:
 		if (res == 0) {
 			try {
 				write_file(input_name, map_.write());
-				gui::message_dialog(*gui_, "", _("Map saved.")).show();
+				gui2::show_transient_message(gui_->video(), "", _("Map saved."));
 			} catch (io_exception& e) {
 				utils::string_map symbols;
 				symbols["msg"] = e.what();
 				const std::string msg = vgettext("Could not save the map: $msg",symbols);
-				gui::message_dialog(*gui_, "", msg).show();
+				gui2::show_transient_message(gui_->video(), "", msg);
 			}
 		}
 	}
@@ -714,8 +715,7 @@ private:
 		}
 
 		if(sample_units.empty()) {
-			gui::message_dialog to_show(*gui_,"",_("You have no units available to recruit."));
-			to_show.show();
+			gui2::show_transient_message(gui_->video(),"",_("You have no units available to recruit."));
 			return;
 		}
 
@@ -773,8 +773,8 @@ private:
 		assert(u_type != unit_type_data::types().end());
 
 		if(u_type->second.cost() > current_team.gold()) {
-			gui::message_dialog(*gui_,"",
-				 _("You don't have enough gold to recruit that unit")).show();
+			gui2::show_transient_message(gui_->video(),"",
+				 _("You don't have enough gold to recruit that unit"));
 		} else {
 			last_recruit_ = name;
 
@@ -810,7 +810,7 @@ private:
 				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
-				gui::message_dialog(*gui_,"",msg).show();
+				gui2::show_transient_message(gui_->video(),"",msg);
 			}
 		}
 	}
@@ -818,7 +818,7 @@ private:
 	void menu_handler::recall(int side_num, const map_location &last_hex)
 	{
 		if(utils::string_bool(level_["disallow_recall"])) {
-			gui::message_dialog(*gui_,"",_("You are separated from your soldiers and may not recall them")).show();
+			gui2::show_transient_message(gui_->video(),"",_("You are separated from your soldiers and may not recall them"));
 			return;
 		}
 
@@ -839,7 +839,9 @@ private:
 		gui_->draw(); //clear the old menu
 
 		if(recall_list.empty()) {
-			gui::message_dialog(*gui_,"",_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)")).show();
+			gui2::show_transient_message(gui_->video(), ""
+					,_("There are no troops available to recall\n(You must have"
+					" veteran survivors from a previous scenario)"));
 		} else {
 			std::vector<std::string> options, options_to_filter;
 
@@ -2896,8 +2898,7 @@ private:
 		}
 	}
 	void console_handler::do_show_var() {
-		gui::message_dialog to_show(*menu_handler_.gui_,"",menu_handler_.gamestate_.get_variable(get_data()));
-		to_show.show();
+		gui2::show_transient_message((*menu_handler_.gui_).video(),"",menu_handler_.gamestate_.get_variable(get_data()));
 	}
 	void console_handler::do_unit() {
 		// prevent SIGSEGV due to attempt to set HP during a fight
@@ -3059,14 +3060,14 @@ private:
 	// not used yet - for future hotkey-commands:
 	void menu_handler::user_command_2()
 	{
-		gui::message_dialog(*gui_, "Test", "User-Command#2").show();
+		gui2::show_transient_message(*gui_.video(), "Test", "User-Command#2");
 		//sound::play_bell(game_config::sounds::turn_bell);
 		sound::play_bell("bell.wav");
 	}
 
 	void menu_handler::user_command_3()
 	{
-		gui::message_dialog(*gui_, "Info", _("User-Command#3")).show();
+		gui2::show_transient_message(*gui_.video(), "Info", _("User-Command#3"));
 		//gui2::show_error_message(disp().video(), "User-Command#3");
 		//sound::play_sound("heal.wav");
 		sound::play_sound("select.wav");

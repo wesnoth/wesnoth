@@ -23,6 +23,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -71,7 +72,7 @@ void set_fullscreen(bool ison)
 			} else if(video.modePossible(1024,768,16,flags)) {
 				set_resolution(std::pair<int,int>(1024,768));
 			} else {
-				gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
+				gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
 			}
 			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
 			set_colour_cursors(utils::string_bool(preferences::get("colour_cursors")));
@@ -109,7 +110,7 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 		} else {
 			write_resolution = false;
-			gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
+			gui2::show_transient_message(video,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."));
 		}
 	}
 
@@ -311,7 +312,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 					std::stringstream msg;
 					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
-					gui::message_dialog(disp,_("This Hotkey is already in use."),msg.str()).show();
+					gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
 				} else {
 
 					newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
@@ -322,7 +323,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
 							|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
 							 && (mod & any_mod) == 0) {
-						gui::message_dialog(disp,"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys.")).show();
+						gui2::show_transient_message(disp.video(),"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."));
 					}
 				}
 			}
@@ -413,7 +414,7 @@ bool show_video_mode_dialog(display& disp)
 		modes = scr_modes_list;
 	} else if(modes == NULL) {
 		std::cerr << "No modes supported\n";
-		gui::message_dialog(disp,"",_("There are no alternative video modes available")).show();
+		gui2::show_transient_message(disp.video(),"",_("There are no alternative video modes available"));
 		return false;
 	}
 

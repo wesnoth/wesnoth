@@ -27,6 +27,7 @@
 #include "map_exception.hpp"
 #include "map_create.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
@@ -206,7 +207,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 		eras.push_back(er["name"]);
 	}
 	if(eras.empty()) {
-		gui::message_dialog(disp, "", _("No eras found.")).show();
+		gui2::show_transient_message(disp.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
 	era_combo_.set_items(eras);
@@ -323,7 +324,7 @@ void create::process_event()
 			set_result(CREATE);
 			return;
 		} else {
-			gui::message_dialog(disp_, "", _("You must enter a name.")).show();
+			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
 		}
 	}
 

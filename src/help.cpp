@@ -26,6 +26,7 @@
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "log.hpp"
@@ -2797,7 +2798,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
-					gui::message_dialog(disp_, "", msg.str()).show();
+					gui2::show_transient_message(disp_.video(), "", msg.str());
 					update_cursor();
 				}
 				else {
@@ -3225,7 +3226,7 @@ void show_help(display &disp, const section &toplevel_sec,
 	catch (parse_error e) {
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
-		gui::message_dialog(disp, "", msg.str()).show();
+		gui2::show_transient_message(disp.video(), "", msg.str());
 	}
 }
 

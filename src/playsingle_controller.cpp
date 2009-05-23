@@ -27,6 +27,7 @@
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
@@ -366,8 +367,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				info["result"] = gamestate_.completion;
 				network::send_data(cfg, 0, true);
 			} else {
-				gui::message_dialog(*gui_,_("Game Over"),
-									_("The game is over.")).show();
+				gui2::show_transient_message(gui_->video(),_("Game Over"),
+									_("The game is over."));
 				return OBSERVER_END;
 			}
 		}
@@ -490,7 +491,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 			if(end_level.carryover_report)
 			{
-				gui::message_dialog(*gui_, title, report.str()).show();
+				gui2::show_transient_message(gui_->video(), title, report.str());
 			}
 
 			return VICTORY;
@@ -500,7 +501,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 	} // end catch
 	catch(replay::error&) {
-		gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
+		gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
 		return QUIT;
 	}
 	catch(network::error& e) {
@@ -561,7 +562,7 @@ void playsingle_controller::play_turn(bool save)
 				replaying_ = ::do_replay(*gui_, map_, units_, teams_,
 						player_number_, status_, gamestate_);
 			} catch(replay::error&) {
-				gui::message_dialog(*gui_,"",_("The file you have tried to load is corrupt")).show();
+				gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
 
 				replaying_ = false;
 			}
@@ -693,7 +694,7 @@ void playsingle_controller::show_turn_dialog(){
 		utils::string_map symbols;
 		symbols["name"] = teams_[player_number_ - 1].current_player();
 		message = utils::interpolate_variables_into_string(message, &symbols);
-		gui::message_dialog(*gui_, "", message).show();
+		gui2::show_transient_message(gui_->video(), "", message);
 	}
 }
 

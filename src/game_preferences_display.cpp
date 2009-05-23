@@ -20,6 +20,7 @@
 #include "filechooser.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/slider.hpp"
@@ -1161,11 +1162,11 @@ bool show_theme_dialog(display& disp)
 		preferences::set_theme(options[action]);
 		//it would be preferable for the new theme to take effect
 		//immediately, however, this will have to do for now.
-		gui::message_dialog(disp,"",_("New theme will take effect on next new or loaded game.")).show();
+		gui2::show_transient_message(disp.video(),"",_("New theme will take effect on next new or loaded game."));
 		return(1);
 		}
 	}else{
-		gui::message_dialog(disp,"",_("No known themes. Try changing from within an existing game.")).show();
+		gui2::show_transient_message(disp.video(),"",_("No known themes. Try changing from within an existing game."));
 	}
 	return(0);
 }

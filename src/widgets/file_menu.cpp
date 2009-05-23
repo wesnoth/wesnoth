@@ -85,7 +85,7 @@ void file_menu::display_current_files() {
 int file_menu::delete_chosen_file() {
 	const int ret = remove(chosen_file_.c_str());
 	if (ret == -1) {
-	//	gui::message_dialog(disp_, "", _("Deletion of the file failed.")).show();
+	//	gui2::show_transient_message(disp_.video(), "", _("Deletion of the file failed."));
 	}
 	else {
 		last_selection_ = -1;
@@ -98,7 +98,7 @@ int file_menu::delete_chosen_file() {
 bool file_menu::make_directory(const std::string& subdir_name) {
 	bool ret = ::make_directory(add_path(current_dir_, subdir_name));
 	if (ret == false) {
-	//	gui::message_dialog(disp_, "", _("Creation of the directory failed.")).show();
+	//	gui2::show_transient_message(disp_.video(), "", _("Creation of the directory failed."));
 	}
 	else {
 		last_selection_ = -1;

@@ -24,6 +24,7 @@
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "../clipboard.hpp"
@@ -283,7 +284,7 @@ EXIT_STATUS editor_controller::main_loop()
 			play_slice();
 		}
 	} catch (editor_exception& e) {
-		gui::message_dialog(gui(), _("Fatal error"), e.what()).show();
+		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
 	}
 	return quit_mode_;
@@ -492,11 +493,11 @@ void editor_controller::generate_map_dialog()
 			map_string = dialog.get_selected_map_generator()
 				->create_map(std::vector<std::string>());
 		} catch (mapgen_exception& e) {
-			gui::message_dialog(gui(), _("Map creation failed."), e.what()).show();
+			gui2::show_transient_message(gui().video(), _("Map creation failed."), e.what());
 			return;
 		}
 		if (map_string.empty()) {
-			gui::message_dialog(gui(), "", _("Map creation failed.")).show();
+			gui2::show_transient_message(gui().video(), "", _("Map creation failed."));
 		} else {
 			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
@@ -518,7 +519,7 @@ void editor_controller::apply_mask_dialog()
 			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
-			gui::message_dialog(gui(), _("Error loading mask"), e.what()).show();
+			gui2::show_transient_message(gui().video(), _("Error loading mask"), e.what());
 			return;
 		} catch (editor_action_exception& e) {
 			gui2::show_error_message(gui().video(), e.what());
@@ -540,7 +541,7 @@ void editor_controller::create_mask_to_dialog()
 			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
-			gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
+			gui2::show_transient_message(gui().video(), _("Error loading map"), e.what());
 			return;
 		} catch (editor_action_exception& e) {
 			gui2::show_error_message(gui().video(), e.what());
@@ -639,10 +640,10 @@ bool editor_controller::save_map(bool display_confirmation)
 	try {
 		get_map_context().save();
 		if (display_confirmation) {
-			gui::message_dialog(gui(), "", _("Map saved.")).show();
+			gui2::show_transient_message(gui().video(), "", _("Map saved."));
 		}
 	} catch (editor_map_save_exception& e) {
-		gui::message_dialog(gui(), "", e.what()).show();
+		gui2::show_transient_message(gui().video(), "", e.what());
 		return false;
 	}
 	return true;
@@ -684,7 +685,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 		}
 		if (get_map_context().is_embedded()) {
 			const char* msg = _("Loaded embedded map data");
-			gui::message_dialog(gui(), _("Map loaded from scenario"), msg).show();
+			gui2::show_transient_message(gui().video(), _("Map loaded from scenario"), msg);
 		} else {
 			if (get_map_context().get_filename() != filename) {
 				if (get_map_context().get_map_data_key().empty()) {
@@ -698,13 +699,13 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 						"$new");
 					symbols["new"] = get_map_context().get_filename();
 					symbols["map_data"] = get_map_context().get_map_data_key();
-					gui::message_dialog(gui(), _("Map loaded from scenario"),
-						vgettext(msg, symbols)).show();
+					gui2::show_transient_message(gui().video(), _("Map loaded from scenario"),
+						vgettext(msg, symbols));
 				}
 			}
 		}
 	} catch (editor_map_load_exception& e) {
-		gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
+		gui2::show_transient_message(gui().video(), _("Error loading map"), e.what());
 		return;
 	}
 }

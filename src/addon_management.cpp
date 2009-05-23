@@ -26,6 +26,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -518,9 +519,7 @@ namespace {
 			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
 		} else if (const config &c = data.child("message")) {
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp, _("Response"), c["message"]);
-			dlg.show();
+			gui2::show_transient_message(disp.video(), _("Response"), c["message"]);
 		}
 	}
 
@@ -545,9 +544,7 @@ namespace {
 			gui2::show_error_message(disp.video(), _("The server responded with an error: \"") +
 			                        c["message"].str() + '"');
 		} else if (const config &c = data.child("message")) {
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp, _("Response"), c["message"]);
-			dlg.show();
+			gui2::show_transient_message(disp.video(), _("Response"), c["message"]);
 		}
 	}
 
@@ -639,9 +636,7 @@ namespace {
 		if(show_result) {
 			const std::string& message =
 				utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp, _("Add-on Installed"), message);
-			dlg.show();
+			gui2::show_transient_message(disp.video(), _("Add-on Installed"), message);
 		}
 
 		if(do_refresh != NULL)

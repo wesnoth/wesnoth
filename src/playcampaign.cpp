@@ -22,6 +22,7 @@
 
 #include "foreach.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
 #include "playmp_controller.hpp"
@@ -119,10 +120,10 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay, end_level);
 
 	if (res == DEFEAT) {
-		gui::message_dialog(disp,
+		gui2::show_transient_message(disp.video(),
 				    _("Defeat"),
 				    _("You have been defeated!")
-				    ).show();
+				    );
 	}
 
 	if (!disp.video().faked() && res != QUIT && end_level->linger_mode)
@@ -154,10 +155,10 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		io_type = IO_SERVER;
 
 	if (res == DEFEAT) {
-		gui::message_dialog(disp,
+		gui2::show_transient_message(disp.video(),
 				    _("Defeat"),
 				    _("You have been defeated!")
-				    ).show();
+				    );
 	}
 
 	if (!disp.video().faked() && res != QUIT) {
