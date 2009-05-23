@@ -42,7 +42,7 @@ $(document).ready(function()
 <div class="main">
 <p>To install an add-on please go to the title screen of Battle for Wesnoth. Select "Add-ons" from the menu and click "OK" to connect to add-ons.wesnoth.org.
 Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it. Remember that not all add-ons are campaigns!</p>
-<p>Note: Hover over the icons to see the description of the add-on.</p>
+<p>Note: Hover over the type field to see an explanation of the type and over an icon to see the description of the add-on.</p>
 """)
     if url:
         w("""<p>PS: If you really have to download an add-on from here uncompress it to the <a href="http://www.wesnoth.org/wiki/EditingWesnoth#Where_is_my_user_data_directory.3F">userdata</a>/data/add-ons/ directory for wesnoth to find it.
@@ -97,7 +97,39 @@ Select the add-on you want to install from the list and click "OK". The download
         type = v("type", "none")
         size = float(v("size", "0"))
         name = v("title", "unknown")
-        w(('<td>%s</td>') % type)
+        if type == "scenario":
+            w("""\
+<td>Scenario<div class="type"><b>single player scenario</b><br/>
+After install the scenario will show up in the list you get when choosing "Campaign" in the main menu. (Basically it's just a campaign with only one scenario.)</div></td>""")
+        elif type == "campaign":
+            w("""\
+<td>Campaign<div class="type"><b>single player campaign</b><br/>
+After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
+        elif type == "campaign_mp":
+            w("""\
+<td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
+After install the first scenario of the campaign will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+        elif type == "scenario_mp":
+            w("""\
+<td>MP Scenario<div class="type"><b>multiplayer scenario</b><br/>
+After install the scenario will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+        elif type == "map_pack":
+            w("""\
+<td>MP map-pack<div class="type"><b>multiplayer map pack</b><br/>
+After install the maps/scenarios will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+        elif type == "era":
+            w("""\
+<td>MP era<div class="type"><b>multiplayer era</b><br/>
+After install the included era(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
+        elif type == "faction":
+            w("""\
+<td>MP faction<div class="type"><b>multiplayer faction</b><br/>
+Usually comes with an era or is dependency of another add-on.</div></td>""")
+        elif type == "media":
+            w("""\
+<td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
+unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
+        else: w(('<td>%s</td>') % type)
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (

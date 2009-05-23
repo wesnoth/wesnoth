@@ -61,6 +61,20 @@ table#campaigns td img {
     float: left;
 }
 
+div.type {
+    display: none;
+}
+
+td:hover div.type {
+    display: block;
+    left: 12px;
+    position: absolute;
+    width: 20em;
+    background-color: #ffffff;
+    border: 1px solid black;
+    padding: 8px;
+}
+
 div.desc {
     display: none;
 }
