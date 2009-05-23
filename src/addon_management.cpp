@@ -937,9 +937,11 @@ namespace {
 				const std::string& downloads = c["downloads"].str();
 				const std::string& size = c["size"];
 				const std::string& sizef = format_file_size(size);
-				const std::string& type_str = c["type"];
+				std::string type_str = c["type"];
+				utils::strip(type_str);
 				const ADDON_TYPE type = get_addon_type(type_str);
-				const std::string& type_label_str = get_translatable_addon_type(type);
+				const std::string& type_label_str = (type == ADDON_UNKNOWN && !type_str.empty())
+						? type_str : get_translatable_addon_type(type);
 
 				addons.push_back(name);
 				versions.push_back(c["version"]);
