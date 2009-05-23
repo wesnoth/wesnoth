@@ -1,0 +1,31 @@
+#!/bin/sh
+die() { echo >&2 "$@"; exit 1; }
+[ $# -eq 1 ] || die "Syntax: $0 <stable version>"
+set -o errexit
+set -o nounset
+
+STABLE=$1
+MAJOR_V=${STABLE%%.*}
+MINOR_V=${STABLE#*.}
+[ $(($MINOR_V % 2)) -eq 0 ] || die "An odd stable version.. are you sure?"
+
+OLDSTABLE=$MAJOR_V.$(($MINOR_V-2))
+DEV=$MAJOR_V.$(($MINOR_V+1))
+PREV=$DEV-prev
+
+cd "$HOME/servers"
+ln -sf $OLDSTABLE oldstable
+ln -sf $STABLE stable
+ln -sf $DEV dev
+ln -sf $PREV prev
+
+cd "$HOME"
+ln -sf servers/oldstable/current.log  oldstable.log
+ln -sf servers/stable/current.log     stable.log
+ln -sf servers/dev/current.log        dev.log
+ln -sf servers/prev/current.log       prev.log
+ln -sf servers/$OLDSTABLE/current.log $OLDSTABLE.log
+ln -sf servers/$STABLE/current.log    $STABLE.log
+ln -sf servers/$DEV/current.log       $DEV.log
+ln -sf servers/$PREV/current.log      $PREV.log
+
