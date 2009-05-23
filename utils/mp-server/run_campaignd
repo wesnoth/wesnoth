@@ -41,10 +41,10 @@ do
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
 	LOG="$SERVERBASE/logs/campaignd.$DATE.log"
 	echo "started $VERSION campaignd with command: '$COMMAND' logging to: $LOG"
-	$COMMAND &> $LOG
+	$COMMAND > $LOG 2>&1
 	EXIT_CODE="$?"
 	echo "exit code: $EXIT_CODE"
-	mv gmon.out gmon.$DATE.out &> /dev/null
+	mv gmon.out gmon.$DATE.out > /dev/null 2>&1
 	case $EXIT_CODE in
 		0)	exit ;;
 		1|2|3|127)	dietail ;; #"File I/O error." #"Could not parse config file." #"Could not bind to port." #cannot open shared object file
