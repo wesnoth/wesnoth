@@ -8,7 +8,7 @@ echo=""
 [ "$1" = "-n" ] && { echo=echo; shift; }
 [ $1 -ge 1 ] || die "New version must be greater than 1!"
 
-DEV_VERSION=1.5
+DEV_VERSION=$(readlink $HOME/servers/dev)
 NEW_VERSION=$DEV_VERSION.$1
 PREV_VERSION=$DEV_VERSION.$(($1-1))
 PPREV_VERSION=$DEV_VERSION.$(($1-2))

@@ -66,8 +66,8 @@ do
 	[ -x bin/wesnothd-$SERVER ] || die "Executable 'bin/wesnothd-$SERVER' not found."
 
 	DATE=$(date +"%Y%m%d-%H%M%S")
-	[ ! -f "$SERVERBASE"/redirect.cfg ] || PORT=$(sed -nre '/port=/s/[ \t]*port="?([0-9]+)"?/\1/p' "$SERVERBASE"/redirect.cfg)
-	BUILDDIR=$(ls -ld "$SERVERBASE"/build | sed -nre 's,.*(\.\./builds/wesnothd-[^ ]+/),\1,p')
+	[ -r "$SERVERBASE"/redirect.cfg ] && PORT=$(sed -nre '/port=/s/[ \t]*port="?([0-9]+)"?/\1/p' "$SERVERBASE"/redirect.cfg)
+	BUILDDIR=$(readlink "$SERVERBASE"/build)
 	REV=r$(echo $BUILDDIR | sed -nre "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,p")
 	LOG="wesnothd.$DATE.$REV.log"
 	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > "$SERVERBASE/logs/$LOG" 2>&1 &
