@@ -132,21 +132,11 @@ struct tbuilder_label : public tbuilder_control
 private:
 	tbuilder_label();
 public:
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_label
- *
- * == Label ==
- *
- * A label has no special fields.
- *
- */
-	tbuilder_label(const config& cfg) :
-		tbuilder_control(cfg)
-	{}
+	tbuilder_label(const config& cfg);
 
 	twidget* build () const;
 
+	bool wrap;
 };
 
 struct tbuilder_listbox : public tbuilder_control

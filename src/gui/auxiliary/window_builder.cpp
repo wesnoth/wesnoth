@@ -689,11 +689,32 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 {
 }
 
+tbuilder_label::tbuilder_label(const config& cfg)
+	: tbuilder_control(cfg)
+	, wrap(utils::string_bool("wrap"))
+{
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_label
+ *
+ * == Label ==
+ *
+ * Instance of a label.
+ *
+ * List with the label specific variables:
+ * @start_table = config
+ *     wrap (bool = false)        Is wrapping enabled for the label.
+ * @end_table
+ */
+}
+
 twidget* tbuilder_label::build() const
 {
 	tlabel* tmp_label = new tlabel();
 
 	init_control(tmp_label);
+
+	tmp_label->set_can_wrap(wrap);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with defintion '"
 		<< definition << "'.\n";
