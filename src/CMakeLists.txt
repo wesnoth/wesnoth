@@ -1,5 +1,10 @@
 ## some includes ##
-include_directories( ${Boost_INCLUDE_DIR} )
+if(MSVC)
+	# This seems to break on some Linux systems in combination with strict
+	# compilation, so disabled for now. The problem occurred on Gentoo with
+	# boost 1.37. Debian with boost 1.34, 1.35 and 1.38 works properly.
+	include_directories( ${Boost_INCLUDE_DIR} )
+endif(MSVC)
 include_directories( ${LUA_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
