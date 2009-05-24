@@ -475,13 +475,6 @@ public:
 	tvisible get_visible() const { return visible_; }
 
 	/**
-	 * Returns true if the widget is visible.
-	 *
-	 * @deprecated This function name and action is too confusing.
-	 */
-	bool is_visible() const { return visible_ == VISIBLE; }
-
-	/**
 	 * Returns true if the widget is invisible.
 	 *
 	 * @deprecated This function name and action is too confusing.

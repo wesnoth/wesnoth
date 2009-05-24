@@ -832,7 +832,7 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 		twidget* widget = child.widget();
 		assert(widget);
 
-		if(!widget->is_visible()) {
+		if(widget->get_visible() != twidget::VISIBLE) {
 			continue;
 		}
 

@@ -136,7 +136,7 @@ tdialog* twidget::dialog()
 void twidget::populate_dirty_list(twindow& caller,
 		std::vector<twidget*>& call_stack)
 {
-	if(!is_visible()) {
+	if(visible_ != twidget::VISIBLE) {
 		return;
 	}
 

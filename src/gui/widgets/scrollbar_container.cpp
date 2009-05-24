@@ -328,7 +328,7 @@ void tscrollbar_container::
 	set_scrollbar_button_status();
 
 	// Set the easy close status.
-	set_block_easy_close(is_visible()
+	set_block_easy_close(get_visible() == twidget::VISIBLE
 			&& get_active() && does_block_easy_close());
 
 	// Now set the visible part of the content.
@@ -438,11 +438,13 @@ bool tscrollbar_container::does_block_easy_close() const
 			&& horizontal_scrollbar_grid_
 			&& horizontal_scrollbar_);
 
-	const bool vertical_block = vertical_scrollbar_grid_->is_visible()
+	const bool vertical_block =
+			vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE
 			&& !(vertical_scrollbar_->at_begin()
 					&& vertical_scrollbar_->at_end());
 
-	const bool horizontal_block = horizontal_scrollbar_grid_->is_visible()
+	const bool horizontal_block =
+			horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE
 			&& !(horizontal_scrollbar_->at_begin()
 					&& horizontal_scrollbar_->at_end());
 
@@ -528,7 +530,7 @@ void tscrollbar_container::finalize_setup()
 	content_grid_->set_parent(this);
 
 	/***** Set the easy close status. *****/
-	set_block_easy_close(is_visible()
+	set_block_easy_close(get_visible() == twidget::VISIBLE
 			&& get_active() && does_block_easy_close());
 
 	/***** Let our subclasses initialize themselves. *****/
@@ -680,7 +682,7 @@ void tscrollbar_container::
 {
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->is_visible()) {
+	if(vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
 		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -692,7 +694,7 @@ void tscrollbar_container::
 {
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->is_visible()) {
+	if(vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
 		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;
@@ -704,7 +706,7 @@ void tscrollbar_container::
 {
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
-	if(horizontal_scrollbar_grid_->is_visible()) {
+	if(horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
 		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -716,7 +718,7 @@ void tscrollbar_container::
 {
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
-	if(horizontal_scrollbar_grid_->is_visible()) {
+	if(horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE) {
 		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;

@@ -458,7 +458,7 @@ void twindow::draw()
 		populate_dirty_list(*this, call_stack);
 	}
 
-	if(tooltip_.is_visible() && tooltip_.get_dirty()) {
+	if(tooltip_.get_visible() == twidget::VISIBLE && tooltip_.get_dirty()) {
 		dirty_list_.push_back(std::vector<twidget*>(1, &tooltip_));
 	}
 
@@ -519,7 +519,7 @@ void twindow::draw()
 		for(std::vector<twidget*>::iterator itor = item.begin();
 				itor != item.end(); ++itor) {
 
-			if(!(**itor).is_visible()
+			if((**itor).get_visible() != twidget::VISIBLE
 					|| (**itor).get_drawing_action() == twidget::NOT_DRAWN) {
 
 				item.erase(itor, item.end());
