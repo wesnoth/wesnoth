@@ -185,6 +185,8 @@ void twidget::set_visible_area(const SDL_Rect& area)
 
 void twidget::draw_background(surface& frame_buffer)
 {
+	assert(visible_ == VISIBLE);
+
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
 		impl_draw_background(frame_buffer);
@@ -195,6 +197,8 @@ void twidget::draw_background(surface& frame_buffer)
 
 void twidget::draw_children(surface& frame_buffer)
 {
+	assert(visible_ == VISIBLE);
+
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
 		impl_draw_children(frame_buffer);
@@ -205,6 +209,8 @@ void twidget::draw_children(surface& frame_buffer)
 
 void twidget::draw_foreground(surface& frame_buffer)
 {
+	assert(visible_ == VISIBLE);
+
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
 		impl_draw_foreground(frame_buffer);
