@@ -94,38 +94,39 @@ Select the add-on you want to install from the list and click "OK". The download
                 + src + "' '" + path + "/" + imgurl + "'")
             os.system(command)
                 
-        type = v("type", "none")
+        type = v("type", "none").strip()
         size = float(v("size", "0"))
         name = v("title", "unknown")
-        if type == "scenario":
+        ltype = type.lower()
+        if ltype == "scenario":
             w("""\
 <td>Scenario<div class="type"><b>single player scenario</b><br/>
 After install the scenario will show up in the list you get when choosing "Campaign" in the main menu. (Basically it's just a campaign with only one scenario.)</div></td>""")
-        elif type == "campaign":
+        elif ltype == "campaign":
             w("""\
 <td>Campaign<div class="type"><b>single player campaign</b><br/>
 After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
-        elif type == "campaign_mp":
+        elif ltype == "campaign_mp":
             w("""\
 <td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
 After install the first scenario of the campaign will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "scenario_mp":
+        elif ltype == "scenario_mp":
             w("""\
 <td>MP Scenario<div class="type"><b>multiplayer scenario</b><br/>
 After install the scenario will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "map_pack":
+        elif ltype == "map_pack":
             w("""\
 <td>MP map-pack<div class="type"><b>multiplayer map pack</b><br/>
 After install the maps/scenarios will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "era":
+        elif ltype == "era":
             w("""\
 <td>MP era<div class="type"><b>multiplayer era</b><br/>
 After install the included era(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
-        elif type == "faction":
+        elif ltype == "faction":
             w("""\
 <td>MP faction<div class="type"><b>multiplayer faction</b><br/>
 Usually comes with an era or is dependency of another add-on.</div></td>""")
-        elif type == "media":
+        elif ltype == "media":
             w("""\
 <td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
 unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
