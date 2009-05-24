@@ -570,9 +570,6 @@ static std::vector<std::string> split_in_width(const std::string &s, const int f
 
 static std::string remove_first_space(const std::string& text);
 
-/// Return a lowercase copy of s.
-static std::string to_lower(const std::string &s);
-
 /// Prepend all chars with meaning inside attributes with a backslash.
 static std::string escape(const std::string &s);
 
@@ -2576,9 +2573,8 @@ void help_text_area::add_item(const item &itm)
 }
 
 
-help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &s)
+help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &cmp_str)
 {
-	const std::string cmp_str = to_lower(s);
 	if (cmp_str == "left") {
 		return LEFT;
 	} else if (cmp_str == "middle") {
@@ -2589,7 +2585,7 @@ help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &s)
 		return HERE;
 	}
 	std::stringstream msg;
-	msg << "Invalid alignment string: '" << s << "'";
+	msg << "Invalid alignment string: '" << cmp_str << "'";
 	throw parse_error(msg.str());
 }
 
@@ -3020,9 +3016,8 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	return ss.str();
 }
 
-SDL_Color string_to_color(const std::string &s)
+SDL_Color string_to_color(const std::string &cmp_str)
 {
-	const std::string cmp_str = to_lower(s);
 	if (cmp_str == "green") {
 		return font::GOOD_COLOUR;
 	}
@@ -3063,14 +3058,6 @@ std::string remove_first_space(const std::string& text)
 		return text.substr(1);
 	}
 	return text;
-}
-
-std::string to_lower(const std::string &s)
-{
-	std::string lower_string;
-	lower_string.resize(s.size());
-	std::transform(s.begin(), s.end(), lower_string.begin(), tolower);
-	return lower_string;
 }
 
 std::string escape(const std::string &s)
