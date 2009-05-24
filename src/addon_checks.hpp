@@ -47,7 +47,8 @@ enum ADDON_TYPE {
 	// NOTE: following two still require proper engine support
 	//ADDON_MOD,			// Modification of the game for SP and/or MP.
 	//ADDON_GUI,			// GUI add-ons/themes.
-	ADDON_MEDIA			/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
+	ADDON_MEDIA,		/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
+	ADDON_OTHER		/**< an add-on that fits in no other category */
 };
 
 ADDON_TYPE get_addon_type(const std::string& str);

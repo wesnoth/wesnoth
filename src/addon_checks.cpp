@@ -77,6 +77,8 @@ ADDON_TYPE get_addon_type(const std::string& str)
 // 		return ADDON_MOD;
 // 	else if (str == "gui")
 // 		return ADDON_GUI;
+	else if (str == "other")
+		return ADDON_OTHER;
 	else
 		return ADDON_UNKNOWN;
 }

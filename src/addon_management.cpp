@@ -416,6 +416,8 @@ namespace {
 				return _("addon_type^MP campaign");
 			case ADDON_MEDIA:
 				return _("addon_type^Resources");
+			case ADDON_OTHER:
+				return _("addon_type^Other");
 			default:
 				return _("addon_type^(unknown)");
 		}
