@@ -27,7 +27,7 @@ void twidget::NEW_layout_init(const bool /*full_initialization*/)
 
 tpoint twidget::get_best_size() const
 {
-	assert(!is_invisible());
+	assert(visible_ != INVISIBLE);
 
 	tpoint result = layout_size_;
 	if(result == tpoint(0, 0)) {

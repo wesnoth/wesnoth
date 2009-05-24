@@ -474,13 +474,6 @@ public:
 	void set_visible(const tvisible visible);
 	tvisible get_visible() const { return visible_; }
 
-	/**
-	 * Returns true if the widget is invisible.
-	 *
-	 * @deprecated This function name and action is too confusing.
-	 */
-	bool is_invisible() const { return visible_ == INVISIBLE; }
-
 	tdrawing_action get_drawing_action() const { return drawing_action_; }
 
 	/**

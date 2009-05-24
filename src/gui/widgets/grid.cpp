@@ -625,7 +625,7 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	if(widget_->is_invisible()) {
+	if(widget_->get_visible() == twidget::INVISIBLE) {
 		DBG_GUI_L << "tgrid::tchild:"
 			<< " has widget " << true
 			<< " widget invisible " << true
@@ -647,7 +647,7 @@ tpoint tgrid::tchild::get_best_size() const
 void tgrid::tchild::set_size(tpoint origin, tpoint size)
 {
 	assert(widget());
-	if(widget()->is_invisible()) {
+	if(widget()->get_visible() == twidget::INVISIBLE) {
 		return;
 	}
 
