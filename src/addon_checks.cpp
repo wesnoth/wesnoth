@@ -53,8 +53,9 @@ bool check_names_legal(const config& dir)
 	return true;
 }
 
-ADDON_TYPE get_addon_type(const std::string& str)
+ADDON_TYPE get_addon_type(const std::string& type)
 {
+	std::string str = utils::lowercase(type);
 	if (str.empty())
 		return ADDON_UNKNOWN;
 	else if (str == "campaign")
