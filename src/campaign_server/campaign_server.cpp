@@ -506,9 +506,9 @@ namespace {
 						} else if (upload["title"].empty()) {
 							LOG_CS << "Upload aborted - no add-on title specified.\n";
 							network::send_data(construct_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!"), sock, gzipped);
-						} else if (upload["type"].empty()) {
-							LOG_CS << "Upload aborted - no add-on type specified.\n";
-							network::send_data(construct_error("Add-on rejected: You did not specify the type of the add-on in the pbl file!"), sock, gzipped);
+						} else if (get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
+							LOG_CS << "Upload aborted - unknown add-on type specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)"), sock, gzipped);
 						} else if (upload["author"].empty()) {
 							LOG_CS << "Upload aborted - no add-on author specified.\n";
 							network::send_data(construct_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!"), sock, gzipped);
