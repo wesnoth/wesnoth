@@ -437,10 +437,9 @@ struct tselect
 struct tshow
 	: public virtual tgenerator_
 {
-	/** @todo implement when set_visible works. */
-	void select(tgrid& /*grid*/, const bool /*show*/)
+	void select(tgrid& grid, const bool show)
 	{
-		//grid->set_visible(show);
+		grid.set_visible(show ? twidget::VISIBLE : twidget::HIDDEN);
 	}
 };
 
