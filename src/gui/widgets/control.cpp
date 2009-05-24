@@ -312,13 +312,8 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
 		<< " id " << id()
 		<< " dirty " << get_dirty()
-		<< " visible " << is_visible()
 		<< ".\n";
 #endif
-	if(!is_visible()) {
-		return;
-	}
-
 	canvas(get_state()).draw();
 	SDL_Rect rect = get_rect();
 	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
