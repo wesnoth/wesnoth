@@ -872,10 +872,11 @@ def output(isocode):
     for c in stuff.campaign_lookup.keys():
         stuff.is_mainline_campaign[c] = True
 
-    print "Parsing addons ...",
-    sys.stdout.flush()
-    n = stuff.add_addons(image_collector)
-    print "%d units found." % n
+    if userdir:
+        print "Parsing addons ...",
+        sys.stdout.flush()
+        n = stuff.add_addons(image_collector)
+        print "%d units found." % n
 
     # Now we read each addon campaign in turn to get its units.
     cnames = stuff.campaign_lookup.keys()
