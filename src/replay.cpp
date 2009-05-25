@@ -32,6 +32,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
+#include "play_controller.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
@@ -357,6 +358,12 @@ void replay::add_rename(const std::string& name, const map_location& loc)
 	loc.write(val);
 	val["name"] = name;
 	cmd->add_child("rename", val);
+}
+
+void replay::init_side()
+{
+	config* const cmd = add_command();
+	cmd->add_child("init_side");
 }
 
 void replay::end_turn()
@@ -731,7 +738,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 
 bool do_replay(game_display& disp, const gamemap& map,
 	unit_map& units, std::vector<team>& teams, int team_num,
-	const gamestatus& state, game_state& state_of_game, replay* obj)
+	const gamestatus& state, game_state& state_of_game, play_controller& controller, replay* obj)
 {
 	log_scope("do replay");
 
@@ -746,13 +753,13 @@ bool do_replay(game_display& disp, const gamemap& map,
 	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
-	return do_replay_handle(disp, map, units, teams, team_num, state, state_of_game,
+	return do_replay_handle(disp, map, units, teams, team_num, state, state_of_game, controller,
 						   std::string(""));
 }
 
 bool do_replay_handle(game_display& disp, const gamemap& map,
 					  unit_map& units, std::vector<team>& teams, int team_num,
-					  const gamestatus& state, game_state& state_of_game,
+					  const gamestatus& state, game_state& state_of_game, play_controller& controller, 
 					  const std::string& do_untill)
 {
 	//a list of units that have promoted from the last attack
@@ -878,6 +885,11 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				WRN_REPLAY << "attempt to rename unit at location: "
 				   << loc << ", where none exists (anymore).\n";
 			}
+		}
+
+		else if (cfg->child("init_side"))
+		{
+			controller.do_init_side(team_num - 1);
 		}
 
 		//if there is an end turn directive

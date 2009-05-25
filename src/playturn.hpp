@@ -21,6 +21,7 @@ class game_state;
 class replay_network_sender;
 class team;
 class unit;
+class play_controller;
 
 #include "global.hpp"
 
@@ -37,7 +38,7 @@ public:
 	turn_info(game_state& state_of_game,
 	          const gamestatus& status, game_display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
-		  replay_network_sender& network_sender, undo_list& undo_stack);
+		  replay_network_sender& network_sender, undo_list& undo_stack, play_controller& controller);
 
 	~turn_info();
 
@@ -82,6 +83,7 @@ private:
 
 	events::generic_event replay_error_;
 	events::generic_event host_transfer_;
+	play_controller &controller_;
 };
 
 #endif

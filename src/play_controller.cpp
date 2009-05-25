@@ -70,7 +70,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	is_host_(true),
 	skip_replay_(skip_replay),
 	linger_(false),
-	first_turn_(true),
+	previous_turn_(0),
 	savenames_(),
 	wml_commands_(),
 	victory_music_(),
@@ -128,7 +128,7 @@ void play_controller::init(CVideo& video){
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
 	events_manager_.reset(new game_events::manager(level_,map_,
-                                                   units_,teams_, gamestate_,status_));
+                                                   units_,teams_, gamestate_,status_,*this));
 
 	std::set<std::string> seen_save_ids;
 
@@ -397,9 +397,8 @@ void play_controller::fire_start(bool execute){
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = status_.turn();
 		gamestate_.set_variable("turn_number", str_cast<size_t>(start_turn_));
-		first_turn_ = true;
 	} else {
-		first_turn_ = false;
+		previous_turn_ = status_.turn();
 	}
 }
 
@@ -412,7 +411,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const unsigned int team_index, bool /*is_replay*/){
+void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
@@ -430,21 +429,37 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	gamestate_.set_variable("side_number",player_number_str.str());
 	gamestate_.last_selected = map_location::null_location;
 
-	/*
-		Normally, events must not be actively fired through replays, because
-		they have been recorded previously and therefore will get executed anyway.
-		Firing them in the normal code would lead to double execution.
-		However, the following events are different in that they need to be executed _now_
-		(before calculation of income and healing) or we will risk OOS errors if we manipulate
-		these informations inside the events and in the replay have a different order of execution.
-	*/
+	/**
+	 * We do this only for local side when we are not replaying.
+	 * For all other sides it is recorded in replay and replay handler has to handle calling do_init_side()
+	 * functions.
+	 **/
+	if (!current_team.is_local()
+		|| is_replay)
+		return;
+	recorder.init_side();
+	do_init_side(team_index);
+}
+
+/**
+ * Called by replay handler or init_side() to do actual work for turn change.
+ */
+void play_controller::do_init_side(const unsigned int team_index){
+	log_scope("player turn");
+	team& current_team = teams_[team_index];
+
 	bool real_side_change = true;
-	if(first_turn_) {
-		first_turn_ = false;
-		game_events::fire("turn " + str_cast<size_t>(start_turn_));
-		game_events::fire("new turn");
-		game_events::fire("side turn");
-	} else if (int(team_index) + 1 != first_player_ || status_.turn() > start_turn_) {
+	if (!loading_game_ || int(team_index) + 1 != first_player_ || status_.turn() > start_turn_) {
+		if (status_.turn() != previous_turn_)
+		{
+			std::stringstream event_stream;
+			event_stream << status_.turn();
+			const std::string turn_num = event_stream.str();
+
+			game_events::fire("turn " + turn_num);
+			game_events::fire("new turn");
+			previous_turn_ = status_.turn();
+		}
 		// Fire side turn event only if real side change occurs,
 		// not counting changes from void to a side
 		game_events::fire("side turn");
@@ -529,8 +544,6 @@ void play_controller::finish_turn(){
 		update_locker lock_display(gui_->video(),recorder.is_skipping());
 		const std::string turn_num = event_stream.str();
 		gamestate_.set_variable("turn_number",turn_num);
-		game_events::fire("turn " + turn_num);
-		game_events::fire("new turn");
 	}
 }
 

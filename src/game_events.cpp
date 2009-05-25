@@ -41,6 +41,7 @@
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
+#include "play_controller.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <algorithm>
@@ -1455,6 +1456,13 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			// Otherwise get the random value from the replay data
 			else {
+				const game_events::resources_t &rsrc = *game_events::resources;
+				/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
+				const t_string& side_str = rsrc.state_of_game->get_variable("side_number");
+				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
+
+				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
+					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("random_number expected but none found\n");
@@ -3254,7 +3262,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 			if(!options.empty()) {
 				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , *rsrc.status_ptr, *rsrc.state_of_game, "choose");
+					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
@@ -3264,7 +3272,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			}
 			if(has_text_input) {
 				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , *rsrc.status_ptr, *rsrc.state_of_game, "input");
+					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");
@@ -3708,7 +3716,8 @@ namespace game_events {
 	manager::manager(const config& cfg, gamemap& map_,
 			unit_map& units_,
 			std::vector<team>& teams_,
-			game_state& state_of_game_, gamestatus& status)
+			game_state& state_of_game_, gamestatus& status,
+			play_controller& controller)
 		: resources()
 		, variable_manager(&state_of_game_)
 	{
@@ -3728,6 +3737,7 @@ namespace game_events {
 		resources.state_of_game = &state_of_game_;
 		resources.status_ptr = &status;
 		resources.lua_kernel = new LuaKernel;
+		resources.controller = &controller;
 		game_events::resources = &resources;
 		manager_running = true;
 
@@ -3822,6 +3832,8 @@ namespace game_events {
 		assert(manager_running);
 		if(!events_init())
 			return;
+
+		LOG_NG << "fire event: " << event << "\n";
 
 		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
 	}

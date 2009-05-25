@@ -29,6 +29,7 @@ class config_writer;
 class game_display;
 class terrain_label;
 class unit_map;
+class play_controller;
 
 struct verification_manager
 {
@@ -59,6 +60,7 @@ public:
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&);
 	void add_rename(const std::string& name, const map_location& loc);
+	void init_side();
 	void end_turn();
 	void add_event(const std::string& name,
 		const map_location& loc=map_location::null_location);
@@ -153,11 +155,11 @@ extern replay recorder;
 //returns true if it got to the end of the turn without data running out
 bool do_replay(game_display& disp, const gamemap& map,
 	unit_map& units, std::vector<team>& teams, int team_num,
-	const gamestatus& state, game_state& state_of_game, replay* obj=NULL);
+	const gamestatus& state, game_state& state_of_game, play_controller& controller, replay* obj=NULL);
 
 bool do_replay_handle(game_display& disp, const gamemap& map,
 					  unit_map& units, std::vector<team>& teams, int team_num,
-	   const gamestatus& state, game_state& state_of_game,
+	   const gamestatus& state, game_state& state_of_game, play_controller& controller, 
 	const std::string& do_untill);
 
 //an object which can be made to undo a recorded move

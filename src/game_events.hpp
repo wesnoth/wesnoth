@@ -31,6 +31,7 @@ class team;
 class t_string;
 class unit;
 class LuaKernel;
+class play_controller;
 
 /**
  * @file game_events.hpp
@@ -58,6 +59,7 @@ namespace game_events
 		game_state *state_of_game;
 		gamestatus *status_ptr;
 		LuaKernel *lua_kernel;
+		play_controller *controller;
 	};
 
 	extern const resources_t *resources;
@@ -73,7 +75,8 @@ namespace game_events
 		// and must remain valid for the life of the object.
 		manager(const config& scenario_cfg, gamemap& map,
 				unit_map& units, std::vector<team>& teams,
-				game_state& state_of_game, gamestatus& status);
+				game_state& state_of_game, gamestatus& status,
+				play_controller& controller);
 		~manager();
 		void set_gui(game_display&);
 		void set_soundsource(soundsource::manager&);

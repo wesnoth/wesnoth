@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "formula_string_utils.hpp"
+#include "play_controller.hpp"
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
@@ -30,13 +31,20 @@ static lg::log_domain log_network("network");
 turn_info::turn_info(game_state& state_of_game,
                      const gamestatus& status, game_display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
-			 replay_network_sender& replay_sender, undo_list& undo_stack)
+			 replay_network_sender& replay_sender, undo_list& undo_stack, play_controller& controller)
   : state_of_game_(state_of_game), status_(status),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), undo_stack_(undo_stack),
 	replay_sender_(replay_sender), replay_error_("network_replay_error"),
-	host_transfer_("host_transfer")
-{}
+	host_transfer_("host_transfer"),
+	controller_(controller)
+{
+	/**
+	 * We do network sync so [init_side] is transfered to network hosts
+	 */
+	if(network::nconnections() > 0)
+		send_data();
+}
 
 turn_info::~turn_info(){
 	undo_stack_.clear();
@@ -118,7 +126,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			try{
 				turn_end = do_replay(gui_, map_, units_, teams_,
-						team_num_, status_, state_of_game_, &replay_obj);
+						team_num_, status_, state_of_game_, controller_, &replay_obj);
 			}
 			catch (replay::error& e){
 				//notify remote hosts of out of sync error

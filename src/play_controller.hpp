@@ -73,6 +73,7 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 
+	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
 protected:
@@ -155,7 +156,7 @@ protected:
 	bool is_host_;
 	bool skip_replay_;
 	bool linger_;
-	bool first_turn_;
+	unsigned int previous_turn_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
