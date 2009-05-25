@@ -8,7 +8,8 @@ Map the magenta team-color patches in the input image to red in the
 output image, copy the result to output.
 """
 
-import sys,os,getopt
+import sys,getopt
+from subprocess import Popen
 
 team_red=255
 team_green=0
@@ -62,9 +63,8 @@ for (red, green, blue) in flag_rgb:
 
     #    print "red: red\tgreen: green\tblue: blue\told_rgb\n"
     #    print "\tred: new_red\tgreen: new_green\tblue: new_blue\tnew_rgb\n"
-    convertor += " -fill \"#%02x%02x%02x\" -opaque \"#%02x%02x%02x\"" \
-                 % (new_red, new_green, new_blue,
-                    red, green, blue)
+    convertor += " -fill #%02x%02x%02x -opaque #%02x%02x%02x" \
+        % (new_red, new_green, new_blue, red, green, blue)
 
 
 if __name__ == '__main__':
@@ -89,10 +89,9 @@ if __name__ == '__main__':
     else:
         (infilename, outfilename) = arguments
 
-    convertor += " '" + infilename + "' '" + outfilename + "'"
     if verbose:
-        print convertor
+        print convertor + " '" + infilename + "' '" + outfilename + "'"
     if not dryrun:
-        os.system(convertor)
+        Popen(convertor.split() + [infilename, outfilename])
 
 # TeamColorizer ends here.

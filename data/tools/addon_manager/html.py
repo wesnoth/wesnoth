@@ -1,5 +1,6 @@
 # encoding: utf8
 import time, os, glob, sys
+from subprocess import Popen
 
 def output(path, url, data):
     try: os.mkdir(path)
@@ -51,7 +52,7 @@ Select the add-on you want to install from the list and click "OK". The download
     am_dir = os.path.dirname(__file__) + "/"
     for name in ["style.css", "jquery.js", "tablesorter.js",
         "asc.gif", "bg.gif", "desc.gif"]:
-        os.system("cp -u " + am_dir + name + " " + path)
+        Popen(["cp", "-u", am_dir + name, path])
 
     campaigns = data.get_or_create_sub("campaigns")
     w("<table class=\"tablesorter\" id=\"campaigns\">")
@@ -90,9 +91,8 @@ Select the add-on you want to install from the list and click "OK". The download
                     sys.stderr.write("Cannot find icon " + icon + "\n")
                     src = root_dir + "images/misc/missing-image.png"
                     imgurl = "icons/missing-image.png"
-            command = os.path.join(am_dir, "../unit_tree/TeamColorizer '"
-                + src + "' '" + path + "/" + imgurl + "'")
-            os.system(command)
+            Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"),
+                src, path + "/" + imgurl])
                 
         type = v("type", "none")
         size = float(v("size", "0"))
