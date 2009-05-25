@@ -858,6 +858,7 @@ bool game_controller::play_multiplayer_mode()
 		}
 		++side_num;
 	}
+	level.add_child("era", era_cfg);
 
 	try {
 		upload_log nolog(false);
