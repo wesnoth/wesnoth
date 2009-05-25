@@ -147,8 +147,7 @@ if __name__ == "__main__":
                 if options.verbose:
                     sys.stderr.write("Creating tarball %(tarname)s.\n" %
                         locals())
-                os.system("tar cjf %(tarname)s -C %(cdir)s %(name)s %(oldcfg)s" %
-                    locals())
+                Popen(["tar", "cjf", tarname, "-C", cdir, name, oldcfg])
 
     def get_info(name):
         """

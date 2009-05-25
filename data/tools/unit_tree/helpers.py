@@ -2,6 +2,7 @@
 Various helpers for use by the wmlunits tool.
 """
 import sys, os, re, glob, shutil, copy, urllib2
+from subprocess import Popen
 
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
@@ -129,9 +130,8 @@ class ImageCollector:
                 # We assume TeamColorizer is in the same directory as the
                 # helpers.py currently executing.
                 command = os.path.join(os.path.dirname(__file__),
-                    "TeamColorizer") + " '%s' '%s'" % (
-                    ipath, opath)
-                os.system(command)
+                    "TeamColorizer")
+                Popen([command, ipath, opath])
             else:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))
