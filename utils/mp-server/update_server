@@ -1,130 +1,103 @@
 #!/bin/sh
+die() { echo >&2 "$@"; exit 1; }
+[ $# -gt 0 ] && [ $# -lt 4 ] || die "Syntax: $(basename $0) [-c] <server version> [<revision>]"
+set -o errexit
+set -o nounset
 
-if [ $# -gt 3 -o $# -lt 1 ]; then
-	echo "Syntax: $0 [-c] <server version> [<revision>]" >&2
-	exit 1
-fi
+VERSION="$1"
+case "$VERSION" in
+-c)    shift
+       BASE=campaignd
+       TYPE=campaignd ;;
+*)     BASE=servers # should be moved to wesnothd at some point. (several other scripts depend on the position though!)
+       TYPE=wesnothd ;;
+esac
+echo "building $TYPE..."
 
-if [ "$1" = "-c" ]; then
-	echo "building campaignd..."
-	TYPE=campaignd
-	shift
-else
-	echo "building wesnothd..."
-	TYPE=wesnothd
-fi
+SERVERBASE="$HOME/$BASE/$VERSION"
+SOCKET="$SERVERBASE/build/var/run/socket"
+SOURCE="$HOME/source"
 
-SERVER=$1
-SERVERBASE=$HOME/$TYPE/$SERVER
-if [ $TYPE = wesnothd ]; then
-	SERVERBASE=$HOME/servers/$SERVER
-fi
-
-SOURCE=$HOME/source
-SOCKET=$SERVERBASE/build/var/run/socket
-
-if ! [ -d $SERVERBASE ]; then
-	echo "$SERVER server not found." >&2
-	exit 1
-fi
-
-if ! [ -d $SOURCE ]; then
-	echo "$SOURCE not found." >&2
-	exit 1
-fi
+[ -d "$SERVERBASE" ] || die "Server base dir '$SERVERBASE' not found!"
+[ -d "$SOURCE" ]     || die "Source dir '$SOURCE' not found!"
 
 SCONS=yes
-case $SERVER in
-	1.2 )   cd $SOURCE/1.2   || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3"
-		SCONS=no
-	;;
-	1.4 )   cd $SOURCE/1.4   || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-		SCONS=no
-	;;
-	1.6 )   cd $SOURCE/1.6   || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-	;;
-	trunk ) cd $SOURCE/trunk || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
-	;;
-	*   )   cd $SOURCE/trunk || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-	;;
+case "$VERSION" in
+1.2)   CXXFLAGS="$CXXFLAGS -ggdb3"
+       SCONS=no
+       cd "$SOURCE"/1.2 ;;
+1.4)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+       SCONS=no
+       cd "$SOURCE"/1.4 ;;
+1.6)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/1.6 ;;
+trunk) CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/trunk ;;
+*)     CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/trunk ;;
 esac
+
 if [ $TYPE = campaignd ]; then
 	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
 	LDFLAGS="$LDFLAGS -pg"
-	[ "$SERVER" = "1.4" ] && SCONS=no
+	[ "$VERSION" = "1.4" ] && SCONS=no
 fi
 
-REVISION=""
-if [ "$2" != "" ]; then
-	REVISION="-r $2"
-fi
-echo -n 'svn update... '
+printf 'svn update... '
+REVISION="${2:+-r $2}"
 svn up $REVISION > /dev/null
-rev=$(svnversion -cn src/ | cut -d: -f2)
-echo "to $rev"
-if [ "$rev" = "" ]; then
-	echo "No revision information found." >&2
-	exit 1
-fi
+REVISION=$(svnversion -cn src/ | cut -d: -f2)
+echo "to $REVISION"
+[ "$REVISION" != "" ] || die "No revision information found. Odd, exiting..."
+
 # reminder for local changes
 #svn status
-DIR=$TYPE-svn-${rev}_$SERVER
-BUILD=$HOME/$TYPE/builds/$DIR
-if [ $TYPE = wesnothd ]; then
-	BUILD=$HOME/servers/builds/$DIR
-fi
+BUILD="builds/$TYPE-svn-${REVISION}_$VERSION"
+BUILD_DIR="$HOME/$BUILD"
 
 set -x
-mkdir -p $BUILD
+mkdir -p "$BUILD_DIR"
 
-if [ "$SCONS" = "yes" ]; then
+export CXXFLAG LDFLAGS
+if [ $SCONS = yes ]; then
 	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1 forum_user_handler=1"
+		BUILD_FLAGS="fifodir=\"$BUILD_DIR\"/var/run raw_sockets=1 forum_user_handler=1"
 		case $(hostname) in
-			gonzo.dicp.de)
-				BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt"
-				;;
-			basilic)
-				BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1"
-				;;
+		gonzo.dicp.de) BUILD_FLAGS="fifodir=\"$BUILD_DIR\"/var/run raw_sockets=1 boostdir=\"$HOME\"/tools/include boostlibdir=\"$HOME\"/tools/lib boost_suffix=-mt" ;;
+		basilic)       BUILD_FLAGS="fifodir=\"$BUILD_DIR\"/var/run raw_sockets=1" ;;
 		esac
 	fi
-	mkdir -p $BUILD/var/run
+	mkdir -p "$BUILD_DIR"/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix=$BUILD program_suffix=-$SERVER $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
+	scons install-$TYPE prefix="$BUILD_DIR" program_suffix=-"$VERSION" $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > "$BUILD_DIR"/scons.log
 else
 	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD/var/run"
+		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=\"$BUILD_DIR\"/var/run --with-boost="$HOME"/tools"
 	else
 		BUILD_FLAGS="--enable-campaign-server"
 	fi
 	#echo 'autogen.sh and configure...'
-	./autogen.sh > $BUILD/autogen.log
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$BUILD --program-suffix=-$SERVER $BUILD_FLAGS --disable-game --disable-nls --enable-lite --with-boost=$HOME/tools > $BUILD/configure.log || exit 1
+	./autogen.sh > "$BUILD_DIR"/autogen.log
+	./configure --prefix="$BUILD_DIR" --program-suffix=-"$VERSION" $BUILD_FLAGS --disable-game --disable-nls --enable-lite > "$BUILD_DIR"/configure.log
 	make clean > /dev/null
 	#echo 'make...'
-	make > $BUILD/make.log || exit 1
+	make > "$BUILD_DIR"/make.log
 	#echo 'make install...'
-	make install > $BUILD/install.log || exit 1
+	make install > "$BUILD_DIR"/install.log
 fi
 
 # remove the man pages
-rm -rf $BUILD/share/
+rm -rf "$BUILD_DIR"/share/
 
-cd $SERVERBASE
-if [ -p $SOCKET -o $TYPE = campaignd ]; then
+cd "$SERVERBASE"
+if [ -p "$SOCKET" ] || [ $TYPE = campaignd ]; then
 	rm -f oldbuild
 	mv build oldbuild
 else #the server under build has never been started, keep the oldbuild link to the (currently) running server
 	rm -f build
 fi
-ln -s ../builds/$DIR/ build
+ln -s ../../"$BUILD" build
 
-cd $HOME/bin || exit 1
-ln -sf $BUILD/bin/$TYPE-$SERVER $TYPE-$SERVER
+cd "$HOME"/bin || exit 1
+ln -sf "../$BUILD/$TYPE-$VERSION" "$TYPE-$VERSION"
 set +x
