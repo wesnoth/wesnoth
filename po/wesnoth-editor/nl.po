@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-17 12:49+0200\n"
+"POT-Creation-Date: 2009-05-26 22:20+0200\n"
 "PO-Revision-Date: 2009-03-11 17:22+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch\n"
@@ -172,24 +172,24 @@ msgstr "Error bij het creëeren actie object"
 msgid "Action not implemented"
 msgstr "Actie niet geïmplementeerd"
 
-#: src/editor2/editor_controller.cpp:132
+#: src/editor2/editor_controller.cpp:134
 msgid "Quit Editor"
 msgstr "Editor verlaten"
 
-#: src/editor2/editor_controller.cpp:285
+#: src/editor2/editor_controller.cpp:287
 msgid "Fatal error"
 msgstr "Fataal fout"
 
-#: src/editor2/editor_controller.cpp:299
-#: src/editor2/editor_controller.cpp:1048
+#: src/editor2/editor_controller.cpp:301
+#: src/editor2/editor_controller.cpp:1058
 msgid "(New Map)"
 msgstr "(Nieuwe kaart)"
 
-#: src/editor2/editor_controller.cpp:305
+#: src/editor2/editor_controller.cpp:307
 msgid "Do you really want to quit?"
 msgstr "Wilt u echt afsluiten?"
 
-#: src/editor2/editor_controller.cpp:307
+#: src/editor2/editor_controller.cpp:309
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -197,7 +197,7 @@ msgstr ""
 "Wilt u echt sluiten? Wijzigingen van de kaart sinds het laatste opname "
 "zullen worden verloren."
 
-#: src/editor2/editor_controller.cpp:309
+#: src/editor2/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -205,111 +205,106 @@ msgstr ""
 "Wilt u echt sluiten? De volgende kaarten zijn gewijzigd en alle wijzigingen "
 "sinds de laatste opname zullen worden verloren."
 
-#: src/editor2/editor_controller.cpp:314
+#: src/editor2/editor_controller.cpp:316
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/editor2/editor_controller.cpp:369 src/editor2/editor_controller.cpp:479
-#: src/editor2/editor_controller.cpp:515 src/editor2/editor_controller.cpp:537
-msgid "Error"
-msgstr "Fout"
-
-#: src/editor2/editor_controller.cpp:369
+#: src/editor2/editor_controller.cpp:372
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden"
 
-#: src/editor2/editor_controller.cpp:405
+#: src/editor2/editor_controller.cpp:408
 msgid "Unsaved Changes"
 msgstr "Onopgeslagen wijzigingen"
 
-#: src/editor2/editor_controller.cpp:406
+#: src/editor2/editor_controller.cpp:409
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Wilt u alle wijzigigen sinds u laatst de kaart opsloeg ongedaan maken?"
 
-#: src/editor2/editor_controller.cpp:424
+#: src/editor2/editor_controller.cpp:427
 msgid "Choose a Map to Open"
 msgstr "Kies een kaart om in te lezen"
 
-#: src/editor2/editor_controller.cpp:459
+#: src/editor2/editor_controller.cpp:462
 msgid "Save the Map As"
 msgstr "Kaart opslaan als"
 
-#: src/editor2/editor_controller.cpp:463
+#: src/editor2/editor_controller.cpp:466
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Wilt u de bestaande kaart overschrijven?"
 
-#: src/editor2/editor_controller.cpp:479
+#: src/editor2/editor_controller.cpp:483
 msgid "No random map generators found."
 msgstr "Geen willekeurige kaart generator gevonden"
 
-#: src/editor2/editor_controller.cpp:490
+#: src/editor2/editor_controller.cpp:496 src/editor2/editor_controller.cpp:500
 msgid "Map creation failed."
 msgstr "Kaart aanmaken mislukt"
 
-#: src/editor2/editor_controller.cpp:505
+#: src/editor2/editor_controller.cpp:515
 msgid "Choose a mask to apply"
 msgstr "Kies een masker om aan te passen"
 
-#: src/editor2/editor_controller.cpp:512
+#: src/editor2/editor_controller.cpp:522
 msgid "Error loading mask"
 msgstr "Fout bij laden van het masker"
 
-#: src/editor2/editor_controller.cpp:527
+#: src/editor2/editor_controller.cpp:537
 msgid "Choose target map"
 msgstr "Kiez doel kaart"
 
-#: src/editor2/editor_controller.cpp:534 src/editor2/editor_controller.cpp:698
+#: src/editor2/editor_controller.cpp:544 src/editor2/editor_controller.cpp:708
 msgid "Error loading map"
 msgstr "Fout bij laden van het kaart"
 
-#: src/editor2/editor_controller.cpp:612 src/editor2/editor_controller.cpp:654
+#: src/editor2/editor_controller.cpp:622 src/editor2/editor_controller.cpp:664
 msgid "This map is already open."
 msgstr "Deze kaart is al open"
 
-#: src/editor2/editor_controller.cpp:633
+#: src/editor2/editor_controller.cpp:643
 msgid "Map saved."
 msgstr "Kaart opgeslagen."
 
-#: src/editor2/editor_controller.cpp:677
+#: src/editor2/editor_controller.cpp:687
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:678 src/editor2/editor_controller.cpp:692
+#: src/editor2/editor_controller.cpp:688 src/editor2/editor_controller.cpp:702
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:688
+#: src/editor2/editor_controller.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1078
+#: src/editor2/editor_controller.cpp:1088
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/editor2/editor_controller.cpp:1080
+#: src/editor2/editor_controller.cpp:1090
 msgid "Can't Undo"
 msgstr "Kan niet ongedaan maken"
 
-#: src/editor2/editor_controller.cpp:1084
+#: src/editor2/editor_controller.cpp:1094
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: src/editor2/editor_controller.cpp:1086
+#: src/editor2/editor_controller.cpp:1096
 msgid "Can't Redo"
 msgstr "Kan niet herhalen"
 
-#: src/editor2/editor_controller.cpp:1091
+#: src/editor2/editor_controller.cpp:1101
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1094
+#: src/editor2/editor_controller.cpp:1104
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1098
+#: src/editor2/editor_controller.cpp:1108
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
@@ -376,6 +371,9 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Eigen instelligen"
+
+#~ msgid "Error"
+#~ msgstr "Fout"
 
 #~ msgid ""
 #~ "Which player should start here? You can also use the 1-9 and delete keys "

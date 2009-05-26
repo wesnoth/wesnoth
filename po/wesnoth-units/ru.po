@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-17 17:42+0200\n"
+"POT-Creation-Date: 2009-05-26 22:21+0200\n"
 "PO-Revision-Date: 2009-05-12 10:56+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -216,7 +216,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:34
+#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:28
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
 #: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
 #: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
@@ -327,7 +327,7 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:86
 #: data/core/units/humans/Horseman.cfg:24
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:75
+#: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:42
 #: data/core/units/goblins/Spearman.cfg:52
@@ -764,7 +764,7 @@ msgstr ""
 #: data/core/units/dwarves/Guardsman.cfg:52
 #: data/core/units/dwarves/Sentinel.cfg:60
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
-#: data/core/units/humans/Loyalist_Spearman.cfg:87
+#: data/core/units/humans/Loyalist_Spearman.cfg:71
 msgid "javelin"
 msgstr "дротик"
 
@@ -996,15 +996,13 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/orcs/Sovereign.cfg:43 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:43 data/core/units/orcs/Ruler.cfg:42
-#: data/core/units/elves/Avenger.cfg:85 data/core/units/elves/Scout.cfg:56
-#: data/core/units/elves/Marshal.cfg:55 data/core/units/elves/Ranger.cfg:82
-#: data/core/units/elves/Outrider.cfg:55 data/core/units/elves/Archer.cfg:46
-#: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Rider.cfg:57
-#: data/core/units/elves/Hero.cfg:44 data/core/units/elves/Champion.cfg:45
-#: data/core/units/elves/Fighter.cfg:45
+#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/elves/Avenger.cfg:85
+#: data/core/units/elves/Scout.cfg:56 data/core/units/elves/Marshal.cfg:55
+#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Outrider.cfg:55
+#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Captain.cfg:56
+#: data/core/units/elves/Rider.cfg:57 data/core/units/elves/Hero.cfg:44
+#: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Loyalist_Longbowman.cfg:48
@@ -1950,9 +1948,11 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
+#: data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:38
-#: data/core/units/orcs/Slurbow.cfg:47
+#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Leader.cfg:37
+#: data/core/units/orcs/Ruler.cfg:36
 #: data/core/units/humans/Loyalist_Duelist.cfg:81
 #: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Sergeant.cfg:56
@@ -3975,7 +3975,7 @@ msgid "Orcish Leader"
 msgstr "Вожак"
 
 #. [unit_type]: id=Orcish Leader, race=orc
-#: data/core/units/orcs/Leader.cfg:25
+#: data/core/units/orcs/Leader.cfg:19
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3995,7 +3995,7 @@ msgid "Orcish Ruler"
 msgstr "Правитель орков"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
-#: data/core/units/orcs/Ruler.cfg:24
+#: data/core/units/orcs/Ruler.cfg:18
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -4011,8 +4011,8 @@ msgstr ""
 "преданности."
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:34
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:33
+#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:27
 msgid "greatsword"
 msgstr "большой меч"
 
@@ -4068,7 +4068,7 @@ msgid "Orcish Sovereign"
 msgstr "Владыка орков"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
-#: data/core/units/orcs/Sovereign.cfg:25
+#: data/core/units/orcs/Sovereign.cfg:19
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If they are also strong and cunning, they will inevitably find "

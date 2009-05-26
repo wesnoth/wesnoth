@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-17 17:41+0200\n"
+"POT-Creation-Date: 2009-05-26 22:20+0200\n"
 "PO-Revision-Date: 2009-05-20 10:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -735,15 +735,15 @@ msgstr "Dozvoli više od jedne otvorene mape istovremeno (MDI)"
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
 #: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:185
-#: src/gui/dialogs/message.cpp:192
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:186
+#: src/gui/dialogs/message.cpp:193
 msgid "OK"
 msgstr "U redu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:192
 msgid "Apply"
 msgstr "Primeni"
 
@@ -775,7 +775,7 @@ msgstr "×"
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:199
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:200
 msgid "Yes"
 msgstr "Da"
 
@@ -784,7 +784,7 @@ msgstr "Da"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:201
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:202
 msgid "No"
 msgstr "Ne"
 
@@ -866,21 +866,21 @@ msgstr "Spisak prijatelja/ignorisanih"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
 msgid "Add As Friend"
 msgstr "Dodaj kao prijatelja"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:170
 msgid "Add As Ignore"
 msgstr "Dodaj kao ignorisanog"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:171
 msgid "Remove"
 msgstr "Ukloni"
 
@@ -1031,7 +1031,7 @@ msgstr "Lozinka:"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:165
 msgid "Save password to preferences (clear text)"
 msgstr "Sačuvaj lozinku među postavkama (čist tekst)"
 
@@ -1141,7 +1141,7 @@ msgstr "Uređivač"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:51 src/hotkeys.cpp:77
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:77
 msgid "Preferences"
 msgstr "Postavke"
 
@@ -1189,431 +1189,431 @@ msgstr "Server nije zadat."
 msgid "player"
 msgstr "igrač"
 
-#: src/game_preferences_display.cpp:152 src/hotkeys.cpp:56
+#: src/game_preferences_display.cpp:153 src/hotkeys.cpp:56
 msgid "Toggle Full Screen"
 msgstr "Preko celog ekrana"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:154
 msgid "Enable scroll tracking of unit actions"
 msgstr "Klizno praćenje dejstava jedinica"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:155
 msgid "Accelerated Speed"
 msgstr "Ubrzano"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:156
 msgid "Skip AI Moves"
 msgstr "Preskoči poteze VI"
 
-#: src/game_preferences_display.cpp:156
+#: src/game_preferences_display.cpp:157
 msgid "Show Grid"
 msgstr "Prikaži mrežu"
 
-#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:334
+#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:335
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Sačuvaj snimak pri ji./vi. pobedi ili vi. porazu"
 
-#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:337
+#: src/game_preferences_display.cpp:159 src/game_preferences_display.cpp:338
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Briši samoupise pri ji./vi. pobedi ili vi. porazu"
 
-#: src/game_preferences_display.cpp:159
+#: src/game_preferences_display.cpp:160
 msgid "Do Not Show Lobby Joins"
 msgstr "Ne prikazuj ulaske u hol"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:161
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Prikaži ulaske u hol samo prijatelja"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:162
 msgid "Show All Lobby Joins"
 msgstr "Prikaži sve ulaske u hol"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:163
 msgid "Sort Lobby List"
 msgstr "Prikaži spisak hola"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:164
 msgid "Iconize Lobby List"
 msgstr "Spisak hola u ikonu"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Set path to wesnothd"
 msgstr "Putanja do wesnothd"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Friends List"
 msgstr "Spisak prijatelja"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 msgid "Multiplayer Options"
 msgstr "Višeigračke opcije"
 
 # кућица
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:172
 msgid "Show Floating Labels"
 msgstr "Plutajuće etikete"
 
 # кућица
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:173
 msgid "Turn Dialog"
 msgstr "Dijalog poteza"
 
 # кућица
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:174
 msgid "Turn Bell"
 msgstr "Zvono poteza"
 
 # кућица
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:175
 msgid "Show Team Colors"
 msgstr "Boje timova"
 
 # кућица
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:176
 msgid "Show Color Cursors"
 msgstr "Pokazivači u boji"
 
 # кућица
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:177
 msgid "Show Haloing Effects"
 msgstr "Oreolski efekti"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:178
 msgid "Change Resolution"
 msgstr "Promeni rezoluciju"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:179
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:180
 msgid "Hotkeys"
 msgstr "Prečice"
 
 # кућица
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:181
 msgid "Reverse Time Graphics"
 msgstr "Izvrnuta grafika doba dana"
 
 # кућица
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Sound effects"
 msgstr "Zvučni efekti"
 
 # кућица
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "Music"
 msgstr "Muzika"
 
 # кућица
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "Chat Timestamping"
 msgstr "Beleženje vremena ćaskanja"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "sound^Advanced Options"
 msgstr "Napredne opcije"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:187
 msgid "sound^Standard Options"
 msgstr "Standardne opcije"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:188
 msgid "User Interface Sounds"
 msgstr "Zvuci korisničkog sučelja"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Custom"
 msgstr "Posebno"
 
 # кућица
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:193
 msgid "Show Unit Idle Animations"
 msgstr "Stajaće animacije jedinica"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "Music Volume:"
 msgstr "Jačina muzike:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "SFX Volume:"
 msgstr "Jačina zvukova:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "UI Sound Volume:"
 msgstr "Jačina UI zvuka:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:197
 msgid "Bell Volume:"
 msgstr "Jačina zvona:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:197
 msgid "Scroll Speed:"
 msgstr "Brzina klizanja:"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:200
 msgid "Sample Rate (Hz):"
 msgstr "Učestanost uzorkovanja (Hz):"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:201
 msgid "Frequency:"
 msgstr "Učestanost:"
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:225
 msgid "Sound effects on/off"
 msgstr "Zvučni efekti uklj/isklj"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:229
 msgid "Change the sound effects volume"
 msgstr "Promeni jačinu zvučnih efekata"
 
-#: src/game_preferences_display.cpp:231
+#: src/game_preferences_display.cpp:232
 msgid "Music on/off"
 msgstr "Muzika uklj/isklj"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:236
 msgid "Change the music volume"
 msgstr "Promeni jačinu muzike"
 
-#: src/game_preferences_display.cpp:241
+#: src/game_preferences_display.cpp:242
 msgid "Change the bell volume"
 msgstr "Promeni jačinu zvona"
 
-#: src/game_preferences_display.cpp:244
+#: src/game_preferences_display.cpp:245
 msgid "Turn menu and button sounds on/off"
 msgstr "Uključi/isključi zvuke menija i dugmadi"
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:249
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Promeni jačinu zvuka pri kliku na dugme, itd."
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:251
 msgid "Change the sample rate"
 msgstr "Promeni učestanost uzorkovanja"
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:260
 msgid "User defined sample rate"
 msgstr "Korisnički def. učestanost uzorkovanja"
 
-#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
+#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:273
 msgid "Change the buffer size"
 msgstr "Promeni veličinu bafera"
 
-#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:812
+#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:813
 msgid "Buffer Size: "
 msgstr "Veličina bafera: "
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:278
 msgid "Change the speed of scrolling around the map"
 msgstr "Promeni brzinu klizanja mapa"
 
-#: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
+#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:285
 msgid "Set the amount of chat lines shown"
 msgstr "Postavi broj prikazanih redova ćaskanja"
 
-#: src/game_preferences_display.cpp:287
+#: src/game_preferences_display.cpp:288
 msgid "Add a timestamp to chat messages"
 msgstr "Dodaj vreme u porukama u ćaskanju"
 
-#: src/game_preferences_display.cpp:290
+#: src/game_preferences_display.cpp:291
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Izaberi da li se igra preko celog ekrana ili u prozoru"
 
-#: src/game_preferences_display.cpp:293
+#: src/game_preferences_display.cpp:294
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "Treba li mapa da otkliza do jedinice pri animiranju dejstva ili pokreta."
 
-#: src/game_preferences_display.cpp:296
+#: src/game_preferences_display.cpp:297
 msgid "Make units move and fight faster"
 msgstr "Jedinice da se brže kreću i bore"
 
-#: src/game_preferences_display.cpp:313
+#: src/game_preferences_display.cpp:314
 msgid "Units move and fight speed"
 msgstr "Brzina kretanja i borbe jedinica"
 
-#: src/game_preferences_display.cpp:316
+#: src/game_preferences_display.cpp:317
 msgid "Show unit idle animations"
 msgstr "Prikazuj stajaće animacije jedinica"
 
-#: src/game_preferences_display.cpp:322
+#: src/game_preferences_display.cpp:323
 msgid "Set the frequency of unit idle animations"
 msgstr "Odredi učestanost stajaćih animacija jedinica"
 
-#: src/game_preferences_display.cpp:327
+#: src/game_preferences_display.cpp:328
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Postavi najveći broj samoupisa za zadržavanje"
 
-#: src/game_preferences_display.cpp:331
+#: src/game_preferences_display.cpp:332
 msgid "Do not animate AI units moving"
 msgstr "Ne animiraj VI jedinice prilikom kretanja"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:340
 msgid "Overlay a grid onto the map"
 msgstr "Preklopi mrežu preko mape"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:343
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Poređaj igrače na spisku u holu po grupama"
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:346
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Prikaži ikone ispred imena igrača u holu."
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:349
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Ako je prazno, briše sačuvanu lozinku (pri napuštanju)."
 
-#: src/game_preferences_display.cpp:351
+#: src/game_preferences_display.cpp:352
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Ne prikazuj poruke o igračima koji pristignu u višeigrački hol"
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:354
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Prikaži poruke o prijateljima koji pristignu u višeigrački hol"
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:356
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Prikaži poruke o svim igračima koji pristignu u višeigrački hol"
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:358
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Pronađite i postavite putanju do vi. servera, za udomljavanje LAN igara."
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:359
 msgid "View and edit your friends and ignores list"
 msgstr "Pregledajte i uredite spisak prijatelja i ignorisanih"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:360
 msgid "Back to the multiplayer options"
 msgstr "Nazad na višeigračke opcije"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:361
 msgid "Add this username to your friends list"
 msgstr "Dodaj korisničko ime na spisak prijatelja"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:362
 msgid "Add this username to your ignores list"
 msgstr "Dodaj korisničko ime na spisak ignorisanih"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:363
 msgid "Remove this username from your list"
 msgstr "Ukloni korisničko ime sa spiska"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:366
 msgid "Insert a username"
 msgstr "Umetni korisničko ime"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:369
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Prikaži iznad jedinica tekst sa pretrpljenom štetom pri udaru"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:371
 msgid "Change the resolution the game runs at"
 msgstr "Promeni rezoluciju igre"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:372
 msgid "Change the theme the game runs with"
 msgstr "Promeni temu igre"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:375
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Prikaži dijalog na početku mog poteza"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:378
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Zazvoni na početku mog poteza"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:381
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Prikaži oko osnove svake jedinice krug u boji strane kojoj pripada"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:384
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Kretanje sunca s leva na desno ili obrnuto"
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:387
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Obojeni pokazivači miša (može usporavati)"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:390
 msgid "Use graphical special effects (may be slower)"
 msgstr "Specijalni grafički efekti (može usporavati)"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:392
 msgid "View and configure keyboard shortcuts"
 msgstr "Prikaži i podesi prečice sa tastature"
 
-#: src/game_preferences_display.cpp:680
+#: src/game_preferences_display.cpp:681
 msgid "Speed: "
 msgstr "Brzina: "
 
-#: src/game_preferences_display.cpp:685 src/game_preferences_display.cpp:687
+#: src/game_preferences_display.cpp:686 src/game_preferences_display.cpp:688
 msgid "Maximum Auto-Saves: "
 msgstr "Najviše samoupisa: "
 
-#: src/game_preferences_display.cpp:685
+#: src/game_preferences_display.cpp:686
 msgid "infinite"
 msgstr "bezbroj"
 
-#: src/game_preferences_display.cpp:864
+#: src/game_preferences_display.cpp:865
 msgid "Chat Lines: "
 msgstr "Redovi ćaskanja: "
 
-#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:887 src/game_preferences_display.cpp:895
 msgid "Invalid username"
 msgstr "Nevaljano korisničko ime"
 
-#: src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:969
 msgid "yes"
 msgstr "da"
 
-#: src/game_preferences_display.cpp:970
+#: src/game_preferences_display.cpp:971
 msgid "no"
 msgstr "ne"
 
-#: src/game_preferences_display.cpp:1003
+#: src/game_preferences_display.cpp:1004
 msgid "(empty list)"
 msgstr "(prazan spisak)"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1120
 msgid "Prefs section^General"
 msgstr "Opšte"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^Display"
 msgstr "Prikaz"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Multiplayer"
 msgstr "Višeigranje"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1124
 msgid "Advanced section^Advanced"
 msgstr "Napredno"
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1159
 msgid "Saved Theme Preference: "
 msgstr "Sačuvana podešavanja teme: "
 
-#: src/game_preferences_display.cpp:1164
+#: src/game_preferences_display.cpp:1165
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova tema će se iskazati u sledećoj novoj ili učitanoj igri."
 
-#: src/game_preferences_display.cpp:1168
+#: src/game_preferences_display.cpp:1169
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nema poznatih tema. Pokušajte da promenite u okviru tekuće igre."
 
-#: src/game_preferences_display.cpp:1210
+#: src/game_preferences_display.cpp:1211
 msgid "Find $filename server binary to host networked games"
 msgstr "Pronađite serversku izvršnu $filename, za udomljavanje mrežnih igara."
 
@@ -1633,41 +1633,48 @@ msgstr "Veličina fonta za tekst je 0."
 msgid "Text doesn't start on canvas."
 msgstr "Tekst ne staje na platno."
 
-#: src/gui/auxiliary/window_builder.cpp:316 src/gui/widgets/settings.cpp:505
+#: src/gui/auxiliary/window_builder.cpp:317 src/gui/widgets/settings.cpp:511
 msgid "No resolution defined."
 msgstr "Rezolucija nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:412
-#: src/gui/auxiliary/window_builder.cpp:932
-#: src/gui/auxiliary/window_builder.cpp:1141 src/gui/widgets/settings.cpp:760
-#: src/gui/widgets/settings.cpp:914
+#: src/gui/auxiliary/window_builder.cpp:413
+#: src/gui/auxiliary/window_builder.cpp:1055
+#: src/gui/auxiliary/window_builder.cpp:1264 src/gui/widgets/settings.cpp:766
+#: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
 msgid "No grid defined."
 msgstr "Mreža nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:519
+#: src/gui/auxiliary/window_builder.cpp:520
 msgid "A row must have a column."
 msgstr "Vrsta mora imati kolonu."
 
-#: src/gui/auxiliary/window_builder.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:521
 msgid "Number of columns differ."
 msgstr "Broj kolona se razlikuje."
 
-#: src/gui/auxiliary/window_builder.cpp:772
+#: src/gui/auxiliary/window_builder.cpp:794
+#: src/gui/auxiliary/window_builder.cpp:976
 msgid "No list defined."
 msgstr "Spisak nije zadat."
 
-#: src/gui/auxiliary/window_builder.cpp:775
+#: src/gui/auxiliary/window_builder.cpp:797
+#: src/gui/auxiliary/window_builder.cpp:980
 msgid "A 'list_definition' should contain one row."
 msgstr "Polje list_definition mora sadržati jednu vrstu."
 
-#: src/gui/auxiliary/window_builder.cpp:793
+#: src/gui/auxiliary/window_builder.cpp:815
+#: src/gui/auxiliary/window_builder.cpp:998
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "Polje list_data mora imati isti broj kolona kao list_definition."
 
-#: src/gui/auxiliary/window_builder.cpp:1060
+#: src/gui/auxiliary/window_builder.cpp:1183
 msgid "The number of value_labels and values don't match."
 msgstr "Broj value_labels i vrednosti se ne slaže."
+
+#: src/gui/dialogs/message.cpp:214
+msgid "Error"
+msgstr "Greška"
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
@@ -1685,24 +1692,24 @@ msgstr "verzija"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Obavezni vidžet „$id“ nije definisan."
 
-#: src/gui/widgets/settings.cpp:137
+#: src/gui/widgets/settings.cpp:138
 msgid "No default gui defined."
 msgstr "Podrazumevano sučelje nije definisano."
 
-#: src/gui/widgets/settings.cpp:292
+#: src/gui/widgets/settings.cpp:298
 msgid "Window not defined."
 msgstr "Prozor nije definisan."
 
-#: src/gui/widgets/settings.cpp:389
+#: src/gui/widgets/settings.cpp:395
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definicija vidžeta „$definition“ ne sadrži definiciju za „$id“."
 
-#: src/gui/widgets/settings.cpp:531
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "Odeljak stanja ili crtanja nije definisan."
 
-#: src/gui/widgets/window.cpp:761 src/gui/widgets/window.cpp:908
+#: src/gui/widgets/window.cpp:668
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ne mogu da prikažem dijalog koji ne staje na ekran."
 
@@ -2152,7 +2159,7 @@ msgstr "Snimanje neuspelo"
 msgid "language code for localized resources^en_US"
 msgstr "sr"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:202
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:203
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
@@ -2216,7 +2223,7 @@ msgstr "Ne mogu da dobavim sliku terena: $terrain"
 msgid "Error creating or aquiring an image."
 msgstr "Greška u stvaranju ili dobavljanju slike."
 
-#: src/preferences_display.cpp:74 src/preferences_display.cpp:112
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2226,52 +2233,48 @@ msgstr ""
 "po pikselu da bi igra radila u prozoru. Prikaz mora podržavati 1024×768×16 "
 "da bi igra išla preko celog ekrana."
 
-#: src/preferences_display.cpp:206
+#: src/preferences_display.cpp:207
 msgid "Hotkey Settings"
 msgstr "Postavke prečica"
 
-#: src/preferences_display.cpp:212 src/preferences_display.cpp:280
+#: src/preferences_display.cpp:213 src/preferences_display.cpp:281
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Pritisnite željenu prečicu (Escape odustaje)"
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:232
 msgid "Action"
 msgstr "radnja"
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:232
 msgid "Binding"
 msgstr "sveza"
 
-#: src/preferences_display.cpp:243
+#: src/preferences_display.cpp:244
 msgid "Change Hotkey"
 msgstr "Promeni prečicu"
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:247
 msgid "Clear Hotkey"
 msgstr "Očisti prečicu"
 
-#: src/preferences_display.cpp:314
+#: src/preferences_display.cpp:315
 msgid "This Hotkey is already in use."
 msgstr "Prečica je već u upotrebi."
 
-#: src/preferences_display.cpp:325
+#: src/preferences_display.cpp:326
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Upozorenje: prečice za snimanje ekrana nisu kombinacije sa tasterima Ctrl, "
 "Alt ili Meta."
 
-#: src/preferences_display.cpp:416
+#: src/preferences_display.cpp:417
 msgid "There are no alternative video modes available"
 msgstr "Nema alternativnih video režima"
 
-#: src/preferences_display.cpp:445
+#: src/preferences_display.cpp:446
 msgid "Choose Resolution"
 msgstr "Izaberi rezoluciju"
-
-#: src/show_dialog.cpp:356
-msgid "Error"
-msgstr "Greška"
 
 #: src/terrain_translation.cpp:706
 msgid ""
@@ -2279,7 +2282,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Nađen teren sa niskom dužom od četiri znaka. Teren na koji ovo utiče:"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:53
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -2287,11 +2290,11 @@ msgstr ""
 "Greška zbog mogućeg nevaljanog WML-a\n"
 "Poruka je:"
 
-#: src/wml_exception.cpp:54
+#: src/wml_exception.cpp:55
 msgid "When reporting the bug please include the following error message :"
 msgstr "Kada prijavljujete grešku, molimo uključite i sledeću poruku:"
 
-#: src/wml_exception.cpp:72
+#: src/wml_exception.cpp:73
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -2299,6 +2302,6 @@ msgstr ""
 "U odeljku ‘[$section|]’ gde ‘$primary_key| = $primary_value’ nije postavljen "
 "obavezni ključ ‘$key|’."
 
-#: src/wml_exception.cpp:75
+#: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "U odeljku ‘[$section|]’ nije postavljen obavezni ključ ‘$key|’."
