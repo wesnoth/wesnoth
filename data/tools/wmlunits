@@ -1016,11 +1016,11 @@ if __name__ == '__main__':
             f.write("<html><body>")
             for uid in uids:
                 u = wesnoth.unit_lookup[uid]
-                if u.race != race:
+                if u.rid != race:
                     if race != None: f.write("</ul>")
                     f.write("<p>%s</p>\n" % u.rid)
                     f.write("<ul>")
-                    race = u.race
+                    race = u.rid
                 f.write("<li>%s</li>\n" % uid)
             f.write("</ul>")
             f.write("</body></html>")
