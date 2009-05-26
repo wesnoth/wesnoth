@@ -1,15 +1,14 @@
 #!/bin/sh
-die() { 
-	echo >&2 "$@"
-	exit 1
-}
+die() { echo >&2 "$@"; exit 1; }
 dietail() {
 	echo >&2 "$@"
 	echo >&2 "tail $LOG:"
 	tail "$SERVERBASE/logs/$LOG"
 	exit 1
 }
-[ $# -ge 1 ] || die "Syntax: $0 <server version> [--test] [<additional parameters for wesnothd>]"
+[ $# -ge 1 ] || die "Syntax: $(basename $0) <server version> [--test] [<additional parameters for wesnothd>]"
+set -o nounset
+set -o noclobber
 
 SERVER=$1
 SERVERBASE="$HOME/servers/$SERVER"
@@ -31,27 +30,15 @@ fi
 PARAMETERS="$@"
 THREADS=4
 PORT=15000
-
 case $SERVER in
-	1.4)
-		PORT=14998
-		THREADS=32
-		;;
-	1.6)
-		PORT=14999
-		THREADS=32
-		;;
-	1.5*)
-		PORT=14999
-		THREADS=16
-		;;
-	1.7*)
-		PORT=14997
-		THREADS=16
-		;;
-	trunk)
-		PORT=15000
-		;;
+1.4)   PORT=14998
+       THREADS=32 ;;
+1.6)   PORT=14999
+       THREADS=32 ;;
+1.5*)  PORT=14999
+       THREADS=16 ;;
+1.7*)  PORT=14997
+       THREADS=16 ;;
 esac
 
 ulimit -Ss 2048
@@ -73,23 +60,27 @@ do
 	bin/wesnothd-$SERVER -c "$SERVERBASE"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS > "$SERVERBASE/logs/$LOG" 2>&1 &
 	PID=$!
 	echo "started $SERVER server with command: 'wesnothd-$SERVER -c \"$SERVERBASE\"/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS' (revision: $REV, pid: $PID) logging to: $LOG"
-	# create some convenient links
-	ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
-	rm -f "$SERVERBASE"/old.log "$SERVERBASE"/old.pid
-	mv "$SERVERBASE"/current.log "$SERVERBASE"/old.log > /dev/null 2>&1
-	mv "$SERVERBASE"/current.pid "$SERVERBASE"/old.pid > /dev/null 2>&1
-	echo $PID > "$SERVERBASE"/current.pid
-	ln -s "logs/$LOG" "$SERVERBASE"/current.log
+	# wait a bit in case the process dies immediately
+	sleep 5
+	if jobs 1
+	then # create some convenient links
+		ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
+		rm -f "$SERVERBASE"/old.log "$SERVERBASE"/old.pid
+		mv "$SERVERBASE"/current.log "$SERVERBASE"/old.log > /dev/null 2>&1
+		mv "$SERVERBASE"/current.pid "$SERVERBASE"/old.pid > /dev/null 2>&1
+		echo $PID > "$SERVERBASE"/current.pid
+		ln -s "logs/$LOG" "$SERVERBASE"/current.log
+	fi
+
 	# wait for the server to terminate
 	wait $PID
-
 	EXIT_CODE=$?
 	echo "wesnothd exited with code: $EXIT_CODE"
 	# need to use the recorded path since the build/ symlink might have changed
 	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" > /dev/null 2>&1
 	# check for return code if not zero or 98 (port in use) the server should be restarted
 	case $EXIT_CODE in
-		0)	exit ;;
-		98)	dietail ;; #Could not bind to port
+	0)   exit ;;
+	98)  dietail ;; #Could not bind to port
 	esac
 done
