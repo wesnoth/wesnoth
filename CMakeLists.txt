@@ -80,6 +80,7 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
   set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
+option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 
 #misc options
 if(NOT MSVC)
@@ -162,6 +163,10 @@ endif()
 if(ENABLE_LOW_MEM)
   add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
+
+if(ENABLE_DEBUG_WINDOW_LAYOUT)
+	add_definitions(-DDEBUG_WINDOW_LAYOUT_GRAPHS)
+endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 
 #
 # Libraries that are only required by some targets
