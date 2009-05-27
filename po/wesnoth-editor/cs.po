@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-05-26 22:20+0200\n"
-"PO-Revision-Date: 2009-02-23 20:40+0100\n"
+"PO-Revision-Date: 2009-05-03 12:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -107,13 +107,13 @@ msgstr "zvláštnosti"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Pro kreslení terénu popředí, respektive pozadí, použijte levé resp. pravé "
-"tlačítko myši. Se shiftem se kreslí pouze základní vrstva."
+"tlačítko myši. Se shiftem se kreslí pouze základní vrstva. S ctrl je do "
+"nástroje nabrán terén pod kurzorem (kapátko)."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -275,17 +275,19 @@ msgstr "Mapa byla uložena."
 
 #: src/editor2/editor_controller.cpp:687
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Načtena vložená data mapy"
 
 #: src/editor2/editor_controller.cpp:688 src/editor2/editor_controller.cpp:702
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa načtena ze scénáře"
 
 #: src/editor2/editor_controller.cpp:698
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Načten odkazovaný soubor mapy:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1088
 msgid "Undo"
@@ -333,23 +335,23 @@ msgstr "Pozadí"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Soubor nebyl nalezen"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Soubor mapy se zdá být scénářem, ale klíč map_data není odkazem na "
+"existující soubor"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Soubor mapy nebyl nalezen nebo je prázdný"
+msgstr "Prázdný soubor mapy"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Nepodařilo se uložit mapu: $msg"
+msgstr "Nebylo možno uložit do scénáře"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"

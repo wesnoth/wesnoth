@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-04-10 15:13+0100\n"
+"PO-Revision-Date: 2009-05-03 12:21+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e, --editor>I<\\ soubor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -201,6 +201,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"spustí vestavěný editor map. Pokud je udán I<soubor>, příkaz je ekvivalentem "
+"B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -279,7 +281,6 @@ msgstr "B<-l,\\ --load>I<\\ soubor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
-#, fuzzy
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -288,7 +289,8 @@ msgid ""
 msgstr ""
 "načte uloženou hru I<soubor> ze standardního adresáře pro uložené hry. Pokud "
 "je použit i přepínač B<-e> nebo B<--editor>, otevře editor s načtenou mapou "
-"ze I<soubor>."
+"ze I<soubor>. Pokud je to adresář, editor zobrazí okno pro načtení mapy s "
+"touto složkou jako výchozí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnothd.6:58
@@ -1437,7 +1439,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "přeskočí hlavní menu a otevře vestavěný editor map."
