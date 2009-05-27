@@ -227,7 +227,7 @@ public:
 	bool is_ai() const { return info_.controller == team_info::AI || is_human_ai(); }
 	bool is_empty() const { return info_.controller == team_info::EMPTY; }
 
-	bool is_local() const { return is_human() || is_human_ai() || is_ai(); }
+	bool is_local() const { return is_human() || is_ai(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
 	void make_human() { info_.controller = team_info::HUMAN; }
