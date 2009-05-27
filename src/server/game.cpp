@@ -322,12 +322,6 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 
-	//check, if this socket belongs to a player
-	const user_vector::iterator pl = std::find(players_.begin(), players_.end(), sock);
-	if (pl == players_.end()) {
-		ERR_GAME << "ERROR: Not a player of this game. (socket: " << sock << ")\n";
-		return;
-	}
 	// Check the side number.
 	const unsigned int side_num = cfg["side"].to_int();
 	if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
