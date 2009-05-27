@@ -496,7 +496,8 @@ class Parser:
             if self.macro_not_found_callback:
                 keep_macro = self.macro_not_found_callback(self, name, params)
                 if keep_macro: return keep_macro
-            sys.stderr.write("No macro %s.\n" % name.encode("utf8"))
+            if self.verbose:
+                sys.stderr.write("No macro %s.\n" % name.encode("utf8"))
             if self.verbose:
                 sys.stderr.write(" (%s:%d)\n" % (self.filename, self.line))
             return name

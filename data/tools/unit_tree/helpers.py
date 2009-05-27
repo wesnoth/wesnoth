@@ -67,6 +67,7 @@ class ImageCollector:
         self.datadir = datadir
         self.userdir = userdir
         self.id = 0
+        self.verbose = 0
 
     def add_binary_pathes_from_WML(self, campaign, WML):
         self.pathes_per_campaign[campaign] = self.pathes_per_campaign.get(
@@ -135,8 +136,9 @@ class ImageCollector:
             else:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (c, i))
-                sys.stderr.write("Warning: Looked at the following locations:\n")
-                sys.stderr.write("\n".join(bases) + "\n")
+                if self.verbose:
+                    sys.stderr.write("Warning: Looked at the following locations:\n")
+                    sys.stderr.write("\n".join(bases) + "\n")
 
 blah = 1
 class WesnothList:
