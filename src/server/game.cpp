@@ -153,6 +153,8 @@ void game::start_game(const player_map::const_iterator starter) {
 			"\tturn bonus: "     + s["mp_countdown_turn_bonus"].to_string() : "")
 		<< "\n";
 
+	update_side_data();
+
 	nsides_ = 0;
 	// Set all side controllers to 'human' so that observers will understand
 	// that they can't take control of any sides if they happen to have the
@@ -160,7 +162,7 @@ void game::start_game(const player_map::const_iterator starter) {
 	const simple_wml::node::child_list& sides = level_.root().children("side");
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		nsides_++;
-		if((**s)["controller"] != "null" && !advance) {
+		if ((**s)["controller"] != "null") {
 			(*s)->set_attr("controller", "human");
 		}
 	}
@@ -179,8 +181,6 @@ void game::start_game(const player_map::const_iterator starter) {
 	end_turn();
 	clear_history();
 	if (advance) {
-		// Re-assign sides to allow correct filtering of commands.
-		update_side_data();
 		// When the host advances tell everyone that the next scenario data is
 		// available.
 		static simple_wml::document notify_next_scenario("[notify_next_scenario]\n[/notify_next_scenario]\n", simple_wml::INIT_COMPRESSED);
@@ -214,8 +214,6 @@ bool game::take_side(const player_map::const_iterator user)
 			side_num = (**side)["side"].to_int();
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
 			if (sides_[side_num - 1] != 0) continue;
-			side_controllers_[side_num - 1] = "human";
-			sides_[side_num - 1] = user->first;
 			cfg.root().set_attr_dup("side", (**side)["side"]);
 			// Tell the host which side the new player should take.
 
@@ -229,15 +227,10 @@ bool game::take_side(const player_map::const_iterator user)
 	// If there was no fitting side just take the first available.
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if((**side)["controller"] == "network") {
-			//don't allow players to take sides in games with invalid side numbers
-			try {
-				side_num = (**side)["side"].to_int();
-			} catch (bad_lexical_cast&) { continue; }
+			side_num = (**side)["side"].to_int();
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
 			if (sides_[side_num - 1] != 0) continue;
 			// we expect that the host will really use our proposed side number (he could do different)
-			side_controllers_[side_num - 1] = "human";
-			sides_[side_num - 1] = user->first;
 			cfg.root().set_attr_dup("side", (**side)["side"]);
 			// Tell the host which side the new player should take.
 			simple_wml::string_span data = cfg.output_compressed();
