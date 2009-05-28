@@ -848,6 +848,7 @@ bool game_controller::play_multiplayer_mode()
 			ai_params[j->first] = j->second;
 		}
 	}
+	level.add_child("era", era_cfg);
 
 	try {
 		upload_log nolog(false);
