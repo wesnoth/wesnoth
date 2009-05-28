@@ -765,9 +765,10 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	std::vector<int> marked;
 	const simple_wml::node::child_list& commands = turn->children("command");
 	simple_wml::node::child_list::const_iterator command;
+	const bool player = (is_player(user->first) || user->first == owner_);
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (!is_current_player(user->first)
-		&& !is_legal_command(**command, is_player(user->first))) {
+		&& !is_legal_command(**command, player)) {
 			LOG_GAME << "ILLEGAL COMMAND: (((" << data.output() << ")))\n";
 			std::stringstream msg;
 			msg << "Removing illegal command from: " << user->second.name()
