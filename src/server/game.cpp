@@ -769,18 +769,19 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (!is_current_player(user->first)
 		&& !is_legal_command(**command, player)) {
-			LOG_GAME << "ILLEGAL COMMAND: (((" << data.output() << ")))\n";
+			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
+				<< (**command).output() << ")))\n";
 			std::stringstream msg;
-			msg << "Removing illegal command from: " << user->second.name()
+			msg << "Removing illegal command '" << (**command).first_child().to_string()
+				<< "' from: " << user->second.name()
 				<< ". Current player is: "
 				<< (player_info_->find(current_player()) != player_info_->end()
 					? player_info_->find(current_player())->second.name()
-					: "(unfound) ")// << nsides_ << "/" << end_turn_
-				<< ".\n";
-			LOG_GAME << msg.str();
+					: "(unfound)")
+				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").\n";
+			LOG_GAME << msg.str() << " (socket: " << current_player() << ")";
 			send_and_record_server_message(msg.str().c_str());
-			//TODO: make an easy way to convert a simple wml node to a string
-			//LOG_GAME << (**command).output();
+
 			marked.push_back(index - marked.size());
 		} else if ((**command).child("speak")) {
 			simple_wml::node& speak = *(**command).child("speak");
