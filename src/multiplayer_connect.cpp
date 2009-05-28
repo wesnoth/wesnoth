@@ -1027,6 +1027,9 @@ connect::connect(game_display& disp, const config& game_config,
 	if(get_result() == QUIT
 		|| get_result() == CREATE)
 		return;
+	if (level_["id"].empty()) {
+		throw config::error(_("The scenario is invalid because it has no id."));
+	}
 	lists_init();
 	if(sides_.empty()) {
 		throw config::error(_("The scenario is invalid because it has no sides."));
