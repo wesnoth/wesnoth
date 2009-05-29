@@ -23,7 +23,8 @@ local function child_range(cfg, tag)
 end
 
 local function trim(s)
-	return string.gsub(s, "^%s*(.-)%s*$", "%1")
+	local r = string.gsub(s, "^%s*(.-)%s*$", "%1")
+	return r
 end
 
 local function generate_objectives(cfg, team, silent)
