@@ -63,8 +63,8 @@ if [ $SCONS = yes ]; then
 	if [ $TYPE = wesnothd ]; then
 		BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1 forum_user_handler=1"
 		case $(hostname) in
-		gonzo.dicp.de) BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run raw_sockets=1' boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt" ;;
-		basilic)       BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run raw_sockets=1'" ;;
+		gonzo.dicp.de) BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1 'boostdir=$HOME/tools/include' 'boostlibdir=$HOME/tools/lib' boost_suffix=-mt" ;;
+		basilic)       BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1" ;;
 		esac
 	fi
 	mkdir -p "$BUILD_DIR"/var/run
