@@ -61,10 +61,10 @@ mkdir -p "$BUILD_DIR"
 export CXXFLAG LDFLAGS
 if [ $SCONS = yes ]; then
 	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1 forum_user_handler=1"
+		BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1 forum_user_handler=1"
 		case $(hostname) in
-		gonzo.dicp.de) BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1 'boostdir=$HOME/tools/include' 'boostlibdir=$HOME/tools/lib' boost_suffix=-mt" ;;
-		basilic)       BUILD_FLAGS="'fifodir=$BUILD_DIR/var/run' raw_sockets=1" ;;
+		gonzo.dicp.de) BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt" ;;
+		basilic)       BUILD_FLAGS="fifodir=$BUILD_DIR/var/run raw_sockets=1" ;;
 		esac
 	fi
 	mkdir -p "$BUILD_DIR"/var/run
@@ -72,7 +72,7 @@ if [ $SCONS = yes ]; then
 	scons install-$TYPE prefix="$BUILD_DIR" program_suffix=-"$VERSION" $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > "$BUILD_DIR"/scons.log
 else
 	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="--enable-server --enable-raw-sockets '--with-fifodir=$BUILD_DIR/var/run' '--with-boost=$HOME/tools'"
+		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD_DIR/var/run --with-boost=$HOME/tools"
 	else
 		BUILD_FLAGS="--enable-campaign-server"
 	fi
