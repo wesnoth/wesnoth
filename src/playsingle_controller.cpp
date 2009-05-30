@@ -491,7 +491,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 			if(end_level.carryover_report)
 			{
-				gui2::show_transient_message(gui_->video(), title, report.str());
+				/** @todo Convert to pango markup. */
+				gui2::show_transient_message(gui_->video(),
+						title, report.str(), gui2::tcontrol::WML_MARKUP);
 			}
 
 			return VICTORY;
