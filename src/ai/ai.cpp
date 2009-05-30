@@ -586,7 +586,7 @@ void ai_default::play_turn()
 	}
 }
 
-void ai_default::evaluate_recruiting_value(unit_map::iterator leader)
+void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 {
 	if (recruiting_preferred_ == 2)
 	{
@@ -601,13 +601,13 @@ void ai_default::evaluate_recruiting_value(unit_map::iterator leader)
 	float free_slots = 0.0f;
 	const float gold = current_team().gold();
 	const float unit_price = current_team_w().average_recruit_price();
-	if (map_.is_keep(leader->first))
+	if (map_.is_keep(leader_loc))
 	{
 		std::set<map_location> checked_hexes;
-		checked_hexes.insert(leader->first);
-		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
+		checked_hexes.insert(leader_loc);
+		free_slots = count_free_hexes_in_castle(leader_loc, checked_hexes);
 	} else {
-               map_location loc = nearest_keep(leader->first);
+		map_location loc = nearest_keep(leader_loc);
                if (units_.find(loc) == units_.end() && gold/unit_price > 1.0f)
                {
                        free_slots -= current_team().num_pos_recruits_to_force();
@@ -644,7 +644,7 @@ void ai_default::do_move()
 	unit_map::iterator leader = units_.find_leader(get_side());
 	if (leader != units_.end())
 	{
-		evaluate_recruiting_value(leader);
+		evaluate_recruiting_value(leader->first);
 		if (passive_leader)
 		{
 			remove_unit_from_moves(leader->first,srcdst,dstsrc);

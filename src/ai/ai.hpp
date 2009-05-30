@@ -368,7 +368,7 @@ protected:
 	const location& nearest_keep(const location& loc);
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location>&);
 
-	void evaluate_recruiting_value(unit_map::iterator leader);
+	void evaluate_recruiting_value(const map_location &leader_loc);
 
 	std::set<location> keeps_;
 
