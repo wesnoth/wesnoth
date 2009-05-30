@@ -154,8 +154,8 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& teams, bool update_knowledge = false );
-	bool test_route(const unit_map::const_iterator& un, const team& my_team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool update_knowledge = false );
+	const unit *get_unit(const unit_map &units, const std::vector<team> &teams, bool update_knowledge = false);
+	bool test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool update_knowledge = false);
 	const map_location& from_;
 	const map_location& to_;
 	bool remove_movement_;

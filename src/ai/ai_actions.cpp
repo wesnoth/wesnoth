@@ -211,32 +211,33 @@ ai_move_result::ai_move_result(unsigned int side, const map_location& from,
 }
 
 
-bool ai_move_result::test_unit(unit_map::const_iterator& un, const unit_map& units, const std::vector<team>& /*teams*/, bool /*update_knowledge*/)
+const unit *ai_move_result::get_unit(const unit_map &units, const std::vector<team> &, bool)
 {
-	un = units.find(from_);
+	unit_map::const_iterator un = units.find(from_);
 	if (un==units.end()){
 		set_error(E_NO_UNIT);
-		return false;
+		return NULL;
 	}
-	if (un->second.side()!=get_side()){
+	const unit *u = &un->second;
+	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
-		return false;
+		return NULL;
 	}
-	if (un->second.incapacitated()){
+	if (u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
-		return false;
+		return NULL;
 	}
-	return true;
+	return u;
 }
 
 
-bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& my_team, const unit_map& units, const std::vector<team>& teams, const gamemap& map, bool /*update_knowledge*/ )
+bool ai_move_result::test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool)
 {
 	if (from_==to_) {
 		set_error(E_EMPTY_MOVE);
 		return false;
 	}
-	const shortest_path_calculator calc(un->second,my_team,units,teams,map);
+	const shortest_path_calculator calc(un, my_team, units, teams,map);
 
 	//allowed teleports
 	std::set<map_location> allowed_teleports;
@@ -244,7 +245,7 @@ bool ai_move_result::test_route(const unit_map::const_iterator& un, const team& 
 	//@todo 1.7: calculate allowed teleports
 
 	//do an A*-search
-	route_ = a_star_search(un->first, to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
+	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
 	return true;
 }
 
@@ -264,15 +265,13 @@ void ai_move_result::do_check_before()
 	const std::vector<team> &s_teams = s_info.teams;
 	const std::vector<team> &teams = info.teams;
 
-	unit_map::const_iterator s_unit;
-	unit_map::const_iterator unit;
-	if ( !test_unit(s_unit,s_units,s_teams) ||
-		( is_execution() && using_subjective_info() &&
-		!test_unit(unit,units,teams,true) ) ){
+	const unit *s_unit = get_unit(s_units, s_teams);
+	if (!s_unit || (is_execution() && using_subjective_info() && !get_unit(units, teams, true)))
+	{
 		return;
 	}
 
-	if ( !test_route(s_unit,s_my_team,s_units,s_teams,s_map) ) {
+	if (!test_route(*s_unit, s_my_team, s_units, s_teams, s_map)) {
 		//impossible to test using real info without revealing anything
 		//prematurely, since moves are done 'in steps'
 		return;
