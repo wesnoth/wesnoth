@@ -120,6 +120,13 @@ void tcontainer_::impl_draw_children(surface& frame_buffer)
 	grid_.draw_children(frame_buffer);
 }
 
+void tcontainer_::child_populate_dirty_list(twindow& caller,
+		const std::vector<twidget*>& call_stack)
+{
+	std::vector<twidget*> child_call_stack = call_stack;
+	grid_.populate_dirty_list(caller, child_call_stack);
+}
+
 void tcontainer_::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run

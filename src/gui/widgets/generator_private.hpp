@@ -675,7 +675,8 @@ public:
 			const std::vector<twidget*>& call_stack)
 	{
 		foreach(titem* item, items_) {
-			item->grid.child_populate_dirty_list(caller, call_stack);
+			std::vector<twidget*> child_call_stack = call_stack;
+			item->grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 

@@ -454,7 +454,7 @@ void twindow::draw()
 	} else {
 
 		// Find the widgets that are dirty.
-		std::vector<twidget*> call_stack(1, this);
+		std::vector<twidget*> call_stack;
 		populate_dirty_list(*this, call_stack);
 	}
 

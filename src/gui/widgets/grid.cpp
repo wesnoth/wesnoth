@@ -530,17 +530,15 @@ void tgrid::set_visible_area(const SDL_Rect& area)
 void tgrid::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
+	assert(!call_stack.empty() && call_stack.back() == this);
+
 	foreach(tchild& child, children_) {
 
 		assert(child.widget());
 
 		std::vector<twidget*> child_call_stack = call_stack;
-		// The grid is not drawn, but needs to be used to determine visibility.
-		child_call_stack.push_back(this);
-
 		child.widget()->populate_dirty_list(caller, child_call_stack);
 	}
-
 }
 
 twidget* tgrid::find_widget(const tpoint& coordinate,

@@ -216,9 +216,13 @@ public:
 	/** Inherited from twidget. */
 	virtual void impl_draw_children(surface& frame_buffer) = 0;
 
+protected:
+
 	/** Inherited from twidget. */
 	virtual void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack) = 0;
+
+public:
 
 	/** Inherited from twidget. */
 	virtual twidget* find_widget(

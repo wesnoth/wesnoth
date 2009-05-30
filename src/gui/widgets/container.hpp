@@ -106,12 +106,13 @@ public:
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);
 
+protected:
+
 	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack)
-	{
-		grid_.child_populate_dirty_list(caller, call_stack);
-	}
+			const std::vector<twidget*>& call_stack);
+
+public:
 
 	/** Inherited from tcontrol. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)

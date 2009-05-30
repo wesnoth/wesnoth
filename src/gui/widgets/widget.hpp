@@ -549,8 +549,13 @@ public:
 	void populate_dirty_list(twindow& caller,
 			std::vector<twidget*>& call_stack);
 
+private:
+
 	/**
 	 * Tries to add all children of a container to the dirty list.
+	 *
+	 * @note The function is private since everybody should call
+	 * populate_dirty_list instead.
 	 *
 	 * @param caller              The parent window, if dirty it should
 	 *                            register itself to this window.
