@@ -346,31 +346,32 @@ ai_recruit_result::ai_recruit_result(unsigned int side,
 {
 }
 
-bool ai_recruit_result::test_available_for_recruiting( const team& my_team, std::set<std::string>::const_iterator& recruit, bool /*update_knowledge*/ )
+const std::string &ai_recruit_result::get_available_for_recruiting(const team &my_team, bool)
 {
-    	const std::set<std::string>& recruit_set = my_team.recruits();
-	recruit = recruit_set.find(unit_name_);
-        if(recruit == recruit_set.end()) {
-                set_error(E_NOT_AVAILABLE_FOR_RECRUITING);
-                return false;
-        }
+	const std::set<std::string> &recruit_set = my_team.recruits();
+	std::set<std::string>::const_iterator recruit = recruit_set.find(unit_name_);
+	if (recruit == recruit_set.end()) {
+		set_error(E_NOT_AVAILABLE_FOR_RECRUITING);
+		static std::string dummy;
+		return dummy;
+	}
 	num_ = std::distance(recruit_set.begin(),recruit);
-	return true;
+	return *recruit;
 }
 
-bool ai_recruit_result::test_unit_type_known( const std::set<std::string>::const_iterator& recruit, unit_type_data::unit_type_map::const_iterator& unit_type, bool /*update_knowledge*/ )
+const unit_type *ai_recruit_result::get_unit_type_known(const std::string &recruit, bool)
 {
-	unit_type = unit_type_data::types().find_unit_type(*recruit);
-        if(unit_type == unit_type_data::types().end() || unit_type->first == "dummy_unit") {
-                set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
-                return false;
-        }
-	return true;
+	unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(recruit);
+	if (type == unit_type_data::types().end() || type->first == "dummy_unit") {
+		set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
+		return NULL;
+	}
+	return &type->second;
 }
 
-bool ai_recruit_result::test_enough_gold( const team& my_team, const unit_type_data::unit_type_map::const_iterator& unit_type, bool /*update_knowledge*/ )
+bool ai_recruit_result::test_enough_gold(const team &my_team, const unit_type &type, bool)
 {
-	if(my_team.gold() < unit_type->second.cost()) {
+	if (my_team.gold() < type.cost()) {
 		set_error(E_NO_GOLD);
 		return false;
 	}
@@ -426,29 +427,29 @@ void ai_recruit_result::do_check_before()
 	const team& my_team = get_my_team(info);
 
 	//Unit available for recruiting?
-	std::set<std::string>::const_iterator s_recruit;
-	std::set<std::string>::const_iterator recruit;
+	const std::string &s_recruit = get_available_for_recruiting(s_my_team);
 
-	if ( !test_available_for_recruiting(s_my_team,s_recruit) ||
-		( is_execution() && using_subjective_info() &&
-		!test_available_for_recruiting(my_team,recruit,true) ) ){
+	if (s_recruit.empty() ||
+	    (is_execution() && using_subjective_info() &&
+	     get_available_for_recruiting(my_team, true).empty()))
+	{
 		return;
 	}
 
 	//Unit type known ?
-	unit_type_data::unit_type_map::const_iterator s_unit_type;
-	unit_type_data::unit_type_map::const_iterator unit_type;
-
-	if ( !test_unit_type_known(s_recruit,s_unit_type) ||
-		( is_execution() && using_subjective_info() &&
-		!test_unit_type_known(recruit,s_unit_type,true) ) ){
+	const unit_type *s_type = get_unit_type_known(s_recruit);
+	if (!s_type ||
+	    (is_execution() && using_subjective_info() &&
+	     !get_unit_type_known(s_recruit, true)))
+	{
 		return;
 	}
 
 	//Enough gold?
-	if (!test_enough_gold(s_my_team,s_unit_type) ||
-		( is_execution() && using_subjective_info() &&
-		!test_enough_gold(my_team,unit_type,true) ) ){
+	if (!test_enough_gold(s_my_team, *s_type) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_enough_gold(my_team, *s_type, true)))
+	{
 		return;
 	}
 

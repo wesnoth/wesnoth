@@ -179,17 +179,15 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_available_for_recruiting(
+	const std::string &get_available_for_recruiting(
 		const team& my_team,
-		std::set<std::string>::const_iterator& recruit,
 		bool update_knowledge = false );
-	bool test_unit_type_known(
-		const std::set<std::string>::const_iterator& recruit,
-		unit_type_data::unit_type_map::const_iterator& unit_type,
+	const unit_type *get_unit_type_known(
+		const std::string &recruit,
 		bool update_knowledge = false );
 	bool test_enough_gold(
 		const team& my_team,
-		const unit_type_data::unit_type_map::const_iterator& unit_type,
+		const unit_type &type,
 		bool update_knowledge = false );
 	bool test_leader_present(
 		const unit_map& units,
