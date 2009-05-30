@@ -362,11 +362,7 @@ struct tindependant
 	void set_size(const tpoint& origin, const tpoint& size);
 
 	/** See thorizontal_list::set_origin(). */
-	void set_origin(const tpoint& /*origin*/)
-	{
-		/* DO NOTHING */
-		/** @todo Evaluate what we need to do here. */
-	}
+	void set_origin(const tpoint& origin);
 
 	/** See thorizontal_list::set_visible_area(). */
 	void set_visible_area(const SDL_Rect& /*area*/)
