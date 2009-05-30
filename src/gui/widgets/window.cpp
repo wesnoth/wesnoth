@@ -514,6 +514,12 @@ void twindow::draw()
 		 * - draw [rbegin, rend) the fore ground of all widgets. For items
 		 *   which have two layers eg window or panel it draws the foreground
 		 *   layer. For other widgets it's a nop.
+		 *
+		 * Before drawing there needs to be determined whether a dirty widget
+		 * really needs to be redrawn. If the widget doesn't need to be
+		 * redrawing either being not VISIBLE or has status NOT_DRAWN. If
+		 * it's not drawn it's still set not dirty to avoid it keep getting
+		 * on the dirty list.
 		 */
 
 		for(std::vector<twidget*>::iterator itor = item.begin();
@@ -521,6 +527,12 @@ void twindow::draw()
 
 			if((**itor).get_visible() != twidget::VISIBLE
 					|| (**itor).get_drawing_action() == twidget::NOT_DRAWN) {
+
+				for(std::vector<twidget*>::iterator citor = itor;
+						citor != item.end(); ++citor) {
+
+					(**citor).set_dirty(false);
+				}
 
 				item.erase(itor, item.end());
 				break;
