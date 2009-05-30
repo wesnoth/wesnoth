@@ -426,6 +426,9 @@ namespace select_action {
 struct tselect
 	: public virtual tgenerator_
 {
+	/** Do the items in the grid need to be a tselectable_? */
+	static const bool items_must_be_selectable = true;
+
 	void select(tgrid& grid, const bool select);
 };
 
@@ -433,6 +436,8 @@ struct tselect
 struct tshow
 	: public virtual tgenerator_
 {
+	static const bool items_must_be_selectable = false;
+
 	void select(tgrid& grid, const bool show)
 	{
 		grid.set_visible(show ? twidget::VISIBLE : twidget::HIDDEN);
@@ -855,6 +860,21 @@ private:
 					panel->set_child_members(data);
 				} else if(child_grid) {
 					init(child_grid, data, callback);
+				} else if(!select_action::items_must_be_selectable) {
+					std::map<std::string, string_map>::const_iterator itor =
+						data.find(widget->id());
+
+					if(itor == data.end()) {
+						itor = data.find("");
+					}
+
+					if(itor != data.end()) {
+						tcontrol* control = dynamic_cast<tcontrol*>(widget);
+						if(control) {
+							control->set_members(itor->second);
+						}
+					}
+
 				} else {
 					ERROR_LOG("Widget type '"
 							<< typeid(*widget).name() << "'.");
