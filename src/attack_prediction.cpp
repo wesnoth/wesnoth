@@ -767,7 +767,7 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 
 	// If defender has firststrike and we don't, reverse.
 	if (opp.u_.firststrike && !u_.firststrike) {
-		opp.fight(*this);
+		opp.fight(*this, levelup_considered);
 		return;
 	}
 
