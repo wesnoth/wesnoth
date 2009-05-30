@@ -535,6 +535,8 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 		assert(child.widget());
 
 		std::vector<twidget*> child_call_stack = call_stack;
+		// The grid is not drawn, but needs to be used to determine visibility.
+		child_call_stack.push_back(this);
 
 		child.widget()->populate_dirty_list(caller, child_call_stack);
 	}
