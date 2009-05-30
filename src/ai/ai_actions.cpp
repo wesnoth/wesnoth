@@ -341,7 +341,6 @@ ai_recruit_result::ai_recruit_result(unsigned int side,
 	, unit_name_(unit_name)
 	, where_(where)
 	, recruit_location_(where)
-	, unit_type_(NULL)
 	, num_(0)
 {
 }

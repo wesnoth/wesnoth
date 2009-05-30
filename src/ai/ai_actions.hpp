@@ -205,7 +205,6 @@ private:
 	const std::string& unit_name_;
 	const map_location& where_;
 	map_location recruit_location_;
-	unit_type_data::unit_type_map::const_iterator* unit_type_;
 	int num_;
 };
 
