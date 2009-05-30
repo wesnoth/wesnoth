@@ -97,6 +97,7 @@ public:
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
+	void set_name(const t_string &name) { name_ = name; }
 	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
 
 	/** The unit's profile */

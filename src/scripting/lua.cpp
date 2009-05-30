@@ -407,6 +407,7 @@ static int lua_unit_set(lua_State *L)
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_bool_attrib("resting", u.set_resting(value));
+	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	return 0;
