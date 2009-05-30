@@ -228,7 +228,7 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_unit(unit_map::const_iterator& un, const unit_map& units, bool update_knowledge = false );
+	const unit *get_unit(const unit_map &units, bool update_knowledge = false);
 	const map_location& unit_location_;
 	const bool remove_movement_;
 	const bool remove_attacks_;

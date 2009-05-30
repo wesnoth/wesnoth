@@ -565,23 +565,23 @@ ai_stopunit_result::ai_stopunit_result( unsigned int side, const map_location& u
 {
 }
 
-
-bool ai_stopunit_result::test_unit(unit_map::const_iterator& un, const unit_map& units, bool /*update_knowledge*/)
+const unit *ai_stopunit_result::get_unit(const unit_map &units, bool)
 {
-	un = units.find(unit_location_);
+	unit_map::const_iterator un = units.find(unit_location_);
 	if (un==units.end()){
 		set_error(E_NO_UNIT);
-		return false;
+		return NULL;
 	}
-	if (un->second.side()!=get_side()){
+	const unit *u = &un->second;
+	if (u->side() != get_side()) {
 		set_error(E_NOT_OWN_UNIT);
-		return false;
+		return NULL;
 	}
-	if (un->second.incapacitated()){
+	if (u->incapacitated()) {
 		set_error(E_INCAPACITATED_UNIT);
-		return false;
+		return NULL;
 	}
-	return true;
+	return u;
 }
 
 void ai_stopunit_result::do_check_before()
@@ -593,11 +593,8 @@ void ai_stopunit_result::do_check_before()
 	const unit_map& s_units = s_info.units;
 	const unit_map& units = info.units;
 
-	unit_map::const_iterator s_unit;
-	unit_map::const_iterator unit;
-	if ( !test_unit(s_unit,s_units) ||
-		( is_execution() && using_subjective_info() &&
-		!test_unit(unit,units,true) ) ){
+	if (!get_unit(s_units) || (is_execution() && using_subjective_info() && !get_unit(units, true)))
+	{
 		return;
 	}
 
