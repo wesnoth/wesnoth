@@ -299,8 +299,22 @@ void tindependant::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-
 		grid.set_origin(origin);
+	}
+}
+
+void tindependant::set_visible_area(const SDL_Rect& area)
+{
+	/*
+	 * Set the visible area for every item.
+	 *
+	 * @todo evaluate whether setting it only for the visible item is better
+	 * and what the consequences are.
+	 */
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		grid.set_visible_area(area);
 	}
 }
 

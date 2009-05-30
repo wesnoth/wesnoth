@@ -365,11 +365,7 @@ struct tindependant
 	void set_origin(const tpoint& origin);
 
 	/** See thorizontal_list::set_visible_area(). */
-	void set_visible_area(const SDL_Rect& /*area*/)
-	{
-		/* DO NOTHING */
-		/** @todo Evaluate what we need to do here. */
-	}
+	void set_visible_area(const SDL_Rect& area);
 
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint&, const bool)
