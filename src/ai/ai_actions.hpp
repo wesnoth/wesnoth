@@ -189,18 +189,17 @@ private:
 		const team& my_team,
 		const unit_type &type,
 		bool update_knowledge = false );
-	bool test_leader_present(
+	const unit *get_leader(
 		const unit_map& units,
-		unit_map::const_iterator& my_leader,
 		bool update_knowledge = false );
 	bool test_leader_on_keep(
 		const gamemap& map,
-		const unit_map::const_iterator& my_leader,
+		const unit &my_leader,
 		bool update_knowledge = false);
 	bool test_suitable_recruit_location (
 		const gamemap& map,
 		const unit_map& units,
-		const unit_map::const_iterator& my_leader,
+		const unit &my_leader,
 		bool update_knowledge = false);
 	const std::string& unit_name_;
 	const map_location& where_;

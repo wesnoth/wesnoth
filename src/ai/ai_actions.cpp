@@ -377,36 +377,36 @@ bool ai_recruit_result::test_enough_gold(const team &my_team, const unit_type &t
 	return true;
 }
 
-bool ai_recruit_result::test_leader_present( const unit_map& units, unit_map::const_iterator& my_leader, bool /*update_knowledge*/ )
+const unit *ai_recruit_result::get_leader(const unit_map& units, bool)
 {
-	my_leader = units.find_leader(get_side());
+	unit_map::const_iterator my_leader = units.find_leader(get_side());
 	if (my_leader == units.end()){
 		set_error(E_NO_LEADER);
-		return false;
+		return NULL;
 	}
-	return true;
+	return &my_leader->second;
 
 }
 
-bool ai_recruit_result::test_leader_on_keep( const gamemap& map, const unit_map::const_iterator& my_leader, bool /*update_knowledge*/ )
+bool ai_recruit_result::test_leader_on_keep(const gamemap &map, const unit &my_leader, bool)
 {
-	if (!map.is_keep(my_leader->first)){
+	if (!map.is_keep(my_leader.get_location())) {
 		set_error(E_LEADER_NOT_ON_KEEP);
 		return false;
 	}
 	return true;
 }
 
-bool ai_recruit_result::test_suitable_recruit_location( const gamemap& map, const unit_map& units, const unit_map::const_iterator& my_leader, bool /*update_knowledge*/ )
+bool ai_recruit_result::test_suitable_recruit_location(const gamemap &map, const unit_map &units, const unit &my_leader, bool)
 {
 	recruit_location_ = where_;
 
 	//if we have not-on-board location, such as null_location, then the caller wants us to recruit on 'any' possible tile.
-        if(!map.on_board(recruit_location_)) {
-                recruit_location_ = find_vacant_tile(map,units,my_leader->first, VACANT_CASTLE);
+	if (!map.on_board(recruit_location_)) {
+		recruit_location_ = find_vacant_tile(map, units, my_leader.get_location(), VACANT_CASTLE);
 	}
 
-	if (!can_recruit_on(map,my_leader->first,recruit_location_)){
+	if (!can_recruit_on(map, my_leader.get_location(), recruit_location_)) {
 		set_error(E_BAD_RECRUIT_LOCATION);
 		return false;
 	}
@@ -453,12 +453,12 @@ void ai_recruit_result::do_check_before()
 	}
 
 	//Leader present?
-	unit_map::const_iterator s_my_leader;
-	unit_map::const_iterator my_leader;
+	const unit *s_my_leader = get_leader(s_units);
 
-	if (!test_leader_present(s_units,s_my_leader) ||
-		( is_execution() && using_subjective_info() &&
-		!test_leader_present(units,my_leader,true) ) ){
+	if (!s_my_leader ||
+	    (is_execution() && using_subjective_info() &&
+	     !get_leader(units, true)))
+	{
 		return;
 	}
 
@@ -466,16 +466,18 @@ void ai_recruit_result::do_check_before()
 	const gamemap& s_map = s_info.map;
 	const gamemap& map = info.map;
 
-	if (!test_leader_on_keep(s_map,s_my_leader) ||
-		( is_execution() && using_subjective_info() &&
-		!test_leader_on_keep(map,my_leader,true) ) ){
+	if (!test_leader_on_keep(s_map, *s_my_leader) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_leader_on_keep(map, *s_my_leader, true)))
+	{
 		return;
 	}
 
 	//Try to get suitable recruit location. Is suitable location available ?
-	if (!test_suitable_recruit_location(s_map,s_units,s_my_leader) ||
-		( is_execution() && using_subjective_info() &&
-		!test_suitable_recruit_location(map,units,my_leader,true) ) ){
+	if (!test_suitable_recruit_location(s_map, s_units, *s_my_leader) ||
+	    (is_execution() && using_subjective_info() &&
+	     !test_suitable_recruit_location(map, units, *s_my_leader, true)))
+	{
 		return;
 	}
 
