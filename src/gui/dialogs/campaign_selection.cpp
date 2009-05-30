@@ -42,22 +42,12 @@ void tcampaign_selection::campaign_selected(twindow& window)
 			window.find_widget("campaign_list", false));
 	VALIDATE(list, missing_widget("campaign_list"));
 
-	// Get the selected row
-	const config &row = campaigns_[list->get_selected_row()];
 
-	tscroll_label* scroll_label = dynamic_cast<tscroll_label*>(
-			window.find_widget("description", false));
-	if(scroll_label) {
-		scroll_label->set_label(row["description"]);
-	}
+	tlistbox* page = dynamic_cast<tlistbox*>(
+			window.find_widget("campaign_details", false));
+	VALIDATE(page, missing_widget("campaign_details"));
 
-	timage* image = dynamic_cast<timage*>(
-			window.find_widget("image", false));
-	if(image) {
-		image->set_label(row["image"]);
-	}
-
-	window.invalidate_layout();
+	page->select_row(list->get_selected_row());
 }
 
 twindow* tcampaign_selection::build_window(CVideo& video)
@@ -74,11 +64,31 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 	list->set_callback_value_change(dialog_callback
 			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
 
+	tlistbox* page = dynamic_cast<tlistbox*>(
+			window.find_widget("campaign_details", false));
+	VALIDATE(list, missing_widget("campaign_details"));
+
 	foreach (const config &c, campaigns_) {
-		string_map item;
-		item.insert(std::make_pair("icon", c["icon"]));
-		item.insert(std::make_pair("label", c["name"]));
-		list->add_row(item);
+
+		/*** Add list item ***/
+		string_map list_item;
+
+		list_item.insert(std::make_pair("icon", c["icon"]));
+		list_item.insert(std::make_pair("label", c["name"]));
+
+		list->add_row(list_item);
+
+		/*** Add detail item ***/
+		string_map detail_item;
+		std::map<std::string, string_map> detail_page;
+
+		detail_item["label"] = c["description"];
+		detail_page.insert(std::make_pair("description", detail_item));
+
+		detail_item["label"] = c["image"];
+		detail_page.insert(std::make_pair("image", detail_item));
+
+		page->add_row(detail_page);
 	}
 
 	campaign_selected(window);
