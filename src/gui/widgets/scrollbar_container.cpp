@@ -555,6 +555,9 @@ void tscrollbar_container::
 
 void tscrollbar_container::impl_draw_children(surface& frame_buffer)
 {
+	assert(get_visible() == twidget::VISIBLE
+			&& content_grid_->get_visible() == twidget::VISIBLE);
+
 	// Inherited.
 	tcontainer_::impl_draw_background(frame_buffer);
 

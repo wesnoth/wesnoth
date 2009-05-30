@@ -661,8 +661,12 @@ public:
 	/** Inherited from tgenerator_. */
 	void impl_draw_children(surface& frame_buffer)
 	{
+		assert(this->get_visible() == twidget::VISIBLE);
+
 		foreach(titem* item, items_) {
-			item->grid.draw_children(frame_buffer);
+			if(item->grid.get_visible() == twidget::VISIBLE) {
+				item->grid.draw_children(frame_buffer);
+			}
 		}
 	}
 
