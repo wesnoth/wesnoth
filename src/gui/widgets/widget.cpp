@@ -162,11 +162,13 @@ void twidget::set_visible(const tvisible visible)
 	}
 
 	// Switching to or from invisible should invalidate the layout.
-	if(visible_ != INVISIBLE || visible == INVISIBLE) {
+	if(visible_ == INVISIBLE || visible == INVISIBLE) {
 		twindow *window = get_window();
 		if(window) {
 			window->invalidate_layout();
 		}
+	} else {
+		set_dirty();
 	}
 
 	visible_ = visible;
