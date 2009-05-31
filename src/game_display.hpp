@@ -237,11 +237,11 @@ public:
 	 */
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
-	size_t get_playing_team() const {return activeTeam_;};
-	const std::vector<team>& get_teams() {return teams_;};
+	size_t get_playing_team() const {return activeTeam_;}
+	const std::vector<team>& get_teams() {return teams_;}
 
-	unit_map& get_units() {return units_;};
-	const unit_map& get_const_units() const {return units_;};
+	unit_map& get_units() {return units_;}
+	const unit_map& get_const_units() const {return units_;}
 
 	/**
 	 * Draws a cross on a tile to emphasize something there.
