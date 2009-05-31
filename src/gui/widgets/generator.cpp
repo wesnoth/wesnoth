@@ -279,21 +279,10 @@ tpoint tindependant::calculate_best_size() const
 
 void tindependant::set_size(const tpoint& origin, const tpoint& size)
 {
-	/*
-	 * Set every item to it's best size, need to evaluate whether
-	 * this is the best idea or that the size works better.
-	 */
-
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-
-		tpoint best_size = grid.get_best_size();
-		assert(best_size.x <= size.x);
-		assert(best_size.y <= size.y);
-
-		grid.set_size(origin, best_size);
-
+		grid.set_size(origin, size);
 	}
 }
 
