@@ -12,13 +12,15 @@
    See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-test"
+// In this domain since it compares a shared string from this domain.
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "tests/utils/test_support.hpp"
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
@@ -217,6 +219,22 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::ttitle_screen>();
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
+}
+
+BOOST_AUTO_TEST_CASE(test_make_test_fake)
+{
+	video.make_test_fake(10, 10);
+
+	try {
+		gui2::tmessage dlg("title", "message", true);
+		dlg.show(video, 1);
+	} catch(twml_exception& e) {
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
+					"which doesn't fit on the screen."));
+		return;
+	} catch(...) {
+	}
+	BOOST_ERROR("Didn't catch the wanted exception.");
 }
 
 namespace {

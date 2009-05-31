@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/integer_selector.hpp"
+#include "video.hpp"
 
 namespace gui2 {
 
@@ -31,6 +32,10 @@ tdialog::~tdialog()
 
 void tdialog::show(CVideo& video, const unsigned auto_close_time)
 {
+	if(video.faked()) {
+		return;
+	}
+
 	std::auto_ptr<twindow> window(build_window(video));
 	assert(window.get());
 
