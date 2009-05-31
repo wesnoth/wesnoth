@@ -96,6 +96,9 @@ static void scalar_of_wml_string(lua_State *L, t_string const &v)
  */
 static void table_of_wml_config(lua_State *L, config const &cfg)
 {
+	if (!lua_checkstack(L, LUA_MINSTACK))
+		return;
+
 	int k = 1;
 	foreach (const config::any_child &ch, cfg.all_children_range())
 	{
@@ -128,6 +131,9 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
  */
 static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 {
+	if (!lua_checkstack(L, LUA_MINSTACK))
+		return false;
+
 	// Get t_string's metatable, so that it can be used later to detect t_string object.
 	int initial_top = lua_gettop(L);
 	if (!tstring_meta) {
