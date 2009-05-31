@@ -277,6 +277,16 @@ static int lua_tstring_collect(lua_State *L)
 	return 0;
 }
 
+/**
+ * Converts a t_string object to a string (that is, performs a translation).
+ */
+static int lua_tstring_tostring(lua_State *L)
+{
+	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
+	lua_pushstring(L, t->c_str());
+	return 1;
+}
+
 #define return_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		new(lua_newuserdata(L, sizeof(t_string))) t_string(accessor); \
@@ -827,6 +837,8 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__concat");
 	lua_pushcfunction(L, lua_tstring_collect);
 	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, lua_tstring_tostring);
+	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "Hands off! (tstring metatable)");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
