@@ -35,6 +35,8 @@ stringfixes = {
 ("furtherest-faring", "furthermost-faring"),
 ("hit and run", "hit-and-run"),
 ("well defended", "well-defended"),
+("We can't get through lord. These whelps are not individually very dangerous, but there are huge number of them.", "We can't get through, my Lord. These whelps are not individually very dangerous, but there are huge numbers of them."),
+("They waited the next few days before the expected relief caught up with them. Next morning", "The expected relief caught up with them a few days later. The following morning"),
 ),
 
 "wesnoth-did" : (
