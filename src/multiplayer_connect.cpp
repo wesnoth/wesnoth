@@ -1648,8 +1648,9 @@ void connect::load_game()
 	level_["observer"] = params_.allow_observers ? "yes" : "no";
 
 	if(level_["objectives"].empty()) {
-		level_["objectives"] = t_string(N_("Victory:\n\
-@Defeat enemy leader(s)"), "wesnoth");
+		level_["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +
+			"</big>\n<span foreground=\"#00ff00\">" +
+			t_string(N_("Defeat enemy leader(s)"), "wesnoth") + "</span>";
 	}
 }
 
