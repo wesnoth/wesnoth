@@ -235,7 +235,6 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 	std::string campaign_name = std::string(level["campaign"]);
 	replace_underbar2space(campaign_name);
 
-	/** @todo We can now allow pango markup for the objectives if wanted. */
 	gui2::show_transient_message(disp.video(), "",
 		"<big><b>" + name + "</b></big>" +
 		(campaign_name.empty() ? "\n" : " - " + campaign_name + "\n") +
