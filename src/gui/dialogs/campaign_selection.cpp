@@ -20,6 +20,7 @@
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -43,11 +44,11 @@ void tcampaign_selection::campaign_selected(twindow& window)
 	VALIDATE(list, missing_widget("campaign_list"));
 
 
-	tlistbox* page = dynamic_cast<tlistbox*>(
+	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
 			window.find_widget("campaign_details", false));
-	VALIDATE(page, missing_widget("campaign_details"));
+	VALIDATE(multi_page, missing_widget("campaign_details"));
 
-	page->select_row(list->get_selected_row());
+	multi_page->select_page(list->get_selected_row());
 }
 
 twindow* tcampaign_selection::build_window(CVideo& video)
@@ -68,9 +69,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(list);
 
 	/***** Setup campaign details. *****/
-	tlistbox* page = dynamic_cast<tlistbox*>(
+	tmulti_page* multi_page = dynamic_cast<tmulti_page*>(
 			window.find_widget("campaign_details", false));
-	VALIDATE(page, missing_widget("campaign_details"));
+	VALIDATE(multi_page, missing_widget("campaign_details"));
 
 	foreach (const config &c, campaigns_) {
 
@@ -92,7 +93,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		detail_item["label"] = c["image"];
 		detail_page.insert(std::make_pair("image", detail_item));
 
-		page->add_row(detail_page);
+		multi_page->add_page(detail_page);
 	}
 
 	campaign_selected(window);

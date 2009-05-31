@@ -282,6 +282,7 @@ SET(wesnoth-main_SRC
     gui/widgets/listbox.cpp
     gui/widgets/menubar.cpp
     gui/widgets/minimap.cpp
+    gui/widgets/multi_page.cpp
     gui/widgets/panel.cpp
     gui/widgets/password_box.cpp
     gui/widgets/settings.cpp

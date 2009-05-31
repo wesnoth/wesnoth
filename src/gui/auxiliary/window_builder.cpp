@@ -27,6 +27,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
@@ -930,10 +931,6 @@ twidget* tbuilder_minimap::build() const
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
 	tbuilder_control(cfg),
-	vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
-	horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"])),
 	builder(0),
 	data()
 {
@@ -947,49 +944,37 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
  *
  * List with the multi page specific variables:
  * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     auto.
- *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     initial_auto.
- *
- *     list_definition (section)       This defines how a listbox item
+ *     page_definition (section)       This defines how a listbox item
  *                                     looks. It must contain the grid
  *                                     definition for 1 row of the list.
  *
- *     list_data(section = [])         A grid alike section which stores the
+ *     page_data(section = [])         A grid alike section which stores the
  *                                     initial data for the listbox. Every row
  *                                     must have the same number of columns as
  *                                     the 'list_definition'.
  * @end_table
  */
 
-	const config &l = cfg.child("list_definition");
+	const config &page = cfg.child("page_definition");
 
-	VALIDATE(l, _("No list defined."));
-	builder = new tbuilder_grid(l);
+	VALIDATE(page, _("No page defined."));
+	builder = new tbuilder_grid(page);
 	assert(builder);
-	VALIDATE(builder->rows == 1,
-			_("A 'list_definition' should contain one row."));
 
-	const config &data_cfg = cfg.child("list_data");
-	if (!data_cfg) return;
+	/** @todo This part is untested. */
+	const config &d = cfg.child("page_data");
+	if(!d){
+		return;
+	}
 
-	foreach (const config &row, data_cfg.child_range("row"))
+	foreach(const config &row, d.child_range("row"))
 	{
 		unsigned col = 0;
 
-		foreach (const config &c, row.child_range("column"))
+		foreach (const config &column, row.child_range("column"))
 		{
 			data.push_back(string_map());
-			foreach (const config::attribute &i, c.attribute_range()) {
+			foreach (const config::attribute &i, column.attribute_range()) {
 				data.back()[i.first] = i.second;
 			}
 			++col;
@@ -1002,31 +987,26 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
 
 twidget* tbuilder_multi_page::build() const
 {
-	tlistbox *listbox = new tlistbox(
-			true, true, tgenerator_::independant, false);
+	tmulti_page *multi_page = new tmulti_page();
 
-	init_control(listbox);
+	init_control(multi_page);
 
-	listbox->set_list_builder(builder); // FIXME in finalize???
+	multi_page->set_page_builder(builder);
 
-	listbox->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	listbox->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed listbox '"
+	DBG_GUI_G << "Window builder: placed multi_page '"
 		<< id << "' with defintion '"
 		<< definition << "'.\n";
 
-	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
+	boost::intrusive_ptr<const tmulti_page_definition::tresolution> conf =
 		boost::dynamic_pointer_cast
-		<const tlistbox_definition::tresolution>(listbox->config());
+		<const tmulti_page_definition::tresolution>(multi_page->config());
 	assert(conf);
 
+	conf->grid->build(&multi_page->grid());
 
-	conf->grid->build(&listbox->grid());
+	multi_page->finalize(data);
 
-	listbox->finalize(NULL, NULL, data);
-
-	return listbox;
+	return multi_page;
 }
 
 tbuilder_panel::tbuilder_panel(const config& cfg) :

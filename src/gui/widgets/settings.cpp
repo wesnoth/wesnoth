@@ -854,9 +854,8 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg) :
  * The documentation is not written yet.
  */
 
-	// Note the order should be the same as the enum tstate is listbox.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	// Add a dummy state since every widget needs a state.
+	state.push_back(tstate_definition(config("draw")));
 
 	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
