@@ -27,6 +27,14 @@ local function trim(s)
 	return r
 end
 
+local function color_prefix(r, g, b)
+	return string.format('<span foreground="#%02x%02x%02x">', r, g, b)
+end
+
+local function insert_before_nl(s, t)
+	return string.gsub(tostring(s), "[^\n]*", "%0" .. t, 1)
+end
+
 local function generate_objectives(cfg, team, silent)
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
@@ -53,9 +61,11 @@ local function generate_objectives(cfg, team, silent)
 		if show_if then
 			local condition = obj.condition
 			if condition == "win" then
-				win_objectives = win_objectives .. "@" .. obj.description .. "\n"
+				win_objectives = win_objectives .. color_prefix(0, 255, 0) ..
+					insert_before_nl(obj.description, "</span>") .. "\n"
 			elseif condition == "lose" then
-				lose_objectives = lose_objectives .. "#" .. obj.description .. "\n"
+				lose_objectives = lose_objectives .. color_prefix(255, 0 ,0) ..
+					insert_before_nl(obj.description, "</span>") .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
@@ -64,13 +74,13 @@ local function generate_objectives(cfg, team, silent)
 
 	local summary = cfg.summary
 	if summary then
-		objectives = "*" .. summary .. "\n"
+		objectives = "<big>" .. insert_before_nl(summary, "</big>") .. "\n"
 	end
 	if win_objectives ~= "" then
-		objectives = objectives .. "*" .. win_string .. "\n" .. win_objectives
+		objectives = objectives .. "<big>" .. win_string .. "</big>\n" .. win_objectives
 	end
 	if lose_objectives ~= "" then
-		objectives = objectives .. "*" .. lose_string .. "\n" .. lose_objectives
+		objectives = objectives .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
 	end
 
 	return objectives
