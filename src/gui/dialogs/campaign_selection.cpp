@@ -57,6 +57,7 @@ twindow* tcampaign_selection::build_window(CVideo& video)
 
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
+	/***** Setup campaign list. *****/
 	tlistbox* list = dynamic_cast<tlistbox*>(
 			window.find_widget("campaign_list", false));
 	VALIDATE(list, missing_widget("campaign_list"));
@@ -64,6 +65,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 	list->set_callback_value_change(dialog_callback
 			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
 
+	window.keyboard_capture(list);
+
+	/***** Setup campaign details. *****/
 	tlistbox* page = dynamic_cast<tlistbox*>(
 			window.find_widget("campaign_details", false));
 	VALIDATE(page, missing_widget("campaign_details"));
