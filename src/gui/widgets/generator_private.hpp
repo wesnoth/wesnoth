@@ -565,7 +565,7 @@ public:
 			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
 			void (*callback)(twidget*))
- 	{
+	{
 		std::map<std::string, string_map> data;
 
 		data.insert(std::make_pair("", item_data));
@@ -637,7 +637,7 @@ public:
 	/** Inherited from tgenerator_. */
 	void set_size(const tpoint& origin, const tpoint& size)
 	{
- 		// Inherited, so we get useful debug info.
+		// Inherited, so we get useful debug info.
 		twidget::set_size(origin, size);
 
 		placement::set_size(origin, size);
@@ -646,7 +646,7 @@ public:
 	/** Inherited from tgenerator_. */
 	void set_origin(const tpoint& origin)
 	{
- 		// Inherited.
+		// Inherited.
 		twidget::set_origin(origin);
 
 		placement::set_origin(origin);
