@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<xi:include href="master.html" />
+
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+<title>Login Form</title>
+</head>
+
+<body>
+<div id="loginform">
+<form action="${tg.url('/login_handler', came_from = came_from.encode('utf-8'), __logins = login_counter.encode('utf-8'))}" method="POST" class="loginfields">
+    <h2><span>Login</span></h2>
+    <label for="login">Username:</label><input type="text" id="login" name="login" class="text"></input><br/>
+    <label for="password">Password:</label><input type="password" id="password" name="password" class="text"></input>
+    <input type="submit" id="submit" value="Login" />
+</form>
+</div>
+</body>
+</html>

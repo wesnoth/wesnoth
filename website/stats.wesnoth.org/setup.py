@@ -1,77 +1,47 @@
 # -*- coding: utf-8 -*-
-
-from setuptools import setup, find_packages
-from turbogears.finddata import find_package_data
-
-import os
-execfile(os.path.join("wesstats", "release.py"))
-
-packages=find_packages()
-package_data = find_package_data(where='wesstats',
-    package='wesstats')
-if os.path.isdir('locales'):
-    packages.append('locales')
-    package_data.update(find_package_data(where='locales',
-        exclude=('*.po',), only_in_packages=False))
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from ez_setup import use_setuptools
+    use_setuptools()
+    from setuptools import setup, find_packages
 
 setup(
-    name="wesstats",
-    version=version,
-    # uncomment the following lines if you fill them out in release.py
-    #description=description,
-    #author=author,
-    #author_email=email,
-    #url=url,
-    #download_url=download_url,
-    #license=license,
-
+    name='wesstats',
+    version='0.1',
+    description='',
+    author='',
+    author_email='',
+    #url='',
     install_requires=[
-        "TurboGears >= 1.0.4.4",
-        "SQLObject>=0.8"
-    ],
-    zip_safe=False,
-    packages=packages,
-    package_data=package_data,
-    keywords=[
-        # Use keywords if you'll be adding your package to the
-        # Python Cheeseshop
-
-        # if this has widgets, uncomment the next line
-        # 'turbogears.widgets',
-
-        # if this has a tg-admin command, uncomment the next line
-        # 'turbogears.command',
-
-        # if this has identity providers, uncomment the next line
-        # 'turbogears.identity.provider',
-
-        # If this is a template plugin, uncomment the next line
-        # 'python.templating.engines',
-
-        # If this is a full application, uncomment the next line
-        # 'turbogears.app',
-    ],
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Framework :: TurboGears',
-        # if this is an application that you'll distribute through
-        # the Cheeseshop, uncomment the next line
-        # 'Framework :: TurboGears :: Applications',
-
-        # if this is a package that includes widgets that you'll distribute
-        # through the Cheeseshop, uncomment the next line
-        # 'Framework :: TurboGears :: Widgets',
-    ],
+        "TurboGears2 >= 2.0b7",
+        "Catwalk >= 2.0.2",
+        "Babel >=0.9.4",
+        "zope.sqlalchemy >= 0.4 ",
+        "repoze.tm2 >= 1.0a4",
+        
+        "repoze.what-quickstart >= 1.0",
+                ],
+    setup_requires=["PasteScript >= 1.7"],
+    paster_plugins=['PasteScript', 'Pylons', 'TurboGears2', 'tg.devtools'],
+    packages=find_packages(exclude=['ez_setup']),
+    include_package_data=True,
     test_suite='nose.collector',
-    entry_points = {
-        'console_scripts': [
-            'start-wesstats = wesstats.commands:start',
-        ],
-    },
-    # Uncomment next line and create a default.cfg file in your project dir
-    # if you want to package a default configuration in your egg.
-    #data_files = [('config', ['default.cfg'])],
-    )
+    tests_require=['WebTest', 'BeautifulSoup'],
+    package_data={'wesstats': ['i18n/*/LC_MESSAGES/*.mo',
+                                 'templates/*/*',
+                                 'public/*/*']},
+    message_extractors={'wesstats': [
+            ('**.py', 'python', None),
+            ('templates/**.mako', 'mako', None),
+            ('templates/**.html', 'genshi', None),
+            ('public/**', 'ignore', None)]},
+
+    entry_points="""
+    [paste.app_factory]
+    main = wesstats.config.middleware:make_app
+
+    [paste.app_install]
+    main = pylons.util:PylonsInstaller
+    """,
+)

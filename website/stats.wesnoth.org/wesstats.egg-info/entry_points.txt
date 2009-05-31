@@ -1,3 +1,7 @@
-[console_scripts]
-start-wesstats = wesstats.commands:start
 
+    [paste.app_factory]
+    main = wesstats.config.middleware:make_app
+
+    [paste.app_install]
+    main = pylons.util:PylonsInstaller
+    

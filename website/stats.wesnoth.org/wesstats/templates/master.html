@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      py:strip="">
+    <xi:include href="header.html" />
+    <xi:include href="sidebars.html" />
+    <xi:include href="footer.html" />
+<head py:match="head" py:attrs="select('@*')">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+    <title py:replace="''">Your title goes here</title>
+    <meta py:replace="select('*')"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
+</head>
+
+<body py:match="body" py:attrs="select('@*')">
+  ${header()}
+  <ul id="mainmenu">
+    <li class="first"><a href="${tg.url('/')}" class="${('', 'active')[defined('page') and page==page=='index']}">Welcome</a></li>
+        <li><a href="${tg.url('/about')}" class="${('', 'active')[defined('page') and page==page=='about']}">About</a></li>
+        <li py:if="tg.auth_stack_enabled"><a href="${tg.url('/auth')}" class="${('', 'active')[defined('page') and page==page=='auth']}">Authentication</a></li>
+        <li><a href="http://groups.google.com/group/turbogears">Contact</a></li>
+    <span py:if="tg.auth_stack_enabled" py:strip="True">
+        <li py:if="not request.identity" id="login" class="loginlogout"><a href="${tg.url('/login')}">Login</a></li>
+        <li py:if="request.identity" id="login" class="loginlogout"><a href="${tg.url('/logout_handler')}">Logout</a></li>
+        <li py:if="request.identity" id="admin" class="loginlogout"><a href="${tg.url('/admin')}">Admin</a></li>
+    </span>
+  </ul>
+  <div id="content">
+    <py:if test="defined('page')">
+    <div class="currentpage">
+     Now Viewing: <span py:replace="page"/>
+     </div>
+    </py:if>
+    <py:with vars="flash=tg.flash_obj.render('flash', use_js=False)">
+        <div py:if="flash" py:content="XML(flash)" />
+    </py:with>
+    <div py:replace="select('*|text()')"/>
+    <!-- End of content -->
+    ${footer()}
+  </div>
+</body>
+</html>
