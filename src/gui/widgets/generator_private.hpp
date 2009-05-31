@@ -165,6 +165,15 @@ struct thorizontal_list
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
 	/**
+	 * Tries to reduce the width for the generator.
+	 *
+	 * @see @ref layout_algorihm for more information.
+	 *
+	 * @param maximum_width       The wanted maximum width.
+	 */
+	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+
+	/**
 	 * Calculates the best size for the generator.
 	 *
 	 * @return                    The best size,
@@ -232,6 +241,9 @@ struct tvertical_list
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
 
+	/** See thorizontal_list::NEW_request_reduce_width. */
+	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const;
 
@@ -297,6 +309,9 @@ struct tmatrix
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
+	/** See thorizontal_list::NEW_request_reduce_width. */
+	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const
 		{ ERROR_LOG(false); }
@@ -354,6 +369,9 @@ struct tindependant
 	{
 		/* DO NOTHING */
 	}
+
+	/** See thorizontal_list::NEW_request_reduce_width. */
+	void NEW_request_reduce_width(const unsigned maximum_width);
 
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const;
@@ -627,6 +645,11 @@ public:
 		}
 	}
 
+	/** Inherited from tgenerator_. */
+	void NEW_request_reduce_width(const unsigned maximum_width)
+	{
+		placement::NEW_request_reduce_width(maximum_width);
+	}
 
 	/** Inherited from tgenerator_. */
 	tpoint calculate_best_size() const

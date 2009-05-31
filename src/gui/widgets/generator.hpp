@@ -202,6 +202,9 @@ public:
 	virtual void NEW_layout_init(const bool full_initialization) = 0;
 
 	/** Inherited from twidget. */
+	virtual void NEW_request_reduce_width(const unsigned maximum_width) = 0;
+
+	/** Inherited from twidget. */
 	virtual tpoint calculate_best_size() const = 0;
 
 	/** Inherited from twidget. */
