@@ -53,9 +53,9 @@ local function generate_objectives(cfg, team, silent)
 		if show_if then
 			local condition = obj.condition
 			if condition == "win" then
-				win_objectives = win_objectives .. "\n@" .. obj.description
+				win_objectives = win_objectives .. "@" .. obj.description .. "\n"
 			elseif condition == "lose" then
-				lose_objectives = lose_objectives .. "\n#" .. obj.description
+				lose_objectives = lose_objectives .. "#" .. obj.description .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
@@ -67,10 +67,10 @@ local function generate_objectives(cfg, team, silent)
 		objectives = "*" .. summary .. "\n"
 	end
 	if win_objectives ~= "" then
-		objectives = objectives .. "*" .. win_string .. "\n" .. win_objectives .. "\n"
+		objectives = objectives .. "*" .. win_string .. "\n" .. win_objectives
 	end
 	if lose_objectives ~= "" then
-		objectives = objectives .. "*" .. lose_string .. "\n" .. lose_objectives .. "\n"
+		objectives = objectives .. "*" .. lose_string .. "\n" .. lose_objectives
 	end
 
 	return objectives
