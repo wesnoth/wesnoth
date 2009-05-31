@@ -31,6 +31,14 @@ class Root(controllers.RootController):
 	@expose(template="wesstats.templates.index")
 	def index(self):
 		return dict()
+	@expose(template="wesstats.templates.index_new")
+	def index2(self):
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		curs = conn.cursor()
+		curs.execute("SELECT title FROM _wsviews")
+		views = curs.fetchall()
+		conn.close()
+		return dict(views=views)
 
 	def listfix(self,l):
 		if not isinstance(l,types.ListType):
