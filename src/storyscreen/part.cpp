@@ -164,6 +164,10 @@ part::TITLE_ALIGNMENT part::string_title_align(const std::string& s)
 
 void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
 {
+	if(cfg.null()) {
+		return;
+	}
+
 	if(cfg.has_attribute("background")) {
 		background_file_ = cfg["background"];
 	}
