@@ -72,7 +72,7 @@ struct wesnoth_global_fixture {
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
-		test_utils::get_fake_display();
+		test_utils::get_fake_display(1024, 768);
 
 
 		// Set more report as default

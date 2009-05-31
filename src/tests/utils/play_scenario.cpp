@@ -113,7 +113,7 @@ namespace test_utils {
 		game_state& state = end->get_state();
 		state.campaign_type = "test";
 		state.scenario = id_;
-		play_game(get_fake_display(), state, game_config_, no_upload);
+		play_game(get_fake_display(1024, 768), state, game_config_, no_upload);
 	}
 
 	std::string play_scenario::get_unit_id(const map_location &loc)

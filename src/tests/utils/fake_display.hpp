@@ -19,7 +19,19 @@ class game_display;
 
 namespace test_utils {
 
-	game_display& get_fake_display();
+	/**
+	 * Gets a fake test display.
+	 * 
+	 * The width and height parameter are ignored if either of them is less
+	 * than zero.
+	 *
+	 * @param width               The width of the display.
+	 * @param height              The height of the dislay.
+	 * 
+	 * @returns                   The display.
+	 */
+	game_display& get_fake_display(
+			const int width, const int height);
 
 
 }

@@ -114,7 +114,7 @@ namespace test {
 
 			This code however does not compile anymore:
 
-			BOOST_CHECK_EQUAL(dialogs::get_save_name_oos(test_utils::get_fake_display(),
+			BOOST_CHECK_EQUAL(dialogs::get_save_name_oos(test_utils::get_fake_display(1024, 768),
 					"Save game?", "file", &fname,gui::OK_CANCEL, "Save game"), 0);
 
 			Not sure how to fix it best.
