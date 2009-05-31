@@ -252,6 +252,15 @@ void tindependant::NEW_request_reduce_width(const unsigned maximum_width)
 	}
 }
 
+void tindependant::NEW_request_reduce_height(const unsigned maximum_height)
+{
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		grid.NEW_request_reduce_height(maximum_height);
+	}
+}
+
 tpoint tindependant::calculate_best_size() const
 {
 	/*

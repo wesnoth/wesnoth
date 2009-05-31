@@ -205,6 +205,9 @@ public:
 	virtual void NEW_request_reduce_width(const unsigned maximum_width) = 0;
 
 	/** Inherited from twidget. */
+	virtual void NEW_request_reduce_height(const unsigned maximum_height) = 0;
+
+	/** Inherited from twidget. */
 	virtual tpoint calculate_best_size() const = 0;
 
 	/** Inherited from twidget. */
