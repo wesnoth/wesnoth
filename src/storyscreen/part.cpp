@@ -131,8 +131,6 @@ part::part(game_state& state_of_game, const vconfig& part_cfg)
 	, music_()
 	, floating_images_()
 {
-	// This method takes care of initializing
-	// and branching properties.
 	resolve_wml(part_cfg, state_of_game);
 }
 

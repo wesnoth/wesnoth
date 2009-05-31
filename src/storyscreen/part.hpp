@@ -134,6 +134,7 @@ public:
 private:
 	part();
 
+	/** Takes care of initializing and branching properties. */
 	void resolve_wml(const vconfig& cfg, game_state& gamestate);
 
 	static TEXT_BLOCK_LOCATION string_tblock_loc(const std::string& s);
