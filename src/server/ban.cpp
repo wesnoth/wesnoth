@@ -647,7 +647,8 @@ static lg::log_domain log_server("server");
 				"The time format is: %d[%s[%d[%s[...]]]] where %s is a time"
 				" modifier: s or S (seconds), m (minutes), h or H (hours), d"
 				" or D (days), M (months) or y or Y (years) and %d is a number.\n"
-				"If no time is given then the ban is permanent.\n";
+				"Permanent bans can be set with 'permanent' or '0' as the time"
+				" argument.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
 		{

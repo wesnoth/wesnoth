@@ -1392,7 +1392,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		}
 		std::string reason(second_space + 1, parameters.end());
 		utils::strip(reason);
-		if (reason.empty()) return ban_manager_.get_ban_help();
+		if (reason.empty()) return "You need to give a reason for the ban.";
 
 		// if we find a '.' consider it an ip mask
 		/** @todo  FIXME: make a proper check for valid IPs. */
