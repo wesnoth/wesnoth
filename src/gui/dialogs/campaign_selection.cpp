@@ -66,7 +66,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	tlistbox* page = dynamic_cast<tlistbox*>(
 			window.find_widget("campaign_details", false));
-	VALIDATE(list, missing_widget("campaign_details"));
+	VALIDATE(page, missing_widget("campaign_details"));
 
 	foreach (const config &c, campaigns_) {
 
