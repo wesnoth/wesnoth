@@ -125,8 +125,7 @@ class preprocessor
 	int old_linenum_;
 protected:
 	preprocessor_streambuf &target_;
-	std::vector<std::string> *called_macros_;
-	preprocessor(preprocessor_streambuf &, std::vector<std::string> *);
+	preprocessor(preprocessor_streambuf &);
 public:
 	/**
 	 * Preprocesses and sends some text to the #target_ buffer.
@@ -288,13 +287,12 @@ void preprocessor_streambuf::error(const std::string& error_type, const std::str
  * Saves the current preprocessing context of #target_. It will be
  * automatically restored on destruction.
  */
-preprocessor::preprocessor(preprocessor_streambuf &t, std::vector<std::string> *callstack) :
+preprocessor::preprocessor(preprocessor_streambuf &t) :
 	old_preprocessor_(t.current_),
 	old_textdomain_(t.textdomain_),
 	old_location_(t.location_),
 	old_linenum_(t.linenum_),
-	target_(t),
-	called_macros_(callstack)
+	target_(t)
 {
 	++target_.depth_;
 	target_.current_ = this;
@@ -331,7 +329,7 @@ class preprocessor_file: preprocessor
 	std::vector< std::string > files_;
 	std::vector< std::string >::const_iterator pos_, end_;
 public:
-	preprocessor_file(preprocessor_streambuf &, std::vector<std::string> *, std::string const &);
+	preprocessor_file(preprocessor_streambuf &, std::string const &);
 	virtual bool get_chunk();
 };
 
@@ -394,19 +392,17 @@ class preprocessor_data: preprocessor
 	= 0 */);
 public:
 	preprocessor_data(preprocessor_streambuf &,
-                      std::vector<std::string> *,
-                      std::istream *,
+	                  std::istream *,
 	                  std::string const &history,
 	                  std::string const &name, int line,
 	                  std::string const &dir, std::string const &domain,
-                      std::string* = NULL);
-    ~preprocessor_data();
+	                  std::string * = NULL);
+	~preprocessor_data();
 	virtual bool get_chunk();
 };
 
-preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::vector<std::string> *callstack,
-		std::string const &name) :
-	preprocessor(t,callstack),
+preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name) :
+	preprocessor(t),
 	files_(),
 	pos_(),
 	end_()
@@ -420,7 +416,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::vector<std:
 			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, called_macros_, file_stream, "", name, 1, directory_name(name), t.textdomain_);
+			new preprocessor_data(t, file_stream, "", name, 1, directory_name(name), t.textdomain_);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
@@ -440,16 +436,16 @@ bool preprocessor_file::get_chunk()
 		// Use reverse iterator to optimize testing
 		if (sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc."))
 			continue;
-		new preprocessor_file(target_, called_macros_, name);
+		new preprocessor_file(target_, name);
 		return true;
 	}
 	return false;
 }
 
-preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std::string> *callstack,
-        std::istream *i, std::string const &history, std::string const &name, int linenum,
+preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
+	std::istream *i, std::string const &history, std::string const &name, int linenum,
 		std::string const &directory, std::string const &domain, std::string *symbol) :
-	preprocessor(t,callstack),
+	preprocessor(t),
 	in_(i),
 	directory_(directory),
 	strings_(),
@@ -459,10 +455,6 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std:
 	skipping_(0),
 	linenum_(linenum)
 {
-    if(is_macro) {
-        called_macros_->push_back(*symbol);
-    }
-
 	std::ostringstream s;
 
 	s << history;
@@ -486,10 +478,6 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std:
 
 preprocessor_data::~preprocessor_data()
 {
-    if(is_macro)
-    {
-        called_macros_->pop_back();
-    }
 }
 
 void preprocessor_data::push_token(char t)
@@ -834,34 +822,8 @@ bool preprocessor_data::get_chunk()
 			// If this is a known pre-processing symbol, then we insert it,
 			// otherwise we assume it's a file name to load.
 			preproc_map::const_iterator macro = target_.defines_->find(symbol);
-			if(macro != target_.defines_->end()) {
-
-/**
- * @todo it seems some addons use other names instead of include so disable the
- * code for now. Once 1.4 has been released we can try to fix it again or make
- * it mandatory to use INCLUDE for this purpose.
- *
- * ESR says: No, it was a fundamentally mistaken idea to do this here; wmllint
- * could do the same direct-recursion check without imposing runtime overhead
- * or causing the problems this code did.  Leaving this code in for
- * documentation purposes only, don't re-enable it.
- */
-#if 0
-				// INCLUDE is special and is allowed to be used recusively.
-				if(symbol != "INCLUDE") {
-				    for(std::vector<std::string>::iterator
-							iter=called_macros_->begin();
-							iter!=called_macros_->end(); ++iter) {
-						if(*iter==symbol) {
-							std::ostringstream error;
-							error << "symbol '" << symbol << "' will cause a recursive macro call";
-							std::ostringstream location;
-							location<<linenum_<<' '<<target_.location_;
-							target_.error(error.str(), location.str());
-						}
-					}
-				}
-#endif // 0
+			if (macro != target_.defines_->end())
+			{
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size()) {
@@ -947,7 +909,7 @@ bool preprocessor_data::get_chunk()
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					DBG_CF << "substituting macro " << symbol << '\n';
-					new preprocessor_data(target_, called_macros_, buffer, val.location, "",
+					new preprocessor_data(target_, buffer, val.location, "",
 					                      val.linenum, dir, val.textdomain, &symbol);
 				} else {
 					DBG_CF << "substituting (slow) macro " << symbol << '\n';
@@ -955,7 +917,7 @@ bool preprocessor_data::get_chunk()
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);
 					{	std::istream in(buf);
-						new preprocessor_data(*buf, called_macros_, buffer, val.location, "",
+						new preprocessor_data(*buf, buffer, val.location, "",
 						                      val.linenum, dir, val.textdomain, &symbol);
 						res << in.rdbuf(); }
 					delete buf;
@@ -969,13 +931,13 @@ bool preprocessor_data::get_chunk()
 				if (!nfname.empty())
 				{
 					if (!slowpath_)
-						new preprocessor_file(target_, called_macros_, nfname);
+						new preprocessor_file(target_, nfname);
 					else {
 						std::ostringstream res;
 						preprocessor_streambuf *buf =
 							new preprocessor_streambuf(target_);
 						{	std::istream in(buf);
-							new preprocessor_file(*buf, called_macros_, nfname);
+							new preprocessor_file(*buf, nfname);
 							res << in.rdbuf(); }
 						delete buf;
 						strings_.back() += res.str();
@@ -1008,16 +970,15 @@ struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
 	preproc_map *defines_;
-	std::vector<std::string> *callstack_;
 	std::string *error_log;
-	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines, std::vector<std::string>*);
+	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines);
 	~preprocessor_deleter();
 };
 
 preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf,
-		preproc_map *defines,
-		std::vector<std::string> *callstack)
-	: std::basic_istream<char>(buf), buf_(buf), defines_(defines), callstack_(callstack), error_log(buf->error_log)
+		preproc_map *defines)
+	: std::basic_istream<char>(buf), buf_(buf), defines_(defines)
+	, error_log(buf->error_log)
 {
 }
 
@@ -1026,7 +987,6 @@ preprocessor_deleter::~preprocessor_deleter()
 	rdbuf(NULL);
 	delete buf_;
 	delete defines_;
-	delete callstack_;
 }
 
 
@@ -1044,10 +1004,9 @@ std::istream *preprocess_file(std::string const &fname,
 		defines = owned_defines;
 	}
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines, error_log);
-	std::vector<std::string> *callstack=new std::vector<std::string>;
-	new preprocessor_file(*buf, callstack, fname);
-	if(error_log!=NULL&&error_log->empty()==false)
+	new preprocessor_file(*buf, fname);
+	if (error_log && !error_log->empty())
 		throw preproc_config::error("Error preprocessing files.");
-	return new preprocessor_deleter(buf, owned_defines,callstack);
+	return new preprocessor_deleter(buf, owned_defines);
 }
 
