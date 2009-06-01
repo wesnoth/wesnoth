@@ -210,12 +210,12 @@ void parser::parse_element()
 			error(_("Unexpected closing tag"));
 		if(elname != elements.top().name) {
 			utils::string_map i18n_symbols;
-			i18n_symbols["tag"] = elements.top().name;
+			i18n_symbols["tag1"] = elements.top().name;
 			i18n_symbols["tag2"] = elname;
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
-					N_("Found invalid closing tag $tag2 for tag $tag (opened at $pos)")));
+					N_("Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)")));
 		}
 
 		elements.pop();
@@ -323,6 +323,9 @@ void parser::parse_variable()
 	}
 }
 
+/**
+ * This function is crap. Don't use it on a string_map with prefixes.
+ */
 std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string const &lineno,
 			          std::string const &error_string)
 {
