@@ -566,6 +566,10 @@ void twindow::draw()
 
 	dirty_list_.clear();
 
+	std::vector<twidget*> call_stack;
+	populate_dirty_list(*this, call_stack);
+	assert(dirty_list_.empty());
+
 	SDL_Rect rect = get_rect();
 	update_rect(rect);
 	cursor::draw(frame_buffer);

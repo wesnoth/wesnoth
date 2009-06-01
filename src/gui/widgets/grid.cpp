@@ -828,6 +828,7 @@ void tgrid::layout(const tpoint& origin)
 void tgrid::impl_draw_children(surface& frame_buffer)
 {
 	assert(get_visible() == twidget::VISIBLE);
+	set_dirty(false);
 
 	foreach(tchild& child, children_) {
 
