@@ -178,6 +178,16 @@ private:
 	/** Vector with the shapes to draw. */
 	std::vector<tshape_ptr> shapes_;
 
+	/**
+	 * The depth of the blur to use in the pre committing.
+	 *
+	 * @note at the moment there's one pre commit function, namely the
+	 * blurring so use a variable here, might get more functions in the
+	 * future. When that happens need to evaluate whether variables are the
+	 * best thing to use.
+	 */
+	unsigned blur_depth_;
+
 	/** Width of the canvas. */
 	unsigned w_;
 

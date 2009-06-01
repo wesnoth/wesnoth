@@ -47,6 +47,29 @@ namespace {
  *
  */
 
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * == Pre commit ==
+ *
+ * This section contains the pre commit functions. These functions will be
+ * executed before the drawn canvas is applied on top of the normal
+ * background. Ther should only be one pre commit section and it's order
+ * regarding the other shapes doesn't matter.
+ *
+ * The section can have one of the following subsections.
+ *
+ * === Blur ===
+ *
+ * Blurs the background before applying the canvas. This doesn't make sense
+ * if the widget isn't semi-transparent.
+ *
+ * Keys:
+ * @start_table = config
+ *     depth (unsigned = 0)             The depth to blur.
+ * @end_table
+ */
+
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /** Definition of a line shape. */
@@ -909,6 +932,7 @@ void ttext::draw(surface& canvas,
 
 tcanvas::tcanvas() :
 	shapes_(),
+	blur_depth_(0),
 	w_(0),
 	h_(0),
 	canvas_(),
@@ -916,9 +940,9 @@ tcanvas::tcanvas() :
 	dirty_(true)
 {
 }
-
 tcanvas::tcanvas(const config& cfg) :
 	shapes_(),
+	blur_depth_(0),
 	w_(0),
 	h_(0),
 	canvas_(),
@@ -967,6 +991,10 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 {
 	draw();
 
+	if(blur_depth_) {
+		blur_surface(surf, rect, blur_depth_);
+	}
+
 	SDL_BlitSurface(canvas_, NULL, surf, &rect);
 }
 
@@ -975,10 +1003,9 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	foreach (const config::any_child &it, cfg.all_children_range())
-	{
-		const std::string &type = it.key;
-		const config &data = it.cfg;
+	foreach(const config::any_child& shape, cfg.all_children_range()) {
+		const std::string &type = shape.key;
+		const config &data = shape.cfg;
 
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
@@ -990,8 +1017,25 @@ void tcanvas::parse_cfg(const config& cfg)
 			shapes_.push_back(new timage(data));
 		} else if(type == "text") {
 			shapes_.push_back(new ttext(data));
+		} else if(type == "pre_commit") {
+
+			/* note this should get splitted if more preprocessing is used. */
+			foreach(const config::any_child& function,
+					data.all_children_range()) {
+
+				if(function.key == "blur") {
+					blur_depth_ = lexical_cast_default<unsigned>(
+							function.cfg["depth"], 0);
+				} else {
+					ERR_GUI_P << "Canvas: found a pre commit function"
+							<< " of an invalid type " << type << ".\n";
+				}
+			}
+
 		} else {
-			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type << ".\n";
+			ERR_GUI_P << "Canvas: found a shape of an invalid type "
+					<< type << ".\n";
+
 			assert(false); // FIXME remove in production code.
 		}
 	}
