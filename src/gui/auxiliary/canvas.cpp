@@ -963,6 +963,13 @@ void tcanvas::draw(const bool force)
 	dirty_ = false;
 }
 
+void tcanvas::blit(surface& surf, SDL_Rect rect)
+{
+	draw();
+
+	SDL_BlitSurface(canvas_, NULL, surf, &rect);
+}
+
 void tcanvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
