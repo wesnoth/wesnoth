@@ -236,7 +236,6 @@ SET(wesnoth-main_SRC
     attack_prediction_display.cpp
     callable_objects.cpp
     config_cache.cpp
-    config_adapter.cpp
     controller_base.cpp
     dialogs.cpp
     floating_textbox.cpp
