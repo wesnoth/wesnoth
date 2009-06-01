@@ -1034,7 +1034,6 @@ bool in_mask_surface(surface const &surf, surface const &mask)
 	return true;
 }
 
-
 surface blur_surface(surface const &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {
@@ -1048,7 +1047,21 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 		return NULL;
 	}
 
-	const int max_blur = 256;
+	SDL_Rect rect = { 0, 0, surf->w, surf->h };
+	blur_surface(res, rect, depth);
+
+	return optimize ? create_optimized_surface(res) : res;
+}
+
+void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
+{
+	if(surf == NULL) {
+		return;
+	}
+
+	assert((surf->flags & SDL_RLEACCEL) == 0);
+
+	const unsigned max_blur = 256;
 	if(depth > max_blur) {
 		depth = max_blur;
 	}
@@ -1058,14 +1071,15 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 
 	const Uint32 ff = 0xff;
 
-	surface_lock lock(res);
-	int x, y;
-	for(y = 0; y < res->h; ++y) {
+	const unsigned pixel_offset = rect.y * surf->w + rect.x;
+
+	surface_lock lock(surf);
+	for(unsigned y = 0; y < rect.h; ++y) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
-		Uint32* p = lock.pixels() + y*res->w;
-		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
+		Uint32* p = lock.pixels() + pixel_offset + y * surf->w;
+		for(unsigned x = 0; x <= depth && x < rect.w; ++x, ++p) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
@@ -1076,9 +1090,13 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 			}
 		}
 
-		p = lock.pixels() + y*res->w;
-		for(x = 0; x < res->w; ++x, ++p) {
-			*p = 0xFF000000 | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
+		p = lock.pixels() + pixel_offset + y * surf->w;
+		for(unsigned x = 0; x < rect.w; ++x, ++p) {
+			*p = 0xFF000000
+					| (std::min(red/avg,ff) << 16)
+					| (std::min(green/avg,ff) << 8)
+					| std::min(blue/avg,ff);
+
 			if(x >= depth) {
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
@@ -1090,7 +1108,7 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 				}
 			}
 
-			if(x + depth+1 < res->w) {
+			if(x + depth+1 < rect.w) {
 				Uint32* q = p + depth+1;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
@@ -1104,12 +1122,12 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 		}
 	}
 
-	for(x = 0; x < res->w; ++x) {
+	for(unsigned x = 0; x < rect.w; ++x) {
 		const Uint32* front = &queue[0];
 		Uint32* back = &queue[0];
 		Uint32 red = 0, green = 0, blue = 0, avg = 0;
-		Uint32* p = lock.pixels() + x;
-		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
+		Uint32* p = lock.pixels() + pixel_offset + x;
+		for(unsigned y = 0; y <= depth && y < rect.h; ++y, p += surf->w) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
@@ -1120,9 +1138,13 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 			}
 		}
 
-		p = lock.pixels() + x;
-		for(y = 0; y < res->h; ++y, p += res->w) {
-			*p = 0xFF000000 | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
+		p = lock.pixels() + pixel_offset + x;
+		for(unsigned y = 0; y < rect.h; ++y, p += surf->w) {
+			*p = 0xFF000000
+					| (std::min(red/avg,ff) << 16)
+					| (std::min(green/avg,ff) << 8)
+					| std::min(blue/avg,ff);
+
 			if(y >= depth) {
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
@@ -1134,8 +1156,8 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 				}
 			}
 
-			if(y + depth+1 < res->h) {
-				Uint32* q = p + (depth+1)*res->w;
+			if(y + depth+1 < rect.h) {
+				Uint32* q = p + (depth+1)*surf->w;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
@@ -1147,8 +1169,6 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 			}
 		}
 	}
-
-	return optimize ? create_optimized_surface(res) : res;
 }
 
 surface blur_alpha_surface(surface const &surf, int depth, bool optimize)

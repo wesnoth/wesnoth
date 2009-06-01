@@ -240,6 +240,15 @@ bool in_mask_surface(surface const &surf, surface const &mask);
 surface blur_surface(surface const &surf, int depth = 1, bool optimize=true);
 
 /**
+ * Cross-fades a surface in place.
+ *
+ * @param surf                    The surface to blur, must be not optimized.
+ * @param rect                    The part of the surface to blur.
+ * @param depth                   The depth of the blurring.
+ */
+void blur_surface(surface& surf, SDL_Rect rect, unsigned depth = 1);
+
+/**
  * Cross-fades a surface with alpha channel.
  *
  * @todo FIXME: This is just an adapted copy-paste
