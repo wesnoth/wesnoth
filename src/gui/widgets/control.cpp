@@ -314,9 +314,8 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 		<< " dirty " << get_dirty()
 		<< ".\n";
 #endif
-	canvas(get_state()).draw();
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
+
+	canvas(get_state()).blit(frame_buffer, get_rect());
 }
 
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const

@@ -855,7 +855,8 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg) :
  */
 
 	// Add a dummy state since every widget needs a state.
-	state.push_back(tstate_definition(config("draw")));
+	static config dummy ("draw");
+	state.push_back(tstate_definition(dummy));
 
 	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
