@@ -82,8 +82,12 @@ local function generate_objectives(cfg, team, silent)
 	if lose_objectives ~= "" then
 		objectives = objectives .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
 	end
+	local note = cfg.note
+	if note then
+		objectives = objectives .. note .. "\n"
+	end
 
-	return objectives
+	return string.sub(tostring(objectives), 1, -2)
 end
 
 local function wml_objectives(cfg)
