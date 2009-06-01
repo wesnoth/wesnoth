@@ -28,7 +28,6 @@
 #include "gui/widgets/window.hpp"
 
 #include "../clipboard.hpp"
-#include "../config_adapter.hpp"
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"

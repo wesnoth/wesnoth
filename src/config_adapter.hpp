@@ -33,13 +33,4 @@ class team;
 // This module is responsible for constructing objects like 'team'
 // or 'unit' out of config-information, that is based on WML.
 
-std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
-int get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg);
-void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot);
-
-/**
- * Returns the theme with the given @a theme_name, or an empty config otherwise.
- */
-const config &get_theme(const config& game_config, std::string theme_name);
-
 #endif

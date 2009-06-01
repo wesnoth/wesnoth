@@ -30,6 +30,7 @@
 #include "wesconfig.h"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "map.hpp"
 
 #ifndef _MSC_VER
 #include <sys/time.h>
@@ -844,6 +845,176 @@ void game_state::set_variables(const config& vars) {
 		WRN_NG << variables;
 	}
 	variables = vars;
+}
+
+void game_state::get_player_info(const config& cfg,
+					 std::string save_id, std::vector<team>& teams,
+					 const config& level, gamemap& map, unit_map& units,
+					 gamestatus& game_status, bool snapshot)
+{
+	player_info *player = NULL;
+
+	if(map.empty()) {
+		throw game::load_game_failed("Map not found");
+	}
+
+	if(cfg["controller"] == "human" ||
+		cfg["controller"] == "network" ||
+		cfg["controller"] == "network_ai" ||
+		cfg["controller"] == "human_ai") {
+		player = get_player(save_id);
+
+		if(player == NULL && !save_id.empty()) {
+			player = &players[save_id];
+		}
+	}
+
+	LOG_NG << "initializing team...\n";
+
+	std::string gold = cfg["gold"];
+	if(gold.empty())
+		gold = "100";
+
+	LOG_NG << "found gold: '" << gold << "'\n";
+
+	int ngold = lexical_cast_default<int>(gold);
+
+	/* This is the gold carry-over mechanism for subsequent campaign
+	scenarios. Snapshots and replays are loaded from savegames and
+	got their own gold information, which must not be altered here
+	*/
+	if ( (player != NULL)  && (!snapshot) ) {
+		if(player->gold_add) {
+			ngold +=  player->gold;
+		} else if(player->gold >= ngold) {
+			ngold = player->gold;
+		}
+
+		player->gold = ngold;
+	}
+
+	LOG_NG << "set gold to '" << ngold << "'\n";
+
+	team temp_team(cfg, map, ngold);
+	teams.push_back(temp_team);
+
+	// Update/fix the recall list for this side,
+	// by setting the "side" of each unit in it
+	// to be the "side" of the player.
+	int side = lexical_cast_default<int>(cfg["side"], 1);
+	if(player != NULL) {
+		for(std::vector<unit>::iterator it = player->available_units.begin();
+			it != player->available_units.end(); ++it) {
+			it->set_side(side);
+		}
+	}
+
+	// If this team has no objectives, set its objectives
+	// to the level-global "objectives"
+	if(teams.back().objectives().empty())
+		teams.back().set_objectives(level["objectives"]);
+
+	// If this side tag describes the leader of the side
+	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
+		unit new_unit(&units, &map, &game_status, &teams, cfg, true);
+
+		// Search the recall list for leader units, and if there is one,
+		// use it in place of the config-described unit
+		if(player != NULL) {
+			for(std::vector<unit>::iterator it = player->available_units.begin();
+				it != player->available_units.end(); ++it) {
+				if(it->can_recruit()) {
+					new_unit = *it;
+					new_unit.set_game_context(&units, &map, &game_status, &teams);
+					player->available_units.erase(it);
+					break;
+				}
+			}
+		}
+
+		// See if the side specifies its location.
+		// Otherwise start it at the map-given starting position.
+		map_location start_pos(cfg, this);
+
+		if(cfg["x"].empty() && cfg["y"].empty()) {
+			start_pos = map.starting_position(side);
+		}
+
+		if(!start_pos.valid() || !map.on_board(start_pos)) {
+			throw game::load_game_failed(
+				"Invalid starting position (" +
+				lexical_cast<std::string>(start_pos.x+1) +
+				"," + lexical_cast<std::string>(start_pos.y+1) +
+				") for the leader of side " +
+				lexical_cast<std::string>(side) + ".");
+		}
+
+		utils::string_map symbols;
+		symbols["side"] = lexical_cast<std::string>(side);
+		VALIDATE(units.count(start_pos) == 0,
+			t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
+
+		units.add(map.starting_position(new_unit.side()), new_unit);
+		LOG_NG << "initializing side '" << cfg["side"] << "' at "
+			<< start_pos << '\n';
+	}
+
+	// If the game state specifies units that
+	// can be recruited for the player, add them.
+	if(player != NULL && player->can_recruit.empty() == false) {
+		teams.back().add_recruits(player->can_recruit);
+	}
+
+	if(player != NULL) {
+		player->can_recruit = teams.back().recruits();
+	}
+
+	// If there are additional starting units on this side
+	const config::child_list& starting_units = cfg.get_children("unit");
+	// available_units has been filled by loading the [player]-section already.
+	// However, we need to get the information from the snapshot,
+	// so we start from scratch here.
+	// This is rather a quick hack, originating from keeping changes
+	// as minimal as possible for 1.2.
+	// Moving [player] into [replay_start] should be the correct way to go.
+	if (player && snapshot){
+		player->available_units.clear();
+	}
+	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
+		unit new_unit(&units, &map, &game_status,&teams,**su,true);
+
+		new_unit.set_side(side);
+
+		const std::string& x = (**su)["x"];
+		const std::string& y = (**su)["y"];
+
+		map_location loc(**su, this);
+		if(x.empty() && y.empty()) {
+			if(player) {
+				player->available_units.push_back(new_unit);
+				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
+			} else {
+				throw game::load_game_failed(
+					"Attempt to create a unit on the recall list for side " +
+					lexical_cast<std::string>(side) +
+					", which does not have a recall list.");
+			}
+		} else if(!loc.valid() || !map.on_board(loc)) {
+			throw game::load_game_failed(
+				"Invalid starting position (" +
+				lexical_cast<std::string>(loc.x+1) +
+				"," + lexical_cast<std::string>(loc.y+1) +
+				") for a unit on side " +
+				lexical_cast<std::string>(side) + ".");
+		} else {
+			if (units.find(loc) != units.end()) {
+				ERR_NG << "[unit] trying to overwrite existing unit at " << loc << "\n";
+			} else {
+				units.add(loc, new_unit);
+				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+			}
+		}
+	}
 }
 
 void game_state::set_menu_items(const config::const_child_itors &menu_items)

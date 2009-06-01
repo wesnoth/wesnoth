@@ -27,6 +27,7 @@
 #include <vector>
 
 class unit;
+class gamestatus; //needed to declare get_player_info (until game_state and gamestatus get merged)
 
 class scoped_wml_variable;
 
@@ -130,6 +131,10 @@ public:
 
         const rand_rng::simple_rng& rng() const { return rng_; }
         rand_rng::simple_rng& rng() { return rng_; }
+
+	// populate high-level objects
+
+	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot);
 
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 

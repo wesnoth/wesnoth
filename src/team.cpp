@@ -25,6 +25,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "game_preferences.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -64,6 +65,17 @@ bool teams_manager::is_observer()
 	}
 
 	return true;
+}
+
+int teams_manager::get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg){
+	int result = -1;
+	const std::string& controller = (**cfg)["controller"];
+	if (controller == preferences::client_type() && (**cfg)["id"] == preferences::login()) {
+		result = cfg - unit_cfg.begin();
+	} else if((**cfg)["controller"] == "human") {
+		result = cfg - unit_cfg.begin();
+	}
+	return result;
 }
 
 team::target::target(const config& cfg)

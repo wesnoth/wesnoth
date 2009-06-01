@@ -112,6 +112,7 @@ protected:
 	bool clear_shroud();
 	bool enemies_visible() const;
 	void enter_textbox();
+	std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
 
 	team& current_team();
 	const team& current_team() const;

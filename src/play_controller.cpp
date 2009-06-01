@@ -20,7 +20,6 @@
 
 #include "play_controller.hpp"
 #include "dialogs.hpp"
-#include "config_adapter.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -136,9 +135,9 @@ void play_controller::init(CVideo& video){
 		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
 		seen_save_ids.insert(save_id);
 		if (first_human_team_ == -1){
-			first_human_team_ = get_first_human_team(ui, unit_cfg);
+			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot);
+		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, status_, snapshot);
 	}
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
@@ -699,6 +698,26 @@ void play_controller::enter_textbox()
 		ERR_DP << "unknown textbox mode\n";
 	}
 
+}
+
+std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
+{
+	std::string save_id = cfg["save_id"];
+
+	if(save_id.empty()) {
+		save_id=cfg["id"];
+	}
+
+	if(save_id.empty()) {
+		save_id="Unknown";
+	}
+
+	// Make sure the 'save_id' is unique
+	while(seen_save_ids.count(save_id)) {
+		save_id += "_";
+	}
+
+	return save_id;
 }
 
 team& play_controller::current_team()
