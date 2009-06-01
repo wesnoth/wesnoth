@@ -335,7 +335,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				static config scenario2;
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 				//level_ = scenario;
-
+				preload_lua_tags(game_config, scenario2);
 				gamestate.starting_pos = scenario2;
 				scenario = &scenario2;
 			}
@@ -456,12 +456,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 		} else {
 			scenario = &game_config.find_child(type, "id", gamestate.scenario);
-			if (!*scenario) scenario = NULL;
+			if (!*scenario)
+				scenario = NULL;
+			else
+			{
+				starting_pos = *scenario;
+				preload_lua_tags(game_config, starting_pos);
+				scenario = &starting_pos;
+			}
 
 			if(io_type == IO_SERVER && scenario != NULL) {
-				starting_pos = *scenario;
-				scenario = &starting_pos;
-
 				// Tweaks sides to adapt controllers and descriptions.
 				foreach (config &side, starting_pos.child_range("side"))
 				{
@@ -492,7 +496,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					static config scenario2;
 					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 					//level_ = scenario;
-
+					preload_lua_tags(game_config, scenario2);
 					gamestate.starting_pos = scenario2;
 					scenario = &scenario2;
 				}
