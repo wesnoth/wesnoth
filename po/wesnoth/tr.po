@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-01 23:55+0200\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -3775,8 +3775,26 @@ msgstr "Zehir"
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Şu anda bu birimin damarlarına zehir sızıyor."
 
+#: data/core/macros/items.cfg:287
+#, fuzzy
+msgid ""
+"Sprinkling this water on melee weapons grants them the 'arcane' damage type "
+"until the end of the current scenario. Should $unit.name use it?"
+msgstr ""
+"Bu su, senaryo sonuna kadar birimin yakın döğüş silahlarının ‘gizemli’ hasar "
+"türüne sahip olmasını sağlar."
+
+#: data/core/macros/items.cfg:288
+msgid "I am not suited to the use of this item! Let another take it."
+msgstr "Ben bu öğeyi kullanmaya uygun değilim! Başkası alsın."
+
 #. [object]
-#: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
+#: data/core/macros/items.cfg:290
+msgid "Holy Water"
+msgstr "Okunmuş Su"
+
+#. [object]
+#: data/core/macros/items.cfg:293
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -3784,91 +3802,82 @@ msgstr ""
 "Bu su, senaryo sonuna kadar birimin yakın döğüş silahlarının ‘gizemli’ hasar "
 "türüne sahip olmasını sağlar."
 
-#: data/core/macros/items.cfg:290
-msgid "I am not suited to the use of this item! Let another take it."
-msgstr "Ben bu öğeyi kullanmaya uygun değilim! Başkası alsın."
-
-#. [object]
-#: data/core/macros/items.cfg:292
-msgid "Holy Water"
-msgstr "Okunmuş Su"
-
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:325
+#: data/core/macros/items.cfg:322
 msgid "Potion of Strength"
 msgstr "Güç İksiri"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:328
+#: data/core/macros/items.cfg:325
 msgid "Strength is given to the drinker."
 msgstr "İçene güç verir."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "Çürüme İksiri"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:371
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "Bu zavallı birim cidden kötü bir şey içti."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:405
+#: data/core/macros/items.cfg:402
 msgid "Ring of Regeneration"
 msgstr "İyileşme Yüzüğü"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:408
+#: data/core/macros/items.cfg:405
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Bu yüzük taşıyanı her sırada biraz tedavi edecektir."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:444
+#: data/core/macros/items.cfg:441
 msgid "Ring of Slowness"
 msgstr "Yavaşlık Yüzüğü"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:447
+#: data/core/macros/items.cfg:444
 msgid "The bearer of this ring is slowed."
 msgstr "Bu yüzüğü taşıyan kişi yavaşlar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:481
+#: data/core/macros/items.cfg:478
 msgid "Staff of Swiftness"
 msgstr "Çeviklik Asası"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:481
 msgid "This staff will grant the bearer swift movement."
 msgstr "Bu asa taşıyana çevikleşmiş hareket yeteneği sağlar."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:485
+#: data/core/macros/items.cfg:482
 msgid "Only magical beings can wield such an object."
 msgstr "Sadece büyücüler böyle bir nesneyi kullanabilir."
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Only the mermen can use this item!"
 msgstr "Sadece su adamları bu öğeyi kullanabilir!"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr "Bu çatalı $unit.name alsın mı?"
 
 #. [object]
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:534
 msgid "Storm Trident"
 msgstr "Yıldırım Çatalı"
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:537
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Bu üç dişli zıpkın su adamına düşmanlarını yıldırımla çarpma imkanı verir!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:541
 msgid "storm trident"
 msgstr "yıldırım çatalı"
 
@@ -5833,15 +5842,15 @@ msgstr "Bir seferberlik oyna"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:181 src/dialogs.cpp:624
+#: data/gui/default/window/campaign_dialog.cfg:180 src/dialogs.cpp:623
 #: src/multiplayer_create.cpp:86
 msgid "OK"
 msgstr "Tamam"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:195 src/dialogs.cpp:625
-#: src/dialogs.cpp:1127 src/dialogs.cpp:1234 src/multiplayer_connect.cpp:1022
+#: data/gui/default/window/campaign_dialog.cfg:194 src/dialogs.cpp:624
+#: src/dialogs.cpp:1126 src/dialogs.cpp:1233 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "İptal"
@@ -6977,7 +6986,7 @@ msgstr "(devam etmek için $hotkey tuşuna basınız)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1156
+#: src/addon_management.cpp:365 src/dialogs.cpp:1155
 msgid "KB"
 msgstr "kB"
 
@@ -7120,7 +7129,7 @@ msgid "No add-ons to update"
 msgstr "Güncellenecek bir eklenti yok"
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
-#: src/dialogs.cpp:585 src/menu_events.cpp:192 src/menu_events.cpp:850
+#: src/dialogs.cpp:584 src/menu_events.cpp:192 src/menu_events.cpp:850
 msgid "Name"
 msgstr "İsim"
 
@@ -7224,7 +7233,7 @@ msgstr "Eklentileri al"
 msgid "Choose the add-on to download."
 msgstr "İndirilecek eklentiyi seçiniz."
 
-#: src/addon_management.cpp:1032 src/dialogs.cpp:610 src/menu_events.cpp:909
+#: src/addon_management.cpp:1032 src/dialogs.cpp:609 src/menu_events.cpp:909
 #: src/menu_events.cpp:1415
 msgid "Filter: "
 msgstr "Süzgeç: "
@@ -7329,10 +7338,6 @@ msgstr "Yarasız kurtulma şansı"
 msgid "Damage Calculations"
 msgstr "Hasar Hesaplamaları"
 
-#: src/config_adapter.cpp:161
-msgid "Duplicate side definition for side '$side|' found."
-msgstr "‘$side|’ için birden fazla taraf tanımı bulundu."
-
 #: src/dialogs.cpp:131
 msgid "Advance Unit"
 msgstr "Birim Terfisi"
@@ -7345,75 +7350,75 @@ msgstr "Birimimiz neye dönüşsün?"
 msgid "No objectives available"
 msgstr "Hiçbir Amaç yok"
 
-#: src/dialogs.cpp:269
+#: src/dialogs.cpp:268
 msgid "Do you really want to delete this game?"
 msgstr "Bu oyunu gerçekten silmek istiyor musunuz?"
 
-#: src/dialogs.cpp:271
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "Bir daha sorma!"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:437
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d %b %y %a %H:%M"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:457
 msgid "#(Invalid)"
 msgstr "#(Geçersiz)"
 
-#: src/dialogs.cpp:476
+#: src/dialogs.cpp:475
 msgid "Campaign: $campaign_name"
 msgstr "Seferberlik: $campaign_name"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:482
 msgid "Multiplayer"
 msgstr "Çokoyunculu"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:484
 msgid "Tutorial"
 msgstr "Öğretici"
 
-#: src/dialogs.cpp:493 src/savegame.cpp:861
+#: src/dialogs.cpp:492 src/savegame.cpp:861
 msgid "replay"
 msgstr "tekrar"
 
-#: src/dialogs.cpp:495 src/savegame.cpp:940
+#: src/dialogs.cpp:494 src/savegame.cpp:940
 msgid "Turn"
 msgstr "El"
 
-#: src/dialogs.cpp:497
+#: src/dialogs.cpp:496
 msgid "Scenario Start"
 msgstr "Senaryo Başlangıcı"
 
-#: src/dialogs.cpp:500
+#: src/dialogs.cpp:499
 msgid "Difficulty: "
 msgstr "Zorluk: "
 
-#: src/dialogs.cpp:502
+#: src/dialogs.cpp:501
 msgid "Version: "
 msgstr "Sürüm: "
 
-#: src/dialogs.cpp:526 src/dialogs.cpp:542
+#: src/dialogs.cpp:525 src/dialogs.cpp:541
 msgid "%b %d %y"
 msgstr "%d %b %y"
 
-#: src/dialogs.cpp:532
+#: src/dialogs.cpp:531
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:534
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:537
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:565
 msgid "No Saved Games"
 msgstr "Kayıtlı Oyun Yok"
 
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:566
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7423,47 +7428,47 @@ msgstr ""
 "\n"
 "(Oyunlar bir senaryoyu bitirdiğiniz zaman kendiliğinden kaydedilir)"
 
-#: src/dialogs.cpp:585
+#: src/dialogs.cpp:584
 msgid "Date"
 msgstr "Tarih"
 
-#: src/dialogs.cpp:602 src/multiplayer_create.cpp:104
+#: src/dialogs.cpp:601 src/multiplayer_create.cpp:104
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
-#: src/dialogs.cpp:603
+#: src/dialogs.cpp:602
 msgid "Choose the game to load"
 msgstr "Yüklenecek oyunu seçiniz"
 
-#: src/dialogs.cpp:617
+#: src/dialogs.cpp:616
 msgid "Show replay"
 msgstr "Tekrar göster"
 
-#: src/dialogs.cpp:621
+#: src/dialogs.cpp:620
 msgid "Cancel orders"
 msgstr "İşlemi iptal et"
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:627
 msgid "Delete Save"
 msgstr "Kaydı Sil"
 
-#: src/dialogs.cpp:685
+#: src/dialogs.cpp:684
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:782 src/help.cpp:1330
+#: src/dialogs.cpp:781 src/help.cpp:1330
 msgid "level"
 msgstr "seviye"
 
-#: src/dialogs.cpp:795 src/help.cpp:1432
+#: src/dialogs.cpp:794 src/help.cpp:1432
 msgid "HP: "
 msgstr "YP: "
 
-#: src/dialogs.cpp:798
+#: src/dialogs.cpp:797
 msgid "XP: "
 msgstr "TP: "
 
-#: src/dialogs.cpp:802 src/help.cpp:1433
+#: src/dialogs.cpp:801 src/help.cpp:1433
 msgid "Moves: "
 msgstr "Hareket: "
 
@@ -7471,8 +7476,8 @@ msgstr "Hareket: "
 msgid "The Battle for Wesnoth"
 msgstr "Wesnoth Savaşı"
 
-#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:504
-#: src/playsingle_controller.cpp:565
+#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:506
+#: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığınız dosya bozuk"
 
@@ -7584,7 +7589,7 @@ msgstr "Hata ayıklama: "
 msgid "Info: "
 msgstr "Bilgi: "
 
-#: src/game_events.cpp:1185
+#: src/game_events.cpp:1185 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "Galibiyet:"
 
@@ -7592,10 +7597,14 @@ msgstr "Galibiyet:"
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
-#: src/gamestatus.cpp:182 src/gamestatus.cpp:196 src/gamestatus.cpp:214
-#: src/gamestatus.cpp:297 src/gamestatus.cpp:322
+#: src/gamestatus.cpp:183 src/gamestatus.cpp:197 src/gamestatus.cpp:215
+#: src/gamestatus.cpp:298 src/gamestatus.cpp:323
 msgid "No time of day has been defined."
 msgstr "Günün saati için bir tanım yapılmamış."
+
+#: src/gamestatus.cpp:955
+msgid "Duplicate side definition for side '$side|' found."
+msgstr "‘$side|’ için birden fazla taraf tanımı bulundu."
 
 #: src/generate_report.cpp:100
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8662,39 +8671,43 @@ msgstr "Renk"
 msgid "I'm Ready"
 msgstr "Ben hazırım"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "Bu senaryo geçersiz çünkü tarafları yok."
+
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "Bu senaryo geçersiz çünkü tarafları yok."
 
-#: src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Ağ Oyuncusu"
 
-#: src/multiplayer_connect.cpp:1427
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Yerel Oyuncu"
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncusu"
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Boş"
 
-#: src/multiplayer_connect.cpp:1625
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "$era çağı bulunamıyor"
 
-#: src/multiplayer_connect.cpp:1648
-msgid ""
-"Victory:\n"
-"@Defeat enemy leader(s)"
+#: src/multiplayer_connect.cpp:1653
+#, fuzzy
+msgid "Defeat enemy leader(s)"
 msgstr ""
 "Galibiyet\n"
 "@Düşman lider(ler)ini öldür"
 
-#: src/multiplayer_connect.cpp:1713
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -9086,32 +9099,32 @@ msgstr "İlk tokalaşma gönderilemedi"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 
-#: src/play_controller.cpp:103
+#: src/play_controller.cpp:102
 msgid "Loading level"
 msgstr "Seviye yükleniyor"
 
-#: src/play_controller.cpp:124
+#: src/play_controller.cpp:123
 msgid "Initializing teams"
 msgstr "Ekipler ilklendiriliyor"
 
-#: src/play_controller.cpp:145
+#: src/play_controller.cpp:144
 msgid "Loading units"
 msgstr "Birimler okunuyor"
 
-#: src/play_controller.cpp:152 src/play_controller.cpp:157
+#: src/play_controller.cpp:151 src/play_controller.cpp:156
 msgid "Initializing display"
 msgstr "Ekran ilklendiriliyor"
 
-#: src/play_controller.cpp:193
+#: src/play_controller.cpp:192
 msgid "Starting game"
 msgstr "Oyun başlatılıyor"
 
-#: src/play_controller.cpp:829 src/savegame.cpp:228 src/savegame.cpp:240
+#: src/play_controller.cpp:848 src/savegame.cpp:228 src/savegame.cpp:240
 #: src/savegame.cpp:889 src/savegame.cpp:891
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
-#: src/play_controller.cpp:836
+#: src/play_controller.cpp:855
 msgid "Back to turn "
 msgstr "Ele geri dön: "
 
@@ -9135,11 +9148,11 @@ msgstr "Bu senaryo bitti. Seferberliğe devam etmek istiyor musunuz?"
 msgid "Downloading next scenario..."
 msgstr "Bir sonraki senaryo indiriliyor..."
 
-#: src/playcampaign.cpp:568
+#: src/playcampaign.cpp:572
 msgid "Do you want to save your game?"
 msgstr "Bu oyunu kaydetmek istiyor musunuz?"
 
-#: src/playcampaign.cpp:584
+#: src/playcampaign.cpp:588
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
@@ -9256,7 +9269,7 @@ msgstr "Galibiyet"
 msgid "You have emerged victorious!"
 msgstr "Galip olarak tamamladın!"
 
-#: src/playsingle_controller.cpp:515
+#: src/playsingle_controller.cpp:517
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9265,7 +9278,7 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playsingle_controller.cpp:693
+#: src/playsingle_controller.cpp:695
 msgid "It is now $name|'s turn"
 msgstr "Sıra $name|’de"
 
@@ -9289,7 +9302,7 @@ msgstr "$player ile yer değiş"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player oyunu terketti. Ne yapmak istersiniz?"
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "Yüklemeye çalıştığınız dosya bozuk. Oyuna devam edilsin mi?"
 
@@ -9381,7 +9394,8 @@ msgid "Unexpected closing tag"
 msgstr "Beklenmedik kapama etiketi"
 
 #: src/serialization/parser.cpp:218
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "$tag için geçersiz kapama etiketi $tag2 kullanılmış (açılış yeri $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
@@ -9396,13 +9410,13 @@ msgstr "Değişken adından sonra beklenmedik karakterler (beklenen , veya =)"
 msgid "Unterminated quoted string"
 msgstr "Sonlandırılmamış tırnaklı dizge"
 
-#: src/serialization/parser.cpp:347
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 "$error, '$value' değeri için evvelce $pos konumunda bir '$previous_value' "
 "değeri vardı;"
 
-#: src/serialization/parser.cpp:351
+#: src/serialization/parser.cpp:354
 msgid "$error, value '$value' at $pos"
 msgstr "$error, $pos konumunda '$value' değeri"
 

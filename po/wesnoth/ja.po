@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-01 23:55+0200\n"
 "PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -3743,8 +3743,26 @@ msgstr "毒"
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "まさにこの瞬間、 このユニットの血管から 毒がしみ出ている。"
 
+#: data/core/macros/items.cfg:287
+#, fuzzy
+msgid ""
+"Sprinkling this water on melee weapons grants them the 'arcane' damage type "
+"until the end of the current scenario. Should $unit.name use it?"
+msgstr ""
+"この水により、シナリオの終わりまで格闘攻撃の武器に「秘術」ダメージタイプがつ"
+"きます。"
+
+#: data/core/macros/items.cfg:288
+msgid "I am not suited to the use of this item! Let another take it."
+msgstr "このアイテムを使うのにふさわしくない！ 他の人に使わせて下さい。"
+
 #. [object]
-#: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
+#: data/core/macros/items.cfg:290
+msgid "Holy Water"
+msgstr "聖水"
+
+#. [object]
+#: data/core/macros/items.cfg:293
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -3752,90 +3770,81 @@ msgstr ""
 "この水により、シナリオの終わりまで格闘攻撃の武器に「秘術」ダメージタイプがつ"
 "きます。"
 
-#: data/core/macros/items.cfg:290
-msgid "I am not suited to the use of this item! Let another take it."
-msgstr "このアイテムを使うのにふさわしくない！ 他の人に使わせて下さい。"
-
-#. [object]
-#: data/core/macros/items.cfg:292
-msgid "Holy Water"
-msgstr "聖水"
-
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:325
+#: data/core/macros/items.cfg:322
 msgid "Potion of Strength"
 msgstr "力の藥"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:328
+#: data/core/macros/items.cfg:325
 msgid "Strength is given to the drinker."
 msgstr "力が飲んだ者に与えられます。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "腐敗の藥"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:371
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "この哀れなユニットは、 ひどく悪い何かを飲んでしまった。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:405
+#: data/core/macros/items.cfg:402
 msgid "Ring of Regeneration"
 msgstr "再生の指輪"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:408
+#: data/core/macros/items.cfg:405
 msgid "This ring will heal the bearer a little each turn."
 msgstr "この指輪は、各ターンに 少しだけ 持ち主を回復させます。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:444
+#: data/core/macros/items.cfg:441
 msgid "Ring of Slowness"
 msgstr "鈍足の指輪"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:447
+#: data/core/macros/items.cfg:444
 msgid "The bearer of this ring is slowed."
 msgstr "この指輪の持ち主は遅くなります。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:481
+#: data/core/macros/items.cfg:478
 msgid "Staff of Swiftness"
 msgstr "俊敏の杖"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:481
 msgid "This staff will grant the bearer swift movement."
 msgstr "この杖は持ち主に俊敏な動きを与えます。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:485
+#: data/core/macros/items.cfg:482
 msgid "Only magical beings can wield such an object."
 msgstr "魔法を扱えるものだけが、 その物体を扱うことができます。"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Only the mermen can use this item!"
 msgstr "マーマンだけがこの道具を使用できる！"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:534
 msgid "Storm Trident"
 msgstr "ストームトライデント"
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:537
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "このトライデントを持ったマーマンは、敵に電気の矢を放つことができる！"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:541
 msgid "storm trident"
 msgstr "ストームトライデント"
 
@@ -5814,15 +5823,15 @@ msgstr "キャンペーンをプレイする"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:181 src/dialogs.cpp:624
+#: data/gui/default/window/campaign_dialog.cfg:180 src/dialogs.cpp:623
 #: src/multiplayer_create.cpp:86
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:195 src/dialogs.cpp:625
-#: src/dialogs.cpp:1127 src/dialogs.cpp:1234 src/multiplayer_connect.cpp:1022
+#: data/gui/default/window/campaign_dialog.cfg:194 src/dialogs.cpp:624
+#: src/dialogs.cpp:1126 src/dialogs.cpp:1233 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "キャンセル"
@@ -6947,7 +6956,7 @@ msgstr "(移動し続けるには $hotkey を押して下さい)"
 msgid "B"
 msgstr "バイト"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1156
+#: src/addon_management.cpp:365 src/dialogs.cpp:1155
 msgid "KB"
 msgstr "Kバイト"
 
@@ -7090,7 +7099,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
-#: src/dialogs.cpp:585 src/menu_events.cpp:192 src/menu_events.cpp:850
+#: src/dialogs.cpp:584 src/menu_events.cpp:192 src/menu_events.cpp:850
 msgid "Name"
 msgstr "名前"
 
@@ -7202,7 +7211,7 @@ msgstr "アドオンの入手"
 msgid "Choose the add-on to download."
 msgstr "ダウンロードするアドオンを選択して下さい。"
 
-#: src/addon_management.cpp:1032 src/dialogs.cpp:610 src/menu_events.cpp:909
+#: src/addon_management.cpp:1032 src/dialogs.cpp:609 src/menu_events.cpp:909
 #: src/menu_events.cpp:1415
 msgid "Filter: "
 msgstr "フィルター: "
@@ -7310,10 +7319,6 @@ msgstr "無傷でいられる可能性"
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
-#: src/config_adapter.cpp:161
-msgid "Duplicate side definition for side '$side|' found."
-msgstr "'$side|' 陣営についての重複した定義が見つかりました。"
-
 #: src/dialogs.cpp:131
 msgid "Advance Unit"
 msgstr "ユニットの昇進"
@@ -7326,75 +7331,75 @@ msgstr "この勝利ユニットは何になりますか？"
 msgid "No objectives available"
 msgstr "目標がありません"
 
-#: src/dialogs.cpp:269
+#: src/dialogs.cpp:268
 msgid "Do you really want to delete this game?"
 msgstr "このゲームを本当に削除しますか？"
 
-#: src/dialogs.cpp:271
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "二度と聞かないで！"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:437
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y年%m月%d日(%a) %H:%M"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:457
 msgid "#(Invalid)"
 msgstr "#(無効)"
 
-#: src/dialogs.cpp:476
+#: src/dialogs.cpp:475
 msgid "Campaign: $campaign_name"
 msgstr "キャンペーン: $campaign_name"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:482
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:484
 msgid "Tutorial"
 msgstr "チュートリアル"
 
-#: src/dialogs.cpp:493 src/savegame.cpp:861
+#: src/dialogs.cpp:492 src/savegame.cpp:861
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:495 src/savegame.cpp:940
+#: src/dialogs.cpp:494 src/savegame.cpp:940
 msgid "Turn"
 msgstr "ターン"
 
-#: src/dialogs.cpp:497
+#: src/dialogs.cpp:496
 msgid "Scenario Start"
 msgstr "シナリオ開始"
 
-#: src/dialogs.cpp:500
+#: src/dialogs.cpp:499
 msgid "Difficulty: "
 msgstr "難易度: "
 
-#: src/dialogs.cpp:502
+#: src/dialogs.cpp:501
 msgid "Version: "
 msgstr "バージョン: "
 
-#: src/dialogs.cpp:526 src/dialogs.cpp:542
+#: src/dialogs.cpp:525 src/dialogs.cpp:541
 msgid "%b %d %y"
 msgstr "%y年%m月%d日"
 
-#: src/dialogs.cpp:532
+#: src/dialogs.cpp:531
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:534
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:537
 msgid "%b %d"
 msgstr "%m月%d日"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:565
 msgid "No Saved Games"
 msgstr "保存されたゲームはありません"
 
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:566
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7404,48 +7409,48 @@ msgstr ""
 "\n"
 "(シナリオを制覇すると、 自動的にゲームは保存されます)"
 
-#: src/dialogs.cpp:585
+#: src/dialogs.cpp:584
 msgid "Date"
 msgstr "日付"
 
-#: src/dialogs.cpp:602 src/multiplayer_create.cpp:104
+#: src/dialogs.cpp:601 src/multiplayer_create.cpp:104
 msgid "Load Game"
 msgstr "ロード"
 
-#: src/dialogs.cpp:603
+#: src/dialogs.cpp:602
 msgid "Choose the game to load"
 msgstr "ロードするゲームを選択して下さい"
 
-#: src/dialogs.cpp:617
+#: src/dialogs.cpp:616
 msgid "Show replay"
 msgstr "リプレイを見る"
 
-#: src/dialogs.cpp:621
+#: src/dialogs.cpp:620
 #, fuzzy
 msgid "Cancel orders"
 msgstr "キャンセル"
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:627
 msgid "Delete Save"
 msgstr "保存データの削除"
 
-#: src/dialogs.cpp:685
+#: src/dialogs.cpp:684
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/dialogs.cpp:782 src/help.cpp:1330
+#: src/dialogs.cpp:781 src/help.cpp:1330
 msgid "level"
 msgstr "レベル"
 
-#: src/dialogs.cpp:795 src/help.cpp:1432
+#: src/dialogs.cpp:794 src/help.cpp:1432
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:798
+#: src/dialogs.cpp:797
 msgid "XP: "
 msgstr "経験: "
 
-#: src/dialogs.cpp:802 src/help.cpp:1433
+#: src/dialogs.cpp:801 src/help.cpp:1433
 msgid "Moves: "
 msgstr "移動: "
 
@@ -7453,8 +7458,8 @@ msgstr "移動: "
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:504
-#: src/playsingle_controller.cpp:565
+#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:506
+#: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
@@ -7571,7 +7576,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1185
+#: src/game_events.cpp:1185 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "勝利条件:"
 
@@ -7579,10 +7584,14 @@ msgstr "勝利条件:"
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:182 src/gamestatus.cpp:196 src/gamestatus.cpp:214
-#: src/gamestatus.cpp:297 src/gamestatus.cpp:322
+#: src/gamestatus.cpp:183 src/gamestatus.cpp:197 src/gamestatus.cpp:215
+#: src/gamestatus.cpp:298 src/gamestatus.cpp:323
 msgid "No time of day has been defined."
 msgstr "時刻が定義されていません。"
+
+#: src/gamestatus.cpp:955
+msgid "Duplicate side definition for side '$side|' found."
+msgstr "'$side|' 陣営についての重複した定義が見つかりました。"
 
 #: src/generate_report.cpp:100
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8673,39 +8682,43 @@ msgstr "色"
 msgid "I'm Ready"
 msgstr "準備完了"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "チームがないため、 シナリオは無効です。"
+
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "チームがないため、 シナリオは無効です。"
 
-#: src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "ネットプレイヤー"
 
-#: src/multiplayer_connect.cpp:1427
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "ローカルプレイヤー"
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "コンピュータ"
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "なし"
 
-#: src/multiplayer_connect.cpp:1625
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
-#: src/multiplayer_connect.cpp:1648
-msgid ""
-"Victory:\n"
-"@Defeat enemy leader(s)"
+#: src/multiplayer_connect.cpp:1653
+#, fuzzy
+msgid "Defeat enemy leader(s)"
 msgstr ""
 "勝利条件\n"
 "@敵のリーダー（達）を打ち負かす"
 
-#: src/multiplayer_connect.cpp:1713
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加待ち..."
 
@@ -9100,34 +9113,34 @@ msgstr "初期応答確認を送れませんでした"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "移動コストが 1 未満の土地が見つかりました。"
 
-#: src/play_controller.cpp:103
+#: src/play_controller.cpp:102
 #, fuzzy
 msgid "Loading level"
 msgstr "タイトル画面を読み込んでいます。"
 
-#: src/play_controller.cpp:124
+#: src/play_controller.cpp:123
 msgid "Initializing teams"
 msgstr "チーム初期化中"
 
-#: src/play_controller.cpp:145
+#: src/play_controller.cpp:144
 #, fuzzy
 msgid "Loading units"
 msgstr "ユニットのファイルを読み込んでいます。"
 
-#: src/play_controller.cpp:152 src/play_controller.cpp:157
+#: src/play_controller.cpp:151 src/play_controller.cpp:156
 msgid "Initializing display"
 msgstr "表示初期化中"
 
-#: src/play_controller.cpp:193
+#: src/play_controller.cpp:192
 msgid "Starting game"
 msgstr "ゲーム開始中"
 
-#: src/play_controller.cpp:829 src/savegame.cpp:228 src/savegame.cpp:240
+#: src/play_controller.cpp:848 src/savegame.cpp:228 src/savegame.cpp:240
 #: src/savegame.cpp:889 src/savegame.cpp:891
 msgid "Auto-Save"
 msgstr "自動保存"
 
-#: src/play_controller.cpp:836
+#: src/play_controller.cpp:855
 msgid "Back to turn "
 msgstr "戻るターン : "
 
@@ -9151,11 +9164,11 @@ msgstr "このシナリオは終了しました。キャンペーンを続けま
 msgid "Downloading next scenario..."
 msgstr "次のシナリオをダウンロード中..."
 
-#: src/playcampaign.cpp:568
+#: src/playcampaign.cpp:572
 msgid "Do you want to save your game?"
 msgstr "このゲームを本当に保存しますか？"
 
-#: src/playcampaign.cpp:584
+#: src/playcampaign.cpp:588
 msgid "Unknown scenario: '$scenario|'"
 msgstr "不明のシナリオ: '$scenario|'"
 
@@ -9266,7 +9279,7 @@ msgstr "勝利"
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
-#: src/playsingle_controller.cpp:515
+#: src/playsingle_controller.cpp:517
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9275,7 +9288,7 @@ msgstr ""
 "ネットワークが切断されたため、 ゲームを続けられません。 このゲームを保存しま"
 "すか？"
 
-#: src/playsingle_controller.cpp:693
+#: src/playsingle_controller.cpp:695
 msgid "It is now $name|'s turn"
 msgstr "$name| ののターンです"
 
@@ -9299,7 +9312,7 @@ msgstr "$player と交代する"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player はゲームを去りました。 どうしますか？"
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "読み込もうとしたファイルは 壊れています。プレイを続けますか？"
 
@@ -9391,7 +9404,8 @@ msgid "Unexpected closing tag"
 msgstr "予期せぬ閉じタグ"
 
 #: src/serialization/parser.cpp:218
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "($pos にて開かれた)タグ $tag に対するタグ $tag2 の不正な閉じタグを発見"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
@@ -9406,11 +9420,11 @@ msgstr "変数名の後に予期せぬ文字 ( , あるいは = を期待)"
 msgid "Unterminated quoted string"
 msgstr "引用符が閉じられていない文字列"
 
-#: src/serialization/parser.cpp:347
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:351
+#: src/serialization/parser.cpp:354
 #, fuzzy
 msgid "$error, value '$value' at $pos"
 msgstr "$pos の $error"

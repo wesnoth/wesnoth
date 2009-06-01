@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:20+0200\n"
+"POT-Creation-Date: 2009-06-01 23:54+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -1670,60 +1670,63 @@ msgstr "Няма намерени теми. Пробвайте да сменит
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:320
+#: src/gui/auxiliary/canvas.cpp:343
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:455
+#: src/gui/auxiliary/canvas.cpp:478
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:826
+#: src/gui/auxiliary/canvas.cpp:849
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:891
+#: src/gui/auxiliary/canvas.cpp:914
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:317 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/auxiliary/window_builder.cpp:413
-#: src/gui/auxiliary/window_builder.cpp:1055
-#: src/gui/auxiliary/window_builder.cpp:1264 src/gui/widgets/settings.cpp:766
+#: src/gui/auxiliary/window_builder.cpp:414
+#: src/gui/auxiliary/window_builder.cpp:1035
+#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
 #: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:521
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:522
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:794
-#: src/gui/auxiliary/window_builder.cpp:976
+#: src/gui/auxiliary/window_builder.cpp:795
 #, fuzzy
 msgid "No list defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:980
+#: src/gui/auxiliary/window_builder.cpp:798
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:815
-#: src/gui/auxiliary/window_builder.cpp:998
+#: src/gui/auxiliary/window_builder.cpp:816
+#: src/gui/auxiliary/window_builder.cpp:983
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:1183
+#: src/gui/auxiliary/window_builder.cpp:960
+#, fuzzy
+msgid "No page defined."
+msgstr "Създаването на картата се провали."
+
+#: src/gui/auxiliary/window_builder.cpp:1163
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -1765,7 +1768,7 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:668
+#: src/gui/widgets/window.cpp:684
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 

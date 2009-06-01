@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-01 23:55+0200\n"
 "PO-Revision-Date: 2009-04-05 12:15-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -3895,8 +3895,27 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 "El veneno está entrando en las venas de esta unidad en este preciso momento."
 
+#: data/core/macros/items.cfg:287
+#, fuzzy
+msgid ""
+"Sprinkling this water on melee weapons grants them the 'arcane' damage type "
+"until the end of the current scenario. Should $unit.name use it?"
+msgstr ""
+"Este agua hace que las armas de combate cuerpo a cuerpo posean el tipo de "
+"daño «arcano» hasta el final del escenario actual."
+
+#: data/core/macros/items.cfg:288
+msgid "I am not suited to the use of this item! Let another take it."
+msgstr ""
+"¡No estoy capacitado para usar este objeto! Dejemos que otro lo recoja."
+
 #. [object]
-#: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
+#: data/core/macros/items.cfg:290
+msgid "Holy Water"
+msgstr "Agua bendita"
+
+#. [object]
+#: data/core/macros/items.cfg:293
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -3904,93 +3923,83 @@ msgstr ""
 "Este agua hace que las armas de combate cuerpo a cuerpo posean el tipo de "
 "daño «arcano» hasta el final del escenario actual."
 
-#: data/core/macros/items.cfg:290
-msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
-"¡No estoy capacitado para usar este objeto! Dejemos que otro lo recoja."
-
-#. [object]
-#: data/core/macros/items.cfg:292
-msgid "Holy Water"
-msgstr "Agua bendita"
-
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:325
+#: data/core/macros/items.cfg:322
 msgid "Potion of Strength"
 msgstr "Poción de fuerza"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:328
+#: data/core/macros/items.cfg:325
 msgid "Strength is given to the drinker."
 msgstr "El bebedor tiene fuerza adicional."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "Poción de debilidad"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:371
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "Esta pobre unidad ha bebido algo realmente malo."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:405
+#: data/core/macros/items.cfg:402
 msgid "Ring of Regeneration"
 msgstr "Anillo de regeneración"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:408
+#: data/core/macros/items.cfg:405
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Este anillo sanará al que lo lleve un poco cada turno."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:444
+#: data/core/macros/items.cfg:441
 msgid "Ring of Slowness"
 msgstr "Anillo de lentitud"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:447
+#: data/core/macros/items.cfg:444
 msgid "The bearer of this ring is slowed."
 msgstr "El poseedor de este anillo se verá ralentizado."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:481
+#: data/core/macros/items.cfg:478
 msgid "Staff of Swiftness"
 msgstr "Vara de rapidez"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:481
 msgid "This staff will grant the bearer swift movement."
 msgstr "Esta vara dará a su poseedor movimiento rápido."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:485
+#: data/core/macros/items.cfg:482
 msgid "Only magical beings can wield such an object."
 msgstr "Sólo los seres mágicos pueden llevar este objeto."
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Only the mermen can use this item!"
 msgstr "¡Sólo los sirénidos pueden usar este objeto!"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr "Debería $unit.name recoger el tridente?"
 
 #. [object]
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:534
 msgid "Storm Trident"
 msgstr "Tridente de las tormentas"
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:537
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "¡Este tridente permite a un sirénido lanzar descargas eléctricas a sus "
 "enemigos!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:541
 msgid "storm trident"
 msgstr "tridente de tormentas"
 
@@ -6161,15 +6170,15 @@ msgstr "Jugar una campaña"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:181 src/dialogs.cpp:624
+#: data/gui/default/window/campaign_dialog.cfg:180 src/dialogs.cpp:623
 #: src/multiplayer_create.cpp:86
 msgid "OK"
 msgstr "Aceptar"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:195 src/dialogs.cpp:625
-#: src/dialogs.cpp:1127 src/dialogs.cpp:1234 src/multiplayer_connect.cpp:1022
+#: data/gui/default/window/campaign_dialog.cfg:194 src/dialogs.cpp:624
+#: src/dialogs.cpp:1126 src/dialogs.cpp:1233 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Cancelar"
@@ -7330,7 +7339,7 @@ msgstr "(pulse $hotkey para seguir moviéndose)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1156
+#: src/addon_management.cpp:365 src/dialogs.cpp:1155
 msgid "KB"
 msgstr "KB"
 
@@ -7479,7 +7488,7 @@ msgid "No add-ons to update"
 msgstr "No hay complementos para actualizar"
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
-#: src/dialogs.cpp:585 src/menu_events.cpp:192 src/menu_events.cpp:850
+#: src/dialogs.cpp:584 src/menu_events.cpp:192 src/menu_events.cpp:850
 msgid "Name"
 msgstr "Nombre"
 
@@ -7586,7 +7595,7 @@ msgstr "Complementos"
 msgid "Choose the add-on to download."
 msgstr "Escoja el complemento que desea descargar."
 
-#: src/addon_management.cpp:1032 src/dialogs.cpp:610 src/menu_events.cpp:909
+#: src/addon_management.cpp:1032 src/dialogs.cpp:609 src/menu_events.cpp:909
 #: src/menu_events.cpp:1415
 msgid "Filter: "
 msgstr "Filtro: "
@@ -7694,11 +7703,6 @@ msgstr "Posibilidad de salir ileso"
 msgid "Damage Calculations"
 msgstr "Cálculo del daño"
 
-#: src/config_adapter.cpp:161
-msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
-"Se ha encontrado una definición de bando duplicada para el bando «$side|»."
-
 #: src/dialogs.cpp:131
 msgid "Advance Unit"
 msgstr "Promocionar unidad"
@@ -7711,75 +7715,75 @@ msgstr "¿En qué debe convertirse la unidad victoriosa?"
 msgid "No objectives available"
 msgstr "No hay objetivos disponibles"
 
-#: src/dialogs.cpp:269
+#: src/dialogs.cpp:268
 msgid "Do you really want to delete this game?"
 msgstr "¿Está seguro de que quiere borrar esta partida?"
 
-#: src/dialogs.cpp:271
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "¡No me lo vuelvas a preguntar!"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:437
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:457
 msgid "#(Invalid)"
 msgstr "#(Inválido)"
 
-#: src/dialogs.cpp:476
+#: src/dialogs.cpp:475
 msgid "Campaign: $campaign_name"
 msgstr "Campaña: $campaign_name"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:482
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:484
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:493 src/savegame.cpp:861
+#: src/dialogs.cpp:492 src/savegame.cpp:861
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:495 src/savegame.cpp:940
+#: src/dialogs.cpp:494 src/savegame.cpp:940
 msgid "Turn"
 msgstr "Turno"
 
-#: src/dialogs.cpp:497
+#: src/dialogs.cpp:496
 msgid "Scenario Start"
 msgstr "Inicio del escenario"
 
-#: src/dialogs.cpp:500
+#: src/dialogs.cpp:499
 msgid "Difficulty: "
 msgstr "Dificultad: "
 
-#: src/dialogs.cpp:502
+#: src/dialogs.cpp:501
 msgid "Version: "
 msgstr "Versión: "
 
-#: src/dialogs.cpp:526 src/dialogs.cpp:542
+#: src/dialogs.cpp:525 src/dialogs.cpp:541
 msgid "%b %d %y"
 msgstr "%d de %b del %y"
 
-#: src/dialogs.cpp:532
+#: src/dialogs.cpp:531
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:534
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:537
 msgid "%b %d"
 msgstr "%d de %b"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:565
 msgid "No Saved Games"
 msgstr "No hay ninguna partida guardada"
 
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:566
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7789,48 +7793,48 @@ msgstr ""
 "\n"
 "(Las partidas se guardan automáticamente cuando se completa un escenario)"
 
-#: src/dialogs.cpp:585
+#: src/dialogs.cpp:584
 msgid "Date"
 msgstr "Fecha"
 
-#: src/dialogs.cpp:602 src/multiplayer_create.cpp:104
+#: src/dialogs.cpp:601 src/multiplayer_create.cpp:104
 msgid "Load Game"
 msgstr "Cargar partida"
 
-#: src/dialogs.cpp:603
+#: src/dialogs.cpp:602
 msgid "Choose the game to load"
 msgstr "Escoja partida a cargar"
 
-#: src/dialogs.cpp:617
+#: src/dialogs.cpp:616
 msgid "Show replay"
 msgstr "Mostrar repetición"
 
-#: src/dialogs.cpp:621
+#: src/dialogs.cpp:620
 msgid "Cancel orders"
 msgstr "Cancelar órdenes"
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:627
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:685
+#: src/dialogs.cpp:684
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:782 src/help.cpp:1330
+#: src/dialogs.cpp:781 src/help.cpp:1330
 msgid "level"
 msgstr "nivel"
 
 # Aquí queda muy mal poner pv en minúscula.
-#: src/dialogs.cpp:795 src/help.cpp:1432
+#: src/dialogs.cpp:794 src/help.cpp:1432
 msgid "HP: "
 msgstr "PV: "
 
-#: src/dialogs.cpp:798
+#: src/dialogs.cpp:797
 msgid "XP: "
 msgstr "PX: "
 
-#: src/dialogs.cpp:802 src/help.cpp:1433
+#: src/dialogs.cpp:801 src/help.cpp:1433
 msgid "Moves: "
 msgstr "Movimientos: "
 
@@ -7838,8 +7842,8 @@ msgstr "Movimientos: "
 msgid "The Battle for Wesnoth"
 msgstr "La batalla por Wesnoth"
 
-#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:504
-#: src/playsingle_controller.cpp:565
+#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:506
+#: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "El archivo que ha intentado cargar está corrupto"
 
@@ -7954,7 +7958,7 @@ msgstr "Depuración: "
 msgid "Info: "
 msgstr "Información: "
 
-#: src/game_events.cpp:1185
+#: src/game_events.cpp:1185 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "Victoria:"
 
@@ -7962,10 +7966,15 @@ msgstr "Victoria:"
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/gamestatus.cpp:182 src/gamestatus.cpp:196 src/gamestatus.cpp:214
-#: src/gamestatus.cpp:297 src/gamestatus.cpp:322
+#: src/gamestatus.cpp:183 src/gamestatus.cpp:197 src/gamestatus.cpp:215
+#: src/gamestatus.cpp:298 src/gamestatus.cpp:323
 msgid "No time of day has been defined."
 msgstr "No se ha definido una hora del día."
+
+#: src/gamestatus.cpp:955
+msgid "Duplicate side definition for side '$side|' found."
+msgstr ""
+"Se ha encontrado una definición de bando duplicada para el bando «$side|»."
 
 #: src/generate_report.cpp:100
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -9043,39 +9052,43 @@ msgstr "Color"
 msgid "I'm Ready"
 msgstr "Estoy listo"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "El escenario es inválido, ya que no tiene bandos."
+
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "El escenario es inválido, ya que no tiene bandos."
 
-#: src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Jugador en red"
 
-#: src/multiplayer_connect.cpp:1427
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Inteligencia artificial (computadora)"
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Vacío"
 
-#: src/multiplayer_connect.cpp:1625
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "No se encuentra la era $era"
 
-#: src/multiplayer_connect.cpp:1648
-msgid ""
-"Victory:\n"
-"@Defeat enemy leader(s)"
+#: src/multiplayer_connect.cpp:1653
+#, fuzzy
+msgid "Defeat enemy leader(s)"
 msgstr ""
 "Victoria\n"
 "@Derrotar al/los líder(es) enemigo(s)"
 
-#: src/multiplayer_connect.cpp:1713
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Esperando a que se conecten jugadores..."
 
@@ -9470,32 +9483,32 @@ msgstr "No se pudo enviar el saludo inicial"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Se ha encontrado un terreno con un coste de movimiento menor que 1."
 
-#: src/play_controller.cpp:103
+#: src/play_controller.cpp:102
 msgid "Loading level"
 msgstr "Cargando escenario"
 
-#: src/play_controller.cpp:124
+#: src/play_controller.cpp:123
 msgid "Initializing teams"
 msgstr "Inicializando equipos"
 
-#: src/play_controller.cpp:145
+#: src/play_controller.cpp:144
 msgid "Loading units"
 msgstr "Leyendo archivos de unidades"
 
-#: src/play_controller.cpp:152 src/play_controller.cpp:157
+#: src/play_controller.cpp:151 src/play_controller.cpp:156
 msgid "Initializing display"
 msgstr "Inicializando visualización"
 
-#: src/play_controller.cpp:193
+#: src/play_controller.cpp:192
 msgid "Starting game"
 msgstr "Empezando la partida"
 
-#: src/play_controller.cpp:829 src/savegame.cpp:228 src/savegame.cpp:240
+#: src/play_controller.cpp:848 src/savegame.cpp:228 src/savegame.cpp:240
 #: src/savegame.cpp:889 src/savegame.cpp:891
 msgid "Auto-Save"
 msgstr "Autoguardado"
 
-#: src/play_controller.cpp:836
+#: src/play_controller.cpp:855
 msgid "Back to turn "
 msgstr "Volver al turno "
 
@@ -9519,11 +9532,11 @@ msgstr "El escenario ha finalizado. Quieres continuar con la campaña?"
 msgid "Downloading next scenario..."
 msgstr "Descargando el próximo escenario..."
 
-#: src/playcampaign.cpp:568
+#: src/playcampaign.cpp:572
 msgid "Do you want to save your game?"
 msgstr "¿Desea guardar su partida?"
 
-#: src/playcampaign.cpp:584
+#: src/playcampaign.cpp:588
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario desconocido: «$scenario|»"
 
@@ -9640,7 +9653,7 @@ msgstr "Victoria"
 msgid "You have emerged victorious!"
 msgstr "¡Ha vencido!"
 
-#: src/playsingle_controller.cpp:515
+#: src/playsingle_controller.cpp:517
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
@@ -9649,7 +9662,7 @@ msgstr ""
 "Se ha producido una desconexión de red y el juego no puede continuar. "
 "¿Quiere guardar la partida?"
 
-#: src/playsingle_controller.cpp:693
+#: src/playsingle_controller.cpp:695
 msgid "It is now $name|'s turn"
 msgstr "Es el turno de $name"
 
@@ -9673,7 +9686,7 @@ msgstr "Reemplazar con $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player ha dejado la partida. ¿Qué quiere hacer?"
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "El archivo que ha intentado cargar está corrupto. ¿Continuar jugando?"
 
@@ -9774,7 +9787,8 @@ msgid "Unexpected closing tag"
 msgstr "No se esperaba etiqueta de cierre"
 
 #: src/serialization/parser.cpp:218
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
 "Se ha encontrado una etiqueta de cierre inválida $tag2 de la etiqueta $tag "
 "(en la posición $pos)"
@@ -9792,11 +9806,11 @@ msgstr ""
 msgid "Unterminated quoted string"
 msgstr "Cadena entrecomillada sin terminar"
 
-#: src/serialization/parser.cpp:347
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, valor «$value», previo «$previous_value» en $pos"
 
-#: src/serialization/parser.cpp:351
+#: src/serialization/parser.cpp:354
 msgid "$error, value '$value' at $pos"
 msgstr "$error, valor «$value» en $pos"
 

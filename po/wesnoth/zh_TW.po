@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-01 23:55+0200\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -3527,97 +3527,104 @@ msgstr "毒藥"
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "毒素此刻正滲透到這個單位的全身。"
 
+#: data/core/macros/items.cfg:287
+#, fuzzy
+msgid ""
+"Sprinkling this water on melee weapons grants them the 'arcane' damage type "
+"until the end of the current scenario. Should $unit.name use it?"
+msgstr "這瓶水將讓單位的近戰武器類型變為'秘法'直到下一幕開始."
+
+#: data/core/macros/items.cfg:288
+msgid "I am not suited to the use of this item! Let another take it."
+msgstr "我不適合用這件物品！讓別人去用吧。"
+
 #. [object]
-#: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
+#: data/core/macros/items.cfg:290
+msgid "Holy Water"
+msgstr "聖水"
+
+#. [object]
+#: data/core/macros/items.cfg:293
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr "這瓶水將讓單位的近戰武器類型變為'秘法'直到下一幕開始."
 
-#: data/core/macros/items.cfg:290
-msgid "I am not suited to the use of this item! Let another take it."
-msgstr "我不適合用這件物品！讓別人去用吧。"
-
-#. [object]
-#: data/core/macros/items.cfg:292
-msgid "Holy Water"
-msgstr "聖水"
-
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:325
+#: data/core/macros/items.cfg:322
 msgid "Potion of Strength"
 msgstr "力量藥劑"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:328
+#: data/core/macros/items.cfg:325
 msgid "Strength is given to the drinker."
 msgstr "飲用者獲得力量。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:368
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "衰退藥劑"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:371
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "這個可憐的傢伙喝了一些不好的東西。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:405
+#: data/core/macros/items.cfg:402
 msgid "Ring of Regeneration"
 msgstr "恢復戒指"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:408
+#: data/core/macros/items.cfg:405
 msgid "This ring will heal the bearer a little each turn."
 msgstr "戒指會讓持有人每回合恢復一些生命值。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:444
+#: data/core/macros/items.cfg:441
 msgid "Ring of Slowness"
 msgstr "遲緩戒指"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:447
+#: data/core/macros/items.cfg:444
 msgid "The bearer of this ring is slowed."
 msgstr "戒指持有人行動變慢。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:481
+#: data/core/macros/items.cfg:478
 msgid "Staff of Swiftness"
 msgstr "疾速法杖"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:484
+#: data/core/macros/items.cfg:481
 msgid "This staff will grant the bearer swift movement."
 msgstr "法杖讓持有者加速移動。"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:485
+#: data/core/macros/items.cfg:482
 msgid "Only magical beings can wield such an object."
 msgstr "只有懂得魔法的人才可以使用本物品。"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Only the mermen can use this item!"
 msgstr "只有人魚可以使用本物品！"
 
-#: data/core/macros/items.cfg:535
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr "讓$unit.name拿起三叉戟嗎？"
 
 #. [object]
-#: data/core/macros/items.cfg:537
+#: data/core/macros/items.cfg:534
 msgid "Storm Trident"
 msgstr "風暴三叉戟"
 
 #. [object]
-#: data/core/macros/items.cfg:540
+#: data/core/macros/items.cfg:537
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "這柄三叉戟能讓人魚向敵人射出閃電。"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:544
+#: data/core/macros/items.cfg:541
 msgid "storm trident"
 msgstr "風暴三叉戟"
 
@@ -5503,15 +5510,15 @@ msgstr "戰役"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:181 src/dialogs.cpp:624
+#: data/gui/default/window/campaign_dialog.cfg:180 src/dialogs.cpp:623
 #: src/multiplayer_create.cpp:86
 msgid "OK"
 msgstr "確定"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:195 src/dialogs.cpp:625
-#: src/dialogs.cpp:1127 src/dialogs.cpp:1234 src/multiplayer_connect.cpp:1022
+#: data/gui/default/window/campaign_dialog.cfg:194 src/dialogs.cpp:624
+#: src/dialogs.cpp:1126 src/dialogs.cpp:1233 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "取消"
@@ -6570,7 +6577,7 @@ msgstr "（按$hotkey鍵繼續移動）"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:365 src/dialogs.cpp:1156
+#: src/addon_management.cpp:365 src/dialogs.cpp:1155
 msgid "KB"
 msgstr "KB"
 
@@ -6709,7 +6716,7 @@ msgid "No add-ons to update"
 msgstr "沒有要更新的模組"
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
-#: src/dialogs.cpp:585 src/menu_events.cpp:192 src/menu_events.cpp:850
+#: src/dialogs.cpp:584 src/menu_events.cpp:192 src/menu_events.cpp:850
 msgid "Name"
 msgstr "名稱"
 
@@ -6813,7 +6820,7 @@ msgstr "取得模組"
 msgid "Choose the add-on to download."
 msgstr "選擇要下載的模組。"
 
-#: src/addon_management.cpp:1032 src/dialogs.cpp:610 src/menu_events.cpp:909
+#: src/addon_management.cpp:1032 src/dialogs.cpp:609 src/menu_events.cpp:909
 #: src/menu_events.cpp:1415
 msgid "Filter: "
 msgstr "過濾： "
@@ -6916,10 +6923,6 @@ msgstr "不受傷的幾率"
 msgid "Damage Calculations"
 msgstr "攻撃計算"
 
-#: src/config_adapter.cpp:161
-msgid "Duplicate side definition for side '$side|' found."
-msgstr "發現重復的陣營定義： '$side|'"
-
 #: src/dialogs.cpp:131
 msgid "Advance Unit"
 msgstr "單位升級"
@@ -6932,75 +6935,75 @@ msgstr "該單位將升級為"
 msgid "No objectives available"
 msgstr "無有效目標"
 
-#: src/dialogs.cpp:269
+#: src/dialogs.cpp:268
 msgid "Do you really want to delete this game?"
 msgstr "您確定要删除這個遊戲嗎？"
 
-#: src/dialogs.cpp:271
+#: src/dialogs.cpp:270
 msgid "Don't ask me again!"
 msgstr "不要再問我！"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:437
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:457
 msgid "#(Invalid)"
 msgstr "#（無效的）"
 
-#: src/dialogs.cpp:476
+#: src/dialogs.cpp:475
 msgid "Campaign: $campaign_name"
 msgstr "戰役: $campaign_name"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:482
 msgid "Multiplayer"
 msgstr "多人對戰"
 
-#: src/dialogs.cpp:485
+#: src/dialogs.cpp:484
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:493 src/savegame.cpp:861
+#: src/dialogs.cpp:492 src/savegame.cpp:861
 msgid "replay"
 msgstr "遊戲錄影"
 
-#: src/dialogs.cpp:495 src/savegame.cpp:940
+#: src/dialogs.cpp:494 src/savegame.cpp:940
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:497
+#: src/dialogs.cpp:496
 msgid "Scenario Start"
 msgstr "場景開始"
 
-#: src/dialogs.cpp:500
+#: src/dialogs.cpp:499
 msgid "Difficulty: "
 msgstr "難度： "
 
-#: src/dialogs.cpp:502
+#: src/dialogs.cpp:501
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:526 src/dialogs.cpp:542
+#: src/dialogs.cpp:525 src/dialogs.cpp:541
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:532
+#: src/dialogs.cpp:531
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:534
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:537
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:565
 msgid "No Saved Games"
 msgstr "没有存檔"
 
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:566
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7009,47 +7012,47 @@ msgstr ""
 "没有存檔，無法載入。\n"
 "（當您完成一個場景時會自動存檔）"
 
-#: src/dialogs.cpp:585
+#: src/dialogs.cpp:584
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:602 src/multiplayer_create.cpp:104
+#: src/dialogs.cpp:601 src/multiplayer_create.cpp:104
 msgid "Load Game"
 msgstr "載入遊戲"
 
-#: src/dialogs.cpp:603
+#: src/dialogs.cpp:602
 msgid "Choose the game to load"
 msgstr "選擇要載入的遊戲"
 
-#: src/dialogs.cpp:617
+#: src/dialogs.cpp:616
 msgid "Show replay"
 msgstr "顯示遊戲錄影"
 
-#: src/dialogs.cpp:621
+#: src/dialogs.cpp:620
 msgid "Cancel orders"
 msgstr "取消指令"
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:627
 msgid "Delete Save"
 msgstr "删除存檔"
 
-#: src/dialogs.cpp:685
+#: src/dialogs.cpp:684
 msgid "Profile"
 msgstr "資料"
 
-#: src/dialogs.cpp:782 src/help.cpp:1330
+#: src/dialogs.cpp:781 src/help.cpp:1330
 msgid "level"
 msgstr "等級"
 
-#: src/dialogs.cpp:795 src/help.cpp:1432
+#: src/dialogs.cpp:794 src/help.cpp:1432
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:798
+#: src/dialogs.cpp:797
 msgid "XP: "
 msgstr "經驗值："
 
-#: src/dialogs.cpp:802 src/help.cpp:1433
+#: src/dialogs.cpp:801 src/help.cpp:1433
 msgid "Moves: "
 msgstr "移動： "
 
@@ -7057,8 +7060,8 @@ msgstr "移動： "
 msgid "The Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:504
-#: src/playsingle_controller.cpp:565
+#: src/game.cpp:926 src/game.cpp:934 src/playsingle_controller.cpp:506
+#: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "您想載入的文件已損壞"
 
@@ -7170,7 +7173,7 @@ msgstr "偵錯:"
 msgid "Info: "
 msgstr "資訊:"
 
-#: src/game_events.cpp:1185
+#: src/game_events.cpp:1185 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "勝利："
 
@@ -7178,10 +7181,14 @@ msgstr "勝利："
 msgid "Defeat:"
 msgstr "失敗："
 
-#: src/gamestatus.cpp:182 src/gamestatus.cpp:196 src/gamestatus.cpp:214
-#: src/gamestatus.cpp:297 src/gamestatus.cpp:322
+#: src/gamestatus.cpp:183 src/gamestatus.cpp:197 src/gamestatus.cpp:215
+#: src/gamestatus.cpp:298 src/gamestatus.cpp:323
 msgid "No time of day has been defined."
 msgstr "没有定制時間."
+
+#: src/gamestatus.cpp:955
+msgid "Duplicate side definition for side '$side|' found."
+msgstr "發現重復的陣營定義： '$side|'"
 
 #: src/generate_report.cpp:100
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8224,39 +8231,43 @@ msgstr "顏色"
 msgid "I'm Ready"
 msgstr "準備就緒"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "由於没有選擇陣營，本地圖無法使用。"
+
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "由於没有選擇陣營，本地圖無法使用。"
 
-#: src/multiplayer_connect.cpp:1425
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/multiplayer_connect.cpp:1427
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "單機玩家"
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "電腦玩家"
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect.cpp:1625
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "找不到$era時期"
 
-#: src/multiplayer_connect.cpp:1648
-msgid ""
-"Victory:\n"
-"@Defeat enemy leader(s)"
+#: src/multiplayer_connect.cpp:1653
+#, fuzzy
+msgid "Defeat enemy leader(s)"
 msgstr ""
 "勝利條件：\n"
 "@打敗敵人的領袖(們)"
 
-#: src/multiplayer_connect.cpp:1713
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
@@ -8647,32 +8658,32 @@ msgstr "不能發送初始化連接信息"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到耗費移動力小於1的地形"
 
-#: src/play_controller.cpp:103
+#: src/play_controller.cpp:102
 msgid "Loading level"
 msgstr "讀取主畫面"
 
-#: src/play_controller.cpp:124
+#: src/play_controller.cpp:123
 msgid "Initializing teams"
 msgstr "初始化隊伍"
 
-#: src/play_controller.cpp:145
+#: src/play_controller.cpp:144
 msgid "Loading units"
 msgstr "載入部隊資料"
 
-#: src/play_controller.cpp:152 src/play_controller.cpp:157
+#: src/play_controller.cpp:151 src/play_controller.cpp:156
 msgid "Initializing display"
 msgstr "初始化顯示"
 
-#: src/play_controller.cpp:193
+#: src/play_controller.cpp:192
 msgid "Starting game"
 msgstr "開始遊戲"
 
-#: src/play_controller.cpp:829 src/savegame.cpp:228 src/savegame.cpp:240
+#: src/play_controller.cpp:848 src/savegame.cpp:228 src/savegame.cpp:240
 #: src/savegame.cpp:889 src/savegame.cpp:891
 msgid "Auto-Save"
 msgstr "自動存檔"
 
-#: src/play_controller.cpp:836
+#: src/play_controller.cpp:855
 msgid "Back to turn "
 msgstr "回到回合"
 
@@ -8696,11 +8707,11 @@ msgstr "這一幕結束了。您想繼續這個任務嗎?"
 msgid "Downloading next scenario..."
 msgstr "正在下載下一幕……"
 
-#: src/playcampaign.cpp:568
+#: src/playcampaign.cpp:572
 msgid "Do you want to save your game?"
 msgstr "您想儲存遊戲嗎？"
 
-#: src/playcampaign.cpp:584
+#: src/playcampaign.cpp:588
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知任務： '"
 
@@ -8806,14 +8817,14 @@ msgstr "勝利"
 msgid "You have emerged victorious!"
 msgstr "您贏得了勝利！"
 
-#: src/playsingle_controller.cpp:515
+#: src/playsingle_controller.cpp:517
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "網絡連接已斷開，遊戲無法繼續進行。您想儲存遊戲嗎？"
 
-#: src/playsingle_controller.cpp:693
+#: src/playsingle_controller.cpp:695
 msgid "It is now $name|'s turn"
 msgstr "輪到$name|了"
 
@@ -8837,7 +8848,7 @@ msgstr " $player 替換上陣"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player 已經離開遊戲，您想做什麽？"
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "您要讀取的資料已損壞。要繼續播放嗎?"
 
@@ -8928,7 +8939,8 @@ msgid "Unexpected closing tag"
 msgstr "意外的結束標識"
 
 #: src/serialization/parser.cpp:218
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "發現無效的$tag標志的結束標志$tag2（打開於 $pos 處）"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
@@ -8943,11 +8955,11 @@ msgstr "可變的姓名後出現無法識別的字符(expected , or =)"
 msgid "Unterminated quoted string"
 msgstr "未終止的引用字串"
 
-#: src/serialization/parser.cpp:347
+#: src/serialization/parser.cpp:350
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, 值 '$value', 之前 '$previous_value' 在 $pos"
 
-#: src/serialization/parser.cpp:351
+#: src/serialization/parser.cpp:354
 msgid "$error, value '$value' at $pos"
 msgstr "在$pos處發生$error"
 

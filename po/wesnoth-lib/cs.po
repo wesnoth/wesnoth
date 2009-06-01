@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:20+0200\n"
+"POT-Creation-Date: 2009-06-01 23:54+0200\n"
 "PO-Revision-Date: 2009-03-29 14:57+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1655,59 +1655,62 @@ msgstr "Žádná známá témata. Zkus změnit během existující hry."
 msgid "Find $filename server binary to host networked games"
 msgstr "Najít binární soubor $filename serveru pro hostování síťových her"
 
-#: src/gui/auxiliary/canvas.cpp:320
+#: src/gui/auxiliary/canvas.cpp:343
 msgid "Line doesn't fit on canvas."
 msgstr "Čára se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:455
+#: src/gui/auxiliary/canvas.cpp:478
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:826
+#: src/gui/auxiliary/canvas.cpp:849
 msgid "Text has a font size of 0."
 msgstr "Text má výšku fontu nula."
 
-#: src/gui/auxiliary/canvas.cpp:891
+#: src/gui/auxiliary/canvas.cpp:914
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 
-#: src/gui/auxiliary/window_builder.cpp:317 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
-#: src/gui/auxiliary/window_builder.cpp:413
-#: src/gui/auxiliary/window_builder.cpp:1055
-#: src/gui/auxiliary/window_builder.cpp:1264 src/gui/widgets/settings.cpp:766
+#: src/gui/auxiliary/window_builder.cpp:414
+#: src/gui/auxiliary/window_builder.cpp:1035
+#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
 #: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
-#: src/gui/auxiliary/window_builder.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:521
 msgid "A row must have a column."
 msgstr "Řádek musí mít sloupec."
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:522
 msgid "Number of columns differ."
 msgstr "Počet sloupců se liší."
 
-#: src/gui/auxiliary/window_builder.cpp:794
-#: src/gui/auxiliary/window_builder.cpp:976
+#: src/gui/auxiliary/window_builder.cpp:795
 msgid "No list defined."
 msgstr "Nebyl definován žádný seznam."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:980
+#: src/gui/auxiliary/window_builder.cpp:798
 msgid "A 'list_definition' should contain one row."
 msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
 
-#: src/gui/auxiliary/window_builder.cpp:815
-#: src/gui/auxiliary/window_builder.cpp:998
+#: src/gui/auxiliary/window_builder.cpp:816
+#: src/gui/auxiliary/window_builder.cpp:983
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-#: src/gui/auxiliary/window_builder.cpp:1183
+#: src/gui/auxiliary/window_builder.cpp:960
+#, fuzzy
+msgid "No page defined."
+msgstr "Není definována žádná mřížka."
+
+#: src/gui/auxiliary/window_builder.cpp:1163
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 
@@ -1748,7 +1751,7 @@ msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 msgid "No state or draw section defined."
 msgstr "Není definován stav či region vykreslení."
 
-#: src/gui/widgets/window.cpp:668
+#: src/gui/widgets/window.cpp:684
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 

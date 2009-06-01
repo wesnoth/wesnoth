@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:20+0200\n"
+"POT-Creation-Date: 2009-06-01 23:54+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -1619,58 +1619,61 @@ msgstr "當前無已知主題。請嘗試在遊戲時切换主題。"
 msgid "Find $filename server binary to host networked games"
 msgstr "在網路伺服器上搜尋 $filename 伺服器"
 
-#: src/gui/auxiliary/canvas.cpp:320
+#: src/gui/auxiliary/canvas.cpp:343
 msgid "Line doesn't fit on canvas."
 msgstr "線條無法置於畫面上"
 
-#: src/gui/auxiliary/canvas.cpp:455
+#: src/gui/auxiliary/canvas.cpp:478
 msgid "Rectangle doesn't fit on canvas."
 msgstr "矩形無法置於畫面上"
 
-#: src/gui/auxiliary/canvas.cpp:826
+#: src/gui/auxiliary/canvas.cpp:849
 msgid "Text has a font size of 0."
 msgstr "字體大小是0。"
 
-#: src/gui/auxiliary/canvas.cpp:891
+#: src/gui/auxiliary/canvas.cpp:914
 msgid "Text doesn't start on canvas."
 msgstr "畫面沒有文字。"
 
-#: src/gui/auxiliary/window_builder.cpp:317 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
-#: src/gui/auxiliary/window_builder.cpp:413
-#: src/gui/auxiliary/window_builder.cpp:1055
-#: src/gui/auxiliary/window_builder.cpp:1264 src/gui/widgets/settings.cpp:766
+#: src/gui/auxiliary/window_builder.cpp:414
+#: src/gui/auxiliary/window_builder.cpp:1035
+#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
 #: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
-#: src/gui/auxiliary/window_builder.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:521
 msgid "A row must have a column."
 msgstr "行必須要有列"
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:522
 msgid "Number of columns differ."
 msgstr "列數不同。"
 
-#: src/gui/auxiliary/window_builder.cpp:794
-#: src/gui/auxiliary/window_builder.cpp:976
+#: src/gui/auxiliary/window_builder.cpp:795
 msgid "No list defined."
 msgstr "没有設定列表"
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:980
+#: src/gui/auxiliary/window_builder.cpp:798
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' 應該最少要有一行。"
 
-#: src/gui/auxiliary/window_builder.cpp:815
-#: src/gui/auxiliary/window_builder.cpp:998
+#: src/gui/auxiliary/window_builder.cpp:816
+#: src/gui/auxiliary/window_builder.cpp:983
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' 的數值必須跟 'list_definition'有相同的數列。"
 
-#: src/gui/auxiliary/window_builder.cpp:1183
+#: src/gui/auxiliary/window_builder.cpp:960
+#, fuzzy
+msgid "No page defined."
+msgstr "沒有設定網格"
+
+#: src/gui/auxiliary/window_builder.cpp:1163
 msgid "The number of value_labels and values don't match."
 msgstr "標籤值與數值不符。"
 
@@ -1711,7 +1714,7 @@ msgstr "元件設定 '$definition' 沒有設定 '$id'."
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
-#: src/gui/widgets/window.cpp:668
+#: src/gui/widgets/window.cpp:684
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:20+0200\n"
+"POT-Creation-Date: 2009-06-01 23:54+0200\n"
 "PO-Revision-Date: 2009-05-20 10:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1616,58 +1616,61 @@ msgstr "Нема познатих тема. Покушајте да промен
 msgid "Find $filename server binary to host networked games"
 msgstr "Пронађите серверску извршну $filename, за удомљавање мрежних игара."
 
-#: src/gui/auxiliary/canvas.cpp:320
+#: src/gui/auxiliary/canvas.cpp:343
 msgid "Line doesn't fit on canvas."
 msgstr "Линија не стаје на платно."
 
-#: src/gui/auxiliary/canvas.cpp:455
+#: src/gui/auxiliary/canvas.cpp:478
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Правоугаоник не стаје на платно."
 
-#: src/gui/auxiliary/canvas.cpp:826
+#: src/gui/auxiliary/canvas.cpp:849
 msgid "Text has a font size of 0."
 msgstr "Величина фонта за текст је 0."
 
-#: src/gui/auxiliary/canvas.cpp:891
+#: src/gui/auxiliary/canvas.cpp:914
 msgid "Text doesn't start on canvas."
 msgstr "Текст не стаје на платно."
 
-#: src/gui/auxiliary/window_builder.cpp:317 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
 msgid "No resolution defined."
 msgstr "Резолуција није дефинисана."
 
-#: src/gui/auxiliary/window_builder.cpp:413
-#: src/gui/auxiliary/window_builder.cpp:1055
-#: src/gui/auxiliary/window_builder.cpp:1264 src/gui/widgets/settings.cpp:766
+#: src/gui/auxiliary/window_builder.cpp:414
+#: src/gui/auxiliary/window_builder.cpp:1035
+#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
 #: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
 msgid "No grid defined."
 msgstr "Мрежа није дефинисана."
 
-#: src/gui/auxiliary/window_builder.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:521
 msgid "A row must have a column."
 msgstr "Врста мора имати колону."
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:522
 msgid "Number of columns differ."
 msgstr "Број колона се разликује."
 
-#: src/gui/auxiliary/window_builder.cpp:794
-#: src/gui/auxiliary/window_builder.cpp:976
+#: src/gui/auxiliary/window_builder.cpp:795
 msgid "No list defined."
 msgstr "Списак није задат."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:980
+#: src/gui/auxiliary/window_builder.cpp:798
 msgid "A 'list_definition' should contain one row."
 msgstr "Поље list_definition мора садржати једну врсту."
 
-#: src/gui/auxiliary/window_builder.cpp:815
-#: src/gui/auxiliary/window_builder.cpp:998
+#: src/gui/auxiliary/window_builder.cpp:816
+#: src/gui/auxiliary/window_builder.cpp:983
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "Поље list_data мора имати исти број колона као list_definition."
 
-#: src/gui/auxiliary/window_builder.cpp:1183
+#: src/gui/auxiliary/window_builder.cpp:960
+#, fuzzy
+msgid "No page defined."
+msgstr "Мрежа није дефинисана."
+
+#: src/gui/auxiliary/window_builder.cpp:1163
 msgid "The number of value_labels and values don't match."
 msgstr "Број value_labels и вредности се не слаже."
 
@@ -1708,7 +1711,7 @@ msgstr "Дефиниција виџета „$definition“ не садржи д
 msgid "No state or draw section defined."
 msgstr "Одељак стања или цртања није дефинисан."
 
-#: src/gui/widgets/window.cpp:668
+#: src/gui/widgets/window.cpp:684
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу да прикажем дијалог који не стаје на екран."
 
