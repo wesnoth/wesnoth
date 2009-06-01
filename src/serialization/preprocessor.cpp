@@ -366,7 +366,6 @@ class preprocessor_data: preprocessor
 	std::vector< std::string > strings_;
 	/** Stack of nested preprocessing chunks. */
 	std::vector< token_desc > tokens_;
-	bool is_macro;
 	/**
 	 * Set to true whenever input tokens cannot be directly sent to the target
 	 * buffer. For instance, this happens with macro arguments. In that case,
@@ -395,8 +394,7 @@ public:
 	                  std::istream *,
 	                  std::string const &history,
 	                  std::string const &name, int line,
-	                  std::string const &dir, std::string const &domain,
-	                  std::string * = NULL);
+	                  std::string const &dir, std::string const &domain);
 	~preprocessor_data();
 	virtual bool get_chunk();
 };
@@ -444,13 +442,12 @@ bool preprocessor_file::get_chunk()
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	std::istream *i, std::string const &history, std::string const &name, int linenum,
-		std::string const &directory, std::string const &domain, std::string *symbol) :
+	std::string const &directory, std::string const &domain) :
 	preprocessor(t),
 	in_(i),
 	directory_(directory),
 	strings_(),
 	tokens_(),
-	is_macro(symbol != NULL),
 	slowpath_(0),
 	skipping_(0),
 	linenum_(linenum)
@@ -910,7 +907,7 @@ bool preprocessor_data::get_chunk()
 				if (!slowpath_) {
 					DBG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
-					                      val.linenum, dir, val.textdomain, &symbol);
+					                      val.linenum, dir, val.textdomain);
 				} else {
 					DBG_CF << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
@@ -918,7 +915,7 @@ bool preprocessor_data::get_chunk()
 						new preprocessor_streambuf(target_);
 					{	std::istream in(buf);
 						new preprocessor_data(*buf, buffer, val.location, "",
-						                      val.linenum, dir, val.textdomain, &symbol);
+						                      val.linenum, dir, val.textdomain);
 						res << in.rdbuf(); }
 					delete buf;
 					strings_.back() += res.str();
