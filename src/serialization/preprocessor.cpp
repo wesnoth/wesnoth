@@ -982,7 +982,13 @@ bool preprocessor_data::get_chunk()
 					}
 				}
 				else
+				{
+					if (!slowpath_)
+						put("dummy=" + symbol);
+					else
+						strings_.back() += "dummy=" + symbol;
 					ERR_CF << "File not found '" << symbol << "'\n";
+				}
 			} else {
 				ERR_CF << "Too much nested preprocessing inclusions at "
 				       << linenum_ << ' ' << target_.location_
