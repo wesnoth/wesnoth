@@ -783,7 +783,7 @@ bool preprocessor_data::get_chunk()
 			target_.defines_->erase(symbol);
 			LOG_CF << "undefine macro " << symbol << " (location " << target_.location_ << ")\n";
 		} else
-			comment = true;
+			comment = token.type != '{';
 		skip_eol();
 		if (comment)
 			put('\n');
