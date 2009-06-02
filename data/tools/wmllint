@@ -96,7 +96,7 @@
 # suppressed with the --stringfreeze option.
 #
 # A special comment "#wmllint: notecheck off" will disable error messages on
-# traits wiuth no corresponding {SPECIAL_NOTE} explanations.  The comment
+# traits with no corresponding {SPECIAL_NOTE} explanations.  The comment
 # "#wmllint: notecheck on" will re-enable this check.
 #
 # A magic comment of the form "wmllint: general spellings word1
@@ -108,7 +108,7 @@
 # the spelling exceptions apply to all files below the parent
 # directory.
 #
-# A coment containing "no spellcheck" disables spellchecking on the
+# A comment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip
@@ -1937,6 +1937,8 @@ if __name__ == '__main__':
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
 
+    post15 = False
+
     def hasdigit(str):
         for c in str:
             if c in "0123456789":
@@ -1955,12 +1957,17 @@ if __name__ == '__main__':
         # mapped to [unit_type].  Also, beware that this test will fail to
         # convert any unit definitions not in conventionally-named
         # directories -- this is necessary in order to avoid stepping
-        # on SingleUnitWML in macro files. 
-        # UnitWML
-        if "units" in filename:
-            line = line.replace("[unit]", "[unit_type]")
-            line = line.replace("[+unit]", "[+unit_type]")
-            line = line.replace("[/unit]", "[/unit_type]")
+        # on SingleUnitWML in macro files.  The post15 flag expresses whether
+        # we've seen a [unit_type] and can therefore assume the files have
+        # undergone 1.4 -> 1.5 conversion.
+        if "units" in filename and not post15:
+            global post15
+            if '[unit_type]' in line:
+                post15 = True
+            else:
+                line = line.replace("[unit]", "[unit_type]")
+                line = line.replace("[+unit]", "[+unit_type]")
+                line = line.replace("[/unit]", "[/unit_type]")
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.
