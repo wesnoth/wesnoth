@@ -1166,8 +1166,10 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 {
 	const game_events::resources_t &rsrc = *game_events::resources;
 
-		const std::string win_str = "@";
-		const std::string lose_str = "#";
+		const std::string win_start = "<span color='green'>";
+		const std::string lose_start = "<span color='red'>";
+		const std::string win_end = "</span>";
+		const std::string lose_end = "</span>";
 
 		const t_string summary = cfg["summary"];
 		const t_string note = cfg["note"];
@@ -1199,12 +1201,14 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 			LOG_NG << condition << " objective: " << description << "\n";
 			if(condition == "win") {
 				win_objectives += "\n";
-				win_objectives += win_str;
+				win_objectives += win_start;
 				win_objectives += description;
+				win_objectives += win_end;
 			} else if(condition == "lose") {
 				lose_objectives += "\n";
-				lose_objectives += lose_str;
+				lose_objectives += lose_start;
 				lose_objectives += description;
+				lose_objectives += lose_end;
 			} else {
 				ERR_NG << "unknown condition '" << condition << "', ignoring\n";
 			}
