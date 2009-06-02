@@ -28,6 +28,7 @@
 #include "unit_id.hpp"
 #include "terrain_filter.hpp"
 #include "save_blocker.hpp"
+#include "game_preferences.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -135,7 +136,7 @@ void play_controller::init(CVideo& video){
 		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
 		seen_save_ids.insert(save_id);
 		if (first_human_team_ == -1){
-			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg);
+			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg, preferences::client_type(), preferences::login());
 		}
 		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, status_, snapshot);
 	}
