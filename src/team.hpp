@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "map_location.hpp"
 #include "viewpoint.hpp"
+#include "savegame_config.hpp"
 
 class gamemap;
 struct time_of_day;
@@ -33,7 +34,7 @@ struct time_of_day;
  * This class stores all the data for a single 'side' (in game nomenclature).
  * E.g., there is only one leader unit per team.
  */
-class team : public viewpoint
+class team : public viewpoint, public savegame_config
 {
 	class shroud_map {
 	public:
@@ -311,6 +312,8 @@ public:
 
 	/** clear the shroud, fog, and enemies cache for all teams*/
 	static void clear_caches();
+
+	config toConfig();
 
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.

@@ -31,14 +31,6 @@ class gamestatus; //needed to declare get_player_info (until game_state and game
 
 class scoped_wml_variable;
 
-/* interface for building a config from savegame related objects */
-class savegame_config
-{
-public:
-	virtual ~savegame_config() {};
-	virtual config toConfig() = 0;
-};
-
 struct wml_menu_item
 {
 	wml_menu_item(const std::string& id, const config* cfg=NULL);

@@ -967,6 +967,14 @@ void team::log_recruitable(){
 	LOG_NG << "Added all recruitable units\n";
 }
 
+config team::toConfig()
+{
+	config cfg;
+	config& result = cfg.add_child("side");
+	write(result);
+	return result;
+}
+
 namespace player_teams {
 int village_owner(const map_location& loc)
 {
