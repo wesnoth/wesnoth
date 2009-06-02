@@ -36,6 +36,7 @@ class tscrollbar_container
 	friend class tdebug_layout_graph;
 
 	friend struct tbuilder_scroll_label;
+	friend struct tbuilder_scrollbar_panel;
 	friend class tlistbox;
 	friend struct tscrollbar_container_implementation;
 

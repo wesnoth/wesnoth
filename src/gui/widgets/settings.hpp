@@ -284,6 +284,19 @@ struct tscroll_label_definition : public tcontrol_definition
 	};
 };
 
+struct tscrollbar_panel_definition : public tcontrol_definition
+{
+
+	tscrollbar_panel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+	};
+};
+
 struct tslider_definition : public tcontrol_definition
 {
 	tslider_definition(const config& cfg);

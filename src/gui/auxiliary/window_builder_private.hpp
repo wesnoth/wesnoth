@@ -292,6 +292,24 @@ private:
 	bool auto_hide_scrollbar_;
 };
 
+struct tbuilder_scrollbar_panel
+	: public tbuilder_control
+{
+
+private:
+	tbuilder_scrollbar_panel();
+public:
+	tbuilder_scrollbar_panel(const config& cfg);
+
+	twidget* build () const;
+
+	tscrollbar_container::tscrollbar_mode
+			vertical_scrollbar_mode,
+			horizontal_scrollbar_mode;
+
+	tbuilder_grid_ptr grid;
+};
+
 struct tbuilder_spacer : public tbuilder_control
 {
 

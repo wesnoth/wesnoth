@@ -271,6 +271,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tmulti_page_definition>("multi_page", cfg);
 	load_definitions<tpanel_definition>("panel", cfg);
 	load_definitions<tscroll_label_definition>("scroll_label", cfg);
+	load_definitions<tscrollbar_panel_definition>("scrollbar_panel", cfg);
 	load_definitions<tslider_definition>("slider", cfg);
 	load_definitions<tspacer_definition>("spacer", cfg);
 	load_definitions<ttext_box_definition>("text_box", cfg);
@@ -946,6 +947,48 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
 	// Note the order should be the same as the enum tstate is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
+
+	const config &child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
+}
+
+tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
+
+	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_scrollbar_panel
+ *
+ * == Scrollbar panel ==
+ *
+ * The definition of a panel with scrollbars. A panel is a container hold
+ * other elements in it's grid. A panel is always enabled and can't be
+ * disabled. Instead it uses the states as layers to draw on.
+ *
+ * @start_table = config
+ *     grid (grid)                     A grid containing the widgets for main
+ *                                     widget.
+ * @end_table
+ *
+ * The following layers exist:
+ * * background, the background of the panel.
+ * * foreground, the foreground of the panel.
+ */
+
+	// The panel needs to know the order.
+	state.push_back(tstate_definition(cfg.child("background")));
+	state.push_back(tstate_definition(cfg.child("foreground")));
 
 	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
