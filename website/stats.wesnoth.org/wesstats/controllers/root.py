@@ -32,20 +32,37 @@ from wesstats.controllers.secure import SecureController
 
 __all__ = ['RootController']
 
+def fconstruct(filters,colname,list):
+	if list[0] == "all":
+		return filters
+	newfilter = colname+" IN ("
+	for i in range(0,len(list)):
+		newfilter += "'" + list[i] + "'"
+		if i != len(list) - 1:
+			newfilter += ','
+	newfilter += ')'
+	if len(filters) != 0:
+		filters += " AND "
+	else:
+		filters += " WHERE "
+	filters += newfilter
+	return filters
+
+def listfix(l):
+	if not isinstance(l,types.ListType):
+		return [l]
+	return l
+
 class RootController(BaseController):
 	@expose(template="wesstats.templates.index")
 	def index(self):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
 		curs = conn.cursor()
-		curs.execute("SELECT title FROM _wsviews")
+		curs.execute("SELECT title,url FROM _wsviews")
 		views = curs.fetchall()
 		conn.close()
 		return dict(views=views)
 
-	def listfix(self,l):
-		if not isinstance(l,types.ListType):
-			return [l]
-		return l
 
 	def scaled_query(self,curs,query,threshold,evaluator):
 		s_time = time.time()
@@ -73,21 +90,6 @@ class RootController(BaseController):
 		print "query took " + str(time.time()-s_time) + " seconds"
 		return curs.fetchall()
 
-	def fconstruct(self,filters,colname,list):
-		if list[0] == "all":
-			return filters
-		newfilter = colname+" IN ("
-		for i in range(0,len(list)):
-			newfilter += "'" + list[i] + "'"
-			if i != len(list) - 1:
-				newfilter += ','
-		newfilter += ')'
-		if len(filters) != 0:
-			filters += " AND "
-		else:
-			filters += " WHERE "
-		filters += newfilter
-		return filters
 		
 	@expose(template="wesstats.templates.platform")
 	def platform(self, versions=["all"], **kw):	
@@ -271,5 +273,62 @@ class RootController(BaseController):
 			dlist=dlist,vlist=vlist,slist=slist,rlist=rlist,total=total)
 
 	@expose()
-	def lookup(self,title,*remainder):
-		pass
+	def lookup(self,url,*remainder):
+		#check if view exists
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		curs = conn.cursor()
+		
+		curs.execute("SELECT url FROM _wsviews WHERE url = %s", (url,))
+		results = curs.fetchall()
+		exists = len(results) == 1
+
+		type = None
+		if exists:
+			#get the graph type
+			curs.execute("SELECT type FROM _wsviews WHERE url = %s", (url,))
+			results = curs.fetchall()
+			type = results[0][0]
+		conn.close()
+		
+		view = None
+		if type == "bar":
+			view = BarGraphController(url)
+		elif type == "pie":
+			view = PieGraphController(url)
+		elif type == "line":
+			view = LineGraphController(url)
+		else:
+			view = NotFoundController(url)
+
+		return view, remainder
+
+class BarGraphController(object):
+	def __init__(self,url):
+		self.url = url
+	
+	@expose()
+	def default(self,**kw):
+		#pull data on this view from DB
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		curs = conn.cursor()
+		
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		view_data = curs.fetchall()[0]
+		print kw
+		print view_data
+		conn.close()
+		for filter in view_data[5].split(','):
+			print filter		
+		return dict()
+
+class PieGraphController(object):
+	def __init__(self,url):
+		self.url = url
+
+class LineGraphController(object):
+	def __init__(self,url):
+		self.url = url
+
+class NotFoundController(object):
+	def __init__(self,url):
+		self.url = url
