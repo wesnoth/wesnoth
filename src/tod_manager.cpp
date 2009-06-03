@@ -41,8 +41,24 @@ tod_manager::tod_manager(const config& time_cfg):
 
 config tod_manager::toConfig()
 {
-	//FIXME: dummy function
-	return config();
+	config cfg;
+	std::stringstream buf;
+	buf << currentTime_;
+	cfg["current_tod"] = buf.str();
+
+	std::vector<time_of_day>::const_iterator t;
+	for(t = times_.begin(); t != times_.end(); ++t) {
+		t->write(cfg.add_child("time"));
+	}
+	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
+		config& area = cfg.add_child("time_area");
+		area["x"] = i->xsrc;
+		area["y"] = i->ysrc;
+		for(t = i->times.begin(); t != i->times.end(); ++t) {
+			t->write(area.add_child("time"));
+		}
+	}
+	return cfg;
 }
 
 time_of_day tod_manager::get_time_of_day() const
