@@ -296,6 +296,19 @@ class Parser:
             text += line
         return text
 
+    def read_lua(self):
+        """
+        Read a << .... >> string, return contents literally.
+        """
+        text = ""
+        while not self.at_end():
+            c = self.read_next()
+            if c == ">" and self.peek_next() == ">":
+                self.read_next() #get rid of trailing >
+                return text
+            text += c
+        raise Error(self, "Unexpected end of file")
+
     def skip_whitespace_inside_statement(self):
         self.read_while(" \t\r\n")
         if not self.at_end():
@@ -536,12 +549,7 @@ class Parser:
         line = -1
         got_lua = False
         while 1:
-            if got_lua:
-                if c == ">" and self.peek_next() == ">":
-                    got_lua = False
-            elif got_assign and c == "<" and self.peek_next() == "<":
-                got_lua = True
-            elif c == "{":
+            if c == "{":
                 keep_macro = self.parse_macro()
                 if keep_macro:
                     if self.no_macros:
@@ -578,7 +586,10 @@ class Parser:
                     else:
                         variable += c  
             else:
-                if c == '"':
+                if c == "<" and self.peek_next() == "<":
+                    self.read_next() #skip the rest of the opening
+                    value += self.read_lua()
+                elif c == '"':
                     # We want the textdomain at the beginning of the string,
                     # the end of the string may be outside a macro and already
                     # in another textdomain.
