@@ -22,7 +22,7 @@ class savegame_config
 {
 public:
 	virtual ~savegame_config() {};
-	virtual config toConfig() = 0;
+	virtual config to_config() = 0;
 };
 
 #endif

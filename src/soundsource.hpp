@@ -110,7 +110,7 @@ public:
 	 */
 	void write_sourcespecs(config& cfg) const;
 
-	config toConfig();
+	config to_config();
 };
 
 /**

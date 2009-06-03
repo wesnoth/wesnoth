@@ -39,7 +39,7 @@ tod_manager::tod_manager(const config& time_cfg):
 	}
 }
 
-config tod_manager::toConfig()
+config tod_manager::to_config()
 {
 	config cfg;
 	std::stringstream buf;
