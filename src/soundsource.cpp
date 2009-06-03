@@ -117,6 +117,13 @@ void manager::write_sourcespecs(config& cfg) const
 	}
 }
 
+config manager::toConfig()
+{
+	config cfg;
+	write_sourcespecs(cfg);
+	return cfg.child("sound_source");
+}
+
 positional_source::positional_source(const sourcespec &spec) :
 	last_played_(0),
 	min_delay_(spec.minimum_delay()),
