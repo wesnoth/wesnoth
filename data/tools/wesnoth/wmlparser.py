@@ -534,8 +534,14 @@ class Parser:
         spaces = ""
         filename = "(None)"
         line = -1
+        got_lua = False
         while 1:
-            if c == "{":
+            if got_lua:
+                if c == ">" and self.peek_next() == ">":
+                    got_lua = False
+            elif got_assign and c == "<" and self.peek_next() == "<":
+                got_lua = True
+            elif c == "{":
                 keep_macro = self.parse_macro()
                 if keep_macro:
                     if self.no_macros:
