@@ -1222,6 +1222,7 @@ void game::save_replay() {
 	<< "difficulty=\"NORMAL\"\n"
 	<< "label=\"" << name.str() << "\"\n"
 	<< "mp_game_title=\"" << name_ << "\"\n"
+	<< "random_seed=\"" << level_["random_seed"] << "\"\n"
 	<< "version=\"" << level_["version"] << "\"\n"
 	<< "[replay]\n" << replay_commands << "[/replay]\n"
 	<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
