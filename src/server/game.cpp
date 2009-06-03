@@ -778,8 +778,8 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				<< (player_info_->find(current_player()) != player_info_->end()
 					? player_info_->find(current_player())->second.name()
 					: "(unfound)")
-				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").\n";
-			LOG_GAME << msg.str() << " (socket: " << current_player() << ")";
+				<< " (" << end_turn_ + 1 << "/" << nsides_ << ").";
+			LOG_GAME << msg.str() << " (socket: " << current_player() << ")\n";
 			send_and_record_server_message(msg.str().c_str());
 
 			marked.push_back(index - marked.size());
