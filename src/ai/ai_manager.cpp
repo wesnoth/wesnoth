@@ -727,9 +727,12 @@ void ai_manager::set_active_ai_algorithm_type_for_side( int side, const std::str
 void ai_manager::play_turn( int side, events::observer* /*event_observer*/ ){
 	last_interact_ = 0;
 	num_interact_ = 0;
+	const int turn_start_time = SDL_GetTicks();
 	ai_interface& ai_obj = get_active_ai_for_side(side);
 	ai_obj.play_turn();
+	const int turn_end_time= SDL_GetTicks();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
+	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms "<< std::endl;
 }
 
 
