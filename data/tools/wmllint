@@ -635,11 +635,11 @@ spellcheck_these = (\
     "user_team_name=",
     )
 
-
-# Declare a few common English contractions that pyenchant
+# Declare a few common English contractions and ejaculations that pyenchant
 # inexplicably knows nothing of.
 declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "heh", "ack",
+                                # Fantasy/SF/occult jargon that we need
                                 "aide-de-camp",
                                 "teleport", "teleportation", "terraform",
                                 "hellspawn", "hurrah", "crafters", "bided",
