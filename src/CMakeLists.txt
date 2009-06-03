@@ -338,6 +338,7 @@ SET(wesnoth-main_SRC
     terrain_filter.cpp
     time_of_day.cpp
     titlescreen.cpp
+    tod_manager.cpp
     tooltips.cpp
     unit.cpp
     unit_abilities.cpp

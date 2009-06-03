@@ -164,6 +164,7 @@ wesnoth_source = \
 	text.cpp \
 	time_of_day.cpp \
 	titlescreen.cpp \
+	tod_manager.cpp \
 	tooltips.cpp \
 	unit.cpp \
 	unit_abilities.cpp \
