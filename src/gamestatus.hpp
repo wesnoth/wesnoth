@@ -37,6 +37,7 @@ class game_classification : public savegame_config
 {
 public:
 	game_classification();
+	game_classification(const config& cfg);
 
 	config to_config(); //dummy
 
@@ -163,6 +164,8 @@ public:
 
 	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot);
 
+	game_classification classification() {return classification_;}
+
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 
 	/**
@@ -196,6 +199,7 @@ private:
 	mutable config temporaries; // lengths of arrays, etc.
 	const rand_rng::set_random_generator generator_setter; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
+	game_classification classification_;
 };
 
 /**

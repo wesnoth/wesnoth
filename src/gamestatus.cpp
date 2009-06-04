@@ -66,6 +66,24 @@ game_classification::game_classification():
 	difficulty("NORMAL")
 	{}
 
+game_classification::game_classification(const config& cfg):
+	label(cfg["label"]),
+	parent(cfg["parent"]),
+	version(cfg["version"]),
+	campaign_type(cfg["campaign_type"]),
+	campaign_define(cfg["campaign_define"]),
+	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
+	campaign(cfg["campaign"]),
+	history(cfg["history"]),
+	abbrev(cfg["abbrev"]),
+	scenario(cfg["scenario"]),
+	next_scenario(cfg["next_scenario"]),
+	completion(cfg["completion"]),
+	end_text(cfg["end_text"]),
+	end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
+	difficulty(cfg["difficulty"])
+	{}
+
 config game_classification::to_config()
 {
 	config cfg;
@@ -433,7 +451,8 @@ game_state::game_state()  :
 		rng_(),
 		variables(),
 		temporaries(),
-		generator_setter(&recorder)
+		generator_setter(&recorder),
+		classification_()
 		{}
 
 static void write_player(const player_info& player, config& cfg)
@@ -511,7 +530,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		rng_(cfg),
 		variables(),
 		temporaries(),
-		generator_setter(&recorder)
+		generator_setter(&recorder),
+		classification_(cfg)
 {
 	n_unit::id_manager::instance().set_save_id(lexical_cast_default<size_t>(cfg["next_underlying_unit_id"],0));
 	log_scope("read_game");
@@ -548,10 +568,12 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 	if(difficulty.empty()) {
 		difficulty = "NORMAL";
+		classification_.difficulty = "NORMAL";
 	}
 
 	if(campaign_type.empty()) {
 		campaign_type = "scenario";
+		classification_.campaign_type = "scenario";
 	}
 
 	if (const config &vars = cfg.child("variables")) {
@@ -831,7 +853,8 @@ game_state::game_state(const game_state& state) :
 	rng_(),
 	variables(),
 	temporaries(),
-	generator_setter(&recorder)
+	generator_setter(&recorder),
+	classification_()
 {
 	*this = state;
 }
@@ -858,6 +881,7 @@ game_state& game_state::operator=(const game_state& state)
 	rng_ = state.rng_;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
+	classification_ = state.classification_;
 
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
