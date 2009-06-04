@@ -505,7 +505,7 @@ const std::string manager::internal_evaluate_command( int side, const std::strin
 bool manager::add_ai_for_side_from_file( int side, const std::string& file, bool replace )
 {
 	config cfg;
-	if (!ai_configuration::get_side_config_from_file(file,cfg)){
+	if (!configuration::get_side_config_from_file(file,cfg)){
 		ERR_AI_MANAGER << " unable to read [SIDE] config for side "<< side << "from file [" << file <<"]"<< std::endl;
 		return false;
 	}
@@ -517,11 +517,11 @@ bool manager::add_ai_for_side_from_config( int side, const config& cfg, bool rep
 	config ai_memory;//AI memory
 	std::vector<config> ai_parameters;//AI parameters inside [ai] tags. May contain filters
 	config global_ai_parameters ;//AI parameters which do not have a filter applied
-	const config& default_ai_parameters = ai_configuration::get_default_ai_parameters();//default AI parameters
+	const config& default_ai_parameters = configuration::get_default_ai_parameters();//default AI parameters
 	std::string ai_algorithm_type;//AI algorithm type
 	config effective_ai_parameters;//legacy effective ai parameters
 
-	ai_configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_parameters);
+	configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_parameters);
 	if (replace) {
 		remove_ai_for_side (side);
 	}

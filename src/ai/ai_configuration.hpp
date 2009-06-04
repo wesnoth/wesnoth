@@ -27,6 +27,8 @@
 
 #include <vector>
 
+namespace ai {
+
 /**
  * AI parameters. class to deal with AI parameters. It is an implementation detail.
  * @todo 1.7 AI parameter/AI memory/AI effective parameter system must be reworked
@@ -44,7 +46,7 @@
  * then, if (3) is equal:
  * use any and loudly complain.
  */
-class ai_configuration {
+class configuration {
 public:
 
 	/**
@@ -87,5 +89,5 @@ public:
 
 };
 
-
+} //end of namespace ai
 #endif

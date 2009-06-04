@@ -25,6 +25,8 @@
 #include "../serialization/preprocessor.hpp"
 #include "../team.hpp"
 
+namespace ai {
+
 static lg::log_domain log_ai_configuration("ai/config");
 #define DBG_AI_CONFIGURATION LOG_STREAM(debug, log_ai_configuration)
 #define LOG_AI_CONFIGURATION LOG_STREAM(info, log_ai_configuration)
@@ -44,7 +46,7 @@ static std::string bind_config_parameter( const std::string& value_from_config,
 	return default_value;
 }
 
-bool ai_configuration::get_side_config_from_file(const std::string& file, config& cfg ){
+bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	      try {
 	         scoped_istream stream = preprocess_file(get_wml_location(file));
 	         read(cfg, *stream);
@@ -58,7 +60,7 @@ bool ai_configuration::get_side_config_from_file(const std::string& file, config
 }
 
 
-bool ai_configuration::parse_side_config(const config& cfg,
+bool configuration::parse_side_config(const config& cfg,
 		std::string& ai_algorithm_type,
 		config& global_ai_parameters,
 		std::vector<config>& ai_parameters,
@@ -127,7 +129,7 @@ bool ai_configuration::parse_side_config(const config& cfg,
 //some default values for the AI parameters following the default values listed
 //in the wiki at http://www.wesnoth.org/wiki/AiWML
 //@todo 1.7 think about reading this from config
-const config& ai_configuration::get_default_ai_parameters(){
+const config& configuration::get_default_ai_parameters(){
 	static config default_cfg;
 	if (!default_cfg["init"].empty()) {
 		return default_cfg;
@@ -162,3 +164,5 @@ const config& ai_configuration::get_default_ai_parameters(){
 	LOG_AI_CONFIGURATION << "AI default configuration is created" << std::endl;
 	return default_cfg;
 }
+
+} //end of namespace ai
