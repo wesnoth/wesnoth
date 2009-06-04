@@ -22,12 +22,15 @@
 
 #include "../global.hpp"
 
+namespace ai {
 
-class ai_registry{
+class registry{
 public:
 	static void init();
 private:
-	ai_registry();
+	registry();
 };
+
+} //end of namespace ai
 
 #endif

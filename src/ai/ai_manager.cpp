@@ -290,7 +290,7 @@ void manager::set_ai_info(const game_info& i)
 		clear_ai_info();
 	}
 	ai_info_ = new game_info(i);
-	ai_registry::init();
+	registry::init();
 }
 
 

@@ -28,6 +28,7 @@
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
 
+namespace ai {
 // =======================================================================
 // AIs
 // =======================================================================
@@ -44,33 +45,35 @@ static ai_factory<composite_ai> composite_ai_ai_factory("composite_ai");
 // Engines
 // =======================================================================
 
-static ai::composite_ai::register_engine_factory<ai::composite_ai::engine_cpp>
+static composite_ai::register_engine_factory<composite_ai::engine_cpp>
 	composite_ai_factory("cpp");
 
 // =======================================================================
 // Stages
 // =======================================================================
-static ai::composite_ai::register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
+static composite_ai::register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
 	candidate_action_evaluation_loop_factory("testing_ai_default::candidate_action_evaluation_loop");
 
-static ai::composite_ai::register_stage_factory<testing_ai_default::fallback_to_other_ai>
+static composite_ai::register_stage_factory<testing_ai_default::fallback_to_other_ai>
 	fallback_to_other_ai_factory("testing_ai_default::fallback");
 
 // =======================================================================
 // Candidate actions
 // =======================================================================
 
-static ai::composite_ai::register_candidate_action_factory<testing_ai_default::goto_phase>
+static composite_ai::register_candidate_action_factory<testing_ai_default::goto_phase>
 	goto_phase_factory("testing_ai_default::goto_phase");
 
-static ai::composite_ai::register_candidate_action_factory<testing_ai_default::recruitment_phase>
+static composite_ai::register_candidate_action_factory<testing_ai_default::recruitment_phase>
 	recruitment_phase_factory("testing_ai_default::recruitment_phase");
 
 
-void ai_registry::init()
+void registry::init()
 {
 }
 
-ai_registry::ai_registry()
+registry::registry()
 {
 }
+
+} //end of namespace ai
