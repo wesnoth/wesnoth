@@ -97,13 +97,13 @@ private:
 /**
  * AI Command History Item. It is an implementation detail
  */
-class ai_command_history_item{
+class command_history_item{
 public:
-	ai_command_history_item();
+	command_history_item();
 
-	ai_command_history_item(int number, const std::string& command);
+	command_history_item(int number, const std::string& command);
 
-	virtual ~ai_command_history_item();
+	virtual ~command_history_item();
 
 	int get_number() const;
 	void set_number(int number);
@@ -468,7 +468,7 @@ private:
 
 	typedef std::map< int, std::stack< holder > > AI_map_of_stacks;
 	static AI_map_of_stacks ai_map_;
-	static std::deque< ai_command_history_item > history_;
+	static std::deque< command_history_item > history_;
 	static long history_item_counter_;
 	static game_info *ai_info_;
 

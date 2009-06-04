@@ -214,44 +214,44 @@ ai_ptr holder::create_ai( int side )
 // AI COMMAND HISTORY ITEM
 // =======================================================================
 
-ai_command_history_item::ai_command_history_item()
+command_history_item::command_history_item()
 	: number_(0), command_()
 {
 
 }
 
 
-ai_command_history_item::ai_command_history_item( int number, const std::string& command )
+command_history_item::command_history_item( int number, const std::string& command )
 	: number_(number), command_(command)
 {
 
 }
 
 
-ai_command_history_item::~ai_command_history_item()
+command_history_item::~command_history_item()
 {
 
 }
 
 
-int ai_command_history_item::get_number() const
+int command_history_item::get_number() const
 {
 	return this->number_;
 }
 
 
-void ai_command_history_item::set_number( int number )
+void command_history_item::set_number( int number )
 {
 	this->number_ = number;
 }
 
-const std::string& ai_command_history_item::get_command() const
+const std::string& command_history_item::get_command() const
 {
 	return this->command_;
 }
 
 
-void ai_command_history_item::set_command( const std::string& command )
+void command_history_item::set_command( const std::string& command )
 {
 	this->command_ = command;
 }
@@ -348,7 +348,7 @@ void manager::raise_enemy_attacked() {
 const std::string manager::evaluate_command( int side, const std::string& str )
 {
 	//insert new command into history
-	history_.push_back(ai_command_history_item(history_item_counter_++,str));
+	history_.push_back(command_history_item(history_item_counter_++,str));
 
 	//prune history - erase 1/2 of it if it grows too large
 	if (history_.size()>MAX_HISTORY_SIZE){
@@ -380,7 +380,7 @@ bool manager::should_intercept( const std::string& str )
 
 }
 
-std::deque< ai_command_history_item > manager::history_;
+std::deque< command_history_item > manager::history_;
 long manager::history_item_counter_ = 1;
 
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
@@ -418,7 +418,7 @@ const std::string manager::internal_evaluate_command( int side, const std::strin
 		int n = std::min<int>( MAX_HISTORY_VISIBLE, history_.size() );
 		std::stringstream strstream;
 		strstream << "AI MANAGER: History - last "<< n <<" commands:\n";
-		std::deque< ai_command_history_item >::reverse_iterator j = history_.rbegin();
+		std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
 
 		for (int cmd_id=n; cmd_id>0; --cmd_id){
 			strstream << j->get_number() << "    :" << j->get_command() << '\n';
@@ -468,7 +468,7 @@ const std::string manager::internal_evaluate_command( int side, const std::strin
 			}
 
 			int command = lexical_cast<int>(cmd.at(1));
-			std::deque< ai_command_history_item >::reverse_iterator j = history_.rbegin();
+			std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
 			//yes, the iterator could be precisely positioned (since command numbers go 1,2,3,4,..). will do it later.
 			while ( (j!=history_.rend()) && (j->get_number()!=command) ){
 				j++;// this is *reverse* iterator
