@@ -23,14 +23,16 @@
 #include "../formula_callable.hpp"
 #include "game_info.hpp"
 
-class ai_interface {
+namespace ai {
+
+class interface {
 public:
 	/**
 	 * The constructor.
 	 */
-	ai_interface() {
+	interface() {
 	}
-	virtual ~ai_interface() {}
+	virtual ~interface() {}
 
 	/**
 	 * Function that is called when the AI must play its turn.
@@ -62,5 +64,7 @@ public:
 	virtual std::string describe_self() const;
 
 };
+
+} //end of namespace ai
 
 #endif

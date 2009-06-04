@@ -42,7 +42,8 @@ public:
 
 private:
 	const config &cfg_;
-	ai_interface *fallback_ai_;
+
+	ai::interface *fallback_ai_;
 };
 
 

@@ -33,9 +33,11 @@
 #include <vector>
 #include <deque>
 
-class ai_interface;
 
 namespace ai {
+
+class interface;
+
 /**
  * Base class that holds the AI and current AI parameters.
  * It is an implementation detail.
@@ -49,8 +51,8 @@ public:
 
 	virtual ~holder();
 
-	ai_interface& get_ai_ref();
-	ai_interface& get_ai_ref( int side );
+	interface& get_ai_ref();
+	interface& get_ai_ref( int side );
 
 	const std::string& get_ai_algorithm_type() const;
 	void set_ai_algorithm_type(const std::string& ai_algorithm_type);
@@ -77,7 +79,7 @@ public:
 	bool is_mandate_ok();
 
 private:
-	ai_interface *ai_;
+	interface *ai_;
 	side_context *side_context_;
 	readonly_context *readonly_context_;
 	readwrite_context *readwrite_context_;
@@ -89,7 +91,7 @@ private:
 	std::vector<config> ai_parameters_;
 	int side_;
 
-	ai_interface* create_ai( int side );
+	interface* create_ai( int side );
 };
 
 /**
@@ -274,7 +276,7 @@ public:
 	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
+	static interface* create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
 
 
 	/**
@@ -547,24 +549,24 @@ private:
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static ai_interface& get_active_ai_for_side( int side );
+	static interface& get_active_ai_for_side( int side );
 
 
 	/**
 	 * Gets the command AI for the specified @a side.
 	 */
-	static ai_interface& get_command_ai( int side );
+	static interface& get_command_ai( int side );
 
 
 	/**
 	 * Gets the fallback AI for the specified @a side.
 	 */
-	static ai_interface& get_fallback_ai( int side );
+	static interface& get_fallback_ai( int side );
 
 	/**
 	 * Gets or creates active AI for specified @a side without fallback.
 	 */
-	static ai_interface& get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type );
+	static interface& get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type );
 
 
 };

@@ -25,7 +25,7 @@
 
 namespace ai {
 
-class ai2 : public readwrite_context_proxy, public ai_interface {
+class ai2 : public readwrite_context_proxy, public interface {
 public:
 	ai2(readwrite_context &context)
 		: recursion_counter_(context.get_recursion_count())

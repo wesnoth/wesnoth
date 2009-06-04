@@ -99,7 +99,7 @@ namespace dfool {
    * does not target units that it has not "seen",
    * and does not make decisions based on unseen units.
    */
-  class dfool_ai : public ai::readwrite_context_proxy, public ai_interface {
+  class dfool_ai : public ai::readwrite_context_proxy, public ai::interface {
   public:
 	dfool_ai(ai::readwrite_context &context)
 		: recursion_counter_(context.get_recursion_count()), unit_memory_(current_team().ai_memory())

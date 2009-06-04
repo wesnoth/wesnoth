@@ -19,11 +19,14 @@
 
 #include "ai_interface.hpp"
 
+namespace ai {
+
 // =======================================================================
 //
 // =======================================================================
-std::string ai_interface::describe_self() const
+std::string interface::describe_self() const
 {
 	return "? [ai]";
 }
 
+} //end of namespace ai

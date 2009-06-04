@@ -1857,7 +1857,7 @@ bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_
 	if(!formula_) {
 		if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
 			LOG_AI << "Falling back to default AI.\n";
-			util::scoped_ptr< ai_interface > fallback( ai::manager::create_transient_ai(ai::manager::AI_TYPE_DEFAULT, this));
+			util::scoped_ptr< ai::interface > fallback( ai::manager::create_transient_ai(ai::manager::AI_TYPE_DEFAULT, this));
 			if (fallback != NULL){
 				fallback->play_turn();
 			}
@@ -2182,7 +2182,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					util::scoped_ptr< ai_interface > fallback ( ai::manager::create_transient_ai(fallback_command->key(), this));
+					util::scoped_ptr< ai::interface > fallback ( ai::manager::create_transient_ai(fallback_command->key(), this));
 					if(fallback != NULL) {
 						fallback->play_turn();
 					}

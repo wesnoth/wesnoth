@@ -98,7 +98,7 @@ holder::~holder()
 }
 
 
-ai_interface& holder::get_ai_ref( int side )
+interface& holder::get_ai_ref( int side )
 {
 	if (this->ai_ == NULL) {
 		this->init(side);
@@ -108,7 +108,7 @@ ai_interface& holder::get_ai_ref( int side )
 	return *this->ai_;
 }
 
-ai_interface& holder::get_ai_ref()
+interface& holder::get_ai_ref()
 {
 	return get_ai_ref(this->side_);
 }
@@ -202,7 +202,7 @@ bool holder::is_mandate_ok()
 	return true;
 }
 
-ai_interface* holder::create_ai( int side )
+interface* holder::create_ai( int side )
 {
 	assert (side > 0);
 	assert (default_ai_context_!=NULL);
@@ -358,7 +358,7 @@ const std::string manager::evaluate_command( int side, const std::string& str )
 	}
 
 	if (!should_intercept(str)){
-		ai_interface& ai = get_command_ai(side);
+		interface& ai = get_command_ai(side);
 		return ai.evaluate(str);
 	}
 
@@ -549,7 +549,7 @@ bool manager::add_ai_for_side( int side, const std::string& ai_algorithm_type, b
 }
 
 
-ai_interface* manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
+interface* manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
 {
 	assert(ai_context!=NULL);
 	//@todo 1.7 modify this code to use a 'factory lookup' pattern -
@@ -561,7 +561,7 @@ ai_interface* manager::create_transient_ai( const std::string &ai_algorithm_type
 	//: To add an AI of your own, put
 	//	if(ai_algorithm_type == "my_ai") {
 	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		ai_interface *a = new my_ai(*ai_context);
+	//		interface *a = new my_ai(*ai_context);
 	//		a->on_create();
 	//		return a;
 	//	}
@@ -569,35 +569,35 @@ ai_interface* manager::create_transient_ai( const std::string &ai_algorithm_type
 
 	//if(ai_algorithm_type == manager::AI_TYPE_SAMPLE_AI) {
 	//  LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	ai_interface *a = new sample_ai(*ai_context);
+	//	interface *a = new sample_ai(*ai_context);
 	//	a->on_create();
 	//	return a;
 	//}
 
 	if(ai_algorithm_type == manager::AI_TYPE_IDLE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		ai_interface *a = new idle_ai(*ai_context);
+		interface *a = new idle_ai(*ai_context);
 		a->on_create();
 		return a;
 	}
 
 	if(ai_algorithm_type == manager::AI_TYPE_FORMULA_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		ai_interface *a = new formula_ai(*ai_context);
+		interface *a = new formula_ai(*ai_context);
 		a->on_create();
 		return a;
 	}
 
 	if(ai_algorithm_type == manager::AI_TYPE_DFOOL_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		ai_interface *a = new dfool::dfool_ai(*ai_context);
+		interface *a = new dfool::dfool_ai(*ai_context);
 		a->on_create();
 		return a;
 	}
 
 	if(ai_algorithm_type == manager::AI_TYPE_AI2) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_AI2 << "]"<< std::endl;
-		ai_interface *a = new ai2(*ai_context);
+		interface *a = new ai2(*ai_context);
 		a->on_create();
 		return a;
 	}
@@ -605,7 +605,7 @@ ai_interface* manager::create_transient_ai( const std::string &ai_algorithm_type
 
 	if(ai_algorithm_type == manager::AI_TYPE_COMPOSITE_AI) {
 		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_COMPOSITE_AI << "]"<< std::endl;
-		ai_interface *a = new composite_ai::ai_composite(*ai_context);
+		interface *a = new composite_ai::ai_composite(*ai_context);
 		a->on_create();
 		return a;
 	}
@@ -616,7 +616,7 @@ ai_interface* manager::create_transient_ai( const std::string &ai_algorithm_type
 	}
 
 	LOG_AI_MANAGER  << "Creating new AI of type [" << manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	ai_interface *a = new ai_default(*ai_context);
+	interface *a = new ai_default(*ai_context);
 	a->on_create();
 	return a;
 }
@@ -747,7 +747,7 @@ void manager::play_turn( int side, events::observer* /*event_observer*/ ){
 	last_interact_ = 0;
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
-	ai_interface& ai_obj = get_active_ai_for_side(side);
+	interface& ai_obj = get_active_ai_for_side(side);
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
@@ -818,29 +818,29 @@ holder& manager::get_or_create_active_ai_holder_for_side_without_fallback(int si
 // AI POINTERS
 // =======================================================================
 
-ai_interface& manager::get_active_ai_for_side( int side )
+interface& manager::get_active_ai_for_side( int side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_ref();
 }
 
 
-ai_interface& manager::get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type )
+interface& manager::get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type )
 {
 	holder& ai_holder = get_or_create_active_ai_holder_for_side_without_fallback(side,ai_algorithm_type);
 	return ai_holder.get_ai_ref();
 }
 
-ai_interface& manager::get_command_ai( int side )
+interface& manager::get_command_ai( int side )
 {
 	holder& ai_holder = get_command_ai_holder(side);
-	ai_interface& ai = ai_holder.get_ai_ref(side);
+	interface& ai = ai_holder.get_ai_ref(side);
 	return ai;
 }
 
-ai_interface& manager::get_fallback_ai( int side )
+interface& manager::get_fallback_ai( int side )
 {
 	holder& ai_holder = get_fallback_ai_holder(side);
-	ai_interface& ai = ai_holder.get_ai_ref(side);
+	interface& ai = ai_holder.get_ai_ref(side);
 	return ai;
 }
 

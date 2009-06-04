@@ -73,7 +73,7 @@ void idle_ai::play_turn()
 
 
 /** Sample ai, with simple strategy. */
-class sample_ai : public ai::readwrite_context_proxy, public ai_interface {
+class sample_ai : public ai::readwrite_context_proxy, public ai::interface {
 public:
 	sample_ai(ai::readwrite_context &context)
 		: recursion_counter_(context.get_recursion_count()) {
@@ -274,7 +274,7 @@ void ai_default::new_turn()
 	if (formula_ai_ != NULL){
 		formula_ai_->new_turn();
 	}
-	ai_interface::new_turn();
+	ai::interface::new_turn();
 }
 
 std::string ai_default::describe_self(){

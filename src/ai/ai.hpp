@@ -28,7 +28,7 @@
 class formula_ai;
 
 /** A trivial ai that sits around doing absolutely nothing. */
-class idle_ai : public ai::readwrite_context_proxy, public ai_interface {
+class idle_ai : public ai::readwrite_context_proxy, public ai::interface {
 public:
 	idle_ai(ai::readwrite_context &context);
 	void play_turn();
@@ -39,7 +39,7 @@ private:
 	ai::recursion_counter recursion_counter_;
 };
 
-class ai_default : public virtual ai::default_ai_context_proxy, public ai_interface, public game_logic::formula_callable {
+class ai_default : public virtual ai::default_ai_context_proxy, public ai::interface, public game_logic::formula_callable {
 public:
 	typedef ai::move_map move_map;
 	typedef map_location location;//will get rid of this later
@@ -142,7 +142,7 @@ protected:
 	bool threats_found_;
 
 	/**
-	 * Our own version of 'move_unit'. It is like the version in ai_interface,
+	 * Our own version of 'move_unit'. It is like the version in readwrite_context
 	 * however if it is the leader moving, it will first attempt recruitment.
 	 */
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);

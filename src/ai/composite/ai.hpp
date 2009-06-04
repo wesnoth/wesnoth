@@ -36,7 +36,7 @@ namespace ai {
 
 namespace composite_ai {
 
-class ai_composite : public composite_ai_context, public virtual default_ai_context_proxy, public ai_interface {
+class ai_composite : public composite_ai_context, public virtual default_ai_context_proxy, public interface {
 public:
 
 
