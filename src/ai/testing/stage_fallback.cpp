@@ -32,7 +32,7 @@ static lg::log_domain log_ai_testing_stage_fallback("ai/testing/stage_fallback")
 #define ERR_AI_TESTING_STAGE_FALLBACK LOG_STREAM(err, log_ai_testing_stage_fallback)
 
 fallback_to_other_ai::fallback_to_other_ai( ai::composite_ai::composite_ai_context &context, const config &cfg )
-	: stage(context,cfg), cfg_(cfg), fallback_ai_(NULL)
+	: stage(context,cfg), cfg_(cfg), fallback_ai_()
 {
 }
 
@@ -53,9 +53,6 @@ void fallback_to_other_ai::do_play_stage()
 
 fallback_to_other_ai::~fallback_to_other_ai()
 {
-	if (fallback_ai_!=NULL){
-		delete fallback_ai_;
-	}
 }
 
 } // of namespace testing_ai_default

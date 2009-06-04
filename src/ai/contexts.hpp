@@ -33,11 +33,15 @@ class gamemap;
 
 namespace ai {
 
+class interface;
+
+typedef boost::shared_ptr< interface > ai_ptr;
+
 // recursion counter
 class recursion_counter {
 public:
 	recursion_counter(int counter)
-		: counter_(counter++)
+		: counter_(++counter)
 	{
 		if (counter > MAX_COUNTER_VALUE ) {
 			throw game::game_error("maximum recursion depth reached!");

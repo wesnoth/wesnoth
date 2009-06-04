@@ -54,7 +54,7 @@ static lg::log_domain log_ai_manager("ai/manager");
 #define ERR_AI_MANAGER LOG_STREAM(err, log_ai_manager)
 
 holder::holder( int side, const std::string& ai_algorithm_type )
-	: ai_(NULL), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), ai_algorithm_type_(ai_algorithm_type), ai_effective_parameters_(),  ai_global_parameters_(), ai_memory_(), ai_parameters_(), side_(side)
+	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), ai_algorithm_type_(ai_algorithm_type), ai_effective_parameters_(),  ai_global_parameters_(), ai_memory_(), ai_parameters_(), side_(side)
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
@@ -78,7 +78,7 @@ void holder::init( int side )
 		default_ai_context_ = new default_ai_context_impl(*readwrite_context_);
 	}
 	this->ai_ = create_ai(side);
-	if (this->ai_ == NULL) {
+	if (!this->ai_) {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}
 
@@ -87,10 +87,9 @@ void holder::init( int side )
 
 holder::~holder()
 {
-	if (this->ai_ != NULL) {
+	if (this->ai_) {
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted" << std::endl;
 	}
-	delete this->ai_;
 	delete this->default_ai_context_;
 	delete this->readwrite_context_;
 	delete this->readonly_context_;
@@ -100,10 +99,10 @@ holder::~holder()
 
 interface& holder::get_ai_ref( int side )
 {
-	if (this->ai_ == NULL) {
+	if (!this->ai_) {
 		this->init(side);
 	}
-	assert(this->ai_ != NULL);
+	assert(this->ai_);
 
 	return *this->ai_;
 }
@@ -202,7 +201,7 @@ bool holder::is_mandate_ok()
 	return true;
 }
 
-interface* holder::create_ai( int side )
+ai_ptr holder::create_ai( int side )
 {
 	assert (side > 0);
 	assert (default_ai_context_!=NULL);
@@ -549,76 +548,21 @@ bool manager::add_ai_for_side( int side, const std::string& ai_algorithm_type, b
 }
 
 
-interface* manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
+ai_ptr manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
 {
 	assert(ai_context!=NULL);
-	//@todo 1.7 modify this code to use a 'factory lookup' pattern -
-	//a singleton which holds a map<string,ai_factory_ptr> of all functors which can create AIs.
-	//this will allow individual AI implementations to 'register' themselves.
 
-
-
-	//: To add an AI of your own, put
-	//	if(ai_algorithm_type == "my_ai") {
-	//		LOG_AI_MANAGER << "Creating new AI of type [" << "my_ai" << "]"<< std::endl;
-	//		interface *a = new my_ai(*ai_context);
-	//		a->on_create();
-	//		return a;
-	//	}
-	// at the top of this function
-
-	//if(ai_algorithm_type == manager::AI_TYPE_SAMPLE_AI) {
-	//  LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-	//	interface *a = new sample_ai(*ai_context);
-	//	a->on_create();
-	//	return a;
-	//}
-
-	if(ai_algorithm_type == manager::AI_TYPE_IDLE_AI) {
-		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_IDLE_AI << "]"<< std::endl;
-		interface *a = new idle_ai(*ai_context);
-		a->on_create();
-		return a;
+	//to add your own ai, register it in registry,cpp
+	ai_factory::factory_map::iterator aii = ai_factory::get_list().find(ai_algorithm_type);
+	if (aii == ai_factory::get_list().end()){
+		aii = ai_factory::get_list().find("");
+		if (aii == ai_factory::get_list().end()){
+			throw game::game_error("no default ai set!");
+		}
 	}
-
-	if(ai_algorithm_type == manager::AI_TYPE_FORMULA_AI) {
-		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_FORMULA_AI << "]"<< std::endl;
-		interface *a = new formula_ai(*ai_context);
-		a->on_create();
-		return a;
-	}
-
-	if(ai_algorithm_type == manager::AI_TYPE_DFOOL_AI) {
-		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_DFOOL_AI << "]"<< std::endl;
-		interface *a = new dfool::dfool_ai(*ai_context);
-		a->on_create();
-		return a;
-	}
-
-	if(ai_algorithm_type == manager::AI_TYPE_AI2) {
-		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_AI2 << "]"<< std::endl;
-		interface *a = new ai2(*ai_context);
-		a->on_create();
-		return a;
-	}
-
-
-	if(ai_algorithm_type == manager::AI_TYPE_COMPOSITE_AI) {
-		LOG_AI_MANAGER << "Creating new AI of type [" << manager::AI_TYPE_COMPOSITE_AI << "]"<< std::endl;
-		interface *a = new composite_ai::ai_composite(*ai_context);
-		a->on_create();
-		return a;
-	}
-
-
-	if (!ai_algorithm_type.empty() && ai_algorithm_type != manager::AI_TYPE_DEFAULT) {
-		ERR_AI_MANAGER << "AI not found: [" << ai_algorithm_type << "]. Using default instead.\n";
-	}
-
-	LOG_AI_MANAGER  << "Creating new AI of type [" << manager::AI_TYPE_DEFAULT << "]"<< std::endl;
-	interface *a = new ai_default(*ai_context);
-	a->on_create();
-	return a;
+	LOG_AI_MANAGER << "Creating new AI of type [" << ai_algorithm_type << "]"<< std::endl;
+	ai_ptr new_ai = aii->second->get_new_instance(*ai_context);
+	return new_ai;
 }
 
 std::vector<std::string> manager::get_available_ais()

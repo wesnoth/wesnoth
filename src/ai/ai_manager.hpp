@@ -79,7 +79,7 @@ public:
 	bool is_mandate_ok();
 
 private:
-	interface *ai_;
+	ai_ptr ai_;
 	side_context *side_context_;
 	readonly_context *readonly_context_;
 	readwrite_context *readwrite_context_;
@@ -91,7 +91,7 @@ private:
 	std::vector<config> ai_parameters_;
 	int side_;
 
-	interface* create_ai( int side );
+	ai_ptr create_ai( int side );
 };
 
 /**
@@ -270,13 +270,12 @@ public:
 
 
 	/**
-	 * Returns a pointer to a new AI. It is the sole responsibility of the caller
-	 * to manage its lifetime.
+	 * Returns a smart pointer to a new AI. 
 	 * @param ai_algorithm_type type of AI algorithm to create
 	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static interface* create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
+	static ai_ptr create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
 
 
 	/**

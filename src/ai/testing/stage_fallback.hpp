@@ -43,10 +43,9 @@ public:
 private:
 	const config &cfg_;
 
-	ai::interface *fallback_ai_;
+	ai::ai_ptr fallback_ai_;
 };
 
-
-} // of namespace testing_ai_default
+} // end of namespace testing_ai_default
 
 #endif

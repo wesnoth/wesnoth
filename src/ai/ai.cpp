@@ -247,9 +247,6 @@ ai_default::ai_default(ai::default_ai_context &context) :
 }
 
 ai_default::~ai_default(){
-	if (formula_ai_!=NULL) {
-		delete formula_ai_;
-	}
 }
 
 void ai_default::switch_side(ai::side_number side){
@@ -1482,11 +1479,12 @@ bool ai_default::do_recruitment()
 	if (get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE)
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
-			if (formula_ai_ == NULL){
-				formula_ai_ = static_cast<formula_ai*>(ai::manager::create_transient_ai(ai::manager::AI_TYPE_FORMULA_AI, this));
+			if (!formula_ai_){
+				formula_ai_ptr_ = (ai::manager::create_transient_ai(ai::manager::AI_TYPE_FORMULA_AI, this));
+				formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
 			}
 
-			assert(formula_ai_ != NULL);
+			assert(formula_ai_!=NULL);
 
 			if (formula_ai_->do_recruitment()) {
 				LOG_AI << "Recruitment done by formula_ai\n";

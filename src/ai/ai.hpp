@@ -96,6 +96,7 @@ public:
 	int get_recursion_count() const;
 private:
 	ai::recursion_counter recursion_counter_;
+
 protected:
 
 	std::map<location,defensive_position> defensive_position_cache_;
@@ -409,7 +410,8 @@ private:
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
-	formula_ai* formula_ai_;
+	formula_ai *formula_ai_;
+	ai::ai_ptr formula_ai_ptr_;
 };
 
 #endif
