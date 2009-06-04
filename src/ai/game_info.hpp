@@ -32,6 +32,7 @@ class gamemap;
  * decisions.
  */
 namespace ai {
+
 typedef int side_number;
 
 /** The standard way in which a map of possible moves is recorded. */
@@ -39,13 +40,11 @@ typedef std::multimap<map_location,map_location> move_map;
 
 /** The standard way in which a map of possible movement routes to location is recorded*/
 typedef std::map<map_location,paths> moves_map;
-} //of namespace ai
 
-
-class ai_game_info {
+class game_info {
 public:
 
-		ai_game_info(game_display& disp, gamemap& map, unit_map& units,
+		game_info(game_display& disp, gamemap& map, unit_map& units,
 			std::vector<team>& teams, gamestatus& state, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
 			   state(state), game_state_(game_state)
@@ -69,5 +68,7 @@ public:
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
 };
+
+} //of namespace ai
 
 #endif

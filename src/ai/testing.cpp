@@ -37,7 +37,7 @@ void ai_testing::log_turn_end(unsigned int side)
 
 void ai_testing::log_turn(const char* msg, unsigned int side)
 {
-	ai_game_info& i = ai::manager::get_ai_info();
+	ai::game_info& i = ai::manager::get_ai_info();
 	assert(side>=1);
 	team& current_team = i.teams[side-1];
 
@@ -70,7 +70,7 @@ void ai_testing::log_victory(std::vector<unsigned int> winners)
 
 void ai_testing::log_game_start()
 {
-	ai_game_info& i = ai::manager::get_ai_info();
+	ai::game_info& i = ai::manager::get_ai_info();
 	for (std::vector<team>::const_iterator tm = i.teams.begin(); tm != i.teams.end(); ++tm) {
 		int side = tm-i.teams.begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;

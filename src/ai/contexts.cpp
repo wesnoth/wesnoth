@@ -201,12 +201,12 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 }
 
 
-const ai_game_info& readonly_context_impl::get_info() const{
+const game_info& readonly_context_impl::get_info() const{
 	return manager::get_active_ai_info_for_side(get_side());
 }
 
 
-ai_game_info& readwrite_context_impl::get_info_w(){
+game_info& readwrite_context_impl::get_info_w(){
 	return manager::get_active_ai_info_for_side(get_side());
 }
 

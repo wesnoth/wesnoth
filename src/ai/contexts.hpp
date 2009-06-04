@@ -137,7 +137,7 @@ public:
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 		const std::set<map_location>* remove_destinations=NULL,
 		bool see_all=false) const = 0;
-	const virtual ai_game_info& get_info() const = 0;
+	const virtual game_info& get_info() const = 0;
 	virtual void raise_user_interact() const = 0;
 
 };
@@ -160,7 +160,7 @@ public:
 	virtual void raise_unit_recruited() const = 0;
 	virtual void raise_unit_moved() const = 0;
 	virtual void raise_enemy_attacked() const = 0;
-	virtual ai_game_info& get_info_w() = 0;
+	virtual game_info& get_info_w() = 0;
 };
 
 class ai_default_context;
@@ -285,7 +285,7 @@ public:
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
 	}
 
-	const virtual ai_game_info& get_info() const
+	const virtual game_info& get_info() const
 	{
 		return target_->get_info();
 	}
@@ -398,7 +398,7 @@ public:
 	}
 
 
-	virtual ai_game_info& get_info_w()
+	virtual game_info& get_info_w()
 	{
 		return target_->get_info_w();
 	}
@@ -582,7 +582,7 @@ public:
 		bool see_all=false) const;
 
 
-	const virtual ai_game_info& get_info() const;
+	const virtual game_info& get_info() const;
 
 	/**
 	 * Function which should be called frequently to allow the user to interact
@@ -737,7 +737,7 @@ public:
 	 * Functions to retrieve the 'info' object.
 	 * Used by derived classes to discover all necessary game information.
 	 */
-	virtual ai_game_info& get_info_w();
+	virtual game_info& get_info_w();
 
 
 	virtual int get_recursion_count() const;

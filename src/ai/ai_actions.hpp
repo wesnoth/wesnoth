@@ -75,19 +75,19 @@ protected:
 	int get_side() const { return side_; }
 
 	/* return real information about the game state */
-	ai_game_info& get_info() const;
+	ai::game_info& get_info() const;
 
 	/* return subjective information about the game state */
-	ai_game_info& get_subjective_info() const;
+	ai::game_info& get_subjective_info() const;
 
 	/* are we using the subjective info ? */
 	bool using_subjective_info() const;
 
 	/* get the team object corresponding to current side */
-	team& get_my_team(ai_game_info& info) const;
+	team& get_my_team(ai::game_info& info) const;
 
 	/* get the team object corresponding to current side */
-	const team& get_my_team(const ai_game_info& info) const;
+	const team& get_my_team(const ai::game_info& info) const;
 
 	/* set error code */
 	void set_error(int error_code);
