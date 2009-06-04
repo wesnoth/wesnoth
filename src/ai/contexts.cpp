@@ -89,43 +89,43 @@ void readwrite_context_impl::raise_enemy_attacked() const
 }
 
 
-ai_attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return ai_actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
+attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
+	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
 }
 
 
-ai_attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return ai_actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon);
+attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
+	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon);
 }
 
 
-ai_move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
-	return ai_actions::execute_move_action(get_side(),true,from,to,remove_movement);
+move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
+	return actions::execute_move_action(get_side(),true,from,to,remove_movement);
 }
 
 
-ai_move_result_ptr readonly_context_impl::check_move_action(const map_location& from, const map_location& to, bool remove_movement){
-	return ai_actions::execute_move_action(get_side(),false,from,to,remove_movement);
+move_result_ptr readonly_context_impl::check_move_action(const map_location& from, const map_location& to, bool remove_movement){
+	return actions::execute_move_action(get_side(),false,from,to,remove_movement);
 }
 
 
-ai_recruit_result_ptr readwrite_context_impl::execute_recruit_action(const std::string& unit_name, const map_location &where){
-	return ai_actions::execute_recruit_action(get_side(),true,unit_name,where);
+recruit_result_ptr readwrite_context_impl::execute_recruit_action(const std::string& unit_name, const map_location &where){
+	return actions::execute_recruit_action(get_side(),true,unit_name,where);
 }
 
 
-ai_recruit_result_ptr readonly_context_impl::check_recruit_action(const std::string& unit_name, const map_location &where){
-	return ai_actions::execute_recruit_action(get_side(),false,unit_name,where);
+recruit_result_ptr readonly_context_impl::check_recruit_action(const std::string& unit_name, const map_location &where){
+	return actions::execute_recruit_action(get_side(),false,unit_name,where);
 }
 
 
-ai_stopunit_result_ptr readwrite_context_impl::execute_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
-	return ai_actions::execute_stopunit_action(get_side(),true,unit_location,remove_movement,remove_attacks);
+stopunit_result_ptr readwrite_context_impl::execute_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
+	return actions::execute_stopunit_action(get_side(),true,unit_location,remove_movement,remove_attacks);
 }
 
 
-ai_stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
-	return ai_actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
+stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
+	return actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
 }
 
 

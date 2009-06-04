@@ -124,10 +124,10 @@ public:
 	virtual const team& current_team() const = 0;
 	virtual void diagnostic(const std::string& msg) = 0;
 	virtual void log_message(const std::string& msg) = 0;
-	virtual ai_attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
-	virtual ai_move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
-	virtual ai_recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
-	virtual ai_stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+	virtual attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
+	virtual move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
@@ -148,10 +148,10 @@ public:
 	readwrite_context(){}
 	virtual ~readwrite_context(){}
 	virtual readwrite_context& get_readwrite_context() = 0;
-	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
-	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
-	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
-	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 	virtual team& current_team_w() = 0;
 	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
 	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves) = 0;
@@ -248,22 +248,22 @@ public:
 		target_->log_message(msg);
 	}
 
-	virtual ai_attack_result_ptr check_attack_action(const map_location &attacker_loc, const map_location &defender_loc, int attacker_weapon)
+	virtual attack_result_ptr check_attack_action(const map_location &attacker_loc, const map_location &defender_loc, int attacker_weapon)
 	{
 		return target_->check_attack_action(attacker_loc, defender_loc, attacker_weapon);
 	}
 
-	virtual ai_move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true)
+	virtual move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true)
 	{
 		return target_->check_move_action(from, to, remove_movement);
 	}
 
-	virtual ai_recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location)
+	virtual recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location)
 	{
 		return target_->check_recruit_action(unit_name, where);
 	}
 
-	virtual ai_stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false)
+	virtual stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false)
 	{
 		return target_->check_stopunit_action(unit_location, remove_movement, remove_attacks);
 	}
@@ -326,25 +326,25 @@ public:
 	}
 
 
-	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
+	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
 	{
 		return target_->execute_attack_action(attacker_loc,defender_loc,attacker_weapon);
 	}
 
 
-	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true)
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true)
 	{
 		return target_->execute_move_action(from, to, remove_movement);
 	}
 
 
-	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location)
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location)
 	{
 		return target_->execute_recruit_action(unit_name,where);
 	}
 
 
-	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false)
+	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false)
 	{
 		return target_->execute_stopunit_action(unit_location,remove_movement,remove_attacks);
 	}
@@ -501,7 +501,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	ai_attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
 
 
 	/**
@@ -514,7 +514,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	ai_move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
 
 
 	/**
@@ -527,7 +527,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	ai_recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
 
 
 	/**
@@ -539,7 +539,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	ai_stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
 
 
 	/**
@@ -560,8 +560,8 @@ public:
 	 *                            will be calculated.  The AI's own leader will
 	 *                            not be included in this map.
 	 * @param assume_full_movement
-	 *                         edonly_ai_context  If true, the function will operate on the
-	 *                            assumption thareadonly_ai_contextt all units can move their full
+	 *                            If true, the function will operate on the
+	 *                            assumption that all units can move their full
 	 *                            movement allotment.
 	 * @param remove_destinations a pointer to a set of possible destinations
 	 *                            to omit.
@@ -621,7 +621,7 @@ public:
 	 * @retval possible result: attacker and/or defender are invalid
 	 * @retval possible result: attacker doesn't have the specified weapon
 	 */
-	virtual ai_attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
+	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon);
 
 
 	/**
@@ -634,7 +634,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	virtual ai_move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
 
 
 	/**
@@ -647,7 +647,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual ai_recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
 
 
 	/**
@@ -659,7 +659,7 @@ public:
 	 * @retval possible_result: something wrong
 	 * @retval possible_result: nothing to do
 	 */
-	virtual ai_stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
 
 
 	/** Return a reference to the 'team' object for the AI. */

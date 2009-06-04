@@ -42,6 +42,8 @@
 #include "../statistics.hpp"
 #include "../team.hpp"
 
+namespace ai {
+
 static lg::log_domain log_ai_actions("ai/actions");
 #define DBG_AI_ACTIONS LOG_STREAM(debug, log_ai_actions)
 #define LOG_AI_ACTIONS LOG_STREAM(info, log_ai_actions)
@@ -53,13 +55,13 @@ using namespace ai;
 // =======================================================================
 // AI ACTIONS
 // =======================================================================
-ai_action_result::ai_action_result( unsigned int side )
+action_result::action_result( side_number side )
 	: return_value_checked_(true),side_(side),status_(AI_ACTION_SUCCESS),is_execution_(false)
 {
 }
 
 
-ai_action_result::~ai_action_result()
+action_result::~action_result()
 {
 	if (!return_value_checked_) {
 		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " <<  std::endl;
@@ -67,19 +69,19 @@ ai_action_result::~ai_action_result()
 }
 
 
-void ai_action_result::check_after()
+void action_result::check_after()
 {
 	do_check_after();
 }
 
 
-void ai_action_result::check_before()
+void action_result::check_before()
 {
 	do_check_before();
 }
 
 
-void ai_action_result::execute()
+void action_result::execute()
 {
 	is_execution_ = true;
 	init_for_execution();
@@ -93,86 +95,86 @@ void ai_action_result::execute()
 	is_execution_ = false;
 }
 
-void ai_action_result::init_for_execution()
+void action_result::init_for_execution()
 {
 	return_value_checked_ = false;
-	status_ =  ai_action_result::AI_ACTION_SUCCESS;
+	status_ =  action_result::AI_ACTION_SUCCESS;
 	do_init_for_execution();
 }
 
 
-bool ai_action_result::is_ok()
+bool action_result::is_ok()
 {
 	return_value_checked_ = true;
 	return is_success();
 }
 
 
-void ai_action_result::set_error(int error_code){
+void action_result::set_error(int error_code){
 	status_ = error_code;
 	ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
 }
 
 
-int ai_action_result::get_status(){
+int action_result::get_status(){
 	return status_;
 }
 
-bool ai_action_result::is_success() const
+bool action_result::is_success() const
 {
-	return (status_ == ai_action_result::AI_ACTION_SUCCESS);
+	return (status_ == action_result::AI_ACTION_SUCCESS);
 }
 
 
-bool ai_action_result::is_execution() const
+bool action_result::is_execution() const
 {
 	return is_execution_;
 }
 
-game_info& ai_action_result::get_info() const
+game_info& action_result::get_info() const
 {
 	return manager::get_active_ai_info_for_side(get_side());
 }
 
 
-game_info& ai_action_result::get_subjective_info() const
+game_info& action_result::get_subjective_info() const
 {
 	return get_info();
 }
 
 
-bool ai_action_result::using_subjective_info() const
+bool action_result::using_subjective_info() const
 {
 	return false;
 }
 
 
-team& ai_action_result::get_my_team(game_info& info) const
+team& action_result::get_my_team(game_info& info) const
 {
 	return info.teams[side_-1];
 }
 
-const team& ai_action_result::get_my_team(const game_info& info) const
+const team& action_result::get_my_team(const game_info& info) const
 {
 	return info.teams[side_-1];
 }
 
-// ai_attack_result
-ai_attack_result::ai_attack_result( unsigned int side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
-	: ai_action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon){
+// attack_result
+attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
+	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon){
 }
 
-void ai_attack_result::do_check_before()
+void attack_result::do_check_before()
 {
 }
 
 
-void ai_attack_result::do_check_after()
+void attack_result::do_check_after()
 {
 }
 
 
-std::string ai_attack_result::do_describe() const
+std::string attack_result::do_describe() const
 {
 	std::stringstream s;
 	s << "attack by side ";
@@ -185,26 +187,22 @@ std::string ai_attack_result::do_describe() const
 }
 
 
-void ai_attack_result::do_execute()
+void attack_result::do_execute()
 {
 }
 
 
-void ai_attack_result::do_init_for_execution()
+void attack_result::do_init_for_execution()
 {
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai_attack_result const &r) {
-        s << r.do_describe();
-        return s;
-}
 
 
-// ai_move_result
-ai_move_result::ai_move_result(unsigned int side, const map_location& from,
+// move_result
+move_result::move_result(side_number side, const map_location& from,
 		const map_location& to, bool remove_movement)
-	: ai_action_result(side)
+	: action_result(side)
 	, from_(from)
 	, to_(to)
 	, remove_movement_(remove_movement)
@@ -213,7 +211,7 @@ ai_move_result::ai_move_result(unsigned int side, const map_location& from,
 }
 
 
-const unit *ai_move_result::get_unit(const unit_map &units, const std::vector<team> &, bool)
+const unit *move_result::get_unit(const unit_map &units, const std::vector<team> &, bool)
 {
 	unit_map::const_iterator un = units.find(from_);
 	if (un==units.end()){
@@ -233,7 +231,7 @@ const unit *ai_move_result::get_unit(const unit_map &units, const std::vector<te
 }
 
 
-bool ai_move_result::test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool)
+bool move_result::test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool)
 {
 	if (from_==to_) {
 		set_error(E_EMPTY_MOVE);
@@ -251,7 +249,7 @@ bool ai_move_result::test_route(const unit &un, const team &my_team, const unit_
 	return true;
 }
 
-void ai_move_result::do_check_before()
+void move_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
@@ -281,12 +279,12 @@ void ai_move_result::do_check_before()
 }
 
 
-void ai_move_result::do_check_after()
+void move_result::do_check_after()
 {
 }
 
 
-std::string ai_move_result::do_describe() const
+std::string move_result::do_describe() const
 {
 	std::stringstream s;
 	if (remove_movement_){
@@ -302,7 +300,7 @@ std::string ai_move_result::do_describe() const
 }
 
 
-void ai_move_result::do_execute()
+void move_result::do_execute()
 {
 	DBG_AI_ACTIONS << " execute "<< *this << std::endl;
 	assert(is_success());
@@ -325,21 +323,17 @@ void ai_move_result::do_execute()
 }
 
 
-void ai_move_result::do_init_for_execution()
+void move_result::do_init_for_execution()
 {
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai_move_result const &r) {
-        s << r.do_describe();
-        return s;
-}
 
 
-// ai_recruit_result
-ai_recruit_result::ai_recruit_result(unsigned int side,
+// recruit_result
+recruit_result::recruit_result(side_number side,
 		const std::string& unit_name, const map_location& where)
-	: ai_action_result(side)
+	: action_result(side)
 	, unit_name_(unit_name)
 	, where_(where)
 	, recruit_location_(where)
@@ -347,7 +341,7 @@ ai_recruit_result::ai_recruit_result(unsigned int side,
 {
 }
 
-const std::string &ai_recruit_result::get_available_for_recruiting(const team &my_team, bool)
+const std::string &recruit_result::get_available_for_recruiting(const team &my_team, bool)
 {
 	const std::set<std::string> &recruit_set = my_team.recruits();
 	std::set<std::string>::const_iterator recruit = recruit_set.find(unit_name_);
@@ -360,7 +354,7 @@ const std::string &ai_recruit_result::get_available_for_recruiting(const team &m
 	return *recruit;
 }
 
-const unit_type *ai_recruit_result::get_unit_type_known(const std::string &recruit, bool)
+const unit_type *recruit_result::get_unit_type_known(const std::string &recruit, bool)
 {
 	unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(recruit);
 	if (type == unit_type_data::types().end() || type->first == "dummy_unit") {
@@ -370,7 +364,7 @@ const unit_type *ai_recruit_result::get_unit_type_known(const std::string &recru
 	return &type->second;
 }
 
-bool ai_recruit_result::test_enough_gold(const team &my_team, const unit_type &type, bool)
+bool recruit_result::test_enough_gold(const team &my_team, const unit_type &type, bool)
 {
 	if (my_team.gold() < type.cost()) {
 		set_error(E_NO_GOLD);
@@ -379,7 +373,7 @@ bool ai_recruit_result::test_enough_gold(const team &my_team, const unit_type &t
 	return true;
 }
 
-const unit *ai_recruit_result::get_leader(const unit_map& units, bool)
+const unit *recruit_result::get_leader(const unit_map& units, bool)
 {
 	unit_map::const_iterator my_leader = units.find_leader(get_side());
 	if (my_leader == units.end()){
@@ -390,7 +384,7 @@ const unit *ai_recruit_result::get_leader(const unit_map& units, bool)
 
 }
 
-bool ai_recruit_result::test_leader_on_keep(const gamemap &map, const unit &my_leader, bool)
+bool recruit_result::test_leader_on_keep(const gamemap &map, const unit &my_leader, bool)
 {
 	if (!map.is_keep(my_leader.get_location())) {
 		set_error(E_LEADER_NOT_ON_KEEP);
@@ -399,7 +393,7 @@ bool ai_recruit_result::test_leader_on_keep(const gamemap &map, const unit &my_l
 	return true;
 }
 
-bool ai_recruit_result::test_suitable_recruit_location(const gamemap &map, const unit_map &units, const unit &my_leader, bool)
+bool recruit_result::test_suitable_recruit_location(const gamemap &map, const unit_map &units, const unit &my_leader, bool)
 {
 	recruit_location_ = where_;
 
@@ -415,7 +409,7 @@ bool ai_recruit_result::test_suitable_recruit_location(const gamemap &map, const
 	return true;
 }
 
-void ai_recruit_result::do_check_before()
+void recruit_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
@@ -486,7 +480,7 @@ void ai_recruit_result::do_check_before()
 }
 
 
-void ai_recruit_result::do_check_after()
+void recruit_result::do_check_after()
 {
 	const game_info& info = get_info();
 	const gamemap& map = info.map;
@@ -505,7 +499,7 @@ void ai_recruit_result::do_check_after()
 
 }
 
-std::string ai_recruit_result::do_describe() const
+std::string recruit_result::do_describe() const
 {
 	std::stringstream s;
 	s << "recruitment by side ";
@@ -521,7 +515,7 @@ std::string ai_recruit_result::do_describe() const
 }
 
 
-void ai_recruit_result::do_execute()
+void recruit_result::do_execute()
 {
 	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
 	assert(is_success());
@@ -551,25 +545,21 @@ void ai_recruit_result::do_execute()
 }
 
 
-void ai_recruit_result::do_init_for_execution()
+void recruit_result::do_init_for_execution()
 {
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r) {
-        s << r.do_describe();
-        return s;
-}
 
 
 
-// ai_stopunit_result
-ai_stopunit_result::ai_stopunit_result( unsigned int side, const map_location& unit_location, bool remove_movement, bool remove_attacks)
-	: ai_action_result(side), unit_location_(unit_location), remove_movement_(remove_movement), remove_attacks_(remove_attacks)
+// stopunit_result
+stopunit_result::stopunit_result( side_number side, const map_location& unit_location, bool remove_movement, bool remove_attacks)
+	: action_result(side), unit_location_(unit_location), remove_movement_(remove_movement), remove_attacks_(remove_attacks)
 {
 }
 
-const unit *ai_stopunit_result::get_unit(const unit_map &units, bool)
+const unit *stopunit_result::get_unit(const unit_map &units, bool)
 {
 	unit_map::const_iterator un = units.find(unit_location_);
 	if (un==units.end()){
@@ -588,7 +578,7 @@ const unit *ai_stopunit_result::get_unit(const unit_map &units, bool)
 	return u;
 }
 
-void ai_stopunit_result::do_check_before()
+void stopunit_result::do_check_before()
 {
 	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
@@ -605,7 +595,7 @@ void ai_stopunit_result::do_check_before()
 }
 
 
-void ai_stopunit_result::do_check_after()
+void stopunit_result::do_check_after()
 {
 	const game_info& info = get_info();
 	unit_map::const_iterator un = info.units.find(unit_location_);
@@ -623,7 +613,7 @@ void ai_stopunit_result::do_check_after()
 	}
 }
 
-std::string ai_stopunit_result::do_describe() const
+std::string stopunit_result::do_describe() const
 {
 	std::stringstream s;
 	s <<" stopunit by side ";
@@ -639,7 +629,7 @@ std::string ai_stopunit_result::do_describe() const
 	return s.str();
 }
 
-void ai_stopunit_result::do_execute()
+void stopunit_result::do_execute()
 {
 	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
 	assert(is_success());
@@ -654,66 +644,89 @@ void ai_stopunit_result::do_execute()
 }
 
 
-void ai_stopunit_result::do_init_for_execution()
+void stopunit_result::do_init_for_execution()
 {
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai_stopunit_result const &r) {
-        s << r.do_describe();
-        return s;
-}
 
 
 // =======================================================================
 // STATELESS INTERFACE TO AI ACTIONS
 // =======================================================================
 
-ai_attack_result_ptr ai_actions::execute_attack_action( unsigned int side,
+attack_result_ptr actions::execute_attack_action( side_number side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
 	int attacker_weapon)
 {
-	ai_attack_result_ptr ai_action(new ai_attack_result(side,attacker_loc,defender_loc,attacker_weapon));
-	execute ? ai_action->execute() : ai_action->check_before();
-	return ai_action;
+	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon));
+	execute ? action->execute() : action->check_before();
+	return action;
 }
 
 
-ai_move_result_ptr ai_actions::execute_move_action( unsigned int side,
+move_result_ptr actions::execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
 	bool remove_movement)
 {
-	ai_move_result_ptr ai_action(new ai_move_result(side,from,to,remove_movement));
-	execute ? ai_action->execute() : ai_action->check_before();
-	return ai_action;
+	move_result_ptr action(new move_result(side,from,to,remove_movement));
+	execute ? action->execute() : action->check_before();
+	return action;
 
 }
 
 
-ai_recruit_result_ptr ai_actions::execute_recruit_action( unsigned int side,
+recruit_result_ptr actions::execute_recruit_action( side_number side,
 	bool execute,
 	const std::string& unit_name,
 	const map_location& where)
 {
-	ai_recruit_result_ptr ai_action(new ai_recruit_result(side,unit_name,where));
-	execute ? ai_action->execute() : ai_action->check_before();
-	return ai_action;
+	recruit_result_ptr action(new recruit_result(side,unit_name,where));
+	execute ? action->execute() : action->check_before();
+	return action;
 
 }
 
 
-ai_stopunit_result_ptr ai_actions::execute_stopunit_action( unsigned int side,
+stopunit_result_ptr actions::execute_stopunit_action( side_number side,
 	bool execute,
 	const map_location& unit_location,
 	bool remove_movement,
 	bool remove_attacks)
 {
-	ai_stopunit_result_ptr ai_action(new ai_stopunit_result(side,unit_location,remove_movement,remove_attacks));
-	execute ? ai_action->execute() : ai_action->check_before();
-	return ai_action;
+	stopunit_result_ptr action(new stopunit_result(side,unit_location,remove_movement,remove_attacks));
+	execute ? action->execute() : action->check_before();
+	return action;
 
+}
+
+
+} //end of namespace ai
+
+
+std::ostream &operator<<(std::ostream &s, ai::attack_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai::move_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+
+std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r) {
+        s << r.do_describe();
+        return s;
 }

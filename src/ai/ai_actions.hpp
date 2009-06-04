@@ -31,13 +31,15 @@
 #include <memory>
 #include <vector>
 
-class ai_action_result {
+namespace ai {
+
+class action_result {
 public:
 	static const int AI_ACTION_SUCCESS = 0;
 	static const int AI_ACTION_STARTED = 1;
 	static const int AI_ACTION_FAILURE = -1;
 
-	virtual ~ai_action_result();
+	virtual ~action_result();
 
 	/* check as must as possible without executing anything */
 	void check_before();
@@ -54,7 +56,7 @@ public:
 	/* describe the action */
 	virtual std::string do_describe() const =0;
 protected:
-	ai_action_result( unsigned int side );
+	action_result( side_number side );
 
 	/* do check before execution or just check. setting status_ via set_error to != cancels the execution.*/
 	virtual void do_check_before() = 0;
@@ -75,19 +77,19 @@ protected:
 	int get_side() const { return side_; }
 
 	/* return real information about the game state */
-	ai::game_info& get_info() const;
+	game_info& get_info() const;
 
 	/* return subjective information about the game state */
-	ai::game_info& get_subjective_info() const;
+	game_info& get_subjective_info() const;
 
 	/* are we using the subjective info ? */
 	bool using_subjective_info() const;
 
 	/* get the team object corresponding to current side */
-	team& get_my_team(ai::game_info& info) const;
+	team& get_my_team(game_info& info) const;
 
 	/* get the team object corresponding to current side */
-	const team& get_my_team(const ai::game_info& info) const;
+	const team& get_my_team(const game_info& info) const;
 
 	/* set error code */
 	void set_error(int error_code);
@@ -119,9 +121,9 @@ private:
 
 };
 
-class ai_attack_result : public ai_action_result {
+class attack_result : public action_result {
 public:
-	ai_attack_result( unsigned int side,
+	attack_result( side_number side,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon );
@@ -137,9 +139,9 @@ private:
 	int attacker_weapon_;
 };
 
-class ai_move_result : public ai_action_result {
+class move_result : public action_result {
 public:
-	ai_move_result( unsigned int side,
+	move_result( side_number side,
 		const map_location& from,
 		const map_location& to,
 		bool remove_movement );
@@ -162,9 +164,9 @@ private:
 	plain_route route_;
 };
 
-class ai_recruit_result : public ai_action_result {
+class recruit_result : public action_result {
 public:
-	ai_recruit_result( unsigned int side, const std::string& unit_name, const map_location& where);
+	recruit_result( side_number side, const std::string& unit_name, const map_location& where);
 	static const int E_NOT_AVAILABLE_FOR_RECRUITING = 3001;
 	static const int E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002;
 	static const int E_NO_GOLD = 3003;
@@ -207,9 +209,9 @@ private:
 	int num_;
 };
 
-class ai_stopunit_result : public ai_action_result {
+class stopunit_result : public action_result {
 public:
-	ai_stopunit_result( unsigned int side,
+	stopunit_result( side_number side,
 		const map_location& unit_location,
 		bool remove_movement,
 		bool remove_attacks );
@@ -231,17 +233,13 @@ private:
 };
 
 
-std::ostream &operator<<(std::ostream &s, ai_attack_result const &r);
-std::ostream &operator<<(std::ostream &s, ai_move_result const &r);
-std::ostream &operator<<(std::ostream &s, ai_recruit_result const &r);
-std::ostream &operator<<(std::ostream &s, ai_stopunit_result const &r);
 
-typedef boost::shared_ptr<ai_attack_result> ai_attack_result_ptr;
-typedef boost::shared_ptr<ai_move_result> ai_move_result_ptr;
-typedef boost::shared_ptr<ai_recruit_result> ai_recruit_result_ptr;
-typedef boost::shared_ptr<ai_stopunit_result> ai_stopunit_result_ptr;
+typedef boost::shared_ptr<attack_result> attack_result_ptr;
+typedef boost::shared_ptr<move_result> move_result_ptr;
+typedef boost::shared_ptr<recruit_result> recruit_result_ptr;
+typedef boost::shared_ptr<stopunit_result> stopunit_result_ptr;
 
-class ai_actions {
+class actions {
 
 public:
 // =======================================================================
@@ -261,7 +259,7 @@ public:
  * @retval possible result: attacker and/or defender are invalid
  * @retval possible result: attacker doesn't have the specified weapon
  */
-static ai_attack_result_ptr execute_attack_action( unsigned int side,
+static attack_result_ptr execute_attack_action( side_number side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
@@ -280,7 +278,7 @@ static ai_attack_result_ptr execute_attack_action( unsigned int side,
  * @retval possible result: move is interrupted
  * @retval possible result: move is impossible
  */
-static ai_move_result_ptr execute_move_action( unsigned int side,
+static move_result_ptr execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
 	const map_location& to,
@@ -299,7 +297,7 @@ static ai_move_result_ptr execute_move_action( unsigned int side,
  * @retval possible_result: no free space on keep
  * @retval possible_result: not enough gold
  */
-static ai_recruit_result_ptr execute_recruit_action( unsigned int side,
+static recruit_result_ptr execute_recruit_action( side_number side,
 	bool execute,
 	const std::string& unit_name,
 	const map_location& where );
@@ -316,7 +314,7 @@ static ai_recruit_result_ptr execute_recruit_action( unsigned int side,
  * @retval possible_result: something wrong
  * @retval possible_result: nothing to do
  */
-static ai_stopunit_result_ptr execute_stopunit_action( unsigned int side,
+static stopunit_result_ptr execute_stopunit_action( side_number side,
 	bool execute,
 	const map_location& unit_location,
 	bool remove_movement,
@@ -328,5 +326,12 @@ static ai_stopunit_result_ptr execute_stopunit_action( unsigned int side,
 
 //@todo 1.7 Add an ai action to set a goto on a unit
 //@todo 1.7 Add an ai action to send a chat message to a player
+
+} //end of namespace ai
+
+std::ostream &operator<<(std::ostream &s, ai::attack_result const &r);
+std::ostream &operator<<(std::ostream &s, ai::move_result const &r);
+std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
+std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
 
 #endif
