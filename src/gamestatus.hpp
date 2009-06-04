@@ -21,6 +21,7 @@
 #include "team.hpp"
 #include "time_of_day.hpp"
 #include "variable.hpp"
+#include "savegame_config.hpp"
 
 #include <time.h>
 #include <string>
@@ -30,6 +31,32 @@ class unit;
 class gamestatus; //needed to declare get_player_info (until game_state and gamestatus get merged)
 
 class scoped_wml_variable;
+
+//meta information of the game
+class game_classification : public savegame_config
+{
+public:
+	game_classification();
+
+	config to_config(); //dummy
+
+	std::string label;                               /**< Name of the game (e.g. name of save file). */
+	std::string parent;                              /**< Parent of the game (for save-threading purposes). */
+	std::string version;                             /**< Version game was created with. */
+	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
+	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
+	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
+
+	std::string campaign;                            /**< the campaign being played */
+	std::string history;                             /**< ancestral IDs */
+	std::string abbrev;                              /**< the campaign abbreviation */
+	std::string scenario;                            /**< the scenario being played */
+	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
+	std::string completion;                          /**< running. victory, or defeat */
+	std::string end_text;                            /**< end-of-campaign text */
+	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
+	std::string difficulty; /**< The difficulty level the game is being played on. */
+};
 
 struct wml_menu_item
 {

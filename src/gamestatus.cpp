@@ -48,6 +48,47 @@ static void write_player(const player_info& player, config& cfg);
 
 #endif /* _WIN32 */
 
+game_classification::game_classification():
+	label(),
+	parent(),
+	version(),
+	campaign_type(),
+	campaign_define(),
+	campaign_xtra_defines(),
+	campaign(),
+	history(),
+	abbrev(),
+	scenario(),
+	next_scenario(),
+	completion(),
+	end_text(),
+	end_text_duration(),
+	difficulty("NORMAL")
+	{}
+
+config game_classification::to_config()
+{
+	config cfg;
+
+	cfg["label"] = label;
+	cfg["parent"] = parent;
+	cfg["version"] = game_config::version;
+	cfg["campaign_type"] = campaign_type;
+	cfg["campaign_define"] = campaign_define;
+	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
+	cfg["campaign"] = campaign;
+	cfg["history"] = history;
+	cfg["abbrev"] = abbrev;
+	cfg["scenario"] = scenario;
+	cfg["next_scenario"] = next_scenario;
+	cfg["completion"] = completion;
+	cfg["end_text"] = end_text;
+	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+	cfg["difficulty"] = difficulty;
+
+	return cfg;
+}
+
 player_info::player_info() :
 	name(),
 	gold(-1) ,
