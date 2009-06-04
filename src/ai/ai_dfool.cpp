@@ -21,10 +21,13 @@
 #include "../log.hpp"
 #include "../formula_string_utils.hpp"
 
+namespace ai {
+
+namespace dfool {
+
 static lg::log_domain log_ai("ai/dfool");
 #define LOG_AI LOG_STREAM(info, log_ai)
 
-namespace dfool {
   void dfool_ai::play_turn(){
     int team_num = get_side();
     const config& parms = current_team().ai_parameters();
@@ -242,8 +245,8 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	map_location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
 	LOG_AI << "\tmoving to:(" << target.x << ',' << target.y << ")\n";
       if(m->second.movement_left()){
-	ai::moves_map possible_moves;
-	ai::move_map srcdst, dstsrc;
+	moves_map possible_moves;
+	move_map srcdst, dstsrc;
 	unit_map known_units;
 
 	//	unit_memory_.known_map(known_units, get_info().state.turn());
@@ -260,7 +263,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	std::pair<map_location,map_location> closest_move;
 
 	/** @todo 2.0 This undoubtedly could be done more cleanly */
-	for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
 	    const int distance = distance_between(target,i->first);
@@ -674,4 +677,6 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
     t<<distance;
     return(t.str());
   }
-} // end namespace dfool
+} // end of namespace dfool
+
+} // end of namespace ai

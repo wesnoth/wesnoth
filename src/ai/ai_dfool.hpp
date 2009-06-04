@@ -33,6 +33,8 @@
 #include <map>
 #include <string>
 
+namespace ai {
+
 namespace dfool {
   typedef std::vector<size_t> unit_list;
 
@@ -99,12 +101,12 @@ namespace dfool {
    * does not target units that it has not "seen",
    * and does not make decisions based on unseen units.
    */
-  class dfool_ai : public ai::readwrite_context_proxy, public ai::interface {
+  class dfool_ai : public default_ai_context_proxy, public interface {
   public:
-	dfool_ai(ai::readwrite_context &context)
-		: recursion_counter_(context.get_recursion_count()), unit_memory_(current_team().ai_memory())
+	dfool_ai(default_ai_context &context)
+		: recursion_counter_(context.get_recursion_count()), unit_memory_(context.current_team().ai_memory())
 	{
-		init_readwrite_context_proxy(context);
+		init_default_ai_context_proxy(context);
 	}
 	void play_turn();
 	virtual std::string describe_self();
@@ -112,11 +114,11 @@ namespace dfool {
 		return recursion_counter_.get_count();
 	}
   private:
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
     //    std::map<std::string,target> target_map_;
     unit_list all_units();
     unit_list visible_units();
-	void switch_side(ai::side_number /*side*/)
+	void switch_side(side_number /*side*/)
 	{}
     unit_list my_units();
     unit_list filter_units(const config& filter,unit_list& ul, unit_map& um);
@@ -127,6 +129,8 @@ namespace dfool {
 
   };
 
-} // end namespace dfool
+} // end of namespace dfool
+
+} // end of namespace ai
 
 #endif
