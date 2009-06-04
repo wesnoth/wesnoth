@@ -1203,11 +1203,15 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 				win_objectives += "\n";
 				win_objectives += win_start;
 				win_objectives += description;
+				// Note: this ending markup is not at the correct place; it
+				// should be placed before the first newline of the description
+				// in order to match the behavior of Wesnoth 1.6, 1.7.0, 1.7+lua.
 				win_objectives += win_end;
 			} else if(condition == "lose") {
 				lose_objectives += "\n";
 				lose_objectives += lose_start;
 				lose_objectives += description;
+				// Note: same here.
 				lose_objectives += lose_end;
 			} else {
 				ERR_NG << "unknown condition '" << condition << "', ignoring\n";
