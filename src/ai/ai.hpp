@@ -22,6 +22,7 @@
 #include "../actions.hpp"
 #include "ai_interface.hpp"
 #include "contexts.hpp"
+#include "default/contexts.hpp"
 #include "../formula_callable.hpp"
 
 class formula_ai;
@@ -38,12 +39,12 @@ private:
 	ai::recursion_counter recursion_counter_;
 };
 
-class ai_default : public virtual ai::readwrite_context_proxy, public ai_interface, public game_logic::formula_callable {
+class ai_default : public virtual ai::default_ai_context_proxy, public ai_interface, public game_logic::formula_callable {
 public:
 	typedef ai::move_map move_map;
 	typedef map_location location;//will get rid of this later
 
-	ai_default(ai::readwrite_context &context);
+	ai_default(ai::default_ai_context &context);
 	virtual ~ai_default();
 
 	virtual void play_turn();

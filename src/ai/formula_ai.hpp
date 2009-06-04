@@ -63,9 +63,9 @@ private:
 
 }
 
-class formula_ai : public ai_default, public virtual ai::readwrite_context_proxy {
+class formula_ai : public ai_default {
 public:
-	explicit formula_ai(ai::readwrite_context &context);
+	explicit formula_ai(ai::default_ai_context &context);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();

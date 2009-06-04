@@ -226,10 +226,21 @@ SET(wesnoth-main_SRC
     ai/ai_manager.cpp
     ai/ai_move.cpp
     ai/ai_village.cpp
+    ai/composite/ai.cpp
+    ai/composite/contexts.cpp
+    ai/composite/engine.cpp
+    ai/composite/engine_default.cpp
+    ai/composite/rca.cpp
+    ai/composite/stage.cpp
     ai/contexts.cpp
+    ai/default/contexts.cpp
     ai/formula_ai.cpp
     ai/formula_candidates.cpp
     ai/game_info.cpp
+    ai/registry.cpp
+    ai/testing/ca.cpp
+    ai/testing/stage_rca.cpp
+    ai/testing/stage_fallback.cpp
     ai/testing.cpp
     animated_game.cpp
     attack_prediction.cpp

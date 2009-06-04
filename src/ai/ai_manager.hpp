@@ -25,8 +25,9 @@
 
 #include "../global.hpp"
 #include "contexts.hpp"
-
 #include "game_info.hpp"
+#include "default/contexts.hpp"
+
 #include <map>
 #include <stack>
 #include <vector>
@@ -78,6 +79,7 @@ private:
 	ai::side_context *side_context_;
 	ai::readonly_context *readonly_context_;
 	ai::readwrite_context *readwrite_context_;
+	ai::default_ai_context *default_ai_context_;
 	std::string ai_algorithm_type_;
 	config ai_effective_parameters_;
 	config ai_global_parameters_;
@@ -130,6 +132,7 @@ public:
 	static const int AI_TEAM_FALLBACK_AI = -1;
 
 
+	static const std::string AI_TYPE_COMPOSITE_AI;
 	static const std::string AI_TYPE_SAMPLE_AI;
 	static const std::string AI_TYPE_IDLE_AI;
 	static const std::string AI_TYPE_FORMULA_AI;
@@ -269,7 +272,7 @@ public:
 	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai::readwrite_context *rw_context);
+	static ai_interface* create_transient_ai( const std::string& ai_algorithm_type, ai::default_ai_context *ai_context);
 
 
 	/**

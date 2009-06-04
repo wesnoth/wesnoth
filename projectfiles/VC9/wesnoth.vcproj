@@ -2738,9 +2738,65 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\ai\registry.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\ai\testing.cpp"
 					>
 				</File>
+				<Filter
+					Name="composite"
+					>
+					<File
+						RelativePath="..\..\src\ai\composite\ai.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\contexts.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\engine.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\engine_default.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\rca.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\stage.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="default"
+					>
+					<File
+						RelativePath="..\..\src\ai\default\contexts.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="testing"
+					>
+					<File
+						RelativePath="..\..\src\ai\testing\ca.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\testing\stage_rca.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\testing\stage_fallback.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
@@ -3577,9 +3633,65 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\ai\registry.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\ai\testing.hpp"
 					>
 				</File>
+				<Filter
+					Name="composite"
+					>
+					<File
+						RelativePath="..\..\src\ai\composite\ai.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\contexts.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\engine.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\engine_default.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\rca.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\stage.hpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="default"
+					>
+					<File
+						RelativePath="..\..\src\ai\default\contexts.hpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="testing"
+					>
+					<File
+						RelativePath="..\..\src\ai\testing\ca.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\testing\stage_rca.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\testing\stage_fallback.hpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter

@@ -1600,10 +1600,7 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 
 }
 
-formula_ai::formula_ai(ai::readwrite_context &context) :
-	side_context_proxy(context),
-	readonly_context_proxy(context),
-	readwrite_context_proxy(context),
+formula_ai::formula_ai(ai::default_ai_context &context) :
 	ai_default(context),
 	recursion_counter_(context.get_recursion_count()),
 	recruit_formula_(),

@@ -36,7 +36,6 @@
 
 #include <fstream>
 
-
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -46,8 +45,9 @@ static lg::log_domain log_ai("ai/general");
 typedef util::array<map_location,6> adjacent_tiles_array;
 
 
-idle_ai::idle_ai(ai::readwrite_context &context) : ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count())
+idle_ai::idle_ai(ai::readwrite_context &context) : recursion_counter_(context.get_recursion_count())
 {
+	init_readwrite_context_proxy(context);
 }
 
 std::string idle_ai::describe_self()
@@ -76,7 +76,9 @@ void idle_ai::play_turn()
 class sample_ai : public ai::readwrite_context_proxy, public ai_interface {
 public:
 	sample_ai(ai::readwrite_context &context)
-		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context), recursion_counter_(context.get_recursion_count()) {}
+		: recursion_counter_(context.get_recursion_count()) {
+		init_readwrite_context_proxy(context);
+	}
 
 	virtual void play_turn() {
 		game_events::fire("ai turn");
@@ -217,20 +219,17 @@ private:
 	ai::recursion_counter recursion_counter_;
 };
 
-ai_default::ai_default(ai::readwrite_context &context) :
-	ai::side_context_proxy(context),
-	ai::readonly_context_proxy(context),
-	ai::readwrite_context_proxy(context),
+ai_default::ai_default(ai::default_ai_context &context) :
 	game_logic::formula_callable(),
 	recursion_counter_(context.get_recursion_count()),
 	defensive_position_cache_(),
 	threats_found_(false),
 	attacks_(),
-	disp_(get_info().disp),
-	map_(get_info().map),
-	units_(get_info().units),
-	teams_(get_info().teams),
-	state_(get_info().state),
+	disp_(context.get_info().disp),
+	map_(context.get_info().map),
+	units_(context.get_info().units),
+	teams_(context.get_info().teams),
+	state_(context.get_info().state),
 	consider_combat_(true),
 	additional_targets_(),
 	unit_movement_scores_(),
@@ -241,9 +240,10 @@ ai_default::ai_default(ai::readwrite_context &context) :
 	unit_stats_cache_(),
 	attack_depth_(0),
 	recruiting_preferred_(0),
-	formula_ai_(NULL)
+	formula_ai_()
 {
 	add_ref();
+	init_default_ai_context_proxy(context);
 }
 
 ai_default::~ai_default(){

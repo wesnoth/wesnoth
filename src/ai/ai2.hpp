@@ -23,23 +23,29 @@
 #include "ai_interface.hpp"
 #include "contexts.hpp"
 
-class ai2 : public ai::readwrite_context_proxy, public ai_interface {
+namespace ai {
+
+class ai2 : public readwrite_context_proxy, public ai_interface {
 public:
-	ai2(ai::readwrite_context &context)
-		: ai::side_context_proxy(context), ai::readonly_context_proxy(context), ai::readwrite_context_proxy(context),recursion_counter_(context.get_recursion_count())
-	{}
+	ai2(readwrite_context &context)
+		: recursion_counter_(context.get_recursion_count())
+	{
+		init_readwrite_context_proxy(context);
+	}
 	virtual ~ai2() {}
 	virtual void play_turn() {}
-	virtual void switch_side(ai::side_number side){
+	virtual void switch_side(side_number side){
 		set_side(side);
 	}
 	int get_recursion_count() const{
 		return recursion_counter_.get_count();
 	}
 private:
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
 
 };
+
+} //of namespace ai
 
 #endif
 
