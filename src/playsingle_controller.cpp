@@ -67,15 +67,15 @@ playsingle_controller::playsingle_controller(const config& level,
 	}
 
 	ai_game_info ai_info(*gui_,map_,units_,teams_,status_, gamestate_);
-	ai_manager::set_ai_info(ai_info);
-	ai_manager::add_observer(this) ;
+	ai::manager::set_ai_info(ai_info);
+	ai::manager::add_observer(this) ;
 }
 
 
 playsingle_controller::~playsingle_controller()
 {
-	ai_manager::remove_observer(this) ;
-	ai_manager::clear_ais() ;
+	ai::manager::remove_observer(this) ;
+	ai::manager::clear_ais() ;
 }
 
 
@@ -836,7 +836,7 @@ void playsingle_controller::play_ai_turn(){
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
 
 	try {
-		ai_manager::play_turn(player_number_, this);
+		ai::manager::play_turn(player_number_, this);
 	} catch (end_turn_exception) {
 	}
 	recorder.end_turn();

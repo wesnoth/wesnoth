@@ -1483,7 +1483,7 @@ bool ai_default::do_recruitment()
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
 			if (formula_ai_ == NULL){
-				formula_ai_ = static_cast<formula_ai*>(ai_manager::create_transient_ai(ai_manager::AI_TYPE_FORMULA_AI, this));
+				formula_ai_ = static_cast<formula_ai*>(ai::manager::create_transient_ai(ai::manager::AI_TYPE_FORMULA_AI, this));
 			}
 
 			assert(formula_ai_ != NULL);

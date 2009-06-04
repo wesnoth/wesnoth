@@ -941,7 +941,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
-				ai_manager::add_ai_for_side_from_file(side_num,switch_ai,true);
+				ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
 			}
 			// Add shared view to current team
 			if (!share_view.empty()){

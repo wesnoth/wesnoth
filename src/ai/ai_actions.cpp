@@ -129,7 +129,7 @@ bool ai_action_result::is_execution() const
 
 ai_game_info& ai_action_result::get_info() const
 {
-	return ai_manager::get_active_ai_info_for_side(get_side());
+	return ai::manager::get_active_ai_info_for_side(get_side());
 }
 
 
@@ -540,7 +540,7 @@ void ai_recruit_result::do_execute()
 		get_my_team(info).spend_gold(u->second.cost());
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
-		ai_manager::raise_unit_recruited();
+		ai::manager::raise_unit_recruited();
 	} else {
 		set_error(AI_ACTION_FAILURE);
 	}

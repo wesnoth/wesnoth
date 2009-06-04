@@ -47,7 +47,7 @@ ai_composite::ai_composite( default_ai_context &context)
 
 void ai_composite::on_create()
 {
-	const config& ai_global_parameters = ai_manager::get_active_ai_global_parameters_for_side(get_side());
+	const config& ai_global_parameters = ai::manager::get_active_ai_global_parameters_for_side(get_side());
 	LOG_AI_COMPOSITE << "side "<< get_side() << " : "<<" created AI with ai_identifier=["<<
 		ai_global_parameters["ai_identifier"]<<"]"<<std::endl;
 

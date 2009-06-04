@@ -38,7 +38,7 @@ fallback_to_other_ai::fallback_to_other_ai( ai::composite_ai::composite_ai_conte
 
 void fallback_to_other_ai::on_create()
 {
-	fallback_ai_ = ai_manager::create_transient_ai(cfg_["fallback"], this);
+	fallback_ai_ = ai::manager::create_transient_ai(cfg_["fallback"], this);
 }
 
 void fallback_to_other_ai::do_play_stage()

@@ -3023,7 +3023,7 @@ private:
 		int side_num, mouse_handler& /*mousehandler*/)
 	{
 		try {
-			add_chat_message(time(NULL), _("ai"), 0, ai_manager::evaluate_command(side_num, str));
+			add_chat_message(time(NULL), _("ai"), 0, ai::manager::evaluate_command(side_num, str));
 		} catch(...) {
 			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}

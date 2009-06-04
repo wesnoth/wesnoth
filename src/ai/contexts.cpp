@@ -67,25 +67,25 @@ int readwrite_context_impl::get_recursion_count() const
 
 void readonly_context_impl::raise_user_interact() const
 {
-	ai_manager::raise_user_interact();
+	manager::raise_user_interact();
 }
 
 
 void readwrite_context_impl::raise_unit_recruited() const
 {
-	ai_manager::raise_unit_recruited();
+	manager::raise_unit_recruited();
 }
 
 
 void readwrite_context_impl::raise_unit_moved() const
 {
-	ai_manager::raise_unit_moved();
+	manager::raise_unit_moved();
 }
 
 
 void readwrite_context_impl::raise_enemy_attacked() const
 {
-	ai_manager::raise_enemy_attacked();
+	manager::raise_enemy_attacked();
 }
 
 
@@ -202,12 +202,12 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 
 
 const ai_game_info& readonly_context_impl::get_info() const{
-	return ai_manager::get_active_ai_info_for_side(get_side());
+	return manager::get_active_ai_info_for_side(get_side());
 }
 
 
 ai_game_info& readwrite_context_impl::get_info_w(){
-	return ai_manager::get_active_ai_info_for_side(get_side());
+	return manager::get_active_ai_info_for_side(get_side());
 }
 
 void readonly_context_impl::diagnostic(const std::string& msg)
