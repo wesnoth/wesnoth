@@ -36,15 +36,15 @@ class tod_manager : public savegame_config
 
 		/** Returns time of day object for current turn. */
 		time_of_day get_time_of_day() const;
-		time_of_day get_previous_time_of_day() const;
-		time_of_day get_time_of_day(int illuminated, const map_location& loc) const;
+		time_of_day get_previous_time_of_day(int current_turn) const;
+		time_of_day get_time_of_day(int illuminated, const map_location& loc, int current_turn) const;
 		/**
 		 * Returns time of day object in the turn.
 		 *
 		 * It first tries to look for specified. If no area time specified in
 		 * location, it returns global time.
 		 */
-		time_of_day get_time_of_day(int illuminated, const map_location& loc, int n_turn) const;
+		time_of_day get_time_of_day(int illuminated, const map_location& loc, int n_turn, int current_turn) const;
 		/**
 		 * Sets global time of day in this turn.
 		 * Time is a number between 0 and n-1, where n is number of ToDs.
@@ -84,14 +84,14 @@ class tod_manager : public savegame_config
 		void remove_time_area(const std::string& id);
 
 	private:
-		void set_start_ToD(config&, game_state*);
+		void set_start_ToD(config&, int current_turn, game_state*);
 
 		/**
 		 * Returns time of day object in the turn.
 		 *
 		 * Correct time is calculated from current time.
 		 */
-		time_of_day get_time_of_day_turn(int nturn) const;
+		time_of_day get_time_of_day_turn(int nturn, int current_turn) const;
 		void next_time_of_day();
 
 		struct area_time_of_day {
@@ -109,7 +109,6 @@ class tod_manager : public savegame_config
 			std::set<map_location> hexes;
 		};
 
-		size_t turn_; //track the current turn in order to determine the time for a specific turn
 		int currentTime_;
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;

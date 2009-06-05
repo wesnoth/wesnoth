@@ -19,20 +19,18 @@
 #include "gamestatus.hpp"
 
 tod_manager::tod_manager(const config& time_cfg):
-	turn_(1),
 	currentTime_(0)
 {
 	std::string turn_at = time_cfg["turn_at"];
-	std::string current_tod = time_cfg["current_tod"];
-	std::string random_start_time = time_cfg["random_start_time"];
 
+	int turn = 1;
 	if(turn_at.empty() == false) {
-		turn_ = atoi(turn_at.c_str());
+		turn = atoi(turn_at.c_str());
 	}
 
 	time_of_day::parse_times(time_cfg,times_);
 
-	set_start_ToD(const_cast<config&>(time_cfg),NULL);
+	set_start_ToD(const_cast<config&>(time_cfg), turn, NULL);
 
 	foreach (const config &t, time_cfg.child_range("time_area")) {
 		this->add_time_area(t);
@@ -82,14 +80,14 @@ bool tod_manager::set_time_of_day(int newTime)
 	return true;
 }
 
-time_of_day tod_manager::get_previous_time_of_day() const
+time_of_day tod_manager::get_previous_time_of_day(int current_turn) const
 {
-	return get_time_of_day_turn(turn_-1);
+	return get_time_of_day_turn(current_turn-1, current_turn);
 }
 
-time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc, int n_turn) const
+time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc, int n_turn, int current_turn) const
 {
-	time_of_day res = get_time_of_day_turn(n_turn);
+	time_of_day res = get_time_of_day_turn(n_turn, current_turn);
 
 	if(loc.valid()) {
 		for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
@@ -110,9 +108,9 @@ time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& lo
 	return res;
 }
 
-time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc) const
+time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc, int current_turn) const
 {
-	return get_time_of_day(illuminated,loc,turn_);
+	return get_time_of_day(illuminated,loc,current_turn);
 }
 
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
@@ -160,7 +158,7 @@ void tod_manager::remove_time_area(const std::string& area_id)
 	}
 }
 
-void tod_manager::set_start_ToD(config &level, game_state* s_o_g)
+void tod_manager::set_start_ToD(config &level, int current_turn, game_state* s_o_g)
 {
 	if (!level["current_tod"].empty())
 	{
@@ -191,7 +189,7 @@ void tod_manager::set_start_ToD(config &level, game_state* s_o_g)
 	{
 		// We have to set right ToD for oldsaves
 
-		set_time_of_day((turn_ - 1) % times_.size());
+		set_time_of_day((current_turn - 1) % times_.size());
 	}
 	// Setting ToD to level data
 
@@ -201,11 +199,11 @@ void tod_manager::set_start_ToD(config &level, game_state* s_o_g)
 
 }
 
-time_of_day tod_manager::get_time_of_day_turn(int nturn) const
+time_of_day tod_manager::get_time_of_day_turn(int nturn, int current_turn) const
 {
 	VALIDATE(times_.size(), _("No time of day has been defined."));
 
-	int time = (currentTime_ + nturn  - turn_)% times_.size();
+	int time = (currentTime_ + nturn  - current_turn)% times_.size();
 
 	if (time < 0)
 	{
