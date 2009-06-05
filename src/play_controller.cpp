@@ -846,7 +846,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newitems;
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
-				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
+				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (savegame_manager::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {
 						newsaves.push_back(name + ".gz");

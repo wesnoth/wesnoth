@@ -319,7 +319,7 @@ void playmp_controller::linger(upload_log& log)
 
 	// this is actually for after linger mode is over -- we don't want to
 	// stay stuck in linger state when the *next* scenario is over.
-	gamestate_.completion = "running";
+	gamestate_.classification().completion = "running";
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
 		u->second.set_user_end_turn(true);

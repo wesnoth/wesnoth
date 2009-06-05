@@ -2759,17 +2759,17 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 		const std::string next_scenario = cfg["next_scenario"];
 		if(next_scenario.empty() == false) {
-			state_of_game->next_scenario = next_scenario;
+			state_of_game->classification().next_scenario = next_scenario;
 		}
 
 		const std::string end_of_campaign_text = cfg["end_text"];
 		if(! end_of_campaign_text.empty()) {
-			state_of_game->end_text = end_of_campaign_text;
+			state_of_game->classification().end_text = end_of_campaign_text;
 		}
 		const std::string end_of_campaign_text_delay = cfg["end_text_duration"];
 		if(! end_of_campaign_text_delay.empty()) {
-			state_of_game->end_text_duration =
-				lexical_cast_default<unsigned int,const std::string&>(end_of_campaign_text_delay, state_of_game->end_text_duration);
+			state_of_game->classification().end_text_duration =
+				lexical_cast_default<unsigned int,const std::string&>(end_of_campaign_text_delay, state_of_game->classification().end_text_duration);
 		}
 
 		const std::string result = cfg["result"].base_str(); //do not translate

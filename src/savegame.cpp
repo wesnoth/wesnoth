@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2009 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2009 by Jï¿½rg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -375,14 +375,14 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
         }
 	}
 
-	gamestate_.difficulty = load_config_["difficulty"];
-	gamestate_.campaign_define = load_config_["campaign_define"];
-	gamestate_.campaign_type = load_config_["campaign_type"];
-	gamestate_.campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.version = load_config_["version"];
+	gamestate_.classification().difficulty = load_config_["difficulty"];
+	gamestate_.classification().campaign_define = load_config_["campaign_define"];
+	gamestate_.classification().campaign_type = load_config_["campaign_type"];
+	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
+	gamestate_.classification().version = load_config_["version"];
 
-	if(gamestate_.version != game_config::version) {
-		const version_info parsed_savegame_version(gamestate_.version);
+	if(gamestate_.classification().version != game_config::version) {
+		const version_info parsed_savegame_version(gamestate_.classification().version);
 		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
 		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
 		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
@@ -396,7 +396,7 @@ void loadgame::check_version_compatibility()
 {
 	// do not load if too old, if either the savegame or the current game
 	// has the version 'test' allow loading
-	if(!game_config::is_compatible_savegame_version(gamestate_.version)) {
+	if(!game_config::is_compatible_savegame_version(gamestate_.classification().version)) {
 		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
 		throw load_game_cancelled_exception();
 	}
@@ -449,7 +449,7 @@ void loadgame::load_multiplayer_game()
 		throw load_game_cancelled_exception();
 	}
 
-	if(gamestate_.campaign_type != "multiplayer") {
+	if(gamestate_.classification().campaign_type != "multiplayer") {
 		gui2::show_message(gui_.video(), "", _("This is not a multiplayer save"));
 		throw load_game_cancelled_exception();
 	}
@@ -620,11 +620,11 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		// use the grandparent name. When user loads a savegame,
 		// we load its correct parent link along with it.
 		if (filename_ == parent) {
-			gamestate_.parent = grandparent;
+			gamestate_.classification().parent = grandparent;
 		} else {
-			gamestate_.parent = parent;
+			gamestate_.classification().parent = parent;
 		}
-		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.parent << "\n";
+		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.classification().parent << "\n";
 
 		write_game_to_disk(filename_);
 
@@ -676,24 +676,24 @@ void savegame::write_game(config_writer &out) const
 {
 	log_scope("write_game");
 
-	out.write_key_val("label", gamestate_.label);
-	out.write_key_val("parent", gamestate_.parent);
-	out.write_key_val("history", gamestate_.history);
-	out.write_key_val("abbrev", gamestate_.abbrev);
+	out.write_key_val("label", gamestate_.classification().label);
+	out.write_key_val("parent", gamestate_.classification().parent);
+	out.write_key_val("history", gamestate_.classification().history);
+	out.write_key_val("abbrev", gamestate_.classification().abbrev);
 	out.write_key_val("version", game_config::version);
-	out.write_key_val("scenario", gamestate_.scenario);
-	out.write_key_val("next_scenario", gamestate_.next_scenario);
-	out.write_key_val("completion", gamestate_.completion);
-	out.write_key_val("campaign", gamestate_.campaign);
-	out.write_key_val("campaign_type", gamestate_.campaign_type);
-	out.write_key_val("difficulty", gamestate_.difficulty);
-	out.write_key_val("campaign_define", gamestate_.campaign_define);
-	out.write_key_val("campaign_extra_defines", utils::join(gamestate_.campaign_xtra_defines));
+	out.write_key_val("scenario", gamestate_.classification().scenario);
+	out.write_key_val("next_scenario", gamestate_.classification().next_scenario);
+	out.write_key_val("completion", gamestate_.classification().completion);
+	out.write_key_val("campaign", gamestate_.classification().campaign);
+	out.write_key_val("campaign_type", gamestate_.classification().campaign_type);
+	out.write_key_val("difficulty", gamestate_.classification().difficulty);
+	out.write_key_val("campaign_define", gamestate_.classification().campaign_define);
+	out.write_key_val("campaign_extra_defines", utils::join(gamestate_.classification().campaign_xtra_defines));
 	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate_.rng().get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate_.rng().get_random_calls()));
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
-	out.write_key_val("end_text", gamestate_.end_text);
-	out.write_key_val("end_text_duration", str_cast<unsigned int>(gamestate_.end_text_duration));
+	out.write_key_val("end_text", gamestate_.classification().end_text);
+	out.write_key_val("end_text_duration", str_cast<unsigned int>(gamestate_.classification().end_text_duration));
 	out.write_child("variables", gamestate_.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate_.wml_menu_items.begin();
@@ -725,7 +725,7 @@ void savegame::write_game(config_writer &out) const
 
 void savegame::finish_save_game(const config_writer &out)
 {
-	std::string name = gamestate_.label;
+	std::string name = gamestate_.classification().label;
 	replace_space2underbar(name);
 	std::string fname(get_saves_dir() + "/" + name);
 
@@ -734,7 +734,7 @@ void savegame::finish_save_game(const config_writer &out)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 
-		config& summary = save_index::save_summary(gamestate_.label);
+		config& summary = save_index::save_summary(gamestate_.classification().label);
 		extract_summary_data_from_save(summary);
 		const int mod_time = static_cast<int>(file_create_time(fname));
 		summary["mod_time"] = str_cast(mod_time);
@@ -765,13 +765,13 @@ void savegame::extract_summary_data_from_save(config& out)
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 
-	out["label"] = gamestate_.label;
-	out["parent"] = gamestate_.parent;
-	out["campaign"] = gamestate_.campaign;
-	out["campaign_type"] = gamestate_.campaign_type;
-	out["scenario"] = gamestate_.scenario;
-	out["difficulty"] = gamestate_.difficulty;
-	out["version"] = gamestate_.version;
+	out["label"] = gamestate_.classification().label;
+	out["parent"] = gamestate_.classification().parent;
+	out["campaign"] = gamestate_.classification().campaign;
+	out["campaign_type"] = gamestate_.classification().campaign_type;
+	out["scenario"] = gamestate_.classification().scenario;
+	out["difficulty"] = gamestate_.classification().difficulty;
+	out["version"] = gamestate_.classification().version;
 	out["corrupt"] = "";
 
 	if(has_snapshot) {
@@ -838,7 +838,7 @@ void savegame::extract_summary_data_from_save(config& out)
 scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const bool compress_saves)
 	: savegame(gamestate, compress_saves)
 {
-	set_filename(gamestate.label);
+	set_filename(gamestate.classification().label);
 }
 
 void scenariostart_savegame::before_save()
@@ -856,7 +856,7 @@ void replay_savegame::create_filename()
 {
 	std::stringstream stream;
 
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().label,
+	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
 			font::SIZE_NORMAL, 200);
 	stream << ellipsed_name << " " << _("replay");
 
@@ -885,10 +885,10 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 void autosave_savegame::create_filename()
 {
 	std::string filename;
-	if (gamestate().label.empty())
+	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().label + "-" + _("Auto-Save") + lexical_cast<std::string>(gamestatus_.turn());
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(gamestatus_.turn());
 
 	set_filename(filename);
 }
@@ -935,7 +935,7 @@ void game_savegame::create_filename()
 {
 	std::stringstream stream;
 
-	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().label,
+	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
 			font::SIZE_NORMAL, 200);
 	stream << ellipsed_name << " " << _("Turn") << " " << gamestatus_.turn();
 	set_filename(stream.str());

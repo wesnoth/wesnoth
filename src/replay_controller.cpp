@@ -63,7 +63,7 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.campaign_type == "multiplayer" ? 0 : 1),
+	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1),
 	skip_next_turn_(false)
 {
 	init();

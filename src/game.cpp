@@ -649,9 +649,9 @@ bool game_controller::play_test()
 
 	first_time = false;
 
-	state_.campaign_type = "test";
-	state_.scenario = test_scenario_;
-	state_.campaign_define = "TEST";
+	state_.classification().campaign_type = "test";
+	state_.classification().scenario = test_scenario_;
+	state_.classification().campaign_define = "TEST";
 	cache_.clear_defines();
 	cache_.add_define("TEST");
 
@@ -752,8 +752,8 @@ bool game_controller::play_multiplayer_mode()
 		return false;
 	}
 
-	state_.campaign_type = "multiplayer";
-	state_.scenario = "";
+	state_.classification().campaign_type = "multiplayer";
+	state_.classification().scenario = "";
 	state_.snapshot = config();
 
 	config level = lvl;
@@ -895,15 +895,15 @@ bool game_controller::load_game()
 		load.load_game(loaded_game_, loaded_game_show_replay_, loaded_game_cancel_orders_);
 
 		cache_.clear_defines();
-		game_config::scoped_preproc_define dificulty_def(state_.difficulty);
+		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
 
-		game_config::scoped_preproc_define campaign_define_def(state_.campaign_define, !state_.campaign_define.empty());
+		game_config::scoped_preproc_define campaign_define_def(state_.classification().campaign_define, !state_.classification().campaign_define.empty());
 
-		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", state_.campaign_define.empty() && (state_.campaign_type == "multiplayer"));
+		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", state_.classification().campaign_define.empty() && (state_.classification().campaign_type == "multiplayer"));
 
 		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
 		std::deque<define_ptr> extra_defines;
-		for(std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin(); i != state_.campaign_xtra_defines.end(); ++i) {
+		for(std::vector<std::string>::const_iterator i = state_.classification().campaign_xtra_defines.begin(); i != state_.classification().campaign_xtra_defines.end(); ++i) {
 			define_ptr newdefine(new game_config::scoped_preproc_define(*i));
 			extra_defines.push_back(newdefine);
 		}
@@ -974,7 +974,7 @@ bool game_controller::load_game()
 		}
 	}
 
-	if(state_.campaign_type == "multiplayer") {
+	if(state_.classification().campaign_type == "multiplayer") {
 		foreach (config &side, state_.snapshot.child_range("side"))
 		{
 			if (side["controller"] == "network")
@@ -1002,9 +1002,9 @@ bool game_controller::load_game()
 void game_controller::set_tutorial()
 {
 	state_ = game_state();
-	state_.campaign_type = "tutorial";
-	state_.scenario = "tutorial";
-	state_.campaign_define = "TUTORIAL";
+	state_.classification().campaign_type = "tutorial";
+	state_.classification().scenario = "tutorial";
+	state_.classification().campaign_define = "TUTORIAL";
 	cache_.clear_defines();
 	cache_.add_define("TUTORIAL");
 
@@ -1013,7 +1013,7 @@ void game_controller::set_tutorial()
 bool game_controller::new_campaign()
 {
 	state_ = game_state();
-	state_.campaign_type = "scenario";
+	state_.classification().campaign_type = "scenario";
 
 	const config::const_child_itors &ci = game_config_.child_range("campaign");
 	std::vector<config> campaigns(ci.first, ci.second);
@@ -1094,11 +1094,11 @@ bool game_controller::new_campaign()
 
 	const config &campaign = campaigns[campaign_num];
 
-	state_.campaign = campaign["id"];
-	state_.abbrev = campaign["abbrev"];
-	state_.scenario = campaign["first_scenario"];
-	state_.end_text = campaign["end_text"];
-	state_.end_text_duration = lexical_cast_default<unsigned int>(campaign["end_text_duration"]);
+	state_.classification().campaign = campaign["id"];
+	state_.classification().abbrev = campaign["abbrev"];
+	state_.classification().scenario = campaign["first_scenario"];
+	state_.classification().end_text = campaign["end_text"];
+	state_.classification().end_text_duration = lexical_cast_default<unsigned int>(campaign["end_text_duration"]);
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
 	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
@@ -1119,13 +1119,13 @@ bool game_controller::new_campaign()
 			return new_campaign();
 		}
 
-		state_.difficulty = difficulties[dlg.result()];
+		state_.classification().difficulty = difficulties[dlg.result()];
 		cache_.clear_defines();
 		cache_.add_define(difficulties[dlg.result()]);
 	}
 
-	state_.campaign_define = campaign["define"];
-	state_.campaign_xtra_defines = utils::split(campaign["extra_defines"]);
+	state_.classification().campaign_define = campaign["define"];
+	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
 
 	return true;
 }
@@ -1224,8 +1224,8 @@ bool game_controller::play_multiplayer()
 	int res;
 
 	state_ = game_state();
-	state_.campaign_type = "multiplayer";
-	state_.campaign_define = "MULTIPLAYER";
+	state_.classification().campaign_type = "multiplayer";
+	state_.classification().campaign_define = "MULTIPLAYER";
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
@@ -1292,7 +1292,7 @@ bool game_controller::play_multiplayer()
 
 		/* do */ {
 			cache_.clear_defines();
-			game_config::scoped_preproc_define multiplayer(state_.campaign_define);
+			game_config::scoped_preproc_define multiplayer(state_.classification().campaign_define);
 			load_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
@@ -1547,11 +1547,11 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
 	if(reload == RELOAD_DATA) {
-		game_config::scoped_preproc_define campaign_define(state_.campaign_define, state_.campaign_define.empty() == false);
+		game_config::scoped_preproc_define campaign_define(state_.classification().campaign_define, state_.classification().campaign_define.empty() == false);
 
 		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
 		std::deque<define_ptr> extra_defines;
-		for(std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin(); i != state_.campaign_xtra_defines.end(); ++i) {
+		for(std::vector<std::string>::const_iterator i = state_.classification().campaign_xtra_defines.begin(); i != state_.classification().campaign_xtra_defines.end(); ++i) {
 			define_ptr newdefine(new game_config::scoped_preproc_define(*i));
 			extra_defines.push_back(newdefine);
 		}
@@ -1570,16 +1570,16 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 
 	try {
 		// Only record log for single-player games & tutorial.
-		upload_log log(state_.campaign_type.empty()
-					   || state_.campaign_type == "scenario"
-					   || state_.campaign_type == "tutorial");
+		upload_log log(state_.classification().campaign_type.empty()
+					   || state_.classification().campaign_type == "scenario"
+					   || state_.classification().campaign_type == "tutorial");
 
 		const LEVEL_RESULT result = play_game(disp(),state_,game_config_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
-		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
-			the_end(disp(), state_.end_text, state_.end_text_duration);
-			about::show_about(disp(),state_.campaign);
+		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
+			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
+			about::show_about(disp(),state_.classification().campaign);
 		}
 		if (result == QUIT)
 		{

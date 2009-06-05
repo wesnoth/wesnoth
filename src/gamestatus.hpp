@@ -98,23 +98,6 @@ public:
 
 	~game_state();
 	game_state& operator=(const game_state& state);
-	std::string label;                               /**< Name of the game (e.g. name of save file). */
-	std::string parent;                              /**< Parent of the game (for save-threading purposes). */
-	std::string version;                             /**< Version game was created with. */
-	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
-
-	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
-	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
-
-	std::string campaign;                            /**< the campaign being played */
-	std::string history;                             /**< ancestral IDs */
-	std::string abbrev;                              /**< the campaign abbreviation */
-	std::string scenario;                            /**< the scenario being played */
-	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
-	std::string completion;                          /**< running. victory, or defeat */
-	std::string end_text;                            /**< end-of-campaign text */
-
-	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 
 	/**
 	 * Information about campaign players who carry resources from previous
@@ -164,9 +147,8 @@ public:
 
 	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot);
 
-	game_classification classification() {return classification_;}
-
-	std::string difficulty; /**< The difficulty level the game is being played on. */
+	game_classification& classification() { return classification_; }
+	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
 
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps

@@ -66,7 +66,7 @@ typedef std::map<std::string, player_controller> controller_map;
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video)
 {
-	std::string type = gamestate.campaign_type;
+	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
 		type = "scenario";
 
@@ -75,7 +75,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	if (gamestate.starting_pos.empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
-		const config &scenario = game_config.find_child(type,"id",gamestate.scenario);
+		const config &scenario = game_config.find_child(type,"id",gamestate.classification().scenario);
 		assert(scenario);
 		gamestate.starting_pos = scenario;
 	}
@@ -83,8 +83,8 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	try {
 		// Preserve old label eg. replay
-		if (gamestate.label.empty())
-			gamestate.label = starting_pos["name"];
+		if (gamestate.classification().label.empty())
+			gamestate.classification().label = starting_pos["name"];
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
@@ -198,7 +198,7 @@ static void preload_lua_tags(const config &game_config, config &target)
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
 		upload_log &log, io_type_t io_type, bool skip_replay)
 {
-	std::string type = gamestate.campaign_type;
+	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
 		type = "scenario";
 
@@ -211,7 +211,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
-		gamestate.completion = "running";
+		gamestate.classification().completion = "running";
 		// Campaign or Multiplayer?
 		// If the gamestate already contains a starting_pos,
 		// then we are starting a fresh multiplayer game.
@@ -222,8 +222,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			starting_pos = gamestate.starting_pos;
 			scenario = &starting_pos;
 		} else {
-			LOG_G << "loading scenario: '" << gamestate.scenario << "'\n";
-			scenario = &game_config.find_child(type, "id", gamestate.scenario);
+			LOG_G << "loading scenario: '" << gamestate.classification().scenario << "'\n";
+			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
 			if (*scenario) {
 				starting_pos = *scenario;
 				preload_lua_tags(game_config, starting_pos);
@@ -246,7 +246,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.set_menu_items(gamestate.snapshot.child_range("menu_item"));
 		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
-			gamestate.label = gamestate.snapshot["label"];
+			gamestate.classification().label = gamestate.snapshot["label"];
 		}
 
 		// Get the current gold values of players, so they don't start
@@ -308,7 +308,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		config::const_child_itors story = scenario->child_range("story");
-		gamestate.next_scenario = (*scenario)["next_scenario"];
+		gamestate.classification().next_scenario = (*scenario)["next_scenario"];
 
 		bool save_game_after_scenario = true;
 
@@ -317,13 +317,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		try {
 			// Preserve old label eg. replay
-			if (gamestate.label.empty()) {
-				if (gamestate.abbrev.empty())
-					gamestate.label = (*scenario)["name"];
+			if (gamestate.classification().label.empty()) {
+				if (gamestate.classification().abbrev.empty())
+					gamestate.classification().label = (*scenario)["name"];
 				else {
-					gamestate.label = std::string(gamestate.abbrev);
-					gamestate.label.append("-");
-					gamestate.label.append((*scenario)["name"]);
+					gamestate.classification().label = std::string(gamestate.classification().abbrev);
+					gamestate.classification().label.append("-");
+					gamestate.classification().label.append((*scenario)["name"]);
 				}
 			}
 
@@ -400,7 +400,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// need to change this test.
 		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
 			if (preferences::delete_saves())
-				savegame_manager::clean_saves(gamestate.label);
+				savegame_manager::clean_saves(gamestate.classification().label);
 
 			if (preferences::save_replays()) {
 				replay_savegame save(gamestate, preferences::compress_saves());
@@ -414,7 +414,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 		if (res != VICTORY)
 		{
-			if (res != OBSERVER_END || gamestate.next_scenario.empty())
+			if (res != OBSERVER_END || gamestate.classification().next_scenario.empty())
 				return res;
 
 			const int dlg_res = gui::dialog(disp,"Game Over",
@@ -430,11 +430,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			save_game_after_scenario = false;
 
 		// Switch to the next scenario.
-		gamestate.scenario = gamestate.next_scenario;
+		gamestate.classification().scenario = gamestate.classification().next_scenario;
 		gamestate.rng().rotate_random();
 
 		if(io_type == IO_CLIENT) {
-			if (gamestate.next_scenario.empty()) return res;
+			if (gamestate.classification().next_scenario.empty()) return res;
 
 			// Ask for the next scenario data.
 			network::send_data(config("load_next_scenario"), 0, true);
@@ -455,7 +455,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				return QUIT;
 			}
 		} else {
-			scenario = &game_config.find_child(type, "id", gamestate.scenario);
+			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
 			if (!*scenario)
 				scenario = NULL;
 			else
@@ -536,13 +536,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		if(scenario != NULL) {
 			// Update the label
-			std::string oldlabel = gamestate.label;
-			if (gamestate.abbrev.empty())
-				gamestate.label = (*scenario)["name"];
+			std::string oldlabel = gamestate.classification().label;
+			if (gamestate.classification().abbrev.empty())
+				gamestate.classification().label = (*scenario)["name"];
 			else {
-				gamestate.label = std::string(gamestate.abbrev);
-				gamestate.label.append("-");
-				gamestate.label.append((*scenario)["name"]);
+				gamestate.classification().label = std::string(gamestate.classification().abbrev);
+				gamestate.classification().label.append("-");
+				gamestate.classification().label.append((*scenario)["name"]);
 			}
 
 			// If this isn't the last scenario, then save the game
@@ -554,7 +554,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// start-of-scenario save and the
 				// starting position needs to be empty,
 				// to force a reload of the scenario config.
-				if (gamestate.campaign_type == "multiplayer"){
+				if (gamestate.classification().campaign_type == "multiplayer"){
 					gamestate.starting_pos = *scenario;
 				}
 				else{
@@ -577,25 +577,25 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 #endif /* TINY_GUI */
 			}
 
-			if (gamestate.campaign_type != "multiplayer"){
+			if (gamestate.classification().campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
 				write_players(gamestate, gamestate.starting_pos);
 			}
 		}
 	}
 
-	if (!gamestate.scenario.empty() && gamestate.scenario != "null") {
+	if (!gamestate.classification().scenario.empty() && gamestate.classification().scenario != "null") {
 		std::string message = _("Unknown scenario: '$scenario|'");
 		utils::string_map symbols;
-		symbols["scenario"] = gamestate.scenario;
+		symbols["scenario"] = gamestate.classification().scenario;
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_error_message(disp.video(), message);
 		return QUIT;
 	}
 
-	if (gamestate.campaign_type == "scenario"){
+	if (gamestate.classification().campaign_type == "scenario"){
 		if (preferences::delete_saves())
-			savegame_manager::clean_saves(gamestate.label);
+			savegame_manager::clean_saves(gamestate.classification().label);
 	}
 	return VICTORY;
 }

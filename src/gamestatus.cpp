@@ -426,24 +426,9 @@ static player_info read_player(const config &cfg)
 }
 
 game_state::game_state()  :
-		label(),
-		parent(),
-		version(),
-		campaign_type(),
-		campaign_define(),
-		campaign_xtra_defines(),
-		campaign(),
-		history(),
-		abbrev(),
-		scenario(),
-		next_scenario(),
-		completion(),
-		end_text(),
-		end_text_duration(),
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
-		difficulty("NORMAL"),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
@@ -505,24 +490,9 @@ void write_players(game_state& gamestate, config& cfg)
 }
 
 game_state::game_state(const config& cfg, bool show_replay) :
-		label(cfg["label"]),
-		parent(cfg["parent"]),
-		version(cfg["version"]),
-		campaign_type(cfg["campaign_type"]),
-		campaign_define(cfg["campaign_define"]),
-		campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
-		campaign(cfg["campaign"]),
-		history(cfg["history"]),
-		abbrev(cfg["abbrev"]),
-		scenario(cfg["scenario"]),
-		next_scenario(cfg["next_scenario"]),
-		completion(cfg["completion"]),
-		end_text(cfg["end_text"]),
-		end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
-		difficulty(cfg["difficulty"]),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
@@ -563,16 +533,14 @@ game_state::game_state(const config& cfg, bool show_replay) :
 			load_recall_list(cfg_players);
 	}
 
-	LOG_NG << "scenario: '" << scenario << "'\n";
-	LOG_NG << "next_scenario: '" << next_scenario << "'\n";
+	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
+	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
 
-	if(difficulty.empty()) {
-		difficulty = "NORMAL";
+	if(classification_.difficulty.empty()) {
 		classification_.difficulty = "NORMAL";
 	}
 
-	if(campaign_type.empty()) {
-		campaign_type = "scenario";
+	if(classification_.campaign_type.empty()) {
 		classification_.campaign_type = "scenario";
 	}
 
@@ -610,29 +578,29 @@ game_state::game_state(const config& cfg, bool show_replay) :
 void game_state::write_snapshot(config& cfg) const
 {
 	log_scope("write_game");
-	cfg["label"] = label;
-	cfg["history"] = history;
-	cfg["abbrev"] = abbrev;
+	cfg["label"] = classification_.label;
+	cfg["history"] = classification_.history;
+	cfg["abbrev"] = classification_.abbrev;
 	cfg["version"] = game_config::version;
 
-	cfg["scenario"] = scenario;
-	cfg["next_scenario"] = next_scenario;
+	cfg["scenario"] = classification_.scenario;
+	cfg["next_scenario"] = classification_.next_scenario;
 
-	cfg["completion"] = completion;
+	cfg["completion"] = classification_.completion;
 
-	cfg["campaign"] = campaign;
-	cfg["campaign_type"] = campaign_type;
-	cfg["difficulty"] = difficulty;
+	cfg["campaign"] = classification_.campaign;
+	cfg["campaign_type"] = classification_.campaign_type;
+	cfg["difficulty"] = classification_.difficulty;
 
-	cfg["campaign_define"] = campaign_define;
-	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
+	cfg["campaign_define"] = classification_.campaign_define;
+	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
 	cfg["next_underlying_unit_id"] = lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id());
 
 	cfg["random_seed"] = lexical_cast<std::string>(rng_.get_random_seed());
 	cfg["random_calls"] = lexical_cast<std::string>(rng_.get_random_calls());
 
-	cfg["end_text"] = end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+	cfg["end_text"] = classification_.end_text;
+	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
 
 	cfg.add_child("variables", variables);
 
@@ -828,24 +796,9 @@ static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 game_state::game_state(const game_state& state) :
 	/* default construct everything to silence compiler warnings. */
 	variable_set(),
-	label(),
-	parent(),
-	version(),
-	campaign_type(),
-	campaign_define(),
-	campaign_xtra_defines(),
-	campaign(),
-	history(),
-	abbrev(),
-	scenario(),
-	next_scenario(),
-	completion(),
-	end_text(),
-	end_text_duration(),
 	players(),
 	scoped_variables(),
 	wml_menu_items(),
-	difficulty(),
 	replay_data(),
 	starting_pos(),
 	snapshot(),
@@ -865,19 +818,6 @@ game_state& game_state::operator=(const game_state& state)
 		return *this;
 	}
 
-	history = state.history;
-	abbrev = state.abbrev;
-	label = state.label;
-	parent = state.parent;
-	version = state.version;
-	campaign_type = state.campaign_type;
-	campaign_define = state.campaign_define;
-	campaign_xtra_defines = state.campaign_xtra_defines;
-	campaign = state.campaign;
-	scenario = state.scenario;
-	completion = state.completion;
-	end_text = state.end_text;
-	end_text_duration = state.end_text_duration;
 	rng_ = state.rng_;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
@@ -890,7 +830,6 @@ game_state& game_state::operator=(const game_state& state)
 		mref = new wml_menu_item(*(itor->second));
 	}
 
-	difficulty = state.difficulty;
 	replay_data = state.replay_data;
 	starting_pos = state.starting_pos;
 	snapshot = state.snapshot;

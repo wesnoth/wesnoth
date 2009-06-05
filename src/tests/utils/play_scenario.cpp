@@ -111,8 +111,8 @@ namespace test_utils {
 
 		upload_log no_upload(false);
 		game_state& state = end->get_state();
-		state.campaign_type = "test";
-		state.scenario = id_;
+		state.classification().campaign_type = "test";
+		state.classification().scenario = id_;
 		play_game(get_fake_display(1024, 768), state, game_config_, no_upload);
 	}
 

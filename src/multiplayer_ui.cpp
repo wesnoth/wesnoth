@@ -118,9 +118,9 @@ void level_to_gamestate(config& level, game_state& state)
 	state.starting_pos = level.child("replay_start");
 
 	level["campaign_type"] = "multiplayer";
-	state.campaign_type = "multiplayer";
-	state.completion = level["completion"];
-	state.version = level["version"];
+	state.classification().campaign_type = "multiplayer";
+	state.classification().completion = level["completion"];
+	state.classification().version = level["version"];
 
 	if (const config &vars = level.child("variables")) {
 		state.set_variables(vars);

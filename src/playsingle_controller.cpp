@@ -60,7 +60,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	defeat_music_()
 {
 	// game may need to start in linger mode
-	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
+	if (state_of_game.classification().completion == "victory" || state_of_game.classification().completion == "defeat")
 	{
 		LOG_NG << "Setting linger mode.\n";
 		browse_ = linger_ = true;
@@ -356,7 +356,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			exit(0);
 		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
-			gamestate_.completion = (end_level.result == VICTORY) ? "victory" : "defeat";
+			gamestate_.classification().completion = (end_level.result == VICTORY) ? "victory" : "defeat";
 			// If we're a player, and the result is victory/defeat, then send
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
@@ -364,7 +364,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				config& info = cfg.add_child("info");
 				info["type"] = "termination";
 				info["condition"] = "game over";
-				info["result"] = gamestate_.completion;
+				info["result"] = gamestate_.classification().completion;
 				network::send_data(cfg, 0, true);
 			} else {
 				gui2::show_transient_message(gui_->video(),_("Game Over"),
@@ -377,7 +377,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			log.quit(status_.turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
-			gamestate_.completion = "defeat";
+			gamestate_.classification().completion = "defeat";
 			log.defeat(status_.turn());
 			try {
 				game_events::fire("defeat");
@@ -396,7 +396,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 		} else if (end_level.result == VICTORY)
 		{
-			gamestate_.completion = (!end_level.linger_mode ?
+			gamestate_.classification().completion = (!end_level.linger_mode ?
 			                         "running" : "victory");
 			try {
 				game_events::fire("victory");
@@ -420,8 +420,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			if (first_human_team_ != -1)
 				log.victory(status_.turn(), teams_[first_human_team_].gold());
 
-			const bool has_next_scenario = !gamestate_.next_scenario.empty() &&
-											gamestate_.next_scenario != "null";
+			const bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
+											gamestate_.classification().next_scenario != "null";
 
 			// Save current_player name to reuse it when setting next_scenario side info
 			std::vector<team>::iterator i;
@@ -455,7 +455,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 			if (gamestate_.players.size() > 0 &&
 					 (has_next_scenario ||
-					 gamestate_.campaign_type == "test")) {
+					 gamestate_.classification().campaign_type == "test")) {
 				const int finishing_bonus_per_turn =
 						 map_.villages().size() * game_config::village_income +
 						 game_config::base_income;
@@ -739,7 +739,7 @@ struct set_completion
 	}
 	~set_completion()
 	{
-		state_.completion = completion_;
+		state_.classification().completion = completion_;
 	}
 	private:
 	game_state& state_;

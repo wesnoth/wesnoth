@@ -418,7 +418,7 @@ private:
 					leader_bools.push_back(false);
 					leader_name = "Unknown";
 				}
-			if (gamestate_.campaign_type == "multiplayer")
+			if (gamestate_.classification().campaign_type == "multiplayer")
 		       		leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
@@ -2812,7 +2812,7 @@ private:
 	}
 	void console_handler::do_next_level() {
 		if (!get_data().empty())
-			menu_handler_.gamestate_.next_scenario = get_data();
+			menu_handler_.gamestate_.classification().next_scenario = get_data();
 		throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
 	}
 	void console_handler::do_choose_level() {
@@ -2822,7 +2822,7 @@ private:
 		{
 			const std::string &id = sc["id"];
 			options.push_back(id);
-			if (id == menu_handler_.gamestate_.next_scenario)
+			if (id == menu_handler_.gamestate_.classification().next_scenario)
 				next = nb;
 			++nb;
 		}
@@ -2835,7 +2835,7 @@ private:
 		}
 
 		if (size_t(choice) < options.size()) {
-			menu_handler_.gamestate_.next_scenario = options[choice];
+			menu_handler_.gamestate_.classification().next_scenario = options[choice];
 			throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
 		}
 	}

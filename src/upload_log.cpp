@@ -243,11 +243,11 @@ void upload_log::start(game_state &state, const team &team,
 	delete game_;
 	game_ = new config();
 	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
-	(*game_)["campaign"] = state.campaign_define;
-	(*game_)["difficulty"] = state.difficulty;
-	(*game_)["scenario"] = state.scenario;
-	if (!state.version.empty())
-		(*game_)["version"] = state.version;
+	(*game_)["campaign"] = state.classification().campaign_define;
+	(*game_)["difficulty"] = state.classification().difficulty;
+	(*game_)["scenario"] = state.classification().scenario;
+	if (!state.classification().version.empty())
+		(*game_)["version"] = state.classification().version;
 	if (!turn.empty())
 		(*game_)["start_turn"] = turn;
 	(*game_)["gold"] = lexical_cast<std::string>(team.gold());
