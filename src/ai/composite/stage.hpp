@@ -79,7 +79,6 @@ protected:
 
 
 class idle_stage : public stage {
-
 	idle_stage( composite_ai_context &context, const config &cfg );
 
 	~idle_stage();
@@ -111,6 +110,8 @@ public:
 		factory_ptr ptr_to_this(this);
 		get_list().insert(make_pair(name,ptr_to_this));
 	}
+
+	virtual ~stage_factory() {}
 };
 
 

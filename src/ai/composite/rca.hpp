@@ -162,6 +162,8 @@ public:
 		factory_ptr ptr_to_this(this);
 		get_list().insert(make_pair(name,ptr_to_this));
 	}
+
+	virtual ~candidate_action_factory() {}
 };
 
 
