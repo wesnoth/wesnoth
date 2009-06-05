@@ -140,7 +140,7 @@ if(X11_FOUND)
   add_definitions(-D_X11)
 endif(X11_FOUND)
 
-add_definitions(-DHAS_RELATIVE_LOCALEDIR)
+add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
 add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 
