@@ -84,6 +84,39 @@ game_classification::game_classification(const config& cfg):
 	difficulty(cfg["difficulty"])
 	{}
 
+game_classification::game_classification(const game_classification& gc):
+	label(),
+	parent(),
+	version(),
+	campaign_type(),
+	campaign_define(),
+	campaign_xtra_defines(),
+	campaign(),
+	history(),
+	abbrev(),
+	scenario(),
+	next_scenario(),
+	completion(),
+	end_text(),
+	end_text_duration(),
+	difficulty("NORMAL")
+{
+	label = gc.label;
+	parent = gc.parent;
+	version = gc.version;
+	campaign_type = gc.campaign_type;
+	campaign_define = gc.campaign_define;
+	campaign_xtra_defines = gc.campaign_xtra_defines;
+	campaign = gc.campaign;
+	history = gc.history;
+	abbrev = gc.abbrev;
+	scenario = gc.scenario;
+	completion = gc.completion;
+	end_text = gc.end_text;
+	end_text_duration = gc.end_text_duration;
+	difficulty = gc.difficulty;
+}
+
 config game_classification::to_config()
 {
 	config cfg;
@@ -821,7 +854,7 @@ game_state& game_state::operator=(const game_state& state)
 	rng_ = state.rng_;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
-	classification_ = state.classification_;
+	classification_ = game_classification(state.classification());
 
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;

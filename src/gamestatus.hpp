@@ -38,6 +38,7 @@ class game_classification : public savegame_config
 public:
 	game_classification();
 	game_classification(const config& cfg);
+	game_classification(const game_classification& gc);
 
 	config to_config(); //dummy
 
