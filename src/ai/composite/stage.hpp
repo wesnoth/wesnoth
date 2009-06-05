@@ -79,6 +79,7 @@ protected:
 
 
 class idle_stage : public stage {
+public:
 	idle_stage( composite_ai_context &context, const config &cfg );
 
 	~idle_stage();
