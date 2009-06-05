@@ -11,11 +11,6 @@ MACRO (ADD_POT_TARGET DOMAIN)
                     COMMAND ${CMAKE_BINARY_DIR}/po/pot-update.sh ${DOMAIN}
                     DEPENDS remove-potcdate.sed
                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-#  add_custom_command(OUTPUT ${POTFILE}
-#                    COMMAND ${CMAKE_SOURCE_DIR}/po/pot-update.sh ${DOMAIN}
-#                    DEPENDS remove-potcdate.sed
-#                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-#  add_custom_target(update-pot-${DOMAIN} DEPENDS ${POTFILE})
 
   set_source_files_properties(${POTFILE} PROPERTIES GENERATED TRUE)
   add_dependencies(update-pot update-pot-${DOMAIN})
@@ -59,23 +54,9 @@ if(GETTEXT_MSGFMT_EXECUTABLE)
 
   foreach(LANG ${LINGUAS})
     set(POFILE ${LANG}.po)
-    set(MOFILE ${CMAKE_CURRENT_BINARY_DIR}/${LANG}.gmo)
     set_source_files_properties(${POFILE} PROPERTIES GENERATED TRUE)
 
-    add_custom_command(OUTPUT ${MOFILE} 
-                       COMMAND ${GETTEXT_MSGFMT_EXECUTABLE}
-                       ARGS -c -o ${MOFILE} ${POFILE} 
-                       MAIN_DEPENDENCY ${POFILE}
-                       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-
-    install(FILES ${MOFILE} DESTINATION ${LOCALE_INSTALL}/${LANG}/LC_MESSAGES/ RENAME ${DOMAIN}.mo)
-
-    set(MOFILES ${MOFILES} ${MOFILE})
-
   endforeach(LANG ${LINGUAS})
-
-  add_custom_target(update-gmo-${DOMAIN} ALL DEPENDS ${MOFILES})
-  add_dependencies(update-gmo update-gmo-${DOMAIN})
 
 endif(GETTEXT_MSGFMT_EXECUTABLE)
 ENDMACRO (ADD_MO_TARGETS DOMAIN)

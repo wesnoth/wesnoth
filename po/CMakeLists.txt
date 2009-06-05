@@ -6,7 +6,6 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh.in ${CMAKE_CURRENT_BINA
 add_custom_target(update-po4a)
 add_custom_target(update-pot)
 add_custom_target(update-po)
-add_custom_target(update-gmo)
 
 set(TRANSLATION_DIRS
     wesnoth
@@ -335,6 +334,9 @@ if(ENABLE_NLS)
 				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
 				COMMENT "mo-update [${DOMAIN}-${LANG}]: Creating mo file."
 			)
+
+			install(FILES ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+					DESTINATION ${LOCALE_INSTALL}/${LANG}/LC_MESSAGES)
 
 			set(mo-update-SRC ${mo-update-SRC} 
 				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
