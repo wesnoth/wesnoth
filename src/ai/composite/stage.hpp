@@ -88,8 +88,6 @@ public:
 };
 
 
-class stage_factory;
-
 class stage_factory{
 public:
 	typedef boost::shared_ptr< stage_factory > factory_ptr;
