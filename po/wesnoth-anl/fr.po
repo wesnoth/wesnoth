@@ -12,15 +12,14 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-10 19:45+0200\n"
-"PO-Revision-Date: 2009-05-09 20:40+0200\n"
-"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
+"PO-Revision-Date: 2009-06-04 20:32+0100\n"
+"Last-Translator: Damien <guydelatourATgloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Bookmarks: -1,901,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -35,7 +34,7 @@ msgid ""
 msgstr ""
 "Ce scénario de survie à 4 joueurs vous permet d'aménager le terrain et de "
 "construire des bâtiments. Utilisez les paramètres de la carte. Paramétrage "
-"recommandé : 100 pièces d'or de départ."
+"recommandé : 100 pièces d'or au départ."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -45,11 +44,17 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"Suite à la Grande Guerre, quelques humains survivants se réfugièrent dans "
+"une vallée isolée et sombre. Leurs chefs savaient qu'ils ne pourraient pas "
+"échapper aux puissantes armées qui avaient écrasé leur patrie, mais ils "
+"espéraient résister assez longtemps pour reconstituer leurs forces."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
 msgid "Right-click on your leader during your turn for help"
-msgstr "Pour de l'aide, cliquez-droit sur votre chef prendant votre tour."
+msgstr ""
+"Pendant votre tour, cliquez avec le bouton droit sur votre chef pour "
+"visualiser l'aide."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
@@ -78,32 +83,32 @@ msgstr "Équipe 2"
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
-"Vous détruisez la mine de champignons. Le revenu des morts-vivants au nord-"
-"ouest est amputé de 10 pièces d'or."
+"Vous détruisez la champignonnière. Le revenu des morts-vivants du nord-ouest "
+"diminue de 10 pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:456
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
-"Vous détruisez la mine de champignons. Le revenu des orcs au nord-est est "
-"amputé de 10 pièces d'or."
+"Vous détruisez la champignonnière. Le revenu des orcs du nord-est diminue de "
+"10 pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
-"Vous détruisez la mine de champignons. Le revenu des orcs au sud-ouest est "
-"amputé de 10 pièces d'or."
+"Vous détruisez la champignonnière. Le revenu des orcs du sud-ouest diminue "
+"de 10 pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:496
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
-"Vous détruisez la mine de champignons. Le revenu des morts-vivants au sud-"
-"est est amputé de 10 pièces d'or."
+"Vous détruisez la champignonnière. Le revenu des morts-vivants du sud-est "
+"diminue de 10 pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:588
@@ -111,6 +116,7 @@ msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
 msgstr ""
+"Un de vos paysans vient de découvrir des nids d'araignées au nord et au sud."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
@@ -118,8 +124,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
-"Je jure que j'ai vu quelqu'un d'englué dans la toile de l'araignée. Peut "
-"être devrions-nous le secourir ?"
+"Je jure avoir vu des gens englués dans de la toile d'araignée. Nous devrions "
+"peut-être les secourir ?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:606
@@ -128,12 +134,17 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Déplacez une unité à côté de ces captifs pour qu'ils vous rallient. Les "
+"araignées gardant les prisonniers sont blessées : plus vite vous irez, plus "
+"vous aurez de chances de les tuer."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:617
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Vos hommes signalent d'étranges bruits provenant des cavernes à l'est et à "
+"l'ouest."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:623
@@ -142,6 +153,9 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"L'ennemi semble avoir construit des champignonnières qui leur procurent "
+"l'essentiel de leurs ressources. Si nous pouvions les détruire, nos chances "
+"ne seraient plus si minces."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:635
@@ -149,11 +163,13 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"Déplacez une unité sur ces villages pour détruire une champignonnière et "
+"réduire les revenus adverses de 10 pièces d'or."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:647
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "Cette bataille est presque finie. La victoire est à portée de main !"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:658
@@ -161,31 +177,33 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Nous avons survécu à l'assaut ! Le cours de la bataille s'est renversé, la "
+"victoire ne peut plus nous échapper maintenant !"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Vous avez gagné, vous pouvez continuer si vous le désirez..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Je tombe, mais rien n'est perdu !"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:689
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Je suis fichu, mais la bataille n'est pas encore perdue !"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "Comrades, avenge me!"
-msgstr "Vengez-moi camarades !"
+msgstr "Vengez-moi, camarades !"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:713
 msgid "Do not fear, there is hope for us still!"
-msgstr "Ne paniquez pas, il y a encore de l'espoir !"
+msgstr "Pas de panique, il y a encore de l'espoir !"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
@@ -211,6 +229,9 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Les paysans travaillent pour vous. Cliquer avec le bouton droit sur un "
+"paysan permet de modifier le terrain ou de construire des châteaux, des "
+"mines, des champs, des villages et des universités."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -225,6 +246,8 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Les mages sont vos sages. Dans les universités, ils peuvent effectuer des "
+"recherches liées aux domaines miniers, agricoles ou militaires. "
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -239,6 +262,8 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Vous ne pouvez labourer des champs que sur des prairies. Déplacez un paysan "
+"sur un champ pour qu'il commence automatiquement une fructueuse récolte."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -254,6 +279,9 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Les villages peuvent uniquement être fondés dans des prairies. Ils procurent "
+"des revenus et permettent des soins, comme d'habitude. Cliquer avec le "
+"bouton droit sur un paysan situé dans un village pour fonder une université."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -268,6 +296,8 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Les mines peuvent être construites dans les collines ou les montagnes. Un "
+"paysan dans une mine extraira automatiquement de l'or au début de votre tour."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -284,6 +314,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"Un village ressemblant à un village elfe représente une université. Au début "
+"de votre tour, les mages qui y sont localisés vont automatiquement accroître "
+"la recherche en cours. Cliquer avec le bouton droit sur un mage dans une "
+"université pour modifier ses priorités."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -300,6 +334,8 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Cliquer avec le bouton droit sur votre chef lorsqu'il est dans une "
+"université pour choisir des options diplomatiques spéciales."
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:86
@@ -314,17 +350,17 @@ msgstr "Un pays neuf - Aide"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
 msgid "Select a topic."
-msgstr "Choissiez un thème."
+msgstr "Choisissez un sujet."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:106
 msgid "Done"
-msgstr "Fin"
+msgstr "Terminé"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "Je verse 20 pièces d'or aux caisses de $df_player_name|."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -332,6 +368,9 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, puisque nos connaissances dépassent les vôtres, j'ai "
+"ordonné à mes lettrés de vous aider dans vos recherches concernant "
+"l'agriculture."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -340,6 +379,9 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, puisque nos connaissances dépassent les vôtres, j'ai "
+"ordonné à mes lettrés de vous aider dans vos recherches concernant "
+"l'exploitation minière."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -347,6 +389,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"La faiblesse de vos connaissances militaires devient inquiétante, "
+"$sw_player_name|. Je me vois obligé de vous enseigner ce domaine vital."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
@@ -354,6 +398,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Partager des connaissances agricoles"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
@@ -361,6 +407,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Partager des connaissances minières"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
@@ -368,18 +416,20 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Partager des connaissances militaires"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Options diplomatiques"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
-msgstr "Que devons nous faire ?"
+msgstr "Que dois-je faire ?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
@@ -393,11 +443,13 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"Transfert de fond\n"
+"Verser 20 pièces d'or à un autre joueur"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "À qui donner l'or ?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
@@ -411,11 +463,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"Partager des connaissances\n"
+"Aide un allié dans ses recherches"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Avec qui partager des connaissances ?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
@@ -425,6 +479,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"Négocier avec les nains\n"
+"Vous permet de recruter une unité naine\n"
+"Avancement des négociations : $player_$side_number|.leader_option_1."
+"progress|/$player_$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
@@ -434,12 +492,16 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"Négocier avec les elfes\n"
+"Vous permet de recruter une unité elfe\n"
+"Avancement des négociations : $player_$side_number|.leader_option_2."
+"progress|/$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "Fin de négociation"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
@@ -447,6 +509,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Nos pourparlers s'achèvent. Les nains combattront volontiers avec vous. "
+"Lequel de nos semblables voulez-vous recruter ?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
@@ -454,11 +518,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Nos pourparlers s'achèvent. Les elfes vous aideront à combattre. Laquelle de "
+"nos unités voulez-vous recruter ?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Choisissez une nouvelle recrue"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -467,7 +533,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:227
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:243
 msgid "Study Complete"
-msgstr ""
+msgstr "Recherche terminée"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
@@ -477,13 +543,14 @@ msgstr "Quel type d'unité voudriez-vous pouvoir recruter ?"
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:56
 msgid "Oversee Research"
-msgstr ""
+msgstr "Aperçu des recherches"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:95
 msgid "Research"
-msgstr ""
+msgstr "Recherche"
 
+# Damien : phrase modifiée de façon à éviter toute erreur d'apostrophe ou de genre.
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:101
 msgid ""
@@ -493,6 +560,11 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"Voici ce que nous étudions : $player_$side_number|.research.current_target|. "
+"Sur quoi doivent se focaliser nos mages ?\n"
+"\n"
+"Nos fermes produisent $player_$side_number|.farming.gold|po\n"
+"Nos mines produisent $player_$side_number|.mining.gold|po\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:105
@@ -507,6 +579,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"Agriculture\n"
+"Les fermiers produisent 1 pièce d'or en plus\n"
+"Avancement des recherches : $player_$side_number|.farming.progress|/$player_"
+"$side_number|.farming.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:131
@@ -516,6 +592,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"Exploitation minière\n"
+"Les mineurs produisent 1 pièce d'or en plus\n"
+"Avancement des recherches : $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:145
@@ -525,6 +605,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"Organisation militaire\n"
+"Vous permet de recruter un nouveau type d'unité\n"
+"Avancement des recherches : $player_$side_number|.warfare.progress|/$player_"
+"$side_number|.warfare.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:212
@@ -532,6 +616,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"Les champs de $player_$side_number|.name| rapportent désormais $player_"
+"$side_number|.farming.gold pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:229
@@ -539,6 +625,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"Les mines de $player_$side_number|.name| rapportent désormais $player_"
+"$side_number|.mining.gold pièces d'or."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:245
@@ -546,31 +634,34 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, nous avons terminé nos recherches militaires. "
+"Cliquez-droit sur un mage dans une université pour choisir le type d'unité "
+"qui pourra être recruté."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Nous allons vous libérer !"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "Vous dépêtrez la créature de la toile ; elle accepte de vous aider."
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Au travail !"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Que dois-je faire, sire ?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
 msgid "Convert to Grassland"
-msgstr "Convertir en herbe"
+msgstr "Convertir en prairie"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
@@ -583,7 +674,7 @@ msgstr "Coût : 0 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
 msgid "Plant Farm"
-msgstr "Planter un champ"
+msgstr "Labourer"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
@@ -593,7 +684,7 @@ msgstr "Coût : 15 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Build Village"
-msgstr "Bâtir un village"
+msgstr "Fonder un village"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
@@ -609,7 +700,7 @@ msgstr "Coût : 6 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Flood the Field"
-msgstr "Inonder la terre ferme"
+msgstr "Inonder"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
@@ -625,12 +716,12 @@ msgstr "Coût : 1 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 msgid "Plant Saplings"
-msgstr "Planter des arbustes"
+msgstr "Reboiser"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Chop Down Forest"
-msgstr "Abattre la forêt"
+msgstr "Déboiser"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
@@ -680,7 +771,7 @@ msgstr "Détruire le gué"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Aplanir"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
@@ -690,7 +781,7 @@ msgstr "Coût : 2 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Harvest Mushrooms"
-msgstr "Récolter les champignons"
+msgstr "Récolter des champignons"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
@@ -710,12 +801,12 @@ msgstr "Coût : 7 po"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Establish University"
-msgstr "Transformer en université"
+msgstr "Fonder une université"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
 msgid "Clear the Ground"
-msgstr "Nettoyer le sol"
+msgstr "Déblayer"
 
 #~ msgid "User Map"
 #~ msgstr "Carte utilisateur"
@@ -1600,7 +1691,6 @@ msgstr "Nettoyer le sol"
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this "
-#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 #~ msgstr ""
 #~ "Sur cette carte 36x36 conçue pour 4 joueurs en solo ou en équipe, il est "
 #~ "très rentable de contrôler la zone autour du château central. Il y a 36 "
