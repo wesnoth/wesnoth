@@ -73,12 +73,12 @@ public:
 	bool is_enabled() const;
 
 	/**
-	 * Disable the candidate action
+	 * Enable the candidate action
 	 */
 	void enable();
 
 	/**
-	 * Enable the candidate action
+	 * Disable the candidate action
 	 */
 	void disable();
 

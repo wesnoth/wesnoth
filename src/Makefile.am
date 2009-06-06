@@ -52,7 +52,7 @@ wesnoth_source = \
 	ai/ai_move.cpp \
 	ai/ai_village.cpp \
 	ai/composite/ai.cpp \
-	ai/composite/context.cpp \
+	ai/composite/contexts.cpp \
 	ai/composite/engine.cpp \
 	ai/composite/engine_default.cpp \
 	ai/composite/rca.cpp \
