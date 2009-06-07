@@ -67,6 +67,26 @@ static composite_ai::register_candidate_action_factory<testing_ai_default::goto_
 static composite_ai::register_candidate_action_factory<testing_ai_default::recruitment_phase>
 	recruitment_phase_factory("testing_ai_default::recruitment_phase");
 
+static composite_ai::register_candidate_action_factory<testing_ai_default::combat_phase>
+	combat_phase_factory("testing_ai_default::combat_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
+	move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::get_villages_phase>
+	get_villages_phase_factory("testing_ai_default::get_villages_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::get_healing_phase>
+	get_healing_phase_factory("testing_ai_default::get_healing_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::retreat_phase>
+	retreat_phase_factory("testing_ai_default::retreat_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::move_and_targeting_phase>
+	move_and_targeting_phase_factory("testing_ai_default::move_and_targeting_phase");
+
+static composite_ai::register_candidate_action_factory<testing_ai_default::leader_control_phase>
+	leader_control_phase_factory("testing_ai_default::leader_control_phase");
 
 void registry::init()
 {

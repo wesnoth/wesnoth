@@ -58,7 +58,7 @@ public:
 	 * Evaluate the candidate action, resetting the internal state of the action
 	 * @return the score
 	 * @retval >0 if the action is good
-	 * @retval <0 if the action is not good
+	 * @retval <=0 if the action is not good
 	 */
 	virtual double evaluate() = 0;
 

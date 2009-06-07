@@ -30,11 +30,13 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
+namespace ai {
+
 namespace testing_ai_default {
 
-class candidate_action_evaluation_loop: public virtual ai::composite_ai::stage, public virtual ai::composite_ai::rca_context {
+class candidate_action_evaluation_loop: public virtual composite_ai::stage, public virtual composite_ai::rca_context {
 public:
-	candidate_action_evaluation_loop( ai::composite_ai::composite_ai_context &context, const config &cfg );
+	candidate_action_evaluation_loop( composite_ai::composite_ai_context &context, const config &cfg );
 
 	~candidate_action_evaluation_loop();
 
@@ -42,15 +44,17 @@ public:
 
 	void on_create();
 
-	ai::composite_ai::rca_context& get_rca_context();
+	composite_ai::rca_context& get_rca_context();
 
 private:
-	std::vector<ai::composite_ai::candidate_action_ptr> candidate_actions_;
+	std::vector<composite_ai::candidate_action_ptr> candidate_actions_;
 
 	const config &cfg_;
 };
 
 
 } // of namespace testing_ai_default
+
+} // of namespace ai
 
 #endif

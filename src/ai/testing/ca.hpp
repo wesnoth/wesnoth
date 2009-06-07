@@ -25,14 +25,19 @@
 #include "../composite/rca.hpp"
 #include "../composite/engine_default.hpp"
 
+namespace ai {
+
 namespace testing_ai_default {
+
+using composite_ai::rca_context;
+using composite_ai::candidate_action;
 
 //============================================================================
 
-class goto_phase : public ai::composite_ai::candidate_action {
+class goto_phase : public candidate_action {
 public:
 
-	goto_phase( ai::composite_ai::rca_context &context, const config &cfg );
+	goto_phase( rca_context &context, const config &cfg );
 
 	virtual ~goto_phase();
 
@@ -44,10 +49,10 @@ public:
 
 //============================================================================
 
-class recruitment_phase : public ai::composite_ai::candidate_action {
+class recruitment_phase : public candidate_action {
 public:
 
-	recruitment_phase( ai::composite_ai::rca_context &context, const config &cfg );
+	recruitment_phase( rca_context &context, const config &cfg );
 
 	virtual ~recruitment_phase();
 
@@ -56,117 +61,117 @@ public:
 	virtual bool execute();
 
 };
-/*
+
 //============================================================================
 
-class combat_phase : public ai_candidate_action {
+class combat_phase : public candidate_action {
 public:
 
-	combat_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	combat_phase( rca_context &context, const config &cfg );
 
 	virtual ~combat_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& context);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class move_leader_to_goals_phase : public ai_candidate_action {
+class move_leader_to_goals_phase : public candidate_action {
 public:
 
-	move_leader_to_goals_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	move_leader_to_goals_phase( rca_context &context, const config &cfg );
 
 	virtual ~move_leader_to_goals_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class get_villages_phase : public ai_candidate_action {
+class get_villages_phase : public candidate_action {
 public:
 
-	get_villages_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	get_villages_phase( rca_context &context, const config& cfg );
 
 	virtual ~get_villages_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class get_healing_phase : public ai_candidate_action {
+class get_healing_phase : public candidate_action {
 public:
 
-	get_healing_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	get_healing_phase( rca_context &context, const config& cfg );
 
 	virtual ~get_healing_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class retreat_phase : public ai_candidate_action {
+class retreat_phase : public candidate_action {
 public:
 
-	retreat_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	retreat_phase( rca_context &context, const config &cfg );
 
 	virtual ~retreat_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class move_and_targeting_phase : public ai_candidate_action {
+class move_and_targeting_phase : public candidate_action {
 public:
 
-	move_and_targeting_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	move_and_targeting_phase( rca_context &context, const config &cfg );
 
 	virtual ~move_and_targeting_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 //============================================================================
 
-class leader_control_phase : public ai_candidate_action {
+class leader_control_phase : public candidate_action {
 public:
 
-	leader_control_phase( ai_readonly_context& ai, const std::string& name, const std::string& type );
+	leader_control_phase( rca_context &context, const config &cfg );
 
 	virtual ~leader_control_phase();
 
 	virtual double evaluate();
 
-	virtual bool execute(ai_readwrite_context& ai);
+	virtual bool execute();
 
 };
 
 
 //============================================================================
 
-*/
+} // end of namespace testing_ai_default
 
-}
+} // end of namespace ai
 
 #endif

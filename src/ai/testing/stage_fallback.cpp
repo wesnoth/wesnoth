@@ -24,6 +24,8 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 
+namespace ai {
+
 namespace testing_ai_default {
 
 static lg::log_domain log_ai_testing_stage_fallback("ai/testing/stage_fallback");
@@ -31,14 +33,14 @@ static lg::log_domain log_ai_testing_stage_fallback("ai/testing/stage_fallback")
 #define LOG_AI_TESTING_STAGE_FALLBACK LOG_STREAM(info, log_ai_testing_stage_fallback)
 #define ERR_AI_TESTING_STAGE_FALLBACK LOG_STREAM(err, log_ai_testing_stage_fallback)
 
-fallback_to_other_ai::fallback_to_other_ai( ai::composite_ai::composite_ai_context &context, const config &cfg )
+fallback_to_other_ai::fallback_to_other_ai( composite_ai::composite_ai_context &context, const config &cfg )
 	: stage(context,cfg), cfg_(cfg), fallback_ai_()
 {
 }
 
 void fallback_to_other_ai::on_create()
 {
-	fallback_ai_ = ai::manager::create_transient_ai(cfg_["fallback"], this);
+	fallback_ai_ = manager::create_transient_ai(cfg_["fallback"], this);
 }
 
 void fallback_to_other_ai::do_play_stage()
@@ -55,4 +57,6 @@ fallback_to_other_ai::~fallback_to_other_ai()
 {
 }
 
-} // of namespace testing_ai_default
+} // end of namespace testing_ai_default
+
+} // end of namespace ai

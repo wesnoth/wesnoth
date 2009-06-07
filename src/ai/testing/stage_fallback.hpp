@@ -28,11 +28,13 @@
 
 #include <vector>
 
+namespace ai {
+
 namespace testing_ai_default {
 
-class fallback_to_other_ai: public ai::composite_ai::stage {
+class fallback_to_other_ai: public composite_ai::stage {
 public:
-	fallback_to_other_ai( ai::composite_ai::composite_ai_context &context, const config &cfg );
+	fallback_to_other_ai( composite_ai::composite_ai_context &context, const config &cfg );
 
 	~fallback_to_other_ai();
 
@@ -43,9 +45,11 @@ public:
 private:
 	const config &cfg_;
 
-	ai::ai_ptr fallback_ai_;
+	ai_ptr fallback_ai_;
 };
 
 } // end of namespace testing_ai_default
+
+} // end of namespace ai
 
 #endif
