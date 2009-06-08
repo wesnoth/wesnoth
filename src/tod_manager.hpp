@@ -29,7 +29,7 @@ class game_state;
 class tod_manager : public savegame_config
 {
 	public:
-		tod_manager(const config& time_cfg);
+		tod_manager(const config& time_cfg, game_state* state=NULL);
 		~tod_manager() {}
 
 		config to_config();
@@ -82,6 +82,9 @@ class tod_manager : public savegame_config
 		 *                            empty one to remove all local time areas.
 		 */
 		void remove_time_area(const std::string& id);
+		
+		void next_time_of_day();
+		const std::vector<time_of_day> times() const {return times_;}
 
 	private:
 		void set_start_ToD(config&, int current_turn, game_state*);
@@ -92,7 +95,6 @@ class tod_manager : public savegame_config
 		 * Correct time is calculated from current time.
 		 */
 		time_of_day get_time_of_day_turn(int nturn, int current_turn) const;
-		void next_time_of_day();
 
 		struct area_time_of_day {
 			area_time_of_day() :

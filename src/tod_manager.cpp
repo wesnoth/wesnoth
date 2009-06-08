@@ -18,10 +18,14 @@
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
 
-tod_manager::tod_manager(const config& time_cfg):
+tod_manager::tod_manager(const config& time_cfg, game_state* state):
 	currentTime_(0)
 {
 	std::string turn_at = time_cfg["turn_at"];
+	if (state)
+	{
+		turn_at = utils::interpolate_variables_into_string(turn_at, *state);
+	}
 
 	int turn = 1;
 	if(turn_at.empty() == false) {

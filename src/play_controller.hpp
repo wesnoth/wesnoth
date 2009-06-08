@@ -84,16 +84,14 @@ public:
 	void add_turns(int num);
 
 	/** Dynamically change the current turn number. */
-	//FIXME: stub
-	void set_turn(unsigned int num) {turn_ = num;}
+	void set_turn(unsigned int num);
 
 	/**
 	 * Function to move to the next turn.
 	 *
 	 * @returns                   True if time has not expired.
 	 */
-	//FIXME: stub
-	bool next_turn() {return true;}
+	bool next_turn();
 
 protected:
 	void slice_before_scroll();

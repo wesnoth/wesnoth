@@ -29,6 +29,7 @@
 #include "terrain_filter.hpp"
 #include "save_blocker.hpp"
 #include "game_preferences.hpp"
+#include "wml_exception.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -51,7 +52,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	mouse_handler_(NULL, teams_, units_, map_, status_, undo_stack_, redo_stack_),
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
-	tod_manager_(state_of_game.snapshot),
+	tod_manager_(level, &state_of_game),
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
@@ -525,6 +526,32 @@ void play_controller::modify_turns(const std::string& mod)
 void play_controller::add_turns(int num)
 {
 	numTurns_ = std::max<int>(numTurns_ + num,-1);
+}
+
+void play_controller::set_turn(unsigned int num)
+{
+	VALIDATE(tod_manager_.times().size(), _("No time of day has been defined."));
+	const unsigned int old_num = turn_;
+	// Correct ToD
+	int current_time = (num  - 1) % tod_manager_.times().size();
+	if (current_time < 0) {
+		current_time += tod_manager_.times().size();
+	}
+	tod_manager_.set_time_of_day(current_time);
+
+	if(static_cast<int>(num) > numTurns_ && numTurns_ != -1) {
+		this->add_turns(numTurns_ - num);
+	}
+	turn_ = num;
+
+	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
+}
+
+bool play_controller::next_turn()
+{
+	tod_manager_.next_time_of_day();
+	++turn_;
+	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
 void play_controller::finish_side_turn(){
