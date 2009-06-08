@@ -211,6 +211,9 @@ function unit_worth(cfg)
     end
 
     local cost = wesnoth.get_variable("tmp_unit.cost");
+    if not cost then
+        error( string.format("Unit at %d,%d does not have a cost",x1,y1) );
+    end
     local health = wesnoth.get_variable("tmp_unit.hitpoints") / wesnoth.get_variable("tmp_unit.max_hitpoints");
     local xp = wesnoth.get_variable("tmp_unit.experience") / wesnoth.get_variable("tmp_unit.max_experience");
     local total = cost * (xp * xp_weight + health * health_weight + base);
