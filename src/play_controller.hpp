@@ -32,6 +32,7 @@
 #include "soundsource.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
+#include "tod_manager.hpp"
 
 #include <vector>
 
@@ -150,6 +151,7 @@ protected:
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
+	tod_manager tod_manager_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
