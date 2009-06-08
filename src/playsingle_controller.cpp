@@ -858,7 +858,11 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 void playsingle_controller::check_time_over(){
-	if(!status_.next_turn()) {
+	//FIXME: remove these assertions once turn functionality is removed from gamestatus
+	assert (status_.turn() == turn_);
+	assert (status_.number_of_turns() == number_of_turns());
+	bool b = next_turn();
+	if(!status_.next_turn() && b) {
 
 		if(non_interactive()) {
 			std::cout << "time over (draw)\n";

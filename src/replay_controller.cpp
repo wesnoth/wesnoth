@@ -163,6 +163,8 @@ void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
+	turn_ = status_start_.turn();
+	numTurns_ = status_start_.number_of_turns();
 	recorder.start_replay();
 	units_ = units_start_;
 	status_ = status_start_;
@@ -359,6 +361,10 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		player_number_++;
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
+			//FIXME: remove these assertions once turn functionality is removed from gamestatus
+			assert (status_.turn() == turn_);
+			assert (status_.number_of_turns() == number_of_turns());
+			next_turn();
 			status_.next_turn();
 			try {
 				finish_turn();

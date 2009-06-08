@@ -1016,6 +1016,8 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		} else if(!value.empty()) {
 			rsrc.status_ptr->add_turns(-rsrc.status_ptr->number_of_turns());
 			rsrc.status_ptr->add_turns(lexical_cast_default<int>(value,-1));
+			rsrc.controller->add_turns(-rsrc.controller->number_of_turns());
+			rsrc.controller->add_turns(lexical_cast_default<int>(value,-1));
 		}
 		// change current turn only after applying mods
 		if(!current.empty()) {
@@ -1026,6 +1028,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 			} else if(new_turn_number_u != current_turn_number) {
 				rsrc.status_ptr->set_turn(new_turn_number_u);
+				rsrc.controller->set_turn(new_turn_number_u);
 				rsrc.state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
 				rsrc.screen->new_turn();
 			}
