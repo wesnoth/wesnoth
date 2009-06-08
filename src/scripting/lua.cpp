@@ -708,6 +708,7 @@ static int lua_side_get(lua_State *L)
 	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+	return_cfg_attrib("__cfg", t.write(cfg));
 	return 0;
 }
 
