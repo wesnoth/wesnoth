@@ -32,6 +32,32 @@ from wesstats.controllers.secure import SecureController
 
 __all__ = ['RootController']
 
+def scaled_query(curs,query,threshold,evaluator):
+	s_time = time.time()
+	#list of all the sample sizes
+	curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
+	results = curs.fetchall()
+	sizes = []
+	for result in results:
+		sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):]))
+	sizes.sort()
+	#print sizes
+	#try query on all the sample sizes in increasing order until we get one that meets the threshold
+	for size in sizes:
+		tblname = configuration.DB_TABLE_PREFIX+"SMPL"+str(size)
+		nquery = query.replace("GAMES",tblname)
+		print nquery
+		curs.execute(nquery)
+		results = curs.fetchall()
+		length = evaluator(results)
+		if length > threshold:
+			print "query took " + str(time.time()-s_time) + " seconds"
+			return results
+	print "samples too small, using entire table"
+	curs.execute(query)
+	print "query took " + str(time.time()-s_time) + " seconds"
+	return curs.fetchall()
+
 def fconstruct(filters,colname,list):
 	if list[0] == "all":
 		return filters
@@ -64,31 +90,6 @@ class RootController(BaseController):
 		return dict(views=views)
 
 
-	def scaled_query(self,curs,query,threshold,evaluator):
-		s_time = time.time()
-		#list of all the sample sizes
-		curs.execute("SELECT TABLE_NAME FROM information_schema.tables WHERE `TABLE_NAME` REGEXP '^"+configuration.DB_TABLE_PREFIX+"SMPL'")
-		results = curs.fetchall()
-		sizes = []
-		for result in results:
-			sizes.append(int(result[0][len(configuration.DB_TABLE_PREFIX+"SMPL"):]))
-		sizes.sort()
-		#print sizes
-		#try query on all the sample sizes in increasing order until we get one that meets the threshold
-		for size in sizes:
-			tblname = configuration.DB_TABLE_PREFIX+"SMPL"+str(size)
-			nquery = query.replace("GAMES",tblname)
-			print nquery
-			curs.execute(nquery)
-			results = curs.fetchall()
-			length = evaluator(results)
-			if length > threshold:
-				print "query took " + str(time.time()-s_time) + " seconds"
-				return results
-		print "samples too small, using entire table"
-		curs.execute(query)
-		print "query took " + str(time.time()-s_time) + " seconds"
-		return curs.fetchall()
 
 		
 	@expose(template="wesstats.templates.platform")
@@ -316,9 +317,29 @@ class BarGraphController(object):
 		view_data = curs.fetchall()[0]
 		print kw
 		print view_data
-		conn.close()
-		for filter in view_data[5].split(','):
+		#fetch the relevant filters for this template and their possible values
+		available_filters = view_data[5].split(',')
+		fdata = []
+		for filter in available_filters:
+			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
+			fdata.append(curs.fetchall())
+		print fdata
+		filters = ""
+		for filter in available_filters:
 			print filter		
+		#get columns and column transformations for this view
+		y_xforms = view_data[6].split(',')
+		y_data = view_data[2].split(',')
+		y_data_str = ""
+		#they must be equal!
+		print len(y_data) == len(y_xforms)
+		for i in range(len(y_data)):
+			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
+		y_data_str = y_data_str[0:len(y_data_str)-1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+"GROUP BY "+view_data[1]
+		print query
+		results = scaled_query(curs,query,100,evaluators.count_eval)
+		print results
 		return dict()
 
 class PieGraphController(object):
