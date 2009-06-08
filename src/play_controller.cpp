@@ -517,6 +517,15 @@ void play_controller::do_init_side(const unsigned int team_index){
 	}
 }
 
+void play_controller::modify_turns(const std::string& mod)
+{
+	numTurns_ = std::max<int>(utils::apply_modifier(numTurns_,mod,0),-1);
+}
+void play_controller::add_turns(int num)
+{
+	numTurns_ = std::max<int>(numTurns_ + num,-1);
+}
+
 void play_controller::finish_side_turn(){
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if(uit->second.side() == player_number_)

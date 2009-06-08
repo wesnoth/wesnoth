@@ -76,6 +76,24 @@ public:
 	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
+	//turn functions
+	size_t turn() const {return turn_;}
+	int number_of_turns() const {return numTurns_;}
+	void modify_turns(const std::string& mod);
+	void add_turns(int num);
+
+	/** Dynamically change the current turn number. */
+	//FIXME: stub
+	void set_turn(unsigned int num) {turn_ = num;}
+
+	/**
+	 * Function to move to the next turn.
+	 *
+	 * @returns                   True if time has not expired.
+	 */
+	//FIXME: stub
+	bool next_turn() {return true;}
+
 protected:
 	void slice_before_scroll();
 	void slice_end();
@@ -158,6 +176,9 @@ protected:
 	bool skip_replay_;
 	bool linger_;
 	unsigned int previous_turn_;
+	//turn information
+	size_t turn_;
+	int numTurns_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
