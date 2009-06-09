@@ -556,6 +556,23 @@ bool play_controller::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
+//builds the snapshot config from its members and their configs respectively
+config play_controller::to_config()
+{
+	config cfg;
+	std::stringstream buf;
+	buf << turn_;
+	cfg["turn_at"] = buf.str();
+	buf.str(std::string());
+	buf << numTurns_;
+	cfg["turns"] = buf.str();
+	buf.str(std::string());
+
+	cfg.merge_with(tod_manager_.to_config());
+
+	return cfg;
+}
+
 void play_controller::finish_side_turn(){
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if(uit->second.side() == player_number_)

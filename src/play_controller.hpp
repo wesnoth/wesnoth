@@ -33,6 +33,7 @@
 #include "statistics.hpp"
 #include "tooltips.hpp"
 #include "tod_manager.hpp"
+#include "savegame_config.hpp"
 
 #include <vector>
 
@@ -41,7 +42,7 @@
 class game_display;
 class team;
 
-class play_controller : public controller_base, public events::observer
+class play_controller : public controller_base, public events::observer, public savegame_config
 {
 public:
 	play_controller(const config& level, game_state& state_of_game,
@@ -97,6 +98,8 @@ public:
 	void add_time_area(const std::string& id, const std::set<map_location>& locs,
 				const config& time_cfg) {tod_manager_.add_time_area(id, locs, time_cfg);}
 	void remove_time_area(const std::string& id) {tod_manager_.remove_time_area(id);}
+
+	config to_config();
 
 protected:
 	void slice_before_scroll();
