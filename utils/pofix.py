@@ -198,6 +198,10 @@ stringfixes = {
 ("passage way", "passageway"),
 ),
 
+"wesnoth-utbs" :(
+("Yanqui", "Zhangor"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
