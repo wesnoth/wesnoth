@@ -394,7 +394,7 @@ game_controller::game_controller(int argc, char** argv) :
 			no_sound = true;
 		} else if(val == "--nomusic") {
 			no_music = true;
-		} else if(val == "--shadowm-storyscreen") {
+		} else if(val == "--new-storyscreens") {
 			// This is a hidden option to help testing
 			// the work-in-progress new storyscreen code.
 			// Don't document.
@@ -1798,6 +1798,9 @@ static int process_command_args(int argc, char** argv) {
 			<< "  -w, --windowed               runs the game in windowed mode.\n"
 			<< "  --with-replay                replays the file loaded with the --load option.\n"
 			<< "\n"
+			<< "  --new-storyscreens           enables the new Pango-based storyscreen rendering;\n"
+			<< "                               it is incomplete and potentially unstable, thus\n"
+			<< "                               disabled by default.\n"
 			<< "  --new-widgets                there is a new WIP widget toolkit this switch\n"
 			<< "                               enables the new toolkit (VERY EXPERIMENTAL don't\n"
 			<< "                               file bug reports since most are known).\n"
