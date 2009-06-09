@@ -390,7 +390,6 @@ void part_ui::render_text_box_with_pango()
 	// const int line_height = 10;
 
 	if(!textbox_surf.null()) {
-		adjust_surface_alpha(textbox_surf, 50);
 		video_.blit_surface(text_x_, text_y_+padding_x, textbox_surf);
 	}
 
