@@ -13,15 +13,15 @@
 */
 
 /**
- * @file ai/ai2.hpp
- * AI-interface part 2, virtual.
+ * @file ai/ai2/ai.hpp
+ * Stub AI
  */
 
-#ifndef AI_AI2_HPP_INCLUDED
-#define AI_AI2_HPP_INCLUDED
+#ifndef AI_AI2_AI_HPP_INCLUDED
+#define AI_AI2_AI_HPP_INCLUDED
 
-#include "ai_interface.hpp"
-#include "contexts.hpp"
+#include "../interface.hpp"
+#include "../contexts.hpp"
 
 namespace ai {
 

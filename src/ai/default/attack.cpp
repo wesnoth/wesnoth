@@ -13,17 +13,17 @@
 */
 
 /**
- * @file ai/ai_attack.cpp
- * Calculate & analyse attacks.
+ * @file ai/default/attack.cpp
+ * Calculate & analyse attacks of the default ai
  */
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 #include "ai.hpp"
-#include "../attack_prediction.hpp"
-#include "../map.hpp"
-#include "../log.hpp"
 
+#include "../../attack_prediction.hpp"
+#include "../../map.hpp"
+#include "../../log.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)

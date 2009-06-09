@@ -27,7 +27,7 @@
 #include "stage.hpp"
 #include "../contexts.hpp"
 #include "../default/contexts.hpp"
-#include "../ai_interface.hpp"
+#include "../interface.hpp"
 
 #include <vector>
 

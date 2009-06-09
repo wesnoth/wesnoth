@@ -12,12 +12,17 @@
 */
 
 /**
- * @file ai/formula_candidates.hpp
+ * @file ai/formula/candidates.hpp
  * Defines formula ai candidate actions - headers
  * */
 
 #ifndef AI_FORMULA_CANDIDATES_HPP_INCLUDED
 #define	AI_FORMULA_CANDIDATES_HPP_INCLUDED
+
+#include "../../global.hpp"
+
+#include "../../formula_fwd.hpp"
+#include "../../formula_function.hpp"
 
 namespace game_logic {
 

@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "ai/ai_manager.hpp"
+#include "ai/manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"

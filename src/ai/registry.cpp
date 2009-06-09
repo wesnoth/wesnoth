@@ -17,12 +17,12 @@
  * @file ai/registry.cpp
  */
 
-#include "ai.hpp"
-#include "ai2.hpp"
-#include "ai_dfool.hpp"
+#include "ai2/ai.hpp"
 #include "composite/ai.hpp"
 #include "composite/engine_default.hpp"
-#include "formula_ai.hpp"
+#include "default/ai.hpp"
+#include "dfool/ai.hpp"
+#include "formula/ai.hpp"
 #include "registry.hpp"
 #include "testing/ca.hpp"
 #include "testing/stage_rca.hpp"

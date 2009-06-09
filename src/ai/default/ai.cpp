@@ -13,26 +13,28 @@
 */
 
 /**
- * @file ai/ai.cpp
+ * @file ai/default/ai.cpp
  * Artificial intelligence - The computer commands the enemy.
  */
 
-#include "ai2.hpp"
-#include "ai_dfool.hpp"
-#include "ai_manager.hpp"
-#include "../array.hpp"
-#include "../dialogs.hpp"
-#include "../foreach.hpp"
-#include "formula_ai.hpp"
-#include "../game_end_exceptions.hpp"
-#include "../game_events.hpp"
-#include "../game_preferences.hpp"
-#include "../log.hpp"
-#include "../mouse_handler_base.hpp"
-#include "../replay.hpp"
-#include "../statistics.hpp"
-#include "../unit_display.hpp"
-#include "../wml_exception.hpp"
+#include "ai.hpp"
+
+#include "../dfool/ai.hpp"
+#include "../manager.hpp"
+#include "../formula/ai.hpp"
+
+#include "../../array.hpp"
+#include "../../dialogs.hpp"
+#include "../../foreach.hpp"
+#include "../../game_end_exceptions.hpp"
+#include "../../game_events.hpp"
+#include "../../game_preferences.hpp"
+#include "../../log.hpp"
+#include "../../mouse_handler_base.hpp"
+#include "../../replay.hpp"
+#include "../../statistics.hpp"
+#include "../../unit_display.hpp"
+#include "../../wml_exception.hpp"
 
 #include <fstream>
 

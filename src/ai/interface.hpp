@@ -13,18 +13,18 @@
 */
 
 /**
- * @file ai/ai_interface.hpp
+ * @file ai/interface.hpp
  * Interface to the AI.
  */
 
-#ifndef AI_AI_INTERFACE_HPP_INCLUDED
-#define AI_AI_INTERFACE_HPP_INCLUDED
+#ifndef AI_INTERFACE_HPP_INCLUDED
+#define AI_INTERFACE_HPP_INCLUDED
 
 #include "../global.hpp"
 
-#include "../formula_callable.hpp"
-
 #include "game_info.hpp"
+
+#include "../formula_callable.hpp"
 
 #include "default/contexts.hpp"
 

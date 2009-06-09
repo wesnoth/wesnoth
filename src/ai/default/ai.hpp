@@ -12,18 +12,20 @@
    See the COPYING file for more details.
 */
 
-/** @file ai/ai.hpp */
+/** @file ai/default/ai.hpp */
 
-#ifndef AI_AI_HPP_INCLUDED
-#define AI_AI_HPP_INCLUDED
+#ifndef AI_DEFAULT_AI_HPP_INCLUDED
+#define AI_DEFAULT_AI_HPP_INCLUDED
 
-#include "../global.hpp"
+#include "../../global.hpp"
+
+#include "contexts.hpp"
 
 #include "../actions.hpp"
-#include "ai_interface.hpp"
-#include "contexts.hpp"
-#include "default/contexts.hpp"
-#include "../formula_callable.hpp"
+#include "../interface.hpp"
+#include "../contexts.hpp"
+
+#include "../../formula_callable.hpp"
 
 class formula_ai;
 

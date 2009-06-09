@@ -19,7 +19,7 @@
 
 #include "ai.hpp"
 #include "stage.hpp"
-#include "../ai_manager.hpp"
+#include "../manager.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 

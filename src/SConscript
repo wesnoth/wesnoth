@@ -147,26 +147,26 @@ wesnoth_sources = Split("""
     actions.cpp
     addon_checks.cpp
     addon_management.cpp
-    ai/ai.cpp
-    ai/ai_attack.cpp
-    ai/ai_actions.cpp
-    ai/ai_configuration.cpp
-    ai/ai_dfool.cpp
-    ai/ai_interface.cpp
-    ai/ai_manager.cpp
-    ai/ai_move.cpp
-    ai/ai_village.cpp
+    ai/actions.cpp
     ai/composite/ai.cpp
     ai/composite/contexts.cpp
     ai/composite/engine.cpp
     ai/composite/engine_default.cpp
     ai/composite/rca.cpp
     ai/composite/stage.cpp
+    ai/configuration.cpp
     ai/contexts.cpp
+    ai/default/ai.cpp
+    ai/default/attack.cpp
     ai/default/contexts.cpp
-    ai/formula_ai.cpp
-    ai/formula_candidates.cpp
+    ai/default/move.cpp
+    ai/default/village.cpp
+    ai/dfool/ai.cpp
+    ai/formula/ai.cpp
+    ai/formula/candidates.cpp
     ai/game_info.cpp
+    ai/interface.cpp
+    ai/manager.cpp
     ai/registry.cpp
     ai/testing/ca.cpp
     ai/testing/stage_rca.cpp

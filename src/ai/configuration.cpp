@@ -15,9 +15,11 @@
 
 /**
  * Managing the AI configuration
- * @file ai/ai_configuration.cpp
+ * @file ai/configuration.cpp
  */
-#include "ai_configuration.hpp"
+
+#include "configuration.hpp"
+
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../log.hpp"

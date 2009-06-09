@@ -14,17 +14,17 @@
 
 /**
  * Managing the AI lifecycle and interface for the rest of Wesnoth
- * @file ai/ai_manager.cpp
+ * @file ai/manager.cpp
  */
 
-#include "ai.hpp"
-#include "ai2.hpp"
-#include "ai_configuration.hpp"
-#include "ai_manager.hpp"
-#include "ai_dfool.hpp"
-#include "contexts.hpp"
+#include "ai2/ai.hpp"
 #include "composite/ai.hpp"
-#include "formula_ai.hpp"
+#include "configuration.hpp"
+#include "contexts.hpp"
+#include "default/ai.hpp"
+#include "dfool/ai.hpp"
+#include "manager.hpp"
+#include "formula/ai.hpp"
 #include "registry.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"

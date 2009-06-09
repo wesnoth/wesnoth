@@ -14,18 +14,19 @@
 
 /**
  * AI Move decision support
- * @file ai/ai_move.cpp
+ * @file ai/default/move.cpp
  * */
 
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 #include "ai.hpp"
-#include "foreach.hpp"
-#include "../gettext.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../wml_exception.hpp"
+
+#include "../../foreach.hpp"
+#include "../../gettext.hpp"
+#include "../../log.hpp"
+#include "../../map.hpp"
+#include "../../wml_exception.hpp"
 
 
 static lg::log_domain log_ai("ai/move");

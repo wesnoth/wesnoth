@@ -19,7 +19,7 @@
 
 #include "stage_fallback.hpp"
 
-#include "../ai_manager.hpp"
+#include "../manager.hpp"
 #include "../composite/ai.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"

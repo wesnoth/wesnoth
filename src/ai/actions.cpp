@@ -14,7 +14,7 @@
 
 /**
  * Managing the AI-Game interaction - AI actions and their results
- * @file ai/ai_actions.cpp
+ * @file ai/actions.cpp
  */
 
 /**
@@ -32,8 +32,9 @@
  * So far the use of 'subjective info' is stubbed out.
  */
 
-#include "ai_actions.hpp"
-#include "ai_manager.hpp"
+#include "actions.hpp"
+#include "manager.hpp"
+
 #include "../actions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"

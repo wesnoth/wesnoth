@@ -13,16 +13,16 @@
 */
 
 /**
- * @file ai/ai_village.cpp
+ * @file ai/default/village.cpp
  * The village capturing part of the AI.
  * ai_default::get_villages and ai_default::find_villages are based on ai_default::get_villages in ai.cpp
  */
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 #include "ai.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
+#include "../../log.hpp"
+#include "../../map.hpp"
 
 #include <numeric>
 

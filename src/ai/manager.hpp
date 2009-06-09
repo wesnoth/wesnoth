@@ -20,10 +20,11 @@
  * @todo 1.7 AI Interface command to clear the history.
  */
 
-#ifndef AI_AI_MANAGER_HPP_INCLUDED
-#define AI_AI_MANAGER_HPP_INCLUDED
+#ifndef AI_MANAGER_HPP_INCLUDED
+#define AI_MANAGER_HPP_INCLUDED
 
 #include "../global.hpp"
+
 #include "contexts.hpp"
 #include "game_info.hpp"
 #include "default/contexts.hpp"

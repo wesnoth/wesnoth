@@ -14,11 +14,11 @@
 
 /**
  * Managing the AIs configuration - headers
- * @file ai/ai_configuration.hpp
+ * @file ai/configuration.hpp
  * */
 
-#ifndef AI_AI_CONFIGURATION_HPP_INCLUDED
-#define AI_AI_CONFIGURATION_HPP_INCLUDED
+#ifndef AI_CONFIGURATION_HPP_INCLUDED
+#define AI_CONFIGURATION_HPP_INCLUDED
 
 #include "../global.hpp"
 

@@ -14,10 +14,10 @@
 
 /**
  * Base class for the AI and AI-ai_manager contract.
- * @file ai/ai_interface.cpp
+ * @file ai/interface.cpp
  */
 
-#include "ai_interface.hpp"
+#include "interface.hpp"
 
 namespace ai {
 

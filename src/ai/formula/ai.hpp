@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula_ai.hpp
+ * @file ai/formula/ai.hpp
  * Defines formula ai
  * */
 
@@ -21,13 +21,14 @@
 #ifndef AI_FORMULA_AI_HPP_INCLUDED
 #define AI_FORMULA_AI_HPP_INCLUDED
 
-#include "ai.hpp"
-#include "../callable_objects.hpp"
-#include "../formula.hpp"
-#include "../formula_fwd.hpp"
-#include "../formula_callable.hpp"
-#include "formula_candidates.hpp"
-#include "../formula_function.hpp"
+#include "../default/ai.hpp"
+#include "../../callable_objects.hpp"
+#include "../../formula.hpp"
+#include "../../formula_fwd.hpp"
+#include "../../formula_callable.hpp"
+#include "../../formula_function.hpp"
+
+#include "candidates.hpp"
 
 // Forward declaration needed for ai function symbol table
 class formula_ai;

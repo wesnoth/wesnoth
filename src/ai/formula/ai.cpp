@@ -22,17 +22,18 @@
 #include <vector>
 #include <queue>
 
-#include "../foreach.hpp"
-#include "../unit.hpp"
+#include "ai.hpp"
 
-#include "ai_manager.hpp"
-#include "../menu_events.hpp"
-#include "../filesystem.hpp"
-#include "../foreach.hpp"
-#include "formula_ai.hpp"
-#include "../log.hpp"
-#include "../attack_prediction.hpp"
-#include "formula_candidates.hpp"
+#include "../manager.hpp"
+
+#include "../../foreach.hpp"
+#include "../../unit.hpp"
+#include "../../menu_events.hpp"
+#include "../../filesystem.hpp"
+#include "../../foreach.hpp"
+#include "../../log.hpp"
+#include "../../attack_prediction.hpp"
+#include "candidates.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)

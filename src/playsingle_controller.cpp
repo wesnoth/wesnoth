@@ -21,7 +21,7 @@
 
 #include "playsingle_controller.hpp"
 
-#include "ai/ai_manager.hpp"
+#include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "foreach.hpp"

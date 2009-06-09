@@ -12,13 +12,13 @@
 */
 
 /**
- * @file ai/formula_candidates.cpp
+ * @file ai/formula/candidates.cpp
  * Defines formula ai candidate actions
  * */
 
-#include "formula_ai.hpp"
-#include "formula_candidates.hpp"
-#include "../log.hpp"
+#include "ai.hpp"
+#include "candidates.hpp"
+#include "../../log.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)

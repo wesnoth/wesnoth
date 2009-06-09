@@ -23,7 +23,7 @@
 #include "../../global.hpp"
 
 #include "../composite/stage.hpp"
-#include "../ai_interface.hpp"
+#include "../interface.hpp"
 #include "../../config.hpp"
 
 #include <vector>

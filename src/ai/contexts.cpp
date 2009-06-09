@@ -19,8 +19,7 @@
  */
 
 #include "contexts.hpp"
-#include "ai_actions.hpp"
-#include "ai_manager.hpp"
+#include "manager.hpp"
 #include "../callable_objects.hpp"
 #include "../dialogs.hpp"
 #include "../formula.hpp"
