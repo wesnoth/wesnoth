@@ -303,11 +303,11 @@ class RootController(BaseController):
 
 		return view, remainder
 
-class BarGraphController(object):
+class PieGraphController(object):
 	def __init__(self,url):
 		self.url = url
 	
-	@expose(template="wesstats.templates.barview")
+	@expose(template="wesstats.templates.pieview")
 	def default(self,**kw):
 		#pull data on this view from DB
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
@@ -340,14 +340,14 @@ class BarGraphController(object):
 		print query
 		results = scaled_query(curs,query,100,evaluators.count_eval)
 		print results
-		#generate JS datafields here because genshi can only generate html from python...
+		#generate JS datafields here because genshi templating can't emit JS...
 		data = ""
 		for i in range(0,len(results)):
                         data += "data.setValue("+str(i)+",0,'"+results[i][0]+"');\n"
                         data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
 		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,data=data)
 
-class PieGraphController(object):
+class BarGraphController(object):
 	def __init__(self,url):
 		self.url = url
 
