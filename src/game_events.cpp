@@ -3318,6 +3318,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
 	gamestatus *status_ptr = game_events::resources->status_ptr;
+	play_controller *controller = game_events::resources->controller;
 
 		log_scope("time_area");
 
@@ -3329,6 +3330,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 				utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 			foreach(const std::string& id, id_list) {
 				status_ptr->remove_time_area(id);
+				controller->remove_time_area(id);
 				LOG_NG << "event WML removed time_area '" << id << "'\n";
 			}
 		}
@@ -3346,6 +3348,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 			filter.get_locations(locs);
 			config parsed_cfg = cfg.get_parsed_config();
 			status_ptr->add_time_area(id, locs, parsed_cfg);
+			controller->add_time_area(id, locs, parsed_cfg);
 			LOG_NG << "event WML inserted time_area '" << id << "'\n";
 		}
 	}
