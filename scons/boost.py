@@ -29,7 +29,7 @@ def find_boost(env):
         include_index = version_nums.index(max(version_nums))
         prefix, includefile = includes[include_index]
         version = versions[include_index]
-        env["boostdir"] = join(prefix, "include-" + str(version[0]) + "_" + str(version[1]))
+        env["boostdir"] = join(prefix, "include", "boost-" + str(version[0]) + "_" + str(version[1]))
         env["boostlibdir"] = join(prefix, "lib")
         if not env.get("boost_suffix"):
             libs = glob(join(prefix, "lib", "libboost_*"))
