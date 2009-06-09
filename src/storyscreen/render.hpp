@@ -70,6 +70,7 @@ private:
 	void render_title_box();
 	bool render_floating_images();
 	void render_text_box();
+	void render_text_box_with_pango();
 };
 
 } // end namespace storyscreen

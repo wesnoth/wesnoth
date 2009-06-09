@@ -36,6 +36,7 @@
 #include "video.hpp"
 
 // TODO: remove when completed
+#include "intro.hpp"
 #include "stub.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -43,6 +44,8 @@ static lg::log_domain log_engine("engine");
 
 #ifndef LOW_MEM
 namespace {
+	std::string const textbox_border_path = "dialogs/translucent54-border-top.png";
+
 	void blur_area(CVideo& video, int y, int h)
 	{
 		SDL_Rect blur_rect = { 0, y, screen_area().w, h };
@@ -50,6 +53,28 @@ namespace {
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
 	}
+#if 0
+	/* do not remove yet */
+	void fade_in_helper(CVideo& video, surface surf, int x, int y)
+	{
+		const SDL_Rect target_area = { x, y, surf->w, surf->h };
+		surface s = cut_surface(video.getSurface(), backup_area);
+		ll
+		for(size_t n = 0; n < 255; n += 5) {
+			if(n)
+				video.blit_surface(x, y, backup);
+
+			// TODO
+			update_rect(target_area);
+
+			events::pump();
+			events::raise_process_event();
+			events::raise_draw_event();
+			disp.flip();
+			disp.delay(10);
+		}
+	}
+#endif
 }
 #endif /* ! LOW_MEM */
 
@@ -272,6 +297,139 @@ void part_ui::render_text_box()
 	);
 }
 
+void part_ui::render_text_box_with_pango()
+{
+	const int max_width = next_button_.location().x - 10 - text_x_;
+	const int padding_x = 10;
+	const int max_height = screen_area().h - padding_x;
+	const std::string& storytxt = p_.text_;
+
+	bool skip = false, last_key = true;
+	int update_y = 0, update_h = 0;
+
+	surface textbox_surf = NULL;
+
+	// draw the text box
+	if(!storytxt.empty())
+	{
+		update_locker lock(video_);
+		font::ttext t;
+		
+		next_button_.hide();
+		skip_button_.hide();
+		/*back_button_.hide();*/
+
+		t.set_text(storytxt, true)
+		 .set_font_style(font::ttext::STYLE_NORMAL)
+		 /*.set_font_size(14)*/
+		 .set_maximum_width(max_width)
+		 .set_maximum_height(max_height);
+		
+		textbox_surf = t.render();
+		if(text_y_ + 20 + textbox_surf->h > screen_area().h) {
+			text_y_ = screen_area().h > textbox_surf->h + 1 ? screen_area().h - textbox_surf->h - 21 : 0;
+		}
+
+		update_y = text_y_;
+		update_h = screen_area().h - text_y_;
+
+		//const SDL_Rect textbox_rect = { text_x_, text_y_, textbox_surf->w, textbox_surf->h };
+
+#ifndef LOW_MEM
+		blur_area(video_, update_y, update_h);
+#endif
+
+		draw_solid_tinted_rectangle(
+			0, text_y_, screen_area().w, screen_area().h-text_y_,
+			0, 0, 0, 0.5, video_.getSurface()
+		);
+
+#ifndef LOW_MEM
+		// Draw a nice border
+		if(has_background_) {
+			// FIXME: perhaps hard-coding the image path isn't a really
+			// good idea - it must not be forgotten if someone decides to switch
+			// the image directories around.
+			surface top_border = image::get_image(textbox_border_path);
+			top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
+			update_y = text_y_ - top_border->h;
+			update_h += top_border->h;
+			blur_area(video_, update_y, top_border->h);
+			video_.blit_surface(0, text_y_ - top_border->h, top_border);
+		}
+#endif
+
+		// Make GUI 1 buttons aware of the changes in the background
+		next_button_.set_location(next_button_.location());
+		next_button_.hide(false);
+		skip_button_.set_location(skip_button_.location());
+		skip_button_.hide(false);
+	}
+
+	if(imgs_.empty()) {
+		update_whole_screen();
+	} else if(update_h > 0) {
+		update_rect(0,update_y,screen_area().w,update_h);
+	}
+
+	const bool rtl = current_language_rtl();
+	if(rtl) {
+		text_x_ += max_width;
+	}
+
+#ifdef USE_TINY_GUI
+	//int xpos = text_x_, ypos = text_y_ + 10;
+#else
+	//int xpos = text_x_, ypos = text_y_ + 20;
+#endif
+
+	// The maximum position that text can reach before wrapping
+	//size_t height = 0;
+
+	// FIXME: line height
+	// const int line_height = 10;
+
+	if(!textbox_surf.null()) {
+		adjust_surface_alpha(textbox_surf, 50);
+		video_.blit_surface(text_x_, text_y_+padding_x, textbox_surf);
+	}
+
+	while(true)
+	{
+		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
+
+		if((keydown && !last_key) || next_button_.pressed()) {
+			if(skip == true /*|| itor == utils::utf8_iterator::end(storytxt)*/) {
+				ret_ = NEXT;
+				break;
+			} else {
+				skip = true;
+			}
+		}
+
+		last_key = keydown;
+
+		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
+			ret_ = SKIP;
+			return;
+		}
+
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+		disp_.flip();
+
+		if(!skip /*|| itor == utils::utf8_iterator::end(storytxt)*/) {
+			disp_.delay(20);
+		}
+	}
+
+	draw_solid_tinted_rectangle(
+		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
+		1.0, video_.getSurface()
+	);
+}
+
 void part_ui::render_title_box()
 {
 	// Text color
@@ -380,7 +538,12 @@ part_ui::RESULT part_ui::show()
 	}
 
 	try {
-		render_text_box();
+		if(get_new_storyscreen_status()) {
+			render_text_box_with_pango();
+		}
+		else {
+			render_text_box();
+		}
 	}
 	catch(utils::invalid_utf8_exception const&) {
 		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";

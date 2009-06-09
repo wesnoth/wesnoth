@@ -100,6 +100,11 @@ void set_new_storyscreen(bool enabled)
 	LOG_NG << "enabled experimental story/endscreen code\n";
 }
 
+bool get_new_storyscreen_status()
+{
+	return use_shadowm_storyscreen;
+}
+
 void the_end(display &disp, std::string text, unsigned int duration)
 {
 	if(use_shadowm_storyscreen) {
