@@ -2277,7 +2277,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(new team_callable((*get_info().state.teams)[get_side()-1]));
+		return variant(new team_callable((get_info().teams)[get_side()-1]));
 
 	} else if(key == "my_side_number")
 	{
@@ -2286,7 +2286,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = get_info().state.teams->begin(); i != get_info().state.teams->end(); ++i) {
+		for(std::vector<team>::const_iterator i = get_info().teams.begin(); i != get_info().teams.end(); ++i) {
 			vars.push_back(variant(new team_callable(*i)));
 		}
 		return variant(&vars);
