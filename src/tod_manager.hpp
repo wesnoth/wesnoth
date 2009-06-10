@@ -25,11 +25,11 @@
 
 class game_state;
 
-//time of day functionality
+//time of day and turn functionality
 class tod_manager : public savegame_config
 {
 	public:
-		tod_manager(const config& time_cfg, game_state* state=NULL);
+		tod_manager(const config& time_cfg, int num_turns, game_state* state=NULL);
 		~tod_manager() {}
 
 		config to_config();
@@ -86,6 +86,22 @@ class tod_manager : public savegame_config
 		void next_time_of_day();
 		const std::vector<time_of_day> times() const {return times_;}
 
+		//turn functions
+		size_t turn() const {return turn_;}
+		int number_of_turns() const {return num_turns_;}
+		void modify_turns(const std::string& mod);
+		void add_turns(int num);
+
+		/** Dynamically change the current turn number. */
+		void set_turn(unsigned int num);
+
+		/**
+		 * Function to move to the next turn.
+		 *
+		 * @returns                   True if time has not expired.
+		 */
+		bool next_turn();
+
 	private:
 		void set_start_ToD(config&, int current_turn, game_state*);
 
@@ -114,5 +130,8 @@ class tod_manager : public savegame_config
 		int currentTime_;
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;
+
+		size_t turn_;
+		int num_turns_;
 };
 #endif

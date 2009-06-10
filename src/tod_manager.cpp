@@ -17,24 +17,32 @@
 #include "gettext.hpp"
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 
-tod_manager::tod_manager(const config& time_cfg, game_state* state):
-	currentTime_(0)
+static lg::log_domain log_engine("engine");
+#define LOG_NG LOG_STREAM(info, log_engine)
+
+tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* state):
+	currentTime_(0),
+	times_(),
+	areas_(),
+	turn_(1),
+	num_turns_(num_turns)
 {
 	std::string turn_at = time_cfg["turn_at"];
 	if (state)
 	{
 		turn_at = utils::interpolate_variables_into_string(turn_at, *state);
+
 	}
 
-	int turn = 1;
 	if(turn_at.empty() == false) {
-		turn = atoi(turn_at.c_str());
+		turn_ = atoi(turn_at.c_str());
 	}
 
 	time_of_day::parse_times(time_cfg,times_);
 
-	set_start_ToD(const_cast<config&>(time_cfg), turn, NULL);
+	set_start_ToD(const_cast<config&>(time_cfg), turn_, NULL);
 
 	foreach (const config &t, time_cfg.child_range("time_area")) {
 		this->add_time_area(t);
@@ -221,4 +229,40 @@ void tod_manager::next_time_of_day()
 	VALIDATE(times_.size(), _("No time of day has been defined."));
 
 	currentTime_ = (currentTime_ + 1)%times_.size();
+}
+
+
+void tod_manager::modify_turns(const std::string& mod)
+{
+	num_turns_ = std::max<int>(utils::apply_modifier(num_turns_,mod,0),-1);
+}
+void tod_manager::add_turns(int num)
+{
+	num_turns_ = std::max<int>(num_turns_ + num,-1);
+}
+
+void tod_manager::set_turn(unsigned int num)
+{
+	VALIDATE(times_.size(), _("No time of day has been defined."));
+	const unsigned int old_num = turn_;
+	// Correct ToD
+	int current_time = (num  - 1) % times_.size();
+	if (current_time < 0) {
+		current_time += times_.size();
+	}
+	set_time_of_day(current_time);
+
+	if(static_cast<int>(num) > num_turns_ && num_turns_ != -1) {
+		this->add_turns(num_turns_ - num);
+	}
+	turn_ = num;
+
+	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
+}
+
+bool tod_manager::next_turn()
+{
+	next_time_of_day();
+	++turn_;
+	return num_turns_ == -1 || turn_ <= size_t(num_turns_);
 }
