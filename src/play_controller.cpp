@@ -81,16 +81,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	victory_music_(),
 	defeat_music_()
 {
-	//set current turn via wml formula (if available)
-	std::string turn_at = level["turn_at"];
-	if (&state_of_game)
-	{
-		turn_at = utils::interpolate_variables_into_string(turn_at, state_of_game);
-	}
-	if(turn_at.empty() == false) {
-		turn_ = atoi(turn_at.c_str());
-		start_turn_ = turn_;
-	}
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
@@ -403,7 +393,7 @@ void play_controller::fire_prestart(bool execute){
 		update_locker lock_display(gui_->video());
 		game_events::fire("prestart");
 		// prestart event may modify start turn with WML, reflect any changes.
-		start_turn_ = turn_;
+		start_turn_ = turn();
 	}
 }
 
@@ -411,10 +401,10 @@ void play_controller::fire_start(bool execute){
 	if(execute) {
 		game_events::fire("start");
 		// start event may modify start turn with WML, reflect any changes.
-		start_turn_ = turn_;
+		start_turn_ = turn();
 		gamestate_.set_variable("turn_number", str_cast<size_t>(start_turn_));
 	} else {
-		previous_turn_ = turn_;
+		previous_turn_ = turn();
 	}
 }
 
@@ -465,16 +455,16 @@ void play_controller::do_init_side(const unsigned int team_index){
 	team& current_team = teams_[team_index];
 
 	bool real_side_change = true;
-	if (!loading_game_ || int(team_index) + 1 != first_player_ || turn_ > start_turn_) {
-		if (turn_ != previous_turn_)
+	if (!loading_game_ || int(team_index) + 1 != first_player_ || turn() > start_turn_) {
+		if (turn() != previous_turn_)
 		{
 			std::stringstream event_stream;
-			event_stream << turn_;
+			event_stream << turn();
 			const std::string turn_num = event_stream.str();
 
 			game_events::fire("turn " + turn_num);
 			game_events::fire("new turn");
-			previous_turn_ = turn_;
+			previous_turn_ = turn();
 		}
 		// Fire side turn event only if real side change occurs,
 		// not counting changes from void to a side
@@ -488,9 +478,9 @@ void play_controller::do_init_side(const unsigned int team_index){
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game, and this is not the player it started with.
 	bool turn_refresh =
-		(turn_ > start_turn_ ||
+		(turn() > start_turn_ ||
 			(loading_game_ && int(team_index) + 1 != first_player_))
-								&& (turn_ > 1);
+								&& (turn() > 1);
 
 
 	if(turn_refresh) {
@@ -518,7 +508,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 	}
 
 	const time_of_day &tod = status_.get_time_of_day();
-	current_team.set_time_of_day(int(turn_), tod);
+	current_team.set_time_of_day(int(turn()), tod);
 
 	if (int(team_index) + 1 == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
@@ -533,50 +523,15 @@ void play_controller::do_init_side(const unsigned int team_index){
 	}
 }
 
-void play_controller::modify_turns(const std::string& mod)
-{
-	numTurns_ = std::max<int>(utils::apply_modifier(numTurns_,mod,0),-1);
-}
-void play_controller::add_turns(int num)
-{
-	numTurns_ = std::max<int>(numTurns_ + num,-1);
-}
-
-void play_controller::set_turn(unsigned int num)
-{
-	VALIDATE(tod_manager_.times().size(), _("No time of day has been defined."));
-	const unsigned int old_num = turn_;
-	// Correct ToD
-	int current_time = (num  - 1) % tod_manager_.times().size();
-	if (current_time < 0) {
-		current_time += tod_manager_.times().size();
-	}
-	tod_manager_.set_time_of_day(current_time);
-
-	if(static_cast<int>(num) > numTurns_ && numTurns_ != -1) {
-		this->add_turns(numTurns_ - num);
-	}
-	turn_ = num;
-
-	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
-}
-
-bool play_controller::next_turn()
-{
-	tod_manager_.next_time_of_day();
-	++turn_;
-	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
-}
-
 //builds the snapshot config from its members and their configs respectively
 config play_controller::to_config()
 {
 	config cfg;
 	std::stringstream buf;
-	buf << turn_;
+	buf << turn();
 	cfg["turn_at"] = buf.str();
 	buf.str(std::string());
-	buf << numTurns_;
+	buf << number_of_turns();
 	cfg["turns"] = buf.str();
 	buf.str(std::string());
 
@@ -605,7 +560,7 @@ void play_controller::finish_side_turn(){
 
 void play_controller::finish_turn(){
 	std::stringstream event_stream;
-	event_stream << turn_;
+	event_stream << turn();
 
 	{
 		LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
@@ -913,7 +868,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			items.erase(items.begin() + i);
 			std::vector<std::string> newitems;
 			std::vector<std::string> newsaves;
-			for (unsigned int turn = turn_; turn != 0; turn--) {
+			for (unsigned int turn = this->turn(); turn != 0; turn--) {
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (savegame_manager::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {

@@ -79,20 +79,20 @@ public:
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
 	//turn functions
-	size_t turn() const {return turn_;}
-	int number_of_turns() const {return numTurns_;}
-	void modify_turns(const std::string& mod);
-	void add_turns(int num);
+	size_t turn() const {return tod_manager_.turn();}
+	int number_of_turns() const {return tod_manager_.number_of_turns();}
+	void modify_turns(const std::string& mod)  {tod_manager_.modify_turns(mod);}
+	void add_turns(int num) {tod_manager_.add_turns(num);}
 
 	/** Dynamically change the current turn number. */
-	void set_turn(unsigned int num);
+	void set_turn(unsigned int num) {tod_manager_.set_turn(num);}
 
 	/**
 	 * Function to move to the next turn.
 	 *
 	 * @returns                   True if time has not expired.
 	 */
-	bool next_turn();
+	bool next_turn() {return tod_manager_.next_turn();}
 
 	void add_time_area(const config& cfg) {tod_manager_.add_time_area(cfg);}
 	void add_time_area(const std::string& id, const std::set<map_location>& locs,

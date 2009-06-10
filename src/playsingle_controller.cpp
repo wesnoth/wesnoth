@@ -332,7 +332,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	} catch(game::load_game_exception&) {
 		// Loading a new game is effectively a quit.
-		log.quit(turn_);
+		log.quit(turn());
 		throw;
 	} catch(end_level_exception& end_level) {
 		ai_testing::log_game_end();
@@ -374,11 +374,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		if(end_level.result == QUIT) {
-			log.quit(turn_);
+			log.quit(turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
 			gamestate_.classification().completion = "defeat";
-			log.defeat(turn_);
+			log.defeat(turn());
 			try {
 				game_events::fire("defeat");
 			} catch(end_level_exception&) {
@@ -418,7 +418,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					sound::play_music_once(victory_music);
 			}
 			if (first_human_team_ != -1)
-				log.victory(turn_, teams_[first_human_team_].gold());
+				log.victory(turn(), teams_[first_human_team_].gold());
 
 			const bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
 											gamestate_.classification().next_scenario != "null";
@@ -459,7 +459,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				const int finishing_bonus_per_turn =
 						 map_.villages().size() * game_config::village_income +
 						 game_config::base_income;
-				const int turns_left = std::max<int>(0, number_of_turns() - turn_);
+				const int turns_left = std::max<int>(0, number_of_turns() - turn());
 				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
 						 (finishing_bonus_per_turn * turns_left) : 0;
 
@@ -531,10 +531,10 @@ void playsingle_controller::play_turn(bool save)
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	LOG_NG << "turn: " << turn_ << "\n";
+	LOG_NG << "turn: " << turn() << "\n";
 
 	if(non_interactive())
-		std::cout << "Turn " << turn_ << ":" << std::endl;
+		std::cout << "Turn " << turn() << ":" << std::endl;
 
 
 	for (player_number_ = first_player_; player_number_ <= int(teams_.size()); ++player_number_)
@@ -783,7 +783,7 @@ void playsingle_controller::linger(upload_log& log)
 		}
 	} catch(game::load_game_exception&) {
 		// Loading a new game is effectively a quit.
-		log.quit(turn_);
+		log.quit(turn());
 		throw;
 	}
 
@@ -859,7 +859,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 
 void playsingle_controller::check_time_over(){
 	//FIXME: remove these assertions once turn functionality is removed from gamestatus
-	assert (status_.turn() == turn_);
+	assert (status_.turn() == turn());
 	assert (status_.number_of_turns() == number_of_turns());
 	bool b = next_turn();
 	if(!status_.next_turn() && !b) {

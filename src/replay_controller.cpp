@@ -59,7 +59,7 @@ replay_controller::replay_controller(const config& level,
 	gamestate_start_(state_of_game),
 	status_start_(level, num_turns, &state_of_game),
 	units_start_(),
-	numTurns_start_(numTurns_),
+	tod_manager_start_(level, num_turns, &state_of_game),
 	current_turn_(1),
 	delay_(0),
 	is_playing_(false),
@@ -164,8 +164,7 @@ void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
-	turn_ = start_turn_;
-	numTurns_ = numTurns_start_;
+	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	units_ = units_start_;
 	status_ = status_start_;
@@ -321,7 +320,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		return;
 	}
 
-	DBG_REPLAY << "Status turn number: " << turn_ << "\n";
+	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 
@@ -363,7 +362,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
 			//FIXME: remove these assertions once turn functionality is removed from gamestatus
-			assert (status_.turn() == turn_);
+			assert (status_.turn() == turn());
 			assert (status_.number_of_turns() == number_of_turns());
 			next_turn();
 			status_.next_turn();
