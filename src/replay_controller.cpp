@@ -320,7 +320,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		return;
 	}
 
-	DBG_REPLAY << "Status turn number: " << status_.turn() << "\n";
+	DBG_REPLAY << "Status turn number: " << turn_ << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 

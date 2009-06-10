@@ -355,7 +355,7 @@ void playmp_controller::linger(upload_log& log)
 		} catch (game::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
-			log.quit(status_.turn());
+			log.quit(turn_);
 			throw;
 		} catch (end_level_exception&) {
 			// thrown if the host ends the scenario and let us advance
@@ -490,7 +490,7 @@ void playmp_controller::play_network_turn(){
 			}
 
 			if(have_data) {
-				if (skip_replay_ && replay_last_turn_ <= status_.turn()){
+				if (skip_replay_ && replay_last_turn_ <= turn_){
 						skip_replay_ = false;
 				}
 				try{
