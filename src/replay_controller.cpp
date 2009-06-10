@@ -163,7 +163,7 @@ void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
-	turn_ = status_start_.turn();
+	turn_ = start_turn_;
 	numTurns_ = status_start_.number_of_turns();
 	recorder.start_replay();
 	units_ = units_start_;

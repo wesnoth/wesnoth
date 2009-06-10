@@ -30,6 +30,7 @@
 #include "save_blocker.hpp"
 #include "game_preferences.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -68,18 +69,29 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	first_human_team_(-1),
 	player_number_(1),
 	first_player_(lexical_cast_default<unsigned int, std::string>(level_["playing_team"], 0) + 1),
-	start_turn_(status_.turn()),
+	start_turn_(1),
 	is_host_(true),
 	skip_replay_(skip_replay),
 	linger_(false),
 	previous_turn_(0),
-	turn_(status_.turn()),
+	turn_(1),
 	numTurns_(num_turns),
 	savenames_(),
 	wml_commands_(),
 	victory_music_(),
 	defeat_music_()
 {
+	//set current turn via wml formula (if available)
+	std::string turn_at = level["turn_at"];
+	if (&state_of_game)
+	{
+		turn_at = utils::interpolate_variables_into_string(turn_at, state_of_game);
+	}
+	if(turn_at.empty() == false) {
+		turn_ = atoi(turn_at.c_str());
+		start_turn_ = turn_;
+	}
+
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
