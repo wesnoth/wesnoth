@@ -2252,7 +2252,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 	return res;
 }
 
-bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
+bool unit::resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name) const
 {
 	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
@@ -2272,7 +2272,6 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 			}
 		}
 	}
-	if (!unit_abilities::filter_base_matches(cfg, res)) return false;
 	return true;
 }
 
@@ -2291,7 +2290,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(std::vector<std::pair<config*,map_location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
-		if(!resistance_filter_matches(*i->first, attacker, damage_name, res)) {
+		if(!resistance_filter_matches(*i->first,attacker,damage_name)) {
 			i = resistance_abilities.cfgs.erase(i);
 		} else {
 			++i;
