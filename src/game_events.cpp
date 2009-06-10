@@ -1021,7 +1021,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		}
 		// change current turn only after applying mods
 		if(!current.empty()) {
-			const unsigned int current_turn_number = rsrc.status_ptr->turn();
+			const unsigned int current_turn_number = rsrc.controller->turn();
 			const int new_turn_number = lexical_cast_default<int>(current, current_turn_number);
 			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 			if(new_turn_number_u < current_turn_number || (new_turn_number > rsrc.status_ptr->number_of_turns() && rsrc.status_ptr->number_of_turns() != -1)) {
