@@ -293,7 +293,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Log before prestart events: they do weird things.
 		if (first_human_team_ != -1) {
 			log.start(gamestate_, teams_[first_human_team_], first_human_team_ + 1, units_,
-					  loading_game_ ? gamestate_.get_variable("turn_number") : "", status_.number_of_turns());
+					  loading_game_ ? gamestate_.get_variable("turn_number") : "", number_of_turns());
 		}
 
 		fire_prestart(!loading_game_);
@@ -459,7 +459,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				const int finishing_bonus_per_turn =
 						 map_.villages().size() * game_config::village_income +
 						 game_config::base_income;
-				const int turns_left = std::max<int>(0,status_.number_of_turns() - turn_);
+				const int turns_left = std::max<int>(0, number_of_turns() - turn_);
 				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
 						 (finishing_bonus_per_turn * turns_left) : 0;
 

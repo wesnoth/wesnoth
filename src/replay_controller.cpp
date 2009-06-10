@@ -59,6 +59,7 @@ replay_controller::replay_controller(const config& level,
 	gamestate_start_(state_of_game),
 	status_start_(level, num_turns, &state_of_game),
 	units_start_(),
+	numTurns_start_(numTurns_),
 	current_turn_(1),
 	delay_(0),
 	is_playing_(false),
@@ -164,7 +165,7 @@ void replay_controller::reset_replay(){
 	player_number_ = 1;
 	current_turn_ = 1;
 	turn_ = start_turn_;
-	numTurns_ = status_start_.number_of_turns();
+	numTurns_ = numTurns_start_;
 	recorder.start_replay();
 	units_ = units_start_;
 	status_ = status_start_;

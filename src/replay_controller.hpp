@@ -64,6 +64,7 @@ private:
 	game_state gamestate_start_;
 	gamestatus status_start_;
 	unit_map units_start_;
+	int numTurns_start_;
 
 	unsigned int current_turn_;
 	int delay_;
