@@ -199,6 +199,7 @@ stringfixes = {
 ),
 
 "wesnoth-utbs" :(
+# "Yanqui" is an ethnic slur in Spanish
 ("Yanqui", "Zhangor"),
 ),
 
