@@ -23,7 +23,7 @@ class unit_ability_list;
 
 namespace unit_abilities
 {
-
+bool filter_base_matches(const config& cfg, int def);
 
 enum value_modifier {NOT_USED,SET,ADD,MUL};
 

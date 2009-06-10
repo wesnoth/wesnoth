@@ -20,11 +20,9 @@
 #include "foreach.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
-
 #include "terrain_filter.hpp"
 
 
-#define LOG_NG LOG_STREAM(info, engine)
 
 /*
  *
@@ -780,6 +778,28 @@ void individual_effect::set(value_modifier t, int val, const config *abil, const
 	loc=l;
 }
 
+bool filter_base_matches(const config& cfg, int def)
+{
+	if (const config &apply_filter = cfg.child("filter_base_value")) {
+		std::string const &cond_eq = apply_filter["equals"];
+		std::string const &cond_ne = apply_filter["not_equals"];
+		std::string const &cond_lt = apply_filter["less_than"];
+		std::string const &cond_gt = apply_filter["greater_than"];
+		std::string const &cond_ge = apply_filter["greater_than_equal_to"];
+		std::string const &cond_le = apply_filter["less_than_equal_to"];
+		if ((cond_eq.empty() || def == lexical_cast_default<int>(cond_eq))
+		&& (cond_ne.empty() || def != lexical_cast_default<int>(cond_ne))
+		&& (cond_lt.empty() || def <  lexical_cast_default<int>(cond_lt))
+		&& (cond_gt.empty() || def >  lexical_cast_default<int>(cond_gt))
+		&& (cond_ge.empty() || def >= lexical_cast_default<int>(cond_ge))
+		&& (cond_le.empty() || def <= lexical_cast_default<int>(cond_le)))
+            return true;
+        else
+            return false;
+	}
+    return true;
+}
+
 effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	effect_list_(),
 	composite_value_(0)
@@ -799,28 +819,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 		if (!backstab && utils::string_bool(cfg["backstab"]))
 			continue;
+		if (!filter_base_matches(cfg, def))
+			continue;
 
-		if (const config &apply_filter = cfg.child("filter_base_value"))
-		{
-			std::string const &cond_eq = apply_filter["equals"];
-			if (!cond_eq.empty() && lexical_cast_default<int>(cond_eq) != def)
-				continue;
-			std::string const &cond_ne = apply_filter["not_equals"];
-			if (!cond_ne.empty() && lexical_cast_default<int>(cond_ne) == def)
-				continue;
-			std::string const &cond_lt = apply_filter["less_than"];
-			if (!cond_lt.empty() && lexical_cast_default<int>(cond_lt) <= def)
-				continue;
-			std::string const &cond_gt = apply_filter["greater_than"];
-			if (!cond_gt.empty() && lexical_cast_default<int>(cond_gt) >= def)
-				continue;
-			std::string const &cond_ge = apply_filter["greater_than_equal_to"];
-			if (!cond_ge.empty() && lexical_cast_default<int>(cond_ge) > def)
-				continue;
-			std::string const &cond_le = apply_filter["less_than_equal_to"];
-			if (!cond_le.empty() && lexical_cast_default<int>(cond_le) < def)
-				continue;
-		}
 		std::string const &cfg_value = cfg["value"];
 		if (!cfg_value.empty()) {
 			int value = lexical_cast_default<int>(cfg_value);

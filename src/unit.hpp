@@ -364,9 +364,7 @@ private:
 	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc) const;
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
-	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name) const;
-	bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
-	{return resistance_filter_matches(cfg, attacker, damage_type.type()); };
+	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
 	int movement_cost_internal(t_translation::t_terrain terrain, int recurse_count=0) const;
 	bool has_ability_by_id(const std::string& ability) const;
