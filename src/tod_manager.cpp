@@ -84,9 +84,9 @@ bool tod_manager::set_time_of_day(int newTime)
 	return true;
 }
 
-time_of_day tod_manager::get_previous_time_of_day(int current_turn) const
+time_of_day tod_manager::get_previous_time_of_day() const
 {
-	return get_time_of_day_turn(current_turn-1, current_turn);
+	return get_time_of_day_turn(0, 1);
 }
 
 time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc, int n_turn, int current_turn) const

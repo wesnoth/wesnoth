@@ -36,7 +36,7 @@ class tod_manager : public savegame_config
 
 		/** Returns time of day object for current turn. */
 		time_of_day get_time_of_day() const;
-		time_of_day get_previous_time_of_day(int current_turn) const;
+		time_of_day get_previous_time_of_day() const;
 		time_of_day get_time_of_day(int illuminated, const map_location& loc, int current_turn) const;
 		/**
 		 * Returns time of day object in the turn.
