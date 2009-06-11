@@ -30,6 +30,12 @@
 #include <vector>
 #include <string>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 //============================================================================
 namespace ai {
 
@@ -191,5 +197,9 @@ std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action con
 std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_evaluation_exception const &caee);
 
 std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_execution_exception const &caee);
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif

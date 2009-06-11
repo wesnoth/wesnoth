@@ -30,6 +30,12 @@
 
 #include "candidates.hpp"
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 // Forward declaration needed for ai function symbol table
 class formula_ai;
 
@@ -161,5 +167,9 @@ private:
 
 	friend class ai_default;
 };
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif

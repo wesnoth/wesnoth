@@ -23,6 +23,12 @@
 #include "../interface.hpp"
 #include "../contexts.hpp"
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 namespace ai {
 
 class ai2 : public readwrite_context_proxy, public interface {
@@ -46,6 +52,10 @@ private:
 };
 
 } //of namespace ai
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif
 

@@ -30,6 +30,12 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 namespace ai {
 
 namespace testing_ai_default {
@@ -56,5 +62,9 @@ private:
 } // of namespace testing_ai_default
 
 } // of namespace ai
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif

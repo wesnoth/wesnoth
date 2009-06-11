@@ -27,6 +27,12 @@
 
 #include "../../formula_callable.hpp"
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 class formula_ai;
 
 /** A trivial ai that sits around doing absolutely nothing. */
@@ -416,5 +422,10 @@ protected:
 	formula_ai *formula_ai_;
 	ai::ai_ptr formula_ai_ptr_;
 };
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
+
 
 #endif

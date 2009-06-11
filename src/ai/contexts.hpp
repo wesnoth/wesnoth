@@ -31,11 +31,18 @@ class gamemap;
 #include "../pathfind.hpp"
 #include "../playturn.hpp"
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 namespace ai {
 
 class interface;
 
 typedef boost::shared_ptr< interface > ai_ptr;
+
 
 // recursion counter
 class recursion_counter {
@@ -752,5 +759,8 @@ private:
 
 } //end of namespace ai
 
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif
