@@ -32,6 +32,7 @@ static lg::log_domain log_ai_composite_rca("ai/composite/rca");
 #define LOG_AI_COMPOSITE_RCA LOG_STREAM(info, log_ai_composite_rca)
 #define ERR_AI_COMPOSITE_RCA LOG_STREAM(err, log_ai_composite_rca)
 
+const double candidate_action::BAD_SCORE = 0;
 
 candidate_action::candidate_action(rca_context &context, const std::string &name, const std::string &type)
 	: recursion_counter_(context.get_recursion_count()), enabled_(true), score_(BAD_SCORE),name_(name),type_(type)

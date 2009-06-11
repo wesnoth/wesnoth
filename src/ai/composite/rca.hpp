@@ -38,7 +38,7 @@ namespace composite_ai {
 class candidate_action : public virtual rca_context_proxy {
 public:
 	//this is a score guaranteed to be <=0, thus candidate action with this score will not be selected for execution
-	static const double BAD_SCORE = 0;
+	static const double BAD_SCORE;
 
 	/**
 	 * Constructor
