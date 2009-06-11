@@ -24,6 +24,7 @@ class game_display;
 class gamemap;
 
 #include "../gamestatus.hpp"
+#include "../tod_manager.hpp"
 #include "../playturn.hpp"
 
 /**
@@ -45,9 +46,9 @@ class game_info {
 public:
 
 		game_info(game_display& disp, gamemap& map, unit_map& units,
-			std::vector<team>& teams, gamestatus& state, class game_state& game_state)
+			std::vector<team>& teams, gamestatus& state, tod_manager& tod_mng, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
-			   state(state), game_state_(game_state)
+			   state(state), tod_manager_(tod_mng), game_state_(game_state)
 		{}
 
 		/** The display object, used to draw the moves the AI makes. */
@@ -64,6 +65,9 @@ public:
 
 		/** Information about what turn it is, and what time of day. */
 		gamestatus& state;
+
+		/** Information about what turn it is, and what time of day. */
+		tod_manager tod_manager_;
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;

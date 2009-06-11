@@ -41,7 +41,7 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	assert(side>=1);
 	team& current_team = i.teams[side-1];
 
-	size_t _turn_number = i.state.turn();
+	size_t _turn_number = i.tod_manager_.turn();
 	int _units = side_units(i.units,side);
 	int _units_cost = side_units_cost(i.units,side);
 	int _gold = current_team.gold();
@@ -81,5 +81,5 @@ void ai_testing::log_game_start()
 
 void ai_testing::log_game_end()
 {
-	LOG_AI_TESTING << "GAME_END_TURN: "<< ai::manager::get_ai_info().state.turn() <<std::endl;
+	LOG_AI_TESTING << "GAME_END_TURN: "<< ai::manager::get_ai_info().tod_manager_.turn() <<std::endl;
 }
