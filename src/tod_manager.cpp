@@ -18,6 +18,9 @@
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "map.hpp"
+#include "unit.hpp"
+#include "unit_abilities.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -247,6 +250,39 @@ void tod_manager::next_time_of_day()
 	currentTime_ = (currentTime_ + 1)%times_.size();
 }
 
+time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map)
+{
+	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+
+	time_of_day tod = get_time_of_day(lighten + darken,loc);
+
+	if(loc.valid()) {
+		map_location locs[7];
+		locs[0] = loc;
+		get_adjacent_tiles(loc,locs+1);
+
+		for(int i = 0; i != 7; ++i) {
+			const unit_map::const_iterator itor = units.find(locs[i]);
+			if(itor != units.end() &&
+			    itor->second.get_ability_bool("illuminates") &&
+			    !itor->second.incapacitated())
+			{
+				unit_ability_list illum = itor->second.get_abilities("illuminates");
+				unit_abilities::effect illum_effect(illum,lighten,false);
+				int mod = illum_effect.get_composite_value();
+				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
+					mod = illum.highest("max_value").first - tod.lawful_bonus;
+				}
+				lighten = std::max<int>(mod, lighten);
+				darken = std::min<int>(mod, darken);
+			}
+		}
+	}
+	tod = get_time_of_day(lighten + darken,loc);
+
+	return tod;
+}
 
 void tod_manager::modify_turns(const std::string& mod)
 {

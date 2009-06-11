@@ -24,6 +24,8 @@
 #include <vector>
 
 class game_state;
+class unit_map;
+class game_map;
 
 //time of day and turn functionality
 class tod_manager : public savegame_config
@@ -86,6 +88,9 @@ class tod_manager : public savegame_config
 		
 		void next_time_of_day();
 		const std::vector<time_of_day> times() const {return times_;}
+
+		//consider tod modifying units (e.g. illuminates)
+		time_of_day time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map);
 
 		//turn functions
 		size_t turn() const {return turn_;}
