@@ -1740,7 +1740,10 @@ def spellcheck(fn, d):
             # helpfile(s).
             if nav.element == 'text=' and '[help]' in nav.ancestors():
                 continue
-            # Spell-check the attruibute value
+            # Remove pango markup
+            if "<" in nav.text or ">" in nav.text or '&' in nav.text:
+                nav.text = pangostrip(nav.text)
+            # Spell-check the attribute value
             (key, prefix, value, comment) = parse_attribute(nav.text)
             if "no spellcheck" in comment:
                 continue
@@ -1753,9 +1756,6 @@ def spellcheck(fn, d):
                 value = value[:-1].rstrip()
             # Strip off string quotes
             value = string_strip(value)
-            # Remove pango markup
-            if "<" in value or ">" in value or '&' in value:
-                value = pangostrip(value)
             # Discard extraneous stuff 
             value = value.replace("...", " ")
             value = value.replace("''", "")
