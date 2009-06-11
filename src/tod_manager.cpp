@@ -49,6 +49,22 @@ tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* stat
 	}
 }
 
+tod_manager& tod_manager::operator=(const tod_manager& manager)
+{
+	if(this == &manager) {
+		return *this;
+	}
+
+	currentTime_ = manager.currentTime_;
+	times_ = manager.times_;
+	areas_ = manager.areas_;
+
+	turn_ = manager.turn_;
+	num_turns_ = manager.num_turns_;
+
+	return *this;
+}
+
 config tod_manager::to_config()
 {
 	config cfg;
