@@ -1736,7 +1736,7 @@ def spellcheck(fn, d):
         # Spell-check message and story parts
         if nav.element in spellcheck_these:
             # Special case, beyond us until we can do better filtering..
-            # There is lots of strange stuff in thext- attributes in the
+            # There is lots of strange stuff in text- attributes in the
             # helpfile(s).
             if nav.element == 'text=' and '[help]' in nav.ancestors():
                 continue
@@ -1960,8 +1960,8 @@ if __name__ == '__main__':
         # on SingleUnitWML in macro files.  The post15 flag expresses whether
         # we've seen a [unit_type] and can therefore assume the files have
         # undergone 1.4 -> 1.5 conversion.
+        global post15
         if "units" in filename and not post15:
-            global post15
             if '[unit_type]' in line:
                 post15 = True
             else:
