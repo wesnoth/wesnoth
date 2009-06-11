@@ -67,7 +67,7 @@ public:
 		gamestatus& state;
 
 		/** Information about what turn it is, and what time of day. */
-		tod_manager tod_manager_;
+		tod_manager& tod_manager_;
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
