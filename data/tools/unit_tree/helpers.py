@@ -161,7 +161,7 @@ class WesnothList:
         WML = self.parser.parse("{core/terrain.cfg}\n")
 
         n = 0
-        for terrain in WML.get_all("terrain"):
+        for terrain in WML.get_all("terrain_type"):
             tid = terrain.get_text_val("id")
             self.terrain_lookup[tid] = terrain
             n += 1
