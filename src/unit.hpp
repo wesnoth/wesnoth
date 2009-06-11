@@ -458,6 +458,7 @@ private:
 	const unit_map* units_;
 	const gamemap* map_;
 	const gamestatus* gamestatus_;
+	const std::vector<team>* teams_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
 	mutable std::map<map_location, bool> invisibility_cache_;

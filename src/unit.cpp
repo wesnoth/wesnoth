@@ -163,12 +163,13 @@ unit::unit(const unit& o):
            units_(o.units_),
            map_(o.map_),
            gamestatus_(o.gamestatus_),
+           teams_(o.teams_),
 		   invisibility_cache_()
 {
 }
 
 unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
-		const std::vector<team>* /*teams*/,const config& cfg,
+		const std::vector<team>* teams,const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
 	advances_to_(),
@@ -238,6 +239,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	units_(unitmap),
 	map_(map),
 	gamestatus_(game_status),
+	teams_(teams),
 	invisibility_cache_()
 {
 	read(cfg, use_traits, state);
@@ -318,6 +320,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	units_(NULL),
 	map_(NULL),
 	gamestatus_(NULL),
+	teams_(NULL),
 	invisibility_cache_()
 {
 	read(cfg,use_traits);
@@ -356,7 +359,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 }
 
 unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
-		const std::vector<team>* /*teams*/, const unit_type* t, int side,
+		const std::vector<team>* teams, const unit_type* t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
 	advances_to_(),
@@ -426,6 +429,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	units_(unitmap),
 	map_(map),
 	gamestatus_(game_status),
+	teams_(teams),
 	invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
@@ -584,11 +588,12 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* /*teams*/)
+void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
 {
 	units_ = unitmap;
 	map_ = map;
 	gamestatus_ = game_status;
+	teams_ = teams;
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
