@@ -35,7 +35,8 @@ terrain_filter::terrain_filter():
 	map_(gamemap(config(),
 	std::string())),
 	status_(gamestatus(config(), 1)),
-	units_(unit_map())
+	units_(unit_map()),
+	teams_(std::vector<team>())
 {
 	assert(false);
 }
