@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -312,10 +312,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\config.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config_adapter.cpp"
 				>
 			</File>
 			<File
@@ -651,6 +647,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\shared_object.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\shared_string.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\show_dialog.cpp"
 				>
 			</File>
@@ -672,14 +676,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\statistics_dialog.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\shared_object.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\shared_string.hpp"
 				>
 			</File>
 			<File
@@ -2797,11 +2793,11 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\ai\testing\stage_rca.cpp"
+						RelativePath="..\..\src\ai\testing\stage_fallback.cpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\ai\testing\stage_fallback.cpp"
+						RelativePath="..\..\src\ai\testing\stage_rca.cpp"
 						>
 					</File>
 				</Filter>
@@ -2875,10 +2871,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\config.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config_adapter.hpp"
 				>
 			</File>
 			<File
@@ -3704,11 +3696,11 @@
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\ai\testing\stage_rca.hpp"
+						RelativePath="..\..\src\ai\testing\stage_fallback.hpp"
 						>
 					</File>
 					<File
-						RelativePath="..\..\src\ai\testing\stage_fallback.hpp"
+						RelativePath="..\..\src\ai\testing\stage_rca.hpp"
 						>
 					</File>
 				</Filter>
