@@ -684,7 +684,7 @@ class HTMLOutput:
         write("</tr>\n")
         for rid in resistances:
             special, r = find_attr("resistance", rid)
-            if r == "-": r = 0
+            if r == "-": r = 100
             try: r = "%d%%" % (100 - int(r))
             except ValueError:
                 sys.stderr.write("Warning: Invalid resistance %s for %s.\n" % (
@@ -721,7 +721,7 @@ class HTMLOutput:
             dcell = "td"
             not_from_race, d = find_attr("defense", tid)
 
-            if d == "-": d = 0
+            if d == "-": d = 100
             try: d = "%d%%" % (100 - int(d))
             except ValueError:
                 sys.stderr.write("Warning: Invalid defense %s for %s.\n" % (
