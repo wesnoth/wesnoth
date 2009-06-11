@@ -18,7 +18,6 @@
 #define GAME_DISPLAY_H_INCLUDED
 
 class config;
-class gamestatus;
 class tod_manager;
 class team;
 class unit;
@@ -43,7 +42,7 @@ class game_display : public display
 {
 public:
 	game_display(unit_map& units, CVideo& video,
-			const gamemap& map, const gamestatus& status, const tod_manager& tod_manager,
+			const gamemap& map, const tod_manager& tod_manager,
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
 
@@ -134,7 +133,6 @@ public:
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);
 
-	const gamestatus &get_game_status() { return status_; }
 	void draw_report(reports::TYPE report_num);
 
 	/** Function to invalidate that unit status displayed on the sidebar. */
@@ -321,8 +319,6 @@ private:
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 
 	marked_route route_;
-
-	const gamestatus& status_;
 
 	const tod_manager& tod_manager_;
 

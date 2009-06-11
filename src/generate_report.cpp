@@ -23,6 +23,7 @@
 #include "actions.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
+#include "tod_manager.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map.hpp"
@@ -40,7 +41,7 @@ report generate_report(TYPE type,
                        const std::vector<team>& teams, const team& current_team,
                        int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-                       const gamestatus& status, const std::set<std::string>& observers,
+                       const tod_manager& tod_manager_, const std::set<std::string>& observers,
                        const config& level, bool show_everything)
 {
 	const unit *u = NULL;
@@ -343,12 +344,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_PROFILE:
 		return report("", u->profile(), "");
 	case TIME_OF_DAY: {
-		time_of_day tod = timeofday_at(status,units,mouseover,map);
+		time_of_day tod = tod_manager_.time_of_day_at(units,mouseover,map);
 		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
 
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover) || current_team.shrouded(mouseover)) {
-			tod = status.get_time_of_day(false,mouseover);
+			tod = tod_manager_.get_time_of_day(false,mouseover);
 		}
 		std::stringstream tooltip;
 
@@ -362,10 +363,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return report("",tod_image,tooltip.str());
 	}
 	case TURN:
-		str << status.turn();
+		str << tod_manager_.turn();
 
-		if(status.number_of_turns() != -1) {
-			str << "/" << status.number_of_turns();
+		if(tod_manager_.number_of_turns() != -1) {
+			str << "/" << tod_manager_.number_of_turns();
 		}
 
 		str << "\n";

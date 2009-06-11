@@ -43,7 +43,7 @@ static lg::log_domain log_engine("engine");
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
-		const gamestatus& status, const tod_manager& tod, const std::vector<team>& t,
+		const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
 		display(video, &map, theme_cfg, cfg, level),
 		units_(units),
@@ -52,7 +52,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		attack_indicator_dst_(),
 		energy_bar_rects_(),
 		route_(),
-		status_(status),
 		tod_manager_(tod),
 		teams_(t),
 		level_(level),
@@ -130,10 +129,9 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static unit_map dummy_umap;
 	static config dummy_cfg;
 	static gamemap dummy_map(dummy_cfg, "");
-	static gamestatus dummy_status(dummy_cfg, 0);
 	tod_manager dummy_tod(dummy_cfg, 0);
 	static std::vector<team> dummy_teams;
-	return new game_display(dummy_umap, video, dummy_map, dummy_status, dummy_tod,
+	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
 			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg);
 }
 
@@ -430,11 +428,11 @@ void game_display::draw_report(reports::TYPE report_num)
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
 							  selectedHex_, mouseoverHex_, displayedUnitHex_,
-							  status_, observers_, level_, !viewpoint_);
+							  tod_manager_, observers_, level_, !viewpoint_);
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
-		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,get_map());
+		time_of_day tod = tod_manager_.time_of_day_at(units_,mouseoverHex_,get_map());
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (fogged(mouseoverHex_) || shrouded(mouseoverHex_)) {
 

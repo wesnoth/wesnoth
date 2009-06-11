@@ -250,7 +250,7 @@ void tod_manager::next_time_of_day()
 	currentTime_ = (currentTime_ + 1)%times_.size();
 }
 
-time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map)
+time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map) const
 {
 	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);

@@ -22,7 +22,7 @@
 #include "image.hpp"
 #include "team.hpp"
 
-class gamestatus;
+class tod_manager;
 class unit_map;
 
 //this module is responsible for outputting textual reports of
@@ -96,7 +96,7 @@ namespace reports {
 			       const std::vector<team>& teams, const team& current_team,
 			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-			       const gamestatus& status, const std::set<std::string>& observers,
+			       const tod_manager& tod_manager_, const std::set<std::string>& observers,
 			       const config& level, bool show_everything = false);
 }
 
