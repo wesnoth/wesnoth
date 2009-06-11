@@ -473,7 +473,7 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 		vconfig t_filter = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
-			terrain_filter filter(t_filter,map,game_status,units);
+			terrain_filter filter(t_filter,map,game_status,*(game_status.teams),units);
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if(!locs.empty()) {

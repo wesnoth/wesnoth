@@ -43,12 +43,13 @@ terrain_filter::terrain_filter():
 #endif
 
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
-		const gamestatus& game_status, const unit_map& units,
+		const gamestatus& game_status, const std::vector<team>& teams, const unit_map& units,
 		const bool flat_tod, const size_t max_loop) :
 	cfg_(cfg),
 	map_(map),
 	status_(game_status),
 	units_(units),
+	teams_(teams),
 	cache_(),
 	max_loop_(max_loop),
 	flat_(flat_tod)
@@ -60,6 +61,7 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	map_(original.map_),
 	status_(original.status_),
 	units_(original.units_),
+	teams_(original.teams_),
 	cache_(),
 	max_loop_(original.max_loop_),
 	flat_(original.flat_)
@@ -73,6 +75,7 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	map_(other.map_),
 	status_(other.status_),
 	units_(other.units_),
+	teams_(other.teams_),
 	cache_(),
 	max_loop_(other.max_loop_),
 	flat_(other.flat_)
@@ -253,8 +256,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	const std::string& owner_side = t_owner_side;
 	if(!owner_side.empty()) {
 		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
-		assert(status_.teams != NULL);
-		if(village_owner(loc, *(status_.teams)) != side_index) {
+		assert(&teams_ != NULL);
+		if(village_owner(loc, teams_) != side_index) {
 			return false;
 		}
 	}

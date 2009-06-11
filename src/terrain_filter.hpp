@@ -23,6 +23,8 @@ class gamestatus;
 class unit;
 class vconfig;
 class unit_map;
+class tod_manager;
+class team;
 
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
@@ -33,7 +35,7 @@ public:
 	// other compilers don't need it.
 	terrain_filter();
 #endif
-	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status,
+	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status, const std::vector<team>& teams,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	~terrain_filter() {};
@@ -64,6 +66,7 @@ private:
 	const gamemap& map_;
 	const gamestatus& status_;
 	const unit_map& units_;
+	const std::vector<team>& teams_;
 
 	struct terrain_filter_cache {
 		terrain_filter_cache() :

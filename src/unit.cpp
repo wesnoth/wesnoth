@@ -1129,7 +1129,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		assert(gamestatus_ != NULL);
 		assert(units_ != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, *map_, *gamestatus_, *units_, use_flat_tod);
+		terrain_filter t_filter(t_cfg, *map_, *gamestatus_, *(gamestatus_->teams), *units_, use_flat_tod);
 		if(!t_filter.match(loc)) {
 			return false;
 		}

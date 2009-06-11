@@ -21,6 +21,7 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
+#include "gamestatus.hpp"
 
 
 
@@ -277,7 +278,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), *map_, *gamestatus_, *units_);
+			terrain_filter adj_filter(vconfig(i), *map_, *gamestatus_, *(gamestatus_->teams), *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -689,7 +690,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), *map_, *game_status_, *unitmap_);
+			terrain_filter adj_filter(vconfig(i), *map_, *game_status_, *(game_status_->teams), *unitmap_);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
