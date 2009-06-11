@@ -74,6 +74,12 @@ void idle_ai::play_turn()
 }
 
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 /** Sample ai, with simple strategy. */
 class sample_ai : public ai::readwrite_context_proxy, public ai::interface {
 public:
@@ -220,6 +226,11 @@ protected:
 private:
 	ai::recursion_counter recursion_counter_;
 };
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
+
 
 ai_default::ai_default(ai::default_ai_context &context) :
 	game_logic::formula_callable(),
