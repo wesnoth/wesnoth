@@ -30,6 +30,7 @@
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
+#include "tod_manager.hpp"
 #include "sound.hpp"
 
 static lg::log_domain log_display("display");
@@ -42,7 +43,7 @@ static lg::log_domain log_engine("engine");
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
-		const gamestatus& status, const std::vector<team>& t,
+		const gamestatus& status, const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
 		display(video, &map, theme_cfg, cfg, level),
 		units_(units),
@@ -52,6 +53,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		energy_bar_rects_(),
 		route_(),
 		status_(status),
+		tod_manager_(tod),
 		teams_(t),
 		level_(level),
 		invalidateUnit_(true),
@@ -129,8 +131,9 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static config dummy_cfg;
 	static gamemap dummy_map(dummy_cfg, "");
 	static gamestatus dummy_status(dummy_cfg, 0);
+	tod_manager dummy_tod(dummy_cfg, 0);
 	static std::vector<team> dummy_teams;
-	return new game_display(dummy_umap, video, dummy_map, dummy_status,
+	return new game_display(dummy_umap, video, dummy_map, dummy_status, dummy_tod,
 			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg);
 }
 
@@ -143,10 +146,10 @@ game_display::~game_display()
 
 void game_display::new_turn()
 {
-	const time_of_day& tod = status_.get_time_of_day();
+	const time_of_day& tod = tod_manager_.get_time_of_day();
 
 	if( !first_turn_) {
-		const time_of_day& old_tod = status_.get_previous_time_of_day();
+		const time_of_day& old_tod = tod_manager_.get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
 			const surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
@@ -192,7 +195,7 @@ void game_display::new_turn()
 
 void game_display::adjust_colours(int r, int g, int b)
 {
-	const time_of_day& tod = status_.get_time_of_day();
+	const time_of_day& tod = tod_manager_.get_time_of_day();
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
@@ -343,7 +346,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
-	const std::string& tod_hex_mask = status_.get_time_of_day(0, loc).image_mask;
+	const std::string& tod_hex_mask = tod_manager_.get_time_of_day(0, loc).image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
@@ -394,7 +397,7 @@ void game_display::draw_hex(const map_location& loc)
 
 void game_display::update_time_of_day()
 {
-	tod_ = status_.get_time_of_day();
+	tod_ = tod_manager_.get_time_of_day();
 }
 
 void game_display::redraw_units(const std::vector<map_location>& invalidated_unit_locations)
@@ -435,7 +438,7 @@ void game_display::draw_report(reports::TYPE report_num)
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (fogged(mouseoverHex_) || shrouded(mouseoverHex_)) {
 
-			tod = status_.get_time_of_day(false,mouseoverHex_);
+			tod = tod_manager_.get_time_of_day(false,mouseoverHex_);
 		}
 		brighten = (tod.bonus_modified > 0);
 	}

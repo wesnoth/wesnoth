@@ -18,6 +18,7 @@
 
 #include "game_display.hpp"
 #include "gamestatus.hpp"
+#include "tod_manager.hpp"
 #include "map.hpp"
 #include "unit_map.hpp"
 
@@ -31,6 +32,7 @@ namespace test_utils {
 		config dummy_cfg_;
 		gamemap dummy_map_;
 		gamestatus dummy_status_;
+		tod_manager dummy_tod_;
 		std::vector<team> dummy_teams_;
 		const events::event_context main_event_context_;
 
@@ -62,9 +64,10 @@ namespace test_utils {
 		dummy_cfg_(),
 		dummy_map_(dummy_cfg_,""),
 		dummy_status_(dummy_cfg_, 0),
+		dummy_tod_(dummy_cfg_, 0),
 		dummy_teams_(),
 		main_event_context_(),
-		disp_(dummy_umap_, video_, dummy_map_, dummy_status_,
+		disp_(dummy_umap_, video_, dummy_map_, dummy_status_, dummy_tod_,
 				dummy_teams_, dummy_cfg_, dummy_cfg_, dummy_cfg_)
 	{
 	}

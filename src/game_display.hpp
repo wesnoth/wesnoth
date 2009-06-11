@@ -19,6 +19,7 @@
 
 class config;
 class gamestatus;
+class tod_manager;
 class team;
 class unit;
 class unit_map;
@@ -42,7 +43,7 @@ class game_display : public display
 {
 public:
 	game_display(unit_map& units, CVideo& video,
-			const gamemap& map, const gamestatus& status,
+			const gamemap& map, const gamestatus& status, const tod_manager& tod_manager,
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
 
@@ -322,6 +323,8 @@ private:
 	marked_route route_;
 
 	const gamestatus& status_;
+
+	const tod_manager& tod_manager_;
 
 	const std::vector<team>& teams_;
 
