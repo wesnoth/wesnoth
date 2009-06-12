@@ -303,6 +303,35 @@ if(ENABLE_POT_UPDATE_TARGET)
 		DEPENDS ${pot-update-SRC}
 	)
 
+
+	##### po update per language #####
+	foreach(LANG ${LANGUAGES})
+		foreach(DOMAIN ${NORMAL_DOMAINS})
+			add_custom_command(
+				# The pot-update depends on a dummy file which we promise to
+				# make. We don't make this dummy file but the pot-update
+				# still works.
+				OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
+				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} 
+						--backup=none
+						-U ${LANG}.po 
+						${DOMAIN}.pot
+				WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/po/${DOMAIN}
+				COMMENT "po-update [${DOMAIN}-${LANG}]: Updated po file."
+			)
+
+			set(po-update-LANG-SRC ${po-update-LANG-SRC} 
+				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${LANG}.po.lang.dummy
+			)
+
+		endforeach(DOMAIN ${NORMAL_DOMAINS})
+		add_custom_target(po-update2-${LANG}
+			COMMENT "po-update ${LANG}: Done."
+			DEPENDS ${po-update-LANG-SRC}
+		)
+		set(po-update-LANG-SRC "")
+	endforeach(LANG ${LANGUAGES})
+
 endif(ENABLE_POT_UPDATE_TARGET)
 
 if(ENABLE_NLS)
