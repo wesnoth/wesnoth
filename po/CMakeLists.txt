@@ -312,9 +312,9 @@ if(ENABLE_NLS)
 		set(GETTEXT_MSGFMT_PARAMETER -v)
 	endif(ENABLE_POT_UPDATE_TARGET)
 
-	foreach(DOMAIN ${DOMAINS})
+	foreach(LANG ${LANGUAGES})
 
-		foreach(LANG ${LANGUAGES})
+		foreach(DOMAIN ${DOMAINS})
 
 			add_custom_command(
 				OUTPUT ${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES
@@ -341,10 +341,21 @@ if(ENABLE_NLS)
 			set(mo-update-SRC ${mo-update-SRC} 
 				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
 			)
+			set(mo-update-LANG-SRC ${mo-update-LANG-SRC} 
+				${CMAKE_SOURCE_DIR}/${LOCALEDIR}/${LANG}/LC_MESSAGES/${DOMAIN}.mo
+			)
 
-		endforeach(LANG ${LANGUAGES})
+		endforeach(DOMAIN ${DOMAINS})
 
-	endforeach(DOMAIN ${DOMAINS})
+		if(ENABLE_POT_UPDATE_TARGET)
+			add_custom_target(mo-update2-${LANG}
+				COMMENT "mo-update ${LANG}: Done."
+				DEPENDS ${mo-update-LANG-SRC}
+			)
+			set(mo-update-LANG-SRC "")
+		endif(ENABLE_POT_UPDATE_TARGET)
+
+	endforeach(LANG ${LANGUAGES})
 
 	# The target to call
 	add_custom_target(mo-update2 ALL
