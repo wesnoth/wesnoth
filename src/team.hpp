@@ -348,7 +348,6 @@ struct teams_manager {
 	teams_manager(std::vector<team>& teams);
 	~teams_manager();
 
-	bool is_observer();
 	static const std::vector<team>& get_teams();
 	int get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg, const std::string& client_type, const std::string& login);
 };

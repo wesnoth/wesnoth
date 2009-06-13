@@ -55,17 +55,6 @@ const std::vector<team>& teams_manager::get_teams()
 	return *teams;
 }
 
-bool teams_manager::is_observer()
-{
-	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
-		if(i->is_local()) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
 int teams_manager::get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg,
 						const std::string& client_type, const std::string& login)
 {

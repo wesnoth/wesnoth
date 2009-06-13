@@ -351,7 +351,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 		}
-		const bool obs = team_manager_.is_observer();
+		const bool obs = is_observer();
 		if (game_config::exit_at_end) {
 			exit(0);
 		}

@@ -171,7 +171,7 @@ void play_controller::init(CVideo& video){
 	if(first_human_team_ != -1) {
 		gui_->set_team(first_human_team_);
 	}
-	else if (team_manager_.is_observer())
+	else if (is_observer())
 	{
 		// Find first team that is allowed to be observered.
 		// If not set here observer would be without fog untill
@@ -424,7 +424,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	mouse_handler_.set_side(team_index + 1);
 
 	// If we are observers we move to watch next team if it is allowed
-	if (team_manager_.is_observer()
+	if (is_observer()
 		&& !current_team.get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
