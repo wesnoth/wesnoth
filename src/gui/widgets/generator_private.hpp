@@ -410,18 +410,11 @@ struct tindependant
 	void set_visible_area(const SDL_Rect& area);
 
 	/** See thorizontal_list::find_widget(). */
-	twidget* find_widget(const tpoint&, const bool)
-	{
-		/** @todo implement. */
-		return NULL;
-	}
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** See thorizontal_list::find_widget(). */
-	const twidget* find_widget(const tpoint&, const bool) const
-	{
-		/** @todo implement. */
-		return NULL;
-	}
+	const twidget* find_widget(const tpoint& coordinate
+			, const bool must_be_active) const;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

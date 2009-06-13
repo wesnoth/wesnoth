@@ -310,6 +310,36 @@ void tindependant::set_origin(const tpoint& origin)
 	}
 }
 
+twidget* tindependant::find_widget(const tpoint& coordinate
+		, const bool must_be_active)
+{
+	const twindow* window = get_window();
+	assert(window);
+
+	const int selected_item = get_selected_item();
+	if(selected_item < 0) {
+		return NULL;
+	}
+
+	tgrid& grid = get_item(selected_item);
+	return grid.find_widget(coordinate, must_be_active);
+}
+
+const twidget* tindependant::find_widget(const tpoint& coordinate
+		, const bool must_be_active) const
+{
+	const twindow* window = get_window();
+	assert(window);
+
+	const int selected_item = get_selected_item();
+	if(selected_item < 0) {
+		return NULL;
+	}
+
+	const tgrid& grid = get_item(selected_item);
+	return grid.find_widget(coordinate, must_be_active);
+}
+
 void tindependant::set_visible_area(const SDL_Rect& area)
 {
 	/*
