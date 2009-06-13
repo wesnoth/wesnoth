@@ -34,7 +34,7 @@ namespace {
 template<class D>
 void show_dialog(twidget* caller)
 {
-	ttitle_screen *dialog =  dynamic_cast<ttitle_screen*>(caller->dialog());
+	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
 	assert(dialog);
 
 	D dlg;
@@ -64,19 +64,23 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	set_restore(false);
 
-	// Note changing the language doesn't upate the title screen...
-	window.get_widget<tbutton>("language", false).
-		set_callback_mouse_left_click( show_dialog<gui2::tlanguage_selection>);
-
-	window.get_widget<tbutton>("addons", false).
-		set_callback_mouse_left_click( show_dialog<gui2::taddon_connect>);
-
 	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
-	/*Select a random game_title*/
+	/**** Set the buttons ****/
+	window.get_widget<tbutton>("addons", false).
+		set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
+
+	// Note changing the language doesn't upate the title screen...
+	window.get_widget<tbutton>("language", false).
+			set_callback_mouse_left_click(
+				show_dialog<gui2::tlanguage_selection>);
+
+	/***** Select a random game_title *****/
 	std::vector<std::string> game_title_list =
-		utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+		utils::split(game_config::game_title
+				, ','
+				, utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 	if(game_title_list.empty()) {
 		ERR_CF << "No title image defined\n";
