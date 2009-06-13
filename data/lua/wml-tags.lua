@@ -188,34 +188,17 @@ end
 function unit_worth(cfg)
     local x1 = cfg.x;
     local y1 = cfg.y;
-    wesnoth.fire("store_unit", {
-        { "filter", {
-            x = x1,
-            y = y1
-        } },
-        variable = "tmp_unit",
-        kill = "no",
-    });
-    local health_weight = .5;
-    local xp_weight = 2; --completely arbitrary
-    local base = .5; --TODO: find better defaults
+    local u = (wesnoth.get_units { x=x1, y=y1 })[1]
+    local health_weight = cfg.health_weight or .5
+    local xp_weight = cfg.experience_weight or 2 --completely arbitrary
+    local base = cfg.base or .5 --TODO: find better defaults
 
-    if cfg.health_weight then
-        health_weight = cfg.health_weight
-    end
-    if cfg.experience_weight then
-        xp_weight = cfg.experience_weight
-    end
-    if cfg.base then
-        base = cfg.base
-    end
-
-    local cost = wesnoth.get_variable("tmp_unit.cost");
+    local cost = u.__cfg.cost
     if not cost then
         error( string.format("Unit at %d,%d does not have a cost",x1,y1) );
     end
-    local health = wesnoth.get_variable("tmp_unit.hitpoints") / wesnoth.get_variable("tmp_unit.max_hitpoints");
-    local xp = wesnoth.get_variable("tmp_unit.experience") / wesnoth.get_variable("tmp_unit.max_experience");
+    local health = u.hitpoints / u.max_hitpoints
+    local xp = u.experience / u.max_experience
     local total = cost * (xp * xp_weight + health * health_weight + base);
     wesnoth.set_variable("cost", cost);
     wesnoth.set_variable("health", math.floor( health * 100) );
@@ -233,7 +216,6 @@ function unit_worth(cfg)
             ),
         });
     end
-    wesnoth.fire("clear_variable", { name = "tmp_unit", } );
 end
 
 wesnoth.register_wml_action("objectives", wml_objectives)
