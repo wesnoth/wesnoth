@@ -705,7 +705,8 @@ double ai_default::power_projection(const map_location& loc, const move_map& dst
 				tod_modifier = -lawful_bonus;
 			}
 
-			int hp = un.hitpoints() * 1000 / un.max_hitpoints();
+			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
+			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
 			for(std::vector<attack_type>::const_iterator att =
 			    un.attacks().begin(); att != un.attacks().end(); ++att) {
