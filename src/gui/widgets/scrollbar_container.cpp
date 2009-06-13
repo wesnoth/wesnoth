@@ -431,6 +431,20 @@ const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 			::find_widget<const twidget>(*this, coordinate, must_be_active);
 }
 
+twidget* tscrollbar_container::find_widget(
+		const std::string& id, const bool must_be_active)
+{
+	return tscrollbar_container_implementation
+			::find_widget<twidget>(*this, id, must_be_active);
+}
+
+const twidget* tscrollbar_container::find_widget(
+			const std::string& id, const bool must_be_active) const
+{
+	return tscrollbar_container_implementation
+			::find_widget<const twidget>(*this, id, must_be_active);
+}
+
 bool tscrollbar_container::does_block_easy_close() const
 {
 	assert(vertical_scrollbar_grid_

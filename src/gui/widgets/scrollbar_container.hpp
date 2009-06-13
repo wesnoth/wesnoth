@@ -129,8 +129,15 @@ public:
 	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 
+	/** Inherited from tcontainer_. */
+	twidget* find_widget(const std::string& id, const bool must_be_active);
+
 	/** Import overloaded versions. */
 	using tcontainer_::find_widget;
+
+	/** Inherited from tcontrol.*/
+	const twidget* find_widget(
+			const std::string& id, const bool must_be_active) const;
 
 	/** Inherited from tcontainer_. */
 	bool does_block_easy_close() const;
