@@ -53,7 +53,7 @@ class Grammar:
 # This is the top-level pseudo-tag that everything is a child of.
 # It should have no keys
 'WML' : (
-    [ 'about', 'advanced_preference', 'binary_path', 'campaign', 'fonts', 'game_config', 'help', 'hotkey', 'terrain', 'terrain_graphics', 'textdomain', 'theme', 'units', ],
+    [ 'about', 'advanced_preference', 'binary_path', 'campaign', 'fonts', 'game_config', 'help', 'hotkey', 'terrain_type', 'terrain_graphics', 'textdomain', 'theme', 'units', ],
     []),
 # Attempt to keep everything alphabetically ordered
 'about' : (
@@ -224,17 +224,17 @@ class Grammar:
     [], #TODO: filters
     [ 'active_on', 'apply_to', 'description', 'description_inactive', 'id', 'name', 'name_inactive', ]),
 'specials' : (
-    [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'drains', 'firststrike', 'plague', 'poison', 'slow', 'stones', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
+    [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'drains', 'firststrike', 'plague', 'poison', 'slow', 'petrifies', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
     []),
 'status' : (
     [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
     []),
-'stones' : 'special-dummy',
+'petrifies' : 'special-dummy',
 'swarm' : TagPlus('special-dummy', ([], ['swarm_attacks_min', 'swarm_attacks_max',]) ),
 'teleport' : 'ability-dummy',
-'terrain' : (
+'terrain_type' : (
     [],
-    [ 'aliasof', 'default_base', 'def_alias', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),
+    [ 'aliasof', 'default_base', 'def_alias', 'description', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),
 'terrain-theme' : 'gold-theme',
 'terrain_graphics' : (
     [ 'image', 'tile', ],
