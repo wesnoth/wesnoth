@@ -1925,7 +1925,7 @@ void check_victory(const gamestatus& /*status*/, unit_map& units, std::vector<te
 			}
 		}
 
-		if (teams[side].is_local()) {
+		if (teams[side].is_human()) {
 			found_player = true;
 		}
 	}

@@ -2767,7 +2767,7 @@ private:
 			return;
 		}
 		//if this is our side we are always allowed to change the controller
-		if(menu_handler_.teams_[side_num - 1].is_local()){
+		if (menu_handler_.teams_[side_num - 1].is_human()) {
 			if (player == preferences::login())
 				return;
 			menu_handler_.change_side_controller(side,player,true);

@@ -473,7 +473,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						player->gold_add = end_level.carryover_add;
 
 						// Only show the report for ourselves.
-						if (!i->is_local())
+						if (!i->is_human())
 							continue;
 
 						if(gamestate_.players.size()>1) {

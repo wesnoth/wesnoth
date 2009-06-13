@@ -749,10 +749,9 @@ bool is_observer()
 		return true;
 	}
 
-	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
-		if(i->is_local()) {
+	foreach (const team &t, *teams) {
+		if (t.is_human())
 			return false;
-		}
 	}
 
 	return true;
