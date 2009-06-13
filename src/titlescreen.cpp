@@ -136,7 +136,7 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 
 
 /** Read the file with the tips-of-the-day. */
-static void read_tips_of_day(config& tips_of_day)
+void read_tips_of_day(config& tips_of_day)
 {
 	tips_of_day.clear();
 	LOG_CF << "Loading tips of day\n";
@@ -170,7 +170,7 @@ static void read_tips_of_day(config& tips_of_day)
 }
 
 /** Go to the next tips-of-the-day */
-static void next_tip_of_day(config& tips_of_day, bool reverse = false)
+void next_tip_of_day(config& tips_of_day, bool reverse)
 {
 	// we just rotate the tip list, to avoid the need to keep track
 	// of the current one, and keep it valid, cycle it, etc...
@@ -187,8 +187,7 @@ static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 	}
 }
 
-/** Return the text for one of the tips-of-the-day. */
-static const config* get_tip_of_day(config& tips_of_day)
+const config* get_tip_of_day(config& tips_of_day)
 {
 	if (tips_of_day.empty()) {
 		read_tips_of_day(tips_of_day);

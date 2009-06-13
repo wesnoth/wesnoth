@@ -18,6 +18,15 @@
 class config;
 class game_display;
 
+/** Read the file with the tips-of-the-day. */
+void read_tips_of_day(config& tips_of_day);
+
+/** Go to the next tips-of-the-day */
+void next_tip_of_day(config& tips_of_day, bool reverse = false);
+
+/** Return the text for one of the tips-of-the-day. */
+const config* get_tip_of_day(config& tips_of_day);
+
 namespace gui {
 
 /**
