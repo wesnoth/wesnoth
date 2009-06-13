@@ -1019,78 +1019,22 @@ bool game_controller::new_campaign()
 	std::vector<config> campaigns(ci.first, ci.second);
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
-	int campaign_num = 0;
 
-	if(gui2::new_widgets) {
-
-		if(campaigns.begin() == campaigns.end()) {
-		  gui2::show_error_message(disp().video(),
-					  _("No campaigns are available.\n"));
-			return false;
-		}
-
-		gui2::tcampaign_selection dlg(campaigns);
-
-		dlg.show(disp().video());
-
-		if(dlg.get_retval() != gui2::twindow::OK) {
-			return false;
-		}
-
-		campaign_num = dlg.get_choice();
-
-	} else {
-
-		std::vector<std::string> campaign_names;
-		std::vector<std::pair<std::string,std::string> > campaign_desc;
-
-		foreach (const config &c, campaigns)
-		{
-			std::ostringstream str;
-			const std::string &icon = c["icon"];
-			const std::string &desc = c["description"];
-			const std::string &image = c["image"];
-
-			if (!icon.empty())
-				str << IMAGE_PREFIX << icon;
-			str << COLUMN_SEPARATOR << c["name"];
-
-			campaign_names.push_back(str.str());
-			campaign_desc.push_back(std::make_pair(desc, image));
-		}
-
-		if(campaign_names.size() <= 0) {
-		  gui2::show_error_message(disp().video(),
-					  _("No campaigns are available.\n"));
-			return false;
-		}
-		dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
-		gui::dialog cmenu(disp(), _("Play a campaign"), " ", gui::OK_CANCEL);
-		cmenu.set_menu(campaign_names);
-		cmenu.add_pane(&campaign_preview);
-		gui::dialog::dimension_measurements dim = cmenu.layout();
-		Uint16 screen_width = screen_area().w;
-		Uint16 dialog_width = cmenu.get_frame().get_layout().exterior.w;
-		if(screen_width < 850 && screen_width - dialog_width > 20) {
-			// On small resolutions, reduce the amount of unused horizontal space
-			campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20);
-			dim = cmenu.layout();
-		}
-		SDL_Rect& preview_loc = dim.panes[&campaign_preview];
-		preview_loc.y = dim.menu_y;
-		if(dim.menu_height > 0) {
-			preview_loc.h = dim.menu_height;
-		} else {
-			preview_loc.h = cmenu.get_menu().height();
-		}
-		cmenu.set_layout(dim);
-
-		if(cmenu.show() == -1) {
-			return false;
-		}
-
-		campaign_num = cmenu.result();
+	if(campaigns.begin() == campaigns.end()) {
+	  gui2::show_error_message(disp().video(),
+				  _("No campaigns are available.\n"));
+		return false;
 	}
+
+	gui2::tcampaign_selection dlg(campaigns);
+
+	dlg.show(disp().video());
+
+	if(dlg.get_retval() != gui2::twindow::OK) {
+		return false;
+	}
+
+	const int campaign_num = dlg.get_choice();
 
 	const config &campaign = campaigns[campaign_num];
 
