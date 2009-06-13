@@ -340,6 +340,65 @@ void tselect::select(tgrid& grid, const bool select)
 	selectable->set_value(select);
 }
 
+void tselect::init(tgrid* grid
+		, const std::map<std::string /* widget id */, string_map>& data
+		, void (*callback)(twidget*))
+{
+	for(unsigned row = 0; row < grid->get_rows(); ++row) {
+		for(unsigned col = 0; col < grid->get_cols(); ++col) {
+			twidget* widget = grid->widget(row, col);
+			assert(widget);
+
+			tgrid* child_grid = dynamic_cast<tgrid*>(widget);
+			ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
+			ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
+
+			if(btn) {
+				btn->set_callback_state_change(callback);
+				std::map<std::string, string_map>::const_iterator itor =
+						data.find(btn->id());
+
+				if(itor == data.end()) {
+					itor = data.find("");
+				}
+				if(itor != data.end()) {
+					btn->set_members(itor->second);
+				}
+			} else if(panel) {
+				panel->set_callback_state_change(callback);
+				panel->set_child_members(data);
+			} else if(child_grid) {
+				init(child_grid, data, callback);
+			} else {
+				ERROR_LOG("Widget type '"
+						<< typeid(*widget).name() << "'.");
+			}
+		}
+	}
+}
+
+void tshow::init(tgrid* grid
+		, const std::map<std::string /* widget id */, string_map>& data
+		, void (*callback)(twidget*))
+{
+	assert(!callback);
+
+	typedef std::pair<std::string, string_map> hack;
+	foreach(const hack& item, data) {
+
+		if(item.first.empty()) {
+			/** @todo evaluate whether this case needs to be implemented. */
+			assert(false);
+		} else {
+			tcontrol* control = dynamic_cast<
+					tcontrol*>(grid->find_widget(item.first, false));
+			if(control) {
+				control->set_members(item.second);
+			}
+		}
+	}
+}
+
 } // namespace select_action
 
 } // namespace policy

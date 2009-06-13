@@ -464,22 +464,45 @@ namespace select_action {
 struct tselect
 	: public virtual tgenerator_
 {
-	/** Do the items in the grid need to be a tselectable_? */
-	static const bool items_must_be_selectable = true;
-
 	void select(tgrid& grid, const bool select);
+
+	/**
+	 * Helper function to initialize a grid.
+	 *
+	 * @param grid                The grid to initialize.
+	 * @param data                The data to initialize the parameters of
+	 *                            the new item.
+	 * @param callback            The callback function to call when an item
+	 *                            in the grid is (de)selected.
+	 */
+	void init(tgrid* grid
+			, const std::map<std::string /* widget id */, string_map>& data
+			, void (*callback)(twidget*));
+
 };
 
 /** Show the item. */
 struct tshow
 	: public virtual tgenerator_
 {
-	static const bool items_must_be_selectable = false;
-
 	void select(tgrid& grid, const bool show)
 	{
 		grid.set_visible(show ? twidget::VISIBLE : twidget::HIDDEN);
 	}
+
+	/**
+	 * Helper function to initialize a grid.
+	 *
+	 * @param grid                The grid to initialize.
+	 * @param data                The data to initialize the parameters of
+	 *                            the new item. No widgets with id == "" are
+	 *                            allowed.
+	 * @param callback            The callback function is not used and
+	 *                            should be NULL.
+	 */
+	void init(tgrid* grid
+			, const std::map<std::string /* widget id */, string_map>& data
+			, void (*callback)(twidget*));
 };
 
 } // namespace select_action
@@ -871,6 +894,9 @@ private:
 	/**
 	 * Helper function to initialize a grid.
 	 *
+	 * The actual part is implemented in select_action, see those
+	 * implementations for more information.
+	 *
 	 * @param grid                The grid to initialize.
 	 * @param data                The data to initialize the parameters of
 	 *                            the new item.
@@ -884,52 +910,7 @@ private:
 		assert(grid);
 		grid->set_parent(this);
 
-		for(unsigned row = 0; row < grid->get_rows(); ++row) {
-			for(unsigned col = 0; col < grid->get_cols(); ++col) {
-				twidget* widget = grid->widget(row, col);
-				assert(widget);
-
-				tgrid* child_grid = dynamic_cast<tgrid*>(widget);
-				ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
-				ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
-
-				if(btn) {
-					btn->set_callback_state_change(callback);
-					std::map<std::string, string_map>::const_iterator itor =
-							data.find(btn->id());
-
-					if(itor == data.end()) {
-						itor = data.find("");
-					}
-					if(itor != data.end()) {
-						btn->set_members(itor->second);
-					}
-				} else if(panel) {
-					panel->set_callback_state_change(callback);
-					panel->set_child_members(data);
-				} else if(child_grid) {
-					init(child_grid, data, callback);
-				} else if(!select_action::items_must_be_selectable) {
-					std::map<std::string, string_map>::const_iterator itor =
-						data.find(widget->id());
-
-					if(itor == data.end()) {
-						itor = data.find("");
-					}
-
-					if(itor != data.end()) {
-						tcontrol* control = dynamic_cast<tcontrol*>(widget);
-						if(control) {
-							control->set_members(itor->second);
-						}
-					}
-
-				} else {
-					ERROR_LOG("Widget type '"
-							<< typeid(*widget).name() << "'.");
-				}
-			}
-		}
+		select_action::init(grid, data, callback);
 	}
 };
 
