@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:09+0200\n"
-"PO-Revision-Date: 2009-05-03 11:26+0100\n"
+"PO-Revision-Date: 2009-06-13 20:19+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -9059,9 +9059,8 @@ msgid "I'm Ready"
 msgstr "Ich bin bereit"
 
 #: src/multiplayer_connect.cpp:1032
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Dieses Szenario ist ungültig, da es über keine Parteien verfügt."
+msgstr "Dieses Szenario ist ungültig, da es über keine 'id' verfügt."
 
 #: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
@@ -9432,8 +9431,8 @@ msgstr "Startposition: "
 #: src/multiplayer_wait.cpp:536
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gold"
+msgstr[1] "Gold"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9703,10 +9702,9 @@ msgid "Unexpected closing tag"
 msgstr "Unerwartetes Abschlusselement"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Ungültiges Abschlusselement $tag2 für Element $tag gefunden (geöffnet in "
+"Ungültiges Abschlusselement $tag2 für Element $tag1 gefunden (geöffnet in "
 "$pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
