@@ -145,23 +145,6 @@ private:
 void show_unit_description(game_display &disp, const unit_type& t);
 void show_unit_description(game_display &disp, const unit& u);
 
-
-class campaign_preview_pane : public gui::preview_pane
-{
-public:
-	campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* descriptions);
-
-	bool show_above() const;
-	bool left_side() const;
-	void set_selection(int index);
-
-private:
-	void draw_contents();
-
-	const std::vector<std::pair<std::string,std::string> >* descriptions_;
-	int index_;
-};
-
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port);
