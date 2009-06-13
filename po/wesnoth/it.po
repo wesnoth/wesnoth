@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-13 20:09+0200\n"
 "PO-Revision-Date: 2009-05-17 11:45+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -6055,7 +6055,7 @@ msgstr "Server alternativo di Wesnoth"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1124
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1125
 msgid "Play a campaign"
 msgstr "Gioca una campagna"
 
@@ -7724,22 +7724,22 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/game.cpp:623 src/game.cpp:1453
+#: src/game.cpp:623 src/game.cpp:1454
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:905 src/game.cpp:909
+#: src/game.cpp:906 src/game.cpp:910
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
 "caricarlo comunque.\n"
 
-#: src/game.cpp:951 src/multiplayer_connect.cpp:1559
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1562
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
-#: src/game.cpp:957 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:958 src/multiplayer_connect.cpp:1569
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7747,36 +7747,36 @@ msgstr ""
 "Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
 "caricarlo?"
 
-#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:492
+#: src/game.cpp:981 src/game.cpp:989 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è danneggiato"
 
-#: src/game.cpp:983 src/game.cpp:991 src/multiplayer_connect.cpp:1540
+#: src/game.cpp:984 src/game.cpp:992 src/multiplayer_connect.cpp:1543
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Il file che hai provato a caricare è danneggiato: '"
 
-#: src/game.cpp:995
+#: src/game.cpp:996
 msgid "File I/O Error while reading the game"
 msgstr "Errore di I/O di un file durante la lettura del gioco"
 
-#: src/game.cpp:1082 src/game.cpp:1120
+#: src/game.cpp:1083 src/game.cpp:1121
 msgid "No campaigns are available.\n"
 msgstr "Nessuna campagna disponibile.\n"
 
-#: src/game.cpp:1170
+#: src/game.cpp:1171
 msgid "Difficulty"
 msgstr "Difficoltà"
 
-#: src/game.cpp:1171
+#: src/game.cpp:1172
 msgid "Select difficulty level:"
 msgstr "Seleziona il livello di difficoltà"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Do you really want to start the server?"
 msgstr "Vuoi davvero avviare il server?"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7784,62 +7784,62 @@ msgstr ""
 "Il server resterà in esecuzione in sottofondo finché tutti gli utenti non si "
 "saranno disconnessi."
 
-#: src/game.cpp:1337
+#: src/game.cpp:1338
 msgid "Don't show again"
 msgstr "Non mostrare più"
 
-#: src/game.cpp:1408
+#: src/game.cpp:1409
 msgid "Error while starting server: "
 msgstr "Errore durante l'avvio del server: "
 
-#: src/game.cpp:1410 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1411 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "La partita non può essere caricata: "
 
-#: src/game.cpp:1412 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1413 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Errore mentre si gioca la partita: "
 
-#: src/game.cpp:1432 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1433 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "La mappa non può essere caricata: "
 
-#: src/game.cpp:1498 src/game.cpp:1619
+#: src/game.cpp:1499 src/game.cpp:1620
 msgid "Error loading game configuration files: '"
 msgstr "Errore durante il caricamento dei file di configurazione: «"
 
-#: src/game.cpp:1499 src/game.cpp:1620
+#: src/game.cpp:1500 src/game.cpp:1621
 msgid "' (The game will now exit)"
 msgstr "» (Partita in fase di chiusura.)"
 
-#: src/game.cpp:1594
+#: src/game.cpp:1595
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La seguente estensione ha degli errori e non può essere caricata:"
 msgstr[1] ""
 "Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
-#: src/game.cpp:1601
+#: src/game.cpp:1602
 msgid "ERROR DETAILS:"
 msgstr "DETTAGLI DELL'ERRORE:"
 
-#: src/game.cpp:1629
+#: src/game.cpp:1630
 msgid "Loading data files"
 msgstr "Caricamento file di dati"
 
-#: src/game.cpp:2023
+#: src/game.cpp:2024
 msgid "Loading game configuration."
 msgstr "Caricamento della configurazione di gioco."
 
-#: src/game.cpp:2029
+#: src/game.cpp:2030
 msgid "Re-initialize fonts for the current language."
 msgstr "Reimpostazione dei font per la lingua corrente."
 
-#: src/game.cpp:2037
+#: src/game.cpp:2038
 msgid "Searching for installed add-ons."
 msgstr "Controllo delle estensioni installate."
 
-#: src/game.cpp:2046
+#: src/game.cpp:2047
 msgid "Loading title screen."
 msgstr "Caricamento schermata dei titoli"
 
@@ -8244,7 +8244,6 @@ msgid "Team"
 msgstr "Squadra"
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
-#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Oro"
 
@@ -8945,35 +8944,40 @@ msgstr "Colore"
 msgid "I'm Ready"
 msgstr "Sono pronto"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1032
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
+
+#: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
 msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "Giocatore remoto"
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "Giocatore locale"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "Vuoto"
 
-#: src/multiplayer_connect.cpp:1548
+#: src/multiplayer_connect.cpp:1551
 msgid "This is not a multiplayer save"
 msgstr "Questo non è un salvataggio per multigiocatori"
 
-#: src/multiplayer_connect.cpp:1676
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "Non è stato possibile trovare l'era $era"
 
-#: src/multiplayer_connect.cpp:1697
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8981,7 +8985,7 @@ msgstr ""
 "Vittoria:\n"
 "@Sconfiggi il o i condottieri nemici"
 
-#: src/multiplayer_connect.cpp:1761
+#: src/multiplayer_connect.cpp:1764
 msgid "Waiting for players to join..."
 msgstr "In attesa degli altri giocatori..."
 
@@ -9310,6 +9314,12 @@ msgstr "Scegli la tua fazione:"
 msgid "Starting position: "
 msgstr "Posizione iniziale: "
 
+#: src/multiplayer_wait.cpp:536
+msgid "multiplayer_starting_gold^Gold"
+msgid_plural "multiplayer_starting_gold^Gold"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/network.cpp:103
 msgid "invalid network handle"
 msgstr "handle di rete non valido"
@@ -9577,7 +9587,8 @@ msgid "Unexpected closing tag"
 msgstr "Etichetta di chiusura non attesa"
 
 #: src/serialization/parser.cpp:217
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
 "L'etichetta di chiusura $tag2 sembra essere invalido per l'etichetta $tag "
 "(aperta alla posizione $pos)"
@@ -9594,11 +9605,11 @@ msgstr "Carattere non atteso dopo il nome di variabile (si attendeva , o =)"
 msgid "Unterminated quoted string"
 msgstr "Riportata una stringa non terminata"
 
-#: src/serialization/parser.cpp:346
+#: src/serialization/parser.cpp:349
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, valore «$value», precedente «$previous_value» in $pos"
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:353
 msgid "$error, value '$value' at $pos"
 msgstr "$error, valore «$value» in $pos"
 

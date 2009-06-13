@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-13 20:09+0200\n"
 "PO-Revision-Date: 2009-05-17 11:43-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -5433,7 +5433,7 @@ msgstr "Óopinber Wesnoth Miðlari"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1124
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1125
 msgid "Play a campaign"
 msgstr "Spila herferð"
 
@@ -7077,116 +7077,116 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Hreyfipunktar: "
 
-#: src/game.cpp:623 src/game.cpp:1453
+#: src/game.cpp:623 src/game.cpp:1454
 msgid "The Battle for Wesnoth"
 msgstr "Bardaginn um Wesnoth"
 
-#: src/game.cpp:905 src/game.cpp:909
+#: src/game.cpp:906 src/game.cpp:910
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Viðvörun: Skráin sem þú reyndir að hlaða er skemmd. Hleð hvort eð er.\n"
 
-#: src/game.cpp:951 src/multiplayer_connect.cpp:1559
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1562
 msgid "This save is from a version too old to be loaded."
 msgstr "Þessi vistun er úr of gamalli útgáfu til að hægt sé að hlaða."
 
-#: src/game.cpp:957 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:958 src/multiplayer_connect.cpp:1569
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Þessi vistun er úr annari útgáfu af leiknum. Viltu reyna að hlaða hana?"
 
-#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:492
+#: src/game.cpp:981 src/game.cpp:989 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Skráin sem þú reyndir að hlaða er skemmd"
 
-#: src/game.cpp:983 src/game.cpp:991 src/multiplayer_connect.cpp:1540
+#: src/game.cpp:984 src/game.cpp:992 src/multiplayer_connect.cpp:1543
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Skráin sem þú reyndir að hlaða er skemmd: '"
 
-#: src/game.cpp:995
+#: src/game.cpp:996
 msgid "File I/O Error while reading the game"
 msgstr "Skjal I/O Villa þegar lesa átti leikin."
 
-#: src/game.cpp:1082 src/game.cpp:1120
+#: src/game.cpp:1083 src/game.cpp:1121
 msgid "No campaigns are available.\n"
 msgstr "Engar herferðir eru til boða.\n"
 
-#: src/game.cpp:1170
+#: src/game.cpp:1171
 msgid "Difficulty"
 msgstr "Erfiðleikastig"
 
-#: src/game.cpp:1171
+#: src/game.cpp:1172
 msgid "Select difficulty level:"
 msgstr "Veldu erfiðleikastig:"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Do you really want to start the server?"
 msgstr "Ertu viss um að þú viljir ræsa miðlarann?"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "Miðlarinn mun keyra í bakgrunni þar til allir notendur hafa aftengst."
 
-#: src/game.cpp:1337
+#: src/game.cpp:1338
 msgid "Don't show again"
 msgstr "Ekki sýna aftur"
 
-#: src/game.cpp:1408
+#: src/game.cpp:1409
 msgid "Error while starting server: "
 msgstr "Villa við ræsingu miðlara: "
 
-#: src/game.cpp:1410 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1411 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Leikurinn gat ekki hlaðst: "
 
-#: src/game.cpp:1412 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1413 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Villa við spilun leiks: "
 
-#: src/game.cpp:1432 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1433 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Kortið gat ekki hlaðst: "
 
-#: src/game.cpp:1498 src/game.cpp:1619
+#: src/game.cpp:1499 src/game.cpp:1620
 msgid "Error loading game configuration files: '"
 msgstr "Villa við að hlaða inn stillingum: '"
 
-#: src/game.cpp:1499 src/game.cpp:1620
+#: src/game.cpp:1500 src/game.cpp:1621
 msgid "' (The game will now exit)"
 msgstr "' (Leikurinn mun núna lokast)"
 
-#: src/game.cpp:1594
+#: src/game.cpp:1595
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Eftirfarandi viðbót var með villur og gat ekki verið hlöðuð:"
 msgstr[1] "Eftirfarandi viðbætur voru með villur og gátu ekki verið hlaðaðar:"
 
-#: src/game.cpp:1601
+#: src/game.cpp:1602
 msgid "ERROR DETAILS:"
 msgstr "VILLU SMÁATRIÐI:"
 
-#: src/game.cpp:1629
+#: src/game.cpp:1630
 msgid "Loading data files"
 msgstr "Hleð inn gögn"
 
-#: src/game.cpp:2023
+#: src/game.cpp:2024
 msgid "Loading game configuration."
 msgstr "Hleð inn stillingum."
 
-#: src/game.cpp:2029
+#: src/game.cpp:2030
 msgid "Re-initialize fonts for the current language."
 msgstr "Endurfrumstilla leturgerðir fyrir núverandi tungumál."
 
-#: src/game.cpp:2037
+#: src/game.cpp:2038
 msgid "Searching for installed add-ons."
 msgstr "Leitar að uppsettum viðbótum."
 
-#: src/game.cpp:2046
+#: src/game.cpp:2047
 msgid "Loading title screen."
 msgstr "Hleð inn aðalval."
 
@@ -7594,7 +7594,6 @@ msgid "Team"
 msgstr "Lið"
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
-#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Gull"
 
@@ -8273,35 +8272,40 @@ msgstr "Litur"
 msgid "I'm Ready"
 msgstr "Tilbúin"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1032
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "Þessi atburðarás er ógild vegna þess að hún hefur engar hliðar."
+
+#: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
 msgstr "Þessi atburðarás er ógild vegna þess að hún hefur engar hliðar."
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "Netspilari"
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "Staðarspilari"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "Gervigreind"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "Autt"
 
-#: src/multiplayer_connect.cpp:1548
+#: src/multiplayer_connect.cpp:1551
 msgid "This is not a multiplayer save"
 msgstr "Þetta er ekki vistun úr fjölspilunarleik"
 
-#: src/multiplayer_connect.cpp:1676
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "Gat ekki fundið tímabilið $era"
 
-#: src/multiplayer_connect.cpp:1697
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8309,7 +8313,7 @@ msgstr ""
 "Sigur:\n"
 "@Dráp á leiðtogum óvina"
 
-#: src/multiplayer_connect.cpp:1761
+#: src/multiplayer_connect.cpp:1764
 msgid "Waiting for players to join..."
 msgstr "Bíð eftir spilurum..."
 
@@ -8633,6 +8637,12 @@ msgstr "Veldu klíku:"
 msgid "Starting position: "
 msgstr "Upphafsreitur: "
 
+#: src/multiplayer_wait.cpp:536
+msgid "multiplayer_starting_gold^Gold"
+msgid_plural "multiplayer_starting_gold^Gold"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/network.cpp:103
 msgid "invalid network handle"
 msgstr ""
@@ -8892,7 +8902,8 @@ msgid "Unexpected closing tag"
 msgstr "Óvænt lokunartag"
 
 #: src/serialization/parser.cpp:217
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "Fann ógilt lokunartag, $tag2 fyrir tagið $tag (opnað á $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
@@ -8907,11 +8918,11 @@ msgstr "Óvæntir stafir eftir nafn breytu (væntist , eða =)"
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:346
+#: src/serialization/parser.cpp:349
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, gildi '$value', fyrr '$previous_value' á $pos"
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:353
 msgid "$error, value '$value' at $pos"
 msgstr "$error, gildi '$value' á $pos"
 

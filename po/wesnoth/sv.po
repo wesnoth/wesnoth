@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-13 20:09+0200\n"
 "PO-Revision-Date: 2009-04-01 08:22+0100\n"
 "Last-Translator: Kess Vargavind <vargavind@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -5971,7 +5971,7 @@ msgstr "Alternativ Wesnoth-server"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1124
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1125
 msgid "Play a campaign"
 msgstr "Spela en kampanj"
 
@@ -7623,20 +7623,20 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "Förflyttning: "
 
-#: src/game.cpp:623 src/game.cpp:1453
+#: src/game.cpp:623 src/game.cpp:1454
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:905 src/game.cpp:909
+#: src/game.cpp:906 src/game.cpp:910
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Varning: Filen du försöker öppna är felaktig. Försöker ändå.\n"
 
-#: src/game.cpp:951 src/multiplayer_connect.cpp:1559
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1562
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Detta sparade spel är från en för gammal spelversion för att kunna öppnas."
 
-#: src/game.cpp:957 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:958 src/multiplayer_connect.cpp:1569
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7644,36 +7644,36 @@ msgstr ""
 "Detta sparade spel är från en annan spelversion. Vill du försöka öppna "
 "spelet ändå?"
 
-#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:492
+#: src/game.cpp:981 src/game.cpp:989 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game.cpp:983 src/game.cpp:991 src/multiplayer_connect.cpp:1540
+#: src/game.cpp:984 src/game.cpp:992 src/multiplayer_connect.cpp:1543
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du försöker öppna är felaktig: '"
 
-#: src/game.cpp:995
+#: src/game.cpp:996
 msgid "File I/O Error while reading the game"
 msgstr "I/O-fel vid läsning från fil"
 
-#: src/game.cpp:1082 src/game.cpp:1120
+#: src/game.cpp:1083 src/game.cpp:1121
 msgid "No campaigns are available.\n"
 msgstr "Inga kampanjer är tillgängliga.\n"
 
-#: src/game.cpp:1170
+#: src/game.cpp:1171
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: src/game.cpp:1171
+#: src/game.cpp:1172
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Do you really want to start the server?"
 msgstr "Vill du verkligen starta serven?"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7681,61 +7681,61 @@ msgstr ""
 "Servern kommer att köras i en bakgrundsprocess tills alla användare har "
 "kopplat ifrån sig."
 
-#: src/game.cpp:1337
+#: src/game.cpp:1338
 msgid "Don't show again"
 msgstr "Visa inte igen"
 
-#: src/game.cpp:1408
+#: src/game.cpp:1409
 msgid "Error while starting server: "
 msgstr "Fel under serverstart: "
 
-#: src/game.cpp:1410 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1411 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1412 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1413 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1432 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1433 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
-#: src/game.cpp:1498 src/game.cpp:1619
+#: src/game.cpp:1499 src/game.cpp:1620
 msgid "Error loading game configuration files: '"
 msgstr "Fel vid öppnande av konfigurationsfiler: '"
 
-#: src/game.cpp:1499 src/game.cpp:1620
+#: src/game.cpp:1500 src/game.cpp:1621
 msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
-#: src/game.cpp:1594
+#: src/game.cpp:1595
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
-#: src/game.cpp:1601
+#: src/game.cpp:1602
 msgid "ERROR DETAILS:"
 msgstr "FELDETALJER:"
 
-#: src/game.cpp:1629
+#: src/game.cpp:1630
 msgid "Loading data files"
 msgstr "Läser datafiler"
 
-#: src/game.cpp:2023
+#: src/game.cpp:2024
 msgid "Loading game configuration."
 msgstr "Laddar spelkonfiguration."
 
-#: src/game.cpp:2029
+#: src/game.cpp:2030
 msgid "Re-initialize fonts for the current language."
 msgstr "Ställer in typsnitt för aktuellt språk."
 
-#: src/game.cpp:2037
+#: src/game.cpp:2038
 msgid "Searching for installed add-ons."
 msgstr "Söker efter installerat extramaterial."
 
-#: src/game.cpp:2046
+#: src/game.cpp:2047
 msgid "Loading title screen."
 msgstr "Laddar titelsidan."
 
@@ -8142,7 +8142,6 @@ msgid "Team"
 msgstr "Lag"
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
-#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Guld"
 
@@ -8834,35 +8833,40 @@ msgstr "Färg"
 msgid "I'm Ready"
 msgstr "Klar!"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1032
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "Scenariot är ogiltigt då det saknar sidor."
+
+#: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenariot är ogiltigt då det saknar sidor."
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "Nätverksspelare"
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "Lokal spelare"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "Datorspelare"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "Tom"
 
-#: src/multiplayer_connect.cpp:1548
+#: src/multiplayer_connect.cpp:1551
 msgid "This is not a multiplayer save"
 msgstr "Detta är inte ett sparat gruppspel"
 
-#: src/multiplayer_connect.cpp:1676
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "Kan ej finna $era|-eran"
 
-#: src/multiplayer_connect.cpp:1697
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8870,7 +8874,7 @@ msgstr ""
 "Seger:\n"
 "@Besegra fiendens ledare"
 
-#: src/multiplayer_connect.cpp:1761
+#: src/multiplayer_connect.cpp:1764
 msgid "Waiting for players to join..."
 msgstr "Väntar på att spelare skall ansluta sig..."
 
@@ -9197,6 +9201,12 @@ msgstr "Välj din fraktion:"
 msgid "Starting position: "
 msgstr "Startposition: "
 
+#: src/multiplayer_wait.cpp:536
+msgid "multiplayer_starting_gold^Gold"
+msgid_plural "multiplayer_starting_gold^Gold"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/network.cpp:103
 msgid "invalid network handle"
 msgstr "Ogiltigt nätverkshandtag"
@@ -9463,7 +9473,8 @@ msgid "Unexpected closing tag"
 msgstr "Oväntad avslutningstagg"
 
 #: src/serialization/parser.cpp:217
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "Ogiltig avslutningstagg funnen för taggen ’$tag’ (öppnad på $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
@@ -9478,11 +9489,11 @@ msgstr "Oväntade tecken efter variabelnamn (borde vara , eller =)"
 msgid "Unterminated quoted string"
 msgstr "Oavslutad citatsträng"
 
-#: src/serialization/parser.cpp:346
+#: src/serialization/parser.cpp:349
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, värde ’$value’, föregående ’$previous_value’ vid $pos"
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:353
 msgid "$error, value '$value' at $pos"
 msgstr "$error, värde ’$value’ vid $pos"
 

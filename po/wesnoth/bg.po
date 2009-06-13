@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-26 22:19+0200\n"
+"POT-Creation-Date: 2009-06-13 20:09+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5404,7 +5404,7 @@ msgstr "Неофициален сървър на Уеснот"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1124
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1125
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Кампания"
@@ -7052,122 +7052,122 @@ msgstr "Опит: "
 msgid "Moves: "
 msgstr "Ходове: "
 
-#: src/game.cpp:623 src/game.cpp:1453
+#: src/game.cpp:623 src/game.cpp:1454
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:905 src/game.cpp:909
+#: src/game.cpp:906 src/game.cpp:910
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Внимание: Файлът, който се опитвате да заредите е повреден. Зареждане. \n"
 
-#: src/game.cpp:951 src/multiplayer_connect.cpp:1559
+#: src/game.cpp:952 src/multiplayer_connect.cpp:1562
 msgid "This save is from a version too old to be loaded."
 msgstr "Записът е от прекалено стара версия на играта, за да бъде зареден. "
 
-#: src/game.cpp:957 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:958 src/multiplayer_connect.cpp:1569
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Записът е от друга версия на играта, Искате ли да го заредите?"
 
-#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:492
+#: src/game.cpp:981 src/game.cpp:989 src/playsingle_controller.cpp:492
 #: src/playsingle_controller.cpp:550
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/game.cpp:983 src/game.cpp:991 src/multiplayer_connect.cpp:1540
+#: src/game.cpp:984 src/game.cpp:992 src/multiplayer_connect.cpp:1543
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
-#: src/game.cpp:995
+#: src/game.cpp:996
 msgid "File I/O Error while reading the game"
 msgstr "Грешка Вход/Изход при четене на играта"
 
-#: src/game.cpp:1082 src/game.cpp:1120
+#: src/game.cpp:1083 src/game.cpp:1121
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Няма цели"
 
-#: src/game.cpp:1170
+#: src/game.cpp:1171
 msgid "Difficulty"
 msgstr "Трудност"
 
-#: src/game.cpp:1171
+#: src/game.cpp:1172
 msgid "Select difficulty level:"
 msgstr "Избери ниво на трудност:"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Наистина ли искате ли да изтриете записа?"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1337
+#: src/game.cpp:1338
 #, fuzzy
 msgid "Don't show again"
 msgstr "Не ме питай отново."
 
-#: src/game.cpp:1408
+#: src/game.cpp:1409
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1410 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1411 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1412 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1413 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1432 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1433 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
-#: src/game.cpp:1498 src/game.cpp:1619
+#: src/game.cpp:1499 src/game.cpp:1620
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1499 src/game.cpp:1620
+#: src/game.cpp:1500 src/game.cpp:1621
 msgid "' (The game will now exit)"
 msgstr "' (Следва изход от играта)"
 
-#: src/game.cpp:1594
+#: src/game.cpp:1595
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/game.cpp:1601
+#: src/game.cpp:1602
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА:"
 
-#: src/game.cpp:1629
+#: src/game.cpp:1630
 #, fuzzy
 msgid "Loading data files"
 msgstr "Четена на файловете с единици."
 
-#: src/game.cpp:2023
+#: src/game.cpp:2024
 msgid "Loading game configuration."
 msgstr "Зареждане на настройките на играта."
 
-#: src/game.cpp:2029
+#: src/game.cpp:2030
 msgid "Re-initialize fonts for the current language."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/game.cpp:2037
+#: src/game.cpp:2038
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Пращане на допълнението"
 
-#: src/game.cpp:2046
+#: src/game.cpp:2047
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
@@ -7605,7 +7605,6 @@ msgid "Team"
 msgstr "Отбор"
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1019
-#: src/multiplayer_wait.cpp:536
 msgid "Gold"
 msgstr "Злато"
 
@@ -8313,35 +8312,40 @@ msgstr "Цвят"
 msgid "I'm Ready"
 msgstr "Готов съм"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1032
+#, fuzzy
+msgid "The scenario is invalid because it has no id."
+msgstr "Мисията е невалидна, защото няма страни."
+
+#: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
 msgstr "Мисията е невалидна, защото няма страни."
 
-#: src/multiplayer_connect.cpp:1428
+#: src/multiplayer_connect.cpp:1431
 msgid "Network Player"
 msgstr "Играч в мрежата"
 
-#: src/multiplayer_connect.cpp:1430
+#: src/multiplayer_connect.cpp:1433
 msgid "Local Player"
 msgstr "Локален Играч"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1434
 msgid "Computer Player"
 msgstr "Компютър"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1435
 msgid "Empty"
 msgstr "Празно"
 
-#: src/multiplayer_connect.cpp:1548
+#: src/multiplayer_connect.cpp:1551
 msgid "This is not a multiplayer save"
 msgstr "Това не е игра за мрежова игра"
 
-#: src/multiplayer_connect.cpp:1676
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "Ера $era не е открита"
 
-#: src/multiplayer_connect.cpp:1697
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8349,7 +8353,7 @@ msgstr ""
 "Условия за победа\n"
 "@Побеждаване на вражеския водач(и)"
 
-#: src/multiplayer_connect.cpp:1761
+#: src/multiplayer_connect.cpp:1764
 msgid "Waiting for players to join..."
 msgstr "Изчакване на играчи да се присъединят..."
 
@@ -8687,6 +8691,12 @@ msgstr "Избери страна:"
 msgid "Starting position: "
 msgstr ""
 
+#: src/multiplayer_wait.cpp:536
+msgid "multiplayer_starting_gold^Gold"
+msgid_plural "multiplayer_starting_gold^Gold"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/network.cpp:103
 msgid "invalid network handle"
 msgstr "грешка при мрежовото свързване"
@@ -8950,7 +8960,8 @@ msgid "Unexpected closing tag"
 msgstr "Неочакван затварящ маркер"
 
 #: src/serialization/parser.cpp:217
-msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr "Невалиден затварящ маркер $tag2 за маркер $tag (отворен на $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
@@ -8965,11 +8976,11 @@ msgstr "Неочаквани знаци след име на променлив�
 msgid "Unterminated quoted string"
 msgstr "Незатворен цитат"
 
-#: src/serialization/parser.cpp:346
+#: src/serialization/parser.cpp:349
 msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:350
+#: src/serialization/parser.cpp:353
 #, fuzzy
 msgid "$error, value '$value' at $pos"
 msgstr "$error на $pos"
