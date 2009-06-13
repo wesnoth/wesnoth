@@ -226,9 +226,7 @@ void ai_default::do_attack_analysis(
 			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			// Calculate how much support we have on this hex from allies.
-			// Support does not take into account terrain, because we don't want
-			// to move into a hex that is surrounded by good defensive terrain.
-			const double support = power_projection(tiles[j],fullmove_dstsrc,false);
+			const double support = power_projection(tiles[j], fullmove_dstsrc);
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
@@ -651,7 +649,7 @@ std::vector<ai_default::attack_analysis> ai_default::analyze_targets(
 	return res;
 }
 
-double ai_default::power_projection(const map_location& loc,  const move_map& dstsrc, bool use_terrain) const
+double ai_default::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
 	int ratings[6];
@@ -724,8 +722,8 @@ double ai_default::power_projection(const map_location& loc,  const move_map& ds
 				}
 			}
 
-			int village_bonus = use_terrain && map_.is_village(terrain) ? 3 : 2;
-			int defense = use_terrain ? 100 - un.defense_modifier(terrain) : 50;
+			int village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int defense = 100 - un.defense_modifier(terrain);
 			int rating = hp * defense * most_damage * village_bonus / 200;
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);

@@ -282,8 +282,7 @@ protected:
 	 * The other has a 8-2 attack, and has 30/40 hp, and can defend at 60% on the adjacent mountain.
 	 * The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
 	 */
-	virtual double power_projection(const map_location& loc, const move_map& dstsrc,
-			bool use_terrain=true) const;
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const;
 
 	virtual std::vector<attack_analysis> analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
