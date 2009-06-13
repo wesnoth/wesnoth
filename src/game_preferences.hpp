@@ -175,8 +175,6 @@ namespace preferences {
 	bool message_private();
 	void set_message_private(bool value);
 
-	bool show_tip_of_day();
-
 	bool show_haloes();
 	void set_show_haloes(bool value);
 

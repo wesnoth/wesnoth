@@ -237,10 +237,6 @@ static void draw_tip_of_day(game_display& screen,
 							const SDL_Rect* const main_dialog_area,
 							surface_restorer& tip_of_day_restorer)
 {
-	if(preferences::show_tip_of_day() == false) {
-		return;
-	}
-
     // Restore the previous tip of day area to its old state (section of the title image).
     tip_of_day_restorer.restore();
 

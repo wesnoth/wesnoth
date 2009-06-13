@@ -715,11 +715,6 @@ void set_message_private(bool value)
 	message_private_on = value;
 }
 
-bool show_tip_of_day()
-{
-	return utils::string_bool(preferences::get("tip_of_day"), true);
-}
-
 bool show_haloes()
 {
 	return haloes;
