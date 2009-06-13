@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-12 11:16+0200\n"
+"POT-Creation-Date: 2009-06-13 20:37+0200\n"
 "PO-Revision-Date: 2009-05-09 22:03+0200\n"
 "Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -3373,8 +3373,20 @@ msgstr ""
 "Nous devons tuer le chef et repartir avant que les effets de la potion ne se "
 "dissipent. Buvons donc nos potions !"
 
+#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:330
+#, fuzzy
+msgid "Crelanu's philter affecting Kalenz"
+msgstr "Le philtre de Crelanu affecte "
+
+#. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:340
+#, fuzzy
+msgid "Crelanu's philter affecting Landar"
+msgstr "Le philtre de Crelanu affecte "
+
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:338
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:346
 msgid ""
 "This feels passing strange! Landar, remember to stay far from the wolves-"
 "they may be able to smell us."
@@ -3383,7 +3395,7 @@ msgstr ""
 "loups : ils pourraient nous sentir."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:356
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:364
 msgid ""
 "The orcish chieftain is dead! Now we must make appear he was slain by an "
 "orcish hand!"
@@ -3392,19 +3404,19 @@ msgstr ""
 "l'œuvre d'un orc !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:365
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:373
 msgid "We are too late, the potion effects have worn off and we are visible!"
 msgstr ""
 "Il est trop tard, les effets de la potion se sont dissipés et nous sommes "
 "visibles !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:387
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:395
 msgid "Done!"
 msgstr "C'est fait !"
 
 #. [message]: id=Ozul
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:404
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:412
 msgid ""
 "The Great Chief has been murdered! Whoever did it will only get da throne "
 "over my dead stinking body!"
@@ -3413,30 +3425,25 @@ msgstr ""
 "corps pour obtenir c'te trône !"
 
 #. [message]: id=Tamitahan
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:408
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:416
 msgid "I am the strongest warlord! I will be Chief!"
 msgstr "Je suis le seigneur de guerre le plus fort ! Je serai chef !"
 
 #. [message]: id=Gvur
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:412
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:420
 msgid "No way anyone will steal my throne!"
 msgstr "Pas question qu'un autre me vole mon trône !"
 
 #. [message]: id=Khrubar
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:416
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:424
 msgid "This is my time and I will kill anyone who disputes it!"
 msgstr ""
 "Mon heure est arrivée et personne ne se mettra en travers de mon chemin !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:420
+#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:428
 msgid "The plan is working! Now we will take back what's ours!"
 msgstr "Le plan fonctionne ! Maintenant reprenons ce qui nous appartient !"
-
-#. [object]: id=invisibility_potion_{USER_ID}
-#: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:5
-msgid "Crelanu's philter affecting "
-msgstr "Le philtre de Crelanu affecte "
 
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:15
@@ -3752,7 +3759,6 @@ msgstr "Orhtib"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:327
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:116
 msgid ""
 "Before you die, know that you lost in Wesmere, you lost at Tath, you will "
 "lose here and that your Great Chief is dead!"
@@ -4570,37 +4576,37 @@ msgstr ""
 "combat !"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:128
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:117
 msgid "Aargh! I'm dying!"
 msgstr "Aargh ! Je meurs !"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:139
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:128
 msgid "Aargh! I'm gone!"
 msgstr "Aargh ! C'en est fini pour moi !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:143
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:132
 msgid "I told you so!"
 msgstr "Je l'avais bien dit !"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:147
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:136
 msgid "Know that you perished at the hands of the Kalenz's elves!"
 msgstr "Que chacun sache que vous avez péri des mains des elfes de Kalenz !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:158
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:147
 msgid "No! It's all over!"
 msgstr "Non ! Tout est fini !"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:174
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:163
 msgid "Farewell $unit.name. Your loyal service won't be forgotten."
 msgstr "Adieu $unit.name|. Votre loyauté ne sera pas oubliée."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:182
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:171
 msgid "Oh, no! We are too late..."
 msgstr "Oh non ! Nous arrivons trop tard..."
 

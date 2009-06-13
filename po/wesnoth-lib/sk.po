@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-01 23:54+0200\n"
+"POT-Creation-Date: 2009-06-13 20:37+0200\n"
 "PO-Revision-Date: 2009-03-29 14:23+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -1643,45 +1643,47 @@ msgstr "Text má veľkosť písma 0."
 msgid "Text doesn't start on canvas."
 msgstr "Text sa nezmestí na plochu."
 
-#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
-#: src/gui/auxiliary/window_builder.cpp:414
-#: src/gui/auxiliary/window_builder.cpp:1035
-#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
-#: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
+#: src/gui/auxiliary/window_builder.cpp:416
+#: src/gui/auxiliary/window_builder.cpp:1037
+#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
+#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
+#: src/gui/widgets/settings.cpp:994
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:523
 msgid "A row must have a column."
 msgstr "Riadok musí mať stĺpec."
 
-#: src/gui/auxiliary/window_builder.cpp:522
+#: src/gui/auxiliary/window_builder.cpp:524
 msgid "Number of columns differ."
 msgstr "Počet stĺpcov sa líši."
 
-#: src/gui/auxiliary/window_builder.cpp:795
+#: src/gui/auxiliary/window_builder.cpp:797
+#: src/gui/auxiliary/window_builder.cpp:1192
 msgid "No list defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/auxiliary/window_builder.cpp:798
+#: src/gui/auxiliary/window_builder.cpp:800
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' musí obsahovať jeden riadok."
 
-#: src/gui/auxiliary/window_builder.cpp:816
-#: src/gui/auxiliary/window_builder.cpp:983
+#: src/gui/auxiliary/window_builder.cpp:818
+#: src/gui/auxiliary/window_builder.cpp:985
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musí mať rovnaký počet stĺpcov ako 'list_definition'."
 
-#: src/gui/auxiliary/window_builder.cpp:960
+#: src/gui/auxiliary/window_builder.cpp:962
 #, fuzzy
 msgid "No page defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/auxiliary/window_builder.cpp:1163
+#: src/gui/auxiliary/window_builder.cpp:1264
 msgid "The number of value_labels and values don't match."
 msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 
@@ -1697,7 +1699,7 @@ msgstr "Načítaj hru"
 msgid "Load Game..."
 msgstr "Načítaj hru..."
 
-#: src/gui/dialogs/title_screen.cpp:75
+#: src/gui/dialogs/title_screen.cpp:68
 msgid "Version"
 msgstr "Verzia"
 
@@ -1709,16 +1711,16 @@ msgstr "Nebol definovaný povinný prvok '$id'."
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
-#: src/gui/widgets/settings.cpp:298
+#: src/gui/widgets/settings.cpp:299
 msgid "Window not defined."
 msgstr "Nie je definované okno."
 
-#: src/gui/widgets/settings.cpp:395
+#: src/gui/widgets/settings.cpp:396
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 
-#: src/gui/widgets/settings.cpp:537
+#: src/gui/widgets/settings.cpp:538
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 

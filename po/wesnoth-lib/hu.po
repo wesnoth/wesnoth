@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-01 23:54+0200\n"
+"POT-Creation-Date: 2009-06-13 20:37+0200\n"
 "PO-Revision-Date: 2009-05-03 11:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -1666,47 +1666,49 @@ msgstr "A szöveg betűmérete 0."
 msgid "Text doesn't start on canvas."
 msgstr "A szöveg kezdete lelóg a vászonról."
 
-#: src/gui/auxiliary/window_builder.cpp:318 src/gui/widgets/settings.cpp:511
+#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
 msgid "No resolution defined."
 msgstr "A felbontás nincs megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:414
-#: src/gui/auxiliary/window_builder.cpp:1035
-#: src/gui/auxiliary/window_builder.cpp:1244 src/gui/widgets/settings.cpp:766
-#: src/gui/widgets/settings.cpp:862 src/gui/widgets/settings.cpp:951
+#: src/gui/auxiliary/window_builder.cpp:416
+#: src/gui/auxiliary/window_builder.cpp:1037
+#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
+#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
+#: src/gui/widgets/settings.cpp:994
 msgid "No grid defined."
 msgstr "Nincs mezőháló megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:521
+#: src/gui/auxiliary/window_builder.cpp:523
 msgid "A row must have a column."
 msgstr "Egy sorhoz még oszlopot kell rendelni."
 
-#: src/gui/auxiliary/window_builder.cpp:522
+#: src/gui/auxiliary/window_builder.cpp:524
 msgid "Number of columns differ."
 msgstr "Az oszlopok száma helytelen."
 
-#: src/gui/auxiliary/window_builder.cpp:795
+#: src/gui/auxiliary/window_builder.cpp:797
+#: src/gui/auxiliary/window_builder.cpp:1192
 msgid "No list defined."
 msgstr "Nincs lista megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:798
+#: src/gui/auxiliary/window_builder.cpp:800
 msgid "A 'list_definition' should contain one row."
 msgstr "A \"lista_meghatározás\"-nak tartalmaznia kell egy sort."
 
-#: src/gui/auxiliary/window_builder.cpp:816
-#: src/gui/auxiliary/window_builder.cpp:983
+#: src/gui/auxiliary/window_builder.cpp:818
+#: src/gui/auxiliary/window_builder.cpp:985
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "A \"lista_adat\"-ban ugyanannyi oszlopnak kell lennie, mint a "
 "\"lista_meghatározás\"-ban."
 
-#: src/gui/auxiliary/window_builder.cpp:960
+#: src/gui/auxiliary/window_builder.cpp:962
 #, fuzzy
 msgid "No page defined."
 msgstr "Nincs mezőháló megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:1163
+#: src/gui/auxiliary/window_builder.cpp:1264
 msgid "The number of value_labels and values don't match."
 msgstr "Az értékek és az \"értékcímkék\" száma nem egyezik."
 
@@ -1722,7 +1724,7 @@ msgstr "Játék betöltése"
 msgid "Load Game..."
 msgstr "Játék betöltése..."
 
-#: src/gui/dialogs/title_screen.cpp:75
+#: src/gui/dialogs/title_screen.cpp:68
 msgid "Version"
 msgstr "Verzió"
 
@@ -1734,18 +1736,18 @@ msgstr "Ez a nélkülözhetetlen vezérlőeszköz nincs megadva: \"$id\"."
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
-#: src/gui/widgets/settings.cpp:298
+#: src/gui/widgets/settings.cpp:299
 msgid "Window not defined."
 msgstr "Nincs ablak megadva."
 
-#: src/gui/widgets/settings.cpp:395
+#: src/gui/widgets/settings.cpp:396
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A meghatározás (\"$definition\") nem tartalmaz adatokat erről a "
 "vezérlőeszközről: \"$id\" "
 
-#: src/gui/widgets/settings.cpp:537
+#: src/gui/widgets/settings.cpp:538
 msgid "No state or draw section defined."
 msgstr "Az állapot vagy a térképrészlet nincs megadva."
 
