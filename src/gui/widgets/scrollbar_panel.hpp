@@ -29,7 +29,7 @@ class tscrollbar_panel
 	: public tscrollbar_container
 {
 
-	friend class tbuilder_scrollbar_panel;
+	friend struct tbuilder_scrollbar_panel;
 public:
 
 	/**
