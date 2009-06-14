@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:36+0200\n"
-"PO-Revision-Date: 2009-05-21 00:40+0200\n"
+"PO-Revision-Date: 2009-06-13 21:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -3747,13 +3747,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Otrov teče venama ove jedinice baš u ovom trenutku."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the 'arcane' damage type "
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Ova voda daruje oružju za blisku borbu ‘volšebni’ vid štete do kraja tekućeg "
-"scenarija."
+"Poprskana ovom vodom, oružja za blisku borbu nanose ‘volšebni’ vid štete do "
+"kraja tekućeg scenarija. Da li da je $unit.name upotrebi?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -7162,11 +7161,9 @@ msgstr "vigr. pohod"
 msgid "addon_type^Resources"
 msgstr "resursi"
 
-# well-spelled: вигр
 #: src/addon_management.cpp:420
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "vigr. razdoblje"
+msgstr "drugo"
 
 #: src/addon_management.cpp:422
 msgid "addon_type^(unknown)"
@@ -8814,9 +8811,8 @@ msgid "I'm Ready"
 msgstr "U boj!"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Scenario nije nije valjan jer nema strana."
+msgstr "Scenario nije nije valjan jer nema ID."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -8843,11 +8839,8 @@ msgid "Cannot find era $era"
 msgstr "Ne mogu da nađem epohu $era"
 
 #: src/multiplayer_connect.cpp:1653
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"pobeda:\n"
-"@Poraziš li protivničke vođe"
+msgstr "Poraziš li protivničke vođe"
 
 #: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
@@ -9230,10 +9223,10 @@ msgstr "Početni položaj: "
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "zlatnik"
+msgstr[1] "zlatnika"
+msgstr[2] "zlatnika"
+msgstr[3] "zlatnik"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9564,9 +9557,8 @@ msgid "Unexpected closing tag"
 msgstr "Neočekivana zatvarajuća oznaka"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Nađena nevaljana zatvarajuća oznaka $tag2 za $tag (otvoreno kod $pos)"
+msgstr "Nađena nevaljana zatvarajuća oznaka $tag2 za $tag1 (otvoreno kod $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
