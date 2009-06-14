@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 21:17+0200\n"
-"PO-Revision-Date: 2009-05-21 00:40+0200\n"
+"PO-Revision-Date: 2009-06-13 21:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -8764,9 +8764,8 @@ msgid "I'm Ready"
 msgstr "У бој!"
 
 #: src/multiplayer_connect.cpp:1032
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Сценарио није није ваљан јер нема страна."
+msgstr "Сценарио није није ваљан јер нема ИД."
 
 #: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
@@ -9136,10 +9135,10 @@ msgstr "Почетни положај: "
 #: src/multiplayer_wait.cpp:536
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "златник"
+msgstr[1] "златника"
+msgstr[2] "златника"
+msgstr[3] "златник"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9419,9 +9418,8 @@ msgid "Unexpected closing tag"
 msgstr "Неочекивана затварајућа ознака"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Нађена неваљана затварајућа ознака $tag2 за $tag (отворено код $pos)"
+msgstr "Нађена неваљана затварајућа ознака $tag2 за $tag1 (отворено код $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
