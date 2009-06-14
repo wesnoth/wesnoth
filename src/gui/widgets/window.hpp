@@ -42,14 +42,6 @@ class tdialog;
 class tdebug_layout_graph;
 
 /**
- * Dummy struct for the layout engine.
- *
- * When an object changes it's width in the height phase of the layout engine
- * things might need to change so rerun the layout phase in that case.
- */
-struct trelayout_exception {};
-
-/**
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
