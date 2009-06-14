@@ -22,7 +22,7 @@
 namespace wesnothd {
 
 typedef std::vector<network::connection> connection_vector;
-
+typedef std::map<network::connection,player> player_map;
 class game;
 
 /**
@@ -33,7 +33,9 @@ public:
 	/**
 	 * Construct a room
 	 */
-	room();
+	room(const std::string& name);
+
+	const std::string& name() const;
 
 	/**
 	 * Return the number of players in this room
@@ -107,7 +109,9 @@ public:
 	void send_server_message(const char* message, network::connection sock,
 		simple_wml::document* docptr = NULL) const;
 
+
 private:
+	std::string name_;
 	connection_vector members_;
 };
 

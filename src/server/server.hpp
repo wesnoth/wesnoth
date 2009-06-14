@@ -4,7 +4,7 @@
 #include "../network.hpp"
 #include "ban.hpp"
 #include "player.hpp"
-#include "room.hpp"
+#include "room_manager.hpp"
 #include "simple_wml.hpp"
 #include "user_handler.hpp"
 #include <boost/scoped_ptr.hpp>
@@ -40,8 +40,7 @@ private:
 	std::vector<wesnothd::game*> games_;
 	std::set<network::connection> not_logged_in_;
 
-	/** The lobby is implemented as a room. */
-	wesnothd::room lobby_;
+	wesnothd::room_manager rooms_;
 
 	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;

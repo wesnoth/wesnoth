@@ -25,9 +25,14 @@ static lg::log_domain log_server("server");
 
 namespace wesnothd {
 
-room::room()
-	: members_()
+room::room(const std::string& name)
+	: members_(), name_(name)
 {
+}
+
+const std::string& room::name() const
+{
+	return name_;
 }
 
 bool room::add_player(network::connection player)
@@ -98,33 +103,6 @@ void room::send_server_message(const char* message,
 void room::process_message(simple_wml::document& data,
 						   const player_map::iterator user)
 {
-	if (user->second.silenced()) {
-		return;
-	} else if (user->second.is_message_flooding()) {
-		send_server_message(
-				"Warning: you are sending too many messages too fast. "
-				"Your message has not been relayed.", user->first);
-		return;
-	}
-
-	simple_wml::node* const message = data.root().child("message");
-	assert(message);
-	message->set_attr_dup("sender", user->second.name().c_str());
-
-	const simple_wml::string_span& msg = (*message)["message"];
-	chat_message::truncate_message(msg, *message);
-
-	if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
-		LOG_ROOM << network::ip_address(user->first)
-			<< "\t<" << user->second.name()
-			<< simple_wml::string_span(msg.begin() + 3, msg.size() - 3)
-			<< ">\n";
-	} else {
-		LOG_ROOM << network::ip_address(user->first) << "\t<"
-			<< user->second.name() << "> " << msg << "\n";
-	}
-
-	send_data(data, user->first, "message");
 }
 
 } //end namespace wesnothd

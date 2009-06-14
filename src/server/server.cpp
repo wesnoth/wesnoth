@@ -297,7 +297,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	ghost_players_(),
 	games_(),
 	not_logged_in_(),
-	lobby_(),
+	rooms_(players_),
 	input_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -530,7 +530,7 @@ void server::dump_stats(const time_t& now) {
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
 		 << "\tnumber_of_ghost_users = " << ghost_players_.size()
-		<< "\tlobby_users = " << lobby_.size() << "\n";
+		<< "\trooms_users = " << rooms_.lobby().size() << "\n";
 }
 
 void server::clean_user_handler(const time_t& now) {
@@ -754,7 +754,7 @@ void server::run() {
 				simple_wml::document diff;
 				if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
 				                    pl_it->second.config_address(), diff)) {
-					lobby_.send_data(diff, e.socket);
+					rooms_.lobby().send_data(diff, e.socket);
 				}
 
 				games_and_users_list_.root().remove_child("user",index);
@@ -763,8 +763,8 @@ void server::run() {
 					<< pl_it->second.name() << " in games_and_users_list_.\n";
 			}
 			// Was the player in the lobby or a game?
-			if (lobby_.is_member(e.socket)) {
-				lobby_.remove_player(e.socket);
+			if (rooms_.in_lobby(e.socket)) {
+				rooms_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
 
@@ -839,7 +839,7 @@ void server::process_data(const network::connection sock,
 		process_nickserv(sock, *nickserv);
     } else if (simple_wml::node* whisper = root.child("whisper")) {
 		process_whisper(sock, *whisper);
-	} else if (lobby_.is_member(sock)) {
+	} else if (rooms_.in_lobby(sock)) {
 		process_data_lobby(sock, data);
 	} else {
 		process_data_game(sock, data);
@@ -1059,30 +1059,30 @@ void server::process_login(const network::connection sock,
 	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	const player new_player(username, player_cfg, registered, default_max_messages_,
-				default_time_period_, selective_ping );
+	const wesnothd::player new_player(username, player_cfg, registered,
+		default_max_messages_, default_time_period_, selective_ping);
 
 	// If the new player does not have selective ping enabled, immediately
 	// add the player to the ghost player's list. This ensures a client won't
 	// have to wait as long as x2 the current ping delay; which could cause
 	// a client-side disconnection.
-	players_.insert(std::pair<network::connection,player>(sock, new_player));
+	players_.insert(std::make_pair(sock, new_player));
 	if( !selective_ping )
 	  ghost_players_.insert(sock) ;
 
 	not_logged_in_.erase(sock);
-	lobby_.add_player(sock);
+	rooms_.enter_lobby(sock);
 	// Send the new player the entire list of games and players
 	send_doc(games_and_users_list_, sock);
 
 	if (motd_ != "") {
-		lobby_.send_server_message(motd_.c_str(), sock);
+		rooms_.lobby().send_server_message(motd_.c_str(), sock);
 	}
 
 	// Send other players in the lobby the update that the player has joined
 	simple_wml::document diff;
 	make_add_diff(games_and_users_list_.root(), NULL, "user", diff);
-	lobby_.send_data(diff, sock);
+	rooms_.lobby().send_data(diff, sock);
 
 	LOG_SERVER << network::ip_address(sock) << "\t" << username
 		<< "\thas logged on" << (registered ? " to a registered account" : "")
@@ -1099,7 +1099,7 @@ void server::process_login(const network::connection sock,
 			<< username << std::endl;
 		admins_.insert(sock);
 		// This string is parsed by the client!
-		lobby_.send_server_message("You are now recognized as an administrator. "
+		rooms_.lobby().send_server_message("You are now recognized as an administrator. "
 				"If you no longer want to be automatically authenticated use '/query signout'.", sock);
 	}
 
@@ -1172,7 +1172,7 @@ void server::process_query(const network::connection sock,
 	} else {
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
-	lobby_.send_server_message(response.str().c_str(), sock);
+	rooms_.lobby().send_server_message(response.str().c_str(), sock);
 }
 
 void server::start_new_server() {
@@ -1251,7 +1251,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Number of games = " << games_.size()
 			<< "\nTotal number of users = " << players_.size()
 			<< "\nNumber of ghost users = " << ghost_players_.size()
-			<< "\nNumber of users in the lobby = " << lobby_.size();
+			<< "\nNumber of users in the lobby = " << rooms_.lobby().size();
 		return out.str();
 	} else if (command == "metrics") {
 		out << metrics_;
@@ -1301,7 +1301,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters == "") {
 			return "You must type a message.";
 		}
-		lobby_.send_server_message_to_all(parameters.c_str());
+		rooms_.lobby().send_server_message_to_all(parameters.c_str());
 		if (command == "msg") {
 			for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 				(*g)->send_server_message_to_all(parameters.c_str());
@@ -1578,7 +1578,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 	// Check if this server allows nick registration at all
 	if(!user_handler_) {
-		lobby_.send_server_message("This server does not allow username registration.", sock);
+		rooms_.lobby().send_server_message("This server does not allow username registration.", sock);
 		return;
 	}
 
@@ -1592,7 +1592,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 					// Warn that providing an email address might be a good idea
 					((*data.child("register"))["mail"].empty() ?
 					" It is recommended that you provide an email address for password recovery." : "");
-			lobby_.send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 
 			// Mark the player as registered and send the other clients
 			// an update to dislpay this change
@@ -1601,10 +1601,10 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			simple_wml::document diff;
 			make_change_diff(games_and_users_list_.root(), NULL,
 						 "user", pl->second.config_address(), diff);
-			lobby_.send_data(diff);
+			rooms_.lobby().send_data(diff);
 
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was an error registering your username. The error message was: "
+			rooms_.lobby().send_server_message(("There was an error registering your username. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 		return;
@@ -1613,7 +1613,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	// A user requested to update his password or mail
 	if(data.child("set")) {
 		if(!(user_handler_->user_exists(pl->second.name()))) {
-			lobby_.send_server_message("You are not registered. Please register first.",
+			rooms_.lobby().send_server_message("You are not registered. Please register first.",
 					sock);
 			return;
 		}
@@ -1623,10 +1623,10 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 		try {
 			user_handler_->set_user_detail(pl->second.name(), set["detail"].to_string(), set["value"].to_string());
 
-			lobby_.send_server_message("Your details have been updated.", sock);
+			rooms_.lobby().send_server_message("Your details have been updated.", sock);
 
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was an error updating your details. The error message was: "
+			rooms_.lobby().send_server_message(("There was an error updating your details. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 
@@ -1635,7 +1635,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 	// A user requested information about another user
 	if(data.child("details")) {
-		lobby_.send_server_message(("Valid details for this server are: " +
+		rooms_.lobby().send_server_message(("Valid details for this server are: " +
 				user_handler_->get_valid_details()).c_str(), sock);
 		return;
 	}
@@ -1644,9 +1644,9 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	if(data.child("info")) {
 		try {
 			std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
-			lobby_.send_server_message(res.c_str(), sock);
+			rooms_.lobby().send_server_message(res.c_str(), sock);
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was an error looking up the details of the user '" +
+			rooms_.lobby().send_server_message(("There was an error looking up the details of the user '" +
 			(*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
 			+ e.message).c_str(), sock);
 		}
@@ -1656,7 +1656,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 	// A user requested to delete his nick
 	if(data.child("drop")) {
 		if(!(user_handler_->user_exists(pl->second.name()))) {
-			lobby_.send_server_message("You are not registered.",
+			rooms_.lobby().send_server_message("You are not registered.",
 					sock);
 			return;
 		}
@@ -1665,14 +1665,14 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 		// registerd username without the password we should never get
 		// to call this
 		if(!(pl->second.registered())) {
-			lobby_.send_server_message("You are not logged in.",
+			rooms_.lobby().send_server_message("You are not logged in.",
 					sock);
 			return;
 		}
 
 		try {
 			user_handler_->remove_user(pl->second.name());
-			lobby_.send_server_message("Your username has been dropped.", sock);
+			rooms_.lobby().send_server_message("Your username has been dropped.", sock);
 
 			// Mark the player as not registered and send the other clients
 			// an update to dislpay this change
@@ -1681,9 +1681,9 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			simple_wml::document diff;
 			make_change_diff(games_and_users_list_.root(), NULL,
 						 "user", pl->second.config_address(), diff);
-			lobby_.send_data(diff);
+			rooms_.lobby().send_data(diff);
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was an error dropping your username. The error message was: "
+			rooms_.lobby().send_server_message(("There was an error dropping your username. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 		return;
@@ -1760,7 +1760,7 @@ void server::process_data_lobby(const network::connection sock,
 		if (graceful_restart) {
 			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.", sock);
+			rooms_.lobby().send_server_message("This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
@@ -1777,11 +1777,11 @@ void server::process_data_lobby(const network::connection sock,
 		}
 
 		data.root().child("create_game")->copy_into(g.level().root());
-		lobby_.remove_player(sock);
+		rooms_.exit_lobby(sock);
 		simple_wml::document diff;
 		if(make_change_diff(games_and_users_list_.root(), NULL,
 		                    "user", pl->second.config_address(), diff)) {
-			lobby_.send_data(diff);
+			rooms_.lobby().send_data(diff);
 		}
 		return;
 	}
@@ -1801,7 +1801,7 @@ void server::process_data_lobby(const network::connection sock,
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << game_id << ".\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to join unknown game.", sock);
+			rooms_.lobby().send_server_message("Attempt to join unknown game.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		} else if (!(*g)->level_init()) {
@@ -1809,7 +1809,7 @@ void server::process_data_lobby(const network::connection sock,
 				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to join an uninitialized game.", sock);
+			rooms_.lobby().send_server_message("Attempt to join an uninitialized game.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		} else if (admin) {
@@ -1819,7 +1819,7 @@ void server::process_data_lobby(const network::connection sock,
 				<< pl->second.name() << "\tfrom game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("You are banned from this game.", sock);
+			rooms_.lobby().send_server_message("You are banned from this game.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		} else if(!observer && !(*g)->password_matches(password)) {
@@ -1827,7 +1827,7 @@ void server::process_data_lobby(const network::connection sock,
 				<< "\tattempted to join game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") with bad password\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Incorrect password.", sock);
+			rooms_.lobby().send_server_message("Incorrect password.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
@@ -1849,11 +1849,11 @@ void server::process_data_lobby(const network::connection sock,
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") which doesn't allow observers.\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers. (You probably joined the game shortly after it filled up.)", sock);
+			rooms_.lobby().send_server_message("Attempt to observe a game that doesn't allow observers. (You probably joined the game shortly after it filled up.)", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
-		lobby_.remove_player(sock);
+		rooms_.exit_lobby(sock);
 		(*g)->describe_slots();
 
 		//send notification of changes to the game and user
@@ -1863,14 +1863,16 @@ void server::process_data_lobby(const network::connection sock,
 		bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 					      "user", pl->second.config_address(), diff);
 		if (diff1 || diff2) {
-			lobby_.send_data(diff);
+			rooms_.lobby().send_data(diff);
 		}
 	}
+
+	//TODO: process room joins/quits
 
 	// See if it's a message, in which case we add the name of the sender,
 	// and forward it to all players in the lobby.
 	if (data.child("message")) {
-		lobby_.process_message(data, pl);
+		rooms_.process_message(data, pl);
 	}
 
 	// Player requests update of lobby content,
@@ -1919,7 +1921,7 @@ void server::process_data_game(const network::connection sock,
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
 				<< gamemap::MAX_PLAYERS << " sides.";
-			lobby_.send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 			return;
 		}
 
@@ -2002,7 +2004,7 @@ void server::process_data_game(const network::connection sock,
 		// Send the update of the game description to the lobby.
 		simple_wml::document diff;
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
-		lobby_.send_data(diff);
+		rooms_.lobby().send_data(diff);
 
 		/** @todo FIXME: Why not save the level data in the history_? */
 		return;
@@ -2033,7 +2035,7 @@ void server::process_data_game(const network::connection sock,
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
 				<< gamemap::MAX_PLAYERS << " sides.";
-			lobby_.send_server_message(msg.str().c_str(), sock);
+			rooms_.lobby().send_server_message(msg.str().c_str(), sock);
 			return;
 		}
 		const simple_wml::node& s = *data.child("store_next_scenario");
@@ -2114,7 +2116,7 @@ void server::process_data_game(const network::connection sock,
 			delete_game(itor);
 		} else {
 			g->remove_player(sock);
-			lobby_.add_player(sock);
+			rooms_.enter_lobby(sock);
 			g->describe_slots();
 
 			// Send all other players in the lobby the update to the gamelist.
@@ -2124,7 +2126,7 @@ void server::process_data_game(const network::connection sock,
 			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 						      "user", pl->second.config_address(), diff);
 			if (diff1 || diff2) {
-				lobby_.send_data(diff, sock);
+				rooms_.lobby().send_data(diff, sock);
 			}
 
 			// Send the player who has quit the gamelist.
@@ -2179,7 +2181,7 @@ void server::process_data_game(const network::connection sock,
 				(ban ? g->ban_user(*data.child("ban"), pl)
 				: g->kick_member(*data.child("kick"), pl));
 		if (user) {
-			lobby_.add_player(user);
+			rooms_.enter_lobby(user);
 			if (g->describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
@@ -2195,7 +2197,7 @@ void server::process_data_game(const network::connection sock,
 				make_change_diff(games_and_users_list_.root(), NULL, "user",
 						pl2->second.config_address(), diff);
 			}
-			lobby_.send_data(diff, sock);
+			rooms_.lobby().send_data(diff, sock);
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
 		}
@@ -2247,7 +2249,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 	simple_wml::document diff;
 	if(make_delete_diff(*gamelist, "gamelist", "game",
 	                    (*game_it)->description(), diff)) {
-		lobby_.send_data(diff);
+		rooms_.lobby().send_data(diff);
 	}
 
 	// Delete the game from the games_and_users_list_.
@@ -2274,7 +2276,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 			simple_wml::document udiff;
 			if (make_change_diff(games_and_users_list_.root(), NULL,
 					     "user", pl->second.config_address(), udiff)) {
-				lobby_.send_data(udiff);
+				rooms_.lobby().send_data(udiff);
 			}
 		} else {
 			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_. (socket: "
@@ -2286,7 +2288,7 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	(*game_it)->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
-	lobby_.add_players(**game_it);
+	rooms_.enter_lobby(**game_it);
 
 	(*game_it)->send_data(games_and_users_list_);
 
@@ -2298,7 +2300,7 @@ void server::update_game_in_lobby(const wesnothd::game* g, network::connection e
 {
 	simple_wml::document diff;
 	if(make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff)) {
-		lobby_.send_data(diff, exclude);
+		rooms_.lobby().send_data(diff, exclude);
 	}
 }
 

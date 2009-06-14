@@ -15,12 +15,17 @@
 #ifndef PLAYER_HPP_INCLUDED
 #define PLAYER_HPP_INCLUDED
 
-#include <ctime>
 
 #include "../config.hpp"
 #include "simple_wml.hpp"
 
+#include <ctime>
+#include <set>
 #include <string>
+
+namespace wesnothd {
+
+class game;
 
 class player
 {
@@ -43,6 +48,19 @@ public:
 	bool silenced() const { return messages_since_flood_start_ > MaxMessages; }
 	bool is_message_flooding();
 
+	/**
+	 * @return true iff the player is in a game
+	 */
+	bool in_game() const { return get_game() != NULL; }
+
+	/**
+	 * @return a pointer to the game the player is in, or NULL if he/she is not
+	 * in a game at the moment
+	 */
+	const game* get_game() const;
+
+	void set_game(game* g);
+
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
@@ -54,6 +72,9 @@ private:
 	unsigned int messages_since_flood_start_;
 	const size_t MaxMessages;
 	const time_t TimePeriod;
+	game* game_;
 };
+
+} //namespace wesnothd
 
 #endif
