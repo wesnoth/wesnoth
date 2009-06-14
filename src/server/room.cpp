@@ -26,7 +26,8 @@ static lg::log_domain log_server("server");
 namespace wesnothd {
 
 room::room(const std::string& name)
-	: members_(), name_(name)
+	: name_(name)
+	, members_()
 {
 }
 
@@ -100,8 +101,8 @@ void room::send_server_message(const char* message,
 	}
 }
 
-void room::process_message(simple_wml::document& data,
-						   const player_map::iterator user)
+void room::process_message(simple_wml::document& /*data*/,
+						   const player_map::iterator /*user*/)
 {
 }
 
