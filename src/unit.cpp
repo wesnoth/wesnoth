@@ -1148,6 +1148,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			if((!map_ && loc.valid()) || (map_ && map_->on_board(loc))) {
 				return false;
 			}
+		} else if(cfg_x.empty() && cfg_y.empty()) {
+			return false;
 		} else if(!loc.matches_range(cfg_x, cfg_y)) {
 			return false;
 		}
