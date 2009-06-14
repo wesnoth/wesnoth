@@ -17,7 +17,6 @@
 
 #include "gui/auxiliary/formula.hpp"
 #include "reference_counted_object.hpp"
-#include "tstring.hpp"
 
 #include <string>
 #include <vector>
