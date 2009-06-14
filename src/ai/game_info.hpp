@@ -27,6 +27,8 @@ class gamemap;
 #include "../tod_manager.hpp"
 #include "../playturn.hpp"
 
+class paths;
+
 /**
  * info is structure which holds references to all the important objects
  * that an AI might need access to, in order to make and implement its

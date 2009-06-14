@@ -19,6 +19,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "pathutils.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 

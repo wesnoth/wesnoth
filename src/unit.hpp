@@ -25,12 +25,12 @@
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
-#include "variable.hpp"
-#include "game_display.hpp"
 
-class gamestatus;
-class game_state;
 class config_writer;
+class gamestatus;
+class game_display;
+class game_state;
+class vconfig;
 
 #include <set>
 #include <string>

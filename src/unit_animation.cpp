@@ -21,6 +21,8 @@
 #include "halo.hpp"
 #include "map.hpp"
 #include "unit.hpp"
+#include "variable.hpp"
+
 #include <algorithm>
 
 struct tag_name_manager {
