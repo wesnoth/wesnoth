@@ -112,6 +112,9 @@ public:
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
 
+		unsigned maximum_width;
+		unsigned maximum_height;
+
 		bool easy_close;
 
 		std::string definition;

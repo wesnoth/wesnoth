@@ -252,11 +252,17 @@ twindow* build(CVideo& video, const std::string& type)
 
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	twindow* window = new twindow(video,
-		definition->x, definition->y, definition->width, definition->height,
-		definition->automatic_placement,
-		definition->horizontal_placement, definition->vertical_placement,
-		definition->definition);
+	twindow* window = new twindow(video
+			, definition->x
+			, definition->y
+			, definition->width
+			, definition->height
+			, definition->automatic_placement
+			, definition->horizontal_placement
+			, definition->vertical_placement
+			, definition->maximum_width
+			, definition->maximum_height
+			, definition->definition);
 	assert(window);
 
 	log_scope2(log_gui_general, "Window builder: building grid for window");
@@ -335,6 +341,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	height(cfg["height"]),
 	vertical_placement(get_v_align(cfg["vertical_placement"])),
 	horizontal_placement(get_h_align(cfg["horizontal_placement"])),
+	maximum_width(lexical_cast_default<unsigned>(cfg["maximum_width"])),
+	maximum_height(lexical_cast_default<unsigned>(cfg["maximum_height"])),
 	easy_close(utils::string_bool(cfg["easy_close"])),
 	definition(cfg["definition"]),
 	grid(0)
@@ -367,6 +375,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   The vertical placement of the window.
  *     horizontal_placement (h_align = "")
  *                                   The horizontal placement of the window.
+ *
+ *     maximum_width (unsigned = 0)  The maximum width of the window (only
+ *                                   used for automatic placement).
+ *     maximum_height (unsigned = 0) The maximum height of the window (only
+ *                                   used for automatic placement).
  *
  *     easy_close (bool = false)     Does the window need easy close behaviour?
  *                                   Easy close behaviour means that any mouse

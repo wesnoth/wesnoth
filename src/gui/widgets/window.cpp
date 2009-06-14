@@ -205,6 +205,8 @@ twindow::twindow(CVideo& video,
 		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
+		const unsigned maximum_width,
+		const unsigned maximum_height,
 		const std::string& definition)
 	: tpanel()
 	, tevent_handler()
@@ -223,6 +225,8 @@ twindow::twindow(CVideo& video,
 	, automatic_placement_(automatic_placement)
 	, horizontal_placement_(horizontal_placement)
 	, vertical_placement_(vertical_placement)
+	, maximum_width_(maximum_width)
+	, maximum_height_(maximum_height)
 	, x_(x)
 	, y_(y)
 	, w_(w)
@@ -657,11 +661,17 @@ void twindow::NEW_layout()
 	const game_logic::map_formula_callable variables =
 		get_screen_size_variables();
 
-	const int maximum_width = automatic_placement_ ?
-			settings::screen_width : w_(variables);
+	const int maximum_width = automatic_placement_
+			?  maximum_width_
+				? std::min(maximum_width_, settings::screen_width)
+				: settings::screen_width
+			: w_(variables);
 
-	const int maximum_height = automatic_placement_ ?
-			settings::screen_height : h_(variables);
+	const int maximum_height = automatic_placement_
+			? maximum_height_
+				? std::min(maximum_height_, settings::screen_height)
+				: settings::screen_height
+			: h_(variables);
 
 	NEW_layout_linked_widgets();
 

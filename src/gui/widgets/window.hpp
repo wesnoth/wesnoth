@@ -75,6 +75,8 @@ public:
 		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
+		const unsigned maximum_width,
+		const unsigned maximum_height,
 		const std::string& definition);
 
 	~twindow();
@@ -385,6 +387,12 @@ private:
 	 * The value should be a tgrid placement flag.
 	 */
 	const unsigned vertical_placement_;
+
+	/** The maximum width if automatic_placement_ is true. */
+	unsigned maximum_width_;
+
+	/** The maximum height if automatic_placement_ is true. */
+	unsigned maximum_height_;
 
 	/** The formula to calulate the x value of the dialog. */
 	tformula<unsigned>x_;
