@@ -22,6 +22,7 @@
 #include "ai.hpp"
 
 #include "../../attack_prediction.hpp"
+#include "foreach.hpp"
 #include "../../map.hpp"
 #include "../../log.hpp"
 
@@ -708,17 +709,10 @@ double ai_default::power_projection(const map_location& loc, const move_map& dst
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
 			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
-			for(std::vector<attack_type>::const_iterator att =
-			    un.attacks().begin(); att != un.attacks().end(); ++att) {
-                               int poison_bonus = 0;
-
-                               if (att->get_special_bool("poison", true))
-                                       poison_bonus = static_cast<int>(800 * (1.0 -
-                                                       std::pow(0.7,
-                                                               static_cast<double>(att->num_attacks()))));
-				int damage = att->damage() * att->num_attacks() *
-				             (100 + tod_modifier) + poison_bonus;
-				if(damage > most_damage) {
+			foreach (const attack_type &att, un.attacks())
+			{
+				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
+				if (damage > most_damage) {
 					most_damage = damage;
 				}
 			}
