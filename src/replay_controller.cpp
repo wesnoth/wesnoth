@@ -79,7 +79,7 @@ replay_controller::~replay_controller(){
 }
 
 bool replay_controller::continue_replay() {
-	return !gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
+	return gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
 			" Continue playing?"),gui::OK_CANCEL).show();
 }
 
