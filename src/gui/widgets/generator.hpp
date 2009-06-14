@@ -15,11 +15,15 @@
 #ifndef GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 #define GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 
-#include "gui/auxiliary/window_builder.hpp"
 #include "widget.hpp"
 #include "config.hpp"
 
+#include <boost/intrusive_ptr.hpp>
+
 namespace gui2 {
+
+class tbuilder_grid;
+typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 
 class tgrid;
 
