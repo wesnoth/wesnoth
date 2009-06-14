@@ -147,7 +147,7 @@ local function wml_show_objectives(cfg)
 end
 
 local function wml_gold(cfg)
-	local team = wesnoth.get_side(cfg.side)
+	local team = wesnoth.get_side(cfg.side or 1)
 	team.gold = team.gold + cfg.amount
 end
 
