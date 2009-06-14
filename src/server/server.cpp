@@ -2426,12 +2426,6 @@ int main(int argc, char** argv) {
 		 * the true errno anymore. Seems to work good enough for now though.
 		 */
 		return errno;
-	} catch(std::bad_alloc&) {
-                ERR_SERVER << "Ran out of memory. Aborting.\n";
-		return ENOMEM;
-	} catch(...) {
-		ERR_SERVER << "Caught unknown error while server was running. Aborting.\n";
-		return -1;
 	}
 
 	return 0;
