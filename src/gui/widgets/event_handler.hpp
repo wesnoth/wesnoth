@@ -21,8 +21,7 @@
 #define GUI_WIDGETS_EVENT_INFO_HPP_INCLUDED
 
 #include "events.hpp"
-#include "gui/widgets/helper.hpp"
-#include "gui/widgets/widget.hpp"
+#include "gui/widgets/event_executor.hpp"
 
 #include "SDL.h"
 
@@ -30,6 +29,8 @@ class t_string;
 
 namespace gui2{
 
+class tpoint;
+class twidget;
 class twindow;
 
 /** The event handler class for the widget library. */

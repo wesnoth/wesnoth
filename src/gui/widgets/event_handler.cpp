@@ -23,6 +23,7 @@
 
 #include "clipboard.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2{
