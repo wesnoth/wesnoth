@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/widgets/event_handler.hpp"
 #include "sound.hpp"
 
 namespace gui2 {
@@ -116,6 +117,32 @@ void tslider::set_maximum_value(const int maximum_value)
 		set_item_position(get_maximum_value());
 	} else {
 		set_item_position(minimum_value_ + value);
+	}
+}
+
+void tslider::mouse_left_button_down(tevent_handler& event)
+{
+	tpoint mouse = event.get_mouse();
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	DBG_GUI_E << "Slider: mouse down at " << mouse << ".\n";
+
+	if(on_positioner(mouse)) {
+		mouse_ = mouse;
+		event.mouse_capture();
+		set_state(PRESSED);
+		return;
+	}
+
+	const int bar = on_bar(mouse);
+	if(bar != 0) {
+		const int distance = mouse.x - get_positioner_offset();
+		move_positioner(distance);
+
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
 	}
 }
 

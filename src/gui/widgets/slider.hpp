@@ -65,6 +65,9 @@ public:
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
 
+	/** Inherited from tscroll_bar_. */
+	void mouse_left_button_down(tevent_handler& event);
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)
