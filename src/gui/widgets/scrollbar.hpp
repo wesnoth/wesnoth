@@ -31,6 +31,8 @@ namespace gui2 {
  */
 class tscrollbar_ : public tcontrol
 {
+	/** @todo Abstract the code so this friend is no longer needed. */
+	friend class tslider;
 public:
 
 	tscrollbar_() :
