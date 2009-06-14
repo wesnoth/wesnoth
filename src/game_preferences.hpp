@@ -49,12 +49,14 @@ namespace preferences {
 	const std::set<std::string> & get_ignores();
 	bool add_friend(const std::string& nick);
 	bool add_ignore(const std::string& nick);
+	void add_completed_campaign(const std::string& campaign_id);
 	void remove_friend(const std::string& nick);
 	void remove_ignore(const std::string& nick);
 	void clear_friends();
 	void clear_ignores();
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
+	bool is_campaign_completed(const std::string& campaign_id);
 
 	bool sort_list();
 	void _set_sort_list(bool show);

@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "network.hpp" // ping_timeout
+#include "serialization/string_utils.hpp"
 #include "settings.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
@@ -44,6 +45,7 @@ const unsigned max_history_saved = 50;
 
 std::set<std::string> friends;
 std::set<std::string> ignores;
+
 bool friends_initialized = false;
 bool ignores_initialized = false;
 
@@ -222,6 +224,22 @@ bool is_friend(const std::string& nick) {
 bool is_ignored(const std::string& nick) {
 	initialize_ignores();
 	return ignores.find(nick) != ignores.end();
+}
+
+void add_completed_campaign(const std::string& campaign_id) {
+	std::vector<std::string> completed = utils::split(preferences::get("completed_campaigns"));
+
+	if(std::find(completed.begin(), completed.end(), campaign_id) != completed.end())
+		return;
+
+	completed.push_back(campaign_id);
+	preferences::set("completed_campaigns", utils::join(completed));
+}
+
+bool is_campaign_completed(const std::string& campaign_id) {
+	std::vector<std::string> completed = utils::split(preferences::get("completed_campaigns"));
+	
+	return std::find(completed.begin(), completed.end(), campaign_id) != completed.end();
 }
 
 bool show_lobby_join(const std::string& sender, const std::string& message) {

@@ -173,6 +173,8 @@ private:
 
 	bool detect_video_settings(); // FIXME
 
+	void mark_completed_campaigns(std::vector<config>& campaigns);
+
 	const int argc_;
 	int arg_;
 	const char* const * const argv_;
@@ -1010,6 +1012,16 @@ void game_controller::set_tutorial()
 
 }
 
+void game_controller::mark_completed_campaigns(std::vector<config>& campaigns) {
+	foreach(config &campaign, campaigns) {
+		if(preferences::is_campaign_completed(campaign["id"])) {
+			campaign["completed"] = "true";
+		} else {
+			campaign["completed"] = "false";
+		}
+	}
+}
+
 bool game_controller::new_campaign()
 {
 	state_ = game_state();
@@ -1017,6 +1029,7 @@ bool game_controller::new_campaign()
 
 	const config::const_child_itors &ci = game_config_.child_range("campaign");
 	std::vector<config> campaigns(ci.first, ci.second);
+	mark_completed_campaigns(campaigns);
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
 
@@ -1522,6 +1535,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
+			preferences::add_completed_campaign(state_.classification().campaign);
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
 			about::show_about(disp(),state_.classification().campaign);
 		}
