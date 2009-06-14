@@ -70,6 +70,7 @@ enum twindow_type {
 	GAME_SAVE_MESSAGE,		 /**< Save game dialog with additional message. */
 	GAME_SAVE_OOS,			 /**< Save game dialog for processing OOS. */
 	GAME_SAVE_OVERWRITE,	 /**< Ask for overwriting an existing savegame. */
+	LOBBY_MAIN,               /**< Main MP lobby screen */
 	COUNT                    /**<
 	                          * The last one to hold the number of items and as
 	                          * sentinel.

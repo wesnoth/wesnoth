@@ -98,6 +98,7 @@ static void fill_window_types()
 	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
 	window_type_list[EDITOR_SETTINGS] = "editor_settings";
 #endif
+	window_type_list[LOBBY_MAIN] = "lobby_main";
 }
 
 const std::string& get_id(const twindow_type window_type)
