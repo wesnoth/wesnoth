@@ -336,6 +336,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * engine can't handle all dialogs yet, so it needs to fall back to the old
 	 * engine to make certain things happen.
 	 */
+	} else if(id == "help") {
+		return static_cast<tretval>(gui::SHOW_HELP);
 	} else if(id == "campaign") {
 		return static_cast<tretval>(gui::NEW_CAMPAIGN);
 	} else if(id == "multiplayer") {

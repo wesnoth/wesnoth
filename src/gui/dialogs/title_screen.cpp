@@ -22,7 +22,9 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
+#include "titlescreen.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -52,6 +54,13 @@ void show_dialog(twidget* caller)
  * This shows the title screen.
  */
 
+ttitle_screen::ttitle_screen()
+	: video_(NULL)
+	, tips_()
+{
+	read_tips_of_day(tips_);
+}
+
 twindow* ttitle_screen::build_window(CVideo& video)
 {
 	return build(video, get_id(TITLE_SCREEN));
@@ -69,12 +78,21 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	/**** Set the buttons ****/
 	window.get_widget<tbutton>("addons", false).
-		set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
+			set_callback_mouse_left_click(show_dialog<gui2::taddon_connect>);
 
 	// Note changing the language doesn't upate the title screen...
 	window.get_widget<tbutton>("language", false).
 			set_callback_mouse_left_click(
 				show_dialog<gui2::tlanguage_selection>);
+
+	/**** Set the tip of the day ****/
+	update_tip(window, true);
+
+	window.get_widget<tbutton>("next_tip", false).
+			set_callback_mouse_left_click(next_tip);
+
+	window.get_widget<tbutton>("previous_tip", false).
+			set_callback_mouse_left_click(previous_tip);
 
 	/***** Select a random game_title *****/
 	std::vector<std::string> game_title_list =
@@ -93,6 +111,44 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 void ttitle_screen::post_show(twindow& /*window*/)
 {
 	video_ = NULL;
+}
+
+void ttitle_screen::update_tip(twindow& window, const bool previous)
+{
+	next_tip_of_day(tips_, previous);
+	const config *tip = get_tip_of_day(tips_);
+	assert(tip);
+
+	window.get_widget<tlabel>("tip", false).set_label((*tip)["text"]);
+	window.get_widget<tlabel>("source", false).set_label((*tip)["source"]);
+
+	/**
+	 * @todo Convert the code to use a multi_page so the invalidate is not
+	 * needed.
+	 */
+	window.invalidate_layout();
+}
+
+void ttitle_screen::next_tip(twidget* caller)
+{
+	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
+	assert(dialog);
+
+	twindow *window = caller->get_window();
+	assert(window);
+
+	dialog->update_tip(*window, true);
+}
+
+void ttitle_screen::previous_tip(twidget* caller)
+{
+	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
+	assert(dialog);
+
+	twindow *window = caller->get_window();
+	assert(window);
+
+	dialog->update_tip(*window, false);
 }
 
 } // namespace gui2
