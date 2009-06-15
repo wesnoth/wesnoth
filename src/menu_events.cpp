@@ -2010,6 +2010,7 @@ private:
 			void do_network_send();
 			void do_network_send_req_arg();
 			void do_whisper();
+			void do_chanmsg();
 			void do_log();
 			void do_ignore();
 			void do_friend();
@@ -2118,6 +2119,12 @@ private:
 					_("Request information about a nick."), "<nick>");
 				register_command("details", &chat_command_handler::do_details,
 					_("Request a list of details you can set for your registered nick."));
+				register_command("join", &chat_command_handler::do_network_send_req_arg,
+					_("Join a room."), "<room>");
+				register_command("part", &chat_command_handler::do_network_send_req_arg,
+					_("Part a room."), "<room>");
+				register_command("room", &chat_command_handler::do_chanmsg,
+					_("Room msg."), "<room> <msg>");
 			}
 		private:
 			chat_handler& chat_handler_;
@@ -2401,6 +2408,10 @@ private:
 			data.add_child("query")["type"] = "lobbymsg <255,255,0>" + args;
 		} else if (cmd == "adminmsg") {
 			data.add_child("query")["type"] = "adminmsg " + args;
+		} else if (cmd == "join") {
+			data.add_child("room_join")["room"] = args;
+		} else if (cmd == "part") {
+			data.add_child("room_part")["room"] = args;
 		}
 		network::send_data(data, 0, true);
 	}
@@ -2452,6 +2463,21 @@ private:
 		data.add_child("whisper", cwhisper);
 		chat_handler_.add_chat_message(time(NULL),
 			"whisper to " + cwhisper["receiver"], 0,
+			cwhisper["message"], game_display::MESSAGE_PRIVATE);
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_chanmsg()
+	{
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		if (get_data(2).empty()) return command_failed_need_arg(2);
+		config cwhisper, data;
+		cwhisper["room"] = get_arg(1);
+		cwhisper["message"] = get_data(2);
+		cwhisper["sender"] = preferences::login();
+		data.add_child("message", cwhisper);
+		chat_handler_.add_chat_message(time(NULL),
+			"room" + cwhisper["room"], 0,
 			cwhisper["message"], game_display::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
 	}

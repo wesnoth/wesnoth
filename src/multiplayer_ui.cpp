@@ -529,6 +529,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& sender = msg["sender"];
 	const std::string& message = msg["message"];
+	std::string room = msg["room"];
 	if (!preferences::show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
@@ -544,7 +545,8 @@ void ui::process_message(const config& msg, const bool whisper) {
 		// too annoying and probably not any helpful
 		//sound::play_UI_sound(game_config::sounds::receive_message);
 	}
-	chat_.add_message(time(NULL), (whisper ? "whisper: " : "") + msg["sender"],
+	if (!room.empty()) room = room + ": ";
+	chat_.add_message(time(NULL), room + (whisper ? "whisper: " : "") + msg["sender"],
 			msg["message"]);
 	chat_.update_textbox(chat_textbox_);
 }
