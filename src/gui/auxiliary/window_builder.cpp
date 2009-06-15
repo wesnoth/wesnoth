@@ -543,91 +543,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 		<< rows << " rows and " << cols << " columns.\n";
 }
 
-tbuilder_control::tbuilder_control(const config& cfg) :
-	tbuilder_widget(cfg),
-	id(cfg["id"]),
-	definition(cfg["definition"]),
-	label(cfg["label"]),
-	tooltip(cfg["tooltip"]),
-	help(cfg["help"]),
-	use_tooltip_on_label_overflow(
-		utils::string_bool("use_tooltip_on_label_overflow", true))
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 1_widget
- *
- * = Widget =
- *
- * All widgets placed in the cell have some values in common:
- * @start_table = config
- *     id (string = "")                This value is used for the engine to
- *                                     identify 'special' items. This means that
- *                                     for example a text_box can get the proper
- *                                     initial value. This value should be
- *                                     unique or empty. Those special values are
- *                                     documented at the window definition that
- *                                     uses them. NOTE items starting with an
- *                                     underscore are used for composed widgets
- *                                     and these should be unique per composed
- *                                     widget.
- *
- *     definition (string = "default") The id of the widget definition to use.
- *                                     This way it's possible to select a
- *                                     specific version of the widget eg a title
- *                                     label when the label is used as title.
- *
- *     label (tstring = "")            Most widgets have some text associated
- *                                     with them, this field contain the value
- *                                     of that text. Some widgets use this value
- *                                     for other purposes, this is documented
- *                                     at the widget.
- *
- *     tooptip (tstring = "")          If you hover over a widget a while (the
- *                                     time it takes can differ per widget) a
- *                                     short help can show up.This defines the
- *                                     text of that message.
- *
- *
- *     help (tstring = "")             If you hover over a widget and press F1 a
- *                                     help message can show up. This help
- *                                     message might be the same as the tooltip
- *                                     but in general (if used) this message
- *                                     should show more help. This defines the
- *                                     text of that message.
- *
- *    use_tooltip_on_label_overflow (bool = true)
- *                                     If the text on the label is truncated and
- *                                     the tooltip is empty the label can be
- *                                     used for the tooltip. If this variable is
- *                                     set to true this will happen.
- * @end_table
- *
- */
-
-	if(definition.empty()) {
-		definition = "default";
-	}
-
-
-	DBG_GUI_P << "Window builder: found control with id '"
-		<< id << "' and definition '" << definition << "'.\n";
-}
-
-void tbuilder_control::init_control(tcontrol* control) const
-{
-	assert(control);
-
-	control->set_id(id);
-	control->set_definition(definition);
-	control->set_label(label);
-	control->set_tooltip(tooltip);
-	control->set_help_message(help);
-	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
-}
-
 tbuilder_button::tbuilder_button(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	retval_id_(cfg["return_value_id"]),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
@@ -707,7 +624,7 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 }
 
 tbuilder_label::tbuilder_label(const config& cfg)
-	: tbuilder_control(cfg)
+	: implementation::tbuilder_control(cfg)
 	, wrap(utils::string_bool("wrap"))
 {
 /*WIKI
@@ -740,7 +657,7 @@ twidget* tbuilder_label::build() const
 }
 
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	vertical_scrollbar_mode(
 			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
 	horizontal_scrollbar_mode(
@@ -862,7 +779,7 @@ twidget* tbuilder_listbox::build() const
 }
 
 tbuilder_menubar::tbuilder_menubar(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	must_have_one_item_selected_(utils::string_bool(cfg["must_have_one_item_selected"])),
 	direction_(read_direction(cfg["direction"])),
 	selected_item_(lexical_cast_default<int>(
@@ -945,7 +862,7 @@ twidget* tbuilder_minimap::build() const
 }
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	builder(0),
 	data()
 {
@@ -1025,7 +942,7 @@ twidget* tbuilder_multi_page::build() const
 }
 
 tbuilder_panel::tbuilder_panel(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	grid(0)
 {
 /*WIKI
@@ -1106,7 +1023,7 @@ twidget* tbuilder_scroll_label::build() const
 }
 
 tbuilder_slider::tbuilder_slider(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	best_slider_length_(lexical_cast_default<unsigned>(cfg["best_slider_length"])),
 	minimum_value_(lexical_cast_default<int>(cfg["minimum_value"])),
 	maximum_value_(lexical_cast_default<int>(cfg["maximum_value"])),
@@ -1162,7 +1079,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
 }
 
 tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
-	: tbuilder_control(cfg)
+	: implementation::tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
 			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -1325,7 +1242,7 @@ twidget* tbuilder_toggle_button::build() const
 }
 
 tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
-	tbuilder_control(cfg),
+	implementation::tbuilder_control(cfg),
 	grid(0),
 	retval_id_(cfg["return_value_id"]),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))

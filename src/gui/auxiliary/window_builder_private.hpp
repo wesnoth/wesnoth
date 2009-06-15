@@ -24,31 +24,13 @@
 #include "gui/auxiliary/window_builder.hpp"
 
 #include "config.hpp"
+#include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/widgets/menubar.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2 {
 
-struct tbuilder_control : public tbuilder_widget
-{
-private:
-	tbuilder_control();
-public:
-
-	tbuilder_control(const config& cfg);
-
-	void init_control(tcontrol* control) const;
-
-	/** Parameters for the control. */
-	std::string id;
-	std::string definition;
-	t_string label;
-	t_string tooltip;
-	t_string help;
-	bool use_tooltip_on_label_overflow;
-};
-
-struct tbuilder_button : public tbuilder_control
+struct tbuilder_button : public implementation::tbuilder_control
 {
 
 private:
@@ -63,7 +45,7 @@ private:
 	int retval_;
 };
 
-struct tbuilder_image : public tbuilder_control
+struct tbuilder_image : public implementation::tbuilder_control
 {
 /*WIKI
  * @page = GUIWidgetInstanceWML
@@ -75,7 +57,7 @@ struct tbuilder_image : public tbuilder_control
  */
 
 	tbuilder_image(const config& cfg)
-		: tbuilder_control(cfg)
+		: implementation::tbuilder_control(cfg)
 	{
 	}
 
@@ -104,7 +86,7 @@ struct tbuilder_gridcell : public tbuilder_widget
 	twidget* build () const { return NULL; }
 };
 
-struct tbuilder_horizontal_scrollbar : public tbuilder_control
+struct tbuilder_horizontal_scrollbar : public implementation::tbuilder_control
 {
 private:
 	tbuilder_horizontal_scrollbar();
@@ -120,13 +102,13 @@ public:
  *
  */
 	tbuilder_horizontal_scrollbar(const config& cfg) :
-		tbuilder_control(cfg)
+		implementation::tbuilder_control(cfg)
 	{}
 
 	twidget* build () const;
 };
 
-struct tbuilder_label : public tbuilder_control
+struct tbuilder_label : public implementation::tbuilder_control
 {
 
 private:
@@ -139,7 +121,7 @@ public:
 	bool wrap;
 };
 
-struct tbuilder_listbox : public tbuilder_control
+struct tbuilder_listbox : public implementation::tbuilder_control
 {
 
 private:
@@ -168,7 +150,7 @@ public:
 };
 
 
-struct tbuilder_menubar : public tbuilder_control
+struct tbuilder_menubar : public implementation::tbuilder_control
 {
 	tbuilder_menubar(const config& cfg);
 
@@ -185,7 +167,7 @@ private:
 
 };
 
-struct tbuilder_minimap : public tbuilder_control
+struct tbuilder_minimap : public implementation::tbuilder_control
 {
 /*WIKI
  * @page = GUIWidgetInstanceWML
@@ -196,7 +178,7 @@ struct tbuilder_minimap : public tbuilder_control
  * A minimap has no extra fields.
  */
 	tbuilder_minimap(const config& cfg) :
-		tbuilder_control(cfg)
+		implementation::tbuilder_control(cfg)
 	{
 	}
 
@@ -204,7 +186,7 @@ struct tbuilder_minimap : public tbuilder_control
 };
 
 struct tbuilder_multi_page
-	: public tbuilder_control
+	: public implementation::tbuilder_control
 {
 
 private:
@@ -225,7 +207,7 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_panel : public tbuilder_control
+struct tbuilder_panel : public implementation::tbuilder_control
 {
 
 private:
@@ -238,7 +220,7 @@ public:
 	tbuilder_grid_ptr grid;
 };
 
-struct tbuilder_slider : public tbuilder_control
+struct tbuilder_slider : public implementation::tbuilder_control
 {
 
 private:
@@ -261,7 +243,7 @@ private:
 	std::vector<t_string> value_labels_;
 };
 
-struct tbuilder_scroll_label : public tbuilder_control
+struct tbuilder_scroll_label : public implementation::tbuilder_control
 {
 public:
 /*WIKI
@@ -279,7 +261,7 @@ public:
  * @end_table
  */
 	tbuilder_scroll_label(const config& cfg)
-		: tbuilder_control(cfg)
+		: implementation::tbuilder_control(cfg)
 		, auto_hide_scrollbar_(
 			utils::string_bool(cfg["auto_hide_scrollbar"], true))
 	{
@@ -293,7 +275,7 @@ private:
 };
 
 struct tbuilder_scrollbar_panel
-	: public tbuilder_control
+	: public implementation::tbuilder_control
 {
 
 private:
@@ -310,7 +292,7 @@ public:
 	tbuilder_grid_ptr grid;
 };
 
-struct tbuilder_spacer : public tbuilder_control
+struct tbuilder_spacer : public implementation::tbuilder_control
 {
 
 private:
@@ -336,7 +318,7 @@ public:
  * items.
  */
 	tbuilder_spacer(const config& cfg) :
-		tbuilder_control(cfg),
+		implementation::tbuilder_control(cfg),
 		width_(cfg["width"]),
 		height_(cfg["height"])
 	{}
@@ -348,7 +330,7 @@ private:
 	tformula<unsigned> height_;
 };
 
-struct tbuilder_text_box : public tbuilder_control
+struct tbuilder_text_box : public implementation::tbuilder_control
 {
 private:
 	tbuilder_text_box();
@@ -383,7 +365,7 @@ public:
 
 // copy & paste from tbuilder_text_box...
 // does it make more sense to inherit from it?
-struct tbuilder_password_box : public tbuilder_control
+struct tbuilder_password_box : public implementation::tbuilder_control
 {
 private:
 	tbuilder_password_box();
@@ -409,14 +391,14 @@ public:
  *
  */
 	tbuilder_password_box(const config& cfg) :
-		tbuilder_control(cfg),
+		implementation::tbuilder_control(cfg),
 		history_(cfg["history"])
 	{}
 
 	twidget* build () const;
 };
 
-struct tbuilder_toggle_button : public tbuilder_control
+struct tbuilder_toggle_button : public implementation::tbuilder_control
 {
 private:
 	tbuilder_toggle_button();
@@ -437,7 +419,7 @@ public:
  * @end_table
  */
 	tbuilder_toggle_button(const config& cfg) :
-		tbuilder_control(cfg),
+		implementation::tbuilder_control(cfg),
 		icon_name_(cfg["icon"]),
 		retval_id_(cfg["return_value_id"]),
 		retval_(lexical_cast_default<int>(cfg["return_value"]))
@@ -451,7 +433,7 @@ private:
 	int retval_;
 };
 
-struct tbuilder_toggle_panel : public tbuilder_control
+struct tbuilder_toggle_panel : public implementation::tbuilder_control
 {
 
 private:
@@ -468,7 +450,7 @@ private:
 	int retval_;
 };
 
-struct tbuilder_vertical_scrollbar : public tbuilder_control
+struct tbuilder_vertical_scrollbar : public implementation::tbuilder_control
 {
 private:
 	tbuilder_vertical_scrollbar();
@@ -484,7 +466,7 @@ public:
  *
  */
 	tbuilder_vertical_scrollbar(const config& cfg) :
-		tbuilder_control(cfg)
+		implementation::tbuilder_control(cfg)
 	{}
 
 	twidget* build () const;
