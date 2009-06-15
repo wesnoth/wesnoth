@@ -744,8 +744,7 @@ bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 		|| command.child("clear_labels")
 		|| command.child("rename")
 		|| command.child("countdown_update")
-		|| command.child("advance_unit")
-		|| command.child("choose")))
+		))
 	{
 		return true;
 	}
