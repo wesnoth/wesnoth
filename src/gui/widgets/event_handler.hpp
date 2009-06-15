@@ -29,7 +29,7 @@ class t_string;
 
 namespace gui2{
 
-class tpoint;
+struct tpoint;
 class twidget;
 class twindow;
 

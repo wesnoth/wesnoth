@@ -22,7 +22,7 @@
 
 namespace gui2 {
 
-class tbuilder_grid;
+struct tbuilder_grid;
 typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 
 class tgrid;

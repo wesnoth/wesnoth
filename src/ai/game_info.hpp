@@ -27,7 +27,7 @@ class gamemap;
 #include "../tod_manager.hpp"
 #include "../playturn.hpp"
 
-class paths;
+struct paths;
 
 /**
  * info is structure which holds references to all the important objects
