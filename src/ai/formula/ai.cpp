@@ -509,7 +509,7 @@ private:
 		}
 
 		battle_context bc(ai_.get_info().map, ai_.get_info().teams, ai_.get_info().units,
-			ai_.get_info().state, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
+			ai_.get_info().state, ai_.get_info().tod_manager_, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
 			defender_location, weapon, -1, 1.0, NULL, &ai_.get_info().units.find(attacker_location)->second);
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
@@ -895,7 +895,7 @@ public:
 	                int weapon)
 	  : move_from_(move_from), src_(src), dst_(dst),
 		bc_(ai.get_info().map, ai.get_info().teams, ai.get_info().units,
-			ai.get_info().state, src, dst, weapon, -1, 1.0, NULL,
+			ai.get_info().state, ai.get_info().tod_manager_, src, dst, weapon, -1, 1.0, NULL,
 			&ai.get_info().units.find(move_from)->second)
 	{
 	}
@@ -2138,7 +2138,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 			if(get_info().units.count(att_src)) {
 				battle_context bc(get_info().map, get_info().teams,
-				                  get_info().units, get_info().state,
+				                  get_info().units, get_info().state, get_info().tod_manager_,
 				                  att_src, att_dst, -1, -1, 1.0, NULL,
 								  &get_info().units.find(att_src)->second);
 				attack_enemy(attack_analysis->movements.front().second,

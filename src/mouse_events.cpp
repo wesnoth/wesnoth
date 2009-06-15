@@ -36,7 +36,7 @@ namespace events{
 
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
-		unit_map& units, gamemap& map, gamestatus& status,
+		unit_map& units, gamemap& map, gamestatus& status, tod_manager& tod_mng,
 		undo_list& undo_stack, undo_list& redo_stack) :
 	mouse_handler_base(),
 	map_(map),
@@ -44,6 +44,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	teams_(teams),
 	units_(units),
 	status_(status),
+	tod_manager_(tod_mng),
 	undo_stack_(undo_stack),
 	redo_stack_(redo_stack),
 	previous_hex_(),
@@ -579,7 +580,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	for (i = 0; i < attacker->second.attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->second.attacks()[i].attack_weight() > 0) {
-			battle_context bc(map_, teams_, units_, status_, attacker->first, defender->first, i);
+			battle_context bc(map_, teams_, units_, status_, tod_manager_, attacker->first, defender->first, i);
 			bc_vector.push_back(bc);
 			if (bc.better_attack(bc_vector[best], 0.5)) {
 				best = i;
@@ -672,7 +673,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(gui(),map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_);
+			attack(gui(),map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_, tod_manager_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance

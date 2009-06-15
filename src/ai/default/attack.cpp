@@ -268,7 +268,7 @@ void ai_default::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, teams_, state_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
+			cur_analysis.analyze(map_, units_, teams_, state_, tod_manager_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
 			//This logic to sometimes not add the attack because it doesn't
 			//rate high enough seems to remove attacks from consideration
@@ -297,7 +297,7 @@ void ai_default::do_attack_analysis(
 
 void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
-								  const gamestatus& status,
+								  const gamestatus& status,  const tod_manager& tod_mng,
 								  class ai_default& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
@@ -388,7 +388,7 @@ void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
-			bc = new battle_context(map, teams, units, status, m->second, target, att_weapon, def_weapon, aggression, prev_def);
+			bc = new battle_context(map, teams, units, status, tod_mng, m->second, target, att_weapon, def_weapon, aggression, prev_def);
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
@@ -779,7 +779,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 			// Skip weapons with attack_weight=0
 			if (attacks[i].attack_weight() == 0)
 				continue;
-			battle_context bc(map_, teams_, units_, state_, loc, adj[n], i);
+			battle_context bc(map_, teams_, units_, state_, tod_manager_, loc, adj[n], i);
 			combatant att(bc.get_attacker_stats());
 			combatant def(bc.get_defender_stats());
 			att.fight(def);
@@ -811,7 +811,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 			// SKip weapons with attack_weight=0
 			if (attacks[i].attack_weight() == 0)
 				continue;
-			battle_context bc(map_, teams_, units_, state_, adj[n], loc, i);
+			battle_context bc(map_, teams_, units_, state_, tod_manager_, adj[n], loc, i);
 			combatant att(bc.get_attacker_stats());
 			combatant def(bc.get_defender_stats());
 			att.fight(def);
@@ -824,7 +824,7 @@ bool ai_default::desperate_attack(const map_location &loc)
 
 	// It is possible that there were no adjacent units to attack...
 	if (least_hp != u.hitpoints() + 1) {
-		battle_context bc(map_, teams_, units_, state_, loc, adj[best_dir], -1, -1, 0.5);
+		battle_context bc(map_, teams_, units_, state_, tod_manager_, loc, adj[best_dir], -1, -1, 0.5);
 		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num,
 					 bc.get_defender_stats().attack_num);
 		return true;

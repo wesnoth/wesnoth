@@ -263,7 +263,7 @@ map_location under_leadership(const unit_map& units,
 }
 
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status,
+		const gamestatus& status, const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 : attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
@@ -847,7 +847,7 @@ void attack::refresh_bc()
 		return;
 	}
 
-	*bc_ =	battle_context(map_, teams_, units_, state_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	*bc_ =	battle_context(map_, teams_, units_, state_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	a_.cth_ = a_stats_->chance_to_hit;
@@ -905,6 +905,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		int defend_with,
 		unit_map& units,
 		const gamestatus& state,
+		const tod_manager& tod_mng,
 		bool update_display) :
 	gui_(gui),
 	map_(map),
@@ -916,6 +917,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	d_(defender, defend_with, units),
 	units_(units),
 	state_(state),
+	tod_manager_(tod_mng),
 	errbuf_(),
 	update_display_(update_display),
 	OOS_error_(false),
@@ -945,7 +947,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_HIDDEN,false);
 
-	bc_ = new battle_context(map_, teams_, units_, state_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	bc_ = new battle_context(map_, teams_, units_, state_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	if(a_stats_->weapon) {

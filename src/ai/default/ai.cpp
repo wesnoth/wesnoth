@@ -144,7 +144,7 @@ protected:
 				if(best_defense != -1) {
 					move_unit(best_movement.second,best_movement.first,possible_moves);
 					battle_context bc(get_info().map, get_info().teams,
-									  get_info().units, get_info().state,
+									  get_info().units, get_info().state, get_info().tod_manager_,
 									  best_movement.first,
 									  i->first, -1, -1, current_team().aggression());
 					attack_enemy(best_movement.first,i->first,
@@ -459,7 +459,7 @@ map_location ai_default::move_unit(map_location from, map_location to, ai::moves
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
-					battle_context bc(map_, teams_, units_, state_,
+					battle_context bc(map_, teams_, units_, state_, tod_manager_,
 									  res, *adj_i, -1, -1, current_team().aggression());
 					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 					break;
@@ -872,7 +872,7 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 		}
 
 		// Recalc appropriate weapons here: AI uses approximations.
-		battle_context bc(map_, teams_, units_, state_,
+		battle_context bc(map_, teams_, units_, state_, tod_manager_,
 						  to, target_loc, -1, -1,
 						  current_team().aggression());
 		attack_enemy(to, target_loc, bc.get_attacker_stats().attack_num,
@@ -1160,7 +1160,7 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 				if (!enemy || !current_team().is_enemy(enemy->side()) || enemy->incapacitated())
 					continue;
 				// Current behavior is to only make risk-free attacks.
-				battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
+				battle_context bc(map_, teams_, units_, state_, tod_manager_, arrived_at, adj[n], -1, -1, 100.0);
 #ifndef SUOKKO
 					if (bc.get_defender_stats().damage == 0) {
 						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,

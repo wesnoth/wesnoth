@@ -529,7 +529,7 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 	}
 	try {
 		attack(get_info().disp, get_info().map, get_info().teams, u, target, weapon, def_weapon,
-				get_info().units, get_info().state);
+				get_info().units, get_info().state, get_info().tod_manager_);
 	}
 	catch (end_level_exception&)
 	{

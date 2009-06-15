@@ -99,6 +99,8 @@ public:
 				const config& time_cfg) {tod_manager_.add_time_area(id, locs, time_cfg);}
 	void remove_time_area(const std::string& id) {tod_manager_.remove_time_area(id);}
 
+	const tod_manager& get_tod_manager() const {return tod_manager_;} //FIXME: added getter for tod_manager until do_replay_handle is fixed
+
 	config to_config();
 
 protected:

@@ -22,6 +22,7 @@
 
 class display;
 class gamestatus;
+class tod_manager;
 class game_display;
 class replay;
 struct combatant;
@@ -122,7 +123,7 @@ public:
 	 * prev_def is for predicting multiple attacks against a defender.
 	 */
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-				   const gamestatus& status,
+				   const gamestatus& status, const tod_manager& tod_mng,
 				   const map_location& attacker_loc, const map_location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
@@ -181,6 +182,7 @@ class attack {
             int defend_with,
             unit_map& units,
             const gamestatus& state,
+			const tod_manager& tod_mng,
 			bool update_display = true);
 		~attack();
 	private:
@@ -218,6 +220,7 @@ class attack {
 		unit_info a_, d_;
 		unit_map& units_;
 		const gamestatus& state_;
+		const tod_manager& tod_manager_;
 		std::stringstream errbuf_;
 
 		bool update_display_;
