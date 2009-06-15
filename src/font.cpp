@@ -677,13 +677,12 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
 
-		SDL_Color col = colour;
 		int sz = fontsize;
 		int text_style = style;
 
 		std::string::const_iterator after_markup = use_markup ?
-			parse_markup(ln->begin(),ln->end(),&sz,&col,&text_style) : ln->begin();
-		text_surface txt_surf(sz, col, text_style);
+			parse_markup(ln->begin(), ln->end(), &sz, NULL, &text_style) : ln->begin();
+		text_surface txt_surf(sz, colour, text_style);
 
 		if (after_markup == ln->end() && ln+1 != ln_end) {
 			// we replace empty line by a space (to have a line height)
