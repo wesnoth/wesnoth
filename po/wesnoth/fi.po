@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:36+0200\n"
-"PO-Revision-Date: 2009-05-10 18:09+0200\n"
+"PO-Revision-Date: 2009-06-15 22:50+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -8920,9 +8920,8 @@ msgid "I'm Ready"
 msgstr "Aloita peli"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Skenaario on virheellinen, koska siinä ei ole puolia."
+msgstr "Skenaario on virheellinen, koska sillä ei ole id:tä."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9332,8 +9331,8 @@ msgstr "Aloituspaikka:"
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "multiplayer_starting_gold^Kultapala"
+msgstr[1] "multiplayer_starting_gold^Kultapalaa"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9651,10 +9650,9 @@ msgid "Unexpected closing tag"
 msgstr "Odottamaton sulkeva tagi"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Löydetty virheellinen sulkeva tagi $tag2 tagille $tag (avattu paikassa $pos)"
+"Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag (avattu paikassa $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
