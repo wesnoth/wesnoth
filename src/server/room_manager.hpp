@@ -79,19 +79,32 @@ public:
 	 */
 	void remove_player(network::connection player);
 
+	/**
+	 * Check if the room exists and if the player is a member, log failures.
+	 * @return non-NULL iff the room exists and the player is a member
+	 */
+	room* require_member(const std::string& room_name,
+		const player_map::iterator user, const char* log_string = "use");
+
 	void process_message(simple_wml::document& data, const player_map::iterator user);
+
+	void process_room_join(simple_wml::document& data, const player_map::iterator user);
+
+	void process_room_part(simple_wml::document& data, const player_map::iterator user);
 
 	const room& lobby() const { return *lobby_; }
 private:
 	/**
-	 * Adds a player to a room, notifies current members
+	 * Adds a player to a room, maintaining internal consistency
+	 * Will send appropriate error messages to the player.
+	 * @return true iif the operation was successful, false otherwise
 	 */
-	void player_joins_room(network::connection player, room* room);
+	bool player_enters_room(network::connection player, room* room);
 
 	/**
-	 * Removes a player from a room, notifies remaining members
+	 * Removes a player from a room, maintaining internal consistency
 	 */
-	void player_quits_room(network::connection player, room* room);
+	void player_exits_room(network::connection player, room* room);
 
 
 
@@ -102,7 +115,7 @@ private:
 	typedef std::map<network::connection, std::set<room*> > t_rooms_by_player_;
 	t_rooms_by_player_ rooms_by_player_;
 
-
+	static const char* const lobby_name_;
 };
 
 } //namespace wesnothd
