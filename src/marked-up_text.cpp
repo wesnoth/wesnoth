@@ -43,7 +43,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												int* font_size,
 												SDL_Color* colour, int* style)
 {
-	if(font_size == NULL || colour == NULL) {
+	if (font_size == NULL && colour == NULL && style == NULL) {
 		return i1;
 	}
 
@@ -55,74 +55,76 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 			// quoted backslash - either way, remove leading backslash
 			break;
 		case BAD_TEXT:
-			*colour = BAD_COLOUR;
+			if (colour) *colour = BAD_COLOUR;
 			break;
 		case GOOD_TEXT:
-			*colour = GOOD_COLOUR;
+			if (colour) *colour = GOOD_COLOUR;
 			break;
 		case NORMAL_TEXT:
-			*colour = NORMAL_COLOUR;
+			if (colour) *colour = NORMAL_COLOUR;
 			break;
 		case BLACK_TEXT:
-			*colour = BLACK_COLOUR;
+			if (colour) *colour = BLACK_COLOUR;
 			break;
 		case GRAY_TEXT:
-			*colour = GRAY_COLOUR;
+			if (colour) *colour = GRAY_COLOUR;
 			break;
 		case LARGE_TEXT:
-			*font_size += 2;
+			if (font_size) *font_size += 2;
 			break;
 		case SMALL_TEXT:
-			*font_size -= 2;
+			if (font_size) *font_size -= 2;
 			break;
 		case BOLD_TEXT:
-			*style |= TTF_STYLE_BOLD;
+			if (style) *style |= TTF_STYLE_BOLD;
 			break;
 		case NULL_MARKUP:
 			return i1+1;
 		case COLOR_TEXT:
-		  {
-		    //Very primitive parsing for rgb value
-		    //should look like <213,14,151>
-		    //but no checking on commas or end '>',
-		    //could be any non-# char
-		    ++i1;
-		    Uint8 red=0, green=0, blue=0, temp=0;
-		    while(i1 != i2 && *i1 >= '0' && *i1<='9'){
-		      temp*=10;
-		      temp += lexical_cast<int, char>(*i1);
-		      ++i1;
-		    }
-		    red=temp;
-		    temp=0;
-		    if(i1 != i2 && '>' != (*i1)){
-		      ++i1;
-		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
-			temp*=10;
-			temp += lexical_cast<int, char>(*i1);
-			++i1;
-		      }
-		      green=temp;
-		      temp=0;
-		    }
-		    if(i1 != i2 && '>' != (*i1)){
-		      ++i1;
-		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
-			temp*=10;
-			temp += lexical_cast<int, char>(*i1);
-			++i1;
-		      }
-		    }
-		    blue=temp;
-		    if(i1 != i2 && '>'==(*i1)){
-		      SDL_Color temp_color = {red,green,blue,0};
-		      (*colour) = temp_color;
-		    }
-		    if(i1 == i2) return i1;
-		    break;
-		  }
+			{
+				std::string::const_iterator start = i1;
+				// Very primitive parsing for rgb value
+				// should look like <213,14,151>
+				++i1;
+				Uint8 red=0, green=0, blue=0, temp=0;
+				while (i1 != i2 && *i1 >= '0' && *i1<='9') {
+					temp*=10;
+					temp += lexical_cast<int, char>(*i1);
+					++i1;
+				}
+				red=temp;
+				temp=0;
+				if (i1 != i2 && ',' == (*i1)) {
+					++i1;
+					while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+						temp*=10;
+						temp += lexical_cast<int, char>(*i1);
+						++i1;
+					}
+					green=temp;
+					temp=0;
+				}
+				if (i1 != i2 && ',' == (*i1)) {
+					++i1;
+					while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+						temp*=10;
+						temp += lexical_cast<int, char>(*i1);
+						++i1;
+					}
+				}
+				blue=temp;
+				if (i1 != i2 && '>' == (*i1)) {
+					SDL_Color temp_color = {red, green, blue, 0};
+					if (colour) *colour = temp_color;
+				} else {
+					// stop parsing and do not consume any chars
+					return start;
+				}
+				if (i1 == i2) return i1;
+				break;
+			}
 		default:
-		  return i1;
+			return i1;
 		}
 		++i1;
 	}
