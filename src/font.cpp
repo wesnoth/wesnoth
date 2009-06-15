@@ -684,9 +684,9 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 			parse_markup(ln->begin(), ln->end(), &sz, NULL, &text_style) : ln->begin();
 		text_surface txt_surf(sz, colour, text_style);
 
-		if (after_markup == ln->end() && ln+1 != ln_end) {
+		if (after_markup == ln->end() && (ln+1 != ln_end || lines.begin()+1 == ln_end)) {
 			// we replace empty line by a space (to have a line height)
-			// except for the blank following the last '\n'
+			// except for the last line if we have several
 			txt_surf.set_text(" ");
 		} else if (after_markup == ln->begin()) {
 		 	// simple case, no markup to skip
