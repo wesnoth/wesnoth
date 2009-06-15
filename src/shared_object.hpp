@@ -11,6 +11,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef SHARED_OBJECT_HPP_INCLUDED
+#define SHARED_OBJECT_HPP_INCLUDED
+
 #include <climits>
 #include <cassert>
 #include <boost/multi_index_container.hpp>
@@ -120,7 +123,7 @@ protected:
 	static hash_index& index() { return map().template get<0>(); }
 
 	const node* val_;
-	
+
 	void clear() {
 		if (!val_) return;
 		index().modify(index().iterator_to(*val_), decrement_count());
@@ -157,3 +160,4 @@ std::istream& operator>>(std::istream& stream, shared_object<T>& o) {
 	return ret;
 }
 
+#endif
