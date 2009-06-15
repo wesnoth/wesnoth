@@ -151,7 +151,7 @@ public:
 	typedef std::pair<child_iterator,child_iterator> child_itors;
 	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
 
-	typedef std::pair<const std::string, t_string> attribute;
+	typedef string_map::value_type attribute;
 
 	struct const_attribute_iterator
 	{
@@ -252,9 +252,9 @@ public:
 
 	struct any_child
 	{
-		const std::string &key;
+		const child_map::key_type &key;
 		const config &cfg;
-		any_child(const std::string *k, const config *c): key(*k), cfg(*c) {}
+		any_child(const child_map::key_type *k, const config *c): key(*k), cfg(*c) {}
 	};
 
 	struct all_children_iterator
