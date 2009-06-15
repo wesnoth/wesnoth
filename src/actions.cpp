@@ -277,11 +277,11 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 
 	if (attacker_weapon == -1) {
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
-				status, attacker_loc, defender_loc,
+				status, tod_mng, attacker_loc, defender_loc,
 				harm_weight, &defender_weapon, prev_def);
 	} else if (defender_weapon == -1) {
 		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
-				units, status, attacker_loc, defender_loc, prev_def);
+				units, status, tod_mng, attacker_loc, defender_loc, prev_def);
 	}
 
 	// If those didn't have to generate statistics, do so now.
@@ -301,10 +301,10 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
 				true, defender, defender_loc, ddef,
-				units, teams, status, map);
+				units, teams, status, tod_mng, map);
 		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
 				attacker, attacker_loc, adef,
-				units, teams, status, map);
+				units, teams, status, tod_mng, map);
 	}
 }
 
@@ -347,7 +347,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 /** @todo FIXME: Hand previous defender unit in here. */
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status,
+		const gamestatus& status, const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		const combatant *prev_def)
 {
@@ -383,7 +383,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 			max_weight = def.defense_weight();
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
 					attacker, attacker_loc, &att,
-					units, teams, status, map);
+					units, teams, status, tod_mng, map);
 			min_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
 					def_stats->chance_to_hit * def.defense_weight());
 
@@ -392,7 +392,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		else if (def.defense_weight() == max_weight) {
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
 					attacker, attacker_loc, &att,
-					units, teams, status, map);
+					units, teams, status, tod_mng, map);
 			int simple_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
 					def_stats->chance_to_hit * def.defense_weight());
 
@@ -407,10 +407,10 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		const attack_type &def = defender.attacks()[choices[i]];
 		unit_stats *att_stats = new unit_stats(attacker, attacker_loc, attacker_weapon,
 				true, defender, defender_loc, &def,
-				units, teams, status, map);
+				units, teams, status, tod_mng, map);
 		unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
 				attacker, attacker_loc, &att,
-				units, teams, status, map);
+				units, teams, status, tod_mng, map);
 
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
@@ -443,7 +443,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 
 int battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
 		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status,
+		const gamestatus& status, const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		double harm_weight, int *defender_weapon, const combatant *prev_def)
 {
@@ -461,7 +461,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
-				status, attacker_loc, defender_loc, prev_def);
+				status, tod_mng, attacker_loc, defender_loc, prev_def);
 		return choices[0];
 	}
 
@@ -472,7 +472,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &att = attacker.attacks()[choices[i]];
 		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], map, teams, units,
-				status, attacker_loc, defender_loc, prev_def);
+				status, tod_mng, attacker_loc, defender_loc, prev_def);
 		// If that didn't simulate, do so now.
 		if (!attacker_combatant_) {
 			const attack_type *def = NULL;
@@ -481,10 +481,10 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 			}
 			attacker_stats_ = new unit_stats(attacker, attacker_loc, choices[i],
 					true, defender, defender_loc, def,
-					units, teams, status, map);
+					units, teams, status, tod_mng, map);
 			defender_stats_ = new unit_stats(defender, defender_loc, def_weapon, false,
 					attacker, attacker_loc, &att,
-					units, teams, status, map);
+					units, teams, status, tod_mng, map);
 			attacker_combatant_ = new combatant(*attacker_stats_);
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
@@ -584,6 +584,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		const unit_map& units,
 		const std::vector<team>& teams,
 		const gamestatus& status,
+		const tod_manager& tod_mng,
 		const gamemap& map) :
 	weapon(0),
 	attack_num(u_attack_num),
@@ -638,9 +639,9 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &teams, attacking, opp_weapon);
+		weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &tod_mng, &teams, attacking, opp_weapon);
 		if (opp_weapon)
-			opp_weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &teams, !attacking, weapon);
+			opp_weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &tod_mng, &teams, !attacking, weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		petrifies = weapon->get_special_bool("petrifies");

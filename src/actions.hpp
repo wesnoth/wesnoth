@@ -109,7 +109,7 @@ public:
 				   const attack_type *opp_weapon,
 				   const unit_map& units,
 				   const std::vector<team>& teams,
-				   const gamestatus& status, const gamemap& map);
+				   const gamestatus& status, const tod_manager& tod_mng, const gamemap& map);
 		~unit_stats();
 
 		/** Dumps the statistics of a unit on stdout. Remove it eventually. */
@@ -155,13 +155,13 @@ private:
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-								const gamestatus& status,
+								const gamestatus& status, const tod_manager& tod_mng,
 								const map_location& attacker_loc, const map_location& defender_loc,
 								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status,
+							   const gamestatus& status, const tod_manager& tod_mng,
 							   const map_location& attacker_loc, const map_location& defender_loc, const combatant *prev_def);
 
 	/** Statistics of the units. */

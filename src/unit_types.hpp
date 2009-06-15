@@ -27,6 +27,7 @@
 
 
 class gamestatus;
+class tod_manager;
 class team;
 class unit;
 class unit_ability_list;
@@ -60,7 +61,7 @@ public:
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
-							  const gamemap* map, const gamestatus* game_status,
+							  const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 
@@ -79,6 +80,7 @@ public:
 	mutable const unit_map* unitmap_;
 	mutable const gamemap* map_;
 	mutable const gamestatus* game_status_;
+	mutable const tod_manager* tod_manager_;
 	mutable const std::vector<team>* teams_;
 	mutable const attack_type* other_attack_;
 	/*

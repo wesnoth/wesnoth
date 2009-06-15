@@ -633,7 +633,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	gui().highlight_hex(map_location());
 	gui().draw(true,true);
 
-	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, status_, attacker_loc, defender_loc);
+	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, status_, tod_manager_, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 

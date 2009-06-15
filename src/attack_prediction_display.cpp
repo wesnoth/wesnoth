@@ -46,7 +46,7 @@ const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 battle_prediction_pane::battle_prediction_pane(display &disp,
 		const battle_context& bc, const gamemap& map, const
 		std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status, const map_location& attacker_loc,
+		const gamestatus& status, const tod_manager& tod_mng, const map_location& attacker_loc,
 		const map_location& defender_loc) :
 	gui::preview_pane(disp.video()),
 	disp_(disp),
@@ -55,6 +55,7 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 	teams_(teams),
 	units_(units),
 	status_(status),
+	tod_manager_(tod_mng),
 	attacker_loc_(attacker_loc),
 	defender_loc_(defender_loc),
 	attacker_(units.find(attacker_loc)->second),
@@ -161,7 +162,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 
 		// Set specials context (for safety, it should not have changed normally).
 		const attack_type *weapon = stats.weapon;
-		weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &status_, &teams_, stats.is_attacker, opp_weapon);
+		weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &status_, &tod_manager_, &teams_, stats.is_attacker, opp_weapon);
 
 		// Get damage modifiers.
 		unit_ability_list dmg_specials = weapon->get_specials("damage");
@@ -546,7 +547,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 	const size_t index = size_t(selection);
 
 	if(index < bc_vector_.size()) {
-		battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_,
+		battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_, tod_manager_,
 										   attacker_loc_, defender_loc_);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);

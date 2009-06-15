@@ -742,7 +742,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 }
 void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
-							  const gamemap* map, const gamestatus* game_status,
+							  const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
 							  const std::vector<team>* /*teams*/, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;
@@ -750,6 +750,7 @@ void attack_type::set_specials_context(const map_location& aloc,const map_locati
 	unitmap_ = unitmap;
 	map_ = map;
 	game_status_ = game_status;
+	tod_manager_ = tod_mng;
 	attacker_ = attacker;
 	other_attack_ = other_attack;
 }
@@ -760,7 +761,7 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	dloc_ = dloc;
 	unitmap_ = un.units_;
 	map_ = un.map_;
-	game_status_ = un.gamestatus_;
+	game_status_ = un.gamestatus_; //FIXME: set tod_manager_ once unit has a tod_manager member
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }
