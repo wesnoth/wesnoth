@@ -30,25 +30,6 @@
 
 namespace gui2 {
 
-struct tbuilder_image : public implementation::tbuilder_control
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_image
- *
- * == Image ==
- *
- * An image has no extra fields.
- */
-
-	tbuilder_image(const config& cfg)
-		: implementation::tbuilder_control(cfg)
-	{
-	}
-
-	twidget* build () const;
-};
-
 /**
  * A temporary helper class.
  *

@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
+#include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -561,18 +562,6 @@ twidget* tbuilder_horizontal_scrollbar::build() const
 		<< "'.\n";
 
 	return horizontal_scrollbar;
-}
-
-twidget* tbuilder_image::build() const
-{
-	timage* widget = new timage();
-
-	init_control(widget);
-
-	DBG_GUI_G << "Window builder: placed image '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return widget;
 }
 
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
