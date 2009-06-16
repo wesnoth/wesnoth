@@ -65,6 +65,7 @@
 			<Add library="libglib-2.0" />
 			<Add library="lua51" />
 		</Linker>
+
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
@@ -233,6 +234,8 @@
 		<Unit filename="..\..\src\gui\auxiliary\log.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\control.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\control.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder_private.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.hpp" />
@@ -257,6 +260,8 @@
 		<Unit filename="..\..\src\gui\dialogs\helper.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\lobby_main.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\lobby_main.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\message.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\message.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_cmd_wrapper.cpp" />
@@ -339,6 +344,7 @@
 		<Unit filename="..\..\src\gui\widgets\tooltip.hpp" />
 		<Unit filename="..\..\src\gui\widgets\vertical_scrollbar.cpp" />
 		<Unit filename="..\..\src\gui\widgets\vertical_scrollbar.hpp" />
+      <Unit filename="..\..\src\gui\widgets\scrollbar_container_private.hpp" />
 		<Unit filename="..\..\src\gui\widgets\widget.cpp" />
 		<Unit filename="..\..\src\gui\widgets\widget.hpp" />
 		<Unit filename="..\..\src\gui\widgets\window.cpp" />
@@ -472,8 +478,8 @@
 		<Unit filename="..\..\src\serialization\string_utils.hpp" />
 		<Unit filename="..\..\src\serialization\tokenizer.cpp" />
 		<Unit filename="..\..\src\settings.cpp" />
-		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\settings.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\sha1.cpp" />
 		<Unit filename="..\..\src\sha1.hpp" />
 		<Unit filename="..\..\src\shared_object.hpp" />
