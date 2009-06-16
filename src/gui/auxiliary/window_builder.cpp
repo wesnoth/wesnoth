@@ -23,6 +23,7 @@
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
+#include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -764,18 +765,6 @@ twidget* tbuilder_menubar::build() const
 	menubar->finalize_setup();
 
 	return menubar;
-}
-
-twidget* tbuilder_minimap::build() const
-{
-	tminimap* minimap = new tminimap();
-
-	init_control(minimap);
-
-	DBG_GUI_G << "Window builder: placed minimap '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return minimap;
 }
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :

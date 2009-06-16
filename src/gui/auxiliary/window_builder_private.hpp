@@ -120,24 +120,6 @@ private:
 
 };
 
-struct tbuilder_minimap : public implementation::tbuilder_control
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_minimap
- *
- * == Minimap ==
- *
- * A minimap has no extra fields.
- */
-	tbuilder_minimap(const config& cfg) :
-		implementation::tbuilder_control(cfg)
-	{
-	}
-
-	twidget* build () const;
-};
-
 struct tbuilder_multi_page
 	: public implementation::tbuilder_control
 {
