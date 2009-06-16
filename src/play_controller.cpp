@@ -81,7 +81,15 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	victory_music_(),
 	defeat_music_()
 {
-
+	//set start_turn_ via wml formula (if available)
+         std::string turn_at = level["turn_at"];
+         if (&state_of_game)
+         {
+                 turn_at = utils::interpolate_variables_into_string(turn_at, state_of_game);
+         }
+         if(turn_at.empty() == false) {
+                 start_turn_ = atoi(turn_at.c_str());
+         }
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
