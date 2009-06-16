@@ -307,7 +307,7 @@ time_of_day timeofday_at(const gamestatus& status,
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const gamestatus& status,
+int combat_modifier(const tod_manager& tod_mng,
 			const unit_map& units,
 			const map_location& loc,
 			unit_type::ALIGNMENT alignment,

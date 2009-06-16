@@ -238,7 +238,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 		}
 
 		// Time of day modifier.
-		int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), u.is_fearless(), map_);
+		int tod_modifier = combat_modifier(tod_manager_, units_, u_loc, u.alignment(), u.is_fearless(), map_);
 		if(tod_modifier != 0) {
 			left_strings.push_back(_("Time of day"));
 			str.str("");

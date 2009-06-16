@@ -37,6 +37,7 @@
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "tod_manager.hpp"
 
 
 #include <boost/scoped_ptr.hpp>
@@ -682,7 +683,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), u.is_fearless(), map);
+		damage_multiplier += combat_modifier(tod_mng, units, u_loc, u.alignment(), u.is_fearless(), map);
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -1997,14 +1998,14 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ma
 	return tod;
 }
 
-int combat_modifier(const gamestatus& status,
+int combat_modifier(const tod_manager& tod_mng,
 		const unit_map& units,
 		const map_location& loc,
 		unit_type::ALIGNMENT alignment,
 		bool is_fearless,
 		const gamemap& map)
 {
-	const time_of_day& tod = timeofday_at(status,units,loc,map);
+	const time_of_day& tod = tod_mng.time_of_day_at(units,loc,map);
 
 	int bonus = tod.lawful_bonus;
 
