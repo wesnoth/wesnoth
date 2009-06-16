@@ -20,6 +20,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -172,6 +173,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		assert(false);
 	}
 
+	// The widgets builders are partly in this namespace.
+	using namespace gui2::implementation;
 #define TRY(name) do { \
 	if (const config &c = cfg.child(#name)) \
 		return new tbuilder_##name(c); \
@@ -203,6 +206,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	ERROR_LOG(false);
 }
 
+} // namespace
+
 /**
  * Returns the return value for a widget.
  *
@@ -210,6 +215,9 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
  * Else if there's a retval that's returned.
  * Else it falls back to the id.
  */
+/** @todo move to it's own header. */
+int get_retval(const std::string& retval_id,
+		const int retval, const std::string& id);
 int get_retval(const std::string& retval_id,
 		const int retval, const std::string& id)
 {
@@ -229,8 +237,6 @@ int get_retval(const std::string& retval_id,
 		return twindow::get_retval_by_id(id);
 	}
 }
-
-} // namespace
 
 /*WIKI
  * @page = GUIWidgetInstanceWML
@@ -541,52 +547,6 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 	DBG_GUI_P << "Window builder: grid has "
 		<< rows << " rows and " << cols << " columns.\n";
-}
-
-tbuilder_button::tbuilder_button(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	retval_id_(cfg["return_value_id"]),
-	retval_(lexical_cast_default<int>(cfg["return_value"]))
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_button
- *
- * == Button ==
- *
- * Instance of a button. When a button has a return value it sets the
- * return value for the window. Normally this closes the window and returns
- * this value to the caller. The return value can either be defined by the
- * user or determined from the id of the button. The return value has a
- * higher precedence as the one defined by the id. (Of course it's weird to
- * give a button an id and then override it's return value.)
- *
- * When the button doesn't have a standard id, but you still want to use the
- * return value of that id, use return_value_id instead. This has a higher
- * precedence as return_value.
- *
- * List with the button specific variables:
- * @start_table = config
- *     return_value_id (string = "")   The return value id.
- *     return_value (int = 0)          The return value.
- *
- * @end_table
- *
- */
-}
-
-twidget* tbuilder_button::build() const
-{
-	tbutton* button = new tbutton();
-
-	init_control(button);
-
-	button->set_retval(get_retval(retval_id_, retval_, id));
-
-	DBG_GUI_G << "Window builder: placed button '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return button;
 }
 
 twidget* tbuilder_horizontal_scrollbar::build() const

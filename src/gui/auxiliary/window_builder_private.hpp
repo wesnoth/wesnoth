@@ -30,21 +30,6 @@
 
 namespace gui2 {
 
-struct tbuilder_button : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_button();
-public:
-	tbuilder_button(const config& cfg);
-
-	twidget* build () const;
-
-private:
-	std::string retval_id_;
-	int retval_;
-};
-
 struct tbuilder_image : public implementation::tbuilder_control
 {
 /*WIKI

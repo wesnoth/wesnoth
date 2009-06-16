@@ -88,6 +88,7 @@ wesnoth_source = \
 	generic_event.cpp \
 	gui/auxiliary/canvas.cpp \
 	gui/auxiliary/log.cpp \
+	gui/auxiliary/window_builder/button.cpp \
 	gui/auxiliary/window_builder/control.cpp \
 	gui/auxiliary/window_builder.cpp \
 	gui/dialogs/addon_connect.cpp \
