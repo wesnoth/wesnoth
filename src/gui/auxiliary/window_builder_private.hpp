@@ -74,19 +74,6 @@ public:
 	twidget* build () const;
 };
 
-struct tbuilder_label : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_label();
-public:
-	tbuilder_label(const config& cfg);
-
-	twidget* build () const;
-
-	bool wrap;
-};
-
 struct tbuilder_listbox : public implementation::tbuilder_control
 {
 

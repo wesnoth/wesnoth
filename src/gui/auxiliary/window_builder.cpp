@@ -22,6 +22,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
+#include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -570,39 +571,6 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
 	widget(create_builder_widget(cfg))
 {
-}
-
-tbuilder_label::tbuilder_label(const config& cfg)
-	: implementation::tbuilder_control(cfg)
-	, wrap(utils::string_bool("wrap"))
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_label
- *
- * == Label ==
- *
- * Instance of a label.
- *
- * List with the label specific variables:
- * @start_table = config
- *     wrap (bool = false)        Is wrapping enabled for the label.
- * @end_table
- */
-}
-
-twidget* tbuilder_label::build() const
-{
-	tlabel* tmp_label = new tlabel();
-
-	init_control(tmp_label);
-
-	tmp_label->set_can_wrap(wrap);
-
-	DBG_GUI_G << "Window builder: placed label '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return tmp_label;
 }
 
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
