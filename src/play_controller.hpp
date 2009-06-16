@@ -186,9 +186,6 @@ protected:
 	bool skip_replay_;
 	bool linger_;
 	unsigned int previous_turn_;
-	//turn information
-	size_t turn_;
-	int numTurns_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
