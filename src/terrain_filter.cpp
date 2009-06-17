@@ -18,6 +18,7 @@
 
 #include "actions.hpp"
 #include "gamestatus.hpp"
+#include "tod_manager.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "terrain_filter.hpp"
@@ -220,9 +221,9 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
 		if(flat_) {
-			tod = status_.get_time_of_day(0,loc);
+			tod = tod_manager_.get_time_of_day(0,loc);
 		} else {
-			tod = timeofday_at(status_,units_,loc, map_);
+			tod = tod_manager_.time_of_day_at(units_,loc, map_);
 		}
 	}
 	if(!tod_type.empty()) {
