@@ -51,7 +51,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	labels_manager_(),
 	help_manager_(&game_config, &map_),
 	mouse_handler_(NULL, teams_, units_, map_, status_, tod_manager_, undo_stack_, redo_stack_),
-	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
+	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, tod_manager_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
 	tod_manager_(level, num_turns, &state_of_game),
 	gui_(),
@@ -141,7 +141,7 @@ void play_controller::init(CVideo& video){
 		if (first_human_team_ == -1){
 			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg, preferences::client_type(), preferences::login());
 		}
-		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, status_, snapshot);
+		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, status_, tod_manager_, snapshot);
 	}
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";

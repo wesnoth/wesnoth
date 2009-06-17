@@ -1221,7 +1221,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					reanimitor = unit_type_data::types().find_unit_type(a_stats_->plague_type);
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit(&units_, &map_, &state_, &teams_, &reanimitor->second,
+						unit newunit(&units_, &map_, &state_, &tod_manager_, &teams_, &reanimitor->second,
 						             a_.get_unit().side(), true, true);
 						newunit.set_attacks(0);
 						// Apply variation
@@ -1492,7 +1492,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					reanimitor = unit_type_data::types().find_unit_type(d_stats_->plague_type);
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit(&units_, &map_, &state_, &teams_, &reanimitor->second,
+						unit newunit(&units_, &map_, &state_, &tod_manager_, &teams_, &reanimitor->second,
 						             d_.get_unit().side(), true, true);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(),"null")){

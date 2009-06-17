@@ -1066,7 +1066,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams, &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams, &itor->second, side_num + 1, false, true, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;
@@ -1473,7 +1473,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "random_number");
+					side , *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("random_number expected but none found\n");
@@ -1986,7 +1986,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	const game_events::resources_t &rsrc = *game_events::resources;
 
 		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams, parsed_cfg, true, rsrc.state_of_game);
+		unit new_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams, parsed_cfg, true, rsrc.state_of_game);
 		if(cfg.has_attribute("to_variable")) {
 			config &var = rsrc.state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
@@ -2484,7 +2484,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	const config &var = rsrc.state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(rsrc.units, rsrc.game_map, rsrc.status_ptr,rsrc. teams, var, false);
+		const unit u(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc. teams, var, false);
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(
@@ -3273,7 +3273,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 			if(!options.empty()) {
 				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "choose");
+					side , *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
@@ -3283,7 +3283,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			}
 			if(has_text_input) {
 				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , *rsrc.status_ptr, *rsrc.state_of_game, *rsrc.controller, "input");
+					side , *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");

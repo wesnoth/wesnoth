@@ -887,7 +887,7 @@ void game_state::set_variables(const config& vars) {
 void game_state::get_player_info(const config& cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
-					 gamestatus& game_status, bool snapshot)
+					 gamestatus& game_status, tod_manager& tod_mng, bool snapshot)
 {
 	player_info *player = NULL;
 
@@ -953,7 +953,7 @@ void game_state::get_player_info(const config& cfg,
 
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
-		unit new_unit(&units, &map, &game_status, &teams, cfg, true);
+		unit new_unit(&units, &map, &game_status, &tod_mng, &teams, cfg, true);
 
 		// Search the recall list for leader units, and if there is one,
 		// use it in place of the config-described unit
@@ -1018,7 +1018,7 @@ void game_state::get_player_info(const config& cfg,
 		player->available_units.clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(&units, &map, &game_status,&teams,**su,true);
+		unit new_unit(&units, &map, &game_status, &tod_mng, &teams,**su,true);
 
 		new_unit.set_side(side);
 

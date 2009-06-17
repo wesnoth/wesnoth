@@ -28,6 +28,7 @@
 
 class config_writer;
 class gamestatus;
+class tod_manager;
 class game_display;
 class game_state;
 class vconfig;
@@ -68,11 +69,11 @@ public:
 	/** Initilizes a unit from a config */
 	unit(const config& cfg, bool use_traits=false);
 	unit(unit_map* unitmap, const gamemap* map,
-		const gamestatus* game_status, const std::vector<team>* teams,
+		const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/** Initializes a unit from a unit type */
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
-	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
+	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
 	virtual ~unit();
 	unit& operator=(const unit&);
 
@@ -458,6 +459,7 @@ private:
 	const unit_map* units_;
 	const gamemap* map_;
 	const gamestatus* gamestatus_;
+	const tod_manager* tod_manager_;
 	const std::vector<team>* teams_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */

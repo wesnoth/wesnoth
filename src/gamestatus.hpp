@@ -29,6 +29,7 @@
 
 class unit;
 class gamestatus; //needed to declare get_player_info (until game_state and gamestatus get merged)
+class tod_manager;
 
 class scoped_wml_variable;
 
@@ -146,7 +147,7 @@ public:
 
 	// populate high-level objects
 
-	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot);
+	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, gamestatus& game_status, tod_manager& tod_mng, bool snapshot);
 
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?

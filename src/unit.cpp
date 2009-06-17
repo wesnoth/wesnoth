@@ -163,12 +163,13 @@ unit::unit(const unit& o):
            units_(o.units_),
            map_(o.map_),
            gamestatus_(o.gamestatus_),
+           tod_manager_(o.tod_manager_),
            teams_(o.teams_),
 		   invisibility_cache_()
 {
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
+unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
 		const std::vector<team>* teams,const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
@@ -239,6 +240,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	units_(unitmap),
 	map_(map),
 	gamestatus_(game_status),
+	tod_manager_(tod_mng),
 	teams_(teams),
 	invisibility_cache_()
 {
@@ -320,6 +322,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	units_(NULL),
 	map_(NULL),
 	gamestatus_(NULL),
+	tod_manager_(NULL),
 	teams_(NULL),
 	invisibility_cache_()
 {
@@ -358,7 +361,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	}
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
+unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
 		const std::vector<team>* teams, const unit_type* t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
@@ -429,6 +432,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	units_(unitmap),
 	map_(map),
 	gamestatus_(game_status),
+	tod_manager_(tod_mng),
 	teams_(teams),
 	invisibility_cache_()
 {
@@ -530,6 +534,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	units_(NULL),
 	map_(NULL),
 	gamestatus_(NULL),
+	tod_manager_(NULL),
 	invisibility_cache_()
 {
 	cfg_["upkeep"]="full";

@@ -550,7 +550,7 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
-				turn_info turn_data(gamestate_, status_, *gui_, map_,
+				turn_info turn_data(gamestate_, status_, tod_manager_, *gui_, map_,
 						teams_, player_number_, units_, replay_sender_, undo_stack_,*this);
 				recorder.end_turn();
 				turn_data.sync_network();
@@ -562,7 +562,7 @@ void playsingle_controller::play_turn(bool save)
 			LOG_NG << "doing replay " << player_number_ << "\n";
 			try {
 				replaying_ = ::do_replay(*gui_, map_, units_, teams_,
-						player_number_, status_, gamestate_, *this);
+						player_number_, status_, tod_manager_, gamestate_, *this);
 			} catch(replay::error&) {
 				gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
 
@@ -573,7 +573,7 @@ void playsingle_controller::play_turn(bool save)
 			// If a side is dead end the turn.
 			if (current_team().is_human() && side_units(units_, player_number_) == 0)
 			{
-				turn_info turn_data(gamestate_, status_, *gui_, map_,
+				turn_info turn_data(gamestate_, status_, tod_manager_, *gui_, map_,
 						teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
 				recorder.end_turn();
 				turn_data.sync_network();
@@ -832,7 +832,7 @@ void playsingle_controller::play_ai_turn(){
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
-	turn_info turn_data(gamestate_,status_,*gui_,
+	turn_info turn_data(gamestate_,status_,tod_manager_,*gui_,
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
 
 	try {

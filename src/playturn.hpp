@@ -22,6 +22,7 @@ class replay_network_sender;
 class team;
 class unit;
 class play_controller;
+class tod_manager;
 
 #include "global.hpp"
 
@@ -36,7 +37,7 @@ class turn_info
 {
 public:
 	turn_info(game_state& state_of_game,
-	          const gamestatus& status, game_display& gui, gamemap& map,
+	          const gamestatus& status, const tod_manager& tod_mng, game_display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		  replay_network_sender& network_sender, undo_list& undo_stack, play_controller& controller);
 
@@ -71,6 +72,7 @@ private:
 
 	game_state& state_of_game_;
 	const gamestatus& status_;
+	const tod_manager& tod_manager_;
 	game_display& gui_;
 	gamemap& map_;
 	std::vector<team>& teams_;
