@@ -751,11 +751,19 @@ WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 	{
+		game_display* disp = game_display::get_singleton();
+		if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+			return;
+		}
 		sound::play_music_config(cfg.get_parsed_config());
 	}
 
 WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 	{
+		game_display* disp = game_display::get_singleton();
+		if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+			return;
+		}
 		std::string sound = cfg["name"];
 		const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
 		sound::play_sound(sound, sound::SOUND_FX, repeats);
@@ -1883,6 +1891,10 @@ WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
+	game_display* disp = game_display::get_singleton();
+	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+		return;
+	}
 	soundsource::sourcespec spec(cfg.get_parsed_config());
 	game_events::resources->soundsources->add(spec);
 }
@@ -2498,7 +2510,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			rsrc.units->add(loc, u);
 
 				std::string text = cfg["text"];
-				if(!text.empty())
+				game_display* disp = game_display::get_singleton();
+				if(!text.empty() && disp && !disp->video().update_locked() && !disp->video().faked() )
 				{
 					// Print floating label
 					std::string red_str = cfg["red"];
@@ -2835,6 +2848,10 @@ WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 {
+	game_display* disp = game_display::get_singleton();
+	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+		return;
+	}
 	game_display &screen = *game_events::resources->screen;
 
 	terrain_label label(screen.labels(),
@@ -3104,7 +3121,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 		bool has_input= (has_text_input || !menu_items.empty() );
 
-		if (current_context->skip_messages && !has_input ) {
+		// skip messages during quick replay
+		game_display* disp = game_display::get_singleton();
+		if(!has_input && 
+				(current_context->skip_messages || !disp || disp->video().update_locked() || disp->video().faked() ))
+	       	{
 			return;
 		}
 
