@@ -185,44 +185,10 @@ local function wml_action_tag(cfg)
    wesnoth.register_wml_action(name, lua_function)
 end
 
-function unit_worth(cfg)
-    local x1 = cfg.x;
-    local y1 = cfg.y;
-    local u = (wesnoth.get_units { x=x1, y=y1 })[1]
-    local health_weight = cfg.health_weight or .5
-    local xp_weight = cfg.experience_weight or 2 --completely arbitrary
-    local base = cfg.base or .5 --TODO: find better defaults
-
-    local cost = u.__cfg.cost
-    if not cost then
-        error( string.format("Unit at %d,%d does not have a cost",x1,y1) );
-    end
-    local health = u.hitpoints / u.max_hitpoints
-    local xp = u.experience / u.max_experience
-    local total = cost * (xp * xp_weight + health * health_weight + base);
-    wesnoth.set_variable("cost", cost);
-    wesnoth.set_variable("health", math.floor( health * 100) );
-    wesnoth.set_variable("experience", math.floor( xp * 100) );
-    wesnoth.set_variable("unit_worth", math.floor( total) );
-    if not cfg.silent then
-        wesnoth.fire("message", {
-            speaker = "narrator",
-            message = string.format(
-                "Unit cost: %d\nHealth factor: %d%%\nXP factor: %d%%\nGrand total: %d",
-                cost,
-                100 * health,
-                100 * xp,
-                total
-            ),
-        });
-    end
-end
-
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
-wesnoth.register_wml_action("unit_worth", unit_worth);
 
