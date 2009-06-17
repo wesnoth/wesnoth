@@ -971,7 +971,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
-				player->available_units[val].set_game_context(&units,&map,&state,&teams);
+				player->available_units[val].set_game_context(&units,&map,&state,&tod_mng,&teams);
 				recruit_unit(map,team_num,units,player->available_units[val],loc,true,!get_replay_source().is_skipping());
 				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);

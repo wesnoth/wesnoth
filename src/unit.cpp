@@ -593,11 +593,12 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
+void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams)
 {
 	units_ = unitmap;
 	map_ = map;
 	gamestatus_ = game_status;
+	tod_manager_ = tod_mng;
 	teams_ = teams;
 
 	// In case the unit carries EventWML, apply it now

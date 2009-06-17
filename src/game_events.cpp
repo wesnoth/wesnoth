@@ -1777,7 +1777,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					// Iterate over the player's recall list to find a match
 					for(size_t i=0; i < p_info.available_units.size(); ++i) {
 						unit& u = p_info.available_units[i];
-						u.set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams);
+						u.set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams);
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
 							u.set_role(cfg["role"]);
@@ -2062,7 +2062,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				u->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams);
+				u->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, unit_filter, map_location())) {
 					map_location loc = cfg_to_loc(cfg);
@@ -2301,7 +2301,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			{
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams);
+					j->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams);
 					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
 						j = avail_units.erase(j);
@@ -2453,7 +2453,7 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, rsrc.teams);
+					j->set_game_context(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams);
 					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
 						++j;
