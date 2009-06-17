@@ -826,7 +826,7 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 
 		const map_location loc = cfg_to_loc(cfg, -999, -999);
 		const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
-		const time_of_day tod = turn ? rsrc.status_ptr->get_time_of_day(0,loc,turn) : rsrc.status_ptr->get_time_of_day(0,loc);
+		const time_of_day tod = turn ? rsrc.controller->get_tod_manager().get_time_of_day(0,loc,turn) : rsrc.controller->get_tod_manager().get_time_of_day(0,loc);
 
 		std::string variable = cfg["variable"];
 		if(variable.empty()) {
@@ -1043,7 +1043,7 @@ WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 		if(var_name.empty()) {
 			var_name = "turns";
 		}
-	int turns = rsrc.status_ptr->number_of_turns();
+	int turns = rsrc.controller->number_of_turns();
 	rsrc.state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns);
 }
 

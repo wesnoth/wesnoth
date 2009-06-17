@@ -504,7 +504,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 		game_events::fire("turn refresh");
 	}
 
-	const time_of_day &tod = status_.get_time_of_day();
+	const time_of_day &tod = tod_manager_.get_time_of_day();
 	current_team.set_time_of_day(int(turn()), tod);
 
 	if (int(team_index) + 1 == first_player_)

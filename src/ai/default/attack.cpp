@@ -659,7 +659,7 @@ double ai_default::power_projection(const map_location& loc, const move_map& dst
 	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
-	const int lawful_bonus = state_.get_time_of_day().lawful_bonus;
+	const int lawful_bonus = tod_manager_.get_time_of_day().lawful_bonus;
 
 	int res = 0;
 

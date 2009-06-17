@@ -1589,7 +1589,7 @@ void connect::load_game()
 
 		if (params_.random_start_time)
 		{
-			if (!gamestatus::is_start_ToD(level_["random_start_time"]))
+			if (!tod_manager::is_start_ToD(level_["random_start_time"]))
 			{
 				level_["random_start_time"] = "yes";
 			}

@@ -57,7 +57,7 @@ namespace game_events
 		unit_map *units;
 		std::vector<team> *teams;
 		game_state *state_of_game;
-		gamestatus *status_ptr;
+		gamestatus *status_ptr; //FIXME: give resources_t its own tod_manager
 		LuaKernel *lua_kernel;
 		play_controller *controller;
 	};
