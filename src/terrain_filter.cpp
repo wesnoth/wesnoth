@@ -35,6 +35,7 @@ terrain_filter::terrain_filter():
 	map_(gamemap(config(),
 	std::string())),
 	status_(gamestatus(config(), 1)),
+	tod_manager_(tod_manager(config(), 1)),
 	units_(unit_map()),
 	teams_(std::vector<team>())
 {
@@ -44,11 +45,12 @@ terrain_filter::terrain_filter():
 #endif
 
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
-		const gamestatus& game_status, const std::vector<team>& teams, const unit_map& units,
+		const gamestatus& game_status, const tod_manager& tod_mng, const std::vector<team>& teams, const unit_map& units,
 		const bool flat_tod, const size_t max_loop) :
 	cfg_(cfg),
 	map_(map),
 	status_(game_status),
+	tod_manager_(tod_mng),
 	units_(units),
 	teams_(teams),
 	cache_(),
@@ -61,6 +63,7 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	cfg_(cfg),
 	map_(original.map_),
 	status_(original.status_),
+	tod_manager_(original.tod_manager_),
 	units_(original.units_),
 	teams_(original.teams_),
 	cache_(),
@@ -75,6 +78,7 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	cfg_(other.cfg_),
 	map_(other.map_),
 	status_(other.status_),
+	tod_manager_(other.tod_manager_),
 	units_(other.units_),
 	teams_(other.teams_),
 	cache_(),

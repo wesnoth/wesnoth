@@ -400,7 +400,7 @@ namespace game_events {
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *rsrc.game_map, *rsrc.status_ptr, *rsrc.teams, *units).get_locations(res);
+			terrain_filter(*v, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.teams, *units).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;
@@ -572,7 +572,7 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 
 	if (index < rsrc.teams->size()) {
 		std::set<map_location> locs;
-		terrain_filter filter(cfg, *rsrc.game_map, *rsrc.status_ptr, *rsrc.teams, *rsrc.units);
+		terrain_filter filter(cfg, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 
@@ -2659,9 +2659,9 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 				config temp_cfg(cfg.get_config());
 				temp_cfg["owner_side"] = temp_cfg["side"];
 				temp_cfg["side"] = "";
-				matches = terrain_filter(vconfig(temp_cfg), *rsrc.game_map, *rsrc.status_ptr, *rsrc.teams, *rsrc.units).match(*j);
+				matches = terrain_filter(vconfig(temp_cfg), *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units).match(*j);
 			} else {
-				matches = terrain_filter(cfg, *rsrc.game_map, *rsrc.status_ptr, *rsrc.teams, *rsrc.units).match(*j);
+				matches = terrain_filter(cfg, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units).match(*j);
 			}
 			if(matches) {
 				config &loc_store = to_store.add_child(varinfo.key);
@@ -2688,7 +2688,7 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 		}
 
 		std::set<map_location> res;
-		terrain_filter filter(cfg, *rsrc.game_map, *rsrc.status_ptr, *rsrc.teams, *rsrc.units);
+		terrain_filter filter(cfg, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(res);
 
@@ -2830,7 +2830,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
 	const game_events::resources_t &rsrc = *game_events::resources;
-	unit_display::wml_animation(cfg, *rsrc.units, *rsrc.game_map, *rsrc.status_ptr, event_info.loc1);
+	unit_display::wml_animation(cfg, *rsrc.units, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), event_info.loc1);
 }
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
@@ -3343,7 +3343,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 				id = ids;
 			}
 			std::set<map_location> locs;
-			terrain_filter filter(cfg, *game_events::resources->game_map, *status_ptr, *game_events::resources->teams, *game_events::resources->units);
+			terrain_filter filter(cfg, *game_events::resources->game_map, *status_ptr, game_events::resources->controller->get_tod_manager(), *game_events::resources->teams, *game_events::resources->units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 			config parsed_cfg = cfg.get_parsed_config();
