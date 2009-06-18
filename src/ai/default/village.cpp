@@ -31,6 +31,8 @@ static lg::log_domain log_ai("ai/village");
 #define LOG_AI LOG_STREAM(info, log_ai)
 #define WRN_AI LOG_STREAM(warn, log_ai)
 
+namespace ai {
+
 // Basic strategy
 // 1. Store all our units that can move.
 //
@@ -930,6 +932,8 @@ static void dump_reachmap(treachmap& reachmap)
 
 	}
 }
+
+} //end of namespace ai
 
 #if 0
 // small helper rule to test the matching rules

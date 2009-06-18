@@ -70,7 +70,7 @@ private:
 
 }
 
-class formula_ai : public ai_default {
+class formula_ai : public ai::ai_default {
 public:
 	explicit formula_ai(ai::default_ai_context &context);
 	virtual ~formula_ai() {};
@@ -78,7 +78,7 @@ public:
 	virtual void new_turn();
 	virtual std::string describe_self();
 
-	using ai_default::move_map;
+	typedef ai::move_map move_map;
 
 	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
 

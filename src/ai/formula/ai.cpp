@@ -573,7 +573,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant attack = args()[0]->evaluate(variables);
-		ai_default::attack_analysis* analysis = convert_variant<ai_default::attack_analysis>(attack);
+		ai::ai_default::attack_analysis* analysis = convert_variant<ai::ai_default::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
 		foreach (const mv &m, analysis->movements) {
@@ -1097,7 +1097,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
 		variant dstsrc_var = args()[0]->evaluate(variables);
-		const ai_default::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
+		const ai::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 		    dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables))->loc());
 		while(range.first != range.second) {

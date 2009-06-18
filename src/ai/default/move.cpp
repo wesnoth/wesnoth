@@ -34,13 +34,15 @@ static lg::log_domain log_ai("ai/move");
 #define DBG_AI LOG_STREAM(debug, log_ai)
 #define ERR_AI LOG_STREAM(err, log_ai)
 
+namespace ai {
+
 struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 			     const unit_map& units,
 			     const map_location& loc,
-						 const ai::move_map& dstsrc,
-						 const ai::move_map& enemy_dstsrc)
+						 const move_map& dstsrc,
+						 const move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
 	    loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
 		avoid_enemies_(u.usage() == "scout")
@@ -88,7 +90,7 @@ private:
 	const unit_map& units_;
 //	mutable std::map<t_translation::t_terrain,int> move_type_;
 	const map_location loc_;
-	const ai::move_map dstsrc_, enemy_dstsrc_;
+	const move_map dstsrc_, enemy_dstsrc_;
 	const bool avoid_enemies_;
 };
 
@@ -982,4 +984,5 @@ int ai_default::count_free_hexes_in_castle(const map_location& loc, std::set<map
 	return ret;
 }
 
+} //end of namespace ai
 

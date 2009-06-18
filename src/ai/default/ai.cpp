@@ -44,10 +44,17 @@ static lg::log_domain log_ai("ai/general");
 #define WRN_AI LOG_STREAM(warn, log_ai)
 #define ERR_AI LOG_STREAM(err, log_ai)
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
+namespace ai {
+
 typedef util::array<map_location,6> adjacent_tiles_array;
 
-
-idle_ai::idle_ai(ai::readwrite_context &context) : recursion_counter_(context.get_recursion_count())
+idle_ai::idle_ai(readwrite_context &context) : recursion_counter_(context.get_recursion_count())
 {
 	init_readwrite_context_proxy(context);
 }
@@ -57,7 +64,7 @@ std::string idle_ai::describe_self()
 	return "[idle_ai]";
 }
 
-void idle_ai::switch_side(ai::side_number side)
+void idle_ai::switch_side(side_number side)
 {
 	set_side(side);
 }
@@ -74,16 +81,11 @@ void idle_ai::play_turn()
 }
 
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
 
 /** Sample ai, with simple strategy. */
-class sample_ai : public ai::readwrite_context_proxy, public ai::interface {
+class sample_ai : public readwrite_context_proxy, public interface {
 public:
-	sample_ai(ai::readwrite_context &context)
+	sample_ai(readwrite_context &context)
 		: recursion_counter_(context.get_recursion_count()) {
 		init_readwrite_context_proxy(context);
 	}
@@ -109,7 +111,7 @@ public:
 protected:
 	void do_attacks() {
 		std::map<map_location,paths> possible_moves;
-		ai::move_map srcdst, dstsrc;
+		move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
 		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
@@ -121,7 +123,7 @@ protected:
 				std::pair<map_location,map_location> best_movement;
 
 				for(size_t n = 0; n != 6; ++n) {
-					typedef ai::move_map::const_iterator Itor;
+					typedef move_map::const_iterator Itor;
 					std::pair<Itor,Itor> range = dstsrc.equal_range(adjacent_tiles[n]);
 					while(range.first != range.second) {
 						const map_location& dst = range.first->first;
@@ -159,10 +161,10 @@ protected:
 
 	void get_villages() {
         std::map<map_location,paths> possible_moves;
-        ai::move_map srcdst, dstsrc;
+        move_map srcdst, dstsrc;
         calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
-        for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+        for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
             if(get_info().map.is_village(i->first) && current_team().owns_village(i->first) == false) {
                 move_unit(i->second,i->first,possible_moves);
                 get_villages();
@@ -183,13 +185,13 @@ protected:
 			return;
 
 		std::map<map_location,paths> possible_moves;
-		ai::move_map srcdst, dstsrc;
+		move_map srcdst, dstsrc;
 		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
 		int closest_distance = -1;
 		std::pair<map_location,map_location> closest_move;
 
-		for(ai::move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+		for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 			const int distance = distance_between(i->first,leader->first);
 			if(closest_distance == -1 || distance < closest_distance) {
 				closest_distance = distance;
@@ -203,7 +205,7 @@ protected:
 		}
 	}
 
-	void switch_side(ai::side_number side){
+	void switch_side(side_number side){
 		set_side(side);
 	}
 
@@ -224,7 +226,7 @@ protected:
 		return false;
 	}
 private:
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
 };
 
 #ifdef _MSC_VER
@@ -232,7 +234,7 @@ private:
 #endif
 
 
-ai_default::ai_default(ai::default_ai_context &context) :
+ai_default::ai_default(default_ai_context &context) :
 	game_logic::formula_callable(),
 	recursion_counter_(context.get_recursion_count()),
 	defensive_position_cache_(),
@@ -263,7 +265,7 @@ ai_default::ai_default(ai::default_ai_context &context) :
 ai_default::~ai_default(){
 }
 
-void ai_default::switch_side(ai::side_number side){
+void ai_default::switch_side(side_number side){
 	set_side(side);
 }
 
@@ -285,7 +287,7 @@ void ai_default::new_turn()
 	if (formula_ai_ != NULL){
 		formula_ai_->new_turn();
 	}
-	ai::interface::new_turn();
+	interface::new_turn();
 }
 
 std::string ai_default::describe_self(){
@@ -414,10 +416,10 @@ bool ai_default::multistep_move_possible(const map_location& from,
 	return false;
 }
 
-map_location ai_default::move_unit(map_location from, map_location to, ai::moves_map& possible_moves)
+map_location ai_default::move_unit(map_location from, map_location to, moves_map& possible_moves)
 {
-	ai::moves_map temp_possible_moves;
-	ai::moves_map* possible_moves_ptr = &possible_moves;
+	moves_map temp_possible_moves;
+	moves_map* possible_moves_ptr = &possible_moves;
 
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end() && i->second.can_recruit()) {
@@ -1490,11 +1492,11 @@ bool ai_default::do_recruitment()
 
 	raise_user_interact();
 	// Let formula ai to do recruiting first
-	if (get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE)
+	if (get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE)
 	{
 		if (!current_team().ai_parameters()["recruitment"].empty()){
 			if (!formula_ai_){
-				formula_ai_ptr_ = (ai::manager::create_transient_ai(ai::manager::AI_TYPE_FORMULA_AI, this));
+				formula_ai_ptr_ = (manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, this));
 				formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
 			}
 
@@ -2046,4 +2048,5 @@ void ai_default::attack_analysis::get_inputs(std::vector<game_logic::formula_inp
 	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
 
+} //end of namespace ai
 

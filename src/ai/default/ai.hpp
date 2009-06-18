@@ -35,30 +35,31 @@
 
 class formula_ai;
 
+namespace ai {
+
 /** A trivial ai that sits around doing absolutely nothing. */
-class idle_ai : public ai::readwrite_context_proxy, public ai::interface {
+class idle_ai : public readwrite_context_proxy, public interface {
 public:
-	idle_ai(ai::readwrite_context &context);
+	idle_ai(readwrite_context &context);
 	void play_turn();
 	virtual std::string describe_self();
-	void switch_side(ai::side_number side);
+	void switch_side(side_number side);
 	int get_recursion_count() const;
 private:
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
 };
 
-class ai_default : public virtual ai::default_ai_context_proxy, public ai::interface, public game_logic::formula_callable {
+class ai_default : public virtual default_ai_context_proxy, public interface, public game_logic::formula_callable {
 public:
-	typedef ai::move_map move_map;
 	typedef map_location location;//will get rid of this later
 
-	ai_default(ai::default_ai_context &context);
+	ai_default(default_ai_context &context);
 	virtual ~ai_default();
 
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
-	void switch_side(ai::side_number side);
+	void switch_side(side_number side);
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
@@ -103,7 +104,7 @@ public:
 	/** get the recursion counter */
 	int get_recursion_count() const;
 private:
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
 
 protected:
 
@@ -419,8 +420,10 @@ private:
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
 	formula_ai *formula_ai_;
-	ai::ai_ptr formula_ai_ptr_;
+	ai_ptr formula_ai_ptr_;
 };
+
+} //end of namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(pop)

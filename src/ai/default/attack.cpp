@@ -30,6 +30,8 @@ static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
 #define ERR_AI LOG_STREAM(err, log_ai)
 
+namespace ai {
+
 const int max_positions = 10000;
 
 /** Analyze possibility of attacking target on 'loc'. */
@@ -831,3 +833,5 @@ bool ai_default::desperate_attack(const map_location &loc)
 	}
 	return false;
 }
+
+} //end of namespace ai
