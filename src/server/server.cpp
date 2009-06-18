@@ -636,7 +636,6 @@ void server::dump_stats(const time_t& now) {
 	LOG_SERVER << "Statistics:"
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
-		 << "\tnumber_of_ghost_users = " << ghost_players_.size()
 		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
 }
 
@@ -1352,7 +1351,6 @@ std::string server::process_command(const std::string& query, const std::string&
 	} else if (command == "stats") {
 		out << "Number of games = " << games_.size()
 			<< "\nTotal number of users = " << players_.size()
-			<< "\nNumber of ghost users = " << ghost_players_.size()
 			<< "\nNumber of users in the lobby = " << lobby_.nobservers();
 		return out.str();
 	} else if (command == "metrics") {
