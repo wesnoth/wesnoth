@@ -2056,8 +2056,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		 * collisions; filters should be named consistently and always have a
 		 * distinct scope.
 		 */
-		temp_config["x"] = "";
-		temp_config["y"] = "";
+		temp_config["x"] = "recall";
+		temp_config["y"] = "recall";
 		vconfig unit_filter(temp_config);
 		for(int index = 0; !unit_recalled && index < int(rsrc.teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
