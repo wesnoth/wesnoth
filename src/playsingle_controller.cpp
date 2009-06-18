@@ -861,6 +861,7 @@ void playsingle_controller::check_time_over(){
 	//FIXME: remove these assertions once turn functionality is removed from gamestatus
 	assert (status_.turn() == turn());
 	assert (status_.number_of_turns() == number_of_turns());
+	assert (status_.get_time_of_day().id == tod_manager_.get_time_of_day().id);
 	bool b = next_turn();
 	if(!status_.next_turn() && !b) {
 
