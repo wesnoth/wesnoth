@@ -1971,7 +1971,7 @@ void ai_default::get_inputs(std::vector<game_logic::formula_input>* inputs) cons
 }
 
 
-variant ai_default::attack_analysis::get_value(const std::string& key) const
+variant attack_analysis::get_value(const std::string& key) const
 {
 	using namespace game_logic;
 	if(key == "target") {
@@ -2026,7 +2026,7 @@ variant ai_default::attack_analysis::get_value(const std::string& key) const
 	}
 }
 
-void ai_default::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+void attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
 {
 	using namespace game_logic;
 	inputs->push_back(formula_input("target", FORMULA_READ_ONLY));

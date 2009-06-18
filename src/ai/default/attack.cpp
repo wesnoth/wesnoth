@@ -297,7 +297,7 @@ void ai_default::do_attack_analysis(
 }
 
 
-void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
+void attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status,  const tod_manager& tod_mng,
 								  class ai_default& ai_obj,
@@ -353,7 +353,7 @@ void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	double prob_dead_already = 0.0;
 	assert(!movements.empty());
-	std::vector<std::pair<location,location> >::const_iterator m;
+	std::vector<std::pair<map_location,map_location> >::const_iterator m;
 
 	battle_context *prev_bc = NULL;
 	const combatant *prev_def = NULL;
@@ -376,9 +376,9 @@ void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
-		std::map<std::pair<location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >::iterator usc;
+		std::map<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >::iterator usc;
 		if(up->second.type()) {
-			usc = ai_obj.unit_stats_cache_.find(std::pair<location, const unit_type *>(target, up->second.type()));
+			usc = ai_obj.unit_stats_cache_.find(std::pair<map_location, const unit_type *>(target, up->second.type()));
 		} else {
 			usc = ai_obj.unit_stats_cache_.end();
 		}
@@ -400,8 +400,8 @@ void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_def = &bc->get_defender_combatant(prev_def);
 
 		if (!from_cache && up->second.type()) {
-			ai_obj.unit_stats_cache_.insert(std::pair<std::pair<location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >
-											(std::pair<location, const unit_type *>(target, up->second.type()),
+			ai_obj.unit_stats_cache_.insert(std::pair<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >
+											(std::pair<map_location, const unit_type *>(target, up->second.type()),
 											 std::pair<battle_context::unit_stats,battle_context::unit_stats>(bc->get_attacker_stats(),
 																											  bc->get_defender_stats())));
 		}
@@ -513,7 +513,7 @@ void ai_default::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 }
 
-double ai_default::attack_analysis::rating(double aggression, ai_default& ai_obj) const
+double attack_analysis::rating(double aggression, ai_default& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -599,7 +599,7 @@ double ai_default::attack_analysis::rating(double aggression, ai_default& ai_obj
 	return value;
 }
 
-std::vector<ai_default::attack_analysis> ai_default::analyze_targets(
+std::vector<attack_analysis> ai_default::analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
                 )

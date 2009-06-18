@@ -37,6 +37,89 @@ class formula_ai;
 
 namespace ai {
 
+struct attack_analysis : public game_logic::formula_callable
+{
+	attack_analysis() :
+		game_logic::formula_callable(),
+		target(),
+		movements(),
+		target_value(0.0),
+		avg_losses(0.0),
+		chance_to_kill(0.0),
+		avg_damage_inflicted(0.0),
+		target_starting_damage(0),
+		avg_damage_taken(0.0),
+		resources_used(0.0),
+		terrain_quality(0.0),
+		alternative_terrain_quality(0.0),
+		vulnerability(0.0),
+		support(0.0),
+		leader_threat(false),
+		uses_leader(false),
+		is_surrounded(false)
+	{
+	}
+
+	void analyze(const gamemap& map, unit_map& units,
+				 const std::vector<team>& teams,
+				 const gamestatus& status,  const tod_manager& tod_mng,
+				 class ai_default& ai_obj,
+				 const move_map& dstsrc, const move_map& srcdst,
+				 const move_map& enemy_dstsrc, double aggression);
+
+	double rating(double aggression, class ai_default& ai_obj) const;
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+	map_location target;
+	std::vector<std::pair<map_location,map_location> > movements;
+
+	/** The value of the unit being targeted. */
+	double target_value;
+
+	/** The value on average, of units lost in the combat. */
+	double avg_losses;
+
+	/** Estimated % chance to kill the unit. */
+	double chance_to_kill;
+
+	/** The average hitpoints damage inflicted. */
+	double avg_damage_inflicted;
+
+	int target_starting_damage;
+
+	/** The average hitpoints damage taken. */
+	double avg_damage_taken;
+
+	/** The sum of the values of units used in the attack. */
+	double resources_used;
+
+	/** The weighted average of the % chance to hit each attacking unit. */
+	double terrain_quality;
+
+	/**
+	 * The weighted average of the % defense of the best possible terrain
+	 * that the attacking units could reach this turn, without attacking
+	 * (good for comparison to see just how good/bad 'terrain_quality' is).
+	 */
+	double alternative_terrain_quality;
+
+	/**
+	 * The vulnerability is the power projection of enemy units onto the hex
+	 * we're standing on. support is the power projection of friendly units.
+	 */
+	double vulnerability, support;
+
+	/** Is true if the unit is a threat to our leader. */
+	bool leader_threat;
+
+	/** Is true if this attack sequence makes use of the leader. */
+	bool uses_leader;
+
+	/** Is true if the units involved in this attack sequence are surrounded. */
+	bool is_surrounded;
+};
+
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public readwrite_context_proxy, public interface {
 public:
@@ -175,88 +258,6 @@ protected:
 		const std::map<location,paths>& possible_moves) const;
 
 public:
-	struct attack_analysis : public game_logic::formula_callable
-	{
-		attack_analysis() :
-			game_logic::formula_callable(),
-			target(),
-			movements(),
-			target_value(0.0),
-			avg_losses(0.0),
-			chance_to_kill(0.0),
-			avg_damage_inflicted(0.0),
-			target_starting_damage(0),
-			avg_damage_taken(0.0),
-			resources_used(0.0),
-			terrain_quality(0.0),
-			alternative_terrain_quality(0.0),
-			vulnerability(0.0),
-			support(0.0),
-			leader_threat(false),
-			uses_leader(false),
-			is_surrounded(false)
-		{
-		}
-
-		void analyze(const gamemap& map, unit_map& units,
-					 const std::vector<team>& teams,
-					 const gamestatus& status,  const tod_manager& tod_mng,
-					 class ai_default& ai_obj,
-					 const move_map& dstsrc, const move_map& srcdst,
-					 const move_map& enemy_dstsrc, double aggression);
-
-		double rating(double aggression, class ai_default& ai_obj) const;
-		variant get_value(const std::string& key) const;
-		void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-
-		map_location target;
-		std::vector<std::pair<map_location,map_location> > movements;
-
-		/** The value of the unit being targeted. */
-		double target_value;
-
-		/** The value on average, of units lost in the combat. */
-		double avg_losses;
-
-		/** Estimated % chance to kill the unit. */
-		double chance_to_kill;
-
-		/** The average hitpoints damage inflicted. */
-		double avg_damage_inflicted;
-
-		int target_starting_damage;
-
-		/** The average hitpoints damage taken. */
-		double avg_damage_taken;
-
-		/** The sum of the values of units used in the attack. */
-		double resources_used;
-
-		/** The weighted average of the % chance to hit each attacking unit. */
-		double terrain_quality;
-
-		/**
-		 * The weighted average of the % defense of the best possible terrain
-		 * that the attacking units could reach this turn, without attacking
-		 * (good for comparison to see just how good/bad 'terrain_quality' is).
-		 */
-		double alternative_terrain_quality;
-
-		/**
-		 * The vulnerability is the power projection of enemy units onto the hex
-		 * we're standing on. support is the power projection of friendly units.
-		 */
-		double vulnerability, support;
-
-		/** Is true if the unit is a threat to our leader. */
-		bool leader_threat;
-
-		/** Is true if this attack sequence makes use of the leader. */
-		bool uses_leader;
-
-		/** Is true if the units involved in this attack sequence are surrounded. */
-		bool is_surrounded;
-	};
 
 protected:
 

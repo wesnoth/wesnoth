@@ -573,7 +573,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		variant attack = args()[0]->evaluate(variables);
-		ai::ai_default::attack_analysis* analysis = convert_variant<ai::ai_default::attack_analysis>(attack);
+		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
 		foreach (const mv &m, analysis->movements) {
@@ -2023,7 +2023,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		const move_callable* move = try_convert_variant<move_callable>(*i);
 		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(*i);
 		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
-		const ai_default::attack_analysis* attack_analysis = try_convert_variant<ai_default::attack_analysis>(*i);
+		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(*i);
@@ -2258,10 +2258,10 @@ variant formula_ai::get_value(const std::string& key) const
 			return attacks_cache_;
 		}
 
-		std::vector<attack_analysis> attacks = const_cast<formula_ai*>(this)->analyze_targets(srcdst_, dstsrc_, enemy_srcdst_, enemy_dstsrc_);
+		std::vector<ai::attack_analysis> attacks = const_cast<formula_ai*>(this)->analyze_targets(srcdst_, dstsrc_, enemy_srcdst_, enemy_dstsrc_);
 		std::vector<variant> vars;
-		for(std::vector<attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-			vars.push_back(variant(new attack_analysis(*i)));
+		for(std::vector<ai::attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+			vars.push_back(variant(new ai::attack_analysis(*i)));
 		}
 
 		attacks_cache_ = variant(&vars);
