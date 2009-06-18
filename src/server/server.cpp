@@ -571,7 +571,7 @@ void server::load_config() {
 	if (versions.empty() == false) {
 		accepted_versions_ = utils::split(versions);
 	} else {
-		accepted_versions_.push_back(game_config::version);
+		accepted_versions_.push_back("1.6*");
 		accepted_versions_.push_back("test");
 	}
 
