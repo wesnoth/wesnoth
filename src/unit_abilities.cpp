@@ -244,7 +244,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
-	assert(units_ && map_ && gamestatus_);
+	assert(units_ && map_ && gamestatus_ && teams_ && tod_manager_);
 
 	if (const config &afilter = cfg.child("filter"))
 		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
@@ -278,7 +278,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), *map_, *gamestatus_, *tod_manager_, *(gamestatus_->teams), *units_);
+			terrain_filter adj_filter(vconfig(i), *map_, *gamestatus_, *tod_manager_, *teams_, *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -681,7 +681,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		}
 	}
 
-	assert(map_ && game_status_);
+	assert(map_ && game_status_ && teams_ && tod_manager_);
 	foreach (const config &i, cfg.child_range("filter_adjacent_location"))
 	{
 		foreach (const std::string &j, utils::split(i["adjacent"]))
@@ -690,7 +690,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), *map_, *game_status_, *tod_manager_, *(game_status_->teams), *unitmap_);
+			terrain_filter adj_filter(vconfig(i), *map_, *game_status_, *tod_manager_, *teams_, *unitmap_);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
@@ -743,7 +743,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
-							  const std::vector<team>* /*teams*/, bool attacker,const attack_type* other_attack) const
+							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
@@ -751,6 +751,7 @@ void attack_type::set_specials_context(const map_location& aloc,const map_locati
 	map_ = map;
 	game_status_ = game_status;
 	tod_manager_ = tod_mng;
+	teams_ = teams;
 	attacker_ = attacker;
 	other_attack_ = other_attack;
 }
@@ -761,7 +762,9 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	dloc_ = dloc;
 	unitmap_ = un.units_;
 	map_ = un.map_;
-	game_status_ = un.gamestatus_; //FIXME: set tod_manager_ once unit has a tod_manager member
+	game_status_ = un.gamestatus_;
+	tod_manager_ = un.tod_manager_;
+	teams_ = un.teams_;
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }
