@@ -63,11 +63,11 @@ struct attack_analysis : public game_logic::formula_callable
 	void analyze(const gamemap& map, unit_map& units,
 				 const std::vector<team>& teams,
 				 const gamestatus& status,  const tod_manager& tod_mng,
-				 class ai_default& ai_obj,
+				 class default_ai_context& ai_obj,
 				 const move_map& dstsrc, const move_map& srcdst,
 				 const move_map& enemy_dstsrc, double aggression);
 
-	double rating(double aggression, class ai_default& ai_obj) const;
+	double rating(double aggression, class default_ai_context& ai_obj) const;
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
@@ -155,34 +155,8 @@ public:
 		TYPE type;
 	};
 
-	struct defensive_position {
-		defensive_position() :
-			loc(),
-			chance_to_hit(0),
-			vulnerability(0.0),
-			support(0.0)
-			{}
-
-		location loc;
-		int chance_to_hit;
-		double vulnerability, support;
-	};
-
-	defensive_position const& best_defensive_position(const location& unit,
-			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc);
-
-	void invalidate_defensive_position_cache() { defensive_position_cache_.clear(); }
-
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-
-	bool leader_can_reach_keep();
-
-	/** Return true if there has been another attack this turn 'close' to this one. */
-	bool attack_close(const location& loc) const;
-
-	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	const map_location& suitable_keep( const location& leader_location, const paths& leader_paths );
 
 	/** get the recursion counter */
 	int get_recursion_count() const;
@@ -190,8 +164,6 @@ private:
 	recursion_counter recursion_counter_;
 
 protected:
-
-	std::map<location,defensive_position> defensive_position_cache_;
 
 	virtual void do_move();
 
@@ -247,7 +219,6 @@ protected:
 	void attack_enemy(const location& attacking_unit, const location& target,
 			int att_weapon, int def_weapon);
 
-	std::set<location> attacks_;
 
 	/**
 	 * Sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in
@@ -271,20 +242,6 @@ protected:
 	                 std::vector<attack_analysis>& result,
 					 attack_analysis& cur_analysis
 	                );
-
-
-	/**
-	 * Function which finds how much 'power' a side can attack a certain location with.
-	 * This is basically the maximum hp of damage that can be inflicted upon a unit on loc
-	 * by full-health units, multiplied by the defense these units will have.
-	 * (if 'use_terrain' is false, then it will be multiplied by 0.5)
-	 *
-	 * Example: 'loc' can be reached by two units, one of whom has a 10-3 attack
-	 * and has 48/48 hp, and can defend at 40% on the adjacent grassland.
-	 * The other has a 8-2 attack, and has 30/40 hp, and can defend at 60% on the adjacent mountain.
-	 * The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
-	 */
-	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const;
 
 	virtual std::vector<attack_analysis> analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
@@ -376,13 +333,10 @@ protected:
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
 	/** Functions to deal with keeps. */
-	const std::set<location>& keeps();
-	const location& nearest_keep(const location& loc);
+
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location>&);
 
 	void evaluate_recruiting_value(const map_location &leader_loc);
-
-	std::set<location> keeps_;
 
 	/**
 	 * Function which, given a unit position, and a position the unit wants to
@@ -399,10 +353,6 @@ protected:
 	const std::set<location>& avoided_locations();
 
 	std::set<location> avoid_;
-
-	/** Weapon choice cache, to speed simulations. */
-	std::map<std::pair<location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 
 	int attack_depth();
 	int attack_depth_;

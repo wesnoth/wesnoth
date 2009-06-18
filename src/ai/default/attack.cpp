@@ -300,7 +300,7 @@ void ai_default::do_attack_analysis(
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status,  const tod_manager& tod_mng,
-								  class ai_default& ai_obj,
+								  class default_ai_context& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
 {
@@ -378,12 +378,12 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// We recalculate when we actually attack.
 		std::map<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >::iterator usc;
 		if(up->second.type()) {
-			usc = ai_obj.unit_stats_cache_.find(std::pair<map_location, const unit_type *>(target, up->second.type()));
+			usc = ai_obj.unit_stats_cache().find(std::pair<map_location, const unit_type *>(target, up->second.type()));
 		} else {
-			usc = ai_obj.unit_stats_cache_.end();
+			usc = ai_obj.unit_stats_cache().end();
 		}
 		// Just check this attack is valid for this attacking unit (may be modified)
-		if (usc != ai_obj.unit_stats_cache_.end() &&
+		if (usc != ai_obj.unit_stats_cache().end() &&
 				usc->second.first.attack_num <
 				static_cast<int>(up->second.attacks().size())) {
 
@@ -400,7 +400,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_def = &bc->get_defender_combatant(prev_def);
 
 		if (!from_cache && up->second.type()) {
-			ai_obj.unit_stats_cache_.insert(std::pair<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >
+			ai_obj.unit_stats_cache().insert(std::pair<std::pair<map_location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >
 											(std::pair<map_location, const unit_type *>(target, up->second.type()),
 											 std::pair<battle_context::unit_stats,battle_context::unit_stats>(bc->get_attacker_stats(),
 																											  bc->get_defender_stats())));
@@ -513,7 +513,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 }
 
-double attack_analysis::rating(double aggression, ai_default& ai_obj) const
+double attack_analysis::rating(double aggression, default_ai_context& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -622,7 +622,7 @@ std::vector<attack_analysis> ai_default::analyze_targets(
 	move_map fullmove_srcdst, fullmove_dstsrc;
 	calculate_possible_moves(dummy_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
 
-	unit_stats_cache_.clear();
+	unit_stats_cache().clear();
 
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
@@ -650,107 +650,6 @@ std::vector<attack_analysis> ai_default::analyze_targets(
 	}
 
 	return res;
-}
-
-double ai_default::power_projection(const map_location& loc, const move_map& dstsrc) const
-{
-	map_location used_locs[6];
-	int ratings[6];
-	int num_used_locs = 0;
-
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
-
-	const int lawful_bonus = tod_manager_.get_time_of_day().lawful_bonus;
-
-	int res = 0;
-
-	bool changed = false;
-	for (int i = 0;; ++i) {
-		if (i == 6) {
-			if (!changed) break;
-			// Loop once again, in case a unit found a better spot
-			// and freed the place for another unit.
-			changed = false;
-			i = 0;
-		}
-
-		if (map_.on_board(locs[i]) == false) {
-			continue;
-		}
-
-		const t_translation::t_terrain terrain = map_[locs[i]];
-
-		typedef move_map::const_iterator Itor;
-		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
-
-		map_location* const beg_used = used_locs;
-		map_location* end_used = used_locs + num_used_locs;
-
-		int best_rating = 0;
-		map_location best_unit;
-
-		for(Itor it = its.first; it != its.second; ++it) {
-			const unit_map::const_iterator u = units_.find(it->second);
-
-			// Unit might have been killed, and no longer exist
-			if(u == units_.end()) {
-				continue;
-			}
-
-			const unit& un = u->second;
-
-			int tod_modifier = 0;
-			if(un.alignment() == unit_type::LAWFUL) {
-				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::CHAOTIC) {
-				tod_modifier = -lawful_bonus;
-			}
-
-			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
-			foreach (const attack_type &att, un.attacks())
-			{
-				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
-				if (damage > most_damage) {
-					most_damage = damage;
-				}
-			}
-
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
-			if(rating > best_rating) {
-				map_location *pos = std::find(beg_used, end_used, it->second);
-				// Check if the spot is the same or better than an older one.
-				if (pos == end_used || rating >= ratings[pos - beg_used]) {
-					best_rating = rating;
-					best_unit = it->second;
-				}
-			}
-		}
-
-		if (!best_unit.valid()) continue;
-		map_location *pos = std::find(beg_used, end_used, best_unit);
-		int index = pos - beg_used;
-		if (index == num_used_locs)
-			++num_used_locs;
-		else if (best_rating == ratings[index])
-			continue;
-		else {
-			// The unit was in another spot already, so remove its older rating
-			// from the final result, and require a new run to fill its old spot.
-			res -= ratings[index];
-			changed = true;
-		}
-		used_locs[index] = best_unit;
-		ratings[index] = best_rating;
-		res += best_rating;
-	}
-
-	return res / 100000.;
 }
 
 /**

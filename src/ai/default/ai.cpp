@@ -237,9 +237,7 @@ private:
 ai_default::ai_default(default_ai_context &context) :
 	game_logic::formula_callable(),
 	recursion_counter_(context.get_recursion_count()),
-	defensive_position_cache_(),
 	threats_found_(false),
-	attacks_(),
 	disp_(context.get_info().disp),
 	map_(context.get_info().map),
 	units_(context.get_info().units),
@@ -251,9 +249,7 @@ ai_default::ai_default(default_ai_context &context) :
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
-	keeps_(),
 	avoid_(),
-	unit_stats_cache_(),
 	attack_depth_(0),
 	recruiting_preferred_(0),
 	formula_ai_()
@@ -272,17 +268,17 @@ void ai_default::switch_side(side_number side){
 
 void ai_default::new_turn()
 {
-	defensive_position_cache_.clear();
+	invalidate_defensive_position_cache();
+	invalidate_recent_attacks_list();
 	threats_found_ = false;
-	attacks_.clear();
 	consider_combat_ = true;
 	additional_targets_.clear();
 	unit_movement_scores_.clear();
 	not_recommended_units_.clear();
 	unit_combat_scores_.clear();
-	keeps_.clear();
+	invalidate_keeps_cache();
 	avoid_.clear();
-	unit_stats_cache_.clear();
+	unit_stats_cache().clear();
 	attack_depth_ = 0;
 	if (formula_ai_ != NULL){
 		formula_ai_->new_turn();
@@ -475,21 +471,10 @@ map_location ai_default::move_unit(map_location from, map_location to, moves_map
 	}
 }
 
-bool ai_default::attack_close(const map_location& loc) const
-{
-	for(std::set<map_location>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		if(distance_between(*i,loc) < 4) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
 void ai_default::attack_enemy(const map_location& attacking_unit, const map_location& target,
 		int att_weapon, int def_weapon)
 {
-	attacks_.insert(attacking_unit);
+	add_recent_attack(attacking_unit);//@todo 1.7 replace by event system
 	readwrite_context_proxy::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
 }
 
@@ -1768,29 +1753,6 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 	}
 }
 
-bool ai_default::leader_can_reach_keep()
-{
-	const unit_map::iterator leader = units_.find_leader(get_side());
-	if(leader == units_.end() || leader->second.incapacitated()) {
-		return false;
-	}
-
-	const map_location& start_pos = nearest_keep(leader->first);
-	if(start_pos.valid() == false) {
-		return false;
-	}
-
-	if(leader->first == start_pos) {
-		return true;
-	}
-
-	// Find where the leader can move
-	const paths leader_paths(map_,units_,leader->first,teams_,false,false,current_team());
-
-
-	return leader_paths.destinations.contains(start_pos);
-}
-
 int ai_default::rate_terrain(const unit& u, const map_location& loc)
 {
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
@@ -1821,51 +1783,6 @@ int ai_default::rate_terrain(const unit& u, const map_location& loc)
 	return rating;
 }
 
-const ai_default::defensive_position& ai_default::best_defensive_position(const map_location& loc,
-		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc)
-{
-	const unit_map::const_iterator itor = units_.find(loc);
-	if(itor == units_.end()) {
-		static defensive_position pos;
-		pos.chance_to_hit = 0;
-		pos.vulnerability = pos.support = 0;
-		return pos;
-	}
-
-	const std::map<location,defensive_position>::const_iterator position =
-		defensive_position_cache_.find(loc);
-
-	if(position != defensive_position_cache_.end()) {
-		return position->second;
-	}
-
-	defensive_position pos;
-	pos.chance_to_hit = 100;
-	pos.vulnerability = 10000.0;
-	pos.support = 0.0;
-
-	typedef move_map::const_iterator Itor;
-	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
-	for(Itor i = itors.first; i != itors.second; ++i) {
-		const int defense = itor->second.defense_modifier(map_.get_terrain(i->second));
-		if(defense > pos.chance_to_hit) {
-			continue;
-		}
-
-		const double vulnerability = power_projection(i->second,enemy_dstsrc);
-		const double support = power_projection(i->second,dstsrc);
-
-		if(defense < pos.chance_to_hit || support - vulnerability > pos.support - pos.vulnerability) {
-			pos.loc = i->second;
-			pos.chance_to_hit = defense;
-			pos.vulnerability = vulnerability;
-			pos.support = support;
-		}
-	}
-
-	defensive_position_cache_.insert(std::pair<location,defensive_position>(loc,pos));
-	return defensive_position_cache_[loc];
-}
 
 bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) const
 {
@@ -1878,53 +1795,6 @@ bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) cons
 	}
 
 	return dstsrc.count(loc) > 0;
-}
-
-
-const std::set<map_location>& ai_default::keeps()
-{
-	if(keeps_.empty()) {
-		// Generate the list of keeps:
-		// iterate over the entire map and find all keeps.
-		for(size_t x = 0; x != size_t(map_.w()); ++x) {
-			for(size_t y = 0; y != size_t(map_.h()); ++y) {
-				const map_location loc(x,y);
-				if(map_.is_keep(loc)) {
-					map_location adj[6];
-					get_adjacent_tiles(loc,adj);
-					for(size_t n = 0; n != 6; ++n) {
-						if(map_.is_castle(adj[n])) {
-							keeps_.insert(loc);
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	return keeps_;
-}
-
-const map_location& ai_default::nearest_keep(const map_location& loc)
-{
-	const std::set<map_location>& keeps = this->keeps();
-	if(keeps.empty()) {
-		static const map_location dummy;
-		return dummy;
-	}
-
-	const map_location* res = NULL;
-	int closest = -1;
-	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
-		const int distance = distance_between(*i,loc);
-		if(res == NULL || distance < closest) {
-			closest = distance;
-			res = &*i;
-		}
-	}
-
-	return *res;
 }
 
 const std::set<map_location>& ai_default::avoided_locations()
