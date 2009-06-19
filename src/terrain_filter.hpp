@@ -19,7 +19,6 @@
 #include "pathfind.hpp"
 
 class config;
-class gamestatus;
 class unit;
 class vconfig;
 class unit_map;
@@ -35,7 +34,7 @@ public:
 	// other compilers don't need it.
 	terrain_filter();
 #endif
-	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status, const tod_manager& tod_mng, const std::vector<team>& teams,
+	terrain_filter(const vconfig& cfg, const gamemap& map, const tod_manager& tod_mng, const std::vector<team>& teams,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	~terrain_filter() {};
@@ -64,7 +63,6 @@ private:
 
 	const vconfig& cfg_; //config contains WML for a Standard Location Filter
 	const gamemap& map_;
-	const gamestatus& status_;
 	const tod_manager& tod_manager_;
 	const unit_map& units_;
 	const std::vector<team>& teams_;
