@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:37+0200\n"
-"PO-Revision-Date: 2009-04-22 10:24+0100\n"
+"PO-Revision-Date: 2009-06-19 12:16+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -3321,15 +3321,13 @@ msgstr ""
 
 #. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:330
-#, fuzzy
 msgid "Crelanu's philter affecting Kalenz"
-msgstr "Pod wpływem eliksiru Crelanu: "
+msgstr "Kalenz jest pod wpływem eliksiru Crelanu"
 
 #. [event]: (id=Kalenz) (Elvish Lord)}, (id=Landar) ($landar_store.type)}
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:340
-#, fuzzy
 msgid "Crelanu's philter affecting Landar"
-msgstr "Pod wpływem eliksiru Crelanu: "
+msgstr "Landar jest pod wpływem eliksiru Crelanu"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:346
@@ -4548,6 +4546,9 @@ msgstr "O nie, przybywamy za późno..."
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Znajdujesz $amount_gold sztuk złota."
 
+#~ msgid "aged"
+#~ msgstr "wiekowy"
+
 #~ msgid "Eomil"
 #~ msgstr "Eomil"
 
@@ -4577,9 +4578,6 @@ msgstr "Znajdujesz $amount_gold sztuk złota."
 
 #~ msgid "Undor"
 #~ msgstr "Undor"
-
-#~ msgid "aged"
-#~ msgstr "wiekowy"
 
 #, fuzzy
 #~ msgid "Move Kalenz to the signpost"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:36+0200\n"
-"PO-Revision-Date: 2009-05-07 13:11+0100\n"
+"PO-Revision-Date: 2009-06-19 12:15+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -1719,7 +1719,7 @@ msgstr ""
 "\n"
 "Cechy, które są dostępne dla wszystkich oprócz nieumarłych, to "
 "<ref>dst='traits_intelligent' text='inteligentna'</ref>, "
-"<ref>dst='traits_quick' text='szybka'</ref>, <ref>dst='traits_resillient' "
+"<ref>dst='traits_quick' text='szybka'</ref>, <ref>dst='traits_resilient' "
 "text='wytrzymała'</ref> i <ref>dst='traits_strong' text='silna'</ref>."
 
 #. [topic]: id=..traits_section
@@ -8969,10 +8969,8 @@ msgid "I'm Ready"
 msgstr "Jestem gotowy"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr ""
-"Ten scenariusz jest niepoprawny, gdyż nie zostały w nim określone strony."
+msgstr "Scenariusz jest niepoprawny, gdyż nie posiada ID."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9384,9 +9382,9 @@ msgstr "Pozycja startowa: "
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "sztuka złota"
+msgstr[1] "sztuki złota"
+msgstr[2] "sztuk złota"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9715,10 +9713,9 @@ msgid "Unexpected closing tag"
 msgstr "Nieoczekiwany znacznik zamykający"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Znaleziono błędny znacznik zamykający $tag2 dla znacznika $tag (otwarty w "
+"Znaleziono błędny znacznik zamykający $tag2 dla znacznika $tag1 (otwarty w "
 "$pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
