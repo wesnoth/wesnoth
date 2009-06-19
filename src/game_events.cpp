@@ -2843,7 +2843,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
 	const game_events::resources_t &rsrc = *game_events::resources;
-	unit_display::wml_animation(cfg, *rsrc.units, *rsrc.game_map, *rsrc.status_ptr, rsrc.controller->get_tod_manager(), event_info.loc1);
+	unit_display::wml_animation(cfg, *rsrc.units, *rsrc.game_map, *rsrc.status_ptr, rsrc.teams, rsrc.controller->get_tod_manager(), event_info.loc1);
 }
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
