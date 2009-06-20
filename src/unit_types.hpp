@@ -273,7 +273,7 @@ public:
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
-    const config& get_cfg() { return cfg_; }
+	const config &get_cfg() const { return cfg_; }
 
 	void set_config(const config& cfg);
 
