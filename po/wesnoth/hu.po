@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-13 20:36+0200\n"
-"PO-Revision-Date: 2009-05-03 11:53+0200\n"
+"PO-Revision-Date: 2009-06-20 11:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -8987,9 +8987,8 @@ msgid "I'm Ready"
 msgstr "Indulhat!"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Ez a pálya érvénytelen, mert nincsen benne hely a csapatoknak."
+msgstr "Ez a pálya érvénytelen, mert nincs azonosítószáma."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9402,7 +9401,7 @@ msgstr "Kezdési pont: "
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
+msgstr[0] "Arany"
 msgstr[1] ""
 
 #: src/network.cpp:104
@@ -9726,10 +9725,9 @@ msgid "Unexpected closing tag"
 msgstr "Váratlan lezáró tag"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Érvénytelen lezáró tag ($tag2) a(z) $tag tag-hez ($pos helyen megnyitva)"
+"Érvénytelen lezáró tag ($tag2) a(z) $tag1 tag-hez ($pos helyen megnyitva)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
@@ -10057,24 +10055,6 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Még mindig le akarod tölteni?"
-
-#~ msgid "Quit Game"
-#~ msgstr "Kilépés a játékból"
-
-#~ msgid "Ignore All"
-#~ msgstr "Mindent mellőz"
-
-#~ msgid "Name: "
-#~ msgstr "Név: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Már van ilyen mentés. Felülírjam?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Felülírjam?"
-
 #~ msgid "stones"
 #~ msgstr "kővé változtatás"
 
@@ -10091,12 +10071,27 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "Unknown unit type : "
 #~ msgstr "Ismeretlen típusú egység: "
 
+#~ msgid "Quit Game"
+#~ msgstr "Kilépés a játékból"
+
+#~ msgid "Ignore All"
+#~ msgstr "Mindent mellőz"
+
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr ""
 #~ "A mentések nevében nem szerepelhet kettőspont, per- vagy visszaperjel. "
 #~ "Válassz más nevet."
+
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Már van ilyen mentés. Felülírjam?"
+
+#~ msgid "Name: "
+#~ msgstr "Név: "
+
+#~ msgid "Overwrite?"
+#~ msgstr "Felülírjam?"
 
 #~ msgid "stone: "
 #~ msgstr "kővé változtatás"
@@ -10109,6 +10104,9 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "Name:"
 #~ msgstr "Név:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Még mindig le akarod tölteni?"
 
 #~ msgid " included from "
 #~ msgstr ", amely innen származik: "
