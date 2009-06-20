@@ -112,6 +112,18 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 			set_button_visible(ok, twidget::VISIBLE);
 		}
 	}
+		
+	/*
+	 * If we have more than two visible buttons, we need to set
+	 * easy_close to false, since we want to know about the return value.
+	 */
+	int button_visible_count = 0;
+	foreach(tbutton_status button_status, buttons_) {
+		if (button_status.visible == twidget::VISIBLE)
+			button_visible_count += 1;
+	}
+	if (button_visible_count > 1)
+		window.set_easy_close(false);
 }
 
 void tmessage::post_show(twindow& /*window*/)
