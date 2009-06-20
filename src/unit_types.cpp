@@ -1214,7 +1214,7 @@ bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& 
 
     unit_type_map::iterator itor = types_.find(key);
 
-    return ((itor == types_.end()) ? false : true);
+	return itor != types_.end();
 }
 
 unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
