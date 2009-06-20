@@ -255,7 +255,7 @@ static void lua_tstring_concat_aux(lua_State *L, t_string &dst, int src)
 }
 
 /**
- * Appends a scalar to a t_string object.
+ * Appends a scalar to a t_string object (__concat metamethod).
  */
 static int lua_tstring_concat(lua_State *L)
 {
@@ -274,7 +274,7 @@ static int lua_tstring_concat(lua_State *L)
 }
 
 /**
- * Destroys a t_string object before it is collected.
+ * Destroys a t_string object before it is collected (__gc metamethod).
  */
 static int lua_tstring_collect(lua_State *L)
 {
@@ -284,7 +284,8 @@ static int lua_tstring_collect(lua_State *L)
 }
 
 /**
- * Converts a t_string object to a string (that is, performs a translation).
+ * Converts a t_string object to a string (__tostring metamethod);
+ * that is, performs a translation.
  */
 static int lua_tstring_tostring(lua_State *L)
 {
@@ -404,7 +405,7 @@ static int lua_unit_get(lua_State *L)
 }
 
 /**
- * Sets some data on a unit (__index metamethod).
+ * Sets some data on a unit (__newindex metamethod).
  * - Arg 1: full userdata containing the unit id.
  * - Arg 2: string containing the name of the property.
  * - Arg 3: something containing the attribute.
@@ -432,7 +433,8 @@ static int lua_unit_set(lua_State *L)
 /**
  * Gets the numeric ids of all the units.
  * - Arg 1: optional table containing a filter
- * - Ret 1: table containing full userdata with __index pointing to lua_getunit.
+ * - Ret 1: table containing full userdata with __index pointing to
+ *          lua_unit_get and __newindex pointing to lua_unit_set.
  */
 static int lua_get_units(lua_State *L)
 {
@@ -808,7 +810,7 @@ LuaKernel::LuaKernel()
 
 	// Create the getside metatable.
 	lua_pushlightuserdata(L, (void *)&getsideKey);
-	lua_createtable(L, 0, 1);
+	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, lua_side_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_side_set);
@@ -828,7 +830,7 @@ LuaKernel::LuaKernel()
 
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L, (void *)&getunitKey);
-	lua_createtable(L, 0, 1);
+	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, lua_unit_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, lua_unit_set);
@@ -839,7 +841,7 @@ LuaKernel::LuaKernel()
 
 	// Create the tstring metatable.
 	lua_pushlightuserdata(L, (void *)&tstringKey);
-	lua_createtable(L, 0, 1);
+	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, lua_tstring_concat);
 	lua_setfield(L, -2, "__concat");
 	lua_pushcfunction(L, lua_tstring_collect);
