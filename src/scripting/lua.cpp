@@ -56,6 +56,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static char const executeKey = 0;
 static char const getsideKey = 0;
 static char const gettextKey = 0;
+static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const uactionKey = 0;
@@ -330,6 +331,13 @@ static int lua_tstring_tostring(lua_State *L)
 		return 1; \
 	}
 
+#define return_cfgref_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+		lua_newtable(L); \
+		table_of_wml_config(L, accessor); \
+		return 1; \
+	}
+
 #define modify_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		if (lua_type(L, -1) == LUA_TUSERDATA) { \
@@ -366,6 +374,67 @@ static int lua_tstring_tostring(lua_State *L)
 		accessor; \
 		return 0; \
 	}
+
+/**
+ * Gets some data on a unit type (__index metamethod).
+ * - Arg 1: table containing an "id" field.
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+static int lua_unit_type_get(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	lua_getfield(L, 1, "id");
+	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
+	unit_type_data::unit_type_map::const_iterator
+		uti = ut_map.find_unit_type(lua_tostring(L, -1));
+	if (uti == ut_map.end()) return 0;
+	unit_type const &ut = uti->second;
+
+	// Find the corresponding attribute.
+	return_tstring_attrib("name", ut.type_name());
+	return_cfgref_attrib("__cfg", ut.get_cfg());
+	return 0;
+}
+
+/**
+ * Gets the unit type corresponding to an id.
+ * - Arg 1: string containing the unit type id.
+ * - Ret 1: table with an "id" field and with __index pointing to lua_unit_type_get.
+ */
+static int lua_get_unit_type(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
+	if (!ut_map.unit_type_exists(m)) return 0;
+
+	lua_createtable(L, 0, 1);
+	lua_pushvalue(L, 1);
+	lua_setfield(L, -2, "id");
+	lua_pushlightuserdata(L, (void *)&gettypeKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Gets the ids of all the unit types.
+ * - Ret 1: table containing the ids.
+ */
+static int lua_get_unit_types(lua_State *L)
+{
+	lua_newtable(L);
+	int i = 1;
+	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
+	for (unit_type_data::unit_type_map::const_iterator uti = ut_map.begin(),
+	     uti_end = ut_map.end(); uti != uti_end; ++uti)
+	{
+		lua_pushstring(L, uti->first.c_str());
+		lua_rawseti(L, -2, i);
+		++i;
+	}
+	return 1;
+}
 
 /**
  * Gets some data on a unit (__index metamethod).
@@ -797,6 +866,8 @@ LuaKernel::LuaKernel()
 		{ "fire",                     &lua_fire                     },
 		{ "fire_event",               &lua_fire_event               },
 		{ "get_units",                &lua_get_units                },
+		{ "get_unit_type",            &lua_get_unit_type            },
+		{ "get_unit_types",           &lua_get_unit_types           },
 		{ "get_variable",             &lua_get_variable             },
 		{ "message",                  &lua_message                  },
 		{ "dofile",                   &lua_dofile                   },
@@ -825,6 +896,15 @@ LuaKernel::LuaKernel()
 	lua_pushcfunction(L, lua_gettext);
 	lua_setfield(L, -2, "__call");
 	lua_pushstring(L, "Hands off! (gettext metatable)");
+	lua_setfield(L, -2, "__metatable");
+	lua_settable(L, LUA_REGISTRYINDEX);
+
+	// Create the gettype metatable.
+	lua_pushlightuserdata(L, (void *)&gettypeKey);
+	lua_createtable(L, 0, 1);
+	lua_pushcfunction(L, lua_unit_type_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "Hands off! (gettype metatable)");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
