@@ -458,11 +458,14 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	if(hex.valid() && u != units_.end() && !u->second.get_hidden()) {
 		next_unit_ = u->first;
 
-		// if it's not the unit's turn, we reset its moves
-		unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
-		bool teleport = u->second.get_ability_bool("teleport");
-		current_paths_ = paths(map_,units_,hex,teams_,
-						   false,teleport,viewing_team(),path_turns_);
+		{
+			// if it's not the unit's turn, we reset its moves
+			// and we restore them before the "select" event is raised
+			unit_movement_resetter move_reset(u->second, u->second.side() != side_num_);
+			bool teleport = u->second.get_ability_bool("teleport");
+			current_paths_ = paths(map_, units_, hex, teams_,
+				false, teleport, viewing_team(), path_turns_);
+		}
 		show_attack_options(u);
 		gui().highlight_reach(current_paths_);
 		// the highlight now comes from selection
