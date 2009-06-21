@@ -256,7 +256,7 @@ public:
 	 * @returns                   Whether or not the window closes easily.
 	 */
 	bool does_easy_close() const
-		{ return easy_close_ && easy_close_blocker_.empty(); }
+		{ return easy_close_ && easy_close_blocker_.empty() && !easy_close_disabled_; }
 
 	/**
 	 * Disable the escape key.
@@ -411,6 +411,15 @@ private:
 
 	/** The list with items which prevent the easy close behaviour. */
 	std::vector<std::string> easy_close_blocker_;
+
+	/** 
+	 * Hold the state of the easy close disable state.
+	 *
+	 * This value is set on showing and remains valid for the entire time
+	 * shown. This means the easy close can't be changed on run-time, which
+	 * is good since an extra close button might be needed.
+	 */
+	bool easy_close_disabled_;
 
 	/** Disable the escape key see our setter for more info. */
 	bool escape_disabled_;

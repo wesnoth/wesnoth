@@ -233,6 +233,7 @@ twindow::twindow(CVideo& video,
 	, h_(h)
 	, easy_close_(false)
 	, easy_close_blocker_()
+	, easy_close_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
 	, dirty_list_()
@@ -379,6 +380,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	 * reinvalidate the window to avoid those glitches.
 	 */
 	invalidate_layout();
+	easy_close_disabled_ = easy_close_ && disable_easy_close();
 	suspend_drawing_ = false;
 
 	if(auto_close_timeout) {

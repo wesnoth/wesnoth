@@ -465,6 +465,13 @@ bool tscrollbar_container::does_block_easy_close() const
 	return vertical_block || horizontal_block;
 }
 
+bool tscrollbar_container::disable_easy_close() const
+{
+	assert(content_grid_);
+	return tcontainer_::disable_easy_close()
+			|| content_grid_->disable_easy_close();
+}
+
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 {
 	const std::map<std::string, tscrollbar_::tscroll>::const_iterator

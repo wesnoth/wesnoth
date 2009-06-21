@@ -408,6 +408,11 @@ public:
 	 */
 	tdialog* dialog();
 
+	/***** ***** ***** Misc. ***** ****** *****/
+
+	/** Does the widget disable easy close? */
+	virtual bool disable_easy_close() const = 0;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	twidget* parent() { return parent_; }

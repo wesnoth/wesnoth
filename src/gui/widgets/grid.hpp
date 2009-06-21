@@ -258,6 +258,9 @@ public:
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
 
+	/** Inherited from tcontrol. */
+	bool disable_easy_close() const;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_rows(const unsigned rows);

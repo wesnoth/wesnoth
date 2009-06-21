@@ -142,5 +142,10 @@ void tcontainer_::set_active(const bool active)
 	set_self_active(active);
 }
 
+bool tcontainer_::disable_easy_close() const
+{
+	return tcontrol::disable_easy_close() && grid_.disable_easy_close();
+}
+
 } // namespace gui2
 

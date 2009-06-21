@@ -142,6 +142,9 @@ public:
 	/** Inherited from tcontainer_. */
 	bool does_block_easy_close() const;
 
+	/** Inherited from tcontainer_. */
+	bool disable_easy_close() const;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** @note shouldn't be called after being shown in a dialog. */

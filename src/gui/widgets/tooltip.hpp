@@ -48,6 +48,9 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
+	/** Inherited from tcontrol. */
+	bool disable_easy_close() const { return false; }
+
 private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

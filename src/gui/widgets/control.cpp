@@ -83,6 +83,11 @@ void tcontrol::set_block_easy_close(const bool block)
 	}
 }
 
+bool tcontrol::disable_easy_close() const
+{
+	return get_visible() == twidget::VISIBLE && get_active();
+}
+
 tpoint tcontrol::get_config_minimum_size() const
 {
 	assert(config_);

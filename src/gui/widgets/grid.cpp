@@ -578,6 +578,23 @@ bool tgrid::has_widget(const twidget* widget) const
 	return false;
 }
 
+bool tgrid::disable_easy_close() const
+{
+	if(get_visible() != twidget::VISIBLE) {
+		return false;
+	}
+
+	foreach(const tchild& child, children_) {
+		const twidget* widget = child.widget();
+		assert(widget);
+
+		if(widget->disable_easy_close()) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void tgrid::set_rows(const unsigned rows)
 {
 	if(rows == rows_) {

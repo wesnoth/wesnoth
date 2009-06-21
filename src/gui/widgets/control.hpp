@@ -120,6 +120,14 @@ public:
 	 */
 	virtual bool does_block_easy_close() const = 0;
 
+	/** 
+	 * Inherited from twidget.
+	 *
+	 * The default behavious is that a widget blocks easy close, if not it
+	 * hould override this function.
+	 */
+	bool disable_easy_close() const;
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/**

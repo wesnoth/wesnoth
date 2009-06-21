@@ -152,6 +152,9 @@ public:
 	 */
 	bool does_block_easy_close() const { return false; }
 
+	/** Inherited from tcontrol. */
+	bool disable_easy_close() const;
+
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
 	tgrid::iterator begin() { return grid_.begin(); }

@@ -763,6 +763,17 @@ public:
 		return placement::find_widget(coordinate, must_be_active);
 	}
 
+	/** Inherited from widget. */
+	bool disable_easy_close() const
+	{
+		foreach(titem* item, items_) {
+			if(item->grid.disable_easy_close()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
