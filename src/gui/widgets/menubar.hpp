@@ -20,7 +20,9 @@
 namespace gui2 {
 
 class tselectable_;
-
+namespace implementation {
+	struct tbuilder_menubar;
+}
 /**
  * A menu bar.
  *
@@ -30,7 +32,7 @@ class tselectable_;
  */
 class tmenubar : public tcontainer_
 {
-	friend struct tbuilder_menubar;
+	friend struct implementation::tbuilder_menubar;
 public:
 	/** The direction is which the items are next to eachother. */
 	enum tdirection { HORIZONTAL, VERTICAL };

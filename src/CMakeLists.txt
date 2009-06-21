@@ -268,6 +268,7 @@ SET(wesnoth-main_SRC
     gui/auxiliary/window_builder/image.cpp
     gui/auxiliary/window_builder/label.cpp
     gui/auxiliary/window_builder/minimap.cpp
+    gui/auxiliary/window_builder/menubar.cpp
     gui/auxiliary/window_builder.cpp
     gui/dialogs/addon_connect.cpp
     gui/dialogs/addon_list.cpp

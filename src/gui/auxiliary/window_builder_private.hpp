@@ -103,23 +103,6 @@ public:
 };
 
 
-struct tbuilder_menubar : public implementation::tbuilder_control
-{
-	tbuilder_menubar(const config& cfg);
-
-	twidget* build () const;
-
-private:
-	bool must_have_one_item_selected_;
-
-	tmenubar::tdirection direction_;
-
-	int selected_item_;
-
-	std::vector<tbuilder_gridcell> cells_;
-
-};
-
 struct tbuilder_multi_page
 	: public implementation::tbuilder_control
 {
