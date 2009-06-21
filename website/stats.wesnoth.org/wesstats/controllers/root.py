@@ -93,117 +93,6 @@ class RootController(BaseController):
 		conn.close()
 		return dict(views=views)
 
-
-
-		
-	@expose(template="wesstats.templates.platform")
-	def platform(self, versions=["all"], **kw):	
-		#hack to work around how a single value in a GET is interpreted
-		versions = Root.listfix(self,versions)
-		
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
-		curs = conn.cursor()
-		filters = ""
-
-		filters = Root.fconstruct(self,filters,"version",versions)
-		query = "SELECT platform, COUNT(platform) FROM GAMES "+filters+" GROUP BY platform"
-		results = Root.scaled_query(self,curs,query,100,evaluators.count_eval)
-		
-		total = 0
-		for result in results:
-			total += result[1]
-		#we process part of the IMG string here because it's a pain in KID templating
-		chartdata = ""
-		chartnames = ""
-		for result in results:
-			value = (100.0*result[1])/total
-			chartdata += str(value) + ","
-			if len(result[0]) == 0:
-				chartnames += "unspecified" + " " + str(value) + "%|"
-			else:
-				chartnames += result[0] + " " + str(value) + "%|"
-		chartdata = chartdata[0:len(chartdata)-1] 
-		chartnames = chartnames[0:len(chartnames)-1] 
-
-		curs.execute("SELECT DISTINCT version FROM GAMES")
-		vlist = curs.fetchall()
-		
-		conn.close()
-		return dict(chd=chartdata,chn=chartnames,vers=versions,vlist=vlist,total=total)
-
-	@expose(template="wesstats.templates.breakdown")
-	def breakdown(self, campaigns=["all"], diffs=["all"], versions=["all"], scens=["all"], **kw):
-		
-		#hack to work around how a single value in a GET is interpreted
-		campaigns = Root.listfix(self,campaigns)
-		versions = Root.listfix(self,versions)
-		diffs = Root.listfix(self,diffs)
-		scens = Root.listfix(self,scens)
-		
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
-		curs = conn.cursor()
-	
-		filters = ""
-
-		filters = Root.fconstruct(self,filters,"campaign",campaigns)
-		filters = Root.fconstruct(self,filters,"difficulty",diffs)
-		filters = Root.fconstruct(self,filters,"version",versions)
-		filters = Root.fconstruct(self,filters,"scenario",scens)
-
-		query = "SELECT result, COUNT(result) FROM GAMES " + filters + " GROUP BY result"
-		#curs.execute("SELECT result, COUNT(result) FROM GAMES " + filters + " GROUP BY result")
-		results = Root.scaled_query(self,curs,query,100,evaluators.count_eval)
-		total = 0
-		for result in results:
-			total += result[1]
-		#we process part of the IMG string here because it's a pain in KID templating
-		chartdata = ""
-		chartnames = ""
-		for result in results:
-			value = (100.0*result[1])/total
-			chartdata += str(value) + ","
-			chartnames += result[0] + " " + str(value) + "%|"
-		chartdata = chartdata[0:len(chartdata)-1] 
-		chartnames = chartnames[0:len(chartnames)-1] 
-
-		curs.execute("SELECT DISTINCT campaign FROM GAMES")
-		clist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT difficulty FROM GAMES")
-		dlist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT version FROM GAMES")
-		vlist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT scenario FROM GAMES")
-		slist = curs.fetchall()
-		
-		conn.close()
-		return dict(chd=chartdata,chn=chartnames,camps=campaigns,diffs=diffs,vers=versions,scens=scens,clist=clist, dlist=dlist, vlist=vlist, slist=slist,total=total)
-
-	def barparse(self,parts,min,max,results):
-		#divide the data into 3 ranges
-		width = (max-min)/parts
-		count = []
-		for i in range(parts):
-			count.append(0)
-		for i in range(parts):
-			curmin = min + (i*width) + 1
-			if i == 0:
-				curmin -= 1
-			curmax = min + ((i+1)*width)
-			#we overcount slightly because the intervals overlap
-			for result in results:
-				if result[0] >= curmin and result[0] <= curmax:
-					count[i] += 1
-		chd = ""
-		chxl = "0:|"
-		for i in range(parts):
-			chd += str(count[i]) + ","
-			chxl += str(min+(i*width)+1)+"+to+"+str(min+((i+1)*width))+"|"
-		chd = chd[0:len(chd)-1]
-		return [chd,chxl]
-
 	@expose(template="wesstats.templates.gold")
 	def gold(self, campaigns=["all"], diffs=["all"], versions=["all"], scens=["all"], gresults=["all"], granularity="3bar", **kw):
 		
@@ -277,6 +166,10 @@ class RootController(BaseController):
 			vers=versions,scens=scens,clist=clist,minval=minval,maxval=maxval,
 			dlist=dlist,vlist=vlist,slist=slist,rlist=rlist,total=total)
 
+	@expose(template="wesstats.templates.newview")
+	def newview(self):
+		return dict()
+	
 	@expose()
 	def lookup(self,url,*remainder):
 		#check if view exists
