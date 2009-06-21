@@ -68,12 +68,14 @@ static void run_lobby_loop(display& disp, mp::ui& ui)
 			ui.set_location(lobby_pos);
 			first = false;
 		}
+		// process network data first so user actions can override the result
+		// or uptodate data can prevent invalid actions
+		// i.e. press cancel while you receive [start_game] or press start game while someone leaves
+		ui.process_network();
 
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-
-		ui.process_network();
 
 		disp.flip();
 		disp.delay(20);
