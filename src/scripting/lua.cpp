@@ -426,7 +426,7 @@ static int lua_get_unit_type(lua_State *L)
  * Gets the ids of all the unit types.
  * - Ret 1: table containing the ids.
  */
-static int lua_get_unit_types(lua_State *L)
+static int lua_get_unit_type_ids(lua_State *L)
 {
 	lua_newtable(L);
 	int i = 1;
@@ -872,7 +872,7 @@ LuaKernel::LuaKernel()
 		{ "fire_event",               &lua_fire_event               },
 		{ "get_units",                &lua_get_units                },
 		{ "get_unit_type",            &lua_get_unit_type            },
-		{ "get_unit_types",           &lua_get_unit_types           },
+		{ "get_unit_type_ids",        &lua_get_unit_type_ids        },
 		{ "get_variable",             &lua_get_variable             },
 		{ "message",                  &lua_message                  },
 		{ "dofile",                   &lua_dofile                   },
