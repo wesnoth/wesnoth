@@ -61,6 +61,7 @@ opts.AddVariables(
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('lua', 'Enable Lua support', True),
+    BoolVariable('notifications', 'Enable support for desktop notifications using libnotify', False),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
     BoolVariable('dummy_locales','enable support for dummy locales',False),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
@@ -243,6 +244,11 @@ if env["prereqs"]:
     have_X = False
     if env["PLATFORM"] != "win32":
         have_X = conf.CheckLib('X11')
+
+    if env["notifications"]:
+        have_client_prereqs = conf.CheckPKG("gtkmm-2.4 >= 2.8.0") and conf.CheckPKG("libnotifymm-1.0") or \
+            Warning("gtkmm and libnotifymm are required for desktop notifications support")
+        client_env.Append(CPPDEFINES = "HAVE_LIBNOTIFY")
 
     if client_env['fribidi']:
         client_env['fribidi'] = conf.CheckLibWithHeader('fribidi', 'fribidi/fribidi.h', 'C', 'fribidi_utf8_to_unicode(NULL,0,NULL);') or Warning("Can't find libfribidi, disabling freebidi support.")
