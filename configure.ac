@@ -278,6 +278,18 @@ AC_ARG_ENABLE([internal-data],
 		[internaldata=$enableval],
 		[internaldata=no])
 
+AC_ARG_ENABLE([notifications],
+		AS_HELP_STRING([--disable-notifications],
+			[disable OS-specific notifications]),
+		[notifications=$enableval],
+		[notifications=yes])
+
+AC_ARG_ENABLE([gtkmm],
+		AS_HELP_STRING([--disable-gtkmm],
+			[disable gtkmm support for notifications]),
+		[gtkmm=$enableval],
+		[gtkmm=yes])
+
 #if test "x$game" = "xno"
 #then
 #	python=no
@@ -844,6 +856,27 @@ LIBS="$LIBS $ZLIB_LIBS"
 PKG_CHECK_MODULES(LUA, [lua >= 5.1], , [PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1], , [PKG_CHECK_MODULES(LUA, [lua-5.1 >= 5.1]) ]) ])
 CPPFLAGS="$CPPFLAGS $LUA_CFLAGS"
 LIBS="$LIBS $LUA_LIBS"
+
+#######################################################################
+# Check for different notifications systems                           #
+#######################################################################
+found_notifications=no
+if test "x$notifications" = "xyes"; then
+	if test "x$gtkmm" = "xyes"; then
+		PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4 >= 2.8.0], [
+			PKG_CHECK_MODULES([LIBNOTIFY], [libnotifymm-1.0], [
+				CPPFLAGS="$CPPFLAGS $GTKMM_CFLAGS $LIBNOTIFY_CFLAGS"
+				LIBS="$LIBS $GTKMM_LIBS $LIBNOTIFY_LIBS"
+				found_notifications=yes
+				AC_DEFINE([HAVE_LIBNOTIFY],,[Define if you have Libnotify for GTK.])
+			], [AC_MSG_RESULT([no])])
+		], [AC_MSG_RESULT([no])])
+	fi
+	# tests for other notification systems
+fi
+AC_MSG_CHECKING([for notifications])
+AC_MSG_RESULT([$found_notifications])
+
 
 #######################################################################
 # Check for boost iostreams                                           #

@@ -25,6 +25,7 @@ Version 1.7.0+svn:
    * Removed the hidden option to disable the tips of the day
    * A click on a slider now properly sets the position
    * WML generated messages, labels and sounds are skiped during replay (bug #13519)
+   * Added support for desktop notifications (GTK/libnotify only for now, patch #1179)
  * WML Engine:
    * Made new turn, turn X, side turn and turn refresh events synchronous.
      (bug #10603)

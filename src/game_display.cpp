@@ -21,6 +21,10 @@
 
 #include "game_display.hpp"
 
+#ifdef HAVE_LIBNOTIFY
+#include <libnotifymm-1.0/libnotifymm.h>
+#endif
+
 #include "actions.hpp"
 #include "foreach.hpp"
 #include "halo.hpp"
@@ -1025,6 +1029,32 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
+void game_display::send_notification(const std::string& owner, const std::string& message)
+{
+#ifdef HAVE_LIBNOTIFY
+
+	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
+	Uint8 app_state = SDL_GetAppState();
+
+	// Only show notification if the window is not visible 
+	if((SDL_APPACTIVE & app_state) != 0)
+	{
+		// Or if window is in background
+		if((SDL_APPMOUSEFOCUS & app_state) != 0)
+		{
+			return;
+		}
+	}
+
+	Notify::init("Wesnoth");
+
+	// I tried to use the fancy Gtk::IconTheme stuff but it didn't seem worth it. -- method
+	Glib::ustring wesnoth_icon_info =  game_config::path + "images/wesnoth-icon-small.png";
+	Notify::Notification notification(owner, message, wesnoth_icon_info);
+	notification.show();
+#endif
+}
+
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
 	assert(teamindex < teams_.size());
@@ -1161,6 +1191,9 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
 		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
 		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+
+	// Send system notification if appropriate.
+	send_notification(speaker, message);
 
 	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
 

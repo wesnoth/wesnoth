@@ -228,6 +228,8 @@ public:
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
 	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
 
+	void send_notification(const std::string& owner, const std::string& message);
+
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 *

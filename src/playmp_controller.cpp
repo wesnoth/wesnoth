@@ -23,6 +23,7 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
+#include "formula_string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -142,6 +143,14 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		}
 	} while (player_type_changed_);
 	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
+
+	// Notify on turn change.
+	utils::string_map player;
+	player["name"] = current_team().current_player();
+	std::string turn_notification_msg = _("$name has taken control");
+	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
+
+	gui_->send_notification(_("Turn changed"), turn_notification_msg);
 }
 
 void playmp_controller::before_human_turn(bool save){
