@@ -29,8 +29,7 @@
         // Create and draw the visualization.
         new google.visualization.PieChart(document.getElementById('visualization')).
             draw(data, {title: '${title}'} );
-      }
-      
+      }      
 
       google.setOnLoadCallback(drawVisualization);
     </script>
@@ -39,6 +38,34 @@
 
 <!--- <h3 py:for="view in views"><a href="${urllib.quote(view[1])}">${view[0]}</a></h3> -->
 <div id="visualization" style="width: 300px; height: 300px;">
+</div>
+<div id="filter_box">
+Used filters
+<table border="1">
+<tr py:for="filter in used_filters">
+<td>${filter}</td>
+<td py:for="val in ufilters_vals[filter]">
+${val}
+</td>
+</tr>
+</table>
+<form method="get">
+<table border="1">
+<tr>
+<td py:for="filter in filters">
+${filters}
+</td>
+</tr>
+<tr>
+<td py:for="filter in filters">
+<select name="${filter}" multiple="multiple" size="5">
+<option py:for="item in sorted(fdata[filter])">${item}</option>
+</select>
+</td>
+</tr>
+</table>
+<input type="submit" value="Submit" />
+</form>
 </div>
 </body>
 </html>

@@ -32,6 +32,10 @@ from wesstats.controllers.secure import SecureController
 
 __all__ = ['RootController']
 
+#return the intersection of the items in the lists
+def intersect(*lists):
+	return list(reduce(set.intersection, (set(l) for l in lists)))
+
 def scaled_query(curs,query,threshold,evaluator):
 	s_time = time.time()
 	#list of all the sample sizes
@@ -315,28 +319,40 @@ class PieGraphController(object):
 		
 		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
-		print kw
 		print view_data
 		#fetch the relevant filters for this template and their possible values
 		available_filters = view_data[5].split(',')
-		fdata = []
+		fdata = dict()
 		for filter in available_filters:
 			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
-			fdata.append(curs.fetchall())
-		print fdata
+			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
+			raw_fdata = curs.fetchall()
+			fdata[filter] = []
+			for i in raw_fdata:
+				fdata[filter].append(i[0])
+		#print fdata
 		filters = ""
 		for filter in available_filters:
 			print filter		
+		print kw
+		used_filters = intersect(kw.keys(),available_filters)
+		ufilters_vals = dict()
+		for filter in used_filters:
+			kw[filter] = listfix(kw[filter])
+			filter_vals = intersect(kw[filter],fdata[filter])
+			print filter_vals
+			filters = fconstruct(filters,filter,filter_vals)
+			ufilters_vals[filter] = filter_vals
 		#get columns and column transformations for this view
 		y_xforms = view_data[6].split(',')
 		y_data = view_data[2].split(',')
 		y_data_str = ""
 		#they must be equal!
-		print len(y_data) == len(y_xforms)
+		assert len(y_data) == len(y_xforms)
 		for i in range(len(y_data)):
 			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
 		y_data_str = y_data_str[0:len(y_data_str)-1]
-		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+"GROUP BY "+view_data[1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
 		print query
 		results = scaled_query(curs,query,100,evaluators.count_eval)
 		print results
@@ -345,7 +361,9 @@ class PieGraphController(object):
 		for i in range(0,len(results)):
                         data += "data.setValue("+str(i)+",0,'"+results[i][0]+"');\n"
                         data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
-		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,data=data)
+		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,
+			data=data,filters=available_filters,used_filters=used_filters,
+			ufilters_vals=ufilters_vals,fdata=fdata)
 
 class BarGraphController(object):
 	def __init__(self,url):
