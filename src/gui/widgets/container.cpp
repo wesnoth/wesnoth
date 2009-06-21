@@ -147,5 +147,15 @@ bool tcontainer_::disable_easy_close() const
 	return tcontrol::disable_easy_close() && grid_.disable_easy_close();
 }
 
+void tcontainer_::init_grid(
+		const boost::intrusive_ptr<tbuilder_grid>& grid_builder)
+{
+	log_scope2(log_gui_general, "tcontainer: Building initial grid.");
+
+	assert(initial_grid().get_rows() == 0 && initial_grid().get_cols() == 0);
+
+	grid_builder->build(&initial_grid());
+}
+
 } // namespace gui2
 

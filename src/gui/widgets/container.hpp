@@ -146,6 +146,16 @@ public:
 	/** Inherited from tcontrol. */
 	bool disable_easy_close() const;
 
+	/**
+	 * Initializes and builds the grid.
+	 *
+	 * This function should only be called upon an empty grid. This grid is
+	 * returned by initial_grid();
+	 *
+	 * @grid_builder              The builder for the grid.
+	 */
+	void init_grid(const boost::intrusive_ptr<tbuilder_grid>& grid_builder);
+
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
 	tgrid::iterator begin() { return grid_.begin(); }
@@ -183,6 +193,13 @@ private:
 
 	/** The grid which holds the child objects. */
 	tgrid grid_;
+
+	/**
+	 * Returns the grid to initialize while building.
+	 *
+	 * @todo Evaluate whether this function is overridden if not remove.
+	 */
+	virtual tgrid& initial_grid() { return grid_; }
 
 	/** Returns the space used by the border. */
 	virtual tpoint border_space() const { return tpoint(0, 0); }

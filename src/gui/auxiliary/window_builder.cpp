@@ -265,29 +265,9 @@ twindow* build(CVideo& video, const std::string& type)
 			, definition->definition);
 	assert(window);
 
-	log_scope2(log_gui_general, "Window builder: building grid for window");
-
 	window->set_easy_close(definition->easy_close);
 
-	const unsigned rows = definition->grid->rows;
-	const unsigned cols = definition->grid->cols;
-
-	window->set_rows_cols(rows, cols);
-
-	for(unsigned x = 0; x < rows; ++x) {
-		window->set_row_grow_factor(x, definition->grid->row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
-
-			if(x == 0) {
-				window->set_col_grow_factor(y, definition->grid->col_grow_factor[y]);
-			}
-
-			twidget* widget = definition->grid->widgets[x * cols + y]->build();
-			window->set_child(widget, x, y,
-				definition->grid->flags[x * cols + y],
-				definition->grid->border_size[x * cols + y]);
-		}
-	}
+	window->init_grid(definition->grid);
 
 	window->add_to_keyboard_chain(window);
 
@@ -679,8 +659,7 @@ twidget* tbuilder_listbox::build() const
 		<const tlistbox_definition::tresolution>(listbox->config());
 	assert(conf);
 
-
-	conf->grid->build(&listbox->grid());
+	listbox->init_grid(conf->grid);
 
 	listbox->finalize(header, footer, list_data);
 
@@ -761,7 +740,7 @@ twidget* tbuilder_multi_page::build() const
 		<const tmulti_page_definition::tresolution>(multi_page->config());
 	assert(conf);
 
-	conf->grid->build(&multi_page->grid());
+	multi_page->init_grid(conf->grid);
 
 	multi_page->finalize(data);
 
@@ -805,27 +784,7 @@ twidget* tbuilder_panel::build() const
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
-
-	log_scope2(log_gui_general, "Window builder: building grid for panel.");
-
-	const unsigned rows = grid->rows;
-	const unsigned cols = grid->cols;
-
-	panel->set_rows_cols(rows, cols);
-
-	for(unsigned x = 0; x < rows; ++x) {
-		panel->set_row_grow_factor(x, grid->row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
-
-			if(x == 0) {
-				panel->set_col_grow_factor(y, grid->col_grow_factor[y]);
-			}
-
-			twidget* widget = grid->widgets[x * cols + y]->build();
-			panel->set_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
-		}
-	}
-
+	panel->init_grid(grid);
 	return panel;
 }
 
@@ -840,7 +799,7 @@ twidget* tbuilder_scroll_label::build() const
 		<const tscroll_label_definition::tresolution>(widget->config());
 	assert(conf);
 
-	conf->grid->build(&widget->grid());
+	widget->init_grid(conf->grid);
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id << "' with defintion '"
@@ -971,7 +930,7 @@ twidget* tbuilder_scrollbar_panel::build() const
 	assert(conf);
 
 
-	conf->grid->build(&scrollbar_panel->grid());
+	scrollbar_panel->init_grid(conf->grid);
 	scrollbar_panel->finalize_setup();
 
 	/*** Fill the content grid. ***/
@@ -1000,6 +959,7 @@ twidget* tbuilder_scrollbar_panel::build() const
 					, grid->border_size[x * cols + y]);
 		}
 	}
+
 
 	return scrollbar_panel;
 }
@@ -1095,26 +1055,7 @@ twidget* tbuilder_toggle_panel::build() const
 	DBG_GUI_G << "Window builder: placed toggle panel '"
 			<< id << "' with defintion '" << definition << "'.\n";
 
-	log_scope2(log_gui_general, "Window builder: building grid for toggle panel.");
-
-	const unsigned rows = grid->rows;
-	const unsigned cols = grid->cols;
-
-	toggle_panel->set_rows_cols(rows, cols);
-
-	for(unsigned x = 0; x < rows; ++x) {
-		toggle_panel->set_row_grow_factor(x, grid->row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
-
-			if(x == 0) {
-				toggle_panel->set_col_grow_factor(y, grid->col_grow_factor[y]);
-			}
-
-			twidget* widget = grid->widgets[x * cols + y]->build();
-			toggle_panel->set_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
-		}
-	}
-
+	toggle_panel->init_grid(grid);
 	return toggle_panel;
 }
 
