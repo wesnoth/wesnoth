@@ -86,85 +86,12 @@ def listfix(l):
 class RootController(BaseController):
 	@expose(template="wesstats.templates.index")
 	def index(self):
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
 		curs.execute("SELECT title,url FROM _wsviews")
 		views = curs.fetchall()
 		conn.close()
 		return dict(views=views)
-
-	@expose(template="wesstats.templates.gold")
-	def gold(self, campaigns=["all"], diffs=["all"], versions=["all"], scens=["all"], gresults=["all"], granularity="3bar", **kw):
-		
-		#hack to work around how a single value in a GET is interpreted
-		campaigns = Root.listfix(self,campaigns)
-		versions = Root.listfix(self,versions)
-		diffs = Root.listfix(self,diffs)
-		scens = Root.listfix(self,scens)
-		gresults = Root.listfix(self,gresults)
-		
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
-		curs = conn.cursor()
-	
-		filters = ""
-
-		filters = Root.fconstruct(self,filters,"campaign",campaigns)
-		filters = Root.fconstruct(self,filters,"difficulty",diffs)
-		filters = Root.fconstruct(self,filters,"version",versions)
-		filters = Root.fconstruct(self,filters,"scenario",scens)
-		filters = Root.fconstruct(self,filters,"result",gresults)
-		
-		curs.execute("SELECT gold, COUNT(gold) FROM GAMES " + filters + " GROUP BY gold")
-		results = curs.fetchall()
-		
-		results2 = []
-		goldlist = []
-		vallist = []
-		for result in results:
-			if result[0] > -1000 and result[0] < 1000:
-				results2.append(result)
-				goldlist.append(result[0])
-				vallist.append(result[1])
-		results = results2
-		total = len(results)
-		
-		goldlist.sort()
-		vallist.sort()
-		max = goldlist[-1]
-		min = goldlist[0]
-		maxval = vallist[-1]
-		minval = vallist[0]	
-	
-		if granularity == "3bar":
-			cdata = Root.barparse(self,3,min,max,results)
-		elif granularity == "5bar":
-			cdata = Root.barparse(self,5,min,max,results)
-		elif granularity == "7bar":
-			cdata = Root.barparse(self,7,min,max,results)
-		else:
-			cdata = Root.barparse(self,5,min,max,results)
-		chd = cdata[0]
-		chxl = cdata[1]
-
-		curs.execute("SELECT DISTINCT campaign FROM GAMES")
-		clist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT difficulty FROM GAMES")
-		dlist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT version FROM GAMES")
-		vlist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT scenario FROM GAMES")
-		slist = curs.fetchall()
-		
-		curs.execute("SELECT DISTINCT result FROM GAMES")
-		rlist = curs.fetchall()
-		
-		conn.close()
-		return dict(chd=chd,chxl=chxl,camps=campaigns,diffs=diffs,results=gresults,
-			vers=versions,scens=scens,clist=clist,minval=minval,maxval=maxval,
-			dlist=dlist,vlist=vlist,slist=slist,rlist=rlist,total=total)
 
 	@expose(template="wesstats.templates.newview")
 	def newview(self):
@@ -173,7 +100,7 @@ class RootController(BaseController):
 	@expose()
 	def lookup(self,url,*remainder):
 		#check if view exists
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
 		
 		curs.execute("SELECT url FROM _wsviews WHERE url = %s", (url,))
