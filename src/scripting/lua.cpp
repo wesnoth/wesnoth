@@ -393,6 +393,11 @@ static int lua_unit_type_get(lua_State *L)
 
 	// Find the corresponding attribute.
 	return_tstring_attrib("name", ut.type_name());
+	return_int_attrib("max_hitpoints", ut.hitpoints());
+	return_int_attrib("max_moves", ut.movement());
+	return_int_attrib("max_experience", ut.experience_needed());
+	return_int_attrib("cost", ut.cost());
+	return_int_attrib("level", ut.level());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	return 0;
 }
