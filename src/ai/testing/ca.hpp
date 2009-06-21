@@ -22,6 +22,7 @@
 
 #include "../../global.hpp"
 
+#include "../default/ai.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/engine_default.hpp"
 
@@ -80,6 +81,9 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
+private:
+	attack_analysis best_analysis_;
+	double choice_rating_;
 
 };
 

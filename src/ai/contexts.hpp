@@ -148,8 +148,38 @@ public:
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 		const std::set<map_location>* remove_destinations=NULL,
 		bool see_all=false) const = 0;
+
 	const virtual game_info& get_info() const = 0;
+
+
 	virtual void raise_user_interact() const = 0;
+
+
+	virtual const std::set<map_location>& avoided_locations() = 0;
+
+
+	virtual const move_map& get_dstsrc() const = 0;
+
+
+	virtual const move_map& get_enemy_dstsrc() const = 0;
+
+
+	virtual const moves_map& get_enemy_possible_moves() const = 0;
+
+
+	virtual const move_map& get_enemy_srcdst() const = 0;
+
+
+	virtual const moves_map& get_possible_moves() const = 0;
+
+
+	virtual const move_map& get_srcdst() const = 0;
+
+
+	virtual void invalidate_avoided_locations_cache() = 0;
+
+
+	virtual void recalculate_move_maps() = 0;
 
 };
 
@@ -306,9 +336,64 @@ public:
 		target_->raise_user_interact();
 	}
 
+
+	virtual const std::set<map_location>& avoided_locations()
+	{
+		return target_->avoided_locations();
+	}
+
+
 	virtual int get_recursion_count() const
 	{
 		return target_->get_recursion_count();
+	}
+
+
+	virtual const move_map& get_dstsrc() const
+	{
+		return target_->get_dstsrc();
+	}
+
+
+	virtual const move_map& get_enemy_dstsrc() const
+	{
+		return target_->get_enemy_dstsrc();
+	}
+
+
+	virtual const moves_map& get_enemy_possible_moves() const
+	{
+		return target_->get_enemy_possible_moves();
+	}
+
+
+	virtual const move_map& get_enemy_srcdst() const
+	{
+		return target_->get_enemy_srcdst();
+	}
+
+
+	virtual const moves_map& get_possible_moves() const
+	{
+		return target_->get_possible_moves();
+	}
+
+
+	virtual const move_map& get_srcdst() const
+	{
+		return target_->get_srcdst();
+	}
+
+
+	virtual void invalidate_avoided_locations_cache()
+	{
+		target_->invalidate_avoided_locations_cache();
+	}
+
+
+	virtual void recalculate_move_maps()
+	{
+		target_->recalculate_move_maps();
 	}
 
 private:
@@ -467,7 +552,7 @@ public:
 	 * Constructor
 	 */
 	readonly_context_impl(side_context &context)
-		: recursion_counter_(context.get_recursion_count())
+		: recursion_counter_(context.get_recursion_count()),dstsrc_(),enemy_dstsrc_(),enemy_possible_moves_(),enemy_srcdst_(),possible_moves_(),srcdst_(),avoided_locations_()
 	{
 		init_side_context_proxy(context);
 	}
@@ -603,10 +688,46 @@ public:
 	 */
 	void raise_user_interact() const;
 
+
+	virtual const std::set<map_location>& avoided_locations();
+
+
 	virtual int get_recursion_count() const;
+
+
+	virtual const move_map& get_dstsrc() const;
+
+
+	virtual const move_map& get_enemy_dstsrc() const;
+
+
+	virtual const moves_map& get_enemy_possible_moves() const;
+
+
+	virtual const move_map& get_enemy_srcdst() const;
+
+
+	virtual const moves_map& get_possible_moves() const;
+
+
+	virtual const move_map& get_srcdst() const;
+
+
+	virtual void invalidate_avoided_locations_cache();
+
+
+	virtual void recalculate_move_maps();
+
 
 private:
 	recursion_counter recursion_counter_;
+	move_map dstsrc_;
+	move_map enemy_dstsrc_;
+	moves_map enemy_possible_moves_;
+	move_map enemy_srcdst_;
+	moves_map possible_moves_;
+	move_map srcdst_;
+	std::set<map_location> avoided_locations_;
 
 };
 

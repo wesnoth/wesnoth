@@ -89,7 +89,10 @@ void readwrite_context_impl::raise_enemy_attacked() const
 
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
+	attack_result_ptr r = actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
+	recalculate_move_maps();//@todo 1.7 replace with event system
+	return r;
+
 }
 
 
@@ -99,7 +102,9 @@ attack_result_ptr readonly_context_impl::check_attack_action(const map_location&
 
 
 move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
-	return actions::execute_move_action(get_side(),true,from,to,remove_movement);
+	move_result_ptr r = actions::execute_move_action(get_side(),true,from,to,remove_movement);
+	recalculate_move_maps();//@todo 1.7 replace with event system
+	return r;
 }
 
 
@@ -109,7 +114,9 @@ move_result_ptr readonly_context_impl::check_move_action(const map_location& fro
 
 
 recruit_result_ptr readwrite_context_impl::execute_recruit_action(const std::string& unit_name, const map_location &where){
-	return actions::execute_recruit_action(get_side(),true,unit_name,where);
+	recruit_result_ptr r = actions::execute_recruit_action(get_side(),true,unit_name,where);
+	recalculate_move_maps();//@todo 1.7 replace with event system
+	return r;
 }
 
 
@@ -119,7 +126,9 @@ recruit_result_ptr readonly_context_impl::check_recruit_action(const std::string
 
 
 stopunit_result_ptr readwrite_context_impl::execute_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
-	return actions::execute_stopunit_action(get_side(),true,unit_location,remove_movement,remove_attacks);
+	stopunit_result_ptr r = actions::execute_stopunit_action(get_side(),true,unit_location,remove_movement,remove_attacks);
+	recalculate_move_maps();//@todo 1.7 replace with event system
+	return r;
 }
 
 
@@ -185,6 +194,7 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 		((data.net_income < 0) ? "" : "+") <<
 		data.net_income << "\n";
 		recorder.add_checksum_check(loc);
+		recalculate_move_maps();
 		return true;
 	} else {
 		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
@@ -195,6 +205,7 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 		" gold=" << data.gold <<
 		((data.net_income < 0) ? "" : "+") <<
 		data.net_income << "\n";
+		recalculate_move_maps();
 		return false;
 	}
 }
@@ -239,7 +250,7 @@ map_location readwrite_context_impl::move_unit(map_location from, map_location t
 			u->second.set_movement(0);
 		}
 	}
-
+	recalculate_move_maps();
 	return loc;
 }
 
@@ -257,11 +268,13 @@ map_location readwrite_context_impl::move_unit_partial(map_location from, map_lo
 	if(u_it == get_info().units.end()) {
 		ERR_AI << "Could not find unit at " << from << '\n';
 		assert(false);
+		recalculate_move_maps();
 		return map_location();
 	}
 
 	if(from == to) {
 		LOG_AI << "moving unit at " << from << " on spot. resetting moves\n";
+		recalculate_move_maps();
 		return to;
 	}
 
@@ -404,7 +417,7 @@ map_location readwrite_context_impl::move_unit_partial(map_location from, map_lo
 	// would have to go via mousehandler to make this work:
 	//get_info().disp.unhighlight_reach();
 	raise_unit_moved();
-
+	recalculate_move_maps();
 	return to;
 }
 
@@ -559,6 +572,81 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 
 	check_victory(get_info().state,get_info().units,get_info().teams, get_info().disp);
 	raise_enemy_attacked();
+	recalculate_move_maps();
+
+}
+
+const std::set<map_location>& readonly_context_impl::avoided_locations()
+{
+	if(avoided_locations_.empty()) {
+		foreach (const config &av, current_team().ai_parameters().child_range("avoid"))
+		{
+			foreach (const map_location &loc, parse_location_range(av["x"], av["y"])) {
+				avoided_locations_.insert(loc);
+			}
+		}
+
+		if(avoided_locations_.empty()) {
+			avoided_locations_.insert(map_location());
+		}
+	}
+
+	return avoided_locations_;
+}
+
+const move_map& readonly_context_impl::get_dstsrc() const
+{
+	return dstsrc_;
+}
+
+
+const move_map& readonly_context_impl::get_enemy_dstsrc() const
+{
+	return enemy_dstsrc_;
+}
+
+
+const moves_map& readonly_context_impl::get_enemy_possible_moves() const
+{
+	return enemy_possible_moves_;
+}
+
+
+const move_map& readonly_context_impl::get_enemy_srcdst() const
+{
+	return enemy_srcdst_;
+}
+
+
+const moves_map& readonly_context_impl::get_possible_moves() const
+{
+	return possible_moves_;
+}
+
+
+const move_map& readonly_context_impl::get_srcdst() const
+{
+	return srcdst_;
+}
+
+
+void readonly_context_impl::invalidate_avoided_locations_cache(){
+	avoided_locations_.clear();
+}
+
+
+void readonly_context_impl::recalculate_move_maps()
+{
+	dstsrc_ = move_map();
+	enemy_dstsrc_ = move_map();
+	enemy_srcdst_ = move_map();
+	enemy_possible_moves_ = moves_map();
+	possible_moves_ = moves_map();
+	srcdst_ = move_map();
+
+	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&avoided_locations());
+	calculate_possible_moves(enemy_possible_moves_,enemy_srcdst_,enemy_dstsrc_,true);
+
 }
 
 } //of namespace ai

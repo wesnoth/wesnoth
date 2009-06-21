@@ -75,6 +75,19 @@ void ai_composite::play_turn(){
 }
 
 
+void ai_composite::new_turn()
+{
+	//todo 1.7 replace with event system
+	recalculate_move_maps();
+	invalidate_attack_depth_cache();
+	invalidate_avoided_locations_cache();
+	invalidate_defensive_position_cache();
+	invalidate_recent_attacks_list();
+	invalidate_keeps_cache();
+	unit_stats_cache().clear();
+}
+
+
 engine_ptr ai_composite::get_engine(const config& cfg)
 {
 	const std::string& engine_name = cfg["engine"];

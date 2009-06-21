@@ -48,6 +48,9 @@ public:
 	/* execute the action */
 	void execute();
 
+	/* has the game state changed during execution ? */
+	bool is_gamestate_changed() const;
+
 	/* check the return value of the action. mandatory to call. */
 	bool is_ok();
 
@@ -97,6 +100,9 @@ protected:
 
 	/* is error code equal to 0 (no errors)? */
 	bool is_success() const;
+
+	/* note that the game state has been changed */
+	void set_gamestate_changed();
 private:
 
 	/* Check after the execution */
@@ -120,6 +126,8 @@ private:
 	/* are we going to execute the action now ? */
 	bool is_execution_;
 
+	bool is_gamestate_changed_;
+
 };
 
 class attack_result : public action_result {
@@ -128,6 +136,14 @@ public:
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		int attacker_weapon );
+	static const int E_EMPTY_ATTACKER = 1001;
+	static const int E_EMPTY_DEFENDER = 1002;
+	static const int E_INCAPACITATED_ATTACKER = 1003;
+	static const int E_INCAPACITATED_DEFENDER = 1004;
+	static const int E_NOT_OWN_ATTACKER = 1005;
+	static const int E_NOT_ENEMY_DEFENDER = 1006;
+	static const int E_NO_ATTACKS_LEFT = 1007;
+	static const int E_WRONG_ATTACKER_WEAPON = 1008;
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -151,6 +167,7 @@ public:
 	static const int E_NOT_OWN_UNIT = 2003;
 	static const int E_INCAPACITATED_UNIT = 2004;
 	virtual std::string do_describe() const;
+	virtual const map_location& get_unit_location() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();
@@ -163,6 +180,7 @@ private:
 	const map_location& to_;
 	bool remove_movement_;
 	plain_route route_;
+	map_location unit_location_;
 };
 
 class recruit_result : public action_result {

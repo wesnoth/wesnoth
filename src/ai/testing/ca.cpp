@@ -83,7 +83,7 @@ bool recruitment_phase::execute()
 //==============================================================
 
 combat_phase::combat_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::combat_phase",cfg["type"])
+	: candidate_action(context,"testing_ai_default::combat_phase",cfg["type"]),best_analysis_(),choice_rating_(-1000.0)
 {
 }
 
@@ -93,13 +93,86 @@ combat_phase::~combat_phase()
 
 double combat_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
-	return BAD_SCORE;
+	choice_rating_ = -1000.0;
+	int ticks = SDL_GetTicks();
+
+	std::vector<attack_analysis> analysis = analyze_targets(get_srcdst(), get_dstsrc(), get_enemy_srcdst(), get_enemy_dstsrc());
+
+	int time_taken = SDL_GetTicks() - ticks;
+	LOG_AI_TESTING_AI_DEFAULT << "took " << time_taken << " ticks for " << analysis.size()
+		<< " positions. Analyzing...\n";
+
+	ticks = SDL_GetTicks();
+
+	const int max_sims = 50000;
+	int num_sims = analysis.empty() ? 0 : max_sims/analysis.size();
+	if(num_sims < 20)
+		num_sims = 20;
+	if(num_sims > 40)
+		num_sims = 40;
+
+	LOG_AI_TESTING_AI_DEFAULT << "simulations: " << num_sims << "\n";
+
+	const int max_positions = 30000;
+	const int skip_num = analysis.size()/max_positions;
+
+	std::vector<attack_analysis>::iterator choice_it = analysis.end();
+	for(std::vector<attack_analysis>::iterator it = analysis.begin();
+			it != analysis.end(); ++it) {
+
+		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
+			continue;
+
+		const double rating = it->rating(current_team().aggression(),*this);
+		LOG_AI_TESTING_AI_DEFAULT << "attack option rated at " << rating << " ("
+			<< current_team().aggression() << ")\n";
+
+		if(rating > choice_rating_) {
+			choice_it = it;
+			choice_rating_ = rating;
+		}
+	}
+
+	time_taken = SDL_GetTicks() - ticks;
+	LOG_AI_TESTING_AI_DEFAULT << "analysis took " << time_taken << " ticks\n";
+
+
+	// suokko tested the rating against current_team().caution()
+	// Bad mistake -- the AI became extremely reluctant to attack anything.
+	// Documenting this in case someone has this bright idea again...*don't*...
+	if(choice_rating_ > 0.0) {
+		best_analysis_ = *choice_it;
+		return 40;//@todo: externalize
+	} else {
+		return BAD_SCORE;
+	}
 }
 
 bool combat_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
+	assert(choice_rating_ > 0.0);
+	map_location from   = best_analysis_.movements[0].first;
+	map_location to     = best_analysis_.movements[0].second;
+	map_location target_loc = best_analysis_.target;
+
+	if (from!=to) {
+		move_result_ptr move_res = execute_move_action(from,to,false);
+		if (!move_res->is_ok()) {
+			if (!move_res->is_gamestate_changed()) {
+				return false;
+			}
+			return true;
+		}
+	}
+
+	attack_result_ptr attack_res = execute_attack_action(to, target_loc, -1);
+	if (!attack_res->is_ok()) {
+		if (!attack_res->is_gamestate_changed()) {
+			return false;
+		}
+		return true;
+	}
+
 	return true;
 }
 

@@ -165,7 +165,7 @@ private:
 	game_logic::ai_function_symbol_table function_table;
 	game_logic::candidate_action_manager candidate_action_manager_;
 
-	friend class ai_default;
+	friend class ai::ai_default;
 };
 
 #ifdef _MSC_VER

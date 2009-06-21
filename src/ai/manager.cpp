@@ -692,6 +692,7 @@ void manager::play_turn( int side, events::observer* /*event_observer*/ ){
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
 	interface& ai_obj = get_active_ai_for_side(side);
+	ai_obj.new_turn();
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;

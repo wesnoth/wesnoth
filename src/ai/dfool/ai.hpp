@@ -122,6 +122,9 @@ namespace dfool {
 	virtual int get_recursion_count() const{
 		return recursion_counter_.get_count();
 	}
+	virtual void new_turn()
+	{
+	}
   private:
 	recursion_counter recursion_counter_;
     //    std::map<std::string,target> target_map_;

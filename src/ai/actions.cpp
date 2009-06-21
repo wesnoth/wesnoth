@@ -36,8 +36,11 @@
 #include "manager.hpp"
 
 #include "../actions.hpp"
+#include "../dialogs.hpp"
+#include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
+#include "../mouse_handler_base.hpp"
 #include "../pathfind.hpp"
 #include "../replay.hpp"
 #include "../statistics.hpp"
@@ -65,7 +68,7 @@ action_result::action_result( side_number side )
 action_result::~action_result()
 {
 	if (!return_value_checked_) {
-		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " <<  std::endl;
+		ERR_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl;
 	}
 }
 
@@ -99,8 +102,15 @@ void action_result::execute()
 void action_result::init_for_execution()
 {
 	return_value_checked_ = false;
+	is_gamestate_changed_ = false;
 	status_ =  action_result::AI_ACTION_SUCCESS;
 	do_init_for_execution();
+}
+
+
+bool action_result::is_gamestate_changed() const
+{
+	return is_gamestate_changed_;
 }
 
 
@@ -114,6 +124,12 @@ bool action_result::is_ok()
 void action_result::set_error(int error_code){
 	status_ = error_code;
 	ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+}
+
+
+void action_result::set_gamestate_changed()
+{
+	is_gamestate_changed_ = true;
 }
 
 
@@ -167,6 +183,7 @@ attack_result::attack_result( side_number side, const map_location& attacker_loc
 
 void attack_result::do_check_before()
 {
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 }
 
 
@@ -190,6 +207,90 @@ std::string attack_result::do_describe() const
 
 void attack_result::do_execute()
 {
+	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
+	// Stop the user from issuing any commands while the unit is attacking
+	const events::command_disabler disable_commands;
+
+	if(!get_info().units.count(attacker_loc_))
+	{
+		ERR_AI_ACTIONS << "attempt to attack without attacker\n";
+		set_error(E_EMPTY_ATTACKER);
+		return;
+	}
+
+	if (!get_info().units.count(defender_loc_))
+	{
+		ERR_AI_ACTIONS << "attempt to attack without defender\n";
+		set_error(E_EMPTY_DEFENDER);
+		return;
+	}
+
+	if(get_info().units.find(attacker_loc_)->second.incapacitated()) {
+		ERR_AI_ACTIONS << "attempt to attack with unit that is petrified\n";
+		set_error(E_INCAPACITATED_ATTACKER);
+		return;
+	}
+
+	if(get_info().units.find(defender_loc_)->second.incapacitated()) {
+		ERR_AI_ACTIONS << "attempt to attack unit that is petrified\n";
+		set_error(E_INCAPACITATED_DEFENDER);
+		return;
+	}
+
+	if(!get_info().units.find(attacker_loc_)->second.attacks_left()) {
+		ERR_AI_ACTIONS << "attempt to attack with no attacks left\n";
+		set_error(E_NO_ATTACKS_LEFT);
+		return;
+	}
+
+	//CHECK OWN(ATTACKER)
+	//CHECK ENEMY(DEFENDER)
+	//CHECK ATTACKER WEAPON
+
+	battle_context bc(get_info().map, get_info().teams, get_info().units,
+		get_info().state, get_info().tod_manager_, attacker_loc_,
+		defender_loc_, attacker_weapon_, -1, get_my_team(get_info()).aggression());
+
+	int attacker_weapon = bc.get_attacker_stats().attack_num;
+	int defender_weapon = bc.get_defender_stats().attack_num;
+
+	if(attacker_weapon_ >= 0) {
+		recorder.add_attack(attacker_loc_,defender_loc_,attacker_weapon,defender_weapon);
+	}
+	try {
+		attack(get_info().disp, get_info().map, get_info().teams, attacker_loc_,
+			defender_loc_,attacker_weapon,defender_weapon,	get_info().units, 
+			get_info().state, get_info().tod_manager_);
+	}
+	catch (end_level_exception&)
+	{
+		dialogs::advance_unit(get_info().map,get_info().units,attacker_loc_,get_info().disp,true);
+
+		const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
+		if(defender != get_info().units.end()) {
+			const size_t defender_team = size_t(defender->second.side()) - 1;
+			if(defender_team < get_info().teams.size()) {
+				dialogs::advance_unit(get_info().map, get_info().units,
+						defender_loc_, get_info().disp, !get_info().teams[defender_team].is_human());
+			}
+		}
+
+		throw;
+	}
+	dialogs::advance_unit(get_info().map,get_info().units,attacker_loc_,get_info().disp,true);
+
+	const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
+	if(defender != get_info().units.end()) {
+		const size_t defender_team = size_t(defender->second.side()) - 1;
+		if(defender_team < get_info().teams.size()) {
+			dialogs::advance_unit(get_info().map, get_info().units,
+					defender_loc_ , get_info().disp, !get_info().teams[defender_team].is_human());
+		}
+	}
+
+	check_victory(get_info().state,get_info().units,get_info().teams, get_info().disp);
+	manager::raise_enemy_attacked();
+
 }
 
 
@@ -208,6 +309,7 @@ move_result::move_result(side_number side, const map_location& from,
 	, to_(to)
 	, remove_movement_(remove_movement)
 	, route_()
+	, unit_location_(from)
 {
 }
 
@@ -252,7 +354,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 
 void move_result::do_check_before()
 {
-	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
 	const game_info& info = get_info();
 
@@ -280,6 +382,12 @@ void move_result::do_check_before()
 }
 
 
+const map_location& move_result::get_unit_location() const
+{
+	return unit_location_;
+}
+
+
 void move_result::do_check_after()
 {
 }
@@ -303,13 +411,13 @@ std::string move_result::do_describe() const
 
 void move_result::do_execute()
 {
-	DBG_AI_ACTIONS << " execute "<< *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
 
 	game_info& info = get_info();
 
 	move_unit(
-		/*game_display* disp*/ NULL,
+		/*game_display* disp*/ &info.disp,
                 /*const gamemap& map*/ info.map,
                 /*unit_map& units*/ info.units,
 		/*std::vector<team>& teams*/ info.teams,
@@ -317,9 +425,10 @@ void move_result::do_execute()
                 /*replay* move_recorder*/ &recorder,
 		/*undo_list* undo_stack*/ NULL,
                 /*map_location *next_unit*/ NULL,
-		/*bool continue_move*/ false,
+		/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
                 /*bool should_clear_shroud*/ true,
 		/*bool is_replay*/ false);
+	unit_location_ = to_;//@todo: 1.7 modify move_unit to get this info from it
 
 }
 
@@ -412,7 +521,7 @@ bool recruit_result::test_suitable_recruit_location(const gamemap &map, const un
 
 void recruit_result::do_check_before()
 {
-	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
 	const game_info& info = get_info();
 
@@ -518,7 +627,7 @@ std::string recruit_result::do_describe() const
 
 void recruit_result::do_execute()
 {
-	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 	game_info& info = get_info();
 	// We have to add the recruit command now, because when the unit
@@ -581,7 +690,7 @@ const unit *stopunit_result::get_unit(const unit_map &units, bool)
 
 void stopunit_result::do_check_before()
 {
-	DBG_AI_ACTIONS << " check_before " << *this << std::endl;
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
 	const game_info& s_info = get_subjective_info();
 	const game_info& info = get_info();
 
@@ -632,7 +741,7 @@ std::string stopunit_result::do_describe() const
 
 void stopunit_result::do_execute()
 {
-	DBG_AI_ACTIONS << " execute: " << *this << std::endl;
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 	const game_info& info = get_info();
 	unit_map::iterator un = info.units.find(unit_location_);

@@ -64,6 +64,12 @@ std::string idle_ai::describe_self()
 	return "[idle_ai]";
 }
 
+
+void idle_ai::new_turn()
+{
+}
+
+
 void idle_ai::switch_side(side_number side)
 {
 	set_side(side);
@@ -249,8 +255,6 @@ ai_default::ai_default(default_ai_context &context) :
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
-	avoid_(),
-	attack_depth_(0),
 	recruiting_preferred_(0),
 	formula_ai_()
 {
@@ -268,6 +272,8 @@ void ai_default::switch_side(side_number side){
 
 void ai_default::new_turn()
 {
+	invalidate_attack_depth_cache();
+	invalidate_avoided_locations_cache();
 	invalidate_defensive_position_cache();
 	invalidate_recent_attacks_list();
 	threats_found_ = false;
@@ -277,13 +283,10 @@ void ai_default::new_turn()
 	not_recommended_units_.clear();
 	unit_combat_scores_.clear();
 	invalidate_keeps_cache();
-	avoid_.clear();
 	unit_stats_cache().clear();
-	attack_depth_ = 0;
 	if (formula_ai_ != NULL){
 		formula_ai_->new_turn();
 	}
-	interface::new_turn();
 }
 
 std::string ai_default::describe_self(){
@@ -1753,36 +1756,6 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 	}
 }
 
-int ai_default::rate_terrain(const unit& u, const map_location& loc)
-{
-	const t_translation::t_terrain terrain = map_.get_terrain(loc);
-	const int defense = u.defense_modifier(terrain);
-	int rating = 100 - defense;
-
-	const int healing_value = 10;
-	const int friendly_village_value = 5;
-	const int neutral_village_value = 10;
-	const int enemy_village_value = 15;
-
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerates",loc) == false) {
-		rating += healing_value;
-	}
-
-	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc, teams_) + 1;
-
-		if(owner == get_side()) {
-			rating += friendly_village_value;
-		} else if(owner == 0) {
-			rating += neutral_village_value;
-		} else {
-			rating += enemy_village_value;
-		}
-	}
-
-	return rating;
-}
-
 
 bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) const
 {
@@ -1797,34 +1770,6 @@ bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) cons
 	return dstsrc.count(loc) > 0;
 }
 
-const std::set<map_location>& ai_default::avoided_locations()
-{
-	if(avoid_.empty()) {
-		foreach (const config &av, current_team().ai_parameters().child_range("avoid"))
-		{
-			foreach (const location &loc, parse_location_range(av["x"], av["y"])) {
-				avoid_.insert(loc);
-			}
-		}
-
-		if(avoid_.empty()) {
-			avoid_.insert(location());
-		}
-	}
-
-	return avoid_;
-}
-
-int ai_default::attack_depth()
-{
-	if(attack_depth_ > 0) {
-		return attack_depth_;
-	}
-
-	const config& parms = current_team().ai_parameters();
-	attack_depth_ = std::max<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
-	return attack_depth_;
-}
 
 variant ai_default::get_value(const std::string& key) const
 {

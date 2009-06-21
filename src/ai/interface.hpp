@@ -47,10 +47,8 @@ public:
 
 	/**
 	 * Function called when a a new turn is played
-	 * Derived AIs should call this function each turn (expect first)
 	 */
-	virtual void new_turn() {
-	}
+	virtual void new_turn() = 0;
 
 	/**
 	 * Function called after the new ai is created

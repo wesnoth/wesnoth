@@ -65,6 +65,11 @@ public:
 
 
 	/**
+	 * On new turn
+	 */
+	virtual void new_turn();
+
+	/**
 	 * get engine by cfg, creating it if it is not created yet but known
 	 */
 	virtual engine_ptr get_engine(const config& cfg);
