@@ -58,31 +58,6 @@ void tcontrol::set_members(const string_map& data)
 	}
 }
 
-void tcontrol::set_block_easy_close(const bool block)
-{
-	twindow* window = get_window();
-	if(!window) {
-		/*
-		 * This can happen in a listbox when the row data is manipulated before
-		 * the listbox is finalized. In that case that widget should do set the
-		 * state in its finalizer.
-		 */
-		DBG_GUI_G << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
-			"No window set, this might be a bug.\n";
-		return;
-	}
-
-	if(block) {
-		if(id().empty()) {
-			set_id(get_uid());
-		}
-		window->add_easy_close_blocker(id());
-	} else if(!id().empty()) {
-		// It might never have been enabled so the id might be empty.
-		window->remove_easy_close_blocker(id());
-	}
-}
-
 bool tcontrol::disable_easy_close() const
 {
 	return get_visible() == twidget::VISIBLE && get_active();

@@ -128,9 +128,6 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tcontrol. */
-	bool does_block_easy_close() const { return true; }
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_item_count(const unsigned item_count)

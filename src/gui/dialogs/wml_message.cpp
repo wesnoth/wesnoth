@@ -211,7 +211,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 		button->set_visible(twidget::INVISIBLE);
 		window.NEW_layout();
 
-		if(! window.does_easy_close()) {
+		if(window.disable_easy_close()) {
 			button->set_visible(twidget::VISIBLE);
 		}
 	}

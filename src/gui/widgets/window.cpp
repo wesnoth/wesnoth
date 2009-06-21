@@ -232,7 +232,6 @@ twindow::twindow(CVideo& video,
 	, w_(w)
 	, h_(h)
 	, easy_close_(false)
-	, easy_close_blocker_()
 	, easy_close_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
@@ -614,21 +613,6 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		handled = true;
 	}
 #endif
-}
-
-void twindow::add_easy_close_blocker(const std::string& id)
-{
-	// avoid duplicates.
-	remove_easy_close_blocker(id);
-
-	easy_close_blocker_.push_back(id);
-}
-
-void twindow::remove_easy_close_blocker(const std::string& id)
-{
-	easy_close_blocker_.erase(
-		std::remove(easy_close_blocker_.begin(), easy_close_blocker_.end(), id),
-		easy_close_blocker_.end());
 }
 
 void twindow::init_linked_size_group(const std::string& id,

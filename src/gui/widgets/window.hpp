@@ -256,7 +256,7 @@ public:
 	 * @returns                   Whether or not the window closes easily.
 	 */
 	bool does_easy_close() const
-		{ return easy_close_ && easy_close_blocker_.empty() && !easy_close_disabled_; }
+		{ return easy_close_ && !easy_close_disabled_; }
 
 	/**
 	 * Disable the escape key.
@@ -401,16 +401,12 @@ private:
 	/**
 	 * Do we want to have easy close behaviour?
 	 *
-	 * Easy closing means that whenever a mouse click is done the dialog will be
-	 * closed. The widgets in the window may override this behaviour by
-	 * registering themselves as blockers. These items will be stored in
-	 * easy_close_blocker_. So in order to do an easy close the boolean needs to
-	 * be true and the vector empty.
+	 * Easy closing means that whenever a mouse click is done the dialog will
+	 * be closed. The widgets in the window may override this behaviour by
+	 * registering themselves as blockers. This is tested by the function
+	 * disable_easy_close().
 	 */
 	bool easy_close_;
-
-	/** The list with items which prevent the easy close behaviour. */
-	std::vector<std::string> easy_close_blocker_;
 
 	/** 
 	 * Hold the state of the easy close disable state.

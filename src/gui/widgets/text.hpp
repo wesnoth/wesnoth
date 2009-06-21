@@ -75,9 +75,6 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tcontrol. */
-	bool does_block_easy_close() const { return true; }
-
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
 	void set_maximum_length(const size_t maximum_length);

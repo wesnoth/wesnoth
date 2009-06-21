@@ -140,9 +140,6 @@ public:
 			const std::string& id, const bool must_be_active) const;
 
 	/** Inherited from tcontainer_. */
-	bool does_block_easy_close() const;
-
-	/** Inherited from tcontainer_. */
 	bool disable_easy_close() const;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

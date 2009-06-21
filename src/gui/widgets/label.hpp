@@ -45,9 +45,6 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tcontrol. */
-	bool does_block_easy_close() const { return false; }
-
-	/** Inherited from tcontrol. */
 	bool disable_easy_close() const { return false; }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

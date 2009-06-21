@@ -327,10 +327,6 @@ void tscrollbar_container::
 	// Update the buttons.
 	set_scrollbar_button_status();
 
-	// Set the easy close status.
-	set_block_easy_close(get_visible() == twidget::VISIBLE
-			&& get_active() && does_block_easy_close());
-
 	// Now set the visible part of the content.
 	content_visible_area_ = content_->get_rect();
 	content_grid_->set_visible_area(content_visible_area_);
@@ -445,26 +441,6 @@ const twidget* tscrollbar_container::find_widget(
 			::find_widget<const twidget>(*this, id, must_be_active);
 }
 
-bool tscrollbar_container::does_block_easy_close() const
-{
-	assert(vertical_scrollbar_grid_
-			&& vertical_scrollbar_
-			&& horizontal_scrollbar_grid_
-			&& horizontal_scrollbar_);
-
-	const bool vertical_block =
-			vertical_scrollbar_grid_->get_visible() == twidget::VISIBLE
-			&& !(vertical_scrollbar_->at_begin()
-					&& vertical_scrollbar_->at_end());
-
-	const bool horizontal_block =
-			horizontal_scrollbar_grid_->get_visible() == twidget::VISIBLE
-			&& !(horizontal_scrollbar_->at_begin()
-					&& horizontal_scrollbar_->at_end());
-
-	return vertical_block || horizontal_block;
-}
-
 bool tscrollbar_container::disable_easy_close() const
 {
 	assert(content_grid_);
@@ -549,10 +525,6 @@ void tscrollbar_container::finalize_setup()
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);
-
-	/***** Set the easy close status. *****/
-	set_block_easy_close(get_visible() == twidget::VISIBLE
-			&& get_active() && does_block_easy_close());
 
 	/***** Let our subclasses initialize themselves. *****/
 	finalize_subclass();

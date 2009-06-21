@@ -199,7 +199,6 @@ void tscrollbar_::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_block_easy_close(get_visible() && get_active());
 		set_dirty(true);
 	}
 }

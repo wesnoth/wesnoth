@@ -108,7 +108,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 */
 		window.NEW_layout();
 
-		if(! window.does_easy_close()) {
+		if(window.disable_easy_close()) {
 			set_button_visible(ok, twidget::VISIBLE);
 		}
 	}

@@ -76,16 +76,6 @@ void tgrid::set_child(twidget* widget, const unsigned row,
 	if(cell.widget()) {
 		// make sure the new child is valid before deferring
 		cell.widget()->set_parent(this);
-
-		// Init the easy close state here, normally when put in a grid the grid
-		// does have a parent window.
-		tcontrol* control = dynamic_cast<tcontrol*>(cell.widget());
-		if(control) {
-			control->set_block_easy_close(
-					control->get_visible()
-					&& control->get_active()
-					&& control->does_block_easy_close());
-		}
 	}
 }
 

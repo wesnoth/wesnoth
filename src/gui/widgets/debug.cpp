@@ -320,7 +320,7 @@ void tdebug_layout_graph::widget_generate_state_info(
 			<< control->get_use_tooltip_on_label_overflow() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "does block easy close=" << control->does_block_easy_close() << '\n'
+		<< "does block easy close=" << control->disable_easy_close() << '\n'
 		<< "</td></tr>\n";
 
 	const tscrollbar_container* scrollbar_container =
