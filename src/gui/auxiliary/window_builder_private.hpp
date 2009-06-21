@@ -210,41 +210,6 @@ public:
 	tbuilder_grid_ptr grid;
 };
 
-// copy & paste from tbuilder_text_box...
-// does it make more sense to inherit from it?
-struct tbuilder_password_box : public implementation::tbuilder_control
-{
-private:
-	tbuilder_password_box();
-	std::string history_;
-
-public:
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_password_box
- *
- * == Password box ==
- *
- * @start_table = config
- *     label (tstring = "")            The initial text of the text box.
- *     history (string = "")           The name of the history for the text box.
- *                                     A history saves the data entered in a
- *                                     text box between the games. With the up
- *                                     and down arrow it can be accessed. To
- *                                     create a new history item just add a new
- *                                     unique name for this field and the engine
- *                                     will handle the rest.
- * @end_table
- *
- */
-	tbuilder_password_box(const config& cfg) :
-		implementation::tbuilder_control(cfg),
-		history_(cfg["history"])
-	{}
-
-	twidget* build () const;
-};
-
 struct tbuilder_toggle_button : public implementation::tbuilder_control
 {
 private:

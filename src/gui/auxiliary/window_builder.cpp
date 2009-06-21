@@ -27,6 +27,7 @@
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
+#include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -1115,25 +1116,6 @@ twidget* tbuilder_toggle_panel::build() const
 	}
 
 	return toggle_panel;
-}
-
-twidget* tbuilder_password_box::build() const
-{
-	tpassword_box* password_box = new tpassword_box();
-
-	init_control(password_box);
-
-	// A textbox doesn't have a label but a text
-	password_box->set_value(label);
-
-	if (!history_.empty()) {
-		password_box->set_history(history_);
-	}
-
-	DBG_GUI_G << "Window builder: placed password box '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return password_box;
 }
 
 twidget* tbuilder_vertical_scrollbar::build() const
