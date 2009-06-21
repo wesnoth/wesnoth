@@ -314,7 +314,7 @@ class PieGraphController(object):
 	@expose(template="wesstats.templates.pieview")
 	def default(self,**kw):
 		#pull data on this view from DB
-		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME)
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
 		
 		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
@@ -328,6 +328,7 @@ class PieGraphController(object):
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
+			print raw_fdata
 			for i in raw_fdata:
 				fdata[filter].append(i[0])
 		#print fdata
