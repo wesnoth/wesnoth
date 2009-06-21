@@ -210,43 +210,6 @@ public:
 	tbuilder_grid_ptr grid;
 };
 
-struct tbuilder_spacer : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_spacer();
-public:
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_spacer
- *
- * == Spacer ==
- *
- * A spacer is a dummy item to either fill in a widget since no empty items are
- * allowed or to reserve a fixed space. If either the width or the height is not
- * zero the spacer functions as a fixed size spacer.
- *
- * @start_table = config
- *     width (f_unsigned = 0)          The width of the spacer.
- *     height (f_unsigned = 0)         The height of the spacer.
- * @end_table
- *
- * The variable available are the same as for the window resolution see
- * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
- * items.
- */
-	tbuilder_spacer(const config& cfg) :
-		implementation::tbuilder_control(cfg),
-		width_(cfg["width"]),
-		height_(cfg["height"])
-	{}
-
-	twidget* build () const;
-
-private:
-	tformula<unsigned> width_;
-	tformula<unsigned> height_;
-};
 
 struct tbuilder_text_box : public implementation::tbuilder_control
 {

@@ -25,6 +25,7 @@
 #include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
+#include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -1028,26 +1029,6 @@ twidget* tbuilder_slider::build() const
 		<< definition << "'.\n";
 
 	return slider;
-}
-
-twidget* tbuilder_spacer::build() const
-{
-	tspacer* spacer = new tspacer();
-
-	init_control(spacer);
-
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
-	const unsigned width = width_(size);
-	const unsigned height = height_(size);
-
-	if(width || height) {
-		spacer->set_best_size(tpoint(width, height));
-	}
-
-	DBG_GUI_G << "Window builder: placed spacer '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return spacer;
 }
 
 twidget* tbuilder_toggle_button::build() const
