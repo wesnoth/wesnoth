@@ -129,7 +129,11 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
+private:
 
+	map_location from_;
+
+	map_location to_;
 };
 
 //============================================================================

@@ -290,7 +290,7 @@ void attack_result::do_execute()
 
 	check_victory(get_info().state,get_info().units,get_info().teams, get_info().disp);
 	manager::raise_enemy_attacked();
-
+	set_gamestate_changed();
 }
 
 
@@ -429,6 +429,7 @@ void move_result::do_execute()
                 /*bool should_clear_shroud*/ true,
 		/*bool is_replay*/ false);
 	unit_location_ = to_;//@todo: 1.7 modify move_unit to get this info from it
+	set_gamestate_changed();
 
 }
 
@@ -646,6 +647,7 @@ void recruit_result::do_execute()
 		get_my_team(info).spend_gold(u->second.cost());
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
+		set_gamestate_changed();
 		manager::raise_unit_recruited();
 	} else {
 		set_error(AI_ACTION_FAILURE);
@@ -747,9 +749,11 @@ void stopunit_result::do_execute()
 	unit_map::iterator un = info.units.find(unit_location_);
 	if (remove_movement_){
 		un->second.set_movement(0);
+		set_gamestate_changed();
 	}
 	if (remove_attacks_){
 		un->second.set_attacks(0);
+		set_gamestate_changed();
 	}
 }
 

@@ -225,7 +225,7 @@ bool get_villages_phase::execute()
 //==============================================================
 
 get_healing_phase::get_healing_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::get_healing_phase",cfg["type"])
+	: candidate_action(context,"testing_ai_default::get_healing_phase",cfg["type"]),from_(),to_()
 {
 }
 
@@ -235,13 +235,77 @@ get_healing_phase::~get_healing_phase()
 
 double get_healing_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
+	// Find units in need of healing.
+	unit_map &units_ = get_info().units;
+	unit_map::iterator u_it = units_.begin();
+	for(; u_it != units_.end(); ++u_it) {
+		unit& u = u_it->second;
+
+		// If the unit is on our side, has lost as many or more than
+		// 1/2 round worth of healing, and doesn't regenerate itself,
+		// then try to find a vacant village for it to rest in.
+		if(u.side() == get_side() &&
+		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
+		   || u.get_state(unit::STATE_POISONED)) &&
+		    !u.get_ability_bool("regenerate"))
+		{
+			// Look for the village which is the least vulnerable to enemy attack.
+			typedef std::multimap<map_location,map_location>::const_iterator Itor;
+			std::pair<Itor,Itor> it = get_srcdst().equal_range(u_it->first);
+			double best_vulnerability = 100000.0;
+			// Make leader units more unlikely to move to vulnerable villages
+			const double leader_penalty = (u.can_recruit()?2.0:1.0);
+			Itor best_loc = it.second;
+			while(it.first != it.second) {
+				const map_location& dst = it.first->second;
+				if(get_info().map.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
+					const double vuln = power_projection(it.first->first, get_enemy_dstsrc());
+					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
+					if(vuln < best_vulnerability) {
+						best_vulnerability = vuln;
+						best_loc = it.first;
+						DBG_AI_TESTING_AI_DEFAULT << "chose village " << dst << '\n';
+					}
+				}
+
+				++it.first;
+			}
+
+			// If we have found an eligible village,
+			// and we can move there without expecting to get whacked next turn:
+			if(best_loc != it.second && best_vulnerability*leader_penalty < u.hitpoints()) {
+				from_ = best_loc->first;
+				to_ = best_loc->second;
+				return 30; //@todo: externalize
+			}
+		}
+	}
+
 	return BAD_SCORE;
 }
 
 bool get_healing_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
+	if (from_==to_){
+		stopunit_result_ptr stop_res = execute_stopunit_action(from_,true,false);
+		if (!stop_res->is_ok()) {
+			if (!stop_res->is_gamestate_changed()) {
+				return false;
+			}
+			return true;
+		}
+
+		return true;
+	}
+
+	LOG_AI_TESTING_AI_DEFAULT << "moving unit to village for healing...\n";
+	move_result_ptr move_res = execute_move_action(from_,to_,true);
+	if (!move_res->is_ok()) {
+		if (!move_res->is_gamestate_changed()) {
+			return false;
+		}
+		return true;
+	}
 	return true;
 }
 
