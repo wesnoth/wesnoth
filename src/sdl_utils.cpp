@@ -1060,6 +1060,7 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 	}
 
 	assert((surf->flags & SDL_RLEACCEL) == 0);
+	assert(surf->format->BitsPerPixel == 32);
 
 	const unsigned max_blur = 256;
 	if(depth > max_blur) {

@@ -242,7 +242,8 @@ surface blur_surface(surface const &surf, int depth = 1, bool optimize=true);
 /**
  * Cross-fades a surface in place.
  *
- * @param surf                    The surface to blur, must be not optimized.
+ * @param surf                    The surface to blur, must be not optimized
+ *                                and have 32 bits per pixel.
  * @param rect                    The part of the surface to blur.
  * @param depth                   The depth of the blurring.
  */
