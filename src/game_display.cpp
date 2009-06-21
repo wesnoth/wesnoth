@@ -1045,12 +1045,16 @@ void game_display::send_notification(const std::string& owner, const std::string
 		}
 	}
 
-	Notify::init("Wesnoth");
+	try {
+		Notify::init("Wesnoth");
 
-	// I tried to use the fancy Gtk::IconTheme stuff but it didn't seem worth it. -- method
-	Glib::ustring wesnoth_icon_info =  game_config::path + "images/wesnoth-icon-small.png";
-	Notify::Notification notification(owner, message, wesnoth_icon_info);
-	notification.show();
+		// I tried to use the fancy Gtk::IconTheme stuff but it didn't seem worth it. -- method
+		Glib::ustring wesnoth_icon_info =  game_config::path + "images/wesnoth-icon-small.png";
+		Notify::Notification notification(owner, message, wesnoth_icon_info);
+		notification.show();
+	} catch(const Glib::Error& error) {
+		ERR_DP << "Failed to send libnotify notification: " << error.what() << "\n";
+	}
 }
 #else
 void game_display::send_notification(const std::string&, const std::string&) {}
