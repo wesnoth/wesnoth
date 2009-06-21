@@ -1029,10 +1029,9 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
+#ifdef HAVE_LIBNOTIFY
 void game_display::send_notification(const std::string& owner, const std::string& message)
 {
-#ifdef HAVE_LIBNOTIFY
-
 	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
 	Uint8 app_state = SDL_GetAppState();
 
@@ -1052,8 +1051,10 @@ void game_display::send_notification(const std::string& owner, const std::string
 	Glib::ustring wesnoth_icon_info =  game_config::path + "images/wesnoth-icon-small.png";
 	Notify::Notification notification(owner, message, wesnoth_icon_info);
 	notification.show();
-#endif
 }
+#else
+void game_display::send_notification(const std::string&, const std::string&) {}
+#endif
 
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
