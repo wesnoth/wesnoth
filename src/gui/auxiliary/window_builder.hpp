@@ -76,10 +76,6 @@ public:
 
 	twidget* build() const;
 	twidget* build(tgrid* grid) const;
-
-private:
-	/** After reading the general part in the constructor read extra data. */
-	void read_extra(const config& cfg);
 };
 
 typedef boost::intrusive_ptr<tbuilder_grid> tbuilder_grid_ptr;
