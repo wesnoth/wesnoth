@@ -163,6 +163,13 @@ void game::start_game(const player_map::const_iterator starter) {
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		nsides_++;
 		if ((**s)["controller"] != "null") {
+			int side_num = (**s)["side"].to_int() - 1;
+			if (sides_[side_num] == 0) {
+				std::stringstream msg;
+				msg << "Side "  << side_num + 1 << " has no controller but should! The host needs to assign control for the game to proceed past that side's turn.";
+				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
+				send_and_record_server_message(msg.str().c_str());
+			}
 			(*s)->set_attr("controller", "human");
 		}
 	}
