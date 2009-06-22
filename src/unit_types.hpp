@@ -79,7 +79,6 @@ public:
 	mutable bool attacker_;
 	mutable const unit_map* unitmap_;
 	mutable const gamemap* map_;
-	mutable const gamestatus* game_status_;
 	mutable const tod_manager* tod_manager_;
 	mutable const std::vector<team>* teams_;
 	mutable const attack_type* other_attack_;

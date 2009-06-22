@@ -681,7 +681,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		}
 	}
 
-	assert(map_ && game_status_ && teams_ && tod_manager_);
+	assert(map_ && teams_ && tod_manager_);
 	foreach (const config &i, cfg.child_range("filter_adjacent_location"))
 	{
 		foreach (const std::string &j, utils::split(i["adjacent"]))
@@ -749,7 +749,6 @@ void attack_type::set_specials_context(const map_location& aloc,const map_locati
 	dloc_ = dloc;
 	unitmap_ = unitmap;
 	map_ = map;
-	game_status_ = game_status;
 	tod_manager_ = tod_mng;
 	teams_ = teams;
 	attacker_ = attacker;
@@ -762,7 +761,6 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	dloc_ = dloc;
 	unitmap_ = un.units_;
 	map_ = un.map_;
-	game_status_ = un.gamestatus_;
 	tod_manager_ = un.tod_manager_;
 	teams_ = un.teams_;
 	attacker_ = attacker;

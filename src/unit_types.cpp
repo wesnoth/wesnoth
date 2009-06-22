@@ -45,7 +45,6 @@ attack_type::attack_type(const config& cfg) :
 	attacker_(false),
 	unitmap_(NULL),
 	map_(NULL),
-	game_status_(NULL),
 	tod_manager_(NULL),
 	teams_(NULL),
 	other_attack_(NULL),
