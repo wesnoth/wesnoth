@@ -58,7 +58,7 @@ class menu_handler : private chat_handler {
 public:
 	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const gamemap& map,
-		const config& game_config, const gamestatus& status, const tod_manager& tod_mng, game_state& gamestate,
+		const config& game_config, const tod_manager& tod_mng, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack);
 	virtual ~menu_handler();
 
@@ -143,7 +143,6 @@ private:
 	const config& level_;
 	const gamemap& map_;
 	const config& game_config_;
-	const gamestatus& status_;
 	const tod_manager& tod_manager_;
 	game_state& gamestate_;
 

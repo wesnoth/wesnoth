@@ -33,7 +33,7 @@ namespace events{
 class mouse_handler : public mouse_handler_base {
 public:
 	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-		gamestatus& status, tod_manager& tod_mng, undo_list& undo_stack, undo_list& redo_stack);
+		tod_manager& tod_mng, undo_list& undo_stack, undo_list& redo_stack);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -94,7 +94,6 @@ private:
 	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;
-	gamestatus& status_;
 	tod_manager& tod_manager_;
 	undo_list& undo_stack_;
 	undo_list& redo_stack_;

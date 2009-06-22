@@ -36,14 +36,13 @@ namespace events{
 
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
-		unit_map& units, gamemap& map, gamestatus& status, tod_manager& tod_mng,
+		unit_map& units, gamemap& map, tod_manager& tod_mng,
 		undo_list& undo_stack, undo_list& redo_stack) :
 	mouse_handler_base(),
 	map_(map),
 	gui_(gui),
 	teams_(teams),
 	units_(units),
-	status_(status),
 	tod_manager_(tod_mng),
 	undo_stack_(undo_stack),
 	redo_stack_(redo_stack),
@@ -636,7 +635,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	gui().highlight_hex(map_location());
 	gui().draw(true,true);
 
-	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, status_, tod_manager_, attacker_loc, defender_loc);
+	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, tod_manager_, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 

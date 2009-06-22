@@ -112,7 +112,7 @@ namespace events{
 
 	menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 			const config& level, const gamemap& map,
-			const config& game_config, const gamestatus& status, const tod_manager& tod_mng, game_state& gamestate,
+			const config& game_config, const tod_manager& tod_mng, game_state& gamestate,
 			undo_list& undo_stack, undo_list& redo_stack) :
 		gui_(gui),
 		units_(units),
@@ -120,7 +120,6 @@ namespace events{
 		level_(level),
 		map_(map),
 		game_config_(game_config),
-		status_(status),
 		tod_manager_(tod_mng),
 		gamestate_(gamestate),
 		undo_stack_(undo_stack),

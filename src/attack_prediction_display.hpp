@@ -31,7 +31,7 @@ public:
 	// Lengthy constructor.
 	battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
 						   const std::vector<team>& teams, const unit_map& units,
-						   const gamestatus& status, const tod_manager& tod_mng,
+						   const tod_manager& tod_mng,
 						   const map_location& attacker_loc, const map_location& defender_loc);
 
 	// This method is called to draw the dialog contents.
@@ -49,7 +49,6 @@ private:
 	const gamemap& map_;
 	const std::vector<team>& teams_;
 	const unit_map& units_;
-	const gamestatus& status_;
 	const tod_manager& tod_manager_;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
@@ -132,9 +131,9 @@ class attack_prediction_displayer : public gui::dialog_button_action
 public:
 	attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
 							    const std::vector<team>& teams, const unit_map& units,
-							    const gamestatus& status, const tod_manager& tod_mng,
+							    const tod_manager& tod_mng,
 								const map_location& attacker_loc, const map_location& defender_loc)
-			: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status), tod_manager_(tod_mng),
+			: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), tod_manager_(tod_mng),
 			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
 	// This method is called when the button is pressed.
 	RESULT button_pressed(int selection);
@@ -145,7 +144,6 @@ private:
 	const gamemap& map_;
 	const std::vector<team>& teams_;
 	const unit_map& units_;
-	const gamestatus& status_;
 	const tod_manager& tod_manager_;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;

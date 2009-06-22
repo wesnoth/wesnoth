@@ -46,7 +46,7 @@ const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 battle_prediction_pane::battle_prediction_pane(display &disp,
 		const battle_context& bc, const gamemap& map, const
 		std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status, const tod_manager& tod_mng, const map_location& attacker_loc,
+		const tod_manager& tod_mng, const map_location& attacker_loc,
 		const map_location& defender_loc) :
 	gui::preview_pane(disp.video()),
 	disp_(disp),
@@ -54,7 +54,6 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 	map_(map),
 	teams_(teams),
 	units_(units),
-	status_(status),
 	tod_manager_(tod_mng),
 	attacker_loc_(attacker_loc),
 	defender_loc_(defender_loc),
@@ -547,7 +546,7 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 	const size_t index = size_t(selection);
 
 	if(index < bc_vector_.size()) {
-		battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_, tod_manager_,
+		battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, tod_manager_,
 										   attacker_loc_, defender_loc_);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
