@@ -248,7 +248,6 @@ ai_default::ai_default(default_ai_context &context) :
 	map_(context.get_info().map),
 	units_(context.get_info().units),
 	teams_(context.get_info().teams),
-	state_(context.get_info().state),
 	tod_manager_(context.get_info().tod_manager_),
 	consider_combat_(true),
 	additional_targets_(),

@@ -74,7 +74,7 @@ static lg::log_domain log_ai("ai/dfool");
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
 
-	unit_memory_.add_unit_sighting(u->second, u->first, get_info().state.turn());
+	unit_memory_.add_unit_sighting(u->second, u->first, get_info().tod_manager_.turn());
       }
     }
 
@@ -250,7 +250,7 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	move_map srcdst, dstsrc;
 	unit_map known_units;
 
-	//	unit_memory_.known_map(known_units, get_info().state.turn());
+	//	unit_memory_.known_map(known_units, get_info().tod_manager_.turn());
 	unit_memory_.known_map(known_units, 0);
 
 	LOG_AI << "known units:\n";

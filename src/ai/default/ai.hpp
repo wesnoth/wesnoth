@@ -186,7 +186,6 @@ protected:
 	gamemap& map_;
 	unit_map& units_;
 	std::vector<team>& teams_;
-	gamestatus& state_;
 	tod_manager& tod_manager_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;

@@ -444,7 +444,7 @@ void default_ai_context_impl::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, teams_, get_info().state, get_info().tod_manager_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
+			cur_analysis.analyze(map_, units_, teams_, get_info().tod_manager_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
 			//This logic to sometimes not add the attack because it doesn't
 			//rate high enough seems to remove attacks from consideration

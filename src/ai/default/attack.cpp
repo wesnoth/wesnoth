@@ -34,7 +34,7 @@ namespace ai {
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
-								  const gamestatus& status,  const tod_manager& tod_mng,
+								  const tod_manager& tod_mng,
 								  class default_ai_context& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)

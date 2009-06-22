@@ -78,7 +78,7 @@ idle_stage::~idle_stage()
 }
 
 void idle_stage::do_play_stage(){
-	LOG_AI_COMPOSITE_STAGE << "Turn " << get_info().state.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
+	LOG_AI_COMPOSITE_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
 }
 
 } //end of namespace composite_ai
