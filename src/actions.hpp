@@ -181,7 +181,6 @@ class attack {
             int attack_with,
             int defend_with,
             unit_map& units,
-            const gamestatus& state,
 			const tod_manager& tod_mng,
 			bool update_display = true);
 		~attack();
@@ -219,7 +218,6 @@ class attack {
 
 		unit_info a_, d_;
 		unit_map& units_;
-		const gamestatus& state_;
 		const tod_manager& tod_manager_;
 		std::stringstream errbuf_;
 

@@ -676,7 +676,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(gui(),map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_, tod_manager_);
+			attack(gui(),map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,tod_manager_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance

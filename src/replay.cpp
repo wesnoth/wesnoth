@@ -1116,7 +1116,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, controller.get_tod_manager(), !get_replay_source().is_skipping()));
+			DELAY_END_LEVEL(delayed_exception, attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, controller.get_tod_manager(), !get_replay_source().is_skipping()));
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 

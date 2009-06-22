@@ -260,7 +260,7 @@ void attack_result::do_execute()
 	try {
 		attack(get_info().disp, get_info().map, get_info().teams, attacker_loc_,
 			defender_loc_,attacker_weapon,defender_weapon,	get_info().units, 
-			get_info().state, get_info().tod_manager_);
+			get_info().tod_manager_);
 	}
 	catch (end_level_exception&)
 	{
