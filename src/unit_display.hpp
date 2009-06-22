@@ -78,7 +78,7 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
  * this is used for the animate_unit action, but can easily be generalized if other wml-decribed animations are needed
  *
  */
-void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const gamestatus& game_status, const std::vector<team>* teams, const tod_manager& tod_mng, const map_location& default_location  = map_location::null_location);
+void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const std::vector<team>* teams, const tod_manager& tod_mng, const map_location& default_location  = map_location::null_location);
 
 }
 

@@ -126,7 +126,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			try{
 				turn_end = do_replay(gui_, map_, units_, teams_,
-						team_num_, status_, tod_manager_, state_of_game_, controller_, &replay_obj);
+						team_num_, tod_manager_, state_of_game_, controller_, &replay_obj);
 			}
 			catch (replay::error& e){
 				//notify remote hosts of out of sync error

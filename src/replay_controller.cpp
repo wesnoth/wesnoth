@@ -339,7 +339,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 				DBG_REPLAY << "doing replay " << player_number_ << "\n";
 				try {
 					::do_replay(*gui_, map_, units_, teams_,
-							player_number_, status_, tod_manager_, gamestate_, *this);
+							player_number_, tod_manager_, gamestate_, *this);
 				} catch(replay::error&) {
 					if(!continue_replay()) {
 						throw;

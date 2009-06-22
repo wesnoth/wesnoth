@@ -738,7 +738,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 
 bool do_replay(game_display& disp, const gamemap& map,
 	unit_map& units, std::vector<team>& teams, int team_num,
-	const gamestatus& state, const tod_manager& tod_mng, game_state& state_of_game, play_controller& controller, replay* obj)
+	const tod_manager& tod_mng, game_state& state_of_game, play_controller& controller, replay* obj)
 {
 	log_scope("do replay");
 
@@ -753,13 +753,13 @@ bool do_replay(game_display& disp, const gamemap& map,
 	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
-	return do_replay_handle(disp, map, units, teams, team_num, state, tod_mng, state_of_game, controller,
+	return do_replay_handle(disp, map, units, teams, team_num, tod_mng, state_of_game, controller,
 						   std::string(""));
 }
 
 bool do_replay_handle(game_display& disp, const gamemap& map,
 					  unit_map& units, std::vector<team>& teams, int team_num,
-					  const gamestatus& state, const tod_manager& tod_mng, game_state& state_of_game, play_controller& controller,
+					  const tod_manager& tod_mng, game_state& state_of_game, play_controller& controller,
 					  const std::string& do_untill)
 {
 	//a list of units that have promoted from the last attack
