@@ -583,7 +583,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	for (i = 0; i < attacker->second.attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->second.attacks()[i].attack_weight() > 0) {
-			battle_context bc(map_, teams_, units_, status_, tod_manager_, attacker->first, defender->first, i);
+			battle_context bc(map_, teams_, units_, tod_manager_, attacker->first, defender->first, i);
 			bc_vector.push_back(bc);
 			if (bc.better_attack(bc_vector[best], 0.5)) {
 				best = i;

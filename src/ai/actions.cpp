@@ -248,7 +248,7 @@ void attack_result::do_execute()
 	//CHECK ATTACKER WEAPON
 
 	battle_context bc(get_info().map, get_info().teams, get_info().units,
-		get_info().state, get_info().tod_manager_, attacker_loc_,
+		get_info().tod_manager_, attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, get_my_team(get_info()).aggression());
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;

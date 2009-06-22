@@ -264,7 +264,7 @@ map_location under_leadership(const unit_map& units,
 }
 
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status, const tod_manager& tod_mng,
+		const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 : attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
@@ -278,11 +278,11 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 
 	if (attacker_weapon == -1) {
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
-				status, tod_mng, attacker_loc, defender_loc,
+				tod_mng, attacker_loc, defender_loc,
 				harm_weight, &defender_weapon, prev_def);
 	} else if (defender_weapon == -1) {
 		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
-				units, status, tod_mng, attacker_loc, defender_loc, prev_def);
+				units, tod_mng, attacker_loc, defender_loc, prev_def);
 	}
 
 	// If those didn't have to generate statistics, do so now.
@@ -348,7 +348,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 /** @todo FIXME: Hand previous defender unit in here. */
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status, const tod_manager& tod_mng,
+		const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		const combatant *prev_def)
 {
@@ -444,7 +444,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 
 int battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
 		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const gamestatus& status, const tod_manager& tod_mng,
+		const tod_manager& tod_mng,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		double harm_weight, int *defender_weapon, const combatant *prev_def)
 {
@@ -462,7 +462,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
-				status, tod_mng, attacker_loc, defender_loc, prev_def);
+				tod_mng, attacker_loc, defender_loc, prev_def);
 		return choices[0];
 	}
 
@@ -473,7 +473,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &att = attacker.attacks()[choices[i]];
 		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], map, teams, units,
-				status, tod_mng, attacker_loc, defender_loc, prev_def);
+				tod_mng, attacker_loc, defender_loc, prev_def);
 		// If that didn't simulate, do so now.
 		if (!attacker_combatant_) {
 			const attack_type *def = NULL;
@@ -848,7 +848,7 @@ void attack::refresh_bc()
 		return;
 	}
 
-	*bc_ =	battle_context(map_, teams_, units_, state_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	*bc_ =	battle_context(map_, teams_, units_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	a_.cth_ = a_stats_->chance_to_hit;
@@ -948,7 +948,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_HIDDEN,false);
 
-	bc_ = new battle_context(map_, teams_, units_, state_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	bc_ = new battle_context(map_, teams_, units_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	if(a_stats_->weapon) {

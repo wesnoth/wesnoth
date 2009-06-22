@@ -123,7 +123,7 @@ public:
 	 * prev_def is for predicting multiple attacks against a defender.
 	 */
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-				   const gamestatus& status, const tod_manager& tod_mng,
+				   const tod_manager& tod_mng,
 				   const map_location& attacker_loc, const map_location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
@@ -155,13 +155,13 @@ private:
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-								const gamestatus& status, const tod_manager& tod_mng,
+								const tod_manager& tod_mng,
 								const map_location& attacker_loc, const map_location& defender_loc,
 								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status, const tod_manager& tod_mng,
+							   const tod_manager& tod_mng,
 							   const map_location& attacker_loc, const map_location& defender_loc, const combatant *prev_def);
 
 	/** Statistics of the units. */
