@@ -887,7 +887,7 @@ void game_state::set_variables(const config& vars) {
 void game_state::get_player_info(const config& cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
-					 gamestatus& game_status, tod_manager& tod_mng, bool snapshot)
+					 gamestatus& /*game_status*/, tod_manager& tod_mng, bool snapshot)
 {
 	player_info *player = NULL;
 
