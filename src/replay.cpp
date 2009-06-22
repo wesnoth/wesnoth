@@ -929,7 +929,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error(errbuf.str());
 			}
 
-			unit new_unit(&units,&map,&state,&tod_mng,&teams,&(u_type->second),team_num,true, false);
+			unit new_unit(&units,&map,&tod_mng,&teams,&(u_type->second),team_num,true, false);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc,false,!get_replay_source().is_skipping());
 			if(!res.empty()) {
 				std::stringstream errbuf;

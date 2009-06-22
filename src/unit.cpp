@@ -168,7 +168,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
+unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
 		const std::vector<team>* teams,const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
@@ -358,7 +358,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	}
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
+unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
 		const std::vector<team>* teams, const unit_type* t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),

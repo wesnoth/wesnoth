@@ -640,7 +640,7 @@ void recruit_result::do_execute()
 	recorder.add_recruit(num_,recruit_location_);
 	replay_undo replay_guard(recorder);
 	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name_);
-	unit new_unit(&info.units,&info.map,&info.state,&info.tod_manager_,&info.teams,&u->second,get_side(),true);
+	unit new_unit(&info.units,&info.map,&info.tod_manager_,&info.teams,&u->second,get_side(),true);
 	std::string recruit_err = recruit_unit(info.map,get_side(),info.units,new_unit,recruit_location_,false,preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 		statistics::recruit_unit(new_unit);

@@ -69,11 +69,11 @@ public:
 	/** Initilizes a unit from a config */
 	unit(const config& cfg, bool use_traits=false);
 	unit(unit_map* unitmap, const gamemap* map,
-		const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams,
+		const tod_manager* tod_mng, const std::vector<team>* teams,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/** Initializes a unit from a unit type */
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
-	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
+	unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
 	virtual ~unit();
 	unit& operator=(const unit&);
 

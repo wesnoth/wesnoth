@@ -1074,7 +1074,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams, &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams, &itor->second, side_num + 1, false, true, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;
@@ -1998,7 +1998,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	const game_events::resources_t &rsrc = *game_events::resources;
 
 		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc.teams, parsed_cfg, true, rsrc.state_of_game);
+		unit new_unit(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams, parsed_cfg, true, rsrc.state_of_game);
 		if(cfg.has_attribute("to_variable")) {
 			config &var = rsrc.state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
@@ -2496,7 +2496,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	const config &var = rsrc.state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(rsrc.units, rsrc.game_map, rsrc.status_ptr, &rsrc.controller->get_tod_manager(), rsrc. teams, var, false);
+		const unit u(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc. teams, var, false);
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(
