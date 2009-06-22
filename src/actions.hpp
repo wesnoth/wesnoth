@@ -298,7 +298,7 @@ void check_victory(const gamestatus& status, unit_map& units, std::vector<team>&
  * Certain tiles may have a time of day that differs from 'the' time of day, if
  * a unit that illuminates is in that tile or adjacent.
  */
-time_of_day timeofday_at(const gamestatus& status,
+time_of_day timeofday_at(const tod_manager& status,
                               const unit_map& units,
                               const map_location& loc,
 			      const gamemap& map);

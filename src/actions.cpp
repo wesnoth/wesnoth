@@ -1964,12 +1964,12 @@ void check_victory(const gamestatus& /*status*/, unit_map& units, std::vector<te
 	}
 }
 
-time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const map_location& loc, const gamemap& map)
+time_of_day timeofday_at(const tod_manager& tod_mng,const unit_map& units,const map_location& loc, const gamemap& map)
 {
 	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 
-	time_of_day tod = status.get_time_of_day(lighten + darken,loc);
+	time_of_day tod = tod_mng.get_time_of_day(lighten + darken,loc);
 
 	if(loc.valid()) {
 		map_location locs[7];
@@ -1993,7 +1993,7 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ma
 			}
 		}
 	}
-	tod = status.get_time_of_day(lighten + darken,loc);
+	tod = tod_mng.get_time_of_day(lighten + darken,loc);
 
 	return tod;
 }
