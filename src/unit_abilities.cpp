@@ -742,7 +742,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 }
 void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
-							  const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
+							  const gamemap* map, const tod_manager* tod_mng,
 							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;

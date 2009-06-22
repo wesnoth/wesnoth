@@ -162,7 +162,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 
 		// Set specials context (for safety, it should not have changed normally).
 		const attack_type *weapon = stats.weapon;
-		weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &status_, &tod_manager_, &teams_, stats.is_attacker, opp_weapon);
+		weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &tod_manager_, &teams_, stats.is_attacker, opp_weapon);
 
 		// Get damage modifiers.
 		unit_ability_list dmg_specials = weapon->get_specials("damage");

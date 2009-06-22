@@ -61,7 +61,7 @@ public:
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
-							  const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng,
+							  const gamemap* map, const tod_manager* tod_mng,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 

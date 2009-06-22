@@ -109,7 +109,7 @@ public:
 				   const attack_type *opp_weapon,
 				   const unit_map& units,
 				   const std::vector<team>& teams,
-				   const gamestatus& status, const tod_manager& tod_mng, const gamemap& map);
+				   const tod_manager& tod_mng, const gamemap& map);
 		~unit_stats();
 
 		/** Dumps the statistics of a unit on stdout. Remove it eventually. */
