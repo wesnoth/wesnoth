@@ -77,7 +77,7 @@ public:
 	virtual ~unit();
 	unit& operator=(const unit&);
 
-	void set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams);
+	void set_game_context(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams);
 
 	/** Advances this unit to another type */
 	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
@@ -458,7 +458,6 @@ private:
 	friend void attack_type::set_specials_context(const map_location& loc, const map_location&, const unit& un, bool) const;
 	const unit_map* units_;
 	const gamemap* map_;
-	const gamestatus* gamestatus_;
 	const tod_manager* tod_manager_;
 	const std::vector<team>* teams_;
 

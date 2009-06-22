@@ -939,7 +939,7 @@ private:
 					unit& un = recall_list[res];
 					map_location loc = last_hex;
 					recorder.add_recall(res,loc);
-					un.set_game_context(&units_,&map_,&status_,&tod_manager_,&teams_);
+					un.set_game_context(&units_,&map_,&tod_manager_,&teams_);
 					const std::string &err = recruit_unit(map_, side_num, units_,
 						un, loc, true, gui_);
 					if(!err.empty()) {
@@ -1117,7 +1117,7 @@ private:
 				unit un = recall_list[action.recall_pos];
 
 				recorder.add_recall(action.recall_pos,action.recall_loc);
-				un.set_game_context(&units_,&map_,&status_,&tod_manager_,&teams_);
+				un.set_game_context(&units_,&map_,&tod_manager_,&teams_);
 				const std::string &msg = recruit_unit(map_, side_num,
 					units_, un, action.recall_loc, true, gui_);
 				if(msg.empty()) {

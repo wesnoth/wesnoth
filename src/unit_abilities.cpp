@@ -244,7 +244,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
-	assert(units_ && map_ && gamestatus_ && teams_ && tod_manager_);
+	assert(units_ && map_ && teams_ && tod_manager_);
 
 	if (const config &afilter = cfg.child("filter"))
 		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))

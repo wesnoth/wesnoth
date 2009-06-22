@@ -162,7 +162,6 @@ unit::unit(const unit& o):
            modifications_(o.modifications_),
            units_(o.units_),
            map_(o.map_),
-           gamestatus_(o.gamestatus_),
            tod_manager_(o.tod_manager_),
            teams_(o.teams_),
 		   invisibility_cache_()
@@ -239,7 +238,6 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	modifications_(),
 	units_(unitmap),
 	map_(map),
-	gamestatus_(game_status),
 	tod_manager_(tod_mng),
 	teams_(teams),
 	invisibility_cache_()
@@ -321,7 +319,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	modifications_(),
 	units_(NULL),
 	map_(NULL),
-	gamestatus_(NULL),
 	tod_manager_(NULL),
 	teams_(NULL),
 	invisibility_cache_()
@@ -431,7 +428,6 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	modifications_(),
 	units_(unitmap),
 	map_(map),
-	gamestatus_(game_status),
 	tod_manager_(tod_mng),
 	teams_(teams),
 	invisibility_cache_()
@@ -533,7 +529,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	modifications_(),
 	units_(NULL),
 	map_(NULL),
-	gamestatus_(NULL),
 	tod_manager_(NULL),
 	invisibility_cache_()
 {
@@ -593,11 +588,10 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const tod_manager* tod_mng, const std::vector<team>* teams)
+void unit::set_game_context(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams)
 {
 	units_ = unitmap;
 	map_ = map;
-	gamestatus_ = game_status;
 	tod_manager_ = tod_mng;
 	teams_ = teams;
 
@@ -1137,7 +1131,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 	if(cfg.has_child("filter_location")) {
 		assert(map_ != NULL);
-		assert(gamestatus_ != NULL);
 		assert(teams_ != NULL);
 		assert(tod_manager_ != NULL);
 		assert(units_ != NULL);
@@ -1333,7 +1326,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		assert(units_ && map_ && gamestatus_);
+		assert(units_ && map_);
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
@@ -1367,7 +1360,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 	if(cfg.has_attribute("find_in")) {
 		// Allow filtering by searching a stored variable of units
-		assert(gamestatus_ != NULL);
 		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {

@@ -962,7 +962,7 @@ void game_state::get_player_info(const config& cfg,
 				it != player->available_units.end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
-					new_unit.set_game_context(&units, &map, &game_status, &tod_mng, &teams);
+					new_unit.set_game_context(&units, &map, &tod_mng, &teams);
 					player->available_units.erase(it);
 					break;
 				}
