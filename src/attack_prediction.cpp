@@ -740,7 +740,7 @@ void combatant::consider_levelup(combatant &opp) {
 		// becomes less probable since it's now conditional on us not
 		// levelling up.  This doesn't apply to the probability of us
 		// dying, of course.
-		float scalefactor =
+		double scalefactor =
 			(1 - hp_dist.front() - opp.hp_dist.front()) / (1 - hp_dist.front());
 		std::vector<double>::iterator i;
 		i = hp_dist.begin();

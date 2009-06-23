@@ -408,9 +408,9 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize)
 				  g = pix[loc] >> 8;
 				  b = pix[loc] >> 0;
 				  if (a == 0) {
-				    r = avg_r;
-				    g = avg_g;
-				    b = avg_b;
+				    r = static_cast<Uint8>(avg_r);
+				    g = static_cast<Uint8>(avg_g);
+				    b = static_cast<Uint8>(avg_b);
 				  }
 				  rr += r * bilin[loc];
 				  gg += g * bilin[loc];

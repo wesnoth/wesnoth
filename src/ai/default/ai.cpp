@@ -599,13 +599,13 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 	}
 
 	float free_slots = 0.0f;
-	const float gold = current_team().gold();
-	const float unit_price = current_team_w().average_recruit_price();
+	const float gold = static_cast<float>(current_team().gold());
+	const float unit_price = static_cast<float>(current_team_w().average_recruit_price());
 	if (map_.is_keep(leader_loc))
 	{
 		std::set<map_location> checked_hexes;
 		checked_hexes.insert(leader_loc);
-		free_slots = count_free_hexes_in_castle(leader_loc, checked_hexes);
+		free_slots = static_cast<float>(count_free_hexes_in_castle(leader_loc, checked_hexes));
 	} else {
 		map_location loc = nearest_keep(leader_loc);
                if (units_.find(loc) == units_.end() && gold/unit_price > 1.0f)

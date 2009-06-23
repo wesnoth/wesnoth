@@ -190,8 +190,8 @@ void statistics_dialog::make_damage_line(std::vector<std::string>& items,
 {
 	int shift = statistics::stats::decimal_shift;
 
-	int dsa = shift * damage      - expected;
-	int dst = shift * turn_damage - turn_expected;
+	long long dsa = shift * damage      - expected;
+	long long dst = shift * turn_damage - turn_expected;
 
 	std::ostringstream str;
 	str << header << COLUMN_SEPARATOR

@@ -137,7 +137,7 @@ bool ttext::is_truncated() const
 
 #if defined(PANGO_VERSION_CHECK)
 #if PANGO_VERSION_CHECK(1,16,0)
-	return (pango_layout_is_ellipsized(layout_) == TRUE);
+	return (pango_layout_is_ellipsized(layout_) != 0);
 #endif
 #endif
 	return false;

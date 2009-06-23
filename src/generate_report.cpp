@@ -208,7 +208,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_MOVES: {
 	  float movement_frac = 1.0;
 		if (u->side() == playing_side) {
-			movement_frac = u->movement_left() / std::max<float>(1.0, u->total_movement());
+			movement_frac = static_cast<float>(u->movement_left()) / std::max(1.0f, static_cast<float>(u->total_movement()));
 		  if (movement_frac > 1.0) movement_frac = 1.0;
 	  }
 

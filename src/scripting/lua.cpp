@@ -176,7 +176,7 @@ static bool wml_config_of_table(lua_State *L, config &cfg, int tstring_meta = 0)
 			case LUA_TUSERDATA:
 			{
 				if (!lua_getmetatable(L, -1)) return_misformed();
-				bool tstr = lua_rawequal(L, -1, tstring_meta);
+				bool tstr = lua_rawequal(L, -1, tstring_meta) != 0;
 				lua_pop(L, 1);
 				if (!tstr) return_misformed();
 				v = *static_cast<t_string *>(lua_touserdata(L, -1));
@@ -497,7 +497,7 @@ static int lua_unit_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
-	modify_bool_attrib("resting", u.set_resting(value));
+	modify_bool_attrib("resting", u.set_resting(value != 0));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
@@ -806,7 +806,7 @@ static int lua_side_set(lua_State *L)
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_int_attrib("base_income", t.set_base_income(value));
-	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
+	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value != 0));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	return 0;
