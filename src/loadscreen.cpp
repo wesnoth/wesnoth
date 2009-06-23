@@ -27,6 +27,7 @@
 #include "video.hpp"
 #include "image.hpp"
 
+#include <SDL_events.h>
 #include <SDL_image.h>
 
 #include <cassert>
@@ -114,6 +115,15 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
+
+	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
+	SDL_Event ev;
+	while(SDL_PollEvent(&ev)) {
+		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE) {
+			logo_drawn_ = false;
+		}
+	}
+
 	// Draw logo if it was succesfully loaded.
 	if (!logo_surface_.null() && !logo_drawn_) {
 		SDL_Surface *logo = logo_surface_.get();
