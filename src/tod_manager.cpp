@@ -73,6 +73,12 @@ config tod_manager::to_config()
 {
 	config cfg;
 	std::stringstream buf;
+	buf << turn_;
+	cfg["turn_at"] = buf.str();
+	buf.str(std::string());
+	buf << num_turns_;
+	cfg["turns"] = buf.str();
+	buf.str(std::string());
 	buf << currentTime_;
 	cfg["current_tod"] = buf.str();
 
