@@ -28,6 +28,7 @@ def CheckLua(context, require_version):
 
     result = found and context.TryLink("""
     #include <lualib.h>
+    #include <lauxlib.h>
     int main() { luaL_newstate(); }
     """, ".c")
     if result:
