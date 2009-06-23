@@ -865,9 +865,9 @@ void replay_savegame::create_filename()
 
 autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, tod_manager& gamestatus,
+							 const unit_map& units, const tod_manager& tod_mng,
 							 const gamemap& map, const bool compress_saves)
-	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
+	: game_savegame(gamestate, level_cfg, gui, teams, units, tod_mng, map, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 }
@@ -895,9 +895,9 @@ void autosave_savegame::create_filename()
 
 oos_savegame::oos_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, tod_manager& gamestatus,
+							 const unit_map& units, const tod_manager& tod_mng,
 							 const gamemap& map, const bool compress_saves)
-	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
+	: game_savegame(gamestate, level_cfg, gui, teams, units, tod_mng, map, compress_saves)
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
@@ -923,12 +923,12 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 
 game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, tod_manager& gamestatus,
+							 const unit_map& units, const tod_manager& tod_mng,
 							 const gamemap& map, const bool compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	level_cfg_(level_cfg), gui_(gui),
 	teams_(teams), units_(units),
-	tod_manager_(gamestatus), map_(map)
+	tod_manager_(tod_mng), map_(map)
 {}
 
 void game_savegame::create_filename()
