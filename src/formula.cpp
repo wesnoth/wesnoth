@@ -706,8 +706,8 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			if( ( !operator_group ) && (op == NULL || operator_precedence(*op) >=
 							 operator_precedence(*i)) ) {
 				op = i;
-				operator_group = true;
 			}
+                        operator_group = true;
 		} else {
 			operator_group = false;
 		}
