@@ -1900,6 +1900,12 @@ static int do_gameloop(int argc, char** argv)
 		return 0;
 	}
 
+	res = game.init_language();
+	if(res == false) {
+		std::cerr << "could not initialize the language\n";
+		return 0;
+	}
+
 	res = game.init_video();
 	if(res == false) {
 		std::cerr << "could not initialize display\n";
@@ -1910,12 +1916,6 @@ static int do_gameloop(int argc, char** argv)
 	cursor::set(cursor::WAIT);
 
 	gui2::init();
-
-	res = game.init_language();
-	if(res == false) {
-		std::cerr << "could not initialize the language\n";
-		return 0;
-	}
 
 	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
 
