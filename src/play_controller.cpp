@@ -141,7 +141,7 @@ void play_controller::init(CVideo& video){
 		if (first_human_team_ == -1){
 			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg, preferences::client_type(), preferences::login());
 		}
-		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, status_, tod_manager_, snapshot);
+		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_, units_, tod_manager_, snapshot);
 	}
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
