@@ -521,7 +521,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 }
 
 //builds the snapshot config from its members and their configs respectively
-config play_controller::to_config()
+config play_controller::to_config() const
 {
 	config cfg;
 	std::stringstream buf;

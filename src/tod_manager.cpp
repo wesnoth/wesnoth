@@ -69,7 +69,7 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	return *this;
 }
 
-config tod_manager::to_config()
+config tod_manager::to_config() const
 {
 	config cfg;
 	std::stringstream buf;

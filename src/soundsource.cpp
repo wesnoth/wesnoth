@@ -117,7 +117,7 @@ void manager::write_sourcespecs(config& cfg) const
 	}
 }
 
-config manager::to_config()
+config manager::to_config() const
 {
 	config cfg;
 	write_sourcespecs(cfg);

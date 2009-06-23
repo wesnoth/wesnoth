@@ -313,7 +313,7 @@ public:
 	/** clear the shroud, fog, and enemies cache for all teams*/
 	static void clear_caches();
 
-	config to_config();
+	config to_config() const;
 
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.

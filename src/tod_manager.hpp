@@ -35,7 +35,7 @@ class tod_manager : public savegame_config
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager);
 
-		config to_config();
+		config to_config() const;
 
 		/** Returns time of day object for current turn. */
 		time_of_day get_time_of_day() const;

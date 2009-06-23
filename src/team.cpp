@@ -955,7 +955,7 @@ void team::log_recruitable(){
 	LOG_NG << "Added all recruitable units\n";
 }
 
-config team::to_config()
+config team::to_config() const
 {
 	config cfg;
 	config& result = cfg.add_child("side");

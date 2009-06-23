@@ -40,7 +40,7 @@ public:
 	game_classification(const config& cfg);
 	game_classification(const game_classification& gc);
 
-	config to_config(); //dummy
+	config to_config() const;
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string parent;                              /**< Parent of the game (for save-threading purposes). */

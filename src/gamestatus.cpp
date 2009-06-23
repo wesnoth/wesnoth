@@ -117,7 +117,7 @@ game_classification::game_classification(const game_classification& gc):
 	difficulty = gc.difficulty;
 }
 
-config game_classification::to_config()
+config game_classification::to_config() const
 {
 	config cfg;
 

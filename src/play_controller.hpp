@@ -101,7 +101,7 @@ public:
 
 	const tod_manager& get_tod_manager() const {return tod_manager_;} //FIXME: added getter for tod_manager until do_replay_handle is fixed
 
-	config to_config();
+	config to_config() const;
 
 protected:
 	void slice_before_scroll();
