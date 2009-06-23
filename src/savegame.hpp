@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2009 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2009 by Jï¿½rg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "global.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
+#include "tod_manager.hpp"
 #include "show_dialog.hpp"
 
 #include <string>
@@ -227,7 +228,7 @@ class game_savegame : public savegame
 public:
 	game_savegame(game_state& gamestate, const config& level_cfg,
 		game_display& gui, const std::vector<team>& teams,
-		const unit_map& units, const gamestatus& gamestatus,
+		const unit_map& units, tod_manager& gamestatus,
 		const gamemap& map, const bool compress_saves);
 
 private:
@@ -245,7 +246,7 @@ protected:
 	game_display& gui_;
 	const std::vector<team>& teams_;
 	const unit_map& units_;
-	const gamestatus& gamestatus_;
+	tod_manager& tod_manager_; //FIXME: make to_config() const so we can call it on const references
 	const gamemap& map_;
 };
 
@@ -266,7 +267,7 @@ class autosave_savegame : public game_savegame
 public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg,
 					 game_display& gui, const std::vector<team>& teams,
-					 const unit_map& units, const gamestatus& gamestatus,
+					 const unit_map& units, tod_manager& gamestatus,
 					 const gamemap& map, const bool compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
@@ -280,7 +281,7 @@ class oos_savegame : public game_savegame
 public:
 	oos_savegame(game_state &gamestate, const config& level_cfg,
 				 game_display& gui, const std::vector<team>& teams,
-				 const unit_map& units, const gamestatus& gamestatus,
+				 const unit_map& units, tod_manager& gamestatus,
 				 const gamemap& map, const bool compress_saves);
 
 private:

@@ -865,7 +865,7 @@ void replay_savegame::create_filename()
 
 autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, const gamestatus& gamestatus,
+							 const unit_map& units, tod_manager& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {
@@ -888,14 +888,14 @@ void autosave_savegame::create_filename()
 	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(gamestatus_.turn());
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(tod_manager_.turn());
 
 	set_filename(filename);
 }
 
 oos_savegame::oos_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, const gamestatus& gamestatus,
+							 const unit_map& units, tod_manager& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: game_savegame(gamestate, level_cfg, gui, teams, units, gamestatus, map, compress_saves)
 {}
@@ -923,12 +923,12 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 
 game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
 							 game_display& gui, const std::vector<team>& teams,
-							 const unit_map& units, const gamestatus& gamestatus,
+							 const unit_map& units, tod_manager& gamestatus,
 							 const gamemap& map, const bool compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	level_cfg_(level_cfg), gui_(gui),
 	teams_(teams), units_(units),
-	gamestatus_(gamestatus), map_(map)
+	tod_manager_(gamestatus), map_(map)
 {}
 
 void game_savegame::create_filename()
@@ -937,7 +937,7 @@ void game_savegame::create_filename()
 
 	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
 			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("Turn") << " " << gamestatus_.turn();
+	stream << ellipsed_name << " " << _("Turn") << " " << tod_manager_.turn();
 	set_filename(stream.str());
 }
 
@@ -990,7 +990,7 @@ void game_savegame::write_game_snapshot()
 		}
 	}
 
-	gamestatus_.write(snapshot());
+	snapshot().merge_with(tod_manager_.to_config());
 	game_events::write_events(snapshot());
 
 	// Write terrain_graphics data in snapshot, too
