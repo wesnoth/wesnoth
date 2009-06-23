@@ -1021,6 +1021,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		std::string current = cfg["current"];
 		if(!add.empty()) {
 			rsrc.status_ptr->modify_turns(add);
+			rsrc.controller->modify_turns(add);
 		} else if(!value.empty()) {
 			rsrc.status_ptr->add_turns(-rsrc.status_ptr->number_of_turns());
 			rsrc.status_ptr->add_turns(lexical_cast_default<int>(value,-1));
