@@ -29,10 +29,10 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
 turn_info::turn_info(game_state& state_of_game,
-                     const gamestatus& status, const tod_manager& tod_mng, game_display& gui, gamemap& map,
+                     const tod_manager& tod_mng, game_display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
 			 replay_network_sender& replay_sender, undo_list& undo_stack, play_controller& controller)
-  : state_of_game_(state_of_game), status_(status), tod_manager_(tod_mng),
+  : state_of_game_(state_of_game), tod_manager_(tod_mng),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), undo_stack_(undo_stack),
 	replay_sender_(replay_sender), replay_error_("network_replay_error"),

@@ -157,7 +157,7 @@ void playmp_controller::before_human_turn(bool save){
 	LOG_NG << "playmp::before_human_turn...\n";
 	playsingle_controller::before_human_turn(save);
 
-	turn_data_ = new turn_info(gamestate_,status_,tod_manager_,
+	turn_data_ = new turn_info(gamestate_,tod_manager_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_, *this);
 	turn_data_->replay_error().attach_handler(this);
 	turn_data_->host_transfer().attach_handler(this);
@@ -351,7 +351,7 @@ void playmp_controller::linger(upload_log& log)
 		try {
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
-			turn_data_ = new turn_info(gamestate_, status_, tod_manager_,
+			turn_data_ = new turn_info(gamestate_, tod_manager_,
 			                           *gui_,map_, teams_, player_number_,
 			                           units_, replay_sender_, undo_stack_,*this);
 			turn_data_->replay_error().attach_handler(this);
@@ -397,7 +397,7 @@ void playmp_controller::wait_for_upload()
 
 	const bool set_turn_data = (turn_data_ == 0);
 	if(set_turn_data) {
-		turn_data_ = new turn_info(gamestate_,status_,tod_manager_,
+		turn_data_ = new turn_info(gamestate_,tod_manager_,
 						*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_, *this);
 		turn_data_->replay_error().attach_handler(this);
 		turn_data_->host_transfer().attach_handler(this);
@@ -476,7 +476,7 @@ void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	gui_->enable_menu("endturn", false);
-	turn_info turn_data(gamestate_,status_,tod_manager_,*gui_,
+	turn_info turn_data(gamestate_,tod_manager_,*gui_,
 				map_,teams_,player_number_,units_, replay_sender_, undo_stack_,*this);
 	turn_data.replay_error().attach_handler(this);
 	turn_data.host_transfer().attach_handler(this);
@@ -552,7 +552,7 @@ void playmp_controller::process_oos(const std::string& err_msg){
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(gamestate_,status_,tod_manager_,*gui_,
+	turn_info turn_data(gamestate_,tod_manager_,*gui_,
 						map_,teams_,player_number_,units_, replay_sender_, undo_stack_, *this);
 
 	if (name == "ai_user_interact"){
