@@ -34,7 +34,6 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
-class gamestatus;
 class team;
 class unit;
 class unit_map;

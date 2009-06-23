@@ -18,7 +18,6 @@
 #define MAP_H_INCLUDED
 
 class config;
-class gamestatus;
 class unit;
 class unit_map;
 class vconfig;

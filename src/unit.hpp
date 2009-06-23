@@ -27,7 +27,6 @@
 #include "unit_map.hpp"
 
 class config_writer;
-class gamestatus;
 class tod_manager;
 class game_display;
 class game_state;

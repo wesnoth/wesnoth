@@ -21,7 +21,6 @@
 #define ACTIONS_H_INCLUDED
 
 class display;
-class gamestatus;
 class tod_manager;
 class game_display;
 class replay;

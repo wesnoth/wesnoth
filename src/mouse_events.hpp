@@ -23,10 +23,10 @@
 #include "pathfind.hpp"
 #include "unit_map.hpp"
 #include "mouse_handler_base.hpp"
-class gamestatus;
-class tod_manager;
 
 #include "SDL.h"
+
+class tod_manager;
 
 namespace events{
 

@@ -26,7 +26,6 @@
 #include <vector>
 
 
-class gamestatus;
 class tod_manager;
 class team;
 class unit;

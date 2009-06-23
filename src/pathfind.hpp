@@ -20,7 +20,6 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
-class gamestatus;
 class unit;
 class unit_map;
 
