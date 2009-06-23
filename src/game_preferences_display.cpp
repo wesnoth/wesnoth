@@ -1208,7 +1208,9 @@ std::string show_wesnothd_server_search(display& disp)
 
 	symbols["filename"] = filename;
 
-	const std::string title =  vgettext("Find $filename server binary to host networked games", symbols);
+	const std::string title = utils::interpolate_variables_into_string(
+			  _("Find $filename server binary to host networked games")
+			, &symbols);
 
 	int res = dialogs::show_file_chooser_dialog(disp, path, title, false, filename);
 	if (res == 0)
