@@ -140,6 +140,31 @@ void attack_type_callable::get_inputs(std::vector<game_logic::formula_input>* in
 	inputs->push_back(game_logic::formula_input("special", FORMULA_READ_ONLY));
 }
 
+int attack_type_callable::do_compare(const formula_callable* callable) const
+{
+	const attack_type_callable* att_callable = dynamic_cast<const attack_type_callable*>(callable);
+	if(att_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	if (att_.damage() != att_callable->att_.damage() )
+		return att_.damage() - att_callable->att_.damage();
+
+	if (att_.num_attacks() != att_callable->att_.num_attacks() )
+		return att_.num_attacks() - att_callable->att_.num_attacks();
+
+	if ( att_.id() != att_callable->att_.id() )
+		return att_.id().compare(att_callable->att_.id());
+
+	if ( att_.type() != att_callable->att_.type() )
+		return att_.type().compare(att_callable->att_.type());
+
+	if ( att_.range() != att_callable->att_.range() )
+		return att_.range().compare(att_callable->att_.range());
+
+	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
+}
+
 variant unit_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -255,6 +280,16 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 }
 
+int unit_callable::do_compare(const formula_callable* callable) const
+{
+	const unit_callable* u_callable = dynamic_cast<const unit_callable*>(callable);
+	if(u_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	return u_.underlying_id() - u_callable->u_.underlying_id();
+}
+
 variant unit_type_callable::get_value(const std::string& key) const
 {
 	if(key == "id") {
@@ -315,6 +350,16 @@ void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inpu
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
 }
 
+int unit_type_callable::do_compare(const formula_callable* callable) const
+{
+	const unit_type_callable* u_callable = dynamic_cast<const unit_type_callable*>(callable);
+	if(u_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	return u_.id().compare(u_callable->u_.id());
+}
+
 variant terrain_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -336,5 +381,70 @@ void terrain_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 	inputs->push_back(game_logic::formula_input("y", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+}
+
+int terrain_callable::do_compare(const formula_callable* callable) const
+{
+	const terrain_callable* terr_callable = dynamic_cast<const terrain_callable*>(callable);
+	if(terr_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	const map_location& other_loc = terr_callable->loc_;
+	if(other_loc.x != loc_.x) {
+		return loc_.x - other_loc.x;
+	}
+
+	return loc_.y - other_loc.y;
+}
+
+int move_callable::do_compare(const formula_callable* callable) const
+{
+	const move_callable* mv_callable = dynamic_cast<const move_callable*>(callable);
+	if(mv_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	const map_location& other_src = mv_callable->src_;
+	const map_location& other_dst = mv_callable->dst_;
+
+	if(other_src.x != src_.x) {
+		return src_.x - other_src.x;
+	}
+
+	if(other_src.y != src_.y) {
+		return src_.y - other_src.y;
+	}
+
+	if(other_dst.x != dst_.x) {
+		return dst_.x - other_dst.x;
+	}
+
+	return dst_.y - other_dst.y;
+}
+
+int move_partial_callable::do_compare(const formula_callable* callable) const
+{
+	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
+	if(mv_callable == NULL) {
+		return formula_callable::do_compare(callable);
+	}
+
+	const map_location& other_src = mv_callable->src_;
+	const map_location& other_dst = mv_callable->dst_;
+
+	if(other_src.x != src_.x) {
+		return src_.x - other_src.x;
+	}
+
+	if(other_src.y != src_.y) {
+		return src_.y - other_src.y;
+	}
+
+	if(other_dst.x != dst_.x) {
+		return dst_.x - other_dst.x;
+	}
+
+	return dst_.y - other_dst.y;
 }
 

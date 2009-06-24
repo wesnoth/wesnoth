@@ -72,6 +72,8 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 private:
+        int do_compare(const formula_callable* callable) const;
+        
 	const location loc_;
 	const terrain_type &t_;
 };
@@ -131,6 +133,8 @@ class move_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
+
+        int do_compare(const formula_callable* callable) const;
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -155,6 +159,8 @@ class move_partial_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
+
+        int do_compare(const formula_callable* callable) const;
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -191,6 +197,8 @@ public:
 	const attack_type& get_attack_type() const { return att_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+        int do_compare(const formula_callable* callable) const;
 private:
 	const attack_type att_;
 };
@@ -206,6 +214,8 @@ public:
 	const location& get_location() const { return loc_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+        int do_compare(const formula_callable* callable) const;
 private:
 	const location& loc_;
 	const unit& u_;
@@ -220,6 +230,8 @@ public:
 	const unit_type& get_unit_type() const { return u_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+        int do_compare(const formula_callable* callable) const;
 private:
 	const unit_type& u_;
 };
