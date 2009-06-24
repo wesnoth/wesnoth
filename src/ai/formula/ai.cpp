@@ -905,6 +905,38 @@ public:
 	const map_location& dst() const { return dst_; }
 	int weapon() const { return bc_.get_attacker_stats().attack_num; }
 	int defender_weapon() const { return bc_.get_defender_stats().attack_num; }
+
+	/** Compare two attacks in deterministic way or compare pointers
+	 * (nondeterministic in consequent game runs) if method argument is not
+	 * move_callable */
+	int do_compare(const game_logic::formula_callable* callable)
+		const {
+		const attack_callable* a_callable = dynamic_cast<const attack_callable*>(callable);
+		if(a_callable == NULL) {
+			return formula_callable::do_compare(callable);
+		}
+
+		const map_location& other_from = a_callable->move_from();
+
+		if (int cmp = move_from_.do_compare(other_from)) {
+			return cmp;
+		}
+		const map_location& other_src = a_callable->src();
+		if (int cmp = src_.do_compare(other_src)) {
+			return cmp;
+		}
+		const map_location& other_dst = a_callable->dst();
+		if (int cmp = dst_.do_compare(other_dst)) {
+			return cmp;
+		}
+		const int other_weapon = a_callable->weapon();
+		if (int cmp = (this->weapon() - other_weapon)) {
+			return cmp;
+		}
+		const int other_def_weapon = a_callable->defender_weapon();
+		return this->defender_weapon() - other_def_weapon;
+	}
+
 };
 
 

@@ -71,6 +71,9 @@ struct map_location {
 	bool operator==(const map_location& a) const { return x == a.x && y == a.y; }
 	bool operator!=(const map_location& a) const { return !operator==(a); }
 
+        /** three-way comparator */
+	int do_compare(const map_location& a) const {return x == a.x ? y - a.y : x - a.x; }
+
 	// Adds an absolute location to a "delta" location
 	// This is not the mathematically correct behviour, it is neither
 	// commutative nor associative. Negative coordinates may give strange

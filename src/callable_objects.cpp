@@ -61,11 +61,7 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 	}
 
 	const map_location& other_loc = loc_callable->loc();
-	if(other_loc.x != loc_.x) {
-		return loc_.x - other_loc.x;
-	}
-
-	return loc_.y - other_loc.y;
+	return loc_.do_compare(other_loc);
 }
 
 void location_callable::serialize_to_string(std::string& str) const
@@ -391,11 +387,8 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 	}
 
 	const map_location& other_loc = terr_callable->loc_;
-	if(other_loc.x != loc_.x) {
-		return loc_.x - other_loc.x;
-	}
 
-	return loc_.y - other_loc.y;
+	return loc_.do_compare(other_loc);
 }
 
 int move_callable::do_compare(const formula_callable* callable) const
@@ -408,19 +401,11 @@ int move_callable::do_compare(const formula_callable* callable) const
 	const map_location& other_src = mv_callable->src_;
 	const map_location& other_dst = mv_callable->dst_;
 
-	if(other_src.x != src_.x) {
-		return src_.x - other_src.x;
+	if (int cmp = src_.do_compare(other_src)) {
+		return cmp;
 	}
 
-	if(other_src.y != src_.y) {
-		return src_.y - other_src.y;
-	}
-
-	if(other_dst.x != dst_.x) {
-		return dst_.x - other_dst.x;
-	}
-
-	return dst_.y - other_dst.y;
+	return dst_.do_compare(other_dst);
 }
 
 int move_partial_callable::do_compare(const formula_callable* callable) const
@@ -433,18 +418,10 @@ int move_partial_callable::do_compare(const formula_callable* callable) const
 	const map_location& other_src = mv_callable->src_;
 	const map_location& other_dst = mv_callable->dst_;
 
-	if(other_src.x != src_.x) {
-		return src_.x - other_src.x;
+	if (int cmp = src_.do_compare(other_src)) {
+		return cmp;
 	}
 
-	if(other_src.y != src_.y) {
-		return src_.y - other_src.y;
-	}
-
-	if(other_dst.x != dst_.x) {
-		return dst_.x - other_dst.x;
-	}
-
-	return dst_.y - other_dst.y;
+	return dst_.do_compare(other_dst);
 }
 
