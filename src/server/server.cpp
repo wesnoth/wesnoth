@@ -1873,6 +1873,10 @@ void server::process_data_lobby(const network::connection sock,
 		rooms_.process_room_part(data, pl);
 	}
 
+	if (data.child("room_query")) {
+		rooms_.process_room_query(data, pl);
+	}
+
 	// See if it's a message, in which case we add the name of the sender,
 	// and forward it to all players in the lobby.
 	if (data.child("message")) {

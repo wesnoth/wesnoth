@@ -117,19 +117,30 @@ void room_manager::remove_player(network::connection player)
 	rooms_by_player_.erase(player);
 }
 
-room* room_manager::require_member(const std::string& room_name,
+room* room_manager::require_room(const std::string& room_name,
                                    const player_map::iterator user,
                                    const char *log_string)
 {
 	room* r = get_room(room_name);
 	if (r == NULL) {
+		lobby_->send_server_message("The room does not exist", user->first);
 		WRN_LOBBY << "Player " << user->second.name()
 			<< " (conn " << user->first << ")"
 			<< " attempted to " << log_string
 			<< "a nonexistant room '" << room_name << "'\n";
 		return NULL;
 	}
+	return r;
+}
+
+room* room_manager::require_member(const std::string& room_name,
+                                   const player_map::iterator user,
+                                   const char *log_string)
+{
+	room* r = require_room(room_name, user, log_string);
+	if (r == NULL) return NULL;
 	if (!r->is_member(user->first)) {
+		lobby_->send_server_message("You are not a member of this room", user->first);
 		WRN_LOBBY << "Player " << user->second.name()
 			<< " (conn " << user->first << ")"
 			<< " attempted to " << log_string
@@ -148,7 +159,6 @@ bool room_manager::player_enters_room(network::connection player, wesnothd::room
 	//TODO: implement per-room bans, check ban status here
 	room->add_player(player);
 	rooms_by_player_[player].insert(room);
-	room->send_server_message(room->name().c_str(), player); //debug
 	return true;
 }
 
@@ -156,7 +166,6 @@ void room_manager::player_exits_room(network::connection player, wesnothd::room 
 {
 	room->remove_player(player);
 	rooms_by_player_[player].erase(room);
-	room->send_server_message(room->name().c_str(), player); //debug
 }
 
 void room_manager::process_message(simple_wml::document &data, const player_map::iterator user)
@@ -213,13 +222,7 @@ void room_manager::process_room_join(simple_wml::document &data, const player_ma
 	msg->set_attr_dup("player", user->second.name().c_str());
 	r->send_data(data, user->first);
 	// send member list to the new member
-	foreach (network::connection m, r->members()) {
-		simple_wml::node& member = msg->add_child("member");
-		player_map::const_iterator mi = all_players_.find(m);
-		if (mi != all_players_.end()) {
-			member.set_attr_dup("name", mi->second.name().c_str());
-		}
-	}
+	fill_member_list(r, data.root());
 	send_to_one(data, user->first);
 }
 
@@ -237,6 +240,56 @@ void room_manager::process_room_part(simple_wml::document &data, const player_ma
 	player_exits_room(user->first, r);
 	msg->set_attr_dup("player", user->second.name().c_str());
 	r->send_data(data);
+	send_to_one(data, user->first);
 }
 
+void room_manager::process_room_query(simple_wml::document& data, const player_map::iterator user)
+{
+	simple_wml::node* const msg = data.root().child("room_query");
+	assert(msg);
+	simple_wml::document doc;
+	simple_wml::node& resp = doc.root().add_child("room_query_response");
+	simple_wml::node* q;
+	q = msg->child("rooms");
+	if (q != NULL) {
+		fill_room_list(resp);
+		send_to_one(doc, user->first);
+		return;
+	}
+	std::string room_name = msg->attr("room").to_string();
+	if (room_name.empty()) room_name = lobby_name_;
+	room* r = require_room(room_name, user, "query");
+	if (r == NULL) return;
+	resp.set_attr_dup("room", room_name.c_str());
+	q = msg->child("names");
+	if (q != NULL) {
+		fill_member_list(r, resp);
+		send_to_one(doc, user->first);
+		return;
+	}
+	r->send_server_message("Unknown room query type", user->first);
+}
+
+void room_manager::fill_room_list(simple_wml::node& root)
+{
+	simple_wml::node& rooms = root.add_child("rooms");
+	foreach (const t_rooms_by_name_::value_type& tr, rooms_by_name_) {
+		const room& r = *tr.second;
+		simple_wml::node& room = rooms.add_child("room");
+		room.set_attr_dup("name", r.name().c_str());
+		room.set_attr_dup("size", lexical_cast<std::string>(r.members().size()).c_str());
+	}
+}
+
+void room_manager::fill_member_list(const room* room, simple_wml::node& root)
+{
+	simple_wml::node& members = root.add_child("members");
+	foreach (network::connection m, room->members()) {
+		simple_wml::node& member = members.add_child("member");
+		player_map::const_iterator mi = all_players_.find(m);
+		if (mi != all_players_.end()) {
+			member.set_attr_dup("name", mi->second.name().c_str());
+		}
+	}
+}
 } //namespace wesnothd

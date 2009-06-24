@@ -2006,6 +2006,8 @@ private:
 			void do_emote();
 			void do_network_send();
 			void do_network_send_req_arg();
+			void do_room_query();
+			void do_room_query_noarg();
 			void do_whisper();
 			void do_chanmsg();
 			void do_log();
@@ -2120,6 +2122,10 @@ private:
 					_("Join a room."), "<room>");
 				register_command("part", &chat_command_handler::do_network_send_req_arg,
 					_("Part a room."), "<room>");
+				register_command("names", &chat_command_handler::do_room_query,
+					_("List room members."), "<room>");
+				register_command("rooms", &chat_command_handler::do_room_query_noarg,
+					_("List available rooms."));
 				register_command("room", &chat_command_handler::do_chanmsg,
 					_("Room msg."), "<room> <msg>");
 			}
@@ -2449,6 +2455,24 @@ private:
 		do_network_send();
 	}
 
+	void chat_command_handler::do_room_query_noarg()
+	{
+		config data;
+		config& q = data.add_child("room_query");
+		q.add_child(get_cmd());
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_room_query()
+	{
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		config data;
+		config& q = data.add_child("room_query");
+		q["room"] = get_data();
+		q.add_child(get_cmd());
+		network::send_data(data, 0, true);
+	}
+
 	void chat_command_handler::do_whisper()
 	{
 		if (get_data(1).empty()) return command_failed_need_arg(1);
@@ -2474,7 +2498,7 @@ private:
 		cwhisper["sender"] = preferences::login();
 		data.add_child("message", cwhisper);
 		chat_handler_.add_chat_message(time(NULL),
-			"room" + cwhisper["room"], 0,
+			cwhisper["room"] + ": " + preferences::login(), 0,
 			cwhisper["message"], game_display::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
 	}

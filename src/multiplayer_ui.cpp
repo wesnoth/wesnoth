@@ -577,6 +577,43 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			}
 			gamelist_refresh_ = true;
 		}
+	} else if (const config &c = data.child("room_join")) {
+		if (c["player"] == preferences::login()) {
+			chat_.add_message(time(NULL), "server",
+				"You have joined the room '" + c["room"] + "'");
+		} else {
+			chat_.add_message(time(NULL), "server",
+				c["player"] + " has joined the room '" + c["room"] + "'");
+		}
+		chat_.update_textbox(chat_textbox_);
+	} else if (const config &c = data.child("room_part")) {
+		if (c["player"] == preferences::login()) {
+			chat_.add_message(time(NULL), "server",
+				"You have left the room '" + c["room"] + "'");
+		} else {
+			chat_.add_message(time(NULL), "server",
+				c["player"] + " has left the room '" + c["room"] + "'");
+		}
+		chat_.update_textbox(chat_textbox_);
+	} else if (const config &c = data.child("room_query_response")) {
+		if (const config &ms = c.child("members")) {
+			std::stringstream ss;
+			ss << "Room " << c["room"] << " members: ";
+			foreach (const config& m, ms.child_range("member")) {
+				ss << m["name"] << " ";
+			}
+			chat_.add_message(time(NULL), "server", ss.str());
+			chat_.update_textbox(chat_textbox_);
+		}
+		if (const config &rs = c.child("rooms")) {
+			std::stringstream ss;
+			ss << "Rooms: ";
+			foreach (const config& r, rs.child_range("room")) {
+				ss << r["name"] << "(" << r["size"] << ") ";
+			}
+			chat_.add_message(time(NULL), "server", ss.str());
+			chat_.update_textbox(chat_textbox_);
+		}
 	}
 }
 

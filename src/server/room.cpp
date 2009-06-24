@@ -106,4 +106,6 @@ void room::process_message(simple_wml::document& /*data*/,
 {
 }
 
+
+
 } //end namespace wesnothd
