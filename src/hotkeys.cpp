@@ -67,6 +67,7 @@ const struct {
 	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_TOGGLE_ELLIPSES, "toggleellipses", N_("Toggle Ellipses"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_TOGGLE_GRID, "togglegrid", N_("Toggle Grid"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_MOUSE_SCROLL, "mousescroll", N_("Mouse Scrolling"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_STATUS_TABLE, "statustable", N_("Status Table"), false, hotkey::SCOPE_GAME },
@@ -723,6 +724,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		case HOTKEY_LOAD_GAME:
 			load_game();
+			break;
+		case HOTKEY_TOGGLE_ELLIPSES:
+			toggle_ellipses();
 			break;
 		case HOTKEY_TOGGLE_GRID:
 			toggle_grid();

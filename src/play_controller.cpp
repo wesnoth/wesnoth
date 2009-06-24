@@ -369,6 +369,10 @@ void play_controller::unit_description(){
 	menu_handler_.unit_description(mouse_handler_);
 }
 
+void play_controller::toggle_ellipses(){
+	menu_handler_.toggle_ellipses();
+}
+
 void play_controller::toggle_grid(){
 	menu_handler_.toggle_grid();
 }
@@ -628,6 +632,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_MAP_SCREENSHOT:
 	case hotkey::HOTKEY_ACCELERATED:
 	case hotkey::HOTKEY_SAVE_MAP:
+	case hotkey::HOTKEY_TOGGLE_ELLIPSES:
 	case hotkey::HOTKEY_TOGGLE_GRID:
 	case hotkey::HOTKEY_MOUSE_SCROLL:
 	case hotkey::HOTKEY_STATUS_TABLE:

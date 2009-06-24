@@ -159,6 +159,9 @@ namespace preferences {
 	bool show_fps();
 	void set_show_fps(bool value);
 
+	bool ellipses();
+	void _set_ellipses(bool ison);
+
 	bool grid();
 	void _set_grid(bool ison);
 } // end namespace preferences

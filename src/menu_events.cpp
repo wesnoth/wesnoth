@@ -1556,6 +1556,12 @@ private:
 		gui_->invalidate_game_status();
 	}
 
+	void menu_handler::toggle_ellipses()
+	{
+		preferences::set_ellipses(!preferences::ellipses());
+		gui_->invalidate_all();
+	}
+
 	void menu_handler::toggle_grid()
 	{
 		preferences::set_grid(!preferences::grid());

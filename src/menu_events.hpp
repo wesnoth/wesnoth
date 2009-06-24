@@ -94,6 +94,7 @@ public:
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
 	void continue_move(mouse_handler &mousehandler, int side_num);
+	void toggle_ellipses();
 	void toggle_grid();
 	void unit_hold_position(mouse_handler &mousehandler, int side_num);
 	void end_unit_turn(mouse_handler &mousehandler, int side_num);

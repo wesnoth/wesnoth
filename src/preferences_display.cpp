@@ -139,6 +139,11 @@ void set_turbo_speed(double speed)
 	}
 }
 
+void set_ellipses(bool ison)
+{
+	_set_ellipses(ison);
+}
+
 void set_grid(bool ison)
 {
 	_set_grid(ison);

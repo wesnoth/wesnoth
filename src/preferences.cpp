@@ -258,6 +258,16 @@ void set_language(const std::string& s)
 	preferences::set("locale", s);
 }
 
+bool ellipses()
+{
+	return utils::string_bool(get("show_side_colours"), false);
+}
+
+void _set_ellipses(bool ison)
+{
+	preferences::set("show_side_colours",  (ison ? "yes" : "no"));
+}
+
 bool grid()
 {
 	return utils::string_bool(get("grid"), false);

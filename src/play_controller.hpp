@@ -72,6 +72,7 @@ public:
 	virtual void show_enemy_moves(bool ignore_units);
 	virtual void goto_leader();
 	virtual void unit_description();
+	virtual void toggle_ellipses();
 	virtual void toggle_grid();
 	virtual void search();
 

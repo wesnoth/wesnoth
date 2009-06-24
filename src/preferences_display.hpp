@@ -31,6 +31,7 @@ namespace preferences {
 	void set_scroll_to_action(bool ison);
 	void set_resolution(const std::pair<int,int>& res);
 	void set_turbo(bool ison);
+	void set_ellipses(bool ison);
 	void set_grid(bool ison);
 	void set_turbo_speed(double speed);
 	void set_colour_cursors(bool value);
