@@ -27,6 +27,7 @@
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
+#include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
@@ -745,47 +746,6 @@ twidget* tbuilder_multi_page::build() const
 	multi_page->finalize(data);
 
 	return multi_page;
-}
-
-tbuilder_panel::tbuilder_panel(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	grid(0)
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_panel
- *
- * == Panel ==
- *
- * A panel is an item which can hold other items. The difference between a grid
- * and a panel is that it's possible to define how a panel looks. A grid in an
- * invisible container to just hold the items.
- *
- * @start_table = config
- *     grid (grid)                     Defines the grid with the widgets to
- *                                     place on the panel.
- * @end_table
- *
- */
-
-	const config &c = cfg.child("grid");
-
-	VALIDATE(c, _("No grid defined."));
-
-	grid = new tbuilder_grid(c);
-}
-
-twidget* tbuilder_panel::build() const
-{
-	tpanel* panel = new tpanel();
-
-	init_control(panel);
-
-	DBG_GUI_G << "Window builder: placed panel '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	panel->init_grid(grid);
-	return panel;
 }
 
 twidget* tbuilder_scroll_label::build() const

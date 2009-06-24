@@ -125,19 +125,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_panel : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_panel();
-public:
-	tbuilder_panel(const config& cfg);
-
-	twidget* build () const;
-
-	tbuilder_grid_ptr grid;
-};
-
 struct tbuilder_slider : public implementation::tbuilder_control
 {
 
