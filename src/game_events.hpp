@@ -26,7 +26,7 @@
 
 class game_display;
 class game_state;
-class gamestatus;
+class tod_manager;
 class team;
 class t_string;
 class unit;
@@ -57,7 +57,6 @@ namespace game_events
 		unit_map *units;
 		std::vector<team> *teams;
 		game_state *state_of_game;
-		gamestatus *status_ptr; //FIXME: give resources_t its own tod_manager
 		LuaKernel *lua_kernel;
 		play_controller *controller;
 	};
@@ -75,7 +74,7 @@ namespace game_events
 		// and must remain valid for the life of the object.
 		manager(const config& scenario_cfg, gamemap& map,
 				unit_map& units, std::vector<team>& teams,
-				game_state& state_of_game, gamestatus& status,
+				game_state& state_of_game,
 				play_controller& controller);
 		~manager();
 		void set_gui(game_display&);

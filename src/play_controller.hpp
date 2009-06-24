@@ -167,7 +167,6 @@ protected:
 	const config& level_;
 	std::vector<team> teams_;
 	game_state& gamestate_;
-	gamestatus status_;
 	gamemap map_;
 	unit_map units_;
 	undo_list undo_stack_;

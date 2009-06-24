@@ -167,7 +167,6 @@ void replay_controller::reset_replay(){
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	units_ = units_start_;
-	status_ = status_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = teams_start_;
 	statistics::fresh_stats();
@@ -178,7 +177,7 @@ void replay_controller::reset_replay(){
 		// failure)
 		events_manager_.reset();
 		events_manager_.reset(new game_events::manager(level_,map_,
-								units_,teams_, gamestate_,status_, *this));
+								units_,teams_, gamestate_, *this));
 		events_manager_->set_gui(*gui_);
 		events_manager_->set_soundsource(*soundsources_manager_);
 	}
@@ -361,12 +360,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		player_number_++;
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
-			//FIXME: remove these assertions once turn functionality is removed from gamestatus
-			assert (status_.turn() == turn());
-			assert (status_.number_of_turns() == number_of_turns());
-			assert (status_.get_time_of_day().id == tod_manager_.get_time_of_day().id);
 			next_turn();
-			status_.next_turn();
 			try {
 				finish_turn();
 			} catch (end_turn_exception) {

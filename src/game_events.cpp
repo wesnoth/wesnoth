@@ -1020,11 +1020,8 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		std::string add = cfg["add"];
 		std::string current = cfg["current"];
 		if(!add.empty()) {
-			rsrc.status_ptr->modify_turns(add);
 			rsrc.controller->modify_turns(add);
 		} else if(!value.empty()) {
-			rsrc.status_ptr->add_turns(-rsrc.status_ptr->number_of_turns());
-			rsrc.status_ptr->add_turns(lexical_cast_default<int>(value,-1));
 			rsrc.controller->add_turns(-rsrc.controller->number_of_turns());
 			rsrc.controller->add_turns(lexical_cast_default<int>(value,-1));
 		}
@@ -1036,7 +1033,6 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 			if(new_turn_number_u < current_turn_number || (new_turn_number > rsrc.controller->number_of_turns() && rsrc.controller->number_of_turns() != -1)) {
 				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 			} else if(new_turn_number_u != current_turn_number) {
-				rsrc.status_ptr->set_turn(new_turn_number_u);
 				rsrc.controller->set_turn(new_turn_number_u);
 				rsrc.state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
 				rsrc.screen->new_turn();
@@ -3339,7 +3335,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 // Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
-	gamestatus *status_ptr = game_events::resources->status_ptr;
 	play_controller *controller = game_events::resources->controller;
 
 		log_scope("time_area");
@@ -3351,7 +3346,6 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 			const std::vector<std::string> id_list =
 				utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 			foreach(const std::string& id, id_list) {
-				status_ptr->remove_time_area(id);
 				controller->remove_time_area(id);
 				LOG_NG << "event WML removed time_area '" << id << "'\n";
 			}
@@ -3369,7 +3363,6 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 			config parsed_cfg = cfg.get_parsed_config();
-			status_ptr->add_time_area(id, locs, parsed_cfg);
 			controller->add_time_area(id, locs, parsed_cfg);
 			LOG_NG << "event WML inserted time_area '" << id << "'\n";
 		}
@@ -3797,7 +3790,7 @@ namespace game_events {
 	manager::manager(const config& cfg, gamemap& map_,
 			unit_map& units_,
 			std::vector<team>& teams_,
-			game_state& state_of_game_, gamestatus& status,
+			game_state& state_of_game_,
 			play_controller& controller)
 		: resources()
 		, variable_manager(&state_of_game_)
@@ -3816,7 +3809,6 @@ namespace game_events {
 		resources.units = &units_;
 		resources.teams = &teams_;
 		resources.state_of_game = &state_of_game_;
-		resources.status_ptr = &status;
 		resources.lua_kernel = new LuaKernel;
 		resources.controller = &controller;
 		game_events::resources = &resources;

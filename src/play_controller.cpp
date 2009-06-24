@@ -59,7 +59,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	level_(level),
 	teams_(),
 	gamestate_(state_of_game),
-	status_(level, num_turns, &state_of_game),
 	map_(game_config, level["map_data"]),
 	units_(),
 	undo_stack_(),
@@ -83,7 +82,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
 
-	status_.teams = &teams_;
 	game_config::add_color_info(level);
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
@@ -131,7 +129,7 @@ void play_controller::init(CVideo& video){
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
 	events_manager_.reset(new game_events::manager(level_,map_,
-                                                   units_,teams_, gamestate_,status_,*this));
+                                                   units_,teams_, gamestate_,*this));
 
 	std::set<std::string> seen_save_ids;
 
