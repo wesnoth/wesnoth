@@ -62,7 +62,6 @@ private:
 	void handle_generic_event(const std::string& /*name*/);
 
 	game_state gamestate_start_;
-	gamestatus status_start_;
 	unit_map units_start_;
 	tod_manager tod_manager_start_;
 

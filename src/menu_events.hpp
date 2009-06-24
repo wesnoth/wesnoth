@@ -25,7 +25,6 @@
 #include "widgets/textbox.hpp"
 
 class game_state;
-class gamestatus;
 class tod_manager;
 
 namespace events {
