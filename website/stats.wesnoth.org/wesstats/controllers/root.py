@@ -50,7 +50,6 @@ def scaled_query(curs,query,threshold,evaluator):
 	for size in sizes:
 		tblname = configuration.DB_TABLE_PREFIX+"SMPL"+str(size)
 		nquery = query.replace("GAMES",tblname)
-		print nquery
 		curs.execute(nquery)
 		results = curs.fetchall()
 		length = evaluator(results)
@@ -78,6 +77,13 @@ def fconstruct(filters,colname,list):
 	filters += newfilter
 	return filters
 
+def dateconstruct(filters,start_date,end_date):
+	if len(filters) != 0:
+		filters += " AND "
+	else:
+		filters += " WHERE "
+	filters += "timestamp BETWEEN '"+start_date+"' AND '"+end_date+"'"
+	return filters
 def listfix(l):
 	if not isinstance(l,types.ListType):
 		return [l]
@@ -148,7 +154,60 @@ class PieGraphController(object):
 			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
 			raw_fdata = curs.fetchall()
 			fdata[filter] = []
-			print raw_fdata
+			for i in raw_fdata:
+				fdata[filter].append(i[0])
+		#print fdata
+		filters = ""
+		used_filters = intersect(kw.keys(),available_filters)
+		ufilters_vals = dict()
+		for filter in used_filters:
+			kw[filter] = listfix(kw[filter])
+			filter_vals = intersect(kw[filter],fdata[filter])
+			filters = fconstruct(filters,filter,filter_vals)
+			ufilters_vals[filter] = filter_vals
+		#get columns and column transformations for this view
+		y_xforms = view_data[6].split(',')
+		y_data = view_data[2].split(',')
+		y_data_str = ""
+		#they must be equal!
+		assert len(y_data) == len(y_xforms)
+		for i in range(len(y_data)):
+			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
+		y_data_str = y_data_str[0:len(y_data_str)-1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
+		print query
+		results = scaled_query(curs,query,100,evaluators.count_eval)
+		print results
+		#generate JS datafields here because genshi templating can't emit JS...
+		data = ""
+		for i in range(0,len(results)):
+                        data += "data.setValue("+str(i)+",0,'"+results[i][0]+"');\n"
+                        data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
+		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,
+			data=data,filters=available_filters,used_filters=used_filters,
+			ufilters_vals=ufilters_vals,fdata=fdata)
+
+class BarGraphController(object):
+	def __init__(self,url):
+		self.url = url
+	
+	@expose(template="wesstats.templates.barview")
+	def default(self,**kw):
+		#pull data on this view from DB
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		curs = conn.cursor()
+		
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		view_data = curs.fetchall()[0]
+		print view_data
+		#fetch the relevant filters for this template and their possible values
+		available_filters = view_data[5].split(',')
+		fdata = dict()
+		for filter in available_filters:
+			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
+			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
+			raw_fdata = curs.fetchall()
+			fdata[filter] = []
 			for i in raw_fdata:
 				fdata[filter].append(i[0])
 		#print fdata
@@ -186,13 +245,59 @@ class PieGraphController(object):
 			data=data,filters=available_filters,used_filters=used_filters,
 			ufilters_vals=ufilters_vals,fdata=fdata)
 
-class BarGraphController(object):
-	def __init__(self,url):
-		self.url = url
-
 class LineGraphController(object):
 	def __init__(self,url):
 		self.url = url
+	
+	@expose(template="wesstats.templates.lineview")
+	def default(self,**kw):
+		#pull data on this view from DB
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		curs = conn.cursor()
+		
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		view_data = curs.fetchall()[0]
+		print view_data
+		#fetch the relevant filters for this template and their possible values
+		available_filters = view_data[5].split(',')
+		fdata = dict()
+		for filter in available_filters:
+			curs.execute("SELECT DISTINCT "+filter+" FROM GAMES")
+			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
+			raw_fdata = curs.fetchall()
+			fdata[filter] = []
+			for i in raw_fdata:
+				fdata[filter].append(i[0])
+		#print fdata
+		filters = ""
+		used_filters = intersect(kw.keys(),available_filters)
+		ufilters_vals = dict()
+		for filter in used_filters:
+			kw[filter] = listfix(kw[filter])
+			filter_vals = intersect(kw[filter],fdata[filter])
+			filters = fconstruct(filters,filter,filter_vals)
+			ufilters_vals[filter] = filter_vals
+		#get columns and column transformations for this view
+		y_xforms = view_data[6].split(',')
+		y_data = view_data[2].split(',')
+		y_data_str = ""
+		#they must be equal!
+		assert len(y_data) == len(y_xforms)
+		for i in range(len(y_data)):
+			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
+		y_data_str = y_data_str[0:len(y_data_str)-1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
+		print query
+		results = scaled_query(curs,query,100,evaluators.count_eval)
+		print results
+		#generate JS datafields here because genshi templating can't emit JS...
+		data = ""
+		for i in range(0,len(results)):
+                        data += "data.setValue("+str(i)+",0,'"+results[i][0]+"');\n"
+                        data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
+		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,
+			data=data,filters=available_filters,used_filters=used_filters,
+			ufilters_vals=ufilters_vals,fdata=fdata)
 
 class NotFoundController(object):
 	def __init__(self,url):
