@@ -1673,7 +1673,8 @@ void calculate_healing(game_display& disp, const gamemap& map,
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 
-		if (!utils::string_bool(i->second.get_state("healable"),true))
+		if (!utils::string_bool(i->second.get_state("healable"),true) ||
+			i->second.incapacitated())
 			continue;
 
 		DBG_NG << "found healable unit at (" << i->first << ")\n";
