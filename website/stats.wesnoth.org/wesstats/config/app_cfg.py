@@ -24,6 +24,8 @@ base_config.renderers = []
 
 base_config.package = wesstats
 
+base_config.serve_static = True
+
 #Set the default renderer
 base_config.default_renderer = 'genshi'
 base_config.renderers.append('genshi')
@@ -33,7 +35,7 @@ base_config.renderers.append('genshi')
 #base_config.renderers.append('chameleon_genshi')
 
 #Configure the base SQLALchemy Setup
-base_config.use_sqlalchemy = True
+base_config.use_sqlalchemy = False
 base_config.model = wesstats.model
 base_config.DBSession = wesstats.model.DBSession
 
