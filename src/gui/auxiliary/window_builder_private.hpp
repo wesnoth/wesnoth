@@ -232,23 +232,6 @@ private:
 	int retval_;
 };
 
-struct tbuilder_toggle_panel : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_toggle_panel();
-public:
-	tbuilder_toggle_panel(const config& cfg);
-
-	twidget* build () const;
-
-	tbuilder_grid_ptr grid;
-
-private:
-	std::string retval_id_;
-	int retval_;
-};
-
 struct tbuilder_vertical_scrollbar : public implementation::tbuilder_control
 {
 private:

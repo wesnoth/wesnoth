@@ -29,6 +29,7 @@
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
+#include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -966,57 +967,6 @@ twidget* tbuilder_toggle_button::build() const
 			<< id << "' with defintion '" << definition << "'.\n";
 
 	return toggle_button;
-}
-
-tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	grid(0),
-	retval_id_(cfg["return_value_id"]),
-	retval_(lexical_cast_default<int>(cfg["return_value"]))
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_toggle_panel
- *
- * == Toggle panel ==
- *
- * A panel is an item which can hold other items. The difference between a grid
- * and a panel is that it's possible to define how a panel looks. A grid in an
- * invisible container to just hold the items. The toggle panel is a
- * combination of the panel and a toggle button, it allows a toggle button with
- * its own grid.
- *
- * @start_table = config
- *     grid (grid)                     Defines the grid with the widgets to
- *                                     place on the panel.
- *     return_value_id (string = "")   The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- *     return_value (int = 0)          The return value, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- * @end_table
- *
- */
-
-	const config &c = cfg.child("grid");
-
-	VALIDATE(c, _("No grid defined."));
-
-	grid = new tbuilder_grid(c);
-}
-
-twidget* tbuilder_toggle_panel::build() const
-{
-	ttoggle_panel* toggle_panel = new ttoggle_panel();
-
-	init_control(toggle_panel);
-
-	toggle_panel->set_retval(get_retval(retval_id_, retval_, id));
-
-	DBG_GUI_G << "Window builder: placed toggle panel '"
-			<< id << "' with defintion '" << definition << "'.\n";
-
-	toggle_panel->init_grid(grid);
-	return toggle_panel;
 }
 
 twidget* tbuilder_vertical_scrollbar::build() const

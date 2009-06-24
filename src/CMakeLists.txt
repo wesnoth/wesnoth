@@ -273,6 +273,7 @@ SET(wesnoth-main_SRC
     gui/auxiliary/window_builder/text_box.cpp
     gui/auxiliary/window_builder/panel.cpp
     gui/auxiliary/window_builder/password_box.cpp
+    gui/auxiliary/window_builder/toggle_panel.cpp
     gui/auxiliary/window_builder.cpp
     gui/dialogs/addon_connect.cpp
     gui/dialogs/addon_list.cpp
