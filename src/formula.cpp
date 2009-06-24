@@ -253,7 +253,7 @@ private:
 		if(left.is_list() || left.is_map()) {
 			return left[ key ];
 		} else {
-			throw formula_error("Illegal usage of operator []", "", "", 0);
+			return variant();
 		}
 	}
 
