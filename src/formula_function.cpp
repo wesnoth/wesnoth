@@ -223,13 +223,13 @@ private:
 
 		if( args().size() == 1)
 		{
-			str1 = var1.to_debug_string();
+			str1 = var1.to_debug_string(NULL, true);
 			LOG_AI << str1 << std::endl;
 			return var1;
 		} else {
 			str1 = var1.string_cast();
 			const variant var2 = args()[1]->evaluate(variables);
-			str2 = var2.to_debug_string();
+			str2 = var2.to_debug_string(NULL, true);
 			LOG_AI << str1 << str2 << std::endl;
 			return var2;
 		}

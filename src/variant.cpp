@@ -775,7 +775,7 @@ std::string variant::string_cast() const
 	}
 }
 
-std::string variant::to_debug_string(std::vector<const game_logic::formula_callable*>* seen) const
+std::string variant::to_debug_string(std::vector<const game_logic::formula_callable*>* seen, bool verbose) const
 {
 	std::vector<const game_logic::formula_callable*> seen_stack;
 	if(!seen) {
@@ -796,7 +796,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 				s << ", ";
 			}
 
-			s << operator[](n).to_debug_string(seen);
+			s << operator[](n).to_debug_string(seen, verbose);
 		}
 		s << "]";
 		break;
@@ -804,7 +804,8 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 	case TYPE_CALLABLE: {
 		s << "{";
 		if(std::find(seen->begin(), seen->end(), callable_) == seen->end()) {
-			seen->push_back(callable_);
+			if(!verbose)
+				seen->push_back(callable_);
 			std::vector<game_logic::formula_input> v = callable_->inputs();
 			bool first = true;
 			for(size_t i=0; i<v.size(); ++i) {
@@ -820,7 +821,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 					s << "(writeonly) ";
 				}
 
-				s << "-> " << callable_->query_value(input.name).to_debug_string(seen);
+				s << "-> " << callable_->query_value(input.name).to_debug_string(seen, verbose);
 			}
 		} else {
 			s << "...";
@@ -836,9 +837,9 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 				s << ",";
 			}
 			first_time = false;
-			s << i->first.to_debug_string(seen);
+			s << i->first.to_debug_string(seen, verbose);
 			s << "->";
-			s << i->second.to_debug_string(seen);
+			s << i->second.to_debug_string(seen, verbose);
 		}
 		s << "]";
 		break;
