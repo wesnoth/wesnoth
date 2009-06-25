@@ -32,6 +32,7 @@
 #include "unit_id.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "tod_manager.hpp"
 
 #include <boost/bind.hpp>
 
@@ -1692,7 +1693,7 @@ void connect::update_and_send_diff(bool update_time_of_day)
 	if (update_time_of_day)
 	{
 		// Set random start ToD
-		gamestatus game_status(level_,atoi(level_["turns"].c_str()),&state_);
+		tod_manager tod_mng(level_,atoi(level_["turns"].c_str()),&state_);
 	}
 
 	config diff = level_.get_diff(old_level);
