@@ -22,7 +22,6 @@
 #include "dialogs.hpp"
 #include "key.hpp"
 #include "filesystem.hpp"
-#include "gamestatus.hpp"
 #include "savegame.hpp"
 #include "unit_types.hpp"
 //

@@ -22,7 +22,6 @@
 
 #include "actions.hpp"
 #include "foreach.hpp"
-#include "gamestatus.hpp"
 #include "tod_manager.hpp"
 #include "gettext.hpp"
 #include "language.hpp"

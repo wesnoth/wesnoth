@@ -33,7 +33,6 @@
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
 

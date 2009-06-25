@@ -26,7 +26,6 @@
 
 #include "display.hpp"
 #include "game_events.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "language.hpp"

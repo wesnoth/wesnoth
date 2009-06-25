@@ -17,7 +17,6 @@
 #include "fake_display.hpp"
 
 #include "game_display.hpp"
-#include "gamestatus.hpp"
 #include "tod_manager.hpp"
 #include "map.hpp"
 #include "unit_map.hpp"

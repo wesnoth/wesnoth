@@ -22,7 +22,6 @@
 #include "ai/manager.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
-#include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
 

@@ -25,7 +25,6 @@
 #include "display.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
