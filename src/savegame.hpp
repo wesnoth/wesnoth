@@ -229,7 +229,7 @@ public:
 	game_savegame(game_state& gamestate, const config& level_cfg,
 		game_display& gui, const std::vector<team>& teams,
 		const unit_map& units, const tod_manager& tod_mng,
-		const gamemap& map, const bool compress_saves);
+		const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -268,7 +268,7 @@ public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg,
 					 game_display& gui, const std::vector<team>& teams,
 					 const unit_map& units, const tod_manager& tod_mng,
-					 const gamemap& map, const bool compress_saves);
+					 const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
@@ -282,7 +282,7 @@ public:
 	oos_savegame(game_state &gamestate, const config& level_cfg,
 				 game_display& gui, const std::vector<team>& teams,
 				 const unit_map& units, const tod_manager& tod_mng,
-				 const gamemap& map, const bool compress_saves);
+				 const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 private:
 	/** Display the save game dialog. */

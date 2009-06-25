@@ -513,7 +513,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		game_savegame save(gamestate_, level_, *gui_, teams_, units_, tod_manager_, map_, preferences::compress_saves());
+		game_savegame save(gamestate_, level_, *gui_, teams_, units_, tod_manager_, map_, config(), preferences::compress_saves());
 		save.save_game_interactive((*gui_).video(), _("A network disconnection has occurred, and the game\ncannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
@@ -681,7 +681,7 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->draw(true,true);
 
 	if (save) {
-		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, tod_manager_, map_, preferences::compress_saves());
+		autosave_savegame save(gamestate_, level_, *gui_, teams_, units_, tod_manager_, map_, config(), preferences::compress_saves());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
