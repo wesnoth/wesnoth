@@ -288,6 +288,7 @@ bool set_language(const language_def& locale)
 	current_language = locale;
 	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
+	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
 
 	// fill string_table (should be moved somwhere else some day)
 	try {

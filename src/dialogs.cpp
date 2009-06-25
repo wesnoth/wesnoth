@@ -429,7 +429,6 @@ void save_preview_pane::draw_contents()
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
 
-	char* old_locale = std::setlocale(LC_TIME, get_locale().localename.c_str());
 	char time_buf[256] = {0};
 	const save_info& save = (*info_)[index_];
 	tm* tm_l = localtime(&save.time_modified);
@@ -440,10 +439,6 @@ void save_preview_pane::draw_contents()
 		}
 	} else {
 		LOG_NG << "localtime() returned null for time " << save.time_modified << ", save " << save.name;
-	}
-
-	if(old_locale) {
-		std::setlocale(LC_TIME, old_locale);
 	}
 
 	std::stringstream str;
