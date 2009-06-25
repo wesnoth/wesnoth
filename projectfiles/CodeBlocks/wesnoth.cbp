@@ -26,6 +26,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-O3" />
+			<Add option="-Wall" />
 			<Add option="-mthreads" />
 			<Add option="-march=native" />
 			<Add option="-fexceptions" />
@@ -245,12 +246,16 @@
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\menubar.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\minimap.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\minimap.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\panel.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\panel.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\password_box.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\password_box.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\spacer.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\spacer.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\text_box.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder\text_box.hpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\toggle_panel.cpp" />
+		<Unit filename="..\..\src\gui\auxiliary\window_builder\toggle_panel.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\window_builder_private.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\addon_connect.hpp" />
