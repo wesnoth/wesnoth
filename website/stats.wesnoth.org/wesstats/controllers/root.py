@@ -139,6 +139,7 @@ class PieGraphController(object):
 	
 	@expose(template="wesstats.templates.pieview")
 	def default(self,**kw):
+		print kw['startdate']
 		#pull data on this view from DB
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
