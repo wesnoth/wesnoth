@@ -110,8 +110,12 @@ class RootController(BaseController):
 		conn.close()
 		return dict(views=views)
 
-	@expose(template="wesstats.templates.newview")
-	def newview(self):
+	@expose(template="wesstats.templates.addview")
+	def addview(self):
+		return dict()
+	
+	@expose(template="wesstats.templates.deleteview")
+	def deleteview(self):
 		return dict()
 	
 	@expose()
