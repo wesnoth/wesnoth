@@ -114,6 +114,83 @@ public:
 	virtual double evaluate();
 
 	virtual bool execute();
+private:
+	/** Location of the keep the closest to our leader. */
+	map_location keep_loc_;
+
+	/** Locaton of our leader. */
+	map_location leader_loc_;
+
+	/** The best possible location for our leader if it can't reach a village. */
+	map_location best_leader_loc_;
+
+	/** debug log level for AI enabled? */
+	bool debug_;
+
+	typedef std::map<map_location /* unit location */,
+		std::vector<map_location /* villages we can reach */> > treachmap;
+
+	typedef std::vector<std::pair<map_location /* destination */,
+		map_location /* start */ > > tmoves;
+
+
+	// The list of moves we want to make
+	tmoves moves_;
+
+
+	/** Dispatches all units to their best location. */
+	void dispatch(treachmap& reachmap, tmoves& moves);
+
+
+	/**
+	 * Dispatches all units who can reach one village.
+	 * Returns true if it modified reachmap isn't empty.
+	 */
+	bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves);
+
+
+	/*
+	 * Dispatches units to villages which can only be reached by one unit.
+	 * Returns true if modified reachmap and reachmap isn't empty.
+	 */
+	bool dispatch_village_simple(
+		treachmap& reachmap, tmoves& moves, size_t& village_count);
+
+
+	/** Removes a village for all units, returns true if anything is deleted. */
+	bool remove_village(
+		treachmap& reachmap, tmoves& moves, const map_location& village);
+
+
+	/** Removes a unit which can't reach any village anymore. */
+	treachmap::iterator remove_unit(
+		treachmap& reachmap, tmoves& moves, treachmap::iterator unit);
+
+
+	/** Dispatches the units to a village after the simple dispatching failed. */
+	void dispatch_complex(
+		treachmap& reachmap, tmoves& moves, const size_t village_count);
+
+
+	/** Dispatches all units to a village, every unit can reach every village. */
+	void full_dispatch(treachmap& reachmap, tmoves& moves);
+
+
+	/** Shows which villages every unit can reach (debug function). */
+	void dump_reachmap(treachmap& reachmap);
+
+
+	bool get_villages(const moves_map &possible_moves,
+		const move_map &dstsrc, const move_map &enemy_dstsrc,
+		unit_map::const_iterator &leader);
+	
+
+	void find_villages(
+		treachmap& reachmap,
+		tmoves& moves,
+		const std::multimap<map_location,map_location>& dstsrc,
+		const std::map<map_location,paths>& possible_moves,
+		const std::multimap<map_location,map_location>& enemy_dstsrc);
 
 };
 

@@ -193,6 +193,11 @@ public:
 	virtual bool leader_can_reach_keep() = 0;
 
 
+	virtual bool multistep_move_possible(const map_location& from,
+		const map_location& to, const map_location& via,
+		const moves_map& possible_moves) const = 0;
+
+
 	virtual const map_location& nearest_keep(const map_location& loc) = 0;
 
 
@@ -326,6 +331,14 @@ public:
 	}
 
 
+	virtual bool multistep_move_possible(const map_location& from,
+		const map_location& to, const map_location& via,
+		const moves_map& possible_moves) const
+	{
+		return target_->multistep_move_possible(from,to,via,possible_moves);
+	}
+
+
 	virtual const map_location& nearest_keep( const map_location& loc )
 	{
 		return target_->nearest_keep(loc);
@@ -431,6 +444,11 @@ public:
 
 
 	virtual const std::set<map_location>& keeps();
+
+
+	virtual bool multistep_move_possible(const map_location& from,
+		const map_location& to, const map_location& via,
+		const moves_map& possible_moves) const;
 
 
 	virtual const map_location& nearest_keep( const map_location& loc );

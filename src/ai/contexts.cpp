@@ -238,7 +238,7 @@ void readonly_context_impl::log_message(const std::string& msg)
 
 
 map_location readwrite_context_impl::move_unit(map_location from, map_location to,
-		std::map<map_location,paths>& possible_moves)
+		const moves_map &possible_moves)
 {
 	const map_location loc = move_unit_partial(from,to,possible_moves);
 	const unit_map::iterator u = get_info().units.find(loc);
@@ -256,7 +256,7 @@ map_location readwrite_context_impl::move_unit(map_location from, map_location t
 
 
 map_location readwrite_context_impl::move_unit_partial(map_location from, map_location to,
-		std::map<map_location,paths>& possible_moves)
+		const moves_map &possible_moves)
 {
 	LOG_AI << "readwrite_context_impl::move_unit " << from << " -> " << to << '\n';
 	assert(to.valid() && to.x <= MAX_MAP_AREA && to.y <= MAX_MAP_AREA);
@@ -280,12 +280,12 @@ map_location readwrite_context_impl::move_unit_partial(map_location from, map_lo
 
 	const bool show_move = preferences::show_ai_moves();
 
-	const std::map<map_location,paths>::iterator p_it = possible_moves.find(from);
+	const std::map<map_location,paths>::const_iterator p_it = possible_moves.find(from);
 
 	std::vector<map_location> steps;
 
 	if(p_it != possible_moves.end()) {
-		paths& p = p_it->second;
+		const paths& p = p_it->second;
 		paths::dest_vect::const_iterator rt = p.destinations.find(to);
 		if (rt != p.destinations.end())
 		{

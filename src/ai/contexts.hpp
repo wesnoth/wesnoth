@@ -195,8 +195,8 @@ public:
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 	virtual team& current_team_w() = 0;
 	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
-	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves) = 0;
-	virtual map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves) = 0;
+	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves) = 0;
+	virtual map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves) = 0;
 	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()) = 0;
 	virtual void raise_unit_recruited() const = 0;
 	virtual void raise_unit_moved() const = 0;
@@ -458,13 +458,13 @@ public:
 	}
 
 
-	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves)
+	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves)
 	{
 		return target_->move_unit(from, to, possible_moves);
 	}
 
 
-	virtual map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves)
+	virtual map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves)
 	{
 		return target_->move_unit_partial(from, to, possible_moves);
 	}
@@ -826,14 +826,14 @@ public:
 	 * @param possible_moves      The map of possible moves, as obtained from
 	 *                            'calculate_possible_moves'.
 	 */
-	virtual map_location move_unit(map_location from, map_location to, std::map<map_location,paths>& possible_moves);
+	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves);
 
 	/**
 	 * @deprecated
 	 * Identical to 'move_unit', except that the unit's movement
 	 * isn't set to 0 after the move is complete.
 	 */
-	map_location move_unit_partial(map_location from, map_location to, std::map<map_location,paths>& possible_moves);
+	map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves);
 
 
 	/**

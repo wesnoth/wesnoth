@@ -550,6 +550,51 @@ bool default_ai_context_impl::leader_can_reach_keep()
 }
 
 
+bool default_ai_context_impl::multistep_move_possible(const map_location& from,
+	const map_location& to, const map_location& via,
+	const moves_map& possible_moves) const
+{
+	unit_map &units_ = get_info().units;
+	const unit_map::const_iterator i = units_.find(from);
+	if(i != units_.end()) {
+		if(from != via && to != via && units_.count(via) == 0) {
+			LOG_AI << "when seeing if leader can move from "
+				<< from << " -> " << to
+				<< " seeing if can detour to keep at " << via << '\n';
+			const std::map<map_location,paths>::const_iterator moves = possible_moves.find(from);
+			if(moves != possible_moves.end()) {
+
+				LOG_AI << "found leader moves..\n";
+
+				// See if the unit can make it to 'via', and if it can,
+				// how much movement it will have left when it gets there.
+				paths::dest_vect::const_iterator itor =
+					moves->second.destinations.find(via);
+				if (itor != moves->second.destinations.end())
+				{
+					LOG_AI << "Can make it to keep with " << itor->move_left << " movement left.\n";
+					unit temp_unit(i->second);
+					temp_unit.set_movement(itor->move_left);
+					const temporary_unit_placer unit_placer(units_,via,temp_unit);
+					const paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
+
+					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
+
+					// See if this leader could make it back to the keep.
+					if (unit_paths.destinations.contains(to)) {
+						LOG_AI << "can make it back to the keep\n";
+						return true;
+					}
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
+
+
 const map_location& default_ai_context_impl::nearest_keep(const map_location& loc)
 {
 	const std::set<map_location>& keeps = this->keeps();
