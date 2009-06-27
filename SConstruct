@@ -16,8 +16,6 @@ from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
 
-SConsignFile("build/sconsign.dblite")
-
 # Warn user of current set of build options.
 if os.path.exists('.scons-option-cache'):
     optfile = file('.scons-option-cache')
@@ -38,6 +36,7 @@ opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd,test", Split("wesnoth wesnothd campaignd cutter exploder test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
+    PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
@@ -102,6 +101,7 @@ sys.path.insert(0, "./scons")
 env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"])
 
 opts.Save('.scons-option-cache', env)
+env.SConsignFile("$build_dir/sconsign.dblite")
 
 # Make sure the user's environment is always available
 env['ENV']['PATH'] = os.environ["PATH"]
@@ -208,7 +208,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]), config_h = "config.h",
-    log_file="build/config.log", conf_dir="build/sconf_temp")
+    log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
 if env["prereqs"]:
@@ -283,7 +283,7 @@ if env["prereqs"]:
 #    
 #    env["have_boost_asio"] = have_boost_asio;
 
-    print "If any config checks fail, look in build/config.log for details"
+    print env.subst("If any config checks fail, look in $build_dir/config.log for details")
     print "If a check fails spuriously due to caching, use --config=force to force its rerun"
 
 else:
@@ -407,12 +407,12 @@ for env in [test_env, client_env, env]:
 if build == "base":
     build_dir = ""
 else:
-    build_dir = os.path.join("build", build)
+    build_dir = os.path.join("$build_dir", build)
 
 if build == "release" : build_suffix = ""
 else                  : build_suffix = "-" + build
 Export("build_suffix")
-SConscript("src/SConscript", build_dir = build_dir, duplicate = False)
+env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 all = env.Alias("all", map(Alias, binaries))
