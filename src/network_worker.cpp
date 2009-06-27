@@ -378,37 +378,100 @@ static void make_network_buffer(const char* input, int len, std::vector<char>& b
 
 static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_size = -1)
 {
+#ifdef __BEOS__
+	int timeout = 60000;
+#endif
 //	check_send_buffer_size(sock);
+	size_t upto = 0;
 	size_t size = buf.size();
 	if (in_size != -1)
 		size = in_size;
+	int send_len = 0;
 
-	if (!raw_data_only) {
+	if (!raw_data_only)
+	{
 		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].first.fresh_current(size);
 	}
-	{
-		const size_t shard = get_shard(sock);
-		// check if the socket is still locked
-		const threading::lock lock(*shard_mutexes[shard]);
-		if(sockets_locked[shard][sock] != SOCKET_LOCKED)
+#ifdef __BEOS__
+	while(upto < size && timeout > 0) {
+#else
+	while(true) {
+#endif
 		{
-			return SOCKET_ERRORED;
+			const size_t shard = get_shard(sock);
+			// check if the socket is still locked
+			const threading::lock lock(*shard_mutexes[shard]);
+			if(sockets_locked[shard][sock] != SOCKET_LOCKED)
+			{
+				return SOCKET_ERRORED;
+			}
 		}
-	}
-	int send_len = static_cast<int>(size);
-	const int res = SDLNet_TCP_Send(sock, &buf[0], send_len);
-	if (res < send_len) {
-		// according to http://www.libsdl.org/cgi/docwiki.cgi/SDLNet_TCP_Send
-		// if the return value is less than len, it's an error
+		send_len = static_cast<int>(size - upto);
+		const int res = SDLNet_TCP_Send(sock, &buf[upto],send_len);
+
+
+		if( res == send_len) {
+			if (!raw_data_only)
+			{
+				const threading::lock lock(*stats_mutex);
+				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
+			}
+			return SOCKET_READY;
+		}
+#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
+	        if(errno == EAGAIN)
+#elif defined(EWOULDBLOCK)
+		if(errno == EWOULDBLOCK)
+#endif
+		{
+			// update how far we are
+			upto += static_cast<size_t>(res);
+			if (!raw_data_only)
+			{
+				const threading::lock lock(*stats_mutex);
+				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
+			}
+
+#ifdef USE_POLL
+			struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
+			int poll_res;
+			do {
+				poll_res = poll(&fd, 1, 60000);
+			} while(poll_res == -1 && errno == EINTR);
+
+
+			if(poll_res > 0)
+				continue;
+#elif defined(USE_SELECT) && !defined(__BEOS__)
+			fd_set writefds;
+			FD_ZERO(&writefds);
+			FD_SET(((_TCPsocket*)sock)->channel, &writefds);
+			int retval;
+			struct timeval tv;
+			tv.tv_sec = 60;
+			tv.tv_usec = 0;
+
+			do {
+				retval = select(((_TCPsocket*)sock)->channel + 1, NULL, &writefds, NULL, &tv);
+			} while(retval == -1 && errno == EINTR);
+
+			if(retval > 0)
+				continue;
+#elif defined(__BEOS__)
+			if(res > 0) {
+				// some data was sent, reset timeout
+				timeout = 60000;
+			} else {
+				// sleep for 100 milliseconds
+				SDL_Delay(100);
+				timeout -= 100;
+			}
+			continue;
+#endif
+		}
+
 		return SOCKET_ERRORED;
-	} else {
-		if (!raw_data_only)
-		{
-			const threading::lock lock(*stats_mutex);
-			transfer_stats[sock].first.transfer(static_cast<size_t>(res));
-		}
-		return SOCKET_READY;
 	}
 }
 
