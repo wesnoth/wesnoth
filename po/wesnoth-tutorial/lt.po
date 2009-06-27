@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-01 23:54+0200\n"
-"PO-Revision-Date: 2008-10-09 21:28+0300\n"
+"PO-Revision-Date: 2009-06-16 23:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -101,6 +101,7 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
+"Jūs stovite bokšte ir jūsų mokytojas Delfadoras yra rytiniame upės krante."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
@@ -174,7 +175,7 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr ""
+msgstr "Labas rytas, Delfadorai! Ar jau laikas pulti daiktus?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:308
@@ -379,12 +380,12 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
 msgid "Move Konrad to the keep"
-msgstr ""
+msgstr "Nuveskite Konradą į bokštą"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
 msgid "Move Li'sar to the keep"
-msgstr ""
+msgstr "Nuveskite Li'sar į bokštą"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
@@ -737,7 +738,7 @@ msgstr "Wesnoth apmokymas II dalis"
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
-msgstr ""
+msgstr "Tragas"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:332
@@ -868,7 +869,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:531
 msgid "RECALL $recall_name1"
-msgstr ""
+msgstr "GRĄŽINTI $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
@@ -919,7 +920,7 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
 msgid "So, should I end my turn now?"
-msgstr ""
+msgstr "Tai, ar aš turėčiau dabar pabaigti savo ėjimą?"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:600
@@ -932,12 +933,12 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:602
 msgid "Move Konrad to capture a village"
-msgstr ""
+msgstr "Su Konradu užgrobkite kaimą"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
 msgid "Move Li'sar to capture a village"
-msgstr ""
+msgstr "Su Li'sar užgrobkite kaimą"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
@@ -950,7 +951,7 @@ msgstr "Ne! Aš pasakiau pasamdyti elfų LANKININKĄ! Dabar vėl bandykite..."
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
 msgid "Eowynial"
-msgstr ""
+msgstr "Eovynialė"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:642
@@ -967,7 +968,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
 msgid "Elriend"
-msgstr ""
+msgstr "Elriendas"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
@@ -1008,6 +1009,8 @@ msgstr "Goliras"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
+"Ne! Aš pasakiau grąžinti $recall_name1, o ne $recall_name2|! Dabar bandyk "
+"dar kartą..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:783
@@ -1015,6 +1018,8 @@ msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
+"Ne! Aš pasakiau GRĄŽINTI $recall_name1 iš praeito mūšio, o ne pasisamdyti "
+"naują $recruit.language_name|! Dabar bandyk dar kartą..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:799
@@ -1024,7 +1029,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
 msgid "RECALL $recall_name2"
-msgstr ""
+msgstr "GRĄŽINTI $recall_name2"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
@@ -1044,7 +1049,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 msgid "Elindel"
-msgstr ""
+msgstr "Elindelis"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
@@ -1184,12 +1189,12 @@ msgstr "Tai dažnai yra problema, todėl turėti kaimus yra svarbu."
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:995
 msgid "Move Konrad to another (unowned) village"
-msgstr ""
+msgstr "Nuveskite Konradą į kitą (neužgrobtą) kaimą"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:996
 msgid "Move Li'sar to another (unowned) village"
-msgstr ""
+msgstr "Nuveskite Li'sar į kitą (neužgrobtą) kaimą"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1021
@@ -1197,6 +1202,8 @@ msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
 msgstr ""
+"Tas pėstinintas blokuoja tiltą! Mes turime užimti tą salą prieš ją "
+"pasiekiant vilkų jojikams."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
