@@ -36,6 +36,17 @@ __all__ = ['RootController']
 def intersect(*lists):
 	return list(reduce(set.intersection, (set(l) for l in lists)))
 
+def isvalid(date):
+	date = date.split('/')
+	if len(date) != 3:
+		return False
+	for i in date:
+		if not i.isdigit():
+			return False
+		if int(i) < 1:
+			return False
+	return True
+
 def scaled_query(curs,query,threshold,evaluator):
 	s_time = time.time()
 	#list of all the sample sizes
@@ -139,7 +150,6 @@ class PieGraphController(object):
 	
 	@expose(template="wesstats.templates.pieview")
 	def default(self,**kw):
-		print kw['startdate']
 		#pull data on this view from DB
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
@@ -166,6 +176,10 @@ class PieGraphController(object):
 			filter_vals = intersect(kw[filter],fdata[filter])
 			filters = fconstruct(filters,filter,filter_vals)
 			ufilters_vals[filter] = filter_vals
+		if 'startdate' in kw and 'enddate' in kw and isvalid(kw['startdate']) and isvalid(kw['enddate']):
+			filters = dateconstruct(filters,kw['startdate'],kw['enddate'])
+			used_filters.append("dates")
+			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
 		#get columns and column transformations for this view
 		y_xforms = view_data[6].split(',')
 		y_data = view_data[2].split(',')
