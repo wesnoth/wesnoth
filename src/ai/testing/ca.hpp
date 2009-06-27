@@ -104,6 +104,23 @@ public:
 
 //============================================================================
 
+class move_leader_to_keep_phase : public candidate_action {
+public:
+
+	move_leader_to_keep_phase( rca_context &context, const config &cfg );
+
+	virtual ~move_leader_to_keep_phase();
+
+	virtual double evaluate();
+
+	virtual bool execute();
+
+private:
+	move_result_ptr move_;
+};
+
+//============================================================================
+
 class get_villages_phase : public candidate_action {
 public:
 
@@ -180,7 +197,7 @@ private:
 	void dump_reachmap(treachmap& reachmap);
 
 
-	bool get_villages(const moves_map &possible_moves,
+	void get_villages(const moves_map &possible_moves,
 		const move_map &dstsrc, const move_map &enemy_dstsrc,
 		unit_map::const_iterator &leader);
 	

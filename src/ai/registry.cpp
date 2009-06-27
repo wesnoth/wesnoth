@@ -74,6 +74,9 @@ static composite_ai::register_candidate_action_factory<testing_ai_default::comba
 static composite_ai::register_candidate_action_factory<testing_ai_default::move_leader_to_goals_phase>
 	move_leader_to_goals_phase_factory("testing_ai_default::move_leader_to_goals_phase");
 
+static composite_ai::register_candidate_action_factory<testing_ai_default::move_leader_to_keep_phase>
+	move_leader_to_keep_phase_factory("testing_ai_default::move_leader_to_keep_phase");
+
 static composite_ai::register_candidate_action_factory<testing_ai_default::get_villages_phase>
 	get_villages_phase_factory("testing_ai_default::get_villages_phase");
 

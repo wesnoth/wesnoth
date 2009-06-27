@@ -21,6 +21,7 @@
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
 #include "../../log.hpp"
+#include "../../foreach.hpp"
 
 #include <numeric>
 
@@ -152,29 +153,26 @@ double combat_phase::evaluate()
 bool combat_phase::execute()
 {
 	assert(choice_rating_ > 0.0);
+	bool gamestate_changed = false;
 	map_location from   = best_analysis_.movements[0].first;
 	map_location to     = best_analysis_.movements[0].second;
 	map_location target_loc = best_analysis_.target;
 
 	if (from!=to) {
 		move_result_ptr move_res = execute_move_action(from,to,false);
+		gamestate_changed |= move_res->is_gamestate_changed();
 		if (!move_res->is_ok()) {
-			if (!move_res->is_gamestate_changed()) {
-				return false;
-			}
-			return true;
+			return gamestate_changed;
 		}
 	}
 
 	attack_result_ptr attack_res = execute_attack_action(to, target_loc, -1);
+	gamestate_changed |= attack_res->is_gamestate_changed();
 	if (!attack_res->is_ok()) {
-		if (!attack_res->is_gamestate_changed()) {
-			return false;
-		}
-		return true;
+		return gamestate_changed;
 	}
 
-	return true;
+	return gamestate_changed;
 }
 
 //==============================================================
@@ -198,6 +196,84 @@ bool move_leader_to_goals_phase::execute()
 {
 	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
 	return true;
+}
+
+//==============================================================
+
+move_leader_to_keep_phase::move_leader_to_keep_phase( rca_context &context, const config &cfg )
+	: candidate_action(context,"testing_ai_default::move_leader_to_keep_phase",cfg["type"]),move_()
+{
+
+}
+
+move_leader_to_keep_phase::~move_leader_to_keep_phase()
+{
+
+}
+
+double move_leader_to_keep_phase::evaluate()
+{
+	unit_map &units_ = get_info().units;
+	const unit_map::iterator leader = units_.find_leader(get_side());
+
+	if(leader == units_.end() || leader->second.incapacitated() || leader->second.movement_left()==0 ) {
+		return BAD_SCORE;
+	}
+
+	// Find where the leader can move
+	const paths leader_paths(get_info().map, units_, leader->first,
+		 get_info().teams, false, false, current_team());
+	const map_location& keep = suitable_keep(leader->first,leader_paths);
+
+	std::map<map_location,paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
+
+	// If the leader is not on keep, move him there.
+	if(leader->first != keep) {
+		if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
+			move_ = check_move_action(leader->first,keep,false);
+			if (move_->is_ok()){
+				return 70;
+			}
+			//move_unit(leader->first,keep,get_possible_moves());
+		}
+		// Make a map of the possible locations the leader can move to,
+		// ordered by the distance from the keep.
+		std::multimap<int,map_location> moves_toward_keep;
+
+		// The leader can't move to his keep, try to move to the closest location
+		// to the keep where there are no enemies in range.
+		const int current_distance = distance_between(leader->first,keep);
+		foreach (const paths::step &dest, leader_paths.destinations)
+		{
+			const int new_distance = distance_between(dest.curr,keep);
+			if(new_distance < current_distance) {
+				moves_toward_keep.insert(std::make_pair(new_distance, dest.curr));
+			}
+		}
+
+		// Find the first location which we can move to,
+		// without the threat of enemies.
+		for(std::multimap<int,map_location>::const_iterator j = moves_toward_keep.begin();
+			j != moves_toward_keep.end(); ++j) {
+
+			if(get_enemy_dstsrc().count(j->second) == 0) {
+				move_ = check_move_action(leader->first,j->second,true);
+				if (move_->is_ok()){
+					return 70;
+				}
+			}
+		}
+	}
+	return BAD_SCORE;
+}
+
+bool move_leader_to_keep_phase::execute()
+{
+	bool gamestate_changed = false;
+	move_->execute();
+	gamestate_changed |= move_->is_ok();
+	return gamestate_changed;
 }
 
 //==============================================================
@@ -275,7 +351,7 @@ bool get_villages_phase::execute()
 	return gamestate_changed;
 }
 
-bool get_villages_phase::get_villages(const moves_map& possible_moves,
+void get_villages_phase::get_villages(const moves_map& possible_moves,
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::const_iterator &leader)
 {
