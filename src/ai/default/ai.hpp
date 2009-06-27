@@ -231,9 +231,6 @@ protected:
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
 	/** Functions to deal with keeps. */
-
-	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location>&);
-
 	void evaluate_recruiting_value(const map_location &leader_loc);
 
 	/**

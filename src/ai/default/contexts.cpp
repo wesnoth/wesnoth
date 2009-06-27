@@ -201,6 +201,32 @@ const defensive_position& default_ai_context_impl::best_defensive_position(const
 }
 
 
+int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
+{
+	int ret = 0;
+	unit_map &units_ = get_info().units;
+	map_location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if (checked_hexes.find(adj[n]) != checked_hexes.end())
+			continue;
+		checked_hexes.insert(adj[n]);
+		if (get_info().map.is_castle(adj[n])) {
+			const unit_map::const_iterator u = units_.find(adj[n]);
+			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
+			if (u == units_.end()
+				|| (current_team().is_enemy(u->second.side())
+					&& u->second.invisible(adj[n], units_, get_info().teams))
+				|| ((&get_info().teams[u->second.side()-1]) == &current_team()
+					&& u->second.movement_left() > 0)) {
+				ret += 1;
+			}
+		}
+	}
+	return ret;
+}
+
+
 std::map<map_location,defensive_position>& default_ai_context_impl::defensive_position_cache()
 {
 	return defensive_position_cache_;

@@ -67,6 +67,47 @@ public:
 
 	virtual bool execute();
 
+private:
+
+	bool recruit_usage(const std::string& usage, bool &gamestate_changed);
+	/**
+	 * Analyze all the units that this side can recruit
+	 * and rate their movement types.
+	 * Ratings will be placed in 'unit_movement_scores_',
+	 * with lower scores being better,
+	 * and the lowest possible rating being '10'.
+	 */
+	//@todo 1.7 disabled till reorg of rca
+	//void analyze_potential_recruit_movements();
+
+	std::map<std::string,int> unit_movement_scores_;
+	std::set<std::string> not_recommended_units_;
+
+	/**
+	 * Analyze all the units that this side can recruit
+	 * and rate their fighting suitability against enemy units.
+	 * Ratings will be placed in 'unit_combat_scores_',
+	 * with a '0' rating indicating that the unit is 'average' against enemy units,
+	 * negative ratings meaning they are poorly suited,
+	 * and positive ratings meaning they are well suited.
+	 */
+	void analyze_potential_recruit_combat();
+
+	std::map<std::string,int> unit_combat_scores_;
+
+	/**
+	 * Rates two unit types for their suitability against each other.
+	 * Returns 0 if the units are equally matched,
+	 * a positive number if a is suited against b,
+	 * and a negative number if b is suited against a.
+	 */
+	int compare_unit_types(const unit_type& a, const unit_type& b) const;
+
+	/**
+	 * calculates the average resistance unit type a has against the attacks of
+	 * unit type b.
+	 */
+	int average_resistance_against(const unit_type& a, const unit_type& b) const;
 };
 
 //============================================================================

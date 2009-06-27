@@ -919,29 +919,5 @@ void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-int ai_default::count_free_hexes_in_castle(const map_location& loc, std::set<map_location>& checked_hexes)
-{
-	int ret = 0;
-	location adj[6];
-	get_adjacent_tiles(loc,adj);
-	for(size_t n = 0; n != 6; ++n) {
-		if (checked_hexes.find(adj[n]) != checked_hexes.end())
-			continue;
-		checked_hexes.insert(adj[n]);
-		if (map_.is_castle(adj[n])) {
-			const unit_map::const_iterator u = units_.find(adj[n]);
-			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
-			if (u == units_.end()
-				|| (current_team().is_enemy(u->second.side())
-					&& u->second.invisible(adj[n], units_, teams_))
-				|| ((&teams_[u->second.side()-1]) == &current_team()
-					&& u->second.movement_left() > 0)) {
-				ret += 1;
-			}
-		}
-	}
-	return ret;
-}
-
 } //end of namespace ai
 

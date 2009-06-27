@@ -147,6 +147,9 @@ public:
 	virtual bool attack_close(const map_location& loc) const = 0;
 
 
+	virtual int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes) = 0;
+
+
 	/** Constructor */
 	default_ai_context();
 
@@ -249,6 +252,12 @@ public:
 	bool attack_close(const map_location& loc) const
 	{
 		return target_->attack_close(loc);
+	}
+
+
+	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes)
+	{
+		return target_->count_free_hexes_in_castle(loc, checked_hexes);
 	}
 
 
@@ -390,6 +399,9 @@ public:
 
 
 	int attack_depth();
+
+
+	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes);
 
 
 	defensive_position const& best_defensive_position(const map_location& unit,

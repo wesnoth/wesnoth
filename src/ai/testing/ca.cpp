@@ -20,14 +20,16 @@
 #include "ca.hpp"
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
-#include "../../log.hpp"
 #include "../../foreach.hpp"
+#include "../../log.hpp"
+#include "../../wml_exception.hpp"
 
 #include <numeric>
 
 static lg::log_domain log_ai_testing_ai_default("ai/testing/ai_default");
 #define DBG_AI_TESTING_AI_DEFAULT LOG_STREAM(debug, log_ai_testing_ai_default)
 #define LOG_AI_TESTING_AI_DEFAULT LOG_STREAM(info, log_ai_testing_ai_default)
+#define WRN_AI_TESTING_AI_DEFAULT LOG_STREAM(warn, log_ai_testing_ai_default)
 #define ERR_AI_TESTING_AI_DEFAULT LOG_STREAM(err, log_ai_testing_ai_default)
 
 
@@ -72,15 +74,473 @@ recruitment_phase::~recruitment_phase()
 
 double recruitment_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
-	return BAD_SCORE;
+	const unit_map::const_iterator leader = get_info().units.find_leader(get_side());
+	if(leader == get_info().units.end()) {
+		return BAD_SCORE;
+	}
+	if(!get_info().map.is_keep(leader->first)) {
+		return BAD_SCORE;
+	}
+
+	std::set<map_location> checked_hexes;
+	checked_hexes.insert(leader->first);
+	if(count_free_hexes_in_castle(leader->first, checked_hexes)==0) {
+		return BAD_SCORE;
+	}
+
+	//note that no gold check is done. This is intended, to speed up recruitment_phase::evaluate()
+	//so, after 1st failed recruit, this candidate action will be blacklisted for 1 turn.
+
+	return 100;//@todo: externalize
 }
 
 bool recruitment_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
-	return true;
+	bool gamestate_changed = false;
+	//@todo 1.7: move to on_new_turn event handler
+	not_recommended_units_.clear();
+	unit_combat_scores_.clear();
+	unit_movement_scores_.clear();
+
+	unit_map &units_ = get_info().units;
+	gamemap &map_ = get_info().map;
+	std::vector<team> &teams_ = get_info().teams;
+
+	map_location start_pos = units_.find_leader(get_side())->first;
+
+	raise_user_interact();
+	//analyze_potential_recruit_movements();
+	analyze_potential_recruit_combat();
+
+	std::vector<std::string> options = current_team().recruitment_pattern();
+	if (std::count(options.begin(), options.end(), "scout") > 0) {
+		size_t neutral_villages = 0;
+
+		// We recruit the initial allocation of scouts
+		// based on how many neutral villages there are
+		// that are closer to us than to other keeps.
+		const std::vector<map_location>& villages = map_.villages();
+		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
+			const int owner = village_owner(*v,teams_);
+			if(owner == -1) {
+				const size_t distance = distance_between(start_pos,*v);
+
+				bool closest = true;
+				for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
+					const int index = i - teams_.begin() + 1;
+					const map_location& loc = map_.starting_position(index);
+					if(loc != start_pos && distance_between(loc,*v) < distance) {
+						closest = false;
+						break;
+					}
+				}
+
+				if(closest) {
+					++neutral_villages;
+				}
+			}
+		}
+
+		// The villages per scout is for a two-side battle,
+		// accounting for all neutral villages on the map.
+		// We only look at villages closer to us, so we halve it,
+		// making us get twice as many scouts.
+		const int villages_per_scout = current_team().villages_per_scout()/2;
+
+		// Get scouts depending on how many neutral villages there are.
+		int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
+
+		LOG_AI_TESTING_AI_DEFAULT << "scouts_wanted: " << neutral_villages << "/"
+			<< villages_per_scout << " = " << scouts_wanted << "\n";
+
+		std::map<std::string,int> unit_types;
+
+		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+			if(u->second.side() == get_side()) {
+				++unit_types[u->second.usage()];
+			}
+		}
+
+		LOG_AI_TESTING_AI_DEFAULT << "we have " << unit_types["scout"] << " scouts already and we want "
+			<< scouts_wanted << " in total\n";
+
+		while(unit_types["scout"] < scouts_wanted) {
+			if (!recruit_usage("scout",gamestate_changed)){
+				break;
+			}
+			++unit_types["scout"];
+		}
+	}
+
+	// If there is no recruitment_pattern use "" which makes us consider
+	// any unit available.
+	if (options.empty()) {
+		options.push_back("");
+	}
+	// Buy units as long as we have room and can afford it.
+	while (recruit_usage(options[rand()%options.size()],gamestate_changed)) {
+		//refresh the recruitment pattern - it can be changed by recruit_usage
+		options = current_team().recruitment_pattern();
+		if (options.empty()) {
+			options.push_back("");
+		}
+	}
+
+	return gamestate_changed;
 }
+
+bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_changed)
+{
+	raise_user_interact();
+
+	const int min_gold = 0;
+
+	log_scope2(log_ai_testing_ai_default, "recruiting troops");
+	LOG_AI_TESTING_AI_DEFAULT << "recruiting '" << usage << "'\n";
+
+	//make sure id, usage and cost are known for the coming evaluation of unit types
+	unit_type_data::types().build_all(unit_type::HELP_INDEX);
+
+	std::vector<std::string> options;
+	bool found = false;
+	// Find an available unit that can be recruited,
+	// matches the desired usage type, and comes in under budget.
+	const std::set<std::string>& recruits = current_team().recruits();
+	for(std::map<std::string,unit_type>::const_iterator i =
+	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	{
+		const std::string& name = i->second.id();
+		// If usage is empty consider any unit.
+//		DBG_AI << name << " considered\n";
+		if (i->second.usage() == usage || usage == "") {
+			if (!recruits.count(name)) {
+//				DBG_AI << name << " rejected, not in recruitment list\n";
+				continue;
+			}
+			LOG_AI_TESTING_AI_DEFAULT << name << " considered for " << usage << " recruitment\n";
+			found = true;
+
+			if (current_team().gold() - i->second.cost() < min_gold) {
+				LOG_AI_TESTING_AI_DEFAULT << name << " rejected, cost too high (cost: " << i->second.cost() << ", current gold: " << current_team().gold() <<", min_gold: " << min_gold << ")\n";
+				continue;
+			}
+
+			if (not_recommended_units_.count(name))
+			{
+				LOG_AI_TESTING_AI_DEFAULT << name << " rejected, bad terrain or combat\n";
+				continue;
+			}
+
+			LOG_AI_TESTING_AI_DEFAULT << "recommending '" << name << "'\n";
+			options.push_back(name);
+		}
+	}
+
+	// From the available options, choose one at random
+	if(options.empty() == false) {
+		const int option = rand()%options.size();
+		recruit_result_ptr recruit_result = execute_recruit_action(options[option]);
+		gamestate_changed |= recruit_result->is_gamestate_changed();
+		return recruit_result->is_ok();
+	}
+	if (found) {
+		LOG_AI_TESTING_AI_DEFAULT << "No available units to recruit that come under the price.\n";
+	} else if (usage != "")	{
+		//FIXME: This message should be suppressed when WML author
+		//chooses the default recruitment pattern.
+		const std::string warning = "At difficulty level " +
+			get_info().game_state_.classification().difficulty + ", trying to recruit a:" +
+			usage + " but no unit of that type (usage=) is"
+			" available. Check the recruit and [ai]"
+			" recruitment_pattern keys for team '" +
+			current_team().name() + "' (" +
+			lexical_cast<std::string>(get_side()) + ")"
+			" against the usage key of the"
+			" units in question! Removing invalid"
+			" recruitment_pattern entry and continuing...\n";
+		WRN_AI_TESTING_AI_DEFAULT << warning;
+		// Uncommented until the recruitment limiting macro can be fixed to not trigger this warning.
+		//lg::wml_error << warning;
+		return current_team_w().remove_recruitment_pattern_entry(usage);
+	}
+	return false;
+}
+
+//@todo 1.7 disabled till reorg of rca
+/*
+void recruitment_phase::analyze_potential_recruit_movements()
+{
+	unit_map &units_ = get_info().units;
+	gamemap &map_ = get_info().map;
+
+	if(unit_movement_scores_.empty() == false ||
+			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_movement"])) {
+		return;
+	}
+
+	const unit_map::const_iterator leader = units_.find_leader(get_side());
+	if(leader == units_.end()) {
+		return;
+	}
+
+	const map_location& start = nearest_keep(leader->first);
+	if(map_.on_board(start) == false) {
+		return;
+	}
+
+	log_scope2(log_ai_testing_ai_default, "analyze_potential_recruit_movements()");
+
+	const unsigned int max_targets = 5;
+
+	const move_map srcdst, dstsrc;
+	std::vector<target> targets = find_targets(leader,dstsrc);
+	if(targets.size() > max_targets) {
+		std::sort(targets.begin(),targets.end(),target_comparer_distance(start));
+		targets.erase(targets.begin()+max_targets,targets.end());
+	}
+
+	const std::set<std::string>& recruits = current_team().recruits();
+
+	LOG_AI_TESTING_AI_DEFAULT << "targets: " << targets.size() << "\n";
+
+	std::map<std::string,int> best_scores;
+
+	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
+			continue;
+		}
+
+		const unit temp_unit(&get_info().units,&get_info().map,
+				&get_info().tod_manager_, &get_info().teams, &info->second, get_side());
+		// since we now use the ignore_units switch, no need to use a empty unit_map
+		// unit_map units;
+		// const temporary_unit_placer placer(units,start,temp_unit);
+
+		// pathfinding ignoring other units and terrain defense
+		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true,true);
+
+		int cost = 0;
+		int targets_reached = 0;
+		int targets_missed = 0;
+
+		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
+			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
+			plain_route route = a_star_search(start, t->loc, 100.0, &calc,
+					get_info().map.w(), get_info().map.h());
+
+			if (!route.steps.empty()) {
+				LOG_AI_TESTING_AI_DEFAULT << "made it: " << route.move_cost << "\n";
+				cost += route.move_cost;
+				++targets_reached;
+			} else {
+				LOG_AI_TESTING_AI_DEFAULT << "failed\n";
+				++targets_missed;
+			}
+		}
+
+		if(targets_reached == 0 || targets_missed >= targets_reached*2) {
+			unit_movement_scores_[*i] = 100000;
+			not_recommended_units_.insert(*i);
+		} else {
+			const int average_cost = cost/targets_reached;
+			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
+			unit_movement_scores_[*i] = score;
+
+			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.usage());
+			if(current_best == best_scores.end() || score < current_best->second) {
+				best_scores[temp_unit.usage()] = score;
+			}
+		}
+	}
+
+	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin();
+			j != unit_movement_scores_.end(); ++j) {
+
+		const unit_type_data::unit_type_map::const_iterator info =
+			unit_type_data::types().find_unit_type(j->first);
+
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
+			continue;
+		}
+
+		const int best_score = best_scores[info->second.usage()];
+		if(best_score > 0) {
+			j->second = (j->second*10)/best_score;
+			if(j->second > 15) {
+				LOG_AI_TESTING_AI_DEFAULT << "recommending against recruiting '" << j->first << "' (score: " << j->second << ")\n";
+				not_recommended_units_.insert(j->first);
+			} else {
+				LOG_AI_TESTING_AI_DEFAULT << "recommending recruit of '" << j->first << "' (score: " << j->second << ")\n";
+			}
+		}
+	}
+
+	if(not_recommended_units_.size() == unit_movement_scores_.size()) {
+		not_recommended_units_.clear();
+	}
+}
+
+*/
+
+int recruitment_phase::average_resistance_against(const unit_type& a, const unit_type& b) const
+{
+	gamemap &map_ = get_info().map;
+
+	int weighting_sum = 0, defense = 0;
+	const std::map<t_translation::t_terrain, size_t>& terrain =
+		map_.get_weighted_terrain_frequencies();
+
+	for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
+	     j_end = terrain.end(); j != j_end; ++j)
+	{
+		// Use only reachable tiles when computing the average defense.
+	  if (a.movement_type().movement_cost(map_, j->first) < unit_movement_type::UNREACHABLE) {
+			defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
+			weighting_sum += j->second;
+		}
+	}
+
+	if (weighting_sum == 0) {
+		// This unit can't move on this map, so just get the average weighted
+		// of all available terrains. This still is a kind of silly
+		// since the opponent probably can't recruit this unit and it's a static unit.
+		for (std::map<t_translation::t_terrain, size_t>::const_iterator jj = terrain.begin(),
+				jj_end = terrain.end(); jj != jj_end; ++jj)
+		{
+			defense += a.movement_type().defense_modifier(map_, jj->first) * jj->second;
+			weighting_sum += jj->second;
+		}
+	}
+
+	if(weighting_sum != 0) {
+		defense /= weighting_sum;
+	} else {
+		ERR_AI_TESTING_AI_DEFAULT << "The weighting sum is 0 and is ignored.\n";
+	}
+
+	LOG_AI_TESTING_AI_DEFAULT << "average defense of '" << a.id() << "': " << defense << "\n";
+
+	int sum = 0, weight_sum = 0;
+
+	// calculation of the average damage taken
+	bool steadfast = a.has_ability_by_id("steadfast");
+	bool living = !a.not_living();
+	const std::vector<attack_type>& attacks = b.attacks();
+	for (std::vector<attack_type>::const_iterator i = attacks.begin(),
+	     i_end = attacks.end(); i != i_end; ++i)
+	{
+		int resistance = a.movement_type().resistance_against(*i);
+		// Apply steadfast resistance modifier.
+		if (steadfast && resistance < 100)
+			resistance = std::max<int>(resistance * 2 - 100, 50);
+		// Do not look for filters or values, simply assume 70% if CTH is customized.
+		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
+		int weight = i->damage() * i->num_attacks();
+		// if cth == 0 the division will do 0/0 so don't execute this part
+		if (living && cth != 0 && i->get_special_bool("poison", true)) {
+			// Compute the probability of not poisoning the unit.
+			int prob = 100;
+			for (int j = 0; j < i->num_attacks(); ++j)
+				prob = prob * (100 - cth);
+			// Assume poison works one turn.
+			weight += game_config::poison_amount * (100 - prob) / 100;
+		}
+		sum += cth * resistance * weight * weight; // average damage * weight
+		weight_sum += weight;
+	}
+
+	// normalize by HP
+	sum /= std::max<int>(1,std::min<int>(a.hitpoints(),1000)); // avoid values really out of range
+
+	// Catch division by zero here if the attacking unit
+	// has zero attacks and/or zero damage.
+	// If it has no attack at all, the ai shouldn't prefer
+	// that unit anyway.
+	if (weight_sum == 0) {
+		return sum;
+	}
+	return sum/weight_sum;
+}
+
+int recruitment_phase::compare_unit_types(const unit_type& a, const unit_type& b) const
+{
+	const int a_effectiveness_vs_b = average_resistance_against(b,a);
+	const int b_effectiveness_vs_a = average_resistance_against(a,b);
+
+	LOG_AI_TESTING_AI_DEFAULT << "comparison of '" << a.id() << " vs " << b.id() << ": "
+		<< a_effectiveness_vs_b << " - " << b_effectiveness_vs_a << " = "
+		<< (a_effectiveness_vs_b - b_effectiveness_vs_a) << '\n';
+	return a_effectiveness_vs_b - b_effectiveness_vs_a;
+}
+
+void recruitment_phase::analyze_potential_recruit_combat()
+{
+	unit_map &units_ = get_info().units;
+	if(unit_combat_scores_.empty() == false ||
+			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_combat"])) {
+		return;
+	}
+
+	log_scope2(log_ai_testing_ai_default, "analyze_potential_recruit_combat()");
+
+	// Records the best combat analysis for each usage type.
+	std::map<std::string,int> best_usage;
+
+	const std::set<std::string>& recruits = current_team().recruits();
+	std::set<std::string>::const_iterator i;
+	for(i = recruits.begin(); i != recruits.end(); ++i) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
+			continue;
+		}
+
+		int score = 0, weighting = 0;
+
+		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
+			if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
+				continue;
+			}
+
+			unit const &un = j->second;
+			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
+			VALIDATE((enemy_info != unit_type_data::types().end()), "Unknown unit type : " + un.type_id() + " while scoring units.");
+
+			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
+			weighting += weight;
+			score += compare_unit_types(info->second, enemy_info->second) * weight;
+		}
+
+		if(weighting != 0) {
+			score /= weighting;
+		}
+
+		LOG_AI_TESTING_AI_DEFAULT << "combat score of '" << *i << "': " << score << "\n";
+		unit_combat_scores_[*i] = score;
+
+		if(best_usage.count(info->second.usage()) == 0 ||
+				score > best_usage[info->second.usage()]) {
+			best_usage[info->second.usage()] = score;
+		}
+	}
+
+	// Recommend not to use units of a certain usage type
+	// if they have a score more than 600 below
+	// the best unit of that usage type.
+	for(i = recruits.begin(); i != recruits.end(); ++i) {
+		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
+			continue;
+		}
+
+		if(unit_combat_scores_[*i] + 600 < best_usage[info->second.usage()]) {
+			LOG_AI_TESTING_AI_DEFAULT << "recommending not to use '" << *i << "' because of poor combat performance "
+				      << unit_combat_scores_[*i] << "/" << best_usage[info->second.usage()] << "\n";
+			not_recommended_units_.insert(*i);
+		}
+	}
+}
+
 
 //==============================================================
 
