@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 13:15+0200\n"
+"POT-Creation-Date: 2009-06-28 17:17+0200\n"
 "PO-Revision-Date: 2009-06-13 20:19+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -20,42 +20,42 @@ msgstr ""
 "X-Poedit-Language: German\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:56
+#: data/_main.cfg:63
 msgid "Compressed Saves"
 msgstr "Komprimierte Spielstände"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:63
+#: data/_main.cfg:70
 msgid "Mouse Scrolling"
 msgstr "Mit der Maus scrollen"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:70
+#: data/_main.cfg:77
 msgid "Middle-click Scrolling"
 msgstr "Scrollen mit Hilfe der mittleren Maustaste"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:77
+#: data/_main.cfg:84
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Weiter scrollen, wenn die Maus das Fenster verlässt"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:84
+#: data/_main.cfg:91
 msgid "Animate Map"
 msgstr "Karte animieren"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:91
+#: data/_main.cfg:98
 msgid "Show Titlescreen Animation"
 msgstr "Startbildschirmanimation anzeigen"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:98
+#: data/_main.cfg:105
 msgid "Unit Standing Animations"
 msgstr "Standanimationen der Einheiten"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:105
+#: data/_main.cfg:112
 msgid "Show Combat"
 msgstr "Kampf zeigen"
 
@@ -6210,7 +6210,7 @@ msgstr "Okay"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/campaign_dialog.cfg:216 src/dialogs.cpp:619
-#: src/dialogs.cpp:1035 src/dialogs.cpp:1142 src/multiplayer_connect.cpp:1023
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1142 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -7886,40 +7886,40 @@ msgstr "EP: "
 msgid "Moves: "
 msgstr "BP: "
 
-#: src/game.cpp:632 src/game.cpp:1328
+#: src/game.cpp:640 src/game.cpp:1336
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:928 src/game.cpp:936 src/playsingle_controller.cpp:506
+#: src/game.cpp:936 src/game.cpp:944 src/playsingle_controller.cpp:506
 #: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
-#: src/game.cpp:931 src/game.cpp:939 src/savegame.cpp:447
+#: src/game.cpp:939 src/game.cpp:947 src/savegame.cpp:447
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt: '"
 
-#: src/game.cpp:943
+#: src/game.cpp:951
 msgid "File I/O Error while reading the game"
 msgstr "Dateifehler beim Einlesen des Spieles."
 
-#: src/game.cpp:1038
+#: src/game.cpp:1046
 msgid "No campaigns are available.\n"
 msgstr "Keine Kampagnen vorhanden.\n"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1079
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
-#: src/game.cpp:1072
+#: src/game.cpp:1080
 msgid "Select difficulty level:"
 msgstr "Schwierigkeitsgrad auswählen:"
 
-#: src/game.cpp:1207
+#: src/game.cpp:1215
 msgid "Do you really want to start the server?"
 msgstr "Möchtet Ihr den Server wirklich starten?"
 
-#: src/game.cpp:1208
+#: src/game.cpp:1216
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7927,35 +7927,35 @@ msgstr ""
 "Bis alle Spieler vom Server abgemeldet sind, wird dieser als "
 "Hintergrundprozess laufen."
 
-#: src/game.cpp:1212
+#: src/game.cpp:1220
 msgid "Don't show again"
 msgstr "Nicht erneut anzeigen"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1291
 msgid "Error while starting server: "
 msgstr "Fehler beim Starten des Servers: "
 
-#: src/game.cpp:1285 src/playcampaign.cpp:98 src/playcampaign.cpp:376
+#: src/game.cpp:1293 src/playcampaign.cpp:98 src/playcampaign.cpp:376
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden: "
 
-#: src/game.cpp:1287 src/playcampaign.cpp:100 src/playcampaign.cpp:379
+#: src/game.cpp:1295 src/playcampaign.cpp:100 src/playcampaign.cpp:379
 msgid "Error while playing the game: "
 msgstr "Fehler beim Spielen: "
 
-#: src/game.cpp:1307 src/playcampaign.cpp:102 src/playcampaign.cpp:382
+#: src/game.cpp:1315 src/playcampaign.cpp:102 src/playcampaign.cpp:382
 msgid "The game map could not be loaded: "
 msgstr "Die Karte konnte nicht geladen werden: "
 
-#: src/game.cpp:1374 src/game.cpp:1495
+#: src/game.cpp:1382 src/game.cpp:1503
 msgid "Error loading game configuration files: '"
 msgstr "Fehler beim Laden der Konfigurationsdateien: '"
 
-#: src/game.cpp:1375 src/game.cpp:1496
+#: src/game.cpp:1383 src/game.cpp:1504
 msgid "' (The game will now exit)"
 msgstr "' (Das Spiel wird nun beendet)"
 
-#: src/game.cpp:1470
+#: src/game.cpp:1478
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -7964,27 +7964,27 @@ msgstr[1] ""
 "Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
-#: src/game.cpp:1477
+#: src/game.cpp:1485
 msgid "ERROR DETAILS:"
 msgstr "Fehlerdetails:"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1513
 msgid "Loading data files"
 msgstr "Lesen der Spieldaten"
 
-#: src/game.cpp:1922
+#: src/game.cpp:1930
 msgid "Loading game configuration."
 msgstr "Laden der Konfigurationsdateien."
 
-#: src/game.cpp:1928
+#: src/game.cpp:1936
 msgid "Re-initialize fonts for the current language."
 msgstr "Setze Zeichensatz der verwendeten Sprache zurück."
 
-#: src/game.cpp:1936
+#: src/game.cpp:1944
 msgid "Searching for installed add-ons."
 msgstr "Suche nach installierten Erweiterungen."
 
-#: src/game.cpp:1945
+#: src/game.cpp:1953
 msgid "Loading title screen."
 msgstr "Laden des Startbildschirms."
 
@@ -8008,7 +8008,7 @@ msgstr "Debug: "
 msgid "Info: "
 msgstr "Information: "
 
-#: src/game_events.cpp:1195 src/multiplayer_connect.cpp:1652
+#: src/game_events.cpp:1195 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "Sieg:"
 
@@ -8399,11 +8399,11 @@ msgstr "Gehe zu"
 msgid "Leader"
 msgstr "Heerführer"
 
-#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:1008
+#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:1007
 msgid "Team"
 msgstr "Team"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1019
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1018
 msgid "Gold"
 msgstr "Gold"
 
@@ -8419,7 +8419,7 @@ msgstr "Einheiten"
 msgid "Upkeep"
 msgstr "Ausgaben"
 
-#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1019
 #: src/multiplayer_wait.cpp:534
 msgid "Income"
 msgstr "Einkommen"
@@ -9048,130 +9048,126 @@ msgid "The password you provided was incorrect."
 msgstr "Das eingegebene Passwort ist nicht korrekt."
 
 #: src/multiplayer_connect.cpp:88 src/multiplayer_connect.cpp:491
-#: src/multiplayer_connect.cpp:619
+#: src/multiplayer_connect.cpp:620
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:615
+#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:616
 #: src/multiplayer_wait.cpp:526 src/multiplayer_wait.cpp:534
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:615
+#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:616
 #: src/multiplayer_wait.cpp:526 src/multiplayer_wait.cpp:537
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:489 src/multiplayer_connect.cpp:617
+#: src/multiplayer_connect.cpp:489 src/multiplayer_connect.cpp:618
 #: src/multiplayer_wait.cpp:536
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:572
-msgid "Default AI"
-msgstr "Standard KI"
-
-#: src/multiplayer_connect.cpp:648
+#: src/multiplayer_connect.cpp:649
 msgid "(Vacant slot)"
 msgstr "(Verfügbarer Platz)"
 
-#: src/multiplayer_connect.cpp:656
+#: src/multiplayer_connect.cpp:657
 msgid "Anonymous local player"
 msgstr "Anonymer lokaler Spieler"
 
-#: src/multiplayer_connect.cpp:668
+#: src/multiplayer_connect.cpp:667
 msgid "Computer player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:671
+#: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
 msgstr "(leerer Platz)"
 
-#: src/multiplayer_connect.cpp:678
+#: src/multiplayer_connect.cpp:677
 msgid "(Reserved for $playername)"
 msgstr "(Reserviert für $playername)"
 
-#: src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:682
 #, fuzzy
 msgid "(empty)"
 msgstr "Leer"
 
-#: src/multiplayer_connect.cpp:809
+#: src/multiplayer_connect.cpp:808
 msgid "Reserved"
 msgstr "Reserviert"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:809
 msgid "--give--"
 msgstr "--zuweisen--"
 
-#: src/multiplayer_connect.cpp:934
+#: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
 msgstr "Nur zufallsbasierte Fraktionen in der gewählten Ära."
 
-#: src/multiplayer_connect.cpp:958
+#: src/multiplayer_connect.cpp:957
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kann den Anführertyp für die Fraktion $faction nicht finden"
 
-#: src/multiplayer_connect.cpp:995
+#: src/multiplayer_connect.cpp:994
 msgid "Game Lobby: "
 msgstr "Mehrspielerbereich: "
 
-#: src/multiplayer_connect.cpp:1015
+#: src/multiplayer_connect.cpp:1014
 msgid "Player/Type"
 msgstr "Spieler/Typ"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:1015
 msgid "Faction"
 msgstr "Fraktion"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:1016
 msgid "Team/Gender"
 msgstr "Team/Geschlecht"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1017
 msgid "Color"
 msgstr "Farbe"
 
-#: src/multiplayer_connect.cpp:1022
+#: src/multiplayer_connect.cpp:1021
 msgid "I'm Ready"
 msgstr "Ich bin bereit"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
 msgid "The scenario is invalid because it has no id."
 msgstr "Dieses Szenario ist ungültig, da es über keine 'id' verfügt."
 
-#: src/multiplayer_connect.cpp:1036
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dieses Szenario ist ungültig, da es über keine Parteien verfügt."
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Netzwerkspieler"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Lokaler Spieler"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Leer"
 
-#: src/multiplayer_connect.cpp:1629
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "Kann die Epoche $era nicht finden"
 
-#: src/multiplayer_connect.cpp:1654
+#: src/multiplayer_connect.cpp:1653
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Sieg:\n"
 "@Besiegt alle gegnerischen Heerführer"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Warte auf weitere Mitspieler..."
 
@@ -10219,6 +10215,9 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:351
 msgid "Enable summary uploads"
 msgstr "Die Übertragung von Zusammenfassungen erlauben"
+
+#~ msgid "Default AI"
+#~ msgstr "Standard KI"
 
 #~ msgid "stones"
 #~ msgstr "versteinern"

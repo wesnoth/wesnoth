@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 13:15+0200\n"
+"POT-Creation-Date: 2009-06-28 17:17+0200\n"
 "PO-Revision-Date: 2008-06-06 13:39+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -24,44 +24,44 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:56
+#: data/_main.cfg:63
 msgid "Compressed Saves"
 msgstr "Salvestatud mängude pakkimine"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:63
+#: data/_main.cfg:70
 msgid "Mouse Scrolling"
 msgstr "Hiirega kerimine"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:70
+#: data/_main.cfg:77
 #, fuzzy
 msgid "Middle-click Scrolling"
 msgstr "Hiirega kerimine"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:77
+#: data/_main.cfg:84
 msgid "Keep scrolling when mouse leaves window"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:84
+#: data/_main.cfg:91
 msgid "Animate Map"
 msgstr "Animeeritud kaart"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:91
+#: data/_main.cfg:98
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Sõjakäigud"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:98
+#: data/_main.cfg:105
 msgid "Unit Standing Animations"
 msgstr "Seisvate üksuste animatsioonid"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:105
+#: data/_main.cfg:112
 msgid "Show Combat"
 msgstr "Näita võitlust"
 
@@ -5955,7 +5955,7 @@ msgstr "Olgu"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/campaign_dialog.cfg:216 src/dialogs.cpp:619
-#: src/dialogs.cpp:1035 src/dialogs.cpp:1142 src/multiplayer_connect.cpp:1023
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1142 src/multiplayer_connect.cpp:1022
 #: src/multiplayer_create.cpp:85 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Tühista"
@@ -7579,104 +7579,104 @@ msgstr "KP:"
 msgid "Moves: "
 msgstr "Käike:"
 
-#: src/game.cpp:632 src/game.cpp:1328
+#: src/game.cpp:640 src/game.cpp:1336
 msgid "The Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
-#: src/game.cpp:928 src/game.cpp:936 src/playsingle_controller.cpp:506
+#: src/game.cpp:936 src/game.cpp:944 src/playsingle_controller.cpp:506
 #: src/playsingle_controller.cpp:567
 msgid "The file you have tried to load is corrupt"
 msgstr "Fail, mida sa proovisid laadida, on vigane"
 
-#: src/game.cpp:931 src/game.cpp:939 src/savegame.cpp:447
+#: src/game.cpp:939 src/game.cpp:947 src/savegame.cpp:447
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Fail, mida sa proovisid laadida, on vigane."
 
-#: src/game.cpp:943
+#: src/game.cpp:951
 msgid "File I/O Error while reading the game"
 msgstr "Mängu lugedes tekkis faili S/V-viga"
 
-#: src/game.cpp:1038
+#: src/game.cpp:1046
 msgid "No campaigns are available.\n"
 msgstr "Sõjakäike ei leitud.\n"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1079
 msgid "Difficulty"
 msgstr "Raskusaste"
 
-#: src/game.cpp:1072
+#: src/game.cpp:1080
 msgid "Select difficulty level:"
 msgstr "Vali raskusaste:"
 
-#: src/game.cpp:1207
+#: src/game.cpp:1215
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Kas sa tõesti tahad teda vallandada?"
 
-#: src/game.cpp:1208
+#: src/game.cpp:1216
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1212
+#: src/game.cpp:1220
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ära seda enam küsi!"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1291
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game.cpp:1285 src/playcampaign.cpp:98 src/playcampaign.cpp:376
+#: src/game.cpp:1293 src/playcampaign.cpp:98 src/playcampaign.cpp:376
 msgid "The game could not be loaded: "
 msgstr "Mängu laadimine ebaõnnestus."
 
-#: src/game.cpp:1287 src/playcampaign.cpp:100 src/playcampaign.cpp:379
+#: src/game.cpp:1295 src/playcampaign.cpp:100 src/playcampaign.cpp:379
 msgid "Error while playing the game: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game.cpp:1307 src/playcampaign.cpp:102 src/playcampaign.cpp:382
+#: src/game.cpp:1315 src/playcampaign.cpp:102 src/playcampaign.cpp:382
 msgid "The game map could not be loaded: "
 msgstr "Mängu kaarti ei õnnestunud laadida:"
 
-#: src/game.cpp:1374 src/game.cpp:1495
+#: src/game.cpp:1382 src/game.cpp:1503
 msgid "Error loading game configuration files: '"
 msgstr "Mängu sätetefailide laadimisel tekkis viga: '"
 
-#: src/game.cpp:1375 src/game.cpp:1496
+#: src/game.cpp:1383 src/game.cpp:1504
 msgid "' (The game will now exit)"
 msgstr "'(Mäng läheb nüüd kinni)"
 
-#: src/game.cpp:1470
+#: src/game.cpp:1478
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Järgnev lisamoodul andis laadimisel vea:"
 msgstr[1] "Järgnevad lisamoodulid andsid laadimisel vea:"
 
-#: src/game.cpp:1477
+#: src/game.cpp:1485
 msgid "ERROR DETAILS:"
 msgstr "VEAINFO:"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1513
 msgid "Loading data files"
 msgstr "Laen andmefaile"
 
-#: src/game.cpp:1922
+#: src/game.cpp:1930
 msgid "Loading game configuration."
 msgstr "Mängu sätete laadimine."
 
-#: src/game.cpp:1928
+#: src/game.cpp:1936
 msgid "Re-initialize fonts for the current language."
 msgstr "Algväärtusta keele kirjastiilid"
 
-#: src/game.cpp:1936
+#: src/game.cpp:1944
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Lisamooduli saatmine"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1953
 msgid "Loading title screen."
 msgstr "Laen tiitellehte"
 
@@ -7702,7 +7702,7 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1195 src/multiplayer_connect.cpp:1652
+#: src/game_events.cpp:1195 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "Võit:"
 
@@ -8088,11 +8088,11 @@ msgstr "Keri"
 msgid "Leader"
 msgstr "Pealik"
 
-#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:1008
+#: src/menu_events.cpp:365 src/multiplayer_connect.cpp:1007
 msgid "Team"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1019
+#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1018
 msgid "Gold"
 msgstr "Kuld"
 
@@ -8108,7 +8108,7 @@ msgstr "Üksused"
 msgid "Upkeep"
 msgstr "Elatis"
 
-#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1020
+#: src/menu_events.cpp:370 src/multiplayer_connect.cpp:1019
 #: src/multiplayer_wait.cpp:534
 msgid "Income"
 msgstr "Sissetulek"
@@ -8736,132 +8736,128 @@ msgid "The password you provided was incorrect."
 msgstr ""
 
 #: src/multiplayer_connect.cpp:88 src/multiplayer_connect.cpp:491
-#: src/multiplayer_connect.cpp:619
+#: src/multiplayer_connect.cpp:620
 msgid "Normal"
 msgstr "Tavaline"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:615
+#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:616
 #: src/multiplayer_wait.cpp:526 src/multiplayer_wait.cpp:534
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:615
+#: src/multiplayer_connect.cpp:487 src/multiplayer_connect.cpp:616
 #: src/multiplayer_wait.cpp:526 src/multiplayer_wait.cpp:537
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:489 src/multiplayer_connect.cpp:617
+#: src/multiplayer_connect.cpp:489 src/multiplayer_connect.cpp:618
 #: src/multiplayer_wait.cpp:536
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:572
-msgid "Default AI"
-msgstr "Vaikimisi tehisintellekt"
-
-#: src/multiplayer_connect.cpp:648
+#: src/multiplayer_connect.cpp:649
 msgid "(Vacant slot)"
 msgstr "(Vaba koht)"
 
-#: src/multiplayer_connect.cpp:656
+#: src/multiplayer_connect.cpp:657
 msgid "Anonymous local player"
 msgstr "Anonüümne kohalik mängija"
 
-#: src/multiplayer_connect.cpp:668
+#: src/multiplayer_connect.cpp:667
 msgid "Computer player"
 msgstr "Arvuti"
 
-#: src/multiplayer_connect.cpp:671
+#: src/multiplayer_connect.cpp:670
 msgid "(Empty slot)"
 msgstr "(Tühi koht)"
 
-#: src/multiplayer_connect.cpp:678
+#: src/multiplayer_connect.cpp:677
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:682
 #, fuzzy
 msgid "(empty)"
 msgstr "Tühi"
 
-#: src/multiplayer_connect.cpp:809
+#: src/multiplayer_connect.cpp:808
 #, fuzzy
 msgid "Reserved"
 msgstr "Varu:"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:809
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:934
+#: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
 msgstr "Valitud ajajärgus on olemas vaid juhuslikud osapooled."
 
-#: src/multiplayer_connect.cpp:958
+#: src/multiplayer_connect.cpp:957
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Osapoole $faction jaoks ei leidu sobivat pealikut"
 
-#: src/multiplayer_connect.cpp:995
+#: src/multiplayer_connect.cpp:994
 msgid "Game Lobby: "
 msgstr "Mängu ooteruum"
 
-#: src/multiplayer_connect.cpp:1015
+#: src/multiplayer_connect.cpp:1014
 msgid "Player/Type"
 msgstr "Mängija/Tüüp"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:1015
 msgid "Faction"
 msgstr "Rühmitus"
 
-#: src/multiplayer_connect.cpp:1017
+#: src/multiplayer_connect.cpp:1016
 msgid "Team/Gender"
 msgstr "Võistkond/sugu"
 
-#: src/multiplayer_connect.cpp:1018
+#: src/multiplayer_connect.cpp:1017
 msgid "Color"
 msgstr "Värv"
 
-#: src/multiplayer_connect.cpp:1022
+#: src/multiplayer_connect.cpp:1021
 msgid "I'm Ready"
 msgstr "Olen valmis"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1031
 #, fuzzy
 msgid "The scenario is invalid because it has no id."
 msgstr "Stsenaarium on vigane, kuna osapooli pole määratud."
 
-#: src/multiplayer_connect.cpp:1036
+#: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
 msgstr "Stsenaarium on vigane, kuna osapooli pole määratud."
 
-#: src/multiplayer_connect.cpp:1429
+#: src/multiplayer_connect.cpp:1428
 msgid "Network Player"
 msgstr "Võrgumängija"
 
-#: src/multiplayer_connect.cpp:1431
+#: src/multiplayer_connect.cpp:1430
 msgid "Local Player"
 msgstr "Kohalik mängija"
 
-#: src/multiplayer_connect.cpp:1432
+#: src/multiplayer_connect.cpp:1431
 msgid "Computer Player"
 msgstr "Arvuti"
 
-#: src/multiplayer_connect.cpp:1433
+#: src/multiplayer_connect.cpp:1432
 msgid "Empty"
 msgstr "Tühi"
 
-#: src/multiplayer_connect.cpp:1629
+#: src/multiplayer_connect.cpp:1628
 msgid "Cannot find era $era"
 msgstr "Ei leia ajastut $era"
 
-#: src/multiplayer_connect.cpp:1654
+#: src/multiplayer_connect.cpp:1653
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Võit:\n"
 "@Alista vaenlaste pealik(ud)"
 
-#: src/multiplayer_connect.cpp:1718
+#: src/multiplayer_connect.cpp:1717
 msgid "Waiting for players to join..."
 msgstr "Ootan mängijate liitumist..."
 
@@ -9902,6 +9898,9 @@ msgstr "Aita meil Wesnothi paremaks teha!"
 #: src/upload_log.cpp:351
 msgid "Enable summary uploads"
 msgstr "Lülita kokkuvõtete saatmine sisse"
+
+#~ msgid "Default AI"
+#~ msgstr "Vaikimisi tehisintellekt"
 
 #~ msgid "Do you still want to download it?"
 #~ msgstr "Kas soovid ikka seda alla laadida?"
