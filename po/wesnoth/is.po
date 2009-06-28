@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 17:17+0200\n"
+"POT-Creation-Date: 2009-06-28 18:06+0200\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -6727,7 +6727,7 @@ msgstr ""
 "að geta spilað það.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
-#: src/multiplayer.cpp:211 src/multiplayer.cpp:266 src/multiplayer_ui.cpp:76
+#: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
 msgid "Connection timed out"
 msgstr "Tenging rann út"
 
@@ -6934,7 +6934,7 @@ msgstr "Fjarlæga viðbótum"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Ertu viss um að þú viljir fjarlægja viðbótina '$addon|\"?"
 
-#: src/addon_management.cpp:1122 src/multiplayer.cpp:223
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:222
 msgid "Confirm"
 msgstr "Staðfesta"
 
@@ -8185,34 +8185,34 @@ msgstr ""
 msgid "Choose weapon:"
 msgstr "Veldu vopn:"
 
-#: src/multiplayer.cpp:133 src/multiplayer.cpp:170
+#: src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Tengist miðlara..."
 
-#: src/multiplayer.cpp:143
+#: src/multiplayer.cpp:142
 msgid "Reading from Server..."
 msgstr "Les frá miðlara..."
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:152
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Miðlarinn þarfnast útgáfu $version1 á meðan þú notast við útgáfu $version2."
 
-#: src/multiplayer.cpp:164
+#: src/multiplayer.cpp:163
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:288
 msgid "You must login first."
 msgstr "Þú verður að innskrá þig fyrst."
 
-#: src/multiplayer.cpp:291
+#: src/multiplayer.cpp:290
 msgid "The nick '$nick' is already taken."
 msgstr "Notendanafnið '$nick' er nú þegar í notkun."
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:292
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8220,29 +8220,29 @@ msgstr ""
 "Notendanafnið '$nick' inniheldur ógilda stafi. Eingöngu bókstafir, "
 "niðurstrik og bandstrik eru leyfðir."
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:296
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Notendanafnið '$nick' er of langt. Notendanöfn þurfa að vera innan við 19 "
 "stafi."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Notendanafnið '$nick' er frátekið og ónothæft notendum."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Notendanafnið '$nick' er ekki skráð á þessum miðlara."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:302
 msgid " This server disallows unregistered nicks."
 msgstr " Miðlarinn leyfir ekki óskráð notendanöfn."
 
-#: src/multiplayer.cpp:305 src/multiplayer.cpp:307
+#: src/multiplayer.cpp:304 src/multiplayer.cpp:306
 msgid "The nick '$nick' is registered on this server."
 msgstr "Notendanafnið '$nick' er skráð á þessum miðlara."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:307
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8250,12 +8250,12 @@ msgstr ""
 "AÐVÖRUN: það er nú þegar notandi með þessa gælunafn, að skrá sig inn verður "
 "til þess að þeim notenda verður sparkað!"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:313
 msgid "The password you provided was incorrect."
 msgstr "Rangt lykilorð."
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 17:17+0200\n"
+"POT-Creation-Date: 2009-06-28 18:06+0200\n"
 "PO-Revision-Date: 2009-06-15 17:30+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -7263,7 +7263,7 @@ msgstr ""
 "ostatní rozšíření, na nichž je toto závislé, aby s ním bylo možno hrát.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
-#: src/multiplayer.cpp:211 src/multiplayer.cpp:266 src/multiplayer_ui.cpp:76
+#: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -7476,7 +7476,7 @@ msgstr "Odinstalovat rozšíření"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Opravdu chcete odstranit rozšíření „$addon|“?"
 
-#: src/addon_management.cpp:1122 src/multiplayer.cpp:223
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:222
 msgid "Confirm"
 msgstr "Potvrdit"
 
@@ -8749,33 +8749,33 @@ msgstr "Napadni nepřítele"
 msgid "Choose weapon:"
 msgstr "Vyber si zbraň:"
 
-#: src/multiplayer.cpp:133 src/multiplayer.cpp:170
+#: src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Připojuji se na server...."
 
-#: src/multiplayer.cpp:143
+#: src/multiplayer.cpp:142
 msgid "Reading from Server..."
 msgstr "Načítání ze serveru..."
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:152
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr "Server vyžaduje verzi '$version1', zatímco vaše verze je '$version2'."
 
-#: src/multiplayer.cpp:164
+#: src/multiplayer.cpp:163
 msgid "Server-side redirect loop"
 msgstr "Serverově orientované přesměrování"
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:288
 msgid "You must login first."
 msgstr "Nejprve se musíš přihlásit."
 
-#: src/multiplayer.cpp:291
+#: src/multiplayer.cpp:290
 msgid "The nick '$nick' is already taken."
 msgstr "Přezdívka '$nick' již je registrována někým jiným."
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:292
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8783,38 +8783,38 @@ msgstr ""
 "Přezdívka '$nick' obsahuje neplatné znaky. Povoleny jsou pouze písmena, "
 "čísla, podtržítka a pomlčky."
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:296
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr "Přezdívka '$nick' je příliš dlouhá. Maximální délka je 18 znaků."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "Přezdívka '$nick' je rezervovaná a hráči ji nemohou registrovat."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Přezdívka '$nick' není na tomto serveru registrovaná."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:302
 msgid " This server disallows unregistered nicks."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
-#: src/multiplayer.cpp:305 src/multiplayer.cpp:307
+#: src/multiplayer.cpp:304 src/multiplayer.cpp:306
 msgid "The nick '$nick' is registered on this server."
 msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:307
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr "Varování: Tuto přezdívku již někdo používá, přihlášení jej vyhodí!"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Chyba při přihlašování (server nemá seed pro vaše připojení)."
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:313
 msgid "The password you provided was incorrect."
 msgstr "Zadané heslo není správné."
 

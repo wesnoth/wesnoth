@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 17:17+0200\n"
+"POT-Creation-Date: 2009-06-28 18:06+0200\n"
 "PO-Revision-Date: 2009-06-15 22:50+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -7308,7 +7308,7 @@ msgstr ""
 "tarvittavat riippuvuudet.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
-#: src/multiplayer.cpp:211 src/multiplayer.cpp:266 src/multiplayer_ui.cpp:76
+#: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
@@ -7520,7 +7520,7 @@ msgstr "Poista lisäosia"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Haluatko varmasti poistaa lisäosan '$addon|'?"
 
-#: src/addon_management.cpp:1122 src/multiplayer.cpp:223
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:222
 msgid "Confirm"
 msgstr "Varmista"
 
@@ -8778,34 +8778,34 @@ msgstr "Hyökkää vihollista vastaan"
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
-#: src/multiplayer.cpp:133 src/multiplayer.cpp:170
+#: src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Yhdistetään palvelimeen..."
 
-#: src/multiplayer.cpp:143
+#: src/multiplayer.cpp:142
 msgid "Reading from Server..."
 msgstr "Haetaan tietoja palvelimelta..."
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:152
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 "Palvelin edellyttää versiota '$version1', kun sinulla on versio '$version2.'"
 
-#: src/multiplayer.cpp:164
+#: src/multiplayer.cpp:163
 msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:288
 msgid "You must login first."
 msgstr "Sinun täytyy ensin sisäänkirjautua."
 
-#: src/multiplayer.cpp:291
+#: src/multiplayer.cpp:290
 msgid "The nick '$nick' is already taken."
 msgstr "Nimimerkki ”$nick” on jo käytössä."
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:292
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8813,30 +8813,30 @@ msgstr ""
 "Nimimerkissä ”$nick” on epäkelpoja merkkejä. Nimimerkissä voi olla vain "
 "kirjaimia, numeroita, alaviivoja ja tavuviivoja."
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:296
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Nimimerkki ”$nick” on liian pitkä. Nimimerkin pituuden täytyy olla 18 "
 "merkkiä tai vähemmän."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Nimimerkki ”$nick” on varattu, eikä sitä voida käyttää pelaajien toimesta."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Nimimerkki ”$nick” ei ole rekisteröity tällä palvelimella."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:302
 msgid " This server disallows unregistered nicks."
 msgstr "Tämä palvelin ei hyväksy rekisteröimättömiä nimimerkkejä."
 
-#: src/multiplayer.cpp:305 src/multiplayer.cpp:307
+#: src/multiplayer.cpp:304 src/multiplayer.cpp:306
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:307
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8844,14 +8844,14 @@ msgstr ""
 "VAROITUS: Paikalla on jo yksi klientti tällä nimimerkillä, "
 "sisäänkirjautuminen aiheuttaa tämän klientin ulospotkimisen."
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Virhe sisäänkirjautumisprosessissa (palvelimella ei ole esiastetta "
 "yhteydellesi)."
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:313
 msgid "The password you provided was incorrect."
 msgstr "Antamasi salasana on väärä."
 

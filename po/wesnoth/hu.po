@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 17:17+0200\n"
+"POT-Creation-Date: 2009-06-28 18:06+0200\n"
 "PO-Revision-Date: 2009-06-20 11:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -7363,7 +7363,7 @@ msgstr ""
 "telepítésére is.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
-#: src/multiplayer.cpp:211 src/multiplayer.cpp:266 src/multiplayer_ui.cpp:76
+#: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
@@ -7575,7 +7575,7 @@ msgstr "Kiegészítések eltávolítása"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Biztosan el akarod távolítani a(z) „|$addon|” kiegészítést?"
 
-#: src/addon_management.cpp:1122 src/multiplayer.cpp:223
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:222
 msgid "Confirm"
 msgstr "Megerősítés"
 
@@ -8841,15 +8841,15 @@ msgstr "Ellenség megtámadása"
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
-#: src/multiplayer.cpp:133 src/multiplayer.cpp:170
+#: src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Csatlakozás a kiszolgálóhoz..."
 
-#: src/multiplayer.cpp:143
+#: src/multiplayer.cpp:142
 msgid "Reading from Server..."
 msgstr "Adatok fogadása a kiszolgálótól..."
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:152
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -8857,19 +8857,19 @@ msgstr ""
 "A kiszolgáló a(z) $version1 verzió használatát igényli, de te a(z) $version2 "
 "verziót használod."
 
-#: src/multiplayer.cpp:164
+#: src/multiplayer.cpp:163
 msgid "Server-side redirect loop"
 msgstr "Kiszolgálóoldali átirányító hurok"
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:288
 msgid "You must login first."
 msgstr "Először be kell jelentkezned."
 
-#: src/multiplayer.cpp:291
+#: src/multiplayer.cpp:290
 msgid "The nick '$nick' is already taken."
 msgstr "Ez a becenév („$nick”) már foglalt."
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:292
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8877,32 +8877,32 @@ msgstr ""
 "A megadott becenév („$nick”) érvénytelen karaktereket tartalmaz. Csak ékezet "
 "nélküli betűk, számok, aláhúzás és kötőjel használható."
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:296
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "A megadott becenév („$nick”) túl hosszú. Tizenkilenc karakternél rövidebbnek "
 "kell lennie."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Ez a becenév („$nick”) különleges célokra van fenntartva, játékosok nem "
 "használhatják."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid "The nick '$nick' is not registered on this server."
 msgstr "A megadott becenév („$nick”) nincs regisztrálva a kiszolgálón."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:302
 msgid " This server disallows unregistered nicks."
 msgstr ""
 "Ehhez a kiszolgálóhoz csak regisztrált felhasználónévvel lehet csatlakozni."
 
-#: src/multiplayer.cpp:305 src/multiplayer.cpp:307
+#: src/multiplayer.cpp:304 src/multiplayer.cpp:306
 msgid "The nick '$nick' is registered on this server."
 msgstr "A megadott becenév („$nick”) regisztrálva van a kiszolgálón."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:307
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8910,14 +8910,14 @@ msgstr ""
 "FIGYELMEZTETÉS: Egy másik kliens már bejelentkezett ezzel a becenévvel! Az "
 "ismételt bejelentkezés az első kliens leválasztását vonja maga után!"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Hiba a bejelentkezés folyamatában (a kiszolgálónak nem volt elég kapacitása "
 "egy új kapcsolat fogadásához)."
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:313
 msgid "The password you provided was incorrect."
 msgstr "A megadott jelszó érvénytelen."
 

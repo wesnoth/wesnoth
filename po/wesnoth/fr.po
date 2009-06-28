@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 17:17+0200\n"
+"POT-Creation-Date: 2009-06-28 18:06+0200\n"
 "PO-Revision-Date: 2009-05-09 20:26+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -7358,7 +7358,7 @@ msgstr ""
 "télécharger les extensions dont elle dépend afin de pouvoir y jouer.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
-#: src/multiplayer.cpp:211 src/multiplayer.cpp:266 src/multiplayer_ui.cpp:76
+#: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
 msgid "Connection timed out"
 msgstr "Tentative de connexion expirée"
 
@@ -7574,7 +7574,7 @@ msgstr "Désinstallation des extensions"
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Êtes-vous sûr de vouloir enlever l'extension « $addon| » ?"
 
-#: src/addon_management.cpp:1122 src/multiplayer.cpp:223
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:222
 msgid "Confirm"
 msgstr "Confirmer"
 
@@ -8848,15 +8848,15 @@ msgstr "Attaquer l'ennemi"
 msgid "Choose weapon:"
 msgstr "Choisissez une arme : "
 
-#: src/multiplayer.cpp:133 src/multiplayer.cpp:170
+#: src/multiplayer.cpp:132 src/multiplayer.cpp:169
 msgid "Connecting to Server..."
 msgstr "Connexion au serveur..."
 
-#: src/multiplayer.cpp:143
+#: src/multiplayer.cpp:142
 msgid "Reading from Server..."
 msgstr "Lecture depuis le serveur..."
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:152
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -8864,19 +8864,19 @@ msgstr ""
 "Vous avez besoin de la version « $version1 » pour accéder au serveur ; votre "
 "version est la « $version2 »."
 
-#: src/multiplayer.cpp:164
+#: src/multiplayer.cpp:163
 msgid "Server-side redirect loop"
 msgstr "Boucle de redirection du serveur"
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:288
 msgid "You must login first."
 msgstr "Vous devez d'abord vous identifier."
 
-#: src/multiplayer.cpp:291
+#: src/multiplayer.cpp:290
 msgid "The nick '$nick' is already taken."
 msgstr "Le pseudonyme '$nick' est déjà utilisé."
 
-#: src/multiplayer.cpp:293
+#: src/multiplayer.cpp:292
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8885,30 +8885,30 @@ msgstr ""
 "caractères alpha-numériques, les underscore et les traits-d'union sont "
 "autorisés."
 
-#: src/multiplayer.cpp:297
+#: src/multiplayer.cpp:296
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Le pseudonyme '$nick' est trop long. Les pseudonymes peuvent contenir au "
 "maximum 18 caractères."
 
-#: src/multiplayer.cpp:300
+#: src/multiplayer.cpp:299
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Le pseudonyme '$nick' est réservé et ne peut être utilisé par un joueur ."
 
-#: src/multiplayer.cpp:302
+#: src/multiplayer.cpp:301
 msgid "The nick '$nick' is not registered on this server."
 msgstr "Le pseudonyme '$nick' n'est pas connu de ce serveur."
 
-#: src/multiplayer.cpp:303
+#: src/multiplayer.cpp:302
 msgid " This server disallows unregistered nicks."
 msgstr " Ce serveur n'accepte pas les identifiants inconnus."
 
-#: src/multiplayer.cpp:305 src/multiplayer.cpp:307
+#: src/multiplayer.cpp:304 src/multiplayer.cpp:306
 msgid "The nick '$nick' is registered on this server."
 msgstr "Le pseudonyme '$nick' est enregistré sur le serveur."
 
-#: src/multiplayer.cpp:308
+#: src/multiplayer.cpp:307
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8916,14 +8916,14 @@ msgstr ""
 "ATTENTION : un autre client utilise déjà ce pseudonyme, vous identifier "
 "provoquera l'expulsion de ce client !"
 
-#: src/multiplayer.cpp:311
+#: src/multiplayer.cpp:310
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Erreur dans la procédure d'identification (le serveur n'a pas pu prendre en "
 "charge votre connexion)."
 
-#: src/multiplayer.cpp:314
+#: src/multiplayer.cpp:313
 msgid "The password you provided was incorrect."
 msgstr "Le mot de passe que vous avez saisi est incorrect."
 
