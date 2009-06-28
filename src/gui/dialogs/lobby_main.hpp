@@ -17,17 +17,26 @@
 
 #include "gui/dialogs/dialog.hpp"
 
+class config;
+
 namespace gui2 {
+
+class tlistbox;
 
 class tlobby_main : public tdialog
 {
 public:
 	tlobby_main();
 
+	void update_gamelist(const config& cfg);
 private:
-
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	tlistbox* gamelist_;
 };
 
 } // namespace gui2
