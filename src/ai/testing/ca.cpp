@@ -732,7 +732,11 @@ bool move_leader_to_keep_phase::execute()
 {
 	bool gamestate_changed = false;
 	move_->execute();
-	gamestate_changed |= move_->is_ok();
+	recalculate_move_maps();//@todo 1.7: replace with event observers
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT <<  get_name() <<"::execute not ok" << std::endl;
+	}
+	gamestate_changed |= move_->is_gamestate_changed();
 	return gamestate_changed;
 }
 
@@ -1661,26 +1665,67 @@ bool retreat_phase::execute()
 
 //==============================================================
 
-move_and_targeting_phase::move_and_targeting_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::move_and_targeting_phase",cfg["type"])
+simple_move_and_targeting_phase::simple_move_and_targeting_phase( rca_context &context, const config &cfg )
+	: candidate_action(context,"testing_ai_default::simple_move_and_targeting_phase",cfg["type"])
 {
 }
 
-move_and_targeting_phase::~move_and_targeting_phase()
+simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 {
 }
 
-double move_and_targeting_phase::evaluate()
+double simple_move_and_targeting_phase::evaluate()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented!" << std::endl;
+	unit_map &units_ = get_info().units;
+	
+	unit_map::const_iterator leader;
+	map_location my_leader_loc = units_.find_leader(get_side())->first;
+
+	for(leader = units_.begin(); leader != units_.end(); ++leader) {
+		if(leader->second.can_recruit() && current_team().is_enemy(leader->second.side())) {
+			break;
+		}
+	}
+
+	if(leader == units_.end()) {
+		return BAD_SCORE;
+	}
+
+	int closest_distance = -1;
+	std::pair<map_location,map_location> closest_move;
+
+	for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
+		const int distance = distance_between(i->first,leader->first);
+		if(closest_distance == -1 || distance < closest_distance) {
+			if ((i->second!=my_leader_loc) && (i->second!=i->first)) {
+				closest_distance = distance;
+				closest_move = *i;
+			}
+		}
+	}
+
+	if(closest_distance != -1) {
+		move_ = check_move_action(closest_move.second,closest_move.first,true);
+		if (move_->is_ok()){
+			return 15;
+		}
+	}
+
 	return BAD_SCORE;
 }
 
-bool move_and_targeting_phase::execute()
+bool simple_move_and_targeting_phase::execute()
 {
-	ERR_AI_TESTING_AI_DEFAULT << get_name() << ": execute - not yet implemented!" << std::endl;
-	return true;
+	bool gamestate_changed = false;
+	move_->execute();
+	recalculate_move_maps();//@todo 1.7: replace with event observers
+	if (!move_->is_ok()){
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
+	}
+	gamestate_changed |= move_->is_gamestate_changed();
+	return gamestate_changed;
 }
+
 
 //==============================================================
 

@@ -176,8 +176,8 @@ protected:
 private:
 	const unit *get_unit(const unit_map &units, const std::vector<team> &teams, bool update_knowledge = false);
 	bool test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool update_knowledge = false);
-	const map_location& from_;
-	const map_location& to_;
+	const map_location from_;
+	const map_location to_;
 	bool remove_movement_;
 	plain_route route_;
 	map_location unit_location_;

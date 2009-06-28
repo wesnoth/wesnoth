@@ -430,6 +430,7 @@ void move_result::do_execute()
 		/*bool is_replay*/ false);
 	unit_location_ = to_;//@todo: 1.7 modify move_unit to get this info from it
 	set_gamestate_changed();
+	manager::raise_unit_moved();
 
 }
 

@@ -86,8 +86,8 @@ static composite_ai::register_candidate_action_factory<testing_ai_default::get_h
 static composite_ai::register_candidate_action_factory<testing_ai_default::retreat_phase>
 	retreat_phase_factory("testing_ai_default::retreat_phase");
 
-static composite_ai::register_candidate_action_factory<testing_ai_default::move_and_targeting_phase>
-	move_and_targeting_phase_factory("testing_ai_default::move_and_targeting_phase");
+static composite_ai::register_candidate_action_factory<testing_ai_default::simple_move_and_targeting_phase>
+	simple_move_and_targeting_phase_factory("testing_ai_default::simple_move_and_targeting_phase");
 
 static composite_ai::register_candidate_action_factory<testing_ai_default::leader_control_phase>
 	leader_control_phase_factory("testing_ai_default::leader_control_phase");
