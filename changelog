@@ -2,6 +2,10 @@ Version 1.7.0+svn:
  * AI:
    * Reworked AI code to allow easier creation of AI components.
    * New AI: Composite AI
+   * (Optional) new AI configuration syntax.
+   * Basic reimplementation of an old C++ AI as a 'candidate action'-based composite AI
+   * Autodiscovery of available AI configurations from data/ai/ais.
+   * (In debug mode) Autodiscovery of available AI configurations from data/ai/dev
  * Campaigns
    * Delfador's Memoirs: new portrait for Lionel.
     * The Hammer of Thursagan: new portraits for Angarthing, Ratheln.
