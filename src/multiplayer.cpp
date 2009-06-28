@@ -17,7 +17,6 @@
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
@@ -576,12 +575,7 @@ void start_client(game_display& disp, const config& game_config,
 
 	switch(type) {
 	case WESNOTHD_SERVER:
-		if(gui2::new_widgets) {
-			gui2::tlobby_main dlg;
-			dlg.show(disp.video());
-		} else {
-			enter_lobby_mode(disp, game_config, chat, gamelist);
-		}
+		enter_lobby_mode(disp, game_config, chat, gamelist);
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);
