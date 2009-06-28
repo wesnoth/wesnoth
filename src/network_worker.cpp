@@ -419,8 +419,10 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 			}
 			return SOCKET_READY;
 		}
-#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
-	        if(errno == EAGAIN)
+#if defined(_WIN32)
+		if(WSAGetLastError() == WSAEWOULDBLOCK)
+#elif defined(EAGAIN) && !defined(__BEOS__)
+		if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
 		if(errno == EWOULDBLOCK)
 #endif
