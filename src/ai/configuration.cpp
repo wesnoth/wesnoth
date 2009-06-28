@@ -35,6 +35,55 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
+void configuration::init(const config &game_config)
+{
+	ai_configurations_.clear();
+
+	const config &ais = game_config.child("ais");
+	foreach (const config &ai_configuration, ais.child_range("ai")) {
+		const std::string &id = ai_configuration["id"];
+		if (id.empty()){
+
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			continue;
+		}
+		if (ai_configurations_.count(id)>0){
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			continue;
+		}
+
+		description desc;
+		desc.id=id;
+		desc.description=ai_configuration["description"];
+		desc.cfg=ai_configuration;
+
+		ai_configurations_.insert(std::make_pair(id,desc));
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+	}
+}
+
+std::vector<description*> configuration::get_available_ais(){
+	std::vector<description*> ais_list;
+	for(description_map::iterator desc = ai_configurations_.begin(); desc!=ai_configurations_.end(); ++desc) {
+		ais_list.push_back(&desc->second);	
+		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
+	}
+	return ais_list;
+}
+
+const config& configuration::get_ai_config_for(const std::string &id)
+{
+	description_map::iterator cfg_it = ai_configurations_.find(id);
+	if (cfg_it==ai_configurations_.end()){
+		return default_config_;
+	}
+	return cfg_it->second.cfg;
+}
+
+
+configuration::description_map configuration::ai_configurations_ = configuration::description_map();
+config configuration::default_config_ = config();
+
 
 static std::string bind_config_parameter( const std::string& value_from_config,
 		const std::string& value_from_global_config,
@@ -49,16 +98,16 @@ static std::string bind_config_parameter( const std::string& value_from_config,
 }
 
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
-	      try {
-	         scoped_istream stream = preprocess_file(get_wml_location(file));
-	         read(cfg, *stream);
-	         LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'" << std::endl;
-	      } catch(config::error &) {
-	    	 ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'" << std::endl;
-	         return false;
-	      }
-			 LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'" << std::endl;
-	      return true;
+	try {
+		scoped_istream stream = preprocess_file(get_wml_location(file));
+		read(cfg, *stream);
+		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'" << std::endl;
+	} catch(config::error &) {
+		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'" << std::endl;
+		return false;
+	}
+	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'" << std::endl;
+	return true;
 }
 
 
@@ -72,6 +121,71 @@ bool configuration::parse_side_config(const config& cfg,
 {
 	LOG_AI_CONFIGURATION << "Parsing [side] configuration from config" << std::endl;
 	DBG_AI_CONFIGURATION << "Config contains:"<< std::endl << cfg << std::endl;
+
+	bool new_syntax=false;//@todo 1.8 remove old way when necessary
+	foreach (const config &aiparam, cfg.child_range("ai")) {
+		if (aiparam.child("stage")){
+			new_syntax=true;
+			break;
+		}
+	}
+
+	if (new_syntax) {
+		DBG_AI_CONFIGURATION << "new syntax parsing rules"<< std::endl;
+		return parse_side_config_new(cfg,ai_algorithm_type,global_ai_parameters,ai_parameters,default_ai_parameters,ai_memory,effective_ai_parameters);
+	} else {
+		DBG_AI_CONFIGURATION << "old syntax parsing rules"<< std::endl;
+		return parse_side_config_old(cfg,ai_algorithm_type,global_ai_parameters,ai_parameters,default_ai_parameters,ai_memory,effective_ai_parameters);
+	}
+}
+
+bool configuration::parse_side_config_new(const config &cfg,
+		std::string &ai_algorithm_type,
+		config &global_ai_parameters,
+		std::vector<config> &ai_parameters,
+		const config &default_ai_parameters,
+		config &ai_memory,
+		config &effective_ai_parameters )
+{
+	//construct new-style integrated config
+	ai_parameters.push_back(default_ai_parameters);
+	global_ai_parameters.append(default_ai_parameters);
+	global_ai_parameters["ai_algorithm"] = "composite_ai";
+	DBG_AI_CONFIGURATION << "after taking default values into account, new-style config contains:"<< std::endl << global_ai_parameters << std::endl;
+
+	foreach (const config &aiparam, cfg.child_range("ai"))
+	{
+		ai_parameters.push_back(aiparam);
+		global_ai_parameters.append(aiparam);
+	}
+
+	DBG_AI_CONFIGURATION << "finally, new-style config contains:"<< std::endl << global_ai_parameters << std::endl;
+
+	ai_algorithm_type = global_ai_parameters["ai_algorithm"];
+
+	//AI memory
+	foreach (const config &aimem, global_ai_parameters.child_range("ai_memory")) {
+		ai_memory.append(aimem);
+	}
+
+	effective_ai_parameters["number_of_possible_recruits_to_force_recruit"]= global_ai_parameters["number_of_possible_recruits_to_force_recruit"];
+	effective_ai_parameters["villages_per_scout"] = global_ai_parameters["villages_per_scout"];
+	effective_ai_parameters["leader_value"] = global_ai_parameters["leader_value"];
+	effective_ai_parameters["village_value"] = global_ai_parameters["village_value"];
+	effective_ai_parameters["aggression"] = global_ai_parameters["aggression"];
+	effective_ai_parameters["caution"] = global_ai_parameters["caution"];
+
+	return true;
+}
+
+bool configuration::parse_side_config_old(const config& cfg,
+		std::string& ai_algorithm_type,
+		config& global_ai_parameters,
+		std::vector<config>& ai_parameters,
+		const config& default_ai_parameters,
+		config& ai_memory,
+		config& effective_ai_parameters )
+{
 
 	foreach (const config &aiparam, cfg.child_range("ai"))
 	{
@@ -139,7 +253,7 @@ const config& configuration::get_default_ai_parameters(){
 
 	default_cfg["init"] = "true";
 
-	default_cfg["al_algorithm"] = "default";
+	default_cfg["ai_algorithm"] = "default_ai";
 
 	//A number 0 or higher which determines how many scouts the AI recruits. If 0,
 	//the AI doesn't recruit scouts to capture villages.

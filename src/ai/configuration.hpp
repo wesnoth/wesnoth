@@ -25,6 +25,7 @@
 #include "../config.hpp"
 
 
+#include <map>
 #include <vector>
 
 namespace ai {
@@ -46,8 +47,36 @@ namespace ai {
  * then, if (3) is equal:
  * use any and loudly complain.
  */
+
+struct description {
+public:
+	std::string description;
+	std::string id;
+	config cfg;
+};
+
 class configuration {
 public:
+
+	/**
+	 * Init the parameters of ai configuration parser
+	 * @param game_config_ game config
+	 */
+	static void init(const config &game_config);
+
+
+	/**
+	 * Return the config for a specified ai
+	 */
+	static const config& get_ai_config_for(const std::string &id);
+
+
+	/**
+	 * Returns a list of available AIs.
+	 * @return the list of available AIs.
+	 */
+	static std::vector<description*> get_available_ais();
+
 
 	/**
 	 * get side config from file
@@ -81,11 +110,40 @@ public:
 			config& ai_memory,
 			config& effective_ai_parameters );
 
+
+	/**
+	 * Same as parse_side_config, new syntax
+	 */
+	static bool parse_side_config_new(const config& cfg,
+		std::string& ai_algorithm_type,
+		config& global_ai_parameters,
+		std::vector<config>& ai_parameters,
+		const config& default_ai_parameters,
+		config& ai_memory,
+		config& effective_ai_parameters );
+
+
+	/**
+	 * Same as parse_side_config, old syntax
+	 */
+	static bool parse_side_config_old(const config& cfg,
+		std::string& ai_algorithm_type,
+		config& global_ai_parameters,
+		std::vector<config>& ai_parameters,
+		const config& default_ai_parameters,
+		config& ai_memory,
+		config& effective_ai_parameters );
+
 	/**
 	 * get default AI parameters
 	 * @return default AI parameters
 	 */
 	static const config& get_default_ai_parameters();
+
+private:
+	typedef std::map<std::string, description> description_map;
+	static std::map<std::string, description> ai_configurations_;
+	static config default_config_;
 
 };
 

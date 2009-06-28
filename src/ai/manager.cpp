@@ -565,15 +565,6 @@ ai_ptr manager::create_transient_ai( const std::string &ai_algorithm_type, defau
 	return new_ai;
 }
 
-std::vector<std::string> manager::get_available_ais()
-{
-	std::vector<std::string> ais;
-	ais.push_back("default");
-	return ais;
-}
-
-
-
 
 // =======================================================================
 // REMOVE

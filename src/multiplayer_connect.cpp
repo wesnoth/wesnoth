@@ -20,7 +20,7 @@
 #include "global.hpp"
 
 
-#include "ai/manager.hpp"
+#include "ai/configuration.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
@@ -459,7 +459,7 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
-		ai_algorithm_ = parent_->ai_algorithms_[combo_ai_algorithm_.selected()];
+		ai_algorithm_ = parent_->ai_algorithms_[combo_ai_algorithm_.selected()]->id;
 		changed_ = true;
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
@@ -563,14 +563,15 @@ void connect::side::init_ai_algorithm_combo()
 	assert(parent_->ai_algorithms_.empty() == false);
 
 	int sel = 0;
-	std::vector<std::string> ais = parent_->ai_algorithms_;
-	for (unsigned int i = 0; i < ais.size(); i++) {
-		if (ais[i] == ai_algorithm_) {
+	std::vector<ai::description*> &ais_list = parent_->ai_algorithms_;
+	std::vector<std::string> ais;
+	int i = 0;
+	foreach (const ai::description *desc,  ais_list){
+		ais.push_back(desc->description);
+		if (desc->id==ai_algorithm_){
 			sel = i;
 		}
-		if (ais[i] == "default") {
-			ais[i] = _("Default AI");
-		}
+		i++;
 	}
 	combo_ai_algorithm_.set_items(ais);
 	combo_ai_algorithm_.set_selected(sel);
@@ -661,9 +662,7 @@ config connect::side::get_config() const
 			}
 			{
 				res["id"] = res["save_id"];
-				config &ai = res.child_or_add("ai");
-				if (ai_algorithm_ != "default")
-					ai["ai_algorithm"] = ai_algorithm_;
+				res.add_child("ai",ai::configuration::get_ai_config_for(ai_algorithm_));
 			}
 			description = N_("Computer player");
 			break;
@@ -1437,7 +1436,7 @@ void connect::lists_init()
 	}
 
 	// AI algorithms
-	ai_algorithms_ = ai::manager::get_available_ais();
+	ai_algorithms_ = ai::configuration::get_available_ais();
 
 	// Factions
 	config::child_itors sides = current_config()->child_range("side");

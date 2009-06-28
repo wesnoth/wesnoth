@@ -18,6 +18,7 @@
 #include "SDL_mixer.h"
 
 #include "about.hpp"
+#include "ai/configuration.hpp"
 #include "config.hpp"
 #include "config_cache.hpp"
 #include "construct_dialog.hpp"
@@ -604,6 +605,12 @@ bool game_controller::init_config(const bool force)
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (multiplayer_mode_)
 		cache_.add_define("MULTIPLAYER");
+
+	// make sure that 'debug mode' symbol is set if command line parameter is selected
+	if (game_config::debug) {
+		cache_.add_define("DEBUG_MODE");
+	}
+
 	load_game_cfg(force);
 
 	const config &cfg = game_config_.child("game_config");
@@ -616,6 +623,7 @@ bool game_controller::init_config(const bool force)
 	paths_manager_.set_paths(game_config_);
 	::init_textdomains(game_config_);
 	about::set_about(game_config_);
+	ai::configuration::init(game_config_);
 
 	return true;
 }

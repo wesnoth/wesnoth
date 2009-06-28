@@ -279,14 +279,6 @@ public:
 	static ai_ptr create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
 
 
-	/**
-	 * Returns a list of available AIs.
-	 * @return the list of available AIs.
-	 * @todo 1.7 get this list from a list of files in specified directory
-	 */
-	static std::vector<std::string> get_available_ais();
-
-
 	// =======================================================================
 	// REMOVE
 	// =======================================================================

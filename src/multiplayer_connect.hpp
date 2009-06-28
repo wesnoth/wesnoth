@@ -28,6 +28,10 @@
 
 #include <string>
 
+namespace ai {
+	class description;
+}
+
 namespace mp {
 
 class connect : public mp::ui
@@ -263,7 +267,7 @@ private:
 	std::vector<std::string> player_factions_;
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colours_;
-	std::vector<std::string> ai_algorithms_;
+	std::vector<ai::description*> ai_algorithms_;
 
 	// team_name list and "Team" prefix
 	std::vector<std::string> team_names_;
