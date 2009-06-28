@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#define GETTEXT_DOMAIN "wesnoth"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/field.hpp"
