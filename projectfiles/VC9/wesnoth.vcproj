@@ -1793,6 +1793,10 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\lobby_main.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\message.cpp"
 						>
 					</File>
@@ -2092,6 +2096,34 @@
 							</FileConfiguration>
 						</File>
 						<File
+							RelativePath="..\..\src\gui\auxiliary\window_builder\panel.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\password_box.cpp"
 							>
 							<FileConfiguration
@@ -2149,6 +2181,34 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\text_box.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\window_builder\toggle_panel.cpp"
 							>
 							<FileConfiguration
 								Name="Debug|Win32"
