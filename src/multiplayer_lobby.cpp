@@ -754,7 +754,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
     invert_filter_.enable(apply_filter_.checked());
 
 	vacant_slots_.set_check(preferences::fi_vacant_slots());
-	vacant_slots_.set_help_string(_("Only show games that have a least one vacant slot"));
+	vacant_slots_.set_help_string(_("Only show games that have at least one vacant slot"));
     vacant_slots_.enable(apply_filter_.checked());
 
 	friends_in_game_.set_check(preferences::fi_friends_in_game());

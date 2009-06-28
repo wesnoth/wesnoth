@@ -203,6 +203,10 @@ stringfixes = {
 ("Yanqui", "Zhangor"),
 ),
 
+"wesnoth" :(
+("that have a least one", "that have at least one"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
