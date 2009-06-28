@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:37+0200\n"
+"POT-Creation-Date: 2009-06-28 13:16+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -618,6 +618,7 @@ msgstr "地圖產生器"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
+#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "設定"
 
@@ -628,7 +629,7 @@ msgstr "產生"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:108
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "新地圖"
 
@@ -652,7 +653,7 @@ msgstr "創造新地圖"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:153
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
 msgstr "改變地圖大小"
 
@@ -694,7 +695,7 @@ msgstr "改變地圖大小"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 msgid "Editor Settings"
 msgstr "編輯器設定"
 
@@ -704,8 +705,10 @@ msgid "Time of day lighting preset"
 msgstr "使用預設時間系統"
 
 #. [button]: id=next_tod
+#. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "下一個"
 
@@ -748,8 +751,8 @@ msgstr "允許同時開啟多張地圖（MDI)"
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
 #: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:186
-#: src/gui/dialogs/message.cpp:193
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
 msgid "OK"
 msgstr "確定"
 
@@ -789,7 +792,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:200
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
 msgid "Yes"
 msgstr "是"
 
@@ -798,7 +801,7 @@ msgstr "是"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:202
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
 msgid "No"
 msgstr "否"
 
@@ -814,7 +817,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
 msgstr "退出遊戲"
 
@@ -831,7 +834,7 @@ msgstr ""
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:83
+#: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
 msgstr "語言"
 
@@ -845,6 +848,58 @@ msgstr "選擇您預設的語言:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "選擇語言"
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:27
+#, fuzzy
+msgid "Multiplayer Lobby"
+msgstr "多人對戰"
+
+#. [button]: id=join
+#: data/gui/default/window/lobby_main.cfg:192
+#, fuzzy
+msgid "Join"
+msgstr "登入"
+
+#. [button]: id=observe
+#: data/gui/default/window/lobby_main.cfg:199
+msgid "Observe"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:237
+#, fuzzy
+msgid "Send"
+msgstr "沙地"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
+#: src/hotkeys.cpp:944
+msgid "Quit"
+msgstr "退出"
+
+#. [button]: id=refresh
+#: data/gui/default/window/lobby_main.cfg:270
+#, fuzzy
+msgid "Refresh"
+msgstr "刷新顯示"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "新遊戲"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+msgid "Help"
+msgstr "幫助"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -939,11 +994,6 @@ msgstr "現在您將連線到多人對戰伺服器。"
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "顯示列表"
-
-#. [label]
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "新遊戲"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -1058,7 +1108,7 @@ msgstr "密碼提示"
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:79
+#: data/gui/default/window/title_screen.cfg:184
 msgid "Multiplayer"
 msgstr "多人對戰"
 
@@ -1128,49 +1178,48 @@ msgstr "地址"
 msgid "Select"
 msgstr "選擇"
 
+#. [button]: id=previous_tip
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "上一個"
+
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:77
+#: data/gui/default/window/title_screen.cfg:182
 msgid "Tutorial"
 msgstr "教學"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:78
+#: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
 msgstr "戰役"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:80
+#: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
 msgstr "讀取"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:81
+#: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
 msgstr "模組"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:82
+#: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
 msgstr "編輯器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:77
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "選項"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:85
+#: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "製作團隊"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:653
-#: src/hotkeys.cpp:940
-msgid "Quit"
-msgstr "退出"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1196,11 +1245,11 @@ msgstr "名字:"
 msgid "Creation of the directory failed."
 msgstr "建立目錄失敗。"
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:308
 msgid "No server has been defined."
 msgstr "没有已定義的伺服器"
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:370
 msgid "player"
 msgstr "玩家"
 
@@ -1615,7 +1664,7 @@ msgstr "新主題在下次新建或載入遊戲時生效。"
 msgid "No known themes. Try changing from within an existing game."
 msgstr "當前無已知主題。請嘗試在遊戲時切换主題。"
 
-#: src/game_preferences_display.cpp:1211
+#: src/game_preferences_display.cpp:1212
 msgid "Find $filename server binary to host networked games"
 msgstr "在網路伺服器上搜尋 $filename 伺服器"
 
@@ -1635,51 +1684,51 @@ msgstr "字體大小是0。"
 msgid "Text doesn't start on canvas."
 msgstr "畫面沒有文字。"
 
-#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
+#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
-#: src/gui/auxiliary/window_builder.cpp:416
-#: src/gui/auxiliary/window_builder.cpp:1037
-#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
-#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
-#: src/gui/widgets/settings.cpp:994
+#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder/panel.cpp:35
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
+#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
-#: src/gui/auxiliary/window_builder.cpp:523
+#: src/gui/auxiliary/window_builder.cpp:518
 msgid "A row must have a column."
 msgstr "行必須要有列"
 
-#: src/gui/auxiliary/window_builder.cpp:524
+#: src/gui/auxiliary/window_builder.cpp:519
 msgid "Number of columns differ."
 msgstr "列數不同。"
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:1192
+#: src/gui/auxiliary/window_builder.cpp:618
+#: src/gui/auxiliary/window_builder.cpp:869
 msgid "No list defined."
 msgstr "没有設定列表"
 
-#: src/gui/auxiliary/window_builder.cpp:800
+#: src/gui/auxiliary/window_builder.cpp:621
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' 應該最少要有一行。"
 
-#: src/gui/auxiliary/window_builder.cpp:818
-#: src/gui/auxiliary/window_builder.cpp:985
+#: src/gui/auxiliary/window_builder.cpp:639
+#: src/gui/auxiliary/window_builder.cpp:723
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' 的數值必須跟 'list_definition'有相同的數列。"
 
-#: src/gui/auxiliary/window_builder.cpp:962
+#: src/gui/auxiliary/window_builder.cpp:700
 #, fuzzy
 msgid "No page defined."
 msgstr "沒有設定網格"
 
-#: src/gui/auxiliary/window_builder.cpp:1264
+#: src/gui/auxiliary/window_builder.cpp:942
 msgid "The number of value_labels and values don't match."
 msgstr "標籤值與數值不符。"
 
-#: src/gui/dialogs/message.cpp:214
+#: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "錯誤"
 
@@ -1691,7 +1740,7 @@ msgstr "讀取遊戲"
 msgid "Load Game..."
 msgstr "讀取遊戲..."
 
-#: src/gui/dialogs/title_screen.cpp:68
+#: src/gui/dialogs/title_screen.cpp:77
 msgid "Version"
 msgstr "版本"
 
@@ -1699,24 +1748,24 @@ msgstr "版本"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "元件'$id'沒有被設定"
 
-#: src/gui/widgets/settings.cpp:138
+#: src/gui/widgets/settings.cpp:139
 msgid "No default gui defined."
 msgstr "沒有設定預設網格"
 
-#: src/gui/widgets/settings.cpp:299
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "視窗沒有設定"
 
-#: src/gui/widgets/settings.cpp:396
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
-#: src/gui/widgets/settings.cpp:538
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
-#: src/gui/widgets/window.cpp:684
+#: src/gui/widgets/window.cpp:682
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
 
@@ -1760,7 +1809,7 @@ msgstr "縮小"
 msgid "Default Zoom"
 msgstr "預設縮放比例"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
@@ -1805,347 +1854,348 @@ msgid "End Turn"
 msgstr "結束本回合"
 
 #: src/hotkeys.cpp:70
-msgid "Toggle Grid"
+#, fuzzy
+msgid "Toggle Ellipses"
 msgstr "開/關網格"
 
 #: src/hotkeys.cpp:71
+msgid "Toggle Grid"
+msgstr "開/關網格"
+
+#: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
 msgstr "滑鼠滾輪"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Status Table"
 msgstr "狀態列表"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Mute"
 msgstr "静音"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "聊天"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
 msgstr "創造士兵（測試！）"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "改變士兵陣營（測試！）"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
 msgstr "任務目標"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Unit List"
 msgstr "士兵列表"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Statistics"
 msgstr "數據"
 
-#: src/hotkeys.cpp:81 src/hotkeys.cpp:91
+#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
 msgid "Stop"
 msgstr "停止"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:89
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
 msgid "Play"
 msgstr "播放"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Team Label"
 msgstr "設定團隊標籤"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Label"
 msgstr "標籤"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Clear Labels"
 msgstr "清除所有標籤"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Show Enemy Moves"
 msgstr "顯示敵方移動範圍"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Best Possible Enemy Moves"
 msgstr "顯示敵方最大可能移動範圍"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Reset"
 msgstr "重置"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Next Turn"
 msgstr "下一回合"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Side"
 msgstr "下一陣營"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Full map"
 msgstr "全地圖"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Each team"
 msgstr "每一組"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Team 1"
 msgstr "第一組"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Skip animation"
 msgstr "略過動畫"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Quit to Desktop"
 msgstr "離開至桌面"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Close Map"
 msgstr "關閉地圖"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Switch Map"
 msgstr "切換地圖"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Partial Undo"
 msgstr "部份復原"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "載入地圖"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Save Map"
 msgstr "儲存地圖"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map As"
 msgstr "儲存地圖至"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Revert All Changes"
 msgstr "取消所有更動"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Map Information"
 msgstr "地圖資訊"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Swap fore- and background terrains"
 msgstr "轉換前景和背景地形"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Next Tool"
 msgstr "下一個"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Paint Tool"
 msgstr "繪圖"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Fill Tool"
 msgstr "填充"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Selection Tool"
 msgstr "選擇"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Set Starting Positions Tool"
 msgstr "設定起始點"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Brush"
 msgstr "下一個"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Default Brush"
 msgstr "預設"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Cut"
 msgstr "剪下"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Copy"
 msgstr "複製"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Paste"
 msgstr "貼上"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Export selected coordinates to system clipboard"
 msgstr "匯出選擇座標範圍到剪貼簿"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select All"
 msgstr "全選"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select Inverse"
 msgstr "反向選擇"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Select None"
 msgstr "取消選擇"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Clockwise"
 msgstr "順時針旋轉"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "逆時針旋轉"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Horizontally"
 msgstr "水平翻轉"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Flip Clipboard Vertically"
 msgstr "垂直翻轉"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Rotate Selection"
 msgstr "旋轉選擇區域"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Flip Selection"
 msgstr "填滿選擇區域"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Fill Selection"
 msgstr "填滿選擇區域"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Generate Tiles In Selection"
 msgstr "產生選擇"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Randomize Tiles In Selection"
 msgstr "隨機選擇"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Rotate Map"
 msgstr "旋轉地圖"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Generate Map"
 msgstr "產生地圖"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Apply a Mask"
 msgstr "套用遮罩"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Create Mask"
 msgstr "創造遮罩"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Refresh Display"
 msgstr "刷新顯示"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Update Terrain Transitions"
 msgstr "更新地形"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Auto-update Terrain Transitions"
 msgstr "自動更新地形"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Refresh Image Cache"
 msgstr "圖像刷新暫存"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Hex Coordinates"
 msgstr "繪製方格座標"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Draw Terrain Codes"
 msgstr "繪製地形"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Delay Shroud Updates"
 msgstr "暫緩刷新戰爭迷霧"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Update Shroud Now"
 msgstr "立即刷新戰爭迷霧"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Continue Move"
 msgstr "繼續移動"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Find Label or Unit"
 msgstr "尋找標籤或士兵"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Speak to Ally"
 msgstr "與盟友聊天"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to All"
 msgstr "與所有人聊天"
 
-#: src/hotkeys.cpp:184
-msgid "Help"
-msgstr "幫助"
-
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "View Chat Log"
 msgstr "查看聊天紀録"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Change the language"
 msgstr "切換語言"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Enter user command"
 msgstr "輸入使用者命令"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Custom command"
 msgstr "輸入使用者命令"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Run AI formula"
 msgstr "執行AI設定"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Clear messages"
 msgstr "清除所有信息"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "User-Command#2"
 msgstr "玩家指令#2"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#3"
 msgstr "玩家指令#3"
 
-#: src/hotkeys.cpp:653 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
 msgid "Do you really want to quit?"
 msgstr "您要退出嗎？"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:899
 msgid "Map-Screenshot"
 msgstr "截圖"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:906
 msgid "Screenshot done"
 msgstr "截圖中"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:908
 msgid "Screenshot failed"
 msgstr "截圖失敗"
 
@@ -2163,7 +2213,7 @@ msgstr "截圖失敗"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:203
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
 msgid "Close Window"
 msgstr "關閉視窗"
 
@@ -2215,7 +2265,7 @@ msgstr "内陸"
 msgid "Island"
 msgstr "島嶼"
 
-#: src/marked-up_text.cpp:395
+#: src/marked-up_text.cpp:397
 msgid "The maximum text width is less than 1."
 msgstr "最大文字寬度小於1"
 
@@ -2236,44 +2286,44 @@ msgstr ""
 "無法改變影像模式。以視窗模式執行遊戲需要將視窗解析度設為16位元，全螢幕模式需"
 "要您的顯示器支援1024x768解析度和16位元。"
 
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
-#: src/preferences_display.cpp:213 src/preferences_display.cpp:281
+#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "請輸入您要設定的快捷鍵（按Esc取消）"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Binding"
 msgstr "綁定鍵"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Change Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:252
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:315
+#: src/preferences_display.cpp:320
 msgid "This Hotkey is already in use."
 msgstr "此快捷鍵已經被使用"
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:331
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "警告:截圖快捷鍵不可以是Control、Alt和Meta keys。"
 
-#: src/preferences_display.cpp:417
+#: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的顯示模式"
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:451
 msgid "Choose Resolution"
 msgstr "選擇解析度"
 

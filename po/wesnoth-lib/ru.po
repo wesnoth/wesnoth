@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:37+0200\n"
+"POT-Creation-Date: 2009-06-28 13:16+0200\n"
 "PO-Revision-Date: 2009-04-06 18:30+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -635,6 +635,7 @@ msgstr "Следующий генератор"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
+#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "Настройки"
 
@@ -645,7 +646,7 @@ msgstr "Создать"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:108
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "Новая карта"
 
@@ -669,7 +670,7 @@ msgstr "Создать новую карту"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:153
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
@@ -711,7 +712,7 @@ msgstr "Изменить размер карты"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 msgid "Editor Settings"
 msgstr "Настройки редактора"
 
@@ -721,8 +722,10 @@ msgid "Time of day lighting preset"
 msgstr "Предустановленная освещённость по времеми суток"
 
 #. [button]: id=next_tod
+#. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Следующий боец"
 
@@ -765,8 +768,8 @@ msgstr "Открывать более одной карты (MDI)"
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
 #: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:186
-#: src/gui/dialogs/message.cpp:193
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
 msgid "OK"
 msgstr "OK"
 
@@ -806,7 +809,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:200
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
 msgid "Yes"
 msgstr "Да"
 
@@ -815,7 +818,7 @@ msgstr "Да"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:202
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
 msgid "No"
 msgstr "Нет"
 
@@ -831,7 +834,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
 msgstr "Выйти из игры"
 
@@ -848,7 +851,7 @@ msgstr ""
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:83
+#: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
 msgstr "Язык"
 
@@ -862,6 +865,58 @@ msgstr "Какой язык предпочитаете:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Сменить язык"
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:27
+#, fuzzy
+msgid "Multiplayer Lobby"
+msgstr "Многопользовательская"
+
+#. [button]: id=join
+#: data/gui/default/window/lobby_main.cfg:192
+#, fuzzy
+msgid "Join"
+msgstr "Логин"
+
+#. [button]: id=observe
+#: data/gui/default/window/lobby_main.cfg:199
+msgid "Observe"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:237
+#, fuzzy
+msgid "Send"
+msgstr "Песок"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
+#: src/hotkeys.cpp:944
+msgid "Quit"
+msgstr "Выйти"
+
+#. [button]: id=refresh
+#: data/gui/default/window/lobby_main.cfg:270
+#, fuzzy
+msgid "Refresh"
+msgstr "Обновить экран"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "Создать игру"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+msgid "Help"
+msgstr "Помощь"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -956,11 +1011,6 @@ msgstr "Теперь подключимся к мультиплеерному с
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "Список друзей"
-
-#. [label]
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "Создать игру"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -1075,7 +1125,7 @@ msgstr "Напомнить пароль"
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:79
+#: data/gui/default/window/title_screen.cfg:184
 msgid "Multiplayer"
 msgstr "Многопользовательская"
 
@@ -1146,49 +1196,48 @@ msgstr "Адрес"
 msgid "Select"
 msgstr "Выбрать"
 
+#. [button]: id=previous_tip
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "Предыдущий боец"
+
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:77
+#: data/gui/default/window/title_screen.cfg:182
 msgid "Tutorial"
 msgstr "Обучение"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:78
+#: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
 msgstr "Кампания"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:80
+#: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
 msgstr "Дорога"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:81
+#: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
 msgstr "Аддоны"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:82
+#: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
 msgstr "Редактор"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:77
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Настройки"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:85
+#: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Команда"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:653
-#: src/hotkeys.cpp:940
-msgid "Quit"
-msgstr "Выйти"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1214,11 +1263,11 @@ msgstr "Имя: "
 msgid "Creation of the directory failed."
 msgstr "Ошибка создания каталога."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:308
 msgid "No server has been defined."
 msgstr "Сервер не определён"
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:370
 msgid "player"
 msgstr "игрок"
 
@@ -1640,7 +1689,7 @@ msgstr ""
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/game_preferences_display.cpp:1211
+#: src/game_preferences_display.cpp:1212
 msgid "Find $filename server binary to host networked games"
 msgstr "Найти сервер $filename, на котором будут хоститься сетевые игры."
 
@@ -1660,53 +1709,53 @@ msgstr "Размер шрифта текста 0."
 msgid "Text doesn't start on canvas."
 msgstr "Начало текста за пределами подложки."
 
-#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
+#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "Разрешение не определено."
 
-#: src/gui/auxiliary/window_builder.cpp:416
-#: src/gui/auxiliary/window_builder.cpp:1037
-#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
-#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
-#: src/gui/widgets/settings.cpp:994
+#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder/panel.cpp:35
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
+#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
 msgid "No grid defined."
 msgstr "Сетка не определена."
 
-#: src/gui/auxiliary/window_builder.cpp:523
+#: src/gui/auxiliary/window_builder.cpp:518
 msgid "A row must have a column."
 msgstr "У строки должен быть столбец."
 
-#: src/gui/auxiliary/window_builder.cpp:524
+#: src/gui/auxiliary/window_builder.cpp:519
 msgid "Number of columns differ."
 msgstr "Количество столбцов различается."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:1192
+#: src/gui/auxiliary/window_builder.cpp:618
+#: src/gui/auxiliary/window_builder.cpp:869
 msgid "No list defined."
 msgstr "Список не определён."
 
-#: src/gui/auxiliary/window_builder.cpp:800
+#: src/gui/auxiliary/window_builder.cpp:621
 msgid "A 'list_definition' should contain one row."
 msgstr "В 'list_definition' должна быть одна строка."
 
-#: src/gui/auxiliary/window_builder.cpp:818
-#: src/gui/auxiliary/window_builder.cpp:985
+#: src/gui/auxiliary/window_builder.cpp:639
+#: src/gui/auxiliary/window_builder.cpp:723
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' должен содержать столько же столбцов, сколько и "
 "'list_definition'."
 
-#: src/gui/auxiliary/window_builder.cpp:962
+#: src/gui/auxiliary/window_builder.cpp:700
 #, fuzzy
 msgid "No page defined."
 msgstr "Сетка не определена."
 
-#: src/gui/auxiliary/window_builder.cpp:1264
+#: src/gui/auxiliary/window_builder.cpp:942
 msgid "The number of value_labels and values don't match."
 msgstr "Количества value_labels и values не совпадают."
 
-#: src/gui/dialogs/message.cpp:214
+#: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Ошибка"
 
@@ -1718,7 +1767,7 @@ msgstr "Загрузить игру"
 msgid "Load Game..."
 msgstr "Загрузить игру..."
 
-#: src/gui/dialogs/title_screen.cpp:68
+#: src/gui/dialogs/title_screen.cpp:77
 msgid "Version"
 msgstr "Версия"
 
@@ -1726,24 +1775,24 @@ msgstr "Версия"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обязательный виджет '$id' не определён"
 
-#: src/gui/widgets/settings.cpp:138
+#: src/gui/widgets/settings.cpp:139
 msgid "No default gui defined."
 msgstr "GUI пол умолчанию не определён."
 
-#: src/gui/widgets/settings.cpp:299
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "Окно не определено."
 
-#: src/gui/widgets/settings.cpp:396
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Описание виджетов '$definition' не содержит описания для '$id'."
 
-#: src/gui/widgets/settings.cpp:538
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
-#: src/gui/widgets/window.cpp:684
+#: src/gui/widgets/window.cpp:682
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
 
@@ -1787,7 +1836,7 @@ msgstr "Уменьшить"
 msgid "Default Zoom"
 msgstr "Увеличение по умолчанию"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
 msgid "Screenshot"
 msgstr "Скриншот"
 
@@ -1832,347 +1881,348 @@ msgid "End Turn"
 msgstr "Закончить ход"
 
 #: src/hotkeys.cpp:70
-msgid "Toggle Grid"
+#, fuzzy
+msgid "Toggle Ellipses"
 msgstr "Показать сетку"
 
 #: src/hotkeys.cpp:71
+msgid "Toggle Grid"
+msgstr "Показать сетку"
+
+#: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
 msgstr "Прокрутка мыши"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Status Table"
 msgstr "Панель состояния"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Mute"
 msgstr "Выключить звук"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Говорить"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
 msgstr "Создать бойца (Отладка!)"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Сменить сторону бойца (Отладка!)"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
 msgstr "Задачи сценария"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Unit List"
 msgstr "Список бойцов"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/hotkeys.cpp:81 src/hotkeys.cpp:91
+#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
 msgid "Stop"
 msgstr "Стоп"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:89
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
 msgid "Play"
 msgstr "Воспоризвести"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Team Label"
 msgstr "Установить метку команды"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Label"
 msgstr "Установить метку"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Clear Labels"
 msgstr "Убрать метки"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Show Enemy Moves"
 msgstr "Показывать ходы противника"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Best Possible Enemy Moves"
 msgstr "Вероятные ходы противника"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Reset"
 msgstr "Сброс"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Next Turn"
 msgstr "Следующий ход"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Side"
 msgstr "Следующая сторона"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Full map"
 msgstr "Вся карта"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Each team"
 msgstr "Каждая команда"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Team 1"
 msgstr "Команда №1"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Skip animation"
 msgstr "Пропустить анимацию"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Quit to Desktop"
 msgstr "Выйти в ОС"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Close Map"
 msgstr "Закрыть карту"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Switch Map"
 msgstr "Сменить карту"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Partial Undo"
 msgstr "Частичная отмена"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Загрузить карту"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Save Map"
 msgstr "Сохранить карту"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map As"
 msgstr "Сохранить карту как"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Revert All Changes"
 msgstr "Просмотреть все изменения"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Map Information"
 msgstr "Данные карты"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Swap fore- and background terrains"
 msgstr "Поменять местами основной и фоновой ландшафты"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Next Tool"
 msgstr "Следующий инструмент"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Paint Tool"
 msgstr "Инструмент «Кисть»"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Fill Tool"
 msgstr "Инструмент «Заливка»"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Selection Tool"
 msgstr "Инструмент выбора"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Set Starting Positions Tool"
 msgstr "Инструмент «Начальная позиция»"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Brush"
 msgstr "Следующая кисть"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Default Brush"
 msgstr "Кисть по умолчанию"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Export selected coordinates to system clipboard"
 msgstr "Экспортировать координаты выбора в буфер обмена"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select All"
 msgstr "Выбрать всё"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select Inverse"
 msgstr "Выбрать инверсно"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Select None"
 msgstr "Сбросить выбор"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Clockwise"
 msgstr "Повернуть буфер обмена по часовой"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Повернуть буфер обмена против часовой"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Horizontally"
 msgstr "Перевернуть буфер обмена по горизонтали"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Flip Clipboard Vertically"
 msgstr "Перевернуть буфер обмена по вертикали"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Rotate Selection"
 msgstr "Повернуть выделение"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Flip Selection"
 msgstr "Отразить выбранное"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Fill Selection"
 msgstr "Заполнить выделение"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Generate Tiles In Selection"
 msgstr "Сгенерировать тайлы в выбранном"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Randomize Tiles In Selection"
 msgstr "Случайные тайлы в выбранном"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Rotate Map"
 msgstr "Повернуть карту"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Generate Map"
 msgstr "Создать карту"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Apply a Mask"
 msgstr "Маложить маску"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Create Mask"
 msgstr "Создать маску"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Refresh Display"
 msgstr "Обновить экран"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Update Terrain Transitions"
 msgstr "Обновить переходы тайлов"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Auto-update Terrain Transitions"
 msgstr "Автоматически обновлять переходы тайлов"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Refresh Image Cache"
 msgstr "Обновить кэш изображений"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Hex Coordinates"
 msgstr "Показывать координаты полей"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Draw Terrain Codes"
 msgstr "Рисовать коды местностей"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Delay Shroud Updates"
 msgstr "Задержать обновление пелены"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Update Shroud Now"
 msgstr "Обновить пелену"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Continue Move"
 msgstr "Продолжить движение"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Find Label or Unit"
 msgstr "Найти метку или бойца"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Speak to Ally"
 msgstr "Сказать союзникам"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to All"
 msgstr "Сказать всем"
 
-#: src/hotkeys.cpp:184
-msgid "Help"
-msgstr "Помощь"
-
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "View Chat Log"
 msgstr "Смотреть лог чата"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Change the language"
 msgstr "Изменить язык игры"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Enter user command"
 msgstr "Ввести команду пользователя"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Custom command"
 msgstr "Пользовательская команда"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Run AI formula"
 msgstr "Запустить формулу AI"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Clear messages"
 msgstr "Очистить сообщения"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "User-Command#2"
 msgstr "Команда пользователя №2"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#3"
 msgstr "Команда пользователя №3"
 
-#: src/hotkeys.cpp:653 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
 msgid "Do you really want to quit?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:899
 msgid "Map-Screenshot"
 msgstr "Скриншот карты"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:906
 msgid "Screenshot done"
 msgstr "Скриншот готов"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:908
 msgid "Screenshot failed"
 msgstr "Скриншот не удался"
 
@@ -2190,7 +2240,7 @@ msgstr "Скриншот не удался"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:203
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
 msgid "Close Window"
 msgstr "Закрыть окно"
 
@@ -2242,7 +2292,7 @@ msgstr "Внутренний"
 msgid "Island"
 msgstr "Остров"
 
-#: src/marked-up_text.cpp:395
+#: src/marked-up_text.cpp:397
 msgid "The maximum text width is less than 1."
 msgstr "Максимальная ширина текста меньше 1"
 
@@ -2264,46 +2314,46 @@ msgstr ""
 "установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
-#: src/preferences_display.cpp:213 src/preferences_display.cpp:281
+#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Нажмите желаемую горячую клавишу (Esc отменяет)"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Action"
 msgstr "Действие"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Binding"
 msgstr "Клавиша"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Change Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:252
 msgid "Clear Hotkey"
 msgstr "Сбросить горячую клавишу"
 
-#: src/preferences_display.cpp:315
+#: src/preferences_display.cpp:320
 msgid "This Hotkey is already in use."
 msgstr "Эта горячая клавиша уже занята."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:331
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Предупреждение: клавише скриншота лучше бы использовать Control, Alt или "
 "Meta."
 
-#: src/preferences_display.cpp:417
+#: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видео режимов"
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:451
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 

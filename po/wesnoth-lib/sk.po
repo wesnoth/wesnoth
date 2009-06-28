@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:37+0200\n"
+"POT-Creation-Date: 2009-06-28 13:16+0200\n"
 "PO-Revision-Date: 2009-03-29 14:23+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -621,6 +621,7 @@ msgstr "Ďalší generátor"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
+#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "Nastavenia"
 
@@ -631,7 +632,7 @@ msgstr "Generovať"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:108
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "Nová mapa"
 
@@ -655,7 +656,7 @@ msgstr "Vytvor novú mapu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:153
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
 
@@ -697,7 +698,7 @@ msgstr "Zmeň veľkosť mapy"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 msgid "Editor Settings"
 msgstr "Nastavenia editora"
 
@@ -707,8 +708,10 @@ msgid "Time of day lighting preset"
 msgstr "Prednastavenie osvetlenia dennou dobou"
 
 #. [button]: id=next_tod
+#. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Ďalšia"
 
@@ -751,8 +754,8 @@ msgstr "Umožni otvoriť viac máp naraz (MDI)"
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
 #: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:186
-#: src/gui/dialogs/message.cpp:193
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
 msgid "OK"
 msgstr "OK"
 
@@ -792,7 +795,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:200
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
 msgid "Yes"
 msgstr "Áno"
 
@@ -801,7 +804,7 @@ msgstr "Áno"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:202
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
 msgid "No"
 msgstr "Nie"
 
@@ -817,7 +820,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
 msgstr "Vypni hru"
 
@@ -834,7 +837,7 @@ msgstr ""
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:83
+#: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
 msgstr "Jazyk"
 
@@ -848,6 +851,58 @@ msgstr "Vyber si obľúbený jazyk:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Zmeň jazyk"
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:27
+#, fuzzy
+msgid "Multiplayer Lobby"
+msgstr "Zápas"
+
+#. [button]: id=join
+#: data/gui/default/window/lobby_main.cfg:192
+#, fuzzy
+msgid "Join"
+msgstr "Prihlasovacie meno"
+
+#. [button]: id=observe
+#: data/gui/default/window/lobby_main.cfg:199
+msgid "Observe"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:237
+#, fuzzy
+msgid "Send"
+msgstr "Piesok"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
+#: src/hotkeys.cpp:944
+msgid "Quit"
+msgstr "Vypni hru"
+
+#. [button]: id=refresh
+#: data/gui/default/window/lobby_main.cfg:270
+#, fuzzy
+msgid "Refresh"
+msgstr "Prekresli obrazovku"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "Vytvor hru"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+msgid "Help"
+msgstr "Pomoc"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -942,11 +997,6 @@ msgstr "Teraz sa pripojíš na server sieťovej hry."
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "Zobraziť zoznam"
-
-#. [label]
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "Vytvor hru"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -1061,7 +1111,7 @@ msgstr "Pripomienka hesla"
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:79
+#: data/gui/default/window/title_screen.cfg:184
 msgid "Multiplayer"
 msgstr "Zápas"
 
@@ -1132,49 +1182,48 @@ msgstr "Adresa"
 msgid "Select"
 msgstr "Označiť"
 
+#. [button]: id=previous_tip
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "Predchádzajúca jednotka"
+
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:77
+#: data/gui/default/window/title_screen.cfg:182
 msgid "Tutorial"
 msgstr "Výcvik"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:78
+#: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
 msgstr "Výprava"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:80
+#: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
 msgstr "Načítať"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:81
+#: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
 msgstr "Doplnky"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:82
+#: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
 msgstr "Editor"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:77
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Nastavenia"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:85
+#: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Autori hry"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:653
-#: src/hotkeys.cpp:940
-msgid "Quit"
-msgstr "Vypni hru"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1200,11 +1249,11 @@ msgstr "Meno:"
 msgid "Creation of the directory failed."
 msgstr "Nepodarilo sa vytvoriť adresár."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:308
 msgid "No server has been defined."
 msgstr "Nebol definovaný žiadny server."
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:370
 msgid "player"
 msgstr "hráč"
 
@@ -1623,7 +1672,7 @@ msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/game_preferences_display.cpp:1211
+#: src/game_preferences_display.cpp:1212
 msgid "Find $filename server binary to host networked games"
 msgstr "Nájdi $filename program servera na vytvorenie sieťových hier"
 
@@ -1643,51 +1692,51 @@ msgstr "Text má veľkosť písma 0."
 msgid "Text doesn't start on canvas."
 msgstr "Text sa nezmestí na plochu."
 
-#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
+#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
-#: src/gui/auxiliary/window_builder.cpp:416
-#: src/gui/auxiliary/window_builder.cpp:1037
-#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
-#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
-#: src/gui/widgets/settings.cpp:994
+#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder/panel.cpp:35
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
+#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/auxiliary/window_builder.cpp:523
+#: src/gui/auxiliary/window_builder.cpp:518
 msgid "A row must have a column."
 msgstr "Riadok musí mať stĺpec."
 
-#: src/gui/auxiliary/window_builder.cpp:524
+#: src/gui/auxiliary/window_builder.cpp:519
 msgid "Number of columns differ."
 msgstr "Počet stĺpcov sa líši."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:1192
+#: src/gui/auxiliary/window_builder.cpp:618
+#: src/gui/auxiliary/window_builder.cpp:869
 msgid "No list defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/auxiliary/window_builder.cpp:800
+#: src/gui/auxiliary/window_builder.cpp:621
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' musí obsahovať jeden riadok."
 
-#: src/gui/auxiliary/window_builder.cpp:818
-#: src/gui/auxiliary/window_builder.cpp:985
+#: src/gui/auxiliary/window_builder.cpp:639
+#: src/gui/auxiliary/window_builder.cpp:723
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musí mať rovnaký počet stĺpcov ako 'list_definition'."
 
-#: src/gui/auxiliary/window_builder.cpp:962
+#: src/gui/auxiliary/window_builder.cpp:700
 #, fuzzy
 msgid "No page defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/auxiliary/window_builder.cpp:1264
+#: src/gui/auxiliary/window_builder.cpp:942
 msgid "The number of value_labels and values don't match."
 msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 
-#: src/gui/dialogs/message.cpp:214
+#: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Chyba"
 
@@ -1699,7 +1748,7 @@ msgstr "Načítaj hru"
 msgid "Load Game..."
 msgstr "Načítaj hru..."
 
-#: src/gui/dialogs/title_screen.cpp:68
+#: src/gui/dialogs/title_screen.cpp:77
 msgid "Version"
 msgstr "Verzia"
 
@@ -1707,24 +1756,24 @@ msgstr "Verzia"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
-#: src/gui/widgets/settings.cpp:138
+#: src/gui/widgets/settings.cpp:139
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
-#: src/gui/widgets/settings.cpp:299
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "Nie je definované okno."
 
-#: src/gui/widgets/settings.cpp:396
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 
-#: src/gui/widgets/settings.cpp:538
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 
-#: src/gui/widgets/window.cpp:684
+#: src/gui/widgets/window.cpp:682
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Nepodarilo sa zobraziť dialógové okno, ktoré sa nezmestilo na obrazovku."
@@ -1769,7 +1818,7 @@ msgstr "Oddiaľ mapu"
 msgid "Default Zoom"
 msgstr "Štandardné priblíženie mapy"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
 msgid "Screenshot"
 msgstr "Záber obrazovky"
 
@@ -1814,347 +1863,348 @@ msgid "End Turn"
 msgstr "Koniec ťahu"
 
 #: src/hotkeys.cpp:70
-msgid "Toggle Grid"
+#, fuzzy
+msgid "Toggle Ellipses"
 msgstr "Prepni mriežku"
 
 #: src/hotkeys.cpp:71
+msgid "Toggle Grid"
+msgstr "Prepni mriežku"
+
+#: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
 msgstr "Rolovanie myši"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Status Table"
 msgstr "Stav"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Mute"
 msgstr "Ticho"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Hovor"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
 msgstr "Vytvor jednotku (ladenie!)"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Zmeň stranu jednotky (ladenie!)"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
 msgstr "Cieľ scény"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Unit List"
 msgstr "Zoznam jednotiek"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/hotkeys.cpp:81 src/hotkeys.cpp:91
+#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
 msgid "Stop"
 msgstr "Stop"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:89
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
 msgid "Play"
 msgstr "Hraj"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Team Label"
 msgstr "Nastav tímovú značku"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Label"
 msgstr "Nastav značku"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Clear Labels"
 msgstr "Vymaž značky"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Show Enemy Moves"
 msgstr "Ukáž možný nepriateľov pohyb"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Best Possible Enemy Moves"
 msgstr "Ukáž najlepší možný nepriateľov pohyb"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Reset"
 msgstr "Reštartuj"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Next Turn"
 msgstr "Ďalšie kolo"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Side"
 msgstr "Ďalšia strana"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Full map"
 msgstr "Celá mapa"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Each team"
 msgstr "Každý tím"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Team 1"
 msgstr "Tím 1"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Skip animation"
 msgstr "Preskoč animáciu"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Quit to Desktop"
 msgstr "Koniec"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Close Map"
 msgstr "Zavri mapu"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Switch Map"
 msgstr "Prepni mapu"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Partial Undo"
 msgstr "Čiastočný krok späť"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Načítaj mapu"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Save Map"
 msgstr "Ulož mapu"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map As"
 msgstr "Ulož mapu ako"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Revert All Changes"
 msgstr "Odvolaj všetky zmeny."
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Map Information"
 msgstr "Informácie o mape"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Swap fore- and background terrains"
 msgstr "Vymeň terén v popredí a v pozadí."
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Next Tool"
 msgstr "Ďalší nástroj"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Paint Tool"
 msgstr "Kresliaci nástroj"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Fill Tool"
 msgstr "Vypĺňací nástroj"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Selection Tool"
 msgstr "Nástroj výberu"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Set Starting Positions Tool"
 msgstr "Nástroj nastavovania začiatočných pozícií"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Brush"
 msgstr "Ďalší štetec"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Default Brush"
 msgstr "Predvolený štetec"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Cut"
 msgstr "Vystrihni"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Export selected coordinates to system clipboard"
 msgstr "Exportovať vybrané súradnice do systémovej schránky"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select All"
 msgstr "Označ všetko"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select Inverse"
 msgstr "Označ inverzne"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Select None"
 msgstr "Zruš označenie"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Clockwise"
 msgstr "Otočiť schránku doprava"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Otočiť schránku doľava"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Horizontally"
 msgstr "Prevrátiť schránku horizontálne"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Flip Clipboard Vertically"
 msgstr "Prevrátiť schránku vertikálne"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Rotate Selection"
 msgstr "Otoč výber"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Flip Selection"
 msgstr "Otoč výber"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Fill Selection"
 msgstr "Vyplň označené"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Generate Tiles In Selection"
 msgstr "Generuj polia vo výbere"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Randomize Tiles In Selection"
 msgstr "Premiešaj polia vo výbere"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Rotate Map"
 msgstr "Otoč mapu"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Generate Map"
 msgstr "Generuj mapu"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Apply a Mask"
 msgstr "Aplikuj masku"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Create Mask"
 msgstr "Vytvor masku"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Refresh Display"
 msgstr "Prekresli obrazovku"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Update Terrain Transitions"
 msgstr "Prekresli prechody terénu"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Auto-update Terrain Transitions"
 msgstr "Automaticky prekresľuj prechody terénu"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Refresh Image Cache"
 msgstr "Obnov pamäť obrázkov"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Hex Coordinates"
 msgstr "Zobraz súradnice hexov"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Draw Terrain Codes"
 msgstr "Kresli kódy terénu"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Delay Shroud Updates"
 msgstr "Pozastav odkrývanie mapy"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Update Shroud Now"
 msgstr "Vykresli odkrytú mapu"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Continue Move"
 msgstr "Pokračuj v pohybe"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Find Label or Unit"
 msgstr "Nájdi značku alebo jednotku"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Speak to Ally"
 msgstr "Povedz spojencom"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
-#: src/hotkeys.cpp:184
-msgid "Help"
-msgstr "Pomoc"
-
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "View Chat Log"
 msgstr "Ukáž záznam rozhovoru"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Change the language"
 msgstr "Zmeň jazyk"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Enter user command"
 msgstr "Zadaj užívateľský príkaz"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Custom command"
 msgstr "Užívateľský príkaz"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Run AI formula"
 msgstr "Spustiť vzorec AI"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Clear messages"
 msgstr "Vymaž správy"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "User-Command#2"
 msgstr "Vlastný príkaz#2"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#3"
 msgstr "Vlastný príkaz#3"
 
-#: src/hotkeys.cpp:653 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
 msgid "Do you really want to quit?"
 msgstr "Chceš naozaj vypnúť?"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:899
 msgid "Map-Screenshot"
 msgstr "Snímok mapy"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:906
 msgid "Screenshot done"
 msgstr "Snímok obrazovky hotový"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:908
 msgid "Screenshot failed"
 msgstr "Snímanie obrazovky zlyhalo"
 
@@ -2172,7 +2222,7 @@ msgstr "Snímanie obrazovky zlyhalo"
 msgid "language code for localized resources^en_US"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:203
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
 msgid "Close Window"
 msgstr "Zavri okno"
 
@@ -2224,7 +2274,7 @@ msgstr "Vnútrozemie"
 msgid "Island"
 msgstr "Ostrov"
 
-#: src/marked-up_text.cpp:395
+#: src/marked-up_text.cpp:397
 msgid "The maximum text width is less than 1."
 msgstr "Maximálna šírka textu je menšia ako 1."
 
@@ -2246,46 +2296,46 @@ msgstr ""
 "na pixel, aby mohla hra bežať v okne. Obrazovka musí podporovať režim "
 "1024x768x16, aby mohla hra bežať na celej obrazovke."
 
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
 msgstr "Nastavenie kláves"
 
-#: src/preferences_display.cpp:213 src/preferences_display.cpp:281
+#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Stlač požadovanú klávesu (ESC pre zrušenie)"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Action"
 msgstr "Akcia"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Binding"
 msgstr "Väzba (skratka)"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Change Hotkey"
 msgstr "Zmeň klávesu"
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:252
 msgid "Clear Hotkey"
 msgstr "Zmaž klávesu"
 
-#: src/preferences_display.cpp:315
+#: src/preferences_display.cpp:320
 msgid "This Hotkey is already in use."
 msgstr "Táto klávesa sa už používa."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:331
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Varovanie: klávesová skratka na snímanie obrazovky neobsahuje klávesy Ctrl, "
 "Alt alebo Meta."
 
-#: src/preferences_display.cpp:417
+#: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
 msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:451
 msgid "Choose Resolution"
 msgstr "Vyber si rozlíšenie"
 

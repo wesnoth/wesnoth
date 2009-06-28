@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:38+0200\n"
+"POT-Creation-Date: 2009-06-28 13:17+0200\n"
 "PO-Revision-Date: 2009-05-11 17:56+0100\n"
 "Last-Translator: Martin Dzbor <mdzbor@yahoo.co.uk>\n"
 "Language-Team: none\n"
@@ -4168,18 +4168,22 @@ msgstr ""
 "tej pevnosti, môžeme začať povolávať našich bojovníkov, aby pomohli v boji."
 
 #. [then]
+#. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1577
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1579
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1580
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1906
 msgid "Troll Skirmisher"
 msgstr "Trol záškodník"
 
 #. [else]
+#. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1590
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1592
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1594
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1601
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1881
 msgid "Dwarf Skirmisher"
 msgstr "Trpaslík záškodník"
 
@@ -15826,6 +15830,12 @@ msgid ""
 msgstr ""
 "Ako sme ju mohli nechať zomrieť? Nikdy som nevidel takúto ohnivú mágiu. Bude "
 "nám veľmi chýbať."
+
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:22
+#, fuzzy
+msgid "stunned"
+msgstr "omráčenie"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/macros.cfg:120
 msgid ""

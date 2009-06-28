@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:37+0200\n"
+"POT-Creation-Date: 2009-06-28 13:16+0200\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -624,6 +624,7 @@ msgstr "Següent generador"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
+#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "Configuració"
 
@@ -634,7 +635,7 @@ msgstr "Genera"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:108
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "Nou mapa"
 
@@ -658,7 +659,7 @@ msgstr "Crea un mapa nou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:153
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
 msgstr "Canvia la grandària del mapa"
 
@@ -704,7 +705,7 @@ msgstr "Canvia la grandària del mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:106
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 msgid "Editor Settings"
 msgstr "Configuració de l'editor"
 
@@ -714,8 +715,10 @@ msgid "Time of day lighting preset"
 msgstr ""
 
 #. [button]: id=next_tod
+#. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Següent"
 
@@ -758,8 +761,8 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:442
 #: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:186
-#: src/gui/dialogs/message.cpp:193
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
 msgid "OK"
 msgstr "D'acord"
 
@@ -799,7 +802,7 @@ msgstr ""
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:200
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
 msgid "Yes"
 msgstr "Sí"
 
@@ -808,7 +811,7 @@ msgstr "Sí"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:202
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
 msgid "No"
 msgstr "No"
 
@@ -824,7 +827,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:83
+#: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
 msgstr "Ix"
 
@@ -841,7 +844,7 @@ msgstr ""
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:83
+#: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
 msgstr "Idioma"
 
@@ -855,6 +858,58 @@ msgstr "Trieu el vostre idioma:"
 #: data/gui/default/window/language_selection.cfg:120
 msgid "Change language"
 msgstr "Canvia l'idioma"
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:27
+#, fuzzy
+msgid "Multiplayer Lobby"
+msgstr "Multijugador"
+
+#. [button]: id=join
+#: data/gui/default/window/lobby_main.cfg:192
+#, fuzzy
+msgid "Join"
+msgstr "Nom d'usuari:"
+
+#. [button]: id=observe
+#: data/gui/default/window/lobby_main.cfg:199
+msgid "Observe"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:237
+#, fuzzy
+msgid "Send"
+msgstr "Sorra"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
+#: src/hotkeys.cpp:944
+msgid "Quit"
+msgstr "Ix"
+
+#. [button]: id=refresh
+#: data/gui/default/window/lobby_main.cfg:270
+#, fuzzy
+msgid "Refresh"
+msgstr "Refresca la pantalla"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "Crea una partida"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=help
+#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+msgid "Help"
+msgstr "Ajuda"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -953,11 +1008,6 @@ msgstr "Us connectareu al servidor multijugador."
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "Visualitza la llista"
-
-#. [label]
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "Crea una partida"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -1074,7 +1124,7 @@ msgstr ""
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:79
+#: data/gui/default/window/title_screen.cfg:184
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -1141,49 +1191,48 @@ msgstr "Adreça"
 msgid "Select"
 msgstr "Selecciona"
 
+#. [button]: id=previous_tip
+#: data/gui/default/window/title_screen.cfg:124
+#, fuzzy
+msgid "Previous"
+msgstr "Unitat anterior"
+
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:77
+#: data/gui/default/window/title_screen.cfg:182
 msgid "Tutorial"
 msgstr "Tutorial"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:78
+#: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
 msgstr "Campanya"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:80
+#: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
 msgstr "Carrega"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:81
+#: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
 msgstr "Complements"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:82
+#: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
 msgstr "Editor"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:77
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Preferències"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:85
+#: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Crèdits"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:653
-#: src/hotkeys.cpp:940
-msgid "Quit"
-msgstr "Ix"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1211,11 +1260,11 @@ msgstr "Nom: "
 msgid "Creation of the directory failed."
 msgstr "No s'ha pogut crear el directori."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:308
 msgid "No server has been defined."
 msgstr "No s'ha indicat cap servidor."
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:370
 msgid "player"
 msgstr "jugador"
 
@@ -1642,7 +1691,7 @@ msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "No hi ha temes disponibles. Intenteu canviar-lo des d'una partida començada."
 
-#: src/game_preferences_display.cpp:1211
+#: src/game_preferences_display.cpp:1212
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
@@ -1662,51 +1711,51 @@ msgstr "La grandària del tipus de lletra del text és 0."
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:320 src/gui/widgets/settings.cpp:512
+#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "No hi ha cap resolució definida."
 
-#: src/gui/auxiliary/window_builder.cpp:416
-#: src/gui/auxiliary/window_builder.cpp:1037
-#: src/gui/auxiliary/window_builder.cpp:1345 src/gui/widgets/settings.cpp:767
-#: src/gui/widgets/settings.cpp:863 src/gui/widgets/settings.cpp:952
-#: src/gui/widgets/settings.cpp:994
+#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder/panel.cpp:35
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
+#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
 msgid "No grid defined."
 msgstr "No s'ha definit la graella."
 
-#: src/gui/auxiliary/window_builder.cpp:523
+#: src/gui/auxiliary/window_builder.cpp:518
 msgid "A row must have a column."
 msgstr "Una fila ha de tenir una columna."
 
-#: src/gui/auxiliary/window_builder.cpp:524
+#: src/gui/auxiliary/window_builder.cpp:519
 msgid "Number of columns differ."
 msgstr "El nombre de columnes diferix."
 
-#: src/gui/auxiliary/window_builder.cpp:797
-#: src/gui/auxiliary/window_builder.cpp:1192
+#: src/gui/auxiliary/window_builder.cpp:618
+#: src/gui/auxiliary/window_builder.cpp:869
 msgid "No list defined."
 msgstr "No s'ha definit la llista."
 
-#: src/gui/auxiliary/window_builder.cpp:800
+#: src/gui/auxiliary/window_builder.cpp:621
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:818
-#: src/gui/auxiliary/window_builder.cpp:985
+#: src/gui/auxiliary/window_builder.cpp:639
+#: src/gui/auxiliary/window_builder.cpp:723
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:962
+#: src/gui/auxiliary/window_builder.cpp:700
 #, fuzzy
 msgid "No page defined."
 msgstr "No s'ha definit la graella."
 
-#: src/gui/auxiliary/window_builder.cpp:1264
+#: src/gui/auxiliary/window_builder.cpp:942
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/dialogs/message.cpp:214
+#: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Error"
 
@@ -1718,7 +1767,7 @@ msgstr "Carrega una partida"
 msgid "Load Game..."
 msgstr "S'està carrega la partida..."
 
-#: src/gui/dialogs/title_screen.cpp:68
+#: src/gui/dialogs/title_screen.cpp:77
 msgid "Version"
 msgstr "Versió"
 
@@ -1726,24 +1775,24 @@ msgstr "Versió"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:138
+#: src/gui/widgets/settings.cpp:139
 msgid "No default gui defined."
 msgstr "No s'ha definit la interfície predeterminada."
 
-#: src/gui/widgets/settings.cpp:299
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "No s'ha definit la finestra."
 
-#: src/gui/widgets/settings.cpp:396
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:538
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:684
+#: src/gui/widgets/window.cpp:682
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
@@ -1787,7 +1836,7 @@ msgstr "Allunya"
 msgid "Default Zoom"
 msgstr "Escala per defecte"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -1832,348 +1881,349 @@ msgid "End Turn"
 msgstr "Fi del torn"
 
 #: src/hotkeys.cpp:70
-msgid "Toggle Grid"
+#, fuzzy
+msgid "Toggle Ellipses"
 msgstr "Mostra la graella"
 
 #: src/hotkeys.cpp:71
+msgid "Toggle Grid"
+msgstr "Mostra la graella"
+
+#: src/hotkeys.cpp:72
 msgid "Mouse Scrolling"
 msgstr "Desplaçament del ratolí"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Status Table"
 msgstr "Taula d'estat"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Mute"
 msgstr "Mut"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Parla"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Create Unit (Debug!)"
 msgstr "Crea una unitat (Debug!)"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 #, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Canvia de bàndol (Debug!)"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
 msgstr "Objectius de l'escenari"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Unit List"
 msgstr "Llista d'unitats"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Statistics"
 msgstr "Estadístiques"
 
-#: src/hotkeys.cpp:81 src/hotkeys.cpp:91
+#: src/hotkeys.cpp:82 src/hotkeys.cpp:92
 msgid "Stop"
 msgstr "Atura"
 
-#: src/hotkeys.cpp:82 src/hotkeys.cpp:89
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:90
 msgid "Play"
 msgstr "Reproduix"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Team Label"
 msgstr "Posa una etiqueta d'equip"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Set Label"
 msgstr "Posa una etiqueta"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Clear Labels"
 msgstr "Esborra les etiquetes"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Show Enemy Moves"
 msgstr "Moviments enemics"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Best Possible Enemy Moves"
 msgstr "Millors moviments enemics"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Reset"
 msgstr "Reinicia"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Next Turn"
 msgstr "Següent torn"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Next Side"
 msgstr "Bàndol següent"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Full map"
 msgstr "Mapa sencer"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Each team"
 msgstr "Cada equip"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Team 1"
 msgstr "Equip 1"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Skip animation"
 msgstr "Omet animació"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Quit to Desktop"
 msgstr "Ix"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 #, fuzzy
 msgid "Close Map"
 msgstr "Tanca"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Partial Undo"
 msgstr "Desfés parcialment"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Carrega un mapa"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Save Map"
 msgstr "Alça el mapa"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Save Map As"
 msgstr "Anomena i alça el mapa"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Revert All Changes"
 msgstr "Desfés tots els canvis"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Map Information"
 msgstr "Informació del mapa"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Next Tool"
 msgstr "Eina següent"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Paint Tool"
 msgstr "Eina de pintar"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Fill Tool"
 msgstr "Eina d'emplenar"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Selection Tool"
 msgstr "Eina de selecció"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Next Brush"
 msgstr "Pinzell següent"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Default Brush"
 msgstr "Pinzell predeterminat"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Cut"
 msgstr "Talla"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Copy"
 msgstr "Copia"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Paste"
 msgstr "Enganxa"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select Inverse"
 msgstr "Invertix la selecció"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Select None"
 msgstr "No seleccionis res"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Rotate Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Flip Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Fill Selection"
 msgstr "Emplena la selecció"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Generate Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Rotate Map"
 msgstr ""
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Generate Map"
 msgstr "Genera un mapa"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Apply a Mask"
 msgstr "Aplica a la màscara"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Create Mask"
 msgstr "Crea una màscara"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Refresh Display"
 msgstr "Refresca la pantalla"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Update Terrain Transitions"
 msgstr "Actualitza les transicions del terreny"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualitza les transicions del terreny automàticament"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Refresh Image Cache"
 msgstr "Refresca la cau de les imatges"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Hex Coordinates"
 msgstr "Dibuixa les coordenades dels hexàgons"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Draw Terrain Codes"
 msgstr "Dibuixa els codis del terreny"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Delay Shroud Updates"
 msgstr "Retarda el refresc"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Update Shroud Now"
 msgstr "Refresca les zones fosques"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Continue Move"
 msgstr "Continua movent"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Find Label or Unit"
 msgstr "Cerca una etiqueta o unitat"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Speak to Ally"
 msgstr "Parla als aliats"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Speak to All"
 msgstr "Parla a tothom"
 
-#: src/hotkeys.cpp:184
-msgid "Help"
-msgstr "Ajuda"
-
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "View Chat Log"
 msgstr "Veure el registre del xat"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Change the language"
 msgstr "Canvia l'idioma"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Enter user command"
 msgstr "Introduix una orde d'usuari"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Custom command"
 msgstr "Orde personalitzada"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Run AI formula"
 msgstr "Executa una fórmula de l'IA"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Clear messages"
 msgstr "Neteja els missatges"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "User-Command#2"
 msgstr "Orde d'usuari #2"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "User-Command#3"
 msgstr "Orde d'usuari #3"
 
-#: src/hotkeys.cpp:653 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu eixir?"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:899
 msgid "Map-Screenshot"
 msgstr "Captura de pantalla del mapa"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:906
 msgid "Screenshot done"
 msgstr "S'ha fet la captura de pantalla"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:908
 msgid "Screenshot failed"
 msgstr "Ha fallat la captura de pantalla"
 
@@ -2192,7 +2242,7 @@ msgid "language code for localized resources^en_US"
 msgstr ""
 
 # Hmm, cal el «Window» a l'original?
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:203
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:208
 msgid "Close Window"
 msgstr "Tanca"
 
@@ -2244,7 +2294,7 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Illa"
 
-#: src/marked-up_text.cpp:395
+#: src/marked-up_text.cpp:397
 msgid "The maximum text width is less than 1."
 msgstr "L'amplada màxima del text és inferior a 1."
 
@@ -2266,44 +2316,44 @@ msgstr ""
 "suportar una resolució de 1024x768x16 per tal de poder jugar a pantalla "
 "completa."
 
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:212
 msgid "Hotkey Settings"
 msgstr "Dreceres de teclat"
 
-#: src/preferences_display.cpp:213 src/preferences_display.cpp:281
+#: src/preferences_display.cpp:218 src/preferences_display.cpp:286
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Premeu la tecla desitjada (o cancel·leu amb la tecla d'escapada)"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Action"
 msgstr "Acció"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:237
 msgid "Binding"
 msgstr "Drecera"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Change Hotkey"
 msgstr "Canvia la tecla"
 
-#: src/preferences_display.cpp:247
+#: src/preferences_display.cpp:252
 msgid "Clear Hotkey"
 msgstr "Esborra la tecla"
 
-#: src/preferences_display.cpp:315
+#: src/preferences_display.cpp:320
 msgid "This Hotkey is already in use."
 msgstr "Esta tecla ja està en ús."
 
-#: src/preferences_display.cpp:326
+#: src/preferences_display.cpp:331
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:417
+#: src/preferences_display.cpp:422
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/preferences_display.cpp:446
+#: src/preferences_display.cpp:451
 msgid "Choose Resolution"
 msgstr "Tria la resolució"
 

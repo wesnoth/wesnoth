@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-05-15 11:44+0200\n"
+"POT-Creation-Date: 2009-06-28 13:16+0200\n"
 "PO-Revision-Date: 2009-03-27 23:02-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -5559,9 +5559,11 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:146
+#, fuzzy
 msgid ""
 "Haldric! I won't do it... I won't help. What is it with your kind, always "
-"rushing to a fool's death? Who'll lead these people?"
+"rushing to a fool's death? Who'll lead these people?  I...<i>we</i> need you "
+"alive"
 msgstr ""
 "Haldric! 我不会这么做...我不会帮这个忙的. 你们到底怎么了, 总是迫不及待地要象"
 "个傻瓜一样死掉? 谁会领导这些人民? "
@@ -5569,9 +5571,10 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:150
 msgid ""
-"You will. I wouldn't have made it this far without you. We really have to "
-"convince Jevyan -"
-msgstr "你来领导. 没有你我走不到今天. 我们一定要让Jevyan确信..."
+"You will. I wouldn't have made it this far without you, Jessene. But "
+"everything turns on convincing Jevyan, it's the only way we can possibly "
+"keep the orc hordes off our necks."
+msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:154
@@ -5637,10 +5640,11 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:221
+#, fuzzy
 msgid ""
-"Very well, if you can't be deterred. Remember, you MUST be slain by the hand "
-"of Jevyan himself. We can't have an illiterate orc or mindless skeleton "
-"getting the treaty. We will honor your sacrifice."
+"Very well, if you can't be deterred. Remember, you <i>must</i> be slain by "
+"the hand of Jevyan himself. We can't have an illiterate orc or mindless "
+"skeleton getting the treaty. We will honor your sacrifice."
 msgstr ""
 "那好吧, 假如没有办法阻止你的话. 记住, 你一定要被Jevyan亲手杀掉. 我们不能让一"
 "个不识字的兽人或一个没有意识的骷髅拿到这份协议. 我们会向你的牺牲致敬."
@@ -6351,10 +6355,12 @@ msgstr "那么, 这么安置我呢? "
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:292
+#, fuzzy
 msgid ""
 "There are many Wesfolk amongst the remains of my people. We must stay united "
 "under one banner. I will need you by my side if there is any hope of "
-"building a true 'Kingdom of Wesnoth'. Come, we have much work to do."
+"building a true 'Kingdom of Wesnoth'. I..I think a Queen's crown would sit "
+"well upon that flame-colored hair of yours, Jessene."
 msgstr ""
 "在我幸存的族人间有夹杂着大量的Wesfolk人. 我们必须联合在同一面旗帜之下. 只要有"
 "一线希望可以建立真正的'韦诺王国', 我就需要你站在我这边. 来吧, 我们有许多工作"
@@ -6362,11 +6368,38 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:296
-msgid "We!?"
-msgstr "我们!?"
+msgid "I am not to be bought with trinkets, Haldric."
+msgstr ""
+
+#. [message]: speaker=Prince Haldric
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:300
+msgid ""
+"Then take my hand, Jessene, if you won't accept crown or kingdom. You have "
+"earned both.  We can't make this work without your people...and I don't "
+"think I can make it work without <i>you</i>."
+msgstr ""
+
+#. [message]: speaker=Lady Jessene
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:304
+msgid ""
+"Probably not. And, if nothing else, the hero-king of Wesnoth. Haldric "
+"Dragonbane, will need someone to remind him that he does not eat lighting "
+"and fart thunder. I...accept."
+msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:300
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:308
+msgid ""
+"It was never said afterwards that the marriage of Haldric and Jessene was "
+"exactly tranquil. But it was also said that neither could stand be long "
+"separated from the other, and she bore him strong children that mingled the "
+"blood of their diverse ancestries. Many followed their example, and the two "
+"refugee peoples from the Green Isles became fused into one in the new "
+"kingdom."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:312
 msgid ""
 "In later ages the bards would sing the 'The Breaking of the Pact', an epic "
 "tale of Haldric's betrayal of the elves. They would whisper of the price he "
@@ -6378,7 +6411,7 @@ msgstr ""
 "价."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:305
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:317
 msgid ""
 "But some of us have remembered the true story of our arrival on this great "
 "continent. The true story of the Rise of Wesnoth."
@@ -6961,6 +6994,14 @@ msgid ""
 msgstr ""
 "在连续向东航行了几个星期后，他们听见海鸥的叫声，并且隐约感觉到了陆地。远古大"
 "陆在他们面前的summer-lit海洋出现了。"
+
+#~ msgid ""
+#~ "You will. I wouldn't have made it this far without you. We really have to "
+#~ "convince Jevyan -"
+#~ msgstr "你来领导. 没有你我走不到今天. 我们一定要让Jevyan确信..."
+
+#~ msgid "We!?"
+#~ msgstr "我们!?"
 
 #~ msgid "Onward to victory!"
 #~ msgstr "为了胜利. 前进!"
