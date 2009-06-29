@@ -364,8 +364,6 @@ class preprocessor_data: preprocessor
 	std::string directory_;
 	/** Buffer for delayed input processing. */
 	std::vector< std::string > strings_;
-	/** Mapping of macro arguments to their content. */
-	std::map<std::string, std::string> *local_defines_;
 	/** Stack of nested preprocessing chunks. */
 	std::vector< token_desc > tokens_;
 	/**
@@ -396,8 +394,7 @@ public:
 	                  std::istream *,
 	                  std::string const &history,
 	                  std::string const &name, int line,
-	                  std::string const &dir, std::string const &domain,
-	                  std::map<std::string, std::string> *defines);
+	                  std::string const &dir, std::string const &domain);
 	~preprocessor_data();
 	virtual bool get_chunk();
 };
@@ -417,7 +414,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", name, 1, directory_name(name), t.textdomain_, NULL);
+			new preprocessor_data(t, file_stream, "", name, 1, directory_name(name), t.textdomain_);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
@@ -445,13 +442,11 @@ bool preprocessor_file::get_chunk()
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	std::istream *i, std::string const &history, std::string const &name, int linenum,
-	std::string const &directory, std::string const &domain,
-	std::map<std::string, std::string> *defines) :
+	std::string const &directory, std::string const &domain) :
 	preprocessor(t),
 	in_(i),
 	directory_(directory),
 	strings_(),
-	local_defines_(defines),
 	tokens_(),
 	slowpath_(0),
 	skipping_(0),
@@ -480,7 +475,6 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 
 preprocessor_data::~preprocessor_data()
 {
-	delete local_defines_;
 }
 
 void preprocessor_data::push_token(char t)
@@ -808,7 +802,7 @@ bool preprocessor_data::get_chunk()
 			if (token.type == '{') {
 				if (!strings_.back().empty()) {
 					std::ostringstream error;
-					std::ostringstream location;
+	        			std::ostringstream location;
 					error << "Can't parse new macro parameter with a macro call scope open";
 					location<<linenum_<<' '<<target_.location_;
 					target_.error(error.str(), location.str());
@@ -822,54 +816,98 @@ bool preprocessor_data::get_chunk()
 				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
-			std::map<std::string, std::string>::const_iterator arg;
-			preproc_map::const_iterator macro;
 			// If this is a known pre-processing symbol, then we insert it,
 			// otherwise we assume it's a file name to load.
-			if (local_defines_ &&
-			    (arg = local_defines_->find(symbol)) != local_defines_->end())
-			{
-				if (strings_.size() - token.stack_pos != 1)
-				{
-					std::ostringstream error;
-					error << "macro argument '" << symbol
-					      << "' does not expect any argument";
-					std::ostringstream location;
-					location << linenum_ << ' ' << target_.location_;
-					target_.error(error.str(), location.str());
-				}
-				std::ostringstream v;
-				v << arg->second << "\376line " << linenum_ << ' ' << target_.location_
-				  << "\n\376textdomain " << target_.textdomain_ << '\n';
-				pop_token();
-				put(v.str());
-			}
-			else if ((macro = target_.defines_->find(symbol)) != target_.defines_->end())
+			preproc_map::const_iterator macro = target_.defines_->find(symbol);
+			if (macro != target_.defines_->end())
 			{
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
-				if (nb_arg != val.arguments.size())
-				{
-					std::ostringstream error;
+				if (nb_arg != val.arguments.size()) {
+                    std::ostringstream error;
 					error << "preprocessor symbol '" << symbol << "' expects "
 					      << val.arguments.size() << " arguments, but has "
 					      << nb_arg << " arguments";
-					std::ostringstream location;
-					location << linenum_ << ' ' << target_.location_;
+			        std::ostringstream location;
+					location<<linenum_<<' '<<target_.location_;
 					target_.error(error.str(), location.str());
 				}
-				std::istringstream *buffer = new std::istringstream(val.value);
-				std::map<std::string, std::string> *defines =
-					new std::map<std::string, std::string>;
-				for (size_t i = 0; i < nb_arg; ++i) {
-					(*defines)[val.arguments[i]] = strings_[token.stack_pos + i + 1];
+
+				std::stringstream *buffer = new std::stringstream;
+				std::string::const_iterator i_bra = val.value.end();
+				int macro_num = val.linenum;
+				std::string macro_textdomain = val.textdomain;
+				bool quoting = false;
+				for(std::string::const_iterator i = val.value.begin(),
+				    i_end = val.value.end(); i != i_end; ++i) {
+					char c = *i;
+					if (c == '\n') {
+						++macro_num;
+					} else if (c == '"') {
+						quoting = !quoting;
+					}
+
+					if (c == '{') {
+						if (i_bra != i_end)
+							buffer->write(&*i_bra - 1, i - i_bra + 1);
+						i_bra = i + 1;
+					} else if (i_bra == i_end) {
+						if (c == '#' && !quoting) {
+							// Keep track of textdomain changes in the body of the
+							// macro, so they can be restored after each substitution
+							// of a macro argument.
+							std::string::const_iterator i_beg = i + 1;
+							if (i_end - i_beg >= 13 &&
+							    std::equal(i_beg, i_beg + 10, "textdomain")) {
+								i_beg += 10;
+								i = std::find(i_beg, i_end, '\n');
+								if (i_beg != i)
+									++i_beg;
+								macro_textdomain = std::string(i_beg, i);
+								*buffer << "#textdomain " << macro_textdomain;
+								++macro_num;
+								c = '\n';
+							} else if((i_end - i_beg < 6 || (!std::equal(i_beg, i_beg + 6, "define")
+							&& !std::equal(i_beg, i_beg + 6, "ifndef")))
+							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef")
+							&& !std::equal(i_beg, i_beg + 5, "endif") && !std::equal(i_beg, i_beg + 5, "undef")))
+							&& (i_end - i_beg < 4 || !std::equal(i_beg, i_beg + 4, "else"))) {
+								// Check for define, ifdef, ifndef, endif, undef, else.
+								// Otherwise, this is a comment and should be skipped.
+								i = std::find(i_beg, i_end, '\n');
+								++macro_num;
+								c = '\n';
+							}
+						}
+						buffer->put(c);
+					} else if (c == '}') {
+						size_t sz = i - i_bra;
+						for(size_t n = 0; n < nb_arg; ++n) {
+							std::string const &arg = val.arguments[n];
+							if (arg.size() != sz ||
+							    !std::equal(i_bra, i, arg.begin()))
+								continue;
+							*buffer << strings_[token.stack_pos + n + 1]
+							        << "\376line " << macro_num
+							        << ' ' << val.location << "\n\376textdomain "
+							        << macro_textdomain << '\n';
+							i_bra = i_end;
+							break;
+						}
+						if (i_bra != i_end) {
+							// The bracketed text was no macro argument
+							buffer->write(&*i_bra - 1, sz + 2);
+							i_bra = i_end;
+						}
+					}
 				}
+
 				pop_token();
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					DBG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
-					                      val.linenum, dir, val.textdomain, defines);
+					                      val.linenum, dir, val.textdomain);
 				} else {
 					DBG_CF << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
@@ -877,7 +915,7 @@ bool preprocessor_data::get_chunk()
 						new preprocessor_streambuf(target_);
 					{	std::istream in(buf);
 						new preprocessor_data(*buf, buffer, val.location, "",
-						                      val.linenum, dir, val.textdomain, defines);
+						                      val.linenum, dir, val.textdomain);
 						res << in.rdbuf(); }
 					delete buf;
 					strings_.back() += res.str();
