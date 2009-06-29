@@ -442,7 +442,7 @@ class CampaignClient:
                 contents = contents.get_value()
             if verbose:
                 sys.stderr.write(i * " " + name + " (" +
-                      str(len(contents)) + ")")
+                      str(len(contents)) + ")\n")
             save = file( os.path.join(path, name), "wb")
 
             # We MUST un-escape our data
