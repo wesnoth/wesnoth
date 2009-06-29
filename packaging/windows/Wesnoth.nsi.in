@@ -168,7 +168,17 @@ Section "Battle for Wesnoth" BfWSection
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-
+  
+  ;Add uninstall information
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version" 
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "URLInfoAbout" "www.wesnoth.org"
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayVersion" "%version"
+  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoModify" 1
+  WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "NoRepair" 1
+  
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     
   ${If} $UserdataMyDocumentsRadioButtonState == ${BST_CHECKED}
@@ -268,6 +278,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version"
   DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth\%version"
   DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth"
 
