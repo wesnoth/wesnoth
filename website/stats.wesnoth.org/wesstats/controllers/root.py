@@ -115,8 +115,21 @@ class RootController(BaseController):
 		return dict()
 	
 	@expose(template="wesstats.templates.deleteview")
-	def deleteview(self):
-		return dict()
+	def deleteview(self,**kw):
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		curs = conn.cursor()
+		#check for a deletion request
+		request = None
+		for key in kw:
+			if kw[key] == "Delete":
+				request = key
+				break
+		if request != None:
+			curs.execute("DELETE FROM _wsviews WHERE url = %s", (request,))
+		curs.execute("SELECT title,url FROM _wsviews")
+		views = curs.fetchall()
+		conn.close()
+		return dict(views=views)
 	
 	@expose()
 	def lookup(self,url,*remainder):
