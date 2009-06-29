@@ -10,6 +10,7 @@ add-ons.
 """
 
 import sys, os.path, re, time, glob
+from subprocess import Popen
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
@@ -142,12 +143,16 @@ if __name__ == "__main__":
                 oldcfg_path = os.path.join(cdir, name + ".cfg")
                 if os.path.isfile(oldcfg_path):
                     oldcfg = name + ".cfg"
+                    if options.verbose:
+                        sys.stderr.write("Creating tarball with command: tar " +
+                            "cjf %(tarname)s -C %(cdir)s %(name)s %(oldcfg)s\n" %
+                            locals())
+                    Popen(["tar", "cjf", tarname, "-C", cdir, name, oldcfg])
                 else:
-                    oldcfg = ""
-                if options.verbose:
-                    sys.stderr.write("Creating tarball %(tarname)s.\n" %
-                        locals())
-                Popen(["tar", "cjf", tarname, "-C", cdir, name, oldcfg])
+                    if options.verbose:
+                        sys.stderr.write("Creating tarball with command: tar " +
+                            "cjf %(tarname)s -C %(cdir)s %(name)s\n" % locals())
+                    Popen(["tar", "cjf", tarname, "-C", cdir, name])
 
     def get_info(name):
         """
