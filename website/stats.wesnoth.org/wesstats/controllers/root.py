@@ -18,6 +18,7 @@ import types
 import configuration
 import evaluators
 import time
+import logging
 
 from tg import expose, flash, require, url, request, redirect
 from pylons.i18n import ugettext as _, lazy_ugettext as l_
@@ -31,6 +32,8 @@ from wesstats import model
 from wesstats.controllers.secure import SecureController
 
 __all__ = ['RootController']
+
+log = logging.getLogger("wesstats")
 
 #return the intersection of the items in the lists
 def intersect(*lists):
@@ -65,11 +68,11 @@ def scaled_query(curs,query,threshold,evaluator):
 		results = curs.fetchall()
 		length = evaluator(results)
 		if length > threshold:
-			print "query took " + str(time.time()-s_time) + " seconds"
+			log.debug("query took " + str(time.time()-s_time) + " seconds")
 			return results
-	print "samples too small, using entire table"
+	log.debug("too few results from sample tables, using entire table")
 	curs.execute(query)
-	print "query took " + str(time.time()-s_time) + " seconds"
+	log.debug("query took " + str(time.time()-s_time) + " seconds")
 	return curs.fetchall()
 
 def fconstruct(filters,colname,list):
@@ -95,6 +98,7 @@ def dateconstruct(filters,start_date,end_date):
 		filters += " WHERE "
 	filters += "timestamp BETWEEN '"+start_date+"' AND '"+end_date+"'"
 	return filters
+
 def listfix(l):
 	if not isinstance(l,types.ListType):
 		return [l]
@@ -125,6 +129,7 @@ class RootController(BaseController):
 				request = key
 				break
 		if request != None:
+			log.info("view deletion request for page "+key)
 			curs.execute("DELETE FROM _wsviews WHERE url = %s", (request,))
 		curs.execute("SELECT title,url FROM _wsviews")
 		views = curs.fetchall()
@@ -173,7 +178,8 @@ class PieGraphController(object):
 		
 		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
-		print view_data
+		log.debug("pie chart request, here is SQL data for this view:")
+		log.debug(view_data)
 		#fetch the relevant filters for this template and their possible values
 		available_filters = view_data[5].split(',')
 		fdata = dict()
@@ -207,9 +213,11 @@ class PieGraphController(object):
 			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
 		y_data_str = y_data_str[0:len(y_data_str)-1]
 		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
-		print query
+		log.debug("SQL query:")
+		log.debug(query)
 		results = scaled_query(curs,query,100,evaluators.count_eval)
-		print results
+		log.debug("query result:")
+		log.debug(results)
 		#generate JS datafields here because genshi templating can't emit JS...
 		data = ""
 		for i in range(0,len(results)):
