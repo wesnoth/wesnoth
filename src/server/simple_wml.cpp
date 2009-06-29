@@ -23,10 +23,10 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	filter.push(boost::iostreams::gzip_decompressor());
 	filter.push(stream);
 
-	const int chunk_size = input.size() * 10;
+	const size_t chunk_size = input.size() * 10;
 	std::vector<char> buf(chunk_size);
-	int len = 0;
-	int pos = 0;
+	size_t len = 0;
+	size_t pos = 0;
 	while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
 		if(pos + chunk_size > 40000000) {
 			throw error("WML document exceeds 40MB limit");
@@ -61,8 +61,8 @@ char* compress_buffer(const char* input, string_span* span)
 	filter.push(stream);
 
 	std::vector<char> buf(in.size()*2 + 80);
-	const int len = filter.read(&buf[0], buf.size()).gcount();
-	if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
+	const size_t len = filter.read(&buf[0], buf.size()).gcount();
+	if((!filter.eof() && !filter.good()) || len == static_cast<size_t>(buf.size())) {
 		throw error("failed to compress");
 	}
 
