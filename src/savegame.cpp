@@ -845,7 +845,7 @@ void scenariostart_savegame::before_save()
 {
 	//Add the player section to the starting position so we can get the correct recall list
 	//when loading the replay later on
-	write_players(gamestate(), gamestate().starting_pos);
+	write_players(gamestate(), gamestate().starting_pos, true);
 }
 
 replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves)

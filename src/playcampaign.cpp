@@ -390,7 +390,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			return QUIT;
 		}
 
-		gamestate.snapshot = config();
+		//gamestate.snapshot = config(); //FIXME: remove this line once player_info removal is complete
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
@@ -414,14 +414,18 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 		if (res != VICTORY)
 		{
-			if (res != OBSERVER_END || gamestate.classification().next_scenario.empty())
+			if (res != OBSERVER_END || gamestate.classification().next_scenario.empty()) {
+				gamestate.snapshot = config();
 				return res;
+			}
 
 			const int dlg_res = gui::dialog(disp,"Game Over",
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui::YES_NO).show();
-			if (dlg_res != 0)
+			if (dlg_res != 0) {
+				gamestate.snapshot = config();
 				return res;
+			}
 		}
 
 		// Continue without saving is like a victory,
@@ -434,7 +438,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.rng().rotate_random();
 
 		if(io_type == IO_CLIENT) {
-			if (gamestate.classification().next_scenario.empty()) return res;
+			if (gamestate.classification().next_scenario.empty()) {
+				gamestate.snapshot = config();
+				return res;
+			}
 
 			// Ask for the next scenario data.
 			network::send_data(config("load_next_scenario"), 0, true);
@@ -444,7 +451,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				cfg.clear();
 				network::connection data_res = dialogs::network_receive_dialog(disp,
 						msg, cfg);
-				if(!data_res) return QUIT;
+				if(!data_res) {
+					gamestate.snapshot = config();
+					return QUIT;
+				}
 			} while (!cfg.child("next_scenario"));
 
 			if (const config &c = cfg.child("next_scenario")) {
@@ -452,6 +462,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario = &starting_pos;
 				gamestate = game_state(starting_pos);
 			} else {
+				gamestate.snapshot = config();
 				return QUIT;
 			}
 		} else {
@@ -579,9 +590,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			if (gamestate.classification().campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
-				write_players(gamestate, gamestate.starting_pos);
+				assert (!gamestate.snapshot.empty());
+				write_players(gamestate, gamestate.starting_pos, true);
 			}
 		}
+		gamestate.snapshot = config();
 	}
 
 	if (!gamestate.classification().scenario.empty() && gamestate.classification().scenario != "null") {
