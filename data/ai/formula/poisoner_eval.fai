@@ -1,16 +1,10 @@
 fai 'poisoner_eval.fai'
 
 if(
-	not filter(me.attacks,'att',filter(att.special,'spe',contains_string(spe,'poison'))),-1,
-	target.undead != 0,-1,
-	target.hitpoints < 5,-1,
-	target.max_experience - target.experience <= 8,-1,
-	index_of('poisoned',keys(target.states)) != -1,-1,
 	index_of('regenerates',target.abilities) != -1, 1,
 	find( villages, 'vill', vill = target.loc ), 1,
 	target.leader, 5,
 	2	
 )
-
 
 faiend
