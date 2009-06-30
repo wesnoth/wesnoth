@@ -113,8 +113,7 @@ public:
 	const variant& get_keeps_cache() const { return keeps_cache_; }
 
 	// Check if given unit can reach another unit
-	bool can_reach_unit(unit_map::const_unit_iterator unit_A,
-		unit_map::const_unit_iterator unit_B) const;
+	bool can_reach_unit(map_location unit_A, map_location unit_B) const;
 
 	const std::map<map_location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
 

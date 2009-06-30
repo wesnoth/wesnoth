@@ -2548,16 +2548,15 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_reach_unit(unit_map::const_unit_iterator unit_A,
-		unit_map::const_unit_iterator unit_B) const {
+bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const {
         prepare_move();
 	move_map::iterator i;
 	std::pair<move_map::iterator,
 			  move_map::iterator> unit_moves;
 
-	unit_moves = srcdst_.equal_range(unit_A->first);
+	unit_moves = srcdst_.equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		map_location diff(((*i).second).vector_difference(unit_B->first));
+		map_location diff(((*i).second).vector_difference(unit_B));
 		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
 			return true;
 		}

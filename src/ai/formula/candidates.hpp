@@ -123,6 +123,7 @@ class candidate_action_with_filters : public base_candidate_action {
 public:
 	candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 protected:
+        variant do_filtering(formula_ai* ai, variant& input, game_logic::const_formula_ptr formula);
 
 	game_logic::candidate_action_filters filter_map_;
 };
@@ -136,7 +137,7 @@ public:
 	virtual void update_callable_map(game_logic::map_formula_callable& callable);
 
 protected:
-	unit_map::unit_iterator my_unit_;
+	variant my_unit_;
 };
 
 class attack_candidate_action : public candidate_action_with_filters {
@@ -147,8 +148,8 @@ public:
 
 	virtual void update_callable_map(game_logic::map_formula_callable& callable);
 protected:
-	unit_map::const_unit_iterator my_unit_;
-	unit_map::const_unit_iterator enemy_unit_;
+	variant my_unit_;
+	variant enemy_unit_;
 };
 
 class support_candidate_action : public candidate_action_with_filters {
