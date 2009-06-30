@@ -1494,6 +1494,7 @@ void game_controller::reset_translations()
 		// we may have translatable strings in [game_config]
 		// e.g. team color names are defined there
 		game_config::load_config(game_config_.child("game_config"));
+		set_unit_data();
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
