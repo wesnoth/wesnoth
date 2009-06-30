@@ -43,7 +43,8 @@
 <div id="visualization" style="width: 300px; height: 300px;">
 </div>
 <div id="filter_box">
-Used filters
+Used filters:
+<b py:if="len(used_filters) == 0">None</b>
 <table border="1">
 <tr py:for="filter in used_filters">
 <td>${filter}</td>
