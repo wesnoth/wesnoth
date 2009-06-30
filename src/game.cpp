@@ -1377,6 +1377,7 @@ void game_controller::reset_translations()
 		// e.g. team color names are defined there
 		config &cfg = game_config_.child("game_config");
 		game_config::load_config(cfg ? &cfg : NULL);
+		set_unit_data();
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +
