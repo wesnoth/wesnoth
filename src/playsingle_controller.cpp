@@ -467,10 +467,30 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					player_info *player=gamestate_.get_player(i->save_id());
 
 					if (player) {
+						
+						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
 						// Store the gold for all players.
-						player->gold = ((i->gold() + finishing_bonus)
-								* end_level.carryover_percentage) / 100;
+						player->gold = carryover_gold;
 						player->gold_add = end_level.carryover_add;
+
+						//store the gold in snapshot side
+						config::child_itors side_range = gamestate_.snapshot.child_range("side");
+						config::child_iterator side_it = side_range.first;
+						//check if this side already exists in the snapshot
+						while (side_it != side_range.second) {
+							if ((*side_it)["save_id"] == i->save_id()) {
+								(*side_it)["gold"] = str_cast<int>(carryover_gold);
+								break;
+							}
+							side_it++;
+						}
+						//if it doesnt, add a new child
+						if (side_it == side_range.second) {
+							config& new_side = gamestate_.snapshot.add_child("side");
+							new_side["save_id"] = i->save_id();
+							new_side["gold"] = str_cast<int>(carryover_gold);
+							
+						}
 
 						// Only show the report for ourselves.
 						if (!i->is_human())
