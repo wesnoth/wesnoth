@@ -44,7 +44,7 @@ static lg::log_domain log_engine("engine");
 
 #ifdef _WIN32
 
-static void write_player(const player_info& player, config& cfg);
+static void write_player(const player_info& player, config& cfg, const bool use_snapshot = false);
 
 #endif /* _WIN32 */
 
@@ -209,14 +209,17 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-static void write_player(const player_info& player, config& cfg)
+static void write_player(const player_info& player, config& cfg, const bool use_snapshot=false)
 {
 	cfg["name"] = player.name;
 
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",player.gold);
+	//do not store gold if specified by use_snapshot
+	if (!use_snapshot) {
+		char buf[50];
+		snprintf(buf,sizeof(buf),"%d",player.gold);
 
-	cfg["gold"] = buf;
+		cfg["gold"] = buf;
+	}
 
 	cfg["gold_add"] = player.gold_add ? "yes" : "no";
 
@@ -240,7 +243,7 @@ static void write_player(const player_info& player, config& cfg)
 	cfg["can_recruit"] = can_recruit_str;
 }
 
-void write_players(game_state& gamestate, config& cfg)
+void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 {
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
@@ -252,8 +255,12 @@ void write_players(game_state& gamestate, config& cfg)
 		i!=gamestate.players.end(); ++i)
 	{
 		config new_cfg;
-		write_player(i->second, new_cfg);
+		write_player(i->second, new_cfg, use_snapshot);
 		new_cfg["save_id"]=i->first;
+		//add gold from snapshot if specified
+		if (use_snapshot) {
+			new_cfg["gold"] = gamestate.snapshot.find_child("side","save_id",i->first)["gold"];
+		}
 		cfg.add_child("player", new_cfg);
 	}
 }
