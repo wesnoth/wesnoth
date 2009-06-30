@@ -23,6 +23,7 @@
 #include "global.hpp"
 #include "wesconfig.h"
 #include <cmath>
+#include <math.h> // cmath may not provide round()
 #include <vector>
 #include <sstream>
 
