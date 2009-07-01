@@ -42,11 +42,11 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 
 static void write_player(const player_info& player, config& cfg, const bool use_snapshot = false);
 
-#endif /* _WIN32 */
+#endif /* _MSC_VER */
 
 game_classification::game_classification():
 	label(),
