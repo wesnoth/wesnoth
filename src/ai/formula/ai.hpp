@@ -137,6 +137,16 @@ public:
 
 	game_logic::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
 
+	/** Evaluate the fai candidate action */
+	void evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca);
+
+	/**
+	 * Execute the fai candidate action
+	 * @return true if game state was changed
+	 * @return false if game state was changed
+	 */
+	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
+
 private:
 	ai::recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;

@@ -2614,3 +2614,19 @@ void formula_ai::on_create(){
         }
 
 }
+
+void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca)
+{
+	fai_ca->evaluate(this,get_info().units);
+
+}
+
+bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_ca)
+{
+	move_maps_valid_ = false;//@todo 1.7 think about optimizing this
+	game_logic::map_formula_callable callable(this);
+	callable.add_ref();
+	fai_ca->update_callable_map( callable );
+	const_formula_ptr move_formula(fai_ca->get_action());
+	return make_action(move_formula, callable);
+}
