@@ -872,6 +872,30 @@ def output(isocode):
     for c in stuff.campaign_lookup.keys():
         stuff.is_mainline_campaign[c] = True
 
+    # Parse all unit data
+    # This reads in units.cfg, giving us all the mainline units (and races).
+    print "Parsing mainline units ...",
+    sys.stdout.flush()
+    WML = stuff.parser.parse("{core/units.cfg}")
+    n = stuff.add_units(WML, "mainline")
+    print n, "mainline units found."
+
+    # Now we read each mainline campaign in turn to get its units.
+    cnames = stuff.campaign_lookup.keys()
+    for cname in cnames:
+        print "Parsing %s units ..." % cname,
+        sys.stdout.flush()
+        campaign = stuff.campaign_lookup[cname]
+        define = campaign.get_text_val("define")
+        WML = stuff.parser.parse("""
+            #define %s\n#enddef
+            {campaigns}""" % define,
+            ignore_macros = lambda x: x.find("/scenarios") == -1)
+        n = stuff.add_units(WML, cname)
+        image_collector.add_binary_pathes_from_WML(cname, WML)
+        print n, "units found."
+    sys.stderr.flush()
+
     if userdir:
         print "Parsing addons ...",
         sys.stdout.flush()
@@ -894,30 +918,6 @@ def output(isocode):
         n = stuff.add_units(WML, cname)
         image_collector.add_binary_pathes_from_WML(cname, WML)
         print n, "units found."
-
-    # Parse all unit data
-    # This reads in units.cfg, giving us all the mainline units.
-    print "Parsing mainline units ...",
-    sys.stdout.flush()
-    WML = stuff.parser.parse("{core/units.cfg}")
-    n = stuff.add_units(WML, "mainline")
-    print n, "mainline units found."
-
-    # Now we read each mainline campaign in turn to get its units.
-    cnames = stuff.campaign_lookup.keys()
-    for cname in cnames:
-        print "Parsing %s units ..." % cname,
-        sys.stdout.flush()
-        campaign = stuff.campaign_lookup[cname]
-        define = campaign.get_text_val("define")
-        WML = stuff.parser.parse("""
-            #define %s\n#enddef
-            {campaigns}""" % define,
-            ignore_macros = lambda x: x.find("/scenarios") == -1)
-        n = stuff.add_units(WML, cname)
-        image_collector.add_binary_pathes_from_WML(cname, WML)
-        print n, "units found."
-    sys.stderr.flush()
 
     stuff.find_unit_factions()
 
