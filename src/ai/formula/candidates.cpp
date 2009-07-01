@@ -30,32 +30,35 @@ void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, fu
 	// register candidate actions
 	foreach (const config &rc_action, cfg.child_range("register_candidate_action"))
 	{
-		const t_string &name = rc_action["name"];
+		candidate_action_ptr new_ca = load_candidate_action_from_config(rc_action,ai,function_table);
 
-		try{
-			const t_string &type = rc_action["type"];
-
-			candidate_action_ptr new_ca;
-
-			if( type == "movement") {
-				new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
-			} else if( type == "attack") {
-				new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
-			} else if( type == "support") {
-				new_ca = candidate_action_ptr(new support_candidate_action(name, type, rc_action, function_table ));
-			} else {
-				ERR_AI << "Unknown candidate action type: " << type << "\n";
-				continue;
-			}
-
-
+		if (new_ca) {
 			candidate_actions_.push_back(new_ca);
+		}
 
-		}
-		catch(formula_error& e) {
-			ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
-		}
 	}
+}
+
+candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, formula_ai* ai, function_symbol_table* function_table)
+{
+	candidate_action_ptr new_ca;
+	const t_string &name = rc_action["name"];
+	try {
+		const t_string &type = rc_action["type"];
+
+		if( type == "movement") {
+			new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
+		} else if( type == "attack") {
+			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
+		} else if( type == "support") {
+			new_ca = candidate_action_ptr(new support_candidate_action(name, type, rc_action, function_table ));
+		} else {
+			ERR_AI << "Unknown candidate action type: " << type << "\n";
+		}
+	} catch(formula_error& e) {
+		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
+	}
+	return new_ca;
 }
 
 bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_map& units)

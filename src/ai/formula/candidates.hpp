@@ -86,6 +86,9 @@ public:
 	//register candidate actions from config
 	void load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
 
+	//register a single candidate action from config
+	candidate_action_ptr load_candidate_action_from_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
+
 	//evaluate candidate action, return true if we have candidate action that have score > 0
 	bool evaluate_candidate_actions(formula_ai* ai, unit_map& units);
 
