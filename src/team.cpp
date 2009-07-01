@@ -115,7 +115,8 @@ team::team_info::team_info(const config& cfg) :
 		hidden(utils::string_bool(cfg["hidden"])),
 		music(cfg["music"]),
 		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"]),
-		side(lexical_cast_default<int>(cfg["side"], 1))
+		side(lexical_cast_default<int>(cfg["side"], 1)),
+		persistent(false)
 {
 	// If are starting new scenario overide settings from [ai] tags
 	if (!user_team_name.translatable())
