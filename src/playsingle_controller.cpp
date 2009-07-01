@@ -467,7 +467,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					player_info *player=gamestate_.get_player(i->save_id());
 
 					if (player) {
-						
+						//assert consistency between player_info and persistence of teams
+						assert(i->persistent());
 						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
 						// Store the gold for all players.
 						player->gold = carryover_gold;

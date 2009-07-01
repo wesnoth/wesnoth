@@ -218,6 +218,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	std::string control = cfg["controller"];
+	persistent = true; //FIXME: persistence is set based on the side controller, to be consistent with player_info until it is removed
 	if (control == "human")
 		controller = HUMAN;
 	else if (control == "human_ai")
@@ -230,9 +231,13 @@ team::team_info::team_info(const config& cfg) :
 	{
 		disallow_observers = utils::string_bool(cfg["disallow_observers"],true);
 		controller = EMPTY;
+		persistent = false;
 	}
 	else
+	{
 		controller = AI;
+		persistent = false;
+	}
 
 	//========================================================
 	//END OF MESSY CODE
