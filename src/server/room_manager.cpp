@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-
+#include "game.hpp"
 #include "player_network.hpp"
 #include "room_manager.hpp"
 #include "../foreach.hpp"
@@ -67,6 +67,21 @@ room* room_manager::create_room(const std::string &name)
 	return r;
 }
 
+room* room_manager::get_create_room(const std::string &name, network::connection player)
+{
+	room* r = get_room(name);
+	if (r == NULL) {
+		if (1) { //TODO: check if player can create room
+			//TODO: filter room names for abuse?
+			r = create_room(name);
+		} else {
+			lobby_->send_server_message("The room does not exist", player);
+			return NULL;
+		}
+	}
+	return r;
+}
+
 void room_manager::delete_room(const std::string &name)
 {
 	room* r = get_room(name);
@@ -88,16 +103,30 @@ void room_manager::delete_room(const std::string &name)
 void room_manager::enter_lobby(network::connection player)
 {
 	lobby_->add_player(player);
+	unstore_player_rooms(player);
 }
 
 void room_manager::enter_lobby(const wesnothd::game &game)
 {
-	lobby_->add_players(game);
+	foreach (network::connection player, game.all_game_users()) {
+		enter_lobby(player);
+	}
 }
 
 void room_manager::exit_lobby(network::connection player)
 {
+	// No messages are sent to the rooms the player is in because other members
+	// will receive the "player-entered-game" message (or similar) anyway, and
+	// will be able to deduce that he or she is no longer in any rooms
 	lobby_->remove_player(player);
+	store_player_rooms(player);
+	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
+	if (i != rooms_by_player_.end()) {
+		foreach (room* r, i->second) {
+			r->remove_player(player);
+		}
+	}
+	rooms_by_player_.erase(player);
 }
 
 bool room_manager::in_lobby(network::connection player) const
@@ -107,6 +136,8 @@ bool room_manager::in_lobby(network::connection player) const
 
 void room_manager::remove_player(network::connection player)
 {
+	// No messages are sent since a player-quit message is sent to everyone
+	// anyway.
 	lobby_->remove_player(player);
 	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
 	if (i != rooms_by_player_.end()) {
@@ -115,6 +146,7 @@ void room_manager::remove_player(network::connection player)
 		}
 	}
 	rooms_by_player_.erase(player);
+	player_stored_rooms_.erase(player);
 }
 
 room* room_manager::require_room(const std::string& room_name,
@@ -168,6 +200,55 @@ void room_manager::player_exits_room(network::connection player, wesnothd::room 
 	rooms_by_player_[player].erase(room);
 }
 
+void room_manager::store_player_rooms(network::connection player)
+{
+	t_rooms_by_player_::iterator i = rooms_by_player_.find(player);
+	if (i == rooms_by_player_.end()) {
+		return;
+	}
+	if (i->second.size() < 1) {
+		return;
+	}
+	t_player_stored_rooms_::iterator it =
+		player_stored_rooms_.insert(std::make_pair(player, std::set<std::string>())).first;
+	std::set<std::string>& store = it->second;
+	foreach (room* r, i->second) {
+		store.insert(r->name());
+	}
+}
+
+void room_manager::unstore_player_rooms(network::connection player)
+{
+	player_map::iterator i = all_players_.find(player);
+	if (i != all_players_.end()) {
+		unstore_player_rooms(i);
+	}
+}
+
+void room_manager::unstore_player_rooms(const player_map::iterator user)
+{
+	t_player_stored_rooms_::iterator it = player_stored_rooms_.find(user->first);
+	if (it == player_stored_rooms_.end()) {
+		return;
+	}
+	simple_wml::document doc;
+	simple_wml::node& join_msg = doc.root().add_child("room_join");
+	join_msg.set_attr_dup("player", user->second.name().c_str());
+	foreach (const std::string& room_name, it->second) {
+		room* r = get_create_room(room_name, user->first);
+		if (r == NULL) {
+			LOG_LOBBY << "Player " << user->second.name() << " unable to rejoin room " << room_name << "\n";
+			continue;
+		}
+		player_enters_room(user->first, r);
+		join_msg.set_attr_dup("room", room_name.c_str());
+		r->send_data(doc, user->first);
+		join_msg.remove_child("members", 0);
+		fill_member_list(r, join_msg);
+		send_to_one(doc, user->first);
+	}
+}
+
 void room_manager::process_message(simple_wml::document &data, const player_map::iterator user)
 {
 	if (user->second.silenced()) {
@@ -205,15 +286,9 @@ void room_manager::process_room_join(simple_wml::document &data, const player_ma
 	simple_wml::node* const msg = data.root().child("room_join");
 	assert(msg);
 	std::string room_name = msg->attr("room").to_string();
-	room* r = get_room(room_name);
+	room* r = get_create_room(room_name, user->first);
 	if (r == NULL) {
-		if (1) { //TODO: check if player can create room
-			//TODO: filter room names for abuse?
-			r = create_room(room_name);
-		} else {
-			lobby_->send_server_message("The room does not exist", user->first);
-			return;
-		}
+		return;
 	}
 	if (!player_enters_room(user->first, r)) {
 		return; //player was unable to join room
@@ -222,7 +297,7 @@ void room_manager::process_room_join(simple_wml::document &data, const player_ma
 	msg->set_attr_dup("player", user->second.name().c_str());
 	r->send_data(data, user->first);
 	// send member list to the new member
-	fill_member_list(r, data.root());
+	fill_member_list(r, *msg);
 	send_to_one(data, user->first);
 }
 
@@ -240,6 +315,11 @@ void room_manager::process_room_part(simple_wml::document &data, const player_ma
 	player_exits_room(user->first, r);
 	msg->set_attr_dup("player", user->second.name().c_str());
 	r->send_data(data);
+	if (r->members().empty()) {
+		LOG_LOBBY << "Last player left room " << room_name << ". Deleting room.\n";
+		rooms_by_name_.erase(room_name);
+		delete r;
+	}
 	send_to_one(data, user->first);
 }
 

@@ -49,7 +49,15 @@ public:
 	room* create_room(const std::string& name);
 
 	/**
-	 * Delete a room. Players in the room are kicked from it.
+	 * Get a room by name or create that room if it does not exist and
+	 * creating rooms is allowed.
+	 * @return a valid pointer to a room or NULL if the room did not exist and
+	 *         could not be created.
+	 */
+	room* get_create_room(const std::string& name, network::connection player);
+
+	/**
+	 * Delete a room. Players still in the room are kicked from it.
 	 */
 	void delete_room(const std::string& name);
 
@@ -59,7 +67,8 @@ public:
 	bool in_lobby(network::connection player) const;
 
 	/**
-	 * Player-enters-lobby action. Will auto(re)join the default room(s)
+	 * Player-enters-lobby action. Will autorejoin "stored" rooms (the ones
+	 * the player was before enetering a game, for instance)
 	 */
 	void enter_lobby(network::connection player);
 
@@ -70,7 +79,6 @@ public:
 
 	/**
 	 * Player exits lobby.
-	 * TODO: should it remove information about the rooms the player is in?
 	 */
 	void exit_lobby(network::connection player);
 
@@ -121,6 +129,8 @@ public:
 	const room& lobby() const { return *lobby_; }
 
 private:
+	void do_room_join(network::connection player, const std::string& room_name);
+
 	/**
 	 * Adds a player to a room, maintaining internal consistency
 	 * Will send appropriate error messages to the player.
@@ -134,6 +144,20 @@ private:
 	void player_exits_room(network::connection player, room* room);
 
 	/**
+	 * Stores the room names (other than lobby) of the given player for future
+	 * use (rejoin)
+	 */
+	void store_player_rooms(network::connection player);
+
+	/**
+	 * Unstores (rejoins) player's rooms that were previously stored.
+	 * No action if not stored earlier or no rooms.
+	 */
+	void unstore_player_rooms(const player_map::iterator user);
+
+	void unstore_player_rooms(network::connection player);
+
+	/**
 	 * Fill a wml node (message) with members of a room
 	 */
 	void fill_member_list(const room* room, simple_wml::node& root);
@@ -143,14 +167,23 @@ private:
 	 */
 	void fill_room_list(simple_wml::node& root);
 
-
-
+	/** Reference to the all players map */
 	player_map& all_players_;
+
+	/** The lobby-room, treated separetely */
 	room* lobby_;
+
+	/** Rooms by name */
 	typedef std::map<std::string, room*> t_rooms_by_name_;
 	t_rooms_by_name_ rooms_by_name_;
+
+	/** Rooms by player */
 	typedef std::map<network::connection, std::set<room*> > t_rooms_by_player_;
 	t_rooms_by_player_ rooms_by_player_;
+
+	/** Room names stored for players that have entered a game */
+	typedef std::map<network::connection, std::set<std::string> > t_player_stored_rooms_;
+	t_player_stored_rooms_ player_stored_rooms_;
 
 	static const char* const lobby_name_;
 };
