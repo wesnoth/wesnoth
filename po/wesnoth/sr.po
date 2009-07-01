@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-28 18:06+0200\n"
-"PO-Revision-Date: 2009-06-13 21:24+0200\n"
+"PO-Revision-Date: 2009-06-30 11:01+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sr\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
@@ -67,9 +66,8 @@ msgstr "Овај случај служи да испита способност 
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0003-simple_combat.cfg:16
-#, fuzzy
 msgid "This situation should test the ability of AI to make an attack..."
-msgstr "Овај случај служи да испита способност ВИ-ја да около шири отров..."
+msgstr "Овај случај служи да испита способност ВИ-ја да изведе напад..."
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -3636,9 +3634,8 @@ msgid "No early finish bonus."
 msgstr "Без бонуса за рани завршетак."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "(бонус за рани завршетак)"
+msgstr "<small>(бонус за рани завршетак)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -6382,7 +6379,7 @@ msgstr "Наум иначе ваљан може пропасти нападне 
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr "— Приручник тактичке анализе, том I — Халдрик II, 42.гв."
+msgstr "— Приручник тактичке анализе, том I — Халдрик Други, 42.гв."
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -6479,7 +6476,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr "— Приручник тактичке анализе, том II — Халдрик II, 43.гв."
+msgstr "— Приручник тактичке анализе, том II — Халдрик Други, 43.гв."
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -7743,7 +7740,7 @@ msgstr "пораз:"
 
 #: src/game_events.cpp:3473
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "Филтер [unit_worth] не поклапа ниједну јединицу."
 
 #: src/gamestatus.cpp:728
 msgid "Duplicate side definition for side '$side|' found."
@@ -8437,25 +8434,24 @@ msgid "Request a list of details you can set for your registered nick."
 msgstr "Захтева списак детаља које можете задати уз регистровани надимак."
 
 #: src/menu_events.cpp:2128
-#, fuzzy
 msgid "Join a room."
-msgstr "На произвољан сервер"
+msgstr "Придружи се соби."
 
 #: src/menu_events.cpp:2130
 msgid "Part a room."
-msgstr ""
+msgstr "Напусти собу."
 
 #: src/menu_events.cpp:2132
 msgid "List room members."
-msgstr ""
+msgstr "Наброји чланове собе."
 
 #: src/menu_events.cpp:2134
 msgid "List available rooms."
-msgstr ""
+msgstr "Наброји доступне собе."
 
 #: src/menu_events.cpp:2136
 msgid "Room msg."
-msgstr ""
+msgstr "Порука собе."
 
 #: src/menu_events.cpp:2263
 msgid "Refresh gui."
@@ -9315,12 +9311,11 @@ msgstr "Непознат сценарио: ‘$scenario|’"
 
 #: src/playmp_controller.cpp:150
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name преузе управљање"
 
 #: src/playmp_controller.cpp:153
-#, fuzzy
 msgid "Turn changed"
-msgstr "одступни"
+msgstr "Промена потеза"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."
@@ -9906,6 +9901,3 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 #: src/upload_log.cpp:351
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
-
-#~ msgid "Default AI"
-#~ msgstr "основна ВИ"
