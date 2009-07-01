@@ -335,6 +335,7 @@ private:
 
 typedef std::map<std::string,expression_ptr> expr_table;
 typedef boost::shared_ptr<expr_table> expr_table_ptr;
+typedef std::map<std::string, variant> exp_table_evaluated;
 
 class where_variables: public formula_callable {
 public:
@@ -344,6 +345,7 @@ public:
 private:
 	const formula_callable& base_;
 	expr_table_ptr table_;
+	mutable exp_table_evaluated evaluated_table_;
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
 		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
@@ -354,7 +356,13 @@ private:
 	variant get_value(const std::string& key) const {
 		expr_table::iterator i = table_->find(key);
 		if(i != table_->end()) {
-			return i->second->evaluate(base_);
+			exp_table_evaluated::const_iterator ev = evaluated_table_.find(key);
+			if( ev != evaluated_table_.end())
+				return ev->second;
+
+			variant v = i->second->evaluate(base_);
+			evaluated_table_[key] = v;
+			return v;
 		}
 		return base_.query_value(key);
 	}
