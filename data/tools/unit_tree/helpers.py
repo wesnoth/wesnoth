@@ -30,9 +30,12 @@ class ParserWithCoreMacros:
         parser.parse_top(None)
         self.core_macros = parser.macros
                 
-    def parse(self, text_to_parse, ignore_macros = None):
+    def parse(self, text_to_parse, ignore_macros = None,
+        ignore_fatal_errors = False, verbose = False):
+
         # Create the real parser.
         parser = wmlparser.Parser(self.datadir, self.userdir)
+        parser.verbose = verbose
         parser.gettext = self.gettext
         parser.macros = copy.copy(self.core_macros)
         
@@ -243,7 +246,7 @@ class WesnothList:
             return n
         for campaign in WML.find_all("campaign"):
             cid = self.add_campaign(campaign)
-        
+
         for era in WML.find_all("era"):
             eid = self.add_era(era)
             image_collector.add_binary_pathes_from_WML(eid, WML)
@@ -274,13 +277,22 @@ class WesnothList:
             if unit.get_text_val("do_not_list", "no") == "no" and\
                unit.get_text_val("hide_help", "no") in ["no", "false"]:
                 uid = unit.get_text_val("id")
-                self.unit_lookup[uid] = unit
+                if uid in self.unit_lookup:
+                    sys.stderr.write(
+                        ("Fatal: Unit id \"%s\" already exists - either it has" +
+                        " to be renamed, or there's a bug in this script.\n") % 
+                        uid)
+                else:
+                    self.unit_lookup[uid] = unit
                 unit.campaign = campaign
 
         # Find all races.
         newraces = getall("race")
         for race in newraces:
             rid = race.get_text_val("id")
+            if rid == None:
+                rid = race.get_text_val("name")
+
             self.race_lookup[rid] = race
 
         # Find all movetypes.
