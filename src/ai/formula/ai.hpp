@@ -135,7 +135,7 @@ public:
 	*/
 	game_logic::formula_ptr create_optional_formula(const std::string& formula_string);
 
-
+	game_logic::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
 
 private:
 	ai::recursion_counter recursion_counter_;

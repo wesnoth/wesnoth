@@ -24,6 +24,7 @@
 
 #include "engine.hpp"
 #include "../contexts.hpp"
+#include "../formula/ai.hpp"
 #include <algorithm>
 
 //============================================================================
@@ -40,6 +41,8 @@ public:
 	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
 
 	virtual std::string get_name();
+private:
+	formula_ai formula_ai_;
 };
 
 } //end of namespace composite_ai

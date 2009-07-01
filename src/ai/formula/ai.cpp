@@ -1546,6 +1546,11 @@ private:
 };
 }
 
+game_logic::candidate_action_ptr formula_ai::load_candidate_action_from_config(const config& cfg)
+{
+	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table);
+}
+
 std::string formula_ai::describe_self(){
 	return "[formula_ai]";
 }

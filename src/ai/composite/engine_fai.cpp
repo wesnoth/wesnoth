@@ -33,7 +33,7 @@ static lg::log_domain log_ai_composite_engine_fai("ai/composite/engine/fai");
 #define ERR_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(err, log_ai_composite_engine_fai)
 
 engine_fai::engine_fai( composite_ai_context &context, const config &cfg )
-	: engine(context,cfg)
+	: engine(context,cfg), formula_ai_(context)
 {
 }
 
@@ -44,7 +44,9 @@ engine_fai::~engine_fai()
 
 
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
-	//*b = new_candidate_action;
+	game_logic::candidate_action_ptr fai_ca = formula_ai_.load_candidate_action_from_config(cfg);
+	//candidate_action_ptr ca = wrap(context,fai_ca);
+	//*b = ca;
 
 }
 
