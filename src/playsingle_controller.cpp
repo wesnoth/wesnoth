@@ -856,7 +856,7 @@ void playsingle_controller::play_ai_turn(){
 			map_, teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
 
 	try {
-		ai::manager::play_turn(player_number_, this);
+		ai::manager::play_turn(player_number_);
 	} catch (end_turn_exception) {
 	}
 	recorder.end_turn();

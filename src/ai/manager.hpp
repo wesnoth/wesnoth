@@ -179,6 +179,18 @@ public:
 
 
 	/**
+	 * Adds observer of game events except user interact event
+	 */
+	static void add_gamestate_observer( events::observer* event_observer);
+
+
+	/**
+	 * Removes an observer of game events except user interact event
+	 */
+	static void remove_gamestate_observer( events::observer* event_observer );
+
+
+	/**
 	 * Notifies all observers of 'user interact' event.
 	 * Function which should be called frequently to allow the user to interact
 	 * with the interface. This function will make sure that interaction
@@ -201,9 +213,76 @@ public:
 
 
 	/**
-	 * Notifies all observers of 'enemy attack' event.
+	 * Notifies all observers of 'enemy attacked' event.
 	 */
 	static void raise_enemy_attacked();
+
+
+	/**
+	 * Notifies all observers of 'turn started' event.
+	 */
+	static void raise_turn_started();
+
+
+	/**
+	 * Adds an observer of 'user interact' event.
+	 */
+	static void add_user_interact_observer( events::observer* event_observer );
+
+
+	/**
+	 * Adds an observer of 'unit recruited' event.
+	 */
+	static void add_unit_recruited_observer( events::observer* event_observer );
+
+
+	/**
+	 * Adds an observer of 'unit moved' event.
+	 */
+	static void add_unit_moved_observer( events::observer* event_observer );
+
+
+	/**
+	 * Adds an observers of 'enemy attacked' event.
+	 */
+	static void add_enemy_attacked_observer( events::observer* event_observer );
+
+
+	/**
+	 * Adds an observer of 'turn started' event.
+	 */
+	static void add_turn_started_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'user interact' event.
+	 */
+	static void delete_user_interact_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'unit recruited' event.
+	 */
+	static void delete_unit_recruited_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'unit moved' event.
+	 */
+	static void delete_unit_moved_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'enemy attacked' event.
+	 */
+	static void delete_enemy_attacked_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'turn started' event.
+	 */
+	static void delete_turn_started_observer( events::observer* event_observer );
+
 
 protected:
 
@@ -452,9 +531,8 @@ public:
 	/**
 	 * Plays a turn for the specified side using its active AI.
 	 * @param side side number (1-based, as in game_info).
-	 * @param event_observer controller which will observe events produced by the AI.
 	 */
-	static void play_turn(int side, events::observer* event_observer);
+	static void play_turn(side_number side);
 
 
 private:
@@ -469,6 +547,7 @@ private:
 	static events::generic_event unit_recruited_;
 	static events::generic_event unit_moved_;
 	static events::generic_event enemy_attacked_;
+	static events::generic_event turn_started_;
 	static int last_interact_;
 	static int num_interact_;
 

@@ -289,8 +289,8 @@ void attack_result::do_execute()
 	}
 
 	check_victory(get_info().units,get_info().teams, get_info().disp);
-	manager::raise_enemy_attacked();
 	set_gamestate_changed();
+	manager::raise_enemy_attacked();
 }
 
 
@@ -751,10 +751,12 @@ void stopunit_result::do_execute()
 	if (remove_movement_){
 		un->second.set_movement(0);
 		set_gamestate_changed();
+		manager::raise_unit_moved();
 	}
 	if (remove_attacks_){
 		un->second.set_attacks(0);
 		set_gamestate_changed();
+		manager::raise_unit_moved();//to be on the safe side
 	}
 }
 

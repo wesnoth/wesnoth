@@ -732,7 +732,6 @@ bool move_leader_to_keep_phase::execute()
 {
 	bool gamestate_changed = false;
 	move_->execute();
-	recalculate_move_maps();//@todo 1.7: replace with event observers
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT <<  get_name() <<"::execute not ok" << std::endl;
 	}
@@ -1718,7 +1717,6 @@ bool simple_move_and_targeting_phase::execute()
 {
 	bool gamestate_changed = false;
 	move_->execute();
-	recalculate_move_maps();//@todo 1.7: replace with event observers
 	if (!move_->is_ok()){
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok" << std::endl;
 	}

@@ -279,6 +279,7 @@ events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::unit_recruited_("ai_unit_recruited");
 events::generic_event manager::unit_moved_("ai_unit_moved");
 events::generic_event manager::enemy_attacked_("ai_enemy_attacked");
+events::generic_event manager::turn_started_("ai_turn_started");
 int manager::last_interact_ = 0;
 int manager::num_interact_ = 0;
 
@@ -300,18 +301,98 @@ void manager::clear_ai_info(){
 	}
 }
 
+
 void manager::add_observer( events::observer* event_observer){
 	user_interact_.attach_handler(event_observer);
 	unit_recruited_.attach_handler(event_observer);
 	unit_moved_.attach_handler(event_observer);
 	enemy_attacked_.attach_handler(event_observer);
+	turn_started_.attach_handler(event_observer);
 }
+
 
 void manager::remove_observer(events::observer* event_observer){
 	user_interact_.detach_handler(event_observer);
 	unit_recruited_.detach_handler(event_observer);
 	unit_moved_.detach_handler(event_observer);
 	enemy_attacked_.detach_handler(event_observer);
+	turn_started_.detach_handler(event_observer);
+}
+
+
+void manager::add_gamestate_observer( events::observer* event_observer){
+	unit_recruited_.attach_handler(event_observer);
+	unit_moved_.attach_handler(event_observer);
+	enemy_attacked_.attach_handler(event_observer);
+	turn_started_.attach_handler(event_observer);
+}
+
+
+void manager::remove_gamestate_observer(events::observer* event_observer){
+	unit_recruited_.detach_handler(event_observer);
+	unit_moved_.detach_handler(event_observer);
+	enemy_attacked_.detach_handler(event_observer);
+	turn_started_.detach_handler(event_observer);
+}
+
+
+void manager::add_user_interact_observer( events::observer* event_observer )
+{
+	user_interact_.attach_handler(event_observer);
+}
+
+
+void manager::add_unit_recruited_observer( events::observer* event_observer )
+{
+	unit_recruited_.attach_handler(event_observer);
+}
+
+
+void manager::add_unit_moved_observer( events::observer* event_observer )
+{
+	unit_moved_.attach_handler(event_observer);
+}
+
+
+void manager::add_enemy_attacked_observer( events::observer* event_observer )
+{
+	enemy_attacked_.attach_handler(event_observer);
+}
+
+
+void manager::add_turn_started_observer( events::observer* event_observer )
+{
+	turn_started_.attach_handler(event_observer);
+}
+
+
+void manager::delete_user_interact_observer( events::observer* event_observer )
+{
+	user_interact_.detach_handler(event_observer);
+}
+
+
+void manager::delete_unit_recruited_observer( events::observer* event_observer ) 
+{
+	unit_recruited_.detach_handler(event_observer);
+}
+
+
+void manager::delete_unit_moved_observer( events::observer* event_observer )
+{
+	unit_moved_.detach_handler(event_observer);
+}
+
+
+void manager::delete_enemy_attacked_observer( events::observer* event_observer )
+{
+	enemy_attacked_.detach_handler(event_observer);
+}
+
+
+void manager::delete_turn_started_observer( events::observer* event_observer )
+{
+	turn_started_.detach_handler(event_observer);
 }
 
 void manager::raise_user_interact() {
@@ -338,6 +419,11 @@ void manager::raise_unit_moved() {
 
 void manager::raise_enemy_attacked() {
 	enemy_attacked_.notify_observers();
+}
+
+
+void manager::raise_turn_started() {
+	turn_started_.notify_observers();
 }
 
 
@@ -548,6 +634,7 @@ bool manager::add_ai_for_side( int side, const std::string& ai_algorithm_type, b
 }
 
 
+//@todo 1.7 refactor away from ai::manager
 ai_ptr manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
 {
 	assert(ai_context!=NULL);
@@ -678,11 +765,12 @@ void manager::set_active_ai_algorithm_type_for_side( int side, const std::string
 // PROXY
 // =======================================================================
 
-void manager::play_turn( int side, events::observer* /*event_observer*/ ){
+void manager::play_turn( side_number side ){
 	last_interact_ = 0;
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
 	interface& ai_obj = get_active_ai_for_side(side);
+	raise_turn_started();
 	ai_obj.new_turn();
 	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();

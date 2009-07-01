@@ -28,6 +28,7 @@ class gamemap;
 #include "game_info.hpp"
 #include "../game_display.hpp"
 #include "../gamestatus.hpp"
+#include "../generic_event.hpp"
 #include "../pathfind.hpp"
 #include "../playturn.hpp"
 
@@ -155,7 +156,7 @@ public:
 	virtual void raise_user_interact() const = 0;
 
 
-	virtual const std::set<map_location>& avoided_locations() = 0;
+	virtual const std::set<map_location>& avoided_locations() const = 0;
 
 
 	virtual const move_map& get_dstsrc() const = 0;
@@ -176,10 +177,16 @@ public:
 	virtual const move_map& get_srcdst() const = 0;
 
 
-	virtual void invalidate_avoided_locations_cache() = 0;
+	virtual void invalidate_avoided_locations_cache() const = 0;
 
 
-	virtual void recalculate_move_maps() = 0;
+	virtual void invalidate_move_maps() const = 0;
+
+
+	virtual void recalculate_move_maps() const = 0;
+
+
+	virtual void recalculate_move_maps_enemy() const = 0;
 
 };
 
@@ -203,15 +210,6 @@ public:
 	virtual void raise_enemy_attacked() const = 0;
 	virtual game_info& get_info_w() = 0;
 };
-
-class ai_default_context;
-class ai_default_context : public virtual readwrite_context {
-public:
-	ai_default_context(){}
-	virtual ~ai_default_context(){}
-	virtual ai_default_context& get_ai_default_context() = 0;
-};
-
 
 //proxies
 
@@ -337,7 +335,7 @@ public:
 	}
 
 
-	virtual const std::set<map_location>& avoided_locations()
+	virtual const std::set<map_location>& avoided_locations() const
 	{
 		return target_->avoided_locations();
 	}
@@ -385,15 +383,27 @@ public:
 	}
 
 
-	virtual void invalidate_avoided_locations_cache()
+	virtual void invalidate_avoided_locations_cache() const
 	{
 		target_->invalidate_avoided_locations_cache();
 	}
 
 
-	virtual void recalculate_move_maps()
+	virtual void invalidate_move_maps() const
+	{
+		target_->invalidate_move_maps();
+	}
+
+
+	virtual void recalculate_move_maps() const
 	{
 		target_->recalculate_move_maps();
+	}
+
+
+	virtual void recalculate_move_maps_enemy() const
+	{
+		target_->recalculate_move_maps_enemy();
 	}
 
 private:
@@ -545,23 +555,19 @@ private:
 
 
 //@todo: public game_logic::formula_callable
-class readonly_context_impl : public virtual side_context_proxy, public readonly_context {
+class readonly_context_impl : public virtual side_context_proxy, public readonly_context, public events::observer {
 public:
 
 	/**
 	 * Constructor
 	 */
-	readonly_context_impl(side_context &context)
-		: recursion_counter_(context.get_recursion_count()),dstsrc_(),enemy_dstsrc_(),enemy_possible_moves_(),enemy_srcdst_(),possible_moves_(),srcdst_(),avoided_locations_()
-	{
-		init_side_context_proxy(context);
-	}
+	readonly_context_impl(side_context &context);
 
 
 	/**
 	 * Destructor
 	 */
-	virtual ~readonly_context_impl() {}
+	virtual ~readonly_context_impl();
 
 
 	/**
@@ -572,6 +578,10 @@ public:
 	{
 		return *this;
 	}
+
+
+	/** Handle generic event */
+	virtual void handle_generic_event(const std::string& event_name);
 
 
 	/** Return a reference to the 'team' object for the AI. */
@@ -689,7 +699,7 @@ public:
 	void raise_user_interact() const;
 
 
-	virtual const std::set<map_location>& avoided_locations();
+	virtual const std::set<map_location>& avoided_locations() const;
 
 
 	virtual int get_recursion_count() const;
@@ -713,21 +723,28 @@ public:
 	virtual const move_map& get_srcdst() const;
 
 
-	virtual void invalidate_avoided_locations_cache();
+	virtual void invalidate_avoided_locations_cache() const;
 
 
-	virtual void recalculate_move_maps();
+	virtual void invalidate_move_maps() const;
 
+
+	virtual void recalculate_move_maps() const;
+
+
+	virtual void recalculate_move_maps_enemy() const;
 
 private:
 	recursion_counter recursion_counter_;
-	move_map dstsrc_;
-	move_map enemy_dstsrc_;
-	moves_map enemy_possible_moves_;
-	move_map enemy_srcdst_;
-	moves_map possible_moves_;
-	move_map srcdst_;
-	std::set<map_location> avoided_locations_;
+	mutable move_map dstsrc_;
+	mutable move_map enemy_dstsrc_;
+	mutable moves_map enemy_possible_moves_;
+	mutable move_map enemy_srcdst_;
+	mutable moves_map possible_moves_;
+	mutable move_map srcdst_;
+	mutable std::set<map_location> avoided_locations_;
+	mutable bool move_maps_enemy_valid_;
+	mutable bool move_maps_valid_;
 
 };
 
@@ -863,7 +880,9 @@ public:
 	}
 
 
-	virtual ~readwrite_context_impl() {}
+	virtual ~readwrite_context_impl()
+	{
+	}
 
 	/**
 	 * Functions to retrieve the 'info' object.
