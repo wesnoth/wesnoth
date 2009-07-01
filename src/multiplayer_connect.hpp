@@ -29,7 +29,7 @@
 #include <string>
 
 namespace ai {
-	class description;
+	struct description;
 }
 
 namespace mp {

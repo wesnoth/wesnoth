@@ -567,7 +567,7 @@ void connect::side::init_ai_algorithm_combo()
 	std::vector<std::string> ais;
 	int i = 0;
 	foreach (const ai::description *desc,  ais_list){
-		ais.push_back(desc->description);
+		ais.push_back(desc->text);
 		if (desc->id==ai_algorithm_){
 			sel = i;
 		}

@@ -54,7 +54,7 @@ void configuration::init(const config &game_config)
 
 		description desc;
 		desc.id=id;
-		desc.description=ai_configuration["description"];
+		desc.text=ai_configuration["description"];
 		desc.cfg=ai_configuration;
 
 		ai_configurations_.insert(std::make_pair(id,desc));
