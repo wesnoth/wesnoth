@@ -28,12 +28,32 @@ namespace wesnothd {
 room::room(const std::string& name)
 	: name_(name)
 	, members_()
+	, persistent_()
+	, topic_()
+{
+}
+
+room::room(const simple_wml::node& wml)
+	: name_(wml.attr("name").to_string())
+	, members_()
+	, persistent_(wml.attr("persistent").to_bool())
+	, topic_(wml.attr("topic").to_string())
 {
 }
 
 const std::string& room::name() const
 {
 	return name_;
+}
+
+bool room::persistent() const
+{
+	return persistent_;
+}
+
+const std::string& room::topic() const
+{
+	return topic_;
 }
 
 bool room::add_player(network::connection player)
@@ -45,13 +65,6 @@ bool room::add_player(network::connection player)
 	}
 	members_.push_back(player);
 	return true;
-}
-
-void room::add_players(const wesnothd::game& game)
-{
-	foreach (network::connection player, game.all_game_users()) {
-		add_player(player);
-	}
 }
 
 void room::remove_player(network::connection player)

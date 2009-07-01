@@ -31,17 +31,43 @@ class game;
 class room {
 public:
 	/**
-	 * Construct a room
+	 * Construct a room with just a name and default settings
 	 */
 	room(const std::string& name);
 
+	/**
+	 * Construct a room from WML
+	 */
+	room(const simple_wml::node& wml);
+
+	/**
+	 * The name of this room
+	 */
 	const std::string& name() const;
+
+	/**
+	 * Whether this room should be 'persistent', i.e. not deleted when there
+	 * are no players within.
+	 */
+	bool persistent() const;
+
+	/**
+	 * This room's topic/motd, sent to all joining players
+	 */
+	const std::string& topic() const;
 
 	/**
 	 * Return the number of players in this room
 	 */
 	size_t size() const {
 		return members_.size();
+	}
+
+	/**
+	 * Return true iif the room is empty
+	 */
+	bool empty() const {
+		return members_.empty();
 	}
 
 	/**
@@ -64,11 +90,6 @@ public:
 	 * @return true if the player was succesfully added
 	 */
 	bool add_player(network::connection player);
-
-	/**
-	 * Add all players from a game into this room
-	 */
-	void add_players(const game& game);
 
 	/**
 	 * Leaving the room
@@ -113,6 +134,8 @@ public:
 private:
 	std::string name_;
 	connection_vector members_;
+	bool persistent_;
+	std::string topic_;
 };
 
 } //end namespace wesnothd

@@ -315,7 +315,7 @@ void room_manager::process_room_part(simple_wml::document &data, const player_ma
 	player_exits_room(user->first, r);
 	msg->set_attr_dup("player", user->second.name().c_str());
 	r->send_data(data);
-	if (r->members().empty()) {
+	if (r->empty() && !r->persistent()) {
 		LOG_LOBBY << "Last player left room " << room_name << ". Deleting room.\n";
 		rooms_by_name_.erase(room_name);
 		delete r;
