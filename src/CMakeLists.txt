@@ -222,6 +222,7 @@ SET(wesnoth-main_SRC
     ai/composite/contexts.cpp
     ai/composite/engine.cpp
     ai/composite/engine_default.cpp
+    ai/composite/engine_fai.cpp
     ai/composite/rca.cpp
     ai/composite/stage.cpp
     ai/configuration.cpp

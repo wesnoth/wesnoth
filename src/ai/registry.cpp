@@ -20,6 +20,7 @@
 #include "ai2/ai.hpp"
 #include "composite/ai.hpp"
 #include "composite/engine_default.hpp"
+#include "composite/engine_fai.hpp"
 #include "default/ai.hpp"
 #include "dfool/ai.hpp"
 #include "formula/ai.hpp"
@@ -47,7 +48,10 @@ static register_ai_factory<composite_ai::ai_composite> ai_composite_ai_factory("
 // =======================================================================
 
 static composite_ai::register_engine_factory<composite_ai::engine_cpp>
-	composite_ai_factory("cpp");
+	composite_ai_factory_cpp("cpp");
+
+static composite_ai::register_engine_factory<composite_ai::engine_fai>
+	composite_ai_factory_fai("fai");
 
 // =======================================================================
 // Stages
