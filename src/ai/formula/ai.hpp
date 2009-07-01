@@ -143,7 +143,7 @@ public:
 	/**
 	 * Execute the fai candidate action
 	 * @return true if game state was changed
-	 * @return false if game state was changed
+	 * @return false if game state was not changed
 	 */
 	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
 
