@@ -78,7 +78,7 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 		ERR_AI_COMPOSITE_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_COMPOSITE_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
 	}
-	candidate_action_ptr ca = candidate_action_ptr(&fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
+	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
 	*b = ca;
 
 }
