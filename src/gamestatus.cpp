@@ -219,9 +219,9 @@ static void write_player(const player_info& player, config& cfg, const bool use_
 		snprintf(buf,sizeof(buf),"%d",player.gold);
 
 		cfg["gold"] = buf;
+		cfg["gold_add"] = player.gold_add ? "yes" : "no";
 	}
 
-	cfg["gold_add"] = player.gold_add ? "yes" : "no";
 
 	for(std::vector<unit>::const_iterator i = player.available_units.begin();
 	    i != player.available_units.end(); ++i) {
@@ -259,7 +259,9 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 		new_cfg["save_id"]=i->first;
 		//add gold from snapshot if specified
 		if (use_snapshot) {
-			new_cfg["gold"] = gamestate.snapshot.find_child("side","save_id",i->first)["gold"];
+			config& side = gamestate.snapshot.find_child("side","save_id",i->first);
+			new_cfg["gold"] = side["gold"];
+			new_cfg["gold_add"] = side["gold_add"];
 			assert (new_cfg["gold"] == str_cast<int>(i->second.gold));
 		}
 		cfg.add_child("player", new_cfg);

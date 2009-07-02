@@ -481,6 +481,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						while (side_it != side_range.second) {
 							if ((*side_it)["save_id"] == i->save_id()) {
 								(*side_it)["gold"] = str_cast<int>(carryover_gold);
+								(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
 								break;
 							}
 							side_it++;
@@ -490,6 +491,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 							config& new_side = gamestate_.snapshot.add_child("side");
 							new_side["save_id"] = i->save_id();
 							new_side["gold"] = str_cast<int>(carryover_gold);
+							new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
 							
 						}
 
@@ -506,6 +508,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						}
 
 						report_victory(report, end_level, player->gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+					}
+					else {
+						assert(!i->persistent()); //if there is no player_info, the team should not be persistent either
 					}
 				}
 			}
