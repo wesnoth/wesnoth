@@ -1,15 +1,23 @@
 import MySQLdb
 import types
 import configuration
-import evaluators
 import time
 import logging
+import datetime
 
 log = logging.getLogger("wesstats")
 
 #return the intersection of the items in the lists
 def intersect(*lists):
 	return list(reduce(set.intersection, (set(l) for l in lists)))
+
+def get_date_range(startdate,enddate):
+	startdate = startdate.split('/')
+	enddate = enddate.split('/')
+	startdate = datetime.date(startdate[0],startdate[1],startdate[2])
+	enddate = datetime.date(enddate[0],enddate[1],enddate[2])
+	delta = abs( (enddate-startdate).days )
+	return delta
 
 def isvalid(date):
 	date = date.split('/')

@@ -27,6 +27,16 @@ __all__ = ['LineGraphController']
 
 log = logging.getLogger("wesstats")
 
+#one year = 12 months *31 days
+TWOYEARS = 744
+ONEYEAR = 372
+SIXMONTHS = 186
+THREEMONTHS = 93
+ONEMONTH = 31
+TWOWEEKS = 14
+ONEWEEK = 7
+ONEDAY = 1
+
 class LineGraphController(BaseController):
 	def __init__(self,url):
 		self.url = url
@@ -39,7 +49,7 @@ class LineGraphController(BaseController):
 		
 		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
 		view_data = curs.fetchall()[0]
-		log.debug("pie chart request, here is SQL data for this view:")
+		log.debug("line chart request, here is SQL data for this view:")
 		log.debug(view_data)
 		#fetch the relevant filters for this template and their possible values
 		available_filters = view_data[5].split(',')
@@ -64,6 +74,26 @@ class LineGraphController(BaseController):
 			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
 			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+		#calculate the number of days in the range
+		daterange = TWOYEARS
+		if used_filters.__contains__("dates"):
+			daterange = helperlib.get_date_range(kw['startdate'],kw['enddate'])
+		
+		if daterange > TWOYEARS:
+			pass
+		elif daterange > SIXMONTHS:
+			pass
+		elif daterange > THREEMONTHS:
+			pass
+		elif daterange > ONEMONTH:
+			pass
+		elif daterange > TWOWEEKS:
+			pass
+		elif daterange > ONEWEEK:
+			pass
+		elif daterange > ONEDAY:
+			pass
+
 		#get columns and column transformations for this view
 		y_xforms = view_data[6].split(',')
 		y_data = view_data[2].split(',')
@@ -71,9 +101,9 @@ class LineGraphController(BaseController):
 		#they must be equal!
 		assert len(y_data) == len(y_xforms)
 		for i in range(len(y_data)):
-			y_data_str += y_xforms[i] + "(" + y_data[i] + "),"
+			y_data_str += y_xforms[i] + "(" + y_data[i] + ")," + y_data[i] + ","
 		y_data_str = y_data_str[0:len(y_data_str)-1]
-		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters+" GROUP BY "+view_data[1]
+		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters
 		log.debug("SQL query:")
 		log.debug(query)
 		results = helperlib.scaled_query(curs,query,100,evaluators.count_eval)
