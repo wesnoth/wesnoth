@@ -213,9 +213,11 @@ void gamemap::read(const std::string& data)
 		// the first valid position is 1,
 		// so the offset 0 in the array is never used.
 		if(itor->first < 1 || itor->first >= MAX_PLAYERS+1) {
-			ERR_CF << "Starting position " << itor->first << " out of range\n";
-			throw incorrect_map_format_exception("Illegal starting position found"
-				" in map. The scenario cannot be loaded.");
+			std::stringstream ss;
+			ss << "Starting position " << itor->first << " out of range\n";
+			ERR_CF << ss.str();
+			ss << "The map cannot be loaded.";
+			throw incorrect_map_format_exception(ss.str().c_str());
 		}
 
 		// Add to the starting position array
@@ -234,9 +236,12 @@ void gamemap::read(const std::string& data)
 			// Is the terrain valid?
 			if(tcodeToTerrain_.count(tiles_[x][y]) == 0) {
 				if(!try_merge_terrains(tiles_[x][y])) {
-					ERR_CF << "Illegal character in map: (" << t_translation::write_terrain_code(tiles_[x][y])
+					std::stringstream ss;
+					ss << "Illegal character in map: (" << t_translation::write_terrain_code(tiles_[x][y])
 						   << ") '" << tiles_[x][y] << "'\n";
-					throw incorrect_map_format_exception("Illegal character found in map. The scenario cannot be loaded.");
+					ERR_CF << ss.str();
+					ss << "The map cannot be loaded.";
+					throw incorrect_map_format_exception(ss.str().c_str());
 				}
 			}
 
