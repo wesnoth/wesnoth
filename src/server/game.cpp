@@ -32,6 +32,7 @@
 
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
+#define WRN_GAME LOG_STREAM(warn, log_server)
 #define LOG_GAME LOG_STREAM(info, log_server)
 #define DBG_GAME LOG_STREAM(debug, log_server)
 
@@ -341,10 +342,10 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	const network::connection old_player = sides_[side_num - 1];
 	const player_map::const_iterator oldplayer = player_info_->find(old_player);
 	if (oldplayer == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find player in player_info_. (socket: "
+		WRN_GAME << "Could not find old player in player_info_. (socket: "
 			<< old_player << ")\n";
-		return;
 	}
+	const std::string old_player_name(oldplayer != player_info_->end() ? oldplayer->second.name() : "(unknown)");
 
 	// A player (un)droids his side.
 	if (newplayer_name.empty()) {
@@ -362,11 +363,10 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 			send_server_message(msg.str().c_str(), sock);
 			return;
 		}
-		change_controller(side_num - 1, oldplayer, false, cfg["controller"].to_string());
+		change_controller(side_num - 1, old_player, old_player_name, false, cfg["controller"].to_string());
 		return;
 	}
 
-	const std::string old_player_name = oldplayer->second.name();
 	// Check if the sender actually owns the side he gives away or is the host.
 	if (!(sock == old_player || sock == owner_)) {
 		std::stringstream msg;
@@ -408,7 +408,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
 		send_data(observer_join, old_player);
 	}
-	change_controller(side_num - 1, newplayer, false);
+	change_controller(side_num - 1, newplayer->first, newplayer->second.name(), false);
 
 	// If we gave the new side to an observer add him to players_.
 	if (is_observer(newplayer->first)) {
@@ -420,19 +420,13 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 }
 
 void game::change_controller(const size_t side_num,
-		const player_map::const_iterator player,
+		const network::connection sock,
+		const std::string& player_name,
 		const bool player_left,
-		const std::string controller)
+		const std::string& controller)
 {
 	DBG_GAME << __func__ << "...\n";
-	if (player == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find player in player_info_."
-				" Can't change controller!\n";
-		return;
-	}
 
-	const network::connection sock = player->first;
-	const std::string& player_name = player->second.name();
 	const std::string& side = lexical_cast<std::string, size_t>(side_num + 1);
 	sides_[side_num] = sock;
 
@@ -1031,13 +1025,15 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		if (*side != player) continue;
 		if (side_controllers_[side_num] == "ai") ai_transfer = true;
 
-		change_controller(side_num, player_info_->find(owner_));
+		player_map::const_iterator o = player_info_->find(owner_);
+		const std::string owner_name = (o != player_info_->end() ? o->second.name() : "(unknown)");
+		change_controller(side_num, owner_, owner_name);
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
 			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
 			players_.push_back(owner_);
-			send_observerquit(player_info_->find(owner_));
+			send_observerquit(o);
 		}
 
 		//send the host a notification of removal of this side

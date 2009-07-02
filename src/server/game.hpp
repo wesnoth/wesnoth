@@ -203,9 +203,10 @@ private:
 	 * or controller type (human or ai).
 	 */
 	void change_controller(const size_t side_num,
-			const player_map::const_iterator newplayer,
+			const network::connection sock,
+			const std::string& player_name,
 			const bool player_left = true,
-			const std::string controller = "");
+			const std::string& controller = "");
 	void transfer_ai_sides(const network::connection player);
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
