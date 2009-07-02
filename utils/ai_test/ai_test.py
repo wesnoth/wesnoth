@@ -20,7 +20,7 @@ class GameResult:
 	map = ''
 	svn_release = '0'
 	test = 'default'
-	turn = '0'
+	end_turn = '0'
 	version_string = ''
 	winner_side = '0'
 	
@@ -59,7 +59,7 @@ def run_game(cfg,game_result):
 	print 'Running: '+command_line
 	start = time()
 	p = Popen(command_line, shell=True, stdout=PIPE, stderr=PIPE)
-	outlines = p.stdout.readlines()
+	# outlines = p.stdout.readlines()
 	outerrlines = p.stderr.readlines()
 	print 'Finished'
 	for line in outerrlines:
@@ -80,14 +80,18 @@ def run_game(cfg,game_result):
 			if ((n1>-1) and (n2>-1) and (n2>n1)):
 				sz = s[n1+1:n2]
 				#parse local_modifications
+				n3 = sz.rfind('M')
+				if (n3>-1):
+					sz = sz[:n3]
+					game_result.local_modifications = 1
 				#parse svn_release
 				game_result.svn_release = sz
 			continue
 
-		n,s = do_filter(str,'info ai/testing: VICTORY_TURN:')
+		n,s = do_filter(str,'info ai/testing: GAME_END_TURN:')
 		if (n>-1):
 			#print 'AND THE VICTORY_TURN IS: '+s	
-			game_result.turn = s
+			game_result.end_turn = s
 			continue
 
 		n,s = do_filter(str,'info ai/testing: AI_IDENTIFIER1:')
@@ -121,16 +125,13 @@ def run_game(cfg,game_result):
 		print 'stderr:'
 		for line in outerrlines:
 			print filter_non_printable(line.strip())
-		print 'stdout:'
-		for line in outlines:
-			print filter_non_printable(line.strip())
 		print '===================='	
 		
 	return game_result
 
 def save_result(cfg,game_result):
 	print 'Saving to DB....'
-	query = 'insert into game(ai_config1,ai_config2,ai_ident1,ai_ident2,duration,faction1,faction2,is_success,local_modifications,map,svn_release,test,turn,version_string,winner_side) values (%s,%s,%s,%s,cast(%s as double precision),%s,%s,cast(%s as boolean),cast(%s as boolean),%s,cast(%s as int),%s,cast(%s as int),%s,cast(%s as int))'
+	query = 'insert into game(ai_config1,ai_config2,ai_ident1,ai_ident2,duration,faction1,faction2,is_success,local_modifications,map,svn_release,test,end_turn,version_string,winner_side) values (%s,%s,%s,%s,cast(%s as double precision),%s,%s,cast(%s as boolean),cast(%s as boolean),%s,cast(%s as int),%s,cast(%s as int),%s,cast(%s as int))'
 	db_ip = cfg.get('default','db_ip')
 	db_port = cfg.getint('default','db_port')
 	db_name = cfg.get('default','db_name')
@@ -139,7 +140,7 @@ def save_result(cfg,game_result):
 
 	dbconnection = PgSQL.connect(database=db_name,host=db_ip,port=db_port,user=db_user,password=db_pass)
 	cu = dbconnection.cursor()
-	cu.execute(query, game_result.ai_config1, game_result.ai_config2, game_result.ai_ident1, game_result.ai_ident2, game_result.duration, game_result.faction1, game_result.faction2, game_result.is_success, game_result.local_modifications, game_result.map, game_result.svn_release, game_result.test, game_result.turn, game_result.version_string, game_result.winner_side)
+	cu.execute(query, game_result.ai_config1, game_result.ai_config2, game_result.ai_ident1, game_result.ai_ident2, game_result.duration, game_result.faction1, game_result.faction2, game_result.is_success, game_result.local_modifications, game_result.map, game_result.svn_release, game_result.test, game_result.end_turn, game_result.version_string, game_result.winner_side)
 	cu.execute('commit')
 	dbconnection.close()
 	print 'Saved to DB'
