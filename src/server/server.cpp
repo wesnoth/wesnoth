@@ -1153,21 +1153,22 @@ void server::process_query(const network::connection sock,
 		}
 	} else if (command == "help" || command.empty()) {
 		response << help_msg;
-	} else if (command == admin_passwd_) {
-		LOG_SERVER << "New Admin recognized: IP: "
-			<< network::ip_address(sock) << "\tnick: "
-			<< pl->second.name() << std::endl;
-		admins_.insert(sock);
-		// This string is parsed by the client!
-		response << "You are now recognized as an administrator.";
-		if(user_handler_) {
-			user_handler_->set_is_moderator(pl->second.name(), true);
+	} else if (!admin_passwd_.empty() && command.to_string().find("admin ") == 0) {
+		if (command == "admin " + admin_passwd_) {
+			LOG_SERVER << "New Admin recognized: IP: "
+				<< network::ip_address(sock) << "\tnick: "
+				<< pl->second.name() << std::endl;
+			admins_.insert(sock);
+			// This string is parsed by the client!
+			response << "You are now recognized as an administrator.";
+			if (user_handler_) {
+				user_handler_->set_is_moderator(pl->second.name(), true);
+			}
+		} else {
+			WRN_SERVER << "FAILED Admin attempt: '" << command << "'\tIP: "
+				<< network::ip_address(sock) << "\tnick: "
+				<< pl->second.name() << std::endl;
 		}
-	} else if (admin_passwd_.empty() == false) {
-		WRN_SERVER << "FAILED Admin attempt: '" << command << "'\tIP: "
-			<< network::ip_address(sock) << "\tnick: "
-			<< pl->second.name() << std::endl;
-		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	} else {
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
