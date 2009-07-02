@@ -14,8 +14,9 @@ def intersect(*lists):
 def get_date_range(startdate,enddate):
 	startdate = startdate.split('/')
 	enddate = enddate.split('/')
-	startdate = datetime.date(startdate[0],startdate[1],startdate[2])
-	enddate = datetime.date(enddate[0],enddate[1],enddate[2])
+	print startdate
+	startdate = datetime.date(int(startdate[0]),int(startdate[1]),int(startdate[2]))
+	enddate = datetime.date(int(enddate[0]),int(enddate[1]),int(enddate[2]))
 	delta = abs( (enddate-startdate).days )
 	return delta
 

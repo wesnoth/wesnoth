@@ -41,7 +41,7 @@ class LineGraphController(BaseController):
 	def __init__(self,url):
 		self.url = url
 	
-	@expose(template="wesstats.templates.pieview")
+	@expose(template="wesstats.templates.lineview")
 	def default(self,**kw):
 		#pull data on this view from DB
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
@@ -119,12 +119,40 @@ class LineGraphController(BaseController):
 		#TODO: scaled query is probably not working correctly for this new type of query, make sure it works
 		results = helperlib.scaled_query(curs,query,100,evaluators.count_eval)
 		log.debug("query result:")
-		#log.debug(results)
+		log.debug(results)
+		data = LineGraphController.reformat_data(self,results)
 		#generate JS datafields here because genshi templating can't emit JS...
-		data = ""
-		for i in range(0,len(results)):
-                        data += "data.setValue("+str(i)+",0,'"+results[i][0]+"');\n"
-                        data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
-		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,
-			data=data,filters=available_filters,used_filters=used_filters,
-			ufilters_vals=ufilters_vals,fdata=fdata)
+		js_celldata = ""
+		js_columnnames = ""
+		dates = data[0].keys()
+		dates.sort()
+		for y in data[1]:
+			js_columnnames += "data.addColumn('number', '" + y + "');\n"
+		for i in range(len(dates)):
+			js_celldata += "data.setCell(" + str(i) + ", 0, '" + dates[i].__str__() + "');\n"
+			for j in range(len(data[0][dates[i]])):
+				js_celldata += "data.setCell(" + str(i) + ", " + str(j+1) + ", " + str(data[0][dates[i]][j][1]) + ");\n"
+		print js_columnnames
+		print js_celldata
+		return dict(title=view_data[0],xlabel=view_data[3],js_celldata=js_celldata,
+			filters=available_filters,used_filters=used_filters,js_columnnames=js_columnnames,
+			ufilters_vals=ufilters_vals,fdata=fdata,numdates=len(dates))
+
+	#returns a tuple of a dictionary with date:ydata and a list of ydata labels
+	def reformat_data(self,sql_data):
+		dates = dict()
+		ydata = []
+		#create an entry for each date and find all the ydata types listed
+		for row in sql_data:
+			dates[row[0]] = []
+			if not ydata.__contains__(row[2]):
+				ydata.append(row[2])
+		for date in dates.keys():
+			for y in ydata:
+				for row in sql_data:
+					if row[0] == date and row[2] == y:
+						dates[date].append([row[2],row[1]])
+						found = True
+						break
+		return [dates,ydata]
+			
