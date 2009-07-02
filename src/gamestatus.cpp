@@ -203,10 +203,11 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-void game_state::write_player(const player_info& player, config& cfg, const bool use_snapshot) const
+void game_state::write_player(const std::string& save_id, const player_info& player, config& cfg, const bool use_snapshot) const
 {
 	cfg["name"] = player.name;
-
+	cfg["save_id"]=save_id;
+	
 	//do not store gold if specified by use_snapshot
 	if (!use_snapshot) {
 		char buf[50];
@@ -214,6 +215,13 @@ void game_state::write_player(const player_info& player, config& cfg, const bool
 
 		cfg["gold"] = buf;
 		cfg["gold_add"] = player.gold_add ? "yes" : "no";
+	}
+	//add gold from snapshot
+	else {
+		const config& side = snapshot.find_child("side","save_id",save_id);
+		cfg["gold"] = side["gold"];
+		cfg["gold_add"] = side["gold_add"];
+		assert (cfg["gold"] == str_cast<int>(player.gold));
 	}
 
 
@@ -249,15 +257,8 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 		i!=gamestate.players.end(); ++i)
 	{
 		config new_cfg;
-		gamestate.write_player(i->second, new_cfg, use_snapshot);
-		new_cfg["save_id"]=i->first;
-		//add gold from snapshot if specified
-		if (use_snapshot) {
-			config& side = gamestate.snapshot.find_child("side","save_id",i->first);
-			new_cfg["gold"] = side["gold"];
-			new_cfg["gold_add"] = side["gold_add"];
-			assert (new_cfg["gold"] == str_cast<int>(i->second.gold));
-		}
+		gamestate.write_player(i->first, i->second, new_cfg, use_snapshot);
+		
 		cfg.add_child("player", new_cfg);
 	}
 }
@@ -396,7 +397,7 @@ void game_state::write_snapshot(config& cfg) const
 	for(std::map<std::string, player_info>::const_iterator i=players.begin();
 	    i!=players.end(); ++i) {
 		config new_cfg;
-		write_player(i->second, new_cfg);
+		write_player(i->first, i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
 	}

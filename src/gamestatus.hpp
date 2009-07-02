@@ -151,7 +151,7 @@ public:
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
 
-	void write_player(const player_info& player, config& cfg, const bool use_snapshot = false) const;
+	void write_player(const std::string& save_id, const player_info& player, config& cfg, const bool use_snapshot = false) const;
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.
