@@ -13,8 +13,8 @@
 */
 
 /**
- * CPP AI Support engine - creating specific ai components from config
- * @file ai/composite/engine_default.cpp
+ * FAI AI Support engine - creating specific ai components from config
+ * @file ai/composite/engine_fai.cpp
  */
 
 #include "ai.hpp"
@@ -77,6 +77,7 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 	if (!fai_ca) {
 		ERR_AI_COMPOSITE_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_COMPOSITE_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
 	}
 	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
 	*b = ca;

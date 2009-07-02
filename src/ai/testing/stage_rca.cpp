@@ -63,6 +63,7 @@ void candidate_action_evaluation_loop::do_play_stage()
 		//Evaluation
 		foreach(composite_ai::candidate_action_ptr ca_ptr, candidate_actions_){
 			if (!ca_ptr->is_enabled()){
+				DBG_AI_TESTING_RCA_DEFAULT << "Skipping disabled candidate action: "<< *ca_ptr << std::endl;
 				continue;
 			}
 

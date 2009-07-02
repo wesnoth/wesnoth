@@ -13,7 +13,7 @@
 */
 
 /**
- * CPP AI Support engine - creating specific ai components from config
+ * FAI AI Support engine - creating specific ai components from config
  * @file ai/composite/engine_fai.hpp
  */
 
