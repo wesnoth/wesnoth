@@ -48,8 +48,8 @@ ai_composite::ai_composite( default_ai_context &context)
 void ai_composite::on_create()
 {
 	const config& ai_global_parameters = ai::manager::get_active_ai_global_parameters_for_side(get_side());
-	LOG_AI_COMPOSITE << "side "<< get_side() << " : "<<" created AI with ai_identifier=["<<
-		ai_global_parameters["ai_identifier"]<<"]"<<std::endl;
+	LOG_AI_COMPOSITE << "side "<< get_side() << " : "<<" created AI with id=["<<
+		ai_global_parameters["id"]<<"]"<<std::endl;
 
 	//init the composite ai engines
 	foreach(const config &cfg_element, ai_global_parameters.child_range("engine")){
