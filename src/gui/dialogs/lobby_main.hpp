@@ -22,6 +22,7 @@ class config;
 namespace gui2 {
 
 class tlistbox;
+class ttext_box;
 
 class tlobby_main : public tdialog
 {
@@ -30,6 +31,25 @@ public:
 
 	void update_gamelist(const config& cfg);
 private:
+	/**
+	 * Network polling callback
+	 */
+	void network_handler();
+
+	void process_network_data(const config& data);
+
+	void process_message(const config& data, bool whisper = false);
+
+	void process_gamelist(const config& data);
+
+	void process_gamelist_diff(const config& data);
+
+	void process_room_join(const config& data);
+
+	void process_room_part(const config& data);
+
+	void process_room_query_response(const config& data);
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
@@ -37,6 +57,8 @@ private:
 	void pre_show(CVideo& video, twindow& window);
 
 	tlistbox* gamelist_;
+
+	ttext_box* chat_log_;
 };
 
 } // namespace gui2
