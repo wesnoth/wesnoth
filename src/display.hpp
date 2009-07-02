@@ -196,6 +196,12 @@ public:
 			bool operator!=(const iterator &that) const {return that.loc_ != loc_;};
 			const map_location& operator*() const {return loc_;};
 
+			typedef std::forward_iterator_tag iterator_category;
+			typedef map_location value_type;
+			typedef int difference_type;
+			typedef map_location* pointer;
+			typedef map_location& reference;
+
 			private:
 				map_location loc_;
 				rect_of_hexes& rect_;
