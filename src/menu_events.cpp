@@ -783,7 +783,7 @@ private:
 			unit new_unit(&units_, &map_, &tod_manager_, &teams_, &u_type->second, side_num, true);
 			map_location loc = last_hex;
 			const std::string &msg = recruit_unit(map_, side_num, units_,
-				new_unit, loc, false, gui_);
+				new_unit, loc, false, gui_ != NULL);
 			if(msg.empty()) {
 				current_team.spend_gold(u_type->second.cost());
 				statistics::recruit_unit(new_unit);
@@ -940,7 +940,7 @@ private:
 					recorder.add_recall(res,loc);
 					un.set_game_context(&units_,&map_,&tod_manager_,&teams_);
 					const std::string &err = recruit_unit(map_, side_num, units_,
-						un, loc, true, gui_);
+						un, loc, true, gui_ != NULL);
 					if(!err.empty()) {
 						recorder.undo();
 						gui::dialog(*gui_,"",err,gui::OK_ONLY).show();
@@ -1118,7 +1118,7 @@ private:
 				recorder.add_recall(action.recall_pos,action.recall_loc);
 				un.set_game_context(&units_,&map_,&tod_manager_,&teams_);
 				const std::string &msg = recruit_unit(map_, side_num,
-					units_, un, action.recall_loc, true, gui_);
+					units_, un, action.recall_loc, true, gui_ != NULL);
 				if(msg.empty()) {
 					statistics::recall_unit(un);
 					current_team.spend_gold(game_config::recall_cost);
@@ -1157,7 +1157,7 @@ private:
 			unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
 			const std::string &msg = recruit_unit(map_, side_num, units_,
-				new_unit, loc, false, gui_);
+				new_unit, loc, false, gui_ != NULL);
 			if(msg.empty()) {
 				current_team.spend_gold(new_unit.type()->cost());
 				statistics::recruit_unit(new_unit);
