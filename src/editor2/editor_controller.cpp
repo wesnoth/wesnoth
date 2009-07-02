@@ -285,6 +285,8 @@ EXIT_STATUS editor_controller::main_loop()
 	} catch (editor_exception& e) {
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
+	} catch (twml_exception& e) {
+		e.show(gui());
 	}
 	return quit_mode_;
 }
