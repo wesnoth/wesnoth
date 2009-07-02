@@ -238,7 +238,7 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 	gui2::show_transient_message(disp.video(),
 		name + (campaign_name.empty() ? "" : "<small> - " + campaign_name + "</small>"),
 		(objectives.empty() ? no_objectives : objectives),
-		gui2::tcontrol::PANGO_MARKUP);
+		gui2::tcontrol::PANGO_MARKUP, gui2::tcontrol::PANGO_MARKUP);
 }
 
 namespace {
