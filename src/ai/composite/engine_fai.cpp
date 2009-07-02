@@ -32,6 +32,12 @@ static lg::log_domain log_ai_composite_engine_fai("ai/composite/engine/fai");
 #define LOG_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(info, log_ai_composite_engine_fai)
 #define ERR_AI_COMPOSITE_ENGINE_FAI LOG_STREAM(err, log_ai_composite_engine_fai)
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 class fai_candidate_action_wrapper : public candidate_action {
 public:
 	fai_candidate_action_wrapper( rca_context &context, const config &/*cfg*/, game_logic::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
@@ -59,6 +65,9 @@ private:
 	formula_ai &formula_ai_;
 };
 
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 engine_fai::engine_fai( composite_ai_context &context, const config &cfg )
 	: engine(context,cfg), formula_ai_(context)
