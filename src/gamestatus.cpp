@@ -349,7 +349,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	}
 }
 
-void game_state::write_snapshot(config& cfg) const
+void game_state::write_snapshot(config& cfg, const bool use_snapshot) const
 {
 	log_scope("write_game");
 	cfg["label"] = classification_.label;
@@ -397,7 +397,7 @@ void game_state::write_snapshot(config& cfg) const
 	for(std::map<std::string, player_info>::const_iterator i=players.begin();
 	    i!=players.end(); ++i) {
 		config new_cfg;
-		write_player(i->first, i->second, new_cfg);
+		write_player(i->first, i->second, new_cfg, use_snapshot);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
 	}
