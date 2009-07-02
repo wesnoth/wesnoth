@@ -72,7 +72,7 @@ bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_m
 	}
 
 	if( evaluated_candidate_actions_.empty() ||
-		(*evaluated_candidate_actions_.begin())->get_score() < 1 )
+		(*evaluated_candidate_actions_.begin())->get_score() <= 0 ) //@note ai::composite_ai::candidate_action::BAD_SCORE )
 		return false;
 
 	return true;

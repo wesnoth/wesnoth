@@ -3,8 +3,8 @@ fai 'poisoner_eval.fai'
 if(
 	index_of('regenerates',target.abilities) != -1, 1,
 	find( villages, 'vill', vill = target.loc ), 1,
-	target.leader, 5,
-	2	
+	target.leader, 150,
+	80
 )
 
 faiend
