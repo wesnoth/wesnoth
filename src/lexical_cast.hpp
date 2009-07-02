@@ -41,6 +41,10 @@
 #define DEBUG_THROW(id) throw id;
 #else
 
+#ifdef __FreeBSD__
+#define __LONG_LONG_SUPPORTED
+#endif
+
 #include <string>
 #include <sstream>
 #include <boost/mpl/set.hpp>
