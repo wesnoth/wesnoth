@@ -42,12 +42,6 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-#ifdef _MSC_VER
-
-static void write_player(const player_info& player, config& cfg, const bool use_snapshot = false);
-
-#endif /* _MSC_VER */
-
 game_classification::game_classification():
 	label(),
 	parent(),
@@ -209,7 +203,7 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-static void write_player(const player_info& player, config& cfg, const bool use_snapshot=false)
+void game_state::write_player(const player_info& player, config& cfg, const bool use_snapshot) const
 {
 	cfg["name"] = player.name;
 
@@ -255,7 +249,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 		i!=gamestate.players.end(); ++i)
 	{
 		config new_cfg;
-		write_player(i->second, new_cfg, use_snapshot);
+		gamestate.write_player(i->second, new_cfg, use_snapshot);
 		new_cfg["save_id"]=i->first;
 		//add gold from snapshot if specified
 		if (use_snapshot) {
@@ -402,7 +396,7 @@ void game_state::write_snapshot(config& cfg) const
 	for(std::map<std::string, player_info>::const_iterator i=players.begin();
 	    i!=players.end(); ++i) {
 		config new_cfg;
-		::write_player(i->second, new_cfg);
+		write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
 	}
