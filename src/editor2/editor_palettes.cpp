@@ -432,6 +432,7 @@ void terrain_palette::draw(bool force) {
 		dstrect.y = y;
 		dstrect.w = size_specs_.terrain_size;
 		dstrect.h = size_specs_.terrain_size;
+		std::stringstream tooltip_text;
 
 		//Draw default base for overlay terrains
 		if(base_terrain != t_translation::NONE_TERRAIN) {
@@ -439,8 +440,13 @@ void terrain_palette::draw(bool force) {
 			surface base_image(image::get_image(base_filename));
 
 			if(base_image == NULL) {
+				tooltip_text << "BASE IMAGE NOT FOUND\n";
 				ERR_ED << "image for terrain " << counter << ": '" << base_filename << "' not found\n";
-				return;
+				base_image = image::get_image("misc/missing-image.png");
+				if (base_image == NULL) {
+					ERR_ED << "Placeholder image not found\n";
+					return;
+				}
 			}
 
 			if(static_cast<unsigned>(base_image->w) != size_specs_.terrain_size ||
@@ -456,8 +462,13 @@ void terrain_palette::draw(bool force) {
 		const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {
+			tooltip_text << "IMAGE NOT FOUND\n";
 			ERR_ED << "image for terrain " << counter << ": '" << filename << "' not found\n";
-			return;
+			image = image::get_image("misc/missing-image.png");
+			if (image == NULL) {
+				ERR_ED << "Placeholder image not found\n";
+				return;
+			}
 		}
 
 		if(static_cast<unsigned>(image->w) != size_specs_.terrain_size ||
@@ -485,17 +496,21 @@ void terrain_palette::draw(bool force) {
 		}
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 
-		std::stringstream tooltip_text;
-		if (non_core_terrains_.find(terrain) == non_core_terrains_.end()) {
-			//no special for now
-		} else {
-			tooltip_text << "#";
+		bool is_core = non_core_terrains_.find(terrain) == non_core_terrains_.end();
+		SDL_Color tip_color = font::NORMAL_COLOUR;
+		if (!is_core) {
+			SDL_Color red = {0xff, 0, 0, 0};
+			tip_color = red;
 		}
 		tooltip_text << map().get_terrain_string(terrain);
 		if (gui_.get_draw_terrain_codes()) {
 			tooltip_text << " - " << terrain;
 		}
-		tooltips::add_tooltip(dstrect, tooltip_text.str());
+		if (!is_core) {
+			tooltip_text << " " << _("(non-core)") << "\n";
+			tooltip_text << _("Will not work in game without extra care.");
+		}
+		tooltips::add_tooltip(dstrect, tooltip_text.str(), tip_color);
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
 	}
