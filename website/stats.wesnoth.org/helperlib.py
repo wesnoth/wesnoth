@@ -64,6 +64,10 @@ def fconstruct(filters,colname,list):
 		if i != len(list) - 1:
 			newfilter += ','
 	newfilter += ')'
+	
+	return fconstruct_helper(filters,newfilter)
+
+def fconstruct_helper(filters,newfilter):
 	if len(filters) != 0:
 		filters += " AND "
 	else:

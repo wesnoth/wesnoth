@@ -75,40 +75,51 @@ class LineGraphController(BaseController):
 			used_filters.append("dates")
 			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
 		#calculate the number of days in the range
-		daterange = TWOYEARS
+		daterange = TWOYEARS+1
+		date_sampling_filter = ""
 		if used_filters.__contains__("dates"):
 			daterange = helperlib.get_date_range(kw['startdate'],kw['enddate'])
 		
 		if daterange > TWOYEARS:
-			pass
+			date_sampling_filter = " DAYOFMONTH(timestamp) = '1' AND MONTH(timestamp) % 2 "
 		elif daterange > SIXMONTHS:
-			pass
+			date_sampling_filter = " DAYOFMONTH(timestamp) = '1' "
 		elif daterange > THREEMONTHS:
-			pass
+			date_sampling_filter = " DAYOFMONTH(timestamp) % '14' = 0 "
 		elif daterange > ONEMONTH:
-			pass
+			date_sampling_filter = " DAYOFMONTH(timestamp) % '7' = 0 "
 		elif daterange > TWOWEEKS:
-			pass
+			date_sampling_filter = " DAYOFMONTH(timestamp) % '3' = 0 "
 		elif daterange > ONEWEEK:
-			pass
+			date_sampling_filter = " "
+		#must do special routines for hourly sampling
 		elif daterange > ONEDAY:
 			pass
-
+		else:
+			pass
+		
+		filters = helperlib.fconstruct_helper(filters,date_sampling_filter)
 		#get columns and column transformations for this view
 		y_xforms = view_data[6].split(',')
 		y_data = view_data[2].split(',')
 		y_data_str = ""
-		#they must be equal!
+		y_group_str = ""
+		#number of y columns and y transformations must be equal
 		assert len(y_data) == len(y_xforms)
+		#we currently only support time as the x axis
+		assert view_data[1] == "timestamp"
 		for i in range(len(y_data)):
 			y_data_str += y_xforms[i] + "(" + y_data[i] + ")," + y_data[i] + ","
+			y_group_str += y_data[i] + ","
 		y_data_str = y_data_str[0:len(y_data_str)-1]
-		query = "SELECT "+view_data[1]+","+y_data_str+" FROM GAMES "+filters
+		y_group_str = y_group_str[0:len(y_group_str)-1]
+		query = "SELECT CAST(timestamp as DATE)," + y_data_str + " FROM GAMES " + filters + " GROUP BY CAST(timestamp as DATE)," + y_group_str 
 		log.debug("SQL query:")
 		log.debug(query)
+		#TODO: scaled query is probably not working correctly for this new type of query, make sure it works
 		results = helperlib.scaled_query(curs,query,100,evaluators.count_eval)
 		log.debug("query result:")
-		log.debug(results)
+		#log.debug(results)
 		#generate JS datafields here because genshi templating can't emit JS...
 		data = ""
 		for i in range(0,len(results)):
