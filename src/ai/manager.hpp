@@ -25,9 +25,7 @@
 
 #include "../global.hpp"
 
-#include "contexts.hpp"
 #include "game_info.hpp"
-#include "default/contexts.hpp"
 
 #include <map>
 #include <stack>
@@ -38,6 +36,11 @@
 namespace ai {
 
 class interface;
+
+class side_context;
+class readonly_context;
+class readwrite_context;
+class default_ai_context;
 
 /**
  * Base class that holds the AI and current AI parameters.
@@ -90,9 +93,9 @@ private:
 	config ai_global_parameters_;
 	config ai_memory_;
 	std::vector<config> ai_parameters_;
-	int side_;
+	side_number side_;
 
-	ai_ptr create_ai( int side );
+	ai_ptr create_ai( side_number side );
 };
 
 /**
@@ -306,7 +309,7 @@ public:
 	 * @param str string to evaluate.
 	 * @return string result of evaluation.
 	 */
-	static const std::string evaluate_command( int side, const std::string& str );
+	static const std::string evaluate_command( side_number side, const std::string& str );
 
 
 	// =======================================================================
@@ -322,7 +325,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	static bool add_ai_for_side_from_file( int side, const std::string& file, bool replace = true );
+	static bool add_ai_for_side_from_file( side_number side, const std::string& file, bool replace = true );
 
 
 	/**
@@ -334,7 +337,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	static bool add_ai_for_side_from_config(int side, const config &cfg, bool replace = true);
+	static bool add_ai_for_side_from_config(side_number side, const config &cfg, bool replace = true);
 
 
 	/**
@@ -346,7 +349,7 @@ public:
 	 * @param replace should new ai replace the current ai or 'be placed on top of it'.
 	 * @return true if successful.
 	 */
-	static bool add_ai_for_side( int side, const std::string& ai_algorithm_type, bool replace = true);
+	static bool add_ai_for_side( side_number side, const std::string& ai_algorithm_type, bool replace = true);
 
 
 	/**
@@ -368,7 +371,7 @@ public:
 	 *       by manager.
 	 * @param side side number (1-based, as in game_info).
 	 */
-	static void remove_ai_for_side( int side );
+	static void remove_ai_for_side( side_number side );
 
 
 	/**
@@ -377,7 +380,7 @@ public:
 	 *       by manager.
 	 * @param side side number (1-based, as in game_info).
 	 */
-	static void remove_all_ais_for_side( int side );
+	static void remove_all_ais_for_side( side_number side );
 
 
 	/**
@@ -402,7 +405,7 @@ public:
 	 * @return a reference to active AI parameters.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static const std::vector<config>& get_active_ai_parameters_for_side( int side );
+	static const std::vector<config>& get_active_ai_parameters_for_side( side_number side );
 
 
 	/**
@@ -413,7 +416,7 @@ public:
 	 * @return a reference to active AI effective parameters.
 	 * @note this reference may become invalid after specific manager operations.
 	 */
-	static const config& get_active_ai_effective_parameters_for_side( int side );
+	static const config& get_active_ai_effective_parameters_for_side( side_number side );
 
 
 	/**
@@ -424,7 +427,7 @@ public:
 	 * @return a reference to active ai global parameters.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static const config& get_active_ai_global_parameters_for_side( int side );
+	static const config& get_active_ai_global_parameters_for_side( side_number side );
 
 
 	/**
@@ -432,7 +435,7 @@ public:
 	 * @param side side number (1-based).
 	 * @return a reference to active AI info.
 	 */
-	static game_info& get_active_ai_info_for_side( int side );
+	static game_info& get_active_ai_info_for_side( side_number side );
 
 
 	/**
@@ -450,7 +453,7 @@ public:
 	 * @return a reference to active AI memory.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static const config& get_active_ai_memory_for_side( int side );
+	static const config& get_active_ai_memory_for_side( side_number side );
 
 
 	/**
@@ -461,7 +464,7 @@ public:
 	 * @return a reference to active AI algorithm_type.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static const std::string& get_active_ai_algorithm_type_for_side( int side );
+	static const std::string& get_active_ai_algorithm_type_for_side( side_number side );
 
 
 	// =======================================================================
@@ -475,7 +478,7 @@ public:
 	 * @param side side number (1-based, as in game_info).
 	 * @param ai_parameters AI parameters to be set.
 	 */
-	static void set_active_ai_parameters_for_side( int side, const std::vector<config>& ai_parameters );
+	static void set_active_ai_parameters_for_side( side_number side, const std::vector<config>& ai_parameters );
 
 
 	/**
@@ -487,7 +490,7 @@ public:
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
 	 */
-	static void set_active_ai_effective_parameters_for_side( int side, const config& ai_effective_parameters );
+	static void set_active_ai_effective_parameters_for_side( side_number side, const config& ai_effective_parameters );
 
 
 	/**
@@ -499,7 +502,7 @@ public:
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
 	 */
-	static void set_active_ai_global_parameters_for_side( int side, const config& ai_global_parameters );
+	static void set_active_ai_global_parameters_for_side( side_number side, const config& ai_global_parameters );
 
 
 	/**
@@ -511,7 +514,7 @@ public:
 	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
 	 *             Will be refactored away.
 	 */
-	static void set_active_ai_memory_for_side( int side, const config& ai_memory );
+	static void set_active_ai_memory_for_side( side_number side, const config& ai_memory );
 
 
 	/**
@@ -521,7 +524,7 @@ public:
 	 * @param side side number (1-based, as in game_info).
 	 * @param ai_algorithm_type AI algorithm type to be set.
 	 */
-	static void set_active_ai_algorithm_type_for_side( int side, const std::string& ai_algorithm_type );
+	static void set_active_ai_algorithm_type_for_side( side_number side, const std::string& ai_algorithm_type );
 
 
 	// =======================================================================
@@ -537,7 +540,7 @@ public:
 
 private:
 
-	typedef std::map< int, std::stack< holder > > AI_map_of_stacks;
+	typedef std::map< side_number, std::stack< holder > > AI_map_of_stacks;
 	static AI_map_of_stacks ai_map_;
 	static std::deque< command_history_item > history_;
 	static long history_item_counter_;
@@ -564,7 +567,7 @@ private:
 	 * @return string result of evaluation.
 	 * @todo 1.7 rewrite this function to use a fai or lua parser.
 	 */
-	static const std::string internal_evaluate_command( int side, const std::string& str );
+	static const std::string internal_evaluate_command( side_number side, const std::string& str );
 
 	/**
 	 * Determines if the command should be intercepted and evaluated as internal command.
@@ -581,7 +584,7 @@ private:
 	/**
 	 * Gets the AI stack for the specified side, create it if it doesn't exist.
 	 */
-	static std::stack< holder >& get_or_create_ai_stack_for_side(int side);
+	static std::stack< holder >& get_or_create_ai_stack_for_side(side_number side);
 
 	// =======================================================================
 	// AI HOLDERS
@@ -591,22 +594,22 @@ private:
 	/**
 	 * Gets active holder for specified @a side.
 	 */
-	static holder& get_active_ai_holder_for_side( int side );
+	static holder& get_active_ai_holder_for_side( side_number side );
 
 	/**
 	 * Gets command holder for specified @a side.
 	 */
-	static holder& get_command_ai_holder( int side );
+	static holder& get_command_ai_holder( side_number side );
 
 	/**
 	 * Gets fallback holder for specified @a side.
 	 */
-	static holder& get_fallback_ai_holder( int side );
+	static holder& get_fallback_ai_holder( side_number side );
 
 	/**
 	 * Gets or creates active holder for specified @a side without fallback.
 	 */
-	static holder& get_or_create_active_ai_holder_for_side_without_fallback(int side, const std::string& ai_algorithm_type);
+	static holder& get_or_create_active_ai_holder_for_side_without_fallback(side_number side, const std::string& ai_algorithm_type);
 
 	// =======================================================================
 	// AI POINTERS
@@ -620,24 +623,24 @@ private:
 	 * @return a reference to the active AI.
 	 * @note This reference may become invalid after specific manager operations.
 	 */
-	static interface& get_active_ai_for_side( int side );
+	static interface& get_active_ai_for_side( side_number side );
 
 
 	/**
 	 * Gets the command AI for the specified @a side.
 	 */
-	static interface& get_command_ai( int side );
+	static interface& get_command_ai( side_number side );
 
 
 	/**
 	 * Gets the fallback AI for the specified @a side.
 	 */
-	static interface& get_fallback_ai( int side );
+	static interface& get_fallback_ai( side_number side );
 
 	/**
 	 * Gets or creates active AI for specified @a side without fallback.
 	 */
-	static interface& get_or_create_active_ai_for_side_without_fallback( int side, const std::string& ai_algorithm_type );
+	static interface& get_or_create_active_ai_for_side_without_fallback( side_number side, const std::string& ai_algorithm_type );
 
 
 };

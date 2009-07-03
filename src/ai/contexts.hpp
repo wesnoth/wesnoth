@@ -42,8 +42,6 @@ namespace ai {
 
 class interface;
 
-typedef boost::shared_ptr< interface > ai_ptr;
-
 
 // recursion counter
 class recursion_counter {

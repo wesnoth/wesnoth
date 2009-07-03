@@ -20,9 +20,9 @@
 #ifndef AI_GAME_INFO_HPP_INCLUDED
 #define AI_GAME_INFO_HPP_INCLUDED
 
-class game_display;
 class gamemap;
 
+#include "../game_display.hpp"
 #include "../gamestatus.hpp"
 #include "../tod_manager.hpp"
 #include "../playturn.hpp"
@@ -43,6 +43,10 @@ typedef std::multimap<map_location,map_location> move_map;
 
 /** The standard way in which a map of possible movement routes to location is recorded*/
 typedef std::map<map_location,paths> moves_map;
+
+class interface;
+
+typedef boost::shared_ptr< interface > ai_ptr;
 
 class game_info {
 public:
