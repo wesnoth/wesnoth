@@ -35,7 +35,7 @@ base_config.renderers.append('genshi')
 #base_config.renderers.append('chameleon_genshi')
 
 #Configure the base SQLALchemy Setup
-base_config.use_sqlalchemy = False
+base_config.use_sqlalchemy = True
 base_config.model = wesstats.model
 base_config.DBSession = wesstats.model.DBSession
 
