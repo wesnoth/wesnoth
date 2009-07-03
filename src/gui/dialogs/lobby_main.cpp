@@ -108,7 +108,7 @@ void tlobby_main::process_network_data(const config &data)
 	}
 }
 
-void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
+void tlobby_main::process_message(const config &data, bool /*whisper / *= false*/)
 {
 	const std::string& sender = data["sender"];
 	const std::string& message = data["message"];
@@ -123,23 +123,23 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 	chat_log_->set_value(chat_log_->text() + "\n" + ss.str());
 }
 
-void tlobby_main::process_gamelist(const config &data)
+void tlobby_main::process_gamelist(const config &/*data*/)
 {
 }
 
-void tlobby_main::process_gamelist_diff(const config &data)
+void tlobby_main::process_gamelist_diff(const config &/*data*/)
 {
 }
 
-void tlobby_main::process_room_join(const config &data)
+void tlobby_main::process_room_join(const config &/*data*/)
 {
 }
 
-void tlobby_main::process_room_part(const config& data)
+void tlobby_main::process_room_part(const config &/*data*/)
 {
 }
 
-void tlobby_main::process_room_query_response(const config &data)
+void tlobby_main::process_room_query_response(const config &/*data*/)
 {
 }
 
