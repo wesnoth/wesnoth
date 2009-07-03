@@ -116,8 +116,7 @@ class LineGraphController(BaseController):
 		query = "SELECT CAST(timestamp as DATE)," + y_data_str + " FROM GAMES " + filters + " GROUP BY CAST(timestamp as DATE)," + y_group_str 
 		log.debug("SQL query:")
 		log.debug(query)
-		#TODO: scaled query is probably not working correctly for this new type of query, make sure it works
-		results = helperlib.scaled_query(curs,query,100,evaluators.count_eval)
+		results = helperlib.scaled_query(curs,query,100,evaluators.simple_eval)
 		log.debug("query result:")
 		log.debug(results)
 		data = LineGraphController.reformat_data(self,results)
@@ -132,8 +131,6 @@ class LineGraphController(BaseController):
 			js_celldata += "data.setCell(" + str(i) + ", 0, '" + dates[i].__str__() + "');\n"
 			for j in range(len(data[0][dates[i]])):
 				js_celldata += "data.setCell(" + str(i) + ", " + str(j+1) + ", " + str(data[0][dates[i]][j][1]) + ");\n"
-		print js_columnnames
-		print js_celldata
 		return dict(title=view_data[0],xlabel=view_data[3],js_celldata=js_celldata,
 			filters=available_filters,used_filters=used_filters,js_columnnames=js_columnnames,
 			ufilters_vals=ufilters_vals,fdata=fdata,numdates=len(dates))

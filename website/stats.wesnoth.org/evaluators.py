@@ -18,3 +18,6 @@ def count_eval(results):
 		total += int(result[1])
 	return total
 
+def simple_eval(results):
+	return len(results)
+
