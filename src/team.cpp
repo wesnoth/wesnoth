@@ -367,11 +367,11 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 		info_(cfg),
 		countdown_time_(0),
 		action_bonus_count_(0),
+		recall_list_(),
 		enemies_(),
 		seen_(),
 		ally_shroud_(),
-		ally_fog_(),
-		recall_list_()
+		ally_fog_()
 {
 	fog_.set_enabled( utils::string_bool(cfg["fog"]) );
 	shroud_.set_enabled( utils::string_bool(cfg["shroud"]) );
