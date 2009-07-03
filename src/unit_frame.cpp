@@ -19,9 +19,9 @@
 #include "game_display.hpp"
 #include "halo.hpp"
 #include "sound.hpp"
+#include "unit_frame.hpp"
 
 #define UNIT_FRAME_H_PART2
-#include "unit_frame.hpp"
 
 
 progressive_string::progressive_string(const std::string & data,int duration) :
@@ -152,7 +152,6 @@ template class progressive_<int>;
 template class progressive_<double>;
 
 #undef UNIT_FRAME_H_PART2
-#include "unit_frame.hpp"
 
 frame_parameters::frame_parameters() :
 	image(),

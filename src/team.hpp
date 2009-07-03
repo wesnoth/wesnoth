@@ -20,6 +20,7 @@
 #include "map_location.hpp"
 #include "viewpoint.hpp"
 #include "savegame_config.hpp"
+#include "unit.hpp"
 
 class gamemap;
 struct time_of_day;
@@ -159,6 +160,7 @@ public:
 		{ countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
+	std::vector<unit>& recall_list() {return recall_list_;}
 	void set_current_player(const std::string player)
 		{ info_.current_player = player; }
 
@@ -336,6 +338,8 @@ private:
 
 	int countdown_time_;
 	int action_bonus_count_;
+
+	std::vector<unit> recall_list_;
 
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;

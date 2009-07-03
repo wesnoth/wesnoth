@@ -35,6 +35,7 @@
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
+#include "team.hpp"
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
@@ -888,6 +889,10 @@ SDL_Colour unit::xp_color() const
 	}
 	return(colour);
 }
+
+std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
+
+Uint32 unit::team_rgb() const { return(team::get_side_rgb(side())); }
 
 void unit::set_movement(int moves)
 {

@@ -36,6 +36,7 @@ class unit_type_data;
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "unit_types.hpp"
+#include "time_of_day.hpp"
 
 #include <deque>
 #include <sstream>

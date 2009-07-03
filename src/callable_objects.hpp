@@ -20,6 +20,7 @@
 #include "formula_callable.hpp"
 #include "map.hpp"
 #include "unit.hpp"
+#include "team.hpp"
 #include "foreach.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
