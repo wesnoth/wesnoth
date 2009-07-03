@@ -140,7 +140,7 @@ readonly_context_impl::~readonly_context_impl()
 		manager::remove_gamestate_observer(this);
 	}
 
-void readonly_context_impl::handle_generic_event(const std::string& event_name)	
+void readonly_context_impl::handle_generic_event(const std::string& /*event_name*/)
 	{
 		invalidate_move_maps();
 	}
