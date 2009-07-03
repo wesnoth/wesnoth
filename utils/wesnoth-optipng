@@ -35,7 +35,7 @@ total_original_size=0
 total_savings_size=0
 total_savings_filecount=0
 
-if [ -e "/proc/cpuinfo"] && [`grep processor /proc/cpuinfo | wc -l` -gt 1]; then
+if [ -e "/proc/cpuinfo" ] && [ `grep processor /proc/cpuinfo | wc -l` -gt 1 ]; then
         max_number_threads=`grep processor /proc/cpuinfo | wc -l`
 fi
 
