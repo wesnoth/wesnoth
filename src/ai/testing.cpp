@@ -48,12 +48,12 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();
 
-	LOG_AI_TESTING << msg <<                  side << ": " << _turn_number << std::endl;
-	LOG_AI_TESTING << msg << "_UNITS"      << side << ": " << _units << std::endl;
-	LOG_AI_TESTING << msg << "_UNITS_COST" << side << ": " << _units_cost << std::endl;
-	LOG_AI_TESTING << msg << "_GOLD"       << side << ": " << _gold << std::endl;
-	LOG_AI_TESTING << msg << "_VILLAGES"   << side << ": " << _villages << std::endl;
-	LOG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
+	DBG_AI_TESTING << msg <<                  side << ": " << _turn_number << std::endl;
+	DBG_AI_TESTING << msg << "_UNITS"      << side << ": " << _units << std::endl;
+	DBG_AI_TESTING << msg << "_UNITS_COST" << side << ": " << _units_cost << std::endl;
+	DBG_AI_TESTING << msg << "_GOLD"       << side << ": " << _gold << std::endl;
+	DBG_AI_TESTING << msg << "_VILLAGES"   << side << ": " << _villages << std::endl;
+	DBG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
 }
 
 void ai_testing::log_draw()
