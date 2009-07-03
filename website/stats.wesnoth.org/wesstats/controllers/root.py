@@ -26,6 +26,7 @@ from wesstats.controllers.error import ErrorController
 from wesstats.controllers.pieview import PieGraphController
 from wesstats.controllers.barview import BarGraphController
 from wesstats.controllers.lineview import LineGraphController
+from wesstats.controllers.killview import KillGraphController
 
 __all__ = ['RootController']
 
@@ -88,6 +89,8 @@ class RootController(BaseController):
 			view = PieGraphController(url)
 		elif type == "line":
 			view = LineGraphController(url)
+		elif type == "kill":
+			view = KillGraphController(url)
 		else:
 			view = NotFoundController(url)
 

@@ -117,8 +117,8 @@ class LineGraphController(BaseController):
 		log.debug("SQL query:")
 		log.debug(query)
 		results = helperlib.scaled_query(curs,query,100,evaluators.simple_eval)
-		log.debug("query result:")
-		log.debug(results)
+		#log.debug("query result:")
+		#log.debug(results)
 		data = LineGraphController.reformat_data(self,results)
 		#generate JS datafields here because genshi templating can't emit JS...
 		js_celldata = ""
