@@ -55,6 +55,8 @@ class PieGraphController(BaseController):
 		filters = ""
 		used_filters = helperlib.intersect(kw.keys(),available_filters)
 		ufilters_vals = dict()
+		startdate = ""
+		enddate = ""
 		for filter in used_filters:
 			kw[filter] = helperlib.listfix(kw[filter])
 			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
@@ -64,6 +66,8 @@ class PieGraphController(BaseController):
 			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
 			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+			startdate = kw['startdate']
+			enddate = kw['enddate']
 		#get columns and column transformations for this view
 		y_xforms = view_data[6].split(',')
 		y_data = view_data[2].split(',')
@@ -86,4 +90,4 @@ class PieGraphController(BaseController):
                         data += "data.setValue("+str(i)+",1,"+str(results[i][1])+");\n"
 		return dict(title=view_data[0],xlabel=view_data[3],ylabel=view_data[4],piedata=results,
 			data=data,filters=available_filters,used_filters=used_filters,
-			ufilters_vals=ufilters_vals,fdata=fdata)
+			ufilters_vals=ufilters_vals,fdata=fdata,startdate=startdate,enddate=enddate)
