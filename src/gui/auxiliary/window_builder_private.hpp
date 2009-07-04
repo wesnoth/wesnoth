@@ -74,29 +74,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_slider : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_slider();
-public:
-	tbuilder_slider(const config& cfg);
-
-	twidget* build () const;
-
-private:
-	unsigned best_slider_length_;
-	int minimum_value_;
-	int maximum_value_;
-	unsigned step_size_;
-	int value_;
-
-	t_string minimum_value_label_;
-	t_string maximum_value_label_;
-
-	std::vector<t_string> value_labels_;
-};
-
 struct tbuilder_scroll_label : public implementation::tbuilder_control
 {
 public:

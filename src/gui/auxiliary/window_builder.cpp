@@ -28,6 +28,7 @@
 #include "gui/auxiliary/window_builder/listbox.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
+#include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
@@ -502,62 +503,6 @@ twidget* tbuilder_scroll_label::build() const
 	return widget;
 }
 
-tbuilder_slider::tbuilder_slider(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	best_slider_length_(lexical_cast_default<unsigned>(cfg["best_slider_length"])),
-	minimum_value_(lexical_cast_default<int>(cfg["minimum_value"])),
-	maximum_value_(lexical_cast_default<int>(cfg["maximum_value"])),
-	step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
-	value_(lexical_cast_default<unsigned>(cfg["value"])),
-	minimum_value_label_(cfg["minimum_value_label"]),
-	maximum_value_label_(cfg["maximum_value_label"]),
-	value_labels_()
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 3_slider
- *
- * == Slider ==
- *
- * @start_table = config
- *     best_slider_length (unsigned = 0)
- *                                    The best length for the sliding part.
- *     minimum_value (int = 0)        The minimum value the slider can have.
- *     maximum_value (int = 0)        The maximum value the slider can have.
- *
- *     step_size (unsigned = 0)       The number of items the slider's value
- *                                    increases with one step.
- *     value (int = 0)                The value of the slider.
- *
- *     minimum_value_label (t_string = "")
- *                                    If the minimum value is chosen there
- *                                    might be the need for a special value (eg
- *                                    off). When this key has a value that value
- *                                    will be shown if the minimum is selected.
- *     maximum_value_label (t_string = "")
- *                                    If the maximum value is chosen there
- *                                    might be the need for a special value (eg
- *                                    unlimited)). When this key has a value
- *                                    that value will be shown if the maximum is
- *                                    selected.
- *     value_labels ([])              It might be the labels need to be shown
- *                                    are not a linear number sequence eg (0.5,
- *                                    1, 2, 4) in that case for all items this
- *                                    section can be filled with the values,
- *                                    which should be the same number of items
- *                                    as the items in the slider. NOTE if this
- *                                    option is used, 'minimum_value_label' and
- *                                    'maximum_value_label' are ignored.
- * @end_table
- */
-	const config &labels = cfg.child("value_labels");
-	if (!labels) return;
-
-	foreach (const config &label, labels.child_range("value")) {
-		value_labels_.push_back(label["label"]);
-	}
-}
-
 tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 	: implementation::tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
@@ -656,35 +601,6 @@ twidget* tbuilder_scrollbar_panel::build() const
 
 
 	return scrollbar_panel;
-}
-
-twidget* tbuilder_slider::build() const
-{
-	tslider* slider = new tslider();
-
-	init_control(slider);
-
-	slider->set_best_slider_length(best_slider_length_);
-	slider->set_maximum_value(maximum_value_);
-	slider->set_minimum_value(minimum_value_);
-	slider->set_step_size(step_size_);
-	slider->set_value(value_);
-
-	if(!value_labels_.empty()) {
-		VALIDATE(value_labels_.size() == slider->get_item_count(),
-			_("The number of value_labels and values don't match."));
-
-		slider->set_value_labels(value_labels_);
-
-	} else {
-		slider->set_minimum_value_label(minimum_value_label_);
-		slider->set_maximum_value_label(maximum_value_label_);
-	}
-
-	DBG_GUI_G << "Window builder: placed slider '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return slider;
 }
 
 twidget* tbuilder_toggle_button::build() const
