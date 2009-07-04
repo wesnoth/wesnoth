@@ -41,7 +41,8 @@ static map_location find_vacant(const gamemap& map,
 		const unit_map& units,
 		const map_location& loc, int depth,
 		VACANT_TILE_TYPE vacancy,
-		std::set<map_location>& touched)
+		std::set<map_location>& touched,
+		const unit* pass_check)
 	{
 		if(touched.count(loc))
 			return map_location();
@@ -57,11 +58,11 @@ static map_location find_vacant(const gamemap& map,
 			map_location adj[6];
 			get_adjacent_tiles(loc,adj);
 			for(int i = 0; i != 6; ++i) {
-				if(!map.on_board(adj[i]) || (vacancy == VACANT_CASTLE && !map.is_castle(adj[i])))
+				if(!map.on_board(adj[i]) || (vacancy == VACANT_CASTLE && !map.is_castle(adj[i])) || (pass_check && pass_check->movement_cost(map[adj[i]]) == unit_movement_type::UNREACHABLE))
 					continue;
 
 				const map_location res =
-					find_vacant(map, units, adj[i], depth - 1, vacancy, touched);
+					find_vacant(map, units, adj[i], depth - 1, vacancy, touched, pass_check);
 
 				if (map.on_board(res))
 					return res;
@@ -74,11 +75,12 @@ static map_location find_vacant(const gamemap& map,
 map_location find_vacant_tile(const gamemap& map,
 								   const unit_map& units,
 								   const map_location& loc,
-								   VACANT_TILE_TYPE vacancy)
+								   VACANT_TILE_TYPE vacancy,
+								   const unit* pass_check)
 {
 	for(int i = 1; i != 50; ++i) {
 		std::set<map_location> touch;
-		const map_location res = find_vacant(map,units,loc,i,vacancy,touch);
+		const map_location res = find_vacant(map,units,loc,i,vacancy,touch,pass_check);
 		if(map.on_board(res))
 			return res;
 	}

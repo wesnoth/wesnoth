@@ -62,7 +62,8 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 map_location find_vacant_tile(const gamemap& map,
                                    const unit_map& un,
                                    const map_location& loc,
-                                   VACANT_TILE_TYPE vacancy=VACANT_ANY);
+                                   VACANT_TILE_TYPE vacancy=VACANT_ANY,
+                                   const unit* pass_check=NULL);
 
 /** Function which determines if a given location is in an enemy zone of control. */
 bool enemy_zoc(gamemap const &map,

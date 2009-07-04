@@ -626,7 +626,10 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const map_location dst = cfg_to_loc(cfg);
 	if (dst == u->first || !rsrc.game_map->on_board(dst)) return;
 
-	const map_location vacant_dst = find_vacant_tile(*rsrc.game_map, *rsrc.units, dst);
+	const unit *pass_check = &u->second;
+	if (utils::string_bool(cfg["ignore_passability"]))
+		pass_check = NULL;
+	const map_location vacant_dst = find_vacant_tile(*rsrc.game_map, *rsrc.units, dst, VACANT_ANY, pass_check);
 	if (!rsrc.game_map->on_board(vacant_dst)) return;
 
 	const int side = u->second.side();
