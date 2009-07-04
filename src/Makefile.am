@@ -160,6 +160,7 @@ wesnoth_source = \
 	halo.cpp \
 	help.cpp \
 	intro.cpp \
+	lobby_data.cpp \
 	leader_list.cpp \
 	menu_events.cpp \
 	mouse_events.cpp \
