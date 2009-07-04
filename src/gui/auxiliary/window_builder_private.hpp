@@ -24,9 +24,6 @@
 #include "gui/auxiliary/window_builder.hpp"
 
 #include "config.hpp"
-#include "gui/auxiliary/window_builder/control.hpp"
-#include "gui/widgets/menubar.hpp"
-#include "gui/widgets/scrollbar_container.hpp"
 
 namespace gui2 {
 

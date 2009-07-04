@@ -39,27 +39,7 @@
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/horizontal_scrollbar.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/generator.hpp"
-#include "gui/widgets/minimap.hpp"
-#include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/password_box.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/scrollbar_panel.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/spacer.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
-
-// The widgets builders and helpers are partly in this namespace.
-using namespace gui2::implementation;
 
 namespace gui2 {
 
@@ -80,6 +60,9 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	if (const config &c = cfg.child(#name)) \
 		return new tbuilder_##name(c); \
 	} while (0)
+
+	// The widgets builders are mostly in this namespace.
+	using namespace gui2::implementation;
 
 	TRY(button);
 	TRY(horizontal_scrollbar);
@@ -196,8 +179,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	y(cfg["y"]),
 	width(cfg["width"]),
 	height(cfg["height"]),
-	vertical_placement(get_v_align(cfg["vertical_placement"])),
-	horizontal_placement(get_h_align(cfg["horizontal_placement"])),
+	vertical_placement(
+			implementation::get_v_align(cfg["vertical_placement"])),
+	horizontal_placement(
+			implementation::get_h_align(cfg["horizontal_placement"])),
 	maximum_width(lexical_cast_default<unsigned>(cfg["maximum_width"])),
 	maximum_height(lexical_cast_default<unsigned>(cfg["maximum_height"])),
 	easy_close(utils::string_bool(cfg["easy_close"])),
@@ -375,7 +360,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 		foreach (const config &c, row.child_range("column"))
 		{
-			flags.push_back(read_flags(c));
+			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(lexical_cast_default<unsigned>(c["border_size"]));
 			if(rows == 0) {
 				col_grow_factor.push_back(lexical_cast_default<unsigned>(c["grow_factor"]));
@@ -402,7 +387,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	tbuilder_widget(cfg),
-	flags(read_flags(cfg)),
+	flags(implementation::read_flags(cfg)),
 	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
 	widget(create_builder_widget(cfg))
 {
