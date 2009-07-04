@@ -33,6 +33,7 @@
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
+#include "gui/auxiliary/window_builder/toggle_button.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
@@ -483,21 +484,6 @@ twidget* tbuilder_multi_page::build() const
 	multi_page->finalize(data);
 
 	return multi_page;
-}
-
-twidget* tbuilder_toggle_button::build() const
-{
-	ttoggle_button *toggle_button = new ttoggle_button();
-
-	init_control(toggle_button);
-
-	toggle_button->set_icon_name(icon_name_);
-	toggle_button->set_retval(get_retval(retval_id_, retval_, id));
-
-	DBG_GUI_G << "Window builder: placed toggle button '"
-			<< id << "' with defintion '" << definition << "'.\n";
-
-	return toggle_button;
 }
 
 twidget* tbuilder_vertical_scrollbar::build() const

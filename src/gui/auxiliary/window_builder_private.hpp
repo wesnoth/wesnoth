@@ -74,41 +74,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_toggle_button : public implementation::tbuilder_control
-{
-private:
-	tbuilder_toggle_button();
-
-public:
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 2_toggle_button
- *
- * == Toggle button ==
- *
- * @start_table = config
- *     icon (f_string = "")            The name of the icon file to show.
- *     return_value_id (string = "")   The return value id, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- *     return_value (int = 0)          The return value, see
- *                                     [[GUIToolkitWML#Button]] for more info.
- * @end_table
- */
-	tbuilder_toggle_button(const config& cfg) :
-		implementation::tbuilder_control(cfg),
-		icon_name_(cfg["icon"]),
-		retval_id_(cfg["return_value_id"]),
-		retval_(lexical_cast_default<int>(cfg["return_value"]))
-	{}
-
-	twidget* build () const;
-
-private:
-	std::string icon_name_;
-	std::string retval_id_;
-	int retval_;
-};
-
 struct tbuilder_vertical_scrollbar : public implementation::tbuilder_control
 {
 private:
