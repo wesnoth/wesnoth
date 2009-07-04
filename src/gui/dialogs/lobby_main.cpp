@@ -55,7 +55,7 @@ void tlobby_main::send_chat_message(const std::string& message, bool /*allies_on
 	network::send_data(data, 0, true);
 }
 
-void tlobby_main::add_chat_message(const time_t& time, const std::string& speaker,
+void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& speaker,
 	int /*side*/, const std::string& message, events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	//chat_.add_message(time, speaker, message);
@@ -232,7 +232,7 @@ void tlobby_main::observe_button_callback(gui2::twindow &/*window*/)
 	LOG_NW << "observe_button_callback\n";
 }
 
-void tlobby_main::send_message_button_callback(gui2::twindow &window)
+void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 {
 	const std::string& input = chat_input_->get_value();
 	if (input.empty()) return;
