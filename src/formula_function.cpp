@@ -265,7 +265,7 @@ private:
 class tolist_function : public function_expression {
 public:
 	explicit tolist_function(const args_list& args)
-	     : function_expression("values", args, 1, 1)
+	     : function_expression("tolist", args, 1, 1)
 	{}
 
 private:
@@ -286,7 +286,7 @@ private:
 class tomap_function : public function_expression {
 public:
 	explicit tomap_function(const args_list& args)
-	     : function_expression("values", args, 1, 2)
+	     : function_expression("tomap", args, 1, 2)
 	{}
 
 private:
