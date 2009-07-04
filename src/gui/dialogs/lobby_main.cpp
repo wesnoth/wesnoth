@@ -21,9 +21,11 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
+
 #include "foreach.hpp"
 #include "log.hpp"
 #include "network.hpp"
+#include "game_preferences.hpp"
 
 #include <boost/bind.hpp>
 
@@ -41,9 +43,39 @@ static lg::log_domain log_config("config");
 
 namespace gui2 {
 
+
+void tlobby_main::send_chat_message(const std::string& message, bool /*allies_only*/)
+{
+	config data, msg;
+	msg["message"] = message;
+	msg["sender"] = preferences::login();
+	data.add_child("message", msg);
+
+	add_chat_message(time(NULL), preferences::login(), 0, message);	//local echo
+	network::send_data(data, 0, true);
+}
+
+void tlobby_main::add_chat_message(const time_t& time, const std::string& speaker,
+	int /*side*/, const std::string& message, events::chat_handler::MESSAGE_TYPE /*type*/)
+{
+	//chat_.add_message(time, speaker, message);
+	//chat_.update_textbox(chat_textbox_);
+	std::stringstream ss;
+	ss << "<" << speaker << "> ";
+	ss << message;
+	LOG_NW << "Message: " << ss.str() << std::endl;
+	chat_log_->set_label(chat_log_->label() + "\n" + ss.str());
+	window_->invalidate_layout();
+}
+
 tlobby_main::tlobby_main()
 : games_(), games_initialized_(false)
 , gamelistbox_(NULL), chat_log_(NULL)
+, window_(NULL), chat_input_(NULL)
+{
+}
+
+tlobby_main::~tlobby_main()
 {
 }
 
@@ -83,6 +115,7 @@ void tlobby_main::update_gamelist(const config& cfg)
 		observe_button->set_callback_mouse_left_click(
 			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
 	}
+	window_->invalidate_layout();
 }
 
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
@@ -90,10 +123,24 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	gamelistbox_ = dynamic_cast<tlistbox*>(window.find_widget("game_list", false));
 	VALIDATE(gamelistbox_, missing_widget("game_list"));
 
-	chat_log_ = dynamic_cast<ttext_box*>(window.find_widget("chat_log", false));
+	chat_log_ = dynamic_cast<tlabel*>(window.find_widget("chat_log", false));
 	VALIDATE(chat_log_, missing_widget("chat_log"));
 
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
+	window_ = &window;
+
+	tbutton* send_message = dynamic_cast<tbutton*>(window.find_widget("send_message", false));
+	VALIDATE(send_message, missing_widget("send_message"));
+	send_message->set_callback_mouse_left_click(dialog_callback<tlobby_main,
+		&tlobby_main::send_message_button_callback>);
+
+	chat_input_ = dynamic_cast<ttext_box*>(window.find_widget("chat_input", false));
+	VALIDATE(chat_input_, missing_widget("chat_input"));
+}
+
+void tlobby_main::post_show(twindow& /*window*/)
+{
+	window_ = NULL;
 }
 
 void tlobby_main::network_handler()
@@ -133,18 +180,13 @@ void tlobby_main::process_network_data(const config &data)
 
 void tlobby_main::process_message(const config &data, bool /*whisper / *= false*/)
 {
-	const std::string& sender = data["sender"];
+	std::string sender = data["sender"];
 	const std::string& message = data["message"];
 	const std::string& room = data["room"];
-	std::stringstream ss;
-	ss << "<";
 	if (!room.empty()) {
-		ss << room << ": ";
+		sender = room + ": " + sender;
 	}
-	ss << sender << "> ";
-	ss << message;
-	LOG_NW << "Message: " << ss.str() << std::endl;
-	//chat_log_->set_value(chat_log_->text() + "\n" + ss.str());
+	add_chat_message(time(0), sender, 0, message);
 }
 
 void tlobby_main::process_gamelist(const config &data)
@@ -188,6 +230,14 @@ void tlobby_main::join_button_callback(gui2::twindow &/*window*/)
 void tlobby_main::observe_button_callback(gui2::twindow &/*window*/)
 {
 	LOG_NW << "observe_button_callback\n";
+}
+
+void tlobby_main::send_message_button_callback(gui2::twindow &window)
+{
+	const std::string& input = chat_input_->get_value();
+	if (input.empty()) return;
+	chat_handler::do_speak(input);
+	chat_input_->set_value("");
 }
 
 } // namespace gui2

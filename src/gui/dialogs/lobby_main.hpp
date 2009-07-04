@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "config.hpp"
+#include "chat_events.hpp"
 
 class config;
 
@@ -25,13 +26,21 @@ namespace gui2 {
 class tlabel;
 class tlistbox;
 class ttext_box;
+class twindow;
 
-class tlobby_main : public tdialog
+class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
 	tlobby_main();
 
+	~tlobby_main();
+
 	void update_gamelist(const config& cfg);
+protected:
+	void send_chat_message(const std::string& message, bool /*allies_only*/);
+	void add_chat_message(const time_t& time, const std::string& speaker,
+		int side, const std::string& message,
+		events::chat_handler::MESSAGE_TYPE type = events::chat_handler::MESSAGE_PRIVATE);
 private:
 	/**
 	 * Network polling callback
@@ -56,6 +65,8 @@ private:
 
 	void observe_button_callback(twindow& window);
 
+	void send_message_button_callback(twindow& window);
+
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -63,13 +74,20 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
+
 	config games_;
 
 	bool games_initialized_;
 
 	tlistbox* gamelistbox_;
 
-	ttext_box* chat_log_;
+	tlabel* chat_log_;
+
+	ttext_box* chat_input_;
+
+	twindow* window_;
 };
 
 } // namespace gui2
