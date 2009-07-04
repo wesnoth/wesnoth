@@ -16,11 +16,13 @@
 #define GUI_DIALOGS_LOBBY_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "config.hpp"
 
 class config;
 
 namespace gui2 {
 
+class tlabel;
 class tlistbox;
 class ttext_box;
 
@@ -50,13 +52,22 @@ private:
 
 	void process_room_query_response(const config& data);
 
+	void join_button_callback(twindow& window);
+
+	void observe_button_callback(twindow& window);
+
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	tlistbox* gamelist_;
+	config games_;
+
+	bool games_initialized_;
+
+	tlistbox* gamelistbox_;
 
 	ttext_box* chat_log_;
 };
