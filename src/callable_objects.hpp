@@ -72,9 +72,10 @@ public:
 
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-private:
+
         int do_compare(const formula_callable* callable) const;
-        
+	int get_priority() const;
+private:
 	const location loc_;
 	const terrain_type &t_;
 };
@@ -107,7 +108,7 @@ class location_callable : public game_logic::formula_callable {
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	int do_compare(const game_logic::formula_callable* callable) const;
-
+	int get_priority() const;
 public:
 	explicit location_callable(const map_location& loc) : loc_(loc)
 	{}
@@ -135,7 +136,8 @@ class move_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
+	int get_priority() const;
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -161,7 +163,8 @@ class move_partial_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
+	int get_priority() const;
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -199,7 +202,8 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
+	int get_priority() const;
 private:
 	const attack_type att_;
 };
@@ -216,7 +220,8 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
+	int get_priority() const;
 private:
 	const location& loc_;
 	const unit& u_;
@@ -232,7 +237,8 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
+	int get_priority() const;
 private:
 	const unit_type& u_;
 };

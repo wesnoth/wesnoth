@@ -79,7 +79,31 @@ protected:
 
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
+		if( get_priority() < callable->get_priority() ) 
+			return -1;
+
+		if( get_priority() > callable->get_priority() )
+			return 1;
+
 		return this < callable ? -1 : (this == callable ? 0 : 1);
+	}
+
+	/*
+	priority of objects that are derived from this class, used in do_compare
+	actual priorities:
+	formula_callable 0
+	terrain_callable 1
+	location_callable 2
+	unit_type_callable 3
+	unit_callable 4
+	attack_type_callable 5
+	move_partial_callable 6
+	move_callable 7
+	attack_callable 8
+	So location_callable < unit_callable etc
+	*/
+	virtual int get_priority() const {
+		return 0;
 	}
 
         //note: this function should NOT overwrite str, but append text to it!

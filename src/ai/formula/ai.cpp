@@ -937,6 +937,9 @@ public:
 		return this->defender_weapon() - other_def_weapon;
 	}
 
+	int get_priority() const {
+		return 8;
+	}	
 };
 
 
