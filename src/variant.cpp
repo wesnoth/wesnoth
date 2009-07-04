@@ -643,6 +643,78 @@ bool variant::operator>(const variant& v) const
 	return !(*this <= v);
 }
 
+variant variant::list_elements_add(const variant& v) const
+{
+	must_be(TYPE_LIST);
+	v.must_be(TYPE_LIST);
+
+	if( num_elements() != v.num_elements() )
+		throw type_error("Operator '.+' requires two lists of the same length");	
+
+	std::vector< variant > res;
+	res.reserve(num_elements());
+
+	for(size_t i = 0; i < num_elements(); ++i) {
+		res.push_back( (*this)[i] + v[i] );
+	}
+
+	return variant( &res );
+}
+
+variant variant::list_elements_sub(const variant& v) const
+{
+	must_be(TYPE_LIST);
+	v.must_be(TYPE_LIST);
+
+	if( num_elements() != v.num_elements() )
+		throw type_error("Operator '.-' requires two lists of the same length");	
+
+	std::vector< variant > res;
+	res.reserve(num_elements());
+
+	for(size_t i = 0; i < num_elements(); ++i) {
+		res.push_back( (*this)[i] - v[i] );
+	}
+
+	return variant( &res );
+}
+
+variant variant::list_elements_mul(const variant& v) const
+{
+	must_be(TYPE_LIST);
+	v.must_be(TYPE_LIST);
+
+	if( num_elements() != v.num_elements() )
+		throw type_error("Operator '.*' requires two lists of the same length");	
+
+	std::vector< variant > res;
+	res.reserve(num_elements());
+
+	for(size_t i = 0; i < num_elements(); ++i) {
+		res.push_back( (*this)[i] * v[i] );
+	}
+
+	return variant( &res );
+}
+
+variant variant::list_elements_div(const variant& v) const
+{
+	must_be(TYPE_LIST);
+	v.must_be(TYPE_LIST);
+
+	if( num_elements() != v.num_elements() )
+		throw type_error("Operator './' requires two lists of the same length");	
+
+	std::vector< variant > res;
+	res.reserve(num_elements());
+
+	for(size_t i = 0; i < num_elements(); ++i) {
+		res.push_back( (*this)[i] / v[i] );
+	}
+
+	return variant( &res );
+}
+
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {

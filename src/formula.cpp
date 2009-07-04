@@ -276,6 +276,14 @@ public:
 			op_ = AND;
 		} else if(op == "or") {
 			op_ = OR;
+		} else if(op == ".+") {
+			op_ = ADDL;
+		} else if(op == ".-") {
+			op_ = SUBL;
+		} else if(op == ".*") {
+			op_ = MULL;
+		} else if(op == "./") {
+			op_ = DIVL;
 		}
 	}
 
@@ -298,6 +306,14 @@ private:
 			return left / right;
 		case POW:
 			return left ^ right;
+		case ADDL:
+			return left.list_elements_add(right);
+		case SUBL:
+			return left.list_elements_sub(right);
+		case MULL:
+			return left.list_elements_mul(right);
+		case DIVL:
+			return left.list_elements_div(right);
 		case EQ:
 			return left == right ? variant(1) : variant(0);
 		case NEQ:
@@ -327,7 +343,7 @@ private:
 	}
 
 	enum OP { AND, OR, NEQ, LTE, GTE, GT='>', LT='<', EQ='=',
-	          ADD='+', SUB='-', MUL='*', DIV='/', DICE='d', POW='^', MOD='%' };
+	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;
 	expression_ptr left_, right_;

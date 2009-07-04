@@ -105,6 +105,11 @@ public:
 	bool operator<=(const variant&) const;
 	bool operator>=(const variant&) const;
 
+	variant list_elements_add(const variant& v) const;
+	variant list_elements_sub(const variant& v) const;
+	variant list_elements_mul(const variant& v) const;
+	variant list_elements_div(const variant& v) const;
+
 	variant get_keys() const;
 	variant get_values() const;
 
