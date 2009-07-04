@@ -25,6 +25,7 @@
 #include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
+#include "gui/auxiliary/window_builder/listbox.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
@@ -400,128 +401,6 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	widget(create_builder_widget(cfg))
 {
 }
-
-tbuilder_listbox::tbuilder_listbox(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
-	horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"])),
-	header(0),
-	footer(0),
-	list_builder(0),
-	list_data()
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_listbox
- *
- * == Listbox ==
- *
- * Instance of a listbox.
- *
- * List with the listbox specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     auto.
- *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     initial_auto.
- *
- *     header (grid = [])              Defines the grid for the optional
- *                                     header. (This grid will automatically
- *                                     get the id _header_grid.)
- *     footer (grid = [])              Defines the grid for the optional
- *                                     footer. (This grid will automatically
- *                                     get the id _footer_grid.)
- *
- *     list_definition (section)       This defines how a listbox item
- *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
- *
- *     list_data(section = [])         A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'.
- * @end_table
- *
- *
- * Inside the list section there are only the following widgets allowed
- * * grid (to nest)
- * * selectable widgets which are
- * ** toggle_button
- * ** toggle_panel
- *
- */
-
-	if (const config &h = cfg.child("header"))
-		header = new tbuilder_grid(h);
-
-	if (const config &f = cfg.child("footer"))
-		footer = new tbuilder_grid(f);
-
-	const config &l = cfg.child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-	list_builder = new tbuilder_grid(l);
-	assert(list_builder);
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
-
-	const config &data = cfg.child("list_data");
-	if (!data) return;
-
-	foreach (const config &row, data.child_range("row"))
-	{
-		unsigned col = 0;
-
-		foreach (const config &c, row.child_range("column"))
-		{
-			list_data.push_back(string_map());
-			foreach (const config::attribute &i, c.attribute_range()) {
-				list_data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == list_builder->cols, _("'list_data' must have "
-			"the same number of columns as the 'list_definition'."));
-	}
-}
-
-twidget* tbuilder_listbox::build() const
-{
-	tlistbox *listbox = new tlistbox(
-			true, true, tgenerator_::vertical_list, true);
-
-	init_control(listbox);
-
-	listbox->set_list_builder(list_builder); // FIXME in finalize???
-
-	listbox->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	listbox->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tlistbox_definition::tresolution>(listbox->config());
-	assert(conf);
-
-	listbox->init_grid(conf->grid);
-
-	listbox->finalize(header, footer, list_data);
-
-	return listbox;
-}
-
 
 tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
 	implementation::tbuilder_control(cfg),

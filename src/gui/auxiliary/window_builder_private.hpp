@@ -52,35 +52,6 @@ struct tbuilder_gridcell : public tbuilder_widget
 	twidget* build () const { return NULL; }
 };
 
-struct tbuilder_listbox : public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_listbox();
-public:
-	tbuilder_listbox(const config& cfg);
-
-	twidget* build () const;
-
-	tscrollbar_container::tscrollbar_mode
-			vertical_scrollbar_mode,
-			horizontal_scrollbar_mode;
-
-	tbuilder_grid_ptr header;
-	tbuilder_grid_ptr footer;
-
-	tbuilder_grid_ptr list_builder;
-
-	/**
-	 * Listbox data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<string_map>list_data;
-};
-
-
 struct tbuilder_multi_page
 	: public implementation::tbuilder_control
 {

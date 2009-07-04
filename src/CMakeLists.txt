@@ -270,6 +270,7 @@ SET(wesnoth-main_SRC
     gui/auxiliary/window_builder/horizontal_scrollbar.cpp
     gui/auxiliary/window_builder/image.cpp
     gui/auxiliary/window_builder/label.cpp
+    gui/auxiliary/window_builder/listbox.cpp
     gui/auxiliary/window_builder/minimap.cpp
     gui/auxiliary/window_builder/menubar.cpp
     gui/auxiliary/window_builder/spacer.cpp

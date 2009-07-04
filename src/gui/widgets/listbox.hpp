@@ -21,11 +21,15 @@
 
 namespace gui2 {
 
+namespace implementation {
+	struct tbuilder_listbox;
+}
+
 /** The listbox class. */
 class tlistbox
 		: public tscrollbar_container
 {
-	friend struct tbuilder_listbox;
+	friend struct implementation::tbuilder_listbox;
 	friend class tdebug_layout_graph;
 public:
 	/**
