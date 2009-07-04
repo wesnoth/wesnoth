@@ -19,6 +19,10 @@
 
 namespace gui2 {
 
+namespace implementation {
+	struct tbuilder_scrollbar_panel;
+}
+
 /**
  * Visible container to hold multiple widgets.
  *
@@ -28,8 +32,7 @@ namespace gui2 {
 class tscrollbar_panel
 	: public tscrollbar_container
 {
-
-	friend struct tbuilder_scrollbar_panel;
+	friend struct implementation::tbuilder_scrollbar_panel;
 public:
 
 	/**

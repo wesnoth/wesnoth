@@ -74,24 +74,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_scrollbar_panel
-	: public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_scrollbar_panel();
-public:
-	tbuilder_scrollbar_panel(const config& cfg);
-
-	twidget* build () const;
-
-	tscrollbar_container::tscrollbar_mode
-			vertical_scrollbar_mode,
-			horizontal_scrollbar_mode;
-
-	tbuilder_grid_ptr grid;
-};
-
 struct tbuilder_toggle_button : public implementation::tbuilder_control
 {
 private:

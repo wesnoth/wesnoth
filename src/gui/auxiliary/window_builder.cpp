@@ -30,6 +30,7 @@
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
+#include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
@@ -482,106 +483,6 @@ twidget* tbuilder_multi_page::build() const
 	multi_page->finalize(data);
 
 	return multi_page;
-}
-
-tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
-	: implementation::tbuilder_control(cfg)
-	, vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, grid(0)
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_scrollbar_panel
- *
- * == Scrollbar panel ==
- *
- * Instance of a scrollbar_panel.
- *
- * List with the scrollbar_panel specific variables:
- * @start_table = config
- *     vertical_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     auto.
- *     horizontal_scrollbar_mode (scrollbar_mode = auto | initial_auto)
- *                                     Determines whether or not to show the
- *                                     scrollbar. The default of initial_auto
- *                                     is used when --new-widgets is used.
- *                                     In the future the default will be
- *                                     initial_auto.
- *
- *     definition (section)            This defines how a scrollbar_panel item
- *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
- *
- * @end_table
- *
- */
-
-	const config &definition = cfg.child("definition");
-
-	VALIDATE(definition, _("No list defined."));
-	grid = new tbuilder_grid(definition);
-	assert(grid);
-}
-
-twidget* tbuilder_scrollbar_panel::build() const
-{
-	tscrollbar_panel *scrollbar_panel = new tscrollbar_panel();
-
-	init_control(scrollbar_panel);
-
-	scrollbar_panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	scrollbar_panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	boost::intrusive_ptr<
-			const tscrollbar_panel_definition::tresolution> conf =
-				boost::dynamic_pointer_cast
-					<const tscrollbar_panel_definition::tresolution>
-						(scrollbar_panel->config());
-	assert(conf);
-
-
-	scrollbar_panel->init_grid(conf->grid);
-	scrollbar_panel->finalize_setup();
-
-	/*** Fill the content grid. ***/
-	tgrid* content_grid = scrollbar_panel->content_grid();
-	assert(content_grid);
-
-	const unsigned rows = grid->rows;
-	const unsigned cols = grid->cols;
-
-	content_grid->set_rows_cols(rows, cols);
-
-	for(unsigned x = 0; x < rows; ++x) {
-		content_grid->set_row_grow_factor(x, grid->row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
-
-			if(x == 0) {
-				content_grid->set_col_grow_factor(y
-						, grid->col_grow_factor[y]);
-			}
-
-			twidget* widget = grid->widgets[x * cols + y]->build();
-			content_grid->set_child(widget
-					, x
-					, y
-					, grid->flags[x * cols + y]
-					, grid->border_size[x * cols + y]);
-		}
-	}
-
-
-	return scrollbar_panel;
 }
 
 twidget* tbuilder_toggle_button::build() const
