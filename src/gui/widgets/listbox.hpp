@@ -99,6 +99,15 @@ public:
 	const tgrid* get_row_grid(const unsigned row) const;
 
 	/**
+	 * The possibly-giving-problems nonconst version of get_row_grid
+	 *
+	 * @param row                 The row to get the grid from, the caller has
+	 *                            to make sure the row is a valid row.
+	 * @returns                   The grid of the wanted row.
+	 */
+	tgrid* get_row_grid(const unsigned row);
+
+	/**
 	 * Selectes a row.
 	 *
 	 * @param row                 The row to select.

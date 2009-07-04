@@ -112,6 +112,12 @@ const tgrid* tlistbox::get_row_grid(const unsigned row) const
 	return &generator_->get_item(row);
 }
 
+tgrid* tlistbox::get_row_grid(const unsigned row)
+{
+	assert(generator_);
+	return &generator_->get_item(row);
+}
+
 bool tlistbox::select_row(const unsigned row, const bool select)
 {
 	assert(generator_);
