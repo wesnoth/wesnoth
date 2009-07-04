@@ -22,6 +22,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/auxiliary/window_builder/horizontal_scrollbar.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
@@ -390,20 +391,6 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 	DBG_GUI_P << "Window builder: grid has "
 		<< rows << " rows and " << cols << " columns.\n";
-}
-
-twidget* tbuilder_horizontal_scrollbar::build() const
-{
-	thorizontal_scrollbar *horizontal_scrollbar = new thorizontal_scrollbar();
-
-	init_control(horizontal_scrollbar);
-
-	DBG_GUI_G << "Window builder:"
-		<< " placed horizontal scrollbar '" << id
-		<< "' with defintion '" << definition
-		<< "'.\n";
-
-	return horizontal_scrollbar;
 }
 
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :

@@ -52,28 +52,6 @@ struct tbuilder_gridcell : public tbuilder_widget
 	twidget* build () const { return NULL; }
 };
 
-struct tbuilder_horizontal_scrollbar : public implementation::tbuilder_control
-{
-private:
-	tbuilder_horizontal_scrollbar();
-
-public:
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 2_horizontal_scrollbar
- *
- * == Horizontal scrollbar ==
- *
- * A horizontal scrollbar has no special fields.
- *
- */
-	tbuilder_horizontal_scrollbar(const config& cfg) :
-		implementation::tbuilder_control(cfg)
-	{}
-
-	twidget* build () const;
-};
-
 struct tbuilder_listbox : public implementation::tbuilder_control
 {
 

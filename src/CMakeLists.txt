@@ -267,6 +267,7 @@ SET(wesnoth-main_SRC
     gui/auxiliary/window_builder/button.cpp
     gui/auxiliary/window_builder/control.cpp
     gui/auxiliary/window_builder/helper.cpp
+    gui/auxiliary/window_builder/horizontal_scrollbar.cpp
     gui/auxiliary/window_builder/image.cpp
     gui/auxiliary/window_builder/label.cpp
     gui/auxiliary/window_builder/minimap.cpp
