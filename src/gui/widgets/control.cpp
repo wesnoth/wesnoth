@@ -288,12 +288,10 @@ int tcontrol::get_text_maximum_height() const
 
 void tcontrol::impl_draw_background(surface& frame_buffer)
 {
-#if 0
-	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
-		<< " id " << id()
-		<< " dirty " << get_dirty()
-		<< ".\n";
-#endif
+	DBG_GUI_D << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
+			<< " id " << id()
+			<< " size " << get_rect()
+			<< ".\n";
 
 	canvas(get_state()).blit(frame_buffer, get_rect());
 }

@@ -16,7 +16,7 @@
 
 #include "gui/widgets/minimap.hpp"
 
-#include "log.hpp"
+#include "gui/auxiliary/log.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "../../minimap.hpp"
@@ -40,6 +40,11 @@ void tminimap::set_borders(const unsigned left,
 void tminimap::impl_draw_background(surface& frame_buffer)
 {
 	assert(terrain_);
+
+	DBG_GUI_D << "tminimap " << __func__ << ": "
+			<< " id " << id()
+			<< " size " << get_rect()
+			<< ".\n";
 
 	if(map_data_.empty()) {
 		return;

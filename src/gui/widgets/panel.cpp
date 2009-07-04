@@ -16,6 +16,7 @@
 
 #include "gui/widgets/panel.hpp"
 
+#include "gui/auxiliary/log.hpp"
 
 namespace gui2 {
 
@@ -36,6 +37,11 @@ SDL_Rect tpanel::get_client_rect() const
 
 void tpanel::impl_draw_background(surface& frame_buffer)
 {
+	DBG_GUI_D << "tpanel " << __func__ << ": "
+			<< " id " << id()
+			<< " size " << get_rect()
+			<< ".\n";
+
 	canvas(0).blit(frame_buffer, get_rect());
 }
 
