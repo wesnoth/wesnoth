@@ -22,6 +22,10 @@ namespace gui2 {
 class tscrollbar_;
 class tspacer;
 
+namespace implementation {
+	struct tbuilder_scroll_label;
+}
+
 /**
  * Base class for creating containers with one or two scrollbar(s).
  *
@@ -35,7 +39,7 @@ class tscrollbar_container
 {
 	friend class tdebug_layout_graph;
 
-	friend struct tbuilder_scroll_label;
+	friend struct implementation::tbuilder_scroll_label;
 	friend struct tbuilder_scrollbar_panel;
 	friend class tlistbox;
 	friend struct tscrollbar_container_implementation;

@@ -29,6 +29,7 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
+#include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
@@ -481,26 +482,6 @@ twidget* tbuilder_multi_page::build() const
 	multi_page->finalize(data);
 
 	return multi_page;
-}
-
-twidget* tbuilder_scroll_label::build() const
-{
-	tscroll_label* widget = new tscroll_label();
-
-	init_control(widget);
-
-	boost::intrusive_ptr<const tscroll_label_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tscroll_label_definition::tresolution>(widget->config());
-	assert(conf);
-
-	widget->init_grid(conf->grid);
-	widget->finalize_setup();
-
-	DBG_GUI_G << "Window builder: placed scroll label '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
-	return widget;
 }
 
 tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)

@@ -74,37 +74,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_scroll_label : public implementation::tbuilder_control
-{
-public:
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_scroll_label
- *
- * == Scroll label ==
- *
- * A scroll label has no special fields.
- *
- * @start_table = config
- *     auto_hide_scrollbar (bool = true)
- *                                     Automatically hide the scrollbar when the
- *                                     text can be shown without the scrollbar.
- * @end_table
- */
-	tbuilder_scroll_label(const config& cfg)
-		: implementation::tbuilder_control(cfg)
-		, auto_hide_scrollbar_(
-			utils::string_bool(cfg["auto_hide_scrollbar"], true))
-	{
-	}
-
-	twidget* build () const;
-
-private:
-
-	bool auto_hide_scrollbar_;
-};
-
 struct tbuilder_scrollbar_panel
 	: public implementation::tbuilder_control
 {

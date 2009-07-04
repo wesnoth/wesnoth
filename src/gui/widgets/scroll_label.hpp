@@ -22,6 +22,10 @@ namespace gui2 {
 class tlabel;
 class tspacer;
 
+namespace implementation {
+	struct tbuilder_scroll_label;
+}
+
 /**
  * Label showing a text.
  *
@@ -31,7 +35,7 @@ class tspacer;
  */
 class tscroll_label : public tscrollbar_container
 {
-	friend struct tbuilder_scroll_label;
+	friend struct implementation::tbuilder_scroll_label;
 public:
 
 	tscroll_label();
