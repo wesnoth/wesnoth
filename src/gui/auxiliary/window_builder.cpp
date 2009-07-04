@@ -37,6 +37,7 @@
 #include "gui/auxiliary/window_builder/panel.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
+#include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
@@ -484,20 +485,6 @@ twidget* tbuilder_multi_page::build() const
 	multi_page->finalize(data);
 
 	return multi_page;
-}
-
-twidget* tbuilder_vertical_scrollbar::build() const
-{
-	tvertical_scrollbar *vertical_scrollbar = new tvertical_scrollbar();
-
-	init_control(vertical_scrollbar);
-
-	DBG_GUI_G << "Window builder:"
-		<< " placed vertical scrollbar '" << id
-		<< "' with defintion '" << definition
-		<< "'.\n";
-
-	return vertical_scrollbar;
 }
 
 twidget* tbuilder_grid::build() const

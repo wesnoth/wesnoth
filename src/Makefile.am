@@ -104,6 +104,7 @@ wesnoth_source = \
 	gui/auxiliary/window_builder/spacer.cpp \
 	gui/auxiliary/window_builder/text_box.cpp \
 	gui/auxiliary/window_builder/toggle_button.cpp \
+	gui/auxiliary/window_builder/vertical_scrollbar.cpp \
 	gui/auxiliary/window_builder/panel.cpp \
 	gui/auxiliary/window_builder/password_box.cpp \
 	gui/auxiliary/window_builder/toggle_panel.cpp \

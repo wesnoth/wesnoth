@@ -74,28 +74,6 @@ public:
 	std::vector<string_map> data;
 };
 
-struct tbuilder_vertical_scrollbar : public implementation::tbuilder_control
-{
-private:
-	tbuilder_vertical_scrollbar();
-
-public:
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_vertical_scrollbar
- *
- * == Vertical scrollbar ==
- *
- * A vertical scrollbar has no special fields.
- *
- */
-	tbuilder_vertical_scrollbar(const config& cfg) :
-		implementation::tbuilder_control(cfg)
-	{}
-
-	twidget* build () const;
-};
-
 } // namespace gui2
 
 #endif
