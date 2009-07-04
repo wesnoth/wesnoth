@@ -71,7 +71,7 @@ void tlobby_main::add_chat_message(const time_t& time, const std::string& speake
 tlobby_main::tlobby_main()
 : games_(), games_initialized_(false)
 , gamelistbox_(NULL), chat_log_(NULL)
-, window_(NULL), chat_input_(NULL)
+, chat_input_(NULL), window_(NULL)
 {
 }
 
