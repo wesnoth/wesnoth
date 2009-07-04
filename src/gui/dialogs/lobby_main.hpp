@@ -19,7 +19,9 @@
 #include "config.hpp"
 #include "chat_events.hpp"
 
-class config;
+#include "boost/scoped_ptr.hpp"
+
+class lobby_info;
 
 namespace gui2 {
 
@@ -31,11 +33,11 @@ class twindow;
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main();
+	tlobby_main(const config& game_config);
 
 	~tlobby_main();
 
-	void update_gamelist(const config& cfg);
+	void update_gamelist();
 protected:
 	void send_chat_message(const std::string& message, bool /*allies_only*/);
 	void add_chat_message(const time_t& time, const std::string& speaker,
@@ -77,9 +79,7 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	config games_;
-
-	bool games_initialized_;
+	const config& game_config_;
 
 	tlistbox* gamelistbox_;
 
@@ -88,6 +88,8 @@ private:
 	ttext_box* chat_input_;
 
 	twindow* window_;
+
+	boost::scoped_ptr<lobby_info> lobby_info_;
 };
 
 } // namespace gui2

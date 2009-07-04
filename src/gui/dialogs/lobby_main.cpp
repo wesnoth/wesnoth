@@ -23,6 +23,7 @@
 #include "gui/widgets/text_box.hpp"
 
 #include "foreach.hpp"
+#include "lobby_data.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "game_preferences.hpp"
@@ -68,10 +69,11 @@ void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& sp
 	window_->invalidate_layout();
 }
 
-tlobby_main::tlobby_main()
-: games_(), games_initialized_(false)
+tlobby_main::tlobby_main(const config& game_config)
+: game_config_(game_config)
 , gamelistbox_(NULL), chat_log_(NULL)
 , chat_input_(NULL), window_(NULL)
+, lobby_info_(new lobby_info(game_config))
 {
 }
 
@@ -84,22 +86,18 @@ twindow* tlobby_main::build_window(CVideo& video)
 	return build(video, get_id(LOBBY_MAIN));
 }
 
-void tlobby_main::update_gamelist(const config& cfg)
+void tlobby_main::update_gamelist()
 {
-	foreach (const config &game, cfg.child("gamelist").child_range("game"))
+	foreach (const game_info &game, lobby_info_->games())
 	{
 		std::map<std::string, string_map> data;
 		string_map item;
 		std::string tmp;
 
-		tmp = game["name"];
-		utils::truncate_as_wstring(tmp, 20);
-		item["label"] = tmp;
+		item["label"] = game.name;
 		data.insert(std::make_pair("name", item));
 
-		tmp = game["mp_era"];
-		utils::truncate_as_wstring(tmp, 20);
-		item["label"] = tmp;
+		item["label"] = game.map_info;
 		data.insert(std::make_pair("name", item));
 
 		gamelistbox_->add_row(data);
@@ -191,23 +189,15 @@ void tlobby_main::process_message(const config &data, bool /*whisper / *= false*
 
 void tlobby_main::process_gamelist(const config &data)
 {
-	games_ = data;
-	games_initialized_ = true;
-	update_gamelist(games_);
+	lobby_info_->process_gamelist(data);
+	update_gamelist();
 }
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	if (!games_initialized_) return;
-	try {
-		games_.apply_diff(data);
-	} catch(config::error& e) {
-		ERR_CF << "Error while applying the gamelist diff: '"
-			<< e.message << "' Getting a new gamelist.\n";
-		network::send_data(config("refresh_lobby"), 0, true);
-		return;
+	if (lobby_info_->process_gamelist_diff(data)) {
+		update_gamelist();
 	}
-	update_gamelist(games_);
 }
 
 void tlobby_main::process_room_join(const config &/*data*/)

@@ -577,7 +577,7 @@ void start_client(game_display& disp, const config& game_config,
 	switch(type) {
 	case WESNOTHD_SERVER:
 		if(gui2::new_widgets) {
-			gui2::tlobby_main dlg;
+			gui2::tlobby_main dlg(game_config);
 			dlg.show(disp.video());
 		} else {
 			enter_lobby_mode(disp, game_config, chat, gamelist);
