@@ -98,6 +98,7 @@ wesnoth_source = \
 	gui/auxiliary/window_builder/listbox.cpp \
 	gui/auxiliary/window_builder/minimap.cpp \
 	gui/auxiliary/window_builder/menubar.cpp \
+	gui/auxiliary/window_builder/multi_page.cpp \
 	gui/auxiliary/window_builder/scroll_label.cpp \
 	gui/auxiliary/window_builder/scrollbar_panel.cpp \
 	gui/auxiliary/window_builder/slider.cpp \

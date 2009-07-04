@@ -28,6 +28,7 @@
 #include "gui/auxiliary/window_builder/listbox.hpp"
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
+#include "gui/auxiliary/window_builder/multi_page.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
@@ -405,86 +406,6 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
 	widget(create_builder_widget(cfg))
 {
-}
-
-tbuilder_multi_page::tbuilder_multi_page(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	builder(0),
-	data()
-{
-/*WIKI
- * @page = GUIWidgetInstanceWML
- * @order = 2_multi_page
- *
- * == Multi page ==
- *
- * Instance of a multi page.
- *
- * List with the multi page specific variables:
- * @start_table = config
- *     page_definition (section)       This defines how a listbox item
- *                                     looks. It must contain the grid
- *                                     definition for 1 row of the list.
- *
- *     page_data(section = [])         A grid alike section which stores the
- *                                     initial data for the listbox. Every row
- *                                     must have the same number of columns as
- *                                     the 'list_definition'.
- * @end_table
- */
-
-	const config &page = cfg.child("page_definition");
-
-	VALIDATE(page, _("No page defined."));
-	builder = new tbuilder_grid(page);
-	assert(builder);
-
-	/** @todo This part is untested. */
-	const config &d = cfg.child("page_data");
-	if(!d){
-		return;
-	}
-
-	foreach(const config &row, d.child_range("row"))
-	{
-		unsigned col = 0;
-
-		foreach (const config &column, row.child_range("column"))
-		{
-			data.push_back(string_map());
-			foreach (const config::attribute &i, column.attribute_range()) {
-				data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == builder->cols, _("'list_data' must have "
-			"the same number of columns as the 'list_definition'."));
-	}
-}
-
-twidget* tbuilder_multi_page::build() const
-{
-	tmulti_page *multi_page = new tmulti_page();
-
-	init_control(multi_page);
-
-	multi_page->set_page_builder(builder);
-
-	DBG_GUI_G << "Window builder: placed multi_page '"
-		<< id << "' with defintion '"
-		<< definition << "'.\n";
-
-	boost::intrusive_ptr<const tmulti_page_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const tmulti_page_definition::tresolution>(multi_page->config());
-	assert(conf);
-
-	multi_page->init_grid(conf->grid);
-
-	multi_page->finalize(data);
-
-	return multi_page;
 }
 
 twidget* tbuilder_grid::build() const

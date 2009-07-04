@@ -52,28 +52,6 @@ struct tbuilder_gridcell : public tbuilder_widget
 	twidget* build () const { return NULL; }
 };
 
-struct tbuilder_multi_page
-	: public implementation::tbuilder_control
-{
-
-private:
-	tbuilder_multi_page();
-public:
-	tbuilder_multi_page(const config& cfg);
-
-	twidget* build () const;
-
-	tbuilder_grid_ptr builder;
-
-	/**
-	 * Multi page data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<string_map> data;
-};
-
 } // namespace gui2
 
 #endif

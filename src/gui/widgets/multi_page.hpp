@@ -20,13 +20,17 @@
 
 namespace gui2 {
 
+namespace implementation {
+	struct tbuilder_multi_page;
+}
+
 class tgenerator_;
 
 /** The multi page class. */
 class tmulti_page
 		: public tcontainer_
 {
-	friend struct tbuilder_multi_page;
+	friend struct implementation::tbuilder_multi_page;
 	friend class tdebug_layout_graph;
 
 public:
