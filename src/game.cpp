@@ -1283,7 +1283,7 @@ void game_controller::start_wesnothd()
 			iname != paths_to_try.end(); ++iname)
 	{
 #ifndef _WIN32
-		std::string command = "\"" + *iname +"\" -c " + config + " -d -t 2 -T 5 ";
+		std::string command = "\"" + *iname +"\" -c \"" + config + "\" -d -t 2 -T 5";
 #else
 		// start wesnoth as background job
 		std::string command = "cmd /C start \"wesnoth server\" /B \"" + *iname + "\" -c \"" + config + "\" -t 2 -T 5";
