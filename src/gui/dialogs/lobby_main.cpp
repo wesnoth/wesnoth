@@ -147,14 +147,14 @@ void tlobby_main::process_message(const config &data, bool /*whisper / *= false*
 	//chat_log_->set_value(chat_log_->text() + "\n" + ss.str());
 }
 
-void tlobby_main::process_gamelist(const config &/*data*/)
+void tlobby_main::process_gamelist(const config &data)
 {
 	games_ = data;
 	games_initialized_ = true;
 	update_gamelist(games_);
 }
 
-void tlobby_main::process_gamelist_diff(const config &/*data*/)
+void tlobby_main::process_gamelist_diff(const config &data)
 {
 	if (!games_initialized_) return;
 	try {
@@ -180,12 +180,12 @@ void tlobby_main::process_room_query_response(const config &/*data*/)
 {
 }
 
-void tlobby_main::join_button_callback(gui2::twindow &window)
+void tlobby_main::join_button_callback(gui2::twindow &/*window*/)
 {
 	LOG_NW << "join_button_callback\n";
 }
 
-void tlobby_main::observe_button_callback(gui2::twindow &window)
+void tlobby_main::observe_button_callback(gui2::twindow &/*window*/)
 {
 	LOG_NW << "observe_button_callback\n";
 }
