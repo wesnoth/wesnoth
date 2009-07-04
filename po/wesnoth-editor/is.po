@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:09+0200\n"
+"POT-Creation-Date: 2009-07-05 00:00+0200\n"
 "PO-Revision-Date: 2009-05-12 18:51-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -180,16 +180,16 @@ msgstr "Loka kortagerð"
 msgid "Fatal error"
 msgstr "Alvarleg villa"
 
-#: src/editor2/editor_controller.cpp:290
-#: src/editor2/editor_controller.cpp:1045
+#: src/editor2/editor_controller.cpp:292
+#: src/editor2/editor_controller.cpp:1047
 msgid "(New Map)"
 msgstr "(Nýtt kort)"
 
-#: src/editor2/editor_controller.cpp:296
+#: src/editor2/editor_controller.cpp:298
 msgid "Do you really want to quit?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
-#: src/editor2/editor_controller.cpp:298
+#: src/editor2/editor_controller.cpp:300
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -197,7 +197,7 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Breytingar á kortinu síðan síðustu vistun "
 "munu glatast."
 
-#: src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:302
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -205,82 +205,82 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Eftirfarandi kort voru breytt og allar "
 "breytingar síðan síðustu vistum munu glatast."
 
-#: src/editor2/editor_controller.cpp:305
+#: src/editor2/editor_controller.cpp:307
 msgid "Quit"
 msgstr "Hætta"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
-#: src/editor2/editor_controller.cpp:512 src/editor2/editor_controller.cpp:534
+#: src/editor2/editor_controller.cpp:362 src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
 msgid "Error"
 msgstr "Villa"
 
-#: src/editor2/editor_controller.cpp:360
+#: src/editor2/editor_controller.cpp:362
 msgid "No editor time-of-day found."
 msgstr "Enginn tími dags fundinn."
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:398
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
-#: src/editor2/editor_controller.cpp:397
+#: src/editor2/editor_controller.cpp:399
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
 
-#: src/editor2/editor_controller.cpp:415
+#: src/editor2/editor_controller.cpp:417
 msgid "Choose a Map to Open"
 msgstr "Veldu kort til að opna"
 
-#: src/editor2/editor_controller.cpp:450
+#: src/editor2/editor_controller.cpp:452
 msgid "Save the Map As"
 msgstr "Vista kort sem"
 
-#: src/editor2/editor_controller.cpp:454
+#: src/editor2/editor_controller.cpp:456
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Skráin er nú þegar til staðar. Viltu yfirskrifa hana?"
 
-#: src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:472
 msgid "No random map generators found."
 msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
 
-#: src/editor2/editor_controller.cpp:483 src/editor2/editor_controller.cpp:487
+#: src/editor2/editor_controller.cpp:485 src/editor2/editor_controller.cpp:489
 msgid "Map creation failed."
 msgstr "Gerð korts mistókst."
 
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:504
 msgid "Choose a mask to apply"
 msgstr "Veldu skugga til setningar"
 
-#: src/editor2/editor_controller.cpp:509
+#: src/editor2/editor_controller.cpp:511
 msgid "Error loading mask"
 msgstr "Villa við hlöðun skugga"
 
-#: src/editor2/editor_controller.cpp:524
+#: src/editor2/editor_controller.cpp:526
 msgid "Choose target map"
 msgstr "Veldu miðkort"
 
-#: src/editor2/editor_controller.cpp:531 src/editor2/editor_controller.cpp:695
+#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:697
 msgid "Error loading map"
 msgstr "Villa við hlöðun korts"
 
-#: src/editor2/editor_controller.cpp:609 src/editor2/editor_controller.cpp:651
+#: src/editor2/editor_controller.cpp:611 src/editor2/editor_controller.cpp:653
 msgid "This map is already open."
 msgstr "Þetta kort er nú þegar opið."
 
-#: src/editor2/editor_controller.cpp:630
+#: src/editor2/editor_controller.cpp:632
 msgid "Map saved."
 msgstr "Kort vistað."
 
-#: src/editor2/editor_controller.cpp:674
+#: src/editor2/editor_controller.cpp:676
 msgid "Loaded embedded map data"
 msgstr "Hlóð fylgigögn korts"
 
-#: src/editor2/editor_controller.cpp:675 src/editor2/editor_controller.cpp:689
+#: src/editor2/editor_controller.cpp:677 src/editor2/editor_controller.cpp:691
 msgid "Map loaded from scenario"
 msgstr "Kort hlaðið úr atburðarás"
 
-#: src/editor2/editor_controller.cpp:685
+#: src/editor2/editor_controller.cpp:687
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -288,19 +288,19 @@ msgstr ""
 "Hlóð ávísað kort:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1075
+#: src/editor2/editor_controller.cpp:1077
 msgid "Undo"
 msgstr "Afturkalla"
 
-#: src/editor2/editor_controller.cpp:1077
+#: src/editor2/editor_controller.cpp:1079
 msgid "Can't Undo"
 msgstr "Afturkalla"
 
-#: src/editor2/editor_controller.cpp:1081
+#: src/editor2/editor_controller.cpp:1083
 msgid "Redo"
 msgstr "Endurkalla"
 
-#: src/editor2/editor_controller.cpp:1083
+#: src/editor2/editor_controller.cpp:1085
 msgid "Can't Redo"
 msgstr "Endurkalla"
 

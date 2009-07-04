@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:09+0200\n"
+"POT-Creation-Date: 2009-07-05 00:00+0200\n"
 "PO-Revision-Date: 2009-04-28 16:54+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -193,16 +193,16 @@ msgstr "Выход из редактора"
 msgid "Fatal error"
 msgstr "Критическая ошибка"
 
-#: src/editor2/editor_controller.cpp:290
-#: src/editor2/editor_controller.cpp:1045
+#: src/editor2/editor_controller.cpp:292
+#: src/editor2/editor_controller.cpp:1047
 msgid "(New Map)"
 msgstr "(Новая карта)"
 
-#: src/editor2/editor_controller.cpp:296
+#: src/editor2/editor_controller.cpp:298
 msgid "Do you really want to quit?"
 msgstr "Действительно хотите выйти?"
 
-#: src/editor2/editor_controller.cpp:298
+#: src/editor2/editor_controller.cpp:300
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -210,7 +210,7 @@ msgstr ""
 "Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
 "последнего сохранения."
 
-#: src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:302
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -218,83 +218,83 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor2/editor_controller.cpp:305
+#: src/editor2/editor_controller.cpp:307
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
-#: src/editor2/editor_controller.cpp:512 src/editor2/editor_controller.cpp:534
+#: src/editor2/editor_controller.cpp:362 src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/editor2/editor_controller.cpp:360
+#: src/editor2/editor_controller.cpp:362
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:398
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
-#: src/editor2/editor_controller.cpp:397
+#: src/editor2/editor_controller.cpp:399
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Вы правда хотите сбросить все изменения, которые внесли с последнего "
 "сохранения карты?"
 
-#: src/editor2/editor_controller.cpp:415
+#: src/editor2/editor_controller.cpp:417
 msgid "Choose a Map to Open"
 msgstr "Выберите, какую карту открыть"
 
-#: src/editor2/editor_controller.cpp:450
+#: src/editor2/editor_controller.cpp:452
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor2/editor_controller.cpp:454
+#: src/editor2/editor_controller.cpp:456
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Файл уже существует. Хотите перезаписать?"
 
-#: src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:472
 msgid "No random map generators found."
 msgstr "Генераторы случайных карт не найдены."
 
-#: src/editor2/editor_controller.cpp:483 src/editor2/editor_controller.cpp:487
+#: src/editor2/editor_controller.cpp:485 src/editor2/editor_controller.cpp:489
 msgid "Map creation failed."
 msgstr "Не удалось создать карту."
 
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:504
 msgid "Choose a mask to apply"
 msgstr "Выберите, какую маску применить"
 
-#: src/editor2/editor_controller.cpp:509
+#: src/editor2/editor_controller.cpp:511
 msgid "Error loading mask"
 msgstr "Не удалось заглузить маску"
 
-#: src/editor2/editor_controller.cpp:524
+#: src/editor2/editor_controller.cpp:526
 msgid "Choose target map"
 msgstr "Выберите целевую карту"
 
-#: src/editor2/editor_controller.cpp:531 src/editor2/editor_controller.cpp:695
+#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:697
 msgid "Error loading map"
 msgstr "Не удалось загрузить карту"
 
-#: src/editor2/editor_controller.cpp:609 src/editor2/editor_controller.cpp:651
+#: src/editor2/editor_controller.cpp:611 src/editor2/editor_controller.cpp:653
 msgid "This map is already open."
 msgstr "Вы уже открыли эту карту"
 
-#: src/editor2/editor_controller.cpp:630
+#: src/editor2/editor_controller.cpp:632
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor2/editor_controller.cpp:674
+#: src/editor2/editor_controller.cpp:676
 msgid "Loaded embedded map data"
 msgstr "Загрузил встроенные в карту данные"
 
-#: src/editor2/editor_controller.cpp:675 src/editor2/editor_controller.cpp:689
+#: src/editor2/editor_controller.cpp:677 src/editor2/editor_controller.cpp:691
 msgid "Map loaded from scenario"
 msgstr "Карта загружена из сценария"
 
-#: src/editor2/editor_controller.cpp:685
+#: src/editor2/editor_controller.cpp:687
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -302,19 +302,19 @@ msgstr ""
 "Загрузил файл карты по ссылке:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1075
+#: src/editor2/editor_controller.cpp:1077
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/editor2/editor_controller.cpp:1077
+#: src/editor2/editor_controller.cpp:1079
 msgid "Can't Undo"
 msgstr "Нечего отменять"
 
-#: src/editor2/editor_controller.cpp:1081
+#: src/editor2/editor_controller.cpp:1083
 msgid "Redo"
 msgstr "Повторить"
 
-#: src/editor2/editor_controller.cpp:1083
+#: src/editor2/editor_controller.cpp:1085
 msgid "Can't Redo"
 msgstr "Нечего повторять"
 

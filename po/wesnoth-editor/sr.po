@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:09+0200\n"
+"POT-Creation-Date: 2009-07-05 00:00+0200\n"
 "PO-Revision-Date: 2009-04-26 14:28+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -180,16 +180,16 @@ msgstr "Напусти уређивач"
 msgid "Fatal error"
 msgstr "Кобна грешка"
 
-#: src/editor2/editor_controller.cpp:290
-#: src/editor2/editor_controller.cpp:1045
+#: src/editor2/editor_controller.cpp:292
+#: src/editor2/editor_controller.cpp:1047
 msgid "(New Map)"
 msgstr "(нова мапа)"
 
-#: src/editor2/editor_controller.cpp:296
+#: src/editor2/editor_controller.cpp:298
 msgid "Do you really want to quit?"
 msgstr "Желите ли заиста да напустите?"
 
-#: src/editor2/editor_controller.cpp:298
+#: src/editor2/editor_controller.cpp:300
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -197,7 +197,7 @@ msgstr ""
 "Желите ли заиста да напустите? Измене на мапи од последњег уписа биће "
 "изгубљене."
 
-#: src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:302
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -206,85 +206,85 @@ msgstr ""
 "последњег уписа биће изгубљене:"
 
 # наслов
-#: src/editor2/editor_controller.cpp:305
+#: src/editor2/editor_controller.cpp:307
 msgid "Quit"
 msgstr "Напуштање"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
-#: src/editor2/editor_controller.cpp:512 src/editor2/editor_controller.cpp:534
+#: src/editor2/editor_controller.cpp:362 src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
 msgid "Error"
 msgstr "Грешка"
 
-#: src/editor2/editor_controller.cpp:360
+#: src/editor2/editor_controller.cpp:362
 msgid "No editor time-of-day found."
 msgstr "Нема доба дана у уређивачу."
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:398
 msgid "Unsaved Changes"
 msgstr "Несачуване измене"
 
-#: src/editor2/editor_controller.cpp:397
+#: src/editor2/editor_controller.cpp:399
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Желите ли да одбаците све измене над мапом од последњег уписа?"
 
 # наслов
-#: src/editor2/editor_controller.cpp:415
+#: src/editor2/editor_controller.cpp:417
 msgid "Choose a Map to Open"
 msgstr "Избор мапе за отварање"
 
-#: src/editor2/editor_controller.cpp:450
+#: src/editor2/editor_controller.cpp:452
 msgid "Save the Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor2/editor_controller.cpp:454
+#: src/editor2/editor_controller.cpp:456
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Датотека већ постоји. Желите ли да је пребришете?"
 
-#: src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:472
 msgid "No random map generators found."
 msgstr "Нема ниједног генератора насумичних мапа."
 
-#: src/editor2/editor_controller.cpp:483 src/editor2/editor_controller.cpp:487
+#: src/editor2/editor_controller.cpp:485 src/editor2/editor_controller.cpp:489
 msgid "Map creation failed."
 msgstr "Стварање мапе није успело."
 
 # наслов
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:504
 msgid "Choose a mask to apply"
 msgstr "Избор маске за примењивање"
 
-#: src/editor2/editor_controller.cpp:509
+#: src/editor2/editor_controller.cpp:511
 msgid "Error loading mask"
 msgstr "Грешка при учитавању маске"
 
 # наслов
-#: src/editor2/editor_controller.cpp:524
+#: src/editor2/editor_controller.cpp:526
 msgid "Choose target map"
 msgstr "Избор циљне мапе"
 
-#: src/editor2/editor_controller.cpp:531 src/editor2/editor_controller.cpp:695
+#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:697
 msgid "Error loading map"
 msgstr "Грешка при учитавању мапе"
 
-#: src/editor2/editor_controller.cpp:609 src/editor2/editor_controller.cpp:651
+#: src/editor2/editor_controller.cpp:611 src/editor2/editor_controller.cpp:653
 msgid "This map is already open."
 msgstr "Ова мапа је већ отворена."
 
-#: src/editor2/editor_controller.cpp:630
+#: src/editor2/editor_controller.cpp:632
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor2/editor_controller.cpp:674
+#: src/editor2/editor_controller.cpp:676
 msgid "Loaded embedded map data"
 msgstr "Учитани угњеждени подаци мапе."
 
 # >> @title:window
-#: src/editor2/editor_controller.cpp:675 src/editor2/editor_controller.cpp:689
+#: src/editor2/editor_controller.cpp:677 src/editor2/editor_controller.cpp:691
 msgid "Map loaded from scenario"
 msgstr "Мапа учитана из сценарија"
 
-#: src/editor2/editor_controller.cpp:685
+#: src/editor2/editor_controller.cpp:687
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -292,19 +292,19 @@ msgstr ""
 "Учитана поменута датотека мапе:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1075
+#: src/editor2/editor_controller.cpp:1077
 msgid "Undo"
 msgstr "Опозови"
 
-#: src/editor2/editor_controller.cpp:1077
+#: src/editor2/editor_controller.cpp:1079
 msgid "Can't Undo"
 msgstr "Опозив неизводљив"
 
-#: src/editor2/editor_controller.cpp:1081
+#: src/editor2/editor_controller.cpp:1083
 msgid "Redo"
 msgstr "Понови"
 
-#: src/editor2/editor_controller.cpp:1083
+#: src/editor2/editor_controller.cpp:1085
 msgid "Can't Redo"
 msgstr "Понављање неизводљиво"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:09+0200\n"
+"POT-Creation-Date: 2009-07-05 00:00+0200\n"
 "PO-Revision-Date: 2009-05-07 13:12+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -178,16 +178,16 @@ msgstr "Wyjście z edytora"
 msgid "Fatal error"
 msgstr "Błąd krytyczny"
 
-#: src/editor2/editor_controller.cpp:290
-#: src/editor2/editor_controller.cpp:1045
+#: src/editor2/editor_controller.cpp:292
+#: src/editor2/editor_controller.cpp:1047
 msgid "(New Map)"
 msgstr "(Nowa mapa)"
 
-#: src/editor2/editor_controller.cpp:296
+#: src/editor2/editor_controller.cpp:298
 msgid "Do you really want to quit?"
 msgstr "Czy naprawdę chcesz wyjść?"
 
-#: src/editor2/editor_controller.cpp:298
+#: src/editor2/editor_controller.cpp:300
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -195,7 +195,7 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Zmiany mapy dokonane od ostatniego zapisu zostaną "
 "utracone."
 
-#: src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:302
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -203,82 +203,82 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Te mapy zostały zmodyfikowane i wszystkie zmiany "
 "od ostatniego zapisu zostaną utracone:"
 
-#: src/editor2/editor_controller.cpp:305
+#: src/editor2/editor_controller.cpp:307
 msgid "Quit"
 msgstr "Wyjdź"
 
-#: src/editor2/editor_controller.cpp:360 src/editor2/editor_controller.cpp:470
-#: src/editor2/editor_controller.cpp:512 src/editor2/editor_controller.cpp:534
+#: src/editor2/editor_controller.cpp:362 src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
 msgid "Error"
 msgstr "Błąd"
 
-#: src/editor2/editor_controller.cpp:360
+#: src/editor2/editor_controller.cpp:362
 msgid "No editor time-of-day found."
 msgstr "Nie znaleziono pory dnia edytora."
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:398
 msgid "Unsaved Changes"
 msgstr "Niezapisane zmiany"
 
-#: src/editor2/editor_controller.cpp:397
+#: src/editor2/editor_controller.cpp:399
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Czy chcesz odrzucić wszystkie zmiany mapy wprowadzone od ostatniego zapisu?"
 
-#: src/editor2/editor_controller.cpp:415
+#: src/editor2/editor_controller.cpp:417
 msgid "Choose a Map to Open"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor2/editor_controller.cpp:450
+#: src/editor2/editor_controller.cpp:452
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor2/editor_controller.cpp:454
+#: src/editor2/editor_controller.cpp:456
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Ten plik już istnieje. Czy chcesz go nadpisać?"
 
-#: src/editor2/editor_controller.cpp:470
+#: src/editor2/editor_controller.cpp:472
 msgid "No random map generators found."
 msgstr "Nie znaleziono losowych generatorów map."
 
-#: src/editor2/editor_controller.cpp:483 src/editor2/editor_controller.cpp:487
+#: src/editor2/editor_controller.cpp:485 src/editor2/editor_controller.cpp:489
 msgid "Map creation failed."
 msgstr "Tworzenie mapy się nie powiodło."
 
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:504
 msgid "Choose a mask to apply"
 msgstr "Wybierz maskę do zastosowania"
 
-#: src/editor2/editor_controller.cpp:509
+#: src/editor2/editor_controller.cpp:511
 msgid "Error loading mask"
 msgstr "Błąd ładowania maski"
 
-#: src/editor2/editor_controller.cpp:524
+#: src/editor2/editor_controller.cpp:526
 msgid "Choose target map"
 msgstr "Wybierz docelową mapę"
 
-#: src/editor2/editor_controller.cpp:531 src/editor2/editor_controller.cpp:695
+#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:697
 msgid "Error loading map"
 msgstr "Błąd ładowania mapy"
 
-#: src/editor2/editor_controller.cpp:609 src/editor2/editor_controller.cpp:651
+#: src/editor2/editor_controller.cpp:611 src/editor2/editor_controller.cpp:653
 msgid "This map is already open."
 msgstr "Ta mapa jest już otwarta."
 
-#: src/editor2/editor_controller.cpp:630
+#: src/editor2/editor_controller.cpp:632
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor2/editor_controller.cpp:674
+#: src/editor2/editor_controller.cpp:676
 msgid "Loaded embedded map data"
 msgstr "Załadowano osadzone dane mapy"
 
-#: src/editor2/editor_controller.cpp:675 src/editor2/editor_controller.cpp:689
+#: src/editor2/editor_controller.cpp:677 src/editor2/editor_controller.cpp:691
 msgid "Map loaded from scenario"
 msgstr "Załadowano mapę ze scenariusza"
 
-#: src/editor2/editor_controller.cpp:685
+#: src/editor2/editor_controller.cpp:687
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -286,19 +286,19 @@ msgstr ""
 "Załadowano używany plik mapy:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1075
+#: src/editor2/editor_controller.cpp:1077
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/editor2/editor_controller.cpp:1077
+#: src/editor2/editor_controller.cpp:1079
 msgid "Can't Undo"
 msgstr "Nie można cofnąć"
 
-#: src/editor2/editor_controller.cpp:1081
+#: src/editor2/editor_controller.cpp:1083
 msgid "Redo"
 msgstr "Ponów"
 
-#: src/editor2/editor_controller.cpp:1083
+#: src/editor2/editor_controller.cpp:1085
 msgid "Can't Redo"
 msgstr "Nie można powtórzyć"
 
