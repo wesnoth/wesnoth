@@ -163,16 +163,16 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			options->add_row(data);
 
 			// Set the markup flag.
-			assert(options->generator_);
-			tgrid& grid = options->generator_->get_item(i);
+			tgrid* grid = options->get_row_grid(i);
+			assert(grid);
 
 			tcontrol* control = dynamic_cast<tcontrol*>(
-					grid.find_widget("label", false));
+					grid->find_widget("label", false));
 			assert(control);
 			control->set_markup_mode(tcontrol::WML_MARKUP);
 
 			control = dynamic_cast<tcontrol*>(
-					grid.find_widget("description", false));
+					grid->find_widget("description", false));
 			assert(control);
 			control->set_markup_mode(tcontrol::WML_MARKUP);
 		}

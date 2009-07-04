@@ -27,9 +27,6 @@ class tlistbox
 {
 	friend struct tbuilder_listbox;
 	friend class tdebug_layout_graph;
-
-	/** @todo Remove this item, part of the markup hack. */
-	friend class twml_message_;
 public:
 	/**
 	 * Constructor.
