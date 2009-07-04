@@ -1628,7 +1628,7 @@ private:
 
 	void menu_handler::add_chat_message(const time_t& time,
 			const std::string& speaker, int side, const std::string& message,
-			game_display::MESSAGE_TYPE type)
+			events::chat_handler::MESSAGE_TYPE type)
 	{
 		gui_->add_chat_message(time, speaker, side, message, type, false);
 	}
@@ -2490,7 +2490,7 @@ private:
 		data.add_child("whisper", cwhisper);
 		chat_handler_.add_chat_message(time(NULL),
 			"whisper to " + cwhisper["receiver"], 0,
-			cwhisper["message"], game_display::MESSAGE_PRIVATE);
+			cwhisper["message"], events::chat_handler::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
 	}
 
@@ -2505,7 +2505,7 @@ private:
 		data.add_child("message", cwhisper);
 		chat_handler_.add_chat_message(time(NULL),
 			cwhisper["room"] + ": " + preferences::login(), 0,
-			cwhisper["message"], game_display::MESSAGE_PRIVATE);
+			cwhisper["message"], events::chat_handler::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
 	}
 
@@ -2664,7 +2664,7 @@ private:
 
 		recorder.speak(cfg);
 		add_chat_message(time(NULL), cfg["id"], side, message,
-				private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
+				private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);
 
 	}
 

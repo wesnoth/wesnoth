@@ -155,7 +155,7 @@ namespace gui{
 			} else {
 				std::string completion_list = utils::join(matches, ' ');
 				gui.add_chat_message(time(NULL), "", 0, completion_list,
-						game_display::MESSAGE_PRIVATE, false);
+						events::chat_handler::MESSAGE_PRIVATE, false);
 			}
 			box_->set_text(text);
 			break;

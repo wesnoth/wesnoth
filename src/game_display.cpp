@@ -1099,7 +1099,7 @@ namespace {
 }
 
 void game_display::add_chat_message(const time_t& time, const std::string& speaker,
-		int side, const std::string& message, game_display::MESSAGE_TYPE type,
+		int side, const std::string& message, events::chat_handler::MESSAGE_TYPE type,
 		bool bell)
 {
 	const bool whisper = speaker.find("whisper: ") == 0;
@@ -1113,7 +1113,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	preferences::admin_authentication(sender, message);
 
 	if (bell) {
-		if ((type == MESSAGE_PRIVATE && (!is_observer() || whisper))
+		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer() || whisper))
 			|| utils::word_match(message, preferences::login())) {
 			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
 		} else if (preferences::is_friend(sender)) {
@@ -1159,7 +1159,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	std::stringstream str;
 	std::stringstream message_str;
 
-	if(type == MESSAGE_PUBLIC) {
+	if(type ==  events::chat_handler::MESSAGE_PUBLIC) {
 		if(action) {
 			str << "<" << speaker << " " << msg << ">";
 			message_colour = speaker_colour;

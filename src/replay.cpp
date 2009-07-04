@@ -724,14 +724,14 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 			std::stringstream message;
 			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
 			disp.add_chat_message(time(NULL), "verification", 1, message.str(),
-					game_display::MESSAGE_PRIVATE, false);
+					events::chat_handler::MESSAGE_PRIVATE, false);
 			continue;
 		}
 		if (get_checksum(u->second) != ch["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
 			disp.add_chat_message(time(NULL), "verification", 1, message.str(),
-					game_display::MESSAGE_PRIVATE, false);
+					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 	}
 }
@@ -846,8 +846,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			if (!get_replay_source().is_skipping() || is_whisper) {
 				const int side = lexical_cast_default<int>(child["side"],0);
 				disp.add_chat_message(time(NULL), speaker_name, side, message,
-						(team_name.empty() ? game_display::MESSAGE_PUBLIC
-						: game_display::MESSAGE_PRIVATE),
+						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
+						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
 			}
 		}

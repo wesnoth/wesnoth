@@ -473,7 +473,7 @@ void ui::handle_event(const SDL_Event& event)
 	}
 }
 
-void ui::add_chat_message(const time_t& time, const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
+void ui::add_chat_message(const time_t& time, const std::string& speaker, int /*side*/, const std::string& message, events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	chat_.add_message(time, speaker, message);
 	chat_.update_textbox(chat_textbox_);

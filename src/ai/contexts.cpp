@@ -239,7 +239,7 @@ void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
 		get_info().disp.add_chat_message(time(NULL), "ai", get_side(), msg,
-				game_display::MESSAGE_PUBLIC, false);
+				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 

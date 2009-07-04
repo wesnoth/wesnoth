@@ -130,7 +130,7 @@ protected:
 	/** Override chat_handler. */
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
-			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
+			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
 	/** Process chat messages. */

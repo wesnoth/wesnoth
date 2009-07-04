@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 #include "actions.hpp"
+#include "chat_events.hpp"
 #include "display.hpp"
 #include "game_display.hpp"
 #include "show_dialog.hpp"
@@ -33,25 +34,7 @@ namespace events {
 
 struct fallback_ai_to_human_exception {};
 
-namespace events{
-
-class chat_handler {
-public:
-	chat_handler();
-	virtual ~chat_handler();
-
-protected:
-	void do_speak(const std::string& message, bool allies_only=false);
-
-	//called from do_speak
-	virtual void add_chat_message(const time_t& time,
-			const std::string& speaker, int side, const std::string& message,
-			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
-	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
-	void send_command(const std::string& cmd, const std::string& args="");
-	void change_logging(const std::string& data);
-	friend class chat_command_handler;
-};
+namespace events {
 
 class menu_handler : private chat_handler {
 public:
@@ -121,7 +104,7 @@ public:
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
-			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
+			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 private:
 	//console_handler is basically a sliced out part of menu_handler

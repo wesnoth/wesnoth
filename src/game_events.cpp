@@ -247,7 +247,7 @@ static void show_wml_errors()
 		}
 
 		game_events::resources->screen->add_chat_message(time(NULL), caption, 0, msg.str(),
-				game_display::MESSAGE_PUBLIC, false);
+				events::chat_handler::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
@@ -271,7 +271,7 @@ static void show_wml_messages()
 		}
 
 		game_events::resources->screen->add_chat_message(time(NULL), caption, 0, msg.str(),
-				game_display::MESSAGE_PUBLIC, false);
+				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 

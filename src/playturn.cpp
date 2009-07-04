@@ -85,14 +85,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = lexical_cast_default<int>(msg["side"],0);
 
 		gui_.add_chat_message(time(NULL), msg["sender"], side,
-				msg["message"], game_display::MESSAGE_PUBLIC,
+				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 
 	if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
 		gui_.add_chat_message(time(NULL), "whisper: " + msg["sender"], 0,
-				msg["message"], game_display::MESSAGE_PRIVATE,
+				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
 
