@@ -1166,7 +1166,7 @@ void game_controller::start_wesnothd()
 	}
 
 #ifndef _WIN32
-	std::string command = "\"" + wesnothd_program +"\" -c " + config + " -d -t 2 -T 5 ";
+	std::string command = "\"" + wesnothd_program +"\" -c \"" + config + "\" -d -t 2 -T 5";
 #else
 	// start wesnoth as background job
 	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\" -t 2 -T 5";
