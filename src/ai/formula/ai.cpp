@@ -23,17 +23,18 @@
 #include <queue>
 
 #include "ai.hpp"
+#include "candidates.hpp"
 
 #include "../manager.hpp"
 
-#include "../../foreach.hpp"
-#include "../../unit.hpp"
-#include "../../menu_events.hpp"
+#include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
-#include "../../attack_prediction.hpp"
-#include "candidates.hpp"
+#include "../../map_label.hpp"
+#include "../../menu_events.hpp"
+#include "../../replay.hpp"
+#include "../../unit.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
@@ -1062,6 +1063,45 @@ private:
 	const formula_ai& ai_;
 };
 
+class debug_label_function : public function_expression {
+public:
+	explicit debug_label_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("debug_label", args, 2, 2),
+		ai_(ai)
+	{}
+private:
+        variant execute(const formula_callable& variables) const {
+                const args_list& arguments = args();
+                const variant var0 = arguments[0]->evaluate(variables);
+                const variant var1 = arguments[1]->evaluate(variables);
+
+                const map_location location = convert_variant<location_callable>(var0)->loc();
+                std::string text;
+
+                text = var1.to_debug_string();
+                display_label(location,text);
+
+		std::vector<variant> res;
+		res.push_back(var0);
+		res.push_back(var1);
+                return variant(&res);
+        }
+
+        void display_label(const map_location& location, const std::string& text) const {
+                game_display* gui = game_display::get_singleton();
+		std::string team_name;
+
+		SDL_Color colour = int_to_color(team::get_side_rgb(ai_.get_side()));
+
+		const terrain_label *res;
+		res = gui->labels().set_label(location, text, team_name, colour);
+		if (res)
+			recorder.add_label(res);
+        }
+
+	const formula_ai& ai_;
+};
+
 class is_village_function : public function_expression {
 public:
 	explicit is_village_function(const args_list& args)
@@ -1633,6 +1673,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new fallback_function(args));
 	} else if(fn == "units_can_reach") {
 		return expression_ptr(new units_can_reach_function(args, ai_));
+	} else if(fn == "debug_label") {
+		return expression_ptr(new debug_label_function(args, ai_));
 	} else if(fn == "defense_on") {
 		return expression_ptr(new defense_on_function(args, ai_));
 	} else if(fn == "chance_to_hit") {
