@@ -528,6 +528,12 @@ bool unit_movement_type::is_flying() const
 	return utils::string_bool(flies);
 }
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "elements of array will be default initialized" warnings
+#pragma warning(disable:4351)
+#endif
+
 unit_type::unit_type() :
 	cfg_(),
 	id_(),
@@ -567,6 +573,10 @@ unit_type::unit_type() :
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 unit_type::unit_type(const unit_type& o) :
 	cfg_(o.cfg_),

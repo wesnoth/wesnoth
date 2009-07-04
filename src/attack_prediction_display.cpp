@@ -116,12 +116,12 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 	defender_label_width_ = font::line_width(defender_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
 
 	// Get the units strings.
-	get_unit_strings(attacker_stats, attacker_, attacker_loc_, attacker_combatant.untouched,
+	get_unit_strings(attacker_stats, attacker_, attacker_loc_, static_cast<float>(attacker_combatant.untouched),
 					 defender_, defender_loc_, defender_stats.weapon,
 					 attacker_left_strings_, attacker_right_strings_,
 					 attacker_left_strings_width_, attacker_right_strings_width_, attacker_strings_width_);
 
-	get_unit_strings(defender_stats, defender_, defender_loc_, defender_combatant.untouched,
+	get_unit_strings(defender_stats, defender_, defender_loc_, static_cast<float>(defender_combatant.untouched),
 					 attacker_, attacker_loc_, attacker_stats.weapon,
 					 defender_left_strings_, defender_right_strings_,
 					 defender_left_strings_width_, defender_right_strings_width_, defender_strings_width_);
@@ -523,7 +523,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 		// Draw probability percentage, aligned right.
-		format_prob(str_buf, prob);
+		format_prob(str_buf, static_cast<float>(prob));
 		int prob_width = font::line_width(str_buf, fs);
 		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
