@@ -197,6 +197,43 @@ private:
 	const formula_ai& ai_;
 };
 
+class locations_in_radius_function : public function_expression {
+public:
+	locations_in_radius_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("locations_in_radius", args, 2, 2), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+
+		int range = args()[1]->evaluate(variables).as_int();
+
+		if( range < 0 )
+			return variant();
+
+		if(!range)
+			return variant(new location_callable(loc));
+
+		std::vector<map_location> res;
+
+		get_tiles_in_radius( loc, range, res);
+
+		std::vector<variant> v;
+		v.reserve(res.size()+1);
+		v.push_back(variant(new location_callable(loc)));
+
+		for(size_t n = 0; n != res.size(); ++n) {
+                        if (ai_.get_info().map.on_board(res[n]) )
+                            v.push_back(variant(new location_callable(res[n])));
+		}
+
+		return variant(&v);
+	}
+
+	const formula_ai& ai_;
+};
+
 /** FormulaAI function to run fai script from file. Usable from in-game console.
 *   arguments[0] - required file name, follows the usual wml convention
 */
@@ -1608,6 +1645,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
 	} else if(fn == "adjacent_locs") {
 		return expression_ptr(new adjacent_locs_function(args, ai_));
+	} else if(fn == "locations_in_radius") {
+		return expression_ptr(new locations_in_radius_function(args, ai_));
 	} else if(fn == "castle_locs") {
 		return expression_ptr(new castle_locs_function(args, ai_));
 	} else if(fn == "timeofday_modifier") {
