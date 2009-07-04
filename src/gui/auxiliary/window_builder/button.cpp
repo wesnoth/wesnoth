@@ -18,13 +18,10 @@
 
 #include "config.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/button.hpp"
 
 namespace gui2 {
-
-/** @todo move to it's own header. */
-extern int get_retval(const std::string& retval_id,
-		const int retval, const std::string& id);
 
 namespace implementation {
 
