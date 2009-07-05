@@ -415,10 +415,16 @@ void tshow::init(tgrid* grid
 
 	typedef std::pair<std::string, string_map> hack;
 	foreach(const hack& item, data) {
-
 		if(item.first.empty()) {
-			/** @todo evaluate whether this case needs to be implemented. */
-			assert(false);
+			for(unsigned row = 0; row < grid->get_rows(); ++row) {
+				for(unsigned col = 0; col < grid->get_cols(); ++col) {
+					if(tcontrol* control =
+							dynamic_cast<tcontrol*>(grid->widget(row, col))) {
+
+						control->set_members(item.second);
+					}
+				}
+			}
 		} else {
 			tcontrol* control = dynamic_cast<
 					tcontrol*>(grid->find_widget(item.first, false));
