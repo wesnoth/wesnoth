@@ -307,6 +307,7 @@ void set_location(int handle, int x, int y)
 	const std::map<int,effect>::iterator itor = haloes.find(handle);
 	if(itor != haloes.end()) {
 		itor->second.set_location(x,y);
+		invalidated_haloes.insert(itor->first);
 	}
 }
 
