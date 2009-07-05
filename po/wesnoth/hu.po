@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-05 00:00+0200\n"
+"POT-Creation-Date: 2009-07-05 20:19+0200\n"
 "PO-Revision-Date: 2009-06-20 11:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -8434,27 +8434,27 @@ msgstr "Egység létesítése (Hibakereső mód!)"
 msgid "Gender: "
 msgstr "Nem:"
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1603
 msgid "Place Label"
 msgstr "Címke elhelyezése"
 
-#: src/menu_events.cpp:1605 src/menu_events.cpp:1608
+#: src/menu_events.cpp:1605
 msgid "Label: "
 msgstr "Címke:"
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1606
 msgid "Team only"
 msgstr "csak a csapat"
 
-#: src/menu_events.cpp:1708
+#: src/menu_events.cpp:1710
 msgid "Search"
 msgstr "Keresés"
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1890
 msgid "This command is currently unavailable."
 msgstr "Ez a parancs jelenleg nem elérhető."
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1901
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -8462,11 +8462,11 @@ msgstr ""
 "Az elérhető parancsok listája és a hozzájuk tartozó súgó. Használd a „help "
 "all”-t a jelenleg nem elérhető parancsok mutatásához."
 
-#: src/menu_events.cpp:2004
+#: src/menu_events.cpp:2006
 msgid " No help available."
 msgstr "Nincs elérhető súgó."
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2161
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -8474,7 +8474,7 @@ msgstr ""
 "Lékérdezés a kiszolgálótól. Argumentumok nélküli kérés esetén a kiszolgáló "
 "felsorolja az elérhető parancsokat."
 
-#: src/menu_events.cpp:2162
+#: src/menu_events.cpp:2164
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -8482,29 +8482,29 @@ msgstr ""
 "Egy játékos vagy megfigyelő letiltása vagy kirúgása. Ha az illető nincs a "
 "játékban, akkor csak letiltva lesz."
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2167
 msgid "Kick a player or observer."
 msgstr "Egy játékos vagy megfigyelő kirúgása."
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2169
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Egy megfigyelő elnémítása. Argumentum megadása nélkül megjeleníti az "
 "aktuális állapotot."
 
-#: src/menu_events.cpp:2169
+#: src/menu_events.cpp:2171
 msgid "Mute all observers."
 msgstr "Minden megfigyelő elnémítása."
 
-#: src/menu_events.cpp:2179
+#: src/menu_events.cpp:2181
 msgid "Send a message to the server admins currently online"
 msgstr "Üzenet küldése a kiszolgáló éppen jelen lévő adminisztrátorainak."
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2183
 msgid "Send an emotion or personal action in chat."
 msgstr "Hangulatjel vagy személyes megnyilvánulás küldése csevegésben."
 
-#: src/menu_events.cpp:2184
+#: src/menu_events.cpp:2186
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8512,247 +8512,247 @@ msgstr ""
 "Privát üzenet küldése. Csak olyan játékosnak küldhetsz privát üzenetet, aki "
 "részt vesz abban a játékban, amelyikben játszol."
 
-#: src/menu_events.cpp:2190
+#: src/menu_events.cpp:2192
 msgid "Change the log level of a log domain."
 msgstr "Naplótartomány átkapcsolása más naplózási szintre."
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2194
 msgid "Add a nick to your ignores list."
 msgstr "Játékos hozzáadása a mellőzési listához."
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2196
 msgid "Add a nick to your friends list."
 msgstr "Játékos hozzáadása a barátok listához."
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2198
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Játékos eltávolítása a mellőzési vagy a barátok listáról."
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2200
 msgid "Show your ignores and friends list."
 msgstr "A mellőzési és a barátok lista mutatása."
 
-#: src/menu_events.cpp:2201
+#: src/menu_events.cpp:2203
 msgid "Display version information."
 msgstr "Információ a kijelző verziójáról."
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2205
 msgid "Register your nick"
 msgstr "Becenév regisztrálása"
 
-#: src/menu_events.cpp:2205
+#: src/menu_events.cpp:2207
 msgid "Drop your nick."
 msgstr "Regisztráció törlése."
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2209
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 "A felhasználónevedhez tartozó adatlap frissítése. Az elérhető adatokhoz "
 "lásd: „/details”."
 
-#: src/menu_events.cpp:2210
+#: src/menu_events.cpp:2212
 msgid "Request information about a nick."
 msgstr "Felhasználó adatainak megtekintése."
 
-#: src/menu_events.cpp:2212
+#: src/menu_events.cpp:2214
 msgid "Request a list of details you can set for your registered nick."
 msgstr "A regisztrált felhasználónevedhez tartozó adatok listázása."
 
-#: src/menu_events.cpp:2336
+#: src/menu_events.cpp:2338
 msgid "Refresh gui."
 msgstr "A grafikus felület frissítése."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2340
 msgid "Switch a side to/from AI control."
 msgstr "Adott oldalon az MI ki- vagy bekapcsolása."
 
-#: src/menu_events.cpp:2341
+#: src/menu_events.cpp:2343
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 "Adott oldal irányításának egy másik játékoshoz vagy megfigyelőhöz rendelése."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2345
 msgid "Clear chat history."
 msgstr "A csevegés sorainak kiürítése."
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2347
 msgid "Visualize the screen refresh procedure."
 msgstr "A képernyő-frissítési folyamat vizualizálása."
 
-#: src/menu_events.cpp:2348
+#: src/menu_events.cpp:2350
 msgid "Save game."
 msgstr "Állás mentése."
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2352
 msgid "Quit game."
 msgstr "Kilépés a játékból."
 
-#: src/menu_events.cpp:2354
+#: src/menu_events.cpp:2356
 msgid "Save and quit."
 msgstr "Mentés és kilépés."
 
-#: src/menu_events.cpp:2357
+#: src/menu_events.cpp:2359
 msgid "Ignore replay errors."
 msgstr "A visszajátszás során jelentkező hibák figyelmen kívül hagyása."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2361
 msgid "Disable autosaves."
 msgstr "Az automatikus mentés kikapcsolása."
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2363
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 "Továbblépés a következő vagy az azonosítója alapján kiválasztott pályára."
 
-#: src/menu_events.cpp:2364
+#: src/menu_events.cpp:2366
 msgid "Choose next scenario"
 msgstr "Válaszd ki a következő pályát"
 
-#: src/menu_events.cpp:2367
+#: src/menu_events.cpp:2369
 msgid "Turn debug mode on."
 msgstr "A hibakereső üzemmód bekapcsolása."
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2371
 msgid "Turn debug mode off."
 msgstr "A hibakereső üzemmód kikapcsolása."
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2373
 msgid "Set the command used by the custom command hotkey"
 msgstr "Egy parancsnak a felhasználói gyorsbillentyűhöz rendelése"
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2375
 msgid "Set or show alias to a command"
 msgstr "Alias megmutatása és parancshoz rendelése"
 
-#: src/menu_events.cpp:2375
+#: src/menu_events.cpp:2377
 msgid "Set a scenario variable."
 msgstr "Egy játékváltozó értékének megadása."
 
-#: src/menu_events.cpp:2377
+#: src/menu_events.cpp:2379
 msgid "Show a scenario variable."
 msgstr "Egy játékváltozó értékének megmutatása."
 
-#: src/menu_events.cpp:2379
+#: src/menu_events.cpp:2381
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr "Egy egységváltozó módosítása. (Csak legfelső szinten támogatott.)"
 
-#: src/menu_events.cpp:2383
+#: src/menu_events.cpp:2385
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr "Egy egység jellemvonásának eltávolítása. (Egyelőre nem működik.)"
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2387
 msgid "Create a unit."
 msgstr "Egység létrehozása."
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2389
 msgid "Toggle fog for the current player."
 msgstr "A köd ki- és bekapcsolása az aktuális játékosnál."
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2391
 msgid "Toggle shroud for the current player."
 msgstr "Az eltakarás ki- és bekapcsolása az aktuális játékosnál."
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2393
 msgid "Give gold to the current player."
 msgstr "Az aktuális játékos aranykészletének növelése."
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2395
 msgid "Fire a game event."
 msgstr "Egy játékesemény végrehajtása."
 
-#: src/menu_events.cpp:2396
+#: src/menu_events.cpp:2398
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Az x,y koordináták átfedésének ki- és bekapcsolása a mezőkön."
 
-#: src/menu_events.cpp:2399
+#: src/menu_events.cpp:2401
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "A terepkódok átfedésének ki- és bekapcsolása a mezőkön."
 
-#: src/menu_events.cpp:2444
+#: src/menu_events.cpp:2446
 msgid "Unknown debug level: '$level'."
 msgstr "Ismeretlen hibakeresési szint: „|$level|”."
 
-#: src/menu_events.cpp:2446 src/menu_events.cpp:2455
+#: src/menu_events.cpp:2448 src/menu_events.cpp:2457
 msgid "error"
 msgstr "hiba"
 
-#: src/menu_events.cpp:2453
+#: src/menu_events.cpp:2455
 msgid "Unknown debug domain: '$domain'."
 msgstr "Ismeretlen hibakereső tartomány: „|$domain|”."
 
-#: src/menu_events.cpp:2462
+#: src/menu_events.cpp:2464
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 "A(z) „|$domain|” tartomány átkapcsolva a következő szintre: „|$level|”."
 
-#: src/menu_events.cpp:2554
+#: src/menu_events.cpp:2556
 msgid "Added to ignore list: "
 msgstr "Hozzáadva a mellőzési listádhoz: "
 
-#: src/menu_events.cpp:2556 src/menu_events.cpp:2572
+#: src/menu_events.cpp:2558 src/menu_events.cpp:2574
 msgid "Invalid username: "
 msgstr "Érvénytelen felhasználónév: "
 
-#: src/menu_events.cpp:2570
+#: src/menu_events.cpp:2572
 msgid "Added to friends list: "
 msgstr "Hozzáadva a barátok listádhoz:"
 
-#: src/menu_events.cpp:2583
+#: src/menu_events.cpp:2585
 msgid "Removed from list: "
 msgstr "Kitörölve a listádról: "
 
-#: src/menu_events.cpp:2601
+#: src/menu_events.cpp:2603
 msgid "There are no players on your friends or ignore list."
 msgstr "Nincs játékos sem a barátaid között, sem a mellőzöttek listáján."
 
-#: src/menu_events.cpp:2770
+#: src/menu_events.cpp:2772
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet, amely megfelelt volna a "
 "következőnek: „|$search|”."
 
-#: src/menu_events.cpp:2799
+#: src/menu_events.cpp:2801
 msgid "Can't droid invalid side: '$side'."
 msgstr "Az érvénytelen oldal („|$side|”) irányítása nem adható át a gépnek."
 
-#: src/menu_events.cpp:2804
+#: src/menu_events.cpp:2806
 msgid "Can't droid networked side: '$side'."
 msgstr "A hálózati oldal („|$side|”) irányítása nem adható át a gépnek."
 
-#: src/menu_events.cpp:2841
+#: src/menu_events.cpp:2843
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Az érvénytelen oldal („|$side|”) irányítása nem adható át."
 
-#: src/menu_events.cpp:2847
+#: src/menu_events.cpp:2849
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 "A nem megengedett tartományú oldal („|$side|”) irányítása nem adható át."
 
-#: src/menu_events.cpp:2911
+#: src/menu_events.cpp:2913
 msgid "Choose Scenario (Debug!)"
 msgstr "Pálya kiválasztása (Hibakereső mód!)"
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2926
 msgid "Debug mode activated!"
 msgstr "Hibakereső üzemmód bekapcsolva!"
 
-#: src/menu_events.cpp:2927
+#: src/menu_events.cpp:2929
 msgid "Debug mode not available in network games"
 msgstr "A hibakereső üzemmód hálózati játék során nem elérhető"
 
-#: src/menu_events.cpp:2932
+#: src/menu_events.cpp:2934
 msgid "Debug mode deactivated!"
 msgstr "Hibakereső üzemmód kikapcsolva!"
 
-#: src/menu_events.cpp:3094
+#: src/menu_events.cpp:3096
 msgid "ai"
 msgstr "mi"
 
-#: src/menu_events.cpp:3102 src/menu_events.cpp:3118
+#: src/menu_events.cpp:3104 src/menu_events.cpp:3120
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/menu_events.cpp:3138
+#: src/menu_events.cpp:3140
 msgid "User-Command#3"
 msgstr "Felhasználói parancs#3"
 
