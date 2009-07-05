@@ -24,6 +24,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace gui2 {
 
@@ -86,6 +87,14 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		list_item_item.insert(std::make_pair("name", list_item));
 
 		list->add_row(list_item_item);
+
+		tgrid* grid = list->get_row_grid(list->get_item_count() - 1);
+		assert(grid);
+
+		twidget* widget = grid->find_widget("victory", false);
+		if(widget && !utils::string_bool(c["completed"], false)) {
+			widget->set_visible(twidget::HIDDEN);
+		}
 
 		/*** Add detail item ***/
 		string_map detail_item;
