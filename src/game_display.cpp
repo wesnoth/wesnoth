@@ -25,6 +25,10 @@
 #include <libnotifymm-1.0/libnotifymm.h>
 #endif
 
+#ifdef HAVE_QTDBUS
+#include <QtDBus>
+#endif
+
 #include "actions.hpp"
 #include "foreach.hpp"
 #include "halo.hpp"
@@ -1028,9 +1032,9 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
-#ifdef HAVE_LIBNOTIFY
 void game_display::send_notification(const std::string& owner, const std::string& message)
 {
+#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS)
 	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
 	Uint8 app_state = SDL_GetAppState();
 
@@ -1043,21 +1047,39 @@ void game_display::send_notification(const std::string& owner, const std::string
 			return;
 		}
 	}
+#endif
 
+#ifdef HAVE_LIBNOTIFY
 	try {
 		Notify::init("Wesnoth");
 
 		// I tried to use the fancy Gtk::IconTheme stuff but it didn't seem worth it. -- method
-		Glib::ustring wesnoth_icon_info =  game_config::path + "images/wesnoth-icon-small.png";
+		Glib::ustring wesnoth_icon_info =  game_config::path + "/images/wesnoth-icon-small.png";
 		Notify::Notification notification(owner, message, wesnoth_icon_info);
 		notification.show();
 	} catch(const Glib::Error& error) {
 		ERR_DP << "Failed to send libnotify notification: " << error.what() << "\n";
 	}
-}
-#else
-void game_display::send_notification(const std::string&, const std::string&) {}
 #endif
+
+#ifdef HAVE_QTDBUS
+	QDBusInterface notify("org.kde.VisualNotifications", "/VisualNotifications", "org.kde.VisualNotifications");
+	QList<QVariant> args;
+	args.append("Battle for Wesnoth");
+	args.append(0U);
+	args.append("");
+	args.append((game_config::path + "/data/core/images/wesnoth-icon.png").c_str());
+	args.append(QString::fromUtf8(owner.c_str()));
+	args.append(QString::fromUtf8(message.c_str()));
+	args.append(QStringList());
+	args.append(QVariantMap());
+	args.append(5000);
+	QDBusMessage result = notify.callWithArgumentList(QDBus::Block, "Notify", args);
+	if(result.type() == QDBusMessage::ErrorMessage) {
+		ERR_DP << "Failed to send a KDE notification with DBus: " << result.errorMessage().toLocal8Bit().data();
+	}
+#endif
+}
 
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
