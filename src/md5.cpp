@@ -254,9 +254,9 @@ MD5::MD5(std::ifstream& stream)
 
 
 
-unsigned char *MD5::raw_digest(){
-
-  uint1 *s = new uint1[16];
+unsigned char *MD5::raw_digest()
+{
+  static uint1 s[16];
 
   if (!finalized){
     std::cerr << "MD5::raw_digest:  Can't get digest if you haven't "<<
@@ -268,43 +268,7 @@ unsigned char *MD5::raw_digest(){
   return s;
 }
 
-
-
-char *MD5::hex_digest(){
-
-  int i;
-  char *s= new char[33];
-
-  if (!finalized){
-    std::cerr << "MD5::hex_digest:  Can't get digest if you haven't "<<
-      "finalized the digest!" <<std::endl;
-    return (char *)("");
-  }
-
-  for (i=0; i<16; i++)
-    sprintf(s+i*2, "%02x", digest[i]);
-
-  s[32]='\0';
-
-  return s;
-}
-
-
-
-
-
-std::ostream& operator<<(std::ostream &stream, MD5 context){
-
-  stream << context.hex_digest();
-  return stream;
-}
-
-
-
-
 // PRIVATE METHODS:
-
-
 
 void MD5::init(){
   finalized=0;  // we just started!
