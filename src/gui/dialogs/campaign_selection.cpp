@@ -77,11 +77,15 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 		/*** Add list item ***/
 		string_map list_item;
+		std::map<std::string, string_map> list_item_item;
 
-		list_item.insert(std::make_pair("icon", c["icon"]));
-		list_item.insert(std::make_pair("label", c["name"]));
+		list_item["label"] = c["icon"];
+		list_item_item.insert(std::make_pair("icon", list_item));
 
-		list->add_row(list_item);
+		list_item["label"] = c["name"];
+		list_item_item.insert(std::make_pair("name", list_item));
+
+		list->add_row(list_item_item);
 
 		/*** Add detail item ***/
 		string_map detail_item;
