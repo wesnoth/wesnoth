@@ -936,6 +936,7 @@ public:
 			ai.get_info().tod_manager_, src, dst, weapon, -1, 1.0, NULL,
 			&ai.get_info().units.find(move_from)->second)
 	{
+	      type_ = ATTACK_C;
 	}
 
 	const map_location& move_from() const { return move_from_; }
@@ -973,10 +974,6 @@ public:
 		}
 		const int other_def_weapon = a_callable->defender_weapon();
 		return this->defender_weapon() - other_def_weapon;
-	}
-
-	int get_priority() const {
-		return 8;
 	}	
 };
 

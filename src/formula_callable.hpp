@@ -36,7 +36,7 @@ struct formula_input {
 //interface for objects that can have formulae run on them
 class formula_callable : public reference_counted_object {
 public:
-	explicit formula_callable(bool has_self=true) : has_self_(has_self)
+	explicit formula_callable(bool has_self=true) : type_(FORMULA_C), has_self_(has_self)
 	{}
 
 	variant query_value(const std::string& key) const {
@@ -79,37 +79,24 @@ protected:
 
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
-		if( get_priority() < callable->get_priority() ) 
+		if( type_ < callable->type_ )
 			return -1;
 
-		if( get_priority() > callable->get_priority() )
+		if( type_ > callable->type_ )
 			return 1;
 
 		return this < callable ? -1 : (this == callable ? 0 : 1);
-	}
-
-	/*
-	priority of objects that are derived from this class, used in do_compare
-	actual priorities:
-	formula_callable 0
-	terrain_callable 1
-	location_callable 2
-	unit_type_callable 3
-	unit_callable 4
-	attack_type_callable 5
-	move_partial_callable 6
-	move_callable 7
-	attack_callable 8
-	So location_callable < unit_callable etc
-	*/
-	virtual int get_priority() const {
-		return 0;
 	}
 
         //note: this function should NOT overwrite str, but append text to it!
 	virtual void serialize_to_string(std::string& /*str*/) const {
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}
+
+        enum TYPE { FORMULA_C, TERRAIN_C, LOCATION_C, UNIT_TYPE_C, UNIT_C,
+                        ATTACK_TYPE_C, MOVE_PARTIAL_C, MOVE_C, ATTACK_C, MOVE_MAP_C };
+                        
+        TYPE type_;
 private:
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;

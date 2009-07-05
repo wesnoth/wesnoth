@@ -68,13 +68,14 @@ public:
 	typedef map_location location;
 	terrain_callable(const terrain_type& t, const location loc)
 	  : loc_(loc), t_(t)
-	{}
+	{
+		type_ = TERRAIN_C;
+	}
 
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
         int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 private:
 	const location loc_;
 	const terrain_type &t_;
@@ -108,10 +109,11 @@ class location_callable : public game_logic::formula_callable {
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	int do_compare(const game_logic::formula_callable* callable) const;
-	int get_priority() const;
 public:
 	explicit location_callable(const map_location& loc) : loc_(loc)
-	{}
+	{
+		type_ = LOCATION_C;
+	}
 	explicit location_callable(int x, int y) : loc_(map_location(x,y))
 	{}
 
@@ -137,11 +139,12 @@ class move_callable : public game_logic::formula_callable {
 	}
 
 	int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
-	{}
+	{
+		type_ = MOVE_C;
+	}
 
 	const map_location& src() const { return src_; }
 	const map_location& dst() const { return dst_; }
@@ -164,11 +167,12 @@ class move_partial_callable : public game_logic::formula_callable {
 	}
 
 	int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
-	{}
+	{
+		type_ = MOVE_PARTIAL_C;
+	}
 
 	const map_location& src() const { return src_; }
 	const map_location& dst() const { return dst_; }
@@ -185,7 +189,9 @@ class move_map_callable : public game_logic::formula_callable {
 public:
 	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
 	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
-	{}
+	{
+		type_ = MOVE_MAP_C;
+	}
 
 	const move_map& srcdst() const { return srcdst_; }
 	const move_map& dstsrc() const { return dstsrc_; }
@@ -196,14 +202,15 @@ public:
 	typedef map_location location;
 	attack_type_callable(const attack_type attack)
 	  : att_(attack)
-	{}
+	{
+		type_ = ATTACK_TYPE_C;
+	}
 
 	const attack_type& get_attack_type() const { return att_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
 	int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 private:
 	const attack_type att_;
 };
@@ -213,7 +220,9 @@ public:
 	typedef map_location location;
 	unit_callable(const std::pair<location, unit>& pair)
 	  : loc_(pair.first), u_(pair.second)
-	{}
+	{
+		type_ = UNIT_C;
+	}
 
 	const unit& get_unit() const { return u_; }
 	const location& get_location() const { return loc_; }
@@ -221,7 +230,6 @@ public:
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
 	int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 private:
 	const location& loc_;
 	const unit& u_;
@@ -231,14 +239,15 @@ class unit_type_callable : public game_logic::formula_callable {
 public:
 	unit_type_callable(const unit_type& u)
 	  : u_(u)
-	{}
+	{
+		type_ = UNIT_TYPE_C;
+	}
 
 	const unit_type& get_unit_type() const { return u_; }
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
 	int do_compare(const formula_callable* callable) const;
-	int get_priority() const;
 private:
 	const unit_type& u_;
 };

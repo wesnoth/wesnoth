@@ -64,11 +64,6 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 	return loc_.do_compare(other_loc);
 }
 
-int location_callable::get_priority() const
-{
-	return 2;
-}
-
 void location_callable::serialize_to_string(std::string& str) const
 {
 	std::ostringstream s;
@@ -164,11 +159,6 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return att_.range().compare(att_callable->att_.range());
 
 	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
-}
-
-int attack_type_callable::get_priority() const
-{
-	return 5;
 }
 
 variant unit_callable::get_value(const std::string& key) const
@@ -296,11 +286,6 @@ int unit_callable::do_compare(const formula_callable* callable) const
 	return u_.underlying_id() - u_callable->u_.underlying_id();
 }
 
-int unit_callable::get_priority() const
-{
-	return 4;
-}
-
 variant unit_type_callable::get_value(const std::string& key) const
 {
 	if(key == "id") {
@@ -371,11 +356,6 @@ int unit_type_callable::do_compare(const formula_callable* callable) const
 	return u_.id().compare(u_callable->u_.id());
 }
 
-int unit_type_callable::get_priority() const
-{
-	return 3;
-}
-
 variant terrain_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -411,11 +391,6 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 	return loc_.do_compare(other_loc);
 }
 
-int terrain_callable::get_priority() const
-{
-	return 1;
-}
-
 int move_callable::do_compare(const formula_callable* callable) const
 {
 	const move_callable* mv_callable = dynamic_cast<const move_callable*>(callable);
@@ -433,11 +408,6 @@ int move_callable::do_compare(const formula_callable* callable) const
 	return dst_.do_compare(other_dst);
 }
 
-int move_callable::get_priority() const
-{
-	return 7;
-}
-
 int move_partial_callable::do_compare(const formula_callable* callable) const
 {
 	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
@@ -453,10 +423,5 @@ int move_partial_callable::do_compare(const formula_callable* callable) const
 	}
 
 	return dst_.do_compare(other_dst);
-}
-
-int move_partial_callable::get_priority() const
-{
-	return 6;
 }
 
