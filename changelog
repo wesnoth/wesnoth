@@ -1,16 +1,17 @@
 Version 1.6.3+svn:
- * Language and translations
+ * Language and translations:
    * Updated translations: Finnish, French, German, Lithuanian, Polish,
      Serbian, Swedish
- * WML Engine
-   * Petrified units no longer heal. (bug #13513)
- * Miscellaneous and bugfixes:
    * Properly translate dialog title (bug #13761)
    * Properly translate unit name and mark strings translatable (bug #13751)
-   * Fixed dates in the load box being untranslated (bug #13782)
+   * Fixed language switch not affecting unit descriptions (bug #13827)
+ * User interface:
+   * Fixed bug #13831: Bug with team labels
+ * WML Engine:
+   * Petrified units no longer heal. (bug #13513)
+ * Miscellaneous and bugfixes:
    * Fixed networking code regression that could lead to "Client disconnected"
      errors when creating a MP game
-   * Fixed language switch not affecting unit descriptions (bug #13827)
 
 Version 1.6.3:
  * Campaigns:
