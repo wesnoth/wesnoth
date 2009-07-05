@@ -326,6 +326,20 @@ struct tspacer_definition : public tcontrol_definition
 	};
 };
 
+struct tstacked_widget_definition
+	: public tcontrol_definition
+{
+	tstacked_widget_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		tbuilder_grid_ptr grid;
+
+	};
+};
+
 struct ttext_box_definition : public tcontrol_definition
 {
 

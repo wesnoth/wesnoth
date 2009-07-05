@@ -29,10 +29,11 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/menubar.hpp"
 #include "gui/auxiliary/window_builder/multi_page.hpp"
-#include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/scroll_label.hpp"
 #include "gui/auxiliary/window_builder/scrollbar_panel.hpp"
+#include "gui/auxiliary/window_builder/slider.hpp"
 #include "gui/auxiliary/window_builder/spacer.hpp"
+#include "gui/auxiliary/window_builder/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/text_box.hpp"
 #include "gui/auxiliary/window_builder/toggle_button.hpp"
 #include "gui/auxiliary/window_builder/panel.hpp"
@@ -77,6 +78,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(scrollbar_panel);
 	TRY(slider);
 	TRY(spacer);
+	TRY(stacked_widget);
 	TRY(text_box);
 	TRY(password_box);
 	TRY(toggle_button);

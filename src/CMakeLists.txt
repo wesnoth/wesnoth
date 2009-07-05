@@ -279,6 +279,7 @@ SET(wesnoth-main_SRC
     gui/auxiliary/window_builder/scrollbar_panel.cpp
     gui/auxiliary/window_builder/slider.cpp
     gui/auxiliary/window_builder/spacer.cpp
+    gui/auxiliary/window_builder/stacked_widget.cpp
     gui/auxiliary/window_builder/text_box.cpp
     gui/auxiliary/window_builder/toggle_button.cpp
     gui/auxiliary/window_builder/vertical_scrollbar.cpp
@@ -319,12 +320,13 @@ SET(wesnoth-main_SRC
     gui/widgets/panel.cpp
     gui/widgets/password_box.cpp
     gui/widgets/settings.cpp
-    gui/widgets/slider.cpp 
-    gui/widgets/spacer.cpp
     gui/widgets/scroll_label.cpp
     gui/widgets/scrollbar_container.cpp
     gui/widgets/scrollbar_panel.cpp
     gui/widgets/scrollbar.cpp
+    gui/widgets/slider.cpp 
+    gui/widgets/spacer.cpp
+    gui/widgets/stacked_widget.cpp
     gui/widgets/text.cpp
     gui/widgets/text_box.cpp
     gui/widgets/toggle_button.cpp 

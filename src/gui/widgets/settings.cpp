@@ -208,6 +208,11 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Spacer                        A spacer is a dummy widget which can be
  *                                   used if a cell in a container needs to be
  *                                   empty or have a fixed size.
+ *     Stacked_widget                A stacked widget is a control several
+ *                                   widgets can be stacked on top of each
+ *                                   other in the same space. This is mainly
+ *                                   intended for over- and underlays. (The
+ *                                   widget is still experimental.)
  *     Text_box                      A single line text box.
  *     Toggle_button                 A kind of button with two 'states' normal
  *                                   and selected. This is a more generic widget
@@ -270,6 +275,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tmenubar_definition>("menubar", cfg);
 	load_definitions<tminimap_definition>("minimap", cfg);
 	load_definitions<tmulti_page_definition>("multi_page", cfg);
+	load_definitions<tstacked_widget_definition>("stacked_widget", cfg);
 	load_definitions<tpanel_definition>("panel", cfg);
 	load_definitions<tscroll_label_definition>("scroll_label", cfg);
 	load_definitions<tscrollbar_panel_definition>("scrollbar_panel", cfg);
@@ -1082,6 +1088,37 @@ tspacer_definition::tresolution::tresolution(const config& cfg) :
  * A spacer has no states so nothing to load.
  *
  */
+}
+
+tstacked_widget_definition::tstacked_widget_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
+
+	load_resolutions<tresolution>(cfg);
+}
+
+tstacked_widget_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	grid(NULL)
+{
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_stacked_widget
+ *
+ * == Multi page ==
+ *
+ * The documentation is not written yet.
+ */
+
+	// Add a dummy state since every widget needs a state.
+	static config dummy ("draw");
+	state.push_back(tstate_definition(dummy));
+
+	const config &child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(child);
 }
 
 ttext_box_definition::ttext_box_definition(const config& cfg) :
