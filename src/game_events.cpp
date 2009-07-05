@@ -1451,6 +1451,12 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 						}
 						ranges.push_back(std::pair<long, long>(low,high));
 						num_choices += (high - low) + 1;
+
+						// Make 0..0 ranges work
+						if (high == 0 && low == 0) {
+							words.pop_back();
+							words.push_back("0");
+						}
 					}
 				}
 
@@ -1540,6 +1546,12 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					}
 					ranges.push_back(std::pair<long, long>(low,high));
 					num_choices += (high - low) + 1;
+
+					// Make 0..0 ranges work
+					if (high == 0 && low == 0) {
+						words.pop_back();
+						words.push_back("0");
+					}
 				}
 			}
 
