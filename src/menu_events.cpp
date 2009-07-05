@@ -1489,17 +1489,13 @@ private:
 
 	void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	{
-		if(map_.on_board(mousehandler.get_last_hex()) == false) {
+		const map_location& loc = mousehandler.get_last_hex();
+		if (map_.on_board(loc) == false) {
 			return;
 		}
 		gui::dialog d(*gui_, _("Place Label"), "", gui::OK_CANCEL);
-		const terrain_label* old_label = gui_->labels().get_label(mousehandler.get_last_hex());
-		if (old_label) {
-			d.set_textbox(_("Label: "), old_label->text(), map_labels::get_max_chars());
-			team_only = !old_label->team_name().empty();
-		} else {
-			d.set_textbox(_("Label: "), "", map_labels::get_max_chars());
-		}
+		const terrain_label* old_label = gui_->labels().get_label(loc);
+		d.set_textbox(_("Label: "), (old_label ? old_label->text() : ""), map_labels::get_max_chars());
 		d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
 
 		if(!d.show()) {
@@ -1511,7 +1507,13 @@ private:
 			} else {
 				colour = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 			}
-			const terrain_label *res = gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), team_name, colour);
+			const std::string& old_team_name = old_label ? old_label->team_name() : "";
+			// remove the old label if we changed the team_name
+			if (d.option_checked() == (old_team_name == "")) {
+				const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, colour);
+				if (old) recorder.add_label(old);
+			}
+			const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, colour);
 			if (res)
 				recorder.add_label(res);
 		}
