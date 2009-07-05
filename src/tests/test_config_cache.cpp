@@ -82,9 +82,6 @@ struct config_cache_fixture {
 	config_cache_fixture() : cache(test_config_cache::instance()), old_locale(get_language()), test_def("TEST")
 	{
 		test_utils::get_test_config_ref();
-		const language_list& langs = get_languages();
-		language_list::const_iterator German = std::find_if(langs.begin(), langs.end(), boost::bind(&config_cache_fixture::match_de, this, _1));
-		set_language(*German);
 	}
 	~config_cache_fixture()
 	{
@@ -93,10 +90,6 @@ struct config_cache_fixture {
 	test_config_cache& cache;
 	language_def old_locale;
 	test_scoped_define test_def;
-	bool match_de(const language_def& def)
-	{
-		return def.localename == "de_DE";
-	}
 };
 
 BOOST_AUTO_TEST_CASE( test_preproc_defines )
