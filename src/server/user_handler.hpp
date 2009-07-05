@@ -16,7 +16,8 @@
 #define USER_HANDLER_HPP_INCLUDED
 
 class config;
-class mailer;
+
+#include "mail.hpp"
 
 #include "../global.hpp"
 
@@ -41,7 +42,13 @@ class user_handler {
 		{
 		}
 
-		virtual ~user_handler() {}
+		virtual ~user_handler() 
+		{ 
+			if(mailer_) {
+				delete mailer_; 
+				mailer_ = NULL;
+			}
+		}
 
 		/**
 		 * Adds a user.
