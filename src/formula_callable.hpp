@@ -93,6 +93,9 @@ protected:
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}
 
+	//priority for objects that are derived from this class, used in do_compare
+	//when comparing objects of different types
+	//for example: formula_callable < terrain_callable < unit_type_callable ...
         enum TYPE { FORMULA_C, TERRAIN_C, LOCATION_C, UNIT_TYPE_C, UNIT_C,
                         ATTACK_TYPE_C, MOVE_PARTIAL_C, MOVE_C, ATTACK_C, MOVE_MAP_C };
                         
