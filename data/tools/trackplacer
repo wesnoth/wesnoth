@@ -125,7 +125,7 @@ def within(x, y, (l, t, r, d)):
         return True
     return False
 
-def overlaps((x1,y1,x1d,y1d),(x2,y2,x2d,y2d)):
+def overlaps(p1, p2):
     "Do two rectangles overlap?"
     (x1,y1,x1d,y1d) = p1
     (x2,y2,x2d,y2d) = p2
