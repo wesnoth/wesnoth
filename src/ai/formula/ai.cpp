@@ -2645,11 +2645,10 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 
 	unit_moves = srcdst_.equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		map_location diff(((*i).second));
-		diff.x -= unit_B.x;
-		diff.y -= unit_B.y;
-		
-		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
+		map_location diff((((*i).second)).vector_difference(unit_B));
+
+		if( ( ( diff.y == -1 || diff.y == 0 ) && (abs(diff.x) <= 1) ) ||
+			( diff.y == 1 && diff.x == 0 ) ) {
 			return true;
 		}
 	}
