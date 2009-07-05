@@ -70,28 +70,28 @@ static lg::log_domain log_engine("engine");
 		if (wc == NULL) return;
 		if (MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0, name.c_str(), -1,
 								wc, wlen) == 0) {
-			delete wc;
+			delete [] wc;
 			return;
 		}
 		int alen = WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
 									   NULL, 0, NULL, NULL);
 		if (alen == 0) {
-			delete wc;
+			delete [] wc;
 			return;
 		}
 		CHAR *ac = new CHAR[alen];
 		if (ac == NULL) {
-			delete wc;
+			delete [] wc;
 			return;
 		}
 		WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
 							ac, alen, NULL, NULL);
-		delete wc;
+		delete [] wc;
 		if (ac == NULL) {
 			return;
 		}
 		name = ac;
-		delete ac;
+		delete [] ac;
 
 		return;
 	}
