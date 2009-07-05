@@ -93,6 +93,15 @@ void tlistbox::add_row(
 	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
+void tlistbox::remove_row(const unsigned row)
+{
+	if(row >= get_item_count()) {
+		return;
+	}
+
+	/** @todo implement. */
+}
+
 unsigned tlistbox::get_item_count() const
 {
 	assert(generator_);

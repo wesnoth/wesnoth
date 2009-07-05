@@ -72,6 +72,14 @@ public:
 	void add_row(const std::map<std::string /* widget id */,
 			string_map>& data);
 
+	/**
+	 * Removes a row in the listbox.
+	 *
+	 * @param row                 The row to remove, when not in
+	 *                            range the function is ignored.
+	 */
+	void remove_row(const unsigned row);
+
 	/** Returns the number of items in the listbox. */
 	unsigned get_item_count() const;
 
