@@ -2326,29 +2326,23 @@ bool formula_ai::do_recruitment()
 		return false;
 	}
 
-	variant var = recruit_formula_->execute(*this);
-	std::vector<variant> vars;
-	if(var.is_list()) {
-		for(size_t n = 0; n != var.num_elements(); ++n) {
-			vars.push_back(var[n]);
-		}
-	} else {
-		vars.push_back(var);
-	}
-
 	bool ret = false;
-	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
-		if(!i->is_string()) {
-			return false;
-		}
 
-		if(!recruit(i->as_string())) {
-			return ret;
+	game_logic::map_formula_callable callable(this);
+	callable.add_ref();
+	try {
+		while(make_action(recruit_formula_,callable)) 
+		{
+		    ret = true;
 		}
-		ret = true;
+	}
+	catch(formula_error& e) {
+		if(e.filename == "recruit formula")
+			e.line = 0;
+			handle_exception( e, "Formula error");
 	}
 
-	return do_recruitment();
+	return ret;
 }
 
 namespace {
