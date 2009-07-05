@@ -42,7 +42,13 @@ tcontrol::tcontrol(const unsigned canvas_count)
 
 void tcontrol::set_members(const string_map& data)
 {
-	string_map::const_iterator itor = data.find("label");
+	/** @todo document this feature on the wiki. */
+	string_map::const_iterator itor = data.find("id");
+	if(itor != data.end()) {
+		set_id(itor->second);
+	}
+
+	itor = data.find("label");
 	if(itor != data.end()) {
 		set_label(itor->second);
 	}
