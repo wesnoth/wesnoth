@@ -2,13 +2,17 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.6/changelog
 
-Version 1.6.3+svn:
+Version 1.6.4:
   * Language and translations
     * Updated translations: Finnish, French, German, Lithuanian, Polish,
       Serbian, Swedish.
 
   * User interface
-    * Fixed bug #13831: Bug with team labels
+    * Fixed Bug with team labels (bug #13831).
+
+  * Miscellaneous and bugfixes
+    * Fixed networking code regression that could lead to "Client disconnected"
+      errors when creating a MP game
 
 
 Version 1.6.3:
