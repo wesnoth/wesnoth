@@ -19,8 +19,9 @@
 
 
 #include <boost/lexical_cast.hpp>
-#include <vector>
 #include <queue>
+#include <utility>
+#include <vector>
 
 #include "ai.hpp"
 #include "candidates.hpp"
@@ -1423,200 +1424,86 @@ public:
 	  : function_expression("max_possible_damage_with_retaliation", args, 2, 2), ai_(ai_object)
 	{}
 private:
+
+	/*
+	 * we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
+	 * unit adapters let us treat unit and unit_type the same in the following code
+	 */
+	class unit_adapter {
+		public:
+			unit_adapter(const variant& arg) {
+				const unit_callable* unit = try_convert_variant<unit_callable>(arg);
+
+				if (unit) {
+					unit_ = &unit->get_unit();
+				} else {
+					unit_type_ = &(convert_variant<unit_type_callable>(arg)->get_unit_type());
+				}
+			}
+
+			int damage_from(const attack_type& attack) const {
+				if(unit_type_ != NULL) {
+					return unit_type_->movement_type().resistance_against(attack);
+				} else {
+					return unit_->damage_from(attack, false, map_location());
+				}
+			}
+
+			// FIXME: we return a vector by value because unit_type and unit APIs
+			// disagree as to what should be returned by their attacks() method
+			std::vector<attack_type> attacks() const {
+				if(unit_type_ != NULL) {
+					return unit_type_->attacks();
+				} else {
+					return unit_->attacks();
+				}
+			}
+
+		private:
+			const unit_type *unit_type_;
+			const unit* unit_;
+	};
+
+	std::pair<int, int> best_melee_and_ranged_attacks(unit_adapter attacker, unit_adapter defender) const {
+		int highest_melee_damage = 0;
+		int highest_ranged_damage = 0;
+
+		std::vector<attack_type> attacks = attacker.attacks();
+
+		foreach(const attack_type &attack, attacks) {
+			const int dmg = round_damage(attack.damage(), defender.damage_from(attack), 100) * attack.num_attacks();
+			if (attack.range() == "melee") {
+				highest_melee_damage = std::max(highest_melee_damage, dmg);
+			} else {
+				highest_ranged_damage = std::max(highest_ranged_damage, dmg);
+			}
+		}
+
+		return std::make_pair(highest_melee_damage, highest_ranged_damage);
+	}
+
 	variant execute(const formula_callable& variables) const {
 		variant u1 = args()[0]->evaluate(variables);
 		variant u2 = args()[1]->evaluate(variables);
+
 		if(u1.is_null() || u2.is_null()) {
 			return variant();
 		}
+
+		unit_adapter attacker(u1);
+		unit_adapter defender(u2);
+
+		// find max damage inflicted by attacker and by defender to the attacker
+		std::pair<int, int> best_attacker_attacks = best_melee_and_ranged_attacks(attacker, defender);
+		std::pair<int, int> best_defender_attacks = best_melee_and_ranged_attacks(defender, attacker);
+
 		std::vector<variant> vars;
+		vars.push_back(variant(best_attacker_attacks.first));
+		vars.push_back(variant(best_attacker_attacks.second));
+		vars.push_back(variant(best_defender_attacks.first));
+		vars.push_back(variant(best_defender_attacks.second));
 
-		//store best damage and best attack causing it
-		int best_melee = 0;
-		int best_ranged = 0;
-		std::vector<attack_type>::const_iterator best_attack;
-
-		//vectors with attacks for attacker and defender
-		std::vector<attack_type> att_attacks_tmp;
-		std::vector<attack_type>& att_attacks = att_attacks_tmp;
-
-		std::vector<attack_type> def_attacks_tmp;
-		std::vector<attack_type>& def_attacks = def_attacks_tmp;
-
-		//we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
-		const unit_callable* u_attacker = try_convert_variant<unit_callable>(u1);
-		if (u_attacker)
-		{
-			const unit& attacker = u_attacker->get_unit();
-			att_attacks = attacker.attacks();
-
-			const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
-			if (u_defender)
-			{
-				const unit& defender = u_defender->get_unit();
-
-				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-
-				best_melee = 0;
-				best_ranged = 0;
-				def_attacks = defender.attacks();
-
-				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, map_location()), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-				return variant(&vars);
-
-			} else
-			{
-				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
-
-				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-
-				best_melee = 0;
-				best_ranged = 0;
-				def_attacks_tmp = defender.attacks();
-
-				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, map_location()), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-				return variant(&vars);
-			}
-
-		} else
-		{
-			const unit_type& attacker = convert_variant<unit_type_callable>(u1)->get_unit_type();
-			att_attacks = attacker.attacks();
-
-			const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
-			if (u_defender)
-			{
-				const unit& defender = u_defender->get_unit();
-
-				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-
-				best_melee = 0;
-				best_ranged = 0;
-				def_attacks = defender.attacks();
-
-				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.movement_type().resistance_against(*i), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-				return variant(&vars);
-
-			} else
-			{
-				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
-
-				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-
-				best_melee = 0;
-				best_ranged = 0;
-				def_attacks_tmp = defender.attacks();
-
-				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.movement_type().resistance_against(*i), 100) * i->num_attacks();
-					if ( i->range() == "melee")
-					{
-						if(dmg > best_melee)
-							best_melee = dmg;
-					} else {
-						if(dmg > best_ranged)
-							best_ranged = dmg;
-					}
-				}
-
-				vars.push_back(variant(best_melee));
-				vars.push_back(variant(best_ranged));
-				return variant(&vars);
-			}
-		}
+		return variant(&vars);
 	}
 
 	const formula_ai& ai_;
