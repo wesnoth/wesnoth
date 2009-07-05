@@ -25,6 +25,12 @@
 #include <libnotifymm-1.0/libnotifymm.h>
 #endif
 
+#ifdef HAVE_GROWL
+#include <Growl/GrowlApplicationBridge-Carbon.h>
+#include <Carbon/Carbon.h>
+Growl_Delegate growl_obj;
+#endif
+
 #ifdef HAVE_QTDBUS
 #include <QtDBus>
 #endif
@@ -1034,7 +1040,7 @@ std::string game_display::current_team_name() const
 
 void game_display::send_notification(const std::string& owner, const std::string& message)
 {
-#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS)
+#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
 	Uint8 app_state = SDL_GetAppState();
 
@@ -1078,6 +1084,24 @@ void game_display::send_notification(const std::string& owner, const std::string
 	if(result.type() == QDBusMessage::ErrorMessage) {
 		ERR_DP << "Failed to send a KDE notification with DBus: " << result.errorMessage().toLocal8Bit().data();
 	}
+#endif
+
+#ifdef HAVE_GROWL
+	CFStringRef app_name = CFStringCreateWithCString(NULL, "Wesnoth", kCFStringEncodingUTF8);
+	CFStringRef cf_owner = CFStringCreateWithCString(NULL, owner.c_str(), kCFStringEncodingUTF8);
+	CFStringRef cf_message = CFStringCreateWithCString(NULL, message.c_str(), kCFStringEncodingUTF8);
+	//Should be changed as soon as there are more than 2 types of notifications
+	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, owner == "Turn changed" ? "Turn changed" : "Chat message", kCFStringEncodingUTF8);
+	
+	growl_obj.applicationName = app_name;
+	growl_obj.registrationDictionary = NULL;
+	growl_obj.applicationIconData = NULL;
+	growl_obj.growlIsReady = NULL;
+	growl_obj.growlNotificationWasClicked = NULL;
+	growl_obj.growlNotificationTimedOut = NULL;
+	
+	Growl_SetDelegate(&growl_obj);
+	Growl_NotifyWithTitleDescriptionNameIconPriorityStickyClickContext(cf_owner, cf_message, cf_note_name, NULL, NULL, NULL, NULL);
 #endif
 }
 
