@@ -27,7 +27,7 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "game_preferences.hpp"
-
+#include "playmp_controller.hpp"
 #include <boost/bind.hpp>
 
 static lg::log_domain log_network("network");
@@ -69,11 +69,12 @@ void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& sp
 	window_->invalidate_layout();
 }
 
-tlobby_main::tlobby_main(const config& game_config)
-: game_config_(game_config)
+tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
+: legacy_result_(QUIT)
+, game_config_(game_config)
 , gamelistbox_(NULL), chat_log_(NULL)
 , chat_input_(NULL), window_(NULL)
-, lobby_info_(new lobby_info(game_config))
+, lobby_info_(info)
 {
 }
 
@@ -100,7 +101,7 @@ void add_label_data(std::map<std::string, string_map>& map,
 
 void tlobby_main::update_gamelist()
 {
-	foreach (const game_info &game, lobby_info_->games())
+	foreach (const game_info &game, lobby_info_.games())
 	{
 		std::map<std::string, string_map> data;
 
@@ -128,7 +129,7 @@ void tlobby_main::update_gamelist()
 		observe_button->set_callback_mouse_left_click(
 			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
 	}
-	foreach (const user_info& user, lobby_info_->users())
+	foreach (const user_info& user, lobby_info_.users())
 	{
 		std::map<std::string, string_map> data;
 		add_label_data(data, "player", user.name);
@@ -151,13 +152,16 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
 	window_ = &window;
 
-	tbutton* send_message = dynamic_cast<tbutton*>(window.find_widget("send_message", false));
-	VALIDATE(send_message, missing_widget("send_message"));
-	send_message->set_callback_mouse_left_click(dialog_callback<tlobby_main,
-		&tlobby_main::send_message_button_callback>);
-
 	chat_input_ = dynamic_cast<ttext_box*>(window.find_widget("chat_input", false));
 	VALIDATE(chat_input_, missing_widget("chat_input"));
+
+	GUI2_EASY_BUTTON_CALLBACK(send_message, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(create, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(show_help, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(refresh, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(settings, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
@@ -213,13 +217,13 @@ void tlobby_main::process_message(const config &data, bool /*whisper / *= false*
 
 void tlobby_main::process_gamelist(const config &data)
 {
-	lobby_info_->process_gamelist(data);
+	lobby_info_.process_gamelist(data);
 	update_gamelist();
 }
 
 void tlobby_main::process_gamelist_diff(const config &data)
 {
-	if (lobby_info_->process_gamelist_diff(data)) {
+	if (lobby_info_.process_gamelist_diff(data)) {
 		update_gamelist();
 	}
 }
@@ -236,14 +240,66 @@ void tlobby_main::process_room_query_response(const config &/*data*/)
 {
 }
 
-void tlobby_main::join_button_callback(gui2::twindow &/*window*/)
+void tlobby_main::join_button_callback(gui2::twindow &window)
 {
 	LOG_NW << "join_button_callback\n";
+	join_global_button_callback(window);
 }
 
-void tlobby_main::observe_button_callback(gui2::twindow &/*window*/)
+void tlobby_main::observe_button_callback(gui2::twindow &window)
 {
 	LOG_NW << "observe_button_callback\n";
+	observe_global_button_callback(window);
+}
+
+void tlobby_main::observe_global_button_callback(gui2::twindow &window)
+{
+	LOG_NW << "observe_global_button_callback\n";
+	do_game_join(gamelistbox_->get_selected_row(), true);
+	legacy_result_ = OBSERVE;
+	window.close();
+}
+
+void tlobby_main::join_global_button_callback(gui2::twindow &window)
+{
+	LOG_NW << "join_global_button_callback\n";
+	do_game_join(gamelistbox_->get_selected_row(), false);
+	legacy_result_ = JOIN;
+	window.close();
+}
+
+bool tlobby_main::do_game_join(int idx, bool observe)
+{
+	if (idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
+		ERR_NG << "Requested join/observe of a game with index out of range: "
+			<< idx << ", games size is " << lobby_info_.games().size() << "\n";
+		return false;
+	}
+	const game_info& game = lobby_info_.games()[idx];
+
+	config response;
+	config& join = response.add_child("join");
+	join["id"] = game.id;
+	join["observe"] = observe ? "yes" : "no";
+	if (join && game.password_required) {
+		std::string password;
+		/*
+		const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
+		          _("Joining this game requires a password."),
+		          gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
+		if (res != 0) {
+			return false;
+		}
+		*/
+		if(!password.empty()) {
+			join["password"] = password;
+		}
+	}
+	network::send_data(response, 0, true);
+	if (observe && game.started) {
+		playmp_controller::set_replay_last_turn(game.current_turn);
+	}
+	return true;
 }
 
 void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
@@ -252,6 +308,28 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 	if (input.empty()) return;
 	chat_handler::do_speak(input);
 	chat_input_->set_value("");
+}
+
+void tlobby_main::create_button_callback(gui2::twindow& window)
+{
+	legacy_result_ = CREATE;
+	window.close();
+}
+
+void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
+{
+	network::send_data(config("refresh_lobby"), 0, true);
+}
+
+
+void tlobby_main::settings_button_callback(gui2::twindow& window)
+{
+	legacy_result_ = PREFERENCES;
+	window.close();
+}
+
+void tlobby_main::show_help_button_callback(gui2::twindow& /*window*/)
+{
 }
 
 } // namespace gui2

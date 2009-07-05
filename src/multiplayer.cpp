@@ -458,7 +458,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
-	if(gui2::new_widgets) {
+	if (0 && gui2::new_widgets) {
 
 		gui2::tmp_create_game dlg(game_config);
 
@@ -493,9 +493,30 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
+	lobby_info li(game_config);
 
 	while (true) {
-		{
+		if(gui2::new_widgets) {
+			gui2::tlobby_main dlg(game_config, li);
+			dlg.show(disp.video());
+			//ugly kludge for launching other dialogs like the old lobby
+			switch (dlg.get_legacy_result()) {
+				case gui2::tlobby_main::CREATE:
+					res = mp::ui::CREATE;
+					break;
+				case gui2::tlobby_main::PREFERENCES:
+					res = mp::ui::PREFERENCES;
+					break;
+				case gui2::tlobby_main::JOIN:
+					res = mp::ui::JOIN;
+					break;
+				case gui2::tlobby_main::OBSERVE:
+					res = mp::ui::OBSERVE;
+					break;
+				default:
+					res = mp::ui::QUIT;
+			}
+		} else {
 			mp::lobby ui(disp, game_config, chat, gamelist);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
@@ -576,12 +597,7 @@ void start_client(game_display& disp, const config& game_config,
 
 	switch(type) {
 	case WESNOTHD_SERVER:
-		if(gui2::new_widgets) {
-			gui2::tlobby_main dlg(game_config);
-			dlg.show(disp.video());
-		} else {
-			enter_lobby_mode(disp, game_config, chat, gamelist);
-		}
+		enter_lobby_mode(disp, game_config, chat, gamelist);
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);

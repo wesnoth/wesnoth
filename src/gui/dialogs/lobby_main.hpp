@@ -18,10 +18,10 @@
 #include "gui/dialogs/dialog.hpp"
 #include "config.hpp"
 #include "chat_events.hpp"
+#include "lobby_data.hpp"
 
 #include "boost/scoped_ptr.hpp"
 
-class lobby_info;
 
 namespace gui2 {
 
@@ -33,17 +33,23 @@ class twindow;
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main(const config& game_config);
+	tlobby_main(const config& game_config, lobby_info& info);
 
 	~tlobby_main();
 
 	void update_gamelist();
+
+	enum legacy_result { QUIT, JOIN, OBSERVE, CREATE, PREFERENCES };
+
+	legacy_result get_legacy_result() const { return legacy_result_; }
 protected:
 	void send_chat_message(const std::string& message, bool /*allies_only*/);
 	void add_chat_message(const time_t& time, const std::string& speaker,
 		int side, const std::string& message,
 		events::chat_handler::MESSAGE_TYPE type = events::chat_handler::MESSAGE_PRIVATE);
 private:
+	legacy_result legacy_result_;
+
 	/**
 	 * Network polling callback
 	 */
@@ -67,8 +73,29 @@ private:
 
 	void observe_button_callback(twindow& window);
 
+	void join_global_button_callback(twindow& window);
+
+	void observe_global_button_callback(twindow& window);
+
+	/**
+	 * Assemble and send a game join request. Ask for password if the game
+	 * requires one.
+	 * @return true iif the request was actually sent, false if not for some
+	 *         reason like user canceled the password dialog or idx was invalid.
+	 */
+	bool do_game_join(int idx, bool observe);
+
 	void send_message_button_callback(twindow& window);
 
+	void create_button_callback(twindow& window);
+
+	void settings_button_callback(twindow& window);
+
+	void show_help_button_callback(twindow& window);
+
+	void refresh_button_callback(twindow& window);
+
+	void quit_button_callback(twindow& window);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -91,7 +118,7 @@ private:
 
 	twindow* window_;
 
-	boost::scoped_ptr<lobby_info> lobby_info_;
+	lobby_info& lobby_info_;
 };
 
 } // namespace gui2
