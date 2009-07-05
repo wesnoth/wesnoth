@@ -86,19 +86,34 @@ twindow* tlobby_main::build_window(CVideo& video)
 	return build(video, get_id(LOBBY_MAIN));
 }
 
+namespace {
+
+void add_label_data(std::map<std::string, string_map>& map,
+					const std::string& key, const std::string& label)
+{
+	string_map item;
+	item["label"] = label;
+	map.insert(std::make_pair(key, item));
+}
+
+} //end anonymous namespace
+
 void tlobby_main::update_gamelist()
 {
 	foreach (const game_info &game, lobby_info_->games())
 	{
 		std::map<std::string, string_map> data;
-		string_map item;
-		std::string tmp;
 
-		item["label"] = game.name;
-		data.insert(std::make_pair("name", item));
-
-		item["label"] = game.map_info;
-		data.insert(std::make_pair("name", item));
+		add_label_data(data, "name", game.name);
+		add_label_data(data, "era", game.era);
+		add_label_data(data, "era_short", game.era_short);
+		add_label_data(data, "map_info", game.map_info);
+		add_label_data(data, "time_limit", game.time_limit);
+		add_label_data(data, "status", game.status);
+		add_label_data(data, "gold", game.gold);
+		add_label_data(data, "xp", game.xp);
+		add_label_data(data, "vision", game.vision);
+		add_label_data(data, "map_info", game.map_info);
 
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
@@ -113,6 +128,12 @@ void tlobby_main::update_gamelist()
 		observe_button->set_callback_mouse_left_click(
 			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
 	}
+	foreach (const user_info& user, lobby_info_->users())
+	{
+		std::map<std::string, string_map> data;
+		add_label_data(data, "player", user.name);
+		userlistbox_->add_row(data);
+	}
 	window_->invalidate_layout();
 }
 
@@ -120,6 +141,9 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 {
 	gamelistbox_ = dynamic_cast<tlistbox*>(window.find_widget("game_list", false));
 	VALIDATE(gamelistbox_, missing_widget("game_list"));
+
+	userlistbox_ = dynamic_cast<tlistbox*>(window.find_widget("user_list", false));
+	VALIDATE(userlistbox_, missing_widget("user_list"));
 
 	chat_log_ = dynamic_cast<tlabel*>(window.find_widget("chat_log", false));
 	VALIDATE(chat_log_, missing_widget("chat_log"));

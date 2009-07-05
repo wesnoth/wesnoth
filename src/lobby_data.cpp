@@ -113,6 +113,26 @@ game_info::game_info() :
 {
 }
 
+namespace {
+
+std::string make_short_name(const std::string long_name)
+{
+	if (long_name.empty()) return "";
+	std::string sh;
+	bool had_space = true;
+	for (size_t i = 1; i < long_name.size(); ++i) {
+		if (long_name[i] == ' ') {
+			had_space = true;
+		} else if (had_space && long_name[i] != '?') {
+			sh += long_name[i];
+			had_space = false;
+		}
+	}
+	return sh;
+}
+
+} //end anonymous namespace
+
 game_info::game_info(const config& game, const config& game_config)
 : mini_map()
 , id(game["id"])
@@ -120,6 +140,8 @@ game_info::game_info(const config& game, const config& game_config)
 , name(game["name"])
 , map_info()
 , map_info_size()
+, era()
+, era_short()
 , gold(game["mp_village_gold"])
 , xp(game["experience_modifier"] + "%")
 , vision()
@@ -145,16 +167,23 @@ game_info::game_info(const config& game, const config& game_config)
 		utils::string_map symbols;
 		symbols["era_id"] = game["mp_era"];
 		if (era_cfg) {
-			map_info = era_cfg["name"];
+			era = era_cfg["name"];
+			era_short = era_cfg["short_name"];
+			if (era_short.empty()) {
+				era_short = make_short_name(era);
+			}
 		} else {
 			have_era = (game["require_era"] == "no");
-			map_info = vgettext("Unknown era: $era_id", symbols);
+			era = vgettext("Unknown era: $era_id", symbols);
+			era_short = "?" + make_short_name(era);
 			verified = false;
 		}
 	} else {
-		map_info = _("Unknown era");
+		era = _("Unknown era");
+		era_short = "??";
 		verified = false;
 	}
+	map_info = era;
 
 	if (map_data.empty()) {
 		map_data = read_map(game["map"]);
@@ -236,7 +265,7 @@ game_info::game_info(const config& game, const config& game_config)
 		started = false;
 		if (vacant_slots > 0) {
 			status = std::string(_n("Vacant Slot:", "Vacant Slots:",
-					vacant_slots)) + " " + slots;
+					vacant_slots)) + " " + game["slots"];
 			if (password_required) {
 				status += std::string(" (") + std::string(_("Password Required")) + ")";
 			}

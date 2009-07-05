@@ -83,6 +83,8 @@ private:
 
 	tlistbox* gamelistbox_;
 
+	tlistbox* userlistbox_;
+
 	tlabel* chat_log_;
 
 	ttext_box* chat_input_;
