@@ -374,8 +374,6 @@ t_string& config::operator[](const std::string& key)
 
 const t_string& config::operator[](const std::string& key) const
 {
-	check_valid();
-
 	return get_attribute(key);
 }
 
@@ -450,20 +448,7 @@ const config &config::find_child(const std::string& key,
                                  const std::string& name,
                                  const t_string& value) const
 {
-	check_valid();
-
-	const child_map::const_iterator i = children.find(key);
-	if(i == children.end())
-		return invalid;
-
-	const child_list::const_iterator j = std::find_if(
-	                                            i->second.begin(),
-	                                            i->second.end(),
-	                                            config_has_value(name,value));
-	if(j != i->second.end())
-		return **j;
-	else
-		return invalid;
+	return const_cast<config *>(this)->find_child(key, name, value);
 }
 
 namespace {
