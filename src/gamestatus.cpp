@@ -693,6 +693,7 @@ void game_state::get_player_info(const config& cfg,
 		for(std::vector<unit>::iterator it = player->available_units.begin();
 			it != player->available_units.end(); ++it) {
 			it->set_side(side);
+			teams.back().recall_list().push_back(*it); //FIXME: take recall list from snapshot/replay_start once player_info is removed
 		}
 	}
 
@@ -714,6 +715,13 @@ void game_state::get_player_info(const config& cfg,
 					new_unit = *it;
 					new_unit.set_game_context(&units, &map, &tod_mng, &teams);
 					player->available_units.erase(it);
+					break;
+				}
+			}
+			for(std::vector<unit>::iterator it = teams.back().recall_list().begin();
+				it != teams.back().recall_list().end(); ++it) {
+				if(it->can_recruit()) {
+					teams.back().recall_list().erase(it);
 					break;
 				}
 			}
@@ -766,6 +774,7 @@ void game_state::get_player_info(const config& cfg,
 	// Moving [player] into [replay_start] should be the correct way to go.
 	if (player && snapshot){
 		player->available_units.clear();
+		teams.back().recall_list().clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
 		unit new_unit(&units, &map, &tod_mng, &teams,**su,true);
@@ -779,6 +788,7 @@ void game_state::get_player_info(const config& cfg,
 		if(x.empty() && y.empty()) {
 			if(player) {
 				player->available_units.push_back(new_unit);
+				teams.back().recall_list().push_back(new_unit);
 				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
 			} else {
 				throw game::load_game_failed(
