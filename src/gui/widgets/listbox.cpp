@@ -35,6 +35,7 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 	, generator_(NULL)
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
+	, linked_size_initialized_(false)
 {
 	generator_ = tgenerator_::build(
 			has_minimum, has_maximum, placement, select);
@@ -79,7 +80,9 @@ void tlistbox::add_row(
 	twindow* window = get_window();
 	assert(window);
 
-	if(get_item_count() == 1) {
+	if(!linked_size_initialized_) {
+		linked_size_initialized_ = true;
+
 		init_linked_size_widets(*window, grid.begin(), grid.end());
 
 		tgrid* header_grid = dynamic_cast<tgrid*>(
@@ -93,18 +96,41 @@ void tlistbox::add_row(
 	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
-void tlistbox::remove_row(const unsigned row)
+void tlistbox::remove_row(const unsigned row, unsigned count)
 {
+	assert(generator_);
+
 	if(row >= get_item_count()) {
 		return;
 	}
 
-	/** @todo implement. */
+	if(!count || count > get_item_count()) {
+		count = get_item_count();
+	}
+
+	for(; count; --count) {
+		twindow* window = get_window();
+		assert(window);
+
+		tgrid* grid = get_row_grid(row);
+		assert(grid);
+
+		remove_linked_size_widgets(*window, grid->begin(), grid->end());
+
+		generator_->delete_item(row);
+	}
+}
+
+void tlistbox::clear()
+{
+	// Due to the removing from the linked group, don't use
+	// generator_->clear() directly.
+	remove_row(0, 0);
 }
 
 void tlistbox::remove_all_rows()
 {
-	/** @todo implement. */
+	clear();
 }
 
 unsigned tlistbox::get_item_count() const
@@ -295,6 +321,27 @@ void tlistbox::add_linked_size_widgets(twindow& window,
 		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
 		if(container) {
 			add_linked_size_widgets(window,
+					container->begin(), container->end());
+		}
+	}
+}
+
+void tlistbox::remove_linked_size_widgets(twindow& window,
+		const tgrid::iterator& begin, const tgrid::iterator& end)
+{
+	for(tgrid::iterator itor = begin; itor != end; ++itor) {
+
+		assert(*itor);
+
+		// Add to list.
+		if(!itor->id().empty()) {
+			window.remove_linked_widget(itor->id(), *itor);
+		}
+
+		// Recurse though the children.
+		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
+		if(container) {
+			remove_linked_size_widgets(window,
 					container->begin(), container->end());
 		}
 	}

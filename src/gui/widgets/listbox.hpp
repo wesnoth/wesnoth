@@ -77,12 +77,15 @@ public:
 	 *
 	 * @param row                 The row to remove, when not in
 	 *                            range the function is ignored.
+	 * @param count               The number of rows to remove, 0 means all
+	 *                            rows (starting from row).
 	 */
-	void remove_row(const unsigned row);
+	void remove_row(const unsigned row, unsigned count = 1);
 
-	/**
-	 * Removes all the rows in the listbox, clearing it.
-	 */
+	/** Removes all the rows in the listbox, clearing it. */
+	void clear();
+
+	/** @todo remove, since duplicate of clear. */
 	void remove_all_rows();
 
 	/** Returns the number of items in the listbox. */
@@ -193,9 +196,9 @@ private:
 	/**
 	 * Initializes the linked size list.
 	 *
-	 * The routine goes from begin to end through the widgets and if the widget
-	 * has an id it's used to initialize the linked size list of the parent
-	 * window. If the widget is a container all it's children are also
+	 * The routine goes from begin to end through the widgets and if the
+	 * widget has an id it's used to initialize the linked size list of the
+	 * parent window. If the widget is a container all its children are also
 	 * initialized.
 	 *
 	 * @param window              The parent window.
@@ -208,15 +211,29 @@ private:
 	/**
 	 * Adds widgets to the linked size list.
 	 *
-	 * The routine goes from begin to end through the widgets and if the widget
-	 * has an id it's added to the linked size list of the parent window. If
-	 * the widget is a container all it's children are also added.
+	 * The routine goes from begin to end through the widgets and if the
+	 * widget has an id it's added to the linked size list of the parent
+	 * window. If the widget is a container all its children are also added.
 	 *
 	 * @param window              The parent window.
 	 * @param begin               Begin iterator.
 	 * @param end                 End iterator.
 	 */
 	void add_linked_size_widgets(twindow& window,
+			const tgrid::iterator& begin, const tgrid::iterator& end);
+
+	/**
+	 * Removes widgets from the linked size list.
+	 *
+	 * The routine goes from begin to end through the widgets and if the
+	 * widget has an id it's removed from the linked size list of the parent
+	 * window. If the widget is a container all its children are also added.
+	 *
+	 * @param window              The parent window.
+	 * @param begin               Begin iterator.
+	 * @param end                 End iterator.
+	 */
+	void remove_linked_size_widgets(twindow& window,
 			const tgrid::iterator& begin, const tgrid::iterator& end);
 
 	/**
@@ -248,6 +265,14 @@ private:
 	 * change the selected item.
 	 */
 	void (*callback_value_changed_) (twidget*);
+
+	/**
+	 * Is the linked size list initialized.
+	 *
+	 * This needs to be tracked since a listbox can be cleared during its
+	 * usage.
+	 */
+	bool linked_size_initialized_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
