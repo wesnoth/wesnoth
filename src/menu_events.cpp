@@ -58,13 +58,14 @@ namespace events{
 	class delete_recall_unit : public gui::dialog_button_action
 	{
 	public:
-		delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units, undo_list& undo_stack, undo_list& redo_stack) : disp_(disp), filter_(filter), units_(units), undo_stack_(undo_stack), redo_stack_(redo_stack) {}
+		delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units, std::vector<unit>& units_teams, undo_list& undo_stack, undo_list& redo_stack) : disp_(disp), filter_(filter), units_(units), units_teams_(units_teams), undo_stack_(undo_stack), redo_stack_(redo_stack) {}
 	private:
 		gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 		game_display& disp_;
 		gui::filter_textbox& filter_;
 		std::vector<unit>& units_;
+		std::vector<unit>& units_teams_; //FIXME: remove once player_info is removed
 		undo_list& undo_stack_;
 		undo_list& redo_stack_;
 	};
@@ -100,7 +101,9 @@ namespace events{
 			filter_.delete_item(menu_selection);
 			//add dismissal to the undo stack
 			undo_stack_.push_back(undo_action(u, map_location(), static_cast<int>(index), true));
+			//assert(units_.size() == units_teams_.size()); //FIXME: remove once player_info is removed
 			units_.erase(units_.begin() + index);
+			units_teams_.erase(units_teams_.begin() + index);
 			recorder.add_disband(index);
 			//clear the redo stack to avoid duplication of dismissals
 			redo_stack_.clear();
@@ -831,10 +834,12 @@ private:
 		}
 
 		std::vector<unit>& recall_list = player->available_units;
+		std::vector<unit>& recall_list_team = current_team.recall_list();
 
 		//sort the available units into order by value
 		//so that the most valuable units are shown first
 		sort_units(recall_list);
+		sort_units(recall_list_team);
 
 		gui_->draw(); //clear the old menu
 
@@ -909,7 +914,7 @@ private:
 				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
 				rmenu.set_textbox(filter);
 
-				delete_recall_unit recall_deleter(*gui_, *filter, recall_list, undo_stack_, redo_stack_);
+				delete_recall_unit recall_deleter(*gui_, *filter, recall_list, recall_list_team, undo_stack_, redo_stack_);
 				gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 				rmenu.add_button(delete_button);
 
@@ -957,7 +962,9 @@ private:
 
 						redo_stack_.clear();
 
+						//assert(recall_list.size() == recall_list_team.size());
 						recall_list.erase(recall_list.begin()+res);
+						recall_list_team.erase(recall_list_team.begin()+res);
 						gui_->invalidate_game_status();
 						gui_->invalidate_all();
 						recorder.add_checksum_check(loc);
@@ -985,6 +992,7 @@ private:
 			} else {
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,action.affected_unit);
+				current_team.recall_list().insert(current_team.recall_list().begin()+action.recall_pos,action.affected_unit);
 			}
 		} else if(action.is_recall()) {
 			player_info *player = gamestate_.get_player(current_team.save_id());
@@ -1004,6 +1012,7 @@ private:
 
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,un);
+				current_team.recall_list().insert(current_team.recall_list().begin()+action.recall_pos,un);
 				// invalidate before erasing allow us
 				// to also do the ovelerlapped hexes
 				gui_->invalidate(action.recall_loc);
@@ -1104,6 +1113,7 @@ private:
 			std::vector<unit>& recall_list = player->available_units;
 			recorder.add_disband(action.recall_pos);
 			recall_list.erase(recall_list.begin()+action.recall_pos);
+			current_team.recall_list().erase(current_team.recall_list().begin()+action.recall_pos);
 			}
 		} else if(action.is_recall()) {
 			player_info *player = gamestate_.get_player(current_team.save_id());
@@ -1123,6 +1133,7 @@ private:
 					statistics::recall_unit(un);
 					current_team.spend_gold(game_config::recall_cost);
 					recall_list.erase(recall_list.begin()+action.recall_pos);
+					current_team.recall_list().erase(current_team.recall_list().begin()+action.recall_pos);
 
 					gui_->invalidate(action.recall_loc);
 					gui_->draw();

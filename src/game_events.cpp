@@ -1996,6 +1996,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 
 		if(player != NULL) {
 			player->available_units.push_back(u);
+			(*rsrc.teams)[u.side()-1].recall_list().push_back(u);
             return true;
 		} else {
 			ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
@@ -2084,6 +2085,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 			std::vector<unit>& avail = player->available_units;
 
+			int position = 0; //track position of unit to delete
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
 				u->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
@@ -2092,11 +2094,14 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
+					(*rsrc.teams)[index].recall_list().erase((*rsrc.teams)[index].recall_list().begin() + position);
 					recruit_unit(*rsrc.game_map, index + 1, *rsrc.units, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
 					unit_recalled = true;
 					break;
 				}
+				++position;
 			}
+			//assert(player->available_units.size() == (*rsrc.teams)[index].recall_list().size()); //FIXME: remove after player_info removal
 		}
 	}
 
@@ -2334,6 +2339,20 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 					}
 				}
 			}
+			//remove the unit from the corresponding team's recall list aswell
+			for(std::vector<team>::iterator pi = rsrc.teams->begin();
+					pi!=rsrc.teams->end(); ++pi)
+			{
+				std::vector<unit>& avail_units = pi->recall_list();
+				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+					j->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
+						j = avail_units.erase(j);
+					} else {
+						++j;
+					}
+				}
+			}
 		}
 	}
 
@@ -2495,6 +2514,21 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 					}
 				}
 			}
+			//remove unit from team.recall_list_ aswell
+			if (kill_units) {
+				for(std::vector<team>::iterator pi = rsrc.teams->begin();
+						pi != rsrc.teams->end(); ++pi) {
+					std::vector<unit>& avail_units = pi->recall_list();
+					for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+						j->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+						if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
+							++j;
+							continue;
+						}
+						j = avail_units.erase(j);
+					}
+				}
+			}
 		}
 		if(mode != "append") {
 			varinfo.vars->clear_children(varinfo.key);
@@ -2588,6 +2622,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					 * a vector to a map and use the underlying_id as key.
 					 */
 					const size_t key = u.underlying_id();
+					int position = 0; //FIXME: stores position of iterator for team.recall_list_, remove once player_info is removed
+					team& t = (*rsrc.teams)[u.side()-1];
 					for(std::vector<unit>::iterator itor =
 							player->available_units.begin();
 							itor != player->available_units.end(); ++itor) {
@@ -2596,10 +2632,13 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 							<< key << "' on the recall list\n";
 						if(itor->underlying_id() == key) {
 							player->available_units.erase(itor);
+							t.recall_list().erase(t.recall_list().begin() + position);
 							break;
 						}
+						++position;
 					}
 					player->available_units.push_back(u);
+					t.recall_list().push_back(u);
 				} else {
 					ERR_NG << "Cannot unstore unit: no recall list for player " << u.side()
 						<< " and the map location is invalid.\n";
