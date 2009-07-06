@@ -1102,6 +1102,11 @@ void game_display::send_notification(const std::string& owner, const std::string
 	
 	Growl_SetDelegate(&growl_obj);
 	Growl_NotifyWithTitleDescriptionNameIconPriorityStickyClickContext(cf_owner, cf_message, cf_note_name, NULL, NULL, NULL, NULL);
+	
+	CFRelease(app_name);
+	CFRelease(cf_owner);
+	CFRelease(cf_message);
+	CFRelease(cf_note_name);
 #endif
 }
 
