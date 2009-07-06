@@ -638,6 +638,22 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 	linked_size_[id].widgets.push_back(widget);
 }
 
+void twindow::remove_linked_widget(const std::string& id
+		, const twidget* widget)
+{
+	assert(widget);
+	assert(linked_size_.find(id) != linked_size_.end());
+
+	std::vector<twidget*>& widgets = linked_size_[id].widgets;
+
+	std::vector<twidget*>::iterator itor =
+			std::find(widgets.begin(), widgets.end(), widget);
+
+	if(itor != widgets.end()) {
+		widgets.erase(itor);
+	}
+}
+
 void twindow::NEW_layout()
 {
 	/**** Initialize and get initial size. *****/

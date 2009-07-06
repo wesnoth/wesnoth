@@ -287,13 +287,24 @@ public:
 	 *
 	 * The group needs to exist, which is done by calling
 	 * init_linked_size_group. A widget may only be member of one group.
-	 * @todo There's no way to remove a widget from the list.
 	 * @todo Untested if a new widget is added after showing the widgets.
 	 *
 	 * @param id                  The id of the group.
 	 * @param widget              The widget to add to the group.
 	 */
 	void add_linked_widget(const std::string& id, twidget* widget);
+
+	/**
+	 * Removes a widget from a linked size group.
+	 *
+	 * The group needs to exist, which is done by calling
+	 * init_linked_size_group. If the widget is no member of the group the
+	 * function does nothing.
+	 *
+	 * @param id                  The id of the group.
+	 * @param widget              The widget to remove from the group.
+	 */
+	void remove_linked_widget(const std::string& id, const twidget* widget);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
