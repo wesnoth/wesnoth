@@ -85,9 +85,6 @@ public:
 	/** Removes all the rows in the listbox, clearing it. */
 	void clear();
 
-	/** @todo remove, since duplicate of clear. */
-	void remove_all_rows();
-
 	/** Returns the number of items in the listbox. */
 	unsigned get_item_count() const;
 

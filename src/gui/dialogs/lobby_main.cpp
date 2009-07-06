@@ -101,7 +101,7 @@ void add_label_data(std::map<std::string, string_map>& map,
 
 void tlobby_main::update_gamelist()
 {
-	gamelistbox_->remove_all_rows();
+	gamelistbox_->clear();
 	foreach (const game_info &game, lobby_info_.games())
 	{
 		std::map<std::string, string_map> data;

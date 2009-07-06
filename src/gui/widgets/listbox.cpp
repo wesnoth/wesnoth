@@ -128,11 +128,6 @@ void tlistbox::clear()
 	remove_row(0, 0);
 }
 
-void tlistbox::remove_all_rows()
-{
-	clear();
-}
-
 unsigned tlistbox::get_item_count() const
 {
 	assert(generator_);
