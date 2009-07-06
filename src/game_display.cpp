@@ -1038,7 +1038,11 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
+#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 void game_display::send_notification(const std::string& owner, const std::string& message)
+#else
+void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
+#endif
 {
 #if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
