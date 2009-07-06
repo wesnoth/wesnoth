@@ -80,6 +80,11 @@ public:
 	 */
 	void remove_row(const unsigned row);
 
+	/**
+	 * Removes all the rows in the listbox, clearing it.
+	 */
+	void remove_all_rows();
+
 	/** Returns the number of items in the listbox. */
 	unsigned get_item_count() const;
 

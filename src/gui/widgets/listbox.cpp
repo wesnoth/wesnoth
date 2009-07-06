@@ -102,6 +102,11 @@ void tlistbox::remove_row(const unsigned row)
 	/** @todo implement. */
 }
 
+void tlistbox::remove_all_rows()
+{
+	/** @todo implement. */
+}
+
 unsigned tlistbox::get_item_count() const
 {
 	assert(generator_);
