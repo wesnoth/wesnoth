@@ -21,6 +21,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
@@ -331,6 +332,9 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 	bool cancel_orders_dialog = cancel_orders;
 
 	//FIXME: Integrate the load_game dialog into this class
+	//something to watch for the curious, but not yet ready to go
+	//gui2::tgame_load load_dialog(game_config_);
+	//load_dialog.show(gui_.video());
 	filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
 
 	show_replay_ = show_replay_dialog;
@@ -401,10 +405,10 @@ void loadgame::check_version_compatibility()
 		throw load_game_cancelled_exception();
 	}
 
-	const int res = gui::dialog(gui_,"",
-						_("This save is from a different version of the game. Do you want to try to load it?"),
-						gui::YES_NO).show();
-	if(res == 1) {
+	const int res = gui2::show_message(gui_.video(), "", _("This save is from a different version of the game. Do you want to try to load it?"),
+		gui2::tmessage::yes_no_buttons);
+
+	if(res == gui2::twindow::CANCEL) {
 		throw load_game_cancelled_exception();
 	}
 }
@@ -562,9 +566,10 @@ bool savegame::check_overwrite(CVideo& video)
 {
 	std::string filename = filename_;
 	if (savegame_manager::save_game_exists(filename, compress_saves_)) {
-		gui2::tgame_save_overwrite dlg(filename);
-		dlg.show(video);
-		return dlg.get_retval() == gui2::twindow::OK;
+		std::stringstream message;
+		message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename;
+		int retval = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
+		return retval == gui2::twindow::OK;
 	} else {
 		return true;
 	}

@@ -76,22 +76,6 @@ private:
 	bool ignore_all_;
 };
 
-class tgame_save_overwrite : public tdialog
-{
-public:
-	tgame_save_overwrite(const std::string& filename);
-
-private:
-	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
-
-	/** Inherited from tgame_save. */
-	void pre_show(CVideo& video, twindow& window);
-
-
-	std::string filename_;
-};
-
 }
 
 #endif
