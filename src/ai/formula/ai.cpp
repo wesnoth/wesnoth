@@ -2153,10 +2153,17 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			}
 			made_move = true;
 		} else if(recruit_command) {
-			LOG_AI << "RECRUIT: '" << recruit_command->type() << "'\n";
-			if(recruit(recruit_command->type(), recruit_command->loc())) {
-				made_move = true;
+			ai::recruit_result_ptr recruit_result = execute_recruit_action(recruit_command->type(), recruit_command->loc());
+
+			//is_ok()==true means that the action is successful (eg. no unexpected events)
+			//is_ok() must be checked or the code will complain :)
+			if (!recruit_result->is_ok()) {
+				//get_status() can be used to fetch the error code
+				LOG_AI << "Error number is: "<<recruit_result->get_status()<<std::endl;
 			}
+			//is_gamestate_changed()==true means that the game state was somehow changed by action.
+			//it is believed that during a turn, a game state can change only a finite number of times
+			made_move = recruit_result->is_gamestate_changed();
 		} else if(set_var_command) {
 			LOG_AI << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
 			vars_.add(set_var_command->key(), set_var_command->value());
