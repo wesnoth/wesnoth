@@ -544,6 +544,13 @@ public:
 	{
 		assert(index < items_.size());
 
+		// Might be other parts of the engine want to know about the
+		// deselction, if minimum fails it gets another chance later on,
+		// since it deletes the item.
+		if(is_selected(index)) {
+			select_item(index, false);
+		}
+
 		minimum_selection::delete_item(index);
 
 		delete items_[index];
