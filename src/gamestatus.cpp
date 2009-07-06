@@ -213,13 +213,11 @@ void game_state::write_player(const std::string& save_id, const player_info& pla
 	bool side_not_found = false;
 	//add gold from snapshot
 	if (use_snapshot) {
-		try {
-		const config& side = snapshot.find_child("side","save_id",save_id);
-		cfg["gold"] = side["gold"];
-		cfg["gold_add"] = side["gold_add"];
-		assert (cfg["gold"] == str_cast<int>(player.gold));
-		}
-		catch (config::error ce) {
+		if (const config &side = snapshot.find_child("side", "save_id", save_id)) {
+			cfg["gold"] = side["gold"];
+			cfg["gold_add"] = side["gold_add"];
+			assert(cfg["gold"] == str_cast<int>(player.gold));
+		} else {
 			WRN_NG << "side " << save_id << " does not exist in snapshot, using player_info\n";
 			side_not_found = true;
 		}
