@@ -101,6 +101,7 @@ void add_label_data(std::map<std::string, string_map>& map,
 
 void tlobby_main::update_gamelist()
 {
+	gamelistbox_->remove_all_rows();
 	foreach (const game_info &game, lobby_info_.games())
 	{
 		std::map<std::string, string_map> data;
@@ -128,6 +129,9 @@ void tlobby_main::update_gamelist()
 			grid->find_widget("observe", false));
 		observe_button->set_callback_mouse_left_click(
 			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+	}
+	for (size_t i = 0; i < userlistbox_->get_item_count(); ++i) {
+		userlistbox_->remove_row(0);
 	}
 	foreach (const user_info& user, lobby_info_.users())
 	{
