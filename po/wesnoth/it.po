@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-28 18:06+0200\n"
-"PO-Revision-Date: 2009-05-17 11:45+0200\n"
+"PO-Revision-Date: 2009-07-06 22:49+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -9020,9 +9020,8 @@ msgid "I'm Ready"
 msgstr "Sono pronto"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
+msgstr "Lo scenario non è valido perché non ha ID."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9770,11 +9769,10 @@ msgid "Unexpected closing tag"
 msgstr "Etichetta di chiusura non attesa"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"L'etichetta di chiusura $tag2 sembra essere invalido per l'etichetta $tag "
-"(aperta alla posizione $pos)"
+"L'etichetta $tag2 non è valida per chiudere l'etichetta $tag1 (aperta alla "
+"posizione $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
@@ -10107,9 +10105,6 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
-#~ msgid "Default AI"
-#~ msgstr "IA predefinita"
-
 #~ msgid "stones"
 #~ msgstr "pietrifica"
 
@@ -10152,6 +10147,9 @@ msgstr "Abilita l'invio del sommario"
 
 #~ msgid "Remove a trait from a unit. (Does not work yet.)"
 #~ msgstr "Rimuovi una caratteristica di un'unità (Non funziona ancora)."
+
+#~ msgid "Default AI"
+#~ msgstr "IA predefinita"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Il replay non può essere salvato"
