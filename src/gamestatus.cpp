@@ -207,21 +207,30 @@ void game_state::write_player(const std::string& save_id, const player_info& pla
 {
 	cfg["name"] = player.name;
 	cfg["save_id"]=save_id;
-	
+
+	 //FIXME: with the current consistency definition of sides by controller, some players may not show up in snapshot.side
+	//player_info is used until side consistency is fixed
+	bool side_not_found = false;
+	//add gold from snapshot
+	if (use_snapshot) {
+		try {
+		const config& side = snapshot.find_child("side","save_id",save_id);
+		cfg["gold"] = side["gold"];
+		cfg["gold_add"] = side["gold_add"];
+		assert (cfg["gold"] == str_cast<int>(player.gold));
+		}
+		catch (config::error ce) {
+			WRN_NG << "side " << save_id << " does not exist in snapshot, using player_info\n";
+			side_not_found = true;
+		}
+	}
 	//do not store gold if specified by use_snapshot
-	if (!use_snapshot) {
+	 if (!use_snapshot || side_not_found){
 		char buf[50];
 		snprintf(buf,sizeof(buf),"%d",player.gold);
 
 		cfg["gold"] = buf;
 		cfg["gold_add"] = player.gold_add ? "yes" : "no";
-	}
-	//add gold from snapshot
-	else {
-		const config& side = snapshot.find_child("side","save_id",save_id);
-		cfg["gold"] = side["gold"];
-		cfg["gold_add"] = side["gold_add"];
-		assert (cfg["gold"] == str_cast<int>(player.gold));
 	}
 
 
