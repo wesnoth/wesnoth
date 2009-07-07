@@ -1801,6 +1801,14 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
 							u.set_role(cfg["role"]);
+							//set the role for the corresponding unit in team.recall_list_
+							for(std::vector<team>::iterator ti = rsrc.teams->begin(); ti != rsrc.teams->end(); ++ti) {
+								if (ti->save_id() ==  pi->first) {
+									assert (u.underlying_id() == (ti->recall_list())[i].underlying_id());
+									(ti->recall_list())[i].set_role(cfg["role"]);
+									break;
+								}
+							}
 							found=true;
 							break;
 						}
