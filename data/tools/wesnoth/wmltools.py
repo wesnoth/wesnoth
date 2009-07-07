@@ -152,10 +152,10 @@ def formaltype(f):
         ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
         ftype = "name"
-    elif f in ("STRING", "TYPE", "TEXT") or f.endswith("_TEXT"):
-        ftype = "string"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
+    elif f in ("STRING", "TYPE", "TEXT") or f.endswith("_STRING") or f.endswith("_TYPE") or f.endswith("_TEXT"):
+        ftype = "string"
     elif f.endswith("IMAGE") or f == "PROFILE":
         ftype = "image"
     elif f in ("MUSIC",) or f.endswith("SOUND"):
