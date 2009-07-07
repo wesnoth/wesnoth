@@ -2109,7 +2109,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				}
 				++position;
 			}
-			//assert(player->available_units.size() == (*rsrc.teams)[index].recall_list().size()); //FIXME: remove after player_info removal
+			assert(player->available_units.size() == (*rsrc.teams)[index].recall_list().size()); //FIXME: remove after player_info removal
 		}
 	}
 

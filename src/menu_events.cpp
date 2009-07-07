@@ -101,7 +101,7 @@ namespace events{
 			filter_.delete_item(menu_selection);
 			//add dismissal to the undo stack
 			undo_stack_.push_back(undo_action(u, map_location(), static_cast<int>(index), true));
-			//assert(units_.size() == units_teams_.size()); //FIXME: remove once player_info is removed
+			assert(units_.size() == units_teams_.size()); //FIXME: remove once player_info is removed
 			units_.erase(units_.begin() + index);
 			units_teams_.erase(units_teams_.begin() + index);
 			recorder.add_disband(index);
@@ -962,7 +962,7 @@ private:
 
 						redo_stack_.clear();
 
-						//assert(recall_list.size() == recall_list_team.size());
+						assert(recall_list.size() == recall_list_team.size());
 						recall_list.erase(recall_list.begin()+res);
 						recall_list_team.erase(recall_list_team.begin()+res);
 						gui_->invalidate_game_status();
