@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-05 20:19+0200\n"
-"PO-Revision-Date: 2009-04-25 21:35+0100\n"
+"PO-Revision-Date: 2009-07-07 21:43+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -6093,7 +6093,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -7077,6 +7077,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Chceš stiahnuť tento doplnok? (Aj tak bude ešte pred hraním potrebné "
+"nainštalovať jeho závislosti.)"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:209 src/multiplayer.cpp:326 src/multiplayer_ui.cpp:70
@@ -7779,12 +7781,12 @@ msgstr[2] "útoky"
 #: src/generate_report.cpp:267
 #, no-c-format
 msgid "tooltip^% accuracy"
-msgstr ""
+msgstr "% presnosť"
 
 #: src/generate_report.cpp:273
 #, no-c-format
 msgid "tooltip^% parry"
-msgstr ""
+msgstr "% odvrátenie"
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
@@ -7847,9 +7849,8 @@ msgid "Abilities: "
 msgstr "Schopnosti: "
 
 #: src/help.cpp:1346
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Schopnosti: "
+msgstr "Zvýšenie schopností: "
 
 #: src/help.cpp:1364
 msgid "Cost: "
@@ -8304,12 +8305,16 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Poslať dopyt na server. Bez parametrov by mal server poslať zoznam "
+"dostupných príkazov."
 
 #: src/menu_events.cpp:2164
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Zakázať a vykopnúť hráča alebo diváka. Ak nie je v hre, ale len na serveri, "
+"bude len zakázaný."
 
 #: src/menu_events.cpp:2167
 msgid "Kick a player or observer."
@@ -8317,7 +8322,7 @@ msgstr "Vykopnúť hráča alebo diváka."
 
 #: src/menu_events.cpp:2169
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
 #: src/menu_events.cpp:2171
 msgid "Mute all observers."
@@ -8325,7 +8330,7 @@ msgstr "Umlčať divákov."
 
 #: src/menu_events.cpp:2181
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Pošli správu práve pripojeným správcom servera"
 
 #: src/menu_events.cpp:2183
 msgid "Send an emotion or personal action in chat."
@@ -8369,7 +8374,7 @@ msgstr "Zaregistruj si prezývku"
 
 #: src/menu_events.cpp:2207
 msgid "Drop your nick."
-msgstr ""
+msgstr "Vzdať sa prezývky."
 
 #: src/menu_events.cpp:2209
 msgid "Update details for your nick. For possible details see '/details'."
@@ -8444,11 +8449,11 @@ msgstr "Vypnúť režim ladenia."
 
 #: src/menu_events.cpp:2373
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Zadaj príkaz použitý voliteľnou príkazovou klávesou"
 
 #: src/menu_events.cpp:2375
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz"
 
 #: src/menu_events.cpp:2377
 msgid "Set a scenario variable."
@@ -8461,10 +8466,11 @@ msgstr "Zobrazí stavovú premennú scény."
 #: src/menu_events.cpp:2381
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Zmeniť premennú jednotky. (Podporované sú len klávesy najvyššej úrovne.)"
 
 #: src/menu_events.cpp:2385
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Odober jednotke vlastnosť. (Zatiaľ nefunguje.)"
 
 #: src/menu_events.cpp:2387
 msgid "Create a unit."
@@ -8709,7 +8715,7 @@ msgstr "Rezervované"
 
 #: src/multiplayer_connect.cpp:811
 msgid "--give--"
-msgstr ""
+msgstr "--dať--"
 
 #: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
@@ -8744,9 +8750,8 @@ msgid "I'm Ready"
 msgstr "Som pripravený"
 
 #: src/multiplayer_connect.cpp:1032
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Scéna neplatí, pretože nemá definované strany."
+msgstr "Scéna je neplatná, pretože nemá žiadny identifikátor."
 
 #: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
@@ -9112,9 +9117,9 @@ msgstr "Východzia pozícia: "
 #: src/multiplayer_wait.cpp:536
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Zlatiek"
+msgstr[1] "Zlatka"
+msgstr[2] "Zlatky"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9202,7 +9207,7 @@ msgstr "Neznáma scéna: '$scenario|'"
 
 #: src/playmp_controller.cpp:219
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Odvolávam ťahy, ktoré ešte neboli odoslané na server."
 
 #: src/playmp_controller.cpp:297
 msgid "End scenario"
@@ -9386,9 +9391,9 @@ msgid "Unexpected closing tag"
 msgstr "Nečakaná koncová značka"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Nesprávna koncová značka $tag2 pre značku $tag (na pozícii $pos)"
+msgstr ""
+"Nesprávna koncová značka $tag2 pre značku $tag1 (začína na pozícii $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
@@ -9643,12 +9648,12 @@ msgstr[2] "údery"
 #: src/unit_types.cpp:219
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% presnosť"
 
 #: src/unit_types.cpp:229
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% odvrátenie"
 
 #: src/unit_types.cpp:955
 msgid "No description available."
