@@ -92,7 +92,7 @@ void tgame_load::list_item_clicked(twindow& window){
 	display_savegame(window);
 }
 
-void tgame_load::post_show(twindow& window)
+void tgame_load::post_show(twindow& /*window*/)
 {
 	//filename_ = txtFilename_->get_widget_value(window);
 }
@@ -186,3 +186,4 @@ void tgame_load::evaluate_summary_string(std::stringstream& str, const config& c
 }
 
 } // namespace gui2
+
