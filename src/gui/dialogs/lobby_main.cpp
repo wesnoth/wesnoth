@@ -132,7 +132,6 @@ void tlobby_main::update_gamelist()
 		add_label_data(data, "gold_text", game.gold);
 		add_label_data(data, "xp_text", game.xp);
 		add_label_data(data, "vision_text", game.vision);
-		add_label_data(data, "time_limit_icon", game.time_limit.empty() ? "" : "themes/sand-clock.png");
 		add_label_data(data, "time_limit_text", game.time_limit);
 		add_label_data(data, "status", game.status);
 		add_label_data(data, "observer_icon", game.observers ? "misc/eye.png" : "misc/no_observer.png");
