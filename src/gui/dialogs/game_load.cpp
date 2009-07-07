@@ -66,7 +66,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(list);
 	list->set_callback_value_change(dialog_callback<tgame_load, &tgame_load::list_item_clicked>);
 
-	
+
 	{
 		cursor::setter cur(cursor::WAIT);
 		games_ = savegame_manager::get_saves_list();
