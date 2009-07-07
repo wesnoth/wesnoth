@@ -375,7 +375,7 @@ void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
 }
 
 
-void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
+void tlobby_main::show_preferences_button_callback(gui2::twindow& /*window*/)
 {
 	if (preferences_callback_) {
 		preferences_callback_();
