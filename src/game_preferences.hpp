@@ -232,6 +232,7 @@ namespace preferences {
 	void encounter_start_units(unit_map& units);
 	// Add all units that are recallable as encountred units.
 	void encounter_recallable_units(game_state& gamestate);
+	void encounter_recallable_units(std::vector<team>& teams);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);
 
