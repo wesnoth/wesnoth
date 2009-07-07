@@ -18,8 +18,10 @@
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/minimap.hpp"
 #include "gui/widgets/text_box.hpp"
 
 #include "foreach.hpp"
@@ -74,8 +76,13 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
 , game_config_(game_config)
 , gamelistbox_(NULL), chat_log_(NULL)
 , chat_input_(NULL), window_(NULL)
-, lobby_info_(info)
+, lobby_info_(info), preferences_callback_(NULL)
 {
+}
+
+void tlobby_main::set_preferences_callback(boost::function<void ()> cb)
+{
+	preferences_callback_ = cb;
 }
 
 tlobby_main::~tlobby_main()
@@ -97,6 +104,14 @@ void add_label_data(std::map<std::string, string_map>& map,
 	map.insert(std::make_pair(key, item));
 }
 
+void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
+{
+	twidget* w = grid->find_widget(id, false);
+	if (w) {
+		w->set_visible(visible ? twidget::VISIBLE : twidget::INVISIBLE);
+	}
+}
+
 } //end anonymous namespace
 
 void tlobby_main::update_gamelist()
@@ -110,29 +125,64 @@ void tlobby_main::update_gamelist()
 		add_label_data(data, "era", game.era);
 		add_label_data(data, "era_short", game.era_short);
 		add_label_data(data, "map_info", game.map_info);
+		add_label_data(data, "scenario", game.scenario);
+		add_label_data(data, "map_size_text", game.map_size_info);
 		add_label_data(data, "time_limit", game.time_limit);
 		add_label_data(data, "status", game.status);
-		add_label_data(data, "gold", game.gold);
-		add_label_data(data, "xp", game.xp);
-		add_label_data(data, "vision", game.vision);
-		add_label_data(data, "map_info", game.map_info);
+		add_label_data(data, "gold_text", game.gold);
+		add_label_data(data, "xp_text", game.xp);
+		add_label_data(data, "vision_text", game.vision);
+		add_label_data(data, "time_limit_icon", game.time_limit.empty() ? "" : "themes/sand-clock.png");
+		add_label_data(data, "time_limit_text", game.time_limit);
+		add_label_data(data, "status", game.status);
+		add_label_data(data, "observer_icon", game.observers ? "misc/eye.png" : "misc/no_observer.png");
+		const char* vision_icon;
+		if (game.fog) {
+			if (game.shroud) {
+				vision_icon = "misc/vision-fog-shroud.png";
+			} else {
+				vision_icon = "misc/vision-fog.png";
+			}
+		} else {
+			if (game.shroud) {
+				vision_icon = "misc/vision-shroud.png";
+			} else {
+				vision_icon = "misc/vision-none.png";
+			}
+		}
+		add_label_data(data, "vision_icon", vision_icon);
 
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
 
-		tbutton* join_button = dynamic_cast<tbutton*>(
-			grid->find_widget("join", false));
-		join_button->set_callback_mouse_left_click(
-			dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
+		set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
+		set_visible_if_exists(grid, "vision_fog", game.fog);
+		set_visible_if_exists(grid, "vision_shroud", game.shroud);
+		set_visible_if_exists(grid, "vision_none", !(game.fog || game.shroud));
+		set_visible_if_exists(grid, "observers_yes", game.observers);
+		set_visible_if_exists(grid, "observers_no", !game.observers);
+		set_visible_if_exists(grid, "needs_password", game.password_required);
+		set_visible_if_exists(grid, "reloaded", game.reloaded);
+		set_visible_if_exists(grid, "started", game.started);
+		set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
 
-		tbutton* observe_button = dynamic_cast<tbutton*>(
-			grid->find_widget("observe", false));
-		observe_button->set_callback_mouse_left_click(
-			dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+		tbutton* join_button = dynamic_cast<tbutton*>(grid->find_widget("join", false));
+		if (join_button) {
+			join_button->set_callback_mouse_left_click(
+				dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
+		}
+		tbutton* observe_button = dynamic_cast<tbutton*>(grid->find_widget("observe", false));
+		if (observe_button) {
+			observe_button->set_callback_mouse_left_click(
+				dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+		}
+		tminimap* minimap = dynamic_cast<tminimap*>(grid->find_widget("minimap", false));
+		if (minimap) {
+			minimap->set_config(&game_config_);
+			minimap->set_map_data(game.map_data);
+		}
 	}
-	for (size_t i = 0; i < userlistbox_->get_item_count(); ++i) {
-		userlistbox_->remove_row(0);
-	}
+	userlistbox_->clear();
 	foreach (const user_info& user, lobby_info_.users())
 	{
 		std::map<std::string, string_map> data;
@@ -163,7 +213,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(create, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(show_help, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(refresh, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(settings, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(show_preferences, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
 }
@@ -326,10 +376,12 @@ void tlobby_main::refresh_button_callback(gui2::twindow& /*window*/)
 }
 
 
-void tlobby_main::settings_button_callback(gui2::twindow& window)
+void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
 {
-	legacy_result_ = PREFERENCES;
-	window.close();
+	if (preferences_callback_) {
+		preferences_callback_();
+		network::send_data(config("refresh_lobby"), 0, true);
+	}
 }
 
 void tlobby_main::show_help_button_callback(gui2::twindow& /*window*/)

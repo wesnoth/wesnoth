@@ -92,8 +92,10 @@ game_info::game_info() :
 	id(),
 	map_data(),
 	name(),
+	scenario(),
+	remote_scenario(false),
 	map_info(),
-	map_info_size(),
+	map_size_info(),
 	gold(),
 	xp(),
 	vision(),
@@ -138,8 +140,10 @@ game_info::game_info(const config& game, const config& game_config)
 , id(game["id"])
 , map_data(game["map_data"])
 , name(game["name"])
+, scenario()
+, remote_scenario(false)
 , map_info()
-, map_info_size()
+, map_size_info()
 , era()
 , era_short()
 , gold(game["mp_village_gold"])
@@ -151,11 +155,11 @@ game_info::game_info(const config& game, const config& game_config)
 , current_turn(0)
 , reloaded(game["savegame"] == "yes")
 , started(false)
-, fog(false)
-, shroud(false)
+, fog(game["mp_fog"] == "yes")
+, shroud(game["mp_shroud"] == "yes")
 , observers(game["observer"] != "no")
 , use_map_settings(game["mp_use_map_settings"] == "yes")
-, verified(false)
+, verified(true)
 , password_required(game["password"] == "yes")
 , have_era(true)
 {
@@ -186,7 +190,7 @@ game_info::game_info(const config& game, const config& game_config)
 	map_info = era;
 
 	if (map_data.empty()) {
-		map_data = read_map(game["map"]);
+		map_data = read_map(game["mp_scenario"]);
 	}
 
 	if (map_data.empty()) {
@@ -195,9 +199,9 @@ game_info::game_info(const config& game, const config& game_config)
 		try {
 			gamemap map(game_config, map_data);
 			//mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
-			map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
+			map_size_info = lexical_cast_default<std::string, int>(map.w(), "??")
 				+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
-			map_info += " - " + map_info_size;
+			map_info += " - " + map_size_info;
 		} catch (incorrect_map_format_exception &e) {
 			ERR_CF << "illegal map: " << e.msg_ << "\n";
 			verified = false;
@@ -216,7 +220,8 @@ game_info::game_info(const config& game, const config& game_config)
 			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 		}
 		if (*level_cfg) {
-			map_info += level_cfg->get_attribute("name");
+			scenario = level_cfg->get_attribute("name");
+			map_info += scenario;
 			// reloaded games do not match the original scenario hash,
 			// so it makes no sense to test them, they always would appear
 			// as remote scenarios
@@ -231,6 +236,7 @@ game_info::game_info(const config& game, const config& game_config)
 						}
 					}
 					if(!hash_found) {
+						remote_scenario = true;
 						map_info += " - ";
 						map_info += _("Remote scenario");
 						verified = false;
@@ -240,11 +246,13 @@ game_info::game_info(const config& game, const config& game_config)
 		} else {
 			utils::string_map symbols;
 			symbols["scenario_id"] = game["mp_scenario"];
-			map_info += vgettext("Unknown scenario: $scenario_id", symbols);
+			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
+			map_info += scenario;
 			verified = false;
 		}
 	} else {
-		map_info += _("Unknown scenario");
+		scenario = _("Unknown scenario");
+		map_info += scenario;
 		verified = false;
 	}
 	if (reloaded) {
@@ -266,34 +274,23 @@ game_info::game_info(const config& game, const config& game_config)
 		if (vacant_slots > 0) {
 			status = std::string(_n("Vacant Slot:", "Vacant Slots:",
 					vacant_slots)) + " " + game["slots"];
-			if (password_required) {
-				status += std::string(" (") + std::string(_("Password Required")) + ")";
-			}
 		}
 	}
 
-	if (game["mp_fog"] == "yes") {
+	if (fog) {
 		vision = _("Fog");
-		fog = true;
-		if (game["mp_shroud"] == "yes") {
+		if (shroud) {
 			vision += "/";
 			vision += _("Shroud");
-			shroud = true;
-		} else {
-			shroud = false;
 		}
-	} else if (game["mp_shroud"] == "yes") {
+	} else if (shroud) {
 		vision = _("Shroud");
-		fog = false;
-		shroud = true;
 	} else {
 		vision = _("none");
-		fog = false;
-		shroud = false;
 	}
 	if (game["mp_countdown"] == "yes" ) {
-		time_limit =   game["mp_countdown_init_time"] + " / +"
-		             + game["mp_countdown_turn_bonus"] + " "
+		time_limit =   game["mp_countdown_init_time"] + "+"
+		             + game["mp_countdown_turn_bonus"] + "/"
 		             + game["mp_countdown_action_bonus"];
 	} else {
 		time_limit = "";

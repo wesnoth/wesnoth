@@ -20,7 +20,8 @@
 #include "chat_events.hpp"
 #include "lobby_data.hpp"
 
-#include "boost/scoped_ptr.hpp"
+#include <boost/scoped_ptr.hpp>
+#include <boost/function.hpp>
 
 
 namespace gui2 {
@@ -36,6 +37,11 @@ public:
 	tlobby_main(const config& game_config, lobby_info& info);
 
 	~tlobby_main();
+
+	/**
+	 * Set the callback used to show the preferences.
+	 */
+	void set_preferences_callback(boost::function<void ()> f);
 
 	void update_gamelist();
 
@@ -89,7 +95,7 @@ private:
 
 	void create_button_callback(twindow& window);
 
-	void settings_button_callback(twindow& window);
+	void show_preferences_button_callback(twindow& window);
 
 	void show_help_button_callback(twindow& window);
 
@@ -119,6 +125,8 @@ private:
 	twindow* window_;
 
 	lobby_info& lobby_info_;
+
+	boost::function<void ()> preferences_callback_;
 };
 
 } // namespace gui2

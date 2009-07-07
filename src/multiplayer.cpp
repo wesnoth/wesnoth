@@ -33,6 +33,8 @@
 #include "upload_log.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
+
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
@@ -490,6 +492,12 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 	}
 }
 
+static void do_preferences_dialog(game_display& disp, const config& game_config)
+{
+	const preferences::display_manager disp_manager(&disp);
+	preferences::show_preferences_dialog(disp,game_config);
+}
+
 static void enter_lobby_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
@@ -498,14 +506,14 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 	while (true) {
 		if(gui2::new_widgets) {
 			gui2::tlobby_main dlg(game_config, li);
+			dlg.set_preferences_callback(
+				boost::bind(do_preferences_dialog,
+					boost::ref(disp), boost::ref(game_config)));
 			dlg.show(disp.video());
 			//ugly kludge for launching other dialogs like the old lobby
 			switch (dlg.get_legacy_result()) {
 				case gui2::tlobby_main::CREATE:
 					res = mp::ui::CREATE;
-					break;
-				case gui2::tlobby_main::PREFERENCES:
-					res = mp::ui::PREFERENCES;
 					break;
 				case gui2::tlobby_main::JOIN:
 					res = mp::ui::JOIN;
@@ -560,8 +568,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 			return;
 		case mp::ui::PREFERENCES:
 			{
-				const preferences::display_manager disp_manager(&disp);
-				preferences::show_preferences_dialog(disp,game_config);
+				do_preferences_dialog(disp, game_config);
 				//update lobby content
 				network::send_data(config("refresh_lobby"), 0, true);
 			}

@@ -73,15 +73,17 @@ struct game_info
 	std::string id;
 	std::string map_data;
 	std::string name;
+	std::string scenario;
+	bool remote_scenario;
 	std::string map_info;
-	std::string map_info_size;
+	std::string map_size_info;
 	std::string era;
 	std::string era_short;
 
 	std::string gold;
 	std::string xp;
 	std::string vision;
-	std::string status;
+	std::string status; //vacant slots or turn info
 	std::string time_limit;
 	size_t vacant_slots;
 
