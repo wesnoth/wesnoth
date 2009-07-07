@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-28 18:06+0200\n"
-"PO-Revision-Date: 2009-04-25 21:35+0100\n"
+"PO-Revision-Date: 2009-07-07 21:43+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -6200,7 +6200,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -7195,6 +7195,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Chceš stiahnuť tento doplnok? (Aj tak bude ešte pred hraním potrebné "
+"nainštalovať jeho závislosti.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
 #: src/multiplayer.cpp:210 src/multiplayer.cpp:265 src/multiplayer_ui.cpp:76
@@ -7827,12 +7829,12 @@ msgstr[2] "útoky"
 #: src/generate_report.cpp:268
 #, no-c-format
 msgid "tooltip^% accuracy"
-msgstr ""
+msgstr "% presnosť"
 
 #: src/generate_report.cpp:274
 #, no-c-format
 msgid "tooltip^% parry"
-msgstr ""
+msgstr "% odvrátenie"
 
 #: src/generate_report.cpp:285
 msgid "weapon range: "
@@ -7918,9 +7920,8 @@ msgid "Abilities: "
 msgstr "Schopnosti: "
 
 #: src/help.cpp:1416
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Schopnosti: "
+msgstr "Zvýšenie schopností: "
 
 #: src/help.cpp:1434
 msgid "Cost: "
@@ -8349,12 +8350,16 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Poslať dopyt na server. Bez parametrov by mal server poslať zoznam "
+"dostupných príkazov."
 
 #: src/menu_events.cpp:2071
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Zakázať a vykopnúť hráča alebo diváka. Ak nie je v hre, ale len na serveri, "
+"bude len zakázaný."
 
 #: src/menu_events.cpp:2074
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8366,11 +8371,12 @@ msgstr "Vykopnúť hráča alebo diváka."
 
 #: src/menu_events.cpp:2079
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
 #: src/menu_events.cpp:2081
+#, fuzzy
 msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr ""
+msgstr "Umlčať diváka. Bez parametrov zobrazí stav umlčania."
 
 #: src/menu_events.cpp:2083
 #, fuzzy
@@ -8379,7 +8385,7 @@ msgstr "Umlčať divákov."
 
 #: src/menu_events.cpp:2093
 msgid "Send a message to the server admins currently online"
-msgstr ""
+msgstr "Pošli správu práve pripojeným správcom servera"
 
 #: src/menu_events.cpp:2095
 msgid "Send an emotion or personal action in chat."
@@ -8423,7 +8429,7 @@ msgstr "Zaregistruj si prezývku"
 
 #: src/menu_events.cpp:2119
 msgid "Drop your nick."
-msgstr ""
+msgstr "Vzdať sa prezývky."
 
 #: src/menu_events.cpp:2121
 msgid "Update details for your nick. For possible details see '/details'."
@@ -8524,11 +8530,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2300
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Zadaj príkaz použitý voliteľnou príkazovou klávesou"
 
 #: src/menu_events.cpp:2302
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Nastaviť alebo zobraziť alternatívny názov (alias) pre príkaz"
 
 #: src/menu_events.cpp:2304
 msgid "Set a scenario variable."
@@ -8541,6 +8547,7 @@ msgstr "Zobrazí stavovú premennú scény."
 #: src/menu_events.cpp:2308
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Zmeniť premennú jednotky. (Podporované sú len klávesy najvyššej úrovne.)"
 
 #: src/menu_events.cpp:2314
 msgid "Discover all units in help."
@@ -8790,7 +8797,7 @@ msgstr "Rezervované"
 
 #: src/multiplayer_connect.cpp:809
 msgid "--give--"
-msgstr ""
+msgstr "--dať--"
 
 #: src/multiplayer_connect.cpp:933
 msgid "Only random sides in the current era."
@@ -8825,9 +8832,8 @@ msgid "I'm Ready"
 msgstr "Som pripravený"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Scéna neplatí, pretože nemá definované strany."
+msgstr "Scéna je neplatná, pretože nemá žiadny identifikátor."
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9235,9 +9241,9 @@ msgstr "Východzia pozícia: "
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Zlatiek"
+msgstr[1] "Zlatka"
+msgstr[2] "Zlatky"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9327,7 +9333,7 @@ msgstr "na diaľku"
 
 #: src/playmp_controller.cpp:228
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Odvolávam ťahy, ktoré ešte neboli odoslané na server."
 
 #: src/playmp_controller.cpp:306
 msgid "End scenario"
@@ -9568,9 +9574,9 @@ msgid "Unexpected closing tag"
 msgstr "Nečakaná koncová značka"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Nesprávna koncová značka $tag2 pre značku $tag (na pozícii $pos)"
+msgstr ""
+"Nesprávna koncová značka $tag2 pre značku $tag1 (začína na pozícii $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
@@ -9838,12 +9844,12 @@ msgstr[2] "údery"
 #: src/unit_types.cpp:217
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% presnosť"
 
 #: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% odvrátenie"
 
 #: src/unit_types.cpp:921
 msgid "No description available."
@@ -9901,33 +9907,27 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
 
-#~ msgid "Default AI"
-#~ msgstr "Štandardná UI"
+#~ msgid "stones"
+#~ msgstr "skamenie"
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Chceš ho naďalej stiahnuť?"
+#~ msgid "An invalid weapon is selected, possibly by the Python AI."
+#~ msgstr ""
+#~ "Bola zvolená neplatná zbraň, pravdepodobne v Pythonom riadenom hráčovi."
+
+#~ msgid "female^stone"
+#~ msgstr "skamenená"
+
+#~ msgid "stone"
+#~ msgstr "kameň"
+
+#~ msgid "Unknown unit type : "
+#~ msgstr "Neznámy typ jednotky : "
 
 #~ msgid "Quit Game"
 #~ msgstr "Ukonči hru"
 
 #~ msgid "Ignore All"
 #~ msgstr "Ignorovať všetko"
-
-#~ msgid "Name: "
-#~ msgstr "Názov: "
-
-#~ msgid "Save already exists. Do you want to overwrite it?"
-#~ msgstr "Uložená hra s týmto názvom už existuje. Chceš ju prepísať?"
-
-#~ msgid "Overwrite?"
-#~ msgstr "Prepísať?"
-
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr ""
-#~ "Bola zvolená neplatná zbraň, pravdepodobne v Pythonom riadenom hráčovi."
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Neznámy typ jednotky : "
 
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
@@ -9936,23 +9936,32 @@ msgstr "Umožni posielanie štatistík"
 #~ "Názvy uložených hier nesmú obsahovať bodkočiarky, lomky, ani opačné "
 #~ "lomky. Prosím zadajte iný názov."
 
-#~ msgid "Name:"
-#~ msgstr "Názov:"
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Uložená hra s týmto názvom už existuje. Chceš ju prepísať?"
 
-#~ msgid "stones"
-#~ msgstr "skamenie"
+#~ msgid "Name: "
+#~ msgstr "Názov: "
 
-#~ msgid "female^stone"
-#~ msgstr "skamenená"
-
-#~ msgid "stone"
-#~ msgstr "kameň"
+#~ msgid "Overwrite?"
+#~ msgstr "Prepísať?"
 
 #~ msgid "stone: "
 #~ msgstr "skamenený: "
 
+#~ msgid "Remove a trait from a unit. (Does not work yet.)"
+#~ msgstr "Odober jednotke vlastnosť. (Zatiaľ nefunguje.)"
+
+#~ msgid "Default AI"
+#~ msgstr "Štandardná UI"
+
 #~ msgid "The replay could not be saved"
 #~ msgstr "Nepodarilo sa uložiť záznam"
+
+#~ msgid "Name:"
+#~ msgstr "Názov:"
+
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Chceš ho naďalej stiahnuť?"
 
 #~ msgid " included from "
 #~ msgstr " vložený z "

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-01 23:53+0200\n"
-"PO-Revision-Date: 2009-03-03 20:49+0100\n"
+"PO-Revision-Date: 2009-07-07 20:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -99,13 +99,13 @@ msgstr "špeciálne"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Pomocou ľavého/pravého tlačidla myši kreslíte terén popredia/pozadia. Ak "
-"držíte Shift, kreslíte iba základnú vrstvu."
+"držíte Shift, kreslíte iba základnú vrstvu. Ctrl+klik prevezme terén pod "
+"kurzorom."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -266,17 +266,19 @@ msgstr "Mapa uložená."
 
 #: src/editor2/editor_controller.cpp:686
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Načítali sa vložené dáta mapy"
 
 #: src/editor2/editor_controller.cpp:687 src/editor2/editor_controller.cpp:701
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Mapa načítaná zo scény"
 
 #: src/editor2/editor_controller.cpp:697
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Načítal sa odkazovaný súbor mapy:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1087
 msgid "Undo"
@@ -325,23 +327,23 @@ msgstr "Terén"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Súbor sa nenašiel"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Mapový súbor vyzerá ako scéna, ale hodnota map_data neukazuje na existujúci "
+"súbor"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Prázdny súbor alebo sa nenašiel"
+msgstr "Prázdny súbor mapy"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Neviem uložiť mapu: $msg"
+msgstr "Nepodarilo sa uložiť do scény"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
