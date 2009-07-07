@@ -48,7 +48,7 @@ struct twindow_implementation
 	 * @param maximum_width       The maximum width of the window.
 	 * @param maximum_height      The maximum height of the window.
 	 */
-	static void NEW_layout(twindow& window,
+	static void layout(twindow& window,
 			const unsigned maximum_width, const unsigned maximum_height);
 
 };

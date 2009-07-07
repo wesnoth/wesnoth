@@ -97,10 +97,10 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 {
 }
 
-void tscrollbar_container::NEW_layout_init(const bool full_initialization)
+void tscrollbar_container::layout_init(const bool full_initialization)
 {
 	// Inherited.
-	tcontainer_::NEW_layout_init(full_initialization);
+	tcontainer_::layout_init(full_initialization);
 
 	if(full_initialization) {
 
@@ -134,10 +134,10 @@ void tscrollbar_container::NEW_layout_init(const bool full_initialization)
 	}
 
 	assert(content_grid_);
-	content_grid_->NEW_layout_init(full_initialization);
+	content_grid_->layout_init(full_initialization);
 }
 
-void tscrollbar_container::NEW_request_reduce_height(
+void tscrollbar_container::request_reduce_height(
 		const unsigned maximum_height)
 {
 	if(vertical_scrollbar_mode_ == always_invisible) {
@@ -180,7 +180,7 @@ void tscrollbar_container::NEW_request_reduce_height(
 	}
 }
 
-void tscrollbar_container::NEW_request_reduce_width(
+void tscrollbar_container::request_reduce_width(
 		const unsigned maximum_width)
 {
 	// First ask our content, it might be able to wrap which looks better as
@@ -190,7 +190,7 @@ void tscrollbar_container::NEW_request_reduce_width(
 			&& vertical_scrollbar_grid_->get_visible() != twidget::INVISIBLE
 				?  vertical_scrollbar_grid_->get_best_size().x
 				: 0;
-	content_grid_->NEW_request_reduce_width(maximum_width - offset);
+	content_grid_->request_reduce_width(maximum_width - offset);
 
 	// Did we manage to achieve the wanted size?
 	assert(horizontal_scrollbar_grid_);

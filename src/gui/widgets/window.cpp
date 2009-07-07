@@ -453,7 +453,7 @@ void twindow::draw()
 			update_rect(rect);
 		}
 
-		NEW_layout();
+		layout();
 
 		// Get new surface for restoring
 		SDL_Rect rect = get_rect();
@@ -654,7 +654,7 @@ void twindow::remove_linked_widget(const std::string& id
 	}
 }
 
-void twindow::NEW_layout()
+void twindow::layout()
 {
 	/**** Initialize and get initial size. *****/
 
@@ -665,7 +665,7 @@ void twindow::NEW_layout()
 
 	log_scope2(log_gui_layout, "Window: Recalculate size");
 
-	NEW_layout_init(true);
+	layout_init(true);
 	generate_dot_file("layout_init", LAYOUT);
 
 	const game_logic::map_formula_callable variables =
@@ -683,10 +683,10 @@ void twindow::NEW_layout()
 				: settings::screen_height
 			: h_(variables);
 
-	NEW_layout_linked_widgets();
+	layout_linked_widgets();
 
 	try {
-		twindow_implementation::NEW_layout(*this, maximum_width, maximum_height);
+		twindow_implementation::layout(*this, maximum_width, maximum_height);
 	} catch(tlayout_exception_resize_failed&) {
 
 		/** @todo implement the scrollbars on the window. */
@@ -759,7 +759,7 @@ void twindow::NEW_layout()
 	init_mouse_location();
 }
 
-void twindow::NEW_layout_linked_widgets()
+void twindow::layout_linked_widgets()
 {
 	// evaluate the group sizes
 	typedef std::pair<const std::string, tlinked_size> hack;
@@ -922,7 +922,7 @@ void twindow::generate_dot_file(const std::string& generator,
 }
 #endif
 
-void twindow_implementation::NEW_layout(twindow& window,
+void twindow_implementation::layout(twindow& window,
 		const unsigned maximum_width, const unsigned maximum_height)
 {
 	log_scope2(log_gui_layout, std::string("Window: ") + __func__);
@@ -948,7 +948,7 @@ void twindow_implementation::NEW_layout(twindow& window,
 		}
 
 		if(size.x > static_cast<int>(maximum_width)) {
-			window.NEW_reduce_width(maximum_width);
+			window.reduce_width(maximum_width);
 
 			size = window.get_best_size();
 			if(size.x > static_cast<int>(maximum_width)) {
@@ -962,7 +962,7 @@ void twindow_implementation::NEW_layout(twindow& window,
 		}
 
 		if(size.y > static_cast<int>(maximum_height)) {
-			window.NEW_reduce_height(maximum_height);
+			window.reduce_height(maximum_height);
 
 			size = window.get_best_size();
 			if(size.y > static_cast<int>(maximum_height)) {
@@ -984,9 +984,9 @@ void twindow_implementation::NEW_layout(twindow& window,
 
 	} catch (tlayout_exception_width_modified&) {
 		DBG_GUI_L << "Status: Width has been modified, rerun.\n";
-		window.NEW_layout_init(false);
-		window.NEW_layout_linked_widgets();
-		NEW_layout(window, maximum_width, maximum_height);
+		window.layout_init(false);
+		window.layout_linked_widgets();
+		layout(window, maximum_width, maximum_height);
 		return;
 	}
 }
@@ -1059,7 +1059,7 @@ void twindow_implementation::NEW_layout(twindow& window,
  * Here is the algorithm used to layout the window:
  *
  * - Perform a full initialization
- *   (@ref gui2::twidget::NEW_layout_init (full_initialization = true)):
+ *   (@ref gui2::twidget::layout_init (full_initialization = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::tscrollbar_container::tscrollbar_mode "scrollbar_mode" is
@@ -1080,13 +1080,13 @@ void twindow_implementation::NEW_layout(twindow& window,
  *   - If width <= maximum_width && height <= maximum_height we're done.
  *   - If width > maximum_width, optimize the width:
  *     - For every grid cell in a grid row there will be a resize request
- *       (@ref gui2::tgrid::NEW_reduce_width):
+ *       (@ref gui2::tgrid::reduce_width):
  *       - Sort the widgets in the row on the resize priority.
  *         - Loop through this priority queue until the row fits
  *           - If priority != 0 try to share the extra width else all
  *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by either wrapping or using a
- *             scrollbar (@ref gui2::twidget::NEW_request_reduce_width).
+ *             scrollbar (@ref gui2::twidget::request_reduce_width).
  *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
@@ -1096,21 +1096,21 @@ void twindow_implementation::NEW_layout(twindow& window,
  *           -Else:
  *             - All widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
- *             wanted (@ref gui2::twidget::NEW_demand_reduce_width).
+ *             wanted (@ref gui2::twidget::demand_reduce_width).
  *             For labels, buttons etc. they get ellipsized.
  *           - If the row fits in the wanted width this row is done.
  *           - Else try the next priority.
  *         - All priorities done and the width still doesn't fit.
  *         - Throw a layout width doesn't fit exception.
  *   - If height > maximum_height, optimize the height
- *       (@ref gui2::tgrid::NEW_reduce_height):
+ *       (@ref gui2::tgrid::reduce_height):
  *     - For every grid cell in a grid column there will be a resize request:
  *       - Sort the widgets in the column on the resize priority.
  *         - Loop through this priority queue until the column fits:
  *           - If priority != 0 try to share the extra height else all
  *              widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by using a scrollbar
- *             (@ref gui2::twidget::NEW_request_reduce_height).
+ *             (@ref gui2::twidget::request_reduce_height).
  *             - If succeeded for a widget the width is influenced and the
  *               width might be invalid.
  *             - Throw a width modified exception.
@@ -1121,7 +1121,7 @@ void twindow_implementation::NEW_layout(twindow& window,
  *           - If priority != 0 try to share the extra height else all
  *             widgets are tried to reduce the full size.
  *           - Try to shrink the widgets by sizing them smaller as really
- *             wanted (@ref gui2::twidget::NEW_demand_reduce_width).
+ *             wanted (@ref gui2::twidget::demand_reduce_width).
  *             For labels, buttons etc. they get ellipsized .
  *           - If the column fits in the wanted height this column is done.
  *           - Else try the next priority.
@@ -1151,7 +1151,7 @@ void twindow_implementation::NEW_layout(twindow& window,
  *
  * - Relayout:
  *   - Initialize all widgets
- *     (@ref gui2::twidget::NEW_layout_init (full_initialization = false))
+ *     (@ref gui2::twidget::layout_init (full_initialization = false))
  *   - Handle shared sizes, since the reinitialization resets that state.
  *   - Goto start layout loop.
  *

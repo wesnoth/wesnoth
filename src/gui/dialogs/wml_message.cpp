@@ -209,7 +209,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 			dynamic_cast<tbutton*>(window.find_widget("ok", false));
 		VALIDATE(button, missing_widget("ok"));
 		button->set_visible(twidget::INVISIBLE);
-		window.NEW_layout();
+		window.layout();
 
 		if(window.disable_easy_close()) {
 			button->set_visible(twidget::VISIBLE);

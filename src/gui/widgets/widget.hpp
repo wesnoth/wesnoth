@@ -155,7 +155,7 @@ public:
 	 *                            tscrollbar_mode::always_visible. For other
 	 *                            widgets this flag is a NOP.
 	 */
-	virtual void NEW_layout_init(const bool full_initialization);
+	virtual void layout_init(const bool full_initialization);
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -169,7 +169,7 @@ public:
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	virtual void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+	virtual void request_reduce_width(const unsigned /*maximum_width*/) {}
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -183,7 +183,7 @@ public:
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	virtual void NEW_demand_reduce_width(const unsigned /*maximum_width*/) {}
+	virtual void demand_reduce_width(const unsigned /*maximum_width*/) {}
 
 	/**
 	 * Tries to reduce the height of a widget.
@@ -196,7 +196,7 @@ public:
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	virtual void NEW_request_reduce_height(const unsigned /*maximum_height*/) {}
+	virtual void request_reduce_height(const unsigned /*maximum_height*/) {}
 
 	/**
 	 * Tries to reduce the height of a widget.
@@ -210,7 +210,7 @@ public:
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	virtual void NEW_demand_reduce_height(const unsigned /*maximum_height*/) {}
+	virtual void demand_reduce_height(const unsigned /*maximum_height*/) {}
 
 	/**
 	 * Gets the best size for the widget.

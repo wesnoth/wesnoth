@@ -18,7 +18,7 @@
 
 namespace gui2 {
 
-void twidget::NEW_layout_init(const bool /*full_initialization*/)
+void twidget::layout_init(const bool /*full_initialization*/)
 {
 	assert(visible_ != INVISIBLE);
 

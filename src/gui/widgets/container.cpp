@@ -20,42 +20,42 @@
 
 namespace gui2 {
 
-void tcontainer_::NEW_layout_init(const bool full_initialization)
+void tcontainer_::layout_init(const bool full_initialization)
 {
 	// Inherited.
-	tcontrol::NEW_layout_init(full_initialization);
+	tcontrol::layout_init(full_initialization);
 
-	grid_.NEW_layout_init(full_initialization);
+	grid_.layout_init(full_initialization);
 }
 
-void tcontainer_::NEW_reduce_width(const unsigned maximum_width)
+void tcontainer_::reduce_width(const unsigned maximum_width)
 {
-	grid_.NEW_reduce_width(maximum_width - border_space().x);
+	grid_.reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::NEW_request_reduce_width(const unsigned maximum_width)
+void tcontainer_::request_reduce_width(const unsigned maximum_width)
 {
-	grid_.NEW_request_reduce_width(maximum_width - border_space().x);
+	grid_.request_reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::NEW_demand_reduce_width(const unsigned maximum_width)
+void tcontainer_::demand_reduce_width(const unsigned maximum_width)
 {
-	grid_.NEW_demand_reduce_width(maximum_width - border_space().x);
+	grid_.demand_reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::NEW_reduce_height(const unsigned maximum_height)
+void tcontainer_::reduce_height(const unsigned maximum_height)
 {
-	grid_.NEW_reduce_height(maximum_height - border_space().y);
+	grid_.reduce_height(maximum_height - border_space().y);
 }
 
-void tcontainer_::NEW_request_reduce_height(const unsigned maximum_height)
+void tcontainer_::request_reduce_height(const unsigned maximum_height)
 {
-	grid_.NEW_request_reduce_height(maximum_height - border_space().y);
+	grid_.request_reduce_height(maximum_height - border_space().y);
 }
 
-void tcontainer_::NEW_demand_reduce_height(const unsigned maximum_height)
+void tcontainer_::demand_reduce_height(const unsigned maximum_height)
 {
-	grid_.NEW_demand_reduce_height(maximum_height - border_space().y);
+	grid_.demand_reduce_height(maximum_height - border_space().y);
 }
 
 void tcontainer_::set_size(const tpoint& origin, const tpoint& size)

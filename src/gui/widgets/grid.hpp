@@ -181,7 +181,7 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from twidget. */
-	void NEW_layout_init(const bool full_initialization);
+	void layout_init(const bool full_initialization);
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -190,13 +190,13 @@ public:
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	void NEW_reduce_width(const unsigned maximum_width);
+	void reduce_width(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
-	void NEW_request_reduce_width(const unsigned maximum_width);
+	void request_reduce_width(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
-	void NEW_demand_reduce_width(const unsigned maximum_width);
+	void demand_reduce_width(const unsigned maximum_width);
 
 	/**
 	 * Tries to reduce the height of a container.
@@ -205,13 +205,13 @@ public:
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	void NEW_reduce_height(const unsigned maximum_height);
+	void reduce_height(const unsigned maximum_height);
 
 	/** Inherited from twidget. */
-	void NEW_request_reduce_height(const unsigned maximum_height);
+	void request_reduce_height(const unsigned maximum_height);
 
 	/** Inherited from twidget. */
-	void NEW_demand_reduce_height(const unsigned maximum_height);
+	void demand_reduce_height(const unsigned maximum_height);
 
 private:
 
@@ -303,8 +303,8 @@ private:
 		 */
 		void set_size(tpoint origin, tpoint size);
 
-		/** Forwards NEW_layout_init() to the cell. */
-		void NEW_layout_init(const bool full_initialization);
+		/** Forwards layout_init() to the cell. */
+		void layout_init(const bool full_initialization);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const

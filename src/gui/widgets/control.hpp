@@ -137,10 +137,10 @@ public:
 	/** Inherited from twidget. */
 	/** @todo Also handle the tooltip state if shrunken_ &&
 	 * use_tooltip_on_label_overflow_. */
-	void NEW_layout_init(const bool full_initialization);
+	void layout_init(const bool full_initialization);
 
 	/** Inherited from twidget. */
-	void NEW_request_reduce_width(const unsigned maximum_width);
+	void request_reduce_width(const unsigned maximum_width);
 
 protected:
 	/** Inherited from twidget. */

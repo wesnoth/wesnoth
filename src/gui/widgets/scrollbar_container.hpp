@@ -81,13 +81,13 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from tcontainer_. */
-	void NEW_layout_init(const bool full_initialization);
+	void layout_init(const bool full_initialization);
 
 	/** Inherited from twidget. */
-	void NEW_request_reduce_height(const unsigned maximum_height);
+	void request_reduce_height(const unsigned maximum_height);
 
 	/** Inherited from tcontrol. */
-	void NEW_request_reduce_width(const unsigned maximum_width);
+	void request_reduce_width(const unsigned maximum_width);
 
 	/** Inherited from tcontainer_. */
 	bool can_wrap() const

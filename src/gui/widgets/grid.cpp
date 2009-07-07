@@ -166,20 +166,20 @@ void tgrid::set_active(const bool active)
 	}
 }
 
-void tgrid::NEW_layout_init(const bool full_initialization)
+void tgrid::layout_init(const bool full_initialization)
 {
 	// Inherited.
-	twidget::NEW_layout_init(full_initialization);
+	twidget::layout_init(full_initialization);
 
 	// Clear child caches.
 	foreach(tchild& child, children_) {
 
-		child.NEW_layout_init(full_initialization);
+		child.layout_init(full_initialization);
 
 	}
 }
 
-void tgrid::NEW_reduce_width(const unsigned maximum_width)
+void tgrid::reduce_width(const unsigned maximum_width)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
@@ -193,7 +193,7 @@ void tgrid::NEW_reduce_width(const unsigned maximum_width)
 
 	/***** ***** ***** ***** Request resize ***** ***** ***** *****/
 
-	NEW_request_reduce_width(maximum_width);
+	request_reduce_width(maximum_width);
 
 	size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
@@ -212,7 +212,7 @@ void tgrid::NEW_reduce_width(const unsigned maximum_width)
 	throw tlayout_exception_width_resize_failed();
 }
 
-void tgrid::NEW_request_reduce_width(const unsigned maximum_width)
+void tgrid::request_reduce_width(const unsigned maximum_width)
 {
 	tpoint size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
@@ -231,7 +231,7 @@ void tgrid::NEW_request_reduce_width(const unsigned maximum_width)
 
 		const unsigned wanted_width = col_width_[col] - (too_wide - reduced);
 		const unsigned width = tgrid_implementation::
-				NEW_column_request_reduce_width(*this, col, wanted_width);
+				column_request_reduce_width(*this, col, wanted_width);
 
 		if(width < col_width_[col]) {
 			DBG_GUI_L << "tgrid: reduced " << col_width_[col] - width
@@ -249,12 +249,12 @@ void tgrid::NEW_request_reduce_width(const unsigned maximum_width)
 	set_layout_size(calculate_best_size());
 }
 
-void tgrid::NEW_demand_reduce_width(const unsigned /*maximum_width*/)
+void tgrid::demand_reduce_width(const unsigned /*maximum_width*/)
 {
 	/** @todo Implement. */
 }
 
-void tgrid::NEW_reduce_height(const unsigned maximum_height)
+void tgrid::reduce_height(const unsigned maximum_height)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, std::string("tgrid ") + __func__);
@@ -268,7 +268,7 @@ void tgrid::NEW_reduce_height(const unsigned maximum_height)
 
 	/***** ***** ***** ***** Request resize ***** ***** ***** *****/
 
-	NEW_request_reduce_height(maximum_height);
+	request_reduce_height(maximum_height);
 
 	size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
@@ -287,7 +287,7 @@ void tgrid::NEW_reduce_height(const unsigned maximum_height)
 	throw tlayout_exception_height_resize_failed();
 }
 
-void tgrid::NEW_request_reduce_height(const unsigned maximum_height)
+void tgrid::request_reduce_height(const unsigned maximum_height)
 {
 	tpoint size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
@@ -306,7 +306,7 @@ void tgrid::NEW_request_reduce_height(const unsigned maximum_height)
 
 		const unsigned wanted_height = row_height_[row] - (too_high - reduced);
 		const unsigned height = tgrid_implementation::
-				NEW_row_request_reduce_height(*this, row, wanted_height);
+				row_request_reduce_height(*this, row, wanted_height);
 
 		if(height < row_height_[row]) {
 			DBG_GUI_L << "tgrid: reduced " << row_height_[row] - height
@@ -324,7 +324,7 @@ void tgrid::NEW_request_reduce_height(const unsigned maximum_height)
 	set_layout_size(calculate_best_size());
 }
 
-void tgrid::NEW_demand_reduce_height(const unsigned /*maximum_height*/)
+void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/** @todo Implement. */
 }
@@ -780,12 +780,12 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 	widget()->set_size(widget_orig, widget_size);
 }
 
-void tgrid::tchild::NEW_layout_init(const bool full_initialization)
+void tgrid::tchild::layout_init(const bool full_initialization)
 {
 	assert(widget_);
 
 	if(widget_->get_visible() != twidget::INVISIBLE) {
-		widget_->NEW_layout_init(full_initialization);
+		widget_->layout_init(full_initialization);
 	}
 }
 
@@ -857,7 +857,7 @@ void tgrid::impl_draw_children(surface& frame_buffer)
 	}
 }
 
-unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,
+unsigned tgrid_implementation::row_request_reduce_height(tgrid& grid,
 		const unsigned row, const unsigned maximum_height)
 {
 	// The minimum height required.
@@ -865,7 +865,7 @@ unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,
 
 	for(size_t x = 0; x < grid.cols_; ++x) {
 		tgrid::tchild& cell = grid.child(row, x);
-		NEW_cell_request_reduce_height(cell, maximum_height);
+		cell_request_reduce_height(cell, maximum_height);
 
 		const tpoint size(cell.get_best_size());
 
@@ -882,7 +882,7 @@ unsigned tgrid_implementation::NEW_row_request_reduce_height(tgrid& grid,
 	return required_height;
 }
 
-unsigned tgrid_implementation::NEW_column_request_reduce_width(tgrid& grid,
+unsigned tgrid_implementation::column_request_reduce_width(tgrid& grid,
 		const unsigned column, const unsigned maximum_width)
 {
 	// The minimum width required.
@@ -890,7 +890,7 @@ unsigned tgrid_implementation::NEW_column_request_reduce_width(tgrid& grid,
 
 	for(size_t y = 0; y < grid.rows_; ++y) {
 		tgrid::tchild& cell = grid.child(y, column);
-		NEW_cell_request_reduce_width(cell, maximum_width);
+		cell_request_reduce_width(cell, maximum_width);
 
 		const tpoint size(cell.get_best_size());
 
@@ -907,7 +907,7 @@ unsigned tgrid_implementation::NEW_column_request_reduce_width(tgrid& grid,
 	return required_width;
 }
 
-void tgrid_implementation::NEW_cell_request_reduce_height(
+void tgrid_implementation::cell_request_reduce_height(
 		tgrid::tchild& child, const unsigned maximum_height)
 {
 	assert(child.widget_);
@@ -916,11 +916,11 @@ void tgrid_implementation::NEW_cell_request_reduce_height(
 		return;
 	}
 
-	child.widget_->NEW_request_reduce_height(
+	child.widget_->request_reduce_height(
 			maximum_height - child.border_space().y);
 }
 
-void tgrid_implementation::NEW_cell_request_reduce_width(
+void tgrid_implementation::cell_request_reduce_width(
 		tgrid::tchild& child, const unsigned maximum_width)
 {
 	assert(child.widget_);
@@ -929,7 +929,7 @@ void tgrid_implementation::NEW_cell_request_reduce_width(
 		return;
 	}
 
-	child.widget_->NEW_request_reduce_width(
+	child.widget_->request_reduce_width(
 			maximum_width - child.border_space().x);
 }
 

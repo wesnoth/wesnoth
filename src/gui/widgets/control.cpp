@@ -105,20 +105,20 @@ tpoint tcontrol::get_config_maximum_size() const
 	return result;
 }
 
-void tcontrol::NEW_layout_init(const bool full_initialization)
+void tcontrol::layout_init(const bool full_initialization)
 {
 	// Inherited.
-	twidget::NEW_layout_init(full_initialization);
+	twidget::layout_init(full_initialization);
 
 	if(full_initialization) {
 		shrunken_ = false;
 	}
 }
 
-void tcontrol::NEW_request_reduce_width(const unsigned maximum_width)
+void tcontrol::request_reduce_width(const unsigned maximum_width)
 {
 	// Inherited.
-	twidget::NEW_request_reduce_width(maximum_width);
+	twidget::request_reduce_width(maximum_width);
 
 	assert(config_);
 

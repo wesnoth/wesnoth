@@ -243,21 +243,21 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void tindependant::NEW_request_reduce_width(const unsigned maximum_width)
+void tindependant::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		grid.NEW_request_reduce_width(maximum_width);
+		grid.request_reduce_width(maximum_width);
 	}
 }
 
-void tindependant::NEW_request_reduce_height(const unsigned maximum_height)
+void tindependant::request_reduce_height(const unsigned maximum_height)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-		grid.NEW_request_reduce_height(maximum_height);
+		grid.request_reduce_height(maximum_height);
 	}
 }
 

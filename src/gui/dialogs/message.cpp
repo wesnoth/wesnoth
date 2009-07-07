@@ -108,7 +108,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 * and thus not need a scrollbar. Also when the button is visible
 		 * easy_close will always return false.
 		 */
-		window.NEW_layout();
+		window.layout();
 
 		if(window.disable_easy_close()) {
 			set_button_visible(ok, twidget::VISIBLE);

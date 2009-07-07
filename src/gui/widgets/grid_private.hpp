@@ -116,7 +116,7 @@ struct tgrid_implementation
 	 *
 	 * @returns                   The required row height after resizing.
 	 */
-	static unsigned NEW_row_request_reduce_height(tgrid& grid,
+	static unsigned row_request_reduce_height(tgrid& grid,
 			const unsigned row, const unsigned maximum_height);
 
 	/**
@@ -128,7 +128,7 @@ struct tgrid_implementation
 	 *
 	 * @returns                   The required column width after resizing.
 	 */
-	static unsigned NEW_column_request_reduce_width(tgrid& grid,
+	static unsigned column_request_reduce_width(tgrid& grid,
 			const unsigned column, const unsigned maximum_width);
 
 private:
@@ -139,7 +139,7 @@ private:
 	 * @param child               The cell whose widget needs to be resized.
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	static void NEW_cell_request_reduce_height(tgrid::tchild& child,
+	static void cell_request_reduce_height(tgrid::tchild& child,
 			const unsigned maximum_height);
 
 	/**
@@ -148,7 +148,7 @@ private:
 	 * @param child               The cell whose widget needs to be resized.
 	 * @param maximum_width      The wanted maximum width.
 	 */
-	static void NEW_cell_request_reduce_width(tgrid::tchild& child,
+	static void cell_request_reduce_width(tgrid::tchild& child,
 			const unsigned maximum_width);
 };
 

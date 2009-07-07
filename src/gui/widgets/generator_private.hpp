@@ -171,7 +171,7 @@ struct thorizontal_list
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+	void request_reduce_width(const unsigned /*maximum_width*/) {}
 
 	/**
 	 * Tries to reduce the height for the generator.
@@ -180,7 +180,7 @@ struct thorizontal_list
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	virtual void NEW_request_reduce_height(const unsigned /*maximum_height*/)
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
 	{
 	}
 
@@ -252,11 +252,11 @@ struct tvertical_list
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
 
-	/** See thorizontal_list::NEW_request_reduce_width. */
-	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+	/** See thorizontal_list::request_reduce_width. */
+	void request_reduce_width(const unsigned /*maximum_width*/) {}
 
-	/** See thorizontal_list::NEW_request_reduce_height. */
-	virtual void NEW_request_reduce_height(const unsigned /*maximum_height*/)
+	/** See thorizontal_list::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
 	{
 	}
 
@@ -325,11 +325,11 @@ struct tmatrix
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
-	/** See thorizontal_list::NEW_request_reduce_width. */
-	void NEW_request_reduce_width(const unsigned /*maximum_width*/) {}
+	/** See thorizontal_list::request_reduce_width. */
+	void request_reduce_width(const unsigned /*maximum_width*/) {}
 
-	/** See thorizontal_list::NEW_request_reduce_height. */
-	virtual void NEW_request_reduce_height(const unsigned /*maximum_height*/)
+	/** See thorizontal_list::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned /*maximum_height*/)
 	{
 	}
 
@@ -391,11 +391,11 @@ struct tindependant
 		/* DO NOTHING */
 	}
 
-	/** See thorizontal_list::NEW_request_reduce_width. */
-	void NEW_request_reduce_width(const unsigned maximum_width);
+	/** See thorizontal_list::request_reduce_width. */
+	void request_reduce_width(const unsigned maximum_width);
 
-	/** See thorizontal_list::NEW_request_reduce_height. */
-	virtual void NEW_request_reduce_height(const unsigned maximum_height);
+	/** See thorizontal_list::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height);
 
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const;
@@ -683,25 +683,25 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void NEW_layout_init(const bool full_initialization)
+	void layout_init(const bool full_initialization)
 	{
 		foreach(titem* item, items_) {
 			if(item->grid.get_visible() != twidget::INVISIBLE) {
-				item->grid.NEW_layout_init(full_initialization);
+				item->grid.layout_init(full_initialization);
 			}
 		}
 	}
 
 	/** Inherited from tgenerator_. */
-	void NEW_request_reduce_width(const unsigned maximum_width)
+	void request_reduce_width(const unsigned maximum_width)
 	{
-		placement::NEW_request_reduce_width(maximum_width);
+		placement::request_reduce_width(maximum_width);
 	}
 
 	/** Inherited from tgenerator_. */
-	void NEW_request_reduce_height(const unsigned maximum_height)
+	void request_reduce_height(const unsigned maximum_height)
 	{
-		placement::NEW_request_reduce_height(maximum_height);
+		placement::request_reduce_height(maximum_height);
 	}
 
 	/** Inherited from tgenerator_. */
