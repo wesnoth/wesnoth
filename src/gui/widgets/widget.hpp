@@ -304,46 +304,6 @@ public:
 	 * Gets a widget with the wanted id.
 	 *
 	 * This template function doesn't return a pointer to a generic widget but
-	 * returns the wanted type and tests for its existence if required.
-	 *
-	 * @param id                  The id of the widget to find.
-	 * @param must_be_active      The widget should be active, not all widgets
-	 *                            have an active flag, those who don't ignore
-	 *                            flag.
-	 * @param must_exist          The widget should be exist, the function will
-	 *                            fail if the widget doesn't exist or is
-	 *                            inactive and must be active. Upon failure a
-	 *                            wml_error is thrown.
-	 *
-	 * @returns                   The widget with the id.
-	 */
-	template<class T>
-	T* find_widget(const std::string& id,
-			const bool must_be_active, const bool must_exist)
-	{
-		T* widget =
-			dynamic_cast<T*>(find_widget(id, must_be_active));
-		VALIDATE(!must_exist || widget, missing_widget(id));
-
-		return widget;
-	}
-
-	/** The const version of find_widget. */
-	template<class T>
-	const T* find_widget(const std::string& id,
-			const bool must_be_active, const bool must_exist) const
-	{
-		const T* widget =
-			dynamic_cast<const T*>(find_widget(id, must_be_active));
-		VALIDATE(!must_exist || widget, missing_widget(id));
-
-		return widget;
-	}
-
-	/**
-	 * Gets a widget with the wanted id.
-	 *
-	 * This template function doesn't return a pointer to a generic widget but
 	 * returns the wanted type and tests for its existence.
 	 *
 	 * @param id                  The id of the widget to find.
@@ -676,6 +636,38 @@ template<class T> T* get_parent(twidget* widget)
 	} while (widget && !result);
 
 	assert(result);
+	return result;
+}
+
+/**
+ * Gets a widget with the wanted id.
+ *
+ * This template function doesn't return a pointer to a generic widget but
+ * returns the wanted type and tests for its existence if required.
+ *
+ * @param widget              The widget test or find a child with the wanted
+ *                            id.
+ * @param id                  The id of the widget to find.
+ * @param must_be_active      The widget should be active, not all widgets
+ *                            have an active flag, those who don't ignore
+ *                            flag.
+ * @param must_exist          The widget should be exist, the function will
+ *                            fail if the widget doesn't exist or is
+ *                            inactive and must be active. Upon failure a
+ *                            wml_error is thrown.
+ *
+ * @returns                   The widget with the id.
+ */
+template<class T>
+T* NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
+		, const std::string& id
+		, const bool must_be_active
+		, const bool must_exist)
+{
+	T* result =
+		dynamic_cast<T*>(widget->find_widget(id, must_be_active));
+	VALIDATE(!must_exist || result, missing_widget(id));
+
 	return result;
 }
 

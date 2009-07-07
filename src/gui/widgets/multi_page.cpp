@@ -70,10 +70,10 @@ void swap_grid(tgrid* grid,
 	// Get the container containing the wanted widget.
 	tgrid* parent_grid = NULL;
 	if(grid) {
-		parent_grid = grid->find_widget<tgrid>(id, false, false);
+		parent_grid = NEW_find_widget<tgrid>(grid, id, false, false);
 	}
 	if(!parent_grid) {
-		parent_grid = content_grid->find_widget<tgrid>(id, true, false);
+		parent_grid = NEW_find_widget<tgrid>(content_grid, id, true, false);
 	}
 	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
 	assert(parent_grid);

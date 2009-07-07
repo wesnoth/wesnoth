@@ -33,8 +33,8 @@ void tscroll_label::set_label(const t_string& label)
 	tcontrol::set_label(label);
 
 	if(content_grid()) {
-		tlabel* widget = content_grid()->
-				find_widget<tlabel>("_label", false, true);
+		tlabel* widget =
+				NEW_find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_label(label);
 	}
 }
@@ -45,8 +45,8 @@ void tscroll_label::set_markup_mode(const tmarkup_mode markup_mode)
 	tcontrol::set_markup_mode(markup_mode);
 
 	if(content_grid()) {
-		tlabel* widget = content_grid()->
-				find_widget<tlabel>("_label", false, true);
+		tlabel* widget =
+				NEW_find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_markup_mode(markup_mode);
 	}
 }
