@@ -29,6 +29,32 @@ public:
 	{
 	}
 
+	/** 
+	 * Wrapper for set_label.
+	 *
+	 * Some people considered this function missing and confusing so added
+	 * this forward version.
+	 *
+	 * @param label               The filename image to show.
+	 */
+	void set_image(const t_string& label)
+	{
+		set_label(label);
+	}
+
+	/** 
+	 * Wrapper for label.
+	 *
+	 * Some people considered this function missing and confusing so added
+	 * this forward version.
+	 *
+	 * @returns                   The filename of the image shown.
+	 */
+	t_string get_image() const
+	{
+		return label();
+	}
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
