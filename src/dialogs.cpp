@@ -310,7 +310,7 @@ public:
 		gui::preview_pane(video),
 		game_config_(&game_config),
 		map_(map), info_(&info),
-		summaries_(&summaries),
+		summaries_(summaries),
 		index_(0),
 		map_cache_(),
 		textbox_(textbox)
@@ -331,7 +331,7 @@ private:
 	const config* game_config_;
 	gamemap* map_;
 	const std::vector<save_info>* info_;
-	const std::vector<config*>* summaries_;
+	const std::vector<config*>& summaries_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
 	const gui::filter_textbox& textbox_;
@@ -339,16 +339,16 @@ private:
 
 void save_preview_pane::draw_contents()
 {
-	if (size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {
+	if (size_t(index_) >= summaries_.size() || info_->size() != summaries_.size()) {
 		return;
 	}
 
 	std::string dummy;
-	config& summary = *(*summaries_)[index_];
+	config& summary = *summaries_[index_];
 	if (summary["label"] == ""){
 		try {
 			savegame_manager::load_summary((*info_)[index_].name, summary, &dummy);
-			*(*summaries_)[index_] = summary;
+			*summaries_[index_] = summary;
 		} catch(game::load_game_failed&) {
 			summary["corrupt"] = "yes";
 		}

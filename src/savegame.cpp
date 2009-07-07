@@ -123,6 +123,67 @@ static lg::log_domain log_engine("engine");
 	}
 #endif /* _WIN32 */
 
+const std::string save_info::format_time_local() const{
+	char time_buf[256] = {0};
+	tm* tm_l = localtime(&time_modified);
+	if (tm_l) {
+		const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),tm_l);
+		if(res == 0) {
+			time_buf[0] = 0;
+		}
+	} else {
+		LOG_SAVE << "localtime() returned null for time " << time_modified << ", save " << name;
+	}
+
+	return time_buf;
+}
+
+const std::string save_info::format_time_summary() const
+{
+	time_t t = time_modified;
+	time_t curtime = time(NULL);
+	const struct tm* timeptr = localtime(&curtime);
+	if(timeptr == NULL) {
+		return "";
+	}
+
+	const struct tm current_time = *timeptr;
+
+	timeptr = localtime(&t);
+	if(timeptr == NULL) {
+		return "";
+	}
+
+	const struct tm save_time = *timeptr;
+
+	const char* format_string = _("%b %d %y");
+
+	if(current_time.tm_year == save_time.tm_year) {
+		const int days_apart = current_time.tm_yday - save_time.tm_yday;
+		if(days_apart == 0) {
+			// save is from today
+			format_string = _("%H:%M");
+		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
+			// save is from this week
+			format_string = _("%A, %H:%M");
+		} else {
+			// save is from current year
+			format_string = _("%b %d");
+		}
+	} else {
+		// save is from a different year
+		format_string = _("%b %d %y");
+	}
+
+	char buf[40];
+	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
+	if(res == 0) {
+		buf[0] = 0;
+	}
+
+	return buf;
+}
+
 /**
  * A structure for comparing to save_info objects based on their modified time.
  * If the times are equal, will order based on the name.

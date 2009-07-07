@@ -42,7 +42,8 @@ private:
 
 	void list_item_clicked(twindow& window);
 
-	std::string format_time_summary(time_t t);
+	void display_savegame(twindow& window);
+	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
 	//tfield_text* txtFilename_;
 	std::string filename_;

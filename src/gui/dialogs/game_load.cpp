@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
@@ -78,57 +79,69 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 		item["label"] = game.name;
 		data.insert(std::make_pair("filename", item));
 
-		item["label"] = format_time_summary(game.time_modified);
+		item["label"] = game.format_time_summary();
 		data.insert(std::make_pair("date", item));
 
 		list->add_row(data);
 	}
+
+	display_savegame(window);
 }
 
 void tgame_load::list_item_clicked(twindow& window){
+	display_savegame(window);
+}
+
+void tgame_load::post_show(twindow& window)
+{
+	//filename_ = txtFilename_->get_widget_value(window);
+}
+
+void tgame_load::display_savegame(twindow& window){
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
 	VALIDATE(list, missing_widget("savegame_list"));
+	save_info& game = games_[list->get_selected_row()];
 
-	config summary;
+	config cfg_summary;
 	std::string dummy;
-	save_info game = games_[list->get_selected_row()];
 
 	try {
-		savegame_manager::load_summary(game.name, summary, &dummy);
+		savegame_manager::load_summary(game.name, cfg_summary, &dummy);
 	} catch(game::load_game_failed&) {
-		summary["corrupt"] = "yes";
+		cfg_summary["corrupt"] = "yes";
 	}
+
+	timage* img_leader = dynamic_cast<timage*>(window.find_widget("imgLeader", false));
+	VALIDATE(img_leader, missing_widget("imgLeader"));
+	img_leader->set_label(cfg_summary["leader_image"]);
 
 	tminimap* minimap = dynamic_cast<tminimap*>(window.find_widget("minimap", false));
 	VALIDATE(minimap, missing_widget("minimap"));
-	minimap->set_map_data(summary["map_data"]);
+	minimap->set_map_data(cfg_summary["map_data"]);
 
 	tlabel* scenario = dynamic_cast<tlabel*>(window.find_widget("lblScenario", false));
 	scenario->set_label(game.name);
 
 	std::stringstream str;
+	str << game.format_time_local();
+	evaluate_summary_string(str, cfg_summary);
 
-	char time_buf[256] = {0};
-	tm* tm_l = localtime(&game.time_modified);
-	if (tm_l) {
-		const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),tm_l);
-		if(res == 0) {
-			time_buf[0] = 0;
-		}
-	} else {
-		LOG_GUI_G << "localtime() returned null for time " << game.time_modified << ", save " << game.name;
-	}
+	tlabel* lblSummary = dynamic_cast<tlabel*>(window.find_widget("lblSummary", false));
+	lblSummary->set_label(str.str());
 
-	str << time_buf;
+	// FIXME: Find a better way to change the label width
+	window.invalidate_layout();
+}
 
-	const std::string& campaign_type = summary["campaign_type"];
-	if(utils::string_bool(summary["corrupt"], false)) {
+void tgame_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary){
+	const std::string& campaign_type = cfg_summary["campaign_type"];
+	if(utils::string_bool(cfg_summary["corrupt"], false)) {
 		str << "\n" << _("#(Invalid)");
 	} else if (!campaign_type.empty()) {
 		str << "\n";
 
 		if(campaign_type == "scenario") {
-			const std::string campaign_id = summary["campaign"];
+			const std::string campaign_id = cfg_summary["campaign"];
 			const config *campaign = NULL;
 			if (!campaign_id.empty()) {
 				if (const config &c = cache_config_.find_child("campaign", "id", campaign_id))
@@ -157,75 +170,19 @@ void tgame_load::list_item_clicked(twindow& window){
 
 		str << "\n";
 
-		if(utils::string_bool(summary["replay"], false) && !utils::string_bool(summary["snapshot"], true)) {
+		if(utils::string_bool(cfg_summary["replay"], false) && !utils::string_bool(cfg_summary["snapshot"], true)) {
 			str << _("replay");
-		} else if (!summary["turn"].empty()) {
-			str << _("Turn") << " " << summary["turn"];
+		} else if (!cfg_summary["turn"].empty()) {
+			str << _("Turn") << " " << cfg_summary["turn"];
 		} else {
 			str << _("Scenario Start");
 		}
 
-		str << "\n" << _("Difficulty: ") << string_table[summary["difficulty"]];
-		if(!summary["version"].empty()) {
-			str << "\n" << _("Version: ") << summary["version"];
+		str << "\n" << _("Difficulty: ") << string_table[cfg_summary["difficulty"]];
+		if(!cfg_summary["version"].empty()) {
+			str << "\n" << _("Version: ") << cfg_summary["version"];
 		}
 	}
-
-	tlabel* lblSummary = dynamic_cast<tlabel*>(window.find_widget("lblSummary", false));
-	lblSummary->set_label(str.str());
-
-	// FIXME: Find a better way to change the label width
-	window.invalidate_layout();
-}
-
-void tgame_load::post_show(twindow& window)
-{
-	//filename_ = txtFilename_->get_widget_value(window);
-}
-
-std::string tgame_load::format_time_summary(time_t t)
-{
-	time_t curtime = time(NULL);
-	const struct tm* timeptr = localtime(&curtime);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm current_time = *timeptr;
-
-	timeptr = localtime(&t);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm save_time = *timeptr;
-
-	const char* format_string = _("%b %d %y");
-
-	if(current_time.tm_year == save_time.tm_year) {
-		const int days_apart = current_time.tm_yday - save_time.tm_yday;
-		if(days_apart == 0) {
-			// save is from today
-			format_string = _("%H:%M");
-		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
-			// save is from this week
-			format_string = _("%A, %H:%M");
-		} else {
-			// save is from current year
-			format_string = _("%b %d");
-		}
-	} else {
-		// save is from a different year
-		format_string = _("%b %d %y");
-	}
-
-	char buf[40];
-	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
 }
 
 } // namespace gui2

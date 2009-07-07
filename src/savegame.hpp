@@ -35,6 +35,9 @@ struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
 	std::string name;
 	time_t time_modified;
+
+	const std::string format_time_summary() const;
+	const std::string format_time_local() const;
 };
 
 /**

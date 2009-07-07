@@ -442,18 +442,19 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
+	std::string leader_image;
 
-	foreach (const config &p, cfg_save.child_range("player"))
-	{
-		if (utils::string_bool(p["canrecruit"], false)) {
-			leader = p["save_id"];
-		}
-	}
+	//foreach (const config &p, cfg_save.child_range("player"))
+	//{
+	//	if (utils::string_bool(p["canrecruit"], false)) {
+	//		leader = p["save_id"];
+	//	}
+	//}
 
 	bool shrouded = false;
 
-	if (!leader.empty())
-	{
+	//if (!leader.empty())
+	//{
 		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
 		{
 			foreach (const config &side, snapshot.child_range("side"))
@@ -466,18 +467,27 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					shrouded = true;
 				}
 
+				if (side["canrecruit"] == "yes")
+				{
+						leader = side["id"];
+						leader_image = side["image"];
+						break;
+				}
+
 				foreach (const config &u, side.child_range("unit"))
 				{
 					if (utils::string_bool(u["canrecruit"], false)) {
 						leader = u["id"];
+						leader_image = u["image"];
 						break;
 					}
 				}
 			}
 		}
-	}
+	//}
 
 	cfg_summary["leader"] = leader;
+	cfg_summary["leader_image"] = leader_image;
 	cfg_summary["map_data"] = "";
 
 	if(!shrouded) {
