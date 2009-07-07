@@ -161,6 +161,7 @@ public:
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
 	std::vector<unit>& recall_list() {return recall_list_;}
+	const std::vector<unit>& recall_list() const {return recall_list_;}
 	void set_current_player(const std::string player)
 		{ info_.current_player = player; }
 
