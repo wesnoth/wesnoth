@@ -1,5 +1,5 @@
 import gzip, zlib, StringIO
-import socket, struct, glob, sys, shutil, threading, os
+import socket, struct, glob, sys, shutil, threading, os, fnmatch
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 
@@ -11,8 +11,6 @@ dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
     portmap = (("15004", "1.7.x"), ("15003", "1.6.x"), ("15005", "1.4.x"))
-    # Files with these suffixes will not be downloaded
-    excluded = ("~", "-bak", ".pbl", ".exe", ".com", ".bat", ".scr", ".sh")
 
     def __init__(self, address = None):
         """
@@ -301,7 +299,7 @@ class CampaignClient:
 
         return None
 
-    def put_campaign(self, name, cfgfile, directory, stuff):
+    def put_campaign(self, name, cfgfile, directory, ign, stuff):
         """
         Uploads a campaign to the server. The title, name, author, passphrase,
         description, version and icon parameters are what would normally be
@@ -320,6 +318,10 @@ class CampaignClient:
         request.insert(data)
 
         def put_file(name, f):
+            for ig in ign:
+                if ig[-1] != "/" and fnmatch.fnmatch(name, ig):
+                    print("Ignored file", name)
+                    return None
             fileNode = wmldata.DataSub("file")
 
             # Order in which we apply escape sequences matters.
@@ -336,16 +338,18 @@ class CampaignClient:
             return fileNode
 
         def put_dir(name, path):
+            for ig in ign:
+                if ig[-1] == "/" and fnmatch.fnmatch(name, ig[:-1]):
+                    print("Ignored dir", name)
+                    return None
             dataNode = wmldata.DataSub("dir")
             dataNode.set_text_val("name", name)
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
-                elif [x for x in CampaignClient.excluded if fn.endswith(x)]:
-                    continue
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
-                dataNode.insert(sub)
+                if sbu: dataNode.insert(sub)
             return dataNode
 
         # Only used if it's an old-style campaign directory
