@@ -541,7 +541,7 @@ savegame::savegame(game_state& gamestate, const bool compress_saves, const std::
 	, snapshot_()
 	, filename_()
 	, title_(title)
-	, error_message_(_("The game could not be saved"))
+	, error_message_(_("The game could not be saved: "))
 	, show_confirmation_(false)
 	, compress_saves_(compress_saves)
 {}
@@ -703,9 +703,10 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		if (video != NULL && show_confirmation_)
 			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
 		return true;
-	} catch(game::save_game_failed&) {
+	} catch(game::save_game_failed& e) {
+		ERR_SAVE << error_message_ << e.message;
 		if (video != NULL){
-			gui2::show_error_message(*video,error_message_);
+			gui2::show_error_message(*video, error_message_ + e.message);
 			//do not bother retrying, since the user can just try to save the game again
 			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
