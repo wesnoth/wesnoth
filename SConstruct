@@ -452,6 +452,7 @@ if env["dummy_locales"]:
             )
 
     env.Requires(wesnoth, Dir("locales"))
+if env["nls"]:
     env.Requires(wesnoth, Dir("translations"))
 
 #
