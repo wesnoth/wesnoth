@@ -37,54 +37,50 @@
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
-static map_location find_vacant(const gamemap& map,
-		const unit_map& units,
-		const map_location& loc, int depth,
-		VACANT_TILE_TYPE vacancy,
-		std::set<map_location>& touched,
-		const unit* pass_check)
-	{
-		if(touched.count(loc))
-			return map_location();
-
-		touched.insert(loc);
-
-		if (map.on_board(loc) && units.find(loc) == units.end() &&
-		    (vacancy == VACANT_ANY || map.is_castle(loc))) {
-			return loc;
-		} else if(depth == 0) {
-			return map_location();
-		} else {
-			map_location adj[6];
-			get_adjacent_tiles(loc,adj);
-			for(int i = 0; i != 6; ++i) {
-				if(!map.on_board(adj[i]) || (vacancy == VACANT_CASTLE && !map.is_castle(adj[i])) || (pass_check && pass_check->movement_cost(map[adj[i]]) == unit_movement_type::UNREACHABLE))
-					continue;
-
-				const map_location res =
-					find_vacant(map, units, adj[i], depth - 1, vacancy, touched, pass_check);
-
-				if (map.on_board(res))
-					return res;
-			}
-
-			return map_location();
-		}
-	}
-
 map_location find_vacant_tile(const gamemap& map,
-								   const unit_map& units,
-								   const map_location& loc,
-								   VACANT_TILE_TYPE vacancy,
-								   const unit* pass_check)
+				const unit_map& units,
+				const map_location& loc,
+				VACANT_TILE_TYPE vacancy,
+				const unit* pass_check)
 {
-	for(int i = 1; i != 50; ++i) {
-		std::set<map_location> touch;
-		const map_location res = find_vacant(map,units,loc,i,vacancy,touch,pass_check);
-		if(map.on_board(res))
-			return res;
+	std::set<map_location> pending_tiles_to_check;
+	std::set<map_location> tiles_checked;
+	pending_tiles_to_check.insert( loc );
+	// Iterate out 50 hexes from loc
+	for (int distance = 0; distance < 50; ++distance) {
+		if (pending_tiles_to_check.empty())
+			return map_location();
+		//Copy over the hexes to check and clear the old set
+		std::set<map_location> tiles_checking = pending_tiles_to_check;
+		std::set<map_location>::const_iterator tc_itor = tiles_checking.begin();
+		pending_tiles_to_check.clear();
+		//Iterate over all the hexes we need to check
+		for ( ; tc_itor != tiles_checking.end(); ++tc_itor )
+		{
+			//If unit cannot reach this area, skip it
+			if (pass_check && pass_check->movement_cost(map[*tc_itor]) ==
+					unit_movement_type::UNREACHABLE)
+				continue;
+			//If its good, return it
+			if (map.on_board(*tc_itor) && units.find(*tc_itor) == units.end() &&
+				(vacancy != VACANT_CASTLE || map.is_castle(*tc_itor)))
+				return (*tc_itor);
+			map_location adjs[6];
+			get_adjacent_tiles(*tc_itor,adjs);
+			for (int i = 0; i != 6; ++i)
+			{
+				//Add the tile to be checked if it hasn't already been and isn't already
+				//pending to be checked
+				if (pending_tiles_to_check.find(adjs[i]) == pending_tiles_to_check.end() &&
+					tiles_checked.find(adjs[i]) == tiles_checked.end() &&
+					tiles_checking.find(adjs[i]) == tiles_checking.end())
+				{
+					pending_tiles_to_check.insert(adjs[i]);
+				}
+			}
+		}
+		tiles_checked = tiles_checking;
 	}
-
 	return map_location();
 }
 
