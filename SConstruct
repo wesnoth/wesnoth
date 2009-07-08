@@ -428,6 +428,7 @@ if env["dummy_locales"]:
 
 # TODO: replace with env.Requires when compatibility with scons 0.96.93 isn't required anymore
     env.Depends(wesnoth, Dir("locales"))
+if env["nls"]:
     env.Depends(wesnoth, Dir("translations"))
 
 #
