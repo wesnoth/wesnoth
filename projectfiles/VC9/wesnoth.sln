@@ -1,8 +1,16 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wesnoth", "wesnoth.vcproj", "{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976} = {4A16638B-127B-4AE8-8E0B-4B211B96F976}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wesnothd", "wesnothd.vcproj", "{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976} = {4A16638B-127B-4AE8-8E0B-4B211B96F976}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wesnothlib", "wesnothlib.vcproj", "{4A16638B-127B-4AE8-8E0B-4B211B96F976}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +31,12 @@ Global
 		{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}.Debug|Win32.Build.0 = Debug|Win32
 		{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}.Release|Win32.ActiveCfg = Release|Win32
 		{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}.Release|Win32.Build.0 = Release|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Debug (fast)|Win32.ActiveCfg = Debug|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Debug (fast)|Win32.Build.0 = Debug|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Debug|Win32.Build.0 = Debug|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Release|Win32.ActiveCfg = Release|Win32
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

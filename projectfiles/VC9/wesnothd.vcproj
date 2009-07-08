@@ -19,9 +19,10 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)\wesnothd"
 			ConfigurationType="1"
 			CharacterSet="0"
+			BuildLogFile="$(IntDir)\BuildLog-wesnothd.htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -96,6 +97,7 @@
 			ConfigurationType="1"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\BuildLog-wesnothd.htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -135,8 +137,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib wesnothlib.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(OutDir)"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -175,89 +178,9 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\src\color_range.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\filesystem.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\game_config.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\gettext.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\loadscreen_empty.cpp"
 				>
 			</File>
-			<File
-				RelativePath="..\..\src\log.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network_worker.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\thread.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\time.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\tstring.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\util.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\version.cpp"
-				>
-			</File>
-			<Filter
-				Name="Serialization"
-				>
-				<File
-					RelativePath="..\..\src\serialization\binary_wml.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\parser.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\preprocessor.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\preprocessor.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\tokenizer.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\tokenizer.hpp"
-					>
-				</File>
-			</Filter>
 			<Filter
 				Name="Server"
 				>
@@ -471,78 +394,6 @@
 			Name="Header Files"
 			Filter="hpp;h"
 			>
-			<File
-				RelativePath="..\..\src\about.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\filesystem.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\game_config.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\gettext.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\global.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\loadscreen.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\log.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\map.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network_worker.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\scoped_resource.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\thread.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\time.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\tstring.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\util.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\version.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\wesconfig.h"
-				>
-			</File>
 			<Filter
 				Name="Server"
 				>
@@ -618,34 +469,6 @@
 						>
 					</File>
 				</Filter>
-			</Filter>
-			<Filter
-				Name="Serialization"
-				>
-				<File
-					RelativePath="..\..\src\serialization\binary_or_text.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\binary_or_text.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\binary_wml.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\parser.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\string_utils.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\string_utils.hpp"
-					>
-				</File>
 			</Filter>
 		</Filter>
 		<Filter

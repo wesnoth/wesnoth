@@ -22,6 +22,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="0"
+			BuildLogFile="$(IntDir)\BuildLog-wesnoth.htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -97,6 +98,7 @@
 			ConfigurationType="1"
 			CharacterSet="0"
 			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\BuildLog-wesnoth.htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -140,8 +142,8 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib lua51.lib"
-				AdditionalLibraryDirectories=""
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib lua51.lib wesnothlib.lib"
+				AdditionalLibraryDirectories="$(OutDir)"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -177,6 +179,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="0"
+			BuildLogFile="$(IntDir)\BuildLog-wesnoth.htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -307,14 +310,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\color_range.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\config_cache.cpp"
 				>
 			</File>
@@ -344,10 +339,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\filechooser.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\filesystem.cpp"
 				>
 			</File>
 			<File
@@ -403,10 +394,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\game_config.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\game_display.cpp"
 				>
 			</File>
@@ -432,10 +419,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\generic_event.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\gettext.cpp"
 				>
 			</File>
 			<File
@@ -484,10 +467,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\lobby_data.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\log.cpp"
 				>
 			</File>
 			<File
@@ -560,14 +539,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\multiplayer_wait.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network_worker.cpp"
 				>
 			</File>
 			<File
@@ -707,14 +678,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\thread.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\time.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\time_of_day.cpp"
 				>
 			</File>
@@ -728,10 +691,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\tooltips.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\tstring.cpp"
 				>
 			</File>
 			<File
@@ -771,19 +730,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\util.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\variable.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\variant.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\version.cpp"
 				>
 			</File>
 			<File
@@ -794,178 +745,6 @@
 				RelativePath="..\..\src\wml_exception.cpp"
 				>
 			</File>
-			<Filter
-				Name="Serialization"
-				>
-				<File
-					RelativePath="..\..\src\serialization\binary_or_text.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\binary_wml.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\parser.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\preprocessor.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\string_utils.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\tokenizer.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug (fast)|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Serialization\"
-						/>
-					</FileConfiguration>
-				</File>
-			</Filter>
 			<Filter
 				Name="Gui"
 				>
@@ -5012,30 +4791,6 @@
 						</File>
 					</Filter>
 				</Filter>
-			</Filter>
-			<Filter
-				Name="Serialization"
-				>
-				<File
-					RelativePath="..\..\src\serialization\binary_or_text.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\binary_wml.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\parser.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\preprocessor.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\serialization\string_utils.hpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Widgets"
