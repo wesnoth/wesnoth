@@ -57,13 +57,13 @@ map_location find_vacant_tile(const gamemap& map,
 		//Iterate over all the hexes we need to check
 		for ( ; tc_itor != tiles_checking.end(); ++tc_itor )
 		{
-			//If unit cannot reach this area, skip it
-			if (pass_check && pass_check->movement_cost(map[*tc_itor]) ==
-					unit_movement_type::UNREACHABLE)
+			//If the unit cannot reach this area or it's not a castle but should, skip it.
+			if ((vacancy == VACANT_CASTLE && !map.is_castle(*tc_itor))
+			|| (pass_check && pass_check->movement_cost(map[*tc_itor])
+					== unit_movement_type::UNREACHABLE))
 				continue;
-			//If its good, return it
-			if (map.on_board(*tc_itor) && units.find(*tc_itor) == units.end() &&
-				(vacancy != VACANT_CASTLE || map.is_castle(*tc_itor)))
+			//If the hex is empty, return it.
+			if (map.on_board(*tc_itor) && units.find(*tc_itor) == units.end())
 				return (*tc_itor);
 			map_location adjs[6];
 			get_adjacent_tiles(*tc_itor,adjs);
