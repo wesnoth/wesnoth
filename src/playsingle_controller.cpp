@@ -436,11 +436,48 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
+				if(teams_[un->second.side()-1].persistent()) {
+					un->second.new_turn();
+					un->second.new_scenario();
+					teams_[un->second.side()-1].recall_list().push_back(un->second);
+				}
 				if(player) {
 					LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
 					un->second.new_turn();
 					un->second.new_scenario();
 					player->available_units.push_back(un->second);
+				}
+			}
+			//store all units that survived (recall list for the next scenario) in snapshot
+			gamestate_.snapshot = config(); //unnecessary to clear the whole snapshot, just clear the side children?
+			std::set<std::string> side_ids;
+			for(i=teams_.begin(); i!=teams_.end(); ++i) {
+				side_ids.insert(i->save_id());
+				if (i->persistent()) {
+					config& new_side = gamestate_.snapshot.add_child("side");
+					new_side["save_id"] = i->save_id();
+					new_side["name"] = i->current_player();
+					std::stringstream can_recruit;
+					std::copy(i->recruits().begin(),i->recruits().end(),std::ostream_iterator<std::string>(can_recruit,","));
+					std::string can_recruit_str = can_recruit.str();
+					// Remove the trailing comma
+					if(can_recruit_str.empty() == false) {
+						can_recruit_str.resize(can_recruit_str.size()-1);
+					}
+					new_side["can_recruit"] = can_recruit_str;
+					LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
+					//add the units of the recall list
+					foreach(const unit& u, i->recall_list()) {
+						config& new_unit = new_side.add_child("unit");
+						u.write(new_unit);
+					}
+				}
+			}
+			//add any players from starting_pos that do not have a team in the current scenario
+			foreach (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
+				if (side_ids.count((*player_cfg)["save_id"]) == 0) {
+					LOG_NG << "stored inactive side in snapshot:\n" << (*player_cfg)["save_id"] << std::endl;
+					gamestate_.snapshot.add_child("player", (*player_cfg));
 				}
 			}
 
