@@ -76,6 +76,7 @@ public:
 		std::string name;
 		int gold;
 		int start_gold;
+		bool gold_add;
 		int income;
 		int income_per_village;
 		size_t average_price;
@@ -145,6 +146,7 @@ public:
 
 	int gold() const { return gold_; }
 	int start_gold() const { return info_.start_gold; }
+	bool gold_add() const { return info_.gold_add; }
 	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
@@ -154,6 +156,7 @@ public:
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
+	void set_gold_add(bool b) {info_.gold_add = b; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	int countdown_time() const {  return countdown_time_; }
 	void set_countdown_time(const int amount)

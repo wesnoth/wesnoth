@@ -81,6 +81,7 @@ team::team_info::team_info(const config& cfg) :
 		name(cfg["name"]),
 		gold(lexical_cast_default<int>(cfg["gold"])),
 		start_gold(0),
+		gold_add(false),
 		income(lexical_cast_default<int>(cfg["income"])),
 		income_per_village(0),
 		average_price(0),
