@@ -349,7 +349,7 @@ class CampaignClient:
                     sub = put_dir(os.path.basename(fn), fn)
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
-                if sbu: dataNode.insert(sub)
+                if sub: dataNode.insert(sub)
             return dataNode
 
         # Only used if it's an old-style campaign directory
