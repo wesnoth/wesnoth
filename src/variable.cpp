@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
+#include "team.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -524,11 +525,18 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
+	const std::vector<team>& teams = teams_manager::get_teams();
+	std::vector<team>::const_iterator team_it;
+	for (team_it = teams.begin(); team_it != teams.end(); team_it++) {
+		if (team_it->save_id() == player_ )
+			break;
+	}
+
 	player_info* const player = repos->get_player(player_);
-	if(player != NULL) {
-		if(player->available_units.size() > recall_index_) {
+	if(team_it != teams.end()) {
+		if(team_it->recall_list().size() > recall_index_) {
 			config tmp_cfg;
-			player->available_units[recall_index_].write(tmp_cfg);
+			team_it->recall_list()[recall_index_].write(tmp_cfg);
 			tmp_cfg["x"] = "recall";
 			tmp_cfg["y"] = "recall";
 			LOG_NG << "auto-storing $" << name() << " for player: " << player_
