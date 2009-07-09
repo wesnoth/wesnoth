@@ -697,9 +697,11 @@ void game_state::get_player_info(const config& cfg,
 	scenarios. Snapshots and replays are loaded from savegames and
 	got their own gold information, which must not be altered here
 	*/
+	bool gold_add = false;
 	if ( (player != NULL)  && (!snapshot) ) {
 		if(player->gold_add) {
 			ngold +=  player->gold;
+			gold_add = true;
 		} else if(player->gold >= ngold) {
 			ngold = player->gold;
 		}
@@ -710,6 +712,7 @@ void game_state::get_player_info(const config& cfg,
 	LOG_NG << "set gold to '" << ngold << "'\n";
 
 	team temp_team(cfg, map, ngold);
+	temp_team.set_gold_add(gold_add);
 	teams.push_back(temp_team);
 
 	// Update/fix the recall list for this side,

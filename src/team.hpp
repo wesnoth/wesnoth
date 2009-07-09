@@ -301,7 +301,7 @@ public:
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
-	bool persistent() {return info_.persistent;}
+	bool persistent() const {return info_.persistent;}
 
 	static int nteams();
 
