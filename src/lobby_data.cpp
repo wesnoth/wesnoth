@@ -29,6 +29,45 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+chat_message::chat_message(const time_t& timestamp, const std::string& user, const std::string& message)
+: timestamp(timestamp), user(user), message(message)
+{
+}
+
+chat_message::chat_message(const std::string& user, const std::string& message)
+: timestamp(time(0)), user(user), message(message)
+{
+}
+
+chat_log::chat_log()
+: history_()
+{
+}
+
+void chat_log::add_message(const time_t& timestamp, const std::string& user, const std::string& message)
+{
+	history_.push_back(chat_message(timestamp, user, message));
+}
+
+
+void chat_log::add_message(const std::string& user, const std::string& message) {
+	add_message(time(NULL), user, message);
+}
+
+std::string chat_log::assemble_text()
+{
+	std::stringstream ss;
+	foreach (const chat_message& ch, history_) {
+		ss << "<" << ch.user << ">" << ch.message << "\n";
+	}
+	return ss.str();
+}
+
+void chat_log::clear()
+{
+	history_.clear();
+}
+
 room_info::room_info(const std::string& name)
 : name_(name), members_()
 {
@@ -334,5 +373,44 @@ void lobby_info::parse_gamelist()
 	games_.clear();
 	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
 		games_.push_back(game_info(c, game_config_));
+	}
+}
+
+room_info* lobby_info::get_room(const std::string &name)
+{
+	foreach (room_info& r, rooms_) {
+		if (r.name() == name) return &r;
+	}
+	return NULL;
+}
+
+const room_info* lobby_info::get_room(const std::string &name) const
+{
+	foreach (const room_info& r, rooms_) {
+		if (r.name() == name) return &r;
+	}
+	return NULL;
+}
+
+bool lobby_info::has_room(const std::string &name) const
+{
+	return get_room(name) != NULL;
+}
+
+chat_log& lobby_info::get_whisper_log(const std::string &name)
+{
+	return whispers_[name];
+}
+
+void lobby_info::open_room(const std::string &name)
+{
+	rooms_.push_back(room_info(name));
+}
+
+void lobby_info::close_room(const std::string &name)
+{
+	room_info* r = get_room(name);
+	if (r) {
+		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
 	}
 }

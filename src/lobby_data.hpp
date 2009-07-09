@@ -17,8 +17,43 @@
 
 #include "config.hpp"
 #include "sdl_utils.hpp"
+
 #include <set>
 #include <map>
+#include <deque>
+
+/** This class represenst a single stored chat message */
+struct chat_message
+{
+	/** Create a chat message */
+	chat_message(const time_t& timestamp, const std::string& user, const std::string& message);
+
+	/** Create a chat message, assume the time is "now" */
+	chat_message(const std::string& user, const std::string& message);
+
+	time_t timestamp;
+	std::string user;
+	std::string message;
+};
+
+/** this class memorizes a chat session. */
+class chat_log
+{
+public:
+	chat_log();
+
+	void add_message(const time_t& timestamp, const std::string& user, const std::string& message);
+
+	void add_message(const std::string& user, const std::string& message);
+
+	const std::deque<chat_message>& history() const { return history_; }
+
+	std::string assemble_text();
+
+	void clear();
+private:
+	std::deque<chat_message> history_;
+};
 
 /**
  * This class represents the information a client has about a room
@@ -32,9 +67,15 @@ public:
 	bool is_member(const std::string& user) const;
 	void add_member(const std::string& user);
 	void remove_member(const std::string& user);
+	void process_room_members(const config &data);
+
+	const chat_log& log() const { return log_; }
+	chat_log& log() { return log_; }
+
 private:
-	const std::string& name_;
+	std::string name_;
 	std::set<std::string> members_;
+	chat_log log_;
 };
 
 
@@ -112,6 +153,17 @@ public:
 	bool process_gamelist_diff(const config &data);
 
 	const config& gamelist() const { return gamelist_; }
+
+	void open_room(const std::string& name);
+	void close_room(const std::string& name);
+	bool has_room(const std::string& name) const;
+	room_info* get_room(const std::string& name);
+	const room_info* get_room(const std::string& name) const;
+
+	user_info& get_user(const std::string& name);
+
+	chat_log& get_whisper_log(const std::string& name);
+
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info>& games() const { return games_; }
 	const std::vector<user_info>& users() const { return users_; }
@@ -124,6 +176,7 @@ private:
 	std::vector<room_info> rooms_;
 	std::vector<game_info> games_;
 	std::vector<user_info> users_;
+	std::map<std::string, chat_log> whispers_;
 };
 
 #endif

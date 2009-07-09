@@ -31,6 +31,17 @@ class tlistbox;
 class ttext_box;
 class twindow;
 
+struct tlobby_chat_window
+{
+	tlobby_chat_window(std::string name, bool whisper)
+		: name(name), whisper(whisper), pending_messages(0)
+	{
+	}
+	std::string name;
+	bool whisper;
+	int pending_messages;
+};
+
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
@@ -48,13 +59,114 @@ public:
 	enum legacy_result { QUIT, JOIN, OBSERVE, CREATE, PREFERENCES };
 
 	legacy_result get_legacy_result() const { return legacy_result_; }
+
+	enum t_notify_mode {
+		NOTIFY_NONE,
+		NOTIFY_MESSAGE,
+		NOTIFY_MESSAGE_OTHER_WINDOW,
+		NOTIFY_SERVER_MESSAGE,
+		NOTIFY_OWN_NICK,
+		NOTIFY_FRIEND_MESSAGE,
+		NOTIFY_WHISPER,
+		NOTIFY_WHISPER_OTHER_WINDOW,
+		NOTIFY_COUNT
+	};
+
+	void do_notify(t_notify_mode mode);
+
 protected:
-	void send_chat_message(const std::string& message, bool /*allies_only*/);
-	void add_chat_message(const time_t& time, const std::string& speaker,
+	/** inherited form chat_handler */
+	virtual void send_chat_message(const std::string& message, bool /*allies_only*/);
+
+	/** inherited form chat_handler */
+	virtual void add_chat_message(const time_t& time, const std::string& speaker,
 		int side, const std::string& message,
 		events::chat_handler::MESSAGE_TYPE type = events::chat_handler::MESSAGE_PRIVATE);
+
+	/** inherited form chat_handler */
+	virtual void add_whisper_sent(const std::string& receiver, const std::string& message);
+
+	/** inherited form chat_handler */
+	virtual void add_whisper_received(const std::string& sender, const std::string& message);
+
+	/** inherited form chat_handler */
+	virtual void add_chat_room_message_sent(const std::string& room, const std::string& message);
+
+	/** inherited form chat_handler */
+	virtual void add_chat_room_message_received(const std::string& room,
+		const std::string& speaker, const std::string& message);
 private:
+	void append_to_chatbox(const std::string& text);
+
 	legacy_result legacy_result_;
+
+	/**
+	 * Check if a room window for "room" is open, if open_new is true
+	 * then it will be created if not found.
+	 * @return valid ptr if the window was found or added, null otherwise
+	 */
+	tlobby_chat_window* room_window_open(const std::string& room, bool open_new);
+
+	/**
+	 * Check if a whisper window for user "name" is open, if open_new is true
+	 * then it will be created if not found.
+	 * @return valid ptr if the window was found or added, null otherwise
+	 */
+	tlobby_chat_window* whisper_window_open(const std::string& name, bool open_new);
+
+	tlobby_chat_window* search_create_window(const std::string& name, bool whisper, bool open_new);
+
+	/**
+	 * @return true if the whisper window for "name" is the active window
+	 */
+	bool whisper_window_active(const std::string& name);
+
+	/**
+	 * @return true if the room window for "room" is the active window
+	 */
+	bool room_window_active(const std::string& room);
+
+	/**
+	 * Mark the whisper window for "name" as having one more pending message
+	 */
+	void increment_waiting_whsipers(const std::string& name);
+
+	/**
+	 * Mark the room window for "room" as having one more pending message
+	 */
+	void increment_waiting_messages(const std::string& room);
+
+	/**
+	 * Add a whisper message to the whisper window
+	 */
+	void add_whisper_window_whisper(const std::string& sender, const std::string& message);
+
+	/**
+	 * Add a whisper message to the current window which is not the whisper window
+	 * for "name".
+	 */
+	void add_active_window_whisper(const std::string& sender, const std::string& message);
+
+	/**
+	 * Add a message to the window for room "room"
+	 */
+	void add_room_window_message(const std::string& room, const std::string& sender, const std::string& message);
+
+	/**
+	 * Add a message to the window for room "room"
+	 */
+	void add_active_window_message(const std::string& sender, const std::string& message);
+
+	void next_active_window();
+
+	void switch_to_window(tlobby_chat_window* t);
+
+	void active_window_changed();
+
+	void close_active_window();
+
+	void close_window(size_t idx);
+
 
 	/**
 	 * Network polling callback
@@ -93,6 +205,10 @@ private:
 
 	void send_message_button_callback(twindow& window);
 
+	void send_message_to_active_window(const std::string& input);
+
+	void next_window_button_callback(twindow& window);
+
 	void create_button_callback(twindow& window);
 
 	void show_preferences_button_callback(twindow& window);
@@ -127,6 +243,10 @@ private:
 	lobby_info& lobby_info_;
 
 	boost::function<void ()> preferences_callback_;
+
+	std::vector<tlobby_chat_window> open_windows_;
+
+	size_t active_window_;
 };
 
 } // namespace gui2

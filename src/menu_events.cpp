@@ -2458,6 +2458,49 @@ private:
 		cch.dispatch(cmd);
 	}
 
+	void chat_handler::send_whisper(const std::string& receiver, const std::string& message)
+	{
+		config cwhisper, data;
+		cwhisper["receiver"] = receiver;
+		cwhisper["message"] = message;
+		cwhisper["sender"] = preferences::login();
+		data.add_child("whisper", cwhisper);
+		network::send_data(data, 0, true);
+	}
+
+	void chat_handler::add_whisper_sent(const std::string& receiver, const std::string& message)
+	{
+		add_chat_message(time(NULL), "whisper to " + receiver, 0, message);
+	}
+
+	void chat_handler::add_whisper_received(const std::string& sender, const std::string& message)
+	{
+		add_chat_message(time(NULL), "whisper: " + sender, 0, message);
+	}
+
+	void chat_handler::send_chat_room_message(const std::string& room,
+		const std::string& message)
+	{
+		config cmsg, data;
+		cmsg["room"] = room;
+		cmsg["message"] = message;
+		cmsg["sender"] = preferences::login();
+		data.add_child("message", cmsg);
+		network::send_data(data, 0, true);
+	}
+
+	void chat_handler::add_chat_room_message_sent(const std::string &room, const std::string &message)
+	{
+		add_chat_room_message_received(room, preferences::login(), message);
+	}
+
+	void chat_handler::add_chat_room_message_received(const std::string &room,
+		const std::string &speaker, const std::string &message)
+	{
+		add_chat_message(time(NULL), room + ": " + speaker, 0, message, events::chat_handler::MESSAGE_PRIVATE);
+	}
+
+
 	void chat_command_handler::do_emote()
 	{
 		chat_handler_.send_chat_message("/me " + get_data(), allies_only_);
@@ -2496,30 +2539,16 @@ private:
 	{
 		if (get_data(1).empty()) return command_failed_need_arg(1);
 		if (get_data(2).empty()) return command_failed_need_arg(2);
-		config cwhisper, data;
-		cwhisper["receiver"] = get_arg(1);
-		cwhisper["message"] = get_data(2);
-		cwhisper["sender"] = preferences::login();
-		data.add_child("whisper", cwhisper);
-		chat_handler_.add_chat_message(time(NULL),
-			"whisper to " + cwhisper["receiver"], 0,
-			cwhisper["message"], events::chat_handler::MESSAGE_PRIVATE);
-		network::send_data(data, 0, true);
+		chat_handler_.send_whisper(get_arg(1), get_data(2));
+		chat_handler_.add_whisper_sent(get_arg(1), get_data(2));
 	}
 
 	void chat_command_handler::do_chanmsg()
 	{
 		if (get_data(1).empty()) return command_failed_need_arg(1);
 		if (get_data(2).empty()) return command_failed_need_arg(2);
-		config cwhisper, data;
-		cwhisper["room"] = get_arg(1);
-		cwhisper["message"] = get_data(2);
-		cwhisper["sender"] = preferences::login();
-		data.add_child("message", cwhisper);
-		chat_handler_.add_chat_message(time(NULL),
-			cwhisper["room"] + ": " + preferences::login(), 0,
-			cwhisper["message"], events::chat_handler::MESSAGE_PRIVATE);
-		network::send_data(data, 0, true);
+		chat_handler_.send_chat_room_message(get_arg(1), get_data(2));
+		chat_handler_.add_chat_room_message_sent(get_arg(1), get_data(2));
 	}
 
 	void chat_command_handler::do_log()
