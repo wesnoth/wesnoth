@@ -418,12 +418,14 @@ void game_state::write_snapshot(config& cfg, const bool use_snapshot) const
 		cfg.add_child("menu_item", new_cfg);
 	}
 
-	for(std::map<std::string, player_info>::const_iterator i=players.begin();
-	    i!=players.end(); ++i) {
-		config new_cfg;
-		write_player(i->first, i->second, new_cfg, use_snapshot);
-		new_cfg["save_id"]=i->first;
-		cfg.add_child("player", new_cfg);
+	//if snapshot is supposed to be used for side persistance information, we add it later
+	if(!use_snapshot) {
+		for(std::map<std::string, player_info>::const_iterator i=players.begin(); i!=players.end(); ++i) {
+			config new_cfg;
+			write_player(i->first, i->second, new_cfg, use_snapshot);
+			new_cfg["save_id"]=i->first;
+			cfg.add_child("player", new_cfg);
+		}
 	}
 }
 

@@ -535,12 +535,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				// Sends scenario data
 				config cfg;
-				cfg.add_child("store_next_scenario", *scenario);
+				config& next_cfg = cfg.add_child("store_next_scenario", *scenario);
 
 				// Adds player information, and other state
 				// information, to the configuration object
-				assert(cfg.child("store_next_scenario") != NULL);
-				gamestate.write_snapshot(cfg.child("store_next_scenario"), true);
+				assert(next_cfg != NULL);
+				gamestate.write_snapshot(next_cfg, true);
+				assert (next_cfg.get_children("player").empty());
+				write_players(gamestate, next_cfg, true);
 				network::send_data(cfg, 0, true);
 			}
 		}
