@@ -136,6 +136,7 @@ public:
 	~team() {};
 
 	void write(config& cfg) const;
+	void write_player(config& cfg) const;
 
 	bool get_village(const map_location&);
 	void lose_village(const map_location&);

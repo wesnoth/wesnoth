@@ -423,6 +423,30 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = str_cast(action_bonus_count_);
 }
 
+//write a [player] tag, similar to game_state::write_player()
+void team::write_player(config& cfg) const
+{
+	cfg["name"] = info_.current_player;
+	cfg["save_id"] = info_.save_id;
+	cfg["gold"] = str_cast<int>(gold());
+	cfg["gold_add"] = info_.gold_add ? "yes" : "no";
+
+	//add the units of the recall list
+	foreach(const unit& u, recall_list()) {
+		config& new_unit = cfg.add_child("unit");
+		u.write(new_unit);
+	}
+
+	std::stringstream can_recruit;
+	std::copy(recruits().begin(),recruits().end(),std::ostream_iterator<std::string>(can_recruit,","));
+	std::string can_recruit_str = can_recruit.str();
+	// Remove the trailing comma
+	if(can_recruit_str.empty() == false) {
+		can_recruit_str.resize(can_recruit_str.size()-1);
+	}
+	cfg["can_recruit"] = can_recruit_str;
+}
+
 bool team::get_village(const map_location& loc)
 {
 	villages_.insert(loc);
