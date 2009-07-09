@@ -62,6 +62,7 @@ char* compress_buffer(const char* input, string_span* span)
 
 	std::vector<char> buf(in.size()*2 + 80);
 	const size_t len = filter.read(&buf[0], buf.size()).gcount();
+	assert(len < 128*1024*1024);
 	if((!filter.eof() && !filter.good()) || len == static_cast<size_t>(buf.size())) {
 		throw error("failed to compress");
 	}
