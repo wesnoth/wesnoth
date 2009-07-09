@@ -532,7 +532,6 @@ void scoped_recall_unit::activate()
 			break;
 	}
 
-	player_info* const player = repos->get_player(player_);
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {
 			config tmp_cfg;
