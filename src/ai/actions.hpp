@@ -166,6 +166,9 @@ public:
 	static const int E_NO_UNIT = 2002;
 	static const int E_NOT_OWN_UNIT = 2003;
 	static const int E_INCAPACITATED_UNIT = 2004;
+	static const int E_AMBUSHED = 2005;
+	static const int E_FAILED_TELEPORT = 2006;
+	static const int E_NOT_REACHED_DESTINATION = 2007;
 	virtual std::string do_describe() const;
 	virtual const map_location& get_unit_location() const;
 protected:
@@ -177,6 +180,7 @@ private:
 	const unit *get_unit(const unit_map &units, const std::vector<team> &teams, bool update_knowledge = false);
 	bool test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool update_knowledge = false);
 	const map_location from_;
+	move_unit_spectator move_spectator;
 	const map_location to_;
 	bool remove_movement_;
 	plain_route route_;

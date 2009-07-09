@@ -1565,7 +1565,7 @@ private:
 		assert(route.steps.front() == ui->first);
 
 		gui_->set_route(&route);
-		move_unit(gui_,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
+		move_unit(gui_,NULL,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
 		gui_->invalidate_game_status();
 	}
 

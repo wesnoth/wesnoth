@@ -306,6 +306,7 @@ move_result::move_result(side_number side, const map_location& from,
 		const map_location& to, bool remove_movement)
 	: action_result(side)
 	, from_(from)
+	, move_spectator(get_info().units)
 	, to_(to)
 	, remove_movement_(remove_movement)
 	, route_()
@@ -336,7 +337,7 @@ const unit *move_result::get_unit(const unit_map &units, const std::vector<team>
 
 bool move_result::test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool)
 {
-	if (from_==to_) {
+	if (from_==to_) {//@todo 1.7 move is ok in this case if remove_movement_ is set and movement_left is >0
 		set_error(E_EMPTY_MOVE);
 		return false;
 	}
@@ -349,7 +350,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 
 	//do an A*-search
 	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
-	return true;
+	return true;//@todo 1.7 do some tests on returned route
 }
 
 void move_result::do_check_before()
@@ -390,6 +391,20 @@ const map_location& move_result::get_unit_location() const
 
 void move_result::do_check_after()
 {
+	if (move_spectator.get_ambusher().valid()) {
+		set_error(E_AMBUSHED);
+		return;
+	}
+	if (move_spectator.get_failed_teleport().valid()) {
+		set_error(E_FAILED_TELEPORT);
+		return;
+	}
+	//@todo 1.7 add 'new units spotted' failure mode
+
+	if (unit_location_!=to_) {
+		set_error(E_NOT_REACHED_DESTINATION);
+		return;
+	}
 }
 
 
@@ -418,6 +433,7 @@ void move_result::do_execute()
 
 	move_unit(
 		/*game_display* disp*/ &info.disp,
+		/*move_unit_spectator* move_spectator*/ &move_spectator,
                 /*const gamemap& map*/ info.map,
                 /*unit_map& units*/ info.units,
 		/*std::vector<team>& teams*/ info.teams,
@@ -428,7 +444,14 @@ void move_result::do_execute()
 		/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
                 /*bool should_clear_shroud*/ true,
 		/*bool is_replay*/ false);
-	unit_location_ = to_;//@todo: 1.7 modify move_unit to get this info from it
+
+	if (move_spectator.get_unit().valid()){
+		unit_location_ = move_spectator.get_unit()->first;
+	} else {
+		unit_location_ = map_location();
+	}
+
+
 	set_gamestate_changed();
 	manager::raise_unit_moved();
 
@@ -437,6 +460,7 @@ void move_result::do_execute()
 
 void move_result::do_init_for_execution()
 {
+	move_spectator.reset(get_info().units);
 }
 
 

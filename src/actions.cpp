@@ -70,6 +70,86 @@ private:
 	const gamemap& map_;
 };
 
+void move_unit_spectator::add_seen_friend(const unit_map::const_iterator &u)
+{
+	seen_friends_.push_back(u);
+}
+
+
+void move_unit_spectator::add_seen_enemy(const unit_map::const_iterator &u)
+{
+	seen_enemies_.push_back(u);
+}
+
+
+const unit_map::const_iterator& move_unit_spectator::get_ambusher() const
+{
+	return ambusher_;
+}
+
+
+const unit_map::const_iterator& move_unit_spectator::get_failed_teleport() const
+{
+	return failed_teleport_;
+}
+
+
+const std::vector<unit_map::const_iterator>& move_unit_spectator::get_seen_enemies() const
+{
+	return seen_enemies_;
+}
+
+
+const std::vector<unit_map::const_iterator>& move_unit_spectator::get_seen_friends() const
+{
+	return seen_friends_;
+}
+
+
+const unit_map::const_iterator& move_unit_spectator::get_unit() const
+{
+	return unit_;
+}
+
+
+move_unit_spectator::move_unit_spectator(const unit_map &units)
+	: ambusher_(units.end()),failed_teleport_(units.end()),seen_enemies_(),seen_friends_(),unit_(units.end())
+{
+}
+
+
+move_unit_spectator::~move_unit_spectator()
+{
+}
+
+void move_unit_spectator::reset(const unit_map &units)
+{
+	ambusher_ = units.end();
+	failed_teleport_ = units.end();
+	seen_enemies_.clear();
+	seen_friends_.clear();
+	unit_ = units.end();
+}
+
+
+void move_unit_spectator::set_ambusher(const unit_map::const_iterator &u)
+{
+	ambusher_ = u;
+}
+
+
+void move_unit_spectator::set_failed_teleport(const unit_map::const_iterator &u)
+{
+	failed_teleport_ = u;
+}
+
+
+void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
+{
+	unit_ = u;
+}
+
+
 // Conditions placed on victory must be accessible from the global function
 // check_victory, but shouldn't be passed to that function as parameters,
 // since it is called from a variety of places.
@@ -2177,6 +2257,7 @@ bool clear_shroud(game_display& disp, const gamemap& map,
 }
 
 size_t move_unit(game_display* disp,
+		move_unit_spectator *move_spectator,
 		const gamemap& map,
 		unit_map& units, std::vector<team>& teams,
 		std::vector<map_location> route,
@@ -2239,11 +2320,17 @@ size_t move_unit(game_display* disp,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 		if (enemy_unit != units.end()) {
 			if (team.is_enemy(enemy_unit->second.side())) {
+				if (move_spectator!=NULL) {
+					move_spectator->set_ambusher(enemy_unit);
+				}
 				// can't traverse enemy (bug in fog or pathfinding?)
 				should_clear_stack = true; // assuming that this enemy was hidden somehow
 				break;
 			} else if (!tiles_adjacent(*(step-1),*step)) {
 				// can't teleport on ally (on fogged village, with no-leader and view not-shared)
+				if (move_spectator!=NULL) {
+					move_spectator->set_failed_teleport(enemy_unit);
+				}
 				teleport_failed = true;
 				should_clear_stack = true; // we have info not supposed to be shared
 				break;
@@ -2304,6 +2391,9 @@ size_t move_unit(game_display* disp,
 				discovered_unit = true;
 				should_clear_stack = true;
 				moves_left = 0;
+				if (move_spectator!=NULL) {
+					move_spectator->set_ambusher(it);
+				}
 
 				unit_ability_list hides = it->second.get_abilities("hides");
 
@@ -2408,6 +2498,9 @@ size_t move_unit(game_display* disp,
 	event_mutated |= game_events::pump();
 
 	ui = units.find(steps.back());
+	if (move_spectator!=NULL) {
+		move_spectator->set_unit(ui);
+	}
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack || ui == units.end()) {
@@ -2419,7 +2512,7 @@ size_t move_unit(game_display* disp,
 		}
 	}
 
-	if(disp != NULL) {
+	if ( (disp != NULL) || (move_spectator!=NULL) ) {
 		bool redraw = false;
 
 		// Show messages on the screen here
@@ -2427,13 +2520,17 @@ size_t move_unit(game_display* disp,
 			if (ambushed_string.empty())
 				ambushed_string = _("Ambushed!");
 			// We've been ambushed, display an appropriate message
-			disp->announce(ambushed_string, font::BAD_COLOUR);
+			if (disp!=NULL) {
+				disp->announce(ambushed_string, font::BAD_COLOUR);
+			}
 			redraw = true;
 		}
 
 		if(teleport_failed) {
 			std::string teleport_string = _ ("Failed teleport! Exit not empty");
-			disp->announce(teleport_string, font::BAD_COLOUR);
+			if (disp!=NULL) {
+				disp->announce(teleport_string, font::BAD_COLOUR);
+			}
 			redraw = true;
 		}
 
@@ -2453,56 +2550,68 @@ size_t move_unit(game_display* disp,
 
 				if(team.is_enemy(u->second.side())) {
 					++nenemies;
+					if (move_spectator!=NULL) {
+						move_spectator->add_seen_enemy(u);
+					}
 				} else {
 					++nfriends;
+					if (move_spectator!=NULL) {
+						move_spectator->add_seen_friend(u);
+					}
 				}
 
 				DBG_NG << "processed...\n";
 				team.see(u->second.side()-1);
 			}
 
-			// The message we display is different depending on
-			// whether the units sighted were enemies or friends,
-			// and their respective number.
-			utils::string_map symbols;
-			symbols["friends"] = lexical_cast<std::string>(nfriends);
-			symbols["enemies"] = lexical_cast<std::string>(nenemies);
-			std::string message;
-			SDL_Color msg_colour;
-			if(nfriends == 0 || nenemies == 0) {
-				if(nfriends > 0) {
-					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
-					msg_colour = font::GOOD_COLOUR;
-				} else if(nenemies > 0) {
-					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
-					msg_colour = font::BAD_COLOUR;
+			if (disp!=NULL) {
+				// The message we display is different depending on
+				// whether the units sighted were enemies or friends,
+				// and their respective number.
+				utils::string_map symbols;
+				symbols["friends"] = lexical_cast<std::string>(nfriends);
+				symbols["enemies"] = lexical_cast<std::string>(nenemies);
+				std::string message;
+				SDL_Color msg_colour;
+				if(nfriends == 0 || nenemies == 0) {
+					if(nfriends > 0) {
+						message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
+						msg_colour = font::GOOD_COLOUR;
+					} else if(nenemies > 0) {
+						message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
+						msg_colour = font::BAD_COLOUR;
+					}
 				}
-			}
-			else {
-				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
-				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
-				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
-				msg_colour = font::NORMAL_COLOUR;
-			}
-
-			if(steps.size() < route.size()) {
-				// See if the "Continue Move" action has an associated hotkey
-				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
-				if(!hk.null()) {
-					symbols["hotkey"] = hk.get_name();
-					message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
+				else {
+					symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+					symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+					message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+					msg_colour = font::NORMAL_COLOUR;
 				}
-			}
 
-			disp->announce(message, msg_colour);
-			redraw = true;
+				if(steps.size() < route.size()) {
+					// See if the "Continue Move" action has an associated hotkey
+					const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+					if(!hk.null()) {
+						symbols["hotkey"] = hk.get_name();
+						message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
+					}
+				}
+
+				disp->announce(message, msg_colour);
+				redraw = true;
+			}
 		}
 
 		if (redraw) {
 			// Not sure why this would be needed. Maybe during replays?
-			disp->draw();
+			if (disp!=NULL) {
+				disp->draw();
+			}
 		}
-		disp->recalculate_minimap();
+		if (disp!=NULL) {
+			disp->recalculate_minimap();
+		}
 	}
 
 	assert(steps.size() <= route.size());

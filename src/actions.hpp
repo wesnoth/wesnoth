@@ -227,6 +227,66 @@ class attack {
 
 };
 
+
+class move_unit_spectator {
+public:
+	/** add a location of a seen friend */
+	void add_seen_friend(const unit_map::const_iterator &u);
+
+
+	/** add the location of new seen enemy */
+	void add_seen_enemy(const unit_map::const_iterator &u);
+
+
+	/** get the location of an ambusher */
+	const unit_map::const_iterator& get_ambusher() const;
+
+
+	/** get the location of a failed teleport */
+	const unit_map::const_iterator& get_failed_teleport() const;
+
+
+	/** get the locations of seen enemies */
+	const std::vector<unit_map::const_iterator>& get_seen_enemies() const;
+
+
+	/** get the locations of seen friends */
+	const std::vector<unit_map::const_iterator>& get_seen_friends() const;
+
+
+	/** get new location of moved unit */
+	const unit_map::const_iterator& get_unit() const;
+
+
+	/** constructor */
+	move_unit_spectator(const unit_map &units);
+
+
+	/** destructor */
+	virtual ~move_unit_spectator();
+
+	/** reset all locations to empty values*/
+	void reset(const unit_map &units);
+
+
+	/** set the location of an ambusher */
+	void set_ambusher(const unit_map::const_iterator &u);
+
+
+	/** set the location of a failed teleport */
+	void set_failed_teleport(const unit_map::const_iterator &u);
+
+
+	/** set the iterator to moved unit*/
+	void set_unit(const unit_map::const_iterator &u);
+private:
+	unit_map::const_iterator ambusher_;
+	unit_map::const_iterator failed_teleport_;
+	std::vector<unit_map::const_iterator> seen_enemies_;
+	std::vector<unit_map::const_iterator> seen_friends_;
+	unit_map::const_iterator unit_;
+};
+
 /**
  * Given the location of a village, will return the 0-based index
  * of the team that currently owns it, and -1 if it is unowned.
@@ -360,6 +420,7 @@ typedef std::deque<undo_action> undo_list;
  * If undos is not NULL, undo information will be added.
  */
 size_t move_unit(game_display* disp,
+				move_unit_spectator* move_spectator,
 				const gamemap& map,
 				unit_map& units, std::vector<team>& teams,
 				std::vector<map_location> steps,

@@ -1057,7 +1057,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error(errbuf.str());
 			}
 
-			::move_unit(&disp, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
+			::move_unit(&disp, NULL, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
 
 			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
 			// (supposed to be the human player in SP)
