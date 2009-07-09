@@ -262,8 +262,7 @@ void upload_log::start(game_state &state, const team &team,
 	}
 
 	/** @todo FIXME: Assumes first player is "us"; is that valid? */
-	player_info &player = state.players.begin()->second;
-	assert(player.available_units.size() == team.recall_list().size());
+	//player_info &player = state.players.begin()->second; //FIXME: fix assumptions about the first player and corresponding team
 	for (std::vector<unit>::const_iterator it = team.recall_list().begin();
 		 it != team.recall_list().end();
 		 ++it) {
