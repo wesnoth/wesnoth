@@ -263,14 +263,27 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 	config::child_itors player_cfg = cfg.child_range("player");
 	if (player_cfg.first != player_cfg.second)
 		return;
+	
+	//take all sides information from the snapshot (assuming it only contains carryover information)
+	if (use_snapshot) {
+		//take all side tags and add them as players
+		foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
+			cfg.add_child("player", *snapshot_side);
+		}
+		//add the remaining player tags
+		foreach(const config* snapshot_player, gamestate.snapshot.get_children("player")) {
+			cfg.add_child("player", *snapshot_player);
+		}
+	}
+	else {
+		for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+			i!=gamestate.players.end(); ++i)
+		{
+			config new_cfg;
+			gamestate.write_player(i->first, i->second, new_cfg, use_snapshot);
 
-	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-		i!=gamestate.players.end(); ++i)
-	{
-		config new_cfg;
-		gamestate.write_player(i->first, i->second, new_cfg, use_snapshot);
-		
-		cfg.add_child("player", new_cfg);
+			cfg.add_child("player", new_cfg);
+		}
 	}
 }
 
