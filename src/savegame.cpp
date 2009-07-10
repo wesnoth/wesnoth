@@ -1046,15 +1046,10 @@ void game_savegame::write_game_snapshot()
 		}
 		//recall list
 		{
-			for(std::map<std::string, player_info>::const_iterator i=gamestate().players.begin();
-			i!=gamestate().players.end(); ++i) {
-				for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
-					j != i->second.available_units.end(); ++j) {
-					if (j->side() == side_num){
-						config& u = side.add_child("unit");
-						j->write(u);
-					}
-				}
+			for(std::vector<unit>::const_iterator j = t->recall_list().begin();
+				j != t->recall_list().end(); ++j) {
+					config& u = side.add_child("unit");
+					j->write(u);
 			}
 		}
 	}

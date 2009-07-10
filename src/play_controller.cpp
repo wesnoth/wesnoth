@@ -146,7 +146,7 @@ void play_controller::init(CVideo& video){
 	loadscreen::global_loadscreen->set_progress(70, _("Loading units"));
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
-	preferences::encounter_recallable_units(gamestate_);
+	preferences::encounter_recallable_units(teams_);
 	preferences::encounter_map_terrain(map_);
 
 

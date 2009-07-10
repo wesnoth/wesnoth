@@ -957,13 +957,10 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 		else if (const config &child = cfg->child("recall"))
 		{
-			player_info* player = state_of_game.get_player(current_team.save_id());
-			if(player == NULL) {
+			if(current_team.recall_list().empty()) {
 				replay::throw_error("illegal recall\n");
 			}
 			
-			assert(player->available_units.size() == current_team.recall_list().size() );
-			sort_units(player->available_units);
 			sort_units(current_team.recall_list());
 
 			const std::string& recall_num = child["value"];
@@ -971,12 +968,10 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			map_location loc(child, game_events::get_state_of_game());
 
-			if(val >= 0 && val < int(player->available_units.size())) {
-				statistics::recall_unit(player->available_units[val]);
-				player->available_units[val].set_game_context(&units,&map,&tod_mng,&teams);
+			if(val >= 0 && val < int(current_team.recall_list().size())) {
+				statistics::recall_unit(current_team.recall_list()[val]);
 				current_team.recall_list()[val].set_game_context(&units,&map,&tod_mng,&teams);
-				recruit_unit(map,team_num,units,player->available_units[val],loc,true,!get_replay_source().is_skipping());
-				player->available_units.erase(player->available_units.begin()+val);
+				recruit_unit(map,team_num,units,current_team.recall_list()[val],loc,true,!get_replay_source().is_skipping());
 				current_team.recall_list().erase(current_team.recall_list().begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {
@@ -988,19 +983,15 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 		else if (const config &child = cfg->child("disband"))
 		{
-			player_info* const player = state_of_game.get_player(current_team.save_id());
-			if(player == NULL) {
+			if(current_team.recall_list().empty()) {
 				replay::throw_error("illegal disband\n");
 			}
 
-			assert(player->available_units.size() == current_team.recall_list().size() );
-			sort_units(player->available_units);
 			sort_units(current_team.recall_list());
 			const std::string& unit_num = child["value"];
 			const int val = lexical_cast_default<int>(unit_num);
 
-			if(val >= 0 && val < int(player->available_units.size())) {
-				player->available_units.erase(player->available_units.begin()+val);
+			if(val >= 0 && val < int(current_team.recall_list().size())) {
 				current_team.recall_list().erase(current_team.recall_list().begin()+val);
 			} else {
 				replay::throw_error("illegal disband\n");

@@ -254,7 +254,7 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
 
 	// We seem to have to walk the map to find some units,
-	// and the player's available_units for the rest.
+	// and the player's recall list for the rest.
 	for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
 		if (un->second.side() == side_number) {
 			all_units.push_back(&un->second);
