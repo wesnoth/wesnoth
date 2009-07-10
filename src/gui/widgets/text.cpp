@@ -90,6 +90,10 @@ void ttext_::key_press(tevent_handler& /*event*/,
 	const unsigned copypaste_modifier = KMOD_CTRL;
 #endif
 
+	if(key_press_callback_) {
+		if(key_press_callback_(this, key, modifier, unicode)) return;
+	}
+
 	switch(key) {
 
 		case SDLK_LEFT :

@@ -20,6 +20,8 @@
 
 #include <string>
 
+#include <boost/function.hpp>
+
 namespace gui2 {
 
 /**
@@ -36,7 +38,8 @@ public:
 		state_(ENABLED),
 		text_(),
 		selection_start_(0),
-		selection_length_(0)
+		selection_length_(0),
+		key_press_callback_()
 	{
 	}
 
@@ -87,6 +90,16 @@ public:
 	std::string get_value() const { return text_.text(); }
 
 	const std::string& text() const { return text_.text(); }
+
+	/**
+	 * Set the keypress callback. Return value determines whether normal
+	 * handling should be performed by the widget (true) or not (false).
+	 */
+	void set_key_press_callback(
+		boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > cb)
+	{
+		key_press_callback_ = cb;
+	}
 
 protected:
 
@@ -382,6 +395,9 @@ protected:
 	 */
 	virtual void handle_key_default(
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
+
+	/** Key press callback */
+	boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > key_press_callback_;
 };
 
 } // namespace gui2
