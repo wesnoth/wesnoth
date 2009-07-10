@@ -273,6 +273,10 @@ bool is_cjk_char(const wchar_t ch)
 		//Japanese-specific: Halfwidth Katakana
 		(ch >= 0xff00 && ch < 0xffef) ||
 
+		//Japanese-specific: Hiragana, Katakana
+		(ch >= 0x3040 && ch <= 0x309f) ||
+		(ch >= 0x30a0 && ch <= 0x30ff) ||
+
 		//Korean-specific: Hangul Syllables, Halfwidth Jamo
 		(ch >= 0xac00 && ch < 0xd7af) ||
 		(ch >= 0xff00 && ch < 0xffef);
