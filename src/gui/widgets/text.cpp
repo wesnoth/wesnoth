@@ -91,7 +91,9 @@ void ttext_::key_press(tevent_handler& /*event*/,
 #endif
 
 	if(key_press_callback_) {
-		if(key_press_callback_(this, key, modifier, unicode)) return;
+		if((handled = key_press_callback_(this, key, modifier, unicode))) {
+			return;
+		}
 	}
 
 	switch(key) {

@@ -396,7 +396,18 @@ protected:
 	virtual void handle_key_default(
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
-	/** Key press callback */
+	/** 
+	 * Key press callback.
+	 *
+	 * This callback is called in key_press before the other functions. The
+	 * return value of this function sets the handled flag. If handled the
+	 * key_press function will stop its execution. The parameters to the
+	 * function are:
+	 * - The widget invoking the callback
+	 * - The SDL key code, needed for special keys.
+	 * - The keyboard modifiers when the key was pressed.
+	 * - The unicode for the pressed key.
+	 */
 	boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > key_press_callback_;
 };
 
