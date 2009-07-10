@@ -318,8 +318,18 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		// if we loaded a save file in linger mode, skip to it.
-		if (linger_)
-			throw end_level_exception(SKIP_TO_LINGER);
+		if (linger_) {
+			//determine the bonus gold handling for this scenario
+			const config end_cfg = level_.child_or_empty("endlevel");
+
+			throw end_level_exception(SKIP_TO_LINGER, "",
+				lexical_cast_default<int>(level_["carryover_percentage"],game_config::gold_carryover_percentage),
+				utils::string_bool(level_["carryover_add"], game_config::gold_carryover_add),
+				utils::string_bool(end_cfg["bonus"], true),
+				false
+				);
+			
+		}
 
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
@@ -420,9 +430,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			if (first_human_team_ != -1)
 				log.victory(turn(), teams_[first_human_team_].gold());
 
-			const bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
-											gamestate_.classification().next_scenario != "null";
-
 			// Save current_player name to reuse it when setting next_scenario side info
 			std::vector<team>::iterator i;
 			for (i = teams_.begin(); i != teams_.end(); ++i) {
@@ -449,119 +456,19 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				}
 			}
 			//store all units that survived (recall list for the next scenario) in snapshot
-			gamestate_.snapshot = config(); //unnecessary to clear the whole snapshot, just clear the side children?
-			std::set<std::string> side_ids;
-			for(i=teams_.begin(); i!=teams_.end(); ++i) {
-				side_ids.insert(i->save_id());
-				if (i->persistent()) {
-					config& new_side = gamestate_.snapshot.add_child("side");
-					new_side["save_id"] = i->save_id();
-					new_side["name"] = i->current_player();
-					std::stringstream can_recruit;
-					std::copy(i->recruits().begin(),i->recruits().end(),std::ostream_iterator<std::string>(can_recruit,","));
-					std::string can_recruit_str = can_recruit.str();
-					// Remove the trailing comma
-					if(can_recruit_str.empty() == false) {
-						can_recruit_str.resize(can_recruit_str.size()-1);
-					}
-					new_side["can_recruit"] = can_recruit_str;
-					LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
-					//add the units of the recall list
-					foreach(const unit& u, i->recall_list()) {
-						config& new_unit = new_side.add_child("unit");
-						u.write(new_unit);
-					}
-				}
-			}
-			//add any players from starting_pos that do not have a team in the current scenario
-			foreach (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
-				if (side_ids.count((*player_cfg)["save_id"]) == 0) {
-					LOG_NG << "stored inactive side in snapshot:\n" << (*player_cfg)["save_id"] << std::endl;
-					gamestate_.snapshot.add_child("player", (*player_cfg));
-				}
-			}
-
-			std::stringstream report;
-			std::string title;
-
-			if (obs) {
-				title = _("Scenario Report");
-			} else {
-				title = _("Victory");
-				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
-			}
-			if (gamestate_.players.size() > 0 &&
-					 (has_next_scenario ||
-					 gamestate_.classification().campaign_type == "test")) {
-				const int finishing_bonus_per_turn =
-						 map_.villages().size() * game_config::village_income +
-						 game_config::base_income;
-				const int turns_left = std::max<int>(0, number_of_turns() - turn());
-				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
-						 (finishing_bonus_per_turn * turns_left) : 0;
-
-				for(i=teams_.begin(); i!=teams_.end(); ++i) {
-					player_info *player=gamestate_.get_player(i->save_id());
-
-					if (player) {
-						//assert consistency between player_info and persistence of teams
-						assert(i->persistent());
-						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
-						// Store the gold for all players.
-						player->gold = carryover_gold;
-						player->gold_add = end_level.carryover_add;
-
-						//store the gold in snapshot side
-						config::child_itors side_range = gamestate_.snapshot.child_range("side");
-						config::child_iterator side_it = side_range.first;
-						//check if this side already exists in the snapshot
-						while (side_it != side_range.second) {
-							if ((*side_it)["save_id"] == i->save_id()) {
-								(*side_it)["gold"] = str_cast<int>(carryover_gold);
-								(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
-								break;
-							}
-							side_it++;
-						}
-						//if it doesnt, add a new child
-						if (side_it == side_range.second) {
-							config& new_side = gamestate_.snapshot.add_child("side");
-							new_side["save_id"] = i->save_id();
-							new_side["gold"] = str_cast<int>(carryover_gold);
-							new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
-							
-						}
-
-						// Only show the report for ourselves.
-						if (!i->is_human())
-							continue;
-
-						if(gamestate_.players.size()>1) {
-							if(i!=teams_.begin()) {
-								report << "\n";
-							}
-
-							report << font::BOLD_TEXT << i->current_player() << "\n";
-						}
-
-						report_victory(report, end_level, player->gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
-					}
-					else {
-						assert(!i->persistent()); //if there is no player_info, the team should not be persistent either
-					}
-				}
-			}
-
-			if(end_level.carryover_report)
-			{
-				/** @todo Convert to pango markup. */
-				gui2::show_transient_message(gui_->video(),
-						title, report.str(), gui2::tcontrol::WML_MARKUP);
-			}
+			gamestate_.snapshot = config();
+			store_recalls();
+			//store gold and report victory
+			store_gold(end_level, obs);
 
 			return VICTORY;
 		} else if (end_level.result == SKIP_TO_LINGER) {
 			LOG_NG << "resuming from loaded linger state...\n";
+			//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
+			gamestate_.snapshot = config();
+			store_recalls();
+			store_gold(end_level);
+			
 			return VICTORY;
 		}
 	} // end catch
@@ -935,6 +842,124 @@ void playsingle_controller::check_time_over(){
 
 		throw end_level_exception(DEFEAT);
 	}
+}
+
+void playsingle_controller::store_recalls() {
+	std::set<std::string> side_ids;
+	std::vector<team>::iterator i;
+	for(i=teams_.begin(); i!=teams_.end(); ++i) {
+		side_ids.insert(i->save_id());
+		if (i->persistent()) {
+			config& new_side = gamestate_.snapshot.add_child("side");
+			new_side["save_id"] = i->save_id();
+			new_side["name"] = i->current_player();
+			std::stringstream can_recruit;
+			std::copy(i->recruits().begin(),i->recruits().end(),std::ostream_iterator<std::string>(can_recruit,","));
+			std::string can_recruit_str = can_recruit.str();
+			// Remove the trailing comma
+			if(can_recruit_str.empty() == false) {
+				can_recruit_str.resize(can_recruit_str.size()-1);
+			}
+			new_side["can_recruit"] = can_recruit_str;
+			LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
+			//add the units of the recall list
+			foreach(const unit& u, i->recall_list()) {
+				config& new_unit = new_side.add_child("unit");
+				u.write(new_unit);
+			}
+		}
+	}
+	//add any players from starting_pos that do not have a team in the current scenario
+	foreach (const config* player_cfg, gamestate_.starting_pos.get_children("player")) {
+		if (side_ids.count((*player_cfg)["save_id"]) == 0) {
+			LOG_NG << "stored inactive side in snapshot:\n" << (*player_cfg)["save_id"] << std::endl;
+			gamestate_.snapshot.add_child("player", (*player_cfg));
+		}
+	}
+}
+
+void playsingle_controller::store_gold(end_level_exception& end_level, const bool obs) {
+			const bool has_next_scenario = !gamestate_.classification().next_scenario.empty() &&
+					gamestate_.classification().next_scenario != "null";
+
+			std::stringstream report;
+			std::string title;
+
+			if (obs) {
+				title = _("Scenario Report");
+			} else {
+				title = _("Victory");
+				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
+			}
+			
+			if (gamestate_.players.size() > 0 &&
+					 (has_next_scenario ||
+					 gamestate_.classification().campaign_type == "test")) {
+				const int finishing_bonus_per_turn =
+						 map_.villages().size() * game_config::village_income +
+						 game_config::base_income;
+				const int turns_left = std::max<int>(0, number_of_turns() - turn());
+				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
+						 (finishing_bonus_per_turn * turns_left) : 0;
+				std::vector<team>::iterator i;
+				for(i=teams_.begin(); i!=teams_.end(); ++i) {
+					player_info *player=gamestate_.get_player(i->save_id());
+
+					if (player) {
+						//assert consistency between player_info and persistence of teams
+						assert(i->persistent());
+						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
+						// Store the gold for all players.
+						player->gold = carryover_gold;
+						player->gold_add = end_level.carryover_add;
+
+						//store the gold in snapshot side
+						config::child_itors side_range = gamestate_.snapshot.child_range("side");
+						config::child_iterator side_it = side_range.first;
+						//check if this side already exists in the snapshot
+						while (side_it != side_range.second) {
+							if ((*side_it)["save_id"] == i->save_id()) {
+								(*side_it)["gold"] = str_cast<int>(carryover_gold);
+								(*side_it)["gold_add"] = end_level.carryover_add ? "yes" : "no";
+								break;
+							}
+							side_it++;
+						}
+						//if it doesnt, add a new child
+						if (side_it == side_range.second) {
+							config& new_side = gamestate_.snapshot.add_child("side");
+							new_side["save_id"] = i->save_id();
+							new_side["gold"] = str_cast<int>(carryover_gold);
+							new_side["gold_add"] = end_level.carryover_add ? "yes" : "no";
+
+						}
+
+						// Only show the report for ourselves.
+						if (!i->is_human())
+							continue;
+
+						if(gamestate_.players.size()>1) {
+							if(i!=teams_.begin()) {
+								report << "\n";
+							}
+
+							report << font::BOLD_TEXT << i->current_player() << "\n";
+						}
+
+						report_victory(report, end_level, player->gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+					}
+					else {
+						assert(!i->persistent()); //if there is no player_info, the team should not be persistent either
+					}
+				}
+			}
+
+			if(end_level.carryover_report)
+			{
+				/** @todo Convert to pango markup. */
+				gui2::show_transient_message(gui_->video(),
+						title, report.str(), gui2::tcontrol::WML_MARKUP);
+			}
 }
 
 bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

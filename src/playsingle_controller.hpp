@@ -75,6 +75,8 @@ protected:
 	void play_ai_turn();
 	virtual void init_gui();
 	void check_time_over();
+	void store_recalls();
+	void store_gold(end_level_exception& end_level, const bool obs = false);
 
 	const cursor::setter cursor_setter;
 	std::deque<config> data_backlog_;
