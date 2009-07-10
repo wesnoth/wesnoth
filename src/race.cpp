@@ -22,7 +22,6 @@
 #include "race.hpp"
 #include "random.hpp"
 
-#include "log.hpp" // needed for deprecation warning
 
 static config empty_traits;
 
@@ -155,9 +154,6 @@ unit_race::unit_race(const config& cfg) :
 	 *  2 versions with lg::wml_error
 	 *  VALIDATE after that
 	 */
-	if(!cfg["name"].empty()){
-		lg::wml_error << "The 'name' key in [race] has been depracted and will be removed in 1.7.4, use male_name, female_name and plural_name instead.\n";
-	}
 	if(id_.empty()) {
 		// This code is only for compatibility with old race defs.
 		id_ = (cfg["name"]);
