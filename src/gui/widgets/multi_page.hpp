@@ -78,6 +78,26 @@ public:
 	 */
 	void select_page(const unsigned page, const bool select = true);
 
+	/**
+	 * Returns the grid for the page.
+	 *
+	 * @param page                The page to get the grid from, the caller
+	 *                            has to make sure the page is a valid page.
+	 *
+	 * @returns                   The grid of the wanted page.
+	 */
+	const tgrid& page_grid(const unsigned page) const;
+
+	/**
+	 * Returns the grid for the page.
+	 *
+	 * @param page                The page to get the grid from, the caller
+	 *                            has to make sure the page is a valid page.
+	 *
+	 * @returns                   The grid of the wanted page.
+	 */
+	tgrid& page_grid(const unsigned page);
+
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** Inherited from tcontrol. */

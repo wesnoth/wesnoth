@@ -54,6 +54,18 @@ void tmulti_page::select_page(const unsigned page, const bool select)
 	generator_->select_item(page, select);
 }
 
+const tgrid& tmulti_page::page_grid(const unsigned page) const
+{
+	assert(generator_);
+	return generator_->get_item(page);
+}
+
+tgrid& tmulti_page::page_grid(const unsigned page)
+{
+	assert(generator_);
+	return generator_->get_item(page);
+}
+
 namespace {
 
 /**
