@@ -668,6 +668,8 @@ void game_state::get_player_info(const config& side_cfg,
 					 tod_manager& tod_mng, bool snapshot)
 {
 	const config *player_cfg = NULL;
+	//FIXME: temporarily adding this flag to ensure recallable units are added properly without player_info
+	bool player_exists = false;
 	player_info *player = NULL;
 
 	if(map.empty()) {
@@ -679,6 +681,7 @@ void game_state::get_player_info(const config& side_cfg,
 		side_cfg["controller"] == "network_ai" ||
 		side_cfg["controller"] == "human_ai") {
 		player = get_player(save_id);
+		player_exists = true;
 		
 		//if we have a snapshot, level contains player tags
 		//else, we look for a player tag in starting_pos
@@ -858,7 +861,7 @@ void game_state::get_player_info(const config& side_cfg,
 
 		map_location loc(**su, this);
 		if(x.empty() && y.empty()) {
-			if(player) {
+			if(player_exists) {
 				player->available_units.push_back(new_unit);
 				teams.back().recall_list().push_back(new_unit);
 				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
