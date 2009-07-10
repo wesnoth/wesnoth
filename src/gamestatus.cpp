@@ -731,7 +731,7 @@ void game_state::get_player_info(const config& side_cfg,
 			} else if(player_gold >= ngold) {
 				ngold = player_gold;
 			}
-		} catch (config::error& e) {
+		} catch (config::error&) {
 			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
 		}
 		
