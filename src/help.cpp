@@ -1523,8 +1523,6 @@ public:
 			int resistance = 100 - atoi((*dam_it).second.c_str());
 			char resi[16];
 			snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
-			//FIXME: "white" is currently not a supported color key
-			//so the default grey-white will be used
 			std::string color;
 			if (resistance < 0)
 				color = "red";
@@ -3029,6 +3027,9 @@ SDL_Color string_to_color(const std::string &cmp_str)
 	}
 	if (cmp_str == "yellow") {
 		return font::YELLOW_COLOUR;
+	}
+	if (cmp_str == "white") {
+		return font::BIGMAP_COLOUR;
 	}
 	return font::NORMAL_COLOUR;
 }
