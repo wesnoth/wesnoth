@@ -903,9 +903,6 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 						//assert consistency between player_info and persistence of teams
 						assert(i->persistent());
 						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
-						// Store the gold for all players.
-						player->gold = carryover_gold;
-						player->gold_add = end_level.carryover_add;
 
 						//store the gold in snapshot side
 						config::child_itors side_range = gamestate_.snapshot.child_range("side");
@@ -940,7 +937,7 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 							report << font::BOLD_TEXT << i->current_player() << "\n";
 						}
 
-						report_victory(report, end_level, player->gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+						report_victory(report, end_level, carryover_gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
 					}
 					else {
 						assert(!i->persistent()); //if there is no player_info, the team should not be persistent either

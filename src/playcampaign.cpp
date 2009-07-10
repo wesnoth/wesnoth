@@ -249,15 +249,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			gamestate.classification().label = gamestate.snapshot["label"];
 		}
 
-		// Get the current gold values of players, so they don't start
-		// with the amount they had at the start of the scenario
-		foreach (const config &p, gamestate.snapshot.child_range("player"))
-		{
-			player_info *player = gamestate.get_player(p["save_id"]);
-			if (player)
-				player->gold = lexical_cast<int>(p["gold"]);
-		}
-
 		// Also get the recruitment list if there are some specialties in this scenario
 		foreach (const config &p, gamestate.snapshot.child_range("side"))
 		{
