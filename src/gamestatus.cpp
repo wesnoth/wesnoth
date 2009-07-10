@@ -661,31 +661,52 @@ void game_state::set_variables(const config& vars) {
 	variables = vars;
 }
 
-void game_state::get_player_info(const config& cfg,
+//build and populate a team from a config
+void game_state::get_player_info(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
 					 tod_manager& tod_mng, bool snapshot)
 {
+	const config *player_cfg = NULL;
 	player_info *player = NULL;
 
 	if(map.empty()) {
 		throw game::load_game_failed("Map not found");
 	}
 
-	if(cfg["controller"] == "human" ||
-		cfg["controller"] == "network" ||
-		cfg["controller"] == "network_ai" ||
-		cfg["controller"] == "human_ai") {
+	if(side_cfg["controller"] == "human" ||
+		side_cfg["controller"] == "network" ||
+		side_cfg["controller"] == "network_ai" ||
+		side_cfg["controller"] == "human_ai") {
 		player = get_player(save_id);
+		
+		//if we have a snapshot, level contains player tags
+		//else, we look for a player tag in starting_pos
+		if (snapshot) {
+			if (const config &c = level.find_child("player","save_id",save_id))  {
+				player_cfg = &c;
+			}
+		} else {
+			//at the start of scenario, get the player tag from starting_pos
+			assert(starting_pos != NULL);
+			if (const config &c =  starting_pos.find_child("player","save_id",save_id))  {
+				player_cfg = &c;
+			}
+		}
 
 		if(player == NULL && !save_id.empty()) {
 			player = &players[save_id];
 		}
 	}
 
+	//if there is no player tag in either snapshot or replay_start, we have no persisting information for this team
+	if (!player_cfg) {
+		LOG_NG << save_id << " does not have a corresponding player tag\n";
+	}
+
 	LOG_NG << "initializing team...\n";
 
-	std::string gold = cfg["gold"];
+	std::string gold = side_cfg["gold"];
 	if(gold.empty())
 		gold = "100";
 
@@ -698,27 +719,32 @@ void game_state::get_player_info(const config& cfg,
 	got their own gold information, which must not be altered here
 	*/
 	bool gold_add = false;
-	if ( (player != NULL)  && (!snapshot) ) {
-		if(player->gold_add) {
-			ngold +=  player->gold;
-			gold_add = true;
-		} else if(player->gold >= ngold) {
-			ngold = player->gold;
+	if ( (player_cfg != NULL)  && (!snapshot) ) {
+		try {
+			int player_gold = lexical_cast_default<int>((*player_cfg)["gold"]);
+			if(utils::string_bool((*player_cfg)["gold_add"])) {
+				ngold +=  player_gold;
+				gold_add = true;
+			} else if(player_gold >= ngold) {
+				ngold = player_gold;
+			}
+		} catch (config::error& e) {
+			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
 		}
-
+		
 		player->gold = ngold;
 	}
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
 
-	team temp_team(cfg, map, ngold);
+	team temp_team(side_cfg, map, ngold);
 	temp_team.set_gold_add(gold_add);
 	teams.push_back(temp_team);
 
 	// Update/fix the recall list for this side,
 	// by setting the "side" of each unit in it
 	// to be the "side" of the player.
-	int side = lexical_cast_default<int>(cfg["side"], 1);
+	int side = lexical_cast_default<int>(side_cfg["side"], 1);
 	if(player != NULL) {
 		for(std::vector<unit>::iterator it = player->available_units.begin();
 			it != player->available_units.end(); ++it) {
@@ -733,8 +759,8 @@ void game_state::get_player_info(const config& cfg,
 		teams.back().set_objectives(level["objectives"]);
 
 	// If this side tag describes the leader of the side
-	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
-		unit new_unit(&units, &map, &tod_mng, &teams, cfg, true);
+	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
+		unit new_unit(&units, &map, &tod_mng, &teams, side_cfg, true);
 
 		// Search the recall list for leader units, and if there is one,
 		// use it in place of the config-described unit
@@ -759,9 +785,9 @@ void game_state::get_player_info(const config& cfg,
 
 		// See if the side specifies its location.
 		// Otherwise start it at the map-given starting position.
-		map_location start_pos(cfg, this);
+		map_location start_pos(side_cfg, this);
 
-		if(cfg["x"].empty() && cfg["y"].empty()) {
+		if(side_cfg["x"].empty() && side_cfg["y"].empty()) {
 			start_pos = map.starting_position(side);
 		}
 
@@ -780,7 +806,7 @@ void game_state::get_player_info(const config& cfg,
 			t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
 		units.add(map.starting_position(new_unit.side()), new_unit);
-		LOG_NG << "initializing side '" << cfg["side"] << "' at "
+		LOG_NG << "initializing side '" << side_cfg["side"] << "' at "
 			<< start_pos << '\n';
 	}
 
@@ -795,7 +821,7 @@ void game_state::get_player_info(const config& cfg,
 	}
 
 	// If there are additional starting units on this side
-	const config::child_list& starting_units = cfg.get_children("unit");
+	const config::child_list& starting_units = side_cfg.get_children("unit");
 	// available_units has been filled by loading the [player]-section already.
 	// However, we need to get the information from the snapshot,
 	// so we start from scratch here.
