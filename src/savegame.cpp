@@ -853,35 +853,23 @@ void savegame::extract_summary_data_from_save(config& out)
 	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
 
-	for(std::map<std::string, player_info>::const_iterator p = gamestate_.players.begin();
-	    p!=gamestate_.players.end(); ++p) {
-		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
-			if(u->can_recruit()) {
-				leader = u->type_id();
-			}
-		}
-	}
-
 	bool shrouded = false;
 
-	if(leader == "") {
-		const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
-		foreach (const config &side, snapshot.child_range("side"))
+	const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
+	foreach (const config &side, snapshot.child_range("side"))
+	{
+		if (side["controller"] != "human") {
+			continue;
+		}
+		if (utils::string_bool(side["shroud"])) {
+			shrouded = true;
+		}
+
+		foreach (const config &u, side.child_range("unit"))
 		{
-			if (side["controller"] != "human") {
-				continue;
-			}
-
-			if (utils::string_bool(side["shroud"])) {
-				shrouded = true;
-			}
-
-			foreach (const config &u, side.child_range("unit"))
-			{
-				if (utils::string_bool(u["canrecruit"], false)) {
-					leader = u["id"];
-					break;
-				}
+			if (utils::string_bool(u["canrecruit"], false)) {
+				leader = u["id"];
+				break;
 			}
 		}
 	}

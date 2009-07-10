@@ -441,18 +441,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			// Add all the units that survived the scenario.
 			LOG_NG << "Add units that survived the scenario to the recall list.\n";
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
-				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
 				if(teams_[un->second.side()-1].persistent()) {
-					un->second.new_turn();
-					un->second.new_scenario();
-					teams_[un->second.side()-1].recall_list().push_back(un->second);
-				}
-				if(player) {
 					LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
 					un->second.new_turn();
 					un->second.new_scenario();
-					player->available_units.push_back(un->second);
+					teams_[un->second.side()-1].recall_list().push_back(un->second);
 				}
 			}
 			//store all units that survived (recall list for the next scenario) in snapshot
