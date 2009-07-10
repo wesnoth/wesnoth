@@ -778,15 +778,18 @@ void game_state::get_player_info(const config& side_cfg,
 			for(std::vector<unit>::iterator it = player->available_units.begin();
 				it != player->available_units.end(); ++it) {
 				if(it->can_recruit()) {
-					new_unit = *it;
-					new_unit.set_game_context(&units, &map, &tod_mng, &teams);
 					player->available_units.erase(it);
 					break;
 				}
 			}
+		}
+		
+		if (player_cfg != NULL) {
 			for(std::vector<unit>::iterator it = teams.back().recall_list().begin();
 				it != teams.back().recall_list().end(); ++it) {
 				if(it->can_recruit()) {
+					new_unit = *it;
+					new_unit.set_game_context(&units, &map, &tod_mng, &teams);
 					teams.back().recall_list().erase(it);
 					break;
 				}
