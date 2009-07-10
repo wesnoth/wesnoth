@@ -882,14 +882,6 @@ void encounter_start_units(unit_map& units){
 	}
 }
 
-void encounter_recallable_units(game_state& gamestate){
-	for(std::map<std::string, player_info>::iterator pi = gamestate.players.begin(); pi!=gamestate.players.end(); ++pi) {
-		for(std::vector<unit>::iterator help_recall_it = pi->second.available_units.begin(); help_recall_it != pi->second.available_units.end(); help_recall_it++) {
-			encountered_units_set.insert(help_recall_it->type_id());
-		}
-	}
-}
-
 void encounter_recallable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); help_team_it++) {
