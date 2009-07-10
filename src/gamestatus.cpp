@@ -749,7 +749,17 @@ void game_state::get_player_info(const config& side_cfg,
 		for(std::vector<unit>::iterator it = player->available_units.begin();
 			it != player->available_units.end(); ++it) {
 			it->set_side(side);
-			teams.back().recall_list().push_back(*it); //FIXME: take recall list from snapshot/replay_start once player_info is removed
+			//teams.back().recall_list().push_back(*it); //FIXME: take recall list from snapshot/replay_start once player_info is removed
+		}
+	}
+
+	//take recall list from [player] tag and update the side number of its units
+	if (player_cfg != NULL) {
+		foreach(const config &u, (*player_cfg).child_range("unit")) {
+			config temp_cfg(u); //copy ctor, as player_cfg is const
+			temp_cfg["side"] = str_cast<int>(side);
+			unit un(temp_cfg, false);
+			teams.back().recall_list().push_back(un);
 		}
 	}
 
