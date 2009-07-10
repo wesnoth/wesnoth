@@ -150,7 +150,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_slider_(disp.video()),
 
 
-	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
+	  fullscreen_button_(disp.video(), _("Full Screen"), gui::button::TYPE_CHECK),
 	  scroll_to_action_button_(disp.video(), _("Enable scroll tracking of unit actions"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
