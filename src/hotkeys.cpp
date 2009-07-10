@@ -53,7 +53,7 @@ const struct {
 	{ hotkey::HOTKEY_ZOOM_IN, "zoomin", N_("Zoom In"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Full Screen"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false, hotkey::SCOPE_GAME },
