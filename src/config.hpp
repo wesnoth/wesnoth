@@ -41,7 +41,6 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
-#include "skiplist_map.hpp"
 #include "shared_string.hpp"
 
 typedef std::map<std::string, t_string> string_map;
