@@ -140,6 +140,70 @@ struct game_info
 	bool have_era;
 };
 
+class game_filter_base
+{
+public:
+	virtual ~game_filter_base() {}
+	virtual bool match(const game_info& game) const = 0;
+	bool operator()(const game_info& game) { return match(game); }
+};
+
+class game_filter_stack : public game_filter_base
+{
+public:
+	game_filter_stack();
+	virtual ~game_filter_stack();
+
+	/**
+	 * Takes ownership
+	 */
+	bool append(game_filter_base* f);
+
+protected:
+	std::vector<game_filter_base*> filters_;
+};
+
+class game_filter_and_stack : public game_filter_stack
+{
+	bool match(const game_info& game) const;
+};
+
+class game_filter_or_stack : public game_filter_stack
+{
+	bool match(const game_info& game) const;
+};
+
+template <class T>
+class game_filter_value
+{
+public:
+	game_filter_value(T game_info::*member, T value)
+	: member_(member), value_(value)
+	{
+	}
+
+	bool match(const game_info& game) const { return game.*member_ == value_; }
+
+private:
+	T game_info::*member_;
+	T value_;
+};
+
+class game_filter_string_part
+{
+public:
+	game_filter_string_part(std::string game_info::*member, const std::string& value)
+	: member_(member), value_(value)
+	{
+	}
+
+	bool match(const game_info& game) const;
+
+private:
+	std::string game_info::*member_;
+	std::string value_;
+};
+
 /**
  * This class represents the collective information the client has
  * about the players and games on the server

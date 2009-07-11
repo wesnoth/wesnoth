@@ -336,6 +336,41 @@ game_info::game_info(const config& game, const config& game_config)
 	}
 }
 
+game_filter_stack::game_filter_stack()
+: filters_()
+{
+}
+
+game_filter_stack::~game_filter_stack()
+{
+	foreach (game_filter_base* f, filters_) {
+		delete f;
+	}
+}
+
+bool game_filter_and_stack::match(const game_info &game) const
+{
+	foreach (game_filter_base* f, filters_) {
+		if (!f->match(game)) return false;
+	}
+	return true;
+}
+
+bool game_filter_or_stack::match(const game_info &game) const
+{
+	foreach (game_filter_base* f, filters_) {
+		if (f->match(game)) return true;
+	}
+	return false;
+}
+
+bool game_filter_string_part::match(const game_info &game) const
+{
+	const std::string& gs = game.*member_;
+	return std::search(gs.begin(), gs.end(), value_.begin(), value_.end(),
+		chars_equal_insensitive) != gs.end();
+}
+
 lobby_info::lobby_info(const config& game_config)
 : game_config_(game_config), gamelist_(), gamelist_initialized_(false)
 , rooms_(), games_(), users_()

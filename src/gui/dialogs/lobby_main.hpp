@@ -183,6 +183,8 @@ private:
 	 */
 	void switch_to_window(tlobby_chat_window* t);
 
+	void switch_to_window(size_t id);
+
 	void active_window_changed();
 
 	void close_active_window();
@@ -242,6 +244,10 @@ private:
 	void refresh_button_callback(twindow& window);
 
 	void quit_button_callback(twindow& window);
+
+	void room_switch_callback(twindow& window);
+
+	bool chat_input_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
