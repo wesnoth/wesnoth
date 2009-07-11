@@ -33,10 +33,10 @@ public:
 	typedef map_value_compare<value_type, key_compare> value_compare;
 	typedef typename super::allocator_type allocator_type;
 
-	explicit skiplist_multimap(const Compare& oc = Compare(), const Alloc& oa = Alloc()) : super(oc, oa) { }
-	skiplist_multimap(const skiplist_multimap& o) : super(o) { }
+	explicit skiplist_map(const Compare& oc = Compare(), const Alloc& oa = Alloc()) : super(oc, oa) { }
+	skiplist_map(const skiplist_map& o) : super(o) { }
 	template <typename InputIterator>
-	skiplist_multimap(InputIterator first, InputIterator last, const Compare& oc = Compare(), const Alloc& oa = Alloc()) : super(oc, oa) {
+	skiplist_map(InputIterator first, InputIterator last, const Compare& oc = Compare(), const Alloc& oa = Alloc()) : super(oc, oa) {
 		super::insert_unique(first, last);
 	}
 
@@ -61,12 +61,8 @@ public:
 	template <typename InputIterator>
 	void insert(InputIterator first, InputIterator last) { super::insert_unique(first, last); }
 
-	reference operator[](const Key& k) {
-		return insert(std::make_pair(k, Value())).first->second;
-	}
-
-	const_reference operator[](const Key& k) const {
-		return insert(std::make_pair(k, Value())).first->second;
+	Value& operator[](const Key& k) {
+		return insert_unique(std::make_pair(k, Value())).first->second;
 	}
 
 	size_t erase(const Key& k) { return super::erase(k); }
@@ -83,6 +79,8 @@ public:
 	std::pair<const_iterator, const_iterator> equal_range(const Key& k) const { return super::equal_range(k); }
 
 	iterator find(const Key& k) { return super::find(k); }
+	const_iterator find(const Key& k) const { return super::find(k); }
+
 	size_t count(const key_type& k) const {
 		std::pair<const_iterator, const_iterator> range = equal_range(k);
 		return std::distance(range.first, range.second);
@@ -93,7 +91,7 @@ public:
 
 	allocator_type get_allocator() const { return super::get_allocator(); }
 
-	void swap(skiplist_multimap& o) {
+	void swap(skiplist_map& o) {
 		super::swap(o);
 	}
 
@@ -102,4 +100,13 @@ public:
 	}
 };
 
+template <typename Key, typename Value, typename Compare, typename Alloc>
+bool operator==(const skiplist_map<Key, Value, Compare, Alloc>& a, const skiplist_map<Key, Value, Compare, Alloc>& b) {
+	return a.size() == b.size() && std::equal(a.begin(), a.end(), b.begin());
+}
+
+template <typename Key, typename Value, typename Compare, typename Alloc>
+bool operator!=(const skiplist_map<Key, Value, Compare, Alloc>& a, const skiplist_map<Key, Value, Compare, Alloc>& b) {
+	return !operator==(a, b);
+}
 #endif

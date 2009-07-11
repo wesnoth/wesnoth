@@ -19,6 +19,7 @@
 
 #include <cassert>
 #include <algorithm>
+#include <iostream>
 
 #include "ct_math.hpp"
 
@@ -128,22 +129,25 @@ struct alloc_type_base : public alloc_type_base<Alloc, Value, Height - 1>,
 	typedef typename Alloc::template rebind<char[node_size<Value, node_base<Value>, Height>::value]>::other node_alloc_type;
 	typedef typename Alloc::template rebind<node_base<Value>[Height]>::other head_alloc_type;
 
-	void* allocate_node(int h) {
-		if (h == Height) return node_alloc_type::allocate(1);
+	void* allocate_node(size_t h) {
+		if (h == Height) {
+			std::cout << node_size<Value, node_base<Value>, Height>::value << std::endl;
+			return node_alloc_type::allocate(1);
+		}
 		return super::allocate_node(h);
 	}
 
-	void deallocate_node(void* n, int h) {
+	void deallocate_node(void* n, size_t h) {
 		if (h == Height) node_alloc_type::deallocate(static_cast<typename node_alloc_type::pointer>(n), 1);
 		else super::deallocate_node(n, h);
 	}
 
-	node_base<Value>* allocate_head(int h) {
+	node_base<Value>* allocate_head(size_t h) {
 		if (h == Height) return static_cast<node_base<Value>*>(static_cast<void*>(head_alloc_type::allocate(1)));
 		return super::allocate_head(h);
 	}
 
-	void deallocate_head(node_base<Value>* ptr, int h) {
+	void deallocate_head(node_base<Value>* ptr, size_t h) {
 		if (h == Height) head_alloc_type::deallocate(static_cast<typename head_alloc_type::pointer>(static_cast<void*>(ptr)), 1);
 		else super::deallocate_head(ptr, h);
 	}
@@ -151,27 +155,22 @@ struct alloc_type_base : public alloc_type_base<Alloc, Value, Height - 1>,
 
 template <typename Alloc, typename Value>
 struct alloc_type_base<Alloc, Value, 0> {
-	void* allocate_node(int) {
+	void* allocate_node(size_t) {
 		assert(0);
 	}
 
-	void deallocate_node(void*, int) {
+	void deallocate_node(void*, size_t) {
 		assert(0);
 	}
 
-	node_base<Value>* allocate_head(int) {
+	node_base<Value>* allocate_head(size_t) {
 		assert(0);
 	}
 
-	void deallocate_head(void*, int) {
+	void deallocate_head(void*, size_t) {
 		assert(0);
 	}
 };
-
-#ifdef SKIPLIST_DEBUG_DEALLOCATION
-#include <map>
-std::map<void*, size_t> allocation_heights;
-#endif
 
 template <typename Value, typename Key, typename ExtractKey, typename Compare, typename Alloc>
 class skiplist :
@@ -223,7 +222,7 @@ public:
 		typedef int difference_type;
 
 		explicit iterator(const skiplist* sl = 0, node* o = 0) : list(sl), n(o) { }
-		operator const_iterator() { return const_iterator(n); }
+		operator const_iterator() { return const_iterator(list, n); }
 		reference operator*() const { return n->get_value(0); }
 		pointer operator->() const { return &operator*(); }
 		iterator& operator++() { n = n->next(); return *this; }
@@ -317,7 +316,7 @@ public:
 		node* ptrs[SKIPLIST_MAX_HEIGHT];
 		find_iter(const_cast<const node**>(ptrs), first);
 		while (ptrs[0]->next() != last.n) {
-			int h = 0;
+			size_t h = 0;
 			node* n = ptrs[0]->next();
 			while (h < height && ptrs[h]->next() == n->upper(h)) {
 				h++;
@@ -368,7 +367,7 @@ public:
 	};
 
 	/** iterators do not contain enough information for a fast hinted insert **/
-	iterator insert(iterator iter, const value_type& v) {
+	iterator insert(iterator, const value_type& v) {
 		return insert(v);
 	}
 
@@ -388,17 +387,17 @@ public:
 		while (first != last) insert(*first++);
 		return;
 		const node* ptrs[SKIPLIST_MAX_HEIGHT];
-		for (int i = 0; i < height; i++)
+		for (size_t i = 0; i < height; i++)
 			ptrs[i] = head->upper(i);
 		while (first != last) {
 			size_t h = next_height(), prev_height = height;
 			expand_head(h);
-			for (int i = prev_height; i < height; i++)
+			for (size_t i = prev_height; i < height; i++)
 				ptrs[i] = head->upper(i);
 			hinted_find(ptrs, first->first, upper_compare(*this));
 			node* n = construct_node(h, *first);
 			link_node_full(const_cast<node**>(ptrs), n, h);
-			for (int i = 0; i < h; i++)
+			for (size_t i = 0; i < h; i++)
 				ptrs[i] = ptrs[i]->next();
 			++first;
 		}
@@ -412,18 +411,18 @@ public:
 		const node* ptrs[SKIPLIST_MAX_HEIGHT];
 		size_t h = next_height();
 		expand_head(h);
-		find_ptrs(ptrs, key_extract(v), upper_compare(*this));
-		if (ptrs[0] != head && !compare(key_extract(v), key_extract(ptrs[0]->get_value(0))))
-				return std::make_pair(iterator(ptrs[0]->next()), false);
+		find(ptrs, key_extract(v), upper_compare(*this));
+		if (ptrs[0] != head && !compare(key_extract(ptrs[0]->get_value(0)), key_extract(v)))
+			return std::make_pair(iterator(this, const_cast<node*>(ptrs[0])), false);
 		node* n = construct_node(h, v);
-		link_node_full(ptrs, n, h);
+		link_node_full(const_cast<node**>(ptrs), n, h);
 		return std::make_pair(iterator(this, n), true);
 	}
 
 	template <typename InputIterator>
 	void insert_unique(InputIterator first, InputIterator last) {
 		// TODO
-		while (first != last) insert_unique(first++);
+		while (first != last) insert_unique(*(first++));
 	}
 
 	iterator find(const Key& k) {
@@ -463,8 +462,8 @@ public:
 
 
 private:
-	size_t height;
 	node* head;
+	size_t height;
 
 	node* construct_node(size_t h) {
 		return construct(h, Key(), Value());
@@ -571,7 +570,7 @@ private:
 		else find(ptrs, key_extract(*iter), lower_compare(*this));
 		while(ptrs[0]->next() != iter.n) {
 			ptrs[0] = ptrs[0]->next();
-			for (int i = 1; i < height && ptrs[i]->next()->lower(i) == ptrs[0]; i++) ptrs[i] = ptrs[i]->next();
+			for (size_t i = 1; i < height && ptrs[i]->next()->lower(i) == ptrs[0]; i++) ptrs[i] = ptrs[i]->next();
 		}
 	}
 
@@ -610,5 +609,15 @@ private:
 	};
 
 };
+
+template <typename Value, typename Key, typename ExtractKey, typename Compare, typename Alloc>
+bool operator==(const skiplist<Value, Key, ExtractKey, Compare, Alloc>& a, const skiplist<Value, Key, ExtractKey, Compare, Alloc>& b) {
+	return a.size() == b.size() && std::equal(a.begin(), a.end(), b.begin());
+}
+
+template <typename Value, typename Key, typename ExtractKey, typename Compare, typename Alloc>
+bool operator!=(const skiplist<Value, Key, ExtractKey, Compare, Alloc>& a, const skiplist<Value, Key, ExtractKey, Compare, Alloc>& b) {
+	return !operator==(a, b);
+}
 
 #endif
