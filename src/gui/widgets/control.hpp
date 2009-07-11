@@ -26,7 +26,7 @@
 #include "skiplist_map.hpp"
 #include "shared_string.hpp"
 
-typedef skiplist_map<shared_string,t_string> string_map;
+typedef std::map<std::string,t_string> string_map;
 
 namespace gui2 {
 

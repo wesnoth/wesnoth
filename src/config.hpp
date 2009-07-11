@@ -44,7 +44,7 @@
 #include "skiplist_map.hpp"
 #include "shared_string.hpp"
 
-typedef skiplist_map<shared_string, t_string> string_map;
+typedef std::map<std::string, t_string> string_map;
 
 class config;
 
@@ -98,7 +98,7 @@ public:
 	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
 
 	typedef std::vector<config*> child_list;
-	typedef skiplist_map<shared_string,child_list> child_map;
+	typedef std::map<std::string,child_list> child_map;
 
 	struct const_child_iterator;
 
@@ -254,9 +254,9 @@ public:
 
 	struct any_child
 	{
-		const string_map::key_type &key;
+		const child_map::key_type &key;
 		const config &cfg;
-		any_child(const string_map::key_type *k, const config *c): key(*k), cfg(*c) {}
+		any_child(const child_map::key_type *k, const config *c): key(*k), cfg(*c) {}
 	};
 
 	struct all_children_iterator
