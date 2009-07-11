@@ -37,7 +37,7 @@ void test_multimap() {
 	std::cout << "construct()" << std::endl;
 	typedef skiplist_multimap<int, std::string> slmap_t;
 	slmap_t slmap;
-	typedef skiplist_multimap<int, std::string> stdmap_t;
+	typedef std::multimap<int, std::string> stdmap_t;
 	stdmap_t stdmap;
 	assert(equal_range(slmap, stdmap));
 	assert(slmap.size() == stdmap.size());
