@@ -416,20 +416,12 @@ fi
 
 # fribidi-config
 
-AC_PATH_PROGS([FRIBIDI_CONFIG], [fribidi-config], [none])
-
-if test "x$FRIBIDI_CONFIG" = "xnone"; then
-    fribidifound=no
-    AC_MSG_WARN([*** FRIBIDI not found.])
-else
-    fribidifound=yes
-    FRIBIDI_CFLAGS=`$FRIBIDI_CONFIG --cflags`
-    FRIBIDI_LIBS=`$FRIBIDI_CONFIG --libs`
+if test "x$fribidi" != "xno"; then
+	PKG_CHECK_MODULES([FRIBIDI], [fribidi >= 0.19.0],
+		[ fribidifound=yes ],
+		[ fribidifound=no ])
+	AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes])
 fi
-
-AC_SUBST([FRIBIDI_CFLAGS])
-AC_SUBST([FRIBIDI_LIBS])
-AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes -a "x$fribidi" = xyes ])
 
 # python
 AC_PATH_PROG(PYTHON, python, none)
