@@ -2804,6 +2804,7 @@ formula_ai::gamestate_change_observer::~gamestate_change_observer() {
 void formula_ai::gamestate_change_observer::handle_generic_event(const std::string& /*event_name*/) {
 	set_var_counter_ = 0;
 	set_unit_var_counter_ = 0;
+	continue_counter_ = 0;
 }
 
 //return false if number of calls exceeded MAX_CALLS
