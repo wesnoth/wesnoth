@@ -42,7 +42,7 @@
 #include "serialization/string_utils.hpp"
 
 
-typedef std::map<std::string,t_string> string_map;
+typedef std::map<std::string, t_string> string_map;
 
 class config;
 
@@ -252,9 +252,9 @@ public:
 
 	struct any_child
 	{
-		const child_map::key_type &key;
+		const string_map::key_type &key;
 		const config &cfg;
-		any_child(const child_map::key_type *k, const config *c): key(*k), cfg(*c) {}
+		any_child(const string_map::key_type *k, const config *c): key(*k), cfg(*c) {}
 	};
 
 	struct all_children_iterator
