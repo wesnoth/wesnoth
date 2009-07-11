@@ -413,7 +413,6 @@ void tlobby_main::add_whisper_window_whisper(const std::string& sender, const st
 		ERR_NG << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
 		return;
 	}
-	size_t id = t - &open_windows_[0];
 	append_to_chatbox(ss.str());
 }
 
@@ -434,7 +433,6 @@ void tlobby_main::add_room_window_message(const std::string& room,
 		ERR_NG << "Room window not open in add_room_window_message for " << room << "\n";
 		return;
 	}
-	size_t id = t - &open_windows_[0];
 	append_to_chatbox(ss.str());
 }
 
