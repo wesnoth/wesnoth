@@ -19,11 +19,11 @@ bool equal_range(const T& a, const U& b) {
 
 	bool ret = true;
 	while (a1 != a2 && b1 != b2) {
-		std::cout << a1->first << ":" << a1->second  << " " << b1->first << ":" << b1->second << std::endl;
+		//std::cout << a1->first << ":" << a1->second  << " " << b1->first << ":" << b1->second << std::endl;
 		if (*a1 != *b1) ret = false;
 		++a1; ++b1;
 	}
-	std::cout << std::endl << std::endl;
+	//std::cout << std::endl << std::endl;
 	return ret && a1 == a2 && b1 == b2;
 }
 
@@ -33,6 +33,7 @@ std::string values[] = { "five1", "-one1", "three1", "two1", "seven1", "five2", 
 int size = 24;
 
 void test_multimap() {
+	std::cout << "skiplist_multimap testing" << std::endl;
 	std::cout << "construct()" << std::endl;
 	typedef skiplist_multimap<int, std::string> slmap_t;
 	slmap_t slmap;
@@ -235,6 +236,7 @@ void test_multimap() {
 		assert(std::lexicographical_compare(stdrange.first, stdrange.second, slrange.first, slrange.second) == 0);
 	}
 
+	std::cout << std::endl;
 }
 
 
@@ -244,6 +246,7 @@ void test_multimap() {
 
 
 void test_map() {
+	std::cout << "skiplist_map testing" << std::endl;
 	std::cout << "construct()" << std::endl;
 	typedef skiplist_map<int, std::string, std::less<int>, boost::fast_pool_allocator<std::string> > slmap_t;
 	slmap_t slmap;
@@ -366,7 +369,6 @@ void test_map() {
 		slmap_t::iterator sliter = slmap.insert(std::make_pair(keys[i], values[i])).first;
 		assert(std::adjacent_find(stdmap.rbegin(), stdmap.rend(), stdmap.value_comp()) == stdmap.rend());
 		stdmap_t::iterator stditer = stdmap.insert(std::make_pair(keys[i], values[i])).first;
-		std::cout << "~" << FORMAT_ITER(sliter) << " " << FORMAT_ITER(stditer) << std::endl;
 		assert(*sliter == *stditer);
 		assert(equal_range(slmap, stdmap));
 		slmap.erase(sliter);
@@ -457,9 +459,22 @@ void test_map() {
 		assert(slmap != slmap2);
 	}
 
+	std::cout << "operator[]" << std::endl;
+	for (int i = 0; i < 10; i++) {
+		slmap.erase(i);
+		stdmap.erase(i);
+	}
+	assert(equal_range(slmap, stdmap));
+	for (int i = 0; i < 20; i++) {
+		assert(slmap[i] == stdmap[i]);
+	}
+
+	std::cout << std::endl;
+
 }
 
 int main() {
+	test_multimap();
 	test_map();
 	return 0;
 }
