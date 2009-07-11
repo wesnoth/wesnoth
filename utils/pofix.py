@@ -168,6 +168,7 @@ stringfixes = {
 
 "wesnoth-sotbe" :(
 ("can from from each", "can from each"),
+("Shan Taum doesn't seem to have to many of his", "Shan Taum doesn't seem to have too many of his"),
 ),
 
 "wesnoth-tb" :(
@@ -177,7 +178,7 @@ stringfixes = {
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1235216999	# Sat Feb 21 06:49:59 2009
+timecheck = 1247306267	# Sat Jul 11 11:57:56 CEST 2009
 
 import os, sys, time, stat
 
