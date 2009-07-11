@@ -145,6 +145,11 @@ positional_source::~positional_source()
 	sound::reposition_sound(id_, DISTANCE_SILENT);
 }
 
+bool positional_source::is_global()
+{
+	return locations_.empty();
+}
+
 void positional_source::update(unsigned int time, const display &disp)
 {
 	if(time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
@@ -179,6 +184,10 @@ void positional_source::update(unsigned int time, const display &disp)
 
 void positional_source::update_positions(unsigned int time, const display &disp)
 {
+	if(is_global()) {
+		return;
+	}
+
 	int distance_volume = DISTANCE_SILENT;
 	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
 		if(disp.shrouded(*i) || (check_fogged_ && disp.fogged(*i)))

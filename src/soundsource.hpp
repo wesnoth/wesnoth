@@ -52,7 +52,6 @@ class positional_source {
 	static unsigned int last_id;
 
 public:
-
 	// min_delay is a minimum time in seconds, which must pass before
 	// this sound source can be played again if it remains visible
 	//
@@ -61,6 +60,8 @@ public:
 	// becomes visible
 	positional_source(const sourcespec &spec);
 	~positional_source();
+
+	bool is_global();
 
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);
