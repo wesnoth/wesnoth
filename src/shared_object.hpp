@@ -99,7 +99,7 @@ public:
 	}
 
 	bool valid() const {
-		return val_;
+		return val_ != NULL;
 	}
 
 	const node* ptr() const {
