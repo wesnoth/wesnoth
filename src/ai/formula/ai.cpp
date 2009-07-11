@@ -2383,6 +2383,8 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 		     *during the next loop
 		     */
 
+		    prepare_move();
+
 		    game_logic::map_formula_callable callable(this);
 		    callable.add_ref();
 
@@ -2793,7 +2795,9 @@ bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_c
 	return !make_action(move_formula, callable).is_empty();
 }
 
-formula_ai::gamestate_change_observer::gamestate_change_observer() {
+formula_ai::gamestate_change_observer::gamestate_change_observer() :
+	set_var_counter_(), set_unit_var_counter_(), continue_counter_()
+{
 	ai::manager::add_gamestate_observer(this);
 }
 
