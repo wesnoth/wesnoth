@@ -16,7 +16,7 @@
 
 #include <boost/pool/detail/singleton.hpp>
 #include <boost/random/linear_congruential.hpp>
-
+#include <boost/type_traits/is_pod.hpp>
 #include <cassert>
 #include <algorithm>
 
@@ -26,16 +26,32 @@
 #define SKIPLIST_MAX_HEIGHT 15
 #endif
 
+template <typename Compare, typename Key, bool IsPod = boost::is_pod<Compare>::value>
+struct base_compare : public Compare {
+	base_compare(const Compare& o) : Compare(o) { }
+};
+
+template <typename Compare, typename Key>
+struct base_compare<Compare, Key, true> {
+	Compare comp;
+	base_compare() : comp() { }
+	base_compare(const base_compare& o) : comp(o.comp) { }
+	base_compare(const Compare& o) : comp(o) { }
+	bool operator()(const Key& a, const Key& b) const { return comp(a, b); }
+	operator Compare() const { return comp; }
+};
+
 template <typename T>
 struct key_extractor {
 	const typename T::first_type& operator()(const T& p) const { return p.first; }
 };
 
 template <typename T, typename Compare>
-struct map_value_compare : Compare {
-	explicit map_value_compare(const Compare& o) : Compare(o) { }
+struct map_value_compare {
+	Compare comp;
+	explicit map_value_compare(const Compare& o) : comp(o) { }
 	bool operator()(const T& a, const T& b) {
-		return Compare::operator()(a.first, b.first);
+		return comp(a.first, b.first);
 	}
 };
 
@@ -131,7 +147,6 @@ struct alloc_type_base : public alloc_type_base<Alloc, Value, Height - 1>,
 	void* allocate_node(size_t h) {
 		if (h == Height)
 			return node_alloc_type::allocate(1);
-
 		return super::allocate_node(h);
 	}
 
@@ -173,7 +188,8 @@ struct alloc_type_base<Alloc, Value, 0> {
 template <typename Value, typename Key, typename ExtractKey, typename Compare, typename Alloc>
 class skiplist :
 		private alloc_type_base<Alloc, Value, SKIPLIST_MAX_HEIGHT>,
-		private Compare
+		private base_compare<Compare, Key>,
+		private ExtractKey
 {
 public:
 	typedef Key key_type;
@@ -188,6 +204,7 @@ private:
 	typedef alloc_type_base<Alloc, Value, SKIPLIST_MAX_HEIGHT> base_allocator;
 	typedef ExtractKey key_extractor;
 	typedef node_base<Value> node;
+	typedef base_compare<Compare, Key> compare_type;
 public:
 	struct const_iterator {
 		typedef Value value_type;
@@ -239,22 +256,22 @@ public:
 	typedef std::reverse_iterator<iterator> reverse_iterator;
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
-	skiplist(const skiplist& o) : Compare(o), head(0), height(o.height) {
+	skiplist(const skiplist& o) : compare_type(o), head(0), height(o.height) {
 		construct_head(head, height);
 		insert(o.begin(), o.end());
 	}
 
-	skiplist(const Compare& oc = Compare(), const Alloc& = Alloc()) : Compare(oc), head(0), height(1) {
+	skiplist(const Compare& oc = Compare(), const Alloc& = Alloc()) : compare_type(oc), head(0), height(1) {
 		construct_head(head, 1);
 	}
 
-	skiplist(const skiplist& o, const Compare& oc, const Alloc&) : Compare(oc), head(0), height(o.height) {
+	skiplist(const skiplist& o, const Compare& oc, const Alloc&) : compare_type(oc), head(0), height(o.height) {
 		construct_head(head, height);
 		insert(o.begin(), o.end());
 	}
 
 	template <typename InputIterator>
-	skiplist(InputIterator first, InputIterator last, const Compare& oc, const Alloc&) : Compare(oc), head(0), height(1) {
+	skiplist(InputIterator first, InputIterator last, const Compare& oc, const Alloc&) : compare_type(oc), head(0), height(1) {
 		construct_head(head, height);
 		insert(first, last);
 	}
@@ -276,7 +293,7 @@ public:
 	}
 
 	void clear() {
-		skiplist t(*static_cast<Compare*>(this), get_allocator());
+		skiplist t(key_comp(), get_allocator());
 		swap(t);
 	}
 
@@ -289,13 +306,7 @@ public:
 	}
 
 	size_t size() const {
-		size_t c = 0;
-		const node* n = head->next();
-		while (n != head) {
-			c++;
-			n = n->next();
-		}
-		return c;
+		return std::distance(begin(), end());
 	}
 
 	void erase(const iterator& iter) {
@@ -491,11 +502,11 @@ private:
 	}
 
 	const Key& key_extract(const value_type& v) const {
-		return ExtractKey()(v);
+		return ExtractKey::operator()(v);
 	}
 
 	bool compare(const Key& a, const Key& b) const {
-		return Compare::operator()(a, b);
+		return compare_type::operator()(a, b);
 	}
 
 	struct head_compare {
@@ -540,19 +551,19 @@ private:
 	}
 
 	template <typename T, typename Pred>
-	void hinted_find(const node** const ptrs, const T& t, Pred compare = Pred()) const {
-		if ((ptrs[0] == head || !compare(t, key_extract(ptrs[0]->get_value(0))))
-				&& (ptrs[0]->next() == head || compare(t, key_extract(ptrs[0]->next()->get_value(0)))))
+	void hinted_find(const node** const ptrs, const T& t, const Pred& pred = Pred()) const {
+		if ((ptrs[0] == head || !pred(t, key_extract(ptrs[0]->get_value(0))))
+				&& (ptrs[0]->next() == head || pred(t, key_extract(ptrs[0]->next()->get_value(0)))))
 			return;
-		find(ptrs, t, compare);
+		find(ptrs, t, pred);
 	}
 
 	template <typename T, typename Pred>
-	void find(const node** const ptrs, const T& t, const Pred& compare = Pred()) const {
+	void find(const node** const ptrs, const T& t, const Pred& pred = Pred()) const {
 		const node* node = head->upper(height - 1), * end = node, * next;
 		for (int curr_level = height - 1; curr_level >= 0; curr_level--) {
 			next = node->next();
-			while (next != end && compare(key_extract(next->get_value(curr_level)), t)) {
+			while (next != end && pred(key_extract(next->get_value(curr_level)), t)) {
 				node = next;
 				next = node->next();
 				assert(node != next);
@@ -591,18 +602,18 @@ private:
 	}
 
 	struct upper_compare {
-		const Compare& compare;
-		upper_compare(const Compare& o) : compare(o) { }
+		const compare_type& comp;
+		upper_compare(const compare_type& o) : comp(o) { }
 		bool operator()(const Key& c, const Key& k) const {
-			return !(compare(k, c));
+			return !(comp(k, c));
 		}
 	};
 
 	struct lower_compare {
-		const Compare& compare;
-		lower_compare(const Compare& o) : compare(o) { }
+		const compare_type& comp;
+		lower_compare(const compare_type& o) : comp(o) { }
 		bool operator()(const Key& c, const Key& k) const {
-			return compare(c, k);
+			return comp(c, k);
 		}
 	};
 
