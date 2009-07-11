@@ -8,6 +8,8 @@
 #include <vector>
 #include <algorithm>
 
+#include <boost/pool/pool_alloc.hpp>
+
 #define FORMAT_ITER(x) x->first << ":" << x->second
 
 template <typename T, typename U>
@@ -243,7 +245,7 @@ void test_multimap() {
 
 void test_map() {
 	std::cout << "construct()" << std::endl;
-	typedef skiplist_map<int, std::string> slmap_t;
+	typedef skiplist_map<int, std::string, std::less<int>, boost::fast_pool_allocator<std::string> > slmap_t;
 	slmap_t slmap;
 	typedef std::map<int, std::string> stdmap_t;
 	stdmap_t stdmap;
@@ -445,6 +447,14 @@ void test_map() {
 		std::pair<stdmap_t::iterator, stdmap_t::iterator> stdrange = stdmap.equal_range(i);
 		assert(std::lexicographical_compare(slrange.first, slrange.second, stdrange.first, stdrange.second) == 0);
 		assert(std::lexicographical_compare(stdrange.first, stdrange.second, slrange.first, slrange.second) == 0);
+	}
+
+	std::cout << "operator==/operator!=" << std::endl;
+	{
+		slmap_t slmap2(slmap);
+		assert(slmap == slmap2);
+		slmap2.erase(slmap2.begin());
+		assert(slmap != slmap2);
 	}
 
 }

@@ -91,6 +91,14 @@ public:
 
 	allocator_type get_allocator() const { return super::get_allocator(); }
 
+	bool operator==(const skiplist_map& o) const {
+		return size() == o.size() && std::equal(begin(), end(), o.begin());
+	}
+
+	bool operator!=(const skiplist_map& o) const {
+		return !operator==(o);
+	}
+
 	void swap(skiplist_map& o) {
 		super::swap(o);
 	}
@@ -102,7 +110,7 @@ public:
 
 template <typename Key, typename Value, typename Compare, typename Alloc>
 bool operator==(const skiplist_map<Key, Value, Compare, Alloc>& a, const skiplist_map<Key, Value, Compare, Alloc>& b) {
-	return a.size() == b.size() && std::equal(a.begin(), a.end(), b.begin());
+	return a.operator==(b);
 }
 
 template <typename Key, typename Value, typename Compare, typename Alloc>

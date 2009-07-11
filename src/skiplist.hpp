@@ -19,7 +19,6 @@
 
 #include <cassert>
 #include <algorithm>
-#include <iostream>
 
 #include "ct_math.hpp"
 
@@ -122,18 +121,17 @@ struct node_base {
 
 template <typename Alloc, typename Value, size_t Height>
 struct alloc_type_base : public alloc_type_base<Alloc, Value, Height - 1>,
-	public Alloc::template rebind<char[node_size<Value, node_base<Value>, Height>::value]>::other,
-	public Alloc::template rebind<node_base<Value>[Height]>::other
+	private Alloc::template rebind<char[node_size<Value, node_base<Value>, Height>::value]>::other,
+	private Alloc::template rebind<node_base<Value>[Height]>::other
 {
 	typedef alloc_type_base<Alloc, Value, Height - 1> super;
 	typedef typename Alloc::template rebind<char[node_size<Value, node_base<Value>, Height>::value]>::other node_alloc_type;
 	typedef typename Alloc::template rebind<node_base<Value>[Height]>::other head_alloc_type;
 
 	void* allocate_node(size_t h) {
-		if (h == Height) {
-			std::cout << node_size<Value, node_base<Value>, Height>::value << std::endl;
+		if (h == Height)
 			return node_alloc_type::allocate(1);
-		}
+
 		return super::allocate_node(h);
 	}
 
@@ -174,8 +172,8 @@ struct alloc_type_base<Alloc, Value, 0> {
 
 template <typename Value, typename Key, typename ExtractKey, typename Compare, typename Alloc>
 class skiplist :
-		alloc_type_base<Alloc, Value, SKIPLIST_MAX_HEIGHT>,
-		Compare
+		private alloc_type_base<Alloc, Value, SKIPLIST_MAX_HEIGHT>,
+		private Compare
 {
 public:
 	typedef Key key_type;
