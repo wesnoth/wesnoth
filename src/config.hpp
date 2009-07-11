@@ -41,8 +41,10 @@
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
+#include "skiplist_map.hpp"
+#include "shared_string.hpp"
 
-typedef std::map<std::string, t_string> string_map;
+typedef skiplist_map<shared_string, t_string> string_map;
 
 class config;
 
@@ -96,7 +98,7 @@ public:
 	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
 
 	typedef std::vector<config*> child_list;
-	typedef std::map<std::string,child_list> child_map;
+	typedef skiplist_map<shared_string,child_list> child_map;
 
 	struct const_child_iterator;
 
