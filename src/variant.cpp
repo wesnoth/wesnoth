@@ -396,6 +396,21 @@ variant_iterator variant::end() const
 	return variant_iterator();
 }
 
+bool variant::is_empty() const
+{
+	if(type_ == TYPE_NULL) {
+		return true;
+	} else if (type_ == TYPE_LIST) {
+		assert(list_);
+		return list_->elements.empty();
+	} else if (type_ == TYPE_MAP) {
+		assert(map_);
+		return map_->elements.empty();
+	}
+
+	return false;
+}
+
 size_t variant::num_elements() const
 {
 	if(type_ == TYPE_CALLABLE) {

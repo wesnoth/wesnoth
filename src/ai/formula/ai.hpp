@@ -84,6 +84,26 @@ public:
 
 	std::string evaluate(const std::string& formula_str);
 
+	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
+	class gamestate_change_observer : public events::observer
+	{
+		static const int MAX_CALLS = 10;
+		int set_var_counter_;
+		int set_unit_var_counter_;
+		int continue_counter_;
+	public:
+		gamestate_change_observer();
+		~gamestate_change_observer();
+
+		void handle_generic_event(const std::string& /*event_name*/);
+
+		bool set_var_check();
+
+		bool set_unit_var_check();
+
+		bool continue_check();
+	};
+
 	struct move_map_backup {
 		move_map_backup() :
 			move_maps_valid(false),
@@ -151,8 +171,8 @@ private:
 	ai::recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();
-	bool make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
-	bool execute_variant(const variant& var, bool commandline=false);
+	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
+	variant execute_variant(const variant& var, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	game_logic::const_formula_ptr recruit_formula_;
@@ -170,6 +190,7 @@ private:
 	mutable variant attacks_cache_;
 	mutable variant keeps_cache_;
 
+	gamestate_change_observer infinite_loop_guardian_;
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table;
 	game_logic::candidate_action_manager candidate_action_manager_;

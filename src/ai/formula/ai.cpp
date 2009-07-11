@@ -20,6 +20,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <queue>
+#include <stack>
 #include <utility>
 #include <vector>
 
@@ -659,7 +660,19 @@ private:
 class recruit_callable : public formula_callable {
 	map_location loc_;
 	std::string type_;
-	variant get_value(const std::string& /*key*/) const { return variant(); }
+
+	variant get_value(const std::string& key) const {
+		if( key == "unit_type")
+			return variant(type_);
+		if( key == "recruit_loc")
+			return variant(new location_callable(loc_));
+		return variant();
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("unit_type", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("recruit_loc", game_logic::FORMULA_READ_ONLY));
+	}
 public:
 	recruit_callable(const map_location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
@@ -837,7 +850,20 @@ private:
 class set_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
-	variant get_value(const std::string& /*key*/) const { return variant(); }
+	variant get_value(const std::string& key) const {
+		if(key == "key")
+			return variant(key_);
+
+		if(key == "value")
+			return value_;
+
+		return variant();
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+	}
 public:
 	set_var_callable(const std::string& key, const variant& value)
 	  : key_(key), value_(value)
@@ -862,7 +888,24 @@ class set_unit_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
 	map_location loc_;
-	variant get_value(const std::string& /*key*/) const { return variant(); }
+	variant get_value(const std::string& key) const {
+		if(key == "loc")
+			return variant(new location_callable(loc_));
+
+		if(key == "key")
+			return variant(key_);
+
+		if(key == "value")
+			return value_;
+
+		return variant();
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("loc", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+	}
 public:
 	set_unit_var_callable(const std::string& key, const variant& value, const map_location loc)
 	  : key_(key), value_(value), loc_(loc)
@@ -911,7 +954,7 @@ class attack_callable : public formula_callable {
 	map_location move_from_, src_, dst_;
 	battle_context bc_;
 	variant get_value(const std::string& key) const {
-		if(key == "attacker") {
+		if(key == "attack_from") {
 			return variant(new location_callable(src_));
 		} else if(key == "defender") {
 			return variant(new location_callable(dst_));
@@ -923,7 +966,7 @@ class attack_callable : public formula_callable {
 	}
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("attacker", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("attack_from", game_logic::FORMULA_READ_ONLY));
 		inputs->push_back(game_logic::formula_input("defender", game_logic::FORMULA_READ_ONLY));
 		inputs->push_back(game_logic::formula_input("move_from", game_logic::FORMULA_READ_ONLY));
 	}
@@ -1059,6 +1102,86 @@ private:
 	}
 
 	const formula_ai& ai_;
+};
+
+
+class safe_call_callable : public formula_callable {
+	variant main_;
+	variant backup_;
+	expression_ptr backup_formula_;
+	variant get_value(const std::string& key) const {
+		if(key == "main")
+			return variant(main_);
+
+		if(key == "backup")
+			return variant(backup_);
+	    
+		return variant();
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("main", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("backup", game_logic::FORMULA_READ_ONLY));
+	}
+public:
+	safe_call_callable(const variant& main, const expression_ptr& backup)
+	  : main_(main), backup_formula_(backup)
+	{}
+
+	const variant& get_main() const { return main_; }
+	const expression_ptr& get_backup() const { return backup_formula_; }
+	void set_backup_result(const variant& v) {
+		backup_ = v;
+	}
+};
+
+class safe_call_result : public formula_callable {
+	const formula_callable* failed_callable_;
+	const map_location current_unit_location_;
+	const int status_;
+
+	variant get_value(const std::string& key) const {
+		if(key == "status")
+			return variant(status_);
+
+		if(key == "object") {
+			if( failed_callable_ != NULL)
+				return variant(failed_callable_);
+			else
+				return variant();
+		}
+
+		if(key == "current_loc" && current_unit_location_ != map_location())
+			return variant(new location_callable(current_unit_location_));
+		return variant();
+	}
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("status", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("object", game_logic::FORMULA_READ_ONLY));
+		if( current_unit_location_ != map_location() )
+			inputs->push_back(game_logic::formula_input("current_loc", game_logic::FORMULA_READ_ONLY));
+	}
+
+public:
+	safe_call_result(const formula_callable* callable, int status,
+			    const map_location& loc = map_location() )
+	  : failed_callable_(callable), current_unit_location_(loc), status_(status)
+	{}
+};
+
+class safe_call_function : public function_expression {
+public:
+	explicit safe_call_function(const args_list& args)
+	  : function_expression("safe_call", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant main = args()[0]->evaluate(variables);
+		const expression_ptr backup_formula = args()[1];
+
+		return variant(new safe_call_callable(main, backup_formula));
+	}
 };
 
 class debug_label_function : public function_expression {
@@ -1539,6 +1662,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new attack_function(args, ai_));
 	} else if(fn == "recruit") {
 		return expression_ptr(new recruit_function(args));
+	} else if(fn == "safe_call") {
+		return expression_ptr(new safe_call_function(args));
 	} else if(fn == "get_unit_type") {
 		return expression_ptr(new get_unit_type_function(args));
 	} else if(fn == "is_village") {
@@ -1622,6 +1747,7 @@ formula_ai::formula_ai(ai::default_ai_context &context) :
 	enemy_dstsrc_(),
 	attacks_cache_(),
 	keeps_cache_(),
+	infinite_loop_guardian_(),
 	vars_(),
 	function_table(*this),
 	candidate_action_manager_()
@@ -1737,7 +1863,7 @@ void formula_ai::play_turn()
                                 game_logic::map_formula_callable callable(this);
                                 callable.add_ref();
                                 callable.add("me", variant(new unit_callable(*i)));
-                                while ( make_action(loop_formula, callable) && i.valid() ) {}
+                                while ( !make_action(loop_formula, callable).is_empty() && i.valid() ) {}
                         }
                         catch(formula_error& e) {
                                 if(e.filename == "formula")
@@ -1775,7 +1901,7 @@ void formula_ai::play_turn()
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
 	try {
-		while(make_action(move_formula_,callable)) { }
+		while( !make_action(move_formula_,callable).is_empty() ) { }
 	}
 	catch(formula_error& e) {
 		if(e.filename == "formula")
@@ -1797,14 +1923,14 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
 		const variant v = f.execute(callable);
 
-                //first read info about move, then clear outcome_positions
-                std::string move_info = v.to_debug_string();
                 outcome_positions_.clear();
 
-		if ( execute_variant(v, true ) )
-			return "Made move: " + move_info;
+		variant var = execute_variant(v, true );
 
-		return move_info;
+		if (  !var.is_empty() )
+			return "Made move: " + var.to_debug_string();
+
+		return v.to_debug_string();
 	}
 	catch(formula_error& e) {
 		e.line = 0;
@@ -1858,7 +1984,7 @@ void formula_ai::prepare_move() const
 	move_maps_valid_ = true;
 }
 
-bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
+variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
 		if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
@@ -1868,7 +1994,7 @@ bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_
 				fallback->play_turn();
 			}
 		}
-		return false;
+		return variant();
 	}
 
 	move_maps_valid_ = false;
@@ -1876,7 +2002,7 @@ bool formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_
 	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
 
-        bool res = execute_variant(var);
+        variant res = execute_variant(var);
 
         //remove outcome_positions
         outcome_positions_.clear();
@@ -2007,111 +2133,117 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 }
 
 //commandline=true when we evaluate formula from commandline, false otherwise (default)
-bool formula_ai::execute_variant(const variant& var, bool commandline)
+variant formula_ai::execute_variant(const variant& var, bool commandline)
 {
-	std::vector<variant> vars;
+	std::stack<variant> vars;
 	if(var.is_list()) {
-		for(size_t n = 0; n != var.num_elements(); ++n) {
-			vars.push_back(var[n]);
+		for(size_t n = 1; n <= var.num_elements() ; ++n) {
+			vars.push(var[ var.num_elements() - n ]);
 		}
 	} else {
-		vars.push_back(var);
+		vars.push(var);
 	}
 
-	bool made_move = false;
+	std::vector<variant> made_moves;
 
-	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
-		if(i->is_null()) {
+	variant error;
+
+	while( !vars.empty() ) {
+
+		if(vars.top().is_null()) {
+			vars.pop();
 			continue;
 		}
 
-		const move_callable* move = try_convert_variant<move_callable>(*i);
-		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(*i);
-		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
-		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
-		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
-		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
-		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(*i);
-		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(*i);
+		variant action = vars.top();
+		vars.pop();
+
+		safe_call_callable* safe_call = try_convert_variant<safe_call_callable>(action);
+
+		if(safe_call) {
+		    action = safe_call->get_main();
+		}
+
+		const move_callable* move = try_convert_variant<move_callable>(action);
+		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(action);
+		const attack_callable* attack = try_convert_variant<attack_callable>(action);
+		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(action);
+		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(action);
+		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
+		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
+		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(action);
 
 		prepare_move();
-		if(move) {
-			unit_map::iterator unit_it = units_.find(move->src());
-			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move->dst() ) ) {
+		
+		if( move || move_partial ) {
+			ai::move_result_ptr move_result;
 
-                                map_location destination = path_calculator(move->src(), move->dst(), unit_it);
+			if(move)
+				move_result = execute_move_action(move->src(), move->dst(), true);
+			else
+				move_result = execute_move_action(move_partial->src(), move_partial->dst(), false);
 
-                                if( destination != map_location()) {
-                                    map_location new_location = move_unit(move->src(), destination, possible_moves_);
-                                    if ( (new_location != move->src()) || (move->src()==move->dst()) ){
-                                        unit_map::iterator unit = get_info().units.find(new_location);
+			if ( !move_result->is_ok() ) {
+				if( move ) {
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n\n";
 
-                                        if(unit != get_info().units.end()) {
-                                                unit->second.set_movement(0);
-                                        } else {
-                                                throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
-                                        }
+					if(safe_call) {
+						//safe_call was called, prepare error information
+						error = variant(new safe_call_result(move,
+									move_result->get_status(), move_result->get_unit_location()));
+					}
+				} else {
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n\n";
 
-                                        LOG_AI << "MOVE: " << move->src().x+1 << "," << move->src().y+1 << " -> " << move->dst().x+1 << "," << move->dst().y+1 << "\n";
-                                        made_move = true;
-
-                                    } else {
-                                           ERR_AI << "IMPOSSIBLE MOVE ORDER - MOVE FAILED\n";
-                                    }
-                                } else
-                                    ERR_AI << "IMPOSSIBLE MOVE ORDER\n";
+					if(safe_call) {
+						//safe_call was called, prepare error information
+						error = variant(new safe_call_result(move_partial,
+									move_result->get_status(), move_result->get_unit_location()));
+					}
+				}
 			}
-		} else if(move_partial) {
-			unit_map::iterator unit_it = units_.find(move_partial->src());
-			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move_partial->dst()) ) {
-                                map_location destination = path_calculator(move_partial->src(), move_partial->dst(), unit_it);
 
-                                if( destination != map_location()) {
-                                    LOG_AI << "MOVE PARTIAL: " << move_partial->src().x+1 << "," << move_partial->src().y+1 << " -> " << move_partial->dst().x+1 << "," << move_partial->dst().y+1 << "\n";
-                                    move_unit_partial(move_partial->src(), destination, possible_moves_);
-                                    made_move = true;
-                                } else
-                                    ERR_AI << "IMPOSSIBLE MOVE PARTIAL ORDER\n";
-			}
+			if( move_result->is_gamestate_changed() )
+				made_moves.push_back(action);		
 		} else if(attack) {
-			if(get_info().units.count(attack->dst()) == 0) {
-				//this is a legitimate situation; someone might send a series of units in
-				//to attack, but if the defender dies in the middle, we'll save the unit
-				//ordered to move so it can get a different command.
-				continue;
+			bool gamestate_changed = false;
+			ai::move_result_ptr move_result;
+
+			if( attack->move_from() != attack->src() ) {
+				move_result = execute_move_action(attack->move_from(), attack->src(), false);
+				gamestate_changed |= move_result->is_gamestate_changed();
+
+				if (!move_result->is_ok()) {
+					//move part failed
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n\n";
+
+					if(safe_call) {
+						//safe_call was called, prepare error information
+						error = variant(new safe_call_result(attack,
+								move_result->get_status(), move_result->get_unit_location()));
+					}
+				}
 			}
 
-                        if( !get_info().map.on_board(attack->dst()) || !get_info().map.on_board(attack->src()) || !get_info().map.on_board(attack->move_from())) {
-                            ERR_AI << "IMPOSSIBLE ATTACK ORDER\n";
-                            continue;
-                        }
+			if (!move_result || move_result->is_ok() ) {
+				//if move wasn't done at all or was done successfully
+				ai::attack_result_ptr attack_result = execute_attack_action(attack->src(), attack->dst(), attack->weapon() );
+				gamestate_changed |= attack_result->is_gamestate_changed();
+				if (!attack_result->is_ok()) {
+					//attack failed
 
-                        if( attack->move_from() != attack->src() ) {
+					LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n\n";
+					
+					if(safe_call) {
+						//safe_call was called, prepare error information
+						error = variant(new safe_call_result(attack, attack_result->get_status()));
+					}
+				}
+			}
 
-                            std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
-
-				if (!path->second.destinations.contains(attack->src())) {
-                                ERR_AI << "IMPOSSIBLE ATTACK ORDER\n";
-                                continue;
-                            }
-
-                            LOG_AI << "MOVE: " << attack->move_from().x+1 << "," << attack->move_from().y+1 << " -> " << attack->src().x+1 << "," << attack->src().y+1 << "\n";
-                            move_unit(attack->move_from(), attack->src(), possible_moves_);
-                        }
-
-                        unit_map::iterator unit_it = units_.find(attack->src());
-
-                        int x_diff = attack->src().x - attack->dst().x;
-                        int y_diff = attack->src().y - attack->dst().y;
-
-                        if( x_diff < 2 && x_diff > -2 && y_diff < 2 &&  y_diff > -2 && attack->src() != attack->dst() ) {
-                            if( ( unit_it != units_.end() ) && (unit_it->second.attacks_left() != 0) ) {
-                                LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
-                                attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
-                            }
-                        }
-
-			made_move = true;
+			if (gamestate_changed) {
+			      made_moves.push_back(action);
+			}
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
 			//Then the AI can get run again and re-choose.
@@ -2151,7 +2283,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 							 bc.get_attacker_stats().attack_num,
 							 bc.get_defender_stats().attack_num);
 			}
-			made_move = true;
+			made_moves.push_back(action);
 		} else if(recruit_command) {
 			ai::recruit_result_ptr recruit_result = execute_recruit_action(recruit_command->type(), recruit_command->loc());
 
@@ -2159,33 +2291,69 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			//is_ok() must be checked or the code will complain :)
 			if (!recruit_result->is_ok()) {
 				//get_status() can be used to fetch the error code
-				LOG_AI << "Error number is: "<<recruit_result->get_status()<<std::endl;
+				LOG_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
+
+				if(safe_call) {
+					//safe call was called, prepare error information
+					error = variant(new safe_call_result(recruit_command,
+									recruit_result->get_status()));
+				}
 			}
 			//is_gamestate_changed()==true means that the game state was somehow changed by action.
 			//it is believed that during a turn, a game state can change only a finite number of times
-			made_move = recruit_result->is_gamestate_changed();
+			if( recruit_result->is_gamestate_changed() )
+				made_moves.push_back(action);
+
 		} else if(set_var_command) {
-			LOG_AI << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
-			vars_.add(set_var_command->key(), set_var_command->value());
-			made_move = true;
-		} else if(set_unit_var_command) {
-			LOG_AI << "setting unit var: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
-			unit_map::iterator unit = units_.find(set_unit_var_command->loc());
-			if(unit != units_.end()) {
-				if( unit->second.side() == get_side() ) {
-					unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
-				}
+			if( infinite_loop_guardian_.set_var_check() ) {
+				LOG_AI << "Setting variable: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
+				vars_.add(set_var_command->key(), set_var_command->value());
+				made_moves.push_back(action);
 			} else {
-				std::ostringstream str;
-				str << "set_var function: expected unit at location (" << (set_unit_var_command->loc().x+1) << "," << (set_unit_var_command->loc().y+1) << ")";
-				throw formula_error( str.str(), "", "", 0);
+				//too many calls in a row - possible infinite loop
+				LOG_AI << "ERROR #" << 5001 << " while executing 'set_var' formula function\n";
+
+				if( safe_call )
+					error = variant(new safe_call_result(set_var_command, 5001));
 			}
-			made_move = true;
-		} else if(i->is_string() && i->as_string() == "recruit") {
-			do_recruitment();
-			made_move = true;
-		} else if(i->is_string() && (i->as_string() == "end_turn" || i->as_string() == "end" )  ) {
-			return false;
+		} else if(set_unit_var_command) {
+			int status = 0;
+			unit_map::iterator unit;
+
+			if( infinite_loop_guardian_.set_unit_var_check() ) {
+			    status = 5001; //exceeded nmber of calls in a row - possible infinite loop
+			} else if( (unit = units_.find(set_unit_var_command->loc())) == units_.end() ) {
+			    status = 5002; //unit not found
+			} else if( unit->second.side() != get_side() ) {
+			    status = 5003;//unit does not belong to our side
+			}
+
+			if( status == 0 ){
+				LOG_AI << "Setting unit variable: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
+				unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
+				made_moves.push_back(action);
+			} else {
+				LOG_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function\n";
+				if(safe_call)
+				    error = variant(new safe_call_result(set_unit_var_command,
+									status));
+			}
+			
+		} else if( action.is_string() && action.as_string() == "recruit") {
+			if( do_recruitment() )
+				made_moves.push_back(action);
+		} else if( action.is_string() && action.as_string() == "continue") {
+			if( infinite_loop_guardian_.continue_check() ) {
+				made_moves.push_back(action);
+			} else {
+				//too many calls in a row - possible infinite loop
+				LOG_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword\n";
+
+				if( safe_call )
+					error = variant(new safe_call_result(NULL, 5001));
+			}
+		} else if( action.is_string() && (action.as_string() == "end_turn" || action.as_string() == "end" )  ) {
+			return variant();
 		} else if(fallback_command) {
 			if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
 				if(fallback_command->key() == "human")
@@ -2201,16 +2369,39 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 					}
 				}
 			}
-			return false;
+			return variant();
 		} else {
 			//this information is unneded when evaluating formulas form commandline
 			if (!commandline) {
-				ERR_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+				ERR_AI << "UNRECOGNIZED MOVE: " << action.to_debug_string() << "\n";
 			}
+		}
+
+		if( safe_call && (error != variant() || made_moves.empty() || made_moves.back() != action) ){
+		    /*if we have safe_call formula and either error occured, or current action
+		     *was not reckognized, then evaluate backup formula from safe_call and execute it
+		     *during the next loop
+		     */
+
+		    game_logic::map_formula_callable callable(this);
+		    callable.add_ref();
+
+		    if(error != variant())
+			callable.add("error", error);
+
+		    variant backup_result = safe_call->get_backup()->evaluate(callable);
+
+		    vars.push(backup_result);
+
+		    //store the result in safe_call_callable case we would like to display it to the user
+		    //for example if this formula was executed from commandline	    
+		    safe_call->set_backup_result(backup_result);
+
+		    error = variant();
 		}
 	}
 
-	return made_move;
+	return variant(&made_moves);
 }
 
 
@@ -2225,7 +2416,7 @@ bool formula_ai::do_recruitment()
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
 	try {
-		while(make_action(recruit_formula_,callable)) 
+		while( !make_action(recruit_formula_,callable).is_empty() )
 		{
 		    ret = true;
 		}
@@ -2599,5 +2790,43 @@ bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_c
 	callable.add_ref();
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
-	return make_action(move_formula, callable);
+	return !make_action(move_formula, callable).is_empty();
+}
+
+formula_ai::gamestate_change_observer::gamestate_change_observer() {
+	ai::manager::add_gamestate_observer(this);
+}
+
+formula_ai::gamestate_change_observer::~gamestate_change_observer() {
+	ai::manager::remove_gamestate_observer(this);
+}
+
+void formula_ai::gamestate_change_observer::handle_generic_event(const std::string& /*event_name*/) {
+	set_var_counter_ = 0;
+	set_unit_var_counter_ = 0;
+}
+
+//return false if number of calls exceeded MAX_CALLS
+bool formula_ai::gamestate_change_observer::set_var_check() {
+	if(set_var_counter_ >= MAX_CALLS)
+	    return false;
+
+	set_var_counter_++;
+	return true;
+}
+
+bool formula_ai::gamestate_change_observer::set_unit_var_check() {
+	if(set_unit_var_counter_ >= MAX_CALLS)
+	    return false;
+
+	set_unit_var_counter_++;
+	return true;
+}
+
+bool formula_ai::gamestate_change_observer::continue_check() {
+	if(continue_counter_ >= MAX_CALLS)
+	    return false;
+
+	continue_counter_++;
+	return true;
 }

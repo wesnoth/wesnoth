@@ -51,6 +51,7 @@ public:
 	const variant& operator[](size_t n) const;
 	const variant& operator[](const variant v) const;
 	size_t num_elements() const;
+	bool is_empty() const;
 
 	variant get_member(const std::string& str) const;
 
