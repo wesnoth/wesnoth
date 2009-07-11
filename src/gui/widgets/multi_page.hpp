@@ -92,6 +92,14 @@ public:
 	void select_page(const unsigned page, const bool select = true);
 
 	/**
+	 * Returns the selected page.
+	 *
+	 * @returns                   The selected page.
+	 * @retval -1                 No page selected.
+	 */
+	int get_selected_page() const;
+
+	/**
 	 * Returns the grid for the page.
 	 *
 	 * @param page                The page to get the grid from, the caller
