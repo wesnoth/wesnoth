@@ -87,7 +87,7 @@ public:
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
 	class gamestate_change_observer : public events::observer
 	{
-		static const int MAX_CALLS = 10;
+		static const int MAX_CALLS = 1000;
 		int set_var_counter_;
 		int set_unit_var_counter_;
 		int continue_counter_;
