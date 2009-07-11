@@ -1,13 +1,16 @@
 #ifndef SERVER_HPP_INCLUDED
 #define SERVER_HPP_INCLUDED
 
+#include "user_handler.hpp"
+#include "input_stream.hpp"
+#include "metrics.hpp"
 #include "../network.hpp"
 #include "ban.hpp"
 #include "player.hpp"
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
-#include "user_handler.hpp"
 #include <boost/scoped_ptr.hpp>
+
 
 class server
 {

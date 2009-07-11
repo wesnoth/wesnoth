@@ -17,6 +17,8 @@
  * Wesnoth-Server, for multiplayer-games.
  */
 
+#include "server.hpp"
+
 #include "../global.hpp"
 
 #include "../config.hpp"
@@ -39,7 +41,7 @@
 #include "proxy.hpp"
 #include "simple_wml.hpp"
 #include "ban.hpp"
-#include "server.hpp"
+
 
 #include "user_handler.hpp"
 #include "sample_user_handler.hpp"
