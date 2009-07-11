@@ -15,7 +15,6 @@
 #define SHARED_STRING_HPP_INCLUDED
 
 #include "shared_object.hpp"
-#include "tstring.hpp"
 #include <string>
 
 struct shared_string : public shared_object<std::string> {
