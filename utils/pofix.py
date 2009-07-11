@@ -37,6 +37,7 @@ stringfixes = {
 ("well defended", "well-defended"),
 ("We can't get through lord. These whelps are not individually very dangerous, but there are huge number of them.", "We can't get through, my Lord. These whelps are not individually very dangerous, but there are huge numbers of them."),
 ("They waited the next few days before the expected relief caught up with them. Next morning", "The expected relief caught up with them a few days later. The following morning"),
+("the woods they called home. It has been murdered.","the woods they called home. It had been murdered."),
 ),
 
 "wesnoth-did" : (
@@ -83,6 +84,7 @@ stringfixes = {
 #
 ("It sees that guard", "It seems that guard"),
 ("Go thorough that rubble", "Go through that rubble"),
+("the wilder march country", "the wilder marsh country"),
 ),
 
 # Changes in the wesnoth domain make consistent the use of the American
