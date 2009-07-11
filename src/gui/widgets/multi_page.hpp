@@ -67,6 +67,19 @@ public:
 	void add_page(const std::map<std::string /* widget id */,
 			string_map>& data);
 
+	/**
+	 * Removes a page in the multi page.
+	 *
+	 * @param page                The page to remove, when not in
+	 *                            range the function is ignored.
+	 * @param count               The number of pages to remove, 0 means all
+	 *                            pages (starting from page).
+	 */
+	void remove_page(const unsigned page, unsigned count = 1);
+
+	/** Removes all pages in the multi page, clearing it. */
+	void clear();
+
 	/** Returns the number of pages. */
 	unsigned get_page_count() const;
 

@@ -42,6 +42,29 @@ void tmulti_page::add_page(
 	generator_->create_item(-1, page_builder_, data, NULL);
 }
 
+void tmulti_page::remove_page(const unsigned page, unsigned count)
+{
+	assert(generator_);
+
+	if(page >= get_page_count()) {
+		return;
+	}
+
+	if(!count || count > get_page_count()) {
+		count = get_page_count();
+	}
+
+	for(; count; --count) {
+		generator_->delete_item(page);
+	}
+}
+
+void tmulti_page::clear()
+{
+	assert(generator_);
+	generator_->clear();
+}
+
 unsigned tmulti_page::get_page_count() const
 {
 	assert(generator_);
