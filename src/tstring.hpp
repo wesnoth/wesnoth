@@ -15,23 +15,26 @@
 #ifndef TSTRING_H_INCLUDED
 #define TSTRING_H_INCLUDED
 
+#include "shared_object.hpp"
+
 #include <string>
 
 /**
  * Helper class for translatable strings.
  *
- * NOTE don't use static t_string objects since they don't change when the
+ * NOTE don't use static t_string_base objects since they don't change when the
  * language changes.
  */
-class t_string
+class t_string;
+class t_string_base
 {
 public:
 	class walker
 	{
 	public:
+		walker(const t_string_base& string);
+		explicit walker(const std::string&);
 		walker(const t_string& string);
-		walker(const std::string&);
-
 		void next()                               { begin_ = end_; update(); }
 		bool eos() const                          { return begin_ == string_.size(); }
 		bool last() const                         { return end_ == string_.size(); }
@@ -51,35 +54,35 @@ public:
 
 	friend class walker;
 
-	t_string();
-	t_string(const t_string&);
-	t_string(const std::string& string);
-	t_string(const std::string& string, const std::string& textdomain);
-	t_string(const char* string);
+	t_string_base();
+	t_string_base(const t_string_base&);
+	t_string_base(const std::string& string);
+	t_string_base(const std::string& string, const std::string& textdomain);
+	t_string_base(const char* string);
 
-	static t_string from_serialized(const std::string& string);
+	static t_string_base from_serialized(const std::string& string);
 	std::string to_serialized() const;
 
-	t_string& operator=(const t_string&);
-	t_string& operator=(const std::string&);
-	t_string& operator=(const char*);
+	t_string_base& operator=(const t_string_base&);
+	t_string_base& operator=(const std::string&);
+	t_string_base& operator=(const char*);
 
-	t_string operator+(const t_string&) const;
-	t_string operator+(const std::string&) const;
-	t_string operator+(const char*) const;
+	t_string_base operator+(const t_string_base&) const;
+	t_string_base operator+(const std::string&) const;
+	t_string_base operator+(const char*) const;
 
-	t_string& operator+=(const t_string&);
-	t_string& operator+=(const std::string&);
-	t_string& operator+=(const char*);
+	t_string_base& operator+=(const t_string_base&);
+	t_string_base& operator+=(const std::string&);
+	t_string_base& operator+=(const char*);
 
-	bool operator==(const t_string& string) const    { return string.translatable_ == translatable_ && string.value_ == value_; }
+	bool operator==(const t_string_base& string) const    { return string.translatable_ == translatable_ && string.value_ == value_; }
 	bool operator==(const std::string& string) const { return !translatable_ && value_ == string; }
 	bool operator==(const char* string) const        { return !translatable_ && value_ == string; }
-	bool operator!=(const t_string& string) const    { return !(*this == string); }
+	bool operator!=(const t_string_base& string) const    { return !(*this == string); }
 	bool operator!=(const std::string& string) const { return !(*this == string); }
 	bool operator!=(const char* string) const        { return !(*this == string); }
 
-	bool operator<(const t_string& string) const     { return value_ < string.value_; }
+	bool operator<(const t_string_base& string) const     { return value_ < string.value_; }
 
 	bool empty() const                               { return value_.empty(); }
 	std::string::size_type size() const              { return str().size(); }
@@ -96,19 +99,79 @@ public:
 	void reset_translation() const                   { translated_value_ = ""; }
 
 	static void add_textdomain(const std::string& name, const std::string& path);
+
+	size_t hash_value() const;
 private:
 	std::string value_;
 	mutable std::string translated_value_;
 	bool translatable_, last_untranslatable_;
 };
 
-std::ostream& operator<<(std::ostream&, const t_string&);
+inline size_t hash_value(const t_string_base& str) { return str.hash_value(); }
+std::ostream& operator<<(std::ostream&, const t_string_base&);
+
+class t_string :
+	private shared_object<t_string_base> {
+public:
+	typedef shared_object<t_string_base> super;
+	typedef t_string_base base;
+	typedef t_string_base::walker walker;
+
+	t_string() : super() { }
+	t_string(const base& o) : super(o) { }
+	t_string(const std::string& o) : super(base(o)) { }
+	t_string(const std::string& str, const std::string& textdomain) : super(base(str, textdomain)) { }
+	t_string(const char* string) : super(base(string)) { }
+	static t_string from_serialized(const std::string& string) { return t_string(base::from_serialized(string)); }
+	std::string to_serialized() const { return get().to_serialized(); }
+
+	operator t_string_base() const { return get(); }
+	t_string& operator=(const t_string& o) { super::operator=(o); return *this; }
+	t_string& operator=(const std::string& o) { super::operator=(base(o)); return *this; }
+	t_string& operator=(const char* o) { super::operator=(base(o)); return *this; }
+
+	t_string operator+(const t_string& o) const { return get() + o.get(); }
+	t_string operator+(const std::string& o) const { return get() + o; }
+	t_string operator+(const char* o) const { return get() + o; }
+
+	t_string& operator+=(const t_string& o) { set(base(get()) += o.get()); return *this; }
+	t_string& operator+=(const std::string& o) { set(base(get()) += o); return *this; }
+	t_string& operator+=(const char* o) { set(base(get()) += o); return *this; }
+
+	bool operator==(const t_string& o) const { return get() == o.get(); }
+	bool operator==(const std::string& o) const { return get() == o; }
+	bool operator==(const char* o) const { return get() == o; }
+
+	bool operator!=(const t_string& o) const { return !operator==(o); }
+	bool operator!=(const std::string& o) const { return !operator==(o); }
+	bool operator!=(const char* o) const { return !operator==(o); }
+
+	bool operator<(const t_string& o) const { return get() < o.get(); }
+
+	bool empty() const { return get().empty(); }
+	std::string::size_type size() const { return get().size(); }
+
+	operator const std::string&() const { return get(); }
+	const std::string& str() const { return get().str(); }
+	const char* c_str() const { return get().c_str(); }
+	bool translatable() const { return get().translatable(); }
+	const std::string& value() const { return get().value(); }
+	std::string base_str() const { return get().base_str(); }
+
+	void reset_translation() const { get().reset_translation(); }
+
+	static void add_textdomain(const std::string& name, const std::string& path) {
+		base::add_textdomain(name, path);
+	}
+
+	const t_string_base& get() const { return super::get(); }
+};
+inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
 inline bool operator==(const std::string& a, const t_string& b)    { return a == b.str(); }
 inline bool operator==(const char* a, const t_string& b)           { return b == a; }
 inline bool operator!=(const std::string& a, const t_string& b)    { return a != b.str(); }
 inline bool operator!=(const char* a, const t_string& b)           { return b != a; }
 inline t_string operator+(const std::string& a, const t_string& b) { return t_string(a + b.str()); }
 inline t_string operator+(const char* a, const t_string& b)        { return t_string(a) + b; }
-
 #endif
 

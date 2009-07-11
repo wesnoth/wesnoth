@@ -59,5 +59,4 @@ struct shared_string : public shared_object<std::string> {
 		return get().end();
 	}
 };
-
 #endif

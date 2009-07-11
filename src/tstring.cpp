@@ -26,6 +26,7 @@
 #include "tstring.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include <boost/functional/hash.hpp>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -42,7 +43,27 @@ namespace {
 	std::map<std::string, unsigned int> textdomain_to_id;
 }
 
-t_string::walker::walker(const t_string& string) :
+size_t t_string_base::hash_value() const {
+	size_t seed = 0;
+	boost::hash_combine(seed, value_);
+	boost::hash_combine(seed, translatable_);
+	boost::hash_combine(seed, last_untranslatable_);
+	return seed;
+}
+
+t_string_base::walker::walker(const t_string& string) :
+	string_(string.get().value_),
+	begin_(0),
+	end_(string_.size()),
+	textdomain_(),
+	translatable_(false)
+{
+	if(string.get().translatable_) {
+		update();
+	}
+}
+
+t_string_base::walker::walker(const t_string_base& string) :
 	string_(string.value_),
 	begin_(0),
 	end_(string_.size()),
@@ -54,7 +75,7 @@ t_string::walker::walker(const t_string& string) :
 	}
 }
 
-t_string::walker::walker(const std::string& string) :
+t_string_base::walker::walker(const std::string& string) :
 	string_(string),
 	begin_(0),
 	end_(string_.size()),
@@ -64,7 +85,7 @@ t_string::walker::walker(const std::string& string) :
 	update();
 }
 
-void t_string::walker::update()
+void t_string_base::walker::update()
 {
 	unsigned int id;
 
@@ -141,7 +162,7 @@ void t_string::walker::update()
 	}
 }
 
-t_string::t_string() :
+t_string_base::t_string_base() :
 	value_(),
 	translated_value_(),
 	translatable_(false),
@@ -149,7 +170,7 @@ t_string::t_string() :
 {
 }
 
-t_string::t_string(const t_string& string) :
+t_string_base::t_string_base(const t_string_base& string) :
 	value_(string.value_),
 	translated_value_(string.translated_value_),
 	translatable_(string.translatable_),
@@ -157,7 +178,7 @@ t_string::t_string(const t_string& string) :
 {
 }
 
-t_string::t_string(const std::string& string) :
+t_string_base::t_string_base(const std::string& string) :
 	value_(string),
 	translated_value_(),
 	translatable_(false),
@@ -165,7 +186,7 @@ t_string::t_string(const std::string& string) :
 {
 }
 
-t_string::t_string(const std::string& string, const std::string& textdomain) :
+t_string_base::t_string_base(const std::string& string, const std::string& textdomain) :
 	value_(1, ID_TRANSLATABLE_PART),
 	translated_value_(),
 	translatable_(true),
@@ -187,7 +208,7 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 	value_ += string;
 }
 
-t_string::t_string(const char* string) :
+t_string_base::t_string_base(const char* string) :
 	value_(string),
 	translated_value_(),
 	translatable_(false),
@@ -195,9 +216,9 @@ t_string::t_string(const char* string) :
 {
 }
 
-t_string t_string::from_serialized(const std::string& string)
+t_string_base t_string_base::from_serialized(const std::string& string)
 {
-	t_string orig(string);
+	t_string_base orig(string);
 
 	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)) {
 		orig.translatable_ = true;
@@ -205,13 +226,13 @@ t_string t_string::from_serialized(const std::string& string)
 		orig.translatable_ = false;
 	}
 
-	t_string res;
+	t_string_base res;
 
 	for(walker w(orig); !w.eos(); w.next()) {
 		std::string substr(w.begin(), w.end());
 
 		if(w.translatable()) {
-			res += t_string(substr, w.textdomain());
+			res += t_string_base(substr, w.textdomain());
 		} else {
 			res += substr;
 		}
@@ -220,7 +241,7 @@ t_string t_string::from_serialized(const std::string& string)
 	return res;
 }
 
-std::string t_string::base_str() const
+std::string t_string_base::base_str() const
 {
 	std::string res;
 	for(walker w(*this); !w.eos(); w.next()) {
@@ -229,12 +250,12 @@ std::string t_string::base_str() const
 	return res;
 }
 
-std::string t_string::to_serialized() const
+std::string t_string_base::to_serialized() const
 {
-	t_string res;
+	t_string_base res;
 
 	for(walker w(*this); !w.eos(); w.next()) {
-		t_string chunk;
+		t_string_base chunk;
 
 		std::string substr(w.begin(), w.end());
 		if(w.translatable()) {
@@ -253,7 +274,7 @@ std::string t_string::to_serialized() const
 	return res.value();
 }
 
-t_string& t_string::operator=(const t_string& string)
+t_string_base& t_string_base::operator=(const t_string_base& string)
 {
 	value_ = string.value_;
 	translatable_ = string.translatable_;
@@ -263,7 +284,7 @@ t_string& t_string::operator=(const t_string& string)
 	return *this;
 }
 
-t_string& t_string::operator=(const std::string& string)
+t_string_base& t_string_base::operator=(const std::string& string)
 {
 	translatable_ = false;
 	value_ =  string;
@@ -272,7 +293,7 @@ t_string& t_string::operator=(const std::string& string)
 	return *this;
 }
 
-t_string& t_string::operator=(const char* string)
+t_string_base& t_string_base::operator=(const char* string)
 {
 	translatable_ = false;
 	value_ = string;
@@ -281,28 +302,28 @@ t_string& t_string::operator=(const char* string)
 	return *this;
 }
 
-t_string t_string::operator+(const t_string& string) const
+t_string_base t_string_base::operator+(const t_string_base& string) const
 {
-	t_string res(*this);
+	t_string_base res(*this);
 	res += string;
 	return res;
 }
 
-t_string t_string::operator+(const std::string& string) const
+t_string_base t_string_base::operator+(const std::string& string) const
 {
-	t_string res(*this);
+	t_string_base res(*this);
 	res += string;
 	return res;
 }
 
-t_string t_string::operator+(const char* string) const
+t_string_base t_string_base::operator+(const char* string) const
 {
-	t_string res(*this);
+	t_string_base res(*this);
 	res += string;
 	return res;
 }
 
-t_string& t_string::operator+=(const t_string& string)
+t_string_base& t_string_base::operator+=(const t_string_base& string)
 {
 	if (string.value_.empty())
 		return *this;
@@ -338,7 +359,7 @@ t_string& t_string::operator+=(const t_string& string)
 	return *this;
 }
 
-t_string& t_string::operator+=(const std::string& string)
+t_string_base& t_string_base::operator+=(const std::string& string)
 {
 	if (string.empty())
 		return *this;
@@ -361,7 +382,7 @@ t_string& t_string::operator+=(const std::string& string)
 	return *this;
 }
 
-t_string& t_string::operator+=(const char* string)
+t_string_base& t_string_base::operator+=(const char* string)
 {
 	if (string[0] == 0)
 		return *this;
@@ -385,7 +406,7 @@ t_string& t_string::operator+=(const char* string)
 }
 
 
-const std::string& t_string::str() const
+const std::string& t_string_base::str() const
 {
 	if(!translatable_)
 		return value_;
@@ -407,7 +428,7 @@ const std::string& t_string::str() const
 }
 
 
-void t_string::add_textdomain(const std::string& name, const std::string& path)
+void t_string_base::add_textdomain(const std::string& name, const std::string& path)
 {
 	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
 
@@ -416,7 +437,7 @@ void t_string::add_textdomain(const std::string& name, const std::string& path)
 	bind_textdomain_codeset(name.c_str(), "UTF-8");
 }
 
-std::ostream& operator<<(std::ostream& stream, const t_string& string)
+std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 {
 	stream << string.str();
 	return stream;
