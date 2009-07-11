@@ -31,7 +31,7 @@ struct manager
 
 void clear_tooltips();
 void clear_tooltips(const SDL_Rect& rect);
-void add_tooltip(const SDL_Rect& rect, const std::string& message);
+void add_tooltip(const SDL_Rect& rect, const std::string& message, const SDL_Color& color = font::NORMAL_COLOUR);
 void process(int mousex, int mousey);
 
 }
