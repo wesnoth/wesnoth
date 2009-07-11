@@ -416,6 +416,11 @@ struct tindependant
 	const twidget* find_widget(const tpoint& coordinate
 			, const bool must_be_active) const;
 
+	twidget* find_widget(const std::string& id, const bool must_be_active);
+
+	const twidget* find_widget(
+			const std::string& id, const bool must_be_active) const;
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */

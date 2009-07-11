@@ -340,6 +340,34 @@ const twidget* tindependant::find_widget(const tpoint& coordinate
 	return grid.find_widget(coordinate, must_be_active);
 }
 
+twidget* tindependant::find_widget(
+		const std::string& id, const bool must_be_active)
+{
+	for(size_t i = 0; i < get_item_count(); ++i) {
+		if(is_selected(i)) {
+			if(twidget* widget = get_item(i).find_widget(id, must_be_active)) {
+				return widget;
+			}
+		}
+	}
+	return NULL;
+}
+
+const twidget* tindependant::find_widget(
+		const std::string& id, const bool must_be_active) const
+{
+	for(size_t i = 0; i < get_item_count(); ++i) {
+		if(is_selected(i)) {
+			if(const twidget* widget =
+					get_item(i).find_widget(id, must_be_active)) {
+
+				return widget;
+			}
+		}
+	}
+	return NULL;
+}
+
 void tindependant::set_visible_area(const SDL_Rect& area)
 {
 	/*
