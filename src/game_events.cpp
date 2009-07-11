@@ -1903,7 +1903,7 @@ WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+	if(!disp || disp->video().faked() ) {
 		return;
 	}
 	soundsource::sourcespec spec(cfg.get_parsed_config());
