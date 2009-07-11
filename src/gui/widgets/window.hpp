@@ -260,6 +260,17 @@ public:
 		{ return easy_close_ && !easy_close_disabled_; }
 
 	/**
+	 * Disable the enter key.
+	 *
+	 * This is added to block dialogs from being closed automatically.
+	 *
+	 * @todo this function should be merged with the hotkey support once
+	 * that has been added.
+	 */
+	void set_enter_disabled(const bool enter_disabled)
+		{ enter_disabled_ = enter_disabled; }
+
+	/**
 	 * Disable the escape key.
 	 *
 	 * This is added to block dialogs from being closed automatically.
@@ -436,6 +447,9 @@ private:
 	 * is good since an extra close button might be needed.
 	 */
 	bool easy_close_disabled_;
+
+	/** Disable the enter key see our setter for more info. */
+	bool enter_disabled_;
 
 	/** Disable the escape key see our setter for more info. */
 	bool escape_disabled_;

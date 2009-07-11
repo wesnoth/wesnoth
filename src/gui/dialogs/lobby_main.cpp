@@ -321,6 +321,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
 	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
 
+	window.set_enter_disabled(true);
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
 	window_ = &window;
 

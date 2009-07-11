@@ -233,6 +233,7 @@ twindow::twindow(CVideo& video,
 	, h_(h)
 	, easy_close_(false)
 	, easy_close_disabled_(false)
+	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
 	, dirty_list_()
@@ -603,7 +604,7 @@ void twindow::window_resize(tevent_handler&,
 void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
-	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
+	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
 		set_retval(OK);
 		handled = true;
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
