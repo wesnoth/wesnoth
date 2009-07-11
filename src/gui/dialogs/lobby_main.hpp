@@ -30,6 +30,7 @@ class tlabel;
 class tlistbox;
 class ttext_box;
 class twindow;
+class tmulti_page;
 
 struct tlobby_chat_window
 {
@@ -96,8 +97,19 @@ protected:
 	virtual void add_chat_room_message_received(const std::string& room,
 		const std::string& speaker, const std::string& message);
 private:
+	/**
+	 * Append some text to the active chat log
+	 */
 	void append_to_chatbox(const std::string& text);
 
+	/**
+	 * Append some text to the chat log for window "id"
+	 */
+	void append_to_chatbox(const std::string& text, size_t id);
+
+	/**
+	 * Result flag for interfacing with other MP dialogs
+	 */
 	legacy_result legacy_result_;
 
 	/**
@@ -114,6 +126,9 @@ private:
 	 */
 	tlobby_chat_window* whisper_window_open(const std::string& name, bool open_new);
 
+	/**
+	 * Helper function to find and open a new window, used by *_window_open
+	 */
 	tlobby_chat_window* search_create_window(const std::string& name, bool whisper, bool open_new);
 
 	/**
@@ -157,8 +172,15 @@ private:
 	 */
 	void add_active_window_message(const std::string& sender, const std::string& message);
 
+	/**
+	 * Switch to the next active window
+	 */
 	void next_active_window();
 
+	/**
+	 * Switch to the window given by a vaild pointer (e.g. received from a call
+	 * to *_window_open)
+	 */
 	void switch_to_window(tlobby_chat_window* t);
 
 	void active_window_changed();
@@ -209,6 +231,8 @@ private:
 
 	void next_window_button_callback(twindow& window);
 
+	void close_window_button_callback(twindow& window);
+
 	void create_button_callback(twindow& window);
 
 	void show_preferences_button_callback(twindow& window);
@@ -234,7 +258,9 @@ private:
 
 	tlistbox* userlistbox_;
 
-	tlabel* chat_log_;
+	tlistbox* roomlistbox_;
+
+	tmulti_page* chat_log_container_;
 
 	ttext_box* chat_input_;
 

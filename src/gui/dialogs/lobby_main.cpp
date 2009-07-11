@@ -22,6 +22,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/text_box.hpp"
 
 #include "foreach.hpp"
@@ -165,7 +166,14 @@ void tlobby_main::add_chat_room_message_received(const std::string& room,
 
 void tlobby_main::append_to_chatbox(const std::string& text)
 {
-	chat_log_->set_label(chat_log_->label() + "\n" + text);
+	append_to_chatbox(text, active_window_);
+}
+
+void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
+{
+	tgrid& grid = chat_log_container_->page_grid(id);
+	ttext_box& log = grid.get_widget<ttext_box>("log_text", false);
+	log.set_label(log.label() + "\n" + text);
 	window_->invalidate_layout();
 }
 
@@ -182,12 +190,11 @@ void tlobby_main::do_notify(t_notify_mode mode)
 tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
 : legacy_result_(QUIT)
 , game_config_(game_config)
-, gamelistbox_(NULL), chat_log_(NULL)
+, gamelistbox_(NULL), chat_log_container_(NULL)
 , chat_input_(NULL), window_(NULL)
 , lobby_info_(info), preferences_callback_(NULL)
 , open_windows_(), active_window_(0)
 {
-	room_window_open("lobby", true);
 }
 
 void tlobby_main::set_preferences_callback(boost::function<void ()> cb)
@@ -303,14 +310,16 @@ void tlobby_main::update_gamelist()
 
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 {
+	roomlistbox_ = &window.get_widget<tlistbox>("room_list", false);
+
 	gamelistbox_ = dynamic_cast<tlistbox*>(window.find_widget("game_list", false));
 	VALIDATE(gamelistbox_, missing_widget("game_list"));
 
 	userlistbox_ = dynamic_cast<tlistbox*>(window.find_widget("user_list", false));
 	VALIDATE(userlistbox_, missing_widget("user_list"));
 
-	chat_log_ = dynamic_cast<tlabel*>(window.find_widget("chat_log", false));
-	VALIDATE(chat_log_, missing_widget("chat_log"));
+	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
+	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
 
 	window.set_event_loop_pre_callback(boost::bind(&tlobby_main::network_handler, this));
 	window_ = &window;
@@ -326,6 +335,9 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(next_window, tlobby_main);
+	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
+
+	room_window_open("lobby", true);
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
@@ -351,9 +363,16 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name, b
 	}
 	if (open_new) {
 		open_windows_.push_back(tlobby_chat_window(name, whisper));
-		if (!whisper) {
+		std::map<std::string, string_map> data;
+		if (whisper) {
+			add_label_data(data, "log_header", "<" + name + ">");
+			add_label_data(data, "log_text", "Whisper session with " + name + " started.\n");
+		} else {
+			add_label_data(data, "log_header", name);
+			add_label_data(data, "log_text", "Room " + name + " joined.\n");
 			lobby_info_.open_room(name);
 		}
+		chat_log_container_->add_page(data);
 		return &open_windows_.back();
 	}
 	return NULL;
@@ -385,8 +404,17 @@ void tlobby_main::increment_waiting_messages(const std::string& room)
 	}
 }
 
-void tlobby_main::add_whisper_window_whisper(const std::string& /*sender*/, const std::string& /*message*/)
+void tlobby_main::add_whisper_window_whisper(const std::string& sender, const std::string& message)
 {
+	std::stringstream ss;
+	ss << "<" << sender << ">" << message;
+	tlobby_chat_window* t = whisper_window_open(sender, false);
+	if (!t) {
+		ERR_NG << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
+		return;
+	}
+	size_t id = t - &open_windows_[0];
+	append_to_chatbox(ss.str());
 }
 
 void tlobby_main::add_active_window_whisper(const std::string& sender, const std::string& message)
@@ -396,9 +424,18 @@ void tlobby_main::add_active_window_whisper(const std::string& sender, const std
 	append_to_chatbox(ss.str());
 }
 
-void tlobby_main::add_room_window_message(const std::string& /*room*/,
-	const std::string& /*sender*/, const std::string& /*message*/)
+void tlobby_main::add_room_window_message(const std::string& room,
+	const std::string& sender, const std::string& message)
 {
+	std::stringstream ss;
+	ss << "<" << sender << ">" << message;
+	tlobby_chat_window* t = room_window_open(room, false);
+	if (!t) {
+		ERR_NG << "Room window not open in add_room_window_message for " << room << "\n";
+		return;
+	}
+	size_t id = t - &open_windows_[0];
+	append_to_chatbox(ss.str());
 }
 
 void tlobby_main::add_active_window_message(const std::string& sender, const std::string& message)
@@ -428,15 +465,19 @@ void tlobby_main::switch_to_window(tlobby_chat_window* t)
 
 void tlobby_main::active_window_changed()
 {
-	tlabel* header = dynamic_cast<tlabel*>(window_->find_widget("chat_log_header", false));
+	tlabel& header = chat_log_container_->
+		page_grid(active_window_).get_widget<tlabel>("log_header", false);
 	const tlobby_chat_window& t = open_windows_[active_window_];
 	if (t.whisper) {
-		header->set_label("<" + t.name + ">");
-		chat_log_->set_label(lobby_info_.get_whisper_log(t.name).assemble_text());
+		if (header.label() != ("<" + t.name + ">")) {
+			ERR_NG << "Chat log header not what it should be! "
+				<< header.label() << " vs " << ("<" + t.name + ">");
+		}
 	} else {
-		header->set_label(t.name);
-		assert(lobby_info_.get_room(t.name));
-		chat_log_->set_label(lobby_info_.get_room(t.name)->log().assemble_text());
+		if (header.label() != (t.name)) {
+			ERR_NG << "Chat log header not what it should be! "
+				<< header.label() << " vs " << t.name;
+		}
 	}
 	window_->invalidate_layout();
 }
@@ -462,6 +503,7 @@ void tlobby_main::close_window(size_t idx)
 		lobby_info_.close_room(t.name);
 	}
 	open_windows_.erase(open_windows_.begin() + idx);
+	roomlistbox_->remove_row(idx);
 	if (active_changed) active_window_changed();
 }
 
@@ -668,6 +710,11 @@ void tlobby_main::send_message_to_active_window(const std::string& input)
 void tlobby_main::next_window_button_callback(twindow& /*window*/)
 {
 	next_active_window();
+}
+
+void tlobby_main::close_window_button_callback(twindow& /*window*/)
+{
+	close_active_window();
 }
 
 void tlobby_main::create_button_callback(gui2::twindow& window)
