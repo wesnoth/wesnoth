@@ -26,6 +26,8 @@
 #define SKIPLIST_MAX_HEIGHT 15
 #endif
 
+#include <set>
+
 template <typename Compare, typename Key, bool IsPod = boost::is_pod<Compare>::value>
 struct base_compare : public Compare {
 	base_compare(const Compare& o) : Compare(o) { }
@@ -108,7 +110,6 @@ struct node_base {
 	}
 
 	static void link(node_base* a, node_base* b) {
-		assert(b->next_ == b);
 		std::swap(a->next_, b->next_);
 	}
 
@@ -116,12 +117,12 @@ struct node_base {
 		std::swap(a->next_, a->next_->next_);
 	}
 
-	const value_type& get_value(size_t l) const {
-		return *static_cast<const value_type*>(advance(this, value_offset<value_type, node_base>::value - l * sizeof(node_base)));
+	const value_type& get_value(size_t level) const {
+		return *static_cast<const value_type*>(advance(this, value_offset<value_type, node_base>::value - level * sizeof(node_base)));
 	}
 
-	value_type& get_value(size_t l) {
-		return *static_cast<value_type*>(advance(this, value_offset<value_type, node_base>::value - l * sizeof(node_base)));
+	value_type& get_value(size_t level) {
+		return *static_cast<value_type*>(advance(this, value_offset<value_type, node_base>::value - level * sizeof(node_base)));
 	}
 
 	template <typename T>
@@ -481,7 +482,11 @@ private:
 	node* construct_node(size_t h, const value_type& v) {
 		void* mem = allocate_node(h);
 		void* val_ptr = node::advance(mem, value_offset<value_type, node>::value);
-		new (val_ptr) value_type (v);
+		try {
+			new (val_ptr) value_type (v);
+		} catch (...) {
+			free_node(mem, h);
+		}
 		node::construct_pointers(static_cast<node*>(mem), h);
 		return static_cast<node*>(mem);
 	}
@@ -518,7 +523,7 @@ private:
 
 		node* ptrs[SKIPLIST_MAX_HEIGHT];
 		for (size_t i = 0; i < height; i++) {
-			ptrs[i] = head + i;
+			ptrs[i] = head->upper(i);
 		}
 
 		node* head_ptrs[SKIPLIST_MAX_HEIGHT];
@@ -529,12 +534,10 @@ private:
 		node* mem;
 		construct_head(mem, h);
 
+		// non-throwing ops from here on
 		std::swap(head, mem);
-
 		link_node_full(head_ptrs, head, height);
-
 		unlink_node_full(ptrs, height);
-
 		destruct_head(mem, height);
 		height = h;
 
@@ -563,14 +566,13 @@ private:
 		const node* node = head->upper(height - 1), * end = node, * next;
 		for (int curr_level = height - 1; curr_level >= 0; curr_level--) {
 			next = node->next();
-			while (next != end && pred(key_extract(next->get_value(curr_level)), t)) {
-				node = next;
-				next = node->next();
-				assert(node != next);
-			}
 			ptrs[curr_level] = node;
+			while (next != end && pred(key_extract(next->get_value(curr_level)), t)) {
+				ptrs[curr_level] = next;
+				next = ptrs[curr_level]->next();
+			}
 			end = next->lower();
-			node = node->lower();
+			node = ptrs[curr_level]->lower();
 		}
 	}
 
