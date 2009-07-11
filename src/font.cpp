@@ -50,7 +50,7 @@ static lg::log_domain log_font("font");
 #define ERR_FT LOG_STREAM(err, log_font)
 
 #ifdef	HAVE_FRIBIDI
-#include <fribidi/fribidi.h>
+#include <fribidi.h>
 #endif
 
 namespace {
