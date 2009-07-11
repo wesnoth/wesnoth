@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 18:07+0200\n"
+"POT-Creation-Date: 2009-07-11 18:01+0200\n"
 "PO-Revision-Date: 2009-06-15 15:03-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -552,7 +552,7 @@ msgstr "Ógengilegt"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:149
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Tengjast miðlara"
@@ -591,10 +591,12 @@ msgstr "Tengjast"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
+#: data/gui/default/window/campaign_dialog.cfg:294
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
+#: data/gui/default/window/game_load.cfg:342
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -602,11 +604,34 @@ msgstr "Tengjast"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:223
+#: data/gui/default/window/mp_method_selection.cfg:219
 #: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Hætta við"
+
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:34
+#, fuzzy
+msgid "Play a campaign"
+msgstr "Herferð"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:280
+#: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_load.cfg:327
+#: data/gui/default/window/game_load.cfg:328
+#: data/gui/default/window/game_save.cfg:119
+#: data/gui/default/window/game_save.cfg:120
+#: data/gui/default/window/mp_login.cfg:234
+#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
+msgid "OK"
+msgstr "Allt í lagi"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
@@ -622,7 +647,6 @@ msgstr "Næsti teiknari"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "Stillingar"
 
@@ -709,9 +733,11 @@ msgid "Time of day lighting preset"
 msgstr "Tími dags frumstilltur"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/lobby_main.cfg:385
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Næsta"
@@ -747,25 +773,36 @@ msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr "Leyfa fleiru en einu korti að vera opið samtímis"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_save.cfg:119
-#: data/gui/default/window/game_save.cfg:120
-#: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:442
-#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
-#: src/gui/dialogs/message.cpp:195
-msgid "OK"
-msgstr "Allt í lagi"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:192
 msgid "Apply"
 msgstr "Setja"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_load.cfg:32
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
+msgid "Load Game"
+msgstr "Hlaða leik"
+
+#. [label]: id=lblChoose
+#: data/gui/default/window/game_load.cfg:167
+msgid "Choose the game to load"
+msgstr ""
+
+#. [label]: id=name
+#. [label]: id=filename
+#: data/gui/default/window/game_load.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:86
+msgid "Name"
+msgstr "Nafn"
+
+#. [label]: id=date
+#: data/gui/default/window/game_load.cfg:218
+#, fuzzy
+msgid "Date"
+msgstr "Líma"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -854,62 +891,74 @@ msgid "Change language"
 msgstr "Breyta tungumáli"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:27
+#: data/gui/default/window/lobby_main.cfg:304
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Fjölspilun"
 
-#. [button]: id=join
-#: data/gui/default/window/lobby_main.cfg:192
-#, fuzzy
-msgid "Join"
-msgstr "Innskráning"
-
-#. [button]: id=observe
-#: data/gui/default/window/lobby_main.cfg:199
-msgid "Observe"
-msgstr ""
-
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:237
+#: data/gui/default/window/lobby_main.cfg:379
 #, fuzzy
 msgid "Send"
 msgstr "Sandur"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:391
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Loka"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/lobby_main.cfg:402
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
 msgstr "Hætta"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_preferences
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:408
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
+msgid "Preferences"
+msgstr "Stillingar"
+
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:270
+#: data/gui/default/window/lobby_main.cfg:414
 #, fuzzy
 msgid "Refresh"
 msgstr "Glæða skjá"
 
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:420
+#, fuzzy
+msgid "Join"
+msgstr "Innskráning"
+
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:426
+msgid "Observe"
+msgstr ""
+
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/lobby_main.cfg:432
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Búa til leik"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/lobby_main.cfg:438
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Hjálp"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Loka"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1109,10 +1158,12 @@ msgstr "Vista lykilorð í styllingar (hreinn texti)"
 msgid "Password Reminder"
 msgstr "Lykilorðaáminning"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
+#: src/gui/dialogs/game_load.cpp:164
 msgid "Multiplayer"
 msgstr "Fjölspilun"
 
@@ -1134,44 +1185,39 @@ msgstr ""
 "Bardaginn um Wesnoth spjallsíðuna má finna á http://www.wesnoth.org/forum/"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Join Official Server"
 msgstr "Tengjast opinberann miðlara"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Skrá þig inn á opinbera Wesnoth fjölspilunar miðlarann"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:150
 msgid "Join a different server"
 msgstr "Tengjast annan miðlara"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:162
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host Networked Game"
 msgstr "Hýsa netleik"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:160
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Hýsa leik og notast við sérnota miðlara 'wesnothd'"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:173
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Local Game"
 msgstr "Staðarleikur"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spila fjölspilunarleik með tölvu eða mönnum deilandi sömu tölvunni."
-
-#. [label]: id=name
-#: data/gui/default/window/mp_server_list.cfg:86
-msgid "Name"
-msgstr "Nafn"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
@@ -1189,8 +1235,10 @@ msgstr "Velja"
 msgid "Previous"
 msgstr "Fyrri eining"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
+#: src/gui/dialogs/game_load.cpp:166
 msgid "Tutorial"
 msgstr "Sýnikennsla"
 
@@ -1214,13 +1262,6 @@ msgstr "Viðbætur"
 msgid "Editor"
 msgstr "Kortagerð"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
-msgid "Preferences"
-msgstr "Stillingar"
-
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
@@ -1242,7 +1283,7 @@ msgstr "Ný mappa"
 msgid "Deletion of the file failed."
 msgstr "Eyðing skráar mistókst."
 
-#: src/filechooser.cpp:205 src/gui/dialogs/game_save.cpp:118
+#: src/filechooser.cpp:205
 msgid "Name: "
 msgstr "Nafn: "
 
@@ -1258,8 +1299,9 @@ msgstr "Enginn miðlari hefur verið skilgreindur."
 msgid "player"
 msgstr "spilari"
 
-#: src/game_preferences_display.cpp:153 src/hotkeys.cpp:56
-msgid "Toggle Full Screen"
+#: src/game_preferences_display.cpp:153
+#, fuzzy
+msgid "Full Screen"
 msgstr "Setja á Fullan skjá"
 
 #: src/game_preferences_display.cpp:154
@@ -1691,57 +1733,97 @@ msgstr "Texti hefur leturstærðina 0."
 msgid "Text doesn't start on canvas."
 msgstr "Texti passar ekki innan úthlutaðar marka."
 
-#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
+#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:519
 msgid "No resolution defined."
 msgstr "Engin upplausn skilgreind."
 
-#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder.cpp:273
 #: src/gui/auxiliary/window_builder/panel.cpp:35
-#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
-#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
-#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr "Engin grind skilgreind."
 
-#: src/gui/auxiliary/window_builder.cpp:518
+#: src/gui/auxiliary/window_builder.cpp:380
 msgid "A row must have a column."
 msgstr "Röð þarf að hafa dálk."
 
-#: src/gui/auxiliary/window_builder.cpp:519
+#: src/gui/auxiliary/window_builder.cpp:381
 msgid "Number of columns differ."
 msgstr "Fjöldi dálka mismunar."
 
-#: src/gui/auxiliary/window_builder.cpp:618
-#: src/gui/auxiliary/window_builder.cpp:869
+#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Enginn listi skilgreindur."
 
-#: src/gui/auxiliary/window_builder.cpp:621
+#: src/gui/auxiliary/window_builder/listbox.cpp:55
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' ætti að innihalda eina röð."
 
-#: src/gui/auxiliary/window_builder.cpp:639
-#: src/gui/auxiliary/window_builder.cpp:723
+#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' verður að hafa sama fjölda dálka og 'list_definition'."
 
-#: src/gui/auxiliary/window_builder.cpp:700
+#: src/gui/auxiliary/window_builder/multi_page.cpp:37
 #, fuzzy
 msgid "No page defined."
 msgstr "Engin grind skilgreind."
 
-#: src/gui/auxiliary/window_builder.cpp:942
+#: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Talan value_labels og values passa ekki."
+
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#, fuzzy
+msgid "No stack defined."
+msgstr "Enginn listi skilgreindur."
+
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:57
+#, fuzzy
+msgid ""
+"'stack_data' must have the same number of columns as the 'list_definition'."
+msgstr "'list_data' verður að hafa sama fjölda dálka og 'list_definition'."
+
+#: src/gui/dialogs/game_load.cpp:139
+msgid "#(Invalid)"
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:157
+msgid "Campaign: $campaign_name"
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:174
+#, fuzzy
+msgid "replay"
+msgstr "spilari"
+
+#: src/gui/dialogs/game_load.cpp:176
+#, fuzzy
+msgid "Turn"
+msgstr "Ljúka umferð"
+
+#: src/gui/dialogs/game_load.cpp:178
+#, fuzzy
+msgid "Scenario Start"
+msgstr "Markmið atburðarásar"
+
+#: src/gui/dialogs/game_load.cpp:181
+msgid "Difficulty: "
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:183
+#, fuzzy
+msgid "Version: "
+msgstr "Útgáfa"
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Villa"
-
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
-msgid "Load Game"
-msgstr "Hlaða leik"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
@@ -1759,22 +1841,22 @@ msgstr "Viðmósthluturinn '$id' hefur ekki verið skilgreind."
 msgid "No default gui defined."
 msgstr "Ekkert sjálfgefið notendaviðmót skilgreint."
 
-#: src/gui/widgets/settings.cpp:300
+#: src/gui/widgets/settings.cpp:306
 msgid "Window not defined."
 msgstr "Gluggi ekki skilgreindur."
 
-#: src/gui/widgets/settings.cpp:397
+#: src/gui/widgets/settings.cpp:403
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Skilgreining á viðmósthlut '$definition' inniheldur ekki skilgreininguna "
 "fyrir '$id'."
 
-#: src/gui/widgets/settings.cpp:539
+#: src/gui/widgets/settings.cpp:545
 msgid "No state or draw section defined."
 msgstr "Enginn stöðu- eða teiknihluti skilgreindur."
 
-#: src/gui/widgets/window.cpp:682
+#: src/gui/widgets/window.cpp:705
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Gat ekki birt glugga þar sem hann passaði ekki á skjáinn."
 
@@ -1817,6 +1899,10 @@ msgstr "Þysja út"
 #: src/hotkeys.cpp:55
 msgid "Default Zoom"
 msgstr "Sjálfgefið þys"
+
+#: src/hotkeys.cpp:56
+msgid "Toggle Full Screen"
+msgstr "Setja á Fullan skjá"
 
 #: src/hotkeys.cpp:57 src/hotkeys.cpp:899
 msgid "Screenshot"
@@ -2274,7 +2360,7 @@ msgstr "Uppland"
 msgid "Island"
 msgstr "Eyja"
 
-#: src/marked-up_text.cpp:397
+#: src/marked-up_text.cpp:401
 msgid "The maximum text width is less than 1."
 msgstr "Mesta breidd texta er minni en 1."
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 13:17+0200\n"
+"POT-Creation-Date: 2009-07-11 18:02+0200\n"
 "PO-Revision-Date: 2007-08-18 02:03+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -280,38 +280,18 @@ msgstr "Змей за близък бой"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
-#, fuzzy
 msgid ""
-"A Drake Clasher is incapable of either flight and fire-breathing, and most "
-"assume their relegation to melee combat is because of disability - an "
-"attempt to garner use from what otherwise would be a liability. It is "
-"possible that they have some mild deficiency in those skills, but those who "
-"support this theory have failed to consider how uniquely well-suited they "
-"are to combat a fellow drake.\n"
+"The Clashers are members of a unique caste among the Drakes. Their thick "
+"armor, while compensating for the Drakes' natural weakness against spears "
+"and arrows, is so heavy and restricting that they are not able to fly or "
+"muster enough breath to use their inner fire. They have embraced this "
+"handicap, completely encasing their wings to emphasize that they do not need "
+"flight to triumph in battle.\n"
 "\n"
-"They are, in fact, the Judicators of the Drake Hierarchy, and though their "
-"armament is now largely ceremonial, it is none the less effective. In their "
-"encounters with lesser races, they discovered that their natural size and "
-"strength were themselves powerful weapons, and when combined with the "
-"armament worn by this caste, the resulting warriors lack some of the typical "
-"weaknesses of their kind, such as the strong vulnerability to spears and "
-"arrows."
+"This is also the only caste that is allowed to break taboo and fight with "
+"spears in addition to the drake's traditional metal claws, which makes them "
+"particularly good at "
 msgstr ""
-"Змеят за близък бой не може нито да лети нито да бълва огън, и се смята, че "
-"именно заради своите ограничени способности е принизен до участник в близкия "
-"бой - опит да се извлече полза от нещо, което иначе би било напълно "
-"безполезно. Макар да е вярно, че не им достигат умения, поддръжниците на "
-"горната теория са пропуснали за отбележат уникалната способност на тези "
-"змейове да се бият със себеподобните си.\n"
-"\n"
-"В змейската йерархия, змейовете за близък бой се явяват съдници и, макар в "
-"наше време въоръжението им да е по-скоро церемониално, то е също тъй "
-"ефективно. При сблъсъците им с по-низши раси те са установили, че присъщите "
-"им ръст и сила сами по себе си са мощни оръжия, а като се комбинират с "
-"типичното въоръжение на тази каста се получават бойци, които са преодолели "
-"много от слабостите на своя вид - например уязвимостта от копия и стрели.\n"
-"\n"
-"Бележки:"
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:133
@@ -333,7 +313,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:84
 #: data/core/units/drakes/Gladiator.cfg:75
 #: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/goblins/Rouser.cfg:37
@@ -365,12 +345,6 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:75
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "боздуган"
 
@@ -1076,9 +1050,7 @@ msgstr ""
 #: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
-#: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
@@ -1375,6 +1347,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
 msgstr "дълъг лък"
 
@@ -2312,6 +2285,17 @@ msgstr ""
 "бронята и с грижите, които трябва да полагат за нея, но има ситуации, в "
 "които тези неудобства се оказват оправдани."
 
+#. [attack]: type=impact
+#: data/core/units/humans/Mage_of_Light.cfg:111
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+msgid "morning star"
+msgstr "боздуган с топка"
+
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
@@ -2406,6 +2390,12 @@ msgstr ""
 "мерник, а това е талант, който липсва на начинаещите стрелци. Стрелците с "
 "дълъг лък носят оръжието си с гордост и повечето редови стрелци очакват с "
 "нетърпение деня, когато ще могат да си служат с дълъг лък."
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
+#, fuzzy
+msgid "Longbow"
+msgstr "дълъг лък"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2564,10 +2554,10 @@ msgstr ""
 "от битката."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Mage_of_Light.cfg:111
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-msgid "morning star"
-msgstr "боздуган с топка"
+#, fuzzy
+msgid "flail"
+msgstr "опашка"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2963,7 +2953,7 @@ msgid "Outlaw"
 msgstr "Разбойник"
 
 #. [unit_type]: id=Outlaw, race=human
-#: data/core/units/humans/Outlaw.cfg:18
+#: data/core/units/humans/Outlaw.cfg:19
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2981,15 +2971,15 @@ msgstr ""
 "предпочитат да изчакат прикритието на нощта."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:34
-#: data/core/units/humans/Outlaw.cfg:31
-#: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
+#: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "прашка"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:102
+#: data/core/units/humans/Outlaw.cfg:115
 msgid "female^Outlaw"
 msgstr "Разбойничка"
 
@@ -3054,7 +3044,7 @@ msgid "Footpad"
 msgstr "Обирджия"
 
 #. [unit_type]: id=Footpad, race=human
-#: data/core/units/humans/Outlaw_Footpad.cfg:20
+#: data/core/units/humans/Outlaw_Footpad.cfg:21
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -3071,7 +3061,7 @@ msgstr ""
 "на нощта."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:25
+#: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
@@ -3079,7 +3069,7 @@ msgid "club"
 msgstr "тояга"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:163
+#: data/core/units/humans/Outlaw_Footpad.cfg:176
 msgid "female^Footpad"
 msgstr "Обирджийка"
 
@@ -3089,7 +3079,7 @@ msgid "Fugitive"
 msgstr "Беглец"
 
 #. [unit_type]: id=Fugitive, race=human
-#: data/core/units/humans/Outlaw_Fugitive.cfg:20
+#: data/core/units/humans/Outlaw_Fugitive.cfg:21
 #, fuzzy
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -3104,7 +3094,7 @@ msgstr ""
 "следят за спазване на законите."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:109
+#: data/core/units/humans/Outlaw_Fugitive.cfg:122
 msgid "female^Fugitive"
 msgstr "Бегълка"
 
@@ -3116,11 +3106,12 @@ msgstr "Пътен обирджия"
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
-"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
-"deserted road late at night."
+"Highwaymen have gained an infamous reputation for underhanded deeds of "
+"violence. Ready to hire themselves out to whoever will pay the most, they "
+"lead bands of lesser rogues against their employer's enemies, often "
+"attacking on lonely roads or in the dead of night. Their experience with "
+"such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
-"Въоръжени с тежки боздугани, пътните обирджии са последните хора, които "
-"бихте искали да срещнете на пустеещ път късно нощем."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -3826,7 +3817,7 @@ msgid "fist"
 msgstr "юмрук"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:47
+#: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "буца кал"
@@ -3864,7 +3855,7 @@ msgid "Mudcrawler"
 msgstr "Кален демон"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:20
+#: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -5417,6 +5408,47 @@ msgstr ""
 "бързо.\n"
 "\n"
 "Бележки:"
+
+#, fuzzy
+#~ msgid ""
+#~ "A Drake Clasher is incapable of either flight and fire-breathing, and "
+#~ "most assume their relegation to melee combat is because of disability - "
+#~ "an attempt to garner use from what otherwise would be a liability. It is "
+#~ "possible that they have some mild deficiency in those skills, but those "
+#~ "who support this theory have failed to consider how uniquely well-suited "
+#~ "they are to combat a fellow drake.\n"
+#~ "\n"
+#~ "They are, in fact, the Judicators of the Drake Hierarchy, and though "
+#~ "their armament is now largely ceremonial, it is none the less effective. "
+#~ "In their encounters with lesser races, they discovered that their natural "
+#~ "size and strength were themselves powerful weapons, and when combined "
+#~ "with the armament worn by this caste, the resulting warriors lack some of "
+#~ "the typical weaknesses of their kind, such as the strong vulnerability to "
+#~ "spears and arrows."
+#~ msgstr ""
+#~ "Змеят за близък бой не може нито да лети нито да бълва огън, и се смята, "
+#~ "че именно заради своите ограничени способности е принизен до участник в "
+#~ "близкия бой - опит да се извлече полза от нещо, което иначе би било "
+#~ "напълно безполезно. Макар да е вярно, че не им достигат умения, "
+#~ "поддръжниците на горната теория са пропуснали за отбележат уникалната "
+#~ "способност на тези змейове да се бият със себеподобните си.\n"
+#~ "\n"
+#~ "В змейската йерархия, змейовете за близък бой се явяват съдници и, макар "
+#~ "в наше време въоръжението им да е по-скоро церемониално, то е също тъй "
+#~ "ефективно. При сблъсъците им с по-низши раси те са установили, че "
+#~ "присъщите им ръст и сила сами по себе си са мощни оръжия, а като се "
+#~ "комбинират с типичното въоръжение на тази каста се получават бойци, които "
+#~ "са преодолели много от слабостите на своя вид - например уязвимостта от "
+#~ "копия и стрели.\n"
+#~ "\n"
+#~ "Бележки:"
+
+#~ msgid ""
+#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
+#~ "a deserted road late at night."
+#~ msgstr ""
+#~ "Въоръжени с тежки боздугани, пътните обирджии са последните хора, които "
+#~ "бихте искали да срещнете на пустеещ път късно нощем."
 
 #, fuzzy
 #~ msgid ""

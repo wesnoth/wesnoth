@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 18:07+0200\n"
+"POT-Creation-Date: 2009-07-11 18:01+0200\n"
 "PO-Revision-Date: 2009-06-30 11:01+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -534,7 +534,7 @@ msgstr "rascep"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:149
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Poveži se na server"
@@ -573,10 +573,12 @@ msgstr "Poveži se"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
+#: data/gui/default/window/campaign_dialog.cfg:294
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
+#: data/gui/default/window/game_load.cfg:342
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -584,11 +586,34 @@ msgstr "Poveži se"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:223
+#: data/gui/default/window/mp_method_selection.cfg:219
 #: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Odustani"
+
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:34
+#, fuzzy
+msgid "Play a campaign"
+msgstr "Pohod"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:280
+#: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/game_load.cfg:327
+#: data/gui/default/window/game_load.cfg:328
+#: data/gui/default/window/game_save.cfg:119
+#: data/gui/default/window/game_save.cfg:120
+#: data/gui/default/window/mp_login.cfg:234
+#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
+#: src/gui/dialogs/message.cpp:195
+msgid "OK"
+msgstr "U redu"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
@@ -604,7 +629,6 @@ msgstr "Sledeći generator"
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#: data/gui/default/window/lobby_main.cfg:261
 msgid "Settings"
 msgstr "Postavke"
 
@@ -691,9 +715,11 @@ msgid "Time of day lighting preset"
 msgstr "Predefinisan osvetljaj za doba dana"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
+#: data/gui/default/window/lobby_main.cfg:385
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Sledeće"
@@ -729,25 +755,36 @@ msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr "Dozvoli više od jedne otvorene mape istovremeno (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_save.cfg:119
-#: data/gui/default/window/game_save.cfg:120
-#: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:442
-#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
-#: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
-#: src/gui/dialogs/message.cpp:195
-msgid "OK"
-msgstr "U redu"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:192
 msgid "Apply"
 msgstr "Primeni"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_load.cfg:32
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
+msgid "Load Game"
+msgstr "Učitaj igru"
+
+#. [label]: id=lblChoose
+#: data/gui/default/window/game_load.cfg:167
+msgid "Choose the game to load"
+msgstr ""
+
+#. [label]: id=name
+#. [label]: id=filename
+#: data/gui/default/window/game_load.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:86
+msgid "Name"
+msgstr "Ime"
+
+#. [label]: id=date
+#: data/gui/default/window/game_load.cfg:218
+#, fuzzy
+msgid "Date"
+msgstr "Nalepi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -835,58 +872,70 @@ msgid "Change language"
 msgstr "Promeni jezik"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:27
+#: data/gui/default/window/lobby_main.cfg:304
 msgid "Multiplayer Lobby"
 msgstr "Višeigrački hol"
 
-#. [button]: id=join
-#: data/gui/default/window/lobby_main.cfg:192
-msgid "Join"
-msgstr "Pridruži se"
-
-#. [button]: id=observe
-#: data/gui/default/window/lobby_main.cfg:199
-msgid "Observe"
-msgstr "Posmatraj"
-
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:237
+#: data/gui/default/window/lobby_main.cfg:379
 msgid "Send"
 msgstr "Pošalji"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:391
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Zatvori"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:252
+#: data/gui/default/window/lobby_main.cfg:402
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
 msgstr "Napusti"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_preferences
+#. [grid]
+#: data/gui/default/window/lobby_main.cfg:408
+#: data/gui/default/window/title_screen.cfg:189
+#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
+msgid "Preferences"
+msgstr "Postavke"
+
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:270
+#: data/gui/default/window/lobby_main.cfg:414
 msgid "Refresh"
 msgstr "Osveži"
 
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:420
+msgid "Join"
+msgstr "Pridruži se"
+
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:426
+msgid "Observe"
+msgstr "Posmatraj"
+
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:279
+#: data/gui/default/window/lobby_main.cfg:432
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Napravi igru"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:288
+#: data/gui/default/window/lobby_main.cfg:438
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Pomoć"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Zatvori"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1085,10 +1134,12 @@ msgstr "Sačuvaj lozinku među postavkama (čist tekst)"
 msgid "Password Reminder"
 msgstr "Podsetnik lozinke"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
+#: src/gui/dialogs/game_load.cpp:164
 msgid "Multiplayer"
 msgstr "Višeigranje"
 
@@ -1109,44 +1160,39 @@ msgstr ""
 "Forum „Boja za Vesnot“ možete naći na http://www.wesnoth.org/forum/"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Join Official Server"
 msgstr "Na zvanični server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prijavite se na Vesnotov zvanični višeigrački server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:150
 msgid "Join a different server"
 msgstr "Na drugi server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:162
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host Networked Game"
 msgstr "Domaćin mrežnoj igri"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:160
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Budite domaćin igre s namenskim serverom (wesnothd)"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:173
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Local Game"
 msgstr "Lokalna igra"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Pokrenite višeigranje sa VI ili ljudima za istim računarom"
-
-#. [label]: id=name
-#: data/gui/default/window/mp_server_list.cfg:86
-msgid "Name"
-msgstr "Ime"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
@@ -1163,8 +1209,10 @@ msgstr "Izaberi"
 msgid "Previous"
 msgstr "Prethodno"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
+#: src/gui/dialogs/game_load.cpp:166
 msgid "Tutorial"
 msgstr "Podučavanje"
 
@@ -1188,13 +1236,6 @@ msgstr "Dodaci"
 msgid "Editor"
 msgstr "Uređivač"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:189
-#: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
-msgid "Preferences"
-msgstr "Postavke"
-
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
@@ -1216,7 +1257,7 @@ msgstr "Nova fascikla"
 msgid "Deletion of the file failed."
 msgstr "Brisanje datoteke nije uspelo."
 
-#: src/filechooser.cpp:205 src/gui/dialogs/game_save.cpp:118
+#: src/filechooser.cpp:205
 msgid "Name: "
 msgstr "Ime: "
 
@@ -1232,8 +1273,9 @@ msgstr "Server nije zadat."
 msgid "player"
 msgstr "igrač"
 
-#: src/game_preferences_display.cpp:153 src/hotkeys.cpp:56
-msgid "Toggle Full Screen"
+#: src/game_preferences_display.cpp:153
+#, fuzzy
+msgid "Full Screen"
 msgstr "Preko celog ekrana"
 
 #: src/game_preferences_display.cpp:154
@@ -1676,56 +1718,96 @@ msgstr "Veličina fonta za tekst je 0."
 msgid "Text doesn't start on canvas."
 msgstr "Tekst ne staje na platno."
 
-#: src/gui/auxiliary/window_builder.cpp:308 src/gui/widgets/settings.cpp:513
+#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:519
 msgid "No resolution defined."
 msgstr "Rezolucija nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:411
+#: src/gui/auxiliary/window_builder.cpp:273
 #: src/gui/auxiliary/window_builder/panel.cpp:35
-#: src/gui/auxiliary/window_builder/toggle_panel.cpp:41
-#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:864
-#: src/gui/widgets/settings.cpp:953 src/gui/widgets/settings.cpp:995
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr "Mreža nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:518
+#: src/gui/auxiliary/window_builder.cpp:380
 msgid "A row must have a column."
 msgstr "Vrsta mora imati kolonu."
 
-#: src/gui/auxiliary/window_builder.cpp:519
+#: src/gui/auxiliary/window_builder.cpp:381
 msgid "Number of columns differ."
 msgstr "Broj kolona se razlikuje."
 
-#: src/gui/auxiliary/window_builder.cpp:618
-#: src/gui/auxiliary/window_builder.cpp:869
+#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Spisak nije zadat."
 
-#: src/gui/auxiliary/window_builder.cpp:621
+#: src/gui/auxiliary/window_builder/listbox.cpp:55
 msgid "A 'list_definition' should contain one row."
 msgstr "Polje list_definition mora sadržati jednu vrstu."
 
-#: src/gui/auxiliary/window_builder.cpp:639
-#: src/gui/auxiliary/window_builder.cpp:723
+#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "Polje list_data mora imati isti broj kolona kao list_definition."
 
-#: src/gui/auxiliary/window_builder.cpp:700
+#: src/gui/auxiliary/window_builder/multi_page.cpp:37
 msgid "No page defined."
 msgstr "Stranica nije definisana."
 
-#: src/gui/auxiliary/window_builder.cpp:942
+#: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Broj value_labels i vrednosti se ne slaže."
+
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#, fuzzy
+msgid "No stack defined."
+msgstr "Spisak nije zadat."
+
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:57
+#, fuzzy
+msgid ""
+"'stack_data' must have the same number of columns as the 'list_definition'."
+msgstr "Polje list_data mora imati isti broj kolona kao list_definition."
+
+#: src/gui/dialogs/game_load.cpp:139
+msgid "#(Invalid)"
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:157
+msgid "Campaign: $campaign_name"
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:174
+#, fuzzy
+msgid "replay"
+msgstr "igrač"
+
+#: src/gui/dialogs/game_load.cpp:176
+#, fuzzy
+msgid "Turn"
+msgstr "Gotovo"
+
+#: src/gui/dialogs/game_load.cpp:178
+#, fuzzy
+msgid "Scenario Start"
+msgstr "Ciljevi scenarija"
+
+#: src/gui/dialogs/game_load.cpp:181
+msgid "Difficulty: "
+msgstr ""
+
+#: src/gui/dialogs/game_load.cpp:183
+#, fuzzy
+msgid "Version: "
+msgstr "verzija"
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Greška"
-
-#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
-msgid "Load Game"
-msgstr "Učitaj igru"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
@@ -1743,20 +1825,20 @@ msgstr "Obavezni vidžet „$id“ nije definisan."
 msgid "No default gui defined."
 msgstr "Podrazumevano sučelje nije definisano."
 
-#: src/gui/widgets/settings.cpp:300
+#: src/gui/widgets/settings.cpp:306
 msgid "Window not defined."
 msgstr "Prozor nije definisan."
 
-#: src/gui/widgets/settings.cpp:397
+#: src/gui/widgets/settings.cpp:403
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definicija vidžeta „$definition“ ne sadrži definiciju za „$id“."
 
-#: src/gui/widgets/settings.cpp:539
+#: src/gui/widgets/settings.cpp:545
 msgid "No state or draw section defined."
 msgstr "Odeljak stanja ili crtanja nije definisan."
 
-#: src/gui/widgets/window.cpp:682
+#: src/gui/widgets/window.cpp:705
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ne mogu da prikažem dijalog koji ne staje na ekran."
 
@@ -1799,6 +1881,10 @@ msgstr "Umanji"
 #: src/hotkeys.cpp:55
 msgid "Default Zoom"
 msgstr "Osnovno uvećanje"
+
+#: src/hotkeys.cpp:56
+msgid "Toggle Full Screen"
+msgstr "Preko celog ekrana"
 
 # >! contexts
 # >> Take screenshot
@@ -2258,7 +2344,7 @@ msgstr "kopneni"
 msgid "Island"
 msgstr "ostrvski"
 
-#: src/marked-up_text.cpp:397
+#: src/marked-up_text.cpp:401
 msgid "The maximum text width is less than 1."
 msgstr "Najveća širina teksta je ispod 1."
 

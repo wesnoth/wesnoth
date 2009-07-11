@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 13:17+0200\n"
+"POT-Creation-Date: 2009-07-11 18:02+0200\n"
 "PO-Revision-Date: 2009-04-12 00:11+0200\n"
 "Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -277,35 +277,17 @@ msgstr "Cogneur dracan"
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 msgid ""
-"A Drake Clasher is incapable of either flight and fire-breathing, and most "
-"assume their relegation to melee combat is because of disability - an "
-"attempt to garner use from what otherwise would be a liability. It is "
-"possible that they have some mild deficiency in those skills, but those who "
-"support this theory have failed to consider how uniquely well-suited they "
-"are to combat a fellow drake.\n"
+"The Clashers are members of a unique caste among the Drakes. Their thick "
+"armor, while compensating for the Drakes' natural weakness against spears "
+"and arrows, is so heavy and restricting that they are not able to fly or "
+"muster enough breath to use their inner fire. They have embraced this "
+"handicap, completely encasing their wings to emphasize that they do not need "
+"flight to triumph in battle.\n"
 "\n"
-"They are, in fact, the Judicators of the Drake Hierarchy, and though their "
-"armament is now largely ceremonial, it is none the less effective. In their "
-"encounters with lesser races, they discovered that their natural size and "
-"strength were themselves powerful weapons, and when combined with the "
-"armament worn by this caste, the resulting warriors lack some of the typical "
-"weaknesses of their kind, such as the strong vulnerability to spears and "
-"arrows."
+"This is also the only caste that is allowed to break taboo and fight with "
+"spears in addition to the drake's traditional metal claws, which makes them "
+"particularly good at "
 msgstr ""
-"Un cogneur dracan ne peut ni voler ni cracher de feu ; beaucoup supposent "
-"que ces handicaps les ont poussés à se spécialiser au combat au corps à "
-"corps pour tenter d'éviter une mise au ban. Les cogneurs dracans présentent "
-"probablement quelques petites déficiences, mais ceux qui y croient ne "
-"réalisent pas à quel point ces unités sont efficaces pour combattre leurs "
-"semblables.\n"
-"\n"
-"Ils forment en fait la caste des juges dans la société des dracans. Leur "
-"armement, qui sert surtout pendant le cérémonial, reste néanmoins très "
-"efficaces. Leurs confrontations avec d'autres races ont prouvé que leur "
-"taille et leur force étaient des armes à part entière. Celles-ci associées à "
-"leur équipement leur permettent de compenser les faiblesses caractéristiques "
-"de leur race et les rendent, par exemple, moins vulnérables aux lances et "
-"aux flèches."
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:133
@@ -327,7 +309,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:84
 #: data/core/units/drakes/Gladiator.cfg:75
 #: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/goblins/Rouser.cfg:37
@@ -359,12 +341,6 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:75
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "masse"
 
@@ -1025,9 +1001,7 @@ msgstr ""
 #: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
-#: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
@@ -1317,6 +1291,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
 msgstr "arc long"
 
@@ -2224,6 +2199,17 @@ msgstr ""
 "qui doit y être portée, mais dans certaines situations ces troupes valent "
 "bien leur coût."
 
+#. [attack]: type=impact
+#: data/core/units/humans/Mage_of_Light.cfg:111
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+msgid "morning star"
+msgstr "étoile du matin"
+
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
@@ -2313,6 +2299,12 @@ msgstr ""
 "défaut. Les grands archers portent fièrement leur armement et la plupart des "
 "archers attendent avec impatience le jour où ils pourront utiliser cet "
 "instrument."
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
+#, fuzzy
+msgid "Longbow"
+msgstr "arc long"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2468,10 +2460,10 @@ msgstr ""
 "prend de rentrer et de sortir d'un combat."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Mage_of_Light.cfg:111
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-msgid "morning star"
-msgstr "étoile du matin"
+#, fuzzy
+msgid "flail"
+msgstr "queue"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2850,7 +2842,7 @@ msgid "Outlaw"
 msgstr "Hors-la-loi"
 
 #. [unit_type]: id=Outlaw, race=human
-#: data/core/units/humans/Outlaw.cfg:18
+#: data/core/units/humans/Outlaw.cfg:19
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2869,15 +2861,15 @@ msgstr ""
 "combattre le jour et préfèrent la protection de la nuit."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:34
-#: data/core/units/humans/Outlaw.cfg:31
-#: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
+#: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "fronde"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:102
+#: data/core/units/humans/Outlaw.cfg:115
 msgid "female^Outlaw"
 msgstr "Hors-la-loi"
 
@@ -2940,7 +2932,7 @@ msgid "Footpad"
 msgstr "Petite frappe"
 
 #. [unit_type]: id=Footpad, race=human
-#: data/core/units/humans/Outlaw_Footpad.cfg:20
+#: data/core/units/humans/Outlaw_Footpad.cfg:21
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2957,7 +2949,7 @@ msgstr ""
 "ennemis, particulièrement sous la protection de l'obscurité."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:25
+#: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
@@ -2965,7 +2957,7 @@ msgid "club"
 msgstr "gourdin"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:163
+#: data/core/units/humans/Outlaw_Footpad.cfg:176
 msgid "female^Footpad"
 msgstr "Petite frappe"
 
@@ -2975,7 +2967,7 @@ msgid "Fugitive"
 msgstr "Fugitif"
 
 #. [unit_type]: id=Fugitive, race=human
-#: data/core/units/humans/Outlaw_Fugitive.cfg:20
+#: data/core/units/humans/Outlaw_Fugitive.cfg:21
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
 "to elude capture. They can be dangerous and rightly fearful in their "
@@ -2988,7 +2980,7 @@ msgstr ""
 "maintien de l'ordre."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:109
+#: data/core/units/humans/Outlaw_Fugitive.cfg:122
 msgid "female^Fugitive"
 msgstr "Fugitive"
 
@@ -3000,11 +2992,12 @@ msgstr "Bandit de grand chemin"
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
-"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
-"deserted road late at night."
+"Highwaymen have gained an infamous reputation for underhanded deeds of "
+"violence. Ready to hire themselves out to whoever will pay the most, they "
+"lead bands of lesser rogues against their employer's enemies, often "
+"attacking on lonely roads or in the dead of night. Their experience with "
+"such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
-"Armés d'une lourde masse, les bandits de grand chemin sont les dernières "
-"personnes à rencontrer tard la nuit, sur une route déserte."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -3698,7 +3691,7 @@ msgid "fist"
 msgstr "poing"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:47
+#: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "boule de boue"
@@ -3733,7 +3726,7 @@ msgid "Mudcrawler"
 msgstr "Golem de boue"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:20
+#: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -5203,6 +5196,44 @@ msgstr ""
 "\n"
 "Les woses sont complètement pacifiques, mais possèdent une grande force. Ils "
 "ne sont, malgré tout, ni rapides, ni prompts à se déplacer."
+
+#~ msgid ""
+#~ "A Drake Clasher is incapable of either flight and fire-breathing, and "
+#~ "most assume their relegation to melee combat is because of disability - "
+#~ "an attempt to garner use from what otherwise would be a liability. It is "
+#~ "possible that they have some mild deficiency in those skills, but those "
+#~ "who support this theory have failed to consider how uniquely well-suited "
+#~ "they are to combat a fellow drake.\n"
+#~ "\n"
+#~ "They are, in fact, the Judicators of the Drake Hierarchy, and though "
+#~ "their armament is now largely ceremonial, it is none the less effective. "
+#~ "In their encounters with lesser races, they discovered that their natural "
+#~ "size and strength were themselves powerful weapons, and when combined "
+#~ "with the armament worn by this caste, the resulting warriors lack some of "
+#~ "the typical weaknesses of their kind, such as the strong vulnerability to "
+#~ "spears and arrows."
+#~ msgstr ""
+#~ "Un cogneur dracan ne peut ni voler ni cracher de feu ; beaucoup supposent "
+#~ "que ces handicaps les ont poussés à se spécialiser au combat au corps à "
+#~ "corps pour tenter d'éviter une mise au ban. Les cogneurs dracans "
+#~ "présentent probablement quelques petites déficiences, mais ceux qui y "
+#~ "croient ne réalisent pas à quel point ces unités sont efficaces pour "
+#~ "combattre leurs semblables.\n"
+#~ "\n"
+#~ "Ils forment en fait la caste des juges dans la société des dracans. Leur "
+#~ "armement, qui sert surtout pendant le cérémonial, reste néanmoins très "
+#~ "efficaces. Leurs confrontations avec d'autres races ont prouvé que leur "
+#~ "taille et leur force étaient des armes à part entière. Celles-ci "
+#~ "associées à leur équipement leur permettent de compenser les faiblesses "
+#~ "caractéristiques de leur race et les rendent, par exemple, moins "
+#~ "vulnérables aux lances et aux flèches."
+
+#~ msgid ""
+#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
+#~ "a deserted road late at night."
+#~ msgstr ""
+#~ "Armés d'une lourde masse, les bandits de grand chemin sont les dernières "
+#~ "personnes à rencontrer tard la nuit, sur une route déserte."
 
 #~ msgid ""
 #~ "Dread Bats are fast and can drain the blood of those they attack, thereby "

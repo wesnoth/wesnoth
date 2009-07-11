@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-28 13:17+0200\n"
+"POT-Creation-Date: 2009-07-11 18:02+0200\n"
 "PO-Revision-Date: 2009-05-02 09:57+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <steven2880@gmail.com>\n"
@@ -265,28 +265,17 @@ msgstr "龍族巨劍兵"
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 msgid ""
-"A Drake Clasher is incapable of either flight and fire-breathing, and most "
-"assume their relegation to melee combat is because of disability - an "
-"attempt to garner use from what otherwise would be a liability. It is "
-"possible that they have some mild deficiency in those skills, but those who "
-"support this theory have failed to consider how uniquely well-suited they "
-"are to combat a fellow drake.\n"
+"The Clashers are members of a unique caste among the Drakes. Their thick "
+"armor, while compensating for the Drakes' natural weakness against spears "
+"and arrows, is so heavy and restricting that they are not able to fly or "
+"muster enough breath to use their inner fire. They have embraced this "
+"handicap, completely encasing their wings to emphasize that they do not need "
+"flight to triumph in battle.\n"
 "\n"
-"They are, in fact, the Judicators of the Drake Hierarchy, and though their "
-"armament is now largely ceremonial, it is none the less effective. In their "
-"encounters with lesser races, they discovered that their natural size and "
-"strength were themselves powerful weapons, and when combined with the "
-"armament worn by this caste, the resulting warriors lack some of the typical "
-"weaknesses of their kind, such as the strong vulnerability to spears and "
-"arrows."
+"This is also the only caste that is allowed to break taboo and fight with "
+"spears in addition to the drake's traditional metal claws, which makes them "
+"particularly good at "
 msgstr ""
-"衝鋒龍戰士不擅長飛行也不會火焰噴射，大多人認為他們使用近戰是由于他們的殘疾——"
-"只是盡量的變廢為寶而已。他們可能是稍微缺乏某些技能，但持這種理論的人往往忽視"
-"了他們在同族內戰中的作用。\n"
-"\n"
-"他們實際上是龍族社會階層中的執法者。他們的武器基本上只是做儀式用的，但不管怎"
-"么說還是有點用處。在與弱小種族的遭遇中，他們發現自己天生的大個頭和力量就是強"
-"有力的武器，同時他們身上的盔甲，使他們避免了其他族人害怕矛和箭的弱點。"
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:133
@@ -308,7 +297,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:84
 #: data/core/units/drakes/Gladiator.cfg:75
 #: data/core/units/drakes/Clasher.cfg:86
-#: data/core/units/humans/Horseman.cfg:24
+#: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/goblins/Rouser.cfg:37
@@ -339,12 +328,6 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:75
 #: data/core/units/drakes/Gladiator.cfg:84
 #: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "釘鎚"
 
@@ -949,9 +932,7 @@ msgstr ""
 #: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
-#: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Woodsman.cfg:50
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
@@ -1220,6 +1201,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
 msgstr "長弓"
 
@@ -2023,6 +2005,17 @@ msgstr ""
 "一兩個中加步兵就能大大加強戰線的強度。他們的缺點也十分明顯，因為裝甲太重，卸"
 "下后也需要精心護理，但在特定情況下，這些部隊還是值得征召的。"
 
+#. [attack]: type=impact
+#: data/core/units/humans/Mage_of_Light.cfg:111
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
+msgid "morning star"
+msgstr "流星鎚"
+
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
@@ -2098,6 +2091,12 @@ msgstr ""
 "新弓箭手受體能的限制，根本無法使用長弓。長弓要用很大的力氣才能拉動，而且如果"
 "瞄不准的話，增加的射程和威力也是白費。新手通常都不具備這種准心。長弓手把他們"
 "的武器看成是讓人自豪的勛章，大多數弓箭手也都渴望有朝一日能使用長弓。"
+
+#. [attack]: type=pierce
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
+#, fuzzy
+msgid "Longbow"
+msgstr "長弓"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2233,10 +2232,10 @@ msgstr ""
 "着的是怪物而不是人。穿着重甲的缺點是需要較長時間才能參與或退出戰斗。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Mage_of_Light.cfg:111
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-msgid "morning star"
-msgstr "流星鎚"
+#, fuzzy
+msgid "flail"
+msgstr "尾擊"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2571,7 +2570,7 @@ msgid "Outlaw"
 msgstr "匪徒"
 
 #. [unit_type]: id=Outlaw, race=human
-#: data/core/units/humans/Outlaw.cfg:18
+#: data/core/units/humans/Outlaw.cfg:19
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2587,15 +2586,15 @@ msgstr ""
 "戰，而是喜歡在夜幕掩護之下行動。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:34
-#: data/core/units/humans/Outlaw.cfg:31
-#: data/core/units/humans/Outlaw_Fugitive.cfg:37
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
+#: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "投石索"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:102
+#: data/core/units/humans/Outlaw.cfg:115
 msgid "female^Outlaw"
 msgstr "匪徒"
 
@@ -2653,7 +2652,7 @@ msgid "Footpad"
 msgstr "混混"
 
 #. [unit_type]: id=Footpad, race=human
-#: data/core/units/humans/Outlaw_Footpad.cfg:20
+#: data/core/units/humans/Outlaw_Footpad.cfg:21
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2667,7 +2666,7 @@ msgstr ""
 "騷擾敵人，特別是在夜幕的掩護之下。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:25
+#: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
@@ -2675,7 +2674,7 @@ msgid "club"
 msgstr "棍棒"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:163
+#: data/core/units/humans/Outlaw_Footpad.cfg:176
 msgid "female^Footpad"
 msgstr "混混"
 
@@ -2685,7 +2684,7 @@ msgid "Fugitive"
 msgstr "亡命之徒 "
 
 #. [unit_type]: id=Fugitive, race=human
-#: data/core/units/humans/Outlaw_Fugitive.cfg:20
+#: data/core/units/humans/Outlaw_Fugitive.cfg:21
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
 "to elude capture. They can be dangerous and rightly fearful in their "
@@ -2696,7 +2695,7 @@ msgstr ""
 "和恐懼是某種樂趣，但是這顯然無法平衡以多欺少的執法軍人帶來的危險。"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:109
+#: data/core/units/humans/Outlaw_Fugitive.cfg:122
 msgid "female^Fugitive"
 msgstr "亡命之徒 "
 
@@ -2708,9 +2707,12 @@ msgstr "劫掠者"
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
-"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
-"deserted road late at night."
-msgstr "揮舞着沉重戰錘的攔路強盜肯定是你在荒郊野外最不想見到的人。"
+"Highwaymen have gained an infamous reputation for underhanded deeds of "
+"violence. Ready to hire themselves out to whoever will pay the most, they "
+"lead bands of lesser rogues against their employer's enemies, often "
+"attacking on lonely roads or in the dead of night. Their experience with "
+"such encounters makes them deadly foes in hand to hand combat."
+msgstr ""
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -3339,7 +3341,7 @@ msgid "fist"
 msgstr "拳擊"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:47
+#: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "拋擲泥塊"
@@ -3372,7 +3374,7 @@ msgid "Mudcrawler"
 msgstr "泥遁魔"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:20
+#: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -4692,6 +4694,35 @@ msgstr ""
 "然界的保護者，樹人的動機和行動方式現在仍亦未可知。\n"
 "\n"
 "他們完全不好戰，但擁有強大的力量。然而他們不善于迅速的移動。"
+
+#~ msgid ""
+#~ "A Drake Clasher is incapable of either flight and fire-breathing, and "
+#~ "most assume their relegation to melee combat is because of disability - "
+#~ "an attempt to garner use from what otherwise would be a liability. It is "
+#~ "possible that they have some mild deficiency in those skills, but those "
+#~ "who support this theory have failed to consider how uniquely well-suited "
+#~ "they are to combat a fellow drake.\n"
+#~ "\n"
+#~ "They are, in fact, the Judicators of the Drake Hierarchy, and though "
+#~ "their armament is now largely ceremonial, it is none the less effective. "
+#~ "In their encounters with lesser races, they discovered that their natural "
+#~ "size and strength were themselves powerful weapons, and when combined "
+#~ "with the armament worn by this caste, the resulting warriors lack some of "
+#~ "the typical weaknesses of their kind, such as the strong vulnerability to "
+#~ "spears and arrows."
+#~ msgstr ""
+#~ "衝鋒龍戰士不擅長飛行也不會火焰噴射，大多人認為他們使用近戰是由于他們的殘疾"
+#~ "——只是盡量的變廢為寶而已。他們可能是稍微缺乏某些技能，但持這種理論的人往往"
+#~ "忽視了他們在同族內戰中的作用。\n"
+#~ "\n"
+#~ "他們實際上是龍族社會階層中的執法者。他們的武器基本上只是做儀式用的，但不管"
+#~ "怎么說還是有點用處。在與弱小種族的遭遇中，他們發現自己天生的大個頭和力量就"
+#~ "是強有力的武器，同時他們身上的盔甲，使他們避免了其他族人害怕矛和箭的弱點。"
+
+#~ msgid ""
+#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
+#~ "a deserted road late at night."
+#~ msgstr "揮舞着沉重戰錘的攔路強盜肯定是你在荒郊野外最不想見到的人。"
 
 #~ msgid ""
 #~ "female^After some years of service, former 'footpads' rise up in the "

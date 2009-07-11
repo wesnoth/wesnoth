@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-13 20:38+0200\n"
+"POT-Creation-Date: 2009-07-11 18:01+0200\n"
 "PO-Revision-Date: 2008-12-23 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -136,7 +136,7 @@ msgstr "Besejr Albert"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:39
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:282
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:547
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:573
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:47
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:39
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:125
@@ -159,7 +159,7 @@ msgstr "Kapou'es død"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:43
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:33
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:555
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:581
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:55
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:47
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:137
@@ -885,7 +885,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:551
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:577
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:43
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:129
@@ -1040,7 +1040,7 @@ msgstr "Belejringen af Barag Gór"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:531
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:569
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:121
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
@@ -1840,10 +1840,10 @@ msgstr "Ar-Dant"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:132
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:96
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:92
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:108
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:123
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:138
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:116
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:149
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:165
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:91
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:114
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:80
@@ -2214,8 +2214,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:223
-msgid "Ok, pal, we want some answers."
-msgstr "Hør så kammerat, vi vil have nogle svar."
+msgid "Now we're going to have some some answers out of you."
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:228
@@ -2293,12 +2293,14 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:279
-msgid "With pleasure. But what should I do with this guy?"
+#, fuzzy
+msgid "With pleasure. But what should I do with this weakling?"
 msgstr "Med glæde. Men hvad skal jeg gøre med denne fyr?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:284
-msgid "Behead him."
+#, fuzzy
+msgid "Behead it."
 msgstr "Halshug ham."
 
 #. [message]: speaker=unit
@@ -2572,7 +2574,7 @@ msgstr "Bemærk: Den som detonerer sprængstoffet på broen vil dø.\n"
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:66
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:102
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:127
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:77
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:189
 msgid "Thelarion"
@@ -3046,7 +3048,7 @@ msgstr "Tilbagebetaling"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:41
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:37
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:559
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:585
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:44
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
@@ -3393,22 +3395,22 @@ msgid "Back Home"
 msgstr "Hjemme igen"
 
 #. [side]: type=General, id=Telthys
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:86
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:110
 msgid "Telthys"
 msgstr "Telthys"
 
 #. [side]: type=General, id=Fredrick
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:117
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:143
 msgid "Fredrick"
 msgstr "Fredrick"
 
 #. [side]: type=General, id=Georgy
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:132
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:159
 msgid "Georgy"
 msgstr "Georgy"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:146
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:174
 msgid ""
 "Having broken the dwarvish blockade, the horde continued on through the "
 "mountain pass. Kapou'e began to recognize the lands about them and sure "
@@ -3419,22 +3421,22 @@ msgstr ""
 "tilbage i Kapou'es fødeegn."
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:159
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:187
 msgid "Valan"
 msgstr "Valan"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:233
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:261
 msgid "Well, boys, we're home. I told you we would return one day."
 msgstr "Se drenge, vi er hjemme. Jeg sagde, vi ville returnere en dag."
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:238
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:266
 msgid "Boy, have they ever built this place up."
 msgstr "Uha får de nogensinde bygget dette sted op."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:243
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:271
 msgid ""
 "Listen up, orcs. Our main objective is to rescue the shamans. It won't work "
 "to take the human runts head-on while they sneak the shamans out the back "
@@ -3444,12 +3446,12 @@ msgstr ""
 "hjælpe at angribe dem direkte, mens de sniger shamanerne ud ad bagvejen."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:248
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:276
 msgid "What are you thinking, Chief?"
 msgstr "Hvad tænker du på chef?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:253
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:281
 msgid ""
 "My men know the land well. Flar'Tar and Al'Brock, both of you take a scout "
 "and circle around to the Northeast and Southeast respectively. Grüü, you "
@@ -3461,17 +3463,17 @@ msgstr ""
 "rundt mod nordvest. Hvis alt går godt har vi dem omringet."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:258
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:286
 msgid "I like this plan, Chief!"
 msgstr "Jeg kan li' den plan chef!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:263
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:291
 msgid "You always like his plans, Grüü."
 msgstr "Du kan altid li' hans planer Grüü."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:268
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:296
 msgid ""
 "Of course. Squash elves, squash undead, squash dwarves, squash humans. "
 "Squash them all, very good plan!"
@@ -3480,12 +3482,12 @@ msgstr ""
 "alle, rigtig god plan!"
 
 #. [message]: role=army
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:273
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:301
 msgid "Well, he has the right idea, anyway."
 msgstr "Uanset hvad så har han den rigtige ide."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:278
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:306
 msgid ""
 "Good, everyone move out. I will begin the attack from here. I want everyone "
 "to be in position by first watch at the latest. Is that clear?"
@@ -3494,67 +3496,67 @@ msgstr ""
 "alle skal være i position senest på første vagt. Er det forstået?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:283
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:311
 msgid "Yeah, sure."
 msgstr "Ja da."
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:288
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:316
 msgid "Whatever."
 msgstr "Ja ja."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:301
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:329
 msgid "Uh, Chief..."
 msgstr "Uh, chef..."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:306
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:334
 msgid "...yes, Grüü?"
 msgstr "...ja, Grüü?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:311
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:339
 msgid "Can I get some gold with me?"
 msgstr "Kan jeg få noget guld med mig?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:316
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:344
 msgid "Fine, take a hundred. Don't lose it."
 msgstr "Okay, tag et hundrede. Tab dem ikke."
 
 #. [message]: speaker=Al'Brock
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:378
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:406
 msgid "I am in position, Chief."
 msgstr "Jeg er i position chef."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:383
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:411
 msgid "Excellent. Now, where are the others?"
 msgstr "Glimrende. Hvor er de andre?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:433
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:460
 msgid "We made it."
 msgstr "Vi nåede det."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:438
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:465
 msgid "Good, but where is Grüü?"
 msgstr "Godt, men hvor er Grüü?"
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:443
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:470
 msgid "Dumb trolls, you can never rely on them."
 msgstr "Dumme trolde, du kan aldrig stole på dem."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:506
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:532
 msgid "I'm here, chief!"
 msgstr "Jeg er her chef!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:511
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:537
 msgid ""
 "Blood and stone, Grüü! You were supposed to be in position by first watch. "
 "It's dawn!"
@@ -3562,13 +3564,13 @@ msgstr ""
 "For satan Grüü! Du skulle være i position på første vagt. Det er nu daggry!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:517
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
 msgid "Err, sorry, there were some humans in way. We squash, no problem."
 msgstr ""
 "Øhh undskyld der var nogle mennesker i vejen. Vi knuste dem intet problem."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:522
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:548
 msgid ""
 "Better late then never. Now it's time to kill! Let nobody escape and "
 "everyone keep an eye out for the shamans."
@@ -3577,49 +3579,49 @@ msgstr ""
 "undslippe og husk at holde et øje åbent for shamanerne."
 
 #. [message]: speaker=Flar'Tar
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:527
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:553
 msgid "Sounds simple enough."
 msgstr "Lyder nemt nok."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:573
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:599
 msgid "Miserable elf, we want some answers!"
 msgstr "Miserable elver, vi vil have nogle svar!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:578
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:604
 msgid "Ugh!"
 msgstr "Ugh!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:583
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:609
 msgid "SPEAK!"
 msgstr "TAL!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:588
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:614
 msgid "...well, what do you want to know?"
 msgstr "....hvad vil du vide?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:593
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:619
 msgid "You can start by telling us who told you to strike at Borstep."
 msgstr ""
 "Du kan starte med at fortælle os hvem som fortalte jer om at slå til ved "
 "Borstep."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:598
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:624
 msgid "Uh.... we have intelligence."
 msgstr "Uh... vi her efterretninger."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:603
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:629
 msgid "Don't make me hurt you more."
 msgstr "Få mig ikke til at skade dig mere."
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:608
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:634
 msgid ""
 "OK OK, Shan Taum the Smug told us that that's where the shamans were, and "
 "that it was a rally point and weapons depot for you orcs."
@@ -3628,13 +3630,13 @@ msgstr ""
 "et opsamlingspunkt og våbendepot for jer orker."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:613
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:639
 msgid ""
 "Bah, do not think you can break the unity of the horde with your stupid lies!"
 msgstr "Tro ikke, at du kan bryde enheden i vores hær med dine dumme løgne!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:618
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:644
 msgid ""
 "No really, it's true. He is jealous of some young upstart called Kapou'e. He "
 "says all the shamans 'suck up' to him just because his father had a black "
@@ -3645,49 +3647,49 @@ msgstr ""
 "sort øje eller noget i den du'r."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:623
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:649
 msgid ""
 "Refer to Black-Eye Karun with respect, wose-born. Now, where are the shamans?"
 msgstr "Hav respekt for Det sorte Øje din lille orm. Hvor er shamanerne?"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:628
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:654
 msgid "They're.... the humans killed them."
 msgstr "De er.... menneskene dræbte dem."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:633
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:659
 msgid "You lie!"
 msgstr "Du lyver!"
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:638
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:664
 msgid "I do not. Their bodies are frozen in the lake just over there."
 msgstr "Nej jeg gør ikke. Deres kroppe ligger indefrosset i søen derovre."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:643
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:669
 #, fuzzy
 msgid "You had better go look."
 msgstr "Du må hellere tjekke det ud."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:649
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:675
 msgid "OK, Chief."
 msgstr "O.k. chef."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:654
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:680
 msgid "A few minutes later..."
 msgstr "Et par minutter senere..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:660
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:686
 msgid "Chief! It's true, the shamans have been murdered!"
 msgstr "Chef! Det er sandt shamanerne er blevet myrdet!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:665
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:691
 msgid ""
 "WHAT! The human-worms and tree-shaggers have gone too far! BLOOD AND STEEL! "
 "I want every human and elf in this area slaughtered! Show no mercy, give no "
@@ -3697,12 +3699,12 @@ msgstr ""
 "eneste menneske og elver i dette område slagtet! Vis ingen nåde!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:671
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:697
 msgid "What should I do with this one?"
 msgstr "Hvad skal jeg gøre med ham her?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:676
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:702
 msgid "Throw him in the lake. If he freezes to death, all the better."
 msgstr "Smid ham i søen. Hvis han fryser ihjel er det bare fint."
 
@@ -4789,6 +4791,9 @@ msgid ""
 msgstr ""
 "Forbandet være det uden Inarix til at anføre sine øgler kan vi ikke længere "
 "regne med deres hjælp."
+
+#~ msgid "Ok, pal, we want some answers."
+#~ msgstr "Hør så kammerat, vi vil have nogle svar."
 
 #~ msgid ""
 #~ "<255,255,255>Alternative objective:\n"
