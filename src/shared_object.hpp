@@ -59,9 +59,9 @@ public:
 
 	template <typename U>
 	shared_object(const U& o) : val_(0) { set(o); }
-	
-	shared_object(const shared_object& o) : val_(o.val_) { 
-		assert(valid()); 
+
+	shared_object(const shared_object& o) : val_(o.val_) {
+		assert(valid());
 		index().modify(index().iterator_to(*val_), increment_count());
 	}
 
