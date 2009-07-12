@@ -71,9 +71,8 @@ private:
 
 void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list =
-		dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
-	VALIDATE(list, missing_widget("server_list"));
+	tlistbox& list = NEW_find_widget<tlistbox>(
+			&window, "server_list", false);
 
 	const std::vector<game_config::server_info>&
 		pref_servers = preferences::server_list();
@@ -89,7 +88,7 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 		item["label"] = server.address;
 		data.insert(std::make_pair("address", item));
 
-		list->add_row(data);
+		list.add_row(data);
 	}
 }
 
@@ -97,18 +96,14 @@ void tmp_server_list::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 
-		const tlistbox* list =
-			dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
-		assert(list);
+		const tlistbox& list = NEW_find_widget<const tlistbox>(
+				&window, "server_list", false);
 
-		const tgrid* row = list->get_row_grid(list->get_selected_row());
+		const tgrid* row = list.get_row_grid(list.get_selected_row());
 		assert(row);
 
-		const tcontrol* address =
-			dynamic_cast<const tcontrol*>(row->find_widget("address", false));
-		assert(address);
-
-		host_name_ = address->label();
+		host_name_ = NEW_find_widget<const tcontrol>(
+				row, "address", false).label();
 	}
 }
 
@@ -162,10 +157,10 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	window.keyboard_capture(host_name_->widget(window));
 
 	// Set view list callback button.
-	tbutton *view_list =
-		dynamic_cast<tbutton*>(window.find_widget("list", false));
-	if(view_list) {
-		view_list->set_callback_mouse_left_click(callback_view_list_button);
+	if(tbutton* button = NEW_find_widget<tbutton>(
+			&window, "list", false, false)) {
+
+		button->set_callback_mouse_left_click(callback_view_list_button);
 	}
 }
 
@@ -216,24 +211,26 @@ twindow* tmp_login::build_window(CVideo& video)
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* username =
-		dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-	VALIDATE(username, missing_widget("user_name"));
+			NEW_find_widget<ttext_box>(&window, "user_name", false, true);
 	username->set_value(preferences::login());
 
 	tpassword_box* password =
-		dynamic_cast<tpassword_box*>(window.find_widget("password", false));
-	VALIDATE(password, missing_widget("password"));
+			NEW_find_widget<tpassword_box>(&window, "password", false, true);
 	password->set_value(preferences::password());
 
 	window.keyboard_capture(focus_password_ ? password : username);
 
-	tbutton *password_reminder =
-		dynamic_cast<tbutton*>(window.find_widget("password_reminder", false));
-    if(password_reminder) password_reminder->set_retval(1);
+	if(tbutton* button = NEW_find_widget<tbutton>(
+			&window, "password_reminder", false, false)) {
 
-	tbutton* change_username =
-		dynamic_cast<tbutton*>(window.find_widget("change_username", false));
-    if(change_username) change_username->set_retval(2);
+		button->set_retval(1);
+	}
+
+	if(tbutton* button = NEW_find_widget<tbutton>(
+			&window, "change_username", false, false)) {
+
+		button->set_retval(2);
+	}
 
 	// Needs to be a scroll_label since the text can get long and a normal label
 	// can't wrap (at the moment).
@@ -241,30 +238,27 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<tscroll_label*>(window.find_widget("login_label", false));
 	if(label) label->set_label(label_);
 
-	ttoggle_button* remember_password
-			= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
-	if(remember_password) remember_password->set_value(preferences::remember_password());
+	if(ttoggle_button* button = NEW_find_widget<ttoggle_button>(
+			&window, "remember_password", false, false)) {
 
+		button->set_value(preferences::remember_password());
+	}
 }
 
 void tmp_login::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		ttoggle_button* remember_password
-				= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
-		if(remember_password) preferences::set_remember_password(remember_password->get_value());
+		if(ttoggle_button* button = NEW_find_widget<ttoggle_button>(
+				&window, "remember_password", false, false)) {
 
-		ttext_box* username =
-			dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-		assert(username);
+			preferences::set_remember_password(button->get_value());
+		}
 
-		preferences::set_login(username->get_value());
+		preferences::set_login(NEW_find_widget<ttext_box>(
+				&window, "user_name", false).get_value());
 
-		tpassword_box* password =
-			dynamic_cast<tpassword_box*>(window.find_widget("password", false));
-		assert(password);
-
-		preferences::set_password(password->get_real_value());
+		preferences::set_password(NEW_find_widget<tpassword_box>(
+				&window, "password", false).get_real_value());
 	}
 }
 
