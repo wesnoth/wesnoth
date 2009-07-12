@@ -417,7 +417,7 @@ fi
 # fribidi-config
 
 if test "x$fribidi" != "xno"; then
-	PKG_CHECK_MODULES([FRIBIDI], [fribidi >= 0.19.0],
+	PKG_CHECK_MODULES([FRIBIDI], [fribidi >= 0.10.9],
 		[ fribidifound=yes ],
 		[ fribidifound=no ])
 	AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes])

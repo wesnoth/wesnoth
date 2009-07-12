@@ -258,7 +258,7 @@ if env["prereqs"]:
             client_env.Append(CPPDEFINES = ["HAVE_QTDBUS"])
 
     if client_env['fribidi']:
-        client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.19.0') or Warning("Can't find libfribidi, disabling freebidi support.")
+        client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     if env["PLATFORM"] == "posix":
         conf.CheckCHeader("poll.h", "<>")
