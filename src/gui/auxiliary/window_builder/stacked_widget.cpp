@@ -44,8 +44,6 @@ twidget* tbuilder_stacked_widget::build() const
 
 	init_control(widget);
 
-	widget->set_item_builder(stack);
-
 	DBG_GUI_G << "Window builder: placed stacked widget '"
 			<< id << "' with defintion '"
 			<< definition << "'.\n";
@@ -57,7 +55,7 @@ twidget* tbuilder_stacked_widget::build() const
 
 	widget->init_grid(conf->grid);
 
-	widget->finalize();
+	widget->finalize(stack);
 
 	return widget;
 }
