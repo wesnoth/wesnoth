@@ -33,15 +33,8 @@ struct tbuilder_stacked_widget
 
 	twidget* build () const;
 
-	tbuilder_grid_ptr builder;
-
-	/**
-	 * Multi page data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<string_map> data;
+	/** The builders for all layers of the stack .*/
+	std::vector<tbuilder_grid_const_ptr> stack;
 };
 
 } // namespace implementation

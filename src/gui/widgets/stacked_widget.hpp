@@ -78,17 +78,13 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_item_builder(tbuilder_grid_ptr item_builder)
+	void set_item_builder(std::vector<tbuilder_grid_const_ptr> item_builder)
 		{ item_builder_ = item_builder; }
 
 private:
 
-	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param item_data           The initial data to fill the widget with.
-	 */
-	void finalize(const std::vector<string_map>& item_data);
+	/** Finishes the building initialization of the widget. */
+	void finalize();
 
 	/**
 	 * Contains a pointer to the generator.
@@ -98,7 +94,7 @@ private:
 	tgenerator_* generator_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr item_builder_;
+	std::vector<tbuilder_grid_const_ptr> item_builder_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

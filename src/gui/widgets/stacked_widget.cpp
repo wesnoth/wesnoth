@@ -16,6 +16,7 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
+#include "foreach.hpp"
 #include "gui/widgets/generator.hpp"
 
 namespace gui2 {
@@ -23,7 +24,7 @@ namespace gui2 {
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
 	, generator_(NULL)
-	, item_builder_(NULL)
+	, item_builder_()
 {
 	generator_ = tgenerator_::build(
 			false, false, tgenerator_::independant, false);
@@ -32,16 +33,20 @@ tstacked_widget::tstacked_widget()
 void tstacked_widget::add_item(const string_map& item)
 {
 	assert(generator_);
-	generator_->create_item(-1, item_builder_, item, NULL);
-	generator_->select_item(get_item_count() - 1, true);
+	foreach(const tbuilder_grid_const_ptr& builder, item_builder_) {
+		generator_->create_item(-1, builder, item, NULL);
+		generator_->select_item(get_item_count() - 1, true);
+	}
 }
 
 void tstacked_widget::add_item(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
-	generator_->create_item(-1, item_builder_, data, NULL);
-	generator_->select_item(get_item_count() - 1, true);
+	foreach(const tbuilder_grid_const_ptr& builder, item_builder_) {
+		generator_->create_item(-1, builder, data, NULL);
+		generator_->select_item(get_item_count() - 1, true);
+	}
 }
 
 unsigned tstacked_widget::get_item_count() const
@@ -83,11 +88,12 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tstacked_widget::finalize(
-		const std::vector<string_map>& item_data)
+void tstacked_widget::finalize()
 {
 	assert(generator_);
-	generator_->create_items(-1, item_builder_, item_data, NULL);
+	foreach(const tbuilder_grid_const_ptr& builder, item_builder_) {
+		generator_->create_item(-1, builder, string_map(), NULL);
+	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 
 	for(size_t i = 0; i < get_item_count(); ++i) {

@@ -27,35 +27,14 @@ namespace gui2 {
 
 namespace implementation {
 
-tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg) :
-	implementation::tbuilder_control(cfg),
-	builder(NULL),
-	data()
+tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
+	: tbuilder_control(cfg)
+	, stack()
 {
-	const config &stack = cfg.child("stack_definition");
-
-	VALIDATE(stack, _("No stack defined."));
-	builder = new tbuilder_grid(stack);
-	assert(builder);
-
-	const config &d = cfg.child("stack_data");
-	if(!d){
-		return;
-	}
-
-	foreach(const config &row, d.child_range("row")) {
-		unsigned col = 0;
-
-		foreach(const config &column, row.child_range("column")) {
-			data.push_back(string_map());
-			foreach(const config::attribute &i, column.attribute_range()) {
-				data.back()[i.first] = i.second;
-			}
-			++col;
-		}
-
-		VALIDATE(col == builder->cols, _("'stack_data' must have "
-			"the same number of columns as the 'list_definition'."));
+	const config &s = cfg.child("stack");
+	VALIDATE(s, _("No stack defined."));
+	foreach(const config &layer, s.child_range("layer")) {
+		stack.push_back(new tbuilder_grid(layer));
 	}
 }
 
@@ -65,7 +44,7 @@ twidget* tbuilder_stacked_widget::build() const
 
 	init_control(widget);
 
-	widget->set_item_builder(builder);
+	widget->set_item_builder(stack);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '"
 			<< id << "' with defintion '"
@@ -78,7 +57,7 @@ twidget* tbuilder_stacked_widget::build() const
 
 	widget->init_grid(conf->grid);
 
-	widget->finalize(data);
+	widget->finalize();
 
 	return widget;
 }
