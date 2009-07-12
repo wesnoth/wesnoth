@@ -1554,7 +1554,7 @@ private:
 	 */
 	class unit_adapter {
 		public:
-			unit_adapter(const variant& arg) {
+			unit_adapter(const variant& arg) : unit_type_(), unit_() {
 				const unit_callable* unit = try_convert_variant<unit_callable>(arg);
 
 				if (unit) {
