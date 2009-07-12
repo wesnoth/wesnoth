@@ -5,7 +5,7 @@
 # This file is distributed under the same license as the wesnoth package.
 #
 #
-# Oron Peled <oron@actcom.co.il>, 2005.
+# Oron Peled <oron@actcom.co.il>, 2005, 2009.
 # Ely Levy <nakeee@gmail.com>, 2005, 2006.
 # Ariel Ben-Yehuda <ariel.bys@gmail.com>, 2009.
 msgid ""
@@ -13,19 +13,19 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-11 17:59+0200\n"
-"PO-Revision-Date: 2009-03-21 00:33+0200\n"
-"Last-Translator: Ariel Ben-Yehuda <ariel.bys@gmail.com>\n"
+"PO-Revision-Date: 2009-07-13 00:55+0300\n"
+"Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
 msgid "Compressed Saves"
-msgstr "דחיסת שמירות"
+msgstr "שמירה מכווצת"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -40,7 +40,7 @@ msgstr "גילגול ע\"י כפתור מרכזי"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
 msgid "Keep scrolling when mouse leaves window"
-msgstr "המשך לגלגל שהעכבר עוזב את המסך"
+msgstr "המשך לגלגל כשהסמן יוצא מגבולות המסך"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:91
@@ -77,7 +77,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
 msgid "Underground"
-msgstr "מתחת לאדמה"
+msgstr "תת קרקעי"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "שיגעון קרב:\n"
 "בלי קשר לאם היחידה השתמשה בהתקפה זו להגנה או לתקיפה, היא תמשיך את הקרב עד "
-"שאחד מהנלחמים ימות, או עד שיעברו 30 סיבובי התקפות."
+"שאחד מהנלחמים ימות, או עד שיעברו 30 מהלכי תקיפה"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
@@ -308,7 +308,7 @@ msgstr "תרגום לסינית"
 #. [about]
 #: data/core/about.cfg:1117
 msgid "Chinese (Taiwan) Translation"
-msgstr "(טיון) תרגום לסינית"
+msgstr "תרגום לסינית (טיוואן)"
 
 #. [about]
 #: data/core/about.cfg:1139
@@ -392,9 +392,8 @@ msgstr "תרגום להונגרית"
 
 #. [about]
 #: data/core/about.cfg:1715
-#, fuzzy
 msgid "Icelandic translation"
-msgstr "תרגום לאיטלקית"
+msgstr "תרגום לאיסלנדית"
 
 #. [about]
 #: data/core/about.cfg:1725
@@ -508,7 +507,6 @@ msgstr "תרגום לולנסית (דרום קטלן)"
 
 #. [about]
 #: data/core/about.cfg:2196
-#, fuzzy
 msgid "RACV's Translation"
 msgstr "התרגום של RACV"
 
@@ -554,12 +552,9 @@ msgstr "יכולות"
 msgid "Weapon Specials"
 msgstr "שימושים מיוחדים בנשק"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "סיעה"
+msgstr "סיעות"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -1164,7 +1159,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:248
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1645,7 +1639,7 @@ msgstr ""
 #. [topic]: id=about
 #: data/core/help.cfg:342
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "תורמים"
 
 #. [topic]: id=license
 #: data/core/help.cfg:348
@@ -2836,7 +2830,7 @@ msgstr ""
 msgid "Debug mode commands"
 msgstr "פקודות למצב דיבוג (עם אתה לא יודע מה זה אז אתה כנראה לא צריך את זה)."
 
-# I'm skipping this for a moment as most users who use Debug Mode 
+# I'm skipping this for a moment as most users who use Debug Mode
 # (Campaign Developers, for example) know english
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:837
@@ -4236,7 +4230,8 @@ msgstr ""
 msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
-msgstr " לרוחות יש התנגדויות מוזרות, וזזות באופן איטי מעל מים פתוחים. "
+msgstr ""
+" לרוחות יש כושר חריג להתנגדות לנזק. הן זזות באופן איטי מעל מים פתוחים. "
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
@@ -6363,7 +6358,7 @@ msgid ""
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "חבילה זו תלויה בחבילה זאת שעדיין לא הותקנה על מחשבך: "
+msgstr[0] "תוסף זה תלוי בתוסף שמצויין להלן ושעדיין לא הותקן על מחשבך: "
 msgstr[1] "חבילה זו תלויה בחבילות אלו שעדיין לא הותקנו על מחשבך: "
 
 #: src/addon_management.cpp:457
@@ -6387,7 +6382,7 @@ msgstr "תנאים"
 
 #: src/addon_management.cpp:517
 msgid "Sending add-on"
-msgstr "שולח חבילה"
+msgstr "שולח תוסף"
 
 #: src/addon_management.cpp:521 src/addon_management.cpp:546
 msgid "The server responded with an error: \""
@@ -6405,20 +6400,19 @@ msgstr "מוריד את $addon_title|..."
 #: src/addon_management.cpp:591
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
-msgstr "חבילה זו כוללת שם קובץ או תיקייה לא-חוקי ואינה ניתנן להתקנה."
+msgstr "תוסף זה כולל שם קובץ או תיקייה לא-חוקי ואינו ניתן להתקנה."
 
 #: src/addon_management.cpp:640
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "החבילה '$addon_title|' הותקנה בהצלחה."
+msgstr "התוסף '$addon_title|' הותקן בהצלחה."
 
 #: src/addon_management.cpp:641
 msgid "Add-on Installed"
-msgstr "החבילה הותקנה"
+msgstr "התוסף הותקן"
 
 #: src/addon_management.cpp:699
 msgid "Outdated add-ons"
-msgstr "חבילות ישנות"
+msgstr "תוספים מיושנים"
 
 #: src/addon_management.cpp:701
 msgid ""
@@ -6427,16 +6421,17 @@ msgid ""
 msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
-msgstr[0] "לחבילה ישנה זו יש מידע שליחה מצורף. לא יהיה ניתן לעדכנו."
-msgstr[1] "לחבילות ישנות אלו יש מידע שליחה מצורף. לא יהיה ניתן לעדכנו."
+msgstr[0] "לתוסף מקומי מיושן מצורף מידע לפרסום. עקב כך לא יוצעו עדכונים עבורו."
+msgstr[1] ""
+"לתוספים מקומיים מיושנים מצורף מידע לפרסום. עקב כך לא יוצעו עדכונים עבורם."
 
 #: src/addon_management.cpp:710
 msgid "Could not find any updated add-ons on this server."
-msgstr "שום גרסא מעודכנת לא נמצאה על השרת."
+msgstr "אף גרסא מעודכנת לא נמצאה על השרת."
 
 #: src/addon_management.cpp:710
 msgid "No add-ons to update"
-msgstr "אין חבילות ברות-עדכון."
+msgstr "אין תוספים ברי-עדכון."
 
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
 #: src/dialogs.cpp:579 src/menu_events.cpp:192 src/menu_events.cpp:850
@@ -6461,11 +6456,11 @@ msgstr "גודל"
 
 #: src/addon_management.cpp:779
 msgid "Update add-ons"
-msgstr "חדכן חבילות"
+msgstr "עדכן תוספים"
 
 #: src/addon_management.cpp:780
 msgid "Select an add-on to update:"
-msgstr "בחר חבילה לעדכון:"
+msgstr "נא לבחור תוסף לעדכון:"
 
 #: src/addon_management.cpp:794
 msgid "Update all"
@@ -6479,8 +6474,8 @@ msgstr "העדכון נכשל"
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "בחבילה זו היו שגיאות שמנעו את עדכונם/הורדתם:"
-msgstr[1] "בחבילות אלו היו שגיאות שמנעו את עדכונם/הורדתם:"
+msgstr[0] "נכשלה הורדת/עדכון התוסף דלהלן:"
+msgstr[1] "בתוספים אלו היו שגיאות שמנעו את עדכונם/הורדתם:"
 
 #: src/addon_management.cpp:862
 msgid "Update succeeded"
@@ -6488,15 +6483,15 @@ msgstr "העדכון הושלם בהצלחה."
 
 #: src/addon_management.cpp:863
 msgid "Add-on updated successfully."
-msgstr "עדכון החבילות הושלם בהצלחה."
+msgstr "עדכון התוספים הושלם בהצלחה."
 
 #: src/addon_management.cpp:864
 msgid "All add-ons updated successfully."
-msgstr "כל החבילות עודכנו בהצלחה."
+msgstr "כל התוספים עודכנו בהצלחה."
 
 #: src/addon_management.cpp:888
 msgid "Connecting to add-ons server..."
-msgstr "מתחבר לשרת..."
+msgstr "מתחבר לשרת התוספים..."
 
 #: src/addon_management.cpp:891
 msgid "Could not connect to host."
@@ -6504,7 +6499,7 @@ msgstr "כישלון בחיבור לשרת."
 
 #: src/addon_management.cpp:899
 msgid "Requesting list of add-ons"
-msgstr "מוריד את רשימת החבילות"
+msgstr "מבקש רשימת תוספים"
 
 #: src/addon_management.cpp:911
 msgid "An error occurred while communicating with the server."
@@ -6525,23 +6520,23 @@ msgstr "סוג"
 
 #: src/addon_management.cpp:994
 msgid "Publish add-on: "
-msgstr "פרסם חבילה: "
+msgstr "פרסם תוסף"
 
 #: src/addon_management.cpp:1000
 msgid "Delete add-on: "
-msgstr "מחק חבילה: "
+msgstr "מחק תוסף: "
 
 #: src/addon_management.cpp:1006
 msgid "There are no add-ons available for download from this server."
-msgstr "אין מערכות להורדה משרת זה."
+msgstr "אין תוספים זמינים להורדה משרת זה."
 
 #: src/addon_management.cpp:1019
 msgid "Get add-ons"
-msgstr "הורד חבילות"
+msgstr "קבלת תוספים"
 
 #: src/addon_management.cpp:1020
 msgid "Choose the add-on to download."
-msgstr "בחר חבילה להורדה."
+msgstr "בחירת תוסף להורדה."
 
 #: src/addon_management.cpp:1032 src/dialogs.cpp:604 src/menu_events.cpp:909
 #: src/menu_events.cpp:1407
@@ -6557,27 +6552,26 @@ msgid "Remote host disconnected."
 msgstr "המארח המרוחק התנתק."
 
 #: src/addon_management.cpp:1075
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת החבילה."
+msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת תוסף זה."
 
 #: src/addon_management.cpp:1093
 msgid "You have no add-ons installed."
-msgstr "אין לך חבילות מותקנות."
+msgstr "אין ברשותך תוספים מותקנים"
 
 #: src/addon_management.cpp:1105
 msgid "Choose the add-on to remove."
-msgstr "בחר חבילה למחיקה."
+msgstr "בחר תוסף למחיקה."
 
 #: src/addon_management.cpp:1105
 msgid "Uninstall add-ons"
-msgstr "מחק חבילות"
+msgstr "מחק תוספים"
 
 #: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr "אתה בטוח שברצונך למחוק את החבילה '$addon|'?"
+msgstr "אתה בטוח שברצונך למחוק את התוסף  '$addon|'?"
 
 #: src/addon_management.cpp:1122 src/multiplayer.cpp:225
 msgid "Confirm"
@@ -6585,15 +6579,15 @@ msgstr "אשר"
 
 #: src/addon_management.cpp:1134
 msgid "Add-on '$addon|' deleted."
-msgstr "החבילה '$addon|' נמחקה"
+msgstr "התוסף '$addon|' נמחק"
 
 #: src/addon_management.cpp:1139
 msgid "Add-on deleted"
-msgstr "החבילה נמחקה"
+msgstr "התוסף נמחק"
 
 #: src/addon_management.cpp:1147
 msgid "Add-on could not be deleted properly:"
-msgstr "לא ניתן למחוק את החבילה:"
+msgstr "לא ניתן היה למחוק את התוסף"
 
 #: src/ai/default/move.cpp:83
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
@@ -6862,7 +6856,7 @@ msgstr "' (המשחק יסתיים עתה)"
 #: src/game.cpp:1479
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "בחבילה זו היו שגיאות שמנעו את טעינו:"
+msgstr[0] "בתוסף להלן היו שגיאות שמנעו את טעינתו"
 msgstr[1] "בחבילות הבאות היו שגיאות שמנעו את טעינתם:"
 
 #: src/game.cpp:1486
@@ -6883,7 +6877,7 @@ msgstr "אתחל גופנים לשפה החדשה."
 
 #: src/game.cpp:1945
 msgid "Searching for installed add-ons."
-msgstr "מחפש חבילות מותקנות."
+msgstr "מחפש תוספים מותקנים"
 
 #: src/game.cpp:1954
 msgid "Loading title screen."
@@ -7282,7 +7276,7 @@ msgstr "אין"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
-msgstr "אין תמיכה במפות ללא כותרת. המפה כנראה ישנה, נסה לעדכן את החבילה."
+msgstr "אין תמיכה במפות ללא כותרת."
 
 #: src/mapgen.cpp:739
 msgid "Random maps with an odd width aren't supported."
@@ -8139,7 +8133,7 @@ msgstr "טען משחק"
 
 #: src/multiplayer_create.cpp:141
 msgid "The maximum number of turns the game can last"
-msgstr "מספר תורים המירבי שהמשחק יכול להמשך"
+msgstr "מספר מהלכים מירבי למשחק"
 
 #: src/multiplayer_create.cpp:144
 msgid "Enables user time limit"
@@ -8868,7 +8862,7 @@ msgstr "טען"
 
 #: src/titlescreen.cpp:426
 msgid "TitleScreen button^Add-ons"
-msgstr "חבילות"
+msgstr "תוספים"
 
 #: src/titlescreen.cpp:428
 msgid "TitleScreen button^Map Editor"
@@ -8884,7 +8878,7 @@ msgstr "העדפות"
 
 #: src/titlescreen.cpp:432
 msgid "TitleScreen button^Credits"
-msgstr "קרדיטס"
+msgstr "תודות"
 
 #: src/titlescreen.cpp:433
 msgid "TitleScreen button^Quit"
