@@ -62,7 +62,7 @@ public:
 
 	shared_object(const shared_object& o) : val_(o.val_) {
 		assert(valid());
-		index().modify(index().iterator_to(*val_), increment_count());
+		index().modify(index().find(val_->val), increment_count());
 	}
 
 	operator T() const {
@@ -84,7 +84,7 @@ public:
 		clear();
 
 		val_ = &*index().insert(node(o)).first;
-		index().modify(index().iterator_to(*val_), increment_count());
+		index().modify(index().find(val_->val), increment_count());
 
 		assert((val_->count) < (node::max_count));
 	}
@@ -126,9 +126,9 @@ protected:
 
 	void clear() {
 		if (!val_) return;
-		index().modify(index().iterator_to(*val_), decrement_count());
+		index().modify(index().find(val_->val), decrement_count());
 
-		if (val_->count == 0) index().erase(index().iterator_to(*val_));
+		if (val_->count == 0) index().erase(index().find(val_->val));
 		val_ = 0;
 	}
 
