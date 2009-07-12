@@ -733,6 +733,7 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 		config msg;
 		send_message_to_active_window(input);
 	}
+	chat_input_->save_to_history();
 	chat_input_->set_value("");
 }
 
