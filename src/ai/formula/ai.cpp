@@ -2383,23 +2383,29 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 		     *during the next loop
 		     */
 
-		    prepare_move();
+			prepare_move();
 
-		    game_logic::map_formula_callable callable(this);
-		    callable.add_ref();
+			game_logic::map_formula_callable callable(this);
+			callable.add_ref();
 
-		    if(error != variant())
-			callable.add("error", error);
+			if(error != variant())
+				callable.add("error", error);
 
-		    variant backup_result = safe_call->get_backup()->evaluate(callable);
+			variant backup_result = safe_call->get_backup()->evaluate(callable);
 
-		    vars.push(backup_result);
+			if(backup_result.is_list()) {
+				for(size_t n = 1; n <= backup_result.num_elements() ; ++n) {
+					vars.push(backup_result[ backup_result.num_elements() - n ]);
+				}
+			} else {
+				vars.push(backup_result);
+			}
 
-		    //store the result in safe_call_callable case we would like to display it to the user
-		    //for example if this formula was executed from commandline	    
-		    safe_call->set_backup_result(backup_result);
+			//store the result in safe_call_callable case we would like to display it to the user
+			//for example if this formula was executed from commandline	    
+			safe_call->set_backup_result(backup_result);
 
-		    error = variant();
+			error = variant();
 		}
 	}
 
