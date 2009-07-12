@@ -55,14 +55,14 @@ class shared_object {
 public:
 	typedef T type;
 
-	shared_object() : val_(0) { set(T()); }
+	shared_object() : val_(index().end()) { set(T()); }
 
 	template <typename U>
-	shared_object(const U& o) : val_(0) { set(o); }
+	shared_object(const U& o) : val_(index().end()) { set(o); }
 
 	shared_object(const shared_object& o) : val_(o.val_) {
 		assert(valid());
-		index().modify(index().find(val_->val), increment_count());
+		index().modify(val_, increment_count());
 	}
 
 	operator T() const {
@@ -80,11 +80,11 @@ public:
 	~shared_object() { clear(); }
 
 	void set(const T& o) {
-		if (val_ && o == get()) return;
+		if (valid() && o == get()) return;
 		clear();
 
-		val_ = &*index().insert(node(o)).first;
-		index().modify(index().find(val_->val), increment_count());
+		val_ = index().insert(node(o)).first;
+		index().modify(val_, increment_count());
 
 		assert((val_->count) < (node::max_count));
 	}
@@ -98,12 +98,8 @@ public:
 		std::swap(val_, o.val_);
 	}
 
-	bool valid() const {
-		return val_ != NULL;
-	}
-
 	const node* ptr() const {
-		return val_;
+		return &*val_;
 	}
 
 protected:
@@ -122,14 +118,18 @@ protected:
 	static hash_map& map() { static hash_map* map = new hash_map; return *map; }
 	static hash_index& index() { return map().template get<0>(); }
 
-	const node* val_;
+	typename hash_index::iterator val_;
+
+	bool valid() const {
+		return val_ != index().end();
+	}
 
 	void clear() {
-		if (!val_) return;
-		index().modify(index().find(val_->val), decrement_count());
+		if (!valid()) return;
+		index().modify(val_, decrement_count());
 
-		if (val_->count == 0) index().erase(index().find(val_->val));
-		val_ = 0;
+		if (val_->count == 0) index().erase(val_);
+		val_ = index().end();
 	}
 
 };
