@@ -345,14 +345,14 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
 
 	filter_friends_ = &window.get_widget<ttoggle_button>("filter_with_friends", false);
-	filter_foes_ = &window.get_widget<ttoggle_button>("filter_without_foes", false);
+	filter_ignored_ = &window.get_widget<ttoggle_button>("filter_without_ignored", false);
 	filter_slots_ = &window.get_widget<ttoggle_button>("filter_vacant_slots", false);
 	filter_invert_ = &window.get_widget<ttoggle_button>("filter_invert", false);
 	filter_text_= &window.get_widget<ttext_box>("filter_text", false);
 
 	filter_friends_->set_callback_state_change(
 		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
-	filter_foes_->set_callback_state_change(
+	filter_ignored_->set_callback_state_change(
 		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
 	filter_slots_->set_callback_state_change(
 		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
@@ -820,9 +820,9 @@ void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
 		lobby_info_.add_game_filter(
 			new game_filter_value<bool, &game_info::has_friends>(true));
 	}
-	if (filter_foes_->get_value()) {
+	if (filter_ignored_->get_value()) {
 		lobby_info_.add_game_filter(
-			new game_filter_value<bool, &game_info::has_no_foes>(true));
+			new game_filter_value<bool, &game_info::has_ignored>(false));
 	}
 	if (filter_slots_->get_value()) {
 		lobby_info_.add_game_filter(

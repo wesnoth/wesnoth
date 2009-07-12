@@ -154,7 +154,7 @@ game_info::game_info() :
 	password_required(false),
 	have_era(false),
 	has_friends(false),
-	has_no_foes(true)
+	has_ignored(false)
 {
 }
 
@@ -206,7 +206,7 @@ game_info::game_info(const config& game, const config& game_config)
 , password_required(game["password"] == "yes")
 , have_era(true)
 , has_friends(false)
-, has_no_foes(true)
+, has_ignored(false)
 {
 	std::string turn = game["turn"];
 	std::string slots = game["slots"];
@@ -459,7 +459,7 @@ void lobby_info::parse_gamelist()
 						g.has_friends = true;
 						break;
 					case user_info::IGNORED:
-						g.has_no_foes = false;
+						g.has_ignored = true;
 						break;
 					default:
 						break;

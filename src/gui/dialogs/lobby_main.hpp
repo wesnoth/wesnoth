@@ -287,7 +287,7 @@ private:
 
 	ttoggle_button* filter_friends_;
 
-	ttoggle_button* filter_foes_;
+	ttoggle_button* filter_ignored_;
 
 	ttoggle_button* filter_slots_;
 

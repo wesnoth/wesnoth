@@ -141,7 +141,7 @@ struct game_info
 	bool have_era;
 
 	bool has_friends;
-	bool has_no_foes;
+	bool has_ignored;
 };
 
 class game_filter_base : public std::unary_function<game_info, bool>
