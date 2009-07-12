@@ -504,12 +504,12 @@ void tlobby_main::active_window_changed()
 	if (t.whisper) {
 		if (header.label() != ("<" + t.name + ">")) {
 			ERR_NG << "Chat log header not what it should be! "
-				<< header.label() << " vs " << ("<" + t.name + ">");
+				<< header.label() << " vs " << ("<" + t.name + ">") << "\n";
 		}
 	} else {
 		if (header.label() != (t.name)) {
 			ERR_NG << "Chat log header not what it should be! "
-				<< header.label() << " vs " << t.name;
+				<< header.label() << " vs " << t.name << "\n";
 		}
 	}
 	window_->invalidate_layout();
@@ -545,6 +545,7 @@ void tlobby_main::close_window(size_t idx)
 	}
 	open_windows_.erase(open_windows_.begin() + idx);
 	roomlistbox_->remove_row(idx);
+	chat_log_container_->remove_page(idx);
 	if (active_changed) active_window_changed();
 }
 
