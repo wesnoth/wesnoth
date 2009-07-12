@@ -21,6 +21,7 @@
 #include <set>
 #include <map>
 #include <deque>
+#include <functional>
 
 /** This class represenst a single stored chat message */
 struct chat_message
@@ -140,12 +141,12 @@ struct game_info
 	bool have_era;
 };
 
-class game_filter_base
+class game_filter_base : public std::unary_function<game_info, bool>
 {
 public:
 	virtual ~game_filter_base() {}
 	virtual bool match(const game_info& game) const = 0;
-	bool operator()(const game_info& game) { return match(game); }
+	bool operator()(const game_info& game) const { return match(game); }
 };
 
 class game_filter_stack : public game_filter_base
@@ -157,7 +158,11 @@ public:
 	/**
 	 * Takes ownership
 	 */
-	bool append(game_filter_base* f);
+	void append(game_filter_base* f);
+
+	void clear();
+
+	bool empty() const { return filters_.empty(); }
 
 protected:
 	std::vector<game_filter_base*> filters_;
@@ -218,6 +223,11 @@ public:
 
 	const config& gamelist() const { return gamelist_; }
 
+	void clear_game_filter();
+	void add_game_filter(game_filter_base* f);
+	void set_game_filter_invert(bool value);
+	void apply_game_filter();
+
 	void open_room(const std::string& name);
 	void close_room(const std::string& name);
 	bool has_room(const std::string& name) const;
@@ -230,6 +240,7 @@ public:
 
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info>& games() const { return games_; }
+	const std::vector<game_info>& games_filtered();
 	const std::vector<user_info>& users() const { return users_; }
 private:
 	void parse_gamelist();
@@ -239,8 +250,11 @@ private:
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;
 	std::vector<game_info> games_;
+	std::vector<game_info> games_filtered_;
 	std::vector<user_info> users_;
 	std::map<std::string, chat_log> whispers_;
+	game_filter_and_stack game_filter_;
+	bool game_filter_invert_;
 };
 
 #endif

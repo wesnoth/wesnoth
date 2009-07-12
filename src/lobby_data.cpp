@@ -348,6 +348,19 @@ game_filter_stack::~game_filter_stack()
 	}
 }
 
+void game_filter_stack::append(game_filter_base *f)
+{
+	filters_.push_back(f);
+}
+
+void game_filter_stack::clear()
+{
+	foreach (game_filter_base* f, filters_) {
+		delete f;
+	}
+	filters_.clear();
+}
+
 bool game_filter_and_stack::match(const game_info &game) const
 {
 	foreach (game_filter_base* f, filters_) {
@@ -373,7 +386,8 @@ bool game_filter_string_part::match(const game_info &game) const
 
 lobby_info::lobby_info(const config& game_config)
 : game_config_(game_config), gamelist_(), gamelist_initialized_(false)
-, rooms_(), games_(), users_()
+, rooms_(), games_(), games_filtered_(), users_()
+, game_filter_(), game_filter_invert_(false)
 {
 }
 
@@ -447,5 +461,37 @@ void lobby_info::close_room(const std::string &name)
 	room_info* r = get_room(name);
 	if (r) {
 		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
+	}
+}
+
+const std::vector<game_info>& lobby_info::games_filtered()
+{
+	return games_filtered_;
+}
+
+void lobby_info::add_game_filter(game_filter_base *f)
+{
+	game_filter_.append(f);
+}
+
+void lobby_info::clear_game_filter()
+{
+	game_filter_.clear();
+}
+
+void lobby_info::set_game_filter_invert(bool value)
+{
+	game_filter_invert_ = value;
+}
+
+void lobby_info::apply_game_filter()
+{
+	games_filtered_.clear();
+	if (game_filter_invert_) {
+		std::remove_copy_if(games_.begin(), games_.end(),
+			std::back_inserter(games_filtered_), game_filter_);
+	} else {
+		std::remove_copy_if(games_.begin(), games_.end(),
+			std::back_inserter(games_filtered_), std::not1(game_filter_));
 	}
 }
