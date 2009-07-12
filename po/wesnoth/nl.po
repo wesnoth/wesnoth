@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-11 17:59+0200\n"
-"PO-Revision-Date: 2009-04-19 15:05+0200\n"
+"PO-Revision-Date: 2009-07-12 03:11+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -2017,7 +2017,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:442
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -6264,7 +6263,7 @@ msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -7273,6 +7272,8 @@ msgid ""
 "Do you want to download this add-on? (You will still have to install the "
 "dependencies in order to play.)"
 msgstr ""
+"Wil je deze add-on downloaden? (Je moet nog steeds de afhankelijkheden "
+"installeren om te spelen.)"
 
 #: src/addon_management.cpp:472 src/addon_management.cpp:544
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:76
@@ -8963,9 +8964,8 @@ msgid "I'm Ready"
 msgstr "Klaar!"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Dit scenario is ongeldig vermits het geen kanten bevat"
+msgstr "Dit scenario is ongeldig omdat het geen id bevat"
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9328,8 +9328,8 @@ msgstr "Startpositie: "
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Goud"
+msgstr[1] "Goud"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9675,9 +9675,8 @@ msgid "Unexpected closing tag"
 msgstr "Onverwachte closing tage"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Vond ongeldige sluit-tag $tag2 voor tag $tag (geopend op $pos)"
+msgstr "Vond ongeldige sluit-tag $tag2 voor tag $tag1 (geopend op $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
@@ -10006,26 +10005,29 @@ msgstr "Help ons Wesnoth te verbeteren!"
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
 
+#~ msgid "stones"
+#~ msgstr "versteent"
+
 #~ msgid "Play a campaign"
 #~ msgstr "Speel een veldtocht"
 
-#~ msgid "Default AI"
-#~ msgstr "Standaard AI"
+#~ msgid "An invalid weapon is selected, possibly by the Python AI."
+#~ msgstr "Een ongeldig wapen is geselecteerd, mogelijk door de Python AI."
 
-#~ msgid "Do you still want to download it?"
-#~ msgstr "Wilt je het nog steeds downloaden?"
+#~ msgid "female^stone"
+#~ msgstr "versteen"
+
+#~ msgid "stone"
+#~ msgstr "versteen"
+
+#~ msgid "Unknown unit type : "
+#~ msgstr "Onbekende eenheid type:"
 
 #~ msgid "Quit Game"
 #~ msgstr "Het spel verlaten"
 
 #~ msgid "Ignore All"
 #~ msgstr "Negeer alles"
-
-#~ msgid "An invalid weapon is selected, possibly by the Python AI."
-#~ msgstr "Een ongeldig wapen is geselecteerd, mogelijk door de Python AI."
-
-#~ msgid "Unknown unit type : "
-#~ msgstr "Onbekende eenheid type:"
 
 #~ msgid ""
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
@@ -10034,44 +10036,29 @@ msgstr "Samenvattingen uploaden aan"
 #~ "Opslagnamen mogen geen dubbele punten of schuine strepen bevatten. Kies "
 #~ "een andere naam."
 
+#~ msgid "stone: "
+#~ msgstr "steen: "
+
 #~ msgid "Remove a trait from a unit. (Does not work yet.)"
 #~ msgstr "Verwijden een kenmerk van een eenheid. (Werkt nog niet)"
+
+#~ msgid "Default AI"
+#~ msgstr "Standaard AI"
+
+#~ msgid "The replay could not be saved"
+#~ msgstr "De herhaling kon niet worden opgeslagen"
 
 #~ msgid "Name:"
 #~ msgstr "Naam:"
 
-#, fuzzy
-#~ msgid "Landar"
-#~ msgstr "Leider"
-
-#, fuzzy
-#~ msgid "Thursagan"
-#~ msgstr "Beurt"
-
-#, fuzzy
-#~ msgid "scepter of fire"
-#~ msgstr "vuurrobijn"
-
-#~ msgid "stones"
-#~ msgstr "versteent"
-
-#~ msgid "female^stone"
-#~ msgstr "versteen"
-
-#~ msgid "stone"
-#~ msgstr "versteen"
-
-#~ msgid "stone: "
-#~ msgstr "steen: "
+#~ msgid "Do you still want to download it?"
+#~ msgstr "Wilt je het nog steeds downloaden?"
 
 #~ msgid " included from "
 #~ msgstr " geïncludeerd vanuit "
 
 #~ msgid "Mute an observer."
 #~ msgstr "Demp een observator."
-
-#~ msgid "The replay could not be saved"
-#~ msgstr "De herhaling kon niet worden opgeslagen"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "Ongecontroleerde scriptbestanden gevonden:"
@@ -10387,6 +10374,9 @@ msgstr "Samenvattingen uploaden aan"
 #~ msgstr ""
 #~ " Deze eenheid beschikt over de basisvaardigheden van de geneeskunst en "
 #~ "kan de effecten van gif slechts vertragen, niet genezen."
+
+#~ msgid "ruby of fire"
+#~ msgstr "vuurrobijn"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "

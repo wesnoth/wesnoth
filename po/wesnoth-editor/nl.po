@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-11 18:00+0200\n"
-"PO-Revision-Date: 2009-03-11 17:22+0100\n"
+"PO-Revision-Date: 2009-07-12 03:21+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
@@ -99,13 +99,13 @@ msgstr "speciaal"
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 #: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
 "Gebruik links/rechts muis knop om voor-/achtergrond terrein te tekenen. Houd "
-"Shift ingedrukt om alleen het basis layer te tekenen"
+"Shift ingedrukt om alleen het basis layer te tekenen. Ctrl+klik om het "
+"terrein onder de cursor over te nemen."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -268,17 +268,19 @@ msgstr "Kaart opgeslagen."
 
 #: src/editor2/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Ingebedde kaartdata geladen"
 
 #: src/editor2/editor_controller.cpp:689 src/editor2/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Kaart geladen uit scenario"
 
 #: src/editor2/editor_controller.cpp:699
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Geladen gerefereerde kaartbestand:\n"
+"$new"
 
 #: src/editor2/editor_controller.cpp:1089
 msgid "Undo"
@@ -334,23 +336,23 @@ msgstr "BG"
 
 #: src/editor2/map_context.cpp:70
 msgid "File not found"
-msgstr ""
+msgstr "Bestand niet gevonden"
 
 #: src/editor2/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
+"naar een bestaand bestand"
 
 #: src/editor2/map_context.cpp:99
-#, fuzzy
 msgid "Empty map file"
-msgstr "Leeg kaartbestand of bestand niet gevonden"
+msgstr "Leeg kaartbestand"
 
 #: src/editor2/map_context.cpp:219
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "Kaart opslaan mislukt: $msg"
+msgstr "Kaart opslaan in scenario mislukt"
 
 #: src/editor2/map_context.cpp:226
 msgid "Could not save the map: $msg"
