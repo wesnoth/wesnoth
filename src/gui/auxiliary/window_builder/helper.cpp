@@ -17,6 +17,7 @@
 #include "gui/auxiliary/window_builder/helper.hpp"
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
@@ -57,35 +58,21 @@ unsigned get_h_align(const std::string& h_align)
 
 unsigned get_border(const std::vector<std::string>& border)
 {
-	if(std::find(border.begin(), border.end(), std::string("all"))
-				!= border.end()) {
-
-		return tgrid::BORDER_TOP
-			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
-	} else {
-		if(std::find(border.begin(), border.end(), std::string("top"))
-				!= border.end()) {
-
-			return tgrid::BORDER_TOP;
-		}
-		if(std::find(border.begin(), border.end(), std::string("bottom"))
-				!= border.end()) {
-
-			return tgrid::BORDER_BOTTOM;
-		}
-		if(std::find(border.begin(), border.end(), std::string("left"))
-				!= border.end()) {
-
-			return tgrid::BORDER_LEFT;
-		}
-		if(std::find(border.begin(), border.end(), std::string("right"))
-				!= border.end()) {
-
-			return tgrid::BORDER_RIGHT;
+	unsigned result = 0;
+	foreach (const std::string& s, border) {
+		if (s == "all") {
+			return tgrid::BORDER_ALL;
+		} else if (s == "top") {
+			result |= tgrid::BORDER_TOP;
+		} else if (s == "bottom") {
+			result |= tgrid::BORDER_BOTTOM;
+		} else if (s == "left") {
+			result |= tgrid::BORDER_LEFT;
+		} else if (s == "right") {
+			result |= tgrid::BORDER_RIGHT;
 		}
 	}
-
-	return 0;
+	return result;
 }
 
 unsigned read_flags(const config& cfg)
