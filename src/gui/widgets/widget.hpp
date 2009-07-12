@@ -671,6 +671,30 @@ T* NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
 	return result;
 }
 
+/**
+ * Gets a widget with the wanted id.
+ *
+ * This template function doesn't return a reference to a generic widget but
+ * returns a reference to the wanted type
+ *
+ * @param widget              The widget test or find a child with the wanted
+ *                            id.
+ * @param id                  The id of the widget to find.
+ * @param must_be_active      The widget should be active, not all widgets
+ *                            have an active flag, those who don't ignore
+ *                            flag.
+ *
+ * @returns                   The widget with the id.
+ */
+template<class T>
+T& NEW_find_widget(typename tconst_duplicator<T, twidget>::type* widget
+		, const std::string& id
+		, const bool must_be_active)
+{
+	return *NEW_find_widget<T>(widget, id, must_be_active, true);
+}
+
 } // namespace gui2
 
 #endif
+
