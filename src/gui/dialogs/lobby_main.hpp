@@ -31,6 +31,7 @@ class tlistbox;
 class ttext_box;
 class twindow;
 class tmulti_page;
+class ttoggle_button;
 
 struct tlobby_chat_window
 {
@@ -249,6 +250,10 @@ private:
 
 	bool chat_input_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
 
+	void game_filter_change_callback(twindow& window);
+
+	bool game_filter_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
@@ -279,6 +284,16 @@ private:
 	std::vector<tlobby_chat_window> open_windows_;
 
 	size_t active_window_;
+
+	ttoggle_button* filter_friends_;
+
+	ttoggle_button* filter_foes_;
+
+	ttoggle_button* filter_slots_;
+
+	ttoggle_button* filter_invert_;
+
+	ttext_box* filter_text_;
 };
 
 } // namespace gui2

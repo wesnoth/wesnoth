@@ -28,6 +28,8 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+static lg::log_domain log_engine("engine");
+#define WRN_NG LOG_STREAM(warn, log_engine)
 
 chat_message::chat_message(const time_t& timestamp, const std::string& user, const std::string& message)
 : timestamp(timestamp), user(user), message(message)
@@ -150,7 +152,9 @@ game_info::game_info() :
 	use_map_settings(false),
 	verified(false),
 	password_required(false),
-	have_era(false)
+	have_era(false),
+	has_friends(false),
+	has_no_foes(true)
 {
 }
 
@@ -201,6 +205,8 @@ game_info::game_info(const config& game, const config& game_config)
 , verified(true)
 , password_required(game["password"] == "yes")
 , have_era(true)
+, has_friends(false)
+, has_no_foes(true)
 {
 	std::string turn = game["turn"];
 	std::string slots = game["slots"];
@@ -384,6 +390,20 @@ bool game_filter_string_part::match(const game_info &game) const
 		chars_equal_insensitive) != gs.end();
 }
 
+bool game_filter_general_string_part::match(const game_info &game) const
+{
+	const std::string& s1 = game.map_info;
+	const std::string& s2 = game.name;
+	return
+		std::search(
+			s1.begin(), s1.end(), value_.begin(), value_.end(), chars_equal_insensitive
+		) != s1.end()
+	    ||
+		std::search(
+			s2.begin(), s2.end(), value_.begin(), value_.end(), chars_equal_insensitive
+		) != s2.end();
+}
+
 lobby_info::lobby_info(const config& game_config)
 : game_config_(game_config), gamelist_(), gamelist_initialized_(false)
 , rooms_(), games_(), games_filtered_(), users_()
@@ -422,6 +442,30 @@ void lobby_info::parse_gamelist()
 	games_.clear();
 	foreach (const config& c, gamelist_.child("gamelist").child_range("game")) {
 		games_.push_back(game_info(c, game_config_));
+	}
+	games_by_id_.clear();
+	foreach (game_info& gi, games_) {
+		games_by_id_.insert(std::make_pair(gi.id, &gi));
+	}
+	foreach (user_info& ui, users_) {
+		if (!ui.game_id.empty()) {
+			std::map<std::string, game_info*>::iterator i = games_by_id_.find(ui.game_id);
+			if (i == games_by_id_.end()) {
+				WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << "\n";
+			} else {
+				game_info& g = *i->second;
+				switch (ui.relation) {
+					case user_info::FRIEND:
+						g.has_friends = true;
+						break;
+					case user_info::IGNORED:
+						g.has_no_foes = false;
+						break;
+					default:
+						break;
+				}
+			}
+		}
 	}
 }
 
@@ -464,7 +508,7 @@ void lobby_info::close_room(const std::string &name)
 	}
 }
 
-const std::vector<game_info>& lobby_info::games_filtered()
+const std::vector<game_info*>& lobby_info::games_filtered()
 {
 	return games_filtered_;
 }
@@ -487,11 +531,15 @@ void lobby_info::set_game_filter_invert(bool value)
 void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
-	if (game_filter_invert_) {
-		std::remove_copy_if(games_.begin(), games_.end(),
-			std::back_inserter(games_filtered_), game_filter_);
-	} else {
-		std::remove_copy_if(games_.begin(), games_.end(),
-			std::back_inserter(games_filtered_), std::not1(game_filter_));
+	foreach (game_info& gi, games_) {
+		if (game_filter_invert_) {
+			if (!game_filter_.match(gi)) {
+				games_filtered_.push_back(&gi);
+			}
+		} else {
+			if (game_filter_.match(gi)) {
+				games_filtered_.push_back(&gi);
+			}
+		}
 	}
 }

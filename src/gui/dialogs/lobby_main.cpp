@@ -24,6 +24,7 @@
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 
 #include "foreach.hpp"
 #include "lobby_data.hpp"
@@ -234,8 +235,10 @@ void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 void tlobby_main::update_gamelist()
 {
 	gamelistbox_->clear();
-	foreach (const game_info &game, lobby_info_.games())
+	lobby_info_.apply_game_filter();
+	foreach (const game_info *gp, lobby_info_.games_filtered())
 	{
+		const game_info& game = *gp;
 		std::map<std::string, string_map> data;
 
 		add_label_data(data, "name", game.name);
@@ -340,6 +343,23 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(next_window, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
+
+	filter_friends_ = &window.get_widget<ttoggle_button>("filter_with_friends", false);
+	filter_foes_ = &window.get_widget<ttoggle_button>("filter_without_foes", false);
+	filter_slots_ = &window.get_widget<ttoggle_button>("filter_vacant_slots", false);
+	filter_invert_ = &window.get_widget<ttoggle_button>("filter_invert", false);
+	filter_text_= &window.get_widget<ttext_box>("filter_text", false);
+
+	filter_friends_->set_callback_state_change(
+		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+	filter_foes_->set_callback_state_change(
+		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+	filter_slots_->set_callback_state_change(
+		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+	filter_invert_->set_callback_state_change(
+		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+	filter_text_->set_key_press_callback(
+		boost::bind(&tlobby_main::game_filter_keypress_callback, this, _1, _2, _3, _4));
 
 	room_window_open("lobby", true);
 }
@@ -775,6 +795,39 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 		return true;
 	}
 	return false;
+}
+
+bool tlobby_main::game_filter_keypress_callback(twidget* widget, SDLKey key,
+	SDLMod /*mod*/, Uint16 /*unicode*/)
+{
+	if (key == SDLK_RETURN) {
+		game_filter_change_callback(*widget->get_window());
+	}
+	return false;
+}
+
+void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
+{
+	lobby_info_.clear_game_filter();
+
+	foreach (const std::string& s, utils::split(filter_text_->get_value(), ' ')) {
+		lobby_info_.add_game_filter(new game_filter_general_string_part(s));
+	}
+	//TODO: make changing friend/ignore lists trigger a refresh
+	if (filter_friends_->get_value()) {
+		lobby_info_.add_game_filter(
+			new game_filter_value<bool, &game_info::has_friends>(true));
+	}
+	if (filter_foes_->get_value()) {
+		lobby_info_.add_game_filter(
+			new game_filter_value<bool, &game_info::has_no_foes>(true));
+	}
+	if (filter_slots_->get_value()) {
+		lobby_info_.add_game_filter(
+			new game_filter_value<size_t, &game_info::vacant_slots, std::greater<size_t> >(0));
+	}
+	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
+	update_gamelist();
 }
 
 } // namespace gui2

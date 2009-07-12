@@ -139,6 +139,9 @@ struct game_info
 	bool verified;
 	bool password_required;
 	bool have_era;
+
+	bool has_friends;
+	bool has_no_foes;
 };
 
 class game_filter_base : public std::unary_function<game_info, bool>
@@ -147,6 +150,15 @@ public:
 	virtual ~game_filter_base() {}
 	virtual bool match(const game_info& game) const = 0;
 	bool operator()(const game_info& game) const { return match(game); }
+};
+
+template<class T>
+class game_filter_not : public game_filter_base
+{
+public:
+	game_filter_not(const T& t) : t(t) {}
+	bool match(const game_info& game) const { return !t.match(game); }
+	T t;
 };
 
 class game_filter_stack : public game_filter_base
@@ -170,31 +182,33 @@ protected:
 
 class game_filter_and_stack : public game_filter_stack
 {
+public:
 	bool match(const game_info& game) const;
 };
 
 class game_filter_or_stack : public game_filter_stack
 {
+public:
 	bool match(const game_info& game) const;
 };
 
-template <class T>
-class game_filter_value
+template <class T, T game_info::*member, class OP = std::equal_to<T> >
+class game_filter_value: public game_filter_base
 {
 public:
-	game_filter_value(T game_info::*member, T value)
+	game_filter_value(const T& value)
 	: member_(member), value_(value)
 	{
 	}
 
-	bool match(const game_info& game) const { return game.*member_ == value_; }
+	bool match(const game_info& game) const { return OP()(game.*member_,value_); }
 
 private:
 	T game_info::*member_;
 	T value_;
 };
 
-class game_filter_string_part
+class game_filter_string_part : public game_filter_base
 {
 public:
 	game_filter_string_part(std::string game_info::*member, const std::string& value)
@@ -208,6 +222,21 @@ private:
 	std::string game_info::*member_;
 	std::string value_;
 };
+
+class game_filter_general_string_part : public game_filter_base
+{
+public:
+	game_filter_general_string_part(const std::string& value)
+	: value_(value)
+	{
+	}
+
+	bool match(const game_info& game) const;
+private:
+	std::string value_;
+};
+
+
 
 /**
  * This class represents the collective information the client has
@@ -240,7 +269,7 @@ public:
 
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info>& games() const { return games_; }
-	const std::vector<game_info>& games_filtered();
+	const std::vector<game_info*>& games_filtered();
 	const std::vector<user_info>& users() const { return users_; }
 private:
 	void parse_gamelist();
@@ -250,7 +279,8 @@ private:
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;
 	std::vector<game_info> games_;
-	std::vector<game_info> games_filtered_;
+	std::map<std::string, game_info*> games_by_id_;
+	std::vector<game_info*> games_filtered_;
 	std::vector<user_info> users_;
 	std::map<std::string, chat_log> whispers_;
 	game_filter_and_stack game_filter_;
