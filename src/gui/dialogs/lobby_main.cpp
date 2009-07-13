@@ -545,7 +545,9 @@ void tlobby_main::close_window(size_t idx)
 	}
 	open_windows_.erase(open_windows_.begin() + idx);
 	roomlistbox_->remove_row(idx);
+	roomlistbox_->select_row(active_window_);
 	chat_log_container_->remove_page(idx);
+	chat_log_container_->select_page(active_window_);
 	if (active_changed) active_window_changed();
 }
 
