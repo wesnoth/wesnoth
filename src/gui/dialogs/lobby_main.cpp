@@ -236,6 +236,10 @@ void tlobby_main::update_gamelist()
 {
 	gamelistbox_->clear();
 	lobby_info_.apply_game_filter();
+	std::stringstream ss;
+	ss << "Games: Showing " << lobby_info_.games_filtered().size()
+		<< " out of " << lobby_info_.games().size();
+	gamelistbox_->get_widget<tlabel>("map", false).set_label(ss.str());
 	foreach (const game_info *gp, lobby_info_.games_filtered())
 	{
 		const game_info& game = *gp;
@@ -379,6 +383,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 		boost::bind(&tlobby_main::game_filter_keypress_callback, this, _1, _2, _3, _4));
 
 	room_window_open("lobby", true);
+	game_filter_reload();
 }
 
 void tlobby_main::post_show(twindow& /*window*/)
@@ -830,16 +835,7 @@ bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 	return false;
 }
 
-bool tlobby_main::game_filter_keypress_callback(twidget* widget, SDLKey key,
-	SDLMod /*mod*/, Uint16 /*unicode*/)
-{
-	if (key == SDLK_RETURN) {
-		game_filter_change_callback(*widget->get_window());
-	}
-	return false;
-}
-
-void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
+void tlobby_main::game_filter_reload()
 {
 	lobby_info_.clear_game_filter();
 
@@ -860,6 +856,21 @@ void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
 			new game_filter_value<size_t, &game_info::vacant_slots, std::greater<size_t> >(0));
 	}
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
+}
+
+bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
+	SDLMod /*mod*/, Uint16 /*unicode*/)
+{
+	if (key == SDLK_RETURN) {
+		game_filter_reload();
+		update_gamelist();
+	}
+	return false;
+}
+
+void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
+{
+	game_filter_reload();
 	update_gamelist();
 }
 
