@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-11 17:59+0200\n"
-"PO-Revision-Date: 2009-05-10 14:12+0300\n"
+"PO-Revision-Date: 2009-07-13 11:30+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1715,7 +1715,7 @@ msgstr ""
 "\n"
 "\n"
 "У бойцов бывают и другие особенности: <ref>dst='traits_dextrous' "
-"text='ловкий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
+"text='меткий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
 "<ref>dst='traits_undead' text='мертвец'</ref> .\n"
 "\n"
 
@@ -4983,12 +4983,12 @@ msgstr "сильная"
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
-msgstr "ловкий"
+msgstr "меткий"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
 msgid "female^dextrous"
-msgstr "ловкая"
+msgstr "меткая"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
@@ -7293,7 +7293,7 @@ msgstr "Нечего обновлять"
 #: src/addon_management.cpp:724 src/addon_management.cpp:927
 #: src/dialogs.cpp:579 src/menu_events.cpp:192 src/menu_events.cpp:850
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: src/addon_management.cpp:724
 msgid "New version"
@@ -8911,9 +8911,8 @@ msgid "I'm Ready"
 msgstr "Я готов"
 
 #: src/multiplayer_connect.cpp:1031
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Этот сценарий неправильный, потому что в нем нет сторон."
+msgstr "Этот сценарий неправильный, потому что в нём нет id"
 
 #: src/multiplayer_connect.cpp:1035
 msgid "The scenario is invalid because it has no sides."
@@ -9277,9 +9276,9 @@ msgstr "Место начала:"
 #: src/multiplayer_wait.cpp:530
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Золото"
+msgstr[1] "Золото"
+msgstr[2] "Золото"
 
 #: src/network.cpp:104
 msgid "invalid network handle"
@@ -9622,9 +9621,9 @@ msgid "Unexpected closing tag"
 msgstr "Неожиданный закрывающий тэг"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Найден неверный закрывающий тэг $tag2 для тэга $tag (открытого в $pos)"
+msgstr ""
+"Найден неверный закрывающий тэг $tag2 для тэга $tag1 (открытого в $pos)"
 
 #: src/serialization/parser.cpp:243 src/serialization/parser.cpp:255
 msgid "Empty variable name"
@@ -9955,14 +9954,11 @@ msgstr "Помогите нам сделать Веснот лучше!"
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
 
-#~ msgid "Play a campaign"
-#~ msgstr "Играть кампанию"
-
-#~ msgid "Default AI"
-#~ msgstr "AI по умолчанию"
-
 #~ msgid "stones"
 #~ msgstr "камень"
+
+#~ msgid "Play a campaign"
+#~ msgstr "Играть кампанию"
 
 #~ msgid "An invalid weapon is selected, possibly by the Python AI."
 #~ msgstr "Выбрано неверное оружие, возможно, ИИ Python."
@@ -9994,6 +9990,9 @@ msgstr "Включить отправку итогов"
 
 #~ msgid "Remove a trait from a unit. (Does not work yet.)"
 #~ msgstr "Удалить особенность бойца (пока не работает)."
+
+#~ msgid "Default AI"
+#~ msgstr "AI по умолчанию"
 
 #~ msgid "The replay could not be saved"
 #~ msgstr "Повтор не может быть сохранен"
