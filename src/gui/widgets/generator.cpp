@@ -94,6 +94,10 @@ tpoint tvertical_list::calculate_best_size() const
 
 		const tgrid& grid = get_item(i);
 
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
 		const tpoint best_size = grid.get_best_size();
 
 		if(best_size.x > result.x) {
@@ -120,6 +124,10 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
+
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
 
 		tpoint best_size = grid.get_best_size();
 		assert(best_size.x <= size.x);
