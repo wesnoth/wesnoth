@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-12 12:51+0200\n"
-"PO-Revision-Date: 2009-05-10 14:12+0300\n"
+"PO-Revision-Date: 2009-07-13 11:30+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1698,7 +1698,7 @@ msgstr ""
 "\n"
 "\n"
 "У бойцов бывают и другие особенности: <ref>dst='traits_dextrous' "
-"text='ловкий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
+"text='меткий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
 "<ref>dst='traits_undead' text='мертвец'</ref> .\n"
 "\n"
 
@@ -4920,12 +4920,12 @@ msgstr "сильная"
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
-msgstr "ловкий"
+msgstr "меткий"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
 msgid "female^dextrous"
-msgstr "ловкая"
+msgstr "меткая"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
@@ -7195,7 +7195,7 @@ msgstr "Нечего обновлять"
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:644 src/menu_events.cpp:199 src/menu_events.cpp:1009
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: src/addon_management.cpp:726
 msgid "New version"
@@ -8788,9 +8788,8 @@ msgid "I'm Ready"
 msgstr "Я готов"
 
 #: src/multiplayer_connect.cpp:1032
-#, fuzzy
 msgid "The scenario is invalid because it has no id."
-msgstr "Этот сценарий неправильный, потому что в нем нет сторон."
+msgstr "Этот сценарий неправильный, потому что в нём нет id"
 
 #: src/multiplayer_connect.cpp:1036
 msgid "The scenario is invalid because it has no sides."
@@ -9160,9 +9159,9 @@ msgstr "Место начала:"
 #: src/multiplayer_wait.cpp:536
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Золото"
+msgstr[1] "Золото"
+msgstr[2] "Золото"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9434,9 +9433,9 @@ msgid "Unexpected closing tag"
 msgstr "Неожиданный закрывающий тэг"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Найден неверный закрывающий тэг $tag2 для тэга $tag (открытого в $pos)"
+msgstr ""
+"Найден неверный закрывающий тэг $tag2 для тэга $tag1 (открытого в $pos)"
 
 #: src/serialization/parser.cpp:242 src/serialization/parser.cpp:254
 msgid "Empty variable name"
