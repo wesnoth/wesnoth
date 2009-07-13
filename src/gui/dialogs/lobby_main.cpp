@@ -674,17 +674,19 @@ void tlobby_main::observe_button_callback(gui2::twindow &window)
 void tlobby_main::observe_global_button_callback(gui2::twindow &window)
 {
 	LOG_NW << "observe_global_button_callback\n";
-	do_game_join(gamelistbox_->get_selected_row(), true);
-	legacy_result_ = OBSERVE;
-	window.close();
+	if (do_game_join(gamelistbox_->get_selected_row(), true)) {
+		legacy_result_ = OBSERVE;
+		window.close();
+	}
 }
 
 void tlobby_main::join_global_button_callback(gui2::twindow &window)
 {
 	LOG_NW << "join_global_button_callback\n";
-	do_game_join(gamelistbox_->get_selected_row(), false);
-	legacy_result_ = JOIN;
-	window.close();
+	if (do_game_join(gamelistbox_->get_selected_row(), false)) {
+		legacy_result_ = JOIN;
+		window.close();
+	}
 }
 
 bool tlobby_main::do_game_join(int idx, bool observe)
