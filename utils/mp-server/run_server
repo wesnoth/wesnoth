@@ -81,6 +81,6 @@ do
 	# check for return code if not zero or 98 (port in use) the server should be restarted
 	case $EXIT_CODE in
 	0)   exit ;;
-	98)  dietail ;; #Could not bind to port
+	98|127|128) dietail ;; #Could not bind to port #Command not found #Invalid argument to exit
 	esac
 done
