@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 
 #include "gui/widgets/button.hpp"

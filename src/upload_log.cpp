@@ -19,8 +19,6 @@
 
 #include "global.hpp"
 
-#define GETTEXT_DOMAIN "wesnoth"
-
 #include "upload_log.hpp"
 
 #include "construct_dialog.hpp"

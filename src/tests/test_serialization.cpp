@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+
+#define GETTEXT_DOMAIN "wesnoth-test"
+
 #include <vector>
 #include <string>
 #include "serialization/string_utils.hpp"
