@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2009-04-26 11:39+0300\n"
-"PO-Revision-Date: 2009-03-21 15:08+0100\n"
+"PO-Revision-Date: 2009-07-12 18:04+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 # type: TH
@@ -189,7 +189,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor \\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e,\\ --editor>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:74
@@ -197,6 +197,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"avvia il gioco direttamente dall'editor per le partite. Se I<file> è "
+"specificato, equivale a B<-e --load>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:74
@@ -438,6 +440,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"si connette al server specificato se fornito, se no si connette al primo "
+"server delle preferenze. Esempio: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:158
@@ -1059,7 +1063,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<percorso_salvataggio_replay>"
 
 #: ../../doc/man/wesnothd.6:143
 msgid ""
@@ -1067,6 +1071,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"La directory in cui il server conserva i replay delle partite (Non "
+"dimenticare la barra «/» alla fine!). In assenza di modifiche, vale «», che "
+"significa la directory da cui è stato eseguito wesnothd."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1084,13 +1091,15 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<salva_replays>"
 
 #: ../../doc/man/wesnothd.6:149
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"Definisce se il server salverà automaticamente i replay delle partite. "
+"(normalmente: B<false>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:149
@@ -1328,6 +1337,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(per user_handler=sample) Il tempo dopo cui un nome registrato scade (in "
+"giorni)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:231
@@ -1412,152 +1423,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:266
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "start the in-game map editor directly."
-#~ msgstr "avvia direttamente dal gioco l'editor delle mappe."
-
-# type: TP
-#~ msgid "B<--python-api>"
-#~ msgstr "B<--python-api>"
-
-# type: Plain text
-#~ msgid "prints the runtime documentation for the python API."
-#~ msgstr "stampa la documentazione del runtime per le API di python."
-
-# type: TP
-#~ msgid "B<--python-shell>"
-#~ msgstr "B<--python-shell>"
-
-# type: Plain text
-#~ msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-#~ msgstr "invoca l'interprete di python integrato in modalità interattiva."
-
-# type: TP
-#~ msgid ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-#~ msgstr ""
-#~ "Esempio per il test della tua IA contro l'IA predefinita senza avviare la "
-#~ "GUI:"
-
-# type: Plain text
-#~ msgid ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-#~ msgstr ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Editor di mappe di Battle of Wesnoth"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Editor per le mappe di Battle of Wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<OPZIONI>] [I<MAPPA>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Editor per le mappe di Battle for B<Wesnoth>."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ numero"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr "seleziona la cartella dati da utilizzare."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "carica l'editor in modalità schermo intero"
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: TP
-#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-#~ msgstr "B<--log->levelB<=>dominio1B<,>dominio2B<,>..."
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr "imposta la risoluzione dello schermo. Esempio: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "visualizza il numero di versione ed esce."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "Carica l'editor in una finestra"
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Edito da Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ed ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "carica il file partitasalvata dalla cartella standard di salvataggio."
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ infile\\ outfile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "comprime un file di salvataggio (I<infile>) in formato WML testuale in "
-#~ "formato WML binario (I<outfile>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "decomprime un file di salvataggio (I<infile>) in formato WML binario in "
-#~ "formato WML testuale (I<outfile>)."
