@@ -288,6 +288,7 @@ void tlobby_main::update_gamelist()
 		set_visible_if_exists(grid, "reloaded", game.reloaded);
 		set_visible_if_exists(grid, "started", game.started);
 		set_visible_if_exists(grid, "use_map_settings", game.use_map_settings);
+		set_visible_if_exists(grid, "no_era", !game.have_era);
 
 		tbutton* join_button = dynamic_cast<tbutton*>(grid->find_widget("join", false));
 		if (join_button) {
