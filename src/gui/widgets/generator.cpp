@@ -55,7 +55,7 @@ void tone::delete_item(const unsigned index)
 				// Is the last item deselected?
 				if(index == item_count - 1) {
 					// Select the second last.
-					do_select_item(index - 2);
+					do_select_item(index - 1);
 				} else {
 					// Select the next item.
 					do_select_item(index + 1);
