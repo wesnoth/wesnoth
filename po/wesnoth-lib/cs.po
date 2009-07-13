@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-13 20:19+0200\n"
 "PO-Revision-Date: 2009-03-29 14:57+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -605,7 +605,7 @@ msgstr "Připojit"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
-#: data/gui/default/window/campaign_dialog.cfg:294
+#: data/gui/default/window/campaign_dialog.cfg:304
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
@@ -632,7 +632,7 @@ msgstr "Tažení"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:280
+#: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:327
 #: data/gui/default/window/game_load.cfg:328
@@ -753,7 +753,7 @@ msgstr "Nastavení osvětlení / denní doby"
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:385
+#: data/gui/default/window/lobby_main.cfg:448
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Další"
@@ -908,13 +908,40 @@ msgstr "Změnit jazyk"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:372
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Hra více hráčů"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:391
+#, fuzzy
+msgid "Filter:"
+msgstr "Soubor: "
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:402
+#, fuzzy
+msgid "Friends"
+msgstr "Seznam přátel"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:408
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:414
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:420
+msgid "Invert filter"
+msgstr ""
+
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:379
+#: data/gui/default/window/lobby_main.cfg:442
 #, fuzzy
 msgid "Send"
 msgstr "Písek"
@@ -922,7 +949,7 @@ msgstr "Písek"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:391
+#: data/gui/default/window/lobby_main.cfg:454
 #: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Zavřít"
@@ -930,7 +957,7 @@ msgstr "Zavřít"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/lobby_main.cfg:466
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -939,32 +966,32 @@ msgstr "Konec"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:408
+#: data/gui/default/window/lobby_main.cfg:472
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Nastavení"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:414
+#: data/gui/default/window/lobby_main.cfg:478
 #, fuzzy
 msgid "Refresh"
 msgstr "Obnovit pohled"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:420
+#: data/gui/default/window/lobby_main.cfg:484
 #, fuzzy
 msgid "Join"
 msgstr "Uživatel:"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:426
+#: data/gui/default/window/lobby_main.cfg:490
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:432
+#: data/gui/default/window/lobby_main.cfg:496
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Vytvoř hru"
@@ -972,7 +999,7 @@ msgstr "Vytvoř hru"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:438
+#: data/gui/default/window/lobby_main.cfg:502
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Nápověda"
@@ -1809,17 +1836,10 @@ msgstr "Není definována žádná mřížka."
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
 #, fuzzy
 msgid "No stack defined."
 msgstr "Nebyl definován žádný seznam."
-
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:57
-#, fuzzy
-msgid ""
-"'stack_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
-"'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
 #: src/gui/dialogs/game_load.cpp:139
 msgid "#(Invalid)"
@@ -1886,7 +1906,7 @@ msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 msgid "No state or draw section defined."
 msgstr "Není definován stav či region vykreslení."
 
-#: src/gui/widgets/window.cpp:705
+#: src/gui/widgets/window.cpp:705 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 
@@ -2487,6 +2507,13 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+
+#, fuzzy
+#~ msgid ""
+#~ "'stack_data' must have the same number of columns as the "
+#~ "'list_definition'."
+#~ msgstr ""
+#~ "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Gama korekce"

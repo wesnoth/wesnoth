@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:02+0200\n"
+"POT-Creation-Date: 2009-07-13 20:20+0200\n"
 "PO-Revision-Date: 2009-02-06 22:44+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -226,12 +226,12 @@ msgstr ""
 #: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:31
 #: data/core/units/nagas/Fighter.cfg:90 data/core/units/drakes/Flare.cfg:83
-#: data/core/units/drakes/Enforcer.cfg:66
+#: data/core/units/drakes/Enforcer.cfg:78
 #: data/core/units/drakes/Warrior.cfg:73
-#: data/core/units/drakes/Gladiator.cfg:66
+#: data/core/units/drakes/Gladiator.cfg:78
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
-#: data/core/units/drakes/Clasher.cfg:77
+#: data/core/units/drakes/Clasher.cfg:89
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_General.cfg:56
@@ -305,9 +305,9 @@ msgstr ""
 #: data/core/units/merfolk/Spearman.cfg:32
 #: data/core/units/merfolk/Javelineer.cfg:25
 #: data/core/units/merfolk/Javelineer.cfg:33
-#: data/core/units/drakes/Enforcer.cfg:84
-#: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:86
+#: data/core/units/drakes/Enforcer.cfg:96
+#: data/core/units/drakes/Gladiator.cfg:87
+#: data/core/units/drakes/Clasher.cfg:98
 #: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
@@ -337,9 +337,15 @@ msgstr ""
 "borította be őket."
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Enforcer.cfg:75
-#: data/core/units/drakes/Gladiator.cfg:84
+#: data/core/units/drakes/Enforcer.cfg:87
+#: data/core/units/drakes/Gladiator.cfg:96
 #: data/core/units/humans/Royal_Warrior.cfg:35
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:41
 msgid "mace"
 msgstr "buzogány"
 
@@ -427,21 +433,13 @@ msgstr "Perzsekény gladiátor"
 #. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
-"The Gladiator has taken a completely different path from the Slashers. "
-"Rather than emphasize training, they have chosen to focus on the craft of "
-"their weaponry. They are the smiths of Drake society, and it follows that "
-"they possess the best weaponry - the sharpest blades and spears, and the "
-"maces which complement their already impressive array. Their intense focus "
-"on their weapons confers offensive capability at the cost of a slight "
-"reduction in their defensive abilities."
+"Instead of letting themselves be bound by their armor, Gladiators have "
+"learned to redirect its weight to supplement their bodies' momentum, adding "
+"power to the blows of their short spears and hand-mounted claws. Equipment "
+"and body are one; even their thick helms and the thick skulls beneath them "
+"are weapons. A Gladiator will gladly fulfill his caste duties, as long as it "
+"can be done on the battlefield."
 msgstr ""
-"A gladiátor teljesen máshogy fejlődik, mint a vagdalkozó. Ahelyett, hogy a "
-"kiképzésre fektetnének hangsúlyt, elsősorban a fegyverzetük kifejlesztésére "
-"összpontosítanak. Ők a perzsekény társadalom kovácsai, így övék a legjobb "
-"fegyverek - a legélesebb pengék és lándzsák, és a buzogány, ami kiegészíti "
-"az amúgy is kiemelkedő arzenáljukat. A fegyvereikre való erős "
-"összpontosítással félelmetes támadó képességet szereztek a védekezés csekély "
-"hátrányára."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -515,9 +513,10 @@ msgstr "Fellegperzsekény"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:27
+#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
-"stooping dive and and their fire breath combine into a terrible weapon. By "
+"stooping dive and their fire breath combine into a terrible weapon. By "
 "attacking from the air, they can spit fire with great precision into "
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
@@ -550,8 +549,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Warden.cfg:75 data/core/units/drakes/Warden.cfg:84
-#: data/core/units/drakes/Slasher.cfg:69 data/core/units/drakes/Slasher.cfg:78
+#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
+#: data/core/units/drakes/Slasher.cfg:41 data/core/units/drakes/Slasher.cfg:50
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
@@ -680,7 +679,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:31
+#: data/core/units/dwarves/Explorer.cfg:32
 #: data/core/units/dwarves/Steelclad.cfg:42
 #: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
@@ -688,10 +687,10 @@ msgid "battle axe"
 msgstr "csatabárd"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Scout.cfg:26 data/core/units/dwarves/Scout.cfg:34
-#: data/core/units/dwarves/Pathfinder.cfg:27
-#: data/core/units/dwarves/Pathfinder.cfg:35
-#: data/core/units/dwarves/Explorer.cfg:40
+#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
+#: data/core/units/dwarves/Pathfinder.cfg:29
+#: data/core/units/dwarves/Pathfinder.cfg:37
+#: data/core/units/dwarves/Explorer.cfg:41
 #: data/core/units/dwarves/Fighter.cfg:47
 #: data/core/units/undead/Skele_Deathblade.cfg:149
 #: data/core/units/undead/Skele_Revenant.cfg:30
@@ -2203,17 +2202,6 @@ msgstr ""
 "védelmi vonal közepén csatarendbe állítva jelentősen megnövelik a vonal "
 "erejét."
 
-#. [attack]: type=impact
-#: data/core/units/humans/Mage_of_Light.cfg:111
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-#: data/core/units/humans/Outlaw_Fugitive.cfg:41
-msgid "morning star"
-msgstr "tüskés buzogány"
-
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
@@ -2839,6 +2827,11 @@ msgstr ""
 "fáradhatatlanul dolgoznak, hogy életet és rendet teremtsenek a világban, "
 "amelyben élnek. A fénymágus nagyszerű segítőtársa az igazságos harcosoknak, "
 "és rettegett ellensége a törvényteleneknek."
+
+#. [attack]: type=impact
+#: data/core/units/humans/Mage_of_Light.cfg:111
+msgid "morning star"
+msgstr "tüskés buzogány"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:245
@@ -3997,9 +3990,10 @@ msgstr "Ork íjász"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
+#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
-"especially youths and and those of slight build, are pragmatic enough to use "
+"especially youths and those of slight build, are pragmatic enough to use "
 "them in spite of this. Orcish archers are seldom well equipped, and have no "
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
@@ -5232,6 +5226,23 @@ msgstr ""
 "A fapásztorok a végletekig békések, de hatalmas erő birtokosai. Amikor "
 "helyet kell változtatniuk, mindig kiderül, hogy mennyire lassan teszik ezt a "
 "számukra szokatlan műveletet."
+
+#~ msgid ""
+#~ "The Gladiator has taken a completely different path from the Slashers. "
+#~ "Rather than emphasize training, they have chosen to focus on the craft of "
+#~ "their weaponry. They are the smiths of Drake society, and it follows that "
+#~ "they possess the best weaponry - the sharpest blades and spears, and the "
+#~ "maces which complement their already impressive array. Their intense "
+#~ "focus on their weapons confers offensive capability at the cost of a "
+#~ "slight reduction in their defensive abilities."
+#~ msgstr ""
+#~ "A gladiátor teljesen máshogy fejlődik, mint a vagdalkozó. Ahelyett, hogy "
+#~ "a kiképzésre fektetnének hangsúlyt, elsősorban a fegyverzetük "
+#~ "kifejlesztésére összpontosítanak. Ők a perzsekény társadalom kovácsai, "
+#~ "így övék a legjobb fegyverek - a legélesebb pengék és lándzsák, és a "
+#~ "buzogány, ami kiegészíti az amúgy is kiemelkedő arzenáljukat. A "
+#~ "fegyvereikre való erős összpontosítással félelmetes támadó képességet "
+#~ "szereztek a védekezés csekély hátrányára."
 
 #~ msgid ""
 #~ "A Drake Clasher is incapable of either flight and fire-breathing, and "

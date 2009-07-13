@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-13 20:19+0200\n"
 "PO-Revision-Date: 2009-03-27 22:50-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -591,7 +591,7 @@ msgstr "连接"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
-#: data/gui/default/window/campaign_dialog.cfg:294
+#: data/gui/default/window/campaign_dialog.cfg:304
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
@@ -618,7 +618,7 @@ msgstr "战役"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:280
+#: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:327
 #: data/gui/default/window/game_load.cfg:328
@@ -737,7 +737,7 @@ msgstr "使用预设时间系统"
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:385
+#: data/gui/default/window/lobby_main.cfg:448
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "下一个"
@@ -891,13 +891,41 @@ msgid "Change language"
 msgstr "切换语言"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:372
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "多人游戏"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:391
+#, fuzzy
+msgid "Filter:"
+msgstr "文件:"
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:402
+#, fuzzy
+msgid "Friends"
+msgstr "好友列表"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:408
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:414
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:420
+#, fuzzy
+msgid "Invert filter"
+msgstr "旋转选择区域"
+
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:379
+#: data/gui/default/window/lobby_main.cfg:442
 #, fuzzy
 msgid "Send"
 msgstr "沙地"
@@ -905,7 +933,7 @@ msgstr "沙地"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:391
+#: data/gui/default/window/lobby_main.cfg:454
 #: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "关闭"
@@ -913,7 +941,7 @@ msgstr "关闭"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/lobby_main.cfg:466
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -922,32 +950,32 @@ msgstr "退出"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:408
+#: data/gui/default/window/lobby_main.cfg:472
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "选项"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:414
+#: data/gui/default/window/lobby_main.cfg:478
 #, fuzzy
 msgid "Refresh"
 msgstr "刷新显示"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:420
+#: data/gui/default/window/lobby_main.cfg:484
 #, fuzzy
 msgid "Join"
 msgstr "登录"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:426
+#: data/gui/default/window/lobby_main.cfg:490
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:432
+#: data/gui/default/window/lobby_main.cfg:496
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "创建游戏"
@@ -955,7 +983,7 @@ msgstr "创建游戏"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:438
+#: data/gui/default/window/lobby_main.cfg:502
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "帮助"
@@ -1776,17 +1804,10 @@ msgstr "网格未定义"
 msgid "The number of value_labels and values don't match."
 msgstr "value_labels （值标签）与 values (值) 数量不匹配。"
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
 #, fuzzy
 msgid "No stack defined."
 msgstr "列表未定义"
-
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:57
-#, fuzzy
-msgid ""
-"'stack_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
-"'list_data' (列表数据) 与 'list_definition' （列表定义）中栏目数量必须一致。"
 
 #: src/gui/dialogs/game_load.cpp:139
 msgid "#(Invalid)"
@@ -1853,7 +1874,7 @@ msgstr "Widget 定义 '$definition' 不包含 '$id' 的定义。"
 msgid "No state or draw section defined."
 msgstr "状态或绘制区域未定义"
 
-#: src/gui/widgets/window.cpp:705
+#: src/gui/widgets/window.cpp:705 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示一个对话框，屏幕大小不适。"
 
@@ -2450,6 +2471,14 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
 
+#, fuzzy
+#~ msgid ""
+#~ "'stack_data' must have the same number of columns as the "
+#~ "'list_definition'."
+#~ msgstr ""
+#~ "'list_data' (列表数据) 与 'list_definition' （列表定义）中栏目数量必须一"
+#~ "致。"
+
 #~ msgid "Adjust Gamma"
 #~ msgstr "调整亮度"
 
@@ -2523,10 +2552,6 @@ msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
 
 #~ msgid "Delay transition updates"
 #~ msgstr "暂缓刷新战争迷雾"
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "旋转选择区域"
 
 #~ msgid "Cave Lit"
 #~ msgstr "明亮的洞穴"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-13 20:19+0200\n"
 "PO-Revision-Date: 2008-12-09 21:18+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -592,7 +592,7 @@ msgstr "Conectar"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
-#: data/gui/default/window/campaign_dialog.cfg:294
+#: data/gui/default/window/campaign_dialog.cfg:304
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
@@ -619,7 +619,7 @@ msgstr "Campaña"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:280
+#: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:327
 #: data/gui/default/window/game_load.cfg:328
@@ -740,7 +740,7 @@ msgstr ""
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:385
+#: data/gui/default/window/lobby_main.cfg:448
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Seguinte"
@@ -895,13 +895,40 @@ msgid "Change language"
 msgstr "Cambiar a lingua"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:304
+#: data/gui/default/window/lobby_main.cfg:372
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Multixogador"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:391
+#, fuzzy
+msgid "Filter:"
+msgstr "Ficheiro: "
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:402
+#, fuzzy
+msgid "Friends"
+msgstr "Lista de amigos"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:408
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:414
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:420
+msgid "Invert filter"
+msgstr ""
+
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:379
+#: data/gui/default/window/lobby_main.cfg:442
 #, fuzzy
 msgid "Send"
 msgstr "Area"
@@ -909,7 +936,7 @@ msgstr "Area"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:391
+#: data/gui/default/window/lobby_main.cfg:454
 #: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Pechar"
@@ -917,7 +944,7 @@ msgstr "Pechar"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/lobby_main.cfg:466
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -926,31 +953,31 @@ msgstr "Saír"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:408
+#: data/gui/default/window/lobby_main.cfg:472
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Preferencias"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:414
+#: data/gui/default/window/lobby_main.cfg:478
 #, fuzzy
 msgid "Refresh"
 msgstr "Modo de _visualización"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:420
+#: data/gui/default/window/lobby_main.cfg:484
 msgid "Join"
 msgstr ""
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:426
+#: data/gui/default/window/lobby_main.cfg:490
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:432
+#: data/gui/default/window/lobby_main.cfg:496
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Crear partida"
@@ -958,7 +985,7 @@ msgstr "Crear partida"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:438
+#: data/gui/default/window/lobby_main.cfg:502
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Axuda"
@@ -1796,15 +1823,10 @@ msgstr "Non se definiu ningunha reixa."
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
 #, fuzzy
 msgid "No stack defined."
 msgstr "Non se definiu ningunha lista."
-
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:57
-msgid ""
-"'stack_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:139
 msgid "#(Invalid)"
@@ -1873,7 +1895,7 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr "Non se definiu un servidor."
 
-#: src/gui/widgets/window.cpp:705
+#: src/gui/widgets/window.cpp:705 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
