@@ -98,6 +98,8 @@ protected:
 	virtual void add_chat_room_message_received(const std::string& room,
 		const std::string& speaker, const std::string& message);
 private:
+	void update_selected_game();
+
 	/**
 	 * Append some text to the active chat log
 	 */
@@ -253,6 +255,8 @@ private:
 	void game_filter_change_callback(twindow& window);
 
 	bool game_filter_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
+
+	void gamelist_change_callback(twindow& window);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);

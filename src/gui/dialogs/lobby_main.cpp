@@ -289,11 +289,13 @@ void tlobby_main::update_gamelist()
 		if (join_button) {
 			join_button->set_callback_mouse_left_click(
 				dialog_callback<tlobby_main, &tlobby_main::join_button_callback>);
+			join_button->set_active(game.can_join());
 		}
 		tbutton* observe_button = dynamic_cast<tbutton*>(grid->find_widget("observe", false));
 		if (observe_button) {
 			observe_button->set_callback_mouse_left_click(
 				dialog_callback<tlobby_main, &tlobby_main::observe_button_callback>);
+			observe_button->set_active(game.can_observe());
 		}
 		tminimap* minimap = dynamic_cast<tminimap*>(grid->find_widget("minimap", false));
 		if (minimap) {
@@ -301,6 +303,7 @@ void tlobby_main::update_gamelist()
 			minimap->set_map_data(game.map_data);
 		}
 	}
+	update_selected_game();
 	userlistbox_->clear();
 	foreach (const user_info& user, lobby_info_.users())
 	{
@@ -311,6 +314,19 @@ void tlobby_main::update_gamelist()
 	window_->invalidate_layout();
 }
 
+void tlobby_main::update_selected_game()
+{
+	int idx = gamelistbox_->get_selected_row();
+	bool can_join = false, can_observe = false;
+	if (idx >= 0) {
+		const game_info& game = *lobby_info_.games_filtered()[idx];
+		can_observe = game.can_observe();
+		can_join = game.can_join();
+	}
+	window_->get_widget<tbutton>("observe_global", false).set_active(can_observe);
+	window_->get_widget<tbutton>("join_global", false).set_active(can_join);
+}
+
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 {
 	roomlistbox_ = &window.get_widget<tlistbox>("room_list", false);
@@ -319,6 +335,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	gamelistbox_ = dynamic_cast<tlistbox*>(window.find_widget("game_list", false));
 	VALIDATE(gamelistbox_, missing_widget("game_list"));
+	gamelistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::gamelist_change_callback>);
 
 	userlistbox_ = dynamic_cast<tlistbox*>(window.find_widget("user_list", false));
 	VALIDATE(userlistbox_, missing_widget("user_list"));
@@ -693,20 +710,30 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
-	if (idx < 0 || idx > static_cast<int>(lobby_info_.games().size())) {
+	if (idx < 0 || idx > static_cast<int>(lobby_info_.games_filtered().size())) {
 		ERR_NG << "Requested join/observe of a game with index out of range: "
-			<< idx << ", games size is " << lobby_info_.games().size() << "\n";
+			<< idx << ", games size is " << lobby_info_.games_filtered().size() << "\n";
 		return false;
 	}
-	const game_info& game = lobby_info_.games()[idx];
-
+	const game_info& game = *lobby_info_.games_filtered()[idx];
+	if (observe) {
+		if (!game.can_observe()) {
+			ERR_NG << "Requested observe of a game with observers disabled\n";
+			return false;
+		}
+	} else {
+		if (!game.can_join()) {
+			ERR_NG << "Requested join to a game with no vacant slots\n";
+			return false;
+		}
+	}
 	config response;
 	config& join = response.add_child("join");
 	join["id"] = game.id;
 	join["observe"] = observe ? "yes" : "no";
 	if (join && game.password_required) {
 		std::string password;
-		/*
+		/*TODO
 		const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
 		          _("Joining this game requires a password."),
 		          gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
@@ -834,6 +861,11 @@ void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
 	}
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value());
 	update_gamelist();
+}
+
+void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
+{
+	update_selected_game();
 }
 
 } // namespace gui2
