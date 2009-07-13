@@ -23,24 +23,10 @@
 template <typename T>
 struct shared_node {
 	T val;
-	unsigned long count;
+	mutable unsigned long count;
 	shared_node() : val(), count(0) { }
 	shared_node(const T& o) : val(o), count(0) { }
 	static const unsigned long max_count = ULONG_MAX;
-};
-
-struct increment_count {
-	template <typename T>
-	void operator()(T& o) {
-		++o.count;
-	}
-};
-
-struct decrement_count {
-	template <typename T>
-	void operator()(T& o) {
-		--o.count;
-	}
 };
 
 template <typename T>
@@ -55,14 +41,14 @@ class shared_object {
 public:
 	typedef T type;
 
-	shared_object() : val_(index().end()) { set(T()); }
+	shared_object() : val_(0) { set(T()); }
 
 	template <typename U>
-	shared_object(const U& o) : val_(index().end()) { set(o); }
+	shared_object(const U& o) : val_(0) { set(o); }
 
 	shared_object(const shared_object& o) : val_(o.val_) {
 		assert(valid());
-		index().modify(val_, increment_count());
+		val_->count++;
 	}
 
 	operator T() const {
@@ -83,8 +69,8 @@ public:
 		if (valid() && o == get()) return;
 		clear();
 
-		val_ = index().insert(node(o)).first;
-		index().modify(val_, increment_count());
+		val_ = &*index().insert(node(o)).first;
+		val_->count++;
 
 		assert((val_->count) < (node::max_count));
 	}
@@ -99,7 +85,7 @@ public:
 	}
 
 	const node* ptr() const {
-		return &*val_;
+		return val_;
 	}
 
 protected:
@@ -118,18 +104,18 @@ protected:
 	static hash_map& map() { static hash_map* map = new hash_map; return *map; }
 	static hash_index& index() { return map().template get<0>(); }
 
-	typename hash_index::iterator val_;
+	const node* val_;
 
 	bool valid() const {
-		return val_ != index().end();
+		return val_;
 	}
 
 	void clear() {
 		if (!valid()) return;
-		index().modify(val_, decrement_count());
+		val_->count--;
 
-		if (val_->count == 0) index().erase(val_);
-		val_ = index().end();
+		if (val_->count == 0) index().erase(index().find(val_->val));
+		val_ = 0;
 	}
 
 };
