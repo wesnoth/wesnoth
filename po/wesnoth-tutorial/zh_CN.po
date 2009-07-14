@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-04-09 13:54+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -30,12 +30,12 @@ msgstr "韦诺教程 - 包括二场战斗"
 #. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
 msgstr "孔列"
 
@@ -77,10 +77,10 @@ msgstr "你打算控制谁?"
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "丽萨"
 
@@ -329,8 +329,8 @@ msgstr "啊! 我需要治疗! 我只剩 $student_hp 点生命了!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "村庄"
 
@@ -398,8 +398,8 @@ msgstr "我要募集一些精灵!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 msgid "Keep"
 msgstr "要塞"
 
@@ -722,10 +722,10 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "嘉德拉德"
 
@@ -866,11 +866,6 @@ msgstr "这次可不是闹着玩的,孔列!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
-msgstr "这次可不是闹着玩的,丽萨!"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
@@ -880,6 +875,11 @@ msgstr ""
 "兽人已经在河对岸扎营. 这是精灵的国度: 我们精灵在森林中行动迅速,难以击中. 他们"
 "很愚蠢地来进攻这里. 你必须击败他们的首领, 这样他们就再也不会来打扰我们了. 而"
 "我会指导你完成任务."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "这次可不是闹着玩的,丽萨!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
@@ -1642,8 +1642,8 @@ msgstr "战士"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-13 20:20+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2008-04-22 10:08+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -45,14 +45,14 @@ msgstr ""
 #: data/core/units/bats/Bat_Blood.cfg:176
 #: data/core/units/bats/Bat_Dread.cfg:29
 #: data/core/units/bats/Bat_Vampire.cfg:176
-#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Pillager.cfg:34
+#: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
-#: data/core/units/goblins/Pillager.cfg:34
-#: data/core/units/goblins/Wolf_Rider.cfg:51
-#: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/monsters/Wolf.cfg:49
 msgid "fangs"
 msgstr "牙"
 
@@ -129,8 +129,8 @@ msgstr ""
 "す。"
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
 msgstr "バリスタ"
 
@@ -168,31 +168,31 @@ msgstr ""
 "また保有しています。"
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:42
-#: data/core/units/gryphons/Gryphon_Master.cfg:42
-#: data/core/units/gryphons/Gryphon.cfg:41 data/core/units/drakes/Fire.cfg:71
-#: data/core/units/drakes/Burner.cfg:64
 #: data/core/units/drakes/Armageddon.cfg:85
+#: data/core/units/drakes/Burner.cfg:64 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
+#: data/core/units/gryphons/Gryphon.cfg:41
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:54
 #: data/core/units/undead/Spirit_Shadow.cfg:122
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
 msgid "claws"
 msgstr "かぎ爪"
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Fire.cfg:80
-#: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Warrior.cfg:82
-#: data/core/units/drakes/Glider.cfg:85
 #: data/core/units/drakes/Armageddon.cfg:94
-#: data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Hurricane.cfg:100 data/core/units/drakes/Sky.cfg:99
 #: data/core/units/drakes/Blademaster.cfg:78
-#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Fighter.cfg:75
+#: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Fighter.cfg:75
+#: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:85
+#: data/core/units/drakes/Hurricane.cfg:100
+#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:99
+#: data/core/units/drakes/Warrior.cfg:82
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "火炎のブレス"
 
@@ -213,38 +213,33 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:28
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
-#: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Lord.cfg:39
-#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:31
-#: data/core/units/nagas/Fighter.cfg:90 data/core/units/drakes/Flare.cfg:83
-#: data/core/units/drakes/Enforcer.cfg:78
-#: data/core/units/drakes/Warrior.cfg:73
-#: data/core/units/drakes/Gladiator.cfg:78
-#: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:89
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_General.cfg:56
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/drakes/Enforcer.cfg:78
+#: data/core/units/drakes/Flameheart.cfg:79
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:78
+#: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
+#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
+#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
+#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
+#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
+#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
+#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
+#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:90 data/core/units/nagas/Myrmidon.cfg:31
+#: data/core/units/nagas/Warrior.cfg:29 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "剣"
 
@@ -286,33 +281,34 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/saurians/Skirmisher.cfg:133
-#: data/core/units/saurians/Skirmisher.cfg:142
-#: data/core/units/saurians/Flanker.cfg:40
-#: data/core/units/saurians/Flanker.cfg:49
-#: data/core/units/saurians/Ambusher.cfg:39
-#: data/core/units/saurians/Ambusher.cfg:48
-#: data/core/units/dwarves/Stalwart.cfg:46
-#: data/core/units/dwarves/Guardsman.cfg:43
-#: data/core/units/dwarves/Sentinel.cfg:51
-#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
-#: data/core/units/merfolk/Netcaster.cfg:24
-#: data/core/units/merfolk/Entangler.cfg:25
-#: data/core/units/merfolk/Spearman.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:32
-#: data/core/units/merfolk/Javelineer.cfg:25
-#: data/core/units/merfolk/Javelineer.cfg:33
+#: data/core/units/drakes/Clasher.cfg:98
 #: data/core/units/drakes/Enforcer.cfg:96
 #: data/core/units/drakes/Gladiator.cfg:87
-#: data/core/units/drakes/Clasher.cfg:98
-#: data/core/units/humans/Horseman.cfg:36
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:59
+#: data/core/units/dwarves/Guardsman.cfg:43
+#: data/core/units/dwarves/Sentinel.cfg:51
+#: data/core/units/dwarves/Stalwart.cfg:46
+#: data/core/units/goblins/Impaler.cfg:28
+#: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:42
 #: data/core/units/goblins/Spearman.cfg:52
-#: data/core/units/goblins/Impaler.cfg:28
-#: data/core/units/goblins/Impaler.cfg:40
+#: data/core/units/humans/Horseman.cfg:36
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/humans/Loyalist_Spearman.cfg:59
+#: data/core/units/merfolk/Entangler.cfg:25
+#: data/core/units/merfolk/Hoplite.cfg:36
+#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
+#: data/core/units/merfolk/Javelineer.cfg:25
+#: data/core/units/merfolk/Javelineer.cfg:33
+#: data/core/units/merfolk/Netcaster.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:32
+#: data/core/units/saurians/Ambusher.cfg:39
+#: data/core/units/saurians/Ambusher.cfg:48
+#: data/core/units/saurians/Flanker.cfg:40
+#: data/core/units/saurians/Flanker.cfg:49
+#: data/core/units/saurians/Skirmisher.cfg:133
+#: data/core/units/saurians/Skirmisher.cfg:142
 #: data/core/units/undead/Skele_Chocobone.cfg:25
 msgid "spear"
 msgstr "槍"
@@ -337,13 +333,13 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:87
 #: data/core/units/drakes/Gladiator.cfg:96
-#: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:36
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
 msgstr "メイス"
 
@@ -547,8 +543,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
 #: data/core/units/drakes/Slasher.cfg:41 data/core/units/drakes/Slasher.cfg:50
+#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
@@ -637,18 +633,18 @@ msgstr ""
 "振りで最も強力な戦士達さえも倒すという、 この武器のためなのです。"
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
-#: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:39
 #: data/core/units/dwarves/Thunderer.cfg:110
 #: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/humans/Outlaw_Thief.cfg:188
 #: data/core/units/humans/Woodsman.cfg:41
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
+#: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -676,23 +672,22 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:32
+#: data/core/units/dwarves/Explorer.cfg:32 data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/dwarves/Steelclad.cfg:42
-#: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
 msgstr "戦斧"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
-#: data/core/units/dwarves/Pathfinder.cfg:29
-#: data/core/units/dwarves/Pathfinder.cfg:37
 #: data/core/units/dwarves/Explorer.cfg:41
 #: data/core/units/dwarves/Fighter.cfg:47
+#: data/core/units/dwarves/Pathfinder.cfg:29
+#: data/core/units/dwarves/Pathfinder.cfg:37
+#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:149
+#: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:30
 #: data/core/units/undead/Skeleton.cfg:106
-#: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
 msgstr "斧"
 
@@ -714,9 +709,9 @@ msgstr ""
 "らの耐久力は鈍足であることを十分補います。"
 
 #. [attack]: type=impact
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
 #: data/core/units/dwarves/Steelclad.cfg:51
-#: data/core/units/dwarves/Lord.cfg:51 data/core/units/dwarves/Fighter.cfg:55
-#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "ハンマー"
 
@@ -741,9 +736,9 @@ msgstr ""
 "前進を安全に保つために働きます。"
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/dwarves/Guardsman.cfg:52
 #: data/core/units/dwarves/Sentinel.cfg:60
+#: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:71
 msgid "javelin"
@@ -975,22 +970,23 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
-#: data/core/units/orcs/Warlord.cfg:34 data/core/units/elves/Avenger.cfg:85
-#: data/core/units/elves/Scout.cfg:56 data/core/units/elves/Marshal.cfg:55
-#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Outrider.cfg:55
-#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Captain.cfg:56
-#: data/core/units/elves/Rider.cfg:57 data/core/units/elves/Hero.cfg:44
-#: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
-#: data/core/units/humans/Woodsman_Trapper.cfg:91
-#: data/core/units/humans/Woodsman_Ranger.cfg:68
+#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Avenger.cfg:85
+#: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Champion.cfg:45
+#: data/core/units/elves/Fighter.cfg:45 data/core/units/elves/Hero.cfg:44
+#: data/core/units/elves/Marshal.cfg:55 data/core/units/elves/Outrider.cfg:55
+#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Rider.cfg:57
+#: data/core/units/elves/Scout.cfg:56
+#: data/core/units/humans/Loyalist_Bowman.cfg:46
 #: data/core/units/humans/Woodsman.cfg:50
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
-#: data/core/units/humans/Loyalist_Bowman.cfg:46
-#: data/core/units/undead/Skeleton_Archer.cfg:40
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
+#: data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skeleton_Archer.cfg:40
 msgid "bow"
 msgstr "弓"
 
@@ -1097,21 +1093,21 @@ msgstr ""
 "能力のためです。"
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:38 data/core/units/elves/Druid.cfg:40
+#: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
 #: data/core/units/elves/Shaman.cfg:42 data/core/units/elves/Sorceress.cfg:40
-#: data/core/units/saurians/Soothsayer.cfg:78
-#: data/core/units/saurians/Augur.cfg:78
-#: data/core/units/saurians/Oracle.cfg:78
-#: data/core/units/merfolk/Priestess.cfg:97
+#: data/core/units/humans/Mage.cfg:67 data/core/units/humans/Mage_Arch.cfg:81
+#: data/core/units/humans/Mage_Elder.cfg:25
+#: data/core/units/humans/Mage_Great.cfg:42
+#: data/core/units/humans/Mage_Red.cfg:66
+#: data/core/units/humans/Mage_Silver.cfg:48
+#: data/core/units/humans/Mage_White.cfg:133
+#: data/core/units/merfolk/Diviner.cfg:100
 #: data/core/units/merfolk/Enchantress.cfg:37
 #: data/core/units/merfolk/Initiate.cfg:40
-#: data/core/units/merfolk/Diviner.cfg:100 data/core/units/humans/Mage.cfg:67
-#: data/core/units/humans/Mage_White.cfg:133
-#: data/core/units/humans/Mage_Great.cfg:42
-#: data/core/units/humans/Mage_Elder.cfg:25
-#: data/core/units/humans/Mage_Silver.cfg:48
-#: data/core/units/humans/Mage_Arch.cfg:81
-#: data/core/units/humans/Mage_Red.cfg:66
+#: data/core/units/merfolk/Priestess.cfg:97
+#: data/core/units/saurians/Augur.cfg:78
+#: data/core/units/saurians/Oracle.cfg:78
+#: data/core/units/saurians/Soothsayer.cfg:78
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
 msgstr "杖"
@@ -1153,8 +1149,8 @@ msgid "entangle"
 msgstr "巻きつき"
 
 #. [attack]: type=arcane
-#: data/core/units/elves/Enchantress.cfg:59 data/core/units/elves/Lord.cfg:48
-#: data/core/units/elves/High_Lord.cfg:82
+#: data/core/units/elves/Enchantress.cfg:59
+#: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "妖精の炎"
@@ -1262,6 +1258,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
 msgstr "大弓"
@@ -1612,9 +1609,9 @@ msgid "torch"
 msgstr "松明"
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Netcaster.cfg:32
-#: data/core/units/merfolk/Entangler.cfg:33
 #: data/core/units/goblins/Pillager.cfg:52
+#: data/core/units/merfolk/Entangler.cfg:33
+#: data/core/units/merfolk/Netcaster.cfg:32
 msgid "net"
 msgstr "網"
 
@@ -1762,11 +1759,21 @@ msgstr ""
 "す。責任の長にあたる近衛騎士は歩兵隊にとっては恐しい存在で、 しばしば防御線を"
 "直ちに突破してしまうほどです。"
 
+#. [attack]: type=blade
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_General.cfg:56
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
+#, fuzzy
+msgid "longsword"
+msgstr "剣"
+
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:44
-#: data/core/units/humans/Horse_Paladin.cfg:49
 #: data/core/units/humans/Horse_Lancer.cfg:24
+#: data/core/units/humans/Horse_Paladin.cfg:49
 msgid "lance"
 msgstr "ランス"
 
@@ -1886,8 +1893,8 @@ msgstr ""
 "出身で、弓でも小剣でも十分な腕前を持ち、戦場においては非常に一般的です。"
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 msgid "short sword"
 msgstr "短剣"
 
@@ -1912,19 +1919,18 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/orcs/Sovereign.cfg:37
-#: data/core/units/orcs/Crossbowman.cfg:33
-#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:38
-#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Leader.cfg:37
-#: data/core/units/orcs/Ruler.cfg:36
-#: data/core/units/humans/Loyalist_Duelist.cfg:81
-#: data/core/units/humans/Loyalist_General.cfg:65
-#: data/core/units/humans/Loyalist_Sergeant.cfg:56
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
+#: data/core/units/humans/Loyalist_Duelist.cfg:81
+#: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
+#: data/core/units/humans/Loyalist_Sergeant.cfg:56
+#: data/core/units/orcs/Crossbowman.cfg:33
+#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
+#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:68
 msgid "crossbow"
 msgstr "クロスボウ"
@@ -2223,12 +2229,6 @@ msgstr ""
 "す。大弓兵は誇りの記章として自分の武器を携帯しており、 多くの弓兵はこれを仕え"
 "るようになる日を夢見ています。"
 
-#. [attack]: type=pierce
-#: data/core/units/humans/Loyalist_Longbowman.cfg:48
-#, fuzzy
-msgid "Longbow"
-msgstr "大弓"
-
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
@@ -2513,8 +2513,8 @@ msgstr ""
 "易には対処できない彼等の術を最大限の力まで解放することができます。"
 
 #. [attack]: type=fire
-#: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Arch.cfg:90
+#: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:75
 msgid "fireball"
 msgstr "ファイアボール"
@@ -2706,10 +2706,10 @@ msgstr ""
 "しょう。"
 
 #. [attack]: type=arcane
-#: data/core/units/merfolk/Priestess.cfg:106
-#: data/core/units/merfolk/Diviner.cfg:109
-#: data/core/units/humans/Mage_of_Light.cfg:120
 #: data/core/units/humans/Mage_White.cfg:142
+#: data/core/units/humans/Mage_of_Light.cfg:120
+#: data/core/units/merfolk/Diviner.cfg:109
+#: data/core/units/merfolk/Priestess.cfg:106
 msgid "lightbeam"
 msgstr "光線"
 
@@ -2774,8 +2774,8 @@ msgstr ""
 "無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みます。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
@@ -2864,7 +2864,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
-#: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
+#: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Troll.cfg:26
 msgid "club"
 msgstr "棍棒"
 
@@ -3170,9 +3170,9 @@ msgstr ""
 "なのです。"
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Siren.cfg:54
 #: data/core/units/merfolk/Enchantress.cfg:46
 #: data/core/units/merfolk/Initiate.cfg:49
+#: data/core/units/merfolk/Siren.cfg:54
 msgid "water spray"
 msgstr "水撃"
 
@@ -3211,10 +3211,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/merfolk/Warrior.cfg:24
-#: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
 #: data/core/units/merfolk/Fighter.cfg:25
-#: data/core/units/merfolk/Hoplite.cfg:36
+#: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
+#: data/core/units/merfolk/Warrior.cfg:24
 msgid "trident"
 msgstr "トライデント"
 
@@ -3471,8 +3470,8 @@ msgstr ""
 "まることです。"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Tentacle.cfg:62
 msgid "tentacle"
 msgstr "触手"
 
@@ -3528,18 +3527,18 @@ msgstr ""
 "のかたまりを噴射するか、あるいは拳で打ちつけることで攻撃します。"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:27
-#: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/trolls/Troll_Shaman.cfg:31
+#: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "拳"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
+#: data/core/units/monsters/Mudcrawler.cfg:46
 msgid "mud glob"
 msgstr "泥のしずく"
 
@@ -3932,8 +3931,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:27
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
 msgid "greatsword"
 msgstr "大剣"
 
@@ -4069,9 +4068,9 @@ msgstr ""
 "れるかもしれませんが、それを使われるものにとっては恐怖と見なされます。"
 
 #. [attack]: type=cold
-#: data/core/units/saurians/Soothsayer.cfg:87
 #: data/core/units/saurians/Augur.cfg:87
 #: data/core/units/saurians/Oracle.cfg:87
+#: data/core/units/saurians/Soothsayer.cfg:87
 msgid "curse"
 msgstr "呪い"
 
@@ -4369,11 +4368,11 @@ msgstr ""
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
+#: data/core/units/undead/Corpse_Soulless.cfg:26
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:132
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Corpse_Soulless.cfg:26
+#: data/core/units/undead/Spirit_Ghost.cfg:132
 msgid "touch"
 msgstr "接触"
 
@@ -4415,11 +4414,11 @@ msgid "chill tempest"
 msgstr "冷気の大嵐"
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Necro_Dark_Adept.cfg:55
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
+#: data/core/units/undead/Necro_Dark_Adept.cfg:55
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
 msgstr "影の波動"
 
@@ -4453,8 +4452,8 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necromancer.cfg:51
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
+#: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "冷気の嵐"
 
@@ -4779,9 +4778,9 @@ msgstr ""
 "せることができます。"
 
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Wraith.cfg:32
 #: data/core/units/undead/Spirit_Ghost.cfg:144
 #: data/core/units/undead/Spirit_Spectre.cfg:57
+#: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
 msgstr "叫び声"
 
@@ -4848,8 +4847,8 @@ msgstr ""
 "その後ろに続くもっと危険な軍の単なる前触れかも知れないということです。"
 
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Wraith.cfg:21
 #: data/core/units/undead/Spirit_Spectre.cfg:46
+#: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
 msgstr "死の剣"
 
@@ -4905,8 +4904,8 @@ msgstr ""
 "す。"
 
 #. [attack]: type=impact
-#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
-#: data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Ancient.cfg:92 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30
 msgid "crush"
 msgstr "粉砕"
 
@@ -4969,6 +4968,10 @@ msgstr ""
 "\n"
 "ウーズは全く戦いを好みませんが怪力を持っています。しかしながら、動き回ったり "
 "することになれておらず、素早くもできません。"
+
+#, fuzzy
+#~ msgid "Longbow"
+#~ msgstr "大弓"
 
 #, fuzzy
 #~ msgid ""

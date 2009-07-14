@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-13 20:19+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -598,7 +598,7 @@ msgstr "Fjern"
 msgid "Connect"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/campaign_dialog.cfg:304
@@ -606,7 +606,7 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:342
+#: data/gui/default/window/game_load.cfg:410
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -625,12 +625,12 @@ msgstr "Annuller"
 msgid "Play a campaign"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:327
-#: data/gui/default/window/game_load.cfg:328
+#: data/gui/default/window/game_load.cfg:395
+#: data/gui/default/window/game_load.cfg:396
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -667,19 +667,19 @@ msgstr "Genvejsindstillinger"
 msgid "Generate"
 msgstr "Lav nyt kort"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "Nyt kort"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "Bredde:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
@@ -692,7 +692,7 @@ msgstr "Højde:"
 msgid "Create new map"
 msgstr "Opret nyt kort"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
@@ -739,7 +739,7 @@ msgstr ""
 msgid "Resize map"
 msgstr "Skift størrelse på kort"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 #, fuzzy
@@ -752,11 +752,10 @@ msgid "Time of day lighting preset"
 msgstr ""
 
 #. [button]: id=next_tod
-#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:448
+#: data/gui/default/window/lobby_main.cfg:553
 #: data/gui/default/window/title_screen.cfg:138
 #, fuzzy
 msgid "Next"
@@ -794,14 +793,55 @@ msgstr ""
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:192
 msgid "Apply"
 msgstr "Anvende"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_delete.cfg:32
+#, fuzzy
+msgid "Delete Save"
+msgstr "Slet automatisk gemte spil"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_delete.cfg:52
+#, fuzzy
+msgid "Do you really want to delete this game?"
+msgstr "Er du sikker på at du vil afslutte?"
+
+#. [toggle_button]: id=dont_ask_again
+#: data/gui/default/window/game_delete.cfg:70
+msgid "Don't ask me again!"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/game_delete.cfg:106
+#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
+#: data/gui/default/window/game_save_oos.cfg:186
+#: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_overwrite.cfg:88
+#: data/gui/default/window/game_save_overwrite.cfg:89
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
+msgid "Yes"
+msgstr "Ja"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_save_message.cfg:154
+#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_overwrite.cfg:103
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
+msgid "No"
+msgstr "Nej"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:32
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
@@ -813,21 +853,34 @@ msgstr "Indlæs spil"
 msgid "Choose the game to load"
 msgstr ""
 
+#. [label]: id=lblFilter
+#: data/gui/default/window/game_load.cfg:187
+#, fuzzy
+msgid "Filter"
+msgstr "Fil: "
+
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:202
+#: data/gui/default/window/game_load.cfg:238
 #: data/gui/default/window/mp_server_list.cfg:86
 #, fuzzy
 msgid "Name"
 msgstr "Navn: "
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:218
+#: data/gui/default/window/game_load.cfg:254
 #, fuzzy
 msgid "Date"
 msgstr "Indsæt"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=delete
+#: data/gui/default/window/game_load.cfg:368
+#: data/gui/default/window/game_load.cfg:369
+#, fuzzy
+msgid "Delete"
+msgstr "Slet fil"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
@@ -848,27 +901,6 @@ msgstr "Navn: "
 msgid "x"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/game_save_message.cfg:139
-#: data/gui/default/window/game_save_message.cfg:140
-#: data/gui/default/window/game_save_oos.cfg:186
-#: data/gui/default/window/game_save_oos.cfg:187
-#: data/gui/default/window/game_save_overwrite.cfg:88
-#: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
-msgid "Yes"
-msgstr "Ja"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=cancel
-#: data/gui/default/window/game_save_message.cfg:154
-#: data/gui/default/window/game_save_oos.cfg:201
-#: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
-msgid "No"
-msgstr "Nej"
-
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
@@ -879,7 +911,7 @@ msgstr ""
 msgid "Ignore All"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
 #: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
@@ -915,102 +947,95 @@ msgid "Change language"
 msgstr "Skift sprog"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:372
+#: data/gui/default/window/lobby_main.cfg:355
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Flerspiller indstillinger"
 
-#. [label]
-#: data/gui/default/window/lobby_main.cfg:391
-#, fuzzy
-msgid "Filter:"
-msgstr "Fil: "
-
-#. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:402
-#, fuzzy
-msgid "Friends"
-msgstr "Venneliste"
-
-#. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:408
-msgid "No ignored"
-msgstr ""
-
-#. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:414
-msgid "Vacant slots"
-msgstr ""
-
-#. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:420
-#, fuzzy
-msgid "Invert filter"
-msgstr "Roter det markerede"
-
-#. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:442
-#, fuzzy
-msgid "Send"
-msgstr "Sand"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:454
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Luk"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:466
+#: data/gui/default/window/lobby_main.cfg:364
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
 msgstr "Afslut"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:472
+#: data/gui/default/window/lobby_main.cfg:370
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Indstillinger"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:478
+#: data/gui/default/window/lobby_main.cfg:376
 #, fuzzy
 msgid "Refresh"
 msgstr "Skærm"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:484
+#: data/gui/default/window/lobby_main.cfg:382
 msgid "Join"
 msgstr ""
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:490
+#: data/gui/default/window/lobby_main.cfg:388
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:496
+#: data/gui/default/window/lobby_main.cfg:394
 #: data/gui/default/window/mp_create_game.cfg:33
 #, fuzzy
 msgid "Create Game"
 msgstr "Gem spil"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:502
+#: data/gui/default/window/lobby_main.cfg:400
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Hjælp"
+
+#: data/gui/default/window/lobby_main.cfg:496
+#, fuzzy
+msgid "Filter:"
+msgstr "Fil: "
+
+#: data/gui/default/window/lobby_main.cfg:507
+#, fuzzy
+msgid "Friends"
+msgstr "Venneliste"
+
+#: data/gui/default/window/lobby_main.cfg:513
+msgid "No ignored"
+msgstr ""
+
+#: data/gui/default/window/lobby_main.cfg:519
+msgid "Vacant slots"
+msgstr ""
+
+#: data/gui/default/window/lobby_main.cfg:525
+#, fuzzy
+msgid "Invert filter"
+msgstr "Roter det markerede"
+
+#: data/gui/default/window/lobby_main.cfg:547
+#, fuzzy
+msgid "Send"
+msgstr "Sand"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/lobby_main.cfg:559
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Luk"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1040,21 +1065,21 @@ msgstr "Ryd beskeder"
 msgid "Friends/Ignored List"
 msgstr "Venneliste"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
 #: src/game_preferences_display.cpp:169
 msgid "Add As Friend"
 msgstr "Tilføj som ven"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:170
 msgid "Add As Ignore"
 msgstr "Tilføj under ignorer"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
 #: src/game_preferences_display.cpp:171
@@ -1208,7 +1233,7 @@ msgstr ""
 msgid "Password:"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:165
@@ -1220,12 +1245,12 @@ msgstr ""
 msgid "Password Reminder"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:164
+#: src/gui/dialogs/game_load.cpp:235
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Flerspiller indstillinger"
@@ -1294,10 +1319,10 @@ msgstr "Vælg alt"
 msgid "Previous"
 msgstr "Forrige enhed"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:166
+#: src/gui/dialogs/game_load.cpp:237
 #, fuzzy
 msgid "Tutorial"
 msgstr "Rundedialog"
@@ -1802,7 +1827,7 @@ msgstr ""
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:519
+#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Ingen server er defineret."
@@ -1810,9 +1835,9 @@ msgstr "Ingen server er defineret."
 #: src/gui/auxiliary/window_builder.cpp:273
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
-#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
-#: src/gui/widgets/settings.cpp:1119
+#: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
+#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
+#: src/gui/widgets/settings.cpp:1120
 #, fuzzy
 msgid "No grid defined."
 msgstr "Ingen server er defineret."
@@ -1855,34 +1880,34 @@ msgstr ""
 msgid "No stack defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/dialogs/game_load.cpp:139
+#: src/gui/dialogs/game_load.cpp:210
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:157
+#: src/gui/dialogs/game_load.cpp:228
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:174
+#: src/gui/dialogs/game_load.cpp:245
 #, fuzzy
 msgid "replay"
 msgstr "spiller"
 
-#: src/gui/dialogs/game_load.cpp:176
+#: src/gui/dialogs/game_load.cpp:247
 #, fuzzy
 msgid "Turn"
 msgstr "Afslut runde"
 
-#: src/gui/dialogs/game_load.cpp:178
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Scenarie-mål"
 
-#: src/gui/dialogs/game_load.cpp:181
+#: src/gui/dialogs/game_load.cpp:252
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:183
+#: src/gui/dialogs/game_load.cpp:254
 msgid "Version: "
 msgstr ""
 
@@ -1904,26 +1929,26 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:139
+#: src/gui/widgets/settings.cpp:140
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:306
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:403
+#: src/gui/widgets/settings.cpp:404
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:545
+#: src/gui/widgets/settings.cpp:546
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/window.cpp:705 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
@@ -2659,9 +2684,6 @@ msgstr ""
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "Gem genvejstaster"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Slet automatisk gemte spil"
 
 #~ msgid "Save replays at scenario end."
 #~ msgstr "Gem resumeer når scenariet slutter."

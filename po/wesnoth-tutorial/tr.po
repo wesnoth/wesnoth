@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-04-12 14:57+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -36,12 +36,12 @@ msgstr "Wesnoth Öğretici"
 #. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
 msgstr "Konrad"
 
@@ -83,10 +83,10 @@ msgstr "Hangisi olarak oynamak istersiniz?"
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "Lisar"
 
@@ -345,8 +345,8 @@ msgstr "Oh! Tedavi olmam lazım! Sadece $student_hp yaşam puanım kaldı!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Köy"
 
@@ -420,8 +420,8 @@ msgstr "Bir kaç elfi askere alacağım!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 msgid "Keep"
 msgstr "İç kale"
 
@@ -770,10 +770,10 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
 
@@ -924,11 +924,6 @@ msgstr "Bu oyun değil, Konrad! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
-msgstr "Bu oyun değil, Lisar! "
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
@@ -939,6 +934,11 @@ msgstr ""
 "ormanda hızlı hareket ederiz, dolayısıyla zor isabet alırız. Buraya "
 "girdiklerine göre aptal olmalılar. Liderlerini öldürürsen, dağılırlar ve "
 "bize karşı koyamazlar. Ben sana danışmanlık yapmayı sürdüreceğim."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "Bu oyun değil, Lisar! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
@@ -1769,8 +1769,8 @@ msgstr "Savaşçı"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "

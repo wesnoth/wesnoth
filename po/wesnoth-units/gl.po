@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-13 20:20+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2008-12-08 15:45+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -48,14 +48,14 @@ msgstr ""
 #: data/core/units/bats/Bat_Blood.cfg:176
 #: data/core/units/bats/Bat_Dread.cfg:29
 #: data/core/units/bats/Bat_Vampire.cfg:176
-#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Pillager.cfg:34
+#: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
-#: data/core/units/goblins/Pillager.cfg:34
-#: data/core/units/goblins/Wolf_Rider.cfg:51
-#: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/monsters/Wolf.cfg:49
 msgid "fangs"
 msgstr "mordeduras"
 
@@ -139,8 +139,8 @@ msgstr ""
 
 # ballista=balista FIXADO
 #. [attack]: type=pierce
-#: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
 msgstr "balista"
 
@@ -181,32 +181,32 @@ msgstr ""
 
 # claws=poutas FIXADO
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/gryphons/Gryphon_Rider.cfg:42
-#: data/core/units/gryphons/Gryphon_Master.cfg:42
-#: data/core/units/gryphons/Gryphon.cfg:41 data/core/units/drakes/Fire.cfg:71
-#: data/core/units/drakes/Burner.cfg:64
 #: data/core/units/drakes/Armageddon.cfg:85
+#: data/core/units/drakes/Burner.cfg:64 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
+#: data/core/units/gryphons/Gryphon.cfg:41
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:54
 #: data/core/units/undead/Spirit_Shadow.cfg:122
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
 msgid "claws"
 msgstr "poutas"
 
 # fire breath=alento de lume FIXADO
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Fire.cfg:80
-#: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Warrior.cfg:82
-#: data/core/units/drakes/Glider.cfg:85
 #: data/core/units/drakes/Armageddon.cfg:94
-#: data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Hurricane.cfg:100 data/core/units/drakes/Sky.cfg:99
 #: data/core/units/drakes/Blademaster.cfg:78
-#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Fighter.cfg:75
+#: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Fighter.cfg:75
+#: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:85
+#: data/core/units/drakes/Hurricane.cfg:100
+#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:99
+#: data/core/units/drakes/Warrior.cfg:82
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "alento de lume"
 
@@ -230,38 +230,33 @@ msgstr ""
 # sword=espada FIXADO
 #. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/core/units/orcs/Grunt.cfg:71 data/core/units/orcs/Leader.cfg:28
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Marksman.cfg:66
-#: data/core/units/elves/Scout.cfg:47 data/core/units/elves/Marshal.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Lord.cfg:39
-#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Hero.cfg:35
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Sharpshooter.cfg:63
-#: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:31
-#: data/core/units/nagas/Fighter.cfg:90 data/core/units/drakes/Flare.cfg:83
-#: data/core/units/drakes/Enforcer.cfg:78
-#: data/core/units/drakes/Warrior.cfg:73
-#: data/core/units/drakes/Gladiator.cfg:78
-#: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:89
-#: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/humans/Loyalist_Longbowman.cfg:39
-#: data/core/units/humans/Loyalist_General.cfg:56
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
-#: data/core/units/humans/Horse_Grand_Knight.cfg:24
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/drakes/Enforcer.cfg:78
+#: data/core/units/drakes/Flameheart.cfg:79
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:78
+#: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
+#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
+#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
+#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
+#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
+#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
+#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
+#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Longbowman.cfg:39
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Swordsman.cfg:39
+#: data/core/units/humans/Woodsman_Ranger.cfg:59
+#: data/core/units/nagas/Fighter.cfg:90 data/core/units/nagas/Myrmidon.cfg:31
+#: data/core/units/nagas/Warrior.cfg:29 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "espada"
 
@@ -308,33 +303,34 @@ msgstr ""
 
 # spear=lanza FIXADO
 #. [attack]: type=pierce
-#: data/core/units/saurians/Skirmisher.cfg:133
-#: data/core/units/saurians/Skirmisher.cfg:142
-#: data/core/units/saurians/Flanker.cfg:40
-#: data/core/units/saurians/Flanker.cfg:49
-#: data/core/units/saurians/Ambusher.cfg:39
-#: data/core/units/saurians/Ambusher.cfg:48
-#: data/core/units/dwarves/Stalwart.cfg:46
-#: data/core/units/dwarves/Guardsman.cfg:43
-#: data/core/units/dwarves/Sentinel.cfg:51
-#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
-#: data/core/units/merfolk/Netcaster.cfg:24
-#: data/core/units/merfolk/Entangler.cfg:25
-#: data/core/units/merfolk/Spearman.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:32
-#: data/core/units/merfolk/Javelineer.cfg:25
-#: data/core/units/merfolk/Javelineer.cfg:33
+#: data/core/units/drakes/Clasher.cfg:98
 #: data/core/units/drakes/Enforcer.cfg:96
 #: data/core/units/drakes/Gladiator.cfg:87
-#: data/core/units/drakes/Clasher.cfg:98
-#: data/core/units/humans/Horseman.cfg:36
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:59
+#: data/core/units/dwarves/Guardsman.cfg:43
+#: data/core/units/dwarves/Sentinel.cfg:51
+#: data/core/units/dwarves/Stalwart.cfg:46
+#: data/core/units/goblins/Impaler.cfg:28
+#: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:42
 #: data/core/units/goblins/Spearman.cfg:52
-#: data/core/units/goblins/Impaler.cfg:28
-#: data/core/units/goblins/Impaler.cfg:40
+#: data/core/units/humans/Horseman.cfg:36
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/humans/Loyalist_Spearman.cfg:59
+#: data/core/units/merfolk/Entangler.cfg:25
+#: data/core/units/merfolk/Hoplite.cfg:36
+#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
+#: data/core/units/merfolk/Javelineer.cfg:25
+#: data/core/units/merfolk/Javelineer.cfg:33
+#: data/core/units/merfolk/Netcaster.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:32
+#: data/core/units/saurians/Ambusher.cfg:39
+#: data/core/units/saurians/Ambusher.cfg:48
+#: data/core/units/saurians/Flanker.cfg:40
+#: data/core/units/saurians/Flanker.cfg:49
+#: data/core/units/saurians/Skirmisher.cfg:133
+#: data/core/units/saurians/Skirmisher.cfg:142
 #: data/core/units/undead/Skele_Chocobone.cfg:25
 msgid "spear"
 msgstr "lanza"
@@ -360,13 +356,13 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:87
 #: data/core/units/drakes/Gladiator.cfg:96
-#: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-#: data/core/units/humans/Outlaw.cfg:36
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw.cfg:36
+#: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
 msgstr "maza"
 
@@ -587,8 +583,8 @@ msgstr ""
 # halberd=alabarda FIXADO
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
 #: data/core/units/drakes/Slasher.cfg:41 data/core/units/drakes/Slasher.cfg:50
+#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
@@ -684,18 +680,18 @@ msgstr ""
 
 # dagger=daga FIXADO
 #. [attack]: type=blade
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
-#: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:39
 #: data/core/units/dwarves/Thunderer.cfg:110
 #: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/humans/Outlaw_Thief.cfg:188
 #: data/core/units/humans/Woodsman.cfg:41
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
+#: data/core/units/humans/Woodsman_Trapper.cfg:82
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
+#: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -726,24 +722,23 @@ msgstr ""
 
 # battle axe=machada de batalla FIXADO
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:32
+#: data/core/units/dwarves/Explorer.cfg:32 data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/dwarves/Steelclad.cfg:42
-#: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
 msgstr "machada de batalla"
 
 # axe=machado FIXADO
 #. [attack]: type=blade
-#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
-#: data/core/units/dwarves/Pathfinder.cfg:29
-#: data/core/units/dwarves/Pathfinder.cfg:37
 #: data/core/units/dwarves/Explorer.cfg:41
 #: data/core/units/dwarves/Fighter.cfg:47
+#: data/core/units/dwarves/Pathfinder.cfg:29
+#: data/core/units/dwarves/Pathfinder.cfg:37
+#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:149
+#: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:30
 #: data/core/units/undead/Skeleton.cfg:106
-#: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
 msgstr "machado"
 
@@ -768,9 +763,9 @@ msgstr ""
 
 # hammer=martelo FIXADO
 #. [attack]: type=impact
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
 #: data/core/units/dwarves/Steelclad.cfg:51
-#: data/core/units/dwarves/Lord.cfg:51 data/core/units/dwarves/Fighter.cfg:55
-#: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "martelo"
 
@@ -797,9 +792,9 @@ msgstr ""
 
 # javelin=xavelina FIXADO
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/dwarves/Guardsman.cfg:52
 #: data/core/units/dwarves/Sentinel.cfg:60
+#: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:71
 msgid "javelin"
@@ -1052,22 +1047,23 @@ msgstr ""
 # bow=arco FIXADO
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
-#: data/core/units/orcs/Warlord.cfg:34 data/core/units/elves/Avenger.cfg:85
-#: data/core/units/elves/Scout.cfg:56 data/core/units/elves/Marshal.cfg:55
-#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Outrider.cfg:55
-#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Captain.cfg:56
-#: data/core/units/elves/Rider.cfg:57 data/core/units/elves/Hero.cfg:44
-#: data/core/units/elves/Champion.cfg:45 data/core/units/elves/Fighter.cfg:45
-#: data/core/units/humans/Woodsman_Trapper.cfg:91
-#: data/core/units/humans/Woodsman_Ranger.cfg:68
+#: data/core/units/elves/Archer.cfg:46 data/core/units/elves/Avenger.cfg:85
+#: data/core/units/elves/Captain.cfg:56 data/core/units/elves/Champion.cfg:45
+#: data/core/units/elves/Fighter.cfg:45 data/core/units/elves/Hero.cfg:44
+#: data/core/units/elves/Marshal.cfg:55 data/core/units/elves/Outrider.cfg:55
+#: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Rider.cfg:57
+#: data/core/units/elves/Scout.cfg:56
+#: data/core/units/humans/Loyalist_Bowman.cfg:46
 #: data/core/units/humans/Woodsman.cfg:50
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
-#: data/core/units/humans/Loyalist_Bowman.cfg:46
-#: data/core/units/undead/Skeleton_Archer.cfg:40
+#: data/core/units/humans/Woodsman_Ranger.cfg:68
+#: data/core/units/humans/Woodsman_Trapper.cfg:91
+#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
+#: data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skeleton_Archer.cfg:40
 msgid "bow"
 msgstr "arco"
 
@@ -1181,21 +1177,21 @@ msgstr ""
 
 # staff=bastón FIXADO
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:38 data/core/units/elves/Druid.cfg:40
+#: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
 #: data/core/units/elves/Shaman.cfg:42 data/core/units/elves/Sorceress.cfg:40
-#: data/core/units/saurians/Soothsayer.cfg:78
-#: data/core/units/saurians/Augur.cfg:78
-#: data/core/units/saurians/Oracle.cfg:78
-#: data/core/units/merfolk/Priestess.cfg:97
+#: data/core/units/humans/Mage.cfg:67 data/core/units/humans/Mage_Arch.cfg:81
+#: data/core/units/humans/Mage_Elder.cfg:25
+#: data/core/units/humans/Mage_Great.cfg:42
+#: data/core/units/humans/Mage_Red.cfg:66
+#: data/core/units/humans/Mage_Silver.cfg:48
+#: data/core/units/humans/Mage_White.cfg:133
+#: data/core/units/merfolk/Diviner.cfg:100
 #: data/core/units/merfolk/Enchantress.cfg:37
 #: data/core/units/merfolk/Initiate.cfg:40
-#: data/core/units/merfolk/Diviner.cfg:100 data/core/units/humans/Mage.cfg:67
-#: data/core/units/humans/Mage_White.cfg:133
-#: data/core/units/humans/Mage_Great.cfg:42
-#: data/core/units/humans/Mage_Elder.cfg:25
-#: data/core/units/humans/Mage_Silver.cfg:48
-#: data/core/units/humans/Mage_Arch.cfg:81
-#: data/core/units/humans/Mage_Red.cfg:66
+#: data/core/units/merfolk/Priestess.cfg:97
+#: data/core/units/saurians/Augur.cfg:78
+#: data/core/units/saurians/Oracle.cfg:78
+#: data/core/units/saurians/Soothsayer.cfg:78
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:91
 msgid "staff"
 msgstr "bastón"
@@ -1242,8 +1238,8 @@ msgstr "enredar"
 
 # faerie fire=lume feérico FIXADO
 #. [attack]: type=arcane
-#: data/core/units/elves/Enchantress.cfg:59 data/core/units/elves/Lord.cfg:48
-#: data/core/units/elves/High_Lord.cfg:82
+#: data/core/units/elves/Enchantress.cfg:59
+#: data/core/units/elves/High_Lord.cfg:82 data/core/units/elves/Lord.cfg:48
 #: data/core/units/elves/Sorceress.cfg:61 data/core/units/elves/Sylph.cfg:65
 msgid "faerie fire"
 msgstr "lume feérico"
@@ -1371,6 +1367,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
 #: data/core/units/elves/Sharpshooter.cfg:72
+#: data/core/units/humans/Loyalist_Longbowman.cfg:48
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:48
 msgid "longbow"
 msgstr "arco longo"
@@ -1741,9 +1738,9 @@ msgstr "facho"
 
 # net=rede FIXADO
 #. [attack]: type=impact
-#: data/core/units/merfolk/Netcaster.cfg:32
-#: data/core/units/merfolk/Entangler.cfg:33
 #: data/core/units/goblins/Pillager.cfg:52
+#: data/core/units/merfolk/Entangler.cfg:33
+#: data/core/units/merfolk/Netcaster.cfg:32
 msgid "net"
 msgstr "rede"
 
@@ -1905,12 +1902,23 @@ msgstr ""
 "visión terrorífica para a infantería, e a miúdo é dabondo para romper unha "
 "liña defensiva."
 
+# sword=espada FIXADO
+#. [attack]: type=blade
+#: data/core/units/humans/Horse_Grand_Knight.cfg:24
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_General.cfg:56
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
+#, fuzzy
+msgid "longsword"
+msgstr "espada"
+
 # lance=lanza FIXADO
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:44
-#: data/core/units/humans/Horse_Paladin.cfg:49
 #: data/core/units/humans/Horse_Lancer.cfg:24
+#: data/core/units/humans/Horse_Paladin.cfg:49
 msgid "lance"
 msgstr "lanza"
 
@@ -2056,8 +2064,8 @@ msgstr ""
 
 # short sword=espada curta FIXADO
 #. [attack]: type=blade
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 msgid "short sword"
 msgstr "espada curta"
 
@@ -2083,19 +2091,18 @@ msgstr ""
 # crossbow=bésta FIXADO
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/orcs/Sovereign.cfg:37
-#: data/core/units/orcs/Crossbowman.cfg:33
-#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:38
-#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Leader.cfg:37
-#: data/core/units/orcs/Ruler.cfg:36
-#: data/core/units/humans/Loyalist_Duelist.cfg:81
-#: data/core/units/humans/Loyalist_General.cfg:65
-#: data/core/units/humans/Loyalist_Sergeant.cfg:56
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
+#: data/core/units/humans/Loyalist_Duelist.cfg:81
+#: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
+#: data/core/units/humans/Loyalist_Sergeant.cfg:56
+#: data/core/units/orcs/Crossbowman.cfg:33
+#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
+#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:68
 msgid "crossbow"
 msgstr "bésta"
@@ -2415,13 +2422,6 @@ msgstr ""
 "sinal de orgullo, e moitos arqueiros pensan no día no que poderán comezar a "
 "usar un."
 
-# longbow=arco longo FIXADO
-#. [attack]: type=pierce
-#: data/core/units/humans/Loyalist_Longbowman.cfg:48
-#, fuzzy
-msgid "Longbow"
-msgstr "arco longo"
-
 # Master Bowman=mestre arqueiro FIXADO
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2733,8 +2733,8 @@ msgstr ""
 
 # fireball=bóla de lume FIXADO
 #. [attack]: type=fire
-#: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Arch.cfg:90
+#: data/core/units/humans/Mage_Great.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:75
 msgid "fireball"
 msgstr "bóla de lume"
@@ -2939,10 +2939,10 @@ msgstr ""
 
 # lightbeam=lampexo FIXADO
 #. [attack]: type=arcane
-#: data/core/units/merfolk/Priestess.cfg:106
-#: data/core/units/merfolk/Diviner.cfg:109
-#: data/core/units/humans/Mage_of_Light.cfg:120
 #: data/core/units/humans/Mage_White.cfg:142
+#: data/core/units/humans/Mage_of_Light.cfg:120
+#: data/core/units/merfolk/Diviner.cfg:109
+#: data/core/units/merfolk/Priestess.cfg:106
 msgid "lightbeam"
 msgstr "lampexo"
 
@@ -3014,8 +3014,8 @@ msgstr ""
 
 # sling=tirafonda FIXADO
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw.cfg:44
+#: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
@@ -3112,7 +3112,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
-#: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
+#: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Troll.cfg:26
 msgid "club"
 msgstr "tranca"
 
@@ -3497,9 +3497,9 @@ msgstr ""
 
 # water spray=chorro de auga FIXADO
 #. [attack]: type=impact
-#: data/core/units/merfolk/Siren.cfg:54
 #: data/core/units/merfolk/Enchantress.cfg:46
 #: data/core/units/merfolk/Initiate.cfg:49
+#: data/core/units/merfolk/Siren.cfg:54
 msgid "water spray"
 msgstr "chorro de auga"
 
@@ -3541,10 +3541,9 @@ msgstr ""
 # trident=tridente FIXADO
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/merfolk/Warrior.cfg:24
-#: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
 #: data/core/units/merfolk/Fighter.cfg:25
-#: data/core/units/merfolk/Hoplite.cfg:36
+#: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
+#: data/core/units/merfolk/Warrior.cfg:24
 msgid "trident"
 msgstr "tridente"
 
@@ -3815,8 +3814,8 @@ msgstr ""
 
 # tentacle=tentáculo FIXADO
 #. [attack]: type=impact
-#: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
+#: data/core/units/monsters/Tentacle.cfg:62
 msgid "tentacle"
 msgstr "tentáculo"
 
@@ -3887,19 +3886,19 @@ msgstr ""
 
 # fist=puñada FIXADO
 #. [attack]: type=impact
-#: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:27
-#: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/trolls/Troll_Shaman.cfg:31
+#: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
 msgstr "puñada"
 
 # mud glob=bóla de lama FIXADO
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
+#: data/core/units/monsters/Mudcrawler.cfg:46
 msgid "mud glob"
 msgstr "bóla de lama"
 
@@ -4338,8 +4337,8 @@ msgstr ""
 
 # greatsword=espada grande FIXADO
 #. [attack]: type=blade
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:27
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Warrior.cfg:23
 msgid "greatsword"
 msgstr "espada grande"
 
@@ -4491,9 +4490,9 @@ msgstr ""
 
 # curse=maldición FIXADO
 #. [attack]: type=cold
-#: data/core/units/saurians/Soothsayer.cfg:87
 #: data/core/units/saurians/Augur.cfg:87
 #: data/core/units/saurians/Oracle.cfg:87
+#: data/core/units/saurians/Soothsayer.cfg:87
 msgid "curse"
 msgstr "maldición"
 
@@ -4817,11 +4816,11 @@ msgstr ""
 # touch=tocar FIXADO
 #. [attack]: type=impact
 #. [attack]: type=arcane
+#: data/core/units/undead/Corpse_Soulless.cfg:26
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:48
-#: data/core/units/undead/Spirit_Ghost.cfg:132
 #: data/core/units/undead/Necro_Lich.cfg:48
-#: data/core/units/undead/Corpse_Soulless.cfg:26
+#: data/core/units/undead/Spirit_Ghost.cfg:132
 msgid "touch"
 msgstr "tocar"
 
@@ -4867,11 +4866,11 @@ msgstr "tempestade xélida"
 
 # shadow wave=onda sombría FIXADO
 #. [attack]: type=arcane
-#: data/core/units/undead/Necro_Dark_Adept.cfg:55
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
+#: data/core/units/undead/Necro_Dark_Adept.cfg:55
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 #: data/core/units/undead/Necro_Lich.cfg:72
 #: data/core/units/undead/Necromancer.cfg:63
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:112
 msgid "shadow wave"
 msgstr "onda sombría"
 
@@ -4909,8 +4908,8 @@ msgstr ""
 # chill wave=onda xélida FIXADO
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
-#: data/core/units/undead/Necromancer.cfg:51
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:100
+#: data/core/units/undead/Necromancer.cfg:51
 msgid "chill wave"
 msgstr "onda xélida"
 
@@ -5284,9 +5283,9 @@ msgstr ""
 
 # wail=salaio FIXADO
 #. [attack]: type=cold
-#: data/core/units/undead/Spirit_Wraith.cfg:32
 #: data/core/units/undead/Spirit_Ghost.cfg:144
 #: data/core/units/undead/Spirit_Spectre.cfg:57
+#: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
 msgstr "salaio"
 
@@ -5358,8 +5357,8 @@ msgstr ""
 # baneblade=espada funesta FIXADO
 # tamén espada maldita...
 #. [attack]: type=arcane
-#: data/core/units/undead/Spirit_Wraith.cfg:21
 #: data/core/units/undead/Spirit_Spectre.cfg:46
+#: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
 msgstr "espada funesta"
 
@@ -5414,8 +5413,8 @@ msgstr ""
 
 # crush=esmagadura FIXADO
 #. [attack]: type=impact
-#: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
-#: data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Ancient.cfg:92 data/core/units/wose/Elder.cfg:91
+#: data/core/units/wose/Wose.cfg:30
 msgid "crush"
 msgstr "esmagadura"
 
@@ -5482,6 +5481,11 @@ msgstr ""
 "\n"
 "Os Woses están totalmente en contra da guerra, pero posúen unha gran forza. "
 "En troques, ainda que non adoitan facelo, son rápidos movéndose."
+
+# longbow=arco longo FIXADO
+#, fuzzy
+#~ msgid "Longbow"
+#~ msgstr "arco longo"
 
 #~ msgid ""
 #~ "The Gladiator has taken a completely different path from the Slashers. "

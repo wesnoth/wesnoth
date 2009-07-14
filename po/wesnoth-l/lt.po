@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:46+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-07-02 20:10+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -22,23 +22,13 @@ msgstr "Laisvė"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
-msgid "Outlaw"
-msgstr "Nusikaltėlis"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:17
-msgid "(Easy)"
-msgstr "(Lengva)"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(Sudėtinga)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
-msgid "Peasant"
-msgstr "Valstietis"
+msgid "(Easy)"
+msgstr "(Lengva)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
@@ -49,6 +39,21 @@ msgstr "(Normalu)"
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "Bėglys"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:17
+msgid "Outlaw"
+msgstr "Nusikaltėlis"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:17
+msgid "Peasant"
+msgstr "Valstietis"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:25
+msgid "(Intermediate level, 9 scenarios)"
+msgstr ""
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
@@ -67,11 +72,6 @@ msgstr ""
 "nemirėlius.\n"
 "\n"
 "(Vidutinis sudėtingumas, 9 scenarijai)"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:25
-msgid "(Intermediate level, 9 scenarios)"
-msgstr ""
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -173,37 +173,37 @@ msgid "Goblins reach the village of Dallben"
 msgstr "Goblinai pasiekia Dallbeno kaimą"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:110
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:81
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
 msgid "Death of Baldras"
 msgstr "Baldro mirtis"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:114
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:85
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Harperio mirtis"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:118
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:89
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
 msgid "Turns run out"
 msgstr "Pasibaigia ėjimai"
 
@@ -429,20 +429,20 @@ msgstr "Civilinis nepaklusnumas"
 #. [side]: type=Highwayman_Peasant, id=Relnan
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Bandit_Peasant, id=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:32
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:58
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:43
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
 msgid "Rebels"
 msgstr ""
 
@@ -458,14 +458,14 @@ msgstr "Tarvenas"
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=Royal Guard, id=Archarel
 #. [side]: type=Iron Mauler, id=Linneus
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:70
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 msgid "Asheviere"
 msgstr "Aševierė"
 
@@ -604,11 +604,11 @@ msgstr ""
 #. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:105
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:138
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
 msgid "Evil"
 msgstr "Blogis"
 
@@ -1128,8 +1128,8 @@ msgid "The Gray Woods"
 msgstr ""
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:61
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 msgid "Helicrom"
 msgstr ""
 
@@ -2080,8 +2080,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:37
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
 msgid "axe"
 msgstr "kirvis"
 
@@ -2126,8 +2126,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 msgid "short sword"
 msgstr "trumpas kardas"
 

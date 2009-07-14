@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-10 19:46+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2008-12-23 19:00+0900\n"
 "Last-Translator:  <P2295417919104729@hotmail.co.jp>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -24,23 +24,13 @@ msgstr "自由"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
-msgid "Outlaw"
-msgstr "無法者"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:17
-msgid "(Easy)"
-msgstr "(簡単)"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(難しい)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
-msgid "Peasant"
-msgstr "農民"
+msgid "(Easy)"
+msgstr "(簡単)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
@@ -51,6 +41,21 @@ msgstr "(普通)"
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "逃亡者"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:17
+msgid "Outlaw"
+msgstr "無法者"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:17
+msgid "Peasant"
+msgstr "農民"
+
+#. [campaign]: id=Liberty
+#: data/campaigns/Liberty/_main.cfg:25
+msgid "(Intermediate level, 9 scenarios)"
+msgstr ""
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
@@ -68,11 +73,6 @@ msgstr ""
 "い。\n"
 "\n"
 "(中級者向け、9 シナリオ)"
-
-#. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:25
-msgid "(Intermediate level, 9 scenarios)"
-msgstr ""
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -185,37 +185,37 @@ msgid "Goblins reach the village of Dallben"
 msgstr "ゴブリンが Dallben 村に到達する"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:110
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:81
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:156
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:287
 msgid "Death of Baldras"
 msgstr "Baldras の死"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:114
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:85
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:160
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Harper の死"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:118
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:89
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:164
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:291
 msgid "Turns run out"
 msgstr "時間切れ"
 
@@ -471,20 +471,20 @@ msgstr "市民の反抗"
 #. [side]: type=Highwayman_Peasant, id=Relnan
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Bandit_Peasant, id=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
-#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:32
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:58
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:43
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:55
+#: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:77
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
 msgid "Rebels"
 msgstr ""
 
@@ -500,14 +500,14 @@ msgstr "Tarwen"
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=Royal Guard, id=Archarel
 #. [side]: type=Iron Mauler, id=Linneus
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:70
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 msgid "Asheviere"
 msgstr ""
 
@@ -658,11 +658,11 @@ msgstr "Urk Delek"
 #. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:105
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:138
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
 msgid "Evil"
 msgstr ""
 
@@ -1281,8 +1281,8 @@ msgid "The Gray Woods"
 msgstr "Gray Woods"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:61
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 msgid "Helicrom"
 msgstr "Helicrom"
 
@@ -2413,8 +2413,8 @@ msgstr ""
 "すために不浄な魔法によって大地から蘇りました。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:37
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
 msgid "axe"
 msgstr "斧"
 
@@ -2467,8 +2467,8 @@ msgstr ""
 "魔術は致命的なものとなりえます。また、山賊行為の結果、短剣も適度に扱えます。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 msgid "short sword"
 msgstr "短剣"
 

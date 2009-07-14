@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2008-10-17 22:30+0200\n"
 "Last-Translator: Jose Gordillo <kilder@hotmail.com>\n"
 "Language-Team: Catalan <wesnoth-ca@list.etting.org>\n"
@@ -36,12 +36,12 @@ msgstr "Tutorial de Wesnoth"
 #. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
 msgstr "Konrad"
 
@@ -83,10 +83,10 @@ msgstr "Amb qui us agradaria jugar?"
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -359,8 +359,8 @@ msgstr ""
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Llogaret"
 
@@ -438,8 +438,8 @@ msgstr "Reclutaré alguns elfs!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 msgid "Keep"
 msgstr "Torre"
 
@@ -805,10 +805,10 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
 
@@ -964,11 +964,6 @@ msgstr "Açò no és un joc, Konrad!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
-msgstr "Açò no és cap joc, Li'sar!"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 #, fuzzy
 msgid ""
@@ -980,6 +975,11 @@ msgstr ""
 "nosaltres els elfs som ràpids i esquius dins el bosc. Són uns borinots només "
 "per entrar aquí. Heu de derrotat el seu líder per tal que no ens molestin "
 "mai més. Jo ja t'aconsellaré."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "Açò no és cap joc, Li'sar!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
@@ -1865,8 +1865,8 @@ msgstr "Lluitador"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "

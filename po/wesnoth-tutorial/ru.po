@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-06-20 16:23+0400\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -36,12 +36,12 @@ msgstr "Введение в Веснот"
 #. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
 msgstr "Конрад"
 
@@ -83,10 +83,10 @@ msgstr "Кем бы вы хотели играть?"
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "Лисар"
 
@@ -348,8 +348,8 @@ msgstr ""
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Деревня"
 
@@ -422,8 +422,8 @@ msgstr "Я завербую нескольких эльфов!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 msgid "Keep"
 msgstr "Лагерь"
 
@@ -774,10 +774,10 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Галдрад"
 
@@ -924,11 +924,6 @@ msgstr "Теперь всё серьёзно, Конрад! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
-msgstr "Теперь всё серьёзно, Лисар! "
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
@@ -938,6 +933,11 @@ msgstr ""
 "На другом берегу реки засели орки. Здесь эльфийская земля; они поступили "
 "неумно, придя сюда. Мы, эльфы, в лесу быстры и почти неуязвимы. Победи их "
 "вожака, чтобы они нас больше не беспокоили. Я буду давать тебе советы."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "Теперь всё серьёзно, Лисар! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
@@ -1762,8 +1762,8 @@ msgstr "Ученик"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "

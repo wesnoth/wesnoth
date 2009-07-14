@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-13 20:19+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -584,7 +584,7 @@ msgstr "移除模組"
 msgid "Connect"
 msgstr "連結"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/campaign_dialog.cfg:304
@@ -592,7 +592,7 @@ msgstr "連結"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:342
+#: data/gui/default/window/game_load.cfg:410
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -612,12 +612,12 @@ msgstr "取消"
 msgid "Play a campaign"
 msgstr "戰役"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:327
-#: data/gui/default/window/game_load.cfg:328
+#: data/gui/default/window/game_load.cfg:395
+#: data/gui/default/window/game_load.cfg:396
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -651,19 +651,19 @@ msgstr "設定"
 msgid "Generate"
 msgstr "產生"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:109
 msgid "New Map"
 msgstr "新地圖"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "寬度："
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
@@ -675,7 +675,7 @@ msgstr "高度："
 msgid "Create new map"
 msgstr "創造新地圖"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:154
 msgid "Resize Map"
@@ -717,7 +717,7 @@ msgstr "複製邊界地形"
 msgid "Resize map"
 msgstr "改變地圖大小"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:107
 msgid "Editor Settings"
@@ -729,11 +729,10 @@ msgid "Time of day lighting preset"
 msgstr "使用預設時間系統"
 
 #. [button]: id=next_tod
-#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:448
+#: data/gui/default/window/lobby_main.cfg:553
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "下一個"
@@ -768,14 +767,55 @@ msgstr "藍:"
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr "允許同時開啟多張地圖（MDI)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:192
 msgid "Apply"
 msgstr "應用"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=lblTitle
+#: data/gui/default/window/game_delete.cfg:32
+#, fuzzy
+msgid "Delete Save"
+msgstr "删除自動存檔"
+
+#. [label]: id=lblMessage
+#: data/gui/default/window/game_delete.cfg:52
+#, fuzzy
+msgid "Do you really want to delete this game?"
+msgstr "您要退出嗎？"
+
+#. [toggle_button]: id=dont_ask_again
+#: data/gui/default/window/game_delete.cfg:70
+msgid "Don't ask me again!"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/game_delete.cfg:106
+#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_save_message.cfg:139
+#: data/gui/default/window/game_save_message.cfg:140
+#: data/gui/default/window/game_save_oos.cfg:186
+#: data/gui/default/window/game_save_oos.cfg:187
+#: data/gui/default/window/game_save_overwrite.cfg:88
+#: data/gui/default/window/game_save_overwrite.cfg:89
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
+msgid "Yes"
+msgstr "是"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_save_message.cfg:154
+#: data/gui/default/window/game_save_oos.cfg:201
+#: data/gui/default/window/game_save_overwrite.cfg:103
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
+msgid "No"
+msgstr "否"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:32
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
@@ -787,20 +827,33 @@ msgstr "讀取遊戲"
 msgid "Choose the game to load"
 msgstr ""
 
+#. [label]: id=lblFilter
+#: data/gui/default/window/game_load.cfg:187
+#, fuzzy
+msgid "Filter"
+msgstr "文件:"
+
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:202
+#: data/gui/default/window/game_load.cfg:238
 #: data/gui/default/window/mp_server_list.cfg:86
 msgid "Name"
 msgstr "名字"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:218
+#: data/gui/default/window/game_load.cfg:254
 #, fuzzy
 msgid "Date"
 msgstr "貼上"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=delete
+#: data/gui/default/window/game_load.cfg:368
+#: data/gui/default/window/game_load.cfg:369
+#, fuzzy
+msgid "Delete"
+msgstr "删除檔案"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:32
 #: data/gui/default/window/game_save_message.cfg:32
@@ -821,27 +874,6 @@ msgstr "名字:"
 msgid "x"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/game_save_message.cfg:139
-#: data/gui/default/window/game_save_message.cfg:140
-#: data/gui/default/window/game_save_oos.cfg:186
-#: data/gui/default/window/game_save_oos.cfg:187
-#: data/gui/default/window/game_save_overwrite.cfg:88
-#: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:202
-msgid "Yes"
-msgstr "是"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=cancel
-#: data/gui/default/window/game_save_message.cfg:154
-#: data/gui/default/window/game_save_oos.cfg:201
-#: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:204
-msgid "No"
-msgstr "否"
-
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
@@ -852,7 +884,7 @@ msgstr ""
 msgid "Ignore All"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
 #: data/gui/default/window/game_save_oos.cfg:159 src/hotkeys.cpp:84
 msgid "Quit Game"
@@ -887,102 +919,95 @@ msgid "Change language"
 msgstr "選擇語言"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:372
+#: data/gui/default/window/lobby_main.cfg:355
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "多人對戰"
 
-#. [label]
-#: data/gui/default/window/lobby_main.cfg:391
-#, fuzzy
-msgid "Filter:"
-msgstr "文件:"
-
-#. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:402
-#, fuzzy
-msgid "Friends"
-msgstr "好友列表"
-
-#. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:408
-msgid "No ignored"
-msgstr ""
-
-#. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:414
-msgid "Vacant slots"
-msgstr ""
-
-#. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:420
-#, fuzzy
-msgid "Invert filter"
-msgstr "旋轉選擇區域"
-
-#. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:442
-#, fuzzy
-msgid "Send"
-msgstr "沙地"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:454
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "關閉"
-
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:466
+#: data/gui/default/window/lobby_main.cfg:364
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
 msgstr "退出"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:472
+#: data/gui/default/window/lobby_main.cfg:370
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "選項"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:478
+#: data/gui/default/window/lobby_main.cfg:376
 #, fuzzy
 msgid "Refresh"
 msgstr "刷新顯示"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:484
+#: data/gui/default/window/lobby_main.cfg:382
 #, fuzzy
 msgid "Join"
 msgstr "登入"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:490
+#: data/gui/default/window/lobby_main.cfg:388
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:496
+#: data/gui/default/window/lobby_main.cfg:394
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "新遊戲"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:502
+#: data/gui/default/window/lobby_main.cfg:400
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "幫助"
+
+#: data/gui/default/window/lobby_main.cfg:496
+#, fuzzy
+msgid "Filter:"
+msgstr "文件:"
+
+#: data/gui/default/window/lobby_main.cfg:507
+#, fuzzy
+msgid "Friends"
+msgstr "好友列表"
+
+#: data/gui/default/window/lobby_main.cfg:513
+msgid "No ignored"
+msgstr ""
+
+#: data/gui/default/window/lobby_main.cfg:519
+msgid "Vacant slots"
+msgstr ""
+
+#: data/gui/default/window/lobby_main.cfg:525
+#, fuzzy
+msgid "Invert filter"
+msgstr "旋轉選擇區域"
+
+#: data/gui/default/window/lobby_main.cfg:547
+#, fuzzy
+msgid "Send"
+msgstr "沙地"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/lobby_main.cfg:559
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "關閉"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1010,21 +1035,21 @@ msgstr "傳送個人訊息"
 msgid "Friends/Ignored List"
 msgstr "好友/封鎖列表"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
 #: src/game_preferences_display.cpp:169
 msgid "Add As Friend"
 msgstr "加入好友列表"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:170
 msgid "Add As Ignore"
 msgstr "丟進黑名單"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
 #: src/game_preferences_display.cpp:171
@@ -1170,7 +1195,7 @@ msgstr "登入:"
 msgid "Password:"
 msgstr "密碼:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:165
@@ -1182,12 +1207,12 @@ msgstr "儲存密碼"
 msgid "Password Reminder"
 msgstr "密碼提示"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:164
+#: src/gui/dialogs/game_load.cpp:235
 msgid "Multiplayer"
 msgstr "多人對戰"
 
@@ -1258,10 +1283,10 @@ msgstr "選擇"
 msgid "Previous"
 msgstr "上一個"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:166
+#: src/gui/dialogs/game_load.cpp:237
 msgid "Tutorial"
 msgstr "教學"
 
@@ -1754,16 +1779,16 @@ msgstr "字體大小是0。"
 msgid "Text doesn't start on canvas."
 msgstr "畫面沒有文字。"
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:519
+#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
 #: src/gui/auxiliary/window_builder.cpp:273
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
-#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
-#: src/gui/widgets/settings.cpp:1119
+#: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
+#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
+#: src/gui/widgets/settings.cpp:1120
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
@@ -1804,34 +1829,34 @@ msgstr "標籤值與數值不符。"
 msgid "No stack defined."
 msgstr "没有設定列表"
 
-#: src/gui/dialogs/game_load.cpp:139
+#: src/gui/dialogs/game_load.cpp:210
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:157
+#: src/gui/dialogs/game_load.cpp:228
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:174
+#: src/gui/dialogs/game_load.cpp:245
 #, fuzzy
 msgid "replay"
 msgstr "玩家"
 
-#: src/gui/dialogs/game_load.cpp:176
+#: src/gui/dialogs/game_load.cpp:247
 #, fuzzy
 msgid "Turn"
 msgstr "結束本回合"
 
-#: src/gui/dialogs/game_load.cpp:178
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "Scenario Start"
 msgstr "任務目標"
 
-#: src/gui/dialogs/game_load.cpp:181
+#: src/gui/dialogs/game_load.cpp:252
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:183
+#: src/gui/dialogs/game_load.cpp:254
 #, fuzzy
 msgid "Version: "
 msgstr "版本"
@@ -1852,24 +1877,24 @@ msgstr "版本"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "元件'$id'沒有被設定"
 
-#: src/gui/widgets/settings.cpp:139
+#: src/gui/widgets/settings.cpp:140
 msgid "No default gui defined."
 msgstr "沒有設定預設網格"
 
-#: src/gui/widgets/settings.cpp:306
+#: src/gui/widgets/settings.cpp:307
 msgid "Window not defined."
 msgstr "視窗沒有設定"
 
-#: src/gui/widgets/settings.cpp:403
+#: src/gui/widgets/settings.cpp:404
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
-#: src/gui/widgets/settings.cpp:545
+#: src/gui/widgets/settings.cpp:546
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
-#: src/gui/widgets/window.cpp:705 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
 
@@ -2589,9 +2614,6 @@ msgstr "在區塊'[$section|]'中，必須設的值'$key|'没有設定。"
 
 #~ msgid "Save Hotkeys"
 #~ msgstr "儲存快捷鍵"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "删除自動存檔"
 
 #~ msgid "Save replays at scenario end."
 #~ msgstr "任務結束時自動儲存錄影"

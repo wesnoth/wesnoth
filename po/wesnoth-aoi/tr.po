@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-aoi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-06-01 23:53+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-02-23 19:10+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -30,13 +30,13 @@ msgstr "BOS"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "Fighter"
-msgstr "Elf Savaşçısı"
+msgid "(Beginner)"
+msgstr "(Acemi)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:16
-msgid "(Beginner)"
-msgstr "(Acemi)"
+msgid "Fighter"
+msgstr "Elf Savaşçısı"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:17
@@ -50,13 +50,13 @@ msgstr "Elf Beyi"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "High Lord"
-msgstr "Elf Lideri"
+msgid "(Challenging)"
+msgstr "(Tecrübeli)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:18
-msgid "(Challenging)"
-msgstr "(Tecrübeli)"
+msgid "High Lord"
+msgstr "Elf Lideri"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -102,19 +102,19 @@ msgid "Defend the Forest"
 msgstr "Ormanı Savun"
 
 #. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:24
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:44
 msgid "Erlornas"
 msgstr "Erlornas"
 
 #. [side]: type=Elvish Lord, id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:29
-#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:27
-#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:27
-#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:33
-#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:49
-#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:29
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:31
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:27
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:29
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:29
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:49
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:27
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:33
 msgid "Elves"
 msgstr "Elfler"
 
@@ -129,12 +129,12 @@ msgstr "Uruga"
 #. [side]: type=Orcish Warlord, id=Krughnar
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warrior, id=Urugha
-#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:36
-#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:43
-#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:85
-#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:69
-#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:44
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:48
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:43
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:44
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:69
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:36
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:85
 msgid "Orcs"
 msgstr "Orklar"
 
@@ -211,24 +211,24 @@ msgid "Defeat Urugha"
 msgstr "Uruga'yı öldür"
 
 #. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:151
-#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:66
-#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:98
-#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:118
-#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:116
-#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:94
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:105
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:98
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:94
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:151
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:116
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:66
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:118
 msgid "Death of Erlornas"
 msgstr "Erlornas'ın ölümü"
 
 #. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:155
-#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:74
-#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:102
-#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:122
-#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:124
-#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:98
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:102
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:98
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:155
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:124
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:74
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:122
 msgid "Time runs out"
 msgstr "Ellerin bitmesi"
 
@@ -1119,8 +1119,8 @@ msgid "Defeat Krughnar and break the siege"
 msgstr "Krugnar'ı öldür ve kuşatmayı kır"
 
 #. [objective]: condition=lose
-#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:70
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:120
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:70
 msgid "Death of Linaera"
 msgstr "Linera'nın ölümü"
 

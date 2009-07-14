@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:01+0200\n"
+"POT-Creation-Date: 2009-07-14 23:06+0200\n"
 "PO-Revision-Date: 2009-04-27 21:59+0200\n"
 "Last-Translator: Barthalos Márton <barthalosmarton@yahoo.com>\n"
 "Language-Team: Hungarian <kde-i18n-doc@lists.kde.org>\n"
@@ -33,12 +33,12 @@ msgstr "Wesnoth gyakorlópálya"
 #. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
 msgstr "Konrad"
 
@@ -80,10 +80,10 @@ msgstr "Kivel szeretnél játszani?"
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:165
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "Li'sar"
 
@@ -347,8 +347,8 @@ msgstr "Aú! Gyógyulnom kell! Csak $student_hp életpontom maradt!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Falu"
 
@@ -420,8 +420,8 @@ msgstr "Toborzok néhány tündét!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
 msgid "Keep"
 msgstr "Várkastély"
 
@@ -770,10 +770,10 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
 
@@ -923,11 +923,6 @@ msgstr "Ez nem játék, Konrad! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
-msgstr "Ez nem játék, Li'sar! "
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
@@ -938,6 +933,11 @@ msgstr ""
 "ide mertek jönni. Mi, tündék, gyorsak és erősek vagyunk az erdőkben.  Le "
 "kell győznöd a vezérüket, nehogy ezután is galibát okozzon nekünk. Majd a "
 "tanácsaimmal segítelek."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
+msgid "This is no game, Li'sar! "
+msgstr "Ez nem játék, Li'sar! "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
@@ -1782,8 +1782,8 @@ msgstr "Csatlós"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
+#: data/campaigns/tutorial/units/Fighteress.cfg:17
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
