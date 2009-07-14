@@ -952,6 +952,19 @@ static int lua_set_village_owner(lua_State *L)
 	return 0;
 }
 
+/**
+ * Returns the map size.
+ * - Ret 1: width.
+ * - Ret 2: height.
+ */
+static int lua_get_map_size(lua_State *L)
+{
+	const gamemap &map = *game_events::resources->game_map;
+	lua_pushinteger(L, map.w());
+	lua_pushinteger(L, map.h());
+	return 2;
+}
+
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
@@ -985,6 +998,7 @@ LuaKernel::LuaKernel()
 		{ "dofile",                   &lua_dofile                   },
 		{ "fire",                     &lua_fire                     },
 		{ "fire_event",               &lua_fire_event               },
+		{ "get_map_size",             &lua_get_map_size             },
 		{ "get_side",                 &lua_get_side                 },
 		{ "get_terrain",              &lua_get_terrain              },
 		{ "get_terrain_info",         &lua_get_terrain_info         },
