@@ -182,6 +182,8 @@ unsigned tmanager::get_id(twindow& window)
 		}
 	}
 	assert(false);
+
+	return 0;
 }
 
 twindow* tmanager::window(const unsigned id)
