@@ -431,7 +431,8 @@ namespace {
 	 *
 	 * @returns       true if dependencies are met; false otherwise.
 	 */
-	bool addon_dependencies_met(game_display& disp, const std::vector<std::string>& deplist)
+	bool addon_dependencies_met(game_display &disp,
+		const std::vector<std::string> &deplist, const std::string &addon_title)
 	{
 		const std::vector<std::string>& installed = installed_addons();
 		std::vector<std::string>::const_iterator i;
@@ -449,12 +450,16 @@ namespace {
 		// the missing dependencies.
 		if (!missing.empty()) {
 			const std::string msg_title    = _("Dependencies");
-			const std::string msg_entrytxt = _n("This add-on depends upon the following add-on which you have not installed yet:",
-												"This add-on depends upon the following add-ons which you have not installed yet:",
-												count_missing);
+			utils::string_map symbols;
+			symbols["addon_title"] = addon_title;
+			const std::string msg_entrytxt = utils::interpolate_variables_into_string(
+				_n("$addon_title depends upon the following add-on which you have not installed yet:",
+				"$addon_title depends upon the following add-ons which you have not installed yet:",
+				count_missing), &symbols);
+			std::string msg_reminder = utils::interpolate_variables_into_string(_("Do you still want to download $addon_title|? (You will have to install all the dependencies in order to play.)"), &symbols);
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg(disp, msg_title, msg_entrytxt + "\n" + missing +
-			                "\n" + _("Do you want to download this add-on? (You will still have to install the dependencies in order to play.)"), gui::OK_CANCEL);
+			gui::dialog dlg(disp, msg_title, msg_entrytxt + "\n \n" + missing +
+			                "\n \n" + msg_reminder, gui::OK_CANCEL);
 			if (dlg.show())
 				return false;
 		}
@@ -564,7 +569,7 @@ namespace {
 		// Get all dependencies which are not already installed.
 		// TODO: Somehow determine if the version is outdated.
 		std::vector<std::string> dependencies = utils::split(selected_campaign["dependencies"]);
-		if (!addon_dependencies_met(disp,dependencies)) return false;
+		if (!addon_dependencies_met(disp, dependencies, addon_title)) return false;
 		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = addon_id;
