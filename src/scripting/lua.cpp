@@ -41,6 +41,7 @@ extern "C" {
 #include <cassert>
 #include <cstring>
 
+#include "actions.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
@@ -876,9 +877,9 @@ static int lua_set_terrain(lua_State *L)
 }
 
 /**
- * Gets info about a terrain.
+ * Gets details about a terrain.
  * - Arg 1: terrain code string.
- * - Ret 1: table
+ * - Ret 1: table.
  */
 static int lua_get_terrain_info(lua_State *L)
 {
@@ -904,6 +905,51 @@ static int lua_get_terrain_info(lua_State *L)
 	lua_setfield(L, -2, "healing");
 
 	return 1;
+}
+
+/**
+ * Gets the side of a village owner.
+ * - Args 1,2: map location.
+ * - Ret 1: integer.
+ */
+static int lua_get_village_owner(lua_State *L)
+{
+	int x = luaL_checkint(L, 1);
+	int y = luaL_checkint(L, 2);
+
+	map_location loc(x - 1, y - 1);
+	if (!game_events::resources->game_map->is_village(loc))
+		return 0;
+
+	int side = village_owner(loc, *game_events::resources->teams) + 1;
+	if (!side) return 0;
+	lua_pushinteger(L, side);
+	return 1;
+}
+
+/**
+ * Sets the owner of a village.
+ * - Args 1,2: map location.
+ * - Arg 3: integer for the side or empty to remove ownership.
+ */
+static int lua_set_village_owner(lua_State *L)
+{
+	int x = luaL_checkint(L, 1);
+	int y = luaL_checkint(L, 2);
+	int new_side = lua_isnoneornil(L, 3) ? 0 : luaL_checkint(L, 3);
+
+	std::vector<team> &teams = *game_events::resources->teams;
+	map_location loc(x - 1, y - 1);
+	if (!game_events::resources->game_map->is_village(loc))
+		return 0;
+
+	int old_side = village_owner(loc, teams) + 1;
+	if (new_side == old_side || new_side < 0 || new_side > (int)teams.size())
+		return 0;
+
+	if (old_side) teams[old_side - 1].lose_village(loc);
+	if (new_side) teams[new_side - 1].get_village(loc);
+	return 0;
 }
 
 static int lua_message(lua_State *L)
@@ -946,10 +992,12 @@ LuaKernel::LuaKernel()
 		{ "get_unit_type_ids",        &lua_get_unit_type_ids        },
 		{ "get_units",                &lua_get_units                },
 		{ "get_variable",             &lua_get_variable             },
+		{ "get_village_owner",        &lua_get_village_owner        },
 		{ "message",                  &lua_message                  },
 		{ "register_wml_action",      &lua_register_wml_action      },
 		{ "set_terrain",              &lua_set_terrain              },
 		{ "set_variable",             &lua_set_variable             },
+		{ "set_village_owner",        &lua_set_village_owner        },
 		{ "textdomain",               &lua_textdomain               },
 		{ NULL, NULL }
 	};
