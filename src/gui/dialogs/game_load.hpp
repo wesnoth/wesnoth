@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/text.hpp"
 #include "savegame.hpp"
 #include "tstring.hpp"
 
@@ -40,16 +41,22 @@ private:
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
+	bool filter_text_changed(ttext_* textbox, const std::string text);
 	void list_item_clicked(twindow& window);
+	void delete_button_callback(twindow& window);
 
 	void display_savegame(twindow& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
+	void fill_game_list(twindow& window, std::vector<save_info>& games);
 
-	//tfield_text* txtFilename_;
+	tfield_text* txtFilter_;
+
 	std::string filename_;
 
 	std::vector<save_info> games_;
 	const config& cache_config_;
+
+	std::vector<std::string> last_words_;
 };
 
 }

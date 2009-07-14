@@ -20,14 +20,22 @@
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/dialogs/field.hpp"
+#include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
+#include "preferences_display.hpp"
+
+#include <cctype>
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
@@ -45,7 +53,8 @@ namespace gui2 {
  */
 
 	tgame_load::tgame_load(const config& cache_config)
-		: filename_(),
+		: txtFilter_(register_text("txtFilter", false)),
+		filename_(),
 		cache_config_(cache_config)
 {
 }
@@ -61,6 +70,12 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(minimap, missing_widget("minimap"));
 	minimap->set_config(&cache_config_);
 
+	assert(txtFilter_);
+	ttext_box* filter = dynamic_cast<ttext_box*>(window.find_widget("txtFilter", false));
+	VALIDATE(filter, missing_widget("txtFilter"));
+	window.keyboard_capture(filter);
+	filter->set_text_changed_callback(boost::bind(&tgame_load::filter_text_changed, this, _1, _2));
+
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
 	VALIDATE(list, missing_widget("savegame_list"));
 	window.keyboard_capture(list);
@@ -71,8 +86,20 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 		cursor::setter cur(cursor::WAIT);
 		games_ = savegame_manager::get_saves_list();
 	}
+	fill_game_list(window, games_);
 
-	foreach(const save_info game, games_) {
+	GUI2_EASY_BUTTON_CALLBACK(delete, tgame_load);
+		
+	display_savegame(window);
+}
+
+void tgame_load::fill_game_list(twindow& window, std::vector<save_info>& games){
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
+	VALIDATE(list, missing_widget("savegame_list"));
+
+	list->clear();
+
+	foreach(const save_info game, games) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -85,14 +112,58 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 		list->add_row(data);
 	}
 
-	display_savegame(window);
+	window.invalidate_layout();
 }
 
 void tgame_load::list_item_clicked(twindow& window){
 	display_savegame(window);
 }
 
-void tgame_load::post_show(twindow& /*window*/)
+bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text){
+	twindow& window = *textbox->get_window();
+
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
+	VALIDATE(list, missing_widget("savegame_list"));
+
+	const std::vector<std::string> words = utils::split(text, ' ');
+
+	if (words == last_words_)
+		return false;
+	last_words_ = words;
+
+	bool found;
+	for (unsigned int i = 0; i < list->get_item_count(); i++){
+		tgrid* row = list->get_row_grid(i);
+
+		if (text == ""){
+			row->set_visible(twidget::VISIBLE);
+		}
+		else{
+			tgrid::iterator it = row->begin();
+			tlabel* filename_label = dynamic_cast<tlabel*>(it->find_widget("filename", false));
+
+			foreach (const std::string& word, words){
+				found = std::search(filename_label->label().str().begin(), filename_label->label().str().end(),
+							word.begin(), word.end(),
+							chars_equal_insensitive) != filename_label->label().str().end();
+				
+				if (! found)
+					break; // one word doesn't match, we don't reach words.end()
+			}
+
+			if (found)
+				row->set_visible(twidget::VISIBLE);
+			else
+				row->set_visible(twidget::INVISIBLE);
+		}
+	}
+
+	window.invalidate_layout();
+
+	return false;
+}
+
+void tgame_load::post_show(twindow& window)
 {
 	//filename_ = txtFilename_->get_widget_value(window);
 }
@@ -185,5 +256,44 @@ void tgame_load::evaluate_summary_string(std::stringstream& str, const config& c
 	}
 }
 
-} // namespace gui2
+void tgame_load::delete_button_callback(twindow& window){
+	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
+	VALIDATE(list, missing_widget("savegame_list"));
 
+	const size_t index = size_t(list->get_selected_row());
+	if(index < games_.size()) {
+
+		// See if we should ask the user for deletion confirmation
+		if(preferences::ask_delete_saves()) {
+			//gui2::tgame_delete dlg_delete;
+			//dlg_delete.show(window, 0);
+			
+			/*
+			gui::dialog dmenu(disp_,"",
+					       _("Do you really want to delete this game?"),
+					       gui::YES_NO);
+			dmenu.add_option(_("Don't ask me again!"), false);
+			const int res = dmenu.show();
+			// See if the user doesn't want to be asked this again
+			if(dmenu.option_checked()) {
+				preferences::set_ask_delete_saves(false);
+			}
+			*/
+
+			//if(res != 0) {
+			//	return gui::CONTINUE_DIALOG;
+			//}
+		}
+
+		// Delete the file
+		//savegame_manager::delete_game(games_[index].name);
+
+		// Remove it from the list of saves
+		games_.erase(games_.begin() + index);
+		list->remove_row(index);
+
+		display_savegame(window);
+	}
+}
+
+} // namespace gui2
