@@ -115,48 +115,64 @@ statistics_dialog::statistics_dialog(game_display &disp,
 				gui::dialog::BUTTON_STANDARD);
 
 	stats_ = statistics::calculate_stats(0, team_id);
-	int n;
+	int n, cost;
 	std::vector<std::string> items;
 	// Prepare the menu items
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.recruits);
+		cost = stats_.recruit_cost;
 		unit_count_[0] = n;
-		str << _("Recruits") << COLUMN_SEPARATOR << n;
+		str << _("Recruits") << COLUMN_SEPARATOR << n
+		    << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.recalls);
+		cost = stats_.recall_cost;
 		unit_count_[1] = n;
-		str << _("Recalls") << COLUMN_SEPARATOR << n;
+		str << _("Recalls") << COLUMN_SEPARATOR << n
+		    << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.advanced_to);
 		unit_count_[2] = n;
-        str << _("Advancements") << COLUMN_SEPARATOR << n;
+		str << _("Advancements") << COLUMN_SEPARATOR << n;
 		items.push_back(str.str());
 	}
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.deaths);
 		unit_count_[3] = n;
-		str << _("Losses") << COLUMN_SEPARATOR << n;
+		cost = statistics::sum_cost_str_int_map(stats_.deaths);
+		str << _("Losses") << COLUMN_SEPARATOR << n
+		    << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.killed);
 		unit_count_[4] = n;
-		str << _("Kills") << COLUMN_SEPARATOR << n;
+		cost = statistics::sum_cost_str_int_map(stats_.killed);
+		str << _("Kills") << COLUMN_SEPARATOR << n
+		    << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << IMAGE_PREFIX << "themes/gold-t.png"
+		    << COLUMN_SEPARATOR << cost;
 		items.push_back(str.str());
 	}
 	items.push_back("");
 	{
 		std::stringstream str;
-        str << font::BOLD_TEXT << _("Damage")
+		str << font::BOLD_TEXT << _("Damage")
 		    << COLUMN_SEPARATOR << _("Over All") << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR << _("This Turn");
