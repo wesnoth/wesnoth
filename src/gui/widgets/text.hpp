@@ -38,9 +38,8 @@ public:
 		state_(ENABLED),
 		text_(),
 		selection_start_(0),
-		selection_length_(0),
-		key_press_callback_()
-	{
+		selection_length_(0),		
+		key_press_callback_()	{
 	}
 
 	/** Inherited from tevent_executor. */
@@ -99,6 +98,13 @@ public:
 		boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > cb)
 	{
 		key_press_callback_ = cb;
+	}
+
+	/** Set the text_changed callback. */
+	void set_text_changed_callback(
+		boost::function< void (ttext_* textbox, const std::string text) > cb)
+	{
+		text_changed_callback_ = cb;
 	}
 
 protected:
@@ -409,6 +415,16 @@ protected:
 	 * - The unicode for the pressed key.
 	 */
 	boost::function< bool (twidget*, SDLKey, SDLMod, Uint16) > key_press_callback_;
+
+	/** 
+	 * Text changed callback.
+	 *
+	 * This callback is called in key_press after the key_press event has been
+	 * handled by the control. The parameters to the function are:
+	 * - The widget invoking the callback
+	 * - The new text of the textbox.
+	 */
+	boost::function< void (ttext_* textbox, const std::string text) > text_changed_callback_;
 };
 
 } // namespace gui2

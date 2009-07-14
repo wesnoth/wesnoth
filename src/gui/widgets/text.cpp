@@ -203,6 +203,10 @@ void ttext_::key_press(tevent_handler& /*event*/,
 			handle_key_default(handled, key, modifier, unicode);
 
 	}
+
+	if(text_changed_callback_) {
+		text_changed_callback_(this, this->text());
+	}
 }
 
 void ttext_::set_maximum_length(const size_t maximum_length)
