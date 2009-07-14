@@ -130,7 +130,8 @@ if(ENABLE_POT_UPDATE_TARGET)
 				--force-po
 				--add-comments=TRANSLATORS 
 				--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in 
-				--copyright-holder=\"Wesnoth development team\" 
+				--copyright-holder=\"Wesnoth development team\"
+				--msgid-bugs-address=\"http://bugs.wesnoth.org/\"
 				--from-code=UTF-8
 				--sort-by-file
 				--keyword=_
