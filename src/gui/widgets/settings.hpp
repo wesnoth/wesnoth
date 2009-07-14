@@ -68,6 +68,7 @@ enum twindow_type {
 	EDITOR_SETTINGS,         /**< Editor settings dialog. */
 #endif
 	GAME_LOAD,				 /**< Load game dialog. */
+	GAME_DELETE,			 /**< Confirm delete dialog. */
 	GAME_SAVE,				 /**< Save game dialog. */
 	GAME_SAVE_MESSAGE,		 /**< Save game dialog with additional message. */
 	GAME_SAVE_OOS,			 /**< Save game dialog for processing OOS. */

@@ -89,6 +89,7 @@ static void fill_window_types()
 	window_type_list[MP_CREATE_GAME] = "mp_create_game";
 	window_type_list[TITLE_SCREEN] = "title_screen";
 	window_type_list[GAME_LOAD] = "game_load";
+	window_type_list[GAME_DELETE] = "game_delete";
 	window_type_list[GAME_SAVE] = "game_save";
 	window_type_list[GAME_SAVE_MESSAGE] = "game_save_message";
 	window_type_list[GAME_SAVE_OOS] = "game_save_oos";
