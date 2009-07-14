@@ -16,6 +16,7 @@
 #define GAME_EVENTS_H_INCLUDED
 
 #include "config.hpp"
+#include "map.hpp"
 #include "map_location.hpp"
 #include "soundsource.hpp"
 #include "variable.hpp"
@@ -45,6 +46,13 @@ class play_controller;
  * like mouse movement, keyboard events, etc.
  * See events.hpp for how they are handled.
  */
+
+/**
+ * Changes a terrain location.
+ * Ensures that villages are properly lost and that new terrains are discovered.
+ */
+void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
+	gamemap::tmerge_mode mode, bool replace_if_failed);
 
 namespace game_events
 {

@@ -1915,55 +1915,48 @@ WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 	game_events::resources->soundsources->remove(cfg["id"]);
 }
 
-// Changing the terrain
-WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
+void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
+	gamemap::tmerge_mode mode, bool replace_if_failed)
 {
 	const game_events::resources_t &rsrc = *game_events::resources;
 	gamemap *game_map = rsrc.game_map;
 
-		const std::vector<map_location> locs = multiple_locs(cfg);
+	t_translation::t_terrain
+		old_t = game_map->get_terrain(loc),
+		new_t = game_map->merge_terrains(old_t, t, mode, replace_if_failed);
+	if (new_t == t_translation::NONE_TERRAIN) return;
+	preferences::encountered_terrains().insert(new_t);
 
-		std::string terrain_type = cfg["terrain"];
-
-		t_translation::t_terrain terrain = t_translation::read_terrain_code(terrain_type);
-
-		if(terrain != t_translation::NONE_TERRAIN) {
-
-			gamemap::tmerge_mode mode = gamemap::BOTH;
-			if (cfg["layer"] == "base") {
-				mode = gamemap::BASE;
-			}
-			else if (cfg["layer"] == "overlay") {
-				mode = gamemap::OVERLAY;
-			}
-
-			for(std::vector<map_location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
-				const t_translation::t_terrain old_terrain = game_map->get_terrain(*loc);
-				const t_translation::t_terrain new_terrain = game_map->merge_terrains(old_terrain, terrain, mode, utils::string_bool(cfg["replace_if_failed"]) );
-				if (new_terrain != t_translation::NONE_TERRAIN) {
-
-					preferences::encountered_terrains().insert(new_terrain);
-					const bool old_village = game_map->is_village(*loc);
-					const bool new_village = game_map->is_village(new_terrain);
-
-					if(old_village && !new_village) {
-						int owner = village_owner(*loc, *rsrc.teams);
-						if(owner != -1) {
-							(*rsrc.teams)[owner].lose_village(*loc);
-						}
-					}
-
-					game_map->set_terrain(*loc, new_terrain);
-
-					const t_translation::t_list underlaying_list = game_map->underlying_union_terrain(*loc);
-					for (t_translation::t_list::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ut++) {
-						preferences::encountered_terrains().insert(*ut);
-					};
-				}
-			}
-			screen_needs_rebuild = true;
-		}
+	if (game_map->is_village(old_t) && !game_map->is_village(new_t)) {
+		int owner = village_owner(loc, *rsrc.teams);
+		if (owner != -1)
+			(*rsrc.teams)[owner].lose_village(loc);
 	}
+
+	game_map->set_terrain(loc, new_t);
+	screen_needs_rebuild = true;
+
+	foreach (const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
+		preferences::encountered_terrains().insert(ut);
+	}
+}
+
+// Changing the terrain
+WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
+{
+	t_translation::t_terrain terrain = t_translation::read_terrain_code(cfg["terrain"]);
+	if (terrain == t_translation::NONE_TERRAIN) return;
+
+	gamemap::tmerge_mode mode = gamemap::BOTH;
+	if (cfg["layer"] == "base") mode = gamemap::BASE; else
+	if (cfg["layer"] == "overlay") mode = gamemap::OVERLAY;
+
+	bool replace_if_failed = utils::string_bool(cfg["replace_if_failed"]);
+
+	foreach (const map_location &loc, multiple_locs(cfg)) {
+		change_terrain(loc, terrain, mode, replace_if_failed);
+	}
+}
 
 // Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
