@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//#define GETTEXT_DOMAIN "wesnoth-lib"
-
+#include "gui/dialogs/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/widgets/settings.hpp"
 
@@ -31,7 +30,9 @@ namespace gui2 {
  * @end_table
  */
 
-tgame_delete::tgame_delete() {}
+tgame_delete::tgame_delete() 
+	: chk_dont_ask_again_(register_bool("dont_ask_again"))
+{}
 
 twindow* tgame_delete::build_window(CVideo& video)
 {
@@ -44,6 +45,7 @@ void tgame_delete::pre_show(CVideo& /*video*/, twindow& window)
 
 void tgame_delete::post_show(twindow& window)
 {
+	dont_ask_again_ = chk_dont_ask_again_->get_widget_value(window);
 }
 
 } // namespace gui2

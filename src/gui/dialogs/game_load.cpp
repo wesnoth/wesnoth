@@ -265,28 +265,20 @@ void tgame_load::delete_button_callback(twindow& window){
 
 		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			//gui2::tgame_delete dlg_delete;
-			//dlg_delete.show(window, 0);
-			
-			/*
-			gui::dialog dmenu(disp_,"",
-					       _("Do you really want to delete this game?"),
-					       gui::YES_NO);
-			dmenu.add_option(_("Don't ask me again!"), false);
-			const int res = dmenu.show();
-			// See if the user doesn't want to be asked this again
-			if(dmenu.option_checked()) {
+			gui2::tgame_delete dlg_delete;
+			dlg_delete.show(window.video(), 0);
+			int res = dlg_delete.get_retval();
+
+			if (res == twindow::CANCEL)
+				return;
+
+			if (dlg_delete.dont_ask_again()) {
 				preferences::set_ask_delete_saves(false);
 			}
-			*/
-
-			//if(res != 0) {
-			//	return gui::CONTINUE_DIALOG;
-			//}
 		}
 
 		// Delete the file
-		//savegame_manager::delete_game(games_[index].name);
+		savegame_manager::delete_game(games_[index].name);
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);

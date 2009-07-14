@@ -24,6 +24,8 @@ class tgame_delete : public tdialog
 public:
 	tgame_delete();
 
+	bool dont_ask_again() const { return dont_ask_again_; }
+
 protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
@@ -34,6 +36,9 @@ protected:
 private:
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
+
+	tfield_bool* chk_dont_ask_again_;
+	bool dont_ask_again_;
 };
 
 }
