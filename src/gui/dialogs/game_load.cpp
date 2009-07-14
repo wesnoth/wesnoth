@@ -131,7 +131,6 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text){
 		return false;
 	last_words_ = words;
 
-	bool found;
 	for (unsigned int i = 0; i < list->get_item_count(); i++){
 		tgrid* row = list->get_row_grid(i);
 
@@ -142,6 +141,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text){
 			tgrid::iterator it = row->begin();
 			tlabel* filename_label = dynamic_cast<tlabel*>(it->find_widget("filename", false));
 
+			bool found = false;
 			foreach (const std::string& word, words){
 				found = std::search(filename_label->label().str().begin(), filename_label->label().str().end(),
 							word.begin(), word.end(),
