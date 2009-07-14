@@ -45,7 +45,9 @@ extern "C" {
 #include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "scripting/lua.hpp"
+#include "terrain_translation.hpp"
 #include "unit.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -840,6 +842,70 @@ static int lua_get_side(lua_State *L)
 	return 1;
 }
 
+/**
+ * Gets a terrain code.
+ * - Args 1,2: map location.
+ * - Ret 1: string.
+ */
+static int lua_get_terrain(lua_State *L)
+{
+	int x = luaL_checkint(L, 1);
+	int y = luaL_checkint(L, 2);
+
+	t_translation::t_terrain const &t = game_events::resources->game_map->
+		get_terrain(map_location(x - 1, y - 1));
+	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
+	return 1;
+}
+
+/**
+ * Sets a terrain code.
+ * - Args 1,2: map location.
+ * - Arg 3: terrain code string.
+ */
+static int lua_set_terrain(lua_State *L)
+{
+	int x = luaL_checkint(L, 1);
+	int y = luaL_checkint(L, 2);
+	char const *m = luaL_checkstring(L, 3);
+
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	if (t != t_translation::NONE_TERRAIN)
+		change_terrain(map_location(x - 1, y - 1), t, gamemap::BOTH, false);
+	return 0;
+}
+
+/**
+ * Gets info about a terrain.
+ * - Arg 1: terrain code string.
+ * - Ret 1: table
+ */
+static int lua_get_terrain_info(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	if (t == t_translation::NONE_TERRAIN) return 0;
+	terrain_type const &info = game_events::resources->game_map->get_terrain_info(t);
+
+	lua_newtable(L);
+	lua_pushstring(L, info.id().c_str());
+	lua_setfield(L, -2, "id");
+	lua_pushtstring(L, info.name());
+	lua_setfield(L, -2, "name");
+	lua_pushtstring(L, info.description());
+	lua_setfield(L, -2, "description");
+	lua_pushboolean(L, info.is_village());
+	lua_setfield(L, -2, "village");
+	lua_pushboolean(L, info.is_castle());
+	lua_setfield(L, -2, "castle");
+	lua_pushboolean(L, info.is_keep());
+	lua_setfield(L, -2, "keep");
+	lua_pushinteger(L, info.gives_healing());
+	lua_setfield(L, -2, "healing");
+
+	return 1;
+}
+
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
@@ -870,18 +936,21 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
+		{ "dofile",                   &lua_dofile                   },
 		{ "fire",                     &lua_fire                     },
 		{ "fire_event",               &lua_fire_event               },
-		{ "get_units",                &lua_get_units                },
+		{ "get_side",                 &lua_get_side                 },
+		{ "get_terrain",              &lua_get_terrain              },
+		{ "get_terrain_info",         &lua_get_terrain_info         },
 		{ "get_unit_type",            &lua_get_unit_type            },
 		{ "get_unit_type_ids",        &lua_get_unit_type_ids        },
+		{ "get_units",                &lua_get_units                },
 		{ "get_variable",             &lua_get_variable             },
 		{ "message",                  &lua_message                  },
-		{ "dofile",                   &lua_dofile                   },
+		{ "register_wml_action",      &lua_register_wml_action      },
+		{ "set_terrain",              &lua_set_terrain              },
 		{ "set_variable",             &lua_set_variable             },
 		{ "textdomain",               &lua_textdomain               },
-		{ "register_wml_action",      &lua_register_wml_action      },
-		{ "get_side",                 &lua_get_side                 },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
