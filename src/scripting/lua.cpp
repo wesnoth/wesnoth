@@ -62,6 +62,17 @@ static char const tstringKey = 0;
 static char const uactionKey = 0;
 
 /**
+ * Pushes a t_string on the top of the stack.
+ */
+static void lua_pushtstring(lua_State *L, t_string const &v)
+{
+	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
+	lua_pushlightuserdata(L, (void *)&tstringKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+}
+
+/**
  * Converts a string into a Lua object pushed at the top of the stack.
  * Boolean ("yes"/"no") and numbers are detected and typed accordingly.
  */
@@ -83,10 +94,7 @@ static void scalar_of_wml_string(lua_State *L, t_string const &v)
 	}
 	else
 	{
-		new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
-		lua_pushlightuserdata(L, (void *)&tstringKey);
-		lua_gettable(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		lua_pushtstring(L, v);
 	}
 }
 
@@ -205,10 +213,7 @@ static int lua_gettext(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	char const *d = static_cast<char *>(lua_touserdata(L, 1));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
-	new(lua_newuserdata(L, sizeof(t_string))) t_string(m, d);
-	lua_pushlightuserdata(L, (void *)&tstringKey);
-	lua_gettable(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	lua_pushtstring(L, t_string(m, d));
 	return 1;
 }
 
@@ -297,10 +302,7 @@ static int lua_tstring_tostring(lua_State *L)
 
 #define return_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		new(lua_newuserdata(L, sizeof(t_string))) t_string(accessor); \
-		lua_pushlightuserdata(L, (void *)&tstringKey); \
-		lua_gettable(L, LUA_REGISTRYINDEX); \
-		lua_setmetatable(L, -2); \
+		lua_pushtstring(L, accessor); \
 		return 1; \
 	}
 
