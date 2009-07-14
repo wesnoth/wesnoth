@@ -31,24 +31,25 @@ struct token_type {
 };
 
 //create the array with list of possible tokens
-token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.\\+|\\.-|\\.\\*|\\./|\\.)"), TOKEN_OPERATOR },
-				{ regex("^functions\\b"),      TOKEN_KEYWORD },
-				{ regex("^def\\b"),            TOKEN_KEYWORD },
-				{ regex("^fai\\b"),            TOKEN_KEYWORD },
-				{ regex("^faiend\\b"),         TOKEN_KEYWORD },
-				{ regex("^'[^']*'"),           TOKEN_STRING_LITERAL },
-				{ regex("^[a-zA-Z_]+"),        TOKEN_IDENTIFIER },
-				{ regex("^\\d+"),              TOKEN_INTEGER },
+token_type token_types[] = {	{ regex("^where\\b"),	       TOKEN_OPERATOR },
+				{ regex("^\\n"),               TOKEN_EOL },
+				{ regex("^([ ]|\\t|\\r|\\f)"), TOKEN_WHITESPACE },
 				{ regex("^\\("),               TOKEN_LPARENS },
 				{ regex("^\\)"),               TOKEN_RPARENS },
 				{ regex("^\\["),               TOKEN_LSQUARE },
 				{ regex("^\\]"),               TOKEN_RSQUARE },
-				{ regex("^#.*?#"),             TOKEN_COMMENT },
+				{ regex("^->"),                TOKEN_POINTER },
+				{ regex("^'[^']*'"),           TOKEN_STRING_LITERAL },
+				{ regex("^fai\\b"),            TOKEN_KEYWORD },
+				{ regex("^faiend\\b"),         TOKEN_KEYWORD },
+				{ regex("^functions\\b"),      TOKEN_KEYWORD },
+				{ regex("^def\\b"),            TOKEN_KEYWORD },
+				{ regex("^[a-zA-Z_]+"),        TOKEN_IDENTIFIER },
+				{ regex("^\\d+"),              TOKEN_INTEGER },
+{ regex("^(not\\b|and\\b|or\\b|d(?=[^a-zA-Z])|\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.\\+|\\.-|\\.\\*|\\./|\\.)"), TOKEN_OPERATOR },
 				{ regex("^,"),                 TOKEN_COMMA },
 				{ regex("^;"),                 TOKEN_SEMICOLON },
-				{ regex("^\\n"),               TOKEN_EOL },
-				{ regex("^([ ]|\\t|\\r|\\f)"), TOKEN_WHITESPACE },
-				{ regex("^->"),                TOKEN_POINTER }
+				{ regex("^#.*?#"),             TOKEN_COMMENT }
 };
 
 }
