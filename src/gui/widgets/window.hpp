@@ -319,6 +319,8 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	CVideo& video() { return video_; }
+
 	/**
 	 * Sets there return value of the window.
 	 *
