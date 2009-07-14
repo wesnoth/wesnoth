@@ -115,6 +115,8 @@ wesnoth_source = \
 	gui/dialogs/addon_list.cpp \
 	gui/dialogs/campaign_selection.cpp \
 	gui/dialogs/dialog.cpp \
+	gui/dialogs/game_load.cpp \
+	gui/dialogs/game_delete.cpp \
 	gui/dialogs/game_save.cpp \
 	gui/dialogs/language_selection.cpp \
 	gui/dialogs/lobby_main.cpp \
