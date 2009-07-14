@@ -51,6 +51,11 @@ stringfixes = {
 ("you and your minions have killed, Lich", "you and your minions have killed, lich"),
 ),
 
+"wesnoth-dm" : (
+("Now. go forth", "Now, go forth"),
+("but it the power it gives tends to magnifies any", "but the power it gives tends to magnify any"),
+),
+
 "wesnoth-httt" : (
 # Missing comma clarifies that Lisar is ordering her duelist to attack,
 # not ordering someone to attack him!  Translators will probably have picked
