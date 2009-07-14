@@ -394,9 +394,12 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 
 	//FIXME: Integrate the load_game dialog into this class
 	//something to watch for the curious, but not yet ready to go
-	//gui2::tgame_load load_dialog(game_config_);
-	//load_dialog.show(gui_.video());
-	filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
+	if (gui2::new_widgets){
+		gui2::tgame_load load_dialog(game_config_);
+		load_dialog.show(gui_.video());
+	}
+	else
+		filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
 
 	show_replay_ = show_replay_dialog;
 	cancel_orders_ = cancel_orders_dialog;
