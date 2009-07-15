@@ -310,13 +310,6 @@ bool set_language(const language_def& locale)
 	}
 	// end of string_table fill
 
-	// Reset translations for the name of current languages
-	for (language_list::iterator itor = known_languages.begin();
-			itor != known_languages.end(); ++itor) {
-
-		itor->language.reset_translation();
-	}
-
 	return true;
 }
 

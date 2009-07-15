@@ -21,9 +21,6 @@
 
 /**
  * Helper class for translatable strings.
- *
- * NOTE don't use static t_string_base objects since they don't change when the
- * language changes.
  */
 class t_string;
 class t_string_base
@@ -96,14 +93,11 @@ public:
 	const std::string& value() const                 { return value_; }
 	std::string base_str() const;
 
-	void reset_translation() const                   { translated_value_ = ""; }
-
-	static void add_textdomain(const std::string& name, const std::string& path);
-
 	size_t hash_value() const;
 private:
 	std::string value_;
 	mutable std::string translated_value_;
+	mutable unsigned translation_timestamp_;
 	bool translatable_, last_untranslatable_;
 };
 
@@ -158,11 +152,8 @@ public:
 	const std::string& value() const { return get().value(); }
 	std::string base_str() const { return get().base_str(); }
 
-	void reset_translation() const { get().reset_translation(); }
-
-	static void add_textdomain(const std::string& name, const std::string& path) {
-		base::add_textdomain(name, path);
-	}
+	static void add_textdomain(const std::string &name, const std::string &path);
+	static void reset_translations();
 
 	const t_string_base& get() const { return super::get(); }
 };

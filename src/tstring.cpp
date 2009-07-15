@@ -32,6 +32,8 @@ static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static unsigned language_counter = 0;
+
 namespace {
 	const char TRANSLATABLE_PART = 0x01;
 	const char UNTRANSLATABLE_PART = 0x02;
@@ -165,6 +167,7 @@ void t_string_base::walker::update()
 t_string_base::t_string_base() :
 	value_(),
 	translated_value_(),
+	translation_timestamp_(0),
 	translatable_(false),
 	last_untranslatable_(false)
 {
@@ -173,6 +176,7 @@ t_string_base::t_string_base() :
 t_string_base::t_string_base(const t_string_base& string) :
 	value_(string.value_),
 	translated_value_(string.translated_value_),
+	translation_timestamp_(string.translation_timestamp_),
 	translatable_(string.translatable_),
 	last_untranslatable_(string.last_untranslatable_)
 {
@@ -181,6 +185,7 @@ t_string_base::t_string_base(const t_string_base& string) :
 t_string_base::t_string_base(const std::string& string) :
 	value_(string),
 	translated_value_(),
+	translation_timestamp_(0),
 	translatable_(false),
 	last_untranslatable_(false)
 {
@@ -189,6 +194,7 @@ t_string_base::t_string_base(const std::string& string) :
 t_string_base::t_string_base(const std::string& string, const std::string& textdomain) :
 	value_(1, ID_TRANSLATABLE_PART),
 	translated_value_(),
+	translation_timestamp_(0),
 	translatable_(true),
 	last_untranslatable_(false)
 {
@@ -211,6 +217,7 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 t_string_base::t_string_base(const char* string) :
 	value_(string),
 	translated_value_(),
+	translation_timestamp_(0),
 	translatable_(false),
 	last_untranslatable_(false)
 {
@@ -411,8 +418,10 @@ const std::string& t_string_base::str() const
 	if(!translatable_)
 		return value_;
 
-	if(translatable_ && !translated_value_.empty())
+	if (translatable_ && !translated_value_.empty() && translation_timestamp_ == language_counter)
 		return translated_value_;
+
+	translated_value_.clear();
 
 	for(walker w(*this); !w.eos(); w.next()) {
 		std::string part(w.begin(), w.end());
@@ -424,17 +433,23 @@ const std::string& t_string_base::str() const
 		}
 	}
 
+	translation_timestamp_ = language_counter;
 	return translated_value_;
 }
 
 
-void t_string_base::add_textdomain(const std::string& name, const std::string& path)
+void t_string::add_textdomain(const std::string &name, const std::string &path)
 {
 	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
 
 	// Register and (re-)bind this textdomain
 	bindtextdomain(name.c_str(), path.c_str());
 	bind_textdomain_codeset(name.c_str(), "UTF-8");
+}
+
+void t_string::reset_translations()
+{
+	++language_counter;
 }
 
 std::ostream& operator<<(std::ostream& stream, const t_string_base& string)

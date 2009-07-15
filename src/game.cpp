@@ -170,7 +170,6 @@ private:
 	void operator=(const game_controller&);
 
 	void load_game_cfg(const bool force=false);
-	void reset_translations();
 	void set_unit_data();
 
 	bool detect_video_settings(); // FIXME
@@ -1359,7 +1358,7 @@ bool game_controller::change_language()
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
-		reset_translations();
+		t_string::reset_translations();
 	}
 
 	return true;
@@ -1386,26 +1385,6 @@ void game_controller::set_unit_data()
 	if (config &units = game_config_.child("units")) {
 		unit_type_data::types().set_config(units);
 	}
-}
-
-void game_controller::reset_translations()
-{
-	cursor::setter cur(cursor::WAIT);
-
-	try {
-		game_config_.reset_translation();
-		// we may have translatable strings in [game_config]
-		// e.g. team color names are defined there
-		config &cfg = game_config_.child("game_config");
-		game_config::load_config(cfg ? &cfg : NULL);
-		set_unit_data();
-	} catch(game::error& e) {
-		ERR_CONFIG << "Error loading game configuration files\n";
-		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +
-			e.message + _("' (The game will now exit)"));
-		throw;
-	}
-
 }
 
 void game_controller::load_game_cfg(const bool force)

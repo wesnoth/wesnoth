@@ -839,22 +839,6 @@ void config::prune() {
 	}
 }
 
-void config::reset_translation() const
-{
-	check_valid();
-
-	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
-		val->second.reset_translation();
-	}
-
-	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
-		for(child_list::const_iterator child = list->second.begin();
-				child != list->second.end(); ++child) {
-			(*child)->reset_translation();
-		}
-	}
-}
-
 std::string config::debug() const
 {
 	check_valid();

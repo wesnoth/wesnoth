@@ -341,9 +341,6 @@ public:
 	 */
 	void merge_children(const std::string& key);
 
-	/** Resets the translated values of all strings contained in this object */
-	void reset_translation() const;
-
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
 
