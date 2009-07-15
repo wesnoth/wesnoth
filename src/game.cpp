@@ -135,6 +135,7 @@ public:
 	bool init_language();
 	bool play_test();
 	bool play_multiplayer_mode();
+	bool play_screenshot_mode();
 
 	void reload_changed_game_config();
 
@@ -198,7 +199,8 @@ private:
 
 	std::string test_scenario_;
 
-	bool test_mode_, multiplayer_mode_, no_gui_;
+	bool test_mode_, multiplayer_mode_, no_gui_, screenshot_mode_;
+	std::string screenshot_map_;
 	int force_bpp_;
 
 	config game_config_;
@@ -243,6 +245,7 @@ game_controller::game_controller(int argc, char** argv) :
 	test_mode_(false),
 	multiplayer_mode_(false),
 	no_gui_(false),
+	screenshot_mode_(false),
 	force_bpp_(-1),
 	game_config_(),
 	old_defines_map_(),
@@ -340,6 +343,15 @@ game_controller::game_controller(int argc, char** argv) :
 			no_gui_ = true;
 			no_sound = true;
 			preferences::disable_preferences_save();
+		} else if(val == "--screenshot") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				screenshot_map_ = argv_[arg_];
+				no_gui_ = true;
+				no_sound = true;
+				screenshot_mode_ = true;
+				preferences::disable_preferences_save();
+			}
 		} else if(val == "--smallgui") {
 			game_config::small_gui = true;
 		} else if(val == "--config-dir") {
@@ -570,8 +582,8 @@ bool game_controller::detect_video_settings()
 bool game_controller::init_video()
 {
 	if(no_gui_) {
-		if(!multiplayer_mode_) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
+		if( !(multiplayer_mode_ || screenshot_mode_) ) {
+			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
 			return false;
 		}
 		video_.make_fake();
@@ -677,6 +689,15 @@ bool game_controller::play_test()
 		loaded_game_show_replay_ = e.show_replay;
 		loaded_game_cancel_orders_ = e.cancel_orders;
 		test_mode_ = false;
+		return true;
+	}
+
+	return false;
+}
+
+bool game_controller::play_screenshot_mode()
+{
+	if(!screenshot_mode_) {
 		return true;
 	}
 
@@ -1972,6 +1993,10 @@ static int do_gameloop(int argc, char** argv)
 		}
 
 		if(game.play_multiplayer_mode() == false) {
+			return 0;
+		}
+
+		if(game.play_screenshot_mode() == false) {
 			return 0;
 		}
 
