@@ -107,7 +107,7 @@ protected:
 	const node* val_;
 
 	bool valid() const {
-		return val_;
+		return val_ != NULL;
 	}
 
 	void clear() {
