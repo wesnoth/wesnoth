@@ -17,21 +17,22 @@
     <script type="text/javascript" src="/wesstats/js/calendar.js"></script>
     <link rel="stylesheet" rev="stylesheet" href="/wesstats/css/calendar.css" media="screen" />
     <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
+
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load('visualization', '1', {packages: ['piechart']});
+      google.load('visualization', '1', {packages: ['linechart']});
     </script>
     <script type="text/javascript">
       function drawVisualization() {
         // Create and populate the data table.
         var data = new google.visualization.DataTable();
+        data.addRows($numdates);
         data.addColumn('string', '${xlabel}');
-        data.addColumn('number', '${ylabel}');
-        data.addRows(${len(piedata)});
-     	${data} 
+	${js_columnnames}
+     	${js_celldata} 
         // Create and draw the visualization.
-        new google.visualization.PieChart(document.getElementById('visualization')).
-            draw(data, {title: '${title}', backgroundColor: {stroke:'#FFFBF0', fill:'#FFFBF0', strokeSize: 0}, legendBackgroundColor: {stroke:'#FFFBF0', fill:'#FFFBF0', strokeSize: 0} } );
+        new google.visualization.LineChart(document.getElementById('visualization')).
+            draw(data, {title: '${title}', backgroundColor: {stroke:'#FFFBF0', fill:'#FFFBF0', strokeSize: 0}, legendBackgroundColor: {stroke:'#FFFBF0', fill:'#FFFBF0', strokeSize: 0}} );
       }      
 
       google.setOnLoadCallback(drawVisualization);
@@ -54,10 +55,8 @@
 		</ul>
 	</div>
 </div>
-
-<div id="visualization" style="width: 300px; height: 300px;">
+<div id="visualization" style="width: 800px; height: 600px;">
 </div>
-
 <div id="filter_box">
 Used filters:
 <b py:if="len(used_filters) == 0">None</b>
@@ -79,16 +78,15 @@ ${filter}
 <tr>
 <td py:for="filter in filters">
 <select name="${filter}" multiple="multiple" size="5">
-<option selected="1" py:for="item in sorted(fdata[filter])" py:if="used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item)">${item}</option>
-<option py:for="item in sorted(fdata[filter])" py:if="not (used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item))">${item}</option>
+<option py:for="item in sorted(fdata[filter])">${item}</option>
 </select>
 </td>
 </tr>
 </table>
-Start date: <input name="startdate" value="${startdate}" /> 
+Start date: <input name="startdate" /> 
 <input type="button" value="select" onclick="displayDatePicker('startdate');" />
 <br />
-End date: <input name="enddate" value="${enddate}" /> 
+End date: <input name="enddate" /> 
 <input type="button" value="select" onclick="displayDatePicker('enddate');" />
 <br />
 <input type="submit" value="Submit" />
