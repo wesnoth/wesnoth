@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-12 12:51+0200\n"
-"PO-Revision-Date: 2009-06-20 19:57+0100\n"
+"PO-Revision-Date: 2009-07-04 13:40+0100\n"
 "Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -1387,8 +1387,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
-"Gardez à l'esprit que certains scénarios se déroulent sous terre, où il fait "
-"toujours nuit !"
+"Retenez que certains scénarios se déroulent sous terre, où il fait toujours "
+"nuit !"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -2088,7 +2088,7 @@ msgid ""
 "\n"
 msgstr ""
 "La topographie des cartes du jeu comprend des terrains variés qui influent à "
-"la fois sur le déplacement des unités et sur leurs capacités défensives.\n"
+"la fois sur le déplacement et sur les capacités défensives des unités.\n"
 "\n"
 
 #. [topic]: id=terrain_flat
@@ -2108,9 +2108,9 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 "La prairie représente des plaines ouvertes, cultivées, utilisées pour la "
-"pâture, ou restées sauvages. Elle facilite les déplacements mais rend aussi "
-"la défense plus difficile. Généralement, la cavalerie et les unités agiles "
-"profitent au mieux de ces grands espaces.\n"
+"pâture, ou restées sauvages. Elle facilite les déplacements mais complique "
+"la défense. Généralement, la cavalerie et les unités agiles profitent le "
+"plus de ces grands espaces.\n"
 "\n"
 "La plupart des unités ont une défense de 30 à 40 % en prairie."
 
@@ -3475,7 +3475,7 @@ msgstr "défensif."
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr "Concentrez-vous sur la victoire…"
+msgstr "Se concentrer sur l'attaque…"
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3489,12 +3489,12 @@ msgstr "Concentrez-vous sur la victoire…"
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr "Donner les instructions à l'allié"
+msgstr "Donner des instructions à l'allié"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr "Sur quel flanc de l'ennemi faut-il se concentrer ?"
+msgstr "Sur quel flanc ennemi faut-il se concentrer ?"
 
 #. [then]
 #. [else]
@@ -3520,7 +3520,7 @@ msgstr "flanc $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr "Concentration sur la victoire $this_enemy_description|."
+msgstr "Se focaliser contre $this_enemy_description|."
 
 # Benoît : à verifier si ça colle bien dans le contexte
 #. [value]
@@ -3535,7 +3535,7 @@ msgstr "Précédent"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr "Concentrez-vous sur la protection…"
+msgstr "Se concentrer sur la défense…"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
@@ -3545,7 +3545,7 @@ msgstr "Quel flanc ami faut-il défendre ?"
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr "concentrez-vous sur la protection de $this_ally_description|."
+msgstr "focalisez-vous sur la protection de $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
@@ -3565,7 +3565,7 @@ msgstr "Défendre cette zone"
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "se concentrer sur la défense de la zone autour de $x1|,$y1|."
+msgstr "défendre la zone $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
@@ -3611,9 +3611,9 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
-"Objectif : $ai_controller.side_$ally_side|_current_settings."
+"Objectif : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Comportement : $ai_controller.side_$ally_side|_current_settings."
+"Comportement : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
@@ -3621,8 +3621,7 @@ msgstr ""
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
-"$ally_leader.name (camp $ally_side|) effectue les instructions suivantes :"
+msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
