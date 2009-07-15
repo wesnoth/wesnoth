@@ -18,8 +18,27 @@ import urllib
 ?>
 <head>
 <title>Wesnoth Stats</title>
+<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
 </head>
 <body>
+<div id="header">
+	<div id="logo">
+		<a href="http://www.wesnoth.org/"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="http://www.wesnoth.org/">Home</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Play">Play</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Create">Create</a></li>
+			<li><a href="http://www.wesnoth.org/forum/">Forums</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Support">Support</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Project">Project</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Credits">Credits</a></li>
+		</ul>
+	</div>
+</div>
+<div id="main_"> <!--- TODO: remove id tag collision -->
 <h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]}</a></h3>
+</div>
 </body>
 </html>

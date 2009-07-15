@@ -16,7 +16,7 @@
 <head>
     <script type="text/javascript" src="/wesstats/js/calendar.js"></script>
     <link rel="stylesheet" rev="stylesheet" href="/wesstats/css/calendar.css" media="screen" />
-
+    <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load('visualization', '1', {packages: ['piechart']});
@@ -31,17 +31,33 @@
      	${data} 
         // Create and draw the visualization.
         new google.visualization.PieChart(document.getElementById('visualization')).
-            draw(data, {title: '${title}'} );
+            draw(data, {title: '${title}', backgroundColor: {stroke:'#FFFBF0', fill:'#FFFBF0', strokeSize: 0} } );
       }      
 
       google.setOnLoadCallback(drawVisualization);
     </script>
 </head>
 <body>
+<div id="header">
+	<div id="logo">
+		<a href="http://www.wesnoth.org/"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="http://www.wesnoth.org/">Home</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Play">Play</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Create">Create</a></li>
+			<li><a href="http://www.wesnoth.org/forum/">Forums</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Support">Support</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Project">Project</a></li>
+			<li><a href="http://www.wesnoth.org/wiki/Credits">Credits</a></li>
+		</ul>
+	</div>
+</div>
 
-<!--- <h3 py:for="view in views"><a href="${urllib.quote(view[1])}">${view[0]}</a></h3> -->
 <div id="visualization" style="width: 300px; height: 300px;">
 </div>
+
 <div id="filter_box">
 Used filters:
 <b py:if="len(used_filters) == 0">None</b>
