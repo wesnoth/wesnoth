@@ -52,10 +52,12 @@ namespace gui2 {
  * @end_table
  */
 
-	tgame_load::tgame_load(const config& cache_config)
-		: txtFilter_(register_text("txtFilter", false)),
-		filename_(),
-		cache_config_(cache_config)
+tgame_load::tgame_load(const config& cache_config)
+	: txtFilter_(register_text("txtFilter", false)),
+	chk_show_replay_(register_bool("show_replay")),
+	chk_cancel_orders_(register_bool("cancel_orders")),
+	filename_(),
+	cache_config_(cache_config)
 {
 }
 
@@ -165,13 +167,15 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string text){
 
 void tgame_load::post_show(twindow& window)
 {
-	//filename_ = txtFilename_->get_widget_value(window);
+	show_replay_ = chk_show_replay_->get_widget_value(window);
+	cancel_orders_ = chk_cancel_orders_->get_widget_value(window);
 }
 
 void tgame_load::display_savegame(twindow& window){
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("savegame_list", false));
 	VALIDATE(list, missing_widget("savegame_list"));
 	save_info& game = games_[list->get_selected_row()];
+	filename_ = game.name;
 
 	config cfg_summary;
 	std::string dummy;

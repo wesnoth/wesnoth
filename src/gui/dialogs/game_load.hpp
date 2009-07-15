@@ -29,6 +29,8 @@ public:
 	tgame_load(const config& cache_config);
 
 	const std::string& filename() const { return filename_; }
+	bool show_replay() const { return show_replay_; }
+	bool cancel_orders() const { return cancel_orders_; }
 
 protected:
 	/** Inherited from tdialog. */
@@ -50,8 +52,12 @@ private:
 	void fill_game_list(twindow& window, std::vector<save_info>& games);
 
 	tfield_text* txtFilter_;
+	tfield_bool* chk_show_replay_;
+	tfield_bool* chk_cancel_orders_;
 
 	std::string filename_;
+	bool show_replay_;
+	bool cancel_orders_;
 
 	std::vector<save_info> games_;
 	const config& cache_config_;
