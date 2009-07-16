@@ -39,7 +39,7 @@ twindow* tgame_delete::build_window(CVideo& video)
 	return build(video, get_id(GAME_DELETE));
 }
 
-void tgame_delete::pre_show(CVideo& /*video*/, twindow& window)
+void tgame_delete::pre_show(CVideo& /*video*/, twindow& /*window*/)
 {
 }
 
