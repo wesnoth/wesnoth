@@ -764,9 +764,12 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	config naming = cfg.child_or_empty("naming");
+	// HACK: dummy names to satisfy unit_race requirements
+	naming["id"] = "village_naming";
+	naming["plural_name"] = "villages";
 
 	// Make a dummy race for generating names
-	unit_race name_generator(naming);
+	const unit_race name_generator(naming);
 
 	std::vector<terrain_height_mapper> height_conversion;
 
@@ -1254,6 +1257,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	if (nvillages > 0)
 	{
 		config naming_cfg = cfg.child_or_empty("village_naming");
+		// HACK: dummy names to satisfy unit_race requirements
+		naming_cfg["id"] = "village_naming";
+		naming_cfg["plural_name"] = "villages";
 
 		const unit_race village_names_generator(naming_cfg);
 

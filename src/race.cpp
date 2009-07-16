@@ -157,14 +157,12 @@ unit_race::unit_race(const config& cfg) :
 	 */
 	if(id_.empty()) {
 		// This code is only for compatibility with old race defs.
-		//lg::wml_error << "[race] '" << cfg["name"] << "' is missing its id, this behaviour is deprecated and will break in 1.7.4\n";
-		// Error message is commented because parts of the engine are using only Markov's chains and not full races.
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing its id, this behaviour is deprecated and will break in 1.7.4\n";
 		id_ = (cfg["name"]);
 	}
 	if(plural_name_.empty()) {
 		// This code is only for compatibility with old race defs.
-		//lg::wml_error << "[race] '" << cfg["name"] << "' is missing its plural_name, this behaviour is deprecated and will break in 1.7.4\n";
-		// Error message is commented because parts of the engine are using only Markov's chains and not full races.
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing its plural_name, this behaviour is deprecated and will break in 1.7.4\n";
 		plural_name_ = (cfg["name"]);
 	}
 	// use "name" if "male_name" or "female_name" aren't available
