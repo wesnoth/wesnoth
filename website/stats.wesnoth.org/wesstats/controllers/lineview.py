@@ -65,6 +65,8 @@ class LineGraphController(BaseController):
 		filters = ""
 		used_filters = helperlib.intersect(kw.keys(),available_filters)
 		ufilters_vals = dict()
+		startdate = ""
+		enddate = ""
 		for filter in used_filters:
 			kw[filter] = helperlib.listfix(kw[filter])
 			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
@@ -74,6 +76,8 @@ class LineGraphController(BaseController):
 			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
 			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+			startdate = kw['startdate']
+			enddate = kw['enddate']
 		#calculate the number of days in the range
 		daterange = TWOYEARS+1
 		date_sampling_filter = ""
@@ -133,7 +137,8 @@ class LineGraphController(BaseController):
 				js_celldata += "data.setCell(" + str(i) + ", " + str(j+1) + ", " + str(data[0][dates[i]][j][1]) + ");\n"
 		return dict(title=view_data[0],xlabel=view_data[3],js_celldata=js_celldata,
 			filters=available_filters,used_filters=used_filters,js_columnnames=js_columnnames,
-			ufilters_vals=ufilters_vals,fdata=fdata,numdates=len(dates))
+			ufilters_vals=ufilters_vals,fdata=fdata,numdates=len(dates),startdate=startdate,
+			enddate=enddate)
 
 	#returns a tuple of a dictionary with date:ydata and a list of ydata labels
 	def reformat_data(self,sql_data):

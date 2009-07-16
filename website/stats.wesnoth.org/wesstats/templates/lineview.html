@@ -78,15 +78,16 @@ ${filter}
 <tr>
 <td py:for="filter in filters">
 <select name="${filter}" multiple="multiple" size="5">
-<option py:for="item in sorted(fdata[filter])">${item}</option>
+<option selected="1" py:for="item in sorted(fdata[filter])" py:if="used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item)">${item}</option>
+<option py:for="item in sorted(fdata[filter])" py:if="not (used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item))">${item}</option>
 </select>
 </td>
 </tr>
 </table>
-Start date: <input name="startdate" /> 
+Start date: <input name="startdate" value="${startdate}" /> 
 <input type="button" value="select" onclick="displayDatePicker('startdate');" />
 <br />
-End date: <input name="enddate" /> 
+End date: <input name="enddate" value="${enddate}" /> 
 <input type="button" value="select" onclick="displayDatePicker('enddate');" />
 <br />
 <input type="submit" value="Submit" />
