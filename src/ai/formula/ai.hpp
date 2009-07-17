@@ -61,11 +61,12 @@ public:
 		move_functions()
 	{}
 
+	expression_ptr create_function(const std::string& fn,
+	                               const std::vector<expression_ptr>& args) const;
+
 private:
 	formula_ai& ai_;
 	std::set<std::string> move_functions;
-	expression_ptr create_function(const std::string& fn,
-	                               const std::vector<expression_ptr>& args) const;
 };
 
 }

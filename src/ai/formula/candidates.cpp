@@ -269,12 +269,13 @@ void attack_candidate_action::evaluate(formula_ai* ai, unit_map& units)
 		}
 		enemy_units_flt.push_back(u_callable);
 	}
-	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+	
 	for( size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
 		const unit_callable* my_unit_callalbe = my_units_flt[my_unit];
 		for( size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
 			if( ai->can_reach_unit( my_unit_callalbe->get_location(), enemy_units_flt[enemy_unit]->get_location() )) {
-				callable.clear();
+			    
+				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 				callable.add_ref();
 				callable.add("me", filtered_my_units[my_unit]);
 				callable.add("target", filtered_enemy_units[enemy_unit]);
