@@ -74,6 +74,7 @@ stringfixes = {
 ("fight our way through the Orcs or the Undead.", "fight our way through the orcs or the undead."),
 ("Elven allies", "elven allies"),
 ("Drake base", "drake base"),
+("grime and and gristle", "grime and gristle"),
 ),
 
 "wesnoth-manual" : (
@@ -215,11 +216,15 @@ stringfixes = {
 ("that have a least one", "that have at least one"),
 ),
 
+"wesnoth-units" :(
+(" and and ", " and "),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1247306267	# Sat Jul 11 11:57:56 CEST 2009
+timecheck = 1247795977	# Fri Jul 17 03:59:37 2009
 
 import os, sys, time, stat
 
