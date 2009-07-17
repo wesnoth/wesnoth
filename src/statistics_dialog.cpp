@@ -173,7 +173,7 @@ statistics_dialog::statistics_dialog(game_display &disp,
 	{
 		std::stringstream str;
 		str << font::BOLD_TEXT << _("Damage")
-		    << COLUMN_SEPARATOR << _("Over All") << COLUMN_SEPARATOR
+		    << COLUMN_SEPARATOR << _("Overall") << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR
 		    << COLUMN_SEPARATOR << _("This Turn");
 		items.push_back(str.str());
