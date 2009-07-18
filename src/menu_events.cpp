@@ -3011,7 +3011,7 @@ private:
 			config cfg;
 			i->second.write(cfg);
 			cfg[name] = value;
-			i->second = unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.tod_manager_,&menu_handler_.teams_,cfg);
+			i->second.read(cfg);
 		}
 		menu_handler_.gui_->invalidate(i->first);
 		menu_handler_.gui_->invalidate_unit();
