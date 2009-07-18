@@ -44,9 +44,9 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 			}
 		}
 		if(take_screenshot) {
-			e = editor.main_loop(true, screenshot_filename);
+			e = editor.do_screenshot(screenshot_filename);
 		} else {
-			e = editor.main_loop(false);
+			e = editor.main_loop();
 		}
 	} catch (editor_exception& e) {
 		ERR_ED << "Editor exception in editor2::start: " << e.what() << "\n";

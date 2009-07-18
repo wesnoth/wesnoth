@@ -276,17 +276,26 @@ editor_controller::~editor_controller()
 	}
 }
 
-EXIT_STATUS editor_controller::main_loop(bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+EXIT_STATUS editor_controller::main_loop()
 {
 	try {
-		if(take_screenshot) {
-			gui().screenshot(screenshot_filename,true);		
-			quit_mode_ = EXIT_NORMAL;
-		} else {
-			while (!do_quit_) {
-				play_slice();
-			}
+		while (!do_quit_) {
+			play_slice();
 		}
+	} catch (editor_exception& e) {
+		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
+		return EXIT_ERROR;
+	} catch (twml_exception& e) {
+		e.show(gui());
+	}
+	return quit_mode_;
+}
+
+EXIT_STATUS editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+{
+	try {
+		gui().screenshot(screenshot_filename,true);		
+		quit_mode_ = EXIT_NORMAL;
 	} catch (editor_exception& e) {
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
