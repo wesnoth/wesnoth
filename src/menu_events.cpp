@@ -169,7 +169,7 @@ namespace events{
 			game_events::queued_event("_from_interface", map_location(),
 				map_location(), config()), vconfig(cfg));
 		team &current_team = teams_[side_num - 1];
-		dialogs::show_objectives(*gui_, level_, current_team.objectives());
+		dialogs::show_objectives(level_, current_team.objectives());
 		current_team.reset_objectives_changed();
 	}
 
@@ -3006,7 +3006,7 @@ private:
 			int int_value = lexical_cast<int>(value);
 			for (int levels=0; levels<int_value; levels++) {
 				i->second.get_experience( i->second.max_experience() - i->second.experience() );
-				dialogs::advance_unit(menu_handler_.map_, menu_handler_.units_,i->first,*menu_handler_.gui_);
+				dialogs::advance_unit(i->first);
 			}
 		} else {
 			config cfg;

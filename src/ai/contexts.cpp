@@ -550,27 +550,25 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 	}
 	catch (end_level_exception&)
 	{
-		dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
+		dialogs::advance_unit(u, true);
 
 		const unit_map::const_iterator defender = get_info().units.find(target);
 		if(defender != get_info().units.end()) {
 			const size_t defender_team = size_t(defender->second.side()) - 1;
 			if(defender_team < get_info().teams.size()) {
-				dialogs::advance_unit(get_info().map, get_info().units,
-						target, get_info().disp, !get_info().teams[defender_team].is_human());
+				dialogs::advance_unit(target, !get_info().teams[defender_team].is_human());
 			}
 		}
 
 		throw;
 	}
-	dialogs::advance_unit(get_info().map,get_info().units,u,get_info().disp,true);
+	dialogs::advance_unit(u, true);
 
 	const unit_map::const_iterator defender = get_info().units.find(target);
 	if(defender != get_info().units.end()) {
 		const size_t defender_team = size_t(defender->second.side()) - 1;
 		if(defender_team < get_info().teams.size()) {
-			dialogs::advance_unit(get_info().map, get_info().units,
-					target, get_info().disp, !get_info().teams[defender_team].is_human());
+			dialogs::advance_unit(target, !get_info().teams[defender_team].is_human());
 		}
 	}
 

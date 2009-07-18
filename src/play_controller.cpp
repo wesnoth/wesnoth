@@ -800,7 +800,7 @@ void play_controller::slice_before_scroll() {
 
 void play_controller::slice_end() {
 	if(!browse_ && teams_[gui_->viewing_team()].objectives_changed()) {
-		dialogs::show_objectives(*gui_, level_, teams_[gui_->viewing_team()].objectives());
+		dialogs::show_objectives(level_, teams_[gui_->viewing_team()].objectives());
 		teams_[gui_->viewing_team()].reset_objectives_changed();
 	}
 }

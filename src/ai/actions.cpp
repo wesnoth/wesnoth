@@ -261,27 +261,25 @@ void attack_result::do_execute()
 	}
 	catch (end_level_exception&)
 	{
-		dialogs::advance_unit(get_info().map,get_info().units,attacker_loc_,get_info().disp,true);
+		dialogs::advance_unit(attacker_loc_, true);
 
 		const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
 		if(defender != get_info().units.end()) {
 			const size_t defender_team = size_t(defender->second.side()) - 1;
 			if(defender_team < get_info().teams.size()) {
-				dialogs::advance_unit(get_info().map, get_info().units,
-						defender_loc_, get_info().disp, !get_info().teams[defender_team].is_human());
+				dialogs::advance_unit(defender_loc_, !get_info().teams[defender_team].is_human());
 			}
 		}
 
 		throw;
 	}
-	dialogs::advance_unit(get_info().map,get_info().units,attacker_loc_,get_info().disp,true);
+	dialogs::advance_unit(attacker_loc_, true);
 
 	const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
 	if(defender != get_info().units.end()) {
 		const size_t defender_team = size_t(defender->second.side()) - 1;
 		if(defender_team < get_info().teams.size()) {
-			dialogs::advance_unit(get_info().map, get_info().units,
-					defender_loc_ , get_info().disp, !get_info().teams[defender_team].is_human());
+			dialogs::advance_unit(defender_loc_ , !get_info().teams[defender_team].is_human());
 		}
 	}
 

@@ -799,7 +799,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 				const int val = lexical_cast_default<int>(child["value"]);
 
-				dialogs::animate_unit_advancement(units,advancing_units.front(),disp,val);
+				dialogs::animate_unit_advancement(advancing_units.front(), val);
 
 				advancing_units.pop_front();
 

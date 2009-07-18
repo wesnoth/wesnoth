@@ -34,6 +34,7 @@
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "thread.hpp"
 #include "wml_separators.hpp"
@@ -65,15 +66,10 @@ static lg::log_domain log_config("config");
 namespace dialogs
 {
 
-void advance_unit(const gamemap& map,
-                  unit_map& units,
-                  map_location loc,
-                  game_display& gui,
-		  bool random_choice,
-		  const bool add_replay_event)
+void advance_unit(const map_location &loc, bool random_choice, bool add_replay_event)
 {
-	unit_map::iterator u = units.find(loc);
-	if(u == units.end() || u->second.advances() == false)
+	unit_map::iterator u = resources::units->find(loc);
+	if (u == resources::units->end() || u->second.advances() == false)
 		return;
 
 	LOG_DP << "advance_unit: " << u->second.type_id() << "\n";
@@ -84,7 +80,7 @@ void advance_unit(const gamemap& map,
 
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(units,loc,*op));
+		sample_units.push_back(::get_advanced_unit(*resources::units, loc, *op));
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
@@ -99,7 +95,7 @@ void advance_unit(const gamemap& map,
 	foreach (const config &mod, u->second.get_modification_advances())
 	{
 		if (utils::string_bool(mod["always_display"])) always_display = true;
-		sample_units.push_back(::get_advanced_unit(units,loc,u->second.type_id()));
+		sample_units.push_back(::get_advanced_unit(*resources::units, loc, u->second.type_id()));
 		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
@@ -123,11 +119,11 @@ void advance_unit(const gamemap& map,
 		res = rand()%lang_options.size();
 	} else if(lang_options.size() > 1 || always_display) {
 
-		units_list_preview_pane unit_preview(gui,&map,sample_units);
+		units_list_preview_pane unit_preview(*resources::screen, resources::game_map, sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		gui::dialog advances = gui::dialog(gui,
+		gui::dialog advances = gui::dialog(*resources::screen,
 				      _("Advance Unit"),
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
@@ -143,18 +139,18 @@ void advance_unit(const gamemap& map,
 	recorder.choose_option(res);
 
 	LOG_DP << "animating advancement...\n";
-	animate_unit_advancement(units,loc,gui,size_t(res));
+	animate_unit_advancement(loc, size_t(res));
 
 	// In some rare cases the unit can have enough XP to advance again,
 	// so try to do that.
 	// Make sure that we don't enter an infinite level loop.
-	u = units.find(loc);
-	if(u != units.end()) {
+	u = resources::units->find(loc);
+	if (u != resources::units->end()) {
 		// Level 10 unit gives 80 XP and the highest mainline is level 5
 		if(u->second.experience() < 81) {
 			// For all leveling up we have to add advancement to replay here because replay
 			// doesn't handle multi advancemnet
-			advance_unit(map, units, loc, gui, random_choice, true);
+			advance_unit(loc, random_choice, true);
 		} else {
 			ERR_CF << "Unit has an too high amount of " << u->second.experience()
 				<< " XP left, cascade leveling disabled\n";
@@ -164,12 +160,12 @@ void advance_unit(const gamemap& map,
 	}
 }
 
-bool animate_unit_advancement(unit_map& units, map_location loc, game_display& gui, size_t choice)
+bool animate_unit_advancement(const map_location &loc, size_t choice)
 {
 	const events::command_disabler cmd_disabler;
 
-	unit_map::iterator u = units.find(loc);
-	if(u == units.end() || u->second.advances() == false) {
+	unit_map::iterator u = resources::units->find(loc);
+	if (u == resources::units->end() || u->second.advances() == false) {
 		return false;
 	}
 
@@ -183,7 +179,7 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 	// When the unit advances, it fades to white, and then switches
 	// to the new unit, then fades back to the normal colour
 
-	if(!gui.video().update_locked()) {
+	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
 		animator.add_animation(&u->second,"levelout",u->first);
 		animator.start_animations();
@@ -192,7 +188,7 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 
 	if(choice < options.size()) {
 		const std::string& chosen_unit = options[choice];
-		::advance_unit(units,loc,chosen_unit);
+		::advance_unit(*resources::units, loc, chosen_unit);
 	} else {
 		unit amla_unit(u->second);
 		const config &mod_option = mod_options[choice - options.size()];
@@ -202,40 +198,40 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 
 		amla_unit.get_experience(-amla_unit.max_experience()); // subtract xp required
 		amla_unit.add_modification("advance",mod_option);
-		units.replace(loc, amla_unit);
+		resources::units->replace(loc, amla_unit);
 
 		LOG_NG << "firing post_advance event (AMLA)\n";
 		game_events::fire("post_advance",loc);
 	}
 
-	u = units.find(loc);
-	gui.invalidate_unit();
+	u = resources::units->find(loc);
+	resources::screen->invalidate_unit();
 
-	if(u != units.end() && !gui.video().update_locked()) {
+	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
 		animator.add_animation(&u->second,"levelin",u->first);
 		animator.start_animations();
 		animator.wait_for_end();
 		animator.set_all_standing();
-		gui.invalidate(loc);
-		gui.draw();
+		resources::screen->invalidate(loc);
+		resources::screen->draw();
 		events::pump();
 	}
 
-	gui.invalidate_all();
-	gui.draw();
+	resources::screen->invalidate_all();
+	resources::screen->draw();
 
 	return true;
 }
 
-void show_objectives(game_display& disp, const config& level, const std::string& objectives)
+void show_objectives(const config &level, const std::string &objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& name = level["name"];
 	std::string campaign_name = std::string(level["campaign"]);
 	replace_underbar2space(campaign_name);
 
-	gui2::show_transient_message(disp.video(),
+	gui2::show_transient_message(resources::screen->video(),
 		name + (campaign_name.empty() ? "" : "<small> - " + campaign_name + "</small>"),
 		(objectives.empty() ? no_objectives : objectives),
 		gui2::tcontrol::PANGO_MARKUP, gui2::tcontrol::PANGO_MARKUP);

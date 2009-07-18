@@ -44,12 +44,11 @@ namespace dialogs {
  * cause for advancement is different (eg unstore_unit) the add_replay_event
  * should be set.
  */
-void advance_unit(const gamemap& map,unit_map& units, map_location loc,
-				  game_display& gui, bool random_choice=false, const bool add_replay_event=false);
+void advance_unit(const map_location &loc, bool random_choice = false, bool add_replay_event = false);
 
-bool animate_unit_advancement(unit_map& units, map_location loc, game_display& gui, size_t choice);
+bool animate_unit_advancement(const map_location &loc, size_t choice);
 
-void show_objectives(game_display& disp, const config& level, const std::string& objectives);
+void show_objectives(const config &level, const std::string &objectives);
 
 /**
  * Allow user to select the game they want to load. Returns the name of the

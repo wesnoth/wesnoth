@@ -2485,7 +2485,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 							&& (*resources::teams)[side-1].is_human());
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
-					dialogs::advance_unit(*resources::game_map, *resources::units, loc, *resources::screen, !sel, true);
+					dialogs::advance_unit(loc, !sel, true);
 				}
 
 			} else {
