@@ -188,7 +188,6 @@ wesnoth_source = \
 	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
-	resources.hpp \
 	resources.cpp \
 	save_blocker.cpp \
 	savegame.cpp \
