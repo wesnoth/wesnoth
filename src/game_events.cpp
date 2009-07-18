@@ -398,7 +398,7 @@ namespace game_events {
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *units).get_locations(res);
+			terrain_filter(*v, *resources::game_map, *resources::tod_manager, *resources::teams, *units).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;
@@ -568,7 +568,7 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 
 	if (index < resources::teams->size()) {
 		std::set<map_location> locs;
-		terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
+		terrain_filter filter(cfg, *resources::game_map, *resources::tod_manager, *resources::teams, *resources::units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 
@@ -818,7 +818,7 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
 		const map_location loc = cfg_to_loc(cfg, -999, -999);
 		const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
-		const time_of_day tod = turn ? resources::controller->get_tod_manager().get_time_of_day(0,loc,turn) : resources::controller->get_tod_manager().get_time_of_day(0,loc);
+		const time_of_day tod = turn ? resources::tod_manager->get_time_of_day(0,loc,turn) : resources::tod_manager->get_time_of_day(0,loc);
 
 		std::string variable = cfg["variable"];
 		if(variable.empty()) {
@@ -1048,7 +1048,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(resources::units, &resources::controller->get_tod_manager(), &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(resources::units, resources::tod_manager, &itor->second, side_num + 1, false, true, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;
@@ -1458,7 +1458,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "random_number");
+					side , *resources::tod_manager, *resources::state_of_game, *resources::controller, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("random_number expected but none found\n");
@@ -1765,7 +1765,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					// Iterate over the player's recall list to find a match
 					for(size_t i=0; i < pi->recall_list().size(); ++i) {
 						unit& u = pi->recall_list()[i];
-						u.set_game_context(resources::units, &resources::controller->get_tod_manager());
+						u.set_game_context(resources::units, resources::tod_manager);
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
 							u.set_role(cfg["role"]);
@@ -1959,7 +1959,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
 		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(resources::units, &resources::controller->get_tod_manager(), parsed_cfg, true, resources::state_of_game);
+		unit new_unit(resources::units, resources::tod_manager, parsed_cfg, true, resources::state_of_game);
 		if(cfg.has_attribute("to_variable")) {
 			config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
@@ -2032,7 +2032,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				u->set_game_context(resources::units, &resources::controller->get_tod_manager());
+				u->set_game_context(resources::units, resources::tod_manager);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, unit_filter, map_location())) {
 					map_location loc = cfg_to_loc(cfg);
@@ -2266,7 +2266,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			{
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(resources::units, &resources::controller->get_tod_manager());
+					j->set_game_context(resources::units, resources::tod_manager);
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
 						j = avail_units.erase(j);
@@ -2414,7 +2414,7 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 					pi != resources::teams->end(); ++pi) {
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(resources::units, &resources::controller->get_tod_manager());
+					j->set_game_context(resources::units, resources::tod_manager);
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
 						++j;
@@ -2444,7 +2444,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(resources::units, &resources::controller->get_tod_manager(), var, false);
+		const unit u(resources::units, resources::tod_manager, var, false);
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(
@@ -2616,9 +2616,9 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 				config temp_cfg(cfg.get_config());
 				temp_cfg["owner_side"] = temp_cfg["side"];
 				temp_cfg["side"] = "";
-				matches = terrain_filter(vconfig(temp_cfg), *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units).match(*j);
+				matches = terrain_filter(vconfig(temp_cfg), *resources::game_map, *resources::tod_manager, *resources::teams, *resources::units).match(*j);
 			} else {
-				matches = terrain_filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units).match(*j);
+				matches = terrain_filter(cfg, *resources::game_map, *resources::tod_manager, *resources::teams, *resources::units).match(*j);
 			}
 			if(matches) {
 				config &loc_store = to_store.add_child(varinfo.key);
@@ -2643,7 +2643,7 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 		}
 
 		std::set<map_location> res;
-		terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
+		terrain_filter filter(cfg, *resources::game_map, *resources::tod_manager, *resources::teams, *resources::units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(res);
 
@@ -2781,7 +2781,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
-	unit_display::wml_animation(cfg, *resources::units, *resources::game_map, resources::teams, resources::controller->get_tod_manager(), event_info.loc1);
+	unit_display::wml_animation(cfg, *resources::units, *resources::game_map, resources::teams, *resources::tod_manager, event_info.loc1);
 }
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
@@ -3230,7 +3230,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 			if(!options.empty()) {
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "choose");
+					side , *resources::tod_manager, *resources::state_of_game, *resources::controller, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
@@ -3240,7 +3240,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			}
 			if(has_text_input) {
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "input");
+					side, *resources::tod_manager, *resources::state_of_game, *resources::controller, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");
@@ -3298,7 +3298,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 				id = ids;
 			}
 			std::set<map_location> locs;
-			terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
+			terrain_filter filter(cfg, *resources::game_map, *resources::tod_manager, *resources::teams, *resources::units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 			config parsed_cfg = cfg.get_parsed_config();

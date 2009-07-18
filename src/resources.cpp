@@ -24,4 +24,5 @@ namespace resources
 	game_state *state_of_game;
 	LuaKernel *lua_kernel;
 	play_controller *controller;
+	::tod_manager *tod_manager;
 }

@@ -23,6 +23,7 @@ class game_state;
 class LuaKernel;
 class play_controller;
 class team;
+class tod_manager;
 class unit_map;
 
 namespace soundsource { class manager; }
@@ -37,6 +38,7 @@ namespace resources
 	extern game_state *state_of_game;
 	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
+	extern tod_manager *tod_manager;
 }
 
 #endif

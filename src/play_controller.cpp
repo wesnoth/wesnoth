@@ -99,6 +99,7 @@ play_controller::~play_controller()
 	resources::controller = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
+	resources::tod_manager = NULL;
 }
 
 void play_controller::init(CVideo& video){
@@ -138,6 +139,7 @@ void play_controller::init(CVideo& video){
 	resources::teams = &teams_;
 	resources::state_of_game = &gamestate_;
 	resources::controller = this;
+	resources::tod_manager = &tod_manager_;
 
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
