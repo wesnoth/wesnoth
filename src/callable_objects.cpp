@@ -71,31 +71,6 @@ void location_callable::serialize_to_string(std::string& str) const
 	str += s.str();
 }
 
-variant move_map_callable::get_value(const std::string& key) const
-{
-	using namespace game_logic;
-	if(key == "moves") {
-		std::vector<variant> vars;
-		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
-                        if( i->first == i->second || units_.count(i->second) == 0) {
-                            move_callable* item = new move_callable(i->first, i->second);
-                            vars.push_back(variant(item));
-                        }
-		}
-
-		return variant(&vars);
-	} else if(key == "has_moves") {
-		return variant(!srcdst_.empty());
-	} else {
-		return variant();
-	}
-}
-
-void move_map_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
-{
-	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("moves", FORMULA_READ_ONLY));
-}
 
 variant attack_type_callable::get_value(const std::string& key) const
 {
@@ -391,37 +366,5 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 	return loc_.do_compare(other_loc);
 }
 
-int move_callable::do_compare(const formula_callable* callable) const
-{
-	const move_callable* mv_callable = dynamic_cast<const move_callable*>(callable);
-	if(mv_callable == NULL) {
-		return formula_callable::do_compare(callable);
-	}
 
-	const map_location& other_src = mv_callable->src_;
-	const map_location& other_dst = mv_callable->dst_;
-
-	if (int cmp = src_.do_compare(other_src)) {
-		return cmp;
-	}
-
-	return dst_.do_compare(other_dst);
-}
-
-int move_partial_callable::do_compare(const formula_callable* callable) const
-{
-	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
-	if(mv_callable == NULL) {
-		return formula_callable::do_compare(callable);
-	}
-
-	const map_location& other_src = mv_callable->src_;
-	const map_location& other_dst = mv_callable->dst_;
-
-	if (int cmp = src_.do_compare(other_src)) {
-		return cmp;
-	}
-
-	return dst_.do_compare(other_dst);
-}
 

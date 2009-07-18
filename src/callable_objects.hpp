@@ -122,80 +122,6 @@ public:
 	void serialize_to_string(std::string& str) const;
 };
 
-class move_callable : public game_logic::formula_callable {
-	map_location src_, dst_;
-	variant get_value(const std::string& key) const {
-		if(key == "src") {
-			return variant(new location_callable(src_));
-		} else if(key == "dst") {
-			return variant(new location_callable(dst_));
-		} else {
-			return variant();
-		}
-	}
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
-	}
-
-	int do_compare(const formula_callable* callable) const;
-public:
-	move_callable(const map_location& src, const map_location& dst) :
-	  src_(src), dst_(dst)
-	{
-		type_ = MOVE_C;
-	}
-
-	const map_location& src() const { return src_; }
-	const map_location& dst() const { return dst_; }
-};
-
-class move_partial_callable : public game_logic::formula_callable {
-	map_location src_, dst_;
-	variant get_value(const std::string& key) const {
-		if(key == "src") {
-			return variant(new location_callable(src_));
-		} else if(key == "dst") {
-			return variant(new location_callable(dst_));
-		} else {
-			return variant();
-		}
-	}
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
-	}
-
-	int do_compare(const formula_callable* callable) const;
-public:
-	move_partial_callable(const map_location& src, const map_location& dst) :
-	  src_(src), dst_(dst)
-	{
-		type_ = MOVE_PARTIAL_C;
-	}
-
-	const map_location& src() const { return src_; }
-	const map_location& dst() const { return dst_; }
-};
-
-class move_map_callable : public game_logic::formula_callable {
-	typedef std::multimap<map_location, map_location> move_map;
-	const move_map& srcdst_;
-	const move_map& dstsrc_;
-        const unit_map& units_;
-
-	variant get_value(const std::string& key) const;
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-public:
-	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
-	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
-	{
-		type_ = MOVE_MAP_C;
-	}
-
-	const move_map& srcdst() const { return srcdst_; }
-	const move_map& dstsrc() const { return dstsrc_; }
-};
 
 class attack_type_callable : public game_logic::formula_callable {
 public:
@@ -214,6 +140,7 @@ public:
 private:
 	const attack_type att_;
 };
+
 
 class unit_callable : public game_logic::formula_callable {
 public:
@@ -235,6 +162,7 @@ private:
 	const unit& u_;
 };
 
+
 class unit_type_callable : public game_logic::formula_callable {
 public:
 	unit_type_callable(const unit_type& u)
@@ -251,6 +179,7 @@ public:
 private:
 	const unit_type& u_;
 };
+
 
 CALLABLE_WRAPPER_START(team)
 CALLABLE_WRAPPER_INPUT(gold)

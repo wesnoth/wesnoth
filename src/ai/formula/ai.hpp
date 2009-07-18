@@ -21,23 +21,20 @@
 #ifndef AI_FORMULA_AI_HPP_INCLUDED
 #define AI_FORMULA_AI_HPP_INCLUDED
 
-#include "../default/ai.hpp"
-#include "../../callable_objects.hpp"
-#include "../../formula.hpp"
-#include "../../formula_fwd.hpp"
-#include "../../formula_callable.hpp"
-#include "../../formula_function.hpp"
-
+#include "callable_objects.hpp"
 #include "candidates.hpp"
+#include "function_table.hpp"
+
+#include "../default/ai.hpp"
+#include "../../formula.hpp"
+#include "../../formula_callable.hpp"
+
 
 #ifdef _MSC_VER
 #pragma warning(push)
 //silence "inherits via dominance" warnings
 #pragma warning(disable:4250)
 #endif
-
-// Forward declaration needed for ai function symbol table
-class formula_ai;
 
 namespace game_logic {
 
@@ -52,22 +49,6 @@ struct unit_formula_compare {
 };
 
 typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > unit_formula_set;
-
-class ai_function_symbol_table : public function_symbol_table {
-
-public:
-	explicit ai_function_symbol_table(formula_ai& ai) :
-		ai_(ai),
-		move_functions()
-	{}
-
-	expression_ptr create_function(const std::string& fn,
-	                               const std::vector<expression_ptr>& args) const;
-
-private:
-	formula_ai& ai_;
-	std::set<std::string> move_functions;
-};
 
 }
 
@@ -105,23 +86,7 @@ public:
 		bool continue_check();
 	};
 
-	struct move_map_backup {
-		move_map_backup() :
-			move_maps_valid(false),
-			srcdst(),
-			dstsrc(),
-			full_srcdst(),
-			full_dstsrc(),
-			enemy_srcdst(),
-			enemy_dstsrc(),
-			attacks_cache()
-		{
-		}
-
-		bool move_maps_valid;
-		move_map srcdst, dstsrc, full_srcdst, full_dstsrc, enemy_srcdst, enemy_dstsrc;
-		variant attacks_cache;
-	};
+	typedef game_logic::position_callable::move_map_backup move_map_backup;
 
 	void swap_move_map(move_map_backup& backup);
 

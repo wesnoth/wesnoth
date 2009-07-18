@@ -59,7 +59,9 @@ wesnoth_source = \
 	ai/default/village.cpp \
 	ai/dfool/ai.cpp \
 	ai/formula/ai.cpp \
+	ai/formula/callable_objects.cpp \
 	ai/formula/candidates.cpp \
+	ai/formula/function_table.cpp \
 	ai/game_info.cpp \
 	ai/interface.cpp \
 	ai/manager.cpp \
