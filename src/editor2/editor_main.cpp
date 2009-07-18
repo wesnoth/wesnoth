@@ -25,7 +25,8 @@ lg::log_domain log_editor("editor");
 
 namespace editor2 {
 
-EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */, bool take_screenshot /* = false */)
+EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */, 
+	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
@@ -43,7 +44,7 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 			}
 		}
 		if(take_screenshot) {
-			e = editor.main_loop(true);
+			e = editor.main_loop(true, screenshot_filename);
 		} else {
 			e = editor.main_loop(false);
 		}

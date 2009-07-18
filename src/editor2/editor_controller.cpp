@@ -276,11 +276,11 @@ editor_controller::~editor_controller()
 	}
 }
 
-EXIT_STATUS editor_controller::main_loop(bool take_screenshot /* = false */)
+EXIT_STATUS editor_controller::main_loop(bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	try {
 		if(take_screenshot) {
-			gui().screenshot("map_screenshot.bmp",true);		
+			gui().screenshot(screenshot_filename,true);		
 			quit_mode_ = EXIT_NORMAL;
 		} else {
 			while (!do_quit_) {

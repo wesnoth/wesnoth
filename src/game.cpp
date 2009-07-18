@@ -203,7 +203,7 @@ private:
 	std::string test_scenario_;
 
 	bool test_mode_, multiplayer_mode_, no_gui_, screenshot_mode_;
-	std::string screenshot_map_;
+	std::string screenshot_map_, screenshot_filename_;
 	int force_bpp_;
 
 	config game_config_;
@@ -349,9 +349,11 @@ game_controller::game_controller(int argc, char** argv) :
 		}
 #ifndef DISABLE_EDITOR2 
 		else if(val == "--screenshot") {
-			if(arg_+1 != argc_) {
+			if(arg_+2 != argc_) {
 				++arg_;
 				screenshot_map_ = argv_[arg_];
+				++arg_;
+				screenshot_filename_ = argv_[arg_];
 				no_sound = true;
 				screenshot_mode_ = true;
 				preferences::disable_preferences_save();
@@ -716,7 +718,7 @@ bool game_controller::play_screenshot_mode()
 	const binary_paths_manager bin_paths_manager(game_config_);
 	::init_textdomains(game_config_);
 	
-	return editor2::start(game_config_, video_, screenshot_map_, true);
+	return editor2::start(game_config_, video_, screenshot_map_, true, screenshot_filename_);
 #else
 	return false;
 #endif
@@ -1776,6 +1778,9 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               Example: --rng-seed 0\n"
 			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
 			<< "                               and resizes a few interface elements.\n"
+			<< "  --screenshot <map> <output>  Saves a screenshot of <map> to <output> without\n"
+			<< "                               initializing a screen. Editor2 must be compiled in\n"
+			<< "                               for this to work.\n"
 			<< "  -s, --server [<host>]        connects to the host if specified\n"
 			<< "                               or to the first host in your preferences.\n"
 			<< "  -t, --test                   runs the game in a small test scenario.\n"
@@ -1808,6 +1813,10 @@ static int process_command_args(int argc, char** argv) {
 		}
 #ifndef DISABLE_EDITOR2 
 		else if (val == "--screenshot" ) {
+			if(!(argc > arg + 2)) {
+				std::cerr << "format of " << val << " command: " << val << " <map file> <output file>\n";
+				return 2;
+			}
 			char opt[] = "SDL_VIDEODRIVER=dummy";	
 			SDL_putenv(opt);	
 		}
