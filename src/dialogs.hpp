@@ -78,8 +78,8 @@ public:
 		std::vector<attack_type> attacks;
 	};
 
-	unit_preview_pane(game_display &disp, const gamemap* map, const gui::filter_textbox* filter=NULL,
-			TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(const gui::filter_textbox *filter = NULL,
+			TYPE type = SHOW_ALL, bool left_side = true);
 
 	bool show_above() const;
 	bool left_side() const;
@@ -88,8 +88,6 @@ public:
 	handler_vector handler_members();
 
 protected:
-	game_display& disp_;
-	const gamemap* map_;
 	int index_;
 	gui::button details_button_;
 
@@ -108,9 +106,8 @@ private:
 class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	units_list_preview_pane(game_display &disp, const gamemap* map,
-			const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	units_list_preview_pane(game_display &disp, const gamemap* map,
+	units_list_preview_pane(const unit &u, TYPE type = SHOW_ALL, bool left_side = true);
+	units_list_preview_pane(
 			std::vector<unit>& units, const gui::filter_textbox* filter=NULL,
 			TYPE type=SHOW_ALL, bool left_side=true);
 
@@ -127,7 +124,7 @@ private:
 class unit_types_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	unit_types_preview_pane(game_display &disp, const gamemap* map,
+	unit_types_preview_pane(
 			std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filterbox=NULL,
 			int side = 1, TYPE type=SHOW_ALL, bool left_side=true);
 
@@ -141,8 +138,8 @@ private:
 };
 
 
-void show_unit_description(game_display &disp, const unit_type& t);
-void show_unit_description(game_display &disp, const unit& u);
+void show_unit_description(const unit_type &t);
+void show_unit_description(const unit &u);
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

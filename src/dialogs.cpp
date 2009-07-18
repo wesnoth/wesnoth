@@ -119,7 +119,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		res = rand()%lang_options.size();
 	} else if(lang_options.size() > 1 || always_display) {
 
-		units_list_preview_pane unit_preview(*resources::screen, resources::game_map, sample_units);
+		units_list_preview_pane unit_preview(sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
@@ -669,10 +669,9 @@ unit_preview_pane::details::details() :
 {
 }
 
-unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map,
-		const gui::filter_textbox* filter, TYPE type, bool on_left_side)
-				    : gui::preview_pane(disp.video()), disp_(disp), map_(map), index_(0),
-				      details_button_(disp.video(), _("Profile"),
+unit_preview_pane::unit_preview_pane(const gui::filter_textbox *filter, TYPE type, bool on_left_side) :
+	gui::preview_pane(resources::screen->video()), index_(0),
+	details_button_(resources::screen->video(), _("Profile"),
 				      gui::button::TYPE_PRESS,"lite_small", gui::button::MINIMUM_SPACE),
 				      filter_(filter), weapons_(type == SHOW_ALL), left_(on_left_side)
 {
@@ -708,7 +707,7 @@ void unit_preview_pane::set_selection(int index)
 	if(index != index_) {
 		index_ = index;
 		set_dirty();
-		if(map_ != NULL && index >= 0) {
+		if (index >= 0) {
 			details_button_.set_dirty();
 		}
 	}
@@ -745,12 +744,10 @@ void unit_preview_pane::draw_contents()
 	}
 
 	// Place the 'unit profile' button
-	if(map_ != NULL) {
-		const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
+	const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
 		                             image_rect.y + image_rect.h,
 		                             details_button_.location().w,details_button_.location().h};
-		details_button_.set_location(button_loc);
-	}
+	details_button_.set_location(button_loc);
 
 	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h+details_button_.location().h,0,0};
 
@@ -837,18 +834,16 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp,
-		const gamemap* map, const unit& u, TYPE type, bool on_left_side) :
-	unit_preview_pane(disp, map, NULL, type, on_left_side),
+units_list_preview_pane::units_list_preview_pane(const unit &u, TYPE type, bool on_left_side) :
+	unit_preview_pane(NULL, type, on_left_side),
 	units_(&unit_store_),
 	unit_store_(1, u)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp,
-		const gamemap* map, std::vector<unit>& units,
+units_list_preview_pane::units_list_preview_pane(std::vector<unit> &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
-	unit_preview_pane(disp, map, filter, type, on_left_side),
+	unit_preview_pane(filter, type, on_left_side),
 	units_(&units),
 	unit_store_()
 {
@@ -899,15 +894,15 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 void units_list_preview_pane::process_event()
 {
-	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		show_unit_description(disp_, (*units_)[index_]);
+	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
+		show_unit_description((*units_)[index_]);
 	}
 }
 
-unit_types_preview_pane::unit_types_preview_pane(game_display& disp, const gamemap* map,
+unit_types_preview_pane::unit_types_preview_pane(
 					std::vector<const unit_type*>& unit_types, const gui::filter_textbox* filter,
 					int side, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, filter, type, on_left_side),
+	: unit_preview_pane(filter, type, on_left_side),
 					  unit_types_(&unit_types), side_(side)
 {}
 
@@ -989,27 +984,27 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 
 void unit_types_preview_pane::process_event()
 {
-	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
+	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
-			show_unit_description(disp_, *type);
+			show_unit_description(*type);
 	}
 }
 
 
-void show_unit_description(game_display &disp, const unit& u)
+void show_unit_description(const unit &u)
 {
 	const unit_type* t = u.type();
 	if (t != NULL)
-		show_unit_description(disp, *t);
+		show_unit_description(*t);
 	else
 		// can't find type, try open the id page to have feedback and unit error page
-	  help::show_unit_help(disp, u.type_id());
+	  help::show_unit_help(*resources::screen, u.type_id());
 }
 
-void show_unit_description(game_display &disp, const unit_type& t)
+void show_unit_description(const unit_type &t)
 {
-	help::show_unit_help(disp, t.id(), t.hide_help());
+	help::show_unit_help(*resources::screen, t.id(), t.hide_help());
 }
 
 static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))

@@ -641,8 +641,8 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	int res = 0;
 
 	{
-		dialogs::units_list_preview_pane attacker_preview(gui(),&map_,attacker->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
-		dialogs::units_list_preview_pane defender_preview(gui(),&map_,defender->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
+		dialogs::units_list_preview_pane attacker_preview(attacker->second, dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(defender->second, dialogs::unit_preview_pane::SHOW_BASIC, false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);

@@ -302,7 +302,7 @@ namespace events{
 		}
 
 		{
-			dialogs::units_list_preview_pane unit_preview(*gui_, &map_, units_list);
+			dialogs::units_list_preview_pane unit_preview(units_list);
 			unit_preview.set_selection(selected);
 
 			gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
@@ -723,7 +723,7 @@ private:
 		int recruit_res = 0;
 
 		{
-			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_,
+			dialogs::unit_types_preview_pane unit_preview(
 				sample_units, NULL, side_num);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
@@ -917,7 +917,7 @@ private:
 				rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 					gui::dialog::BUTTON_HELP);
 
-				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list_team, filter);
+				dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
 				rmenu.add_pane(&unit_preview);
 
 				res = rmenu.show();
@@ -1316,7 +1316,7 @@ private:
 	{
 		const unit_map::const_iterator un = current_unit(mousehandler);
 		if(un != units_.end()) {
-			dialogs::show_unit_description(*gui_, un->second);
+			dialogs::show_unit_description(un->second);
 		}
 	}
 
@@ -1416,7 +1416,7 @@ private:
 			else
 				umenu.get_menu().reset_selection();
 
-			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
+			dialogs::unit_types_preview_pane unit_preview(unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
 			umenu.add_pane(&unit_preview);
 			unit_preview.set_selection(umenu.get_menu().selection());
 
