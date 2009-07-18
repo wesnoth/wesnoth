@@ -146,7 +146,9 @@ public:
 
 	// populate high-level objects
 
-	void get_player_info(const config& cfg, std::string save_id, std::vector<team>& teams, const config& level, gamemap& map, unit_map& units, tod_manager& tod_mng, bool snapshot);
+	void get_player_info(const config& cfg, std::string save_id
+			, std::vector<team>& teams, const config& level, gamemap& map
+			, unit_map& units, bool snapshot);
 
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?

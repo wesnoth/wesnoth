@@ -665,7 +665,7 @@ void game_state::set_variables(const config& vars) {
 void game_state::get_player_info(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
-					 tod_manager& tod_mng, bool snapshot)
+					 bool snapshot)
 {
 	const config *player_cfg = NULL;
 	//FIXME: temporarily adding this flag to ensure recallable units are added properly without player_info
