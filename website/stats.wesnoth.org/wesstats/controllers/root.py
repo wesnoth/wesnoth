@@ -37,7 +37,7 @@ class RootController(BaseController):
 	def index(self):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
-		curs.execute("SELECT title,url FROM _wsviews")
+		curs.execute("SELECT title,url,type FROM _wsviews")
 		views = curs.fetchall()
 		conn.close()
 		return dict(views=views)

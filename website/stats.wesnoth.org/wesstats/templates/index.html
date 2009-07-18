@@ -38,7 +38,7 @@ import urllib
 	</div>
 </div>
 <div id="main_"> <!--- TODO: remove id tag collision -->
-<h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]}</a></h3>
+<h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]} (${view[2].capitalize()} Graph)</a></h3>
 </div>
 </body>
 </html>
