@@ -125,7 +125,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			replay_obj.start_replay();
 
 			try{
-				turn_end = do_replay(gui_, map_, units_, teams_,
+				turn_end = do_replay(gui_, units_, teams_,
 						team_num_, state_of_game_, controller_, &replay_obj);
 			}
 			catch (replay::error& e){
