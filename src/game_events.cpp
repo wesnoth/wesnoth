@@ -1453,7 +1453,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side , *resources::tod_manager, *resources::state_of_game, *resources::controller, "random_number");
+					side, *resources::state_of_game, *resources::controller, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("random_number expected but none found\n");
@@ -3224,7 +3224,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 			if(!options.empty()) {
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side , *resources::tod_manager, *resources::state_of_game, *resources::controller, "choose");
+					side, *resources::state_of_game, *resources::controller, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
@@ -3234,7 +3234,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			}
 			if(has_text_input) {
 				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
-					side, *resources::tod_manager, *resources::state_of_game, *resources::controller, "input");
+					side, *resources::state_of_game, *resources::controller, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");
