@@ -307,13 +307,12 @@ void calculate_healing(int side, bool update_display);
 unit get_advanced_unit(const unit &u, const std::string &advance_to);
 
 /**
- * Function which will advance the unit at loc to 'advance_to'.
+ * Function which will advance the unit at @a loc to 'advance_to'.
  * Note that 'loc' is not a reference, because if it were a reference,
  * we couldn't safely pass in a reference to the item in the map
  * that we're going to delete, since deletion would invalidate the reference.
  */
-void advance_unit(unit_map& units,
-                  map_location loc, const std::string& advance_to);
+void advance_unit(map_location loc, const std::string &advance_to);
 
 /**
  * function which tests if the unit at loc is currently affected by leadership.

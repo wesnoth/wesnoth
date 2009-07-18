@@ -188,7 +188,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 
 	if(choice < options.size()) {
 		const std::string& chosen_unit = options[choice];
-		::advance_unit(*resources::units, loc, chosen_unit);
+		::advance_unit(loc, chosen_unit);
 	} else {
 		unit amla_unit(u->second);
 		const config &mod_option = mod_options[choice - options.size()];

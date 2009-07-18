@@ -1912,19 +1912,14 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 	return new_unit;
 }
 
-void advance_unit(unit_map& units,
-		map_location loc, const std::string& advance_to)
+void advance_unit(map_location loc, const std::string &advance_to)
 {
-	unit_map::unit_iterator u = units.find(loc);
+	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
 		return;
 	}
 	std::string const& original_type =  u->second.type_id();
 	LOG_NG << "firing advance event at " << loc <<"\n";
-
-/*	config test; // REMOVE ME
-	u->second.write(test);
-	std::cerr << test;*/
 
 	game_events::fire("advance",loc);
 
@@ -1935,10 +1930,6 @@ void advance_unit(unit_map& units,
 		return;
 	}
 
-/*	test.clear(); // REMOVE ME
-	u->second.write(test);
-	std::cerr << test;*/
-
 	loc = u->first;
 	unit new_unit = get_advanced_unit(u->second, advance_to);
 	statistics::advance_unit(new_unit);
@@ -1946,7 +1937,7 @@ void advance_unit(unit_map& units,
 	preferences::encountered_units().insert(new_unit.type_id());
 	LOG_CF << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
-	units.replace(loc, new_unit);
+	resources::units->replace(loc, new_unit);
 	LOG_NG << "firing post_advance event at " << loc << "\n";
 	game_events::fire("post_advance",loc);
 }
