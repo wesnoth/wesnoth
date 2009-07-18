@@ -133,7 +133,6 @@ manager::~manager()
 	history_map.clear();
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
-	set_ping_timeout(network::ping_timeout);
 }
 
 bool is_authenticated() {
