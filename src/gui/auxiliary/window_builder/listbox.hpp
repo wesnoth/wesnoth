@@ -45,7 +45,9 @@ struct tbuilder_listbox
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<string_map>list_data;
+	std::vector<string_map> list_data;
+
+	bool linked_widgets_disabled_;
 };
 
 } // namespace implementation

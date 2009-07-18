@@ -36,6 +36,7 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
 	, linked_size_initialized_(false)
+	, linked_widgets_disabled_(false)
 {
 	generator_ = tgenerator_::build(
 			has_minimum, has_maximum, placement, select);
@@ -282,6 +283,10 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 void tlistbox::init_linked_size_widets(twindow& window,
 		const tgrid::iterator& begin, const tgrid::iterator& end)
 {
+	if(linked_widgets_disabled_) {
+		return;
+	}
+
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
 		assert(*itor);
@@ -303,6 +308,10 @@ void tlistbox::init_linked_size_widets(twindow& window,
 void tlistbox::add_linked_size_widgets(twindow& window,
 		const tgrid::iterator& begin, const tgrid::iterator& end)
 {
+	if(linked_widgets_disabled_) {
+		return;
+	}
+
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
 		assert(*itor);
@@ -324,6 +333,10 @@ void tlistbox::add_linked_size_widgets(twindow& window,
 void tlistbox::remove_linked_size_widgets(twindow& window,
 		const tgrid::iterator& begin, const tgrid::iterator& end)
 {
+	if(linked_widgets_disabled_) {
+		return;
+	}
+
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
 		assert(*itor);

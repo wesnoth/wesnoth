@@ -37,6 +37,8 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	, footer(NULL)
 	, list_builder(NULL)
 	, list_data()
+	, linked_widgets_disabled_(
+			utils::string_bool(cfg["linked_widgets_disabled"]))
 {
 	if(const config &h = cfg.child("header")) {
 		header = new tbuilder_grid(h);
@@ -143,6 +145,13 @@ twidget* tbuilder_listbox::build() const
  *                                     initial data for the listbox. Every row
  *                                     must have the same number of columns as
  *                                     the 'list_definition'.
+ *
+ *     linked_widgets_disabled (bool = false)
+ *                                     Should the listbox automatically
+ *                                     enable linked widgets? This feature is
+ *                                     there for backwards compatibility and
+ *                                     will be removed in the future.
+ *
  * @end_table
  *
  *

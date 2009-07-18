@@ -158,6 +158,11 @@ public:
 	void set_list_builder(tbuilder_grid_ptr list_builder)
 		{ list_builder_ = list_builder; }
 
+	void set_linked_widgets_disabled(const bool disable)
+	{
+		linked_widgets_disabled_ = disable;
+	}
+
 protected:
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -270,6 +275,17 @@ private:
 	 * usage.
 	 */
 	bool linked_size_initialized_;
+
+	/**
+	 * Automatically add the linked widget style for the listbox?
+	 *
+	 * Normally a listbox automatically sets it's linked widget style, but
+	 * this can be disabled.
+	 *
+	 * @todo In the future this feature will disappear and must be
+	 * explicitely set in the listbox items.
+	 */
+	bool linked_widgets_disabled_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
