@@ -515,7 +515,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 			current_team.spend_gold(expense);
 		}
 
-		calculate_healing((*gui_),map_,units_,player_number_,teams_, !skip_replay_);
+		calculate_healing(player_number_, !skip_replay_);
 		reset_resting(units_, player_number_);
 	}
 	if(turn_refresh || real_side_change) {

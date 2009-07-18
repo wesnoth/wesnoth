@@ -1727,11 +1727,10 @@ void reset_resting(unit_map& units, int side)
 	}
 }
 
-void calculate_healing(game_display& disp, const gamemap& map,
-		unit_map& units, int side,
-		const std::vector<team>& teams, bool update_display)
+void calculate_healing(int side, bool update_display)
 {
 	DBG_NG << "beginning of healing calculations\n";
+	unit_map &units = *resources::units;
 
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
@@ -1761,7 +1760,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 				unit_map::iterator potential_healer = units.find(h_it->second);
 
 				assert(potential_healer != units.end());
-				if(teams[potential_healer->second.side()-1].is_enemy(side)) {
+				if ((*resources::teams)[potential_healer->second.side() - 1].is_enemy(side)) {
 					h_it = heal.cfgs.erase(h_it);
 				} else {
 					++h_it;
@@ -1828,9 +1827,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 					}
 				}
 			}
-			if (map.gives_healing(i->first)) {
-				if(map.gives_healing(i->first) > healing) {
-					healing = map.gives_healing(i->first);
+			if (int h = resources::game_map->gives_healing(i->first)) {
+				if (h > healing) {
+					healing = h;
 					healers.clear();
 				}
 				/** @todo FIXME */
@@ -1884,17 +1883,17 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		}
 
 
-		if ( !recorder.is_skipping()
-				&& update_display
-				&& !(i->second.invisible(i->first,units,teams) &&
-					teams[disp.viewing_team()].is_enemy(side))) {
+		if (!recorder.is_skipping() && update_display &&
+		    !(i->second.invisible(i->first, units, *resources::teams) &&
+		      (*resources::teams)[resources::screen->viewing_team()].is_enemy(side)))
+		{
 			unit_display::unit_healing(i->second,i->first,healers,healing);
 		}
 		if (healing > 0)
 			i->second.heal(healing);
 		else if (healing < 0)
 			i->second.take_hit(-healing);
-		disp.invalidate_unit();
+		resources::screen->invalidate_unit();
 	}
 	DBG_NG << "end of healing calculations\n";
 }

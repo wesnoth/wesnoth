@@ -299,9 +299,7 @@ void reset_resting(unit_map& units, int side);
  * Calculates healing for all units for the given side.
  * Should be called at the beginning of a side's turn.
  */
-void calculate_healing(game_display& disp, const gamemap& map,
-                       unit_map& units, int side,
-					   const std::vector<team>& teams, bool update_display);
+void calculate_healing(int side, bool update_display);
 
 /**
  * Returns the advanced version of unit (with traits and items retained).
