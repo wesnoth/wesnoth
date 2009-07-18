@@ -79,7 +79,7 @@ class editor_controller : public controller_base,
 		~editor_controller();
 
 		/** Editor main loop */
-		EXIT_STATUS main_loop();
+		EXIT_STATUS main_loop(bool take_screenshot = false);
 
 		/** Process a hotkey quit command */
 		void hotkey_quit();

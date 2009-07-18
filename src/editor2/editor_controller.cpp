@@ -276,11 +276,16 @@ editor_controller::~editor_controller()
 	}
 }
 
-EXIT_STATUS editor_controller::main_loop()
+EXIT_STATUS editor_controller::main_loop(bool take_screenshot /* = false */)
 {
 	try {
-		while (!do_quit_) {
-			play_slice();
+		if(take_screenshot) {
+			gui().screenshot("map_screenshot.bmp",true);		
+			quit_mode_ = EXIT_NORMAL;
+		} else {
+			while (!do_quit_) {
+				play_slice();
+			}
 		}
 	} catch (editor_exception& e) {
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());

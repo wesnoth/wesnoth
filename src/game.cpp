@@ -16,6 +16,7 @@
 
 #include "SDL.h"
 #include "SDL_mixer.h"
+#include "SDL_getenv.h"
 
 #include "about.hpp"
 #include "ai/configuration.hpp"
@@ -346,10 +347,10 @@ game_controller::game_controller(int argc, char** argv) :
 			if(arg_+1 != argc_) {
 				++arg_;
 				screenshot_map_ = argv_[arg_];
-				no_gui_ = true;
 				no_sound = true;
 				screenshot_mode_ = true;
 				preferences::disable_preferences_save();
+				force_bpp_ = 32;
 			}
 		} else if(val == "--smallgui") {
 			game_config::small_gui = true;
@@ -699,8 +700,15 @@ bool game_controller::play_screenshot_mode()
 	if(!screenshot_mode_) {
 		return true;
 	}
-
-	return false;
+	
+	cache_.clear_defines();
+	cache_.add_define("EDITOR");
+	cache_.add_define("EDITOR2");
+	load_game_cfg();
+	const binary_paths_manager bin_paths_manager(game_config_);
+	::init_textdomains(game_config_);
+	
+	return editor2::start(game_config_, video_, screenshot_map_, true);
 }
 
 bool game_controller::play_multiplayer_mode()
@@ -1786,6 +1794,9 @@ static int process_command_args(int argc, char** argv) {
 			std::cout <<  game_config::path
 			          << "\n";
 			return 0;
+		} else if (val == "--screenshot" ) {
+			char opt[] = "SDL_VIDEODRIVER=dummy";	
+			SDL_putenv(opt);	
 		} else if(val == "--config-dir") {
 			if (argc <= ++arg)
 				break;

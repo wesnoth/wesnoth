@@ -25,7 +25,7 @@ lg::log_domain log_editor("editor");
 
 namespace editor2 {
 
-EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */)
+EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */, bool take_screenshot /* = false */)
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
@@ -42,7 +42,11 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 				editor.load_map(filename, false);
 			}
 		}
-		e = editor.main_loop();
+		if(take_screenshot) {
+			e = editor.main_loop(true);
+		} else {
+			e = editor.main_loop(false);
+		}
 	} catch (editor_exception& e) {
 		ERR_ED << "Editor exception in editor2::start: " << e.what() << "\n";
 		throw;
