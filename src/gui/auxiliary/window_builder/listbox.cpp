@@ -87,6 +87,8 @@ twidget* tbuilder_listbox::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
+	widget->set_linked_widgets_disabled(linked_widgets_disabled_);
+
 	DBG_GUI_G << "Window builder: placed listbox '"
 		<< id << "' with defintion '"
 		<< definition << "'.\n";
