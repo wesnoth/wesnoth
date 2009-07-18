@@ -80,7 +80,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(*resources::units, loc, *op));
+		sample_units.push_back(::get_advanced_unit(u->second, *op));
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
@@ -95,7 +95,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	foreach (const config &mod, u->second.get_modification_advances())
 	{
 		if (utils::string_bool(mod["always_display"])) always_display = true;
-		sample_units.push_back(::get_advanced_unit(*resources::units, loc, u->second.type_id()));
+		sample_units.push_back(::get_advanced_unit(u->second, u->second.type_id()));
 		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {

@@ -1902,20 +1902,17 @@ void calculate_healing(game_display& disp, const gamemap& map,
 }
 
 
-unit get_advanced_unit(unit_map& units,
-		const map_location& loc, const std::string& advance_to)
+unit get_advanced_unit(const unit &u, const std::string& advance_to)
 {
 	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find_unit_type(advance_to);
-	const unit_map::iterator un = units.find(loc);
-	if(new_type != unit_type_data::types().end() && un != units.end()) {
-		unit new_unit(un->second);
-		new_unit.get_experience(-new_unit.max_experience());
-		new_unit.advance_to(&(new_type->second));
-		return new_unit;
-	} else {
+	if (new_type == unit_type_data::types().end()) {
 		throw game::game_error("Could not find the unit being advanced"
-				" to: " + advance_to);
+			" to: " + advance_to);
 	}
+	unit new_unit(u);
+	new_unit.get_experience(-new_unit.max_experience());
+	new_unit.advance_to(&new_type->second);
+	return new_unit;
 }
 
 void advance_unit(unit_map& units,
@@ -1946,7 +1943,7 @@ void advance_unit(unit_map& units,
 	std::cerr << test;*/
 
 	loc = u->first;
-	const unit& new_unit = get_advanced_unit(units,loc,advance_to);
+	unit new_unit = get_advanced_unit(u->second, advance_to);
 	statistics::advance_unit(new_unit);
 
 	preferences::encountered_units().insert(new_unit.type_id());

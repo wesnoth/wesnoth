@@ -304,13 +304,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 					   const std::vector<team>& teams, bool update_display);
 
 /**
- * Function which, given the location of a unit that is advancing,
- * and the name of the unit it is advancing to,
- * Will return the advanced version of this unit.
- * (with traits and items retained).
+ * Returns the advanced version of unit (with traits and items retained).
  */
-unit get_advanced_unit(unit_map& units,
-                  const map_location& loc, const std::string& advance_to);
+unit get_advanced_unit(const unit &u, const std::string &advance_to);
 
 /**
  * Function which will advance the unit at loc to 'advance_to'.
