@@ -294,6 +294,15 @@ public:
 			const bool fixed_width, const bool fixed_height);
 
 	/**
+	 * Is the linked size group defined for this window?
+	 *
+	 * @param id                  The id of the group.
+	 *
+	 * @returns                   True if defined, false otherwise.
+	 */
+	bool has_linked_size_group(const std::string& id);
+
+	/**
 	 * Adds a widget to a linked size group.
 	 *
 	 * The group needs to exist, which is done by calling

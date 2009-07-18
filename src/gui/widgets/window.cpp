@@ -628,15 +628,20 @@ void twindow::init_linked_size_group(const std::string& id,
 		const bool fixed_width, const bool fixed_height)
 {
 	assert(fixed_width || fixed_height);
-	assert(linked_size_.find(id) == linked_size_.end());
+	assert(!has_linked_size_group(id));
 
 	linked_size_[id] = tlinked_size(fixed_width, fixed_height);
+}
+
+bool twindow::has_linked_size_group(const std::string& id)
+{
+	return linked_size_.find(id) != linked_size_.end();
 }
 
 void twindow::add_linked_widget(const std::string& id, twidget* widget)
 {
 	assert(widget);
-	assert(linked_size_.find(id) != linked_size_.end());
+	assert(has_linked_size_group(id));
 
 	linked_size_[id].widgets.push_back(widget);
 }
@@ -645,7 +650,7 @@ void twindow::remove_linked_widget(const std::string& id
 		, const twidget* widget)
 {
 	assert(widget);
-	assert(linked_size_.find(id) != linked_size_.end());
+	assert(has_linked_size_group(id));
 
 	std::vector<twidget*>& widgets = linked_size_[id].widgets;
 
