@@ -1,9 +1,15 @@
-/* 
- * File:   callable_objects.hpp
- * Author: dk
- *
- * Created on 17 lipiec 2009, 13:48
- */
+/*
+   Copyright (C) 2009 by Bartosz Waresiak <dragonking@o2.pl>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #ifndef FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 #define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
