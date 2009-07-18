@@ -646,7 +646,7 @@ static int lua_set_variable(lua_State *L)
 	}
 
 	if (lua_isnoneornil(L, 2)) {
-		game_events::get_state_of_game()->clear_variable(m);
+		resources::state_of_game->clear_variable(m);
 		return 0;
 	}
 

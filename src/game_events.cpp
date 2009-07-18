@@ -357,11 +357,6 @@ namespace game_events {
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
 	static bool matches_special_filter(const config &cfg, const vconfig filter);
 
-	game_state* get_state_of_game()
-	{
-		return resources::state_of_game;
-	}
-
 	static bool internal_conditional_passed(const unit_map* units,
 			const vconfig cond, bool& backwards_compat)
 	{

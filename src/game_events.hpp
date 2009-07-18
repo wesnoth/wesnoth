@@ -164,7 +164,6 @@ namespace game_events
 	void handle_event_command(const std::string &cmd,
 		const queued_event &event_info, const vconfig &cfg);
 
-	game_state* get_state_of_game();
 	void write_events(config& cfg);
 	void add_events(const config::const_child_itors &cfgs,const std::string& id);
 

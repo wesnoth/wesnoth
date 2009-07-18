@@ -21,6 +21,7 @@
 #include "asserts.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include "storyscreen/part.hpp"
 
 #include "config.hpp"
@@ -120,7 +121,7 @@ part::part()
 	ASSERT_LOG(0xDEADBEEF == 0x0, "Ouch: shouldn't happen");
 }
 
-part::part(game_state& state_of_game, const vconfig& part_cfg)
+part::part(const vconfig &part_cfg)
 	: scale_background_(true)
 	, background_file_()
 	, show_title_()
@@ -131,7 +132,7 @@ part::part(game_state& state_of_game, const vconfig& part_cfg)
 	, music_()
 	, floating_images_()
 {
-	resolve_wml(part_cfg, state_of_game);
+	resolve_wml(part_cfg);
 }
 
 part::TEXT_BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
@@ -160,7 +161,7 @@ part::TITLE_ALIGNMENT part::string_title_align(const std::string& s)
 	return part::LEFT;
 }
 
-void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
+void part::resolve_wml(const vconfig &cfg)
 {
 	if(cfg.null()) {
 		return;
@@ -207,12 +208,12 @@ void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
 				game_events::conditional_passed(NULL, node) ?
 				"then" : "else";
 			const vconfig branch = node.child(branch_label);
-			resolve_wml(branch, gamestate);
+			resolve_wml(branch);
 		}
 		// [switch]
 		else if(key == "switch") {
 			const std::string var_name = node["variable"];
-			const std::string var_actual_value = gamestate.get_variable_const(var_name);
+			const std::string var_actual_value = resources::state_of_game->get_variable_const(var_name);
 			bool case_not_found = true;
 
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
@@ -222,7 +223,7 @@ void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
 				const std::string var_expected_value = (j->second)["value"];
 			    if(var_actual_value == var_expected_value) {
 					case_not_found = false;
-					resolve_wml(j->second, gamestate);
+					resolve_wml(j->second);
 			    }
 			}
 
@@ -231,7 +232,7 @@ void part::resolve_wml(const vconfig& cfg, game_state& gamestate)
 					if(j->first != "else") continue;
 
 					// Enter all elses.
-					resolve_wml(j->second, gamestate);
+					resolve_wml(j->second);
 				}
 			}
 		}

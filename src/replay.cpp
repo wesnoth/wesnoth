@@ -27,7 +27,6 @@
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
-#include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -62,7 +61,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		std::set<map_location> locs;
 		foreach (const config &u, cfg.child_range("unit"))
 		{
-			const map_location loc(u, game_events::get_state_of_game());
+			const map_location loc(u, resources::state_of_game);
 			locs.insert(loc);
 
 			if(units.count(loc) == 0) {
@@ -83,7 +82,7 @@ static void verify(const unit_map& units, const config& cfg) {
 
 	foreach (const config &un, cfg.child_range("unit"))
 	{
-		const map_location loc(un, game_events::get_state_of_game());
+		const map_location loc(un, resources::state_of_game);
 		const unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -542,7 +541,7 @@ void replay::undo()
 			{
 				if (config &async_child = (***async_cmd).child("rename"))
 				{
-					map_location aloc(async_child, game_events::get_state_of_game());
+					map_location aloc(async_child, resources::state_of_game);
 					if (dst == aloc)
 					{
 						src.write(async_child);
@@ -557,13 +556,13 @@ void replay::undo()
 			if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*chld, game_events::get_state_of_game());
+			map_location src(*chld, resources::state_of_game);
 			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
 				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				if (config &async_child = (***async_cmd).child("rename"))
 				{
-					map_location aloc(async_child, game_events::get_state_of_game());
+					map_location aloc(async_child, resources::state_of_game);
 					if (src == aloc)
 					{
 						remove_command(*async_cmd - cmd.first);
@@ -719,7 +718,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 	}
 	foreach (const config &ch, cfg.child_range("checksum"))
 	{
-		map_location loc(ch, game_events::get_state_of_game());
+		map_location loc(ch, resources::state_of_game);
 		unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			std::stringstream message;
@@ -867,7 +866,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
-			const map_location loc(child, game_events::get_state_of_game());
+			const map_location loc(child, resources::state_of_game);
 			const std::string &name = child["name"];
 
 			unit_map::iterator u = units.find(loc);
@@ -909,7 +908,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			const std::string& recruit_num = child["value"];
 			const int val = lexical_cast_default<int>(recruit_num);
 
-			map_location loc(child, game_events::get_state_of_game());
+			map_location loc(child, resources::state_of_game);
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
@@ -967,7 +966,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			const std::string& recall_num = child["value"];
 			const int val = lexical_cast_default<int>(recall_num);
 
-			map_location loc(child, game_events::get_state_of_game());
+			map_location loc(child, resources::state_of_game);
 
 			if(val >= 0 && val < int(current_team.recall_list().size())) {
 				statistics::recall_unit(current_team.recall_list()[val]);
@@ -1075,8 +1074,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			//we must get locations by value instead of by references, because the iterators
 			//may become invalidated later
-			const map_location src(source, game_events::get_state_of_game());
-			const map_location dst(destination, game_events::get_state_of_game());
+			const map_location src(source, resources::state_of_game);
+			const map_location dst(destination, resources::state_of_game);
 
 			const std::string &weapon = child["weapon"];
 			const int weapon_num = lexical_cast_default<int>(weapon);
@@ -1148,7 +1147,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			//established and therefore we fire those events inside play_controller::init_side
 			if ((event != "side turn") && (event != "turn 1") && (event != "new turn") && (event != "turn refresh")){
 				if (const config &source = child.child("source")) {
-					game_events::fire(event, map_location(source, game_events::get_state_of_game()));
+					game_events::fire(event, map_location(source, resources::state_of_game));
 				} else {
 					game_events::fire(event);
 				}
@@ -1157,7 +1156,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 		}
 		else if (const config &child = cfg->child("advance_unit"))
 		{
-			const map_location loc(child, game_events::get_state_of_game());
+			const map_location loc(child, resources::state_of_game);
 			advancing_units.push_back(loc);
 
 		} else {

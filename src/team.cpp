@@ -24,6 +24,7 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -393,7 +394,7 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 	// Load in the villages the side controls at the start
 	foreach (const config &v, cfg.child_range("village"))
 	{
-		map_location loc(v, game_events::get_state_of_game());
+		map_location loc(v, resources::state_of_game);
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {

@@ -114,7 +114,7 @@ public:
 		QUIT		/**< Quit game and go back to main menu. */
 	};
 
-	part(game_state& state_of_game, const vconfig& part_cfg);
+	part(const vconfig &part_cfg);
 
 	bool scale_background() const { return scale_background_; }
 	const std::string& background() const { return background_file_; }
@@ -135,7 +135,7 @@ private:
 	part();
 
 	/** Takes care of initializing and branching properties. */
-	void resolve_wml(const vconfig& cfg, game_state& gamestate);
+	void resolve_wml(const vconfig &cfg);
 
 	static TEXT_BLOCK_LOCATION string_tblock_loc(const std::string& s);
 	static TITLE_ALIGNMENT string_title_align(const std::string& s);

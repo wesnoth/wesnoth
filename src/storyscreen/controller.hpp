@@ -71,9 +71,6 @@ private:
 	// The part cache.
 	std::vector< part_pointer_type > parts_;
 
-	// The state of the world.
-	game_state* gamestate_;
-
 public:
 	struct no_parts {};
 	struct quit {};

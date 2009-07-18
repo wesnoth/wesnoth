@@ -33,6 +33,7 @@
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include "widgets/button.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -51,9 +52,8 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 	, data_(data)
 	, scenario_name_(scenario_name)
 	, parts_()
-	, gamestate_(game_events::get_state_of_game())
 {
-	ASSERT_LOG(gamestate_ != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
+	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
 	build_parts();
 }
 
@@ -66,7 +66,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		const vconfig node = i->second;
 
 		if(key == "part" && !node.empty()) {
-			part_pointer_type const story_part(new part(*gamestate_, node));
+			part_pointer_type const story_part(new part(node));
 			// Use scenario name as part title if the WML doesn't supply a custom one.
 			if((*story_part).show_title() && (*story_part).title().empty()) {
 				(*story_part).set_title( scenario_name_ );
@@ -84,7 +84,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		// [switch]
 		else if(key == "switch") {
 			const std::string var_name = node["variable"];
-			const std::string var_actual_value = (*gamestate_).get_variable_const(var_name);
+			const std::string var_actual_value = resources::state_of_game->get_variable_const(var_name);
 			bool case_not_found = true;
 
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {

@@ -31,6 +31,7 @@
 #include "log.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
@@ -267,7 +268,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	foreach (const config &overlay, level_.child_range("item"))
 	{
 		gui_->add_overlay(
-			map_location(overlay, game_events::get_state_of_game()),
+			map_location(overlay, resources::state_of_game),
 			overlay["image"], overlay["halo"], overlay["team_name"],
 			utils::string_bool(overlay["visible_in_fog"], true));
 	}

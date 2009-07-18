@@ -1062,8 +1062,6 @@ attack::attack(const map_location &attacker, const map_location &defender,
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
-	game_state* game_state = game_events::get_state_of_game();
-
 	while(a_.n_attacks_ > 0 || d_.n_attacks_ > 0) {
 		DBG_NG << "start of attack loop...\n";
 		abs_n_attack_++;
@@ -1075,7 +1073,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 			int damage_defender_takes;
 			if(hits) {
 				damage_defender_takes = a_.damage_;
-				game_state->set_variable("damage_inflicted",
+				resources::state_of_game->set_variable("damage_inflicted",
 							 str_cast<int>(damage_defender_takes));
 			} else {
 				damage_defender_takes = 0;
@@ -1350,7 +1348,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 			if(hits) {
 				damage_attacker_takes = d_.damage_;
 
-				game_state->set_variable("damage_inflicted",
+				resources::state_of_game->set_variable("damage_inflicted",
 							 str_cast<int>(damage_attacker_takes));
 			} else {
 				damage_attacker_takes = 0;
