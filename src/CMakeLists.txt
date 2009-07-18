@@ -71,7 +71,7 @@ set( tools-external-libs
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-  include_directories( ${FRIBIDI_INCLUDE_PATH} )
+  include_directories( ${FRIBIDI_INCLUDE_DIR} )
   set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
