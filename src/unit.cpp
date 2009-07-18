@@ -2003,7 +2003,7 @@ void unit::redraw_unit()
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					movement_file = &game_config::unmoved_ball_image;
-				} else if (unit_can_move(loc_, *this, disp.get_units(), map, disp.get_teams())) {
+				} else if (unit_can_move(*this)) {
 					movement_file = &game_config::partmoved_ball_image;
 				}
 			}

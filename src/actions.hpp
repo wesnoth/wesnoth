@@ -417,11 +417,10 @@ bool clear_shroud(int side);
 void apply_shroud_changes(undo_list &undos, int side);
 
 /**
- * Will return true iff the unit at 'loc' has any possible moves
+ * Will return true iff the unit @a u has any possible moves
  * it can do (including attacking etc).
  */
-bool unit_can_move(const map_location& loc, const unit& u, const unit_map& units,
-                   const gamemap& map, const std::vector<team>& teams);
+bool unit_can_move(const unit &u);
 
 
 namespace victory_conditions {

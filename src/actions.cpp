@@ -2589,10 +2589,9 @@ size_t move_unit(game_display* disp,
 	return steps.size();
 }
 
-bool unit_can_move(const map_location& loc,const unit& u, const unit_map& units,
-		const gamemap& map, const std::vector<team>& teams)
+bool unit_can_move(const unit &u)
 {
-	const team& current_team = teams[u.side()-1];
+	const team &current_team = (*resources::teams)[u.side() - 1];
 
 	if(!u.attacks_left() && u.movement_left()==0)
 		return false;
@@ -2604,17 +2603,17 @@ bool unit_can_move(const map_location& loc,const unit& u, const unit_map& units,
 	}
 
 	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
+	get_adjacent_tiles(u.get_location(), locs);
 	for(int n = 0; n != 6; ++n) {
-		if(map.on_board(locs[n])) {
-			const unit_map::const_iterator i = units.find(locs[n]);
-			if(i != units.end()) {
+		if (resources::game_map->on_board(locs[n])) {
+			const unit_map::const_iterator i = resources::units->find(locs[n]);
+			if (i.valid()) {
 				if(!i->second.incapacitated() && current_team.is_enemy(i->second.side())) {
 					return true;
 				}
 			}
 
-			if(u.movement_cost(map[locs[n]]) <= u.movement_left()) {
+			if (u.movement_cost((*resources::game_map)[locs[n]]) <= u.movement_left()) {
 				return true;
 			}
 		}
