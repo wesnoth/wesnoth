@@ -546,8 +546,7 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 		recorder.add_attack(u,target,weapon,def_weapon);
 	}
 	try {
-		attack(get_info().disp, get_info().map, get_info().teams, u, target, weapon, def_weapon,
-				get_info().units, get_info().tod_manager_);
+		attack(u, target, weapon, def_weapon, get_info().units);
 	}
 	catch (end_level_exception&)
 	{

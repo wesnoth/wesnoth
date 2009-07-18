@@ -598,8 +598,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
                         }
 
 			if(get_info().units.count(att_src)) {
-				battle_context bc(get_info().map, get_info().teams,
-				                  get_info().units, get_info().tod_manager_,
+				battle_context bc(get_info().units,
 				                  att_src, att_dst, -1, -1, 1.0, NULL,
 								  &get_info().units.find(att_src)->second);
 				attack_enemy(attack_analysis->movements.front().second,

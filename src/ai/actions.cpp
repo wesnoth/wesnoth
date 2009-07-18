@@ -247,8 +247,7 @@ void attack_result::do_execute()
 	//CHECK ENEMY(DEFENDER)
 	//CHECK ATTACKER WEAPON
 
-	battle_context bc(get_info().map, get_info().teams, get_info().units,
-		get_info().tod_manager_, attacker_loc_,
+	battle_context bc(get_info().units, attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, get_my_team(get_info()).aggression());
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
@@ -258,9 +257,7 @@ void attack_result::do_execute()
 		recorder.add_attack(attacker_loc_,defender_loc_,attacker_weapon,defender_weapon);
 	}
 	try {
-		attack(get_info().disp, get_info().map, get_info().teams, attacker_loc_,
-			defender_loc_,attacker_weapon,defender_weapon,	get_info().units, 
-			get_info().tod_manager_);
+		attack(attacker_loc_, defender_loc_,attacker_weapon,defender_weapon, get_info().units);
 	}
 	catch (end_level_exception&)
 	{

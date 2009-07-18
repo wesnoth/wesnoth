@@ -466,8 +466,7 @@ private:
 			return variant();
 		}
 
-		battle_context bc(ai_.get_info().map, ai_.get_info().teams, ai_.get_info().units,
-			ai_.get_info().tod_manager_, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
+		battle_context bc(ai_.get_info().units, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
 			defender_location, weapon, -1, 1.0, NULL, &ai_.get_info().units.find(attacker_location)->second);
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();

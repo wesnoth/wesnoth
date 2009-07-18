@@ -348,8 +348,7 @@ map_location under_leadership(const unit_map& units,
 	return abil.highest("value").second;
 }
 
-battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const tod_manager& tod_mng,
+battle_context::battle_context(const unit_map& units,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		int attacker_weapon, int defender_weapon, double aggression, const combatant *prev_def, const unit* attacker_ptr)
 : attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
@@ -362,12 +361,12 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
-		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
-				tod_mng, attacker_loc, defender_loc,
+		attacker_weapon = choose_attacker_weapon(attacker, defender, units,
+			attacker_loc, defender_loc,
 				harm_weight, &defender_weapon, prev_def);
 	} else if (defender_weapon == -1) {
-		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
-				units, tod_mng, attacker_loc, defender_loc, prev_def);
+		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon,
+			units, attacker_loc, defender_loc, prev_def);
 	}
 
 	// If those didn't have to generate statistics, do so now.
@@ -386,11 +385,9 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		}
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
-				true, defender, defender_loc, ddef,
-				units, teams, tod_mng, map);
+				true, defender, defender_loc, ddef, units);
 		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
-				attacker, attacker_loc, adef,
-				units, teams, tod_mng, map);
+				attacker, attacker_loc, adef, units);
 	}
 }
 
@@ -432,8 +429,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 
 /** @todo FIXME: Hand previous defender unit in here. */
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
-		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const tod_manager& tod_mng,
+	const unit_map& units,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		const combatant *prev_def)
 {
@@ -468,8 +464,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		if (def.defense_weight() > max_weight) {
 			max_weight = def.defense_weight();
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-					attacker, attacker_loc, &att,
-					units, teams, tod_mng, map);
+					attacker, attacker_loc, &att, units);
 			min_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
 					def_stats->chance_to_hit * def.defense_weight());
 
@@ -477,8 +472,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		}
 		else if (def.defense_weight() == max_weight) {
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-					attacker, attacker_loc, &att,
-					units, teams, tod_mng, map);
+					attacker, attacker_loc, &att, units);
 			int simple_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
 					def_stats->chance_to_hit * def.defense_weight());
 
@@ -492,11 +486,9 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &def = defender.attacks()[choices[i]];
 		unit_stats *att_stats = new unit_stats(attacker, attacker_loc, attacker_weapon,
-				true, defender, defender_loc, &def,
-				units, teams, tod_mng, map);
+				true, defender, defender_loc, &def, units);
 		unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
-				attacker, attacker_loc, &att,
-				units, teams, tod_mng, map);
+				attacker, attacker_loc, &att, units);
 
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
@@ -528,8 +520,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 }
 
 int battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
-		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-		const tod_manager& tod_mng,
+	const unit_map& units,
 		const map_location& attacker_loc, const map_location& defender_loc,
 		double harm_weight, int *defender_weapon, const combatant *prev_def)
 {
@@ -546,8 +537,8 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 	if (choices.size() == 0)
 		return -1;
 	if (choices.size() == 1) {
-		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
-				tod_mng, attacker_loc, defender_loc, prev_def);
+		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
+			attacker_loc, defender_loc, prev_def);
 		return choices[0];
 	}
 
@@ -557,8 +548,8 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 
 	for (i = 0; i < choices.size(); i++) {
 		const attack_type &att = attacker.attacks()[choices[i]];
-		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], map, teams, units,
-				tod_mng, attacker_loc, defender_loc, prev_def);
+		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], units,
+			attacker_loc, defender_loc, prev_def);
 		// If that didn't simulate, do so now.
 		if (!attacker_combatant_) {
 			const attack_type *def = NULL;
@@ -566,11 +557,9 @@ int battle_context::choose_attacker_weapon(const unit &attacker, const unit &def
 				def = &defender.attacks()[def_weapon];
 			}
 			attacker_stats_ = new unit_stats(attacker, attacker_loc, choices[i],
-					true, defender, defender_loc, def,
-					units, teams, tod_mng, map);
+				true, defender, defender_loc, def, units);
 			defender_stats_ = new unit_stats(defender, defender_loc, def_weapon, false,
-					attacker, attacker_loc, &att,
-					units, teams, tod_mng, map);
+				attacker, attacker_loc, &att, units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
@@ -667,10 +656,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		int u_attack_num, bool attacking,
 		const unit &opp, const map_location& opp_loc,
 		const attack_type *opp_weapon,
-		const unit_map& units,
-		const std::vector<team>& teams,
-		const tod_manager& tod_mng,
-		const gamemap& map) :
+		const unit_map& units) :
 	weapon(0),
 	attack_num(u_attack_num),
 	is_attacker(attacking),
@@ -724,21 +710,21 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		weapon->set_specials_context(*aloc, *dloc, &units, &map, &tod_mng, &teams, attacking, opp_weapon);
+		weapon->set_specials_context(*aloc, *dloc, &units, resources::game_map, resources::tod_manager, resources::teams, attacking, opp_weapon);
 		if (opp_weapon)
-			opp_weapon->set_specials_context(*aloc, *dloc, &units, &map, &tod_mng, &teams, !attacking, weapon);
+			opp_weapon->set_specials_context(*aloc, *dloc, &units, resources::game_map, resources::tod_manager, resources::teams, !attacking, weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		petrifies = weapon->get_special_bool("petrifies");
 		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && opp.get_state(unit::STATE_POISONED) != true;
-		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
+		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
-			strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
+			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
 		if (!plague_specials.empty()) {
 			if((*plague_specials.cfgs.front().first)["type"] == "")
@@ -748,7 +734,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		}
 
 		// Compute chance to hit.
-		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc)) + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
+		chance_to_hit = opp.defense_modifier(resources::game_map->get_terrain(opp_loc)) + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 		if(chance_to_hit > 100) {
 			chance_to_hit = 100;
 		}
@@ -767,7 +753,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(tod_mng, units, u_loc, u.alignment(), u.is_fearless(), map);
+		damage_multiplier += combat_modifier(*resources::tod_manager, units, u_loc, u.alignment(), u.is_fearless(), *resources::game_map);
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -878,10 +864,10 @@ void attack::fire_event(const std::string& n)
 	refresh_bc();
 	if(!a_.valid() || !d_.valid()) {
 		if (update_display_){
-			recalculate_fog(map_,units_,teams_,attacker_side-1);
-			recalculate_fog(map_,units_,teams_,defender_side-1);
-			gui_.recalculate_minimap();
-			gui_.draw(true,true);
+			recalculate_fog(*resources::game_map, units_, *resources::teams, attacker_side - 1);
+			recalculate_fog(*resources::game_map, units_, *resources::teams, defender_side - 1);
+			resources::screen->recalculate_minimap();
+			resources::screen->draw(true, true);
 		}
 		fire_event("attack_end");
 		throw attack_end_exception();
@@ -933,7 +919,7 @@ void attack::refresh_bc()
 		return;
 	}
 
-	*bc_ =	battle_context(map_, teams_, units_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	*bc_ =	battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	a_.cth_ = a_stats_->chance_to_hit;
@@ -983,25 +969,17 @@ std::string attack::unit_info::dump()
 	return s.str();
 }
 
-attack::attack(game_display& gui, const gamemap& map,
-		std::vector<team>& teams,
-		map_location attacker,
-		map_location defender,
+attack::attack(const map_location &attacker, const map_location &defender,
 		int attack_with,
 		int defend_with,
 		unit_map& units,
-		const tod_manager& tod_mng,
 		bool update_display) :
-	gui_(gui),
-	map_(map),
-	teams_(teams),
 	bc_(0),
 	a_stats_(0),
 	d_stats_(0),
 	a_(attacker, attack_with, units),
 	d_(defender, defend_with, units),
 	units_(units),
-	tod_manager_(tod_mng),
 	errbuf_(),
 	update_display_(update_display),
 	OOS_error_(false),
@@ -1031,7 +1009,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_HIDDEN,false);
 
-	bc_ = new battle_context(map_, teams_, units_, tod_manager_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	bc_ = new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
 	if(a_stats_->weapon) {
@@ -1248,7 +1226,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(d_.get_unit().level() == 0)
 					a_.xp_ = game_config::kill_experience / 2;
 				d_.xp_ = 0;
-				gui_.invalidate(a_.iter_->first);
+				resources::screen->invalidate(a_.iter_->first);
 
 				game_events::entity_location death_loc(d_.loc_, d_.id_);
 				game_events::entity_location attacker_loc(a_.loc_, a_.id_);
@@ -1318,7 +1296,7 @@ attack::attack(game_display& gui, const gamemap& map,
 						units_.add(death_loc, newunit);
 						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
-							gui_.invalidate(death_loc);
+							resources::screen->invalidate(death_loc);
 						}
 					}
 				} else {
@@ -1517,7 +1495,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(a_.get_unit().level() == 0)
 					d_.xp_ = game_config::kill_experience / 2;
 				a_.xp_ = 0;
-				gui_.invalidate(d_.iter_->first);
+				resources::screen->invalidate(d_.iter_->first);
 
 				std::string undead_variation = a_.get_unit().undead_variation();
 
@@ -1587,7 +1565,7 @@ attack::attack(game_display& gui, const gamemap& map,
 						units_.add(death_loc, newunit);
 						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
-							gui_.invalidate(death_loc);
+							resources::screen->invalidate(death_loc);
 						}
 					}
 				} else {
@@ -1643,23 +1621,25 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 
 	// TODO: if we knew the viewing team, we could skip some of these display update
-	if(update_att_fog && teams_[attacker_side-1].uses_fog()) {
-		recalculate_fog(map_,units_,teams_,attacker_side-1);
+	if (update_att_fog && (*resources::teams)[attacker_side - 1].uses_fog())
+	{
+		recalculate_fog(*resources::game_map, units_, *resources::teams, attacker_side - 1);
 		if (update_display_) {
-			gui_.invalidate_all();
-			gui_.recalculate_minimap();
+			resources::screen->invalidate_all();
+			resources::screen->recalculate_minimap();
 		}
 	}
-	if(update_def_fog && teams_[defender_side-1].uses_fog()) {
-		recalculate_fog(map_,units_,teams_,defender_side-1);
+	if (update_def_fog && (*resources::teams)[defender_side - 1].uses_fog())
+	{
+		recalculate_fog(*resources::game_map, units_, *resources::teams, defender_side - 1);
 		if (update_display_) {
-			gui_.invalidate_all();
-			gui_.recalculate_minimap();
+			resources::screen->invalidate_all();
+			resources::screen->recalculate_minimap();
 		}
 	}
 
 	if(update_minimap && update_display_) {
-		gui_.recalculate_minimap();
+		resources::screen->recalculate_minimap();
 	}
 
 	if(a_.valid()) {
@@ -1675,10 +1655,10 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 
 	if (update_display_){
-		gui_.invalidate_unit();
-		gui_.invalidate(attacker);
-		gui_.invalidate(defender);
-		gui_.draw(true,true);
+		resources::screen->invalidate_unit();
+		resources::screen->invalidate(attacker);
+		resources::screen->invalidate(defender);
+		resources::screen->draw(true, true);
 	}
 
 	if(OOS_error_) {

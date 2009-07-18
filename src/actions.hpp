@@ -107,9 +107,7 @@ public:
 				   int u_attack_num, bool attacking,
 				   const unit &opp, const map_location& opp_loc,
 				   const attack_type *opp_weapon,
-				   const unit_map& units,
-				   const std::vector<team>& teams,
-				   const tod_manager& tod_mng, const gamemap& map);
+				   const unit_map& units);
 		~unit_stats();
 
 		/** Dumps the statistics of a unit on stdout. Remove it eventually. */
@@ -122,8 +120,7 @@ public:
 	 * 0.0 means we ignore harm weight).
 	 * prev_def is for predicting multiple attacks against a defender.
 	 */
-	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-				   const tod_manager& tod_mng,
+	battle_context(const unit_map &units,
 				   const map_location& attacker_loc, const map_location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
@@ -154,14 +151,12 @@ private:
 					   double harm_weight);
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
-								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-								const tod_manager& tod_mng,
+		const unit_map& units,
 								const map_location& attacker_loc, const map_location& defender_loc,
 								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
-							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-							   const tod_manager& tod_mng,
+		const unit_map& units,
 							   const map_location& attacker_loc, const map_location& defender_loc, const combatant *prev_def);
 
 	/** Statistics of the units. */
@@ -174,23 +169,16 @@ private:
 /** Executes an attack. */
 class attack {
 	public:
-	    attack(game_display& gui, const gamemap& map,
-            std::vector<team>& teams,
-            map_location attacker,
-            map_location defender,
+	attack(const map_location &attacker, const map_location &defender,
             int attack_with,
             int defend_with,
             unit_map& units,
-			const tod_manager& tod_mng,
 			bool update_display = true);
 		~attack();
 	private:
 		class attack_end_exception {};
 		void fire_event(const std::string& n);
 		void refresh_bc();
-		game_display& gui_;
-		const gamemap& map_;
-		std::vector<team>& teams_;
 
 		/** structure holding unit info used in the attack action */
 		struct unit_info {
@@ -218,7 +206,6 @@ class attack {
 
 		unit_info a_, d_;
 		unit_map& units_;
-		const tod_manager& tod_manager_;
 		std::stringstream errbuf_;
 
 		bool update_display_;
