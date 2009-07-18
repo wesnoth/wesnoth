@@ -602,6 +602,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\resources.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\save_blocker.cpp"
 				>
 			</File>
@@ -4216,7 +4220,63 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\formula\callable_objects.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\formula\candidates.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\function_table.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -4722,6 +4782,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\reports.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\resources.hpp"
 				>
 			</File>
 			<File
@@ -5427,7 +5491,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\formula\callable_objects.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\formula\candidates.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\function_table.hpp"
 						>
 					</File>
 				</Filter>
