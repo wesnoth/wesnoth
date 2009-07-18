@@ -185,7 +185,7 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 	unit new_unit(&get_info().units, &u->second, get_side(), true);
 
 	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(get_info().map,get_side(),get_info().units,new_unit,loc,false,preferences::show_ai_moves());
+	std::string recruit_err = recruit_unit(get_side(), new_unit, loc, false, preferences::show_ai_moves());
 	if(recruit_err.empty()) {
 
 		statistics::recruit_unit(new_unit);

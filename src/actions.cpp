@@ -32,6 +32,7 @@
 #include "mouse_handler_base.hpp"
 #include "pathfind.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "statistics.hpp"
 #include "unit_abilities.hpp"
 #include "unit_display.hpp"
@@ -206,19 +207,20 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	return !rt.steps.empty();
 }
 
-std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
-		unit new_unit, map_location& recruit_location,const bool is_recall,
-		const bool show, const bool need_castle, const bool full_movement,
-		const bool wml_triggered)
+std::string recruit_unit(int side, const unit &new_u,
+	const map_location &recruit_loc, bool is_recall,
+	bool show, bool need_castle, bool full_movement,
+	bool wml_triggered)
 {
 	const events::command_disabler disable_commands;
 
 	LOG_NG << "recruiting unit for side " << side << "\n";
 
 	// Find the unit that can recruit
-	unit_map::const_iterator u = units.begin();
+	unit_map::const_iterator u = resources::units->begin(),
+		u_end = resources::units->end();
 
-	for(; u != units.end(); ++u) {
+	for(; u != u_end; ++u) {
 		if(u->second.can_recruit() &&
 				static_cast<int>(u->second.side()) == side) {
 
@@ -226,36 +228,39 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		}
 	}
 
-	if(u == units.end() && (need_castle || !map.on_board(recruit_location))) {
+	map_location recruit_location = recruit_loc;
+
+	if (u == u_end && (need_castle || !resources::game_map->on_board(recruit_location))) {
 		return _("You don't have a leader to recruit with.");
 	}
 
-	assert(u != units.end() || !need_castle);
+	assert(u != u_end || !need_castle);
 
-	if(need_castle && map.is_keep(u->first) == false) {
+	if (need_castle && resources::game_map->is_keep(u->first) == false) {
 		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
 	if(need_castle) {
-		if (units.find(recruit_location) != units.end() ||
-			!can_recruit_on(map, u->first, recruit_location)) {
-
+		if (resources::units->find(recruit_location) != resources::units->end() ||
+		    !can_recruit_on(*resources::game_map, u->first, recruit_location))
+		{
 			recruit_location = map_location();
 		}
 	}
 
-	if(!map.on_board(recruit_location)) {
-		recruit_location = find_vacant_tile(map,units,u->first,
+	if (!resources::game_map->on_board(recruit_location)) {
+		recruit_location = find_vacant_tile(*resources::game_map, *resources::units, u->first,
 		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
-	} else if(units.count(recruit_location) == 1) {
-		recruit_location = find_vacant_tile(map,units,recruit_location,VACANT_ANY);
+	} else if (resources::units->count(recruit_location) == 1) {
+		recruit_location = find_vacant_tile(*resources::game_map, *resources::units, recruit_location, VACANT_ANY);
 	}
 
-	if(!map.on_board(recruit_location)) {
+	if (!resources::game_map->on_board(recruit_location)) {
 		return _("There are no vacant castle tiles in which to recruit a unit.");
 	}
 
+	unit new_unit = new_u;
 	if(full_movement) {
 		new_unit.set_movement(new_unit.total_movement());
 	} else {
@@ -265,7 +270,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	new_unit.heal_all();
 	new_unit.set_hidden(true);
 
-	units.add(recruit_location, new_unit);
+	resources::units->add(recruit_location, new_unit);
 
 	if (is_recall)
 	{
@@ -277,8 +282,8 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		LOG_NG << "firing prerecruit event\n";
 		game_events::fire("prerecruit",recruit_location);
 	}
-	const unit_map::iterator new_unit_itor = units.find(recruit_location);
-	if(new_unit_itor != units.end()) new_unit_itor->second.set_hidden(false);
+	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
+	if (new_unit_itor != resources::units->end()) new_unit_itor->second.set_hidden(false);
 	if (show) {
 		if (u.valid()) {
 			unit_display::unit_recruited(recruit_location,u->first);

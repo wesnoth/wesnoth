@@ -2019,7 +2019,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		temp_config["y"] = "recall";
 		vconfig unit_filter(temp_config);
 		for(int index = 0; !unit_recalled && index < int(resources::teams->size()); ++index) {
-			LOG_NG << "for side " << index << "...\n";
+			LOG_NG << "for side " << index + 1 << "...\n";
 			const std::string player_id = (*resources::teams)[index].save_id();
 
 			if((*resources::teams)[index].recall_list().size() < 1) {
@@ -2038,7 +2038,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-					recruit_unit(*resources::game_map, index + 1, *resources::units, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
+					recruit_unit(index + 1, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
 					unit_recalled = true;
 					break;
 				}

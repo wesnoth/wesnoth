@@ -60,10 +60,10 @@ struct end_level_exception;
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
-std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
-		unit u, map_location& recruit_location,const bool is_recall,
-		const bool show=false,const bool need_castle=true,
-		const bool full_movement=false,const bool wml_triggered=false);
+std::string recruit_unit(int side, const unit &u,
+	const map_location &recruit_location, bool is_recall,
+	bool show = false, bool need_castle = true,
+	bool full_movement = false, bool wml_triggered = false);
 
 /** Computes the statistics of a battle between an attacker and a defender unit. */
 class battle_context
