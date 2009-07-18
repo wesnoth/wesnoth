@@ -2327,6 +2327,8 @@ int main(int argc, char** argv) {
 	size_t min_threads = 5;
 	size_t max_threads = 0;
 
+	srand(static_cast<unsigned>(time(NULL)));
+
 	std::string config_file;
 
 	// setting path to currentworking directory
