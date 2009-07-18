@@ -424,14 +424,8 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
 
-	game_info& info = get_info();
-
 	move_unit(
-		/*game_display* disp*/ &info.disp,
 		/*move_unit_spectator* move_spectator*/ &move_spectator,
-                /*const gamemap& map*/ info.map,
-                /*unit_map& units*/ info.units,
-		/*std::vector<team>& teams*/ info.teams,
                 /*std::vector<map_location> route*/ route_.steps,
                 /*replay* move_recorder*/ &recorder,
 		/*undo_list* undo_stack*/ NULL,

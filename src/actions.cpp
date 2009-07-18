@@ -2226,11 +2226,8 @@ bool clear_shroud(int side)
 	return result;
 }
 
-size_t move_unit(game_display* disp,
-		move_unit_spectator *move_spectator,
-		const gamemap& map,
-		unit_map& units, std::vector<team>& teams,
-		std::vector<map_location> route,
+size_t move_unit(move_unit_spectator *move_spectator,
+		const std::vector<map_location> &route,
 		replay* move_recorder, undo_list* undo_stack,
 		map_location *next_unit, bool continue_move,
 		bool should_clear_shroud, bool is_replay)
@@ -2244,6 +2241,11 @@ size_t move_unit(game_display* disp,
 	// Stop the user from issuing any commands while the unit is moving
 	const events::command_disabler disable_commands;
 
+	gamemap &map = *resources::game_map;
+	unit_map &units = *resources::units;
+	std::vector<team> &teams = *resources::teams;
+	game_display &disp = *resources::screen;
+
 	unit_map::iterator ui = units.find(route.front());
 
 	assert(ui != units.end());
@@ -2251,17 +2253,17 @@ size_t move_unit(game_display* disp,
 	ui->second.set_goto(map_location());
 
 	size_t team_num = ui->second.side()-1;
-	team& team = teams[team_num];
+	team *tm = &teams[team_num];
 
-	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
-		(team.uses_shroud() || team.uses_fog());
+	const bool check_shroud = should_clear_shroud && tm->auto_shroud_updates() &&
+		(tm->uses_shroud() || tm->uses_fog());
 
 	std::set<map_location> known_units;
 	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(team.fogged(u->first) == false) {
+			if (!tm->fogged(u->first)) {
 				known_units.insert(u->first);
-				team.see(u->second.side()-1);
+				tm->see(u->second.side() - 1);
 			}
 		}
 	}
@@ -2289,7 +2291,7 @@ size_t move_unit(game_display* disp,
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 		if (enemy_unit != units.end()) {
-			if (team.is_enemy(enemy_unit->second.side())) {
+			if (tm->is_enemy(enemy_unit->second.side())) {
 				if (move_spectator!=NULL) {
 					move_spectator->set_ambusher(enemy_unit);
 				}
@@ -2312,11 +2314,12 @@ size_t move_unit(game_display* disp,
 		// If we use fog or shroud, see if we have sighted an enemy unit,
 		// in which case we should stop immediately.
 		// Cannot use check shroud, because also need to check if delay shroud is on.
-		if(should_clear_shroud && (team.uses_shroud() || team.uses_fog())) {
+		if (should_clear_shroud && (tm->uses_shroud() || tm->uses_fog())) {
 			//we don't want to interrupt our move when we are on an other unit
 			//or a uncaptured village (except if it was our plan to end there)
-			if( units.count(*step) == 0 &&
-					(!map.is_village(*step) || team.owns_village(*step) || step+1==route.end()) ) {
+			if (units.count(*step) == 0 &&
+			    (!map.is_village(*step) || tm->owns_village(*step) || step + 1 == route.end()))
+			{
 				DBG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				// Temporarily reset the unit's moves to full
@@ -2326,7 +2329,7 @@ size_t move_unit(game_display* disp,
 				// so we can put our unit there, then we'll swap back at the end.
 				unit temp_unit(ui->second);
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
-				if( team.auto_shroud_updates()) {
+				if (tm->auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(*step,
 						ui->second.side(), &known_units, &seen_units, &petrified_units);
 				} else {
@@ -2334,15 +2337,15 @@ size_t move_unit(game_display* disp,
 						&known_units, &seen_units, &petrified_units);
 				}
 				if(should_clear_stack) {
-					disp->invalidate_all();
+					disp.invalidate_all();
 				}
 			}
 		}
 		// we also refreh its side, just in case if an event change it
 		team_num = ui->second.side()-1;
-		team = teams[team_num];
+		tm = &teams[team_num];
 
-		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
+		if (!skirmisher && enemy_zoc(map, units, teams, *step, *tm, ui->second.side())) {
 			moves_left = 0;
 		}
 
@@ -2356,8 +2359,9 @@ size_t move_unit(game_display* disp,
 				continue;
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if(it != units.end() && team.is_enemy(it->second.side()) &&
-					it->second.invisible(it->first,units,teams)) {
+			if (it != units.end() && tm->is_enemy(it->second.side()) &&
+			    it->second.invisible(it->first, units, teams))
+			{
 				discovered_unit = true;
 				should_clear_stack = true;
 				moves_left = 0;
@@ -2434,16 +2438,12 @@ size_t move_unit(game_display* disp,
 
 		if(size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
-			event_mutated = get_village(steps.back(),*disp,teams,team_num,units,&action_time_bonus);
+			event_mutated = get_village(steps.back(), disp, teams, team_num, units, &action_time_bonus);
 		}
 	}
 
-	if(disp != NULL) {
-		// Show the final move animation step
-		disp->draw();
-		// Clear display helpers before firing events
-	}
-
+	// Show the final move animation step
+	disp.draw();
 
 	if ( teams[ui->second.side()-1].uses_shroud() || teams[ui->second.side()-1].uses_fog())
 	{
@@ -2482,7 +2482,7 @@ size_t move_unit(game_display* disp,
 		}
 	}
 
-	if ( (disp != NULL) || (move_spectator!=NULL) ) {
+	if (move_spectator) {
 		bool redraw = false;
 
 		// Show messages on the screen here
@@ -2490,17 +2490,13 @@ size_t move_unit(game_display* disp,
 			if (ambushed_string.empty())
 				ambushed_string = _("Ambushed!");
 			// We've been ambushed, display an appropriate message
-			if (disp!=NULL) {
-				disp->announce(ambushed_string, font::BAD_COLOUR);
-			}
+			disp.announce(ambushed_string, font::BAD_COLOUR);
 			redraw = true;
 		}
 
 		if(teleport_failed) {
 			std::string teleport_string = _ ("Failed teleport! Exit not empty");
-			if (disp!=NULL) {
-				disp->announce(teleport_string, font::BAD_COLOUR);
-			}
+			disp.announce(teleport_string, font::BAD_COLOUR);
 			redraw = true;
 		}
 
@@ -2518,7 +2514,7 @@ size_t move_unit(game_display* disp,
 					continue;
 				}
 
-				if(team.is_enemy(u->second.side())) {
+				if (tm->is_enemy(u->second.side())) {
 					++nenemies;
 					if (move_spectator!=NULL) {
 						move_spectator->add_seen_enemy(u);
@@ -2531,10 +2527,9 @@ size_t move_unit(game_display* disp,
 				}
 
 				DBG_NG << "processed...\n";
-				team.see(u->second.side()-1);
+				tm->see(u->second.side() - 1);
 			}
 
-			if (disp!=NULL) {
 				// The message we display is different depending on
 				// whether the units sighted were enemies or friends,
 				// and their respective number.
@@ -2568,20 +2563,14 @@ size_t move_unit(game_display* disp,
 					}
 				}
 
-				disp->announce(message, msg_colour);
+				disp.announce(message, msg_colour);
 				redraw = true;
-			}
 		}
 
 		if (redraw) {
-			// Not sure why this would be needed. Maybe during replays?
-			if (disp!=NULL) {
-				disp->draw();
-			}
+			disp.draw();
 		}
-		if (disp!=NULL) {
-			disp->recalculate_minimap();
-		}
+		disp.recalculate_minimap();
 	}
 
 	assert(steps.size() <= route.size());
@@ -2774,3 +2763,6 @@ bool backstab_check(const map_location& attacker_loc,
 		return true; // Defender and opposite are enemies
 	return false; // Defender and opposite are friends
 }
+	gamemap &map = *resources::game_map;
+	unit_map &units = *resources::units;
+

@@ -392,11 +392,8 @@ typedef std::deque<undo_action> undo_list;
  * If move_recorder is not NULL, the move will be recorded in it.
  * If undos is not NULL, undo information will be added.
  */
-size_t move_unit(game_display* disp,
-				move_unit_spectator* move_spectator,
-				const gamemap& map,
-				unit_map& units, std::vector<team>& teams,
-				std::vector<map_location> steps,
+size_t move_unit(move_unit_spectator* move_spectator,
+	const std::vector<map_location> &steps,
 				replay* move_recorder, undo_list* undos,
 				map_location *next_unit = NULL,
 				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false);
