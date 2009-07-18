@@ -33,11 +33,9 @@ static lg::log_domain log_engine("engine");
 #pragma warning(disable:4413)
 terrain_filter::terrain_filter():
 	cfg_(vconfig()),
-	map_(gamemap(config(),
-	std::string())),
-	tod_manager_(tod_manager(config(), 1)),
 	units_(unit_map()),
-	teams_(std::vector<team>())
+	max_loop_(),
+	flat_()
 {
 	assert(false);
 }
