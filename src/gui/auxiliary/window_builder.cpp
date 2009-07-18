@@ -41,6 +41,7 @@
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
 #include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
 #include "gui/widgets/window.hpp"
+#include "formula_string_utils.hpp"
 
 namespace gui2 {
 
@@ -127,6 +128,23 @@ twindow* build(CVideo& video, const std::string& type)
 			, definition->definition);
 	assert(window);
 
+	foreach(const twindow_builder::tresolution::tlinked_group& lg,
+			definition->linked_groups) {
+
+		if(window->has_linked_size_group(lg.id)) {
+			utils::string_map symbols;
+			symbols["id"] = lg.id;
+			t_string msg = vgettext(
+					  "Linked '$id' group has multiple definitions."
+					, symbols);
+
+			VALIDATE(false, msg);
+		}
+
+		window->init_linked_size_group(
+				lg.id, lg.fixed_width, lg.fixed_height);
+	}
+
 	window->set_easy_close(definition->easy_close);
 
 	window->init_grid(definition->grid);
@@ -189,6 +207,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	maximum_height(lexical_cast_default<unsigned>(cfg["maximum_height"])),
 	easy_close(utils::string_bool(cfg["easy_close"])),
 	definition(cfg["definition"]),
+	linked_groups(),
 	grid(0)
 {
 /*WIKI
@@ -250,6 +269,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   Definition of the window which we want to
  *                                   show.
  *
+ *     linked_group (sections = [])  A group of linked widget sections.
+ *
  *     grid (grid)                   The grid with the widgets to show.
  * @end_table
  *
@@ -288,6 +309,28 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 		definition = "default";
 	}
 
+	foreach (const config &lg, cfg.child_range("linked_group")) {
+		tlinked_group linked_group;
+		linked_group.id = lg["id"];
+		linked_group.fixed_width = utils::string_bool(lg["fixed_width"]);
+		linked_group.fixed_height = utils::string_bool(lg["fixed_height"]);
+
+		VALIDATE(!linked_group.id.empty()
+				, missing_mandatory_wml_key("linked_group", "id"));
+
+		if(!(linked_group.fixed_width || linked_group.fixed_height)) {
+			utils::string_map symbols;
+			symbols["id"] = linked_group.id;
+			t_string msg = vgettext(
+					  "Linked '$id' group needs a 'fixed_width' or "
+						"'fixed_height' key."
+					, symbols);
+
+			VALIDATE(false, msg);
+		}
+
+		linked_groups.push_back(linked_group);
+	}
 }
 
 tbuilder_grid::tbuilder_grid(const config& cfg) :

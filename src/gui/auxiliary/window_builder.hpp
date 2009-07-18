@@ -114,6 +114,15 @@ public:
 
 		std::string definition;
 
+		struct tlinked_group
+		{
+			std::string id;
+			bool fixed_width;
+			bool fixed_height;
+		};
+
+		std::vector<tlinked_group> linked_groups;
+
 		tbuilder_grid_ptr grid;
 	};
 
