@@ -19,6 +19,8 @@
 
 #include "global.hpp"
 
+#include "gamestatus.hpp"
+
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

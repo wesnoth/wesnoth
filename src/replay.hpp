@@ -21,17 +21,13 @@
 #define REPLAY_H_INCLUDED
 
 #include "config.hpp"
-#include "gamestatus.hpp"
 #include "map_location.hpp"
-#include "random.hpp"
 #include "rng.hpp"
 
-class config_writer;
 class game_display;
 class terrain_label;
 class unit_map;
 class play_controller;
-class tod_manager;
 
 struct verification_manager
 {

@@ -21,23 +21,17 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
 #include "map_label.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
-#include "unit_display.hpp"
 #include "wesconfig.h"
-#include "serialization/binary_or_text.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
