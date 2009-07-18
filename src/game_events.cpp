@@ -629,7 +629,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	}
 
 	if (utils::string_bool(cfg["clear_shroud"], true)) {
-		clear_shroud(*resources::screen, *resources::game_map, *resources::units, *resources::teams, side - 1);
+		clear_shroud(side);
 	}
 	if (utils::string_bool(cfg["animate"])) {
 		std::vector<map_location> teleport_path;
@@ -661,7 +661,7 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 
 		for (size_t side = 0; side != resources::teams->size(); side++) {
 			if (clear_fog_side[side] && (*resources::teams)[side].auto_shroud_updates()) {
-				clear_shroud(*resources::screen, *resources::game_map, *resources::units, *resources::teams, side);
+				clear_shroud(side + 1);
 			}
 		}
 	}
@@ -2762,7 +2762,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	std::string side = cfg["side"];
 	if (!side.empty()) {
 		const int side_num = lexical_cast_default<int>(side);
-		clear_shroud(screen, *resources::game_map, *resources::units, *resources::teams, side_num - 1);
+		clear_shroud(side_num);
 		screen.recalculate_minimap();
 	}
 	if (screen_needs_rebuild) {

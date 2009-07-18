@@ -402,17 +402,14 @@ size_t move_unit(game_display* disp,
 				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false);
 
 /** Function which recalculates the fog. */
-void recalculate_fog(const gamemap& map,
-		      unit_map& units, std::vector<team>& teams, int team);
+void recalculate_fog(int side);
 
 /**
- * Function which will clear shroud away for the given 0-based team
+ * Function which will clear shroud away for the @a side
  * based on current unit positions.
  * Returns true if some shroud is actually cleared away.
  */
-bool clear_shroud(game_display& disp,
-		const gamemap& map,
-		unit_map& units, std::vector<team>& teams, int team);
+bool clear_shroud(int side);
 
 /**
  * Function to apply pending shroud changes in the undo stack.

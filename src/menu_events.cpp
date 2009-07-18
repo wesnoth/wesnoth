@@ -1212,7 +1212,7 @@ private:
 	bool menu_handler::clear_shroud(int side_num)
 	{
 		bool cleared = teams_[side_num - 1].auto_shroud_updates() &&
-			::clear_shroud(*gui_, map_, units_, teams_, side_num - 1);
+			::clear_shroud(side_num);
 		return cleared;
 	}
 
@@ -3068,7 +3068,7 @@ private:
 	}
 	void console_handler::do_fog() {
 		menu_handler_.teams_[team_num_ - 1].set_fog( !menu_handler_.teams_[team_num_ - 1].uses_fog() );
-		recalculate_fog(menu_handler_.map_,menu_handler_.units_,menu_handler_.teams_, team_num_ - 1);
+		recalculate_fog(team_num_);
 		menu_handler_.gui_->recalculate_minimap();
 		menu_handler_.gui_->redraw_everything();
 	}

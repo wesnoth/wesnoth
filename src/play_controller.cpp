@@ -428,7 +428,7 @@ void play_controller::init_gui(){
 	gui_->adjust_colours(0,0,0);
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(*gui_,map_,units_,teams_,(t-teams_.begin()));
+		::clear_shroud(t - teams_.begin() + 1);
 	}
 }
 
@@ -529,7 +529,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
-		::clear_shroud(*gui_,map_,units_,teams_,team_index);
+		::clear_shroud(team_index + 1);
 		gui_->invalidate_all();
 	}
 

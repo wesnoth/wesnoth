@@ -864,8 +864,8 @@ void attack::fire_event(const std::string& n)
 	refresh_bc();
 	if(!a_.valid() || !d_.valid()) {
 		if (update_display_){
-			recalculate_fog(*resources::game_map, units_, *resources::teams, attacker_side - 1);
-			recalculate_fog(*resources::game_map, units_, *resources::teams, defender_side - 1);
+			recalculate_fog(attacker_side);
+			recalculate_fog(defender_side);
 			resources::screen->recalculate_minimap();
 			resources::screen->draw(true, true);
 		}
@@ -1621,7 +1621,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	// TODO: if we knew the viewing team, we could skip some of these display update
 	if (update_att_fog && (*resources::teams)[attacker_side - 1].uses_fog())
 	{
-		recalculate_fog(*resources::game_map, units_, *resources::teams, attacker_side - 1);
+		recalculate_fog(attacker_side);
 		if (update_display_) {
 			resources::screen->invalidate_all();
 			resources::screen->recalculate_minimap();
@@ -1629,7 +1629,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	}
 	if (update_def_fog && (*resources::teams)[defender_side - 1].uses_fog())
 	{
-		recalculate_fog(*resources::game_map, units_, *resources::teams, defender_side - 1);
+		recalculate_fog(defender_side);
 		if (update_display_) {
 			resources::screen->invalidate_all();
 			resources::screen->recalculate_minimap();
@@ -2068,10 +2068,11 @@ int combat_modifier(const unit_map &units, const map_location &loc,
 
 namespace {
 
-	bool clear_shroud_loc(const gamemap& map, team& tm,
+	bool clear_shroud_loc(team &tm,
 			const map_location& loc,
 			std::vector<map_location>* cleared)
 	{
+		gamemap &map = *resources::game_map;
 		bool result = false;
 		map_location adj[7];
 		get_adjacent_tiles(loc,adj);
@@ -2121,33 +2122,33 @@ namespace {
 	 * seen_units will return new units that have been seen by this unit.
 	 * If known_units is NULL, seen_units can be NULL and will not be changed.
 	 */
-	bool clear_shroud_unit(const gamemap& map,
-			const unit_map& units, const map_location& loc,
-			std::vector<team>& teams, int team,
+	bool clear_shroud_unit(const map_location &loc, int side,
 			const std::set<map_location>* known_units = NULL,
 			std::set<map_location>* seen_units = NULL,
 			std::set<map_location>* petrified_units = NULL)
 	{
 		std::vector<map_location> cleared_locations;
+		team &tm = (*resources::teams)[side - 1];
 
-		const unit_map::const_iterator u = units.find(loc);
-		if(u == units.end()) {
+		const unit_map::const_iterator u = resources::units->find(loc);
+		if (!u.valid()) {
 			return false;
 		}
 
-		paths p(map,units,loc,teams,true,false,teams[team],0,false,true);
+		paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
 		foreach (const paths::step &dest, p.destinations) {
-			clear_shroud_loc(map, teams[team], dest.curr, &cleared_locations);
+			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}
 
 		// clear_shroud_loc is supposed not introduce repetition in cleared_locations
 		for(std::vector<map_location>::const_iterator it =
 				cleared_locations.begin(); it != cleared_locations.end(); ++it) {
 
-			const unit_map::const_iterator sighted = units.find(*it);
-			if(sighted != units.end() &&
-					(sighted->second.invisible(*it,units,teams) == false
-					 || teams[team].is_enemy(sighted->second.side()) == false)) {
+			const unit_map::const_iterator sighted = resources::units->find(*it);
+			if (sighted.valid() &&
+			    (!sighted->second.invisible(*it, *resources::units, *resources::teams)
+			     || !tm.is_enemy(sighted->second.side())))
+			{
 				//check if we know this unit, but we always know ourself
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
@@ -2169,21 +2170,21 @@ namespace {
 
 }
 
-void recalculate_fog(const gamemap& map,
-		unit_map& units,
-		std::vector<team>& teams, int team)
+void recalculate_fog(int side)
 {
-	if (teams[team].uses_fog() == false)
+	team &tm = (*resources::teams)[side - 1];
+
+	if (!tm.uses_fog())
 		return;
 
-	assert(team >= 0 && static_cast<size_t>(team) < teams.size());
-	teams[team].refog();
+	tm.refog();
 
-	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if(static_cast<int>(i->second.side()) == team + 1) {
+	for (unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i)
+	{
+		if (i->second.side() == side) {
 			const unit_movement_resetter move_resetter(i->second);
 
-			clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
+			clear_shroud_unit(i->first, side);
 		}
 	}
 
@@ -2193,20 +2194,20 @@ void recalculate_fog(const gamemap& map,
 	game_events::pump();
 }
 
-bool clear_shroud(game_display& disp, const gamemap& map,
-		unit_map& units, std::vector<team>& teams, int team)
+bool clear_shroud(int side)
 {
-	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
+	team &tm = (*resources::teams)[side - 1];
+	if (!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 
 	bool result = false;
 
 	unit_map::iterator i;
-	for(i = units.begin(); i != units.end(); ++i) {
-		if(static_cast<int>(i->second.side()) == team + 1) {
+	for (i = resources::units->begin(); i != resources::units->end(); ++i) {
+		if (i->second.side() == side) {
 			const unit_movement_resetter move_resetter(i->second);
 
-			result |= clear_shroud_unit(map,units,i->first,teams,team,NULL,NULL);
+			result |= clear_shroud_unit(i->first, side);
 		}
 	}
 
@@ -2215,12 +2216,12 @@ bool clear_shroud(game_display& disp, const gamemap& map,
 	// don't want to pump it here
 	game_events::pump();
 
-	if (teams[team].uses_fog()) {
-		recalculate_fog(map,units,teams,team);
+	if (tm.uses_fog()) {
+		recalculate_fog(side);
 	}
 
-    disp.labels().recalculate_labels();
-	disp.labels().recalculate_shroud();
+	resources::screen->labels().recalculate_labels();
+	resources::screen->labels().recalculate_shroud();
 
 	return result;
 }
@@ -2326,11 +2327,11 @@ size_t move_unit(game_display* disp,
 				unit temp_unit(ui->second);
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
 				if( team.auto_shroud_updates()) {
-					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units,&petrified_units);
+					should_clear_stack |= clear_shroud_unit(*step,
+						ui->second.side(), &known_units, &seen_units, &petrified_units);
 				} else {
-					clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units,&petrified_units);
+					clear_shroud_unit(*step, ui->second.side(),
+						&known_units, &seen_units, &petrified_units);
 				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
@@ -2692,7 +2693,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
 			std::set<map_location> petrified_units;
-			cleared_shroud |= clear_shroud_unit(map,units,*step,teams,team,
+			cleared_shroud |= clear_shroud_unit(*step, team + 1,
 				&known_units,&seen_units,&petrified_units);
 
 			// Fire sighted events
@@ -2739,11 +2740,11 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate_game_status();
-		clear_shroud(*disp,map,units,teams,team);
+		clear_shroud(team + 1);
 		disp->recalculate_minimap();
 		disp->invalidate_all();
 	} else {
-		recalculate_fog(map,units,teams,team);
+		recalculate_fog(team + 1);
 	}
 }
 

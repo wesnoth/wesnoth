@@ -93,7 +93,7 @@ void playsingle_controller::init_gui(){
 	events::raise_draw_event();
 	gui_->draw();
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(*gui_,map_,units_,teams_,(t-teams_.begin()));
+		::clear_shroud(t - teams_.begin() + 1);
 	}
 }
 
@@ -782,7 +782,7 @@ void playsingle_controller::after_human_turn(){
 
 	if(teams_[player_number_-1].uses_fog()) {
 		// needed because currently fog is only recalculated when a hex is /un/covered
-		recalculate_fog(map_,units_,teams_,player_number_-1);
+		recalculate_fog(player_number_);
 	}
 
 	gui_->set_route(NULL);
@@ -808,7 +808,7 @@ void playsingle_controller::play_ai_turn(){
 	turn_data.sync_network();
 
 	gui_->recalculate_minimap();
-	::clear_shroud(*gui_,map_,units_,teams_,player_number_-1);
+	::clear_shroud(player_number_);
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();

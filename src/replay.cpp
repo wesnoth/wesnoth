@@ -1169,7 +1169,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
 		//This is needed for shared vision to work properly.
-		if(fix_shroud && clear_shroud(disp,map,units,teams,team_num-1) && !recorder.is_skipping()) {
+		if (fix_shroud && clear_shroud(team_num) && !recorder.is_skipping()) {
 			disp.recalculate_minimap();
 			disp.invalidate_game_status();
 			disp.invalidate_all();

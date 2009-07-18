@@ -389,8 +389,7 @@ void replay_controller::update_teams(){
 	if (!show_team_)
 		gui_->set_team(next_team - 1, show_everything_);
 
-	::clear_shroud(*gui_, map_, units_, teams_,
-		next_team - 1);
+	::clear_shroud(next_team);
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
 }
