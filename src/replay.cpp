@@ -930,7 +930,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error(errbuf.str());
 			}
 
-			unit new_unit(&units, &tod_mng, &u_type->second, team_num, true, false);
+			unit new_unit(&units, &u_type->second, team_num, true, false);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc,false,!get_replay_source().is_skipping());
 			if(!res.empty()) {
 				std::stringstream errbuf;
@@ -971,7 +971,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			if(val >= 0 && val < int(current_team.recall_list().size())) {
 				statistics::recall_unit(current_team.recall_list()[val]);
-				current_team.recall_list()[val].set_game_context(&units, &tod_mng);
+				current_team.recall_list()[val].set_game_context(&units);
 				recruit_unit(map,team_num,units,current_team.recall_list()[val],loc,true,!get_replay_source().is_skipping());
 				current_team.recall_list().erase(current_team.recall_list().begin()+val);
 				current_team.spend_gold(game_config::recall_cost);

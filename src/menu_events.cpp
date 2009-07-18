@@ -781,7 +781,7 @@ private:
 
 			//create a unit with traits
 			recorder.add_recruit(recruit_num, last_hex);
-			unit new_unit(&units_, &tod_manager_, &u_type->second, side_num, true);
+			unit new_unit(&units_, &u_type->second, side_num, true);
 			map_location loc = last_hex;
 			const std::string &msg = recruit_unit(map_, side_num, units_,
 				new_unit, loc, false, gui_ != NULL);
@@ -939,7 +939,7 @@ private:
 					unit& un = recall_list_team[res];
 					map_location loc = last_hex;
 					recorder.add_recall(res,loc);
-					un.set_game_context(&units_, &tod_manager_);
+					un.set_game_context(&units_);
 					const std::string &err = recruit_unit(map_, side_num, units_,
 						un, loc, true, gui_ != NULL);
 					if(!err.empty()) {
@@ -1109,7 +1109,7 @@ private:
 				unit un = current_team.recall_list()[action.recall_pos];
 
 				recorder.add_recall(action.recall_pos,action.recall_loc);
-				un.set_game_context(&units_, &tod_manager_);
+				un.set_game_context(&units_);
 				const std::string &msg = recruit_unit(map_, side_num,
 					units_, un, action.recall_loc, true, gui_ != NULL);
 				if(msg.empty()) {
@@ -1433,7 +1433,7 @@ private:
 			const unit_race::GENDER gender =
 				(!genders.empty() ? genders[gamestate_.rng().get_random() % genders.size()] : unit_race::MALE);
 
-			unit chosen(&units_, &tod_manager_, unit_choices[choice], 1, false, false, gender, "", random_gender);
+			unit chosen(&units_, unit_choices[choice], 1, false, false, gender, "", random_gender);
 			chosen.new_turn();
 
 			const map_location& loc = mousehandler.get_last_hex();
@@ -3059,8 +3059,7 @@ private:
 
 			menu_handler_.units_.erase(loc);
 			menu_handler_.units_.add(loc,
-				unit(&menu_handler_.units_, &menu_handler_.tod_manager_,
-				     &i->second, 1, false));
+				unit(&menu_handler_.units_, &i->second, 1, false));
 			menu_handler_.gui_->invalidate(loc);
 			menu_handler_.gui_->invalidate_unit();
 		} else {

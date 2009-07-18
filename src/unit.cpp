@@ -163,12 +163,11 @@ unit::unit(const unit& o):
 
            modifications_(o.modifications_),
            units_(o.units_),
-           tod_manager_(o.tod_manager_),
 		   invisibility_cache_()
 {
 }
 
-unit::unit(unit_map* unitmap, const tod_manager* tod_mng, const config& cfg,
+unit::unit(unit_map* unitmap, const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
 	advances_to_(),
@@ -236,7 +235,6 @@ unit::unit(unit_map* unitmap, const tod_manager* tod_mng, const config& cfg,
 	draw_bars_(false),
 	modifications_(),
 	units_(unitmap),
-	tod_manager_(tod_mng),
 	invisibility_cache_()
 {
 	read(cfg, use_traits, state);
@@ -315,7 +313,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	draw_bars_(false),
 	modifications_(),
 	units_(NULL),
-	tod_manager_(NULL),
 	invisibility_cache_()
 {
 	read(cfg,use_traits);
@@ -353,7 +350,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	}
 }
 
-unit::unit(unit_map *unitmap, const tod_manager *tod_mng, const unit_type *t, int side,
+unit::unit(unit_map *unitmap, const unit_type *t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
 	advances_to_(),
@@ -421,7 +418,6 @@ unit::unit(unit_map *unitmap, const tod_manager *tod_mng, const unit_type *t, in
 	draw_bars_(false),
 	modifications_(),
 	units_(unitmap),
-	tod_manager_(tod_mng),
 	invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
@@ -520,7 +516,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	draw_bars_(false),
 	modifications_(),
 	units_(NULL),
-	tod_manager_(NULL),
 	invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
@@ -579,10 +574,9 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map *unitmap, const tod_manager *tod_mng)
+void unit::set_game_context(unit_map *unitmap)
 {
 	units_ = unitmap;
-	tod_manager_ = tod_mng;
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
@@ -1125,7 +1119,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if(cfg.has_child("filter_location")) {
 		assert(resources::game_map != NULL);
 		assert(resources::teams != NULL);
-		assert(tod_manager_ != NULL);
+		assert(resources::tod_manager != NULL);
 		assert(units_ != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
 		terrain_filter t_filter(t_cfg, *units_, use_flat_tod);
