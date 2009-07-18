@@ -41,7 +41,8 @@
 
 #include "config.hpp"
 #include "random.hpp"
-
+#include "rng.hpp"
+#include "simple_rng.hpp"
 
 namespace {
   rand_rng::rng *random_generator = NULL ;

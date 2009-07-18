@@ -18,6 +18,7 @@
 #define GAME_STATUS_HPP_INCLUDED
 
 #include "random.hpp"
+#include "simple_rng.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"
 #include "variable.hpp"

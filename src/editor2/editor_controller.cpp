@@ -34,7 +34,7 @@
 #include "../gettext.hpp"
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
-#include "../random.hpp"
+#include "../rng.hpp"
 #include "../sound.hpp"
 
 #include "formula_string_utils.hpp"

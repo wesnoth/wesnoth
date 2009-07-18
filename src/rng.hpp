@@ -15,25 +15,30 @@
 
 /** @file random.hpp */
 
-#ifndef RANDOM_HPP_INCLUDED
-#define RANDOM_HPP_INCLUDED
+#ifndef RNG_HPP_INCLUDED
+#define RNG_HPP_INCLUDED
 
-class config;
-
-int get_random();
-const config* get_random_results();
-void set_random_results(const config& cfg);
+#include "random.hpp"
 
 namespace rand_rng
 {
 
-class rng;
+class rng
+{
+public:
+	rng();
+	int get_random();
 
-struct set_random_generator {
-	set_random_generator(rng* r);
-	~set_random_generator();
+	const config* get_random_results();
+	void set_random_results(const config& cfg);
+
+protected:
+	config* random();
+	void set_random(config*);
+
 private:
-	rng* old_;
+	config* random_;
+	size_t random_child_;
 };
 
 } // ends rand_rng namespace

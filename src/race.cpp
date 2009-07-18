@@ -21,6 +21,7 @@
 
 #include "race.hpp"
 #include "random.hpp"
+#include "simple_rng.hpp"
 
 #include "log.hpp" // needed for deprecation warning
 

@@ -24,6 +24,7 @@
 #include "gamestatus.hpp"
 #include "map_location.hpp"
 #include "random.hpp"
+#include "rng.hpp"
 
 class config_writer;
 class game_display;
