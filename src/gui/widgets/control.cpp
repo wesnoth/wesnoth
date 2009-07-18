@@ -48,6 +48,11 @@ void tcontrol::set_members(const string_map& data)
 		set_id(itor->second);
 	}
 
+	itor = data.find("linked_group");
+	if(itor != data.end()) {
+		set_linked_group(itor->second);
+	}
+
 	itor = data.find("label");
 	if(itor != data.end()) {
 		set_label(itor->second);

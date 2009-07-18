@@ -28,6 +28,7 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	tbuilder_widget(cfg),
 	id(cfg["id"]),
 	definition(cfg["definition"]),
+	linked_group(cfg["linked_group"]),
 	label(cfg["label"]),
 	tooltip(cfg["tooltip"]),
 	help(cfg["help"]),
@@ -49,6 +50,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 
 	control->set_id(id);
 	control->set_definition(definition);
+	control->set_linked_group(linked_group);
 	control->set_label(label);
 	control->set_tooltip(tooltip);
 	control->set_help_message(help);
@@ -82,6 +84,9 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     This way it's possible to select a
  *                                     specific version of the widget eg a title
  *                                     label when the label is used as title.
+ *
+ *     linked_group(string = "")       The linked group the control belongs
+ *                                     to.
  *
  *     label (tstring = "")            Most widgets have some text associated
  *                                     with them, this field contain the value

@@ -21,8 +21,12 @@ namespace gui2 {
 void twidget::layout_init(const bool /*full_initialization*/)
 {
 	assert(visible_ != INVISIBLE);
+	assert(get_window());
 
 	layout_size_ = tpoint(0,0);
+	if(!linked_group_.empty()) {
+		get_window()->add_linked_widget(linked_group_, this);
+	}
 }
 
 tpoint twidget::get_best_size() const

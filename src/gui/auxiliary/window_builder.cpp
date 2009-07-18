@@ -336,6 +336,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 tbuilder_grid::tbuilder_grid(const config& cfg) :
 	tbuilder_widget(cfg),
 	id(cfg["id"]),
+	linked_group(cfg["linked_group"]),
 	rows(0),
 	cols(0),
 	row_grow_factor(),
@@ -446,6 +447,7 @@ twidget* tbuilder_grid::build() const
 twidget* tbuilder_grid::build (tgrid* grid) const
 {
 	grid->set_id(id);
+	grid->set_linked_group(linked_group);
 	grid->set_rows_cols(rows, cols);
 
 	log_scope2(log_gui_general, "Window builder: building grid");

@@ -36,6 +36,7 @@ public:
 	/** Parameters for the control. */
 	std::string id;
 	std::string definition;
+	std::string linked_group;
 	t_string label;
 	t_string tooltip;
 	t_string help;

@@ -58,6 +58,7 @@ public:
 		, drawing_action_(DRAWN)
 		, clip_rect_()
 		, layout_size_(tpoint(0,0))
+		, linked_group_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		, last_best_size_(tpoint(0,0))
 #endif
@@ -535,6 +536,13 @@ protected:
 	void set_layout_size(const tpoint& size) { layout_size_ = size; }
 	const tpoint& layout_size() const { return layout_size_; }
 
+public:
+
+	void set_linked_group(const std::string& linked_group)
+	{
+		linked_group_ = linked_group;
+	}
+
 private:
 	/**
 	 * The id is the unique name of the widget in a certain context. This is
@@ -597,6 +605,18 @@ private:
 	 * This variable holds that best value.
 	 */
 	tpoint layout_size_;
+
+	/**
+	 * The linked group the widget belongs to.
+	 *
+	 * @todo For now the linked group is initialized when the layout of the
+	 * widget is initialized. The best time to set it would be upon adding the
+	 * widget in the window. Need to look whether it's possible in a clean way.
+	 * Maybe a signal just prior to showing a window where the widget can do
+	 * some of it's on things, would also be nice for widgets that need a
+	 * finalizer function.
+	 */
+	std::string linked_group_;
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/**
