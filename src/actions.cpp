@@ -753,7 +753,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(*resources::tod_manager, units, u_loc, u.alignment(), u.is_fearless(), *resources::game_map);
+		damage_multiplier += combat_modifier(units, u_loc, u.alignment(), u.is_fearless());
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -2013,12 +2013,13 @@ void check_victory()
 	}
 }
 
-time_of_day timeofday_at(const tod_manager& tod_mng,const unit_map& units,const map_location& loc, const gamemap& map)
+time_of_day timeofday_at(const unit_map &units, const map_location &loc)
 {
-	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
-	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int mod0 = resources::game_map->get_terrain_info(loc).light_modification();
+	int lighten = std::max<int>(mod0, 0);
+	int darken = std::min<int>(mod0, 0);
 
-	time_of_day tod = tod_mng.get_time_of_day(lighten + darken,loc);
+	time_of_day tod = resources::tod_manager->get_time_of_day(mod0, loc);
 
 	if(loc.valid()) {
 		map_location locs[7];
@@ -2042,19 +2043,16 @@ time_of_day timeofday_at(const tod_manager& tod_mng,const unit_map& units,const 
 			}
 		}
 	}
-	tod = tod_mng.get_time_of_day(lighten + darken,loc);
+	tod = resources::tod_manager->get_time_of_day(lighten + darken, loc);
 
 	return tod;
 }
 
-int combat_modifier(const tod_manager& tod_mng,
-		const unit_map& units,
-		const map_location& loc,
-		unit_type::ALIGNMENT alignment,
-		bool is_fearless,
-		const gamemap& map)
+int combat_modifier(const unit_map &units, const map_location &loc,
+	unit_type::ALIGNMENT alignment, bool is_fearless)
 {
-	const time_of_day& tod = tod_mng.time_of_day_at(units,loc,map);
+	const time_of_day &tod = resources::tod_manager->time_of_day_at
+		(units, loc, *resources::game_map);
 
 	int bonus = tod.lawful_bonus;
 

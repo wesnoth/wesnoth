@@ -306,7 +306,7 @@ private:
 			loc = &u_call->get_location();
 		}
 
-		return variant(combat_modifier(ai_.get_info().tod_manager_, ai_.get_info().units, *loc, un.alignment(), un.is_fearless(), ai_.get_info().map));
+		return variant(combat_modifier(ai_.get_info().units, *loc, un.alignment(), un.is_fearless()));
 	}
 
 	const formula_ai& ai_;

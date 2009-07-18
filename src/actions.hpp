@@ -336,21 +336,14 @@ void check_victory();
  * Certain tiles may have a time of day that differs from 'the' time of day, if
  * a unit that illuminates is in that tile or adjacent.
  */
-time_of_day timeofday_at(const tod_manager& status,
-                              const unit_map& units,
-                              const map_location& loc,
-			      const gamemap& map);
+time_of_day timeofday_at(const unit_map &units, const map_location& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const tod_manager& tod_mng,
-			const unit_map& units,
-			const map_location& loc,
-			unit_type::ALIGNMENT alignment,
-			bool is_fearless,
-			const gamemap& map);
+int combat_modifier(const unit_map &units, const map_location &loc,
+	unit_type::ALIGNMENT alignment, bool is_fearless);
 
 /** Records information to be able to undo a movement. */
 struct undo_action {
