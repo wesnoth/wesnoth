@@ -363,6 +363,7 @@ SET(wesnoth-main_SRC
     portrait.cpp
     replay.cpp
     replay_controller.cpp
+    resources.cpp
     save_blocker.cpp
     savegame.cpp
     scripting/lua.cpp

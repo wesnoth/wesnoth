@@ -70,7 +70,8 @@ replay_controller::replay_controller(const config& level,
 	gamestate_start_ = gamestate_;
 }
 
-replay_controller::~replay_controller(){
+replay_controller::~replay_controller()
+{
 	//YogiHH
 	//not absolutely sure if this is needed, but it makes me feel a lot better ;-)
 	//feel free to delete this if it is not necessary
@@ -175,10 +176,7 @@ void replay_controller::reset_replay(){
 		// old manager is actually destroyed (triggering an assertion
 		// failure)
 		events_manager_.reset();
-		events_manager_.reset(new game_events::manager(level_,map_,
-								units_,teams_, gamestate_, *this));
-		events_manager_->set_gui(*gui_);
-		events_manager_->set_soundsource(*soundsources_manager_);
+		events_manager_.reset(new game_events::manager(level_));
 	}
 
 	gui_->new_turn();

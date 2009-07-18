@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
@@ -89,7 +90,15 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	init(video);
 }
 
-play_controller::~play_controller(){
+play_controller::~play_controller()
+{
+	resources::game_map = NULL;
+	resources::units = NULL;
+	resources::teams = NULL;
+	resources::state_of_game = NULL;
+	resources::controller = NULL;
+	resources::screen = NULL;
+	resources::soundsources = NULL;
 }
 
 void play_controller::init(CVideo& video){
@@ -124,12 +133,16 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));
 
+	resources::game_map = &map_;
+	resources::units = &units_;
+	resources::teams = &teams_;
+	resources::state_of_game = &gamestate_;
+	resources::controller = this;
 
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	events_manager_.reset(new game_events::manager(level_,map_,
-                                                   units_,teams_, gamestate_,*this));
+	events_manager_.reset(new game_events::manager(level_));
 
 	std::set<std::string> seen_save_ids;
 
@@ -158,7 +171,7 @@ void play_controller::init(CVideo& video){
 	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
-	events_manager_->set_gui(*gui_);
+	resources::screen = gui_.get();
 	theme::set_known_themes(&game_config_);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -201,7 +214,7 @@ void play_controller::init_managers(){
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
-	events_manager_->set_soundsource(*soundsources_manager_);
+	resources::soundsources = soundsources_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";

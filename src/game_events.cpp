@@ -36,6 +36,7 @@
 #include "map_label.hpp"
 #include "map_exception.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "sound.hpp"
 #include "terrain_filter.hpp"
@@ -104,8 +105,6 @@ struct scoped_context
 
 static bool screen_needs_rebuild;
 
-const game_events::resources_t *game_events::resources;
-
 namespace {
 
 	std::stringstream wml_messages_stream;
@@ -135,18 +134,18 @@ namespace {
 	class pump_manager {
 		public:
 		pump_manager() :
-			x1_(game_events::resources->state_of_game->get_variable("x1")),
-			x2_(game_events::resources->state_of_game->get_variable("x2")),
-			y1_(game_events::resources->state_of_game->get_variable("y1")),
-			y2_(game_events::resources->state_of_game->get_variable("y2"))
+			x1_(resources::state_of_game->get_variable("x1")),
+			x2_(resources::state_of_game->get_variable("x2")),
+			y1_(resources::state_of_game->get_variable("y1")),
+			y2_(resources::state_of_game->get_variable("y2"))
 		{
 			++instance_count;
 		}
 		~pump_manager() {
-			game_events::resources->state_of_game->set_variable("x1", x1_);
-			game_events::resources->state_of_game->set_variable("x2", x2_);
-			game_events::resources->state_of_game->set_variable("y1", y1_);
-			game_events::resources->state_of_game->set_variable("y2", y2_);
+			resources::state_of_game->set_variable("x1", x1_);
+			resources::state_of_game->set_variable("x2", x2_);
+			resources::state_of_game->set_variable("y1", y1_);
+			resources::state_of_game->set_variable("y2", y2_);
 			--instance_count;
 		}
 		static unsigned count() {
@@ -246,7 +245,7 @@ static void show_wml_errors()
 			msg << " (" << itor->second << ")";
 		}
 
-		game_events::resources->screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+		resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
 				events::chat_handler::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
@@ -270,7 +269,7 @@ static void show_wml_messages()
 			msg << " (" << itor->second << ")";
 		}
 
-		game_events::resources->screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+		resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
@@ -360,13 +359,12 @@ namespace game_events {
 
 	game_state* get_state_of_game()
 	{
-		return resources->state_of_game;
+		return resources::state_of_game;
 	}
 
 	static bool internal_conditional_passed(const unit_map* units,
 			const vconfig cond, bool& backwards_compat)
 	{
-		const game_events::resources_t &rsrc = *resources;
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
 		// If the if statement requires we have a certain unit,
@@ -400,7 +398,7 @@ namespace game_events {
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *rsrc.game_map, rsrc.controller->get_tod_manager(), *rsrc.teams, *units).get_locations(res);
+			terrain_filter(*v, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *units).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;
@@ -417,7 +415,7 @@ namespace game_events {
 		foreach (const vconfig &values, variables)
 		{
 			const std::string name = values["name"];
-			const std::string& value = game_events::resources->state_of_game->get_variable_const(name);
+			const std::string& value = resources::state_of_game->get_variable_const(name);
 
 			const double num_value = atof(value.c_str());
 
@@ -534,7 +532,7 @@ namespace {
 
 } // end anonymous namespace (2)
 
-static bool events_init() { return game_events::resources->screen != 0; }
+static bool events_init() { return resources::screen != 0; }
 
 namespace {
 
@@ -564,35 +562,32 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
-	if (index < rsrc.teams->size()) {
+	if (index < resources::teams->size()) {
 		std::set<map_location> locs;
-		terrain_filter filter(cfg, *rsrc.game_map, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units);
+		terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 
 			for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 				if(remove) {
-					(*rsrc.teams)[index].clear_shroud(*j);
+					(*resources::teams)[index].clear_shroud(*j);
 				} else {
-					(*rsrc.teams)[index].place_shroud(*j);
+					(*resources::teams)[index].place_shroud(*j);
 				}
 			}
 		}
 
-	rsrc.screen->labels().recalculate_shroud();
-	rsrc.screen->invalidate_all();
+	resources::screen->labels().recalculate_shroud();
+	resources::screen->invalidate_all();
 }
 
 WML_HANDLER_FUNCTION(lua, ev, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	rsrc.lua_kernel->run_event(cfg, ev);
+	resources::lua_kernel->run_event(cfg, ev);
 }
 
 WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
@@ -607,64 +602,60 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 
 WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
-	unit_map::iterator u = rsrc.units->find(event_info.loc1);
+	unit_map::iterator u = resources::units->find(event_info.loc1);
 
 		// Search for a valid unit filter, and if we have one, look for the matching unit
 		const vconfig filter = cfg.child("filter");
 		if(!filter.null()) {
-			for (u = rsrc.units->begin(); u != rsrc.units->end(); ++u){
+			for (u = resources::units->begin(); u != resources::units->end(); ++u){
 				if(game_events::unit_matches_filter(u, filter))
 					break;
 			}
 		}
 
-	if (u == rsrc.units->end()) return;
+	if (u == resources::units->end()) return;
 
 	// We have found a unit that matches the filter
 	const map_location dst = cfg_to_loc(cfg);
-	if (dst == u->first || !rsrc.game_map->on_board(dst)) return;
+	if (dst == u->first || !resources::game_map->on_board(dst)) return;
 
 	const unit *pass_check = &u->second;
 	if (utils::string_bool(cfg["ignore_passability"]))
 		pass_check = NULL;
-	const map_location vacant_dst = find_vacant_tile(*rsrc.game_map, *rsrc.units, dst, VACANT_ANY, pass_check);
-	if (!rsrc.game_map->on_board(vacant_dst)) return;
+	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, VACANT_ANY, pass_check);
+	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	const int side = u->second.side();
 	const map_location src_loc = u->first;
 
-	rsrc.units->move(src_loc, vacant_dst);
-	if (rsrc.game_map->is_village(vacant_dst)) {
-		get_village(vacant_dst, *rsrc.screen, *rsrc.teams, side - 1, *rsrc.units);
+	resources::units->move(src_loc, vacant_dst);
+	if (resources::game_map->is_village(vacant_dst)) {
+		get_village(vacant_dst, *resources::screen, *resources::teams, side - 1, *resources::units);
 	}
 
 	if (utils::string_bool(cfg["clear_shroud"], true)) {
-		clear_shroud(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams, side - 1);
+		clear_shroud(*resources::screen, *resources::game_map, *resources::units, *resources::teams, side - 1);
 	}
 	if (utils::string_bool(cfg["animate"])) {
 		std::vector<map_location> teleport_path;
 		teleport_path.push_back(src_loc);
 		teleport_path.push_back(vacant_dst);
-		unit_display::move_unit(teleport_path, u->second, *rsrc.teams);
+		unit_display::move_unit(teleport_path, u->second, *resources::teams);
 	} else {
 		u->second.set_standing();
-		rsrc.screen->invalidate(src_loc);
-		rsrc.screen->invalidate(dst);
-		rsrc.screen->draw();
+		resources::screen->invalidate(src_loc);
+		resources::screen->invalidate(dst);
+		resources::screen->draw();
 	}
 }
 
 WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const vconfig filter = cfg.child("filter");
 		// Store which side will need a shroud/fog update
-		std::vector<bool> clear_fog_side(rsrc.teams->size(), false);
+		std::vector<bool> clear_fog_side(resources::teams->size(), false);
 
-		for(unit_map::iterator i = rsrc.units->begin(); i != rsrc.units->end(); ++i) {
+		for(unit_map::iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 			if(i->second.get_state(unit::STATE_PETRIFIED)) {
 				if(filter.null() || game_events::unit_matches_filter(i, filter)) {
 					i->second.set_state(unit::STATE_PETRIFIED,false);
@@ -673,33 +664,31 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 			}
 		}
 
-		for (size_t side = 0; side != rsrc.teams->size(); side++) {
-			if (clear_fog_side[side] && (*rsrc.teams)[side].auto_shroud_updates()) {
-				clear_shroud(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams, side);
+		for (size_t side = 0; side != resources::teams->size(); side++) {
+			if (clear_fog_side[side] && (*resources::teams)[side].auto_shroud_updates()) {
+				clear_shroud(*resources::screen, *resources::game_map, *resources::units, *resources::teams, side);
 			}
 		}
 	}
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
-		if (index >= rsrc.teams->size())
+		if (index >= resources::teams->size())
 			return;
 
 		const std::string type = cfg["type"];
 
 		const std::vector<std::string>& types = utils::split(type);
 		const std::set<std::string> recruits(types.begin(), types.end());
-		(*rsrc.teams)[index].add_recruits(recruits);
+		(*resources::teams)[index].add_recruits(recruits);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			preferences::encountered_units().insert(*i);
 
-			player_info *player = rsrc.state_of_game->get_player((*rsrc.teams)[index].save_id());
+			player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
 			if(player) {
 				player->can_recruit.insert(*i);
 			}
@@ -708,21 +697,19 @@ WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
-		if (index >= rsrc.teams->size())
+		if (index >= resources::teams->size())
 			return;
 
 		const std::string type = cfg["type"];
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
-			(*rsrc.teams)[index].remove_recruit(*i);
+			(*resources::teams)[index].remove_recruit(*i);
 
-			player_info *player = rsrc.state_of_game->get_player((*rsrc.teams)[index].save_id());
+			player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
 			if(player) {
 				player->can_recruit.erase(*i);
 			}
@@ -731,24 +718,22 @@ WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
-		if (index >= rsrc.teams->size())
+		if (index >= resources::teams->size())
 			return;
 
 		std::vector<std::string> recruit = utils::split(cfg["recruit"]);
 		if(recruit.size() == 1 && recruit.back() == "")
 			recruit.clear();
 
-		(*rsrc.teams)[index].set_recruits(std::set<std::string>(recruit.begin(), recruit.end()));
+		(*resources::teams)[index].set_recruits(std::set<std::string>(recruit.begin(), recruit.end()));
 
-		player_info *player = rsrc.state_of_game->get_player((*rsrc.teams)[index].save_id());
+		player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
 		if(player) {
-			player->can_recruit = (*rsrc.teams)[index].recruits();
+			player->can_recruit = (*resources::teams)[index].recruits();
 		}
 	}
 
@@ -774,7 +759,7 @@ WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 		std::string red = cfg["red"];
 		std::string green = cfg["green"];
 		std::string blue = cfg["blue"];
@@ -788,7 +773,7 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 		std::string delay_string = cfg["time"];
 		const int delay_time = atoi(delay_string.c_str());
 	screen.delay(delay_time);
@@ -796,7 +781,7 @@ WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		const int xoff = atoi(x.c_str());
@@ -807,7 +792,7 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(scroll_to, /*event_info*/, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 	const map_location loc = cfg_to_loc(cfg);
 	std::string check_fogged = cfg["check_fogged"];
 	screen.scroll_to_tile(loc, game_display::SCROLL, utils::string_bool(check_fogged, false));
@@ -815,16 +800,14 @@ WML_HANDLER_FUNCTION(scroll_to, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(scroll_to_unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		unit_map::const_iterator u;
-		for (u = rsrc.units->begin(); u != rsrc.units->end(); ++u){
+		for (u = resources::units->begin(); u != resources::units->end(); ++u){
 			if(game_events::unit_matches_filter(u,cfg))
 				break;
 		}
 		std::string check_fogged = cfg["check_fogged"];
-		if (u != rsrc.units->end()) {
-			rsrc.screen->scroll_to_tile(u->first, game_display::SCROLL, utils::string_bool(check_fogged, false));
+		if (u != resources::units->end()) {
+			resources::screen->scroll_to_tile(u->first, game_display::SCROLL, utils::string_bool(check_fogged, false));
 		}
 	}
 
@@ -833,11 +816,9 @@ WML_HANDLER_FUNCTION(scroll_to_unit, /*event_info*/, cfg)
 	// or if the turn / time-of-day sequence mutates in a scenario.
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const map_location loc = cfg_to_loc(cfg, -999, -999);
 		const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
-		const time_of_day tod = turn ? rsrc.controller->get_tod_manager().get_time_of_day(0,loc,turn) : rsrc.controller->get_tod_manager().get_time_of_day(0,loc);
+		const time_of_day tod = turn ? resources::controller->get_tod_manager().get_time_of_day(0,loc,turn) : resources::controller->get_tod_manager().get_time_of_day(0,loc);
 
 		std::string variable = cfg["variable"];
 		if(variable.empty()) {
@@ -854,22 +835,19 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(gold, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
 		const int side_num = lexical_cast_default<int>(side,1);
 		const int amount_num = atoi(amount.c_str());
 		const size_t team_index = side_num-1;
-		if (team_index < rsrc.teams->size()) {
-			(*rsrc.teams)[team_index].spend_gold(-amount_num);
+		if (team_index < resources::teams->size()) {
+			(*resources::teams)[team_index].spend_gold(-amount_num);
 		}
 	}
 
 WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	std::vector<team> *teams = rsrc.teams;
+	std::vector<team> &teams = *resources::teams;
 
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
@@ -896,11 +874,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 
-		if(team_index < teams->size()) {
+		if (team_index < teams.size())
+		{
 			LOG_NG << "modifying side: " << side_num << "\n";
 			if(!team_name.empty()) {
 				LOG_NG << "change side's team to team_name '" << team_name << "'\n";
-				(*teams)[team_index].change_team(team_name,
+				teams[team_index].change_team(team_name,
 						user_team_name);
 			}
 			// Modify recruit list (override)
@@ -909,46 +888,46 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 				if (recruit.size() == 1 && recruit.back() == "")
 					recruit.clear();
 
-				(*teams)[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
-				player_info *player = rsrc.state_of_game->get_player((*teams)[team_index].save_id());
+				teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
+				player_info *player = resources::state_of_game->get_player(teams[team_index].save_id());
 
-				if (player) player->can_recruit = (*teams)[team_index].recruits();
+				if (player) player->can_recruit = teams[team_index].recruits();
 			}
 			// Modify income
-			if(!income.empty()) {
-				(*teams)[team_index].set_base_income(lexical_cast_default<int>(income) + game_config::base_income);
+			if (!income.empty()) {
+				teams[team_index].set_base_income(lexical_cast_default<int>(income) + game_config::base_income);
 			}
 			// Modify total gold
-			if(!gold.empty()) {
-				(*teams)[team_index].set_gold(lexical_cast_default<int>(gold));
+			if (!gold.empty()) {
+				teams[team_index].set_gold(lexical_cast_default<int>(gold));
 			}
 			// Set controller
-			if(!controller.empty()) {
-				(*teams)[team_index].change_controller(controller);
+			if (!controller.empty()) {
+				teams[team_index].change_controller(controller);
 			}
 			// Set shroud
 			if (!shroud.empty()) {
-				(*teams)[team_index].set_shroud( utils::string_bool(shroud, true) );
+				teams[team_index].set_shroud(utils::string_bool(shroud, true));
 			}
 			// Merge shroud data
 			if (!shroud_data.empty()) {
-				(*teams)[team_index].merge_shroud_map_data(shroud_data);
+				teams[team_index].merge_shroud_map_data(shroud_data);
 			}
 			// Set whether team is hidden in status table
 			if (!hidden.empty()) {
-				(*teams)[team_index].set_hidden( utils::string_bool(hidden, true) );
+				teams[team_index].set_hidden(utils::string_bool(hidden, true));
 			}
 			// Set fog
 			if (!fog.empty()) {
-				(*teams)[team_index].set_fog( utils::string_bool(fog, true) );
+				teams[team_index].set_fog(utils::string_bool(fog, true));
 			}
 			// Set income per village
 			if (!village_gold.empty()) {
-				(*teams)[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
+				teams[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
 			}
 			// Override AI parameters
 			if (ai.first != ai.second) {
-				(*teams)[team_index].set_ai_parameters(ai);
+				teams[team_index].set_ai_parameters(ai);
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
@@ -956,10 +935,10 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Add shared view to current team
 			if (!share_view.empty()){
-				(*teams)[team_index].set_share_view( utils::string_bool(share_view, true) );
+				teams[team_index].set_share_view(utils::string_bool(share_view, true));
 				team::clear_caches();
-				rsrc.screen->recalculate_minimap();
-				rsrc.screen->invalidate_all();
+				resources::screen->recalculate_minimap();
+				resources::screen->invalidate_all();
 			}
 
 		}
@@ -967,9 +946,8 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 
 static void store_gold_side(bool store_side, const vconfig &cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	game_state *state_of_game = rsrc.state_of_game;
-	std::vector<team> *teams = rsrc.teams;
+	game_state *state_of_game = resources::state_of_game;
+	std::vector<team> &teams = *resources::teams;
 
 		t_string *gold_store;
 		std::string side = cfg["side"];
@@ -979,28 +957,29 @@ static void store_gold_side(bool store_side, const vconfig &cfg)
 		}
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
-		if(team_index < teams->size()) {
+		if (team_index < teams.size())
+		{
 			if(store_side) {
 				config side_data;
-				(*teams)[team_index].write(side_data);
+				teams[team_index].write(side_data);
 				state_of_game->get_variable(var_name+".controller") = side_data["controller"];
 				state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
 				state_of_game->get_variable(var_name+".fog") = side_data["fog"];
 				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
 				state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
 
-				state_of_game->get_variable(var_name+".income") = str_cast((*teams)[team_index].total_income());
-				state_of_game->get_variable(var_name+".village_gold") = str_cast((*teams)[team_index].village_gold());
-				state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
-				state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
-				state_of_game->get_variable(var_name+".user_team_name") = (*teams)[team_index].user_team_name();
-				state_of_game->get_variable(var_name+".colour") = (*teams)[team_index].map_colour_to();
+				state_of_game->get_variable(var_name+".income") = str_cast(teams[team_index].total_income());
+				state_of_game->get_variable(var_name+".village_gold") = str_cast(teams[team_index].village_gold());
+				state_of_game->get_variable(var_name+".name") = teams[team_index].name();
+				state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
+				state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
+				state_of_game->get_variable(var_name+".colour") = teams[team_index].map_colour_to();
 
 				gold_store = &state_of_game->get_variable(var_name+".gold");
 			} else {
 				gold_store = &state_of_game->get_variable(var_name);
 			}
-			*gold_store = lexical_cast_default<std::string>((*teams)[team_index].gold());
+			*gold_store = lexical_cast_default<std::string>(teams[team_index].gold());
 		}
 	}
 
@@ -1017,50 +996,45 @@ WML_HANDLER_FUNCTION(store_gold, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
 		std::string current = cfg["current"];
 		if(!add.empty()) {
-			rsrc.controller->modify_turns(add);
+			resources::controller->modify_turns(add);
 		} else if(!value.empty()) {
-			rsrc.controller->add_turns(-rsrc.controller->number_of_turns());
-			rsrc.controller->add_turns(lexical_cast_default<int>(value,-1));
+			resources::controller->add_turns(-resources::controller->number_of_turns());
+			resources::controller->add_turns(lexical_cast_default<int>(value,-1));
 		}
 		// change current turn only after applying mods
 		if(!current.empty()) {
-			const unsigned int current_turn_number = rsrc.controller->turn();
+			const unsigned int current_turn_number = resources::controller->turn();
 			const int new_turn_number = lexical_cast_default<int>(current, current_turn_number);
 			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
-			if(new_turn_number_u < current_turn_number || (new_turn_number > rsrc.controller->number_of_turns() && rsrc.controller->number_of_turns() != -1)) {
+			if(new_turn_number_u < current_turn_number || (new_turn_number > resources::controller->number_of_turns() && resources::controller->number_of_turns() != -1)) {
 				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 			} else if(new_turn_number_u != current_turn_number) {
-				rsrc.controller->set_turn(new_turn_number_u);
-				rsrc.state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
-				rsrc.screen->new_turn();
+				resources::controller->set_turn(new_turn_number_u);
+				resources::state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
+				resources::screen->new_turn();
 			}
 		}
 	}
 
 WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
 			var_name = "turns";
 		}
-	int turns = rsrc.controller->number_of_turns();
-	rsrc.state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns);
+	int turns = resources::controller->number_of_turns();
+	resources::state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns);
 }
 
 	// Moving a 'unit' - i.e. a dummy unit
 	// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	gamemap *game_map = rsrc.game_map;
+	gamemap *game_map = resources::game_map;
 
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
@@ -1069,12 +1043,12 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		std::string variation = cfg["variation"];
 
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
-		if (side_num >= rsrc.teams->size()) side_num = 0;
+		if (side_num >= resources::teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams, &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams, &itor->second, side_num + 1, false, true, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;
@@ -1092,9 +1066,9 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 					continue;
 				}
 				shortest_path_calculator calc(dummy_unit,
-						(*rsrc.teams)[side_num],
-						*rsrc.units,
-						*rsrc.teams,
+						(*resources::teams)[side_num],
+						*resources::units,
+						*resources::teams,
 						*game_map);
 
 				dst.x = atoi(xvals[i].c_str())-1;
@@ -1131,7 +1105,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 
 				src = dst;
 			}
-			if (!path.empty()) unit_display::move_unit(path, dummy_unit, *rsrc.teams);
+			if (!path.empty()) unit_display::move_unit(path, dummy_unit, *resources::teams);
 		}
 	}
 
@@ -1175,8 +1149,6 @@ Defeat:
 	 **/
 WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const std::string win_start = "<span color='green'>";
 		const std::string lose_start = "<span color='red'>";
 		const std::string win_end = "</span>";
@@ -1188,7 +1160,7 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 		bool silent = utils::string_bool(cfg["silent"]);
 		const size_t side_num = lexical_cast_default<size_t>(side,0);
 
-		if(side_num != 0 && (side_num - 1) >= rsrc.teams->size()) {
+		if(side_num != 0 && (side_num - 1) >= resources::teams->size()) {
 			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
 			return;
 		}
@@ -1244,11 +1216,11 @@ WML_HANDLER_FUNCTION(objectives, /*event_info*/, cfg)
 			objs += note + "\n";
 
 		if(side_num == 0) {
-			foreach (team &t, *rsrc.teams) {
+			foreach (team &t, *resources::teams) {
 				t.set_objectives(objs, silent);
 			}
 		} else {
-			(*rsrc.teams)[side_num - 1].set_objectives(objs, silent);
+			(*resources::teams)[side_num - 1].set_objectives(objs, silent);
 		}
 	}
 
@@ -1264,7 +1236,7 @@ namespace {
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
-	game_state *state_of_game = game_events::resources->state_of_game;
+	game_state *state_of_game = resources::state_of_game;
 
 		const std::string name = cfg["name"];
 		t_string& var = state_of_game->get_variable(name);
@@ -1481,13 +1453,12 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			// Otherwise get the random value from the replay data
 			else {
-				const game_events::resources_t &rsrc = *game_events::resources;
 				/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-				const t_string& side_str = rsrc.state_of_game->get_variable("side_number");
+				const t_string& side_str = resources::state_of_game->get_variable("side_number");
 				const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
-				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "random_number");
+				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
+					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "random_number");
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
 					replay::throw_error("random_number expected but none found\n");
@@ -1739,8 +1710,6 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		bool found = false;
 
 		// role= represents the instruction, so we can't filter on it
@@ -1759,7 +1728,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				item["type"] = *ti;
 			}
 			unit_map::iterator itor;
-			for (itor = rsrc.units->begin(); itor != rsrc.units->end(); ++itor) {
+			for (itor = resources::units->begin(); itor != resources::units->end(); ++itor) {
 				if(game_events::unit_matches_filter(itor, filter)) {
 					itor->second.set_role(cfg["role"]);
 					found = true;
@@ -1774,8 +1743,8 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 			const bool has_any_sides = !sides.empty();
 			foreach(std::string const& side_str, sides) {
 				size_t side_num = lexical_cast_default<size_t>(side_str,0);
-				if(side_num > 0 && side_num <= rsrc.teams->size()) {
-					player_ids.insert((rsrc.teams->begin() + (side_num - 1))->save_id());
+				if(side_num > 0 && side_num <= resources::teams->size()) {
+					player_ids.insert((resources::teams->begin() + (side_num - 1))->save_id());
 				}
 			}
 			// loop to give precendence based on type order
@@ -1785,8 +1754,8 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					item["type"] = *ti;
 				}
 				std::vector<team>::iterator pi,
-					pi_end = rsrc.teams->end();
-				for (pi = rsrc.teams->begin(); pi != pi_end; ++pi)
+					pi_end = resources::teams->end();
+				for (pi = resources::teams->begin(); pi != pi_end; ++pi)
 				{
 					std::string const& player_id = pi->save_id();
 					// Verify the filter's side= includes this player
@@ -1796,7 +1765,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					// Iterate over the player's recall list to find a match
 					for(size_t i=0; i < pi->recall_list().size(); ++i) {
 						unit& u = pi->recall_list()[i];
-						u.set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+						u.set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
 							u.set_role(cfg["role"]);
@@ -1811,7 +1780,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 
 		std::string img = cfg["image"];
 		map_location loc = cfg_to_loc(cfg);
@@ -1830,7 +1799,7 @@ WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 
 WML_HANDLER_FUNCTION(unit_overlay, /*event_info*/, cfg)
 {
-	unit_map *units = game_events::resources->units;
+	unit_map *units = resources::units;
 
 		std::string img = cfg["image"];
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
@@ -1843,7 +1812,7 @@ WML_HANDLER_FUNCTION(unit_overlay, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(remove_unit_overlay, /*event_info*/, cfg)
 {
-	unit_map *units = game_events::resources->units;
+	unit_map *units = resources::units;
 
 		std::string img = cfg["image"];
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
@@ -1856,36 +1825,32 @@ WML_HANDLER_FUNCTION(remove_unit_overlay, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(hide_unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		// Hiding units
 		const map_location loc = cfg_to_loc(cfg);
-		unit_map::iterator u = rsrc.units->find(loc);
-		if(u != rsrc.units->end()) {
+		unit_map::iterator u = resources::units->find(loc);
+		if(u != resources::units->end()) {
 			u->second.set_hidden(true);
-			rsrc.screen->invalidate(loc);
-			rsrc.screen->draw();
+			resources::screen->invalidate(loc);
+			resources::screen->draw();
 		}
 	}
 
 WML_HANDLER_FUNCTION(unhide_unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const map_location loc = cfg_to_loc(cfg);
 		unit_map::iterator u;
 		// Unhide all for backward compatibility
-		for (u = rsrc.units->begin(); u != rsrc.units->end() ; u++) {
+		for (u = resources::units->begin(); u != resources::units->end() ; u++) {
 			u->second.set_hidden(false);
-			rsrc.screen->invalidate(loc);
-			rsrc.screen->draw();
+			resources::screen->invalidate(loc);
+			resources::screen->draw();
 		}
 	}
 
 // Adding new items
 WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 {
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 
 		map_location loc = cfg_to_loc(cfg);
 		const std::string img = cfg["image"];
@@ -1907,19 +1872,18 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 		return;
 	}
 	soundsource::sourcespec spec(cfg.get_parsed_config());
-	game_events::resources->soundsources->add(spec);
+	resources::soundsources->add(spec);
 }
 
 WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 {
-	game_events::resources->soundsources->remove(cfg["id"]);
+	resources::soundsources->remove(cfg["id"]);
 }
 
 void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	gamemap::tmerge_mode mode, bool replace_if_failed)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	gamemap *game_map = rsrc.game_map;
+	gamemap *game_map = resources::game_map;
 
 	t_translation::t_terrain
 		old_t = game_map->get_terrain(loc),
@@ -1928,9 +1892,9 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	preferences::encountered_terrains().insert(new_t);
 
 	if (game_map->is_village(old_t) && !game_map->is_village(new_t)) {
-		int owner = village_owner(loc, *rsrc.teams);
+		int owner = village_owner(loc, *resources::teams);
 		if (owner != -1)
-			(*rsrc.teams)[owner].lose_village(loc);
+			(*resources::teams)[owner].lose_village(loc);
 	}
 
 	game_map->set_terrain(loc, new_t);
@@ -1961,11 +1925,9 @@ WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
 // Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		map_location loc = cfg_to_loc(cfg, 1, 1);
 
-		gamemap mask(*rsrc.game_map);
+		gamemap mask(*resources::game_map);
 
 		try {
 			mask.read(cfg["mask"]);
@@ -1973,20 +1935,18 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return;
 		} catch(twml_exception& e) {
-			e.show(*rsrc.screen);
+			e.show(*resources::screen);
 			return;
 		}
 		bool border = utils::string_bool(cfg["border"]);
-		rsrc.game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
+		resources::game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
 		screen_needs_rebuild = true;
 	}
 
 static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
-		if((*rsrc.teams)[u.side()-1].persistent()) {
-			(*rsrc.teams)[u.side()-1].recall_list().push_back(u);
+		if((*resources::teams)[u.side()-1].persistent()) {
+			(*resources::teams)[u.side()-1].recall_list().push_back(u);
             return true;
 		} else {
 			ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
@@ -1998,12 +1958,10 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 // If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams, parsed_cfg, true, rsrc.state_of_game);
+		unit new_unit(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams, parsed_cfg, true, resources::state_of_game);
 		if(cfg.has_attribute("to_variable")) {
-			config &var = rsrc.state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
+			config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
 			var["x"] = parsed_cfg["x"];
 			var["y"] = parsed_cfg["y"];
@@ -2011,32 +1969,32 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 			preferences::encountered_units().insert(new_unit.type_id());
 			map_location loc = cfg_to_loc(cfg);
 
-			if (rsrc.game_map->on_board(loc))
+			if (resources::game_map->on_board(loc))
 			{
-				loc = find_vacant_tile(*rsrc.game_map, *rsrc.units, loc);
-				const bool show = rsrc.screen && !rsrc.screen->fogged(loc);
+				loc = find_vacant_tile(*resources::game_map, *resources::units, loc);
+				const bool show = resources::screen && !resources::screen->fogged(loc);
 				const bool animate = show && utils::string_bool(parsed_cfg["animate"], false);
 
 				//	If new unit is leader set current player/visible side name
 				//	to units name
 				if (new_unit.can_recruit())
-					(*rsrc.teams)[new_unit.side() - 1].set_current_player(new_unit.name());
+					(*resources::teams)[new_unit.side() - 1].set_current_player(new_unit.name());
 
-				rsrc.units->erase(loc);
-				rsrc.units->add(loc, new_unit);
-				if (rsrc.game_map->is_village(loc)) {
-					get_village(loc, *rsrc.screen, *rsrc.teams, new_unit.side() - 1, *rsrc.units);
+				resources::units->erase(loc);
+				resources::units->add(loc, new_unit);
+				if (resources::game_map->is_village(loc)) {
+					get_village(loc, *resources::screen, *resources::teams, new_unit.side() - 1, *resources::units);
 				}
 
-				rsrc.screen->invalidate(loc);
+				resources::screen->invalidate(loc);
 
-				unit_map::iterator un = rsrc.units->find(loc);
+				unit_map::iterator un = resources::units->find(loc);
 
 				if(animate) {
 					unit_display::unit_recruited(loc);
 				}
 				else if(show) {
-					rsrc.screen->draw();
+					resources::screen->draw();
 				}
 			} else {
                 try_add_unit_to_recall_list(loc, new_unit);
@@ -2047,8 +2005,6 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 // If we should recall units that match a certain description
 WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
 		config temp_config(cfg.get_config());
@@ -2062,27 +2018,27 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		temp_config["x"] = "recall";
 		temp_config["y"] = "recall";
 		vconfig unit_filter(temp_config);
-		for(int index = 0; !unit_recalled && index < int(rsrc.teams->size()); ++index) {
+		for(int index = 0; !unit_recalled && index < int(resources::teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
-			const std::string player_id = (*rsrc.teams)[index].save_id();
+			const std::string player_id = (*resources::teams)[index].save_id();
 
-			if((*rsrc.teams)[index].recall_list().size() < 1) {
+			if((*resources::teams)[index].recall_list().size() < 1) {
 				WRN_NG << "player not found when trying to recall!\n"
 					   << "player_id: " << player_id << " index: " << index << "\n";
 				continue;
 			}
 
-			std::vector<unit>& avail = (*rsrc.teams)[index].recall_list();
+			std::vector<unit>& avail = (*resources::teams)[index].recall_list();
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				u->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+				u->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, unit_filter, map_location())) {
 					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-					recruit_unit(*rsrc.game_map, index + 1, *rsrc.units, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
+					recruit_unit(*resources::game_map, index + 1, *resources::units, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
 					unit_recalled = true;
 					break;
 				}
@@ -2092,8 +2048,6 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const vconfig filter = cfg.child("filter");
 
 		std::string id = cfg["id"];
@@ -2108,7 +2062,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 		map_location loc;
 		if(!filter.null()) {
-			for(unit_map::const_iterator u = rsrc.units->begin(); u != rsrc.units->end(); ++u) {
+			for(unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 				if(game_events::unit_matches_filter(u, filter)) {
 					loc = u->first;
 					break;
@@ -2120,18 +2074,18 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 			loc = event_info.loc1;
 		}
 
-		const unit_map::iterator u = rsrc.units->find(loc);
+		const unit_map::iterator u = resources::units->find(loc);
 
 		std::string command_type = "then";
 
-		if (u != rsrc.units->end() && (filter.null() || game_events::unit_matches_filter(u, filter)))
+		if (u != resources::units->end() && (filter.null() || game_events::unit_matches_filter(u, filter)))
 		{
 			text = cfg["description"];
 
 			u->second.add_modification("object", cfg.get_parsed_config());
 
-			rsrc.screen->select_hex(event_info.loc1);
-			rsrc.screen->invalidate_unit();
+			resources::screen->select_hex(event_info.loc1);
+			resources::screen->invalidate_unit();
 
 			// Mark this item as used up.
 			used_items.insert(id);
@@ -2148,14 +2102,14 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 			}
 
 			// Redraw the unit, with its new stats
-			rsrc.screen->draw();
+			resources::screen->draw();
 
 			try {
 				const std::string duration_str = cfg["duration"];
 				const unsigned int lifetime = average_frame_time
 					* lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 
-				wml_event_dialog to_show(*rsrc.screen, (surface.null() ? caption : ""), text);
+				wml_event_dialog to_show(*resources::screen, (surface.null() ? caption : ""), text);
 				if(!surface.null()) {
 					to_show.set_image(surface, caption);
 				}
@@ -2195,7 +2149,7 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 
 		const std::string& msg = text;
 		if(msg != "") {
-			const SDL_Rect rect = game_events::resources->screen->map_outside_area();
+			const SDL_Rect rect = resources::screen->map_outside_area();
 			floating_label = font::add_floating_label(msg,size,colour,
 					rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
 		}
@@ -2250,15 +2204,13 @@ WML_HANDLER_FUNCTION(wml_message, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 	// Use (x,y) iteration, because firing events ruins unit_map iteration
-	for (map_location loc(0,0); loc.x < rsrc.game_map->w(); ++loc.x)
+	for (map_location loc(0,0); loc.x < resources::game_map->w(); ++loc.x)
 	{
-		for (loc.y = 0; loc.y < rsrc.game_map->h(); ++loc.y)
+		for (loc.y = 0; loc.y < resources::game_map->h(); ++loc.y)
 		{
-				unit_map::iterator un = rsrc.units->find(loc);
-				if (un != rsrc.units->end() && game_events::unit_matches_filter(un, cfg))
+				unit_map::iterator un = resources::units->find(loc);
+				if (un != resources::units->end() && game_events::unit_matches_filter(un, cfg))
 				{
 					bool fire_event = false;
 					game_events::entity_location death_loc(un);
@@ -2283,19 +2235,19 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 						game_events::fire("last breath", death_loc, death_loc);
 					}
 					if(utils::string_bool(cfg["animate"])) {
-						rsrc.screen->scroll_to_tile(loc);
+						resources::screen->scroll_to_tile(loc);
 						unit_display::unit_die(loc, un->second);
 					}
 					if (fire_event)
 					{
 						game_events::fire("die", death_loc, death_loc);
-						un = rsrc.units->find(death_loc);
-						if (un != rsrc.units->end() && death_loc.matches_unit(un->second)) {
-							rsrc.units->erase(un);
+						un = resources::units->find(death_loc);
+						if (un != resources::units->end() && death_loc.matches_unit(un->second)) {
+							resources::units->erase(un);
 						}
 					}
 					if (! utils::string_bool(cfg["fire_event"])) {
-						rsrc.units->erase(un);
+						resources::units->erase(un);
 					}
 				}
 			}
@@ -2309,12 +2261,12 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		&& (cfg_y.empty() || cfg_y == "recall"))
 		{
 			//remove the unit from the corresponding team's recall list
-			for(std::vector<team>::iterator pi = rsrc.teams->begin();
-					pi!=rsrc.teams->end(); ++pi)
+			for(std::vector<team>::iterator pi = resources::teams->begin();
+					pi!=resources::teams->end(); ++pi)
 			{
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+					j->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
 						j = avail_units.erase(j);
@@ -2329,8 +2281,8 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 // Fire any events
 WML_HANDLER_FUNCTION(fire_event, /*event_info*/, cfg)
 {
-	unit_map *units = game_events::resources->units;
-	gamemap *game_map = game_events::resources->game_map;
+	unit_map *units = resources::units;
+	gamemap *game_map = resources::game_map;
 
 		map_location loc1,loc2;
 		config data;
@@ -2390,7 +2342,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		   [/set_menu_item]
 		   */
 		std::string id = cfg["id"];
-		wml_menu_item*& mref = game_events::resources->state_of_game->wml_menu_items[id];
+		wml_menu_item*& mref = resources::state_of_game->wml_menu_items[id];
 		if(mref == NULL) {
 			mref = new wml_menu_item(id);
 		}
@@ -2419,8 +2371,6 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 /** @todo FIXME: Check that store is automove bug safe */
 WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
 		if(filter.null()) {
@@ -2438,7 +2388,7 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 
 		const bool kill_units = utils::string_bool(cfg["kill"]);
 
-		for(unit_map::iterator i = rsrc.units->begin(); i != rsrc.units->end();) {
+		for(unit_map::iterator i = resources::units->begin(); i != resources::units->end();) {
 			if(game_events::unit_matches_filter(i,filter) == false) {
 				++i;
 				continue;
@@ -2449,7 +2399,7 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 			i->second.write(data);
 
 			if(kill_units) {
-				rsrc.units->erase(i++);
+				resources::units->erase(i++);
 			} else {
 				++i;
 			}
@@ -2460,11 +2410,11 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 		if((filter_x.empty() || filter_x == "recall")
 		&& (filter_y.empty() || filter_y == "recall"))
 		{
-			for(std::vector<team>::iterator pi = rsrc.teams->begin();
-					pi != rsrc.teams->end(); ++pi) {
+			for(std::vector<team>::iterator pi = resources::teams->begin();
+					pi != resources::teams->end(); ++pi) {
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc.teams);
+					j->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
 						++j;
@@ -2491,22 +2441,21 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	const config &var = rsrc.state_of_game->get_variable_cfg(cfg["variable"]);
+	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(rsrc.units, rsrc.game_map, &rsrc.controller->get_tod_manager(), rsrc. teams, var, false);
+		const unit u(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources:: teams, var, false);
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(
 				(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
-					loc = find_vacant_tile(*rsrc.game_map, *rsrc.units,loc);
+					loc = find_vacant_tile(*resources::game_map, *resources::units,loc);
 				}
 
-			rsrc.units->erase(loc);
-			rsrc.units->add(loc, u);
+			resources::units->erase(loc);
+			resources::units->add(loc, u);
 
 				std::string text = cfg["text"];
 				game_display* disp = game_display::get_singleton();
@@ -2520,7 +2469,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					const int green = lexical_cast_default<int>(green_str,0);
 					const int blue = lexical_cast_default<int>(blue_str,0);
 					{
-						rsrc.screen->float_label(loc,text,red,green,blue);
+						resources::screen->float_label(loc,text,red,green,blue);
 					}
 				}
 
@@ -2528,19 +2477,19 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 					// Try to advance the unit
 
 					/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-					const t_string& side_str = rsrc.state_of_game->get_variable("side_number");
+					const t_string& side_str = resources::state_of_game->get_variable("side_number");
 					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
-							&& (*rsrc.teams)[side-1].is_human());
+							&& (*resources::teams)[side-1].is_human());
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
-					dialogs::advance_unit(*rsrc.game_map, *rsrc.units, loc, *rsrc.screen, !sel, true);
+					dialogs::advance_unit(*resources::game_map, *resources::units, loc, *resources::screen, !sel, true);
 				}
 
 			} else {
-				team& t = (*rsrc.teams)[u.side()-1];
+				team& t = (*resources::teams)[u.side()-1];
 
 				if(t.recall_list().size() > 0) {
 
@@ -2596,7 +2545,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			// If we unstore a leader make sure the team gets a leader if not the loading
 			// in MP might abort since a side without a leader has a recall list.
 			if(u.can_recruit()) {
-				(*rsrc.teams)[u.side() - 1].have_leader();
+				(*resources::teams)[u.side() - 1].have_leader();
 			}
 
 		} catch(game::load_game_failed& e) {
@@ -2606,8 +2555,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_map_dimensions, /*event_info*/, cfg)
 {
-	game_state *state_of_game = game_events::resources->state_of_game;
-	gamemap *game_map = game_events::resources->game_map;
+	game_state *state_of_game = resources::state_of_game;
+	gamemap *game_map = resources::game_map;
 
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2621,8 +2570,6 @@ WML_HANDLER_FUNCTION(store_map_dimensions, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2630,14 +2577,14 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 		}
 		const int side_num = lexical_cast_default<int>(side,1);
 
-		const map_location& loc = rsrc.game_map->starting_position(side_num);
-		config &loc_store = rsrc.state_of_game->get_variable_cfg(variable);
+		const map_location& loc = resources::game_map->starting_position(side_num);
+		config &loc_store = resources::state_of_game->get_variable_cfg(variable);
 		loc_store.clear();
 		loc.write(loc_store);
-		rsrc.game_map->write_terrain(loc, loc_store);
-		if (rsrc.game_map->is_village(loc)) {
+		resources::game_map->write_terrain(loc, loc_store);
+		if (resources::game_map->is_village(loc)) {
 			std::stringstream sd;
-			int side = village_owner(loc, *rsrc.teams) + 1;
+			int side = village_owner(loc, *resources::teams) + 1;
 			sd << side;
 			loc_store["owner_side"]= sd.str();
 		}
@@ -2651,8 +2598,6 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 	 */
 WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		log_scope("store_villages");
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2661,7 +2606,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 		config to_store;
 		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
 
-		std::vector<map_location> locs = rsrc.game_map->villages();
+		std::vector<map_location> locs = resources::game_map->villages();
 
 		for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			bool matches = false;
@@ -2671,16 +2616,16 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 				config temp_cfg(cfg.get_config());
 				temp_cfg["owner_side"] = temp_cfg["side"];
 				temp_cfg["side"] = "";
-				matches = terrain_filter(vconfig(temp_cfg), *rsrc.game_map, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units).match(*j);
+				matches = terrain_filter(vconfig(temp_cfg), *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units).match(*j);
 			} else {
-				matches = terrain_filter(cfg, *rsrc.game_map, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units).match(*j);
+				matches = terrain_filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units).match(*j);
 			}
 			if(matches) {
 				config &loc_store = to_store.add_child(varinfo.key);
 				j->write(loc_store);
-				rsrc.game_map->write_terrain(*j, loc_store);
+				resources::game_map->write_terrain(*j, loc_store);
 				std::stringstream sd;
-				int side = village_owner(*j, *rsrc.teams) + 1;
+				int side = village_owner(*j, *resources::teams) + 1;
 				sd << side;
 				loc_store["owner_side"]= sd.str();
 			}
@@ -2691,8 +2636,6 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		log_scope("store_locations");
 		std::string variable = cfg["variable"];
 		if (variable.empty()) {
@@ -2700,18 +2643,18 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 		}
 
 		std::set<map_location> res;
-		terrain_filter filter(cfg, *rsrc.game_map, rsrc.controller->get_tod_manager(), *rsrc.teams, *rsrc.units);
+		terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(res);
 
-		rsrc.state_of_game->clear_variable_cfg(variable);
+		resources::state_of_game->clear_variable_cfg(variable);
 		for(std::set<map_location>::const_iterator j = res.begin(); j != res.end(); ++j) {
-			config &loc_store = rsrc.state_of_game->add_variable_cfg(variable);
+			config &loc_store = resources::state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);
-			rsrc.game_map->write_terrain(*j, loc_store);
-			if (rsrc.game_map->is_village(*j)) {
+			resources::game_map->write_terrain(*j, loc_store);
+			if (resources::game_map->is_village(*j)) {
 				std::stringstream sd;
-				int side = village_owner(*j, *rsrc.teams) + 1;
+				int side = village_owner(*j, *resources::teams) + 1;
 				sd << side;
 				loc_store["owner_side"]= sd.str();
 			}
@@ -2721,8 +2664,6 @@ WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
 // Command to take control of a village for a certain side
 WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		std::string side = cfg["side"];
 		const int side_num = lexical_cast_default<int>(side);
 		// If 'side' is 0, then it will become an invalid index,
@@ -2732,8 +2673,8 @@ WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 		const std::vector<map_location> locs(multiple_locs(cfg));
 
 		for(std::vector<map_location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-			if (rsrc.game_map->is_village(*i)) {
-				get_village(*i, *rsrc.screen, *rsrc.teams, team_num, *rsrc.units);
+			if (resources::game_map->is_village(*i)) {
+				get_village(*i, *resources::screen, *resources::teams, team_num, *resources::units);
 			}
 		}
 	}
@@ -2745,7 +2686,7 @@ WML_HANDLER_FUNCTION(clear_variable, /*event_info*/, cfg)
 		std::vector<std::string> vars_to_clear =
 			utils::split(name, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 		foreach(const std::string& var, vars_to_clear) {
-			game_events::resources->state_of_game->clear_variable(var);
+			resources::state_of_game->clear_variable(var);
 		}
 	}
 
@@ -2756,8 +2697,8 @@ WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {
-	game_state *state_of_game = game_events::resources->state_of_game;
-	unit_map *units = game_events::resources->units;
+	game_state *state_of_game = resources::state_of_game;
+	unit_map *units = resources::units;
 
 		// Remove 0-hp units from the unit map to avoid the following problem:
 		// In case a die event triggers an endlevel the dead unit is still as a
@@ -2821,13 +2762,12 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 
 	std::string side = cfg["side"];
 	if (!side.empty()) {
 		const int side_num = lexical_cast_default<int>(side);
-		clear_shroud(screen, *rsrc.game_map, *rsrc.units, *rsrc.teams, side_num - 1);
+		clear_shroud(screen, *resources::game_map, *resources::units, *resources::teams, side_num - 1);
 		screen.recalculate_minimap();
 	}
 	if (screen_needs_rebuild) {
@@ -2841,8 +2781,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-	unit_display::wml_animation(cfg, *rsrc.units, *rsrc.game_map, rsrc.teams, rsrc.controller->get_tod_manager(), event_info.loc1);
+	unit_display::wml_animation(cfg, *resources::units, *resources::game_map, resources::teams, resources::controller->get_tod_manager(), event_info.loc1);
 }
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
@@ -2851,10 +2790,10 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
 		return;
 	}
-	game_display &screen = *game_events::resources->screen;
+	game_display &screen = *resources::screen;
 
 	terrain_label label(screen.labels(),
-		cfg.get_config(), game_events::resources->state_of_game);
+		cfg.get_config(), resources::state_of_game);
 
 	screen.labels().set_label(label.location(), label.text(),
 		label.team_name(), label.colour(), label.visible_in_fog());
@@ -2862,7 +2801,7 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
-	unit_map *units = game_events::resources->units;
+	unit_map *units = resources::units;
 
 		const bool animated = utils::string_bool(cfg["animate"],false);
 
@@ -2906,7 +2845,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 						real_amount);
 			}
 
-		game_events::resources->state_of_game->set_variable("heal_amount",
+		resources::state_of_game->set_variable("heal_amount",
 			str_cast<int>(real_amount));
 	}
 }
@@ -2933,7 +2872,7 @@ static void if_while_handler(bool is_if,
 		const std::string fail = (is_if ? "else" : "");
 		for(size_t i = 0; i != max_iterations; ++i) {
 			const std::string type = game_events::conditional_passed(
-			game_events::resources->units, cfg) ? pass : fail;
+			resources::units, cfg) ? pass : fail;
 
 			if(type == "") {
 				break;
@@ -2962,7 +2901,7 @@ WML_HANDLER_FUNCTION(while, event_info, cfg)
 WML_HANDLER_FUNCTION(switch, event_info, cfg)
 {
 	const std::string var_name = cfg["variable"];
-	const std::string &var = game_events::resources->state_of_game->get_variable_const(var_name);
+	const std::string &var = resources::state_of_game->get_variable_const(var_name);
 
 	bool not_found = true;
 	// execute all cases where the value matches
@@ -2995,8 +2934,8 @@ unit_map::iterator handle_speaker(
 		const game_events::queued_event& event_info,
 		const vconfig& cfg)
 {
-	unit_map *units = game_events::resources->units;
-	game_display &screen = *game_events::resources->screen;
+	unit_map *units = resources::units;
+	game_display &screen = *resources::screen;
 
 	unit_map::iterator speaker = units->end();
 	const std::string speaker_str = cfg["speaker"];
@@ -3042,7 +2981,7 @@ unit_map::iterator handle_speaker(
 std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 {
 	std::string image = cfg["image"];
-	if (image.empty() && speaker != game_events::resources->units->end())
+	if (image.empty() && speaker != resources::units->end())
 	{
 		// At the moment we use a hack if the image in portrait has
 		// an image with the same name in the directory transparent
@@ -3096,7 +3035,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 {
 	std::string caption = cfg["caption"];
-	if (caption.empty() && speaker != game_events::resources->units->end()) {
+	if (caption.empty() && speaker != resources::units->end()) {
 		caption = speaker->second.name();
 		if(caption.empty()) {
 			caption = speaker->second.type_name();
@@ -3110,8 +3049,6 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 // Display a message dialog
 WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
-	const game_events::resources_t &rsrc = *game_events::resources;
-
 		// Check if there is any input to be made, if not the message may be skipped
 		const vconfig::child_list menu_items = cfg.get_children("option");
 
@@ -3147,8 +3084,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				side = lexical_cast_default<size_t>(*itSide);
 				// Make sanity check that side number is good
 				// then check if this side is human controlled.
-				if (side > 0 && side <= rsrc.teams->size() &&
-				    (*rsrc.teams)[side-1].is_human())
+				if (side > 0 && side <= resources::teams->size() &&
+				    (*resources::teams)[side-1].is_human())
 				{
 					side_for_show = true;
 					break;
@@ -3161,7 +3098,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 
 		unit_map::iterator speaker = handle_speaker(event_info, cfg);
-		if (speaker == rsrc.units->end() && cfg["speaker"] != "narrator") {
+		if (speaker == resources::units->end() && cfg["speaker"] != "narrator") {
 			// No matching unit found, so the dialog can't come up.
 			// Continue onto the next message.
 			WRN_NG << "cannot show message\n";
@@ -3184,7 +3121,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				mi != menu_items.end(); ++mi) {
 			std::string msg_str = (*mi)["message"];
 			if (!mi->has_child("show_if")
-			    || game_events::conditional_passed(rsrc.units, mi->child("show_if")))
+			    || game_events::conditional_passed(resources::units, mi->child("show_if")))
 			{
 				options.push_back(msg_str);
 				option_events.push_back((*mi).get_children("command"));
@@ -3230,7 +3167,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 				const int dlg_result = gui2::show_wml_message(
 						left_side,
-						rsrc.screen->video(),
+						resources::screen->video(),
 						caption,
 						cfg["message"],
 						image,
@@ -3246,8 +3183,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				// chatlines can get garbled and look dirty on screen. Force a
 				// redraw to fix it.
 				/** @todo This hack can be removed once gui2 is finished. */
-				rsrc.screen->invalidate_all();
-				rsrc.screen->draw(true,true);
+				resources::screen->invalidate_all();
+				resources::screen->draw(true,true);
 
 				if(!options.empty()) {
 					recorder.choose_option(option_chosen);
@@ -3286,14 +3223,14 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			// Otherwise if an input has to be made, get it from the replay data
 		} else {
 			/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
-			const t_string& side_str = rsrc.state_of_game->get_variable("side_number");
+			const t_string& side_str = resources::state_of_game->get_variable("side_number");
 			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 
 
 			if(!options.empty()) {
-				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "choose");
+				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
+					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "choose");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("choose"))) {
 					replay::throw_error("choice expected but none found\n");
@@ -3302,8 +3239,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				option_chosen = atol(val.c_str());
 			}
 			if(has_text_input) {
-				do_replay_handle(*rsrc.screen, *rsrc.game_map, *rsrc.units, *rsrc.teams,
-					side , rsrc.controller->get_tod_manager(), *rsrc.state_of_game, *rsrc.controller, "input");
+				do_replay_handle(*resources::screen, *resources::game_map, *resources::units, *resources::teams,
+					side , resources::controller->get_tod_manager(), *resources::state_of_game, *resources::controller, "input");
 				const config* action = get_replay_source().get_next_action();
 				if (!action || !*(action = &action->child("input"))) {
 					replay::throw_error("input expected but none found\n");
@@ -3330,14 +3267,14 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			std::string variable_name=text_input_element["variable"];
 			if(variable_name.empty())
 				variable_name="input";
-			rsrc.state_of_game->set_variable(variable_name, text_input_result);
+			resources::state_of_game->set_variable(variable_name, text_input_result);
 		}
 	}
 
 // Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
-	play_controller *controller = game_events::resources->controller;
+	play_controller *controller = resources::controller;
 
 		log_scope("time_area");
 
@@ -3361,7 +3298,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 				id = ids;
 			}
 			std::set<map_location> locs;
-			terrain_filter filter(cfg, *game_events::resources->game_map, game_events::resources->controller->get_tod_manager(), *game_events::resources->teams, *game_events::resources->units);
+			terrain_filter filter(cfg, *resources::game_map, resources::controller->get_tod_manager(), *resources::teams, *resources::units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 			config parsed_cfg = cfg.get_parsed_config();
@@ -3388,7 +3325,7 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 // Experimental map replace
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 {
-	gamemap *game_map = game_events::resources->game_map;
+	gamemap *game_map = resources::game_map;
 
 		gamemap map(*game_map);
 		try {
@@ -3397,7 +3334,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
             lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
 			return;
 		} catch(twml_exception& e) {
-			e.show(*game_events::resources->screen);
+			e.show(*resources::screen);
 			return;
 		}
         if (map.total_width() > game_map->total_width()
@@ -3413,7 +3350,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
                 lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set\n";
                 return;
             }
-			unit_map *units = game_events::resources->units;
+			unit_map *units = resources::units;
 			unit_map::iterator itor;
 			for (itor = units->begin(); itor != units->end(); ) {
                 if (!map.on_board(itor->first)) {
@@ -3427,14 +3364,14 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
             }
         }
 		*game_map = map;
-		game_events::resources->screen->reload_map();
+		resources::screen->reload_map();
 		screen_needs_rebuild = true;
 	}
 
 WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
 {
-	game_state *state_of_game = game_events::resources->state_of_game;
-	unit_map *units = game_events::resources->units;
+	game_state *state_of_game = resources::state_of_game;
+	unit_map *units = resources::units;
 	//const vconfig &unit_filter = cfg.child("filter");
 	const vconfig &unit_filter = cfg;
 	//if(unit_filter.null()) {
@@ -3491,7 +3428,7 @@ WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
 			wmi_command_change wcc = wmi_command_changes.front();
 			const bool is_empty_command = wcc.second->empty();
 
-			wml_menu_item*& mref = game_events::resources->state_of_game->wml_menu_items[wcc.first];
+			wml_menu_item*& mref = resources::state_of_game->wml_menu_items[wcc.first];
 			const bool has_current_handler = !mref->command.empty();
 
 			mref->command = *(wcc.second);
@@ -3523,7 +3460,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	if(handler.disabled())
 		return false;
 
-	unit_map *units = game_events::resources->units;
+	unit_map *units = resources::units;
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
 	bool filtered_unit1 = false, filtered_unit2 = false;
@@ -3602,12 +3539,12 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	handler.handle_event(ev);
 
 	if(ev.name == "select") {
-		game_events::resources->state_of_game->last_selected = ev.loc1;
+		resources::state_of_game->last_selected = ev.loc1;
 	}
 
 	if (screen_needs_rebuild) {
 		screen_needs_rebuild = false;
-		game_display *screen = game_events::resources->screen;
+		game_display *screen = resources::screen;
 		screen->recalculate_minimap();
 		screen->invalidate_all();
 		screen->rebuild_all();
@@ -3789,13 +3726,8 @@ namespace game_events {
 		}
 	};
 
-	manager::manager(const config& cfg, gamemap& map_,
-			unit_map& units_,
-			std::vector<team>& teams_,
-			game_state& state_of_game_,
-			play_controller& controller)
-		: resources()
-		, variable_manager(&state_of_game_)
+	manager::manager(const config& cfg)
+		: variable_manager(resources::state_of_game)
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
@@ -3805,15 +3737,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 		}
 
-		resources.screen = NULL;
-		resources.soundsources = NULL;
-		resources.game_map = &map_;
-		resources.units = &units_;
-		resources.teams = &teams_;
-		resources.state_of_game = &state_of_game_;
-		resources.lua_kernel = new LuaKernel;
-		resources.controller = &controller;
-		game_events::resources = &resources;
+		resources::lua_kernel = new LuaKernel;
 		manager_running = true;
 
 		foreach (static_wml_action_map::value_type &action, static_wml_actions) {
@@ -3829,7 +3753,7 @@ namespace game_events {
 		}
 		int wmi_count = 0;
 		typedef std::pair<std::string, wml_menu_item *> item;
-		foreach (const item &itor, state_of_game_.wml_menu_items) {
+		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
 				event_handlers.push_back(game_events::event_handler(vconfig(itor.second->command, true), true));
 			}
@@ -3838,14 +3762,6 @@ namespace game_events {
 		if(wmi_count > 0) {
 			LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
 		}
-	}
-	void manager::set_gui(game_display& gui_)
-	{
-		resources.screen = &gui_;
-	}
-	void manager::set_soundsource(soundsource::manager& sndsources_)
-	{
-		resources.soundsources = &sndsources_;
 	}
 
 	void write_events(config& cfg)
@@ -3877,16 +3793,15 @@ namespace game_events {
 
 		cfg["unit_wml_ids"] = ids.str();
 
-		if (resources->soundsources)
-			resources->soundsources->write_sourcespecs(cfg);
+		if (resources::soundsources)
+			resources::soundsources->write_sourcespecs(cfg);
 
-		if (resources->screen)
-			resources->screen->write_overlays(cfg);
+		if (resources::screen)
+			resources::screen->write_overlays(cfg);
 	}
 
 	manager::~manager() {
 		assert(manager_running);
-		game_events::resources = NULL;
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
@@ -3894,7 +3809,8 @@ namespace game_events {
 			delete action.second;
 		}
 		dynamic_wml_actions.clear();
-		delete resources.lua_kernel;
+		delete resources::lua_kernel;
+		resources::lua_kernel = NULL;
 		unit_wml_ids.clear();
 		used_items.clear();
 	}
@@ -3966,16 +3882,16 @@ namespace game_events {
 				if (init_event_vars) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
-					resources->state_of_game->set_variable("x1", buf);
+					resources::state_of_game->set_variable("x1", buf);
 
 					snprintf(buf,sizeof(buf),"%d",ev.loc1.y+1);
-					resources->state_of_game->set_variable("y1", buf);
+					resources::state_of_game->set_variable("y1", buf);
 
 					snprintf(buf,sizeof(buf),"%d",ev.loc2.x+1);
-					resources->state_of_game->set_variable("x2", buf);
+					resources::state_of_game->set_variable("x2", buf);
 
 					snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
-					resources->state_of_game->set_variable("y2", buf);
+					resources::state_of_game->set_variable("y2", buf);
 					init_event_vars = false;
 				}
 
@@ -3994,7 +3910,7 @@ namespace game_events {
 			}
 
 			// Dialogs can only be shown if the display is not locked
-			if (!resources->screen->video().update_locked()) {
+			if (!resources::screen->video().update_locked()) {
 				show_wml_errors();
 				show_wml_messages();
 			}

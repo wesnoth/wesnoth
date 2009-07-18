@@ -40,6 +40,7 @@
 #include "mouse_events.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
@@ -2930,7 +2931,7 @@ private:
 		}
 	}
 	void console_handler::do_lua() {
-		game_events::resources->lua_kernel->run(get_data().c_str());
+		resources::lua_kernel->run(get_data().c_str());
 	}
 	void console_handler::do_custom() {
 		preferences::set("custom_command", get_data());

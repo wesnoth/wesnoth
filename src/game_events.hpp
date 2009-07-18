@@ -57,20 +57,6 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 namespace game_events
 {
 
-	struct resources_t
-	{
-		game_display *screen;
-		soundsource::manager *soundsources;
-		gamemap *game_map;
-		unit_map *units;
-		std::vector<team> *teams;
-		game_state *state_of_game;
-		LuaKernel *lua_kernel;
-		play_controller *controller;
-	};
-
-	extern const resources_t *resources;
-
 	// The game event manager loads the scenario configuration object,
 	// and ensures that events are handled according to the
 	// scenario configuration for its lifetime.
@@ -80,16 +66,10 @@ namespace game_events
 	struct manager {
 		// Note that references will be maintained,
 		// and must remain valid for the life of the object.
-		manager(const config& scenario_cfg, gamemap& map,
-				unit_map& units, std::vector<team>& teams,
-				game_state& state_of_game,
-				play_controller& controller);
+		manager(const config& scenario_cfg);
 		~manager();
-		void set_gui(game_display&);
-		void set_soundsource(soundsource::manager&);
 
 	private:
-		resources_t resources;
 		variable::manager variable_manager;
 	};
 

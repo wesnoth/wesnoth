@@ -47,6 +47,7 @@ extern "C" {
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_translation.hpp"
 #include "unit.hpp"
@@ -457,7 +458,7 @@ static int lua_unit_get(lua_State *L)
 	size_t id = *static_cast<size_t *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
 
-	unit_map::const_unit_iterator ui = game_events::resources->units->find(id);
+	unit_map::const_unit_iterator ui = resources::units->find(id);
 	if (!ui.valid()) return 0;
 	unit const &u = ui->second;
 
@@ -495,7 +496,7 @@ static int lua_unit_set(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	lua_settop(L, 3);
 
-	unit_map::unit_iterator ui = game_events::resources->units->find(id);
+	unit_map::unit_iterator ui = resources::units->find(id);
 	if (!ui.valid()) return 0;
 	unit &u = ui->second;
 
@@ -536,7 +537,7 @@ static int lua_get_units(lua_State *L)
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
-	unit_map &units = *game_events::resources->units;
+	unit_map &units = *resources::units;
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
@@ -828,7 +829,7 @@ static int lua_get_side(lua_State *L)
 	int s = luaL_checkint(L, 1);
 
 	size_t t = s - 1;
-	std::vector<team> &teams = *game_events::resources->teams;
+	std::vector<team> &teams = *resources::teams;
 	if (t >= teams.size()) return 0;
 
 	// Create a full userdata containing a pointer to the team.
@@ -853,7 +854,7 @@ static int lua_get_terrain(lua_State *L)
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
 
-	t_translation::t_terrain const &t = game_events::resources->game_map->
+	t_translation::t_terrain const &t = resources::game_map->
 		get_terrain(map_location(x - 1, y - 1));
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -886,7 +887,7 @@ static int lua_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
-	terrain_type const &info = game_events::resources->game_map->get_terrain_info(t);
+	terrain_type const &info = resources::game_map->get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -918,10 +919,10 @@ static int lua_get_village_owner(lua_State *L)
 	int y = luaL_checkint(L, 2);
 
 	map_location loc(x - 1, y - 1);
-	if (!game_events::resources->game_map->is_village(loc))
+	if (!resources::game_map->is_village(loc))
 		return 0;
 
-	int side = village_owner(loc, *game_events::resources->teams) + 1;
+	int side = village_owner(loc, *resources::teams) + 1;
 	if (!side) return 0;
 	lua_pushinteger(L, side);
 	return 1;
@@ -938,9 +939,9 @@ static int lua_set_village_owner(lua_State *L)
 	int y = luaL_checkint(L, 2);
 	int new_side = lua_isnoneornil(L, 3) ? 0 : luaL_checkint(L, 3);
 
-	std::vector<team> &teams = *game_events::resources->teams;
+	std::vector<team> &teams = *resources::teams;
 	map_location loc(x - 1, y - 1);
-	if (!game_events::resources->game_map->is_village(loc))
+	if (!resources::game_map->is_village(loc))
 		return 0;
 
 	int old_side = village_owner(loc, teams) + 1;
@@ -959,7 +960,7 @@ static int lua_set_village_owner(lua_State *L)
  */
 static int lua_get_map_size(lua_State *L)
 {
-	const gamemap &map = *game_events::resources->game_map;
+	const gamemap &map = *resources::game_map;
 	lua_pushinteger(L, map.w());
 	lua_pushinteger(L, map.h());
 	return 2;
