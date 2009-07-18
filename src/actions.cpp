@@ -2474,7 +2474,7 @@ size_t move_unit(game_display* disp,
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack || ui == units.end()) {
-			apply_shroud_changes(*undo_stack,disp,map,units,teams,team_num);
+			apply_shroud_changes(*undo_stack, team_num + 1);
 			undo_stack->clear();
 		} else {
 			// MP_COUNTDOWN: added param
@@ -2623,12 +2623,15 @@ bool unit_can_move(const map_location& loc,const unit& u, const unit_map& units,
 	return false;
 }
 
-void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& map,
-		unit_map& units, std::vector<team>& teams, int team)
+void apply_shroud_changes(undo_list &undos, int side)
 {
+	team &tm = (*resources::teams)[side - 1];
 	// No need to do this if the team isn't using fog or shroud.
-	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
+	if (!tm.uses_shroud() && !tm.uses_fog())
 		return;
+
+	game_display &disp = *resources::screen;
+	unit_map &units = *resources::units;
 
 	/*
 	   This function works thusly:
@@ -2644,7 +2647,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 
 	std::set<map_location> known_units;
 	for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-		if(teams[team].fogged(u->first) == false) {
+		if (!tm.fogged(u->first)) {
 			known_units.insert(u->first);
 		}
 	}
@@ -2693,7 +2696,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
 			std::set<map_location> petrified_units;
-			cleared_shroud |= clear_shroud_unit(*step, team + 1,
+			cleared_shroud |= clear_shroud_unit(*step, side,
 				&known_units,&seen_units,&petrified_units);
 
 			// Fire sighted events
@@ -2704,7 +2707,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				teams[team].see(new_unit->second.side()-1);
+				tm.see(new_unit->second.side() - 1);
 
 				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
@@ -2714,7 +2717,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				teams[team].see(new_unit->second.side()-1);
+				tm.see(new_unit->second.side() - 1);
 
 				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
@@ -2727,25 +2730,21 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 
 	// render shroud/fog cleared before pumping events
 	// we don't refog yet to avoid hiding sighted stuff
-	if(sighted_event && disp != NULL) {
-		disp->invalidate_unit();
-		disp->invalidate_all();
-		disp->recalculate_minimap();
-		disp->draw();
+	if (sighted_event) {
+		disp.invalidate_unit();
+		disp.invalidate_all();
+		disp.recalculate_minimap();
+		disp.draw();
 	}
 
 	game_events::pump();
 
 	// refog and invalidate stuff
-	if(disp != NULL) {
-		disp->invalidate_unit();
-		disp->invalidate_game_status();
-		clear_shroud(team + 1);
-		disp->recalculate_minimap();
-		disp->invalidate_all();
-	} else {
-		recalculate_fog(team + 1);
-	}
+	disp.invalidate_unit();
+	disp.invalidate_game_status();
+	clear_shroud(side);
+	disp.recalculate_minimap();
+	disp.invalidate_all();
 }
 
 bool backstab_check(const map_location& attacker_loc,

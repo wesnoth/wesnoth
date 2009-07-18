@@ -492,7 +492,7 @@ void mouse_handler::deselect_hex() {
 
 void mouse_handler::clear_undo_stack()
 {
-	apply_shroud_changes(undo_stack_, &gui(), map_, units_, teams_, side_num_ - 1);
+	apply_shroud_changes(undo_stack_, side_num_);
 	undo_stack_.clear();
 }
 

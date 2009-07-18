@@ -615,8 +615,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
 			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
 				// The event has mutated the gamestate
-				apply_shroud_changes(undo_stack_, gui_.get(), map_,
-					units_, teams_, (player_number_ - 1));
+				apply_shroud_changes(undo_stack_, player_number_);
 				undo_stack_.clear();
 			}
 			return true;

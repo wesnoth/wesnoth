@@ -1219,7 +1219,7 @@ private:
 	void menu_handler::clear_undo_stack(int side_num)
 	{
 		if (!teams_[side_num - 1].auto_shroud_updates())
-			apply_shroud_changes(undo_stack_, gui_, map_, units_, teams_, side_num - 1);
+			apply_shroud_changes(undo_stack_, side_num);
 		undo_stack_.clear();
 	}
 
