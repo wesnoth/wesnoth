@@ -2792,8 +2792,7 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 	}
 	game_display &screen = *resources::screen;
 
-	terrain_label label(screen.labels(),
-		cfg.get_config(), resources::state_of_game);
+	terrain_label label(screen.labels(), cfg.get_config());
 
 	screen.labels().set_label(label.location(), label.text(),
 		label.team_name(), label.colour(), label.visible_in_fog());

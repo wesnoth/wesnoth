@@ -261,7 +261,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			show_storyscreen(*gui_, vconfig(s, true), level_["name"]);
 		}
 	}
-	gui_->labels().read(level_, game_events::get_state_of_game());
+	gui_->labels().read(level_);
 
 	// Find a list of 'items' (i.e. overlays) on the level, and add them
 	foreach (const config &overlay, level_.child_range("item"))

@@ -35,11 +35,11 @@ public:
 	typedef std::map<std::string,label_map> team_label_map;
 
 	map_labels(const display& disp, const team*);
-	map_labels(const display& disp, const config& cfg, const team*, const variable_set *variables);
+	map_labels(const display &disp, const config &cfg, const team *);
 	~map_labels();
 
 	void write(config& res) const;
-	void read(const config& cfg, const variable_set *variables);
+	void read(const config &cfg);
 
 	static size_t get_max_chars();
 
@@ -95,16 +95,14 @@ public:
 				  const SDL_Color colour = font::NORMAL_COLOUR,
 				  const bool visible_in_fog = true);
 
-	terrain_label(const map_labels&,
-		      const config&,
-		      const variable_set *variables);
+	terrain_label(const map_labels &, const config &);
 
 	terrain_label(const map_labels&);
 
 	~terrain_label();
 
 	void write(config& res) const;
-	void read(const config& cfg, const variable_set *variables);
+	void read(const config &cfg);
 
 	const std::string& text() const;
 	const std::string& team_name() const;

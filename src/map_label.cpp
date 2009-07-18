@@ -16,7 +16,9 @@
 
 #include "display.hpp"
 #include "foreach.hpp"
+#include "gamestatus.hpp"
 #include "map_label.hpp"
+#include "resources.hpp"
 #include "formula_string_utils.hpp"
 
 
@@ -44,14 +46,13 @@ map_labels::map_labels(const display& disp,
 
 map_labels::map_labels(const display& disp,
 		       const config& cfg,
-		       const team* team,
-		       const variable_set *variables) :
+		       const team* team) :
 		disp_(disp),
 		team_(team),
 		labels_(),
 		label_cache_()
 {
-	read(cfg, variables);
+	read(cfg);
 }
 
 map_labels::~map_labels()
@@ -73,14 +74,14 @@ void map_labels::write(config& res) const
 	}
 }
 
-void map_labels::read(const config& cfg, const variable_set *variables)
+void map_labels::read(const config &cfg)
 {
 	clear_all();
 
 	foreach (const config &i, cfg.child_range("label"))
 	{
-		const map_location loc(i, variables);
-		terrain_label* label = new terrain_label(*this, i, variables);
+		const map_location loc(i, resources::state_of_game);
+		terrain_label *label = new terrain_label(*this, i);
 		add_label(loc, label);
 	}
 	recalculate_labels();
@@ -331,9 +332,7 @@ terrain_label::terrain_label(const map_labels& parent)  :
 
 
 /// Load label from config
-terrain_label::terrain_label(const map_labels& parent,
-			     const config& cfg,
-			     const variable_set *variables) :
+terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		handle_(0),
 		text_(),
 		team_name_(),
@@ -342,7 +341,7 @@ terrain_label::terrain_label(const map_labels& parent,
 		parent_(&parent),
 		loc_()
 {
-	read(cfg, variables);
+	read(cfg);
 	check_text_length();
 }
 
@@ -352,9 +351,10 @@ terrain_label::~terrain_label()
 	clear();
 }
 
-void terrain_label::read(const config& cfg, const variable_set *variables)
+void terrain_label::read(const config &cfg)
 {
-	loc_ = map_location(cfg, variables);
+	const variable_set &vs = *resources::state_of_game;
+	loc_ = map_location(cfg, &vs);
 	SDL_Color colour = font::LABEL_COLOUR;
 	std::string tmp_colour = cfg["colour"];
 
@@ -362,15 +362,9 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 	team_name_ = cfg["team_name"];
 	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],true);
 
-	if (variables)
-	{
-		text_ = utils::interpolate_variables_into_string(
-				text_, *variables);
-		team_name_ = utils::interpolate_variables_into_string(
-					team_name_, *variables);
-		tmp_colour = utils::interpolate_variables_into_string(
-				  tmp_colour, *variables);
-	}
+	text_ = utils::interpolate_variables_into_string(text_, vs);
+	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
+	tmp_colour = utils::interpolate_variables_into_string(tmp_colour, vs);
 
 	if(!tmp_colour.empty()) {
 		std::vector<Uint32> temp_rgb;
