@@ -935,7 +935,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				if ((show_if.empty()
 					|| game_events::conditional_passed(&units_, vconfig(show_if)))
 				&& (filter_location.empty()
-					|| terrain_filter(vconfig(filter_location), map_, tod_manager_, teams_, units_)(hex))
+					|| terrain_filter(vconfig(filter_location), units_)(hex))
 				&& (!itor->second->needs_select
 					|| gamestate_.last_selected.valid()))
 				{

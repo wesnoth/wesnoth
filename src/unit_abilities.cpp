@@ -279,7 +279,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), *resources::game_map, *tod_manager_, *resources::teams, *units_);
+			terrain_filter adj_filter(vconfig(i), *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -682,7 +682,6 @@ bool attack_type::special_active(const config& cfg, bool self) const
 		}
 	}
 
-	assert(map_ && teams_ && tod_manager_);
 	foreach (const config &i, cfg.child_range("filter_adjacent_location"))
 	{
 		foreach (const std::string &j, utils::split(i["adjacent"]))
@@ -691,7 +690,7 @@ bool attack_type::special_active(const config& cfg, bool self) const
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), *map_, *tod_manager_, *teams_, *unitmap_);
+			terrain_filter adj_filter(vconfig(i), *unitmap_);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}

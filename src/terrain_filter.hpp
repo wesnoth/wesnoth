@@ -34,7 +34,7 @@ public:
 	// other compilers don't need it.
 	terrain_filter();
 #endif
-	terrain_filter(const vconfig& cfg, const gamemap& map, const tod_manager& tod_mng, const std::vector<team>& teams,
+	terrain_filter(const vconfig &cfg,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	~terrain_filter() {};
@@ -62,10 +62,7 @@ private:
 	bool match_internal(const map_location& loc, const bool ignore_xy);
 
 	const vconfig& cfg_; //config contains WML for a Standard Location Filter
-	const gamemap& map_;
-	const tod_manager& tod_manager_;
 	const unit_map& units_;
-	const std::vector<team>& teams_;
 
 	struct terrain_filter_cache {
 		terrain_filter_cache() :
