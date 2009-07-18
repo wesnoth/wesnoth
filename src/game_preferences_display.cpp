@@ -926,6 +926,7 @@ void preferences_dialog::process_event()
 			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
+				const std::string description = pref["description"];
 				std::string value = preferences::get(pref["field"]);
 				advanced_button_.hide(pref["type"] != "boolean");
 				const bool hide_int = pref["type"] != "int";
@@ -938,14 +939,17 @@ void preferences_dialog::process_event()
 					advanced_button_.set_width(0);
 					advanced_button_.set_label(pref["name"]);
 					advanced_button_.set_check(value == "yes");
+					advanced_button_.set_help_string(description);
 				} else if (pref["type"] == "int") {
 					std::stringstream ss;
 					ss << pref["name"] << ": " << value;
 					advanced_slider_label_.set_text(ss.str());
+					advanced_slider_label_.set_help_string(description);
 					advanced_slider_.set_min(lexical_cast<int>(pref["min"]));
 					advanced_slider_.set_max(lexical_cast<int>(pref["max"]));
 					advanced_slider_.set_increment(lexical_cast_default<int>(pref["step"], 1));
 					advanced_slider_.set_value(lexical_cast<int>(value));
+					advanced_slider_.set_help_string(description);
 				}
 			}
 		}
