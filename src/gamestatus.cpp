@@ -773,7 +773,7 @@ void game_state::get_player_info(const config& side_cfg,
 
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
-		unit new_unit(&units, &map, &tod_mng, &teams, side_cfg, true);
+		unit new_unit(&units, &tod_mng, side_cfg, true);
 
 		// Search the recall list for leader units, and if there is one,
 		// use it in place of the config-described unit
@@ -792,7 +792,7 @@ void game_state::get_player_info(const config& side_cfg,
 				it != teams.back().recall_list().end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
-					new_unit.set_game_context(&units, &map, &tod_mng, &teams);
+					new_unit.set_game_context(&units, &tod_mng);
 					teams.back().recall_list().erase(it);
 					break;
 				}
@@ -852,7 +852,7 @@ void game_state::get_player_info(const config& side_cfg,
 		teams.back().recall_list().clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(&units, &map, &tod_mng, &teams,**su,true);
+		unit new_unit(&units, &tod_mng, **su, true);
 
 		new_unit.set_side(side);
 

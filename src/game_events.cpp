@@ -1048,7 +1048,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
-			unit dummy_unit(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams, &itor->second, side_num + 1, false, true, gender, variation);
+			unit dummy_unit(resources::units, &resources::controller->get_tod_manager(), &itor->second, side_num + 1, false, true, gender, variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<map_location> path;
@@ -1765,7 +1765,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					// Iterate over the player's recall list to find a match
 					for(size_t i=0; i < pi->recall_list().size(); ++i) {
 						unit& u = pi->recall_list()[i];
-						u.set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
+						u.set_game_context(resources::units, &resources::controller->get_tod_manager());
 						scoped_recall_unit auto_store("this_unit", player_id, i);
 						if(game_events::unit_matches_filter(u, filter, map_location())) {
 							u.set_role(cfg["role"]);
@@ -1959,7 +1959,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
 		const config& parsed_cfg = cfg.get_parsed_config();
-		unit new_unit(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams, parsed_cfg, true, resources::state_of_game);
+		unit new_unit(resources::units, &resources::controller->get_tod_manager(), parsed_cfg, true, resources::state_of_game);
 		if(cfg.has_attribute("to_variable")) {
 			config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
@@ -2032,7 +2032,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				u->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
+				u->set_game_context(resources::units, &resources::controller->get_tod_manager());
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, unit_filter, map_location())) {
 					map_location loc = cfg_to_loc(cfg);
@@ -2266,7 +2266,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			{
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
+					j->set_game_context(resources::units, &resources::controller->get_tod_manager());
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
 						j = avail_units.erase(j);
@@ -2414,7 +2414,7 @@ WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
 					pi != resources::teams->end(); ++pi) {
 				std::vector<unit>& avail_units = pi->recall_list();
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					j->set_game_context(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources::teams);
+					j->set_game_context(resources::units, &resources::controller->get_tod_manager());
 					scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
 					if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
 						++j;
@@ -2444,7 +2444,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
 
 	try {
-		const unit u(resources::units, resources::game_map, &resources::controller->get_tod_manager(), resources:: teams, var, false);
+		const unit u(resources::units, &resources::controller->get_tod_manager(), var, false);
 
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc = cfg_to_loc(

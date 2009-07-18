@@ -1400,8 +1400,8 @@ void ai_default::analyze_potential_recruit_movements()
 			continue;
 		}
 
-		const unit temp_unit(&get_info().units,&get_info().map,
-				&get_info().tod_manager_, &get_info().teams, &info->second, get_side());
+		const unit temp_unit(&get_info().units,
+			&get_info().tod_manager_, &info->second, get_side());
 		// since we now use the ignore_units switch, no need to use a empty unit_map
 		// unit_map units;
 		// const temporary_unit_placer placer(units,start,temp_unit);

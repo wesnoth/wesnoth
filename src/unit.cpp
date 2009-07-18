@@ -31,6 +31,7 @@
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
@@ -162,15 +163,12 @@ unit::unit(const unit& o):
 
            modifications_(o.modifications_),
            units_(o.units_),
-           map_(o.map_),
            tod_manager_(o.tod_manager_),
-           teams_(o.teams_),
 		   invisibility_cache_()
 {
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
-		const std::vector<team>* teams,const config& cfg,
+unit::unit(unit_map* unitmap, const tod_manager* tod_mng, const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
 	advances_to_(),
@@ -238,9 +236,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
 	draw_bars_(false),
 	modifications_(),
 	units_(unitmap),
-	map_(map),
 	tod_manager_(tod_mng),
-	teams_(teams),
 	invisibility_cache_()
 {
 	read(cfg, use_traits, state);
@@ -319,9 +315,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	draw_bars_(false),
 	modifications_(),
 	units_(NULL),
-	map_(NULL),
 	tod_manager_(NULL),
-	teams_(NULL),
 	invisibility_cache_()
 {
 	read(cfg,use_traits);
@@ -359,8 +353,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 	}
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
-		const std::vector<team>* teams, const unit_type* t, int side,
+unit::unit(unit_map *unitmap, const tod_manager *tod_mng, const unit_type *t, int side,
 		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
 	advances_to_(),
@@ -428,9 +421,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng,
 	draw_bars_(false),
 	modifications_(),
 	units_(unitmap),
-	map_(map),
 	tod_manager_(tod_mng),
-	teams_(teams),
 	invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
@@ -529,7 +520,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	draw_bars_(false),
 	modifications_(),
 	units_(NULL),
-	map_(NULL),
 	tod_manager_(NULL),
 	invisibility_cache_()
 {
@@ -589,12 +579,10 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams)
+void unit::set_game_context(unit_map *unitmap, const tod_manager *tod_mng)
 {
 	units_ = unitmap;
-	map_ = map;
 	tod_manager_ = tod_mng;
-	teams_ = teams;
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
@@ -1135,12 +1123,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if(cfg.has_child("filter_location")) {
-		assert(map_ != NULL);
-		assert(teams_ != NULL);
+		assert(resources::game_map != NULL);
+		assert(resources::teams != NULL);
 		assert(tod_manager_ != NULL);
 		assert(units_ != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, *map_, *tod_manager_, *teams_, *units_, use_flat_tod);
+		terrain_filter t_filter(t_cfg, *resources::game_map, *tod_manager_, *resources::teams, *units_, use_flat_tod);
 		if(!t_filter.match(loc)) {
 			return false;
 		}
@@ -1151,7 +1139,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		const t_string& cfg_y = cfg["y"];
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
-			if((!map_ && loc.valid()) || (map_ && map_->on_board(loc))) {
+			if ((!resources::game_map && loc.valid()) ||
+			    (resources::game_map && resources::game_map->on_board(loc)))
+			{
 				return false;
 			}
 		} else if(cfg_x.empty() && cfg_y.empty()) {
@@ -1267,11 +1257,11 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		return false;
 	}
 
-	if(cfg.has_attribute("defense") && defense_modifier(map_->get_terrain(loc)) != lexical_cast_default<int>(cfg["defense"],-1)) {
+	if(cfg.has_attribute("defense") && defense_modifier(resources::game_map->get_terrain(loc)) != lexical_cast_default<int>(cfg["defense"],-1)) {
 		return false;
 	}
 
-	if(cfg.has_attribute("movement_cost") && movement_cost(map_->get_terrain(loc)) != lexical_cast_default<int>(cfg["movement_cost"],-1)) {
+	if(cfg.has_attribute("movement_cost") && movement_cost(resources::game_map->get_terrain(loc)) != lexical_cast_default<int>(cfg["movement_cost"],-1)) {
 		return false;
 	}
 
@@ -1331,7 +1321,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		assert(units_ && map_);
+		assert(units_ && resources::game_map);
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
@@ -2141,9 +2131,9 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 		return i->second;
 	}
 
-	assert(map_ != NULL);
+	assert(resources::game_map != NULL);
 	// If this is an alias, then select the best of all underlying terrains
-	const t_translation::t_list& underlying = map_->underlying_mvt_terrain(terrain);
+	const t_translation::t_list& underlying = resources::game_map->underlying_mvt_terrain(terrain);
 
 	assert(!underlying.empty());
 	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here, but first test underlying_mvt_terrain
@@ -2182,7 +2172,7 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 				<< underlying.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
-		const std::string& id = map_->get_terrain_info(underlying.front()).id();
+		const std::string& id = resources::game_map->get_terrain_info(underlying.front()).id();
 		const std::string &val = movement_costs[id];
 		if (!val.empty()) {
 			res = atoi(val.c_str());
@@ -2215,11 +2205,11 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		return d->second;
 	}
 
-	assert(map_ != NULL);
+	assert(resources::game_map != NULL);
 	int res = 100;
 
 	// If this is an alias, then select the best of all underlying terrains
-	const t_translation::t_list& underlying = map_->underlying_def_terrain(terrain);
+	const t_translation::t_list& underlying = resources::game_map->underlying_def_terrain(terrain);
 	assert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
@@ -2260,7 +2250,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 			return res;
 		}
 
-		const std::string& id = map_->get_terrain_info(underlying.front()).id();
+		const std::string& id = resources::game_map->get_terrain_info(underlying.front()).id();
 		const std::string &val = defense[id];
 		if (!val.empty()) {
 			res = atoi(val.c_str());

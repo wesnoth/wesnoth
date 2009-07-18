@@ -18,10 +18,11 @@
  */
 
 #include "foreach.hpp"
+#include "gamestatus.hpp"
+#include "resources.hpp"
+#include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
-#include "terrain_filter.hpp"
-#include "gamestatus.hpp"
 
 
 
@@ -244,7 +245,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
-	assert(units_ && map_ && teams_ && tod_manager_);
+	assert(units_ && resources::game_map && resources::teams && tod_manager_);
 
 	if (const config &afilter = cfg.child("filter"))
 		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
@@ -278,7 +279,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), *map_, *tod_manager_, *teams_, *units_);
+			terrain_filter adj_filter(vconfig(i), *resources::game_map, *tod_manager_, *resources::teams, *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -760,9 +761,9 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	aloc_ = loc;
 	dloc_ = dloc;
 	unitmap_ = un.units_;
-	map_ = un.map_;
+	map_ = resources::game_map;
 	tod_manager_ = un.tod_manager_;
-	teams_ = un.teams_;
+	teams_ = resources::teams;
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }

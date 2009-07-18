@@ -68,16 +68,16 @@ public:
 	unit(const unit& u);
 	/** Initilizes a unit from a config */
 	unit(const config& cfg, bool use_traits=false);
-	unit(unit_map* unitmap, const gamemap* map,
-		const tod_manager* tod_mng, const std::vector<team>* teams,
+	unit(unit_map* unitmap,
+		const tod_manager* tod_mng,
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/** Initializes a unit from a unit type */
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
-	unit(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
+	unit(unit_map* unitmap, const tod_manager* tod_mng, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
 	virtual ~unit();
 	unit& operator=(const unit&);
 
-	void set_game_context(unit_map* unitmap, const gamemap* map, const tod_manager* tod_mng, const std::vector<team>* teams);
+	void set_game_context(unit_map* unitmap, const tod_manager* tod_mng);
 
 	/** Advances this unit to another type */
 	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
@@ -457,9 +457,7 @@ private:
 
 	friend void attack_type::set_specials_context(const map_location& loc, const map_location&, const unit& un, bool) const;
 	const unit_map* units_;
-	const gamemap* map_;
 	const tod_manager* tod_manager_;
-	const std::vector<team>* teams_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
 	mutable std::map<map_location, bool> invisibility_cache_;
