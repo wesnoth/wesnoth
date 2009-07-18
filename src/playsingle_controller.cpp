@@ -556,7 +556,7 @@ void playsingle_controller::play_turn(bool save)
 			ai_testing::log_turn_end(player_number_);
 		}
 
-		check_victory(units_, teams_, *gui_);
+		check_victory();
 	}
 
 	// Time has run out

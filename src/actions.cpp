@@ -1954,11 +1954,12 @@ void advance_unit(unit_map& units,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
+void check_victory()
 {
 	std::vector<unsigned int> seen_leaders;
-	for(unit_map::const_iterator i = units.begin();
-			i != units.end(); ++i) {
+	for (unit_map::const_iterator i = resources::units->begin(),
+	     i_end = resources::units->end(); i != i_end; ++i)
+	{
 		if(i->second.can_recruit()) {
 			DBG_NG << "seen leader for side " << i->second.side() << "\n";
 			seen_leaders.push_back(i->second.side());
@@ -1966,12 +1967,14 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 	}
 
 	// Clear villages for teams that have no leader
-	for(std::vector<team>::iterator tm = teams.begin(); tm != teams.end(); ++tm) {
-		if(std::find(seen_leaders.begin(),seen_leaders.end(),tm-teams.begin() + 1) == seen_leaders.end()) {
+	for (std::vector<team>::iterator tm_beg = resources::teams->begin(), tm = tm_beg,
+	     tm_end = resources::teams->end(); tm != tm_end; ++tm)
+	{
+		if (std::find(seen_leaders.begin(), seen_leaders.end(), tm - tm_beg + 1) == seen_leaders.end()) {
 			tm->clear_villages();
 			// invalidate_all() is overkill and expensive but this code is
 			// run rarely so do it the expensive way.
-			disp.invalidate_all();
+			resources::screen->invalidate_all();
 		}
 	}
 
@@ -1981,15 +1984,13 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 	for(size_t n = 0; n != seen_leaders.size(); ++n) {
 		const size_t side = seen_leaders[n]-1;
 
-		assert(side < teams.size());
-
 		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
-			if(side < teams.size() && teams[side].is_enemy(seen_leaders[m])) {
+			if ((*resources::teams)[side].is_enemy(seen_leaders[m])) {
 				found_enemies = true;
 			}
 		}
 
-		if (teams[side].is_human()) {
+		if ((*resources::teams)[side].is_human()) {
 			found_player = true;
 		}
 	}
@@ -2008,7 +2009,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 		if(non_interactive()) {
 			std::cout << "winner: ";
 			for(std::vector<unsigned int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
-				std::string ai = teams[*i - 1].ai_algorithm();
+				std::string ai = (*resources::teams)[*i - 1].ai_algorithm();
 				if (ai == "") ai = "default ai";
 				std::cout << *i << " (using " << ai << ") ";
 			}

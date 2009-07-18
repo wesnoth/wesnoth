@@ -283,7 +283,7 @@ void attack_result::do_execute()
 		}
 	}
 
-	check_victory(get_info().units,get_info().teams, get_info().disp);
+	check_victory();
 	set_gamestate_changed();
 	manager::raise_enemy_attacked();
 }

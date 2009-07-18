@@ -572,7 +572,7 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 		}
 	}
 
-	check_victory(get_info().units,get_info().teams, get_info().disp);
+	check_victory();
 	raise_enemy_attacked();
 
 }
