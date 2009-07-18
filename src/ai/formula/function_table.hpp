@@ -39,5 +39,5 @@ private:
 
 }
 
-#endif	/* _FUNCTION_TABLE_HPP */
+#endif	/* FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED */
 

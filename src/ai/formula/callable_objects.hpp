@@ -310,5 +310,5 @@ public:
 
 }
 
-#endif	/* _CALLABLE_OBJECTS_HPP */
+#endif	/* FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED */
 

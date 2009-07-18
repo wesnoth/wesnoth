@@ -131,11 +131,9 @@ void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 }
 
 
-attack_callable::attack_callable(const formula_ai& ai,
-				const map_location& move_from,
-				const map_location& src, const map_location& dst,
-		int weapon)
-  : move_from_(move_from), src_(src), dst_(dst),
+attack_callable::attack_callable(const formula_ai& ai, const map_location& move_from,
+				    const map_location& src, const map_location& dst, int weapon)
+	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(ai.get_info().map, ai.get_info().teams, ai.get_info().units,
 		ai.get_info().tod_manager_, src, dst, weapon, -1, 1.0, NULL,
 		&ai.get_info().units.find(move_from)->second)
@@ -220,6 +218,7 @@ void attack_map_callable::get_inputs(std::vector<game_logic::formula_input>* inp
 void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const {
 	map_location adj[6];
 	get_adjacent_tiles(attack_position, adj);
+	
 	for(int n = 0; n != 6; ++n) {
 		/* if adjacent tile is outside the board */
 		if (! ai_.get_info().map.on_board(adj[n]))
@@ -319,6 +318,7 @@ variant safe_call_result::get_value(const std::string& key) const {
 
 	if(key == "current_loc" && current_unit_location_ != map_location())
 		return variant(new location_callable(current_unit_location_));
+	
 	return variant();
 }
 

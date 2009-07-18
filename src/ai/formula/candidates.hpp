@@ -161,5 +161,5 @@ public:
 };
 }
 
-#endif	/* _FORMULA_CANDIDATES_HPP */
+#endif	/* AI_FORMULA_CANDIDATES_HPP_INCLUDED */
 
