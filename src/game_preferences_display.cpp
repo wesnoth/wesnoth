@@ -95,7 +95,7 @@ private:
 	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
 	            scroll_slider_, chat_lines_slider_,
-	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_;
+	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_, advanced_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, scroll_to_action_button_,turbo_button_, show_ai_moves_button_,
 			show_grid_button_, save_replays_button_, delete_saves_button_,
@@ -120,7 +120,8 @@ private:
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
-	  idle_anim_slider_label_, autosavemax_slider_label_;
+			   idle_anim_slider_label_, autosavemax_slider_label_,
+			   advanced_slider_label_;
 	gui::textbox sample_rate_input_, friends_input_;
 
 	unsigned slider_label_width_;
@@ -147,6 +148,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  scroll_slider_(disp.video()),
 	  chat_lines_slider_(disp.video()), buffer_size_slider_(disp.video()),
 	  idle_anim_slider_(disp.video()), autosavemax_slider_(disp.video()),
+	  advanced_slider_(disp.video()),
 	  turbo_slider_(disp.video()),
 
 
@@ -200,6 +202,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
 	  idle_anim_slider_label_(disp.video(), _("Frequency:")),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
+	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
@@ -408,6 +411,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&idle_anim_slider_);
 	h.push_back(&autosavemax_slider_);
 	h.push_back(&buffer_size_slider_);
+	h.push_back(&advanced_slider_);
 	h.push_back(&fullscreen_button_);
 	h.push_back(&scroll_to_action_button_);
 	h.push_back(&turbo_button_);
@@ -458,6 +462,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&autosavemax_slider_label_);
+	h.push_back(&advanced_slider_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
@@ -644,6 +649,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += advanced_.height() + font::relative_size(14);
 
 	advanced_button_.set_location(rect.x,ypos);
+	advanced_slider_label_.set_location(rect.x,ypos);
+	const SDL_Rect advanced_slider_rect = { rect.x, ypos+short_interline,
+				rect.w - right_border, 0};
+	advanced_slider_.set_location(advanced_slider_rect);
 
 	set_selection(tab_);
 }
@@ -917,24 +926,49 @@ void preferences_dialog::process_event()
 			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
-				advanced_button_.set_width(0);
-				advanced_button_.set_label(pref["name"]);
 				std::string value = preferences::get(pref["field"]);
+				advanced_button_.hide(pref["type"] != "boolean");
+				const bool hide_int = pref["type"] != "int";
+				advanced_slider_.hide(hide_int);
+				advanced_slider_label_.hide(hide_int);
 				if(value.empty()) {
 					value = pref["default"];
 				}
-
-				advanced_button_.set_check(value == "yes");
+				if (pref["type"] == "boolean") {
+					advanced_button_.set_width(0);
+					advanced_button_.set_label(pref["name"]);
+					advanced_button_.set_check(value == "yes");
+				} else if (pref["type"] == "int") {
+					std::stringstream ss;
+					ss << pref["name"] << ": " << value;
+					advanced_slider_label_.set_text(ss.str());
+					advanced_slider_.set_min(lexical_cast<int>(pref["min"]));
+					advanced_slider_.set_max(lexical_cast<int>(pref["max"]));
+					advanced_slider_.set_increment(lexical_cast_default<int>(pref["step"], 1));
+					advanced_slider_.set_value(lexical_cast<int>(value));
+				}
 			}
 		}
 
+		const config* const adv = get_advanced_pref();
 		if(advanced_button_.pressed()) {
-			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
 				preferences::set(pref["field"],
 						advanced_button_.checked() ? "yes" : "no");
 				set_advanced_menu();
+			}
+		}
+
+		if(advanced_slider_.value_change()) {
+			if(adv != NULL) {
+				const config& pref = *adv;
+				preferences::set(pref["field"],
+						str_cast(advanced_slider_.value()));
+				set_advanced_menu();
+				std::stringstream ss;
+				ss << pref["name"] << ": " << advanced_slider_.value();
+				advanced_slider_label_.set_text(ss.str());
 			}
 		}
 
@@ -1106,7 +1140,12 @@ void preferences_dialog::set_selection(int index)
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
-	advanced_button_.hide(hide_advanced);
+	const std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"] : "";
+	const bool hide_advanced_bool = hide_advanced || adv_type != "boolean";
+	const bool hide_advanced_int = hide_advanced || adv_type != "int";
+	advanced_button_.hide(hide_advanced_bool);
+	advanced_slider_label_.hide(hide_advanced_int);
+	advanced_slider_.hide(hide_advanced_int);
 }
 
 }
