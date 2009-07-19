@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 13:31+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -7064,15 +7064,15 @@ msgstr "okamenjena"
 msgid "petrified"
 msgstr "okamenjen"
 
-#: src/actions.cpp:2491
+#: src/actions.cpp:2490
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2498
+#: src/actions.cpp:2497
 msgid "Failed teleport! Exit not empty"
 msgstr "Neuspešna teleportacija! Izlaz nije prazan."
 
-#: src/actions.cpp:2543
+#: src/actions.cpp:2542
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Uočena $friends saveznička jedinica"
@@ -7080,7 +7080,7 @@ msgstr[1] "Uočene $friends savezničke jedinice"
 msgstr[2] "Uočeno $friends savezničkih jedinica"
 msgstr[3] "Uočena saveznička jedinica"
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2545
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Uočena $enemies neprijateljska jedinica!"
@@ -7088,7 +7088,7 @@ msgstr[1] "Uočene $enemies neprijateljske jedinice!"
 msgstr[2] "Uočeno $enemies neprijateljskih jedinica!"
 msgstr[3] "Uočena neprijateljska jedinica!"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2550
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends saveznička"
@@ -7096,7 +7096,7 @@ msgstr[1] "$friends savezničke"
 msgstr[2] "$friends savezničkih"
 msgstr[3] "jedna saveznička"
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2551
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies neprijateljska"
@@ -7104,11 +7104,11 @@ msgstr[1] "$enemies neprijateljske"
 msgstr[2] "$enemies neprijateljskih"
 msgstr[3] "jedna neprijateljska"
 
-#: src/actions.cpp:2553
+#: src/actions.cpp:2552
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Uočene jedinice! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2562
+#: src/actions.cpp:2561
 msgid "(press $hotkey to keep moving)"
 msgstr "(pritisnite $hotkey da produži)"
 
@@ -7768,16 +7768,16 @@ msgstr "Filter [unit_worth] ne poklapa nijednu jedinicu."
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "Nađena udvojena definicija strane za stranu ‘$side|’."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Ova jedinica je nevidljiva. Neprijatelji je ne mogu videti niti napasti."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "invisible: "
 msgstr "nevidljiva: "
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7785,11 +7785,11 @@ msgstr ""
 "Ova jedinica je usporena. Naneće samo polovinu normalne štete kada napada, a "
 "trošak kretanja joj je udvostručen."
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid "slowed: "
 msgstr "usporena: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7803,31 +7803,31 @@ msgstr ""
 "\n"
 "Jedinice ne mogu biti ubijene samo otrovom. Otrov neće smanjiti UP ispod 1."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid "poisoned: "
 msgstr "otrovana: "
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Ova jedinica je okamenjena. Ne može se kretati niti napadati."
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 msgid "petrified: "
 msgstr "okamenjena: "
 
-#: src/generate_report.cpp:177
+#: src/generate_report.cpp:178
 msgid "Resistances: "
 msgstr "otpornosti: "
 
-#: src/generate_report.cpp:179
+#: src/generate_report.cpp:180
 msgid "(Att / Def)"
 msgstr "(npd/obr)"
 
-#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
+#: src/generate_report.cpp:199 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "modifikator iskustva: "
 
-#: src/generate_report.cpp:266
+#: src/generate_report.cpp:267
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "štete"
@@ -7835,7 +7835,7 @@ msgstr[1] "štete"
 msgstr[2] "štete"
 msgstr[3] "štete"
 
-#: src/generate_report.cpp:267
+#: src/generate_report.cpp:268
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "napad"
@@ -7843,41 +7843,41 @@ msgstr[1] "napada"
 msgstr[2] "napada"
 msgstr[3] "napad"
 
-#: src/generate_report.cpp:273
+#: src/generate_report.cpp:274
 #, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "% preciznosti"
 
-#: src/generate_report.cpp:279
+#: src/generate_report.cpp:280
 #, no-c-format
 msgid "tooltip^% parry"
 msgstr "% pariranja"
 
-#: src/generate_report.cpp:290
+#: src/generate_report.cpp:291
 msgid "weapon range: "
 msgstr "domet oružja: "
 
-#: src/generate_report.cpp:291
+#: src/generate_report.cpp:292
 msgid "damage type: "
 msgstr "vid štete: "
 
-#: src/generate_report.cpp:312
+#: src/generate_report.cpp:313
 msgid "vs"
 msgstr "pr."
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:362
 msgid "Lawful units: "
 msgstr "zakonite jedinice: "
 
-#: src/generate_report.cpp:363
+#: src/generate_report.cpp:364
 msgid "Neutral units: "
 msgstr "neutralne jedinice: "
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Chaotic units: "
 msgstr "haotične jedinice: "
 
-#: src/generate_report.cpp:511
+#: src/generate_report.cpp:512
 msgid "Observers:"
 msgstr "posmatrači:"
 
@@ -9816,8 +9816,8 @@ msgstr "Pomognite Vesnot"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozite Vesnotu šaljući nam informacije"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:242
-#: src/tod_manager.cpp:255 src/tod_manager.cpp:305
+#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
+#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
 msgid "No time of day has been defined."
 msgstr "Doba dana nije određeno."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -451,6 +451,7 @@ msgstr "Cova accidentada"
 #. [terrain_type]: id=mountain_village
 #. [terrain_type]: id=tropical_forest_village
 #. [terrain_type]: id=camp_village
+#. [terrain_type]: id=drake_village
 #. [terrain_type]: id=underground_village
 #. [terrain_type]: id=dwarven_village
 #. [terrain_type]: id=hut_village
@@ -471,82 +472,82 @@ msgstr "Cova accidentada"
 #: data/core/terrain.cfg:1089 data/core/terrain.cfg:1100
 #: data/core/terrain.cfg:1111 data/core/terrain.cfg:1123
 #: data/core/terrain.cfg:1134 data/core/terrain.cfg:1145
-#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1169
+#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1167
 #: data/core/terrain.cfg:1180 data/core/terrain.cfg:1191
 #: data/core/terrain.cfg:1202 data/core/terrain.cfg:1213
 #: data/core/terrain.cfg:1224 data/core/terrain.cfg:1235
 #: data/core/terrain.cfg:1246 data/core/terrain.cfg:1257
-#: data/core/terrain.cfg:1270 data/core/terrain.cfg:1285
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
+#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1307
 msgid "Village"
 msgstr "Aldea"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1322
 msgid "Deep Water"
 msgstr "Aigües fondes"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:1321
+#: data/core/terrain.cfg:1332
 msgid "Shallow Water"
 msgstr "Aigües someres"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1342
 msgid "River Ford"
 msgstr "Vau del riu"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1353
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Coster"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1356
+#: data/core/terrain.cfg:1367
 msgid "Impassable Mountains"
 msgstr "Montanyes infranquejables"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1365
+#: data/core/terrain.cfg:1376
 msgid "Impassable Desert Mountains"
 msgstr "Montanyes desèrtiques infranquejables"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1374
+#: data/core/terrain.cfg:1385
 msgid "Cave Wall"
 msgstr "Paret de cova"
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:1383
+#: data/core/terrain.cfg:1394
 #, fuzzy
 msgid "Wall"
 msgstr "Paret de cova"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1393 data/core/terrain.cfg:1431
+#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
 #, fuzzy
 msgid "Impassable"
 msgstr "Montanyes infranquejables"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1415
 msgid "Void"
 msgstr "Buit"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1417
+#: data/core/terrain.cfg:1428
 msgid "Flat"
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1435
 msgid "Frozen"
 msgstr ""
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1438
+#: data/core/terrain.cfg:1449
 msgid "Unwalkable"
 msgstr ""
 
@@ -1823,19 +1824,19 @@ msgstr "No hi ha temes coneguts. Intenta canviar-los des d'un joc existent."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:343
+#: src/gui/auxiliary/canvas.cpp:356
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:478
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:849
+#: src/gui/auxiliary/canvas.cpp:862
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:914
+#: src/gui/auxiliary/canvas.cpp:927
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -1843,30 +1844,30 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:516
 #, fuzzy
 msgid "No resolution defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/auxiliary/window_builder.cpp:294
+#: src/gui/auxiliary/window_builder.cpp:280
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
-#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
-#: src/gui/widgets/settings.cpp:1120
+#: src/gui/widgets/settings.cpp:771 src/gui/widgets/settings.cpp:867
+#: src/gui/widgets/settings.cpp:956 src/gui/widgets/settings.cpp:998
+#: src/gui/widgets/settings.cpp:1116
 #, fuzzy
 msgid "No grid defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/auxiliary/window_builder.cpp:325
+#: src/gui/auxiliary/window_builder.cpp:311
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:424
+#: src/gui/auxiliary/window_builder.cpp:410
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:425
+#: src/gui/auxiliary/window_builder.cpp:411
 msgid "Number of columns differ."
 msgstr ""
 
@@ -1954,16 +1955,16 @@ msgstr "No s'ha definit cap servidor"
 msgid "No default gui defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:404
+#: src/gui/widgets/settings.cpp:400
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:546
+#: src/gui/widgets/settings.cpp:542
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "No s'ha definit cap servidor"

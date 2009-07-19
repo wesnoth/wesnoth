@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2009-07-13 11:30+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -7110,16 +7110,16 @@ msgstr "отравлена"
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2491
+#: src/actions.cpp:2490
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2498
+#: src/actions.cpp:2497
 msgid "Failed teleport! Exit not empty"
 msgstr "Телепорт не удался. Пункт назначения не пуст."
 
 # ignore-interpolations: $friends
-#: src/actions.cpp:2543
+#: src/actions.cpp:2542
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Вижу дружественного бойца"
@@ -7127,32 +7127,32 @@ msgstr[1] "Вижу $friends дружественных бойцов"
 msgstr[2] "Вижу $friends дружественных бойцов"
 
 # ignore-interpolations: $enemies
-#: src/actions.cpp:2546
+#: src/actions.cpp:2545
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Вижу врага!"
 msgstr[1] "Вижу $enemies врагов!"
 msgstr[2] "Вижу $enemies врагов!"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2550
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественный, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2551
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеский"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2553
+#: src/actions.cpp:2552
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Вижу войска! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2562
+#: src/actions.cpp:2561
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
@@ -7799,15 +7799,15 @@ msgstr ""
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "Обнаружено дублирующее описание для стороны '$side|'."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Этот боец невидим. Противник не может его увидеть или атаковать."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "invisible: "
 msgstr "невидимый: "
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7815,11 +7815,11 @@ msgstr ""
 "Этот боец был замедлен. Он наносит при атаке только половинный ущерб, и "
 "движение для него вдвое дороже."
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid "slowed: "
 msgstr "замедлен: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7833,80 +7833,80 @@ msgstr ""
 "\n"
 "Бойца нельзя убить одним ядом. Яд не может понизить ЗД ниже 1 единицы."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid "poisoned: "
 msgstr "отравлен: "
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Данный боец превращён в камень. Он не может двигаться или атаковать."
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 msgid "petrified: "
 msgstr ""
 
-#: src/generate_report.cpp:177
+#: src/generate_report.cpp:178
 msgid "Resistances: "
 msgstr "Сопротивляемости: "
 
-#: src/generate_report.cpp:179
+#: src/generate_report.cpp:180
 msgid "(Att / Def)"
 msgstr "(Атака / Защ)"
 
-#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
+#: src/generate_report.cpp:199 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "Модификатор опыта: "
 
-#: src/generate_report.cpp:266
+#: src/generate_report.cpp:267
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "урона"
 msgstr[1] "урона"
 msgstr[2] "урона"
 
-#: src/generate_report.cpp:267
+#: src/generate_report.cpp:268
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "атака"
 msgstr[1] "атаки"
 msgstr[2] "атак"
 
-#: src/generate_report.cpp:273
+#: src/generate_report.cpp:274
 #, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "% попадания"
 
-#: src/generate_report.cpp:279
+#: src/generate_report.cpp:280
 #, no-c-format
 msgid "tooltip^% parry"
 msgstr "% защиты"
 
-#: src/generate_report.cpp:290
+#: src/generate_report.cpp:291
 msgid "weapon range: "
 msgstr "досягаемость оружия: "
 
-#: src/generate_report.cpp:291
+#: src/generate_report.cpp:292
 msgid "damage type: "
 msgstr "тип повреждений: "
 
-#: src/generate_report.cpp:312
+#: src/generate_report.cpp:313
 msgid "vs"
 msgstr "против"
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:362
 msgid "Lawful units: "
 msgstr "Порядочные бойцы: "
 
-#: src/generate_report.cpp:363
+#: src/generate_report.cpp:364
 msgid "Neutral units: "
 msgstr "Нейтральные бойцы: "
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Chaotic units: "
 msgstr "Хаотичные бойцы: "
 
-#: src/generate_report.cpp:511
+#: src/generate_report.cpp:512
 msgid "Observers:"
 msgstr "Наблюдатели:"
 
@@ -9853,8 +9853,8 @@ msgstr "Помогите разработчикам Веснота"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогите Весноту, отправив нам информацию"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:242
-#: src/tod_manager.cpp:255 src/tod_manager.cpp:305
+#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
+#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
 msgid "No time of day has been defined."
 msgstr "Время суток не задано."
 

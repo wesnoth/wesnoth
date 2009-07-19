@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -6945,43 +6945,43 @@ msgstr "zehirlendi"
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2491
+#: src/actions.cpp:2490
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions.cpp:2498
+#: src/actions.cpp:2497
 msgid "Failed teleport! Exit not empty"
 msgstr "Işınlanamadı! Çıkış boş değil"
 
-#: src/actions.cpp:2543
+#: src/actions.cpp:2542
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Dost birim göründü"
 msgstr[1] "$friends dost birim göründü"
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2545
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 msgstr[1] "$enemies düşman birimi göründü!"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2550
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 dost"
 msgstr[1] "$friends dost"
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2551
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 düşman"
 msgstr[1] "$enemies düşman"
 
-#: src/actions.cpp:2553
+#: src/actions.cpp:2552
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birimler göründü! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2562
+#: src/actions.cpp:2561
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
@@ -7620,16 +7620,16 @@ msgstr ""
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "‘$side|’ için birden fazla taraf tanımı bulundu."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Bu birim görünmez. Düşman birimleri tarafından görülemez ve saldırılamaz."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "invisible: "
 msgstr "görünmez: "
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7637,11 +7637,11 @@ msgstr ""
 "Bu birim yavaşlatıldı; artık her araziyi iki misli yavaş geçecek ve "
 "saldırırken de normalin yarısı kadar hasar verebilecek."
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid "slowed: "
 msgstr "yavaşlatılmış: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7656,78 +7656,78 @@ msgstr ""
 "Bir birim sadece zehir ile öldürülemez. Zehir yaşam enerjisini 1 YP’nin "
 "altına düşürmez."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid "poisoned: "
 msgstr "zehirlenmiş: "
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 msgid "petrified: "
 msgstr ""
 
-#: src/generate_report.cpp:177
+#: src/generate_report.cpp:178
 msgid "Resistances: "
 msgstr "Dirençler: "
 
-#: src/generate_report.cpp:179
+#: src/generate_report.cpp:180
 msgid "(Att / Def)"
 msgstr "(Sald / Sav)"
 
-#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
+#: src/generate_report.cpp:199 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "Tecrübe Ayarı: "
 
-#: src/generate_report.cpp:266
+#: src/generate_report.cpp:267
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "hasarlı"
 msgstr[1] "hasarlı"
 
-#: src/generate_report.cpp:267
+#: src/generate_report.cpp:268
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "vuruş"
 msgstr[1] "vuruş"
 
-#: src/generate_report.cpp:273
+#: src/generate_report.cpp:274
 #, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "isabet yüzdesi"
 
-#: src/generate_report.cpp:279
+#: src/generate_report.cpp:280
 #, no-c-format
 msgid "tooltip^% parry"
 msgstr "savuşturma yüzdesi"
 
-#: src/generate_report.cpp:290
+#: src/generate_report.cpp:291
 msgid "weapon range: "
 msgstr "Silah menzili: "
 
-#: src/generate_report.cpp:291
+#: src/generate_report.cpp:292
 msgid "damage type: "
 msgstr "hasar türü: "
 
-#: src/generate_report.cpp:312
+#: src/generate_report.cpp:313
 msgid "vs"
 msgstr ".."
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:362
 msgid "Lawful units: "
 msgstr "Adil birimler: "
 
-#: src/generate_report.cpp:363
+#: src/generate_report.cpp:364
 msgid "Neutral units: "
 msgstr "Tarafsız birimler: "
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Chaotic units: "
 msgstr "Kaypak birimler: "
 
-#: src/generate_report.cpp:511
+#: src/generate_report.cpp:512
 msgid "Observers:"
 msgstr "Seyirciler:"
 
@@ -9668,8 +9668,8 @@ msgstr "Wesnoth Yardımı"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth’a yardım edebilirsiniz"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:242
-#: src/tod_manager.cpp:255 src/tod_manager.cpp:305
+#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
+#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
 msgid "No time of day has been defined."
 msgstr "Günün saati için bir tanım yapılmamış."
 

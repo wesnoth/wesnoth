@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -6918,39 +6918,39 @@ msgstr "アンデッド"
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2491
+#: src/actions.cpp:2490
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2498
+#: src/actions.cpp:2497
 msgid "Failed teleport! Exit not empty"
 msgstr "テレポートに失敗した！ 出口が空いていなかった"
 
-#: src/actions.cpp:2543
+#: src/actions.cpp:2542
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2546
+#: src/actions.cpp:2545
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2550
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2551
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions.cpp:2553
+#: src/actions.cpp:2552
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ ($friendphrase、$enemyphrase )"
 
-#: src/actions.cpp:2562
+#: src/actions.cpp:2561
 msgid "(press $hotkey to keep moving)"
 msgstr "(移動し続けるには $hotkey を押して下さい)"
 
@@ -7605,17 +7605,17 @@ msgstr ""
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "'$side|' 陣営についての重複した定義が見つかりました。"
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "このユニットは見えません。 敵のユニットから 発見されることも、 攻撃されること"
 "もありません。"
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:106
 msgid "invisible: "
 msgstr "姿が見えない: "
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -7624,11 +7624,11 @@ msgstr ""
 "このユニットは遅くなってしまいました。攻撃時に通常の半分のダメージしか与えら"
 "れません。"
 
-#: src/generate_report.cpp:110
+#: src/generate_report.cpp:111
 msgid "slowed: "
 msgstr "遅化: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7642,76 +7642,76 @@ msgstr ""
 "\n"
 "毒のみでは死ぬことはありません。毒はHPを1未満には下げません。"
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:116
 msgid "poisoned: "
 msgstr "毒: "
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "このユニットは石になってしまいました。移動や攻撃はできません。"
 
-#: src/generate_report.cpp:122
+#: src/generate_report.cpp:123
 msgid "petrified: "
 msgstr ""
 
-#: src/generate_report.cpp:177
+#: src/generate_report.cpp:178
 msgid "Resistances: "
 msgstr "抵抗力: "
 
-#: src/generate_report.cpp:179
+#: src/generate_report.cpp:180
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
+#: src/generate_report.cpp:199 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "経験の修正: "
 
-#: src/generate_report.cpp:266
+#: src/generate_report.cpp:267
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "ダメージ"
 
-#: src/generate_report.cpp:267
+#: src/generate_report.cpp:268
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "攻撃"
 
-#: src/generate_report.cpp:273
+#: src/generate_report.cpp:274
 #, fuzzy, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "攻撃"
 
-#: src/generate_report.cpp:279
+#: src/generate_report.cpp:280
 #, fuzzy, no-c-format
 msgid "tooltip^% parry"
 msgstr "ダメージ"
 
-#: src/generate_report.cpp:290
+#: src/generate_report.cpp:291
 msgid "weapon range: "
 msgstr "武器の射程:"
 
-#: src/generate_report.cpp:291
+#: src/generate_report.cpp:292
 msgid "damage type: "
 msgstr "ダメージの種類:"
 
-#: src/generate_report.cpp:312
+#: src/generate_report.cpp:313
 msgid "vs"
 msgstr "対"
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:362
 msgid "Lawful units: "
 msgstr "秩序ユニット: "
 
-#: src/generate_report.cpp:363
+#: src/generate_report.cpp:364
 msgid "Neutral units: "
 msgstr "中立ユニット: "
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Chaotic units: "
 msgstr "混沌ユニット: "
 
-#: src/generate_report.cpp:511
+#: src/generate_report.cpp:512
 msgid "Observers:"
 msgstr "観戦者:"
 
@@ -9677,8 +9677,8 @@ msgstr "Battle for Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:242
-#: src/tod_manager.cpp:255 src/tod_manager.cpp:305
+#: src/tod_manager.cpp:102 src/tod_manager.cpp:134 src/tod_manager.cpp:238
+#: src/tod_manager.cpp:251 src/tod_manager.cpp:301
 msgid "No time of day has been defined."
 msgstr "時刻が定義されていません。"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2009-04-05 12:09-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -454,6 +454,7 @@ msgstr "Cueva accidentada"
 #. [terrain_type]: id=mountain_village
 #. [terrain_type]: id=tropical_forest_village
 #. [terrain_type]: id=camp_village
+#. [terrain_type]: id=drake_village
 #. [terrain_type]: id=underground_village
 #. [terrain_type]: id=dwarven_village
 #. [terrain_type]: id=hut_village
@@ -474,79 +475,79 @@ msgstr "Cueva accidentada"
 #: data/core/terrain.cfg:1089 data/core/terrain.cfg:1100
 #: data/core/terrain.cfg:1111 data/core/terrain.cfg:1123
 #: data/core/terrain.cfg:1134 data/core/terrain.cfg:1145
-#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1169
+#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1167
 #: data/core/terrain.cfg:1180 data/core/terrain.cfg:1191
 #: data/core/terrain.cfg:1202 data/core/terrain.cfg:1213
 #: data/core/terrain.cfg:1224 data/core/terrain.cfg:1235
 #: data/core/terrain.cfg:1246 data/core/terrain.cfg:1257
-#: data/core/terrain.cfg:1270 data/core/terrain.cfg:1285
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
+#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1307
 msgid "Village"
 msgstr "Aldea"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1322
 msgid "Deep Water"
 msgstr "Aguas profundas"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:1321
+#: data/core/terrain.cfg:1332
 msgid "Shallow Water"
 msgstr "Aguas someras"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1342
 msgid "River Ford"
 msgstr "Vado del río"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1353
 msgid "Coastal Reef"
 msgstr "Arrecife costero"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1356
+#: data/core/terrain.cfg:1367
 msgid "Impassable Mountains"
 msgstr "Montañas infranqueables"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1365
+#: data/core/terrain.cfg:1376
 msgid "Impassable Desert Mountains"
 msgstr "Montañas infranqueables desérticas"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1374
+#: data/core/terrain.cfg:1385
 msgid "Cave Wall"
 msgstr "Pared de cueva"
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:1383
+#: data/core/terrain.cfg:1394
 msgid "Wall"
 msgstr "Pared"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1393 data/core/terrain.cfg:1431
+#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
 msgid "Impassable"
 msgstr "Impenetrable"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1415
 msgid "Void"
 msgstr "Vacío"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1417
+#: data/core/terrain.cfg:1428
 msgid "Flat"
 msgstr "Llano"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1435
 msgid "Frozen"
 msgstr "Congelado"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1438
+#: data/core/terrain.cfg:1449
 msgid "Unwalkable"
 msgstr "Intransitable"
 
@@ -1821,19 +1822,19 @@ msgid "Find $filename server binary to host networked games"
 msgstr ""
 "Seleccione binario $filename del servidor para alojar partidas multijugador"
 
-#: src/gui/auxiliary/canvas.cpp:343
+#: src/gui/auxiliary/canvas.cpp:356
 msgid "Line doesn't fit on canvas."
 msgstr "La línea no cabe en el lienzo."
 
-#: src/gui/auxiliary/canvas.cpp:478
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Rectangle doesn't fit on canvas."
 msgstr "El rectángulo no cabe en el lienzo."
 
-#: src/gui/auxiliary/canvas.cpp:849
+#: src/gui/auxiliary/canvas.cpp:862
 msgid "Text has a font size of 0."
 msgstr "El texto tiene un tamaño de fuente nulo."
 
-#: src/gui/auxiliary/canvas.cpp:914
+#: src/gui/auxiliary/canvas.cpp:927
 msgid "Text doesn't start on canvas."
 msgstr "El texto no empieza en el lienzo."
 
@@ -1841,28 +1842,28 @@ msgstr "El texto no empieza en el lienzo."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:516
 msgid "No resolution defined."
 msgstr "No se ha definido ninguna resolución."
 
-#: src/gui/auxiliary/window_builder.cpp:294
+#: src/gui/auxiliary/window_builder.cpp:280
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
-#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
-#: src/gui/widgets/settings.cpp:1120
+#: src/gui/widgets/settings.cpp:771 src/gui/widgets/settings.cpp:867
+#: src/gui/widgets/settings.cpp:956 src/gui/widgets/settings.cpp:998
+#: src/gui/widgets/settings.cpp:1116
 msgid "No grid defined."
 msgstr "No se ha definido ninguna malla."
 
-#: src/gui/auxiliary/window_builder.cpp:325
+#: src/gui/auxiliary/window_builder.cpp:311
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:424
+#: src/gui/auxiliary/window_builder.cpp:410
 msgid "A row must have a column."
 msgstr "Una fila debe tener una columna."
 
-#: src/gui/auxiliary/window_builder.cpp:425
+#: src/gui/auxiliary/window_builder.cpp:411
 msgid "Number of columns differ."
 msgstr "El número de columnas es distinto."
 
@@ -1952,16 +1953,16 @@ msgstr "El widget obligatorio «$id» no ha sido definido."
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr "Ventana no definida."
 
-#: src/gui/widgets/settings.cpp:404
+#: src/gui/widgets/settings.cpp:400
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:546
+#: src/gui/widgets/settings.cpp:542
 msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 

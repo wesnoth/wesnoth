@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 13:46+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2008-04-22 10:08+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -215,9 +215,9 @@ msgstr ""
 #. [attack]: type=arcane
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:78
+#: data/core/units/drakes/Enforcer.cfg:77
 #: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:78
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:24
 #: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
 #: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
@@ -283,8 +283,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
-#: data/core/units/drakes/Enforcer.cfg:96
-#: data/core/units/drakes/Gladiator.cfg:87
+#: data/core/units/drakes/Enforcer.cfg:95
+#: data/core/units/drakes/Gladiator.cfg:33
 #: data/core/units/dwarves/Guardsman.cfg:43
 #: data/core/units/dwarves/Sentinel.cfg:51
 #: data/core/units/dwarves/Stalwart.cfg:46
@@ -320,7 +320,7 @@ msgid "Drake Enforcer"
 msgstr "ドレークの下士官"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
-#: data/core/units/drakes/Enforcer.cfg:20
+#: data/core/units/drakes/Enforcer.cfg:21
 #, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -332,8 +332,8 @@ msgstr ""
 "す。"
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Enforcer.cfg:87
-#: data/core/units/drakes/Gladiator.cfg:96
+#: data/core/units/drakes/Enforcer.cfg:86
+#: data/core/units/drakes/Gladiator.cfg:42
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
@@ -424,15 +424,22 @@ msgid "Drake Gladiator"
 msgstr "ドレークの剣闘士"
 
 #. [unit_type]: id=Drake Gladiator, race=drake
-#: data/core/units/drakes/Gladiator.cfg:19
+#: data/core/units/drakes/Gladiator.cfg:20
+#, fuzzy
 msgid ""
-"Instead of letting themselves be bound by their armor, Gladiators have "
-"learned to redirect its weight to supplement their bodies' momentum, adding "
-"power to the blows of their short spears and hand-mounted claws. Equipment "
-"and body are one; even their thick helms and the thick skulls beneath them "
-"are weapons. A Gladiator will gladly fulfill his caste duties, as long as it "
-"can be done on the battlefield."
+"The Gladiator has taken a completely different path from the Slashers. "
+"Rather than emphasize training, they have chosen to focus on the craft of "
+"their weaponry. They are the smiths of Drake society, and it follows that "
+"they possess the best weaponry - the sharpest blades and spears, and the "
+"maces which complement their already impressive array. Their intense focus "
+"on their weapons confers offensive capability at the cost of a slight "
+"reduction in their defensive abilities."
 msgstr ""
+"剣闘士は殺戮者とは全く異なる道を歩みます。訓練を強調するよりもむしろ、 武器の"
+"技巧に集中することを選びました。ドレーク社会の鍛冶屋であり、そのため 最高の武"
+"器を所有します。最も鋭い刀や槍やメイスで、彼等がすでに身につけて いる印象的な"
+"盛装を補います。彼等は武器に集中して情熱を傾けるため、 わずかならがら防御能力"
+"が犠牲になります。"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -682,9 +689,9 @@ msgstr "戦斧"
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:54
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:29
-#: data/core/units/dwarves/Pathfinder.cfg:37
-#: data/core/units/dwarves/Scout.cfg:27 data/core/units/dwarves/Scout.cfg:35
+#: data/core/units/dwarves/Pathfinder.cfg:42
+#: data/core/units/dwarves/Pathfinder.cfg:50
+#: data/core/units/dwarves/Scout.cfg:40 data/core/units/dwarves/Scout.cfg:48
 #: data/core/units/undead/Skele_Deathblade.cfg:149
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:30
@@ -774,7 +781,7 @@ msgid "Dwarvish Pathfinder"
 msgstr "ドワーフの銃撃兵"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
-#: data/core/units/dwarves/Pathfinder.cfg:22
+#: data/core/units/dwarves/Pathfinder.cfg:23
 msgid ""
 "Dwarvish Pathfinders are faster, stronger and even deadlier with their axes "
 "than normal dwarvish scouts. They often race ahead of the main force, "
@@ -818,7 +825,7 @@ msgid "Dwarvish Scout"
 msgstr "エルフの斥候"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
-#: data/core/units/dwarves/Scout.cfg:21
+#: data/core/units/dwarves/Scout.cfg:22
 msgid ""
 "Dwarvish Scouts explore both above and below ground. They are adept at both "
 "fighting hand to hand with their axes and throwing them, but trade away the "
@@ -4973,22 +4980,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Longbow"
 #~ msgstr "大弓"
-
-#, fuzzy
-#~ msgid ""
-#~ "The Gladiator has taken a completely different path from the Slashers. "
-#~ "Rather than emphasize training, they have chosen to focus on the craft of "
-#~ "their weaponry. They are the smiths of Drake society, and it follows that "
-#~ "they possess the best weaponry - the sharpest blades and spears, and the "
-#~ "maces which complement their already impressive array. Their intense "
-#~ "focus on their weapons confers offensive capability at the cost of a "
-#~ "slight reduction in their defensive abilities."
-#~ msgstr ""
-#~ "剣闘士は殺戮者とは全く異なる道を歩みます。訓練を強調するよりもむしろ、 武"
-#~ "器の技巧に集中することを選びました。ドレーク社会の鍛冶屋であり、そのため "
-#~ "最高の武器を所有します。最も鋭い刀や槍やメイスで、彼等がすでに身につけて "
-#~ "いる印象的な盛装を補います。彼等は武器に集中して情熱を傾けるため、 わずか"
-#~ "ならがら防御能力が犠牲になります。"
 
 #, fuzzy
 #~ msgid ""

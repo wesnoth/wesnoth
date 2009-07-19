@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
 "PO-Revision-Date: 2009-02-04 17:22+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -452,6 +452,7 @@ msgstr "Klippgrotta"
 #. [terrain_type]: id=mountain_village
 #. [terrain_type]: id=tropical_forest_village
 #. [terrain_type]: id=camp_village
+#. [terrain_type]: id=drake_village
 #. [terrain_type]: id=underground_village
 #. [terrain_type]: id=dwarven_village
 #. [terrain_type]: id=hut_village
@@ -472,79 +473,79 @@ msgstr "Klippgrotta"
 #: data/core/terrain.cfg:1089 data/core/terrain.cfg:1100
 #: data/core/terrain.cfg:1111 data/core/terrain.cfg:1123
 #: data/core/terrain.cfg:1134 data/core/terrain.cfg:1145
-#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1169
+#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1167
 #: data/core/terrain.cfg:1180 data/core/terrain.cfg:1191
 #: data/core/terrain.cfg:1202 data/core/terrain.cfg:1213
 #: data/core/terrain.cfg:1224 data/core/terrain.cfg:1235
 #: data/core/terrain.cfg:1246 data/core/terrain.cfg:1257
-#: data/core/terrain.cfg:1270 data/core/terrain.cfg:1285
-#: data/core/terrain.cfg:1296
+#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
+#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1307
 msgid "Village"
 msgstr "By"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1322
 msgid "Deep Water"
 msgstr "Djupt vatten"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:1321
+#: data/core/terrain.cfg:1332
 msgid "Shallow Water"
 msgstr "Grunt vatten"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1342
 msgid "River Ford"
 msgstr "Vadställe"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1353
 msgid "Coastal Reef"
 msgstr "Kustrev"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1356
+#: data/core/terrain.cfg:1367
 msgid "Impassable Mountains"
 msgstr "Obestigbara berg"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1365
+#: data/core/terrain.cfg:1376
 msgid "Impassable Desert Mountains"
 msgstr "Obestigbara ökenberg"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1374
+#: data/core/terrain.cfg:1385
 msgid "Cave Wall"
 msgstr "Grottvägg"
 
 #. [terrain_type]: id=wall_stone
-#: data/core/terrain.cfg:1383
+#: data/core/terrain.cfg:1394
 msgid "Wall"
 msgstr "Vägg"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1393 data/core/terrain.cfg:1431
+#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1442
 msgid "Impassable"
 msgstr "Oframkomlig"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1415
 msgid "Void"
 msgstr "Tomhet"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1417
+#: data/core/terrain.cfg:1428
 msgid "Flat"
 msgstr "Plan"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1435
 msgid "Frozen"
 msgstr "Frusen"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1438
+#: data/core/terrain.cfg:1449
 msgid "Unwalkable"
 msgstr "Ofarbar"
 
@@ -1797,19 +1798,19 @@ msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 msgid "Find $filename server binary to host networked games"
 msgstr "Hitta serverbinären $filename för att vara värd för gruppspel"
 
-#: src/gui/auxiliary/canvas.cpp:343
+#: src/gui/auxiliary/canvas.cpp:356
 msgid "Line doesn't fit on canvas."
 msgstr "Linje ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:478
+#: src/gui/auxiliary/canvas.cpp:491
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Rektangel ryms inte på canvas."
 
-#: src/gui/auxiliary/canvas.cpp:849
+#: src/gui/auxiliary/canvas.cpp:862
 msgid "Text has a font size of 0."
 msgstr "Text har fontstorlek 0."
 
-#: src/gui/auxiliary/canvas.cpp:914
+#: src/gui/auxiliary/canvas.cpp:927
 msgid "Text doesn't start on canvas."
 msgstr "Text startar ej på canvas."
 
@@ -1817,28 +1818,28 @@ msgstr "Text startar ej på canvas."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:516
 msgid "No resolution defined."
 msgstr "Ingen upplösning definierad."
 
-#: src/gui/auxiliary/window_builder.cpp:294
+#: src/gui/auxiliary/window_builder.cpp:280
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
-#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
-#: src/gui/widgets/settings.cpp:1120
+#: src/gui/widgets/settings.cpp:771 src/gui/widgets/settings.cpp:867
+#: src/gui/widgets/settings.cpp:956 src/gui/widgets/settings.cpp:998
+#: src/gui/widgets/settings.cpp:1116
 msgid "No grid defined."
 msgstr "Inget rutnät definierat"
 
-#: src/gui/auxiliary/window_builder.cpp:325
+#: src/gui/auxiliary/window_builder.cpp:311
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:424
+#: src/gui/auxiliary/window_builder.cpp:410
 msgid "A row must have a column."
 msgstr "En rad måste ha en kolumn."
 
-#: src/gui/auxiliary/window_builder.cpp:425
+#: src/gui/auxiliary/window_builder.cpp:411
 msgid "Number of columns differ."
 msgstr "Antal kolumner skiljer sig åt."
 
@@ -1923,18 +1924,18 @@ msgstr "Obligatoriska gränssnittskomponenten '$id' har inte definierats."
 msgid "No default gui defined."
 msgstr "Inget standard-användargränssnitt definierat."
 
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:303
 msgid "Window not defined."
 msgstr "Fönster ej definierat."
 
-#: src/gui/widgets/settings.cpp:404
+#: src/gui/widgets/settings.cpp:400
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Gränssnittskomponenten-definitionen '$definition' innehåller inte "
 "definitionen för '$id'"
 
-#: src/gui/widgets/settings.cpp:546
+#: src/gui/widgets/settings.cpp:542
 msgid "No state or draw section defined."
 msgstr "Ingen tillstånd- eller ritsektion definierad."
 
