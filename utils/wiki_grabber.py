@@ -33,6 +33,11 @@ if __name__ == "__main__":
     # - second the actual data
     file_map = {}
 
+    # contains all macros:
+    # - key macro name 
+    # - value macro contents
+    macro_map = {}
+
     # default directory to dump the output in with trailing /.
     output_directory = "/tmp/"
 
@@ -338,6 +343,8 @@ if __name__ == "__main__":
     def process(data):
         """Processes a wiki block."""
 
+        data = replace_macros(data)
+
         res = re.compile("(.*?)\n\n(.*)", re.S).findall(data);
         if(res != None and len(res) != 0):
             header = process_header(res[0][0])
@@ -391,14 +398,14 @@ if __name__ == "__main__":
         """Processes a directory.
 
         Recurses into the sub directory, ignoring hidden directories.
-        Processes every .cpp file.
+        Processes every .[c|h]pp file.
         """
 
         items = os.listdir(dir)
 
         for item in items:
 
-            # Ignore .svn dirs.
+            # Ignore hidden directories.
             if(item.startswith(".")):
                 continue
 
@@ -407,11 +414,83 @@ if __name__ == "__main__":
             elif(item.endswith(".cpp") or item.endswith(".hpp")):
                 process_file(dir + "/" + item)
 
+    ##### ##### ##### MACRO PROCESSING ##### ##### #####
 
+    def instanciate_macro(macro):
+        """Replaces a macro text by the marco value."""
+
+        global macro_map
+
+        if(macro_map.has_key(macro.group(1)) == False):
+            print "Macro '" + macro.group(1) + "' is not defined."
+            return macro.group(0)
+
+        return macro_map[macro.group(1)]
+
+
+    def replace_macros(data):
+        """Replaces all macros found in the data.
+
+        If a macro isn't defined, the text is left as is."""
+
+        macro_regex = re.compile("@macro *= *(\w+)", re.M | re.S)
+        data = macro_regex.sub(lambda match: instanciate_macro(match), data)
+        return data
+
+    def create_macro(macro):
+        """Wrapper for creating macros."""
+
+        global macro_map
+
+        if(macro_map.has_key(macro.group(1))):
+            print "Macro '" + macro.group(1) + "' is being redefined."
+
+        macro_map[macro.group(1)] = macro.group(2)
+
+    def process_file_macros(name):
+        """Processes all wiki macro blocks (if any) of a file."""
+
+        global current_file
+        current_file = name
+        file = open(name, "r")
+        data = file.read()
+        file.close()
+
+        regex = re.compile("(/\*WIKI_MACRO($.*?)^ \*/)", re.M | re.S)
+        res = regex.findall(data)
+        if(res != None):
+            for i in range(len(res)):
+                global current_block
+                current_block = res[i][0]
+                section = reindent(res[i][1])
+                macro_regex = re.compile("^@start_macro *= *(.*?)\n(.*?)\n@end_macro.*?$", re.M | re.S)
+                macro_regex.sub(lambda match: create_macro(match), section)
+
+
+    def process_directory_macros(dir):
+        """Processes a directory looking for macros.
+
+        Recurses into the sub directory, ignoring hidden directories.
+        Processes every .[c|h]pp file.
+        """
+
+        items = os.listdir(dir)
+
+        for item in items:
+
+            # Ignore hidden directories.
+            if(item.startswith(".")):
+                continue
+
+            if(os.path.isdir(dir + "/" + item)):
+                process_directory_macros(dir + "/" + item)
+            elif(item.endswith(".cpp") or item.endswith(".hpp")):
+                process_file_macros(dir + "/" + item)
 
     ##### ##### ##### MAIN ##### ##### #####
 
 
+    process_directory_macros(src_directory)
     process_directory(src_directory)
 
     create_output()
