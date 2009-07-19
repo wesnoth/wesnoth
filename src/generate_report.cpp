@@ -33,7 +33,7 @@
 #include "tod_manager.hpp"
 
 #include <iostream>
-#include <time.h>
+#include <ctime>
 
 namespace reports {
 
@@ -564,11 +564,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		  // then we display the clock instead.
 		}
 	case REPORT_CLOCK: {
-		time_t t = time(NULL);
-		struct tm *lt=localtime(&t);
+		time_t t = std::time(NULL);
+		struct tm *lt = std::localtime(&t);
 		if (lt) {
 			char temp[10];
-			size_t s = strftime(temp,10,preferences::clock_format().c_str(),lt);
+			size_t s = std::strftime(temp, 10, preferences::clock_format().c_str(), lt);
 			if(s>0) {
 				return report(temp);
 			} else {
