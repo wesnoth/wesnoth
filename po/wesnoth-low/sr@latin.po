@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-low\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 13:13+0200\n"
-"PO-Revision-Date: 2009-06-16 13:59+0200\n"
+"PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:48
@@ -481,7 +482,6 @@ msgstr "Ne vidim kako bi trolovi mogli biti imalo manje prijateljski."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:327
-#, fuzzy
 msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern bank of the river!"
@@ -557,9 +557,8 @@ msgstr "Murudin"
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:269
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:123
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:174
-#, fuzzy
 msgid "Defeat all enemy leaders"
-msgstr "Poraziš li neprijateljske vođe"
+msgstr "Poraziš li sve neprijateljske vođe"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:203
@@ -4584,6 +4583,3 @@ msgstr "O, ne! Zakasnismo..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:196
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Prikupi $amount_gold zlatnika."
-
-#~ msgid "Defeat all enemies"
-#~ msgstr "Poraziš li sve neprijatelje"
