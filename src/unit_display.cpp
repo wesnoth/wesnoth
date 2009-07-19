@@ -21,6 +21,7 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
+#include "resources.hpp"
 #include "terrain_filter.hpp"
 
 
@@ -399,35 +400,36 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 
 }
 
-void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const std::vector<team>* teams, const tod_manager& tod_mng, unit_map & units,const map_location& default_location = map_location::null_location);
-void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const std::vector<team>* teams, const tod_manager& tod_mng, const map_location& default_location)
+void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location);
+
+void wml_animation(const vconfig &cfg, const map_location &default_location)
 {
-	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked()) return;
+	game_display &disp = *resources::screen;
+	if (disp.video().update_locked() || disp.video().faked()) return;
 	unit_animator animator;
-	wml_animation_internal(animator, cfg, map, teams, tod_mng, units, default_location);
+	wml_animation_internal(animator, cfg, default_location);
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
 }
 
-void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const std::vector<team>* teams, const tod_manager& tod_mng,unit_map & units,const map_location& default_location)
+void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
 {
-	unit_map::iterator u = units.find(default_location);
+	unit_map::iterator u = resources::units->find(default_location);
 
 	// Search for a valid unit filter,
 	// and if we have one, look for the matching unit
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
-		for(u = units.begin(); u != units.end(); ++u){
+		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if(game_events::unit_matches_filter(u, filter))
 				break;
 		}
 	}
 
 	// We have found a unit that matches the filter
-	game_display* disp = game_display::get_singleton();
-	if(u != units.end() && ! disp->fogged(u->first)) {
+	if (u.valid() && !resources::screen->fogged(u->first))
+	{
 		attack_type *primary = NULL;
 		attack_type *secondary = NULL;
 		Uint32 text_color;
@@ -469,11 +471,11 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 		} else {
 			text_color = display::rgb(atoi(cfg["red"].c_str()),atoi(cfg["green"].c_str()),atoi(cfg["blue"].c_str()));
 		}
-		disp->scroll_to_tile(u->first, game_display::ONSCREEN,true,false);
+		resources::screen->scroll_to_tile(u->first, game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
-			terrain_filter filter(t_filter, units);
+			terrain_filter filter(t_filter, *resources::units);
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if(!locs.empty()) {
@@ -488,7 +490,7 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 	const vconfig::child_list sub_anims = cfg.get_children("animate");
 	vconfig::child_list::const_iterator anim_itor;
 	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();anim_itor++) {
-		wml_animation_internal(animator,*anim_itor,map,teams,tod_mng,units);
+		wml_animation_internal(animator, *anim_itor);
 	}
 
 }

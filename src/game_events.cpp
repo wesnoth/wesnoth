@@ -2776,7 +2776,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
-	unit_display::wml_animation(cfg, *resources::units, *resources::game_map, resources::teams, *resources::tod_manager, event_info.loc1);
+	unit_display::wml_animation(cfg, event_info.loc1);
 }
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
