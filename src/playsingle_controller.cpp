@@ -525,8 +525,7 @@ void playsingle_controller::play_turn(bool save)
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
 			try {
-				replaying_ = ::do_replay(*gui_, units_, teams_,
-						player_number_, gamestate_, *this);
+				replaying_ = ::do_replay(player_number_);
 			} catch(replay::error&) {
 				gui2::show_transient_message(gui_->video(),"",_("The file you have tried to load is corrupt"));
 

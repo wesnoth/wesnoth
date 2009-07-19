@@ -708,9 +708,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 	}
 }
 
-bool do_replay(game_display& disp,
-	unit_map& units, std::vector<team>& teams, int team_num,
-	game_state& state_of_game, play_controller& controller, replay* obj)
+bool do_replay(int side_num, replay *obj)
 {
 	log_scope("do replay");
 
@@ -719,13 +717,13 @@ bool do_replay(game_display& disp,
 //	replay& replayer = (obj != NULL) ? *obj : recorder;
 
 	if (!get_replay_source().is_skipping()){
-		disp.recalculate_minimap();
+		resources::screen->recalculate_minimap();
 	}
 
 	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
-	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
-	return do_replay_handle(team_num, "");
+	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
+	return do_replay_handle(side_num, "");
 }
 
 bool do_replay_handle(int side_num, const std::string &do_untill)

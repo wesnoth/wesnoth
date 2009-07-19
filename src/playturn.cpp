@@ -120,8 +120,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			replay_obj.start_replay();
 
 			try{
-				turn_end = do_replay(*resources::screen, *resources::units, *resources::teams,
-						team_num_, *resources::state_of_game, *resources::controller, &replay_obj);
+				turn_end = do_replay(team_num_, &replay_obj);
 			}
 			catch (replay::error& e){
 				//notify remote hosts of out of sync error
