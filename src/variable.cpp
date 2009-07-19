@@ -27,6 +27,7 @@
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "team.hpp"
@@ -42,7 +43,7 @@ namespace
 	 * @todo FIXME: the variable repository should be
 	 * a class of variable.hpp, and not the game_state.
 	 */
-	game_state* repos = NULL;
+	#define repos (resources::state_of_game)
 
 	// keeps track of insert_tag variables used by get_parsed_config
 	std::set<std::string> vconfig_recursion;
@@ -457,14 +458,8 @@ vconfig::all_children_iterator vconfig::ordered_end() const
 
 namespace variable
 {
-	manager::manager(game_state* repository)
-	{
-		repos = repository;
-	}
-
 	manager::~manager()
 	{
-		repos = NULL;
 		hash_memory.clear();
 	}
 }

@@ -23,7 +23,6 @@
 
 class config;
 class display;
-class game_state;
 class team;
 class terrain_label;
 

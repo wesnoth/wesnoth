@@ -14,18 +14,16 @@
 #define TOD_MANAGER_HPP_INCLUDED
 
 #include "map_location.hpp"
-#include "variable.hpp"
 #include "config.hpp"
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"
 
-#include <time.h>
+#include <set>
 #include <string>
 #include <vector>
 
 class game_state;
 class unit_map;
-class game_map;
 
 //time of day and turn functionality
 class tod_manager : public savegame_config
@@ -109,7 +107,7 @@ class tod_manager : public savegame_config
 		bool next_turn();
 
 	private:
-		void set_start_ToD(config&, int current_turn, game_state*);
+		void set_start_ToD(config&, int current_turn);
 
 		/**
 		 * Returns time of day object in the turn.

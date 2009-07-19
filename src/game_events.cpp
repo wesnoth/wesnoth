@@ -3718,7 +3718,7 @@ namespace game_events {
 	};
 
 	manager::manager(const config& cfg)
-		: variable_manager(resources::state_of_game)
+		: variable_manager()
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {

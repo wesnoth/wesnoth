@@ -123,13 +123,11 @@ namespace variable
 {
 
 /**
- * Used to for the functions in variable.cpp to locate the current global
- * variable repository
+ * Used to clear the cache for variables.
  */
 class manager
 {
 public:
-	manager(game_state* repository);
 	~manager();
 };
 

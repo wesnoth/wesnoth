@@ -46,7 +46,7 @@ tod_manager::tod_manager(const config& time_cfg, int num_turns, game_state* stat
 
 	time_of_day::parse_times(time_cfg,times_);
 
-	set_start_ToD(const_cast<config&>(time_cfg), turn_, NULL);
+	set_start_ToD(const_cast<config&>(time_cfg), turn_);
 
 	foreach (const config &t, time_cfg.child_range("time_area")) {
 		this->add_time_area(t);
@@ -196,7 +196,7 @@ void tod_manager::remove_time_area(const std::string& area_id)
 	}
 }
 
-void tod_manager::set_start_ToD(config &level, int current_turn, game_state* s_o_g)
+void tod_manager::set_start_ToD(config &level, int current_turn)
 {
 	if (!level["current_tod"].empty())
 	{
@@ -204,10 +204,6 @@ void tod_manager::set_start_ToD(config &level, int current_turn, game_state* s_o
 		return;
 	}
 	std::string random_start_time = level["random_start_time"];
-	if (s_o_g)
-	{
-		random_start_time = utils::interpolate_variables_into_string(random_start_time, *s_o_g);
-	}
 	if (tod_manager::is_start_ToD(random_start_time))
 	{
 		std::vector<std::string> start_strings =

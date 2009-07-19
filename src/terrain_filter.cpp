@@ -22,6 +22,7 @@
 #include "map.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
+#include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
