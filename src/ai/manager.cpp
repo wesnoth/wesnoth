@@ -276,6 +276,7 @@ manager::~manager()
 manager::AI_map_of_stacks manager::ai_map_;
 game_info *manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");
+events::generic_event manager::sync_network_("ai_sync_network");
 events::generic_event manager::unit_recruited_("ai_unit_recruited");
 events::generic_event manager::unit_moved_("ai_unit_moved");
 events::generic_event manager::enemy_attacked_("ai_enemy_attacked");
@@ -304,6 +305,7 @@ void manager::clear_ai_info(){
 
 void manager::add_observer( events::observer* event_observer){
 	user_interact_.attach_handler(event_observer);
+	sync_network_.attach_handler(event_observer);
 	unit_recruited_.attach_handler(event_observer);
 	unit_moved_.attach_handler(event_observer);
 	enemy_attacked_.attach_handler(event_observer);
@@ -313,6 +315,7 @@ void manager::add_observer( events::observer* event_observer){
 
 void manager::remove_observer(events::observer* event_observer){
 	user_interact_.detach_handler(event_observer);
+	sync_network_.detach_handler(event_observer);
 	unit_recruited_.detach_handler(event_observer);
 	unit_moved_.detach_handler(event_observer);
 	enemy_attacked_.detach_handler(event_observer);
@@ -339,6 +342,12 @@ void manager::remove_gamestate_observer(events::observer* event_observer){
 void manager::add_user_interact_observer( events::observer* event_observer )
 {
 	user_interact_.attach_handler(event_observer);
+}
+
+
+void manager::add_sync_network_observer( events::observer* event_observer )
+{
+	sync_network_.attach_handler(event_observer);
 }
 
 
@@ -369,6 +378,12 @@ void manager::add_turn_started_observer( events::observer* event_observer )
 void manager::delete_user_interact_observer( events::observer* event_observer )
 {
 	user_interact_.detach_handler(event_observer);
+}
+
+
+void manager::delete_sync_network_observer( events::observer* event_observer )
+{
+	sync_network_.detach_handler(event_observer);
 }
 
 
@@ -407,6 +422,10 @@ void manager::raise_user_interact() {
 
         last_interact_ = SDL_GetTicks();
 
+}
+
+void manager::raise_sync_network() {
+	sync_network_.notify_observers();
 }
 
 void manager::raise_unit_recruited() {

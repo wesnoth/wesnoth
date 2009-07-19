@@ -202,6 +202,12 @@ public:
 	 */
 	static void raise_user_interact();
 
+	/**
+	 * Notifies all observers of 'sync network' event.
+	 * Basically a request from the AI to sync the network.
+	 */
+	static void raise_sync_network();
+
 
 	/**
 	 * Notifies all observers of 'unit recruited' event.
@@ -234,6 +240,12 @@ public:
 
 
 	/**
+	 * Adds an observer of 'sync network' event.
+	 */
+	static void add_sync_network_observer( events::observer* event_observer );
+
+
+	/**
 	 * Adds an observer of 'unit recruited' event.
 	 */
 	static void add_unit_recruited_observer( events::observer* event_observer );
@@ -261,6 +273,12 @@ public:
 	 * Deletes an observer of 'user interact' event.
 	 */
 	static void delete_user_interact_observer( events::observer* event_observer );
+
+
+	/**
+	 * Deletes an observer of 'sync network' event.
+	 */
+	static void delete_sync_network_observer( events::observer* event_observer );
 
 
 	/**
@@ -547,6 +565,7 @@ private:
 	static game_info *ai_info_;
 
 	static events::generic_event user_interact_;
+	static events::generic_event sync_network_;
 	static events::generic_event unit_recruited_;
 	static events::generic_event unit_moved_;
 	static events::generic_event enemy_attacked_;
