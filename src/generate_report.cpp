@@ -33,6 +33,7 @@
 #include "tod_manager.hpp"
 
 #include <iostream>
+#include <time.h>
 
 namespace reports {
 
