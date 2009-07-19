@@ -77,6 +77,7 @@ sub stripfromwml {
 sub raw2postring {
   my $str = shift;
 
+  $str =~ s/\"\"/\\\"/mg;
   $str =~ s/^(.*)$/"$1\\n"/mg;
   $str =~ s/\n$/\n"\\n"/mg;
   $str =~ s/\\n\"$/\"\n/g;

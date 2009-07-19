@@ -58,7 +58,7 @@ foreach my $file (@ARGV) {
     # skip other # lines as comments
     next LINE if m/^\s*\#/ and !defined $str;
 
-    if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
+    if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*(?:\"\"[^\"]*)*)\"(.*)/) {
       # single-line quoted string
 
       $translatable = ($1 ne '');
@@ -79,7 +79,7 @@ foreach my $file (@ARGV) {
       $_ = $rest . "\n";
       redo LINE;
 
-    } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
+    } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*(?:\"\"[^\"]*)*)/) {
       # start of multi-line
 
       $translatable = ($1 ne '');
@@ -88,7 +88,7 @@ foreach my $file (@ARGV) {
       $str = $_;
       $line = $.;
 
-    } elsif (m/(.*?)\"(.*)/) {
+    } elsif (m/([^\"]*(?:\"\"[^\"]*)*)\"(.*)/) {
       # end of multi-line
       die "end of string without a start in $file" if !defined $str;
 
