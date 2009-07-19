@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 13:13+0200\n"
-"PO-Revision-Date: 2009-06-29 00:33+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -113,6 +113,8 @@ msgid ""
 "And the rest of the Wesnoth community for feedback,\n"
 "criticism, help with WML code and graphics."
 msgstr ""
+"Ir likusiai Wesnoth bendruomenei už atsiliepimus,\n"
+"kritiką, pagalbą su WML kodu ir grafiką."
 
 #. [scenario]: id=01_The_Uprooting
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:4
@@ -301,7 +303,6 @@ msgstr "Orkai spaudžia mus iš visų pusių! Prie ginklų!"
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:338
-#, fuzzy
 msgid ""
 "Hold, Kalenz. The Ka'lian council should discuss our response. Maybe we can "
 "reach an agreement with them!"
@@ -462,7 +463,6 @@ msgstr "Nematau, kaip troliai galėtų būti nors kiek mažiau draugiškesni."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:327
-#, fuzzy
 msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern bank of the river!"
@@ -534,9 +534,8 @@ msgstr "Murudinas"
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:269
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:123
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:174
-#, fuzzy
 msgid "Defeat all enemy leaders"
-msgstr "Nugalėkite priešo vadus"
+msgstr "Nugalėkite visus priešų vadus"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:203
@@ -1715,7 +1714,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:288
 msgid "We made it. Onwards to Thoria!"
-msgstr ""
+msgstr "Mes tai padarėme. Pirmyn į Toriją!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:292
@@ -1798,7 +1797,7 @@ msgstr "Su Kalenzu pasiekite kelrodį"
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:152
 msgid "I can hardly see with all that mist around, but I can sense danger."
-msgstr ""
+msgstr "Sunkiai matau su visu tuo rūku aplink, bet jaučiu pavojų."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:156
@@ -1839,11 +1838,14 @@ msgid ""
 "There is some greasy-looking smoke rising ahead of us! Kalenz...my lord...I "
 "feel something terribly wrong is happening!"
 msgstr ""
+"Priešaky kyla riebiai atrodantys dūmai! Kalenzai... Mano valdove... Jaučiu, "
+"kad vyksta kažkas siaubingai blogo."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:203
+#, fuzzy
 msgid "Crelanu's place should be close now, as I remember. Quickly, this way!"
-msgstr ""
+msgstr "Krelanu namai jau turėtų būti arti, kiek pamenu. Greičiau, "
 
 #. [unit]: type=Yeti, id=Krulg
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:224
@@ -1932,6 +1934,11 @@ msgid ""
 "owners to their graves! This will be the price for slaying me, Aquagar, "
 "great drake wizard of Morogoth."
 msgstr ""
+"Mirštu, bet neliksiu neateršytas! Būsi prakeiktas, Kalenzai! Niekada nerasi "
+"ilgalaikės taikos visuose savo metuose. Prarasi savo mylimają. Ir tu, "
+"Krelanu, tavo knyga atneš tau sielvartą ir vaidensis visiems būsimiems "
+"savininkams iki pat jų kapų! Tai bus kaina už mano, Akvagaro, didžio slibinų "
+"burtininko iš Mogoroto, nužudymą."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:158
@@ -1990,6 +1997,12 @@ msgid ""
 "they grow stronger every day. You contend against destiny. But for the "
 "moment you have diverted the orcs' attention."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Elfai, jūs narsiai kovėtės ir laimėjote didžią pergalę Vesmeros miške. Vis "
+"dėlto, pajėgos išrikiuotos prieš jus dar nėra nugalėtos. Iš tikrųjų, jie "
+"stiprėja kiekvieną dieną. Jūs varžotės su lemtimi. Bet šiuo metu jūs "
+"atitraukėte orkų dėmesį."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:38
@@ -2109,6 +2122,12 @@ msgid ""
 "the elves are hiding it. But now, they suspect they have been fooled. "
 "Haldric and his people will pay for his arrogance."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Tai jūsų bėdų šaltinis. Tai labai galingas magiškas artifaktas. Tironas "
+"Haldrikas jį turėjo, bet jis apgaule įtikino orkus, kad elfai slepia šį "
+"artifaktą. Bet dabar jie įtaria, kad buvo apgauti. Haldrikas ir jo tauta "
+"sumokės už jo aroganciją."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:115
@@ -2168,6 +2187,9 @@ msgid ""
 "\n"
 "Don't worry overmuch about us. It is clear you have troubles of your own."
 msgstr ""
+"@Landaras\n"
+"\n"
+"Per daug nesijaudink dėl mūsų. Aišku, kad turi savo bėdų."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:150
@@ -2306,6 +2328,10 @@ msgid ""
 "Cleodil is pure in heart. Perhaps she can guard your book without being "
 "corrupted by its secrets..."
 msgstr ""
+"@Kalenzas\n"
+"\n"
+"Kleodil yra tyros širdies. Galbūt ji gali saugoti knygą ir likti nepagadinta "
+"jos paslapčių..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:241
@@ -2504,6 +2530,8 @@ msgid ""
 "Some weeks later, as Kalenz and his companions were working their way "
 "southwards from the high peaks of the Heart Mountains into its foothills..."
 msgstr ""
+"Po keleto savaičių, Kalenzui ir jo bendražygiams besileidžiant į pietus nuo "
+"aukštųjų Šerdies kalnų viršūnių į pakalnes..."
 
 #. [unit]: id=Eonihar, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:103
@@ -2528,6 +2556,8 @@ msgid ""
 "What's more, King Haldric is dead. His successor wants to renew the treaty "
 "of alliance and has asked for our help."
 msgstr ""
+"Be to, Karalius Haldrikas yra miręs. Jo įpėdinis nori atnaujinti sąjungos "
+"sutartį ir paprašė mūsų pagalbos."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:142
@@ -2551,6 +2581,9 @@ msgid ""
 "attacked, but the orcs are everybody's enemy. When humans fall, we'll be "
 "next."
 msgstr ""
+"Prieš mus stovi sudėtingas pasirinkimas. Žinau, kad žmonės mums nepadėjo, "
+"kai užpuolė orkai, bet orkai yra visų priešai. Kai žmonės kris, ateis mūsų "
+"eilė."
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:158
@@ -2559,6 +2592,9 @@ msgid ""
 "the fortified human settlement at Tath. The humans are sending all their "
 "forces there. We need to decide whether we will help them or not."
 msgstr ""
+"Orkų pajėgos apsistojo į pietus nuo Didžiosios upės, ir apsupo įtvirtintą "
+"žmonių gyvenvietę prie Tato. Žmonės ten siunčia visas savo pajėgas. Mes "
+"turime nuspręsti, padėsime jiems ar ne."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:162
@@ -2961,6 +2997,9 @@ msgid ""
 "reluctantly, been training Kalenz in a selected few of the secrets of "
 "Crelanu's book ..."
 msgstr ""
+"Pasibaigus Tato mūšiui, Kalenzas ir Landaras žinojo, kad atėjo laikas "
+"įvykdyti pavojingą, bet būtiną Krelanu planą. Tuo tarpu, Kleodil nenoromis "
+"mokė Kalenzą keleto atrinktų paslapčių iš Krelanu knygos..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:49
@@ -2970,6 +3009,10 @@ msgid ""
 "safely. My heart aches when I think of you going into such danger as this. "
 "It is peril not merely to your body, but to the essence of yourself."
 msgstr ""
+"Kleodil\n"
+"Išmokiau tave visko, kiek išdrįsau. Mano valdove... Kalenzai... Meldžiuosi, "
+"kad saugiai grįžtum. Mano širdis skauda galvojant apie tave einantį į tokį "
+"pavojų kaip šis. Tai pavojinga ne tik tavo kūnui, bet ir pačiai tavo esmei."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:55
@@ -2987,6 +3030,9 @@ msgid ""
 "I do not think I could bear your death. Still less could I bear the "
 "corruption of your soul; the grief would ruin me."
 msgstr ""
+"Kleodil\n"
+"Nemanau, kad galėčiau iškęsti tavo mirtį. Vis tik dar sunkiau galėčiau "
+"iškęsti tavo sielos ištvirkimą; sielvartas palaužtų mane."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:67
@@ -3384,11 +3430,9 @@ msgstr "Šiaurės elfai dabar laisvi!"
 
 #. [message]: id=Uradredia
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:242
-#, fuzzy
 msgid ""
 "Our thanks to you, Kalenz, son of Kliada. Our troops are at your command."
-msgstr ""
-"Dėkojame tau, Kalenzai, Kliados sūnau. Mūsų kariai klauso tavo įsakymų."
+msgstr "Dėkojame tau, Kalenzai, Kliados sūnau. Mūsų kariai tavo valdžioje."
 
 #. [message]: id=Kior-Pur
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:255

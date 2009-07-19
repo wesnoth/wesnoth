@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 13:12+0200\n"
-"PO-Revision-Date: 2009-06-23 22:03+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "apnuodytas"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:754
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
-msgstr ""
+msgstr "berserkas"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
@@ -84,6 +84,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Berserkas:\n"
+"Ar naudojama puolant, ar ginantis, ši ataka išlaiko priešininką kovoje iki "
+"pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
@@ -107,7 +110,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
-msgstr ""
+msgstr "pirmenybė"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
@@ -116,6 +119,8 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Smūgio pirmenybė:\n"
+"Su šia ataka dalinys visuomet turės pirmenybę atakuoti, net kai ginasi."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
@@ -708,11 +713,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kai laimite scenarijų, žemėlapis papilkuos ir mygtukas „Baigti "
-"ėjimą“pasikeis į „Baigti scenarijų“. Pieš nuspausdami šį mygtuką, kad "
-"tęstumėte, dabar galite atlikti tokius veiksmus kaip keisti išsaugojimų "
-"nustatymus arba (jei esate daugelio žaidėjų žaidime) kalbėtis su kitais "
-"žaidėjais."
+"Kai laimite scenarijų, žemėlapis papilkės ir mygtukas „Baigti ėjimą“ "
+"pasikeis į „Baigti scenarijų“. Pieš nuspausdami šį mygtuką, kad tęstumėte, "
+"dabar galite atlikti tokius veiksmus kaip keisti išsaugojimų nustatymus arba "
+"(jei esate daugelio žaidėjų žaidime) kalbėtis su kitais žaidėjais."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -1248,6 +1252,10 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2 HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Poilsis: dalinys, kuris nei juda, nei atakuoja, nei yra atakuojamas, kitą "
+"ėjimą pagis dviem GT."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1255,6 +1263,8 @@ msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Kaimai: dalinys, pradedantis ėjimą kaime, pagis 8 GT."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
@@ -1535,7 +1545,7 @@ msgstr "Bebaimis"
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
+msgstr "Priklausymas šviesai ar tamsai neįtakoja šių drąsių individų."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
@@ -1549,6 +1559,9 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Ištikimi daliniai nereikalauja užmokesčio. Dauguma dalinių ėjimo pabaigoje "
+"paima užmokestį, tiek auksinių, koks yra jų lygis. Ištikimiems daliniams šio "
+"užmokesčio nereikia."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
@@ -1683,8 +1696,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bukas yra gebėjimas būdingas goblinams ir kitoms mažesnėms rūšims. Yra "
-"priežasčių, kodėl šios rūšys yra mažosios, ir tai yra viena iš jų."
+"Bukas yra gebėjimas būdingas goblinams ir kitoms žemesniosioms rūšims. Esama "
+"priežasčių, kodėl šios rūšys yra žemesniosios, ir bukumas yra viena iš jų."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -3049,7 +3062,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
+msgstr "Jūs priėjote norų šulinį. Koks bus jūsų noras?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3083,7 +3096,7 @@ msgstr "Taikos visame Wesnothe."
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:75
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "Vienintelis noro vertas dalykas yra taika visoje šalyje."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:81
@@ -3169,7 +3182,7 @@ msgstr "Regeneracijos žiedas"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:408
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Šio žiedo nešėjas kiekvieną ėjimą šiek tiek pagis."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:444
@@ -3202,22 +3215,22 @@ msgstr "Tik vandeniai gali naudoti šį daiktą!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Ar $unit.name turėtų paimti trišakį?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
 msgid "Storm Trident"
-msgstr ""
+msgstr "Trišakis Audronaša"
 
 #. [object]
 #: data/core/macros/items.cfg:540
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr ""
+msgstr "Šis trišakis leidžia vandeniams trankyti priešus žaibais!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:544
 msgid "storm trident"
-msgstr ""
+msgstr "trišakis audronaša"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -3906,7 +3919,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr ""
+msgstr " Šis dalinys truputį sugeba gydyti."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -3927,8 +3940,8 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" Šis dalinys regeneruojasi, kas leidžia jam gydytis taip, lyg jis visada "
-"būtų apsistojęs kaime."
+" Šis dalinys regeneruoja, kas leidžia jam gydytis taip, lyg jis visada būtų "
+"apsistojęs kaime."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
@@ -3953,13 +3966,15 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr " Apšvietimas padidina šviesos lygį gretimose laukeliuose."
+msgstr " Apšvietimas padidina šviesos lygį gretimuose laukeliuose."
 
 #: data/core/macros/special-notes.cfg:38
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
+" Šis dalinys gali per vieną ėjimą teleportuotis tarp bet kurių dviejų tuščių "
+"jo pusei priklausančių kaimų."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -3969,7 +3984,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr " Šis dalinys gali naktį pasislėpti, nepalikdamas jokio buvimo pėdsako."
+msgstr " Šis dalinys naktį gali pasislėpti, nepalikdamas jokio savo pėdsako."
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
@@ -4514,8 +4529,8 @@ msgstr ""
 "jokia kita rasė negali lygintis su jų lankininkais greičiu ir taiklumu. Visi "
 "elfai taip pat turi nepaaiškinamą potraukį prie nepaliestos gamtos. Jie "
 "dažnai jaučiasi nejaukiai didelėse erdvėse be augalų. Elfai pagrindinai "
-"gyvena Didžiojo žemyno miškuose; Aethenvude pietvakariuose, Wesmeroje "
-"šiaurės vakaruose ir didžiajame šiauriniame miške, kurio piečiausias kraštas "
+"gyvena Didžiojo žemyno miškuose; Aetenvude pietvakariuose, Vesmeroje šiaurės "
+"vakaruose ir didžiajame šiauriniame miške, kurio piečiausias kraštas "
 "vadinamas Lintaniro mišku.\n"
 "\n"
 "Elfai yra seniausia žemyno rasė, galbūt neskaitant trolių. Daugumos iš jų "
@@ -4608,6 +4623,39 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Žmonių rasė yra ypač įvairi. Nors jie iš pradžių atėjo iš Senojo žemyno, "
+"žmonės išplito visame pasaulyje ir suskilo į daugybę įvairių kultūrų ir "
+"rasių. Nors jie nėra pripildyti magijos kaip kitos būtybės, žmonės gali "
+"išmokti ja naudotis ir sugeba išmokti daugiau magijos rūšių nei dauguma "
+"kitų. Jie neturi jokių neeilinių galimybių ar gebėjimų, išskyrus jų "
+"visapusiškumą ir veržlumą. Nepaisant to, kad dažnai pykstasi su visomis "
+"rasėmis, jie retkarčiais gali sudaryti sąjungas su mažiau agresyviomis "
+"rasėmis, kaip antai elfai ir dvorfai. Mažiau sąžiningi žmonės taip pat "
+"nevengia samdytis orkų samdinių. Jie neturi įgimtų priešų, tačiau dauguma "
+"žmonių, kaip ir dauguma kitų rasių atstovų, instinktyviai nemėgsta "
+"nemirėlių. Žmonės yra mažesni už elfus, bet vis dar aukštesni už dvorfus. Jų "
+"odos spalva gali būti įvairi, nuo beveik baltos iki tamsiai rudos.\n"
+"\n"
+"<header>text='Karūnos pavaldiniai'</header>\n"
+"Egzistuoja daugybė skirtingų žmonių grupių, bet Didžiajame žemyne dauguma jų "
+"gyvena valdomi Wesnoth'o karūnos. Žmonės pirmiausiai atsirado Didžiajame "
+"žemyne iš krašto, esančio toli į vakarus už vandenyno, Žaliosios salos, ir "
+"greitai įkūrė savo sostinę krašto viduje esančiame Veldyno mieste. Per "
+"ateinančius šimtmečius visame žemyne jie pastatė daugybę miestų. Wesnoth'o "
+"karūnos kareiviai gina šalį, sudarydami labiausiai organizuotą karinę jėgą "
+"žinomame pasaulyje. Jos kariai ateina iš pagrindinių provincijų, kur visi "
+"vyrai į karo tarnybą pašaukiami ankstyvame amžiuje.\n"
+"\n"
+"<header>text='Klanų žmonės'</header>\n"
+"Rytinės Wesnoth'o provincijos, žinomos kaip Klanų tėvynė, geografiškai "
+"daugiau sudarytos iš atvirų lygumų ir mažų kalvų negu vakarinės, labiau "
+"civilizuotos provincijos. Jos yra Arklių klanų, kurie yra sąjungoje su "
+"Wesnoth'o karūna, bet veikia nepriklausomai, ir išlaiko savo tapatybę, "
+"namai. Bet kuriuo atveju, rytinės provincijos neturi šauktinės armijos taip "
+"kaip Vakarų Wesnoth'as turi. Treniravimasis kovai yra Klanų gyvenimo būdas; "
+"tėvai moko vaikus joti žirgais, kautis ir šaudyti iš lanko nuo ankstyvo "
+"amžiaus. Apskritai, Klanų kariai yra mažiau organizuoti nei civilizuoti "
+"kovotojai, ir stipriosios bei silpnosios šių grupių pusės papildo viena kitą."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
@@ -4971,8 +5019,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutralūs daliniai neveikiami dienos ir nakties, vienodai gerai kaunasi "
-"abiejomis sąlygomis."
+"Neutralių dalinių neįtakoja diena ar naktis, jie vienodai gerai kaunasi "
+"abejomis sąlygomis."
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -4982,7 +5030,7 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"Chaotiniai daliniai geriau kaunasi naktį ir blogiau – dieną.\n"
+"Chaotiški daliniai geriau kaunasi naktį ir blogiau – dieną.\n"
 "\n"
 "Dieną: -25% žalos\n"
 "Naktį: +25% žalos"
@@ -5020,7 +5068,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|harbor,$name|port"
-msgstr "$name|uostas,$name|uostas"
+msgstr "$name|uostis,$name|uostis"
 
 #. [language]
 #: data/hardwired/english.cfg:26
@@ -5181,6 +5229,9 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Apsupties taktika labai naudinga, ypač prieš greitus dalinius. Pastačius du "
+"dalinius abibus priešo, jų įtakos zonos neleis jam pajudėti daugiau, nei "
+"vieną langelį."
 
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
@@ -5266,7 +5317,7 @@ msgstr "- Mūšio terminologijos karališkoji santrauka – II tomas, 212WM"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Kitais atžvilgiais pagirtinas planas gali nepavykti, jei pulsite netinkamu "
+"Kitais atžvilgiais protingas planas gali neišdegti, jei pulsite netinkamu "
 "paros metu."
 
 #. [tip]
@@ -5358,6 +5409,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
+"Daliniai palikti kaime arba pagis po aštuonis gyvybės taškus kiekvieno ėjimo "
+"pradžioje, arba išsigydys nuo nuodų."
 
 #. [tip]
 #: data/hardwired/tips.cfg:87
@@ -5422,7 +5475,7 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Kantrybė dažnai yra raktas. Vietoj to, kad pulti blogomis sąlygomis ar su "
+"Kantrybė dažnai yra esmė. Vietoj to, kad pulti blogomis sąlygomis ar su "
 "mažai karių, geriau palaukti geresnių sąlygų ir tada pulti."
 
 #. [tip]
@@ -5436,8 +5489,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"Nebijokite atsitraukti ir persigrupuoti; tai dažnai yra raktas į pergalę."
+msgstr "Nebijokite atsitraukti ir persigrupuoti; dažnai tai raktas į pergalę."
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
@@ -5496,6 +5548,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Išrikiuokite dalinius į eilę, kad užstoti sužeistuosius ir leisti jiems "
+"atsitiesti."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
@@ -5562,6 +5616,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Kai pakyla dalinio lygis, jis pilnai pagyja. Protingai tai naudojant, galima "
+"apsukti mūšio eigą."
 
 #. [tip]
 #: data/hardwired/tips.cfg:171
@@ -8338,7 +8394,6 @@ msgid "Damage"
 msgstr "Žala"
 
 #: src/statistics_dialog.cpp:156
-#, fuzzy
 msgid "Overall"
 msgstr "Iš viso"
 
