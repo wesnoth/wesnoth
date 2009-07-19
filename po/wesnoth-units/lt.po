@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 13:46+0200\n"
-"PO-Revision-Date: 2009-06-12 14:32+0300\n"
+"PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -22,12 +22,16 @@ msgstr "Kraujo šikšnosparnis"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:19
+#, fuzzy
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Kraujo šikšnosparniai taip vadinami dėl savo įraudusio kailio, kurį kai kas "
+"laiko jų mėgstamos dietos požymiu. Šie padarai yra greiti ir gali siurbti "
+"savo aukų kraują, taip įgaudami dalį aukos prarandamų jėgų."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -81,10 +85,14 @@ msgstr "Valtis"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
+#, fuzzy
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
+"Valtys, dažnai varomos irklais ar mažomis burėmis, naudojamos nuplaukti "
+"nedideliems atstumams sekliuose vandenyse, kur negali praplaukti dideli "
+"laivai."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -94,8 +102,7 @@ msgstr "Galionas"
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
-"Galionai yra mėlynojo vandens laivai pastatyti prekybai ir transportui."
+msgstr "Galionai yra jūriniai laivai pastatyti prekybai ir transportui."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -175,7 +182,7 @@ msgstr "nagai"
 #: data/core/units/drakes/Warrior.cfg:82
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
-msgstr ""
+msgstr "ugnies pliūpsnis"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
@@ -510,7 +517,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr "Dvorfų berserkeris"
+msgstr "Dvorfų berserkas"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:20
@@ -519,6 +526,9 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"Berserkai priklauso retai kastai Dvorfų tarpe. Prieš stodami į mūšį, jie "
+"sukelia savyje nežabojamą įsiūtį. Šie kariai pamiršta ką reiškia gynyba ir "
+"galvoja tik apie nesustabdomą puolimą, kuriuo jie išties garsėja."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:44
@@ -571,7 +581,7 @@ msgstr ""
 #: data/core/units/dwarves/Explorer.cfg:4
 #, fuzzy
 msgid "Dwarvish Explorer"
-msgstr "Dvorfų valdovas"
+msgstr "Dvorfų Ulfserkas"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:27
@@ -616,6 +626,9 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Dvorfų kovotojai naudoja galingus karo kirvius ir kūjus, kurių visi "
+"prisibijo artimoje kovoje. Jie puikiai kovoja kalnuotose vietovėse bei "
+"požemyje. Nors ir nėra greiti, jų galia ir ištvermė puikiai atsveria."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
@@ -804,7 +817,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Dvorfų Ulfserkas"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:21
@@ -814,6 +827,10 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"Dvorfai yra senovinė rasė ir galingi kariai. Ulferkeriai yra patys "
+"nuožmiausi iš dvorfų; mūšyje, jie įveda save į aklą įniršį, kuriame jie "
+"nejaučia nei baimės, nei skausmo, ir nekreips dėmesio į jokias gautas "
+"žaizdas."
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -1093,6 +1110,13 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
+"Vienas iš dalykų, kurie prisideda prie jų meistriškumo su lanku yra "
+"nepaprastai geras elfų regėjimas. Elfas, praktikavęsis šaudymą iš lanko, net "
+"ir naktį gali pataikyti į taikinius, kurių žmogus net negalėtų matyti, ir "
+"gali įsidėti ant templės antrą strėlę kai tik pirmoji paleista lėkti.\n"
+"\n"
+"Šio nuostabaus sugebėjimo įsisavinimas atseina ne veltui, tai yra praktikos "
+"su kardu stoka."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:75
@@ -1141,6 +1165,14 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"Elfų žygūnai yra treniruoti elfų karalysčių karališkieji kurjeriai. Nors ir "
+"jų tautos prigimtis yra taiki, jų patirtis padaro juos gana mirtinus kovoje. "
+"Joks žmogus niekada nebuvo net priartėjęs prie jų meistriškumo naudojantis "
+"lanku ant žirgo – iš tikrųjų, daugumai būtų sunku prilygti net ir stovint "
+"ant žemės.\n"
+"\n"
+"Šių karių greitis leidžia elfams smogti kada ir kur jie pasirenka kaunantis "
+"savo gimtojoje žemėje, kas išgelbėjo daugelį jų nuo mirties."
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
@@ -1156,6 +1188,11 @@ msgid ""
 "fitting master of them. This, combined with a considerable skill at archery "
 "and swordsmanship, is very useful in warfare."
 msgstr ""
+"Net jei žmogus praleistų miške daugelį metų, jis niekada neatsikratys "
+"jausmo, kad jis tėra svečias svetimoj aplinkoj. Su elfais visai atvirkščiai. "
+"Bet kuris elfas, kuriam teko mokytis meno sugyventi su miškais, tampa tikru "
+"meistru. Visa tai, kartu su gebėjimu gerai valdyti lanką ir kardą, labai "
+"naudinga kare."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:189
@@ -1193,6 +1230,11 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
+"Miškų elfų raiteliai moka naudotis lanku ir kardu, bet tikrasis jų talentas "
+"yra žirgininkystė. Netgi kitus elfus žavi jų nežabotas greitis miške ir "
+"gebėjimas nerti per pačią tankynę be menkiausio įbrėžimo. Jie, ko gero, "
+"vienintelė tokia kavalerija, kuriai geriau sekasi miške, nei atviroje "
+"vietovėje."
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
@@ -1225,9 +1267,9 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
-"Yra legenda apie elfą, kuris sustabdė strėlę, iššaudamas į ją ore su savo "
+"Sklando legenda apie elfą, kuris sustabdė strėlę, numušęs ją ore su savo "
 "strėle. Tai, kad šis pasakojimas gali būti priimtas rimtai, yra elfų "
-"meistiškumo įrodymas. Elfų snaiperiai, paprastai kalbant, įvaldė šaudymo "
+"meistriškumo įrodymas. Elfų snaiperiai, paprastai kalbant, įvaldė šaudymo "
 "meną."
 
 #. [female]
@@ -1361,7 +1403,7 @@ msgid ""
 msgstr ""
 "Kai kurie goblinai treniruoja savo vilkus įveikti ugnies baimę. Per "
 "antpuolius šie goblinai užima palaikymo vaidmenį; jie padega savo priešų "
-"namus ir derlių bei nešiojasi tinklus, kad įneštų sumaištį tarp bandančių "
+"namus ir derlių bei nešiojasi tinklus, kad pasėtų sumaištį tarp bandančių "
 "susitelkti gynyboje ar atsakomajame puolime."
 
 #. [attack]: type=fire
@@ -1430,6 +1472,16 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
+"Niekas tiksliai nežino kaip atsirado vilkų jaukinimo ir prajodymo menas, bet "
+"nauda goblinams akivaizdi. Goblinai mažesni ir daug silpnesni už savo "
+"gentainius orkus ir jiems dažnai paskiriama pavojingiausia ir nemėgiamiausia "
+"kovos dalis. Tad jei kas gali prasimanyti sau vilką, tampa daug saugesnis "
+"ir, galima sakyti, smagiau leidžia laiką mūšyje.\n"
+"\n"
+"Vilkas, ko gero, negalėtų nulaikyti žmogaus, ypač sunkiai šarvuoto, bet "
+"goblinas su lengvais odiniais šarvais – pats tas. Skirtingai nuo žirgų, šie "
+"raiteliai gana lengvai keliauja kalnais, nors vanduo ir miškas pristabdo ir "
+"juos."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1593,6 +1645,11 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
+"Lanko nauda daugiau nei medžioklei buvo įžvelgta nuo pat jo išradimo ir "
+"lankininkai buvo neatsiejama kariuomenės dalis nuo neatmenamų laikų. "
+"Dažniausiai nekilmingi, iš prastuomenės arba miškininkų kilę lankininkai "
+"moka elgtis tiek su lanku, tiek su trumpuoju kardu, ir labai dažnai pasirodo "
+"mūšio lauke."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
@@ -1724,6 +1781,8 @@ msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
+"Generolai, prisiekę savo karalystėms ištikimybę, vadovauja armijoms ir yra "
+"atsakingi už didelių bei svarbių teritorijų apsaugą."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -1827,8 +1886,8 @@ msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
-"Ištreniruoti kardais ir arbaletais, leitenantai vadovauja mažoms žmonių "
-"karių grupėms, koordinuodami jų atakas."
+"Turintys patirties tiek su kardais, tiek su arbaletais, leitenantai "
+"vadovauja mažoms karių grupėms, koordinuoja jų atakas."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -1974,6 +2033,11 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
+"Kardai daug kam yra prabanga, vargu ar įperkama prastuomenei. Ietį "
+"pasigaminti daug pigiau ir ji veikia net ir be ietigalio, nors pastarąjį "
+"dauguma įperka. Apsišarvavę odiniais šarvais ir dažnai ginkluoti skydu bei "
+"keliomis svaidomosiomis ietimis, ietininkai sudaro daugumos armijų pagrindą; "
+"neretai jie be didelio paruošimo metami į priešakines gretas."
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2569,7 +2633,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr "Vandenė pranašautoja"
+msgstr "Undinė pranašautoja"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:25
@@ -2585,7 +2649,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr "Vandenė kerėtoja"
+msgstr "Undinė kerėtoja"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:20
@@ -2670,7 +2734,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Undinė kerėtoja"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
@@ -2718,7 +2782,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr "Vandenių žynė"
+msgstr "Undinė žynė"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:23
@@ -2733,7 +2797,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
-msgstr "Vandenių sirena"
+msgstr "Sirena"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:23
@@ -2917,8 +2981,8 @@ msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
-"Paprastas skorpionas yra pakankamai pavojingas – mirtinumas skorpiono tokio "
-"dydžio kaip žmogus reikalauja nedaug paaiškinimų."
+"Paprastas skorpionas yra pakankamai pavojingas – o jau kodėl žmogaus dydžio "
+"skorpionas yra mirtinas, daug aiškinti nereikia."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
@@ -3013,8 +3077,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
-"VIlkai yra agresyvūs gyvūnai, medžiojantys gaujomis. Nors silpni pavieniui, "
-"vilkų gauja gali užmušti kelių minučių bėgyje net stipriausią žmogų."
+"Vilkai yra agresyvūs gyvūnai, medžiojantys gaujomis. Nors silpni pavieniui, "
+"vilkų gauja gali užmušti net stipriausią žmogų vos per kelias minutes."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3126,8 +3190,8 @@ msgid ""
 msgstr ""
 "Žmogėdros yra milžiniškos būtybės, kurios paprastai gyvena po vieną "
 "dykynėje, pagal formą nepaprastai panašios į žmones, tačiau didelės ir "
-"deformuotos. Nors jos gali būti lengvai pralenktos ar pergudrautos, jų jėga "
-"neturi būti neįvertinama."
+"deformuotos. Nors jos gali būti lengvai pralenktos ar pergudrautos, jų jėgos "
+"negalima nepaisyti."
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:38 data/core/units/ogres/Young_Ogre.cfg:38
@@ -3146,9 +3210,9 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
-"Kol dar jauni, žmogėdros kartais yra sučiumpami ir paimami į armijas "
-"treniruoti. Jie negali meistriškai valdyti ginklų, bet jie tą trūkumą "
-"kompensuoja didele jėga."
+"Kol dar jauni, žmogėdros kartais sučiumpami ir paimami į armijas treniruoti. "
+"Jie negali meistriškai valdyti ginklų, bet šį trūkumą jie kompensuoja savo "
+"didžiule jėga."
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -4092,6 +4156,13 @@ msgid ""
 "however, neither used to, nor quick at moving around."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Longbow"
-#~ msgstr "didelis lankas"
+#~ msgid ""
+#~ "Dread Bats are fast and can drain the blood of those they attack, thereby "
+#~ "healing themselves, even to the point where they become stronger than "
+#~ "they began the battle. Bloated with blood they have grown to a huge size "
+#~ "and can feast on bigger and tougher victims."
+#~ msgstr ""
+#~ "Baisieji šikšnosparniai yra greiti ir siurbia savo aukų kraują, taip "
+#~ "pagydydami save, kartais netgi tiek, kad tampa stipresni, nei mūšio "
+#~ "pradžioje. Prisirpę kraujo, jie užauga didžiuliai ir gali įveikti vis "
+#~ "didesnes ir tvirtesnes aukas."
