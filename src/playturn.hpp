@@ -15,14 +15,8 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class game_display;
 class config;
-class game_state;
 class replay_network_sender;
-class team;
-class unit;
-class play_controller;
-class tod_manager;
 
 #include "global.hpp"
 

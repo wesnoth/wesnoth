@@ -25,15 +25,6 @@
 #include <vector>
 #include <map>
 
-class game_display;
-class game_state;
-class tod_manager;
-class team;
-class t_string;
-class unit;
-class LuaKernel;
-class play_controller;
-
 /**
  * @file game_events.hpp
  * Define the game's events mechanism.

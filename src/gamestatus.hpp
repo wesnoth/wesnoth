@@ -20,16 +20,12 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 #include "team.hpp"
-#include "time_of_day.hpp"
 #include "variable.hpp"
 #include "savegame_config.hpp"
 
 #include <time.h>
 #include <string>
 #include <vector>
-
-class unit;
-class tod_manager;
 
 class scoped_wml_variable;
 

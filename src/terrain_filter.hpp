@@ -22,7 +22,6 @@ class config;
 class unit;
 class vconfig;
 class unit_map;
-class tod_manager;
 class team;
 
 //terrain_filter: a class that implements the Standard Location Filter

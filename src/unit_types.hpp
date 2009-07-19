@@ -26,7 +26,6 @@
 #include <vector>
 
 
-class tod_manager;
 class team;
 class unit;
 class unit_ability_list;
