@@ -156,16 +156,12 @@ public:
 	const std::map<std::string,std::string> get_states() const;
 	std::string get_state(const std::string& state) const;
 	void set_state(const std::string& state, const std::string& value);
-	void set_state(size_t state, bool value);
-	bool get_state(size_t state) const;
-	static size_t get_known_boolean_state_id(const std::string &state);
-	static std::map<std::string,size_t> get_known_boolean_state_names();
-	const static size_t STATE_UNKNOWN = -1;
-	const static size_t STATE_SLOWED = 0;
-	const static size_t STATE_POISONED = 1;
-	const static size_t STATE_PETRIFIED = 2;
-	const static size_t STATE_HIDDEN = 3;
-	const static size_t STATE_NOT_MOVED = 4;
+	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
+		STATE_HIDDEN, STATE_NOT_MOVED, STATE_UNKNOWN = -1 };
+	void set_state(state_t state, bool value);
+	bool get_state(state_t state) const;
+	static state_t get_known_boolean_state_id(const std::string &state);
+	static std::map<std::string, state_t> get_known_boolean_state_names();
 
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
@@ -419,7 +415,7 @@ private:
 
 	std::map<std::string,std::string> states_;
 	std::vector<bool> known_boolean_states_;
-	static std::map<std::string,size_t> known_boolean_state_names_;
+	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
 	int emit_zoc_;
 	STATE state_;

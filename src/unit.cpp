@@ -958,8 +958,10 @@ void unit::heal(int amount)
 const std::map<std::string,std::string> unit::get_states() const
 {
 	std::map<std::string,std::string> all_states = states_;
-	for (std::map<std::string,size_t>::const_iterator i = known_boolean_state_names_.begin(); i!=known_boolean_state_names_.end(); ++i){
-		if (get_state(i->second)){	
+	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
+	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
+	{
+		if (get_state(i->second)) {
 			all_states.insert(make_pair(i->first, "yes" ));
 		}
 	
@@ -969,7 +971,7 @@ const std::map<std::string,std::string> unit::get_states() const
 
 std::string unit::get_state(const std::string& state) const
 {
-	size_t known_boolean_state_id = get_known_boolean_state_id(state);
+	state_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if (known_boolean_state_id!=STATE_UNKNOWN){
 		return get_state(known_boolean_state_id) ? "yes" : "";
 	}
@@ -980,42 +982,43 @@ std::string unit::get_state(const std::string& state) const
 	return "";
 }
 
-void unit::set_state(size_t state, bool value)
+void unit::set_state(state_t state, bool value)
 {
 	known_boolean_states_[state] = value;
 }
 
-bool unit::get_state(size_t state) const
+bool unit::get_state(state_t state) const
 {
 	return known_boolean_states_[state];
 }
 
-size_t unit::get_known_boolean_state_id(const std::string &state) {
-	std::map<std::string,size_t>::const_iterator i = known_boolean_state_names_.find(state);
-	if (i !=known_boolean_state_names_.end()){
+unit::state_t unit::get_known_boolean_state_id(const std::string &state) {
+	std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.find(state);
+	if (i != known_boolean_state_names_.end()) {
 		return i->second;
-	}	
-	return STATE_UNKNOWN;	
+	}
+	return STATE_UNKNOWN;
 }
 
-std::map<std::string,size_t> unit::known_boolean_state_names_ = get_known_boolean_state_names();
+std::map<std::string, unit::state_t> unit::known_boolean_state_names_ = get_known_boolean_state_names();
 
-std::map<std::string,size_t> unit::get_known_boolean_state_names(){
-	std::map<std::string,size_t> *known_boolean_state_names_map = new std::map<std::string,size_t>();
-	known_boolean_state_names_map->insert(std::make_pair("slowed",STATE_SLOWED));
-	known_boolean_state_names_map->insert(std::make_pair("poisoned",STATE_POISONED));
-	known_boolean_state_names_map->insert(std::make_pair("petrified",STATE_PETRIFIED));
-	known_boolean_state_names_map->insert(std::make_pair("hidden",STATE_HIDDEN));
-	known_boolean_state_names_map->insert(std::make_pair("not_moved",STATE_NOT_MOVED));
+std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
+{
+	std::map<std::string, state_t> known_boolean_state_names_map;
+	known_boolean_state_names_map.insert(std::make_pair("slowed",STATE_SLOWED));
+	known_boolean_state_names_map.insert(std::make_pair("poisoned",STATE_POISONED));
+	known_boolean_state_names_map.insert(std::make_pair("petrified",STATE_PETRIFIED));
+	known_boolean_state_names_map.insert(std::make_pair("hidden",STATE_HIDDEN));
+	known_boolean_state_names_map.insert(std::make_pair("not_moved",STATE_NOT_MOVED));
 	//not sure if "guardian" is a yes/no state.
-	//known_boolean_state_names_map->insert(std::make_pair("guardian",STATE_GUARDIAN));
-	return *known_boolean_state_names_map;
+	//known_boolean_state_names_map.insert(std::make_pair("guardian",STATE_GUARDIAN));
+	return known_boolean_state_names_map;
 }
 
 void unit::set_state(const std::string& state, const std::string& value)
 {
-	size_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if(value == "") {
+	state_t known_boolean_state_id = get_known_boolean_state_id(state);
+	if (value.empty()) {
 		if (known_boolean_state_id!=STATE_UNKNOWN){
 			set_state(known_boolean_state_id,false);
 			return;
