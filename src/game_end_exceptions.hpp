@@ -43,6 +43,7 @@ enum LEVEL_RESULT {
 #define THROW_END_LEVEL_DELETE(end_ptr) if (end_ptr) {\
 	end_level_exception temp_exception(*end_ptr);\
 	delete end_ptr; \
+	end_ptr = 0; \
 	throw temp_exception; \
 	}
 
