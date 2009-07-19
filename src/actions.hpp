@@ -20,23 +20,18 @@
 #ifndef ACTIONS_H_INCLUDED
 #define ACTIONS_H_INCLUDED
 
-class display;
-class tod_manager;
 class game_display;
 class replay;
 struct combatant;
-class unit;
-
-class attack_type;
 class team;
-class unit_type_data;
+class time_of_day;
+class unit;
 
 #include "global.hpp"
 #include "map_location.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "unit_types.hpp"
-#include "time_of_day.hpp"
 
 #include <deque>
 #include <sstream>
