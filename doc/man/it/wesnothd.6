@@ -132,18 +132,18 @@ Il messaggio del giorno.
 La password da usare per dare i privilegi di amministratore. Di solito
 inizia con «admin ».
 .TP 
-\fBreplay_save_path\fP
-The directory where the server stores game replays. (Don't forget the
-trailing /!) Defaults to `' which means the directory wesnothd was started
-in.
+\fBpercorso_salvataggio_replay\fP
+La directory in cui il server conserva i replay delle partite (Non
+dimenticare la barra «/» alla fine!). In assenza di modifiche, vale «», che
+significa la directory da cui è stato eseguito wesnothd.
 .TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
 `restart' command. (Can only be issued via the fifo.)
 .TP 
-\fBsave_replays\fP
-Defines whether the server will automatically save replays of
-games. (default: \fBfalse\fP)
+\fBsalva_replays\fP
+Definisce se il server salverà automaticamente i replay delle
+partite. (normalmente: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
@@ -228,8 +228,8 @@ user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);
 .TP  
 \fBuser_expiration\fP
-(for user_handler=sample) The time after which a registered nick expires (in
-days).
+(per user_handler=sample) Il tempo dopo cui un nome registrato scade (in
+giorni).
 .RE
 .P
 \fB[mail]\fP Configures an SMTP server through which the user handler can send
