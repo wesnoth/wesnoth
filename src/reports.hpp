@@ -20,10 +20,8 @@
 #include <vector>
 
 #include "image.hpp"
-#include "team.hpp"
 
-class tod_manager;
-class unit_map;
+class team;
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -92,11 +90,10 @@ namespace reports {
 
 	report generate_report(TYPE type,
 			       std::map<reports::TYPE, std::string> report_contents,
-			       const gamemap& map, unit_map& units,
-			       const std::vector<team>& teams, const team& current_team,
+		const team &current_team,
 			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-			       const tod_manager& tod_manager_, const std::set<std::string>& observers,
+		const std::set<std::string> &observers,
 			       const config& level, bool show_everything = false);
 }
 

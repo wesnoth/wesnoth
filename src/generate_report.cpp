@@ -22,13 +22,15 @@
 
 #include "actions.hpp"
 #include "foreach.hpp"
-#include "tod_manager.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
-#include "game_preferences.hpp"
 #include "reports.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "tod_manager.hpp"
 
 #include <iostream>
 
@@ -36,13 +38,16 @@ namespace reports {
 
 report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
-                       const gamemap& map, unit_map& units,
-                       const std::vector<team>& teams, const team& current_team,
+	const team &current_team,
                        int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
-                       const tod_manager& tod_manager_, const std::set<std::string>& observers,
+	const std::set<std::string> &observers,
                        const config& level, bool show_everything)
 {
+	unit_map &units = *resources::units;
+	gamemap map = *resources::game_map;
+	std::vector<team> &teams = *resources::teams;
+
 	const unit *u = NULL;
 
 	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION) {
@@ -343,12 +348,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_PROFILE:
 		return report("", u->profile(), "");
 	case TIME_OF_DAY: {
-		time_of_day tod = tod_manager_.time_of_day_at(units,mouseover,map);
+		time_of_day tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
 		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
 
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover) || current_team.shrouded(mouseover)) {
-			tod = tod_manager_.get_time_of_day(false,mouseover);
+			tod = resources::tod_manager->get_time_of_day(false, mouseover);
 		}
 		std::stringstream tooltip;
 
@@ -361,15 +366,15 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		return report("",tod_image,tooltip.str());
 	}
-	case TURN:
-		str << tod_manager_.turn();
+	case TURN: {
+		str << resources::tod_manager->turn();
 
-		if(tod_manager_.number_of_turns() != -1) {
-			str << "/" << tod_manager_.number_of_turns();
-		}
+		int nb = resources::tod_manager->number_of_turns();
+		if (nb != -1) str << '/' << nb;
 
 		str << "\n";
 		break;
+	}
 	// For the following status reports, show them in gray text
 	// when it is not the active player's turn.
 	case GOLD:

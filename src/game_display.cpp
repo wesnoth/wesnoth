@@ -436,12 +436,11 @@ void game_display::draw_report(reports::TYPE report_num)
 		return;
 	}
 
-	reports::report report = reports::generate_report(report_num,report_,get_map(),
-							  units_, teams_,
+	reports::report report = reports::generate_report(report_num, report_,
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
 							  selectedHex_, mouseoverHex_, displayedUnitHex_,
-							  tod_manager_, observers_, level_, !viewpoint_);
+		observers_, level_, !viewpoint_);
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
