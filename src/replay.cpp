@@ -725,21 +725,17 @@ bool do_replay(game_display& disp,
 	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
-	return do_replay_handle(disp, units, teams, team_num, state_of_game
-			, controller, std::string(""));
+	return do_replay_handle(team_num, "");
 }
 
-bool do_replay_handle(game_display& disp,
-					  unit_map& units, std::vector<team>& teams, int team_num,
-					  game_state& state_of_game, play_controller& controller,
-					  const std::string& do_untill)
+bool do_replay_handle(int side_num, const std::string &do_untill)
 {
 	//a list of units that have promoted from the last attack
 	std::deque<map_location> advancing_units;
 
 	end_level_exception* delayed_exception = 0;
 
-	team& current_team = teams[team_num-1];
+	team &current_team = (*resources::teams)[side_num - 1];
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
@@ -817,7 +813,7 @@ bool do_replay_handle(game_display& disp,
 			get_replay_source().add_chat_message_location();
 			if (!get_replay_source().is_skipping() || is_whisper) {
 				const int side = lexical_cast_default<int>(child["side"],0);
-				disp.add_chat_message(time(NULL), speaker_name, side, message,
+				resources::screen->add_chat_message(time(NULL), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
@@ -825,24 +821,24 @@ bool do_replay_handle(game_display& disp,
 		}
 		else if (const config &child = cfg->child("label"))
 		{
-			terrain_label label(disp.labels(), child);
+			terrain_label label(resources::screen->labels(), child);
 
-			disp.labels().set_label(label.location(),
+			resources::screen->labels().set_label(label.location(),
 						label.text(),
 						label.team_name(),
 						label.colour());
 		}
 		else if (const config &child = cfg->child("clear_labels"))
 		{
-			disp.labels().clear(std::string(child["team_name"]));
+			resources::screen->labels().clear(std::string(child["team_name"]));
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
 			const map_location loc(child, resources::state_of_game);
 			const std::string &name = child["name"];
 
-			unit_map::iterator u = units.find(loc);
-			if(u != units.end()) {
+			unit_map::iterator u = resources::units->find(loc);
+			if (u.valid()) {
 				if(u->second.unrenamable()) {
 					std::stringstream errbuf;
 					errbuf << "renaming unrenamable unit " << u->second.id() << "\n";
@@ -861,7 +857,7 @@ bool do_replay_handle(game_display& disp,
 
 		else if (cfg->child("init_side"))
 		{
-			controller.do_init_side(team_num - 1);
+			resources::controller->do_init_side(side_num - 1);
 		}
 
 		//if there is an end turn directive
@@ -901,8 +897,8 @@ bool do_replay_handle(game_display& disp,
 				replay::throw_error(errbuf.str());
 			}
 
-			unit new_unit(&units, &u_type->second, team_num, true, false);
-			const std::string& res = recruit_unit(team_num, new_unit, loc, false, !get_replay_source().is_skipping());
+			unit new_unit(resources::units, &u_type->second, side_num, true, false);
+			const std::string &res = recruit_unit(side_num, new_unit, loc, false, !get_replay_source().is_skipping());
 			if(!res.empty()) {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -915,7 +911,7 @@ bool do_replay_handle(game_display& disp,
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				replay::throw_error(errbuf.str());
 			}
-			LOG_REPLAY << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << loc
+			LOG_REPLAY << "recruit: team=" << side_num << " '" << u_type->second.id() << "' at (" << loc
 			       << ") cost=" << u_type->second.cost() << " from gold=" << current_team.gold() << ' ';
 
 
@@ -924,7 +920,7 @@ bool do_replay_handle(game_display& disp,
 			current_team.spend_gold(u_type->second.cost());
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !get_replay_source().is_skipping();
-			check_checksums(disp,units,*cfg);
+			check_checksums(*resources::screen, *resources::units, *cfg);
 		}
 
 		else if (const config &child = cfg->child("recall"))
@@ -942,15 +938,15 @@ bool do_replay_handle(game_display& disp,
 
 			if(val >= 0 && val < int(current_team.recall_list().size())) {
 				statistics::recall_unit(current_team.recall_list()[val]);
-				current_team.recall_list()[val].set_game_context(&units);
-				recruit_unit(team_num, current_team.recall_list()[val], loc, true, !get_replay_source().is_skipping());
+				current_team.recall_list()[val].set_game_context(resources::units);
+				recruit_unit(side_num, current_team.recall_list()[val], loc, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(current_team.recall_list().begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {
 				replay::throw_error("illegal recall\n");
 			}
 			fix_shroud = !get_replay_source().is_skipping();
-			check_checksums(disp,units,*cfg);
+			check_checksums(*resources::screen, *resources::units, *cfg);
 		}
 
 		else if (const config &child = cfg->child("disband"))
@@ -974,16 +970,16 @@ bool do_replay_handle(game_display& disp,
 			const std::string &num = child["value"];
 			const int val = lexical_cast_default<int>(num);
 			const std::string &tnum = child["team"];
-			const int tval = lexical_cast_default<int>(tnum,-1);
-			if ( (tval<0)  || (static_cast<size_t>(tval) > teams.size()) ) {
+			const int tval = lexical_cast_default<int>(tnum);
+			if (tval <= 0  || tval > int(resources::teams->size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"
-					<< team_num << "\n" << " Updated value :" << val;
+					<< side_num << "\n" << " Updated value :" << val;
 
 				replay::throw_error(errbuf.str());
 			} else {
-				teams[tval-1].set_countdown_time(val);
+				(*resources::teams)[tval - 1].set_countdown_time(val);
 			}
 		}
 		else if (const config &child = cfg->child("move"))
@@ -1005,15 +1001,15 @@ bool do_replay_handle(game_display& disp,
 				continue;
 			}
 
-			unit_map::iterator u = units.find(dst);
-			if(u != units.end()) {
+			unit_map::iterator u = resources::units->find(dst);
+			if (u.valid()) {
 				std::stringstream errbuf;
 				errbuf << "destination already occupied: "
 				       << dst << '\n';
 				replay::throw_error(errbuf.str());
 			}
-			u = units.find(src);
-			if(u == units.end()) {
+			u = resources::units->find(src);
+			if (!u.valid()) {
 				std::stringstream errbuf;
 				errbuf << "unfound location for source of movement: "
 				       << src << " -> " << dst << '\n';
@@ -1025,7 +1021,7 @@ bool do_replay_handle(game_display& disp,
 			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
 			// (supposed to be the human player in SP)
 			// That's ugly but let's try to make the replay works like that too
-			if(team_num != 1 && teams.front().fog_or_shroud() && !teams.front().fogged(dst)
+			if (side_num != 1 && resources::teams->front().fog_or_shroud() && !resources::teams->front().fogged(dst)
 					 && (current_team.is_ai() || current_team.is_network_ai()))
 			{
 				// the second parameter is impossible to know
@@ -1038,7 +1034,7 @@ bool do_replay_handle(game_display& disp,
 		{
 			const config &destination = child.child("destination");
 			const config &source = child.child("source");
-			check_checksums(disp,units,*cfg);
+			check_checksums(*resources::screen, *resources::units, *cfg);
 
 			if (!destination || !source) {
 				replay::throw_error("no destination/source found in attack\n");
@@ -1061,8 +1057,8 @@ bool do_replay_handle(game_display& disp,
 				def_weapon_num = lexical_cast_default<int>(def_weapon);
 			}
 
-			unit_map::iterator u = units.find(src);
-			if(u == units.end()) {
+			unit_map::iterator u = resources::units->find(src);
+			if (!u.valid()) {
 				replay::throw_error("unfound location for source of attack\n");
 			}
 
@@ -1070,9 +1066,9 @@ bool do_replay_handle(game_display& disp,
 				replay::throw_error("illegal weapon type in attack\n");
 			}
 
-			unit_map::const_iterator tgt = units.find(dst);
+			unit_map::const_iterator tgt = resources::units->find(dst);
 
-			if(tgt == units.end()) {
+			if (!tgt.valid()) {
 				std::stringstream errbuf;
 				errbuf << "unfound defender for attack: " << src << " -> " << dst << '\n';
 				replay::throw_error(errbuf.str());
@@ -1086,19 +1082,19 @@ bool do_replay_handle(game_display& disp,
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			DELAY_END_LEVEL(delayed_exception, attack(src, dst, weapon_num, def_weapon_num, units, !get_replay_source().is_skipping()));
+			DELAY_END_LEVEL(delayed_exception, attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping()));
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 
-			u = units.find(src);
-			tgt = units.find(dst);
+			u = resources::units->find(src);
+			tgt = resources::units->find(dst);
 
-			if(u != units.end() && u->second.advances()) {
+			if (u.valid() && u->second.advances()) {
 				advancing_units.push_back(u->first);
 			}
 
 			DBG_REPLAY << "advancing_units.size: " << advancing_units.size() << "\n";
-			if(tgt != units.end() && tgt->second.advances()) {
+			if (tgt.valid() && tgt->second.advances()) {
 				advancing_units.push_back(tgt->first);
 			}
 
@@ -1112,7 +1108,7 @@ bool do_replay_handle(game_display& disp,
 		else if (const config &child = cfg->child("fire_event"))
 		{
 			foreach (const config &v, child.child_range("set_variable")) {
-				state_of_game.set_variable(v["name"], v["value"]);
+				resources::state_of_game->set_variable(v["name"], v["value"]);
 			}
 			const std::string &event = child["raise"];
 			//exclude these events here, because in a replay proper time of execution can't be
@@ -1135,17 +1131,17 @@ bool do_replay_handle(game_display& disp,
 			if(! cfg->child("checksum")) {
 				replay::throw_error("unrecognized action:\n" + cfg->debug());
 			} else {
-				check_checksums(disp,units,*cfg);
+				check_checksums(*resources::screen, *resources::units, *cfg);
 			}
 		}
 
 		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
 		//This is needed for shared vision to work properly.
-		if (fix_shroud && clear_shroud(team_num) && !recorder.is_skipping()) {
-			disp.recalculate_minimap();
-			disp.invalidate_game_status();
-			disp.invalidate_all();
-			disp.draw();
+		if (fix_shroud && clear_shroud(side_num) && !recorder.is_skipping()) {
+			resources::screen->recalculate_minimap();
+			resources::screen->invalidate_game_status();
+			resources::screen->invalidate_all();
+			resources::screen->draw();
 		}
 
 		if (const config &child = cfg->child("verify")) {
