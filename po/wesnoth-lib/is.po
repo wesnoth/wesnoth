@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-19 12:26+0200\n"
 "PO-Revision-Date: 2009-06-15 15:03-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -553,7 +553,7 @@ msgstr "Ógengilegt"
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:149
-#: data/gui/default/window/mp_server_list.cfg:31
+#: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Tengjast miðlara"
 
@@ -596,7 +596,7 @@ msgstr "Tengjast"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:410
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -605,7 +605,7 @@ msgstr "Tengjast"
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Hætta við"
@@ -620,8 +620,8 @@ msgstr "Herferð"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:395
-#: data/gui/default/window/game_load.cfg:396
+#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -733,10 +733,11 @@ msgid "Time of day lighting preset"
 msgstr "Tími dags frumstilltur"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:553
+#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Næsta"
@@ -774,7 +775,7 @@ msgstr "Leyfa fleiru en einu korti að vera opið samtímis"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:194
 msgid "Apply"
 msgstr "Setja"
 
@@ -791,14 +792,14 @@ msgid "Do you really want to delete this game?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
 #. [toggle_button]: id=dont_ask_again
-#: data/gui/default/window/game_delete.cfg:70
+#: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/game_delete.cfg:106
-#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_delete.cfg:128
+#: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/game_save_oos.cfg:186
@@ -811,7 +812,7 @@ msgstr "Já"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
@@ -840,7 +841,7 @@ msgstr "Skrá: "
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:238
-#: data/gui/default/window/mp_server_list.cfg:86
+#: data/gui/default/window/mp_server_list.cfg:98
 msgid "Name"
 msgstr "Nafn"
 
@@ -856,6 +857,18 @@ msgstr "Líma"
 #, fuzzy
 msgid "Delete"
 msgstr "Eyða skrá"
+
+#. [toggle_button]: id=show_replay
+#: data/gui/default/window/game_load.cfg:391
+#, fuzzy
+msgid "Show replay"
+msgstr "spilari"
+
+#. [toggle_button]: id=cancel_orders
+#: data/gui/default/window/game_load.cfg:403
+#, fuzzy
+msgid "Cancel orders"
+msgstr "Hætta við"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -923,15 +936,56 @@ msgid "Change language"
 msgstr "Breyta tungumáli"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:355
+#: data/gui/default/window/lobby_main.cfg:325
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Fjölspilun"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:333
+#, fuzzy
+msgid "Filter:"
+msgstr "Skrá: "
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:344
+#, fuzzy
+msgid "Friends"
+msgstr "Vinalisti"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:350
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:356
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:362
+msgid "Invert filter"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:390
+#, fuzzy
+msgid "Send"
+msgstr "Sandur"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Loka"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:364
+#: data/gui/default/window/lobby_main.cfg:414
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -940,32 +994,32 @@ msgstr "Hætta"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:370
+#: data/gui/default/window/lobby_main.cfg:420
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Stillingar"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:376
+#: data/gui/default/window/lobby_main.cfg:426
 #, fuzzy
 msgid "Refresh"
 msgstr "Glæða skjá"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:382
+#: data/gui/default/window/lobby_main.cfg:432
 #, fuzzy
 msgid "Join"
 msgstr "Innskráning"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:388
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:394
+#: data/gui/default/window/lobby_main.cfg:444
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Búa til leik"
@@ -973,44 +1027,10 @@ msgstr "Búa til leik"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:400
+#: data/gui/default/window/lobby_main.cfg:450
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Hjálp"
-
-#: data/gui/default/window/lobby_main.cfg:496
-#, fuzzy
-msgid "Filter:"
-msgstr "Skrá: "
-
-#: data/gui/default/window/lobby_main.cfg:507
-#, fuzzy
-msgid "Friends"
-msgstr "Vinalisti"
-
-#: data/gui/default/window/lobby_main.cfg:513
-msgid "No ignored"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:519
-msgid "Vacant slots"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:525
-msgid "Invert filter"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:547
-#, fuzzy
-msgid "Send"
-msgstr "Sandur"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/lobby_main.cfg:559
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Loka"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1041,21 +1061,21 @@ msgstr "Vina-/hunsunarlisti"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Add As Friend"
 msgstr "Bæta sem vin"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Add As Ignore"
 msgstr "Bæta sem hunsun"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Remove"
 msgstr "Fjarlægja"
 
@@ -1091,7 +1111,7 @@ msgstr "Banna"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
-#: data/gui/default/window/mp_server_list.cfg:51
+#: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
 msgstr "Þú munt nú tengjast fjölspilunarmiðlara."
 
@@ -1201,7 +1221,7 @@ msgstr "Lykilorð:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:167
 msgid "Save password to preferences (clear text)"
 msgstr "Vista lykilorð í styllingar (hreinn texti)"
 
@@ -1215,7 +1235,7 @@ msgstr "Lykilorðaáminning"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:235
+#: src/gui/dialogs/game_load.cpp:239
 msgid "Multiplayer"
 msgstr "Fjölspilun"
 
@@ -1272,12 +1292,12 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spila fjölspilunarleik með tölvu eða mönnum deilandi sömu tölvunni."
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:102
+#: data/gui/default/window/mp_server_list.cfg:115
 msgid "Address"
 msgstr "Slóð"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Velja"
 
@@ -1290,7 +1310,7 @@ msgstr "Fyrri eining"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:237
+#: src/gui/dialogs/game_load.cpp:241
 msgid "Tutorial"
 msgstr "Sýnikennsla"
 
@@ -1343,429 +1363,429 @@ msgstr "Nafn: "
 msgid "Creation of the directory failed."
 msgstr "Gerð möppunnar mistókst."
 
-#: src/game_preferences.cpp:308
+#: src/game_preferences.cpp:307
 msgid "No server has been defined."
 msgstr "Enginn miðlari hefur verið skilgreindur."
 
-#: src/game_preferences.cpp:370
+#: src/game_preferences.cpp:369
 msgid "player"
 msgstr "spilari"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:155
 #, fuzzy
 msgid "Full Screen"
 msgstr "Setja á Fullan skjá"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:156
 msgid "Enable scroll tracking of unit actions"
 msgstr "Leyfa skjá að fylgja aðgerðum eininga"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:157
 msgid "Accelerated Speed"
 msgstr "Aukinn hraði"
 
-#: src/game_preferences_display.cpp:156
+#: src/game_preferences_display.cpp:158
 msgid "Skip AI Moves"
 msgstr "Sleppa hreyfingum tölvu"
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:159
 msgid "Show Grid"
 msgstr "Sýna útlínur reita"
 
-#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:160 src/game_preferences_display.cpp:338
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Vista endurinningu eftir SP/MP sigur eða MP tap"
 
-#: src/game_preferences_display.cpp:159 src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:161 src/game_preferences_display.cpp:341
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Eyða sjálfvistunum eftir SP/MP sigur eða MP tap"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:162
 msgid "Do Not Show Lobby Joins"
 msgstr "Ekki sýna þegar einhver kemur inní herbergið"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:163
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Sýna eingöngu þegar vinir koma inní herbergið"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:164
 msgid "Show All Lobby Joins"
 msgstr "Sýna alla sem koma inní herbergið"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:165
 msgid "Sort Lobby List"
 msgstr "Flokka herbergja lista"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:166
 msgid "Iconize Lobby List"
 msgstr "Merkja herberja lista"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:168
 msgid "Set path to wesnothd"
 msgstr "Setja slóð á wesnothd"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:169
 msgid "Friends List"
 msgstr "Vinalisti"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:170
 msgid "Multiplayer Options"
 msgstr "Fjölspilunarstillingar"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Show Floating Labels"
 msgstr "Birta fljótandi örnefni"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Turn Dialog"
 msgstr "Lotu gluggi"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Turn Bell"
 msgstr "Lotu bjalla"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Show Team Colors"
 msgstr "Birta lit liða"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Show Color Cursors"
 msgstr "Birta litaða músarbendla"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Haloing Effects"
 msgstr "Birta Halo-grafík"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Change Resolution"
 msgstr "Breyta upplausn"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:181
 msgid "Theme"
 msgstr "Þema"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:182
 msgid "Hotkeys"
 msgstr "Flýtitakkar"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:183
 msgid "Reverse Time Graphics"
 msgstr "Öfugsnúa tímagrafík"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:185
 msgid "Sound effects"
 msgstr "Hljóð"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:186
 msgid "Music"
 msgstr "Tónlist"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:187
 msgid "Chat Timestamping"
 msgstr "Tímastimpill spjalls"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:188
 msgid "sound^Advanced Options"
 msgstr "Frekari stillingar"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:189
 msgid "sound^Standard Options"
 msgstr "Venjulegar stillingar"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
 msgstr "Hljóð notendaviðmóts"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:193
 msgid "Custom"
 msgstr "Nánari skilgreiningar"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
 msgstr "Sýna hreyfingar kyrrstæðra eininga"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
 msgstr "Hljóðstyrkur tónlistar:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "SFX Volume:"
 msgstr "SFX hljóðstyrkur:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:198
 msgid "UI Sound Volume:"
 msgstr "Hljóðstykur notendaviðmóts:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Bell Volume:"
 msgstr "Hljóðstyrkur bjöllu:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Scroll Speed:"
 msgstr "Skrunhraði:"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:202
 msgid "Sample Rate (Hz):"
 msgstr "Hljóðtökutíðni (Hz):"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:203
 msgid "Frequency:"
 msgstr "Tíðni:"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Hljóð á/af"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Breyta SFX hljóðstyrk"
 
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Tónlist á/af"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Breyta hljóðstyrk tónlistar"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:245
 msgid "Change the bell volume"
 msgstr "Breyta hljóðstyrk bjöllu"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:248
 msgid "Turn menu and button sounds on/off"
 msgstr "Setja valmyndar og takka hljóð á/af"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:252
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Breyta hljóðstyrk fyrir takka, osf."
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:254
 msgid "Change the sample rate"
 msgstr "Breyta hljóðtölutíðninni"
 
-#: src/game_preferences_display.cpp:260
+#: src/game_preferences_display.cpp:263
 msgid "User defined sample rate"
 msgstr "Notendaskilgreind hljóðtökutíðni"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:273
+#: src/game_preferences_display.cpp:272 src/game_preferences_display.cpp:276
 msgid "Change the buffer size"
 msgstr "Breyta stærð flýtiminnis"
 
-#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:813
+#: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Stærð flýtiminnis: "
 
-#: src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:281
 msgid "Change the speed of scrolling around the map"
 msgstr "Breyta hraða skrunu yfir kortið"
 
-#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286 src/game_preferences_display.cpp:288
 msgid "Set the amount of chat lines shown"
 msgstr "Setja fjölda birtra spjallskilaboða"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:291
 msgid "Add a timestamp to chat messages"
 msgstr "Bæta við tímastimpil við spjallskilaboð"
 
-#: src/game_preferences_display.cpp:291
+#: src/game_preferences_display.cpp:294
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Velja hvort leikur eigi að vera full skjár eða gluggi"
 
-#: src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:297
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr "Á kortið að sýna þegar aðgerð eða hreyfing einingar er sýnd"
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:300
 msgid "Make units move and fight faster"
 msgstr "Hreyfing eininga og árásarhraði"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:317
 msgid "Units move and fight speed"
 msgstr "Einingar hreyfingar og bardaga hraði"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:320
 msgid "Show unit idle animations"
 msgstr "Sýna hreyfingar kyrrstæðra eininga"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:326
 msgid "Set the frequency of unit idle animations"
 msgstr "Setja tiðni hreyfingu eininga"
 
-#: src/game_preferences_display.cpp:328
+#: src/game_preferences_display.cpp:331
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Setja mesta fjölda sjálfvistanna sem viðhalda á"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:335
 msgid "Do not animate AI units moving"
 msgstr "Ekki sýna hreyfingar tölvustýrða einingar"
 
-#: src/game_preferences_display.cpp:340
+#: src/game_preferences_display.cpp:343
 msgid "Overlay a grid onto the map"
 msgstr "Setja grind yfir kort"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:346
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Flokka spilara í herbergjum eftir spilara hópum"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:349
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Sýna merki fyrir framan nöfn spilara í herberginu."
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:352
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Taktu hakan af til að eyða vistuðu lykilorði (við útgang)."
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:355
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Ekki sýna skilaboð varðandi spilara sem koma í fjölspilunar herbergið"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:357
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Sýna skilaboð varðandi vini sem koma í fjölspilunar herbergið"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:359
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Sýna skilaboð varðandi alla sem koma í fjölspilunar herbergið"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr "Finna og setja slóð á MP miðlara til að hýsa LAN leiki."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr "Skoða og breyta vina og óvinalistann þinn"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr "Til baka til fjölspilunarstillingar"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr "Bæta þessu notendanafni á vinalistann þinn"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr "Bæta þessu notendanafni á hunsunarlistann þinn"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr "Fjarlægja þetta notendanafn úr listanum þínum"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr "Bæta við notendanafni"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Sýna texta fyrir ofan einingu þegar það fær högg á sig til að sýna meiðsl"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:374
 msgid "Change the resolution the game runs at"
 msgstr "Breyta upplausninni sem leikurinn keyrir á"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr "Breyta þemaið leikurinn keyrir með"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Sýna glugga í byrjun þinnar umferðar"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Spila bjölluhljóð við upphaf umferðar þinnar"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Sýna litaðan hring að grunni hverjar einingar til að sýna í hvaða liði það er"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "velja hvort sólin fari frá vinstri-til-hægri eða hægri-til-vinstri"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Notast við litaða músarbendla (gæti hægt á)"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:393
 msgid "Use graphical special effects (may be slower)"
 msgstr "Nota sérstök grafísk áhrif (gæti hægt á)"
 
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr "Skoða og stilla flýtileiðir lyklaborðs"
 
-#: src/game_preferences_display.cpp:681
+#: src/game_preferences_display.cpp:690
 msgid "Speed: "
 msgstr "Hraði: "
 
-#: src/game_preferences_display.cpp:686 src/game_preferences_display.cpp:688
+#: src/game_preferences_display.cpp:695 src/game_preferences_display.cpp:697
 msgid "Maximum Auto-Saves: "
 msgstr "Mesti fjöldi sjálfvistana: "
 
-#: src/game_preferences_display.cpp:686
+#: src/game_preferences_display.cpp:695
 msgid "infinite"
 msgstr "óendanlegt"
 
-#: src/game_preferences_display.cpp:865
+#: src/game_preferences_display.cpp:874
 msgid "Chat Lines: "
 msgstr "Spjalllínur: "
 
-#: src/game_preferences_display.cpp:887 src/game_preferences_display.cpp:895
+#: src/game_preferences_display.cpp:896 src/game_preferences_display.cpp:904
 msgid "Invalid username"
 msgstr "Ógilt notendanafn"
 
-#: src/game_preferences_display.cpp:969
+#: src/game_preferences_display.cpp:1007
 msgid "yes"
 msgstr "já"
 
-#: src/game_preferences_display.cpp:971
+#: src/game_preferences_display.cpp:1009
 msgid "no"
 msgstr "nei"
 
-#: src/game_preferences_display.cpp:1004
+#: src/game_preferences_display.cpp:1042
 msgid "(empty list)"
 msgstr "(tómur listi)"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1163
 msgid "Prefs section^General"
 msgstr "Almennt"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1164
 msgid "Prefs section^Display"
 msgstr "Skjár"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1165
 msgid "Prefs section^Sound"
 msgstr "Hljóð"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1166
 msgid "Prefs section^Multiplayer"
 msgstr "Fjölspilun"
 
-#: src/game_preferences_display.cpp:1124
+#: src/game_preferences_display.cpp:1167
 msgid "Advanced section^Advanced"
 msgstr "Annað"
 
-#: src/game_preferences_display.cpp:1159
+#: src/game_preferences_display.cpp:1202
 msgid "Saved Theme Preference: "
 msgstr "Vistað þema: "
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1208
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Ný þema mun taka gildi næsta leik."
 
-#: src/game_preferences_display.cpp:1169
+#: src/game_preferences_display.cpp:1212
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Engin þekkt þema. Reyndu að breyta innan núverandi leik."
 
-#: src/game_preferences_display.cpp:1212
+#: src/game_preferences_display.cpp:1255
 msgid "Find $filename server binary to host networked games"
 msgstr "Findu skránna '$filename' til að hýsa netleiki"
 
@@ -1785,11 +1805,15 @@ msgstr "Texti hefur leturstærðina 0."
 msgid "Text doesn't start on canvas."
 msgstr "Texti passar ekki innan úthlutaðar marka."
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:138
+msgid "Linked '$id' group has multiple definitions."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
 msgstr "Engin upplausn skilgreind."
 
-#: src/gui/auxiliary/window_builder.cpp:273
+#: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
@@ -1798,24 +1822,28 @@ msgstr "Engin upplausn skilgreind."
 msgid "No grid defined."
 msgstr "Engin grind skilgreind."
 
-#: src/gui/auxiliary/window_builder.cpp:380
+#: src/gui/auxiliary/window_builder.cpp:325
+msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
 msgstr "Röð þarf að hafa dálk."
 
-#: src/gui/auxiliary/window_builder.cpp:381
+#: src/gui/auxiliary/window_builder.cpp:425
 msgid "Number of columns differ."
 msgstr "Fjöldi dálka mismunar."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/listbox.cpp:53
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Enginn listi skilgreindur."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/listbox.cpp:57
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' ætti að innihalda eina röð."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/listbox.cpp:73
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -1835,34 +1863,34 @@ msgstr "Talan value_labels og values passa ekki."
 msgid "No stack defined."
 msgstr "Enginn listi skilgreindur."
 
-#: src/gui/dialogs/game_load.cpp:210
+#: src/gui/dialogs/game_load.cpp:214
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:228
+#: src/gui/dialogs/game_load.cpp:232
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:245
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "replay"
 msgstr "spilari"
 
-#: src/gui/dialogs/game_load.cpp:247
+#: src/gui/dialogs/game_load.cpp:251
 #, fuzzy
 msgid "Turn"
 msgstr "Ljúka umferð"
 
-#: src/gui/dialogs/game_load.cpp:249
+#: src/gui/dialogs/game_load.cpp:253
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Markmið atburðarásar"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:254
+#: src/gui/dialogs/game_load.cpp:258
 #, fuzzy
 msgid "Version: "
 msgstr "Útgáfa"
@@ -1902,7 +1930,7 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr "Enginn stöðu- eða teiknihluti skilgreindur."
 
-#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Gat ekki birt glugga þar sem hann passaði ekki á skjáinn."
 

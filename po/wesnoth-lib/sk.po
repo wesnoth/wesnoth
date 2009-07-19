@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-19 12:26+0200\n"
 "PO-Revision-Date: 2009-03-29 14:23+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -552,7 +552,7 @@ msgstr "Nepriechodné"
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:149
-#: data/gui/default/window/mp_server_list.cfg:31
+#: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Pripojiť na server"
 
@@ -595,7 +595,7 @@ msgstr "Pripojiť"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:410
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -604,7 +604,7 @@ msgstr "Pripojiť"
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Storno"
@@ -619,8 +619,8 @@ msgstr "Výprava"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:395
-#: data/gui/default/window/game_load.cfg:396
+#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -732,10 +732,11 @@ msgid "Time of day lighting preset"
 msgstr "Prednastavenie osvetlenia dennou dobou"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:553
+#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Ďalšia"
@@ -773,7 +774,7 @@ msgstr "Umožni otvoriť viac máp naraz (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:194
 msgid "Apply"
 msgstr "Použi"
 
@@ -790,14 +791,14 @@ msgid "Do you really want to delete this game?"
 msgstr "Chceš naozaj vypnúť?"
 
 #. [toggle_button]: id=dont_ask_again
-#: data/gui/default/window/game_delete.cfg:70
+#: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/game_delete.cfg:106
-#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_delete.cfg:128
+#: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/game_save_oos.cfg:186
@@ -810,7 +811,7 @@ msgstr "Áno"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
@@ -839,7 +840,7 @@ msgstr "Súbor:"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:238
-#: data/gui/default/window/mp_server_list.cfg:86
+#: data/gui/default/window/mp_server_list.cfg:98
 msgid "Name"
 msgstr "Meno"
 
@@ -855,6 +856,18 @@ msgstr "Vlož"
 #, fuzzy
 msgid "Delete"
 msgstr "Vymaž súbor"
+
+#. [toggle_button]: id=show_replay
+#: data/gui/default/window/game_load.cfg:391
+#, fuzzy
+msgid "Show replay"
+msgstr "hráč"
+
+#. [toggle_button]: id=cancel_orders
+#: data/gui/default/window/game_load.cfg:403
+#, fuzzy
+msgid "Cancel orders"
+msgstr "Storno"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -922,15 +935,57 @@ msgid "Change language"
 msgstr "Zmeň jazyk"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:355
+#: data/gui/default/window/lobby_main.cfg:325
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Zápas"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:333
+#, fuzzy
+msgid "Filter:"
+msgstr "Súbor:"
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:344
+#, fuzzy
+msgid "Friends"
+msgstr "Zoznam priateľov"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:350
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:356
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:362
+#, fuzzy
+msgid "Invert filter"
+msgstr "Otoč výber"
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:390
+#, fuzzy
+msgid "Send"
+msgstr "Piesok"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Zavri"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:364
+#: data/gui/default/window/lobby_main.cfg:414
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -939,32 +994,32 @@ msgstr "Vypni hru"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:370
+#: data/gui/default/window/lobby_main.cfg:420
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Nastavenia"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:376
+#: data/gui/default/window/lobby_main.cfg:426
 #, fuzzy
 msgid "Refresh"
 msgstr "Prekresli obrazovku"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:382
+#: data/gui/default/window/lobby_main.cfg:432
 #, fuzzy
 msgid "Join"
 msgstr "Prihlasovacie meno"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:388
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:394
+#: data/gui/default/window/lobby_main.cfg:444
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Vytvor hru"
@@ -972,45 +1027,10 @@ msgstr "Vytvor hru"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:400
+#: data/gui/default/window/lobby_main.cfg:450
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Pomoc"
-
-#: data/gui/default/window/lobby_main.cfg:496
-#, fuzzy
-msgid "Filter:"
-msgstr "Súbor:"
-
-#: data/gui/default/window/lobby_main.cfg:507
-#, fuzzy
-msgid "Friends"
-msgstr "Zoznam priateľov"
-
-#: data/gui/default/window/lobby_main.cfg:513
-msgid "No ignored"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:519
-msgid "Vacant slots"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:525
-#, fuzzy
-msgid "Invert filter"
-msgstr "Otoč výber"
-
-#: data/gui/default/window/lobby_main.cfg:547
-#, fuzzy
-msgid "Send"
-msgstr "Piesok"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/lobby_main.cfg:559
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Zavri"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1041,21 +1061,21 @@ msgstr "Zoznam priateľov/ignorovaných"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Add As Friend"
 msgstr "Pridať medzi priateľov"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Add As Ignore"
 msgstr "Pridať medzi ignorovaných"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Remove"
 msgstr "Odstrániť"
 
@@ -1091,7 +1111,7 @@ msgstr "Zakázať"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
-#: data/gui/default/window/mp_server_list.cfg:51
+#: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
 msgstr "Teraz sa pripojíš na server sieťovej hry."
 
@@ -1201,7 +1221,7 @@ msgstr "Heslo: "
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:167
 msgid "Save password to preferences (clear text)"
 msgstr "Uložiť heslo do nastavení (viditeľné ako text)"
 
@@ -1215,7 +1235,7 @@ msgstr "Pripomienka hesla"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:235
+#: src/gui/dialogs/game_load.cpp:239
 msgid "Multiplayer"
 msgstr "Zápas"
 
@@ -1272,12 +1292,12 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Hraj zápas proti počítaču alebo ľuďom na jednom počítači"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:102
+#: data/gui/default/window/mp_server_list.cfg:115
 msgid "Address"
 msgstr "Adresa"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Označiť"
 
@@ -1290,7 +1310,7 @@ msgstr "Predchádzajúca jednotka"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:237
+#: src/gui/dialogs/game_load.cpp:241
 msgid "Tutorial"
 msgstr "Výcvik"
 
@@ -1343,343 +1363,343 @@ msgstr "Meno:"
 msgid "Creation of the directory failed."
 msgstr "Nepodarilo sa vytvoriť adresár."
 
-#: src/game_preferences.cpp:308
+#: src/game_preferences.cpp:307
 msgid "No server has been defined."
 msgstr "Nebol definovaný žiadny server."
 
-#: src/game_preferences.cpp:370
+#: src/game_preferences.cpp:369
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:155
 #, fuzzy
 msgid "Full Screen"
 msgstr "Celá obrazovka (zapni/vypni)"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:156
 msgid "Enable scroll tracking of unit actions"
 msgstr "Zapnúť sledovanie akcií jednotiek"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:157
 msgid "Accelerated Speed"
 msgstr "Zrýchlený pohyb"
 
-#: src/game_preferences_display.cpp:156
+#: src/game_preferences_display.cpp:158
 msgid "Skip AI Moves"
 msgstr "Neukazuj ťahy počítača"
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:159
 msgid "Show Grid"
 msgstr "Ukáž mriežku"
 
-#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:160 src/game_preferences_display.cpp:338
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Ulož záznam pri víťazstve v hre/zápase alebo prehre v zápase"
 
-#: src/game_preferences_display.cpp:159 src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:161 src/game_preferences_display.cpp:341
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Vymaž auto.uložené hry pri víťaz. v hre/zápase al. prehre v zápase"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:162
 msgid "Do Not Show Lobby Joins"
 msgstr "Neukazuj príchody do čakárne"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:163
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Ukáž príchody priateľov do čakárne"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:164
 msgid "Show All Lobby Joins"
 msgstr "Ukáž všetky príchody do čakárne"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:165
 msgid "Sort Lobby List"
 msgstr "Triediť zoznam v čakárni"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:166
 msgid "Iconize Lobby List"
 msgstr "Ikony v čakárni"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:168
 msgid "Set path to wesnothd"
 msgstr "Nastav cestu k 'wesnothd'"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:169
 msgid "Friends List"
 msgstr "Zoznam priateľov"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:170
 msgid "Multiplayer Options"
 msgstr "Nastavenia zápasu"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Show Floating Labels"
 msgstr "Ukáž pomocné nápisy"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Turn Dialog"
 msgstr "Dialóg na začiatku kola"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Turn Bell"
 msgstr "Signál na začiatku kola"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Show Team Colors"
 msgstr "Tímové farby"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Show Color Cursors"
 msgstr "Farebný kurzor"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Haloing Effects"
 msgstr "Žiarivé efekty"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Change Resolution"
 msgstr "Zmeň rozlíšenie"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:181
 msgid "Theme"
 msgstr "Téma"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:182
 msgid "Hotkeys"
 msgstr "Klávesy"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:183
 msgid "Reverse Time Graphics"
 msgstr "Otoč zobrazenie času"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:185
 msgid "Sound effects"
 msgstr "Zvukové efekty"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:186
 msgid "Music"
 msgstr "Hudba"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:187
 msgid "Chat Timestamping"
 msgstr "Čas pri rozhovore"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:188
 msgid "sound^Advanced Options"
 msgstr "Rozšírené nastavenia"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:189
 msgid "sound^Standard Options"
 msgstr "Štandardné nastavenia"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
 msgstr "Zvuky užívateľského rozhrania"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:193
 msgid "Custom"
 msgstr "Vlastné"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
 msgstr "Zobrazuj animácie nečinných jednotiek"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
 msgstr "Hlasitosť hudby:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "SFX Volume:"
 msgstr "Hlasitosť efektov:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:198
 msgid "UI Sound Volume:"
 msgstr "Hlasitosť zvukov užívateľ. rozhrania:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Bell Volume:"
 msgstr "Hlasitosť signálu:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Scroll Speed:"
 msgstr "Rýchlosť rolovania:"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:202
 msgid "Sample Rate (Hz):"
 msgstr "Frekvencia (Hz):"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:203
 msgid "Frequency:"
 msgstr "Frekvencia:"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Zvukové efekty (zapni/vypni)"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Nastav hlasitosť zvukových efektov"
 
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Hudba (zapni/vypni)"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Nastav hlasitosť hudby"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:245
 msgid "Change the bell volume"
 msgstr "Nastav hlasitosť signálu"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:248
 msgid "Turn menu and button sounds on/off"
 msgstr "Zapni/vypni zvuky menu a tlačidiel"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:252
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Nastav hlasitosť zvukov pri stlačení tlačidiel atď."
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:254
 msgid "Change the sample rate"
 msgstr "Nastav frekvenciu"
 
-#: src/game_preferences_display.cpp:260
+#: src/game_preferences_display.cpp:263
 msgid "User defined sample rate"
 msgstr "Frekvencia podľa používateľa"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:273
+#: src/game_preferences_display.cpp:272 src/game_preferences_display.cpp:276
 msgid "Change the buffer size"
 msgstr "Nastav veľkosť zásobníka"
 
-#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:813
+#: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Veľkosť zásobníka: "
 
-#: src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:281
 msgid "Change the speed of scrolling around the map"
 msgstr "Nastav rýchlosť rolovania mapy"
 
-#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286 src/game_preferences_display.cpp:288
 msgid "Set the amount of chat lines shown"
 msgstr "Nastav počet zobrazených riadkov rozhovoru"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:291
 msgid "Add a timestamp to chat messages"
 msgstr "Pridávaj k rozhovoru aj časový údaj"
 
-#: src/game_preferences_display.cpp:291
+#: src/game_preferences_display.cpp:294
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Nastav, či má hra prebiehať na celej obrazovke alebo v okne"
 
-#: src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:297
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "Má sa zobrazenie mapy presunúť na jednotku keď je jej činnosť alebo pohyb "
 "animovaný."
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:300
 msgid "Make units move and fight faster"
 msgstr "Nech sa jednotky pohybujú a bojujú rýchlejšie"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:317
 msgid "Units move and fight speed"
 msgstr "Rýchlosť pohybu a boja jednotiek"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:320
 msgid "Show unit idle animations"
 msgstr "Animovať nečinné jednotky"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:326
 msgid "Set the frequency of unit idle animations"
 msgstr "Nastav frekvenciu animácie nečinných jednotiek"
 
-#: src/game_preferences_display.cpp:328
+#: src/game_preferences_display.cpp:331
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Nastav maximálny počet súborov automaticky uložených hier"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:335
 msgid "Do not animate AI units moving"
 msgstr "Nekresli pohyb jednotiek počítača"
 
-#: src/game_preferences_display.cpp:340
+#: src/game_preferences_display.cpp:343
 msgid "Overlay a grid onto the map"
 msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:346
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Trieď hráčov v čakárni podľa skupín"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:349
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Zobraz ikony pred menami hráčov v čakárni."
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:352
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Zruš zaškrtnutie pre vymazanie uloženého hesla (pri ukončení)."
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:355
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Nezobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:357
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Zobrazuj správy o priateľoch, ktorí prišli do čakárne na zápas"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:359
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Zobrazuj správy o všetkých hráčoch, ktorí prišli do čakárne na zápas"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr "Nájdi a nastav cestu k serveru na vytvorenie sieťových hier."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr "Zobraziť a meniť zoznam priateľov a ignorovaných hráčov"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr "Späť do nastavenia zápasu"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr "Pridaj toto používateľské meno do zoznamu priateľov"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr "Pridaj toto používateľské meno do zoznamu ignorovaných"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr "Odstráň toto používateľské meno zo zoznamu"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr "Vlož používateľské meno"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Keď je jednotka zranená, zobraz nad ňou veľkosť zranenia"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:374
 msgid "Change the resolution the game runs at"
 msgstr "Zmeň rozlíšenie, v ktorom beží hra"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr "Zmeň grafickú tému, v ktorej beží hra"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Na začiatku tvojho kola sa zobrazí dialóg"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Na začiatku tvojho kola zaznie zvukový signál"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1687,87 +1707,87 @@ msgstr ""
 "Zobrazuj farebný kruh okolo každej jednotky, aby bolo vidno, ku ktorej "
 "strane patrí"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Vyber si, či sa slnko pohybuje zľava doprava alebo sprava doľava."
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Používaj farebný kurzor myši (môže byť pomalší)"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:393
 msgid "Use graphical special effects (may be slower)"
 msgstr "Používaj špeciálne grafické efekty (môžu byť pomalšie)"
 
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové skratky"
 
-#: src/game_preferences_display.cpp:681
+#: src/game_preferences_display.cpp:690
 msgid "Speed: "
 msgstr "Rýchlosť:"
 
-#: src/game_preferences_display.cpp:686 src/game_preferences_display.cpp:688
+#: src/game_preferences_display.cpp:695 src/game_preferences_display.cpp:697
 msgid "Maximum Auto-Saves: "
 msgstr "Max. počet automaticky uložených hier: "
 
-#: src/game_preferences_display.cpp:686
+#: src/game_preferences_display.cpp:695
 msgid "infinite"
 msgstr "neobmedzený"
 
-#: src/game_preferences_display.cpp:865
+#: src/game_preferences_display.cpp:874
 msgid "Chat Lines: "
 msgstr "Riadky rozhovoru: "
 
-#: src/game_preferences_display.cpp:887 src/game_preferences_display.cpp:895
+#: src/game_preferences_display.cpp:896 src/game_preferences_display.cpp:904
 msgid "Invalid username"
 msgstr "Neplatné používateľské meno"
 
-#: src/game_preferences_display.cpp:969
+#: src/game_preferences_display.cpp:1007
 msgid "yes"
 msgstr "áno"
 
-#: src/game_preferences_display.cpp:971
+#: src/game_preferences_display.cpp:1009
 msgid "no"
 msgstr "nie"
 
-#: src/game_preferences_display.cpp:1004
+#: src/game_preferences_display.cpp:1042
 msgid "(empty list)"
 msgstr "(prázdny zoznam)"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1163
 msgid "Prefs section^General"
 msgstr "Všeobecné"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1164
 msgid "Prefs section^Display"
 msgstr "Obrazovka"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1165
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1166
 msgid "Prefs section^Multiplayer"
 msgstr "Zápas"
 
-#: src/game_preferences_display.cpp:1124
+#: src/game_preferences_display.cpp:1167
 msgid "Advanced section^Advanced"
 msgstr "Rozšírené"
 
-#: src/game_preferences_display.cpp:1159
+#: src/game_preferences_display.cpp:1202
 msgid "Saved Theme Preference: "
 msgstr "Uložená zvolená téma: "
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1208
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní hry."
 
-#: src/game_preferences_display.cpp:1169
+#: src/game_preferences_display.cpp:1212
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/game_preferences_display.cpp:1212
+#: src/game_preferences_display.cpp:1255
 msgid "Find $filename server binary to host networked games"
 msgstr "Nájdi $filename program servera na vytvorenie sieťových hier"
 
@@ -1787,11 +1807,15 @@ msgstr "Text má veľkosť písma 0."
 msgid "Text doesn't start on canvas."
 msgstr "Text sa nezmestí na plochu."
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:138
+msgid "Linked '$id' group has multiple definitions."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
-#: src/gui/auxiliary/window_builder.cpp:273
+#: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
@@ -1800,24 +1824,28 @@ msgstr "Nebolo definované rozlíšenie."
 msgid "No grid defined."
 msgstr "Nebola definovaná žiadna mriežka."
 
-#: src/gui/auxiliary/window_builder.cpp:380
+#: src/gui/auxiliary/window_builder.cpp:325
+msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
 msgstr "Riadok musí mať stĺpec."
 
-#: src/gui/auxiliary/window_builder.cpp:381
+#: src/gui/auxiliary/window_builder.cpp:425
 msgid "Number of columns differ."
 msgstr "Počet stĺpcov sa líši."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/listbox.cpp:53
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/listbox.cpp:57
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' musí obsahovať jeden riadok."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/listbox.cpp:73
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -1837,34 +1865,34 @@ msgstr "Nesúhlasí počet nadpisov hodnôt (value_labels) a hodnôt."
 msgid "No stack defined."
 msgstr "Nebol definovaný žiadny zoznam."
 
-#: src/gui/dialogs/game_load.cpp:210
+#: src/gui/dialogs/game_load.cpp:214
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:228
+#: src/gui/dialogs/game_load.cpp:232
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:245
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "replay"
 msgstr "hráč"
 
-#: src/gui/dialogs/game_load.cpp:247
+#: src/gui/dialogs/game_load.cpp:251
 #, fuzzy
 msgid "Turn"
 msgstr "Koniec ťahu"
 
-#: src/gui/dialogs/game_load.cpp:249
+#: src/gui/dialogs/game_load.cpp:253
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Cieľ scény"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:254
+#: src/gui/dialogs/game_load.cpp:258
 #, fuzzy
 msgid "Version: "
 msgstr "Verzia"
@@ -1902,7 +1930,7 @@ msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 
-#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 "Nepodarilo sa zobraziť dialógové okno, ktoré sa nezmestilo na obrazovku."

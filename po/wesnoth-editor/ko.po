@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-11 18:00+0200\n"
+"POT-Creation-Date: 2009-07-19 12:26+0200\n"
 "PO-Revision-Date: 2006-03-21 13:15-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -165,134 +165,134 @@ msgstr ""
 msgid "Quit Editor"
 msgstr "에디터 종료"
 
-#: src/editor2/editor_controller.cpp:286
+#: src/editor2/editor_controller.cpp:286 src/editor2/editor_controller.cpp:300
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:302
-#: src/editor2/editor_controller.cpp:1059
+#: src/editor2/editor_controller.cpp:316
+#: src/editor2/editor_controller.cpp:1073
 msgid "(New Map)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:308
+#: src/editor2/editor_controller.cpp:322
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:310
+#: src/editor2/editor_controller.cpp:324
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:312
+#: src/editor2/editor_controller.cpp:326
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:317
+#: src/editor2/editor_controller.cpp:331
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:373
+#: src/editor2/editor_controller.cpp:387
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:409
+#: src/editor2/editor_controller.cpp:423
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:410
+#: src/editor2/editor_controller.cpp:424
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:428
+#: src/editor2/editor_controller.cpp:442
 #, fuzzy
 msgid "Choose a Map to Open"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor2/editor_controller.cpp:463
+#: src/editor2/editor_controller.cpp:477
 msgid "Save the Map As"
 msgstr "저장할 곳을 선택하십시오"
 
-#: src/editor2/editor_controller.cpp:467
+#: src/editor2/editor_controller.cpp:481
 #, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "맵이 이미 존재합니다. 덮어 씌우시겠습니까?"
 
-#: src/editor2/editor_controller.cpp:484
+#: src/editor2/editor_controller.cpp:498
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:497 src/editor2/editor_controller.cpp:501
+#: src/editor2/editor_controller.cpp:511 src/editor2/editor_controller.cpp:515
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:516
+#: src/editor2/editor_controller.cpp:530
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "불러올 맵을 선택하십시오"
 
-#: src/editor2/editor_controller.cpp:523
+#: src/editor2/editor_controller.cpp:537
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:538
+#: src/editor2/editor_controller.cpp:552
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:545 src/editor2/editor_controller.cpp:709
+#: src/editor2/editor_controller.cpp:559 src/editor2/editor_controller.cpp:723
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:623 src/editor2/editor_controller.cpp:665
+#: src/editor2/editor_controller.cpp:637 src/editor2/editor_controller.cpp:679
 msgid "This map is already open."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:644
+#: src/editor2/editor_controller.cpp:658
 msgid "Map saved."
 msgstr "맵이 저장되었습니다."
 
-#: src/editor2/editor_controller.cpp:688
+#: src/editor2/editor_controller.cpp:702
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:689 src/editor2/editor_controller.cpp:703
+#: src/editor2/editor_controller.cpp:703 src/editor2/editor_controller.cpp:717
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:699
+#: src/editor2/editor_controller.cpp:713
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1089
+#: src/editor2/editor_controller.cpp:1103
 msgid "Undo"
 msgstr "취소"
 
-#: src/editor2/editor_controller.cpp:1091
+#: src/editor2/editor_controller.cpp:1105
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1095
+#: src/editor2/editor_controller.cpp:1109
 msgid "Redo"
 msgstr "재취소"
 
-#: src/editor2/editor_controller.cpp:1097
+#: src/editor2/editor_controller.cpp:1111
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1102
+#: src/editor2/editor_controller.cpp:1116
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1105
+#: src/editor2/editor_controller.cpp:1119
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1109
+#: src/editor2/editor_controller.cpp:1123
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 

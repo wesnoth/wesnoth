@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-19 12:26+0200\n"
 "PO-Revision-Date: 2009-05-03 11:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -553,7 +553,7 @@ msgstr "Járhatatlan terület"
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:149
-#: data/gui/default/window/mp_server_list.cfg:31
+#: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Csatlakozás a kiszolgálóhoz"
 
@@ -597,7 +597,7 @@ msgstr "Kapcsolódás"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:410
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -606,7 +606,7 @@ msgstr "Kapcsolódás"
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Mégse"
@@ -621,8 +621,8 @@ msgstr "Hadjárat"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:395
-#: data/gui/default/window/game_load.cfg:396
+#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -734,10 +734,11 @@ msgid "Time of day lighting preset"
 msgstr "A térképmegvilágítás beállítása"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:553
+#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Következő"
@@ -775,7 +776,7 @@ msgstr "Egynél több térkép egyszerre történő megnyitásának engedélyez�
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:194
 msgid "Apply"
 msgstr "Alkalmaz"
 
@@ -792,14 +793,14 @@ msgid "Do you really want to delete this game?"
 msgstr "Biztos ki akarsz lépni?"
 
 #. [toggle_button]: id=dont_ask_again
-#: data/gui/default/window/game_delete.cfg:70
+#: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/game_delete.cfg:106
-#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_delete.cfg:128
+#: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/game_save_oos.cfg:186
@@ -812,7 +813,7 @@ msgstr "Igen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
@@ -841,7 +842,7 @@ msgstr "Fájl:"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:238
-#: data/gui/default/window/mp_server_list.cfg:86
+#: data/gui/default/window/mp_server_list.cfg:98
 msgid "Name"
 msgstr "Név"
 
@@ -857,6 +858,18 @@ msgstr "Beillesztés"
 #, fuzzy
 msgid "Delete"
 msgstr "Fájl törlése"
+
+#. [toggle_button]: id=show_replay
+#: data/gui/default/window/game_load.cfg:391
+#, fuzzy
+msgid "Show replay"
+msgstr "játékos"
+
+#. [toggle_button]: id=cancel_orders
+#: data/gui/default/window/game_load.cfg:403
+#, fuzzy
+msgid "Cancel orders"
+msgstr "Mégse"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -924,15 +937,56 @@ msgid "Change language"
 msgstr "Nyelv megváltoztatása"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:355
+#: data/gui/default/window/lobby_main.cfg:325
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Többjátékos"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:333
+#, fuzzy
+msgid "Filter:"
+msgstr "Fájl:"
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:344
+#, fuzzy
+msgid "Friends"
+msgstr "Barátok listája"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:350
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:356
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:362
+msgid "Invert filter"
+msgstr ""
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:390
+#, fuzzy
+msgid "Send"
+msgstr "Homok"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Bezár"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:364
+#: data/gui/default/window/lobby_main.cfg:414
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -941,32 +995,32 @@ msgstr "Kilépés"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:370
+#: data/gui/default/window/lobby_main.cfg:420
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Beállítások"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:376
+#: data/gui/default/window/lobby_main.cfg:426
 #, fuzzy
 msgid "Refresh"
 msgstr "Képernyő frissítése"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:382
+#: data/gui/default/window/lobby_main.cfg:432
 #, fuzzy
 msgid "Join"
 msgstr "Bejelentkezés "
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:388
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:394
+#: data/gui/default/window/lobby_main.cfg:444
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Játék létrehozása"
@@ -974,44 +1028,10 @@ msgstr "Játék létrehozása"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:400
+#: data/gui/default/window/lobby_main.cfg:450
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Segítség"
-
-#: data/gui/default/window/lobby_main.cfg:496
-#, fuzzy
-msgid "Filter:"
-msgstr "Fájl:"
-
-#: data/gui/default/window/lobby_main.cfg:507
-#, fuzzy
-msgid "Friends"
-msgstr "Barátok listája"
-
-#: data/gui/default/window/lobby_main.cfg:513
-msgid "No ignored"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:519
-msgid "Vacant slots"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:525
-msgid "Invert filter"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:547
-#, fuzzy
-msgid "Send"
-msgstr "Homok"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/lobby_main.cfg:559
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Bezár"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1042,21 +1062,21 @@ msgstr "Barátok/figyelmen kívül hagyott felhasználók listája"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Add As Friend"
 msgstr "Felvétel a barátok közé"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Add As Ignore"
 msgstr "Felhasználó figyelmen kívül hagyása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -1092,7 +1112,7 @@ msgstr "Kitiltás"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
-#: data/gui/default/window/mp_server_list.cfg:51
+#: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
 msgstr "Most csatlakozni fogsz a többjátékos kiszolgálóhoz."
 
@@ -1202,7 +1222,7 @@ msgstr "Jelszó: "
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:167
 msgid "Save password to preferences (clear text)"
 msgstr "Jelszó mentése a beállítások fájljába (kódolatlan szöveg)"
 
@@ -1216,7 +1236,7 @@ msgstr "Jelszóemlékeztető"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:235
+#: src/gui/dialogs/game_load.cpp:239
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -1275,12 +1295,12 @@ msgstr ""
 "Többjátékos játék MI-vel vagy más emberekkel egyazon számítógép megosztásával"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:102
+#: data/gui/default/window/mp_server_list.cfg:115
 msgid "Address"
 msgstr "Cím"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Kiválasztás"
 
@@ -1293,7 +1313,7 @@ msgstr "Előző egység"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:237
+#: src/gui/dialogs/game_load.cpp:241
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
@@ -1346,359 +1366,359 @@ msgstr "Név:"
 msgid "Creation of the directory failed."
 msgstr "Nem sikerült létrehozni a könyvtárat"
 
-#: src/game_preferences.cpp:308
+#: src/game_preferences.cpp:307
 msgid "No server has been defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/game_preferences.cpp:370
+#: src/game_preferences.cpp:369
 msgid "player"
 msgstr "játékos"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:155
 #, fuzzy
 msgid "Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:156
 msgid "Enable scroll tracking of unit actions"
 msgstr "Egységműveletek görgetéses követése"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:157
 msgid "Accelerated Speed"
 msgstr "Megnövelt sebesség"
 
-#: src/game_preferences_display.cpp:156
+#: src/game_preferences_display.cpp:158
 msgid "Skip AI Moves"
 msgstr "MI lépések átugrása"
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:159
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:160 src/game_preferences_display.cpp:338
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "A visszajátszások automatikus mentése"
 
-#: src/game_preferences_display.cpp:159 src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:161 src/game_preferences_display.cpp:341
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Az automatikusan készült állásmentések törlése a játszma végén"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:162
 msgid "Do Not Show Lobby Joins"
 msgstr "Nincs értesítés a játékcsarnokba lépőkről"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:163
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Értesítés csak akkor, ha barátok lépnek a játékcsarnokba"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:164
 msgid "Show All Lobby Joins"
 msgstr "Értesítés akkor, ha új játékos lép a játékcsarnokba"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:165
 msgid "Sort Lobby List"
 msgstr "A játékcsarnok listájának csoportosítása"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:166
 msgid "Iconize Lobby List"
 msgstr "Ikonok mutatása a játékcsarnok listáján"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:168
 msgid "Set path to wesnothd"
 msgstr "A wesnothd elérési útvonalának megadása"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:169
 msgid "Friends List"
 msgstr "Barátok listája"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:170
 msgid "Multiplayer Options"
 msgstr "Többjátékos beállítások"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Show Floating Labels"
 msgstr "Szálló címkék megjelenítése"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Turn Dialog"
 msgstr "Párbeszédablak be"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Turn Bell"
 msgstr "Csengő be"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Show Team Colors"
 msgstr "Csapatszínek megjelenítése"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Show Color Cursors"
 msgstr "Színes kurzor megjelenítése"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Change Resolution"
 msgstr "Felbontás megváltoztatása"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:181
 msgid "Theme"
 msgstr "Téma"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:182
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:183
 msgid "Reverse Time Graphics"
 msgstr "Napszakmegjelenítés megfordítása"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:185
 msgid "Sound effects"
 msgstr "Hanghatások"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:186
 msgid "Music"
 msgstr "Zene"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:187
 msgid "Chat Timestamping"
 msgstr "Csevegés sorainak időbélyegzése"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:188
 msgid "sound^Advanced Options"
 msgstr "Szakértői beállítások"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:189
 msgid "sound^Standard Options"
 msgstr "Alapvető beállítások"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
 msgstr "Kezelői felület hangjai"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:193
 msgid "Custom"
 msgstr "Tetszőleges"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
 msgstr "Egységek animálása, amikor tétlenek"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
 msgstr "Zene hangereje"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "SFX Volume:"
 msgstr "Hanghatások ereje"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:198
 msgid "UI Sound Volume:"
 msgstr "Kezelői felület hanghatásainak ereje:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Bell Volume:"
 msgstr "Csengő hangereje"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:202
 msgid "Sample Rate (Hz):"
 msgstr "Mintavételi frekvencia (Hz):"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:203
 msgid "Frequency:"
 msgstr "Gyakoriság:"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Hanghatások be/ki"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "A hanghatások erejének megváltoztatása"
 
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Zene be/ki"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "A zene hangerejének megváltoztatása"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:245
 msgid "Change the bell volume"
 msgstr "A csengő hangerejének megváltoztatása"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:248
 msgid "Turn menu and button sounds on/off"
 msgstr "Menü és gomb hangok be/ki"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:252
 msgid "Change the sound volume for button clicks, etc."
 msgstr "A gombnyomások és egyéb események hangerejének megváltoztatása"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:254
 msgid "Change the sample rate"
 msgstr "Mintavételi frekvencia megváltoztatása"
 
-#: src/game_preferences_display.cpp:260
+#: src/game_preferences_display.cpp:263
 msgid "User defined sample rate"
 msgstr "A felhasználó által megadott mintavételi frekvencia"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:273
+#: src/game_preferences_display.cpp:272 src/game_preferences_display.cpp:276
 msgid "Change the buffer size"
 msgstr "Pufferméret megváltoztatása"
 
-#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:813
+#: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Pufferméret: "
 
-#: src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:281
 msgid "Change the speed of scrolling around the map"
 msgstr "A térképen való görgetés sebességének megváltoztatása"
 
-#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286 src/game_preferences_display.cpp:288
 msgid "Set the amount of chat lines shown"
 msgstr "Add meg a csevegés sorainak mennyiségét"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:291
 msgid "Add a timestamp to chat messages"
 msgstr "Kerüljön a csevegés sorainak elé a küldés pontos ideje"
 
-#: src/game_preferences_display.cpp:291
+#: src/game_preferences_display.cpp:294
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "A játék teljes képernyőben vagy ablakban fusson-e"
 
-#: src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:297
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "A térképnézet az egységhez görög, ha annak mozgása vagy cselekvése "
 "animálódik."
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:300
 msgid "Make units move and fight faster"
 msgstr "Az egységek gyorsabban mozognak és harcolnak"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:317
 msgid "Units move and fight speed"
 msgstr "Az egységek mozgásának és küzdelmének sebessége"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:320
 msgid "Show unit idle animations"
 msgstr "Egységek animálása, amikor tétlenek"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:326
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 "Az egység tétlenségekor mutatott animáció megjelenési gyakoriságának "
 "beállítása"
 
-#: src/game_preferences_display.cpp:328
+#: src/game_preferences_display.cpp:331
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Az automatikus mentések maximális számának korlátozása"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:335
 msgid "Do not animate AI units moving"
 msgstr "Ne animálja a számítógép lépéseit"
 
-#: src/game_preferences_display.cpp:340
+#: src/game_preferences_display.cpp:343
 msgid "Overlay a grid onto the map"
 msgstr "Fektessen egy rácsot a térképre"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:346
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 "A játékcsarnokban lévő játékosok listájának mutatása a játékosok csoportjai "
 "szerint"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:349
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Ikonok feltüntetése a játékcsarnokban lévő játékosok neve előtt"
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:352
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Ha nincs bejelölve, akkor az elmentett jelszó kilépéskor törlődik."
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:355
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek kikapcsolása, amelyek új játékos játékcsarnokba "
 "lépésekor jelennek meg"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:357
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek bekapcsolása, amelyek barátaim játékcsarnokba lépésekor "
 "jelennek meg"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:359
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Tájékoztató üzenetek bekapcsolása, amelyek minden játékos játékcsarnokba "
 "lépésekor jelennek meg"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "A többjátékos kiszolgáló elérési útvonalának megadása (helyi hálózati "
 "játékok készítéséhez)."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr ""
 "Barátaim és a figyelmen kívül hagyottak listájának megtekintése és "
 "szerkesztése"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr "Visszalépés a többjátékos beállításokhoz"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr "A megadott felhasználó felvétele a barátaim közé"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr "A megadott felhasználó felvétele a figyelmen kívül hagyottak közé"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr "A megadott felhasználó eltávolítása a listáról"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr "Erre a helyre írd be a felhasználó nevét"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Szöveg megjelenítése az egység fölött, amikor megsebesül, hogy kiírja a "
 "veszteséget"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:374
 msgid "Change the resolution the game runs at"
 msgstr "A játék felbontásának megváltoztatása"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr "A játék által használt téma megváltoztatása"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Egy hangjelzést ad le a köröd kezdetekor"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1706,90 +1726,90 @@ msgstr ""
 "Egy színes kört rajzol minden egység körül, amely azt jelzi, melyik "
 "csapatban van az adott egység"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Add meg, hogy a nap balról jobbra, vagy jobbról balra mozogjon"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Színes egérkurzor használata (lassíthat)"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:393
 msgid "Use graphical special effects (may be slower)"
 msgstr "Speciális megjelenítési hatások használata (lassíthat)"
 
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
-#: src/game_preferences_display.cpp:681
+#: src/game_preferences_display.cpp:690
 msgid "Speed: "
 msgstr "Sebesség: "
 
-#: src/game_preferences_display.cpp:686 src/game_preferences_display.cpp:688
+#: src/game_preferences_display.cpp:695 src/game_preferences_display.cpp:697
 msgid "Maximum Auto-Saves: "
 msgstr "Automatikus mentések számának maximuma:"
 
-#: src/game_preferences_display.cpp:686
+#: src/game_preferences_display.cpp:695
 msgid "infinite"
 msgstr "végtelen"
 
-#: src/game_preferences_display.cpp:865
+#: src/game_preferences_display.cpp:874
 msgid "Chat Lines: "
 msgstr "Csevegés sorai: "
 
-#: src/game_preferences_display.cpp:887 src/game_preferences_display.cpp:895
+#: src/game_preferences_display.cpp:896 src/game_preferences_display.cpp:904
 msgid "Invalid username"
 msgstr "Érvénytelen felhasználónév"
 
-#: src/game_preferences_display.cpp:969
+#: src/game_preferences_display.cpp:1007
 msgid "yes"
 msgstr "igen"
 
-#: src/game_preferences_display.cpp:971
+#: src/game_preferences_display.cpp:1009
 msgid "no"
 msgstr "nem"
 
-#: src/game_preferences_display.cpp:1004
+#: src/game_preferences_display.cpp:1042
 msgid "(empty list)"
 msgstr "(üres lista)"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1163
 msgid "Prefs section^General"
 msgstr "Általános"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1164
 msgid "Prefs section^Display"
 msgstr "Képernyő"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1165
 msgid "Prefs section^Sound"
 msgstr "Hang"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1166
 msgid "Prefs section^Multiplayer"
 msgstr "Többjátékos"
 
-#: src/game_preferences_display.cpp:1124
+#: src/game_preferences_display.cpp:1167
 msgid "Advanced section^Advanced"
 msgstr "Haladó"
 
-#: src/game_preferences_display.cpp:1159
+#: src/game_preferences_display.cpp:1202
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1208
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma beállításai a következő új vagy betöltött játék indításakor "
 "fognak életbe lépni."
 
-#: src/game_preferences_display.cpp:1169
+#: src/game_preferences_display.cpp:1212
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni!"
 
-#: src/game_preferences_display.cpp:1212
+#: src/game_preferences_display.cpp:1255
 msgid "Find $filename server binary to host networked games"
 msgstr "A $filename kiszolgáló megkeresése (hálózati játék készítéséhez)"
 
@@ -1809,11 +1829,15 @@ msgstr "A szöveg betűmérete 0."
 msgid "Text doesn't start on canvas."
 msgstr "A szöveg kezdete lelóg a vászonról."
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:138
+msgid "Linked '$id' group has multiple definitions."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
 msgstr "A felbontás nincs megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:273
+#: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
@@ -1822,24 +1846,28 @@ msgstr "A felbontás nincs megadva."
 msgid "No grid defined."
 msgstr "Nincs mezőháló megadva."
 
-#: src/gui/auxiliary/window_builder.cpp:380
+#: src/gui/auxiliary/window_builder.cpp:325
+msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
 msgstr "Egy sorhoz még oszlopot kell rendelni."
 
-#: src/gui/auxiliary/window_builder.cpp:381
+#: src/gui/auxiliary/window_builder.cpp:425
 msgid "Number of columns differ."
 msgstr "Az oszlopok száma helytelen."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/listbox.cpp:53
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Nincs lista megadva."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/listbox.cpp:57
 msgid "A 'list_definition' should contain one row."
 msgstr "A \"lista_meghatározás\"-nak tartalmaznia kell egy sort."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/listbox.cpp:73
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -1861,34 +1889,34 @@ msgstr "Az értékek és az \"értékcímkék\" száma nem egyezik."
 msgid "No stack defined."
 msgstr "Nincs lista megadva."
 
-#: src/gui/dialogs/game_load.cpp:210
+#: src/gui/dialogs/game_load.cpp:214
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:228
+#: src/gui/dialogs/game_load.cpp:232
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:245
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "replay"
 msgstr "játékos"
 
-#: src/gui/dialogs/game_load.cpp:247
+#: src/gui/dialogs/game_load.cpp:251
 #, fuzzy
 msgid "Turn"
 msgstr "Kör vége"
 
-#: src/gui/dialogs/game_load.cpp:249
+#: src/gui/dialogs/game_load.cpp:253
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Pálya céljai"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:254
+#: src/gui/dialogs/game_load.cpp:258
 #, fuzzy
 msgid "Version: "
 msgstr "Verzió"
@@ -1928,7 +1956,7 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr "Az állapot vagy a térképrészlet nincs megadva."
 
-#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Egy párbeszédablak nem jeleníthető meg, mert nem fér el a képernyőn."
 

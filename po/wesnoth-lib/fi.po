@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-19 12:26+0200\n"
 "PO-Revision-Date: 2009-04-11 20:58+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: none\n"
@@ -550,7 +550,7 @@ msgstr "ylitsepääsemätön"
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:149
-#: data/gui/default/window/mp_server_list.cfg:31
+#: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Yhdistä palvelimelle"
 
@@ -593,7 +593,7 @@ msgstr "Yhdistä"
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:410
+#: data/gui/default/window/game_load.cfg:444
 #: data/gui/default/window/game_save.cfg:134
 #: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/message.cfg:122
@@ -602,7 +602,7 @@ msgstr "Yhdistä"
 #: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Peruuta"
@@ -617,8 +617,8 @@ msgstr "Kampanja"
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:290
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:395
-#: data/gui/default/window/game_load.cfg:396
+#: data/gui/default/window/game_load.cfg:429
+#: data/gui/default/window/game_load.cfg:430
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
@@ -730,10 +730,11 @@ msgid "Time of day lighting preset"
 msgstr "Vuorokaudenajan esiasetus"
 
 #. [button]: id=next_tod
+#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:553
+#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Seuraava"
@@ -771,7 +772,7 @@ msgstr "Salli useampi kuin vain yksi kartta olla auki samaan aikaan (MDI-tila)"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:194
 msgid "Apply"
 msgstr "Hyväksy"
 
@@ -788,14 +789,14 @@ msgid "Do you really want to delete this game?"
 msgstr "Haluatko todella lopettaa?"
 
 #. [toggle_button]: id=dont_ask_again
-#: data/gui/default/window/game_delete.cfg:70
+#: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/game_delete.cfg:106
-#: data/gui/default/window/game_delete.cfg:107
+#: data/gui/default/window/game_delete.cfg:128
+#: data/gui/default/window/game_delete.cfg:129
 #: data/gui/default/window/game_save_message.cfg:139
 #: data/gui/default/window/game_save_message.cfg:140
 #: data/gui/default/window/game_save_oos.cfg:186
@@ -808,7 +809,7 @@ msgstr "Kyllä"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/game_delete.cfg:121
+#: data/gui/default/window/game_delete.cfg:143
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
@@ -837,7 +838,7 @@ msgstr "Tiedosto:"
 #. [label]: id=name
 #. [label]: id=filename
 #: data/gui/default/window/game_load.cfg:238
-#: data/gui/default/window/mp_server_list.cfg:86
+#: data/gui/default/window/mp_server_list.cfg:98
 msgid "Name"
 msgstr "Nimi"
 
@@ -853,6 +854,18 @@ msgstr "Liitä"
 #, fuzzy
 msgid "Delete"
 msgstr "Poista tiedosto"
+
+#. [toggle_button]: id=show_replay
+#: data/gui/default/window/game_load.cfg:391
+#, fuzzy
+msgid "Show replay"
+msgstr "pelaaja"
+
+#. [toggle_button]: id=cancel_orders
+#: data/gui/default/window/game_load.cfg:403
+#, fuzzy
+msgid "Cancel orders"
+msgstr "Peruuta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -920,15 +933,57 @@ msgid "Change language"
 msgstr "Vaihda käytettävää kieltä"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:355
+#: data/gui/default/window/lobby_main.cfg:325
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Moninpeli"
 
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:333
+#, fuzzy
+msgid "Filter:"
+msgstr "Tiedosto:"
+
+#. [toggle_button]: id=filter_with_friends
+#: data/gui/default/window/lobby_main.cfg:344
+#, fuzzy
+msgid "Friends"
+msgstr "Ystävälista"
+
+#. [toggle_button]: id=filter_without_ignored
+#: data/gui/default/window/lobby_main.cfg:350
+msgid "No ignored"
+msgstr ""
+
+#. [toggle_button]: id=filter_vacant_slots
+#: data/gui/default/window/lobby_main.cfg:356
+msgid "Vacant slots"
+msgstr ""
+
+#. [toggle_button]: id=filter_invert
+#: data/gui/default/window/lobby_main.cfg:362
+#, fuzzy
+msgid "Invert filter"
+msgstr "Muunna valintaa"
+
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:390
+#, fuzzy
+msgid "Send"
+msgstr "hiekkaa"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "Sulje"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:364
+#: data/gui/default/window/lobby_main.cfg:414
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -937,32 +992,32 @@ msgstr "Lopeta"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:370
+#: data/gui/default/window/lobby_main.cfg:420
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Asetukset"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:376
+#: data/gui/default/window/lobby_main.cfg:426
 #, fuzzy
 msgid "Refresh"
 msgstr "Päivitä näyttö"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:382
+#: data/gui/default/window/lobby_main.cfg:432
 #, fuzzy
 msgid "Join"
 msgstr "Sisäänkirjautuminen"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:388
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "Observe"
 msgstr ""
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:394
+#: data/gui/default/window/lobby_main.cfg:444
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Luo peli"
@@ -970,45 +1025,10 @@ msgstr "Luo peli"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:400
+#: data/gui/default/window/lobby_main.cfg:450
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Apua"
-
-#: data/gui/default/window/lobby_main.cfg:496
-#, fuzzy
-msgid "Filter:"
-msgstr "Tiedosto:"
-
-#: data/gui/default/window/lobby_main.cfg:507
-#, fuzzy
-msgid "Friends"
-msgstr "Ystävälista"
-
-#: data/gui/default/window/lobby_main.cfg:513
-msgid "No ignored"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:519
-msgid "Vacant slots"
-msgstr ""
-
-#: data/gui/default/window/lobby_main.cfg:525
-#, fuzzy
-msgid "Invert filter"
-msgstr "Muunna valintaa"
-
-#: data/gui/default/window/lobby_main.cfg:547
-#, fuzzy
-msgid "Send"
-msgstr "hiekkaa"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#: data/gui/default/window/lobby_main.cfg:559
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "Sulje"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1039,21 +1059,21 @@ msgstr "Ystävien/torjuttujen lista"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Add As Friend"
 msgstr "Lisää ystäväksi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Add As Ignore"
 msgstr "Lisää torjutuksi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Remove"
 msgstr "Poista"
 
@@ -1089,7 +1109,7 @@ msgstr "Estä"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
-#: data/gui/default/window/mp_server_list.cfg:51
+#: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
 msgstr "Yhdistät parhaillaan moninpelipalvelimeen."
 
@@ -1199,7 +1219,7 @@ msgstr "Salasana:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:167
 msgid "Save password to preferences (clear text)"
 msgstr "Tallenna salasana asetuksiin (tekstimuodossa)"
 
@@ -1213,7 +1233,7 @@ msgstr "Salasanamuistutus"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:184
-#: src/gui/dialogs/game_load.cpp:235
+#: src/gui/dialogs/game_load.cpp:239
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
@@ -1271,12 +1291,12 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Pelaa moninpeli tekoälyn tai ihmisten kanssa samalla tietokoneella"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:102
+#: data/gui/default/window/mp_server_list.cfg:115
 msgid "Address"
 msgstr "Osoite"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:202
+#: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
 msgstr "Valitse"
 
@@ -1289,7 +1309,7 @@ msgstr "Edellinen yksikkö"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:182
-#: src/gui/dialogs/game_load.cpp:237
+#: src/gui/dialogs/game_load.cpp:241
 msgid "Tutorial"
 msgstr "Tutoriaali"
 
@@ -1342,430 +1362,430 @@ msgstr "Nimi:"
 msgid "Creation of the directory failed."
 msgstr "Kansion luominen epäonnistui."
 
-#: src/game_preferences.cpp:308
+#: src/game_preferences.cpp:307
 msgid "No server has been defined."
 msgstr "Palvelinta ei ole määritetty."
 
-#: src/game_preferences.cpp:370
+#: src/game_preferences.cpp:369
 msgid "player"
 msgstr "pelaaja"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:155
 #, fuzzy
 msgid "Full Screen"
 msgstr "Koko ruutu / ikkunoitu"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:156
 msgid "Enable scroll tracking of unit actions"
 msgstr "Kytke yksikkötoimintojen vieritystarkkailu päälle/pois"
 
-#: src/game_preferences_display.cpp:155
+#: src/game_preferences_display.cpp:157
 msgid "Accelerated Speed"
 msgstr "Kiihdytetty nopeus"
 
-#: src/game_preferences_display.cpp:156
+#: src/game_preferences_display.cpp:158
 msgid "Skip AI Moves"
 msgstr "Ohita tietokoneen liikkeet"
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:159
 msgid "Show Grid"
 msgstr "Näytä ruudukko"
 
-#: src/game_preferences_display.cpp:158 src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:160 src/game_preferences_display.cpp:338
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Tallenna uusinta YP/MP-voitoista tai MP-häviöistä."
 
-#: src/game_preferences_display.cpp:159 src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:161 src/game_preferences_display.cpp:341
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Poista automaattitallennukset YP/MP-voitoista tai MP-häviöistä."
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:162
 msgid "Do Not Show Lobby Joins"
 msgstr "Älä näytä aulaan liittymisiä"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:163
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Näytä vain ystävien aulaan liittymiset"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:164
 msgid "Show All Lobby Joins"
 msgstr "Näytä kaikki aulaan liittymiset"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:165
 msgid "Sort Lobby List"
 msgstr "Järjestä aulan lista"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:166
 msgid "Iconize Lobby List"
 msgstr "Ikonisoi aulan lista"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:168
 msgid "Set path to wesnothd"
 msgstr "Aseta ”wesnothd”:n polku"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:169
 msgid "Friends List"
 msgstr "Ystävälista"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:170
 msgid "Multiplayer Options"
 msgstr "Moninpeliasetukset"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Show Floating Labels"
 msgstr "Näytä leijuvat merkit"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Turn Dialog"
 msgstr "Näytä vuoron vaihtuminen"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Turn Bell"
 msgstr "Soita vuoron äänimerkki"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Show Team Colors"
 msgstr "Näytä joukkueiden värit"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Show Color Cursors"
 msgstr "Käytä värillisiä kursoreita"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Haloing Effects"
 msgstr "Näytä valokehäefektit"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Change Resolution"
 msgstr "Valitse näyttötarkkuus"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:181
 msgid "Theme"
 msgstr "Teema"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:182
 msgid "Hotkeys"
 msgstr "Pikanäppäimet"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:183
 msgid "Reverse Time Graphics"
 msgstr "Käännetyt vuorokaudenajan kuvat"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:185
 msgid "Sound effects"
 msgstr "Äänitehosteet"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:186
 msgid "Music"
 msgstr "Musiikki"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:187
 msgid "Chat Timestamping"
 msgstr "Keskustelun lähetysajat"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:188
 msgid "sound^Advanced Options"
 msgstr "Edistyneet asetukset"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:189
 msgid "sound^Standard Options"
 msgstr "Perusasetukset"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
 msgstr "Käyttäjäympäristön äänet"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:193
 msgid "Custom"
 msgstr "Epätavallinen"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
 msgstr "Näytä yksikön vapaa-ajan animaatiot"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
 msgstr "Musiikki:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "SFX Volume:"
 msgstr "Äänet:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:198
 msgid "UI Sound Volume:"
 msgstr "UI:n äänenvoimakkuus:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Bell Volume:"
 msgstr "Äänimerkin voimakkuus:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Scroll Speed:"
 msgstr "Ruudunvieritysnopeus:"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:202
 msgid "Sample Rate (Hz):"
 msgstr "Näytetaajuus (Hz):"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:203
 msgid "Frequency:"
 msgstr "Toistonopeus:"
 
-#: src/game_preferences_display.cpp:225
+#: src/game_preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Ääniefektit päällä/pois"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Muuta ääniefektien voimakkuutta"
 
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Musiikki päällä/pois"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Muuta musiikin voimakkuutta"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:245
 msgid "Change the bell volume"
 msgstr "Muuta äänimerkin voimakkuutta"
 
-#: src/game_preferences_display.cpp:245
+#: src/game_preferences_display.cpp:248
 msgid "Turn menu and button sounds on/off"
 msgstr "Valikko- ja näppäinäänet päälle/pois"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:252
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Muuta näppäinpainallusten jne. äänenvoimakkuutta"
 
-#: src/game_preferences_display.cpp:251
+#: src/game_preferences_display.cpp:254
 msgid "Change the sample rate"
 msgstr "Vaihda näytetasoa"
 
-#: src/game_preferences_display.cpp:260
+#: src/game_preferences_display.cpp:263
 msgid "User defined sample rate"
 msgstr "Käyttäjän määrittämä näytetaso"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:273
+#: src/game_preferences_display.cpp:272 src/game_preferences_display.cpp:276
 msgid "Change the buffer size"
 msgstr "Muuta puskurin kokoa"
 
-#: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:813
+#: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Puskurin koko:"
 
-#: src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:281
 msgid "Change the speed of scrolling around the map"
 msgstr "Muuta kartan vieritysnopeutta"
 
-#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286 src/game_preferences_display.cpp:288
 msgid "Set the amount of chat lines shown"
 msgstr "Aseta näytettävien keskustelurivien määrä"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:291
 msgid "Add a timestamp to chat messages"
 msgstr "Näytä viestien lähetysajat"
 
-#: src/game_preferences_display.cpp:291
+#: src/game_preferences_display.cpp:294
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Valitse, onko peli koko ruudun kokoinen vai ikkunoitu"
 
-#: src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:297
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "Pitäisikö kartan kohdentaa itsensä yksikköön, kun toiminto tai liike "
 "animoidaan?"
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:300
 msgid "Make units move and fight faster"
 msgstr "Valitse, jos haluat, että yksiköt liikkuvat ja taistelevat nopeammin"
 
-#: src/game_preferences_display.cpp:314
+#: src/game_preferences_display.cpp:317
 msgid "Units move and fight speed"
 msgstr "Yksiköiden liikkumis- ja taistelunopeus"
 
-#: src/game_preferences_display.cpp:317
+#: src/game_preferences_display.cpp:320
 msgid "Show unit idle animations"
 msgstr "Näytä yksiköiden vapaa-ajan animaatiot"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:326
 msgid "Set the frequency of unit idle animations"
 msgstr "Aseta toistonopeus yksikköanimaatioille"
 
-#: src/game_preferences_display.cpp:328
+#: src/game_preferences_display.cpp:331
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Aseta maksimimäärä säästettäville automaattitallennuksille"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:335
 msgid "Do not animate AI units moving"
 msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
 
-#: src/game_preferences_display.cpp:340
+#: src/game_preferences_display.cpp:343
 msgid "Overlay a grid onto the map"
 msgstr "Näytä ruudukko kartalla"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:346
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Järjestä pelaajalista aulassa pelaajaryhmien mukaan"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:349
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Näytä ikonit pelaajien nimien edessä aulassa"
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:352
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 "Poista valinta poistaaksesi tallennetun salasanan (sulkiessasi Wesnothin)"
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:355
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Älä näytä viestejä pelaajien aulaan liittymistä koskien"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:357
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Näytä viestejä ystäviesi aulaan liittymistä koskien"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:359
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Näytä viestejä kaikkien pelaajien aulaan liittymistä koskien"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr "Etsi ja aseta polku moninpelipalvelimeen pitääksesi verkkopelejä"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr "Katso ja muokkaa ystävien ja torjuttujen listaa"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr "Takaisin moninpeliasetuksiin"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr "Lisää tämä nimi ystävälistallesi"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr "Lisää tämä nimi torjuttujen listallesi"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr "Poista tämä nimi listaltasi"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr "Syötä nimi"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Näytä yksikön yläpuolella sen saama vahinko"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:374
 msgid "Change the resolution the game runs at"
 msgstr "Vaihda näyttötarkkuutta"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr "Vaihda pelissä käytettävää teemaa"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Näytä ilmoitus vuorosi alussa"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Soita äänimerkki vuorosi alussa"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Näytä yksikön alla värillinen kehä, joka osoittaa yksikön puolen"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Valitse, liikkuuko aurinko vasemmalta oikealle, vai päinvastoin"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:393
 msgid "Use graphical special effects (may be slower)"
 msgstr "Käytä erikoistehosteita (mahdollisesti hitaampi)"
 
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr "Katso ja muokkaa pikanäppäimiä"
 
-#: src/game_preferences_display.cpp:681
+#: src/game_preferences_display.cpp:690
 msgid "Speed: "
 msgstr "Nopeus:"
 
-#: src/game_preferences_display.cpp:686 src/game_preferences_display.cpp:688
+#: src/game_preferences_display.cpp:695 src/game_preferences_display.cpp:697
 msgid "Maximum Auto-Saves: "
 msgstr "Automaattitallennuksien maksimimäärä:"
 
-#: src/game_preferences_display.cpp:686
+#: src/game_preferences_display.cpp:695
 msgid "infinite"
 msgstr "ääretön"
 
-#: src/game_preferences_display.cpp:865
+#: src/game_preferences_display.cpp:874
 msgid "Chat Lines: "
 msgstr "Keskustelurivejä: "
 
-#: src/game_preferences_display.cpp:887 src/game_preferences_display.cpp:895
+#: src/game_preferences_display.cpp:896 src/game_preferences_display.cpp:904
 msgid "Invalid username"
 msgstr "Epäkelpo nimimerkki"
 
-#: src/game_preferences_display.cpp:969
+#: src/game_preferences_display.cpp:1007
 msgid "yes"
 msgstr "kyllä"
 
-#: src/game_preferences_display.cpp:971
+#: src/game_preferences_display.cpp:1009
 msgid "no"
 msgstr "ei"
 
-#: src/game_preferences_display.cpp:1004
+#: src/game_preferences_display.cpp:1042
 msgid "(empty list)"
 msgstr "(tyhjä lista)"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1163
 msgid "Prefs section^General"
 msgstr "Yleiset"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1164
 msgid "Prefs section^Display"
 msgstr "Näyttö"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1165
 msgid "Prefs section^Sound"
 msgstr "Äänet"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1166
 msgid "Prefs section^Multiplayer"
 msgstr "Moninpeli"
 
-#: src/game_preferences_display.cpp:1124
+#: src/game_preferences_display.cpp:1167
 msgid "Advanced section^Advanced"
 msgstr "Edistyneet asetukset"
 
-#: src/game_preferences_display.cpp:1159
+#: src/game_preferences_display.cpp:1202
 msgid "Saved Theme Preference: "
 msgstr "Käytössä oleva teema: "
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1208
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa pelissä."
 
-#: src/game_preferences_display.cpp:1169
+#: src/game_preferences_display.cpp:1212
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
 
-#: src/game_preferences_display.cpp:1212
+#: src/game_preferences_display.cpp:1255
 msgid "Find $filename server binary to host networked games"
 msgstr "Etsi $filename palvelinbinääri pitääksesi verkkopelejä"
 
@@ -1785,11 +1805,15 @@ msgstr "Tekstillä on fonttikoko 0."
 msgid "Text doesn't start on canvas."
 msgstr "Teksti ei ala kankaassa."
 
-#: src/gui/auxiliary/window_builder.cpp:168 src/gui/widgets/settings.cpp:520
+#: src/gui/auxiliary/window_builder.cpp:138
+msgid "Linked '$id' group has multiple definitions."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
 msgstr "Resoluutiota ei ole määritetty."
 
-#: src/gui/auxiliary/window_builder.cpp:273
+#: src/gui/auxiliary/window_builder.cpp:294
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 #: src/gui/widgets/settings.cpp:775 src/gui/widgets/settings.cpp:871
@@ -1798,24 +1822,28 @@ msgstr "Resoluutiota ei ole määritetty."
 msgid "No grid defined."
 msgstr "Ruudukkoa ei ole määritetty."
 
-#: src/gui/auxiliary/window_builder.cpp:380
+#: src/gui/auxiliary/window_builder.cpp:325
+msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+msgstr ""
+
+#: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
 msgstr "Rivillä täytyy olla (yksi) kolumni."
 
-#: src/gui/auxiliary/window_builder.cpp:381
+#: src/gui/auxiliary/window_builder.cpp:425
 msgid "Number of columns differ."
 msgstr "Kolumnien lukumäärä eroaa toisistaan."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:51
+#: src/gui/auxiliary/window_builder/listbox.cpp:53
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Listaa ei ole määritetty."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:55
+#: src/gui/auxiliary/window_builder/listbox.cpp:57
 msgid "A 'list_definition' should contain one row."
 msgstr "”list_definition”:lla pitäisi olla yksi rivi."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:71
+#: src/gui/auxiliary/window_builder/listbox.cpp:73
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -1836,34 +1864,34 @@ msgstr "kenttien ”value_labels” ja ”values” numerot eivät täsmää."
 msgid "No stack defined."
 msgstr "Listaa ei ole määritetty."
 
-#: src/gui/dialogs/game_load.cpp:210
+#: src/gui/dialogs/game_load.cpp:214
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:228
+#: src/gui/dialogs/game_load.cpp:232
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:245
+#: src/gui/dialogs/game_load.cpp:249
 #, fuzzy
 msgid "replay"
 msgstr "pelaaja"
 
-#: src/gui/dialogs/game_load.cpp:247
+#: src/gui/dialogs/game_load.cpp:251
 #, fuzzy
 msgid "Turn"
 msgstr "Lopeta vuoro"
 
-#: src/gui/dialogs/game_load.cpp:249
+#: src/gui/dialogs/game_load.cpp:253
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Skenaarion tavoitteet"
 
-#: src/gui/dialogs/game_load.cpp:252
+#: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:254
+#: src/gui/dialogs/game_load.cpp:258
 #, fuzzy
 msgid "Version: "
 msgstr "Versio"
@@ -1901,7 +1929,7 @@ msgstr "Widgetin määritelmä ”$definition” ei sisällä määritelmää id
 msgid "No state or draw section defined."
 msgstr "Tilannetta tai piirtoaluetta ei ole määritetty."
 
-#: src/gui/widgets/window.cpp:707 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Dialogin näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
 

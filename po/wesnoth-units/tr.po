@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-19 12:43+0200\n"
 "PO-Revision-Date: 2008-12-21 00:22+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -45,8 +45,8 @@ msgstr ""
 #: data/core/units/bats/Bat_Vampire.cfg:176
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 #: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Pillager.cfg:34
-#: data/core/units/goblins/Wolf_Rider.cfg:51
+#: data/core/units/goblins/Pillager.cfg:47
+#: data/core/units/goblins/Wolf_Rider.cfg:64
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
@@ -215,7 +215,7 @@ msgstr ""
 #. [attack]: type=blade
 #. [attack]: type=arcane
 #: data/core/units/drakes/Blademaster.cfg:69
-#: data/core/units/drakes/Clasher.cfg:89
+#: data/core/units/drakes/Clasher.cfg:38
 #: data/core/units/drakes/Enforcer.cfg:78
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:78
@@ -230,7 +230,7 @@ msgstr ""
 #: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:64
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:46
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
@@ -268,7 +268,7 @@ msgid "Drake Clasher"
 msgstr "Çarpışan Ejder"
 
 #. [unit_type]: id=Drake Clasher, race=drake
-#: data/core/units/drakes/Clasher.cfg:21
+#: data/core/units/drakes/Clasher.cfg:22
 msgid ""
 "The Clashers are members of a unique caste among the Drakes. Their thick "
 "armor, while compensating for the Drakes' natural weakness against spears "
@@ -279,11 +279,12 @@ msgid ""
 "\n"
 "This is also the only caste that is allowed to break taboo and fight with "
 "spears in addition to the drake's traditional metal claws, which makes them "
-"particularly good at "
+"particularly good at 'resolving' territorial disputes with other drakes and "
+"enforcing the laws of their tribe."
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/drakes/Clasher.cfg:98
+#: data/core/units/drakes/Clasher.cfg:47
 #: data/core/units/drakes/Enforcer.cfg:96
 #: data/core/units/drakes/Gladiator.cfg:87
 #: data/core/units/dwarves/Guardsman.cfg:43
@@ -661,7 +662,7 @@ msgid "Dwarvish Explorer"
 msgstr "Deli Cüce"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:26
+#: data/core/units/dwarves/Explorer.cfg:27
 msgid ""
 "Dwarven Explorers often travel alone through unknown lands, slaying enemies "
 "and scouting out new deposits of ore and other precious minerals. They are "
@@ -671,14 +672,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:32 data/core/units/dwarves/Lord.cfg:42
+#: data/core/units/dwarves/Explorer.cfg:45 data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/dwarves/Steelclad.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
 msgstr "savaş baltası"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:41
+#: data/core/units/dwarves/Explorer.cfg:54
 #: data/core/units/dwarves/Fighter.cfg:47
 #: data/core/units/dwarves/Pathfinder.cfg:29
 #: data/core/units/dwarves/Pathfinder.cfg:37
@@ -686,7 +687,7 @@ msgstr "savaş baltası"
 #: data/core/units/undead/Skele_Deathblade.cfg:149
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:30
-#: data/core/units/undead/Skeleton.cfg:106
+#: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
 msgstr "balta"
 
@@ -1599,7 +1600,7 @@ msgid "Goblin Pillager"
 msgstr "Goblin Yağmacı"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
-#: data/core/units/goblins/Pillager.cfg:19
+#: data/core/units/goblins/Pillager.cfg:20
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1612,12 +1613,12 @@ msgstr ""
 "toplananlar kişilerden öçlerini almak için ağlar taşırlar."
 
 #. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:43
+#: data/core/units/goblins/Pillager.cfg:56
 msgid "torch"
 msgstr "meşale"
 
 #. [attack]: type=impact
-#: data/core/units/goblins/Pillager.cfg:52
+#: data/core/units/goblins/Pillager.cfg:65
 #: data/core/units/merfolk/Entangler.cfg:33
 #: data/core/units/merfolk/Netcaster.cfg:32
 msgid "net"
@@ -1672,7 +1673,7 @@ msgid "Wolf Rider"
 msgstr "Kurt Binici"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
-#: data/core/units/goblins/Wolf_Rider.cfg:36
+#: data/core/units/goblins/Wolf_Rider.cfg:37
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -4723,7 +4724,7 @@ msgid "Skeleton"
 msgstr "İskelet"
 
 #. [unit_type]: id=Skeleton, race=undead
-#: data/core/units/undead/Skeleton.cfg:18
+#: data/core/units/undead/Skeleton.cfg:19
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
