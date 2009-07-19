@@ -254,10 +254,16 @@ void attack_result::do_execute()
 	int defender_weapon = bc.get_defender_stats().attack_num;
 
 	if(attacker_weapon_ >= 0) {
-		recorder.add_attack(attacker_loc_,defender_loc_,attacker_weapon,defender_weapon);
+		recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
 	}
 	try {
-		attack(attacker_loc_, defender_loc_,attacker_weapon,defender_weapon, get_info().units);
+		rand_rng::invalidate_seed();
+		while (!rand_rng::has_valid_seed()){
+			manager::raise_user_interact();
+			manager::raise_sync_network();
+		}
+		recorder.add_seed("attack", rand_rng::get_last_seed());
+		attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, get_info().units);
 	}
 	catch (end_level_exception&)
 	{

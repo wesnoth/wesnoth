@@ -30,6 +30,7 @@
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "rng.hpp"
 #include "statistics.hpp"
 #include "wesconfig.h"
 
@@ -235,7 +236,8 @@ void replay::add_movement(const std::vector<map_location>& steps)
 	cmd->add_child("move",move);
 }
 
-void replay::add_attack(const map_location& a, const map_location& b, int att_weapon, int def_weapon)
+void replay::add_attack(const map_location& a, const map_location& b,
+	int att_weapon, int def_weapon)
 {
 	add_pos("attack",a,b);
 	char buf[100];
@@ -246,6 +248,11 @@ void replay::add_attack(const map_location& a, const map_location& b, int att_we
 	cfg["defender_weapon"] = buf;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
+}
+
+void replay::add_seed(const char* child_name, rand_rng::seed_t seed)
+{
+	current_->child(child_name)["seed"] = lexical_cast<std::string>(seed);
 }
 
 void replay::add_pos(const std::string& type,
@@ -1077,6 +1084,10 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
+
+			rand_rng::seed_t seed = lexical_cast<rand_rng::seed_t>(child["seed"]);
+			rand_rng::set_seed(seed);
+			LOG_REPLAY << "Replaying attack with seed " << seed << "\n";
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 

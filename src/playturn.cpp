@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "rng.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
 
@@ -75,6 +76,11 @@ void turn_info::send_data()
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
+	if (const config &rnd_seed = cfg.child("random_seed")) {
+		rand_rng::set_seed(lexical_cast<rand_rng::seed_t>(rnd_seed["seed"]));
+		//may call a callback function, see rand_rng::set_seed_callback
+	}
+
 	if (const config &msg = cfg.child("message"))
 	{
 		const int side = lexical_cast_default<int>(msg["side"],0);

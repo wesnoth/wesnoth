@@ -27,6 +27,8 @@ void set_random_results(const config& cfg);
 namespace rand_rng
 {
 
+typedef unsigned int seed_t;
+
 class rng;
 
 struct set_random_generator {

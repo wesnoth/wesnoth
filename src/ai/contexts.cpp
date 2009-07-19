@@ -543,9 +543,15 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 	}
 
 	if(weapon >= 0) {
-		recorder.add_attack(u,target,weapon,def_weapon);
+		recorder.add_attack(u, target, weapon, def_weapon);
 	}
 	try {
+		rand_rng::invalidate_seed();
+		while (!rand_rng::has_valid_seed()){
+			manager::raise_user_interact();
+			manager::raise_sync_network();
+		}
+		recorder.add_seed("attack", rand_rng::get_last_seed());
 		attack(u, target, weapon, def_weapon, get_info().units);
 	}
 	catch (end_level_exception&)

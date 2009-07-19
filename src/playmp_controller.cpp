@@ -202,8 +202,19 @@ void playmp_controller::think_about_countdown(int ticks) {
 	}
 }
 
+namespace {
+	struct command_disabled_resetter
+	{
+		command_disabled_resetter() : val_(events::commands_disabled) {}
+		~command_disabled_resetter() { events::commands_disabled = val_; }
+	private:
+		int val_;
+	};
+}
+
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
+	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
 	execute_gotos();
@@ -554,7 +565,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data.send_data();
 	}
 	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved")
-		|| (name == "ai_enemy_attacked")){
+		|| (name == "ai_enemy_attacked") || (name == "ai_sync_network")){
 		turn_data.sync_network();
 	}
 	else if (name == "network_replay_error"){

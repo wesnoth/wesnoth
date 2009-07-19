@@ -29,8 +29,14 @@
 #include "menu_events.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "rng.hpp"
 #include "wml_separators.hpp"
 
+#include <boost/bind.hpp>
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 namespace events{
 
@@ -67,6 +73,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 
 mouse_handler::~mouse_handler()
 {
+	rand_rng::clear_new_seed_callback();
 	singleton_ = NULL;
 }
 
@@ -655,6 +662,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 	cursor::set(cursor::NORMAL);
 	if(size_t(res) < bc_vector.size()) {
+		commands_disabled++;
 		const battle_context::unit_stats &att = bc_vector[res].get_attacker_stats();
 		const battle_context::unit_stats &def = bc_vector[res].get_defender_stats();
 
@@ -667,41 +675,56 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		gui().unhighlight_reach();
 
 		gui().draw();
-
-		recorder.add_attack(attacker_loc,defender_loc,att.attack_num,def.attack_num);
-
-		//MP_COUNTDOWN grant time bonus for attacking
-		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
-
-		try {
-			attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, units_);
-		} catch(end_level_exception&) {
-			//if the level ends due to a unit being killed, still see if
-			//either the attacker or defender should advance
-			dialogs::advance_unit(attacker_loc);
-			unit_map::const_iterator defu = units_.find(defender_loc);
-			if (defu != units_.end()) {
-				bool defender_human = teams_[defu->second.side()-1].is_human();
-				dialogs::advance_unit(defender_loc, !defender_human);
-			}
-			throw;
+		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num);
+		if (network::nconnections() == 0) {
+			perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand());
+		} else {
+			rand_rng::invalidate_seed();
+			rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
+				this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
 		}
+		return true;
+	} else {
+		return false;
+	}
+}
 
+void mouse_handler::perform_attack(
+	const map_location& attacker_loc, const map_location& defender_loc,
+	int attacker_weapon, int defender_weapon, rand_rng::seed_t seed)
+{
+	rand_rng::clear_new_seed_callback();
+	rand_rng::invalidate_seed();
+	LOG_NG << "Performing attack with seed " << seed << "\n";
+	recorder.add_seed("attack", seed);
+	//MP_COUNTDOWN grant time bonus for attacking
+	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
+
+	try {
+		attack(attacker_loc, defender_loc, attacker_weapon, defender_weapon, units_);
+		commands_disabled--;
+	} catch(end_level_exception&) {
+		commands_disabled--;
+		//if the level ends due to a unit being killed, still see if
+		//either the attacker or defender should advance
 		dialogs::advance_unit(attacker_loc);
 		unit_map::const_iterator defu = units_.find(defender_loc);
 		if (defu != units_.end()) {
 			bool defender_human = teams_[defu->second.side()-1].is_human();
 			dialogs::advance_unit(defender_loc, !defender_human);
 		}
-
-		check_victory();
-
-		gui().draw();
-
-		return true;
-	} else {
-		return false;
+		throw;
 	}
+
+	dialogs::advance_unit(attacker_loc);
+	unit_map::const_iterator defu = units_.find(defender_loc);
+	if (defu != units_.end()) {
+		bool defender_human = teams_[defu->second.side()-1].is_human();
+		dialogs::advance_unit(defender_loc, !defender_human);
+	}
+
+	check_victory();
+	gui().draw();
 }
 
 void mouse_handler::show_attack_options(const unit_map::const_iterator &u)

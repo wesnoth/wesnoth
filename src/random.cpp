@@ -43,9 +43,20 @@
 #include "random.hpp"
 #include "rng.hpp"
 #include "simple_rng.hpp"
+#include "log.hpp"
+#include "rng.hpp"
+#include "network.hpp"
+
+static lg::log_domain log_random("random");
+#define DBG_RND LOG_STREAM(debug, log_random)
+#define LOG_RND LOG_STREAM(info, log_random)
+#define ERR_RND LOG_STREAM(err, log_random)
 
 namespace {
   rand_rng::rng *random_generator = NULL ;
+  rand_rng::seed_t last_seed;
+  bool seed_valid = false;
+  boost::function<void (rand_rng::seed_t)> new_seed_callback;
 }
 
 
@@ -74,22 +85,78 @@ void set_random_results(const config& cfg)
 namespace rand_rng
 {
 
-rng::rng() : random_(NULL), random_child_(0)
-{}
+void set_seed(seed_t seed)
+{
+	LOG_RND << "set_seed with " << seed << "\n";
+	assert(random_generator!=NULL);
+	last_seed = seed;
+	seed_valid = true;
+	random_generator->set_seed(seed);
+	if (new_seed_callback) {
+		LOG_RND << "set_seed calling new_seed_callback\n";
+		new_seed_callback(seed);
+	}
+}
+
+void invalidate_seed()
+{
+	DBG_RND << "invalidate_seed\n";
+	last_seed = rand(); //for SP
+	seed_valid = false;
+}
+
+bool has_valid_seed()
+{
+	//in a SP game the seed is always valid
+	return (network::nconnections == 0) || seed_valid;
+}
+
+seed_t get_last_seed()
+{
+	return last_seed;
+}
+
+void set_new_seed_callback(boost::function<void (seed_t)> f)
+{
+	DBG_RND << "set_new_seed_callback\n";
+	new_seed_callback = f;
+}
+
+void clear_new_seed_callback()
+{
+	DBG_RND << "clear_new_seed_callback\n";
+	new_seed_callback = NULL;
+}
+
+
+
+rng::rng() : random_(NULL), random_child_(0), generator_()
+{
+}
 
 int rng::get_random()
 {
-	if (!random_)
-		return rand() & 0x7FFFFFFF;
+	if (!random_) {
+		int r = generator_.get_random();
+		LOG_RND << "get_random() returning " << r << " (random_ is null)\n";
+		return r;
+	}
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ >= random.size()) {
 		random_child_ = random.size() + 1;
-		int res = rand() & 0x7FFFFFFF;
+		int res = generator_.get_random() & 0x7FFFFFFF;
 		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
+		LOG_RND << "get_random() returning " << res << " (added to random_)\n";
 		return res;
 	} else {
-		return lexical_cast_default<int>((*random[random_child_++])["value"], 0);
+		int mine = generator_.get_random();
+		int stored = lexical_cast_default<int>((*random[random_child_++])["value"], 0);
+		if (mine != stored) {
+			ERR_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
+		}
+		LOG_RND << "get_random() returning " << stored << "\n";
+		return stored;
 	}
 }
 
@@ -123,6 +190,12 @@ void rng::set_random(config* random)
 	random_ = random;
 	random_child_ = 0;
 	return;
+}
+
+void rng::set_seed(seed_t seed)
+{
+	LOG_RND << "Set random seed to " << seed << "\n";
+	generator_.seed_random(seed, 0);
 }
 
 

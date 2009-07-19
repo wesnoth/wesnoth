@@ -46,6 +46,7 @@ public:
 	void add_movement(const std::vector<map_location>& steps);
 	void add_attack(const map_location& a, const map_location& b,
 	                int att_weapon, int def_weapon);
+	void add_seed(const char* child_name, rand_rng::seed_t seed);
 	void choose_option(int index);
 	void text_input(std::string input);
 	void set_random_value(const std::string& choice);
