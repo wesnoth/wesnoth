@@ -62,7 +62,7 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 
 		const ::surface surf = image::getMinimap(rect.w, rect.h, map, NULL);
 
-		blit_surface(surf, NULL, frame_buffer, &rect);
+		SDL_BlitSurface(surf, NULL, frame_buffer, &rect);
 
 	} catch (incorrect_map_format_exception& e) {
 		ERR_CF << "Error while loading the map: " << e.msg_ << '\n';
