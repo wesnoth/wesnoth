@@ -193,11 +193,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Menubar                       A menubar which is used in menus and the
  *                                   tabbar in a tabcontrol. (NOTE this widget
  *                                   is still under heavy development.)
- *     Minimap                       A minimap to show the gamemap, this only
- *                                   shows the map and has no interaction
- *                                   options. This version is used for map
- *                                   previews, there will be a another version
- *                                   which allows interaction.
+ *     Minimap                       @macro = minimap_description
  *     Multi_page                    A multi page is a control that contains
  *                                   serveral 'pages' of which only one is
  *                                   visible. The pages can contain the same
@@ -823,7 +819,7 @@ tminimap_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Minimap ==
  *
- * The definition of a normal minimap.
+ * @macro = minimap_description
  *
  * The following states exist:
  * * state_enabled, the minimap is enabled.
