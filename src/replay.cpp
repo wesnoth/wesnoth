@@ -110,27 +110,6 @@ static void verify(const unit_map& units, const config& cfg) {
 	LOG_REPLAY << "verification passed\n";
 }
 
-namespace {
-	const unit_map* unit_map_ref = NULL;
-}
-
-static void verify_units(const config& cfg)
-	{
-		if(unit_map_ref != NULL) {
-			verify(*unit_map_ref,cfg);
-		}
-	}
-
-verification_manager::verification_manager(const unit_map& units)
-{
-	unit_map_ref = &units;
-}
-
-verification_manager::~verification_manager()
-{
-	unit_map_ref = NULL;
-}
-
 // FIXME: this one now has to be assigned with set_random_generator
 // from play_level or similar.  We should surely hunt direct
 // references to it from this very file and move it out of here.
@@ -174,11 +153,10 @@ void replay::add_unit_checksum(const map_location& loc,config* const cfg)
 	if(! game_config::mp_debug) {
 		return;
 	}
-	assert(unit_map_ref);
 	config& cc = cfg->add_child("checksum");
 	loc.write(cc);
-	unit_map::const_iterator u = unit_map_ref->find(loc);
-	assert(u != unit_map_ref->end());
+	unit_map::const_iterator u = resources::units->find(loc);
+	assert(u.valid());
 	cc["value"] = get_checksum(u->second);
 }
 
@@ -890,7 +868,7 @@ bool do_replay_handle(game_display& disp,
 		else if (cfg->child("end_turn"))
 		{
 			if (const config &child = cfg->child("verify")) {
-				verify_units(child);
+				verify(*resources::units, child);
 			}
 
 			THROW_END_LEVEL_DELETE(delayed_exception);
@@ -1171,7 +1149,7 @@ bool do_replay_handle(game_display& disp,
 		}
 
 		if (const config &child = cfg->child("verify")) {
-			verify_units(child);
+			verify(*resources::units, child);
 		}
 	}
 

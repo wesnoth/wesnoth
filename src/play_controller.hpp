@@ -147,7 +147,6 @@ protected:
 	int find_human_team_before(const size_t team) const;
 
 	//managers
-	const verification_manager verify_manager_;
 	teams_manager team_manager_;
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;

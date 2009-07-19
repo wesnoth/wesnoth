@@ -29,12 +29,6 @@ class terrain_label;
 class unit_map;
 class play_controller;
 
-struct verification_manager
-{
-	verification_manager(const unit_map& units);
-	~verification_manager();
-};
-
 class replay: public rand_rng::rng
 {
 public:
