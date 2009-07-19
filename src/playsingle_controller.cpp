@@ -515,8 +515,7 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
-				turn_info turn_data(gamestate_, tod_manager_, *gui_, map_,
-						teams_, player_number_, units_, replay_sender_, undo_stack_,*this);
+				turn_info turn_data(player_number_, replay_sender_, undo_stack_);
 				recorder.end_turn();
 				turn_data.sync_network();
 			}
@@ -538,8 +537,7 @@ void playsingle_controller::play_turn(bool save)
 			// If a side is dead end the turn.
 			if (current_team().is_human() && side_units(units_, player_number_) == 0)
 			{
-				turn_info turn_data(gamestate_, tod_manager_, *gui_, map_,
-						teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
+				turn_info turn_data(player_number_, replay_sender_, undo_stack_);
 				recorder.end_turn();
 				turn_data.sync_network();
 				continue;
@@ -797,8 +795,7 @@ void playsingle_controller::play_ai_turn(){
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
-	turn_info turn_data(gamestate_,tod_manager_,*gui_,
-			map_, teams_, player_number_, units_, replay_sender_, undo_stack_, *this);
+	turn_info turn_data(player_number_, replay_sender_, undo_stack_);
 
 	try {
 		ai::manager::play_turn(player_number_);

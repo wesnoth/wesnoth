@@ -36,10 +36,7 @@ class tod_manager;
 class turn_info
 {
 public:
-	turn_info(game_state& state_of_game,
-	          const tod_manager& tod_mng, game_display& gui, gamemap& map,
-		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
-		  replay_network_sender& network_sender, undo_list& undo_stack, play_controller& controller);
+	turn_info(unsigned team_num, replay_network_sender &network_sender, undo_list &undo_stack);
 
 	~turn_info();
 
@@ -70,13 +67,7 @@ private:
 	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
-	game_state& state_of_game_;
-	const tod_manager& tod_manager_;
-	game_display& gui_;
-	gamemap& map_;
-	std::vector<team>& teams_;
 	unsigned int team_num_;
-	unit_map& units_;
 
 	undo_list& undo_stack_;
 
@@ -84,7 +75,6 @@ private:
 
 	events::generic_event replay_error_;
 	events::generic_event host_transfer_;
-	play_controller &controller_;
 };
 
 #endif
