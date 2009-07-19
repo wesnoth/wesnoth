@@ -44,7 +44,8 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 			}
 		}
 		if(take_screenshot) {
-			e = editor.do_screenshot(screenshot_filename);
+			editor.do_screenshot(screenshot_filename);
+			e = EXIT_NORMAL;
 		} else {
 			e = editor.main_loop();
 		}

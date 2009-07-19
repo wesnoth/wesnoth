@@ -291,18 +291,13 @@ EXIT_STATUS editor_controller::main_loop()
 	return quit_mode_;
 }
 
-EXIT_STATUS editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
+void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	try {
-		gui().screenshot(screenshot_filename,true);		
-		quit_mode_ = EXIT_NORMAL;
-	} catch (editor_exception& e) {
-		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
-		return EXIT_ERROR;
+		gui().screenshot(screenshot_filename,true);
 	} catch (twml_exception& e) {
 		e.show(gui());
 	}
-	return quit_mode_;
 }
 
 void editor_controller::quit_confirm(EXIT_STATUS mode)

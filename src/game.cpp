@@ -718,7 +718,8 @@ bool game_controller::play_screenshot_mode()
 	const binary_paths_manager bin_paths_manager(game_config_);
 	::init_textdomains(game_config_);
 	
-	return editor2::start(game_config_, video_, screenshot_map_, true, screenshot_filename_);
+	editor2::start(game_config_, video_, screenshot_map_, true, screenshot_filename_);
+	return false;
 #else
 	return false;
 #endif
