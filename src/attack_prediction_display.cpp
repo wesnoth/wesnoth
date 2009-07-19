@@ -17,7 +17,9 @@
 
 #include "attack_prediction.hpp"
 #include "gettext.hpp"
+#include "game_display.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "unit_abilities.hpp"
 
 // Conversion routine for both unscatched and damage change percentage.
@@ -43,22 +45,14 @@ const int battle_prediction_pane::inter_column_gap_ = 30;
 const int battle_prediction_pane::inter_units_gap_ = 30;
 const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-battle_prediction_pane::battle_prediction_pane(display &disp,
-		const battle_context& bc, const gamemap& map, const
-		std::vector<team>& teams, const unit_map& units,
-		const tod_manager& tod_mng, const map_location& attacker_loc,
-		const map_location& defender_loc) :
-	gui::preview_pane(disp.video()),
-	disp_(disp),
+battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
+		const map_location &attacker_loc, const map_location &defender_loc) :
+	gui::preview_pane(resources::screen->video()),
 	bc_(bc),
-	map_(map),
-	teams_(teams),
-	units_(units),
-	tod_manager_(tod_mng),
 	attacker_loc_(attacker_loc),
 	defender_loc_(defender_loc),
-	attacker_(units.find(attacker_loc)->second),
-	defender_(units.find(defender_loc)->second),
+	attacker_(resources::units->find(attacker_loc)->second),
+	defender_(resources::units->find(defender_loc)->second),
 	attacker_label_(),
 	defender_label_(),
 	attacker_label_width_(0),
@@ -161,7 +155,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 
 		// Set specials context (for safety, it should not have changed normally).
 		const attack_type *weapon = stats.weapon;
-		weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &tod_manager_, &teams_, stats.is_attacker, opp_weapon);
+		weapon->set_specials_context(u_loc, opp_loc, resources::units, resources::game_map, resources::tod_manager, resources::teams, stats.is_attacker, opp_weapon);
 
 		// Get damage modifiers.
 		unit_ability_list dmg_specials = weapon->get_specials("damage");
@@ -237,7 +231,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 		}
 
 		// Time of day modifier.
-		int tod_modifier = combat_modifier(units_, u_loc, u.alignment(), u.is_fearless());
+		int tod_modifier = combat_modifier(*resources::units, u_loc, u.alignment(), u.is_fearless());
 		if(tod_modifier != 0) {
 			left_strings.push_back(_("Time of day"));
 			str.str("");
@@ -247,7 +241,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& 
 
 // Leadership bonus.
 int leadership_bonus = 0;
-under_leadership(units_, u_loc, &leadership_bonus);
+under_leadership(*resources::units, u_loc, &leadership_bonus);
 		if(leadership_bonus != 0) {
 			left_strings.push_back(_("Leadership"));
 			str.str("");
@@ -347,7 +341,7 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 									   const std::string& label, int label_width,
 									   surface& hp_distrib, int hp_distrib_width)
 {
-	surface screen = disp_.get_screen_surface();
+	surface screen = resources::screen->get_screen_surface();
 	int i;
 
 	// NOTE. A preview pane is not made to be used alone and it is not
@@ -546,12 +540,11 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 	const size_t index = size_t(selection);
 
 	if(index < bc_vector_.size()) {
-		battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, tod_manager_,
-										   attacker_loc_, defender_loc_);
+		battle_prediction_pane battle_pane(bc_vector_[index], attacker_loc_, defender_loc_);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&battle_pane);
 
-		gui::show_dialog(disp_, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
+		gui::show_dialog(*resources::screen, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 	}
 
 	return gui::CONTINUE_DIALOG;

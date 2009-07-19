@@ -29,10 +29,8 @@ class battle_prediction_pane : public gui::preview_pane
 public:
 
 	// Lengthy constructor.
-	battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-						   const std::vector<team>& teams, const unit_map& units,
-						   const tod_manager& tod_mng,
-						   const map_location& attacker_loc, const map_location& defender_loc);
+	battle_prediction_pane(const battle_context& bc,
+		const map_location& attacker_loc, const map_location& defender_loc);
 
 	// This method is called to draw the dialog contents.
 	void draw_contents();
@@ -44,12 +42,7 @@ public:
 	void set_selection(int) {}
 
 private:
-	display &disp_;
 	const battle_context& bc_;
-	const gamemap& map_;
-	const std::vector<team>& teams_;
-	const unit_map& units_;
-	const tod_manager& tod_manager_;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 	const unit& attacker_;
@@ -129,22 +122,15 @@ private:
 class attack_prediction_displayer : public gui::dialog_button_action
 {
 public:
-	attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
-							    const std::vector<team>& teams, const unit_map& units,
-							    const tod_manager& tod_mng,
+	attack_prediction_displayer(const std::vector<battle_context>& bc_vector,
 								const map_location& attacker_loc, const map_location& defender_loc)
-			: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), tod_manager_(tod_mng),
+		: bc_vector_(bc_vector),
 			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
 	// This method is called when the button is pressed.
 	RESULT button_pressed(int selection);
 
 private:
-	display &disp_;
 	const std::vector<battle_context>& bc_vector_;
-	const gamemap& map_;
-	const std::vector<team>& teams_;
-	const unit_map& units_;
-	const tod_manager& tod_manager_;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 };
