@@ -683,7 +683,7 @@ replay& get_replay_source()
 	}
 }
 
-static void check_checksums(game_display& disp,const unit_map& units,const config& cfg)
+static void check_checksums(const config &cfg)
 {
 	if(! game_config::mp_debug) {
 		return;
@@ -691,18 +691,18 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 	foreach (const config &ch, cfg.child_range("checksum"))
 	{
 		map_location loc(ch, resources::state_of_game);
-		unit_map::const_iterator u = units.find(loc);
-		if(u == units.end()) {
+		unit_map::const_iterator u = resources::units->find(loc);
+		if (!u.valid()) {
 			std::stringstream message;
 			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message(time(NULL), "verification", 1, message.str(),
+			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
 					events::chat_handler::MESSAGE_PRIVATE, false);
 			continue;
 		}
 		if (get_checksum(u->second) != ch["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			disp.add_chat_message(time(NULL), "verification", 1, message.str(),
+			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 	}
@@ -918,7 +918,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			current_team.spend_gold(u_type->second.cost());
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !get_replay_source().is_skipping();
-			check_checksums(*resources::screen, *resources::units, *cfg);
+			check_checksums(*cfg);
 		}
 
 		else if (const config &child = cfg->child("recall"))
@@ -944,7 +944,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::throw_error("illegal recall\n");
 			}
 			fix_shroud = !get_replay_source().is_skipping();
-			check_checksums(*resources::screen, *resources::units, *cfg);
+			check_checksums(*cfg);
 		}
 
 		else if (const config &child = cfg->child("disband"))
@@ -1032,7 +1032,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		{
 			const config &destination = child.child("destination");
 			const config &source = child.child("source");
-			check_checksums(*resources::screen, *resources::units, *cfg);
+			check_checksums(*cfg);
 
 			if (!destination || !source) {
 				replay::throw_error("no destination/source found in attack\n");
@@ -1129,7 +1129,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(! cfg->child("checksum")) {
 				replay::throw_error("unrecognized action:\n" + cfg->debug());
 			} else {
-				check_checksums(*resources::screen, *resources::units, *cfg);
+				check_checksums(*cfg);
 			}
 		}
 
