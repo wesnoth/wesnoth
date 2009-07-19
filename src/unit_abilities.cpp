@@ -741,16 +741,11 @@ bool attack_type::special_affects_self(const config& cfg) const
 	return false;
 }
 void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
-                              const unit_map* unitmap,
-							  const gamemap* map, const tod_manager* tod_mng,
-							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
+	const unit_map &unitmap, bool attacker, const attack_type *other_attack) const
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
-	unitmap_ = unitmap;
-	map_ = map;
-	tod_manager_ = tod_mng;
-	teams_ = teams;
+	unitmap_ = &unitmap;
 	attacker_ = attacker;
 	other_attack_ = other_attack;
 }
@@ -760,8 +755,6 @@ void attack_type::set_specials_context(const map_location& loc, const map_locati
 	aloc_ = loc;
 	dloc_ = dloc;
 	unitmap_ = un.units_;
-	map_ = resources::game_map;
-	teams_ = resources::teams;
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }

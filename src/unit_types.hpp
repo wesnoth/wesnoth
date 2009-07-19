@@ -59,9 +59,7 @@ public:
 	std::vector<t_string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const map_location& aloc,const map_location& dloc,
-                              const unit_map* unitmap,
-							  const gamemap* map, const tod_manager* tod_mng,
-							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
+		const unit_map &unitmap, bool attacker, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 
 	bool has_special_by_id(const std::string& special) const;
@@ -77,9 +75,6 @@ public:
 	mutable map_location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const unit_map* unitmap_;
-	mutable const gamemap* map_;
-	mutable const tod_manager* tod_manager_;
-	mutable const std::vector<team>* teams_;
 	mutable const attack_type* other_attack_;
 	/*
 	 * cfg: a weapon special WML structure

@@ -710,9 +710,9 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		weapon->set_specials_context(*aloc, *dloc, &units, resources::game_map, resources::tod_manager, resources::teams, attacking, opp_weapon);
+		weapon->set_specials_context(*aloc, *dloc, units, attacking, opp_weapon);
 		if (opp_weapon)
-			opp_weapon->set_specials_context(*aloc, *dloc, &units, resources::game_map, resources::tod_manager, resources::teams, !attacking, weapon);
+			opp_weapon->set_specials_context(*aloc, *dloc, units, !attacking, weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		petrifies = weapon->get_special_bool("petrifies");
