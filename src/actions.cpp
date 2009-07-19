@@ -2482,94 +2482,94 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 	}
 
-		bool redraw = false;
+	bool redraw = false;
 
-		// Show messages on the screen here
-		if(discovered_unit) {
-			if (ambushed_string.empty())
-				ambushed_string = _("Ambushed!");
-			// We've been ambushed, display an appropriate message
-			disp.announce(ambushed_string, font::BAD_COLOUR);
-			redraw = true;
-		}
+	// Show messages on the screen here
+	if(discovered_unit) {
+		if (ambushed_string.empty())
+			ambushed_string = _("Ambushed!");
+		// We've been ambushed, display an appropriate message
+		disp.announce(ambushed_string, font::BAD_COLOUR);
+		redraw = true;
+	}
 
-		if(teleport_failed) {
-			std::string teleport_string = _ ("Failed teleport! Exit not empty");
-			disp.announce(teleport_string, font::BAD_COLOUR);
-			redraw = true;
-		}
+	if(teleport_failed) {
+		std::string teleport_string = _ ("Failed teleport! Exit not empty");
+		disp.announce(teleport_string, font::BAD_COLOUR);
+		redraw = true;
+	}
 
-		if(continue_move == false && seen_units.empty() == false) {
-			// The message depends on how many units have been sighted,
-			// and whether they are allies or enemies, so calculate that out here
-			int nfriends = 0, nenemies = 0;
-			for(std::set<map_location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
-				DBG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
-				const unit_map::const_iterator u = units.find(*i);
+	if(continue_move == false && seen_units.empty() == false) {
+		// The message depends on how many units have been sighted,
+		// and whether they are allies or enemies, so calculate that out here
+		int nfriends = 0, nenemies = 0;
+		for(std::set<map_location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
+			DBG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
+			const unit_map::const_iterator u = units.find(*i);
 
-				// Unit may have been removed by an event.
-				if(u == units.end()) {
-					DBG_NG << "was removed\n";
-					continue;
-				}
-
-				if (tm->is_enemy(u->second.side())) {
-					++nenemies;
-					if (move_spectator!=NULL) {
-						move_spectator->add_seen_enemy(u);
-					}
-				} else {
-					++nfriends;
-					if (move_spectator!=NULL) {
-						move_spectator->add_seen_friend(u);
-					}
-				}
-
-				DBG_NG << "processed...\n";
-				tm->see(u->second.side() - 1);
+			// Unit may have been removed by an event.
+			if(u == units.end()) {
+				DBG_NG << "was removed\n";
+				continue;
 			}
 
-				// The message we display is different depending on
-				// whether the units sighted were enemies or friends,
-				// and their respective number.
-				utils::string_map symbols;
-				symbols["friends"] = lexical_cast<std::string>(nfriends);
-				symbols["enemies"] = lexical_cast<std::string>(nenemies);
-				std::string message;
-				SDL_Color msg_colour;
-				if(nfriends == 0 || nenemies == 0) {
-					if(nfriends > 0) {
-						message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
-						msg_colour = font::GOOD_COLOUR;
-					} else if(nenemies > 0) {
-						message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
-						msg_colour = font::BAD_COLOUR;
-					}
+			if (tm->is_enemy(u->second.side())) {
+				++nenemies;
+				if (move_spectator!=NULL) {
+					move_spectator->add_seen_enemy(u);
 				}
-				else {
-					symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
-					symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
-					message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
-					msg_colour = font::NORMAL_COLOUR;
+			} else {
+				++nfriends;
+				if (move_spectator!=NULL) {
+					move_spectator->add_seen_friend(u);
 				}
+			}
 
-				if(steps.size() < route.size()) {
-					// See if the "Continue Move" action has an associated hotkey
-					const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
-					if(!hk.null()) {
-						symbols["hotkey"] = hk.get_name();
-						message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
-					}
-				}
-
-				disp.announce(message, msg_colour);
-				redraw = true;
+			DBG_NG << "processed...\n";
+			tm->see(u->second.side() - 1);
 		}
 
-		if (redraw) {
-			disp.draw();
-		}
-		disp.recalculate_minimap();
+			// The message we display is different depending on
+			// whether the units sighted were enemies or friends,
+			// and their respective number.
+			utils::string_map symbols;
+			symbols["friends"] = lexical_cast<std::string>(nfriends);
+			symbols["enemies"] = lexical_cast<std::string>(nenemies);
+			std::string message;
+			SDL_Color msg_colour;
+			if(nfriends == 0 || nenemies == 0) {
+				if(nfriends > 0) {
+					message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
+					msg_colour = font::GOOD_COLOUR;
+				} else if(nenemies > 0) {
+					message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
+					msg_colour = font::BAD_COLOUR;
+				}
+			}
+			else {
+				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+				symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+				message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
+				msg_colour = font::NORMAL_COLOUR;
+			}
+
+			if(steps.size() < route.size()) {
+				// See if the "Continue Move" action has an associated hotkey
+				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+				if(!hk.null()) {
+					symbols["hotkey"] = hk.get_name();
+					message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
+				}
+			}
+
+			disp.announce(message, msg_colour);
+			redraw = true;
+	}
+
+	if (redraw) {
+		disp.draw();
+	}
+	disp.recalculate_minimap();
 
 	assert(steps.size() <= route.size());
 
