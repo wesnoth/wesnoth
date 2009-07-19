@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
-"PO-Revision-Date: 2009-06-30 11:01+0200\n"
+"POT-Creation-Date: 2009-07-19 13:31+0200\n"
+"PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
@@ -592,11 +593,11 @@ msgstr "Повежи се"
 msgid "Cancel"
 msgstr "Одустани"
 
+# >> @title:window
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:34
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Поход"
+msgstr "Играње похода"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -763,20 +764,18 @@ msgstr "Примени"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
-msgstr "Обриши датотеку"
+msgstr "Брисање датотеке"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "Стварно би да отиђеш?"
+msgstr "Желите ли заиста да обришете ову игру?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Не питај ме поново"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -807,18 +806,17 @@ msgstr "Не"
 #: data/gui/default/window/game_load.cfg:32
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:65
 msgid "Load Game"
-msgstr "Учитај игру"
+msgstr "Учитавање игре"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/game_load.cfg:167
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Игра за учитавање"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:187
-#, fuzzy
 msgid "Filter"
-msgstr "Датотека: "
+msgstr "Филтер"
 
 #. [label]: id=name
 #. [label]: id=filename
@@ -829,28 +827,24 @@ msgstr "Име"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:254
-#, fuzzy
 msgid "Date"
-msgstr "Налепи"
+msgstr "Датум"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:368
 #: data/gui/default/window/game_load.cfg:369
-#, fuzzy
 msgid "Delete"
-msgstr "Обриши датотеку"
+msgstr "Обриши"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:391
-#, fuzzy
 msgid "Show replay"
-msgstr "играч"
+msgstr "Прикажи снимак"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:403
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Одустани"
+msgstr "Обустави наређења"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -923,30 +917,28 @@ msgstr "Вишеиграчки хол"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:333
-#, fuzzy
 msgid "Filter:"
-msgstr "Датотека: "
+msgstr "Филтер:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:344
-#, fuzzy
 msgid "Friends"
-msgstr "Списак пријатеља"
+msgstr "Пријатељи"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:350
 msgid "No ignored"
-msgstr ""
+msgstr "Без игнорисаних"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:356
 msgid "Vacant slots"
-msgstr ""
+msgstr "Слободних места"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:362
 msgid "Invert filter"
-msgstr ""
+msgstr "Изврни филтер"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:390
@@ -1346,7 +1338,6 @@ msgid "player"
 msgstr "играч"
 
 #: src/game_preferences_display.cpp:155
-#, fuzzy
 msgid "Full Screen"
 msgstr "Преко целог екрана"
 
@@ -1791,7 +1782,7 @@ msgstr "Текст не стаје на платно."
 
 #: src/gui/auxiliary/window_builder.cpp:138
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "Повезана група ‘$id’ има вишеструке дефиниције."
 
 #: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:520
 msgid "No resolution defined."
@@ -1808,7 +1799,7 @@ msgstr "Мрежа није дефинисана."
 
 #: src/gui/auxiliary/window_builder.cpp:325
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+msgstr "Повезана група ‘$id’ тражи кључ ‘fixed_width’ или ‘fixed_height’."
 
 #: src/gui/auxiliary/window_builder.cpp:424
 msgid "A row must have a column."
@@ -1842,41 +1833,36 @@ msgid "The number of value_labels and values don't match."
 msgstr "Број value_labels и вредности се не слаже."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
-#, fuzzy
 msgid "No stack defined."
-msgstr "Списак није задат."
+msgstr "Стек није задат."
 
 #: src/gui/dialogs/game_load.cpp:214
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(неваљан)"
 
 #: src/gui/dialogs/game_load.cpp:232
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Поход: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:249
-#, fuzzy
 msgid "replay"
-msgstr "играч"
+msgstr "снимак"
 
 #: src/gui/dialogs/game_load.cpp:251
-#, fuzzy
 msgid "Turn"
-msgstr "Готово"
+msgstr "Потез"
 
 #: src/gui/dialogs/game_load.cpp:253
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Циљеви сценарија"
+msgstr "Почетак сценарија"
 
 #: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
-msgstr ""
+msgstr "Тежина: "
 
 #: src/gui/dialogs/game_load.cpp:258
-#, fuzzy
 msgid "Version: "
-msgstr "верзија"
+msgstr "Верзија: "
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
@@ -2511,9 +2497,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "У одељку ‘[$section|]’ није постављен обавезни кључ ‘$key|’."
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr "Поље list_data мора имати исти број колона као list_definition."

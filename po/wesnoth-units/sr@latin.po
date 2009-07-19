@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 13:46+0200\n"
-"PO-Revision-Date: 2009-06-30 11:01+0200\n"
+"PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -276,6 +277,17 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
+"Sudarači su pripadnici jedinstvene kaste u zmagova. Njihovi debeli oklopi, "
+"iako nadomeštaju urođenu slabost zmagova na koplja i strele, toliko su teški "
+"i ograničavajući da sudarači ne mogu leteti niti doći do dovoljno daha da "
+"upregnu svoju unutrašnju vatru. Oni su, pak, prigrlili ovaj nedostatak, "
+"potpuno optočavajući svoja krila, kako bi istakli da im letenje nije "
+"neophodno da bi prevladali u boju.\n"
+"\n"
+"Ovo je takođe jedina kasta kojoj je dozvoljeno da prekrši tabu boreći se "
+"kopljima, u dodatak zmaškim običajnim metalnim kandžama. To ih čini posebno "
+"dobrim u „razrešavanju“ teritorijalnih razmirica sa ostalim zmagovima i "
+"nametanju zakonâ̂ svoga plemena."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
@@ -427,6 +439,12 @@ msgid ""
 "are weapons. A Gladiator will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"Umesto da dopuste da budu sputani svojim oklopom, gladijatori su naučili da "
+"preusmere njegovu težinu u korist zamaha svojih tela, dodajući silinu "
+"udarima svojih kratkih kopalja i borbenih kandži. Oprema i telo su jedno; "
+"čak su i njihove debele kacige i tvrde lobanje pod njima oružja. Gladijator "
+"će rado ispunjavati dužnosti svoje kaste, dok god to može činiti na bojnom "
+"polju."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -500,7 +518,6 @@ msgstr "zmago-nebohvat"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:27
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and their fire breath combine into a terrible weapon. By "
@@ -1775,9 +1792,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "mač"
+msgstr "dugi mač"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
@@ -2405,9 +2421,8 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
-#, fuzzy
 msgid "flail"
-msgstr "rep"
+msgstr "mlatilo"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2938,6 +2953,11 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
+"Drumaši su izašli na rđav glas po potajnim delima punim nasilja. Spremni da "
+"se unajme kome god da plati najviše, vode družine manjih odmetnika protiv "
+"neprijateljâ̂ svoga poslodavca, često udarajući na osamljenim drumovima pod "
+"okriljem noći. Iskustvo iz takvih okršaja čini ih smrtonosnim protivnicima u "
+"borbi prsa u prsa."
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -3908,7 +3928,6 @@ msgstr "orko-strelac"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
-#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "
@@ -5084,60 +5103,3 @@ msgstr ""
 "\n"
 "Iveri su sasvim neratoborni, ali poseduju veliku snagu. Međutim, niti "
 "običavaju, niti mogu da se brzo kreću naokolo."
-
-#, fuzzy
-#~ msgid "Longbow"
-#~ msgstr "dugi luk"
-
-#~ msgid ""
-#~ "The Gladiator has taken a completely different path from the Slashers. "
-#~ "Rather than emphasize training, they have chosen to focus on the craft of "
-#~ "their weaponry. They are the smiths of Drake society, and it follows that "
-#~ "they possess the best weaponry - the sharpest blades and spears, and the "
-#~ "maces which complement their already impressive array. Their intense "
-#~ "focus on their weapons confers offensive capability at the cost of a "
-#~ "slight reduction in their defensive abilities."
-#~ msgstr ""
-#~ "Gladijatori su krenuli potpuno drugim putem u odnosu na dugoreze. Pre "
-#~ "nego na vežbanje, usredsređuju se na valjanost svog oružja. Oni su kovači "
-#~ "u zmagovskom društvu, iz čega sledi da poseduju najbolje naoružanje — "
-#~ "najoštrija sečiva i koplja, i topuze koji upotpunjuju njihov već "
-#~ "impresivan arsenal. Takvo poklanjanje pažnje oružju donekle umanjuje "
-#~ "njihove odbrambene sposobnosti."
-
-#~ msgid ""
-#~ "A Drake Clasher is incapable of either flight and fire-breathing, and "
-#~ "most assume their relegation to melee combat is because of disability - "
-#~ "an attempt to garner use from what otherwise would be a liability. It is "
-#~ "possible that they have some mild deficiency in those skills, but those "
-#~ "who support this theory have failed to consider how uniquely well-suited "
-#~ "they are to combat a fellow drake.\n"
-#~ "\n"
-#~ "They are, in fact, the Judicators of the Drake Hierarchy, and though "
-#~ "their armament is now largely ceremonial, it is none the less effective. "
-#~ "In their encounters with lesser races, they discovered that their natural "
-#~ "size and strength were themselves powerful weapons, and when combined "
-#~ "with the armament worn by this caste, the resulting warriors lack some of "
-#~ "the typical weaknesses of their kind, such as the strong vulnerability to "
-#~ "spears and arrows."
-#~ msgstr ""
-#~ "Zmag sudarač nije sposoban ni da leti ni da bljuje vatru, te većina "
-#~ "pretpostavlja da je njihovo otpravljanje u blisku borbu izraz tih "
-#~ "slabosti — pokušaj da se iskoristi ono što bi inače bio čist teret. Tačno "
-#~ "je da ovi zmagovi imaju nedostataka u nekim veštinama, ali mnogi "
-#~ "zaboravljaju koliko su stoga jedinstveno pogodni za obračun sa drugim "
-#~ "zmagovima.\n"
-#~ "\n"
-#~ "Oni su, u stvari, Sudije u Zmaškoj hijerarhiji, i iako im je naoružanje "
-#~ "uglavnom paradno, ni slučajno nije neefikasno. U svojim susretima sa "
-#~ "nižim rasama, otkrili su da je njihova prirodna veličina i snaga sama po "
-#~ "sebi moćno oružje, a kada se još upare sa naoružanjem koje nosi njihova "
-#~ "kasta, ovi ratnici bivaju lišeni nekih tipičnih slabosti svoje rase, "
-#~ "kakva je ranjivost na koplja i strele."
-
-#~ msgid ""
-#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
-#~ "a deserted road late at night."
-#~ msgstr ""
-#~ "Naoružani teškim topuzinama, drumaši su poslednji koje biste voleli da "
-#~ "susretnete na pustom putu, kasno u noć."

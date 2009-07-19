@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
-"PO-Revision-Date: 2009-06-30 11:01+0200\n"
+"POT-Creation-Date: 2009-07-19 13:31+0200\n"
+"PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Environment: wesnoth, wesnoth/noent\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -27,7 +28,7 @@ msgstr "компресовани уписи"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "потврда брисања уписа"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -67,7 +68,7 @@ msgstr "приказ борбе"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr ""
+msgstr "прековреме пинга"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -75,6 +76,8 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
+"Колико секунди чекати на одзив пинга пре него што прекорачи време. 0 "
+"искључује."
 
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
@@ -5084,7 +5087,7 @@ msgstr "љубичаста"
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
-msgstr "наранџаста"
+msgstr "наранџа�та"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
@@ -5504,7 +5507,6 @@ msgstr "људи"
 
 #. [race]: id=human
 #: data/core/units.cfg:169
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5549,7 +5551,7 @@ msgstr ""
 "Иако нису прожети магијом као друга створења, људи је умеју спознати и "
 "владати њеним разноврснијим видовима него већина осталих. Немају посебних "
 "способности ни наклоњености до своје свестраности и нагона. Иако неретко у "
-"завади са свим расама, повремено умеју ступити у савез са оним мање "
+"завади са другим расама, повремено умеју ступити у савез са оним мање "
 "ратоборним, попут вилењака или патуљака. Мање обзирни се не устручавају ни "
 "од унајмљивања орковских плаћеника. Иако без природних непријатеља, већина "
 "људи гаји исконску одбојност према немртвима, као што је случај и с другим "
@@ -7166,26 +7168,24 @@ msgid "Dependencies"
 msgstr "Зависности"
 
 #: src/addon_management.cpp:456
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Овај додатак се ослања на следеће који још нису инсталирани:"
-msgstr[1] "Овај додатак се ослања на следеће који још нису инсталирани:"
-msgstr[2] "Овај додатак се ослања на следеће који још нису инсталирани:"
-msgstr[3] "Овај додатак се ослања на следећи који још није инсталиран:"
+msgstr[0] "$addon_title се ослања на следеће који још нису инсталирани:"
+msgstr[1] "$addon_title се ослања на следеће који још нису инсталирани:"
+msgstr[2] "$addon_title се ослања на следеће који још нису инсталирани:"
+msgstr[3] "$addon_title се ослања на следећи који још није инсталиран:"
 
 #: src/addon_management.cpp:459
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Желите ли да преузмете овај додатак? (Мораћете још да инсталирате зависности "
-"да бисте играли.)"
+"Желите ли да преузмете $addon_title|? (Мораћете да инсталирате и све "
+"зависности да бисте играли.)"
 
 #: src/addon_management.cpp:477 src/addon_management.cpp:549
 #: src/multiplayer.cpp:213 src/multiplayer.cpp:268 src/multiplayer_ui.cpp:77
@@ -9516,24 +9516,20 @@ msgid "This is not a multiplayer save"
 msgstr "Ово није вишеиграчки упис"
 
 #: src/savegame.cpp:553
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Игру није било могуће сачувати"
+msgstr "Не могу да сачувам игру: "
 
 #: src/savegame.cpp:640
-#, fuzzy
 msgid "Name: "
-msgstr "име"
+msgstr "Име: "
 
 #: src/savegame.cpp:640
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Мапа већ постоји. Желите ли да је пребришете?"
+msgstr "Упис већ постоји. Желите ли да га пребришете?"
 
 #: src/savegame.cpp:641
-#, fuzzy
 msgid "Overwrite?"
-msgstr "Преглед"
+msgstr "Пребрисати?"
 
 #: src/savegame.cpp:651
 msgid "Save names should not end on '.gz'. Please choose a different name."
@@ -9648,7 +9644,6 @@ msgid "Damage"
 msgstr "штета"
 
 #: src/statistics_dialog.cpp:176
-#, fuzzy
 msgid "Overall"
 msgstr "збирна"
 
@@ -9929,6 +9924,3 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 #: src/upload_log.cpp:349
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
-
-#~ msgid "Play a campaign"
-#~ msgstr "Пођите у поход"
