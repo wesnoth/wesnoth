@@ -93,7 +93,6 @@ tpoint tvertical_list::calculate_best_size() const
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
-
 		if(grid.get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -124,7 +123,6 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
-
 		if(grid.get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
@@ -148,6 +146,9 @@ void tvertical_list::set_origin(const tpoint& origin)
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
 
 		grid.set_origin(current_origin);
 		current_origin.y += grid.get_height();
@@ -178,6 +179,10 @@ twidget* tvertical_list::find_widget(
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
 
 		twidget* widget =
 				grid.find_widget(coordinate, must_be_active);
@@ -198,6 +203,9 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
 
 		const twidget* widget =
 				grid.find_widget(coordinate, must_be_active);
@@ -240,6 +248,10 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
+
+		if(get_item(i).get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
