@@ -159,13 +159,26 @@ tline::tline(const config& cfg) :
  *                                     change without further notice.)
  *@end_table
  *
+ * The size variables are copied to the window and will be determined runtime.
+ * This is needed since the main window can be resized and the dialog needs to
+ * resize accordingly. The following variables are available:
+ * @start_table = formula
+ *     screen_width unsigned         The usable width of the Wesnoth main window.
+ *     screen_height unsigned        The usable height of the Wesnoth main window.
+ *     gamemap_width unsigned        The usable width of the Wesnoth gamemap,
+ *                                   if no gamemap shown it's the same value as
+ *                                   screen_width.
+ *     gamemap_height unsigned       The usable height of the Wesnoth gamemap,
+ *                                   if no gamemap shown it's the same value as
+ *                                   screen_height.
+ * @end_table
+ *
  * Note when drawing the valid coordinates are:<br>
  * 0 -> width - 1 <br>
  * 0 -> height -1
  *
  * Drawing outside this area will result in unpredictable results including
  * crashing. (That should be fixed, when encountered.)
- *
  */
 
 /*WIKI - unclassified

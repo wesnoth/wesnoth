@@ -273,20 +273,6 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *     grid (grid)                   The grid with the widgets to show.
  * @end_table
- *
- * The size variables are copied to the window and will be determined runtime.
- * This is needed since the main window can be resized and the dialog needs to
- * resize accordingly. The following variables are available:
- * @start_table = formula
- *     screen_width unsigned         The usable width of the Wesnoth main window.
- *     screen_height unsigned        The usable height of the Wesnoth main window.
- *     gamemap_width unsigned        The usable width of the Wesnoth gamemap,
- *                                   if no gamemap shown it's the same value as
- *                                   screen_width.
- *     gamemap_height unsigned       The usable height of the Wesnoth gamemap,
- *                                   if no gamemap shown it's the same value as
- *                                   screen_height.
- * @end_table
  */
 
 	const config &c = cfg.child("grid");
