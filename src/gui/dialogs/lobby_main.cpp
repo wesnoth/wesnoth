@@ -829,7 +829,7 @@ void tlobby_main::room_switch_callback(twindow& /*window*/)
 bool tlobby_main::chat_input_keypress_callback(twidget* widget, SDLKey key,
 	SDLMod /*mod*/, Uint16 /*unicode*/)
 {
-	if (key == SDLK_RETURN) {
+	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		send_message_button_callback(*widget->get_window());
 		return true;
 	}
@@ -862,7 +862,7 @@ void tlobby_main::game_filter_reload()
 bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
 	SDLMod /*mod*/, Uint16 /*unicode*/)
 {
-	if (key == SDLK_RETURN) {
+	if (key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();
 		update_gamelist();
 	}
