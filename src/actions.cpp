@@ -2482,7 +2482,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 	}
 
-	if (move_spectator) {
 		bool redraw = false;
 
 		// Show messages on the screen here
@@ -2571,7 +2570,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			disp.draw();
 		}
 		disp.recalculate_minimap();
-	}
 
 	assert(steps.size() <= route.size());
 
