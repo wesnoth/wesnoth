@@ -86,7 +86,8 @@ protected:
 	// the real function but can throw bad_alloc
 	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
 
-	void perform_attack(const map_location& attacker_loc, const map_location& defender_loc,
+	// the perform attack function called after a random seed is obtained
+	void perform_attack(map_location attacker_loc, map_location defender_loc,
 		int attacker_weapon, int defender_weapon, rand_rng::seed_t seed);
 
 	void show_attack_options(const unit_map::const_iterator &u);

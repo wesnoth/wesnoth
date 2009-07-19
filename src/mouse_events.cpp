@@ -690,11 +690,14 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 }
 
 void mouse_handler::perform_attack(
-	const map_location& attacker_loc, const map_location& defender_loc,
+	map_location attacker_loc, map_location defender_loc,
 	int attacker_weapon, int defender_weapon, rand_rng::seed_t seed)
 {
-	rand_rng::clear_new_seed_callback();
+	// this function gets it's arguments by value because the calling function
+	// object might get deleted in the clear callback call below, invalidating
+	// const ref arguments
 	rand_rng::invalidate_seed();
+	rand_rng::clear_new_seed_callback();
 	LOG_NG << "Performing attack with seed " << seed << "\n";
 	recorder.add_seed("attack", seed);
 	//MP_COUNTDOWN grant time bonus for attacking

@@ -108,7 +108,7 @@ void invalidate_seed()
 bool has_valid_seed()
 {
 	//in a SP game the seed is always valid
-	return (network::nconnections == 0) || seed_valid;
+	return (network::nconnections() == 0) || seed_valid;
 }
 
 seed_t get_last_seed()
