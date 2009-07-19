@@ -819,6 +819,16 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
 		turn->remove_child("command",*j);
 	}
+	for (command = commands.begin(); command != commands.end(); ++command) {
+		if (simple_wml::node* attack = (**command).child("attack")) {
+			int seed = rand();
+			attack->set_attr_int("seed", seed);
+			simple_wml::document doc;
+			simple_wml::node& rs = doc.root().add_child("random_seed");
+			rs.set_attr_int("seed", seed);
+			send_to_one(doc, user->first, "game replay");
+		}
+	}
 	if (turn->no_children()) {
 		return false;
 	}
@@ -833,7 +843,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			simple_wml::document* mdata = new simple_wml::document;
 			simple_wml::node& turn = mdata->root().add_child("turn");
 			(**command).copy_into(turn.add_child("command"));
-			send_data(*mdata, user->first,"game replay");
+			send_data(*mdata, user->first, "game replay");
 			record_data(mdata);
 			continue;
 		}
