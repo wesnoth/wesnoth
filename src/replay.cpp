@@ -121,7 +121,9 @@ replay::replay() :
 	pos_(0),
 	current_(NULL),
 	skip_(false),
-	message_locations()
+	message_locations(),
+	expected_advancements_(),
+	delayed_exception_(NULL)
 {}
 
 replay::replay(const config& cfg) :
@@ -129,8 +131,15 @@ replay::replay(const config& cfg) :
 	pos_(0),
 	current_(NULL),
 	skip_(false),
-	message_locations()
+	message_locations(),
+	expected_advancements_(),
+	delayed_exception_(NULL)
 {}
+
+void replay::append(const config& cfg)
+{
+	cfg_.append(cfg);
+}
 
 void replay::throw_error(const std::string& msg)
 {
@@ -370,6 +379,21 @@ void replay::add_checksum_check(const map_location& loc)
 	}
 	config* const cmd = add_command();
 	add_unit_checksum(loc,cmd);
+}
+
+void replay::add_expected_advancement(const map_location& loc)
+{
+	expected_advancements_.push_back(loc);
+}
+
+const std::deque<map_location>& replay::expected_advancements() const
+{
+	return expected_advancements_;
+}
+
+void replay::pop_expected_advancement()
+{
+	expected_advancements_.pop_front();
 }
 
 void replay::add_advancement(const map_location& loc)
@@ -738,9 +762,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 	//a list of units that have promoted from the last attack
 	std::deque<map_location> advancing_units;
 
-	end_level_exception* delayed_exception = 0;
-
 	team &current_team = (*resources::teams)[side_num - 1];
+
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
@@ -757,40 +780,31 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			DBG_REPLAY << "Repaly data at end\n";
 		}
 
+		//if there is nothing more in the records
+		if(cfg == NULL) {
+			//replayer.set_skip(false);
+			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
+			return false;
+		}
 
-		//if we are expecting promotions here
-		if(advancing_units.empty() == false) {
-			if(cfg == NULL) {
-				replay::throw_error("promotion expected, but none found\n");
-			}
-
+		//if we are expecting promotions here`
+		if (!get_replay_source().expected_advancements().empty()) {
 			//if there is a promotion, we process it and go onto the next command
 			//but if this isn't a promotion, we just keep waiting for the promotion
 			//command -- it may have been mixed up with other commands such as messages
 			if (const config &child = cfg->child("choose")) {
-
 				const int val = lexical_cast_default<int>(child["value"]);
-
-				dialogs::animate_unit_advancement(advancing_units.front(), val);
-
-				advancing_units.pop_front();
+				map_location loc = get_replay_source().expected_advancements().front();
+				dialogs::animate_unit_advancement(loc, val);
+				get_replay_source().pop_expected_advancement();
 
 				//if there are no more advancing units, then we check for victory,
 				//in case the battle that led to advancement caused the end of scenario
 				if(advancing_units.empty()) {
 					check_victory();
 				}
-
 				continue;
 			}
-		}
-
-
-		//if there is nothing more in the records
-		if(cfg == NULL) {
-			//replayer.set_skip(false);
-			THROW_END_LEVEL_DELETE(delayed_exception);
-			return false;
 		}
 
 		// We return if caller wants it for this tag
@@ -798,7 +812,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			&& cfg->child(do_untill) != NULL)
 		{
 			get_replay_source().revert_action();
-			THROW_END_LEVEL_DELETE(delayed_exception);
+			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
 			return false;
 		}
 
@@ -872,7 +886,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				verify(*resources::units, child);
 			}
 
-			THROW_END_LEVEL_DELETE(delayed_exception);
+			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
 			return true;
 		}
 
@@ -1091,7 +1105,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			DELAY_END_LEVEL(delayed_exception, attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping()));
+			DELAY_END_LEVEL(get_replay_source().delayed_exception(),
+				attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping()));
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 
@@ -1099,17 +1114,17 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			tgt = resources::units->find(dst);
 
 			if (u.valid() && u->second.advances()) {
-				advancing_units.push_back(u->first);
+				get_replay_source().add_expected_advancement(u->first);
 			}
 
-			DBG_REPLAY << "advancing_units.size: " << advancing_units.size() << "\n";
+			DBG_REPLAY << "expected_advancements.size: " << get_replay_source().expected_advancements().size() << "\n";
 			if (tgt.valid() && tgt->second.advances()) {
-				advancing_units.push_back(tgt->first);
+				get_replay_source().add_expected_advancement(tgt->first);
 			}
 
 			//check victory now if we don't have any advancements. If we do have advancements,
 			//we don't check until the advancements are processed.
-			if(advancing_units.empty()) {
+			if(get_replay_source().expected_advancements().empty()) {
 				check_victory();
 			}
 			fix_shroud = !get_replay_source().is_skipping();
@@ -1134,7 +1149,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("advance_unit"))
 		{
 			const map_location loc(child, resources::state_of_game);
-			advancing_units.push_back(loc);
+			get_replay_source().add_expected_advancement(loc);
 
 		} else {
 			if(! cfg->child("checksum")) {

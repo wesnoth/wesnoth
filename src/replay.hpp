@@ -24,16 +24,21 @@
 #include "map_location.hpp"
 #include "rng.hpp"
 
+#include <deque>
+
 class game_display;
 class terrain_label;
 class unit_map;
 class play_controller;
+struct end_level_exception;
 
 class replay: public rand_rng::rng
 {
 public:
 	replay();
 	explicit replay(const config& cfg);
+
+	void append(const config& cfg);
 
 	void set_skip(bool skip);
 	bool is_skipping() const;
@@ -59,6 +64,24 @@ public:
 		const map_location& loc=map_location::null_location);
 	void add_unit_checksum(const map_location& loc,config* const cfg);
 	void add_checksum_check(const map_location& loc);
+
+	end_level_exception* & delayed_exception() { return delayed_exception_; }
+
+	/**
+	 * Mark an expected advancement adding it to the queue
+	 */
+	void add_expected_advancement(const map_location& loc);
+
+	/**
+	 * Access to the expected advancements queue.
+	 */
+	const std::deque<map_location>& expected_advancements() const;
+
+	/**
+	 * Remove the front expected advancement from the queue
+	 */
+	void pop_expected_advancement();
+
 	/**
 	 * Adds an advancement to the replay, the following option command
 	 * determines which advancement option has been choosen
@@ -138,6 +161,14 @@ private:
 	bool skip_;
 
 	std::vector<int> message_locations;
+
+	/**
+	 * A queue of units (locations) that are supposed to advance but the
+	 * relevant advance (choice) message has not yet been received
+	 */
+	std::deque<map_location> expected_advancements_;
+
+	end_level_exception* delayed_exception_;
 };
 
 replay& get_replay_source();

@@ -23,6 +23,7 @@ class replay_network_sender;
 #include "actions.hpp"
 #include "generic_event.hpp"
 #include "network.hpp"
+#include "replay.hpp"
 
 #include <map>
 #include <vector>
@@ -69,6 +70,8 @@ private:
 
 	events::generic_event replay_error_;
 	events::generic_event host_transfer_;
+
+	replay replay_;
 };
 
 #endif

@@ -33,7 +33,7 @@ static lg::log_domain log_network("network");
 turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender, undo_list &undo_stack) :
 	team_num_(team_num), undo_stack_(undo_stack),
 	replay_sender_(replay_sender), replay_error_("network_replay_error"),
-	host_transfer_("host_transfer")
+	host_transfer_("host_transfer"), replay_()
 {
 	/**
 	 * We do network sync so [init_side] is transfered to network hosts
@@ -121,12 +121,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	{
 		if(turn_end == false) {
 			/** @todo FIXME: Check what commands we execute when it's our turn! */
-			replay replay_obj(t);
-			replay_obj.set_skip(skip_replay);
-			replay_obj.start_replay();
+			replay_.append(t);
+			replay_.set_skip(skip_replay);
 
 			try{
-				turn_end = do_replay(team_num_, &replay_obj);
+				turn_end = do_replay(team_num_, &replay_);
 			}
 			catch (replay::error& e){
 				//notify remote hosts of out of sync error
