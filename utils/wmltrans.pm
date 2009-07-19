@@ -85,18 +85,4 @@ sub raw2postring {
   return $str;
 }
 
-sub po2rawstring {
-  my $str = shift;
-  my @lines = split (/\n/, $str);
-
-  $str = "";
-  foreach my $line (@lines) {
-    $line =~ m/"(.*)"/;
-    $str .= $1;
-  }
-  $str =~ s/\\n/\n/gm;
-
-  return $str;
-}
-
 1;
