@@ -777,7 +777,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else
 		{
-			DBG_REPLAY << "Repaly data at end\n";
+			DBG_REPLAY << "Replay data at end\n";
 		}
 
 		//if there is nothing more in the records
