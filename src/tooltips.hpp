@@ -19,6 +19,8 @@
 
 #include <string>
 
+#include "font.hpp"
+
 class CVideo;
 
 namespace tooltips {

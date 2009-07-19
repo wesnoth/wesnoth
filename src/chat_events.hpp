@@ -18,6 +18,8 @@
 
 #include "global.hpp"
 
+#include <string>
+
 namespace events {
 
 class chat_handler

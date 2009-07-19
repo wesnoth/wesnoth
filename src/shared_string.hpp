@@ -15,7 +15,7 @@
 #define SHARED_STRING_HPP_INCLUDED
 
 #include "shared_object.hpp"
-#include <string>
+#include "tstring.hpp"
 
 struct shared_string : public shared_object<std::string> {
 	typedef shared_object<std::string> super;

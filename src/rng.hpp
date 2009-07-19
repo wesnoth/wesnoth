@@ -18,6 +18,8 @@
 #ifndef RNG_HPP_INCLUDED
 #define RNG_HPP_INCLUDED
 
+#include <cstddef>
+
 #include "random.hpp"
 
 namespace rand_rng
