@@ -359,6 +359,10 @@ void tlobby_main::update_gamelist()
 		add_label_data(data, "main_icon", icon_ss.str());
 
 		userlistbox_->add_row(data);
+
+		tgrid* grid = userlistbox_->get_row_grid(userlistbox_->get_item_count() - 1);
+		tlabel& name_label = grid->get_widget<tlabel>("player", false);
+		name_label.set_markup_mode(tcontrol::PANGO_MARKUP);
 	}
 	window_->invalidate_layout();
 }
