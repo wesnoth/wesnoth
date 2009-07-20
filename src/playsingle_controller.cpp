@@ -431,14 +431,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			if (first_human_team_ != -1)
 				log.victory(turn(), teams_[first_human_team_].gold());
 
-			// Save current_player name to reuse it when setting next_scenario side info
-			std::vector<team>::iterator i;
-			for (i = teams_.begin(); i != teams_.end(); ++i) {
-				player_info *player=gamestate_.get_player(i->save_id());
-				if (player)
-					player->name = i->current_player();
-			}
-
 			// Add all the units that survived the scenario.
 			LOG_NG << "Add units that survived the scenario to the recall list.\n";
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
@@ -894,11 +886,8 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 						 (finishing_bonus_per_turn * turns_left) : 0;
 				std::vector<team>::iterator i;
 				for(i=teams_.begin(); i!=teams_.end(); ++i) {
-					player_info *player=gamestate_.get_player(i->save_id());
 
-					if (player) {
-						//assert consistency between player_info and persistence of teams
-						assert(i->persistent());
+					if (i->persistent()) {
 						int carryover_gold = ((i->gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
 
 						//store the gold in snapshot side
@@ -935,9 +924,6 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 						}
 
 						report_victory(report, end_level, carryover_gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
-					}
-					else {
-						assert(!i->persistent()); //if there is no player_info, the team should not be persistent either
 					}
 				}
 			}
