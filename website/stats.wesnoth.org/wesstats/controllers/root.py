@@ -27,6 +27,7 @@ from wesstats.controllers.pieview import PieGraphController
 from wesstats.controllers.barview import BarGraphController
 from wesstats.controllers.lineview import LineGraphController
 from wesstats.controllers.killview import KillGraphController
+from wesstats.controllers.tileserver import TileServerController
 
 __all__ = ['RootController']
 
@@ -66,6 +67,8 @@ class RootController(BaseController):
 	
 	@expose()
 	def lookup(self,url,*remainder):
+		if url == "servetile":
+			return TileServerController(), remainder	
 		#check if view exists
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
