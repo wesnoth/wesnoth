@@ -24,7 +24,7 @@ class game_display;
 class replay;
 struct combatant;
 class team;
-class time_of_day;
+struct time_of_day;
 class unit;
 
 #include "global.hpp"
