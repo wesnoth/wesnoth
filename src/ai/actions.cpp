@@ -258,7 +258,8 @@ void attack_result::do_execute()
 	}
 	try {
 		rand_rng::invalidate_seed();
-		while (!rand_rng::has_valid_seed()){
+		rand_rng::clear_new_seed_callback();
+		while (!rand_rng::has_valid_seed()) {
 			manager::raise_user_interact();
 			manager::raise_sync_network();
 			SDL_Delay(10);
