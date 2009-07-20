@@ -30,7 +30,7 @@
 				copyright.addCopyright(new GCopyright('test',new GLatLngBounds(new GLatLng(-90,-180), new GLatLng(90,180)) ,0,'Wesnoth Project'));
 				
 				var tilelayer = new GTileLayer(copyright);
-				tilelayer.getTileUrl = function(tile,zoom) { console.info(tile.x); console.info(tile.y); return "/wesstats/images/test_map."+tile.x+"_"+tile.y+"_"+zoom+".png"; };
+				tilelayer.getTileUrl = function(tile,zoom) { return "/wesstats/images/test_map."+tile.x+"_"+tile.y+"_"+zoom+".png"; };
 				tilelayer.isPng = function() { return true; };
 				tilelayer.getOpacity = function() { return 1.0; };
 				
@@ -65,6 +65,6 @@
 			</ul>
 		</div>
 	</div>
-	<div id="map_canvas" style="width: 800px; height: 600px"></div>
+	<div id="map_canvas" style="width: 800px; height: 600px"><noscript>You must enable Javascript in order to see the kill map.</noscript></div>
 </body>
 </html>
