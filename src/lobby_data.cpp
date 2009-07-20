@@ -96,15 +96,17 @@ user_info::user_info()
 	, relation(ME)
 	, state(LOBBY)
 	, registered()
+	, observing()
 {
 }
 
 user_info::user_info(const config& c)
 	: name(c["name"])
-	, game_id(c["game_id"])
+	, game_id(lexical_cast_default<int>(c["game_id"]))
 	, relation(ME)
-	, state(c["available"] == "no" ? GAME : LOBBY)
+	, state(game_id == 0 ? LOBBY : GAME)
 	, registered(utils::string_bool(c["registered"]))
+	, observing(c["status"] == "observing")
 {
 	if (name == preferences::login()) {
 		relation = ME;
@@ -117,12 +119,20 @@ user_info::user_info(const config& c)
 	}
 }
 
-void user_info::update_state(const std::string& selected_game_id, const room_info* current_room /*= NULL*/)
+void user_info::update_state(int selected_game_id, const room_info* current_room /*= NULL*/)
 {
-	if (!game_id.empty() && game_id == selected_game_id) {
-		state = SEL_GAME;
-	} else if (state == LOBBY && current_room != NULL && current_room->is_member(name)) {
-		state = SEL_ROOM;
+	if (game_id != 0) {
+		if (game_id == selected_game_id) {
+			state = SEL_GAME;
+		} else {
+			state = GAME;
+		}
+	} else if (state == LOBBY) {
+		if (current_room != NULL && current_room->is_member(name)) {
+			state = SEL_ROOM;
+		} else {
+			state = LOBBY;
+		}
 	}
 }
 
@@ -178,7 +188,7 @@ std::string make_short_name(const std::string long_name)
 
 game_info::game_info(const config& game, const config& game_config)
 : mini_map()
-, id(game["id"])
+, id(lexical_cast_default<int>(game["id"]))
 , map_data(game["map_data"])
 , name(game["name"])
 , scenario()
@@ -456,8 +466,8 @@ void lobby_info::parse_gamelist()
 		games_by_id_.insert(std::make_pair(gi.id, &gi));
 	}
 	foreach (user_info& ui, users_) {
-		if (!ui.game_id.empty()) {
-			std::map<std::string, game_info*>::iterator i = games_by_id_.find(ui.game_id);
+		if (ui.game_id != 0) {
+			std::map<int, game_info*>::iterator i = games_by_id_.find(ui.game_id);
 			if (i == games_by_id_.end()) {
 				WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << "\n";
 			} else {
@@ -549,5 +559,12 @@ void lobby_info::apply_game_filter()
 				games_filtered_.push_back(&gi);
 			}
 		}
+	}
+}
+
+void lobby_info::update_user_statuses(int game_id, const room_info *room)
+{
+	foreach (user_info& user, users_) {
+		user.update_state(game_id, room);
 	}
 }

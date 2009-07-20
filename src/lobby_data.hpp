@@ -88,7 +88,7 @@ struct user_info
 	user_info();
 	user_info(const config& c);
 
-	void update_state(const std::string& selected_game_id, const room_info* current_room = NULL);
+	void update_state(int selected_game_id, const room_info* current_room = NULL);
 
 	enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
 	enum user_state    { LOBBY, SEL_ROOM, GAME, SEL_GAME };
@@ -96,10 +96,11 @@ struct user_info
 	bool operator> (const user_info& b) const;
 
 	std::string name;
-	std::string game_id;
+	int game_id;
 	user_relation relation;
 	user_state state;
 	bool registered;
+	bool observing;
 };
 
 /**
@@ -114,7 +115,7 @@ struct game_info
 	bool can_observe() const;
 
 	surface mini_map;
-	std::string id;
+	int id;
 	std::string map_data;
 	std::string name;
 	std::string scenario;
@@ -269,6 +270,8 @@ public:
 
 	chat_log& get_whisper_log(const std::string& name);
 
+	void update_user_statuses(int game_id, const room_info* room);
+
 	const std::vector<room_info>& rooms() const { return rooms_; }
 	const std::vector<game_info>& games() const { return games_; }
 	const std::vector<game_info*>& games_filtered();
@@ -281,7 +284,7 @@ private:
 	bool gamelist_initialized_;
 	std::vector<room_info> rooms_;
 	std::vector<game_info> games_;
-	std::map<std::string, game_info*> games_by_id_;
+	std::map<int, game_info*> games_by_id_;
 	std::vector<game_info*> games_filtered_;
 	std::vector<user_info> users_;
 	std::map<std::string, chat_log> whispers_;

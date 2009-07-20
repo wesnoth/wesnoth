@@ -194,7 +194,7 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
 , gamelistbox_(NULL), chat_log_container_(NULL)
 , chat_input_(NULL), window_(NULL)
 , lobby_info_(info), preferences_callback_(NULL)
-, open_windows_(), active_window_(0)
+, open_windows_(), active_window_(0), selected_game_id_()
 {
 }
 
@@ -228,6 +228,11 @@ void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 	if (w) {
 		w->set_visible(visible ? twidget::VISIBLE : twidget::INVISIBLE);
 	}
+}
+
+std::string colorize(const std::string& str, const std::string& color)
+{
+	return "<span color=\"" + color +"\">" + str + "</span>";
 }
 
 } //end anonymous namespace
@@ -309,11 +314,50 @@ void tlobby_main::update_gamelist()
 		}
 	}
 	update_selected_game();
+
+	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
 	userlistbox_->clear();
 	foreach (const user_info& user, lobby_info_.users())
 	{
 		std::map<std::string, string_map> data;
-		add_label_data(data, "player", user.name);
+		std::stringstream icon_ss;
+		std::string name = user.name;
+		icon_ss << "lobby/status";
+		switch (user.state) {
+			case user_info::SEL_ROOM:
+				/* fall through */
+			case user_info::LOBBY:
+				icon_ss << "-lobby";
+				break;
+			case user_info::SEL_GAME:
+				name = colorize(name, "cyan");
+				icon_ss << (user.observing ? "-obs" : "-playing");
+				break;
+			case user_info::GAME:
+				name = colorize(name, "red");
+				icon_ss << (user.observing ? "-obs" : "-playing");				break;
+			default:
+				ERR_NG << "Bad user state in lobby: " << user.state << "\n";
+		}
+		switch (user.relation) {
+			case user_info::ME:
+				/* fall through */
+			case user_info::NEUTRAL:
+				icon_ss << "-n";
+				break;
+			case user_info::FRIEND:
+				icon_ss << "-f";
+				break;
+			case user_info::IGNORED:
+				icon_ss << "-i";
+				break;
+			default:
+				ERR_NG << "Bad user relation in lobby: " << user.relation << "\n";
+		}
+		icon_ss << ".png";
+		add_label_data(data, "player", name);
+		add_label_data(data, "main_icon", icon_ss.str());
+
 		userlistbox_->add_row(data);
 	}
 	window_->invalidate_layout();
@@ -327,6 +371,9 @@ void tlobby_main::update_selected_game()
 		const game_info& game = *lobby_info_.games_filtered()[idx];
 		can_observe = game.can_observe();
 		can_join = game.can_join();
+		selected_game_id_ = game.id;
+	} else {
+		selected_game_id_ = 0;
 	}
 	window_->get_widget<tbutton>("observe_global", false).set_active(can_observe);
 	window_->get_widget<tbutton>("join_global", false).set_active(can_join);
@@ -392,6 +439,12 @@ void tlobby_main::post_show(twindow& /*window*/)
 	window_ = NULL;
 }
 
+room_info* tlobby_main::active_window_room()
+{
+	const tlobby_chat_window& t = open_windows_[active_window_];
+	if (t.whisper) return NULL;
+	return lobby_info_.get_room(t.name);
+}
 
 tlobby_chat_window* tlobby_main::room_window_open(const std::string& room, bool open_new)
 {
@@ -735,7 +788,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	}
 	config response;
 	config& join = response.add_child("join");
-	join["id"] = game.id;
+	join["id"] = lexical_cast<std::string>(game.id);
 	join["observe"] = observe ? "yes" : "no";
 	if (join && game.password_required) {
 		std::string password;

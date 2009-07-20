@@ -74,7 +74,7 @@ game::game(player_map& players, const network::connection host,
 	}
 	// Mark the host as unavailable in the lobby.
 	pl->second.mark_available(id_, name_);
-	p1->second.set_status(player::PLAYING);
+	pl->second.set_status(player::PLAYING);
 }
 
 game::~game()
@@ -277,7 +277,7 @@ void game::update_side_data() {
 	// * Find the username.
 	// * Find the side this username corresponds to.
 	for (user_vector::const_iterator user = users.begin(); user != users.end(); ++user) {
-		const player_map::const_iterator info = player_info_->find(*user);
+		player_map::iterator info = player_info_->find(*user);
 		if (info == player_info_->end()) {
 			ERR_GAME << "Game: " << id_
 				<< " ERROR: unable to find user info for connection: "
@@ -343,7 +343,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 
 	const simple_wml::string_span& newplayer_name = cfg["player"];
 	const network::connection old_player = sides_[side_num - 1];
-	const player_map::const_iterator oldplayer = player_info_->find(old_player);
+	const player_map::iterator oldplayer = player_info_->find(old_player);
 	if (oldplayer == player_info_->end()) {
 		WRN_GAME << "Could not find old player in player_info_. (socket: "
 			<< old_player << ")\n";
@@ -380,7 +380,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	//find the player that is passed control
-	player_map::const_iterator newplayer;
+	player_map::iterator newplayer;
 	for (newplayer = player_info_->begin(); newplayer != player_info_->end(); newplayer++) {
 		if (newplayer_name == newplayer->second.name().c_str()) {
 			break;
@@ -1044,7 +1044,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		if (*side != player) continue;
 		if (side_controllers_[side_num] == "ai") ai_transfer = true;
 
-		player_map::const_iterator o = player_info_->find(owner_);
+		player_map::iterator o = player_info_->find(owner_);
 		const std::string owner_name = (o != player_info_->end() ? o->second.name() : "(unknown)");
 		change_controller(side_num, owner_, owner_name);
 		// Check whether the host is actually a player and make him one if not.

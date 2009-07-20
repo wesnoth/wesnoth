@@ -116,6 +116,12 @@ private:
 	legacy_result legacy_result_;
 
 	/**
+	 * Get the room* corresponding to the currently active window, or NULL
+	 * if a whisper window is active at the moment
+	 */
+	room_info* active_window_room();
+
+	/**
 	 * Check if a room window for "room" is open, if open_new is true
 	 * then it will be created if not found.
 	 * @return valid ptr if the window was found or added, null otherwise
@@ -300,6 +306,8 @@ private:
 	ttoggle_button* filter_invert_;
 
 	ttext_box* filter_text_;
+
+	int selected_game_id_;
 };
 
 } // namespace gui2
