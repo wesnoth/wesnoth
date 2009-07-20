@@ -824,8 +824,7 @@ private:
 		}
 
 		team &current_team = teams_[side_num - 1];
-		player_info *player = gamestate_.get_player(current_team.save_id());
-		if(!player) {
+		if(!current_team.persistent()) {
 			ERR_NG << "cannot recall a unit for side " << side_num
 				<< ", which has no recall list!\n";
 			return;
