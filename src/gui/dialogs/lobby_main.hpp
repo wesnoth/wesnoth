@@ -260,7 +260,7 @@ private:
 
 	void game_filter_reload();
 
-	void game_filter_change_callback(twindow& window);
+	void game_filter_change_callback(twidget* widget);
 
 	bool game_filter_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
 

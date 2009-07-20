@@ -15,6 +15,8 @@
 #ifndef GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
 #define GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
 
+#include <boost/function.hpp>
+
 namespace gui2 {
 
 class twidget;
@@ -40,7 +42,7 @@ public:
 	 * When the user does something to change the widget state this event is
 	 * fired. Most of the time it will be a left click on the widget.
 	 */
-	virtual void set_callback_state_change(void (*callback) (twidget*)) = 0;
+	virtual void set_callback_state_change(boost::function<void (twidget*)> callback) = 0;
 };
 
 } // namespace gui2

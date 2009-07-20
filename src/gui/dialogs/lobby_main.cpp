@@ -424,13 +424,13 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	filter_text_= &window.get_widget<ttext_box>("filter_text", false);
 
 	filter_friends_->set_callback_state_change(
-		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_ignored_->set_callback_state_change(
-		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_slots_->set_callback_state_change(
-		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_invert_->set_callback_state_change(
-		dialog_callback<tlobby_main, &tlobby_main::game_filter_change_callback>);
+		boost::bind(&tlobby_main::game_filter_change_callback, this, _1));
 	filter_text_->set_key_press_callback(
 		boost::bind(&tlobby_main::game_filter_keypress_callback, this, _1, _2, _3, _4));
 
@@ -926,7 +926,7 @@ bool tlobby_main::game_filter_keypress_callback(twidget* /*widget*/, SDLKey key,
 	return false;
 }
 
-void tlobby_main::game_filter_change_callback(gui2::twindow &/*window*/)
+void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
 {
 	game_filter_reload();
 	update_gamelist();

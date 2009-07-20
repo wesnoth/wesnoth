@@ -127,7 +127,7 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(void (*callback) (twidget*))
+	void set_callback_state_change(boost::function<void (twidget*)> callback)
 		{ callback_state_change_ = callback; }
 
 private:
@@ -164,7 +164,7 @@ private:
 	int retval_;
 
  	/** See tselectable_::set_callback_state_change. */
-	void (*callback_state_change_) (twidget*);
+	boost::function<void (twidget*)> callback_state_change_;
 
 	/** Inherited from tpanel. */
 	void impl_draw_background(surface& frame_buffer)
