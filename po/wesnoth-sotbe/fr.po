@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
-"PO-Revision-Date: 2009-05-23 14:24+0100\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"PO-Revision-Date: 2009-07-17 19:10+0100\n"
 "Last-Translator: Damien <guydelatourATgloireetpouvoir.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -703,6 +703,9 @@ msgid ""
 "<span color='#00ff00'>Defeat the enemy leader</span> <small>(early finish "
 "bonus)</small>"
 msgstr ""
+"<span color='white'>Bonus :</span>\n"
+"<span color='#00ff00'>Vaincre le chef ennemi</span> <small>(bonus de fin "
+"prématurée)</small>"
 
 #. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
@@ -875,15 +878,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
-#, fuzzy
 msgid ""
 "<b>Bonus objective:</b>\n"
 "Defeat the enemy leader\n"
 "<span size='small'>(early finish bonus)</span>"
 msgstr ""
-"<255,255,255>Bonus :\n"
-"@Vaincre le chef ennemi\n"
-"`(bonus de fin prématurée)"
+"<b>Bonus :</b>\n"
+"Vaincre le chef ennemi\n"
+"<span size='small'>(bonus de fin prématurée)</span>"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
@@ -956,17 +958,16 @@ msgstr "Argh ! Je meurs !"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:375
-#, fuzzy
 msgid ""
 "You were warned, dwarf. Riders, spread out of the area and collect what you "
 "can from each of these houses. If anyone refuses to pay, tie them up and "
 "take it anyway. Let them know that they live only on my good graces. I'll "
 "take the army to Barag Gór. Catch up when you're done."
 msgstr ""
-"Tu as été prévenu, nain. Cavaliers, allez récupérer tout ce que vous pouvez "
-"dans ces maisons. Ligotez les récalcitrants et emportez tout. Faites-leur "
-"savoir qu'ils ne vivent que parce que je suis clément. Le reste de l'armée "
-"continue avec moi vers Barag Gór. Rejoignez-nous quand vous aurez fini."
+"Tu as été prévenu, nain. Cavaliers, allez récupérer tout ce qui traîne dans "
+"chacune de ces maisons. Ligotez les récalcitrants et emportez tout. Faites-"
+"leur savoir qu'ils ne vivent que parce que je suis clément. J'emmène l'armée "
+"à Barag Gór, rejoignez-nous quand vous aurez fini."
 
 #. [message]: role=doggie
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:385
@@ -2404,6 +2405,9 @@ msgid ""
 "<span color='#00ff00'>Defeat Shan Taum</span> <small>(early finish bonus)</"
 "small>"
 msgstr ""
+"<span color='white'>Objectif alternatif :</span>\n"
+"<span color='#00ff00'>Vaincre Shan Taum</span> <small>(bonus de fin "
+"prématurée)</small>"
 
 #. [side]: type=Orcish Warlord, id=Shan Taum
 #. [unit]: type=Orcish Warlord, id=Shan Taum
@@ -3446,7 +3450,7 @@ msgstr "Qu'ils payent pour ce qu'ils ont fait à notre peuple. Sang et acier !"
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:307
 msgid "Victory...Grüü, what <i>is</i> that you are eating?"
-msgstr "Victoire... Grüü, qu'<i>est</i>-ce que tu bouffes ?"
+msgstr "Victoire... Grüü, qu'<i>est-ce</i> que tu bouffes ?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:312
@@ -3746,6 +3750,7 @@ msgstr "Pas du tout. Leurs corps sont gelés dans le lac juste en dessous."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:669
+#, fuzzy
 msgid "You had better go look."
 msgstr "Vous feriez mieux d'aller voir."
 
