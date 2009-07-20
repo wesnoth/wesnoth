@@ -218,26 +218,27 @@ std::string recruit_unit(int side, const unit &new_u,
 
 	// Find the unit that can recruit
 	unit_map::const_iterator u = resources::units->begin(),
-		u_end = resources::units->end();
+		u_end = resources::units->end(), leader = u_end;
 
 	for(; u != u_end; ++u) {
 		if(u->second.can_recruit() &&
 				static_cast<int>(u->second.side()) == side) {
-
-			break;
+			leader = u;
+			if (!need_castle || resources::game_map->is_keep(leader->first))
+				break;
 		}
 	}
 
 	map_location recruit_location = recruit_loc;
 
-	if (u == u_end && (need_castle || !resources::game_map->on_board(recruit_location))) {
+	if (leader == u_end && (need_castle || !resources::game_map->on_board(recruit_location))) {
 		return _("You don't have a leader to recruit with.");
 	}
 
-	assert(u != u_end || !need_castle);
+	assert(leader != u_end || !need_castle);
 
-	if (need_castle && resources::game_map->is_keep(u->first) == false) {
-		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
+	if (need_castle && resources::game_map->is_keep(leader->first) == false) {
+		LOG_NG << "Leader not on start: leader is on " << leader->first << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
