@@ -22,28 +22,21 @@
 	<script type="text/javascript">
 		function initialize() {
 			if (GBrowserIsCompatible()) {
-				var map = new GMap2(document.getElementById("map_canvas"));
-				map.setCenter(new GLatLng(37.4419, -122.1419), 13);
-				map.setUIToDefault();
-				
 				var copyright = new GCopyrightCollection("Wesnoth Project");
 				copyright.addCopyright(new GCopyright('test',new GLatLngBounds(new GLatLng(-90,-180), new GLatLng(90,180)) ,0,'Wesnoth Project'));
 				
-				var tilelayer = new GTileLayer(copyright);
+				var minscale = 3;
+				var maxscale = 4;
+				var tilelayer = new GTileLayer(copyright,minscale,maxscale);
 				tilelayer.getTileUrl = function(tile,zoom) { return "/wesstats/images/test_map."+tile.x+"_"+tile.y+"_"+zoom+".png"; };
 				tilelayer.isPng = function() { return true; };
 				tilelayer.getOpacity = function() { return 1.0; };
+		
+				var wmap_type = new GMapType( [tilelayer], new GMercatorProjection(18), "KillMap", {errorMessage:"No data"});
 				
-				var mytiles = new GTileLayerOverlay(tilelayer);
-				map.addOverlay(mytiles);
-			
-				var minMapScale = 3;
-				var maxMapScale = 4;
-				var mapTypes = map.getMapTypes();
-				for (var i=0; mapTypes.length - i != 0; i++) { <!-- genshi doesnt like the less than sign... -->
-					mapTypes[i].getMinimumResolution = function() { return minMapScale; }
-					mapTypes[i].getMaximumResolution = function() { return maxMapScale; }
-				}
+				var map = new GMap2(document.getElementById("map_canvas"),{mapTypes:[wmap_type]});
+				map.setCenter(new GLatLng(80, -135), 3, wmap_type);
+				map.addControl(new GLargeMapControl());
 			}
 		}
 	</script>
