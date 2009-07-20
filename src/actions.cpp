@@ -199,6 +199,9 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	if(!map.is_castle(loc))
 		return false;
 
+	if(!map.is_keep(leader))
+		return false;
+
 	castle_cost_calculator calc(map);
 	// The limit computed in the third argument is more than enough for
 	// any convex castle on the map. Strictly speaking it could be
