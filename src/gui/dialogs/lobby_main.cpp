@@ -61,6 +61,36 @@ namespace {
 	}
 }
 
+void tsub_player_list::init(gui2::twindow &w, const std::string &id)
+{
+	list = &w.get_widget<tlistbox>(id, false);
+	show_toggle = &w.get_widget<ttoggle_button>(id + "_show_toggle", false);
+	show_toggle->set_icon_name("lobby/group-expanded.png");
+	show_toggle->set_callback_state_change(
+		boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
+	count = &w.get_widget<tlabel>(id + "_count", false);
+}
+
+void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
+{
+	if (show_toggle->get_value()) {
+		list->set_visible(twidget::INVISIBLE);
+		show_toggle->set_icon_name("lobby/group-folded.png");
+	} else {
+		list->set_visible(twidget::VISIBLE);
+		show_toggle->set_icon_name("lobby/group-expanded.png");
+	}
+}
+
+
+void tplayer_list::init(gui2::twindow &w)
+{
+	active_game.init(w, "active_game");
+	active_room.init(w, "active_room");
+	other_rooms.init(w, "other_rooms");
+	other_games.init(w, "other_games");
+}
+
 void tlobby_main::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
 	config data, msg;
@@ -195,6 +225,7 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
 , chat_input_(NULL), window_(NULL)
 , lobby_info_(info), preferences_callback_(NULL)
 , open_windows_(), active_window_(0), selected_game_id_()
+, player_list_()
 {
 }
 
@@ -316,28 +347,39 @@ void tlobby_main::update_gamelist()
 	update_selected_game();
 
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
-	userlistbox_->clear();
+	player_list_.active_game.list->clear();
+	player_list_.active_room.list->clear();
+	player_list_.other_rooms.list->clear();
+	player_list_.other_games.list->clear();
 	foreach (const user_info& user, lobby_info_.users())
 	{
+		tsub_player_list* target_list(NULL);
 		std::map<std::string, string_map> data;
 		std::stringstream icon_ss;
 		std::string name = user.name;
 		icon_ss << "lobby/status";
 		switch (user.state) {
 			case user_info::SEL_ROOM:
-				/* fall through */
+				icon_ss << "-lobby";
+				target_list = &player_list_.active_room;
+				break;
 			case user_info::LOBBY:
 				icon_ss << "-lobby";
+				target_list = &player_list_.other_rooms;
 				break;
 			case user_info::SEL_GAME:
 				name = colorize(name, "cyan");
 				icon_ss << (user.observing ? "-obs" : "-playing");
+				target_list = &player_list_.active_game;
 				break;
 			case user_info::GAME:
 				name = colorize(name, "red");
-				icon_ss << (user.observing ? "-obs" : "-playing");				break;
+				icon_ss << (user.observing ? "-obs" : "-playing");
+				target_list = &player_list_.other_games;
+				break;
 			default:
-				ERR_NG << "Bad user state in lobby: " << user.state << "\n";
+				ERR_NG << "Bad user state in lobby: " << user.name << ": " << user.state << "\n";
+				continue;
 		}
 		switch (user.relation) {
 			case user_info::ME:
@@ -358,9 +400,9 @@ void tlobby_main::update_gamelist()
 		add_label_data(data, "player", name);
 		add_label_data(data, "main_icon", icon_ss.str());
 
-		userlistbox_->add_row(data);
+		target_list->list->add_row(data);
 
-		tgrid* grid = userlistbox_->get_row_grid(userlistbox_->get_item_count() - 1);
+		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
 		tlabel& name_label = grid->get_widget<tlabel>("player", false);
 		name_label.set_markup_mode(tcontrol::PANGO_MARKUP);
 	}
@@ -393,8 +435,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(gamelistbox_, missing_widget("game_list"));
 	gamelistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::gamelist_change_callback>);
 
-	userlistbox_ = dynamic_cast<tlistbox*>(window.find_widget("user_list", false));
-	VALIDATE(userlistbox_, missing_widget("user_list"));
+	player_list_.init(window);
 
 	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
 	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));

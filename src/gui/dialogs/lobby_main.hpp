@@ -44,6 +44,29 @@ struct tlobby_chat_window
 	int pending_messages;
 };
 
+struct tplayer_list;
+
+struct tsub_player_list
+{
+	void init(twindow& w, const std::string& id);
+	void show_toggle_callback(twidget* widget);
+	tlabel* count;
+	ttoggle_button* show_toggle;
+	tlistbox* list;
+};
+
+struct tplayer_list
+{
+	void init(twindow& w);
+	tsub_player_list active_game;
+	tsub_player_list active_room;
+	tsub_player_list other_rooms;
+	tsub_player_list other_games;
+
+	bool sort_by_name;
+	bool sort_by_relation;
+};
+
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
@@ -308,6 +331,8 @@ private:
 	ttext_box* filter_text_;
 
 	int selected_game_id_;
+
+	tplayer_list player_list_;
 };
 
 } // namespace gui2
