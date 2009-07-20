@@ -147,12 +147,6 @@ void level_to_gamestate(config& level, game_state& state)
 		state.set_menu_items(snapshot.child_range("menu_item"));
 	}
 
-	//If it is a start-of-scenario save, we need to load the player information from
-	//the [player] tags
-	if(start_of_scenario){
-		state.load_recall_list(state.starting_pos.child_range("player"));
-	}
-
 	//In any type of reload(normal save or start-of-scenario) the players could have
 	//changed and need to be replaced
 	if(saved_game || start_of_scenario){
