@@ -550,6 +550,7 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 		while (!rand_rng::has_valid_seed()){
 			manager::raise_user_interact();
 			manager::raise_sync_network();
+			SDL_Delay(10);
 		}
 		recorder.add_seed("attack", rand_rng::get_last_seed());
 		attack(u, target, weapon, def_weapon, get_info().units);

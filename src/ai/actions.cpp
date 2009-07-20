@@ -261,6 +261,7 @@ void attack_result::do_execute()
 		while (!rand_rng::has_valid_seed()){
 			manager::raise_user_interact();
 			manager::raise_sync_network();
+			SDL_Delay(10);
 		}
 		recorder.add_seed("attack", rand_rng::get_last_seed());
 		attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, get_info().units);
