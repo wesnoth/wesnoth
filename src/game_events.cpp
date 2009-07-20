@@ -682,11 +682,6 @@ WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 		(*resources::teams)[index].add_recruits(recruits);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			preferences::encountered_units().insert(*i);
-
-			player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
-			if(player) {
-				player->can_recruit.insert(*i);
-			}
 		}
 	}
 
@@ -703,11 +698,6 @@ WML_HANDLER_FUNCTION(disallow_recruit, /*event_info*/, cfg)
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*resources::teams)[index].remove_recruit(*i);
-
-			player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
-			if(player) {
-				player->can_recruit.erase(*i);
-			}
 		}
 	}
 
@@ -725,11 +715,6 @@ WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 			recruit.clear();
 
 		(*resources::teams)[index].set_recruits(std::set<std::string>(recruit.begin(), recruit.end()));
-
-		player_info *player = resources::state_of_game->get_player((*resources::teams)[index].save_id());
-		if(player) {
-			player->can_recruit = (*resources::teams)[index].recruits();
-		}
 	}
 
 WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
@@ -884,9 +869,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 					recruit.clear();
 
 				teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
-				player_info *player = resources::state_of_game->get_player(teams[team_index].save_id());
-
-				if (player) player->can_recruit = teams[team_index].recruits();
 			}
 			// Modify income
 			if (!income.empty()) {
