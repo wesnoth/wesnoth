@@ -248,19 +248,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.classification().label = gamestate.snapshot["label"];
 		}
-
-		// Also get the recruitment list if there are some specialties in this scenario
-		foreach (const config &p, gamestate.snapshot.child_range("side"))
-		{
-			player_info *player = gamestate.get_player(p["save_id"]);
-			if (!player) continue;
-			const std::string &can_recruit_str = p["recruit"];
-			if (!can_recruit_str.empty()) {
-				player->can_recruit.clear();
-				std::vector<std::string> can_recruit = utils::split(can_recruit_str);
-				player->can_recruit.insert(can_recruit.begin(), can_recruit.end());
-			}
-		}
 	}
 
 	controller_map controllers;
@@ -482,9 +469,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					 */
 					controller_map::const_iterator ctr = controllers.find(id);
 					if(ctr != controllers.end()) {
-						player_info *player = gamestate.get_player(id);
-						if (player) {
-							side["current_player"] = player->name;
+						if (const config& c = gamestate.snapshot.find_child("side", "save_id", id)) {
+							side["current_player"] = c["name"];
 						}
 						side["controller"] = ctr->second.controller;
 					}
