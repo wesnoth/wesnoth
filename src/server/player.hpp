@@ -30,7 +30,15 @@ class game;
 class player
 {
 public:
-  player(const std::string& n, simple_wml::node& cfg, bool registered, const size_t max_messages=4, const size_t time_period=10, const bool sp=false);
+	enum STATUS {
+		LOBBY,
+		PLAYING,
+		OBSERVING
+	};
+
+	player(const std::string& n, simple_wml::node& cfg, bool registered, const size_t max_messages=4, const size_t time_period=10, const bool sp=false);
+
+	void set_status(STATUS status);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(const int game_id=0, const std::string location="");
@@ -72,7 +80,7 @@ private:
 	unsigned int messages_since_flood_start_;
 	const size_t MaxMessages;
 	const time_t TimePeriod;
-	game* game_;
+	STATUS status_;
 };
 
 } //namespace wesnothd

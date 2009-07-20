@@ -74,6 +74,7 @@ game::game(player_map& players, const network::connection host,
 	}
 	// Mark the host as unavailable in the lobby.
 	pl->second.mark_available(id_, name_);
+	p1->second.set_status(player::PLAYING);
 }
 
 game::~game()
@@ -309,8 +310,10 @@ void game::update_side_data() {
 		}
 		if (side_found) {
 			players_.push_back(*user);
+			info->second.set_status(player::PLAYING);
 		} else {
 			observers_.push_back(*user);
+			info->second.set_status(player::OBSERVING);
 		}
 	}
 	DBG_GAME << debug_player_info();
@@ -400,6 +403,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()
 	&& is_player(old_player)) {
 		observers_.push_back(old_player);
+		oldplayer->second.set_status(player::OBSERVING);
 		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
 		// Tell others that the player becomes an observer.
 		send_and_record_server_message((old_player_name + " becomes an observer.").c_str());
@@ -413,6 +417,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	// If we gave the new side to an observer add him to players_.
 	if (is_observer(newplayer->first)) {
 		players_.push_back(newplayer->first);
+		newplayer->second.set_status(player::PLAYING);
 		observers_.erase(std::remove(observers_.begin(), observers_.end(), newplayer->first), observers_.end());
 		// Send everyone but the new player the observer_quit message.
 		send_observerquit(newplayer);
@@ -925,6 +930,7 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
+		user->second.set_status(player::PLAYING);
 		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
 	} else if (!allow_observers() && !admin) {
 		return false;
@@ -945,6 +951,7 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 		<< (observer || became_observer ? " as an observer" : "")
 		<< ". (socket: " << player << ")\n";
 	user->second.mark_available(id_, name_);
+	user->second.set_status((observer || became_observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
@@ -1014,7 +1021,9 @@ bool game::remove_player(const network::connection player, const bool disconnect
 
 	// Don't mark_available() since the player got already removed from the
 	// games_and_users_list_.
-	if (!disconnect) user->second.mark_available();
+	if (!disconnect) {
+		user->second.mark_available();
+	}
 	if (observer) {
 		send_observerquit(user);
 	} else {
@@ -1041,6 +1050,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
+			o->second.set_status(player::PLAYING);
 			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
 			players_.push_back(owner_);
 			send_observerquit(o);

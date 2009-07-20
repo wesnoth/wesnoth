@@ -27,17 +27,42 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
   , messages_since_flood_start_(0)
   , MaxMessages(max_messages)
   , TimePeriod(time_period)
+  , status_(LOBBY)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	mark_available();
 	mark_registered(registered);
 }
 
+void wesnothd::player::set_status(wesnothd::player::STATUS status)
+{
+	status_ = status;
+	switch (status)
+	{
+		case wesnothd::player::LOBBY:
+			cfg_.set_attr("status", "lobby");
+			break;
+		case wesnothd::player::PLAYING:
+			cfg_.set_attr("status", "playing");
+			break;
+		case wesnothd::player::OBSERVING:
+			cfg_.set_attr("status", "observing");
+			break;
+		default:
+			cfg_.set_attr("status", "unknown");
+	}
+}
+
 // keep 'available' and game name ('location') for backward compatibility
 void wesnothd::player::mark_available(const int game_id,
                                       const std::string location)
 {
-	cfg_.set_attr("available", (game_id == 0) ? "yes" : "no");
+	if (game_id == 0) {
+		cfg_.set_attr("available", "yes");
+		set_status(LOBBY);
+	} else {
+		cfg_.set_attr("available", "no");
+	}
 	cfg_.set_attr_dup("game_id", lexical_cast<std::string>(game_id).c_str());
 	cfg_.set_attr_dup("location", location.c_str());
 }
