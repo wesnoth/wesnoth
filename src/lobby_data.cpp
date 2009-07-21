@@ -136,6 +136,7 @@ void user_info::update_state(int selected_game_id, const room_info* current_room
 	}
 }
 
+
 game_info::game_info() :
 	mini_map(),
 	id(),
@@ -567,4 +568,58 @@ void lobby_info::update_user_statuses(int game_id, const room_info *room)
 	foreach (user_info& user, users_) {
 		user.update_state(game_id, room);
 	}
+}
+
+
+struct user_sorter_name
+{
+	bool operator()(const user_info& u1, const user_info& u2) {
+		return u1.name < u2.name;
+	}
+	bool operator()(const user_info* u1, const user_info* u2) {
+		return operator()(*u1, *u2);
+	}
+};
+
+struct user_sorter_relation
+{
+	bool operator()(const user_info& u1, const user_info& u2) {
+		return static_cast<int>(u1.relation) < static_cast<int>(u2.relation);
+	}
+	bool operator()(const user_info* u1, const user_info* u2) {
+		return operator()(*u1, *u2);
+	}
+};
+
+struct user_sorter_relation_name
+{
+	bool operator()(const user_info& u1, const user_info& u2) {
+		return static_cast<int>(u1.relation) < static_cast<int>(u2.relation)
+			|| (u1.relation == u2.relation && u1.name < u2.name);
+	}
+	bool operator()(const user_info* u1, const user_info* u2) {
+		return operator()(*u1, *u2);
+	}
+};
+
+void lobby_info::sort_users(bool by_name, bool by_relation)
+{
+	users_sorted_.clear();
+	foreach (user_info& u, users_) {
+		users_sorted_.push_back(&u);
+	}
+	if (by_name) {
+		if (by_relation) {
+			std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_relation_name());
+		} else {
+			std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_name());
+		}
+	} else if (by_relation) {
+		std::sort(users_sorted_.begin(), users_sorted_.end(), user_sorter_relation());
+	}
+}
+
+const std::vector<user_info*>& lobby_info::users_sorted()
+{
+	return users_sorted_;
 }

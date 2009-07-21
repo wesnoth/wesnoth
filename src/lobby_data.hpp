@@ -90,7 +90,7 @@ struct user_info
 
 	void update_state(int selected_game_id, const room_info* current_room = NULL);
 
-	enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
+	enum user_relation { FRIEND, ME, NEUTRAL, IGNORED };
 	enum user_state    { LOBBY, SEL_ROOM, GAME, SEL_GAME };
 
 	bool operator> (const user_info& b) const;
@@ -260,6 +260,8 @@ public:
 	void set_game_filter_invert(bool value);
 	void apply_game_filter();
 
+	void sort_users(bool by_name, bool by_relation);
+
 	void open_room(const std::string& name);
 	void close_room(const std::string& name);
 	bool has_room(const std::string& name) const;
@@ -276,6 +278,7 @@ public:
 	const std::vector<game_info>& games() const { return games_; }
 	const std::vector<game_info*>& games_filtered();
 	const std::vector<user_info>& users() const { return users_; }
+	const std::vector<user_info*>& users_sorted();
 private:
 	void parse_gamelist();
 
@@ -287,6 +290,7 @@ private:
 	std::map<int, game_info*> games_by_id_;
 	std::vector<game_info*> games_filtered_;
 	std::vector<user_info> users_;
+	std::vector<user_info*> users_sorted_;
 	std::map<std::string, chat_log> whispers_;
 	game_filter_and_stack game_filter_;
 	bool game_filter_invert_;

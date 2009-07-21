@@ -65,8 +65,8 @@ struct tplayer_list
 	tsub_player_list other_rooms;
 	tsub_player_list other_games;
 
-	bool sort_by_name;
-	bool sort_by_relation;
+	ttoggle_button* sort_by_name;
+	ttoggle_button* sort_by_relation;
 };
 
 class tlobby_main : public tdialog, private events::chat_handler
@@ -292,6 +292,8 @@ private:
 	bool game_filter_keypress_callback(twidget* widget, SDLKey key, SDLMod mod, Uint16 unicode);
 
 	void gamelist_change_callback(twindow& window);
+
+	void player_filter_callback(twidget* widget);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);

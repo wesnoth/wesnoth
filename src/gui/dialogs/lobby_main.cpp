@@ -108,6 +108,8 @@ void tplayer_list::init(gui2::twindow &w)
 	active_room.init(w, "active_room");
 	other_rooms.init(w, "other_rooms");
 	other_games.init(w, "other_games");
+	sort_by_name = &w.get_widget<ttoggle_button>("player_list_sort_name", false);
+	sort_by_relation = &w.get_widget<ttoggle_button>("player_list_sort_relation", false);
 }
 
 void tlobby_main::send_chat_message(const std::string& message, bool /*allies_only*/)
@@ -368,6 +370,7 @@ void tlobby_main::update_gamelist()
 	update_selected_game();
 
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
+	lobby_info_.sort_users(player_list_.sort_by_name->get_value(), player_list_.sort_by_relation->get_value());
 
 	bool lobby = false;
 	if (room_info* ri = active_window_room()) {
@@ -379,8 +382,9 @@ void tlobby_main::update_gamelist()
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
 	player_list_.other_games.list->clear();
-	foreach (const user_info& user, lobby_info_.users())
+	foreach (const user_info* userptr, lobby_info_.users_sorted())
 	{
+		const user_info& user = *userptr;
 		tsub_player_list* target_list(NULL);
 		std::map<std::string, string_map> data;
 		std::stringstream icon_ss;
@@ -472,6 +476,11 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	gamelistbox_->set_callback_value_change(dialog_callback<tlobby_main, &tlobby_main::gamelist_change_callback>);
 
 	player_list_.init(window);
+
+	player_list_.sort_by_name->set_callback_state_change(boost::bind(
+		&tlobby_main::player_filter_callback, this, _1));
+	player_list_.sort_by_relation->set_callback_state_change(boost::bind(
+		&tlobby_main::player_filter_callback, this, _1));
 
 	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
 	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
@@ -1021,6 +1030,21 @@ void tlobby_main::game_filter_change_callback(gui2::twidget* /*widget*/)
 void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
 {
 	update_selected_game();
+}
+
+void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
+{
+	if (player_list_.sort_by_name->get_value()) {
+		player_list_.sort_by_name->set_icon_name("lobby/sort-az.png");
+	} else {
+		player_list_.sort_by_name->set_icon_name("lobby/sort-az-off.png");
+	}
+	if (player_list_.sort_by_relation->get_value()) {
+		player_list_.sort_by_relation->set_icon_name("lobby/sort-friend.png");
+	} else {
+		player_list_.sort_by_relation->set_icon_name("lobby/sort-friend-off.png");
+	}
+	update_gamelist();
 }
 
 } // namespace gui2
