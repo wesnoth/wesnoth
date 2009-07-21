@@ -251,6 +251,8 @@ private:
 
 	void observe_global_button_callback(twindow& window);
 
+	void join_or_observe(int index);
+
 	/**
 	 * Assemble and send a game join request. Ask for password if the game
 	 * requires one.

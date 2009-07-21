@@ -25,6 +25,7 @@
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 
 #include "foreach.hpp"
 #include "lobby_data.hpp"
@@ -276,9 +277,8 @@ void tlobby_main::update_gamelist()
 	ss << "Games: Showing " << lobby_info_.games_filtered().size()
 		<< " out of " << lobby_info_.games().size();
 	gamelistbox_->get_widget<tlabel>("map", false).set_label(ss.str());
-	foreach (const game_info *gp, lobby_info_.games_filtered())
-	{
-		const game_info& game = *gp;
+	for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
+		const game_info& game = *lobby_info_.games_filtered()[i];
 		std::map<std::string, string_map> data;
 
 		add_label_data(data, "name", game.name);
@@ -313,6 +313,9 @@ void tlobby_main::update_gamelist()
 
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
+		ttoggle_panel& row_panel = grid->get_widget<ttoggle_panel>("panel", false);
+		row_panel.set_callback_mouse_left_double_click(boost::bind(
+			&tlobby_main::join_or_observe, this, i));
 
 		set_visible_if_exists(grid, "time_limit_icon", !game.time_limit.empty());
 		set_visible_if_exists(grid, "vision_fog", game.fog);
@@ -810,6 +813,12 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 		legacy_result_ = JOIN;
 		window.close();
 	}
+}
+
+void tlobby_main::join_or_observe(int idx)
+{
+	const game_info& game = *lobby_info_.games_filtered()[idx];
+	do_game_join(idx, !game.can_join());
 }
 
 bool tlobby_main::do_game_join(int idx, bool observe)
