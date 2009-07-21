@@ -104,9 +104,6 @@ public:
 	 */
 	std::map<std::string, player_info> players;
 
-	/** Return the Nth player, or NULL if no such player exists. */
-	player_info* get_player(const std::string& id);
-
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
 

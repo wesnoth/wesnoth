@@ -144,15 +144,6 @@ player_info::player_info() :
 	can_recruit()
 {}
 
-player_info* game_state::get_player(const std::string& id) {
-	std::map< std::string, player_info >::iterator found = players.find(id);
-	if (found == players.end()) {
-		WRN_NG << "player " << id << " does not exist.\n";
-		return NULL;
-	} else
-		return &found->second;
-}
-
 #ifdef __UNUSED__
 std::string generate_game_uuid()
 {
@@ -553,7 +544,6 @@ void game_state::get_player_info(const config& side_cfg,
 	const config *player_cfg = NULL;
 	//FIXME: temporarily adding this flag to ensure recallable units are added properly without player_info
 	bool player_exists = false;
-	player_info *player = NULL;
 
 	if(map.empty()) {
 		throw game::load_game_failed("Map not found");
@@ -563,7 +553,6 @@ void game_state::get_player_info(const config& side_cfg,
 		side_cfg["controller"] == "network" ||
 		side_cfg["controller"] == "network_ai" ||
 		side_cfg["controller"] == "human_ai") {
-		player = get_player(save_id);
 		player_exists = true;
 		
 		//if we have a snapshot, level contains player tags
@@ -578,10 +567,6 @@ void game_state::get_player_info(const config& side_cfg,
 			if (const config &c =  starting_pos.find_child("player","save_id",save_id))  {
 				player_cfg = &c;
 			}
-		}
-
-		if(player == NULL && !save_id.empty()) {
-			player = &players[save_id];
 		}
 	}
 
@@ -617,8 +602,6 @@ void game_state::get_player_info(const config& side_cfg,
 		} catch (config::error&) {
 			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
 		}
-		
-		player->gold = ngold;
 	}
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
@@ -631,13 +614,6 @@ void game_state::get_player_info(const config& side_cfg,
 	// by setting the "side" of each unit in it
 	// to be the "side" of the player.
 	int side = lexical_cast_default<int>(side_cfg["side"], 1);
-	if(player != NULL) {
-		for(std::vector<unit>::iterator it = player->available_units.begin();
-			it != player->available_units.end(); ++it) {
-			it->set_side(side);
-			//teams.back().recall_list().push_back(*it); //FIXME: take recall list from snapshot/replay_start once player_info is removed
-		}
-	}
 
 	//take recall list from [player] tag and update the side number of its units
 	if (player_cfg != NULL) {
@@ -657,18 +633,6 @@ void game_state::get_player_info(const config& side_cfg,
 	// If this side tag describes the leader of the side
 	if(!utils::string_bool(side_cfg["no_leader"]) && side_cfg["controller"] != "null") {
 		unit new_unit(&units, side_cfg, true);
-
-		// Search the recall list for leader units, and if there is one,
-		// use it in place of the config-described unit
-		if(player != NULL) {
-			for(std::vector<unit>::iterator it = player->available_units.begin();
-				it != player->available_units.end(); ++it) {
-				if(it->can_recruit()) {
-					player->available_units.erase(it);
-					break;
-				}
-			}
-		}
 		
 		if (player_cfg != NULL) {
 			for(std::vector<unit>::iterator it = teams.back().recall_list().begin();
@@ -718,10 +682,6 @@ void game_state::get_player_info(const config& side_cfg,
 		}
 	}
 
-	if(player != NULL) {
-		player->can_recruit = teams.back().recruits();
-	}
-
 	// If there are additional starting units on this side
 	const config::child_list& starting_units = side_cfg.get_children("unit");
 	// available_units has been filled by loading the [player]-section already.
@@ -730,8 +690,7 @@ void game_state::get_player_info(const config& side_cfg,
 	// This is rather a quick hack, originating from keeping changes
 	// as minimal as possible for 1.2.
 	// Moving [player] into [replay_start] should be the correct way to go.
-	if (player && snapshot){
-		player->available_units.clear();
+	if (player_exists && snapshot){
 		teams.back().recall_list().clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
@@ -745,7 +704,6 @@ void game_state::get_player_info(const config& side_cfg,
 		map_location loc(**su, this);
 		if(x.empty() && y.empty()) {
 			if(player_exists) {
-				player->available_units.push_back(new_unit);
 				teams.back().recall_list().push_back(new_unit);
 				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
 			} else {
