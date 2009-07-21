@@ -39,21 +39,24 @@
 				map.addControl(new GLargeMapControl());
 				GEvent.addListener(map,"click", function(overlay,latlng) {
 					if (overlay) {
-						// ignore if we click on the info window
 						return;
 					}
-					var tileCoordinate = new GPoint();
-					var tilePoint = new GPoint();
-					var currentProjection = G_NORMAL_MAP.getProjection();
-					tilePoint = currentProjection.fromLatLngToPixel(latlng, map.getZoom());
-					tileCoordinate.x = Math.floor(tilePoint.x / 256);
-					tileCoordinate.y = Math.floor(tilePoint.y / 256);
-					var myHtml = "Latitude: " + latlng.lat() + "<br/>Longitude: " + latlng.lng() + 
-					"<br/>The Tile Coordinate is:<br/> x: " + tileCoordinate.x + 
-					"<br/> y: " + tileCoordinate.y + "<br/> at zoom level " + map.getZoom();	
-					map.openInfoWindow(latlng, myHtml);
+					//generate a hex poly
+					var PRADIUS; //hex radius
+					if(map.getZoom() == 3) {
+						PRADIUS = 9;
+					} else { // getZoom() == 4
+						PRADIUS = 18;
+					}
+					var PI_OVER_3 = Math.PI/3.0;
+					var poly = Array();
+					var cpix = wmap_type.getProjection().fromLatLngToPixel(latlng,map.getZoom());
+					for(var i = 0; 6 - i != 0; i++) {
+						var p = new GPoint(Math.cos(PI_OVER_3*i)*PRADIUS+cpix.x,Math.sin(PI_OVER_3*i)*PRADIUS+cpix.y);
+						poly.push( wmap_type.getProjection().fromPixelToLatLng(p,map.getZoom()));
+					}
+					map.addOverlay(new GPolygon(poly,"#000000",2,.5,"#000000",.5));
 				});
-
 			}
 		}
 	</script>
