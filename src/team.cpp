@@ -220,7 +220,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	std::string control = cfg["controller"];
-	persistent = true; //FIXME: persistence is set based on the side controller, to be consistent with player_info until it is removed
+	persistent = true; //FIXME: persistence is set based on the side controller
 	if (control == "human")
 		controller = HUMAN;
 	else if (control == "human_ai")

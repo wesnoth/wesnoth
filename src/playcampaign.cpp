@@ -368,7 +368,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			return QUIT;
 		}
 
-		//gamestate.snapshot = config(); //FIXME: remove this line once player_info removal is complete
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
