@@ -205,59 +205,6 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-void game_state::write_player(const std::string& save_id, const player_info& player, config& cfg, const bool use_snapshot) const
-{
-	cfg["name"] = player.name;
-	cfg["save_id"]=save_id;
-
-	 //FIXME: with the current consistency definition of sides by controller, some players may not show up in snapshot.side
-	//player_info is used until side consistency is fixed
-	bool side_not_found = false;
-	//add gold from snapshot
-	if (use_snapshot) {
-		if (const config &side = snapshot.find_child("side", "save_id", save_id)) {
-			cfg["gold"] = side["gold"];
-			cfg["gold_add"] = side["gold_add"];
-			assert(cfg["gold"] == str_cast<int>(player.gold));
-		} else if(const config &snapshot_player = snapshot.find_child("player", "save_id", save_id)) {
-			cfg["gold"] = snapshot_player["gold"];
-			cfg["gold_add"] = snapshot_player["gold_add"];
-			assert(cfg["gold"] == str_cast<int>(player.gold));
-		} else {
-			WRN_NG << "side " << save_id << " does not exist in snapshot, using player_info\n";
-			side_not_found = true;
-		}
-	}
-	//do not store gold if specified by use_snapshot
-	 if (!use_snapshot || side_not_found){
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",player.gold);
-
-		cfg["gold"] = buf;
-		cfg["gold_add"] = player.gold_add ? "yes" : "no";
-	}
-
-
-	for(std::vector<unit>::const_iterator i = player.available_units.begin();
-	    i != player.available_units.end(); ++i) {
-		config new_cfg;
-		i->write(new_cfg);
-		cfg.add_child("unit",new_cfg);
-		DBG_NG << "added unit '" << new_cfg["id"] << "' to player '" << player.name << "'\n";
-	}
-
-	std::stringstream can_recruit;
-	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
-	std::string can_recruit_str = can_recruit.str();
-
-	// Remove the trailing comma
-	if(can_recruit_str.empty() == false) {
-		can_recruit_str.resize(can_recruit_str.size()-1);
-	}
-
-	cfg["can_recruit"] = can_recruit_str;
-}
-
 void write_players(game_state& gamestate, config& cfg)
 {
 	// If there is already a player config available it means we are loading

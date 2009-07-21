@@ -424,7 +424,7 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = str_cast(action_bonus_count_);
 }
 
-//write a [player] tag, similar to game_state::write_player()
+//write gold, recruit and recall information to a config
 void team::write_player(config& cfg) const
 {
 	cfg["name"] = info_.current_player;
