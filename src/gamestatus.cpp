@@ -375,7 +375,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	}
 }
 
-void game_state::write_snapshot(config& cfg, const bool use_snapshot) const
+void game_state::write_snapshot(config& cfg) const
 {
 	log_scope("write_game");
 	cfg["label"] = classification_.label;
@@ -418,16 +418,6 @@ void game_state::write_snapshot(config& cfg, const bool use_snapshot) const
 		if(!j->second->command.empty())
 			new_cfg.add_child("command", j->second->command);
 		cfg.add_child("menu_item", new_cfg);
-	}
-
-	//if snapshot is supposed to be used for side persistance information, we add it later
-	if(!use_snapshot) {
-		for(std::map<std::string, player_info>::const_iterator i=players.begin(); i!=players.end(); ++i) {
-			config new_cfg;
-			write_player(i->first, i->second, new_cfg, use_snapshot);
-			new_cfg["save_id"]=i->first;
-			cfg.add_child("player", new_cfg);
-		}
 	}
 }
 

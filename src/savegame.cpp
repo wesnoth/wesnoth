@@ -1064,7 +1064,7 @@ void game_savegame::write_game_snapshot()
 
 	sound::write_music_play_list(snapshot());
 
-	gamestate().write_snapshot(snapshot(), true);
+	gamestate().write_snapshot(snapshot());
 	//write [player] tags via teams
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		if (t->persistent()) {

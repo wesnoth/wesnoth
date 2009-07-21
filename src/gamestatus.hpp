@@ -123,7 +123,7 @@ public:
 	void set_menu_items(const config::const_child_itors &menu_items);
 
 	//write the gamestate into a config object
-	void write_snapshot(config& cfg, const bool use_snapshot = false) const;
+	void write_snapshot(config& cfg) const;
 
 	// Variable access
 
