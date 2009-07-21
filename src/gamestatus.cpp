@@ -258,7 +258,7 @@ void game_state::write_player(const std::string& save_id, const player_info& pla
 	cfg["can_recruit"] = can_recruit_str;
 }
 
-void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
+void write_players(game_state& gamestate, config& cfg)
 {
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
@@ -267,25 +267,13 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot)
 		return;
 	
 	//take all sides information from the snapshot (assuming it only contains carryover information)
-	if (use_snapshot) {
-		//take all side tags and add them as players
-		foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
-			cfg.add_child("player", *snapshot_side);
-		}
-		//add the remaining player tags
-		foreach(const config* snapshot_player, gamestate.snapshot.get_children("player")) {
-			cfg.add_child("player", *snapshot_player);
-		}
+	//take all side tags and add them as players
+	foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
+		cfg.add_child("player", *snapshot_side);
 	}
-	else {
-		for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-			i!=gamestate.players.end(); ++i)
-		{
-			config new_cfg;
-			gamestate.write_player(i->first, i->second, new_cfg, use_snapshot);
-
-			cfg.add_child("player", new_cfg);
-		}
+	//add the remaining player tags
+	foreach(const config* snapshot_player, gamestate.snapshot.get_children("player")) {
+		cfg.add_child("player", *snapshot_player);
 	}
 }
 

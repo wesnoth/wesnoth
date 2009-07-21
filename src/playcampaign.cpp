@@ -519,7 +519,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				assert(next_cfg != NULL);
 				gamestate.write_snapshot(next_cfg);
 				assert (next_cfg.get_children("player").empty());
-				write_players(gamestate, next_cfg, true);
+				write_players(gamestate, next_cfg);
 				network::send_data(cfg, 0, true);
 			}
 		}
@@ -570,7 +570,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			if (gamestate.classification().campaign_type != "multiplayer"){
 				gamestate.starting_pos = *scenario;
 				assert (!gamestate.snapshot.empty());
-				write_players(gamestate, gamestate.starting_pos, true);
+				write_players(gamestate, gamestate.starting_pos);
 			}
 		}
 		gamestate.snapshot = config();
