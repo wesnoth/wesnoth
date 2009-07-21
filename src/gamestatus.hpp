@@ -69,24 +69,6 @@ struct wml_menu_item
 	config command;
 };
 
-/** Information on a particular player of the game. */
-struct player_info
-{
-	player_info();
-
-	std::string name;                  /**< Stores the current_player name */
-	int gold;                          /**< Amount of gold the player has saved */
-	bool gold_add;                     /**<
-										* Amount of gold is added to the
-										* starting gold, if not it uses the
-										* highest of the two.
-										*/
-	std::vector<unit> available_units; /**< Units the player may recall */
-	std::set<std::string> can_recruit; /**< Units the player has the ability to recruit */
-
-	void debug();
-};
-
 class game_state : public variable_set
 {
 public:
@@ -96,13 +78,6 @@ public:
 
 	~game_state();
 	game_state& operator=(const game_state& state);
-
-	/**
-	 * Information about campaign players who carry resources from previous
-	 * levels, indexed by a string identifier (which is the leader name by
-	 * default, but can be set with the "id" attribute of the "side" tag).
-	 */
-	std::map<std::string, player_info> players;
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;

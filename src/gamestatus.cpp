@@ -136,14 +136,6 @@ config game_classification::to_config() const
 	return cfg;
 }
 
-player_info::player_info() :
-	name(),
-	gold(-1) ,
-	gold_add(false),
-	available_units(),
-	can_recruit()
-{}
-
 #ifdef __UNUSED__
 std::string generate_game_uuid()
 {
@@ -158,7 +150,6 @@ std::string generate_game_uuid()
 #endif
 
 game_state::game_state()  :
-		players(),
 		scoped_variables(),
 		wml_menu_items(),
 		replay_data(),
@@ -192,7 +183,6 @@ void write_players(game_state& gamestate, config& cfg)
 }
 
 game_state::game_state(const config& cfg, bool show_replay) :
-		players(),
 		scoped_variables(),
 		wml_menu_items(),
 		replay_data(),
@@ -480,7 +470,6 @@ static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 game_state::game_state(const game_state& state) :
 	/* default construct everything to silence compiler warnings. */
 	variable_set(),
-	players(),
 	scoped_variables(),
 	wml_menu_items(),
 	replay_data(),
@@ -503,7 +492,6 @@ game_state& game_state::operator=(const game_state& state)
 	}
 
 	rng_ = state.rng_;
-	players = state.players;
 	scoped_variables = state.scoped_variables;
 	classification_ = game_classification(state.classification());
 
@@ -743,17 +731,6 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 			WRN_NG << "duplicate menu item (" << id << ") while loading gamestate\n";
 		}
 	}
-}
-
-void player_info::debug(){
-	LOG_NG << "Debugging player\n";
-	LOG_NG << "\tName: " << name << "\n";
-	LOG_NG << "\tGold: " << gold << "\n";
-	LOG_NG << "\tAvailable units:\n";
-	for (std::vector<unit>::const_iterator u = available_units.begin(); u != available_units.end(); u++){
-		LOG_NG << "\t\t" + u->name() + "\n";
-	}
-	LOG_NG << "\tEnd available units\n";
 }
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
