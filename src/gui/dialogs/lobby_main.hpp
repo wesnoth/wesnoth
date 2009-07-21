@@ -50,6 +50,8 @@ struct tsub_player_list
 {
 	void init(twindow& w, const std::string& id);
 	void show_toggle_callback(twidget* widget);
+	void auto_hide();
+	tlabel* label;
 	tlabel* count;
 	ttoggle_button* show_toggle;
 	tlistbox* list;

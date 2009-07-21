@@ -70,6 +70,7 @@ void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 	show_toggle->set_callback_state_change(
 		boost::bind(&tsub_player_list::show_toggle_callback, this, _1));
 	count = &w.get_widget<tlabel>(id + "_count", false);
+	label = &w.get_widget<tlabel>(id + "_label", false);
 }
 
 void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
@@ -83,6 +84,23 @@ void tsub_player_list::show_toggle_callback(gui2::twidget* /*widget*/)
 	}
 }
 
+void tsub_player_list::auto_hide()
+{
+	std::stringstream ss;
+	ss << "(" << list->get_item_count() << ")";
+	count->set_label(ss.str());
+	if (list->get_item_count() == 0) {
+		list->set_visible(twidget::INVISIBLE);
+		show_toggle->set_visible(twidget::INVISIBLE);
+		label->set_visible(twidget::INVISIBLE);
+		count->set_visible(twidget::INVISIBLE);
+	} else {
+		list->set_visible(show_toggle->get_value() ? twidget::INVISIBLE : twidget::VISIBLE);
+		show_toggle->set_visible(twidget::VISIBLE);
+		label->set_visible(twidget::VISIBLE);
+		count->set_visible(twidget::VISIBLE);
+	}
+}
 
 void tplayer_list::init(gui2::twindow &w)
 {
@@ -350,6 +368,13 @@ void tlobby_main::update_gamelist()
 	update_selected_game();
 
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
+
+	bool lobby = false;
+	if (room_info* ri = active_window_room()) {
+		if (ri->name() == "lobby") {
+			lobby = true;
+		}
+	}
 	player_list_.active_game.list->clear();
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
@@ -365,6 +390,9 @@ void tlobby_main::update_gamelist()
 			case user_info::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
+				if (lobby) {
+					target_list = &player_list_.other_rooms;
+				}
 				break;
 			case user_info::LOBBY:
 				icon_ss << "-lobby";
@@ -409,6 +437,11 @@ void tlobby_main::update_gamelist()
 		tlabel& name_label = grid->get_widget<tlabel>("player", false);
 		name_label.set_markup_mode(tcontrol::PANGO_MARKUP);
 	}
+	player_list_.active_game.auto_hide();
+	player_list_.active_room.auto_hide();
+	player_list_.other_rooms.auto_hide();
+	player_list_.other_games.auto_hide();
+
 	window_->invalidate_layout();
 }
 
@@ -818,7 +851,10 @@ void tlobby_main::join_global_button_callback(gui2::twindow &window)
 void tlobby_main::join_or_observe(int idx)
 {
 	const game_info& game = *lobby_info_.games_filtered()[idx];
-	do_game_join(idx, !game.can_join());
+	if (do_game_join(idx, !game.can_join())) {
+		legacy_result_ = JOIN;
+		window_->close();
+	}
 }
 
 bool tlobby_main::do_game_join(int idx, bool observe)
