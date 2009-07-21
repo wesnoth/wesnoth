@@ -36,6 +36,7 @@ public:
 		retval_(0),
 		callback_state_change_(0)
 	{
+		set_wants_mouse_left_double_click();
 	}
 
 	/**

@@ -78,12 +78,12 @@ void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
 {
 	DBG_GUI_E << "Toggle panel: left mouse button double click.\n";
 
-	assert(retval_ != 0);
+	if (retval_) {
+		twindow* window = get_window();
+		assert(window);
 
-	twindow* window = get_window();
-	assert(window);
-
-	window->set_retval(retval_);
+		window->set_retval(retval_);
+	}
 
 	if (callback_mouse_left_double_click_) {
 		callback_mouse_left_double_click_(this);
@@ -147,12 +147,7 @@ void ttoggle_panel::set_value(const bool selected)
 
 void ttoggle_panel::set_retval(const int retval)
 {
-	if(retval == retval_) {
-		return;
-	}
-
 	retval_ = retval;
-	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
 void ttoggle_panel::set_state(const tstate state)
