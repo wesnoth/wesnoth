@@ -84,6 +84,10 @@ void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
 	assert(window);
 
 	window->set_retval(retval_);
+
+	if (callback_mouse_left_double_click_) {
+		callback_mouse_left_double_click_(this);
+	}
 }
 
 void ttoggle_panel::set_active(const bool active)

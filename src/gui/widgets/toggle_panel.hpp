@@ -130,6 +130,8 @@ public:
 	void set_callback_state_change(boost::function<void (twidget*)> callback)
 		{ callback_state_change_ = callback; }
 
+	void set_callback_mouse_left_double_click(boost::function<void (twidget*)> callback)
+		{ callback_mouse_left_double_click_ = callback; }
 private:
 
 	/**
@@ -165,6 +167,9 @@ private:
 
  	/** See tselectable_::set_callback_state_change. */
 	boost::function<void (twidget*)> callback_state_change_;
+
+	/** Mouse left double click callback */
+	boost::function<void (twidget*)> callback_mouse_left_double_click_;
 
 	/** Inherited from tpanel. */
 	void impl_draw_background(surface& frame_buffer)
