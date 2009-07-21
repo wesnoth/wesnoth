@@ -875,7 +875,12 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
 			}
 			
-			if (gamestate_.players.size() > 0 &&
+			int persistent_teams = 0;
+			for(std::vector<team>::iterator j=teams_.begin(); j!=teams_.end(); ++j) {
+				if (j->persistent()) persistent_teams++;
+			}
+			
+			if (persistent_teams > 0 &&
 					 (has_next_scenario ||
 					 gamestate_.classification().campaign_type == "test")) {
 				const int finishing_bonus_per_turn =
@@ -915,7 +920,7 @@ void playsingle_controller::store_gold(end_level_exception& end_level, const boo
 						if (!i->is_human())
 							continue;
 
-						if(gamestate_.players.size()>1) {
+						if(persistent_teams > 1) {
 							if(i!=teams_.begin()) {
 								report << "\n";
 							}

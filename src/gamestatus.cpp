@@ -166,30 +166,6 @@ std::string generate_game_uuid()
 }
 #endif
 
-static player_info read_player(const config &cfg)
-{
-	player_info res;
-
-	res.name = cfg["name"];
-
-	res.gold = atoi(cfg["gold"].c_str());
-	res.gold_add = utils::string_bool(cfg["gold_add"]);
-
-	foreach (const config &u, cfg.child_range("unit")) {
-		res.available_units.push_back(unit(u, false));
-	}
-
-	res.can_recruit.clear();
-
-	const std::string &can_recruit_str = cfg["can_recruit"];
-	if (!can_recruit_str.empty()) {
-		const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
-		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
-	}
-
-	return res;
-}
-
 game_state::game_state()  :
 		players(),
 		scoped_variables(),
@@ -253,19 +229,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 		rng_.seed_random(lexical_cast_default<unsigned>(snapshot["random_calls"]));
 
-		// Midgame saves have the recall list stored in the snapshot.
-		load_recall_list(snapshot.child_range("player"));
-
 	} else {
 		assert(replay_start != NULL);
 
-		// The player information should no longer be saved to the root of the config.
-		// The game now looks for the info in just the snapshot or the starting position.
-		// Check if we find some player information in the starting position
-		config::const_child_itors cfg_players = replay_start.child_range("player");
-
-		if (cfg_players.first != cfg_players.second)
-			load_recall_list(cfg_players);
 	}
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
@@ -509,23 +475,6 @@ void game_state::clear_variable(const std::string& varname)
 	} else {
 		to_clear.vars->clear_children(to_clear.key);
 		to_clear.vars->remove_attribute(to_clear.key);
-	}
-}
-
-void game_state::load_recall_list(const config::const_child_itors &players)
-{
-	if (players.first == players.second) return;
-
-	foreach (const config &p, players)
-	{
-		const std::string &save_id = p["save_id"];
-
-		if (save_id.empty()) {
-			ERR_NG << "Corrupted player entry: NULL save_id" << std::endl;
-		} else {
-			player_info player = read_player(p);
-			this->players.insert(std::make_pair(save_id, player));
-		}
 	}
 }
 

@@ -107,13 +107,6 @@ public:
 	/** Return the Nth player, or NULL if no such player exists. */
 	player_info* get_player(const std::string& id);
 
-	/**
-	 * Loads the recall list.
-	 *
-	 * @param players      Reference to the players section to load.
-	 */
-	void load_recall_list(const config::const_child_itors &players);
-
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
 
