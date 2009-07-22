@@ -490,56 +490,11 @@ connection connect(const std::string& host, int port, threading::waiter& waiter)
 	return static_cast<connect_operation*>(op.get())->result();
 }
 
-connection accept_connection()
+namespace {
+
+connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
+	SDLNet_SocketSet& pending_socket_set)
 {
-	if(!server_socket) {
-		return 0;
-	}
-
-	// A connection isn't considered 'accepted' until it has sent its initial handshake.
-	// The initial handshake is a 4 byte value, which is 0 for a new connection,
-	// or the handle of the connection if it's trying to recover a lost connection.
-
-	/**
-	 * A list of all the sockets which have connected,
-	 * but haven't had their initial handshake received.
-	 */
-	static std::vector<TCPsocket> pending_sockets;
-	static SDLNet_SocketSet pending_socket_set = 0;
-
-	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
-	if(sock) {
-		DBG_NW << "received connection. Pending handshake...\n";
-
-		if(pending_socket_set == 0) {
-			pending_socket_set = SDLNet_AllocSocketSet(32);
-		}
-
-		if(pending_socket_set != 0) {
-			int res = SDLNet_TCP_AddSocket(pending_socket_set,sock);
-
-			if (res != -1) {
-				pending_sockets.push_back(sock);
-			} else {
-				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
-				ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
-
-				SDLNet_TCP_Close(sock);
-			}
-		} else {
-			ERR_NW << "Error in SDLNet_AllocSocketSet\n";
-		}
-	}
-
-	if(pending_socket_set == 0) {
-		return 0;
-	}
-
-	const int set_res = SDLNet_CheckSockets(pending_socket_set,0);
-	if(set_res <= 0) {
-		return 0;
-	}
-
 	DBG_NW << "pending socket activity...\n";
 
 	std::vector<TCPsocket>::iterator i = pending_sockets.begin();
@@ -591,6 +546,61 @@ connection accept_connection()
 	waiting_sockets.insert(connect);
 	sockets.push_back(connect);
 	return connect;
+}
+
+} //anon namespace
+
+connection accept_connection()
+{
+	if(!server_socket) {
+		return 0;
+	}
+
+	// A connection isn't considered 'accepted' until it has sent its initial handshake.
+	// The initial handshake is a 4 byte value, which is 0 for a new connection,
+	// or the handle of the connection if it's trying to recover a lost connection.
+
+	/**
+	 * A list of all the sockets which have connected,
+	 * but haven't had their initial handshake received.
+	 */
+	static std::vector<TCPsocket> pending_sockets;
+	static SDLNet_SocketSet pending_socket_set = 0;
+
+	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
+	if(sock) {
+		DBG_NW << "received connection. Pending handshake...\n";
+
+		if(pending_socket_set == 0) {
+			pending_socket_set = SDLNet_AllocSocketSet(32);
+		}
+
+		if(pending_socket_set != 0) {
+			int res = SDLNet_TCP_AddSocket(pending_socket_set,sock);
+
+			if (res != -1) {
+				pending_sockets.push_back(sock);
+			} else {
+				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
+				ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
+
+				SDLNet_TCP_Close(sock);
+			}
+		} else {
+			ERR_NW << "Error in SDLNet_AllocSocketSet\n";
+		}
+	}
+
+	if(pending_socket_set == 0) {
+		return 0;
+	}
+
+	const int set_res = SDLNet_CheckSockets(pending_socket_set,0);
+	if(set_res <= 0) {
+		return 0;
+	}
+
+	return accept_connection_pending(pending_sockets, pending_socket_set);
 }
 
 bool disconnect(connection s)
