@@ -176,10 +176,6 @@ void write_players(game_state& gamestate, config& cfg)
 	foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
 		cfg.add_child("player", *snapshot_side);
 	}
-	//add the remaining player tags
-	foreach(const config* snapshot_player, gamestate.snapshot.get_children("player")) {
-		cfg.add_child("player", *snapshot_player);
-	}
 }
 
 game_state::game_state(const config& cfg, bool show_replay) :
