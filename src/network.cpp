@@ -510,7 +510,7 @@ connection accept_connection()
 	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
 	if(sock) {
 		DBG_NW << "received connection. Pending handshake...\n";
-		pending_sockets.push_back(sock);
+
 		if(pending_socket_set == 0) {
 			pending_socket_set = SDLNet_AllocSocketSet(32);
 		}
@@ -518,13 +518,16 @@ connection accept_connection()
 		if(pending_socket_set != 0) {
 			int res = SDLNet_TCP_AddSocket(pending_socket_set,sock);
 
-			if (res == -1)
-			{
+			if (res != -1) {
+				pending_sockets.push_back(sock);
+			} else {
 				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
 				ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
 
 				SDLNet_TCP_Close(sock);
 			}
+		} else {
+			ERR_NW << "Error in SDLNet_AllocSocketSet\n";
 		}
 	}
 
