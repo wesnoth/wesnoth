@@ -1156,7 +1156,8 @@ void server::process_query(const network::connection sock,
 	} else if (command == "help" || command.empty()) {
 		response << help_msg;
 	} else if (!admin_passwd_.empty() && command.to_string().find("admin ") == 0) {
-		if (command == "admin " + admin_passwd_) {
+		std::string passwd = command.to_string().substr(6);
+		if (passwd == admin_passwd_) {
 			LOG_SERVER << "New Admin recognized: IP: "
 				<< network::ip_address(sock) << "\tnick: "
 				<< pl->second.name() << std::endl;
@@ -1167,9 +1168,10 @@ void server::process_query(const network::connection sock,
 				user_handler_->set_is_moderator(pl->second.name(), true);
 			}
 		} else {
-			WRN_SERVER << "FAILED Admin attempt: '" << command << "'\tIP: "
+			WRN_SERVER << "FAILED Admin attempt with password: '" << passwd << "'\tIP: "
 				<< network::ip_address(sock) << "\tnick: "
 				<< pl->second.name() << std::endl;
+			response << "Error: wrong password";
 		}
 	} else {
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
