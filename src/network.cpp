@@ -521,6 +521,8 @@ connection accept_connection()
 			if (res == -1)
 			{
 				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
+				ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
+
 				SDLNet_TCP_Close(sock);
 			}
 		}
@@ -565,6 +567,7 @@ connection accept_connection()
 
 		const int res = SDLNet_TCP_AddSocket(socket_set,sock);
 		if(res == -1) {
+			ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
 			SDLNet_TCP_Close(sock);
 
 			throw network::error(_("Could not add socket to socket set"));
