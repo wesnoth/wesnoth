@@ -152,7 +152,7 @@ private:
 
 std::string generate_game_uuid();
 
-void write_players(game_state& gamestate, config& cfg);
+void write_players(game_state& gamestate, config& cfg, const bool merge_side = false);
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 

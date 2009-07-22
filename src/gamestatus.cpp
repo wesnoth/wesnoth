@@ -18,6 +18,7 @@
  */
 
 #include "global.hpp"
+#include "config.hpp"
 
 #include "gamestatus.hpp"
 
@@ -163,7 +164,7 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-void write_players(game_state& gamestate, config& cfg)
+void write_players(game_state& gamestate, config& cfg, const bool merge_side)
 {
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
@@ -174,7 +175,22 @@ void write_players(game_state& gamestate, config& cfg)
 	//take all sides information from the snapshot (assuming it only contains carryover information)
 	//take all side tags and add them as players
 	foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
-		cfg.add_child("player", *snapshot_side);
+		bool merged = false;
+		//if a side with the same save_id exists, we merge the player information into this side
+		//FIXME: carryover gold needs to be sorted here
+		if (merge_side) {
+			if (config& c = cfg.find_child("side", "save_id", (*snapshot_side)["save_id"])) {
+				c.merge_with(*snapshot_side);
+				merged = true;
+			} else if (config& c = cfg.find_child("side", "id", (*snapshot_side)["save_id"])) {
+				c.merge_with(*snapshot_side);
+				merged = true;
+			}
+		}
+		
+		if (!merged) {
+			cfg.add_child("player", *snapshot_side);
+		}
 	}
 }
 
