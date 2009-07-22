@@ -360,6 +360,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		if(!team_manager_.get_teams().size())
 		{
+			//store persistent teams
+			gamestate_.snapshot = config();
+			store_recalls();
+
 			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 		}
 		const bool obs = is_observer();

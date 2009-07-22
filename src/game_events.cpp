@@ -2467,7 +2467,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			} else {
 				team& t = (*resources::teams)[u.side()-1];
 
-				if(t.recall_list().size() > 0) {
+				if(t.persistent()) {
 
 					// Test whether the recall list has duplicates if so warn.
 					// This might be removed at some point but the uniqueness of
