@@ -23,27 +23,33 @@
 		function generate_hexgrid(map, rows, columns) {
 			var PRADIUS; //hex radius
 			if(map.getZoom() == 3) {
-				PRADIUS = 9;
+				PRADIUS = 9.0;
 			} else { // getZoom() == 4
-				PRADIUS = 18;
+				PRADIUS = 18.0;
 			}
-			var PI_OVER_3 = Math.PI/3.0;
-			
 			for(var row = 0; rows - row != 0; row++) {
 				for(var col = 0; columns - col != 0; col++) {
 					var poly = Array();
-					for(var i = 0; 6 - i != 0; i++) {
-						var xcenter = 1.5 * PRADIUS * col;
-						var ycenter;
-						if( col % 2 == 0 ) {
-							ycenter = 2.0 * PRADIUS * row;
-						} else {
-							ycenter = PRADIUS + ( 2.0 * PRADIUS * row);
-						}
-						var p = new GPoint(Math.cos(PI_OVER_3*i)*PRADIUS + xcenter,Math.sin(PI_OVER_3*i)*PRADIUS + ycenter);
-						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+					var xcenter = 1.5 * PRADIUS * col;
+					var ycenter;
+					if( col % 2 != 0) {
+						ycenter = 2*PRADIUS*row;
+					} else {
+						ycenter = PRADIUS + (2.0 * PRADIUS * row);
 					}
-					map.addOverlay(new GPolygon(poly,"#000000",2,.5,"#000000",.5));
+						var p = new GPoint(1*PRADIUS + xcenter,0*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+						p = new GPoint(0.5*PRADIUS + xcenter,1*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+						p = new GPoint(-0.5*PRADIUS + xcenter,1*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+						p = new GPoint(-1*PRADIUS + xcenter,0*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+						p = new GPoint(-0.5*PRADIUS + xcenter,-1*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+						p = new GPoint(0.5*PRADIUS + xcenter,-1*PRADIUS + ycenter);
+						poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
+					map.addOverlay(new GPolygon(poly,"#000000",1,.25,"#000000",.25));
 				}
 			}
 		}
@@ -61,7 +67,7 @@
 		
 				var wmap_type = new GMapType( [tilelayer], new GMercatorProjection(18), "KillMap", {errorMessage:"No data"});
 				
-				var map = new GMap2(document.getElementById("map_canvas"),{mapTypes:[wmap_type],backgroundColor:"#ffffff"});
+				var map = new GMap2(document.getElementById("map_canvas"),{mapTypes:[wmap_type],backgroundColor:"#000000"});
 				map.setCenter(new GLatLng(80, -135), 3, wmap_type);
 				map.addControl(new GLargeMapControl());
 				generate_hexgrid(map,22,22);
