@@ -553,7 +553,7 @@ connection accept_connection()
 
 		const TCPsocket sock = *i;
 		SDLNet_TCP_DelSocket(pending_socket_set,sock);
-		pending_sockets.erase(i);
+		pending_sockets.erase(i++);
 
 		DBG_NW << "receiving data from pending socket...\n";
 
