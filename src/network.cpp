@@ -542,59 +542,55 @@ connection accept_connection()
 
 	DBG_NW << "pending socket activity...\n";
 
-	for(std::vector<TCPsocket>::iterator i = pending_sockets.begin(); i != pending_sockets.end(); ++i) {
-		if(!SDLNet_SocketReady(*i)) {
-			continue;
-		}
+	std::vector<TCPsocket>::iterator i = pending_sockets.begin();
+	while (i != pending_sockets.end() && !SDLNet_SocketReady(*i)) ++i;
 
-		// Receive the 4 bytes telling us if they're a new connection
-		// or trying to recover a connection
-		char buf[4] ALIGN_4;
+	if (i == pending_sockets.end()) return 0;
 
-		const TCPsocket sock = *i;
-		SDLNet_TCP_DelSocket(pending_socket_set,sock);
-		pending_sockets.erase(i++);
+	// Receive the 4 bytes telling us if they're a new connection
+	// or trying to recover a connection
+	char buf[4] ALIGN_4;
 
-		DBG_NW << "receiving data from pending socket...\n";
+	const TCPsocket psock = *i;
+	SDLNet_TCP_DelSocket(pending_socket_set,psock);
+	pending_sockets.erase(i);
 
-		const int len = SDLNet_TCP_Recv(sock,buf,4);
-		if(len != 4) {
-			WRN_NW << "pending socket disconnected\n";
-			SDLNet_TCP_Close(sock);
-			return 0;
-		}
+	DBG_NW << "receiving data from pending socket...\n";
 
-		const int handle = SDLNet_Read32(buf);
-
-		DBG_NW << "received handshake from client: '" << handle << "'\n";
-
-		const int res = SDLNet_TCP_AddSocket(socket_set,sock);
-		if(res == -1) {
-			ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
-			SDLNet_TCP_Close(sock);
-
-			throw network::error(_("Could not add socket to socket set"));
-		}
-
-
-		const connection connect = create_connection(sock,"",0);
-
-		// Send back their connection number
-		SDLNet_Write32(connect,buf);
-		const int nbytes = SDLNet_TCP_Send(sock,buf,4);
-		if(nbytes != 4) {
-			SDLNet_TCP_DelSocket(socket_set,sock);
-			SDLNet_TCP_Close(sock);
-			remove_connection(connect);
-			throw network::error(_("Could not send initial handshake"));
-		}
-
-		waiting_sockets.insert(connect);
-		sockets.push_back(connect);
-		return connect;
+	const int len = SDLNet_TCP_Recv(psock,buf,4);
+	if(len != 4) {
+		WRN_NW << "pending socket disconnected\n";
+		SDLNet_TCP_Close(psock);
+		return 0;
 	}
 
-	return 0;
+	const int handle = SDLNet_Read32(buf);
+
+	DBG_NW << "received handshake from client: '" << handle << "'\n";
+
+	const int res = SDLNet_TCP_AddSocket(socket_set,psock);
+	if(res == -1) {
+		ERR_NW << "SDLNet_GetError() is " << SDLNet_GetError() << "\n";
+		SDLNet_TCP_Close(psock);
+
+		throw network::error(_("Could not add socket to socket set"));
+	}
+
+	const connection connect = create_connection(psock,"",0);
+
+	// Send back their connection number
+	SDLNet_Write32(connect,buf);
+	const int nbytes = SDLNet_TCP_Send(psock,buf,4);
+	if(nbytes != 4) {
+		SDLNet_TCP_DelSocket(socket_set,psock);
+		SDLNet_TCP_Close(psock);
+		remove_connection(connect);
+		throw network::error(_("Could not send initial handshake"));
+	}
+
+	waiting_sockets.insert(connect);
+	sockets.push_back(connect);
+	return connect;
 }
 
 bool disconnect(connection s)
