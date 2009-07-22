@@ -353,6 +353,8 @@ void team::team_info::write(config& cfg) const
 		cfg["music"] = music;
 
 	cfg["colour"] = lexical_cast_default<std::string>(colour);
+
+	cfg["persistent"] = persistent ? "yes" : "no";
 }
 
 void team::merge_shroud_map_data(const std::string& shroud_data)
