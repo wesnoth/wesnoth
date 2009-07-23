@@ -515,7 +515,6 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(show_preferences, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(join_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
-	GUI2_EASY_BUTTON_CALLBACK(next_window, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
 
 	filter_friends_ = &window.get_widget<ttoggle_button>("filter_with_friends", false);
@@ -536,6 +535,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 		boost::bind(&tlobby_main::game_filter_keypress_callback, this, _1, _2, _3, _4));
 
 	room_window_open("lobby", true);
+	active_window_changed();
 	game_filter_reload();
 }
 
@@ -693,6 +693,8 @@ void tlobby_main::active_window_changed()
 				<< header.label() << " vs " << t.name << "\n";
 		}
 	}
+
+	window_->get_widget<tbutton>("close_window", false).set_active(t.whisper || t.name != "lobby");
 	update_playerlist();
 }
 
