@@ -260,6 +260,9 @@ public:
 	void set_game_filter_invert(bool value);
 	void apply_game_filter();
 
+	game_info* get_game_by_id(int id);
+	const game_info* get_game_by_id(int id) const;
+
 	void sort_users(bool by_name, bool by_relation);
 
 	void open_room(const std::string& name);

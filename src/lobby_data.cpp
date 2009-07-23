@@ -488,6 +488,18 @@ void lobby_info::parse_gamelist()
 	}
 }
 
+game_info* lobby_info::get_game_by_id(int id)
+{
+	std::map<int, game_info*>::iterator i = games_by_id_.find(id);
+	return i == games_by_id_.end() ? NULL : i->second;
+}
+
+const game_info* lobby_info::get_game_by_id(int id) const
+{
+	std::map<int, game_info*>::const_iterator i = games_by_id_.find(id);
+	return i == games_by_id_.end() ? NULL : i->second;
+}
+
 room_info* lobby_info::get_room(const std::string &name)
 {
 	foreach (room_info& r, rooms_) {
