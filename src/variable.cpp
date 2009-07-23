@@ -498,16 +498,17 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
-	unit_map::const_iterator itor = umap_.find(map_location(x_,y_));
+	map_location loc = map_location(x_, y_);
+	unit_map::const_iterator itor = umap_.find(loc);
 	if(itor != umap_.end()) {
 		config tmp_cfg;
 		itor->second.write(tmp_cfg);
 		tmp_cfg["x"] = lexical_cast<std::string,int>(x_ + 1);
 		tmp_cfg["y"] = lexical_cast<std::string,int>(y_ + 1);
-		LOG_NG << "auto-storing $" << name() << " at (" << x_ << ',' << y_ << ")\n";
+		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";
 		store(tmp_cfg);
 	} else {
-		ERR_NG << "failed to auto-store $" << name() << " at (" << x_ << ',' << y_ << ")\n";
+		ERR_NG << "failed to auto-store $" << name() << " at (" << loc << ")\n";
 	}
 }
 
