@@ -2439,6 +2439,10 @@ private:
 		cch.dispatch(cmd);
 	}
 
+	void chat_handler::user_relation_changed(const std::string& name)
+	{
+	}
+
 	void chat_handler::send_whisper(const std::string& receiver, const std::string& message)
 	{
 		config cwhisper, data;
@@ -2546,6 +2550,7 @@ private:
 			for(int i = 1; !get_arg(i).empty(); i++){
 				if (preferences::add_ignore(get_arg(i))) {
 					print("ignore",  _("Added to ignore list: ") + get_arg(i));
+					chat_handler_.user_relation_changed(get_arg(i));
 				} else {
 					command_failed(_("Invalid username: ") + get_arg(i));
 				}
@@ -2561,6 +2566,7 @@ private:
 		} else {
 			for(int i = 1;!get_arg(i).empty();i++){
 				if (preferences::add_friend(get_arg(i))) {
+					chat_handler_.user_relation_changed(get_arg(i));
 					print("friend",  _("Added to friends list: ") + get_arg(i));
 				} else {
 					command_failed(_("Invalid username: ") + get_arg(i));
@@ -2574,6 +2580,7 @@ private:
 		for(int i = 1;!get_arg(i).empty();i++){
 			preferences::remove_friend(get_arg(i));
 			preferences::remove_ignore(get_arg(i));
+			chat_handler_.user_relation_changed(get_arg(i));
 			print("list", _("Removed from list: ") + get_arg(i));
 		}
 	}

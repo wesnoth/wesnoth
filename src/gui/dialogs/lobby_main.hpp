@@ -83,6 +83,8 @@ public:
 
 	void update_gamelist();
 
+	void update_playerlist();
+
 	enum legacy_result { QUIT, JOIN, OBSERVE, CREATE, PREFERENCES };
 
 	legacy_result get_legacy_result() const { return legacy_result_; }
@@ -104,6 +106,8 @@ public:
 protected:
 	/** inherited form chat_handler */
 	virtual void send_chat_message(const std::string& message, bool /*allies_only*/);
+
+	virtual void user_relation_changed(const std::string& name);
 
 	/** inherited form chat_handler */
 	virtual void add_chat_message(const time_t& time, const std::string& speaker,
@@ -341,6 +345,8 @@ private:
 	int selected_game_id_;
 
 	tplayer_list player_list_;
+
+	bool player_list_dirty_;
 };
 
 } // namespace gui2

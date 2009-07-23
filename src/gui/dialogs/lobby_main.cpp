@@ -124,6 +124,11 @@ void tlobby_main::send_chat_message(const std::string& message, bool /*allies_on
 	network::send_data(data, 0, true);
 }
 
+void tlobby_main::user_relation_changed(const std::string& /*name*/)
+{
+	player_list_dirty_ = true;
+}
+
 void tlobby_main::add_chat_message(const time_t& /*time*/, const std::string& speaker,
 	int /*side*/, const std::string& message, events::chat_handler::MESSAGE_TYPE /*type*/)
 {
@@ -247,7 +252,7 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
 , chat_input_(NULL), window_(NULL)
 , lobby_info_(info), preferences_callback_(NULL)
 , open_windows_(), active_window_(0), selected_game_id_()
-, player_list_()
+, player_list_(), player_list_dirty_(false)
 {
 }
 
@@ -369,7 +374,10 @@ void tlobby_main::update_gamelist()
 		}
 	}
 	update_selected_game();
+}
 
+void tlobby_main::update_playerlist()
+{
 	lobby_info_.update_user_statuses(selected_game_id_, active_window_room());
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value(), player_list_.sort_by_relation->get_value());
 
@@ -452,6 +460,7 @@ void tlobby_main::update_gamelist()
 	player_list_.other_games.auto_hide();
 
 	window_->invalidate_layout();
+	player_list_dirty_ = false;
 }
 
 void tlobby_main::update_selected_game()
@@ -468,6 +477,7 @@ void tlobby_main::update_selected_game()
 	}
 	window_->get_widget<tbutton>("observe_global", false).set_active(can_observe);
 	window_->get_widget<tbutton>("join_global", false).set_active(can_join);
+	update_playerlist();
 }
 
 void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
@@ -683,7 +693,7 @@ void tlobby_main::active_window_changed()
 				<< header.label() << " vs " << t.name << "\n";
 		}
 	}
-	window_->invalidate_layout();
+	update_playerlist();
 }
 
 
@@ -924,6 +934,7 @@ void tlobby_main::send_message_button_callback(gui2::twindow &/*window*/)
 		//      opened window, so e.g. /ignore in a whisper session ignores
 		//      the other party without having to specify it's nick.
 		chat_handler::do_speak(input);
+		if (player_list_dirty_) update_gamelist();
 	} else {
 		config msg;
 		send_message_to_active_window(input);
@@ -1060,6 +1071,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 		tlobby_chat_window* t = whisper_window_open(info->name, true);
 		switch_to_window(t);
 	}
+	update_gamelist();
 }
 
 } // namespace gui2

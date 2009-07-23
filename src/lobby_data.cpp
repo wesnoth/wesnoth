@@ -108,15 +108,6 @@ user_info::user_info(const config& c)
 	, registered(utils::string_bool(c["registered"]))
 	, observing(c["status"] == "observing")
 {
-	if (name == preferences::login()) {
-		relation = ME;
-	} else if (preferences::is_ignored(name)) {
-		relation = IGNORED;
-	} else if (preferences::is_friend(name)) {
-		relation = FRIEND;
-	} else {
-		relation = NEUTRAL;
-	}
 }
 
 void user_info::update_state(int selected_game_id, const room_info* current_room /*= NULL*/)
@@ -133,6 +124,15 @@ void user_info::update_state(int selected_game_id, const room_info* current_room
 		} else {
 			state = LOBBY;
 		}
+	}
+	if (name == preferences::login()) {
+		relation = ME;
+	} else if (preferences::is_ignored(name)) {
+		relation = IGNORED;
+	} else if (preferences::is_friend(name)) {
+		relation = FRIEND;
+	} else {
+		relation = NEUTRAL;
 	}
 }
 
