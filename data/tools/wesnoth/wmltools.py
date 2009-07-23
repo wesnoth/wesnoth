@@ -701,14 +701,17 @@ class Translation(dict):
             else:
                 raise TranslationError(textdomain, self.isocode)
 
+            expect = False
+            fuzzy = "#, fuzzy\n"
             gettext = f.read().decode("utf8")
-            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
+            matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").finditer(gettext)
             msgid = ""
             for match in matches:
-                text = "".join(re.compile('"(.*?)"').findall(match[1]))
-                if match[0] == "msgid":
+                text = "".join(re.compile('"(.*?)"').findall(match.group(2)))
+                if match.group(1) == "msgid":
                     msgid = text.replace("\\n", "\n")
-                else:
+                    expect = gettext[match.start(1) - len(fuzzy):match.start(1)] != fuzzy
+                elif expect:
                     self.gettext[msgid] = text.replace("\\n", "\n")
     def get(self, key, dflt):
         if self.isocode == "C":
