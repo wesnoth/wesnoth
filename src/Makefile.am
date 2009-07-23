@@ -122,6 +122,7 @@ wesnoth_source = \
 	gui/dialogs/game_save.cpp \
 	gui/dialogs/language_selection.cpp \
 	gui/dialogs/lobby_main.cpp \
+	gui/dialogs/lobby_player_info.cpp \
 	gui/dialogs/message.cpp \
 	gui/dialogs/mp_connect.cpp \
 	gui/dialogs/mp_create_game.cpp \

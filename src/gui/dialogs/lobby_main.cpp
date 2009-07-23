@@ -14,6 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/lobby_main.hpp"
+#include "gui/dialogs/lobby_player_info.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -382,9 +383,9 @@ void tlobby_main::update_gamelist()
 	player_list_.active_room.list->clear();
 	player_list_.other_rooms.list->clear();
 	player_list_.other_games.list->clear();
-	foreach (const user_info* userptr, lobby_info_.users_sorted())
+	foreach (user_info* userptr, lobby_info_.users_sorted())
 	{
-		const user_info& user = *userptr;
+		user_info& user = *userptr;
 		tsub_player_list* target_list(NULL);
 		std::map<std::string, string_map> data;
 		std::stringstream icon_ss;
@@ -440,6 +441,10 @@ void tlobby_main::update_gamelist()
 		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
 		tlabel& name_label = grid->get_widget<tlabel>("player", false);
 		name_label.set_markup_mode(tcontrol::PANGO_MARKUP);
+		ttoggle_panel& panel = grid->get_widget<ttoggle_panel>("userpanel", false);
+		panel.set_callback_mouse_left_double_click(boost::bind(
+			&tlobby_main::user_dialog_callback, this, userptr));
+
 	}
 	player_list_.active_game.auto_hide();
 	player_list_.active_room.auto_hide();
@@ -1045,6 +1050,16 @@ void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 		player_list_.sort_by_relation->set_icon_name("lobby/sort-friend-off.png");
 	}
 	update_gamelist();
+}
+
+void tlobby_main::user_dialog_callback(user_info* info)
+{
+	tlobby_player_info dlg(*this, *info, lobby_info_);
+	dlg.show(window_->video());
+	if (dlg.result_open_whisper()) {
+		tlobby_chat_window* t = whisper_window_open(info->name, true);
+		switch_to_window(t);
+	}
 }
 
 } // namespace gui2

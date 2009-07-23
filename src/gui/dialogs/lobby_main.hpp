@@ -295,6 +295,8 @@ private:
 
 	void player_filter_callback(twidget* widget);
 
+	void user_dialog_callback(user_info* info);
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 

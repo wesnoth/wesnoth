@@ -1980,6 +1980,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\dialogs\lobby_player_info.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\dialogs\message.cpp"
 						>
 						<FileConfiguration
@@ -5072,6 +5100,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\lobby_main.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\lobby_player_info.hpp"
 						>
 					</File>
 					<File
