@@ -806,19 +806,28 @@ void tlobby_main::process_room_join(const config &data)
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
 	room_info* r = lobby_info_.get_room(room);
+
 	if (r) {
 		if (player == preferences::login()) {
-			//parse full userlist
+			if (const config& members = data.child("members")) {
+				r->process_room_members(members);
+			}
 		} else {
 			r->add_member(player);
-			//update userlists
-			//check the show-lobby-joins param
+		}
+		if (r == active_window_room()) {
+			update_playerlist();
 		}
 	} else {
 		if (player == preferences::login()) {
 			tlobby_chat_window* t = room_window_open(room, true);
-			switch_to_window(t);
 			lobby_info_.open_room(room);
+			r = lobby_info_.get_room(room);
+			assert(r);
+			if (const config& members = data.child("members")) {
+				r->process_room_members(members);
+			}
+			switch_to_window(t);
 		} else {
 			LOG_NW << "Discarding join info for a room the player is not in\n";
 		}

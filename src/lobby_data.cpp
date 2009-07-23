@@ -90,6 +90,14 @@ void room_info::remove_member(const std::string& user)
 	members_.erase(user);
 }
 
+void room_info::process_room_members(const config& data)
+{
+	members_.clear();
+	foreach (const config& m, data.child_range("member")) {
+		members_.insert(m["name"]);
+	}
+}
+
 user_info::user_info()
 	: name()
 	, game_id()
