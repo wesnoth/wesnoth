@@ -30,6 +30,7 @@ public:
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 
+	void send_command(const std::string& cmd, const std::string& args="");
 protected:
 	void do_speak(const std::string& message, bool allies_only=false);
 
@@ -53,8 +54,6 @@ protected:
 
 	virtual void add_chat_room_message_received(const std::string& room,
 		const std::string& speaker, const std::string& message);
-
-	void send_command(const std::string& cmd, const std::string& args="");
 
 	void change_logging(const std::string& data);
 
