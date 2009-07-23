@@ -39,7 +39,7 @@ twindow* tlobby_player_info::build_window(CVideo& video)
 	return build(video, get_id(LOBBY_PLAYER_INFO));
 }
 
-void tlobby_player_info::pre_show(CVideo& video, twindow& window)
+void tlobby_player_info::pre_show(CVideo& /*video*/, twindow& window)
 {
 	relation_ = &window.get_widget<tlabel>("relation_info", false);
 	GUI2_EASY_BUTTON_CALLBACK(start_whisper, tlobby_player_info);
