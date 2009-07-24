@@ -60,6 +60,7 @@ struct tsub_player_list
 struct tplayer_list
 {
 	void init(twindow& w);
+	void update_sort_icons();
 	tsub_player_list active_game;
 	tsub_player_list active_room;
 	tsub_player_list other_rooms;

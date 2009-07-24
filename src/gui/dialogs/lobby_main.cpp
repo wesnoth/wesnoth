@@ -58,11 +58,25 @@ namespace {
 	//TODO move this and other MP prefs to a MP_prefs header and possibly cpp
 	const char* prefkey_whisper_friends_only = "lobby_whisper_friends_only";
 	const char* prefkey_auto_open_whisper_windows = "lobby_auto_open_whisper_windows";
+	const char* prefkey_playerlist_sort_relation = "lobby_playerlist_sort_relation";
+	const char* prefkey_playerlist_sort_name = "lobby_playerlist_sort_name";
 	bool whisper_friends_only() {
 		return utils::string_bool(preferences::get(prefkey_whisper_friends_only));
 	}
 	bool auto_open_whisper_windows() {
 		return utils::string_bool(preferences::get(prefkey_auto_open_whisper_windows), true);
+	}
+	bool playerlist_sort_relation() {
+		return utils::string_bool(preferences::get(prefkey_playerlist_sort_relation), true);
+	}
+	void set_playerlist_sort_relation(bool v) {
+		return preferences::set(prefkey_playerlist_sort_relation, lexical_cast<std::string>(v));
+	}
+	bool playerlist_sort_name() {
+		return utils::string_bool(preferences::get(prefkey_playerlist_sort_name), true);
+	}
+	void set_playerlist_sort_name(bool v) {
+		return preferences::set(prefkey_playerlist_sort_name, lexical_cast<std::string>(v));
 	}
 }
 
@@ -116,6 +130,19 @@ void tplayer_list::init(gui2::twindow &w)
 	sort_by_relation = &w.get_widget<ttoggle_button>("player_list_sort_relation", false);
 }
 
+void tplayer_list::update_sort_icons()
+{
+	if (sort_by_name->get_value()) {
+		sort_by_name->set_icon_name("lobby/sort-az.png");
+	} else {
+		sort_by_name->set_icon_name("lobby/sort-az-off.png");
+	}
+	if (sort_by_relation->get_value()) {
+		sort_by_relation->set_icon_name("lobby/sort-friend.png");
+	} else {
+		sort_by_relation->set_icon_name("lobby/sort-friend-off.png");
+	}
+}
 void tlobby_main::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
 	config data, msg;
@@ -495,10 +522,15 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	player_list_.init(window);
 
+	player_list_.sort_by_name->set_value(playerlist_sort_name());
+	player_list_.sort_by_relation->set_value(playerlist_sort_relation());
+	player_list_.update_sort_icons();
+
 	player_list_.sort_by_name->set_callback_state_change(boost::bind(
 		&tlobby_main::player_filter_callback, this, _1));
 	player_list_.sort_by_relation->set_callback_state_change(boost::bind(
 		&tlobby_main::player_filter_callback, this, _1));
+
 
 	chat_log_container_ = dynamic_cast<tmulti_page*>(window.find_widget("chat_log_container", false));
 	VALIDATE(chat_log_container_, missing_widget("chat_log_container_"));
@@ -1075,16 +1107,9 @@ void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
 
 void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 {
-	if (player_list_.sort_by_name->get_value()) {
-		player_list_.sort_by_name->set_icon_name("lobby/sort-az.png");
-	} else {
-		player_list_.sort_by_name->set_icon_name("lobby/sort-az-off.png");
-	}
-	if (player_list_.sort_by_relation->get_value()) {
-		player_list_.sort_by_relation->set_icon_name("lobby/sort-friend.png");
-	} else {
-		player_list_.sort_by_relation->set_icon_name("lobby/sort-friend-off.png");
-	}
+	player_list_.update_sort_icons();
+	set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
+	set_playerlist_sort_name(player_list_.sort_by_name->get_value());
 	update_gamelist();
 }
 
