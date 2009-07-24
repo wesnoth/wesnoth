@@ -542,7 +542,7 @@ void game_state::get_player_info(const config& side_cfg,
 					 bool snapshot)
 {
 	const config *player_cfg = NULL;
-	//FIXME: temporarily adding this flag to ensure recallable units are added properly without player_info
+	//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
 	bool player_exists = false;
 
 	if(map.empty()) {
@@ -562,10 +562,13 @@ void game_state::get_player_info(const config& side_cfg,
 				player_cfg = &c;
 			}
 		} else {
-			//at the start of scenario, get the player tag from starting_pos
+			//at the start of scenario, get the persistence information from starting_pos
 			assert(starting_pos != NULL);
 			if (const config &c =  starting_pos.find_child("player","save_id",save_id))  {
 				player_cfg = &c;
+			} else if (const config &c =  starting_pos.find_child("side","save_id",save_id))  {
+				player_cfg = &c;
+				player_exists = false; //there is only a [side] tag for this save_id in starting_pos
 			}
 		}
 	}
@@ -618,10 +621,12 @@ void game_state::get_player_info(const config& side_cfg,
 	//take recall list from [player] tag and update the side number of its units
 	if (player_cfg != NULL) {
 		foreach(const config &u, (*player_cfg).child_range("unit")) {
-			config temp_cfg(u); //copy ctor, as player_cfg is const
-			temp_cfg["side"] = str_cast<int>(side);
-			unit un(temp_cfg, false);
-			teams.back().recall_list().push_back(un);
+			if (u["x"].empty() && u["y"].empty()) {
+				config temp_cfg(u); //copy ctor, as player_cfg is const
+				temp_cfg["side"] = str_cast<int>(side);
+				unit un(temp_cfg, false);
+				teams.back().recall_list().push_back(un);
+			}
 		}
 	}
 
@@ -694,23 +699,20 @@ void game_state::get_player_info(const config& side_cfg,
 		teams.back().recall_list().clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(&units, **su, true);
 
-		new_unit.set_side(side);
+		config temp_cfg(**su);
+		temp_cfg["side"] = str_cast<int>(side); //set the side before unit creation to avoid invalid side errors
+		unit new_unit(&units, temp_cfg, true);
 
 		const std::string& x = (**su)["x"];
 		const std::string& y = (**su)["y"];
 
 		map_location loc(**su, this);
 		if(x.empty() && y.empty()) {
+			//if there is no player tag, this means this team is either not persistent or the units have been added from a [side] tag earlier
 			if(player_exists) {
 				teams.back().recall_list().push_back(new_unit);
 				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
-			} else {
-				throw game::load_game_failed(
-					"Attempt to create a unit on the recall list for side " +
-					lexical_cast<std::string>(side) +
-					", which does not have a recall list.");
 			}
 		} else if(!loc.valid() || !map.on_board(loc)) {
 			throw game::load_game_failed(
