@@ -909,7 +909,11 @@ void scenariostart_savegame::before_save()
 {
 	//Add the player section to the starting position so we can get the correct recall list
 	//when loading the replay later on
-	write_players(gamestate(), gamestate().starting_pos);
+	//FIXME: use game_state::write_players() again once the [player] tag is completey removed
+	foreach(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
+		//take all side tags and add them as players (assuming they only contain carryover information)
+		gamestate().starting_pos.add_child("side", *snapshot_side);
+	}
 }
 
 replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves)
