@@ -517,6 +517,10 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 	GUI2_EASY_BUTTON_CALLBACK(observe_global, tlobby_main);
 	GUI2_EASY_BUTTON_CALLBACK(close_window, tlobby_main);
 
+	ttoggle_button& skip_replay = window.get_widget<ttoggle_button>("skip_replay", false);
+	skip_replay.set_value(preferences::skip_mp_replay());
+	skip_replay.set_callback_state_change(boost::bind(&tlobby_main::skip_replay_changed_callback, this, _1));
+
 	filter_friends_ = &window.get_widget<ttoggle_button>("filter_with_friends", false);
 	filter_ignored_ = &window.get_widget<ttoggle_button>("filter_without_ignored", false);
 	filter_slots_ = &window.get_widget<ttoggle_button>("filter_vacant_slots", false);
@@ -1083,6 +1087,13 @@ void tlobby_main::user_dialog_callback(user_info* info)
 		switch_to_window(t);
 	}
 	update_gamelist();
+}
+
+void tlobby_main::skip_replay_changed_callback(twidget* w)
+{
+	ttoggle_button* tb = dynamic_cast<ttoggle_button*>(w);
+	assert(tb);
+	preferences::set_skip_mp_replay(tb->get_value());
 }
 
 } // namespace gui2

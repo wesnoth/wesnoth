@@ -301,6 +301,8 @@ private:
 
 	void user_dialog_callback(user_info* info);
 
+	void skip_replay_changed_callback(twidget* w);
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
