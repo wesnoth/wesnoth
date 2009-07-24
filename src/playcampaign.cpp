@@ -222,12 +222,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			starting_pos = gamestate.starting_pos;
 			scenario = &starting_pos;
 		} else {
+			//reload of the scenario, as starting_pos contains carryover information only
 			LOG_G << "loading scenario: '" << gamestate.classification().scenario << "'\n";
 			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
 			if (*scenario) {
 				starting_pos = *scenario;
 				preload_lua_tags(game_config, starting_pos);
-				gamestate.starting_pos.merge_with(starting_pos);
+				write_players(gamestate, starting_pos, true);
 				scenario = &starting_pos;
 			} else
 				scenario = NULL;

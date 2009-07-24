@@ -172,23 +172,54 @@ void write_players(game_state& gamestate, config& cfg, const bool merge_side)
 	if (player_cfg.first != player_cfg.second)
 		return;
 	
-	//take all sides information from the snapshot (assuming it only contains carryover information)
-	//take all side tags and add them as players
-	foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
-		bool merged = false;
-		//if a side with the same save_id exists, we merge the player information into this side
-		//FIXME: carryover gold needs to be sorted here
-		if (merge_side) {
-			if (config& c = cfg.find_child("side", "save_id", (*snapshot_side)["save_id"])) {
-				c.merge_with(*snapshot_side);
-				merged = true;
-			} else if (config& c = cfg.find_child("side", "id", (*snapshot_side)["save_id"])) {
-				c.merge_with(*snapshot_side);
-				merged = true;
+	if (merge_side) {
+		//merge sides/players from starting pos with the scenario cfg
+		config temp(cfg);
+		std::vector<std::string> tags;
+		tags.push_back("side");
+		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
+
+		foreach (const std::string side_tag, tags) {
+			foreach (config* carryover_side, gamestate.starting_pos.get_children(side_tag)) {
+				config *scenario_side = NULL;
+
+				if (config& c = temp.find_child("side", "save_id", (*carryover_side)["save_id"])) {
+					scenario_side = &c;
+				} else if (config& c = temp.find_child("side", "id", (*carryover_side)["save_id"])) {
+					scenario_side = &c;
+				}
+
+				if (scenario_side != NULL) {
+					//we have a matching side in the current scenario
+
+					//sort carryover gold
+					std::string gold = (*scenario_side)["gold"];
+					if(gold.empty())
+						gold = "100";
+					int ngold = lexical_cast_default<int>(gold);
+					int player_gold = lexical_cast_default<int>((*carryover_side)["gold"]);
+					if(utils::string_bool((*carryover_side)["gold_add"])) {
+						ngold +=  player_gold;
+					} else if(player_gold >= ngold) {
+						ngold = player_gold;
+					}
+					(*carryover_side)["gold"] = str_cast<int>(ngold);
+					if ( !(*scenario_side)["gold_add"].empty() ) {
+						(*carryover_side)["gold_add"] = (*scenario_side)["gold_add"];
+					}
+
+					(*scenario_side).merge_with(*carryover_side);
+				} else {
+					//no matching side in the current scenario, we add the persistent information in a [player] tag
+					temp.add_child("player", (*carryover_side));
+				}
 			}
-		}
-		
-		if (!merged) {
+	}
+	gamestate.starting_pos = temp;
+
+	} else {
+		foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
+			//take all side tags and add them as players (assuming they only contain carryover information)
 			cfg.add_child("player", *snapshot_side);
 		}
 	}
@@ -596,7 +627,11 @@ void game_state::get_player_info(const config& side_cfg,
 	if ( (player_cfg != NULL)  && (!snapshot) ) {
 		try {
 			int player_gold = lexical_cast_default<int>((*player_cfg)["gold"]);
-			if(utils::string_bool((*player_cfg)["gold_add"])) {
+			if (!player_exists) {
+				//if we get the persistence information from [side], carryover gold is already sorted
+				ngold = player_gold;
+				gold_add = utils::string_bool((*player_cfg)["gold_add"]);
+			} else if(utils::string_bool((*player_cfg)["gold_add"])) {
 				ngold +=  player_gold;
 				gold_add = true;
 			} else if(player_gold >= ngold) {
@@ -604,7 +639,7 @@ void game_state::get_player_info(const config& side_cfg,
 			}
 		} catch (config::error&) {
 			ERR_NG << "player tag for " << save_id << " does not have gold information\n";
-		}
+		}			
 	}
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
