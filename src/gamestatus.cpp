@@ -164,28 +164,34 @@ game_state::game_state()  :
 		classification_()
 		{}
 
-void write_players(game_state& gamestate, config& cfg, const bool merge_side)
+void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
 {
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
 	config::child_itors player_cfg = cfg.child_range("player");
 	if (player_cfg.first != player_cfg.second)
 		return;
+
+	config *source = NULL;
+	if (use_snapshot) {
+		source = &gamestate.snapshot;
+	} else {
+		source = &gamestate.starting_pos;
+	}
 	
 	if (merge_side) {
 		//merge sides/players from starting pos with the scenario cfg
-		config temp(cfg);
 		std::vector<std::string> tags;
 		tags.push_back("side");
 		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
 
 		foreach (const std::string side_tag, tags) {
-			foreach (config* carryover_side, gamestate.starting_pos.get_children(side_tag)) {
+			foreach (config* carryover_side, source->get_children(side_tag)) {
 				config *scenario_side = NULL;
 
-				if (config& c = temp.find_child("side", "save_id", (*carryover_side)["save_id"])) {
+				if (config& c = cfg.find_child("side", "save_id", (*carryover_side)["save_id"])) {
 					scenario_side = &c;
-				} else if (config& c = temp.find_child("side", "id", (*carryover_side)["save_id"])) {
+				} else if (config& c = cfg.find_child("side", "id", (*carryover_side)["save_id"])) {
 					scenario_side = &c;
 				}
 
@@ -211,14 +217,13 @@ void write_players(game_state& gamestate, config& cfg, const bool merge_side)
 					(*scenario_side).merge_with(*carryover_side);
 				} else {
 					//no matching side in the current scenario, we add the persistent information in a [player] tag
-					temp.add_child("player", (*carryover_side));
+					cfg.add_child("player", (*carryover_side));
 				}
 			}
 	}
-	gamestate.starting_pos = temp;
 
 	} else {
-		foreach(const config* snapshot_side, gamestate.snapshot.get_children("side")) {
+		foreach(const config* snapshot_side, source->get_children("side")) {
 			//take all side tags and add them as players (assuming they only contain carryover information)
 			cfg.add_child("player", *snapshot_side);
 		}
