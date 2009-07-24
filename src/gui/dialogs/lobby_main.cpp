@@ -60,6 +60,7 @@ namespace {
 	const char* prefkey_auto_open_whisper_windows = "lobby_auto_open_whisper_windows";
 	const char* prefkey_playerlist_sort_relation = "lobby_playerlist_sort_relation";
 	const char* prefkey_playerlist_sort_name = "lobby_playerlist_sort_name";
+	const char* prefkey_playerlist_single_group = "lobby_playerlist_single_group";
 	bool whisper_friends_only() {
 		return utils::string_bool(preferences::get(prefkey_whisper_friends_only));
 	}
@@ -78,7 +79,12 @@ namespace {
 	void set_playerlist_sort_name(bool v) {
 		return preferences::set(prefkey_playerlist_sort_name, lexical_cast<std::string>(v));
 	}
-}
+	bool playerlist_single_group() {
+		return utils::string_bool(preferences::get(prefkey_playerlist_single_group), true);
+	}
+	void set_playerlist_single_group(bool v) {
+		return preferences::set(prefkey_playerlist_single_group, lexical_cast<std::string>(v));
+	}}
 
 void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 {
@@ -473,7 +479,9 @@ void tlobby_main::update_playerlist()
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
 		add_label_data(data, "main_icon", icon_ss.str());
-
+		if (playerlist_single_group()) {
+			target_list = &player_list_.other_rooms;
+		}
 		target_list->list->add_row(data);
 
 		tgrid* grid = target_list->list->get_row_grid(target_list->list->get_item_count() - 1);
