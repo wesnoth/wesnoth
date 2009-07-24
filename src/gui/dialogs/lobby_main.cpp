@@ -891,7 +891,7 @@ void tlobby_main::join_or_observe(int idx)
 {
 	const game_info& game = *lobby_info_.games_filtered()[idx];
 	if (do_game_join(idx, !game.can_join())) {
-		legacy_result_ = JOIN;
+		legacy_result_ = game.can_join() ? JOIN : OBSERVE;
 		window_->close();
 	}
 }
