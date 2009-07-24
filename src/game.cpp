@@ -442,6 +442,8 @@ game_controller::game_controller(int argc, char** argv) :
 #else
 			std::cerr << "Option --dummy-locales ignored: support was not compiled in.\n";
 #endif
+		} else if(val == "--no-srng") {
+			rand_rng::disable_server_rng();
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1773,6 +1775,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --nomusic                    runs the game without music.\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
+			<< "  --no-srng                    disable server-side RNG support (will cause OOS\n"
+			<< "                               errors unless every player uses it)\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --rng-seed <number>          seeds the random number generator with number\n"
@@ -1887,7 +1891,7 @@ static int process_command_args(int argc, char** argv) {
 				return 2;
 			}
 			srand(lexical_cast_default<unsigned int>(argv[arg]));
- 		}
+		}
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
