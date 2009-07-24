@@ -34,6 +34,9 @@
 #include "network.hpp"
 #include "game_preferences.hpp"
 #include "playmp_controller.hpp"
+
+#include "formula_string_utils.hpp"
+
 #include <boost/bind.hpp>
 
 static lg::log_domain log_network("network");
@@ -573,12 +576,18 @@ tlobby_chat_window* tlobby_main::search_create_window(const std::string& name, b
 	if (open_new) {
 		open_windows_.push_back(tlobby_chat_window(name, whisper));
 		std::map<std::string, string_map> data;
+		utils::string_map symbols;
+		symbols["name"] = name;
 		if (whisper) {
 			add_label_data(data, "log_header", "<" + name + ">");
-			add_label_data(data, "log_text", "Whisper session with " + name + " started.\n");
+			add_label_data(data, "log_text", vgettext(
+				"Whisper session with $name started. "
+				"If you don't want to receive messages from this user, "
+				"type /ignore $name\n", symbols));
 		} else {
 			add_label_data(data, "log_header", name);
-			add_label_data(data, "log_text", "Room " + name + " joined.\n");
+			add_label_data(data, "log_text", vgettext(
+				"Room $name joined", symbols));
 			lobby_info_.open_room(name);
 		}
 		chat_log_container_->add_page(data);
