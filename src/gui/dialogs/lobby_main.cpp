@@ -782,6 +782,7 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 	std::string sender = data["sender"];
 	if (preferences::is_ignored(sender)) return;
 	const std::string& message = data["message"];
+	preferences::admin_authentication(sender, message);
 	if (whisper) {
 		add_whisper_received(sender, message);
 	} else {
