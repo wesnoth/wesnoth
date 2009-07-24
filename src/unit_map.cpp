@@ -157,8 +157,13 @@ void unit_map::insert(std::pair<map_location,unit> *p)
 
 void unit_map::replace(const map_location &l, const unit &u)
 {
-	erase(l);
-	add(l, u);
+	//when 'l' is the reference to map_location that is part
+	//of that unit iterator which is to be deleted by erase,
+	// 'l' is invalidated by erase, too. Thus, 'add(l,u)' fails.
+	// So, we need to make a copy of that map_location.
+	map_location loc = l;
+	erase(loc);
+	add(loc, u);
 }
 
 void unit_map::delete_all()
