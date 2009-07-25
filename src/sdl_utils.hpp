@@ -264,7 +264,7 @@ surface flip_surface(surface const &surf, bool optimize=true);
 surface flop_surface(surface const &surf, bool optimize=true);
 surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
 
-/*
+/**
  *  Replacement for SDL_BlitSurface.
  *
  *  SDL_BlitSurface has problems with blitting partly transparent surfaces so
