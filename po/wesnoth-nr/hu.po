@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-nr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
-"PO-Revision-Date: 2009-03-13 10:22+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
+"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"PO-Revision-Date: 2009-07-15 15:26+0100\n"
+"Last-Translator: Kelemen Zoltán <kelemen_zoltan@freemail.hu>\n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Bookmarks: 756,348,-1,-1,-1,-1,-1,-1,-1,-1\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -70,11 +70,10 @@ msgstr "Udvari testőr"
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:22
 msgid "(Expert level, 14 scenarios.)"
-msgstr ""
+msgstr "(Gyakorlott szint, 14 pálya)"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:22
-#, fuzzy
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
 "downtrodden slaves for the orcs until the end of their brief and miserable "
@@ -88,7 +87,7 @@ msgstr ""
 "mindent kockára téve fellázadnak kegyetlen rabtartóik ellen a "
 "szabadságukért. Csak kevesen gondolták, hogy harcuk lesz azoknak a nagyszerű "
 "eseményeknek az elindítója, miáltal Északfölde dicsősége újra visszatér.\n"
-"(Szakavatott szint, 14 pálya.)"
+"\n"
 
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:27
@@ -263,8 +262,8 @@ msgstr ""
 "villámgyorsan cikázott, nyomában hullottak a gyűlölt orkok. Jobbján egy idős "
 "mágus harcolt, mély hangja áttört a csatazajon, ahogy varázsszavakat "
 "dörgött, melyektől megremegett a föld. Balján egy tünde nagyúr tündértüzet "
-"lövellt az ellenségre. Szorosan mögöttük kicsi, de erős tünde sereg "
-"támogatta a harcot."
+"lövellt az ellenségre. Szorosan mögöttük kicsi, de erős tüde sereg támogatta "
+"a harcot."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:45
@@ -950,7 +949,7 @@ msgstr ""
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:293
 msgid "Hordes of trolls and skeletons! Where!? Let's go burn 'em all!"
-msgstr "Trollok és csontvázak hordái? Hol? Menjünk, hadd égessem el őket!"
+msgstr "Trollok és csotvázak hordái? Hol? Menjünk, hadd égessem el őket!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:297
@@ -980,7 +979,7 @@ msgstr "IGEN! PUSZTULJ NYOMORONC, PUSZTULJ!"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:351
 msgid "This tunnel keeps on going..."
-msgstr "Ez a járat vezet valahová..."
+msgstr "Zajlik az élet ebben a barlangban..."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:355
@@ -1127,8 +1126,8 @@ msgid ""
 "replacement - whereas for every monster we kill, it seems that two more come "
 "to take its place!"
 msgstr ""
-"De Tallin, még így is rengeteg veszteségünk lesz, és nincs utánpótlásunk. "
-"Velünk szemben minden szörny helyére amit megölünk, kettő lép."
+"De Tallin, egyre több veszteségünk van, és nincs utánpótlásunk. Velünk "
+"szemben minden szörny helyére, amit megölünk, kettő lép."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:553
@@ -1173,7 +1172,7 @@ msgid ""
 msgstr ""
 "Igen, rabszolgák voltunk, de fellázadtunk, és legyőztük Al'Tart és seregét. "
 "És, hogy szabadságunk megőrizhessük, segítséget és felszerelést kérünk régi "
-"szövetségeseinktől, a törpöktől."
+"szövetségeseinktől a törpöktől."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:582
@@ -1362,7 +1361,7 @@ msgid ""
 "Be welcome to the Southern Tunnels, friends... or at least, what's left o' "
 "them."
 msgstr ""
-"Legyetek üdvözölve a a Déli Alagutakban barátaim... vagy legalábbis abban, "
+"Barátaim, legyetek üdvözölve a a Déli Alagutakban... vagy legalábbis abban, "
 "ami megmaradt belűlük."
 
 #. [part]
@@ -2072,9 +2071,8 @@ msgstr "Author"
 
 #. [side]: type=Death Knight, id=Samlan
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:146
-#, fuzzy
 msgid "Samlan"
-msgstr "Lándzsás"
+msgstr "Samlan"
 
 #. [side]: type=Death Knight, id=Boblin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:169
@@ -2178,9 +2176,8 @@ msgstr "Próbálj szerencsét, barátocskám!"
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:400
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:608
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:668
-#, fuzzy
 msgid "Father Morvin"
-msgstr "Marcus atya"
+msgstr "Morvin atya"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:551
@@ -2199,16 +2196,14 @@ msgstr "Csak Tallin, nem vagyok lord. De nem baj."
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:566
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:679
-#, fuzzy
 msgid "Morvin!"
-msgstr "Thorin"
+msgstr "Morvin!"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:570
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:683
-#, fuzzy
 msgid "Thera!"
-msgstr "Theta!"
+msgstr "Thera!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:574
@@ -2230,16 +2225,15 @@ msgstr "Ki vagy te? És hogy kerültél ide?"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:589
-#, fuzzy
 msgid ""
 "I am called Father Morvin. My wife, Thera and I were advisers and healers "
 "for the dwarvish nobles. We could not shield them from the wrath of Khazg "
 "Black-Tusk, but we survived the orcs and trolls -- only to be captured by "
 "these skeletons."
 msgstr ""
-"Marcus atya a nevem. A feleségem, Theta és én a törp nemesek tanácsadói és "
+"Morvin atya a nevem. A feleségem, Thera és én a törp nemesek tanácsadói és "
 "gyógyítói voltunk. Nem tudtuk őket megvédeni Feketefogú Khazg ármádiájától, "
-"de túléltük az orkokat és trollokat, míg végül ezek a csontvázak fogtak el "
+"de túléltük az orkokat és trollokat -- míg végül ezek a csontvázak fogtak el "
 "bennünket."
 
 #. [message]: speaker=Tallin
@@ -2321,9 +2315,8 @@ msgstr " *kuncog*"
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:418
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:626
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:383
-#, fuzzy
 msgid "Sister Thera"
-msgstr "Theta nővér"
+msgstr "Thera nővér"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:666
@@ -2341,14 +2334,13 @@ msgstr ""
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:701
-#, fuzzy
 msgid ""
 "I am called Sister Thera. My husband Morvin and I were advisers and healers "
 "for the dwarvish nobles of Knalga. We could not save them from Khazg Black-"
 "Tusk's troops, but we survived the orcs and trolls only to be captured when "
 "these skeletons appeared."
 msgstr ""
-"Theta nővér a nevem. A férjem Marcus és én a knalgai törp nemesek tanácsadói "
+"Thera nővér a nevem. A férjem Morvin és én a knalgai törp nemesek tanácsadói "
 "és gyógyítói voltunk. Nem tudtuk őket megvédeni Feketefogú Khazg "
 "ármádiájától, de túléltük az orkokat és trollokat, míg végül ezek a "
 "csontvázak fogtak el bennünket."
@@ -2440,12 +2432,11 @@ msgstr "... köszönöm."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:811
-#, fuzzy
 msgid ""
 "No problem. Sister Thera, you take care of her. If she wants to join us she "
 "would make a powerful ally."
 msgstr ""
-"Nincs mit. Theta nővér, vigyázz rá. Ha csatlakozni akar hozzánk, fontos "
+"Nincs mit. Thera nővér, vigyázz rá. Ha csatlakozni akar hozzánk, fontos "
 "szövetségesünk lehet."
 
 #. [message]: speaker=Elenia
@@ -2560,7 +2551,8 @@ msgstr " *nyöszörög*"
 msgid ""
 "Bright Gods, such a fierce creature whimpering! What the heck have they done "
 "to it?"
-msgstr "Istenem, egy nyöszörgő tűzokádó! Mi az ördögöt keres ez itt?"
+msgstr ""
+"Fényességes Istenek, egy nyöszörgő tűzokádó! Mi az ördögöt keres ez itt?"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:933
@@ -2794,7 +2786,7 @@ msgstr "800 arany! Gazdagok vagyunk!!!"
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1394
 msgid "What a hoard! 2,000 gold!"
-msgstr "A mindenit! 2000 arany!"
+msgstr "A mindenit! 2.000 arany!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1416
@@ -3249,7 +3241,7 @@ msgstr "Hát wesnothi idő szerint az 534. évet."
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2118
 msgid "Huh!? Can't be, the last year I remember it was 14,318 AD!"
-msgstr "Hűha!? Az utolsó év, amire én emlékszem, az az Úr 14 318. éve!"
+msgstr "Hűha!? Az utolsó év, amire én emlékszem, az az Úr 14.318. éve!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2122
@@ -3752,13 +3744,12 @@ msgstr "De akkor hogy fogjuk megölni? Biztos van valami módja."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2939
-#, fuzzy
 msgid ""
 "Yes, I think there is, but only myself or Thera have the means to do it. "
 "Come on Thera, let's destroy that old skeleton."
 msgstr ""
-"Igen, azt hiszem elpusztíthatjuk, de csak Theta és én tudjuk megtenni. "
-"Gyerünk Theta, pusztitsuk el ezt a vén csontvázat!"
+"Igen, azt hiszem, elpusztíthatjuk, de csak Thera és én tudjuk megtenni. "
+"Gyerünk Thera, pusztitsuk el ezt a vén csontvázat!"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2943
@@ -4924,9 +4915,8 @@ msgstr " *forgatja a szemét*"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:151
-#, fuzzy
 msgid "Father Morvin, what are you trying to say?"
-msgstr "Marcus atya, mit akarsz ezzel mondani?"
+msgstr "Morvin atya, mit akarsz ezzel mondani?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:155
@@ -6174,7 +6164,7 @@ msgstr "BEHATOLÓK! MEGÖLNI ŐKET!"
 #. [unit]: type=Elvish Sorceress, id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:505
 msgid "Eryssa"
-msgstr ""
+msgstr "Eryssa"
 
 #. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:516
@@ -7195,15 +7185,14 @@ msgstr ""
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:206
-#, fuzzy
 msgid ""
 "Er, Eryssa...there is a large elvish force moving this direction. By now "
 "they can be more then two days' march from here. It seems that our father "
 "sent them to either free you or bargain for your release."
 msgstr ""
-"Ööö Anita... Épp egy nagyobb tünde sereg tart errefelé. Kb. kétnapi járásra "
-"lehetnek. Úgy tűnik a kiszabadításodra küldte őket apánk, de legalábbis a "
-"kiváltásodra."
+"Eee, Eryssa... Épp egy nagyobb tünde sereg tart errefelé. Kb. kétnapi "
+"járásra lehetnek. Úgy tűnik a kiszabadításodra küldte őket apánk, de "
+"legalábbis a kiváltásodra."
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:210
@@ -7789,9 +7778,8 @@ msgstr "Követjük a trollok nyomait, ezeknek vissza kell vezetniük Rakshashoz.
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:116
-#, fuzzy
 msgid "Eryssa, what news of the elves?"
-msgstr "Anita, mi hír a tündékről?"
+msgstr "Eryssa, mi hír a tündékről?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:120
@@ -7975,13 +7963,12 @@ msgstr "Ki ez az idegesítő liba?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:239
-#, fuzzy
 msgid ""
 "This is the famous and benevolent princess Eryssa, in whose rescue we "
 "sacrificed many lives and MUCH gold."
 msgstr ""
-"Ő a híres és jóságos Anita hercegnő, akinek megmentéséért rengeteg életet és "
-"SOK-SOK aranyat áldoztunk fel."
+"Ő a híres és jóságos Eryssa hercegnő, akinek megmentéséért rengeteg életet "
+"és SOK-SOK aranyat áldoztunk fel."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:243
@@ -8315,12 +8302,11 @@ msgstr "Hol találom a bandátok vezérét, Tallint?"
 #. [message]: speaker=Himadrin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:945
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1246
-#, fuzzy
 msgid ""
 "Princess Eryssa sends you this gold along with the order to stay clear of "
 "any Northern Elf if you know what's good for you."
 msgstr ""
-"Anita hercegnő küldte ezt az aranyat neked, egyúttal azt is üzente, ha jót "
+"Eryssa hercegnő küldte ezt az aranyat neked, egyúttal azt is üzente, ha jót "
 "akarsz, tartsd magad távol az északi tündéktől."
 
 #. [message]: speaker=Tallin
@@ -8484,8 +8470,8 @@ msgid ""
 "Princess! We have finally found you! Thank the Bright Gods you are free! "
 "Your father had originally sent us to rescue you."
 msgstr ""
-"Hercegnő! Végre megtaláltunk! Istennek hála szabad vagy! Apád azért küldött, "
-"hogy megmentsünk!"
+"Hercegnő! Végre megtaláltunk! Istennek hála, szabad vagy! Apád azért "
+"küldött, hogy megmentsünk!"
 
 #. [message]: speaker=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1162
@@ -8689,9 +8675,8 @@ msgstr "Hahahaha! Nagysz..."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:262
-#, fuzzy
 msgid "<big>RAKSHAS!!!</big>"
-msgstr "RAKSHAS!!!"
+msgstr "<big>RAKSHAS!!!</big>"
 
 #. [message]: speaker=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:266
@@ -8721,13 +8706,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:306
-#, fuzzy
 msgid ""
 "Blast it. The coward has fled. Eryssa, your elves are good at moving quickly "
 "through the forests. Do you think they can overtake and pin him down while "
 "we deal with this fortress?"
 msgstr ""
-"A fenébe. Meglépett a gyáva. Anita, a tündék gyorsan át tudnak jutni az "
+"A fenébe. Meglépett a gyáva. Eryssa, a tündék gyorsan át tudnak jutni az "
 "erdőn. Szerinted utol tudják érni, s elfogni, amíg mi bevesszük az erődöt?"
 
 #. [message]: speaker=Eryssa
@@ -8905,14 +8889,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:37
-#, fuzzy
 msgid ""
 "With tears streaming down her face, Eryssa approached the fallen hero and "
 "cradled his head in her lap. As she stroked his face, his eyes fluttered "
 "open."
 msgstr ""
-"Anita könnyes szemmel közelített az elesett hőshöz, s fejét a keblére vonta. "
-"Ahogy letekintett, Hidel lassan kinyitotta a szemét."
+"Eryssa könnyes szemmel közelített az elesett hőshöz, s fejét a keblére "
+"vonta. Ahogy letekintett, Hidel lassan kinyitotta a szemét."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:40
@@ -8926,15 +8909,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:44
-#, fuzzy
 msgid ""
 "Her face streaked with tears, Eryssa gazed imploringly at Father Morvin and "
 "Sister Thera. They simply sighed and shook their heads. It was too late to "
 "save Hidel. In a broken voice Eryssa addressed him:"
 msgstr ""
-"Anita könnyeivel küszködve, esdekelve nézett Marcus atyára és Theta nővérre. "
-"Ők csak sóhajtottak, s megrázták a fejüket. Túl későn érkeztek, Hidelt már "
-"nem lehetett megmenteni. Anita megtört hangon szólalt meg:"
+"Eryssa könnyeivel küszködve, esdekelve nézett Morvin atyára és Thera "
+"nővérre. Ők csak sóhajtottak, s megrázták a fejüket. Túl későn érkeztek, "
+"Hidelt már nem lehetett megmenteni. Eryssa megtört hangon szólalt meg:"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:47
@@ -8995,22 +8977,20 @@ msgstr "Szolgálatára uram."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:74
-#, fuzzy
 msgid ""
 "Eryssa has been... my charge ever... since she was born.... I now return... "
 "to the earth... from which.... I sprang... Please take care... of her."
 msgstr ""
-"Anitára... nekem kellett... vigyáznom... születése óta... visszatérek... a "
+"Eryssára... nekem kellett... vigyáznom... születése óta... visszatérek... a "
 "porba... ahonnan... vétettem... Kérlek... vigyázz rá! "
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:78
-#, fuzzy
 msgid ""
 "Rest assured, sir, I will place myself between Eryssa and any ill that "
 "strength or love may counter."
 msgstr ""
-"Efelől nyugodt lehet, uram, megvédem Anitát bármi áron, amíg csak erőmből és "
+"Efelől nyugodt lehet uram, megvédem Anitát bármi áron, amíg csak erőmből és "
 "szerelmemből telik."
 
 #. [part]
@@ -9024,26 +9004,24 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:87
-#, fuzzy
 msgid ""
 "With these words Hidel closed his eyes and breathed his last. As Eryssa wept "
 "with Hidel's head in her lap, Tallin approached her, hesitating, and then "
 "wrapped her gently in his arms."
 msgstr ""
 "Ezek voltak Hidel utolsó szavai. Szeme lecsukódott, s utolsó leheletével "
-"lelke is elszállt. Anita zokogva ölelte magához Hidel fejét. Tallin lassan "
+"lelke is elszállt. Eryssa zokogva ölelte magához Hidel fejét. Tallin lassan "
 "odament, s szelíden felemelte."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:90
-#, fuzzy
 msgid ""
 "Sobbing against Tallin's chest, Eryssa told him of the many ways Hidel had "
 "cherished and warded her since the hour of her birth. How he had comforted "
 "her childhood hurts; how in later years, he had guided her in the green "
 "paths of the forest, and taught her the deep mysteries of Elven-kind."
 msgstr ""
-"Anita Tallin mellkasára borult, s zokogva ismételgette, hogy Hidel milyen "
+"Eryssa Tallin mellkasára borult, s zokogva ismételgette, hogy Hidel milyen "
 "szeretettel pátyolgatta őt születésétől fogva. Hányszor vigasztalta, amikor "
 "megbántották, s később hányszor tettek felfedező utakat az erdőben, s hogy ő "
 "volt az, aki a tündék legszentebb titkaiba is beavatta."
@@ -9060,15 +9038,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:96
-#, fuzzy
 msgid ""
 "As Tallin comforted Eryssa, the rest of the party spread out and rallied the "
 "scattered elves, and tending to the wounded. This being done, they once "
 "again came before Tallin and Eryssa."
 msgstr ""
-"Amíg Tallin Anitát vigasztalta, a csapat a csatamezőt járta körbe. "
+"Amíg Tallin Eryssát vigasztalta, a csapat a csatamezőt járta körbe. "
 "Összegyűjtötték a tündéket, bekötözték a sebesülteket. Ahogy ezzel végeztek, "
-"ismét megjelentek Tallin és Anita előtt."
+"ismét megjelentek Tallin és Eryssa előtt."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:99
@@ -9092,7 +9069,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:107
-#, fuzzy
 msgid ""
 "At these words, Eryssa arose and wiped away her tears. She took command of "
 "the surviving elvish forces, for all knew she was a princess of high rank "
@@ -9100,7 +9076,7 @@ msgid ""
 "them was less grim than her own as they took arms and started down Rakshas's "
 "back-trail."
 msgstr ""
-"Ezekre a szavakra Anita felemelkedett és felszárította könnyeit. Átvette a "
+"Ezekre a szavakra Eryssa felemelkedett és felszárította könnyeit. Átvette a "
 "túlélő tündék feletti parancsnokságot. Mindenki tudta, hogy magas rangú "
 "hercegnőként őt illette ez a tisztség. A sereg marcona arcú tagjai sem "
 "vágtak nála zordabb képet, amikor fegyverzetüket magukhoz véve elindultak "
@@ -9350,12 +9326,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:699
-#, fuzzy
 msgid ""
 "Eryssa and the remaining elves, eager to avenge Hidel, went south, while "
 "Tallin himself led the western group."
 msgstr ""
-"Anita és a megmaradt tündék, bosszúvágytól égve délnyugatnak tartottak, míg "
+"Eryssa és a megmaradt tündék bosszúvágytól égve délnyugatnak tartottak, míg "
 "Tallin a nyugatra tartó csapatot vezette."
 
 #. [message]: speaker=narrator
@@ -9728,7 +9703,7 @@ msgid ""
 msgstr ""
 "Egy olyan semleges tanácsot javasolnék emberek, törpök, tündék, "
 "perzsekények, trollok és egyebek részvételével megalakítani, amely nem zárna "
-"ki semmilyen fajt, még az orkokat sem."
+"ki semmilyen fajt - még az orkokat sem."
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:128
@@ -9854,12 +9829,11 @@ msgstr ""
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:187
-#, fuzzy
 msgid ""
 "Father Morvin, this whole plan is your idea. Would you and your wife be "
 "willing to stand by my side and support me?"
 msgstr ""
-"Marcus atya, ez az egész a te ötletedből született. Feleségeddel együtt "
+"Morvin atya, ez az egész a te ötletedből született. Feleségeddel együtt "
 "vállalnád, hogy tanácsadóként továbbra is melletem álltok?"
 
 #. [message]: id=Father Morvin
@@ -9921,14 +9895,13 @@ msgstr "Elenia?"
 
 #. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:246
-#, fuzzy
 msgid ""
 "Tallin, as you know, I have been separated from my race and kinsmen - well, "
 "except Eryssa - for many years now. I wish to go back to the elvish forests "
 "and live among my kinsmen again. Perhaps I will return someday."
 msgstr ""
 "Tallin, mint tudod, évekig el voltam zárva a fajtámtól, a rokonaimtól - "
-"kivéve az utóbbi napokat Anitával. Nagyon szeretném már viszontlátni az "
+"kivéve az utóbbi napokat Eryssával. Nagyon szeretném már viszontlátni az "
 "erdeinket és a rokonaimat. Egy nap talán még visszatérek."
 
 #. [message]: id=Eryssa
@@ -10035,13 +10008,12 @@ msgstr ""
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:329
-#, fuzzy
 msgid ""
 "I believe Thera and I can help you with that, Abhai. Have no worries, you "
 "shall soon be home."
 msgstr ""
-"Azt hiszem Theta és én segíthetünk rajtad Abhai. Ne aggódj, nemsokára otthon "
-"leszel."
+"Azt hiszem Thera és én segíthetünk rajtad, Abhai. Ne aggódj, nemsokára "
+"otthon leszel."
 
 #. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:333
@@ -10101,13 +10073,12 @@ msgstr "Pihenésed legyen békés és zavartalan, Ro'Arthian."
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:371
-#, fuzzy
 msgid ""
 "And Eryssa... I may be rash and bold to ask this but... *goes to his knees "
 "in front of Eryssa and takes her hand* Will you marry me?"
 msgstr ""
-"És végül Anita... Lehet, hogy merész és meggondolatlan tett részemről, de... "
-"*térdre ereszkedik és megfogja Anita kezét* Hozzám jössz feleségül?"
+"És végül Eryssa... Lehet, hogy merész és meggondolatlan tett részemről, "
+"de... *térdre ereszkedik és megfogja Eryssa kezét* Hozzám jössz feleségül?"
 
 #. [message]: id=Eryssa
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:375
@@ -10127,15 +10098,14 @@ msgstr ""
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:383
-#, fuzzy
 msgid ""
 " *eyes on Eryssa* I know, Hamel. Then may the coming seventy years be the "
 "most happiest and fulfilling years in our lives. Should we deny ourselves "
 "happiness out of the fear of loss?"
 msgstr ""
-" *szemét Anitára szegezve* Tudom Hamel. De ez a hetven év életünk legszebb, "
-"legtartalmasabb hetven éve lesz. Tagadjuk meg a boldogságot magunktól a "
-"veszteségtől való félelem miatt? "
+" *szemét Eryssára szegezve* Tudom, Hamel. De ez a hetven év életünk "
+"legszebb, legtartalmasabb hetven éve lesz. Tagadjuk meg a boldogságot "
+"magunktól a veszteségtől való félelem miatt? "
 
 #. [message]: id=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:387
@@ -10149,18 +10119,16 @@ msgstr "Lehet, hogy bolondság részemről Tallin, de... igen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:395
-#, fuzzy
 msgid ""
 "The joy of the multitude could not be contained, and the ensuing celebration "
 "lasted for a full five days. At that time Tallin and Eryssa were duly "
 "married by Father Morvin and Sister Thera."
 msgstr ""
-"A sokaság öröme az elkövetkező öt napban fékezhetetlenül áradt. Marcus atya "
-"és Theta nővér szertartásosan összeeskette a fiatalokat. "
+"A sokaság öröme az elkövetkező öt napban fékezhetetlenül áradt. Morvin atya "
+"és Thera nővér szertartásosan összeeskette a fiatalokat. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:400
-#, fuzzy
 msgid ""
 "After the wedding, Tallin and Eryssa went back to Dwarven Doors where they "
 "founded the Council of Warders of the Northern Alliance, a body dedicated to "
@@ -10168,7 +10136,7 @@ msgid ""
 "main headquarters of the Northern Alliance would be the new city of Dwarven "
 "Doors."
 msgstr ""
-"Esküvő után Tallin és Anita visszatértek Dwarven Doorsba, ahol "
+"Esküvő után Tallin és Eryssa visszatértek Dwarven Doorsba, ahol "
 "megalapították az Északi Szövetség Biztonsági Tanácsát. Ez a testület "
 "hivatalosan a béke és igazságosság biztosítását szolgálta Északföldén. Az "
 "Északi Szövetség székhelye az újjáépített Dwarven Doors város lett."
@@ -10176,29 +10144,27 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:405
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:426
-#, fuzzy
 msgid ""
 "On Father Morvin's advice, the Council approached all the different orcish "
 "tribes and made treaties with them. If a chieftain refused to cooperate with "
 "the Alliance, he was forcibly removed from his post and another more "
 "favorably disposed put in his place."
 msgstr ""
-"Marcus atya útmutatásait követve a Tanács küldöttséget menesztett a "
+"Morvin atya útmutatásait követve a Tanács küldöttséget menesztett a "
 "különböző ork törzsekhez és egyezséget kötött velük. Ha a törzsfő ellenállt, "
 "s nem volt hajlandó együttműködni a szövetséggel, erővel eltávolították "
 "posztjáról, s utódául egy készségesebb orkot tettek meg."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:410
-#, fuzzy
 msgid ""
 "Although Tallin faced many challenges as the head of the Northern Alliance, "
 "his marriage with Eryssa was serene and filled with happiness. Together they "
 "had one son, about whom were written many legends."
 msgstr ""
 "Bár Tallinnak az Északi Szövetség fejeként számos kihívással kellett "
-"szembenéznie, házassága Anitával nyugodt és boldogsággal teli volt. Egy fiuk "
-"született, akiről később rengeteg legenda szólt."
+"szembenéznie, házassága Eryssával nyugodt és boldogsággal teli volt. Egy "
+"fiuk született, akiről később rengeteg legenda szólt."
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:417
@@ -10259,6 +10225,11 @@ msgid ""
 "sound that might indicate unwary prey in their domain, and will home in on "
 "it with remorseless efficiency."
 msgstr ""
+"A folyamokban és tengerekben élő vízikígyók meglehetősen félelmetes "
+"ellenségek, a ritka, barlanglakó fajtájuk pedig egyenesen szörnyű. Habár "
+"szemük a barlangok hádészi sötétjében nem használható, hallásuk olyan "
+"kifinomulttá vált, hogy a legkisebb neszre is felfigyelnek, s könyörtelenül "
+"lecsapnak a gyanútlan áldozatra, ami a területükre téved. "
 
 #. [message]: speaker=Krash
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:13
@@ -10352,19 +10323,17 @@ msgstr "Sajnálom, nélkülem kell folytatnotok a küldetést!"
 
 #. [message]: speaker=Elenia
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:199
-#, fuzzy
 msgid "Eryssa, no! Please don't die!"
-msgstr "Anita, ne! Kérlek, ne halj meg!"
+msgstr "Eryssa, ne! Kérlek, ne halj meg!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:203
-#, fuzzy
 msgid ""
 "I am sorry, Elenia, we tried our best. *sigh* I will never forget you, "
 "Eryssa."
 msgstr ""
 "Sajnálom Elenia, mindent megpróbáltunk. *sóhajt* Soha nem foglak elfelejteni "
-"Anita."
+"Eryssa."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:209
@@ -10415,10 +10384,9 @@ msgstr "Hiába erőlködsz aljas teremtmény, nem tudsz bennünket elpusztítani
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:281
-#, fuzzy
 msgid "Oh no, Morvin! We have failed in our mission to help Tallin!"
 msgstr ""
-"Ó ne Marcus! Elbuktuk a küldetésünket. Nem tudunk már Tallinnak segíteni."
+"Ó ne Morvin! Elbuktuk a küldetésünket. Nem tudunk már Tallinnak segíteni."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:285
@@ -10427,22 +10395,20 @@ msgstr "Elbukni? Soha! Ez a szó nem szerepel a szótárunkban."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:294
-#, fuzzy
 msgid ""
 "Alas! I am dying! Morvin darling, I wish you were beside me so that I may "
 "die in your arms! So that I may feel the kiss of your lips on mine one last "
 "time!"
 msgstr ""
-"Sajnálom, most meg fogok halni! Marcus kedvesem, bárcsak itt lennél "
+"Sajnálom, most meg fogok halni! Morvin kedvesem, bárcsak itt lennél "
 "mellettem és a karjaidban halhatnék meg! Hogy még egyszer utoljára ajkamon "
 "érezzem a csókod ízét."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:303
-#, fuzzy
 msgid " *rolls eyes* Thera, do you always have to be so dramatic?"
 msgstr ""
-" *forgatja a szemeit* Theta, muszáj mindig ilyen nagyjelenetet csinálni? "
+" *forgatja a szemeit* Thera, muszáj mindig ilyen nagyjelenetet csinálni? "
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:307
@@ -10466,19 +10432,17 @@ msgstr ""
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:323
-#, fuzzy
 msgid ""
 "Don't worry, Thera, you will have plenty of opportunities to set him "
 "straight."
-msgstr "Ne aggódj Theta, lesz még lehetőséged megregulázni azt a teremtményt"
+msgstr "Ne aggódj Thera, lesz még lehetőséged megregulázni azt a teremtményt!"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:407
-#, fuzzy
 msgid ""
 "Thera, when this is all over, you should paint your face and join a theater."
 msgstr ""
-"Theta, ha véget ér ez az egész cécó, csatlakozhatsz egy színházhoz, sztár "
+"Thera, ha véget ér ez az egész cécó, csatlakozhatsz egy színházhoz, sztár "
 "leszel..."
 
 #. [message]: speaker=Sister Thera
@@ -10540,12 +10504,11 @@ msgstr "Azért, ha lehet, ne ölesd meg magad még egyszer."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:485
-#, fuzzy
 msgid ""
 "Thera, you should know by now that it is very unclerical to make such a "
 "spectacle of yourself."
 msgstr ""
-"Theta, csak úgy mellékesen, az effajta szemfényvesztés nem illik egy komoly "
+"Thera, csak úgy mellékesen, az effajta szemfényvesztés nem illik egy komoly "
 "papnőhöz."
 
 #. [message]: speaker=Sister Thera
@@ -10565,11 +10528,10 @@ msgstr "Mocskosul odavagyok!"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:510
-#, fuzzy
 msgid ""
 "Thera! Language like that coming from you! You should really stop hanging "
 "around the dwarves so much."
-msgstr "Theta! Ez a stílus! Túl sok időt töltöttél a törpök között..."
+msgstr "Thera! Ez a stílus! Túl sok időt töltöttél a törpök között..."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:541
@@ -10587,12 +10549,11 @@ msgstr ""
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:567
-#, fuzzy
 msgid ""
 "Oh dear. Did you just go and get yourself killed again, Morvin? Well, I'll "
 "fix that."
 msgstr ""
-"Ó drágám. Csak úgy odamentél, hogy megölesd magad, Marcus? Na, mindjárt "
+"Ó drágám. Csak úgy odamentél, hogy megölesd magad, Morvin? Na, mindjárt "
 "helyrehozom ezt a bakit."
 
 #. [message]: speaker=Father Morvin
@@ -10643,9 +10604,8 @@ msgstr "Á igen, így már jobb."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:711
-#, fuzzy
 msgid "Morvin! You bad boy, always getting into trouble."
-msgstr "Marcus! Csúnya fiú, te mindig bajba keveredsz."
+msgstr "Morvin! Csúnya fiú, te mindig bajba keveredsz."
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:715
@@ -10654,9 +10614,8 @@ msgstr "Bocsánat, nem teszem többet. Megígérem!"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:729
-#, fuzzy
 msgid "I heard that, Thera."
-msgstr "Hallottam Theta."
+msgstr "Hallottam, Thera."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:733
@@ -10675,9 +10634,8 @@ msgstr "Hol is vagy, te szörnyeteg?!"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:761
-#, fuzzy
 msgid "Ahhh, Thera, you would make such a good housewife!"
-msgstr "Ahhh Theta, Ha háziasszonyként is ilyen jól szerepelnél..."
+msgstr "Ahhh Thera, Ha háziasszonyként is ilyen jól szerepelnél..."
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:766
@@ -10686,10 +10644,9 @@ msgstr "Ahhoz előbb egy házat kéne venned nekem! *kaján somolygás*"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:770
-#, fuzzy
 msgid ""
 "Thera, don't you think that this isn't really a good time to talk about that?"
-msgstr "Hmmm Theta, biztosan ez a legalkalmasabb idő ennek megbeszélésére?"
+msgstr "Hmmm, Thera, biztosan ez a legalkalmasabb idő ennek megbeszélésére?"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:774
@@ -10779,6 +10736,7 @@ msgstr "Tisztára sült bolond volt, de azt hiszem, hiányozni fog."
 #~ msgid "Un'Yin"
 #~ msgstr "Un'Yin"
 
+#, fuzzy
 #~ msgid ""
 #~ "Oh, dinna' mind him, that'd be Camerin. He used to be yer usual scholarly "
 #~ "mage, and he moved awa' up here to be alone and study. But then when the "
@@ -10885,3 +10843,13 @@ msgstr "Tisztára sült bolond volt, de azt hiszem, hiányozni fog."
 
 #~ msgid "Ouch! That hurt. Let's try not to do that again ok?"
 #~ msgstr "Huhh. Ez fájt. Legközelebb finomabban csináld, jó."
+
+#~ msgid ""
+#~ "I am honored sir, and I hope that I will live up to the trust that the "
+#~ "Northern Elves have bestowed upon me."
+#~ msgstr ""
+#~ "Megtisztelsz uram, remélem tényleg méltó vagyok az északi tündék "
+#~ "bizalmára."
+
+#~ msgid "Thank you Tallin."
+#~ msgstr "Köszönöm Tallin."
