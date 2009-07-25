@@ -121,7 +121,7 @@ after 'scons all' it will install all binaries.
 Notes on scons for autotools users
 
 The scons build process works in a different way than configure.  It runs
-in one step, checking your configuration amnd building, rather than (as
+in one step, checking your configuration and building, rather than (as
 autotools does) generating makefiles to be run later.  So not all autotools
 options have exact scons equivalents.  
 
