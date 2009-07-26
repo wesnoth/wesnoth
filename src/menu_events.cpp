@@ -2440,7 +2440,7 @@ private:
 		cch.dispatch(cmd);
 	}
 
-	void chat_handler::user_relation_changed(const std::string& name)
+	void chat_handler::user_relation_changed(const std::string& /*name*/)
 	{
 	}
 
