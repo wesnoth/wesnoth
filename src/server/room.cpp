@@ -28,7 +28,7 @@ namespace wesnothd {
 room::room(const std::string& name)
 	: name_(name)
 	, members_()
-	, persistent_(true)
+	, persistent_(false)
 	, topic_()
 {
 }

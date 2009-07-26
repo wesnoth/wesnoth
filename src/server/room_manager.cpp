@@ -461,19 +461,27 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 		send_to_one(doc, user->first);
 		return;
 	}
-	q = msg->child("set_persistent");
+	q = msg->child("persist");
 	if (q != NULL) {
 		if (admins_.find(user->first) == admins_.end()) {
 			WRN_LOBBY << "Attempted set persistent by non-admin";
 		} else {
-			if (q->attr("value").to_bool()) {
+			if (q->attr("value").empty()) {
+				if (r->persistent()) {
+					resp.set_attr("message", "Room is persistent.");
+				} else {
+					resp.set_attr("message", "Room is not persistent.");
+				}
+			} else if (q->attr("value").to_bool()) {
 				r->set_persistent(true);
 				resp.set_attr("message", "Room set as persistent.");
 			} else {
 				r->set_persistent(false);
 				resp.set_attr("message", "Room set as not persistent.");
 			}
+			send_to_one(doc, user->first);
 		}
+		return;
 	}
 	r->send_server_message("Unknown room query type", user->first);
 }
