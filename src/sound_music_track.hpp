@@ -35,12 +35,16 @@ public:
 	music_track(const std::string& v_name,
 	            unsigned int v_ms_before,
 	            unsigned int v_ms_after,
-	            bool v_once = false
+	            bool v_once = false,
+	            bool v_append = false,
+	            bool v_immediate = false
 	           );
 	void write(config& parent_node, bool append);
 
 	bool valid() const { return file_path_.empty() != true; }
 
+	bool append() const { return append_; }
+	bool immediate() const { return immediate_; }
 	bool play_once() const { return once_; }
 	unsigned int ms_before() const { return ms_before_; }
 	unsigned int ms_after()  const { return ms_after_;  }
@@ -61,6 +65,8 @@ private:
 	unsigned int ms_before_, ms_after_;
 
 	bool once_;
+	bool append_;
+	bool immediate_;
 };
 
 } /* end namespace sound */

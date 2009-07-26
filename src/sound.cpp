@@ -531,15 +531,14 @@ void play_music_config(const config &music_node)
 	music_track track( music_node );
 
 	// If they say play once, we don't alter playlist.
-	if (utils::string_bool(music_node["play_once"])) {
+	if (track.play_once()) {
 		current_track = track;
-		current_track.set_play_once(true);
 		play_music();
 		return;
 	}
 
 	// Clear play list unless they specify append.
-	if (!utils::string_bool(music_node["append"])) {
+	if (!track.append()) {
 		current_track_list = std::vector<music_track>();
 	}
 
@@ -564,7 +563,7 @@ void play_music_config(const config &music_node)
 	}
 
 	// They can tell us to start playing this list immediately.
-	if (utils::string_bool(music_node["immediate"])) {
+	if (track.immediate()) {
 		current_track = track;
 		play_music();
 	}

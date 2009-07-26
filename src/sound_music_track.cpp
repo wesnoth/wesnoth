@@ -31,7 +31,9 @@ music_track::music_track() :
 	file_path_(""),
 	ms_before_(0),
 	ms_after_(0),
-	once_(false)
+	once_(false),
+	append_(false),
+	immediate_(false)
 {
 	//
 	// The first music_track may be initialized before main()
@@ -48,7 +50,9 @@ music_track::music_track(const config& node) :
 	file_path_(""),
 	ms_before_(lexical_cast_default<int>(node["ms_before"])),
 	ms_after_(lexical_cast_default<int>(node["ms_after"])),
-	once_(false)
+	once_(utils::string_bool(node["play_once"])),
+	append_(utils::string_bool(node["append"])),
+	immediate_(utils::string_bool(node["immediate"]))
 {
 	if(id_.empty()) {
 		ERR_AUDIO << "empty track filename specified\n";
@@ -62,7 +66,9 @@ music_track::music_track(const std::string& v_name) :
 	file_path_(""),
 	ms_before_(0),
 	ms_after_(0),
-	once_(false)
+	once_(false),
+	append_(false),
+	immediate_(false)
 {
 	if(id_.empty()) {
 		ERR_AUDIO << "empty track filename specified\n";
@@ -71,13 +77,14 @@ music_track::music_track(const std::string& v_name) :
 	}
 }
 
-music_track::music_track(const std::string& v_name,
-		unsigned int v_ms_before, unsigned int v_ms_after, bool v_once) :
+music_track::music_track(const std::string& v_name, unsigned int v_ms_before, unsigned int v_ms_after, bool v_once, bool v_append, bool v_immediate) :
 	id_(v_name),
 	file_path_(""),
 	ms_before_(v_ms_before),
 	ms_after_(v_ms_after),
-	once_(v_once)
+	once_(v_once),
+	append_(v_append),
+	immediate_(v_immediate)
 {
 	if(id_.empty()) {
 		ERR_AUDIO << "empty track filename specified\n";
@@ -91,7 +98,9 @@ music_track::music_track(const music_track& mt) :
 	file_path_(mt.file_path_),
 	ms_before_(mt.ms_before_),
 	ms_after_(mt.ms_after_),
-	once_(mt.once_)
+	once_(mt.once_),
+	append_(mt.append_),
+	immediate_(mt.immediate_)
 {
 	// Assume mt has already been resolved...
 }
