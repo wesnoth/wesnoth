@@ -38,6 +38,7 @@
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
+#include "play_controller.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -3106,6 +3107,8 @@ private:
 	{
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, ai::manager::evaluate_command(side_num, str));
+		} catch(end_turn_exception) {
+			resources::controller->force_end_turn();
 		} catch(...) {
 			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}

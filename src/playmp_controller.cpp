@@ -579,6 +579,9 @@ void playmp_controller::handle_generic_event(const std::string& name){
 			gui_->invalidate_theme();
 		}
 	}
+	if (end_turn_) {
+		throw end_turn_exception();
+	}
 }
 
 bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const

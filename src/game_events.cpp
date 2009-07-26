@@ -2667,9 +2667,9 @@ WML_HANDLER_FUNCTION(clear_variable, /*event_info*/, cfg)
 	}
 
 WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
-	{
-		throw end_turn_exception();
-	}
+{
+	resources::controller->force_end_turn();
+}
 
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {

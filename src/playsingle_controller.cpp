@@ -812,6 +812,9 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 	if (name == "ai_user_interact"){
 		play_slice(false);
 	}
+	if (end_turn_){
+		throw end_turn_exception();
+	}
 }
 
 void playsingle_controller::check_time_over(){

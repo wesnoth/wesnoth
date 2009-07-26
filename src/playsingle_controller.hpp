@@ -45,6 +45,7 @@ public:
 	virtual void toggle_shroud_updates();
 	virtual void update_shroud_now();
 	virtual void end_turn();
+	virtual void force_end_turn(){ end_turn_ = true; }
 	virtual void rename_unit();
 	virtual void create_unit();
 	virtual void change_side();

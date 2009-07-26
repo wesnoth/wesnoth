@@ -79,6 +79,8 @@ public:
 	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
+	virtual void force_end_turn(){}
+
 	//turn functions
 	size_t turn() const {return tod_manager_.turn();}
 	int number_of_turns() const {return tod_manager_.number_of_turns();}

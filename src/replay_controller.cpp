@@ -340,7 +340,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 						throw;
 					}
 				}
-			} catch(end_turn_exception) {
+			} catch(end_turn_exception&) {
 			}
 
 			finish_side_turn();
