@@ -2009,6 +2009,7 @@ private:
 			void do_network_send_req_arg();
 			void do_room_query();
 			void do_room_query_noarg();
+			void do_gen_room_query();
 			void do_whisper();
 			void do_chanmsg();
 			void do_log();
@@ -2121,6 +2122,7 @@ private:
 					_("Request a list of details you can set for your registered nick."));
 				register_command("join", &chat_command_handler::do_network_send_req_arg,
 					_("Join a room."), "<room>");
+				register_alias("join", "j");
 				register_command("part", &chat_command_handler::do_network_send_req_arg,
 					_("Part a room."), "<room>");
 				register_command("names", &chat_command_handler::do_room_query,
@@ -2128,7 +2130,10 @@ private:
 				register_command("rooms", &chat_command_handler::do_room_query_noarg,
 					_("List available rooms."));
 				register_command("room", &chat_command_handler::do_chanmsg,
-					_("Room msg."), "<room> <msg>");
+					_("Room message."), "<room> <msg>");
+				register_command("room_query", &chat_command_handler::do_gen_room_query,
+					_("Room query."), "<room> <type> [value]");
+				register_alias("room_query", "rq");
 			}
 		private:
 			chat_handler& chat_handler_;
@@ -2516,8 +2521,19 @@ private:
 		if (get_data(1).empty()) return command_failed_need_arg(1);
 		config data;
 		config& q = data.add_child("room_query");
-		q["room"] = get_data();
+		q["room"] = get_arg(1);
 		q.add_child(get_cmd());
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_gen_room_query()
+	{
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		config data;
+		config& q = data.add_child("room_query");
+		q["room"] = get_arg(1);
+		config& c = q.add_child(get_arg(2));
+		c["value"] = get_data(3);
 		network::send_data(data, 0, true);
 	}
 
