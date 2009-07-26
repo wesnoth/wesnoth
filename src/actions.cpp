@@ -211,15 +211,13 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 }
 
 std::string recruit_unit(int side, const unit &new_u,
-	const map_location &recruit_loc, bool is_recall,
+	map_location &recruit_location, bool is_recall,
 	bool show, bool need_castle, bool full_movement,
 	bool wml_triggered)
 {
 	const events::command_disabler disable_commands;
 
 	LOG_NG << "recruiting unit for side " << side << "\n";
-
-	map_location recruit_location = recruit_loc;
 
 	// Find the unit that can recruit
 	unit_map::const_iterator u = resources::units->begin(),

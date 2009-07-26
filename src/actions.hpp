@@ -48,15 +48,15 @@ struct end_level_exception;
  * If @a need_castle is true, then the new unit must be on the same castle
  * as the leader of the team is on the keep of.
  *
- * If @a preferred_location is a valid location, it will be used,
- * otherwise a valid location will be arbitrarily chosen.
- * If @a disp is not NULL, the new unit will be faded in.
+ * If @a recruit_location is a valid location, it will be used,
+ * otherwise a valid location will be arbitrarily chosen and returned
+ * (hence the non-const reference).
  *
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
 std::string recruit_unit(int side, const unit &u,
-	const map_location &recruit_location, bool is_recall,
+	map_location &recruit_location, bool is_recall,
 	bool show = false, bool need_castle = true,
 	bool full_movement = false, bool wml_triggered = false);
 
