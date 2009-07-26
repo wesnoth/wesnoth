@@ -2114,6 +2114,7 @@ static int do_gameloop(int argc, char** argv)
 		} else if(res == gui::RELOAD_GAME_DATA) {
 			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());
 			game.reload_changed_game_config();
+			image::flush_cache();
 			continue;
 #ifndef DISABLE_EDITOR2
 		} else if(res == gui::START_MAP_EDITOR) {
