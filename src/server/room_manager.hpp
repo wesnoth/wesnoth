@@ -14,6 +14,8 @@
 
 #include "room.hpp"
 
+#include "../config.hpp"
+
 #include <boost/utility.hpp>
 
 #ifndef SERVER_ROOM_MANAGER_HPP_INCLUDED
@@ -29,8 +31,48 @@ namespace wesnothd {
 class room_manager : private boost::noncopyable
 {
 public:
-	room_manager(player_map& all_players);
+	/**
+	 * Room manager constructor
+	 */
+	room_manager(player_map& all_players, const std::set<network::connection>& admins);
+
+	/**
+	 * Room manager destructor
+	 */
 	~room_manager();
+
+	enum PRIVILEGE_POLICY {
+		PP_EVERYONE,
+		PP_REGISTERED,
+		PP_ADMINS,
+		PP_NOBODY,
+		PP_COUNT
+	};
+
+	static PRIVILEGE_POLICY pp_from_string(const std::string& str);
+	static const char* string_from_pp(PRIVILEGE_POLICY pp);
+
+	/**
+	 * Load settings from the main config file
+	 */
+	void load_config(const config& cfg);
+
+	/**
+	 * Get the room storage file name. If empty, rooms are not stored on disk.
+	 */
+	const std::string& storage_filename() const;
+
+	/**
+	 * Reads stored rooms from a file on disk, or returns immediately
+	 * if load_config was not called before or the storage filename is empty
+	 */
+	void read_rooms();
+
+	/**
+	 * Writes rooms to the storage file or returns immediately if load_config
+	 * was not called beforethe storage filename is empty
+	 */
+	void write_rooms();
 
 	/**
 	 * Get a room by name, or NULL if it does not exist
@@ -170,6 +212,9 @@ private:
 	/** Reference to the all players map */
 	player_map& all_players_;
 
+	/** Reference to the set of admins */
+	const std::set<network::connection>& admins_;
+
 	/** The lobby-room, treated separetely */
 	room* lobby_;
 
@@ -184,6 +229,18 @@ private:
 	/** Room names stored for players that have entered a game */
 	typedef std::map<network::connection, std::set<std::string> > t_player_stored_rooms_;
 	t_player_stored_rooms_ player_stored_rooms_;
+
+	/**
+	 * Persistent room storage filename
+	 */
+	std::string filename_;
+
+	/**
+	 * Flag controlling whether to compress the stored rooms or not
+	 */
+	bool compress_stored_rooms_;
+
+	PRIVILEGE_POLICY new_room_policy_;
 
 	static const char* const lobby_name_;
 };

@@ -14,8 +14,13 @@
 #include "game.hpp"
 #include "player_network.hpp"
 #include "room_manager.hpp"
+
+#include "../serialization/parser.hpp"
+#include "../serialization/binary_or_text.hpp"
+#include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../log.hpp"
+
 static lg::log_domain log_server_lobby("server/lobby");
 #define ERR_LOBBY LOG_STREAM(err, log_server_lobby)
 #define WRN_LOBBY LOG_STREAM(warn, log_server_lobby)
@@ -26,20 +31,108 @@ namespace wesnothd {
 
 const char* const room_manager::lobby_name_ = "lobby";
 
-room_manager::room_manager(player_map &all_players)
-: all_players_(all_players), lobby_(NULL)
+room_manager::room_manager(player_map &all_players, const std::set<network::connection>& admins)
+: all_players_(all_players), admins_(admins), lobby_(NULL), filename_(),
+compress_stored_rooms_(true), new_room_policy_(PP_EVERYONE)
 {
-	lobby_ = create_room(lobby_name_);
 }
 
 room_manager::~room_manager()
 {
 	// this assumes the server is shutting down, so there's no need to
 	// send the actual room-quit messages to clients
+	write_rooms();
 	foreach (t_rooms_by_name_::value_type i, rooms_by_name_) {
 		delete i.second;
 	}
 }
+
+room_manager::PRIVILEGE_POLICY room_manager::pp_from_string(const std::string& str)
+{
+	if (str == "everyone") {
+		return PP_EVERYONE;
+	} else if (str == "registered") {
+		return PP_REGISTERED;
+	} else if (str == "admins") {
+		return PP_ADMINS;
+	} else if (str == "nobody") {
+		return PP_NOBODY;
+	}
+	return PP_COUNT;
+}
+
+const char* room_manager::string_from_pp(room_manager::PRIVILEGE_POLICY pp)
+{
+	switch (pp) {
+		case PP_EVERYONE: return "everyone";
+		case PP_REGISTERED: return "registered";
+		case PP_ADMINS: return "admins";
+		case PP_NOBODY: return "nobody";
+		default: return "error";
+	}
+}
+
+void room_manager::load_config(const config& cfg)
+{
+	filename_ = cfg["room_save_file"];
+	compress_stored_rooms_ = utils::string_bool(cfg["compress_stored_rooms"], true);
+	new_room_policy_ = pp_from_string(cfg["new_room_policy"]);
+}
+
+const std::string& room_manager::storage_filename() const
+{
+	return filename_;
+}
+
+void room_manager::read_rooms()
+{
+	if (filename_.empty() || !file_exists(filename_)) return;
+
+	LOG_LOBBY << "Reading rooms from " <<  filename_ << "\n";
+	config cfg;
+	scoped_istream file = istream_file(filename_);
+	if (compress_stored_rooms_) {
+		read_gz(cfg, *file);
+	} else {
+		detect_format_and_read(cfg, *file);
+	}
+
+	foreach (const config &c, cfg.child_range("room")) {
+		room* r(new room(c));
+		if (room_exists(r->name())) {
+			ERR_LOBBY << "Duplicate room ignored in stored rooms: "
+				<< r->name() << "\n";
+			delete r;
+		} else {
+			rooms_by_name_.insert(std::make_pair(r->name(), r));
+		}
+	}
+	lobby_ = get_room(lobby_name_);
+	if (lobby_ == NULL) {
+		lobby_ = create_room(lobby_name_);
+	}
+}
+
+void room_manager::write_rooms()
+{
+	if (filename_.empty()) return;
+
+	LOG_LOBBY << "Writing rooms to " << filename_ << "\n";
+	config cfg;
+	foreach (const t_rooms_by_name_::value_type& v, rooms_by_name_) {
+		const room& r = *v.second;
+		if (r.persistent()) {
+			config& c = cfg.add_child("room");
+			r.write(c);
+		}
+	}
+
+	scoped_ostream file = ostream_file(filename_);
+	config_writer writer(*file, compress_stored_rooms_);
+	writer.write(cfg);
+}
+
+
 
 room* room_manager::get_room(const std::string &name)
 {
@@ -71,7 +164,26 @@ room* room_manager::get_create_room(const std::string &name, network::connection
 {
 	room* r = get_room(name);
 	if (r == NULL) {
-		if (1) { //TODO: check if player can create room
+		bool can_create = false;
+		switch (new_room_policy_) {
+			case PP_EVERYONE:
+				can_create = true;
+				break;
+			case PP_REGISTERED:
+				{
+					player_map::iterator i = all_players_.find(player);
+					if (i != all_players_.end()) {
+						can_create = i->second.registered();
+					}
+				}
+				break;
+			case PP_ADMINS:
+				can_create = admins_.find(player) != admins_.end();
+				break;
+			default:
+				break;
+		}
+		if (can_create) { //TODO: check if player can create room
 			//TODO: filter room names for abuse?
 			r = create_room(name);
 		} else {
@@ -338,6 +450,8 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 	}
 	std::string room_name = msg->attr("room").to_string();
 	if (room_name.empty()) room_name = lobby_name_;
+
+	/* room-specific queries */
 	room* r = require_room(room_name, user, "query");
 	if (r == NULL) return;
 	resp.set_attr_dup("room", room_name.c_str());
@@ -346,6 +460,20 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 		fill_member_list(r, resp);
 		send_to_one(doc, user->first);
 		return;
+	}
+	q = msg->child("set_persistent");
+	if (q != NULL) {
+		if (admins_.find(user->first) == admins_.end()) {
+			WRN_LOBBY << "Attempted set persistent by non-admin";
+		} else {
+			if (q->attr("value").to_bool()) {
+				r->set_persistent(true);
+				resp.set_attr("message", "Room set as persistent.");
+			} else {
+				r->set_persistent(false);
+				resp.set_attr("message", "Room set as not persistent.");
+			}
+		}
 	}
 	r->send_server_message("Unknown room query type", user->first);
 }

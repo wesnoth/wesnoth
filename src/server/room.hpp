@@ -38,7 +38,12 @@ public:
 	/**
 	 * Construct a room from WML
 	 */
-	room(const simple_wml::node& wml);
+	room(const config& cfg);
+
+	/**
+	 * Write room info to a config
+	 */
+	void write(config& cfg) const;
 
 	/**
 	 * The name of this room
@@ -47,14 +52,24 @@ public:
 
 	/**
 	 * Whether this room should be 'persistent', i.e. not deleted when there
-	 * are no players within.
+	 * are no players within and stored on disk if needed.
 	 */
 	bool persistent() const;
+
+	/**
+	 * Set the persistent flag for this room
+	 */
+	void set_persistent(bool v);
 
 	/**
 	 * This room's topic/motd, sent to all joining players
 	 */
 	const std::string& topic() const;
+
+	/**
+	 * Set the topic for this room
+	 */
+	void set_topic(const std::string& v);
 
 	/**
 	 * Return the number of players in this room

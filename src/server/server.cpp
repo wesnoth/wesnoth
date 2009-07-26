@@ -299,7 +299,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	ghost_players_(),
 	games_(),
 	not_logged_in_(),
-	rooms_(players_),
+	rooms_(players_, admins_),
 	input_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -334,6 +334,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 {
 	load_config();
 	ban_manager_.read();
+	rooms_.read_rooms();
 #ifndef _MSC_VER
 	signal(SIGHUP, reload_config);
 #endif
@@ -491,6 +492,7 @@ void server::load_config() {
 		}
 	}
 	ban_manager_.load_config(cfg_);
+	rooms_.load_config(cfg_);
 
 	// If there is a [user_handler] tag in the config file
 	// allow nick registration, otherwise we set user_handler_

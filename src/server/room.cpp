@@ -28,17 +28,24 @@ namespace wesnothd {
 room::room(const std::string& name)
 	: name_(name)
 	, members_()
-	, persistent_()
+	, persistent_(true)
 	, topic_()
 {
 }
 
-room::room(const simple_wml::node& wml)
-	: name_(wml.attr("name").to_string())
+room::room(const config& wml)
+	: name_(wml.get_attribute("name"))
 	, members_()
-	, persistent_(wml.attr("persistent").to_bool())
-	, topic_(wml.attr("topic").to_string())
+	, persistent_(utils::string_bool(wml.get_attribute("persistent")))
+	, topic_(wml.get_attribute("topic"))
 {
+}
+
+void room::write(config& cfg) const
+{
+	cfg["name"] = name_;
+	cfg["persistent"] = lexical_cast<std::string>(persistent_);
+	cfg["topic"] = topic_;
 }
 
 const std::string& room::name() const
@@ -51,9 +58,19 @@ bool room::persistent() const
 	return persistent_;
 }
 
+void room::set_persistent(bool v)
+{
+	persistent_ = v;
+}
+
 const std::string& room::topic() const
 {
 	return topic_;
+}
+
+void room::set_topic(const std::string& v)
+{
+	topic_ = v;
 }
 
 bool room::add_player(network::connection player)
