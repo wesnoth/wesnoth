@@ -293,7 +293,12 @@ void attack_result::do_execute()
 
 	check_victory();
 	set_gamestate_changed();
-	manager::raise_enemy_attacked();
+	try {
+		manager::raise_enemy_attacked();
+	} catch (end_turn_exception&) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
+	}
 }
 
 
@@ -450,8 +455,12 @@ void move_result::do_execute()
 
 
 	set_gamestate_changed();
-	manager::raise_unit_moved();
-
+	try {
+		manager::raise_unit_moved();
+	} catch (end_turn_exception&) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
+	}
 }
 
 
@@ -670,7 +679,12 @@ void recruit_result::do_execute()
 		// Confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();
-		manager::raise_unit_recruited();
+		try {
+			manager::raise_unit_recruited();
+		} catch (end_turn_exception&) {
+			is_ok(); //Silences "unchecked result" warning
+			throw;
+		}
 	} else {
 		set_error(AI_ACTION_FAILURE);
 	}
@@ -769,15 +783,20 @@ void stopunit_result::do_execute()
 	assert(is_success());
 	const game_info& info = get_info();
 	unit_map::iterator un = info.units.find(unit_location_);
-	if (remove_movement_){
-		un->second.set_movement(0);
-		set_gamestate_changed();
-		manager::raise_unit_moved();
-	}
-	if (remove_attacks_){
-		un->second.set_attacks(0);
-		set_gamestate_changed();
-		manager::raise_unit_moved();//to be on the safe side
+	try {
+		if (remove_movement_){
+			un->second.set_movement(0);
+			set_gamestate_changed();
+			manager::raise_unit_moved();
+		}
+		if (remove_attacks_){
+			un->second.set_attacks(0);
+			set_gamestate_changed();
+			manager::raise_unit_moved();//to be on the safe side
+		}
+	} catch (end_turn_exception&) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
 	}
 }
 
