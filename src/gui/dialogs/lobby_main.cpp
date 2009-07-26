@@ -903,8 +903,33 @@ void tlobby_main::process_room_part(const config &data)
 	}
 }
 
-void tlobby_main::process_room_query_response(const config &/*data*/)
+void tlobby_main::process_room_query_response(const config& data)
 {
+	const std::string& room = data["room"];
+	const std::string& message = data["message"];
+	if (room.empty()) {
+		if (!message.empty()) {
+			add_active_window_message("server", message);
+		}
+	} else {
+		if (room_window_open(room, false)) {
+			if (!message.empty()) {
+				add_chat_room_message_received(room, "server", message);
+			}
+			if (const config& members = data.child("members")) {
+				room_info* r = lobby_info_.get_room(room);
+				assert(r);
+				r->process_room_members(members);
+				if (r == active_window_room()) {
+					update_playerlist();
+				}
+			}
+		} else {
+			if (!message.empty()) {
+				add_active_window_message("server", room + ": " + message);
+			}
+		}
+	}
 }
 
 void tlobby_main::join_button_callback(gui2::twindow &window)
