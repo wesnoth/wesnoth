@@ -322,6 +322,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	deny_unregistered_login_(false),
 	save_replays_(false),
 	replay_save_path_(),
+	allow_remote_shutdown_(false),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED),
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -430,6 +431,8 @@ void server::load_config() {
 	uh_name_ = cfg_["user_handler"];
 
 	deny_unregistered_login_ = utils::string_bool(cfg_["deny_unregistered_login"], false);
+
+	allow_remote_shutdown_ = utils::string_bool(cfg_["allow_remote_shutdown"], false);
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -1210,7 +1213,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			" are case insensitive.";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
-		if (issuer_name != "*socket*") return "";
+		if (issuer_name != "*socket*" && !allow_remote_shutdown_) return "";
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -1222,7 +1225,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << "Server is doing graceful shut down.";
 		}
 	} else if (command == "restart") {
-		if (issuer_name != "*socket*") return "";
+		if (issuer_name != "*socket*" && !allow_remote_shutdown_) return "";
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {

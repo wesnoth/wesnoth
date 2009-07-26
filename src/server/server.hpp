@@ -74,6 +74,7 @@ private:
 	bool deny_unregistered_login_;
 	bool save_replays_;
 	std::string replay_save_path_;
+	bool allow_remote_shutdown_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
