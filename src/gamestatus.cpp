@@ -213,8 +213,17 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 					if ( !(*scenario_side)["gold_add"].empty() ) {
 						(*carryover_side)["gold_add"] = (*scenario_side)["gold_add"];
 					}
+					//merge player information into the scenario cfg
+					(*scenario_side)["save_id"] = (*carryover_side)["save_id"];
+					(*scenario_side)["gold"] = str_cast<int>(ngold);
+					(*scenario_side)["gold_add"] = (*carryover_side)["gold_add"];
+					(*scenario_side)["can_recruit"]	= (*carryover_side)["can_recruit"];
+					(*scenario_side)["name"] = (*carryover_side)["name"];
+					//add recallable units
+					foreach (const config* u, carryover_side->get_children("unit")) {
+						scenario_side->add_child("unit", *u);
+					}
 
-					(*scenario_side).merge_with(*carryover_side);
 				} else {
 					//no matching side in the current scenario, we add the persistent information in a [player] tag
 					cfg.add_child("player", (*carryover_side));
