@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-19 20:58+0200\n"
-"PO-Revision-Date: 2009-05-06 13:50+0100\n"
-"Last-Translator: Thierry Bothorel <thierrybothorel@yahoo.fr>\n"
+"PO-Revision-Date: 2009-07-27 23:22+0100\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,18 +133,21 @@ msgstr "Château"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
+#, fuzzy
 msgid "Elven Keep"
-msgstr ""
+msgstr "Château"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
+#, fuzzy
 msgid "Ruined Castle Keep"
-msgstr ""
+msgstr "Château"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:334
+#, fuzzy
 msgid "Sunken Castle Keep"
-msgstr ""
+msgstr "Château"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:387
@@ -217,18 +220,21 @@ msgstr "Forêt tropicale"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:484
+#, fuzzy
 msgid "Summer Deciduous Forest"
-msgstr ""
+msgstr "Colline boisé"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:495
+#, fuzzy
 msgid "Fall Deciduous Forest"
-msgstr ""
+msgstr "Colline boisé"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:506
+#, fuzzy
 msgid "Winter Deciduous Forest"
-msgstr ""
+msgstr "Colline boisé"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:517
@@ -238,18 +244,21 @@ msgstr "Forêt enneigée"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:529
+#, fuzzy
 msgid "Summer Mixed Forest"
-msgstr ""
+msgstr "Colline boisé"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:540
+#, fuzzy
 msgid "Fall Mixed Forest"
-msgstr ""
+msgstr "Forêt enneigée"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:551
+#, fuzzy
 msgid "Winter Mixed Forest"
-msgstr ""
+msgstr "Colline boisé"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:562
@@ -710,12 +719,12 @@ msgstr "Ancienne auteur :"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Direction d'agrandissement / Rétrécissement"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Copier le terrain bordure"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -732,7 +741,7 @@ msgstr "Paramètres de l'éditeur"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Luminosité des moments de la journée prédéfinie"
 
 #. [button]: id=next_tod
 #. [button]: id=next_window
@@ -771,7 +780,6 @@ msgstr "Bleu :"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
-#, fuzzy
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr "Permettre l'ouverture de plusieurs cartes en même temps (MDI)"
 
@@ -865,7 +873,7 @@ msgstr "Supprimer le fichier"
 #: data/gui/default/window/game_load.cfg:391
 #, fuzzy
 msgid "Show replay"
-msgstr "joueur"
+msgstr "Sauvegarder le film"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:403
@@ -897,10 +905,11 @@ msgstr ""
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr "Erreur de synchronisation"
+msgstr ""
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
+#, fuzzy
 msgid "Ignore All"
 msgstr "Tout ignorer"
 
@@ -912,11 +921,13 @@ msgstr "Quitter la partie"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
+#, fuzzy
 msgid "Overwrite?"
 msgstr "Écraser ?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
+#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "La sauvegarde existe déjà. Voulez-vous la remplacer ?"
 
@@ -1040,7 +1051,7 @@ msgstr "Aide"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 #, fuzzy
 msgid "Multiplayer command dialog"
-msgstr "Options multijoueurs"
+msgstr "Invite de commandes multijoueurs"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -1205,7 +1216,7 @@ msgstr "Créer un jeu"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Fenêtre de connexion au serveur multijoueur"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -1876,6 +1887,8 @@ msgstr "Aucune grille définie."
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr ""
+"Le nombre d'étiquettes de valeur (« value_labels ») et de valeurs n'est pas "
+"identique."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:35
 #, fuzzy
@@ -2072,6 +2085,7 @@ msgid "Create Unit (Debug!)"
 msgstr "Créer une unité (débug !)"
 
 #: src/hotkeys.cpp:77
+#, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Changer le camp de l'unité (débug !)"
 
@@ -2157,7 +2171,7 @@ msgstr "Changer de carte"
 
 #: src/hotkeys.cpp:108
 msgid "Partial Undo"
-msgstr ""
+msgstr "Annulation partielle"
 
 #: src/hotkeys.cpp:110
 msgid "Load Map"
@@ -2241,19 +2255,20 @@ msgstr "Tout désélectionner"
 
 #: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Faire pivoter le presse-papier dans le sens des aiguilles d'une montre"
 
 #: src/hotkeys.cpp:138
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
+"Faire pivoter le presse-papier en sens inverse des aiguilles d'une montre"
 
 #: src/hotkeys.cpp:140
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Retourner horizontalement le presse-papier"
 
 #: src/hotkeys.cpp:142
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Retourner verticalement le presse-papier"
 
 #: src/hotkeys.cpp:144
 msgid "Rotate Selection"
@@ -2273,7 +2288,7 @@ msgstr "Générer des cases dans la sélection"
 
 #: src/hotkeys.cpp:152
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Générer aléatoirement des cases dans la sélection"
 
 #: src/hotkeys.cpp:156
 msgid "Rotate Map"
@@ -2311,7 +2326,7 @@ msgstr "Rafraîchir le cache des images"
 
 #: src/hotkeys.cpp:172
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Afficher les coordonnées des cases"
 
 #: src/hotkeys.cpp:174
 msgid "Draw Terrain Codes"
@@ -2562,14 +2577,6 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr ""
-#~ "La « list_data » doit avoir le même nombre de colonnes que la "
-#~ "« list_definition »."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Régler le gamma"
