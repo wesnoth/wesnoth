@@ -153,6 +153,23 @@ Important Attributes:
             if begincomment < 0:
                 begincomment = None
             beginquote = text[:begincomment].find('"', endquote+1)
+        beginquote = text[:begincomment].find('<<')
+        while beginquote >= 0:
+            endquote = -1
+            beginofend = beginquote+2
+            while endquote < 0:
+                endquote = text.find('>>', beginofend)
+                if endquote < 0:
+                    if self.lineno + span >= len(lines):
+                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
+                        return text, span
+                    beginofend = len(text)
+                    text += lines[self.lineno + span]
+                    span += 1
+            begincomment = text.find('#', endquote+2)
+            if begincomment < 0:
+                begincomment = None
+            beginquote = text[:begincomment].find('<<', endquote+2)
         return text, span
 
     def closeScope(self, scopes, closerElement):
@@ -221,6 +238,16 @@ Important Attributes:
             else:
                 text = text[:beginquote] + text[endquote+1:]
                 beginquote = text.find('"')
+        # remove any lua strings
+        beginquote = text.find('<<')
+        while beginquote >= 0:
+            endquote = text.find('>>')
+            if endquote < -1:
+                text = text[:beginquote]
+                beginquote = -1
+            else:
+                text = text[:beginquote] + text[endquote+2:]
+                beginquote = text.find('<<')
         # next remove any comments
         text = text.lstrip()
         commentSearch = 1
@@ -434,7 +461,7 @@ if __name__ == '__main__':
         f = open(fname)
         itor = WmlIterator(f.readlines())
         for i in itor:
-            pass
+            print i.lineno, i.text,
         f.close()
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
