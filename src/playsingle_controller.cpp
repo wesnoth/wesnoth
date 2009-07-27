@@ -613,10 +613,6 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 				//give control to human for the rest of this turn
 				player_type_changed_ = true;
 				temporary_human = true;
-			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == team_index) {
-					player_type_changed_ = true;
-				}
 			}
 		}
 	} while (player_type_changed_);
@@ -792,7 +788,7 @@ void playsingle_controller::play_ai_turn(){
 
 	try {
 		ai::manager::play_turn(player_number_);
-	} catch (end_turn_exception) {
+	} catch (end_turn_exception&) {
 	}
 	recorder.end_turn();
 	turn_data.sync_network();

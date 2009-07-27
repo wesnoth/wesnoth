@@ -63,8 +63,7 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1),
-	skip_next_turn_(false)
+	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
 {
 	init();
 	gamestate_start_ = gamestate_;
@@ -325,22 +324,15 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		if (!current_team().is_empty()) {
 			statistics::reset_turn_stats(current_team().save_id());
 
-			try {
-				if (skip_next_turn_) {
-					skip_next_turn_ = false;
-					throw end_turn_exception();
-				}
-				play_controller::init_side(player_number_ - 1, true);
+			play_controller::init_side(player_number_ - 1, true);
 
-				DBG_REPLAY << "doing replay " << player_number_ << "\n";
-				try {
-					::do_replay(player_number_);
-				} catch(replay::error&) {
-					if(!continue_replay()) {
-						throw;
-					}
+			DBG_REPLAY << "doing replay " << player_number_ << "\n";
+			try {
+				::do_replay(player_number_);
+			} catch(replay::error&) {
+				if(!continue_replay()) {
+					throw;
 				}
-			} catch(end_turn_exception&) {
 			}
 
 			finish_side_turn();

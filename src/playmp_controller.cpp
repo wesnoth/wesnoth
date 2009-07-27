@@ -126,21 +126,9 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 			}
 			LOG_NG << "human finished turn...\n";
 		} else if(current_team().is_ai()) {
-			try{
-				play_ai_turn();
-			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == team_index) {
-					player_type_changed_ = true;
-				}
-			}
+			play_ai_turn();
 		} else if(current_team().is_network()) {
-			try{
-				play_network_turn();
-			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == team_index) {
-					player_type_changed_ = true;
-				}
-			}
+			play_network_turn();
 		}
 	} while (player_type_changed_);
 	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
