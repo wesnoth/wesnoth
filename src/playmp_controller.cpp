@@ -88,7 +88,8 @@ void playmp_controller::stop_network(){
 void playmp_controller::play_side(const unsigned int team_index, bool save){
 	do {
 		player_type_changed_ = false;
-		end_turn_ = false;
+		if (!skip_next_turn_)
+			end_turn_ = false;
 
 		statistics::reset_turn_stats(teams_[team_index-1].save_id());
 
@@ -143,6 +144,8 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		}
 	} while (player_type_changed_);
 	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
+
+	skip_next_turn_ = false;
 
 	// Notify on turn change.
 	utils::string_map player;
