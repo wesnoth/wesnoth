@@ -317,7 +317,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 				//level_ = scenario;
 				preload_lua_tags(game_config, scenario2);
-				gamestate.starting_pos = scenario2;
+				//merge carryover information into the newly generated scenario
+				config temp(scenario2);
+				write_players(gamestate, temp, false, true);
+				gamestate.starting_pos = temp;
 				scenario = &scenario2;
 			}
 			std::string map_data = (*scenario)["map_data"];
@@ -338,7 +341,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				new_level["map_data"] = map_data;
 				scenario = &new_level;
 
-				gamestate.starting_pos = new_level;
+				//merge carryover information into the scenario
+				config temp(new_level);
+				write_players(gamestate, temp, false, true);
+				gamestate.starting_pos = temp;
 				LOG_G << "generated map\n";
 			}
 
