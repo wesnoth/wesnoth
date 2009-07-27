@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-28 12:56+0200\n"
-"PO-Revision-Date: 2009-05-22 20:41+0200\n"
+"PO-Revision-Date: 2009-07-27 23:22+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -576,7 +576,6 @@ msgstr "Bleu :"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
-#, fuzzy
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr "Permettre l'ouverture de plusieurs cartes en même temps (MDI)"
 
@@ -620,7 +619,7 @@ msgstr "Changer de langue"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 #, fuzzy
 msgid "Multiplayer command wrapper dialog"
-msgstr "Options multijoueurs"
+msgstr "Invite de commandes multijoueurs"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -1504,6 +1503,8 @@ msgstr ""
 #: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr ""
+"Le nombre d'étiquettes de valeur (« value_labels ») et de valeurs n'est pas "
+"identique."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1791,19 +1792,20 @@ msgstr "Tout désélectionner"
 
 #: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Faire pivoter le presse-papier dans le sens des aiguilles d'une montre"
 
 #: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
+"Faire pivoter le presse-papier en sens inverse des aiguilles d'une montre"
 
 #: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Retourner horizontalement le presse-papier"
 
 #: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Retourner verticalement le presse-papier"
 
 #: src/hotkeys.cpp:142
 msgid "Rotate Selection"
@@ -1823,7 +1825,7 @@ msgstr "Générer des cases dans la sélection"
 
 #: src/hotkeys.cpp:150
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Générer aléatoirement des cases dans la sélection"
 
 #: src/hotkeys.cpp:154
 msgid "Rotate Map"
