@@ -461,7 +461,7 @@ if __name__ == '__main__':
         f = open(fname)
         itor = WmlIterator(f.readlines())
         for i in itor:
-            print i.lineno, i.text,
+            pass
         f.close()
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
