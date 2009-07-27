@@ -1379,7 +1379,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 void unit::read(const config& cfg, bool use_traits, game_state* state)
 {
 	if(cfg["type"].empty()) {
-		throw game::load_game_failed("Attempt to de-serialize a unit with no 'type' field (probably empty)");
+		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
 	}
 	type_ = cfg["type"];
 
