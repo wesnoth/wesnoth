@@ -130,6 +130,11 @@ void playsingle_controller::end_turn(){
 	}
 }
 
+void playsingle_controller::force_end_turn(){
+	skip_next_turn_ = true;
+	end_turn_ = true;
+}
+
 void playsingle_controller::rename_unit(){
 	menu_handler_.rename_unit(mouse_handler_);
 }
@@ -503,10 +508,6 @@ void playsingle_controller::play_turn(bool save)
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
 		try {
-			if (skip_next_turn_) {
-				skip_next_turn_ = false;
-				throw end_turn_exception();
-			}
 			save_blocker blocker;
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
@@ -571,7 +572,8 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 		// it has to be a class member since derived classes
 		// rely on it
 		player_type_changed_ = false;
-		end_turn_ = false;
+		if (!skip_next_turn_)
+			end_turn_ = false;
 
 
 		statistics::reset_turn_stats(teams_[team_index - 1].save_id());
@@ -620,6 +622,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
+	skip_next_turn_ = false;
 }
 
 void playsingle_controller::before_human_turn(bool save)
