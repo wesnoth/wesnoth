@@ -9,7 +9,7 @@ Available functions include listing, downloading, uploading, and deleting
 add-ons.
 """
 
-import sys, os.path, re, time, glob
+import sys, os.path, re, time, glob, shutil
 from subprocess import Popen
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
@@ -122,9 +122,18 @@ if __name__ == "__main__":
             file(name, "w").write(mythread.data)
         else:
             decoded = cs.decode(mythread.data)
+            dirname = os.path.join(cdir, name)
+            oldcfg_path = os.path.join(cdir, name + ".cfg")
+
+            # Try to remove old campaign in case it exists.
+            shutil.rmtree(dirname, True)
+            try: os.remove(oldcfg_path)
+            except OSError: pass
+
             print "Unpacking %s..." % name
             cs.unpackdir(decoded, cdir, verbose = options.verbose)
-            dirname = os.path.join(cdir, name)
+            
+
             info = os.path.join(dirname, "_info.cfg")
             try:
                 f = file(info, "w")
@@ -140,7 +149,6 @@ if __name__ == "__main__":
                 try: os.mkdir(options.tar)
                 except OSError: pass
                 tarname = options.tar + "/" + name + ".tar.bz2"
-                oldcfg_path = os.path.join(cdir, name + ".cfg")
                 if os.path.isfile(oldcfg_path):
                     oldcfg = name + ".cfg"
                     if options.verbose:
@@ -354,8 +362,8 @@ if __name__ == "__main__":
                     elif sversion == lversion:
                         sys.stdout.write(" # " + dirname + " - is version " +
                             sversion + (" but you have revision %s not %s." +
-			    " (The add-on got re-uploaded.)\n") %
-			    (lrev, srev))
+                            " (The add-on got re-uploaded.)\n") %
+                            (lrev, srev))
                         if srev > lrev: # server reset?
                             if options.update:
                                 get(dirname, sversion, srev, cdir)
