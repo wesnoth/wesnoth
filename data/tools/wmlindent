@@ -112,6 +112,7 @@ class bailout:
 def reindent(name, infp, outfp):
     "Reindent WML."
     dostrip = True
+    in_lua = False
     seen_wml = False
     inmacro = False
     ignoring = False
@@ -204,7 +205,14 @@ def reindent(name, infp, outfp):
             eligible = transformed.split("#")[0]
         else:
             eligible = transformed
-        if eligible.count('"') % 2:
+        if dostrip and "<<" in eligible and not ">>" in eligible.split("<<",1)[1]:
+            dostrip = False
+            in_lua = True
+        elif in_lua:
+            if ">>" in eligible and not "<<" in eligible.split(">>",1)[1]:
+                dostrip = True
+                in_lua = False
+        elif eligible.count('"') % 2:
             dostrip = not dostrip
         # Are we going to be immediately following a tag?
         if opener(transformed) or closer(transformed):
