@@ -556,12 +556,7 @@ void playsingle_controller::play_turn(bool save)
 	// Time has run out
 	check_time_over();
 
-	try {
-		finish_turn();
-	} catch (end_turn_exception) {
-		// If [end_turn] is encountered, skip the first existing side's turn.
-		skip_next_turn_ = true;
-	}
+	finish_turn();
 }
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
