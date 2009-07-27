@@ -431,6 +431,7 @@ class CampaignClient:
         path is the path under which it will be placed.
         """
 
+        shutil.rmtree(path, True)
         try:
             os.mkdir(path)
         except OSError:
