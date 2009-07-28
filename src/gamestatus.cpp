@@ -598,7 +598,8 @@ void game_state::get_player_info(const config& side_cfg,
 	if(side_cfg["controller"] == "human" ||
 		side_cfg["controller"] == "network" ||
 		side_cfg["controller"] == "network_ai" ||
-		side_cfg["controller"] == "human_ai") {
+		side_cfg["controller"] == "human_ai" ||
+		utils::string_bool(side_cfg["persistent"])) {
 		player_exists = true;
 		
 		//if we have a snapshot, level contains player tags

@@ -220,7 +220,8 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	std::string control = cfg["controller"];
-	persistent = true; //FIXME: persistence is set based on the side controller
+	//by default, persistence of a team is set depending on the controller
+	persistent = true;
 	if (control == "human")
 		controller = HUMAN;
 	else if (control == "human_ai")
@@ -240,6 +241,9 @@ team::team_info::team_info(const config& cfg) :
 		controller = AI;
 		persistent = false;
 	}
+	
+	//override persistence flag if it is explicitly defined in the config
+	persistent = utils::string_bool(cfg["persistent"], persistent);
 
 	//========================================================
 	//END OF MESSY CODE
