@@ -637,7 +637,7 @@ void game_state::get_player_info(const config& side_cfg,
 	scenarios. Snapshots and replays are loaded from savegames and
 	got their own gold information, which must not be altered here
 	*/
-	bool gold_add = false;
+	bool gold_add = utils::string_bool((side_cfg)["gold_add"]);
 	if ( (player_cfg != NULL)  && (!snapshot) ) {
 		try {
 			int player_gold = lexical_cast_default<int>((*player_cfg)["gold"]);

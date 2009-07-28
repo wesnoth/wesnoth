@@ -265,6 +265,7 @@ void team::team_info::write(config& cfg) const
 
 	cfg["gold"] = str_cast(gold);
 	cfg["start_gold"] = str_cast(start_gold);
+	cfg["gold_add"] = gold_add ? "yes" : "no";
 	cfg["income"] = str_cast(income);
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
