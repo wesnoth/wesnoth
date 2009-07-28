@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-03-30 11:46+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
@@ -706,8 +706,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2094
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1505
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1549
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2977
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3069
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2998
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3111
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4222
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4969
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5116
@@ -1830,8 +1830,8 @@ msgstr "打败 Ystara"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:403
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1512
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1556
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2984
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3076
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3005
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3118
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:208
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:299
 msgid "Death of Kaleh, Nym or Zhul"
@@ -3167,7 +3167,7 @@ msgstr ""
 #. [unit]: type=Dark Assassin1, id=Cloaked Figure
 #. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1415
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3383
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3315
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3548
 msgid "Cloaked Figure"
 msgstr ""
@@ -4013,21 +4013,30 @@ msgid ""
 "throwing stones."
 msgstr "矮人用石头做领地标记。真浪费。"
 
+#. [unit]: type=Troll Shaman, id=Zurg
+#. [event]
+#. [scenario]: id=5_A_Subterranean_Struggle
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2925
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2004
+msgid "Zurg"
+msgstr "Zurg"
+
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2924
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2945
 msgid ""
 "Congratulations! Some of trolls didn't think you strong enough to beat "
 "dwarves."
 msgstr "万岁！有些巨魔还没想过你们能打败矮人。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2929
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3024
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3066
 msgid "Where did you come from?"
 msgstr "你们从哪里来？"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2934
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2955
 msgid ""
 "There many secret tunnels that you sun dwellers not know of. Only troll "
 "know. We smarter than you think. Zurg would have killed dwarves himself, but "
@@ -4037,12 +4046,12 @@ msgstr ""
 "要聪明。Zurg可以杀矮人，但是但是他只是从真正的战斗"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2939
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2960
 msgid "The real fighting? I thought that was what we were waist-deep in?"
 msgstr ""
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2945
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2966
 msgid ""
 "While you fighting, another clan of dwarves sneak around and flank us. They "
 "tricksy like that. We must leave you and run back to defend women and little "
@@ -4052,12 +4061,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2971
 msgid "How do you mean?"
 msgstr "你是什么意思？"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2976
 msgid ""
 "Right before battle, we find secret passage just to the north leading "
 "straight to big dwarf stronghold. Hiding in stronghold is big important "
@@ -4070,41 +4079,50 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2960
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3054
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2981
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3096
 msgid ""
 "Their knowledge of these tunnels is uncanny. I could have sworn a minute ago "
 "that that wall was solid rock."
 msgstr ""
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2971
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2992
 msgid ""
 "Wait a moment Zurg, we must deal with this mysterious cloaked figure before "
 "we can follow you."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2980
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3072
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3114
 msgid "Defeat Cloaked Figure"
 msgstr "打败Cloaked Figure"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3000
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3021
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Zurg."
 msgstr ""
 
+#. [unit]: type=Dwarvish Pathfinder, id=Grimnir
+#. [event]
+#. [scenario]: id=5_A_Subterranean_Struggle
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3046
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:427
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2163
+msgid "Grimnir"
+msgstr "Grimnir"
+
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3019
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3061
 msgid ""
 "Congratulations, some of me boys didn't think you could beat the trolls."
 msgstr "祝贺你，我手下有些人还以为你们打不退巨魔呢。"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3029
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3071
 msgid ""
 "Don't think you know all the tunnels and passages that twist through these "
 "caves, elf. I would have killed him myself, but I was just sent back from "
@@ -4112,12 +4130,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3034
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3076
 msgid "The front? I thought this was the front."
 msgstr "前面？我还以为这是前面。"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3039
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3081
 msgid ""
 "While you were fighting a separate clan of trolls sneaked around our "
 "sentries and flanked us, attacking our supply depots. There are more of "
@@ -4131,12 +4149,12 @@ msgstr ""
 "是不可求的良机。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3044
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3086
 msgid "It has?"
 msgstr "有什么？"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3091
 msgid ""
 "Right before the trolls overran this area of the mines, our scouts had found "
 "an old tunnel south of here that leads almost straight to the main lair of "
@@ -4151,7 +4169,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3065
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3107
 #, fuzzy
 msgid ""
 "Wait a moment Grimnir, we must deal with this mysterious cloaked figure "
@@ -4159,66 +4177,46 @@ msgid ""
 msgstr "等一下Grimnir，我们要先料理了这个神秘的 cloaked figure然后跟你走。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3092
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3134
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Grimnir."
 msgstr "听起来我们还没做完。很好，聚集起来，我们必须跟着Grendel。"
 
 #. [message]: speaker=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3117
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3159
 msgid "The rest is silence..."
 msgstr "余下的是寂静..."
 
-#. [unit]: type=Troll Shaman, id=Zurg
-#. [event]
-#. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3143
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3199
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2004
-msgid "Zurg"
-msgstr "Zurg"
-
 #. [message]: speaker=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3173
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3193
 msgid "I go to my ancestors..."
 msgstr "我去见先祖了。。。"
 
 #. [message]: speaker=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3231
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3229
 msgid "Arrggg!!!"
 msgstr "Arrggg!!!"
 
-#. [unit]: type=Dwarvish Pathfinder, id=Grimnir
-#. [event]
-#. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3257
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3328
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:427
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2163
-msgid "Grimnir"
-msgstr "Grimnir"
-
 #. [message]: speaker=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3298
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3263
 msgid "I will be avenged..."
 msgstr "会有人为我复仇。。。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3395
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3327
 msgid ""
 "Did you think you escaped me Kaleh? I am your shadow, I will always be there "
 "until you pay for what you have done."
 msgstr "你不会以为逃出我的手心了吧，Kaleh？我是你的影子，我要待到你复出代价。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3334
 msgid "Ow!"
 msgstr "噢!"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3409
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3341
 msgid ""
 "You want to flee, don't you? But you cannot. They couldn't escape her "
 "either. Even death could not save them. She will devour us all. But first I "
@@ -4226,14 +4224,14 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3433
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3365
 msgid ""
 "Where did he go? How does he disappear like that? And what in Uria's name "
 "was he ranting about? Whoever that is is starting to make me get edgy."
 msgstr ""
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3447
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3379
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together, we must follow Zurg."
@@ -4241,7 +4239,7 @@ msgstr ""
 "cloaked figure消失了。但是我们的工作还没结束。团结起来，我们必须跟着Zurg。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3468
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3400
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together, we must follow Grimnir."
@@ -4249,7 +4247,7 @@ msgstr ""
 "cloaked figure消失了。但是我们的工作还没结束。团结起来，我们必须跟着Grimnir。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3538
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3470
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2501
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2405
 msgid ""
@@ -12242,8 +12240,8 @@ msgstr "沙漠复仇者"
 #. [unit_type]: id=Desert Captain, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:589
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:590
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:600
 msgid "Desert Captain"
 msgstr "沙漠队长"
 
@@ -12260,7 +12258,7 @@ msgstr ""
 #. [variation]
 #. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:647
 msgid "Desert Champion"
 msgstr "沙漠斗士"
 
@@ -12311,9 +12309,9 @@ msgstr "荆棘"
 #. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:5
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:535
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:546
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:558
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:570
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:547
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:559
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:571
 msgid "Desert Fighter"
 msgstr "沙漠战士"
 
@@ -12328,8 +12326,8 @@ msgstr ""
 #. [unit_type]: id=Desert Hero, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:626
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:636
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:627
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:637
 msgid "Desert Hero"
 msgstr "沙漠英雄"
 
@@ -12409,7 +12407,7 @@ msgstr "沙漠狙击手"
 #. [unit_type]: id=Desert Marshal, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:609
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:610
 msgid "Desert Marshal"
 msgstr "沙漠元帅"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-02-05 00:22+0530\n"
 "Last-Translator: Sujit R Jadhav <sujitrjadhav@gmail.com>\n"
 "Language-Team: Marathi <sujitrjadhav@gmail.com>\n"
@@ -76,6 +76,21 @@ msgid ""
 "0."
 msgstr ""
 
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:79
+msgid "Accept whisper messages from friends only"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:86
+msgid "Auto-open whisper windows in lobby"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:93
+msgid "Don't group players in lobby"
+msgstr ""
+
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
 msgid "This situation should test the ability of AI to spread poison around..."
@@ -96,7 +111,7 @@ msgstr "भुमिगत"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1125 src/actions.cpp:1400
+#: src/actions.cpp:1130 src/actions.cpp:1405
 msgid "poisoned"
 msgstr "विषबाधित"
 
@@ -152,14 +167,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1130 src/actions.cpp:1405
+#: src/actions.cpp:1135 src/actions.cpp:1410
 msgid "female^slowed"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1130 src/actions.cpp:1405
+#: src/actions.cpp:1135 src/actions.cpp:1410
 msgid "slowed"
 msgstr ""
 
@@ -230,283 +245,283 @@ msgid "Artwork and Graphics"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:531
+#: data/core/about.cfg:536
 msgid "Music"
 msgstr "संगित"
 
 #. [about]
-#: data/core/about.cfg:565
+#: data/core/about.cfg:570
 msgid "Sound Effects"
 msgstr "ध्वनी योजना"
 
 #. [about]
-#: data/core/about.cfg:581
+#: data/core/about.cfg:586
 msgid "Campaign Design"
 msgstr "मोहिम संरचना"
 
 #. [about]
-#: data/core/about.cfg:648
+#: data/core/about.cfg:653
 msgid "Multiplayer Maps and Balancing"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:689
+#: data/core/about.cfg:694
 msgid "Packagers"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:755
+#: data/core/about.cfg:760
 msgid "Miscellaneous contributors"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:964
+#: data/core/about.cfg:969
 msgid "Internationalization Managers"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:989
+#: data/core/about.cfg:994
 msgid "English strings edition"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:996
+#: data/core/about.cfg:1001
 msgid "Afrikaans Translation"
 msgstr "अफ्रिकन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1012
+#: data/core/about.cfg:1017
 msgid "Arabic Translation"
 msgstr "अरेबिक भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1019
+#: data/core/about.cfg:1024
 msgid "Basque Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:1032
+#: data/core/about.cfg:1037
 msgid "Bulgarian Translation"
 msgstr "बल्गेरिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1051
+#: data/core/about.cfg:1056
 msgid "Catalan Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:1089
+#: data/core/about.cfg:1094
 msgid "Chinese Translation"
 msgstr "चिनी भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1127
+#: data/core/about.cfg:1132
 msgid "Chinese (Taiwan) Translation"
 msgstr "चिनी(तैवान) भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1149
+#: data/core/about.cfg:1154
 msgid "Croatian Translation"
 msgstr "क्रोएशियन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1156
+#: data/core/about.cfg:1161
 msgid "Czech Translation"
 msgstr "झेक भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1216
+#: data/core/about.cfg:1221
 msgid "Danish Translation"
 msgstr "डॅनिश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1247
+#: data/core/about.cfg:1252
 msgid "Dutch Translation"
 msgstr "डच भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1305
+#: data/core/about.cfg:1310
 msgid "English (GB) Translation"
 msgstr "इंग्लिश(ब्रिटिश) भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1318
+#: data/core/about.cfg:1323
 msgid "Esperanto Translation"
 msgstr "एस्परॅन्टो भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1337
+#: data/core/about.cfg:1342
 msgid "Estonian Translation"
 msgstr "एस्टोनिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1347
+#: data/core/about.cfg:1352
 msgid "Filipino Translation"
 msgstr "फिलिपिनो भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1357
+#: data/core/about.cfg:1362
 msgid "Finnish Translation"
 msgstr "फिनिश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1397
+#: data/core/about.cfg:1402
 msgid "French Translation"
 msgstr "फ्रेंच भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1523
+#: data/core/about.cfg:1540
 msgid "Friulian Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:1530
+#: data/core/about.cfg:1547
 msgid "Galician Translation"
 msgstr "गॅलिशिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1582
 msgid "German Translation"
 msgstr "जर्मन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1620
+#: data/core/about.cfg:1637
 msgid "Greek Translation"
 msgstr "ग्रिक भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1651
+#: data/core/about.cfg:1668
 msgid "Hebrew Translation"
 msgstr "हेब्रू भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1681
 msgid "Hungarian Translation"
 msgstr "हंगेरीअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1725
+#: data/core/about.cfg:1742
 #, fuzzy
 msgid "Icelandic translation"
 msgstr "ईटालियन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1735
+#: data/core/about.cfg:1752
 msgid "Indonesian Translation"
 msgstr "ईंडोनेशिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1759
 msgid "Italian Translation"
 msgstr "ईटालियन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1777
+#: data/core/about.cfg:1794
 msgid "Japanese Translation"
 msgstr "जापनीज भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1803
+#: data/core/about.cfg:1820
 msgid "Korean Translation"
 msgstr "कोरियन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1810
+#: data/core/about.cfg:1827
 msgid "Latin Translation"
 msgstr "लॅटिन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1834
 msgid "Latvian Translation"
 msgstr "लॅट्विअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1824
+#: data/core/about.cfg:1841
 msgid "Lithuanian Translation"
 msgstr "लिथुअनिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1855
 msgid "Macedonian Translation"
 msgstr "मॅसेडोनिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1863
 msgid "Marathi Translation"
 msgstr "मराठी भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1872
 msgid "Norwegian Translation"
 msgstr "नॉर्वेइअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1880
+#: data/core/about.cfg:1897
 msgid "Polish Translation"
 msgstr "पोलिश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1929
+#: data/core/about.cfg:1946
 msgid "Portuguese Translation"
 msgstr "पोर्तुगिझ भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1936
+#: data/core/about.cfg:1953
 msgid "Portuguese (Brazil) Translation"
 msgstr "पोर्तुगिझ (ब्राझिल) भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1971
+#: data/core/about.cfg:1988
 msgid "Romanian Translation"
 msgstr "रोमानिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1996
 msgid "Russian Translation"
 msgstr "रशियन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2036
+#: data/core/about.cfg:2053
 msgid "Serbian Translation"
 msgstr "सर्बिअन भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2051
+#: data/core/about.cfg:2068
 msgid "Slovak Translation"
 msgstr "स्लोव्हाक भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2077
+#: data/core/about.cfg:2094
 msgid "Slovenian Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:2090
+#: data/core/about.cfg:2107
 msgid "Spanish Translation"
 msgstr "स्पॅनिश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2142
+#: data/core/about.cfg:2159
 msgid "Swedish Translation"
 msgstr "स्विडिश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2171
+#: data/core/about.cfg:2188
 msgid "Turkish Translation"
 msgstr "टर्किश भाषांतर"
 
 #. [about]
-#: data/core/about.cfg:2193
+#: data/core/about.cfg:2210
 msgid "Valencian (southern Catalan) Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:2206
+#: data/core/about.cfg:2223
 msgid "RACV's Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:2213
+#: data/core/about.cfg:2230
 msgid "Bots"
 msgstr ""
 
@@ -2323,11 +2338,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:859
+#: data/core/help.cfg:861
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100"
+"hitpoints=100\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:862
+msgid ""
+"\n"
+"Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
 #. [heals]: id=curing
@@ -3097,27 +3120,27 @@ msgstr ""
 msgid "storm trident"
 msgstr "वादळी त्रिशूळ"
 
-#: data/core/macros/names.cfg:3
+#: data/core/macros/names.cfg:18
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 
-#: data/core/macros/names.cfg:4
+#: data/core/macros/names.cfg:19
 msgid ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
 
-#: data/core/macros/names.cfg:8
+#: data/core/macros/names.cfg:23
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -3164,7 +3187,7 @@ msgid ""
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
 
-#: data/core/macros/names.cfg:12
+#: data/core/macros/names.cfg:27
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -3225,7 +3248,7 @@ msgid ""
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
 
-#: data/core/macros/names.cfg:13
+#: data/core/macros/names.cfg:28
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -3293,15 +3316,15 @@ msgid ""
 "Vówien"
 msgstr ""
 
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:33
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr ""
 
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:34
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr ""
 
-#: data/core/macros/names.cfg:23
+#: data/core/macros/names.cfg:38
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -3352,7 +3375,7 @@ msgid ""
 "Yrynyc,Yryrcyn"
 msgstr ""
 
-#: data/core/macros/names.cfg:24
+#: data/core/macros/names.cfg:39
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -3401,7 +3424,7 @@ msgid ""
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
 
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:43
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3415,7 +3438,7 @@ msgid ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
 
-#: data/core/macros/names.cfg:32
+#: data/core/macros/names.cfg:47
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -3426,7 +3449,7 @@ msgid ""
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
 
-#: data/core/macros/names.cfg:33
+#: data/core/macros/names.cfg:48
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -3434,7 +3457,7 @@ msgid ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
 
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:52
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -3444,7 +3467,7 @@ msgid ""
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
 
-#: data/core/macros/names.cfg:38
+#: data/core/macros/names.cfg:53
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -3455,7 +3478,7 @@ msgid ""
 "Zsekp"
 msgstr ""
 
-#: data/core/macros/names.cfg:42
+#: data/core/macros/names.cfg:57
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -3465,7 +3488,7 @@ msgid ""
 "Urkark"
 msgstr ""
 
-#: data/core/macros/names.cfg:46
+#: data/core/macros/names.cfg:61
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -3501,7 +3524,7 @@ msgid ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
 
-#: data/core/macros/names.cfg:50
+#: data/core/macros/names.cfg:65
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -3509,7 +3532,7 @@ msgid ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
 
-#: data/core/macros/names.cfg:54
+#: data/core/macros/names.cfg:69
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -3525,7 +3548,7 @@ msgid ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
 
-#: data/core/macros/names.cfg:58
+#: data/core/macros/names.cfg:73
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -5256,7 +5279,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:195 src/unit.cpp:2609
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:196 src/unit.cpp:2609
 #: src/unit.cpp:2771
 msgid "HP"
 msgstr "शक्ती"
@@ -5264,7 +5287,7 @@ msgstr "शक्ती"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:196
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:197
 #: src/menu_events.cpp:853
 msgid "XP"
 msgstr "अनुभव"
@@ -5391,80 +5414,80 @@ msgstr ""
 msgid "Skip animation"
 msgstr ""
 
-#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:313
-#: src/menu_events.cpp:340 src/statistics_dialog.cpp:114
+#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:314
+#: src/menu_events.cpp:341 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "बंद"
 
-#: src/actions.cpp:234
+#: src/actions.cpp:239
 msgid "You don't have a leader to recruit with."
 msgstr ""
 
-#: src/actions.cpp:241
+#: src/actions.cpp:246
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 
-#: src/actions.cpp:260
+#: src/actions.cpp:265
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 
-#: src/actions.cpp:378 src/actions.cpp:437 src/actions.cpp:1004
+#: src/actions.cpp:383 src/actions.cpp:442 src/actions.cpp:1009
 msgid "An invalid attacker weapon got selected."
 msgstr ""
 
-#: src/actions.cpp:383
+#: src/actions.cpp:388
 msgid "An invalid defender weapon got selected."
 msgstr ""
 
-#: src/actions.cpp:1125 src/actions.cpp:1400
+#: src/actions.cpp:1130 src/actions.cpp:1405
 msgid "female^poisoned"
 msgstr ""
 
-#: src/actions.cpp:1137 src/actions.cpp:1412
+#: src/actions.cpp:1142 src/actions.cpp:1417
 msgid "female^petrified"
 msgstr ""
 
-#: src/actions.cpp:1137 src/actions.cpp:1412
+#: src/actions.cpp:1142 src/actions.cpp:1417
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2490
+#: src/actions.cpp:2495
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:2497
+#: src/actions.cpp:2502
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2542
+#: src/actions.cpp:2547
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2545
+#: src/actions.cpp:2550
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2550
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2556
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2557
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2566
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -5610,7 +5633,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:729 src/addon_management.cpp:932
-#: src/dialogs.cpp:575 src/menu_events.cpp:193 src/menu_events.cpp:851
+#: src/dialogs.cpp:575 src/menu_events.cpp:194 src/menu_events.cpp:851
 msgid "Name"
 msgstr ""
 
@@ -5689,7 +5712,7 @@ msgstr "आवृत्ती"
 msgid "Downloads"
 msgstr ""
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:192
+#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:193
 #: src/menu_events.cpp:850 src/menu_events.cpp:1372
 msgid "Type"
 msgstr "प्रकार"
@@ -5813,7 +5836,7 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:639
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:646
 msgid "Damage Calculations"
 msgstr "नुकसानीचे गणित"
 
@@ -5857,11 +5880,11 @@ msgstr "बहुखेळाडू"
 msgid "Tutorial"
 msgstr ""
 
-#: src/dialogs.cpp:483 src/savegame.cpp:925
+#: src/dialogs.cpp:483 src/savegame.cpp:929
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1006
+#: src/dialogs.cpp:485 src/savegame.cpp:1010
 msgid "Turn"
 msgstr "पाळी"
 
@@ -5959,100 +5982,100 @@ msgstr "अनुभव"
 msgid "Moves: "
 msgstr ""
 
-#: src/game.cpp:661 src/game.cpp:1377
+#: src/game.cpp:663 src/game.cpp:1380
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:977 src/game.cpp:985 src/playsingle_controller.cpp:471
-#: src/playsingle_controller.cpp:530
+#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:527
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:980 src/game.cpp:988 src/savegame.cpp:521
+#: src/game.cpp:983 src/game.cpp:991 src/savegame.cpp:521
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:992
+#: src/game.cpp:995
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:1087
+#: src/game.cpp:1090
 msgid "No campaigns are available.\n"
 msgstr ""
 
-#: src/game.cpp:1120
+#: src/game.cpp:1123
 msgid "Difficulty"
 msgstr "अवघडपणा"
 
-#: src/game.cpp:1121
+#: src/game.cpp:1124
 msgid "Select difficulty level:"
 msgstr "अवघडपणाची पातळी निवडा"
 
-#: src/game.cpp:1256
+#: src/game.cpp:1259
 msgid "Do you really want to start the server?"
 msgstr ""
 
-#: src/game.cpp:1257
+#: src/game.cpp:1260
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1261
+#: src/game.cpp:1264
 msgid "Don't show again"
 msgstr "पुन्हा दाखवू नका"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1335
 msgid "Error while starting server: "
 msgstr ""
 
-#: src/game.cpp:1334 src/playcampaign.cpp:98 src/playcampaign.cpp:367
+#: src/game.cpp:1337 src/playcampaign.cpp:98 src/playcampaign.cpp:363
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1336 src/playcampaign.cpp:100 src/playcampaign.cpp:370
+#: src/game.cpp:1339 src/playcampaign.cpp:100 src/playcampaign.cpp:366
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1356 src/playcampaign.cpp:102 src/playcampaign.cpp:373
+#: src/game.cpp:1359 src/playcampaign.cpp:102 src/playcampaign.cpp:369
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1500
+#: src/game.cpp:1503
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game.cpp:1507
+#: src/game.cpp:1510
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1525
+#: src/game.cpp:1528
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1526
+#: src/game.cpp:1529
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1535
+#: src/game.cpp:1538
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1966
+#: src/game.cpp:1971
 msgid "Loading game configuration."
 msgstr ""
 
-#: src/game.cpp:1972
+#: src/game.cpp:1977
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1980
+#: src/game.cpp:1985
 msgid "Searching for installed add-ons."
 msgstr ""
 
-#: src/game.cpp:1989
+#: src/game.cpp:1994
 msgid "Loading title screen."
 msgstr ""
 
@@ -6076,19 +6099,19 @@ msgstr ""
 msgid "Info: "
 msgstr "माहिती"
 
-#: src/game_events.cpp:1165 src/multiplayer_connect.cpp:1651
+#: src/game_events.cpp:1147 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "विजय"
 
-#: src/game_events.cpp:1168
+#: src/game_events.cpp:1150
 msgid "Defeat:"
 msgstr "पराभव"
 
-#: src/game_events.cpp:3403
+#: src/game_events.cpp:3385
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:824
+#: src/gamestatus.cpp:723
 msgid "Duplicate side definition for side '$side|' found."
 msgstr ""
 
@@ -6193,6 +6216,23 @@ msgstr ""
 
 #: src/generate_report.cpp:512
 msgid "Observers:"
+msgstr ""
+
+#: src/gui/dialogs/lobby_player_info.cpp:63
+#, fuzzy
+msgid "In game:"
+msgstr "नाव"
+
+#: src/gui/dialogs/lobby_player_info.cpp:65
+msgid "(observing)"
+msgstr ""
+
+#: src/gui/dialogs/lobby_player_info.cpp:67
+msgid "(playing)"
+msgstr ""
+
+#: src/gui/dialogs/lobby_player_info.cpp:70
+msgid "In lobby"
 msgstr ""
 
 #: src/help.cpp:46
@@ -6318,7 +6358,7 @@ msgstr ""
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help.cpp:2681 src/menu_events.cpp:565
+#: src/help.cpp:2681 src/menu_events.cpp:566
 msgid " < Back"
 msgstr ""
 
@@ -6385,50 +6425,50 @@ msgstr ""
 msgid "Reading files and creating cache..."
 msgstr ""
 
-#: src/lobby_data.cpp:226 src/multiplayer_lobby.cpp:430
+#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:430
 msgid "Unknown era: $era_id"
 msgstr ""
 
-#: src/lobby_data.cpp:231 src/multiplayer_lobby.cpp:434
+#: src/lobby_data.cpp:248 src/multiplayer_lobby.cpp:434
 msgid "Unknown era"
 msgstr "अज्ञात युग"
 
-#: src/lobby_data.cpp:286 src/multiplayer_lobby.cpp:496
+#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:496
 msgid "Remote scenario"
 msgstr ""
 
-#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:503
+#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:503
 msgid "Unknown scenario: $scenario_id"
 msgstr ""
 
-#: src/lobby_data.cpp:299 src/multiplayer_lobby.cpp:507
+#: src/lobby_data.cpp:316 src/multiplayer_lobby.cpp:507
 msgid "Unknown scenario"
 msgstr ""
 
-#: src/lobby_data.cpp:305 src/multiplayer_lobby.cpp:512
+#: src/lobby_data.cpp:322 src/multiplayer_lobby.cpp:512
 msgid "Reloaded game"
 msgstr ""
 
-#: src/lobby_data.cpp:316 src/multiplayer_lobby.cpp:528
+#: src/lobby_data.cpp:333 src/multiplayer_lobby.cpp:528
 msgid "Turn "
 msgstr "पाळी"
 
-#: src/lobby_data.cpp:320 src/multiplayer_lobby.cpp:532
+#: src/lobby_data.cpp:337 src/multiplayer_lobby.cpp:532
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/lobby_data.cpp:326 src/multiplayer_lobby.cpp:543
+#: src/lobby_data.cpp:343 src/multiplayer_lobby.cpp:543
 msgid "Fog"
 msgstr "धुके"
 
-#: src/lobby_data.cpp:329 src/lobby_data.cpp:332 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:346 src/lobby_data.cpp:349 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:547 src/multiplayer_lobby.cpp:553
 msgid "Shroud"
 msgstr ""
 
-#: src/lobby_data.cpp:334 src/multiplayer_lobby.cpp:557
+#: src/lobby_data.cpp:351 src/multiplayer_lobby.cpp:557
 msgid "none"
 msgstr ""
 
@@ -6440,196 +6480,196 @@ msgstr ""
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
-#: src/menu_events.cpp:83 src/menu_events.cpp:86 src/menu_events.cpp:90
+#: src/menu_events.cpp:84 src/menu_events.cpp:87 src/menu_events.cpp:91
 msgid "Do you really want to dismiss him?"
 msgstr ""
 
-#: src/menu_events.cpp:83
+#: src/menu_events.cpp:84
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr ""
 
-#: src/menu_events.cpp:84 src/menu_events.cpp:87 src/menu_events.cpp:91
+#: src/menu_events.cpp:85 src/menu_events.cpp:88 src/menu_events.cpp:92
 msgid "Do you really want to dismiss her?"
 msgstr ""
 
-#: src/menu_events.cpp:86
+#: src/menu_events.cpp:87
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
 
-#: src/menu_events.cpp:90
+#: src/menu_events.cpp:91
 msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
 
-#: src/menu_events.cpp:183
+#: src/menu_events.cpp:184
 msgid "Statistics"
 msgstr ""
 
-#: src/menu_events.cpp:194 src/menu_events.cpp:852
+#: src/menu_events.cpp:195 src/menu_events.cpp:852
 msgid "Level^Lvl."
 msgstr ""
 
-#: src/menu_events.cpp:197
+#: src/menu_events.cpp:198
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:198
+#: src/menu_events.cpp:199
 msgid "Moves"
 msgstr ""
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Location^Loc."
 msgstr ""
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:201
 msgid "Status"
 msgstr ""
 
-#: src/menu_events.cpp:308
+#: src/menu_events.cpp:309
 msgid "Unit List"
 msgstr ""
 
-#: src/menu_events.cpp:311 src/menu_events.cpp:333
+#: src/menu_events.cpp:312 src/menu_events.cpp:334
 msgid "Scroll To"
 msgstr ""
 
-#: src/menu_events.cpp:365
+#: src/menu_events.cpp:366
 msgid "Leader"
 msgstr ""
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1007
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1007
 msgid "Team"
 msgstr ""
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1018
+#: src/menu_events.cpp:368 src/multiplayer_connect.cpp:1018
 msgid "Gold"
 msgstr ""
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:369
 msgid "Villages"
 msgstr ""
 
-#: src/menu_events.cpp:369
+#: src/menu_events.cpp:370
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:371
 msgid "Upkeep"
 msgstr ""
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1019
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1019
 #: src/multiplayer_wait.cpp:534
 msgid "Income"
 msgstr ""
 
-#: src/menu_events.cpp:472
+#: src/menu_events.cpp:473
 msgid "Current Status"
 msgstr ""
 
-#: src/menu_events.cpp:473
+#: src/menu_events.cpp:474
 msgid "More >"
 msgstr ""
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:492
 msgid "scenario settings^Leader"
 msgstr ""
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:494
 msgid "scenario settings^Side"
 msgstr ""
 
-#: src/menu_events.cpp:494
+#: src/menu_events.cpp:495
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
 
-#: src/menu_events.cpp:495
+#: src/menu_events.cpp:496
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
 
-#: src/menu_events.cpp:496
+#: src/menu_events.cpp:497
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:498
 msgid "scenario settings^Fog"
 msgstr ""
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:499
 msgid "scenario settings^Shroud"
 msgstr ""
 
-#: src/menu_events.cpp:545 src/menu_events.cpp:546
+#: src/menu_events.cpp:546 src/menu_events.cpp:547
 msgid "no"
 msgstr "नाही"
 
-#: src/menu_events.cpp:545 src/menu_events.cpp:546
+#: src/menu_events.cpp:546 src/menu_events.cpp:547
 msgid "yes"
 msgstr "हो"
 
-#: src/menu_events.cpp:562
+#: src/menu_events.cpp:563
 msgid "Scenario Settings"
 msgstr ""
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:585
 msgid "Save the Map As"
 msgstr ""
 
-#: src/menu_events.cpp:589
+#: src/menu_events.cpp:590
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/menu_events.cpp:601
+#: src/menu_events.cpp:602
 msgid "Map saved."
 msgstr "नकाशा संचित केला"
 
-#: src/menu_events.cpp:605
+#: src/menu_events.cpp:606
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:621
 msgid "Chat Log"
 msgstr "गप्पांची नोंद"
 
-#: src/menu_events.cpp:630
+#: src/menu_events.cpp:631
 msgid "Message:"
 msgstr "संदेश"
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:632
 msgid "Send to allies only"
 msgstr ""
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:632
 msgid "Send to observers only"
 msgstr ""
 
-#: src/menu_events.cpp:712
+#: src/menu_events.cpp:713
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/menu_events.cpp:719
+#: src/menu_events.cpp:720
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/menu_events.cpp:731
+#: src/menu_events.cpp:732
 msgid "Recruit"
 msgstr "नेमणूक करा"
 
-#: src/menu_events.cpp:732 src/menu_events.cpp:904
+#: src/menu_events.cpp:733 src/menu_events.cpp:904
 msgid "Select unit:"
 msgstr "मोहरा निवडा"
 
-#: src/menu_events.cpp:778
+#: src/menu_events.cpp:779
 msgid "You don't have enough gold to recruit that unit"
 msgstr ""
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:823
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 
@@ -6708,318 +6748,322 @@ msgstr ""
 msgid " No help available."
 msgstr ""
 
-#: src/menu_events.cpp:2063
+#: src/menu_events.cpp:2064
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2066
+#: src/menu_events.cpp:2067
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2070
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2073
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2075
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:2077
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2079
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/menu_events.cpp:2088
+#: src/menu_events.cpp:2089
 msgid "Send a message to the server admins currently online"
 msgstr ""
 
-#: src/menu_events.cpp:2090
+#: src/menu_events.cpp:2091
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/menu_events.cpp:2093
+#: src/menu_events.cpp:2094
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:2100
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:2102
 msgid "Add a nick to your ignores list."
 msgstr ""
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:2104
 msgid "Add a nick to your friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:2106
 msgid "Remove a nick from your ignores or friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:2108
 msgid "Show your ignores and friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2110
+#: src/menu_events.cpp:2111
 msgid "Display version information."
 msgstr "आवृत्ती माहिती दर्शवा"
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:2113
 msgid "Register your nick"
 msgstr "टोपण नावाची नोंद करा"
 
-#: src/menu_events.cpp:2114
+#: src/menu_events.cpp:2115
 msgid "Drop your nick."
 msgstr ""
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2117
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2119
+#: src/menu_events.cpp:2120
 msgid "Request information about a nick."
 msgstr ""
 
-#: src/menu_events.cpp:2121
+#: src/menu_events.cpp:2122
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2123
+#: src/menu_events.cpp:2124
 #, fuzzy
 msgid "Join a room."
 msgstr "खेळात सामिल व्हा"
 
-#: src/menu_events.cpp:2125
+#: src/menu_events.cpp:2127
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:2127
+#: src/menu_events.cpp:2129
 msgid "List room members."
 msgstr ""
 
-#: src/menu_events.cpp:2129
+#: src/menu_events.cpp:2131
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:2131
-msgid "Room msg."
+#: src/menu_events.cpp:2133
+msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:2258
-msgid "Refresh gui."
-msgstr ""
-
-#: src/menu_events.cpp:2260
-msgid "Switch a side to/from AI control."
+#: src/menu_events.cpp:2135
+msgid "Room query."
 msgstr ""
 
 #: src/menu_events.cpp:2263
-msgid "Assign control of a side to a different player or observer."
+msgid "Refresh gui."
 msgstr ""
 
 #: src/menu_events.cpp:2265
-msgid "Clear chat history."
-msgstr "गप्पांची नोंद नष्ट करा"
+msgid "Switch a side to/from AI control."
+msgstr ""
 
-#: src/menu_events.cpp:2267
-msgid "Visualize the screen refresh procedure."
+#: src/menu_events.cpp:2268
+msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2270
+msgid "Clear chat history."
+msgstr "गप्पांची नोंद नष्ट करा"
+
+#: src/menu_events.cpp:2272
+msgid "Visualize the screen refresh procedure."
+msgstr ""
+
+#: src/menu_events.cpp:2275
 msgid "Save game."
 msgstr "खेळ संचित करा"
 
-#: src/menu_events.cpp:2272
+#: src/menu_events.cpp:2277
 msgid "Quit game."
 msgstr "बंद करा"
 
-#: src/menu_events.cpp:2276
+#: src/menu_events.cpp:2281
 msgid "Save and quit."
 msgstr "संचित करुन ब.द करा"
 
-#: src/menu_events.cpp:2279
+#: src/menu_events.cpp:2284
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2281
+#: src/menu_events.cpp:2286
 msgid "Disable autosaves."
 msgstr "स्वयंचलित संचयन बंद करा"
 
-#: src/menu_events.cpp:2283
+#: src/menu_events.cpp:2288
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:2286
+#: src/menu_events.cpp:2291
 msgid "Choose next scenario"
 msgstr ""
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2294
 msgid "Turn debug mode on."
 msgstr ""
 
-#: src/menu_events.cpp:2291
+#: src/menu_events.cpp:2296
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2293
+#: src/menu_events.cpp:2298
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2295
+#: src/menu_events.cpp:2300
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2302
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2299
+#: src/menu_events.cpp:2304
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2301
+#: src/menu_events.cpp:2306
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2303
+#: src/menu_events.cpp:2308
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2309
+#: src/menu_events.cpp:2314
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2314
+#: src/menu_events.cpp:2319
 msgid "Create a unit."
 msgstr "मोहरा निर्माण करा"
 
-#: src/menu_events.cpp:2316
+#: src/menu_events.cpp:2321
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2318
+#: src/menu_events.cpp:2323
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2320
+#: src/menu_events.cpp:2325
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2327
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2330
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2328
+#: src/menu_events.cpp:2333
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2372
+#: src/menu_events.cpp:2377
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2374 src/menu_events.cpp:2383
+#: src/menu_events.cpp:2379 src/menu_events.cpp:2388
 msgid "error"
 msgstr ""
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2386
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2390
+#: src/menu_events.cpp:2395
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2569
 msgid "Added to ignore list: "
 msgstr "दुर्लक्षसुचित समाविष्ट"
 
-#: src/menu_events.cpp:2551 src/menu_events.cpp:2567
+#: src/menu_events.cpp:2572 src/menu_events.cpp:2589
 msgid "Invalid username: "
 msgstr "अवैध उपयोगकर्ता"
 
-#: src/menu_events.cpp:2565
+#: src/menu_events.cpp:2587
 msgid "Added to friends list: "
 msgstr "मित्रसुचित समाविष्ट"
 
-#: src/menu_events.cpp:2578
+#: src/menu_events.cpp:2601
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:2596
+#: src/menu_events.cpp:2619
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2766
+#: src/menu_events.cpp:2789
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:2795
+#: src/menu_events.cpp:2818
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2800
+#: src/menu_events.cpp:2823
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2837
+#: src/menu_events.cpp:2860
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2843
+#: src/menu_events.cpp:2866
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2908
+#: src/menu_events.cpp:2931
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:2921
+#: src/menu_events.cpp:2944
 msgid "Debug mode activated!"
 msgstr ""
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2947
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:2929
+#: src/menu_events.cpp:2952
 msgid "Debug mode deactivated!"
 msgstr ""
 
-#: src/menu_events.cpp:3102
+#: src/menu_events.cpp:3125
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3110 src/menu_events.cpp:3126
+#: src/menu_events.cpp:3135 src/menu_events.cpp:3151
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/menu_events.cpp:3146
+#: src/menu_events.cpp:3171
 msgid "User-Command#3"
 msgstr ""
 
-#: src/mouse_events.cpp:650
+#: src/mouse_events.cpp:657
 msgid "Attack Enemy"
 msgstr "शत्रूवर आक्रमण करा"
 
-#: src/mouse_events.cpp:651
+#: src/mouse_events.cpp:658
 msgid "Choose weapon:"
 msgstr "शस्त्र निवडा"
 
@@ -7489,11 +7533,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr "ह्या खेळात सामिल होण्यासाठी परावलीचा शब्द आवश्यक आहे"
 
-#: src/multiplayer_ui.cpp:198
+#: src/multiplayer_ui.cpp:192
 msgid "Invalid Color"
 msgstr "अवैध रंग"
 
-#: src/multiplayer_ui.cpp:431
+#: src/multiplayer_ui.cpp:425
 msgid "Selected user: "
 msgstr "निवडलेला खेळाडू"
 
@@ -7543,11 +7587,11 @@ msgstr ""
 msgid "Client disconnected"
 msgstr ""
 
-#: src/network.cpp:570
+#: src/network.cpp:531
 msgid "Could not add socket to socket set"
 msgstr ""
 
-#: src/network.cpp:583
+#: src/network.cpp:543
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -7576,7 +7620,7 @@ msgid "Starting game"
 msgstr ""
 
 #: src/play_controller.cpp:886 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:953 src/savegame.cpp:955
+#: src/savegame.cpp:957 src/savegame.cpp:959
 msgid "Auto-Save"
 msgstr ""
 
@@ -7592,47 +7636,47 @@ msgstr "पराभव"
 msgid "You have been defeated!"
 msgstr "तुम्ही पराभूत झाला आहात"
 
-#: src/playcampaign.cpp:377
+#: src/playcampaign.cpp:373
 msgid "Error while reading the WML: "
 msgstr ""
 
-#: src/playcampaign.cpp:414
+#: src/playcampaign.cpp:409
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:440
+#: src/playcampaign.cpp:435
 msgid "Downloading next scenario..."
 msgstr ""
 
-#: src/playcampaign.cpp:576
+#: src/playcampaign.cpp:570
 msgid "Do you want to save your game?"
 msgstr "तुम्हाला खेळ संचित करायचा आहे का?"
 
-#: src/playcampaign.cpp:594
+#: src/playcampaign.cpp:587
 msgid "Unknown scenario: '$scenario|'"
 msgstr ""
 
-#: src/playmp_controller.cpp:150
+#: src/playmp_controller.cpp:141
 msgid "$name has taken control"
 msgstr ""
 
-#: src/playmp_controller.cpp:153
+#: src/playmp_controller.cpp:144
 msgid "Turn changed"
 msgstr ""
 
-#: src/playmp_controller.cpp:227
+#: src/playmp_controller.cpp:229
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:305
+#: src/playmp_controller.cpp:307
 msgid "End scenario"
 msgstr ""
 
-#: src/playmp_controller.cpp:406
+#: src/playmp_controller.cpp:408
 msgid "Waiting for next scenario..."
 msgstr ""
 
-#: src/playmp_controller.cpp:535
+#: src/playmp_controller.cpp:537
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7642,43 +7686,43 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:196
+#: src/playsingle_controller.cpp:201
 msgid "Remaining gold: "
 msgstr "शिल्लक सुवर्णमुद्रा"
 
-#: src/playsingle_controller.cpp:200
+#: src/playsingle_controller.cpp:205
 msgid "Early finish bonus: "
 msgstr "लवकर संपवल्यामुळे बक्षिस"
 
-#: src/playsingle_controller.cpp:202
+#: src/playsingle_controller.cpp:207
 msgid "per turn"
 msgstr ""
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:208
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:205
+#: src/playsingle_controller.cpp:210
 msgid "Bonus: "
 msgstr "बक्षिस"
 
-#: src/playsingle_controller.cpp:208
+#: src/playsingle_controller.cpp:213
 msgid "Gold: "
 msgstr "सुवर्णमुद्रा"
 
-#: src/playsingle_controller.cpp:212
+#: src/playsingle_controller.cpp:217
 msgid "Carry over percentage: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:215
+#: src/playsingle_controller.cpp:220
 msgid "Bonus Gold: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:222
 msgid "Retained Gold: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:227
+#: src/playsingle_controller.cpp:232
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -7688,7 +7732,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:235
+#: src/playsingle_controller.cpp:240
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -7698,57 +7742,57 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:381
+#: src/playsingle_controller.cpp:390
 msgid "Game Over"
 msgstr ""
 
-#: src/playsingle_controller.cpp:382
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr ""
 
-#: src/playsingle_controller.cpp:482
+#: src/playsingle_controller.cpp:483
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:657
+#: src/playsingle_controller.cpp:647
 msgid "It is now $name|'s turn"
 msgstr ""
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr ""
 
-#: src/playsingle_controller.cpp:882
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr ""
 
-#: src/playsingle_controller.cpp:883
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr ""
 
-#: src/playturn.cpp:225
+#: src/playturn.cpp:230
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:226
+#: src/playturn.cpp:231
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:232
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:233 src/playturn.cpp:247
+#: src/playturn.cpp:238 src/playturn.cpp:252
 msgid "Replace with $player"
 msgstr ""
 
-#: src/playturn.cpp:253
+#: src/playturn.cpp:258
 msgid "$player has left the game. What do you want to do?"
 msgstr ""
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr ""
 
@@ -7808,16 +7852,16 @@ msgstr ""
 msgid "Could not write to file"
 msgstr ""
 
-#: src/savegame.cpp:916
+#: src/savegame.cpp:920
 #, fuzzy
 msgid "Save Replay"
 msgstr "खेळ"
 
-#: src/savegame.cpp:936
+#: src/savegame.cpp:940
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/savegame.cpp:992
+#: src/savegame.cpp:996
 msgid "Save Game"
 msgstr "खेळ संचित करा"
 
@@ -8155,7 +8199,7 @@ msgstr ""
 msgid "female^neutral"
 msgstr ""
 
-#: src/upload_log.cpp:342
+#: src/upload_log.cpp:341
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -8163,27 +8207,24 @@ msgid ""
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
 
-#: src/upload_log.cpp:343
+#: src/upload_log.cpp:342
 msgid "Summaries are stored here:"
 msgstr ""
 
-#: src/upload_log.cpp:345
+#: src/upload_log.cpp:344
 msgid "You can view the results at:"
 msgstr ""
 
-#: src/upload_log.cpp:347
+#: src/upload_log.cpp:346
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#: src/upload_log.cpp:349
+#: src/upload_log.cpp:348
 msgid "Enable summary uploads"
 msgstr ""
 
 #~ msgid "Unknown unit type : "
 #~ msgstr "अज्ञात मोहरा प्रकार"
-
-#~ msgid "Name:"
-#~ msgstr "नाव"
 
 #, fuzzy
 #~ msgid "Landar"

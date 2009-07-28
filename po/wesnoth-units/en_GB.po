@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -144,6 +144,32 @@ msgstr ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 
+#. [unit_type]: id=Drake Arbiter, race=drake
+#: data/core/units/drakes/Arbiter.cfg:4
+#, fuzzy
+msgid "Drake Arbiter"
+msgstr "Drake Fighter"
+
+#. [unit_type]: id=Drake Arbiter, race=drake
+#: data/core/units/drakes/Arbiter.cfg:19
+msgid ""
+"Arbiters take their caste very seriously. In order to better execute their "
+"duties, they have abandoned the Drakes' traditional hand-mounted claws and "
+"traded their spears for the spike and blade of the halberd. In their minds, "
+"the loss of maneuverability is a fair price for the raw heft the massive "
+"metal head provides. The thick plate these Drakes wear protects them well "
+"against weapons that could slip between their scales."
+msgstr ""
+
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#: data/core/units/drakes/Arbiter.cfg:41 data/core/units/drakes/Arbiter.cfg:50
+#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
+#: data/core/units/humans/Loyalist_Halberdier.cfg:41
+#: data/core/units/humans/Loyalist_Halberdier.cfg:53
+msgid "halberd"
+msgstr "halberd"
+
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
@@ -183,9 +209,9 @@ msgstr "claws"
 #: data/core/units/drakes/Blademaster.cfg:78
 #: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Fighter.cfg:75
 #: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:85
-#: data/core/units/drakes/Hurricane.cfg:100
-#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:99
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:97
+#: data/core/units/drakes/Hurricane.cfg:112
+#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:111
 #: data/core/units/drakes/Warrior.cfg:82
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
@@ -211,9 +237,9 @@ msgstr ""
 #. [attack]: type=arcane
 #: data/core/units/drakes/Blademaster.cfg:69
 #: data/core/units/drakes/Clasher.cfg:38
-#: data/core/units/drakes/Enforcer.cfg:77
+#: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:24
+#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Slasher.cfg:24
 #: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
 #: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
 #: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
@@ -280,8 +306,8 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:47
-#: data/core/units/drakes/Enforcer.cfg:95
-#: data/core/units/drakes/Gladiator.cfg:33
+#: data/core/units/drakes/Enforcer.cfg:54
+#: data/core/units/drakes/Slasher.cfg:33
 #: data/core/units/dwarves/Guardsman.cfg:43
 #: data/core/units/dwarves/Sentinel.cfg:51
 #: data/core/units/dwarves/Stalwart.cfg:46
@@ -328,8 +354,8 @@ msgstr ""
 "and they are clad them head to toe in shining armour of proof."
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Enforcer.cfg:86
-#: data/core/units/drakes/Gladiator.cfg:42
+#: data/core/units/drakes/Enforcer.cfg:45
+#: data/core/units/drakes/Slasher.cfg:42
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
@@ -415,30 +441,6 @@ msgstr ""
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 
-#. [unit_type]: id=Drake Gladiator, race=drake
-#: data/core/units/drakes/Gladiator.cfg:4
-msgid "Drake Gladiator"
-msgstr "Drake Gladiator"
-
-#. [unit_type]: id=Drake Gladiator, race=drake
-#: data/core/units/drakes/Gladiator.cfg:20
-msgid ""
-"The Gladiator has taken a completely different path from the Slashers. "
-"Rather than emphasize training, they have chosen to focus on the craft of "
-"their weaponry. They are the smiths of Drake society, and it follows that "
-"they possess the best weaponry - the sharpest blades and spears, and the "
-"maces which complement their already impressive array. Their intense focus "
-"on their weapons confers offensive capability at the cost of a slight "
-"reduction in their defensive abilities."
-msgstr ""
-"The Gladiator has taken a completely different path from the Slashers. "
-"Rather than emphasize training, they have chosen to focus on the craft of "
-"their weaponry. They are the smiths of Drake society, and it follows that "
-"they possess the best weaponry - the sharpest blades and spears, and the "
-"maces which complement their already impressive array. Their intense focus "
-"on their weapons confers offensive capability at the cost of a slight "
-"reduction in their defensive abilities."
-
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
@@ -462,8 +464,8 @@ msgstr ""
 "at flying allows them the precision to target enemies under such cover."
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:76
-#: data/core/units/drakes/Hurricane.cfg:91 data/core/units/drakes/Sky.cfg:90
+#: data/core/units/drakes/Glider.cfg:88
+#: data/core/units/drakes/Hurricane.cfg:103 data/core/units/drakes/Sky.cfg:102
 msgid "slam"
 msgstr "slam"
 
@@ -530,28 +532,15 @@ msgid "Drake Slasher"
 msgstr "Drake Slasher"
 
 #. [unit_type]: id=Drake Slasher, race=drake
-#: data/core/units/drakes/Slasher.cfg:19
+#: data/core/units/drakes/Slasher.cfg:20
 msgid ""
-"Slashers are Clashers who have chosen to master the use of a halberd instead "
-"of carrying a sword and the spear. Their great size allows them to use a "
-"weapon of matching scale, large enough to skewer a horse as a man would a "
-"boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators."
+"Instead of letting themselves be bound by their armor, Slashers have learned "
+"to redirect its weight to supplement their bodies' momentum, adding power to "
+"the blows of their short spears and hand-mounted claws. Equipment and body "
+"are one; even their thick helms and the thick skulls beneath them are "
+"weapons. A Slasher will gladly fulfill his caste duties, as long as it can "
+"be done on the battlefield."
 msgstr ""
-"Slashers are Clashers who have chosen to master the use of a halberd instead "
-"of carrying a sword and the spear. Their great size allows them to use a "
-"weapon of matching scale, large enough to skewer a horse as a man would a "
-"boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators."
-
-#. [attack]: type=blade
-#. [attack]: type=pierce
-#: data/core/units/drakes/Slasher.cfg:41 data/core/units/drakes/Slasher.cfg:50
-#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
-#: data/core/units/humans/Loyalist_Halberdier.cfg:41
-#: data/core/units/humans/Loyalist_Halberdier.cfg:53
-msgid "halberd"
-msgstr "halberd"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
@@ -561,15 +550,14 @@ msgstr "Drake Warden"
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
 msgid ""
-"The Warden represents the pinnacle of the clasher caste, being picked from "
-"the most able Slashers. They have forged their might such that few warriors "
-"on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect."
+"Wardens are set apart from the rest of the Clasher caste by two things: "
+"their ornate helms, modeled after their dragon ancestors, and the care with "
+"which they drape their armored wings in brightly colored cloth before "
+"reporting for duty. Though this mode of dress stems from the pride they feel "
+"for their role in Drake society, it is far from ceremonial. Their cumbersome "
+"bronze plate is the strongest work from the Drake forges, and their halberds "
+"can cleave a human in half."
 msgstr ""
-"The Warden represents the pinnacle of the clasher caste, being picked from "
-"the most able Slashers. They have forged their might such that few warriors "
-"on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -646,7 +634,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
+#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:26
 #: data/core/units/orcs/Slayer.cfg:27
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
@@ -715,7 +703,8 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:51
 #: data/core/units/dwarves/Steelclad.cfg:51
-#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Warrior.cfg:27
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Warrior.cfg:27
 msgid "hammer"
 msgstr "hammer"
 
@@ -989,7 +978,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
-#: data/core/units/orcs/Archer.cfg:80 data/core/units/orcs/Archer.cfg:89
+#: data/core/units/orcs/Archer.cfg:35 data/core/units/orcs/Archer.cfg:44
 #: data/core/units/orcs/Warlord.cfg:34
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
@@ -1958,11 +1947,11 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
-#: data/core/units/humans/Loyalist_Duelist.cfg:81
+#: data/core/units/humans/Loyalist_Duelist.cfg:94
 #: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:55
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
 #: data/core/units/humans/Loyalist_Sergeant.cfg:56
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
@@ -2024,7 +2013,7 @@ msgid "Duelist"
 msgstr "Duellist"
 
 #. [unit_type]: id=Duelist, race=human
-#: data/core/units/humans/Loyalist_Duelist.cfg:19
+#: data/core/units/humans/Loyalist_Duelist.cfg:20
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2051,9 +2040,9 @@ msgstr ""
 "veterans typically do so by making such concessions to utility and survival."
 
 #. [attack]: type=blade
-#: data/core/units/humans/Loyalist_Duelist.cfg:72
-#: data/core/units/humans/Loyalist_Fencer.cfg:127
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
+#: data/core/units/humans/Loyalist_Duelist.cfg:85
+#: data/core/units/humans/Loyalist_Fencer.cfg:140
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:44
 msgid "saber"
 msgstr "sabre"
 
@@ -2063,7 +2052,7 @@ msgid "Fencer"
 msgstr "Fencer"
 
 #. [unit_type]: id=Fencer, race=human
-#: data/core/units/humans/Loyalist_Fencer.cfg:20
+#: data/core/units/humans/Loyalist_Fencer.cfg:21
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2299,7 +2288,7 @@ msgid "Master at Arms"
 msgstr "Master at Arms"
 
 #. [unit_type]: id=Master at Arms, race=human
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:21
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2913,7 +2902,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
-#: data/core/units/trolls/Hero.cfg:26 data/core/units/trolls/Troll.cfg:26
+#: data/core/units/trolls/Troll.cfg:26
 msgid "club"
 msgstr "club"
 
@@ -3310,9 +3299,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/merfolk/Fighter.cfg:25
+#: data/core/units/merfolk/Fighter.cfg:37
 #: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
-#: data/core/units/merfolk/Warrior.cfg:24
+#: data/core/units/merfolk/Warrior.cfg:36
 msgid "trident"
 msgstr "trident"
 
@@ -5126,6 +5115,52 @@ msgstr ""
 "\n"
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
+
+#~ msgid "Drake Gladiator"
+#~ msgstr "Drake Gladiator"
+
+#~ msgid ""
+#~ "The Gladiator has taken a completely different path from the Slashers. "
+#~ "Rather than emphasize training, they have chosen to focus on the craft of "
+#~ "their weaponry. They are the smiths of Drake society, and it follows that "
+#~ "they possess the best weaponry - the sharpest blades and spears, and the "
+#~ "maces which complement their already impressive array. Their intense "
+#~ "focus on their weapons confers offensive capability at the cost of a "
+#~ "slight reduction in their defensive abilities."
+#~ msgstr ""
+#~ "The Gladiator has taken a completely different path from the Slashers. "
+#~ "Rather than emphasize training, they have chosen to focus on the craft of "
+#~ "their weaponry. They are the smiths of Drake society, and it follows that "
+#~ "they possess the best weaponry - the sharpest blades and spears, and the "
+#~ "maces which complement their already impressive array. Their intense "
+#~ "focus on their weapons confers offensive capability at the cost of a "
+#~ "slight reduction in their defensive abilities."
+
+#~ msgid ""
+#~ "Slashers are Clashers who have chosen to master the use of a halberd "
+#~ "instead of carrying a sword and the spear. Their great size allows them "
+#~ "to use a weapon of matching scale, large enough to skewer a horse as a "
+#~ "man would a boar. Their training has also enhanced their stamina and "
+#~ "defensive skills, which is a major advantage over their close cousins the "
+#~ "Gladiators."
+#~ msgstr ""
+#~ "Slashers are Clashers who have chosen to master the use of a halberd "
+#~ "instead of carrying a sword and the spear. Their great size allows them "
+#~ "to use a weapon of matching scale, large enough to skewer a horse as a "
+#~ "man would a boar. Their training has also enhanced their stamina and "
+#~ "defensive skills, which is a major advantage over their close cousins the "
+#~ "Gladiators."
+
+#~ msgid ""
+#~ "The Warden represents the pinnacle of the clasher caste, being picked "
+#~ "from the most able Slashers. They have forged their might such that few "
+#~ "warriors on this earth would dare stand against them. The Wardens' weapon "
+#~ "of choice is the halberd, which they use to great effect."
+#~ msgstr ""
+#~ "The Warden represents the pinnacle of the clasher caste, being picked "
+#~ "from the most able Slashers. They have forged their might such that few "
+#~ "warriors on this earth would dare stand against them. The Wardens' weapon "
+#~ "of choice is the halberd, which they use to great effect."
 
 #, fuzzy
 #~ msgid "Longbow"

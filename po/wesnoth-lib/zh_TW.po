@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-05-16 11:34+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -730,11 +730,9 @@ msgid "Time of day lighting preset"
 msgstr "使用預設時間系統"
 
 #. [button]: id=next_tod
-#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "下一個"
@@ -933,57 +931,65 @@ msgid "Change language"
 msgstr "選擇語言"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:325
+#: data/gui/default/window/lobby_main.cfg:277
+#, fuzzy
+msgid "Sort players:"
+msgstr "玩家數量："
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:413
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "多人對戰"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:333
+#: data/gui/default/window/lobby_main.cfg:421
 #, fuzzy
 msgid "Filter:"
 msgstr "文件:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:344
+#: data/gui/default/window/lobby_main.cfg:432
 #, fuzzy
 msgid "Friends"
 msgstr "好友列表"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:350
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:356
+#: data/gui/default/window/lobby_main.cfg:444
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:362
+#: data/gui/default/window/lobby_main.cfg:450
 #, fuzzy
 msgid "Invert filter"
 msgstr "旋轉選擇區域"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/window/lobby_main.cfg:464
+#: data/gui/default/window/lobby_player_info.cfg:192
+#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
+msgid "Close"
+msgstr "關閉"
+
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:390
+#: data/gui/default/window/lobby_main.cfg:486
 #, fuzzy
 msgid "Send"
 msgstr "沙地"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:402
-#: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
-msgid "Close"
-msgstr "關閉"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:414
+#: data/gui/default/window/lobby_main.cfg:498
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -992,43 +998,112 @@ msgstr "退出"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:420
+#: data/gui/default/window/lobby_main.cfg:504
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "選項"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:426
+#: data/gui/default/window/lobby_main.cfg:510
 #, fuzzy
 msgid "Refresh"
 msgstr "刷新顯示"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=show_help
+#. [button]: id=help
+#: data/gui/default/window/lobby_main.cfg:516
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
+msgid "Help"
+msgstr "幫助"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:524
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "新遊戲"
+
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:432
+#: data/gui/default/window/lobby_main.cfg:530
 #, fuzzy
 msgid "Join"
 msgstr "登入"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:438
+#: data/gui/default/window/lobby_main.cfg:536
 msgid "Observe"
 msgstr ""
 
-#. [label]
-#. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:444
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "新遊戲"
+#. [toggle_button]: id=skip_replay
+#: data/gui/default/window/lobby_main.cfg:542
+#, fuzzy
+msgid "Quick replay"
+msgstr "玩家"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_help
-#. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:450
-#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
-msgid "Help"
-msgstr "幫助"
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:30
+#, fuzzy
+msgid "Player Info - "
+msgstr "玩家數量："
+
+#. [button]: id=start_whisper
+#: data/gui/default/window/lobby_player_info.cfg:62
+#, fuzzy
+msgid "Send private message"
+msgstr "傳送個人訊息"
+
+#. [button]: id=add_to_friends
+#: data/gui/default/window/lobby_player_info.cfg:91
+#, fuzzy
+msgid "Add to friends list"
+msgstr "加入好友列表"
+
+#. [button]: id=add_to_ignores
+#: data/gui/default/window/lobby_player_info.cfg:100
+#, fuzzy
+msgid "Add to ignores list"
+msgstr "丟進黑名單"
+
+#. [button]: id=remove_from_list
+#: data/gui/default/window/lobby_player_info.cfg:109
+#, fuzzy
+msgid "Remove from list"
+msgstr "重新讀取文件"
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:133
+#, fuzzy
+msgid "Moderation"
+msgstr "中等"
+
+#. [button]: id=check_status
+#: data/gui/default/window/lobby_player_info.cfg:140
+msgid "Check status"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:147
+msgid "Kick / ban reason:"
+msgstr ""
+
+#. [button]: id=kick
+#: data/gui/default/window/lobby_player_info.cfg:160
+#: data/gui/default/window/mp_cmd_wrapper.cfg:381
+msgid "Kick"
+msgstr "踢除"
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:167
+msgid "Ban time:"
+msgstr ""
+
+#. [button]: id=kick_ban
+#: data/gui/default/window/lobby_player_info.cfg:180
+#, fuzzy
+msgid "Kick/ban"
+msgstr "踢除"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1096,11 +1171,6 @@ msgstr "時間:"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
 msgid "Status"
 msgstr "狀態"
-
-#. [button]: id=kick
-#: data/gui/default/window/mp_cmd_wrapper.cfg:381
-msgid "Kick"
-msgstr "踢除"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -1804,16 +1874,16 @@ msgstr "畫面沒有文字。"
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:516
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
 #: src/gui/auxiliary/window_builder.cpp:280
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:771 src/gui/widgets/settings.cpp:867
-#: src/gui/widgets/settings.cpp:956 src/gui/widgets/settings.cpp:998
-#: src/gui/widgets/settings.cpp:1116
+#: src/gui/widgets/settings.cpp:772 src/gui/widgets/settings.cpp:868
+#: src/gui/widgets/settings.cpp:957 src/gui/widgets/settings.cpp:999
+#: src/gui/widgets/settings.cpp:1117
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
@@ -1890,6 +1960,16 @@ msgstr ""
 msgid "Version: "
 msgstr "版本"
 
+#: src/gui/dialogs/lobby_main.cpp:624
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:630
+msgid "Room $name joined"
+msgstr ""
+
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "錯誤"
@@ -1906,20 +1986,20 @@ msgstr "版本"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "元件'$id'沒有被設定"
 
-#: src/gui/widgets/settings.cpp:140
+#: src/gui/widgets/settings.cpp:141
 msgid "No default gui defined."
 msgstr "沒有設定預設網格"
 
-#: src/gui/widgets/settings.cpp:303
+#: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
 msgstr "視窗沒有設定"
 
-#: src/gui/widgets/settings.cpp:400
+#: src/gui/widgets/settings.cpp:401
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
-#: src/gui/widgets/settings.cpp:542
+#: src/gui/widgets/settings.cpp:543
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
@@ -2597,9 +2677,6 @@ msgstr "在區塊'[$section|]'中，必須設的值'$key|'没有設定。"
 
 #~ msgid "Flood Fill"
 #~ msgstr "填滿"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "重新讀取文件"
 
 #~ msgid "Flip Map"
 #~ msgstr "翻轉地圖"

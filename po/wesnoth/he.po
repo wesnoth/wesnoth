@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -79,6 +79,21 @@ msgid ""
 "0."
 msgstr ""
 
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:79
+msgid "Accept whisper messages from friends only"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:86
+msgid "Auto-open whisper windows in lobby"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:93
+msgid "Don't group players in lobby"
+msgstr ""
+
 #. [message]: speaker=narrator
 #: data/ai/scenarios/ai_arena_small/0002-poisoning.cfg:16
 msgid "This situation should test the ability of AI to spread poison around..."
@@ -99,7 +114,7 @@ msgstr "תת קרקעי"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:304
-#: src/actions.cpp:1125 src/actions.cpp:1400
+#: src/actions.cpp:1130 src/actions.cpp:1405
 msgid "poisoned"
 msgstr "מורעל"
 
@@ -158,14 +173,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1130 src/actions.cpp:1405
+#: src/actions.cpp:1135 src/actions.cpp:1410
 msgid "female^slowed"
 msgstr "מואטת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1130 src/actions.cpp:1405
+#: src/actions.cpp:1135 src/actions.cpp:1410
 msgid "slowed"
 msgstr "מואט"
 
@@ -253,282 +268,282 @@ msgid "Artwork and Graphics"
 msgstr "עיצוב אומנותי וגרפיקה"
 
 #. [about]
-#: data/core/about.cfg:531
+#: data/core/about.cfg:536
 msgid "Music"
 msgstr "מוסיקה"
 
 #. [about]
-#: data/core/about.cfg:565
+#: data/core/about.cfg:570
 msgid "Sound Effects"
 msgstr "אפקטים קוליים"
 
 #. [about]
-#: data/core/about.cfg:581
+#: data/core/about.cfg:586
 msgid "Campaign Design"
 msgstr "עיצוב מערכות"
 
 #. [about]
-#: data/core/about.cfg:648
+#: data/core/about.cfg:653
 msgid "Multiplayer Maps and Balancing"
 msgstr "מפות למשחק רב משתתפים"
 
 #. [about]
-#: data/core/about.cfg:689
+#: data/core/about.cfg:694
 msgid "Packagers"
 msgstr "התקנות"
 
 #. [about]
-#: data/core/about.cfg:755
+#: data/core/about.cfg:760
 msgid "Miscellaneous contributors"
 msgstr "שונות"
 
 #. [about]
-#: data/core/about.cfg:964
+#: data/core/about.cfg:969
 msgid "Internationalization Managers"
 msgstr "מנהלי תרגום"
 
 #. [about]
-#: data/core/about.cfg:989
+#: data/core/about.cfg:994
 msgid "English strings edition"
 msgstr "תרגום לאנגלית (ארצות הברית)"
 
 #. [about]
-#: data/core/about.cfg:996
+#: data/core/about.cfg:1001
 msgid "Afrikaans Translation"
 msgstr "תרגום לאפריקנית"
 
 #. [about]
-#: data/core/about.cfg:1012
+#: data/core/about.cfg:1017
 msgid "Arabic Translation"
 msgstr "תרגום ערבית"
 
 #. [about]
-#: data/core/about.cfg:1019
+#: data/core/about.cfg:1024
 msgid "Basque Translation"
 msgstr "תרגום לבסקית"
 
 #. [about]
-#: data/core/about.cfg:1032
+#: data/core/about.cfg:1037
 msgid "Bulgarian Translation"
 msgstr "תרגום לבולגרית"
 
 #. [about]
-#: data/core/about.cfg:1051
+#: data/core/about.cfg:1056
 msgid "Catalan Translation"
 msgstr "תרגום לקטאלאנית"
 
 #. [about]
-#: data/core/about.cfg:1089
+#: data/core/about.cfg:1094
 msgid "Chinese Translation"
 msgstr "תרגום לסינית"
 
 #. [about]
-#: data/core/about.cfg:1127
+#: data/core/about.cfg:1132
 msgid "Chinese (Taiwan) Translation"
 msgstr "תרגום לסינית (טיוואן)"
 
 #. [about]
-#: data/core/about.cfg:1149
+#: data/core/about.cfg:1154
 msgid "Croatian Translation"
 msgstr "תרגום לקרואטית"
 
 #. [about]
-#: data/core/about.cfg:1156
+#: data/core/about.cfg:1161
 msgid "Czech Translation"
 msgstr "תרגום לצ'כית"
 
 #. [about]
-#: data/core/about.cfg:1216
+#: data/core/about.cfg:1221
 msgid "Danish Translation"
 msgstr "תרגום לדנית"
 
 #. [about]
-#: data/core/about.cfg:1247
+#: data/core/about.cfg:1252
 msgid "Dutch Translation"
 msgstr "תרגום להולנדית"
 
 #. [about]
-#: data/core/about.cfg:1305
+#: data/core/about.cfg:1310
 msgid "English (GB) Translation"
 msgstr "תרגום לאנגלית (אנגליה)"
 
 #. [about]
-#: data/core/about.cfg:1318
+#: data/core/about.cfg:1323
 msgid "Esperanto Translation"
 msgstr "תרגום לאספרנטו"
 
 #. [about]
-#: data/core/about.cfg:1337
+#: data/core/about.cfg:1342
 msgid "Estonian Translation"
 msgstr "תרגום לאסטונית"
 
 #. [about]
-#: data/core/about.cfg:1347
+#: data/core/about.cfg:1352
 msgid "Filipino Translation"
 msgstr "תרגום לפיליפינית"
 
 #. [about]
-#: data/core/about.cfg:1357
+#: data/core/about.cfg:1362
 msgid "Finnish Translation"
 msgstr "תרגום לפינית"
 
 #. [about]
-#: data/core/about.cfg:1397
+#: data/core/about.cfg:1402
 msgid "French Translation"
 msgstr "תרגום לצרפתית"
 
 #. [about]
-#: data/core/about.cfg:1523
+#: data/core/about.cfg:1540
 msgid "Friulian Translation"
 msgstr "תרגום לפורלן"
 
 #. [about]
-#: data/core/about.cfg:1530
+#: data/core/about.cfg:1547
 msgid "Galician Translation"
 msgstr "תרגום לגליסית"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1582
 msgid "German Translation"
 msgstr "תרגום לגרמנית"
 
 #. [about]
-#: data/core/about.cfg:1620
+#: data/core/about.cfg:1637
 msgid "Greek Translation"
 msgstr "תרגום ליוונית"
 
 #. [about]
-#: data/core/about.cfg:1651
+#: data/core/about.cfg:1668
 msgid "Hebrew Translation"
 msgstr "תרגום לעברית"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1681
 msgid "Hungarian Translation"
 msgstr "תרגום להונגרית"
 
 #. [about]
-#: data/core/about.cfg:1725
+#: data/core/about.cfg:1742
 msgid "Icelandic translation"
 msgstr "תרגום לאיסלנדית"
 
 #. [about]
-#: data/core/about.cfg:1735
+#: data/core/about.cfg:1752
 msgid "Indonesian Translation"
 msgstr "תרגום לאינדונזית"
 
 #. [about]
-#: data/core/about.cfg:1742
+#: data/core/about.cfg:1759
 msgid "Italian Translation"
 msgstr "תרגום לאיטלקית"
 
 #. [about]
-#: data/core/about.cfg:1777
+#: data/core/about.cfg:1794
 msgid "Japanese Translation"
 msgstr "תרגום ליפנית"
 
 #. [about]
-#: data/core/about.cfg:1803
+#: data/core/about.cfg:1820
 msgid "Korean Translation"
 msgstr "תרגום לקוריאנית"
 
 #. [about]
-#: data/core/about.cfg:1810
+#: data/core/about.cfg:1827
 msgid "Latin Translation"
 msgstr "תרגום ללטינית"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1834
 msgid "Latvian Translation"
 msgstr "תרגום ללטבית"
 
 #. [about]
-#: data/core/about.cfg:1824
+#: data/core/about.cfg:1841
 msgid "Lithuanian Translation"
 msgstr "תרגום לליטאית"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1855
 msgid "Macedonian Translation"
 msgstr "תרגום למקדונית"
 
 #. [about]
-#: data/core/about.cfg:1846
+#: data/core/about.cfg:1863
 msgid "Marathi Translation"
 msgstr "תרגום למרטהי"
 
 #. [about]
-#: data/core/about.cfg:1855
+#: data/core/about.cfg:1872
 msgid "Norwegian Translation"
 msgstr "תרגום לנורווגית"
 
 #. [about]
-#: data/core/about.cfg:1880
+#: data/core/about.cfg:1897
 msgid "Polish Translation"
 msgstr "תרגום לפולנית"
 
 #. [about]
-#: data/core/about.cfg:1929
+#: data/core/about.cfg:1946
 msgid "Portuguese Translation"
 msgstr "תרגום לפורטוגזית"
 
 #. [about]
-#: data/core/about.cfg:1936
+#: data/core/about.cfg:1953
 msgid "Portuguese (Brazil) Translation"
 msgstr "תרגום לפורטוגזית (ברזיל)"
 
 #. [about]
-#: data/core/about.cfg:1971
+#: data/core/about.cfg:1988
 msgid "Romanian Translation"
 msgstr "תרגום לרומנית"
 
 #. [about]
-#: data/core/about.cfg:1979
+#: data/core/about.cfg:1996
 msgid "Russian Translation"
 msgstr "תרגום לרוסית"
 
 #. [about]
-#: data/core/about.cfg:2036
+#: data/core/about.cfg:2053
 msgid "Serbian Translation"
 msgstr "תרגום לסרבית"
 
 #. [about]
-#: data/core/about.cfg:2051
+#: data/core/about.cfg:2068
 msgid "Slovak Translation"
 msgstr "תרגום לסלובקית"
 
 #. [about]
-#: data/core/about.cfg:2077
+#: data/core/about.cfg:2094
 msgid "Slovenian Translation"
 msgstr "תרגום לסלובנית"
 
 #. [about]
-#: data/core/about.cfg:2090
+#: data/core/about.cfg:2107
 msgid "Spanish Translation"
 msgstr "תרגום לספרדית"
 
 #. [about]
-#: data/core/about.cfg:2142
+#: data/core/about.cfg:2159
 msgid "Swedish Translation"
 msgstr "תרגום לשוודית"
 
 #. [about]
-#: data/core/about.cfg:2171
+#: data/core/about.cfg:2188
 msgid "Turkish Translation"
 msgstr "תרגום לתורכית"
 
 #. [about]
-#: data/core/about.cfg:2193
+#: data/core/about.cfg:2210
 msgid "Valencian (southern Catalan) Translation"
 msgstr "תרגום לולנסית (דרום קטלן)"
 
 #. [about]
-#: data/core/about.cfg:2206
+#: data/core/about.cfg:2223
 msgid "RACV's Translation"
 msgstr "התרגום של RACV"
 
 #. [about]
-#: data/core/about.cfg:2213
+#: data/core/about.cfg:2230
 msgid "Bots"
 msgstr "בוטים"
 
@@ -2917,11 +2932,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:859
+#: data/core/help.cfg:861
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100"
+"hitpoints=100\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:862
+msgid ""
+"\n"
+"Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
 # END SKIPPING
@@ -3784,29 +3807,27 @@ msgstr "קילשון זה יתן לבן הים לירות ברקים חשמלי�
 msgid "storm trident"
 msgstr "קילשון סערה"
 
-# I NEED VARIABLE MARKOV-CHAIN-SIZE AND BELOW-LINE CHARACTERS
-# FOR HEBREW NAMES (BECAUSE IN HEBREW WE USE NIKUD, NOT VOWEL LETTERS)
-#: data/core/macros/names.cfg:3
+#: data/core/macros/names.cfg:18
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
-"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
-"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 
-#: data/core/macros/names.cfg:4
+#: data/core/macros/names.cfg:19
 msgid ""
-"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
 
-#: data/core/macros/names.cfg:8
+#: data/core/macros/names.cfg:23
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -3853,7 +3874,7 @@ msgid ""
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
 
-#: data/core/macros/names.cfg:12
+#: data/core/macros/names.cfg:27
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -3914,7 +3935,7 @@ msgid ""
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
 
-#: data/core/macros/names.cfg:13
+#: data/core/macros/names.cfg:28
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -3982,15 +4003,15 @@ msgid ""
 "Vówien"
 msgstr ""
 
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:33
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr ""
 
-#: data/core/macros/names.cfg:19
+#: data/core/macros/names.cfg:34
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr ""
 
-#: data/core/macros/names.cfg:23
+#: data/core/macros/names.cfg:38
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4041,7 +4062,7 @@ msgid ""
 "Yrynyc,Yryrcyn"
 msgstr ""
 
-#: data/core/macros/names.cfg:24
+#: data/core/macros/names.cfg:39
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4090,7 +4111,7 @@ msgid ""
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
 
-#: data/core/macros/names.cfg:28
+#: data/core/macros/names.cfg:43
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -4104,7 +4125,7 @@ msgid ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
 
-#: data/core/macros/names.cfg:32
+#: data/core/macros/names.cfg:47
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -4115,7 +4136,7 @@ msgid ""
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
 
-#: data/core/macros/names.cfg:33
+#: data/core/macros/names.cfg:48
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -4123,7 +4144,7 @@ msgid ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
 
-#: data/core/macros/names.cfg:37
+#: data/core/macros/names.cfg:52
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -4133,7 +4154,7 @@ msgid ""
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
 
-#: data/core/macros/names.cfg:38
+#: data/core/macros/names.cfg:53
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -4144,7 +4165,7 @@ msgid ""
 "Zsekp"
 msgstr ""
 
-#: data/core/macros/names.cfg:42
+#: data/core/macros/names.cfg:57
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -4154,7 +4175,7 @@ msgid ""
 "Urkark"
 msgstr ""
 
-#: data/core/macros/names.cfg:46
+#: data/core/macros/names.cfg:61
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -4190,7 +4211,7 @@ msgid ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
 
-#: data/core/macros/names.cfg:50
+#: data/core/macros/names.cfg:65
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -4198,7 +4219,7 @@ msgid ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
 
-#: data/core/macros/names.cfg:54
+#: data/core/macros/names.cfg:69
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -4214,7 +4235,7 @@ msgid ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
 
-#: data/core/macros/names.cfg:58
+#: data/core/macros/names.cfg:73
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -6094,7 +6115,7 @@ msgstr "סיים התקלות"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:195 src/unit.cpp:2609
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:196 src/unit.cpp:2609
 #: src/unit.cpp:2771
 msgid "HP"
 msgstr "נק\"פ"
@@ -6102,7 +6123,7 @@ msgstr "נק\"פ"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:196
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:197
 #: src/menu_events.cpp:853
 msgid "XP"
 msgstr "נק\"ן"
@@ -6229,83 +6250,83 @@ msgstr "נקודת מבט"
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
-#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:313
-#: src/menu_events.cpp:340 src/statistics_dialog.cpp:114
+#: src/about.cpp:198 src/help.cpp:3157 src/menu_events.cpp:314
+#: src/menu_events.cpp:341 src/statistics_dialog.cpp:114
 msgid "Close"
 msgstr "סגור"
 
-#: src/actions.cpp:234
+#: src/actions.cpp:239
 msgid "You don't have a leader to recruit with."
 msgstr "אין לך מנהיג כדי לגייס איתו."
 
-#: src/actions.cpp:241
+#: src/actions.cpp:246
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "המנהיג שלך חייב להיות על מצודה כדי לגייס או להחזיר יחידות."
 
-#: src/actions.cpp:260
+#: src/actions.cpp:265
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "אין משבצת טירה פנויה שניתן לגייס אליו את היחידה."
 
-#: src/actions.cpp:378 src/actions.cpp:437 src/actions.cpp:1004
+#: src/actions.cpp:383 src/actions.cpp:442 src/actions.cpp:1009
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/actions.cpp:383
+#: src/actions.cpp:388
 #, fuzzy
 msgid "An invalid defender weapon got selected."
 msgstr "נבחרה תקופה לא חוקית"
 
-#: src/actions.cpp:1125 src/actions.cpp:1400
+#: src/actions.cpp:1130 src/actions.cpp:1405
 msgid "female^poisoned"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1137 src/actions.cpp:1412
+#: src/actions.cpp:1142 src/actions.cpp:1417
 #, fuzzy
 msgid "female^petrified"
 msgstr "מורעלת"
 
-#: src/actions.cpp:1137 src/actions.cpp:1412
+#: src/actions.cpp:1142 src/actions.cpp:1417
 msgid "petrified"
 msgstr ""
 
-#: src/actions.cpp:2490
+#: src/actions.cpp:2495
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2497
+#: src/actions.cpp:2502
 msgid "Failed teleport! Exit not empty"
 msgstr "טלפורטציה נכשלה! היציאה חסומה!"
 
-#: src/actions.cpp:2542
+#: src/actions.cpp:2547
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "יחידה ידידותית נראתה."
 msgstr[1] "$friends יחידות ידידותיות נראו."
 
-#: src/actions.cpp:2545
+#: src/actions.cpp:2550
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
 msgstr[1] "$friends יחידות אויב נראו!"
 
-#: src/actions.cpp:2550
+#: src/actions.cpp:2555
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "ידידותית"
 msgstr[1] "$friends ידידותיות"
 
-#: src/actions.cpp:2551
+#: src/actions.cpp:2556
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "עוינת"
 msgstr[1] "עוינות"
 
-#: src/actions.cpp:2552
+#: src/actions.cpp:2557
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  עוינות)"
 
-#: src/actions.cpp:2561
+#: src/actions.cpp:2566
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
@@ -6454,7 +6475,7 @@ msgid "No add-ons to update"
 msgstr "אין תוספים ברי-עדכון."
 
 #: src/addon_management.cpp:729 src/addon_management.cpp:932
-#: src/dialogs.cpp:575 src/menu_events.cpp:193 src/menu_events.cpp:851
+#: src/dialogs.cpp:575 src/menu_events.cpp:194 src/menu_events.cpp:851
 msgid "Name"
 msgstr "שם"
 
@@ -6533,7 +6554,7 @@ msgstr "גרסא"
 msgid "Downloads"
 msgstr "הורדות"
 
-#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:192
+#: src/addon_management.cpp:933 src/help.cpp:1458 src/menu_events.cpp:193
 #: src/menu_events.cpp:850 src/menu_events.cpp:1372
 msgid "Type"
 msgstr "סוג"
@@ -6657,7 +6678,7 @@ msgstr "אין נשק שמיש"
 msgid "Chance of being unscathed"
 msgstr "סיכוי לא להפגע"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:639
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:646
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
@@ -6701,11 +6722,11 @@ msgstr "רב משתתפים"
 msgid "Tutorial"
 msgstr "הדרכה"
 
-#: src/dialogs.cpp:483 src/savegame.cpp:925
+#: src/dialogs.cpp:483 src/savegame.cpp:929
 msgid "replay"
 msgstr "הקלטת משחק"
 
-#: src/dialogs.cpp:485 src/savegame.cpp:1006
+#: src/dialogs.cpp:485 src/savegame.cpp:1010
 msgid "Turn"
 msgstr "תור"
 
@@ -6805,101 +6826,101 @@ msgstr "נק\"נ: "
 msgid "Moves: "
 msgstr "מהלכים: "
 
-#: src/game.cpp:661 src/game.cpp:1377
+#: src/game.cpp:663 src/game.cpp:1380
 msgid "The Battle for Wesnoth"
 msgstr "הקרב על ווסנות'"
 
-#: src/game.cpp:977 src/game.cpp:985 src/playsingle_controller.cpp:471
-#: src/playsingle_controller.cpp:530
+#: src/game.cpp:980 src/game.cpp:988 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:527
 msgid "The file you have tried to load is corrupt"
 msgstr "הקובץ, אותו ניסית לטעון, פגום"
 
-#: src/game.cpp:980 src/game.cpp:988 src/savegame.cpp:521
+#: src/game.cpp:983 src/game.cpp:991 src/savegame.cpp:521
 msgid "The file you have tried to load is corrupt: '"
 msgstr "הקובץ, אותו ניסית לטעון, פגום: '"
 
-#: src/game.cpp:992
+#: src/game.cpp:995
 msgid "File I/O Error while reading the game"
 msgstr "שגיאה קלט בטעינת המשחק"
 
-#: src/game.cpp:1087
+#: src/game.cpp:1090
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "אין מטרות זמינות"
 
-#: src/game.cpp:1120
+#: src/game.cpp:1123
 msgid "Difficulty"
 msgstr "רמת קושי"
 
-#: src/game.cpp:1121
+#: src/game.cpp:1124
 msgid "Select difficulty level:"
 msgstr "בחר רמת קושי:"
 
-#: src/game.cpp:1256
+#: src/game.cpp:1259
 msgid "Do you really want to start the server?"
 msgstr "האם אתה בטוח שברצונך להפעיל את השרת?"
 
-#: src/game.cpp:1257
+#: src/game.cpp:1260
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "השרת ירוץ ברקע עד שהמשתמש האחרון יצא."
 
-#: src/game.cpp:1261
+#: src/game.cpp:1264
 msgid "Don't show again"
 msgstr "אל תציג שוב!"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1335
 msgid "Error while starting server: "
 msgstr "שגיאה בזמן התחלת שרת: "
 
-#: src/game.cpp:1334 src/playcampaign.cpp:98 src/playcampaign.cpp:367
+#: src/game.cpp:1337 src/playcampaign.cpp:98 src/playcampaign.cpp:363
 msgid "The game could not be loaded: "
 msgstr "לא ניתן לטעון את המשחק: "
 
-#: src/game.cpp:1336 src/playcampaign.cpp:100 src/playcampaign.cpp:370
+#: src/game.cpp:1339 src/playcampaign.cpp:100 src/playcampaign.cpp:366
 msgid "Error while playing the game: "
 msgstr "שגיאה בזמן המשחק: "
 
-#: src/game.cpp:1356 src/playcampaign.cpp:102 src/playcampaign.cpp:373
+#: src/game.cpp:1359 src/playcampaign.cpp:102 src/playcampaign.cpp:369
 msgid "The game map could not be loaded: "
 msgstr "נכשלה טעינת מפת המשחק: "
 
-#: src/game.cpp:1500
+#: src/game.cpp:1503
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "בתוסף להלן היו שגיאות שמנעו את טעינתו"
 msgstr[1] "בחבילות הבאות היו שגיאות שמנעו את טעינתם:"
 
-#: src/game.cpp:1507
+#: src/game.cpp:1510
 msgid "ERROR DETAILS:"
 msgstr "פרטי השגיאה:"
 
-#: src/game.cpp:1525
+#: src/game.cpp:1528
 msgid "Error loading game configuration files: '"
 msgstr "שגיאה בטעינת קבצי תצורה: "
 
-#: src/game.cpp:1526
+#: src/game.cpp:1529
 msgid "' (The game will now exit)"
 msgstr "' (המשחק יסתיים עתה)"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1538
 msgid "Loading data files"
 msgstr "טוען קבצי מידע"
 
-#: src/game.cpp:1966
+#: src/game.cpp:1971
 msgid "Loading game configuration."
 msgstr "טוען קבצי תצורה."
 
-#: src/game.cpp:1972
+#: src/game.cpp:1977
 msgid "Re-initialize fonts for the current language."
 msgstr "אתחל גופנים לשפה החדשה."
 
-#: src/game.cpp:1980
+#: src/game.cpp:1985
 msgid "Searching for installed add-ons."
 msgstr "מחפש תוספים מותקנים"
 
-#: src/game.cpp:1989
+#: src/game.cpp:1994
 msgid "Loading title screen."
 msgstr "טוען משך ראשי"
 
@@ -6923,19 +6944,19 @@ msgstr "דיבוג: "
 msgid "Info: "
 msgstr "מידע: "
 
-#: src/game_events.cpp:1165 src/multiplayer_connect.cpp:1651
+#: src/game_events.cpp:1147 src/multiplayer_connect.cpp:1651
 msgid "Victory:"
 msgstr "ניצחון:"
 
-#: src/game_events.cpp:1168
+#: src/game_events.cpp:1150
 msgid "Defeat:"
 msgstr "תבוסה:"
 
-#: src/game_events.cpp:3403
+#: src/game_events.cpp:3385
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
-#: src/gamestatus.cpp:824
+#: src/gamestatus.cpp:723
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "נמצאה הגדרת צד כפולה לצד '$side|'."
 
@@ -7046,6 +7067,23 @@ msgstr "יחידות תוהו: "
 #: src/generate_report.cpp:512
 msgid "Observers:"
 msgstr "צופים:"
+
+#: src/gui/dialogs/lobby_player_info.cpp:63
+#, fuzzy
+msgid "In game:"
+msgstr "שם:"
+
+#: src/gui/dialogs/lobby_player_info.cpp:65
+msgid "(observing)"
+msgstr ""
+
+#: src/gui/dialogs/lobby_player_info.cpp:67
+msgid "(playing)"
+msgstr ""
+
+#: src/gui/dialogs/lobby_player_info.cpp:70
+msgid "In lobby"
+msgstr ""
 
 #: src/help.cpp:46
 msgid "Help"
@@ -7171,7 +7209,7 @@ msgstr "מחיר תנועה"
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='יחידות מגזע זה'</header>"
 
-#: src/help.cpp:2681 src/menu_events.cpp:565
+#: src/help.cpp:2681 src/menu_events.cpp:566
 msgid " < Back"
 msgstr "< חזרה "
 
@@ -7241,56 +7279,56 @@ msgstr "קורא תכונות יחידות..."
 msgid "Reading files and creating cache..."
 msgstr "קורא קבצים ומייצר מטמון..."
 
-#: src/lobby_data.cpp:226 src/multiplayer_lobby.cpp:430
+#: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:430
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "עידן לא ידוע: "
 
-#: src/lobby_data.cpp:231 src/multiplayer_lobby.cpp:434
+#: src/lobby_data.cpp:248 src/multiplayer_lobby.cpp:434
 msgid "Unknown era"
 msgstr "עידן לא ידוע: "
 
-#: src/lobby_data.cpp:286 src/multiplayer_lobby.cpp:496
+#: src/lobby_data.cpp:303 src/multiplayer_lobby.cpp:496
 #, fuzzy
 msgid "Remote scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/lobby_data.cpp:294 src/multiplayer_lobby.cpp:503
+#: src/lobby_data.cpp:311 src/multiplayer_lobby.cpp:503
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "תרחיש לא ידוע: "
 
-#: src/lobby_data.cpp:299 src/multiplayer_lobby.cpp:507
+#: src/lobby_data.cpp:316 src/multiplayer_lobby.cpp:507
 msgid "Unknown scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/lobby_data.cpp:305 src/multiplayer_lobby.cpp:512
+#: src/lobby_data.cpp:322 src/multiplayer_lobby.cpp:512
 #, fuzzy
 msgid "Reloaded game"
 msgstr "טען מחדש משחק לשחקן אחד"
 
-#: src/lobby_data.cpp:316 src/multiplayer_lobby.cpp:528
+#: src/lobby_data.cpp:333 src/multiplayer_lobby.cpp:528
 #, fuzzy
 msgid "Turn "
 msgstr "תור"
 
-#: src/lobby_data.cpp:320 src/multiplayer_lobby.cpp:532
+#: src/lobby_data.cpp:337 src/multiplayer_lobby.cpp:532
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "מקום פנוי:"
 msgstr[1] "מקום פנוי:"
 
-#: src/lobby_data.cpp:326 src/multiplayer_lobby.cpp:543
+#: src/lobby_data.cpp:343 src/multiplayer_lobby.cpp:543
 msgid "Fog"
 msgstr "ערפל"
 
-#: src/lobby_data.cpp:329 src/lobby_data.cpp:332 src/multiplayer_create.cpp:83
+#: src/lobby_data.cpp:346 src/lobby_data.cpp:349 src/multiplayer_create.cpp:83
 #: src/multiplayer_lobby.cpp:547 src/multiplayer_lobby.cpp:553
 msgid "Shroud"
 msgstr "ממוסך"
 
-#: src/lobby_data.cpp:334 src/multiplayer_lobby.cpp:557
+#: src/lobby_data.cpp:351 src/multiplayer_lobby.cpp:557
 msgid "none"
 msgstr "אין"
 
@@ -7302,197 +7340,197 @@ msgstr "אין תמיכה במפות ללא כותרת."
 msgid "Random maps with an odd width aren't supported."
 msgstr "איו תמיכה במפות אקראיות עם רוחב אי-זוגי."
 
-#: src/menu_events.cpp:83 src/menu_events.cpp:86 src/menu_events.cpp:90
+#: src/menu_events.cpp:84 src/menu_events.cpp:87 src/menu_events.cpp:91
 msgid "Do you really want to dismiss him?"
 msgstr "האם אתה בטוח שברצונך לשחרר אותו?"
 
-#: src/menu_events.cpp:83
+#: src/menu_events.cpp:84
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr "אדוני הלורד, היחידה הזאת נאמנה ואינה דורשת כסף תחזוקה! "
 
-#: src/menu_events.cpp:84 src/menu_events.cpp:87 src/menu_events.cpp:91
+#: src/menu_events.cpp:85 src/menu_events.cpp:88 src/menu_events.cpp:92
 msgid "Do you really want to dismiss her?"
 msgstr "האם אתה בטוח שברצונך לשחרר אותב?"
 
-#: src/menu_events.cpp:86
+#: src/menu_events.cpp:87
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr "אדוני הלורד, היחידה הזאת היא יחידה מנוסה, שהתקדמה דרגות! "
 
-#: src/menu_events.cpp:90
+#: src/menu_events.cpp:91
 msgid "My lord, this unit is close to advancing a level! "
 msgstr "אדוני הלורד, היחידה הזאת קרובה להתקדמות דרגה! "
 
-#: src/menu_events.cpp:183
+#: src/menu_events.cpp:184
 msgid "Statistics"
 msgstr "סטטיסטיקות"
 
-#: src/menu_events.cpp:194 src/menu_events.cpp:852
+#: src/menu_events.cpp:195 src/menu_events.cpp:852
 msgid "Level^Lvl."
 msgstr "דרגה"
 
-#: src/menu_events.cpp:197
+#: src/menu_events.cpp:198
 msgid "unit list^Traits"
 msgstr "כשרונות"
 
-#: src/menu_events.cpp:198
+#: src/menu_events.cpp:199
 msgid "Moves"
 msgstr "מהירות"
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Location^Loc."
 msgstr "מיקום"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:201
 msgid "Status"
 msgstr "מצב"
 
-#: src/menu_events.cpp:308
+#: src/menu_events.cpp:309
 msgid "Unit List"
 msgstr "רשימת יחידות"
 
-#: src/menu_events.cpp:311 src/menu_events.cpp:333
+#: src/menu_events.cpp:312 src/menu_events.cpp:334
 msgid "Scroll To"
 msgstr "גלגל ל-"
 
-#: src/menu_events.cpp:365
+#: src/menu_events.cpp:366
 msgid "Leader"
 msgstr "מנהיג"
 
-#: src/menu_events.cpp:366 src/multiplayer_connect.cpp:1007
+#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1007
 msgid "Team"
 msgstr "צוות"
 
-#: src/menu_events.cpp:367 src/multiplayer_connect.cpp:1018
+#: src/menu_events.cpp:368 src/multiplayer_connect.cpp:1018
 msgid "Gold"
 msgstr "זהב"
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:369
 msgid "Villages"
 msgstr "כפרים"
 
-#: src/menu_events.cpp:369
+#: src/menu_events.cpp:370
 msgid "status^Units"
 msgstr "יחידות"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:371
 msgid "Upkeep"
 msgstr "מחיר אחזקה"
 
-#: src/menu_events.cpp:371 src/multiplayer_connect.cpp:1019
+#: src/menu_events.cpp:372 src/multiplayer_connect.cpp:1019
 #: src/multiplayer_wait.cpp:534
 msgid "Income"
 msgstr "הכנסה"
 
-#: src/menu_events.cpp:472
+#: src/menu_events.cpp:473
 msgid "Current Status"
 msgstr "מצב נוככי"
 
-#: src/menu_events.cpp:473
+#: src/menu_events.cpp:474
 msgid "More >"
 msgstr "עוד >"
 
-#: src/menu_events.cpp:491
+#: src/menu_events.cpp:492
 msgid "scenario settings^Leader"
 msgstr "מנהיג"
 
-#: src/menu_events.cpp:493
+#: src/menu_events.cpp:494
 msgid "scenario settings^Side"
 msgstr "צד"
 
-#: src/menu_events.cpp:494
+#: src/menu_events.cpp:495
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "זהב התחלתי"
 
-#: src/menu_events.cpp:495
+#: src/menu_events.cpp:496
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "הכנסת בסיס"
 
-#: src/menu_events.cpp:496
+#: src/menu_events.cpp:497
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr "זהב לכפר"
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:498
 msgid "scenario settings^Fog"
 msgstr "ערפל קרב"
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:499
 msgid "scenario settings^Shroud"
 msgstr "הסתרה"
 
-#: src/menu_events.cpp:545 src/menu_events.cpp:546
+#: src/menu_events.cpp:546 src/menu_events.cpp:547
 msgid "no"
 msgstr "לא"
 
-#: src/menu_events.cpp:545 src/menu_events.cpp:546
+#: src/menu_events.cpp:546 src/menu_events.cpp:547
 msgid "yes"
 msgstr "כן"
 
-#: src/menu_events.cpp:562
+#: src/menu_events.cpp:563
 msgid "Scenario Settings"
 msgstr "הגדרות תרחיש"
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:585
 msgid "Save the Map As"
 msgstr "שמור מפה בשם"
 
 # TODO
-#: src/menu_events.cpp:589
+#: src/menu_events.cpp:590
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
-#: src/menu_events.cpp:601
+#: src/menu_events.cpp:602
 msgid "Map saved."
 msgstr "המפה נשמרה."
 
-#: src/menu_events.cpp:605
+#: src/menu_events.cpp:606
 msgid "Could not save the map: $msg"
 msgstr "לא ניתן לשמור את המפה: $msg"
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:621
 msgid "Chat Log"
 msgstr "יומן שיחות"
 
-#: src/menu_events.cpp:630
+#: src/menu_events.cpp:631
 msgid "Message:"
 msgstr "הודעה:"
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:632
 msgid "Send to allies only"
 msgstr "שלח לבעלי ברית בלבד"
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:632
 msgid "Send to observers only"
 msgstr "שלח לצופים בלבד"
 
-#: src/menu_events.cpp:712
+#: src/menu_events.cpp:713
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "זהב"
 msgstr[1] "זהב"
 
-#: src/menu_events.cpp:719
+#: src/menu_events.cpp:720
 msgid "You have no units available to recruit."
 msgstr "אין לך יחידות זמינות לגיוס."
 
-#: src/menu_events.cpp:731
+#: src/menu_events.cpp:732
 msgid "Recruit"
 msgstr "גייס"
 
-#: src/menu_events.cpp:732 src/menu_events.cpp:904
+#: src/menu_events.cpp:733 src/menu_events.cpp:904
 msgid "Select unit:"
 msgstr "בחר יחידה:"
 
-#: src/menu_events.cpp:778
+#: src/menu_events.cpp:779
 msgid "You don't have enough gold to recruit that unit"
 msgstr "אין לך מספיק זהב לגיוס יחידה זו"
 
-#: src/menu_events.cpp:822
+#: src/menu_events.cpp:823
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "הופרדת מחיילך, ולכן אתה לא יכול להחזירם"
 
@@ -7575,332 +7613,336 @@ msgstr ""
 msgid " No help available."
 msgstr " אין עזרה על דבר זה."
 
-#: src/menu_events.cpp:2063
+#: src/menu_events.cpp:2064
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr "שלח בקשה לשרת. בלי פרמטרים השרת יחזיר את הפקודות המותרות."
 
-#: src/menu_events.cpp:2066
+#: src/menu_events.cpp:2067
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr "העף ומנע שחקן או צופה מלשחק. עם הוא לא משחק הוא רק ימנע מלשחק."
 
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2070
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2073
 msgid "Kick a player or observer."
 msgstr "העף שחקן או צופה."
 
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2075
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:2077
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2079
 #, fuzzy
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "השתק את כל הצופים."
 
-#: src/menu_events.cpp:2088
+#: src/menu_events.cpp:2089
 msgid "Send a message to the server admins currently online"
 msgstr ""
 
-#: src/menu_events.cpp:2090
+#: src/menu_events.cpp:2091
 msgid "Send an emotion or personal action in chat."
 msgstr "שלח סמיילי או פעולה אישית בצ'אט."
 
-#: src/menu_events.cpp:2093
+#: src/menu_events.cpp:2094
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 "שלח הודעה פרטית. אי אפשר לשלוח הודעות פרטיות לשחקנים שלא שולטים בצד במשחק. "
 
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:2100
 msgid "Change the log level of a log domain."
 msgstr "שנה את רמת ההקלטה של מערכת ההקלטה."
 
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:2102
 msgid "Add a nick to your ignores list."
 msgstr "הוסף שם לרשימת ההתעלמויות."
 
-#: src/menu_events.cpp:2103
+#: src/menu_events.cpp:2104
 msgid "Add a nick to your friends list."
 msgstr "הוסף שם לרשימת החברים"
 
-#: src/menu_events.cpp:2105
+#: src/menu_events.cpp:2106
 msgid "Remove a nick from your ignores or friends list."
 msgstr "הוצא שם מרשימת ההתעלמויות או החברים."
 
-#: src/menu_events.cpp:2107
+#: src/menu_events.cpp:2108
 msgid "Show your ignores and friends list."
 msgstr "הראה את רשימות החברים וההתעלמויות"
 
-#: src/menu_events.cpp:2110
+#: src/menu_events.cpp:2111
 msgid "Display version information."
 msgstr "הצג את מידע הגרסא."
 
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:2113
 msgid "Register your nick"
 msgstr "רשום את שם המשתמש שלך"
 
-#: src/menu_events.cpp:2114
+#: src/menu_events.cpp:2115
 msgid "Drop your nick."
 msgstr "זרוק את שם המשתמש שלך"
 
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2117
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr "עדכן מידע על שם המשתמש. לפרטים ראה '\\details'."
 
-#: src/menu_events.cpp:2119
+#: src/menu_events.cpp:2120
 msgid "Request information about a nick."
 msgstr "בקש מידע על שם משתמש."
 
 # TODO: CONTINUE
-#: src/menu_events.cpp:2121
+#: src/menu_events.cpp:2122
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2123
+#: src/menu_events.cpp:2124
 #, fuzzy
 msgid "Join a room."
 msgstr "הצטרף למשחק"
 
-#: src/menu_events.cpp:2125
+#: src/menu_events.cpp:2127
 msgid "Part a room."
 msgstr ""
 
-#: src/menu_events.cpp:2127
+#: src/menu_events.cpp:2129
 msgid "List room members."
 msgstr ""
 
-#: src/menu_events.cpp:2129
+#: src/menu_events.cpp:2131
 msgid "List available rooms."
 msgstr ""
 
-#: src/menu_events.cpp:2131
-msgid "Room msg."
+#: src/menu_events.cpp:2133
+msgid "Room message."
 msgstr ""
 
-#: src/menu_events.cpp:2258
-msgid "Refresh gui."
-msgstr ""
-
-#: src/menu_events.cpp:2260
-msgid "Switch a side to/from AI control."
+#: src/menu_events.cpp:2135
+msgid "Room query."
 msgstr ""
 
 #: src/menu_events.cpp:2263
-msgid "Assign control of a side to a different player or observer."
+msgid "Refresh gui."
 msgstr ""
 
 #: src/menu_events.cpp:2265
-msgid "Clear chat history."
+msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2267
-msgid "Visualize the screen refresh procedure."
+#: src/menu_events.cpp:2268
+msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2270
+msgid "Clear chat history."
+msgstr ""
+
+#: src/menu_events.cpp:2272
+msgid "Visualize the screen refresh procedure."
+msgstr ""
+
+#: src/menu_events.cpp:2275
 #, fuzzy
 msgid "Save game."
 msgstr "שמור משחק"
 
-#: src/menu_events.cpp:2272
+#: src/menu_events.cpp:2277
 #, fuzzy
 msgid "Quit game."
 msgstr "צא מהמשחק"
 
-#: src/menu_events.cpp:2276
+#: src/menu_events.cpp:2281
 msgid "Save and quit."
 msgstr ""
 
-#: src/menu_events.cpp:2279
+#: src/menu_events.cpp:2284
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2281
+#: src/menu_events.cpp:2286
 msgid "Disable autosaves."
 msgstr ""
 
-#: src/menu_events.cpp:2283
+#: src/menu_events.cpp:2288
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "ממתין לתחילת המשחק..."
 
-#: src/menu_events.cpp:2286
+#: src/menu_events.cpp:2291
 #, fuzzy
 msgid "Choose next scenario"
 msgstr "מוריד את השלב הבא..."
 
-#: src/menu_events.cpp:2289
+#: src/menu_events.cpp:2294
 #, fuzzy
 msgid "Turn debug mode on."
 msgstr "גנרל"
 
-#: src/menu_events.cpp:2291
+#: src/menu_events.cpp:2296
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2293
+#: src/menu_events.cpp:2298
 msgid "Execute a Lua statement."
 msgstr ""
 
-#: src/menu_events.cpp:2295
+#: src/menu_events.cpp:2300
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2297
+#: src/menu_events.cpp:2302
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2299
+#: src/menu_events.cpp:2304
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2301
+#: src/menu_events.cpp:2306
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2303
+#: src/menu_events.cpp:2308
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2309
+#: src/menu_events.cpp:2314
 msgid "Discover all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:2314
+#: src/menu_events.cpp:2319
 #, fuzzy
 msgid "Create a unit."
 msgstr "צור משחק"
 
-#: src/menu_events.cpp:2316
+#: src/menu_events.cpp:2321
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2318
+#: src/menu_events.cpp:2323
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2320
+#: src/menu_events.cpp:2325
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2322
+#: src/menu_events.cpp:2327
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2325
+#: src/menu_events.cpp:2330
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2328
+#: src/menu_events.cpp:2333
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2372
+#: src/menu_events.cpp:2377
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2374 src/menu_events.cpp:2383
+#: src/menu_events.cpp:2379 src/menu_events.cpp:2388
 #, fuzzy
 msgid "error"
 msgstr "שגיאה"
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2386
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2390
+#: src/menu_events.cpp:2395
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2549
+#: src/menu_events.cpp:2569
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:2551 src/menu_events.cpp:2567
+#: src/menu_events.cpp:2572 src/menu_events.cpp:2589
 #, fuzzy
 msgid "Invalid username: "
 msgstr "שם תג לא חוקי "
 
-#: src/menu_events.cpp:2565
+#: src/menu_events.cpp:2587
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:2578
+#: src/menu_events.cpp:2601
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:2596
+#: src/menu_events.cpp:2619
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2766
+#: src/menu_events.cpp:2789
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "לא ניתן למצוא תגית או יחידה שמכילים את המחרוזת '$search'."
 
-#: src/menu_events.cpp:2795
+#: src/menu_events.cpp:2818
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2800
+#: src/menu_events.cpp:2823
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2837
+#: src/menu_events.cpp:2860
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2843
+#: src/menu_events.cpp:2866
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2908
+#: src/menu_events.cpp:2931
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:2921
+#: src/menu_events.cpp:2944
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "גנרל"
 
-#: src/menu_events.cpp:2924
+#: src/menu_events.cpp:2947
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:2929
+#: src/menu_events.cpp:2952
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "גנרל"
 
-#: src/menu_events.cpp:3102
+#: src/menu_events.cpp:3125
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3110 src/menu_events.cpp:3126
+#: src/menu_events.cpp:3135 src/menu_events.cpp:3151
 msgid "prompt^Command:"
 msgstr "פקודה:"
 
-#: src/menu_events.cpp:3146
+#: src/menu_events.cpp:3171
 #, fuzzy
 msgid "User-Command#3"
 msgstr "מפקד"
 
-#: src/mouse_events.cpp:650
+#: src/mouse_events.cpp:657
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:651
+#: src/mouse_events.cpp:658
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -8393,11 +8435,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:198
+#: src/multiplayer_ui.cpp:192
 msgid "Invalid Color"
 msgstr "צבע לא חוקי"
 
-#: src/multiplayer_ui.cpp:431
+#: src/multiplayer_ui.cpp:425
 #, fuzzy
 msgid "Selected user: "
 msgstr "בחר יחידה:"
@@ -8450,11 +8492,11 @@ msgstr "מטפל רשת (network handle) לא חוקי"
 msgid "Client disconnected"
 msgstr "לקוח התנתק"
 
-#: src/network.cpp:570
+#: src/network.cpp:531
 msgid "Could not add socket to socket set"
 msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות נכשלה"
 
-#: src/network.cpp:583
+#: src/network.cpp:543
 msgid "Could not send initial handshake"
 msgstr "שליחת לחיצת יד ראשונית נכשלה"
 
@@ -8484,7 +8526,7 @@ msgid "Starting game"
 msgstr "נטוש את המשחק"
 
 #: src/play_controller.cpp:886 src/savegame.cpp:290 src/savegame.cpp:302
-#: src/savegame.cpp:953 src/savegame.cpp:955
+#: src/savegame.cpp:957 src/savegame.cpp:959
 msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
@@ -8500,54 +8542,54 @@ msgstr "תבוסה"
 msgid "You have been defeated!"
 msgstr "הובסת!"
 
-#: src/playcampaign.cpp:377
+#: src/playcampaign.cpp:373
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "שגיאה בזמן המשחק: "
 
-#: src/playcampaign.cpp:414
+#: src/playcampaign.cpp:409
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:440
+#: src/playcampaign.cpp:435
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "מוריד את השלב הבא..."
 
-#: src/playcampaign.cpp:576
+#: src/playcampaign.cpp:570
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "האם אתה רוצה לשמור את המשחק שלך?"
 
-#: src/playcampaign.cpp:594
+#: src/playcampaign.cpp:587
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "תרחיש לא ידוע: "
 
-#: src/playmp_controller.cpp:150
+#: src/playmp_controller.cpp:141
 msgid "$name has taken control"
 msgstr ""
 
-#: src/playmp_controller.cpp:153
+#: src/playmp_controller.cpp:144
 #, fuzzy
 msgid "Turn changed"
 msgstr "טווח רחוק"
 
-#: src/playmp_controller.cpp:227
+#: src/playmp_controller.cpp:229
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:305
+#: src/playmp_controller.cpp:307
 #, fuzzy
 msgid "End scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/playmp_controller.cpp:406
+#: src/playmp_controller.cpp:408
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "ממתין לתחילת המשחק..."
 
-#: src/playmp_controller.cpp:535
+#: src/playmp_controller.cpp:537
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8557,44 +8599,44 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:196
+#: src/playsingle_controller.cpp:201
 msgid "Remaining gold: "
 msgstr "זהב נותר: "
 
-#: src/playsingle_controller.cpp:200
+#: src/playsingle_controller.cpp:205
 msgid "Early finish bonus: "
 msgstr "בונוס גמירה מוקדמת: "
 
-#: src/playsingle_controller.cpp:202
+#: src/playsingle_controller.cpp:207
 msgid "per turn"
 msgstr "לכל תור"
 
-#: src/playsingle_controller.cpp:203
+#: src/playsingle_controller.cpp:208
 msgid "Turns finished early: "
 msgstr "תורים שנגמרו מוקדם: "
 
-#: src/playsingle_controller.cpp:205
+#: src/playsingle_controller.cpp:210
 msgid "Bonus: "
 msgstr "בונוס: "
 
-#: src/playsingle_controller.cpp:208
+#: src/playsingle_controller.cpp:213
 msgid "Gold: "
 msgstr "זהב: "
 
-#: src/playsingle_controller.cpp:212
+#: src/playsingle_controller.cpp:217
 msgid "Carry over percentage: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:215
+#: src/playsingle_controller.cpp:220
 #, fuzzy
 msgid "Bonus Gold: "
 msgstr "בונוס: "
 
-#: src/playsingle_controller.cpp:217
+#: src/playsingle_controller.cpp:222
 msgid "Retained Gold: "
 msgstr "זהב שנשמר: "
 
-#: src/playsingle_controller.cpp:227
+#: src/playsingle_controller.cpp:232
 #, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
@@ -8605,7 +8647,7 @@ msgid_plural ""
 msgstr[0] "80% מהזהב נשמר לתרחיש הבא"
 msgstr[1] "80% מהזהב נשמר לתרחיש הבא"
 
-#: src/playsingle_controller.cpp:235
+#: src/playsingle_controller.cpp:240
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -8615,58 +8657,58 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:381
+#: src/playsingle_controller.cpp:390
 msgid "Game Over"
 msgstr "המשחק נגמר"
 
-#: src/playsingle_controller.cpp:382
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "המשחק הסתיים."
 
-#: src/playsingle_controller.cpp:482
+#: src/playsingle_controller.cpp:483
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
-#: src/playsingle_controller.cpp:657
+#: src/playsingle_controller.cpp:647
 msgid "It is now $name|'s turn"
 msgstr "עכשיו הגיע תורו של $name|"
 
-#: src/playsingle_controller.cpp:880
+#: src/playsingle_controller.cpp:873
 msgid "Scenario Report"
 msgstr "דו\"ח תרחיש"
 
-#: src/playsingle_controller.cpp:882
+#: src/playsingle_controller.cpp:875
 msgid "Victory"
 msgstr "נצחון"
 
-#: src/playsingle_controller.cpp:883
+#: src/playsingle_controller.cpp:876
 msgid "You have emerged victorious!"
 msgstr "יצאת מנצח!"
 
-#: src/playturn.cpp:225
+#: src/playturn.cpp:230
 msgid "Replace with AI"
 msgstr "החלף בשחקן ממוחשב"
 
-#: src/playturn.cpp:226
+#: src/playturn.cpp:231
 msgid "Replace with local player"
 msgstr "החלף בשחקן מקומי"
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:232
 msgid "Abort game"
 msgstr "נטוש את המשחק"
 
-#: src/playturn.cpp:233 src/playturn.cpp:247
+#: src/playturn.cpp:238 src/playturn.cpp:252
 msgid "Replace with $player"
 msgstr "החלף ב $player"
 
-#: src/playturn.cpp:253
+#: src/playturn.cpp:258
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player נטש את המשחק. מה ברצונך לעשות ?"
 
-#: src/replay_controller.cpp:82
+#: src/replay_controller.cpp:81
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "הקובץ, אותו ניסית לטעון, פגום. המשך לשחק?"
 
@@ -8726,16 +8768,16 @@ msgstr "המשחק נשמר"
 msgid "Could not write to file"
 msgstr "כתיבה לקובץ נכשלה"
 
-#: src/savegame.cpp:916
+#: src/savegame.cpp:920
 #, fuzzy
 msgid "Save Replay"
 msgstr "הקלטת משחק"
 
-#: src/savegame.cpp:936
+#: src/savegame.cpp:940
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "שמירת משחק אוטומטית נכשלה. יש לבצע שמירה ידנית."
 
-#: src/savegame.cpp:992
+#: src/savegame.cpp:996
 msgid "Save Game"
 msgstr "שמור משחק"
 
@@ -9080,7 +9122,7 @@ msgstr "סדר"
 msgid "female^neutral"
 msgstr "ניטרלי"
 
-#: src/upload_log.cpp:342
+#: src/upload_log.cpp:341
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -9091,19 +9133,19 @@ msgstr ""
 "ווסנות' שומר סיכומים של המשחק שלך: אתה יכול לעזור לנו לשפר את המשחקיות על "
 "ידי הרשאת שליחת סיכומים אלו (בצורה אנונימית) ל wesnoth.org.\n"
 
-#: src/upload_log.cpp:343
+#: src/upload_log.cpp:342
 msgid "Summaries are stored here:"
 msgstr "הסיכומים מאוכסנים כאן:"
 
-#: src/upload_log.cpp:345
+#: src/upload_log.cpp:344
 msgid "You can view the results at:"
 msgstr "אתה יכול לראות את התוצאות ב "
 
-#: src/upload_log.cpp:347
+#: src/upload_log.cpp:346
 msgid "Help us make Wesnoth better for you!"
 msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבילך!"
 
-#: src/upload_log.cpp:349
+#: src/upload_log.cpp:348
 msgid "Enable summary uploads"
 msgstr "אפשר העלאות סיכומיפ"
 
@@ -9133,9 +9175,6 @@ msgstr "אפשר העלאות סיכומיפ"
 #~ "Save names may not contain colons, slashes, or backslashes. Please choose "
 #~ "a different name."
 #~ msgstr "אסור שהשם יכיל נקודותיים, סלאשים או באקסלשים. יש לבחור שם אחר."
-
-#~ msgid "Name:"
-#~ msgstr "שם:"
 
 #, fuzzy
 #~ msgid "Landar"

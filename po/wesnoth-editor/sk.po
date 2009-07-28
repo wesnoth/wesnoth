@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-07-07 20:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -176,26 +176,26 @@ msgstr "Akcia nie je implementovaná"
 msgid "Quit Editor"
 msgstr "Ukonči editor"
 
-#: src/editor2/editor_controller.cpp:286 src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Fatálna chyba"
 
-#: src/editor2/editor_controller.cpp:316
-#: src/editor2/editor_controller.cpp:1073
+#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:1068
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor2/editor_controller.cpp:322
+#: src/editor2/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Naozaj chcete skončiť?"
 
-#: src/editor2/editor_controller.cpp:324
+#: src/editor2/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "Naozaj chcete skončiť? Stratíte zmeny od posledného uloženia mapy."
 
-#: src/editor2/editor_controller.cpp:326
+#: src/editor2/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -203,76 +203,76 @@ msgstr ""
 "Naozaj chcete skončiť? Nasledujúce mapy boli zmenené, a všetky zmeny od "
 "posledného uloženia sa stratia:"
 
-#: src/editor2/editor_controller.cpp:331
+#: src/editor2/editor_controller.cpp:326
 msgid "Quit"
 msgstr "Koniec"
 
-#: src/editor2/editor_controller.cpp:387
+#: src/editor2/editor_controller.cpp:382
 msgid "No editor time-of-day found."
 msgstr "Nenašiel sa rozvrh dňa pre editor."
 
-#: src/editor2/editor_controller.cpp:423
+#: src/editor2/editor_controller.cpp:418
 msgid "Unsaved Changes"
 msgstr "Neuložené zmeny"
 
-#: src/editor2/editor_controller.cpp:424
+#: src/editor2/editor_controller.cpp:419
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
 
-#: src/editor2/editor_controller.cpp:442
+#: src/editor2/editor_controller.cpp:437
 msgid "Choose a Map to Open"
 msgstr "Vyberte si mapu na nahranie"
 
-#: src/editor2/editor_controller.cpp:477
+#: src/editor2/editor_controller.cpp:472
 msgid "Save the Map As"
 msgstr "Ulož mapu ako"
 
-#: src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:476
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Takýto súbor už existuje. Chcete ho prepísať?"
 
-#: src/editor2/editor_controller.cpp:498
+#: src/editor2/editor_controller.cpp:493
 msgid "No random map generators found."
 msgstr "Nenašiel sa náhodný generátor mapy."
 
-#: src/editor2/editor_controller.cpp:511 src/editor2/editor_controller.cpp:515
+#: src/editor2/editor_controller.cpp:506 src/editor2/editor_controller.cpp:510
 msgid "Map creation failed."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
-#: src/editor2/editor_controller.cpp:530
+#: src/editor2/editor_controller.cpp:525
 msgid "Choose a mask to apply"
 msgstr "Vyberte si masku, ktorá sa má použiť"
 
-#: src/editor2/editor_controller.cpp:537
+#: src/editor2/editor_controller.cpp:532
 msgid "Error loading mask"
 msgstr "Chyba pri čítaní masky"
 
-#: src/editor2/editor_controller.cpp:552
+#: src/editor2/editor_controller.cpp:547
 msgid "Choose target map"
 msgstr "Vyberte si cieľovú mapu"
 
-#: src/editor2/editor_controller.cpp:559 src/editor2/editor_controller.cpp:723
+#: src/editor2/editor_controller.cpp:554 src/editor2/editor_controller.cpp:718
 msgid "Error loading map"
 msgstr "Chyba pri načítavaní mapy"
 
-#: src/editor2/editor_controller.cpp:637 src/editor2/editor_controller.cpp:679
+#: src/editor2/editor_controller.cpp:632 src/editor2/editor_controller.cpp:674
 msgid "This map is already open."
 msgstr "Táto mapa je už otvorená."
 
-#: src/editor2/editor_controller.cpp:658
+#: src/editor2/editor_controller.cpp:653
 msgid "Map saved."
 msgstr "Mapa uložená."
 
-#: src/editor2/editor_controller.cpp:702
+#: src/editor2/editor_controller.cpp:697
 msgid "Loaded embedded map data"
 msgstr "Načítali sa vložené dáta mapy"
 
-#: src/editor2/editor_controller.cpp:703 src/editor2/editor_controller.cpp:717
+#: src/editor2/editor_controller.cpp:698 src/editor2/editor_controller.cpp:712
 msgid "Map loaded from scenario"
 msgstr "Mapa načítaná zo scény"
 
-#: src/editor2/editor_controller.cpp:713
+#: src/editor2/editor_controller.cpp:708
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -280,31 +280,31 @@ msgstr ""
 "Načítal sa odkazovaný súbor mapy:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1103
+#: src/editor2/editor_controller.cpp:1098
 msgid "Undo"
 msgstr "Znovu"
 
-#: src/editor2/editor_controller.cpp:1105
+#: src/editor2/editor_controller.cpp:1100
 msgid "Can't Undo"
 msgstr "Nemôžem vrátiť späť"
 
-#: src/editor2/editor_controller.cpp:1109
+#: src/editor2/editor_controller.cpp:1104
 msgid "Redo"
 msgstr "Späť"
 
-#: src/editor2/editor_controller.cpp:1111
+#: src/editor2/editor_controller.cpp:1106
 msgid "Can't Redo"
 msgstr "Nemôžem urobiť znovu"
 
-#: src/editor2/editor_controller.cpp:1116
+#: src/editor2/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1119
+#: src/editor2/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1123
+#: src/editor2/editor_controller.cpp:1118
 #, fuzzy
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Aktualizuj prechody"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-01-06 22:11+0900\n"
 "Last-Translator: np <tukiplus@gmail.com>\n"
 "Language-Team: none\n"
@@ -177,20 +177,20 @@ msgstr "実行されませんでした"
 msgid "Quit Editor"
 msgstr "エディタを終了"
 
-#: src/editor2/editor_controller.cpp:286 src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: src/editor2/editor_controller.cpp:316
-#: src/editor2/editor_controller.cpp:1073
+#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:1068
 msgid "(New Map)"
 msgstr "（新規マップ）"
 
-#: src/editor2/editor_controller.cpp:322
+#: src/editor2/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよろしいですか？"
 
-#: src/editor2/editor_controller.cpp:324
+#: src/editor2/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -198,7 +198,7 @@ msgstr ""
 "本当に終了してもよろしいですか？最後に保存したところからのマップの変更は失わ"
 "れます。"
 
-#: src/editor2/editor_controller.cpp:326
+#: src/editor2/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -206,106 +206,106 @@ msgstr ""
 "本当に終了してもよろしいですか？マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
-#: src/editor2/editor_controller.cpp:331
+#: src/editor2/editor_controller.cpp:326
 msgid "Quit"
 msgstr "終了"
 
-#: src/editor2/editor_controller.cpp:387
+#: src/editor2/editor_controller.cpp:382
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:423
+#: src/editor2/editor_controller.cpp:418
 msgid "Unsaved Changes"
 msgstr "保存されていない変更点"
 
-#: src/editor2/editor_controller.cpp:424
+#: src/editor2/editor_controller.cpp:419
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "最後に保存したところからの変更を全て放棄しますか？"
 
-#: src/editor2/editor_controller.cpp:442
+#: src/editor2/editor_controller.cpp:437
 msgid "Choose a Map to Open"
 msgstr "読み込むマップを選択"
 
-#: src/editor2/editor_controller.cpp:477
+#: src/editor2/editor_controller.cpp:472
 msgid "Save the Map As"
 msgstr "マップに名前を付けて保存"
 
-#: src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:476
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。 上書きしますか？"
 
-#: src/editor2/editor_controller.cpp:498
+#: src/editor2/editor_controller.cpp:493
 msgid "No random map generators found."
 msgstr "ランダムマップジェネレータがありません。"
 
-#: src/editor2/editor_controller.cpp:511 src/editor2/editor_controller.cpp:515
+#: src/editor2/editor_controller.cpp:506 src/editor2/editor_controller.cpp:510
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor2/editor_controller.cpp:530
+#: src/editor2/editor_controller.cpp:525
 msgid "Choose a mask to apply"
 msgstr "適用するマスクを選択"
 
-#: src/editor2/editor_controller.cpp:537
+#: src/editor2/editor_controller.cpp:532
 msgid "Error loading mask"
 msgstr "マスクの読み込みに失敗"
 
-#: src/editor2/editor_controller.cpp:552
+#: src/editor2/editor_controller.cpp:547
 msgid "Choose target map"
 msgstr "ターゲットマップを選択"
 
-#: src/editor2/editor_controller.cpp:559 src/editor2/editor_controller.cpp:723
+#: src/editor2/editor_controller.cpp:554 src/editor2/editor_controller.cpp:718
 msgid "Error loading map"
 msgstr "マップの読み込みに失敗"
 
-#: src/editor2/editor_controller.cpp:637 src/editor2/editor_controller.cpp:679
+#: src/editor2/editor_controller.cpp:632 src/editor2/editor_controller.cpp:674
 msgid "This map is already open."
 msgstr "このマップは既に開かれています。"
 
-#: src/editor2/editor_controller.cpp:658
+#: src/editor2/editor_controller.cpp:653
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor2/editor_controller.cpp:702
+#: src/editor2/editor_controller.cpp:697
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:703 src/editor2/editor_controller.cpp:717
+#: src/editor2/editor_controller.cpp:698 src/editor2/editor_controller.cpp:712
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:713
+#: src/editor2/editor_controller.cpp:708
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1103
+#: src/editor2/editor_controller.cpp:1098
 msgid "Undo"
 msgstr "やり直す"
 
-#: src/editor2/editor_controller.cpp:1105
+#: src/editor2/editor_controller.cpp:1100
 msgid "Can't Undo"
 msgstr "アンドゥできません"
 
-#: src/editor2/editor_controller.cpp:1109
+#: src/editor2/editor_controller.cpp:1104
 msgid "Redo"
 msgstr "元に戻す"
 
-#: src/editor2/editor_controller.cpp:1111
+#: src/editor2/editor_controller.cpp:1106
 msgid "Can't Redo"
 msgstr "リドゥできません"
 
-#: src/editor2/editor_controller.cpp:1116
+#: src/editor2/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1119
+#: src/editor2/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1123
+#: src/editor2/editor_controller.cpp:1118
 #, fuzzy
 msgid "Auto-update Terrain Transitions: No"
 msgstr "変化を更新する"

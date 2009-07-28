@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 20:58+0200\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
 "PO-Revision-Date: 2009-07-19 14:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -717,11 +717,9 @@ msgid "Time of day lighting preset"
 msgstr "Предефинисан осветљај за доба дана"
 
 #. [button]: id=next_tod
-#. [button]: id=next_window
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/lobby_main.cfg:396
 #: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Следеће"
@@ -912,52 +910,60 @@ msgid "Change language"
 msgstr "Промени језик"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:325
+#: data/gui/default/window/lobby_main.cfg:277
+#, fuzzy
+msgid "Sort players:"
+msgstr "Играчи:"
+
+#. [label]
+#: data/gui/default/window/lobby_main.cfg:413
 msgid "Multiplayer Lobby"
 msgstr "Вишеиграчки хол"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:333
+#: data/gui/default/window/lobby_main.cfg:421
 msgid "Filter:"
 msgstr "Филтер:"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:344
+#: data/gui/default/window/lobby_main.cfg:432
 msgid "Friends"
 msgstr "Пријатељи"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:350
+#: data/gui/default/window/lobby_main.cfg:438
 msgid "No ignored"
 msgstr "Без игнорисаних"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:356
+#: data/gui/default/window/lobby_main.cfg:444
 msgid "Vacant slots"
 msgstr "Слободних места"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:362
+#: data/gui/default/window/lobby_main.cfg:450
 msgid "Invert filter"
 msgstr "Изврни филтер"
 
-#. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:390
-msgid "Send"
-msgstr "Пошаљи"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
+#. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:402
+#: data/gui/default/window/lobby_main.cfg:464
+#: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Затвори"
 
+#. [button]: id=send_message
+#: data/gui/default/window/lobby_main.cfg:486
+msgid "Send"
+msgstr "Пошаљи"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:414
+#: data/gui/default/window/lobby_main.cfg:498
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -966,41 +972,110 @@ msgstr "Напусти"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:420
+#: data/gui/default/window/lobby_main.cfg:504
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Поставке"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:426
+#: data/gui/default/window/lobby_main.cfg:510
 msgid "Refresh"
 msgstr "Освежи"
-
-#. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:432
-msgid "Join"
-msgstr "Придружи се"
-
-#. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:438
-msgid "Observe"
-msgstr "Посматрај"
-
-#. [label]
-#. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:444
-#: data/gui/default/window/mp_create_game.cfg:33
-msgid "Create Game"
-msgstr "Направи игру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:450
+#: data/gui/default/window/lobby_main.cfg:516
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Помоћ"
+
+#. [label]
+#. [button]: id=create
+#: data/gui/default/window/lobby_main.cfg:524
+#: data/gui/default/window/mp_create_game.cfg:33
+msgid "Create Game"
+msgstr "Направи игру"
+
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:530
+msgid "Join"
+msgstr "Придружи се"
+
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:536
+msgid "Observe"
+msgstr "Посматрај"
+
+#. [toggle_button]: id=skip_replay
+#: data/gui/default/window/lobby_main.cfg:542
+#, fuzzy
+msgid "Quick replay"
+msgstr "снимак"
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:30
+#, fuzzy
+msgid "Player Info - "
+msgstr "Играча: "
+
+#. [button]: id=start_whisper
+#: data/gui/default/window/lobby_player_info.cfg:62
+#, fuzzy
+msgid "Send private message"
+msgstr "Пошаљи приватну поруку"
+
+#. [button]: id=add_to_friends
+#: data/gui/default/window/lobby_player_info.cfg:91
+#, fuzzy
+msgid "Add to friends list"
+msgstr "Додај корисничко име на списак пријатеља"
+
+#. [button]: id=add_to_ignores
+#: data/gui/default/window/lobby_player_info.cfg:100
+#, fuzzy
+msgid "Add to ignores list"
+msgstr "Додај корисничко име на списак игнорисаних"
+
+#. [button]: id=remove_from_list
+#: data/gui/default/window/lobby_player_info.cfg:109
+#, fuzzy
+msgid "Remove from list"
+msgstr "Уклони корисничко име са списка"
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:133
+#, fuzzy
+msgid "Moderation"
+msgstr "Модерисање"
+
+#. [button]: id=check_status
+#: data/gui/default/window/lobby_player_info.cfg:140
+msgid "Check status"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:147
+msgid "Kick / ban reason:"
+msgstr ""
+
+#. [button]: id=kick
+#: data/gui/default/window/lobby_player_info.cfg:160
+#: data/gui/default/window/mp_cmd_wrapper.cfg:381
+msgid "Kick"
+msgstr "Избаци"
+
+#. [label]
+#: data/gui/default/window/lobby_player_info.cfg:167
+msgid "Ban time:"
+msgstr ""
+
+#. [button]: id=kick_ban
+#: data/gui/default/window/lobby_player_info.cfg:180
+#, fuzzy
+msgid "Kick/ban"
+msgstr "Избаци"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -1067,11 +1142,6 @@ msgstr "Време:"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
 msgid "Status"
 msgstr "Статус"
-
-#. [button]: id=kick
-#: data/gui/default/window/mp_cmd_wrapper.cfg:381
-msgid "Kick"
-msgstr "Избаци"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -1785,16 +1855,16 @@ msgstr "Текст не стаје на платно."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Повезана група ‘$id’ има вишеструке дефиниције."
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:516
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
 msgid "No resolution defined."
 msgstr "Резолуција није дефинисана."
 
 #: src/gui/auxiliary/window_builder.cpp:280
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:771 src/gui/widgets/settings.cpp:867
-#: src/gui/widgets/settings.cpp:956 src/gui/widgets/settings.cpp:998
-#: src/gui/widgets/settings.cpp:1116
+#: src/gui/widgets/settings.cpp:772 src/gui/widgets/settings.cpp:868
+#: src/gui/widgets/settings.cpp:957 src/gui/widgets/settings.cpp:999
+#: src/gui/widgets/settings.cpp:1117
 msgid "No grid defined."
 msgstr "Мрежа није дефинисана."
 
@@ -1865,6 +1935,16 @@ msgstr "Тежина: "
 msgid "Version: "
 msgstr "Верзија: "
 
+#: src/gui/dialogs/lobby_main.cpp:624
+msgid ""
+"Whisper session with $name started. If you don't want to receive messages "
+"from this user, type /ignore $name\n"
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:630
+msgid "Room $name joined"
+msgstr ""
+
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
 msgstr "Грешка"
@@ -1881,20 +1961,20 @@ msgstr "верзија"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обавезни виџет „$id“ није дефинисан."
 
-#: src/gui/widgets/settings.cpp:140
+#: src/gui/widgets/settings.cpp:141
 msgid "No default gui defined."
 msgstr "Подразумевано сучеље није дефинисано."
 
-#: src/gui/widgets/settings.cpp:303
+#: src/gui/widgets/settings.cpp:304
 msgid "Window not defined."
 msgstr "Прозор није дефинисан."
 
-#: src/gui/widgets/settings.cpp:400
+#: src/gui/widgets/settings.cpp:401
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Дефиниција виџета „$definition“ не садржи дефиницију за „$id“."
 
-#: src/gui/widgets/settings.cpp:542
+#: src/gui/widgets/settings.cpp:543
 msgid "No state or draw section defined."
 msgstr "Одељак стања или цртања није дефинисан."
 
