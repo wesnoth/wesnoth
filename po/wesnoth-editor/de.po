@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-19 12:26+0200\n"
-"PO-Revision-Date: 2009-05-03 11:42+0100\n"
+"POT-Creation-Date: 2009-07-28 11:19+0200\n"
+"PO-Revision-Date: 2009-07-28 11:41+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -94,50 +94,31 @@ msgstr "Spezielles"
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
-#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
-msgid ""
-"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr ""
-"Verwendet die linke und rechte Maustaste um Gelände im Vorder- oder "
-"Hintergrund zu zeichnen. Haltet Shift gedrückt um nur auf der Basisebene zu "
-"zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
-"übernommen."
+#: data/core/editor/tool-hints.cfg:7
+#: data/core/editor/tool-hints.cfg:13
+#: data/themes/editor2.cfg:179
+#: data/themes/editor2.cfg:192
+msgid "Use left/right mouse button to draw fore-/background terrain. Hold Shift to paint base layer only. Ctrl+click to sample terrain under cursor."
+msgstr "Verwendet die linke und rechte Maustaste um Gelände im Vorder- oder Hintergrund zu zeichnen. Haltet Shift gedrückt um nur auf der Basisebene zu zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel übernommen."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
-msgid ""
-"Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain."
-msgstr ""
-"Die linke Maustaste wählt einen Bereich aus, die Rechte wählt diesen ab. "
-"Haltet Shift gedrückt um alle Felder desselben Geländetyps mit dem "
-"Zauberstabwerkzeug auszuwählen."
+#: data/core/editor/tool-hints.cfg:19
+#: data/themes/editor2.cfg:214
+msgid "Left mouse button selects, right deselects. Hold Shift for magic-wand selection of tiles with same terrain."
+msgstr "Die linke Maustaste wählt einen Bereich aus, die Rechte wählt diesen ab. Haltet Shift gedrückt um alle Felder desselben Geländetyps mit dem Zauberstabwerkzeug auszuwählen."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
-msgid ""
-"Left mouse button displays player selection, right clears. Number keys "
-"scroll to the starting position, alt+number sets respective starting "
-"position under cursor, delete clears."
-msgstr ""
-"Die linke Maustaste setzt die Spielerposition, die Rechte löscht sie. Mit "
-"den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer setzt "
-"die jeweilige Startposition, Entfernen löscht diese."
+#: data/core/editor/tool-hints.cfg:25
+#: data/themes/editor2.cfg:203
+msgid "Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears."
+msgstr "Die linke Maustaste setzt die Spielerposition, die Rechte löscht sie. Mit den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer setzt die jeweilige Startposition, Entfernen löscht diese."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-msgid ""
-"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
-"edit menu to transform the clipboard (rotate, mirror)."
-msgstr ""
-"Klickt, um den Inhalt der Zwischenablage einzufügen. Verwendet die "
-"Zoomfunktion, wenn Ihr große Gebiete einfügen wollt. Wollte Ihr den Inhalt "
-"der Zwischenablage transformieren, verwendet die Funktionen aus dem Menü "
-"»Bearbeiten« (Rotieren, Spiegeln)."
+msgid "Click to paste, zoom out for more accuracy when pasting large areas. Use the edit menu to transform the clipboard (rotate, mirror)."
+msgstr "Klickt, um den Inhalt der Zwischenablage einzufügen. Verwendet die Zoomfunktion, wenn Ihr große Gebiete einfügen wollt. Wollte Ihr den Inhalt der Zwischenablage transformieren, verwendet die Funktionen aus dem Menü »Bearbeiten« (Rotieren, Spiegeln)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -176,107 +157,100 @@ msgstr "Aktion nicht implementiert"
 msgid "Quit Editor"
 msgstr "Editor beenden"
 
-#: src/editor2/editor_controller.cpp:286 src/editor2/editor_controller.cpp:300
+#: src/editor2/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Kritischer Fehler"
 
-#: src/editor2/editor_controller.cpp:316
-#: src/editor2/editor_controller.cpp:1073
+#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:1068
 msgid "(New Map)"
 msgstr "(Neue Karte)"
 
-#: src/editor2/editor_controller.cpp:322
+#: src/editor2/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Wollt Ihr wirklich beenden?"
 
-#: src/editor2/editor_controller.cpp:324
-msgid ""
-"Do you really want to quit? Changes in the map since the last save will be "
-"lost."
-msgstr ""
-"Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
-"letzten Speichern werden verloren gehen."
+#: src/editor2/editor_controller.cpp:319
+msgid "Do you really want to quit? Changes in the map since the last save will be lost."
+msgstr "Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem letzten Speichern werden verloren gehen."
+
+#: src/editor2/editor_controller.cpp:321
+msgid "Do you really want to quit? The following maps were modified and all changes since the last save will be lost:"
+msgstr "Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
 #: src/editor2/editor_controller.cpp:326
-msgid ""
-"Do you really want to quit? The following maps were modified and all changes "
-"since the last save will be lost:"
-msgstr ""
-"Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
-"Speichern verändert und sämtliche Änderungen werden verloren gehen:"
-
-#: src/editor2/editor_controller.cpp:331
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/editor2/editor_controller.cpp:387
+#: src/editor2/editor_controller.cpp:382
 msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
-#: src/editor2/editor_controller.cpp:423
+#: src/editor2/editor_controller.cpp:418
 msgid "Unsaved Changes"
 msgstr "Nicht gespeicherte Änderungen"
 
-#: src/editor2/editor_controller.cpp:424
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
-"Wollt Ihr alle Änderungen an dieser Karte, die ihr seit dem letzten "
-"Speichern gemacht habt, verwerfen?"
+#: src/editor2/editor_controller.cpp:419
+msgid "Do you want to discard all changes you made to the map since the last save?"
+msgstr "Wollt Ihr alle Änderungen an dieser Karte, die ihr seit dem letzten Speichern gemacht habt, verwerfen?"
 
-#: src/editor2/editor_controller.cpp:442
+#: src/editor2/editor_controller.cpp:437
 msgid "Choose a Map to Open"
 msgstr "Wählt eine Karte aus, die Ihr laden wollt"
 
-#: src/editor2/editor_controller.cpp:477
+#: src/editor2/editor_controller.cpp:472
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor2/editor_controller.cpp:481
+#: src/editor2/editor_controller.cpp:476
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Diese Datei existiert schon. Soll sie überschrieben werden?"
 
-#: src/editor2/editor_controller.cpp:498
+#: src/editor2/editor_controller.cpp:493
 msgid "No random map generators found."
 msgstr "Keine Generatoren für Zufallskarten gefunden."
 
-#: src/editor2/editor_controller.cpp:511 src/editor2/editor_controller.cpp:515
+#: src/editor2/editor_controller.cpp:506
+#: src/editor2/editor_controller.cpp:510
 msgid "Map creation failed."
 msgstr "Erstellen der Karte fehlgeschlagen"
 
-#: src/editor2/editor_controller.cpp:530
+#: src/editor2/editor_controller.cpp:525
 msgid "Choose a mask to apply"
 msgstr "Wählt eine Maske aus, die Ihr anwenden wollt"
 
-#: src/editor2/editor_controller.cpp:537
+#: src/editor2/editor_controller.cpp:532
 msgid "Error loading mask"
 msgstr "Fehler beim Laden der Maske"
 
-#: src/editor2/editor_controller.cpp:552
+#: src/editor2/editor_controller.cpp:547
 msgid "Choose target map"
 msgstr "Wählt die Zielkarte"
 
-#: src/editor2/editor_controller.cpp:559 src/editor2/editor_controller.cpp:723
+#: src/editor2/editor_controller.cpp:554
+#: src/editor2/editor_controller.cpp:718
 msgid "Error loading map"
 msgstr "Fehler beim Laden der Karte"
 
-#: src/editor2/editor_controller.cpp:637 src/editor2/editor_controller.cpp:679
+#: src/editor2/editor_controller.cpp:632
+#: src/editor2/editor_controller.cpp:674
 msgid "This map is already open."
 msgstr "Diese Karte ist bereits geöffnet."
 
-#: src/editor2/editor_controller.cpp:658
+#: src/editor2/editor_controller.cpp:653
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor2/editor_controller.cpp:702
+#: src/editor2/editor_controller.cpp:697
 msgid "Loaded embedded map data"
 msgstr "Eingebettete Karte geladen"
 
-#: src/editor2/editor_controller.cpp:703 src/editor2/editor_controller.cpp:717
+#: src/editor2/editor_controller.cpp:698
+#: src/editor2/editor_controller.cpp:712
 msgid "Map loaded from scenario"
 msgstr "Karte aus Szenario Datei geladen"
 
-#: src/editor2/editor_controller.cpp:713
+#: src/editor2/editor_controller.cpp:708
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -284,35 +258,36 @@ msgstr ""
 "Referenzierte Karte aus Datei geladen:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1103
+#: src/editor2/editor_controller.cpp:1098
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/editor2/editor_controller.cpp:1105
+#: src/editor2/editor_controller.cpp:1100
 msgid "Can't Undo"
 msgstr "Rückgängig machen nicht möglich"
 
-#: src/editor2/editor_controller.cpp:1109
+#: src/editor2/editor_controller.cpp:1104
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-#: src/editor2/editor_controller.cpp:1111
+#: src/editor2/editor_controller.cpp:1106
 msgid "Can't Redo"
 msgstr "Wiederholen machen nicht möglich"
 
-#: src/editor2/editor_controller.cpp:1116
+#: src/editor2/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Geländeübergänge automatisch aktualisieren: Ja"
 
-#: src/editor2/editor_controller.cpp:1119
+#: src/editor2/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Geländeübergänge automatisch aktualisieren: Teilweise"
 
-#: src/editor2/editor_controller.cpp:1123
+#: src/editor2/editor_controller.cpp:1118
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Geländeübergänge automatisch aktualisieren: Nein"
 
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
+#: src/editor2/editor_map.cpp:150
+#: src/editor2/mouse_action.cpp:439
 msgid "Player"
 msgstr "Spieler"
 
@@ -320,13 +295,15 @@ msgstr "Spieler"
 msgid "The size of the target map is different from the current map"
 msgstr "Die Größe der Ziel-Karte weicht von der aktuellen Karte ab"
 
+# suffix im mouseover zu den kampagnen spezifischen terrains, die extra wml erfordern, damit sie auf einer karte nutzbar sind
 #: src/editor2/editor_palettes.cpp:510
 msgid "(non-core)"
-msgstr ""
+msgstr "(kein Kernbestandteil)"
 
+# beschreibung im mouseover zu den kampagnen spezifischen terrains, die extra wml erfordern, damit sie auf einer karte nutzbar sind
 #: src/editor2/editor_palettes.cpp:511
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Funktioniert nicht ohne weitere Anpassungen im WML."
 
 #: src/editor2/editor_palettes.cpp:536
 msgid "FG"
@@ -341,12 +318,8 @@ msgid "File not found"
 msgstr "Datei nicht gefunden"
 
 #: src/editor2/map_context.cpp:84
-msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"Diese angegebene Karte scheint eine Szenario Datei zu sein, doch der Wert "
-"für »map_data« verweist nicht auf eine existierende Datei"
+msgid "The map file looks like a scenario, but the map_data value does not point to an existing file"
+msgstr "Diese angegebene Karte scheint eine Szenario Datei zu sein, doch der Wert für »map_data« verweist nicht auf eine existierende Datei"
 
 #: src/editor2/map_context.cpp:99
 msgid "Empty map file"
@@ -369,17 +342,8 @@ msgid "Choose player"
 msgstr "Spieler auswählen"
 
 #: src/editor2/mouse_action.cpp:444
-msgid ""
-"Which player should start here? You can use alt and a number key to set the "
-"starting position for a player, and del to clear the starting position under "
-"the cursor. Pressing a number key by itself will scroll to that player's "
-"starting position."
-msgstr ""
-"Welcher Spieler soll hier starten? Verwendet die Taste »Alt« und eine "
-"Zifferntaste um die Startposition für eine Spieler zu setzen und »Entf«, um "
-"die Startposition unter dem Mauszeiger zu löschen. Drückt Ihr eine "
-"Zifferntaste alleine, springt der Editor zur Startposition des jeweiligen "
-"Spielers."
+msgid "Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player's starting position."
+msgstr "Welcher Spieler soll hier starten? Verwendet die Taste »Alt« und eine Zifferntaste um die Startposition für eine Spieler zu setzen und »Entf«, um die Startposition unter dem Mauszeiger zu löschen. Drückt Ihr eine Zifferntaste alleine, springt der Editor zur Startposition des jeweiligen Spielers."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
@@ -387,3 +351,4 @@ msgstr "Eigene Einstellungen"
 
 #~ msgid "Error"
 #~ msgstr "Fehler"
+
