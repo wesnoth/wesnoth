@@ -588,6 +588,7 @@ void game_state::get_player_info(const config& side_cfg,
 {
 	const config *player_cfg = NULL;
 	//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
+	//FIXME: this flag should be set on whether the current side is persistent
 	bool player_exists = false;
 
 	if(map.empty()) {
@@ -616,11 +617,6 @@ void game_state::get_player_info(const config& side_cfg,
 				player_exists = false; //there is only a [side] tag for this save_id in starting_pos
 			}
 		}
-	}
-
-	//if there is no player tag in either snapshot or replay_start, we have no persisting information for this team
-	if (!player_cfg) {
-		LOG_NG << save_id << " does not have a corresponding player tag\n";
 	}
 
 	LOG_NG << "initializing team...\n";

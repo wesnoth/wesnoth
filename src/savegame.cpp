@@ -1069,13 +1069,6 @@ void game_savegame::write_game_snapshot()
 	sound::write_music_play_list(snapshot());
 
 	gamestate().write_snapshot(snapshot());
-	//write [player] tags via teams
-	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		if (t->persistent()) {
-			config& player_cfg = snapshot().add_child("player");
-			t->write_player(player_cfg);
-		}
-	}
 
 	//write out the current state of the map
 	snapshot()["map_data"] = map_.write();
