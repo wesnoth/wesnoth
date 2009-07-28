@@ -1932,6 +1932,9 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
+	//ensure recorder has an actually random seed instead of what it got during
+	//static initialization (befire any srand() call)
+	recorder.set_seed(rand());
 
 	game_controller game(argc,argv);
 	const int start_ticks = SDL_GetTicks();
