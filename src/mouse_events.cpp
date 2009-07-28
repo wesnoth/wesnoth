@@ -678,7 +678,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num);
 		rand_rng::invalidate_seed();
 		if (rand_rng::has_valid_seed()) { //means SRNG is disabled
-			perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand());
+			perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
 		} else {
 			rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
 				this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
