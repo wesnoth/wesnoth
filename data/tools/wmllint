@@ -457,10 +457,7 @@ linechanges = (
         ("SPECIAL_NOTE_STONE", "SPECIAL_NOTE_PETRIFY"),
         (".stoned", ".petrified"),
         # Changed just before 1.7.3
-				("slasher", "arbiter"),
-				("Slasher", "Arbiter"),
-				("SLASHER", "ARBITER"),
-				)
+        )
 
 def validate_stack(stack, filename, lineno):
     "Check the stack for deprecated WML syntax."
