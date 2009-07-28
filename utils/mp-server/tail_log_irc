@@ -1,0 +1,55 @@
+#!/bin/sh
+die() { echo >&2 "$@"; exit 1; }
+
+ARGS=$(getopt --options cdmlo --longoptions color,colour,dry-run,debug,logged,mod,old --name `basename $0` -- "$@")
+[ $? = 0 ] || die "Syntax: $0 [-c|--color|colour] [-d|--debug|--dry-run] [-l|--logged] [-m|--mod] [-o|--old] <server version>"
+set -o errexit
+set -o nounset
+
+COLOR=
+EVAL=eval
+LOGGED=
+MOD=
+OLD=
+FILE=current.log
+
+eval set -- "$ARGS"
+while true
+do
+	case "$1" in
+	-c|--color|--colour)
+		COLOR=_color; shift ;;
+	-l|--logged)
+		LOGGED=_logged; shift ;;
+	-m|--mod)
+		MOD=_mod; shift ;;
+	-d|--debug|--dry-run)
+		EVAL=echo; shift ;;
+	-o|--old)
+		OLD=OLD:; FILE=old.log; shift ;;
+	--) shift; break ;;
+	*) echo "Unhandled option '$1'! Fix the script!"; shift ;;
+	esac
+done
+
+[ $# -ge 1 ] || die "No server version specified!"
+VERSION=$1
+
+PARAMS="-n 0 -F"
+[ -n "$OLD" ] && PARAMS="-n 0 --pid=\$(cat \"$HOME/servers/$VERSION/old.pid\") -f"
+
+LOG="$HOME/servers/$VERSION/$FILE"
+#[ -r "$LOG" ] || die "Server log file '$LOG' is not readable!"
+
+FILTER=logfilter_irc$MOD$LOGGED$COLOR
+
+PREV=
+case $VERSION in *prev) PREV=PREV: ;; esac
+
+PREFIX=
+[ -n "$MOD" ] && PREFIX="$VERSION:"
+PREFIX="$PREFIX$PREV$OLD"
+[ -n "$PREFIX" ] && PREFIX=" | sed --unbuffered \"s/^/$PREFIX &/\""
+
+COMMAND="tail $PARAMS \"$LOG\" | \"$HOME/bin/$FILTER\" --unbuffered$PREFIX"
+$EVAL $COMMAND
