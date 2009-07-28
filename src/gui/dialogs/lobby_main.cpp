@@ -464,7 +464,7 @@ void tlobby_main::update_playerlist()
 				target_list = &player_list_.other_games;
 				break;
 			default:
-				ERR_NG << "Bad user state in lobby: " << user.name << ": " << user.state << "\n";
+				ERR_LB << "Bad user state in lobby: " << user.name << ": " << user.state << "\n";
 				continue;
 		}
 		switch (user.relation) {
@@ -480,7 +480,7 @@ void tlobby_main::update_playerlist()
 				icon_ss << "-i";
 				break;
 			default:
-				ERR_NG << "Bad user relation in lobby: " << user.relation << "\n";
+				ERR_LB << "Bad user relation in lobby: " << user.relation << "\n";
 		}
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
@@ -699,7 +699,7 @@ void tlobby_main::add_whisper_window_whisper(const std::string& sender, const st
 	ss << "<" << sender << ">" << message;
 	tlobby_chat_window* t = whisper_window_open(sender, false);
 	if (!t) {
-		ERR_NG << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
+		ERR_LB << "Whisper window not open in add_whisper_window_whisper for " << sender << "\n";
 		return;
 	}
 	append_to_chatbox(ss.str(), t - &open_windows_[0]);
@@ -719,7 +719,7 @@ void tlobby_main::add_room_window_message(const std::string& room,
 	ss << "<" << sender << ">" << message;
 	tlobby_chat_window* t = room_window_open(room, false);
 	if (!t) {
-		ERR_NG << "Room window not open in add_room_window_message for " << room << "\n";
+		ERR_LB << "Room window not open in add_room_window_message for " << room << "\n";
 		return;
 	}
 	append_to_chatbox(ss.str(), t - &open_windows_[0]);
@@ -769,7 +769,7 @@ void tlobby_main::active_window_changed()
 		expected_label = t.name;
 	}
 	if (header.label() != expected_label) {
-		ERR_NG << "Chat log header not what it should be! "
+		ERR_LB << "Chat log header not what it should be! "
 			<< header.label() << " vs " << expected_label << "\n";
 	}
 
@@ -1012,19 +1012,19 @@ void tlobby_main::join_or_observe(int idx)
 bool tlobby_main::do_game_join(int idx, bool observe)
 {
 	if (idx < 0 || idx > static_cast<int>(lobby_info_.games_filtered().size())) {
-		ERR_NG << "Requested join/observe of a game with index out of range: "
+		ERR_LB << "Requested join/observe of a game with index out of range: "
 			<< idx << ", games size is " << lobby_info_.games_filtered().size() << "\n";
 		return false;
 	}
 	const game_info& game = *lobby_info_.games_filtered()[idx];
 	if (observe) {
 		if (!game.can_observe()) {
-			ERR_NG << "Requested observe of a game with observers disabled\n";
+			ERR_LB << "Requested observe of a game with observers disabled\n";
 			return false;
 		}
 	} else {
 		if (!game.can_join()) {
-			ERR_NG << "Requested join to a game with no vacant slots\n";
+			ERR_LB << "Requested join to a game with no vacant slots\n";
 			return false;
 		}
 	}
