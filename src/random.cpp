@@ -50,6 +50,7 @@
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
 #define LOG_RND LOG_STREAM(info, log_random)
+#define WRN_RND LOG_STREAM(warn, log_random)
 #define ERR_RND LOG_STREAM(err, log_random)
 
 namespace {
@@ -103,6 +104,7 @@ void invalidate_seed()
 {
 	DBG_RND << "invalidate_seed\n";
 	last_seed = rand(); //for SP
+	DBG_RND << "seed becomes " << last_seed << "\n";
 	seed_valid = false;
 }
 
@@ -159,7 +161,7 @@ int rng::get_random()
 		int mine = generator_.get_random();
 		int stored = lexical_cast_default<int>((*random[random_child_++])["value"], 0);
 		if (mine != stored) {
-			ERR_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
+			WRN_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
 		}
 		LOG_RND << "get_random() returning " << stored << "\n";
 		return stored;
@@ -219,7 +221,8 @@ simple_rng::simple_rng() :
     random_seed_(rand()),
     random_pool_(random_seed_),
     random_calls_(0)
-{ }
+{
+}
 
 simple_rng::simple_rng(const config& cfg) :
     /**
@@ -229,14 +232,16 @@ simple_rng::simple_rng(const config& cfg) :
     random_seed_(lexical_cast_default<int>(cfg["random_seed"], 42)),
     random_pool_(random_seed_),
     random_calls_(0)
-{}
+{
+}
 
 int simple_rng::get_random()
 {
 	random_next();
 	++random_calls_;
-	//DBG_NG << "pulled user random " << random_pool_
-	//	<< " for call " << random_calls_ << '\n';
+	DBG_RND << "pulled user random " << random_pool_
+		<< " for call " << random_calls_
+		<< " with seed " << random_seed_ << '\n';
 
 	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
 }
@@ -253,9 +258,9 @@ void simple_rng::seed_random(const int seed, const unsigned call_count)
 	for(random_calls_ = 0; random_calls_ < call_count; ++random_calls_) {
 		random_next();
 	}
-	//DBG_NG << "Seeded random with " << random_seed_ << " with "
-	//	<< random_calls_ << " calls, pool is now at "
-	//	<< random_pool_ << '\n';
+	DBG_RND << "Seeded random with " << random_seed_ << " with "
+		<< random_calls_ << " calls, pool is now at "
+		<< random_pool_ << '\n';
 }
 
 void simple_rng::random_next()
