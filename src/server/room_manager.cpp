@@ -86,25 +86,25 @@ const std::string& room_manager::storage_filename() const
 
 void room_manager::read_rooms()
 {
-	if (filename_.empty() || !file_exists(filename_)) return;
-
-	LOG_LOBBY << "Reading rooms from " <<  filename_ << "\n";
-	config cfg;
-	scoped_istream file = istream_file(filename_);
-	if (compress_stored_rooms_) {
-		read_gz(cfg, *file);
-	} else {
-		detect_format_and_read(cfg, *file);
-	}
-
-	foreach (const config &c, cfg.child_range("room")) {
-		room* r(new room(c));
-		if (room_exists(r->name())) {
-			ERR_LOBBY << "Duplicate room ignored in stored rooms: "
-				<< r->name() << "\n";
-			delete r;
+	if (!filename_.empty() && file_exists(filename_)) {
+		LOG_LOBBY << "Reading rooms from " <<  filename_ << "\n";
+		config cfg;
+		scoped_istream file = istream_file(filename_);
+		if (compress_stored_rooms_) {
+			read_gz(cfg, *file);
 		} else {
-			rooms_by_name_.insert(std::make_pair(r->name(), r));
+			detect_format_and_read(cfg, *file);
+		}
+
+		foreach (const config &c, cfg.child_range("room")) {
+			room* r(new room(c));
+			if (room_exists(r->name())) {
+				ERR_LOBBY << "Duplicate room ignored in stored rooms: "
+					<< r->name() << "\n";
+				delete r;
+			} else {
+				rooms_by_name_.insert(std::make_pair(r->name(), r));
+			}
 		}
 	}
 	lobby_ = get_room(lobby_name_);
