@@ -331,6 +331,10 @@ private:
 
 	boost::function<void ()> preferences_callback_;
 
+	/**
+	 * This represents the open chat windows (rooms and whispers at the moment)
+	 * with 1 to 1 correspondence to what the user sees in the interface
+	 */
 	std::vector<tlobby_chat_window> open_windows_;
 
 	size_t active_window_;

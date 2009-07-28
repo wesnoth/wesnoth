@@ -56,6 +56,7 @@ static lg::log_domain log_lobby("lobby");
 #define LOG_LB LOG_STREAM(info, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
 
+
 namespace gui2 {
 
 namespace {
@@ -88,7 +89,8 @@ namespace {
 	}
 	void set_playerlist_single_group(bool v) {
 		return preferences::set(prefkey_playerlist_single_group, lexical_cast<std::string>(v));
-	}}
+	}
+}
 
 void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 {
@@ -660,6 +662,16 @@ void tlobby_main::increment_waiting_whsipers(const std::string& name)
 {
 	if (tlobby_chat_window* t = whisper_window_open(name, false)) {
 		t->pending_messages++;
+		if (t->pending_messages == 1) {
+			DBG_LB << "do whisper pending mark row "
+				<< (t - &open_windows_[0]) << " with " << t->name << "\n";
+			tgrid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
+			//this breaks for some reason
+			//tlabel& label = grid->get_widget<tlabel>("room", false);
+			//label.set_markup_mode(tcontrol::PANGO_MARKUP);
+			//label.set_label(colorize("<" + t->name + ">", "red"));
+			grid->get_widget<timage>("pending_messages", false).set_visible(twidget::VISIBLE);
+		}
 	}
 }
 
@@ -667,6 +679,17 @@ void tlobby_main::increment_waiting_messages(const std::string& room)
 {
 	if (tlobby_chat_window* t = room_window_open(room, false)) {
 		t->pending_messages++;
+		if (t->pending_messages == 1) {
+			int idx = t - &open_windows_[0];
+			DBG_LB << "do room pending mark row "
+				<< idx << " with " << t->name << "\n";
+			tgrid* grid = roomlistbox_->get_row_grid(idx);
+			//this breaks for some reason
+			//tlabel& label = grid->get_widget<tlabel>("room", false);
+			//label.set_markup_mode(tcontrol::PANGO_MARKUP);
+			//label.set_label(colorize(t->name, "red"));
+			grid->get_widget<timage>("pending_messages", false).set_visible(twidget::VISIBLE);
+		}
 	}
 }
 
@@ -738,18 +761,29 @@ void tlobby_main::active_window_changed()
 {
 	tlabel& header = chat_log_container_->
 		page_grid(active_window_).get_widget<tlabel>("log_header", false);
-	const tlobby_chat_window& t = open_windows_[active_window_];
+	tlobby_chat_window& t = open_windows_[active_window_];
+	std::string expected_label;
 	if (t.whisper) {
-		if (header.label() != ("<" + t.name + ">")) {
-			ERR_NG << "Chat log header not what it should be! "
-				<< header.label() << " vs " << ("<" + t.name + ">") << "\n";
-		}
+		expected_label = "<" + t.name + ">";
 	} else {
-		if (header.label() != (t.name)) {
-			ERR_NG << "Chat log header not what it should be! "
-				<< header.label() << " vs " << t.name << "\n";
-		}
+		expected_label = t.name;
 	}
+	if (header.label() != expected_label) {
+		ERR_NG << "Chat log header not what it should be! "
+			<< header.label() << " vs " << expected_label << "\n";
+	}
+
+	DBG_LB << "active window changed to " << active_window_ << " "
+		<< (t.whisper ? "w" : "r") << " "
+		<< t.name << " " << t.pending_messages << " : " << expected_label << "\n";
+
+	//clear pending messages notification in room listbox
+	tgrid* grid = roomlistbox_->get_row_grid(active_window_);
+	//this breaks for some reason
+	//tlabel& label = grid->get_widget<tlabel>("room", false);
+	//label.set_label(expected_label);
+	grid->get_widget<timage>("pending_messages", false).set_visible(twidget::HIDDEN);
+	t.pending_messages = 0;
 
 	window_->get_widget<tbutton>("close_window", false).set_active(t.whisper || t.name != "lobby");
 	update_playerlist();
