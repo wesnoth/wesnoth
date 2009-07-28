@@ -51,6 +51,10 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static lg::log_domain log_lobby("lobby");
+#define DBG_LB LOG_STREAM(info, log_lobby)
+#define LOG_LB LOG_STREAM(info, log_lobby)
+#define ERR_LB LOG_STREAM(err, log_lobby)
 
 namespace gui2 {
 
