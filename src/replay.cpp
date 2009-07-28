@@ -40,6 +40,12 @@ static lg::log_domain log_replay("replay");
 #define WRN_REPLAY LOG_STREAM(warn, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
+static lg::log_domain log_random("random");
+#define DBG_RND LOG_STREAM(debug, log_random)
+#define LOG_RND LOG_STREAM(info, log_random)
+#define WRN_RND LOG_STREAM(warn, log_random)
+#define ERR_RND LOG_STREAM(err, log_random)
+
 std::string replay::last_replay_error;
 
 //functions to verify that the unit structure on both machines is identical
@@ -261,6 +267,7 @@ void replay::add_attack(const map_location& a, const map_location& b,
 
 void replay::add_seed(const char* child_name, rand_rng::seed_t seed)
 {
+	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
 	current_->child(child_name)["seed"] = lexical_cast<std::string>(seed);
 }
 
