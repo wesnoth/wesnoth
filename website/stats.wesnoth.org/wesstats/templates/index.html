@@ -18,7 +18,7 @@ import urllib
 ?>
 <head>
 <title>Wesnoth Stats</title>
-<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
+<style type="text/css">@import url('http://www.cornmander.com/wesstats/css/main.css');</style>
 </head>
 <body>
 <div id="header">
@@ -37,7 +37,7 @@ import urllib
 		</ul>
 	</div>
 </div>
-<div id="main_"> <!--- TODO: remove id tag collision -->
+<div id="main">
 <h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]} (${view[2].capitalize()} Graph)</a></h3>
 </div>
 </body>
