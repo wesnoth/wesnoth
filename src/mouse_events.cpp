@@ -696,7 +696,6 @@ void mouse_handler::perform_attack(
 	// this function gets it's arguments by value because the calling function
 	// object might get deleted in the clear callback call below, invalidating
 	// const ref arguments
-	rand_rng::invalidate_seed();
 	rand_rng::clear_new_seed_callback();
 	LOG_NG << "Performing attack with seed " << seed << "\n";
 	recorder.add_seed("attack", seed);

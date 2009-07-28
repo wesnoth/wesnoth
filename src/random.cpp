@@ -102,9 +102,12 @@ void set_seed(seed_t seed)
 
 void invalidate_seed()
 {
-	DBG_RND << "invalidate_seed\n";
-	last_seed = rand(); //for SP
-	DBG_RND << "seed becomes " << last_seed << "\n";
+	LOG_RND << "invalidate_seed\n";
+	assert(random_generator!=NULL);
+	last_seed = rand();
+	if (has_valid_seed()) { //aka SRNG is disabled
+		random_generator->set_seed(last_seed);
+	}
 	seed_valid = false;
 }
 
