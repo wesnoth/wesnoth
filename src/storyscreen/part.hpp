@@ -46,29 +46,65 @@ public:
 		surface image;	/**< Surface, scaled if required. */
 	};
 
+	/**
+	 * Default constructor.
+	 */
 	floating_image();
-	floating_image(const config& cfg);
-	floating_image(const floating_image& fi);
 
-	void assign(const floating_image& fi);
+	/**
+	 * WML-based constructor.
+	 * @param cfg Object corresponding to a [image] block's contents from
+	 *            a [part] node.
+	 */
+	floating_image(const config& cfg);
+
+	/**
+	 * Copy constructor.
+	 */
+	floating_image(const floating_image& fi);
 
 	floating_image& operator=(const floating_image& fi) {
 		assign(fi);
 		return *this;
 	}
 
-	/** Returns the referential X coordinate of the image. */
-	int ref_x() const { return x_; }
-	/** Returns the referential Y coordinate of the image. */
-	int ref_y() const { return y_; }
+	/**
+	 * Returns the referential X coordinate of the image.
+	 * The actual (corrected) value is determined at render time - see get_render_input().
+	 */
+	int ref_x() const {
+		return x_;
+	}
 
+	/**
+	 * Returns the referential Y coordinate of the image.
+	 * The actual (corrected) value is determined at render time - see get_render_input().
+	 */
+	int ref_y() const {
+		return y_;
+	}
+
+	/**
+	 * Whether the image should be automatically scaled as much as
+	 * the storyscreen background is.
+	 */
 	bool autoscale() const { return autoscaled_; }
+
+	/**
+	 * Whether the image coordinates specify the location of its
+	 * center (true) or top-left corner (false).
+	 */
 	bool centered() const  { return centered_; }
 
-	/** Delay before displaying, in milliseconds. */
+	/**
+	 * Delay before displaying, in milliseconds.
+	 */
 	int display_delay() const { return delay_; }
 
-	/** Render. */
+	/**
+	 * Gets a render_input object for use by the rendering code after applying
+	 * any geometric transformations required.
+	 */
 	render_input get_render_input(double scale, SDL_Rect& dst_rect) const;
 
 private:
@@ -77,6 +113,9 @@ private:
 	int delay_;
 	bool autoscaled_;
 	bool centered_;
+
+	/** Copy constructor and operator=() implementation details. */
+	void assign(const floating_image& fi);
 };
 
 /**
@@ -114,24 +153,69 @@ public:
 		QUIT		/**< Quit game and go back to main menu. */
 	};
 
+	/**
+	 * Constructs a storyscreen part from a managed WML node.
+	 * @param part_cfg Node object which should correspond to a [part] block's contents.
+	 */
 	part(const vconfig &part_cfg);
 
-	bool scale_background() const { return scale_background_; }
-	const std::string& background() const { return background_file_; }
+	/** Whether the background image should be scaled to fill the screen or not. */
+	bool scale_background() const {
+		return scale_background_;
+	}
 
-	bool show_title() const { return show_title_; }
-	const std::string& text() const { return text_; }
-	const std::string& title() const { return text_title_; }
-	const std::string& music() const { return music_; }
+	/** Path to the background image. */
+	const std::string& background() const {
+		return background_file_;
+	}
 
-	void set_text(const std::string& text) { text_ = text; }
-	void set_title(const std::string& title) { text_title_ = title; }
+	/** Whether the story screen title should be displayed or not. */
+	bool show_title() const {
+		return show_title_;
+	}
 
+	/** Retrieves the story text itself. */
+	const std::string& text() const {
+		return text_;
+	}
+
+	/** Changes the story text. */
+	void set_text(const std::string& text) {
+		text_ = text;
+	}
+
+	/** Retrieves the story screen title. */
+	const std::string& title() const {
+		return text_title_;
+	}
+
+	/** Changes the story screen title. */
+	void set_title(const std::string& title) {
+		text_title_ = title;
+	}
+
+	/** Retrieves the background music. */
+	const std::string& music() const {
+		return music_;
+	}
+
+	/** Retrieves the area of the screen on which the story text is displayed. */
+	TEXT_BLOCK_LOCATION text_block_location() const {
+		return text_block_loc_;
+	}
+
+	/** Retrieves the alignment of the title text against the screen. */
+	TITLE_ALIGNMENT title_block_alignment() const {
+		return title_alignment_;
+	}
+
+	/** Retrieve any associated floating images for this story screen. */
 	const std::vector<floating_image> get_floating_images() const {
 		return floating_images_;
 	}
 
 private:
+	// Default constructor. Not used. Should never be used.
 	part();
 
 	/** Takes care of initializing and branching properties. */

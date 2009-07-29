@@ -42,22 +42,45 @@ namespace storyscreen {
 class part_ui
 {
 public:
-	enum RESULT { NEXT, BACK, SKIP, QUIT };
+	/** Storyscreen result. */
+	enum RESULT {
+		NEXT,	/**< The user pressed the go-next button. */
+		BACK,	/**< The user pressed the go-back button (TODO: not implemented). */
+		SKIP,	/**< The user pressed the skip button. */
+		QUIT	/**< The user pressed the quit button (TODO: not implemented). */
+	};
 
+	/**
+	 * Constructor.
+	 * @param p A storyscreen::part with the required information and parameters.
+	 * @param disp Display.
+	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
+	 * @param skip_button Skip button. Shouldn't be destroyed before the part_ui object.
+	 */
 	part_ui(part& p, display& disp, gui::button& next_button, gui::button& skip_button);
+
+	/**
+	 * Render and display the storyscreen, process and return user input.
+	 */
 	RESULT show();
 
 private:
 	part& p_;
 	display& disp_;
-	CVideo& video_;
-	CKey keys_;
+	CVideo& video_; // convenience, it's currently obtained from disp_
+	CKey keys_;     // convenience
+
+	//gui::button& back_button_;
 	gui::button& next_button_;
 	gui::button& skip_button_;
+	//gui::button& quit_button_;
 
 	RESULT ret_;
 
 	double scale_factor_;
+
+	// The background is aspect-corrected when scaled, so the image doesn't
+	// look distorted. base_rect_ has the actual area occupied by the background.
 	SDL_Rect base_rect_;
 
 	surface background_;
@@ -66,11 +89,24 @@ private:
 
 	int text_x_, text_y_, buttons_x_, buttons_y_;
 
+	/** Constructor implementation details. */
+	void prepare_background();
+	/** Constructor implementation details. */
+	void prepare_geometry();
+	/** Constructor implementation details. */
+	void prepare_floating_images();
+
 	void render_background();
 	void render_title_box();
+	void render_story_box();
+	void render_story_box_borders(SDL_Rect&);
+	/**
+	 * Renders all floating images in sequence.
+	 * @return 'true' if the user interrupted the operation; 'false' otherwise.
+	 */
 	bool render_floating_images();
-	void render_text_box();
-	void render_text_box_with_pango();
+
+	void wait_for_input();
 };
 
 } // end namespace storyscreen

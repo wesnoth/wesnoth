@@ -40,11 +40,34 @@
 #include "stub.hpp"
 
 static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
+#define ERR_NG  LOG_STREAM(err,  log_engine)
+#define WARN_NG LOG_STREAM(warn, log_engine)
+#define LOG_NG  LOG_STREAM(info, log_engine)
+
+
+namespace {
+	int const storybox_padding = 10; // px
+	double const storyshadow_opacity = 0.5;
+	int const storyshadow_r = 0;
+	int const storyshadow_g = 0;
+	int const storyshadow_b = 0;
+
+	int const titlebox_padding = 20; // px
+	int const titleshadow_padding = 5; // px
+	double const titleshadow_opacity = 0.5;
+	int const titleshadow_r = 0;
+	int const titleshadow_g = 0;
+	int const titleshadow_b = 0;
+
+	int const titlebox_font_size = 20; // pt?
+
+	Uint32 const titlebox_font_color = 0xFFFFFFFF;
+	Uint32 const storybox_font_color = 0xDDDDDDFF;
 
 #ifndef LOW_MEM
-namespace {
-	std::string const textbox_border_path = "dialogs/translucent54-border-top.png";
+	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
+	std::string const storybox_top_border_path = "dialogs/translucent54-border-top.png";
+	std::string const storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
 
 	void blur_area(CVideo& video, int y, int h)
 	{
@@ -53,30 +76,8 @@ namespace {
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
 	}
-#if 0
-	/* do not remove yet */
-	void fade_in_helper(CVideo& video, surface surf, int x, int y)
-	{
-		const SDL_Rect target_area = { x, y, surf->w, surf->h };
-		surface s = cut_surface(video.getSurface(), backup_area);
-		ll
-		for(size_t n = 0; n < 255; n += 5) {
-			if(n)
-				video.blit_surface(x, y, backup);
-
-			// TODO
-			update_rect(target_area);
-
-			events::pump();
-			events::raise_process_event();
-			events::raise_draw_event();
-			disp.flip();
-			disp.delay(10);
-		}
-	}
 #endif
 }
-#endif /* ! LOW_MEM */
 
 namespace storyscreen {
 
@@ -95,12 +96,19 @@ part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& 
 	, has_background_(false)
 	, text_x_(200)
 	, text_y_(400)
-	, buttons_x_()
-	, buttons_y_()
+	, buttons_x_(0)
+	, buttons_y_(0)
+{
+	this->prepare_background();
+	this->prepare_geometry();
+	this->prepare_floating_images();
+}
+
+void part_ui::prepare_background()
 {
 	// Build background surface
 	if(p_.background_file_.empty() != true) {
-		background_.assign( image::get_image(p.background_file_) );
+		background_.assign( image::get_image(p_.background_file_) );
 	}
 	has_background_ = !background_.null();
 	if(background_.null() || background_->w * background_-> h == 0) {
@@ -114,12 +122,20 @@ part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& 
 	background_ =
 		scale_surface(background_, static_cast<int>(background_->w*scale_factor_), static_cast<int>(background_->h*scale_factor_));
 
-	ASSERT_LOG(background_.null() == false, "Ouch: storyscreen part background got NULL");
+	ASSERT_LOG(background_.null() == false, "Oops: storyscreen part background got NULL");
+}
 
+void part_ui::prepare_geometry()
+{
 	base_rect_.x = (video_.getx() - background_->w) / 2;
 	base_rect_.y = (video_.gety() - background_->h) / 2;
 	base_rect_.w = background_->w;
 	base_rect_.h = background_->h;
+
+	int next_button_loc_x, next_button_loc_y;
+	int skip_button_loc_x, skip_button_loc_y;
+	next_button_loc_x = next_button_loc_y = 0;
+	skip_button_loc_x = skip_button_loc_y = 0;
 
 #ifdef USE_TINY_GUI
 	// Use the whole screen for text on tinygui
@@ -130,322 +146,39 @@ part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& 
 
 	next_button_.set_location(buttons_x_, buttons_y_ - 20);
 	skip_button_.set_location(buttons_x_, buttons_y_);
-#else
-	text_x_ = 200;
-	text_y_ = video_.gety() - 200;
-	buttons_x_ = video_.getx() - 200 - 40;
-	buttons_y_ = video_.gety() - 40;
 
+#else // elif !defined(USE_TINY_GUI)
+
+	// The horizontal locations are always the same
+	text_x_ = 200;
+	buttons_x_ = video_.getx() - 200 - 40;
+
+	switch(p_.text_block_location())
+	{
+	case part::TOP:
+		text_y_ = 0;
+		buttons_y_ = 40;
+		break;
+	case part::MIDDLE:
+		text_y_ = video_.gety() / 3;
+		buttons_y_ = video_.gety() / 2 + 15;
+		break;
+	default: // part::BOTTOM
+		text_y_ = video_.gety() - 200;
+		buttons_y_ = video_.gety() - 40;
+		break;
+	}
 	next_button_.set_location(buttons_x_, buttons_y_ - 30);
 	skip_button_.set_location(buttons_x_, buttons_y_);
 #endif
+}
 
+void part_ui::prepare_floating_images()
+{
 	// Build floating image surfaces
 	foreach(const floating_image& fi, p_.floating_images_) {
 		imgs_.push_back( fi.get_render_input(scale_factor_, base_rect_) );
 	}
-}
-
-void part_ui::render_text_box()
-{
-	const bool rtl = current_language_rtl();
-
-	const int max_width = next_button_.location().x - 10 - text_x_;
-	const std::string storytxt =
-		font::word_wrap_text(p_.text_, font::SIZE_PLUS, max_width);
-
-	utils::utf8_iterator itor(storytxt);
-
-	bool skip = false, last_key = true;
-	int update_y = 0, update_h = 0;
-
-	// Draw the text box
-	if(storytxt.empty() != true)
-	{
-		// this should kill the tiniest flickering caused
-		// by the buttons being hidden and unhidden in this scope.
-		update_locker locker(video_);
-
-		const SDL_Rect total_size = font::draw_text(
-			NULL, screen_area(), font::SIZE_PLUS,
-			font::NORMAL_COLOUR, storytxt, 0, 0
-		);
-
-		next_button_.hide();
-		skip_button_.hide();
-
-		if(text_y_ + 20 + total_size.h > screen_area().h) {
-			text_y_ = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
-		}
-
-		update_y = text_y_;
-		update_h = screen_area().h - text_y_;
-
-#ifndef LOW_MEM
-		blur_area(video_, update_y, update_h);
-#endif
-
-		draw_solid_tinted_rectangle(
-			0, text_y_, screen_area().w, screen_area().h-text_y_,
-			0, 0, 0, 0.5, video_.getSurface()
-		);
-
-		// Draw a nice border
-		if(has_background_) {
-			// FIXME: perhaps hard-coding the image path isn't a really
-			// good idea - it must not be forgotten if someone decides to switch
-			// the image directories around.
-			surface top_border = image::get_image("dialogs/translucent54-border-top.png");
-			top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
-			update_y = text_y_ - top_border->h;
-			update_h += top_border->h;
-#ifndef LOW_MEM
-			blur_area(video_, update_y, top_border->h);
-#endif
-			video_.blit_surface(0, text_y_ - top_border->h, top_border);
-		}
-
-		// Make buttons aware of the changes in the background
-		next_button_.set_location(next_button_.location());
-		next_button_.hide(false);
-		skip_button_.set_location(skip_button_.location());
-		skip_button_.hide(false);
-	}
-
-	if(imgs_.empty()) {
-		update_whole_screen();
-	} else if(update_h > 0) {
-		update_rect(0,update_y,screen_area().w,update_h);
-	}
-
-	if(rtl) {
-		text_x_ += max_width;
-	}
-
-#ifdef USE_TINY_GUI
-	int xpos = text_x_, ypos = text_y_ + 10;
-#else
-	int xpos = text_x_, ypos = text_y_ + 20;
-#endif
-
-	// The maximum position that text can reach before wrapping
-	size_t height = 0;
-
-	while(true) {
-		if(itor != utils::utf8_iterator::end(storytxt)) {
-			if(*itor == '\n') {
-				xpos = text_x_;
-				ypos += height;
-				++itor;
-			}
-			// Output the character
-			/** @todo  FIXME: this is broken: it does not take kerning into account. */
-			std::string tmp;
-			tmp.append(itor.substr().first, itor.substr().second);
-			if(rtl) {
-				xpos -= font::line_width(tmp, font::SIZE_PLUS);
-			}
-			const SDL_Rect rect = font::draw_text(
-				&video_, screen_area(), font::SIZE_PLUS,
-				font::NORMAL_COLOUR, tmp, xpos, ypos,
-				false
-			);
-
-			if(rect.h > height)
-				height = rect.h;
-			if(!rtl)
-				xpos += rect.w;
-			update_rect(rect);
-
-			++itor;
-			if(itor == utils::utf8_iterator::end(storytxt)) {
-				skip = true;
-			}
-		}
-
-		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
-
-		if((keydown && !last_key) || next_button_.pressed()) {
-			if(skip == true || itor == utils::utf8_iterator::end(storytxt)) {
-				ret_ = NEXT;
-				break;
-			} else {
-				skip = true;
-			}
-		}
-
-		last_key = keydown;
-
-		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
-			ret_ = SKIP;
-			return;
-		}
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-		disp_.flip();
-
-		if(!skip || itor == utils::utf8_iterator::end(storytxt)) {
-			disp_.delay(20);
-		}
-	}
-
-	draw_solid_tinted_rectangle(
-		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
-		1.0, video_.getSurface()
-	);
-}
-
-void part_ui::render_text_box_with_pango()
-{
-	const int max_width = next_button_.location().x - 10 - text_x_;
-	const int padding_x = 10;
-	const int max_height = screen_area().h - padding_x;
-	const std::string& storytxt = p_.text_;
-
-	bool skip = false, last_key = true;
-	int update_y = 0, update_h = 0;
-
-	surface textbox_surf = NULL;
-
-	// draw the text box
-	if(!storytxt.empty())
-	{
-		update_locker lock(video_);
-		font::ttext t;
-		
-		next_button_.hide();
-		skip_button_.hide();
-		/*back_button_.hide();*/
-
-		t.set_text(storytxt, true)
-		 .set_font_style(font::ttext::STYLE_NORMAL)
-		 /*.set_font_size(14)*/
-		 .set_maximum_width(max_width)
-		 .set_maximum_height(max_height);
-		
-		textbox_surf = t.render();
-		if(text_y_ + 20 + textbox_surf->h > screen_area().h) {
-			text_y_ = screen_area().h > textbox_surf->h + 1 ? screen_area().h - textbox_surf->h - 21 : 0;
-		}
-
-		update_y = text_y_;
-		update_h = screen_area().h - text_y_;
-
-		//const SDL_Rect textbox_rect = { text_x_, text_y_, textbox_surf->w, textbox_surf->h };
-
-#ifndef LOW_MEM
-		blur_area(video_, update_y, update_h);
-#endif
-
-		draw_solid_tinted_rectangle(
-			0, text_y_, screen_area().w, screen_area().h-text_y_,
-			0, 0, 0, 0.5, video_.getSurface()
-		);
-
-#ifndef LOW_MEM
-		// Draw a nice border
-		if(has_background_) {
-			// FIXME: perhaps hard-coding the image path isn't a really
-			// good idea - it must not be forgotten if someone decides to switch
-			// the image directories around.
-			surface top_border = image::get_image(textbox_border_path);
-			top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
-			update_y = text_y_ - top_border->h;
-			update_h += top_border->h;
-			blur_area(video_, update_y, top_border->h);
-			video_.blit_surface(0, text_y_ - top_border->h, top_border);
-		}
-#endif
-
-		// Make GUI 1 buttons aware of the changes in the background
-		next_button_.set_location(next_button_.location());
-		next_button_.hide(false);
-		skip_button_.set_location(skip_button_.location());
-		skip_button_.hide(false);
-	}
-
-	if(imgs_.empty()) {
-		update_whole_screen();
-	} else if(update_h > 0) {
-		update_rect(0,update_y,screen_area().w,update_h);
-	}
-
-	const bool rtl = current_language_rtl();
-	if(rtl) {
-		text_x_ += max_width;
-	}
-
-#ifdef USE_TINY_GUI
-	//int xpos = text_x_, ypos = text_y_ + 10;
-#else
-	//int xpos = text_x_, ypos = text_y_ + 20;
-#endif
-
-	// The maximum position that text can reach before wrapping
-	//size_t height = 0;
-
-	// FIXME: line height
-	// const int line_height = 10;
-
-	if(!textbox_surf.null()) {
-		video_.blit_surface(text_x_, text_y_+padding_x, textbox_surf);
-	}
-
-	while(true)
-	{
-		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
-
-		if((keydown && !last_key) || next_button_.pressed()) {
-			if(skip == true /*|| itor == utils::utf8_iterator::end(storytxt)*/) {
-				ret_ = NEXT;
-				break;
-			} else {
-				skip = true;
-			}
-		}
-
-		last_key = keydown;
-
-		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
-			ret_ = SKIP;
-			return;
-		}
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-		disp_.flip();
-
-		if(!skip /*|| itor == utils::utf8_iterator::end(storytxt)*/) {
-			disp_.delay(20);
-		}
-	}
-
-	draw_solid_tinted_rectangle(
-		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
-		1.0, video_.getSurface()
-	);
-}
-
-void part_ui::render_title_box()
-{
-	// Text color
-	const int r = 0, g = 0, b = 0;
-
-	const SDL_Rect area = { 0, 0, video_.getx(), video_.gety() };
-	const SDL_Rect text_shadow_rect = font::line_size(p_.text_title_, font::SIZE_XLARGE);
-
-	draw_solid_tinted_rectangle(
-		base_rect_.x + 15, base_rect_.y + 15,
-		text_shadow_rect.w + 10, text_shadow_rect.h + 10, r, g, b, 0.5, video_.getSurface()
-	);
-
-	update_rect(font::draw_text(
-		&video_, area, font::SIZE_XLARGE, font::BIGMAP_COLOUR,
-		p_.text_title_, base_rect_.x + 20, base_rect_.y + 20
-	));
 }
 
 void part_ui::render_background()
@@ -518,6 +251,276 @@ bool part_ui::render_floating_images()
 	return true;
 }
 
+void part_ui::render_title_box()
+{
+	const std::string& titletxt = p_.title();
+	if(titletxt.empty()) {
+		return;
+	}
+
+	int titlebox_x, titlebox_y, titlebox_max_w, titlebox_max_h;
+	// We later correct these according to the storytext box location.
+	// The text box is always aligned according to the base_rect_
+	// (effective background area) at the end.
+	titlebox_x = titlebox_padding;
+	titlebox_max_w = base_rect_.w - 2*titlebox_padding;
+	titlebox_y = titlebox_padding;
+	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
+
+	font::ttext t;
+	t.set_text(titletxt, true)
+		 .set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_font_size(titlebox_font_size)
+		 .set_foreground_colour(titlebox_font_color)
+		 .set_maximum_width(titlebox_max_w)
+		 .set_maximum_height(titlebox_max_h);
+	surface txtsurf = t.render();
+
+	if(txtsurf.null()) {
+		ERR_NG << "storyscreen titlebox rendering resulted in a null surface\n";
+		return;
+	}
+
+	const int titlebox_w = txtsurf->w;
+	const int titlebox_h = txtsurf->h;
+
+	// TODO location correction
+
+	draw_solid_tinted_rectangle(
+		base_rect_.x + titlebox_x - titleshadow_padding,
+		base_rect_.y + titlebox_y - titleshadow_padding,
+		titlebox_w + 2*titleshadow_padding,
+		titlebox_h + 2*titleshadow_padding,
+		titleshadow_r, titleshadow_g, titleshadow_b,
+		titleshadow_opacity,
+		video_.getSurface()
+	);
+
+	video_.blit_surface(base_rect_.x + titlebox_x, base_rect_.y + titlebox_y, txtsurf);
+
+	update_rect(
+		static_cast<size_t>(std::max(0, base_rect_.x + titlebox_x)),
+		static_cast<size_t>(std::max(0, base_rect_.y + titlebox_y)),
+		static_cast<size_t>(std::max(0, titlebox_w)),
+		static_cast<size_t>(std::max(0, titlebox_h))
+	);
+}
+
+#ifdef LOW_MEM
+void part_ui::render_story_box_borders(SDL_Rect& /*update_area*/)
+{}
+#else
+void part_ui::render_story_box_borders(SDL_Rect& update_area)
+{
+	const part::TEXT_BLOCK_LOCATION tbl = p_.text_block_location();
+
+	if(has_background_) {
+		surface border_top = NULL;
+		surface border_bottom = NULL;
+
+		if(tbl == part::BOTTOM || tbl == part::MIDDLE) {
+			border_top = image::get_image(storybox_top_border_path);
+		}
+
+		if(tbl == part::TOP || tbl == part::MIDDLE) {
+			border_bottom = image::get_image(storybox_bottom_border_path);
+		}
+
+		//
+		// If one of those are null at this point, it means that either we
+		// don't need that border pic, or it is missing (in such case get_image()
+		// would report).
+		//
+
+		if(border_top.null() != true) {
+			if((border_top = scale_surface_blended(border_top, screen_area().w, border_top->h)).null()) {
+				WARN_NG << "storyscreen got a null top border surface after rescaling\n";
+			}
+			else {
+				update_area.y -= border_top->h;
+				update_area.h += border_top->h;
+				blur_area(video_, update_area.y, border_top->h);
+				video_.blit_surface(0, update_area.y, border_top);
+			}
+		}
+
+		if(border_bottom.null() != true) {
+			if((border_bottom = scale_surface_blended(border_bottom, screen_area().w, border_bottom->h)).null()) {
+				WARN_NG << "storyscreen got a null bottom border surface after rescaling\n";
+			}
+			else {
+				blur_area(video_, update_area.h, border_bottom->h);
+				video_.blit_surface(0, update_area.y+update_area.h, border_bottom);
+				update_area.h += border_bottom->h;
+			}
+		}
+	}
+}
+#endif
+
+void part_ui::render_story_box()
+{
+	const std::string& storytxt = p_.text();
+	if(storytxt.empty()) {
+		wait_for_input();
+		return;
+	}
+
+	const part::TEXT_BLOCK_LOCATION tbl = p_.text_block_location();
+	const int max_width = buttons_x_ - storybox_padding - text_x_;
+	const int max_height = screen_area().h - storybox_padding;
+
+	bool skip = false, last_key = true;
+
+	font::ttext t;
+	t.set_text(p_.text(), true)
+		 .set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_foreground_colour(storybox_font_color)
+		 .set_maximum_width(max_width)
+		 .set_maximum_height(max_height);
+	surface txtsurf = t.render();
+
+	if(txtsurf.null()) {
+		ERR_NG << "storyscreen text area rendering resulted in a null surface\n";
+		return;
+	}
+
+	int fix_text_y = text_y_;
+	if(fix_text_y + storybox_padding + txtsurf->h > screen_area().h && tbl != part::TOP) {
+		fix_text_y =
+			(screen_area().h > txtsurf->h + 1) ?
+			(std::max(0, screen_area().h - txtsurf->h - (storybox_padding+1))) :
+			(0);
+	}
+	int fix_text_h;
+	switch(tbl) {
+	case part::TOP:
+		fix_text_h = std::max(txtsurf->h + 2*storybox_padding, screen_area().h/4);
+		break;
+	case part::MIDDLE:
+		fix_text_h = std::max(txtsurf->h + 2*storybox_padding, screen_area().h/3);
+		break;
+	default:
+		fix_text_h = screen_area().h - fix_text_y;
+		break;
+	}
+
+	SDL_Rect update_area = { 0, fix_text_y, screen_area().w, fix_text_h };
+	
+	/* do */ {
+		// this should kill the tiniest flickering caused
+		// by the buttons being hidden and unhidden in this scope.
+		update_locker locker(video_);
+
+		//back_button_.hide();
+		next_button_.hide();
+		skip_button_.hide();
+		//quit_button_.hide();
+
+#ifndef LOW_MEM
+		blur_area(video_, fix_text_y, fix_text_h);
+#endif
+
+		draw_solid_tinted_rectangle(
+			0, fix_text_y, screen_area().w, fix_text_h,
+			storyshadow_r, storyshadow_g, storyshadow_b,
+			storyshadow_opacity,
+			video_.getSurface()
+		);
+
+		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
+
+		// Make GUI1 buttons aware of background modifications
+		next_button_.set_location(next_button_.location());
+		next_button_.hide(false);
+		skip_button_.set_location(skip_button_.location());
+		skip_button_.hide(false);
+	}
+
+	if(imgs_.empty()) {
+		update_whole_screen();
+	} else if(update_area.h > 0) {
+		update_rect(update_area);
+	}
+
+	// Time to do some fucking visual effect.
+	const int scan_height = 1, scan_width = txtsurf->w;
+	SDL_Rect scan = { 0, 0, scan_width, scan_height };
+	SDL_Rect dstrect = { text_x_, 0, scan_width, scan_height };
+	surface scan_dst = video_.getSurface();
+	bool scan_finished = false;
+	while(true) {
+		if(!(scan_finished = scan.y >= txtsurf->h)) {
+			//dstrect.x = text_x_;
+			dstrect.y = fix_text_y + scan.y + storybox_padding;
+			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
+			//       on backgroundless (e.g. black) screens; ttext::draw()
+			//       uses it nonetheless, no idea why...
+			//       Here we'll use CVideo::blit_surface() instead.
+			video_.blit_surface(dstrect.x, dstrect.y, txtsurf, &scan);
+			update_rect(dstrect);
+			++scan.y;
+		}
+
+		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
+
+		if((keydown && !last_key) || next_button_.pressed()) {
+			if(skip == true || scan_finished) {
+				ret_ = NEXT;
+				break;
+			} else {
+				skip = true;
+			}
+		}
+
+		last_key = keydown;
+
+		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
+			ret_ = SKIP;
+			return;
+		}
+
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+		disp_.flip();
+
+		if(!skip || scan_finished) {
+			disp_.delay(20);
+		}
+	}
+
+	draw_solid_tinted_rectangle(
+		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
+		1.0, video_.getSurface()
+	);
+}
+
+void part_ui::wait_for_input()
+{
+	bool last_key = true;
+	while(true) {
+		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
+
+		if((keydown && !last_key) || next_button_.pressed()) {
+			ret_ = NEXT;
+			break;
+		}
+
+		last_key = keydown;
+
+		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
+			ret_ = SKIP;
+			return;
+		}
+
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+		disp_.flip();
+	}
+}
+
 part_ui::RESULT part_ui::show()
 {
 	if(p_.music_.empty() != true) {
@@ -537,12 +540,7 @@ part_ui::RESULT part_ui::show()
 	}
 
 	try {
-		if(get_new_storyscreen_status()) {
-			render_text_box_with_pango();
-		}
-		else {
-			render_text_box();
-		}
+		render_story_box();
 	}
 	catch(utils::invalid_utf8_exception const&) {
 		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";
