@@ -787,7 +787,7 @@ private:
 			const std::string &msg = find_recruit_location(side_num, loc);
 			if(msg.empty()) {
 				const unit new_unit(&units_, &u_type->second, side_num, true);
-				assert(place_recruit(new_unit, loc, false, gui_ != NULL));
+				place_recruit(new_unit, loc, false, true);
 				current_team.spend_gold(u_type->second.cost());
 				statistics::recruit_unit(new_unit);
 
@@ -947,7 +947,7 @@ private:
 					} else {
 						unit& un = recall_list_team[res];
 						un.set_game_context(&units_);
-						assert(place_recruit(un, loc, true, gui_ != NULL));
+						place_recruit(un, loc, true, true);
 						statistics::recall_unit(un);
 						current_team.spend_gold(game_config::recall_cost);
 
@@ -1116,7 +1116,7 @@ private:
 				if(msg.empty()) {
 					unit un = current_team.recall_list()[action.recall_pos];
 					un.set_game_context(&units_);
-					assert(place_recruit(un, loc, true, gui_ != NULL));
+					place_recruit(un, loc, true, true);
 					statistics::recall_unit(un);
 					current_team.spend_gold(game_config::recall_cost);
 					current_team.recall_list().erase(current_team.recall_list().begin()+action.recall_pos);
@@ -1156,7 +1156,7 @@ private:
 			if(msg.empty()) {
 				const unit new_unit = action.affected_unit;
 				//unit new_unit(action.affected_unit.type(),team_num_,true);
-				assert(place_recruit(new_unit, loc, false, gui_ != NULL));
+				place_recruit(new_unit, loc, false, true);
 				current_team.spend_gold(new_unit.type()->cost());
 				statistics::recruit_unit(new_unit);
 

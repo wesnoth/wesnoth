@@ -62,12 +62,8 @@ std::string find_recruit_location(int side, map_location &recruit_location,
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
- *
- * If @a disp is not NULL, the new unit will be faded in.
- *
- * @return false if the location was already occupied. True on success.
  */
-bool place_recruit(const unit &u, const map_location &recruit_location,
+void place_recruit(const unit &u, const map_location &recruit_location,
 	bool is_recall, bool show = false, bool full_movement = false,
 	bool wml_triggered = false);
 

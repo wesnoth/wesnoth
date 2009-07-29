@@ -263,14 +263,13 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 	return std::string();
 }
 
-bool place_recruit(const unit &u, const map_location &recruit_location,
+void place_recruit(const unit &u, const map_location &recruit_location,
     bool is_recall, bool show, bool full_movement,
     bool wml_triggered)
 {
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
 
-	if (resources::units->count(recruit_location) == 1)
-		return false;
+	assert(resources::units->count(recruit_location) == 0);
 
 	unit new_unit = u;
 	if (full_movement) {
@@ -348,8 +347,6 @@ bool place_recruit(const unit &u, const map_location &recruit_location,
 		cfg["checksum"] = checksum;
 		set_random_results(cfg);
 	}
-
-	return true;
 }
 
 map_location under_leadership(const unit_map& units,

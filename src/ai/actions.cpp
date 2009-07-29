@@ -676,7 +676,7 @@ void recruit_result::do_execute()
 	const std::string recruit_err = find_recruit_location(get_side(), loc);
 	if(recruit_err.empty()) {
 		const unit new_unit(&info.units, &u->second, get_side(), true);
-		assert(place_recruit(new_unit, loc, false, preferences::show_ai_moves()));
+		place_recruit(new_unit, loc, false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
 		get_my_team(info).spend_gold(u->second.cost());
 		// Confirm the transaction - i.e. don't undo recruitment
