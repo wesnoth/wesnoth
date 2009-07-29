@@ -1,9 +1,11 @@
 import MySQLdb
 import types
-import configuration
 import time
 import logging
 import datetime
+import re
+
+import configuration
 
 log = logging.getLogger("wesstats")
 
@@ -88,4 +90,30 @@ def listfix(l):
 	if not isinstance(l,types.ListType):
 		return [l]
 	return l
+
+tag = re.compile('^\[.*\]')
+endtag = re.compile('^\[/.*\]')
+wmlvar = re.compile('.*=.*')
+
+def build_tree(lines):
+        vars = dict()
+        i = 0
+        while i < len(lines):
+                l = lines[i].strip()
+                if tag.match(l) and not endtag.match(l):
+                        #start of a new wml tag
+                        tagname = l[1:len(l)-1]
+                        vars[tagname] = build_tree(lines[i+1:])
+                        #go past the end of the tag we just processed
+                        while lines[i].strip() != ("[/%s]" % (tagname)):
+                                i += 1
+                elif endtag.match(l):
+                        return vars
+                elif wmlvar.match(l):
+                        #variable within tag
+                        lvalue = l[0:l.index("=")]
+                        rvalue = l[l.index("=")+2:-1]
+                        vars[lvalue] = rvalue
+                i += 1
+        return vars
 

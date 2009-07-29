@@ -20,6 +20,7 @@ import configuration
 import helperlib
 
 from tg import expose
+import pylons
 
 from wesstats.lib.base import BaseController
 from wesstats.controllers.error import ErrorController
@@ -44,6 +45,12 @@ class RootController(BaseController):
 
 	@expose(template="wesstats.templates.addview")
 	def addview(self):
+		return dict()
+
+	@expose()
+	def upload(self, **kw):
+		raw_log = pylons.request.body
+		print helperlib.build_tree(raw_log.split('\n'))
 		return dict()
 	
 	@expose(template="wesstats.templates.deleteview")
