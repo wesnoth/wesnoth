@@ -210,63 +210,70 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 	return !rt.steps.empty();
 }
 
-std::string recruit_unit(int side, const unit &new_u,
-	map_location &recruit_location, bool is_recall,
-	bool show, bool need_castle, bool full_movement,
-	bool wml_triggered)
+std::string find_recruit_location(int side, map_location &recruit_loc, bool need_castle)
 {
-	const events::command_disabler disable_commands;
+	LOG_NG << "finding recruit location for side " << side << "\n";
 
-	LOG_NG << "recruiting unit for side " << side << "\n";
-
-	// Find the unit that can recruit
 	unit_map::const_iterator u = resources::units->begin(),
-		u_end = resources::units->end(), l = u_end, leader = u_end;
+		u_end = resources::units->end(), leader = u_end, leader_keep = u_end;
 
 	for(; u != u_end; ++u) {
 		if(u->second.can_recruit() &&
 				static_cast<int>(u->second.side()) == side) {
-			l = u;
-			if (!need_castle || resources::game_map->is_keep(l->first)) {
-				leader = u;
-				if (can_recruit_on(*resources::game_map, leader->first, recruit_location))
+			leader = u;
+			if (!need_castle || resources::game_map->is_keep(leader->first)) {
+				leader_keep = leader;
+				if (can_recruit_on(*resources::game_map, leader_keep->first,
+						recruit_loc))
 					break;
 			}
 		}
 	}
 
-	if (l == u_end && (need_castle || !resources::game_map->on_board(recruit_location))) {
+	if (leader == u_end && (need_castle || !resources::game_map->on_board(recruit_loc))) {
 		return _("You don't have a leader to recruit with.");
 	}
 
-	assert(l != u_end || !need_castle);
+	assert(leader != u_end || !need_castle);
 
-	if (need_castle && leader == u_end) {
-		LOG_NG << "Leader not on start: leader is on " << l->first << '\n';
+	if (need_castle && leader_keep == u_end) {
+		LOG_NG << "Leader not on start: leader is on " << leader->first << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
 	if(need_castle) {
-		if (resources::units->find(recruit_location) != resources::units->end() ||
-		    !can_recruit_on(*resources::game_map, leader->first, recruit_location))
+		if (resources::units->find(recruit_loc) != resources::units->end() ||
+		    !can_recruit_on(*resources::game_map, leader_keep->first, recruit_loc))
 		{
-			recruit_location = map_location();
+			recruit_loc = map_location();
 		}
 	}
 
-	if (!resources::game_map->on_board(recruit_location)) {
-		recruit_location = find_vacant_tile(*resources::game_map, *resources::units, leader->first,
+	if (!resources::game_map->on_board(recruit_loc)) {
+		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->first,
 		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
-	} else if (resources::units->count(recruit_location) == 1) {
-		recruit_location = find_vacant_tile(*resources::game_map, *resources::units, recruit_location, VACANT_ANY);
+	} else if (resources::units->count(recruit_loc) == 1) {
+		recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, recruit_loc, VACANT_ANY);
 	}
 
-	if (!resources::game_map->on_board(recruit_location)) {
+	if (!resources::game_map->on_board(recruit_loc)) {
 		return _("There are no vacant castle tiles in which to recruit a unit.");
 	}
 
-	unit new_unit = new_u;
-	if(full_movement) {
+	return std::string();
+}
+
+bool place_recruit(const unit &u, const map_location &recruit_location,
+    bool is_recall, bool show, bool full_movement,
+    bool wml_triggered)
+{
+	LOG_NG << "placing new unit on location " << recruit_location << "\n";
+
+	if (resources::units->count(recruit_location) == 1)
+		return false;
+
+	unit new_unit = u;
+	if (full_movement) {
 		new_unit.set_movement(new_unit.total_movement());
 	} else {
 		new_unit.set_movement(0);
@@ -289,6 +296,13 @@ std::string recruit_unit(int side, const unit &new_u,
 	}
 	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
 	if (new_unit_itor != resources::units->end()) new_unit_itor->second.set_hidden(false);
+	unit_map::iterator leader = resources::units->begin();
+	for(; leader != resources::units->end(); ++leader)
+		if(leader->second.can_recruit()
+				&& static_cast<int>(leader->second.side()) == new_unit.side()
+				&& resources::game_map->is_keep(leader->first)
+				&& can_recruit_on(*resources::game_map, leader->first, recruit_location))
+			break;
 	if (show) {
 		if (leader.valid()) {
 			unit_display::unit_recruited(recruit_location,leader->first);
@@ -335,7 +349,7 @@ std::string recruit_unit(int side, const unit &new_u,
 		set_random_results(cfg);
 	}
 
-	return std::string();
+	return true;
 }
 
 map_location under_leadership(const unit_map& units,

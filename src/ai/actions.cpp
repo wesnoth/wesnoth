@@ -671,9 +671,12 @@ void recruit_result::do_execute()
 	recorder.add_recruit(num_,recruit_location_);
 	replay_undo replay_guard(recorder);
 	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name_);
-	unit new_unit(&info.units, &u->second, get_side(), true);
-	std::string recruit_err = recruit_unit(get_side(), new_unit, recruit_location_, false, preferences::show_ai_moves());
+	map_location loc = recruit_location_;
+	const events::command_disabler disable_commands;
+	const std::string recruit_err = find_recruit_location(get_side(), loc);
 	if(recruit_err.empty()) {
+		const unit new_unit(&info.units, &u->second, get_side(), true);
+		assert(place_recruit(new_unit, loc, false, preferences::show_ai_moves()));
 		statistics::recruit_unit(new_unit);
 		get_my_team(info).spend_gold(u->second.cost());
 		// Confirm the transaction - i.e. don't undo recruitment

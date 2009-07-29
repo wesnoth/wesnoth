@@ -182,11 +182,13 @@ bool readwrite_context_impl::recruit(const std::string& unit_name, map_location 
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
-	unit new_unit(&get_info().units, &u->second, get_side(), true);
 
+	const events::command_disabler disable_commands;
 	// See if we can actually recruit (i.e. have enough room etc.)
-	std::string recruit_err = recruit_unit(get_side(), new_unit, loc, false, preferences::show_ai_moves());
+	const std::string recruit_err = find_recruit_location(get_side(), loc);
 	if(recruit_err.empty()) {
+		const unit new_unit(&get_info().units, &u->second, get_side(), true);
+		assert(place_recruit(new_unit, loc, false, preferences::show_ai_moves()));
 
 		statistics::recruit_unit(new_unit);
 		current_team_w().spend_gold(u->second.cost());

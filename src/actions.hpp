@@ -43,22 +43,33 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
 struct end_level_exception;
 
 /**
- * Recruits a unit into the game.
- * A copy of @a u will be created and inserted as the new recruited unit.
- * If @a need_castle is true, then the new unit must be on the same castle
- * as the leader of the team is on the keep of.
+ * Finds a location to place a unit.
+ * If @a need_castle is true, a leader of the @a side must be on a keep
+ * connected by castle to a legal recruiting location. Otherwise, an error
+ * message explaining this is returned.
  *
- * If @a recruit_location is a valid location, it will be used,
- * otherwise a valid location will be arbitrarily chosen and returned
- * (hence the non-const reference).
+ * If no errors are encountered, the location where a unit can be recruited
+ * is stored in @a recruit_location. Its value is considered first, if it is a
+ * legal option.
  *
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
-std::string recruit_unit(int side, const unit &u,
-	map_location &recruit_location, bool is_recall,
-	bool show = false, bool need_castle = true,
-	bool full_movement = false, bool wml_triggered = false);
+std::string find_recruit_location(int side, map_location &recruit_location,
+	bool need_castle = true);
+
+/**
+ * Place a unit into the game.
+ * The unit will be placed on @a recruit_location, which should be retrieved
+ * through a call to recruit_location().
+ *
+ * If @a disp is not NULL, the new unit will be faded in.
+ *
+ * @return false if the location was already occupied. True on success.
+ */
+bool place_recruit(const unit &u, const map_location &recruit_location,
+	bool is_recall, bool show = false, bool full_movement = false,
+	bool wml_triggered = false);
 
 /** Computes the statistics of a battle between an attacker and a defender unit. */
 class battle_context

@@ -923,9 +923,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				replay::throw_error(errbuf.str());
 			}
 
-			unit new_unit(resources::units, &u_type->second, side_num, true, false);
-			const std::string &res = recruit_unit(side_num, new_unit, loc, false, !get_replay_source().is_skipping());
-			if(!res.empty()) {
+			const std::string res = find_recruit_location(side_num, loc);
+			const unit new_unit(resources::units, &u_type->second, side_num, true, false);
+			if (res.empty()) {
+				assert(place_recruit(new_unit, loc, false, !get_replay_source().is_skipping()));
+			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
 				replay::throw_error(errbuf.str());
@@ -965,7 +967,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(val >= 0 && val < int(current_team.recall_list().size())) {
 				statistics::recall_unit(current_team.recall_list()[val]);
 				current_team.recall_list()[val].set_game_context(resources::units);
-				recruit_unit(side_num, current_team.recall_list()[val], loc, true, !get_replay_source().is_skipping());
+				place_recruit(current_team.recall_list()[val], loc, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(current_team.recall_list().begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {

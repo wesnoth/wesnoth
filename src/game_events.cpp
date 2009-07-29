@@ -2014,7 +2014,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-					recruit_unit(index + 1, to_recruit, loc, true, utils::string_bool(cfg["show"], true), false, true, true);
+					find_recruit_location(index + 1, loc, false);
+					assert(place_recruit(to_recruit, loc, true, utils::string_bool(cfg["show"], true), true, true));
 					unit_recalled = true;
 					break;
 				}
