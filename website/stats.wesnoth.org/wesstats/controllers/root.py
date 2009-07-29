@@ -50,7 +50,37 @@ class RootController(BaseController):
 	@expose()
 	def upload(self, **kw):
 		raw_log = pylons.request.body
-		print helperlib.build_tree(raw_log.split('\n'))
+		wml_tree = helperlib.build_tree(raw_log.split('\n'))
+
+		if not wml_tree.has_key("platform"):
+			wml_tree["platform"] = "unknown"
+
+		result_type = "victory"
+		if not wml_tree.has_key("victory"):
+			result_type = "defeat"
+			if not wml_tree.has_key("defeat"):
+				result_type = "quit"
+
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		curs = conn.cursor()
+		params = (
+			wml_tree["id"],
+			wml_tree["serial"],
+			wml_tree.setdefault("platform","unknown"),
+			wml_tree["version"],
+			wml_tree["game"]["campaign"],
+			wml_tree["game"]["difficulty"],
+			int(wml_tree["game"]["gold"]),
+			int(wml_tree["game"]["num_turns"]),
+			wml_tree["game"]["scenario"],
+			int(wml_tree["game"]["start_turn"]),
+			int(wml_tree["game"]["time"]),
+			result_type,
+			int(wml_tree["game"][result_type]["time"]),
+			int(wml_tree["game"][result_type].setdefault("gold","0")),
+			int(wml_tree["game"][result_type]["end_turn"])) #15 cols
+		curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+		conn.close()
 		return dict()
 	
 	@expose(template="wesstats.templates.deleteview")
