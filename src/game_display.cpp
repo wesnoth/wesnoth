@@ -1085,7 +1085,7 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	args.append(5000);
 	QDBusMessage result = notify.callWithArgumentList(QDBus::Block, "Notify", args);
 	if(result.type() == QDBusMessage::ErrorMessage) {
-		ERR_DP << "Failed to send a KDE notification with DBus: " << result.errorMessage().toLocal8Bit().data();
+		ERR_DP << "Failed to send a KDE notification with DBus: " << result.errorMessage().toLocal8Bit().data() << '\n';
 	}
 #endif
 
