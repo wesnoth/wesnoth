@@ -299,7 +299,8 @@ void game::update_side_data() {
 					sides_[side_num] = *user;
 					side_found = true;
 				}
-			} else if ((**side)["controller"] == "ai" || (**side)["controller"] == "human") {
+			} else if (*user == owner_
+			&& ((**side)["controller"] == "ai" || (**side)["controller"] == "human")) {
 				side_controllers_[side_num] = (**side)["controller"].to_string();
 				sides_[side_num] = owner_;
 				side_found = true;
