@@ -526,7 +526,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// information, to the configuration object
 				assert(next_cfg != NULL);
 				gamestate.write_snapshot(next_cfg);
-				assert (next_cfg.get_children("player").empty());
 				write_players(gamestate, next_cfg, true, true);
 				network::send_data(cfg, 0, true);
 			}
@@ -554,6 +553,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// to force a reload of the scenario config.
 				if (gamestate.classification().campaign_type == "multiplayer"){
 					gamestate.starting_pos = *scenario;
+					write_players(gamestate, gamestate.starting_pos, true, true);
 				}
 				else{
 					gamestate.starting_pos = config();

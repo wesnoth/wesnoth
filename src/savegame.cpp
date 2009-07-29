@@ -909,10 +909,13 @@ void scenariostart_savegame::before_save()
 {
 	//Add the player section to the starting position so we can get the correct recall list
 	//when loading the replay later on
-	//FIXME: use game_state::write_players() again once the [player] tag is completey removed
-	foreach(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
-		//take all side tags and add them as players (assuming they only contain carryover information)
-		gamestate().starting_pos.add_child("side", *snapshot_side);
+	// if there is no scenario information in the starting pos, add the (persistent) sides from the snapshot
+	// else do nothing, as persistence information was already added at the end of the previous scenario
+	if (gamestate().starting_pos["id"].empty()) {
+		foreach(const config* snapshot_side, gamestate().snapshot.get_children("side")) {
+			//add all side tags (assuming they only contain carryover information)
+			gamestate().starting_pos.add_child("side", *snapshot_side);
+		}
 	}
 }
 
