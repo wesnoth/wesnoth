@@ -416,7 +416,11 @@ void server::load_config() {
 #  define FIFODIR "d:/"
 # else
 #  warning "No FIFODIR set"
-#  define FIFODIR "/var/run/wesnothd"
+#  ifdef _WIN32
+#    define FIFODIR "d:/"
+#  else
+#    define FIFODIR "/var/run/wesnothd"
+#   endif
 # endif
 #endif
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
