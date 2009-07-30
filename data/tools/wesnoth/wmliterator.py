@@ -136,23 +136,6 @@ Important Attributes:
         begincomment = text.find('#')
         if begincomment < 0:
             begincomment = None
-        beginquote = text[:begincomment].find('"')
-        while beginquote >= 0:
-            endquote = -1
-            beginofend = beginquote+1
-            while endquote < 0:
-                endquote = text.find('"', beginofend)
-                if endquote < 0:
-                    if self.lineno + span >= len(lines):
-                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
-                        return text, span
-                    beginofend = len(text)
-                    text += lines[self.lineno + span]
-                    span += 1
-            begincomment = text.find('#', endquote+1)
-            if begincomment < 0:
-                begincomment = None
-            beginquote = text[:begincomment].find('"', endquote+1)
         beginquote = text[:begincomment].find('<<')
         while beginquote >= 0:
             endquote = -1
@@ -170,6 +153,23 @@ Important Attributes:
             if begincomment < 0:
                 begincomment = None
             beginquote = text[:begincomment].find('<<', endquote+2)
+        beginquote = text[:begincomment].find('"')
+        while beginquote >= 0:
+            endquote = -1
+            beginofend = beginquote+1
+            while endquote < 0:
+                endquote = text.find('"', beginofend)
+                if endquote < 0:
+                    if self.lineno + span >= len(lines):
+                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
+                        return text, span
+                    beginofend = len(text)
+                    text += lines[self.lineno + span]
+                    span += 1
+            begincomment = text.find('#', endquote+1)
+            if begincomment < 0:
+                begincomment = None
+            beginquote = text[:begincomment].find('"', endquote+1)
         return text, span
 
     def closeScope(self, scopes, closerElement):
@@ -228,7 +228,17 @@ Important Attributes:
             } - closes a scope
         """
         elements = [] #(elementType, sortPos, scopeDelta)
-        # first remove any quoted strings
+        # first remove any lua strings
+        beginquote = text.find('<<')
+        while beginquote >= 0:
+            endquote = text.find('>>')
+            if endquote < -1:
+                text = text[:beginquote]
+                beginquote = -1 #terminate loop
+            else:
+                text = text[:beginquote] + text[endquote+2:]
+                beginquote = text.find('<<')
+        # remove any quoted strings
         beginquote = text.find('"')
         while beginquote >= 0:
             endquote = text.find('"', beginquote+1)
@@ -238,16 +248,6 @@ Important Attributes:
             else:
                 text = text[:beginquote] + text[endquote+1:]
                 beginquote = text.find('"')
-        # remove any lua strings
-        beginquote = text.find('<<')
-        while beginquote >= 0:
-            endquote = text.find('>>')
-            if endquote < -1:
-                text = text[:beginquote]
-                beginquote = -1
-            else:
-                text = text[:beginquote] + text[endquote+2:]
-                beginquote = text.find('<<')
         # next remove any comments
         text = text.lstrip()
         commentSearch = 1
