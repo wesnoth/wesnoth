@@ -484,7 +484,7 @@ static void play_new_music()
 
 	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
-		LOG_AUDIO << "attempting to insert track '" << filename << "'\n into cache\n";
+		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
 		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
 		if(music == NULL) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
