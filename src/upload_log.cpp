@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2005 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2009 by Greg Shikhman <cornmander@cornmander.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,7 +15,7 @@
 
 /**
  *  @file upload_log.cpp
- *  Manage logfiles for uploading as feedback, e.g.\ for champaign-balancing.
+ *  Manage logfiles for uploading as feedback, e.g.\ for campaign-balancing.
  */
 
 #include "global.hpp"
@@ -31,6 +32,9 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "wesconfig.h"
+
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
 static lg::log_domain log_uploader("uploader");
 #define DBG_UPLD LOG_STREAM(debug, log_uploader)
@@ -199,7 +203,7 @@ static int upload_logs_dev(void *_ti)
 				send_string(sock, "Content-length: ");
 				send_string(sock, lexical_cast<std::string>(contents.length()));
 				send_string(sock, "\n\n");
-				send_string(sock, contents.c_str());
+				send_string(sock, contents);
 
 				// As long as we can actually send the data, delete the file.
 				// Even if the server gives a bad response, we don't want to
@@ -281,7 +285,15 @@ upload_log::~upload_log()
 #endif
 
 		std::ostream *out = ostream_file(filename_);
-		write(*out, config_);
+		
+		if(uploader_settings::new_uploader) {
+			boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+			filter.push(boost::iostreams::gzip_compressor());
+			filter.push(*out);
+			write(filter, config_);
+		} else {
+			write(*out, config_);
+		}
 		delete out;
 
 		if (upload_log::manager_)

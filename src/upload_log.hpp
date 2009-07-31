@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2005 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2009 by Greg Shikhman <cornmander@cornmander.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
