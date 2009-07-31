@@ -116,6 +116,8 @@ void room_manager::read_rooms()
 	lobby_ = get_room(lobby_name_);
 	if (lobby_ == NULL) {
 		lobby_ = create_room(lobby_name_);
+		lobby_->set_persistent(true);
+		lobby_->set_logged(true);
 	}
 }
 
