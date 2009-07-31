@@ -14,6 +14,8 @@
 # -*- coding: utf-8 -*-
 
 import MySQLdb
+import gzip
+import StringIO
 import logging
 
 import configuration
@@ -50,7 +52,13 @@ class RootController(BaseController):
 	@expose()
 	def upload(self, **kw):
 		raw_log = pylons.request.body
-		wml_tree = helperlib.build_tree(raw_log.split('\n'))
+		print raw_log
+		print "after"
+		#try to decompress log
+		raw_log = gzip.GzipFile("","r",9,StringIO.StringIO(raw_log))
+		raw_log = raw_log.readlines()		
+		#TODO: must fix this to work with v1 logs so there is compatibility... 
+		wml_tree = helperlib.build_tree(raw_log)
 
 		if not wml_tree.has_key("platform"):
 			wml_tree["platform"] = "unknown"
