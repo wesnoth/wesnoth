@@ -1202,12 +1202,13 @@ void server::start_new_server() {
 	}
 }
 
-std::string server::process_command(const std::string& query, const std::string& issuer_name) {
+std::string server::process_command(const std::string& query, std::string issuer_name) {
 	std::ostringstream out;
 	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
 	const std::string command = utils::lowercase(std::string(query.begin(),i));
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
+	std::string log_prefix;
 	const std::string& help_msg = "Available commands are: adminmsg <msg>,"
 			" ban <mask> <time> <reason>, bans [deleted], clones,"
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
@@ -1217,6 +1218,20 @@ std::string server::process_command(const std::string& query, const std::string&
 			" unban <ipmask>\n"
 			"Specific strings (those not inbetween <> like the command names)"
 			" are case insensitive.";
+	if (issuer_name == "*socket*" && parameters.at(0) == '+') {
+		// The first argument might be "+<issuer>: ".
+		// In that case we use *<issuer>* as the issuer_name.
+		// (Mostly used for communication with IRC.)
+		std::string::iterator issuer_end =
+				std::find(parameters.begin(), parameters.end(), ':');
+		std::string issuer(parameters.begin() + 1, issuer_end);
+		if (!issuer.empty()) {
+			issuer_name = "*" + issuer + "*";
+			parameters = std::string(issuer_end + 1, parameters.end());
+			utils::strip(parameters);
+			log_prefix = "admin_command_response: ";
+		}
+	}
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
 		if (issuer_name != "*socket*" && !allow_remote_shutdown_) return "";
@@ -1284,18 +1299,6 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters == "") return "You must type a message.";
 		std::string sender = issuer_name;
 		std::string message = parameters;
-		if (sender == "*socket*" && parameters.at(0) == '+') {
-			// The first argument might be "+<nick>: ".
-			// In that case we use <nick> as the sender.
-			std::string::iterator nick_end =
-					std::find(parameters.begin(), parameters.end(), ':');
-			std::string nick(parameters.begin() + 1, nick_end);
-			if (utils::isvalid_username(nick)) {
-				sender = nick;
-				message = std::string(nick_end + 1, parameters.end());
-				utils::strip(message);
-			}
-		}
 		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
 				? std::string(message.begin() + 3, message.end()) + ">"
 				: "> " + message) << "\n";
@@ -1577,7 +1580,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
-	LOG_SERVER << out.str() << "\n";
+	LOG_SERVER << log_prefix << out.str() << "\n";
 	return out.str();
 }
 

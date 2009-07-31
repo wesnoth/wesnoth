@@ -106,7 +106,7 @@ private:
 	                   simple_wml::node& query);
 
 	/** Process commands from admins and users. */
-	std::string process_command(const std::string& cmd, const std::string& issuer_name);
+	std::string process_command(const std::string& cmd, std::string issuer_name);
 
 	/** Handle private messages between players. */
 	void process_whisper(const network::connection sock,
