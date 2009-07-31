@@ -62,6 +62,16 @@ public:
 	void set_persistent(bool v);
 
 	/**
+	 * Whether the room is logged (and might end up in e.g. the lobby bot
+	 */
+	bool logged() const;
+
+	/**
+	* Set the room's logged flag
+	*/
+	void set_logged(bool v);
+
+	/**
 	 * This room's topic/motd, sent to all joining players
 	 */
 	const std::string& topic() const;
@@ -151,6 +161,7 @@ private:
 	connection_vector members_;
 	bool persistent_;
 	std::string topic_;
+	bool logged_;
 };
 
 } //end namespace wesnothd

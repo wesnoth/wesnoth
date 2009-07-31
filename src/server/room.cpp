@@ -30,6 +30,7 @@ room::room(const std::string& name)
 	, members_()
 	, persistent_(false)
 	, topic_()
+	, logged_(false)
 {
 }
 
@@ -38,6 +39,7 @@ room::room(const config& wml)
 	, members_()
 	, persistent_(utils::string_bool(wml.get_attribute("persistent")))
 	, topic_(wml.get_attribute("topic"))
+	, logged_(utils::string_bool(wml.get_attribute("logged")))
 {
 }
 
@@ -46,6 +48,7 @@ void room::write(config& cfg) const
 	cfg["name"] = name_;
 	cfg["persistent"] = lexical_cast<std::string>(persistent_);
 	cfg["topic"] = topic_;
+	cfg["logged"] = lexical_cast<std::string>(logged_);
 }
 
 const std::string& room::name() const
@@ -71,6 +74,16 @@ const std::string& room::topic() const
 void room::set_topic(const std::string& v)
 {
 	topic_ = v;
+}
+
+bool room::logged() const
+{
+	return logged_;
+}
+
+void room::set_logged(bool v)
+{
+	logged_ = v;
 }
 
 bool room::add_player(network::connection player)

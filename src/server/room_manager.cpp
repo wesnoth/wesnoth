@@ -27,6 +27,12 @@ static lg::log_domain log_server_lobby("server/lobby");
 #define LOG_LOBBY LOG_STREAM(info, log_server_lobby)
 #define DBG_LOBBY LOG_STREAM(debug, log_server_lobby)
 
+static lg::log_domain log_server("server");
+#define ERR_SERVER LOG_STREAM(err, log_server)
+#define WRN_SERVER LOG_STREAM(warn, log_server)
+#define LOG_SERVER LOG_STREAM(info, log_server)
+#define DBG_SERVER LOG_STREAM(debug, log_server)
+
 namespace wesnothd {
 
 const char* const room_manager::lobby_name_ = "lobby";
@@ -365,11 +371,6 @@ void room_manager::process_message(simple_wml::document &data, const player_map:
 {
 	if (user->second.silenced()) {
 		return;
-	} else if (user->second.is_message_flooding()) {
-		lobby_->send_server_message(
-				"Warning: you are sending too many messages too fast. "
-				"Your message has not been relayed.", user->first);
-		return;
 	}
 	simple_wml::node* const message = data.root().child("message");
 	assert (message);
@@ -377,18 +378,31 @@ void room_manager::process_message(simple_wml::document &data, const player_map:
 	std::string room_name = message->attr("room").to_string();
 	if (room_name.empty()) room_name = lobby_name_;
 	room* r = require_member(room_name, user, "message");
-	if (r == NULL) return;
-
+	if (r == NULL) {
+		std::stringstream ss;
+		ss << "You are not a member of the room '" << room_name << "'. "
+			<< "Your message has not been relayed.";
+		lobby_->send_server_message(ss.str().c_str(), user->first);
+		return;
+	}
+	if (user->second.is_message_flooding()) {
+		r->send_server_message(
+				"Warning: you are sending too many messages too fast. "
+				"Your message has not been relayed.", user->first);
+		return;
+	}
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-	if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
-		LOG_LOBBY << network::ip_address(user->first)
-			<< "\t<" << user->second.name()
-			<< simple_wml::string_span(msg.begin() + 3, msg.size() - 3)
-			<< ">\n";
-	} else {
-		LOG_LOBBY << network::ip_address(user->first) << "\t<"
-			<< user->second.name() << "> " << msg << "\n";
+	if (r->logged()) {
+		if (msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
+			LOG_SERVER << network::ip_address(user->first)
+				<< "\t<" << user->second.name()
+				<< simple_wml::string_span(msg.begin() + 3, msg.size() - 3)
+				<< ">\n";
+		} else {
+			LOG_SERVER << network::ip_address(user->first) << "\t<"
+				<< user->second.name() << "> " << msg << "\n";
+		}
 	}
 	r->send_data(data, user->first, "message");
 }
@@ -464,7 +478,7 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 	q = msg->child("persist");
 	if (q != NULL) {
 		if (admins_.find(user->first) == admins_.end()) {
-			WRN_LOBBY << "Attempted set persistent by non-admin";
+			WRN_LOBBY << "Attempted room set persistent by non-admin";
 		} else {
 			if (q->attr("value").empty()) {
 				if (r->persistent()) {
@@ -478,6 +492,28 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 			} else {
 				r->set_persistent(false);
 				resp.set_attr("message", "Room set as not persistent.");
+			}
+			send_to_one(doc, user->first);
+		}
+		return;
+	}
+	q = msg->child("logged");
+	if (q != NULL) {
+		if (admins_.find(user->first) == admins_.end()) {
+			WRN_LOBBY << "Attempted room set logged by non-admin";
+		} else {
+			if (q->attr("value").empty()) {
+				if (r->persistent()) {
+					resp.set_attr("message", "Room is logged.");
+				} else {
+					resp.set_attr("message", "Room is not logged.");
+				}
+			} else if (q->attr("value").to_bool()) {
+				r->set_logged(true);
+				resp.set_attr("message", "Room set as logged.");
+			} else {
+				r->set_logged(false);
+				resp.set_attr("message", "Room set as not logged.");
 			}
 			send_to_one(doc, user->first);
 		}
