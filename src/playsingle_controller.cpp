@@ -299,7 +299,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Log before prestart events: they do weird things.
 		if (first_human_team_ != -1) {
 			log.start(gamestate_, teams_[first_human_team_], first_human_team_ + 1, units_,
-					  loading_game_ ? gamestate_.get_variable("turn_number") : "", number_of_turns());
+					  loading_game_ ? gamestate_.get_variable("turn_number") : "", number_of_turns(), resources::game_map->write());
 		}
 
 		fire_prestart(!loading_game_);

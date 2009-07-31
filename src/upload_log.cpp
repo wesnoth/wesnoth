@@ -281,7 +281,7 @@ upload_log::~upload_log()
 #elif __APPLE__
 		config_["platform"] = "Apple";
 #else
-		config_["platform"] = "undefined";
+		config_["platform"] = "unknown";
 #endif
 
 		std::ostream *out = ostream_file(filename_);
@@ -332,7 +332,8 @@ void upload_log::start(game_state &state, const team &team,
                        int side_number,
 					   const unit_map &units,
 					   const t_string &turn,
-					   int num_turns)
+					   int num_turns, 
+					   const std::string map_data)
 {
 	std::vector<const unit*> all_units;
 
@@ -348,6 +349,9 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["campaign"] = state.classification().campaign_define;
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().scenario;
+	if(uploader_settings::new_uploader) {
+		(*game_)["map_data"] = map_data;
+	}
 	if (!state.classification().version.empty())
 		(*game_)["version"] = state.classification().version;
 	if (!turn.empty())
