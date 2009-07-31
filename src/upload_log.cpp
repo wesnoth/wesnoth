@@ -350,7 +350,13 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().scenario;
 	if(uploader_settings::new_uploader) {
-		(*game_)["map_data"] = map_data;
+		//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
+		std::string encoded_map(map_data);
+		for(int idx = 0; idx < encoded_map.length(); idx++) {
+			if(encoded_map[idx] == '\n')
+				encoded_map[idx] = ';';
+		}
+		(*game_)["map_data"] = encoded_map;
 	}
 	if (!state.classification().version.empty())
 		(*game_)["version"] = state.classification().version;
