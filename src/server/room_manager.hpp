@@ -143,7 +143,6 @@ public:
 	room* require_member(const std::string& room_name,
 		const player_map::iterator user, const char* log_string = "use");
 
-
 	/**
 	 * Process a message (chat message) sent to a room. Check conditions
 	 * and resend to other players in the room.
@@ -197,6 +196,10 @@ private:
 	 */
 	void unstore_player_rooms(const player_map::iterator user);
 
+	/**
+	 * Helper function that calls the player_map::iterator version
+	 * of unstore_player_rooms
+	 */
 	void unstore_player_rooms(network::connection player);
 
 	/**
@@ -240,8 +243,14 @@ private:
 	 */
 	bool compress_stored_rooms_;
 
+	/**
+	 * Policy regarding who can create new rooms
+	 */
 	PRIVILEGE_POLICY new_room_policy_;
 
+	/**
+	 * The main (lobby) room name
+	 */
 	static const char* const lobby_name_;
 };
 
