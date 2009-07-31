@@ -373,7 +373,7 @@ private:
 	                   simple_wml::node& query);
 
 	/** Process commands from admins and users. */
-	std::string process_command(const std::string& cmd, const std::string& issuer_name);
+	std::string process_command(std::string query, std::string issuer_name);
 
 	/** Handle private messages between players. */
 	void process_whisper(const network::connection sock,
@@ -1293,9 +1293,24 @@ void server::start_new_server() {
 	}
 }
 
-std::string server::process_command(const std::string& query, const std::string& issuer_name) {
+std::string server::process_command(std::string query, std::string issuer_name) {
 	std::ostringstream out;
-	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
+	std::string log_prefix;
+	if (issuer_name == "*socket*" && query.at(0) == '+') {
+		// The first argument might be "+<issuer>: ".
+		// In that case we use +<issuer>+ as the issuer_name.
+		// (Mostly used for communication with IRC.)
+		std::string::iterator issuer_end =
+				std::find(query.begin(), query.end(), ':');
+		std::string issuer(query.begin() + 1, issuer_end);
+		if (!issuer.empty()) {
+			issuer_name = "+" + issuer + "+";
+			query = std::string(issuer_end + 1, query.end());
+			utils::strip(query);
+			log_prefix = "admin_command_response: ";
+		}
+	}
+	const std::string::iterator i = std::find(query.begin(),query.end(),' ');
 	const std::string command = utils::lowercase(std::string(query.begin(),i));
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
@@ -1375,18 +1390,6 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters == "") return "You must type a message.";
 		std::string sender = issuer_name;
 		std::string message = parameters;
-		if (sender == "*socket*" && parameters.at(0) == '+') {
-			// The first argument might be "+<nick>: ".
-			// In that case we use <nick> as the sender.
-			std::string::iterator nick_end =
-					std::find(parameters.begin(), parameters.end(), ':');
-			std::string nick(parameters.begin() + 1, nick_end);
-			if (utils::isvalid_username(nick)) {
-				sender = nick;
-				message = std::string(nick_end + 1, parameters.end());
-				utils::strip(message);
-			}
-		}
 		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
 				? std::string(message.begin() + 3, message.end()) + ">"
 				: "> " + message) << "\n";
@@ -1668,7 +1671,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
-	LOG_SERVER << out.str() << "\n";
+	LOG_SERVER << log_prefix << out.str() << "\n";
 	return out.str();
 }
 
