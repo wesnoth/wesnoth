@@ -426,6 +426,9 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
+		} else if(val == "--new-uploader") {
+			//hidden option to test experimental game log upload changes
+			uploader_settings::new_uploader = true;	
 #ifndef DISABLE_EDITOR2
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
@@ -1784,8 +1787,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
 			<< "                               and resizes a few interface elements.\n"
 			<< "  --screenshot <map> <output>  Saves a screenshot of <map> to <output> without\n"
-			<< "                               initializing a screen. Editor2 must be compiled in\n"
-			<< "                               for this to work.\n"
+			<< "                               initializing a screen. Editor2 must be compiled\n"
+			<< "                               in for this to work.\n"
 			<< "  -s, --server [<host>]        connects to the host if specified\n"
 			<< "                               or to the first host in your preferences.\n"
 			<< "  -t, --test                   runs the game in a small test scenario.\n"
@@ -1802,6 +1805,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               file bug reports since most are known).\n"
 			<< "                               Parts of the library are deemed stable and will\n"
 			<< "                               work without this switch.\n"
+			<< "  --new-uploader               Enables the new experimental game log uploader.\n"
+			<< "                               Under development - expect things not to work.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {

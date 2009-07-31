@@ -32,16 +32,16 @@
 #include "unit_map.hpp"
 #include "wesconfig.h"
 
-
 static lg::log_domain log_uploader("uploader");
 #define DBG_UPLD LOG_STREAM(debug, log_uploader)
 #define ERR_UPLD LOG_STREAM(err, log_uploader)
 
-namespace {
+namespace uploader_settings {
+	bool new_uploader = false;
 	const std::string target_host = "www.wesnoth.org";
 	const std::string target_url = "/cgi-bin/upload";
 	const Uint16 target_port = 80;
-} // namespace
+} //namespace uploader_settings
 
 struct upload_log::thread_info upload_log::thread_;
 upload_log::manager* upload_log::manager_ = 0;
@@ -87,8 +87,8 @@ static int upload_logs(void *_ti)
 	int numfiles = 0;
 
 	const std::string header =
-		"POST " + target_url + " HTTP/1.1\n"
-		"Host: " + target_host + "\n"
+		"POST " + uploader_settings::target_url + " HTTP/1.1\n"
+		"Host: " + uploader_settings::target_host + "\n"
 		"User-Agent: Wesnoth " VERSION "\n"
 		"Content-Type: text/plain\n";
 
@@ -101,7 +101,7 @@ static int upload_logs(void *_ti)
 		IPaddress ip;
 		network::manager ensure_net_initialized;
 
-		if (SDLNet_ResolveHost(&ip, target_host.c_str(), target_port) == 0) {
+		if (SDLNet_ResolveHost(&ip, uploader_settings::target_host.c_str(), uploader_settings::target_port) == 0) {
 			std::vector<std::string>::iterator i;
 			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
 				std::string contents;
@@ -187,9 +187,10 @@ upload_log::~upload_log()
 
 #ifdef _WIN32
 		config_["platform"] = "Windows";
-#endif
-#ifdef __APPLE__
+#elif __APPLE__
 		config_["platform"] = "Apple";
+#else
+		config_["platform"] = "undefined";
 #endif
 
 		std::ostream *out = ostream_file(filename_);

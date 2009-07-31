@@ -27,6 +27,10 @@ class t_string;
 class team;
 class unit_map;
 
+namespace uploader_settings {
+	extern bool new_uploader;
+} //namespace uploader_settings
+
 struct upload_log
 {
 public:
