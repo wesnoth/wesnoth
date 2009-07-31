@@ -922,6 +922,11 @@ void tlobby_main::process_room_join(const config &data)
 				r->process_room_members(members);
 			}
 			switch_to_window(t);
+
+			const std::string& topic = data["topic"];
+			if (!topic.empty()) {
+				add_chat_room_message_received("room", "server", room + ": " + topic);
+			}
 		} else {
 			LOG_NW << "Discarding join info for a room the player is not in\n";
 		}
