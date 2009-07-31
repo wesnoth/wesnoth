@@ -52,12 +52,15 @@ class RootController(BaseController):
 	@expose()
 	def upload(self, **kw):
 		raw_log = pylons.request.body
-		print raw_log
-		print "after"
-		#try to decompress log
-		raw_log = gzip.GzipFile("","r",9,StringIO.StringIO(raw_log))
-		raw_log = raw_log.readlines()		
-		#TODO: must fix this to work with v1 logs so there is compatibility... 
+		#check for gzip compression
+		if raw_log[0] == '\037' and raw_log[1] == '\213':
+			#try to decompress log
+			raw_log = gzip.GzipFile("","r",9,StringIO.StringIO(raw_log))
+			raw_log = raw_log.readlines()		
+		else:
+			#log is uncompressed, probably a v1 log
+			#split v1 log into an array instead of a blob
+			raw_log = raw_log.split('\n')
 		wml_tree = helperlib.build_tree(raw_log)
 
 		if not wml_tree.has_key("platform"):
@@ -81,7 +84,7 @@ class RootController(BaseController):
 			int(wml_tree["game"]["gold"]),
 			int(wml_tree["game"]["num_turns"]),
 			wml_tree["game"]["scenario"],
-			int(wml_tree["game"]["start_turn"]),
+			int(wml_tree["game"].setdefault("start_turn",0)),
 			int(wml_tree["game"]["time"]),
 			result_type,
 			int(wml_tree["game"][result_type]["time"]),
