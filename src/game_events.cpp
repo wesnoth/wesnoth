@@ -719,17 +719,13 @@ WML_HANDLER_FUNCTION(set_recruit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
 	{
-		game_display* disp = game_display::get_singleton();
-		if(!disp || disp->video().update_locked() || disp->video().faked() ) {
-			return;
-		}
 		sound::play_music_config(cfg.get_parsed_config());
 	}
 
 WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 	{
-		game_display* disp = game_display::get_singleton();
-		if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+		play_controller *controller = resources::controller;
+		if(controller->is_skiping_replay()) {
 			return;
 		}
 		std::string sound = cfg["name"];
@@ -904,7 +900,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Override AI parameters
 			if (ai.first != ai.second) {
-				teams[team_index].set_ai_parameters(ai);
+				//@todo 1.7: allow to change ai parameters in-flight
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
@@ -1843,10 +1839,6 @@ WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
-	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().faked() ) {
-		return;
-	}
 	soundsource::sourcespec spec(cfg.get_parsed_config());
 	resources::soundsources->add(spec);
 }
@@ -2435,8 +2427,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			resources::units->add(loc, u);
 
 				std::string text = cfg["text"];
-				game_display* disp = game_display::get_singleton();
-				if(!text.empty() && disp && !disp->video().update_locked() && !disp->video().faked() )
+				play_controller *controller = resources::controller;
+				if(!text.empty() && !controller->is_skiping_replay())
 				{
 					// Print floating label
 					std::string red_str = cfg["red"];
@@ -2763,10 +2755,6 @@ WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 
 WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 {
-	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
-		return;
-	}
 	game_display &screen = *resources::screen;
 
 	terrain_label label(screen.labels(), cfg.get_config());
@@ -3034,9 +3022,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		bool has_input= (has_text_input || !menu_items.empty() );
 
 		// skip messages during quick replay
-		game_display* disp = game_display::get_singleton();
-		if(!has_input && 
-				(current_context->skip_messages || !disp || disp->video().update_locked() || disp->video().faked() ))
+		play_controller *controller = resources::controller;
+		if(!has_input && (
+				 controller->is_skiping_replay() ||
+				 current_context->skip_messages 
+				 ))
 	       	{
 			return;
 		}

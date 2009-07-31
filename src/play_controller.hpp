@@ -104,6 +104,7 @@ public:
 
 	config to_config() const;
 
+	bool is_skiping_replay() { return skip_replay_;};
 protected:
 	void slice_before_scroll();
 	void slice_end();
