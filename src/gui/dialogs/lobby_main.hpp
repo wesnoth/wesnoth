@@ -23,6 +23,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
 
+class display;
 
 namespace gui2 {
 
@@ -73,7 +74,7 @@ struct tplayer_list
 class tlobby_main : public tdialog, private events::chat_handler
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info);
+	tlobby_main(const config& game_config, lobby_info& info, display& disp);
 
 	~tlobby_main();
 
@@ -354,6 +355,8 @@ private:
 	tplayer_list player_list_;
 
 	bool player_list_dirty_;
+
+	display& disp_;
 };
 
 } // namespace gui2

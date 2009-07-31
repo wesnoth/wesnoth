@@ -505,7 +505,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 
 	while (true) {
 		if(gui2::new_widgets) {
-			gui2::tlobby_main dlg(game_config, li);
+			gui2::tlobby_main dlg(game_config, li, disp);
 			dlg.set_preferences_callback(
 				boost::bind(do_preferences_dialog,
 					boost::ref(disp), boost::ref(game_config)));

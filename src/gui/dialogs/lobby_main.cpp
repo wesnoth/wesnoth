@@ -29,6 +29,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "lobby_data.hpp"
 #include "log.hpp"
 #include "network.hpp"
@@ -287,14 +288,14 @@ void tlobby_main::do_notify(t_notify_mode mode)
 	}
 }
 
-tlobby_main::tlobby_main(const config& game_config, lobby_info& info)
+tlobby_main::tlobby_main(const config& game_config, lobby_info& info, display& disp)
 : legacy_result_(QUIT)
 , game_config_(game_config)
 , gamelistbox_(NULL), chat_log_container_(NULL)
 , chat_input_(NULL), window_(NULL)
 , lobby_info_(info), preferences_callback_(NULL)
 , open_windows_(), active_window_(0), selected_game_id_()
-, player_list_(), player_list_dirty_(false)
+, player_list_(), player_list_dirty_(false), disp_(disp)
 {
 }
 
@@ -1039,14 +1040,13 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	join["observe"] = observe ? "yes" : "no";
 	if (join && game.password_required) {
 		std::string password;
-		/*TODO
+		//TODO replace with a gui2 dialog
 		const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
 		          _("Joining this game requires a password."),
 		          gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
 		if (res != 0) {
 			return false;
 		}
-		*/
 		if(!password.empty()) {
 			join["password"] = password;
 		}
