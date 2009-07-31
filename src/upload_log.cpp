@@ -41,6 +41,9 @@ namespace uploader_settings {
 	const std::string target_host = "www.wesnoth.org";
 	const std::string target_url = "/cgi-bin/upload";
 	const Uint16 target_port = 80;
+	const std::string target_host_dev = "cornmander.com";
+	const std::string target_url_dev = "/wesstats/upload";
+	const Uint16 target_port_dev = 80;
 } //namespace uploader_settings
 
 struct upload_log::thread_info upload_log::thread_;
@@ -151,6 +154,82 @@ static int upload_logs(void *_ti)
 	return 0;
 }
 
+// Function which runs in a background thread to upload logs to server.
+// Uses http POST to port 80 for maximum firewall penetration & other-end
+// compatibility.
+static int upload_logs_dev(void *_ti)
+{
+	DBG_UPLD << "using experimental uploader\n";
+	DBG_UPLD << "attempting to upload game logs\n";
+	TCPsocket sock = NULL;
+	upload_log::thread_info *ti = static_cast<upload_log::thread_info*>(_ti);
+	int numfiles = 0;
+
+	const std::string header =
+		"POST " + uploader_settings::target_url_dev + " HTTP/1.1\n"
+		"Host: " + uploader_settings::target_host_dev + "\n"
+		"User-Agent: Wesnoth " VERSION "\n"
+		"Content-Type: text/plain\n";
+
+	try {
+		std::vector<std::string> files;
+
+		// These are sorted: send them one at a time until we get to lastfile.
+		get_files_in_dir(get_upload_dir(), &files, NULL, ENTIRE_FILE_PATH);
+
+		IPaddress ip;
+		network::manager ensure_net_initialized;
+
+		if (SDLNet_ResolveHost(&ip, uploader_settings::target_host_dev.c_str(), uploader_settings::target_port_dev) == 0) {
+			std::vector<std::string>::iterator i;
+			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
+				std::string contents;
+				char response[10]; //This needs to be strlen("HTTP/1.1 2");
+
+				contents = read_file(*i);
+
+				sock = SDLNet_TCP_Open(&ip);
+				if (!sock) {
+					ERR_UPLD << "error connecting to log server\n";
+					break;
+				} else {
+					DBG_UPLD << "successfully connected to log server\n";
+				}
+				send_string(sock, header.c_str());
+				send_string(sock, "Content-length: ");
+				send_string(sock, lexical_cast<std::string>(contents.length()));
+				send_string(sock, "\n\n");
+				send_string(sock, contents.c_str());
+
+				// As long as we can actually send the data, delete the file.
+				// Even if the server gives a bad response, we don't want to
+				// be sending the same bad data over and over to the server.
+				//TODO: temporarily turned off logfile deletion so I don't have to recopy it to make new logs
+				//delete_directory(*i);
+				numfiles++;
+
+				if (SDLNet_TCP_Recv(sock, response, sizeof(response))
+					!= sizeof(response))
+					break;
+				// Must be version 1.x, must start with 2 (eg. 200) for success
+				if (memcmp(response, "HTTP/1.", strlen("HTTP/1.")) != 0)
+					break;
+				if (memcmp(response+8, " 2", strlen(" 2")) != 0)
+					break;
+
+				SDLNet_TCP_Close(sock);
+				sock = NULL;
+			}
+		}
+	} catch(...) { }
+
+	if (sock)
+		SDLNet_TCP_Close(sock);
+	ti->shutdown = true;
+	DBG_UPLD << numfiles << " game logs successfully sent to server\n";
+
+	return 0;
+}
 
 // Currently only enabled when playing campaigns.
 upload_log::upload_log(bool enable) :
@@ -165,7 +244,11 @@ upload_log::upload_log(bool enable) :
 		// Thread can outlive us; it uploads everything up to the
 		// next filename, and unsets thread_.t when it's finished.
 		thread_.lastfile = filename_;
-		thread_.t = new threading::thread(upload_logs, &thread_);
+		if(uploader_settings::new_uploader) {
+			thread_.t = new threading::thread(upload_logs_dev, &thread_);
+		} else {
+			thread_.t = new threading::thread(upload_logs, &thread_);
+		}
 	}
 }
 
@@ -180,7 +263,11 @@ upload_log::~upload_log()
 
 	if (enabled_ && !config_.empty() && !game_config::debug) {
 		config_["version"] = VERSION;
-		config_["format_version"] = "1";
+		if(uploader_settings::new_uploader) {
+			config_["format_version"] = "2";
+		} else {
+			config_["format_version"] = "1";
+		}
 		config_["id"] = preferences::upload_id();
 		config_["serial"] = lexical_cast<std::string>(time(NULL)) + file_name(filename_);
 		config_["language"] = preferences::language();
@@ -203,7 +290,11 @@ upload_log::~upload_log()
 		// Try to upload latest log before exit.
 		if (preferences::upload_log() && !thread_.t) {
 			thread_.lastfile = next_filename(get_upload_dir(), 1000);
-			thread_.t = new threading::thread(upload_logs, &thread_);
+			if(uploader_settings::new_uploader) {
+				thread_.t = new threading::thread(upload_logs_dev, &thread_);
+			} else {
+				thread_.t = new threading::thread(upload_logs, &thread_);
+			}
 		}
 	}
 }
