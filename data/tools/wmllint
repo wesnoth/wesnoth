@@ -1373,7 +1373,8 @@ def hack_syntax(filename, lines):
             lines[i] = lines[i].replace("{@campaigns/", "{~add-ons/")
         elif "@add-ons/" in lines[i]:
             lines[i] = lines[i].replace("{@add-ons/", "{~add-ons/")
-    # Rename the terrAin definition tag
+    # Rename the terrain definition tag
+    in_standing_anim = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
@@ -1382,6 +1383,12 @@ def hack_syntax(filename, lines):
         # Ugh...relies on code having been wmlindented
         lines[i] = re.sub(r"^\[terrain\]", "[terrain_type]", lines[i])
         lines[i] = re.sub(r"^\[/terrain\]", "[/terrain_type]", lines[i])
+        if "[standing_anim]" in lines[i]:
+            in_standing_anim = True
+        if "[/standing_anim]" in lines[i]:
+            in_standing_anim = False
+        if in_standing_anim:
+            lines[i] = re.sub(r"terrain", "terrain_type", lines[i])
     # More syntax transformations would go here.
     return lines
 
