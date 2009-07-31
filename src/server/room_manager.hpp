@@ -75,6 +75,12 @@ public:
 	void write_rooms();
 
 	/**
+	 * Dirty flag for rooms -- true if there were changes that should be written
+	 * to disk
+	 */
+	bool dirty() const { return dirty_; }
+
+	/**
 	 * Get a room by name, or NULL if it does not exist
 	 */
 	room* get_room(const std::string& name);
@@ -247,6 +253,11 @@ private:
 	 * Policy regarding who can create new rooms
 	 */
 	PRIVILEGE_POLICY new_room_policy_;
+
+	/**
+	 * 'Dirty' flag with regards to room info that will be stored on disk
+	 */
+	bool dirty_;
 
 	/**
 	 * The main (lobby) room name

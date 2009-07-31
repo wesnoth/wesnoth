@@ -39,7 +39,7 @@ const char* const room_manager::lobby_name_ = "lobby";
 
 room_manager::room_manager(player_map &all_players, const std::set<network::connection>& admins)
 : all_players_(all_players), admins_(admins), lobby_(NULL), filename_(),
-compress_stored_rooms_(true), new_room_policy_(PP_EVERYONE)
+compress_stored_rooms_(true), new_room_policy_(PP_EVERYONE), dirty_(false)
 {
 }
 
@@ -124,7 +124,6 @@ void room_manager::read_rooms()
 void room_manager::write_rooms()
 {
 	if (filename_.empty()) return;
-
 	LOG_LOBBY << "Writing rooms to " << filename_ << "\n";
 	config cfg;
 	foreach (const t_rooms_by_name_::value_type& v, rooms_by_name_) {
@@ -138,6 +137,7 @@ void room_manager::write_rooms()
 	scoped_ostream file = ostream_file(filename_);
 	config_writer writer(*file, compress_stored_rooms_);
 	writer.write(cfg);
+	dirty_ = false;
 }
 
 
@@ -214,6 +214,9 @@ void room_manager::delete_room(const std::string &name)
 	exit.set_attr_dup("room", name.c_str());
 	exit.set_attr("reason", "room deleted");
 	r->send_data(doc);
+	if (r->persistent()) {
+		dirty_ = true;
+	}
 	rooms_by_name_.erase(name);
 	foreach (network::connection p, r->members()) {
 		rooms_by_player_[p].erase(r);
@@ -491,9 +494,11 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 			} else if (q->attr("value").to_bool()) {
 				r->set_persistent(true);
 				resp.set_attr("message", "Room set as persistent.");
+				dirty_ = true;
 			} else {
 				r->set_persistent(false);
 				resp.set_attr("message", "Room set as not persistent.");
+				dirty_ = true;
 			}
 			send_to_one(doc, user->first);
 		}
@@ -513,9 +518,11 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 			} else if (q->attr("value").to_bool()) {
 				r->set_logged(true);
 				resp.set_attr("message", "Room set as logged.");
+				dirty_ = true;
 			} else {
 				r->set_logged(false);
 				resp.set_attr("message", "Room set as not logged.");
+				dirty_ = true;
 			}
 			send_to_one(doc, user->first);
 		}
