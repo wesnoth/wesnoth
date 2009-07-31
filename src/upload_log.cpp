@@ -352,7 +352,7 @@ void upload_log::start(game_state &state, const team &team,
 	if(uploader_settings::new_uploader) {
 		//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
 		std::string encoded_map(map_data);
-		for(int idx = 0; idx < encoded_map.length(); idx++) {
+		for(size_t idx = 0; idx < encoded_map.length(); idx++) {
 			if(encoded_map[idx] == '\n')
 				encoded_map[idx] = ';';
 		}
