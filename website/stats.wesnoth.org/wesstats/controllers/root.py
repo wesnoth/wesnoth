@@ -17,6 +17,8 @@ import MySQLdb
 import gzip
 import StringIO
 import logging
+import hashlib
+import os.path
 
 import configuration
 import helperlib
@@ -71,6 +73,20 @@ class RootController(BaseController):
 			result_type = "defeat"
 			if not wml_tree.has_key("defeat"):
 				result_type = "quit"
+
+		map = wml_tree["game"]["map_data"]
+		
+		#decode the map data to a standard map definition
+		map = map.replace(";","\n")
+
+		#save a copy of the map if we haven't seen it yet
+		map_id = hashlib.md5()
+		map_id.update(map)
+		map_filename = configuration.MAP_DIR + map_id.hexdigest()
+		if not os.path.exists(map_filename):
+			map_file = open(map_filename,"w")
+			map_file.writelines(map)
+			map_file.close()
 
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
