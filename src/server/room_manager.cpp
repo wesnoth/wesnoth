@@ -118,6 +118,7 @@ void room_manager::read_rooms()
 		lobby_ = create_room(lobby_name_);
 		lobby_->set_persistent(true);
 		lobby_->set_logged(true);
+		dirty_ = true;
 	}
 }
 

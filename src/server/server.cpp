@@ -597,6 +597,7 @@ void server::run() {
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) {
 					dump_stats(now);
+					if (rooms_.dirty()) rooms_.write_rooms();
 				}
 
 				// Cleaning the user_handler once a day should be more than enough
