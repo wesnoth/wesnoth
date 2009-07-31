@@ -369,6 +369,7 @@ void room_manager::unstore_player_rooms(const player_map::iterator user)
 		r->send_data(doc, user->first);
 		join_msg.remove_child("members", 0);
 		fill_member_list(r, join_msg);
+		join_msg.set_attr_dup("topic", r->topic().c_str());
 		send_to_one(doc, user->first);
 	}
 }
@@ -430,6 +431,7 @@ void room_manager::process_room_join(simple_wml::document &data, const player_ma
 	r->send_data(data, user->first);
 	// send member list to the new member
 	fill_member_list(r, *msg);
+	msg->set_attr_dup("topic", r->topic().c_str());
 	send_to_one(data, user->first);
 }
 
@@ -528,6 +530,21 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 			send_to_one(doc, user->first);
 		}
 		return;
+	}
+	q = msg->child("topic");
+	if (q != NULL) {
+		if (q->attr("value").empty()) {
+			resp.set_attr_dup("topic", r->topic().c_str());
+			send_to_one(doc, user->first);
+		} else {
+			if (admins_.find(user->first) == admins_.end()) {
+				WRN_LOBBY << "Attempted room set topic by non-admin";
+			} else {
+				r->set_topic(q->attr("value").to_string());
+				resp.set_attr("message", "Room topic changed.");
+				send_to_one(doc, user->first);
+			}
+		}
 	}
 	r->send_server_message("Unknown room query type", user->first);
 }
