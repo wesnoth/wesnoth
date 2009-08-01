@@ -145,6 +145,8 @@ public:
 	static const int E_NOT_ENEMY_DEFENDER = 1006;
 	static const int E_NO_ATTACKS_LEFT = 1007;
 	static const int E_WRONG_ATTACKER_WEAPON = 1008;
+	static const int E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON = 1009;
+	static const int E_ATTACKER_AND_DEFENDER_NOT_ADJACENT = 1010;
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -152,6 +154,7 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
+	const unit* get_unit(game_info &info, const map_location &loc) const;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 	int attacker_weapon_;

@@ -181,9 +181,80 @@ attack_result::attack_result( side_number side, const map_location& attacker_loc
 	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression){
 }
 
+const unit* attack_result::get_unit(game_info &info, const map_location &loc) const
+{
+	unit_map &units = info.units;
+	unit_map::const_iterator u = units.find(loc);
+	if (u == units.end()){
+		return NULL;
+	}
+	return &u->second;
+
+}
+
 void attack_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+	const unit *attacker = get_unit(get_info(),attacker_loc_);
+	const unit *defender = get_unit(get_info(),defender_loc_);
+
+	if(attacker==NULL)
+	{
+		ERR_AI_ACTIONS << "attempt to attack without attacker\n";
+		set_error(E_EMPTY_ATTACKER);
+		return;
+	}
+
+	if (defender==NULL)
+	{
+		ERR_AI_ACTIONS << "attempt to attack without defender\n";
+		set_error(E_EMPTY_DEFENDER);
+		return;
+	}
+
+	if(attacker->incapacitated()) {
+		ERR_AI_ACTIONS << "attempt to attack with unit that is petrified\n";
+		set_error(E_INCAPACITATED_ATTACKER);
+		return;
+	}
+
+	if(defender->incapacitated()) {
+		ERR_AI_ACTIONS << "attempt to attack unit that is petrified\n";
+		set_error(E_INCAPACITATED_DEFENDER);
+		return;
+	}
+
+	if(!attacker->attacks_left()) {
+		ERR_AI_ACTIONS << "attempt to attack with no attacks left\n";
+		set_error(E_NO_ATTACKS_LEFT);
+		return;
+	}
+
+	if(attacker->side()!=get_side()) {
+		ERR_AI_ACTIONS << "attempt to attack with not own unit\n";
+		set_error(E_NOT_OWN_ATTACKER);
+		return;
+	}
+
+	if(!get_my_team(get_info()).is_enemy(defender->side())) {
+		ERR_AI_ACTIONS << "attempt to attack unit that is not enemy\n";
+		set_error(E_NOT_ENEMY_DEFENDER);
+		return;
+	}
+
+	if (attacker_weapon_!=-1) {
+		if ((attacker_weapon_<0)||(attacker_weapon_ > static_cast<int>(attacker->attacks().size()))) {
+			ERR_AI_ACTIONS << "invalid weapon selection for the attacker\n";
+			set_error(E_WRONG_ATTACKER_WEAPON);
+			return;
+		}
+	}
+
+	if (!tiles_adjacent(attacker_loc_,defender_loc_)) {
+		ERR_AI_ACTIONS << "attacker and defender not adjacent\n";
+		set_error(E_ATTACKER_AND_DEFENDER_NOT_ADJACENT);
+		return;
+	}
 }
 
 
@@ -212,42 +283,6 @@ void attack_result::do_execute()
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 
-	if(!get_info().units.count(attacker_loc_))
-	{
-		ERR_AI_ACTIONS << "attempt to attack without attacker\n";
-		set_error(E_EMPTY_ATTACKER);
-		return;
-	}
-
-	if (!get_info().units.count(defender_loc_))
-	{
-		ERR_AI_ACTIONS << "attempt to attack without defender\n";
-		set_error(E_EMPTY_DEFENDER);
-		return;
-	}
-
-	if(get_info().units.find(attacker_loc_)->second.incapacitated()) {
-		ERR_AI_ACTIONS << "attempt to attack with unit that is petrified\n";
-		set_error(E_INCAPACITATED_ATTACKER);
-		return;
-	}
-
-	if(get_info().units.find(defender_loc_)->second.incapacitated()) {
-		ERR_AI_ACTIONS << "attempt to attack unit that is petrified\n";
-		set_error(E_INCAPACITATED_DEFENDER);
-		return;
-	}
-
-	if(!get_info().units.find(attacker_loc_)->second.attacks_left()) {
-		ERR_AI_ACTIONS << "attempt to attack with no attacks left\n";
-		set_error(E_NO_ATTACKS_LEFT);
-		return;
-	}
-
-	//CHECK OWN(ATTACKER)
-	//CHECK ENEMY(DEFENDER)
-	//CHECK ATTACKER WEAPON
-
 	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
 	battle_context bc(get_info().units, attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, aggression_);
@@ -255,9 +290,12 @@ void attack_result::do_execute()
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
 	int defender_weapon = bc.get_defender_stats().attack_num;
 
-	if(attacker_weapon_ >= 0) {
-		recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
+	if(attacker_weapon < 0) {
+		set_error(E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON);
+		return;
 	}
+
+	recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
 	try {
 		rand_rng::invalidate_seed();
 		rand_rng::clear_new_seed_callback();
