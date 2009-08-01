@@ -677,7 +677,9 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_ && input_->read_line(admin_cmd)) {
-				process_command(admin_cmd, "*socket*");
+				LOG_SERVER << "Admin Command: type: " << admin_cmd << "\n";
+				const std::string res = process_command(admin_cmd, "*socket*");
+				LOG_SERVER << "[admin_command_response]\n" << res << "\n" << "[/admin_command_response]\n";
 			}
 
 			time_t now = time(NULL);
@@ -1295,7 +1297,6 @@ void server::start_new_server() {
 
 std::string server::process_command(std::string query, std::string issuer_name) {
 	std::ostringstream out;
-	std::string log_prefix;
 	if (issuer_name == "*socket*" && query.at(0) == '+') {
 		// The first argument might be "+<issuer>: ".
 		// In that case we use +<issuer>+ as the issuer_name.
@@ -1307,7 +1308,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			issuer_name = "+" + issuer + "+";
 			query = std::string(issuer_end + 1, query.end());
 			utils::strip(query);
-			log_prefix = "admin_command_response: ";
 		}
 	}
 	const std::string::iterator i = std::find(query.begin(),query.end(),' ');
@@ -1323,9 +1323,10 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			" unban <ipmask>\n"
 			"Specific strings (those not inbetween <> like the command names)"
 			" are case insensitive.";
+	const std::string denied_msg = "You're not allowed to execute this command.";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
-		if (issuer_name != "*socket*") return "";
+		if (issuer_name != "*socket*") return denied_msg;
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -1337,11 +1338,10 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			out << "Server is doing graceful shut down.";
 		}
 	} else if (command == "restart") {
-		if (issuer_name != "*socket*") return "";
+		if (issuer_name != "*socket*") return denied_msg;
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {
-			LOG_SERVER << "Graceful restart requested.";
 			graceful_restart = true;
 			// stop listening socket
 			server_.stop();
@@ -1356,7 +1356,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			out << "Current sample frequency: " << request_sample_frequency;
 			return out.str();
 		} else if (issuer_name != "*socket*") {
-			return "";
+			return denied_msg;
 		}
 		request_sample_frequency = atoi(parameters.c_str());
 		if (request_sample_frequency <= 0) {
@@ -1608,7 +1608,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
-				out << "Message of the day: " << motd_;
+				out << "Message of the day:\n" << motd_;
 				return out.str();
 			} else {
 				return "No message of the day set.";
@@ -1671,7 +1671,6 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
-	LOG_SERVER << log_prefix << out.str() << "\n";
 	return out.str();
 }
 
