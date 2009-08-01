@@ -20,6 +20,11 @@
 
 #include "contexts.hpp"
 #include "manager.hpp"
+
+#include "composite/aspect.hpp"
+#include "composite/engine.hpp"
+#include "composite/goal.hpp"
+
 #include "../callable_objects.hpp"
 #include "../dialogs.hpp"
 #include "../formula.hpp"
@@ -89,12 +94,12 @@ void readwrite_context_impl::raise_enemy_attacked() const
 
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon);
+	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, get_aggression());
 }
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon);
+	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, get_aggression());
 }
 
 
@@ -127,23 +132,116 @@ stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_locat
 	return actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
 }
 
-readonly_context_impl::readonly_context_impl(side_context &context)
-		: recursion_counter_(context.get_recursion_count()),dstsrc_(),enemy_dstsrc_(),enemy_possible_moves_(),enemy_srcdst_(),possible_moves_(),srcdst_(),avoided_locations_(),move_maps_enemy_valid_(false),move_maps_valid_(false)
+
+template<typename T>
+void readonly_context_impl::add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> > &where)
+{
+	boost::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
+	known_aspects_.insert(make_pair(name,ka_ptr));
+}
+
+readonly_context_impl::readonly_context_impl(side_context &context, const config &cfg)
+		: cfg_(cfg),
+		engines_(),
+		known_aspects_(),
+		aggression_(),
+		attack_depth_(),
+		aspects_(),
+		avoid_(),
+		caution_(),
+		dstsrc_(),enemy_dstsrc_(),
+		enemy_possible_moves_(),
+		enemy_srcdst_(),
+		grouping_(),
+		goals_(),
+		leader_goal_(),
+		leader_value_(),
+		move_maps_enemy_valid_(false),
+		move_maps_valid_(false),
+		number_of_possible_recruits_to_force_recruit_(),
+		passive_leader_(),
+		passive_leader_shares_keep_(),
+		possible_moves_(),
+		recruitment_ignore_bad_combat_(),
+		recruitment_ignore_bad_movement_(),
+		recruitment_pattern_(),
+		recursion_counter_(context.get_recursion_count()),
+		scout_village_targeting_(),
+		simple_targeting_(),
+		srcdst_(),
+		support_villages_(),
+		village_value_(),
+		villages_per_scout_()
 	{
 		init_side_context_proxy(context);
 		manager::add_gamestate_observer(this);
+
+		add_known_aspect("aggression",aggression_);
+		add_known_aspect("attack_depth",attack_depth_);
+		add_known_aspect("avoid",avoid_);
+		add_known_aspect("caution",caution_);
+		add_known_aspect("grouping",grouping_);
+		add_known_aspect("leader_goal",leader_goal_);
+		add_known_aspect("leader_value",leader_value_);
+		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
+		add_known_aspect("passive_leader",passive_leader_);
+		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
+		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
+		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
+		add_known_aspect("recruitment_pattern",recruitment_pattern_);
+		add_known_aspect("scout_village_targeting",scout_village_targeting_);
+		add_known_aspect("simple_targeting",simple_targeting_);
+		add_known_aspect("support_villages",support_villages_);
+		add_known_aspect("village_value",village_value_);
+		add_known_aspect("villages_per_scout",villages_per_scout_);
+
 	}
 
+void readonly_context_impl::on_readonly_context_create() {
+	//init the composite ai engines
+	foreach(const config &cfg_element, cfg_.child_range("engine")){
+		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
+	}
+
+	// init the composite ai aspects
+	foreach(const config &cfg_element, cfg_.child_range("aspect")){
+		std::vector<aspect_ptr> aspects;
+		engine::parse_aspect_from_config(*this,cfg_element,cfg_element["id"],std::back_inserter(aspects));
+		add_aspects(aspects);
+	}
+
+	// init the composite ai goals
+	foreach(const config &cfg_element, cfg_.child_range("goal")){
+		engine::parse_goal_from_config(*this,cfg_element,std::back_inserter(get_goals()));
+	}
+}
+
+
+config readonly_context_impl::to_readonly_context_config() const
+{
+	config cfg;
+	foreach(const engine_ptr e, engines_) {
+		cfg.add_child("engine",e->to_config());
+	}
+	foreach(const aspect_map::value_type a, aspects_) {
+		cfg.add_child("aspect",a.second->to_config());
+	}
+	foreach(const goal_ptr g, goals_) {
+		cfg.add_child("goal",g->to_config());
+	}
+	cfg["default_config_applied"] = "yes";
+	return cfg;
+}
 
 readonly_context_impl::~readonly_context_impl()
-	{
-		manager::remove_gamestate_observer(this);
-	}
+{
+	manager::remove_gamestate_observer(this);
+}
 
 void readonly_context_impl::handle_generic_event(const std::string& /*event_name*/)
-	{
-		invalidate_move_maps();
-	}
+{
+	invalidate_move_maps();
+}
 
 
 bool readwrite_context_impl::recruit(const std::string& unit_name, map_location loc)
@@ -431,14 +529,14 @@ map_location readwrite_context_impl::move_unit_partial(map_location from, map_lo
 
 void readonly_context_impl::calculate_possible_moves(std::map<map_location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<map_location>* remove_destinations) const
+		const terrain_filter* remove_destinations) const
 {
   calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-	     const std::set<map_location>* remove_destinations,
+		const terrain_filter* remove_destinations,
 		bool see_all
           ) const
 {
@@ -485,7 +583,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			const map_location& src = m->first;
 			const map_location& dst = dest.curr;
 
-			if(remove_destinations != NULL && remove_destinations->count(dst) != 0) {
+			if(remove_destinations != NULL && remove_destinations->match(dst)) {
 				continue;
 			}
 
@@ -587,22 +685,63 @@ void readwrite_context_impl::attack_enemy(const map_location u,
 
 }
 
-const std::set<map_location>& readonly_context_impl::avoided_locations() const
-{
-	if(avoided_locations_.empty()) {
-		foreach (const config &av, current_team().ai_parameters().child_range("avoid"))
-		{
-			foreach (const map_location &loc, parse_location_range(av["x"], av["y"])) {
-				avoided_locations_.insert(loc);
-			}
-		}
 
-		if(avoided_locations_.empty()) {
-			avoided_locations_.insert(map_location());
+void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
+{
+	foreach (aspect_ptr a, aspects) {
+		const std::string name = a->get_id();
+		known_aspect_map::iterator i = known_aspects_.find(name);
+		if (i != known_aspects_.end()) {
+			i->second->set(a);
+		} else {
+			ERR_AI << "when adding aspects, unknown aspect id["<<name<<"]"<<std::endl;
 		}
 	}
+}
 
-	return avoided_locations_;
+
+const terrain_filter& readonly_context_impl::get_avoid() const
+{
+	if (avoid_) {
+		return avoid_->get();
+	}
+	config cfg;
+	cfg.add_child("not");
+	static terrain_filter tf(vconfig(cfg),get_info().units);
+	return tf;
+}
+
+
+double readonly_context_impl::get_aggression() const
+{
+	if (aggression_) {
+		return aggression_->get();
+	}
+	return 0;
+}
+
+
+int readonly_context_impl::get_attack_depth() const
+{
+	if (attack_depth_) {
+		return std::max<int>(1,attack_depth_->get()); //@todo 1.7: add minmax filter to attack_depth aspect
+	}
+	return 1;
+}
+
+
+const aspect_map& readonly_context_impl::get_aspects() const
+{
+	return aspects_;
+}
+
+
+double readonly_context_impl::get_caution() const
+{
+	if (caution_) {
+		return caution_->get();
+	}
+	return 0;
 }
 
 const move_map& readonly_context_impl::get_dstsrc() const
@@ -641,12 +780,156 @@ const move_map& readonly_context_impl::get_enemy_srcdst() const
 }
 
 
+engine_ptr readonly_context_impl::get_engine(const config& cfg)
+{
+	const std::string& engine_name = cfg["engine"];
+	std::vector<engine_ptr>::iterator en = engines_.begin();
+	while (en!=engines_.end() && ((*en)->get_name()!=engine_name)) {
+		en++;
+	}
+
+	if (en != engines_.end()){
+		return *en;
+	}
+
+	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
+	if (eng == engine_factory::get_list().end()){
+		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
+			engine_name <<"]" << std::endl;
+		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+		return engine_ptr();
+	}
+
+	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
+	if (!new_engine) {
+		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
+			engine_name <<"] " << std::endl;
+		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+		return engine_ptr();
+	}
+	engines_.push_back(new_engine);
+	return engines_.back();
+}
+
+std::string readonly_context_impl::get_grouping() const
+{
+	if (grouping_) {
+		return grouping_->get();
+	}
+	return std::string();
+}
+
+
+const std::vector<goal_ptr>& readonly_context_impl::get_goals() const
+{
+	return goals_;
+}
+
+
+std::vector<goal_ptr>& readonly_context_impl::get_goals()
+{
+	return goals_;
+}
+
+
+
+
+config readonly_context_impl::get_leader_goal() const
+{
+	if (leader_goal_) {
+		return leader_goal_->get();
+	}
+	return config();
+}
+
+
+double readonly_context_impl::get_leader_value() const
+{
+	if (leader_value_) {
+		return leader_value_->get();
+	}
+	return 0;
+}
+
+
+double readonly_context_impl::get_number_of_possible_recruits_to_force_recruit() const
+{
+	if (number_of_possible_recruits_to_force_recruit_) {
+		return number_of_possible_recruits_to_force_recruit_->get();
+	}
+	return 0;
+}
+
+
+bool readonly_context_impl::get_passive_leader() const
+{
+	if (passive_leader_) {
+		return passive_leader_->get();
+	}
+	return false;
+}
+
+
+bool readonly_context_impl::get_passive_leader_shares_keep() const
+{
+	if (passive_leader_shares_keep_) {
+		return passive_leader_shares_keep_->get();
+	}
+	return false;
+}
+
+
 const moves_map& readonly_context_impl::get_possible_moves() const
 {
 	if (!move_maps_valid_) {
 		recalculate_move_maps();
 	}
 	return possible_moves_;
+}
+
+
+bool readonly_context_impl::get_recruitment_ignore_bad_combat() const
+{
+	if (recruitment_ignore_bad_combat_) {
+		return recruitment_ignore_bad_combat_->get();
+	}
+	return false;
+}
+
+
+bool readonly_context_impl::get_recruitment_ignore_bad_movement() const
+{
+	if (recruitment_ignore_bad_movement_) {
+		return recruitment_ignore_bad_movement_->get();
+	}
+	return false;
+}
+
+
+const std::vector<std::string> readonly_context_impl::get_recruitment_pattern() const
+{
+	if (recruitment_pattern_) {
+		return recruitment_pattern_->get();
+	}
+	return std::vector<std::string>();
+}
+
+
+double readonly_context_impl::get_scout_village_targeting() const
+{
+	if (scout_village_targeting_) {
+		return scout_village_targeting_->get();
+	}
+	return 1;
+}
+
+
+bool readonly_context_impl::get_simple_targeting() const
+{
+	if (simple_targeting_) {
+		return simple_targeting_->get();
+	}
+	return false;
 }
 
 
@@ -659,9 +942,30 @@ const move_map& readonly_context_impl::get_srcdst() const
 }
 
 
-void readonly_context_impl::invalidate_avoided_locations_cache() const
+bool readonly_context_impl::get_support_villages() const
 {
-	avoided_locations_.clear();
+	if (support_villages_) {
+		return support_villages_->get();
+	}
+	return false;
+}
+
+
+double readonly_context_impl::get_village_value() const
+{
+	if (village_value_) {
+		return village_value_->get();
+	}
+	return 0;
+}
+
+
+int readonly_context_impl::get_villages_per_scout() const
+{
+	if (villages_per_scout_) {
+		return villages_per_scout_->get();
+	}
+	return 0;
 }
 
 
@@ -677,7 +981,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	dstsrc_ = move_map();
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
-	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&avoided_locations());
+	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	move_maps_valid_ = true;
 }
 
@@ -690,6 +994,5 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 	calculate_possible_moves(enemy_possible_moves_,enemy_srcdst_,enemy_dstsrc_,true);
 	move_maps_enemy_valid_ = true;
 }
-
 
 } //of namespace ai

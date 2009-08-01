@@ -31,8 +31,7 @@ static lg::log_domain log_ai("ai/dfool");
 
   void dfool_ai::play_turn(){
     int team_num = get_side();
-    const config& parms = current_team().ai_parameters();
-    config ai_mem = current_team().ai_memory();
+    const config& parms = cfg_;
 
 		LOG_AI << "dfool side:" << team_num << " of " << current_team().nteams() << '\n';
 
@@ -182,8 +181,7 @@ static lg::log_domain log_ai("ai/dfool");
       }
     }
 
-    unit_memory_.write(ai_mem);
-    current_team_w().set_ai_memory(ai_mem);
+    //unit_memory_.write(ai_mem);
 
     return;
   }

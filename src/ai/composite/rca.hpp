@@ -39,8 +39,6 @@
 //============================================================================
 namespace ai {
 
-namespace composite_ai {
-
 class candidate_action : public virtual rca_context_proxy {
 public:
 	//this is a score guaranteed to be <=0, thus candidate action with this score will not be selected for execution
@@ -52,7 +50,7 @@ public:
 	 * @param name name of the action (for debug purposes)
 	 * @param type type of the action (for debug purposes)
 	 */
-	candidate_action( rca_context &context, const std::string &name, const std::string &type );
+	candidate_action( rca_context &context, const config &cfg );
 
 	/**
 	 * Destructor
@@ -103,12 +101,22 @@ public:
 	 */
 	const std::string& get_type() const;
 
+
 	int get_recursion_count() const;
+
+
+	/**
+	 * serialize
+	 */
+	virtual config to_config() const;
+
 private:
 
 	recursion_counter recursion_counter_;
 
 	bool enabled_;
+
+	std::string engine_;
 
 	double score_;
 
@@ -188,15 +196,14 @@ public:
 
 
 //============================================================================
-} //end of namespace composite_ai
 
 } //end of namespace ai
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action const &ca);
+std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_evaluation_exception const &caee);
+std::ostream &operator<<(std::ostream &s, ai::candidate_action_evaluation_exception const &caee);
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_execution_exception const &caee);
+std::ostream &operator<<(std::ostream &s, ai::candidate_action_execution_exception const &caee);
 
 #ifdef _MSC_VER
 #pragma warning(pop)

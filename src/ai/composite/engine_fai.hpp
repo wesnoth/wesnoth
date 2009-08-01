@@ -30,22 +30,20 @@
 //============================================================================
 namespace ai {
 
-namespace composite_ai {
-
 class engine_fai : public engine {
 public:
-	engine_fai( composite_ai_context &context, const config &cfg );
+	engine_fai( readonly_context &context, const config &cfg );
 
 	virtual ~engine_fai();
 
 	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
 
-	virtual std::string get_name();
-private:
-	formula_ai formula_ai_;
-};
+	virtual std::string get_name() const;
 
-} //end of namespace composite_ai
+	virtual config to_config() const;
+private:
+	//formula_ai formula_ai_;//@fixme
+};
 
 } //end of namespace ai
 

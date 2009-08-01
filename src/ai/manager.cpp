@@ -53,8 +53,8 @@ static lg::log_domain log_ai_manager("ai/manager");
 #define LOG_AI_MANAGER LOG_STREAM(info, log_ai_manager)
 #define ERR_AI_MANAGER LOG_STREAM(err, log_ai_manager)
 
-holder::holder( side_number side, const std::string& ai_algorithm_type )
-	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), ai_algorithm_type_(ai_algorithm_type), ai_effective_parameters_(),  ai_global_parameters_(), ai_memory_(), ai_parameters_(), side_(side)
+holder::holder( side_number side, const config &cfg )
+	: ai_(), side_context_(NULL), readonly_context_(NULL), readwrite_context_(NULL), default_ai_context_(NULL), side_(side), cfg_(cfg)
 {
 	DBG_AI_MANAGER << describe_ai() << "Preparing new AI holder" << std::endl;
 }
@@ -62,28 +62,30 @@ holder::holder( side_number side, const std::string& ai_algorithm_type )
 
 void holder::init( side_number side )
 {
-	LOG_AI_MANAGER << describe_ai() << "Preparing to create new managed master AI" << std::endl;
 	if (side_context_ == NULL) {
-		side_context_ = new side_context_impl(side);
+		side_context_ = new side_context_impl(side);//@todo 1.7.3 add config
 	} else {
 		side_context_->set_side(side);
 	}
 	if (readonly_context_ == NULL){
-		readonly_context_ = new readonly_context_impl(*side_context_);
+		readonly_context_ = new readonly_context_impl(*side_context_,cfg_);
+		readonly_context_->on_readonly_context_create();
 	}
 	if (readwrite_context_ == NULL){
-		readwrite_context_ = new readwrite_context_impl(*readonly_context_);
+		readwrite_context_ = new readwrite_context_impl(*readonly_context_);//@todo 1.7.3 add config
 	}
 	if (default_ai_context_ == NULL){
-		default_ai_context_ = new default_ai_context_impl(*readwrite_context_);
+		default_ai_context_ = new default_ai_context_impl(*readwrite_context_);//@todo 1.7.3 add config
 	}
-	this->ai_ = create_ai(side);
+	if (!this->ai_){
+		ai_ = boost::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
+		ai_->on_create();
+	}
 	if (!this->ai_) {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}
 
 }
-
 
 holder::~holder()
 {
@@ -113,74 +115,26 @@ interface& holder::get_ai_ref()
 }
 
 
-const std::string& holder::get_ai_algorithm_type() const
+config holder::to_config() const
 {
-	return this->ai_algorithm_type_;
+	if (!this->ai_) {
+		return cfg_;
+	} else {
+		config cfg = ai_->to_config();
+		if (this->readonly_context_) {
+			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
+		}
+		return cfg;//@todo 1.7.3: include all other upper contexts
+	}
 }
 
-
-config& holder::get_ai_memory()
-{
-	return this->ai_memory_;
-}
-
-
-std::vector<config>& holder::get_ai_parameters()
-{
-	return this->ai_parameters_;
-}
-
-
-void holder::set_ai_parameters( const std::vector<config>& ai_parameters )
-{
-	this->ai_parameters_ = ai_parameters;
-	DBG_AI_MANAGER << describe_ai() << "AI parameters are set." << std::endl;
-}
-
-
-config& holder::get_ai_effective_parameters()
-{
-	return this->ai_effective_parameters_;
-}
-
-
-void holder::set_ai_effective_parameters( const config& ai_effective_parameters )
-{
-	this->ai_effective_parameters_ = ai_effective_parameters;
-	DBG_AI_MANAGER << describe_ai() << "AI effective parameters are set." << std::endl;
-}
-
-
-config& holder::get_ai_global_parameters()
-{
-	return this->ai_global_parameters_;
-}
-
-
-void holder::set_ai_global_parameters( const config& ai_global_parameters )
-{
-	this->ai_global_parameters_ = ai_global_parameters;
-	DBG_AI_MANAGER << describe_ai() << "AI global parameters are set." << std::endl;
-}
-
-
-void holder::set_ai_memory( const config& ai_memory )
-{
-	this->ai_memory_ = ai_memory;
-	DBG_AI_MANAGER << describe_ai() << "AI memory is set." << std::endl;
-}
-
-
-void holder::set_ai_algorithm_type( const std::string& ai_algorithm_type ){
-	this->ai_algorithm_type_ = ai_algorithm_type;
-	DBG_AI_MANAGER << describe_ai() << "AI algorithm type is set to '"<< ai_algorithm_type_<< "'" << std::endl;
-}
 
 
 const std::string holder::describe_ai()
 {
 	std::string sidestr;
 	//@todo 1.7 extract side naming to separate static function
+	//@todo 1.7.3 refactor the command ai role
 	if (this->side_ == manager::AI_TEAM_FALLBACK_AI){
 		sidestr = "'fallback_side'";
 	} else if (this->side_ == manager::AI_TEAM_COMMAND_AI){
@@ -191,23 +145,14 @@ const std::string holder::describe_ai()
 	if (this->ai_!=NULL) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
-		return std::string("[")+this->ai_algorithm_type_+std::string("] (not initialized) for side ")+sidestr+std::string(" : ");
+		return std::string("[")+cfg_["ai_algorithm"]+std::string("] (not initialized) for side ")+sidestr+std::string(" : ");
 	}
 }
 
-bool holder::is_mandate_ok()
-{
-	DBG_AI_MANAGER << describe_ai() << "AI mandate is ok" << std::endl;
-	return true;
-}
 
-ai_ptr holder::create_ai( side_number side )
+const std::string holder::get_ai_identifier() const
 {
-	assert (side > 0);
-	assert (default_ai_context_!=NULL);
-	//@note: ai_params, contexts, and ai_algorithm_type are supposed to be set before calling init(  );
-	return manager::create_transient_ai(ai_algorithm_type_,default_ai_context_);
-
+	return cfg_["id"];
 }
 
 // =======================================================================
@@ -375,7 +320,7 @@ void manager::add_turn_started_observer( events::observer* event_observer )
 }
 
 
-void manager::delete_user_interact_observer( events::observer* event_observer )
+void manager::remove_user_interact_observer( events::observer* event_observer )
 {
 	user_interact_.detach_handler(event_observer);
 }
@@ -387,25 +332,25 @@ void manager::delete_sync_network_observer( events::observer* event_observer )
 }
 
 
-void manager::delete_unit_recruited_observer( events::observer* event_observer ) 
+void manager::remove_unit_recruited_observer( events::observer* event_observer ) 
 {
 	unit_recruited_.detach_handler(event_observer);
 }
 
 
-void manager::delete_unit_moved_observer( events::observer* event_observer )
+void manager::remove_unit_moved_observer( events::observer* event_observer )
 {
 	unit_moved_.detach_handler(event_observer);
 }
 
 
-void manager::delete_enemy_attacked_observer( events::observer* event_observer )
+void manager::remove_enemy_attacked_observer( events::observer* event_observer )
 {
 	enemy_attacked_.detach_handler(event_observer);
 }
 
 
-void manager::delete_turn_started_observer( events::observer* event_observer )
+void manager::remove_turn_started_observer( events::observer* event_observer )
 {
 	turn_started_.detach_handler(event_observer);
 }
@@ -542,7 +487,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,false)){
-				return std::string("AI MANAGER: added [")+manager::get_active_ai_algorithm_type_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
 			} else {
 				return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
 			}
@@ -552,7 +497,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			side_number side = lexical_cast<side_number>(cmd.at(1));
 			std::string file = cmd.at(2);
 			if (add_ai_for_side_from_file(side,file,true)){
-					return std::string("AI MANAGER: added [")+manager::get_active_ai_algorithm_type_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
+					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
 			} else {
 					return std::string("AI MANAGER: failed attempt to add AI for side ")+lexical_cast<std::string>(side)+std::string(" from file ")+file;
 			}
@@ -618,22 +563,14 @@ bool manager::add_ai_for_side_from_file( side_number side, const std::string& fi
 
 
 bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, bool replace ){
-	config ai_memory;//AI memory
-	std::vector<config> ai_parameters;//AI parameters inside [ai] tags. May contain filters
-	config global_ai_parameters ;//AI parameters which do not have a filter applied
-	const config& default_ai_parameters = configuration::get_default_ai_parameters();//default AI parameters
-	std::string ai_algorithm_type;//AI algorithm type
-	config effective_ai_parameters;//legacy effective ai parameters
+	config parsed_cfg;
+	configuration::parse_side_config(cfg, parsed_cfg);
 
-	configuration::parse_side_config(cfg, ai_algorithm_type, global_ai_parameters, ai_parameters, default_ai_parameters, ai_memory, effective_ai_parameters);
 	if (replace) {
-		remove_ai_for_side (side);
+		remove_ai_for_side(side);
 	}
-	holder new_holder(side,ai_algorithm_type);
-	new_holder.set_ai_effective_parameters(effective_ai_parameters);
-	new_holder.set_ai_global_parameters(global_ai_parameters);
-	new_holder.set_ai_memory(ai_memory);
-	new_holder.set_ai_parameters(ai_parameters);
+
+	holder new_holder(side,parsed_cfg);
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
 	ai_stack_for_specific_side.push(new_holder);
 	return true;
@@ -646,15 +583,16 @@ bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm
 	if (replace) {
 		remove_ai_for_side (side);
 	}
-	holder new_holder(side,ai_algorithm_type);
+	config cfg;
+	cfg["ai_algorithm"] = ai_algorithm_type;
+	holder new_holder(side,cfg);
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
 	ai_stack_for_specific_side.push(new_holder);
 	return true;
 }
 
 
-//@todo 1.7 refactor away from ai::manager
-ai_ptr manager::create_transient_ai( const std::string &ai_algorithm_type, default_ai_context *ai_context )
+ai_ptr manager::create_transient_ai(const std::string &ai_algorithm_type, const config &cfg, default_ai_context *ai_context )
 {
 	assert(ai_context!=NULL);
 
@@ -667,7 +605,7 @@ ai_ptr manager::create_transient_ai( const std::string &ai_algorithm_type, defau
 		}
 	}
 	LOG_AI_MANAGER << "Creating new AI of type [" << ai_algorithm_type << "]"<< std::endl;
-	ai_ptr new_ai = aii->second->get_new_instance(*ai_context);
+	ai_ptr new_ai = aii->second->get_new_instance(*ai_context,cfg);
 	return new_ai;
 }
 
@@ -702,36 +640,17 @@ void manager::clear_ais()
 }
 
 // =======================================================================
-// GET active AI parameters
+// Work with active AI parameters
 // =======================================================================
-
-const std::vector<config>& manager::get_active_ai_parameters_for_side( side_number side )
+std::string manager::get_active_ai_identifier_for_side( side_number side )
 {
-	return get_active_ai_holder_for_side(side).get_ai_parameters();
+	return get_active_ai_holder_for_side(side).get_ai_identifier();
 }
 
 
-const config& manager::get_active_ai_effective_parameters_for_side( side_number side )
+config manager::to_config( side_number side )
 {
-	return get_active_ai_holder_for_side(side).get_ai_effective_parameters();
-}
-
-
-const config& manager::get_active_ai_global_parameters_for_side( side_number side )
-{
-	return get_active_ai_holder_for_side(side).get_ai_global_parameters();
-}
-
-
-const config& manager::get_active_ai_memory_for_side( side_number side )
-{
-	return get_active_ai_holder_for_side(side).get_ai_memory();
-}
-
-
-const std::string& manager::get_active_ai_algorithm_type_for_side( side_number side )
-{
-	return get_active_ai_holder_for_side(side).get_ai_algorithm_type();
+	return get_active_ai_holder_for_side(side).to_config();
 }
 
 
@@ -744,39 +663,6 @@ game_info& manager::get_active_ai_info_for_side( side_number /*side*/ )
 game_info& manager::get_ai_info()
 {
 	return *ai_info_;
-}
-
-// =======================================================================
-// SET active AI parameters
-// =======================================================================
-
-void manager::set_active_ai_parameters_for_side( side_number side, const std::vector<config>& ai_parameters )
-{
-	get_active_ai_holder_for_side(side).set_ai_parameters(ai_parameters);
-}
-
-
-void manager::set_active_ai_effective_parameters_for_side( side_number side, const config& ai_parameters )
-{
-	get_active_ai_holder_for_side(side).set_ai_effective_parameters(ai_parameters);
-}
-
-
-void manager::set_active_ai_global_parameters_for_side( side_number side, const config& ai_global_parameters )
-{
-	get_active_ai_holder_for_side(side).set_ai_global_parameters(ai_global_parameters);
-}
-
-
-void manager::set_active_ai_memory_for_side( side_number side, const config& ai_memory )
-{
-	get_active_ai_holder_for_side(side).set_ai_memory(ai_memory);
-}
-
-
-void manager::set_active_ai_algorithm_type_for_side( side_number side, const std::string& ai_algorithm_type )
-{
-	get_active_ai_holder_for_side(side).set_ai_algorithm_type(ai_algorithm_type);
 }
 
 
@@ -849,7 +735,9 @@ holder& manager::get_or_create_active_ai_holder_for_side_without_fallback(side_n
 	if (!ai_stack_for_specific_side.empty()){
 		return ai_stack_for_specific_side.top();
 	} else {
-		holder new_holder(side, ai_algorithm_type);
+		config cfg;
+		cfg["ai_algorithm"] = ai_algorithm_type;
+		holder new_holder(side, cfg);
 		ai_stack_for_specific_side.push(new_holder);
 		return ai_stack_for_specific_side.top();
 	}

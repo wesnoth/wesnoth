@@ -22,8 +22,10 @@
 
 #include "../../global.hpp"
 
+#include "aspect.hpp"
 #include "contexts.hpp"
 #include "engine.hpp"
+#include "goal.hpp"
 #include "stage.hpp"
 #include "../contexts.hpp"
 #include "../default/contexts.hpp"
@@ -40,16 +42,14 @@
 //============================================================================
 namespace ai {
 
-namespace composite_ai {
-
-class ai_composite : public composite_ai_context, public virtual default_ai_context_proxy, public interface {
+class ai_composite : public ai_context, public virtual default_ai_context_proxy, public interface {
 public:
 
 
 	/**
 	 * Constructor
 	 */
-	ai_composite( default_ai_context &context );
+	ai_composite( default_ai_context &context, const config &cfg );
 
 
 	/**
@@ -69,13 +69,13 @@ public:
 	 */
 	virtual void new_turn();
 
-	/**
-	 * get engine by cfg, creating it if it is not created yet but known
-	 */
-	virtual engine_ptr get_engine(const config& cfg);
-
 
 	std::string describe_self();
+
+	/**
+	 * serialize
+	 */
+	virtual config to_config() const;
 
 
 	int get_recursion_count() const;
@@ -89,19 +89,20 @@ public:
 	/**
 	 * unwrap
 	 */
-	virtual composite_ai_context& get_composite_ai_context();
+	virtual ai_context& get_ai_context();
 
 protected:
+
+	/**
+	 * Config of the AI
+	 */
+	const config &cfg_;
+
 
 	/**
 	 * Stages of the composite AI
 	 */
 	std::vector< stage_ptr > stages_;
-
-	/**
-	 * Engines of the composite AI
-	 */
-	std::vector< engine_ptr > engines_;
 
 
 	/**
@@ -109,8 +110,6 @@ protected:
 	 */
 	recursion_counter recursion_counter_;
 };
-
-} //end of namespace composite_ai
 
 } //end of namespace ai
 

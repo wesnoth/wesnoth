@@ -62,13 +62,6 @@ class team : public viewpoint, public savegame_config
 	};
 public:
 
-	struct target {
-		explicit target(const config& cfg);
-		void write(config& cfg) const;
-		config criteria;
-		double value;
-	};
-
 	struct team_info
 	{
 		team_info(const config& cfg);
@@ -79,11 +72,8 @@ public:
 		bool gold_add;
 		int income;
 		int income_per_village;
-		size_t average_price;
-		float number_of_possible_recruits_to_force_recruit;
+		mutable int average_price;
 		std::set<std::string> can_recruit;
-		std::vector<std::string> global_recruitment_pattern;
-		std::vector<std::string> recruitment_pattern;
 		std::vector<int> enemies;
 		std::string team_name;
 		t_string user_team_name;
@@ -107,13 +97,6 @@ public:
 
 		enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
 		CONTROLLER controller;
-
-		int villages_per_scout;
-		double leader_value, village_value;
-		//cached values for ai parameters
-		double aggression_, caution_;
-
-		std::vector<target> targets;
 
 		bool share_maps, share_view;
 		bool disallow_observers;
@@ -153,7 +136,6 @@ public:
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
 	void new_turn() { gold_ += total_income(); }
-	void set_time_of_day(int turn, const time_of_day &tod);
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
@@ -169,27 +151,14 @@ public:
 	void set_current_player(const std::string player)
 		{ info_.current_player = player; }
 
-	size_t average_recruit_price();
-	float num_pos_recruits_to_force() const
-	{ return info_.number_of_possible_recruits_to_force_recruit; }
+	int average_recruit_price() const;
+
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }
 	void add_recruits(const std::set<std::string>& recruits);
 	void add_recruit(const std::string& s) { info_.can_recruit.insert(s); }
 	void remove_recruit(const std::string& recruits);
 	void set_recruits(const std::set<std::string>& recruits);
-	const std::vector<std::string>& recruitment_pattern() const
-		{ return info_.recruitment_pattern; }
-	bool remove_recruitment_pattern_entry(const std::string& key)
-	{
-	   	std::vector<std::string>::iterator itor = std::find(info_.recruitment_pattern.begin(),
-				info_.recruitment_pattern.end(),
-				key);
-		if (itor == info_.recruitment_pattern.end())
-			return false;
-		info_.recruitment_pattern.erase(itor);
-		return true;
-	}
 	const std::string& name() const
 		{ return info_.name; }
 	const std::string& save_id() const { return info_.save_id; }
@@ -226,9 +195,6 @@ public:
 		seen_[index] = true;
 	}
 
-	double aggression() const { return info_.aggression_; }
-	double caution() const { return info_.caution_; }
-
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
@@ -256,22 +222,6 @@ public:
 
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
-
-	const std::string& ai_algorithm() const;
-	const std::string& ai_algorithm_identifier() const;
-	const config& ai_parameters() const;
-	const config& ai_memory() const;
-	void set_ai_memory(const config& ai_mem);
-	void set_ai_parameters(const config::const_child_itors &ai_parameters);
-
-	double leader_value() const { return info_.leader_value; }
-	void set_leader_value(double value) { info_.leader_value = value; }
-	double village_value() const { return info_.village_value; }
-	void set_village_value(double value) { info_.village_value = value; }
-
-	int villages_per_scout() const { return info_.villages_per_scout; }
-
-	std::vector<target>& targets() { return info_.targets; }
 
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.

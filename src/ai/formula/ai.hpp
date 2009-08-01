@@ -54,11 +54,12 @@ typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > uni
 
 class formula_ai : public ai::ai_default {
 public:
-	explicit formula_ai(ai::default_ai_context &context);
+	explicit formula_ai(ai::default_ai_context &context, const config &cfg);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
+	virtual config to_config() const;
 
 	typedef ai::move_map move_map;
 
@@ -134,6 +135,7 @@ public:
 	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
 
 private:
+	const config &cfg_;
 	ai::recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();

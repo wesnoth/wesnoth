@@ -16,7 +16,6 @@
  * @file ai/ai_manager.hpp
  * Managing the AIs lifecycle - headers
  * @todo 1.7 Refactor history handling and internal commands.
- * @todo 1.7 Refactor all the mess with those AI parameters.
  * @todo 1.7 AI Interface command to clear the history.
  */
 
@@ -42,60 +41,41 @@ class readonly_context;
 class readwrite_context;
 class default_ai_context;
 
+class ai_composite;
+typedef boost::shared_ptr<ai_composite> composite_ai_ptr;
+
 /**
  * Base class that holds the AI and current AI parameters.
  * It is an implementation detail.
- * @todo 1.7.2 move it out of public view
+ * @todo 1.7.3 move it out of public view
  */
 class holder{
 public:
-	holder(int side, const std::string& ai_algorithm_type);
-
-	void init( int side );
+	holder(side_number side, const config &cfg);
 
 	virtual ~holder();
 
 	interface& get_ai_ref();
-	interface& get_ai_ref( int side );
 
-	const std::string& get_ai_algorithm_type() const;
-	void set_ai_algorithm_type(const std::string& ai_algorithm_type);
-
-	const config& get_ai_memory() const;
-	config& get_ai_memory();
-	void set_ai_memory(const config& ai_memory);
-
-	const std::vector<config>& get_ai_parameters() const;
-	std::vector<config>& get_ai_parameters();
-	void set_ai_parameters(const std::vector<config>& ai_parameters);
-
-	const config& get_ai_effective_parameters() const;
-	config& get_ai_effective_parameters();
-	void set_ai_effective_parameters(const config& ai_effective_parameters);
-
-	const config& get_ai_global_parameters() const;
-	config& get_ai_global_parameters();
-	void set_ai_global_parameters(const config& ai_global_parameters);
+	interface& get_ai_ref( side_number side );//@todo 1.7.3 remove this
 
 	const std::string describe_ai();
 
-	//not used in the moment
-	bool is_mandate_ok();
+	config to_config() const;
+
+	const std::string get_ai_identifier() const;
 
 private:
-	ai_ptr ai_;
+	void init( side_number side );
+
+
+	composite_ai_ptr ai_;
 	side_context *side_context_;
 	readonly_context *readonly_context_;
 	readwrite_context *readwrite_context_;
 	default_ai_context *default_ai_context_;
-	std::string ai_algorithm_type_;
-	config ai_effective_parameters_;
-	config ai_global_parameters_;
-	config ai_memory_;
-	std::vector<config> ai_parameters_;
 	side_number side_;
-
-	ai_ptr create_ai( side_number side );
+	config cfg_;
 };
 
 /**
@@ -270,9 +250,9 @@ public:
 
 
 	/**
-	 * Deletes an observer of 'user interact' event.
+	 * Removes an observer of 'user interact' event.
 	 */
-	static void delete_user_interact_observer( events::observer* event_observer );
+	static void remove_user_interact_observer( events::observer* event_observer );
 
 
 	/**
@@ -284,25 +264,25 @@ public:
 	/**
 	 * Deletes an observer of 'unit recruited' event.
 	 */
-	static void delete_unit_recruited_observer( events::observer* event_observer );
+	static void remove_unit_recruited_observer( events::observer* event_observer );
 
 
 	/**
 	 * Deletes an observer of 'unit moved' event.
 	 */
-	static void delete_unit_moved_observer( events::observer* event_observer );
+	static void remove_unit_moved_observer( events::observer* event_observer );
 
 
 	/**
 	 * Deletes an observer of 'enemy attacked' event.
 	 */
-	static void delete_enemy_attacked_observer( events::observer* event_observer );
+	static void remove_enemy_attacked_observer( events::observer* event_observer );
 
 
 	/**
 	 * Deletes an observer of 'turn started' event.
 	 */
-	static void delete_turn_started_observer( events::observer* event_observer );
+	static void remove_turn_started_observer( events::observer* event_observer );
 
 
 protected:
@@ -373,10 +353,11 @@ public:
 	/**
 	 * Returns a smart pointer to a new AI. 
 	 * @param ai_algorithm_type type of AI algorithm to create
+	 * @param cfg a config of the ai
 	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static ai_ptr create_transient_ai( const std::string& ai_algorithm_type, default_ai_context *ai_context);
+	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, default_ai_context *ai_context);
 
 
 	// =======================================================================
@@ -454,6 +435,22 @@ public:
 	 * @return a reference to active AI info.
 	 */
 	static game_info& get_active_ai_info_for_side( side_number side );
+
+
+
+	/**
+	 * Gets AI algorithm identifier for active AI of the given @a side.
+	 * @param side side number (1-based).
+	 * @return ai identifier for the active AI 
+	 */
+	static std::string get_active_ai_identifier_for_side( side_number side );
+
+	/**
+	 * Gets AI config for active AI of the given @a side.
+	 * @param side side number (1-based).
+	 * @return a config object for the active AI 
+	 */
+	static config to_config( side_number side );
 
 
 	/**

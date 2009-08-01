@@ -21,11 +21,13 @@
 #include "../../global.hpp"
 
 #include "ai.hpp"
+#include "../composite/goal.hpp"
 
 #include "../../foreach.hpp"
 #include "../../gettext.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../terrain_filter.hpp"
 #include "../../wml_exception.hpp"
 
 
@@ -100,7 +102,7 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 
 	const bool has_leader = leader != units_.end();
 
-	std::vector<target> targets;
+	std::vector<ai_default::target> targets;
 
 	std::map<location,paths> friends_possible_moves;
 	move_map friends_srcdst, friends_dstsrc;
@@ -129,8 +131,8 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 			assert(threats.empty() == false);
 
 #ifdef SUOKKO
-			//FIXME: sukko's veraion 29531 included this change.  Correct?
-			const double value = threat*lexical_cast_default<double>(current_team().ai_parameters()["protect_leader"], 3.0)/leader->second.hitpoints();
+			//FIXME: suokko's revision 29531 included this change.  Correct?
+			const double value = threat*get_protect_leader()/leader->second.hitpoints();
 #else
 			const double value = threat/double(threats.size());
 #endif
@@ -142,8 +144,8 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 	}
 
 	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
-	double village_value = current_team().village_value();
-	if(has_leader && current_team().village_value() > 0.0) {
+	double village_value = get_village_value();
+	if(has_leader && get_village_value() > 0.0) {
 		const std::vector<location>& villages = map_.villages();
 		for(std::vector<location>::const_iterator t =
 				villages.begin(); t != villages.end(); ++t) {
@@ -162,7 +164,7 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 			{
 				//Support seems to cause the AI to just 'sit around' a lot, so
 				//only turn it on if it's explicitly enabled.
-				if(utils::string_bool(current_team().ai_parameters()["support_villages"])) {
+				if(get_support_villages()) {
 					double enemy = power_projection(*t, enemy_dstsrc);
 					if (enemy > 0)
 					{
@@ -185,7 +187,7 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 		}
 	}
 
-	std::vector<team::target>& team_targets = current_team_w().targets();
+	std::vector<goal_ptr>& goals = get_goals();
 
 	//find the enemy leaders and explicit targets
 	unit_map::const_iterator u;
@@ -195,18 +197,20 @@ std::vector<ai_default::target> ai_default::find_targets(unit_map::const_iterato
 		if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
 		&& !u->second.invisible(u->first, units_, teams_)) {
 			assert(map_.on_board(u->first));
-			LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << current_team().leader_value() << "\n";
-			targets.push_back(target(u->first,current_team().leader_value(),target::LEADER));
+			LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << get_leader_value() << "\n";
+			targets.push_back(target(u->first,get_leader_value(),target::LEADER));
 		}
 
 		//explicit targets for this team
-		for(std::vector<team::target>::iterator j = team_targets.begin();
-		    j != team_targets.end(); ++j) {
-			if (u->second.matches_filter(vconfig(j->criteria), u->first)) {
-				LOG_AI << "found explicit target... " << u->first << " with value: " << j->value << "\n";
-				targets.push_back(target(u->first,j->value,target::EXPLICIT));
+
+		for(std::vector<goal_ptr>::iterator j = goals.begin();
+		    j != goals.end(); ++j) {
+			if ((*j)->matches_unit(u)) {
+				LOG_AI << "found explicit target... " << u->first << " with value: " << (*j)->value() << "\n";
+				targets.push_back(target(u->first,(*j)->value(),target::EXPLICIT));
 			}
 		}
+
 	}
 
 	std::vector<double> new_values;
@@ -471,7 +475,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
-		if(avoided_locations().count(tg->loc) > 0) {
+		if(get_avoid().match(tg->loc)) {
 			continue;
 		}
 		LOG_AI << "Considering target at: " << tg->loc <<"\n";
@@ -532,13 +536,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 			//scouts also get a bonus for going after villages
 			if(tg->type == target::VILLAGE) {
-				if(current_team().ai_parameters().has_attribute("scout_village_targetting")) {
-					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
-					lg::wml_error << "[ai_default] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targeting' instead\n";
-				}
-				else {
-					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targeting"],3);
-				}
+					rating *= get_scout_village_targeting();
 			}
 		}
 
@@ -555,7 +553,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		}
 	}
 
-	LOG_AI << "chose target...\n";
+	LOG_AI << "choose target...\n";
 
 
 	if(best_target == targets.end()) {
@@ -566,17 +564,9 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 	//if we have the 'simple_targeting' flag set, then we don't
 	//see if any other units can put a better bid forward for this
 	//target
-	bool simple_targeting = false;
-	if(current_team().ai_parameters().has_attribute("simple_targetting")) {
-		simple_targeting = utils::string_bool(current_team().ai_parameters()["simple_targetting"]);
-		lg::wml_error << "[ai_default] the 'simple_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'simple_targeting' instead\n";
-	}
-	else {
-		simple_targeting = utils::string_bool(current_team().ai_parameters()["simple_targeting"]);
-	}
-	const bool& dumb_ai = simple_targeting;
+	bool simple_targeting = get_simple_targeting();
 
-	if(dumb_ai == false) {
+	if(simple_targeting == false) {
 		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
@@ -666,7 +656,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 				const int distance = distance_between(*i,best_target->loc);
 				const int defense = best->second.defense_modifier(map_.get_terrain(*i));
-				//FIXME: suokko multiplied by 10 * current_team().caution(). ?
+				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
 				if(best_loc.valid() == false || defense < best_defense || (defense == best_defense && vulnerability < best_vulnerability)) {
@@ -689,19 +679,19 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 	bool dangerous = false;
 
-	if(current_team().ai_parameters()["grouping"] != "no") {
+	if(get_grouping() != "no") {
 		LOG_AI << "grouping...\n";
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->second.movement_left();
 
-		const bool defensive_grouping = current_team().ai_parameters()["grouping"] == "defensive";
+		const bool defensive_grouping = get_grouping() == "defensive";
 
 		//we stop and consider whether the route to this
 		//target is dangerous, and whether we need to group some units to move in unison toward the target
 		//if any point along the path is too dangerous for our single unit, then we hold back
 		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
 
-			//FIXME: suokko multiplied by 10 * current_team().caution(). ?
+			//FIXME: suokko multiplied by 10 * get_caution(). ?
 			const double threat = power_projection(*i,enemy_dstsrc);
 			//FIXME: sukko doubled the power-projection them in the second test.  ?
 			if((threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc)) ||
@@ -726,7 +716,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
-		if(our_strength > 0.5 + current_team().caution()) {
+		if(our_strength > 0.5 + get_caution()) {
 			LOG_AI << "moving group\n";
 			const bool res = move_group(dst,best_route.steps,group);
 			if(res) {
@@ -762,7 +752,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
 				const int distance = distance_between(target_loc,i->second);
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
-				//FIXME: suokko multiplied by 10 * current_team().caution(). ?
+				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
 				if(best_loc.valid() == false || (threat < std::max<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {
@@ -804,7 +794,7 @@ std::pair<map_location,map_location> ai_default::choose_move(std::vector<target>
 		while(its.first != its.second) {
 			if(its.first->second == best->first) {
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,
-								   current_team().caution())) {
+								   get_caution())) {
 					const double value = best_target->value - best->second.cost()/20.0;
 
 					if(value > 0.0 && best_target->type != target::MASS) {

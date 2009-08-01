@@ -135,7 +135,8 @@ public:
 	attack_result( side_number side,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
-		int attacker_weapon );
+		int attacker_weapon,
+		double aggression );
 	static const int E_EMPTY_ATTACKER = 1001;
 	static const int E_EMPTY_DEFENDER = 1002;
 	static const int E_INCAPACITATED_ATTACKER = 1003;
@@ -154,6 +155,7 @@ private:
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 	int attacker_weapon_;
+	double aggression_;
 };
 
 class move_result : public action_result {
@@ -277,6 +279,7 @@ public:
  * @param attacker_loc location of attacker
  * @param defender_loc location of defender
  * @param attacker_weapon weapon of attacker
+ * @param aggression aggression of attacker, is used to determine attacker's weapon if it is not specified
  * @retval possible result: ok
  * @retval possible result: something wrong
  * @retval possible result: attacker and/or defender are invalid
@@ -286,7 +289,8 @@ static attack_result_ptr execute_attack_action( side_number side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
-	int attacker_weapon );
+	int attacker_weapon,
+	double aggression );
 
 
 /**

@@ -33,14 +33,27 @@ static lg::log_domain log_ai_testing_stage_fallback("ai/testing/stage_fallback")
 #define LOG_AI_TESTING_STAGE_FALLBACK LOG_STREAM(info, log_ai_testing_stage_fallback)
 #define ERR_AI_TESTING_STAGE_FALLBACK LOG_STREAM(err, log_ai_testing_stage_fallback)
 
-fallback_to_other_ai::fallback_to_other_ai( composite_ai::composite_ai_context &context, const config &cfg )
+fallback_to_other_ai::fallback_to_other_ai( ai_context &context, const config &cfg )
 	: stage(context,cfg), cfg_(cfg), fallback_ai_()
 {
 }
 
 void fallback_to_other_ai::on_create()
 {
-	fallback_ai_ = manager::create_transient_ai(cfg_["fallback"], this);
+	const config &ai_cfg = cfg_.child("ai");
+	if (ai_cfg) {
+		fallback_ai_ = manager::create_transient_ai(ai_cfg["ai_algorithm"], ai_cfg, this);
+	}
+}
+
+
+config fallback_to_other_ai::to_config() const
+{
+	config cfg = stage::to_config();
+	if (fallback_ai_) {
+		cfg.add_child("ai",fallback_ai_->to_config());
+	}
+	return cfg;
 }
 
 void fallback_to_other_ai::do_play_stage()

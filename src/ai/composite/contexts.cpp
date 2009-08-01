@@ -23,26 +23,23 @@
 // =======================================================================
 namespace ai {
 
-namespace composite_ai {
-
-
-composite_ai_context::composite_ai_context()
+ai_context::ai_context()
 {
 }
 
 
-composite_ai_context::~composite_ai_context()
+ai_context::~ai_context()
 {
 }
 
 
-composite_ai_context_proxy::composite_ai_context_proxy()
+ai_context_proxy::ai_context_proxy()
 	: target_()
 {
 }
 
 
-composite_ai_context_proxy::~composite_ai_context_proxy()
+ai_context_proxy::~ai_context_proxy()
 {
 }
 
@@ -66,7 +63,5 @@ rca_context_proxy::rca_context_proxy()
 rca_context_proxy::~rca_context_proxy()
 {
 }
-
-} //end of namespace composite_ai
 
 } //end of namespace ai

@@ -341,6 +341,13 @@ public:
 	 */
 	void merge_children(const std::string& key);
 
+	/**
+	 * All children with the given key and with equal values 
+	 * of the specified attribute will be merged into the
+	 * element with that key and that value of the attribute
+	 */
+	void merge_children_by_attribute(const std::string& key, const std::string& attribute);
+
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
 

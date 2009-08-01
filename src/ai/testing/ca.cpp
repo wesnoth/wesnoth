@@ -40,7 +40,7 @@ namespace testing_ai_default {
 //==============================================================
 
 goto_phase::goto_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::goto_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 
@@ -63,7 +63,7 @@ bool goto_phase::execute()
 //==============================================================
 
 recruitment_phase::recruitment_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::recruitment_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 
@@ -112,7 +112,7 @@ bool recruitment_phase::execute()
 	//analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
-	std::vector<std::string> options = current_team().recruitment_pattern();
+	std::vector<std::string> options = get_recruitment_pattern();
 	if (std::count(options.begin(), options.end(), "scout") > 0) {
 		size_t neutral_villages = 0;
 
@@ -145,7 +145,7 @@ bool recruitment_phase::execute()
 		// accounting for all neutral villages on the map.
 		// We only look at villages closer to us, so we halve it,
 		// making us get twice as many scouts.
-		const int villages_per_scout = current_team().villages_per_scout()/2;
+		const int villages_per_scout = get_villages_per_scout()/2;
 
 		// Get scouts depending on how many neutral villages there are.
 		int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
@@ -180,7 +180,7 @@ bool recruitment_phase::execute()
 	// Buy units as long as we have room and can afford it.
 	while (recruit_usage(options[rand()%options.size()],gamestate_changed)) {
 		//refresh the recruitment pattern - it can be changed by recruit_usage
-		options = current_team().recruitment_pattern();
+		options = get_recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
@@ -261,7 +261,9 @@ bool recruitment_phase::recruit_usage(const std::string& usage, bool &gamestate_
 		WRN_AI_TESTING_AI_DEFAULT << warning;
 		// Uncommented until the recruitment limiting macro can be fixed to not trigger this warning.
 		//lg::wml_error << warning;
-		return current_team_w().remove_recruitment_pattern_entry(usage);
+		//@fixme
+		//return current_team_w().remove_recruitment_pattern_entry(usage);
+		return false;
 	}
 	return false;
 }
@@ -477,8 +479,7 @@ int recruitment_phase::compare_unit_types(const unit_type& a, const unit_type& b
 void recruitment_phase::analyze_potential_recruit_combat()
 {
 	unit_map &units_ = get_info().units;
-	if(unit_combat_scores_.empty() == false ||
-			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_combat"])) {
+	if(unit_combat_scores_.empty() == false || get_recruitment_ignore_bad_combat()) {
 		return;
 	}
 
@@ -545,7 +546,7 @@ void recruitment_phase::analyze_potential_recruit_combat()
 //==============================================================
 
 combat_phase::combat_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::combat_phase",cfg["type"]),best_analysis_(),choice_rating_(-1000.0)
+	: candidate_action(context,cfg),best_analysis_(),choice_rating_(-1000.0)
 {
 }
 
@@ -585,9 +586,9 @@ double combat_phase::evaluate()
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
 			continue;
 
-		const double rating = it->rating(current_team().aggression(),*this);
+		const double rating = it->rating(get_aggression(),*this);
 		LOG_AI_TESTING_AI_DEFAULT << "attack option rated at " << rating << " ("
-			<< current_team().aggression() << ")\n";
+			<< get_aggression() << ")\n";
 
 		if(rating > choice_rating_) {
 			choice_it = it;
@@ -638,7 +639,7 @@ bool combat_phase::execute()
 //==============================================================
 
 move_leader_to_goals_phase::move_leader_to_goals_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::move_leader_to_goals_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 
@@ -661,7 +662,7 @@ bool move_leader_to_goals_phase::execute()
 //==============================================================
 
 move_leader_to_keep_phase::move_leader_to_keep_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::move_leader_to_keep_phase",cfg["type"]),move_()
+	: candidate_action(context,cfg),move_()
 {
 
 }
@@ -742,7 +743,7 @@ bool move_leader_to_keep_phase::execute()
 //==============================================================
 
 get_villages_phase::get_villages_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::get_villages_phase",cfg["type"]), keep_loc_(),
+	: candidate_action(context,cfg), keep_loc_(),
 		leader_loc_(),best_leader_loc_(),debug_(false)
 {
 }
@@ -757,7 +758,7 @@ double get_villages_phase::evaluate()
 	unit_map::const_iterator leader = get_info().units.find_leader(get_side());
 	get_villages(get_possible_moves(),get_dstsrc(),get_enemy_dstsrc(),leader);
 	if (moves_.size()>0) {
-		return 25;
+		return 25;//@todo 1.7 externalize
 	}
 	return BAD_SCORE;
 }
@@ -883,7 +884,7 @@ void get_villages_phase::find_villages(
 {
 	std::map<map_location, double> vulnerability;
 
-	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"]);//@todo: make an aspect
+	const bool passive_leader = get_passive_leader();
 
 	size_t min_distance = 100000;
 	gamemap &map_ = get_info().map;
@@ -1555,7 +1556,7 @@ void get_villages_phase::dump_reachmap(treachmap& reachmap)
 //==============================================================
 
 get_healing_phase::get_healing_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::get_healing_phase",cfg["type"]),from_(),to_()
+	: candidate_action(context,cfg),from_(),to_()
 {
 }
 
@@ -1642,7 +1643,7 @@ bool get_healing_phase::execute()
 //==============================================================
 
 retreat_phase::retreat_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::retreat_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 
@@ -1665,7 +1666,7 @@ bool retreat_phase::execute()
 //==============================================================
 
 simple_move_and_targeting_phase::simple_move_and_targeting_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::simple_move_and_targeting_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 
@@ -1728,7 +1729,7 @@ bool simple_move_and_targeting_phase::execute()
 //==============================================================
 
 leader_control_phase::leader_control_phase( rca_context &context, const config &cfg )
-	: candidate_action(context,"testing_ai_default::leader_control_phase",cfg["type"])
+	: candidate_action(context,cfg)
 {
 }
 

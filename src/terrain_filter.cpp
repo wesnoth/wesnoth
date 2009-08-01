@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "config.hpp"
 #include "tod_manager.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -35,6 +36,8 @@ static lg::log_domain log_engine("engine");
 terrain_filter::terrain_filter():
 	cfg_(vconfig()),
 	units_(unit_map()),
+	cfg_(vconfig(empty_config)),
+	units_(*resources::units),
 	max_loop_(),
 	flat_()
 {
@@ -42,6 +45,7 @@ terrain_filter::terrain_filter():
 }
 #pragma warning(pop)
 #endif
+
 
 terrain_filter::terrain_filter(const vconfig& cfg, const unit_map& units,
 		const bool flat_tod, const size_t max_loop) :
@@ -91,7 +95,7 @@ namespace {
 	};
 } //end anonymous namespace
 
-bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy)
+bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == NULL) {
@@ -255,7 +259,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	return true;
 }
 
-bool terrain_filter::match(const map_location& loc)
+bool terrain_filter::match(const map_location& loc) const
 {
 	if(cfg_["x"] == "recall" && cfg_["y"] == "recall") {
 		return !resources::game_map->on_board(loc);
@@ -322,7 +326,7 @@ bool terrain_filter::match(const map_location& loc)
 	return false;
 }
 
-void terrain_filter::get_locations(std::set<map_location>& locs)
+void terrain_filter::get_locations(std::set<map_location>& locs) const
 {
 	std::vector<map_location> xy_vector = parse_location_range(cfg_["x"],cfg_["y"], resources::game_map);
 	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
@@ -461,4 +465,8 @@ void terrain_filter::get_locations(std::set<map_location>& locs)
 	}
 }
 
+config terrain_filter::to_config() const
+{
+	return cfg_.get_config();
+}
 

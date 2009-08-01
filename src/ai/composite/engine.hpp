@@ -22,9 +22,8 @@
 
 #include "../../global.hpp"
 
-#include "contexts.hpp"
-#include "rca.hpp"
-#include "stage.hpp"
+#include "../contexts.hpp"
+#include "../game_info.hpp"
 #include "../../config.hpp"
 #include <algorithm>
 #include <iterator>
@@ -34,38 +33,64 @@
 
 namespace ai {
 
-namespace composite_ai {
-
-class ai_composite;
-
+class rca_context;
+class ai_context;
 
 class engine {
 public:
-	engine( composite_ai_context &context, const config &cfg );
+	engine( readonly_context &context, const config &cfg );
+
 
 	virtual ~engine();
 
+
+	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
+
+
+	static void parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
+
+
 	static void parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
 
-	static void parse_engine_from_config( composite_ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
 
-	static void parse_stage_from_config( composite_ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+	static void parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
+
+
+	static void parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+
+
+	//do not override that method in subclasses which cannot create aspects
+	virtual void do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr> > b );
+
 
 	//do not override that method in subclasses which cannot create candidate_actions
 	virtual void do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b );
 
+	//do not override that method in subclasses which cannot create goals
+	virtual void do_parse_goal_from_config( const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
+
 	//do not override that method in subclasses which cannot create engines
 	virtual void do_parse_engine_from_config( const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b );
 
+
 	//do not override that method in subclasses which cannot create stages
-	virtual void do_parse_stage_from_config( const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
+	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
 
 
-	virtual std::string get_name();
+	virtual std::string get_name() const;
 
+
+
+	/**
+	 * serialize
+	 */
+	virtual config to_config() const;
 
 protected:
-	composite_ai_context &ai_;
+	readonly_context &ai_;
+
+	/** name of the engine which has created this engine*/
+	std::string engine_;
 
 };
 
@@ -86,8 +111,8 @@ public:
 		return *engine_factories;
 	}
 
-	virtual engine_ptr get_new_instance( composite_ai_context &ai, const config &cfg ) = 0;
-	virtual engine_ptr get_new_instance( composite_ai_context &ai, const std::string& name ) = 0;
+	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ) = 0;
+	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ) = 0;
 
 	engine_factory( const std::string &name )
 	{
@@ -107,18 +132,17 @@ public:
 	{
 	}
 
-	virtual engine_ptr get_new_instance( composite_ai_context &ai, const config &cfg ){
+	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ){
 		return engine_ptr(new ENGINE(ai,cfg));
 	}
 
-	virtual engine_ptr get_new_instance( composite_ai_context &ai, const std::string& name ){
+	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ){
 		config cfg;
 		cfg["name"] = name;
+		cfg["engine"] = "cpp";
 		return engine_ptr(new ENGINE(ai,cfg));
 	}
 };
-
-} //end of namespace composite_ai
 
 } //end of namespace ai
 

@@ -273,7 +273,7 @@ double attack_analysis::rating(double aggression, default_ai_context& ai_obj) co
 		const double exposure_mod = uses_leader ? ai_obj.current_team().caution()* 8.0 : ai_obj.current_team().caution() * 4.0;
 		const double exposure = exposure_mod*resources_used*((terrain_quality - alternative_terrain_quality)/10)*vulnerability/std::max<double>(0.01,support);
 #else
-		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
+		const double exposure_mod = uses_leader ? 2.0 : ai_obj.get_caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
 #endif
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "

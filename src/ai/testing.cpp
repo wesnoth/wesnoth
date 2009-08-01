@@ -73,7 +73,7 @@ void ai_testing::log_game_start()
 	ai::game_info& i = ai::manager::get_ai_info();
 	for (std::vector<team>::const_iterator tm = i.teams.begin(); tm != i.teams.end(); ++tm) {
 		int side = tm-i.teams.begin()+1;
-		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << tm->ai_algorithm_identifier() <<std::endl;
+		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
 		LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;

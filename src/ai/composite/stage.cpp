@@ -27,8 +27,6 @@
 
 namespace ai {
 
-namespace composite_ai {
-
 static lg::log_domain log_ai_composite_stage("ai/composite/stage");
 #define DBG_AI_COMPOSITE_STAGE LOG_STREAM(debug, log_ai_composite_stage)
 #define LOG_AI_COMPOSITE_STAGE LOG_STREAM(info, log_ai_composite_stage)
@@ -38,10 +36,10 @@ static lg::log_domain log_ai_composite_stage("ai/composite/stage");
 // COMPOSITE AI STAGE
 // =======================================================================
 
-stage::stage( composite_ai_context &context, const config &cfg )
+stage::stage( ai_context &context, const config &cfg )
 	: recursion_counter_(context.get_recursion_count()), cfg_(cfg)
 {
-	init_composite_ai_context_proxy(context);
+	init_ai_context_proxy(context);
 }
 
 void stage::on_create()
@@ -63,12 +61,20 @@ int stage::get_recursion_count() const
 	return recursion_counter_.get_count();
 }
 
+config stage::to_config() const
+{
+	config cfg;
+	cfg["engine"] = cfg_["engine"];
+	cfg["name"] = cfg_["name"];
+	return cfg;
+}
+
 // =======================================================================
 // COMPOSITE AI IDLE STAGE
 // =======================================================================
 
 
-idle_stage::idle_stage( composite_ai_context &context, const config &cfg )
+idle_stage::idle_stage( ai_context &context, const config &cfg )
 	: stage(context,cfg)
 {
 }
@@ -81,6 +87,5 @@ void idle_stage::do_play_stage(){
 	LOG_AI_COMPOSITE_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
 }
 
-} //end of namespace composite_ai
 
 } //end of namespace ai

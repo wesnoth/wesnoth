@@ -17,6 +17,7 @@
  * Recruiting, Fighting.
  */
 
+#include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "attack_prediction.hpp"
 #include "foreach.hpp"
@@ -2013,7 +2014,7 @@ void check_victory()
 		if(non_interactive()) {
 			std::cout << "winner: ";
 			for(std::vector<unsigned int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
-				std::string ai = (*resources::teams)[*i - 1].ai_algorithm();
+				std::string ai = ai::manager::get_active_ai_identifier_for_side(*i);
 				if (ai == "") ai = "default ai";
 				std::cout << *i << " (using " << ai << ") ";
 			}

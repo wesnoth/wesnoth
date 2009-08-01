@@ -3872,6 +3872,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\composite\aspect.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\composite\contexts.cpp"
 						>
 						<FileConfiguration
@@ -3957,6 +3985,34 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\composite\engine_fai.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\goal.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -5519,6 +5575,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\composite\aspect.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\composite\contexts.hpp"
 						>
 					</File>
@@ -5532,6 +5592,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\composite\engine_fai.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\goal.hpp"
 						>
 					</File>
 					<File

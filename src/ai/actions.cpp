@@ -177,8 +177,8 @@ const team& action_result::get_my_team(const game_info& info) const
 }
 
 // attack_result
-attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon)
-	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon){
+attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression)
+	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression){
 }
 
 void attack_result::do_check_before()
@@ -200,6 +200,7 @@ std::string attack_result::do_describe() const
 	s << " from location "<<attacker_loc_;
 	s << " to location "<<defender_loc_;
 	s << " using weapon "<< attacker_weapon_;
+	s << " with aggression "<< aggression_;
 	s <<std::endl;
 	return s.str();
 }
@@ -247,8 +248,9 @@ void attack_result::do_execute()
 	//CHECK ENEMY(DEFENDER)
 	//CHECK ATTACKER WEAPON
 
+	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
 	battle_context bc(get_info().units, attacker_loc_,
-		defender_loc_, attacker_weapon_, -1, get_my_team(get_info()).aggression());
+		defender_loc_, attacker_weapon_, -1, aggression_);
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
 	int defender_weapon = bc.get_defender_stats().attack_num;
@@ -818,9 +820,10 @@ attack_result_ptr actions::execute_attack_action( side_number side,
 	bool execute,
 	const map_location& attacker_loc,
 	const map_location& defender_loc,
-	int attacker_weapon)
+	int attacker_weapon,
+	double aggression)
 {
-	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon));
+	attack_result_ptr action(new attack_result(side,attacker_loc,defender_loc,attacker_weapon,aggression));
 	execute ? action->execute() : action->check_before();
 	return action;
 }

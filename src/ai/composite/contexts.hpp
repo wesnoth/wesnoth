@@ -38,49 +38,33 @@
 //============================================================================
 namespace ai {
 
-namespace composite_ai {
-
-class engine;
-
-class stage;
-
-class composite_ai_context;
-
-typedef boost::shared_ptr< engine > engine_ptr;
-
-typedef boost::shared_ptr< stage > stage_ptr;
-
-class composite_ai_context : public virtual default_ai_context{
+class ai_context : public virtual default_ai_context{
 public:
 
 
 	/**
 	 * Constructor
 	 */
-	composite_ai_context();
+	ai_context();
 
 
 	/**
 	 * Destructor
 	 */
-	virtual ~composite_ai_context();
+	virtual ~ai_context();
 
 
 	/**
 	 * Unwrap
 	 */
-	virtual composite_ai_context& get_composite_ai_context() = 0;
+	virtual ai_context& get_ai_context() = 0;
 
 
-	/**
-	 * get engine by cfg, creating it if it is not created yet but known
-	 */
-	virtual engine_ptr get_engine(const config& cfg) = 0;
 };
 
 
 class rca_context;
-class rca_context : public virtual composite_ai_context {
+class rca_context : public virtual ai_context {
 public:
 
 
@@ -127,39 +111,33 @@ public:
 };
 
 // proxies
-class composite_ai_context_proxy : public virtual composite_ai_context, public virtual default_ai_context_proxy {
+class ai_context_proxy : public virtual ai_context, public virtual default_ai_context_proxy {
 public:
-	composite_ai_context_proxy();
+	ai_context_proxy();
 
 
-	void init_composite_ai_context_proxy(composite_ai_context &target)
+	void init_ai_context_proxy(ai_context &target)
 	{
 		init_default_ai_context_proxy(target);
 		target_ = &target;
 	}
 
 
-	virtual	~composite_ai_context_proxy();
+	virtual	~ai_context_proxy();
 
 
-	composite_ai_context& get_composite_ai_context()
+	ai_context& get_ai_context()
 	{
-		return target_->get_composite_ai_context();
-	}
-
-
-	engine_ptr get_engine(const config& cfg)
-	{
-		return target_->get_engine(cfg);
+		return target_->get_ai_context();
 	}
 
 
 private:
-	composite_ai_context *target_;
+	ai_context *target_;
 };
 
 
-class rca_context_proxy : public virtual rca_context, public virtual composite_ai_context_proxy {
+class rca_context_proxy : public virtual rca_context, public virtual ai_context_proxy {
 public:
 	rca_context_proxy();
 
@@ -169,7 +147,7 @@ public:
 
 	void init_rca_context_proxy(rca_context &target)
 	{
-		init_composite_ai_context_proxy(target);
+		init_ai_context_proxy(target);
 		target_ = &target;
 	}
 
@@ -184,8 +162,6 @@ private:
 	rca_context *target_;
 };
 
-
-} //end of namespace composite_ai
 
 } //end of namespace ai
 

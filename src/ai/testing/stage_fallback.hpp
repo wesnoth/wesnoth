@@ -38,15 +38,17 @@ namespace ai {
 
 namespace testing_ai_default {
 
-class fallback_to_other_ai: public composite_ai::stage {
+class fallback_to_other_ai: public stage {
 public:
-	fallback_to_other_ai( composite_ai::composite_ai_context &context, const config &cfg );
+	fallback_to_other_ai( ai_context &context, const config &cfg );
 
 	~fallback_to_other_ai();
 
 	void do_play_stage();
 
 	void on_create();
+
+	config to_config() const;
 
 private:
 	const config &cfg_;

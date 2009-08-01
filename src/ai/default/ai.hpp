@@ -40,13 +40,15 @@ namespace ai {
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public readwrite_context_proxy, public interface {
 public:
-	idle_ai(readwrite_context &context);
+	idle_ai(readwrite_context &context, const config &cfg);
 	void play_turn();
 	void new_turn();
 	virtual std::string describe_self();
 	void switch_side(side_number side);
 	int get_recursion_count() const;
+	virtual config to_config() const;
 private:
+	const config &cfg_;
 	recursion_counter recursion_counter_;
 };
 
@@ -54,12 +56,13 @@ class ai_default : public virtual default_ai_context_proxy, public interface, pu
 public:
 	typedef map_location location;//will get rid of this later
 
-	ai_default(default_ai_context &context);
+	ai_default(default_ai_context &context, const config &cfg);
 	virtual ~ai_default();
 
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
+	virtual config to_config() const;
 	void switch_side(side_number side);
 
 	struct target {
@@ -79,6 +82,7 @@ public:
 	/** get the recursion counter */
 	int get_recursion_count() const;
 private:
+	const config &cfg_;
 	recursion_counter recursion_counter_;
 
 protected:

@@ -38,10 +38,11 @@ class gamemap;
 #pragma warning(disable:4250)
 #endif
 
+class terrain_filter;
+
 namespace ai {
 
 class interface;
-
 
 // recursion counter
 class recursion_counter {
@@ -123,6 +124,7 @@ public:
 	 */
 	virtual int get_recursion_count() const = 0;
 
+
 };
 
 class readonly_context;
@@ -131,6 +133,7 @@ public:
 	readonly_context(){}
 	virtual ~readonly_context(){}
 	virtual readonly_context& get_readonly_context() = 0;
+	virtual void on_readonly_context_create() = 0;
 	virtual const team& current_team() const = 0;
 	virtual void diagnostic(const std::string& msg) = 0;
 	virtual void log_message(const std::string& msg) = 0;
@@ -141,11 +144,11 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL) const = 0;
+		const terrain_filter* remove_destinations=NULL) const = 0;
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const = 0;
 
 	const virtual game_info& get_info() const = 0;
@@ -154,7 +157,24 @@ public:
 	virtual void raise_user_interact() const = 0;
 
 
-	virtual const std::set<map_location>& avoided_locations() const = 0;
+	//@note: following part is in alphabetic order
+
+	virtual double get_aggression() const = 0;
+
+
+	virtual int get_attack_depth() const = 0;
+
+
+	virtual const aspect_map& get_aspects() const = 0;
+
+
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) = 0;
+
+
+	virtual const terrain_filter& get_avoid() const = 0;
+
+
+	virtual double get_caution() const = 0;
 
 
 	virtual const move_map& get_dstsrc() const = 0;
@@ -168,14 +188,64 @@ public:
 
 	virtual const move_map& get_enemy_srcdst() const = 0;
 
+	/**
+	 * get engine by cfg, creating it if it is not created yet but known
+	 */
+	virtual engine_ptr get_engine(const config& cfg) = 0;
+
+
+	virtual std::string get_grouping() const = 0;
+
+
+	virtual const std::vector<goal_ptr>& get_goals() const = 0;
+
+
+	virtual std::vector<goal_ptr>& get_goals() = 0;
+
+
+	virtual config get_leader_goal() const = 0;
+
+
+	virtual double get_leader_value() const = 0;
+
+
+	virtual double get_number_of_possible_recruits_to_force_recruit() const = 0;
+
+
+	virtual bool get_passive_leader() const = 0;
+
+
+	virtual bool get_passive_leader_shares_keep() const = 0;
+
 
 	virtual const moves_map& get_possible_moves() const = 0;
+
+
+	virtual bool get_recruitment_ignore_bad_combat() const = 0;
+
+
+	virtual bool get_recruitment_ignore_bad_movement() const = 0;
+
+
+	virtual const std::vector<std::string> get_recruitment_pattern() const = 0;
+
+
+	virtual double get_scout_village_targeting() const = 0;
+
+
+	virtual bool get_simple_targeting() const = 0;
 
 
 	virtual const move_map& get_srcdst() const = 0;
 
 
-	virtual void invalidate_avoided_locations_cache() const = 0;
+	virtual bool get_support_villages() const = 0;
+
+
+	virtual double get_village_value() const = 0;
+
+
+	virtual int get_villages_per_scout() const = 0;
 
 
 	virtual void invalidate_move_maps() const = 0;
@@ -186,27 +256,63 @@ public:
 
 	virtual void recalculate_move_maps_enemy() const = 0;
 
+
+	/**
+	 * serialize to config
+	 */
+	virtual config to_readonly_context_config() const = 0;
 };
 
 class readwrite_context;
 class readwrite_context : public virtual readonly_context {
 public:
 	readwrite_context(){}
+
+
 	virtual ~readwrite_context(){}
+
+
 	virtual readwrite_context& get_readwrite_context() = 0;
+
+
 	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
+
+
 	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+
+
 	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+
+
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+
+
 	virtual team& current_team_w() = 0;
+
+
 	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
+
+
 	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves) = 0;
+
+
 	virtual map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves) = 0;
+
+
 	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()) = 0;
+
+
 	virtual void raise_unit_recruited() const = 0;
+
+
 	virtual void raise_unit_moved() const = 0;
+
+
 	virtual void raise_enemy_attacked() const = 0;
+
+
 	virtual game_info& get_info_w() = 0;
+
 };
 
 //proxies
@@ -241,7 +347,8 @@ public:
 		return target_->get_side_context();
 	}
 
-	virtual int get_recursion_count(){
+	virtual int get_recursion_count()
+	{
 		return target_->get_recursion_count();
 	}
 
@@ -269,6 +376,13 @@ public:
 	{
 		return target_->get_readonly_context();
 	}
+
+
+	virtual void on_readonly_context_create()
+	{
+		return target_->on_readonly_context_create();
+	}
+
 
 	virtual const team& current_team() const
 	{
@@ -308,7 +422,7 @@ public:
 	virtual void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL) const
+		const terrain_filter* remove_destinations=NULL) const
 	{
 		target_->calculate_possible_moves(possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations);
 	}
@@ -316,7 +430,7 @@ public:
 	virtual void calculate_moves(const unit_map& units,
 		std::map<map_location,paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const
 	{
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
@@ -333,15 +447,47 @@ public:
 	}
 
 
-	virtual const std::set<map_location>& avoided_locations() const
-	{
-		return target_->avoided_locations();
-	}
-
-
 	virtual int get_recursion_count() const
 	{
 		return target_->get_recursion_count();
+	}
+
+	//@note: following part is in alphabetic order
+
+
+	virtual double get_aggression() const
+	{
+		return target_->get_aggression();
+	}
+
+
+	virtual int get_attack_depth() const
+	{
+		return target_->get_attack_depth();
+	}
+
+
+	virtual const aspect_map& get_aspects() const
+	{
+		return target_->get_aspects();
+	}
+
+
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects )
+	{
+		return target_->add_aspects(aspects);
+	}
+
+
+	virtual const terrain_filter& get_avoid() const
+	{
+		return target_->get_avoid();
+	}
+
+
+	virtual double get_caution() const
+	{
+		return target_->get_caution();
 	}
 
 
@@ -369,9 +515,81 @@ public:
 	}
 
 
+	virtual engine_ptr get_engine(const config &cfg)
+	{
+		return target_->get_engine(cfg);
+	}
+
+
+	virtual std::string get_grouping() const
+	{
+		return target_->get_grouping();
+	}
+
+
+	virtual const std::vector<goal_ptr>& get_goals() const
+	{
+		return target_->get_goals();
+	}
+
+
+	virtual std::vector<goal_ptr>& get_goals()
+	{
+		return target_->get_goals();
+	}
+
+
+	virtual config get_leader_goal() const
+	{
+		return target_->get_leader_goal();
+	}
+
+
+	virtual double get_leader_value() const
+	{
+		return target_->get_leader_value();
+	}
+
+
+	virtual double get_number_of_possible_recruits_to_force_recruit() const
+	{
+		return target_->get_number_of_possible_recruits_to_force_recruit();
+	}
+
+
+	virtual bool get_passive_leader() const
+	{
+		return target_->get_passive_leader();
+	}
+
+
+	virtual bool get_passive_leader_shares_keep() const
+	{
+		return target_->get_passive_leader_shares_keep();
+	}
+
+
 	virtual const moves_map& get_possible_moves() const
 	{
 		return target_->get_possible_moves();
+	}
+
+
+	virtual bool get_recruitment_ignore_bad_combat() const
+	{
+		return target_->get_recruitment_ignore_bad_combat();
+	}
+
+
+	virtual bool get_recruitment_ignore_bad_movement() const
+	{
+		return target_->get_recruitment_ignore_bad_movement();
+	}
+
+
+	virtual const std::vector<std::string> get_recruitment_pattern() const
+	{
+		return target_->get_recruitment_pattern();
 	}
 
 
@@ -381,9 +599,33 @@ public:
 	}
 
 
-	virtual void invalidate_avoided_locations_cache() const
+	virtual double get_scout_village_targeting() const
 	{
-		target_->invalidate_avoided_locations_cache();
+		return target_->get_scout_village_targeting();
+	}
+
+
+	virtual bool get_simple_targeting() const
+	{
+		return target_->get_simple_targeting();
+	}
+
+
+	virtual bool get_support_villages() const
+	{
+		return target_->get_support_villages();
+	}
+
+
+	virtual double get_village_value() const
+	{
+		return target_->get_village_value();
+	}
+
+
+	virtual int get_villages_per_scout() const
+	{
+		return target_->get_villages_per_scout();
 	}
 
 
@@ -402,6 +644,12 @@ public:
 	virtual void recalculate_move_maps_enemy() const
 	{
 		target_->recalculate_move_maps_enemy();
+	}
+
+
+	virtual config to_readonly_context_config() const
+	{
+		return target_->to_readonly_context_config();
 	}
 
 private:
@@ -559,7 +807,7 @@ public:
 	/**
 	 * Constructor
 	 */
-	readonly_context_impl(side_context &context);
+	readonly_context_impl(side_context &context, const config &cfg);
 
 
 	/**
@@ -576,6 +824,9 @@ public:
 	{
 		return *this;
 	}
+
+
+	virtual void on_readonly_context_create();
 
 
 	/** Handle generic event */
@@ -667,13 +918,13 @@ public:
 	 *                            If true, the function will operate on the
 	 *                            assumption that all units can move their full
 	 *                            movement allotment.
-	 * @param remove_destinations a pointer to a set of possible destinations
+	 * @param remove_destinations a pointer to a terrain filter for possible destinations
 	 *                            to omit.
 	 */
 	void calculate_possible_moves(std::map<map_location,paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL) const;
+		const terrain_filter* remove_destinations=NULL) const;
 
  	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
@@ -682,7 +933,7 @@ public:
 	void calculate_moves(const unit_map& units,
 		std::map<map_location,paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const std::set<map_location>* remove_destinations=NULL,
+		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const;
 
 
@@ -697,10 +948,25 @@ public:
 	void raise_user_interact() const;
 
 
-	virtual const std::set<map_location>& avoided_locations() const;
-
-
 	virtual int get_recursion_count() const;
+
+
+	//@note: following functions are in alphabetic order
+
+
+	virtual double get_aggression() const;
+
+
+	virtual int get_attack_depth() const;
+
+
+	virtual const aspect_map& get_aspects() const;
+
+
+	virtual const terrain_filter& get_avoid() const;
+
+
+	virtual double get_caution() const;
 
 
 	virtual const move_map& get_dstsrc() const;
@@ -715,13 +981,61 @@ public:
 	virtual const move_map& get_enemy_srcdst() const;
 
 
+	virtual engine_ptr get_engine(const config& cfg);
+
+
+	virtual std::string get_grouping() const;
+
+
+	virtual const std::vector<goal_ptr>& get_goals() const;
+
+
+	virtual std::vector<goal_ptr>& get_goals();
+
+
+	virtual double get_number_of_possible_recruits_to_force_recruit() const;
+
+
+	virtual config get_leader_goal() const;
+
+
+	virtual double get_leader_value() const;
+
+
+	virtual bool get_passive_leader() const;
+
+
+	virtual bool get_passive_leader_shares_keep() const;
+
+
 	virtual const moves_map& get_possible_moves() const;
+
+
+	virtual bool get_recruitment_ignore_bad_combat() const;
+
+
+	virtual bool get_recruitment_ignore_bad_movement() const;
+
+
+	virtual const std::vector<std::string> get_recruitment_pattern() const;
+
+
+	virtual double get_scout_village_targeting() const;
+
+
+	virtual bool get_simple_targeting() const;
 
 
 	virtual const move_map& get_srcdst() const;
 
 
-	virtual void invalidate_avoided_locations_cache() const;
+	virtual bool get_support_villages() const;
+
+
+	virtual double get_village_value() const;
+
+
+	virtual int get_villages_per_scout() const;
 
 
 	virtual void invalidate_move_maps() const;
@@ -732,17 +1046,57 @@ public:
 
 	virtual void recalculate_move_maps_enemy() const;
 
+
+	virtual void add_aspects(std::vector< aspect_ptr > &aspects);
+
+
+	void on_create();
+
+
+	virtual config to_readonly_context_config() const;
+
 private:
-	recursion_counter recursion_counter_;
+	template<typename T>
+	void add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> >& where);
+
+	const config cfg_;
+
+	/**
+	 * AI Support Engines
+	 */
+	std::vector< engine_ptr > engines_;
+
+	known_aspect_map known_aspects_;
+
+	aspect_type<double>::typesafe_ptr aggression_;
+	aspect_type<int>::typesafe_ptr attack_depth_;
+	aspect_map aspects_;
+	mutable aspect_type<terrain_filter>::typesafe_ptr avoid_;
+	aspect_type<double>::typesafe_ptr caution_;
 	mutable move_map dstsrc_;
 	mutable move_map enemy_dstsrc_;
 	mutable moves_map enemy_possible_moves_;
 	mutable move_map enemy_srcdst_;
-	mutable moves_map possible_moves_;
-	mutable move_map srcdst_;
-	mutable std::set<map_location> avoided_locations_;
+	aspect_type< std::string >::typesafe_ptr grouping_;
+	std::vector< goal_ptr > goals_;
+	aspect_type< config >::typesafe_ptr leader_goal_;
+	aspect_type< double >::typesafe_ptr leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;
+	aspect_type<double>::typesafe_ptr number_of_possible_recruits_to_force_recruit_;
+	aspect_type<bool>::typesafe_ptr passive_leader_;
+	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
+	mutable moves_map possible_moves_;
+	aspect_type< bool  >::typesafe_ptr recruitment_ignore_bad_combat_;
+	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
+	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;
+	recursion_counter recursion_counter_;
+	aspect_type< double >::typesafe_ptr scout_village_targeting_;
+	aspect_type< bool >::typesafe_ptr simple_targeting_;
+	mutable move_map srcdst_;
+	aspect_type< bool >::typesafe_ptr support_villages_;
+	aspect_type< double >::typesafe_ptr village_value_;
+	aspect_type< int >::typesafe_ptr villages_per_scout_;
 
 };
 

@@ -48,6 +48,39 @@ class interface;
 
 typedef boost::shared_ptr< interface > ai_ptr;
 
+class aspect;
+class candidate_action;
+class engine;
+class goal;
+class known_aspect;
+class stage;
+
+template<typename T>
+class typesafe_aspect;
+
+template<typename T>
+struct aspect_type {
+        typedef boost::shared_ptr< typesafe_aspect<T> > typesafe_ptr;
+};
+
+template<typename T>
+class typesafe_known_aspect;
+
+template<typename T>
+struct known_aspect_type {
+        typedef boost::shared_ptr< typesafe_known_aspect<T> > typesafe_ptr;
+};
+
+typedef boost::shared_ptr< aspect > aspect_ptr;
+typedef boost::shared_ptr< candidate_action > candidate_action_ptr;
+typedef boost::shared_ptr< engine > engine_ptr;
+typedef boost::shared_ptr< goal > goal_ptr;
+typedef boost::shared_ptr< known_aspect > known_aspect_ptr;
+typedef boost::shared_ptr< stage > stage_ptr;
+
+typedef std::map<std::string, aspect_ptr > aspect_map;
+typedef std::map<std::string, known_aspect_ptr > known_aspect_map;
+
 class game_info {
 public:
 

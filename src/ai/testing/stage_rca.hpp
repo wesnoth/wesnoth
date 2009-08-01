@@ -40,9 +40,9 @@ namespace ai {
 
 namespace testing_ai_default {
 
-class candidate_action_evaluation_loop: public virtual composite_ai::stage, public virtual composite_ai::rca_context {
+class candidate_action_evaluation_loop: public virtual stage, public virtual rca_context {
 public:
-	candidate_action_evaluation_loop( composite_ai::composite_ai_context &context, const config &cfg );
+	candidate_action_evaluation_loop( ai_context &context, const config &cfg );
 
 	~candidate_action_evaluation_loop();
 
@@ -50,10 +50,12 @@ public:
 
 	void on_create();
 
-	composite_ai::rca_context& get_rca_context();
+	config to_config() const;
+
+	rca_context& get_rca_context();
 
 private:
-	std::vector<composite_ai::candidate_action_ptr> candidate_actions_;
+	std::vector<candidate_action_ptr> candidate_actions_;
 
 	const config &cfg_;
 };

@@ -30,14 +30,19 @@
 
 namespace ai {
 
-class interface {
+class interface : savegame_config {
 public:
 	/**
 	 * The constructor.
 	 */
-	interface() {
+	interface()
+		: savegame_config()
+	{
 	}
+
+
 	virtual ~interface() {}
+
 
 	/**
 	 * Function that is called when the AI must play its turn.
@@ -66,6 +71,9 @@ public:
 	/** Describe self*/
 	virtual std::string describe_self() const;
 
+
+	/** serialize to config **/
+	virtual config to_config() const = 0;
 };
 
 class ai_factory;
@@ -85,7 +93,7 @@ public:
 	}
 
 	/* cfg is commented out so far, because ai parameter handling is a mess atm */
-	virtual ai_ptr get_new_instance( default_ai_context &context/*, const config &cfg*/) = 0;
+	virtual ai_ptr get_new_instance( default_ai_context &context, const config &cfg) = 0;
 
 	ai_factory( const std::string &name )
 	{
@@ -105,8 +113,8 @@ public:
 	{
 	}
 
-	virtual ai_ptr get_new_instance( default_ai_context &context/*, const config &cfg*/){
-		ai_ptr a(new AI(context));
+	virtual ai_ptr get_new_instance( default_ai_context &context, const config &cfg){
+		ai_ptr a(new AI(context,cfg));
 		a->on_create();
 		return a;
 	}

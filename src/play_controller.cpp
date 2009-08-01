@@ -522,7 +522,6 @@ void play_controller::do_init_side(const unsigned int team_index){
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
-	current_team.set_time_of_day(int(turn()), tod);
 
 	if (int(team_index) + 1 == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);

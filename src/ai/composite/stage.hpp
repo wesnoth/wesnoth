@@ -37,17 +37,15 @@
 
 namespace ai {
 
-namespace composite_ai {
-
 class ai_composite;
 
-class stage : public virtual composite_ai_context_proxy {
+class stage : public virtual ai_context_proxy {
 public:
 
 	/**
 	 * Constructor
 	 */
-	stage( composite_ai_context &context, const config &cfg );
+	stage( ai_context &context, const config &cfg );
 
 	/**
 	 * Initialization
@@ -71,6 +69,13 @@ public:
 	 */
 	int get_recursion_count() const;
 
+
+	/**
+	 * serialize
+	 */
+	virtual config to_config() const;
+
+
 protected:
 	/**
 	 * Play the turn - implementation
@@ -86,7 +91,7 @@ protected:
 
 class idle_stage : public stage {
 public:
-	idle_stage( composite_ai_context &context, const config &cfg );
+	idle_stage( ai_context &context, const config &cfg );
 
 	~idle_stage();
 
@@ -108,7 +113,7 @@ public:
 		return *stage_factories;
 	}
 
-	virtual stage_ptr get_new_instance( composite_ai_context &context, const config &cfg ) = 0;
+	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ) = 0;
 
 	stage_factory( const std::string &name )
 	{
@@ -128,15 +133,13 @@ public:
 	{
 	}
 
-	virtual stage_ptr get_new_instance( composite_ai_context &context, const config &cfg ){
+	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ){
 		stage_ptr a(new STAGE(context,cfg));
 		a->on_create();
 		return a;
 	}
 };
 
-
-} //end of namespace composite_ai
 
 } //end of namespace ai
 

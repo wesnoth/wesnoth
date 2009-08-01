@@ -55,8 +55,9 @@ int formula_ai::get_recursion_count() const{
 }
 
 
-formula_ai::formula_ai(ai::default_ai_context &context) :
-	ai_default(context),
+formula_ai::formula_ai(ai::default_ai_context &context, const config &cfg) :
+	ai_default(context,cfg),
+	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	recruit_formula_(),
 	move_formula_(),
@@ -313,7 +314,7 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 	if(!formula_) {
 		if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
 			LOG_AI << "Falling back to default AI.\n";
-			ai::ai_ptr fallback( ai::manager::create_transient_ai(ai::manager::AI_TYPE_DEFAULT, this));
+			ai::ai_ptr fallback( ai::manager::create_transient_ai(ai::manager::AI_TYPE_DEFAULT, config(), this));
 			if (fallback){
 				fallback->play_turn();
 			}
@@ -686,7 +687,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai::ai_ptr fallback( ai::manager::create_transient_ai(fallback_command->key(), this));
+					ai::ai_ptr fallback( ai::manager::create_transient_ai(fallback_command->key(), config(), this));
 					if(fallback) {
 						fallback->play_turn();
 					}
@@ -1065,7 +1066,7 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 void formula_ai::on_create(){
 	//make sure we don't run out of refcount
 	vars_.add_ref();
-	const config& ai_param = current_team().ai_parameters();
+	const config& ai_param = cfg_;
 
 	// load candidate actions from config
 	candidate_action_manager_.load_config(ai_param, this, &function_table);
@@ -1091,7 +1092,7 @@ void formula_ai::on_create(){
 
 
         try{
-                recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruitment"], &function_table);
+                recruit_formula_ = game_logic::formula::create_optional_formula(cfg_["recruitment"], &function_table);
         }
         catch(formula_error& e) {
                 handle_exception(e);
@@ -1099,7 +1100,7 @@ void formula_ai::on_create(){
         }
 
         try{
-                move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
+                move_formula_ = game_logic::formula::create_optional_formula(cfg_["move"], &function_table);
         }
         catch(formula_error& e) {
                 handle_exception(e);
@@ -1163,4 +1164,9 @@ bool formula_ai::gamestate_change_observer::continue_check() {
 
 	continue_counter_++;
 	return true;
+}
+
+config formula_ai::to_config() const
+{
+	return cfg_;//@todo 1.7 add a proper serialization
 }

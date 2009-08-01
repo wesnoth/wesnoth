@@ -131,18 +131,6 @@ bool default_ai_context_impl::attack_close(const map_location& loc) const
 }
 
 
-int default_ai_context_impl::attack_depth()
-{
-	if(attack_depth_ > 0) {
-		return attack_depth_;
-	}
-
-	const config& parms = current_team().ai_parameters();
-	attack_depth_ = std::max<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
-	return attack_depth_;
-}
-
-
 default_ai_context_impl::~default_ai_context_impl()
 {
 }
@@ -246,8 +234,8 @@ void default_ai_context_impl::do_attack_analysis(
 	// This function is called fairly frequently, so interact with the user here.
 	raise_user_interact();
 
-	if(cur_analysis.movements.size() >= size_t(attack_depth())) {
-		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << attack_depth() << "\n";
+	if(cur_analysis.movements.size() >= size_t(get_attack_depth())) {
+		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
 	gamemap &map_ = get_info().map;
@@ -268,7 +256,7 @@ void default_ai_context_impl::do_attack_analysis(
 	}
 
 	const double cur_rating = cur_analysis.movements.empty() ? -1.0 :
-	                          cur_analysis.rating(current_team().aggression(),*this);
+	                          cur_analysis.rating(get_aggression(),*this);
 
 	double rating_to_beat = cur_rating;
 
@@ -469,13 +457,13 @@ void default_ai_context_impl::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
+			cur_analysis.analyze(map_, units_, *this, dstsrc, srcdst, enemy_dstsrc, get_aggression());
 
 			//This logic to sometimes not add the attack because it doesn't
 			//rate high enough seems to remove attacks from consideration
 			//that should not be removed, so it has been removed.
 			//  -- David.
-//			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
+//			if(cur_analysis.rating(get_aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
@@ -498,11 +486,6 @@ void default_ai_context_impl::do_attack_analysis(
 
 default_ai_context& default_ai_context_impl::get_default_ai_context(){
 	return *this;
-}
-
-
-void default_ai_context_impl::invalidate_attack_depth_cache(){
-	attack_depth_ = 0;
 }
 
 

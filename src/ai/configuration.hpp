@@ -81,7 +81,7 @@ public:
 	/**
 	 * get side config from file
 	 * @param file the file name to open. follows usual WML convention.
-	 * @param cfg[out] the config to be written from file.
+	 * @param[out] cfg the config to be written from file.
 	 * @return was all ok?
 	 * @retval true success
 	 * @retval false failure
@@ -89,50 +89,52 @@ public:
 	static bool get_side_config_from_file( const std::string& file, config& cfg );
 
 
+
 	/**
-	 * @deprecated bug-for-bug compatibility with current parameter handling
+	 * modify a config of the ai by applying rules in [modify_ai] tag
+	 * @param[in] mod_ai config containing the contents of the [modify_ai] tag
+	 * @param[in][out] cfg ai configuration to modify
+	 * @return was all ok?
+	 * @retval true success, cfg is guaranteed to be valid
+	 * @retval false failure
+	 */
+	static bool modify_ai_configuration(const config &mod_ai, config &cfg);
+
+
+	/**
 	 * @param[in] cfg the config to be read
-	 * @param[out] ai_algorithm_type al algorithm type to be written
-	 * @param[out] global_ai_parameters global AI parameters to be written
-	 * @param[out] ai_parameters vector of [ai] section parameters.
-	 * @param[in] default_ai_parameters default ai parameters to use
-	 * @param[out] ai_memory ai memory to be written
-	 * @param[out] effective_ai_parameters effective ai parameters to be written
+	 * @param[out] parsed_cfg parsed config
 	 * @return was all ok?
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool parse_side_config(const config& cfg,
-			std::string& ai_algorithm_type,
-			config& global_ai_parameters,
-			std::vector<config>& ai_parameters,
-			const config& default_ai_parameters,
-			config& ai_memory,
-			config& effective_ai_parameters );
+	static bool parse_side_config(const config& cfg, config &parsed_cfg);
+
+
+private:
+	/**
+	 * Upgrade aspect config from version 1.7.2 to version 1.7.3
+	 * @param[in] cfg the config to be read
+	 * @param[out] parsed_cfg parsed config
+	 * @param[in] id id of the aspect to work on
+	 * @param aspect_was_attribute aspect was an attribute, not a [child]
+	 * @return was all ok?
+	 * @retval true success
+	 * @retval false failure
+	 */
+	static bool upgrade_aspect_config_from_1_07_02_to_1_07_03(const config& cfg, config& parsed_cfg, const std::string &id, bool aspect_was_attribute = true);
 
 
 	/**
-	 * Same as parse_side_config, new syntax
+	 * Upgrade side config from version 1.7.2 to version 1.7.3
+	 * @param[in] cfg the config to be read
+	 * @param[out] parsed_cfg parsed config
+	 * @return was all ok?
+	 * @retval true success, cfg is guaranteed to be valid
+	 * @retval false failure
 	 */
-	static bool parse_side_config_new(const config& cfg,
-		std::string& ai_algorithm_type,
-		config& global_ai_parameters,
-		std::vector<config>& ai_parameters,
-		const config& default_ai_parameters,
-		config& ai_memory,
-		config& effective_ai_parameters );
+	static bool upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg);
 
-
-	/**
-	 * Same as parse_side_config, old syntax
-	 */
-	static bool parse_side_config_old(const config& cfg,
-		std::string& ai_algorithm_type,
-		config& global_ai_parameters,
-		std::vector<config>& ai_parameters,
-		const config& default_ai_parameters,
-		config& ai_memory,
-		config& effective_ai_parameters );
 
 	/**
 	 * get default AI parameters
@@ -140,9 +142,8 @@ public:
 	 */
 	static const config& get_default_ai_parameters();
 
-private:
 	typedef std::map<std::string, description> description_map;
-	static std::map<std::string, description> ai_configurations_;
+	static description_map ai_configurations_;
 	static config default_config_;
 
 };

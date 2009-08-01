@@ -33,8 +33,8 @@ namespace ai {
 
 class ai2 : public readwrite_context_proxy, public interface {
 public:
-	ai2(readwrite_context &context)
-		: recursion_counter_(context.get_recursion_count())
+	ai2(readwrite_context &context, const config &cfg)
+		: cfg_(cfg),recursion_counter_(context.get_recursion_count())
 	{
 		init_readwrite_context_proxy(context);
 	}
@@ -43,14 +43,24 @@ public:
 	virtual void switch_side(side_number side){
 		set_side(side);
 	}
+
+
 	int get_recursion_count() const{
 		return recursion_counter_.get_count();
 	}
 
+
 	virtual void new_turn()
 	{
 	}
+
+
+	virtual config to_config() const{
+		return config();
+	}
+
 private:
+	const config &cfg_;
 	recursion_counter recursion_counter_;
 
 };

@@ -25,8 +25,6 @@
 
 namespace ai {
 
-namespace composite_ai {
-
 static lg::log_domain log_ai_composite_rca("ai/composite/rca");
 #define DBG_AI_COMPOSITE_RCA LOG_STREAM(debug, log_ai_composite_rca)
 #define LOG_AI_COMPOSITE_RCA LOG_STREAM(info, log_ai_composite_rca)
@@ -34,11 +32,10 @@ static lg::log_domain log_ai_composite_rca("ai/composite/rca");
 
 const double candidate_action::BAD_SCORE = 0;
 
-candidate_action::candidate_action(rca_context &context, const std::string &name, const std::string &type)
-	: recursion_counter_(context.get_recursion_count()), enabled_(true), score_(BAD_SCORE),name_(name),type_(type)
+candidate_action::candidate_action(rca_context &context, const config &cfg)
+	: recursion_counter_(context.get_recursion_count()), enabled_(utils::string_bool(cfg["enabled"],true)), engine_(cfg["engine"]), score_(lexical_cast_default<double>(cfg["score"],BAD_SCORE)),name_(cfg["name"]),type_(cfg["type"])
 {
 	init_rca_context_proxy(context);
-	//LOG_AI_COMPOSITE_RCA << "side "<< get_side() << " : "<<" created "<<*this<<std::endl;
 }
 
 candidate_action::~candidate_action()
@@ -85,6 +82,18 @@ const std::string& candidate_action::get_type() const
 	return type_;
 }
 
+
+config candidate_action::to_config() const
+{
+	config cfg;
+	cfg["enabled"] = lexical_cast<std::string>(enabled_);
+	cfg["engine"] = engine_;
+	cfg["name"] = name_;
+	cfg["score"] = lexical_cast<std::string>(score_);
+	cfg["type"] = type_;
+	return cfg;
+}
+
 candidate_action_evaluation_exception::candidate_action_evaluation_exception(const std::string &message)
 	: message_(message)
 {
@@ -115,24 +124,23 @@ const std::string& candidate_action_execution_exception::get_message() const
 
 
 //============================================================================
-} //end of namespace composite_ai
 
 } // of namespace ai
 
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_evaluation_exception const &caee) {
+std::ostream &operator<<(std::ostream &s, ai::candidate_action_evaluation_exception const &caee) {
 	s << "candidate action evaluation exception :"<< caee.get_message();
 	return s;
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action_execution_exception const &caee) {
+std::ostream &operator<<(std::ostream &s, ai::candidate_action_execution_exception const &caee) {
 	s << "candidate action execution exception :"<< caee.get_message();
 	return s;
 }
 
 
-std::ostream &operator<<(std::ostream &s, ai::composite_ai::candidate_action const &ca) {
+std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca) {
 	s << "candidate action with name ["<< ca.get_name() <<"]";
 	return s;
 }

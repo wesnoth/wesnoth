@@ -176,9 +176,6 @@ public:
 	virtual default_ai_context& get_default_ai_context() = 0;
 
 
-	virtual void invalidate_attack_depth_cache() = 0;
-
-
 	virtual void invalidate_defensive_position_cache() = 0;
 
 
@@ -302,12 +299,6 @@ public:
 	void init_default_ai_context_proxy(default_ai_context &target);
 
 
-	virtual void invalidate_attack_depth_cache()
-	{
-		target_->invalidate_attack_depth_cache();
-	}
-
-
 	void invalidate_defensive_position_cache()
 	{
 		return target_->invalidate_defensive_position_cache();
@@ -396,9 +387,6 @@ public:
 	bool attack_close(const map_location& loc) const;
 
 
-	int attack_depth();
-
-
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes);
 
 
@@ -408,7 +396,7 @@ public:
 
 	default_ai_context_impl(readwrite_context &context)
 		: recursion_counter_(context.get_recursion_count()),unit_stats_cache_(),
-			defensive_position_cache_(),attacks_(),keeps_(),attack_depth_()
+			defensive_position_cache_(),attacks_(),keeps_()
 	{
 		init_readwrite_context_proxy(context);
 	}
@@ -436,9 +424,6 @@ public:
 	{
 		return recursion_counter_.get_count();
 	}
-
-
-	virtual void invalidate_attack_depth_cache();
 
 
 	virtual void invalidate_defensive_position_cache();
@@ -487,8 +472,6 @@ private:
 	std::set<map_location> attacks_;
 
 	std::set<map_location> keeps_;
-
-	int attack_depth_;
 
 };
 

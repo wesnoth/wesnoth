@@ -32,7 +32,7 @@ static lg::log_domain log_ai_testing_rca_default("ai/testing/rca_default");
 #define LOG_AI_TESTING_RCA_DEFAULT LOG_STREAM(info, log_ai_testing_rca_default)
 #define ERR_AI_TESTING_RCA_DEFAULT LOG_STREAM(err, log_ai_testing_rca_default)
 
-candidate_action_evaluation_loop::candidate_action_evaluation_loop( composite_ai::composite_ai_context &context, const config &cfg)
+candidate_action_evaluation_loop::candidate_action_evaluation_loop( ai_context &context, const config &cfg)
 	: stage(context,cfg),cfg_(cfg)
 {
 }
@@ -41,8 +41,17 @@ void candidate_action_evaluation_loop::on_create()
 {
 	//init the candidate actions
 	foreach(const config &cfg_element, cfg_.child_range("candidate_action")){
-		composite_ai::engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
+		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
+}
+
+config candidate_action_evaluation_loop::to_config() const
+{
+	config cfg = stage::to_config();
+	foreach(candidate_action_ptr ca, candidate_actions_){
+		cfg.add_child("candidate_action",ca->to_config());
+	}
+	return cfg;
 }
 
 void candidate_action_evaluation_loop::do_play_stage()
@@ -50,18 +59,18 @@ void candidate_action_evaluation_loop::do_play_stage()
 	LOG_AI_TESTING_RCA_DEFAULT << "Starting candidate action evaluation loop for side "<< get_side() << std::endl;
 	const static double STOP_VALUE = 0;
 
-	foreach(composite_ai::candidate_action_ptr ca, candidate_actions_){
+	foreach(candidate_action_ptr ca, candidate_actions_){
 		ca->enable();
 	}
 
 	bool executed = false;
 	do {
 		executed = false;
-		double best_score = composite_ai::candidate_action::BAD_SCORE;
-		composite_ai::candidate_action_ptr best_ptr;
+		double best_score = candidate_action::BAD_SCORE;
+		candidate_action_ptr best_ptr;
 
 		//Evaluation
-		foreach(composite_ai::candidate_action_ptr ca_ptr, candidate_actions_){
+		foreach(candidate_action_ptr ca_ptr, candidate_actions_){
 			if (!ca_ptr->is_enabled()){
 				DBG_AI_TESTING_RCA_DEFAULT << "Skipping disabled candidate action: "<< *ca_ptr << std::endl;
 				continue;
@@ -72,7 +81,7 @@ void candidate_action_evaluation_loop::do_play_stage()
 				DBG_AI_TESTING_RCA_DEFAULT << "Evaluating candidate action: "<< *ca_ptr << std::endl;
 				score = ca_ptr->evaluate();
 				DBG_AI_TESTING_RCA_DEFAULT << "Evaluated candidate action to score "<< score << " : " << *ca_ptr << std::endl;
-			} catch (composite_ai::candidate_action_evaluation_exception &caee) {
+			} catch (candidate_action_evaluation_exception &caee) {
 				ERR_AI_TESTING_RCA_DEFAULT << "Candidate action evaluation threw an exception: " << caee << std::endl;
 				ca_ptr->disable();
 				continue;
@@ -85,11 +94,11 @@ void candidate_action_evaluation_loop::do_play_stage()
 		}
 
 		//Execution
-		if (best_score>composite_ai::candidate_action::BAD_SCORE) {
+		if (best_score>candidate_action::BAD_SCORE) {
 			try {
 				DBG_AI_TESTING_RCA_DEFAULT << "Best candidate action: "<< *best_ptr << std::endl;
 				executed = best_ptr->execute();
-			} catch (composite_ai::candidate_action_execution_exception &caee) {
+			} catch (candidate_action_execution_exception &caee) {
 				ERR_AI_TESTING_RCA_DEFAULT << "Candidate action execution threw an exception: " << caee << std::endl;
 				executed = false;
 			}
@@ -101,13 +110,13 @@ void candidate_action_evaluation_loop::do_play_stage()
 				executed = true;
 			}
 		} else {
-			LOG_AI_TESTING_RCA_DEFAULT << "Ending candidate action evaluation loop due to best score "<< best_score<<"<="<< composite_ai::candidate_action::BAD_SCORE<<std::endl;
+			LOG_AI_TESTING_RCA_DEFAULT << "Ending candidate action evaluation loop due to best score "<< best_score<<"<="<< candidate_action::BAD_SCORE<<std::endl;
 		}
 	} while (executed);
 	LOG_AI_TESTING_RCA_DEFAULT << "Ended candidate action evaluation loop for side "<< get_side() << std::endl;
 }
 
-composite_ai::rca_context& candidate_action_evaluation_loop::get_rca_context()
+rca_context& candidate_action_evaluation_loop::get_rca_context()
 {
 	return *this;
 }

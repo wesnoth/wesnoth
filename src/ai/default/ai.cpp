@@ -54,7 +54,8 @@ namespace ai {
 
 typedef util::array<map_location,6> adjacent_tiles_array;
 
-idle_ai::idle_ai(readwrite_context &context) : recursion_counter_(context.get_recursion_count())
+idle_ai::idle_ai(readwrite_context &context, const config &cfg)
+	: cfg_(cfg), recursion_counter_(context.get_recursion_count())
 {
 	init_readwrite_context_proxy(context);
 }
@@ -75,6 +76,13 @@ void idle_ai::switch_side(side_number side)
 	set_side(side);
 }
 
+
+config idle_ai::to_config() const
+{
+	return config();
+}
+
+
 int idle_ai::get_recursion_count() const
 {
 	return recursion_counter_.get_count();
@@ -91,8 +99,8 @@ void idle_ai::play_turn()
 /** Sample ai, with simple strategy. */
 class sample_ai : public readwrite_context_proxy, public interface {
 public:
-	sample_ai(readwrite_context &context)
-		: recursion_counter_(context.get_recursion_count()) {
+	sample_ai(readwrite_context &context, const config &cfg)
+		: cfg_(cfg), recursion_counter_(context.get_recursion_count()) {
 		init_readwrite_context_proxy(context);
 	}
 
@@ -151,7 +159,7 @@ protected:
 
 				if(best_defense != -1) {
 					move_unit(best_movement.second,best_movement.first,possible_moves);
-					battle_context bc(get_info().units, best_movement.first, i->first, -1, -1, current_team().aggression());
+					battle_context bc(get_info().units, best_movement.first, i->first, -1, -1, get_aggression());
 					attack_enemy(best_movement.first,i->first,
 								 bc.get_attacker_stats().attack_num,
 								 bc.get_defender_stats().attack_num);
@@ -213,6 +221,12 @@ protected:
 	}
 
 
+	config to_config() const
+	{
+		return config();
+	}
+
+
 	bool do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
 		if (!options.empty()) {
@@ -229,6 +243,7 @@ protected:
 		return false;
 	}
 private:
+	const config &cfg_;
 	recursion_counter recursion_counter_;
 };
 
@@ -237,8 +252,9 @@ private:
 #endif
 
 
-ai_default::ai_default(default_ai_context &context) :
+ai_default::ai_default(default_ai_context &context, const config &cfg) :
 	game_logic::formula_callable(),
+	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	threats_found_(false),
 	disp_(context.get_info().disp),
@@ -268,8 +284,6 @@ void ai_default::switch_side(side_number side){
 
 void ai_default::new_turn()
 {
-	invalidate_attack_depth_cache();
-	invalidate_avoided_locations_cache();
 	invalidate_defensive_position_cache();
 	invalidate_recent_attacks_list();
 	threats_found_ = false;
@@ -293,6 +307,13 @@ int ai_default::get_recursion_count() const
 {
 	return recursion_counter_.get_count();
 }
+
+config ai_default::to_config() const
+{
+	return config();
+}
+
+
 
 bool ai_default::recruit_usage(const std::string& usage)
 {
@@ -364,7 +385,9 @@ bool ai_default::recruit_usage(const std::string& usage)
 		WRN_AI << warning;
 		// Uncommented until the recruitment limiting macro can be fixed to not trigger this warning.
 		//lg::wml_error << warning;
-		return current_team_w().remove_recruitment_pattern_entry(usage);
+		//@fixme
+		//return current_team_w().remove_recruitment_pattern_entry(usage);
+		return false;
 	}
 	return false;
 }
@@ -456,7 +479,7 @@ map_location ai_default::move_unit(map_location from, map_location to, moves_map
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
-					battle_context bc(units_, res, *adj_i, -1, -1, current_team().aggression());
+					battle_context bc(units_, res, *adj_i, -1, -1, get_aggression());
 					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 					break;
 				}
@@ -512,7 +535,7 @@ void ai_default::find_threats()
 
 	threats_found_ = true;
 
-	const config& parms = current_team().ai_parameters();
+	const config& parms = cfg_;
 
 	std::vector<protected_item> items;
 
@@ -589,14 +612,14 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 		recruiting_preferred_ = 0;
 		return;
 	}
-	if (current_team().num_pos_recruits_to_force()< 0.01f)
+	if (get_number_of_possible_recruits_to_force_recruit()< 0.01f)
 	{
 		return;
 	}
 
 	float free_slots = 0.0f;
 	const float gold = static_cast<float>(current_team().gold());
-	const float unit_price = static_cast<float>(current_team_w().average_recruit_price());
+	const float unit_price = static_cast<float>(current_team().average_recruit_price());
 	if (map_.is_keep(leader_loc))
 	{
 		std::set<map_location> checked_hexes;
@@ -606,15 +629,15 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 		map_location loc = nearest_keep(leader_loc);
                if (units_.find(loc) == units_.end() && gold/unit_price > 1.0f)
                {
-                       free_slots -= current_team().num_pos_recruits_to_force();
+                       free_slots -= get_number_of_possible_recruits_to_force_recruit();
                }
 	}
-	recruiting_preferred_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
+	recruiting_preferred_ = (gold/unit_price) - free_slots > get_number_of_possible_recruits_to_force_recruit();
 	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") <<
 		" units to recruit: " << (gold/unit_price) <<
 		" unit_price: " << unit_price <<
 		" free slots: " << free_slots <<
-		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
+		" limit: " << get_number_of_possible_recruits_to_force_recruit() << "\n";
 }
 
 void ai_default::do_move()
@@ -630,11 +653,11 @@ void ai_default::do_move()
 
 	move_map srcdst, dstsrc, enemy_srcdst, enemy_dstsrc;
 
-	calculate_possible_moves(possible_moves,srcdst,dstsrc,false,false,&avoided_locations());
+	calculate_possible_moves(possible_moves,srcdst,dstsrc,false,false,&get_avoid());
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
-	const bool passive_leader_shares_keep = utils::string_bool(current_team().ai_parameters()["passive_leader_shares_keep"],false);
-	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
+	const bool passive_leader_shares_keep = get_passive_leader_shares_keep();
+	const bool passive_leader = get_passive_leader()||passive_leader_shares_keep;
 
 
 	unit_map::iterator leader = units_.find_leader(get_side());
@@ -815,9 +838,9 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
 			continue;
 
-		const double rating = it->rating(current_team().aggression(),*this);
+		const double rating = it->rating(get_aggression(),*this);
 		LOG_AI << "attack option rated at " << rating << " ("
-			<< current_team().aggression() << ")\n";
+			<< get_aggression() << ")\n";
 
 		if (recruiting_preferred_)
 		{
@@ -857,7 +880,7 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 		}
 
 		// Recalc appropriate weapons here: AI uses approximations.
-		battle_context bc(units_, to, target_loc, -1, -1, current_team().aggression());
+		battle_context bc(units_, to, target_loc, -1, -1, get_aggression());
 		attack_enemy(to, target_loc, bc.get_attacker_stats().attack_num,
 				bc.get_defender_stats().attack_num);
 
@@ -965,7 +988,7 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
-			false, true, &avoided_locations());
+			false, true, &get_avoid());
 
 	map_location leader_adj[6];
 	if(leader != units_.end()) {
@@ -982,7 +1005,7 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 			// We see the amount of power of each side on the situation,
 			// and decide whether it should retreat.
 			if(should_retreat(i->first, i, fullmove_srcdst, fullmove_dstsrc,
-						enemy_dstsrc, current_team().caution())) {
+						enemy_dstsrc, get_caution())) {
 
 				bool can_reach_leader = false;
 
@@ -1276,7 +1299,7 @@ int ai_default::compare_unit_types(const unit_type& a, const unit_type& b) const
 void ai_default::analyze_potential_recruit_combat()
 {
 	if(unit_combat_scores_.empty() == false ||
-			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_combat"])) {
+			get_recruitment_ignore_bad_combat()) {
 		return;
 	}
 
@@ -1357,7 +1380,7 @@ private:
 void ai_default::analyze_potential_recruit_movements()
 {
 	if(unit_movement_scores_.empty() == false ||
-			utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_movement"])) {
+			get_recruitment_ignore_bad_movement()) {
 		return;
 	}
 
@@ -1474,9 +1497,9 @@ bool ai_default::do_recruitment()
 	// Let formula ai to do recruiting first
 	if (get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE)
 	{
-		if (!current_team().ai_parameters()["recruitment"].empty()){
+		if (!cfg_["recruitment"].empty()){
 			if (!formula_ai_){
-				formula_ai_ptr_ = (manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, this));
+				formula_ai_ptr_ = manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, cfg_,this);
 				formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
 			}
 
@@ -1494,7 +1517,7 @@ bool ai_default::do_recruitment()
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
-	std::vector<std::string> options = current_team().recruitment_pattern();
+	std::vector<std::string> options = get_recruitment_pattern();
 	if (std::count(options.begin(), options.end(), "scout") > 0) {
 		size_t neutral_villages = 0;
 
@@ -1527,7 +1550,7 @@ bool ai_default::do_recruitment()
 		// accounting for all neutral villages on the map.
 		// We only look at villages closer to us, so we halve it,
 		// making us get twice as many scouts.
-		const int villages_per_scout = current_team().villages_per_scout()/2;
+		const int villages_per_scout = get_villages_per_scout()/2;
 
 		// Get scouts depending on how many neutral villages there are.
 		int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
@@ -1563,7 +1586,7 @@ bool ai_default::do_recruitment()
         bool ret = false;
 	while (recruit_usage(options[rand()%options.size()])) {
 		ret = true;
-		options = current_team().recruitment_pattern();
+		options = get_recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
@@ -1574,7 +1597,7 @@ bool ai_default::do_recruitment()
 
 void ai_default::move_leader_to_goals( const move_map& enemy_dstsrc)
 {
-	const config &goal = current_team().ai_parameters().child("leader_goal");
+	const config &goal = get_leader_goal();
 
 	if (!goal) {
 		LOG_AI << "No goal found\n";
@@ -1636,8 +1659,8 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 		return;
 	}
 
-	const bool passive_leader_shares_keep = utils::string_bool(current_team().ai_parameters()["passive_leader_shares_keep"],false);
-	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"])||passive_leader_shares_keep;
+	const bool passive_leader_shares_keep = get_passive_leader_shares_keep();
+	const bool passive_leader = get_passive_leader()||passive_leader_shares_keep;
 
 	const paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
@@ -1740,7 +1763,7 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 		std::map<map_location,paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
 		move_map fullmove_dstsrc;
-		calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&avoided_locations());
+		calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&get_avoid());
 
 		if (should_retreat(leader->first, leader, fullmove_srcdst, fullmove_dstsrc, enemy_dstsrc, 0.5)) {
 			desperate_attack(leader->first);

@@ -17,22 +17,21 @@
  * @file ai/composite/engine.cpp
  */
 
-#include "ai.hpp"
 #include "engine.hpp"
+#include "contexts.hpp"
+
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 
 namespace ai {
-
-namespace composite_ai {
 
 static lg::log_domain log_ai_composite_engine("ai/composite/engine");
 #define DBG_AI_COMPOSITE_ENGINE LOG_STREAM(debug, log_ai_composite_engine)
 #define LOG_AI_COMPOSITE_ENGINE LOG_STREAM(info, log_ai_composite_engine)
 #define ERR_AI_COMPOSITE_ENGINE LOG_STREAM(err, log_ai_composite_engine)
 
-engine::engine( composite_ai_context &context, const config &cfg )
-	: ai_(context)
+engine::engine( readonly_context &context, const config &cfg )
+	: ai_(context), engine_(cfg["engine"])
 {
 	LOG_AI_COMPOSITE_ENGINE << "side "<< ai_.get_side() << " : "<<" created engine with name=["<<cfg["name"]<<"]"<<std::endl;
 }
@@ -41,16 +40,26 @@ engine::~engine()
 {
 }
 
-void engine::parse_candidate_action_from_config( rca_context& context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b )
+
+void engine::parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr > > b )
+{
+	engine_ptr eng = context.get_engine(cfg);
+	if (eng){
+		//do not override that method in subclasses which cannot create aspects
+		eng->do_parse_aspect_from_config(cfg, id, b);
+	}
+}
+
+void engine::parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b )
 {
 	engine_ptr eng = context.get_engine(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create candidate actions
-		eng->do_parse_candidate_action_from_config(context,cfg, b);
+		eng->do_parse_candidate_action_from_config(context, cfg, b);
 	}
 }
 
-void engine::parse_engine_from_config( composite_ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b )
+void engine::parse_engine_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b )
 {
 	engine_ptr eng = context.get_engine(cfg);
 	if (eng){
@@ -59,14 +68,31 @@ void engine::parse_engine_from_config( composite_ai_context &context, const conf
 	}
 }
 
-void engine::parse_stage_from_config( composite_ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
+
+void engine::parse_goal_from_config( readonly_context &context, const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
+{
+	engine_ptr eng = context.get_engine(cfg);
+	if (eng){
+		//do not override that method in subclasses which cannot create goals
+		eng->do_parse_goal_from_config(cfg, b);
+	}
+}
+
+
+void engine::parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
 {
 	engine_ptr eng = context.get_engine(cfg);
 	if (eng){
 		//do not override that method in subclasses which cannot create stages
-		eng->do_parse_stage_from_config(cfg, b);
+		eng->do_parse_stage_from_config(context, cfg, b);
 	}
 }
+
+void engine::do_parse_aspect_from_config( const config &/*cfg*/, const std::string &/*id*/, std::back_insert_iterator< std::vector<aspect_ptr> > /*b*/ )
+{
+
+}
+
 
 void engine::do_parse_candidate_action_from_config( rca_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< candidate_action_ptr > > /*b*/ ){
 
@@ -76,15 +102,30 @@ void engine::do_parse_engine_from_config( const config &/*cfg*/, std::back_inser
 
 }
 
-void engine::do_parse_stage_from_config( const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr > > /*b*/ )
+
+void engine::do_parse_goal_from_config( const config &/*cfg*/, std::back_insert_iterator<std::vector< goal_ptr > > /*b*/ ){
+
+}
+
+
+void engine::do_parse_stage_from_config( ai_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr > > /*b*/ )
 {
 
 }
 
-std::string engine::get_name(){
+
+std::string engine::get_name() const
+{
 	return "null";
 }
 
-} //end of namespace composite_ai
+
+config engine::to_config() const
+{
+	config cfg;
+	cfg["engine"] = engine_;
+	cfg["name"] = get_name();
+	return cfg;
+}
 
 } //end of namespace ai

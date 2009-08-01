@@ -120,6 +120,33 @@ void config::merge_children(const std::string& key)
 	add_child(key,merged_children);
 }
 
+void config::merge_children_by_attribute(const std::string& key, const std::string& attribute)
+{
+	check_valid();
+
+	std::map<std::string,config> merged_children_map;
+	const child_list& children = get_children(key);
+	if(children.size() < 2) {
+		return;
+	}
+
+	for(child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
+		const std::string& value = (**i)[attribute];
+		std::map<std::string,config>::iterator m = merged_children_map.find(value);
+		if ( m!=merged_children_map.end() ) {
+			m->second.append(**i);
+		} else {
+			merged_children_map.insert(make_pair(value,**i));
+		}
+	}
+
+	clear_children(key);
+	typedef std::map<std::string,config> config_map;
+	foreach (const config_map::value_type &i, merged_children_map) {
+		add_child(key,i.second);
+	}
+}
+
 config::child_itors_bak config::child_range_bak(const std::string& key)
 {
 	check_valid();

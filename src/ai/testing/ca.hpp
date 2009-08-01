@@ -36,9 +36,6 @@ namespace ai {
 
 namespace testing_ai_default {
 
-using composite_ai::rca_context;
-using composite_ai::candidate_action;
-
 //============================================================================
 
 class goto_phase : public candidate_action {

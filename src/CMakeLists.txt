@@ -220,10 +220,12 @@ SET(wesnoth-main_SRC
     addon_management.cpp
     ai/actions.cpp
     ai/composite/ai.cpp
+    ai/composite/aspect.cpp
     ai/composite/contexts.cpp
     ai/composite/engine.cpp
     ai/composite/engine_default.cpp
     ai/composite/engine_fai.cpp
+    ai/composite/goal.cpp
     ai/composite/rca.cpp
     ai/composite/stage.cpp
     ai/configuration.cpp

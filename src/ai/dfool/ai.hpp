@@ -112,8 +112,8 @@ namespace dfool {
    */
   class dfool_ai : public default_ai_context_proxy, public interface {
   public:
-	dfool_ai(default_ai_context &context)
-		: recursion_counter_(context.get_recursion_count()), unit_memory_(context.current_team().ai_memory())
+	dfool_ai(default_ai_context &context, const config &cfg)
+		: cfg_(cfg), recursion_counter_(context.get_recursion_count()), unit_memory_(config())
 	{
 		init_default_ai_context_proxy(context);
 	}
@@ -125,7 +125,14 @@ namespace dfool {
 	virtual void new_turn()
 	{
 	}
-  private:
+
+
+	virtual config to_config() const{
+		return config();
+	}
+
+private:
+	const config &cfg_;
 	recursion_counter recursion_counter_;
     //    std::map<std::string,target> target_map_;
     unit_list all_units();

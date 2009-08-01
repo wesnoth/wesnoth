@@ -25,8 +25,6 @@
 
 namespace ai {
 
-namespace composite_ai {
-
 static lg::log_domain log_ai_composite("ai/composite");
 #define DBG_AI_COMPOSITE LOG_STREAM(debug, log_ai_composite)
 #define LOG_AI_COMPOSITE LOG_STREAM(info, log_ai_composite)
@@ -39,25 +37,19 @@ std::string ai_composite::describe_self(){
 	return "[composite_ai]";
 }
 
-ai_composite::ai_composite( default_ai_context &context)
-	: recursion_counter_(context.get_recursion_count())
+ai_composite::ai_composite( default_ai_context &context, const config &cfg)
+	: cfg_(cfg),stages_(),recursion_counter_(context.get_recursion_count())
 {
 	init_default_ai_context_proxy(context);
 }
 
 void ai_composite::on_create()
 {
-	const config& ai_global_parameters = ai::manager::get_active_ai_global_parameters_for_side(get_side());
 	LOG_AI_COMPOSITE << "side "<< get_side() << " : "<<" created AI with id=["<<
-		ai_global_parameters["id"]<<"]"<<std::endl;
-
-	//init the composite ai engines
-	foreach(const config &cfg_element, ai_global_parameters.child_range("engine")){
-		engine::parse_engine_from_config(*this,cfg_element,std::back_inserter(engines_));
-	}
+		cfg_["id"]<<"]"<<std::endl;
 
 	// init the composite ai stages
-	foreach(const config &cfg_element, ai_global_parameters.child_range("stage")){
+	foreach(const config &cfg_element, cfg_.child_range("stage")){
 		engine::parse_stage_from_config(*this,cfg_element,std::back_inserter(stages_));
 	}
 
@@ -77,47 +69,14 @@ void ai_composite::play_turn(){
 
 void ai_composite::new_turn()
 {
-	//todo 1.7 replace with event system
+	//@todo 1.7 replace with event system
 	recalculate_move_maps();
-	invalidate_attack_depth_cache();
-	invalidate_avoided_locations_cache();
 	invalidate_defensive_position_cache();
 	invalidate_recent_attacks_list();
 	invalidate_keeps_cache();
 	unit_stats_cache().clear();
 }
 
-
-engine_ptr ai_composite::get_engine(const config& cfg)
-{
-	const std::string& engine_name = cfg["engine"];
-	std::vector<engine_ptr>::iterator en = engines_.begin();
-	while (en!=engines_.end() && ((*en)->get_name()!=engine_name)) {
-		en++;
-	}
-
-	if (en != engines_.end()){
-		return *en;
-	}
-
-	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
-	if (eng == engine_factory::get_list().end()){
-		ERR_AI_COMPOSITE << "side "<<get_side()<<" : UNABLE TO FIND engine["<< 
-		engine_name <<"]" << std::endl;
-		DBG_AI_COMPOSITE << "config snippet contains: " << std::endl << cfg << std::endl;
-		return engine_ptr();
-	}
-
-	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
-	if (!new_engine) {
-		ERR_AI_COMPOSITE << "side "<<get_side()<<" : UNABLE TO CREATE engine["<< 
-		engine_name <<"] " << std::endl;
-		DBG_AI_COMPOSITE << "config snippet contains: " << std::endl << cfg << std::endl;
-		return engine_ptr();
-	}
-	engines_.push_back(new_engine);
-	return engines_.back();
-}
 
 int ai_composite::get_recursion_count() const
 {
@@ -129,12 +88,23 @@ void ai_composite::switch_side(side_number side)
 	set_side(side);
 }
 
-composite_ai_context& ai_composite::get_composite_ai_context()
+ai_context& ai_composite::get_ai_context()
 {
 	return *this;
 }
 
 
-} //end of namespace composite_ai
+config ai_composite::to_config() const
+{
+	config cfg;
+
+	//serialize the composite ai stages
+	foreach(const stage_ptr &s, stages_){
+		cfg.add_child("stage",s->to_config());
+	}
+
+	return cfg;
+}
+
 
 } //end of namespace ai
