@@ -879,7 +879,7 @@ AC_MSG_RESULT([$found_notifications])
 # Check for boost iostreams                                           #
 #######################################################################
 
-BOOST_REQUIRE([1.33])
+BOOST_REQUIRE([1.35])
 BOOST_IOSTREAMS
 BOOST_REGEX
 
