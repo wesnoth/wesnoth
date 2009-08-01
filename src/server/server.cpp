@@ -581,7 +581,7 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_ && input_->read_line(admin_cmd)) {
-				LOG_SERVER << "Admin Command: type: " << admin_cmd;
+				LOG_SERVER << "Admin Command: type: " << admin_cmd << "\n";
 				const std::string res = process_command(admin_cmd, "*socket*");
 				LOG_SERVER << "[admin_command_response]\n" << res << "\n" << "[/admin_command_response]\n";
 			}
@@ -1518,7 +1518,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
-				out << "Message of the day: " << motd_;
+				out << "Message of the day:\n" << motd_;
 				return out.str();
 			} else {
 				return "No message of the day set.";
