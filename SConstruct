@@ -217,7 +217,7 @@ if env["prereqs"]:
     have_server_prereqs = \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
         conf.CheckGettextLibintl() and \
-        conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+        conf.CheckBoost("iostreams", require_version = "1.35.0") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
@@ -278,7 +278,7 @@ if env["prereqs"]:
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
-    have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
+    have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') or Warning("Unit tests are disabled because their prerequisites are not met.")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
