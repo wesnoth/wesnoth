@@ -668,10 +668,14 @@ static int lua_set_variable(lua_State *L)
 			v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
 			break;
 		case LUA_TTABLE:
+		{
 			lua_settop(L, 2);
-			if (!wml_config_of_table(L, v.as_container()))
+			config &cfg = v.as_container();
+			cfg.clear();
+			if (!wml_config_of_table(L, cfg))
 				goto error_call_destructors;
 			break;
+		}
 		default:
 			goto error_call_destructors;
 	}
