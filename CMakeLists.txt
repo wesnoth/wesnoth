@@ -26,7 +26,7 @@ find_package( Boost 1.35 REQUIRED COMPONENTS iostreams regex )
 # yes, gettext is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
 find_package( Gettext REQUIRED )
-find_package( FriBiDi )
+
 find_package( X11 )
 
 if(NOT MSVC)
@@ -154,12 +154,6 @@ if(GUI STREQUAL "tiny")
   add_definitions(-DUSE_TINY_GUI)
 endif(GUI STREQUAL "tiny")
 
-if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-  add_definitions(-DHAVE_FRIBIDI)
-elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
-  message("Could not find FriBiDi. Disabling FriBiDi support.")
-endif()
-
 if(ENABLE_LOW_MEM)
   add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
@@ -192,10 +186,19 @@ endif(ENABLE_TESTS)
 if(ENABLE_GAME)
 	find_package( Lua51 REQUIRED)
 	find_package( PkgConfig REQUIRED )
+
 	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 	if(NOT MSVC)
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 	endif(NOT MSVC)
+
+	find_package( FriBiDi )
+	if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+	  add_definitions(-DHAVE_FRIBIDI)
+	elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
+	  message("Could not find FriBiDi. Disabling FriBiDi support.")
+	endif()
+
 endif(ENABLE_GAME)
 
 # get languages

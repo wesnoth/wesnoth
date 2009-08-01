@@ -417,10 +417,24 @@ fi
 # fribidi-config
 
 if test "x$fribidi" != "xno"; then
-	PKG_CHECK_MODULES([FRIBIDI], [fribidi >= 0.10.9],
-		[ fribidifound=yes ],
-		[ fribidifound=no ])
+	PKG_CHECK_MODULES([FRIBIDI2], [fribidi >= 0.19.0],
+		[
+			fribidifound=yes
+		],
+		[
+			AC_MSG_RESULT(no)
+			PKG_CHECK_MODULES([FRIBIDI], [fribidi],
+				[
+					fribidifound=yes
+					oldfribidi=yes
+				],
+				[
+					fribidifound=no
+					AC_MSG_RESULT(no)
+				])
+		])
 	AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes])
+	AM_CONDITIONAL([OLD_FRIBIDI], [test "x$oldfribidi" = xyes])
 fi
 
 # python
