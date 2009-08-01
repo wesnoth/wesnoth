@@ -238,7 +238,6 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 			}
 		}
 	}
-	int original_version = version;
 
 	if (version<10703) {
 		if (!upgrade_side_config_from_1_07_02_to_1_07_03(cfg)) {
