@@ -885,11 +885,6 @@ BOOST_REGEX
 
 if test "x$tests" = "xyes"; then
 	BOOST_TEST
-	# workaround for broken 1.33.1 debian packet
-	if test x"$BOOST_UNIT_TEST_FRAMEWORK_LIBS" = x; then
-		BOOST_UNIT_TEST_FRAMEWORK_LIBS="-lboost_unit_test_framework"
-#		BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS="-L/usr/lib -R/usr/lib"
-	fi
 
 	AC_LANG([C++])
 	AC_MSG_CHECKING([for dynamic linked boost test])
