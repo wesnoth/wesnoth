@@ -126,7 +126,7 @@ unit_animation::unit_animation(int start_time,
 		primary_attack_filter_(),
 		secondary_attack_filter_(),
 		hits_(),
-		swing_num_(),
+		value2_(),
 		sub_anims_(),
 		unit_anim_(start_time),
 		src_(),
@@ -150,7 +150,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	primary_attack_filter_(),
 	secondary_attack_filter_(),
 	hits_(),
-	swing_num_(),
+	value2_(),
 	sub_anims_(),
 	unit_anim_(cfg,frame_string),
 	src_(),
@@ -202,10 +202,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 			hits_.push_back(KILL);
 		}
 	}
-	std::vector<std::string> swing_str = utils::split(cfg["swing"]);
-	std::vector<std::string>::iterator swing;
-	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
-		swing_num_.push_back(atoi(swing->c_str()));
+	std::vector<std::string> value2_str = utils::split(cfg["value_second"]);
+	std::vector<std::string>::iterator value2;
+	for(value2=value2_str.begin() ; value2 != value2_str.end() ; value2++) {
+		value2_.push_back(atoi(value2->c_str()));
 	}
 	foreach (const config &filter, cfg.child_range("filter_attack")) {
 		primary_attack_filter_.push_back(filter);
@@ -217,7 +217,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 
 }
 
-int unit_animation::matches(const game_display &disp,const map_location& loc,const map_location& second_loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
+int unit_animation::matches(const game_display &disp,const map_location& loc,const map_location& second_loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int value2) const
 {
 	int result = base_score_;
 	if(!event.empty()&&!event_.empty()) {
@@ -282,8 +282,8 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 			result ++;
 		}
 	}
-	if(swing_num_.empty() == false ) {
-		if (std::find(swing_num_.begin(),swing_num_.end(),swing_num)== swing_num_.end()) {
+	if(value2_.empty() == false ) {
+		if (std::find(value2_.begin(),value2_.end(),value2)== value2_.end()) {
 			return MATCH_FAIL;
 		} else {
 			result ++;
@@ -934,7 +934,7 @@ void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 		const int value,bool with_bars,bool cycles,
 		const std::string text,const Uint32 text_color,
 		const unit_animation::hit_type hit_type,
-		const attack_type* attack, const attack_type* second_attack, int swing_num)
+		const attack_type* attack, const attack_type* second_attack, int value2)
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
@@ -945,7 +945,7 @@ void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 	tmp.src = src;
 	tmp.with_bars= with_bars;
 	tmp.cycles = cycles;
-	tmp.animation = animated_unit->choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,swing_num);
+	tmp.animation = animated_unit->choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,value2);
 	if(!tmp.animation) return;
 
 
@@ -958,13 +958,13 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 		const int value,bool with_bars,bool cycles,
 		const std::string text,const Uint32 text_color,
 		const unit_animation::hit_type hit_type,
-		const attack_type* attack, const attack_type* second_attack, int swing_num)
+		const attack_type* attack, const attack_type* second_attack, int value2)
 {
 	if(!animated_unit) return;
 	game_display*disp = game_display::get_singleton();
 	if(animated_unit->get_animation() &&
 			!animated_unit->get_animation()->animation_finished_potential() &&
-			animated_unit->get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,swing_num) >unit_animation::MATCH_FAIL) {
+			animated_unit->get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,value2) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
 		tmp.my_unit = animated_unit;
 		tmp.text = text;
@@ -975,7 +975,7 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 		tmp.animation = NULL;
 		animated_units_.push_back(tmp);
 	}else {
-		add_animation(animated_unit,event,src,dst,value,with_bars,cycles,text,text_color,hit_type,attack,second_attack,swing_num);
+		add_animation(animated_unit,event,src,dst,value,with_bars,cycles,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
 void unit_animator::start_animations()

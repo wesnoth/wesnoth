@@ -40,7 +40,7 @@ class unit_animation
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
+		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
@@ -111,7 +111,7 @@ class unit_animation
 		std::vector<config> primary_attack_filter_;
 		std::vector<config> secondary_attack_filter_;
 		std::vector<hit_type> hits_;
-		std::vector<int> swing_num_;
+		std::vector<int> value2_;
 		std::map<std::string,particule> sub_anims_;
 		particule unit_anim_;
 		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
@@ -140,7 +140,7 @@ class unit_animator
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
 				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
-				int swing_num =0);
+				int value2 =0);
 		void replace_anim_if_invalid(unit* animated_unit,const std::string& event,
 				const map_location &src = map_location::null_location,
 				const map_location &dst = map_location::null_location,
@@ -148,7 +148,7 @@ class unit_animator
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
 				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
-				int swing_num =0);
+				int value2 =0);
 		void start_animations();
                 void pause_animation();
                 void restart_animation();
