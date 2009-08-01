@@ -456,7 +456,8 @@ linechanges = (
         ("WEAPON_SPECIAL_STONE", "WEAPON_SPECIAL_PETRIFY"),
         ("SPECIAL_NOTE_STONE", "SPECIAL_NOTE_PETRIFY"),
         (".stoned", ".petrified"),
-        # Changed just before 1.7.3
+        # Changed at rev 37390
+        ("swing=", "second_value="),
         )
 
 def validate_stack(stack, filename, lineno):
