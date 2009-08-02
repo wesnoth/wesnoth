@@ -54,8 +54,6 @@ static lg::log_domain log_ai_actions("ai/actions");
 #define WRN_AI_ACTIONS LOG_STREAM(warn, log_ai_actions)
 #define ERR_AI_ACTIONS LOG_STREAM(err, log_ai_actions)
 
-using namespace ai;
-
 // =======================================================================
 // AI ACTIONS
 // =======================================================================
@@ -385,9 +383,11 @@ const unit *move_result::get_unit(const unit_map &units, const std::vector<team>
 
 bool move_result::test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool)
 {
-	if (from_==to_) {//@todo 1.7 move is ok in this case if remove_movement_ is set and movement_left is >0
-		set_error(E_EMPTY_MOVE);
-		return false;
+	if (from_== to_) {
+		if (!remove_movement_ || (un.movement_left() == 0) ) {
+			set_error(E_EMPTY_MOVE);
+			return false;
+		}
 	}
 	const shortest_path_calculator calc(un, my_team, units, teams,map);
 
@@ -477,29 +477,46 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
 
-	move_unit(
-		/*move_unit_spectator* move_spectator*/ &move_spectator,
-                /*std::vector<map_location> route*/ route_.steps,
-                /*replay* move_recorder*/ &recorder,
-		/*undo_list* undo_stack*/ NULL,
-                /*map_location *next_unit*/ NULL,
-		/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
-                /*bool should_clear_shroud*/ true,
-		/*bool is_replay*/ false);
+	move_spectator.set_unit(get_info().units.find(from_));
+
+	if (from_ != to_) {
+		move_unit(
+			/*move_unit_spectator* move_spectator*/ &move_spectator,
+			/*std::vector<map_location> route*/ route_.steps,
+			/*replay* move_recorder*/ &recorder,
+			/*undo_list* undo_stack*/ NULL,
+			/*map_location *next_unit*/ NULL,
+			/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
+			/*bool should_clear_shroud*/ true,
+			/*bool is_replay*/ false);
+
+		set_gamestate_changed();
+	} else {
+		assert(remove_movement_);
+	}
 
 	if (move_spectator.get_unit().valid()){
 		unit_location_ = move_spectator.get_unit()->first;
+		if ( remove_movement_ && ( move_spectator.get_unit()->second.movement_left() > 0 ) ) {
+			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
+			if (!stopunit_res->is_ok()) {
+				set_error(stopunit_res->get_status());
+			}
+			if (stopunit_res->is_gamestate_changed()) {
+				set_gamestate_changed();
+			}
+		}
 	} else {
 		unit_location_ = map_location();
 	}
 
-
-	set_gamestate_changed();
-	try {
-		manager::raise_unit_moved();
-	} catch (end_turn_exception&) {
-		is_ok(); //Silences "unchecked result" warning
-		throw;
+	if (is_gamestate_changed()) {
+		try {
+			manager::raise_unit_moved();
+		} catch (end_turn_exception&) {
+			is_ok(); //Silences "unchecked result" warning
+			throw;
+		}
 	}
 }
 
@@ -809,10 +826,13 @@ std::string stopunit_result::do_describe() const
 	s <<" stopunit by side ";
 	s << get_side();
 	if (remove_movement_){
-		s << " : remove movenent";
+		s << " : remove movement ";
+	}
+	if (remove_movement_ && remove_attacks_){
+		s << "and ";
 	}
 	if (remove_attacks_){
-		s << " remove attacks";
+		s << " remove attacks ";
 	}
 	s << "from unit on location "<<unit_location_;
 	s <<std::endl;
