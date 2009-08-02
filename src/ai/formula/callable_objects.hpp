@@ -19,20 +19,22 @@
 #include "../../formula.hpp"
 #include "../../formula_callable.hpp"
 
-class formula_ai;
+namespace ai {
+	class formula_ai;
+}
 
 namespace game_logic {
 
 class attack_map_callable : public formula_callable {
 public:
 	typedef std::multimap<map_location, map_location> move_map;
-	attack_map_callable(const formula_ai& ai, const move_map& srcdst, const unit_map& units)
+	attack_map_callable(const ai::formula_ai& ai, const move_map& srcdst, const unit_map& units)
 		: srcdst_(srcdst), units_(units), ai_(ai)
 	{}
 private:
 	const move_map& srcdst_;
 	const unit_map& units_;
-	const formula_ai& ai_;
+	const ai::formula_ai& ai_;
 
 	variant get_value(const std::string& key) const;
 
@@ -49,7 +51,7 @@ class attack_callable : public formula_callable {
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
-	attack_callable(const formula_ai& ai, const map_location& move_from,
+	attack_callable(const ai::formula_ai& ai, const map_location& move_from,
 			    const map_location& src, const map_location& dst, int weapon);
 
 	const map_location& move_from() const { return move_from_; }
@@ -272,17 +274,17 @@ public:
 		variant attacks_cache;
 	};
 
-	void swap_position(formula_ai& ai);
+	void swap_position(ai::formula_ai& ai);
 
 	class swapper {
 	public:
-		formula_ai& ai;
+		ai::formula_ai& ai;
 		unit_map& a;
 		unit_map& b;
 		move_map_backup backup;
 		void swap();
 
-		swapper(formula_ai& ai, position_callable& pos);
+		swapper(ai::formula_ai& ai, position_callable& pos);
 
 		~swapper();
 	};

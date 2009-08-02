@@ -17,14 +17,16 @@
 
 #include "../../formula_function.hpp"
 
-class formula_ai;
+namespace ai {
+	class formula_ai;
+}
 
 namespace game_logic {
 
 class ai_function_symbol_table : public function_symbol_table {
 
 public:
-	explicit ai_function_symbol_table(formula_ai& ai) :
+	explicit ai_function_symbol_table(ai::formula_ai& ai) :
 		ai_(ai),
 		move_functions()
 	{}
@@ -33,7 +35,7 @@ public:
 	                               const std::vector<expression_ptr>& args) const;
 
 private:
-	formula_ai& ai_;
+	ai::formula_ai& ai_;
 	std::set<std::string> move_functions;
 };
 

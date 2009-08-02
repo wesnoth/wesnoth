@@ -41,6 +41,8 @@ static lg::log_domain log_formula_ai("ai/formula_ai");
 
 using namespace game_logic;
 
+namespace ai {
+
 game_logic::candidate_action_ptr formula_ai::load_candidate_action_from_config(const config& cfg)
 {
 	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table);
@@ -55,7 +57,7 @@ int formula_ai::get_recursion_count() const{
 }
 
 
-formula_ai::formula_ai(ai::default_ai_context &context, const config &cfg) :
+formula_ai::formula_ai(default_ai_context &context, const config &cfg) :
 	ai_default(context,cfg),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
@@ -312,9 +314,9 @@ void formula_ai::prepare_move() const
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
-		if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
+		if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
 			LOG_AI << "Falling back to default AI.\n";
-			ai::ai_ptr fallback( ai::manager::create_transient_ai(ai::manager::AI_TYPE_DEFAULT, config(), this));
+			ai_ptr fallback( manager::create_transient_ai(manager::AI_TYPE_DEFAULT, config(), this));
 			if (fallback){
 				fallback->play_turn();
 			}
@@ -435,7 +437,7 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
             destination = map_location();
 
             for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-		typedef formula_ai::move_map::const_iterator Itor;
+		typedef move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst_.equal_range(src);
 
                 bool found = false;
@@ -492,7 +494,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 		const move_callable* move = try_convert_variant<move_callable>(action);
 		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(action);
 		const attack_callable* attack = try_convert_variant<attack_callable>(action);
-		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(action);
+		const attack_analysis* _attack_analysis = try_convert_variant<attack_analysis>(action);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(action);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
@@ -501,7 +503,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 		prepare_move();
 		
 		if( move || move_partial ) {
-			ai::move_result_ptr move_result;
+			move_result_ptr move_result;
 
 			if(move)
 				move_result = execute_move_action(move->src(), move->dst(), true);
@@ -532,7 +534,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 				made_moves.push_back(action);		
 		} else if(attack) {
 			bool gamestate_changed = false;
-			ai::move_result_ptr move_result;
+			move_result_ptr move_result;
 
 			if( attack->move_from() != attack->src() ) {
 				move_result = execute_move_action(attack->move_from(), attack->src(), false);
@@ -552,7 +554,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 
 			if (!move_result || move_result->is_ok() ) {
 				//if move wasn't done at all or was done successfully
-				ai::attack_result_ptr attack_result = execute_attack_action(attack->src(), attack->dst(), attack->weapon() );
+				attack_result_ptr attack_result = execute_attack_action(attack->src(), attack->dst(), attack->weapon() );
 				gamestate_changed |= attack_result->is_gamestate_changed();
 				if (!attack_result->is_ok()) {
 					//attack failed
@@ -569,19 +571,19 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 			if (gamestate_changed) {
 			      made_moves.push_back(action);
 			}
-		} else if(attack_analysis) {
+		} else if(_attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
 			//Then the AI can get run again and re-choose.
-			assert(attack_analysis->movements.empty() == false);
+			assert(_attack_analysis->movements.empty() == false);
 
 			//make sure that unit which has to attack is at given position and is able to attack
-			unit_map::const_iterator unit = units_.find(attack_analysis->movements.front().first);
+			unit_map::const_iterator unit = units_.find(_attack_analysis->movements.front().first);
 			if ( ( unit == units_.end() ) || (unit->second.attacks_left() == 0) )
 				continue;
 
-			const map_location& move_from = attack_analysis->movements.front().first;
-			const map_location& att_src = attack_analysis->movements.front().second;
-			const map_location& att_dst = attack_analysis->target;
+			const map_location& move_from = _attack_analysis->movements.front().first;
+			const map_location& att_src = _attack_analysis->movements.front().second;
+			const map_location& att_dst = _attack_analysis->target;
 
 			//check if target is still valid
 			unit = units_.find(att_dst);
@@ -602,14 +604,14 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 				battle_context bc(get_info().units,
 				                  att_src, att_dst, -1, -1, 1.0, NULL,
 								  &get_info().units.find(att_src)->second);
-				attack_enemy(attack_analysis->movements.front().second,
-				             attack_analysis->target,
+				attack_enemy(_attack_analysis->movements.front().second,
+				             _attack_analysis->target,
 							 bc.get_attacker_stats().attack_num,
 							 bc.get_defender_stats().attack_num);
 			}
 			made_moves.push_back(action);
 		} else if(recruit_command) {
-			ai::recruit_result_ptr recruit_result = execute_recruit_action(recruit_command->type(), recruit_command->loc());
+			recruit_result_ptr recruit_result = execute_recruit_action(recruit_command->type(), recruit_command->loc());
 
 			//is_ok()==true means that the action is successful (eg. no unexpected events)
 			//is_ok() must be checked or the code will complain :)
@@ -679,7 +681,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if( action.is_string() && (action.as_string() == "end_turn" || action.as_string() == "end" )  ) {
 			return variant();
 		} else if(fallback_command) {
-			if(get_recursion_count()<ai::recursion_counter::MAX_COUNTER_VALUE) {
+			if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
 				if(fallback_command->key() == "human")
 				{
 					//we want give control of the side to human for the rest of this turn
@@ -687,7 +689,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai::ai_ptr fallback( ai::manager::create_transient_ai(fallback_command->key(), config(), this));
+					ai_ptr fallback( manager::create_transient_ai(fallback_command->key(), config(), this));
 					if(fallback) {
 						fallback->play_turn();
 					}
@@ -787,10 +789,10 @@ variant formula_ai::get_value(const std::string& key) const
 			return attacks_cache_;
 		}
 
-		std::vector<ai::attack_analysis> attacks = const_cast<formula_ai*>(this)->analyze_targets(srcdst_, dstsrc_, enemy_srcdst_, enemy_dstsrc_);
+		std::vector<attack_analysis> attacks = const_cast<formula_ai*>(this)->analyze_targets(srcdst_, dstsrc_, enemy_srcdst_, enemy_dstsrc_);
 		std::vector<variant> vars;
-		for(std::vector<ai::attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-			vars.push_back(variant(new ai::attack_analysis(*i)));
+		for(std::vector<attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+			vars.push_back(variant(new attack_analysis(*i)));
 		}
 
 		attacks_cache_ = variant(&vars);
@@ -1170,3 +1172,5 @@ config formula_ai::to_config() const
 {
 	return cfg_;//@todo 1.7 add a proper serialization
 }
+
+} // end of namespace ai

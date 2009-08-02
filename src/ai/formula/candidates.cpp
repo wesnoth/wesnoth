@@ -23,9 +23,10 @@
 static lg::log_domain log_formula_ai("ai/formula_ai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
+
 namespace game_logic {
 
-void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table)
+void candidate_action_manager::load_config(const config& cfg, ai::formula_ai* ai, function_symbol_table* function_table)
 {
 	// register candidate actions
 	foreach (const config &rc_action, cfg.child_range("register_candidate_action"))
@@ -39,7 +40,7 @@ void candidate_action_manager::load_config(const config& cfg, formula_ai* ai, fu
 	}
 }
 
-candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, formula_ai* ai, function_symbol_table* function_table)
+candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, ai::formula_ai* ai, function_symbol_table* function_table)
 {
 	candidate_action_ptr new_ca;
 	const t_string &name = rc_action["name"];
@@ -61,7 +62,7 @@ candidate_action_ptr candidate_action_manager::load_candidate_action_from_config
 	return new_ca;
 }
 
-bool candidate_action_manager::evaluate_candidate_actions(formula_ai* ai, unit_map& units)
+bool candidate_action_manager::evaluate_candidate_actions(ai::formula_ai* ai, unit_map& units)
 {
 	evaluated_candidate_actions_.clear();
 
@@ -89,7 +90,7 @@ base_candidate_action::base_candidate_action(const std::string& name,
 {}
 
 int base_candidate_action::execute_formula(const const_formula_ptr& formula,
-			const game_logic::formula_callable& callable, const formula_ai* ai)
+			const game_logic::formula_callable& callable, const ai::formula_ai* ai)
 {
 	int res = 0;
 	try {
@@ -124,7 +125,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	}
 }
 
-variant candidate_action_with_filters::do_filtering(formula_ai* ai, variant& input, game_logic::const_formula_ptr formula)
+variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, game_logic::const_formula_ptr formula)
 {
 	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 	callable.add_ref();
@@ -141,7 +142,7 @@ move_candidate_action::move_candidate_action(const std::string& name,
 	, my_unit_()
 {}
 
-void move_candidate_action::evaluate(formula_ai* ai, unit_map& units)
+void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 {
 	score_ = 0;
 
@@ -199,7 +200,7 @@ attack_candidate_action::attack_candidate_action(const std::string& name,
 	, enemy_unit_()
 {}
 
-void attack_candidate_action::evaluate(formula_ai* ai, unit_map& units)
+void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 {
 	score_ = 0;
 

@@ -90,7 +90,7 @@ void position_callable::get_inputs(std::vector<game_logic::formula_input>* input
 	inputs->push_back(game_logic::formula_input("chance", game_logic::FORMULA_READ_ONLY));
 }
 
-void position_callable::swap_position(formula_ai& ai) {
+void position_callable::swap_position(ai::formula_ai& ai) {
 	ai.get_info().units.swap(units_);
 }
 
@@ -98,7 +98,7 @@ void position_callable::swapper::swap() {
 	a.swap(b);
 	ai.swap_move_map(backup);
 }
-position_callable::swapper::swapper(formula_ai& ai, position_callable& pos) :
+position_callable::swapper::swapper(ai::formula_ai& ai, position_callable& pos) :
 	ai(ai),
 	a(ai.get_info().units),
 	b(pos.units_),
@@ -131,7 +131,7 @@ void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 }
 
 
-attack_callable::attack_callable(const formula_ai& ai, const map_location& move_from,
+attack_callable::attack_callable(const ai::formula_ai& ai, const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(ai.get_info().units, src, dst, weapon, -1, 1.0, NULL,

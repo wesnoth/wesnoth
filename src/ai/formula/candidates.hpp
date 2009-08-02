@@ -40,7 +40,7 @@ public:
 	virtual ~base_candidate_action() {}
 
 	//evaluate candidate action using eval_ formula
-	virtual void evaluate(formula_ai* /*ai*/, unit_map& /*units*/) {}
+	virtual void evaluate(ai::formula_ai* /*ai*/, unit_map& /*units*/) {}
 
 	//adds needed callable objects to callable map
 	virtual void update_callable_map(game_logic::map_formula_callable& /*callable*/) {}
@@ -56,7 +56,7 @@ public:
 
 protected:
 	int execute_formula(const const_formula_ptr& formula,
-			const game_logic::formula_callable& callable, const formula_ai* ai);
+			const game_logic::formula_callable& callable, const ai::formula_ai* ai);
 
 	std::string name_;
 	std::string type_;
@@ -84,13 +84,13 @@ public:
 	{}
 
 	//register candidate actions from config
-	void load_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
+	void load_config(const config& cfg, ai::formula_ai* ai, function_symbol_table* function_table);
 
 	//register a single candidate action from config
-	candidate_action_ptr load_candidate_action_from_config(const config& cfg, formula_ai* ai, function_symbol_table* function_table);
+	candidate_action_ptr load_candidate_action_from_config(const config& cfg, ai::formula_ai* ai, function_symbol_table* function_table);
 
 	//evaluate candidate action, return true if we have candidate action that have score > 0
-	bool evaluate_candidate_actions(formula_ai* ai, unit_map& units);
+	bool evaluate_candidate_actions(ai::formula_ai* ai, unit_map& units);
 
 	const_formula_ptr get_best_action_formula() {
 		if( evaluated_candidate_actions_.empty() )
@@ -126,7 +126,7 @@ class candidate_action_with_filters : public base_candidate_action {
 public:
 	candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 protected:
-        variant do_filtering(formula_ai* ai, variant& input, game_logic::const_formula_ptr formula);
+        variant do_filtering(ai::formula_ai* ai, variant& input, game_logic::const_formula_ptr formula);
 
 	game_logic::candidate_action_filters filter_map_;
 };
@@ -135,7 +135,7 @@ class move_candidate_action : public candidate_action_with_filters {
 public:
 	move_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 
-	virtual void evaluate(formula_ai* ai, unit_map& units);
+	virtual void evaluate(ai::formula_ai* ai, unit_map& units);
 
 	virtual void update_callable_map(game_logic::map_formula_callable& callable);
 
@@ -147,7 +147,7 @@ class attack_candidate_action : public candidate_action_with_filters {
 public:
 	attack_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 
-	virtual void evaluate(formula_ai* ai, unit_map& units);
+	virtual void evaluate(ai::formula_ai* ai, unit_map& units);
 
 	virtual void update_callable_map(game_logic::map_formula_callable& callable);
 protected:

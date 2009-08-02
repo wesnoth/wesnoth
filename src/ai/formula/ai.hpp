@@ -52,16 +52,16 @@ typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > uni
 
 }
 
-class formula_ai : public ai::ai_default {
+namespace ai {
+
+class formula_ai : public ai_default {
 public:
-	explicit formula_ai(ai::default_ai_context &context, const config &cfg);
+	explicit formula_ai(default_ai_context &context, const config &cfg);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
 	virtual std::string describe_self();
 	virtual config to_config() const;
-
-	typedef ai::move_map move_map;
 
 	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
 
@@ -136,7 +136,7 @@ public:
 
 private:
 	const config &cfg_;
-	ai::recursion_counter recursion_counter_;
+	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();
 	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
@@ -163,8 +163,10 @@ private:
 	game_logic::ai_function_symbol_table function_table;
 	game_logic::candidate_action_manager candidate_action_manager_;
 
-	friend class ai::ai_default;
+	friend class ai_default;
 };
+
+} //end of namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(pop)

@@ -33,9 +33,9 @@
 #pragma warning(disable:4250)
 #endif
 
-class formula_ai;
-
 namespace ai {
+
+class formula_ai;
 
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public readwrite_context_proxy, public interface {
