@@ -1295,7 +1295,7 @@ bool game_controller::play_multiplayer()
 				}
 				else
 				{
-					throw game::mp_server_error("No path given for mp server prgoram.");
+					throw game::mp_server_error("No path given for mp server program.");
 				}
 			}
 
