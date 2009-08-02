@@ -448,16 +448,9 @@ map_location ai_default::move_unit(map_location from, map_location to, moves_map
 
 		// If we can make it back to the keep and then to our original destination, do so.
 		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
-			from = readwrite_context_proxy::move_unit(from,start_pos,possible_moves);
+			from = readwrite_context_proxy::move_unit_partial(from,start_pos,possible_moves);
 			if(from != start_pos) {
 				return from;
-			}
-
-			const unit_map::iterator itor = units_.find(from);
-			if(itor != units_.end()) {
-				// Just set the movement to one less than the maximum possible, since we know
-				// we can reach the destination, and we're going to move there immediately.
-				itor->second.set_movement(itor->second.total_movement()-1);
 			}
 
 			move_map srcdst, dstsrc;
