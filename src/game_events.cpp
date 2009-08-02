@@ -235,7 +235,7 @@ static void show_wml_errors()
 	fill_wml_messages_map(messages, lg::wml_error);
 
 	// Show the messages collected
-	std::string caption = "Invalid WML found";
+	const std::string caption = "Invalid WML found";
 	for(std::map<std::string, int>::const_iterator itor = messages.begin();
 			itor != messages.end(); ++itor) {
 
@@ -259,7 +259,7 @@ static void show_wml_messages()
 	fill_wml_messages_map(messages, wml_messages_stream);
 
 	// Show the messages collected
-	std::string caption = "WML";
+	const std::string caption = "WML";
 	for(std::map<std::string, int>::const_iterator itor = messages.begin();
 			itor != messages.end(); ++itor) {
 
