@@ -59,6 +59,7 @@ void configuration::init(const config &game_config)
 	well_known_aspects.clear();
 	well_known_aspects.push_back(well_known_aspect("aggression"));
 	well_known_aspects.push_back(well_known_aspect("attack_depth"));
+	well_known_aspects.push_back(well_known_aspect("attacks"));
 	well_known_aspects.push_back(well_known_aspect("avoid",false));
 	well_known_aspects.push_back(well_known_aspect("caution"));
 	well_known_aspects.push_back(well_known_aspect("grouping"));
@@ -207,25 +208,12 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 	}
 	DBG_AI_CONFIGURATION << "Config contains:"<< std::endl << cfg << std::endl;
 
-	bool default_config_applied = false;
-	//check for default config
-	foreach (const config &aiparam, cfg.child_range("ai")) {
-		if (aiparam.has_attribute("default_config_applied")) {
-			default_config_applied = true;
-			break;
-		}
-	}
-
-	if (!default_config_applied) {
-		//insert default config at the beginning
-		if (default_config_) {
-			LOG_AI_CONFIGURATION << "Applying default configuration" << std::endl;
-			cfg.add_child_at("ai",default_config_,0);
-		} else {
-			WRN_AI_CONFIGURATION << "Default configuration is not available, do not applying it" << std::endl;
-		}
+	//insert default config at the beginning
+	if (default_config_) {
+		LOG_AI_CONFIGURATION << "Applying default configuration" << std::endl;
+		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		DBG_AI_CONFIGURATION << "Default configuration already applied" << std::endl;
+		WRN_AI_CONFIGURATION << "Default configuration is not available, do not applying it" << std::endl;
 	}
 
 	//find version
@@ -262,8 +250,19 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 	LOG_AI_CONFIGURATION << "Merging AI aspect with the same id"<< std::endl;
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
+	LOG_AI_CONFIGURATION << "Removing duplicate [default] tags from aspects"<< std::endl;
+	foreach (config &aspect_cfg, parsed_cfg.child_range("aspect")) {
+		if (!aspect_cfg.child("default")) {
+			WRN_AI_CONFIGURATION << "Aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
+			continue;
+		}
+		config c = aspect_cfg.child("default");
+		aspect_cfg.clear_children("default");
+		aspect_cfg.add_child("default",c);
+	}
+
 	LOG_AI_CONFIGURATION << "Finally, applying [modify_ai] tags to configuration"<< std::endl;
-	foreach (const config &mod_ai, cfg.child_range("modify_ai")){
+	foreach (const config &mod_ai, parsed_cfg.child_range("modify_ai")){
 		//do ai config modification without redeployement
 		modify_ai_configuration(mod_ai,parsed_cfg);
 	}
@@ -296,11 +295,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 	fallback_stage_cfg["id"] = "fallback";
 	config fallback_stage_cfg_ai;
 
-	bool default_config_applied = false;
 	foreach (config &aiparam, cfg.child_range("ai")) {
-		if (aiparam.has_attribute("default_config_applied")) {
-			default_config_applied = true;
-		}
 		if (!aiparam.has_attribute("turns") && !aiparam.has_attribute("time_of_day")) {
 			foreach (const well_known_aspect &wka, well_known_aspects) {
 				if (wka.was_an_attribute_) {
@@ -323,10 +318,6 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 	fallback_stage_cfg.add_child("ai",fallback_stage_cfg_ai);
 
 	parsed_cfg.add_child("stage",fallback_stage_cfg);
-	if (default_config_applied) {
-		parsed_cfg["default_config_applied"] = "yes";
-		parsed_cfg.remove_attribute("default_config_applied");
-	}
 
 	cfg = config();
 	cfg.add_child("ai",parsed_cfg);
