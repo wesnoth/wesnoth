@@ -67,6 +67,18 @@ void ai_composite::play_turn(){
 }
 
 
+std::string ai_composite::evaluate(const std::string& str)
+{
+	config cfg;
+	cfg["engine"] = "fai";//@todo 1.9 : consider allowing other engines to evaluate
+	engine_ptr e_ptr = get_engine(cfg);
+	if (!e_ptr) {
+		return interface::evaluate(str);
+	}
+	return e_ptr->evaluate(str);
+}
+
+
 void ai_composite::new_turn()
 {
 	//@todo 1.7 replace with event system

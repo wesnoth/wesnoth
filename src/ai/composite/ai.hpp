@@ -65,6 +65,11 @@ public:
 
 
 	/**
+	 * Evaluate command (using fai)
+	 */
+        virtual std::string evaluate(const std::string& str);
+
+	/**
 	 * On new turn
 	 */
 	virtual void new_turn();

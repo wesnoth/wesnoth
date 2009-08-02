@@ -98,6 +98,13 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &/*context*/
 }
 
 
+std::string engine_fai::evaluate(const std::string &/*str*/)
+{
+	/*return formula_ai_.evaluate(str);*/
+	return "formula ai evaluation is temporary disabled";
+}
+
+
 std::string engine_fai::get_name() const
 {
 	return "fai";
