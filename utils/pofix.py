@@ -22,6 +22,10 @@
 # it can be discarded (assunming that it has in fact been used to transform
 # all incoming .po files in the meantime).
 #
+# Example usage:
+# utils/pofix.py po/wesnoth*/*.po*
+# find data/campaigns/ -name '*.cfg' | xargs utils/pofix.py
+#
 # Three lines in the structure below, marked with "#*", imply changes of
 # meaning that may require a change in translation.
 
