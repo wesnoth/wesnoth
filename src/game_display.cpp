@@ -32,6 +32,7 @@ Growl_Delegate growl_obj;
 #endif
 
 #ifdef HAVE_QTDBUS
+#define QT_NO_KEYWORDS
 #include <QtDBus>
 #endif
 
