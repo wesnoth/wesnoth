@@ -138,7 +138,7 @@ protected:
 	 * Our own version of 'attack_enemy'. We record all attacks to support
 	 * group attacking.
 	 */
-	void attack_enemy(const location& attacking_unit, const location& target,
+	bool attack_enemy(const location& attacking_unit, const location& target,
 			int att_weapon, int def_weapon);
 
 

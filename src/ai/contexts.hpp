@@ -290,7 +290,7 @@ public:
 	virtual team& current_team_w() = 0;
 
 
-	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
+	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
 
 
 	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves) = 0;
@@ -708,9 +708,9 @@ public:
 	}
 
 
-	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon)
+	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon)
 	{
-		target_->attack_enemy(u, target, att_weapon, def_weapon);
+		return target_->attack_enemy(u, target, att_weapon, def_weapon);
 	}
 
 
@@ -1181,7 +1181,7 @@ public:
 	 * @param def_weapon   The number of the weapon (0-based) which should be used
 	 *                     by the defender. (It must be a valid weapon of the defender.)
 	 */
-	virtual void attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon);
+	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon);
 
 
 	/**

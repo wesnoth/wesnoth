@@ -246,75 +246,11 @@ void readonly_context_impl::handle_generic_event(const std::string& /*event_name
 
 bool readwrite_context_impl::recruit(const std::string& unit_name, map_location loc)
 {
-	const std::set<std::string>& recruits = current_team().recruits();
-
-	const std::set<std::string>::const_iterator i = recruits.find(unit_name);
-	if(i == recruits.end()) {
-		return false;
+	recruit_result_ptr recruit_res = execute_recruit_action(unit_name,loc);
+	if (!recruit_res->is_ok()) {
+		ERR_AI << "recruit failed"<< std::endl;
 	}
-
-	const int num = std::distance(recruits.begin(),i);
-
-	// We have to add the recruit command now, because when the unit
-	// is created it has to have the recruit command in the recorder
-	// to be able to put random numbers into to generate unit traits.
-	// However, we're not sure if the transaction will be successful,
-	// so use a replay_undo object to cancel it if we don't get
-	// a confirmation for the transaction.
-	recorder.add_recruit(num,loc);
-	replay_undo replay_guard(recorder);
-
-	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name);
-	if(u == unit_type_data::types().end() || u->first == "dummy_unit") {
-		return false;
-	}
-
-	// Check if we have enough money
-	if(current_team().gold() < u->second.cost()) {
-		return false;
-	}
-	LOG_AI << "trying recruit: team=" << (get_side()) <<
-	    " type=" << unit_name <<
-	    " cost=" << u->second.cost() <<
-	    " loc=(" << loc << ')' <<
-	    " gold=" << (current_team().gold()) <<
-	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
-
-
-	const events::command_disabler disable_commands;
-	// See if we can actually recruit (i.e. have enough room etc.)
-	const std::string recruit_err = find_recruit_location(get_side(), loc);
-	if(recruit_err.empty()) {
-		const unit new_unit(&get_info().units, &u->second, get_side(), true);
-		place_recruit(new_unit, loc, false, preferences::show_ai_moves());
-
-		statistics::recruit_unit(new_unit);
-		current_team_w().spend_gold(u->second.cost());
-
-		// Confirm the transaction - i.e. don't undo recruitment
-		replay_guard.confirm_transaction();
-
-		raise_unit_recruited();
-		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
-		LOG_AI <<
-		"recruit confirmed: team=" << get_side() <<
-		" units=" << data.units <<
-		" gold=" << data.gold <<
-		((data.net_income < 0) ? "" : "+") <<
-		data.net_income << "\n";
-		recorder.add_checksum_check(loc);
-		return true;
-	} else {
-		const team_data data = calculate_team_data(current_team(),get_side(),get_info().units);
-		LOG_AI << recruit_err << "\n";
-		LOG_AI <<
-		"recruit UNconfirmed: team=" << (get_side()) <<
-		" units=" << data.units <<
-		" gold=" << data.gold <<
-		((data.net_income < 0) ? "" : "+") <<
-		data.net_income << "\n";
-		return false;
-	}
+	return recruit_res->is_gamestate_changed();
 }
 
 
@@ -345,185 +281,24 @@ void readonly_context_impl::log_message(const std::string& msg)
 
 
 map_location readwrite_context_impl::move_unit(map_location from, map_location to,
-		const moves_map &possible_moves)
+		const moves_map &/*possible_moves*/)
 {
-	const map_location loc = move_unit_partial(from,to,possible_moves);
-	const unit_map::iterator u = get_info().units.find(loc);
-	if(u != get_info().units.end()) {
-		if(u->second.movement_left()==u->second.total_movement()) {
-			u->second.set_movement(0);
-			u->second.set_state(unit::STATE_NOT_MOVED,true);
-			raise_unit_moved();
-		} else if (from == loc) {
-			u->second.set_movement(0);
-			raise_unit_moved();
-		}
+	move_result_ptr move_res = execute_move_action(from,to,true);
+	if (!move_res->is_ok()) {
+		ERR_AI << "full move failed"<< std::endl;
 	}
-	return loc;
+	return move_res->get_unit_location();
 }
 
 
 map_location readwrite_context_impl::move_unit_partial(map_location from, map_location to,
-		const moves_map &possible_moves)
+		const moves_map &/*possible_moves)*/)
 {
-	LOG_AI << "readwrite_context_impl::move_unit " << from << " -> " << to << '\n';
-	assert(to.valid() && to.x <= MAX_MAP_AREA && to.y <= MAX_MAP_AREA);
-	// Stop the user from issuing any commands while the unit is moving.
-	const events::command_disabler disable_commands;
-
-	log_scope2(log_ai, "move_unit");
-	unit_map::iterator u_it = get_info().units.find(from);
-	if(u_it == get_info().units.end()) {
-		ERR_AI << "Could not find unit at " << from << '\n';
-		assert(false);
-		return map_location();
+	move_result_ptr move_res = execute_move_action(from,to,false);
+	if (!move_res->is_ok()) {
+		ERR_AI << "partial move failed"<< std::endl;
 	}
-
-	if(from == to) {
-		LOG_AI << "moving unit at " << from << " on spot. resetting moves\n";
-		return to;
-	}
-
-	const bool show_move = preferences::show_ai_moves();
-
-	const std::map<map_location,paths>::const_iterator p_it = possible_moves.find(from);
-
-	std::vector<map_location> steps;
-
-	if(p_it != possible_moves.end()) {
-		const paths& p = p_it->second;
-		paths::dest_vect::const_iterator rt = p.destinations.find(to);
-		if (rt != p.destinations.end())
-		{
-			u_it->second.set_movement(rt->move_left);
-
-			while (rt != p.destinations.end() &&
-			       get_info().units.find(to) != get_info().units.end() && from != to)
-			{
-				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
-				LOG_AI << "\t" << get_info().units.find(to)->second.underlying_id() <<" already on " << to << "\n";
-				LOG_AI <<"\tremoving last step\n";
-				to = rt->prev;
-				rt = p.destinations.find(to);
-				LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-			}
-
-			if (rt != p.destinations.end()) // First step is starting hex
-			{
-				steps = p.destinations.get_path(rt);
-				unit_map::const_iterator utest=get_info().units.find(*(steps.begin()));
-				if(utest != get_info().units.end() && current_team().is_enemy(utest->second.side())){
-					ERR_AI << "AI tried to move onto existing enemy unit at" << *steps.begin() << '\n';
-					//			    return(from);
-				}
-
-				// Check if there are any invisible units that we uncover
-				for(std::vector<map_location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
-					map_location adj[6];
-					get_adjacent_tiles(*i,adj);
-
-					size_t n;
-					for(n = 0; n != 6; ++n) {
-
-						// See if there is an enemy unit next to this tile.
-						// If it's invisible, we need to stop: we're ambushed.
-						// If it's not, we must be a skirmisher, otherwise AI wouldn't try.
-
-						// Or would it?  If it doesn't cheat, it might...
-						const unit_map::const_iterator u = get_info().units.find(adj[n]);
-						// If level 0 is invisible it ambush us too
-						if (u != get_info().units.end() && (u->second.emits_zoc() || u->second.invisible(adj[n], get_info().units, get_info().teams))
-								&& current_team().is_enemy(u->second.side())) {
-							if (u->second.invisible(adj[n], get_info().units, get_info().teams)) {
-								to = *i;
-								u->second.ambush();
-								steps.erase(i,steps.end());
-								break;
-							} else {
-								if (!u_it->second.get_ability_bool("skirmisher",*i)){
-									ERR_AI << "AI tried to skirmish with non-skirmisher\n";
-									LOG_AI << "\tresetting destination from " <<to;
-									to = *i;
-									LOG_AI << " to " << to;
-									steps.erase(i,steps.end());
-									while(steps.empty() == false && (!(get_info().units.find(to) == get_info().units.end() || from == to))){
-										to = *(steps.end()-1);
-										steps.pop_back();
-										LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-									}
-
-									break;
-								}
-							}
-						}
-					}
-
-					if(n != 6) {
-						u_it->second.set_movement(0); // Enter enemy ZoC, no movement left
-						break;
-					}
-				}
-			}
-
-			if(steps.empty() || steps.back() != to) {
-				//Add the destination to the end of the steps if it's not
-				//already there.
-				steps.push_back(to);
-			}
-
-			if(show_move && unit_display::unit_visible_on_path(steps,
-						u_it->second, get_info().units,get_info().teams)) {
-				get_info().disp.display_unit_hex(from);
-
-				unit_map::iterator up = get_info().units.find(u_it->first);
-				unit_display::move_unit(steps,up->second,get_info().teams);
-			} else if(steps.size()>1) {
-				unit_map::iterator up = get_info().units.find(u_it->first);
-				std::vector<map_location>::const_reverse_iterator last_step = steps.rbegin();
-				std::vector<map_location>::const_reverse_iterator before_last = last_step +1;
-				up->second.set_facing(before_last->get_relative_dir(*last_step));
-			}
-		}
-	}
-	//FIXME: probably missing some "else" here
-	// It looks like if the AI doesn't find a route in possible_move,
-	// she will just teleport her unit between 'from' and 'to'
-	// I suppose this never happen, but in the meantime, add code for replay
-	if (steps.empty()) {
-		steps.push_back(from);
-		steps.push_back(to);
-	}
-
-	std::pair<map_location,unit> *p = get_info().units.extract(u_it->first);
-
-	p->first = to;
-	get_info().units.insert(p);
-	p->second.set_standing();
-	if(get_info().map.is_village(to)) {
-		// If a new village is captured, disallow any future movement.
-		if (!current_team().owns_village(to))
-			get_info().units.find(to)->second.set_movement(-1);
-		get_village(to,get_info().disp,get_info().teams,get_side()-1,get_info().units);
-	}
-
-	if(show_move) {
-		get_info().disp.invalidate(to);
-		get_info().disp.draw();
-	}
-
-	recorder.add_movement(steps);
-
-	game_events::fire("moveto",to,from);
-
-	if((get_info().teams.front().uses_fog() || get_info().teams.front().uses_shroud()) &&
-			!get_info().teams.front().fogged(to)) {
-		game_events::fire("sighted",to);
-	}
-
-	// would have to go via mousehandler to make this work:
-	//get_info().disp.unhighlight_reach();
-	raise_unit_moved();
-	return to;
+	return move_res->get_unit_location();
 }
 
 
@@ -616,73 +391,14 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 }
 
 
-void readwrite_context_impl::attack_enemy(const map_location u,
-		const map_location target, int weapon, int def_weapon)
+bool readwrite_context_impl::attack_enemy(const map_location u,
+		const map_location target, int weapon, int /*def_weapon*/)
 {
-	// Stop the user from issuing any commands while the unit is attacking
-	const events::command_disabler disable_commands;
-
-	if(!get_info().units.count(u))
-	{
-		ERR_AI << "attempt to attack without attacker\n";
-		return;
+	attack_result_ptr attack_res = execute_attack_action(u,target,weapon);
+	if (!attack_res->is_ok()) {
+		ERR_AI << "attack failed"<< std::endl;
 	}
-	if (!get_info().units.count(target))
-	{
-		ERR_AI << "attempt to attack without defender\n";
-		return;
-	}
-
-	if(get_info().units.find(target)->second.incapacitated()) {
-		ERR_AI << "attempt to attack unit that is petrified\n";
-		return;
-	}
-	if(!get_info().units.find(u)->second.attacks_left()) {
-		ERR_AI << "attempt to attack twice with the same unit\n";
-		return;
-	}
-
-	if(weapon >= 0) {
-		recorder.add_attack(u, target, weapon, def_weapon);
-	}
-	try {
-		rand_rng::invalidate_seed();
-		rand_rng::clear_new_seed_callback();
-		while (!rand_rng::has_valid_seed()) {
-			manager::raise_user_interact();
-			manager::raise_sync_network();
-			SDL_Delay(10);
-		}
-		recorder.add_seed("attack", rand_rng::get_last_seed());
-		attack(u, target, weapon, def_weapon, get_info().units);
-	}
-	catch (end_level_exception&)
-	{
-		dialogs::advance_unit(u, true);
-
-		const unit_map::const_iterator defender = get_info().units.find(target);
-		if(defender != get_info().units.end()) {
-			const size_t defender_team = size_t(defender->second.side()) - 1;
-			if(defender_team < get_info().teams.size()) {
-				dialogs::advance_unit(target, !get_info().teams[defender_team].is_human());
-			}
-		}
-
-		throw;
-	}
-	dialogs::advance_unit(u, true);
-
-	const unit_map::const_iterator defender = get_info().units.find(target);
-	if(defender != get_info().units.end()) {
-		const size_t defender_team = size_t(defender->second.side()) - 1;
-		if(defender_team < get_info().teams.size()) {
-			dialogs::advance_unit(target, !get_info().teams[defender_team].is_human());
-		}
-	}
-
-	check_victory();
-	raise_enemy_attacked();
-
+	return attack_res->is_gamestate_changed();
 }
 
 

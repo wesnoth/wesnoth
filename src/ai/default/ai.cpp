@@ -485,11 +485,11 @@ map_location ai_default::move_unit(map_location from, map_location to, moves_map
 	}
 }
 
-void ai_default::attack_enemy(const map_location& attacking_unit, const map_location& target,
+bool ai_default::attack_enemy(const map_location& attacking_unit, const map_location& target,
 		int att_weapon, int def_weapon)
 {
 	add_recent_attack(attacking_unit);//@todo 1.7 replace by event system
-	readwrite_context_proxy::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
+	return readwrite_context_proxy::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
 }
 
 
