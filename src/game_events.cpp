@@ -900,7 +900,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			}
 			// Override AI parameters
 			if (ai.first != ai.second) {
-				teams[team_index].set_ai_parameters(ai);
+				//@todo 1.7: allow to change ai parameters in-flight
 			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
