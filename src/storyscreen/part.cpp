@@ -141,7 +141,7 @@ part::TEXT_BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 		if(s == "top") {
 			return part::TOP;
 		}
-		else if(s == "centered" || s == "center" || s == "middle") {
+		else if("middle") {
 			return part::MIDDLE;
 		}
 	}
@@ -154,7 +154,7 @@ part::TITLE_ALIGNMENT part::string_title_align(const std::string& s)
 		if(s == "right") {
 			return part::RIGHT;
 		}
-		else if(s == "centered" || s == "center" || s == "middle") {
+		else if(s == "center") {
 			return part::CENTERED;
 		}
 	}
