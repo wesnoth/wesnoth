@@ -25,8 +25,7 @@ Version 1.7.2+svn:
    * return 0 for length of arrays inside nonexistent containers (bug #13734)
    * [end_turn] now waits for the event to finish before ending the turn
    * it is now possible to use Pango markup in storyscreen text
-   * it is now possible to specify a title= in [story] [part]s (hidden by
-     default, use show_title=yes to display)
+   * it is now possible to specify a custom title= in [story] [part]s
    * [story] [part]s' text placement may be changed with text_layout=; it
      currently supports "top", "middle" and "bottom" (default)
  * Miscellaneous and bugfixes:

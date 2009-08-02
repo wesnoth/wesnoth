@@ -181,6 +181,9 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 	if(cfg.has_attribute("title")) {
 		text_title_ = cfg["title"];
+		if(!cfg.has_attribute("show_title")) {
+			show_title_ = true;
+		}
 	}
 	if(cfg.has_attribute("text_layout")) {
 		text_block_loc_ = string_tblock_loc(cfg["text_layout"]);
