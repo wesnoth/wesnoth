@@ -54,6 +54,16 @@ stringfixes = {
 "wesnoth-dm" : (
 ("Now. go forth", "Now, go forth"),
 ("but it the power it gives tends to magnifies any", "but the power it gives tends to magnify any"),
+("an endless steam of undead.", "an endless stream of undead."),
+("No! it's all over!", "No! It's all over!"),
+# double space fixes
+("Another  village  burned. Nobody to be seen!", "Another village burned. Nobody to be seen!"),
+("Your majesty, these are  no stray undead; This  lunatic, Iliah-Malal, has", "Your majesty, these are no stray undead; This lunatic, Iliah-Malal, has"),
+("The elves will not be able  to fight the", "The elves will not be able to fight the"),
+("If we are  to defeat the undead", "If we are to defeat the undead"),
+("but the King suggested  that everything would be clear", "but the King suggested that everything would be clear"),
+("the free tribes and  demand", "the free tribes and demand"),
+("and all but the  true people!", "and all but the true people!"),
 ),
 
 "wesnoth-httt" : (
@@ -181,6 +191,7 @@ stringfixes = {
 ("Thank you Tallin.", "Thank you, Tallin."),
 ("lords of light", "Lords of Light"),
 ("mater what race they come from - even orcs.", "matter what race they come from - even orcs."),
+("I think we have a chance to make new some allies here...", "I think we have a chance to make some new allies here..."),
 ),
 
 "wesnoth-low" :(
@@ -224,7 +235,9 @@ stringfixes = {
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1247795977	# Fri Jul 17 03:59:37 2009
+# date --utc "+%s  # %c"
+timecheck = 1249222895  # Sun 02 Aug 2009 02:21:35 PM UTC
+
 
 import os, sys, time, stat
 
