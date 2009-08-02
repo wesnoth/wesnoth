@@ -25,6 +25,8 @@
 #include "composite/engine.hpp"
 #include "composite/goal.hpp"
 
+#include "default/ai.hpp"
+
 #include "../callable_objects.hpp"
 #include "../dialogs.hpp"
 #include "../formula.hpp"
@@ -178,6 +180,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 		add_known_aspect("aggression",aggression_);
 		add_known_aspect("attack_depth",attack_depth_);
+		add_known_aspect("attacks",attacks_);
 		add_known_aspect("avoid",avoid_);
 		add_known_aspect("caution",caution_);
 		add_known_aspect("grouping",grouping_);
@@ -416,18 +419,6 @@ void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 }
 
 
-const terrain_filter& readonly_context_impl::get_avoid() const
-{
-	if (avoid_) {
-		return avoid_->get();
-	}
-	config cfg;
-	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),get_info().units);
-	return tf;
-}
-
-
 double readonly_context_impl::get_aggression() const
 {
 	if (aggression_) {
@@ -449,6 +440,28 @@ int readonly_context_impl::get_attack_depth() const
 const aspect_map& readonly_context_impl::get_aspects() const
 {
 	return aspects_;
+}
+
+
+const attacks_vector& readonly_context_impl::get_attacks() const
+{
+	if (attacks_) {
+		return attacks_->get();
+	}
+	static attacks_vector av;
+	return av;
+}
+
+
+const terrain_filter& readonly_context_impl::get_avoid() const
+{
+	if (avoid_) {
+		return avoid_->get();
+	}
+	config cfg;
+	cfg.add_child("not");
+	static terrain_filter tf(vconfig(cfg),get_info().units);
+	return tf;
 }
 
 

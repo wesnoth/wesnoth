@@ -171,6 +171,9 @@ public:
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) = 0;
 
 
+	virtual const attacks_vector& get_attacks() const = 0;
+
+
 	virtual const terrain_filter& get_avoid() const = 0;
 
 
@@ -476,6 +479,12 @@ public:
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects )
 	{
 		return target_->add_aspects(aspects);
+	}
+
+
+	virtual const attacks_vector& get_attacks() const
+	{
+		return target_->get_attacks();
 	}
 
 
@@ -963,6 +972,9 @@ public:
 	virtual const aspect_map& get_aspects() const;
 
 
+	virtual const attacks_vector& get_attacks() const;
+
+
 	virtual const terrain_filter& get_avoid() const;
 
 
@@ -1071,6 +1083,7 @@ private:
 	aspect_type<double>::typesafe_ptr aggression_;
 	aspect_type<int>::typesafe_ptr attack_depth_;
 	aspect_map aspects_;
+	aspect_type< attacks_vector >::typesafe_ptr attacks_;
 	mutable aspect_type<terrain_filter>::typesafe_ptr avoid_;
 	aspect_type<double>::typesafe_ptr caution_;
 	mutable move_map dstsrc_;
