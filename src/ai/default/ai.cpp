@@ -1597,9 +1597,13 @@ void ai_default::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
+	if (goal.empty()) {
+		return;
+	}
+
 	const map_location dst(goal, &get_info().game_state_);
 	if (!dst.valid()) {
-		ERR_AI << "Invalid goal\n";
+		ERR_AI << "Invalid goal: "<<std::endl<<goal;
 		return;
 	}
 

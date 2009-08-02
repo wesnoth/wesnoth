@@ -157,12 +157,16 @@ public:
 
 	static config value_to_cfg(const config &value)
 	{
-		return value;
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
 	}
 
 	static config cfg_to_value(const config &cfg)
 	{
-		return cfg;
+		config value;
+		cfg_to_value(cfg,value);
+		return value;
 	}
 };
 
