@@ -556,25 +556,23 @@ private:
 	const formula_ai& ai_;
 };
 
-
-class evaluate_for_position_function : public function_expression {
-public:
-	evaluate_for_position_function(const args_list& args, formula_ai& ai)
-	  : function_expression("evaluate_for_position", args, 2, 2), ai_(ai) {
-	}
-
-private:
-	variant execute(const formula_callable& variables) const {
-		variant position = args()[0]->evaluate(variables);
-                ai_.store_outcome_position(position);
-		position_callable* pos = convert_variant<position_callable>(position);
-		position_callable::swapper swapper(ai_, *pos);
-		return args()[1]->evaluate(variables);
-	}
-
-	formula_ai& ai_;
-};
-
+//class evaluate_for_position_function : public function_expression {
+//public:
+//	evaluate_for_position_function(const args_list& args, formula_ai& ai)
+//	  : function_expression("evaluate_for_position", args, 2, 2), ai_(ai) {
+//	}
+//
+//private:
+//	variant execute(const formula_callable& variables) const {
+//		variant position = args()[0]->evaluate(variables);
+//              ai_.store_outcome_position(position);
+//		position_callable* pos = convert_variant<position_callable>(position);
+//		position_callable::swapper swapper(ai_, *pos);
+//		return args()[1]->evaluate(variables);
+//	}
+//
+//	formula_ai& ai_;
+//};
 
 class get_unit_type_function : public function_expression {
 public:
@@ -1285,8 +1283,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 				const std::vector<expression_ptr>& args) const {
 	if(fn == "outcomes") {
 		return expression_ptr(new outcomes_function(args, ai_));
-	} else if(fn == "evaluate_for_position") {
-		return expression_ptr(new evaluate_for_position_function(args, ai_));
+	//} else if(fn == "evaluate_for_position") {
+	//	return expression_ptr(new evaluate_for_position_function(args, ai_));
 	} else if(fn == "move") {
 		return expression_ptr(new move_function(args));
 	} else if(fn == "move_partial") {
