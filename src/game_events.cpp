@@ -2375,7 +2375,7 @@ WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
 	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
 
 	resources::state_of_game->clear_variable_cfg(variable);
-	for(int i=0; i < types_to_store.size() && i < game_config::max_loop; ++i) {
+	for(unsigned int i=0; i < types_to_store.size() && i < game_config::max_loop; ++i) {
 		if(ut_map.unit_type_exists(types_to_store[i])) {
 			resources::state_of_game->add_variable_cfg(variable, ut_map.find_unit_type(types_to_store[i], unit_type::NOT_BUILT)->second.get_cfg());
 		} else {
