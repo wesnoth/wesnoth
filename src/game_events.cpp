@@ -2336,6 +2336,55 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		}
 	}
 
+// store all [unit_type] id= attributes as a comma-separated string
+WML_HANDLER_FUNCTION(store_unit_type_ids, /*event_info*/, cfg)
+{
+	std::string variable = cfg["variable"];
+	if(variable.empty()) {
+		variable="unit_type_ids";
+	}
+	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
+	std::string unit_types;
+	unit_type_data::unit_type_map::const_iterator uti,
+		uti_begin = ut_map.begin(),
+		uti_end = ut_map.end();
+	for(uti = uti_begin; uti != uti_end; ++uti)
+	{
+		if(uti == uti_begin) {
+			unit_types += uti->first;
+		} else {
+			unit_types += "," + uti->first;
+		}
+	}
+	resources::state_of_game->set_variable(variable, unit_types);
+}
+
+// store a [unit_type] config into a WML variable
+WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
+{
+	const t_string& type_name = cfg["type"];
+	if(type_name.empty()) {
+		lg::wml_error << "[store_unit_type] missing required type= attribute\n";
+	}
+	std::string variable = cfg["variable"];
+	if(variable.empty()) {
+		variable="unit_type";
+	}
+	
+	std::vector<std::string> types_to_store = utils::split(type_name);
+	unit_type_data::unit_type_map_wrapper &ut_map = unit_type_data::types();
+
+	resources::state_of_game->clear_variable_cfg(variable);
+	for(int i=0; i < types_to_store.size() && i < game_config::max_loop; ++i) {
+		if(ut_map.unit_type_exists(types_to_store[i])) {
+			resources::state_of_game->add_variable_cfg(variable, ut_map.find_unit_type(types_to_store[i], unit_type::NOT_BUILT)->second.get_cfg());
+		} else {
+			lg::wml_error << "attempt to store nonexistent unit_type \"" 
+				<< types_to_store[i] << "\"\n";
+		}
+	}
+}
+
 // Unit serialization to and from variables
 /** @todo FIXME: Check that store is automove bug safe */
 WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
