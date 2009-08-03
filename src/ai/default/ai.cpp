@@ -620,7 +620,7 @@ void ai_default::evaluate_recruiting_value(const map_location &leader_loc)
 		map_location loc = nearest_keep(leader_loc);
                if (units_.find(loc) == units_.end() && gold/unit_price > 1.0f)
                {
-                       free_slots -= get_number_of_possible_recruits_to_force_recruit();
+                       free_slots -= static_cast<float>(get_number_of_possible_recruits_to_force_recruit());
                }
 	}
 	recruiting_preferred_ = (gold/unit_price) - free_slots > get_number_of_possible_recruits_to_force_recruit();
