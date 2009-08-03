@@ -156,6 +156,7 @@ stringfixes = {
 ("Thank you Tallin.", "Thank you, Tallin."),
 ("lords of light", "Lords of Light"),
 ("mater what race they come from - even orcs.", "matter what race they come from - even orcs."),
+("a chance to make new some allies here...", "a chance to make some new allies here..."),
 ),
 
 "wesnoth-low" :(
