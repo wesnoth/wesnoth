@@ -36,8 +36,7 @@ static lg::log_domain log_engine("engine");
 terrain_filter::terrain_filter():
 	cfg_(vconfig()),
 	units_(unit_map()),
-	cfg_(vconfig(empty_config)),
-	units_(*resources::units),
+	cache_(),
 	max_loop_(),
 	flat_()
 {
