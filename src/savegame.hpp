@@ -230,8 +230,7 @@ class game_savegame : public savegame
 {
 public:
 	game_savegame(game_state& gamestate, const config& level_cfg,
-		game_display& gui, const std::vector<team>& teams,
-		const unit_map& units, const tod_manager& tod_mng,
+		game_display& gui, const tod_manager& tod_mng,
 		const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 private:
@@ -247,8 +246,6 @@ private:
 protected:
 	const config& level_cfg_;
 	game_display& gui_;
-	const std::vector<team>& teams_;
-	const unit_map& units_;
 	const tod_manager& tod_manager_;
 	const gamemap& map_;
 };
@@ -269,8 +266,7 @@ class autosave_savegame : public game_savegame
 {
 public:
 	autosave_savegame(game_state &gamestate, const config& level_cfg,
-					 game_display& gui, const std::vector<team>& teams,
-					 const unit_map& units, const tod_manager& tod_mng,
+					 game_display& gui, const tod_manager& tod_mng,
 					 const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
@@ -283,8 +279,7 @@ class oos_savegame : public game_savegame
 {
 public:
 	oos_savegame(game_state &gamestate, const config& level_cfg,
-				 game_display& gui, const std::vector<team>& teams,
-				 const unit_map& units, const tod_manager& tod_mng,
+				 game_display& gui, const tod_manager& tod_mng,
 				 const gamemap& map, const config& snapshot_cfg, const bool compress_saves);
 
 private:

@@ -309,7 +309,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		game_savegame save(gamestate_, level_, *gui_, teams_, units_, tod_manager_, map_, config(), preferences::compress_saves());
+		game_savegame save(gamestate_, level_, *gui_, tod_manager_, map_, to_config(), preferences::compress_saves());
 		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -541,14 +541,34 @@ config play_controller::to_config() const
 {
 	config cfg;
 	std::stringstream buf;
-	buf << turn();
-	cfg["turn_at"] = buf.str();
-	buf.str(std::string());
-	buf << number_of_turns();
-	cfg["turns"] = buf.str();
-	buf.str(std::string());
 
-	cfg.merge_with(tod_manager_.to_config());
+	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		int side_num = t - teams_.begin() + 1;
+
+		config& side = cfg.add_child("side");
+		t->write(side);
+		side["no_leader"] = "yes";
+		buf.str(std::string());
+		buf << side_num;
+		side["side"] = buf.str();
+
+		//current visible units
+		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+			if(i->second.side() == side_num) {
+				config& u = side.add_child("unit");
+				i->first.write(u);
+				i->second.write(u);
+			}
+		}
+		//recall list
+		{
+			for(std::vector<unit>::const_iterator j = t->recall_list().begin();
+				j != t->recall_list().end(); ++j) {
+					config& u = side.add_child("unit");
+					j->write(u);
+			}
+		}
+	}
 
 	return cfg;
 }
