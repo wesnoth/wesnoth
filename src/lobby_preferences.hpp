@@ -40,8 +40,8 @@ namespace preferences {
 	bool playerlist_sort_name();
 	void set_playerlist_sort_name(bool v);
 
-	bool playerlist_single_group();
-	void set_playerlist_single_group(bool v);
+	bool playerlist_group_players();
+	void set_playerlist_group_players(bool v);
 
 	bool filter_lobby();
 	void set_filter_lobby(bool value);

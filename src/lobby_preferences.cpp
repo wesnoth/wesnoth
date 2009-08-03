@@ -78,14 +78,14 @@ void set_playerlist_sort_name(bool v)
 	return preferences::set("lobby_playerlist_sort_name", lexical_cast<std::string>(v));
 }
 
-bool playerlist_single_group()
+bool playerlist_group_players()
 {
-	return utils::string_bool(preferences::get("lobby_playerlist_single_group"), true);
+	return utils::string_bool(preferences::get("lobby_playerlist_group_players"), true);
 }
 
-void set_playerlist_single_group(bool v)
+void set_playerlist_group_players(bool v)
 {
-	return preferences::set("lobby_playerlist_single_group", lexical_cast<std::string>(v));
+	return preferences::set("lobby_playerlist_group_players", lexical_cast<std::string>(v));
 }
 
 

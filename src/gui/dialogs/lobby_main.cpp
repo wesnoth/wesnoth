@@ -488,7 +488,7 @@ void tlobby_main::update_playerlist()
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
 		add_label_data(data, "main_icon", icon_ss.str());
-		if (preferences::playerlist_single_group()) {
+		if (!preferences::playerlist_group_players()) {
 			target_list = &player_list_.other_rooms;
 		}
 		target_list->list->add_row(data);
