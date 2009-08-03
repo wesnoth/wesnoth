@@ -241,7 +241,7 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 {
 	tgrid& grid = chat_log_container_->page_grid(id);
 	tcontrol& log = grid.get_widget<tcontrol>("log_text", false);
-	log.set_label(log.label() + "\n" + text);
+	log.set_label(log.label() + "\n" + preferences::get_chat_timestamp(time(0)) + text);
 	window_->invalidate_layout();
 }
 
