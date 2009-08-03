@@ -1469,7 +1469,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["cost"] != "") {
 		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
 	}
-
+	if(cfg["halo"] != "") {
+		clear_haloes();
+		cfg_["halo"] = cfg["halo"];
+	}
 	if(cfg["profile"] != "") {
 		cfg_["profile"] = cfg["profile"];
 	}
