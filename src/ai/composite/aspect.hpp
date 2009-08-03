@@ -37,6 +37,12 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
+#ifdef _MSC_VER
+#pragma warning(push)
+//silence "inherits via dominance" warnings
+#pragma warning(disable:4250)
+#endif
+
 namespace ai {
 
 //----
@@ -212,7 +218,6 @@ public:
 	}
 };
 //----
-
 
 class aspect : public readonly_context_proxy, public events::observer {
 public:
@@ -505,5 +510,9 @@ public:
 
 
 } //end of namespace ai
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 #endif
