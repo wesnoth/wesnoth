@@ -152,15 +152,28 @@ local function wml_gold(cfg)
 end
 
 local function wml_store_gold(cfg)
-	local team = wesnoth.get_side(cfg.side)
-	local var = cfg.variable
-	if not var then var = "gold" end
-	wesnoth.set_variable(var, team.gold)
+	local team = wesnoth.get_side(cfg.side or 1)
+	wesnoth.set_variable(cfg.variable or "gold", team.gold)
 end
 
 local function wml_clear_variable(cfg)
 	for w in string.gmatch(cfg.name, "[^%s,][^,]*") do
 		wesnoth.set_variable(trim(w))
+	end
+end
+
+local function wml_store_unit_type_ids(cfg)
+	local types = table.concat(wesnoth.get_unit_type_ids(), ',')
+	wesnoth.set_variable(cfg.variable or "unit_type_ids", types)
+end
+
+local function wml_store_unit_type(cfg)
+	local var = cfg.variable or "unit_type"
+	wesnoth.set_variable(var, {})
+	local i = 0
+	for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
+		wesnoth.set_variable(var .. '[' .. i .. ']', wesnoth.get_unit_type(w).__cfg)
+		i = i + 1
 	end
 end
 
@@ -190,5 +203,7 @@ wesnoth.register_wml_action("show_objectives", wml_show_objectives)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
+wesnoth.register_wml_action("store_unit_type", wml_store_unit_type)
+wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
 
