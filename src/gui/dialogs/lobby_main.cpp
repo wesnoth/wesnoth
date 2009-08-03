@@ -217,7 +217,6 @@ void tlobby_main::add_whisper_received(const std::string& sender, const std::str
 	}
 }
 
-/** inherited form chat_handler */
 void tlobby_main::add_chat_room_message_sent(const std::string& room,
 	const std::string& message)
 {
@@ -323,6 +322,14 @@ void add_label_data(std::map<std::string, string_map>& map,
 	map.insert(std::make_pair(key, item));
 }
 
+void add_tooltip_data(std::map<std::string, string_map>& map,
+					const std::string& key, const std::string& label)
+{
+	string_map item;
+	item["tooltip"] = label;
+	map.insert(std::make_pair(key, item));
+}
+
 void set_visible_if_exists(tgrid* grid, const char* id, bool visible)
 {
 	twidget* w = grid->find_widget(id, false);
@@ -363,7 +370,14 @@ void tlobby_main::update_gamelist()
 		add_label_data(data, "vision_text", game.vision);
 		add_label_data(data, "time_limit_text", game.time_limit);
 		add_label_data(data, "status", game.status);
-		add_label_data(data, "observer_icon", game.observers ? "misc/eye.png" : "misc/no_observer.png");
+		if (game.observers) {
+			add_label_data(data, "observer_icon", "misc/eye.png");
+			add_tooltip_data(data, "observer_icon", _("Observers allowed"));
+		} else {
+			add_label_data(data, "observer_icon", "misc/no_observer.png");
+			add_tooltip_data(data, "observer_icon", _("Observers not allowed"));
+		}
+
 		const char* vision_icon;
 		if (game.fog) {
 			if (game.shroud) {
@@ -379,6 +393,7 @@ void tlobby_main::update_gamelist()
 			}
 		}
 		add_label_data(data, "vision_icon", vision_icon);
+		add_tooltip_data(data, "vision_icon", game.vision);
 
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
