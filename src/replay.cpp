@@ -128,8 +128,7 @@ replay::replay() :
 	current_(NULL),
 	skip_(false),
 	message_locations(),
-	expected_advancements_(),
-	delayed_exception_(NULL)
+	expected_advancements_()
 {}
 
 replay::replay(const config& cfg) :
@@ -138,8 +137,7 @@ replay::replay(const config& cfg) :
 	current_(NULL),
 	skip_(false),
 	message_locations(),
-	expected_advancements_(),
-	delayed_exception_(NULL)
+	expected_advancements_()
 {}
 
 void replay::append(const config& cfg)
@@ -790,7 +788,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
-			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
 			return false;
 		}
 
@@ -819,7 +816,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			&& cfg->child(do_untill) != NULL)
 		{
 			get_replay_source().revert_action();
-			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
 			return false;
 		}
 
@@ -893,7 +889,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				verify(*resources::units, child);
 			}
 
-			THROW_END_LEVEL_DELETE(get_replay_source().delayed_exception());
 			return true;
 		}
 
@@ -1114,8 +1109,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			DELAY_END_LEVEL(get_replay_source().delayed_exception(),
-				attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping()));
+			attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping());
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 

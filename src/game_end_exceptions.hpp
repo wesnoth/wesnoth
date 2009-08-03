@@ -32,25 +32,6 @@ enum LEVEL_RESULT {
 	SKIP_TO_LINGER
 };
 
-#define DELAY_END_LEVEL(end_ptr, code) try { \
-	code; \
-	} catch ( end_level_exception &e) { \
-		if (end_ptr == 0) { \
-			end_ptr = new end_level_exception(e); \
-		} \
-	}
-
-#define THROW_END_LEVEL_DELETE(end_ptr) if (end_ptr) {\
-	end_level_exception temp_exception(*end_ptr);\
-	delete end_ptr; \
-	end_ptr = 0; \
-	throw temp_exception; \
-	}
-
-#define THROW_END_LEVEL(end_ptr) if (end_ptr) {\
-	throw end_level_exception(*end_ptr); \
-	}
-
 /**
  * Exception used to signal the end of a scenario.
  * It also conveys additional information on the game

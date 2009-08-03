@@ -423,11 +423,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		} else if(end_level.result == DEFEAT) {
 			gamestate_.classification().completion = "defeat";
 			log.defeat(turn());
-			try {
-				game_events::fire("defeat");
-			} catch(end_level_exception&) {
-				ERR_NG << "[endlevel] used in 'defeat' event handler\n";
-			}
+			game_events::fire("defeat");
 
 			if (!obs) {
 				const std::string& defeat_music = select_defeat_music();
@@ -442,11 +438,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			gamestate_.classification().completion = (!end_level.linger_mode ?
 			                         "running" : "victory");
-			try {
-				game_events::fire("victory");
-			} catch(end_level_exception&) {
-				ERR_NG << "[endlevel] used in 'victory' event handler\n";
-			}
+			game_events::fire("victory");
+
 			//
 			// Play victory music once all victory events
 			// are finished, if we aren't observers.

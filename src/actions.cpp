@@ -865,16 +865,13 @@ void attack::fire_event(const std::string& n)
 	}
 	if(n == "attack_end") {
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
-		DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
-					a_.loc_,
-					d_.loc_, ev_data));
+		game_events::fire(n, a_.loc_, d_.loc_, ev_data);
 		return;
 	}
 	const int defender_side = d_.get_unit().side();
 	const int attacker_side = a_.get_unit().side();
-	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
-								game_events::entity_location(a_.loc_,a_.id_),
-								game_events::entity_location(d_.loc_,d_.id_),ev_data));
+	game_events::fire(n, game_events::entity_location(a_.loc_, a_.id_),
+		game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
@@ -947,7 +944,6 @@ void attack::refresh_bc()
 
 attack::~attack()
 {
-	delete delayed_exception;
 	delete bc_;
 }
 
@@ -999,8 +995,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	units_(units),
 	errbuf_(),
 	update_display_(update_display),
-	OOS_error_(false),
-	delayed_exception(0)
+	OOS_error_(false)
 {
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
@@ -1260,7 +1255,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				dat.add_child("first",  d_weapon_cfg);
 				dat.add_child("second", a_weapon_cfg);
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc, dat));
+				game_events::fire("last breath", death_loc, attacker_loc, dat);
 
 				if(!d_.valid() || d_.get_unit().hitpoints() > 0) {
 					// WML has invalidated the dying unit, abort
@@ -1274,7 +1269,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					unit_display::unit_die(d_.iter_->first, d_.get_unit(),a_stats_->weapon,d_stats_->weapon,a_.iter_->first, &(a_.get_unit()));
 				}
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc, dat));
+				game_events::fire("die", death_loc, attacker_loc, dat);
 
 				if(!d_.valid()) {
 					// WML has invalidated the dying unit, abort
@@ -1342,7 +1337,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					update_def_fog = true;
 					a_.n_attacks_ = 0;
 					d_.n_attacks_ = 0;
-					DELAY_END_LEVEL(delayed_exception, game_events::fire(petrify_string, d_.iter_->first, a_.iter_->first));
+					game_events::fire(petrify_string, d_.iter_->first, a_.iter_->first);
 					refresh_bc();
 
 				}
@@ -1530,7 +1525,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				dat.add_child("first" , a_weapon_cfg);
 				dat.add_child("second", d_weapon_cfg);
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, defender_loc,dat));
+				game_events::fire("last breath", death_loc, defender_loc, dat);
 
 				if(!a_.valid() || a_.get_unit().hitpoints() > 0) {
 					// WML has invalidated the dying unit, abort
@@ -1544,7 +1539,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_, &(d_.get_unit()));
 				}
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc,dat));
+				game_events::fire("die", death_loc, defender_loc, dat);
 
 				// Don't try to call refresh_bc() here the attacker or defender might have
 				// been replaced by another unit, which might have a lower number of weapons.
@@ -1613,7 +1608,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 					d_.n_attacks_ = 0;
 					a_.n_attacks_ = 0;
 
-					DELAY_END_LEVEL(delayed_exception, game_events::fire(petrify_string,a_.iter_->first,d_.iter_->first));
+					game_events::fire(petrify_string, a_.iter_->first, d_.iter_->first);
 					refresh_bc();
 				}
 			}
@@ -1679,9 +1674,6 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	if(OOS_error_) {
 		replay::throw_error(errbuf_.str());
 	}
-
-	THROW_END_LEVEL(delayed_exception);
-
 }
 
 

@@ -30,7 +30,6 @@ class game_display;
 class terrain_label;
 class unit_map;
 class play_controller;
-struct end_level_exception;
 
 class replay: public rand_rng::rng
 {
@@ -64,8 +63,6 @@ public:
 		const map_location& loc=map_location::null_location);
 	void add_unit_checksum(const map_location& loc,config* const cfg);
 	void add_checksum_check(const map_location& loc);
-
-	end_level_exception* & delayed_exception() { return delayed_exception_; }
 
 	/**
 	 * Mark an expected advancement adding it to the queue
@@ -167,8 +164,6 @@ private:
 	 * relevant advance (choice) message has not yet been received
 	 */
 	std::deque<map_location> expected_advancements_;
-
-	end_level_exception* delayed_exception_;
 };
 
 replay& get_replay_source();

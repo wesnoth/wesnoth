@@ -212,8 +212,6 @@ class attack {
 
 		bool update_display_;
 		bool OOS_error_;
-		end_level_exception* delayed_exception;
-
 };
 
 

@@ -294,31 +294,15 @@ void attack_result::do_execute()
 	}
 
 	recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
-	try {
-		rand_rng::invalidate_seed();
-		rand_rng::clear_new_seed_callback();
-		while (!rand_rng::has_valid_seed()) {
-			manager::raise_user_interact();
-			manager::raise_sync_network();
-			SDL_Delay(10);
-		}
-		recorder.add_seed("attack", rand_rng::get_last_seed());
-		attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, get_info().units);
+	rand_rng::invalidate_seed();
+	rand_rng::clear_new_seed_callback();
+	while (!rand_rng::has_valid_seed()) {
+		manager::raise_user_interact();
+		manager::raise_sync_network();
+		SDL_Delay(10);
 	}
-	catch (end_level_exception&)
-	{
-		dialogs::advance_unit(attacker_loc_, true);
-
-		const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
-		if(defender != get_info().units.end()) {
-			const size_t defender_team = size_t(defender->second.side()) - 1;
-			if(defender_team < get_info().teams.size()) {
-				dialogs::advance_unit(defender_loc_, !get_info().teams[defender_team].is_human());
-			}
-		}
-
-		throw;
-	}
+	recorder.add_seed("attack", rand_rng::get_last_seed());
+	attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, get_info().units);
 	dialogs::advance_unit(attacker_loc_, true);
 
 	const unit_map::const_iterator defender = get_info().units.find(defender_loc_);
