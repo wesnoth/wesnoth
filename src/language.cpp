@@ -263,7 +263,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		if (res) break;
 
 		if (!alternates || i == alternates->end()) break;
-		locale = *(++i) + extra;
+		locale = *i + extra;
+		++i;
 	}
 
 	if (res)
