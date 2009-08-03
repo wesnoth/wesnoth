@@ -29,15 +29,15 @@
 #include "gui/widgets/toggle_panel.hpp"
 
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "lobby_data.hpp"
+#include "lobby_preferences.hpp"
 #include "log.hpp"
 #include "network.hpp"
-#include "game_preferences.hpp"
-#include "lobby_preferences.hpp"
 #include "playmp_controller.hpp"
-
-#include "formula_string_utils.hpp"
+#include "sound.hpp"
 
 #include <boost/bind.hpp>
 
@@ -247,11 +247,30 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 
 void tlobby_main::do_notify(t_notify_mode mode)
 {
-	switch (mode) {
-		case NOTIFY_MESSAGE:
-			break;
-		default:
-			break;
+	if (preferences::lobby_sounds()) {
+		switch (mode) {
+			case NOTIFY_WHISPER:
+			case NOTIFY_WHISPER_OTHER_WINDOW:
+			case NOTIFY_OWN_NICK:
+				sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+				break;
+			case NOTIFY_FRIEND_MESSAGE:
+				sound::play_UI_sound(game_config::sounds::receive_message_friend);
+				break;
+			case NOTIFY_SERVER_MESSAGE:
+				sound::play_UI_sound(game_config::sounds::receive_message_server);
+				break;
+			case NOTIFY_LOBBY_QUIT:
+				sound::play_UI_sound(game_config::sounds::user_leave);
+				break;
+			case NOTIFY_LOBBY_JOIN:
+				sound::play_UI_sound(game_config::sounds::user_arrive);
+				break;
+			case NOTIFY_MESSAGE:
+				break;
+			default:
+				break;
+		}
 	}
 }
 
@@ -878,6 +897,15 @@ void tlobby_main::process_gamelist_diff(const config &data)
 {
 	if (lobby_info_.process_gamelist_diff(data)) {
 		update_gamelist();
+	}
+	int joined = data.child_count("insert_child");
+	int left = data.child_count("remove_child");
+	if (joined > 0 || left > 0) {
+		if (left > joined) {
+			do_notify(NOTIFY_LOBBY_QUIT);
+		} else {
+			do_notify(NOTIFY_LOBBY_JOIN);
+		}
 	}
 }
 

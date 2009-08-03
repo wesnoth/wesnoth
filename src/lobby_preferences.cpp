@@ -17,6 +17,16 @@
 
 namespace preferences {
 
+bool lobby_sounds()
+{
+	return utils::string_bool(preferences::get("lobby_sounds"), true);
+}
+
+void set_lobby_sounds(bool v)
+{
+	preferences::set("lobby_sounds", v ? "yes" : "no");
+}
+
 bool sort_list()
 {
 	return utils::string_bool(preferences::get("sort_list"), true);
