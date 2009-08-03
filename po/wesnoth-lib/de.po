@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 11:19+0200\n"
+"POT-Creation-Date: 2009-08-03 12:27+0200\n"
 "PO-Revision-Date: 2009-04-02 20:00+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -937,35 +937,35 @@ msgid "Sort players:"
 msgstr "Spieler:"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:413
+#: data/gui/default/window/lobby_main.cfg:420
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Mehrspieler"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:421
+#: data/gui/default/window/lobby_main.cfg:428
 #, fuzzy
 msgid "Filter:"
 msgstr "Datei: "
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:432
+#: data/gui/default/window/lobby_main.cfg:439
 #, fuzzy
 msgid "Friends"
 msgstr "Freundesliste"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:438
+#: data/gui/default/window/lobby_main.cfg:445
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:444
+#: data/gui/default/window/lobby_main.cfg:451
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:450
+#: data/gui/default/window/lobby_main.cfg:457
 msgid "Invert filter"
 msgstr ""
 
@@ -973,14 +973,14 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:464
+#: data/gui/default/window/lobby_main.cfg:471
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:136 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Schließen"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:486
+#: data/gui/default/window/lobby_main.cfg:493
 #, fuzzy
 msgid "Send"
 msgstr "Sand"
@@ -988,7 +988,7 @@ msgstr "Sand"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:498
+#: data/gui/default/window/lobby_main.cfg:505
 #: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
 #: src/hotkeys.cpp:944
 msgid "Quit"
@@ -997,14 +997,14 @@ msgstr "Beenden"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:504
+#: data/gui/default/window/lobby_main.cfg:511
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:52 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Einstellungen"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:510
+#: data/gui/default/window/lobby_main.cfg:517
 #, fuzzy
 msgid "Refresh"
 msgstr "Anzeige aktualisieren"
@@ -1012,31 +1012,31 @@ msgstr "Anzeige aktualisieren"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:516
+#: data/gui/default/window/lobby_main.cfg:523
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Hilfe"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:524
+#: data/gui/default/window/lobby_main.cfg:531
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:530
+#: data/gui/default/window/lobby_main.cfg:537
 #, fuzzy
 msgid "Join"
 msgstr "Anmelden"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:536
+#: data/gui/default/window/lobby_main.cfg:543
 msgid "Observe"
 msgstr ""
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:542
+#: data/gui/default/window/lobby_main.cfg:549
 #, fuzzy
 msgid "Quick replay"
 msgstr "Spieler"
@@ -1984,15 +1984,29 @@ msgstr ""
 msgid "Version: "
 msgstr "Version"
 
-#: src/gui/dialogs/lobby_main.cpp:624
+#: src/gui/dialogs/lobby_main.cpp:631
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:630
+#: src/gui/dialogs/lobby_main.cpp:637
 msgid "Room $name joined"
 msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1044
+#, fuzzy
+msgid "Password Required"
+msgstr "Passworterinnerung"
+
+#: src/gui/dialogs/lobby_main.cpp:1045
+msgid "Joining this game requires a password."
+msgstr ""
+
+#: src/gui/dialogs/lobby_main.cpp:1046
+#, fuzzy
+msgid "Password: "
+msgstr "Passwort:"
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"

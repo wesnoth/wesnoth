@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 12:40+0200\n"
+"POT-Creation-Date: 2009-08-03 12:27+0200\n"
 "PO-Revision-Date: 2009-07-28 12:27+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: de\n"
@@ -407,7 +407,7 @@ msgstr "Delfador fällt in der Schlacht"
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:92
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:123
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_swamps_of_illuven.cfg:96
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:125
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:129
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:292
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_the_gate_between_worlds.cfg:65
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:114
@@ -985,6 +985,8 @@ msgstr "Bringt Delfador zu dem Wegweiser im Nordosten"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_swamps_of_illuven.cfg:92
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:105
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:121
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:153
 msgid "Death of Lionel"
 msgstr "Leollyn fällt in der Schlacht"
@@ -1091,12 +1093,12 @@ msgid "Survive 12 turns"
 msgstr "Überlebt 12 Runden"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:113
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:117
 msgid "These swamps seem to go on forever!"
 msgstr "Sieht so aus als ob wir niemals aus diesen Sümpfen rauskommen!"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:117
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:121
 msgid ""
 "One more day's travel, I think. We should camp for the night now - we should "
 "be out of it by tomorrow evening."
@@ -1105,12 +1107,12 @@ msgstr ""
 "aufschlagen dann werden wir morgen Abend den Sumpf durchquert haben."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:125
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:129
 msgid "Those standing stones - they summon evil creatures!"
 msgstr "Diese Steine... Aus Ihnen kommen böse Kreaturen!"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:129
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:133
 #, fuzzy
 msgid ""
 "I saw this kind of thing in the north... These abominations are not much "
@@ -1122,7 +1124,7 @@ msgstr ""
 "müssen sie solange zurückhalten wie wir können."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:133
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:137
 msgid ""
 "Hmmm... if I could get nearer to the stones, I could perhaps break their "
 "power..."
@@ -1131,22 +1133,22 @@ msgstr ""
 "Macht brechen..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:148
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:152
 msgid "This'll splinter your bones, you vile monstrosity!"
 msgstr "Das wird deine Knochen splittern lassen du gemeines Monster!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:161
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:165
 msgid "At least, morning is here... And the skeletons are disappearing!"
 msgstr "Endlich, die Sonne geht auf und die Skelette verschwinden!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:172
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:176
 msgid "At last, morning is here!"
 msgstr "Endlich, die Sonne geht auf!"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:178
+#: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:182
 msgid ""
 "I hope I never see another night like that! Let's leave this evil place as "
 "quickly as possible - I want to get us out of Illuven before dusk."
@@ -1249,18 +1251,18 @@ msgid "Move Delfador to Ur-Thorodor's castle"
 msgstr "Bewegt Delfador auf Ur-thorodors Burg"
 
 #. [objective]: condition=lose
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:121
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:125
 msgid "Death of Ur-Thorodor"
 msgstr "Ur-Thorodor fällt in der Schlacht"
 
 #. [message]: speaker=Ur-Thorodor
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:145
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:149
 #, fuzzy
 msgid "Hruuuarrgh! The vile human-creatures hew at me..."
 msgstr "Hruuuarrgh! Diese bösen Menschen hacken auf mich ein..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:149
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:153
 #, fuzzy
 msgid ""
 "Ur-Thorodor, you must listen to us! A great evil power threatens all living "
@@ -1272,12 +1274,12 @@ msgstr ""
 "untergehen."
 
 #. [message]: speaker=Ur-Thorodor
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:153
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:157
 msgid "I trust no humans! Drive them out, my children!"
 msgstr "Ich traue euch Menschen nicht! Verjagt sie, meine Kinder!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:164
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:168
 #, fuzzy
 msgid ""
 "I am defeated... My children: hear my last words! Destroy the humans, and "
@@ -1287,7 +1289,7 @@ msgstr ""
 "Menschen und sorgt dafür das sie nie wieder einen Fuß auf diese Insel setzen!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:168
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:172
 #, fuzzy
 msgid ""
 "This is hopeless! If carrying out my mission means killing these noble "
@@ -1297,7 +1299,7 @@ msgstr ""
 "meine Mission zu erfüllen kann ich sie nicht fortsetzen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:185
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:189
 #, fuzzy
 msgid ""
 "Ur-Thorodor, listen to me! We are not here to take your island. If you will "
@@ -1312,12 +1314,12 @@ msgstr ""
 "Armee zurück aufs Festland schicken."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:189
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:193
 msgid "Are you sure that's wise?"
 msgstr "Seid Ihr sicher das das eine kluge Entscheidung ist?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:193
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:197
 msgid ""
 "It's the only way! Lionel, lead our soldiers back to the mainland. I will "
 "rejoin you when I have carried out my mission, and determined what is amiss "
@@ -1328,7 +1330,7 @@ msgstr ""
 "was in der Welt der Toten verkehrt läuft."
 
 #. [message]: speaker=Ur-Thorodor
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:200
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:204
 msgid ""
 "I see I had misjudged you, human. You are not like those who came before. I "
 "accept your offer!"
@@ -1337,7 +1339,7 @@ msgstr ""
 "die die früher kamen. Ich nehme Euer Angebot an!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:207
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:211
 #, fuzzy
 msgid ""
 "As the Wesnothians withdrew from the island, the woses melted away into the "
@@ -1354,22 +1356,22 @@ msgstr ""
 "nicht die einzigen Wesen die auf der Insel lebten..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:217
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:221
 msgid "Ommmmmmm...."
 msgstr "Ommmmmmm...."
 
 #. [message]: speaker=Pruark
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:261
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:265
 msgid "A human mage... is it dead?"
 msgstr "Ein menschlicher Magier... ist er tot?"
 
 #. [message]: speaker=Gurbash
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:266
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:270
 msgid "Easy to find out... thump it and see if it wakes up!"
 msgstr "Das ist leicht rauszufinden... Schlag ihn und schau ob er aufwacht!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:270
+#: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:274
 msgid "THUMP!"
 msgstr "SCHLAG!"
 
@@ -3280,7 +3282,7 @@ msgid ""
 "@Delfador\n"
 "\n"
 "Your majesty, these are no stray undead; This lunatic, Iliah-Malal, has "
-"opened a portal to the Land of the Dead. Unless we close this portal soon,  "
+"opened a portal to the Land of the Dead. Unless we close this portal soon, "
 "the relatively small numbers of enemy troops he now commands will swell into "
 "an endless stream of undead. And our army, having equipped and trained "
 "primarily to fight raiding orcs, is not well suited to fight even the forces "

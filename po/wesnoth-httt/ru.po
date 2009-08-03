@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 12:40+0200\n"
+"POT-Creation-Date: 2009-08-03 12:27+0200\n"
 "PO-Revision-Date: 2009-06-20 16:20+0400\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team:\n"
@@ -47,12 +47,9 @@ msgstr "НТ"
 msgid "(Beginner)"
 msgstr "(Новичок)"
 
-#. [variation]: id=Fighter, race=human
-#. [unit_type]: id=Fighter, race=human
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:33
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:5
 msgid "Fighter"
 msgstr "Ополченец"
 
@@ -8168,24 +8165,35 @@ msgstr "сабля"
 
 #. [attack]: type=fire
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:124
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:192
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:59
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:232
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:158
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:80
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:194
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:163
 msgid "scepter of fire"
 msgstr "огненный скипетр"
 
-#. [variation]: id=Commander, race=human
-#. [unit_type]: id=Commander, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:5
 msgid "Commander"
 msgstr "Военачальник"
 
-#. [variation]: id=Commander, race=human
-#. [unit_type]: id=Commander, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:27
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:171
+#. [attack]: type=blade
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:31
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:32
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
+msgid "sword"
+msgstr "меч"
+
+#. [attack]: type=pierce
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:40
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:41
+msgid "bow"
+msgstr "лук"
+
+#. [variation]
+#. [unit_type]
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:155
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
 "Possessing leadership skills, they give lower-level units in adjacent hexes "
@@ -8197,25 +8205,6 @@ msgstr ""
 "лидерами, они помогают неопытным воинам лучше сражаться в бою. Они прекрасно "
 "владеют мечом, но у них всегда при себе лук, который они пустят в ход, если "
 "понадобится. Если военачальник пал, битва проиграна."
-
-#. [attack]: type=blade
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:31
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:175
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:50
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:34
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:214
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
-msgid "sword"
-msgstr "меч"
-
-#. [attack]: type=pierce
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:40
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:184
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:43
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:223
-msgid "bow"
-msgstr "лук"
 
 #. [variation]: id=Dark Queen, race=human
 #. [unit_type]: id=Dark Queen, race=human
@@ -8247,10 +8236,10 @@ msgstr "скипетр"
 msgid "raging blizzard"
 msgstr "буран"
 
-#. [variation]: id=Fighter, race=human
-#. [unit_type]: id=Fighter, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:46
+#. [variation]
+#. [unit_type]
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:72
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:77
 msgid ""
 "Young and brash, Fighters attack with a sword, and are vulnerable to more "
 "seasoned enemies. However they have the potential to become great warriors "
@@ -8265,17 +8254,14 @@ msgstr ""
 msgid "Injured Sergeant"
 msgstr "Раненый сержант"
 
-#. [variation]: id=Lord, race=human
-#. [unit_type]: id=Lord, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:5
 msgid "Lord"
 msgstr "Лорд"
 
-#. [variation]: id=Lord, race=human
-#. [unit_type]: id=Lord, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:199
+#. [variation]
+#. [unit_type]
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:181
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
