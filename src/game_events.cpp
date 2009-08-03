@@ -2763,14 +2763,12 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 			throw end_level_exception(VICTORY, endlevel_music, carry_over, gold_add, bonus, carryover_report, save, linger_mode);
 		} else if(result == "continue") {
-			/* should print deprecated message in 1.7 onwards
-			 lg::wml_error << "continue is deprecated as result in [endlevel],"
-			 	<< " use the new attributes instead.\n";*/
+			lg::wml_error << "continue is deprecated as result in [endlevel],"
+				<< " use the new attributes instead.\n";
 			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, true, false);
 		} else if(result == "continue_no_save") {
-			/* should print deprecated message in 1.7 onwards
 			lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
-				<< " use the new attributes instead.\n";*/
+				<< " use the new attributes instead.\n";
 			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, false, false);
 		} else {
 			LOG_NG << "throwing event defeat...\n";
