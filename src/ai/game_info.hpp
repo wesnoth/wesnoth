@@ -48,7 +48,7 @@ class interface;
 
 typedef boost::shared_ptr< interface > ai_ptr;
 
-class attack_analysis;
+struct attack_analysis;
 typedef std::vector<attack_analysis> attacks_vector;
 
 class aspect;
