@@ -330,6 +330,11 @@ std::string colorize(const std::string& str, const std::string& color)
 	return "<span color=\"" + color +"\">" + str + "</span>";
 }
 
+std::string tag(const std::string& str, const std::string& tag)
+{
+	return "<" + tag + ">" + str + "</" + tag + ">";
+}
+
 } //end anonymous namespace
 
 void tlobby_main::update_gamelist()
@@ -484,6 +489,9 @@ void tlobby_main::update_playerlist()
 				break;
 			default:
 				ERR_LB << "Bad user relation in lobby: " << user.relation << "\n";
+		}
+		if (user.registered) {
+			name = tag(name, "b");
 		}
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
