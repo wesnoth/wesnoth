@@ -46,9 +46,16 @@ public:
 	void replay_skip_animation();
 
 	virtual void force_end_turn() {}
-	virtual void force_end_level(LEVEL_RESULT res, const std::string &endlevel_music_list,
-		int percentage, bool add, bool bonus, bool report, bool prescenario_save,
-		bool linger) {}
+	virtual void force_end_level(LEVEL_RESULT /*res*/
+			, const std::string& /*endlevel_music_list*/
+			, int /*percentage*/
+			, bool /*add*/
+			, bool /*bonus*/
+			, bool /*report*/
+			, bool /*prescenario_save*/
+			, bool /*linger*/)
+	{
+	}
 
 	std::vector<team> teams_start_;
 
