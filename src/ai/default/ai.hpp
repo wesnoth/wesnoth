@@ -246,7 +246,7 @@ protected:
 			const location& dst, std::vector<location>& out);
 
 
-	friend struct attack_analysis;
+	friend class attack_analysis;
 
 private:
 	void find_villages(/*std::vector<unit_map::const_iterator>& our_units,
