@@ -181,7 +181,7 @@ void tlobby_main::add_whisper_received(const std::string& sender, const std::str
 		add_active_window_whisper(sender, message);
 		do_notify(NOTIFY_WHISPER);
 	} else {
-		DBG_NW << "Ignoring whisper from " << sender << "\n";
+		LOG_LB << "Ignoring whisper from " << sender << "\n";
 	}
 }
 
@@ -199,7 +199,7 @@ void tlobby_main::add_chat_room_message_sent(const std::string& room,
 		ri->log().add_message(preferences::login(), message);
 		add_active_window_message(preferences::login(), message);
 	} else {
-		DBG_NW << "Cannot add sent message to ui for room " << room
+		LOG_LB << "Cannot add sent message to ui for room " << room
 			<< ", player not in the room\n";
 	}
 }
@@ -227,7 +227,7 @@ void tlobby_main::add_chat_room_message_received(const std::string& room,
 		}
 		do_notify(notify_mode);
 	} else {
-		LOG_NW << "Discarding message to room " << room
+		LOG_LB << "Discarding message to room " << room
 			<< " from " << speaker << " (room not open)\n";
 	}
 }
@@ -822,7 +822,7 @@ void tlobby_main::network_handler()
 			process_network_data(data);
 		}
 	} catch(network::error& e) {
-		ERR_NW << "caught network::error in network_handler: " << e.message << "\n";
+		LOG_LB << "caught network::error in network_handler: " << e.message << "\n";
 		throw;
 	}
 }
@@ -851,6 +851,8 @@ void tlobby_main::process_network_data(const config &data)
 void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 {
 	std::string sender = data["sender"];
+	DBG_LB << "process message from " << sender << " "
+		<< (whisper ? "(w)" : "") << ", len " << data["message"].size() << "\n";
 	if (preferences::is_ignored(sender)) return;
 	const std::string& message = data["message"];
 	preferences::parse_admin_authentication(sender, message);
@@ -859,7 +861,7 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 	} else {
 		std::string room = data["room"];
 		if (room.empty()) {
-			LOG_NW << "Message without a room from " << sender << ", assuming lobby\n";
+			LOG_LB << "Message without a room from " << sender << ", assuming lobby\n";
 			room = "lobby";
 		}
 		add_chat_room_message_received(room, sender, message);
@@ -912,7 +914,7 @@ void tlobby_main::process_room_join(const config &data)
 				add_chat_room_message_received("room", "server", room + ": " + topic);
 			}
 		} else {
-			LOG_NW << "Discarding join info for a room the player is not in\n";
+			LOG_LB << "Discarding join info for a room the player is not in\n";
 		}
 	}
 }
@@ -926,7 +928,7 @@ void tlobby_main::process_room_part(const config &data)
 	if (r) {
 		r->remove_member(player);
 	} else {
-		LOG_NW << "Discarding part info for a room the player is not in\n";
+		LOG_LB << "Discarding part info for a room the player is not in\n";
 	}
 }
 
@@ -961,19 +963,19 @@ void tlobby_main::process_room_query_response(const config& data)
 
 void tlobby_main::join_button_callback(gui2::twindow &window)
 {
-	LOG_NW << "join_button_callback\n";
+	LOG_LB << "join_button_callback\n";
 	join_global_button_callback(window);
 }
 
 void tlobby_main::observe_button_callback(gui2::twindow &window)
 {
-	LOG_NW << "observe_button_callback\n";
+	LOG_LB << "observe_button_callback\n";
 	observe_global_button_callback(window);
 }
 
 void tlobby_main::observe_global_button_callback(gui2::twindow &window)
 {
-	LOG_NW << "observe_global_button_callback\n";
+	LOG_LB << "observe_global_button_callback\n";
 	if (do_game_join(gamelistbox_->get_selected_row(), true)) {
 		legacy_result_ = OBSERVE;
 		window.close();
@@ -982,7 +984,7 @@ void tlobby_main::observe_global_button_callback(gui2::twindow &window)
 
 void tlobby_main::join_global_button_callback(gui2::twindow &window)
 {
-	LOG_NW << "join_global_button_callback\n";
+	LOG_LB << "join_global_button_callback\n";
 	if (do_game_join(gamelistbox_->get_selected_row(), false)) {
 		legacy_result_ = JOIN;
 		window.close();
