@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 #include "controller_base.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "generic_event.hpp"
@@ -79,7 +80,12 @@ public:
 	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
-	virtual void force_end_turn(){}
+	virtual void force_end_turn() = 0;
+	virtual void force_end_level(LEVEL_RESULT res,
+		const std::string &endlevel_music_list = std::string(),
+		int percentage = -1, bool add = false, bool bonus = true,
+		bool report = true, bool prescenario_save = true,
+		bool linger = true) = 0;
 
 	//turn functions
 	size_t turn() const {return tod_manager_.turn();}

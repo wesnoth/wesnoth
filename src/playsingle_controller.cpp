@@ -53,6 +53,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	textbox_info_(),
 	replay_sender_(recorder),
 	end_turn_(false),
+	end_level_(NULL),
 	player_type_changed_(false),
 	replaying_(false),
 	turn_over_(false),
@@ -77,6 +78,7 @@ playsingle_controller::~playsingle_controller()
 {
 	ai::manager::remove_observer(this) ;
 	ai::manager::clear_ais() ;
+	delete end_level_;
 }
 
 
@@ -133,6 +135,28 @@ void playsingle_controller::end_turn(){
 void playsingle_controller::force_end_turn(){
 	skip_next_turn_ = true;
 	end_turn_ = true;
+}
+
+void playsingle_controller::force_end_level(LEVEL_RESULT res,
+	const std::string &endlevel_music_list, int percentage, bool add,
+	bool bonus, bool report, bool prescenario_save, bool linger)
+{
+	if (end_level_) {
+		// Or should we merge them instead?
+		return;
+	}
+	end_level_ = new end_level_exception(res, endlevel_music_list, percentage,
+		add, bonus, report, prescenario_save, linger);
+	force_end_turn();
+}
+
+void playsingle_controller::check_end_level()
+{
+	if (!end_level_) return;
+	end_level_exception exn(*end_level_);
+	delete end_level_;
+	end_level_ = NULL;
+	throw exn;
 }
 
 void playsingle_controller::rename_unit(){
@@ -680,6 +704,7 @@ void playsingle_controller::play_human_turn() {
 	gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 		play_slice();
+		check_end_level();
 		gui_->draw();
 	}
 }
@@ -730,7 +755,7 @@ void playsingle_controller::linger(upload_log& log)
 			// Reset the team number to make sure we're the right team.
 			player_number_ = first_player_;
 			play_slice();
-
+			check_end_level();
 			gui_->draw();
 		}
 	} catch(game::load_game_exception&) {

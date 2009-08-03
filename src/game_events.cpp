@@ -23,7 +23,6 @@
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
-#include "game_end_exceptions.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -2761,18 +2760,22 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 			const bool gold_add = utils::string_bool(cfg["carryover_add"],
 					game_config::gold_carryover_add);
 
-			throw end_level_exception(VICTORY, endlevel_music, carry_over, gold_add, bonus, carryover_report, save, linger_mode);
+			resources::controller->force_end_level(VICTORY, endlevel_music,
+				carry_over, gold_add, bonus, carryover_report, save, linger_mode);
 		} else if(result == "continue") {
 			lg::wml_error << "continue is deprecated as result in [endlevel],"
 				<< " use the new attributes instead.\n";
-			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, true, false);
+			resources::controller->force_end_level(VICTORY, endlevel_music,
+				100, false, false, false, true, false);
 		} else if(result == "continue_no_save") {
 			lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
 				<< " use the new attributes instead.\n";
-			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, false, false);
+			resources::controller->force_end_level(VICTORY, endlevel_music,
+				100, false, false, false, false, false);
 		} else {
 			LOG_NG << "throwing event defeat...\n";
-			throw end_level_exception(DEFEAT, endlevel_music, -1, false, true, carryover_report, save, linger_mode);
+			resources::controller->force_end_level(DEFEAT, endlevel_music,
+				-1, false, true, carryover_report, save, linger_mode);
 		}
 	}
 

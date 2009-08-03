@@ -19,7 +19,6 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
-#include "game_end_exceptions.hpp"
 #include "play_controller.hpp"
 
 struct upload_log;
@@ -63,6 +62,11 @@ public:
 #endif
 	void linger(upload_log& log);
 
+	virtual void force_end_level(LEVEL_RESULT res, const std::string &endlevel_music_list,
+		int percentage, bool add, bool bonus, bool report, bool prescenario_save,
+		bool linger);
+	void check_end_level();
+
 protected:
 	virtual void play_turn(bool no_save);
 	virtual void play_side(const unsigned int team_index, bool save);
@@ -85,6 +89,7 @@ protected:
 	replay_network_sender replay_sender_;
 
 	bool end_turn_;
+	end_level_exception *end_level_;
 	bool player_type_changed_;
 	bool replaying_;
 	bool turn_over_;
