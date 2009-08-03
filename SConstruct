@@ -217,7 +217,7 @@ if env["prereqs"]:
     have_server_prereqs = \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
         conf.CheckGettextLibintl() and \
-        conf.CheckBoost("iostreams", require_version = "1.35.0") and \
+        conf.CheckBoost("iostreams", require_version = "1.34.1") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
@@ -236,7 +236,7 @@ if env["prereqs"]:
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         check_lua() and \
-        conf.CheckBoost("regex") and \
+        conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
