@@ -795,8 +795,8 @@ void ai_default::do_move()
 	}
 }
 
-bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const move_map& srcdst,
-		const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const move_map& /*srcdst*/,
+		const move_map& /*dstsrc*/, const move_map& /*enemy_srcdst*/, const move_map& /*enemy_dstsrc*/)
 {
 
 	const std::vector<attack_analysis> &analysis = get_attacks();
