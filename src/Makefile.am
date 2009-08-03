@@ -68,6 +68,7 @@ wesnoth_source = \
 	ai/interface.cpp \
 	ai/manager.cpp \
 	ai/registry.cpp \
+	ai/testing/aspect_attacks.cpp \
 	ai/testing/ca.cpp \
 	ai/testing/stage_rca.cpp \
 	ai/testing/stage_fallback.cpp \

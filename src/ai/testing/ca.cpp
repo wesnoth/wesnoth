@@ -559,7 +559,7 @@ double combat_phase::evaluate()
 	choice_rating_ = -1000.0;
 	int ticks = SDL_GetTicks();
 
-	std::vector<attack_analysis> analysis = analyze_targets(get_srcdst(), get_dstsrc(), get_enemy_srcdst(), get_enemy_dstsrc());
+	const std::vector<attack_analysis> analysis = get_attacks();
 
 	int time_taken = SDL_GetTicks() - ticks;
 	LOG_AI_TESTING_AI_DEFAULT << "took " << time_taken << " ticks for " << analysis.size()
@@ -579,8 +579,8 @@ double combat_phase::evaluate()
 	const int max_positions = 30000;
 	const int skip_num = analysis.size()/max_positions;
 
-	std::vector<attack_analysis>::iterator choice_it = analysis.end();
-	for(std::vector<attack_analysis>::iterator it = analysis.begin();
+	std::vector<attack_analysis>::const_iterator choice_it = analysis.end();
+	for(std::vector<attack_analysis>::const_iterator it = analysis.begin();
 			it != analysis.end(); ++it) {
 
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)

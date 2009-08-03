@@ -4396,6 +4396,34 @@
 					Name="testing"
 					>
 					<File
+						RelativePath="..\..\src\ai\testing\aspect_attacks.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\testing\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\testing\ca.cpp"
 						>
 						<FileConfiguration
@@ -5658,6 +5686,10 @@
 				<Filter
 					Name="testing"
 					>
+					<File
+						RelativePath="..\..\src\ai\testing\aspect_attacks.hpp"
+						>
+					</File>
 					<File
 						RelativePath="..\..\src\ai\testing\ca.hpp"
 						>

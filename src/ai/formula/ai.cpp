@@ -789,7 +789,7 @@ variant formula_ai::get_value(const std::string& key) const
 			return attacks_cache_;
 		}
 
-		std::vector<attack_analysis> attacks = const_cast<formula_ai*>(this)->analyze_targets(srcdst_, dstsrc_, enemy_srcdst_, enemy_dstsrc_);
+		const std::vector<attack_analysis> attacks = get_attacks();
 		std::vector<variant> vars;
 		for(std::vector<attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
 			vars.push_back(variant(new attack_analysis(*i)));

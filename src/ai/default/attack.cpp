@@ -34,7 +34,7 @@ static lg::log_domain log_ai("ai/attack");
 namespace ai {
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
-				  class readonly_context& ai_obj,
+				  const readonly_context& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
 {
@@ -260,7 +260,7 @@ bool attack_analysis::attack_close(const map_location& loc) const
 }
 
 
-double attack_analysis::rating(double aggression, readonly_context& ai_obj) const
+double attack_analysis::rating(double aggression, const readonly_context& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -292,10 +292,6 @@ double attack_analysis::rating(double aggression, readonly_context& ai_obj) cons
 #endif
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
 			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
-		if(uses_leader) {
-			ai_obj.log_message("attack option has value " + str_cast(value) + " with exposure " + str_cast(exposure) + ": " + str_cast(vulnerability) + "/" + str_cast(support));
-		}
-
 		value -= exposure*(1.0-aggression);
 	}
 

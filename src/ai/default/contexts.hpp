@@ -59,11 +59,11 @@ public:
 	}
 
 	void analyze(const gamemap& map, unit_map& units,
-				 class readonly_context& ai_obj,
+				 const readonly_context& ai_obj,
 				 const move_map& dstsrc, const move_map& srcdst,
 				 const move_map& enemy_dstsrc, double aggression);
 
-	double rating(double aggression, class readonly_context& ai_obj) const;
+	double rating(double aggression, const readonly_context& ai_obj) const;
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
@@ -124,12 +124,6 @@ class default_ai_context;
 class default_ai_context : public virtual readwrite_context{
 public:
 
-	/** Return a vector of all possible attack analysisis */
-	virtual std::vector<attack_analysis> analyze_targets(
-		const move_map& srcdst, const move_map& dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc) = 0;
-
-
 	virtual int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes) = 0;
 
 
@@ -139,16 +133,6 @@ public:
 
 	/** Destructor */
 	virtual ~default_ai_context();
-
-
-	/** Analyze possibility of attacking target on 'loc'. */
-	virtual void do_attack_analysis(
-		const map_location& loc, const move_map& srcdst, const move_map& dstsrc,
-		const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-		const map_location* tiles, bool* used_locations,
-		std::vector<map_location>& units,
-		std::vector<attack_analysis>& result, attack_analysis& cur_analysis) = 0;
 
 
 	virtual default_ai_context& get_default_ai_context() = 0;
@@ -171,14 +155,6 @@ public:
 class default_ai_context_proxy : public virtual default_ai_context, public virtual readwrite_context_proxy {
 public:
 
-	virtual std::vector<attack_analysis> analyze_targets(
-		const move_map& srcdst, const move_map& dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
-	{
-		return target_->analyze_targets(srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
-	}
-
-
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes)
 	{
 		return target_->count_free_hexes_in_castle(loc, checked_hexes);
@@ -192,19 +168,6 @@ public:
 
 
 	virtual	~default_ai_context_proxy();
-
-
-
-	virtual void do_attack_analysis(
-		const map_location& loc, const move_map& srcdst, const move_map& dstsrc,
-		const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-		const map_location* tiles, bool* used_locations,
-		std::vector<map_location>& units,
-		std::vector<attack_analysis>& result, attack_analysis& cur_analysis)
-	{
-		target_->do_attack_analysis(loc,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,tiles,used_locations,units,result,cur_analysis);
-	}
 
 
 	virtual default_ai_context& get_default_ai_context()
@@ -244,11 +207,6 @@ private:
 class default_ai_context_impl : public virtual readwrite_context_proxy, public default_ai_context {
 public:
 
-	virtual std::vector<attack_analysis> analyze_targets(
-		const move_map& srcdst, const move_map& dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-
-
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes);
 
 
@@ -260,15 +218,6 @@ public:
 
 
 	virtual ~default_ai_context_impl();
-
-
-	virtual void do_attack_analysis(
-		const map_location& loc, const move_map& srcdst, const move_map& dstsrc,
-		const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
-		const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-		const map_location* tiles, bool* used_locations,
-		std::vector<map_location>& units,
-		std::vector<attack_analysis>& result, attack_analysis& cur_analysis);
 
 
 	virtual default_ai_context& get_default_ai_context();

@@ -798,16 +798,9 @@ void ai_default::do_move()
 bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const move_map& srcdst,
 		const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
+
+	const std::vector<attack_analysis> &analysis = get_attacks();
 	int ticks = SDL_GetTicks();
-
-	std::vector<attack_analysis> analysis = analyze_targets(srcdst, dstsrc,
-			enemy_srcdst, enemy_dstsrc);
-
-	int time_taken = SDL_GetTicks() - ticks;
-	LOG_AI << "took " << time_taken << " ticks for " << analysis.size()
-		<< " positions. Analyzing...\n";
-
-	ticks = SDL_GetTicks();
 
 	const int max_sims = 50000;
 	int num_sims = analysis.empty() ? 0 : max_sims/analysis.size();
@@ -821,9 +814,9 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 	const int max_positions = 30000;
 	const int skip_num = analysis.size()/max_positions;
 
-	std::vector<attack_analysis>::iterator choice_it = analysis.end();
+	std::vector<attack_analysis>::const_iterator choice_it = analysis.end();
 	double choice_rating = -1000.0;
-	for(std::vector<attack_analysis>::iterator it = analysis.begin();
+	for(std::vector<attack_analysis>::const_iterator it = analysis.begin();
 			it != analysis.end(); ++it) {
 
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
@@ -849,7 +842,7 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 		}
 	}
 
-	time_taken = SDL_GetTicks() - ticks;
+	int time_taken = SDL_GetTicks() - ticks;
 	LOG_AI << "analysis took " << time_taken << " ticks\n";
 
 	// suokko tested the rating against current_team().caution()

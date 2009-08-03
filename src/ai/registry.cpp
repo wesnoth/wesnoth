@@ -26,6 +26,7 @@
 #include "dfool/ai.hpp"
 #include "formula/ai.hpp"
 #include "registry.hpp"
+#include "testing/aspect_attacks.hpp"
 #include "testing/ca.hpp"
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
@@ -108,6 +109,9 @@ static register_aspect_factory< composite_aspect<double> >
 static register_aspect_factory< composite_aspect<int> >
 	attack_depth__composite_aspect_factory("attack_depth*composite_aspect");
 
+static register_aspect_factory< composite_aspect< attacks_vector > >
+	attacks__composite_aspect_factory("attacks*composite_aspect");
+
 static register_aspect_factory< composite_aspect< terrain_filter > >
 	avoid__composite_aspect_factory("avoid*composite_aspect");
 
@@ -164,6 +168,9 @@ static register_aspect_factory< standard_aspect<double> >
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory("attack_depth*standard_aspect");
 
+static register_aspect_factory< testing_ai_default::aspect_attacks >
+	attacks__testing_ai_default_aspect_attacks_factory("attacks*testing_ai_default::aspect_attacks");
+
 static register_aspect_factory< standard_aspect< terrain_filter > >
 	avoid__standard_aspect_factory("avoid*standard_aspect");
 
@@ -219,6 +226,9 @@ static register_aspect_factory< standard_aspect<double> >
 
 static register_aspect_factory< standard_aspect<int> >
 	attack_depth__standard_aspect_factory2("attack_depth*");
+
+static register_aspect_factory< testing_ai_default::aspect_attacks >
+	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
 
 static register_aspect_factory< standard_aspect< terrain_filter > >
 	avoid__standard_aspect_factory2("avoid*");
