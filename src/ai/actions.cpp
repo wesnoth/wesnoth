@@ -315,6 +315,10 @@ void attack_result::do_execute()
 
 	check_victory();
 	set_gamestate_changed();
+	//start of ugly hack. @todo 1.8 rework that via extended event system
+	//until event system is reworked, we note the attack this way 
+	get_info().recent_attacks.insert(defender_loc_);
+	//end of ugly hack
 	try {
 		manager::raise_enemy_attacked();
 	} catch (end_turn_exception&) {

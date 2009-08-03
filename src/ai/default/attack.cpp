@@ -20,6 +20,7 @@
 #include "../../global.hpp"
 
 #include "ai.hpp"
+#include "../manager.hpp"
 
 #include "../../attack_prediction.hpp"
 #include "foreach.hpp"
@@ -33,7 +34,7 @@ static lg::log_domain log_ai("ai/attack");
 namespace ai {
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
-								  class default_ai_context& ai_obj,
+				  class readonly_context& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
                                   const move_map& enemy_dstsrc, double aggression)
 {
@@ -246,7 +247,20 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 }
 
-double attack_analysis::rating(double aggression, default_ai_context& ai_obj) const
+bool attack_analysis::attack_close(const map_location& loc) const
+{
+	std::set<map_location> &attacks = manager::get_ai_info().recent_attacks;
+	for(std::set<map_location>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+		if(distance_between(*i,loc) < 4) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+double attack_analysis::rating(double aggression, readonly_context& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -305,7 +319,7 @@ double attack_analysis::rating(double aggression, default_ai_context& ai_obj) co
 			   // who are also attacking, then don't do it.
                if(vulnerability > 50.0 && vulnerability > support*2.0
 			   && chance_to_kill < 0.02 && aggression < 0.75
-			   && !ai_obj.attack_close(target)) {
+			   && !attack_close(target)) {
                        return -1.0;
                }
         }

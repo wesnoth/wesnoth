@@ -82,6 +82,22 @@ private:
 	int counter_;
 };
 
+//defensive position
+
+struct defensive_position {
+	defensive_position() :
+		loc(),
+		chance_to_hit(0),
+		vulnerability(0.0),
+		support(0.0)
+		{}
+
+	map_location loc;
+	int chance_to_hit;
+	double vulnerability, support;
+};
+
+
 // side context
 
 class side_context;
@@ -154,10 +170,13 @@ public:
 	const virtual game_info& get_info() const = 0;
 
 
-	virtual void raise_user_interact() const = 0;
-
-
 	//@note: following part is in alphabetic order
+	virtual defensive_position const& best_defensive_position(const map_location& unit,
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const = 0;
+
+
+	virtual std::map<map_location,defensive_position>& defensive_position_cache() const = 0;
+
 
 	virtual double get_aggression() const = 0;
 
@@ -251,7 +270,39 @@ public:
 	virtual int get_villages_per_scout() const = 0;
 
 
+	virtual void invalidate_defensive_position_cache() const = 0;
+
+
 	virtual void invalidate_move_maps() const = 0;
+
+
+	virtual void invalidate_keeps_cache() const= 0;
+
+
+	virtual const std::set<map_location>& keeps() const= 0;
+
+
+	virtual bool leader_can_reach_keep() const = 0;
+
+
+	virtual const map_location& nearest_keep(const map_location& loc) const = 0;
+
+
+	/**
+	 * Function which finds how much 'power' a side can attack a certain location with.
+	 * This is basically the maximum hp of damage that can be inflicted upon a unit on loc
+	 * by full-health units, multiplied by the defense these units will have.
+	 * (if 'use_terrain' is false, then it will be multiplied by 0.5)
+	 *
+	 * Example: 'loc' can be reached by two units, one of whom has a 10-3 attack
+	 * and has 48/48 hp, and can defend at 40% on the adjacent grassland.
+	 * The other has a 8-2 attack, and has 30/40 hp, and can defend at 60% on the adjacent mountain.
+	 * The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
+	 */
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const = 0;
+
+
+	virtual void raise_user_interact() const = 0;
 
 
 	virtual void recalculate_move_maps() const = 0;
@@ -259,11 +310,15 @@ public:
 
 	virtual void recalculate_move_maps_enemy() const = 0;
 
-
 	/**
 	 * serialize to config
 	 */
 	virtual config to_readonly_context_config() const = 0;
+
+
+	virtual std::map<std::pair<map_location,const unit_type *>,
+		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const = 0;
+
 };
 
 class readwrite_context;
@@ -456,6 +511,17 @@ public:
 	}
 
 	//@note: following part is in alphabetic order
+	defensive_position const& best_defensive_position(const map_location& unit,
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
+	{
+		return target_->best_defensive_position(unit,dstsrc,srcdst,enemy_dstsrc);
+	}
+
+
+	virtual std::map<map_location,defensive_position>& defensive_position_cache() const
+	{
+		return target_->defensive_position_cache();
+	}
 
 
 	virtual double get_aggression() const
@@ -584,6 +650,12 @@ public:
 	}
 
 
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const
+	{
+		return target_->power_projection(loc,dstsrc);
+	}
+
+
 	virtual bool get_recruitment_ignore_bad_combat() const
 	{
 		return target_->get_recruitment_ignore_bad_combat();
@@ -638,9 +710,39 @@ public:
 	}
 
 
+	virtual void invalidate_defensive_position_cache() const
+	{
+		return target_->invalidate_defensive_position_cache();
+	}
+
+
 	virtual void invalidate_move_maps() const
 	{
 		target_->invalidate_move_maps();
+	}
+
+
+	virtual void invalidate_keeps_cache() const
+	{
+		return target_->invalidate_keeps_cache();
+	}
+
+
+	virtual const std::set<map_location>& keeps() const
+	{
+		return target_->keeps();
+	}
+
+
+	virtual bool leader_can_reach_keep() const
+	{
+		return target_->leader_can_reach_keep();
+	}
+
+
+	virtual const map_location& nearest_keep( const map_location& loc ) const
+	{
+		return target_->nearest_keep(loc);
 	}
 
 
@@ -660,6 +762,14 @@ public:
 	{
 		return target_->to_readonly_context_config();
 	}
+
+
+	virtual std::map<std::pair<map_location,const unit_type *>,
+		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const
+	{
+		return target_->unit_stats_cache();
+	}
+
 
 private:
 	readonly_context *target_;
@@ -961,6 +1071,11 @@ public:
 
 
 	//@note: following functions are in alphabetic order
+	defensive_position const& best_defensive_position(const map_location& unit,
+			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const;
+
+
+	virtual std::map<map_location,defensive_position>& defensive_position_cache() const;
 
 
 	virtual double get_aggression() const;
@@ -1050,7 +1165,25 @@ public:
 	virtual int get_villages_per_scout() const;
 
 
+	virtual void invalidate_defensive_position_cache() const;
+
+
 	virtual void invalidate_move_maps() const;
+
+
+	virtual void invalidate_keeps_cache() const;
+
+
+	virtual const std::set<map_location>& keeps() const;
+
+
+	virtual bool leader_can_reach_keep() const;
+
+
+	virtual const map_location& nearest_keep(const map_location& loc) const;
+
+
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const;
 
 
 	virtual void recalculate_move_maps() const;
@@ -1066,6 +1199,10 @@ public:
 
 
 	virtual config to_readonly_context_config() const;
+
+
+	virtual std::map<std::pair<map_location,const unit_type *>,
+		std::pair<battle_context::unit_stats,battle_context::unit_stats> >& unit_stats_cache() const;
 
 private:
 	template<typename T>
@@ -1086,12 +1223,14 @@ private:
 	aspect_type< attacks_vector >::typesafe_ptr attacks_;
 	mutable aspect_type<terrain_filter>::typesafe_ptr avoid_;
 	aspect_type<double>::typesafe_ptr caution_;
+	mutable std::map<map_location,defensive_position> defensive_position_cache_;
 	mutable move_map dstsrc_;
 	mutable move_map enemy_dstsrc_;
 	mutable moves_map enemy_possible_moves_;
 	mutable move_map enemy_srcdst_;
 	aspect_type< std::string >::typesafe_ptr grouping_;
 	std::vector< goal_ptr > goals_;
+	mutable std::set<map_location> keeps_;
 	aspect_type< config >::typesafe_ptr leader_goal_;
 	aspect_type< double >::typesafe_ptr leader_value_;
 	mutable bool move_maps_enemy_valid_;
@@ -1108,8 +1247,11 @@ private:
 	aspect_type< bool >::typesafe_ptr simple_targeting_;
 	mutable move_map srcdst_;
 	aspect_type< bool >::typesafe_ptr support_villages_;
+	mutable std::map<std::pair<map_location,const unit_type *>,
+		std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 	aspect_type< double >::typesafe_ptr village_value_;
 	aspect_type< int >::typesafe_ptr villages_per_scout_;
+
 
 };
 

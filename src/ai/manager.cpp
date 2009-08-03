@@ -674,6 +674,8 @@ void manager::play_turn( side_number side ){
 	last_interact_ = 0;
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
+	/*hack. @todo 1.8 rework via extended event system*/
+	get_ai_info().recent_attacks.clear();
 	interface& ai_obj = get_active_ai_for_side(side);
 	raise_turn_started();
 	ai_obj.new_turn();
