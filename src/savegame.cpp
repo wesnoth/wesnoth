@@ -934,10 +934,9 @@ void replay_savegame::create_filename()
 	set_filename(stream.str());
 }
 
-autosave_savegame::autosave_savegame(game_state &gamestate, const config& level_cfg,
-							 game_display& gui, const tod_manager& tod_mng,
-							 const gamemap& map, const config& snapshot_cfg, const bool compress_saves)
-	: game_savegame(gamestate, level_cfg, gui, tod_mng, map, snapshot_cfg, compress_saves)
+autosave_savegame::autosave_savegame(game_state &gamestate,
+					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
+	: game_savegame(gamestate, gui, snapshot_cfg, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 }
@@ -958,15 +957,14 @@ void autosave_savegame::create_filename()
 	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(tod_manager_.turn());
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"];
 
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(game_state &gamestate, const config& level_cfg,
-							 game_display& gui, const tod_manager& tod_mng,
-							 const gamemap& map, const config& snapshot_cfg, const bool compress_saves)
-	: game_savegame(gamestate, level_cfg, gui, tod_mng, map, snapshot_cfg, compress_saves)
+oos_savegame::oos_savegame(game_state &gamestate,
+					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
+	: game_savegame(gamestate, gui, snapshot_cfg, compress_saves)
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
@@ -990,12 +988,10 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 	return res;
 }
 
-game_savegame::game_savegame(game_state &gamestate, const config& level_cfg,
-							 game_display& gui, const tod_manager& tod_mng,
-							 const gamemap& map, const config& snapshot_cfg, const bool compress_saves)
+game_savegame::game_savegame(game_state &gamestate,
+					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
-	level_cfg_(level_cfg), gui_(gui),
-	tod_manager_(tod_mng), map_(map)
+	gui_(gui)
 {
 	snapshot().merge_with(snapshot_cfg);
 }
@@ -1006,7 +1002,7 @@ void game_savegame::create_filename()
 
 	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
 			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("Turn") << " " << tod_manager_.turn();
+	stream << ellipsed_name << " " << _("Turn") << " " << snapshot()["turn_at"];
 	set_filename(stream.str());
 }
 
@@ -1018,7 +1014,6 @@ void game_savegame::before_save()
 
 void game_savegame::write_game_snapshot()
 {
-	snapshot().merge_attributes(level_cfg_);
 
 	snapshot()["snapshot"] = "yes";
 
@@ -1026,23 +1021,11 @@ void game_savegame::write_game_snapshot()
 	buf << gui_.playing_team();
 	snapshot()["playing_team"] = buf.str();
 
-	snapshot().merge_with(tod_manager_.to_config());
 	game_events::write_events(snapshot());
-
-	// Write terrain_graphics data in snapshot, too
-	const config::child_list& terrains = level_cfg_.get_children("terrain_graphics");
-	for(config::child_list::const_iterator tg = terrains.begin();
-			tg != terrains.end(); ++tg) {
-
-		snapshot().add_child("terrain_graphics", **tg);
-	}
 
 	sound::write_music_play_list(snapshot());
 
 	gamestate().write_snapshot(snapshot());
-
-	//write out the current state of the map
-	snapshot()["map_data"] = map_.write();
 
 	gui_.labels().write(snapshot());
 }

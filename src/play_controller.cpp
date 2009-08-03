@@ -309,7 +309,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		game_savegame save(gamestate_, level_, *gui_, tod_manager_, map_, to_config(), preferences::compress_saves());
+		game_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.save_game_interactive((*gui_).video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -540,6 +540,9 @@ void play_controller::do_init_side(const unsigned int team_index){
 config play_controller::to_config() const
 {
 	config cfg;
+
+	cfg.merge_attributes(level_);
+
 	std::stringstream buf;
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
@@ -569,6 +572,19 @@ config play_controller::to_config() const
 			}
 		}
 	}
+
+	cfg.merge_with(tod_manager_.to_config());
+
+	// Write terrain_graphics data in snapshot, too
+	const config::child_list& terrains = level_.get_children("terrain_graphics");
+	for(config::child_list::const_iterator tg = terrains.begin();
+			tg != terrains.end(); ++tg) {
+
+		cfg.add_child("terrain_graphics", **tg);
+	}
+
+	//write out the current state of the map
+	cfg["map_data"] = map_.write();
 
 	return cfg;
 }
