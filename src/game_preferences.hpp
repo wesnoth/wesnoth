@@ -38,9 +38,9 @@ namespace preferences {
 	};
 
 	bool is_authenticated();
-	void admin_authentication(const std::string& sender, const std::string& message);
+	void parse_admin_authentication(const std::string& sender, const std::string& message);
 
-	bool show_lobby_join(const std::string& sender, const std::string& message);
+	bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);
 	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
@@ -57,12 +57,6 @@ namespace preferences {
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
 	bool is_campaign_completed(const std::string& campaign_id);
-
-	bool sort_list();
-	void _set_sort_list(bool show);
-
-	bool iconize_list();
-	void _set_iconize_list(bool show);
 
 	const std::vector<game_config::server_info>& server_list();
 
@@ -234,21 +228,6 @@ namespace preferences {
 	void encounter_recallable_units(std::vector<team>& teams);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);
-
-	bool filter_lobby();
-	void set_filter_lobby(bool value);
-
-	bool fi_invert();
-	void set_fi_invert(bool value);
-
-	bool fi_vacant_slots();
-	void set_fi_vacant_slots(bool value);
-
-	bool fi_friends_in_game();
-	void set_fi_friends_in_game(bool value);
-
-	std::string fi_text();
-	void set_fi_text(const std::string& search_string);
 
 }
 

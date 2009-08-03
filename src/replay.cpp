@@ -430,7 +430,7 @@ void replay::add_chat_log_entry(const config &cfg, std::ostream &str) const
 {
 	if (!cfg) return;
 
-	if (!preferences::show_lobby_join(cfg["id"], cfg["message"])) return;
+	if (!preferences::parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
 	if (preferences::is_ignored(cfg["id"])) return;
 	const std::string& team_name = cfg["team_name"];
 	if(team_name == "") {
@@ -830,7 +830,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const std::string &team_name = child["team_name"];
 			const std::string &speaker_name = child["id"];
 			const std::string &message = child["message"];
-			//if (!preferences::show_lobby_join(speaker_name, message)) return;
+			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			get_replay_source().add_chat_message_location();
 			if (!get_replay_source().is_skipping() || is_whisper) {

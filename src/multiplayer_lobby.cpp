@@ -20,6 +20,7 @@
 
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "lobby_preferences.hpp"
 #include "map_exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"

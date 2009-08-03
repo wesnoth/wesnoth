@@ -168,6 +168,7 @@ SET(libwesnoth-game_STAT_SRC
     language.cpp
     loadscreen.cpp
     lobby_data.cpp
+    lobby_preferences.cpp
     map_create.cpp
     map_label.cpp
     mapgen.cpp

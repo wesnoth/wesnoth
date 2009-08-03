@@ -139,7 +139,7 @@ bool is_authenticated() {
 	return authenticated;
 }
 
-void admin_authentication(const std::string& sender, const std::string& message) {
+void parse_admin_authentication(const std::string& sender, const std::string& message) {
 	if(sender != "server") return;
 	if(message.find("You are now recognized as an administrator.") == 0) {
 		authenticated = true;
@@ -241,7 +241,7 @@ bool is_campaign_completed(const std::string& campaign_id) {
 	return std::find(completed.begin(), completed.end(), campaign_id) != completed.end();
 }
 
-bool show_lobby_join(const std::string& sender, const std::string& message) {
+bool parse_should_show_lobby_join(const std::string& sender, const std::string& message) {
 	// If it's actually not a lobby join message return true (show it).
 	if (sender != "server" || message.find("has logged into the lobby") == std::string::npos) return true;
 	if (lobby_joins() == SHOW_NONE) return false;
@@ -276,27 +276,6 @@ void _set_lobby_joins(int show)
 	} else if (show == SHOW_NONE) {
 		preferences::set("lobby_joins", "none");
 	}
-}
-
-bool sort_list()
-{
-	return utils::string_bool(preferences::get("sort_list"), true);
-}
-
-
-void _set_sort_list(bool sort)
-{
-	preferences::set("sort_list", sort ? "yes" : "no");
-}
-
-bool iconize_list()
-{
-	return utils::string_bool(preferences::get("iconize_list"), true);
-}
-
-void _set_iconize_list(bool sort)
-{
-	preferences::set("iconize_list", sort ? "yes" : "no");
 }
 
 const std::vector<game_config::server_info>& server_list()
@@ -901,56 +880,6 @@ void encounter_map_terrain(gamemap& map){
 			};
 		}
 	}
-}
-
-bool filter_lobby()
-{
-	return utils::string_bool(preferences::get("filter_lobby"), false);
-}
-
-void set_filter_lobby(bool value)
-{
-	preferences::set("filter_lobby", value ? "yes" : "no");
-}
-
-bool fi_invert()
-{
-	return utils::string_bool(preferences::get("fi_invert"), false);
-}
-
-void set_fi_invert(bool value)
-{
-	preferences::set("fi_invert", value ? "yes" : "no");
-}
-
-bool fi_vacant_slots()
-{
-	return utils::string_bool(preferences::get("fi_vacant_slots"), false);
-}
-
-void set_fi_vacant_slots(bool value)
-{
-	preferences::set("fi_vacant_slots", value ? "yes" : "no");
-}
-
-bool fi_friends_in_game()
-{
-	return utils::string_bool(preferences::get("fi_friends_in_game"), false);
-}
-
-void set_fi_friends_in_game(bool value)
-{
-	preferences::set("fi_friends_in_game", value ? "yes" : "no");
-}
-
-std::string fi_text()
-{
-	return preferences::get("fi_text");
-}
-
-void set_fi_text(const std::string& search_string)
-{
-	preferences::set("fi_text", search_string);
 }
 
 } // preferences namespace

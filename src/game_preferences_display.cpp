@@ -21,6 +21,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "lobby_preferences.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/slider.hpp"

@@ -1162,10 +1162,10 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	if (whisper) {
 		sender.assign(speaker, 9, speaker.size());
 	}
-	if (!preferences::show_lobby_join(sender, message)) return;
+	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
-	preferences::admin_authentication(sender, message);
+	preferences::parse_admin_authentication(sender, message);
 
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer() || whisper))

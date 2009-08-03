@@ -34,6 +34,7 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "game_preferences.hpp"
+#include "lobby_preferences.hpp"
 #include "playmp_controller.hpp"
 
 #include "formula_string_utils.hpp"
@@ -59,39 +60,6 @@ static lg::log_domain log_lobby("lobby");
 
 
 namespace gui2 {
-
-namespace {
-	//TODO move this and other MP prefs to a MP_prefs header and possibly cpp
-	const char* prefkey_whisper_friends_only = "lobby_whisper_friends_only";
-	const char* prefkey_auto_open_whisper_windows = "lobby_auto_open_whisper_windows";
-	const char* prefkey_playerlist_sort_relation = "lobby_playerlist_sort_relation";
-	const char* prefkey_playerlist_sort_name = "lobby_playerlist_sort_name";
-	const char* prefkey_playerlist_single_group = "lobby_playerlist_single_group";
-	bool whisper_friends_only() {
-		return utils::string_bool(preferences::get(prefkey_whisper_friends_only));
-	}
-	bool auto_open_whisper_windows() {
-		return utils::string_bool(preferences::get(prefkey_auto_open_whisper_windows), true);
-	}
-	bool playerlist_sort_relation() {
-		return utils::string_bool(preferences::get(prefkey_playerlist_sort_relation), true);
-	}
-	void set_playerlist_sort_relation(bool v) {
-		return preferences::set(prefkey_playerlist_sort_relation, lexical_cast<std::string>(v));
-	}
-	bool playerlist_sort_name() {
-		return utils::string_bool(preferences::get(prefkey_playerlist_sort_name), true);
-	}
-	void set_playerlist_sort_name(bool v) {
-		return preferences::set(prefkey_playerlist_sort_name, lexical_cast<std::string>(v));
-	}
-	bool playerlist_single_group() {
-		return utils::string_bool(preferences::get(prefkey_playerlist_single_group), true);
-	}
-	void set_playerlist_single_group(bool v) {
-		return preferences::set(prefkey_playerlist_single_group, lexical_cast<std::string>(v));
-	}
-}
 
 void tsub_player_list::init(gui2::twindow &w, const std::string &id)
 {
@@ -186,7 +154,7 @@ void tlobby_main::add_whisper_sent(const std::string& receiver, const std::strin
 {
 	if (whisper_window_active(receiver)) {
 		add_active_window_message(preferences::login(), message);
-	} else if (tlobby_chat_window* t =  whisper_window_open(receiver, utils::string_bool(prefkey_auto_open_whisper_windows))) {
+	} else if (tlobby_chat_window* t =  whisper_window_open(receiver, preferences::auto_open_whisper_windows())) {
 		switch_to_window(t);
 		add_active_window_message(preferences::login(), message);
 	} else {
@@ -197,8 +165,8 @@ void tlobby_main::add_whisper_sent(const std::string& receiver, const std::strin
 
 void tlobby_main::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	bool can_go_to_active = !whisper_friends_only() || preferences::is_friend(sender);
-	bool can_open_new = utils::string_bool(preferences::get(prefkey_auto_open_whisper_windows)) && can_go_to_active;
+	bool can_go_to_active = !preferences::whisper_friends_only() || preferences::is_friend(sender);
+	bool can_open_new = preferences::auto_open_whisper_windows() && can_go_to_active;
 	lobby_info_.get_whisper_log(sender).add_message(sender, message);
 	if (whisper_window_open(sender, can_open_new)) {
 		if (whisper_window_active(sender)) {
@@ -501,7 +469,7 @@ void tlobby_main::update_playerlist()
 		icon_ss << ".png";
 		add_label_data(data, "player", name);
 		add_label_data(data, "main_icon", icon_ss.str());
-		if (playerlist_single_group()) {
+		if (preferences::playerlist_single_group()) {
 			target_list = &player_list_.other_rooms;
 		}
 		target_list->list->add_row(data);
@@ -552,8 +520,8 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 
 	player_list_.init(window);
 
-	player_list_.sort_by_name->set_value(playerlist_sort_name());
-	player_list_.sort_by_relation->set_value(playerlist_sort_relation());
+	player_list_.sort_by_name->set_value(preferences::playerlist_sort_name());
+	player_list_.sort_by_relation->set_value(preferences::playerlist_sort_relation());
 	player_list_.update_sort_icons();
 
 	player_list_.sort_by_name->set_callback_state_change(boost::bind(
@@ -885,7 +853,7 @@ void tlobby_main::process_message(const config &data, bool whisper /*= false*/)
 	std::string sender = data["sender"];
 	if (preferences::is_ignored(sender)) return;
 	const std::string& message = data["message"];
-	preferences::admin_authentication(sender, message);
+	preferences::parse_admin_authentication(sender, message);
 	if (whisper) {
 		add_whisper_received(sender, message);
 	} else {
@@ -1199,8 +1167,8 @@ void tlobby_main::gamelist_change_callback(gui2::twindow &/*window*/)
 void tlobby_main::player_filter_callback(gui2::twidget* /*widget*/)
 {
 	player_list_.update_sort_icons();
-	set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
-	set_playerlist_sort_name(player_list_.sort_by_name->get_value());
+	preferences::set_playerlist_sort_relation(player_list_.sort_by_relation->get_value());
+	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value());
 	update_gamelist();
 }
 

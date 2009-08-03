@@ -170,6 +170,7 @@ wesnoth_source = \
 	help.cpp \
 	intro.cpp \
 	lobby_data.cpp \
+	lobby_preferences.cpp \
 	leader_list.cpp \
 	menu_events.cpp \
 	mouse_events.cpp \
