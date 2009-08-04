@@ -217,7 +217,11 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 					(*scenario_side)["save_id"] = (*carryover_side)["save_id"];
 					(*scenario_side)["gold"] = str_cast<int>(ngold);
 					(*scenario_side)["gold_add"] = (*carryover_side)["gold_add"];
-					(*scenario_side)["can_recruit"]	= (*carryover_side)["can_recruit"];
+					if (!(*carryover_side)["previous_recruits"].empty()) {
+						(*scenario_side)["previous_recruits"]	= (*carryover_side)["previous_recruits"];
+					} else {
+						(*scenario_side)["previous_recruits"]	= (*carryover_side)["can_recruit"];
+					}
 					(*scenario_side)["name"] = (*carryover_side)["name"];
 					//add recallable units
 					foreach (const config* u, carryover_side->get_children("unit")) {
@@ -726,8 +730,15 @@ void game_state::get_player_info(const config& side_cfg,
 
 	// If the game state specifies units that
 	// can be recruited for the player, add them.
-	if(player_cfg != NULL && (*player_cfg).has_attribute("can_recruit")) {
-		std::vector<std::string> player_recruits = utils::split((*player_cfg)["can_recruit"]);
+	if(player_cfg != NULL &&
+		((*player_cfg).has_attribute("previous_recruits") || (*player_cfg).has_attribute("can recruit")) ) {
+		std::vector<std::string> player_recruits;
+			if (!(*player_cfg)["previous_recruits"].empty()) {
+				player_recruits = utils::split((*player_cfg)["previous_recruits"]);
+			}
+			else {
+				player_recruits = utils::split((*player_cfg)["can_recruit"]);
+			}
 		foreach (std::string rec, player_recruits) {
 			teams.back().add_recruit(rec);
 		}

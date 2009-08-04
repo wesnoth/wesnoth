@@ -862,7 +862,7 @@ void playsingle_controller::store_recalls() {
 			if(can_recruit_str.empty() == false) {
 				can_recruit_str.resize(can_recruit_str.size()-1);
 			}
-			new_side["can_recruit"] = can_recruit_str;
+			new_side["previous_recruits"] = can_recruit_str;
 			LOG_NG << "stored side in snapshot:\n" << new_side["save_id"] << std::endl;
 			//add the units of the recall list
 			foreach(const unit& u, i->recall_list()) {
