@@ -1038,6 +1038,66 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
+#ifdef HAVE_LIBNOTIFY
+/**
+ * Class for libnotify-based auto-updating desktop notifications.
+ */
+struct wnotify: public Notify::Notification
+{
+	typedef std::list<wnotify *> tset;
+	static tset set;
+	bool closed;
+
+	wnotify(std::string const &owner, std::string const &icon)
+		: Notify::Notification(owner, "", icon), closed(false)
+	{}
+
+	virtual void on_closed()
+	{ closed = true; }
+
+	void append(std::string const &body)
+	{ property_body() = property_body() + body; }
+
+	/**
+	 * Finds the notification for a given owner.
+	 * Removes obsolete notifications along the way.
+	 */
+	static wnotify *locate(std::string const &owner)
+	{
+		// Ensure "closed" signals are propagated.
+		while (Glib::MainContext::get_default()->iteration(false)) {}
+
+		tset::iterator i = set.begin(), i_end = set.end(), res = i_end;
+		while (i != i_end)
+		{
+			tset::iterator j = i++;
+			if ((*j)->property_summary() == owner) {
+				res = j;
+				break;
+			}
+			if (!(*j)->closed) continue;
+			delete *j;
+			set.erase(j);
+		}
+
+		wnotify *n;
+		if (res != i_end) {
+			n = *res;
+			n->property_body() = n->closed ?
+				"" : n->property_body() + '\n';
+			return n;
+		}
+		static Glib::ustring wesnoth_icon =
+			game_config::path + "/images/wesnoth-icon-small.png";
+		n = new wnotify(owner, wesnoth_icon);
+		set.push_back(n);
+		return n;
+	}
+};
+
+wnotify::tset wnotify::set;
+#endif
+
 #if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 void game_display::send_notification(const std::string& owner, const std::string& message)
 #else
@@ -1059,12 +1119,10 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 #ifdef HAVE_LIBNOTIFY
 	try {
-		Notify::init("Wesnoth");
-
-		// I tried to use the fancy Gtk::IconTheme stuff but it didn't seem worth it. -- method
-		Glib::ustring wesnoth_icon_info =  game_config::path + "/images/wesnoth-icon-small.png";
-		Notify::Notification notification(owner, message, wesnoth_icon_info);
-		notification.show();
+		if (!Notify::is_initted()) Notify::init("Wesnoth");
+		wnotify *n = wnotify::locate(owner);
+		n->append(message);
+		n->show();
 	} catch(const Glib::Error& error) {
 		ERR_DP << "Failed to send libnotify notification: " << error.what() << "\n";
 	}
