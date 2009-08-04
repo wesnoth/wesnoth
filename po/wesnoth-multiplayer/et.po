@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-07-28 11:19+0200\n"
-"PO-Revision-Date: 2007-01-13 00:26+0200\n"
-"Last-Translator: Priit Laes <plaes@plaes.org>\n"
+"PO-Revision-Date: 2009-08-04 14:05+0300\n"
+"Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "Vaikimisi"
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:128
 msgid "Age of Heroes"
-msgstr "Kangelaste aeg"
+msgstr "Kangelaste ajastu"
 
 #. [multiplayer_side]: id=Drakes, type=Drake Flare
 #. [multiplayer_side]: id=Drakes, type=Drake Flameheart
@@ -50,21 +50,21 @@ msgstr "Lohed"
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
-msgstr "Knalgani liit"
+msgstr "Knalga Liit"
 
 #. [multiplayer_side]: id=Loyalists, type=Lieutenant
 #. [multiplayer_side]: id=Loyalists, type=General
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr "Lojalistid"
+msgstr "Kuninga vägi"
 
 #. [multiplayer_side]: id=Northerners, type=Orcish Warlord
 #. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr "Põhjamaalased"
+msgstr "Põhjalased"
 
 #. [multiplayer_side]: id=Rebels, type=Elvish Marshal
 #. [multiplayer_side]: id=Rebels, type=Elvish Captain
@@ -82,17 +82,13 @@ msgstr "Kooljad"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "Mäekuningas"
+msgstr "2 mängijat: Basiliski koopad"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
-msgid ""
-"These caves were once the lair of Chak'kso Ney'yks, a legendary Elder "
-"Basilisk. The petrified forms of his victims remain as monuments to his "
-"savage power."
-msgstr ""
+msgid "These caves were once the lair of Chak'kso Ney'yks, a legendary Elder Basilisk. The petrified forms of his victims remain as monuments to his savage power."
+msgstr "Need koopad olid kunagi Chak'kso Ney'yksi, legendaarse vana basiliski koduks. Tema ohvrite kivikujud seisavad siiani, otsekui mälestusmärgid tema jubedale väele."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:49
@@ -172,64 +168,46 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Tume taevas, jäine tuul...\n"
+"kuuvalgel ühel sügiskuul\n"
+"üks kullahimus lohe istus:\n"
+"siin basiliski koopasuul.\n"
+"\n"
+"Sel ööl, kui pime oli maa  \n"
+"ta ületas kõik hirmu endas\n"
+"ja sihiks kuld, ta purskas tuld\n"
+"ja basiliski urgu lendas.\n"
+"\n"
+"Ei põle enam tema tuli  - \n"
+"basiliski pilgus sai\n"
+"sest lohest sünk must kaljupank\n"
+"mis igaveseks seisma jäi\n"
+"\n"
+"Tume taevas, jäine tuul...\n"
+"kuuvalgel igal aastal, kuul\n"
+"üks vägev kivist lohekuju\n"
+"on seismas mustal koopasuul.\n"
+"(kirjutanud Flametrooper, tõlkinud UncleOwl) "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:100
 msgid "Xikkrisx"
-msgstr ""
+msgstr "Xikkrisx"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:106
-msgid ""
-"Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
-"the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-In-"
-"Boiling-Rivers Clan''). The Elders were preparing to make war on a human "
-"outpost, and were in great need of the powerful magics of Oxsrrsk, a Saurian "
-"Mystic who had last been seen heading in the direction of Ruaskkolin Lake. "
-"Xikkrisx found the petrified body of Oxsrrsk, along with a carefully bound "
-"scroll that had apparently been dropped into a small crevice in the cave "
-"floor. He opened the scroll and read a brief passage from the middle of the "
-"text: ''After he was bound and cast from the Upper World, Chak'kso's enraged "
-"spirit sought release, and was able to exert a corrupting influence on "
-"certain regions of the Upper World, channeled through ''pathways of stone'' "
-"that extend from the surface into the depths of the Under Reaches. This rage "
-"altered the eggs of great lizards, shaping their bodies and spirits into "
-"implements of Chak'kso's hatred.'' Confused, Xikkrisx fixed his attention on "
-"the task at hand. Thinking that perhaps the Elders could find some way to "
-"restore Oxsrrsk, he began the long and strenuous task of hauling the statue "
-"back to the domain of the Rysssrylosszkk Clan. Exhausted, and not having "
-"traveled far from the lake, Xikkrisx set the statue down inside of a small "
-"cave, and lay down to rest. He was awoken by a bone-chilling roar."
-msgstr ""
+msgid "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-In-Boiling-Rivers Clan''). The Elders were preparing to make war on a human outpost, and were in great need of the powerful magics of Oxsrrsk, a Saurian Mystic who had last been seen heading in the direction of Ruaskkolin Lake. Xikkrisx found the petrified body of Oxsrrsk, along with a carefully bound scroll that had apparently been dropped into a small crevice in the cave floor. He opened the scroll and read a brief passage from the middle of the text: ''After he was bound and cast from the Upper World, Chak'kso's enraged spirit sought release, and was able to exert a corrupting influence on certain regions of the Upper World, channeled through ''pathways of stone'' that extend from the surface into the depths of the Under Reaches. This rage altered the eggs of great lizards, shaping their bodies and spirits into implements of Chak'kso's hatred.'' Confused, Xikkrisx fixed his attention on the task at hand. Thinking that perhaps the Elders could find some way to restore Oxsrrsk, he began the long and strenuous task of hauling the statue back to the domain of the Rysssrylosszkk Clan. Exhausted, and not having traveled far from the lake, Xikkrisx set the statue down inside of a small cave, and lay down to rest. He was awoken by a bone-chilling roar."
+msgstr "Xikkrisx Syrsszkist oli vägev sisalaste sõdalane, kelle saatsid siia paika  Rysssrylosszkk suguvõsa (mis tõlkes tähendab ''jahivad vaenlasi keevates jõgedes'') vanemate poolt.  Vanemad valmistusid sõjaks ühe inimeste eelposti vastu ja vajasid hädasti sisalaste suure loitsija Oxsrrski vägeva võlujõu abi, toda aga oli nähtud suundumas Ruaskkolini järve poole. Xikkrisx leidis Oxsrrski kivistunud keha, selle kõrvalt aga hoolikalt seotud kirjarulli, mis oli ilmselt ühte koopapõranda prakku kukkunud. Ta avas selle ja luges väikese lõigu teksti keskelt: ''Peale seda, kui ta oli seotud ja Ülamaailmast välja heidetud, otsis Chak'kso raevukas vaim väljapääsu ning suutis oma väega rikkuda mõned paigas Ülamaailmas, kasutades selleks Alamaailmani ulatavaid ''kivikäike''. Tema raev muutis mõnede suurte sisalike mune, kelle kehadest ja vaimudest said Chak'kso raevu tööriistad.'' Segadusse sattunud Xikkrisx pöördus viimaks tagasi oma ülesande juurde ja mõeldes, et vanemad ehk suudaks kuidagi Oxsrrski elustada, alustas ta pikka ja rasket tööd kuju kojuvedamiseks. Kurnatuna ja mitte eriti kaugel järvest, pani Xikkrisx kuju maha ühe väikese koopa põrandale ja heitis puhkama. Teda äratas kohutav möirgamine."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:109
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Oxsrrsk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:112
-msgid ""
-"Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
-"Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
-"most fascinating scroll. The scroll was entitled ''Ney'yks of the Granite "
-"Gaze,'' and told of a creature known as the ''Chak'kso Ney'yks,'' a name "
-"which, in an ancient saurian tongue, meant ''Eldest Child of Chak'kso.'' "
-"Chak'kso was believed to have been a powerful demigod of the Under Reaches, "
-"described as a ''great demon of the earth'' in the Elvish Histories. "
-"According to these histories, Chak'kso had once sought to transform all life "
-"on the planet to stone; so great was his hatred for creatures of flesh. He "
-"was ultimately defeated and bound by powerful magics, but in the centuries "
-"following his banishment (to a realm far below the surface of the world) a "
-"new breed of creature began appearing in the Histories, a breed with the "
-"ability to turn any being of flesh into stone. There was a period when these "
-"Basilisks (as they came to be known) wreaked havoc on the world of the "
-"living, turning thousands to stone. One by one, and at great cost, the "
-"Basilisks were defeated. All, it would seem, but one; the Basilisk known as "
-"''The Ney'yks,'' or ''The Eldest Child,'' in the modern tongue. Supremely "
-"convinced of his ability to locate and bind this powerful creature into his "
-"service, Oxsrrsk set out on his journey..."
-msgstr ""
+msgid "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a most fascinating scroll. The scroll was entitled ''Ney'yks of the Granite Gaze,'' and told of a creature known as the ''Chak'kso Ney'yks,'' a name which, in an ancient saurian tongue, meant ''Eldest Child of Chak'kso.'' Chak'kso was believed to have been a powerful demigod of the Under Reaches, described as a ''great demon of the earth'' in the Elvish Histories. According to these histories, Chak'kso had once sought to transform all life on the planet to stone; so great was his hatred for creatures of flesh. He was ultimately defeated and bound by powerful magics, but in the centuries following his banishment (to a realm far below the surface of the world) a new breed of creature began appearing in the Histories, a breed with the ability to turn any being of flesh into stone. There was a period when these Basilisks (as they came to be known) wreaked havoc on the world of the living, turning thousands to stone. One by one, and at great cost, the Basilisks were defeated. All, it would seem, but one; the Basilisk known as ''The Ney'yks,'' or ''The Eldest Child,'' in the modern tongue. Supremely convinced of his ability to locate and bind this powerful creature into his service, Oxsrrsk set out on his journey..."
+msgstr "Oxsrrsk oli sisalaste vägev ennustaja, kes oli saanud rüüsteretkel võistleva Xraxssi suguvõsa vastu enda kätte imelise kirjarulli (pärit surnud ettekuulutajalt Hesx-Rzzakilt). Rulli pealkirjaks oli ''Kivipilguga Ney'yks'' ning see rääkis olevusest nimega ''Chak'kso Ney'yks'', mis vanas sisalaste keeles tähendas ''Chak'kso vanimat last''. Chak'kso usuti olevat olnud Alamaailma vägev pooljumal, keda haldjate ajaraamatutes nimetatakse ''maa suureks kurjaks vaimuks''. Nende järgi oli Chak'kso kord tahtnud kogu elu maal kiviks muuta, selline oli tema viha kõige elava vastu. Lõpuks sai ta lüüa ning seoti vägeva võlukunsti abil kinni, kuid tema pagendamisele järgnenud sajandite jooksul hakkas maa sügavustest siginema olevusi kes suutsid ihu kiviks muuta. Oli aeg, mil need basiliskid (nagu neid kutsuti) hävitasid palju elavate maal ja muutsid tuhandeid kiviks. Ükshaaval ja suurte kaotuste hinnaga suudeti basiliskid alistada. Kõik peale ühe: basiliski nimega ''Ney'yks'' ehk tänases keeles ''Vanim laps''. Oxsrrsk, veendunud oma suutlikkuses olend üles leida ja oma teenistusse sundida, asus teele..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:125
@@ -243,147 +221,118 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Väle käsi, terav silm\n"
+"- - seitse kivi ja ja üksteist\n"
+"vastu ei saand terve ilm\n"
+"- - seitse kivi ja üksteist\n"
+"Lohekütist vibumees\n"
+"surma leidis kivi sees\n"
+"- - seitse kivi ja üks veel\n"
+"(kirjutanud Gauteamus, tõlkinud UncleOwl)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
 msgid "Blum Duk"
-msgstr ""
+msgstr "Blum Duk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
 msgid ""
-"Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
-"Wolves of the mountains, and he had the courage to match. His leadership and "
-"skills alone were what kept the area's goblins alive despite human and "
-"elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
-"Elves.\n"
-"Thus, when he heard of the awful monster that was inhabiting the area, it "
-"was only natural that he ride out alone to face it. All the other goblins "
-"expected him to slay the creature easily and drag back its carcass to feast "
-"on.\n"
-"He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
-"cowered in fright. He tried to wheel his wolf around to run away, but it "
-"wouldn't move. As the creature stalked towards him, he screamed his last "
-"words: Good Gog, dog, are yer legs made of stone?!?\n"
+"Blum Duk was renowned among his goblin clan for having tamed one of the Dire Wolves of the mountains, and he had the courage to match. His leadership and skills alone were what kept the area's goblins alive despite human and elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred Elves.\n"
+"Thus, when he heard of the awful monster that was inhabiting the area, it was only natural that he ride out alone to face it. All the other goblins expected him to slay the creature easily and drag back its carcass to feast on.\n"
+"He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk cowered in fright. He tried to wheel his wolf around to run away, but it wouldn't move. As the creature stalked towards him, he screamed his last words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk oli oma mäekollihõimu seas kuulus - ta oli taltsutanud ühe mägede metsiku hundi ning oli sama hulljulge kui too. Tema juhivõimed ja oskused olid need, mis aitasid nende hõimul inimeste ja haldjate vastu ellu jääda. Räägiti, et tema hunt oli surmanud viiskümmend inimest ja sada haldjat.\n"
+"Kui ta nüüd kuulis läheduses elavast hirmsast koletisest, oli tema jaoks loomulik sellele vastu astuda. Kõik teised mäekollid uskusid, et ta teeb sellele peagi lõpu ja lohistab laiba pidusöögiks koju.\n"
+"Ta sai aga kohutava elamuse osaliseks. Basiliski nähes tõmbus Blum Duk hirmust kössi. Ta üritas oma hunti kõrvale tõmmata, kuid see ei liikunud. Kui koletis tema poole roomas, kriiskas ta oma viimased sõnad: Gog, va koer, kas su jalad on kivist või?!?\n"
+"(kirjutanud Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "Rah Ihn Mar"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:140
-msgid ""
-"Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
-"Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
-"as ''The Dragonbane.'' It was said that Terowydlithrol had killed a Dragon "
-"of Fire that threatened an Elvish village, and initiated a ''counterattack'' "
-"in which some 37 Drakes, camping in a nearby ravine and believed to be in "
-"allegiance with the Dragon, were slaughtered. Knowing that these Drakes were "
-"innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay "
-"Terowydlithrol, who had been seen entering the region but a day ago. Burning "
-"for vengeance, Rah Ihn Mar began the hunt....."
-msgstr ""
+msgid "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves as ''The Dragonbane.'' It was said that Terowydlithrol had killed a Dragon of Fire that threatened an Elvish village, and initiated a ''counterattack'' in which some 37 Drakes, camping in a nearby ravine and believed to be in allegiance with the Dragon, were slaughtered. Knowing that these Drakes were innocent, Rah Ihn Mar came to Ruaskkolin Lake to hunt down and slay Terowydlithrol, who had been seen entering the region but a day ago. Burning for vengeance, Rah Ihn Mar began the hunt....."
+msgstr "Rah Ihn Mar, Põlevate Küngaste vägilane, suundus Ruaskkolini järve äärde, jälitades haldjasangar Terowydlithroli, keda kutsuti haldjate seas ''Lohekütiks''. Räägiti, et Terowydlithrol oli tapnud haldjaküla ähvardanud tuledraakoni ning peale seda korraldas vasturünnaku, mille käigus tapeti kolmkümmend seitse läheduses pesitsenud lohet, keda peeti draakoniga mestis olevaks. Teades, et need lohed polnud milleski süüdi, tuli Rah Ihn Mar Ruaskkolini järve ümbrusse, et päev varem sealkandis nähtud Terowydlithrol üles leida ja maha lüüa. Kättemaksust põledes alustas Rah Ihn Mar jahti..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
-"He had lived there for ages upon ages, in the depths of the water, preying "
-"upon the various fish and frogs and merfolk that entered his domain. It was "
-"his lake, no other's, and though it was not large, he was its master. Then, "
-"the Basilisk came, and looked into the Serpent's eyes. And the Serpent had "
-"not died, but it was no longer alive. Thus the new lord of the lake had "
-"arrived.\n"
+"He had lived there for ages upon ages, in the depths of the water, preying upon the various fish and frogs and merfolk that entered his domain. It was his lake, no other's, and though it was not large, he was its master. Then, the Basilisk came, and looked into the Serpent's eyes. And the Serpent had not died, but it was no longer alive. Thus the new lord of the lake had arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Ta oli elanud seal vetesügavuses ajastust ajastusse, varitsedes kalu, konni ja näkke, kes ta riiki sattusid. See oli tema järv ja mitte kellegi teise oma, ning ehkki see polnud suur, oli tema selle peremees. Siis tuli basilisk ja vaatas mao silmadesse. Ja madu ei surnud, kuid ei olnud enam elus. Järve uus isand oli saabunud.\n"
+"(kirjutanud Turin)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
-"A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
-"came to this evil place while on a raid against the orcs. Caught unaware by "
-"the foul creatures, many of his fellows were killed, but he fought "
-"valiantly, slaying many a foe. But alas! The foul Basilisk turned him to "
-"stone even as he slew the last orc. Now all that is left is a stark reminder "
-"of his once great bearing and strength.\n"
+"A brave hero of Wesnoth's Golden Age, this great rider and commander of men came to this evil place while on a raid against the orcs. Caught unaware by the foul creatures, many of his fellows were killed, but he fought valiantly, slaying many a foe. But alas! The foul Basilisk turned him to stone even as he slew the last orc. Now all that is left is a stark reminder of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Wesnothi kuldajastu vapra kangelasena tuli see vägev ratsamees ja väeülem orke jälitades sellesse kurja paika.  Õelate olevuste varitsuses kaotasid paljud ta mehed elu, kuid tema pani vapralt vastu ja tappis palju vaenlasi. Kuid oh häda! Kui ta viimase orki tapnud oli, muutis basilisk ta kiviks. Nüüd on alles üksnes sünge mälestusmärk tema kunagisest vägevast jõust.\n"
+"(kirjutanud Fynmiir)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:160
 msgid "Bramwythl"
-msgstr ""
+msgstr "Bramwythl"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
 msgid ""
-"Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-"other Woses. More than any other Wose, he enjoyed simply standing alone in "
-"the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
-"confided in a fellow that his greatest wish was to be able to bask forever "
-"in the sun's glory.\n"
-"However, not long after, the local wose community heard of the approach of a "
-"horrible monster, powerful enough to easily destroy the few woses that lived "
-"in the area. They quickly moved off (quickly for Woses, anyway), but "
-"Bramwythl was left behind - in their haste, no one had remembered to find "
-"him and tell him of the danger.\n"
-"He was taken quite unawares by the Basilisk, and turned to stone before he "
-"even recognized the beast. His petrified form still stands there today, "
-"warmed by the sun's rays, under an open sky. His greatest wish has been "
-"granted.\n"
+"Bramwythl the Wose was always considered a slow, taciturn fellow, even by other Woses. More than any other Wose, he enjoyed simply standing alone in the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he confided in a fellow that his greatest wish was to be able to bask forever in the sun's glory.\n"
+"However, not long after, the local wose community heard of the approach of a horrible monster, powerful enough to easily destroy the few woses that lived in the area. They quickly moved off (quickly for Woses, anyway), but Bramwythl was left behind - in their haste, no one had remembered to find him and tell him of the danger.\n"
+"He was taken quite unawares by the Basilisk, and turned to stone before he even recognized the beast. His petrified form still stands there today, warmed by the sun's rays, under an open sky. His greatest wish has been granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Puuvaim Bramwythli peeti alati aeglaseks ja tasakaalukaks, isegi teiste puuvaimude seas. Veel enam kui teistele meeldis talle lihtsalt seista üksi päikese käes, käed üles tõstetud, imetledes tühja taeva ilu. Kord ütles ta isegi kellelegi, et tema suurimaks sooviks on igavesti päikesepaistes seista.\n"
+"Mitte kaua peale seda kuulsid puuvaimud hirmsast elukast, kes suutis vähesed sealkandis elanud puuvaimud hõlpsasti hävitada. Nad liikusid kiiresti (puuvaimude kohta) sealt ära, kuid Bramwythl jäeti maha - kiirustades ei tulnud kellelegi meelde teda üles otsida ja ohu eest hoiatada.\n"
+"Basilisk tabas ta ootamatult ja muutis ta kiviks enne, kui ta isegi elukat märkas. Tema kivikuju seisab seal tänini, lahtise taeva ja päikesekiirte all. Tema suurim soov täitus.\n"
+"(kirjutanud Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:169
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "Talael Ryndoc"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:172
-msgid ""
-"General Talael Ryndoc came to this place to fight a duel with the Grand "
-"Marshal Aethec Corryn, but the two men never found one another. "
-msgstr ""
+msgid "General Talael Ryndoc came to this place to fight a duel with the Grand Marshal Aethec Corryn, but the two men never found one another. "
+msgstr "Väepealik Talael Ryndoc tuli sellesse paika kahevõitlusele väeülem Aethec Corryniga, kuid kaks meest ei leidnud teineteist iialgi."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:175
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "Aethec Corryn"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
 msgid ""
-"The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I am "
-"through searching for you! I shall make my way back to Haldric's Hall, and "
-"inform the court that you were too much of a coward to attend our duel! Your "
-"disgrace shall be more agonizing than the death I'd have given you!''\n"
+"The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I am through searching for you! I shall make my way back to Haldric's Hall, and inform the court that you were too much of a coward to attend our duel! Your disgrace shall be more agonizing than the death I'd have given you!''\n"
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"Suure väeülema Aethec Corryni viimased sõnad olid: ''Talael Ryndoc! Ma olen su otsimisest tüdinud! Ma lähen tagasi Haldrici saali ja ütlen õukonnale, et sa olid liiga arg, et kahevõitlusele ilmuda! Su häbi saab olema hullem kui surm, mille oleksid minult saanud!''\n"
+"\n"
+"Ehk ei oleks ta pidanud nii kõvasti karjuma..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
 msgid "Rilhon"
-msgstr ""
+msgstr "Rilhon"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:187
 msgid ""
-"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
-"treasure that had been lost in these watery caves- a spear whose head was "
-"said to have been fashioned from the tooth of Chak'kso Ney'yks, an Elder "
-"Basilisk slain long ago by the Elvish hero, Eloralduil. According to the "
-"legend, the weapon rested somewhere on the bottom of this very lake "
-"(Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). "
-"Having prepared himself for battle with the Serpent, Rilhon met with two "
-"rather large surprises. The first was the petrified form of Ruaskkolin the "
-"Serpent. The second was the very-much-alive Chak'kso Ney'yks, who was, oddly "
-"enough, in possession of all of his teeth.\n"
+"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous treasure that had been lost in these watery caves- a spear whose head was said to have been fashioned from the tooth of Chak'kso Ney'yks, an Elder Basilisk slain long ago by the Elvish hero, Eloralduil. According to the legend, the weapon rested somewhere on the bottom of this very lake (Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). Having prepared himself for battle with the Serpent, Rilhon met with two rather large surprises. The first was the petrified form of Ruaskkolin the Serpent. The second was the very-much-alive Chak'kso Ney'yks, who was, oddly enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Vapper sõdalane, keda nagad hüüdsid Rilhoniks, kuulis lugu neisse vett täis koobastesse peidetud imelisest aardest - odast, mille pea olevat tehtud Chak'kso Ney'yksi hambast. See oli vana basilisk, kelle tappis haldjasangar Eloralduil. Legendi järgi oli relv kusagil järve põhjas (järve hüüti seal elanud veemao järgi Ruaskkoliniks). Valmistudes lahinguks, kohtas Rilhon kaht üsna suurt üllatust. Esimene oli madu Ruaskkolini kivistunud kuju. Teine aga oli vägagi elus Chak'kso Ney'yks, kel olid veidral kombel kõik hambad alles.\n"
+"(kirjutanud Paterson)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
@@ -404,134 +353,134 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Läbi lainete ja kaljude\n"
+"sinise ja valge\n"
+"ta lükkas tõusuvett\n"
+"ja kaladele õpetas tähtede sõnu\n"
+"hõberohelist\n"
+"võluväge\n"
+"tema hingest tulvas vetika ja tigudeni\n"
+"saba ja käsi lehvitades\n"
+"saatis ta oma laulud teravatel jalgadel üle liivade\n"
+"ja nüüd\n"
+"veidraima pika ooteajana\n"
+"aastaid ja aastaid\n"
+"pole ta liigutanud silmi\n"
+"\n"
+"(kirjutanud MJQ)"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
-#, fuzzy
 msgid "2p - Cynsaun Battlefield"
-msgstr "Printsessi sõjatanner"
+msgstr "2 mängijat: Cynsauni lahinguväli"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
-msgid ""
-"Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
-"the necromancers from these lands in 961 YW."
-msgstr ""
+msgid "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove the necromancers from these lands in 961 YW."
+msgstr "Cynsauni maakond sai nime sõjakuninganna Cynsaun Esimese järgi, kes kihutas 961. Wesnothi aastal siit välja surnumanajad."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
-msgstr ""
+msgstr "2 mängijat: Tume ennustus (Ellujäämine)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
 msgid ""
-"Dark Forecast is a survival scenario for solitaire or two-player team-based "
-"play against randomly AI spawned units. Victory is achieved by surviving all "
-"enemy waves. During the course of play, the terrain will change based on "
-"random weather effects.\n"
+"Dark Forecast is a survival scenario for solitaire or two-player team-based play against randomly AI spawned units. Victory is achieved by surviving all enemy waves. During the course of play, the terrain will change based on random weather effects.\n"
 "\n"
 "Note: You need to use map settings for the scenario to work right."
 msgstr ""
+"'Tume ennustus' on ellujäämisstsenaarium ühele või kahele koostöös mängijale juhuslikult paigutatud arvuti juhitud üksuste vastu. Võidu saab kõigi rünnakute tagasi löömise teel. Mängu jooksul muutub maastik juhuslike ilmaolude tagajärjel.\n"
+"\n"
+"NB: Mängu õigeks toimimiseks on vaja kasutada kaardi seadeid."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:423
-msgid ""
-"The screams and pleas for mercy are finally silenced, as you remove your "
-"blood soaked blade from the last of the rebels. There will be no more "
-"resistance from the local scum. Your reign has finally earned stability."
-msgstr ""
+msgid "The screams and pleas for mercy are finally silenced, as you remove your blood soaked blade from the last of the rebels. There will be no more resistance from the local scum. Your reign has finally earned stability."
+msgstr "Karjed ja armupalumised on viimaks vaikinud, kui su verine tera viimase mässaja maha niidab.  Kohalik rämps ei pane enam vastu, su võim püsib nüüd kindlalt."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:784
-msgid ""
-"The last and most powerful of these creatures are almost upon us. I feel "
-"that if we can finish them off in time, we shall be victorious."
-msgstr ""
+msgid "The last and most powerful of these creatures are almost upon us. I feel that if we can finish them off in time, we shall be victorious."
+msgstr "Viimane ja vägevaim neist olenditest on peaaegu meie juures. Ma usun, et kui me neile õigel ajal lõpu teeme, saavutame võidu."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:961
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Tugev lumesadu"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:975
 msgid "Snowfall"
-msgstr ""
+msgstr "Lumesadu"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:995
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Tugev vihm"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1009
 msgid "Drought"
-msgstr ""
+msgstr "Põud"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1017
 msgid "Clear Weather"
-msgstr ""
+msgstr "Selge ilm"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1154
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1185
-#, fuzzy
 msgid "teamname^Revolt"
-msgstr "Lääs"
+msgstr "Mässajad"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1220
-#, fuzzy
 msgid "teamname^Human"
-msgstr "Ida"
+msgstr "Inimesed"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1373
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "Ühe mängija režiim - vastased on nõrgemad."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1376
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "Kahe mängija režiim - vastased on täisjõus."
 
 #. [objectives]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1396
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "Pea vastu ja alista ründajate lained."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1398
 msgid "Defeat all waves"
-msgstr ""
+msgstr "Alista kõik rünnakulained"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1402
-#, fuzzy
 msgid "Lose all your team's leaders"
-msgstr "Delfadori surm"
+msgstr "Kaotad kõik oma meeskonna pealikud"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1413
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Tume ennustus - juhuslik ellujäämisstsenaarium"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1435
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-"
-"enemies.\n"
+"Your aim is to survive the spawning waves and defeat the final arch-enemies.\n"
 "       \n"
-"The spawning waves are generated randomly and will different each time Dark "
-"Forecast is played.\n"
+"The spawning waves are generated randomly and will different each time Dark Forecast is played.\n"
 "\n"
 "\n"
-"They appear along the north, south and west map edges - though they are most "
-"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
-"intervals.\n"
+"They appear along the north, south and west map edges - though they are most likely to spawn on the west edge. The spawn waves appear at somewhat regular intervals.\n"
 "\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
@@ -546,77 +495,75 @@ msgid ""
 "@Rhuvaen\n"
 "- WML implementation"
 msgstr ""
+"Sinu ülesandeks on elada üle rünnakulained ja viimaks alistada peavaenlased.\n"
+"\n"
+"Rünnakulained on juhuslikult valitud ja on igal mängukorral erinevad.\n"
+"\n"
+"\n"
+"Nad ilmuvad kaardi põhja-, lõuna- ja lääneservast, kuid kõige tõenäolisemalt läänest. Lainete vahe on üsna korrapärane.\n"
+"\n"
+"\n"
+"Ilm muutub samuti juhuslikult, muutes seeläbi kaarti.\n"
+"\n"
+"\n"
+"\n"
+"#Tume ennustus -  autorid:\n"
+"\n"
+"@jb\n"
+"- kaart, üksused ja üldine idee\n"
+"\n"
+"@Rhuvaen\n"
+"- WML realisatsioon"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1440
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "Nii et see ongi see neetud org, mille peame endale saama."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
-msgid ""
-"The inhabitants are rumored to be a strange alliance of man and beast, and "
-"our claim is not going to be unopposed. We must be prepared for the "
-"surprises of this land."
-msgstr ""
+msgid "The inhabitants are rumored to be a strange alliance of man and beast, and our claim is not going to be unopposed. We must be prepared for the surprises of this land."
+msgstr "Selle elanikud on kuuldavasti kummaline inimeste ja elukate liit ning meile hakatakse kindlasti vastu. Peame olema selle maa üllatusteks valmis."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
-msgid ""
-"Then let us discover what lies in waiting and teach them not to oppose our "
-"claim."
-msgstr ""
+msgid "Then let us discover what lies in waiting and teach them not to oppose our claim."
+msgstr "Siis uurime, mis siin ootab, ja õpetame neid mitte meile vastu seisma."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
-msgid ""
-"Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-"me..."
-msgstr ""
+msgid "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken me..."
+msgstr "Uuh! Kuidas see nii läks! Saime tühipaljaste metslaste käest lüüa! Mu jumalad on mu maha jätnud..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
-msgid ""
-"Cheers of your enemy are the last thing you hear as you slip into death..."
-"their joy fills your last moments with pure hate."
-msgstr ""
+msgid "Cheers of your enemy are the last thing you hear as you slip into death...their joy fills your last moments with pure hate."
+msgstr "Vaenlaste võidukisa on viimane asi, mida enne surma kuuled... Nende rõõm täidab su viimased hetked puhta vihkamisega."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1521
-msgid ""
-"The enemy cheers as a dark mist rises from the land, engulfing you. As "
-"ghostly wisps drain away your will, you realize that your time in this land "
-"is over."
-msgstr ""
+msgid "The enemy cheers as a dark mist rises from the land, engulfing you. As ghostly wisps drain away your will, you realize that your time in this land is over."
+msgstr "Vaenlaste rõõmukisa saatel kerkib maast sinu ümber tihe udu. Kui kummituslikud olendid su elujõu ära joovad, saad  aru, et sinu aeg siin maal on läbi."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p - Den of Onis"
-msgstr ""
+msgstr "2 mängijat: Paharetipesa"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
-msgid ""
-"This most unusual of caves was once known as the Chamber of Laughing Devils, "
-"and was the inner citadel of the Kah Ruuk Oni. The Kah Ruuk were a wicked "
-"and cunning race of man-eating demons, who terrorized the people of the "
-"Eastern Lands for nearly four hundred years, before vanishing from Irdya "
-"without a trace. Since that time, many factions have vied for dominion over "
-"the Den of Onis, hoping to unlock the strange and mysterious magics of its "
-"creators."
-msgstr ""
+msgid "This most unusual of caves was once known as the Chamber of Laughing Devils, and was the inner citadel of the Kah Ruuk Oni. The Kah Ruuk were a wicked and cunning race of man-eating demons, who terrorized the people of the Eastern Lands for nearly four hundred years, before vanishing from Irdya without a trace. Since that time, many factions have vied for dominion over the Den of Onis, hoping to unlock the strange and mysterious magics of its creators."
+msgstr "Seda kummalist koobast kutsuti kunagi Naervate Kuradite Kambriks ja see oli Kah Ruuki paharettide kindlus. Kah Ruukid olid kurjad ja kavalad inimsööjatest kurivaimud, kes ähvardasid peaaegu neljasaja aasta vältel Ida maade rahvast, enne kui jäljetult Irdyast kadusid. Sellest ajast on paljud Paharetipesa pärast võidelnud, lootes selle loojate kummalisest ja salapärasest võlukunstist osa saada."
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p - Fallenstar Lake"
-msgstr ""
+msgstr "2 mängijat: Langenud Tähe järv"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
-msgid ""
-"Long ago, a great star fell from the heavens, leaving its mark on this "
-"coniferous region."
-msgstr ""
+msgid "Long ago, a great star fell from the heavens, leaving its mark on this coniferous region."
+msgstr "Kaua aega tagasi kukkus taevast suur täht ja jättis sellesse kuusemetsaga kaetud paika oma jälje."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:21
@@ -670,64 +617,54 @@ msgstr "Ida"
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
-msgstr ""
+msgstr "2 mängijat: Külad"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield."
-msgstr ""
+msgid "Warfare transforms the simple farms and villages of a peaceful region into a subtly parceled battlefield."
+msgstr "Sõda muudab selle rahuliku paiga lihtsad talud ja külad jagatud lahinguväljaks."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2 mängijat: Sarvhai saar"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island."
-msgstr ""
+msgid "Players must navigate the dispersive terrain of this small but topographically dense island."
+msgstr "Mängijad peavad saama hakkama selle väikese, kuid eripalgelise saare maastikuga."
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
-msgstr ""
+msgstr "2 mängijat: Hulguva Tondi kõnnumaa"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
-msgid ""
-"Little remains of this once wealthy mining colony, now a haven for raiders "
-"and thieves."
-msgstr ""
+msgid "Little remains of this once wealthy mining colony, now a haven for raiders and thieves."
+msgstr "Sellest kunagisest jõukast kaevurite asundusest on vähe alles ning nüüd on see röövlite ja varaste pesa."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2 mängijat: Musta Kivi rannik"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-msgid ""
-"Two armies collide on this disjointed coastal landscape of hidden caves and "
-"jagged rivers."
-msgstr ""
+msgid "Two armies collide on this disjointed coastal landscape of hidden caves and jagged rivers."
+msgstr "Kaks väge seisavad vastamisi keerukal peidetud koobaste ja looklevate jõgedega rannamaal."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2 mängijat: Hõbepea risttee"
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map."
-msgstr ""
+msgid "Players must traverse all manner of terrain in pursuit of victory on this multi-fronted duel map."
+msgstr "Mängijad peavad sel paljude rinnetega kaardil võitlema ka erinevate maastikega."
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -737,19 +674,17 @@ msgstr "kuju"
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "See on kivist tehtud kuju."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
 msgid "2p - Sulla's Ruins"
-msgstr ""
+msgstr "2 mängijat: Sulla varemed"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire."
-msgstr ""
+msgid "Flooded by the seas and battered by the winter elements, only ruins, water and ice now remain in the shadow of this once mighty empire."
+msgstr "Merest üle ujutatud ja talvekülmadest kulutatud varemed on koos vee ja jääga kõik, mis kunagisest vägevast riigist alles on."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
@@ -758,11 +693,8 @@ msgstr "Sulla kuju"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
-msgid ""
-"A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
-"Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
-"Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
-msgstr ""
+msgid "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
+msgstr "Kivist tahutud kuju, mis meenutab Sulla Suurt, keda teati ka Sulla Õiglase, Sulla Hirmuvalitseja, Vajuva Torni Keisrinna, Kõndiva Liustiku Emanda, Sulla Põletaja, Sulla Uhke ja Sulla Õige nime all."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:87
@@ -772,7 +704,7 @@ msgstr "Lhun-dupi kuju"
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Lhun-dupi, Sulla teenri kivikuju."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
@@ -782,7 +714,7 @@ msgstr "Ri-nzeni kuju"
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Ri-Nzeni, Sulla teenri kivikuju."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
@@ -792,7 +724,7 @@ msgstr "Ten-zini kuju"
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:97
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Ten-zini, Sulla teenri kivikuju."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:99
@@ -802,41 +734,32 @@ msgstr "Lo-bsangi kuju"
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Lo-bsangi, Sulla teenri kivikuju."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p - The Freelands"
-msgstr ""
+msgstr "2 mängijat: Vabad Maad"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
-msgid ""
-"The Freelands, also known to the people of the far east as The Land of No "
-"Kings, lie in between the Wilderlands and the Kingdom of Carorath, "
-"separating a land of absolute law from a land of absolute savagery. The "
-"people of the Freelands have been battling would-be conquerors of their land "
-"for hundreds of years, repelling great beasts from their western borders, "
-"and Carorathian Imperialists from their eastern borders."
-msgstr ""
+msgid "The Freelands, also known to the people of the far east as The Land of No Kings, lie in between the Wilderlands and the Kingdom of Carorath, separating a land of absolute law from a land of absolute savagery. The people of the Freelands have been battling would-be conquerors of their land for hundreds of years, repelling great beasts from their western borders, and Carorathian Imperialists from their eastern borders."
+msgstr "Vabad Maad, mida kaugema ida inimesed teavad ka Kuningateta Maa nime all, asuvad Metsikute Maade ja Carorathi kuningriigi vahel, eraldades täieliku seaduse maid täieliku seadusetuse omadest. Vabade Maade inimesed on vallutajate vastu võidelnud aastasadu, tõrjudes läänepiirilt tagasi metsikuid elukaid ning idapiirilt Carorathi röövvallutajaid."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
-#, fuzzy
 msgid "2p - Weldyn Channel"
-msgstr "Söösta lahingusse"
+msgstr "2 mängijat: Weldyni kanal"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
-msgid ""
-"This vital supply route has played a key role in many of Wesnoth's greatest "
-"battles."
-msgstr ""
+msgid "This vital supply route has played a key role in many of Wesnoth's greatest battles."
+msgstr "See tähtis varustustee on mänginud tähtsat osa paljudes Wesnothi suurimates lahingutes."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
-msgstr ""
+msgstr "3 mängijat: Aliroki soo"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Loris_River
@@ -863,51 +786,42 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
+msgstr " Soovitatav seadistus: 2 kuldraha küla kohta."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
+msgstr "Kolm mängijat põrkavad kokku sel veega piiratud lahinguväljal."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "Mäekuningas"
+msgstr "4 mängijat: Horatli saar"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
-msgstr ""
+msgid "Controlling the central island is often the key to victory in this 21x21hex 3 player free for all map."
+msgstr "Sel 21x21 väljaga kaardil on keskmise saare vallutamine tihti võidu võtmeks. "
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3 mängijat: Morituri (Surmaminejad)"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map."
-msgstr ""
+msgid "Only one faction will emerge victorious from this tightly bordered three-player map."
+msgstr "Ainult üks osapool lahkub sellest paigast elavana."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4 mängijat: Sinivee maakond"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
-msgid ""
-"Historians write that Bluewater Province has been destroyed and rebuilt some "
-"twenty times. Now, as armies once again converge on the rocky streams and "
-"snowcapped mountains of this small province, its villagers hardly seem to "
-"take notice."
-msgstr ""
+msgid "Historians write that Bluewater Province has been destroyed and rebuilt some twenty times. Now, as armies once again converge on the rocky streams and snowcapped mountains of this small province, its villagers hardly seem to take notice."
+msgstr "Ajaloolased väidavad, et Sinivee maakonda on hävitatud ja uuesti  taastatud oma paarkümmend korda. Nüüd, kui sõjaväed taas selle väikese maa kaljuste jõgede ja lumiste mägede poole suunduvad, ei tee külarahvas sellest eriti väljagi."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -937,45 +851,38 @@ msgstr "Meeskond 2"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
-#, fuzzy
 msgid "4p - Castle Hopping Isle"
-msgstr "Hoppingi lossi saar"
+msgstr "4 mängijat: Losside saar"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
+msgstr "Hüppa lossist lossi ja võitle keskmise saare pärast."
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
-#, fuzzy
 msgid "4p - Clash"
-msgstr "Klassikud"
+msgstr "4 mängijat: Kokkupõrge"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Väike  kaart kaks-kahe-vastu mänguks"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "Klassikud"
+msgstr "4 mängijat: Külad"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4 mängijat: Isari rist"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-msgid ""
-"A very small 2 vs. 2 map. Close quarters fighting means the successful "
-"rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
-"villages."
-msgstr ""
+msgid "A very small 2 vs. 2 map. Close quarters fighting means the successful rotation of units and planning of moves is important. Teams set for players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 villages."
+msgstr "Väga väike kaks-kahe-vastu kaart. Lähivõitluses on oluline üksuste edukas vahetamine ja käikude ettekavandamine. Mängijad 1 ja 4 ning 2 ja 3 on omavahel liidus (kirre edela vastu). Kavandatud algseis: 75 kuldraha, 20 küla."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -989,7 +896,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
 msgid "teamname^South-West"
-msgstr "Kagu"
+msgstr "Edel"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
@@ -1001,27 +908,24 @@ msgstr "Kagu"
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^North-East"
-msgstr "Loe"
+msgstr "Kirre"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid "4p - King of the Hill"
-msgstr "4p - Mäe Kuningas"
+msgstr "4 mängijat: Mäekuningas"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr ""
+msgstr " Soovitatav seadistus: 2 kuldraha küla kohta, 150 kuldraha alguses."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
-msgstr ""
+msgid "Controlling the area around the central keep is very lucrative in this 36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+msgstr "Sel 4 mängijaga 36x36 väljaga kaardil on väga kasulik hõivata alad keskmise lossi ümber. Saab mängida ka kaks kahe vastu. Külasid on 36."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -1033,7 +937,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
 msgid "teamname^South-East"
-msgstr "Edel"
+msgstr "Kagu"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -1041,12 +945,12 @@ msgstr "Edel"
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:59
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 msgid "teamname^North-West"
-msgstr "Kirre"
+msgstr "Loe"
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4 mängijat: Laguun"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
@@ -1055,131 +959,112 @@ msgstr ""
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
+msgstr " Soovitatav seadistus: 1 kuldraha küla kohta."
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
+msgstr "Neli osapoolt võitlevad selles vesises paigas ülevõimu nimel."
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
-#, fuzzy
 msgid "4p - Loris River"
-msgstr "Üle jõe"
+msgstr "4 mängijat: Lorise jõgi"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
-msgstr ""
+msgid "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
+msgstr "25x25 väljaga  kaks-kahe-vastu kaart jõe ja vastasnurkades asuvate lossidega. Soovitatavad meeskonnad on 1 ja 4 ning 2 ja 3. Külasid on 28."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
-msgstr ""
+msgstr "4 mängijat: Morituri (Surmaminejad)"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
+msgstr "Kes pääseb sellelt kohutavalt lahinguväljalt eluga?"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4 mängijat: Pistodade rajad"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
+msgstr " Soovitatav seadistus: 2 kuldraha küla kohta, 28 küla."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-msgstr ""
+msgid "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+msgstr "35x27 väljaga kaks-kahe-vastu kaart 5 võimaliku ühendusteega. Kavandatud mänguks ida lääne vastu (1 ja 4 ning 2 ja 3), kuid töötab ka teistsuguse jaotuse või vabavõitluse puhul."
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid "4p - Siege Castles"
-msgstr "Losside piiramine"
+msgstr "4 mängijat: Losside piiramine"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-msgid ""
-"40X30 4 player map where 4 mighty castles face off at the convergence of two "
-"rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
-msgstr ""
+msgid "40X30 4 player map where 4 mighty castles face off at the convergence of two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
+msgstr "40x30 väljaga 4 mängija kaart, kus neli lossi asuvad  kahe jõe ristumiskohas. Sobib mängida kaks-kahe-vastu või vabavõitlusena. Umbes 45 küla."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
-msgstr ""
+msgstr "4 mängijat: Allilm"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
-msgstr ""
+msgstr "Kiire kaks-kahe-vastu kaart, kus tegevus toimub sügaval maa all."
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4 mängijat: Xanthe segadus"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
-msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
-msgstr ""
+msgid "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center common."
+msgstr "24x28 väljaga kaks-kahe-vastu kaart losside ja keskel asuva lahinguväljaga."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5 mängijat. Oksjon"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
-"FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
-"and the best way to determine how much is an auction, LOWEST bid wins. It is "
-"a very small map so 75 gold is recommended for the other players."
-msgstr ""
+msgid "4 players surround a central keep, play vs the AI survival style, or as a FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, and the best way to determine how much is an auction, LOWEST bid wins. It is a very small map so 75 gold is recommended for the other players."
+msgstr "4 mängijat piiravad keskset lossi ja mängivad arvuti vastu - teine võimalus on vabavõitlus või ka 4 1 vastu. Viimasel juhul peab keskmine mängija saama teistest rohkem kulda - parim viis selleks on oksjon, kus vähim pakkuja mängib keskmist. Kaart on väga väike, nii et alustuseks sobib teistele 75 kuldraha."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
-#, fuzzy
 msgid "teamname^Northeast"
-msgstr "Loe"
+msgstr "Kirre"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
-#, fuzzy
 msgid "teamname^Southeast"
 msgstr "Kagu"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
-#, fuzzy
 msgid "teamname^Southwest"
-msgstr "Kagu"
+msgstr "Edel"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
-#, fuzzy
 msgid "teamname^Northwest"
-msgstr "Kirre"
+msgstr "Loe"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
-#, fuzzy
 msgid "teamname^Center"
-msgstr "Lääs"
+msgstr "Keskkoht"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
@@ -1189,132 +1074,115 @@ msgstr "5p - Hirmu Mets"
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "Sel kirjul maastikul võitlevad 5 väge ülemvõimu pärast."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
 msgid "5p - The Wilderlands"
-msgstr ""
+msgstr "5 mängijat: Metsikud Maad"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses."
-msgstr ""
+msgid "A vast region of wild, untamed wilderness, its terrain dotted with forests, caves, rivers, and the ruins of ancient fortresses."
+msgstr "Tohutu metsik kõnnumaa, kus asuvad metsad, koopad, jõed ja vanade kindluste varemed."
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6 mängijat: Sõdalaste väli"
 
 #. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
-msgid ""
-"The rallying cries of battle can once again be heard on this time-worn field "
-"of war, where the ghosts of thousands of brave warriors float invisibly "
-"through the mountains, trees and rivers."
-msgstr ""
+msgid "The rallying cries of battle can once again be heard on this time-worn field of war, where the ghosts of thousands of brave warriors float invisibly through the mountains, trees and rivers."
+msgstr "Sel vanal lahinguväljal kostab taas sõjahüüdeid, kui tuhandete vaprate sõdalaste vaimud hõljuvad nähtamatult üle mägede puude ja jõgede."
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
-msgstr ""
+msgstr "6 mängijat: Kuusnurk"
 
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "Kaks-kahe-vastu või kolm-kolme-vastu mänguks."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:200
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Lojalistid"
+msgstr "Käik 2: Kuninga vägi"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:201
 msgid "Turn 5: Knalgans"
-msgstr "5. käik: Knalganid"
+msgstr "5. käik: Knalgalased"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Käike:"
+msgstr "Käik 8: Mässajad"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:203
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Põhjamaalased"
+msgstr "Käik 14: Põhjalased"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:204
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Tulelohe"
+msgstr "Käik 14: Lohed"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:205
 msgid "Turn 17: Undead"
-msgstr "17. käik: Surnuist ülestõusnud"
+msgstr "17. käik: Kooljad"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:206
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Hukatuse torn"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6 mängijat: Meeskonna ellujäämine"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "Stsenaariumi eesmärgiks on pidada vastu nii kaua kui võimalik."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-msgstr ""
+msgstr "Vihje: kasu on vastase alguspunktide ja üksusetüüpide teadmisest."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
-#, fuzzy
 msgid "Survive for 32 turns."
-msgstr "Ela üle 32 käiku."
+msgstr "Pea vastu 32 käiku."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "Pea vastu kõigile vastase rünnakutele."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
-#, fuzzy
 msgid "Death of your team leaders."
-msgstr "Delfadori surm"
+msgstr "Sinu meeskonna pealikute surm."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
-msgid ""
-"Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I haven't got a clue as to how you did it, so send me "
-"the replay by mail to: roze@roze.mine.nu. Thank You!"
-msgstr ""
+msgid "Congratulations for surviving the map that so many people claim is impossible. Frankly, I haven't got a clue as to how you did it, so send me the replay by mail to: roze@roze.mine.nu. Thank You!"
+msgstr "Palju õnne, et jäid ellu kaardil, mida paljud nimetavad võimatuks. Ma ausalt öeldes ei tea, kuidas sa seda tegid - palun saada mulle mängu salvestus aadressile roze@roze.mine.hu. Tänan!"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
 msgid "Faery"
-msgstr ""
+msgstr "Haldjas"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-#, fuzzy
 msgid "Death"
-msgstr "Vaikimisi"
+msgstr "Surm"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid ""
-"You have lost this game, but fear not. You can always try again. And again. "
-"And again. *Muahahaha*"
-msgstr ""
+msgid "You have lost this game, but fear not. You can always try again. And again. And again. *Muahahaha*"
+msgstr "Sa oled kaotanud, kuid ära karda. Võid alati uuesti proovida. Ja uuesti. Ja uuesti. *Mühhaahhhaaaa*"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:381
@@ -1334,68 +1202,52 @@ msgstr "Kaitsja"
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6 mängijat: Manzivani lõksud"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
-msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
-"confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
-msgstr ""
+msgid "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and confusing area of terrain where it is easy to end up out of position or over extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 starting gold, has 33 villages."
+msgstr "40x20 väljaga kolm-kolme-vastu kaart. See  on raske maastikuga kaart, kus on kerge end valesti või liiga laiali paigutada. Meeskonnad on soovitav valida 1,4 ja 5 ning 2,3 ja 6 (ida lääne vastu). Kavandatud algsumma 100 kuldraha, 33 küla."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6 mängijat: Waterloo loojang"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
-msgstr ""
+msgid "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but having players 146 or 136 as a team is also interesting. Designed for 150 starting gold, has 44 villages."
+msgstr "40x30 väljaga kolm-kolme-vastu kaart.  Ülekaaluka väe vastu pead kasutama targalt liitlasi. Meeskonnad 1,4 ja 5 ning 2, 3 ja 6 (põhi lõuna vastu), aga huvitav on ka 1,4 ja 6 või 1,3 ja 6. Algsumma 150 kuldraha, 44 küla."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p - Mokena Prairie"
-msgstr ""
+msgstr "8 mängijat: Mokena rohtla"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
-msgid ""
-"Inspired from Morituri, this 8 player map creates an epic battle scene that "
-"requires two teams to coordinate on both offense and defense."
-msgstr ""
+msgid "Inspired from Morituri, this 8 player map creates an epic battle scene that requires two teams to coordinate on both offense and defense."
+msgstr "See 8 mängijaga kaart on algidee saanud Morituri kaardist ja pakub suurt lahinguvälja, kus kaks meeskonda peavad oma kaitset ja rünnakut korraldama."
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
-msgstr ""
+msgstr "8 mängijat: Morituri (Surmaminejad)"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
-msgid ""
-"Teamwork and tactics are key to victory in this unusual battlefield, where "
-"eight armies fight to the finish."
-msgstr ""
+msgid "Teamwork and tactics are key to victory in this unusual battlefield, where eight armies fight to the finish."
+msgstr "Sel kaheksa sõjaväe surmaheitluse lahinguväljal on võidu võtmeks meeskonnatöö ja õige taktika."
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9 mängijat - Merkwürdigliebe"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
-msgid ""
-"A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
-"large number of players. The teams are players 159 vs. 267 vs. 348 (north "
-"vs. southeast vs. southwest). There are very few villages per player, so 3 "
-"gold per villages is recommended."
-msgstr ""
+msgid "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the large number of players. The teams are players 159 vs. 267 vs. 348 (north vs. southeast vs. southwest). There are very few villages per player, so 3 gold per villages is recommended."
+msgstr "Väga väike kolm-kolme-vastu kaart.  Suure mängijate arvu tõttu on soovitav kasutada 60-sek taimerit. Meeskonnad on 1-5-9, 2-6-7 ja 3-4-8 (põhi, edel ja kagu). Külasid mängija kohta on väga vähe, seepärast on soovitav seada 3 kuldraha küla kohta."
 
 #. [scenario]: id=multiplayer_Random_Map
 #. [multiplayer]: id=multiplayer_Random_Map
@@ -1406,10 +1258,8 @@ msgstr "Juhuslik kaart"
 
 #. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-msgid ""
-"Randomly generated map. Note: random maps are often unbalanced, but if you "
-"have time, you can regenerate them until you get a good one."
-msgstr ""
+msgid "Randomly generated map. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
+msgstr "Juhuslikult tekitatud kaart. NB: Juhuslikud kaardid on sageli tasakaalust väljas, kuid kui sul on aega, võid luua uue, kuni leiad sobiva."
 
 #. [scenario]: id=multiplayer_Random_Map_Desert
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
@@ -1420,11 +1270,8 @@ msgstr "Juhuslik kaart (Kõrb)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
-msgid ""
-"A random map with sand as the primary terrain. Note: random maps are often "
-"unbalanced, but if you have time, you can regenerate them until you get a "
-"good one."
-msgstr ""
+msgid "A random map with sand as the primary terrain. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
+msgstr "Juhuslikult tekitatud kaart, mis on põhiosas kõrbemaastik. NB: Juhuslikud kaardid on sageli tasakaalust väljas, kuid kui sul on aega, võid luua uue, kuni leiad sobiva."
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
@@ -1435,11 +1282,8 @@ msgstr "Juhuslik kaart (Soo)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
-msgid ""
-"A random map with swamp as the primary terrain. Note: random maps are often "
-"unbalanced, but if you have time, you can regenerate them until you get a "
-"good one."
-msgstr ""
+msgid "A random map with swamp as the primary terrain. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
+msgstr "Juhuslikult tekitatud kaart, mis on põhiosas soo. NB: Juhuslikud kaardid on sageli tasakaalust väljas, kuid kui sul on aega, võid luua uue, kuni leiad sobiva."
 
 #. [scenario]: id=multiplayer_Random_Map_Winter
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
@@ -1450,47 +1294,38 @@ msgstr "Juhuslik kaart (Talv)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
-msgid ""
-"A random map set in the break between spring and winter, mainly with snowy "
-"terrains. Note: random maps are often unbalanced, but if you have time, you "
-"can regenerate them until you get a good one."
-msgstr ""
+msgid "A random map set in the break between spring and winter, mainly with snowy terrains. Note: random maps are often unbalanced, but if you have time, you can regenerate them until you get a good one."
+msgstr "Juhuslikult tekitatud kaart, mis on põhiosas lumine maastik (kujutab varakevadet). NB: Juhuslikud kaardid on sageli tasakaalust väljas, kuid kui sul on aega, võid luua uue, kuni leiad sobiva."
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Wesnothi testimine: tehisintellekt"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
+msgid "A wesnoth benchmark, use --nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end."
+msgstr "Kasutatavad käivitusvõtmed --nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Wesnothi testimine: kerimine"
 
 #. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
+msgid "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll --exit-at-end."
+msgstr "Kasutatavad käivitusvõtmed --no-delay --multiplayer --scenario=wesbench_scroll --exit-at-end."
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Wesnothi testimine: udus liikumine"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
+msgid "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
+msgstr "Kasutatavad käivitusvõtmed --no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
 
 #, fuzzy
 #~ msgid "4p - Mines of Mallorod"
@@ -1503,41 +1338,30 @@ msgstr ""
 #, fuzzy
 #~ msgid "teamname^west"
 #~ msgstr "Lääs"
-
 #~ msgid "Great War"
 #~ msgstr "Suur sõda"
-
 #~ msgid "Alliance of Darkness"
 #~ msgstr "Pimeduse liit"
-
 #~ msgid "Alliance of Light"
 #~ msgstr "Valguse liit"
 
 #, fuzzy
 #~ msgid "2p - Wesbowl"
 #~ msgstr "Wesbowl"
-
 #~ msgid "Red scores! Current score is $redscore-$bluescore"
 #~ msgstr "Punane sai punkte! Praegune skoor on $redscore-$bluescore"
-
 #~ msgid "Blue scores! Current score is $redscore-$bluescore"
 #~ msgstr "Sinine sai punkte! Praegune skoor on $redscore-$bluescore"
-
 #~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 #~ msgstr "Kas ma peaksin palli edasi söötma $passto.type ($xloc,$yloc)?"
-
 #~ msgid "Yes!"
 #~ msgstr "Jah!"
-
 #~ msgid "No"
 #~ msgstr "Ei"
-
 #~ msgid "Blue team wins! Final score: $redscore-$bluescore"
 #~ msgstr "Sinine meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
-
 #~ msgid "Red team wins! Final score: $redscore-$bluescore"
 #~ msgstr "Punane meeskond võitis! Lõplik tulemus: $redscore-$bluescore"
-
 #~ msgid "Draw! Final score: $redscore-$bluescore"
 #~ msgstr "Viik! Lõpptulemus: $redscore-$bluescore"
 
@@ -1556,3 +1380,4 @@ msgstr ""
 #, fuzzy
 #~ msgid "Defeat enemy leader(s)"
 #~ msgstr "Delfadori surm"
+
