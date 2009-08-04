@@ -955,6 +955,21 @@ void readonly_context_impl::recalculate_move_maps() const
 	possible_moves_ = moves_map();
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
+	if (get_passive_leader()||get_passive_leader_shares_keep()) {
+		unit_map::iterator i = get_info().units.find_leader(get_side());
+		if (i.valid()) {
+			map_location loc = i->first;
+			srcdst_.erase(loc);
+			for(move_map::iterator i = dstsrc_.begin(); i != dstsrc_.end(); ) {
+				if(i->second == loc) {
+					dstsrc_.erase(i++);
+				} else {
+					++i;
+				}
+			}
+		//@todo: shall possible moves be modified as well ?
+		}
+	}
 	move_maps_valid_ = true;
 }
 
