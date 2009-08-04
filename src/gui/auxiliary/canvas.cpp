@@ -897,6 +897,11 @@ void ttext::draw(surface& canvas,
 			: PANGO_ELLIPSIZE_END);
 
 	surface surf = text_renderer.render();
+	if(surf->w == 0) {
+		DBG_GUI_D << "Text: Rendering '" <<
+				text << "' resulted in an empty canvas, leave.\n";
+		return;
+	}
 
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("text_width", variant(surf->w));
