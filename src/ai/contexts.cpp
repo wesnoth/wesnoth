@@ -566,7 +566,11 @@ const move_map& readonly_context_impl::get_enemy_srcdst() const
 
 engine_ptr readonly_context_impl::get_engine(const config& cfg)
 {
-	const std::string& engine_name = cfg["engine"];
+	std::string engine_name = cfg["engine"];
+	if (engine_name.empty()) {
+		engine_name="cpp";//default engine
+	}
+
 	std::vector<engine_ptr>::iterator en = engines_.begin();
 	while (en!=engines_.end() && ((*en)->get_name()!=engine_name)) {
 		en++;
