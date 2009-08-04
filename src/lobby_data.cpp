@@ -361,12 +361,12 @@ game_info::game_info(const config& game, const config& game_config)
 
 bool game_info::can_join() const
 {
-	return vacant_slots > 0;
+	return have_era && !started && vacant_slots > 0;
 }
 
 bool game_info::can_observe() const
 {
-	return observers || preferences::is_authenticated();
+	return (have_era && observers) || preferences::is_authenticated();
 }
 
 game_filter_stack::game_filter_stack()
