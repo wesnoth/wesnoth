@@ -108,6 +108,36 @@ public:
 
 
 template<>
+class config_value_translator<int> {
+public:
+
+	static void cfg_to_value(const config &cfg, int &value)
+	{
+		value = atoi(cfg["value"].c_str());
+	}
+
+	static void value_to_cfg(const int &value, config &cfg)
+	{
+		cfg["value"] = boost::lexical_cast<std::string>(value);
+	}
+
+	static config value_to_cfg(const int &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+
+	static int cfg_to_value(const config &cfg)
+	{
+		int value;
+		cfg_to_value(cfg,value);
+		return value;
+	}
+};
+
+
+template<>
 class config_value_translator< std::vector<std::string> > {
 public:
 
