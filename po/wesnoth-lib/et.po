@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-06-28 12:56+0200\n"
-"PO-Revision-Date: 2008-06-06 13:40+0300\n"
-"Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
+"PO-Revision-Date: 2009-08-04 15:21+0300\n"
+"Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -170,18 +170,16 @@ msgstr "Lõunamaine mets"
 #: data/core/terrain.cfg:561 data/core/terrain.cfg:571
 #: data/core/terrain.cfg:591 data/core/terrain.cfg:601
 #: data/core/terrain.cfg:611
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Mets"
+msgstr "Metsased künkad"
 
 #. [terrain]: id=forested_snow_hills
 #. [terrain]: id=deciduous_forest_winter_snow_hills
 #. [terrain]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:541 data/core/terrain.cfg:581
 #: data/core/terrain.cfg:621
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Lumised künkad"
+msgstr "Lumise metsaga künkad"
 
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
@@ -259,7 +257,7 @@ msgstr "Soo"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:835
 msgid "Lit"
-msgstr ""
+msgstr "Valgustatud koobas"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:845
@@ -268,9 +266,8 @@ msgstr "Koobas"
 
 #. [terrain]: id=cave_path
 #: data/core/terrain.cfg:863
-#, fuzzy
 msgid "Cave path"
-msgstr "Valgustatud koobas"
+msgstr "Kooparada"
 
 #. [terrain]: id=fungus
 #: data/core/terrain.cfg:872
@@ -335,41 +332,38 @@ msgstr "Madal vesi"
 #. [terrain]: id=ford
 #: data/core/terrain.cfg:1208
 msgid "River Ford"
-msgstr "Jõekoole"
+msgstr "Koolmekoht"
 
 #. [terrain]: id=reef
 #: data/core/terrain.cfg:1219
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Rannik"
+msgstr "Rannakaljud"
 
 #. [terrain]: id=cloud
 #: data/core/terrain.cfg:1233
 msgid "Impassable Mountains"
-msgstr "Läbipääsmatu mäestik"
+msgstr "Läbimatud mäed"
 
 #. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1242
 msgid "Impassable Desert Mountains"
-msgstr "Läbipääsmatud liivamäed"
+msgstr "Läbimatud kõrbemäed"
 
 #. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1251
 msgid "Cave Wall"
-msgstr "Koopa sein"
+msgstr "Koopasein"
 
 #. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1260
-#, fuzzy
 msgid "Wall"
-msgstr "Koopa sein"
+msgstr "Sein"
 
 #. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
 #: data/core/terrain.cfg:1270 data/core/terrain.cfg:1308
-#, fuzzy
 msgid "Impassable"
-msgstr "Läbipääsmatu mäestik"
+msgstr "Läbimatu"
 
 #. [terrain]: id=void
 #: data/core/terrain.cfg:1281
@@ -379,17 +373,17 @@ msgstr "Tühjus"
 #. [terrain]: id=flat
 #: data/core/terrain.cfg:1294
 msgid "Flat"
-msgstr ""
+msgstr "Tasandik"
 
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1301
 msgid "Frozen"
-msgstr ""
+msgstr "Lumi"
 
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1315
 msgid "Unwalkable"
-msgstr ""
+msgstr "Läbimatu"
 
 #. [label]
 #. [column]
@@ -397,34 +391,31 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Jätka liikumist"
+msgstr "Ühendu serveriga"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Võtan ühendust lisamoodulite serveriga."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Uuenda liikumisi"
+msgstr "Uuenda lisamooduleid"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Eemalda"
+msgstr "Eemalda lisamooduleid"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
@@ -432,7 +423,7 @@ msgstr "Eemalda"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Ühendu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -460,22 +451,19 @@ msgstr "Genereeri juhuslik kaart"
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Kaardigeneraator"
+msgstr "Järgmine generaator"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Kiirklahvide sätted"
+msgstr "Seaded"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Genereeri uus kaart"
+msgstr "Genereeri"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -498,7 +486,6 @@ msgstr "Kõrgus:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
 msgstr "Loo uus kaart"
 
@@ -510,95 +497,86 @@ msgstr "Muuda kaardi mõõtmeid"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Laius:"
+msgstr "Uus laius:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Laius:"
+msgstr "Vana laius:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Kõrgus:"
+msgstr "Uus kõrgus:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Kõrgus:"
+msgstr "Vana kõrgus:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Laienda / kitsenda"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Kopeeri servamaastik"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "Muuda kaardi mõõtmeid"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:105
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Kiirklahvide sätted"
+msgstr "Redaktori seaded"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Valgustus päevaaja järgi"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Järgmine üksus"
+msgstr "Järgmine"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Ise määratud valgustus"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Kaardi vaate automaatne uuendamine"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Käi uuesti"
+msgstr "Punane:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Sagedus:"
+msgstr "Roheline:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Sinine:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Luba avada rohkem kui üks kaart korraga (mitme dokumendi liides)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -623,46 +601,44 @@ msgstr "Rakenda"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Keel"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Vali sulle sobiv keel:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
 #: data/gui/default/window/language_selection.cfg:120
-#, fuzzy
 msgid "Change language"
 msgstr "Muuda kasutatavat keelt"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
+#, fuzzy
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Mitmemängija juhtimisaken"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Sõnumid"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Sõnum:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Kustuta sõnumid"
+msgstr "Saada sõnum"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Sõbranimekiri"
+msgstr "Sõprade ja eiratavate nimekiri"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -688,175 +664,165 @@ msgstr "Eemalda"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Modereerimine"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Põhjus:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Teema"
+msgstr "Aeg:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Olekutabel"
+msgstr "Olek"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Viska välja"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Bloki"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Võtan ühendust mitmemängija serveriga."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Sõbranimekiri"
+msgstr "Vaata nimekirja"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Salvesta mäng"
+msgstr "Loo mäng"
 
 #. [label]
 #. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Mängu nimi:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
 msgstr "Mängijaid:"
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Kaardi suurus:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Ajastu:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Vaikimisi suurendus"
+msgstr "Vaikimisi"
 
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Määra parool"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Kaart:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
-msgstr ""
+msgstr "Kaardi seaded"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:332
-#, fuzzy
 msgid "Number of turns"
-msgstr "Küngaste arv:"
+msgstr "Käikude arv"
 
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:355
 msgid "Unlimited"
-msgstr ""
+msgstr "Piiramatu"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:373
-#, fuzzy
 msgid "Village gold"
-msgstr "Küla"
+msgstr "Kulda küla kohta"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:413
 msgid "Experience modifier"
-msgstr ""
+msgstr "Kogemuse määrang"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
-msgstr ""
+msgstr "Udu"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
 msgid "Random start time"
-msgstr ""
+msgstr "Juhuslik algusaeg"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:536
-#, fuzzy
 msgid "Create game"
-msgstr "Loo uus kaart"
+msgstr "Loo mäng"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Mitmemängija serveri sisselogimisaken"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "Logi sisse"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Kasutajanimi:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "Parool:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Salvesta parool eelistuste alla (avatekstina)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Parooli meeldetuletus"
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Mitmemängija valikud"
+msgstr "Mitmemängija mäng"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -868,87 +834,88 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Sa võid ametlikku mitmemängija serverisse siseneda oma foorumi kasutajanime "
+"ja parooliga.\n"
+"NB: Serverisse registreerumist pole vaja: parooli läheb vaja üksnes siis, "
+"kui soovid kasutada foorumi kasutajanime.\n"
+"\n"
+"Wesnothi Lahingu foorumi leiad aadressilt http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
-msgstr ""
+msgstr "Liitu ametliku serveriga"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Logi ametlikku Wesnothi mitmemängija serverisse"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
-msgstr ""
+msgstr "Liitu mõne muu serveriga"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Loo võrgumäng"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Loo uus võrgumäng 'wesnothd' serveri abil"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
-#, fuzzy
 msgid "Local Game"
-msgstr "Lae mäng"
+msgstr "Kohalik mäng"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Mängi mitmemängija mängu arvuti või sama masina taga istuvate inimeste vastu"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
-#, fuzzy
 msgid "Name"
-msgstr "Nimi:"
+msgstr "Nimi"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
-msgstr ""
+msgstr "Aadress"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:202
-#, fuzzy
 msgid "Select"
-msgstr "Vali kõik"
+msgstr "Vali"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Käigu teade"
+msgstr "Mänguõpetus"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Sõjakäik"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "Tee"
+msgstr "Lae mäng"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Lisamoodulid"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Välju redaktorist"
+msgstr "Kaardiredaktor"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -960,7 +927,7 @@ msgstr "Eelistused"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Tegijad"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1019,7 +986,7 @@ msgstr "Täisekraan"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Luba üksuse tegevuse jälgimist"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1067,7 +1034,7 @@ msgstr "Minimeeri ooteruumis olijate nimekiri"
 
 #: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Määra wesnothd kataloogitee"
 
 #: src/game_preferences_display.cpp:165
 msgid "Friends List"
@@ -1241,6 +1208,7 @@ msgstr "Vali, kas mäng peaks olema tervel ekraanil või aknas"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Kas animeeritud tegevuse korral peaks mängupilt kerima vastavasse kohta."
 
 #: src/game_preferences_display.cpp:295
 msgid "Make units move and fight faster"
@@ -1281,6 +1249,7 @@ msgstr "Näita ikoone ooteruumis olevate mängijate nimede ees"
 #: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
+"Salvestatud parooli unustamiseks tühjenda märkeruut (vajab mängust väljumist)"
 
 #: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1296,7 +1265,7 @@ msgstr "Näita kõiki ooteruumi tulevaid mängijaid puudutavaid sõnumeid"
 
 #: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Määra mitmemängija serveri kataloogitee võrgumängu loomiseks"
 
 #: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
@@ -1430,103 +1399,96 @@ msgstr "Teemasid ei leitud. Proovi teemat muuta mõnest olemasolevast mängust."
 
 #: src/game_preferences_display.cpp:1208
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Leia serverifail $filename võrgumängu loomiseks"
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Lae mäng"
 
 #: src/gui/dialogs/mp_create_game.cpp:79
-#, fuzzy
 msgid "Load Game..."
 msgstr "Lae mäng"
 
 #: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
-msgstr ""
+msgstr "Versioon"
 
 #: src/gui/widgets/canvas.cpp:308
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Joon ei mahu aluspinnale."
 
 #: src/gui/widgets/canvas.cpp:443
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Ristkülik ei mahu aluspinnale."
 
 #: src/gui/widgets/canvas.cpp:814
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Teksti suurus on 0."
 
 #: src/gui/widgets/canvas.cpp:879
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Tekst ei alga aluspinnalt."
 
 #: src/gui/widgets/helper.cpp:169
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Servereid pole määratud."
+msgstr "Kohustuslikku moodulit '$id' pole defineeritud."
 
 #: src/gui/widgets/settings.cpp:135
-#, fuzzy
 msgid "No default gui defined."
-msgstr "Servereid pole määratud."
+msgstr "Kasutajaliidest pole määratud."
 
 #: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
-msgstr ""
+msgstr "Aken pole määratletud."
 
 #: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Definitsioon '$definition' ei sisalda '$id' definitsiooni."
 
 #: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Servereid pole määratud."
+msgstr "Lahutusvõmet pole määratud."
 
 #: src/gui/widgets/settings.cpp:537
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Servereid pole määratud."
+msgstr "Olekuid pole määratud."
 
 #: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
 #: src/gui/widgets/window_builder.cpp:422
 #: src/gui/widgets/window_builder.cpp:932
 #: src/gui/widgets/window_builder.cpp:1141
-#, fuzzy
 msgid "No grid defined."
 msgstr "Servereid pole määratud."
 
 #: src/gui/widgets/window.cpp:612
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Dialoogiaken ei mahu ekraanile."
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
-msgstr ""
+msgstr "Reale peab järgnema veerg."
 
 #: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Veergude arv ei klapi."
 
 #: src/gui/widgets/window_builder.cpp:772
-#, fuzzy
 msgid "No list defined."
-msgstr "Servereid pole määratud."
+msgstr "Nimekirja pole määratud."
 
 #: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Element 'list_definition' peab sisaldama üht rida."
 
 #: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "'list_data' peab sisaldama sama arvu veerge kui 'list_definition'."
 
 #: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "'Value_labels' väärtus ei klapi."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1573,7 +1535,6 @@ msgid "Screenshot"
 msgstr "Ekraanitõmmis"
 
 #: src/hotkeys.cpp:57
-#, fuzzy
 msgid "Map Screenshot"
 msgstr "Ekraanitõmmis"
 
@@ -1642,6 +1603,7 @@ msgid "Create Unit (Debug!)"
 msgstr "Lisa üksus (Silumine!)"
 
 #: src/hotkeys.cpp:75
+#, fuzzy
 msgid "Change Unit Side (Debug!)"
 msgstr "Muuda üksuse kuuluvust (Silumine!)"
 
@@ -1719,20 +1681,19 @@ msgstr "Jäta animatsioon vahele"
 
 #: src/hotkeys.cpp:102
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Välju"
 
 #: src/hotkeys.cpp:103
-#, fuzzy
 msgid "Close Map"
-msgstr "Sulge"
+msgstr "Sulge kaart"
 
 #: src/hotkeys.cpp:104
 msgid "Switch Map"
-msgstr ""
+msgstr "Vaheta kaarti"
 
 #: src/hotkeys.cpp:106
 msgid "Partial Undo"
-msgstr ""
+msgstr "Tühista osaliselt"
 
 #: src/hotkeys.cpp:108
 msgid "Load Map"
@@ -1743,54 +1704,48 @@ msgid "Save Map"
 msgstr "Salvesta kaart"
 
 #: src/hotkeys.cpp:110
-#, fuzzy
 msgid "Save Map As"
-msgstr "Salvesta kaart"
+msgstr "Salvesta kaart kui"
 
 #: src/hotkeys.cpp:111
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Tühista kõik muudatused"
 
 #: src/hotkeys.cpp:112
-#, fuzzy
 msgid "Map Information"
-msgstr "Kaardigeneraator"
+msgstr "Kaardi info"
 
 #: src/hotkeys.cpp:114
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Vaheta esi- ja tagaplaani maastik"
 
 #: src/hotkeys.cpp:115
-#, fuzzy
 msgid "Next Tool"
-msgstr "Järgmine käik"
+msgstr "Järgmine tööriist"
 
 #: src/hotkeys.cpp:116
 msgid "Paint Tool"
-msgstr ""
+msgstr "Värvija"
 
 #: src/hotkeys.cpp:117
 msgid "Fill Tool"
-msgstr ""
+msgstr "Täitja"
 
 #: src/hotkeys.cpp:118
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Vali kõik"
+msgstr "Valija"
 
 #: src/hotkeys.cpp:120
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Algpositsiooni valija"
 
 #: src/hotkeys.cpp:121
-#, fuzzy
 msgid "Next Brush"
-msgstr "Järgmine käik"
+msgstr "Järgmine pintsel"
 
 #: src/hotkeys.cpp:122
-#, fuzzy
 msgid "Default Brush"
-msgstr "Vaikimisi suurendus"
+msgstr "Vaikimisi pintsel"
 
 #: src/hotkeys.cpp:123
 msgid "Cut"
@@ -1806,7 +1761,7 @@ msgstr "Kleebi"
 
 #: src/hotkeys.cpp:126
 msgid "Export selected coordinates to system clipboard"
-msgstr ""
+msgstr "Ekspordi valitud koordinaadid lõikepuhvrisse"
 
 #: src/hotkeys.cpp:128
 msgid "Select All"
@@ -1814,84 +1769,75 @@ msgstr "Vali kõik"
 
 #: src/hotkeys.cpp:130
 msgid "Select Inverse"
-msgstr ""
+msgstr "Vali pööratult"
 
 #: src/hotkeys.cpp:132
-#, fuzzy
 msgid "Select None"
-msgstr "Vali kõik"
+msgstr "Ära vali midagi"
 
 #: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Keera lõikepuhvrit päripäeva"
 
 #: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Keera lõikepuhvrit vastupäeva"
 
 #: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Peegelda lõikepuhvrit horisontaalselt"
 
 #: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Peegelda lõikepuhvrit vertikaalselt"
 
 #: src/hotkeys.cpp:142
 msgid "Rotate Selection"
 msgstr "Pööra valikut"
 
 #: src/hotkeys.cpp:144
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Täida valik"
+msgstr "Peegelda valik"
 
 #: src/hotkeys.cpp:146
 msgid "Fill Selection"
 msgstr "Täida valik"
 
 #: src/hotkeys.cpp:148
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Pööra valikut"
+msgstr "Genereeri valiku väljad"
 
 #: src/hotkeys.cpp:150
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Sega valiku väljad ära"
 
 #: src/hotkeys.cpp:154
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Lae kaart"
+msgstr "Pööra kaarti"
 
 #: src/hotkeys.cpp:156
-#, fuzzy
 msgid "Generate Map"
 msgstr "Genereeri uus kaart"
 
 #: src/hotkeys.cpp:158
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Kasuta maski"
 
 #: src/hotkeys.cpp:160
-#, fuzzy
 msgid "Create Mask"
-msgstr "Salvesta mäng"
+msgstr "Loo mask"
 
 #: src/hotkeys.cpp:162
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Pildisätted"
+msgstr "Värskenda ekraanipilti"
 
 #: src/hotkeys.cpp:164
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Uuenda liikumisi"
+msgstr "Uuenda maastiku üleminekuid"
 
 #: src/hotkeys.cpp:166
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Uuenda liikumisi"
+msgstr "Uuenda maastiku üleminekuid automaatselt"
 
 #: src/hotkeys.cpp:168
 msgid "Refresh Image Cache"
@@ -1899,12 +1845,11 @@ msgstr "Värskenda piltide vahemälu"
 
 #: src/hotkeys.cpp:170
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Väljade koordinaadid"
 
 #: src/hotkeys.cpp:172
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Joonista maastik"
+msgstr "Maastiku koodid"
 
 #: src/hotkeys.cpp:177
 msgid "Delay Shroud Updates"
@@ -1947,13 +1892,12 @@ msgid "Enter user command"
 msgstr "Sisesta kasutaja käsk"
 
 #: src/hotkeys.cpp:188
-#, fuzzy
 msgid "Custom command"
-msgstr "Sisesta kasutaja käsk"
+msgstr "Kasutaja käsk"
 
 #: src/hotkeys.cpp:189
 msgid "Run AI formula"
-msgstr ""
+msgstr "Tehisintellekti valem"
 
 #: src/hotkeys.cpp:190
 msgid "Clear messages"
@@ -1972,19 +1916,16 @@ msgid "Do you really want to quit?"
 msgstr "Kas sa tahad tõesti lõpetada?"
 
 #: src/hotkeys.cpp:894
-#, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekraanitõmmis"
 
 #: src/hotkeys.cpp:901
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Ekraanitõmmis"
+msgstr "Ekraanitõmmis tehtud."
 
 #: src/hotkeys.cpp:903
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Ekraanitõmmis"
+msgstr "Ekraanitõmmise tegemine ebaõnnestus"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:202
 msgid "Close Window"
@@ -2065,9 +2006,8 @@ msgid "Hotkey Settings"
 msgstr "Kiirklahvide sätted"
 
 #: src/preferences_display.cpp:212 src/preferences_display.cpp:280
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Vajuta soovitud kiirklahvi"
+msgstr "Vajuta soovitud kiirklahvi (Esc tühistab)"
 
 #: src/preferences_display.cpp:231
 msgid "Action"
@@ -2082,9 +2022,8 @@ msgid "Change Hotkey"
 msgstr "Muuda kiirklahvi"
 
 #: src/preferences_display.cpp:246
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Muuda kiirklahvi"
+msgstr "Puhasta kiirklahvi määrang"
 
 #: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
@@ -2094,6 +2033,8 @@ msgstr "See kiirklahv on juba kasutusel."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Hoiatus: ekraanitõmmise klahvikombinatsioonid Ctrl, Alt või Meta-klahviga ei "
+"toimi."
 
 #: src/preferences_display.cpp:416
 msgid "There are no alternative video modes available"
@@ -2114,7 +2055,6 @@ msgid ""
 msgstr "Leiti maastik, mille määrang on üle 4 sümboli pikk:"
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -2137,6 +2077,262 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Sektsioonis '[$section|]' pole kohustuslik võti '$key|' määratud."
+
+#~ msgid "Fort"
+#~ msgstr "Kindlus"
+
+#~ msgid "Encampment Keep"
+#~ msgstr "Laagrikindlustus"
+
+#~ msgid "Fort Keep"
+#~ msgstr "Kindlusetorn"
+
+#~ msgid "Castle Keep"
+#~ msgstr "Lossitorn"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Haldjaloss"
+
+#~ msgid "Ruined Castle Keep"
+#~ msgstr "Varemeis loss"
+
+#~ msgid "Sunken Castle Keep"
+#~ msgstr "Veealune loss"
+
+#~ msgid "Snowy Pine Forest"
+#~ msgstr "Lumine männimets"
+
+#~ msgid "Pine Forest"
+#~ msgstr "Männimets"
+
+#~ msgid "Summer Deciduous Forest"
+#~ msgstr "Suvine lehtmets"
+
+#~ msgid "Fall Deciduous Forest"
+#~ msgstr "Sügisene lehtmets"
+
+#~ msgid "Winter Deciduous Forest"
+#~ msgstr "Talvine lehtmets"
+
+#~ msgid "Snowy Deciduous Forest"
+#~ msgstr "Lumine lehtmets"
+
+#~ msgid "Summer Mixed Forest"
+#~ msgstr "Suvine segamets"
+
+#~ msgid "Fall Mixed Forest"
+#~ msgstr "Sügisene segamets"
+
+#~ msgid "Winter Mixed Forest"
+#~ msgstr "Talvine segamets"
+
+#~ msgid "Snowy Mixed Forest"
+#~ msgstr "Lumine segamets"
+
+#~ msgid "Summer Deciduous Forested Hills"
+#~ msgstr "Suvise lehtmetsaga künkad"
+
+#~ msgid "Fall Deciduous Forested Hills"
+#~ msgstr "Sügisese lehtmetsaga künkad"
+
+#~ msgid "Winter Deciduous Forested Hills"
+#~ msgstr "Talvise lehtmetsaga künkad"
+
+#~ msgid "Snowy Deciduous Forested Hills"
+#~ msgstr "Lumise lehtmetsaga künkad"
+
+#~ msgid "Summer Mixed Forested Hills"
+#~ msgstr "Suvise segametsaga künkad"
+
+#~ msgid "Winter Mixed Forested Hills"
+#~ msgstr "Talvise segametsaga künkad"
+
+#~ msgid "Snowy Mixed Forested Hills"
+#~ msgstr "Lumise segametsaga künkad"
+
+#~ msgid "Desert Mountains"
+#~ msgstr "Kõrbemäed"
+
+#~ msgid "Snowy Mountains"
+#~ msgstr "Lumised mäed"
+
+#~ msgid "Play a campaign"
+#~ msgstr "Mängi sõjakäiku"
+
+#~ msgid "Delete Save"
+#~ msgstr "Kustuta salvestus"
+
+#~ msgid "Do you really want to delete this game?"
+#~ msgstr "Kas sa tahad tõesti seda mängu kustutada?"
+
+#~ msgid "Don't ask me again!"
+#~ msgstr "Ära seda rohkem küsi!"
+
+#~ msgid "Choose the game to load"
+#~ msgstr "Vali laetav mäng"
+
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Date"
+#~ msgstr "Kuupäev"
+
+#~ msgid "Delete"
+#~ msgstr "Kustuta"
+
+#~ msgid "Show replay"
+#~ msgstr "Näita kordust"
+
+#~ msgid "Cancel orders"
+#~ msgstr "Tühista käsk"
+
+#~ msgid "Name:"
+#~ msgstr "Nimi:"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "OOS error"
+#~ msgstr "Sünkroniseerimisviga"
+
+#~ msgid "Ignore All"
+#~ msgstr "Eira kõiki"
+
+#~ msgid "Overwrite?"
+#~ msgstr "Kirjutan üle?"
+
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "See salvestus on juba olemas. Kas soovid selle üle kirjutada?"
+
+#~ msgid "Sort players:"
+#~ msgstr "Sorteeri mängijaid:"
+
+#~ msgid "Multiplayer Lobby"
+#~ msgstr "Mitmemängija ooteruum"
+
+#~ msgid "Filter:"
+#~ msgstr "Filter:"
+
+#~ msgid "Friends"
+#~ msgstr "Sõbranimekiri"
+
+#~ msgid "No ignored"
+#~ msgstr "Eiratavaid pole"
+
+#~ msgid "Vacant slots"
+#~ msgstr "Tühjad kohad"
+
+#~ msgid "Invert filter"
+#~ msgstr "Pööra filtrit"
+
+#~ msgid "Send"
+#~ msgstr "Saada"
+
+#~ msgid "Refresh"
+#~ msgstr "Värskenda"
+
+#~ msgid "Join"
+#~ msgstr "Liitu"
+
+#~ msgid "Observe"
+#~ msgstr "Vaatle"
+
+#~ msgid "Quick replay"
+#~ msgstr "Läbivaatamine"
+
+#~ msgid "Player Info - "
+#~ msgstr "Mängija info -"
+
+#~ msgid "Send private message"
+#~ msgstr "Saada sõnum"
+
+#~ msgid "Add to friends list"
+#~ msgstr "Lisa sõbranimekirja"
+
+#~ msgid "Add to ignores list"
+#~ msgstr "Lisa eiramisnimekirja"
+
+#~ msgid "Remove from list"
+#~ msgstr "Eemalda nimekirjast"
+
+#~ msgid "Moderation"
+#~ msgstr "Modereerimine"
+
+#~ msgid "Check status"
+#~ msgstr "Kontrolli olekut"
+
+#~ msgid "Kick / ban reason:"
+#~ msgstr "Väljaviskamise / bloki põhjus:"
+
+#~ msgid "Ban time:"
+#~ msgstr "Blokkimise aeg:"
+
+#~ msgid "Kick/ban"
+#~ msgstr "Väljaviskamine / blokk"
+
+#~ msgid "Previous"
+#~ msgstr "Eelmine"
+
+#~ msgid "Full Screen"
+#~ msgstr "Täisekraan"
+
+#~ msgid "Linked '$id' group has multiple definitions."
+#~ msgstr "Grupil '$id' on mitu definitsiooni."
+
+#~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+#~ msgstr "Grupp '$id' vajab kas 'fixed_width' või 'fixed_height' -võtit."
+
+#~ msgid "No page defined."
+#~ msgstr "Lehekülge pole määratud."
+
+#~ msgid "No stack defined."
+#~ msgstr "Pinu pole määratud."
+
+#~ msgid "#(Invalid)"
+#~ msgstr "#(Viga)"
+
+#~ msgid "Campaign: $campaign_name"
+#~ msgstr "Sõjakäik: $campaign_name"
+
+#~ msgid "replay"
+#~ msgstr "mängusalvestus"
+
+#~ msgid "Turn"
+#~ msgstr "Käik"
+
+#~ msgid "Scenario Start"
+#~ msgstr "Algus"
+
+#~ msgid "Difficulty: "
+#~ msgstr "Raskusaste:"
+
+#~ msgid "Version: "
+#~ msgstr "Versioon: "
+
+#~ msgid ""
+#~ "Whisper session with $name started. If you don't want to receive messages "
+#~ "from this user, type /ignore $name\n"
+#~ msgstr ""
+#~ "Alustasid sosistamist kasutajaga $name. Kui soovid selle kasutaja "
+#~ "sõnumeid eirata, kirjuta  /ignore $name\n"
+
+#~ msgid "Room $name joined"
+#~ msgstr "Liitusid ruumiga $name"
+
+#~ msgid "Password Required"
+#~ msgstr "Parool"
+
+#~ msgid "Joining this game requires a password."
+#~ msgstr "Selle mänguga liitumiseks on vaja parooli."
+
+#~ msgid "Password: "
+#~ msgstr "Parool:"
+
+#~ msgid "Toggle Ellipses"
+#~ msgstr "Lülita ellipsid sisse/välja"
+
+#~ msgid "language code for localized resources^en_US"
+#~ msgstr "keelekood^et_EE"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Muuda gammat"
@@ -2200,9 +2396,6 @@ msgstr "Sektsioonis '[$section|]' pole kohustuslik võti '$key|' määratud."
 #~ msgid "Flood Fill"
 #~ msgstr "Täitmine"
 
-#~ msgid "Revert from Disk"
-#~ msgstr "Taasta algseis"
-
 #~ msgid "Flip Map"
 #~ msgstr "Pööra kaarti"
 
@@ -2211,10 +2404,6 @@ msgstr "Sektsioonis '[$section|]' pole kohustuslik võti '$key|' määratud."
 
 #~ msgid "Delay transition updates"
 #~ msgstr "Viivita liikumiste uuendamisega"
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Pööra valikut"
 
 #~ msgid "Rockbound Cave Lit"
 #~ msgstr "Valgustatud kaljukoobas"
