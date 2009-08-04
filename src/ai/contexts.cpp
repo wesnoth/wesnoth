@@ -251,7 +251,11 @@ void readonly_context_impl::handle_generic_event(const std::string& /*event_name
 
 bool readwrite_context_impl::recruit(const std::string& unit_name, map_location loc)
 {
-	recruit_result_ptr recruit_res = execute_recruit_action(unit_name,loc);
+	recruit_result_ptr recruit_res = check_recruit_action(unit_name,loc);
+	if (!recruit_res->is_ok()) {
+		return false;
+	}
+	recruit_res->execute();
 	if (!recruit_res->is_ok()) {
 		ERR_AI << "recruit failed"<< std::endl;
 	}

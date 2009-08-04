@@ -121,7 +121,11 @@ bool action_result::is_ok()
 
 void action_result::set_error(int error_code){
 	status_ = error_code;
-	ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+	if (is_execution()) {
+		ERR_AI_ACTIONS << "Error #"<<error_code<<" in "<< do_describe();
+	} else {
+		LOG_AI_ACTIONS << "Error #"<<error_code<<" when checking "<< do_describe();
+	}
 }
 
 
