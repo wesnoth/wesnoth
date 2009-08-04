@@ -171,7 +171,22 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		bool see_all, bool ignore_units)
 {
 	const team& current_team = teams[u.side() - 1];
-	const std::set<map_location>& teleports = allow_teleport ? current_team.villages() : std::set<map_location>();
+	std::set<map_location> teleports;
+	if (allow_teleport)
+	{
+		// Check for teleporting units. This must be a vacant village (or
+		// occupied by the unit) controlled by our team to be able to teleport.
+		foreach (const map_location &l, current_team.villages())
+		{
+			if (!see_all && viewing_team.is_enemy(u.side()) &&
+			    viewing_team.fogged(l))
+				continue;
+			if (!ignore_units && l != loc &&
+			    find_visible_unit(units, l, map, teams, viewing_team, see_all) != units.end())
+				continue;
+			teleports.insert(l);
+		}
+	}
 
 	const int total_movement = u.total_movement();
 
