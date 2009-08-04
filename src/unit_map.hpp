@@ -175,24 +175,6 @@ public:
 	};
 
 	template <typename iter_types>
-	struct unit_xy_policy {
-		typedef typename iter_types::iterator_type iterator_type;
-
-		unit_xy_policy() { }
-		unit_xy_policy(const iterator_type& i, const unit_map* /*map*/) : loc_(i->second.get_location()) { }
-
-		void update(iterator_type& iter, const unit_map* /*map*/) {
-			loc_ = iter->second.get_location();
-		}
-
-		bool valid(const iterator_type& iter, const unit_map* map) const {
-			return iter != map->map_.end() && iter->second.valid() && iter->second.get_location() == loc_;
-		}
-	private:
-		map_location loc_;
-	};
-
-	template <typename iter_types>
 	struct xy_accessor_base {
 		typedef typename iter_types::map_type map_type;
 		typedef typename iter_types::iterator_type iterator_type;
@@ -255,14 +237,6 @@ public:
 	 */
 	typedef iterator_base<unit_policy, standard_iter_types> unit_iterator;
 	typedef iterator_base<unit_policy, const_iter_types> const_unit_iterator;
-
-	/**
-	 * unit_xy_iterators have all the constraints of unit_iterators and will also be invalidated if the unit
-	 * is not at the same location as when the iterator first pointed at it. That is, as long as the unit stays
-	 * in the same spot, the iterator is valid.
-	 */
-	typedef iterator_base<unit_xy_policy, standard_iter_types> unit_xy_iterator;
-	typedef iterator_base<unit_xy_policy, const_iter_types> const_unit_xy_iterator;
 
 	/**
 	 * xy_accessors cannot be incremented or decremented. An xy_accessor is valid as long as there is a unit at
@@ -392,12 +366,6 @@ struct unit_map::convertible<T, T> { };
 
 template <typename X, typename Y>
 struct unit_map::convertible<unit_map::unit_policy<X>, unit_map::unit_policy<Y> > { };
-
-template <typename X, typename Y>
-struct unit_map::convertible<unit_map::unit_policy<X>, unit_map::unit_xy_policy<Y> > { };
-
-template <typename X, typename Y>
-struct unit_map::convertible<unit_map::unit_xy_policy<X>, unit_map::unit_xy_policy<Y> > { };
 
 
 
