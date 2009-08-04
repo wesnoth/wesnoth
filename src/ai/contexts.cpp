@@ -234,7 +234,6 @@ config readonly_context_impl::to_readonly_context_config() const
 	foreach(const goal_ptr g, goals_) {
 		cfg.add_child("goal",g->to_config());
 	}
-	cfg["default_config_applied"] = "yes";
 	return cfg;
 }
 
