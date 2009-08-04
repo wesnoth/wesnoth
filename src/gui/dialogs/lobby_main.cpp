@@ -349,14 +349,33 @@ void tlobby_main::update_gamelist()
 		const game_info& game = *lobby_info_.games_filtered()[i];
 		std::map<std::string, string_map> data;
 
-		add_label_data(data, "name", game.name);
+		const char* color_string;
+		if (game.vacant_slots > 0) {
+			if (game.reloaded || game.started) {
+				color_string = "yellow";
+			} else {
+				color_string = "green";
+			}
+		} else {
+			if (game.observers) {
+				color_string = "#ddd";
+			} else {
+				color_string = "red";
+			}
+		}
+		if (!game.have_era && (game.vacant_slots > 0 || game.observers)) {
+			color_string = "#444";
+		}
+
+		add_label_data(data, "status", colorize(game.status, color_string));
+		add_label_data(data, "name", colorize(game.name, color_string));
+
 		add_label_data(data, "era", game.era);
 		add_label_data(data, "era_short", game.era_short);
 		add_label_data(data, "map_info", game.map_info);
 		add_label_data(data, "scenario", game.scenario);
 		add_label_data(data, "map_size_text", game.map_size_info);
 		add_label_data(data, "time_limit", game.time_limit);
-		add_label_data(data, "status", game.status);
 		add_label_data(data, "gold_text", game.gold);
 		add_label_data(data, "xp_text", game.xp);
 		add_label_data(data, "vision_text", game.vision);
@@ -389,6 +408,10 @@ void tlobby_main::update_gamelist()
 
 		gamelistbox_->add_row(data);
 		tgrid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
+
+		grid->get_widget<tcontrol>("name", false).set_markup_mode(tcontrol::PANGO_MARKUP);
+		grid->get_widget<tcontrol>("status", false).set_markup_mode(tcontrol::PANGO_MARKUP);
+
 		ttoggle_panel& row_panel = grid->get_widget<ttoggle_panel>("panel", false);
 		row_panel.set_callback_mouse_left_double_click(boost::bind(
 			&tlobby_main::join_or_observe, this, i));
