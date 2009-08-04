@@ -884,9 +884,13 @@ void ttext::draw(surface& canvas,
 	}
 
 	static font::ttext text_renderer;
+	if(!text_renderer.set_text(text, text_markup_(variables))) {
+		ERR_GUI_D << "Text: Invalid markup in '"
+				<< text << "' rendered as is.\n";
+		text_renderer.set_text(text, false);
+	}
 
-	text_renderer.set_text(text, text_markup_(variables)).
-		set_font_size(font_size_).
+	text_renderer.set_font_size(font_size_).
 		set_font_style(font_style_).
 		set_foreground_colour(colour_).
 		set_maximum_width(maximum_width_(variables)).
@@ -898,7 +902,7 @@ void ttext::draw(surface& canvas,
 
 	surface surf = text_renderer.render();
 	if(surf->w == 0) {
-		DBG_GUI_D << "Text: Rendering '" <<
+		DBG_GUI_D  << "Text: Rendering '" <<
 				text << "' resulted in an empty canvas, leave.\n";
 		return;
 	}

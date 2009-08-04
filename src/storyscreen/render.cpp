@@ -268,8 +268,13 @@ void part_ui::render_title_box()
 	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
 
 	font::ttext t;
-	t.set_text(titletxt, true)
-		 .set_font_style(font::ttext::STYLE_NORMAL)
+	if(!t.set_text(titletxt, true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< titletxt << "' rendered as is.\n";
+		t.set_text(titletxt, false);
+	}
+
+	t.set_font_style(font::ttext::STYLE_NORMAL)
 		 .set_font_size(titlebox_font_size)
 		 .set_foreground_colour(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
@@ -373,8 +378,12 @@ void part_ui::render_story_box()
 	bool skip = false, last_key = true;
 
 	font::ttext t;
-	t.set_text(p_.text(), true)
-		 .set_font_style(font::ttext::STYLE_NORMAL)
+	if(!t.set_text(p_.text(), true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< p_.text() << "' rendered as is.\n";
+		t.set_text(p_.text(), false);
+	}
+	t.set_font_style(font::ttext::STYLE_NORMAL)
 		 .set_foreground_colour(storybox_font_color)
 		 .set_maximum_width(max_width)
 		 .set_maximum_height(max_height);

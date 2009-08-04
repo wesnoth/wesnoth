@@ -254,12 +254,17 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 	}
 }
 
-ttext& ttext::set_text(const std::string& text, const bool markedup)
+bool ttext::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
 		if(markedup) {
+			if(!pango_parse_markup(text.c_str(), text.size()
+						, 0, NULL, NULL, NULL, NULL)) {
+
+				return false;
+			}
 			pango_layout_set_markup(layout_, text.c_str(), text.size());
 		} else {
 			/*
@@ -277,7 +282,7 @@ ttext& ttext::set_text(const std::string& text, const bool markedup)
 		surface_dirty_ = true;
 	}
 
-	return *this;
+	return true;
 }
 
 ttext& ttext::set_font_size(const unsigned font_size)

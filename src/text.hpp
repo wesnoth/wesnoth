@@ -148,9 +148,22 @@ public:
 	 */
 	size_t get_length() const { return length_; }
 
+	/**
+	 * Sets the text to render.
+	 *
+	 * @param text                The text to render.
+	 * @param markedup            Should the text be rendered with pango
+	 *                            markup. If the markup is invalid it's
+	 *                            rendered as text without markup.
+	 * 
+	 * @returns                   The status, if rendered as markup and the
+	 *                            markup contains errors, false is returned
+	 *                            else true.
+	 */
+	bool set_text(const std::string& text, const bool markedup);
+
 	/***** ***** ***** ***** Setters / getters ***** ***** ***** *****/
 
-	ttext& set_text(const std::string& text, const bool markedup);
 	const std::string& text() const { return text_; }
 
 	ttext& set_font_size(const unsigned font_size);
