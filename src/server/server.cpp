@@ -583,7 +583,12 @@ void server::run() {
 			if (input_ && input_->read_line(admin_cmd)) {
 				LOG_SERVER << "Admin Command: type: " << admin_cmd << "\n";
 				const std::string res = process_command(admin_cmd, "*socket*");
-				LOG_SERVER << "[admin_command_response]\n" << res << "\n" << "[/admin_command_response]\n";
+				// Only mark the response if we fake the issuer (i.e. command comes from IRC or so)
+				if (admin_cmd.at(0) == '+') {
+					LOG_SERVER << "[admin_command_response]\n" << res << "\n" << "[/admin_command_response]\n";
+				} else {
+					LOG_SERVER << res << "\n";
+				}
 			}
 
 			time_t now = time(NULL);
