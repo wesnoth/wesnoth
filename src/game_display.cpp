@@ -1045,15 +1045,13 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 #endif
 {
 #if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
-	// SDL_APPACTIVE, SDL_APPINPUTFOCUS, SDL_APPMOUSEFOCUS
 	Uint8 app_state = SDL_GetAppState();
 
-	// Only show notification if the window is not visible 
-	if((SDL_APPACTIVE & app_state) != 0)
+	// Do not show notifications when the window is visible...
+	if ((app_state & SDL_APPACTIVE) != 0)
 	{
-		// Or if window is in background
-		if((SDL_APPMOUSEFOCUS & app_state) != 0)
-		{
+		// ... and it has a focus.
+		if ((app_state & (SDL_APPMOUSEFOCUS | SDL_APPINPUTFOCUS)) != 0) {
 			return;
 		}
 	}
