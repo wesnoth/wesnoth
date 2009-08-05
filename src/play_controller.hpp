@@ -86,6 +86,7 @@ public:
 		int percentage = -1, bool add = false, bool bonus = true,
 		bool report = true, bool prescenario_save = true,
 		bool linger = true) = 0;
+	virtual void check_end_level() = 0;
 
 	//turn functions
 	size_t turn() const {return tod_manager_.turn();}

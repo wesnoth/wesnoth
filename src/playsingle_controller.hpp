@@ -65,7 +65,7 @@ public:
 	virtual void force_end_level(LEVEL_RESULT res, const std::string &endlevel_music_list,
 		int percentage, bool add, bool bonus, bool report, bool prescenario_save,
 		bool linger);
-	void check_end_level();
+	virtual void check_end_level();
 
 protected:
 	virtual void play_turn(bool no_save);

@@ -42,7 +42,9 @@
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind.hpp"
+#include "play_controller.hpp"
 #include "../replay.hpp"
+#include "resources.hpp"
 #include "../statistics.hpp"
 #include "../team.hpp"
 
@@ -90,6 +92,8 @@ void action_result::execute()
 	check_before();
 	if (is_success()){
 		do_execute();
+		check_victory();
+		resources::controller->check_end_level();
 	}
 	if (is_success()){
 		check_after();
@@ -317,7 +321,6 @@ void attack_result::do_execute()
 		}
 	}
 
-	check_victory();
 	set_gamestate_changed();
 	//start of ugly hack. @todo 1.8 rework that via extended event system
 	//until event system is reworked, we note the attack this way

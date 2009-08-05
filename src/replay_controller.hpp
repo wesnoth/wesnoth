@@ -56,6 +56,7 @@ public:
 			, bool /*linger*/)
 	{
 	}
+	virtual void check_end_level() {}
 
 	std::vector<team> teams_start_;
 
