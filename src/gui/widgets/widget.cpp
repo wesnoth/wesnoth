@@ -16,7 +16,40 @@
 
 #include "gui/widgets/window.hpp"
 
+#include "../../log.hpp"
+
+static lg::log_domain log_gui_lifetime("gui/lifetime");
+#define DBG_GUI_LF LOG_STREAM_INDENT(debug, log_gui_lifetime)
+
 namespace gui2 {
+
+twidget::twidget()
+	: id_("")
+	, definition_("default")
+	, parent_(0)
+	, x_(-1)
+	, y_(-1)
+	, w_(0)
+	, h_(0)
+	, dirty_(true)
+	, visible_(VISIBLE)
+	, drawing_action_(DRAWN)
+	, clip_rect_()
+	, layout_size_(tpoint(0,0))
+	, linked_group_()
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	, last_best_size_(tpoint(0,0))
+#endif
+{
+	DBG_GUI_LF << "widget create: " << (void*)this << "\n";
+}
+
+twidget::~twidget()
+{
+	DBG_GUI_LF << "widget destroy: " << (void*)this
+		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
+}
+
 
 void twidget::layout_init(const bool /*full_initialization*/)
 {

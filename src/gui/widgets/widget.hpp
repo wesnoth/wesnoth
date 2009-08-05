@@ -45,26 +45,9 @@ class twidget
 	friend class twindow; // needed for modifying the layout_size.
 
 public:
-	twidget()
-		: id_("")
-		, definition_("default")
-		, parent_(0)
-		, x_(-1)
-		, y_(-1)
-		, w_(0)
-		, h_(0)
-		, dirty_(true)
-		, visible_(VISIBLE)
-		, drawing_action_(DRAWN)
-		, clip_rect_()
-		, layout_size_(tpoint(0,0))
-		, linked_group_()
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-		, last_best_size_(tpoint(0,0))
-#endif
-		{}
+	twidget();
 
-	virtual ~twidget() {}
+	virtual ~twidget();
 
 	/**
 	 * Loads the configuration of the widget.
