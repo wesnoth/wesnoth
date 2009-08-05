@@ -1827,7 +1827,7 @@ static int process_command_args(int argc, char** argv) {
 				std::cerr << "format of " << val << " command: " << val << " <map file> <output file>\n";
 				return 2;
 			}
-			char opt[] = "SDL_VIDEODRIVER=dummy";	
+			static char opt[] = "SDL_VIDEODRIVER=dummy";
 			SDL_putenv(opt);	
 		}
 #endif 
