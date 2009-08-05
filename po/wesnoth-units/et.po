@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-04-17 13:28+0200\n"
-"PO-Revision-Date: 2008-05-26 23:50+0300\n"
-"Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
+"PO-Revision-Date: 2009-08-05 13:03+0300\n"
+"Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr "Vereimeja"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:19
+#, fuzzy
 msgid ""
 "Blood Bats are so-named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -51,9 +52,8 @@ msgstr "kihvad"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Vampiir"
+msgstr "Lendõudus"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -87,6 +87,7 @@ msgstr "Paat"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
+#, fuzzy
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
@@ -112,7 +113,6 @@ msgstr "Piraadigaleoon"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -135,6 +135,7 @@ msgstr "Sõjagaleoon"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
+#, fuzzy
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
@@ -359,6 +360,7 @@ msgstr "Võitlejalohe"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:19
+#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe. Their "
@@ -382,6 +384,7 @@ msgstr "Tulelohe"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:18
+#, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
@@ -516,6 +519,7 @@ msgstr "Taevalohe"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:27
+#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -619,7 +623,6 @@ msgstr "Päkapike lohevaht"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -633,9 +636,10 @@ msgstr ""
 "Pole selge, miks lohevahid enda kaaslastelt sellise nime on saanud. Mõned "
 "arvavad, et see tuleb nende valitud relvadest, nendest veidratest sauadest, "
 "mis purskavad tuld ja surma. Teised pakuvad, et nende relvad oleksid ohuks "
-"isegi tõelisele vana aja lohele. Igal juhul on just nende relvade teene, et "
-"päkapikkude suurkindluste valvurid on kuulsad ja kardetud: need relvad on "
-"võtnud ühe hoobiga maha ka suurimaid sõdalasi."
+"isegi tõelisele vana aja draakonile, kui sellist veel kusagilt leida oleks. "
+"Igal juhul on just nende relvade teene, et päkapikkude suurkindluste "
+"valvurid on kuulsad ja kardetud: need relvad on võtnud ühe hoobiga maha ka "
+"suurimaid sõdalasi."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
@@ -777,9 +781,8 @@ msgstr "ruunivasar"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:47
-#, fuzzy
 msgid "lightning bolt"
-msgstr "Välgunool"
+msgstr "välgunool"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -838,7 +841,6 @@ msgstr "Päkapike kõmistaja"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -849,7 +851,7 @@ msgstr ""
 "Kui Wesnothi inimesed esmakordselt päkapikkudega kohtusid, olid nad päkapike "
 "kõmistajaid nähes hämmingus. Nood suutsid saata surma kauge maa taha, "
 "kasutades neid veidraid sauasid, mida nad lahingusse kaasa võtsid. Nende "
-"'kõuekeppide' kurdistav müra on hirmus, seda täiendab veel saladuskate, "
+"'kõuekeppide' kurdistav müra on hirmus ning seda täiendab veel saladuskate, "
 "millega päkapikud oma töid ümbritsevad."
 
 #. [attack]: type=pierce
@@ -865,7 +867,6 @@ msgstr "Päkapike kõuevaht"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
-#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staffs of wood and iron that make a thunderous noise in their anger. "
@@ -886,7 +887,7 @@ msgstr ""
 "eluka jaoks.\n"
 "\n"
 "Kuigi 'kõuekepi' üheainsa lasu ettevalmistamine võib võtta üsna kaua aega, "
-"peavad päkapikud selle tulemust ootamist väärivaks."
+"peavad päkapikud selle tulemust ootamistväärivaks."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -1466,7 +1467,7 @@ msgstr "härmalõng"
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Uduhajutaja"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -1522,7 +1523,6 @@ msgstr "Mäekollide rüütel"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1671,7 +1671,6 @@ msgstr "Greifi-isand"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:20
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -1899,7 +1898,6 @@ msgstr "Ratsamees"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1912,7 +1910,8 @@ msgid ""
 msgstr ""
 "Ratsamehed erinevad hobusemeestest nende taktika ja varustuse poolest. "
 "Ratsamees kannab raskemat soomust ning mõõka ja kilpi piigi asemel. Nad ei "
-"torma vastasele peale, vaid üritavad liikumiselt mõõka kasutada.\n"
+"torma vastasele peale, vaid üritavad liikumiselt mõõka kasutada, kasutades "
+"rünnakuks nii hobuse kui mehe jõudu.\n"
 "\n"
 "Ratsamehed on väga kasulikud avamaal positsioonide hõivamiseks ja "
 "hoidmiseks, teiste üksuste kaitsel ning  ka luurajatena."
@@ -1970,7 +1969,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-#, fuzzy
 msgid "saber"
 msgstr "saabel"
 
@@ -1981,7 +1979,6 @@ msgstr "Vehkleja"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2484,9 +2481,8 @@ msgstr ""
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Hõbevõlur"
+msgstr "Vana võlur"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2495,12 +2491,14 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Kunagiste suurte võluritena on nad pikkade võitlusaastate jooksul veidi "
+"kulunud. Kuid siiski on vana võlur oma vägevate välgunooltega lahinguväljal "
+"kardetav vastane."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
-msgstr "Välgunool"
+msgstr "välk"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -3012,9 +3010,8 @@ msgstr "sõnnikuhark"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Trollisõdalane"
+msgstr "Kuninglik sõdalane"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -3022,6 +3019,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Kuninglikud sõdalased on inimeste ülikukodadest pärit kuningad ja printsid. "
+"Nad on raskemini soomustatud ja relvastatud kui nende rüütlid."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3030,7 +3029,6 @@ msgstr "Metsamees"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:20
-#, fuzzy
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
 "a living where the human world verges on the wilderness. Wits and woodcraft "
@@ -3047,7 +3045,6 @@ msgstr "Jääger"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:23
-#, fuzzy
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
@@ -3069,7 +3066,14 @@ msgstr ""
 "tunnevad kõiki oma ameti peensusi ning on head looduses liikujad, "
 "jäljeajajad ja vibukütid. Nad tabavad üsna hästi ka liikuvaid või võssa "
 "peituvaid sihtmärke - see kunst, mis sõjaväe vibumeestel sageli puudub, "
-"tuleb pikaajalisest kogemusest ulukite laskmisel."
+"tuleb pikaajalisest kogemusest ulukite laskmisel.\n"
+"\n"
+"Jäägrite teeneid kasutavad paljud metsikul maal liikujad - nii "
+"seadusekuulekad kui ka sellega vastuolus olijad. Ka loodus ise võib pakkuda "
+"ohtlikke üllatusi ning need, kel selliseid abilisi pole, riskivad kaotada "
+"inimesi ainuüksi juba maastiku ohtude tõttu. Head metsamehed päästavad "
+"elusid, koguvad toitu, kergendavad reisimist ja muidugi pakuvad tublit abi "
+"võitluses."
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3078,7 +3082,6 @@ msgstr "Salakütt"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -3103,7 +3106,6 @@ msgstr "Rajaleidja"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
-#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3307,7 +3309,6 @@ msgstr "Näkkide odaheitja"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer - though the heft of their weapons impedes their "
@@ -3315,9 +3316,9 @@ msgid ""
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
 "Odaheitmiskunsti omandanud näkid võivad olla pea sama tõhusad kui vibumehed "
-"- ehkki nende relvade tabamiskaugus on väiksem vibu omast, on tekitatav "
-"kahju suurem. Vees aitab siin kaasa ka näkkide suur liikuvus - eriti "
-"vaenlaste vastu, kes ei oska ujuda."
+"- ehkki nende relvade tabamiskaugus on nende kogukuse tõttu väiksem vibu "
+"omast, on tekitatav kahju suurem. Vees aitab siin kaasa ka näkkide suur "
+"liikuvus - eriti vaenlaste vastu, kes ei oska ujuda."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -3400,7 +3401,6 @@ msgstr "Näkkide odamees"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3409,10 +3409,11 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"Näkid ei pea eriti lugu vibukunstist ja eelistavad viskeodasid. Kuigi odade "
-"loopimine pole kuigi mõistlik vee all, on see väga tõhus pinnal olles - "
-"visatud oda võib tabada ka vastase veealuseid osi. Viskeodasid saab kasutada "
-"ka lähivõitluses ja isegi sügaval vee all, kus vibust pole mingit kasu."
+"Näkid ei pea eriti lugu vibukunstist ja eelistavad viskeodasid, mis täidavad "
+"sama otstarvet. Kuigi odade loopimine pole kuigi mõistlik vee all, on see "
+"väga tõhus pinnal olles - visatud oda võib oma raskuse tõttu edukalt tabada "
+"ka vastase veealuseid osi. Viskeodasid saab kasutada ka lähivõitluses ja "
+"isegi sügaval vee all, kus vibust pole mingit kasu."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -3663,6 +3664,8 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Hundid on verejanulised loomad, kes peavad jahti karjades. Üksik hunt on "
+"nõrk, kuid hundikari suudab tappa ka tugevaima mehe lühikese ajaga."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3732,7 +3735,6 @@ msgstr "Nagavägilane"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:85
-#, fuzzy
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3774,7 +3776,6 @@ msgstr "Nagasõdalane"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:82
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3834,6 +3835,7 @@ msgstr "Orkide vibukütt"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
+#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and and those of slight build, are pragmatic enough to use "
@@ -3978,7 +3980,6 @@ msgstr "Orkide välevibu"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4260,9 +4261,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Trollipõnn"
+msgstr "Trollišamaan"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4271,11 +4271,14 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of fire."
 msgstr ""
+"Trollide šamaanid on selle rahva salapärased juhid. Nad ei ole nii tugevad "
+"kui teised  trollid, kuid nende tõeline vägi on nende tulekunstis, millega "
+"nad saavad oma vaenlasi põletada."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "tulelöök"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
@@ -5008,6 +5011,191 @@ msgstr ""
 "\n"
 "Puuvaimud pole üleüldse sõjakad, kuid on väga tugevad. Arusaadavalt pole nad "
 "aga kuigi liikuvad."
+
+#~ msgid ""
+#~ "The most vicious, predatory, and successful of the Blood Bats become "
+#~ "Dread Bats, gaining the ability to drain not merely the blood but the "
+#~ "very life energy of their victims."
+#~ msgstr ""
+#~ "Kõige kurjemad, kiskjalikumad ja edukamad vereimejad saavad "
+#~ "lendõudusteks, kes suudavad lisaks verele imeda vastaselt ka tema "
+#~ "elujõudu."
+
+#~ msgid "Drake Arbiter"
+#~ msgstr "Otsustajalohe"
+
+#~ msgid ""
+#~ "Arbiters take their caste very seriously. In order to better execute "
+#~ "their duties, they have abandoned the drakes' traditional hand-mounted "
+#~ "claws and traded their spears for the spike and blade of the halberd. In "
+#~ "their minds, the loss of maneuverability is a fair price for the raw heft "
+#~ "the massive metal head provides. The thick plate these drakes wear "
+#~ "protects them well against weapons that could slip between their scales."
+#~ msgstr ""
+#~ "Need 'otsustajateks' kutsutavad lohed võtavad oma kohustusi lohede "
+#~ "vahekohtunikena tõsiselt - nad on loobunud lohede küüntest ja vahetanud "
+#~ "oma oda hellebardi vastu. Nende jaoks on liikuvuse kaotamine mõistlik "
+#~ "vahetuskaup selle tohutu tera vastu. Nende paks soomusrüü kaitseb neid "
+#~ "hästi torkerelvade eest, mis muidu nende soomuste vahelt läbi pääseksid."
+
+#~ msgid ""
+#~ "The Clashers are members of a unique caste among the drakes. Their thick "
+#~ "armor, while compensating for the drakes' natural weakness against spears "
+#~ "and arrows, is so heavy and restricting that they are not able to fly or "
+#~ "muster enough breath to use their inner fire. They have embraced this "
+#~ "handicap, completely encasing their wings to emphasize that they do not "
+#~ "need flight to triumph in battle.\n"
+#~ "\n"
+#~ "This is also the only caste that is allowed to break taboo and fight with "
+#~ "spears in addition to the drake's traditional metal claws, which makes "
+#~ "them particularly good at \"resolving\" territorial disputes with other "
+#~ "drakes and enforcing the laws of their tribe."
+#~ msgstr ""
+#~ "Taplejad moodustavad lohede seas omaette seisuse. Nende soomusrüü, mis "
+#~ "aitab lohede ammust nõrka kohta torkerelvade vastu kaitsta, on nii paks "
+#~ "ja raske, et nad ei suuda lennata ega oma sisemist tuld kasutada. Nad on "
+#~ "selle puuduse üle uhked ja panevad oma tiivad rüü alla - rõhutamaks, et "
+#~ "nad ei vaja lahingu võitmiseks lendamist.\n"
+#~ "\n"
+#~ "Nad on ka ainsad lohed, kel on lubatud lisaks lohede küüntele võidelda ka "
+#~ "odadega, mis võimaldab neil väga edukalt lahendada lohede vahelisi "
+#~ "tüliküsimusi ja hõimu seaduste täitmist tagada."
+
+#~ msgid ""
+#~ "Rather than hold the battle at a distance, the Enforcers hulk right in "
+#~ "wherever the melee is the fiercest. At close range, it doesn't matter "
+#~ "that their armor keeps them from spouting flame; all that matters is the "
+#~ "power they've learned to focus in each strike. Drake leaders are careful "
+#~ "not to besmirch the honor of the Enforcers, and generally call upon them "
+#~ "to combat only the most pernicious of enemies."
+#~ msgstr ""
+#~ "Kaugelt võitlemise asemel tormavad kohtumõistjalohed otse kõige "
+#~ "paksemasse taplusmöllu. Lähedase maa pealt ei loe see, et nende paks "
+#~ "soomus takistab neil tuld pursata - loeb tohutu jõud, mida nad oma "
+#~ "löökidesse panevad. Lohede juhid hoiduvad nende au haavamast ning "
+#~ "kutsuvad nad appi üksnes kõige hullemate vaenlaste vastu."
+
+#~ msgid ""
+#~ "Instead of letting themselves be bound by their armor, Slashers have "
+#~ "learned to redirect its weight to supplement their bodies' momentum, "
+#~ "adding power to the blows of their short spears and hand-mounted claws. "
+#~ "Equipment and body are one; even their thick helms and the thick skulls "
+#~ "beneath them are weapons. A Slasher will gladly fulfill his caste duties, "
+#~ "as long as it can be done on the battlefield."
+#~ msgstr ""
+#~ "Taplejalohed ei lase end oma paksust soomusest takistada, vaid on õppinud "
+#~ "selle raskust ära kasutama, andes oma küüntele ja odadele täiendava jõu.  "
+#~ "Taplejad ei unusta ka oma kohtumõistjaseisust, kuid eelistavad selle "
+#~ "kohustusi täita lahinguväljal."
+
+#~ msgid ""
+#~ "Wardens are set apart from the rest of the Clasher caste by two things: "
+#~ "their ornate helms, modeled after their dragon ancestors, and the care "
+#~ "with which they drape their armored wings in brightly colored cloth "
+#~ "before reporting for duty. Though this mode of dress stems from the pride "
+#~ "they feel for their role in drake society, it is far from ceremonial. "
+#~ "Their cumbersome bronze plate is the strongest work from the Drake "
+#~ "forges, and their halberds can cleave a human in half."
+#~ msgstr ""
+#~ "Korravalvurid eristuvad ülejäänud seisusest kahe asja poolest - nende "
+#~ "uhked kiivrid meenutavad nende draakonitest esivanemaid ning ere riie, "
+#~ "millega nad oma soomustatud tiibu lahingusse minnes katavad. Ehkki see "
+#~ "riietus rõhutab nende uhkust lohede seas, ei ole see kaugeltki vaid "
+#~ "ehteks - nende paks pronksrüü on lohede sepikodade parim töö ja nende "
+#~ "hellebardid suudavad inimese pooleks raiuda."
+
+#~ msgid "Dwarvish Explorer"
+#~ msgstr "Päkapike maadeuurija"
+
+#~ msgid ""
+#~ "Dwarvish Explorers are peerless survivalists. Using only the equipment "
+#~ "they carry, they can range for months around the forests and mountains "
+#~ "looking for new seams of ore and deposits of minerals. Whilst their skill "
+#~ "in a melee is less than some other dwarves, they are unmatched with "
+#~ "throwing axes, having practiced this skill hunting in the mountains. "
+#~ "Their maneuverability makes them a dangerous force."
+#~ msgstr ""
+#~ "Päkapike maadeuurijad on võrratud ellujääjad. Üksnes seljas oleva "
+#~ "varustusega kolavad nad kuude viisi metsades ja mägedes, otsides uusi "
+#~ "maagisooni ja maavarade leiukohti. Kui nende lähivõitlusoskused jäävad "
+#~ "mõnedele teistele päkapikkudele alla, siis on nad ületamatud "
+#~ "kirveheitmises, millega nad oma mägedes jahti peavad. Nende "
+#~ "liikumiskiirus teeb neist ohtlikud vastased."
+
+#~ msgid "Dwarvish Pathfinder"
+#~ msgstr "Päkapike rajaleidja"
+
+#~ msgid ""
+#~ "These hardy dwarves are sometimes away from their caves for long periods, "
+#~ "scouting and patrolling the borders. They spend this time watching for "
+#~ "invaders, and fighting bandits and thieves who encroach on dwarvish "
+#~ "territory. They are powerful fighters in a melee, and from a distance "
+#~ "their deftly thrown axes can rival the power and accuracy of a human "
+#~ "archer."
+#~ msgstr ""
+#~ "Need sitked päkapikud on teinekord pikka aega oma koobastest eemal, "
+#~ "luurekäikudel ja piiride kaitsel. Nad peavad vahti sissetungijate vastu "
+#~ "ning võitlevad röövlite ja varastega, kes päkapikkude maadele kipuvad. "
+#~ "Nad on vägevad lähivõitlejad ja suudavad kaugelt heita kirveid täpsusega, "
+#~ "mis võistleb vibuküttide omaga."
+
+#~ msgid "Dwarvish Scout"
+#~ msgstr "Päkapike luuraja"
+
+#~ msgid ""
+#~ "Although the dwarves cannot match the taller races in a sprint, when "
+#~ "unencumbered by heavy armor their tremendous stamina and endurance allows "
+#~ "them to match all but the fastest on foot. Dwarvish Scouts use this to "
+#~ "their advantage, ranging ahead of the main force and reporting back on "
+#~ "troop movements and dispositions, or securing important objectives. "
+#~ "Outside of battle, they are often used to relay messages between dwarvish "
+#~ "communities. However, they pay for their speed with the poorer protection "
+#~ "provided by their lighter armor."
+#~ msgstr ""
+#~ "Kuigi päkapikud ei suuda pikemate rahvastega võistelda kiirjooksus, "
+#~ "suudavad nad oma võimsa vastupidavuse ja võhmaga pikemal maal võistelda "
+#~ "kõigiga peale kiireimate jooksjate. Päkapike luurajad kasutavad neid "
+#~ "omadusi edukalt, liikudes peavägede ees, andes teada vägede liikumisest "
+#~ "ja hõivates olulisi paiku. Rahuajal kasutatakse neid tihti käskjalgadena "
+#~ "päkapikkude eri asunduste vahel. Nende kiirus aga nõuab kergemat "
+#~ "soomusrüüd, mis ei paku nii head kaitset."
+
+#~ msgid "longsword"
+#~ msgstr "mõõk"
+
+#~ msgid "flail"
+#~ msgstr "kettnui"
+
+#~ msgid ""
+#~ "Highwaymen have gained an infamous reputation for underhanded deeds of "
+#~ "violence. Ready to hire themselves out to whoever will pay the most, they "
+#~ "lead bands of lesser rogues against their employer's enemies, often "
+#~ "attacking on lonely roads or in the dead of night. Their experience with "
+#~ "such encounters makes them deadly foes in hand to hand combat."
+#~ msgstr ""
+#~ "Maanteeröövlid on kurikuulsad oma vägivallategude tõttu. Nad on nõus "
+#~ "teenima igaüht, kes hästi maksab, ning ründavad vähemate kaabakate "
+#~ "kampade eesotsas oma tööandja vaenlasi, tehes seda tihtilugu üksildastes "
+#~ "paikades või öö varjus. Nende kogemused teevad nad käsitsivõitluses väga "
+#~ "kardetavateks vastasteks."
+
+#~ msgid "Water Serpent"
+#~ msgstr "Veemadu"
+
+#~ msgid ""
+#~ "Scholars differ as to the ancestry of the Water Serpent. Some hold that "
+#~ "they are the immature young, or mature cousins, of Sea Serpents. Others "
+#~ "hold them up as a primitive offshoot of the Nagas. What is certain is "
+#~ "that it is wise to avoid waters where they are known to congregate."
+#~ msgstr ""
+#~ "Õpetlased vaidlevad tänini veemadude päritolu üle. Mõned arvavad, et nad "
+#~ "on meremadude sugulased või noored meremaod. Teised peavad neid nagade "
+#~ "sugulasteks. Mis on aga kindel, on see, et nende kogunemispaikadest "
+#~ "eemale hoidmine on väga tark mõte."
+
+#, fuzzy
+#~ msgid "Longbow"
+#~ msgstr "pikkvibu"
 
 #, fuzzy
 #~ msgid "Dwarvish Masked Guardsman"
