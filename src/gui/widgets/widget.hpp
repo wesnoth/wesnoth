@@ -363,7 +363,7 @@ public:
 	void set_parent(twidget* parent) { parent_ = parent; }
 
 	const std::string& id() const { return id_; }
-	void set_id(const std::string& id) { id_ = id; }
+	void set_id(const std::string& id);
 
 	const std::string& definition() const { return definition_; }
 

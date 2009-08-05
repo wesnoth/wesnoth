@@ -45,6 +45,11 @@ extern lg::log_domain log_gui_layout;
 #define WRN_GUI_L LOG_STREAM_INDENT(warn,  log_gui_layout)
 #define ERR_GUI_L LOG_STREAM_INDENT(err,   log_gui_layout)
 
+extern lg::log_domain log_gui_lifetime;
+//lifetime logging only makes sense in debug level anyway
+#define DBG_GUI_LF LOG_STREAM_INDENT(debug, log_gui_lifetime)
+
+
 extern lg::log_domain log_gui_parse;
 #define DBG_GUI_P LOG_STREAM_INDENT(debug, log_gui_parse)
 #define LOG_GUI_P LOG_STREAM_INDENT(info,  log_gui_parse)

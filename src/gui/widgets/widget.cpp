@@ -15,11 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/window.hpp"
-
-#include "../../log.hpp"
-
-static lg::log_domain log_gui_lifetime("gui/lifetime");
-#define DBG_GUI_LF LOG_STREAM_INDENT(debug, log_gui_lifetime)
+#include "gui/auxiliary/log.hpp"
 
 namespace gui2 {
 
@@ -48,6 +44,15 @@ twidget::~twidget()
 {
 	DBG_GUI_LF << "widget destroy: " << (void*)this
 		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
+}
+
+void twidget::set_id(const std::string& id)
+{
+	DBG_GUI_LF << "set id of " << (void*)this << " to '" << id << "' "
+		<< "(was '" << id_ << "'). Widget type: " <<
+		(dynamic_cast<tcontrol*>(this) ? dynamic_cast<tcontrol*>(this)->get_control_type() : "?")
+		<< "\n";
+	id_ = id;
 }
 
 
