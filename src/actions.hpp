@@ -168,16 +168,20 @@ private:
 	combatant *attacker_combatant_, *defender_combatant_;
 };
 
-/** Executes an attack. */
-class attack {
-	public:
+/** Performs an attack. */
+void attack_unit(const map_location &attacker, const map_location &defender,
+	int attack_with, int defend_with, bool update_display = true);
+
+/** Helper class for performing an attack. */
+class attack
+{
+	friend void attack_unit(const map_location &, const map_location &,
+		int, int, bool);
+
 	attack(const map_location &attacker, const map_location &defender,
-            int attack_with,
-            int defend_with,
-            unit_map& units,
-			bool update_display = true);
-		~attack();
-	private:
+		int attack_with, int defend_with, bool update_display = true);
+	~attack();
+
 		class attack_end_exception {};
 		void fire_event(const std::string& n);
 		void refresh_bc();

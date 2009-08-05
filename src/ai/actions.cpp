@@ -306,7 +306,7 @@ void attack_result::do_execute()
 		SDL_Delay(10);
 	}
 	recorder.add_seed("attack", rand_rng::get_last_seed());
-	attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, get_info().units);
+	attack_unit(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
 	dialogs::advance_unit(attacker_loc_, true);
 
 	const unit_map::const_iterator defender = get_info().units.find(defender_loc_);

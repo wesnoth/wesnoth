@@ -703,7 +703,7 @@ void mouse_handler::perform_attack(
 	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 	try {
-		attack(attacker_loc, defender_loc, attacker_weapon, defender_weapon, units_);
+		attack_unit(attacker_loc, defender_loc, attacker_weapon, defender_weapon);
 		commands_disabled--;
 	} catch(end_level_exception&) {
 		commands_disabled--;

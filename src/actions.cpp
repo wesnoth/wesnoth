@@ -982,17 +982,22 @@ std::string attack::unit_info::dump()
 	return s.str();
 }
 
+void attack_unit(const map_location &attacker, const map_location &defender,
+	int attack_with, int defend_with, bool update_display)
+{
+	attack dummy(attacker, defender, attack_with, defend_with, update_display);
+}
+
 attack::attack(const map_location &attacker, const map_location &defender,
 		int attack_with,
 		int defend_with,
-		unit_map& units,
 		bool update_display) :
 	bc_(0),
 	a_stats_(0),
 	d_stats_(0),
-	a_(attacker, attack_with, units),
-	d_(defender, defend_with, units),
-	units_(units),
+	a_(attacker, attack_with, *resources::units),
+	d_(defender, defend_with, *resources::units),
+	units_(*resources::units),
 	errbuf_(),
 	update_display_(update_display),
 	OOS_error_(false)
@@ -1672,6 +1677,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 	}
 
 	if(OOS_error_) {
+		// Memory leak on bc_.
 		replay::throw_error(errbuf_.str());
 	}
 }

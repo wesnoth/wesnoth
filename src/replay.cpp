@@ -1109,7 +1109,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			DBG_REPLAY << "Attacker XP (before attack): " << u->second.experience() << "\n";;
 
-			attack(src, dst, weapon_num, def_weapon_num, *resources::units, !get_replay_source().is_skipping());
+			attack_unit(src, dst, weapon_num, def_weapon_num, !get_replay_source().is_skipping());
 
 			DBG_REPLAY << "Attacker XP (after attack): " << u->second.experience() << "\n";;
 
