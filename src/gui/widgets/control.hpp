@@ -328,7 +328,7 @@ private:
 	 * does nothing but classes can override it to implement custom behaviour.
 	 */
 	virtual void load_config_extra() {}
-protected:
+public:
 	/**
 	 * Returns the control_type of the control.
 	 *
@@ -340,6 +340,7 @@ protected:
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
+protected:
 	/** Inherited from twidget. */
 	void impl_draw_background(surface& frame_buffer);
 
