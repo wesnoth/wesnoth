@@ -41,8 +41,8 @@ public:
 	fai_candidate_action_wrapper( rca_context &context, const config &cfg, game_logic::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
 		: candidate_action(context,cfg),fai_ca_(fai_ca),formula_ai_(_formula_ai),cfg_(cfg)//@todo 1.7: implement fai_ca->to_config()
 	{
-	}
-
+	
+}
 
 	virtual ~fai_candidate_action_wrapper() {}
 
@@ -69,12 +69,8 @@ private:
 	const config &cfg_;
 };
 
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
-
 engine_fai::engine_fai( readonly_context &context, const config &cfg )
-	: engine(context,cfg)/*, formula_ai_(context,cfg.child("formula_ai"))*///@fixme
+	: engine(context,cfg), formula_ai_(context,cfg.child("formula_ai"))
 {
 
 }
@@ -85,23 +81,22 @@ engine_fai::~engine_fai()
 }
 
 
-void engine_fai::do_parse_candidate_action_from_config( rca_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< candidate_action_ptr > > /*b*/ ){
-	/*game_logic::candidate_action_ptr fai_ca = formula_ai_.load_candidate_action_from_config(cfg);
+void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
+	game_logic::candidate_action_ptr fai_ca = formula_ai_.load_candidate_action_from_config(cfg);
 	if (!fai_ca) {
 		ERR_AI_COMPOSITE_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_COMPOSITE_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;
 		return;
 	}
 	candidate_action_ptr ca = candidate_action_ptr(new fai_candidate_action_wrapper(context,cfg,fai_ca,formula_ai_));
-	*b = ca; */
+	*b = ca;
 
 }
 
 
-std::string engine_fai::evaluate(const std::string &/*str*/)
+std::string engine_fai::evaluate(const std::string &str)
 {
-	/*return formula_ai_.evaluate(str);*/
-	return "formula ai evaluation is temporary disabled";
+	return formula_ai_.evaluate(str);
 }
 
 
@@ -110,12 +105,26 @@ std::string engine_fai::get_name() const
 	return "fai";
 }
 
+void engine_fai::set_ai_context(ai_context *context)
+{
+	if (context!=NULL) {
+		DBG_AI_COMPOSITE_ENGINE_FAI << "fai engine: ai_context is set" << std::endl;
+	} else {
+		DBG_AI_COMPOSITE_ENGINE_FAI << "fai engine: ai_context is cleared" << std::endl;
+	}
+	formula_ai_.set_ai_context(context);
+}
+
 
 config engine_fai::to_config() const
 {
 	config cfg = engine::to_config();
-	/*cfg.add_child("formula_ai",formula_ai_.to_config());*/
+	cfg.add_child("formula_ai",formula_ai_.to_config());
 	return cfg;
 }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 } //end of namespace ai

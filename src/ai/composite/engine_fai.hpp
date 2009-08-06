@@ -43,8 +43,10 @@ public:
 	virtual std::string get_name() const;
 
 	virtual config to_config() const;
+
+	virtual void set_ai_context(ai_context *context);
 private:
-	//formula_ai formula_ai_;//@fixme
+	formula_ai formula_ai_;
 };
 
 } //end of namespace ai

@@ -83,6 +83,10 @@ public:
 
 	virtual std::string get_name() const;
 
+	/**
+	 * set ai context (which is not available during early initialization)
+	 */
+	virtual void set_ai_context(ai_context *context);
 
 
 	/**

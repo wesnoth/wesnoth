@@ -53,6 +53,13 @@ void ai_composite::on_create()
 		engine::parse_stage_from_config(*this,cfg_element,std::back_inserter(stages_));
 	}
 
+	config cfg;
+	cfg["engine"] = "fai";
+	engine_ptr e_ptr = get_engine(cfg);
+	if (e_ptr) {
+		e_ptr->set_ai_context(this);
+	}
+
 }
 
 ai_composite::~ai_composite()
