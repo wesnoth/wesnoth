@@ -1564,6 +1564,7 @@ void connect::load_game()
 			level_.add_child("snapshot") = config();
 		} else {
 			level_.add_child("snapshot") = start_data;
+			level_.add_child("replay_start") = state_.starting_pos;
 		}
 		level_["random_seed"] = start_data["random_seed"];
 		level_["random_calls"] = start_data["random_calls"];
