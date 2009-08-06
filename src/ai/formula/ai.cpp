@@ -66,12 +66,6 @@ formula_ai::formula_ai(default_ai_context &context, const config &cfg) :
 	outcome_positions_(),
 	possible_moves_(),
 	move_maps_valid_(false),
-	srcdst_(),
-	dstsrc_(),
-	full_srcdst_(),
-	full_dstsrc_(),
-	enemy_srcdst_(),
-	enemy_dstsrc_(),
 	attacks_cache_(),
 	keeps_cache_(),
 	infinite_loop_guardian_(),
@@ -271,41 +265,11 @@ void formula_ai::store_outcome_position(const variant& var)
     outcome_positions_.push_back(var);
 }
 
-void formula_ai::swap_move_map(move_map_backup& backup)
-{
-	std::swap(move_maps_valid_, backup.move_maps_valid);
-	std::swap(backup.attacks_cache, attacks_cache_);
-	backup.move_maps_valid = move_maps_valid_;
-	backup.srcdst.swap(srcdst_);
-	backup.dstsrc.swap(dstsrc_);
-	backup.full_srcdst.swap(full_srcdst_);
-	backup.full_dstsrc.swap(full_dstsrc_);
-	backup.enemy_srcdst.swap(enemy_srcdst_);
-	backup.enemy_dstsrc.swap(enemy_dstsrc_);
-}
-
 void formula_ai::prepare_move() const
 {
 	if(move_maps_valid_) {
 		return;
 	}
-
-	possible_moves_.clear();
-	srcdst_.clear();
-	dstsrc_.clear();
-
-	calculate_possible_moves(possible_moves_, srcdst_, dstsrc_, false);
-
-	full_srcdst_.clear();
-	full_dstsrc_.clear();
-
-	std::map<location,paths> possible_moves_dummy;
-	calculate_possible_moves(possible_moves_dummy, full_srcdst_, full_dstsrc_, false, true);
-
-	enemy_srcdst_.clear();
-	enemy_dstsrc_.clear();
-	possible_moves_dummy.clear();
-	calculate_possible_moves(possible_moves_dummy, enemy_srcdst_, enemy_dstsrc_, true);
 
 	attacks_cache_ = variant();
 	move_maps_valid_ = true;
@@ -438,7 +402,7 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 
             for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 		typedef move_map::const_iterator Itor;
-		std::pair<Itor,Itor> range = srcdst_.equal_range(src);
+		std::pair<Itor,Itor> range = get_srcdst().equal_range(src);
 
                 bool found = false;
 		for(Itor i = range.first; i != range.second; ++i) {
@@ -937,16 +901,16 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_moves")
 	{
 		prepare_move();
-		return variant(new move_map_callable(srcdst_, dstsrc_, get_info().units));
+		return variant(new move_map_callable(get_srcdst(), get_dstsrc(), get_info().units));
 
 	} else if(key == "my_attacks")
 	{
 		prepare_move();
-		return variant(new attack_map_callable(*this, srcdst_, get_info().units));
+		return variant(new attack_map_callable(*this, get_srcdst(), get_info().units));
 	} else if(key == "enemy_moves")
 	{
 		prepare_move();
-		return variant(new move_map_callable(enemy_srcdst_, enemy_dstsrc_, get_info().units));
+		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), get_info().units));
 
 	} else if(key == "my_leader")
 	{
@@ -1049,13 +1013,15 @@ variant formula_ai::get_keeps() const
 
 bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const {
         prepare_move();
-	move_map::iterator i;
-	std::pair<move_map::iterator,
-			  move_map::iterator> unit_moves;
+	move_map::const_iterator i;
+	std::pair<move_map::const_iterator,
+			  move_map::const_iterator> unit_moves;
 
-	unit_moves = srcdst_.equal_range(unit_A);
+	unit_moves = get_srcdst().equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
+		//@todo: 1.7.3 replace with existing function 'tiles_adjacent'
 		map_location diff((((*i).second)).vector_difference(unit_B));
+
 
 		if( ( ( diff.y == -1 || diff.y == 0 ) && (abs(diff.x) <= 1) ) ||
 			( diff.y == 1 && diff.x == 0 ) ) {

@@ -96,7 +96,7 @@ void position_callable::swap_position(ai::formula_ai& ai) {
 
 void position_callable::swapper::swap() {
 	a.swap(b);
-	ai.swap_move_map(backup);
+	//ai.swap_move_map(backup);
 }
 position_callable::swapper::swapper(ai::formula_ai& ai, position_callable& pos) :
 	ai(ai),
@@ -191,7 +191,7 @@ int attack_callable::do_compare(const game_logic::formula_callable* callable)
 variant attack_map_callable::get_value(const std::string& key) const {
 	if(key == "attacks") {
 		std::vector<variant> vars;
-		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
+		for(move_map::const_iterator i = ai_.get_srcdst().begin(); i != ai_.get_srcdst().end(); ++i) {
 			/* for each possible move check all adjacent tiles for enemies */
 			if(units_.count(i->second) == 0) {
 				collect_possible_attacks(vars, i->first, i->second);
