@@ -1479,22 +1479,22 @@ bool ai_default::do_recruitment()
 
 	raise_user_interact();
 	// Let formula ai to do recruiting first
-	if (get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE)
-	{
-		if (!cfg_["recruitment"].empty()){
-			if (!formula_ai_){
-				formula_ai_ptr_ = manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, cfg_,this);
-				formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
-			}
+	//if (get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE)
+	//{
+	//	if (!cfg_["recruitment"].empty()){
+	//		if (!formula_ai_){
+	//			formula_ai_ptr_ = manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, cfg_,this);
+	//			formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
+	//		}
 
-			assert(formula_ai_!=NULL);
+	//		assert(formula_ai_!=NULL);
 
-			if (formula_ai_->do_recruitment()) {
-				LOG_AI << "Recruitment done by formula_ai\n";
-				return true;
-			}
-		}
-	}
+	//		if (formula_ai_->do_recruitment()) {
+	//			LOG_AI << "Recruitment done by formula_ai\n";
+	//			return true;
+	//		}
+	//	}
+	//}
 
 	const location& start_pos = nearest_keep(leader->first);
 

@@ -25,6 +25,7 @@
 #include "candidates.hpp"
 #include "function_table.hpp"
 
+#include "../composite/contexts.hpp"
 #include "../default/ai.hpp"
 #include "../../formula.hpp"
 #include "../../formula_callable.hpp"
@@ -54,9 +55,10 @@ typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > uni
 
 namespace ai {
 
-class formula_ai : public ai_default {
+class formula_ai : public readonly_context_proxy, public game_logic::formula_callable {
+
 public:
-	explicit formula_ai(default_ai_context &context, const config &cfg);
+	explicit formula_ai(readonly_context &context, const config &cfg);
 	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
@@ -134,13 +136,15 @@ public:
 	 */
 	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
 
+	void set_ai_context(ai_context *context);
 private:
+	ai_context *ai_ptr_;
 	const config &cfg_;
 	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
 	bool do_recruitment();
 	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
-	variant execute_variant(const variant& var, bool commandline=false);
+	variant execute_variant(const variant& var, ai_context &ai_, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	game_logic::const_formula_ptr recruit_formula_;

@@ -310,6 +310,9 @@ public:
 
 	virtual void recalculate_move_maps_enemy() const = 0;
 
+	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
+	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths ) = 0;
+
 	/**
 	 * serialize to config
 	 */
@@ -758,6 +761,12 @@ public:
 	}
 
 
+	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths )
+	{
+		return target_->suitable_keep(leader_location, leader_paths);
+	}
+
+
 	virtual config to_readonly_context_config() const
 	{
 		return target_->to_readonly_context_config();
@@ -1196,6 +1205,9 @@ public:
 
 
 	void on_create();
+
+
+	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths );
 
 
 	virtual config to_readonly_context_config() const;

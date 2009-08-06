@@ -57,8 +57,8 @@ int formula_ai::get_recursion_count() const{
 }
 
 
-formula_ai::formula_ai(default_ai_context &context, const config &cfg) :
-	ai_default(context,cfg),
+formula_ai::formula_ai(readonly_context &context, const config &cfg) :
+	readonly_context_proxy(),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	recruit_formula_(),
@@ -74,6 +74,7 @@ formula_ai::formula_ai(default_ai_context &context, const config &cfg) :
 	candidate_action_manager_()
 {
 	add_ref();
+	init_readonly_context_proxy(context);
 }
 
 void formula_ai::handle_exception(game_logic::formula_error& e) const
@@ -115,11 +116,12 @@ formula_ptr formula_ai::create_optional_formula(const std::string& formula_strin
 void formula_ai::new_turn()
 {
 	move_maps_valid_ = false;
-	ai_default::new_turn();
+	//ai_default::new_turn();
 }
 
 void formula_ai::play_turn()
 {
+/*
 	//execute units formulas first
 
         unit_formula_set units_with_formulas;
@@ -229,8 +231,15 @@ void formula_ai::play_turn()
 			e.line = 0;
 			handle_exception( e, "Formula error");
 	}
-
+*/
 }
+
+
+void formula_ai::set_ai_context(ai_context *context)
+{
+	ai_ptr_ = context;
+}
+
 
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
@@ -246,10 +255,13 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
                 outcome_positions_.clear();
 
-		variant var = execute_variant(v, true );
-
-		if (  !var.is_empty() )
-			return "Made move: " + var.to_debug_string();
+		if (ai_ptr_) {
+			variant var = execute_variant(v, *ai_ptr_, true );
+			
+			if (  !var.is_empty() ) {
+				return "Made move: " + var.to_debug_string();
+			}
+		}
 
 		return v.to_debug_string();
 	}
@@ -277,23 +289,26 @@ void formula_ai::prepare_move() const
 
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-	if(!formula_) {
-		if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
-			LOG_AI << "Falling back to default AI.\n";
-			ai_ptr fallback( manager::create_transient_ai(manager::AI_TYPE_DEFAULT, config(), this));
-			if (fallback){
-				fallback->play_turn();
-			}
-		}
-		return variant();
-	}
+// 	if(!formula_) {
+// 		if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
+// 			LOG_AI << "Falling back to default AI.\n";
+// 			ai_ptr fallback( manager::create_transient_ai(manager::AI_TYPE_DEFAULT, config(), this));
+// 			if (fallback){
+// 				fallback->play_turn();
+// 			}
+// 		}
+// 		return variant();
+// 	}
 
 	move_maps_valid_ = false;
 
 	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
+	variant res;
 
-        variant res = execute_variant(var);
+	if (ai_ptr_) {
+		res = execute_variant(var, *ai_ptr_, false);
+	}
 
         //remove outcome_positions
         outcome_positions_.clear();
@@ -307,6 +322,7 @@ plain_route formula_ai::shortest_path_calculator(const map_location &src,
 {
     map_location destination = dst;
 
+    unit_map &units_ = get_info().units;
     ::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
@@ -322,7 +338,7 @@ plain_route formula_ai::shortest_path_calculator(const map_location &src,
         get_adjacent_tiles(destination,adj);
 
         for(size_t n = 0; n != 6; ++n) {
-                if(map_.on_board(adj[n]) == false) {
+                if(get_info().map.on_board(adj[n]) == false) {
                         continue;
                 }
 
@@ -364,8 +380,8 @@ std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& uni
                     //if (viewing_team().is_enemy(unit_it->second.side()) && viewing_team().fogged(*i))
                     //        continue;
 
-                    unit_map::const_iterator occupant = units_.find(*i);
-                    if (occupant != units_.end() && occupant != unit_it)
+                    unit_map::const_iterator occupant = get_info().units.find(*i);
+                    if (occupant != get_info().units.end() && occupant != unit_it)
                             continue;
 
                     allowed_teleports.insert(*i);
@@ -424,7 +440,7 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 }
 
 //commandline=true when we evaluate formula from commandline, false otherwise (default)
-variant formula_ai::execute_variant(const variant& var, bool commandline)
+variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool commandline)
 {
 	std::stack<variant> vars;
 	if(var.is_list()) {
@@ -470,9 +486,9 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 			move_result_ptr move_result;
 
 			if(move)
-				move_result = execute_move_action(move->src(), move->dst(), true);
+				move_result = ai_.execute_move_action(move->src(), move->dst(), true);
 			else
-				move_result = execute_move_action(move_partial->src(), move_partial->dst(), false);
+				move_result = ai_.execute_move_action(move_partial->src(), move_partial->dst(), false);
 
 			if ( !move_result->is_ok() ) {
 				if( move ) {
@@ -501,7 +517,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 			move_result_ptr move_result;
 
 			if( attack->move_from() != attack->src() ) {
-				move_result = execute_move_action(attack->move_from(), attack->src(), false);
+				move_result = ai_.execute_move_action(attack->move_from(), attack->src(), false);
 				gamestate_changed |= move_result->is_gamestate_changed();
 
 				if (!move_result->is_ok()) {
@@ -518,7 +534,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 
 			if (!move_result || move_result->is_ok() ) {
 				//if move wasn't done at all or was done successfully
-				attack_result_ptr attack_result = execute_attack_action(attack->src(), attack->dst(), attack->weapon() );
+				attack_result_ptr attack_result = ai_.execute_attack_action(attack->src(), attack->dst(), attack->weapon() );
 				gamestate_changed |= attack_result->is_gamestate_changed();
 				if (!attack_result->is_ok()) {
 					//attack failed
@@ -541,8 +557,8 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 			assert(_attack_analysis->movements.empty() == false);
 
 			//make sure that unit which has to attack is at given position and is able to attack
-			unit_map::const_iterator unit = units_.find(_attack_analysis->movements.front().first);
-			if ( ( unit == units_.end() ) || (unit->second.attacks_left() == 0) )
+			unit_map::const_iterator unit = get_info().units.find(_attack_analysis->movements.front().first);
+			if ( ( unit == get_info().units.end() ) || (unit->second.attacks_left() == 0) )
 				continue;
 
 			const map_location& move_from = _attack_analysis->movements.front().first;
@@ -550,32 +566,27 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 			const map_location& att_dst = _attack_analysis->target;
 
 			//check if target is still valid
-			unit = units_.find(att_dst);
-			if ( unit == units_.end() )
+			unit = get_info().units.find(att_dst);
+			if ( unit == get_info().units.end() )
 				continue;
 
                         //check if we need to move
                         if( move_from != att_src ) {
                             //now check if location to which we want to move is still unoccupied
-                            unit = units_.find(att_src);
-                            if ( unit != units_.end() )
-                                    continue;
+				unit = get_info().units.find(att_src);
+				if ( unit != get_info().units.end() ) {
+					continue;
+				}
 
-                            move_unit(move_from, att_src, possible_moves_);
+				ai_.execute_move_action(move_from, att_src);
                         }
 
 			if(get_info().units.count(att_src)) {
-				battle_context bc(get_info().units,
-				                  att_src, att_dst, -1, -1, 1.0, NULL,
-								  &get_info().units.find(att_src)->second);
-				attack_enemy(_attack_analysis->movements.front().second,
-				             _attack_analysis->target,
-							 bc.get_attacker_stats().attack_num,
-							 bc.get_defender_stats().attack_num);
+				ai_.execute_attack_action(_attack_analysis->movements.front().second,_attack_analysis->target,-1);
 			}
 			made_moves.push_back(action);
 		} else if(recruit_command) {
-			recruit_result_ptr recruit_result = execute_recruit_action(recruit_command->type(), recruit_command->loc());
+			recruit_result_ptr recruit_result = ai_.execute_recruit_action(recruit_command->type(), recruit_command->loc());
 
 			//is_ok()==true means that the action is successful (eg. no unexpected events)
 			//is_ok() must be checked or the code will complain :)
@@ -612,7 +623,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 
 			if( infinite_loop_guardian_.set_unit_var_check() ) {
 			    status = 5001; //exceeded nmber of calls in a row - possible infinite loop
-			} else if( (unit = units_.find(set_unit_var_command->loc())) == units_.end() ) {
+			} else if( (unit = get_info().units.find(set_unit_var_command->loc())) == get_info().units.end() ) {
 			    status = 5002; //unit not found
 			} else if( unit->second.side() != get_side() ) {
 			    status = 5003;//unit does not belong to our side
@@ -653,7 +664,7 @@ variant formula_ai::execute_variant(const variant& var, bool commandline)
 				} else
 				{
 					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
-					ai_ptr fallback( manager::create_transient_ai(fallback_command->key(), config(), this));
+					ai_ptr fallback( manager::create_transient_ai(fallback_command->key(), config(), &ai_));
 					if(fallback) {
 						fallback->play_turn();
 					}
@@ -953,7 +964,8 @@ variant formula_ai::get_value(const std::string& key) const
 		return villages_from_set(get_info().map.villages(), &current_team().villages());
 	}
 
-	return ai_default::get_value(key);
+	//return ai_default::get_value(key);
+	return variant();
 }
 
 void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
@@ -983,7 +995,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 
-	ai_default::get_inputs(inputs);
+	//ai_default::get_inputs(inputs);
 }
 
 variant formula_ai::get_keeps() const

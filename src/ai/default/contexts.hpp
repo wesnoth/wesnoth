@@ -145,9 +145,6 @@ public:
 
 	virtual int rate_terrain(const unit& u, const map_location& loc) const = 0;
 
-	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths ) = 0;
-
 };
 
 
