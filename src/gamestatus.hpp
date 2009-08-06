@@ -106,9 +106,8 @@ public:
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
 
-	// populate high-level objects
-
-	void get_player_info(const config& cfg, std::string save_id
+	//create and populate a team from a config
+	void build_team(const config& side_cfg, std::string save_id
 			, std::vector<team>& teams, const config& level, gamemap& map
 			, unit_map& units, bool snapshot);
 

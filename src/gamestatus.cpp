@@ -584,15 +584,13 @@ void game_state::set_variables(const config& vars) {
 	variables = vars;
 }
 
-//build and populate a team from a config
-void game_state::get_player_info(const config& side_cfg,
+void game_state::build_team(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
 					 bool snapshot)
 {
 	const config *player_cfg = NULL;
 	//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
-	//FIXME: this flag should be set on whether the current side is persistent
 	bool player_exists = false;
 
 	if(map.empty()) {
@@ -606,8 +604,8 @@ void game_state::get_player_info(const config& side_cfg,
 		utils::string_bool(side_cfg["persistent"])) {
 		player_exists = true;
 		
-		//if we have a snapshot, level contains player tags
-		//else, we look for a player tag in starting_pos
+		//if we have a snapshot, level contains team information
+		//else, we look for [side] or [player] (deprecated) tags in starting_pos
 		if (snapshot) {
 			if (const config &c = level.find_child("player","save_id",save_id))  {
 				player_cfg = &c;
@@ -730,6 +728,7 @@ void game_state::get_player_info(const config& side_cfg,
 
 	// If the game state specifies units that
 	// can be recruited for the player, add them.
+	// the can_recruit attribute is checked for backwards compatibility of saves
 	if(player_cfg != NULL &&
 		((*player_cfg).has_attribute("previous_recruits") || (*player_cfg).has_attribute("can recruit")) ) {
 		std::vector<std::string> player_recruits;
@@ -746,15 +745,16 @@ void game_state::get_player_info(const config& side_cfg,
 
 	// If there are additional starting units on this side
 	const config::child_list& starting_units = side_cfg.get_children("unit");
-	// available_units has been filled by loading the [player]-section already.
+	// the recall list has been filled by loading the [player]-section already.
 	// However, we need to get the information from the snapshot,
 	// so we start from scratch here.
 	// This is rather a quick hack, originating from keeping changes
 	// as minimal as possible for 1.2.
-	// Moving [player] into [replay_start] should be the correct way to go.
 	if (player_exists && snapshot){
 		teams.back().recall_list().clear();
 	}
+
+	//add the units with a specified position to the unit map
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
 
 		config temp_cfg(**su);

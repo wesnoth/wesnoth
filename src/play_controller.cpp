@@ -153,7 +153,7 @@ void play_controller::init(CVideo& video){
 		if (first_human_team_ == -1){
 			first_human_team_ = team_manager_.get_first_human_team(ui, unit_cfg, preferences::client_type(), preferences::login());
 		}
-		gamestate_.get_player_info(**ui, save_id, teams_, level_, map_
+		gamestate_.build_team(**ui, save_id, teams_, level_, map_
 				, units_, snapshot);
 	}
 
