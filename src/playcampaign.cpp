@@ -526,7 +526,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// information, to the configuration object
 				assert(next_cfg != NULL);
 				gamestate.write_snapshot(next_cfg);
-				write_players(gamestate, next_cfg, true, true);
+				next_cfg["next_scenario"] = (*scenario)["next_scenario"];
+				next_cfg.add_child("snapshot");
+				gamestate.starting_pos = *scenario;
+				write_players(gamestate, gamestate.starting_pos, true, true);
+				next_cfg.add_child("replay_start", gamestate.starting_pos);
 				network::send_data(cfg, 0, true);
 			}
 		}
@@ -551,11 +555,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// start-of-scenario save and the
 				// starting position needs to be empty,
 				// to force a reload of the scenario config.
-				if (gamestate.classification().campaign_type == "multiplayer"){
-					gamestate.starting_pos = *scenario;
-					write_players(gamestate, gamestate.starting_pos, true, true);
-				}
-				else{
+				if (gamestate.classification().campaign_type != "multiplayer"){
 					gamestate.starting_pos = config();
 				}
 
