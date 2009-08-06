@@ -1148,6 +1148,10 @@ bool formula_ai::gamestate_change_observer::continue_check() {
 
 config formula_ai::to_config() const
 {
+	if (!cfg_)
+	{
+		return config();
+	}
 	return cfg_;//@todo 1.7 add a proper serialization
 }
 
