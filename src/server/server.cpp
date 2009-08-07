@@ -1301,8 +1301,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			out << network::get_bandwidth_stats(); // stats from previuos hour
 	} else if (command == "adminmsg") {
 		if (parameters == "") return "You must type a message.";
-		std::string sender = issuer_name;
-		std::string message = parameters;
+		const std::string& sender = issuer_name;
+		const std::string& message = parameters;
 		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
 				? std::string(message.begin() + 3, message.end()) + ">"
 				: "> " + message) << "\n";
@@ -1320,6 +1320,31 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		}
 		if (n == 0) return "Sorry, no admin available right now. But your message got logged.";
 		out << "Message sent to " << n << " admins.";
+	} else if (command == "pm" || command == "privatemsg") {
+		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+		if (first_space == parameters.end()) {
+			return "You must name a receiver.";
+		}
+		const std::string& sender = issuer_name;
+		const std::string receiver(parameters.begin(), first_space);
+		std::string message(first_space + 1, parameters.end());
+		utils::strip(message);
+		if (message.empty()) {
+			return "You must type a message.";
+		}
+		simple_wml::document data;
+		simple_wml::node& msg = data.root().add_child("whisper");
+		// This string is parsed by the client!
+		msg.set_attr_dup("sender", ("server message from " + sender).c_str());
+		msg.set_attr_dup("message", message.c_str());
+		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+			if (receiver != pl->second.name().c_str()) {
+				continue;
+			}
+			send_doc(data, pl->first);
+			return "Message to " + receiver + " successfully sent.";
+		}
+		return "No such nick: " + receiver;
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";

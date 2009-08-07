@@ -236,11 +236,10 @@ void chat::update_textbox(gui::textbox& textbox)
 std::string chat::format_message(const msg& message)
 {
 	std::string msg_text = message.message;
-	if(message.user == "server") {
-		SDL_Color c;
-		int unused;
+	if(message.user == "server"
+	|| message.user.substr(0,29) == "whisper: server message from ") {
 		std::string::const_iterator after_markup =
-			font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
+			font::parse_markup(message.message.begin(), message.message.end(), NULL, NULL, NULL);
 
 		msg_text = std::string(after_markup,message.message.end());
 	}
@@ -256,9 +255,9 @@ std::string chat::format_message(const msg& message)
 SDL_Color chat::color_message(const msg& message) {
 	SDL_Color c = font::NORMAL_COLOUR;
 	// Normal users are not allowed to color their messages
-	if(message.user == "server") {
-		int unused;
-		font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
+	if(message.user == "server"
+	|| message.user.substr(0,29) == "whisper: server message from ") {
+		font::parse_markup(message.message.begin(), message.message.end(), NULL, &c, NULL);
 	// Highlight private messages too
 	} else if(message.user.substr(0,8) == "whisper:") {
 	    c = font::LABEL_COLOUR;
