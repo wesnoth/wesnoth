@@ -43,10 +43,6 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												int* font_size,
 												SDL_Color* colour, int* style)
 {
-	if (font_size == NULL && colour == NULL && style == NULL) {
-		return i1;
-	}
-
 	std::string::const_iterator i_start=i1;
 	while(i1 != i2) {
 		switch(*i1) {
