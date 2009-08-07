@@ -610,9 +610,11 @@ network::connection game::kick_member(const simple_wml::node& kick,
 	if (user == player_info_->end() || !is_member(user->first)) {
 		send_server_message("Not a member of this game.", kicker->first);
 		return 0;
-	}
-	if (user->first == kicker->first) {
+	} else if (user->first == kicker->first) {
 		send_server_message("Don't kick yourself, silly.", kicker->first);
+		return 0;
+	} else if (user->second.is_moderator()) {
+		send_server_message("You're not allowed to kick a moderator.", kicker->first);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(kicker->first) << "\t"
@@ -641,15 +643,14 @@ network::connection game::ban_user(const simple_wml::node& ban,
 	if (user == player_info_->end()) {
 		send_server_message("User not found", banner->first);
 		return 0;
-	}
-	if (user->first == banner->first) {
+	} else if (user->first == banner->first) {
 		send_server_message("Don't ban yourself, silly.", banner->first);
 		return 0;
-	}
-	if (player_is_banned(user->first)) {
-		std::ostringstream stream;
-		stream << name << " is already banned.";
-		send_server_message(stream.str().c_str(), banner->first);
+	} else if (player_is_banned(user->first)) {
+		send_server_message(("'" + name.to_string() + "' is already banned.").c_str(), banner->first);
+		return 0;
+	} else if (user->second.is_moderator()) {
+		send_server_message("You're not allowed to ban a moderator.", banner->first);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
@@ -867,7 +868,7 @@ bool game::end_turn() {
 
 //@todo differentiate between "observers not allowed" and "player already in the game" errors.
 //      maybe return a string with an error message.
-bool game::add_player(const network::connection player, bool observer, bool admin) {
+bool game::add_player(const network::connection player, bool observer) {
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: "
 			<< player << ")\n";
@@ -890,7 +891,7 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
 		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
-	} else if (!allow_observers() && !admin) {
+	} else if (!allow_observers() && !user->second.is_moderator()) {
 		return false;
 	} else {
 		if (!observer) became_observer = true;

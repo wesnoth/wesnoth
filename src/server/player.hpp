@@ -25,7 +25,9 @@
 class player
 {
 public:
-  player(const std::string& n, simple_wml::node& cfg, bool registered, const size_t max_messages=4, const size_t time_period=10, const bool sp=false);
+	player(const std::string& n, simple_wml::node& cfg, bool registered,
+	       const size_t max_messages=4, const size_t time_period=10,
+	       const bool sp=false, const bool moderator=false);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(const int game_id=0, const std::string location="");
@@ -43,6 +45,9 @@ public:
 	bool silenced() const { return messages_since_flood_start_ > MaxMessages; }
 	bool is_message_flooding();
 
+	void set_moderator(bool moderator) { moderator_ = moderator; }
+	bool is_moderator() const { return moderator_; }
+
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
@@ -54,6 +59,7 @@ private:
 	unsigned int messages_since_flood_start_;
 	const size_t MaxMessages;
 	const time_t TimePeriod;
+	bool moderator_;
 };
 
 #endif

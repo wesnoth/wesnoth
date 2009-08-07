@@ -16,8 +16,10 @@
 
 #include "player.hpp"
 
-player::player(const std::string& n, simple_wml::node& cfg, bool registered,
-        const size_t max_messages, const size_t time_period, const bool sp)
+player::player(const std::string& n, simple_wml::node& cfg,
+                         bool registered, const size_t max_messages,
+                         const size_t time_period, const bool sp,
+                         const bool moderator)
   : name_(n)
   , cfg_(cfg)
   , selective_ping_(sp)
@@ -26,6 +28,7 @@ player::player(const std::string& n, simple_wml::node& cfg, bool registered,
   , messages_since_flood_start_(0)
   , MaxMessages(max_messages)
   , TimePeriod(time_period)
+  , moderator_(moderator)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	mark_available();
