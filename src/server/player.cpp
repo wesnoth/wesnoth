@@ -18,7 +18,8 @@
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
                          bool registered, const size_t max_messages,
-                         const size_t time_period, const bool sp)
+                         const size_t time_period, const bool sp,
+                         const bool moderator)
   : name_(n)
   , cfg_(cfg)
   , selective_ping_(sp)
@@ -28,11 +29,13 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
   , MaxMessages(max_messages)
   , TimePeriod(time_period)
   , status_(LOBBY)
+  , moderator_(moderator)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	mark_available();
 	mark_registered(registered);
 }
+
 
 void wesnothd::player::set_status(wesnothd::player::STATUS status)
 {

@@ -36,7 +36,9 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, bool registered, const size_t max_messages=4, const size_t time_period=10, const bool sp=false);
+	player(const std::string& n, simple_wml::node& cfg, bool registered,
+	       const size_t max_messages=4, const size_t time_period=10,
+	       const bool sp=false, const bool moderator=false);
 
 	void set_status(STATUS status);
 
@@ -69,6 +71,9 @@ public:
 
 	void set_game(game* g);
 
+	void set_moderator(bool moderator) { moderator_ = moderator; }
+	bool is_moderator() const { return moderator_; }
+
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
@@ -81,6 +86,7 @@ private:
 	const size_t MaxMessages;
 	const time_t TimePeriod;
 	STATUS status_;
+	bool moderator_;
 };
 
 } //namespace wesnothd

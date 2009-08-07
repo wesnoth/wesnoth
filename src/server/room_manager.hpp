@@ -34,7 +34,7 @@ public:
 	/**
 	 * Room manager constructor
 	 */
-	room_manager(player_map& all_players, const std::set<network::connection>& admins);
+	room_manager(player_map& all_players);
 
 	/**
 	 * Room manager destructor
@@ -220,9 +220,6 @@ private:
 
 	/** Reference to the all players map */
 	player_map& all_players_;
-
-	/** Reference to the set of admins */
-	const std::set<network::connection>& admins_;
 
 	/** The lobby-room, treated separetely */
 	room* lobby_;

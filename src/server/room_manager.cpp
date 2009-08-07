@@ -37,8 +37,8 @@ namespace wesnothd {
 
 const char* const room_manager::lobby_name_ = "lobby";
 
-room_manager::room_manager(player_map &all_players, const std::set<network::connection>& admins)
-: all_players_(all_players), admins_(admins), lobby_(NULL), filename_(),
+room_manager::room_manager(player_map &all_players)
+: all_players_(all_players), lobby_(NULL), filename_(),
 compress_stored_rooms_(true), new_room_policy_(PP_EVERYONE), dirty_(false)
 {
 }
@@ -187,7 +187,12 @@ room* room_manager::get_create_room(const std::string &name, network::connection
 				}
 				break;
 			case PP_ADMINS:
-				can_create = admins_.find(player) != admins_.end();
+				{
+					player_map::iterator i = all_players_.find(player);
+					if (i != all_players_.end()) {
+						can_create = i->second.is_moderator();
+					}
+				}
 				break;
 			default:
 				break;
@@ -485,8 +490,8 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 	}
 	q = msg->child("persist");
 	if (q != NULL) {
-		if (admins_.find(user->first) == admins_.end()) {
-			WRN_LOBBY << "Attempted room set persistent by non-admin";
+		if (user->second.is_moderator()) {
+			WRN_LOBBY << "Attempted room set persistent by non-moderator";
 		} else {
 			if (q->attr("value").empty()) {
 				if (r->persistent()) {
@@ -509,8 +514,8 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 	}
 	q = msg->child("logged");
 	if (q != NULL) {
-		if (admins_.find(user->first) == admins_.end()) {
-			WRN_LOBBY << "Attempted room set logged by non-admin";
+		if (user->second.is_moderator()) {
+			WRN_LOBBY << "Attempted room set logged by non-moderator.";
 		} else {
 			if (q->attr("value").empty()) {
 				if (r->persistent()) {
@@ -537,8 +542,8 @@ void room_manager::process_room_query(simple_wml::document& data, const player_m
 			resp.set_attr_dup("topic", r->topic().c_str());
 			send_to_one(doc, user->first);
 		} else {
-			if (admins_.find(user->first) == admins_.end()) {
-				WRN_LOBBY << "Attempted room set topic by non-admin";
+			if (user->second.is_moderator()) {
+				WRN_LOBBY << "Attempted room set topic by non-moderator.";
 			} else {
 				r->set_topic(q->attr("value").to_string());
 				resp.set_attr("message", "Room topic changed.");

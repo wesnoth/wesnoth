@@ -299,7 +299,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	ghost_players_(),
 	games_(),
 	not_logged_in_(),
-	rooms_(players_, admins_),
+	rooms_(players_),
 	input_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -308,7 +308,6 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	proxy_versions_(),
 	disallowed_names_(),
 	admin_passwd_(),
-	admins_(),
 	motd_(),
 	default_max_messages_(0),
 	default_time_period_(0),
@@ -743,7 +742,6 @@ void server::run() {
 				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
-			admins_.erase(e.socket);
 			const std::string ip = network::ip_address(e.socket);
 			if (proxy::is_proxy(e.socket)) {
 				LOG_SERVER << ip << "\tProxy user disconnected.\n";
@@ -1078,7 +1076,8 @@ void server::process_login(const network::connection sock,
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	const wesnothd::player new_player(username, player_cfg, registered,
-		default_max_messages_, default_time_period_, selective_ping);
+		default_max_messages_, default_time_period_, selective_ping,
+		user_handler_ && user_handler_->user_is_moderator(username));
 
 	// If the new player does not have selective ping enabled, immediately
 	// add the player to the ghost player's list. This ensures a client won't
@@ -1115,7 +1114,6 @@ void server::process_login(const network::connection sock,
 		LOG_SERVER << "Admin automatically recognized: IP: "
 			<< network::ip_address(sock) << "\tnick: "
 			<< username << std::endl;
-		admins_.insert(sock);
 		// This string is parsed by the client!
 		rooms_.lobby().send_server_message("You are now recognized as an administrator. "
 				"If you no longer want to be automatically authenticated use '/query signout'.", sock);
@@ -1129,7 +1127,7 @@ void server::process_login(const network::connection sock,
 
 void server::process_query(const network::connection sock,
                            simple_wml::node& query) {
-	const wesnothd::player_map::const_iterator pl = players_.find(sock);
+	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "\n";
 		return;
@@ -1153,12 +1151,12 @@ void server::process_query(const network::connection sock,
 			|| command == "wml")
 	{
 		response << process_command(command.to_string(), pl->second.name());
-	} else if (admins_.find(sock) != admins_.end()) {
+	} else if (pl->second.is_moderator()) {
 		if (command == "signout") {
 			LOG_SERVER << "Admin signed out: IP: "
 				<< network::ip_address(sock) << "\tnick: "
 				<< pl->second.name() << std::endl;
-			admins_.erase(sock);
+			pl->second.set_moderator(false);
 			// This string is parsed by the client!
 			response << "You are no longer recognized as an administrator.";
 			if(user_handler_) {
@@ -1178,7 +1176,7 @@ void server::process_query(const network::connection sock,
 			LOG_SERVER << "New Admin recognized: IP: "
 				<< network::ip_address(sock) << "\tnick: "
 				<< pl->second.name() << std::endl;
-			admins_.insert(sock);
+			pl->second.set_moderator(true);
 			// This string is parsed by the client!
 			response << "You are now recognized as an administrator.";
 			if (user_handler_) {
@@ -1308,16 +1306,20 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		LOG_SERVER << "Admin message: <" << sender << (message.find("/me ") == 0
 				? std::string(message.begin() + 3, message.end()) + ">"
 				: "> " + message) << "\n";
-		if (admins_.size() < 1) return "Sorry, no admin available right now. But your message got logged.";
 
 		simple_wml::document data;
 		simple_wml::node& msg = data.root().add_child("whisper");
 		msg.set_attr_dup("sender", ("admin message from " + sender).c_str());
 		msg.set_attr_dup("message", message.c_str());
-		for (std::set<network::connection>::const_iterator i = admins_.begin(); i != admins_.end(); ++i) {
-			send_doc(data, *i);
+		int n = 0;
+		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+			if (pl->second.is_moderator()) {
+				++n;
+				send_doc(data, pl->first);
+			}
 		}
-		out << "Message sent to " << admins_.size() << " admins.";
+		if (n == 0) return "Sorry, no admin available right now. But your message got logged.";
+		out << "Message sent to " << n << " admins.";
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
@@ -1815,7 +1817,6 @@ void server::process_data_lobby(const network::connection sock,
 		const std::vector<wesnothd::game*>::iterator g =
 			std::find_if(games_.begin(),games_.end(), wesnothd::game_id_matches(game_id));
 
-		bool admin = (admins_.find(sock) != admins_.end());
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -1832,7 +1833,7 @@ void server::process_data_lobby(const network::connection sock,
 			rooms_.lobby().send_server_message("Attempt to join an uninitialized game.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
-		} else if (admin) {
+		} else if (pl->second.is_moderator()) {
 			// Admins are always allowed to join.
 		} else if ((*g)->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
@@ -1863,7 +1864,7 @@ void server::process_data_lobby(const network::connection sock,
 				<< "Removing him from that game to fix the inconsistency...\n";
 			(*g2)->remove_player(sock);
 		}
-		bool joined = (*g)->add_player(sock, observer, admin);
+		bool joined = (*g)->add_player(sock, observer);
 		if (!joined) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
