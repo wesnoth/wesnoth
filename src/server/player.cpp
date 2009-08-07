@@ -23,7 +23,7 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
   : name_(n)
   , cfg_(cfg)
   , selective_ping_(sp)
-  , registered_(false)
+  , registered_(registered)
   , flood_start_(0)
   , messages_since_flood_start_(0)
   , MaxMessages(max_messages)
@@ -32,8 +32,8 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
   , moderator_(moderator)
 {
 	cfg_.set_attr_dup("name", n.c_str());
+	cfg_.set_attr("registered", registered ? "yes" : "no");
 	mark_available();
-	mark_registered(registered);
 }
 
 
