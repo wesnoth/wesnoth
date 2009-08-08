@@ -82,7 +82,8 @@ void room_manager::load_config(const config& cfg)
 {
 	filename_ = cfg["room_save_file"];
 	compress_stored_rooms_ = utils::string_bool(cfg["compress_stored_rooms"], true);
-	new_room_policy_ = pp_from_string(cfg["new_room_policy"]);
+	PRIVILEGE_POLICY pp = pp_from_string(cfg["new_room_policy"]);
+	if (pp != PP_COUNT) new_room_policy_ = pp;
 }
 
 const std::string& room_manager::storage_filename() const
