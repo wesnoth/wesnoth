@@ -61,16 +61,22 @@ char* compress_buffer(const char* input, string_span* span)
 	filter.push(stream);
 
 	std::vector<char> buf(in.size()*2 + 80);
-	const size_t len = filter.read(&buf[0], buf.size()).gcount();
+	const int len = filter.read(&buf[0], buf.size()).gcount();
 	assert(len < 128*1024*1024);
-	if((!filter.eof() && !filter.good()) || len == static_cast<size_t>(buf.size())) {
+	if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
 		throw error("failed to compress");
 	}
 
 	buf.resize(len);
 
-	char* small_out = new char[len];
-	memcpy(small_out, &buf[0], len);
+	char* small_out;
+	try {
+		small_out = new char[len];
+		memcpy(small_out, &buf[0], len);
+	} catch (std::bad_alloc& e) {
+		std::cerr << "ERROR: Trying to allocate " << len << " bytes.";
+		throw error("Bad allocation request in compress_buffer().");
+	}
 
 	*span = string_span(small_out, len);
 	assert(*small_out == 31);
@@ -946,7 +952,13 @@ const char* document::output()
 	bufs.swap(buffers_);
 
 	const int buf_size = root_->output_size() + 1;
-	char* buf = new char[buf_size];
+	char* buf;
+	try {
+		buf = new char[buf_size];
+	} catch (std::bad_alloc& e) {
+		std::cerr << "ERROR: Trying to allocate " << buf_size << " bytes.";
+		throw error("Bad allocation request in output().");
+	}
 	buffers_.push_back(buf);
 	output_ = buf;
 
