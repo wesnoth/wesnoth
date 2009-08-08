@@ -408,6 +408,7 @@ const std::string manager::evaluate_command( side_number side, const std::string
 
 	if (!should_intercept(str)){
 		interface& ai = get_command_ai(side);
+		raise_unit_moved();
 		return ai.evaluate(str);
 	}
 

@@ -649,6 +649,8 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->invalidate_all();
 	gui_->draw(true,true);
 
+	ai::manager::raise_turn_started();
+
 	if (save) {
 		autosave_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);

@@ -511,6 +511,15 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 }
 
 
+const variant& readonly_context_impl::get_attacks_as_variant() const
+{
+	if (attacks_) {
+		return attacks_->get_variant();
+	}
+	static variant v;//@todo: replace with variant::null_variant;
+	return v;
+}
+
 const terrain_filter& readonly_context_impl::get_avoid() const
 {
 	if (avoid_) {

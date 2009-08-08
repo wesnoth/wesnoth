@@ -60,8 +60,6 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	outcome_positions_(),
-	move_maps_valid_(false),
-	attacks_cache_(),
 	keeps_cache_(),
 	infinite_loop_guardian_(),
 	vars_(),
@@ -118,7 +116,6 @@ void formula_ai::set_ai_context(ai_context *context)
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
 	try{
-		move_maps_valid_ = false;
 
 		game_logic::formula f(formula_str, &function_table_);
 
@@ -151,19 +148,9 @@ void formula_ai::store_outcome_position(const variant& var)
     outcome_positions_.push_back(var);
 }
 
-void formula_ai::prepare_move() const
-{
-	if(move_maps_valid_) {
-		return;
-	}
-
-	attacks_cache_ = variant();
-	move_maps_valid_ = true;
-}
 
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-	move_maps_valid_ = false;
 
 	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
@@ -334,8 +321,6 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
 		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
 		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(action);
-
-		prepare_move();
 		
 		if( move || move_partial ) {
 			move_result_ptr move_result;
@@ -541,8 +526,6 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		     *during the next loop
 		     */
 
-			prepare_move();
-
 			game_logic::map_formula_callable callable(this);
 			callable.add_ref();
 
@@ -595,19 +578,7 @@ variant formula_ai::get_value(const std::string& key) const
 {
 	if(key == "attacks")
 	{
-		prepare_move();
-		if(attacks_cache_.is_null() == false) {
-			return attacks_cache_;
-		}
-
-		const std::vector<attack_analysis> attacks = get_attacks();
-		std::vector<variant> vars;
-		for(std::vector<attack_analysis>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-			vars.push_back(variant(new attack_analysis(*i)));
-		}
-
-		attacks_cache_ = variant(&vars);
-		return attacks_cache_;
+		return get_attacks_as_variant();
 
 	} else if(key == "turn")
 	{
@@ -747,16 +718,13 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_moves")
 	{
-		prepare_move();
 		return variant(new move_map_callable(get_srcdst(), get_dstsrc(), get_info().units));
 
 	} else if(key == "my_attacks")
 	{
-		prepare_move();
 		return variant(new attack_map_callable(*this, get_srcdst(), get_info().units));
 	} else if(key == "enemy_moves")
 	{
-		prepare_move();
 		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), get_info().units));
 
 	} else if(key == "my_leader")
@@ -858,7 +826,6 @@ variant formula_ai::get_keeps() const
 }
 
 bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const {
-        prepare_move();
 	move_map::const_iterator i;
 	std::pair<move_map::const_iterator,
 			  move_map::const_iterator> unit_moves;
@@ -910,7 +877,6 @@ void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_
 
 bool formula_ai::execute_candidate_action(game_logic::candidate_action_ptr fai_ca)
 {
-	move_maps_valid_ = false;//@todo 1.7 think about optimizing this
 	game_logic::map_formula_callable callable(this);
 	callable.add_ref();
 	fai_ca->update_callable_map( callable );

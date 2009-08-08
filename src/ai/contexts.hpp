@@ -193,6 +193,9 @@ public:
 	virtual const attacks_vector& get_attacks() const = 0;
 
 
+	virtual const variant& get_attacks_as_variant() const = 0;
+
+
 	virtual const terrain_filter& get_avoid() const = 0;
 
 
@@ -554,6 +557,13 @@ public:
 	virtual const attacks_vector& get_attacks() const
 	{
 		return target_->get_attacks();
+	}
+
+
+
+	virtual const variant& get_attacks_as_variant() const
+	{
+		return target_->get_attacks_as_variant();
 	}
 
 
@@ -1097,6 +1107,9 @@ public:
 
 
 	virtual const attacks_vector& get_attacks() const;
+
+
+	virtual const variant& get_attacks_as_variant() const;
 
 
 	virtual const terrain_filter& get_avoid() const;

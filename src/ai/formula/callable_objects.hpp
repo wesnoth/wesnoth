@@ -258,7 +258,6 @@ public:
 
 	struct move_map_backup {
 		move_map_backup() :
-			move_maps_valid(false),
 			srcdst(),
 			dstsrc(),
 			full_srcdst(),
@@ -269,7 +268,6 @@ public:
 		{
 		}
 
-		bool move_maps_valid;
 		ai::move_map srcdst, dstsrc, full_srcdst, full_dstsrc, enemy_srcdst, enemy_dstsrc;
 		variant attacks_cache;
 	};

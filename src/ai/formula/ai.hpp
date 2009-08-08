@@ -107,8 +107,6 @@ public:
         std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
 	plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
 
-	void invalidate_move_maps() const { move_maps_valid_ = false; }
-
         void store_outcome_position(const variant& var);
 
 	/** Create a new formula from the string, using the symbol table which is stored in the AI.
@@ -145,11 +143,7 @@ private:
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 	std::vector<variant> outcome_positions_;
 
-	void prepare_move() const;
-
         map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
-	mutable bool move_maps_valid_;
-	mutable variant attacks_cache_;
 	mutable variant keeps_cache_;
 
 	gamestate_change_observer infinite_loop_guardian_;
