@@ -85,6 +85,7 @@ wesnoth_source = \
 	dialogs.cpp \
 	floating_textbox.cpp \
 	formula.cpp \
+	formula_debugger.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
 	formula_string_utils.cpp \
