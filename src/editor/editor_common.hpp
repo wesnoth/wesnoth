@@ -18,8 +18,8 @@
  * logging macro definitions and base exception declarations
  */
 
-#ifndef EDITOR2_EDITOR_COMMON_HPP_INCLUDED
-#define EDITOR2_EDITOR_COMMON_HPP_INCLUDED
+#ifndef EDITOR_EDITOR_COMMON_HPP_INCLUDED
+#define EDITOR_EDITOR_COMMON_HPP_INCLUDED
 
 #include "../log.hpp"
 #include <stdexcept>
@@ -34,7 +34,7 @@ extern lg::log_domain log_editor;
 class display;
 class gamemap;
 
-namespace editor2 {
+namespace editor {
 
 struct editor_exception : public std::exception
 {
@@ -66,6 +66,6 @@ class map_context;
 class map_fragment;
 class mouse_action;
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

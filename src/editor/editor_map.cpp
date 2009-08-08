@@ -27,7 +27,7 @@
 #include "../wml_exception.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
@@ -412,4 +412,4 @@ void editor_map::shrink_bottom(int count)
 
 
 
-} //end namespace editor2
+} //end namespace editor

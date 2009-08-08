@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_MAP_FRAGMENT_HPP_INCLUDED
-#define EDITOR2_MAP_FRAGMENT_HPP_INCLUDED
+#ifndef EDITOR_MAP_FRAGMENT_HPP_INCLUDED
+#define EDITOR_MAP_FRAGMENT_HPP_INCLUDED
 
 #include "editor_map.hpp"
 
@@ -21,7 +21,7 @@
 
 #include <set>
 
-namespace editor2 {
+namespace editor {
 
 /**
  * This represents a tile along with information about it, namely the terrain,
@@ -162,6 +162,6 @@ class map_fragment
 		std::set<map_location> area_;
 };
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

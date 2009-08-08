@@ -326,7 +326,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 */
 	} else if(id == "tutorial") {
 		return static_cast<tretval>(gui::TUTORIAL);
-#ifndef DISABLE_EDITOR2
+#ifndef DISABLE_EDITOR
 	} else if(id == "editor") {
 		return static_cast<tretval>(gui::START_MAP_EDITOR);
 #endif

@@ -23,7 +23,7 @@
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 
-namespace editor2 {
+namespace editor {
 
 int editor_action::next_id_ = 1;
 int editor_action::instance_count_ = 0;
@@ -42,7 +42,7 @@ editor_action::editor_action()
 : id_(next_id_++)
 {
 	instance_count_++;
-#ifdef EDITOR2_DEBUG_ACTION_LIFETIME
+#ifdef EDITOR_DEBUG_ACTION_LIFETIME
 	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count << "\n";
 #endif
 }
@@ -50,7 +50,7 @@ editor_action::editor_action()
 editor_action::~editor_action()
 {
 	instance_count_--;
-#ifdef EDITOR2_DEBUG_ACTION_LIFETIME
+#ifdef EDITOR_DEBUG_ACTION_LIFETIME
 	LOG_ED << "Action " << std::setw(2) << id_ << " dtor " << this << " (count is " << instance_count << "\n";
 #endif
 }
@@ -394,4 +394,4 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-} //end namespace editor2
+} //end namespace editor

@@ -20,7 +20,7 @@
 #include "../pathutils.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 brush::brush()
 	: relative_tiles_()
@@ -68,4 +68,4 @@ std::set<map_location> brush::project(const map_location& hotspot) const
 }
 
 
-} //end namespace editor2
+} //end namespace editor

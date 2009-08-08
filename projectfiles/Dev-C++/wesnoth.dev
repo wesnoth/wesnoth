@@ -18,7 +18,7 @@ ExeOutput=..\..
 ObjectOutput=
 OverrideOutput=1
 HostApplication=
-Folders=Headers,Headers/editor2,Headers/gui,Headers/gui/dialogs,Headers/gui/widgets,Headers/scripting,Headers/serialization,Headers/widgets,Others,Resources,Sources,Sources/editor2,Sources/gui,Sources/gui/dialogs,Sources/gui/widgets,Sources/scripting,Sources/serialization,Sources/widgets
+Folders=Headers,Headers/editor,Headers/gui,Headers/gui/dialogs,Headers/gui/widgets,Headers/scripting,Headers/serialization,Headers/widgets,Others,Resources,Sources,Sources/editor,Sources/gui,Sources/gui/dialogs,Sources/gui/widgets,Sources/scripting,Sources/serialization,Sources/widgets
 CommandLine=--log-info=all -t
 UseCustomMakefile=0
 CustomMakefile=
@@ -600,9 +600,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit171]
-FileName=..\..\src\editor2\action.cpp
+FileName=..\..\src\editor\action.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -610,9 +610,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit172]
-FileName=..\..\src\editor2\brush.cpp
+FileName=..\..\src\editor\brush.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -620,9 +620,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit175]
-FileName=..\..\src\editor2\editor_layout.cpp
+FileName=..\..\src\editor\editor_layout.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -630,9 +630,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit176]
-FileName=..\..\src\editor2\editor_main.cpp
+FileName=..\..\src\editor\editor_main.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -640,9 +640,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit177]
-FileName=..\..\src\editor2\editor_map.cpp
+FileName=..\..\src\editor\editor_map.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -650,9 +650,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit180]
-FileName=..\..\src\editor2\map_fragment.cpp
+FileName=..\..\src\editor\map_fragment.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -660,9 +660,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit181]
-FileName=..\..\src\editor2\mouse_action.cpp
+FileName=..\..\src\editor\mouse_action.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -2378,9 +2378,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit173]
-FileName=..\..\src\editor2\editor_controller.cpp
+FileName=..\..\src\editor\editor_controller.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -2388,9 +2388,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit174]
-FileName=..\..\src\editor2\editor_display.cpp
+FileName=..\..\src\editor\editor_display.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -2398,9 +2398,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit179]
-FileName=..\..\src\editor2\map_context.cpp
+FileName=..\..\src\editor\map_context.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000
@@ -2418,9 +2418,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit178]
-FileName=..\..\src\editor2\editor_palettes.cpp
+FileName=..\..\src\editor\editor_palettes.cpp
 CompileCpp=1
-Folder=Sources/editor2
+Folder=Sources/editor
 Compile=1
 Link=1
 Priority=1000

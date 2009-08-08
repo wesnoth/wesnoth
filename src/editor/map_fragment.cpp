@@ -18,7 +18,7 @@
 #include "../foreach.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 map_fragment::map_fragment()
 	: items_()
@@ -217,4 +217,4 @@ std::string map_fragment::dump() const
 	return ss.str();
 }
 
-} //end namespace editor2
+} //end namespace editor

@@ -42,9 +42,9 @@
 #include <boost/bind.hpp>
 
 namespace {
-	const char* prefkey_default_dir = "editor2_default_dir";
-	const char* prefkey_auto_update_transitions = "editor2_auto_update_transitions";
-	const char* prefkey_use_mdi = "editor2_use_mdi";
+	const char* prefkey_default_dir = "editor_default_dir";
+	const char* prefkey_auto_update_transitions = "editor_auto_update_transitions";
+	const char* prefkey_use_mdi = "editor_use_mdi";
 
 	namespace TransitionUpdateMode {
 		const int off = 0;
@@ -54,7 +54,7 @@ namespace {
 	}
 }
 
-namespace editor2 {
+namespace editor {
 
 /**
  * Utility class to properly refresh the display when the map context object is replaced
@@ -154,7 +154,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 
 void editor_controller::init_gui(CVideo& video)
 {
-	const config &theme_cfg = get_theme(game_config_, "editor2");
+	const config &theme_cfg = get_theme(game_config_, "editor");
 	gui_.reset(new editor_display(video, get_map(), theme_cfg, game_config_, config()));
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
@@ -1432,4 +1432,4 @@ void editor_controller::clear_mouseover_overlay()
 	gui().clear_mouseover_hex_overlay();
 }
 
-} //end namespace editor2
+} //end namespace editor

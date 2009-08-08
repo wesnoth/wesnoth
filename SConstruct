@@ -345,7 +345,7 @@ for env in [test_env, client_env, env]:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
     if not env["editor"]:
-        env.Append(CPPDEFINES = "DISABLE_EDITOR2")
+        env.Append(CPPDEFINES = "DISABLE_EDITOR")
 
     if not env['lua']:
         env.Append(CPPDEFINES = "DISABLE_LUA")

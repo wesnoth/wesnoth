@@ -12,13 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_EDITOR_MAIN_H_INCLUDED
-#define EDITOR2_EDITOR_MAIN_H_INCLUDED
+#ifndef EDITOR_EDITOR_MAIN_H_INCLUDED
+#define EDITOR_EDITOR_MAIN_H_INCLUDED
 
 class config;
 class CVideo;
 
-namespace editor2 {
+namespace editor {
 
 enum EXIT_STATUS {
 	EXIT_NORMAL,
@@ -34,6 +34,6 @@ enum EXIT_STATUS {
 
 EXIT_STATUS start(config& game_config, CVideo& video, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.bmp");
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

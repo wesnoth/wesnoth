@@ -29,7 +29,7 @@
 #include <boost/regex.hpp>
 
 
-namespace editor2 {
+namespace editor {
 
 const size_t map_context::max_action_stack_size_ = 100;
 
@@ -389,4 +389,4 @@ void map_context::perform_action_between_stacks(action_stack& from, action_stack
 	trim_stack(to);
 }
 
-} //end namespace editor2
+} //end namespace editor

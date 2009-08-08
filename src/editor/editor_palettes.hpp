@@ -35,7 +35,7 @@
 
 class config;
 
-namespace editor2 {
+namespace editor {
 /**
  * Stores the info about the data in editor-groups.cfg in a nice format.
  *
@@ -229,6 +229,6 @@ private:
 };
 
 
-}
+} //end namespace editor
 #endif // EDITOR_PALETTES_H_INCLUDED
 

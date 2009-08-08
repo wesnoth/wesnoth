@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_MAP_CONTEXT_HPP_INCLUDED
-#define EDITOR2_MAP_CONTEXT_HPP_INCLUDED
+#ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
+#define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
 #include "editor_common.hpp"
 #include "editor_map.hpp"
@@ -22,7 +22,7 @@
 
 #include <deque>
 
-namespace editor2 {
+namespace editor {
 
 /**
  * This class wraps around a map to provide a conscise interface for the editor to work with.
@@ -301,6 +301,6 @@ protected:
 };
 
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_BRUSH_HPP_INCLUDED
-#define EDITOR2_BRUSH_HPP_INCLUDED
+#ifndef EDITOR_BRUSH_HPP_INCLUDED
+#define EDITOR_BRUSH_HPP_INCLUDED
 
 #include "editor_map.hpp"
 
@@ -21,7 +21,7 @@
 
 #include <set>
 
-namespace editor2 {
+namespace editor {
 
 /**
  * The brush class represents a single brush -- a set of relative locations around a "hotspot",
@@ -72,6 +72,6 @@ protected:
 };
 
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

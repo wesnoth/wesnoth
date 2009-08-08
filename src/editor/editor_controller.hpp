@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
-#define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
+#ifndef EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
+#define EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
 
 #include "action_base.hpp"
 #include "brush.hpp"
@@ -51,7 +51,7 @@ class rng;
 struct set_random_generator;
 }
 
-namespace editor2 {
+namespace editor {
 
 class brush_bar;
 struct size_specs;
@@ -440,6 +440,6 @@ class editor_controller : public controller_base,
 		std::string default_dir_;
 };
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

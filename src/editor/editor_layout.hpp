@@ -12,7 +12,7 @@
   See the COPYING file for more details.
 */
 
-/** @file editor2/editor_layout.hpp */
+/** @file editor/editor_layout.hpp */
 
 #ifndef EDITOR_LAYOUT_H_INCLUDED
 #define EDITOR_LAYOUT_H_INCLUDED
@@ -21,7 +21,7 @@
 
 #include "display.hpp"
 
-namespace editor2 {
+namespace editor {
 
 /** Size specifications for the map editor. */
 struct size_specs {

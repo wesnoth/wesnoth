@@ -23,8 +23,8 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR2_ACTION_HPP
-#define EDITOR2_ACTION_HPP
+#ifndef EDITOR_ACTION_HPP
+#define EDITOR_ACTION_HPP
 
 #include "action_base.hpp"
 #include "editor_map.hpp"
@@ -34,7 +34,7 @@
 #include "../terrain.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 /**
  * Replace contents of the entire map,
@@ -481,6 +481,6 @@ class editor_action_shuffle_area : public editor_action_area
 };
 
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

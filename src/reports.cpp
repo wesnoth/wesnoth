@@ -27,7 +27,7 @@ namespace {
 		"turn", "gold", "villages", "num_units", "upkeep", "expenses",
 		"income", "terrain", "position", "side_playing", "observers",
 		"report_countdown", "report_clock",
-		"selected_terrain", "edit_left_button_function", "editor2_tool_hint"
+		"selected_terrain", "edit_left_button_function", "editor_tool_hint"
 	};
 }
 

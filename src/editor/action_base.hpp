@@ -24,17 +24,14 @@
  * include this header file.
  */
 
-#ifndef EDITOR2_ACTION_BASE_HPP_INCLUDED
-#define EDITOR2_ACTION_BASE_HPP_INCLUDED
-
-
+#ifndef EDITOR_ACTION_BASE_HPP_INCLUDED
+#define EDITOR_ACTION_BASE_HPP_INCLUDED
 
 #include "editor_common.hpp"
 
 #include <string>
 
-
-namespace editor2 {
+namespace editor {
 
 /**
  * Base class for all editor actions. An editor_action object
@@ -121,6 +118,6 @@ struct editor_action_creation_fail : public editor_action_exception
 	editor_action_creation_fail();
 };
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

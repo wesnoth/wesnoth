@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_EDITOR_MAP_HPP_INCLUDED
-#define EDITOR2_EDITOR_MAP_HPP_INCLUDED
+#ifndef EDITOR_EDITOR_MAP_HPP_INCLUDED
+#define EDITOR_EDITOR_MAP_HPP_INCLUDED
 
 #include "editor_common.hpp"
 
@@ -22,7 +22,7 @@
 #include <deque>
 #include <set>
 
-namespace editor2 {
+namespace editor {
 
 struct editor_map_operation_exception : public editor_exception
 {
@@ -209,6 +209,6 @@ protected:
 };
 
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

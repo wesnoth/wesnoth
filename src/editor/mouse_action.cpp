@@ -21,7 +21,7 @@
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
 
-namespace editor2 {
+namespace editor {
 
 bool mouse_action::has_context_menu() const
 {
@@ -490,4 +490,4 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 }
 
 
-} //end namespace editor2
+} //end namespace editor

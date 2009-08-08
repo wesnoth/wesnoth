@@ -23,7 +23,7 @@
 
 lg::log_domain log_editor("editor");
 
-namespace editor2 {
+namespace editor {
 
 EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename /* = "" */, 
 	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
@@ -50,7 +50,7 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 			e = editor.main_loop();
 		}
 	} catch (editor_exception& e) {
-		ERR_ED << "Editor exception in editor2::start: " << e.what() << "\n";
+		ERR_ED << "Editor exception in editor::start: " << e.what() << "\n";
 		throw;
 	}
 	if (editor_action::get_instance_count() != 0) {
@@ -59,4 +59,4 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 	return e;
 }
 
-} //end namespace editor2
+} //end namespace editor

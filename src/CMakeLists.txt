@@ -410,17 +410,17 @@ SET(wesnoth-editor_SRC
     gui/dialogs/editor_new_map.cpp
     gui/dialogs/editor_resize_map.cpp
     gui/dialogs/editor_settings.cpp
-    editor2/action.cpp
-    editor2/brush.cpp
-    editor2/editor_main.cpp
-    editor2/editor_controller.cpp
-    editor2/editor_display.cpp
-    editor2/editor_layout.cpp
-    editor2/editor_map.cpp
-    editor2/editor_palettes.cpp
-    editor2/map_context.cpp
-    editor2/map_fragment.cpp
-    editor2/mouse_action.cpp
+    editor/action.cpp
+    editor/brush.cpp
+    editor/editor_main.cpp
+    editor/editor_controller.cpp
+    editor/editor_display.cpp
+    editor/editor_layout.cpp
+    editor/editor_map.cpp
+    editor/editor_palettes.cpp
+    editor/map_context.cpp
+    editor/map_fragment.cpp
+    editor/mouse_action.cpp
 )
 
 IF(ENABLE_EDITOR)

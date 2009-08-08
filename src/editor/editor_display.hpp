@@ -12,13 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_EDITOR_DISPLAY_HPP_INCLUDED
-#define EDITOR2_EDITOR_DISPLAY_HPP_INCLUDED
+#ifndef EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
+#define EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
 
 #include "editor_map.hpp"
 #include "../display.hpp"
 
-namespace editor2 {
+namespace editor {
 
 class editor_display : public display
 {
@@ -52,5 +52,5 @@ protected:
 	std::string toolbar_hint_;
 };
 
-} //end namespace editor2
+} //end namespace editor
 #endif

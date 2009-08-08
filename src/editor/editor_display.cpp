@@ -16,7 +16,7 @@
 #include "editor_display.hpp"
 #include "builder.hpp"
 
-namespace editor2 {
+namespace editor {
 
 editor_display::editor_display(CVideo& video, const editor_map& map,
 		const config& theme_cfg, const config& cfg,
@@ -100,8 +100,7 @@ void editor_display::draw_sidebar()
 		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_)));
 	}
 	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(get_map().villages().size())));
-	refresh_report(reports::EDITOR2_TOOL_HINT, reports::report(toolbar_hint_));
+	refresh_report(reports::EDITOR_TOOL_HINT, reports::report(toolbar_hint_));
 }
 
-
-} //end namespace editor2
+} //end namespace editor

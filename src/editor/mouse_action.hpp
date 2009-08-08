@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR2_MOUSE_ACTION_HPP
-#define EDITOR2_MOUSE_ACTION_HPP
+#ifndef EDITOR_MOUSE_ACTION_HPP
+#define EDITOR_MOUSE_ACTION_HPP
 
 #include "action_base.hpp"
 #include "editor_map.hpp"
@@ -22,7 +22,7 @@
 
 class CKey;
 
-namespace editor2 {
+namespace editor {
 
 /**
  * A mouse action receives events from the controller, and responds to them by creating
@@ -407,6 +407,6 @@ private:
 	bool click_;
 };
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

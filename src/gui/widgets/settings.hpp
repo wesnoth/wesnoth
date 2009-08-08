@@ -61,7 +61,7 @@ enum twindow_type {
 	MP_LOGIN,                /**< The mp login dialog. */
 	MP_CMD_WRAPPER,          /**< graphical front-end to various mp commands*/
 	MP_CREATE_GAME,          /**< The mp creation dialog. */
-#ifndef DISABLE_EDITOR2
+#ifndef DISABLE_EDITOR
 	EDITOR_NEW_MAP,          /**< New map dialog. */
 	EDITOR_GENERATE_MAP,     /**< Editor random map genarator dialog. */
 	EDITOR_RESIZE_MAP,       /**< Editor resize map dialog. */

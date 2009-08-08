@@ -18,7 +18,7 @@
 #include "editor_common.hpp"
 #include "../foreach.hpp"
 
-namespace editor2 {
+namespace editor {
 
 terrain_group::terrain_group(const config& cfg);
 : id_(cfg["id"]), name_(cfg["name"]), icon_string_(cfg["icon"])
@@ -128,4 +128,4 @@ void set_group(const std::string& id)
 	}
 }
 
-} //end namespace editor2
+} //end namespace editor

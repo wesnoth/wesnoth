@@ -14,8 +14,8 @@
 
 // UNUSED CODE -- TODO FOR THE NEW TERRAIN PALETTE
 
-#ifndef EDITOR2_TERRAIN_GROUP_HPP
-#define EDITOR2_TERRAIN_GROUP_HPP
+#ifndef EDITOR_TERRAIN_GROUP_HPP
+#define EDITOR_TERRAIN_GROUP_HPP
 
 #include "action_base.hpp"
 #include "editor_map.hpp"
@@ -24,7 +24,7 @@
 #include "../terrain.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 class terrain_group
 {
@@ -60,6 +60,6 @@ private:
 };
 
 
-} //end namespace editor2
+} //end namespace editor
 
 #endif

@@ -334,8 +334,8 @@ AM_CONDITIONAL([POOLALLOC], [test x$poolalloc = xyes])
 
 if test x$editor = xno
 then
-	CFLAGS="$CFLAGS -DDISABLE_EDITOR2"
-	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR2"
+	CFLAGS="$CFLAGS -DDISABLE_EDITOR"
+	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR"
 fi
 
 if test x$dummylocales = xyes; then

@@ -26,7 +26,7 @@
 #include "../tooltips.hpp"
 
 
-namespace editor2 {
+namespace editor {
 
 static bool is_invalid_terrain(t_translation::t_terrain c) {
 	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
@@ -677,5 +677,5 @@ int brush_bar::selected_index(int x, int y) const {
 	return -1;
 }
 
-} // end namespace editor2
+} // end namespace editor
 

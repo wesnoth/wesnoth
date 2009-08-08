@@ -106,7 +106,7 @@ class Grammar:
 'defend' : 'animation',
 'defense' : 'movement_costs',
 'drains' : 'special-dummy',
-'editor2_tool_hint' : 'gold-theme',
+'editor_tool_hint' : 'gold-theme',
 'effect' : (
     [ 'defense', 'movement_costs', 'resistance', ], #TODO: point tags to where they should go (specials, contents of filter_attack, { set_specials : specials }, abilities)
     [ 'apply_to', 'times', 'unit_type', re.compile("\w+"), ]),
@@ -227,7 +227,7 @@ class Grammar:
     [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'drains', 'firststrike', 'plague', 'poison', 'slow', 'petrifies', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
     []),
 'status' : (
-    [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
+    [ 'editor_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
     []),
 'petrifies' : 'special-dummy',
 'swarm' : TagPlus('special-dummy', ([], ['swarm_attacks_min', 'swarm_attacks_max',]) ),
