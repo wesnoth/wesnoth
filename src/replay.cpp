@@ -250,7 +250,9 @@ void replay::add_movement(const std::vector<map_location>& steps)
 }
 
 void replay::add_attack(const map_location& a, const map_location& b,
-	int att_weapon, int def_weapon)
+	int att_weapon, int def_weapon, const std::string& attacker_type_id,
+	const std::string& defender_type_id, int attacker_lvl,
+	int defender_lvl, const size_t turn, const time_of_day t)
 {
 	add_pos("attack",a,b);
 	char buf[100];
@@ -259,6 +261,15 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	cfg["weapon"] = buf;
 	snprintf(buf,sizeof(buf),"%d",def_weapon);
 	cfg["defender_weapon"] = buf;
+	cfg["attacker_type"] = attacker_type;
+	cfg["defender_type"] = defender_type;
+	snprintf(buf,sizeof(buf),"%d",attacker_lvl);
+	cfg["attacker_lvl"] = buf;
+	snprintf(buf,sizeof(buf),"%d",defender_lvl);
+	cfg["defender_lvl"] = buf;
+	snprintf(buf,sizeof(buf),"%d",turn);
+	cfg["turn"] = buf;
+	cfg["tod"] = t.id;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
 }

@@ -24,10 +24,12 @@
 
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "replay.hpp"
 #include "serialization/parser.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
@@ -39,6 +41,8 @@
 static lg::log_domain log_uploader("uploader");
 #define DBG_UPLD LOG_STREAM(debug, log_uploader)
 #define ERR_UPLD LOG_STREAM(err, log_uploader)
+
+extern replay recorder;
 
 namespace uploader_settings {
 	bool new_uploader = false;
@@ -252,6 +256,22 @@ upload_log::upload_log(bool enable) :
 			thread_.t = new threading::thread(upload_logs_dev, &thread_);
 		} else {
 			thread_.t = new threading::thread(upload_logs, &thread_);
+		}
+	}
+}
+
+void upload_log::read_replay()
+{
+	if(enabled_ && !config_.empty() && !game_config::debug) {
+		foreach (const config &c, recorder.get_replay_data().child_range("command")) {
+			if(c.has_attribute("attack")) {
+				//search through the attack to see if a unit died
+				foreach (const config &c2, c.child_range("random")) {
+					if(c2.has_attribute("dies") && c2["dies"] == "yes") {
+						//config_.add_child("kill_event",c);
+					}
+				}	
+			}
 		}
 	}
 }

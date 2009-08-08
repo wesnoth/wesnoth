@@ -1184,7 +1184,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
-
+				cfg["unit_hit"] = "defender";
 				cfg["damage"] = lexical_cast<std::string>(damage_defender_takes);
 				cfg["chance"] = lexical_cast<std::string>(a_.cth_);
 
@@ -1451,6 +1451,7 @@ attack::attack(const map_location &attacker, const map_location &defender,
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
+				cfg["unit_hit"] = "attacker";
 				cfg["damage"] = lexical_cast<std::string>(damage_attacker_takes);
 				cfg["chance"] = lexical_cast<std::string>(d_.cth_);
 

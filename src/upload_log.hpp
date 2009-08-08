@@ -54,6 +54,7 @@ public:
 	void defeat(int turn);
 	void victory(int turn, int gold);
 	void quit(int turn);
+	void read_replay();
 
 	// Argument passed to upload thread.
 	struct thread_info {

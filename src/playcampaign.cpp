@@ -35,6 +35,7 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "upload_log.hpp"
 
 #define LOG_G LOG_STREAM(info, lg::general)
 
@@ -118,6 +119,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay, end_level);
+	log.read_replay();
 
 	if (res == DEFEAT) {
 		gui2::show_transient_message(disp.video(),
@@ -149,7 +151,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay, end_level);
-
+	log.read_replay();
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;

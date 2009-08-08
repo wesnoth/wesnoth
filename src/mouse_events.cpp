@@ -29,7 +29,9 @@
 #include "menu_events.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "rng.hpp"
+#include "tod_manager.hpp"
 #include "wml_separators.hpp"
 
 #include <boost/bind.hpp>
@@ -675,7 +677,10 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		gui().unhighlight_reach();
 
 		gui().draw();
-		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num);
+		//@TODO: change ToD to be location specific for the defender
+		recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, 
+			attacker->second.type_id(), defender->second.type_id(), att.level, 
+			def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
 		rand_rng::invalidate_seed();
 		if (rand_rng::has_valid_seed()) { //means SRNG is disabled
 			perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
