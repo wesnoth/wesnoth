@@ -64,6 +64,9 @@ wesnoth_source = \
 	ai/formula/callable_objects.cpp \
 	ai/formula/candidates.cpp \
 	ai/formula/function_table.cpp \
+	ai/formula/stage_rca_formulas.cpp \
+	ai/formula/stage_side_formulas.cpp \
+	ai/formula/stage_unit_formulas.cpp \
 	ai/game_info.cpp \
 	ai/interface.cpp \
 	ai/manager.cpp \
@@ -227,7 +230,7 @@ wesnoth_source = \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
-    
+
 # used with editor option in the wesnoth target
 wesnoth_editor_SOURCES = \
 	gui/dialogs/editor_generate_map.cpp \

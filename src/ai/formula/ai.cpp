@@ -34,6 +34,7 @@
 #include "../../menu_events.hpp"
 
 static lg::log_domain log_formula_ai("ai/formula_ai");
+#define DBG_AI LOG_STREAM(debug, log_formula_ai)
 #define LOG_AI LOG_STREAM(info, log_formula_ai)
 #define WRN_AI LOG_STREAM(warn, log_formula_ai)
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
@@ -45,11 +46,7 @@ namespace ai {
 
 game_logic::candidate_action_ptr formula_ai::load_candidate_action_from_config(const config& cfg)
 {
-	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table);
-}
-
-std::string formula_ai::describe_self(){
-	return "[formula_ai]";
+	return candidate_action_manager_.load_candidate_action_from_config(cfg,this,&function_table_);
 }
 
 int formula_ai::get_recursion_count() const{
@@ -57,20 +54,18 @@ int formula_ai::get_recursion_count() const{
 }
 
 
-formula_ai::formula_ai(readonly_context &context, const config &cfg) :
+formula_ai::formula_ai(readonly_context &context, const config &cfg)
+	:
 	readonly_context_proxy(),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
-	recruit_formula_(),
-	move_formula_(),
 	outcome_positions_(),
-	possible_moves_(),
 	move_maps_valid_(false),
 	attacks_cache_(),
 	keeps_cache_(),
 	infinite_loop_guardian_(),
 	vars_(),
-	function_table(*this),
+	function_table_(*this),
 	candidate_action_manager_()
 {
 	add_ref();
@@ -105,133 +100,12 @@ void formula_ai::display_message(const std::string& msg) const
 
 formula_ptr formula_ai::create_optional_formula(const std::string& formula_string){
 	try{
-		return game_logic::formula::create_optional_formula(formula_string, &function_table);
+		return game_logic::formula::create_optional_formula(formula_string, &function_table_);
 	}
 	catch(formula_error& e) {
 		handle_exception(e);
 		return game_logic::formula_ptr();
 	}
-}
-
-void formula_ai::new_turn()
-{
-	move_maps_valid_ = false;
-	//ai_default::new_turn();
-}
-
-void formula_ai::play_turn()
-{
-/*
-	//execute units formulas first
-
-        unit_formula_set units_with_formulas;
-
-	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
-	{
-            if ( (i->second.side() == get_side())  )
-            {
-                if ( i->second.has_formula() || i->second.has_loop_formula()) {
-                    int priority = 0;
-                    if( i->second.has_priority_formula() ) {
-                        try {
-                            game_logic::const_formula_ptr priority_formula(new game_logic::formula(i->second.get_priority_formula(), &function_table));
-                            game_logic::map_formula_callable callable(this);
-                            callable.add_ref();
-                            callable.add("me", variant(new unit_callable(*i)));
-                            priority = (formula::evaluate(priority_formula, callable)).as_int();
-                        } catch(formula_error& e) {
-                                if(e.filename == "formula")
-                                        e.line = 0;
-                                handle_exception( e, "Unit priority formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-
-                                priority = 0;
-                        } catch(type_error& e) {
-                                priority = 0;
-                                ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << "\n";
-                        }
-                    }
-
-                    units_with_formulas.insert( unit_formula_pair( i, priority ) );
-                }
-            }
-        }
-
-	for(unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
-	{
-            unit_map::iterator i = pair_it->first;
-
-            if( i.valid() ) {
-
-                if ( i->second.has_formula() ) {
-                    try {
-                            game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
-                            game_logic::map_formula_callable callable(this);
-                            callable.add_ref();
-                            callable.add("me", variant(new unit_callable(*i)));
-                            make_action(formula, callable);
-                    }
-                    catch(formula_error& e) {
-                            if(e.filename == "formula")
-                                    e.line = 0;
-                            handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-                    }
-                }
-            }
-
-            if( i.valid() ) {
-                if( i->second.has_loop_formula() )
-                {
-                        try {
-                                game_logic::const_formula_ptr loop_formula(new game_logic::formula(i->second.get_loop_formula(), &function_table));
-                                game_logic::map_formula_callable callable(this);
-                                callable.add_ref();
-                                callable.add("me", variant(new unit_callable(*i)));
-                                while ( !make_action(loop_formula, callable).is_empty() && i.valid() ) {}
-                        }
-                        catch(formula_error& e) {
-                                if(e.filename == "formula")
-                                        e.line = 0;
-                                handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-                        }
-                }
-            }
-	}
-
-	try {
-		if( candidate_action_manager_.has_candidate_actions() ) {
-			move_maps_valid_ = false;
-			while( candidate_action_manager_.evaluate_candidate_actions(this, units_) )
-			{
-				game_logic::map_formula_callable callable(this);
-				callable.add_ref();
-
-				candidate_action_manager_.update_callable_map( callable );
-
-				const_formula_ptr move_formula(candidate_action_manager_.get_best_action_formula());
-
-				make_action(move_formula, callable);
-
-				move_maps_valid_ = false;
-			}
-		}
-	}
-	catch(formula_error& e) {
-		if(e.filename == "formula")
-			e.line = 0;
-			handle_exception( e, "Formula error in RCA loop");
-	}
-
-	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
-	try {
-		while( !make_action(move_formula_,callable).is_empty() ) { }
-	}
-	catch(formula_error& e) {
-		if(e.filename == "formula")
-			e.line = 0;
-			handle_exception( e, "Formula error");
-	}
-*/
 }
 
 
@@ -246,7 +120,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	try{
 		move_maps_valid_ = false;
 
-		game_logic::formula f(formula_str, &function_table);
+		game_logic::formula f(formula_str, &function_table_);
 
 		game_logic::map_formula_callable callable(this);
 		callable.add_ref();
@@ -289,17 +163,6 @@ void formula_ai::prepare_move() const
 
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-// 	if(!formula_) {
-// 		if(get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE) {
-// 			LOG_AI << "Falling back to default AI.\n";
-// 			ai_ptr fallback( manager::create_transient_ai(manager::AI_TYPE_DEFAULT, config(), this));
-// 			if (fallback){
-// 				fallback->play_turn();
-// 			}
-// 		}
-// 		return variant();
-// 	}
-
 	move_maps_valid_ = false;
 
 	LOG_AI << "do move...\n";
@@ -392,51 +255,43 @@ std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& uni
 }
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
-    std::map<map_location,paths>::iterator path = possible_moves_.find(src);
+	std::map<map_location,paths>::const_iterator path = get_possible_moves().find(src);
 
-    map_location destination = dst;
+	map_location destination = dst;
 
-    //check if destination is within unit's reach, if not, calculate where to move
+	//check if destination is within unit's reach, if not, calculate where to move
 	if (!path->second.destinations.contains(dst))
 	{
-            std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
-            //destination is too far, check where unit can go
-
+		std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
+		//destination is too far, check where unit can go
 		plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
-            if( route.steps.size() == 0 ) {
-                emergency_path_calculator em_calc(unit_it->second, get_info().map);
-
-                route = a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
-
-                if( route.steps.size() < 2 ) {
-                    return map_location();
-                }
-            }
-
-            destination = map_location();
-
-            for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-		typedef move_map::const_iterator Itor;
-		std::pair<Itor,Itor> range = get_srcdst().equal_range(src);
-
-                bool found = false;
-		for(Itor i = range.first; i != range.second; ++i) {
-			if (i->second == *loc_iter ) {
-                            found = true;
-                            break;
-                        }
+		if( route.steps.size() == 0 ) {
+			emergency_path_calculator em_calc(unit_it->second, get_info().map);
+			route = a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
+			if( route.steps.size() < 2 ) {
+				return map_location();
+			}
 		}
-                if ( !found ) {
-                    continue;
-                }
-
-                destination = *loc_iter;
-            }
-            return destination;
-    }
-
-    return destination;
+		destination = map_location();
+		for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+			typedef move_map::const_iterator Itor;
+			std::pair<Itor,Itor> range = get_srcdst().equal_range(src);
+			bool found = false;
+			for(Itor i = range.first; i != range.second; ++i) {
+				if (i->second == *loc_iter ) {
+					found = true;
+					break;
+				}
+			}
+			if ( !found ) {
+				continue;
+			}
+			destination = *loc_iter;
+		}
+		return destination;
+	}
+	return destination;
 }
 
 //commandline=true when we evaluate formula from commandline, false otherwise (default)
@@ -592,7 +447,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			//is_ok() must be checked or the code will complain :)
 			if (!recruit_result->is_ok()) {
 				//get_status() can be used to fetch the error code
-				LOG_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
+				ERR_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
 
 				if(safe_call) {
 					//safe call was called, prepare error information
@@ -612,7 +467,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				made_moves.push_back(action);
 			} else {
 				//too many calls in a row - possible infinite loop
-				LOG_AI << "ERROR #" << 5001 << " while executing 'set_var' formula function\n";
+				ERR_AI << "ERROR #" << 5001 << " while executing 'set_var' formula function\n";
 
 				if( safe_call )
 					error = variant(new safe_call_result(set_var_command, 5001));
@@ -621,7 +476,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			int status = 0;
 			unit_map::iterator unit;
 
-			if( infinite_loop_guardian_.set_unit_var_check() ) {
+			if( !infinite_loop_guardian_.set_unit_var_check() ) {
 			    status = 5001; //exceeded nmber of calls in a row - possible infinite loop
 			} else if( (unit = get_info().units.find(set_unit_var_command->loc())) == get_info().units.end() ) {
 			    status = 5002; //unit not found
@@ -634,21 +489,23 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				made_moves.push_back(action);
 			} else {
-				LOG_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function\n";
+				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function\n";
 				if(safe_call)
 				    error = variant(new safe_call_result(set_unit_var_command,
 									status));
 			}
 			
-		} else if( action.is_string() && action.as_string() == "recruit") {
-			if( do_recruitment() )
-				made_moves.push_back(action);
+			//:} else if( action.is_string() && action.as_string() == "recruit") {
+			// recruitment temporary disabled
+			// @todo 1.7.3 rework recruitment as aspect
+			//if( do_recruitment() )
+			//	made_moves.push_back(action);
 		} else if( action.is_string() && action.as_string() == "continue") {
 			if( infinite_loop_guardian_.continue_check() ) {
 				made_moves.push_back(action);
 			} else {
 				//too many calls in a row - possible infinite loop
-				LOG_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword\n";
+				ERR_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword\n";
 
 				if( safe_call )
 					error = variant(new safe_call_result(NULL, 5001));
@@ -713,30 +570,9 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 	return variant(&made_moves);
 }
 
-
-bool formula_ai::do_recruitment()
+void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	if(!recruit_formula_) {
-		return false;
-	}
-
-	bool ret = false;
-
-	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
-	try {
-		while( !make_action(recruit_formula_,callable).is_empty() )
-		{
-		    ret = true;
-		}
-	}
-	catch(formula_error& e) {
-		if(e.filename == "recruit formula")
-			e.line = 0;
-			handle_exception( e, "Formula error");
-	}
-
-	return ret;
+	function_table_.add_formula_function(name,formula,precondition,args);
 }
 
 namespace {
@@ -937,11 +773,12 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "keeps")
 	{
 		return get_keeps();
-
+	} else if(key == "map")
+	{
+		return variant(new gamemap_callable(get_info().map));
 	} else if(key == "villages")
 	{
 		return villages_from_set(get_info().map.villages());
-
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
@@ -964,7 +801,6 @@ variant formula_ai::get_value(const std::string& key) const
 		return villages_from_set(get_info().map.villages(), &current_team().villages());
 	}
 
-	//return ai_default::get_value(key);
 	return variant();
 }
 
@@ -980,7 +816,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_moves", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
@@ -994,8 +830,6 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
-
-	//ai_default::get_inputs(inputs);
 }
 
 variant formula_ai::get_keeps() const
@@ -1046,48 +880,27 @@ bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const 
 void formula_ai::on_create(){
 	//make sure we don't run out of refcount
 	vars_.add_ref();
-	const config& ai_param = cfg_;
 
-	// load candidate actions from config
-	candidate_action_manager_.load_config(ai_param, this, &function_table);
-
-	foreach (const config &func, ai_param.child_range("function"))
+	foreach (const config &func, cfg_.child_range("function"))
 	{
 		const t_string &name = func["name"];
 		const t_string &inputs = func["inputs"];
 		const t_string &formula_str = func["formula"];
 
 		std::vector<std::string> args = utils::split(inputs);
-
 		try {
-			function_table.add_formula_function(name,
-				game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)),
-				game_logic::formula::create_optional_formula(func["precondition"], &function_table),
-				args);
-			}
-			catch(formula_error& e) {
-				handle_exception(e, "Error while registering function '" + name + "'");
-			}
+			add_formula_function(name,
+					     create_optional_formula(formula_str),
+					     create_optional_formula(func["precondition"]),
+					     args);
 		}
-
-
-        try{
-                recruit_formula_ = game_logic::formula::create_optional_formula(cfg_["recruitment"], &function_table);
-        }
-        catch(formula_error& e) {
-                handle_exception(e);
-                recruit_formula_ = game_logic::formula_ptr();
-        }
-
-        try{
-                move_formula_ = game_logic::formula::create_optional_formula(cfg_["move"], &function_table);
-        }
-        catch(formula_error& e) {
-                handle_exception(e);
-                move_formula_ = game_logic::formula_ptr();
-        }
+		catch(game_logic::formula_error& e) {
+			handle_exception(e, "Error while registering function '" + name + "'");
+		}
+	}
 
 }
+
 
 void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca)
 {
@@ -1152,6 +965,7 @@ config formula_ai::to_config() const
 	{
 		return config();
 	}
+	DBG_AI << "formula_ai::to_config(): "<< cfg_<<std::endl;
 	return cfg_;//@todo 1.7 add a proper serialization
 }
 

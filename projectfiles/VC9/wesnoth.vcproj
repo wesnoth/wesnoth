@@ -4391,6 +4391,90 @@
 							/>
 						</FileConfiguration>
 					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_rca_formulas.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_side_formulas.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_unit_formulas.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\formula\"
+							/>
+						</FileConfiguration>
+					</File>
 				</Filter>
 				<Filter
 					Name="testing"
@@ -5680,6 +5764,18 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\formula\function_table.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_rca_formulas.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_side_formulas.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\formula\stage_unit_formulas.hpp"
 						>
 					</File>
 				</Filter>

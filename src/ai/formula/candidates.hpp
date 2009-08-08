@@ -24,6 +24,12 @@
 #include "../../formula_fwd.hpp"
 #include "../../formula_function.hpp"
 
+namespace ai {
+
+class formula_ai;
+
+}
+
 namespace game_logic {
 
 class base_candidate_action;

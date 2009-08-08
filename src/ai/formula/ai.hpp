@@ -27,7 +27,7 @@
 
 #include "../composite/contexts.hpp"
 #include "../default/ai.hpp"
-#include "../../formula.hpp"
+#include "../../formula_fwd.hpp"
 #include "../../formula_callable.hpp"
 
 
@@ -60,14 +60,11 @@ class formula_ai : public readonly_context_proxy, public game_logic::formula_cal
 public:
 	explicit formula_ai(readonly_context &context, const config &cfg);
 	virtual ~formula_ai() {};
-	virtual void play_turn();
-	virtual void new_turn();
-	virtual std::string describe_self();
 	virtual config to_config() const;
 
-	const move_map& srcdst() const { if(!move_maps_valid_) { prepare_move(); } return srcdst_; }
-
 	std::string evaluate(const std::string& formula_str);
+
+	virtual void add_formula_function(const std::string& name, game_logic::const_formula_ptr formula, game_logic::const_formula_ptr precondition, const std::vector<std::string>& args);	
 
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
 	class gamestate_change_observer : public events::observer
@@ -104,8 +101,6 @@ public:
 	// Check if given unit can reach another unit
 	bool can_reach_unit(map_location unit_A, map_location unit_B) const;
 
-	const std::map<map_location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
-
 	void handle_exception(game_logic::formula_error& e) const;
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
 
@@ -137,34 +132,29 @@ public:
 	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
 
 	void set_ai_context(ai_context *context);
+
+	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
+
 private:
 	ai_context *ai_ptr_;
-	const config &cfg_;
+	const config cfg_;
 	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
-	bool do_recruitment();
-	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
 	variant execute_variant(const variant& var, ai_context &ai_, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-	game_logic::const_formula_ptr recruit_formula_;
-	game_logic::const_formula_ptr move_formula_;
-
 	std::vector<variant> outcome_positions_;
-
-	mutable std::map<map_location,paths> possible_moves_;
 
 	void prepare_move() const;
 
         map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable bool move_maps_valid_;
-	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
 	mutable variant attacks_cache_;
 	mutable variant keeps_cache_;
 
 	gamestate_change_observer infinite_loop_guardian_;
 	game_logic::map_formula_callable vars_;
-	game_logic::ai_function_symbol_table function_table;
+	game_logic::ai_function_symbol_table function_table_;
 	game_logic::candidate_action_manager candidate_action_manager_;
 
 	friend class ai_default;

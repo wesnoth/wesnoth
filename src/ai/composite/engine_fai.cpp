@@ -19,6 +19,9 @@
 
 #include "ai.hpp"
 #include "engine_fai.hpp"
+#include "../formula/stage_rca_formulas.hpp"
+#include "../formula/stage_side_formulas.hpp"
+#include "../formula/stage_unit_formulas.hpp"
 #include "rca.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
@@ -70,9 +73,9 @@ private:
 };
 
 engine_fai::engine_fai( readonly_context &context, const config &cfg )
-	: engine(context,cfg), formula_ai_(context,cfg.child("formula_ai"))
+	: engine(context,cfg), formula_ai_(context,cfg.child_or_empty("formula_ai"))
 {
-
+	formula_ai_.on_create();
 }
 
 
@@ -93,6 +96,20 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 
 }
 
+void engine_fai::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
+{
+	if (!cfg) {
+		return;
+	}
+	const std::string &name = cfg["name"];
+	if (name=="rca_formulas") {
+		*b = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
+	} else if (name=="side_formulas") {
+		*b = stage_ptr(new stage_side_formulas(context,cfg,formula_ai_));
+	} else if (name=="unit_formulas") {
+		*b = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
+	}
+}
 
 std::string engine_fai::evaluate(const std::string &str)
 {

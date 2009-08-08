@@ -947,7 +947,7 @@ private:
 		}
 
 		const map_location& loc = convert_variant<location_callable>(res)->loc();
-		const ai::move_map& srcdst = ai_.srcdst();
+		const ai::move_map& srcdst = ai_.get_srcdst();
 		typedef ai::move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
 

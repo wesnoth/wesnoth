@@ -241,6 +241,9 @@ SET(wesnoth-main_SRC
     ai/formula/callable_objects.cpp
     ai/formula/candidates.cpp
     ai/formula/function_table.cpp
+    ai/formula/stage_rca_formulas.cpp
+    ai/formula/stage_side_formulas.cpp
+    ai/formula/stage_unit_formulas.cpp
     ai/game_info.cpp
     ai/interface.cpp
     ai/manager.cpp

@@ -293,9 +293,6 @@ void ai_default::new_turn()
 	unit_combat_scores_.clear();
 	invalidate_keeps_cache();
 	unit_stats_cache().clear();
-	if (formula_ai_ != NULL){
-		formula_ai_->new_turn();
-	}
 }
 
 std::string ai_default::describe_self(){
@@ -1774,18 +1771,13 @@ bool ai_default::is_accessible(const location& loc, const move_map& dstsrc) cons
 }
 
 
-variant ai_default::get_value(const std::string& key) const
+variant ai_default::get_value(const std::string &/*key*/) const
 {
-       if(key == "map") {
-               return variant(new gamemap_callable(get_info().map));
-       }
        return variant();
 }
 
-void ai_default::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+void ai_default::get_inputs(std::vector<game_logic::formula_input> */*inputs*/) const
 {
-       using game_logic::FORMULA_READ_ONLY;
-       inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
 }
 
 
