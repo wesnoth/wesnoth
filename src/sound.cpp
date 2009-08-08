@@ -704,7 +704,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		if (!filename.empty()) {
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
 		} else {
-			ERR_AUDIO << "Could not load sound with empty filename\n";
+			ERR_AUDIO << "Could not load sound file '" << file << "'.\n";
 			throw chunk_load_exception();
 		}
 
