@@ -29,7 +29,7 @@ static lg::log_domain log_ai_composite_aspect("ai/composite/aspect");
 #define ERR_AI_COMPOSITE_ASPECT LOG_STREAM(err, log_ai_composite_aspect)
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id)
-		: valid_(false), cfg_(cfg), invalidate_on_turn_start_(utils::string_bool(cfg["invalidate_on_turn_start"],true)), invalidate_on_tod_change_(utils::string_bool(cfg["invalidate_on_tod_change"],true)), invalidate_on_gamestate_change_(utils::string_bool(cfg["invalidate_on_gamestate_change"])), invalidate_on_minor_gamestate_change_(utils::string_bool(cfg["invalidate_on_minor_gamestate_change"])),engine_(cfg["engine"]),name_(cfg["name"]),id_(id)
+		: valid_(false), valid_variant_(false), cfg_(cfg), invalidate_on_turn_start_(utils::string_bool(cfg["invalidate_on_turn_start"],true)), invalidate_on_tod_change_(utils::string_bool(cfg["invalidate_on_tod_change"],true)), invalidate_on_gamestate_change_(utils::string_bool(cfg["invalidate_on_gamestate_change"])), invalidate_on_minor_gamestate_change_(utils::string_bool(cfg["invalidate_on_minor_gamestate_change"])),engine_(cfg["engine"]),name_(cfg["name"]),id_(id)
 	{
 		DBG_AI_COMPOSITE_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 		init_readonly_context_proxy(context);

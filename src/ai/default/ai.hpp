@@ -82,7 +82,7 @@ public:
 	/** get the recursion counter */
 	int get_recursion_count() const;
 private:
-	const config &cfg_;
+	const config cfg_;
 	recursion_counter recursion_counter_;
 
 protected:

@@ -24,6 +24,7 @@
 #include "engine.hpp"
 
 #include "../contexts.hpp"
+#include "../default/contexts.hpp"
 #include "../game_info.hpp"
 #include "../manager.hpp"
 #include "../../foreach.hpp"
@@ -247,6 +248,201 @@ public:
 		return terrain_filter(vconfig(c),manager::get_ai_info().units);
 	}
 };
+
+
+// variant value translator
+
+template<typename T>
+class variant_value_translator {
+public:
+
+	static void variant_to_value(const variant &/*var*/, T &/*value*/)
+	{
+	        assert(false);//not implemented
+	}
+
+	static void value_to_variant(const T &/*value*/, variant &/*var*/)
+	{
+		assert(false);//not implemented
+	}
+
+	static variant value_to_variant(const T &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static T variant_to_value(const variant &var)
+	{
+		T value;
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
+template<>
+class variant_value_translator<int> {
+public:
+
+	static void variant_to_value(const variant &var, int &value)
+	{
+	        value = var.as_int();
+	}
+
+	static void value_to_variant(const int &value, variant &var)
+	{
+		var = variant(value);
+	}
+
+	static variant value_to_variant(const int &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static int variant_to_value(const variant &var)
+	{
+		int value;
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
+template<>
+class variant_value_translator<bool> {
+public:
+
+	static void variant_to_value(const variant &var, bool &value)
+	{
+	        value = var.as_bool();
+	}
+
+	static void value_to_variant(const bool &value, variant &var)
+	{
+		var = variant(value);
+	}
+
+	static variant value_to_variant(const bool &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static bool variant_to_value(const variant &var)
+	{
+		bool value;
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
+
+template<>
+class variant_value_translator<std::string> {
+public:
+
+	static void variant_to_value(const variant &var, std::string &value)
+	{
+	        value = var.as_string();
+	}
+
+	static void value_to_variant(const std::string &value, variant &var)
+	{
+		var = variant(value);
+	}
+
+	static variant value_to_variant(const std::string &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static std::string variant_to_value(const variant &var)
+	{
+		std::string value;
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
+
+template<>
+class variant_value_translator<attacks_vector> {
+public:
+
+	static void variant_to_value(const variant &/*var*/, attacks_vector &/*value*/)
+	{ 
+		assert(false);//not implemented
+	}
+
+	static void value_to_variant(const attacks_vector &value, variant &var)
+	{
+                std::vector<variant> vars;
+                for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
+                        vars.push_back(variant(new attack_analysis(*i)));
+                }
+		var = variant(&vars);
+	}
+
+	static variant value_to_variant(const attacks_vector &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static attacks_vector variant_to_value(const variant &var)
+	{
+		attacks_vector value;
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
+template<>
+class variant_value_translator<terrain_filter> {
+public:
+
+	static void variant_to_value(const variant &/*var*/, terrain_filter &/*value*/)
+	{
+	        assert(false);//not implemented
+	}
+
+	static void value_to_variant(const terrain_filter &/*value*/, variant &/*var*/)
+	{
+		assert(false);//not implemented
+	}
+
+	static variant value_to_variant(const terrain_filter &value)
+	{
+		variant var;
+		value_to_variant(value,var);
+		return var;
+	}
+
+	static terrain_filter variant_to_value(const variant &var)
+	{
+		static config c;
+		if (!c.child("not")) {
+			c.add_child("not");
+		}
+
+		terrain_filter value(vconfig(c),manager::get_ai_info().units);
+		variant_to_value(var,value);
+		return value;
+	}
+};
+
+
 //----
 
 class aspect : public readonly_context_proxy, public events::observer {
@@ -258,7 +454,14 @@ public:
 	void invalidate() const
 	{
 		valid_ = false;
+		valid_variant_ = false;
 	}
+
+
+	virtual const variant& get_variant() const = 0;
+
+
+	virtual boost::shared_ptr<variant> get_variant_ptr() const = 0;
 
 
 	virtual void recalculate() const = 0;
@@ -290,6 +493,8 @@ public:
 	static lg::log_domain& log();
 protected:
 	mutable bool valid_;
+	mutable bool valid_variant_;
+
 	config cfg_;
 	bool invalidate_on_turn_start_;
 	bool invalidate_on_tod_change_;
@@ -316,25 +521,55 @@ public:
 
 	virtual const T& get() const
 	{
-		if (!valid_) {
-			recalculate();
-		}
-		return *value_;
+		return *get_ptr();
 	}
 
 
+	virtual const variant& get_variant() const
+	{
+		return *get_variant_ptr();
+	}
+
+	virtual boost::shared_ptr<variant> get_variant_ptr() const
+	{
+		if (!valid_variant_) {
+			if (!valid_) {
+				recalculate();
+			}
+
+			if (!valid_variant_ && valid_ ) {
+				value_variant_ = boost::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				valid_variant_ = true;
+			} else {
+				assert(valid_variant_);
+			}
+		}
+		return value_variant_;
+	}
+
 	virtual void recalculate() const = 0;
+	
 
 	virtual boost::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
-			recalculate();
+			if (!valid_variant_) {
+				recalculate();
+			}
+
+			if (!valid_ && valid_variant_) {
+				value_ = boost::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
+				valid_ = true;
+			} else {
+				assert(valid_);
+			}
 		}
 		return value_;
 	}
-protected:
 
+protected:
 	mutable boost::shared_ptr<T> value_;
+	mutable boost::shared_ptr<variant> value_variant_;
 };
 
 
@@ -409,14 +644,16 @@ public:
 
 	virtual void recalculate() const
 	{
+		//@todo 1.7.4 optimize in case of an aspect which returns variant
 		foreach (const boost::shared_ptr< typesafe_aspect<T> > f, facets_) {
 			if (f->active()) {
 				this->value_ = boost::shared_ptr<T>(f->get_ptr());
+				this->valid_ = true;
 				return;
 			}
 		}
 		this->value_ = boost::shared_ptr<T>(default_->get_ptr());
-		
+		this->valid_ = true;
 	}
 
 
@@ -477,6 +714,7 @@ public:
 	void recalculate() const
 	{
 		//nothing to recalculate
+		this->valid_ = true;
 	}
 
 

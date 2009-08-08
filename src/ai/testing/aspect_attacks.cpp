@@ -44,6 +44,7 @@ aspect_attacks::~aspect_attacks()
 void aspect_attacks::recalculate() const
 {
 	this->value_ = analyze_targets();
+	this->valid_ = true;
 }
 
 boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const

@@ -40,7 +40,7 @@ fallback_to_other_ai::fallback_to_other_ai( ai_context &context, const config &c
 
 void fallback_to_other_ai::on_create()
 {
-	const config &ai_cfg = cfg_.child_or_empty("ai");
+	const config ai_cfg = cfg_.child_or_empty("ai");
 	fallback_ai_ = manager::create_transient_ai(ai_cfg["ai_algorithm"], ai_cfg, this);
 }
 
