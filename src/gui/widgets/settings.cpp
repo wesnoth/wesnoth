@@ -187,7 +187,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * <span id="widget_list"></span>List of available widgets:
  * @start_table = widget_overview
  *     Button                        @macro = button_description
- *     Image                         An image.
+ *     Image                         @macro = image_description
  *     Horizontal_scrollbar          A horizontal scrollbar.
  *     Label                         A label without scrollbars.
  *     Listbox                       A listbox.
@@ -658,6 +658,8 @@ timage_definition::tresolution::tresolution(const config& cfg) :
  * @order = 1_image
  *
  * == Image ==
+ *
+ * @macro = image_description
  *
  * The definition of an image. The label field of the widget is used as the
  * name of file to show.

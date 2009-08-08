@@ -46,11 +46,20 @@ twidget* tbuilder_image::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = image_description
+ *
+ *        An image shows a static image.
+ * @end_macro
+ */
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_image
  *
  * == Image ==
+ *
+ * @macro = image_description
  *
  * An image has no extra fields.
  */
