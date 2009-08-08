@@ -2070,6 +2070,7 @@ private:
 				register_command("query", &chat_command_handler::do_network_send,
 					_("Send a query to the server. Without arguments the server"
 					" should tell you the available commands."));
+				register_alias("query", "q");
 				register_command("ban", &chat_command_handler::do_network_send_req_arg,
 					_("Ban and kick a player or observer. If he is not in the"
 					" game but on the server he will only be banned."), "<nick>");
