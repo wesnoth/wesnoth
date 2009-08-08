@@ -427,6 +427,11 @@ binary_nodes = map(eval, binaries)
 all = env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
 
+if have_client_prereqs and env["nls"]:
+    env.Requires("wesnoth", Dir("translations"))
+    if env["dummy_locales"]:
+        env.Requires(wesnoth, Dir("locales"))
+
 #
 # Utility productions (Unix-like systems only)
 #
@@ -452,10 +457,6 @@ if env["dummy_locales"]:
             "locales/C",
             "ln -sf $SOURCE.filebase $TARGET"
             )
-
-    env.Requires(wesnoth, Dir("locales"))
-if env["nls"]:
-    env.Requires(wesnoth, Dir("translations"))
 
 #
 # Unix installation productions
