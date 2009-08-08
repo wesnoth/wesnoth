@@ -186,7 +186,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *
  * <span id="widget_list"></span>List of available widgets:
  * @start_table = widget_overview
- *     Button                        A push button.
+ *     Button                        @macro = button_description
  *     Image                         An image.
  *     Horizontal_scrollbar          A horizontal scrollbar.
  *     Label                         A label without scrollbars.
@@ -562,7 +562,7 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Button ==
  *
- * The definition of a normal push button.
+ * @macro = button_description
  *
  * The following states exist:
  * * state_enabled, the button is enabled.

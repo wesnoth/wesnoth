@@ -51,11 +51,21 @@ twidget* tbuilder_button::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = button_description
+ *
+ *        A button is a control that can be pushed to start an action or
+ *        close a dialog.
+ * @end_macro
+ */
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_button
  *
  * == Button ==
+ *
+ * @macro = button_description
  *
  * Instance of a button. When a button has a return value it sets the
  * return value for the window. Normally this closes the window and returns
