@@ -18,6 +18,8 @@
 
 #include "gui/widgets/window.hpp"
 
+#include "gui/auxiliary/log.hpp" // included for the deprecated message
+
 namespace gui2 {
 
 namespace {
@@ -286,6 +288,8 @@ void tlistbox::init_linked_size_widets(twindow& window,
 	if(linked_widgets_disabled_) {
 		return;
 	}
+	ERR_GUI_G << "The listbox uses the "
+			"deprecated automatic linked widget feature.\n";
 
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
