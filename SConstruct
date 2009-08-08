@@ -214,6 +214,16 @@ configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_d
 env.MergeFlags(env["extra_flags_config"])
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
+
+    if env["PLATFORM"] == "posix":
+        conf.CheckCHeader("poll.h", "<>")
+        conf.CheckCHeader("sys/poll.h", "<>")
+        conf.CheckCHeader("sys/select.h", "<>")
+        if conf.CheckCHeader("sys/sendfile.h", "<>"):
+            conf.CheckFunc("sendfile")
+    conf.CheckLib("m")
+    conf.CheckFunc("round")
+
     have_server_prereqs = \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
         conf.CheckGettextLibintl() and \
@@ -243,31 +253,23 @@ if env["prereqs"]:
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
 
     have_X = False
-    if env["PLATFORM"] != "win32":
-        have_X = conf.CheckLib('X11')
+    if have_client_prereqs:
+        if env["PLATFORM"] != "win32":
+            have_X = conf.CheckLib('X11')
 
-    if env["notifications"]:
-        if env["notifications_backend"] == "libnotify":
-            have_client_prereqs = have_client_prereqs and conf.CheckPKG("gtkmm-2.4 >= 2.8.0") and conf.CheckPKG("libnotifymm-1.0") or \
-                Warning("gtkmm and libnotifymm are required for desktop notifications support")
-            client_env.Append(CPPDEFINES = ["HAVE_LIBNOTIFY"])
+        if env["notifications"]:
+            if env["notifications_backend"] == "libnotify":
+                have_client_prereqs = have_client_prereqs and conf.CheckPKG("gtkmm-2.4 >= 2.8.0") and conf.CheckPKG("libnotifymm-1.0") or \
+                    Warning("gtkmm and libnotifymm are required for desktop notifications support")
+                client_env.Append(CPPDEFINES = ["HAVE_LIBNOTIFY"])
 
-        if env["notifications_backend"] == "kde":
-            have_client_prereqs = have_client_prereqs and conf.CheckPKG("QtDBus") or \
-                Warning("QtDBus is required for KDE desktop notifications support")
-            client_env.Append(CPPDEFINES = ["HAVE_QTDBUS"])
+            if env["notifications_backend"] == "kde":
+                have_client_prereqs = have_client_prereqs and conf.CheckPKG("QtDBus") or \
+                    Warning("QtDBus is required for KDE desktop notifications support")
+                client_env.Append(CPPDEFINES = ["HAVE_QTDBUS"])
 
-    if client_env['fribidi']:
-        client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
-
-    if env["PLATFORM"] == "posix":
-        conf.CheckCHeader("poll.h", "<>")
-        conf.CheckCHeader("sys/poll.h", "<>")
-        conf.CheckCHeader("sys/select.h", "<>")
-        if conf.CheckCHeader("sys/sendfile.h", "<>"):
-            conf.CheckFunc("sendfile")
-
-    conf.CheckFunc("round")
+        if client_env['fribidi']:
+            client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     if env["forum_user_handler"]:
         env.ParseConfig("mysql_config --libs --cflags")
