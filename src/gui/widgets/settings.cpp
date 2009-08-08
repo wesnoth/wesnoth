@@ -188,7 +188,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_overview
  *     Button                        @macro = button_description
  *     Image                         @macro = image_description
- *     Horizontal_scrollbar          A horizontal scrollbar.
+ *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
  *     Label                         A label without scrollbars.
  *     Listbox                       A listbox.
  *     Menubar                       A menubar which is used in menus and the
@@ -603,8 +603,7 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Horizontal scrollbar ==
  *
- * The definition of a horizontal scrollbar. This class is most of the time not
- * used directly. Instead it's used to build other items with scrollbars.
+ * @macro = horizontal_scrollbar_description
  *
  * The resolution for a horizontal scrollbar also contains the following keys:
  * @start_table = config
