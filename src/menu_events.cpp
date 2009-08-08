@@ -774,48 +774,49 @@ private:
 				u_type = unit_type_data::types().find_unit_type(name);
 		assert(u_type != unit_type_data::types().end());
 
-		if(u_type->second.cost() > current_team.gold()) {
-			gui2::show_transient_message(gui_->video(),"",
-				 _("You don't have enough gold to recruit that unit"));
-		} else {
-			last_recruit_ = name;
-
-			//create a unit with traits
-			recorder.add_recruit(recruit_num, last_hex);
-			map_location loc = last_hex;
-			const events::command_disabler disable_commands;
-			const std::string &msg = find_recruit_location(side_num, loc);
-			if(msg.empty()) {
-				const unit new_unit(&units_, &u_type->second, side_num, true);
-				place_recruit(new_unit, loc, false, true);
-				current_team.spend_gold(u_type->second.cost());
-				statistics::recruit_unit(new_unit);
-
-				//MP_COUNTDOWN grant time bonus for recruiting
-				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-
-				redo_stack_.clear();
-				assert(new_unit.type());
-
-				// Dissallow undoing of recruits. Can be enabled again once the unit's
-				// description= key doesn't use random anymore.
-				const bool shroud_cleared = clear_shroud(side_num);
-				if(shroud_cleared || new_unit.type()->genders().size() > 1
-						|| new_unit.type()->has_random_traits()) {
-					clear_undo_stack(side_num);
-				} else {
-					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
-				}
-
-				gui_->recalculate_minimap();
-				gui_->invalidate_game_status();
-				gui_->invalidate_all();
-				recorder.add_checksum_check(loc);
-			} else {
-				recorder.undo();
-				gui2::show_transient_message(gui_->video(),"",msg);
-			}
+		if (u_type->second.cost() > current_team.gold()) {
+			gui2::show_transient_message(gui_->video(), "",
+				_("You don't have enough gold to recruit that unit"));
+			return;
 		}
+
+		last_recruit_ = name;
+		const events::command_disabler disable_commands;
+
+		map_location loc = last_hex;
+		const std::string &msg = find_recruit_location(side_num, loc);
+		if (!msg.empty()) {
+			gui2::show_transient_message(gui_->video(), "", msg);
+			return;
+		}
+
+		//create a unit with traits
+		recorder.add_recruit(recruit_num, loc);
+		const unit new_unit(&units_, &u_type->second, side_num, true);
+		place_recruit(new_unit, loc, false, true);
+		current_team.spend_gold(u_type->second.cost());
+		statistics::recruit_unit(new_unit);
+
+		//MP_COUNTDOWN grant time bonus for recruiting
+		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+
+		redo_stack_.clear();
+		assert(new_unit.type());
+
+		// Dissallow undoing of recruits. Can be enabled again once the unit's
+		// description= key doesn't use random anymore.
+		const bool shroud_cleared = clear_shroud(side_num);
+		if (shroud_cleared || new_unit.type()->genders().size() > 1
+		    || new_unit.type()->has_random_traits()) {
+			clear_undo_stack(side_num);
+		} else {
+			undo_stack_.push_back(undo_action(new_unit, loc, RECRUIT_POS));
+		}
+
+		gui_->recalculate_minimap();
+		gui_->invalidate_game_status();
+		gui_->invalidate_all();
+		recorder.add_checksum_check(loc);
 	}
 
 	void menu_handler::recall(int side_num, const map_location &last_hex)
@@ -841,134 +842,135 @@ private:
 		gui_->draw(); //clear the old menu
 
 		if(recall_list_team.empty()) {
-			gui2::show_transient_message(gui_->video(), ""
-					,_("There are no troops available to recall\n(You must have"
-					" veteran survivors from a previous scenario)"));
-		} else {
-			std::vector<std::string> options, options_to_filter;
-
-			std::ostringstream heading;
-			heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
-					<< COLUMN_SEPARATOR << _("Name")
-					<< COLUMN_SEPARATOR << _("Level^Lvl.")
-					<< COLUMN_SEPARATOR << _("XP");
-#ifndef USE_TINY_GUI
-			heading << COLUMN_SEPARATOR << _("Traits");
-#endif
-
-			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_xp_sort(4,3).set_alpha_sort(5);
-
-			options.push_back(heading.str());
-			options_to_filter.push_back(options.back());
-
-			for(std::vector<unit>::const_iterator u = recall_list_team.begin(); u != recall_list_team.end(); ++u) {
-				std::stringstream option, option_to_filter;
-				std::string name = u->name().empty() ? "-" : u->name();
-
-				option << IMAGE_PREFIX << u->absolute_image();
-#ifndef LOW_MEM
-				option << "~RC("  << u->team_color() << '>'
-					<< team::get_side_colour_index(side_num) << ')';
-#endif
-				option << COLUMN_SEPARATOR
-					<< u->type_name() << COLUMN_SEPARATOR
-					<< name << COLUMN_SEPARATOR
-					<< u->level() << COLUMN_SEPARATOR
-					<< u->experience() << "/";
-				if (u->can_advance())
-					option << u->max_experience();
-				else
-					option <<  "-";
-
-
-				option_to_filter << u->type_name() << " " << name << " " << u->level();
-
-#ifndef USE_TINY_GUI
-				option << COLUMN_SEPARATOR;
-				const std::vector<std::string> traits =
-						 utils::split(std::string(u->traits_description()), ',');
-				foreach(const std::string& trait, traits) {
-					option << trait << '\n';
-					option_to_filter << " " << trait;
-				}
-#endif
-
-				options.push_back(option.str());
-				options_to_filter.push_back(option_to_filter.str());
-			}
-
-			int res = 0;
-
-			{
-				gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
-						  _("Select unit:") + std::string("\n"),
-						  gui::OK_CANCEL,
-						  gui::dialog::default_style);
-				rmenu.set_menu(options, &sorter);
-
-				gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
-				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
-				rmenu.set_textbox(filter);
-
-				delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team, undo_stack_, redo_stack_);
-				gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
-				rmenu.add_button(delete_button);
-
-				rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
-					gui::dialog::BUTTON_HELP);
-
-				dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
-				rmenu.add_pane(&unit_preview);
-
-				res = rmenu.show();
-				res = filter->get_index(res);
-			}
-
-			if(res >= 0) {
-				if(current_team.gold() < game_config::recall_cost) {
-					std::stringstream msg;
-					utils::string_map i18n_symbols;
-					i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
-					msg << vngettext("You must have at least 1 gold piece to recall a unit",
-						"You must have at least $cost gold pieces to recall a unit",
-						game_config::recall_cost,
-						i18n_symbols);
-					gui::dialog(*gui_,"",msg.str()).show();
-				} else {
-					LOG_NG << "recall index: " << res << "\n";
-					map_location loc = last_hex;
-					recorder.add_recall(res,loc);
-					const events::command_disabler disable_commands;
-					const std::string &err = find_recruit_location(side_num, loc);
-					if(!err.empty()) {
-						recorder.undo();
-						gui::dialog(*gui_,"",err,gui::OK_ONLY).show();
-					} else {
-						unit& un = recall_list_team[res];
-						un.set_game_context(&units_);
-						place_recruit(un, loc, true, true);
-						statistics::recall_unit(un);
-						current_team.spend_gold(game_config::recall_cost);
-
-						bool shroud_cleared = clear_shroud(side_num);
-						if (shroud_cleared) {
-							clear_undo_stack(side_num);
-						} else {
-							undo_stack_.push_back(undo_action(un,loc,res));
-						}
-
-						redo_stack_.clear();
-
-						recall_list_team.erase(recall_list_team.begin()+res);
-						gui_->invalidate_game_status();
-						gui_->invalidate_all();
-						recorder.add_checksum_check(loc);
-					}
-				}
-			}
+			gui2::show_transient_message(gui_->video(), "",
+				_("There are no troops available to recall\n(You must have"
+				" veteran survivors from a previous scenario)"));
+			return;
 		}
+
+		std::vector<std::string> options, options_to_filter;
+
+		std::ostringstream heading;
+		heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
+			<< COLUMN_SEPARATOR << _("Name")
+			<< COLUMN_SEPARATOR << _("Level^Lvl.")
+			<< COLUMN_SEPARATOR << _("XP");
+#ifndef USE_TINY_GUI
+		heading << COLUMN_SEPARATOR << _("Traits");
+#endif
+
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_xp_sort(4,3).set_alpha_sort(5);
+
+		options.push_back(heading.str());
+		options_to_filter.push_back(options.back());
+
+		foreach (const unit &u, recall_list_team)
+		{
+			std::stringstream option, option_to_filter;
+			std::string name = u.name();
+			if (name.empty()) name = "-";
+
+			option << IMAGE_PREFIX << u.absolute_image();
+#ifndef LOW_MEM
+			option << "~RC("  << u.team_color() << '>'
+				<< team::get_side_colour_index(side_num) << ')';
+#endif
+			option << COLUMN_SEPARATOR
+				<< u.type_name() << COLUMN_SEPARATOR
+				<< name << COLUMN_SEPARATOR
+				<< u.level() << COLUMN_SEPARATOR
+				<< u.experience() << "/";
+			if (u.can_advance())
+				option << u.max_experience();
+			else
+				option << "-";
+
+			option_to_filter << u.type_name() << " " << name << " " << u.level();
+
+#ifndef USE_TINY_GUI
+			option << COLUMN_SEPARATOR;
+			const std::vector<std::string> traits =
+				 utils::split(u.traits_description(), ',');
+			foreach (const std::string &trait, traits) {
+				option << trait << '\n';
+				option_to_filter << " " << trait;
+			}
+#endif
+
+			options.push_back(option.str());
+			options_to_filter.push_back(option_to_filter.str());
+		}
+
+		int res = 0;
+
+		{
+			gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
+				_("Select unit:") + std::string("\n"),
+				gui::OK_CANCEL, gui::dialog::default_style);
+			rmenu.set_menu(options, &sorter);
+
+			gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
+				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
+			rmenu.set_textbox(filter);
+
+			delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team, undo_stack_, redo_stack_);
+			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+			rmenu.add_button(delete_button);
+
+			rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+				gui::dialog::BUTTON_HELP);
+
+			dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
+			rmenu.add_pane(&unit_preview);
+
+			res = rmenu.show();
+			res = filter->get_index(res);
+			if (res < 0) return;
+		}
+
+		if (current_team.gold() < game_config::recall_cost) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
+			std::string msg = vngettext(
+				"You must have at least 1 gold piece to recall a unit",
+				"You must have at least $cost gold pieces to recall a unit",
+				game_config::recall_cost, i18n_symbols);
+			gui2::show_transient_message(gui_->video(), "", msg);
+			return;
+		}
+
+		LOG_NG << "recall index: " << res << "\n";
+		const events::command_disabler disable_commands;
+
+		map_location loc = last_hex;
+		const std::string &err = find_recruit_location(side_num, loc);
+		if(!err.empty()) {
+			gui2::show_transient_message(gui_->video(), "", err);
+			return;
+		}
+		recorder.add_recall(res, loc);
+		unit &un = recall_list_team[res];
+		un.set_game_context(&units_);
+		place_recruit(un, loc, true, true);
+		statistics::recall_unit(un);
+		current_team.spend_gold(game_config::recall_cost);
+
+		bool shroud_cleared = clear_shroud(side_num);
+		if (shroud_cleared) {
+			clear_undo_stack(side_num);
+		} else {
+			undo_stack_.push_back(undo_action(un, loc, res));
+		}
+
+		redo_stack_.clear();
+
+		recall_list_team.erase(recall_list_team.begin() + res);
+		gui_->invalidate_game_status();
+		gui_->invalidate_all();
+		recorder.add_checksum_check(loc);
 	}
+
 	void menu_handler::undo(int side_num)
 	{
 		if(undo_stack_.empty())
