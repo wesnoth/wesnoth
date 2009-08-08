@@ -261,8 +261,8 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	cfg["weapon"] = buf;
 	snprintf(buf,sizeof(buf),"%d",def_weapon);
 	cfg["defender_weapon"] = buf;
-	cfg["attacker_type"] = attacker_type;
-	cfg["defender_type"] = defender_type;
+	cfg["attacker_type"] = attacker_type_id;
+	cfg["defender_type"] = defender_type_id;
 	snprintf(buf,sizeof(buf),"%d",attacker_lvl);
 	cfg["attacker_lvl"] = buf;
 	snprintf(buf,sizeof(buf),"%d",defender_lvl);
