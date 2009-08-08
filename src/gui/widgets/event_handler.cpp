@@ -421,6 +421,32 @@ void tevent_handler::remove_help_popup()
 	do_remove_help_popup();
 }
 
+void tevent_handler::remove_widget(const twidget* widget)
+{
+	if(left_.last_clicked_widget == widget) left_.last_clicked_widget = NULL;
+	if(left_.focus == widget) left_.focus = NULL;
+
+	if(middle_.last_clicked_widget == widget)
+		middle_.last_clicked_widget = NULL;
+	if(middle_.focus == widget) middle_.focus = NULL;
+
+	if(right_.last_clicked_widget == widget)
+		right_.last_clicked_widget = NULL;
+	if(right_.focus == widget) right_.focus = NULL;
+
+
+	if(mouse_focus_ == widget) mouse_focus_ = NULL;
+	if(keyboard_focus_ == widget) keyboard_focus_ = NULL;
+
+	std::vector<twidget*>::iterator itor = std::find(
+			  keyboard_focus_chain_.begin()
+			, keyboard_focus_chain_.end()
+			, widget);
+	if(itor != keyboard_focus_chain_.end()) {
+		keyboard_focus_chain_.erase(itor);
+	}
+}
+
 void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
 {
 	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);

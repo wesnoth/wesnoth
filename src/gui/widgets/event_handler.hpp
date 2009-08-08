@@ -137,6 +137,16 @@ public:
 	/** Removes the currently show tooltip. */
 	void remove_help_popup();
 
+	/**
+	 * Handles the removal of a widget.
+	 *
+	 * When a widget is destroyed in a window, it _must_ call this function
+	 * so all pointers stored here are also removed.
+	 *
+	 * @param widget              The widget being destroyed.
+	 */
+	void remove_widget(const twidget* widget);
+
 private:
 
 	/**

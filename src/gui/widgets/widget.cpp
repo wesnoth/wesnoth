@@ -44,6 +44,10 @@ twidget::~twidget()
 {
 	DBG_GUI_LF << "widget destroy: " << (void*)this
 		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
+
+	if(tevent_handler* event_handler = get_window()) {
+		event_handler->remove_widget(this);
+	}
 }
 
 void twidget::set_id(const std::string& id)
