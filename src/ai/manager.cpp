@@ -737,8 +737,8 @@ holder& manager::get_or_create_active_ai_holder_for_side_without_fallback(side_n
 	if (!ai_stack_for_specific_side.empty()){
 		return ai_stack_for_specific_side.top();
 	} else {
-		config cfg;
-		cfg["ai_algorithm"] = ai_algorithm_type;
+	      config cfg = configuration::get_default_ai_parameters();
+		cfg["ai_algorithm"] = ai_algorithm_type;//@todo: replace with fallback stage
 		holder new_holder(side, cfg);
 		ai_stack_for_specific_side.push(new_holder);
 		return ai_stack_for_specific_side.top();

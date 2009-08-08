@@ -66,6 +66,13 @@ public:
 
 
 	/**
+	 * get default AI parameters
+	 * @return default AI parameters
+	 */
+	static const config& get_default_ai_parameters();
+
+
+	/**
 	 * Return the config for a specified ai
 	 */
 	static const config& get_ai_config_for(const std::string &id);
@@ -134,13 +141,6 @@ private:
 	 * @retval false failure
 	 */
 	static bool upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg);
-
-
-	/**
-	 * get default AI parameters
-	 * @return default AI parameters
-	 */
-	static const config& get_default_ai_parameters();
 
 	typedef std::map<std::string, description> description_map;
 	static description_map ai_configurations_;
