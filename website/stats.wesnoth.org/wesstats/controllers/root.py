@@ -64,7 +64,7 @@ class RootController(BaseController):
 			#split v1 log into an array instead of a blob
 			raw_log = raw_log.split('\n')
 		wml_tree = helperlib.build_tree(raw_log)
-
+		
 		if not wml_tree.has_key("platform"):
 			wml_tree["platform"] = "unknown"
 
@@ -107,6 +107,36 @@ class RootController(BaseController):
 			int(wml_tree["game"][result_type].setdefault("gold","0")),
 			int(wml_tree["game"][result_type]["end_turn"])) #15 cols
 		curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+		
+		kill_events = wml_tree["game"]["kill_event"]
+		for kill in kill_events:
+			killed_unit = kill["results"]["unit_hit"]
+			
+			killed_lvl = kill["attack"]["defender_lvl"]
+			killer_lvl = kill["attack"]["attacker_lvl"]
+			killed_id = kill["attack"]["defender_type"]
+			killer_id = kill["attack"]["attacker_type"]
+			killed_position = [ kill["attack"]["destination"]["x"], kill["attack"]["destination"]["y"] ]
+			
+			if killed_unit == "attacker":
+				killer_lvl = kill["attack"]["defender_lvl"]
+				killed_lvl = kill["attack"]["attacker_lvl"]
+				killer_id = kill["attack"]["defender_type"]
+				killed_id = kill["attack"]["attacker_type"]
+				killed_position = [ kill["attack"]["source"]["x"], kill["attack"]["source"]["y"] ]
+				
+			params = (
+				wml_tree["game"]["scenario"],	
+				map_id.hexdigest(),
+				0, #@TODO: retrieve actual game_id of the game this is from from GAMES table
+				kill["attack"]["turn"],
+				killed_id,
+				killed_lvl,
+				killer_id,
+				killer_lvl,
+				killed_position[0]+","+killed_position[1] )
+			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+
 		conn.close()
 		return dict()
 	
