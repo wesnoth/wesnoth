@@ -392,6 +392,17 @@ private:
 	void child_populate_dirty_list(twindow& caller,
 		const std::vector<twidget*>& call_stack);
 
+	/**
+	 * Sets the size of the content grid.
+	 *
+	 * This function normally just updates the content grid but can be
+	 * overridden by a subclass.
+	 *
+	 * @param origin              The origin for the content.
+	 * @param size                The size of the content.
+	 */
+	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+
 	/** Helper function which needs to be called after the scollbar moved. */
 	void scrollbar_moved();
 

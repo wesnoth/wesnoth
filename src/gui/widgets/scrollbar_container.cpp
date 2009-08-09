@@ -310,7 +310,7 @@ void tscrollbar_container::
 			std::max(best_size.x, content_size.x),
 			std::max(best_size.y, content_size.y));
 
-	content_grid_->set_size(content_origin, content_grid_size);
+	set_content_size(content_origin, content_grid_size);
 
 	// Set vertical scrollbar
 	set_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_,
@@ -566,6 +566,12 @@ void tscrollbar_container::child_populate_dirty_list(twindow& caller,
 	assert(content_grid_);
 	std::vector<twidget*> child_call_stack(call_stack);
 	content_grid_->populate_dirty_list(caller, child_call_stack);
+}
+
+void tscrollbar_container::set_content_size(
+		const tpoint& origin, const tpoint& size)
+{
+	content_grid_->set_size(origin, size);
 }
 
 void tscrollbar_container::show_content_rect(const SDL_Rect& rect)

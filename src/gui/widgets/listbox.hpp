@@ -287,6 +287,9 @@ private:
 	 */
 	bool linked_widgets_disabled_;
 
+	/** Inherited from tscrollbar_container. */
+	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
 		{ static const std::string type = "listbox"; return type; }

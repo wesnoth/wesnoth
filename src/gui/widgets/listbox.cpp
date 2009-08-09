@@ -419,5 +419,15 @@ void tlistbox::finalize(
 
 }
 
+void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
+{
+	/** @todo This function needs more testing. */
+	assert(content_grid());
+
+	const int best_height = content_grid()->get_best_size().y;
+	const tpoint s(size.x, size.y < best_height ? size.y : best_height);
+	content_grid()->set_size(origin, s);
+}
+
 } // namespace gui2
 
