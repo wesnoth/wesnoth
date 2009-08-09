@@ -103,7 +103,12 @@ def build_tree(lines):
                 if tag.match(l) and not endtag.match(l):
                         #start of a new wml tag
                         tagname = l[1:len(l)-1]
-                        vars[tagname] = build_tree(lines[i+1:])
+			if not vars.has_key(tagname):
+				vars[tagname] = build_tree(lines[i+1:])
+			else:
+				if not isinstance(vars[tagname],types.ListType):
+					vars[tagname] = [ vars[tagname] ]
+				vars[tagname].append(build_tree(lines[i+1:]))
                         #go past the end of the tag we just processed
                         while lines[i].strip() != ("[/%s]" % (tagname)):
                                 i += 1
