@@ -36,6 +36,9 @@ Version 1.7.2+svn:
    * new tags [store_unit_type] and [store_unit_type_ids] were added
    * allow direct WML unit modification of "halo" attribute
  * Miscellaneous and bugfixes:
+   * [music], [sound], [sound_source] and [label] should work again on
+     WML prestart events; this means most music playlists should work again
+     (bug #14039)
    * 'Recruit' and 'recall' don't appear in context menus unless the
      leader is on a keep. (bug #13856 and #13855)
    * wmllint updated to accomodate new drake names. Gladiator changes must
