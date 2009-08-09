@@ -41,6 +41,10 @@ public:
 	t_string tooltip;
 	t_string help;
 	bool use_tooltip_on_label_overflow;
+#ifndef LOW_MEM
+	int debug_border_mode;
+	unsigned debug_border_colour;
+#endif
 };
 
 } // namespace implementation

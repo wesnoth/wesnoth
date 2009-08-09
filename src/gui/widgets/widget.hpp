@@ -447,6 +447,18 @@ public:
 	/** Returns the dirty state for a widget, final function. */
 	bool get_dirty() const { return dirty_; }
 
+#ifndef LOW_MEM
+	void set_debug_border_mode(const unsigned debug_border_mode)
+	{
+		debug_border_mode_ = debug_border_mode;
+	}
+
+	void set_debug_border_colour(const unsigned debug_border_colour)
+	{
+		debug_border_colour_ = debug_border_colour;
+	}
+#endif
+
 	/**
 	 * Draws the background of a widget.
 	 *
@@ -600,6 +612,28 @@ private:
 	 * finalizer function.
 	 */
 	std::string linked_group_;
+
+#ifndef LOW_MEM
+	/**
+	 * Mode for drawing the debug border.
+	 *
+	 * The debug border is a helper border to determine where a widget is
+	 * placed. It's only intended for debugging purposes.
+	 *
+	 * Possible values:
+	 * - 0 no border
+	 * - 1 single pixel border
+	 * - 2 floodfilled rectangle
+	 */
+	unsigned debug_border_mode_;
+
+	/** The color for the debug border. */
+	unsigned debug_border_colour_;
+
+	void draw_debug_border(surface& frame_buffer);
+#else
+	void draw_debug_border(surface&) {}
+#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/**

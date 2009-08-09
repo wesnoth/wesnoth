@@ -33,6 +33,10 @@ twidget::twidget()
 	, clip_rect_()
 	, layout_size_(tpoint(0,0))
 	, linked_group_()
+#ifndef LOW_MEM
+	, debug_border_mode_(0)
+	, debug_border_colour_(0)
+#endif
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, last_best_size_(tpoint(0,0))
 #endif
@@ -241,8 +245,10 @@ void twidget::draw_background(surface& frame_buffer)
 
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
+		draw_debug_border(frame_buffer);
 		impl_draw_background(frame_buffer);
 	} else {
+		draw_debug_border(frame_buffer);
 		impl_draw_background(frame_buffer);
 	}
 }
@@ -270,5 +276,28 @@ void twidget::draw_foreground(surface& frame_buffer)
 		impl_draw_foreground(frame_buffer);
 	}
 }
+
+#ifndef LOW_MEM
+void twidget::draw_debug_border(surface& frame_buffer)
+{
+	SDL_Rect r = drawing_action_ == PARTLY_DRAWN
+		? clip_rect_
+		: get_rect();
+	switch(debug_border_mode_) {
+		case 0:
+			/* DO NOTHING */
+			break;
+		case 1:
+			draw_rectangle(r.x, r.y, r.w, r.h
+					, debug_border_colour_, frame_buffer);
+			break;
+		case 2:
+			SDL_FillRect(frame_buffer, &r, debug_border_colour_);
+			break;
+		default:
+			assert(false);
+	}
+}
+#endif
 
 } // namespace gui2

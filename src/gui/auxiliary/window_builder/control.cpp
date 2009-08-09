@@ -34,6 +34,10 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	help(cfg["help"]),
 	use_tooltip_on_label_overflow(
 		utils::string_bool("use_tooltip_on_label_overflow", true))
+#ifndef LOW_MEM
+	, debug_border_mode(lexical_cast_default<int>(cfg["debug_border_mode"]))
+	, debug_border_colour(decode_colour(cfg["debug_border_colour"]))
+#endif
 {
 	if(definition.empty()) {
 		definition = "default";
@@ -55,6 +59,10 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_tooltip(tooltip);
 	control->set_help_message(help);
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
+#ifndef LOW_MEM
+	control->set_debug_border_mode(debug_border_mode);
+	control->set_debug_border_colour(debug_border_colour);
+#endif
 }
 
 } // namespace implementation
@@ -114,7 +122,18 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     set to true this will happen.
  *
  *   linked_group (string = "")        The linked group the widget belongs to.
- * @end_table
  *
+ *   debug_border_mode (unsigned = 0)  The mode for showing the debug border.
+ *                                     This border shows the area reserved for
+ *                                     a widget. This function is only meant
+ *                                     for debugging and might not be
+ *                                     available in all wesnoth binaries.
+ *                                     Available modes:
+ *                                     @* 0 no border.
+ *                                     @* 1 1 pixel border.
+ *                                     @* 2 floodfill the widget area.
+ *
+ *   debug_border_colour (colour = "") The colour of the debug border.
+ * @end_table
  */
 
