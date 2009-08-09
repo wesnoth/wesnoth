@@ -152,7 +152,9 @@ twidget* tbuilder_listbox::build() const
  *                                     Should the listbox automatically
  *                                     enable linked widgets? This feature is
  *                                     there for backwards compatibility and
- *                                     will be removed in the future.
+ *                                     will be removed in the future. It needs
+ *                                     to be set to true now since the old way
+ *                                     is no longer supported.
  *
  * @end_table
  *

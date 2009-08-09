@@ -290,6 +290,7 @@ void tlistbox::init_linked_size_widets(twindow& window,
 	}
 	ERR_GUI_G << "The listbox uses the "
 			"deprecated automatic linked widget feature.\n";
+	assert(false);
 
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
@@ -315,6 +316,7 @@ void tlistbox::add_linked_size_widgets(twindow& window,
 	if(linked_widgets_disabled_) {
 		return;
 	}
+	assert(false);
 
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
@@ -340,6 +342,7 @@ void tlistbox::remove_linked_size_widgets(twindow& window,
 	if(linked_widgets_disabled_) {
 		return;
 	}
+	assert(false);
 
 	for(tgrid::iterator itor = begin; itor != end; ++itor) {
 
