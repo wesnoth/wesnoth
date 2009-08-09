@@ -1682,7 +1682,8 @@ private:
 			{
 				advance_to_arg(n);
 				if (n < args.size()) {
-					return std::string(str_, args[n]);
+					std::string data(str_, args[n]);
+					return utils::strip(data);
 				} else {
 					return "";
 				}
