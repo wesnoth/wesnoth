@@ -64,14 +64,14 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	title->set_label(title_);
 	title->set_markup_mode(tcontrol::WML_MARKUP);
 
-	tcontrol* label =
-			dynamic_cast<tcontrol*>(window.find_widget("label", false));
-	assert(label);
-	label->set_label(message_);
-	label->set_markup_mode(tcontrol::PANGO_MARKUP);
-	// The label might not always be a scroll_label but the capturing
+	tcontrol* message =
+			dynamic_cast<tcontrol*>(window.find_widget("message", false));
+	assert(message);
+	message->set_label(message_);
+	message->set_markup_mode(tcontrol::PANGO_MARKUP);
+	// The message label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(label);
+	window.keyboard_capture(message);
 
 	// Find the input box related fields.
 	tlabel* caption = dynamic_cast<tlabel*>(
