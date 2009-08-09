@@ -186,9 +186,7 @@ void replay::add_recruit(int value, const map_location& loc)
 
 	config val;
 
-	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",value);
-	val["value"] = buf;
+	val["value"] = str_cast(value);
 
 	loc.write(val);
 
@@ -201,9 +199,7 @@ void replay::add_recall(int value, const map_location& loc)
 
 	config val;
 
-	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",value);
-	val["value"] = buf;
+	val["value"] = str_cast(value);
 
 	loc.write(val);
 
@@ -216,9 +212,7 @@ void replay::add_disband(int value)
 
 	config val;
 
-	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",value);
-	val["value"] = buf;
+	val["value"] = str_cast(value);
 
 	cmd->add_child("disband",val);
 }
@@ -255,20 +249,15 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	int defender_lvl, const size_t turn, const time_of_day t)
 {
 	add_pos("attack",a,b);
-	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",att_weapon);
 	config &cfg = current_->child("attack");
-	cfg["weapon"] = buf;
-	snprintf(buf,sizeof(buf),"%d",def_weapon);
-	cfg["defender_weapon"] = buf;
+
+	cfg["weapon"] = str_cast(att_weapon);
+	cfg["defender_weapon"] = str_cast(def_weapon);
 	cfg["attacker_type"] = attacker_type_id;
 	cfg["defender_type"] = defender_type_id;
-	snprintf(buf,sizeof(buf),"%d",attacker_lvl);
-	cfg["attacker_lvl"] = buf;
-	snprintf(buf,sizeof(buf),"%d",defender_lvl);
-	cfg["defender_lvl"] = buf;
-	snprintf(buf,sizeof(buf),"%zd",turn);
-	cfg["turn"] = buf;
+	cfg["attacker_lvl"] = str_cast(attacker_lvl);
+	cfg["defender_lvl"] = str_cast(defender_lvl);
+	cfg["turn"] = str_cast(turn);
 	cfg["tod"] = t.id;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
