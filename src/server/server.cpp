@@ -1420,10 +1420,15 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		}
 		if (!found_something) return "No clones found.";
 	} else if (command == "bans") {
-		if (utils::lowercase(parameters) == "deleted") {
-			ban_manager_.list_deleted_bans(out);
-		} else {
+		if (parameters.empty()) {
 			ban_manager_.list_bans(out);
+		} else if (utils::lowercase(parameters) == "deleted") {
+			ban_manager_.list_deleted_bans(out);
+		} else if (utils::lowercase(parameters).find("deleted") == 0) {
+			std::string mask = parameters.substr(7);
+			ban_manager_.list_deleted_bans(out, utils::strip(mask));
+		} else {
+			ban_manager_.list_bans(out, utils::strip(parameters));
 		}
 	} else if (command == "ban" || command == "kban" || command == "kickban" || command == "gban") {
 		bool banned = false;

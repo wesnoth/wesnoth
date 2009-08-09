@@ -154,9 +154,11 @@ static lg::log_domain log_server("server");
 		ret.first = 0;
 		ret.second = 0;
 		std::vector<std::string> split_ip = utils::split(ip, '.');
+		if (split_ip.size() > 4) throw banned::error("Malformed ip address: " + ip);
+
 		unsigned int shift = 4*8; // start shifting from the highest byte
 		unsigned int mask = 0xFF000000;
-		const unsigned int complite_part_mask = 0xFF;
+		const unsigned int complete_part_mask = 0xFF;
 		std::vector<std::string>::const_iterator part = split_ip.begin();
 		bool wildcard = false;
 		do {
@@ -165,7 +167,7 @@ static lg::log_domain log_server("server");
 			if (part == split_ip.end())
 			{
 				if (!wildcard)
-					throw banned::error("Malformed ip address given for ban: " + ip);
+					throw banned::error("Malformed ip address: '" + ip + "'");
 				// Adding 0 to ip and mask is nop
 				// we can then break out of loop
 				break;
@@ -175,12 +177,12 @@ static lg::log_domain log_server("server");
 					wildcard = true;
 					// Adding 0 to ip and mask is nop
 				} else {
-					wildcard = false;
-					unsigned int part_ip = lexical_cast_default<unsigned int>(*part, complite_part_mask + 1);
-					if (part_ip > complite_part_mask)
-						throw banned::error("Malformed ip address given for ban: " + ip);
+					//wildcard = false;
+					unsigned int part_ip = lexical_cast_default<unsigned int>(*part, complete_part_mask + 1);
+					if (part_ip > complete_part_mask)
+						throw banned::error("Malformed ip address: '" + ip + "'");
 					ret.first |= (part_ip << shift);
-					ret.second |= (complite_part_mask << shift);
+					ret.second |= (complete_part_mask << shift);
 				}
 			}
 			++part;
@@ -277,6 +279,11 @@ static lg::log_domain log_server("server");
 
 	bool banned::match_ip(const ip_mask& pair) const {
 		return (ip_ & mask_) == (pair.first & mask_);
+	}
+
+	// Unlike match_ip this function takes the mask of the argument to do the matching.
+	bool banned::match_ipmask(const ip_mask& pair) const {
+		return (ip_ & pair.second) == (pair.first & pair.second);
 	}
 
 	void ban_manager::read()
@@ -572,7 +579,7 @@ static lg::log_domain log_server("server");
 		write();
 	}
 
-	void ban_manager::list_deleted_bans(std::ostringstream& out) const
+	void ban_manager::list_deleted_bans(std::ostringstream& out, const std::string& mask) const
 	{
 		if (deleted_bans_.empty())
 		{
@@ -580,27 +587,43 @@ static lg::log_domain log_server("server");
 			return;
 		}
 
+		ip_mask pair;
+		try {
+			pair = parse_ip(mask);
+		} catch (banned::error& e) {
+			out << "parse error: " << e.message;
+			return;
+		}
+
+		out << "DELETED BANS LIST";
 		for (deleted_ban_list::const_iterator i = deleted_bans_.begin();
 				i != deleted_bans_.end();
 				++i)
 		{
-			if (i != deleted_bans_.begin())
-				out << "\n";
-			out << (**i);
+			if ((*i)->match_ipmask(pair)) out << "\n" << (**i);
 		}
 
 	}
 
 
 
-	void ban_manager::list_bans(std::ostringstream& out) const
+	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask) const
 	{
 		if (bans_.empty())
 		{
 			out << "No bans set.";
 			return;
 		}
-		out << "BAN LIST\n";
+
+		ip_mask pair;
+		try {
+			pair = parse_ip(mask);
+		} catch (banned::error& e) {
+			out << "parse error: " << e.message;
+			return;
+		}
+
+		out << "BAN LIST";
 		std::set<std::string> groups;
 
 		for (ban_set::const_iterator i = bans_.begin();
@@ -608,9 +631,7 @@ static lg::log_domain log_server("server");
 		{
 			if ((*i)->get_group().empty())
 			{
-				if (i != bans_.begin())
-					out << "\n";
-				out << (**i);
+				if ((*i)->match_ipmask(pair)) out << "\n" << (**i);
 			} else {
 				groups.insert((*i)->get_group());
 			}

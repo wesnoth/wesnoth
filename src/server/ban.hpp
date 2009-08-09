@@ -110,6 +110,7 @@ namespace wesnothd {
 		{ return group_ == group; }
 
 		bool match_ip(const ip_mask& ip) const;
+		bool match_ipmask(const ip_mask& ip) const;
 
 		unsigned int get_mask_ip(unsigned int) const;
 		unsigned int get_int_ip() const
@@ -166,8 +167,8 @@ namespace wesnothd {
 
 		void check_ban_times(time_t time_now);
 
-		void list_deleted_bans(std::ostringstream& out) const;
-		void list_bans(std::ostringstream& out) const;
+		void list_deleted_bans(std::ostringstream& out, const std::string& mask = "*") const;
+		void list_bans(std::ostringstream& out, const std::string& mask = "*") const;
 
 		std::string is_ip_banned(const std::string& ip) const;
 
