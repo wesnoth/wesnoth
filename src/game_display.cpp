@@ -21,8 +21,8 @@
 
 #include "game_display.hpp"
 
-#ifdef HAVE_LIBNOTIFY
-#include <libnotifymm-1.0/libnotifymm.h>
+#ifdef HAVE_LIBDBUS
+#include <dbus/dbus.h>
 #endif
 
 #ifdef HAVE_GROWL
@@ -1038,73 +1038,128 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
-#ifdef HAVE_LIBNOTIFY
-/**
- * Class for libnotify-based auto-updating desktop notifications.
- */
-struct wnotify: public Notify::Notification
+#ifdef HAVE_LIBDBUS
+static int kde_style = 0;
+
+struct wnotify
 {
-	typedef std::list<wnotify *> tset;
-	static tset set;
-	bool closed;
-
-	wnotify(std::string const &owner, std::string const &icon)
-		: Notify::Notification(owner, "", icon), closed(false)
-	{}
-
-	virtual void on_closed()
-	{ closed = true; }
-
-	void append(std::string const &body)
-	{ property_body() = property_body() + body; }
-
-	/**
-	 * Finds the notification for a given owner.
-	 * Removes obsolete notifications along the way.
-	 */
-	static wnotify *locate(std::string const &owner)
-	{
-		// Ensure "closed" signals are propagated.
-		while (Glib::MainContext::get_default()->iteration(false)) {}
-
-		tset::iterator i = set.begin(), i_end = set.end(), res = i_end;
-		while (i != i_end)
-		{
-			tset::iterator j = i++;
-			if ((*j)->property_summary() == owner) {
-				res = j;
-				break;
-			}
-			if (!(*j)->closed) continue;
-			delete *j;
-			set.erase(j);
-		}
-
-		wnotify *n;
-		if (res != i_end) {
-			n = *res;
-			n->property_body() = n->closed ?
-				"" : n->property_body() + '\n';
-			return n;
-		}
-		static Glib::ustring wesnoth_icon =
-			game_config::path + "/images/wesnoth-icon-small.png";
-		n = new wnotify(owner, wesnoth_icon);
-		set.push_back(n);
-		return n;
-	}
+	uint32_t id;
+	std::string owner;
+	std::string message;
 };
 
-wnotify::tset wnotify::set;
+static std::list<wnotify> notifications;
+
+static DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
+{
+	if (!dbus_message_is_signal(buf, "org.freedesktop.Notifications", "NotificationClosed")) {
+		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+	}
+
+	uint32_t id;
+	dbus_message_get_args(buf, NULL,
+		DBUS_TYPE_UINT32, &id,
+		DBUS_TYPE_INVALID);
+	std::list<wnotify>::iterator i = notifications.begin(),
+		i_end = notifications.end();
+	while (i != i_end) {
+		std::list<wnotify>::iterator j = i++;
+		if (j->id == id) continue;
+		notifications.erase(j);
+		break;
+	}
+	return DBUS_HANDLER_RESULT_HANDLED;
+}
+
+static DBusConnection *get_dbus_connection()
+{
+	static bool initted = false;
+	static DBusConnection *connection = NULL;
+	if (!initted)
+	{
+		initted = true;
+		DBusError err;
+		dbus_error_init(&err);
+		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
+		if (!connection) {
+			ERR_DP << "Failed to open DBus session: " << err.message << '\n';
+			dbus_error_free(&err);
+			return NULL;
+		}
+		dbus_connection_add_filter(connection, filter_dbus_signal, NULL, NULL);
+	}
+	if (connection) {
+		dbus_connection_read_write(connection, 0);
+		while (dbus_connection_dispatch(connection) == DBUS_DISPATCH_DATA_REMAINS) {}
+	}
+	return connection;
+}
+
+static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id,
+	const std::string &owner, const std::string &message)
+{
+	DBusMessage *buf = dbus_message_new_method_call(
+		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
+		kde_style ? "/org/kde/VisualNotifications" : "/org/freedesktop/Notifications",
+		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
+		"Notify");
+	const char *app_name = "Battle for Wesnoth";
+	dbus_message_append_args(buf,
+		DBUS_TYPE_STRING, &app_name,
+		DBUS_TYPE_UINT32, &replaces_id,
+		DBUS_TYPE_INVALID);
+	if (kde_style) {
+		const char *event_id = "";
+		dbus_message_append_args(buf,
+			DBUS_TYPE_STRING, &event_id,
+			DBUS_TYPE_INVALID);
+	}
+	std::string app_icon_ = game_config::path + "/images/wesnoth-icon.png";
+	const char *app_icon = app_icon_.c_str();
+	const char *summary = owner.c_str();
+	const char *body = message.c_str();
+	const char **actions = NULL;
+	dbus_message_append_args(buf,
+		DBUS_TYPE_STRING, &app_icon,
+		DBUS_TYPE_STRING, &summary,
+		DBUS_TYPE_STRING, &body,
+		DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &actions, 0,
+		DBUS_TYPE_INVALID);
+	DBusMessageIter iter, hints;
+	dbus_message_iter_init_append(buf, &iter);
+	dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY, "{sv}", &hints);
+	dbus_message_iter_close_container(&iter, &hints);
+	int expire_timeout = -1;
+	dbus_message_append_args(buf,
+		DBUS_TYPE_INT32, &expire_timeout,
+		DBUS_TYPE_INVALID);
+	DBusError err;
+	dbus_error_init(&err);
+	DBusMessage *ret = dbus_connection_send_with_reply_and_block(connection, buf, 1000, &err);
+	dbus_message_unref(buf);
+	if (!ret) {
+		ERR_DP << "Failed to send visual notification: " << err.message << '\n';
+		dbus_error_free(&err);
+		return 0;
+	}
+	uint32_t id;
+	dbus_message_get_args(ret, NULL,
+		DBUS_TYPE_UINT32, &id,
+		DBUS_TYPE_INVALID);
+	dbus_message_unref(ret);
+	// TODO: remove once closing signals for KDE are handled in filter_dbus_signal.
+	if (kde_style) return 0;
+	return id;
+}
 #endif
 
-#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 void game_display::send_notification(const std::string& owner, const std::string& message)
 #else
 void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
 #endif
 {
-#if defined(HAVE_LIBNOTIFY) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
 	Uint8 app_state = SDL_GetAppState();
 
 	// Do not show notifications when the window is visible...
@@ -1117,15 +1172,28 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	}
 #endif
 
-#ifdef HAVE_LIBNOTIFY
-	try {
-		if (!Notify::is_initted()) Notify::init("Wesnoth");
-		wnotify *n = wnotify::locate(owner);
-		n->append(message);
-		n->show();
-	} catch(const Glib::Error& error) {
-		ERR_DP << "Failed to send libnotify notification: " << error.what() << "\n";
+#ifdef HAVE_LIBDBUS
+	DBusConnection *connection = get_dbus_connection();
+	if (!connection) return;
+
+	std::list<wnotify>::iterator i = notifications.begin(),
+		i_end = notifications.end();
+	while (i != i_end && i->owner != owner) ++i;
+
+	if (i != i_end) {
+		i->message += "\n";
+		i->message += message;
+		send_dbus_notification(connection, i->id, owner, i->message);
+		return;
 	}
+
+	uint32_t id = send_dbus_notification(connection, 0, owner, message);
+	if (!id) return;
+	wnotify visual;
+	visual.id = id;
+	visual.owner = owner;
+	visual.message = message;
+	notifications.push_back(visual);
 #endif
 
 #ifdef HAVE_QTDBUS

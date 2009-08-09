@@ -284,11 +284,11 @@ AC_ARG_ENABLE([notifications],
 		[notifications=$enableval],
 		[notifications=yes])
 
-AC_ARG_ENABLE([gtkmm],
-		AS_HELP_STRING([--disable-gtkmm],
-			[disable gtkmm support for notifications]),
-		[gtkmm=$enableval],
-		[gtkmm=yes])
+AC_ARG_ENABLE([dbus],
+		AS_HELP_STRING([--disable-dbus],
+			[disable dbus support for notifications]),
+		[dbus=$enableval],
+		[dbus=yes])
 
 #if test "x$game" = "xno"
 #then
@@ -873,14 +873,12 @@ LIBS="$LIBS $LUA_LIBS"
 #######################################################################
 found_notifications=no
 if test "x$notifications" = "xyes"; then
-	if test "x$gtkmm" = "xyes"; then
-		PKG_CHECK_MODULES([GTKMM], [gtkmm-2.4 >= 2.8.0], [
-			PKG_CHECK_MODULES([LIBNOTIFY], [libnotifymm-1.0], [
-				CPPFLAGS="$CPPFLAGS $GTKMM_CFLAGS $LIBNOTIFY_CFLAGS"
-				LIBS="$LIBS $GTKMM_LIBS $LIBNOTIFY_LIBS"
-				found_notifications=yes
-				AC_DEFINE([HAVE_LIBNOTIFY],,[Define if you have Libnotify for GTK.])
-			], [AC_MSG_RESULT([no])])
+	if test "x$dbus" = "xyes"; then
+		PKG_CHECK_MODULES([LIBDBUS], [dbus-1], [
+			CPPFLAGS="$CPPFLAGS $LIBDBUS_CFLAGS"
+			LIBS="$LIBS $LIBDBUS_LIBS"
+			found_notifications=yes
+			AC_DEFINE([HAVE_LIBDBUS],,[Define if you have libdbus.])
 		], [AC_MSG_RESULT([no])])
 	fi
 	# tests for other notification systems
