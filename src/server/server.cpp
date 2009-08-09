@@ -82,7 +82,7 @@ clock_t get_cpu_time(bool active) {
 	return buf.tms_utime + buf.tms_stime;
 }
 
-bool match_username(std::pair<network::connection, player> pl, const std::string& username) {
+bool match_username(std::pair<network::connection, wesnothd::player> pl, const std::string& username) {
 	return pl.second.name() == username;
 }
 
