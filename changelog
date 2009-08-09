@@ -33,6 +33,8 @@ Version 1.7.2+svn:
    * it is now possible to specify a custom title= in [story] [part]s
    * [story] [part]s' text placement may be changed with text_layout=; it
      currently supports "top", "middle" and "bottom" (default)
+   * [story] [part]s accept the sound= attribute for a list of sound files
+     from which a single one is chosen and played once
    * new tags [store_unit_type] and [store_unit_type_ids] were added
    * allow direct WML unit modification of "halo" attribute
  * Miscellaneous and bugfixes:

@@ -199,6 +199,11 @@ public:
 		return music_;
 	}
 
+	/** Retrieves a one-time-only sound effect. */
+	const std::string& sound() const {
+		return sound_;
+	}
+
 	/** Retrieves the area of the screen on which the story text is displayed. */
 	TEXT_BLOCK_LOCATION text_block_location() const {
 		return text_block_loc_;
@@ -234,6 +239,7 @@ private:
 	TITLE_ALIGNMENT title_alignment_;
 
 	std::string music_;
+	std::string sound_;
 
 	std::vector<floating_image> floating_images_;
 

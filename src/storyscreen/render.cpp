@@ -536,6 +536,10 @@ part_ui::RESULT part_ui::show()
 		sound::play_music_repeatedly(p_.music_);
 	}
 
+	if(p_.sound().empty() != true) {
+		sound::play_sound(p_.sound());
+	}
+
 	render_background();
 
 	if(p_.show_title_) {

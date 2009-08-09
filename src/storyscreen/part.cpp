@@ -116,6 +116,7 @@ part::part()
 	, text_block_loc_()
 	, title_alignment_()
 	, music_()
+	, sound_()
 	, floating_images_()
 {
 	ASSERT_LOG(0xDEADBEEF == 0x0, "Ouch: shouldn't happen");
@@ -130,6 +131,7 @@ part::part(const vconfig &part_cfg)
 	, text_block_loc_(part::BOTTOM)
 	, title_alignment_(part::LEFT)
 	, music_()
+	, sound_()
 	, floating_images_()
 {
 	resolve_wml(part_cfg);
@@ -193,6 +195,9 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 	if(cfg.has_attribute("music")) {
 		music_ = cfg["music"];
+	}
+	if(cfg.has_attribute("sound")) {
+		sound_ = cfg["sound"];
 	}
 
 	// Execution flow/branching/[image]
