@@ -212,7 +212,7 @@ static int upload_logs_dev(void *_ti)
 				// As long as we can actually send the data, delete the file.
 				// Even if the server gives a bad response, we don't want to
 				// be sending the same bad data over and over to the server.
-				//TODO: temporarily turned off logfile deletion so I don't have to recopy it to make new logs
+				//@TODO: temporarily turned off logfile deletion so I don't have to recopy it to make new logs
 				//delete_directory(*i);
 				numfiles++;
 
@@ -262,13 +262,24 @@ upload_log::upload_log(bool enable) :
 
 void upload_log::read_replay()
 {
-	if(enabled_ && !config_.empty() && !game_config::debug) {
+	if( !uploader_settings::new_uploader ) {
+		return;
+	}
+
+	//@TODO: check if game_ is always there
+	if( !game_ ) {
+		game_ = new config();
+	}
+
+	if(enabled_ && !game_config::debug) {
 		foreach (const config &c, recorder.get_replay_data().child_range("command")) {
-			if(c.has_attribute("attack")) {
+			if(c.child_count("attack")) {
 				//search through the attack to see if a unit died
 				foreach (const config &c2, c.child_range("random")) {
-					if(c2.has_attribute("dies") && c2["dies"] == "yes") {
-						//config_.add_child("kill_event",c);
+					if(c2.child_count("results") && c2.child("results")["dies"] == "yes") {
+						config& cfg = game_->add_child("kill_event");
+						cfg.add_child("attack",c.child("attack"));
+						cfg.add_child("results",c2.child("results"));
 					}
 				}	
 			}
@@ -358,8 +369,9 @@ void upload_log::start(game_state &state, const team &team,
 	std::vector<const unit*> all_units;
 
 	// If we have a previous game which is finished, add it.
-	if (game_finished(game_))
+	if (game_finished(game_)) {
 		config_.add_child("game", *game_);
+	}
 
 	// Start could be called more than once,
 	// so delete game_ to prevent memory leak
@@ -385,56 +397,59 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["gold"] = lexical_cast<std::string>(team.gold());
 	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
 
-	// We seem to have to walk the map to find some units,
-	// and the player's recall list for the rest.
-	for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
-		if (un->second.side() == side_number) {
-			all_units.push_back(&un->second);
-		}
-	}
-
-	/** @todo FIXME: Assumes first player is "us"; is that valid? */
-	for (std::vector<unit>::const_iterator it = team.recall_list().begin();
-		 it != team.recall_list().end();
-		 ++it) {
-		all_units.push_back(&*it);
-	}
-
-	// Record details of any special units.
-	std::vector<const unit*>::const_iterator i;
-	for (i = all_units.begin(); i != all_units.end(); ++i) {
-		if ((*i)->can_recruit()) {
-			config &sp = game_->add_child("special-unit");
-			sp["name"] = (*i)->id();
-			sp["level"] = lexical_cast<std::string>((*i)->level());
-			sp["experience"] = lexical_cast<std::string>((*i)->experience());
-		}
-	}
-
-	// Record summary of all units.
-	config &summ = game_->add_child("units-by-level");
-	bool higher_units = true;
-	for (int level = 0; higher_units; level++) {
-		std::map<std::string, int> tally;
-
-		higher_units = false;
-		for (i = all_units.begin(); i != all_units.end(); ++i) {
-			if ((*i)->level() > level)
-				higher_units = true;
-			else if ((*i)->level() == level) {
-				if (tally.find((*i)->type_id()) == tally.end())
-					tally[(*i)->type_id()] = 1;
-				else
-					tally[(*i)->type_id()]++;
+	//deprecating this data in new upload logs
+	if(!uploader_settings::new_uploader) {
+		// We seem to have to walk the map to find some units,
+		// and the player's recall list for the rest.
+		for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
+			if (un->second.side() == side_number) {
+				all_units.push_back(&un->second);
 			}
 		}
-		if (!tally.empty()) {
-			config &tc = summ.add_child(lexical_cast<std::string>(level));
-			for (std::map<std::string, int>::iterator t = tally.begin();
-				 t != tally.end();
-				 t++) {
-				config &uc = tc.add_child(t->first);
-				uc["count"] = lexical_cast<std::string>(t->second);
+
+		/** @todo FIXME: Assumes first player is "us"; is that valid? */
+		for (std::vector<unit>::const_iterator it = team.recall_list().begin();
+			 it != team.recall_list().end();
+			 ++it) {
+			all_units.push_back(&*it);
+		}
+
+		// Record details of any special units.
+		std::vector<const unit*>::const_iterator i;
+		for (i = all_units.begin(); i != all_units.end(); ++i) {
+			if ((*i)->can_recruit()) {
+				config &sp = game_->add_child("special-unit");
+				sp["name"] = (*i)->id();
+				sp["level"] = lexical_cast<std::string>((*i)->level());
+				sp["experience"] = lexical_cast<std::string>((*i)->experience());
+			}
+		}
+
+		// Record summary of all units.
+		config &summ = game_->add_child("units-by-level");
+		bool higher_units = true;
+		for (int level = 0; higher_units; level++) {
+			std::map<std::string, int> tally;
+
+			higher_units = false;
+			for (i = all_units.begin(); i != all_units.end(); ++i) {
+				if ((*i)->level() > level)
+					higher_units = true;
+				else if ((*i)->level() == level) {
+					if (tally.find((*i)->type_id()) == tally.end())
+						tally[(*i)->type_id()] = 1;
+					else
+						tally[(*i)->type_id()]++;
+				}
+			}
+			if (!tally.empty()) {
+				config &tc = summ.add_child(lexical_cast<std::string>(level));
+				for (std::map<std::string, int>::iterator t = tally.begin();
+					 t != tally.end();
+					 t++) {
+					config &uc = tc.add_child(t->first);
+					uc["count"] = lexical_cast<std::string>(t->second);
+				}
 			}
 		}
 	}
