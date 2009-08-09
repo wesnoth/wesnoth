@@ -1241,8 +1241,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
 			" netstats [all], [lobby]msg <message>, motd [<message>],"
-			" requests, sample, stats, status [<mask>], searchlog <mask>, signout,"
-			" unban <ipmask>\n"
+			" pm|privatemsg <nick> <message>, requests, sample, searchlog <mask>,"
+			" signout, stats, status [<mask>], unban <ipmask>\n"
 			"Specific strings (those not inbetween <> like the command names)"
 			" are case insensitive.";
 	const std::string denied_msg = "You're not allowed to execute this command.";
