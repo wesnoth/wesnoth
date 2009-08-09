@@ -199,10 +199,10 @@ static lg::log_domain log_server("server");
 		}
 		nick_ = cfg["nick"];
 		if (cfg.has_attribute("end_time"))
-			end_time_ 	= lexical_cast_default<time_t>(cfg["end_time"], 0);
+			end_time_ = lexical_cast_default<time_t>(cfg["end_time"], 0);
 		if (cfg.has_attribute("start_time"))
-			start_time_ 	= lexical_cast_default<time_t>(cfg["start_time"], 0);
-		reason_	  	= cfg["reason"];
+			start_time_ = lexical_cast_default<time_t>(cfg["start_time"], 0);
+		reason_ = cfg["reason"];
 
 		// only overwrite defaults if exists
 		if (cfg.has_attribute("who_banned"))
@@ -213,7 +213,7 @@ static lg::log_domain log_server("server");
 
 	void banned::write(config& cfg) const
 	{
-		cfg["ip"]		= get_ip();
+		cfg["ip"] = get_ip();
 		cfg["nick"] = get_nick();
 		if (end_time_ > 0)
 		{
@@ -228,7 +228,7 @@ static lg::log_domain log_server("server");
 			cfg["start_time"] = ss.str();
 		}
 
-		cfg["reason"]	= reason_;
+		cfg["reason"] = reason_;
 		if (who_banned_ != who_banned_default_)
 		{
 			cfg["who_banned"] = who_banned_;
