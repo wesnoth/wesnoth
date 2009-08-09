@@ -37,7 +37,7 @@ static lg::log_domain log_server("server");
 	   return o << "IP: " << n.get_ip() <<
 					(n.get_nick().empty() ? "" : "  nick: " + n.get_nick()) <<
 					"  reason: '" << n.get_reason() << "'"
-					"\nstart_time: " << n.get_human_start_time() <<
+					"  start_time: " << n.get_human_start_time() <<
 					"  end_time: " << n.get_human_end_time() <<
 					"  issuer: " <<  n.get_who_banned();
 	}
