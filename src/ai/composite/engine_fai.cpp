@@ -102,12 +102,19 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 		return;
 	}
 	const std::string &name = cfg["name"];
+	stage_ptr st_ptr;
 	if (name=="rca_formulas") {
-		*b = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
+		st_ptr = stage_ptr(new stage_rca_formulas(context,cfg,formula_ai_));
 	} else if (name=="side_formulas") {
-		*b = stage_ptr(new stage_side_formulas(context,cfg,formula_ai_));
+		st_ptr = stage_ptr(new stage_side_formulas(context,cfg,formula_ai_));
 	} else if (name=="unit_formulas") {
-		*b = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
+		st_ptr = stage_ptr(new stage_unit_formulas(context,cfg,formula_ai_));
+	} else {
+		ERR_AI_COMPOSITE_ENGINE_FAI << "unknown type of formula_ai stage: ["<< name <<"]"<<std::endl;
+	}
+	if (st_ptr) {
+		st_ptr->on_create();
+		*b = st_ptr;
 	}
 }
 
