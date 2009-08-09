@@ -267,7 +267,7 @@ void replay::add_attack(const map_location& a, const map_location& b,
 	cfg["attacker_lvl"] = buf;
 	snprintf(buf,sizeof(buf),"%d",defender_lvl);
 	cfg["defender_lvl"] = buf;
-	snprintf(buf,sizeof(buf),"%d",turn);
+	snprintf(buf,sizeof(buf),"%lu",turn);
 	cfg["turn"] = buf;
 	cfg["tod"] = t.id;
 	add_unit_checksum(a,current_);
