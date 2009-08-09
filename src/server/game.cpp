@@ -1291,13 +1291,13 @@ void game::set_description(simple_wml::node* desc) {
 }
 
 void game::set_termination_reason(const std::string& reason) {
-	if (reason == "out of sync") {
+/*	if (reason == "out of sync") {
 		simple_wml::string_span era;
 		if (level_.child("era")) {
 			era = level_.child("era")->attr("id");
 		}
 		termination_ = "out of sync - " + era.to_string();
-	}
+	}*/
 	if (termination_.empty()) { termination_ = reason; }
 }
 
