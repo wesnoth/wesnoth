@@ -112,6 +112,8 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     the tooltip is empty the label can be
  *                                     used for the tooltip. If this variable is
  *                                     set to true this will happen.
+ *
+ *   linked_group (string = "")        The linked group the widget belongs to.
  * @end_table
  *
  */

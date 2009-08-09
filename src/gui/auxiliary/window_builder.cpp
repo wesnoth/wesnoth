@@ -273,6 +273,18 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *
  *     grid (grid)                   The grid with the widgets to show.
  * @end_table
+ *
+ * A linked_group section has the following fields:
+ * @start_table = config
+ *     id (string)                   The unique id of the group (unique in this
+ *                                   window).
+ *     fixed_width (bool = false)    Should widget in this group have the same
+ *                                   width.
+ *     fixed_height (bool = false)   Should widget in this group have the same
+ *                                   height.
+ * @end_table
+ *
+ * A linked group needs to have at least one size fixed.
  */
 
 	const config &c = cfg.child("grid");

@@ -156,6 +156,8 @@ twidget* tbuilder_listbox::build() const
  *
  * @end_table
  *
+ * In order to force widgets to be the same size inside a listbox, the widgets
+ * need to be inside a linked_group.
  *
  * Inside the list section there are only the following widgets allowed
  * * grid (to nest)
