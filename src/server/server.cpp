@@ -50,6 +50,7 @@
 #include "forum_user_handler.hpp"
 #endif
 
+#include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
 #include <algorithm>
@@ -79,6 +80,10 @@ clock_t get_cpu_time(bool active) {
 	struct tms buf;
 	times(&buf);
 	return buf.tms_utime + buf.tms_stime;
+}
+
+bool match_username(std::pair<network::connection, player> pl, const std::string& username) {
+	return pl.second.name() == username;
 }
 
 }
@@ -1378,8 +1383,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				}
 			}
 			if (!found_something) {
-				out << "\nNo match found. You may want to check with 'searchlog'.";
-				return out.str();
+				//out << "\nNo match found. You may want to check with 'searchlog'.";
+				//return out.str();
+				return process_command("searchlog " + parameters, issuer_name);
 			}
 		}
 		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
@@ -1593,9 +1599,16 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
 			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
-				if (utils::wildcard_string_match(i->second, parameters)) {
+				const std::string& username = i->first;
+				const std::string& ip = i->second;
+				if (utils::wildcard_string_match(ip, parameters)) {
 					found_something = true;
-					out << "\n'" << i->first << "' @ " << i->second;
+					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_username, _1, username));
+					if (pl != players_.end()) {
+						out << std::endl << player_status(pl);
+					} else {
+						out << "\n'" << username << "' @ " << ip;
+					}
 				}
 			}
 		} else {
