@@ -108,7 +108,7 @@ void metrics::game_terminated(const std::string& reason)
 	terminations_[reason]++;
 }
 
-std::ostream& metrics::games(std::ostream& out)
+std::ostream& metrics::games(std::ostream& out) const
 {
 	if (terminations_.empty()) return out << "No game ended so far.";
 
@@ -119,6 +119,33 @@ std::ostream& metrics::games(std::ostream& out)
 		n += i->second;
 	}
 	out << "Total number of games = " << n;
+
+	return out;
+}
+
+std::ostream& metrics::requests(std::ostream& out) const
+{
+	if (samples_.empty()) return out;
+
+	std::vector<metrics::sample> ordered_samples = samples_;
+	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
+
+	out << "\nSampled request types:\n";
+
+	size_t n = 0;
+	size_t pa = 0;
+	size_t pr = 0;
+	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
+		out << "'" << s->name << "' called " << s->nsamples << " times "
+			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
+			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
+		n += s->nsamples;
+		pa += s->parsing_time;
+		pr += s->processing_time;
+	}
+	out << "Total number of request samples = " << n << "\n"
+		<< "Total parsing time = " << pa << "\n"
+		<< "Total processing time = " << pr;
 
 	return out;
 }
@@ -138,28 +165,6 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	    << " (" << percent_immediate << "%) "
 	    << "requests were serviced immediately.\n"
 	    << "longest burst of requests was: " << met.most_consecutive_requests_;
-
-	if (met.samples_.empty()) return out;
-
-	std::vector<metrics::sample> ordered_samples = met.samples_;
-	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
-
-	out << "\nSampled request types:\n";
-
-	size_t n = 0;
-	size_t pa = 0;
-	size_t pr = 0;
-	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
-		out << "'" << s->name << "' called " << s->nsamples << " times "
-			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
-			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
-		n += s->nsamples;
-		pa += s->parsing_time;
-		pr += s->processing_time;
-	}
-	out << "Total number of request samples = " << n << "\n"
-		<< "Total parsing time = " << pa << "\n"
-		<< "Total processing time = " << pr;
 
 	return out;
 }

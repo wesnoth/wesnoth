@@ -1138,7 +1138,7 @@ void server::process_query(const network::connection sock,
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
-			" motd, netstats [all], stats, status, wml.";
+			" motd, netstats [all], requests, sample, stats, status, wml.";
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
@@ -1148,6 +1148,7 @@ void server::process_query(const network::connection sock,
 			|| command == "motd"
 			|| command == "netstats"
 			|| command == "netstats all"
+			|| command == "requests"
 			|| command == "sample"
 			|| command == "stats"
 			|| command == "status " + pl->second.name()
@@ -1235,7 +1236,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 			" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 			" k[ick]ban <mask> [<time>] <reason>, help, games, metrics,"
 			" netstats [all], [lobby]msg <message>, motd [<message>],"
-			" requests, stats, status [<mask>], searchlog <mask>, signout,"
+			" requests, sample, stats, status [<mask>], searchlog <mask>, signout,"
 			" unban <ipmask>\n"
 			"Specific strings (those not inbetween <> like the command names)"
 			" are case insensitive.";
@@ -1289,6 +1290,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		return out.str();
 	} else if (command == "metrics") {
 		out << metrics_;
+	} else if (command == "requests") {
+		metrics_.requests(out);
 	} else if (command == "games") {
 		metrics_.games(out);
 	} else if (command == "wml") {
