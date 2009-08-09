@@ -1120,9 +1120,12 @@ void server::process_login(const network::connection sock,
 	}
 
 	// Log the IP
-	ip_log_.push_back(std::pair<std::string, std::string>(username,network::ip_address(sock)));
-	// Remove the oldest entry if the size of the IP log exceeds the maximum size
-	if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
+	std::pair<std::string, std::string> ip_name = std::make_pair(username, network::ip_address(sock));
+	if (std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
+		ip_log_.push_back(ip_name);
+		// Remove the oldest entry if the size of the IP log exceeds the maximum size
+		if(ip_log_.size() > max_ip_log_size_) ip_log_.pop_front();
+	}
 }
 
 void server::process_query(const network::connection sock,
