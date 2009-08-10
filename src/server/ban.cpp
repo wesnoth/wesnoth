@@ -425,6 +425,17 @@ static lg::log_domain log_server("server");
 							*time += number * 365*24*60*60; // a year;
 							break;
 						case 'M':
+							if (++i != d_end && tolower(*i) == 'i') {
+								if (++i != d_end && tolower(*i) == 'n'
+								&&  ++i != d_end && tolower(*i) == 'u'
+								&&  ++i != d_end && tolower(*i) == 't'
+								&&  ++i != d_end && tolower(*i) == 'e'
+								&&  ++i != d_end && tolower(*i) == 's') {
+								} else --i;
+								*time += number * 60;
+								break;
+							}
+							--i;
 							if (++i != d_end && tolower(*i) == 'o'
 							&&  ++i != d_end && tolower(*i) == 'n'
 							&&  ++i != d_end && tolower(*i) == 't'
@@ -451,6 +462,16 @@ static lg::log_domain log_server("server");
 							*time += number * 60*60;
 							break;
 						case 'm':
+							if (++i != d_end && tolower(*i) == 'o') {
+								if (++i != d_end && tolower(*i) == 'n'
+								&&  ++i != d_end && tolower(*i) == 't'
+								&&  ++i != d_end && tolower(*i) == 'h'
+								&&  ++i != d_end && tolower(*i) == 's') {
+								} else --i;
+								*time += number * 30*24*60*60; // 30 days
+								break;
+							}
+							--i;
 							if (++i != d_end && tolower(*i) == 'i'
 							&&  ++i != d_end && tolower(*i) == 'n'
 							&&  ++i != d_end && tolower(*i) == 'u'
