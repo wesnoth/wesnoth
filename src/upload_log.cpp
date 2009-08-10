@@ -262,7 +262,7 @@ upload_log::upload_log(bool enable) :
 
 void upload_log::read_replay()
 {
-	if( !uploader_settings::new_uploader || !enabled_ || !game_config::debug ) {
+	if( !uploader_settings::new_uploader || !enabled_ || game_config::debug ) {
 		return;
 	}
 
@@ -465,9 +465,9 @@ void upload_log::start(game_state &state, const std::string map_data)
 	delete game_;
 	game_ = new config();
 	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
-	(*game_)["campaign"] = state.classification().campaign_define;
+	(*game_)["campaign"] = state.classification().campaign_type;
 	(*game_)["difficulty"] = state.classification().difficulty;
-	(*game_)["scenario"] = state.classification().scenario;
+	(*game_)["scenario"] = state.classification().label;
 	if(uploader_settings::new_uploader) {
 		//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
 		std::string encoded_map(map_data);
