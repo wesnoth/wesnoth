@@ -1055,14 +1055,13 @@ static DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, 
 	dbus_message_get_args(buf, NULL,
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
+
 	std::list<wnotify>::iterator i = notifications.begin(),
 		i_end = notifications.end();
-	while (i != i_end) {
-		std::list<wnotify>::iterator j = i++;
-		if (j->id == id) continue;
-		notifications.erase(j);
-		break;
-	}
+	while (i != i_end && i->id != id) ++i;
+	if (i != i_end)
+		notifications.erase(i);
+
 	return DBUS_HANDLER_RESULT_HANDLED;
 }
 
