@@ -917,9 +917,16 @@ bool game_controller::play_multiplayer_mode()
 	level.add_child("era", era_cfg);
 
 	try {
-		upload_log nolog(false);
+		//check if all sides are AI and we are using new uploader -> log these games
+		bool all_ai = true;
+		foreach (config &s, level.child_range("side")) {
+			if( s["controller"] != "ai" ) {
+				all_ai = false;
+			}	
+		}
+		upload_log log( all_ai && uploader_settings::new_uploader );
 		state_.snapshot = level;
-		play_game(disp(),state_,game_config_,nolog);
+		play_game(disp(),state_,game_config_,log);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
 	} catch(game::load_game_exception& e) {

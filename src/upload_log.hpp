@@ -49,6 +49,7 @@ public:
 	void start(game_state &state, const team &team,
 	           int side_number, const unit_map &map, const t_string &turn,
 			   int num_turns, const std::string map_data);
+	void start(game_state &state, const std::string map_data);
 
 	// User finishes a level.
 	void defeat(int turn);

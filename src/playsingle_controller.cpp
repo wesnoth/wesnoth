@@ -324,6 +324,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (first_human_team_ != -1) {
 			log.start(gamestate_, teams_[first_human_team_], first_human_team_ + 1, units_,
 					  loading_game_ ? gamestate_.get_variable("turn_number") : "", number_of_turns(), resources::game_map->write());
+		} else { //ai vs. ai upload logs
+			log.start(gamestate_, resources::game_map->write());
 		}
 
 		fire_prestart(!loading_game_);
@@ -376,6 +378,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		throw;
 	} catch(end_level_exception& end_level) {
 		ai_testing::log_game_end();
+		log.quit(turn());
 		*end_level_result = end_level;
 		if(!end_level.custom_endlevel_music.empty()) {
 			switch(end_level.result) {

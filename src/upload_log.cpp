@@ -262,7 +262,7 @@ upload_log::upload_log(bool enable) :
 
 void upload_log::read_replay()
 {
-	if( !uploader_settings::new_uploader ) {
+	if( !uploader_settings::new_uploader || !enabled_ || !game_config::debug ) {
 		return;
 	}
 
@@ -271,18 +271,16 @@ void upload_log::read_replay()
 		game_ = new config();
 	}
 
-	if(enabled_ && !game_config::debug) {
-		foreach (const config &c, recorder.get_replay_data().child_range("command")) {
-			if(c.child_count("attack")) {
-				//search through the attack to see if a unit died
-				foreach (const config &c2, c.child_range("random")) {
-					if(c2.child_count("results") && c2.child("results")["dies"] == "yes") {
-						config& cfg = game_->add_child("kill_event");
-						cfg.add_child("attack",c.child("attack"));
-						cfg.add_child("results",c2.child("results"));
-					}
-				}	
-			}
+	foreach (const config &c, recorder.get_replay_data().child_range("command")) {
+		if(c.child_count("attack")) {
+			//search through the attack to see if a unit died
+			foreach (const config &c2, c.child_range("random")) {
+				if(c2.child_count("results") && c2.child("results")["dies"] == "yes") {
+					config& cfg = game_->add_child("kill_event");
+					cfg.add_child("attack",c.child("attack"));
+					cfg.add_child("results",c2.child("results"));
+				}
+			}	
 		}
 	}
 }
@@ -453,6 +451,34 @@ void upload_log::start(game_state &state, const team &team,
 			}
 		}
 	}
+}
+
+void upload_log::start(game_state &state, const std::string map_data)
+{
+	// If we have a previous game which is finished, add it.
+	if (game_finished(game_)) {
+		config_.add_child("game", *game_);
+	}
+
+	// Start could be called more than once,
+	// so delete game_ to prevent memory leak
+	delete game_;
+	game_ = new config();
+	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
+	(*game_)["campaign"] = state.classification().campaign_define;
+	(*game_)["difficulty"] = state.classification().difficulty;
+	(*game_)["scenario"] = state.classification().scenario;
+	if(uploader_settings::new_uploader) {
+		//replace newlines in map definition with semicolons so that braindead server-side wml parser doesn't get confused
+		std::string encoded_map(map_data);
+		for(size_t idx = 0; idx < encoded_map.length(); idx++) {
+			if(encoded_map[idx] == '\n')
+				encoded_map[idx] = ';';
+		}
+		(*game_)["map_data"] = encoded_map;
+	}
+	if (!state.classification().version.empty())
+		(*game_)["version"] = state.classification().version;
 }
 
 // User finishes a scenario.
