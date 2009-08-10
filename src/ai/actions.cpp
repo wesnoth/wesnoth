@@ -399,6 +399,10 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 
 	//do an A*-search
 	route_ = a_star_search(un.get_location(), to_, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
+	if (route_.steps.empty()) {
+		set_error(E_NO_ROUTE);
+		return false;
+	}
 	return true;//@todo 1.7 do some tests on returned route
 }
 
@@ -491,7 +495,14 @@ void move_result::do_execute()
 			/*bool should_clear_shroud*/ true,
 			/*bool is_replay*/ false);
 
-		set_gamestate_changed();
+		if ( move_spectator.get_ambusher().valid() || !move_spectator.get_seen_enemies().empty() || !move_spectator.get_seen_friends().empty() ) {
+			set_gamestate_changed();
+		} else if (move_spectator.get_unit().valid()){
+			unit_location_ = move_spectator.get_unit()->first;
+			if (unit_location_ != from_) {
+				set_gamestate_changed();
+			}
+		}
 	} else {
 		assert(remove_movement_);
 	}

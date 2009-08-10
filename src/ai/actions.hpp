@@ -174,6 +174,7 @@ public:
 	static const int E_AMBUSHED = 2005;
 	static const int E_FAILED_TELEPORT = 2006;
 	static const int E_NOT_REACHED_DESTINATION = 2007;
+	static const int E_NO_ROUTE = 2008;
 	virtual std::string do_describe() const;
 	virtual const map_location& get_unit_location() const;
 protected:
