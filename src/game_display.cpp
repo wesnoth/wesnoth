@@ -1127,7 +1127,7 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 	dbus_message_iter_init_append(buf, &iter);
 	dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY, "{sv}", &hints);
 	dbus_message_iter_close_container(&iter, &hints);
-	int expire_timeout = -1;
+	int expire_timeout = kde_style ? 5000 : -1;
 	dbus_message_append_args(buf,
 		DBUS_TYPE_INT32, &expire_timeout,
 		DBUS_TYPE_INVALID);
