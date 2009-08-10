@@ -59,10 +59,14 @@ void stage_unit_formulas::do_play_stage()
 				if( i->second.has_priority_formula() ) {
 					try {
 						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->second.get_priority_formula()));
-						game_logic::map_formula_callable callable(&fai_);
-						callable.add_ref();
-						callable.add("me", variant(new unit_callable(*i)));
-						priority = (game_logic::formula::evaluate(priority_formula, callable)).as_int();
+						if (priority_formula) {
+							game_logic::map_formula_callable callable(&fai_);
+							callable.add_ref();
+							callable.add("me", variant(new unit_callable(*i)));
+							priority = (game_logic::formula::evaluate(priority_formula, callable)).as_int();
+						} else {
+							WRN_AI << "priority formula skipped, maybe it's empty or incorrect"<< std::endl;
+						}
 					} catch(game_logic::formula_error& e) {
 						if(e.filename == "formula")
 							e.line = 0;
@@ -89,10 +93,14 @@ void stage_unit_formulas::do_play_stage()
 			if ( i->second.has_formula() ) {
 				try {
 					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->second.get_formula()));
-					game_logic::map_formula_callable callable(&fai_);
-					callable.add_ref();
-					callable.add("me", variant(new unit_callable(*i)));
-					fai_.make_action(formula, callable);
+					if (formula) {
+						game_logic::map_formula_callable callable(&fai_);
+						callable.add_ref();
+						callable.add("me", variant(new unit_callable(*i)));
+						fai_.make_action(formula, callable);
+					} else {
+						WRN_AI << "unit formula skipped, maybe it's empty or incorrect" << std::endl;
+					}
 				}
 				catch(game_logic::formula_error& e) {
 					if(e.filename == "formula") {
@@ -108,11 +116,15 @@ void stage_unit_formulas::do_play_stage()
 			{
 				try {
 					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->second.get_loop_formula()));
-					game_logic::map_formula_callable callable(&fai_);
-					callable.add_ref();
-					callable.add("me", variant(new unit_callable(*i)));
-					while ( !fai_.make_action(loop_formula, callable).is_empty() && i.valid() )
-					{
+					if (loop_formula) {
+						game_logic::map_formula_callable callable(&fai_);
+						callable.add_ref();
+						callable.add("me", variant(new unit_callable(*i)));
+						while ( !fai_.make_action(loop_formula, callable).is_empty() && i.valid() )
+						{
+						}
+					} else {
+						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect" << std::endl;
 					}
 				} catch(game_logic::formula_error& e) {
 					if (e.filename == "formula") {

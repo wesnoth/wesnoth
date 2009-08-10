@@ -151,7 +151,9 @@ void formula_ai::store_outcome_position(const variant& var)
 
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-
+	if (!formula_) {
+		throw formula_error("null formula passed to make_action","","formula",0);
+	}
 	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
 	variant res;
