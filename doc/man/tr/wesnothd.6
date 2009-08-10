@@ -91,10 +91,19 @@ key="\fIdeğer\fP,\fIdeğer\fP,..."
 .SS "Genel anahtar (key) isimleri:"
 .
 .TP 
+\fBallow_remote_shutdown\fP
+If set to `no' (default), shut_down and restart requests are ignored unless
+the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+/query by an administrator.
+.TP 
 \fBban_save_file\fP
 Sunucunun okuyup yazabildiği bir (gzip sıkıştırmalı) dosyanın göreli veya
 tam yolu. Sunucuya girişi yasaklanan oyuncular bu dosyaya kaydedilir ve
 sunucu başlatılırken okunur.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to `yes'.
 .TP 
 \fBconnections_allowed\fP
 Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
@@ -122,6 +131,12 @@ cinsinden). \fB10\fP saniye öntanımlıdır.
 \fBmotd\fP
 Günün sözü.
 .TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+`everyone', `registered', `admin' and `nobody', and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is `everyone'.
+.TP 
 \fBpasswd\fP
 Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin '
 ile başlar.
@@ -133,6 +148,11 @@ unutmayın!) wesnothd'nin başlatıldığı dizin anlamına gelen `' öntanıml�
 \fBrestart_command\fP
 `restart' komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun
 kullanacağı komut. (Sadece fifo üzerinden kullanılabilir.)
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
 .TP 
 \fBsave_replays\fP
 Sunucunun oyun tekrarlarını özdevinimli olarak kaydadip kaydatmayacağını

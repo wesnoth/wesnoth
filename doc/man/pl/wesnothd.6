@@ -94,10 +94,19 @@ key="\fIwartość\fP,\fIwartość\fP,..."
 .SS "Klawisze globalne:"
 .
 .TP 
+\fBallow_remote_shutdown\fP
+If set to `no' (default), shut_down and restart requests are ignored unless
+the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+/query by an administrator.
+.TP 
 \fBban_save_file\fP
 Pełna lub względna ścieżka do pliku (archiwum gzip), do którego serwer ma
 dostęp do odczytu i zapisu. Blokady będą zapisywane w tym pliku i wczytywane
 ponownie podczas uruchamiania serwera.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to `yes'.
 .TP 
 \fBconnections_allowed\fP
 Dozwolona liczba połączeń z tego samego adresu IP. \fB0\fP oznacza brak
@@ -127,6 +136,12 @@ zalewanie komunikatami (domyślnie: \fB10\fP sekund).
 \fBmotd\fP
 Wiadomość dnia.
 .TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+`everyone', `registered', `admin' and `nobody', and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is `everyone'.
+.TP 
 \fBpasswd\fP
 Hasło służące do uzyskania uprawnień administratora. Zazwyczaj zaczyna się
 od "admin ".
@@ -139,6 +154,11 @@ wesnothd.
 \fBrestart_command\fP
 Polecenie używane przez serwer do uruchomienia nowego procesu serwera
 poleceniem "restart". (Może zostać wydane wyłącznie poprzez kolejkę).
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
 .TP 
 \fBsave_replays\fP
 Określa, czy serwer będzie automatycznie zapisywać powtórki gier. Domyślnie

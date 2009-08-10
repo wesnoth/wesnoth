@@ -49,11 +49,11 @@ partagez\-les avec d'autres.
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-goes directly to the campaign selection menu.
+va directement au menu de sélection des campagnes.
 .TP 
 \fB\-\-config\-dir\fP\fI\ répertoire\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.
+définit le répertoire de configuration de l'utilisateur à \fIname\fP dans $HOME
+ou "Mes Documents\eMes Jeux".
 .TP 
 \fB\-\-config\-path\fP
 Affiche le nom du répertoire de configuration utilisateur et quitte le
@@ -62,15 +62,14 @@ programme.
 \fB\-d, \-\-debug\fP
 Active des options supplémentaires pour la ligne de commande dans le jeu (se
 reporter au Wiki\ : http://www.wesnoth.org/wiki/CommandMode pour plus
-d'informations sur la ligne de commande).
+d'informations).
 .TP 
 \fB\-\-dummy\-locales\fP
-use special dummy locales to switch to any language even if that language
-isn't installed system\-wide.
+utilise des variables de travail pour s'affranchir des problèmes de langage.
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-e \-\-load\fP
+lance directement l'éditeur de carte.  Si \fIfile\fP est utilisé, cela équivaut
+à \fB\-e \-\-load\fP.
 .TP 
 \fB\-\-fps\fP
 Affiche, dans un angle de l'écran, le nombre actuel d'images par seconde du
@@ -81,7 +80,7 @@ Lance le jeu en mode plein écran.
 .TP 
 \fB\-\-gunzip\fP\fI\ fichier_d'entrée.gz\fP
 Décompresse une sauvegarde, normalement au format gzip, en un fichier sans
-l'extension .gz. (\fIfichier_d'entrée.gz\fP) sera effacé.
+l'extension .gz. \fIfichier_d'entrée.gz\fP sera effacé.
 .TP 
 \fB\-\-gzip\fP\fI\ fichier_d'entrée\fP
 Compresse une sauvegarde au format gzip et la place dans \fIfichier
@@ -92,10 +91,10 @@ Affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
 \fB\-\-load\fP\fI\ fichier\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+charge la sauvegarde \fIfile\fP à partir du répertoire par défaut du jeu.  Si
+les options \fB\-e\fP ou \fB\-\-editor\fP sont aussi utilisées, lance l'éditeur avec
+la carte située dans \fIfile\fP (Si c'est un répertoire, l'éditeur commence par
+demander de choisir une carte).
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
 Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
@@ -110,12 +109,13 @@ Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
 comprise entre 1 et 1000, la valeur par défaut est \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-Lance un jeu multijoueurs. Des options supplémentaires peuvent être
-utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous.
+runs a multiplayer game. There are additional options that can be used
+together with \fB\-\-multiplayer\fP as explained below. Only these additional
+options can follow \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
 Lance le jeu sans pause pour mesurer les performances graphiques. Cette
-options est activée automatiquement par \fB\-\-nogui\fP.
+option est activée automatiquement par \fB\-\-nogui\fP.
 .TP 
 \fB\-\-nocache\fP
 Désactive le cache des données de jeu.
@@ -133,18 +133,19 @@ Affiche le nom du répertoire principal du jeu et quitte le programme.
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
 .TP 
 \fB\-\-smallgui\fP
-allows to use screen resolutions down to 800x480 and resizes a few interface
-elements.
+permet d'utiliser une résolution réduite à 800x400 et redimensionne quelques
+éléments de l'interface.
 .TP 
 \fB\-s,\ \-\-server\ [hôte]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
+premier serveur paramétré dans les préférences. Exemple\ : \fB\-\-server
+server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 Lance le jeu avec un petit scénario de test.
 .TP 
 \fB\-\-validcache\fP
-assumes that the cache is valid. (dangerous)
+suppose que le cache est valide (risqué).
 .TP 
 \fB\-v, \-\-version\fP
 Affiche le numéro de version et quitte le programme.
@@ -159,11 +160,11 @@ Rejoue la partie chargée avec l'option \fB\-\-load\fP.
 .
 Les options spécifiques au mode multijoueur sont marquées d'un
 \fInombre\fP. \fInombre\fP doit être remplacé par un numéro de joueur. Il s'agit
-souvent de 1 ou de 2 mais cela dépend du nombre possible de joueurs pour le
+souvent de 1 ou de 2, mais cela dépend du nombre possible de joueurs pour le
 scénario choisi.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fInombre\fP\fB=\fP\fIvaleur\fP
+Sélectionne un fichier de configuration pour l'IA de cette faction.
 .TP 
 \fB\-\-algorithm\fP\fInombre\fP\fB=\fP\fIvaleur\fP
 Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs
@@ -190,8 +191,8 @@ Lance le jeu sans interface graphique. Doit apparaître avant
 \fB\-\-parm\fP\fInombre\fP\fB=\fP\fInom\fP\fB:\fP\fIvaleur\fP
 Ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent des
 options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait être
-utile qu'aux personnes expérimentant leur propre IA (non encore totalement
-documenté).
+utile qu'aux personnes expérimentant leur propre IA (documentation
+incomplète).
 .TP 
 \fB\-\-scenario=\fP\fIvaleur\fP
 Sélectionne un scénario multijoueur par son identifiant. Celui par défaut
@@ -203,7 +204,7 @@ identifiant. Les factions sont décrites dans le fichier
 \fBdata/multiplayer.cfg\fP.
 .TP 
 \fB\-\-turns=\fP\fIvaleur\fP
-Définit le nombre de tours du scénario. Valeur par défaut\ : \fB50\fP.
+Définit le nombre de tours du scénario (par défaut\ : \fB50\fP).
 .
 .SH AUTEUR
 .

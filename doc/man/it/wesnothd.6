@@ -94,6 +94,11 @@ key="\fIvalore\fP,\fIvalore\fP,..."
 .SS "Caratteri globali:"
 .
 .TP 
+\fBallow_remote_shutdown\fP
+If set to `no' (default), shut_down and restart requests are ignored unless
+the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+/query by an administrator.
+.TP 
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
 possa scrivere e leggere. L'elenco degli utenti messi al bando sarà
@@ -101,6 +106,10 @@ conservato in questo file e letto a tutti gli avvii del server.Percorso
 completo o relativo ad un file (compresso con gzip) che il server possa
 scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in
 questo file e letto a tutti gli avvii del server.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to `yes'.
 .TP 
 \fBconnections_allowed\fP
 Il numero di connessioni permesse dallo stesso IP. \fB0\fP indica infinite
@@ -128,22 +137,33 @@ messaggi (valore predefinito: \fB10\fP secondi).
 \fBmotd\fP
 Il messaggio del giorno.
 .TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+`everyone', `registered', `admin' and `nobody', and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is `everyone'.
+.TP 
 \fBpasswd\fP
 La password da usare per dare i privilegi di amministratore. Di solito
 inizia con «admin ».
 .TP 
-\fBreplay_save_path\fP
-The directory where the server stores game replays. (Don't forget the
-trailing /!) Defaults to `' which means the directory wesnothd was started
-in.
+\fBpercorso_salvataggio_replay\fP
+La directory in cui il server conserva i replay delle partite (Non
+dimenticare la barra «/» alla fine!). In assenza di modifiche, vale «», che
+significa la directory da cui è stato eseguito wesnothd.
 .TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
 `restart' command. (Can only be issued via the fifo.)
 .TP 
-\fBsave_replays\fP
-Defines whether the server will automatically save replays of
-games. (default: \fBfalse\fP)
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
+.TP 
+\fBsalva_replays\fP
+Definisce se il server salverà automaticamente i replay delle
+partite. (normalmente: \fBfalse\fP)
 .TP 
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
@@ -228,8 +248,8 @@ user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);
 .TP  
 \fBuser_expiration\fP
-(for user_handler=sample) The time after which a registered nick expires (in
-days).
+(per user_handler=sample) Il tempo dopo cui un nome registrato scade (in
+giorni).
 .RE
 .P
 \fB[mail]\fP Configures an SMTP server through which the user handler can send

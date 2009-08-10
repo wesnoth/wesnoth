@@ -83,8 +83,17 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .SS "Global keys:"
 .
 .TP 
+\fBallow_remote_shutdown\fP
+If set to `no' (default), shut_down and restart requests are ignored unless
+the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+/query by an administrator.
+.TP 
 \fBban_save_file\fP
 一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件，并在服务器重启时读取。
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to `yes'.
 .TP 
 \fBconnections_allowed\fP
 同一IP允许的连接数。\fB0\fP 表示无限制。(默认值：\fB5\fP)
@@ -106,6 +115,12 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 \fBmotd\fP
 当日新闻
 .TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+`everyone', `registered', `admin' and `nobody', and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is `everyone'.
+.TP 
 \fBpasswd\fP
 获取管理员权限的密码。通常以`admin '开头。
 .TP 
@@ -114,6 +129,11 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .TP 
 \fBrestart_command\fP
 这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
 .TP 
 \fBsave_replays\fP
 设置服务器是否自动保存游戏录像。(默认值: \fBfalse\fP)

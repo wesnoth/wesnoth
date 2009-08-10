@@ -116,11 +116,6 @@ stringfixes = {
 ("characers", "characters"),
 ),
 
-#correct copyright date
-"wesnoth-manpages" : (
-("2003-2007", "2003-2009"),
-),
-
 "wesnoth-trow" :(
 # Most changes to TROW simply fix inconsistent capitalization
 # of the word "lich" and the phrase "lich-lord", applying the

@@ -91,10 +91,19 @@ ključ="\fIvrednost\fP,\fIvrednost\fP,..."
 .SS "Globalni ključevi:"
 .
 .TP 
+\fBallow_remote_shutdown\fP
+If set to `no' (default), shut_down and restart requests are ignored unless
+the come from the fifo.  Set it to `yes' to allow remote shutdown via a
+/query by an administrator.
+.TP 
 \fBban_save_file\fP
 Puna ili relativna putanja do (gzipovane) datoteke koju server može da čita
 i piše. Zabrane će biti zapisivane u nju, i čitane po narednom pokretanju
 servera.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to `yes'.
 .TP 
 \fBconnections_allowed\fP
 broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
@@ -122,6 +131,12 @@ vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
 \fBmotd\fP
 poruka dana
 .TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+`everyone', `registered', `admin' and `nobody', and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is `everyone'.
+.TP 
 \fBpasswd\fP
 lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin
 \&'
@@ -134,6 +149,11 @@ wesnothd pokrenut.
 \fBrestart_command\fP
 Naredba kojom server pokreće novi serverski proces pri naredbi
 \&'restart'. (Može se izdati samo preko fifoa.)
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
 .TP 
 \fBsave_replays\fP
 Određuje da li server automatski upisuje snimke igara (podrazumevno:

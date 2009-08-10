@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-04-26 11:39+0300\n"
+"POT-Creation-Date: 2009-08-10 17:58+0300\n"
 "PO-Revision-Date: 2009-05-20 10:52+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -157,8 +157,8 @@ msgstr ""
 "nije instaliran na sistemu."
 
 #: ../../doc/man/wesnoth.6:68
-#, no-wrap
-msgid "B<-e, --editor \\ file>"
+#, fuzzy, no-wrap
+msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e, --editor \\ datoteka>"
 
 #: ../../doc/man/wesnoth.6:74
@@ -284,20 +284,22 @@ msgstr ""
 msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
-#: ../../doc/man/wesnoth.6:131
+#: ../../doc/man/wesnoth.6:132
+#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
-"together with B<--multiplayer> as explained below."
+"together with B<--multiplayer> as explained below. Only these additional "
+"options can follow B<--multiplayer>."
 msgstr ""
 "pokreće višeigračku igru. Uz ovu opciju mogu biti upotrebljene još neke, "
 "navedene ispod."
 
-#: ../../doc/man/wesnoth.6:131
+#: ../../doc/man/wesnoth.6:132
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
-#: ../../doc/man/wesnoth.6:135
+#: ../../doc/man/wesnoth.6:136
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -305,57 +307,57 @@ msgstr ""
 "pokreće igru bez ikakvih zastoja, za probu grafičkih performansi. Ovo je "
 "automatski uključeno ako se zada B<--nogui>."
 
-#: ../../doc/man/wesnoth.6:135
+#: ../../doc/man/wesnoth.6:136
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
-#: ../../doc/man/wesnoth.6:138
+#: ../../doc/man/wesnoth.6:139
 msgid "disables caching of game data."
 msgstr "isključuje ostavu za podatke igre."
 
-#: ../../doc/man/wesnoth.6:138
+#: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
-#: ../../doc/man/wesnoth.6:141
+#: ../../doc/man/wesnoth.6:142
 msgid "runs the game without music."
 msgstr "pokreće igru bez muzike."
 
-#: ../../doc/man/wesnoth.6:141
+#: ../../doc/man/wesnoth.6:142
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
-#: ../../doc/man/wesnoth.6:144
+#: ../../doc/man/wesnoth.6:145
 msgid "runs the game without sounds and music."
 msgstr "pokreće igru bez zvuka i muzike."
 
-#: ../../doc/man/wesnoth.6:144
+#: ../../doc/man/wesnoth.6:145
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
-#: ../../doc/man/wesnoth.6:147
+#: ../../doc/man/wesnoth.6:148
 msgid "prints the name of the game data directory and exits."
 msgstr "ispisuje ime direktorijuma sa podacima igre i izlazi."
 
-#: ../../doc/man/wesnoth.6:147
+#: ../../doc/man/wesnoth.6:148
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:152
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "postavlja rezoluciju ekrana. Primer: B<-r 800x600>"
 
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:152
 #, no-wrap
 msgid "B<--smallgui>"
 msgstr "B<--smallgui>"
 
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:155
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
@@ -363,12 +365,12 @@ msgstr ""
 "omogućava niže rezolucije ekrana, do 800x480, uz izmenu veličine nekoliko "
 "elemenata sučelja."
 
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:155
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-s,\\ --server\\ [domaćin]>"
 
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:159
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -376,57 +378,57 @@ msgstr ""
 "povezuje se sa domaćinom ako je zadat, ili sa prvim serverom u postavkama. "
 "Na primer: B<--server server.wesnoth.org>"
 
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:162
 msgid "runs the game in a small test scenario."
 msgstr "pokreće igru sa malim probnim scenariom."
 
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:162
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:165
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "pretpostavlja da je keš ažuran (opasno)."
 
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:165
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:168
 msgid "shows the version number and exits."
 msgstr "prikazuje broj verzije i izlazi."
 
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:168
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:171
 msgid "runs the game in windowed mode."
 msgstr "pokreće igru unutar prozora."
 
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:171
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
-#: ../../doc/man/wesnoth.6:175
+#: ../../doc/man/wesnoth.6:176
 msgid "replays the game loaded with the B<--load> option."
 msgstr "vrti snimak igre učitane opcijom B<--load>."
 
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Opcije uz --multiplayer"
 
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:184
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -436,22 +438,22 @@ msgstr ""
 "I<broj> treba zameniti brojem strane. To je obično 1 ili 2, ali zavisi od "
 "broja igrača dozvoljenih za izabrani scenario."
 
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:184
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--ai_config>I<broj>B<=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:187
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "bira postavnu datoteku koja se učitava za VI upravljača ove strane."
 
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<broj>B<=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:194
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -459,24 +461,24 @@ msgstr ""
 "bira nestandardni algoritam za VI upravljanje zadatom stranom. Moguće "
 "vrednosti: B<idle_ai> i B<sample_ai>."
 
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:194
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<broj>B<=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:200
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
 "bira upravljača za zadatu stranu. Moguće vrednosti su: B<human> (čovek) i "
 "B<ai> (VI)."
 
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:200
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:207
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -486,12 +488,12 @@ msgstr ""
 "(B<Default>). Epoha se bira ključem; moguće vrednosti opisane su u datoteci "
 "B<data/multiplayer/eras.cfg>"
 
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:207
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:211
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -501,12 +503,12 @@ msgstr ""
 "koji bi korisnik morao da odgovori. Ovo se takođe koristi za skriptovanje "
 "proba performansi."
 
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:211
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
-#: ../../doc/man/wesnoth.6:215
+#: ../../doc/man/wesnoth.6:216
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -514,12 +516,12 @@ msgstr ""
 "pokreće igru bez grafičkog sučelja. Mora se javiti pre B<--multiplayer> da "
 "bi imalo željeni efekat."
 
-#: ../../doc/man/wesnoth.6:215
+#: ../../doc/man/wesnoth.6:216
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<broj>B<=>I<ime>B<:>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:224
+#: ../../doc/man/wesnoth.6:225
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -529,12 +531,12 @@ msgstr ""
 "upotrebljenih uz B<--controller> i B<--algorithm>. Obično korisno onima koji "
 "projektuju nove VI (još uvek nije sasvim dokumentovano)"
 
-#: ../../doc/man/wesnoth.6:224
+#: ../../doc/man/wesnoth.6:225
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:229
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -542,12 +544,12 @@ msgstr ""
 "bira višeigrački scenario po ključu. Podrazumevan je "
 "B<multiplayer_The_Freelands>."
 
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:229
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<broj>B<=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:233
+#: ../../doc/man/wesnoth.6:234
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -555,25 +557,25 @@ msgstr ""
 "bira frakciju iz tekuće epohe za zadatu stranu. Frakcija se bira ključem; "
 "moguće vrednosti opisane su u datoteci data/multiplayer.cfg"
 
-#: ../../doc/man/wesnoth.6:233
+#: ../../doc/man/wesnoth.6:234
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<vrednost>"
 
-#: ../../doc/man/wesnoth.6:237
+#: ../../doc/man/wesnoth.6:238
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "postavlja broj poteza za izabrani scenario. Podrazumevano je B<50>."
 
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:248
+#: ../../doc/man/wesnoth.6:239 ../../doc/man/wesnothd.6:261
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:242
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Napisao Dejvid Vajt (David White) E<lt>davidnwhite@verizon.netE<gt>."
 
-#: ../../doc/man/wesnoth.6:243
+#: ../../doc/man/wesnoth.6:244
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -581,7 +583,7 @@ msgstr ""
 "Uredili Nils Knojper (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> i Soliton E<lt>soliton.de@gmail.comE<gt>."
 
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:246
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -589,22 +591,22 @@ msgstr ""
 "Ovu uputnu stranicu prvobitno je napisao Siril Butor (Cyril Bouthors) "
 "E<lt>cyril@bouthors.orgE<gt>."
 
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:255
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:268
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Posetite zvaničnu domaću stranicu: http://www.wesnoth.org/"
 
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:256
+#: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "AUTORSKA PRAVA"
 
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:259
+#: ../../doc/man/wesnoth.6:252 ../../doc/man/wesnothd.6:272
 msgid "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Autorska prava \\(co 2003-2009 Dejvid Vajt (David White) "
 "E<lt>davidnwhite@verizon.netE<gt>."
 
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:262
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:275
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -614,12 +616,12 @@ msgstr ""
 "koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni "
 "za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODREĐENE POTREBE."
 
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:263
+#: ../../doc/man/wesnoth.6:256 ../../doc/man/wesnothd.6:276
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "POGLEDATI JOŠ"
 
-#: ../../doc/man/wesnoth.6:258
+#: ../../doc/man/wesnoth.6:259
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
@@ -792,12 +794,26 @@ msgstr "[/I<oznaka>]"
 msgid "Global keys:"
 msgstr "Globalni ključevi:"
 
+# type: TP
 #: ../../doc/man/wesnothd.6:110
+#, no-wrap
+msgid "B<allow_remote_shutdown>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:114
+msgid ""
+"If set to `no' (default), shut_down and restart requests are ignored unless "
+"the come from the fifo.  Set it to `yes' to allow remote shutdown via a /"
+"query by an administrator."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:114
 #, no-wrap
 msgid "B<ban_save_file>"
 msgstr "B<ban_save_file>"
 
-#: ../../doc/man/wesnothd.6:114
+#: ../../doc/man/wesnothd.6:118
 msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
@@ -806,12 +822,25 @@ msgstr ""
 "i piše. Zabrane će biti zapisivane u nju, i čitane po narednom pokretanju "
 "servera."
 
-#: ../../doc/man/wesnothd.6:114
+# type: TP
+#: ../../doc/man/wesnothd.6:118
+#, no-wrap
+msgid "B<compress_stored_rooms>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:121
+msgid ""
+"Determines whether the rooms file should be read and written to in "
+"compressed form. Defaults to `yes'."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:121
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
-#: ../../doc/man/wesnothd.6:117
+#: ../../doc/man/wesnothd.6:124
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
@@ -819,12 +848,12 @@ msgstr ""
 "broj dozvoljenih veza sa iste IP adrese, B<0> znači bezbroj (podrazumevno: "
 "B<5>)"
 
-#: ../../doc/man/wesnothd.6:117
+#: ../../doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
-#: ../../doc/man/wesnothd.6:124
+#: ../../doc/man/wesnothd.6:131
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -836,12 +865,12 @@ msgstr ""
 "koriste ako se ništa ne zada, su: B<*admin*,*admln*,*server*,ai,ai?,computer,"
 "human,network,player>."
 
-#: ../../doc/man/wesnothd.6:124
+#: ../../doc/man/wesnothd.6:131
 #, no-wrap
 msgid "B<fifo_path>"
 msgstr "B<fifo_path>"
 
-#: ../../doc/man/wesnothd.6:128
+#: ../../doc/man/wesnothd.6:135
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time specified path "
@@ -851,24 +880,24 @@ msgstr ""
 "iz igre). Ako nije zadato, spada na podrazumevanu ugrađenu (/var/run/socket/"
 "wesnothd/socket)."
 
-#: ../../doc/man/wesnothd.6:128
+#: ../../doc/man/wesnothd.6:135
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
-#: ../../doc/man/wesnothd.6:131
+#: ../../doc/man/wesnothd.6:138
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
 "broj dozvoljenih poruka za vreme B<messages_time_period> (podrazumevano: "
 "B<4>)"
 
-#: ../../doc/man/wesnothd.6:131
+#: ../../doc/man/wesnothd.6:138
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
-#: ../../doc/man/wesnothd.6:134
+#: ../../doc/man/wesnothd.6:141
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
@@ -876,32 +905,47 @@ msgstr ""
 "vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka "
 "(podrazumevano: B<10> sekundi)"
 
-#: ../../doc/man/wesnothd.6:134
+#: ../../doc/man/wesnothd.6:141
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
-#: ../../doc/man/wesnothd.6:137
+#: ../../doc/man/wesnothd.6:144
 msgid "The message of the day."
 msgstr "poruka dana"
 
-#: ../../doc/man/wesnothd.6:137
+# type: TP
+#: ../../doc/man/wesnothd.6:144
+#, no-wrap
+msgid "B<new_room_policy>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:147
+msgid ""
+"Determines who can create new rooms on the server. Available values are "
+"`everyone', `registered', `admin' and `nobody', and give the permission "
+"respectively to everyone, registered users, admin users or disables new room "
+"creation. Default value is `everyone'."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:147
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
-#: ../../doc/man/wesnothd.6:140
+#: ../../doc/man/wesnothd.6:150
 msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
 "lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa 'admin  '"
 
-#: ../../doc/man/wesnothd.6:140
+#: ../../doc/man/wesnothd.6:150
 #, no-wrap
 msgid "B<replay_save_path>"
 msgstr "B<replay_save_path>"
 
-#: ../../doc/man/wesnothd.6:143
+#: ../../doc/man/wesnothd.6:153
 msgid ""
 "The directory where the server stores game replays. (Don't forget the "
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
@@ -911,12 +955,12 @@ msgstr ""
 "Podrazumevano je '' (prazno), što znači direktorijum u kojem je wesnothd "
 "pokrenut."
 
-#: ../../doc/man/wesnothd.6:143
+#: ../../doc/man/wesnothd.6:153
 #, no-wrap
 msgid "B<restart_command>"
 msgstr "B<restart_command>"
 
-#: ../../doc/man/wesnothd.6:146
+#: ../../doc/man/wesnothd.6:156
 msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
@@ -924,12 +968,25 @@ msgstr ""
 "Naredba kojom server pokreće novi serverski proces pri naredbi 'restart'. "
 "(Može se izdati samo preko fifoa.)"
 
-#: ../../doc/man/wesnothd.6:146
+#: ../../doc/man/wesnothd.6:156
+#, fuzzy, no-wrap
+msgid "B<room_save_file>"
+msgstr "B<ban_save_file>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:159
+msgid ""
+"Path to a file where the room info should be stored. This file is read on "
+"server startup and written to later. If empty or not set, rooms are not "
+"loaded and not saved."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:159
 #, no-wrap
 msgid "B<save_replays>"
 msgstr "B<save_replays>"
 
-#: ../../doc/man/wesnothd.6:149
+#: ../../doc/man/wesnothd.6:162
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
@@ -937,12 +994,12 @@ msgstr ""
 "Određuje da li server automatski upisuje snimke igara (podrazumevno: "
 "B<false>)."
 
-#: ../../doc/man/wesnothd.6:149
+#: ../../doc/man/wesnothd.6:162
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
-#: ../../doc/man/wesnothd.6:153
+#: ../../doc/man/wesnothd.6:166
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
@@ -952,16 +1009,16 @@ msgstr ""
 "'*' i '?' kao džokeri (podrazumevana je verzija klijenta koja odgovara "
 "verziji servera)"
 
-#: ../../doc/man/wesnothd.6:155
+#: ../../doc/man/wesnothd.6:168
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "Primer: B<versions_accepted=\"*\"> prihvata bilo koju nisku verzije."
 
-#: ../../doc/man/wesnothd.6:155
+#: ../../doc/man/wesnothd.6:168
 #, no-wrap
 msgid "B<user_handler>"
 msgstr "B<user_handler>"
 
-#: ../../doc/man/wesnothd.6:160
+#: ../../doc/man/wesnothd.6:173
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a "
@@ -975,12 +1032,12 @@ msgstr ""
 "Podrazumevana vrednost je 'forum'. Takođe morate dodati odeljak B<"
 "[user_handler]>, v. ispod."
 
-#: ../../doc/man/wesnothd.6:161
+#: ../../doc/man/wesnothd.6:174
 #, no-wrap
 msgid "Global tags:"
 msgstr "Globalne oznake:"
 
-#: ../../doc/man/wesnothd.6:166
+#: ../../doc/man/wesnothd.6:179
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -988,30 +1045,30 @@ msgstr ""
 "B<[redirect]> oznaka za navođenje servera na koji se preusmeravaju neke "
 "verzije klijenta"
 
-#: ../../doc/man/wesnothd.6:167
+#: ../../doc/man/wesnothd.6:180
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
-#: ../../doc/man/wesnothd.6:170
+#: ../../doc/man/wesnothd.6:183
 msgid "The address of the server to redirect to."
 msgstr "adresa servera na koji se preusmerava"
 
-#: ../../doc/man/wesnothd.6:170
+#: ../../doc/man/wesnothd.6:183
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
-#: ../../doc/man/wesnothd.6:173
+#: ../../doc/man/wesnothd.6:186
 msgid "The port to connect to."
 msgstr "port na koji se povezuje"
 
-#: ../../doc/man/wesnothd.6:173
+#: ../../doc/man/wesnothd.6:186
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
-#: ../../doc/man/wesnothd.6:178
+#: ../../doc/man/wesnothd.6:191
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1019,7 +1076,7 @@ msgstr ""
 "zapetama razdvojen spisak verzija koje se preusmeravaju. Ponaša se isto kao "
 "i B<versions_accepted> u pogledu džokera"
 
-#: ../../doc/man/wesnothd.6:182
+#: ../../doc/man/wesnothd.6:195
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
@@ -1027,21 +1084,21 @@ msgstr ""
 "B<[ban_time]> oznaka za određivanje zgodnih ključnih reči za privremene "
 "zabrane."
 
-#: ../../doc/man/wesnothd.6:183
+#: ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "B<name>"
 msgstr "B<name>"
 
-#: ../../doc/man/wesnothd.6:186
+#: ../../doc/man/wesnothd.6:199
 msgid "The name used to reference the ban time."
 msgstr "Ime koje upućuje na trajanje zabrane."
 
-#: ../../doc/man/wesnothd.6:186
+#: ../../doc/man/wesnothd.6:199
 #, no-wrap
 msgid "B<time>"
 msgstr "B<time>"
 
-#: ../../doc/man/wesnothd.6:192
+#: ../../doc/man/wesnothd.6:205
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1054,7 +1111,7 @@ msgstr ""
 "modifikator, pretpostavljaju se minuti (m). Primer: time=\"1D12h30m\" znači "
 "zabranu u trajanju od jednog dana, 12 sati i 30 minuta."
 
-#: ../../doc/man/wesnothd.6:198
+#: ../../doc/man/wesnothd.6:211
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1064,7 +1121,7 @@ msgstr ""
 "prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste "
 "ključeve kao i B<[redirect]>"
 
-#: ../../doc/man/wesnothd.6:204
+#: ../../doc/man/wesnothd.6:217
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no "
@@ -1076,30 +1133,30 @@ msgstr ""
 "nema odeljka [user_handler], server neće pružati uslugu registrovanja "
 "nadimaka."
 
-#: ../../doc/man/wesnothd.6:205
+#: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
-#: ../../doc/man/wesnothd.6:208
+#: ../../doc/man/wesnothd.6:221
 msgid "(for user_handler=forum) The hostname of the database server"
 msgstr "(za user_handler=forum) ime domaćina servera baze podataka"
 
-#: ../../doc/man/wesnothd.6:208
+#: ../../doc/man/wesnothd.6:221
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
-#: ../../doc/man/wesnothd.6:211
+#: ../../doc/man/wesnothd.6:224
 msgid "(for user_handler=forum) The name of the database"
 msgstr "(za user_handler=forum) ime baze podataka"
 
-#: ../../doc/man/wesnothd.6:211
+#: ../../doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
-#: ../../doc/man/wesnothd.6:214
+#: ../../doc/man/wesnothd.6:227
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
@@ -1107,21 +1164,21 @@ msgstr ""
 "(za user_handler=forum) ime korisnika pod kojim se prijavljuje u bazu "
 "podataka"
 
-#: ../../doc/man/wesnothd.6:214
+#: ../../doc/man/wesnothd.6:227
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
-#: ../../doc/man/wesnothd.6:217
+#: ../../doc/man/wesnothd.6:230
 msgid "(for user_handler=forum) This user's password"
 msgstr "(za user_handler=forum) lozinka zadatog korisnika"
 
-#: ../../doc/man/wesnothd.6:217
+#: ../../doc/man/wesnothd.6:230
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
-#: ../../doc/man/wesnothd.6:220
+#: ../../doc/man/wesnothd.6:233
 msgid ""
 "(for user_handler=forum) The name of the table in which your phpbb forums "
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
@@ -1131,12 +1188,12 @@ msgstr ""
 "korisnicima. Najverovatnije će to biti E<lt>prefiks-tabeleE<gt>_users (npr. "
 "phpbb3_users)."
 
-#: ../../doc/man/wesnothd.6:220
+#: ../../doc/man/wesnothd.6:233
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
-#: ../../doc/man/wesnothd.6:224
+#: ../../doc/man/wesnothd.6:237
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1150,12 +1207,12 @@ msgstr ""
 "UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
 "0);"
 
-#: ../../doc/man/wesnothd.6:224
+#: ../../doc/man/wesnothd.6:237
 #, no-wrap
 msgid "B<user_expiration>"
 msgstr "B<user_expiration>"
 
-#: ../../doc/man/wesnothd.6:227
+#: ../../doc/man/wesnothd.6:240
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
@@ -1163,7 +1220,7 @@ msgstr ""
 "(za user_handler=sample) vreme po kojem registrovani nadimak ističe (u "
 "danima)."
 
-#: ../../doc/man/wesnothd.6:231
+#: ../../doc/man/wesnothd.6:244
 msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
@@ -1171,52 +1228,52 @@ msgstr ""
 "B<[mail]> podešava SMTP server kroz koji rukovalac korisnicima šalje poštu. "
 "Trenutno samo za primerni rukovalac."
 
-#: ../../doc/man/wesnothd.6:232
+#: ../../doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<server>"
 msgstr "B<server>"
 
-#: ../../doc/man/wesnothd.6:235
+#: ../../doc/man/wesnothd.6:248
 msgid "The hostname of the mail server"
 msgstr "Ime domaćina udaljenog servera"
 
-#: ../../doc/man/wesnothd.6:235
+#: ../../doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<username>"
 msgstr "B<username>"
 
-#: ../../doc/man/wesnothd.6:238
+#: ../../doc/man/wesnothd.6:251
 msgid "The user name under which to log into the mail server."
 msgstr "Korisničko ime za prijavljivanje na poštanski server."
 
-#: ../../doc/man/wesnothd.6:238
+#: ../../doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<password>"
 msgstr "B<password>"
 
-#: ../../doc/man/wesnothd.6:241
+#: ../../doc/man/wesnothd.6:254
 msgid "This user's password."
 msgstr "Korisnikova lozinka."
 
-#: ../../doc/man/wesnothd.6:241
+#: ../../doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<from_address>"
 msgstr "B<from_address>"
 
-#: ../../doc/man/wesnothd.6:244
+#: ../../doc/man/wesnothd.6:257
 msgid "The reply-to address of you mail."
 msgstr "Adresa za odgovore na vašu poštu."
 
-#: ../../doc/man/wesnothd.6:244
+#: ../../doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<mail_port>"
 msgstr "B<mail_port>"
 
-#: ../../doc/man/wesnothd.6:247
+#: ../../doc/man/wesnothd.6:260
 msgid "The port on which your mail server is running. Default is 25."
 msgstr "Port na kojem sluša poštanski server. Podrazumevano 25."
 
-#: ../../doc/man/wesnothd.6:253
+#: ../../doc/man/wesnothd.6:266
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1231,6 +1288,6 @@ msgstr ""
 "uputnu stranicu prvobitno je napisao Siril Butor (Cyril Bouthors) "
 "E<lt>cyril@bouthors.orgE<gt>."
 
-#: ../../doc/man/wesnothd.6:266
+#: ../../doc/man/wesnothd.6:279
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
