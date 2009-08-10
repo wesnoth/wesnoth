@@ -38,4 +38,14 @@ class KillGraphController(BaseController):
 		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
 		maps = curs.fetchall()
 		conn.close()
-		return dict(maps=maps)
+		
+		cur_map = kw.setdefault("map","6f50ba078308f4ed29b8b79a0727fd9b")
+		#check for input sanity, we will be fetching map tiles based on this name
+		if not ( cur_map.isalnum() and len(cur_map) == 32):
+			cur_map = ""
+		
+		m_dimensions = ()
+		if cur_map != "":
+			m_dimensions = helperlib.get_map_dimensions(configuration.MAP_DIR+cur_map)
+		print m_dimensions	
+		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions)

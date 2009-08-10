@@ -125,6 +125,7 @@ def build_tree(lines):
 def get_map_dimensions(filename):
 	map = open(filename,"r")
 	rows = map.readlines()
-	width = len( rows[2].split(',') )+1
+	map.close()
+	width = len( rows[3].split(',') )+1
 	height = len(rows) - 3
-	return (width,height)
+	return (height,width)
