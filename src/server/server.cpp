@@ -1176,6 +1176,7 @@ void server::process_query(const network::connection sock,
 				<< "\tIP: "<< network::ip_address(sock)
 				<< "\tnick: "<< pl->second.name() << std::endl;
 			response << process_command(command.to_string(), pl->second.name());
+			LOG_SERVER << response.str();
 		}
 	} else if (command == "help" || command.empty()) {
 		response << help_msg;
