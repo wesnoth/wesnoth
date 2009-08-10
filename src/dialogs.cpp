@@ -187,7 +187,8 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	}
 
 	if(choice < options.size()) {
-		const std::string& chosen_unit = options[choice];
+		// chosen_unit is not a reference, since the unit may disappear at any moment.
+		std::string chosen_unit = options[choice];
 		::advance_unit(loc, chosen_unit);
 	} else {
 		unit amla_unit(u->second);

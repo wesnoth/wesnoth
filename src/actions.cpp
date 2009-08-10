@@ -1934,7 +1934,8 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	if(!u.valid()) {
 		return;
 	}
-	std::string const& original_type =  u->second.type_id();
+	// original_type is not a reference, since the unit may disappear at any moment.
+	std::string original_type = u->second.type_id();
 	LOG_NG << "firing advance event at " << loc <<"\n";
 
 	game_events::fire("advance",loc);
