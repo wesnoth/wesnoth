@@ -1868,7 +1868,8 @@ void advance_unit(unit_map& units,
 	if(!u.valid()) {
 		return;
 	}
-	std::string const& original_type =  u->second.type_id();
+	// original_type is not a reference, since the unit may disappear at any moment.
+	std::string original_type = u->second.type_id();
 	LOG_NG << "firing advance event at " << loc <<"\n";
 
 /*	config test; // REMOVE ME
