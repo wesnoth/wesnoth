@@ -31,11 +31,6 @@
 Growl_Delegate growl_obj;
 #endif
 
-#ifdef HAVE_QTDBUS
-#define QT_NO_KEYWORDS
-#include <QtDBus>
-#endif
-
 #include "actions.hpp"
 #include "foreach.hpp"
 #include "halo.hpp"
@@ -1039,7 +1034,7 @@ std::string game_display::current_team_name() const
 }
 
 #ifdef HAVE_LIBDBUS
-static int kde_style = 0;
+static bool kde_style = false;
 
 struct wnotify
 {
@@ -1078,6 +1073,10 @@ static DBusConnection *get_dbus_connection()
 	if (!initted)
 	{
 		initted = true;
+		if (getenv("KDE_FULL_SESSION")) {
+			// TODO: check for version <= 4.3.
+			kde_style = true;
+		}
 		DBusError err;
 		dbus_error_init(&err);
 		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
@@ -1153,13 +1152,13 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 }
 #endif
 
-#if defined(HAVE_LIBDBUS) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL)
 void game_display::send_notification(const std::string& owner, const std::string& message)
 #else
 void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
 #endif
 {
-#if defined(HAVE_LIBDBUS) || defined(HAVE_QTDBUS) || defined(HAVE_GROWL)
+#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL)
 	Uint8 app_state = SDL_GetAppState();
 
 	// Do not show notifications when the window is visible...
@@ -1194,24 +1193,6 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	visual.owner = owner;
 	visual.message = message;
 	notifications.push_back(visual);
-#endif
-
-#ifdef HAVE_QTDBUS
-	QDBusInterface notify("org.kde.VisualNotifications", "/VisualNotifications", "org.kde.VisualNotifications");
-	QList<QVariant> args;
-	args.append("Battle for Wesnoth");
-	args.append(0U);
-	args.append("");
-	args.append((game_config::path + "/data/core/images/wesnoth-icon.png").c_str());
-	args.append(QString::fromUtf8(owner.c_str()));
-	args.append(QString::fromUtf8(message.c_str()));
-	args.append(QStringList());
-	args.append(QVariantMap());
-	args.append(5000);
-	QDBusMessage result = notify.callWithArgumentList(QDBus::Block, "Notify", args);
-	if(result.type() == QDBusMessage::ErrorMessage) {
-		ERR_DP << "Failed to send a KDE notification with DBus: " << result.errorMessage().toLocal8Bit().data() << '\n';
-	}
 #endif
 
 #ifdef HAVE_GROWL
