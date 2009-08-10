@@ -1099,7 +1099,7 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 {
 	DBusMessage *buf = dbus_message_new_method_call(
 		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
-		kde_style ? "/org/kde/VisualNotifications" : "/org/freedesktop/Notifications",
+		kde_style ? "/VisualNotifications" : "/org/freedesktop/Notifications",
 		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
 		"Notify");
 	const char *app_name = "Battle for Wesnoth";
