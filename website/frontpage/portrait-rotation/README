@@ -1,0 +1,17 @@
+New files for the wesnoth.org frontpage portrait rotation
+should be made based on the template file in this directory.
+I personally recommend using the JPEG format with some
+appropriate parameters (and a good exporter program) so that
+the images are neither too large in file size, nor look
+ugly/blurry/with compression artifacts.
+
+All image files should use the *.jpg extension; otherwise
+you'll need to change selector.php.
+
+The selector.php code may be used in place of an actual
+image file in CSS, HTML, whatever; the client just tries to
+fetch it and the server runs the PHP, delivering one of the
+*.jpg files in the directory.
+
+-- Ignacio
+
