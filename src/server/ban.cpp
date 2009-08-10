@@ -699,8 +699,9 @@ namespace wesnothd {
 				itor != times.end(); ++itor)
 		{
 			time_t duration = 0;
-			parse_time((**itor)["time"], &duration);
-			ban_times_.insert(default_ban_times::value_type((**itor)["name"], duration));
+			if (parse_time((**itor)["time"], &duration)) {
+				ban_times_.insert(default_ban_times::value_type((**itor)["name"], duration));
+			}
 		}
 		init_ban_help();
 		if (filename_ != cfg["ban_save_file"])
