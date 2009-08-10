@@ -10,6 +10,7 @@ include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
+include_directories( ${LIBDBUS_INCLUDE_DIRS} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -58,6 +59,7 @@ set( game-external-libs
     ${PANGOCAIRO_LIBRARIES}
     ${FONTCONFIG_LIBRARIES}
     ${LUA_LIBRARIES}
+    ${LIBDBUS_LIBRARIES}
 )
 
 set( server-external-libs

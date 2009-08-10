@@ -217,6 +217,8 @@ void tscrollbar_::recalculate()
 
 	assert(available_length > 0);
 
+	std::cerr << "LB " <<  item_count_ << ' ' << visible_items_ << '\n';
+
 	// All visible.
 	if(item_count_ <= visible_items_) {
 		positioner_offset_ = offset_before();

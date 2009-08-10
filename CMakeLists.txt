@@ -88,6 +88,10 @@ if(NOT MSVC)
     option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 endif(NOT MSVC)
 
+if(UNIX AND NOT APPLE AND NOT CYGWIN)
+	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" OFF)
+endif(UNIX AND NOT APPLE AND NOT CYGWIN)
+
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 
@@ -198,6 +202,11 @@ if(ENABLE_GAME)
 	elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
 	  message("Could not find FriBiDi. Disabling FriBiDi support.")
 	endif()
+
+	if(ENABLE_NOTIFICATIONS)
+		pkg_check_modules(LIBDBUS REQUIRED dbus-1)
+	  	add_definitions(-DHAVE_LIBDBUS)
+	endif(ENABLE_NOTIFICATIONS)
 
 endif(ENABLE_GAME)
 
