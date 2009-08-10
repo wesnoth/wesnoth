@@ -64,7 +64,6 @@ class RootController(BaseController):
 			#split v1 log into an array instead of a blob
 			raw_log = raw_log.split('\n')
 		wml_tree = helperlib.build_tree(raw_log)
-		
 		if not wml_tree.has_key("platform"):
 			wml_tree["platform"] = "unknown"
 
@@ -90,25 +89,35 @@ class RootController(BaseController):
 
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
-		params = (
-			wml_tree["id"],
-			wml_tree["serial"],
-			wml_tree.setdefault("platform","unknown"),
-			wml_tree["version"],
-			wml_tree["game"]["campaign"],
-			wml_tree["game"]["difficulty"],
-			int(wml_tree["game"]["gold"]),
-			int(wml_tree["game"]["num_turns"]),
-			wml_tree["game"]["scenario"],
-			int(wml_tree["game"].setdefault("start_turn",0)),
-			int(wml_tree["game"]["time"]),
-			result_type,
-			int(wml_tree["game"][result_type]["time"]),
-			int(wml_tree["game"][result_type].setdefault("gold","0")),
-			int(wml_tree["game"][result_type]["end_turn"])) #15 cols
-		curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+		if wml_tree["game"]["campaign"] == "multiplayer":
+			params = (
+				wml_tree["id"],
+				wml_tree["serial"],
+				wml_tree["version"],
+				wml_tree["game"]["campaign"],
+				wml_tree["game"]["scenario"],
+				wml_tree.setdefault("platform","unknown"))
+			curs.execute("INSERT INTO GAMES_MP VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s)",params)
+		else:
+			params = (
+				wml_tree["id"],
+				wml_tree["serial"],
+				wml_tree.setdefault("platform","unknown"),
+				wml_tree["version"],
+				wml_tree["game"]["campaign"],
+				wml_tree["game"]["difficulty"],
+				int(wml_tree["game"]["gold"]),
+				int(wml_tree["game"]["num_turns"]),
+				wml_tree["game"]["scenario"],
+				int(wml_tree["game"].setdefault("start_turn",0)),
+				int(wml_tree["game"]["time"]),
+				result_type,
+				int(wml_tree["game"][result_type]["time"]),
+				int(wml_tree["game"][result_type].setdefault("gold","0")),
+				int(wml_tree["game"][result_type]["end_turn"])) #15 cols
+			curs.execute("INSERT INTO GAMES VALUES (DEFAULT,NOW(),%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
 		
-		kill_events = wml_tree["game"]["kill_event"]
+		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
 			killed_unit = kill["results"]["unit_hit"]
 			
