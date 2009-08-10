@@ -715,8 +715,9 @@ static lg::log_domain log_server("server");
 		ban_times_.clear();
 		foreach (const config &bt, cfg.child_range("ban_time")) {
 			time_t duration = 0;
-			parse_time(bt["time"], &duration);
-			ban_times_.insert(default_ban_times::value_type(bt["name"], duration));
+			if (parse_time(bt["time"], &duration)) {
+				ban_times_.insert(default_ban_times::value_type(bt["name"], duration));
+			}
 		}
 		init_ban_help();
 		if (filename_ != cfg["ban_save_file"])

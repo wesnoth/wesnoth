@@ -1450,7 +1450,8 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		const std::string duration(first_space + 1, second_space);
 		time_t parsed_time = time(NULL);
 		if (ban_manager_.parse_time(duration, &parsed_time) == false) {
-			return ban_manager_.get_ban_help();
+			return "Failed to parse the ban duration: '" + duration + "'\n"
+				+ ban_manager_.get_ban_help();
 		}
 
 		if (second_space == parameters.end()) {
