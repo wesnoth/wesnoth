@@ -11,7 +11,12 @@ you'll need to change selector.php.
 The selector.php code may be used in place of an actual
 image file in CSS, HTML, whatever; the client just tries to
 fetch it and the server runs the PHP, delivering one of the
-*.jpg files in the directory.
+*.jpg files in the directory. However, since some broken
+clients may become confused at the .php extension (e.g.
+Internet Explorer), it is recommended to append a fake path
+component that ends in .jpg, e.g.:
+
+/path/to/selector.php/random.jpg
 
 -- Ignacio
 
