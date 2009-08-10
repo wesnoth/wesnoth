@@ -105,5 +105,21 @@
 		</div>
 	</div>
 	<div id="map_canvas" style="width: 800px; height: 600px"><noscript>You must enable Javascript in order to see the kill map.</noscript></div>
+<br />
+<div id="map_selection">
+Map
+<form method="get">
+<table border="1">
+<tr>
+<td>
+<select name="map" size="5">
+<option py:for="map in maps" value="${map[1]}">${map[0]}</option>
+</select>
+</td>
+</tr>
+</table>
+<input type="submit" value="Submit" />
+</form>
+</div>
 </body>
 </html>

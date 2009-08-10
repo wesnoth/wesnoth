@@ -33,4 +33,9 @@ class KillGraphController(BaseController):
 	
 	@expose(template="wesstats.templates.killview")
 	def default(self,**kw):
-		return dict()
+		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
+		curs = conn.cursor()
+		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
+		maps = curs.fetchall()
+		conn.close()
+		return dict(maps=maps)
