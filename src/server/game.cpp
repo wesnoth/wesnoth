@@ -1134,6 +1134,9 @@ bool game::is_on_team(const simple_wml::string_span& team, const network::connec
 				i != side_list.end(); ++i) {
 			if ((**i)["side"].to_int() != side - sides_.begin() + 1) continue;
 			if ((**i)["team_name"] != team) continue;
+			// Don't consider ai sides on a team.
+			if ((**i)["controller"] == "ai") continue;
+			if (side_controllers_[side - sides_.begin()] == "ai") continue;
 			DBG_GAME << "side: " << (**i)["side"].to_int() << " with team_name: " << (**i)["team_name"]
 			<< " belongs to player: " << player << std::endl;
 			return true;

@@ -230,7 +230,10 @@ private:
 	bool observers_can_chat() const { return true; }
 	bool is_legal_command(const simple_wml::node& command, bool is_player);
 
-	/** Function which returns true iff 'player' is on 'team'. */
+	/**
+	 * Function which returns true iff 'player' is on 'team'.
+	 * AI controlled sides are not considered on a team.
+	 */
 	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 	/**
 	 * Checks whether a user has the same IP as members of this game.
