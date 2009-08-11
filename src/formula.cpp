@@ -73,7 +73,7 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		std::vector<variant> res;
 		std::vector<std::string> function_names = builtin_function_names();
 		std::vector<std::string> more_function_names = symbols_->get_function_names();
@@ -223,7 +223,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,fdb);
+		const variant left = left_->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"left."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
                                 list_callable list_call(left);
@@ -235,7 +235,7 @@ private:
 		}
 
                 dot_callable callable(variables, *left.as_callable());
-                return right_->evaluate(callable,fdb);
+                return right_->evaluate(callable,formula_debugger::add_debug_info(fdb,1,".right"));
         }
 
 	expression_ptr left_, right_;
@@ -289,8 +289,8 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,fdb);
-		const variant right = right_->evaluate(variables,fdb);
+		const variant left = left_->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"left_OP"));
+		const variant right = right_->evaluate(variables,formula_debugger::add_debug_info(fdb,1,"OP_right"));
 		switch(op_) {
 		case AND:
 			return left.as_bool() == false ? left : right;

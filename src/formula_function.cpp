@@ -715,7 +715,9 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new location_callable(map_location(args()[0]->evaluate(variables,fdb).as_int()-1, args()[1]->evaluate(variables,fdb).as_int()-1)));
+		return variant(new location_callable(map_location(
+							     args()[0]->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"loc:x")).as_int()-1,
+							     args()[1]->evaluate(variables,formula_debugger::add_debug_info(fdb,1,"loc:y")).as_int()-1)));
 	}
 };
 

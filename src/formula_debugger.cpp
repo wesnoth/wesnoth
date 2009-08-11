@@ -33,8 +33,41 @@ static lg::log_domain log_formula_debugger("ai/debug/formula");
 
 namespace game_logic {
 
+debug_info::debug_info()
+	: arg_number_(-1),f_name_(""),valid_(false)
+{
+}
+
+
+debug_info::debug_info(int arg_number, const char *f_name, bool valid)
+	: arg_number_(arg_number), f_name_(f_name), valid_(valid)
+{
+}
+
+
+debug_info::~debug_info()
+{
+}
+
+
+const char* debug_info::name()
+{
+	if (valid_ && (f_name_!=NULL) ) {
+		return f_name_;
+	} else {
+		return "";
+	}
+}
+
+
+void debug_info::invalidate()
+{
+	valid_ = false;
+}
+
+
 formula_debugger::formula_debugger()
-	: counter_(0)
+	: counter_(0), info_()
 {
 }
 
@@ -44,12 +77,26 @@ formula_debugger::~formula_debugger()
 }
 
 
+void msg(int counter, const char *act, const char *name, const char *formula_str, const char *to="", const char *result = "")
+{
+	DBG_FDB << "#" << counter << act << std::endl <<"     \""<< name << "\"='" << formula_str << "' " << to << result << std::endl;
+}
+
+
+void formula_debugger::add_debug_info(int arg_number, const char *f_name)
+{
+	info_ = debug_info(arg_number,f_name, true);
+}
+
+
 variant formula_debugger::evaluate_arg_callback(const formula_expression &expression, const formula_callable &variables)
 {
 	int counter = counter_++;
-	DBG_FDB << "#" << counter <<": evaluating expression: " << std::endl << "    \"" << expression.get_name() << "\"" << std::endl;
+	debug_info i = info_;
+	info_.invalidate();
+	msg(counter," evaluating expression: ",i.name(),"");
 	variant v = expression.execute(variables,this); //work-in-progress
-	DBG_FDB << "#" << counter <<": evaluated  expression: " << std::endl << "    \""  << expression.get_name() << "\" to " << v.to_debug_string(NULL,true) << std::endl;
+	msg(counter," evaluated expression: ",i.name(),""," to ",v.to_debug_string(NULL,true).c_str());
 	return v;
 }
 
@@ -57,22 +104,24 @@ variant formula_debugger::evaluate_arg_callback(const formula_expression &expres
 variant formula_debugger::evaluate_formula_callback(const formula &f, const formula_callable &variables)
 {
 	int counter = counter_++;
-	DBG_FDB << "#" << counter <<": evaluating formula "<< std::endl << "    \"" << f.str() << "\"" << std::endl;
+	debug_info i = info_;
+	info_.invalidate();
+	msg(counter," evaluating formula: ",i.name(),f.str().c_str());
 	variant v = f.execute(variables,this); //work-in-progress
-	DBG_FDB << "#" << counter <<": evaluated  formula "<< std::endl << "    \"" << f.str() << "\" to " << v.to_debug_string(NULL,true) << std::endl;
+	msg(counter," evaluated formula: ",i.name(),f.str().c_str()," to ",v.to_debug_string(NULL,true).c_str());
 	return v;
-	
 }
 
 
 variant formula_debugger::evaluate_formula_callback(const formula &f)
 {
 	int counter = counter_++;
-	DBG_FDB << "#" << counter <<": evaluating formula without variables: "<<std::endl<<"    \"" << f.str() << "\"" << std::endl;
+	debug_info i = info_;
+	info_.invalidate();
+	msg(counter," evaluating formula without variables: ",i.name(),f.str().c_str());
 	variant v = f.execute(this); //work-in-progress
-	DBG_FDB << "#" << counter <<": evaluated  formula without variables: "<<std::endl<<"    \""  << f.str() << "\" to " << v.to_debug_string(NULL,true) << std::endl;
+	msg(counter," evaluating formula without variables: ",i.name(),f.str().c_str(),v.to_debug_string(NULL,true).c_str());
 	return v;
-	
 }
 
 
