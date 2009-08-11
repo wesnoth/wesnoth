@@ -1621,9 +1621,16 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		} else {
 			for (std::deque<std::pair<std::string, std::string> >::const_iterator i = ip_log_.begin();
 					i != ip_log_.end(); i++) {
-				if (utils::wildcard_string_match(i->first, parameters)) {
+				const std::string& username = i->first;
+				const std::string& ip = i->second;
+				if (utils::wildcard_string_match(username, parameters)) {
 					found_something = true;
-					out << "\n'" << i->first << "' @ " << i->second;
+					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_username, _1, username));
+					if (pl != players_.end()) {
+						out << std::endl << player_status(pl);
+					} else {
+						out << "\n'" << username << "' @ " << ip;
+					}
 				}
 			}
 		}
