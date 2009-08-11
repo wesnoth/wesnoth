@@ -147,7 +147,6 @@ void playsingle_controller::force_end_level(LEVEL_RESULT res,
 	}
 	end_level_ = new end_level_exception(res, endlevel_music_list, percentage,
 		add, bonus, report, prescenario_save, linger);
-	force_end_turn();
 }
 
 void playsingle_controller::check_end_level()
