@@ -513,19 +513,19 @@ static lg::log_domain log_server("server");
 								 const std::string& group,
 								 const std::string& nick)
 	{
+		std::ostringstream ret;
 		try {
 			ban_set::iterator ban;
 			if ((ban = bans_.find(banned::create_dummy(ip))) != bans_.end())
 			{
 				// Already exsiting ban for ip. We have to first remove it
-				LOG_SERVER << "Overwriting ban: " << (**ban) << "\n";
+				ret << "Overwriting ban: " << (**ban) << "\n";
 				bans_.erase(ban);
 			}
 		} catch (banned::error& e) {
 			ERR_SERVER << e.message << " while creating dummy ban for finding existing ban\n";
 			return e.message;
 		}
-		std::ostringstream ret;
 		try {
 			banned_ptr new_ban(new banned(ip, end_time, reason,who_banned, group, nick));
 			bans_.insert(new_ban);
