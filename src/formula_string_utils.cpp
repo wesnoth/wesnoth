@@ -116,7 +116,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			}
 			try {
 				const game_logic::formula form(std::string(var_begin+2, var_end-1));
-				res.replace(var_begin, var_end, form.execute().string_cast());
+				res.replace(var_begin, var_end, form.evaluate().string_cast());
 			} catch(game_logic::formula_error& e) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< e.type << "\n\t--> \""

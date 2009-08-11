@@ -73,7 +73,7 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& /*variables*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
 		std::vector<variant> res;
 		std::vector<std::string> function_names = builtin_function_names();
 		std::vector<std::string> more_function_names = symbols_->get_function_names();
@@ -94,11 +94,11 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> res;
 		res.reserve(items_.size());
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); i != items_.end(); ++i) {
-			res.push_back((*i)->evaluate(variables));
+			res.push_back((*i)->evaluate(variables,fdb));
 		}
 
 		return variant(&res);
@@ -114,12 +114,12 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::map<variant,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
-				variant key = (*i)->evaluate(variables);
-				variant value = (*(i+1))->evaluate(variables);
-				res[ key ] = value;
+			variant key = (*i)->evaluate(variables,fdb);
+			variant value = (*(i+1))->evaluate(variables,fdb);
+			res[ key ] = value;
 		}
 
 		return variant(&res);
@@ -143,8 +143,8 @@ public:
 		}
 	}
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant res = operand_->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant res = operand_->evaluate(variables,fdb);
 		switch(op_) {
 		case NOT:
 			return res.as_bool() ? variant(0) : variant(1);
@@ -222,20 +222,20 @@ public:
 	   : left_(left), right_(right)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant left = left_->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant left = left_->evaluate(variables,fdb);
 		if(!left.is_callable()) {
 			if(left.is_list()) {
                                 list_callable list_call(left);
                                 dot_callable callable(variables, list_call);
-				return right_->evaluate(callable);
+				return right_->evaluate(callable,fdb);
 			}
 
 			return left;
 		}
 
                 dot_callable callable(variables, *left.as_callable());
-                return right_->evaluate(callable);
+                return right_->evaluate(callable,fdb);
         }
 
 	expression_ptr left_, right_;
@@ -247,9 +247,9 @@ public:
 	   : left_(left), key_(key)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant left = left_->evaluate(variables);
-		const variant key = key_->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant left = left_->evaluate(variables,fdb);
+		const variant key = key_->evaluate(variables,fdb);
 		if(left.is_list() || left.is_map()) {
 			return left[ key ];
 		} else {
@@ -288,9 +288,9 @@ public:
 	}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant left = left_->evaluate(variables);
-		const variant right = right_->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant left = left_->evaluate(variables,fdb);
+		const variant right = right_->evaluate(variables,fdb);
 		switch(op_) {
 		case AND:
 			return left.as_bool() == false ? left : right;
@@ -395,9 +395,9 @@ private:
 	expression_ptr body_;
 	expr_table_ptr clauses_;
 
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables,formula_debugger *fdb) const {
 		where_variables wrapped_variables(variables, clauses_);
-		return body_->evaluate(wrapped_variables);
+		return body_->evaluate(wrapped_variables,fdb);
 	}
 };
 
@@ -407,7 +407,7 @@ public:
 	explicit identifier_expression(const std::string& id) : id_(id)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger */*fdb*/) const {
 		return variables.query_value(id_);
 	}
 	std::string id_;
@@ -417,7 +417,7 @@ class null_expression : public formula_expression {
 public:
 	explicit null_expression() {};
 private:
-	variant execute(const formula_callable& /*variables*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
 		return variant();
 	}
 };
@@ -428,7 +428,7 @@ public:
 	explicit integer_expression(int i) : i_(i)
 	{}
 private:
-	variant execute(const formula_callable& /*variables*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
 		return variant(i_);
 	}
 
@@ -463,14 +463,14 @@ public:
 		str_ = variant(str);
 	}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		if(subs_.empty()) {
 			return str_;
 		} else {
 			std::string res = str_.as_string();
 			for(size_t i=0; i < subs_.size(); ++i) {
 				const substitution& sub = subs_[i];
-				const std::string str = sub.calculation->execute(variables).string_cast();
+				const std::string str = sub.calculation->evaluate(variables,fdb).string_cast();
 				res.insert(sub.pos, str);
 			}
 
@@ -989,20 +989,20 @@ formula::formula(const token* i1, const token* i2, function_symbol_table* symbol
 	}
 }
 
-variant formula::execute(const formula_callable& variables) const
+variant formula::execute(const formula_callable& variables, formula_debugger *fdb) const
 {
 	try {
-		return expr_->evaluate(variables);
+		return expr_->evaluate(variables, fdb);
 	} catch(type_error& e) {
 		std::cerr << "formula type error: " << e.message << "\n";
 		return variant();
 	}
 }
 
-variant formula::execute() const
+variant formula::execute(formula_debugger *fdb) const
 {
 	static map_formula_callable null_callable;
-	return execute(null_callable);
+	return execute(null_callable,fdb);
 }
 
 }

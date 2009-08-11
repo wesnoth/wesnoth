@@ -17,6 +17,7 @@
 #include <map>
 #include <string>
 
+#include "formula_debugger.hpp"
 #include "formula_fwd.hpp"
 #include "formula_tokenizer.hpp"
 #include "variant.hpp"
@@ -32,12 +33,30 @@ typedef boost::shared_ptr<formula_expression> expression_ptr;
 class formula {
 public:
 	static variant evaluate(const const_formula_ptr& f,
-	                    const formula_callable& variables,
-						variant default_res=variant(0)) {
+				const formula_callable& variables, formula_debugger *fdb = NULL,
+				variant default_res=variant(0)) {
 		if(f) {
-			return f->execute(variables);
+			return f->evaluate(variables, fdb);
 		} else {
 			return default_res;
+		}
+	}
+
+	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const
+	{
+		if (fdb!=NULL) {
+			return fdb->evaluate_formula_callback(*this,variables);
+		} else {
+			return execute(variables,fdb);
+		}
+	}
+
+	variant evaluate(formula_debugger *fdb = NULL) const
+	{
+		if (fdb!=NULL) {
+			return fdb->evaluate_formula_callback(*this);
+		} else {
+			return execute(fdb);
 		}
 	}
 
@@ -47,15 +66,16 @@ public:
 	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=NULL);
 	explicit formula(const std::string& str, function_symbol_table* symbols=NULL);
 	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=NULL);
-	variant execute(const formula_callable& variables) const;
-	variant execute() const;
 	const std::string& str() const { return str_; }
 
 private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const;
+	variant execute(formula_debugger *fdb) const;
 	formula() : expr_(), str_()
    	{}
 	expression_ptr expr_;
 	std::string str_;
+	friend class formula_debugger;
 };
 
 struct formula_error

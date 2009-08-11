@@ -21,22 +21,30 @@
 
 #include "formula.hpp"
 #include "formula_callable.hpp"
+#include "formula_debugger.hpp"
 #include "variant.hpp"
 
 namespace game_logic {
 
 class formula_expression {
 public:
-	formula_expression() : name_(NULL) {}
+	formula_expression() : name_("") {}
 	virtual ~formula_expression() {}
-	variant evaluate(const formula_callable& variables) const {
+	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const {
 		call_stack_manager manager(name_);
-		return execute(variables);
+		if (fdb!=NULL) {
+			return fdb->evaluate_arg_callback(*this,variables);
+		} else {
+			return execute(variables,fdb);
+		}
 	}
 	void set_name(const char* name) { name_ = name; }
+
+	const char* get_name() const { return name_; }
 private:
-	virtual variant execute(const formula_callable& variables) const = 0;
+	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const = 0;
 	const char* name_;
+        friend class formula_debugger;
 };
 
 typedef boost::shared_ptr<formula_expression> expression_ptr;
@@ -82,7 +90,7 @@ class formula_function_expression : public function_expression {
 public:
 	explicit formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names);
 private:
-	variant execute(const formula_callable& variables) const;
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const;
 	const_formula_ptr formula_;
 	const_formula_ptr precondition_;
 	std::vector<std::string> arg_names_;

@@ -102,31 +102,31 @@ inline T tformula<T>::operator() (const game_logic::map_formula_callable& variab
 template<>
 inline bool tformula<bool>::execute(const game_logic::map_formula_callable& variables) const
 {
-	return game_logic::formula(formula_).execute(variables).as_bool();
+	return game_logic::formula(formula_).evaluate(variables).as_bool();
 }
 
 template<>
 inline int tformula<int>::execute(const game_logic::map_formula_callable& variables) const
 {
-	return game_logic::formula(formula_).execute(variables).as_int();
+	return game_logic::formula(formula_).evaluate(variables).as_int();
 }
 
 template<>
 inline unsigned tformula<unsigned>::execute(const game_logic::map_formula_callable& variables) const
 {
-	return game_logic::formula(formula_).execute(variables).as_int();
+	return game_logic::formula(formula_).evaluate(variables).as_int();
 }
 
 template<>
 inline std::string tformula<std::string>::execute(const game_logic::map_formula_callable& variables) const
 {
-	return game_logic::formula(formula_).execute(variables).as_string();
+	return game_logic::formula(formula_).evaluate(variables).as_string();
 }
 
 template<>
 inline t_string tformula<t_string>::execute(const game_logic::map_formula_callable& variables) const
 {
-	return game_logic::formula(formula_).execute(variables).as_string();
+	return game_logic::formula(formula_).evaluate(variables).as_string();
 }
 
 template<class T>

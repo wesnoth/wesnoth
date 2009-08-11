@@ -19,6 +19,8 @@
 
 namespace game_logic {
 
+class formula_debugger;
+
 class formula;
 typedef boost::shared_ptr<formula> formula_ptr;
 typedef boost::shared_ptr<const formula> const_formula_ptr;

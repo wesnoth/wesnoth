@@ -793,7 +793,7 @@ void variant::serialize_to_string(std::string& str) const
 void variant::serialize_from_string(const std::string& str)
 {
 	try {
-		*this = game_logic::formula(str).execute();
+		*this = game_logic::formula(str).evaluate();
 	} catch(...) {
 		*this = variant(str);
 	}

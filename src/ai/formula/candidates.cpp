@@ -94,7 +94,7 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 {
 	int res = 0;
 	try {
-	    res = (formula::evaluate(formula, callable)).as_int();
+		res = (formula::evaluate(formula, callable)).as_int();
 	} catch(formula_error& e) {
 		ai->handle_exception(e);
 		res = 0;

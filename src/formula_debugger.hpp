@@ -30,6 +30,7 @@ namespace game_logic {
 
 class formula_expression;
 class formula_callable;
+class formula;
 
 class formula_debugger {
 public:
@@ -37,7 +38,11 @@ public:
 
 	virtual ~formula_debugger();
 
-	virtual variant evaluate_arg_callback(formula_expression &expression, const formula_callable &variables);
+	virtual variant evaluate_arg_callback(const formula_expression &expression, const formula_callable &variables);
+
+	virtual variant evaluate_formula_callback(const formula &f, const formula_callable &variables);
+
+	virtual variant evaluate_formula_callback(const formula &f);
 private:
 	int counter_;
 };

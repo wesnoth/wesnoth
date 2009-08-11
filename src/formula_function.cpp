@@ -38,8 +38,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		variant var = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant var = args()[0]->evaluate(variables, fdb);
 		const formula_callable* callable = var.as_callable();
 		callable->add_ref();
 		std::vector<formula_input> inputs = callable->inputs();
@@ -60,15 +60,15 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		for(size_t n = 0; n < args().size()-1; n += 2) {
-			if( args()[n]->evaluate(variables).as_bool() ) {
-				return args()[n+1]->evaluate(variables);
+			if( args()[n]->evaluate(variables,fdb).as_bool() ) {
+				return args()[n+1]->evaluate(variables,fdb);
 			}
 		}
 
 		if((args().size()%2) != 0) {
-			return args().back()->evaluate(variables);
+			return args().back()->evaluate(variables,fdb);
 		} else {
 			return variant();
 		}
@@ -83,17 +83,17 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		variant var = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant var = args()[0]->evaluate(variables,fdb);
 		for(size_t n = 1; n < args().size()-1; n += 2) {
-			variant val = args()[n]->evaluate(variables);
+			variant val = args()[n]->evaluate(variables,fdb);
 			if(val == var) {
-				return args()[n+1]->evaluate(variables);
+				return args()[n+1]->evaluate(variables,fdb);
 			}
 		}
 
 		if((args().size()%2) == 0) {
-			return args().back()->evaluate(variables);
+			return args().back()->evaluate(variables,fdb);
 		} else {
 			return variant();
 		}
@@ -107,8 +107,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const int n = args()[0]->evaluate(variables).as_int();
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const int n = args()[0]->evaluate(variables,fdb).as_int();
 		return variant(n >= 0 ? n : -n);
 	}
 };
@@ -120,11 +120,11 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		bool found = false;
 		int res = 0;
 		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables);
+			const variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
 				for(size_t m = 0; m != v.num_elements(); ++m) {
 					if(!found || v[m].as_int() < res) {
@@ -151,11 +151,11 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		bool found = false;
 		int res = 0;
 		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables);
+			const variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
 				for(size_t m = 0; m != v.num_elements(); ++m) {
 					if(!found || v[m].as_int() > res) {
@@ -182,10 +182,10 @@ public:
         {}
 
 private:
-        variant execute(const formula_callable& variables) const {
+        variant execute(const formula_callable& variables, formula_debugger *fdb) const {
                 const args_list& arguments = args();
-                const variant var0 = arguments[0]->evaluate(variables);
-                const variant var1 = arguments[1]->evaluate(variables);
+                const variant var0 = arguments[0]->evaluate(variables,fdb);
+                const variant var1 = arguments[1]->evaluate(variables,fdb);
 
                 const map_location location = convert_variant<location_callable>(var0)->loc();
                 std::string text;
@@ -195,7 +195,7 @@ private:
                         display_float(location,text);
                         return var1;
                 } else {
-                        const variant var2 = arguments[2]->evaluate(variables);
+                        const variant var2 = arguments[2]->evaluate(variables,fdb);
                         text = var1.string_cast() + var2.to_debug_string();
                         display_float(location,text);
                         return var2;
@@ -216,8 +216,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant var1 = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant var1 = args()[0]->evaluate(variables,fdb);
 
 		std::string str1,str2;
 
@@ -228,7 +228,7 @@ private:
 			return var1;
 		} else {
 			str1 = var1.string_cast();
-			const variant var2 = args()[1]->evaluate(variables);
+			const variant var2 = args()[1]->evaluate(variables,fdb);
 			str2 = var2.to_debug_string(NULL, true);
 			LOG_AI << str1 << str2 << std::endl;
 			return var2;
@@ -243,8 +243,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant map = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant map = args()[0]->evaluate(variables,fdb);
 		return map.get_keys();
 	}
 };
@@ -256,8 +256,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant map = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant map = args()[0]->evaluate(variables,fdb);
 		return map.get_values();
 	}
 };
@@ -269,8 +269,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant var = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant var = args()[0]->evaluate(variables,fdb);
 
 		std::vector<variant> tmp;
 
@@ -290,14 +290,14 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant var_1 = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant var_1 = args()[0]->evaluate(variables,fdb);
 
 		std::map<variant, variant> tmp;
 
 		if (args().size() == 2)
 		{
-			const variant var_2 = args()[1]->evaluate(variables);
+			const variant var_2 = args()[1]->evaluate(variables,fdb);
 			if ( var_1.num_elements() != var_2.num_elements() )
 				return variant();
 			for(size_t i = 0; i < var_1.num_elements(); i++ )
@@ -325,9 +325,9 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant value = args()[0]->evaluate(variables);
-		const variant list = args()[1]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant value = args()[0]->evaluate(variables,fdb);
+		const variant list = args()[1]->evaluate(variables,fdb);
 
 		for(size_t i = 0; i < list.num_elements(); i++ ) {
 			if( list[i] == value) {
@@ -347,15 +347,15 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant items = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
 		variant max_value;
 		variant_iterator it = items.get_iterator();
 		variant_iterator max = variant_iterator();
 
 		if(args().size() == 2) {
 			for(it = items.begin(); it != items.end(); ++it) {
-				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables));
+				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(max == variant_iterator() || val > max_value) {
 					max = it;
 					max_value = val;
@@ -364,10 +364,10 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			self_callable.add_ref();
-			const std::string self = args()[1]->evaluate(variables).as_string();
+			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(max == variant_iterator() || val > max_value) {
 					max = it;
 					max_value = val;
@@ -390,8 +390,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const int value = args()[0]->evaluate(variables).as_int()%1000;
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const int value = args()[0]->evaluate(variables,fdb).as_int()%1000;
 		const double angle = 2.0*3.141592653589*(static_cast<double>(value)/1000.0);
 		return variant(static_cast<int>(sin(angle)*1000.0));
 	}
@@ -438,8 +438,8 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		variant list = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant list = args()[0]->evaluate(variables,fdb);
 		std::vector<variant> vars;
 		vars.reserve(list.num_elements());
 		for(size_t n = 0; n != list.num_elements(); ++n) {
@@ -463,9 +463,9 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		std::string str = args()[0]->evaluate(variables).as_string();
-		std::string key = args()[1]->evaluate(variables).as_string();
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		std::string str = args()[0]->evaluate(variables,fdb).as_string();
+		std::string key = args()[1]->evaluate(variables,fdb).as_string();
 
 		if (key.size() > str.size())
 			return variant(0);
@@ -499,17 +499,17 @@ public:
 	    : function_expression("filter", args, 2, 3)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> list_vars;
 		std::map<variant,variant> map_vars;
 
-		const variant items = args()[0]->evaluate(variables);
+		const variant items = args()[0]->evaluate(variables,fdb);
 
 		variant_iterator it = items.get_iterator();
 
 		if(args().size() == 2) {
 			for(it = items.begin(); it != items.end(); ++it)  {
-				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables));
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(val.as_bool()) {
 					if (items.is_map() )
 						map_vars[ (*it).get_member("key") ] = (*it).get_member("value");
@@ -520,10 +520,10 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			self_callable.add_ref();
-			const std::string self = args()[1]->evaluate(variables).as_string();
+			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
-				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(val.as_bool()) {
 					if (items.is_map() )
 						map_vars[ (*it).get_member("key") ] = (*it).get_member("value");
@@ -545,13 +545,13 @@ public:
 	{}
 
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant items = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
 
 		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
 			for(it = items.begin(); it != items.end(); ++it) {
-				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables));
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if(val.as_bool()) {
 					return *it;
 				}
@@ -559,10 +559,10 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			self_callable.add_ref();
-			const std::string self = args()[1]->evaluate(variables).as_string();
+			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(it = items.begin(); it != items.end(); ++it){
 				self_callable.add(self, *it);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if(val.as_bool()) {
 					return *it;
 				}
@@ -579,15 +579,15 @@ public:
 	    : function_expression("map", args, 2, 3)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> list_vars;
 		std::map<variant,variant> map_vars;
-		const variant items = args()[0]->evaluate(variables);
+		const variant items = args()[0]->evaluate(variables,fdb);
 
 		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
 			for(it = items.begin(); it != items.end(); ++it) {
-				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables));
+				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables),fdb);
 				if (items.is_map() )
 					map_vars[ (*it).get_member("key") ] = val;
 				else
@@ -596,10 +596,10 @@ private:
 		} else {
 			map_formula_callable self_callable;
 			self_callable.add_ref();
-			const std::string self = args()[1]->evaluate(variables).as_string();
+			const std::string self = args()[1]->evaluate(variables,fdb).as_string();
 			for(it = items.begin(); it != items.end(); ++it) {
 				self_callable.add(self, *it);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)),fdb);
 				if (items.is_map() )
 					map_vars[ (*it).get_member("key") ] = val;
 				else
@@ -618,9 +618,9 @@ public:
 	    : function_expression("sum", args, 1, 2)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant res(0);
-		const variant items = args()[0]->evaluate(variables);
+		const variant items = args()[0]->evaluate(variables,fdb);
 		if (items.num_elements() > 0)
 		{
 			if (items[0].is_list() )
@@ -628,7 +628,7 @@ private:
 				std::vector<variant> tmp;
 				res = variant(&tmp);
 				if(args().size() >= 2) {
-					res = args()[1]->evaluate(variables);
+					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_list())
 						return variant();
 				}
@@ -637,14 +637,14 @@ private:
 				std::map<variant,variant> tmp;
 				res = variant(&tmp);
 				if(args().size() >= 2) {
-					res = args()[1]->evaluate(variables);
+					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_map())
 						return variant();
 				}
 			} else
 			{
 				if(args().size() >= 2) {
-					res = args()[1]->evaluate(variables);
+					res = args()[1]->evaluate(variables,fdb);
 				}
 			}
 		}
@@ -663,8 +663,8 @@ public:
 	    : function_expression("head", args, 1, 1)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant items = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
 		variant_iterator it = items.get_iterator();
 		it = items.begin();
 		if(it == items.end()) {
@@ -680,8 +680,8 @@ public:
 	    : function_expression("size", args, 1, 1)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		const variant items = args()[0]->evaluate(variables);
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant items = args()[0]->evaluate(variables,fdb);
 		return variant(static_cast<int>(items.num_elements()));
 	}
 };
@@ -692,7 +692,7 @@ public:
 	    : function_expression("null", args, 0, 0)
 	{}
 private:
-	variant execute(const formula_callable& /*variables*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
 		return variant();
 	}
 };
@@ -703,8 +703,8 @@ public:
 	    : function_expression("refcount", args, 1, 1)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		return variant(args()[0]->evaluate(variables).refcount());
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(args()[0]->evaluate(variables,fdb).refcount());
 	}
 };
 
@@ -714,8 +714,8 @@ public:
 	  : function_expression("loc", args, 2, 2)
 	{}
 private:
-	variant execute(const formula_callable& variables) const {
-		return variant(new location_callable(map_location(args()[0]->evaluate(variables).as_int()-1, args()[1]->evaluate(variables).as_int()-1)));
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(new location_callable(map_location(args()[0]->evaluate(variables,fdb).as_int()-1, args()[1]->evaluate(variables,fdb).as_int()-1)));
 	}
 };
 
@@ -752,7 +752,7 @@ formula_function_expression::formula_function_expression(const std::string& name
 	}
 }
 
-variant formula_function_expression::execute(const formula_callable& variables) const
+variant formula_function_expression::execute(const formula_callable& variables, formula_debugger *fdb) const
 {
 	static std::string indent;
 	indent += "  ";
@@ -760,7 +760,7 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;
 	for(size_t n = 0; n != arg_names_.size(); ++n) {
-		variant var = args()[n]->evaluate(variables);
+		variant var = args()[n]->evaluate(variables,fdb);
 		callable.add(arg_names_[n], var);
 		if(static_cast<int>(n) == star_arg_) {
 			callable.set_fallback(var.as_callable());
@@ -768,15 +768,15 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 	}
 
 	if(precondition_) {
-		if(!precondition_->execute(callable).as_bool()) {
+		if(!precondition_->evaluate(callable,fdb).as_bool()) {
 			DBG_NG << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
 			for(size_t n = 0; n != arg_names_.size(); ++n) {
-				DBG_NG << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables).to_debug_string() << "\n";
+				DBG_NG << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables,fdb).to_debug_string() << "\n";
 			}
 		}
 	}
 
-	variant res = formula_->execute(callable);
+	variant res = formula_->evaluate(callable,fdb);
 	const int taken = SDL_GetTicks() - begin_time;
 	DBG_NG << indent << "returning: " << taken << "\n";
 	indent.resize(indent.size() - 2);

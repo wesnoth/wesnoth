@@ -122,7 +122,8 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		game_logic::map_formula_callable callable(this);
 		callable.add_ref();
 
-		const variant v = f.execute(callable);
+		formula_debugger fdb;
+		const variant v = f.evaluate(callable,&fdb);
 
                 outcome_positions_.clear();
 
@@ -155,7 +156,7 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 		throw formula_error("null formula passed to make_action","","formula",0);
 	}
 	LOG_AI << "do move...\n";
-	const variant var = formula_->execute(variables);
+	const variant var = formula_->evaluate(variables);//@todo add formula_debugger
 	variant res;
 
 	if (ai_ptr_) {
