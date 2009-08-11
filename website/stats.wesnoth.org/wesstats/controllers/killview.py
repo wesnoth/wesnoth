@@ -35,6 +35,65 @@ class KillGraphController(BaseController):
 	def default(self,**kw):
 		conn = MySQLdb.connect(configuration.DB_HOSTNAME,configuration.DB_USERNAME,configuration.DB_PASSWORD,configuration.DB_NAME,use_unicode=True)
 		curs = conn.cursor()
+	
+		curs.execute("SELECT title,xdata,ydata,xlabel,ylabel,filters,y_xform FROM _wsviews WHERE url = %s", (self.url,))
+		view_data = curs.fetchall()[0]
+		log.debug("kill map request, here is SQL data for this view:")
+		log.debug(view_data)
+		#@TODO: overloaded information about what kind of game this is into ydata, there needs to be a better solution for this in the future
+		#use the correct GAMES table for singleplayer or multiplayer
+		games_tbl = "GAMES"
+		if view_data[2] == "multiplayer":
+			games_tbl = "GAMES_MP"
+		
+		#fetch the relevant filters for this template and their possible values
+		available_filters = view_data[5].split(',')
+		#@TODO: right now I overloaded the filters for the KILLMAPS table into y_xform, there needs to be a better solution for this in the future
+		available_filters_map = view_data[6].split(',')
+		fdata = dict()
+		for filter in available_filters:
+			curs.execute("SELECT DISTINCT "+filter+" FROM "+games_tbl)
+			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
+			raw_fdata = curs.fetchall()
+			fdata[filter] = []
+			for i in raw_fdata:
+				fdata[filter].append(i[0])
+		for filter in available_filters_map:
+			curs.execute("SELECT DISTINCT "+filter+" FROM KILLMAP")
+			#curs.fetchall() returns a list of lists, we convert this to a plain list for ease of handling
+			raw_fdata = curs.fetchall()
+			fdata[filter] = []
+			for i in raw_fdata:
+				fdata[filter].append(i[0])
+		
+		#print fdata
+		filters = ""
+		filters_map = ""
+		used_filters = helperlib.intersect(kw.keys(),available_filters)
+		used_filters_map = helperlib.intersect(kw.keys(),available_filters_map)
+		ufilters_vals = dict()
+		for filter in used_filters:
+			kw[filter] = helperlib.listfix(kw[filter])
+			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
+			filters = helperlib.fconstruct(filters,filter,filter_vals)
+			ufilters_vals[filter] = filter_vals
+		for filter in used_filters_map:
+			kw[filter] = helperlib.listfix(kw[filter])
+			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
+			filters_map = helperlib.fconstruct(filters_map,filter,filter_vals)
+			ufilters_vals[filter] = filter_vals
+		startdate = ""
+		enddate = ""
+		if 'startdate' in kw and 'enddate' in kw and helperlib.isvalid(kw['startdate']) and helperlib.isvalid(kw['enddate']):
+			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
+			used_filters.append("dates")
+			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+			startdate = kw['startdate']
+			enddate = kw['enddate']
+		print filters
+		print filters_map
+		
+
 		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
 		maps = curs.fetchall()
 		
@@ -63,4 +122,7 @@ class KillGraphController(BaseController):
 			#construct the javascript dicitonary that will store hex->color mappings
 			grid_colors += '"%s":"%s",' % (hex[0],hex_color)
 		grid_colors = grid_colors[:-1]
-		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,grid_colors=grid_colors)
+		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,
+			grid_colors=grid_colors,startdate="",enddate="",
+			minkillerlev="",maxkillerlev="",minkilledlev="",
+			maxkilledlev="")

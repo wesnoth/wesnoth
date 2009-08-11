@@ -123,6 +123,16 @@ Map
 </td>
 </tr>
 </table>
+Start date: <input name="startdate" value="${startdate}" /> 
+<input type="button" value="select" onclick="displayDatePicker('startdate');" />
+<br />
+End date: <input name="enddate" value="${enddate}" /> 
+<input type="button" value="select" onclick="displayDatePicker('enddate');" />
+<br />
+Killer level range: <input name="minkillerlev" value="${minkillerlev}" /> - <input name="maxkillerlev" value="${maxkillerlev}" /> 
+<br />
+Killed level range: <input name="minkilledlev" value="${minkilledlev}" /> - <input name="maxkilledlev" value="${maxkilledlev}" /> 
+<br />
 <input type="submit" value="Submit" />
 </form>
 </div>
