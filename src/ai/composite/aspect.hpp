@@ -22,6 +22,7 @@
 #include "../../global.hpp"
 
 #include "engine.hpp"
+#include "stage.hpp"
 
 #include "../contexts.hpp"
 #include "../default/contexts.hpp"
@@ -202,6 +203,36 @@ public:
 	static config cfg_to_value(const config &cfg)
 	{
 		config value;
+		cfg_to_value(cfg,value);
+		return value;
+	}
+};
+
+template<>
+class config_value_translator<ministage> {
+public:
+
+	static void cfg_to_value(const config &cfg, ministage &value)
+	{
+		value = ministage(cfg);
+	}
+
+	static void value_to_cfg(const ministage &value, config &cfg)
+	{
+		cfg.add_child("value",value.to_config());
+	}
+
+	static config value_to_cfg(const ministage &value)
+	{
+		config cfg;
+		value_to_cfg(value,cfg);
+		return cfg;
+	}
+
+	static ministage cfg_to_value(const config &cfg)
+	{
+		config c;
+		ministage value(c);
 		cfg_to_value(cfg,value);
 		return value;
 	}

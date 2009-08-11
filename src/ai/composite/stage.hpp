@@ -143,6 +143,19 @@ public:
 };
 
 
+/** this class is a lazily-initializing proxy for a stage **/
+class ministage {
+public:
+	ministage(const config &cfg);
+	virtual ~ministage();
+	stage_ptr get_stage_ptr(ai_context &context);
+	config to_config() const;
+
+private:
+	config cfg_;
+	stage_ptr stage_;
+};
+
 } //end of namespace ai
 
 #ifdef _MSC_VER
