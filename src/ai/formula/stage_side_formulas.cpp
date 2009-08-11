@@ -45,7 +45,7 @@ stage_side_formulas::~stage_side_formulas()
 {
 }
 
-void stage_side_formulas::do_play_stage()
+bool stage_side_formulas::do_play_stage()
 {
 	game_logic::map_formula_callable callable(&fai_);
 	callable.add_ref();
@@ -62,6 +62,7 @@ void stage_side_formulas::do_play_stage()
 		}
 		fai_.handle_exception( e, "Formula error");
 	}
+	return false;
 }
 
 

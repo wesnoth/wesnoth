@@ -51,9 +51,9 @@ stage::~stage()
 {
 }
 
-void stage::play_stage()
+bool stage::play_stage()
 {
-	do_play_stage();
+	return do_play_stage();
 }
 
 int stage::get_recursion_count() const
@@ -83,8 +83,9 @@ idle_stage::~idle_stage()
 {
 }
 
-void idle_stage::do_play_stage(){
+bool idle_stage::do_play_stage(){
 	LOG_AI_COMPOSITE_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
+	return false;
 }
 
 

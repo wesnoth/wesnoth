@@ -54,7 +54,7 @@ config fallback_to_other_ai::to_config() const
 	return cfg;
 }
 
-void fallback_to_other_ai::do_play_stage()
+bool fallback_to_other_ai::do_play_stage()
 {
 	if (fallback_ai_) {
 		LOG_AI_TESTING_STAGE_FALLBACK << "side "<<get_side()<<" : falling back to "<<fallback_ai_->describe_self()<<std::endl;
@@ -62,6 +62,7 @@ void fallback_to_other_ai::do_play_stage()
 	} else {
 		ERR_AI_TESTING_STAGE_FALLBACK << "side "<<get_side()<<" : UNABLE TO FALLBACK, fallback ai is NULL"<<std::endl;
 	}
+	return false;
 }
 
 fallback_to_other_ai::~fallback_to_other_ai()

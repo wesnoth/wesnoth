@@ -41,7 +41,7 @@ public:
 
         virtual ~stage_rca_formulas();
 
-        void do_play_stage();
+        bool do_play_stage();
 
         void on_create();
 

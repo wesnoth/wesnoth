@@ -60,8 +60,9 @@ public:
 
 	/**
 	 * Play the turn - strategy
+	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
 	 */
-	void play_stage();
+	bool play_stage();
 
 
 	/**
@@ -79,8 +80,9 @@ public:
 protected:
 	/**
 	 * Play the turn - implementation
+	 * @return true only if game state has changed. Really only needed for ministages. Returning false is always safe.
 	 */
-	virtual void do_play_stage() = 0;
+	virtual bool do_play_stage() = 0;
 
 	recursion_counter recursion_counter_;
 
@@ -95,7 +97,7 @@ public:
 
 	~idle_stage();
 
-	virtual void do_play_stage();
+	virtual bool do_play_stage();
 };
 
 

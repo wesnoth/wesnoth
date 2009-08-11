@@ -46,7 +46,7 @@ public:
 
 	~candidate_action_evaluation_loop();
 
-	void do_play_stage();
+	bool do_play_stage();
 
 	void on_create();
 

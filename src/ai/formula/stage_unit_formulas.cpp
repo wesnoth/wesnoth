@@ -44,7 +44,7 @@ stage_unit_formulas::~stage_unit_formulas()
 {
 }
 
-void stage_unit_formulas::do_play_stage()
+bool stage_unit_formulas::do_play_stage()
 {
 	//execute units formulas first
 	game_logic::unit_formula_set units_with_formulas;
@@ -135,6 +135,7 @@ void stage_unit_formulas::do_play_stage()
 			}
 		}
 	}
+	return false;
 }
 
 

@@ -40,7 +40,7 @@ public:
 
         virtual ~stage_unit_formulas();
 
-        void do_play_stage();
+        bool do_play_stage();
 
         void on_create();
 

@@ -54,7 +54,7 @@ config candidate_action_evaluation_loop::to_config() const
 	return cfg;
 }
 
-void candidate_action_evaluation_loop::do_play_stage()
+bool candidate_action_evaluation_loop::do_play_stage()
 {
 	LOG_AI_TESTING_RCA_DEFAULT << "Starting candidate action evaluation loop for side "<< get_side() << std::endl;
 	const static double STOP_VALUE = 0;
@@ -64,6 +64,7 @@ void candidate_action_evaluation_loop::do_play_stage()
 	}
 
 	bool executed = false;
+	bool gamestate_changed = false;
 	do {
 		executed = false;
 		double best_score = candidate_action::BAD_SCORE;
@@ -108,12 +109,15 @@ void candidate_action_evaluation_loop::do_play_stage()
 				best_ptr->disable();
 				//since we don't re-enable at this play_stage, if we disable this CA, other may get the change to go.
 				executed = true;
+			} else {
+				gamestate_changed = true;
 			}
 		} else {
 			LOG_AI_TESTING_RCA_DEFAULT << "Ending candidate action evaluation loop due to best score "<< best_score<<"<="<< candidate_action::BAD_SCORE<<std::endl;
 		}
 	} while (executed);
 	LOG_AI_TESTING_RCA_DEFAULT << "Ended candidate action evaluation loop for side "<< get_side() << std::endl;
+	return gamestate_changed;
 }
 
 rca_context& candidate_action_evaluation_loop::get_rca_context()

@@ -44,7 +44,7 @@ public:
 
 	~fallback_to_other_ai();
 
-	void do_play_stage();
+	bool do_play_stage();
 
 	void on_create();
 

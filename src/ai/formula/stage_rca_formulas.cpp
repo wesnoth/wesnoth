@@ -67,8 +67,9 @@ stage_rca_formulas::~stage_rca_formulas()
 {
 }
 
-void stage_rca_formulas::do_play_stage()
+bool stage_rca_formulas::do_play_stage()
 {
+	return false;//@todo: implement
 }
 
 
