@@ -65,7 +65,7 @@ namespace gui {
 					end,
 					boost::bind(&drop_target::hit_rect,
 						boost::bind(&drop_groups::value_type::second,_1)
-						,loc_, id_));
+						,boost::cref(loc_), id_));
 
 		if (itor == end)
 			return -1;
