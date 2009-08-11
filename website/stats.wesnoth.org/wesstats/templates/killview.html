@@ -20,6 +20,7 @@
 	<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
 	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAwlLuIjoG2_E7xGXPjpNRyRTY1qbTKsNyhuhE_ljh2mJHrFJMJRQgNuWe_yAXHi-7Ny4aJ3btOcCGnQ" type="text/javascript"></script>
 	<script type="text/javascript">
+		var grid_colors={${grid_colors}};
 		function generate_hexgrid(map, rows, columns) {
 			for(var row = 0; rows - row != 0; row++) {
 				for(var col = 0; columns - col != 0; col++) {
@@ -55,15 +56,19 @@
 			poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
 			p = new GPoint(0.5*PRADIUS + xcenter,-1*PRADIUS + ycenter);
 			poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
-			
-			var poly_overlay = new GPolygon(poly,"#000000",1,.25,"#000000",.25);
-			GEvent.addListener(poly_overlay, "click", function(latlng) {
-				if(latlng) {
-					var myHtml = "You clicked hex "+col+","+row;
-					map.openInfoWindow(latlng, myHtml);
-				}
-			});
-			map.addOverlay(poly_overlay);
+		
+			if(col+","+row in grid_colors) {	
+				var poly_overlay = new GPolygon(poly,"#000000",1,.25,"#"+grid_colors[col+","+row],.50);
+				GEvent.addListener(poly_overlay, "click", function(latlng) {
+					if(latlng) {
+						//var myHtml = "You clicked hex "+col+","+row;
+						var myHtml = "hex color: "+grid_colors[col+","+row];
+						map.openInfoWindow(latlng, myHtml);
+					}
+				});
+				
+				map.addOverlay(poly_overlay);
+			}
 		}
 		function initialize() {
 			if (GBrowserIsCompatible()) {

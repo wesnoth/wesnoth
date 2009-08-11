@@ -37,7 +37,6 @@ class KillGraphController(BaseController):
 		curs = conn.cursor()
 		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
 		maps = curs.fetchall()
-		conn.close()
 		
 		cur_map = kw.setdefault("map","6f50ba078308f4ed29b8b79a0727fd9b")
 		#check for input sanity, we will be fetching map tiles based on this name
@@ -47,5 +46,21 @@ class KillGraphController(BaseController):
 		m_dimensions = ()
 		if cur_map != "":
 			m_dimensions = helperlib.get_map_dimensions(configuration.MAP_DIR+cur_map)
-		print m_dimensions	
-		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions)
+	
+		#compute kill frequency per hex
+		curs.execute("SELECT position,COUNT(position) FROM `KILLMAP` WHERE map_id = %s GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100", (cur_map,))
+		hexdata = curs.fetchall()
+		conn.close()
+		#first item is 'hottest' -> red (255,0,0), last item is 'coldest' -> blue (0,0,255), linearly interpolate hotness of all values inbetween
+		grid_colors = ""
+		max = hexdata[0][1]
+		min = hexdata[99][1]
+		for hex in hexdata:
+			v = hex[1]
+			red_val = 255.0*float(v-min)/float(max-min)	
+			blue_val = 255.0 * (1 - (float(v-min)/float(max-min)))
+			hex_color = "%.2x00%.2x" % (int(red_val),int(blue_val))
+			#construct the javascript dicitonary that will store hex->color mappings
+			grid_colors += '"%s":"%s",' % (hex[0],hex_color)
+		grid_colors = grid_colors[:-1]
+		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,grid_colors=grid_colors)
