@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 11:19+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2009-02-05 00:57+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -99,7 +99,7 @@ msgstr "speciell"
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
+#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
 #, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
@@ -110,7 +110,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -120,7 +120,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -141,56 +141,55 @@ msgstr ""
 "spegla)."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor2.cfg:120
+#: data/themes/editor.cfg:120
 msgid "File"
 msgstr "Arkiv"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor2.cfg:131
+#: data/themes/editor.cfg:131
 msgid "Edit"
 msgstr "Redigera"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor2.cfg:141
+#: data/themes/editor.cfg:141
 msgid "Map"
 msgstr "Karta"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor2.cfg:151
+#: data/themes/editor.cfg:151
 msgid "Window"
 msgstr "Fönster"
 
 #. [label]: id=villages-icon
-#: data/themes/editor2.cfg:270
+#: data/themes/editor.cfg:270
 msgid "villages"
 msgstr "byar"
 
-#: src/editor2/action.cpp:32
+#: src/editor/action.cpp:32
 msgid "Error creating action object"
 msgstr "Fel vid skapande av händelseobjekt"
 
-#: src/editor2/action.cpp:36
+#: src/editor/action.cpp:36
 msgid "Action not implemented"
 msgstr "Åtgärd ej implementerad"
 
-#: src/editor2/editor_controller.cpp:133
+#: src/editor/editor_controller.cpp:133
 msgid "Quit Editor"
 msgstr "Vill du verkligen sluta?"
 
-#: src/editor2/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Allvarligt fel"
 
-#: src/editor2/editor_controller.cpp:311
-#: src/editor2/editor_controller.cpp:1068
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1068
 msgid "(New Map)"
 msgstr "(Ny karta)"
 
-#: src/editor2/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen avsluta?"
 
-#: src/editor2/editor_controller.cpp:319
+#: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -198,7 +197,7 @@ msgstr ""
 "Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats "
 "kommer att förloras."
 
-#: src/editor2/editor_controller.cpp:321
+#: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -206,169 +205,169 @@ msgstr ""
 "Vill du verkligen avsluta? Följande kartor har modifierats och alla "
 "ändringar sedan de senast sparats kommer att förloras."
 
-#: src/editor2/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:326
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/editor2/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:382
 msgid "No editor time-of-day found."
 msgstr "Ingen tid-på-dan för editorn hittades."
 
-#: src/editor2/editor_controller.cpp:418
+#: src/editor/editor_controller.cpp:418
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
-#: src/editor2/editor_controller.cpp:419
+#: src/editor/editor_controller.cpp:419
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Vill du överge alla ändringar du har gjort i kartan sedan den senast "
 "sparades?"
 
-#: src/editor2/editor_controller.cpp:437
+#: src/editor/editor_controller.cpp:437
 msgid "Choose a Map to Open"
 msgstr "Välj en karta att öppna"
 
-#: src/editor2/editor_controller.cpp:472
+#: src/editor/editor_controller.cpp:472
 msgid "Save the Map As"
 msgstr "Spara kartan som"
 
-#: src/editor2/editor_controller.cpp:476
+#: src/editor/editor_controller.cpp:476
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Filen existerar redan. Vill du skriva över den?"
 
-#: src/editor2/editor_controller.cpp:493
+#: src/editor/editor_controller.cpp:493
 msgid "No random map generators found."
 msgstr "Ingen slumpgeneratorer för kartor hittades."
 
-#: src/editor2/editor_controller.cpp:506 src/editor2/editor_controller.cpp:510
+#: src/editor/editor_controller.cpp:506 src/editor/editor_controller.cpp:510
 msgid "Map creation failed."
 msgstr "Misslyckades med att skapa karta."
 
-#: src/editor2/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:525
 msgid "Choose a mask to apply"
 msgstr "Välj en markering att applicera"
 
-#: src/editor2/editor_controller.cpp:532
+#: src/editor/editor_controller.cpp:532
 msgid "Error loading mask"
 msgstr "Fel vid öppning av markering"
 
-#: src/editor2/editor_controller.cpp:547
+#: src/editor/editor_controller.cpp:547
 msgid "Choose target map"
 msgstr "Välj målkarta"
 
-#: src/editor2/editor_controller.cpp:554 src/editor2/editor_controller.cpp:718
+#: src/editor/editor_controller.cpp:554 src/editor/editor_controller.cpp:718
 msgid "Error loading map"
 msgstr "Fel vid öppning av karta"
 
-#: src/editor2/editor_controller.cpp:632 src/editor2/editor_controller.cpp:674
+#: src/editor/editor_controller.cpp:632 src/editor/editor_controller.cpp:674
 msgid "This map is already open."
 msgstr "Den här kartan är redan öppen."
 
-#: src/editor2/editor_controller.cpp:653
+#: src/editor/editor_controller.cpp:653
 msgid "Map saved."
 msgstr "Kartan har sparats."
 
-#: src/editor2/editor_controller.cpp:697
+#: src/editor/editor_controller.cpp:697
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:698 src/editor2/editor_controller.cpp:712
+#: src/editor/editor_controller.cpp:698 src/editor/editor_controller.cpp:712
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:708
+#: src/editor/editor_controller.cpp:708
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1098
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/editor2/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1100
 msgid "Can't Undo"
 msgstr "Kan inte ångra"
 
-#: src/editor2/editor_controller.cpp:1104
+#: src/editor/editor_controller.cpp:1104
 msgid "Redo"
 msgstr "Gör om"
 
-#: src/editor2/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1106
 msgid "Can't Redo"
 msgstr "Kan inte göra om"
 
-#: src/editor2/editor_controller.cpp:1111
+#: src/editor/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1118
+#: src/editor/editor_controller.cpp:1118
 #, fuzzy
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Uppdatera övergångar"
 
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:439
+#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:439
 msgid "Player"
 msgstr "Spelare"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "Storleken på målkartan är skiljer sig från den aktuella kartan"
 
-#: src/editor2/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:510
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:511
+#: src/editor/editor_palettes.cpp:511
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:536
+#: src/editor/editor_palettes.cpp:536
 msgid "FG"
 msgstr "FG"
 
-#: src/editor2/editor_palettes.cpp:538
+#: src/editor/editor_palettes.cpp:538
 msgid "BG"
 msgstr "BG"
 
-#: src/editor2/map_context.cpp:70
+#: src/editor/map_context.cpp:70
 msgid "File not found"
 msgstr ""
 
-#: src/editor2/map_context.cpp:84
+#: src/editor/map_context.cpp:84
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor2/map_context.cpp:99
+#: src/editor/map_context.cpp:99
 #, fuzzy
 msgid "Empty map file"
 msgstr "Tom kartfil eller filen kunde inte hittas"
 
-#: src/editor2/map_context.cpp:219
+#: src/editor/map_context.cpp:219
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/editor2/map_context.cpp:226
+#: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/editor2/mouse_action.cpp:436
+#: src/editor/mouse_action.cpp:436
 msgid "(Player)^None"
 msgstr "Ingen"
 
-#: src/editor2/mouse_action.cpp:443
+#: src/editor/mouse_action.cpp:443
 msgid "Choose player"
 msgstr "Välj spelare"
 
-#: src/editor2/mouse_action.cpp:444
+#: src/editor/mouse_action.cpp:444
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "

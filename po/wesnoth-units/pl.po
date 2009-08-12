@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-03 12:28+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2009-03-13 19:34+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -45,8 +45,8 @@ msgstr ""
 #: data/core/units/bats/Bat_Blood.cfg:176
 #: data/core/units/bats/Bat_Dread.cfg:29
 #: data/core/units/bats/Bat_Vampire.cfg:176
-#: data/core/units/goblins/Direwolf_Rider.cfg:33
-#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Direwolf_Rider.cfg:46
+#: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
 #: data/core/units/goblins/Wolf_Rider.cfg:64
 #: data/core/units/monsters/Cave_Spider.cfg:34
@@ -193,10 +193,9 @@ msgstr ""
 "odporne na ataki ogniste."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:85
-#: data/core/units/drakes/Burner.cfg:64 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
-#: data/core/units/goblins/Direwolf_Rider.cfg:42
+#: data/core/units/goblins/Direwolf_Rider.cfg:55
 #: data/core/units/gryphons/Gryphon.cfg:41
 #: data/core/units/gryphons/Gryphon_Master.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:42
@@ -211,11 +210,11 @@ msgstr "szpony"
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
 #: data/core/units/drakes/Blademaster.cfg:78
-#: data/core/units/drakes/Burner.cfg:73 data/core/units/drakes/Fighter.cfg:75
+#: data/core/units/drakes/Burner.cfg:116 data/core/units/drakes/Fighter.cfg:75
 #: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
-#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:56
-#: data/core/units/drakes/Hurricane.cfg:112
-#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:61
+#: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:119
+#: data/core/units/drakes/Hurricane.cfg:127
+#: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:126
 #: data/core/units/drakes/Warrior.cfg:82
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
@@ -254,7 +253,7 @@ msgstr ""
 #: data/core/units/elves/Scout.cfg:47
 #: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:40
+#: data/core/units/humans/Horse_Paladin.cfg:52
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:64
 #: data/core/units/humans/Loyalist_Dragoon.cfg:49
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:46
@@ -286,6 +285,12 @@ msgstr ""
 "odziedziczyli siłę swoich przodków, a w szczególności umiejętność ziania "
 "ogniem, która w połączeniu z rozmiarem i potężnymi szponami czyni z nich "
 "niebezpiecznych przeciwników."
+
+#. [attack]: type=impact
+#: data/core/units/drakes/Burner.cfg:107 data/core/units/drakes/Glider.cfg:110
+#: data/core/units/drakes/Hurricane.cfg:118 data/core/units/drakes/Sky.cfg:117
+msgid "slam"
+msgstr "uderzenie"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -363,9 +368,9 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:33
 #: data/core/units/humans/Outlaw.cfg:36
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
+#: data/core/units/humans/Outlaw_Bandit.cfg:47
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
 msgid "mace"
 msgstr "buzdygan"
@@ -469,19 +474,13 @@ msgstr ""
 "się przed nimi jest prawie niemożliwe. Wybitne umiejętności latania "
 "pozwalają im dopadać nawet dobrze ukrytych wrogów."
 
-#. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:47
-#: data/core/units/drakes/Hurricane.cfg:103 data/core/units/drakes/Sky.cfg:52
-msgid "slam"
-msgstr "uderzenie"
-
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "Smok huraganowy"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
-#: data/core/units/drakes/Hurricane.cfg:28
+#: data/core/units/drakes/Hurricane.cfg:29
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
@@ -518,7 +517,7 @@ msgid "Sky Drake"
 msgstr "Smok przestworzy"
 
 #. [unit_type]: id=Sky Drake, race=drake
-#: data/core/units/drakes/Sky.cfg:27
+#: data/core/units/drakes/Sky.cfg:28
 #, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
@@ -683,7 +682,7 @@ msgstr "topór bojowy"
 #: data/core/units/dwarves/Pathfinder.cfg:41
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Scout.cfg:40 data/core/units/dwarves/Scout.cfg:48
-#: data/core/units/undead/Skele_Deathblade.cfg:149
+#: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:30
 #: data/core/units/undead/Skeleton.cfg:119
@@ -1540,7 +1539,7 @@ msgid "Direwolf Rider"
 msgstr "Jeździec wargów"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
-#: data/core/units/goblins/Direwolf_Rider.cfg:21
+#: data/core/units/goblins/Direwolf_Rider.cfg:22
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1588,7 +1587,7 @@ msgid "Goblin Knight"
 msgstr "Gobliński rycerz"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
-#: data/core/units/goblins/Knight.cfg:20
+#: data/core/units/goblins/Knight.cfg:21
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1800,7 +1799,7 @@ msgstr "miecz"
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:24
-#: data/core/units/humans/Horse_Paladin.cfg:49
+#: data/core/units/humans/Horse_Paladin.cfg:61
 msgid "lance"
 msgstr "lanca"
 
@@ -2927,7 +2926,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
-#: data/core/units/humans/Outlaw_Thug.cfg:24
+#: data/core/units/humans/Outlaw_Thug.cfg:37
 #: data/core/units/trolls/Troll.cfg:26
 msgid "club"
 msgstr "maczuga"
@@ -3057,7 +3056,7 @@ msgid "Thug"
 msgstr "Zbir"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:19
+#: data/core/units/humans/Outlaw_Thug.cfg:20
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -4861,7 +4860,7 @@ msgid "Deathblade"
 msgstr "Ostrze śmierci"
 
 #. [unit_type]: id=Deathblade, race=undead
-#: data/core/units/undead/Skele_Deathblade.cfg:18
+#: data/core/units/undead/Skele_Deathblade.cfg:19
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "

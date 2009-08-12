@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 11:19+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2007-12-11 22:37+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -276,8 +276,8 @@ msgstr "Orcherna bryter igenom flodfortets försvar"
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:65
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:411
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:84
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:299
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:351
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:303
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:355
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:128
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:485
 msgid "Death of Malin Keshar"
@@ -582,28 +582,39 @@ msgstr "Ta kontroll över alla vättarnas byar"
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:69
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:415
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:88
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:303
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:355
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:359
 msgid "Death of Darken Volk"
 msgstr "Darken Volk dör"
 
+#. [objective]: condition=lose
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:92
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:127
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:124
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:127
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:419
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:92
+msgid "Time runs out"
+msgstr ""
+
 #. [unit]: id=Darken Volk, type=Dark Sorcerer DiD
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:104
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
 #. [trait]: id=loyal
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:112
 msgid "loyal"
 msgstr "lojal"
 
 #. [trait]: id=loyal
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:109
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:113
 msgid "to himself"
 msgstr "mot sig själv"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:124
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:128
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -617,12 +628,12 @@ msgstr ""
 "lärling så att du kan... hjälpa mig i kampen mot dem."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:128
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:132
 msgid "Yes! I thirst for revenge on those creatures!"
 msgstr "Ja! Jag törstar efter hämnd mot dem!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:132
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:136
 msgid ""
 "Who knows? Perhaps removing the threat of orc raids will persuade the people "
 "of Parthyn to... welcome you home."
@@ -631,7 +642,7 @@ msgstr ""
 "att... välkomna dig hem."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:136
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:140
 msgid ""
 "Perhaps. Even Drogan would have to be thankful for a summer without orc "
 "raids."
@@ -640,7 +651,7 @@ msgstr ""
 "orchräder."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:140
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:144
 msgid ""
 "A goblin village lies in this valley, just ahead. They are a bastard race "
 "born of the orcs, and help them in their wars against humans and dwarves. "
@@ -653,22 +664,22 @@ msgstr ""
 "strid mot orcherna."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:148
 msgid "It will be a worthwhile test of your new skills."
 msgstr "Det blir ett nyttigt prov för dina nya förmågor."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:203
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:207
 msgid "Beware the goblin guards in the villages."
 msgstr "Se upp för vättarnas vakter i byarna."
 
 #. [then]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:220
 msgid "Villager"
 msgstr "Bybo"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:236
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:240
 msgid ""
 "Ahhh... I did not realize there was a swamp near this village. Malin, I "
 "believe it would be beneficial for your training if you and I were to "
@@ -678,17 +689,17 @@ msgstr ""
 "tror att din träning skulle gynnas av att vi undersökte träsket."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:263
 msgid "Rise, rise from the realms of death and decay!"
 msgstr "Res er, res er från dödens och förfallets riken!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:280
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:284
 msgid "What are those things?"
 msgstr "Vad är det för något?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:284
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:288
 msgid ""
 "They are ghouls. Once, they were... evil men... murderers and outlaws. "
 "Through magic they have been transformed so their outsides match the spirits "
@@ -700,12 +711,12 @@ msgstr ""
 "överlever sina herrar dras mot träsken, mot det naturliga förfallet där."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
 msgid "It seems cruel to turn men into such a hideous form."
 msgstr "Det verkar grymt att förvandla någon till en så vidrig skepnad."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
 msgid ""
 "In their present form they can best serve the greater good. Even now they "
 "will aid you in defeating this goblin rabble. Besides, as I said, these were "
@@ -716,74 +727,74 @@ msgstr ""
 "onda män. Inget straff är nog för deras sort."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:300
 msgid "I suppose so..."
 msgstr "Jag antar det..."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:306
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:310
 msgid "Shaun"
 msgstr "Shaun"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:311
 msgid "Ed"
 msgstr "Ed"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:308
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:312
 msgid "Any zombies out there?"
 msgstr "Några zombier där ute?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:313
 msgid "Don't say that!"
 msgstr "Säg inte så!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:310
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:312
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:316
 msgid "What?"
 msgstr "Vadå?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:311
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:315
 msgid "That!"
 msgstr "Det!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:313
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:317
 msgid "The 'zed' word. Don't say it!"
 msgstr "Ordet med z. Säg det inte!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:318
 msgid "Why not?"
 msgstr "Varför inte?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:315
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:319
 #, fuzzy
 msgid "Because it's ridiculous!"
 msgstr "Det är löjligt."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:320
 msgid "Well... are there any?"
 msgstr "Nå... Finns det några?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:317
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:321
 msgid "I don't see any. Maybe it's not as bad as all that."
 msgstr "Jag ser inga. Kanske kommer det inga."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:318
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:322
 msgid "Oh, no, wait, there they are."
 msgstr "Åh, nej, vänta, där är de."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:348
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:352
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won't stand up to full orcish warriors."
@@ -792,7 +803,7 @@ msgstr ""
 "duger knappast mot fullvuxna orchkrigare."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:352
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:356
 msgid ""
 "Your training is just beginning, Malin. With the souls from these goblins "
 "now available for our use, you will see your forces grow quickly."
@@ -801,7 +812,7 @@ msgstr ""
 "tillgängliga för oss, så kommer du se att dina styrkor växer snabbt. "
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:356
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:360
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr ""
 "Utmärkt. Jag kan knappt bärga mig inför att ge mig på våra riktiga fiender."
@@ -852,12 +863,12 @@ msgid "Clear the cave of enemies"
 msgstr "Rensa ut fienderna ur grottan"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:143
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:147
 msgid "Watchman"
 msgstr "Vaktpost"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:167
 msgid ""
 "Winter comes on fast, and we need a sheltered place to spend it. This cave "
 "looks promising, but from the tracks in and out several bands of outlaws "
@@ -869,19 +880,19 @@ msgstr ""
 "vi kan använda den."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:179
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:183
 msgid ""
 "Be careful when imprisoning a soul and use all your might to retain control "
 "over it or it might attempt to break free and destroy you!"
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:187
 msgid "I... I will try."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:204
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:208
 msgid ""
 "Dwarves! They have often been our allies against the orc hordes. Surely they "
 "will allow us to winter with them."
@@ -890,7 +901,7 @@ msgstr ""
 "säkert övervintra med dem."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:213
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:217
 #, fuzzy
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna' "
@@ -900,12 +911,12 @@ msgstr ""
 "vill bli vandrande benhögar."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:217
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:221
 msgid "Or not. Why do they hate us so much?"
 msgstr "Eller inte. Varför hatar de oss så mycket?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:221
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:225
 msgid ""
 "People fear that which they don't understand, and death, after all, is the "
 "greatest mystery. Those who dare to investigate that mystery are bound to "
@@ -919,12 +930,12 @@ msgstr ""
 "roten. Men nu ger dessa grottinvånare oss inget val."
 
 #. [event]: type=Ghost side 4}
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:248
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:252
 msgid "Tortured Soul"
 msgstr "Plågad själ"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:254
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:258
 msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
@@ -933,7 +944,7 @@ msgstr ""
 "Fördömde. Du skall få betala för att du höll mig ifrån min slutliga vila!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:258
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:262
 msgid ""
 "Fool boy! Your will must be stronger or you will never be able to control "
 "your soldiers well enough to face the orcs. Many are the young necromancers "
@@ -946,12 +957,12 @@ msgstr ""
 "Han kommer att anfalla dig utan misskund."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
 msgid "But why are they attacking me? And what should I do?!?"
 msgstr "Men varför anfaller de mig? Och vad skall jag göra?!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:270
 msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
@@ -960,7 +971,7 @@ msgstr ""
 "vända resten av dina styrkor mot dig."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:301
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:305
 msgid ""
 "I think I've got the rest of them under control now. That was a close call."
 msgstr "Jag tror att jag har resten av dem under kontroll nu. Det var nära."
@@ -1020,7 +1031,7 @@ msgid "Kill the orc leaders"
 msgstr "Döda orchledarna"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:148
 msgid ""
 "Orcs block the way out of the mountain pass. Destroy them, and we will move "
 "on to bigger targets."
@@ -1029,7 +1040,7 @@ msgstr ""
 "svårare motståndare sedan."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:148
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:152
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for getting me banished from Parthyn."
@@ -1038,18 +1049,18 @@ msgstr ""
 "skall få betala för att jag förvisades från Parthyn."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:162
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:166
 msgid "Feel my wrath, vile creature!"
 msgstr "Känn min vrede, vidriga varelse!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:187
 #, fuzzy
 msgid "The ice doesn't look very thick..."
 msgstr "Isen här ser inte så tjock ut..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:240
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:244
 msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake's bottom."
@@ -1058,7 +1069,7 @@ msgstr ""
 "den tjocka leran på sjöbotten."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:248
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:252
 msgid ""
 "The weak ice gives way beneath the heavy warrior, who drowns in the frigid "
 "mountain waters."
@@ -1138,7 +1149,7 @@ msgid "K'Vark"
 msgstr "K'Vark"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:188
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:192
 msgid ""
 "Since the very founding of Wesnoth you have hounded humans at every turn. "
 "You have raided my home at every opportunity. You have trampled our fields, "
@@ -1161,7 +1172,7 @@ msgstr ""
 "jubla vid mitt triumferande återtåg."
 
 #. [message]: speaker=Borth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:196
 msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
@@ -1170,23 +1181,23 @@ msgstr ""
 "problem. Det är dags för dig att dö."
 
 #. [message]: speaker=P'Gareth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:196
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:200
 msgid "Ummm... unless... you are already dead, like the skeletons?"
 msgstr "Hm... Såvida inte... Är du redan död, som skeletten?"
 
 #. [message]: speaker=K'Vark
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:200
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:204
 #, fuzzy
 msgid "Then, it will be time for you to die again!"
 msgstr "Då är det dags för dig att dö igen!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:304
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:308
 msgid "The last chieftain... he's escaping! The coward!"
 msgstr "Den siste hövdingen... Han flyr! Den ynkryggen!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:308
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:312
 msgid ""
 "Coward, yes. You must hunt him down before he can take word to the orcish "
 "council. A single chieftain, even after he gathers the survivors from this "
@@ -1197,12 +1208,12 @@ msgstr ""
 "kring sig de överlevande från denna strid."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:312
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:316
 msgid "On my own? Is my apprenticeship over?"
 msgstr "Ensam? Är min lärlingsperiod slut?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:320
 msgid ""
 "... Almost. The growth of your power has been truly impressive to watch. "
 "There is, however, a small favor I will ask of you. That will constitute the "
@@ -1507,47 +1518,47 @@ msgid "Malin and Darken Volk enter the Mage Lord's manor"
 msgstr "Malin och Darken Volk träder in i magikerfurstens gods"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:159
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:160
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:161
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:162
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:167
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:170
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:175
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:176
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:181
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:182
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:188
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:189
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:190
-msgid "Night Watchman"
-msgstr "Nattvakt"
-
-#. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:163
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:164
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:165
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:166
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:172
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:173
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:179
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:180
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:185
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:186
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:193
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:194
+msgid "Night Watchman"
+msgstr "Nattvakt"
+
+#. [event]
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:167
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:170
 msgid "Gate Guard"
 msgstr "Portvakt"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:177
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:184
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:191
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:181
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:188
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:195
 msgid "Head Trainer"
 msgstr "Huvudinstruktör"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:187
 msgid "Townperson"
 msgstr "Borgare"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:220
 msgid ""
 "The stolen book lies within Lord Karres's manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1562,7 +1573,7 @@ msgstr ""
 "staden."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:220
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:224
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr ""
@@ -1570,29 +1581,29 @@ msgstr ""
 "för dig på insidan."
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:247
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:251
 msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
 msgstr "Ers nåd! Vandöda kommer ut bland träden! Väck vakterna omedelbart!"
 
 #. [message]: speaker=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:251
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:255
 msgid "To arms, men!"
 msgstr "Till vapen, mannar!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:296
 msgid "Ooouuuh! It burns... burrrrnnns..."
 msgstr "Aoouuh! Det bränner... Brännnnneeerr..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:300
 msgid "What in the name of all demons of hell was this thing?"
 msgstr "Vad i alla helvetets demoners namn var det där?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:300
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:304
 #, fuzzy
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
@@ -1605,8 +1616,8 @@ msgstr ""
 "de starka besvärjelser som ofta används."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:342
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:371
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:346
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
 msgid "Here is the entrance! Hurry!"
 msgstr "Här är ingången! Snabbt!"
 
@@ -1629,7 +1640,7 @@ msgstr "Furst Karres"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:148
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:206
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:132
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:136
 msgid "Guard"
 msgstr "Vakt"
 
@@ -1667,13 +1678,13 @@ msgid "Move through the passageway in the northwest leading to the great hall"
 msgstr "Gå genom passagen i nordväst mot stora salen"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:433
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:437
 msgid "I think I have found the passage to the great hall. Follow me quickly!"
 msgstr "Jag tror att jag hittat vägen till stora salen. Följ mig!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:451
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:424
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:455
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:428
 msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
@@ -1692,32 +1703,32 @@ msgid "Find the book"
 msgstr "Hitta boken"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:108
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:109
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:110
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:137
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:138
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:139
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:140
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:112
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:113
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:114
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:141
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:142
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:143
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:145
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:146
 msgid "Guardian"
 msgstr "Väktare"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:220
 #, fuzzy
 msgid "I feel the book is very close, somewhere to the northwest."
 msgstr "Jag känner att boken är väldigt nära någonstans i nordväst."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:282
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:366
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:370
 msgid "We've got the book, but now how do we get out of here?"
 msgstr "Vi har boken, men hur kommer vi nu ut härifrån?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:290
 msgid ""
 "There's a small tunnel in the cellar to the northeast. It will lead us far "
 "enough out of the city that we can escape pursuit."
@@ -1726,32 +1737,32 @@ msgstr ""
 "långt utanför staden så att vi kan komma undan."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:295
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:299
 msgid "Escape via the tunnel in the northeast cellar"
 msgstr "Fly via tunneln i den nordöstra källaren"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:318
 msgid "Phew! Let's get out of here"
 msgstr "Puh! Nu går vi härifrån."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:347
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:351
 msgid "Escape the manor"
 msgstr "Fly från godset"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:373
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:377
 msgid "Wait, you aren't leaving me behind, are you?"
 msgstr "Vänta, du lämnar väl inte mig efter?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:384
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:388
 msgid "You have served me well, my apprentice."
 msgstr "Du har tjänat mig väl, lärling."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:388
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:392
 msgid ""
 "As he heads into the tunnel Darken Volk collapses its entrance, leaving "
 "Malin to be captured and executed by the city guards."
@@ -1760,7 +1771,7 @@ msgstr ""
 "efter, att bli tillfångatagen och avrättad av stadsvakten."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:403
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:407
 #, fuzzy
 msgid "Phew! Let's get out of here."
 msgstr "Puh! Nu går vi härifrån."

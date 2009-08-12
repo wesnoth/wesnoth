@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-03 12:27+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2007-07-25 18:00+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -301,8 +301,14 @@ msgstr ""
 msgid "This Valley Belongs to Me"
 msgstr "Denna dal tillhör mig"
 
+#. [side]: type=Goblin Pillager, id=Grogor-Tuk
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:35
+#, fuzzy
+msgid "Grogor-Tuk"
+msgstr "Besegra Grogor Tuk"
+
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:48
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:49
 msgid ""
 "Delfador's wandering time with Methor took them to many strange places, both "
 "within and beyond the lands of men. They studied and practiced, applying "
@@ -311,7 +317,7 @@ msgid ""
 msgstr ""
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:51
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:52
 msgid ""
 "But the elder mage's health was taxed by the rigors of the journey. A year "
 "after the two left Alduin, Methor settled in a tranquil valley at the edge "
@@ -322,7 +328,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Methor
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:66
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:67
 #, fuzzy
 msgid ""
 "Delfador, your time as my apprentice is now almost over. You are a fully-"
@@ -336,7 +342,7 @@ msgstr ""
 "vid hovet och..."
 
 #. [message]: speaker=Grogor-Tuk
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:70
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:71
 #, fuzzy
 msgid ""
 "Listen, humans! This valley belongs to me now. I require all your houses and "
@@ -348,7 +354,7 @@ msgstr ""
 "kanske att låta er fortsätta leva som mina slavar..."
 
 #. [message]: speaker=Methor
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:74
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:75
 #, fuzzy
 msgid ""
 "Arrogant creature! We have little enough, and we will not suffer you to take "
@@ -358,7 +364,7 @@ msgstr ""
 "med våld."
 
 #. [message]: speaker=Grogor-Tuk
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:78
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:79
 msgid ""
 "That's where you are wrong, puny mage. War is coming, humans... War! Take "
 "their villages, and spare no-one!"
@@ -367,14 +373,14 @@ msgstr ""
 "deras byar och låt inte någon komma undan!"
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:87
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:88
 #, fuzzy
 msgid "Defeat Grogor-Tuk"
 msgstr "Besegra Grogor Tuk"
 
 #. [objective]: condition=lose
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:91
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:88
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:92
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:85
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:115
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_swamps_of_illuven.cfg:88
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:101
@@ -398,8 +404,8 @@ msgid "Death of Delfador"
 msgstr "Delfador dör"
 
 #. [objective]: condition=lose
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:95
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:92
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:96
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:89
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:123
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_swamps_of_illuven.cfg:96
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:129
@@ -414,17 +420,17 @@ msgid "Time runs out"
 msgstr "Dragen tar slut"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:110
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:111
 msgid "Grooar! Burn! Burn! Ahahaha..."
 msgstr "Grooar! Brinn! Brinn! Ha ha ha ha..."
 
 #. [message]: id=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:121
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:122
 msgid "No! Methor... Don't die!"
 msgstr "Nej! Methor... Dö inte!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:125
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:126
 #, fuzzy
 msgid ""
 "Heed my last words, Delfador! Journey northeast to Weldyn, and seek out my "
@@ -434,7 +440,7 @@ msgstr ""
 "min vän Leollyn. Han kommer att hjälpa dig."
 
 #. [message]: speaker=Methor
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:138
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:139
 #, fuzzy
 msgid ""
 "Well done, Delfador! I see I have trained you well, and you are truly ready "
@@ -447,7 +453,7 @@ msgstr ""
 "Han kommer att hjälpa dig."
 
 #. [message]: id=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:147
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:148
 #, fuzzy
 msgid ""
 "I will grieve for master Methor... I must take his advice and seek out "
@@ -458,7 +464,7 @@ msgstr ""
 "Leollyn."
 
 #. [message]: id=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:153
+#: data/campaigns/Delfadors_Memoirs/scenarios/02_this_valley_belongs_to_me.cfg:154
 msgid ""
 "And it is no good news I will bring him. Orcs, so far south and so near the "
 "capital? This is a dire sign; things are gravely amiss in Wesnoth."
@@ -474,29 +480,29 @@ msgstr "Vägen till Weldyn"
 msgid "Urthaka-Tan"
 msgstr ""
 
-#. [label]: id=memoirs_2_label_1
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:66
+#. [label]
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:65
 msgid "The Great Valley"
 msgstr "Den stora dalen"
 
-#. [label]: id=memoirs_2_label_2
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:71
+#. [label]
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:69
 msgid "Fort Brell"
 msgstr "Fort Brell"
 
-#. [label]: id=memoirs_2_label_3
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:76
+#. [label]
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:73
 msgid "Fort Miryen"
 msgstr "Fort Miryen"
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:84
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:81
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:206
 msgid "Defeat enemy leader"
 msgstr "Besegra fiendens ledare"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:105
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:102
 msgid ""
 "Delfador followed Methor's advice, and headed over the hills towards Weldyn. "
 "But the roads were more dangerous than he had expected..."
@@ -505,22 +511,22 @@ msgstr ""
 "vägarna var farligare än han hade väntat sig..."
 
 #. [event]
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:114
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:111
 msgid "Derrin"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:121
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:118
 msgid "Feorth"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:128
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:125
 msgid "Gar"
 msgstr ""
 
 #. [message]: speaker=Derrin
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:131
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:128
 #, fuzzy
 msgid ""
 "Beware, stranger! I come to warn you - a party of orcs have moved into the "
@@ -532,7 +538,7 @@ msgstr ""
 "fortsätter västerut, så kommer du att vara tvungen att slåss mot dem."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:135
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:132
 msgid ""
 "I cannot turn back now... If I fight these orcs, will your villagers help me?"
 msgstr ""
@@ -540,7 +546,7 @@ msgstr ""
 "byborna att hjälpa mig?"
 
 #. [message]: speaker=Derrin
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:139
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:136
 msgid ""
 "You see me armed for war because we were mustering to aid our kin. We can "
 "help each other - and you'll not be sorry to fight beside us, for this "
@@ -548,19 +554,19 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:153
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:150
 msgid "Take this, you slimy invader!"
 msgstr "Här har ni, äckliga inkräktare!"
 
 #. [message]: role=bowman_advisor
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:168
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:165
 #, fuzzy
 msgid "Beware! Night is falling - that's when the orcs tend to attack!"
 msgstr ""
 "Ta dig i akt! Skymningen faller - det är då som orcherna brukar anfalla!"
 
 #. [message]: role=bowman_advisor
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:183
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:180
 #, fuzzy
 msgid ""
 "Thank you, Delfador, for helping to rid our land of those pestilent orcs. "
@@ -570,7 +576,7 @@ msgstr ""
 "står i skuld till dig."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:187
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:184
 #, fuzzy
 msgid ""
 "You are welcome...but I am wondering what orcs were doing so deep inside the "
@@ -578,7 +584,7 @@ msgid ""
 msgstr "Jag bara undrar vad orcher gör innanför Wesnoths gränser..."
 
 #. [message]: role=bowman_advisor
-#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:191
+#: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:188
 #, fuzzy
 msgid ""
 "Perhaps some of our lads had better go with you as far as Weldyn. These "

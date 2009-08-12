@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-03 12:27+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2009-08-05 12:13+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -96,163 +96,184 @@ msgstr "eriline"
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
-#: data/core/editor/tool-hints.cfg:7
-#: data/core/editor/tool-hints.cfg:13
-#: data/themes/editor2.cfg:179
-#: data/themes/editor2.cfg:192
-msgid "Use left/right mouse button to draw fore-/background terrain. Hold Shift to paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr "Kasuta vasakut hiirenuppu esiplaani ja paremat tausta joonistamiseks. Ainult baaskihi joonistamiseks hoia Shifti all. Kursorialuse maastiku valimiseks hoia Ctrl-klahvi all ja tee vasakklõps."
+#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only. Ctrl+click to sample terrain under cursor."
+msgstr ""
+"Kasuta vasakut hiirenuppu esiplaani ja paremat tausta joonistamiseks. Ainult "
+"baaskihi joonistamiseks hoia Shifti all. Kursorialuse maastiku valimiseks "
+"hoia Ctrl-klahvi all ja tee vasakklõps."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19
-#: data/themes/editor2.cfg:214
-msgid "Left mouse button selects, right deselects. Hold Shift for magic-wand selection of tiles with same terrain."
-msgstr "Vasak hiirenupp valib, parem tühistab valiku. Võlukepiga valimiseks hoia Shifti all."
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
+msgstr ""
+"Vasak hiirenupp valib, parem tühistab valiku. Võlukepiga valimiseks hoia "
+"Shifti all."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25
-#: data/themes/editor2.cfg:203
-msgid "Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears."
-msgstr "Vasak hiirenupp näitab valitud mängijat, parem tühistab valiku. Numbriklahvid valivad algpositsiooni, Alt+number määrab kursori alla vastava positsiooni, Del tühistab valiku."
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+"Vasak hiirenupp näitab valitud mängijat, parem tühistab valiku. "
+"Numbriklahvid valivad algpositsiooni, Alt+number määrab kursori alla vastava "
+"positsiooni, Del tühistab valiku."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-msgid "Click to paste, zoom out for more accuracy when pasting large areas. Use the edit menu to transform the clipboard (rotate, mirror)."
-msgstr "Kleepimiseks tee hiireklõps, suurte piirkondade kleepimiseks vähenda ekraanipilti. Lõikepuhvri sisu saad muuta (keeramine, peegeldamine) Redigeeri -menüüst."
+msgid ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
+msgstr ""
+"Kleepimiseks tee hiireklõps, suurte piirkondade kleepimiseks vähenda "
+"ekraanipilti. Lõikepuhvri sisu saad muuta (keeramine, peegeldamine) "
+"Redigeeri -menüüst."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor2.cfg:120
+#: data/themes/editor.cfg:120
 msgid "File"
 msgstr "Fail"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor2.cfg:131
+#: data/themes/editor.cfg:131
 msgid "Edit"
 msgstr "Redigeeri"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor2.cfg:141
+#: data/themes/editor.cfg:141
 msgid "Map"
 msgstr "Kaart"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor2.cfg:151
+#: data/themes/editor.cfg:151
 msgid "Window"
 msgstr "Aken"
 
 #. [label]: id=villages-icon
-#: data/themes/editor2.cfg:270
+#: data/themes/editor.cfg:270
 msgid "villages"
 msgstr "külad"
 
-#: src/editor2/action.cpp:32
+#: src/editor/action.cpp:32
 msgid "Error creating action object"
 msgstr "Tegevusobjekti loomine ebaõnnestus"
 
-#: src/editor2/action.cpp:36
+#: src/editor/action.cpp:36
 msgid "Action not implemented"
 msgstr "Tegevust ei rakendatud"
 
-#: src/editor2/editor_controller.cpp:133
+#: src/editor/editor_controller.cpp:133
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
 
-#: src/editor2/editor_controller.cpp:286
+#: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Kriitiline viga"
 
-#: src/editor2/editor_controller.cpp:311
-#: src/editor2/editor_controller.cpp:1068
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1068
 msgid "(New Map)"
 msgstr "(Uus kaart)"
 
-#: src/editor2/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Kas soovid tõesti väljuda?"
 
-#: src/editor2/editor_controller.cpp:319
-msgid "Do you really want to quit? Changes in the map since the last save will be lost."
-msgstr "Kas soovid tõesti väljuda? Peale viimast salvestust tehtud muudatused lähevad kaotsi."
+#: src/editor/editor_controller.cpp:319
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
+"Kas soovid tõesti väljuda? Peale viimast salvestust tehtud muudatused "
+"lähevad kaotsi."
 
-#: src/editor2/editor_controller.cpp:321
-msgid "Do you really want to quit? The following maps were modified and all changes since the last save will be lost:"
-msgstr "Kas soovid tõesti väljuda? Järgnevad kaardid on muudetud ning peale viimast salvestust tehtud muudatused lähevad kaotsi:"
+#: src/editor/editor_controller.cpp:321
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+"Kas soovid tõesti väljuda? Järgnevad kaardid on muudetud ning peale viimast "
+"salvestust tehtud muudatused lähevad kaotsi:"
 
-#: src/editor2/editor_controller.cpp:326
+#: src/editor/editor_controller.cpp:326
 msgid "Quit"
 msgstr "Välju"
 
-#: src/editor2/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:382
 msgid "No editor time-of-day found."
 msgstr "Redaktori päevaaega ei leitud."
 
-#: src/editor2/editor_controller.cpp:418
+#: src/editor/editor_controller.cpp:418
 msgid "Unsaved Changes"
 msgstr "Salvestamata muudatused"
 
-#: src/editor2/editor_controller.cpp:419
-msgid "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Kas soovid loobuda kõigist peale viimast salvestust tehtud muudatustest?"
+#: src/editor/editor_controller.cpp:419
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+"Kas soovid loobuda kõigist peale viimast salvestust tehtud muudatustest?"
 
-#: src/editor2/editor_controller.cpp:437
+#: src/editor/editor_controller.cpp:437
 msgid "Choose a Map to Open"
 msgstr "Vali laetav kaart"
 
-#: src/editor2/editor_controller.cpp:472
+#: src/editor/editor_controller.cpp:472
 msgid "Save the Map As"
 msgstr "Salvesta kaart kui"
 
-#: src/editor2/editor_controller.cpp:476
+#: src/editor/editor_controller.cpp:476
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "See fail on juba olemas. Kas soovid selle üle kirjutada?"
 
-#: src/editor2/editor_controller.cpp:493
+#: src/editor/editor_controller.cpp:493
 msgid "No random map generators found."
 msgstr "Kaardigeneraatorit ei leitud."
 
-#: src/editor2/editor_controller.cpp:506
-#: src/editor2/editor_controller.cpp:510
+#: src/editor/editor_controller.cpp:506 src/editor/editor_controller.cpp:510
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor2/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:525
 msgid "Choose a mask to apply"
 msgstr "Vali rakendatav mask"
 
-#: src/editor2/editor_controller.cpp:532
+#: src/editor/editor_controller.cpp:532
 msgid "Error loading mask"
 msgstr "Viga maski laadimisel"
 
-#: src/editor2/editor_controller.cpp:547
+#: src/editor/editor_controller.cpp:547
 msgid "Choose target map"
 msgstr "Vali sihtkaart"
 
-#: src/editor2/editor_controller.cpp:554
-#: src/editor2/editor_controller.cpp:718
+#: src/editor/editor_controller.cpp:554 src/editor/editor_controller.cpp:718
 msgid "Error loading map"
 msgstr "Viga kaardi laadimisel"
 
-#: src/editor2/editor_controller.cpp:632
-#: src/editor2/editor_controller.cpp:674
+#: src/editor/editor_controller.cpp:632 src/editor/editor_controller.cpp:674
 msgid "This map is already open."
 msgstr "See kaart on juba avatud."
 
-#: src/editor2/editor_controller.cpp:653
+#: src/editor/editor_controller.cpp:653
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor2/editor_controller.cpp:697
+#: src/editor/editor_controller.cpp:697
 msgid "Loaded embedded map data"
 msgstr "Laen stsenaariumist kaardi andmeid"
 
-#: src/editor2/editor_controller.cpp:698
-#: src/editor2/editor_controller.cpp:712
+#: src/editor/editor_controller.cpp:698 src/editor/editor_controller.cpp:712
 msgid "Map loaded from scenario"
 msgstr "Kaart laetud stsenaariumist"
 
-#: src/editor2/editor_controller.cpp:708
+#: src/editor/editor_controller.cpp:708
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -260,90 +281,100 @@ msgstr ""
 "Laetud viidatud kaardifail:\n"
 "$new"
 
-#: src/editor2/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1098
 msgid "Undo"
 msgstr "Võta tagasi"
 
-#: src/editor2/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1100
 msgid "Can't Undo"
 msgstr "Tühistamine pole võimalik"
 
-#: src/editor2/editor_controller.cpp:1104
+#: src/editor/editor_controller.cpp:1104
 msgid "Redo"
 msgstr "Tee uuesti"
 
-#: src/editor2/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1106
 msgid "Can't Redo"
 msgstr "Taastamine pole võimalik"
 
-#: src/editor2/editor_controller.cpp:1111
+#: src/editor/editor_controller.cpp:1111
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Uuenda maastiku üleminekuid automaatselt: Jah"
 
-#: src/editor2/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Uuenda maastiku üleminekuid automaatselt: Osaliselt"
 
-#: src/editor2/editor_controller.cpp:1118
+#: src/editor/editor_controller.cpp:1118
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Uuenda maastiku üleminekuid automaatselt: Ei"
 
-#: src/editor2/editor_map.cpp:150
-#: src/editor2/mouse_action.cpp:439
+#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:439
 msgid "Player"
 msgstr "Mängija"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "Sihtkaart on lähtekaardist erineva suurusega"
 
-#: src/editor2/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:510
 msgid "(non-core)"
 msgstr "(lisand)"
 
-#: src/editor2/editor_palettes.cpp:511
+#: src/editor/editor_palettes.cpp:511
 msgid "Will not work in game without extra care."
 msgstr "Ei tööta mängus ilma lisatoiminguteta."
 
-#: src/editor2/editor_palettes.cpp:536
+#: src/editor/editor_palettes.cpp:536
 msgid "FG"
 msgstr "esiplaan"
 
-#: src/editor2/editor_palettes.cpp:538
+#: src/editor/editor_palettes.cpp:538
 msgid "BG"
 msgstr "tagaplaan"
 
-#: src/editor2/map_context.cpp:70
+#: src/editor/map_context.cpp:70
 msgid "File not found"
 msgstr "Faili ei leitud"
 
-#: src/editor2/map_context.cpp:84
-msgid "The map file looks like a scenario, but the map_data value does not point to an existing file"
-msgstr "See kaardifail tundub olevat stsenaarium, kuid map_data -väärtus ei viita ühelegi olemasolevale failile"
+#: src/editor/map_context.cpp:84
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+"See kaardifail tundub olevat stsenaarium, kuid map_data -väärtus ei viita "
+"ühelegi olemasolevale failile"
 
-#: src/editor2/map_context.cpp:99
+#: src/editor/map_context.cpp:99
 msgid "Empty map file"
 msgstr "Tühi kaardifail"
 
-#: src/editor2/map_context.cpp:219
+#: src/editor/map_context.cpp:219
 msgid "Could not save into scenario"
 msgstr "Kaarti ei saa stsenaariumisse salvestada"
 
-#: src/editor2/map_context.cpp:226
+#: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor2/mouse_action.cpp:436
+#: src/editor/mouse_action.cpp:436
 msgid "(Player)^None"
 msgstr "Mitte keegi"
 
-#: src/editor2/mouse_action.cpp:443
+#: src/editor/mouse_action.cpp:443
 msgid "Choose player"
 msgstr "Vali mängija"
 
-#: src/editor2/mouse_action.cpp:444
-msgid "Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player's starting position."
-msgstr "Milline mängija siit alustab? Vali mängija Alt- ja numbriklahvide abil, Del-klahv tühistab valiku. Vastava numbriklahvi vajutamine viib selle mängija algpositsioonile kaardil."
+#: src/editor/mouse_action.cpp:444
+msgid ""
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
+msgstr ""
+"Milline mängija siit alustab? Vali mängija Alt- ja numbriklahvide abil, Del-"
+"klahv tühistab valiku. Vastava numbriklahvi vajutamine viib selle mängija "
+"algpositsioonile kaardil."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
@@ -351,55 +382,76 @@ msgstr "Kasutaja määratud"
 
 #~ msgid "Settings"
 #~ msgstr "Sätted"
+
 #~ msgid "Draw tiles"
 #~ msgstr "Joonista väljad"
+
 #~ msgid "Fill"
 #~ msgstr "Täida"
+
 #~ msgid "Set player's starting position"
 #~ msgstr "Määra mängija alustamiskoht"
+
 #~ msgid "Zoom in"
 #~ msgstr "Suurenda"
+
 #~ msgid "Zoom out"
 #~ msgstr "Vähenda"
+
 #~ msgid "Zoom to default view"
 #~ msgstr "Vaikimisi suurendus"
+
 #~ msgid "Toggle grid"
 #~ msgstr "Näita võrgustikku"
+
 #~ msgid "Resize the map"
 #~ msgstr "Muuda kaardi mõõtmeid"
+
 #~ msgid "Flip map"
 #~ msgstr "Pööra kaarti"
+
 #~ msgid "Delay transition updates"
 #~ msgstr "Viivita üleminekute uuendamisega"
+
 #~ msgid "Language"
 #~ msgstr "Keel"
+
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Vali eelistatud keel:"
+
 #~ msgid "Battle for Wesnoth Map Editor"
 #~ msgstr "Wesnothi Lahingu kaardiredaktor"
+
 #~ msgid "None"
 #~ msgstr "Puudub"
+
 #~ msgid "Which Player?"
 #~ msgstr "Milline mängija?"
+
 #~ msgid "Which player should start here?"
 #~ msgstr "Milline mängija peaks siit alustama?"
+
 #~ msgid ""
 #~ "Warning: Illegal characters found in the map name. Please save under a "
 #~ "different name."
 #~ msgstr ""
 #~ "Hoiatus: Kaardi nimest leiti keelatud sümboleid. Palun salvesta "
 #~ "teistsuguse nimega."
+
 #~ msgid "The file does not contain a valid map."
 #~ msgstr "See fail ei sisalda korralikku kaarti."
+
 #~ msgid "Do you want to save the map before quitting?"
 #~ msgstr "Kas soovid kaardi enne väljumist salvestada?"
+
 #~ msgid "Error: Illegal character in filename."
 #~ msgstr "Viga: Lubamatu sümbol failinimes."
+
 #~ msgid ""
 #~ "Can't resize the map, the requested size is bigger than the maximum, size="
 #~ msgstr ""
 #~ "Kaardi suurust ei saa muuta  - soovitud suurus on üle maksimumväärtuse, "
 #~ "milleks on "
+
 #~ msgid " maximum="
 #~ msgstr "maksimum = "
-

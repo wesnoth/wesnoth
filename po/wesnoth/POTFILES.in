@@ -24,10 +24,14 @@ src/ai/formula/ai.cpp
 src/ai/formula/callable_objects.cpp
 src/ai/formula/candidates.cpp
 src/ai/formula/function_table.cpp
+src/ai/formula/stage_rca_formulas.cpp
+src/ai/formula/stage_side_formulas.cpp
+src/ai/formula/stage_unit_formulas.cpp
 src/ai/game_info.cpp
 src/ai/interface.cpp
 src/ai/manager.cpp
 src/ai/registry.cpp
+src/ai/testing/aspect_attacks.cpp
 src/ai/testing/ca.cpp
 src/ai/testing.cpp
 src/ai/testing/stage_fallback.cpp
@@ -52,6 +56,7 @@ src/events.cpp
 src/filesystem.cpp
 src/floating_textbox.cpp
 src/formula.cpp
+src/formula_debugger.cpp
 src/formula_function.cpp
 src/formula_string_utils.cpp
 src/formula_tokenizer.cpp
@@ -75,6 +80,7 @@ src/leader_list.cpp
 src/loadscreen.cpp
 src/loadscreen_empty.cpp
 src/lobby_data.cpp
+src/lobby_preferences.cpp
 src/log.cpp
 src/map.cpp
 src/map_create.cpp

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-28 11:19+0200\n"
+"POT-Creation-Date: 2009-08-12 12:58+0200\n"
 "PO-Revision-Date: 2009-03-27 23:00-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
@@ -257,8 +257,8 @@ msgstr "兽人攻破河口的防线"
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:65
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:411
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:84
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:299
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:351
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:303
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:355
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:128
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:485
 msgid "Death of Malin Keshar"
@@ -538,28 +538,39 @@ msgstr "占领所有的地精的村庄"
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:69
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:415
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:88
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:303
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:355
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:359
 msgid "Death of Darken Volk"
 msgstr "Darken Volk阵亡"
 
+#. [objective]: condition=lose
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:92
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:127
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:124
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:127
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:419
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:92
+msgid "Time runs out"
+msgstr ""
+
 #. [unit]: id=Darken Volk, type=Dark Sorcerer DiD
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:104
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
 #. [trait]: id=loyal
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:112
 msgid "loyal"
 msgstr "忠诚"
 
 #. [trait]: id=loyal
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:109
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:113
 msgid "to himself"
 msgstr "对他自己"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:124
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:128
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -572,26 +583,26 @@ msgstr ""
 "很乐意让你作为我的学徒，让你可以...协助我与兽人作战。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:128
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:132
 msgid "Yes! I thirst for revenge on those creatures!"
 msgstr "同意！我渴望对这些生物复仇！"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:132
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:136
 msgid ""
 "Who knows? Perhaps removing the threat of orc raids will persuade the people "
 "of Parthyn to... welcome you home."
 msgstr "谁知道？说不定清除兽人侵袭的威胁会说服Parthyn的人民...欢迎你回家。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:136
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:140
 msgid ""
 "Perhaps. Even Drogan would have to be thankful for a summer without orc "
 "raids."
 msgstr "也许吧。甚至Drogan都会感激一个没有兽人侵袭的夏天。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:140
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:144
 msgid ""
 "A goblin village lies in this valley, just ahead. They are a bastard race "
 "born of the orcs, and help them in their wars against humans and dwarves. "
@@ -603,22 +614,22 @@ msgstr ""
 "鬼魂了。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:148
 msgid "It will be a worthwhile test of your new skills."
 msgstr "这可以慢慢试验你的新法术了。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:203
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:207
 msgid "Beware the goblin guards in the villages."
 msgstr "小心守卫这些村庄的地精。"
 
 #. [then]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:220
 msgid "Villager"
 msgstr "村民"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:236
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:240
 msgid ""
 "Ahhh... I did not realize there was a swamp near this village. Malin, I "
 "believe it would be beneficial for your training if you and I were to "
@@ -628,17 +639,17 @@ msgstr ""
 "训练有益的。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:263
 msgid "Rise, rise from the realms of death and decay!"
 msgstr "复活，复活死亡与腐朽领域的生物！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:280
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:284
 msgid "What are those things?"
 msgstr "那些是什么东西？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:284
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:288
 msgid ""
 "They are ghouls. Once, they were... evil men... murderers and outlaws. "
 "Through magic they have been transformed so their outsides match the spirits "
@@ -650,12 +661,12 @@ msgstr ""
 "吸食天然的腐物。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
 msgid "It seems cruel to turn men into such a hideous form."
 msgstr "似乎把人们变成这么丑恶的外表太残酷了。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
 msgid ""
 "In their present form they can best serve the greater good. Even now they "
 "will aid you in defeating this goblin rabble. Besides, as I said, these were "
@@ -665,81 +676,81 @@ msgstr ""
 "地精。另外，正如我所说，他们是罪大恶极之人。不惩罚他们这类人就太仁慈了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:300
 msgid "I suppose so..."
 msgstr "我想是的..."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:306
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:310
 msgid "Shaun"
 msgstr "Shaun"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:311
 msgid "Ed"
 msgstr "Ed"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:308
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:312
 msgid "Any zombies out there?"
 msgstr "外面有僵尸吗？"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:313
 msgid "Don't say that!"
 msgstr "不要说那个！"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:310
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:312
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:316
 msgid "What?"
 msgstr "哪个？"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:311
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:315
 msgid "That!"
 msgstr "那个！"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:313
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:317
 msgid "The 'zed' word. Don't say it!"
 msgstr "'zed'这个词。不要说它！"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:318
 msgid "Why not?"
 msgstr "为什么不能？"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:315
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:319
 #, fuzzy
 msgid "Because it's ridiculous!"
 msgstr "因为它是可笑的。"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:320
 msgid "Well... are there any?"
 msgstr "好...那里有吗？"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:317
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:321
 msgid "I don't see any. Maybe it's not as bad as all that."
 msgstr "我没看见什么。也许不是那么糟。"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:318
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:322
 msgid "Oh, no, wait, there they are."
 msgstr "噢，不，等等，它们在那里。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:348
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:352
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won't stand up to full orcish warriors."
 msgstr "洗劫地精的村庄就够好够不错了，但僵尸和蝙蝠怕是挡不住全部的兽人勇士。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:352
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:356
 msgid ""
 "Your training is just beginning, Malin. With the souls from these goblins "
 "now available for our use, you will see your forces grow quickly."
@@ -748,7 +759,7 @@ msgstr ""
 "量飞速上升。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:356
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:360
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr "太好了。我渴望能继续对付真正的敌人。"
 
@@ -796,12 +807,12 @@ msgid "Clear the cave of enemies"
 msgstr "清理洞内的敌人"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:143
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:147
 msgid "Watchman"
 msgstr "哨兵"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:167
 msgid ""
 "Winter comes on fast, and we need a sheltered place to spend it. This cave "
 "looks promising, but from the tracks in and out several bands of outlaws "
@@ -811,7 +822,7 @@ msgstr ""
 "的足迹看得出一伙罪犯已经占据了这里。你该把他们清理掉以让我们可以安全的使用。"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:179
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:183
 msgid ""
 "Be careful when imprisoning a soul and use all your might to retain control "
 "over it or it might attempt to break free and destroy you!"
@@ -820,19 +831,19 @@ msgstr ""
 "毁了你！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:187
 msgid "I... I will try."
 msgstr "我... 我试试。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:204
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:208
 msgid ""
 "Dwarves! They have often been our allies against the orc hordes. Surely they "
 "will allow us to winter with them."
 msgstr "矮人！他们经常和我们联盟对付兽人部落。他们会允许我们和他们一起过冬。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:213
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:217
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna' "
 "want tae be a walking pile o' bones."
@@ -840,12 +851,12 @@ msgstr ""
 "两个死灵法师在洞口！取出你们的斧头，伙计们，如果你不想做个行走的骷髅架。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:217
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:221
 msgid "Or not. Why do they hate us so much?"
 msgstr "不要。为什么他们这么恨我们？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:221
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:225
 msgid ""
 "People fear that which they don't understand, and death, after all, is the "
 "greatest mystery. Those who dare to investigate that mystery are bound to "
@@ -858,12 +869,12 @@ msgstr ""
 "人民会重新喜欢你的。现在，这些洞中居民并没给我们选择的余地。"
 
 #. [event]: type=Ghost side 4}
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:248
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:252
 msgid "Tortured Soul"
 msgstr "被折磨的灵魂"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:254
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:258
 msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
@@ -872,7 +883,7 @@ msgstr ""
 "我的行为而付出代价！"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:258
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:262
 msgid ""
 "Fool boy! Your will must be stronger or you will never be able to control "
 "your soldiers well enough to face the orcs. Many are the young necromancers "
@@ -883,19 +894,19 @@ msgstr ""
 "灵法师就死于他们奴仆们的叛乱中。他会无情的攻击你。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
 msgid "But why are they attacking me? And what should I do?!?"
 msgstr "但为什么他们攻击我？我现在该怎么做？！？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:270
 msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
 msgstr "快速摧毁这个叛乱者会变的好点。等等，他要开始转变你剩余的部队来对付你。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:301
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:305
 msgid ""
 "I think I've got the rest of them under control now. That was a close call."
 msgstr "我想我现在已经控制住剩下的灵魂了。那是个严密。"
@@ -951,14 +962,14 @@ msgid "Kill the orc leaders"
 msgstr "击败众兽人将领"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:148
 msgid ""
 "Orcs block the way out of the mountain pass. Destroy them, and we will move "
 "on to bigger targets."
 msgstr "兽人封锁了山路的出口。摧毁他们，我们还要继续对付更大的目标。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:148
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:152
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for getting me banished from Parthyn."
@@ -967,24 +978,24 @@ msgstr ""
 "代价。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:162
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:166
 msgid "Feel my wrath, vile creature!"
 msgstr "感受我的愤怒，卑鄙的东西！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:187
 msgid "The ice doesn't look very thick..."
 msgstr "这里的冰面看起来不太厚..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:240
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:244
 msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake's bottom."
 msgstr "薄的冰层陷进了亡灵生物，被困在湖底的厚厚的泥泞里。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:248
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:252
 msgid ""
 "The weak ice gives way beneath the heavy warrior, who drowns in the frigid "
 "mountain waters."
@@ -1056,7 +1067,7 @@ msgid "K'Vark"
 msgstr "K'Vark"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:188
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:192
 msgid ""
 "Since the very founding of Wesnoth you have hounded humans at every turn. "
 "You have raided my home at every opportunity. You have trampled our fields, "
@@ -1076,7 +1087,7 @@ msgstr ""
 "将欢呼我的得胜归来。"
 
 #. [message]: speaker=Borth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:196
 msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
@@ -1085,23 +1096,23 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=P'Gareth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:196
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:200
 msgid "Ummm... unless... you are already dead, like the skeletons?"
 msgstr "恩... 除非... 你已经死了，象这骷髅一样？"
 
 #. [message]: speaker=K'Vark
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:200
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:204
 #, fuzzy
 msgid "Then, it will be time for you to die again!"
 msgstr "然后，到了你再次死亡的时候了！！！"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:304
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:308
 msgid "The last chieftain... he's escaping! The coward!"
 msgstr "最后那个酋长...他逃跑了！那个懦夫！"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:308
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:312
 msgid ""
 "Coward, yes. You must hunt him down before he can take word to the orcish "
 "council. A single chieftain, even after he gathers the survivors from this "
@@ -1111,12 +1122,12 @@ msgstr ""
 "集了战斗中的残兵，都不会给你造成什么麻烦，都在你自己了。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:312
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:316
 msgid "On my own? Is my apprenticeship over?"
 msgstr "在我自己？我的学徒身份结束了？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:320
 msgid ""
 "... Almost. The growth of your power has been truly impressive to watch. "
 "There is, however, a small favor I will ask of you. That will constitute the "
@@ -1404,47 +1415,47 @@ msgid "Malin and Darken Volk enter the Mage Lord's manor"
 msgstr "Malin和Darken Volk进入了法师领主的庄园"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:159
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:160
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:161
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:162
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:167
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:170
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:175
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:176
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:181
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:182
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:188
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:189
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:190
-msgid "Night Watchman"
-msgstr "守夜人"
-
-#. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:163
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:164
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:165
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:166
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:172
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:173
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:179
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:180
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:185
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:186
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:193
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:194
+msgid "Night Watchman"
+msgstr "守夜人"
+
+#. [event]
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:167
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:170
 msgid "Gate Guard"
 msgstr "大门守卫"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:177
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:184
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:191
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:181
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:188
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:195
 msgid "Head Trainer"
 msgstr "训练长官"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:187
 msgid "Townperson"
 msgstr "镇民"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:220
 msgid ""
 "The stolen book lies within Lord Karres's manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1457,35 +1468,35 @@ msgstr ""
 "躲避他们。我们的力量没强大到可以对付整个城市。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:220
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:224
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr "注意：只有你这次征募的才能在庄园内部战斗。"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:247
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:251
 msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
 msgstr "长官！亡灵从森林里出来了！立刻叫醒守卫！"
 
 #. [message]: speaker=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:251
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:255
 msgid "To arms, men!"
 msgstr "大家拿起武器！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:296
 msgid "Ooouuuh! It burns... burrrrnnns..."
 msgstr "噢－－！它烧着了... 烧－着－了－..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:300
 msgid "What in the name of all demons of hell was this thing?"
 msgstr "以所有地狱魔鬼的名义，那是什么东西？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:300
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:304
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
 "is brewed in a complicated and mysterious procedure only known to a few "
@@ -1495,8 +1506,8 @@ msgstr ""
 "并经常用它对付复活生物。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:342
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:371
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:346
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
 msgid "Here is the entrance! Hurry!"
 msgstr "入口在这里！快！"
 
@@ -1519,7 +1530,7 @@ msgstr "Karres领主"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:148
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:206
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:132
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:136
 msgid "Guard"
 msgstr "守卫"
 
@@ -1552,13 +1563,13 @@ msgid "Move through the passageway in the northwest leading to the great hall"
 msgstr "通过西北面的通道到达大厅"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:433
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:437
 msgid "I think I have found the passage to the great hall. Follow me quickly!"
 msgstr "我想我已经找到了通向大厅的通道。快点跟我来！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:451
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:424
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:455
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:428
 msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
@@ -1575,31 +1586,31 @@ msgid "Find the book"
 msgstr "找到书"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:108
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:109
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:110
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:137
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:138
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:139
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:140
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:112
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:113
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:114
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:141
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:142
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:143
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:144
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:145
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:146
 msgid "Guardian"
 msgstr "看守者"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:220
 msgid "I feel the book is very close, somewhere to the northwest."
 msgstr "我感觉到离书很近了，应该就在西北面某个地方。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:282
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:366
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:370
 msgid "We've got the book, but now how do we get out of here?"
 msgstr "我们已经得到书了，但现在我们怎么从这里出去呢？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:290
 msgid ""
 "There's a small tunnel in the cellar to the northeast. It will lead us far "
 "enough out of the city that we can escape pursuit."
@@ -1607,32 +1618,32 @@ msgstr ""
 "在东北面的地窖里有个小隧道。它可以让我们离城市足够远，足摆脱他们的追踪。"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:295
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:299
 msgid "Escape via the tunnel in the northeast cellar"
 msgstr "经过东北地窖的隧道逃跑"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:318
 msgid "Phew! Let's get out of here"
 msgstr "咳！让我们从这里出去。"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:347
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:351
 msgid "Escape the manor"
 msgstr "逃离庄园"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:373
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:377
 msgid "Wait, you aren't leaving me behind, are you?"
 msgstr "等等，你不会把我扔在后面吧？"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:384
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:388
 msgid "You have served me well, my apprentice."
 msgstr "你为我服务不错，我的学徒。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:388
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:392
 msgid ""
 "As he heads into the tunnel Darken Volk collapses its entrance, leaving "
 "Malin to be captured and executed by the city guards."
@@ -1640,7 +1651,7 @@ msgstr ""
 "当他自己进入地道后Darken Volk就弄塌了入口，留下Malin被城市守卫抓获并被处死。"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:403
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:407
 msgid "Phew! Let's get out of here."
 msgstr "咳！让我们离开这里。"
 
