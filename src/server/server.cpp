@@ -82,10 +82,6 @@ clock_t get_cpu_time(bool active) {
 	return buf.tms_utime + buf.tms_stime;
 }
 
-bool match_username(std::pair<network::connection, wesnothd::player> pl, const std::string& username) {
-	return pl.second.name() == username;
-}
-
 }
 
 #else
@@ -96,6 +92,13 @@ clock_t get_cpu_time(bool /*active*/) {
 }
 
 #endif
+
+namespace {
+
+bool match_username(std::pair<network::connection, wesnothd::player> pl, const std::string& username) {
+	return pl.second.name() == username;
+}
+}
 
 static lg::log_domain log_server("server");
 /**
