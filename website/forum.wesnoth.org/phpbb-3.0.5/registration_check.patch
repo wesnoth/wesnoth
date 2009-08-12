@@ -1,0 +1,123 @@
+diff --git a/includes/ucp/ucp_register.php b/includes/ucp/ucp_register.php
+index db37265..b826b9d 100644
+--- a/includes/ucp/ucp_register.php
++++ b/includes/ucp/ucp_register.php
+@@ -169,6 +169,7 @@ class ucp_register
+ 			'email'				=> strtolower(request_var('email', '')),
+ 			'email_confirm'		=> strtolower(request_var('email_confirm', '')),
+ 			'confirm_code'		=> request_var('confirm_code', ''),
++			'confirm_phrase'	=> request_var('confirm_phrase', ''), // antibot mod
+ 			'lang'				=> basename(request_var('lang', $user->lang_name)),
+ 			'tz'				=> request_var('tz', (float) $timezone),
+ 		);
+@@ -189,6 +190,7 @@ class ucp_register
+ 					array('email')),
+ 				'email_confirm'		=> array('string', false, 6, 60),
+ 				'confirm_code'		=> array('string', !$config['enable_confirm'], CAPTCHA_MIN_CHARS, CAPTCHA_MAX_CHARS),
++				'confirm_phrase'	=> array('string', false, 6, 60), // antibot mod
+ 				'tz'				=> array('num', false, -14, 14),
+ 				'lang'				=> array('match', false, '#^[a-z_\-]{2,}$#i'),
+ 			));
+@@ -255,6 +257,13 @@ class ucp_register
+ 				}
+ 			}
+ 
++			// antibot mod begin
++			if ($data['confirm_phrase'] != substr($data['username'], 0, 3) . substr($data['new_password'], -3, 3))
++			{
++				$error[] = $user->lang['CONFIRM_CODE_WRONG'];
++			}
++			// antibot mod end
++
+ 			if (!sizeof($error))
+ 			{
+ 				if ($data['new_password'] != $data['password_confirm'])
+@@ -543,6 +552,7 @@ class ucp_register
+ 			'EMAIL'				=> $data['email'],
+ 			'EMAIL_CONFIRM'		=> $data['email_confirm'],
+ 			'CONFIRM_IMG'		=> $confirm_image,
++			'CONFIRM_PHR'		=> "Enter the first three characters from your username and the last three from your password.", // antibot mod
+ 
+ 			'L_CONFIRM_EXPLAIN'			=> sprintf($user->lang['CONFIRM_EXPLAIN'], '<a href="mailto:' . htmlspecialchars($config['board_contact']) . '">', '</a>'),
+ 			'L_REG_COND'				=> $l_reg_cond,
+diff --git a/language/en/common.php b/language/en/common.php
+index 382488c..704f2aa 100644
+--- a/language/en/common.php
++++ b/language/en/common.php
+@@ -40,6 +40,7 @@ if (empty($lang) || !is_array($lang))
+ //
+ 
+ $lang = array_merge($lang, array(
++	'CONFIRM_CODE'   => 'Anti-bot confirmation code', // antibot mod
+ 	'TRANSLATION_INFO'	=> '',
+ 	'DIRECTION'			=> 'ltr',
+ 	'DATE_FORMAT'		=> '|d M Y|',	// 01 Jan 2007 (with Relative days enabled)
+diff --git a/styles/prosilver/template/ucp_register.html b/styles/prosilver/template/ucp_register.html
+index 3aeb92a..66aa631 100644
+--- a/styles/prosilver/template/ucp_register.html
++++ b/styles/prosilver/template/ucp_register.html
+@@ -51,6 +51,13 @@
+ 		<dd><input type="password" tabindex="5" name="password_confirm" id="password_confirm" size="25" value="{PASSWORD_CONFIRM}" class="inputbox autowidth" title="{L_CONFIRM_PASSWORD}" /></dd>
+ 	</dl>
+ 
++	<!-- antibot mod begin -->
++	<dl>
++		<dt><label for="confirm_phrase">{L_CONFIRM_CODE}:</label><br /><span class="gensmall">{CONFIRM_PHR}</span></dt>
++		<dd><input type="password" tabindex="5" name="confirm_phrase" id="confirm_phrase" size="25" value="" class="inputbox autowidth" title="{L_CONFIRM_CODE}" /></dd>
++	</dl>
++	<!-- antibot mod end -->
++
+ 	<hr />
+ 
+ 	<dl>
+diff --git a/styles/subsilver2/template/ucp_register.html b/styles/subsilver2/template/ucp_register.html
+index fd987f2..d3a1c37 100644
+--- a/styles/subsilver2/template/ucp_register.html
++++ b/styles/subsilver2/template/ucp_register.html
+@@ -58,6 +58,12 @@
+ 	<td class="row1"><b class="genmed">{L_CONFIRM_PASSWORD}: </b></td>
+ 	<td class="row2"><input class="post" type="password" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" /></td>
+ </tr>
++<!-- antibot mod begin -->
++<tr>
++   <td class="row1"><b class="genmed">{L_CONFIRM_CODE}: </b><br /><span class="gensmall">{CONFIRM_PHR}</span></td>
++   <td class="row2"><input class="post" type="password" name="confirm_phrase" size="25" value="" /></td>
++</tr>
++<!-- antibot mod end -->
+ <tr>
+ 	<td class="row1"><b class="genmed">{L_LANGUAGE}: </b></td>
+ 	<td class="row2"><select name="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+diff --git a/styles/wesnoth/template/ucp_register.html b/styles/wesnoth/template/ucp_register.html
+index fd987f2..d3a1c37 100644
+--- a/styles/wesnoth/template/ucp_register.html
++++ b/styles/wesnoth/template/ucp_register.html
+@@ -58,6 +58,12 @@
+ 	<td class="row1"><b class="genmed">{L_CONFIRM_PASSWORD}: </b></td>
+ 	<td class="row2"><input class="post" type="password" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" /></td>
+ </tr>
++<!-- antibot mod begin -->
++<tr>
++   <td class="row1"><b class="genmed">{L_CONFIRM_CODE}: </b><br /><span class="gensmall">{CONFIRM_PHR}</span></td>
++   <td class="row2"><input class="post" type="password" name="confirm_phrase" size="25" value="" /></td>
++</tr>
++<!-- antibot mod end -->
+ <tr>
+ 	<td class="row1"><b class="genmed">{L_LANGUAGE}: </b></td>
+ 	<td class="row2"><select name="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
+diff --git a/styles/wowgold/template/ucp_register.html b/styles/wowgold/template/ucp_register.html
+index 6a5adb8..925d729 100644
+--- a/styles/wowgold/template/ucp_register.html
++++ b/styles/wowgold/template/ucp_register.html
+@@ -78,6 +78,12 @@
+ 	<td class="row1"><b class="genmed">{L_CONFIRM_PASSWORD}: </b></td>
+ 	<td class="row2"><input class="post" type="password" name="password_confirm" size="25" value="{PASSWORD_CONFIRM}" /></td>
+ </tr>
++<!-- antibot mod begin -->
++<tr>
++   <td class="row1"><b class="genmed">{L_CONFIRM_CODE}: </b><br /><span class="gensmall">{CONFIRM_PHR}</span></td>
++   <td class="row2"><input class="post" type="password" name="confirm_phrase" size="25" value="" /></td>
++</tr>
++<!-- antibot mod end -->
+ <tr>
+ 	<td class="row1"><b class="genmed">{L_LANGUAGE}: </b></td>
+ 	<td class="row2"><select name="lang" onchange="change_language(this.value); return false;">{S_LANG_OPTIONS}</select></td>
