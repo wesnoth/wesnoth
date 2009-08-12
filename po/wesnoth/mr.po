@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-03 12:23+0200\n"
+"POT-Creation-Date: 2009-08-12 13:04+0200\n"
 "PO-Revision-Date: 2009-02-05 00:22+0530\n"
 "Last-Translator: Sujit R Jadhav <sujitrjadhav@gmail.com>\n"
 "Language-Team: Marathi <sujitrjadhav@gmail.com>\n"
@@ -4450,15 +4450,15 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:683
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:684
 #: src/multiplayer_create.cpp:84
 msgid "OK"
 msgstr "ठिक आहे."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:684
-#: src/dialogs.cpp:1187 src/dialogs.cpp:1294 src/multiplayer_connect.cpp:1023
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:685
+#: src/dialogs.cpp:1188 src/dialogs.cpp:1295 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "रद्द करा."
@@ -5348,43 +5348,43 @@ msgstr ""
 msgid "stone"
 msgstr "दगड"
 
-#: src/actions.cpp:2434
+#: src/actions.cpp:2435
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:2441
+#: src/actions.cpp:2442
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2480
+#: src/actions.cpp:2481
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2483
+#: src/actions.cpp:2484
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2488
+#: src/actions.cpp:2489
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2489
+#: src/actions.cpp:2490
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2490
+#: src/actions.cpp:2491
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2500
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -5392,7 +5392,7 @@ msgstr ""
 msgid "B"
 msgstr "बाईट्स"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1216
+#: src/addon_management.cpp:363 src/dialogs.cpp:1217
 msgid "KB"
 msgstr "केबी"
 
@@ -5526,7 +5526,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
-#: src/dialogs.cpp:644 src/menu_events.cpp:199 src/menu_events.cpp:1009
+#: src/dialogs.cpp:645 src/menu_events.cpp:199 src/menu_events.cpp:1009
 msgid "Name"
 msgstr ""
 
@@ -5630,7 +5630,7 @@ msgstr ""
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/addon_management.cpp:1035 src/dialogs.cpp:669 src/menu_events.cpp:1067
+#: src/addon_management.cpp:1035 src/dialogs.cpp:670 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
 msgid "Filter: "
 msgstr ""
@@ -5650,7 +5650,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
-#: src/dialogs.cpp:284 src/dialogs.cpp:292 src/menu_events.cpp:618
+#: src/dialogs.cpp:285 src/dialogs.cpp:293 src/menu_events.cpp:618
 #: src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr ""
@@ -5755,160 +5755,160 @@ msgstr ""
 msgid "What should our victorious unit become?"
 msgstr ""
 
-#: src/dialogs.cpp:222
+#: src/dialogs.cpp:223
 msgid "No objectives available"
 msgstr ""
 
-#: src/dialogs.cpp:248
+#: src/dialogs.cpp:249
 msgid "Save Game"
 msgstr "खेळ संचित करा"
 
-#: src/dialogs.cpp:258
+#: src/dialogs.cpp:259
 msgid "Quit Game"
 msgstr ""
 
-#: src/dialogs.cpp:263
+#: src/dialogs.cpp:264
 msgid "Ignore All"
 msgstr ""
 
-#: src/dialogs.cpp:285
+#: src/dialogs.cpp:286
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/dialogs.cpp:293
+#: src/dialogs.cpp:294
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 
-#: src/dialogs.cpp:301
+#: src/dialogs.cpp:302
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/dialogs.cpp:302 src/menu_events.cpp:606 src/playcampaign.cpp:418
+#: src/dialogs.cpp:303 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
 msgstr "नाव"
 
-#: src/dialogs.cpp:303
+#: src/dialogs.cpp:304
 msgid "Overwrite?"
 msgstr ""
 
-#: src/dialogs.cpp:340
+#: src/dialogs.cpp:341
 msgid "Do you really want to delete this game?"
 msgstr "हा खेळ नष्ट करायचा आहे?."
 
-#: src/dialogs.cpp:342
+#: src/dialogs.cpp:343
 msgid "Don't ask me again!"
 msgstr "मला परत विचारु नका!"
 
-#: src/dialogs.cpp:508
+#: src/dialogs.cpp:509
 msgid "%a %b %d %H:%M %Y"
 msgstr ""
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:525
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:539
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/dialogs.cpp:545
+#: src/dialogs.cpp:546
 msgid "Multiplayer"
 msgstr "बहुखेळाडू"
 
-#: src/dialogs.cpp:547
+#: src/dialogs.cpp:548
 msgid "Tutorial"
 msgstr ""
 
-#: src/dialogs.cpp:555 src/menu_events.cpp:592
+#: src/dialogs.cpp:556 src/menu_events.cpp:592
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:557 src/menu_events.cpp:594
+#: src/dialogs.cpp:558 src/menu_events.cpp:594
 msgid "Turn"
 msgstr "पाळी"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:560
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:562
+#: src/dialogs.cpp:563
 msgid "Difficulty: "
 msgstr "अवघडपणा"
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Version: "
 msgstr "आवृत्ती"
 
-#: src/dialogs.cpp:588 src/dialogs.cpp:604
+#: src/dialogs.cpp:589 src/dialogs.cpp:605
 msgid "%b %d %y"
 msgstr ""
 
-#: src/dialogs.cpp:594
+#: src/dialogs.cpp:595
 msgid "%H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:597
+#: src/dialogs.cpp:598
 msgid "%A, %H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:600
+#: src/dialogs.cpp:601
 msgid "%b %d"
 msgstr ""
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:629
 msgid "No Saved Games"
 msgstr ""
 
-#: src/dialogs.cpp:629
+#: src/dialogs.cpp:630
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 
-#: src/dialogs.cpp:644
+#: src/dialogs.cpp:645
 msgid "Date"
 msgstr "तारिख"
 
-#: src/dialogs.cpp:661 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:662 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "संचित खेळ सुरु करा"
 
-#: src/dialogs.cpp:662
+#: src/dialogs.cpp:663
 msgid "Choose the game to load"
 msgstr ""
 
-#: src/dialogs.cpp:676
+#: src/dialogs.cpp:677
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:680
+#: src/dialogs.cpp:681
 msgid "Cancel orders"
 msgstr "आज्ञा रद्द करा"
 
-#: src/dialogs.cpp:687
+#: src/dialogs.cpp:688
 msgid "Delete Save"
 msgstr ""
 
-#: src/dialogs.cpp:744
+#: src/dialogs.cpp:745
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:841 src/help.cpp:1242
+#: src/dialogs.cpp:842 src/help.cpp:1242
 msgid "level"
 msgstr "पातळी"
 
-#: src/dialogs.cpp:854 src/help.cpp:1362
+#: src/dialogs.cpp:855 src/help.cpp:1362
 msgid "HP: "
 msgstr "शक्ती"
 
-#: src/dialogs.cpp:857
+#: src/dialogs.cpp:858
 msgid "XP: "
 msgstr "अनुभव"
 
-#: src/dialogs.cpp:861 src/help.cpp:1363
+#: src/dialogs.cpp:862 src/help.cpp:1363
 msgid "Moves: "
 msgstr ""
 
@@ -6624,291 +6624,291 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: src/menu_events.cpp:1890
+#: src/menu_events.cpp:1891
 msgid "This command is currently unavailable."
 msgstr ""
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:2006
+#: src/menu_events.cpp:2007
 msgid " No help available."
 msgstr ""
 
-#: src/menu_events.cpp:2161
+#: src/menu_events.cpp:2162
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2165
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2168
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2169
+#: src/menu_events.cpp:2170
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2172
 msgid "Mute all observers."
 msgstr ""
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2182
 msgid "Send a message to the server admins currently online"
 msgstr ""
 
-#: src/menu_events.cpp:2183
+#: src/menu_events.cpp:2184
 msgid "Send an emotion or personal action in chat."
 msgstr ""
 
-#: src/menu_events.cpp:2186
+#: src/menu_events.cpp:2187
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2193
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2195
 msgid "Add a nick to your ignores list."
 msgstr ""
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2197
 msgid "Add a nick to your friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2199
 msgid "Remove a nick from your ignores or friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2201
 msgid "Show your ignores and friends list."
 msgstr ""
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2204
 msgid "Display version information."
 msgstr "आवृत्ती माहिती दर्शवा"
 
-#: src/menu_events.cpp:2205
+#: src/menu_events.cpp:2206
 msgid "Register your nick"
 msgstr "टोपण नावाची नोंद करा"
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2208
 msgid "Drop your nick."
 msgstr ""
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2210
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
-#: src/menu_events.cpp:2212
+#: src/menu_events.cpp:2213
 msgid "Request information about a nick."
 msgstr ""
 
-#: src/menu_events.cpp:2214
+#: src/menu_events.cpp:2215
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2339
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
 msgstr ""
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2344
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2346
 msgid "Clear chat history."
 msgstr "गप्पांची नोंद नष्ट करा"
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2348
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2351
 msgid "Save game."
 msgstr "खेळ संचित करा"
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2353
 msgid "Quit game."
 msgstr "बंद करा"
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2357
 msgid "Save and quit."
 msgstr "संचित करुन ब.द करा"
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2362
 msgid "Disable autosaves."
 msgstr "स्वयंचलित संचयन बंद करा"
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2364
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2367
 msgid "Choose next scenario"
 msgstr ""
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2370
 msgid "Turn debug mode on."
 msgstr ""
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2372
 msgid "Turn debug mode off."
 msgstr ""
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2374
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2375
+#: src/menu_events.cpp:2376
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2377
+#: src/menu_events.cpp:2378
 msgid "Set a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2379
+#: src/menu_events.cpp:2380
 msgid "Show a scenario variable."
 msgstr ""
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2382
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2386
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2388
 msgid "Create a unit."
 msgstr "मोहरा निर्माण करा"
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2390
 msgid "Toggle fog for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2392
 msgid "Toggle shroud for the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2394
 msgid "Give gold to the current player."
 msgstr ""
 
-#: src/menu_events.cpp:2395
+#: src/menu_events.cpp:2396
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2399
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2401
+#: src/menu_events.cpp:2402
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2446
+#: src/menu_events.cpp:2447
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2448 src/menu_events.cpp:2457
+#: src/menu_events.cpp:2449 src/menu_events.cpp:2458
 msgid "error"
 msgstr ""
 
-#: src/menu_events.cpp:2455
+#: src/menu_events.cpp:2456
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:2464
+#: src/menu_events.cpp:2465
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2557
 msgid "Added to ignore list: "
 msgstr "दुर्लक्षसुचित समाविष्ट"
 
-#: src/menu_events.cpp:2558 src/menu_events.cpp:2574
+#: src/menu_events.cpp:2559 src/menu_events.cpp:2575
 msgid "Invalid username: "
 msgstr "अवैध उपयोगकर्ता"
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2573
 msgid "Added to friends list: "
 msgstr "मित्रसुचित समाविष्ट"
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2586
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:2603
+#: src/menu_events.cpp:2604
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2772
+#: src/menu_events.cpp:2773
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:2801
+#: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2806
+#: src/menu_events.cpp:2807
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2843
+#: src/menu_events.cpp:2844
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2849
+#: src/menu_events.cpp:2850
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2913
+#: src/menu_events.cpp:2914
 msgid "Choose Scenario (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:2926
+#: src/menu_events.cpp:2927
 msgid "Debug mode activated!"
 msgstr ""
 
-#: src/menu_events.cpp:2929
+#: src/menu_events.cpp:2930
 msgid "Debug mode not available in network games"
 msgstr ""
 
-#: src/menu_events.cpp:2934
+#: src/menu_events.cpp:2935
 msgid "Debug mode deactivated!"
 msgstr ""
 
-#: src/menu_events.cpp:3096
+#: src/menu_events.cpp:3097
 msgid "ai"
 msgstr ""
 
-#: src/menu_events.cpp:3104 src/menu_events.cpp:3120
+#: src/menu_events.cpp:3105 src/menu_events.cpp:3121
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/menu_events.cpp:3140
+#: src/menu_events.cpp:3141
 msgid "User-Command#3"
 msgstr ""
 
@@ -7099,17 +7099,17 @@ msgstr "रिक्त"
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1679
+#: src/multiplayer_connect.cpp:1680
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1700
+#: src/multiplayer_connect.cpp:1701
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1764
+#: src/multiplayer_connect.cpp:1765
 msgid "Waiting for players to join..."
 msgstr "खेळाडू शामिल होण्याची वाट बघत आहे"
 
@@ -7397,7 +7397,7 @@ msgstr "ह्या खेळात सामिल होण्यासाठ
 msgid "Invalid Color"
 msgstr "अवैध रंग"
 
-#: src/multiplayer_ui.cpp:423
+#: src/multiplayer_ui.cpp:422
 msgid "Selected user: "
 msgstr "निवडलेला खेळाडू"
 

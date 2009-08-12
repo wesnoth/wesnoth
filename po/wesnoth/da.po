@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-03 12:23+0200\n"
+"POT-Creation-Date: 2009-08-12 13:04+0200\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -5980,15 +5980,15 @@ msgstr "Spil en kampagne"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:683
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:684
 #: src/multiplayer_create.cpp:84
 msgid "OK"
 msgstr "O.k."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
-#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:684
-#: src/dialogs.cpp:1187 src/dialogs.cpp:1294 src/multiplayer_connect.cpp:1023
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:685
+#: src/dialogs.cpp:1188 src/dialogs.cpp:1295 src/multiplayer_connect.cpp:1023
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Anullér"
@@ -7057,43 +7057,43 @@ msgstr "stærk"
 msgid "stone"
 msgstr "sten"
 
-#: src/actions.cpp:2434
+#: src/actions.cpp:2435
 msgid "Ambushed!"
 msgstr "Baghold!"
 
-#: src/actions.cpp:2441
+#: src/actions.cpp:2442
 msgid "Failed teleport! Exit not empty"
 msgstr "Mislykket teleportering! Udgang ikke tom"
 
-#: src/actions.cpp:2480
+#: src/actions.cpp:2481
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vendig enhed i syne!"
 msgstr[1] "$friends venlige enheder i syne!"
 
-#: src/actions.cpp:2483
+#: src/actions.cpp:2484
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fjendtlig enhed i syne!"
 msgstr[1] "$enemies fjendtlige enheder i syne!"
 
-#: src/actions.cpp:2488
+#: src/actions.cpp:2489
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 venlig"
 msgstr[1] "$friends venlige"
 
-#: src/actions.cpp:2489
+#: src/actions.cpp:2490
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 fjende"
 msgstr[1] "$enemies fjendtlige"
 
-#: src/actions.cpp:2490
+#: src/actions.cpp:2491
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enheder i syne! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2499
+#: src/actions.cpp:2500
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryk $hotkey for at fortsætte)"
 
@@ -7101,7 +7101,7 @@ msgstr "(tryk $hotkey for at fortsætte)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1216
+#: src/addon_management.cpp:363 src/dialogs.cpp:1217
 msgid "KB"
 msgstr "KB"
 
@@ -7244,7 +7244,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
-#: src/dialogs.cpp:644 src/menu_events.cpp:199 src/menu_events.cpp:1009
+#: src/dialogs.cpp:645 src/menu_events.cpp:199 src/menu_events.cpp:1009
 msgid "Name"
 msgstr "Navn"
 
@@ -7351,7 +7351,7 @@ msgstr "Hent kampagne"
 msgid "Choose the add-on to download."
 msgstr "Vælg kampagne til hentning."
 
-#: src/addon_management.cpp:1035 src/dialogs.cpp:669 src/menu_events.cpp:1067
+#: src/addon_management.cpp:1035 src/dialogs.cpp:670 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
 msgid "Filter: "
 msgstr "Filter: "
@@ -7372,7 +7372,7 @@ msgstr ""
 "Kunne ikke oprette de nødvendige filer for at denne kampagne kan installeres."
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
-#: src/dialogs.cpp:284 src/dialogs.cpp:292 src/menu_events.cpp:618
+#: src/dialogs.cpp:285 src/dialogs.cpp:293 src/menu_events.cpp:618
 #: src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr "Fejl"
@@ -7478,23 +7478,23 @@ msgstr "Forfrem enhed"
 msgid "What should our victorious unit become?"
 msgstr "Hvad skal enheden forfremmes til?"
 
-#: src/dialogs.cpp:222
+#: src/dialogs.cpp:223
 msgid "No objectives available"
 msgstr "Ingen tilgængelige mål"
 
-#: src/dialogs.cpp:248
+#: src/dialogs.cpp:249
 msgid "Save Game"
 msgstr "Gem spil"
 
-#: src/dialogs.cpp:258
+#: src/dialogs.cpp:259
 msgid "Quit Game"
 msgstr "Afslut spillet"
 
-#: src/dialogs.cpp:263
+#: src/dialogs.cpp:264
 msgid "Ignore All"
 msgstr "Ignorer alle"
 
-#: src/dialogs.cpp:285
+#: src/dialogs.cpp:286
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -7502,92 +7502,92 @@ msgstr ""
 "Navnet på et gemt spil må ikke indeholde kolon, skråstreg eller omvendt "
 "skråstreg. Vælg venligst et andet navn."
 
-#: src/dialogs.cpp:293
+#: src/dialogs.cpp:294
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Navnet på et gemt spil må ikke slute på ».gz«. Vælg venligst et andet navn."
 
-#: src/dialogs.cpp:301
+#: src/dialogs.cpp:302
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Filen eksisterer allerede. Vil du overskrive den?"
 
-#: src/dialogs.cpp:302 src/menu_events.cpp:606 src/playcampaign.cpp:418
+#: src/dialogs.cpp:303 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
 msgstr "Navn: "
 
-#: src/dialogs.cpp:303
+#: src/dialogs.cpp:304
 msgid "Overwrite?"
 msgstr "Overskriv?"
 
-#: src/dialogs.cpp:340
+#: src/dialogs.cpp:341
 msgid "Do you really want to delete this game?"
 msgstr "Vil du virkelig slette dette gemte spil?"
 
-#: src/dialogs.cpp:342
+#: src/dialogs.cpp:343
 msgid "Don't ask me again!"
 msgstr "Spørg ikke igen!"
 
-#: src/dialogs.cpp:508
+#: src/dialogs.cpp:509
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:525
 msgid "#(Invalid)"
 msgstr "#(Ugyldig)"
 
-#: src/dialogs.cpp:538
+#: src/dialogs.cpp:539
 msgid "Campaign: $campaign_name"
 msgstr "Kampagne: $campaign_name"
 
-#: src/dialogs.cpp:545
+#: src/dialogs.cpp:546
 msgid "Multiplayer"
 msgstr "Flerspiller"
 
-#: src/dialogs.cpp:547
+#: src/dialogs.cpp:548
 msgid "Tutorial"
 msgstr "Vejledning"
 
-#: src/dialogs.cpp:555 src/menu_events.cpp:592
+#: src/dialogs.cpp:556 src/menu_events.cpp:592
 msgid "replay"
 msgstr "omspil"
 
-#: src/dialogs.cpp:557 src/menu_events.cpp:594
+#: src/dialogs.cpp:558 src/menu_events.cpp:594
 msgid "Turn"
 msgstr "Runde"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:560
 msgid "Scenario Start"
 msgstr "Start scenario"
 
-#: src/dialogs.cpp:562
+#: src/dialogs.cpp:563
 msgid "Difficulty: "
 msgstr "Sværhedsgrad: "
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Version: "
 msgstr "Version: "
 
-#: src/dialogs.cpp:588 src/dialogs.cpp:604
+#: src/dialogs.cpp:589 src/dialogs.cpp:605
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:594
+#: src/dialogs.cpp:595
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:597
+#: src/dialogs.cpp:598
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:600
+#: src/dialogs.cpp:601
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:628
+#: src/dialogs.cpp:629
 msgid "No Saved Games"
 msgstr "Ingen gemte spil"
 
-#: src/dialogs.cpp:629
+#: src/dialogs.cpp:630
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -7597,47 +7597,47 @@ msgstr ""
 "\n"
 "(Spil gemmes automatisk når et scenarie er ovre)"
 
-#: src/dialogs.cpp:644
+#: src/dialogs.cpp:645
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:661 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:662 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "Indlæs spil"
 
-#: src/dialogs.cpp:662
+#: src/dialogs.cpp:663
 msgid "Choose the game to load"
 msgstr "Vælg spil der skal indlæses"
 
-#: src/dialogs.cpp:676
+#: src/dialogs.cpp:677
 msgid "Show replay"
 msgstr "Vis omspil"
 
-#: src/dialogs.cpp:680
+#: src/dialogs.cpp:681
 msgid "Cancel orders"
 msgstr "Anullér ordre"
 
-#: src/dialogs.cpp:687
+#: src/dialogs.cpp:688
 msgid "Delete Save"
 msgstr "Slet gemt spil"
 
-#: src/dialogs.cpp:744
+#: src/dialogs.cpp:745
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:841 src/help.cpp:1242
+#: src/dialogs.cpp:842 src/help.cpp:1242
 msgid "level"
 msgstr "level"
 
-#: src/dialogs.cpp:854 src/help.cpp:1362
+#: src/dialogs.cpp:855 src/help.cpp:1362
 msgid "HP: "
 msgstr "L: "
 
-#: src/dialogs.cpp:857
+#: src/dialogs.cpp:858
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:861 src/help.cpp:1363
+#: src/dialogs.cpp:862 src/help.cpp:1363
 msgid "Moves: "
 msgstr "Bevægelser: "
 
@@ -8380,56 +8380,56 @@ msgstr "Kun hold"
 msgid "Search"
 msgstr "Søg"
 
-#: src/menu_events.cpp:1890
+#: src/menu_events.cpp:1891
 #, fuzzy
 msgid "This command is currently unavailable."
 msgstr "Ingen kampagner er tilgængelige.\n"
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
 
-#: src/menu_events.cpp:2006
+#: src/menu_events.cpp:2007
 #, fuzzy
 msgid " No help available."
 msgstr "Ingen tilgængelige mål"
 
-#: src/menu_events.cpp:2161
+#: src/menu_events.cpp:2162
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/menu_events.cpp:2164
+#: src/menu_events.cpp:2165
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2168
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2169
+#: src/menu_events.cpp:2170
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/menu_events.cpp:2171
+#: src/menu_events.cpp:2172
 msgid "Mute all observers."
 msgstr ""
 
-#: src/menu_events.cpp:2181
+#: src/menu_events.cpp:2182
 msgid "Send a message to the server admins currently online"
 msgstr ""
 
-#: src/menu_events.cpp:2183
+#: src/menu_events.cpp:2184
 #, fuzzy
 msgid "Send an emotion or personal action in chat."
 msgstr "Send en følelsesmæssig eller personlig besked. Anvend: /me <message>"
 
-#: src/menu_events.cpp:2186
+#: src/menu_events.cpp:2187
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
@@ -8437,144 +8437,144 @@ msgstr ""
 "Sender en privat besked. Du kan ikke sende beskeder til spillere som "
 "kontrollerer en side i spillet."
 
-#: src/menu_events.cpp:2192
+#: src/menu_events.cpp:2193
 msgid "Change the log level of a log domain."
 msgstr "Ændre logniveauet på et logdomæne."
 
-#: src/menu_events.cpp:2194
+#: src/menu_events.cpp:2195
 msgid "Add a nick to your ignores list."
 msgstr "Tilføj spiller til din ignorerliste."
 
-#: src/menu_events.cpp:2196
+#: src/menu_events.cpp:2197
 msgid "Add a nick to your friends list."
 msgstr "Tilføj spiller til din venneliste."
 
-#: src/menu_events.cpp:2198
+#: src/menu_events.cpp:2199
 msgid "Remove a nick from your ignores or friends list."
 msgstr "Fjern spiller fra din ignorer- eller venneliste."
 
-#: src/menu_events.cpp:2200
+#: src/menu_events.cpp:2201
 msgid "Show your ignores and friends list."
 msgstr "Vis din ignorer- eller venneliste."
 
-#: src/menu_events.cpp:2203
+#: src/menu_events.cpp:2204
 msgid "Display version information."
 msgstr "Vis versioninformation."
 
-#: src/menu_events.cpp:2205
+#: src/menu_events.cpp:2206
 msgid "Register your nick"
 msgstr "Registrer dit spillernavn"
 
-#: src/menu_events.cpp:2207
+#: src/menu_events.cpp:2208
 msgid "Drop your nick."
 msgstr "Slet dit spillernavn."
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2210
 #, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr "Opdater detaljer for dit brugernavn. For mulige detaljer se /details"
 
-#: src/menu_events.cpp:2212
+#: src/menu_events.cpp:2213
 #, fuzzy
 msgid "Request information about a nick."
 msgstr "Indhent information om en bruger."
 
-#: src/menu_events.cpp:2214
+#: src/menu_events.cpp:2215
 #, fuzzy
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Indhent en liste over detaljer du kan indstille for dit registrerede "
 "brugernavn."
 
-#: src/menu_events.cpp:2338
+#: src/menu_events.cpp:2339
 msgid "Refresh gui."
 msgstr ""
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "Switch a side to/from AI control."
 msgstr "Skift en side til/fra computerkontrol."
 
-#: src/menu_events.cpp:2343
+#: src/menu_events.cpp:2344
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
-#: src/menu_events.cpp:2345
+#: src/menu_events.cpp:2346
 msgid "Clear chat history."
 msgstr "Slet snakkehistorie."
 
-#: src/menu_events.cpp:2347
+#: src/menu_events.cpp:2348
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
-#: src/menu_events.cpp:2350
+#: src/menu_events.cpp:2351
 msgid "Save game."
 msgstr "Gem spil."
 
-#: src/menu_events.cpp:2352
+#: src/menu_events.cpp:2353
 msgid "Quit game."
 msgstr "Afslut spillet."
 
-#: src/menu_events.cpp:2356
+#: src/menu_events.cpp:2357
 msgid "Save and quit."
 msgstr "Gem og afslut."
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 msgid "Ignore replay errors."
 msgstr ""
 
-#: src/menu_events.cpp:2361
+#: src/menu_events.cpp:2362
 msgid "Disable autosaves."
 msgstr "Slå automatisk gemning fra."
 
-#: src/menu_events.cpp:2363
+#: src/menu_events.cpp:2364
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
-#: src/menu_events.cpp:2366
+#: src/menu_events.cpp:2367
 msgid "Choose next scenario"
 msgstr "Vælg næste scenarie"
 
-#: src/menu_events.cpp:2369
+#: src/menu_events.cpp:2370
 msgid "Turn debug mode on."
 msgstr "Slå fejlfindingstilstand til."
 
-#: src/menu_events.cpp:2371
+#: src/menu_events.cpp:2372
 msgid "Turn debug mode off."
 msgstr "Slå fejlfindingstilstand fra."
 
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2374
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 
-#: src/menu_events.cpp:2375
+#: src/menu_events.cpp:2376
 msgid "Set or show alias to a command"
 msgstr ""
 
-#: src/menu_events.cpp:2377
+#: src/menu_events.cpp:2378
 msgid "Set a scenario variable."
 msgstr "Indstil en scenarievariabel."
 
-#: src/menu_events.cpp:2379
+#: src/menu_events.cpp:2380
 msgid "Show a scenario variable."
 msgstr "Vis en scenarievariabel."
 
-#: src/menu_events.cpp:2381
+#: src/menu_events.cpp:2382
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
-#: src/menu_events.cpp:2385
+#: src/menu_events.cpp:2386
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr "Fjern et karaktertræk fra en enhed. (Virker ikke endnu.)"
 
-#: src/menu_events.cpp:2387
+#: src/menu_events.cpp:2388
 msgid "Create a unit."
 msgstr "Opret en enhed."
 
-#: src/menu_events.cpp:2389
+#: src/menu_events.cpp:2390
 msgid "Toggle fog for the current player."
 msgstr "Slå tåge til/fra for den aktuelle spiller."
 
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2392
 #, fuzzy
 msgid "Toggle shroud for the current player."
 msgstr ""
@@ -8582,59 +8582,59 @@ msgstr ""
 "Skift mellem tåge/sløring for den nuværende side.\n"
 "\n"
 
-#: src/menu_events.cpp:2393
+#: src/menu_events.cpp:2394
 msgid "Give gold to the current player."
 msgstr "Giv guld til den nuværende spiller."
 
-#: src/menu_events.cpp:2395
+#: src/menu_events.cpp:2396
 msgid "Fire a game event."
 msgstr ""
 
-#: src/menu_events.cpp:2398
+#: src/menu_events.cpp:2399
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2401
+#: src/menu_events.cpp:2402
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
-#: src/menu_events.cpp:2446
+#: src/menu_events.cpp:2447
 msgid "Unknown debug level: '$level'."
 msgstr "Ukendt fejlsøgningsniveau: '$level'."
 
-#: src/menu_events.cpp:2448 src/menu_events.cpp:2457
+#: src/menu_events.cpp:2449 src/menu_events.cpp:2458
 msgid "error"
 msgstr "fejl"
 
-#: src/menu_events.cpp:2455
+#: src/menu_events.cpp:2456
 msgid "Unknown debug domain: '$domain'."
 msgstr "Ukendt fejlfindingsdomæne: '$domain'."
 
-#: src/menu_events.cpp:2464
+#: src/menu_events.cpp:2465
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Skiftet domæne: '$domain' til niveau: '$level'."
 
-#: src/menu_events.cpp:2556
+#: src/menu_events.cpp:2557
 msgid "Added to ignore list: "
 msgstr "Tilføjet til ignorerliste: "
 
-#: src/menu_events.cpp:2558 src/menu_events.cpp:2574
+#: src/menu_events.cpp:2559 src/menu_events.cpp:2575
 msgid "Invalid username: "
 msgstr "Ugyldig brugernavn: "
 
-#: src/menu_events.cpp:2572
+#: src/menu_events.cpp:2573
 msgid "Added to friends list: "
 msgstr "Tilføjet venneliste: "
 
-#: src/menu_events.cpp:2585
+#: src/menu_events.cpp:2586
 msgid "Removed from list: "
 msgstr "Fjernet fra liste: "
 
-#: src/menu_events.cpp:2603
+#: src/menu_events.cpp:2604
 msgid "There are no players on your friends or ignore list."
 msgstr "Der er ingen spillere på din venne- eller ignorerliste."
 
-#: src/menu_events.cpp:2772
+#: src/menu_events.cpp:2773
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finde mærkat eller enhed med strengen '$search'."
 
@@ -8646,47 +8646,47 @@ msgstr "Kunne ikke finde mærkat eller enhed med strengen '$search'."
 # standarder end bare at gøre det til et verbum :).
 # Et nogenlunde forslag ville måske være: Kan ikke udføre
 # droid-kommandoen for den ugyldige side: "$side".
-#: src/menu_events.cpp:2801
+#: src/menu_events.cpp:2802
 msgid "Can't droid invalid side: '$side'."
 msgstr "Kan ikke udføre droid-kommandoen for den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:2806
+#: src/menu_events.cpp:2807
 msgid "Can't droid networked side: '$side'."
 msgstr "Kan ikke udføre droid-kommandoen for netværksside: '$side'."
 
-#: src/menu_events.cpp:2843
+#: src/menu_events.cpp:2844
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Kan ikke ændre kontrol på den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:2849
+#: src/menu_events.cpp:2850
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan ikke ændre kontrol på side der er udover grænserne: '$side'."
 
-#: src/menu_events.cpp:2913
+#: src/menu_events.cpp:2914
 msgid "Choose Scenario (Debug!)"
 msgstr "Vælg scenarie (fejlsøgning!)"
 
-#: src/menu_events.cpp:2926
+#: src/menu_events.cpp:2927
 msgid "Debug mode activated!"
 msgstr "Fejlfinding aktiveret!"
 
-#: src/menu_events.cpp:2929
+#: src/menu_events.cpp:2930
 msgid "Debug mode not available in network games"
 msgstr "Fejlsøgningstilstand ikke tilgængelig i netværksspil"
 
-#: src/menu_events.cpp:2934
+#: src/menu_events.cpp:2935
 msgid "Debug mode deactivated!"
 msgstr "Fejlfinding deaktiveret!"
 
-#: src/menu_events.cpp:3096
+#: src/menu_events.cpp:3097
 msgid "ai"
 msgstr "comp"
 
-#: src/menu_events.cpp:3104 src/menu_events.cpp:3120
+#: src/menu_events.cpp:3105 src/menu_events.cpp:3121
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:3140
+#: src/menu_events.cpp:3141
 msgid "User-Command#3"
 msgstr "Brugerkommando#3"
 
@@ -8880,11 +8880,11 @@ msgstr "Tom"
 msgid "This is not a multiplayer save"
 msgstr "Dette er ikke et flerspiller gemt spil"
 
-#: src/multiplayer_connect.cpp:1679
+#: src/multiplayer_connect.cpp:1680
 msgid "Cannot find era $era"
 msgstr "Kan ikke finde æra $era"
 
-#: src/multiplayer_connect.cpp:1700
+#: src/multiplayer_connect.cpp:1701
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8892,7 +8892,7 @@ msgstr ""
 "Sejr:\n"
 "@Besejr fjendtlige leder(e)"
 
-#: src/multiplayer_connect.cpp:1764
+#: src/multiplayer_connect.cpp:1765
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere kobler op..."
 
@@ -9184,7 +9184,7 @@ msgstr "Det kræver en adgangskode at slutte sig til dette spil."
 msgid "Invalid Color"
 msgstr "Ugyldig farve"
 
-#: src/multiplayer_ui.cpp:423
+#: src/multiplayer_ui.cpp:422
 #, fuzzy
 msgid "Selected user: "
 msgstr "Vælg enhed:"
