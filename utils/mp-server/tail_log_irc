@@ -47,13 +47,13 @@ PARAMS="-n 0 -F"
 LOG="$HOME/servers/$VERSION/$FILE"
 #[ -r "$LOG" ] || die "Server log file '$LOG' is not readable!"
 
-FILTER=logfilter_irc$MOD$LOGGED$COLOR
+FILTER=logfilter_irc$LOGGED$COLOR
 
 PREV=
 case $VERSION in *prev) PREV=PREV: ;; esac
 
 PREFIX=
-[ -n "$MOD" ] && PREFIX="$VERSION:"
+[ -n "$MOD" ] && PREFIX="$VERSION:" && FILTER=logfilter_irc$MOD
 PREFIX="$PREFIX$PREV$OLD"
 [ -n "$PREFIX" ] && PREFIX=" | sed --unbuffered \"s/^/$PREFIX &/\""
 
