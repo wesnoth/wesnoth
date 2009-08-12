@@ -77,7 +77,7 @@ formula_debugger::~formula_debugger()
 }
 
 
-void msg(int counter, const char *act, const char *name, const char *formula_str, const char *to="", const char *result = "")
+static void msg(int counter, const char *act, const char *name, const char *formula_str, const char *to="", const char *result = "")
 {
 	DBG_FDB << "#" << counter << act << std::endl <<"     \""<< name << "\"='" << formula_str << "' " << to << result << std::endl;
 }
