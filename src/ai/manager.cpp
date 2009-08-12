@@ -115,7 +115,7 @@ interface& holder::get_ai_ref()
 }
 
 
-void holder::modify_ai_config_old( const config::const_child_itors &ai_parameters )
+void holder::modify_ai_config_old( const config::const_child_itors &/*ai_parameters*/)
 {
 	// only handle aspects
 	// transform ai_parameters to new-style config
