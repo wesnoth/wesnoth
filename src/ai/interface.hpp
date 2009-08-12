@@ -92,8 +92,7 @@ public:
 		return *ai_factories;
 	}
 
-	/* cfg is commented out so far, because ai parameter handling is a mess atm */
-	virtual ai_ptr get_new_instance( default_ai_context &context, const config &cfg) = 0;
+	virtual ai_ptr get_new_instance( ai_context &context, const config &cfg) = 0;
 
 	ai_factory( const std::string &name )
 	{
@@ -113,7 +112,7 @@ public:
 	{
 	}
 
-	virtual ai_ptr get_new_instance( default_ai_context &context, const config &cfg){
+	virtual ai_ptr get_new_instance( ai_context &context, const config &cfg){
 		ai_ptr a(new AI(context,cfg));
 		a->on_create();
 		return a;

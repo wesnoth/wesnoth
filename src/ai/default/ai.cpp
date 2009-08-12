@@ -252,7 +252,7 @@ private:
 #endif
 
 
-ai_default::ai_default(default_ai_context &context, const config &cfg) :
+ai_default::ai_default(ai_context &context, const config &cfg) :
 	game_logic::formula_callable(),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
@@ -263,15 +263,11 @@ ai_default::ai_default(default_ai_context &context, const config &cfg) :
 	teams_(context.get_info().teams),
 	tod_manager_(context.get_info().tod_manager_),
 	consider_combat_(true),
-	additional_targets_(),
-	unit_movement_scores_(),
-	not_recommended_units_(),
-	unit_combat_scores_(),
 	recruiting_preferred_(0),
 	formula_ai_()
 {
 	add_ref();
-	init_default_ai_context_proxy(context);
+	init_ai_context_proxy(context);
 }
 
 ai_default::~ai_default(){
@@ -287,10 +283,7 @@ void ai_default::new_turn()
 	invalidate_defensive_position_cache();
 	threats_found_ = false;
 	consider_combat_ = true;
-	additional_targets_.clear();
-	unit_movement_scores_.clear();
-	not_recommended_units_.clear();
-	unit_combat_scores_.clear();
+	clear_additional_targets();
 	invalidate_keeps_cache();
 	unit_stats_cache().clear();
 }
@@ -310,8 +303,18 @@ config ai_default::to_config() const
 }
 
 
+void ai_default_recruitment_stage::on_create() {
+	stage::on_create();
+}
 
-bool ai_default::recruit_usage(const std::string& usage)
+config ai_default_recruitment_stage::to_config() const
+{
+	config cfg = stage::to_config();
+	return cfg;
+}
+
+
+bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 {
 	raise_user_interact();
 
@@ -1080,8 +1083,8 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 	for(;;) {
 		if(targets.empty()) {
 			targets = find_targets(leader,enemy_dstsrc);
-			targets.insert(targets.end(),additional_targets_.begin(),
-			                             additional_targets_.end());
+			targets.insert(targets.end(),additional_targets().begin(),
+				       additional_targets().end());
 			LOG_AI << "Found " << targets.size() << " targets\n";
 			if(targets.empty()) {
 				return false;
@@ -1188,9 +1191,10 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 	return false;
 }
 
-int ai_default::average_resistance_against(const unit_type& a, const unit_type& b) const
+int ai_default_recruitment_stage::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
+	gamemap &map_ = get_info().map;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
 		map_.get_weighted_terrain_frequencies();
 
@@ -1266,7 +1270,7 @@ int ai_default::average_resistance_against(const unit_type& a, const unit_type& 
 	return sum/weight_sum;
 }
 
-int ai_default::compare_unit_types(const unit_type& a, const unit_type& b) const
+int ai_default_recruitment_stage::compare_unit_types(const unit_type& a, const unit_type& b) const
 {
 	const int a_effectiveness_vs_b = average_resistance_against(b,a);
 	const int b_effectiveness_vs_a = average_resistance_against(a,b);
@@ -1277,7 +1281,7 @@ int ai_default::compare_unit_types(const unit_type& a, const unit_type& b) const
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;
 }
 
-void ai_default::analyze_potential_recruit_combat()
+void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 {
 	if(unit_combat_scores_.empty() == false ||
 			get_recruitment_ignore_bad_combat()) {
@@ -1288,6 +1292,7 @@ void ai_default::analyze_potential_recruit_combat()
 
 	// Records the best combat analysis for each usage type.
 	std::map<std::string,int> best_usage;
+	unit_map &units_ = get_info().units;
 
 	const std::set<std::string>& recruits = current_team().recruits();
 	std::set<std::string>::const_iterator i;
@@ -1348,7 +1353,7 @@ namespace {
 struct target_comparer_distance {
 	target_comparer_distance(const map_location& loc) : loc_(loc) {}
 
-	bool operator()(const ai_default::target& a, const ai_default::target& b) const {
+	bool operator()(const ai::target& a, const ai::target& b) const {
 		return distance_between(a.loc,loc_) < distance_between(b.loc,loc_);
 	}
 
@@ -1358,8 +1363,25 @@ private:
 
 }
 
-void ai_default::analyze_potential_recruit_movements()
+
+ai_default_recruitment_stage::ai_default_recruitment_stage(ai_context &context, const config &cfg)
+	: stage(context,cfg),
+	  cfg_(cfg),
+	  unit_movement_scores_(),
+	  not_recommended_units_(),
+	  unit_combat_scores_()
 {
+}
+
+
+ai_default_recruitment_stage::~ai_default_recruitment_stage()
+{
+}
+
+void ai_default_recruitment_stage::analyze_potential_recruit_movements()
+{
+	unit_map &units_ = get_info().units;
+	gamemap &map_ = get_info().map;
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {
 		return;
@@ -1370,7 +1392,7 @@ void ai_default::analyze_potential_recruit_movements()
 		return;
 	}
 
-	const location& start = nearest_keep(leader->first);
+	const map_location& start = nearest_keep(leader->first);
 	if(map_.on_board(start) == false) {
 		return;
 	}
@@ -1404,7 +1426,7 @@ void ai_default::analyze_potential_recruit_movements()
 		// const temporary_unit_placer placer(units,start,temp_unit);
 
 		// pathfinding ignoring other units and terrain defense
-		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,teams_,map_,true,true);
+		const shortest_path_calculator calc(temp_unit,current_team(),get_info().units,get_info().teams,map_,true,true);
 
 		int cost = 0;
 		int targets_reached = 0;
@@ -1469,31 +1491,25 @@ void ai_default::analyze_potential_recruit_movements()
 
 bool ai_default::do_recruitment()
 {
+	raise_user_interact();
+	stage_ptr r = get_recruitment(*this);
+	if (r) {
+		return r->play_stage();
+	}
+	ERR_AI << "no recruitment aspect - skipping recruitment" << std::endl;
+	return false;    
+}
+
+
+bool ai_default_recruitment_stage::do_play_stage()
+{
+	const unit_map &units_ = get_info().units;
 	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end()) {
 		return false;
 	}
 
-	raise_user_interact();
-	// Let formula ai to do recruiting first
-	//if (get_recursion_count()<recursion_counter::MAX_COUNTER_VALUE)
-	//{
-	//	if (!cfg_["recruitment"].empty()){
-	//		if (!formula_ai_){
-	//			formula_ai_ptr_ = manager::create_transient_ai(manager::AI_TYPE_FORMULA_AI, cfg_,this);
-	//			formula_ai_ = static_cast<formula_ai*> (formula_ai_ptr_.get());
-	//		}
-
-	//		assert(formula_ai_!=NULL);
-
-	//		if (formula_ai_->do_recruitment()) {
-	//			LOG_AI << "Recruitment done by formula_ai\n";
-	//			return true;
-	//		}
-	//	}
-	//}
-
-	const location& start_pos = nearest_keep(leader->first);
+	const map_location& start_pos = nearest_keep(leader->first);
 
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
@@ -1505,16 +1521,16 @@ bool ai_default::do_recruitment()
 		// We recruit the initial allocation of scouts
 		// based on how many neutral villages there are
 		// that are closer to us than to other keeps.
-		const std::vector<location>& villages = map_.villages();
-		for(std::vector<location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-			const int owner = village_owner(*v,teams_);
+		const std::vector<map_location>& villages = get_info().map.villages();
+		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
+			const int owner = village_owner(*v,get_info().teams);
 			if(owner == -1) {
 				const size_t distance = distance_between(start_pos,*v);
 
 				bool closest = true;
-				for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
-					const int index = i - teams_.begin() + 1;
-					const map_location& loc = map_.starting_position(index);
+				for(std::vector<team>::const_iterator i = get_info().teams.begin(); i != get_info().teams.end(); ++i) {
+					const int index = i - get_info().teams.begin() + 1;
+					const map_location& loc = get_info().map.starting_position(index);
 					if(loc != start_pos && distance_between(loc,*v) < distance) {
 						closest = false;
 						break;
@@ -1575,6 +1591,7 @@ bool ai_default::do_recruitment()
 
 	return ret;
 }
+
 
 void ai_default::move_leader_to_goals( const move_map& enemy_dstsrc)
 {

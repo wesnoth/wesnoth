@@ -34,6 +34,19 @@
 //============================================================================
 namespace ai {
 
+
+struct target {
+	enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
+
+	target(const map_location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
+	{}
+	map_location loc;
+	double value;
+
+	TYPE type;
+};
+
+
 class attack_analysis : public game_logic::formula_callable
 {
 public:
@@ -135,7 +148,20 @@ public:
 	virtual ~default_ai_context();
 
 
+	virtual const std::vector<target>& additional_targets() const = 0;
+
+
+	virtual void add_target(const target& t) const = 0;
+
+
+	virtual void clear_additional_targets() const = 0;
+
+
 	virtual default_ai_context& get_default_ai_context() = 0;
+
+
+	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
+			const move_map& enemy_dstsrc) = 0;
 
 
 	virtual bool multistep_move_possible(const map_location& from,
@@ -167,9 +193,34 @@ public:
 	virtual	~default_ai_context_proxy();
 
 
+	virtual const std::vector<target>& additional_targets() const
+	{
+		return target_->additional_targets();
+	}
+
+
+	virtual void add_target(const target& t) const
+	{
+		target_->add_target(t);
+	}
+
+
+	virtual void clear_additional_targets() const
+	{
+		target_->clear_additional_targets();
+	}
+
+
 	virtual default_ai_context& get_default_ai_context()
 	{
 		return target_->get_default_ai_context();
+	}
+
+
+	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
+			const move_map& enemy_dstsrc)
+	{
+		return target_->find_targets(leader,enemy_dstsrc);
 	}
 
 
@@ -208,7 +259,7 @@ public:
 
 
 	default_ai_context_impl(readwrite_context &context)
-		: recursion_counter_(context.get_recursion_count())
+		: recursion_counter_(context.get_recursion_count()),additional_targets_()
 	{
 		init_readwrite_context_proxy(context);
 	}
@@ -220,10 +271,23 @@ public:
 	virtual default_ai_context& get_default_ai_context();
 
 
+	virtual const std::vector<target>& additional_targets() const;
+
+
+	virtual void add_target(const target& t) const;
+
+
+	virtual void clear_additional_targets() const;
+	
+
 	int get_recursion_count() const
 	{
 		return recursion_counter_.get_count();
 	}
+
+
+	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
+						 const move_map& enemy_dstsrc);
 
 
 	virtual bool multistep_move_possible(const map_location& from,
@@ -239,6 +303,7 @@ public:
 
 private:
 	recursion_counter recursion_counter_;
+	mutable std::vector<target> additional_targets_;//@todo: refactor this
 
 
 };

@@ -24,7 +24,7 @@
 #include "../actions.hpp"
 #include "../interface.hpp"
 #include "../contexts.hpp"
-
+#include "../composite/stage.hpp"
 #include "../../formula_callable.hpp"
 
 #ifdef _MSC_VER
@@ -52,11 +52,64 @@ private:
 	recursion_counter recursion_counter_;
 };
 
-class ai_default : public virtual default_ai_context_proxy, public interface, public game_logic::formula_callable {
+class ai_default_recruitment_stage : public stage {
+public:
+	ai_default_recruitment_stage(ai_context &context, const config &cfg);
+	virtual ~ai_default_recruitment_stage();
+	void on_create();
+	bool do_play_stage();
+	config to_config() const;
+private:
+	config cfg_;
+
+	virtual bool recruit_usage(const std::string& usage);
+
+	/**
+	 * Analyze all the units that this side can recruit
+	 * and rate their movement types.
+	 * Ratings will be placed in 'unit_movement_scores_',
+	 * with lower scores being better,
+	 * and the lowest possible rating being '10'.
+	 */
+	virtual void analyze_potential_recruit_movements();
+
+	std::map<std::string,int> unit_movement_scores_;
+	std::set<std::string> not_recommended_units_;
+
+	/**
+	 * Analyze all the units that this side can recruit
+	 * and rate their fighting suitability against enemy units.
+	 * Ratings will be placed in 'unit_combat_scores_',
+	 * with a '0' rating indicating that the unit is 'average' against enemy units,
+	 * negative ratings meaning they are poorly suited,
+	 * and positive ratings meaning they are well suited.
+	 */
+	virtual void analyze_potential_recruit_combat();
+
+	std::map<std::string,int> unit_combat_scores_;
+
+	/**
+	 * Rates two unit types for their suitability against each other.
+	 * Returns 0 if the units are equally matched,
+	 * a positive number if a is suited against b,
+	 * and a negative number if b is suited against a.
+	 */
+	virtual int compare_unit_types(const unit_type& a, const unit_type& b) const;
+
+	/**
+	 * calculates the average resistance unit type a has against the attacks of
+	 * unit type b.
+	 */
+	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
+
+	
+};
+
+class ai_default : public virtual ai_context_proxy, public interface, public game_logic::formula_callable {
 public:
 	typedef map_location location;//will get rid of this later
 
-	ai_default(default_ai_context &context, const config &cfg);
+	ai_default(ai_context &context, const config &cfg);
 	virtual ~ai_default();
 
 	virtual void play_turn();
@@ -65,16 +118,6 @@ public:
 	virtual config to_config() const;
 	void switch_side(side_number side);
 
-	struct target {
-		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
-
-		target(const location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
-		{}
-		location loc;
-		double value;
-
-		TYPE type;
-	};
 
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
@@ -117,8 +160,6 @@ protected:
 	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
 
 
-	virtual bool recruit_usage(const std::string& usage);
-
 	virtual bool desperate_attack(const map_location &loc);
 
 	void remove_unit_from_moves(const map_location& u, move_map& srcdst, move_map& dstsrc);
@@ -156,8 +197,6 @@ protected:
 
 	bool is_accessible(const location& loc, const move_map& dstsrc) const;
 
-	virtual std::vector<target> find_targets(unit_map::const_iterator leader,
-			const move_map& enemy_dstsrc);
 
 	/**
 	 * Function to form a group of units suitable for moving along the route, 'route'.
@@ -192,47 +231,6 @@ protected:
 	std::vector<team>& teams_;
 	tod_manager& tod_manager_;
 	bool consider_combat_;
-	std::vector<target> additional_targets_;
-
-	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
-
-	/**
-	 * Analyze all the units that this side can recruit
-	 * and rate their movement types.
-	 * Ratings will be placed in 'unit_movement_scores_',
-	 * with lower scores being better,
-	 * and the lowest possible rating being '10'.
-	 */
-	virtual void analyze_potential_recruit_movements();
-
-	std::map<std::string,int> unit_movement_scores_;
-	std::set<std::string> not_recommended_units_;
-
-	/**
-	 * Analyze all the units that this side can recruit
-	 * and rate their fighting suitability against enemy units.
-	 * Ratings will be placed in 'unit_combat_scores_',
-	 * with a '0' rating indicating that the unit is 'average' against enemy units,
-	 * negative ratings meaning they are poorly suited,
-	 * and positive ratings meaning they are well suited.
-	 */
-	virtual void analyze_potential_recruit_combat();
-
-	std::map<std::string,int> unit_combat_scores_;
-
-	/**
-	 * Rates two unit types for their suitability against each other.
-	 * Returns 0 if the units are equally matched,
-	 * a positive number if a is suited against b,
-	 * and a negative number if b is suited against a.
-	 */
-	virtual int compare_unit_types(const unit_type& a, const unit_type& b) const;
-
-	/**
-	 * calculates the average resistance unit type a has against the attacks of
-	 * unit type b.
-	 */
-	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
 	/** Functions to deal with keeps. */
 	void evaluate_recruiting_value(const map_location &leader_loc);

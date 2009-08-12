@@ -64,6 +64,9 @@ static register_stage_factory<testing_ai_default::candidate_action_evaluation_lo
 static register_stage_factory<testing_ai_default::fallback_to_other_ai>
 	fallback_to_other_ai_factory("testing_ai_default::fallback");
 
+static register_stage_factory<ai_default_recruitment_stage>
+	ai_default_recruitment_stage_factory("ai_default::recruitment");
+
 // =======================================================================
 // Candidate actions
 // =======================================================================

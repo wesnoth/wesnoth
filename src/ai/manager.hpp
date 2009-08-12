@@ -40,6 +40,7 @@ class side_context;
 class readonly_context;
 class readwrite_context;
 class default_ai_context;
+class ai_context;
 
 class ai_composite;
 typedef boost::shared_ptr<ai_composite> composite_ai_ptr;
@@ -357,7 +358,7 @@ public:
 	 * @param context context in which this ai is created 
 	 * @return the reference to the created AI
 	 */
-	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, default_ai_context *ai_context);
+	static ai_ptr create_transient_ai( const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context);
 
 
 	// =======================================================================

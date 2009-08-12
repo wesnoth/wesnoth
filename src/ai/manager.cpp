@@ -593,7 +593,7 @@ bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm
 }
 
 
-ai_ptr manager::create_transient_ai(const std::string &ai_algorithm_type, const config &cfg, default_ai_context *ai_context )
+ai_ptr manager::create_transient_ai(const std::string &ai_algorithm_type, const config &cfg, ai_context *ai_context )
 {
 	assert(ai_context!=NULL);
 

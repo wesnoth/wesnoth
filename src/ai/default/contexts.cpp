@@ -23,6 +23,7 @@
 #include "../../attack_prediction.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../composite/goal.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)
@@ -211,6 +212,171 @@ const map_location& default_ai_context_impl::suitable_keep(const map_location& l
 	}
 
 	return nearest_keep(leader_location); // return nearest keep
+}
+
+
+std::vector<target> default_ai_context_impl::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
+{
+	log_scope2(log_ai, "finding targets...");
+	unit_map &units_ = get_info().units;
+	gamemap &map_ = get_info().map;
+	std::vector<team> teams_ = get_info().teams;
+	const bool has_leader = leader != units_.end();
+
+	std::vector<target> targets;
+
+	std::map<map_location,paths> friends_possible_moves;
+	move_map friends_srcdst, friends_dstsrc;
+	calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
+
+	//if enemy units are in range of the leader, then we target the enemies who are in range.
+	if(has_leader) {
+		const double threat = power_projection(leader->first,enemy_dstsrc);
+		if(threat > 0.0) {
+			//find the location of enemy threats
+			std::set<map_location> threats;
+
+			map_location adj[6];
+			get_adjacent_tiles(leader->first,adj);
+			for(size_t n = 0; n != 6; ++n) {
+				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj[n]);
+				while(itors.first != itors.second) {
+					if(units_.count(itors.first->second)) {
+						threats.insert(itors.first->second);
+					}
+
+					++itors.first;
+				}
+			}
+
+			assert(threats.empty() == false);
+
+#ifdef SUOKKO
+			//FIXME: suokko's revision 29531 included this change.  Correct?
+			const double value = threat*get_protect_leader()/leader->second.hitpoints();
+#else
+			const double value = threat/double(threats.size());
+#endif
+			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
+				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
+				targets.push_back(target(*i,value,target::THREAT));
+			}
+		}
+	}
+
+	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
+	double village_value = get_village_value();
+	if(has_leader && get_village_value() > 0.0) {
+		const std::vector<map_location>& villages = map_.villages();
+		for(std::vector<map_location>::const_iterator t =
+				villages.begin(); t != villages.end(); ++t) {
+
+			assert(map_.on_board(*t));
+			bool ally_village = false;
+			for (size_t i = 0; i != teams_.size(); ++i)
+			{
+				if (!current_team().is_enemy(i + 1) && teams_[i].owns_village(*t)) {
+					ally_village = true;
+					break;
+				}
+			}
+
+			if (ally_village)
+			{
+				//Support seems to cause the AI to just 'sit around' a lot, so
+				//only turn it on if it's explicitly enabled.
+				if(get_support_villages()) {
+					double enemy = power_projection(*t, enemy_dstsrc);
+					if (enemy > 0)
+					{
+						enemy *= 1.7;
+						double our = power_projection(*t, friends_dstsrc);
+						double value = village_value * our / enemy;
+						add_target(target(*t, value, target::SUPPORT));
+					}
+				}
+			}
+			else
+			{
+				double leader_distance = distance_between(*t, leader->first);
+				double value = village_value * (1.0 - leader_distance / corner_distance);
+				LOG_AI << "found village target... " << *t
+					<< " with value: " << value
+					<< " distance: " << leader_distance << '\n';
+				targets.push_back(target(*t,value,target::VILLAGE));
+			}
+		}
+	}
+
+	std::vector<goal_ptr>& goals = get_goals();
+
+	//find the enemy leaders and explicit targets
+	unit_map::const_iterator u;
+	for(u = units_.begin(); u != units_.end(); ++u) {
+
+		//is a visible enemy leader
+		if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
+		&& !u->second.invisible(u->first, units_, teams_)) {
+			assert(map_.on_board(u->first));
+			LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << get_leader_value() << "\n";
+			targets.push_back(target(u->first,get_leader_value(),target::LEADER));
+		}
+
+		//explicit targets for this team
+
+		for(std::vector<goal_ptr>::iterator j = goals.begin();
+		    j != goals.end(); ++j) {
+			if ((*j)->matches_unit(u)) {
+				LOG_AI << "found explicit target... " << u->first << " with value: " << (*j)->value() << "\n";
+				targets.push_back(target(u->first,(*j)->value(),target::EXPLICIT));
+			}
+		}
+
+	}
+
+	std::vector<double> new_values;
+
+	for(std::vector<target>::iterator i = targets.begin();
+	    i != targets.end(); ++i) {
+
+		new_values.push_back(i->value);
+
+		for(std::vector<target>::const_iterator j = targets.begin(); j != targets.end(); ++j) {
+			if(i->loc == j->loc) {
+				continue;
+			}
+
+			const double distance = abs(j->loc.x - i->loc.x) +
+						abs(j->loc.y - i->loc.y);
+			new_values.back() += j->value/(distance*distance);
+		}
+	}
+
+	assert(new_values.size() == targets.size());
+	for(size_t n = 0; n != new_values.size(); ++n) {
+		LOG_AI << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
+		targets[n].value = new_values[n];
+	}
+
+	return targets;
+}
+
+
+const std::vector<target>& default_ai_context_impl::additional_targets() const
+{
+	return additional_targets_;
+}
+
+
+void default_ai_context_impl::add_target(const target& t) const
+{
+	additional_targets_.push_back(t);
+}
+
+
+void default_ai_context_impl::clear_additional_targets() const
+{
+	additional_targets_.clear();
 }
 
 

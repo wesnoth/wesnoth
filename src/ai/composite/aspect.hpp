@@ -214,7 +214,7 @@ public:
 
 	static void cfg_to_value(const config &cfg, ministage &value)
 	{
-		value = ministage(cfg);
+		value = ministage(cfg.child_or_empty("value"));
 	}
 
 	static void value_to_cfg(const ministage &value, config &cfg)
@@ -765,7 +765,7 @@ public:
 			}
 			return false;
 		}
-		return false;
+		return true;
 	}
 
 
