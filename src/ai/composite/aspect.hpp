@@ -312,6 +312,33 @@ public:
 	}
 };
 
+template<>
+class variant_value_translator<ministage> {
+public:
+
+	static void variant_to_value(const variant &/*var*/, ministage &/*value*/)
+	{
+	        assert(false);//not implemented
+	}
+
+	static void value_to_variant(const ministage &/*value*/, variant &/*var*/)
+	{
+		assert(false);//not implemented
+	}
+
+	static variant value_to_variant(const ministage &/*value*/)
+	{
+		assert(false);
+		return variant();
+	}
+
+	static ministage variant_to_value(const variant &/*var*/)
+	{
+		assert(false);
+		config cfg;
+		return ministage(cfg);
+	}
+};
 
 template<>
 class variant_value_translator<int> {

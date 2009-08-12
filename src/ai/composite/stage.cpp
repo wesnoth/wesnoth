@@ -114,6 +114,7 @@ stage_ptr ministage::get_stage_ptr(ai_context &context)
 		return stage_ptr();
 	}
 	stage_ = stages.front();
+	return stage_;
 }
 
 config ministage::to_config() const

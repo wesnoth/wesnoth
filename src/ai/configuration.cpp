@@ -72,6 +72,7 @@ void configuration::init(const config &game_config)
 	//well_known_aspects.push_back(well_known_aspect("protect_leader_radius"));
 	//well_known_aspects.push_back(well_known_aspect("protect_location",false));
 	//well_known_aspects.push_back(well_known_aspect("protect_unit",false));
+	well_known_aspects.push_back(well_known_aspect("recruitment"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_combat"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_movement"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_pattern"));

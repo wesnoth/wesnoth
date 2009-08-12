@@ -13,7 +13,7 @@
 */
 
 /**
- * All known AI parts. Workaround to a linker feature of not including all symbols from files, and including only actually referenced stuff. this is not good for 'static registry' pattern. (other workarounds such as --whole-archive for ld are possible, but require messing with all buildsystems)
+ * All known c++ AI parts. Workaround to a linker feature of not including all symbols from files, and including only actually referenced stuff. this is not good for 'static registry' pattern. (other workarounds such as --whole-archive for ld are possible, but require messing with all buildsystems)
  * @file ai/registry.cpp
  */
 
@@ -136,6 +136,9 @@ static register_aspect_factory< composite_aspect<bool> >
 static register_aspect_factory< composite_aspect<bool> >
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
+static register_aspect_factory< composite_aspect<ministage> >
+        recruitment__composite_aspect_factory("recruitment*composite_aspect");
+
 static register_aspect_factory< composite_aspect<bool> >
 	recruitment_ignore_bad_combat__composite_aspect_factory("recruitment_ignore_bad_combat*composite_aspect");
 
@@ -195,6 +198,9 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
 
+static register_aspect_factory< standard_aspect<ministage> >
+        recruitment__standard_aspect_factory("recruitment*standard_aspect");
+
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_combat__standard_aspect_factory("recruitment_ignore_bad_combat*standard_aspect");
 
@@ -253,6 +259,9 @@ static register_aspect_factory< standard_aspect<bool> >
 
 static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
+
+static register_aspect_factory< standard_aspect<ministage> >
+        recruitment__standard_aspect_factory2("recruitment*");
 
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_combat__standard_aspect_factory2("recruitment_ignore_bad_combat*");

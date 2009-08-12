@@ -191,6 +191,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("number_of_possible_recruits_to_force_recruit",number_of_possible_recruits_to_force_recruit_);
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
+		add_known_aspect("recruitment",recruitment_);
 		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
 		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
 		add_known_aspect("recruitment_pattern",recruitment_pattern_);
@@ -685,6 +686,18 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 		recalculate_move_maps();
 	}
 	return possible_moves_;
+}
+
+
+stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
+{
+	if (recruitment_) {
+		ministage_ptr m = recruitment_->get_ptr();
+		if (m) {
+			return m->get_stage_ptr(context);
+		}
+	}
+	return stage_ptr();
 }
 
 

@@ -43,6 +43,7 @@ class terrain_filter;
 namespace ai {
 
 class interface;
+class ai_context;
 
 // recursion counter
 class recursion_counter {
@@ -244,6 +245,9 @@ public:
 
 
 	virtual const moves_map& get_possible_moves() const = 0;
+
+
+	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
 
 
 	virtual bool get_recruitment_ignore_bad_combat() const = 0;
@@ -666,6 +670,12 @@ public:
 	virtual double power_projection(const map_location& loc, const move_map& dstsrc) const
 	{
 		return target_->power_projection(loc,dstsrc);
+	}
+
+
+	virtual stage_ptr get_recruitment(ai_context &context) const
+	{
+		return target_->get_recruitment(context);
 	}
 
 
@@ -1160,6 +1170,9 @@ public:
 	virtual const moves_map& get_possible_moves() const;
 
 
+	virtual stage_ptr get_recruitment(ai_context &context) const;
+
+
 	virtual bool get_recruitment_ignore_bad_combat() const;
 
 
@@ -1264,7 +1277,8 @@ private:
 	aspect_type<bool>::typesafe_ptr passive_leader_;
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
-	aspect_type< bool  >::typesafe_ptr recruitment_ignore_bad_combat_;
+	aspect_type< ministage >::typesafe_ptr recruitment_;
+	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
 	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;
 	recursion_counter recursion_counter_;
@@ -1273,7 +1287,7 @@ private:
 	mutable move_map srcdst_;
 	aspect_type< bool >::typesafe_ptr support_villages_;
 	mutable std::map<std::pair<map_location,const unit_type *>,
-		std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
+			 std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 	aspect_type< double >::typesafe_ptr village_value_;
 	aspect_type< int >::typesafe_ptr villages_per_scout_;
 
