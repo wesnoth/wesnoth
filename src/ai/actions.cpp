@@ -697,15 +697,18 @@ void recruit_result::do_check_after()
 	const gamemap& map = info.map;
 	if (!map.on_board(recruit_location_)){
 		set_error(AI_ACTION_FAILURE);
+		return;
 	}
 
 	const unit_map& units = info.units;
 	unit_map::const_iterator unit = units.find(recruit_location_);
 	if (unit==units.end()){
 		set_error(AI_ACTION_FAILURE);
+		return;
 	}
 	if (unit->second.side()!=get_side()){
 		set_error(AI_ACTION_FAILURE);
+		return;
 	}
 
 }

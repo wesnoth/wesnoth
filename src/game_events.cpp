@@ -897,13 +897,13 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			if (!village_gold.empty()) {
 				teams[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
 			}
-			// Override AI parameters
-			if (ai.first != ai.second) {
-				//@todo 1.7: allow to change ai parameters in-flight
-			}
 			// Redeploy ai from location (this ignores current AI parameters)
 			if (!switch_ai.empty()) {
 				ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
+			}
+			// Override AI parameters
+			if (ai.first != ai.second) {
+				ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
 			}
 			// Add shared view to current team
 			if (!share_view.empty()){

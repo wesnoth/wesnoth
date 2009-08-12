@@ -62,6 +62,8 @@ public:
 
 	const std::string describe_ai();
 
+	void modify_ai_config_old( const config::const_child_itors &ai_parameters );
+
 	config to_config() const;
 
 	const std::string get_ai_identifier() const;
@@ -486,6 +488,16 @@ public:
 	// =======================================================================
 	// SET active AI parameters
 	// =======================================================================
+
+
+	/**
+	 * Modifies AI parameters for active AI of the given @a side.
+	 * This function is provided for backward-compatability with [modify_side][ai]...[/ai][/modify_side]
+	 * It can only add new facets to aspects
+	 * @param side side_number (1-based, as in game_info).
+	 * @param ai_parameters AI paramters to be modified.
+	 */
+	static void modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters );
 
 	/**
 	 * Sets AI parameters for active AI of the given @a side.

@@ -115,6 +115,15 @@ interface& holder::get_ai_ref()
 }
 
 
+void holder::modify_ai_config_old( const config::const_child_itors &ai_parameters )
+{
+	// only handle aspects
+	// transform ai_parameters to new-style config
+	// if not initialized, append that config to the bottom of base cfg, return
+	// else run 'add_facet' command on aspect
+
+}
+
 config holder::to_config() const
 {
 	if (!this->ai_) {
@@ -643,6 +652,12 @@ void manager::clear_ais()
 // =======================================================================
 // Work with active AI parameters
 // =======================================================================
+
+void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
+{
+	get_active_ai_holder_for_side(side).modify_ai_config_old(ai_parameters);
+}
+
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_identifier();
