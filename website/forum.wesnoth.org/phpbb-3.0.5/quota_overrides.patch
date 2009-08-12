@@ -1,0 +1,212 @@
+diff --git a/includes/functions_posting.php b/includes/functions_posting.php
+index e89e1cc..7062f93 100644
+--- a/includes/functions_posting.php
++++ b/includes/functions_posting.php
+@@ -16,6 +16,11 @@ if (!defined('IN_PHPBB'))
+ 	exit;
+ }
+ 
++// wesnoth mod begin
++define('WESNOTH_BEYOND_LIMITS_ATTACHMENT_LIMIT', 52428800); // bytes
++define('WESNOTH_JETREL_ATTACHMENT_LIMIT', 52428800); // bytes
++// wesnoth mod end
++
+ /**
+ * Fill smiley templates (or just the variables) with smilies, either in a window or inline
+ */
+@@ -419,6 +424,34 @@ function upload_attachment($form_name, $forum_id, $local = false, $local_storage
+ 		}
+ 		else
+ 		{
++			// wesnoth mod begin
++
++			//Wesnoth PM attachments quota bypass
++			//Not to reinvent the wheel we need group_memberships function
++			include_once($phpbb_root_path . 'includes/functions_user.' . $phpEx);
++			//Find Beyond limits group id
++			$sql = 'SELECT group_id
++				FROM ' . GROUPS_TABLE . '
++				WHERE group_name="Beyond Limits"';
++			$result = $db->sql_query($sql);
++			$no_limits_group_id = $db->sql_fetchrow($result);
++			$db->sql_freeresult($result);
++			//Check if user is Jetrel
++			$sql = 'SELECT username
++				FROM ' . USERS_TABLE . '
++				WHERE user_id=' . $user->data['user_id'] . '
++				AND username="Jetrel"';
++			$result = $db->sql_query($sql);
++			$is_Jetrel = $db->sql_fetchrow($result);
++			$db->sql_freeresult($result);
++			//See if user belongs to Beyond Limits group and if yes override the PM attachment limit to 50MB
++			$is_no_limits_group = group_memberships($no_limits_group_id, $user->data['user_id'], true);
++			$config['max_filesize_pm'] = ($is_no_limits_group) ? WESNOTH_BEYOND_LIMITS_ATTACHMENT_LIMIT : $config['max_filesize_pm'];
++			//If user is Jetryl set the limit skyhigh
++			$$config['max_filesize_pm'] = ($is_Jetrel) ? WESNOTH_JETREL_ATTACHMENT_LIMIT : $config['max_filesize_pm'];
++
++			// wesnoth mod end
++
+ 			$allowed_filesize = ($is_message) ? $config['max_filesize_pm'] : $config['max_filesize'];
+ 		}
+ 
+diff --git a/includes/functions_privmsgs.php b/includes/functions_privmsgs.php
+index f13c312..c372442 100644
+--- a/includes/functions_privmsgs.php
++++ b/includes/functions_privmsgs.php
+@@ -15,6 +15,10 @@ if (!defined('IN_PHPBB'))
+ 	exit;
+ }
+ 
++// wesnoth mod begin
++define('WESNOTH_JETREL_PM_LIMIT', 100000);
++// wesnoth mod end
++
+ /*
+ 	Ability to simply add own rules by doing three things:
+ 		1) Add an appropriate constant
+@@ -223,9 +227,24 @@ function get_folder($user_id, $folder_id = false)
+ function clean_sentbox($num_sentbox_messages)
+ {
+ 	global $db, $user, $config;
+-
+-	// Check Message Limit
+-	if ($user->data['message_limit'] && $num_sentbox_messages > $user->data['message_limit'])
++	// wesnoth mod begin
++	//
++	// Wesnoth PM limits override mod
++	//
++	// Check if user is Jetrel
++	$sql = 'SELECT username
++		FROM ' . USERS_TABLE . '
++		WHERE user_id=' . $user->data['user_id'] . '
++		AND username="Jetrel"';
++	$result = $db->sql_query($sql);
++	$is_Jetrel = $db->sql_fetchrow($result);
++	$db->sql_freeresult($result);
++	// If user is Jetrel set the limit skyhigh, otherwise check the regular
++	// message limit
++	$message_limit = ($is_Jetrel) ? WESNOTH_JETREL_PM_LIMIT : $user->data['message_limit'];
++	// Replace $user->data['message_limit'] calls with $message_limit
++	// wesnoth mod end
++	if($message_limit && $num_sentbox_messages > $message_limit) // wesnoth mod
+ 	{
+ 		// Delete old messages
+ 		$sql = 'SELECT t.msg_id
+@@ -234,7 +253,10 @@ function clean_sentbox($num_sentbox_messages)
+ 				AND t.user_id = ' . $user->data['user_id'] . '
+ 				AND t.folder_id = ' . PRIVMSGS_SENTBOX . '
+ 			ORDER BY p.message_time ASC';
+-		$result = $db->sql_query_limit($sql, ($num_sentbox_messages - $user->data['message_limit']));
++		// wesnoth mod begin
++		//$result = $db->sql_query_limit($sql, ($num_sentbox_messages - $user->data['message_limit']));
++		$result = $db->sql_query_limit($sql, ($num_sentbox_messages - $message_limit)); // wesnoth mod
++		// wesnoth mod end
+ 
+ 		$delete_ids = array();
+ 		while ($row = $db->sql_fetchrow($result))
+@@ -623,6 +645,22 @@ function place_pm_into_folder(&$global_privmsgs_rules, $release = false)
+ 		}
+ 	}
+ 
++	// wesnoth mod begin
++	//
++	// Wesnoth PM limits override mod
++	//
++	$sql = 'SELECT username
++		FROM ' . USERS_TABLE . '
++		WHERE user_id=' . $user->data['user_id'] . '
++		AND username="Jetrel"';
++	$result = $db->sql_query($sql);
++	$is_Jetrel = $db->sql_fetchrow($result);
++	$db->sql_freeresult($result);
++	// If user is Jetrel set the limit skyhigh
++	$message_limit = ($is_Jetrel) ? WESNOTH_JETREL_PM_LIMIT : $user->data['message_limit'];
++	//Replace $user->data['message_limit'] calls with $message_limit
++	// wesnoth mod end
++
+ 	// Here we have ideally only one folder to move into
+ 	foreach ($move_into_folder as $folder_id => $msg_ary)
+ 	{
+@@ -631,12 +669,14 @@ function place_pm_into_folder(&$global_privmsgs_rules, $release = false)
+ 
+ 		// Check Message Limit - we calculate with the complete array, most of the time it is one message
+ 		// But we are making sure that the other way around works too (more messages in queue than allowed to be stored)
+-		if ($user->data['message_limit'] && $folder[$folder_id] && ($folder[$folder_id] + sizeof($msg_ary)) > $user->data['message_limit'])
++// 		if ($user->data['message_limit'] && $folder[$folder_id] && ($folder[$folder_id] + sizeof($msg_ary)) > $user->data['message_limit'])
++		if ($message_limit && $folder[$folder_id] && ($folder[$folder_id] + sizeof($msg_ary)) > $message_limit) // wesnoth mod
+ 		{
+ 			$full_folder_action = ($user->data['user_full_folder'] == FULL_FOLDER_NONE) ? ($config['full_folder_action'] - (FULL_FOLDER_NONE*(-1))) : $user->data['user_full_folder'];
+ 
+ 			// If destination folder itself is full...
+-			if ($full_folder_action >= 0 && ($folder[$full_folder_action] + sizeof($msg_ary)) > $user->data['message_limit'])
++// 			if ($full_folder_action >= 0 && ($folder[$full_folder_action] + sizeof($msg_ary)) > $user->data['message_limit'])
++			if ($full_folder_action >= 0 && ($folder[$full_folder_action] + sizeof($msg_ary)) > $message_limit) // wesnoth mod
+ 			{
+ 				$full_folder_action = $config['full_folder_action'] - (FULL_FOLDER_NONE*(-1));
+ 			}
+@@ -654,7 +694,8 @@ function place_pm_into_folder(&$global_privmsgs_rules, $release = false)
+ 					WHERE user_id = $user_id
+ 						AND folder_id = $dest_folder
+ 					ORDER BY msg_id ASC";
+-				$result = $db->sql_query_limit($sql, (($folder[$dest_folder] + sizeof($msg_ary)) - $user->data['message_limit']));
++// 				$result = $db->sql_query_limit($sql, (($folder[$dest_folder] + sizeof($msg_ary)) - $user->data['message_limit']));
++				$result = $db->sql_query_limit($sql, (($folder[$dest_folder] + sizeof($msg_ary)) - $message_limit));
+ 
+ 				$delete_ids = array();
+ 				while ($row = $db->sql_fetchrow($result))
+@@ -1271,12 +1312,29 @@ function get_folder_status($folder_id, $folder)
+ 		return false;
+ 	}
+ 
++	// wesnoth mod begin
++	//Check if user is Jetryl
++	$sql = 'SELECT username
++		FROM ' . USERS_TABLE . '
++		WHERE user_id=' . $user->data['user_id'] . '
++		AND username="Jetrel"';
++	$result = $db->sql_query($sql);
++	$is_Jetrel = $db->sql_fetchrow($result);
++	$db->sql_freeresult($result);
++	// If user is Jetrel set the limit skyhigh
++	$message_limit = ($is_Jetrel) ? WESNOTH_JETREL_PM_LIMIT : $user->data['message_limit'];
++	// Replace $user->data['message_limit'] calls with $message_limit
++	// wesnoth mod end
++
+ 	$return = array(
+ 		'folder_name'	=> $folder['folder_name'],
+ 		'cur'			=> $folder['num_messages'],
+-		'remaining'		=> ($user->data['message_limit']) ? $user->data['message_limit'] - $folder['num_messages'] : 0,
+-		'max'			=> $user->data['message_limit'],
+-		'percent'		=> ($user->data['message_limit']) ? (($user->data['message_limit'] > 0) ? round(($folder['num_messages'] / $user->data['message_limit']) * 100) : 100) : 0,
++// 		'remaining'		=> ($user->data['message_limit']) ? $user->data['message_limit'] - $folder['num_messages'] : 0,
++		'remaining'		=> ($message_limit) ? $message_limit - $folder['num_messages'] : 0, // wesnoth mod
++// 		'max'			=> $user->data['message_limit'],
++		'max'			=> $message_limit, // wesnoth mod
++// 		'percent'		=> ($user->data['message_limit']) ? (($user->data['message_limit'] > 0) ? round(($folder['num_messages'] / $user->data['message_limit']) * 100) : 100) : 0,
++		'percent'		=> ($message_limit) ? (($message_limit > 0) ? round(($folder['num_messages'] / $message_limit) * 100) : 100) : 0, // wesnoth mod
+ 	);
+ 
+ 	$return['message']	= sprintf($user->lang['FOLDER_STATUS_MSG'], $return['percent'], $return['cur'], $return['max']);
+@@ -1850,6 +1908,22 @@ function set_user_message_limit()
+ {
+ 	global $user, $db, $config;
+ 
++	// wesnoth mod begin
++	// Check if user is Jetrel
++	$sql = 'SELECT username
++		FROM ' . USERS_TABLE . '
++		WHERE user_id=' . $user->data['user_id'] . '
++		AND username="Jetrel"';
++	$result = $db->sql_query($sql);
++	$is_Jetrel = $db->sql_fetchrow($result);
++	$db->sql_freeresult($result);
++
++	if($is_Jetrel) {
++		//If user is Jetrel set the limit skyhigh and return
++		$user->data['message_limit'] = WESNOTH_JETREL_PM_LIMIT;
++		return;
++	}
++
+ 	// Get maximum about from user memberships - if it is 0, there is no limit set and we use the maximum value within the config.
+ 	$sql = 'SELECT MAX(g.group_message_limit) as max_message_limit
+ 		FROM ' . GROUPS_TABLE . ' g, ' . USER_GROUP_TABLE . ' ug
