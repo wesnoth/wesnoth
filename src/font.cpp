@@ -323,7 +323,7 @@ void manager::init() const
 		std::vector<std::string> files;
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
 		foreach(const std::string& file, files)
-			if(file.substr(file.length() - 4) == ".ttf")
+			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				AddFontResource(file.c_str());
 	}
 #endif
@@ -340,7 +340,7 @@ void manager::deinit() const
 		std::vector<std::string> files;
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
 		foreach(const std::string& file, files)
-			if(file.substr(file.length() - 4) == ".ttf")
+			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				RemoveFontResource(file.c_str());
 	}
 #endif
