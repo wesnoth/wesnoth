@@ -28,9 +28,7 @@
 
 #include "display.hpp"
 #include "image.hpp"
-#include "image_function.hpp"
 #include "language.hpp"
-#include "marked-up_text.hpp" // TODO: replace with Pango
 #include "sound.hpp"
 #include "text.hpp"
 #include "video.hpp"
