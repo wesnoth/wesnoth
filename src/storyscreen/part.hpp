@@ -215,7 +215,7 @@ public:
 	}
 
 	/** Retrieve any associated floating images for this story screen. */
-	const std::vector<floating_image> get_floating_images() const {
+	const std::vector<floating_image>& get_floating_images() const {
 		return floating_images_;
 	}
 
