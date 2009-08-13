@@ -280,13 +280,10 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 {
 	LOG_AI_CONFIGURATION << "Upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
-	config parsed_cfg = config();
+	config parsed_cfg;
 
 	//get values of all aspects
-	foreach (const well_known_aspect &wka, well_known_aspects) {
-		upgrade_aspect_config_from_1_07_02_to_1_07_03(cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
-	}
-
+	upgrade_aspect_configs_from_1_07_02_to_1_07_03(cfg.child_range("ai"), parsed_cfg);
 
 	//dump the rest of the config into fallback stage
 
@@ -332,5 +329,20 @@ bool configuration::modify_ai_configuration(const config &/*mod_ai*/, config &/*
 	return true;
 }
 
+
+void configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(const config::const_child_itors &ai_parameters, config &parsed_cfg)
+{
+	parsed_cfg = config();
+	config cfg("ai");
+	config &cfg_ai = cfg.child("ai");
+
+	foreach (const config &aiparam, ai_parameters) {
+		cfg_ai.append(aiparam);
+	}
+	DBG_AI_CONFIGURATION << "upgrading aspects from syntax of 1.7.2. to 1.7.3, old-style config is:" << std::endl << cfg << std::endl;
+	foreach (const well_known_aspect &wka, well_known_aspects) {
+		upgrade_aspect_config_from_1_07_02_to_1_07_03(cfg,parsed_cfg,wka.name_,wka.was_an_attribute_);
+	}
+}
 
 } //end of namespace ai

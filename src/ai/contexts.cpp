@@ -414,16 +414,25 @@ bool readwrite_context_impl::attack_enemy(const map_location u,
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
 	foreach (aspect_ptr a, aspects) {
-		const std::string name = a->get_id();
-		known_aspect_map::iterator i = known_aspects_.find(name);
+		const std::string id = a->get_id();
+		known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
 			i->second->set(a);
 		} else {
-			ERR_AI << "when adding aspects, unknown aspect id["<<name<<"]"<<std::endl;
+			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
 		}
 	}
 }
 
+void readonly_context_impl::add_facet(const std::string &id, const config &cfg) const
+{
+	known_aspect_map::const_iterator i = known_aspects_.find(id);
+	if (i != known_aspects_.end()) {
+		i->second->add_facet(cfg);
+	} else {
+		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
+	}
+}
 
 const defensive_position& readonly_context_impl::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const

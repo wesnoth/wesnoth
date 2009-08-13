@@ -188,6 +188,9 @@ public:
 	virtual const aspect_map& get_aspects() const = 0;
 
 
+	virtual void add_facet(const std::string &id, const config &cfg) const = 0;
+
+
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) = 0;
 
 
@@ -556,6 +559,13 @@ public:
 	{
 		return target_->add_aspects(aspects);
 	}
+
+
+	virtual void add_facet(const std::string &id, const config &cfg) const
+	{
+		target_->add_facet(id,cfg);
+	}
+
 
 
 	virtual const attacks_vector& get_attacks() const
@@ -1228,6 +1238,9 @@ public:
 
 
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects);
+
+
+	virtual void add_facet(const std::string &id, const config &cfg) const;
 
 
 	void on_create();

@@ -119,9 +119,25 @@ void holder::modify_ai_config_old( const config::const_child_itors &/*ai_paramet
 {
 	// only handle aspects
 	// transform ai_parameters to new-style config
-	// if not initialized, append that config to the bottom of base cfg, return
-	// else run 'add_facet' command on aspect
 
+	config cfg;
+	configuration::upgrade_aspect_configs_from_1_07_02_to_1_07_03(ai_parameters,cfg);
+	//at this point we have a single config which contains [aspect][facet] tags
+	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
+
+	if (this->readonly_context_ == NULL) {
+		// if not initialized, append that config to the bottom of base cfg
+		// then, merge aspects with the same id
+		cfg_.merge_with(cfg);
+		cfg_.merge_children_by_attribute("aspect","id");
+	} else {
+		// else run 'add_facet' command on each [aspect][facet]
+		foreach (const config &cfg_a, cfg.child_range("aspect")) {
+			foreach (const config &cfg_f, cfg_a.child_range("facet")) {
+				readonly_context_->add_facet(cfg_a["id"],cfg_f);
+			}
+		}
+	}
 }
 
 config holder::to_config() const
@@ -130,7 +146,8 @@ config holder::to_config() const
 		return cfg_;
 	} else {
 		config cfg = ai_->to_config();
-		if (this->readonly_context_) {
+		cfg["version"] = "10703";
+		if (this->readonly_context_!=NULL) {
 			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
 		}
 		return cfg;//@todo 1.7.3: include all other upper contexts

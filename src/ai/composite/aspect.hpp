@@ -36,6 +36,7 @@
 #include <stack>
 #include <vector>
 #include <deque>
+#include <iterator>
 #include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
@@ -55,12 +56,20 @@ public:
 
 	static void cfg_to_value(const config &cfg, T &value)
 	{
-		value = boost::lexical_cast<T>(cfg["value"]);
+		try {
+			value = boost::lexical_cast<T>(cfg["value"]);
+		} catch (boost::bad_lexical_cast e) {
+			//@todo: 1.7.4 handle error
+		}
 	}
 
 	static void value_to_cfg(const T &value, config &cfg)
 	{
-		cfg["value"] = boost::lexical_cast<std::string>(value);
+		try {
+			cfg["value"] = boost::lexical_cast<std::string>(value);
+		} catch (boost::bad_lexical_cast e) {
+			//@todo: 1.7.4 handle error
+		}
 	}
 
 	static config value_to_cfg(const T &value)
@@ -635,9 +644,15 @@ class known_aspect {
 public:
 	known_aspect(const std::string &name);
 
+
 	virtual ~known_aspect();
 
+
 	virtual void set(aspect_ptr a) = 0;
+
+
+	virtual void add_facet(const config &cfg) = 0;
+
 
 	const std::string& get_name() const;
 
@@ -645,6 +660,9 @@ protected:
 	const std::string name_;
 };
 
+
+template<class T>
+class composite_aspect;
 
 template<typename T>
 class typesafe_known_aspect : public known_aspect {
@@ -666,6 +684,19 @@ public:
 		}
 	}
 
+	virtual void add_facet(const config &cfg)
+	{
+		boost::shared_ptr< composite_aspect <T> > c = boost::dynamic_pointer_cast< composite_aspect<T> >(where_);
+		if (c) {
+			assert (c->get_id()==this->get_name());
+			c->add_facet(cfg);
+			c->invalidate();
+		} else {
+			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while adding facet to aspect, got null. this might be caused by target [aspect] being not composite" << std::endl;
+		}
+	}
+
+
 protected:
 	boost::shared_ptr<typesafe_aspect <T> > &where_;
 	aspect_map &aspects_;
@@ -681,12 +712,7 @@ public:
 		: typesafe_aspect<T>(context, cfg, id)
 	{
 		foreach (const config &cfg_element, this->cfg_.child_range("facet") ){
-			std::vector< aspect_ptr > facets;
-			engine::parse_aspect_from_config(*this,cfg_element,this->get_id(),std::back_inserter(facets));
-			foreach (aspect_ptr a, facets ){
-				boost::shared_ptr< typesafe_aspect<T> > b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
-				facets_.push_back(b);
-			}
+			add_facet(cfg_element);
 		}
 
 		const config &_default = this->cfg_.child("default");
@@ -703,7 +729,9 @@ public:
 	virtual void recalculate() const
 	{
 		//@todo 1.7.4 optimize in case of an aspect which returns variant
-		foreach (const boost::shared_ptr< typesafe_aspect<T> > f, facets_) {
+		//typedef std::vector< boost::shared_ptr< typesafe_aspect < T > > >::reverse_const_iterator Iter;
+
+		foreach (const boost::shared_ptr<typesafe_aspect <T> > &f, make_pair(facets_.rbegin(),facets_.rend())) {
 			if (f->active()) {
 				this->value_ = boost::shared_ptr<T>(f->get_ptr());
 				this->valid_ = true;
@@ -725,6 +753,17 @@ public:
 			cfg.add_child("default",default_->to_config());
 		}
 		return cfg;
+	}
+
+
+	virtual void add_facet(const config &cfg)
+	{
+		std::vector< aspect_ptr > facets;
+		engine::parse_aspect_from_config(*this,cfg,this->get_id(),std::back_inserter(facets));
+		foreach (aspect_ptr a, facets ){
+			boost::shared_ptr< typesafe_aspect<T> > b = boost::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			facets_.push_back(b);
+		}
 	}
 
 protected:
