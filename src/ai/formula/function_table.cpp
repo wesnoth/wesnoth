@@ -27,6 +27,7 @@
 #include "../../log.hpp"
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
+#include "../../pathfind.hpp"
 #include "../../replay.hpp"
 #include "../../unit.hpp"
 
@@ -39,6 +40,53 @@ namespace game_logic {
 using ai::formula_ai;
 
 namespace {
+
+/*
+ * unit adapters let us treat unit and unit_type the same if we want to get access to attacks or movement cost
+ */
+class unit_adapter {
+	public:
+		unit_adapter(const variant& arg) : unit_type_(), unit_() {
+			const unit_callable* unit = try_convert_variant<unit_callable>(arg);
+
+			if (unit) {
+				unit_ = &unit->get_unit();
+			} else {
+				unit_type_ = &(convert_variant<unit_type_callable>(arg)->get_unit_type());
+			}
+		}
+
+		int damage_from(const attack_type& attack) const {
+			if(unit_type_ != NULL) {
+				return unit_type_->movement_type().resistance_against(attack);
+			} else {
+				return unit_->damage_from(attack, false, map_location());
+			}
+		}
+
+		// FIXME: we return a vector by value because unit_type and unit APIs
+		// disagree as to what should be returned by their attacks() method
+		std::vector<attack_type> attacks() const {
+			if(unit_type_ != NULL) {
+				return unit_type_->attacks();
+			} else {
+				return unit_->attacks();
+			}
+		}
+
+		int movement_cost(const gamemap& map, const t_translation::t_terrain terrain) const {
+			if(unit_type_ != NULL) {
+				return unit_type_->movement_type().movement_cost(map, terrain);
+			} else {
+				return unit_->movement_cost(terrain);
+			}
+		}
+
+
+	private:
+		const unit_type *unit_type_;
+		const unit* unit_;
+};
 
 class distance_between_function : public function_expression {
 public:
@@ -80,6 +128,251 @@ private:
 		}
 
 		return variant(best);
+	}
+
+	const formula_ai& ai_;
+};
+
+static unsigned search_counter;
+
+class calculate_map_ownership_function : public function_expression {
+public:
+	calculate_map_ownership_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("calculate_map_ownership", args, 2, 5), ai_(ai) {
+	}
+
+private:
+
+	struct indexer {
+		int w, h;
+		indexer(int a, int b) : w(a), h(b) { }
+		int operator()(const map_location& loc) const {
+			return loc.y * w + loc.x;
+		}
+	};
+
+	struct node {
+		int movement_cost_;
+		map_location loc_;
+
+		/**
+		 * If equal to search_counter, the node is off the list.
+		 * If equal to search_counter + 1, the node is on the list.
+		 * Otherwise it is outdated.
+		 */
+		unsigned in;
+
+		node(int moves, const map_location &loc)
+			: movement_cost_(moves)
+			, loc_(loc)
+			, in(0)
+		{
+		}
+
+		node()
+			: movement_cost_(0)
+			, loc_()
+			, in(0)
+		{
+		}
+
+		bool operator<(const node& o) const {
+			return movement_cost_ < o.movement_cost_;
+		}
+	};
+
+	struct comp {
+		const std::vector<node>& nodes;
+		comp(const std::vector<node>& n) : nodes(n) { }
+		bool operator()(int l, int r) const {
+			return nodes[r] < nodes[l];
+		}
+	};
+
+	void find_movemap(const unit_adapter& u, const map_location& loc,
+				std::vector<int>& scores, bool allow_teleport) const
+	{
+		const std::set<map_location>& teleports = allow_teleport ? ai_.current_team().villages() : std::set<map_location>();
+
+		const gamemap& map = ai_.get_info().map;
+
+		std::vector<map_location> locs(6 + teleports.size());
+		std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
+
+		search_counter += 2;
+		if (search_counter == 0) search_counter = 2;
+
+		static std::vector<node> nodes;
+		nodes.resize(map.w() * map.h());
+
+		indexer index(map.w(), map.h());
+		comp node_comp(nodes);
+
+		nodes[index(loc)] = node(0, loc);
+		std::vector<int> pq;
+		pq.push_back(index(loc));
+		while (!pq.empty()) {
+			node& n = nodes[pq.front()];
+			std::pop_heap(pq.begin(), pq.end(), node_comp);
+			pq.pop_back();
+			n.in = search_counter;
+
+			get_adjacent_tiles(n.loc_, &locs[0]);
+			for (int i = teleports.count(n.loc_) ? locs.size() : 6; i-- > 0; ) {
+				if (!locs[i].valid(map.w(), map.h())) continue;
+
+				node& next = nodes[index(locs[i])];
+				bool next_visited = next.in - search_counter <= 1u;
+
+				// test if the current path to locs[i] is better than this one could possibly be.
+				// we do this a couple more times below
+				if (next_visited &&  !(n < next) ) continue;
+				const int move_cost = u.movement_cost(map, map[locs[i]]);
+
+				node t = node(n.movement_cost_ + move_cost, locs[i]);
+
+				if (next_visited &&  !(t < next) ) continue;
+
+				bool in_list = next.in == search_counter + 1;
+				t.in = search_counter + 1;
+				next = t;
+
+				// if already in the priority queue then we just update it, else push it.
+				if (in_list) {
+					std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
+				} else {
+					pq.push_back(index(locs[i]));
+					std::push_heap(pq.begin(), pq.end(), node_comp);
+				}
+			}
+		}
+
+		for (int x = 0; x < map.w(); ++x) {
+			for (int y = 0; y < map.h(); ++y)
+			{
+				int i = y * map.w() + x;
+				const node &n = nodes[i];
+				scores[i] = scores[i] + n.movement_cost_;
+				//std::cout << x << "," << y << ":" << n.movement_cost << std::endl;
+			}
+		}
+	}
+
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		int w = ai_.get_info().map.w();
+		int h = ai_.get_info().map.h();
+
+		const variant units_input = args()[0]->evaluate(variables);
+		const variant leaders_input = args()[1]->evaluate(variables);
+
+		int enemy_tollerancy = 3;
+		if( args().size() > 2 )
+			enemy_tollerancy = args()[2]->evaluate(variables).as_int();
+
+		int enemy_border_tollerancy = 5;
+		if( args().size() > 3 )
+			enemy_border_tollerancy = args()[3]->evaluate(variables).as_int();
+
+		int ally_tollerancy = 3;
+		if( args().size() > 4 )
+			ally_tollerancy = args()[4]->evaluate(variables).as_int();
+
+		if( !units_input.is_list() )
+			return variant();
+
+		size_t number_of_teams = units_input.num_elements();
+
+		std::vector< std::vector<int> > scores( number_of_teams );
+
+		for( size_t i = 0; i< number_of_teams; ++i)
+			scores[i].resize(w*h);
+
+//		for(unit_map::const_iterator i = ai_.get_info().units.begin(); i != ai_.get_info().units.end(); ++i) {
+//			unit_counter[i->second.side()-1]++;
+//			unit_adapter unit(i->second);
+//			find_movemap( ai_.get_info().map, ai_.get_info().units, unit, i->first, scores[i->second.side()-1], ai_.get_info().teams , true );
+//		}
+
+		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
+			if( leaders_input[side].is_empty() )
+				continue;
+			
+			const map_location loc = convert_variant<location_callable>(leaders_input[side][0])->loc();
+			const variant units_of_side = units_input[side];
+
+			for(size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it) {
+				unit_adapter unit(units_of_side[unit_it]);
+				find_movemap( unit, loc, scores[side], true );
+			}
+		}
+
+		size_t index = 0;
+		for( std::vector< std::vector<int> >::iterator i = scores.begin() ; i != scores.end() ; ++i) {
+			for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j )
+				*j = *j / units_input[index].num_elements();
+
+			++index;
+		}		
+		//std::vector<variant> res;
+		std::map<variant, variant> res;
+
+		size_t current_side = ai_.get_side() - 1 ;
+
+		std::vector<int> enemies;
+		std::vector<int> allies;
+
+		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
+			if( side == current_side)
+				continue;
+
+			if( ai_.current_team().is_enemy(side+1) ) {
+				if( !leaders_input[side].is_empty() )
+					enemies.push_back(side);
+			} else {
+				if( !leaders_input[side].is_empty() )
+					allies.push_back(side);
+			}
+		}
+
+		//calculate_map_ownership( recruits_of_side, map(units_of_side, 'units', map( filter(units, leader), loc) ) )
+		//map(, debug_label(key,value))
+		for (int x = 0; x < w; ++x) {
+			for (int y = 0; y < h; ++y)
+			{
+				int i = y * w + x;
+				bool valid = true;
+				bool enemy_border = false;
+
+				if( scores[current_side][i] > 98 )
+					continue;
+
+				foreach( int side , enemies) {
+					int diff = scores[current_side][i] - scores[side][i];
+					if ( diff > enemy_tollerancy) {
+						valid = false;
+						break;
+					} else if( abs(diff) < enemy_border_tollerancy )
+						enemy_border = true;
+				}
+
+				if( valid ) {
+					foreach( int side , allies) {
+						if ( scores[current_side][i] - scores[side][i] > ally_tollerancy ) {
+							valid = false;
+							break;
+						}
+					}
+				}
+
+				if( valid ) {
+					if( enemy_border )
+						res.insert( std::pair<variant, variant>(variant(new location_callable(map_location(x, y))), variant(scores[0][i] + 10000) ));
+					else
+						res.insert( std::pair<variant, variant>(variant(new location_callable(map_location(x, y))), variant(scores[0][i] ) ));
+				}
+			}
+		}
+		return variant(&res);
 	}
 
 	const formula_ai& ai_;
@@ -835,8 +1128,10 @@ private:
 
                 const map_location location = convert_variant<location_callable>(var0)->loc();
                 std::string text;
-
-                text = var1.to_debug_string();
+		if( var1.is_string() )
+			text = var1.as_string();
+		else
+			text = var1.to_debug_string();
                 display_label(location,text);
 
 		std::vector<variant> res;
@@ -1193,45 +1488,6 @@ public:
 	{}
 private:
 
-	/*
-	 * we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
-	 * unit adapters let us treat unit and unit_type the same in the following code
-	 */
-	class unit_adapter {
-		public:
-			unit_adapter(const variant& arg) : unit_type_(), unit_() {
-				const unit_callable* unit = try_convert_variant<unit_callable>(arg);
-
-				if (unit) {
-					unit_ = &unit->get_unit();
-				} else {
-					unit_type_ = &(convert_variant<unit_type_callable>(arg)->get_unit_type());
-				}
-			}
-
-			int damage_from(const attack_type& attack) const {
-				if(unit_type_ != NULL) {
-					return unit_type_->movement_type().resistance_against(attack);
-				} else {
-					return unit_->damage_from(attack, false, map_location());
-				}
-			}
-
-			// FIXME: we return a vector by value because unit_type and unit APIs
-			// disagree as to what should be returned by their attacks() method
-			std::vector<attack_type> attacks() const {
-				if(unit_type_ != NULL) {
-					return unit_type_->attacks();
-				} else {
-					return unit_->attacks();
-				}
-			}
-
-		private:
-			const unit_type *unit_type_;
-			const unit* unit_;
-	};
-
 	std::pair<int, int> best_melee_and_ranged_attacks(unit_adapter attacker, unit_adapter defender) const {
 		int highest_melee_damage = 0;
 		int highest_ranged_damage = 0;
@@ -1356,6 +1612,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new distance_between_function(args));
 	} else if(fn == "run_file") {
 		return expression_ptr(new run_file_function(args, ai_));
+	} else if(fn == "calculate_map_ownership") {
+		return expression_ptr(new calculate_map_ownership_function(args, ai_));
 	} else {
 		return function_symbol_table::create_function(fn, args);
 	}
