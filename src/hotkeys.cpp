@@ -61,7 +61,7 @@ const struct {
 	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save The Map"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save Map"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, hotkey::SCOPE_GAME },
