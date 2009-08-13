@@ -294,7 +294,7 @@ if( vars.side_terrain,
 			set_var(debug_print('recruits_map'), debug_print( 'RECRUITS ', calculate_recruits(self)) )
 			]
 			+
-			if( turn = 5,
+			if( turn = 1,
 				sum(
 					[
 					values(map( vars.side_terrain, if( value > 900, debug_label( key, 'o'), debug_label(key, '.') ) )),
