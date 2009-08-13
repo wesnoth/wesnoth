@@ -112,10 +112,36 @@
 	<div id="map_canvas" style="width: 800px; height: 600px"><noscript>You must enable Javascript in order to see the kill map.</noscript></div>
 <br />
 <div id="map_selection">
-Map
+Map: ${cur_map_name}
+<div id="used_filters">
+Used filters:
+<b py:if="len(used_filters) == 0">None</b>
+<table border="1">
+<tr py:for="filter in used_filters">
+<td>${filter}</td>
+<td py:for="val in ufilters_vals[filter]">
+${val}
+</td>
+</tr>
+</table>
+</div>
 <form method="get">
 <table border="1">
 <tr>
+<td py:for="filter in filters">
+${filter}
+</td>
+<td>
+map/scenario
+</td>
+</tr>
+<tr>
+<td py:for="filter in filters">
+<select name="${filter}" multiple="multiple" size="5">
+<option selected="1" py:for="item in sorted(fdata[filter])" py:if="used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item)">${item}</option>
+<option py:for="item in sorted(fdata[filter])" py:if="not (used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item))">${item}</option>
+</select>
+</td>
 <td>
 <select name="map" size="5">
 <option py:for="map in maps" value="${map[1]}">${map[0]}</option>

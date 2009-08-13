@@ -101,6 +101,11 @@ class KillGraphController(BaseController):
 		#check for input sanity, we will be fetching map tiles based on this name
 		if not ( cur_map.isalnum() and len(cur_map) == 32):
 			cur_map = ""
+		cur_map_name = "None"
+		for map in maps:
+			if map[1] == cur_map:
+				cur_map_name = map[0]
+				break
 		
 		m_dimensions = ()
 		if cur_map != "":
@@ -125,4 +130,7 @@ class KillGraphController(BaseController):
 		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,
 			grid_colors=grid_colors,startdate="",enddate="",
 			minkillerlev="",maxkillerlev="",minkilledlev="",
-			maxkilledlev="")
+			maxkilledlev="",used_filters=used_filters,
+			ufilters_vals=ufilters_vals,
+			filters=available_filters+available_filters_map,
+			fdata=fdata,cur_map_name=cur_map_name)
