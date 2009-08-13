@@ -137,6 +137,12 @@ public:
 
 
 	/**
+	 * serialize this context to config
+	 */
+	virtual config to_side_context_config() const = 0;
+
+
+	/**
 	 * Get the value of the recursion counter
 	 */
 	virtual int get_recursion_count() const = 0;
@@ -384,6 +390,12 @@ public:
 
 	virtual game_info& get_info_w() = 0;
 
+
+	/**
+	 * serialize this context to config
+	 */
+	virtual config to_readwrite_context_config() const = 0;
+
 };
 
 //proxies
@@ -422,6 +434,13 @@ public:
 	{
 		return target_->get_recursion_count();
 	}
+
+
+	virtual config to_side_context_config() const
+	{
+		return target_->to_side_context_config();
+	}
+
 
 private:
 	side_context *target_;
@@ -918,6 +937,13 @@ public:
 	{
 		return target_->get_recursion_count();
 	}
+
+
+	virtual config to_readwrite_context_config() const
+	{
+		return target_->to_readwrite_context_config();
+	}
+
 private:
 	readwrite_context *target_;
 };
@@ -926,7 +952,7 @@ private:
 //implementation
 class side_context_impl : public side_context {
 public:
-	side_context_impl(side_number side)
+	side_context_impl(side_number side, const config  &/*cfg*/)
 		: side_(side), recursion_counter_(0)
 	{
 	}
@@ -951,6 +977,9 @@ public:
 
 
 	virtual int get_recursion_count() const;
+
+
+	virtual config to_side_context_config() const;
 
 private:
 	side_number side_;
@@ -1432,7 +1461,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	readwrite_context_impl(readonly_context &context)
+	readwrite_context_impl(readonly_context &context, const config &/*cfg*/)
 		: recursion_counter_(context.get_recursion_count())
 	{
 		init_readonly_context_proxy(context);
@@ -1451,6 +1480,9 @@ public:
 
 
 	virtual int get_recursion_count() const;
+
+
+	virtual config to_readwrite_context_config() const;
 
 private:
 	recursion_counter recursion_counter_;

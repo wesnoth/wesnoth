@@ -63,7 +63,7 @@ holder::holder( side_number side, const config &cfg )
 void holder::init( side_number side )
 {
 	if (side_context_ == NULL) {
-		side_context_ = new side_context_impl(side);//@todo 1.7.3 add config
+		side_context_ = new side_context_impl(side,cfg_);
 	} else {
 		side_context_->set_side(side);
 	}
@@ -72,10 +72,10 @@ void holder::init( side_number side )
 		readonly_context_->on_readonly_context_create();
 	}
 	if (readwrite_context_ == NULL){
-		readwrite_context_ = new readwrite_context_impl(*readonly_context_);//@todo 1.7.3 add config
+		readwrite_context_ = new readwrite_context_impl(*readonly_context_,cfg_);
 	}
 	if (default_ai_context_ == NULL){
-		default_ai_context_ = new default_ai_context_impl(*readwrite_context_);//@todo 1.7.3 add config
+		default_ai_context_ = new default_ai_context_impl(*readwrite_context_,cfg_);
 	}
 	if (!this->ai_){
 		ai_ = boost::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
@@ -147,10 +147,20 @@ config holder::to_config() const
 	} else {
 		config cfg = ai_->to_config();
 		cfg["version"] = "10703";
+		if (this->side_context_!=NULL) {
+			cfg.merge_with(this->side_context_->to_side_context_config());
+		}
 		if (this->readonly_context_!=NULL) {
 			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
 		}
-		return cfg;//@todo 1.7.3: include all other upper contexts
+		if (this->readwrite_context_!=NULL) {
+			cfg.merge_with(this->readwrite_context_->to_readwrite_context_config());
+		}
+		if (this->default_ai_context_!=NULL) {
+			cfg.merge_with(this->default_ai_context_->to_default_ai_context_config());
+		}
+
+		return cfg;
 	}
 }
 

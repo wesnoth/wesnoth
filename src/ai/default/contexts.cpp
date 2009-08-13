@@ -379,5 +379,9 @@ void default_ai_context_impl::clear_additional_targets() const
 	additional_targets_.clear();
 }
 
+config default_ai_context_impl::to_default_ai_context_config() const
+{
+	return config();
+}
 
 } //of namespace ai

@@ -171,6 +171,10 @@ public:
 
 	virtual int rate_terrain(const unit& u, const map_location& loc) const = 0;
 
+
+	virtual config to_default_ai_context_config() const = 0;
+
+
 };
 
 
@@ -246,6 +250,10 @@ public:
 		return target_->suitable_keep(leader_location,leader_paths);
 	}
 
+	virtual config to_default_ai_context_config() const
+	{
+		return target_->to_default_ai_context_config();
+	}
 
 private:
 	default_ai_context *target_;
@@ -258,7 +266,7 @@ public:
 	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location> &checked_hexes);
 
 
-	default_ai_context_impl(readwrite_context &context)
+	default_ai_context_impl(readwrite_context &context, const config &/*cfg*/)
 		: recursion_counter_(context.get_recursion_count()),additional_targets_()
 	{
 		init_readwrite_context_proxy(context);
@@ -300,6 +308,8 @@ public:
 
 	virtual const map_location& suitable_keep( const map_location& leader_location, const paths& leader_paths );
 
+
+	virtual config to_default_ai_context_config() const;
 
 private:
 	recursion_counter recursion_counter_;

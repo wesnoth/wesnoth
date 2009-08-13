@@ -223,6 +223,17 @@ void readonly_context_impl::on_readonly_context_create() {
 }
 
 
+config side_context_impl::to_side_context_config() const
+{
+	return config();
+}
+
+config readwrite_context_impl::to_readwrite_context_config() const
+{
+	return config();
+}
+
+
 config readonly_context_impl::to_readonly_context_config() const
 {
 	config cfg;
