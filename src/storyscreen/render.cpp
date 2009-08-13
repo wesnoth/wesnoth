@@ -107,8 +107,8 @@ part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& 
 void part_ui::prepare_background()
 {
 	// Build background surface
-	if(p_.background_file_.empty() != true) {
-		background_.assign( image::get_image(p_.background_file_) );
+	if(p_.background().empty() != true) {
+		background_.assign( image::get_image(p_.background()) );
 	}
 	has_background_ = !background_.null();
 	if(background_.null() || background_->w * background_-> h == 0) {
@@ -117,7 +117,7 @@ void part_ui::prepare_background()
 
 	const double xscale = 1.0 * video_.getx() / background_->w;
 	const double yscale = 1.0 * video_.gety() / background_->h;
-	scale_factor_ = p_.scale_background_ ? std::min<double>(xscale,yscale) : 1.0;
+	scale_factor_ = p_.scale_background() ? std::min<double>(xscale,yscale) : 1.0;
 
 	background_ =
 		scale_surface(background_, static_cast<int>(background_->w*scale_factor_), static_cast<int>(background_->h*scale_factor_));
@@ -176,7 +176,7 @@ void part_ui::prepare_geometry()
 void part_ui::prepare_floating_images()
 {
 	// Build floating image surfaces
-	foreach(const floating_image& fi, p_.floating_images_) {
+	foreach(const floating_image& fi, p_.get_floating_images()) {
 		imgs_.push_back( fi.get_render_input(scale_factor_, base_rect_) );
 	}
 }
@@ -199,7 +199,7 @@ bool part_ui::render_floating_images()
 
 	size_t fi_n = 0;
 	foreach(floating_image::render_input& ri, imgs_) {
-		const floating_image& fi = p_.floating_images_[fi_n];
+		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
 			SDL_BlitSurface(ri.image, NULL, video_.getSurface(), &ri.rect);
@@ -532,8 +532,8 @@ void part_ui::wait_for_input()
 
 part_ui::RESULT part_ui::show()
 {
-	if(p_.music_.empty() != true) {
-		sound::play_music_repeatedly(p_.music_);
+	if(p_.music().empty() != true) {
+		sound::play_music_repeatedly(p_.music());
 	}
 
 	if(p_.sound().empty() != true) {
@@ -542,7 +542,7 @@ part_ui::RESULT part_ui::show()
 
 	render_background();
 
-	if(p_.show_title_) {
+	if(p_.show_title()) {
 		render_title_box();
 	}
 

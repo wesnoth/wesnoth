@@ -242,8 +242,6 @@ private:
 	std::string sound_;
 
 	std::vector<floating_image> floating_images_;
-
-	friend class part_ui;
 };
 
 } // end namespace storyscreen
