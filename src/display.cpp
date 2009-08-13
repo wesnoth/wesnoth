@@ -370,11 +370,11 @@ void display::rect_of_hexes::iterator::operator++()
 }
 
 // begin is top left, and end is after bottom right
-display::rect_of_hexes::iterator display::rect_of_hexes::begin()
+display::rect_of_hexes::iterator display::rect_of_hexes::begin() const
 {
 	return iterator(map_location(left, top[left & 1]), *this);
 }
-display::rect_of_hexes::iterator display::rect_of_hexes::end()
+display::rect_of_hexes::iterator display::rect_of_hexes::end() const
 {
 	return iterator(map_location(right+1, top[(right+1) & 1]), *this);
 }
@@ -877,7 +877,7 @@ void display::flip()
 
 void display::update_display()
 {
-	if(screen_.update_locked()) {
+	if (screen_.update_locked()) {
 		return;
 	}
 
@@ -2363,10 +2363,8 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 		return false;
 
 	bool result = false;
-	rect_of_hexes hexes = hexes_under_rect(rect);
-	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-	for (;i != end; ++i) {
-		result |= invalidate(*i);
+	foreach (const map_location &loc, hexes_under_rect(rect)) {
+		result |= invalidate(loc);
 	}
 	return result;
 }
@@ -2383,28 +2381,27 @@ bool display::rectangle_need_update(const SDL_Rect& rect) const
 	if(invalidateAll_)
 		return true;
 
-	rect_of_hexes hexes = hexes_under_rect(visible_rect);
-	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-	for (;i != end; ++i) {
-		if(invalidated_.find(*i) != invalidated_.end())
+	foreach (const map_location &loc, hexes_under_rect(visible_rect)) {
+		if (invalidated_.find(loc) != invalidated_.end())
 			return true;
 	}
 
 	return false;
 }
 
-void display::invalidate_animations() {
-	if (preferences::animate_map()) {
-		rect_of_hexes hexes = get_visible_hexes();
-		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			if (!shrouded(*i)) {
-				if (builder_->update_animation(*i)) {
-					invalidate(*i);
-				} else {
-					invalidate_animations_location(*i);
-				}
-			}
+void display::invalidate_animations()
+{
+	if (!preferences::animate_map()) {
+		return;
+	}
+
+	foreach (const map_location &loc, get_visible_hexes())
+	{
+		if (shrouded(loc)) continue;
+		if (builder_->update_animation(loc)) {
+			invalidate(loc);
+		} else {
+			invalidate_animations_location(loc);
 		}
 	}
 }

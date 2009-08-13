@@ -189,27 +189,29 @@ public:
 
 		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
-			iterator(map_location loc, rect_of_hexes& rect)
+			iterator(const map_location &loc, const rect_of_hexes &rect)
 				: loc_(loc), rect_(rect){};
 
 			/** increment y first, then when reaching bottom, increment x */
 			void operator++();
-			bool operator!=(const iterator &that) const {return that.loc_ != loc_;};
+			bool operator==(const iterator &that) const { return that.loc_ == loc_; }
+			bool operator!=(const iterator &that) const { return that.loc_ != loc_; }
 			const map_location& operator*() const {return loc_;};
 
 			typedef std::forward_iterator_tag iterator_category;
 			typedef map_location value_type;
 			typedef int difference_type;
-			typedef map_location* pointer;
-			typedef map_location& reference;
+			typedef const map_location *pointer;
+			typedef const map_location &reference;
 
 			private:
 				map_location loc_;
-				rect_of_hexes& rect_;
+				const rect_of_hexes &rect_;
 		};
+		typedef iterator const_iterator;
 
-		iterator begin();
-		iterator end();
+		iterator begin() const;
+		iterator end() const;
 	};
 
 	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
