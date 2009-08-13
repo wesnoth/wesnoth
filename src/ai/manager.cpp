@@ -99,19 +99,14 @@ holder::~holder()
 }
 
 
-interface& holder::get_ai_ref( side_number side )
+interface& holder::get_ai_ref()
 {
 	if (!this->ai_) {
-		this->init(side);
+		this->init(this->side_);
 	}
 	assert(this->ai_);
 
 	return *this->ai_;
-}
-
-interface& holder::get_ai_ref()
-{
-	return get_ai_ref(this->side_);
 }
 
 
@@ -168,20 +163,12 @@ config holder::to_config() const
 
 const std::string holder::describe_ai()
 {
-	std::string sidestr;
-	//@todo 1.7 extract side naming to separate static function
-	//@todo 1.7.3 refactor the command ai role
-	if (this->side_ == manager::AI_TEAM_FALLBACK_AI){
-		sidestr = "'fallback_side'";
-	} else if (this->side_ == manager::AI_TEAM_COMMAND_AI){
-		sidestr = "'command_side'";
-	} else {
-		sidestr = lexical_cast<std::string>(this->side_);
-	}
+	std::string sidestr = lexical_cast<std::string>(this->side_);
+
 	if (this->ai_!=NULL) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
-		return std::string("[")+cfg_["ai_algorithm"]+std::string("] (not initialized) for side ")+sidestr+std::string(" : ");
+		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
 	}
 }
 
@@ -753,42 +740,13 @@ holder& manager::get_active_ai_holder_for_side( side_number side )
 
 	if (!ai_stack_for_specific_side.empty()){
 		return ai_stack_for_specific_side.top();
-	} else if (side==manager::AI_TEAM_COMMAND_AI){
-		return get_command_ai_holder( side );
 	} else {
-		return get_fallback_ai_holder( side );
-	}
-
-}
-
-holder& manager::get_command_ai_holder( side_number /*side*/ )
-{
-	holder& ai_holder = get_or_create_active_ai_holder_for_side_without_fallback(manager::AI_TEAM_COMMAND_AI,AI_TYPE_FORMULA_AI);
-	return ai_holder;
-}
-
-holder& manager::get_fallback_ai_holder( side_number /*side*/ )
-{
-	holder& ai_holder = get_or_create_active_ai_holder_for_side_without_fallback(manager::AI_TEAM_FALLBACK_AI,AI_TYPE_IDLE_AI);
-	return ai_holder;
-}
-
-holder& manager::get_or_create_active_ai_holder_for_side_without_fallback(side_number side, const std::string& ai_algorithm_type)
-{
-	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
-
-	if (!ai_stack_for_specific_side.empty()){
-		return ai_stack_for_specific_side.top();
-	} else {
-	      config cfg = configuration::get_default_ai_parameters();
-		cfg["ai_algorithm"] = ai_algorithm_type;//@todo: replace with fallback stage
+		config cfg = configuration::get_default_ai_parameters();
 		holder new_holder(side, cfg);
 		ai_stack_for_specific_side.push(new_holder);
 		return ai_stack_for_specific_side.top();
 	}
-
 }
-
 
 // =======================================================================
 // AI POINTERS
@@ -799,26 +757,6 @@ interface& manager::get_active_ai_for_side( side_number side )
 	return get_active_ai_holder_for_side(side).get_ai_ref();
 }
 
-
-interface& manager::get_or_create_active_ai_for_side_without_fallback( side_number side, const std::string& ai_algorithm_type )
-{
-	holder& ai_holder = get_or_create_active_ai_holder_for_side_without_fallback(side,ai_algorithm_type);
-	return ai_holder.get_ai_ref();
-}
-
-interface& manager::get_command_ai( side_number side )
-{
-	holder& ai_holder = get_command_ai_holder(side);
-	interface& ai = ai_holder.get_ai_ref(side);
-	return ai;
-}
-
-interface& manager::get_fallback_ai( side_number side )
-{
-	holder& ai_holder = get_fallback_ai_holder(side);
-	interface& ai = ai_holder.get_ai_ref(side);
-	return ai;
-}
 
 // =======================================================================
 // MISC

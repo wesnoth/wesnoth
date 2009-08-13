@@ -58,8 +58,6 @@ public:
 
 	interface& get_ai_ref();
 
-	interface& get_ai_ref( side_number side );//@todo 1.7.3 remove this
-
 	const std::string describe_ai();
 
 	void modify_ai_config_old( const config::const_child_itors &ai_parameters );
@@ -118,10 +116,6 @@ public:
 	// =======================================================================
 
 	static const size_t MAX_HISTORY_SIZE = 200;
-
-	static const int AI_TEAM_COMMAND_AI = 0;
-	static const int AI_TEAM_FALLBACK_AI = -1;
-
 
 	static const std::string AI_TYPE_COMPOSITE_AI;
 	static const std::string AI_TYPE_SAMPLE_AI;
@@ -625,21 +619,6 @@ private:
 	 */
 	static holder& get_active_ai_holder_for_side( side_number side );
 
-	/**
-	 * Gets command holder for specified @a side.
-	 */
-	static holder& get_command_ai_holder( side_number side );
-
-	/**
-	 * Gets fallback holder for specified @a side.
-	 */
-	static holder& get_fallback_ai_holder( side_number side );
-
-	/**
-	 * Gets or creates active holder for specified @a side without fallback.
-	 */
-	static holder& get_or_create_active_ai_holder_for_side_without_fallback(side_number side, const std::string& ai_algorithm_type);
-
 	// =======================================================================
 	// AI POINTERS
 	// =======================================================================
@@ -653,23 +632,6 @@ private:
 	 * @note This reference may become invalid after specific manager operations.
 	 */
 	static interface& get_active_ai_for_side( side_number side );
-
-
-	/**
-	 * Gets the command AI for the specified @a side.
-	 */
-	static interface& get_command_ai( side_number side );
-
-
-	/**
-	 * Gets the fallback AI for the specified @a side.
-	 */
-	static interface& get_fallback_ai( side_number side );
-
-	/**
-	 * Gets or creates active AI for specified @a side without fallback.
-	 */
-	static interface& get_or_create_active_ai_for_side_without_fallback( side_number side, const std::string& ai_algorithm_type );
 
 
 };
