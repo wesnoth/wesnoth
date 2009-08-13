@@ -1918,7 +1918,7 @@ void display::clear_redraw_observers()
 
 void display::draw(bool update,bool force) {
 //	log_scope("display::draw");
-	if (screen_.update_locked()) {
+	if (screen_.update_locked() || (SDL_GetAppState() & SDL_APPACTIVE) == 0) {
 		return;
 	}
 	bool changed = draw_init();
