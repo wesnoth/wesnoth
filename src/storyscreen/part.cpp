@@ -33,9 +33,6 @@
 #include "variable.hpp"
 #include "video.hpp"
 
-// TODO: remove when completed
-#include "stub.hpp"
-
 namespace storyscreen {
 
 floating_image::floating_image()

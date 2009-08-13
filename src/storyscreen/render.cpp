@@ -35,10 +35,6 @@
 #include "text.hpp"
 #include "video.hpp"
 
-// TODO: remove when completed
-#include "intro.hpp"
-#include "stub.hpp"
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
 #define WARN_NG LOG_STREAM(warn, log_engine)
