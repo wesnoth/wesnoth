@@ -455,22 +455,28 @@ void loadgame::load_game(std::string& filename, bool show_replay, bool cancel_or
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
 	gamestate_.classification().version = load_config_["version"];
 
-	if(gamestate_.classification().version != game_config::version) {
-		const version_info parsed_savegame_version(gamestate_.classification().version);
-		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
-		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
-		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
-			   check_version_compatibility();
-		}
-	}
+	check_version_compatibility();
 
 }
 
 void loadgame::check_version_compatibility()
 {
+	if (gamestate_.classification().version == game_config::version) {
+		return;
+	}
+
+	const version_info save_version = gamestate_.classification().version;
+	const version_info &wesnoth_version = game_config::wesnoth_version;
+	if (wesnoth_version.minor_version() % 2 == 0 &&
+	    wesnoth_version.major_version() == save_version.major_version() &&
+	    wesnoth_version.minor_version() == save_version.minor_version())
+	{
+		return;
+	}
+
 	// do not load if too old, if either the savegame or the current game
 	// has the version 'test' allow loading
-	if(!game_config::is_compatible_savegame_version(gamestate_.classification().version)) {
+	if (save_version < game_config::min_savegame_version) {
 		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
 		throw load_game_cancelled_exception();
 	}
@@ -528,14 +534,7 @@ void loadgame::load_multiplayer_game()
 		throw load_game_cancelled_exception();
 	}
 
-	if(gamestate_.classification().version != game_config::version) {
-		const version_info parsed_savegame_version(gamestate_.classification().version);
-		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
-		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
-		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
-			   check_version_compatibility();
-		}
-	}
+	check_version_compatibility();
 }
 
 void loadgame::copy_era(config &cfg)

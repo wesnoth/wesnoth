@@ -115,13 +115,6 @@ namespace game_config
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
 	extern const std::string  test_version;
-
-	/**
-	 * Tests whether the given version is compatible with the
-	 * running version, i.e. >= MIN_SAVEGAME_VERSION.
-	 * See wesconfig.h for the criteria used for this evaluation.
-	 */
-	bool is_compatible_savegame_version(const std::string& v);
 }
 
 #endif

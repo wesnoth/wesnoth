@@ -305,22 +305,4 @@ namespace game_config
 		return i->second;
 	}
 
-	bool is_compatible_savegame_version(const std::string& v)
-	{
-		bool ret = v==version;
-		if(ret) {
-			return true;
-		} else {
-			// do not load if too old, if either the savegame or the current game
-			// has the version 'test' allow loading
-			try {
-				ret = !(v < min_savegame_version && test_version != v && test_version != version);
-			} catch(version_info::not_sane_exception&) {
-				ERR_NG << "invalid version_info from saved game: '" << v << "'\n";
-				ret = false;
-			}
-		}
-		return ret;
-	}
-
 } // game_config
