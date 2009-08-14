@@ -60,7 +60,7 @@ static lg::log_domain log_ai_actions("ai/actions");
 // AI ACTIONS
 // =======================================================================
 action_result::action_result( side_number side )
-	: return_value_checked_(true),side_(side),status_(AI_ACTION_SUCCESS),is_execution_(false)
+	: return_value_checked_(true),side_(side),status_(AI_ACTION_SUCCESS),is_execution_(false),is_gamestate_changed_(false)
 {
 }
 
