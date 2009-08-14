@@ -641,6 +641,10 @@ variant variant::operator-() const
 bool variant::operator==(const variant& v) const
 {
 	if(type_ != v.type_) {
+		if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
+			return get_decimal_value() == v.get_decimal_value();
+		}
+
 		return false;
 	}
 
@@ -696,6 +700,10 @@ bool variant::operator!=(const variant& v) const
 bool variant::operator<=(const variant& v) const
 {
 	if(type_ != v.type_) {
+		if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
+			return get_decimal_value() <= v.get_decimal_value();
+		}
+
 		return type_ < v.type_;
 	}
 
