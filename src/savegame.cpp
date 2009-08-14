@@ -528,7 +528,14 @@ void loadgame::load_multiplayer_game()
 		throw load_game_cancelled_exception();
 	}
 
-	check_version_compatibility();
+	if(gamestate_.classification().version != game_config::version) {
+		const version_info parsed_savegame_version(gamestate_.classification().version);
+		if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
+		   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
+		   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
+			   check_version_compatibility();
+		}
+	}
 }
 
 void loadgame::copy_era(config &cfg)
