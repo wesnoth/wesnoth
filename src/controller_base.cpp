@@ -206,7 +206,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 			get_mouse_handler_base().mouse_update(browse_);
 		}
 		if (is_delay_enabled){
-			get_display().delay(20);
+			get_display().delay((SDL_GetAppState() & SDL_APPACTIVE) != 0 ? 20 : 200);
 		}
 	}
 	slice_end();
