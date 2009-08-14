@@ -406,8 +406,9 @@ public:
 	/**
 	 * Scrolls the display by xmov,ymov pixels.
 	 * Invalidation and redrawing will be scheduled.
+	 * @return true if the map actually moved.
 	 */
-	void scroll(int xmov, int ymov);
+	bool scroll(int xmov, int ymov);
 
 	/**
 	 * Zooms the display by the specified amount.

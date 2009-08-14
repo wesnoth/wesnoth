@@ -1444,7 +1444,7 @@ void display::draw_minimap()
                    box_color, screen);
 }
 
-void display::scroll(int xmove, int ymove)
+bool display::scroll(int xmove, int ymove)
 {
 	const int orig_x = xpos_;
 	const int orig_y = ypos_;
@@ -1456,7 +1456,7 @@ void display::scroll(int xmove, int ymove)
 
 	// Only invalidate if we've actually moved
 	if(dx == 0 && dy == 0)
-		return;
+		return false;
 
 	labels().scroll(dx, dy);
 	font::scroll_floating_labels(dx, dy);
@@ -1503,6 +1503,7 @@ void display::scroll(int xmove, int ymove)
 	update_rect(map_area());
 
 	redrawMinimap_ = true;
+	return true;
 }
 
 void display::set_zoom(int amount)
