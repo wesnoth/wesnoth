@@ -476,8 +476,9 @@ void loadgame::check_version_compatibility()
 		return;
 	}
 
-	// do not load if too old, if either the savegame or the current game
-	// has the version 'test' allow loading
+	// Do not load if too old. If either the savegame or the current
+	// game has the version 'test', load. This 'test' version is never
+	// supposed to occur, except when Soliton is testing MP servers.
 	if (save_version < game_config::min_savegame_version &&
 	    save_version != game_config::test_version &&
 	    wesnoth_version != game_config::test_version)
