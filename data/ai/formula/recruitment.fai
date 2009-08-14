@@ -1,222 +1,144 @@
 fai 'recruitment.fai'
-		# ===== Some general functions used later ==== #
 
-def sumarize_values( input_map )
-	sum(
-		values(input_map)
-	);
+{ai/formula/lib/map_evaluation.fai}
+{ai/formula/lib/util.fai}
 
-def lowest_value( input_map )
-	choose( input_map, -value ).value;
+def get_terrain_types(ai*, locations)
+	map( locations, 'l', fast_map[l].id ) where fast_map = location_to_terrain_map(ai);
 
-def highest_value( input_map )
-	choose( input_map, value ).value;
 
-def change_numbers_to_percents( input_map )
-	map( input_map, 
-		(value*100) / highest_value(input_map) 
-	);
+def get_villages_on_terrain_map( ai*, locations_map )
+	filter( villages, locations_map[self] );
 
-def add_number_to_values( input_map, number )
-	map( input_map, 
-		value + number 
-	);
+#
+for now important locations are villages only
+#
+def mark_important_locations(ai*, location_map )
+	map( location_map, 
+		if( tmp_villages[key], 
+			1000, 
+			value
+		)
+	)
+	where	tmp_villages = tomap( get_locations_surroundings( ai,  get_villages_on_terrain_map( ai, location_map ), 1 ) );
 
-#make sure we have only positive values in a map #
-
-def make_positive_only( input_map )
-	if( lowest_value( input_map ) < 0, 
-		add_number_to_values( 
-			input_map, 
-			abs(lowest_value(input_map))
-		), 
-		input_map 
-	);
-
-def sumarize_maps_values( map_A, map_B )
-	map( map_A + map_B, 
-		value + map_A[key]
-	);
-
-		#===== Evaluation how good unit is on a map ===== #
-
-# ==1==  evaluate average defense #
-#gives map where key is id of terrain, and value is number of hexes of that terrain on a gamemap#
-
-def locations_map(ai*) 
-	tomap( 
-		map( 
-			map.terrain, 
-			id 
-		) 
-	);
-
-#filters terrain map, min_percent it minimal % of map that terrain has to occupy to be considered in later evaluations# 
-
-def filtered_locations_map(ai*, min_percent)
-	filter( 
-		locations_map(ai) , 
-		value >  (map.w * map.h) / ( 100 / min_percent ) 
-	);
-
-#returns average defense of the unit #
-
-def unit_average_defense(ai*, unit, terrain_min_percent )
-	sum( 
-		values( 
-			map(
-				filtered_locations_map(ai,terrain_min_percent), 
-				defense_on( 
-					unit, 
-					find(map.terrain,id=key).loc
-				) *
-				value
-			) 
-		) 
-	) / 
-	sum(
-		values(
-			filtered_locations_map(
-				ai,
-				terrain_min_percent
-			)
+def get_important_locations(ai* )
+	keys(
+		map( ai.vars.side_terrain, 
+			value >= 1000 
 		)
 	);
 
-#returns map of units from units_list and their average defense (more -> better) #
+def enemy_leaders( ai* )
+	sum(
+		map( enemies, 'enemy',
+			filter( units_of_side[enemy], leader )
+		)
+	);
 
-def map_units_average_defense(ai*, units_list, terrain_min_percent) 
+def find_enemies_part( ai*, locations_map)
 	tomap(
-		map( 
-			units_list, 
-			id 
-		), 
-		map( 
-			units_list, 'unit', 
-			unit_average_defense(
-				ai, 
-				unit, 
-				terrain_min_percent 
-			) 
-		) 
-	);
-
-def units_average_defense(ai*, units_list, terrain_min_percent)
-	sum(
-		map( 
-			units_list, 'unit', 
-			unit_average_defense(
-				ai, 
-				unit, 
-				terrain_min_percent 
-			) 
-		) 
-	) /
-	size(
-		units_list
-	);
-
-
-# ==2== TODO: evaluate unit effectivness based on movement points and movement cost#
-
-
-		#===== Evaluation of game state - how good is ai doing ===== #
-
-# ==1== based on unit cost and current amount of gold #
-# returns number between 0 and 100 where: 0 we are losing, 100 we are winning #
-
-def units_cost_gold_eval(ai*)
-	min(
-		[
-			(
-				(
-					sum(
-						map(
-							allies, 'team', 
-							sum(
-								map(
-									units_of_side[team], 
-									cost
-								)
-							) + 
-							teams[team].gold 
-						)
-					) * 
-					100
-				) / 
-				sum(
-					map(
-						enemies, 'team', 
-						sum(
-							map(
-								units_of_side[team], 
-								cost
-							)
-						) + 
-						max(
-							[teams[team].gold, 0]
-						) 
-					)
+		enemy_leaders,
+		map( enemy_leaders, 'leader',
+			sum(
+				map( keys(locations_map), 'location',
+					distance_between( location, leader.loc )
 				)
-			) / 2,
-			100
-		]
-	);
+			)
+		)
+	)
+	where enemy_leaders = enemy_leaders( ai );
 
-# ==2== based on village possession #
+def find_enemies( ai*, locations_map)
+	filter( keys(enemies_part), 'leader',
+		enemies_part[leader] <= average( values( enemies_part ) )
+	)
+	where enemies_part = find_enemies_part( ai, locations_map );
 
-def count_allied_villages(ai*)
+
+def direct_enemies_units( ai* )
 	sum(
-		map(
-			allies, 'side', 
-			size(
-				villages_of_side[side]
-			)
+		map( vars.direct_enemies, 'enemy',
+			units_of_side[enemy.side]
 		)
 	);
 
-def count_enemy_villages(ai*)
+def direct_enemies_recruits( ai* )
 	sum(
-		map(
-			enemies, 'side', 
-			size(
-				villages_of_side[side]
-			)
+		map( vars.direct_enemies, 'enemy',
+			recruits_of_side[enemy.side]
 		)
 	);
 
-# multipled by 1000 to increase precision #
+#
+returns map of important locations and number of their occurences on a gamemap
+for example: [ 'forest' -> 10 ]
+#
+def important_locations_map(ai*)
+	tomap(get_terrain_types(ai, get_important_locations(ai)));
 
-def village_evaluation(ai*)
-	(
-		50000 + 
-		(
-			count_allied_villages(ai) - 
-			count_enemy_villages(ai)
-		) * 
-		(
-			50000 /
-			size(
-				villages
-			)
+
+def my_recruits_defense(ai*)
+	tomap( map(my_recruits, id),
+		map( my_recruits, 'recruit',
+			sum(values(map( important_locs,
+				defense_on(recruit, id_translator[key]) * value
+			)))
 		)
-	) /
-	1000;
+	)
+	where	important_locs = important_locations_map(ai),
+		id_translator = id_to_location_map(ai);
 
-# ==3== combined 2 of the above #
+def my_recruits_movement_cost(ai*)
+	tomap( map(my_recruits, id),
+		map( my_recruits, 'recruit',
+			sum(values(map( important_locs,
+				movement_cost(recruit, id_translator[key]) * value
+			)))
+		)
+	)
+	where	important_locs = important_locations_map(ai),
+		id_translator = id_to_location_map(ai);
 
-def eval(ai*)
-	( 
-		units_cost_gold_eval(ai) + 
-		village_evaluation(ai)
-	) / 
-	2;
+def locally_normalize_to_highest( input_map )
+	map( input_map, (value * 100)/max )
+	where max = highest_value(input_map);
 
-		#===== Evaluation how effective my units are against the enemy ===== #
+def locally_normalize_to_lowest( input_map )
+	map( input_map, (value * 100)/min )
+	where min = lowest_value(input_map);
 
-#==1==  basic evaluation #
 
-# evaluate how much damage unit can inflict - how much damage unit can get#
+
+# look for who we fight against #
+def enemy_leaders(ai*)
+	map( enemies, 'enemy_side', find(units_of_side[enemy_side], leader ) );
+
+
+def distance_to_enemies(ai*)
+	tomap( enemies, map( enemy_leaders(ai), distance_between( my_leader.loc, loc ) ));
+
+# not used anymore
+def find_important_opponents(ai*)
+	keys(filter( dist_en, value<avg ))
+	where	avg = (average(values(distance_to_enemies(ai)))*11)/10,
+		dist_en = distance_to_enemies(ai);
+
+
+def current_enemies_units(ai*)
+	sum(map( find_important_opponents(ai), 'enemy_side',
+		units_of_side[ enemy_side ] ));
+
+def current_enemies_recruits(ai*)
+	sum(map( find_important_opponents(ai), 'enemy_side',
+		recruits_of_side[ enemy_side ] ));
+#
+
+def current_enemies(ai*)
+	if( en_units.size > 5, en_units, en_recruis )
+	where	en_units = direct_enemies_units(ai),
+		en_recruis = direct_enemies_recruits(ai);
+
 
 def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 	sum( 
@@ -229,17 +151,17 @@ def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 					],
 					max(
 						[
-							self[0] - self[2],
-							self[1] - self[3]
+							self[0],
+							self[1]
 						]
-					)
+					)*3
 				) 
 			)
 		)
 	);
 
 def evaluate_defender_against_opponents(ai*, unit, enemy_units)
-	-sum( 
+	sum( 
 		map( 
 			enemy_units, 'enemy_unit', 
 			sum(
@@ -252,240 +174,116 @@ def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 							self[0] - self[2],
 							self[1] - self[3]
 						]
-					)
-				)
+					)*5
+				) 
 			)
 		)
 	);
 
-def units_hp_map(ai*, units)
-	tomap( 
-		map(
-			units, 
-			id
-		), 
-		map( 
-			units, 
-			hitpoints
+def evaluate_recruits_offensive_combat(ai*, recruits, enemy_units)
+	map( recruits, 'recruit',
+		evaluate_attacker_against_opponents( ai, recruit, enemy_units )
+	);
+
+def evaluate_recruits_defensive_combat(ai*, recruits, enemy_units)
+	map( recruits, 'recruit',
+		evaluate_defender_against_opponents( ai, recruit, enemy_units )
+	);
+
+def combine_maps_mul( map_A, map_B )
+	map( map_A, value * map_B[key] );
+
+def combine_maps_sub( map_A, map_B )
+	map( map_A, value - map_B[key] );
+
+def combine_maps_add( map_A, map_B )
+	map( map_A, value + map_B[key] );
+
+def combine_maps_div( map_A, map_B )
+	map( map_A, value / map_B[key] );
+
+#
+[ locally_normalize_to_highest(my_recruits_defense(self)),
+tomap(map(my_recruits, id),map(my_recruits, hitpoints) ),
+ locally_normalize_to_lowest(my_recruits_movement_cost(self)),
+tomap(map(my_recruits, id),map(my_recruits, total_movement))]
+#
+
+def consider_unit_cost(ai*)
+	make_positive_only(map( cost_map, (value - average(values(cost_map))) * 80))
+	where cost_map = tomap(map(my_recruits, id),map(my_recruits, cost ));
+
+
+def defense_hp_eval(ai*, recruits_id_map)
+	locally_normalize_to_highest(
+		combine_maps_mul(
+			my_recruits_defense(self),
+			tomap(recruits_id_map, map(
+				my_recruits,
+				hitpoints*15)
+			)
 		)
 	);
 
-#in case side's gold is more than 50, add units that side can recruit to the side's unit list#
-
-def create_side_unit_list(ai*, side)
-	if( 
-		teams[side].gold > 50, 
-		recruits_of_side[side], 
-		[]
-	) + 
-	units_of_side[side];
-
-def evaluate_my_recruits_as_attackers(ai*)
-	tomap( 
-		map(
-			my_recruits, 
-			id
-		), 
-		map(
-			my_recruits, 'my_unit',
-			sum(
-				map(
-					enemies, 'enemy_side',
-					evaluate_attacker_against_opponents(
-						ai,
-						my_unit,
-						create_side_unit_list(
-							ai, 
-							enemy_side
+def movement_eval(ai*, recruits_id_map)
+	locally_normalize_to_highest(
+		make_positive_only(
+			map(
+				combine_maps_div(
+					my_recruits_movement_cost( ai ),
+					tomap( recruits_id_map,
+						map( my_recruits,
+							total_movement
 						)
 					)
-				)
+				),
+				-value
 			)
 		)
 	);
 
-def evaluate_my_recruits_as_defenders(ai*)
-	tomap(
-		map(
-			my_recruits, 
-			id
-		),
-		map( 
-			my_recruits, 'my_unit',
-			sum(
-				map(
-					enemies, 'enemy_side',
-					evaluate_defender_against_opponents(
-						ai,
-						my_unit,
-						create_side_unit_list(
-							ai,
-							enemy_side
-						)
-					)
-				)
-			)
+def fighting_eval(ai*, recruits_id_map)
+	make_positive_only(
+		combine_maps_sub(
+			tomap(recruits_id_map, evaluate_recruits_offensive_combat( ai, my_recruits, current_enemies ) ),
+			tomap(recruits_id_map, evaluate_recruits_defensive_combat( ai, my_recruits, current_enemies ) )
 		)
-	);
+	)
+	where current_enemies = current_enemies(ai);
+
+def level_zero_malus(ai*)
+	map( lvl_map,
+		if(value = 0, 40, 0)
+	)
+	where lvl_map = tomap(
+				map(my_recruits, id),
+				map(my_recruits, level )
+			);
+
+#tmp function #
+def filter_out( input_map, comparable_map )
+	filter( input_map, comparable_map[key] > comp_val)
+	where comp_val = average(values(comparable_map))/2;
 
 
-# === 2 ===  now consider abilities and weapon specials  #
-
-def abilities_weights()
-	['skirmisher' -> 15, 'ambush' -> 10, 'nightstalk' -> 20, 'regenerates' -> 20, 'healing' -> 15, 'curing' -> 10, 'leadership' -> 20, 'illumination' -> 15, 'teleport' -> 10, 'steadfast' -> 15 ];
-
-def weapon_specials_weights()
-	[ 'backstab' -> 20 ,'slow' -> 10 ,'berserk' -> 20 ,'petrifies' -> 60 ,'plague' -> 10 ,'marksman' -> 30 ,'magical' -> 40 ,'charge' -> 30 ,'drains' -> 30,  'firststrike' -> 10, 'poison' -> 25 ];
-
-def apply_abilities_weights( units_map )
-	map( 
-		units_map, 
-		value +
-		(
-			value * 
-			max(
-				map(
-					get_unit_type( key ).abilities, 'ability',
-					abilities_weights()[ability]
-				)
-			)
-		) / 100
-	);
-
-def apply_weapon_specials_weights( units_map )
-	map(
-		units_map, 
-		value +
-		(
-			value *
-			max(
-				map(
-					get_unit_type( key ).attacks, 'attack',
-					vars.weapon_specials[attack.special]
-				)
-			)
-		) / 100
-	);
-
-# since undead units don't get random traits and are balanced with that, we need to lower their evaluation a bit to match fairly the living units #
-
-def undead_malus( units_map )
-	map( 
-		units_map, 
-		if(
-			get_unit_type(key).undead,
-			( value * 90 ) / 100,
-			value 
-		)
-	);
-
-# === 3 ===  pit 1 and 2 together  #
-
-def evaluate_attackers(ai*)
+def calculate_recruits(ai*)
 	change_numbers_to_percents(
-		apply_abilities_weights(
-			apply_weapon_specials_weights(
-				undead_malus( 
-					make_positive_only(
-						evaluate_my_recruits_as_attackers( ai )	
-					)
-				)
+		combine_maps_sub(
+			combine_maps_add(
+				combine_maps_add( 
+					defense_hp_eval(ai, recruits_id_map ),
+					movement_eval(ai, recruits_id_map)
+				),
+				multiply_values(
+					fighting_eval(ai,recruits_id_map), 5
+				) 
+			),
+			combine_maps_add(
+				consider_unit_cost(ai),
+				level_zero_malus(ai)
 			)
 		)
-	);
-
-def evaluate_defenders(ai*)
-	map(
-		map(
-			change_numbers_to_percents(
-				apply_abilities_weights(
-					apply_weapon_specials_weights(
-						undead_malus( 
-							make_positive_only(
-								evaluate_my_recruits_as_defenders( ai )	
-							)
-						)
-					)
-				)
-			),
-			value / 3
-		), 
-		value +
-		map(
-			change_numbers_to_percents(
-				units_hp_map(
-					ai,
-					my_recruits
-				)
-			),
-		value * 2 / 3
-		)[key]
-	);
-
-	#=========== we have evaluation of game state and units, time to combine them: ==========#
-		#=========	recruitment_list_builder	=========#
-
-def rlb_apply_eval(eval, attackers_map, defenders_map, offset)
-	map(
-		sumarize_maps_values(
-			map(
-				attackers_map, 
-				value * (eval+offset)
-			),
-			map(
-				defenders_map,
-				value * ( (100 - eval) - offset )
-			)
-		),
-		value / 100
-	);
-
-def rlb_remove_lowest( input_map, percent)
-	filter(
-		input_map, 
-		value > 
-		(
-			(
-				percent * sumarize_values(input_map)
-			) / 100
-		)
-	);
-
-def rlb_first_step(eval, attackers_map, defenders_map, offset)
-	rlb_remove_lowest(
-		rlb_apply_eval(
-			eval,
-			attackers_map,
-			defenders_map,
-			offset
-		),
-		10
-	);
-
-def recruitment_list_builder(eval, attackers_map, defenders_map)
-	map(
-		rlb_first_step(
-			eval,
-			attackers_map,
-			defenders_map,
-			40
-		),
-		(
-			(
-				value * 100
-			) / 
-			sumarize_values(
-				rlb_first_step(
-					eval,
-					attackers_map,
-					defenders_map,
-					40
-				)
-			)
-		)
-	);
-
-		# ========== choose the unit to recruit now ========= #
+	) where recruits_id_map = map(my_recruits, id);
 
 def unit_chooser(ai*,unit_map) 
 	choose(
@@ -505,83 +303,33 @@ def unit_chooser(ai*,unit_map)
 		)
 	);
 
-def unit_map_cost_filter(ai*, unit_map)
-	filter( unit_map,
-		get_unit_type(key).cost < my_side.gold
-	);
+if( vars.side_terrain,
+	if(vars.direct_enemies,
+		if(vars.turn_initialized = turn,
+	
+			safe_call( recruit(unit_chooser(self, vars.recruits_map)),
+				end
+			),
+	
+			[
+			set_var(debug_print('turn_initialized'), turn) ,
+			set_var(debug_print('recruits_map'), calculate_recruits(self))
+			]
+		),
 
-		# ==========	Main formula section 	========== #
+		set_var( 'direct_enemies', find_enemies(self, vars.side_terrain ) )
+	),
 
-def initialize_weapon_specials_map(ai*)
-	if(vars.weapon_specials_init != turn,
-		[
-			set_var('weapon_specials_init', turn),
-			set_var('weapon_specials',
-				map(
-					weapon_specials_weights(),
-					if( key = 'magical',
-						units_average_defense(ai, enemy_units, 10),
-						if( key = 'marksman',
-							units_average_defense(ai, enemy_units, 10) - 10,
-							value
-						)
-					)
+	set_var('side_terrain',
+			mark_important_locations( self,
+				calculate_map_ownership(
+					recruits_of_side,
+					map(filter(sum(units_of_side), leader), loc),
+					4, 7, 4
 				)
 			)
-		],
-		[]
-	);
-
-def create_recruits_map(ai*)
-	if(vars.recruits_map_creator != turn,
-		[
-			set_var('recruits_map_creator', turn ),
-			set_var('recruits_map',
-				debug_print('final unit evaluation: ', recruitment_list_builder(
-					debug_print('current AI evaluation (0-100): ', eval(ai)),
-					debug_print('attackers evaluation: ',evaluate_attackers(ai)),
-					debug_print('defenders evaluation: ',evaluate_defenders(ai))
-				))
-			)
-		],
-		[]
-	);
-
-def castle_space(ai*)
-	filter( map( castle_locs( my_leader.loc ), 'location', if( unit_at( location ), 1, 0 ) ), self = 0  ).size;
-
-if(vars.turn_initialized = turn,
-		if( my_leader.loc = nearest_keep( my_leader.loc ),
-			if( 
-				get_unit_type(
-					choose(
-						vars.recruits_map,
-						-get_unit_type(key).cost
-					).key
-				).cost <
-				my_side.gold,
-				if( castle_space(self),
-					recruit(debug_print(
-						unit_chooser(
-							self,
-							unit_map_cost_filter(
-								self,
-								vars.recruits_map
-							)
-						)
-					)),
-					fallback()
-				),
-				fallback() 
-			),
-			if( my_leader.movement_left > 0,
-				move( my_leader.loc, nearest_keep( my_leader.loc ) ),
-				fallback()
-			)
-		),
-	[set_var(debug_print('turn_initialized'), turn)] +
-	initialize_weapon_specials_map(self) +
-	create_recruits_map(self)
+	)
 )
+
 
 faiend
