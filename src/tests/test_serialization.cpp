@@ -21,8 +21,6 @@
 
 BOOST_AUTO_TEST_CASE( utils_join_test )
 {
-	BOOST_MESSAGE( "Starting utils::join test!" );
-
 	std::vector<std::string> fruit;
 
 	BOOST_CHECK( utils::join(fruit) == "" );

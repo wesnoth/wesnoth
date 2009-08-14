@@ -815,9 +815,7 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_CUSTOM_CMD:
 			custom_command();
 			break;
-//%%
 		case HOTKEY_AI_FORMULA:
-			std::cerr <<" run ai formula\n";
 			ai_formula();
 			break;
 		case HOTKEY_CLEAR_MSG:

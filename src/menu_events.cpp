@@ -3156,7 +3156,6 @@ private:
 	void menu_handler::ai_formula()
 	{
             	if (network::nconnections() == 0) {
-                    std::cerr << "showing ai formula...\n";
                     textbox_info_.show(gui::TEXTBOX_AI,sgettext("prompt^Command:"), "", false, *gui_);
 		}
 	}
