@@ -30,6 +30,7 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
@@ -1370,6 +1371,18 @@ private:
 
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
+		if(gui2::new_widgets) {
+			assert(gui_ != NULL);
+			static unit_race::GENDER last_gender = unit_race::MALE;
+
+			gui2::tunit_create create_dlg;
+			create_dlg.set_gender(last_gender);
+
+			create_dlg.show(gui_->video());
+
+			last_gender = create_dlg.gender();
+			return;
+		}
 		std::vector<std::string> options;
 		static int last_selection = -1;
 		static bool random_gender = false;
