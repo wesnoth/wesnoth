@@ -178,7 +178,7 @@ void part::resolve_wml(const vconfig &cfg)
 	if(cfg.has_attribute("story")) {
 		text_ = cfg["story"];
 		if (cfg.has_attribute("speaker")) {
-			text_ = "@" + cfg["speaker"] + "\n\n" + text_;
+			text_ = "<span color='green'>" + cfg["speaker"] + "</span>\n\n" + text_;
 		}
 	}
 	if(cfg.has_attribute("title")) {
