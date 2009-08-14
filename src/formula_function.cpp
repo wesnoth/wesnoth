@@ -689,10 +689,15 @@ private:
 class null_function : public function_expression {
 public:
 	explicit null_function(const args_list& args)
-	    : function_expression("null", args, 0, 0)
+	    : function_expression("null", args, 0, -1)
 	{}
 private:
-	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		if( args().size() != 0 ) {
+			for( size_t i = 0; i < args().size() ; i++)
+				args()[i]->evaluate(variables,fdb);
+		}
+		
 		return variant();
 	}
 };
