@@ -316,7 +316,7 @@ SET(wesnoth-main_SRC
     gui/dialogs/mp_cmd_wrapper.cpp
     gui/dialogs/title_screen.cpp
     gui/dialogs/transient_message.cpp
-    gui/widgets/unit_create.cpp
+    gui/dialogs/unit_create.cpp
     gui/dialogs/wml_message.cpp
     gui/widgets/button.cpp
     gui/widgets/control.cpp
