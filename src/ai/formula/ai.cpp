@@ -429,20 +429,26 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			}
 			made_moves.push_back(action);
 		} else if(recruit_command) {
-			recruit_result_ptr recruit_result = ai_.execute_recruit_action(recruit_command->type(), recruit_command->loc());
+			recruit_result_ptr recruit_result = ai_.check_recruit_action(recruit_command->type(), recruit_command->loc());
 
 			//is_ok()==true means that the action is successful (eg. no unexpected events)
 			//is_ok() must be checked or the code will complain :)
+			if( recruit_result->is_ok() )
+				recruit_result->execute();
+
 			if (!recruit_result->is_ok()) {
-				//get_status() can be used to fetch the error code
-				ERR_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
 
 				if(safe_call) {
 					//safe call was called, prepare error information
 					error = variant(new safe_call_result(recruit_command,
 									recruit_result->get_status()));
+
+					LOG_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
+				} else {
+					ERR_AI << "ERROR #" <<recruit_result->get_status() << " while executing 'recruit' formula function\n"<<std::endl;
 				}
 			}
+			
 			//is_gamestate_changed()==true means that the game state was somehow changed by action.
 			//it is believed that during a turn, a game state can change only a finite number of times
 			if( recruit_result->is_gamestate_changed() )
