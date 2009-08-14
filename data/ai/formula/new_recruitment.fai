@@ -295,12 +295,16 @@ if( vars.side_terrain,
 			]
 			+
 			if( turn = 1,
-				sum(
-					[
-					values(map( vars.side_terrain, if( value > 900, debug_label( key, 'o'), debug_label(key, '.') ) )),
-					map( vars.direct_enemies, debug_label( loc, '*****************☠') )
-					]
-				),
+				[
+					null(
+						sum(
+							[
+							values(map( vars.side_terrain, if( value > 900, debug_label( key, 'o'), debug_label(key, '.') ) )),
+							map( vars.direct_enemies, debug_label( loc, '*****************☠') )
+							]
+						)
+					)
+				],
 				[]
 			)
 		),
