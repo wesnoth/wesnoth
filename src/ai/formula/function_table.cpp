@@ -262,20 +262,20 @@ private:
 		int w = ai_.get_info().map.w();
 		int h = ai_.get_info().map.h();
 
-		const variant units_input = args()[0]->evaluate(variables);
-		const variant leaders_input = args()[1]->evaluate(variables);
+		const variant units_input = args()[0]->evaluate(variables,fdb);
+		const variant leaders_input = args()[1]->evaluate(variables,fdb);
 
 		int enemy_tollerancy = 3;
 		if( args().size() > 2 )
-			enemy_tollerancy = args()[2]->evaluate(variables).as_int();
+			enemy_tollerancy = args()[2]->evaluate(variables,fdb).as_int();
 
 		int enemy_border_tollerancy = 5;
 		if( args().size() > 3 )
-			enemy_border_tollerancy = args()[3]->evaluate(variables).as_int();
+			enemy_border_tollerancy = args()[3]->evaluate(variables,fdb).as_int();
 
 		int ally_tollerancy = 3;
 		if( args().size() > 4 )
-			ally_tollerancy = args()[4]->evaluate(variables).as_int();
+			ally_tollerancy = args()[4]->evaluate(variables,fdb).as_int();
 
 		if( !units_input.is_list() )
 			return variant();
