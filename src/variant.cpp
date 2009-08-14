@@ -452,12 +452,14 @@ variant variant::get_member(const std::string& str) const
 	}
 }
 
-int variant::get_decimal_value() const
+int variant::as_decimal() const
 {
-	if( type_ == TYPE_INT ) {
-		return int_value_*1000;
-	} else if( type_ == TYPE_DECIMAL) {
+	if( type_ == TYPE_DECIMAL) {
 		return decimal_value_;
+	} else if( type_ == TYPE_INT ) {
+		return int_value_*1000;
+	} else if( type_ == TYPE_NULL) {
+		return 0;
 	} else {
 		throw type_error((formatter() << "type error: "
 			<< " expected integer or decimal but found "
@@ -527,7 +529,7 @@ variant variant::operator+(const variant& v) const
 		}
 	}
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
-		return variant( get_decimal_value() + v.get_decimal_value() , DECIMAL_VARIANT);
+		return variant( as_decimal() + v.as_decimal() , DECIMAL_VARIANT);
 	}
 
 	return variant(as_int() + v.as_int());
@@ -536,7 +538,7 @@ variant variant::operator+(const variant& v) const
 variant variant::operator-(const variant& v) const
 {
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
-		return variant( get_decimal_value() - v.get_decimal_value() , DECIMAL_VARIANT);
+		return variant( as_decimal() - v.as_decimal() , DECIMAL_VARIANT);
 	}
 	
 	return variant(as_int() - v.as_int());
@@ -546,9 +548,9 @@ variant variant::operator*(const variant& v) const
 {
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
 
-		int64_t long_int = get_decimal_value();
+		int64_t long_int = as_decimal();
 
-		long_int *= v.get_decimal_value();
+		long_int *= v.as_decimal();
 
 		long_int /= 100;
 
@@ -567,13 +569,13 @@ variant variant::operator*(const variant& v) const
 variant variant::operator/(const variant& v) const
 {
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
-		int denominator = v.get_decimal_value();
+		int denominator = v.as_decimal();
 
 		if(denominator == 0) {
 			throw type_error((formatter() << "divide by zero error").str());
 		}
 
-		int64_t long_int = get_decimal_value();
+		int64_t long_int = as_decimal();
 
 		long_int *= 10000;
 
@@ -614,7 +616,7 @@ variant variant::operator^(const variant& v) const
 {
 	if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
 
-		double res = pow( get_decimal_value()/1000.0 , v.get_decimal_value()/1000.0 );
+		double res = pow( as_decimal()/1000.0 , v.as_decimal()/1000.0 );
 
 		res *= 1000;
 		int i =  static_cast<int>( res );
@@ -642,7 +644,7 @@ bool variant::operator==(const variant& v) const
 {
 	if(type_ != v.type_) {
 		if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
-			return get_decimal_value() == v.get_decimal_value();
+			return as_decimal() == v.as_decimal();
 		}
 
 		return false;
@@ -701,7 +703,7 @@ bool variant::operator<=(const variant& v) const
 {
 	if(type_ != v.type_) {
 		if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
-			return get_decimal_value() <= v.get_decimal_value();
+			return as_decimal() <= v.as_decimal();
 		}
 
 		return type_ < v.type_;

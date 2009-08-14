@@ -67,9 +67,12 @@ public:
 	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
 	bool is_map() const { return type_ == TYPE_MAP; }
 	int as_int() const { if(type_ == TYPE_NULL) { return 0; } must_be(TYPE_INT); return int_value_; }
-	bool as_bool() const;
+	
+	//this function returns variant's internal representation of decimal number:
+	//for example number 1.234 is represented as 1234
+	int as_decimal() const;
 
-	int get_decimal_value() const;
+	bool as_bool() const;
 
 	bool is_list() const { return type_ == TYPE_LIST; }
 

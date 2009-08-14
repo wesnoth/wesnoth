@@ -702,6 +702,98 @@ private:
 	}
 };
 
+
+class ceil_function : public function_expression {
+public:
+	explicit ceil_function(const args_list& args)
+	    : function_expression("ceil", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		int f = d%1000;
+
+		if( f > 0 ) {
+			d/=1000;
+			return variant( ++d );
+		} else if( f < 0 ) {
+			d/=1000;
+			return variant( --d );
+		} else {
+			d/=1000;
+			return variant( d );
+		}
+	}
+};
+
+class round_function : public function_expression {
+public:
+	explicit round_function(const args_list& args)
+	    : function_expression("round", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		int f = d%1000;
+
+		if( f >= 500 ) {
+			d/=1000;
+			return variant( ++d );
+		} else if( f <= -500 ) {
+			d/=1000;
+			return variant( --d );
+		} else {
+			d/=1000;
+			return variant( d );
+		}
+	}
+};
+
+class floor_function : public function_expression {
+public:
+	explicit floor_function(const args_list& args)
+	    : function_expression("floor", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		if( d%1000 != 0 ) {
+			d/=1000;
+			return variant( d );
+		} else {
+			d/=1000;
+			return variant( d );
+		}
+	}
+};
+
+
+
+class as_decimal_function : public function_expression {
+public:
+	explicit as_decimal_function(const args_list& args)
+	    : function_expression("as_decimal", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		variant decimal = args()[0]->evaluate(variables,fdb);
+
+		int d = decimal.as_decimal();
+
+		return variant( d , variant::DECIMAL_VARIANT );
+	}
+};
+
+
 class refcount_function : public function_expression {
 public:
 	explicit refcount_function(const args_list& args)
@@ -864,6 +956,10 @@ functions_map& get_functions_map() {
 		FUNCTION(head);
 		FUNCTION(size);
 		FUNCTION(null);
+		FUNCTION(ceil);
+		FUNCTION(floor);
+		FUNCTION(round);
+		FUNCTION(as_decimal);
 		FUNCTION(refcount);
 		FUNCTION(loc);
 		FUNCTION(index_of);
