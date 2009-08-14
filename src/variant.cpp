@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <inttypes.h>
 #include <string.h>
 
 #include "boost/lexical_cast.hpp"
@@ -17,6 +18,8 @@ std::string variant_type_to_string(variant::TYPE type) {
 		return "null";
 	case variant::TYPE_INT:
 		return "int";
+	case variant::TYPE_DECIMAL:
+		return "decimal";
 	case variant::TYPE_CALLABLE:
 		return "object";
 	case variant::TYPE_LIST:
@@ -201,6 +204,7 @@ void variant::increment_refcount()
 
 	// These are not used here, add them to silence a compiler warning.
 	case TYPE_NULL:
+	case TYPE_DECIMAL:
 	case TYPE_INT :
 		break;
 	}
@@ -230,6 +234,7 @@ void variant::release()
 
 	// These are not used here, add them to silence a compiler warning.
 	case TYPE_NULL:
+	case TYPE_DECIMAL:
 	case TYPE_INT :
 		break;
 	}
@@ -239,6 +244,9 @@ variant::variant() : type_(TYPE_NULL), int_value_(0)
 {}
 
 variant::variant(int n) : type_(TYPE_INT), int_value_(n)
+{}
+
+variant::variant(int n, variant::DECIMAL_VARIANT_TYPE /*type*/) : type_(TYPE_DECIMAL), decimal_value_(n)
 {}
 
 variant::variant(const game_logic::formula_callable* callable)
@@ -444,6 +452,20 @@ variant variant::get_member(const std::string& str) const
 	}
 }
 
+int variant::get_decimal_value() const
+{
+	if( type_ == TYPE_INT ) {
+		return int_value_*1000;
+	} else if( type_ == TYPE_DECIMAL) {
+		return decimal_value_;
+	} else {
+		throw type_error((formatter() << "type error: "
+			<< " expected integer or decimal but found "
+			<< variant_type_to_string(type_)
+			<< " (" << to_debug_string() << ")").str());
+	}
+}
+
 bool variant::as_bool() const
 {
 	switch(type_) {
@@ -451,6 +473,8 @@ bool variant::as_bool() const
 		return false;
 	case TYPE_INT:
 		return int_value_ != 0;
+	case TYPE_DECIMAL:
+		return decimal_value_ != 0;
 	case TYPE_CALLABLE:
 		return callable_ != NULL;
 	case TYPE_LIST:
@@ -502,22 +526,69 @@ variant variant::operator+(const variant& v) const
 			return variant(&res);
 		}
 	}
+	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
+		return variant( get_decimal_value() + v.get_decimal_value() , DECIMAL_VARIANT);
+	}
 
 	return variant(as_int() + v.as_int());
 }
 
 variant variant::operator-(const variant& v) const
 {
+	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
+		return variant( get_decimal_value() - v.get_decimal_value() , DECIMAL_VARIANT);
+	}
+	
 	return variant(as_int() - v.as_int());
 }
 
 variant variant::operator*(const variant& v) const
 {
+	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
+
+		int64_t long_int = get_decimal_value();
+
+		long_int *= v.get_decimal_value();
+
+		long_int /= 100;
+
+		if( long_int%10 >= 5) {
+			long_int /= 10;
+			++long_int;
+		} else
+			long_int/=10;
+
+		return variant( static_cast<int>(long_int) , variant::DECIMAL_VARIANT );
+	}
+
 	return variant(as_int() * v.as_int());
 }
 
 variant variant::operator/(const variant& v) const
 {
+	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
+		int denominator = v.get_decimal_value();
+
+		if(denominator == 0) {
+			throw type_error((formatter() << "divide by zero error").str());
+		}
+
+		int64_t long_int = get_decimal_value();
+
+		long_int *= 10000;
+
+		long_int /= denominator;
+
+		if( long_int%10 >= 5) {
+			long_int /= 10;
+			++long_int;
+		} else
+			long_int/=10;
+
+		return variant(  static_cast<int>(long_int) , variant::DECIMAL_VARIANT);
+	}
+
+
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 	if(denominator == 0) {
@@ -538,13 +609,32 @@ variant variant::operator%(const variant& v) const
 	return variant(numerator%denominator);
 }
 
+
 variant variant::operator^(const variant& v) const
 {
+	if( type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL ) {
+
+		double res = pow( get_decimal_value()/1000.0 , v.get_decimal_value()/1000.0 );
+
+		res *= 1000;
+		int i =  static_cast<int>( res );
+
+		res -= i;
+
+		if( res > 0.5 )
+			i++;
+		
+		return variant( i , variant::DECIMAL_VARIANT);
+	}
+
 	return variant(static_cast<int>(pow(static_cast<float>(as_int()), v.as_int())));
 }
 
 variant variant::operator-() const
 {
+	if( type_ == TYPE_DECIMAL)
+		return variant( -decimal_value_, variant::DECIMAL_VARIANT );
+
 	return variant(-as_int());
 }
 
@@ -565,6 +655,10 @@ bool variant::operator==(const variant& v) const
 
 	case TYPE_INT: {
 		return int_value_ == v.int_value_;
+	}
+
+	case TYPE_DECIMAL: {
+		return decimal_value_ == v.decimal_value_;
 	}
 
 	case TYPE_LIST: {
@@ -616,6 +710,10 @@ bool variant::operator<=(const variant& v) const
 
 	case TYPE_INT: {
 		return int_value_ <= v.int_value_;
+	}
+
+	case TYPE_DECIMAL: {
+		return decimal_value_ <= v.decimal_value_;
 	}
 
 	case TYPE_LIST: {
@@ -748,6 +846,28 @@ void variant::serialize_to_string(std::string& str) const
 	case TYPE_INT:
 		str += boost::lexical_cast<std::string>(int_value_);
 		break;
+	case TYPE_DECIMAL: {
+		std::ostringstream s;
+
+		int fractional = decimal_value_ % 1000;
+		int integer = (decimal_value_ - fractional) / 1000;
+
+		s << integer << ".";
+
+		fractional = abs(fractional);
+
+		if( fractional < 100) {
+			if( fractional < 10)
+				s << "00";
+			else
+				s << 0;
+		}
+
+		s << fractional;
+
+		str += s.str();
+		break;
+	}
 	case TYPE_CALLABLE:
 		callable_->serialize(str);
 		break;
@@ -826,6 +946,27 @@ std::string variant::string_cast() const
 		return "0";
 	case TYPE_INT:
 		return boost::lexical_cast<std::string>(int_value_);
+	case TYPE_DECIMAL: {
+		std::ostringstream s;
+
+		int fractional = decimal_value_ % 1000;
+		int integer = (decimal_value_ - fractional) / 1000;
+
+		s << integer << ".";
+
+		fractional = abs(fractional);
+
+		if( fractional < 100) {
+			if( fractional < 10)
+				s << "00";
+			else
+				s << 0;
+		}
+
+		s << fractional;
+
+		return s.str();
+	}
 	case TYPE_CALLABLE:
 		return "(object)";
 	case TYPE_LIST: {
@@ -876,6 +1017,25 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 	case TYPE_INT:
 		s << int_value_;
 		break;
+	case TYPE_DECIMAL: {
+		int fractional = decimal_value_ % 1000;
+		int integer = (decimal_value_ - fractional) / 1000;
+
+		s << integer << ".";
+
+		fractional = abs(fractional);
+
+		if( fractional < 100) {
+			if( fractional < 10)
+				s << "00";
+			else
+				s << 0;
+		}
+
+		s << fractional;
+		
+		break;
+	}
 	case TYPE_LIST: {
 		s << "[";
 		for(size_t n = 0; n != num_elements(); ++n) {

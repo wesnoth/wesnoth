@@ -45,6 +45,7 @@ token_type token_types[] = {	{ regex("^(not\\b|and\\b|or\\b|d(?=[^a-zA-Z])|where
 				{ regex("^functions\\b"),      TOKEN_KEYWORD },
 				{ regex("^def\\b"),            TOKEN_KEYWORD },
 				{ regex("^[a-zA-Z_]+"),        TOKEN_IDENTIFIER },
+				{ regex("^\\d+\\.\\d+"),       TOKEN_DECIMAL },
 				{ regex("^\\d+"),              TOKEN_INTEGER },
 { regex("^(\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.\\+|\\.-|\\.\\*|\\./|\\.)"), TOKEN_OPERATOR },
 				{ regex("^,"),                 TOKEN_COMMA },

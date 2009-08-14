@@ -37,8 +37,14 @@ struct type_error {
 
 class variant {
 public:
+
+	enum TYPE { TYPE_NULL, TYPE_INT, TYPE_DECIMAL, TYPE_CALLABLE, TYPE_LIST, TYPE_STRING, TYPE_MAP };
+
+	enum DECIMAL_VARIANT_TYPE { DECIMAL_VARIANT };	
+
 	variant();
 	explicit variant(int n);
+	explicit variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const game_logic::formula_callable* callable);
 	explicit variant(std::vector<variant>* array);
 	explicit variant(const std::string& str);
@@ -58,9 +64,12 @@ public:
 	bool is_string() const { return type_ == TYPE_STRING; }
 	bool is_null() const { return type_ == TYPE_NULL; }
 	bool is_int() const { return type_ == TYPE_INT; }
+	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
 	bool is_map() const { return type_ == TYPE_MAP; }
 	int as_int() const { if(type_ == TYPE_NULL) { return 0; } must_be(TYPE_INT); return int_value_; }
 	bool as_bool() const;
+
+	int get_decimal_value() const;
 
 	bool is_list() const { return type_ == TYPE_LIST; }
 
@@ -90,7 +99,7 @@ public:
 
 		return res;
 	}
-
+	
 	variant operator+(const variant&) const;
 	variant operator-(const variant&) const;
 	variant operator*(const variant&) const;
@@ -126,12 +135,13 @@ public:
 	std::string string_cast() const;
 
 	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=NULL, bool verbose = false) const;
-	enum TYPE { TYPE_NULL, TYPE_INT, TYPE_CALLABLE, TYPE_LIST, TYPE_STRING, TYPE_MAP };
+
 private:
 	void must_be(TYPE t) const;
 	TYPE type_;
 	union {
 		int int_value_;
+		int decimal_value_;
 		const game_logic::formula_callable* callable_;
 		game_logic::formula_callable* mutable_callable_;
 		variant_list* list_;

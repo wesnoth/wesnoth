@@ -435,6 +435,18 @@ private:
 	int i_;
 };
 
+class decimal_expression : public formula_expression {
+public:
+	explicit decimal_expression(int i, int f) : i_(i), f_(f)
+	{}
+private:
+	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+		return variant(i_ * 1000 + f_, variant::DECIMAL_VARIANT );
+	}
+
+	int i_, f_;
+};
+
 class string_expression : public formula_expression {
 public:
 	explicit string_expression(std::string str) :
@@ -789,6 +801,30 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			} else if(i1->type == TOKEN_INTEGER) {
 				int n = atoi(std::string(i1->begin,i1->end).c_str());
 				return expression_ptr(new integer_expression(n));
+			} else if(i1->type == TOKEN_DECIMAL) {
+				iterator dot = i1->begin;
+				while( *dot != '.' )
+					dot++;
+				
+				int n = atoi(std::string(i1->begin,dot).c_str());
+
+				iterator end = i1->end;
+
+				if( end - dot > 4)
+					end = dot + 4;
+
+				++dot;
+
+				int f = 0;
+
+				int multiplicator = 100;
+				while( dot != end) {
+					f += (*dot - 48)*multiplicator;
+					multiplicator /= 10;
+					++dot;
+				}
+
+				return expression_ptr(new decimal_expression(n, f));
 			} else if(i1->type == TOKEN_STRING_LITERAL) {
 				return expression_ptr(new string_expression(std::string(i1->begin+1,i1->end-1)));
 			}
