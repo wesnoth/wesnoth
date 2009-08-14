@@ -932,7 +932,7 @@ bool ai_default::get_healing(std::map<map_location,paths>& possible_moves,
 
 				unit_map::iterator u = units_.find(move_unit(src,dst,possible_moves));
 				if (u != units_.end())
-					u->second.set_movement(0);
+					u->second.remove_movement_ai();
 				return true;
 			}
 		}
@@ -1061,7 +1061,7 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 #ifdef SUOKKO
 					// FIXME: This was in sukko's r29531 but backed out.
 					// Is it correct?
-					i->second.set_movement(0);
+					i->second.remove_movement_ai();
 					if (best_rating < 0.0)
 						add_target(target(best_pos, -3.0*best_rating, target::SUPPORT));
 #endif

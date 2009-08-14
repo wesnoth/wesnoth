@@ -3194,6 +3194,24 @@ const tportrait* unit::portrait(
 	return NULL;
 }
 
+void unit::remove_attacks_ai()
+{
+	if (attacks_left_ == max_attacks_) {
+		//TODO: add state_not_attacked
+	}
+	set_attacks(0);
+}
+
+
+void unit::remove_movement_ai()
+{
+	if (movement_left() == total_movement()) {
+		set_state(STATE_NOT_MOVED,true);
+	}
+	set_movement(0);
+}
+
+
 void unit::set_hidden(bool state) {
 	hidden_ = state;
 	if(!state) return;

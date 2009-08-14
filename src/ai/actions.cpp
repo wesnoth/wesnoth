@@ -862,12 +862,12 @@ void stopunit_result::do_execute()
 	unit_map::iterator un = info.units.find(unit_location_);
 	try {
 		if (remove_movement_){
-			un->second.set_movement(0);
+			un->second.remove_movement_ai();
 			set_gamestate_changed();
 			manager::raise_unit_moved();
 		}
 		if (remove_attacks_){
-			un->second.set_attacks(0);
+			un->second.remove_attacks_ai();
 			set_gamestate_changed();
 			manager::raise_unit_moved();//to be on the safe side
 		}

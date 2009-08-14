@@ -109,6 +109,8 @@ public:
 	int experience() const { return experience_; }
 	int max_experience() const { return max_experience_; }
 	int level() const { return level_; }
+	void remove_movement_ai();
+	void remove_attacks_ai();
 	/**
 	 * Adds 'xp' points to the units experience; returns true if advancement
 	 * should occur
