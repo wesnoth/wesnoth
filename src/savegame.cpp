@@ -467,6 +467,8 @@ void loadgame::check_version_compatibility()
 
 	const version_info save_version = gamestate_.classification().version;
 	const version_info &wesnoth_version = game_config::wesnoth_version;
+	// Even minor version numbers indicate stable releases which are
+	// compatible with each other.
 	if (wesnoth_version.minor_version() % 2 == 0 &&
 	    wesnoth_version.major_version() == save_version.major_version() &&
 	    wesnoth_version.minor_version() == save_version.minor_version())
@@ -476,7 +478,10 @@ void loadgame::check_version_compatibility()
 
 	// do not load if too old, if either the savegame or the current game
 	// has the version 'test' allow loading
-	if (save_version < game_config::min_savegame_version) {
+	if (save_version < game_config::min_savegame_version &&
+	    save_version != game_config::test_version &&
+	    wesnoth_version != game_config::test_version)
+	{
 		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
 		throw load_game_cancelled_exception();
 	}
