@@ -321,11 +321,6 @@ public:
 	 * These functions require a prerendered surface.
 	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
 	 */
-	void set_hex_overlay(const map_location& loc, const surface& image)
-		{ hex_overlay_[loc] = image; }
-
-	void clear_hex_overlay(const map_location& loc);
-
 	void set_selected_hex_overlay(const surface& image)
 		{ selected_hex_overlay_ = image; }
 
@@ -617,7 +612,6 @@ protected:
 	std::vector<gui::button> buttons_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
-	std::map<map_location, surface> hex_overlay_;
 	surface selected_hex_overlay_;
 	surface mouseover_hex_overlay_;
 	map_location selectedHex_;

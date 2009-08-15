@@ -107,7 +107,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	buttons_(),
 	invalidated_(),
 	previous_invalidated_(),
-	hex_overlay_(),
 	selected_hex_overlay_(0),
 	mouseover_hex_overlay_(0),
 	selectedHex_(),
@@ -1073,16 +1072,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, tblit(x, y, text_surf));
 }
 
-void display::clear_hex_overlay(const map_location& loc)
-{
-	if(! hex_overlay_.empty()) {
-		std::map<map_location, surface>::iterator itor = hex_overlay_.find(loc);
-		if(itor != hex_overlay_.end()) {
-			hex_overlay_.erase(itor);
-		}
-	}
-}
-
 void display::render_unit_image(int x, int y,const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
@@ -2026,14 +2015,6 @@ void display::draw_hex(const map_location& loc) {
 			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos,
 				image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
 		}
-	}
-
-
-	// Add the top layer overlay surfaces
-	if(!hex_overlay_.empty()) {
-		std::map<map_location, surface>::const_iterator itor = hex_overlay_.find(loc);
-		if(itor != hex_overlay_.end())
-			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, itor->second));
 	}
 
 	// Paint selection and mouseover overlays
