@@ -372,38 +372,6 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	}
 	return std::make_pair(flat + stack, best_loc);
 }
-std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
-{
-	if(cfgs.empty()) {
-		return std::make_pair(def,map_location::null_location);
-	}
-	map_location best_loc = map_location::null_location;
-	int abs_max = 10000;
-	int flat = 10000;
-	int stack = 0;
-	for (std::vector< std::pair<const config *, map_location> >::const_iterator i = cfgs.begin(),
-	     i_end = cfgs.end(); i != i_end; ++i) {
-		std::string const &text = (*i->first)[key];
-		int value = lexical_cast_default<int>(text);
-		if (utils::string_bool((*i->first)["cumulative"])) {
-			stack += value;
-			if (value < abs_max) {
-				abs_max = value;
-				best_loc = i->second;
-			}
-		} else {
-			int val = text.empty() ? def : value;
-			flat = std::min<int>(flat,val);
-			if (value < abs_max) {
-				abs_max = value;
-				best_loc = i->second;
-			}
-		}
-	}
-	return std::make_pair(flat + stack, best_loc);
-}
-
-
 
 /*
  *

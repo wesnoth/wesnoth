@@ -47,7 +47,6 @@ public:
 	bool empty() const;
 
 	std::pair<int,map_location> highest(const std::string& key, int def=0) const;
-	std::pair<int,map_location> lowest(const std::string& key, int def=100) const;
 
 	std::vector<std::pair<const config *, map_location> > cfgs;
 };
