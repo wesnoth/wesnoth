@@ -92,7 +92,8 @@ public:
 #endif
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
-	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
+	unit_map::const_iterator current_unit(const mouse_handler &mousehandler) const
+	{ return current_unit(const_cast<mouse_handler &>(mousehandler)); }
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
 		bool continue_move, int side_num, mouse_handler &mousehandler);
 	void do_speak();

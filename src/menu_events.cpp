@@ -1357,18 +1357,6 @@ private:
 		}
 	}
 
-	unit_map::const_iterator menu_handler::current_unit(const mouse_handler& mousehandler) const
-	{
-		unit_map::const_iterator res = find_visible_unit(units_, mousehandler.get_last_hex(),
-			map_, teams_, teams_[gui_->viewing_team()]);
-		if(res != units_.end()) {
-			return res;
-		} else {
-			return find_visible_unit(units_, mousehandler.get_selected_hex(),
-			map_, teams_, teams_[gui_->viewing_team()]);
-		}
-	}
-
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
 		if(gui2::new_widgets) {
