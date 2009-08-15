@@ -124,7 +124,6 @@ public:
 	bool unrenamable() const { return unrenamable_; }
 	int side() const { return side_; }
 	std::string side_id() const;
-	Uint32 team_rgb() const;
 	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }

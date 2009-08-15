@@ -874,8 +874,6 @@ SDL_Colour unit::xp_color() const
 
 std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
 
-Uint32 unit::team_rgb() const { return(team::get_side_rgb(side())); }
-
 void unit::set_movement(int moves)
 {
 	hold_position_ = false;
