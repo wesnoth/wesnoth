@@ -980,9 +980,21 @@ static int lua_get_map_size(lua_State *L)
 	return 2;
 }
 
+/**
+ * Displays a message in the chat window and in the logs.
+ * - Arg 1: optional message header
+ * - Arg 2 (or 1): message
+ */
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
+	char const *h = m;
+	if (lua_isnone(L, 2)) {
+		h = "Lua";
+	} else {
+		m = luaL_checkstring(L, 2);
+	}
+	chat_message(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
 	return 0;
 }
