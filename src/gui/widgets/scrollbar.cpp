@@ -19,6 +19,7 @@
 #include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/event_handler.hpp"
+#include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
 namespace gui2 {
 
@@ -224,6 +225,20 @@ void tscrollbar_::recalculate()
 		recalculate_positioner();
 		item_position_ = 0;
 		update_canvas();
+		return;
+	}
+
+	/**
+	 * @todo In the MP lobby it can happen that a listbox has first zero items,
+	 * then gets filled and since there are no visible items the second assert
+	 * after this block will be triggered. Use this ugly hack to avoid that
+	 * case. (This hack also added the gui/widgets/window.hpp include.)
+	 */
+	if(!visible_items_) {
+		twindow* window = get_window();
+		assert(window);
+		window->invalidate_layout();
+		ERR_GUI_G << "Scrollbar: Can't recalculate size, force a Window layout phase.\n";
 		return;
 	}
 
