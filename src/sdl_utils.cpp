@@ -692,56 +692,6 @@ surface greyscale_image(surface const &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface darken_image(surface const &surf, bool optimize)
-{
-	if(surf == NULL)
-		return NULL;
-
-	surface nsurf(make_neutral_surface(surf));
-	if(nsurf == NULL) {
-		std::cerr << "failed to make neutral surface\n";
-		return NULL;
-	}
-
-	{
-		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
-
-		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
-
-			if(alpha) {
-				Uint8 r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-
-				//const Uint8 avg = (red+green+blue)/3;
-
-				// Use the correct formula for RGB to grayscale conversion.
-				// Ok, this is no big deal :)
-				// The correct formula being:
-				// gray=0.299red+0.587green+0.114blue
-				const Uint8 avg = static_cast<Uint8>((
-					77  * static_cast<Uint16>(r) +
-					150 * static_cast<Uint16>(g) +
-					29  * static_cast<Uint16>(b)  ) / 256);
-				// then tint 77%, 67%, 72%
-				r = ((avg * 196) >> 8);
-				g = ((avg * 171) >> 8);
-				b = ((avg * 184) >> 8);
-
-				*beg = (alpha << 24) | (r << 16) | (g << 8) | b;
-			}
-
-			++beg;
-		}
-	}
-
-	return optimize ? create_optimized_surface(nsurf) : nsurf;
-}
-
 surface shadow_image(surface const &surf, bool optimize)
 {
 	if(surf == NULL)

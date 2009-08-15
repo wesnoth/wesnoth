@@ -205,7 +205,6 @@ surface scale_opaque_surface(surface const &surf, int w, int h, bool optimize_fo
 surface scale_surface_blended(surface const &surf, int w, int h, bool optimize=true);
 surface adjust_surface_colour(surface const &surf, int r, int g, int b, bool optimize=true);
 surface greyscale_image(surface const &surf, bool optimize=true);
-surface darken_image(surface const &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(surface const &surf, bool optimize=true);
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
