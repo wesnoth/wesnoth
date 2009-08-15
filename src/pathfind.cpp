@@ -182,7 +182,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			    viewing_team.fogged(l))
 				continue;
 			if (!ignore_units && l != loc &&
-			    find_visible_unit(units, l, map, teams, viewing_team, see_all) != units.end())
+			    get_visible_unit(units, l, map, teams, viewing_team, see_all))
 				continue;
 			teleports.insert(l);
 		}
