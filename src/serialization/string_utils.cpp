@@ -71,14 +71,6 @@ std::string &strip(std::string &str)
 	return str;
 }
 
-std::string& strip_char(std::string &str, const char c) {
-	if (*str.begin() == c)
-		str.erase(str.begin(), str.begin() + 1);
-	if (*(str.end() - 1) == c)
-		str.erase(str.end() - 1, str.end());
-	return str;
-}
-
 std::vector< std::string > split(std::string const &val, char c, int flags)
 {
 	std::vector< std::string > res;
