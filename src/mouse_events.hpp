@@ -116,9 +116,6 @@ private:
 	int path_turns_;
 	int side_num_;
 
-	//cached value indicating whether any enemy units are visible.
-	//computed with enemies_visible()
-	bool enemies_visible_;
 	bool undo_;
 	bool over_route_;
 	bool attackmove_;
