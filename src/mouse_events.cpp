@@ -525,7 +525,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	attackmove_ = attackmove;
 	size_t moves = 0;
 	try{
-		moves = ::move_unit(NULL, steps, &recorder, &undo_stack_, &next_unit_, false, check_shroud);
+		moves = ::move_unit(NULL, steps, &recorder, &undo_stack_, true, &next_unit_, false, check_shroud);
 	} catch(end_turn_exception&) {
 		attackmove_ = false;
 		cursor::set(cursor::NORMAL);

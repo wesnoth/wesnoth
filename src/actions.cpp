@@ -2209,10 +2209,11 @@ bool clear_shroud(int side)
 }
 
 size_t move_unit(move_unit_spectator *move_spectator,
-		const std::vector<map_location> &route,
-		replay* move_recorder, undo_list* undo_stack,
-		map_location *next_unit, bool continue_move,
-		bool should_clear_shroud, bool is_replay)
+		 const std::vector<map_location> &route,
+		 replay* move_recorder, undo_list* undo_stack,
+		 bool show_move,
+		 map_location *next_unit, bool continue_move,
+		 bool should_clear_shroud, bool is_replay)
 {
 	assert(route.empty() == false);
 
@@ -2394,11 +2395,14 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	if (next_unit != NULL)
 		*next_unit = steps.back();
 
-	// Move the unit on the screen. Hide the unit in its current location,
-	// but don't actually remove it until the move is done,
-	// so that while the unit is moving status etc.
-	// will still display the correct number of units.
-	unit_display::move_unit(steps,ui->second,teams);
+	//@todo reenable after setting proper invalidation rules
+	//if (show_move) {
+		// Move the unit on the screen. Hide the unit in its current location,
+		// but don't actually remove it until the move is done,
+		// so that while the unit is moving status etc.
+		// will still display the correct number of units.
+		unit_display::move_unit(steps,ui->second,teams);
+	//}
 
 	ui->second.set_movement(moves_left);
 
@@ -2423,6 +2427,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			event_mutated = get_village(steps.back(), disp, teams, team_num, units, &action_time_bonus);
 		}
 	}
+
 
 	// Show the final move animation step
 	disp.draw();

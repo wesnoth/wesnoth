@@ -490,6 +490,7 @@ void move_result::do_execute()
 			/*std::vector<map_location> route*/ route_.steps,
 			/*replay* move_recorder*/ &recorder,
 			/*undo_list* undo_stack*/ NULL,
+			/*bool show_move*/ preferences::show_ai_moves(),
 			/*map_location *next_unit*/ NULL,
 			/*bool continue_move*/ true, //@todo: 1.7 set to false after implemeting interrupt awareness
 			/*bool should_clear_shroud*/ true,

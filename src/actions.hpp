@@ -392,6 +392,7 @@ typedef std::deque<undo_action> undo_list;
 size_t move_unit(move_unit_spectator* move_spectator,
 	const std::vector<map_location> &steps,
 				replay* move_recorder, undo_list* undos,
+				bool show_move,
 				map_location *next_unit = NULL,
 				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false);
 
