@@ -429,7 +429,7 @@ void connect_operation::run()
 
 	// Send data telling the remote host that this is a new connection
 	char buf[4] ALIGN_4;
-	SDLNet_Write32(0,buf);
+	SDLNet_Write32(0, reinterpret_cast<void*>(buf));
 	const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 	if(nbytes != 4) {
 		SDLNet_TCP_Close(sock);
@@ -557,7 +557,7 @@ connection accept_connection()
 			return 0;
 		}
 
-		const int handle = SDLNet_Read32(buf);
+		const int handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
 
 		DBG_NW << "received handshake from client: '" << handle << "'\n";
 
@@ -572,7 +572,7 @@ connection accept_connection()
 		const connection connect = create_connection(sock,"",0);
 
 		// Send back their connection number
-		SDLNet_Write32(connect,buf);
+		SDLNet_Write32(connect, reinterpret_cast<void*>(buf));
 		const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 		if(nbytes != 4) {
 			SDLNet_TCP_DelSocket(socket_set,sock);
@@ -705,7 +705,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped, b
 					throw error("Remote host disconnected",*i);
 				}
 
-				const int remote_handle = SDLNet_Read32(buf);
+				const int remote_handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
 				set_remote_handle(*i,remote_handle);
 
 				continue;
@@ -815,7 +815,7 @@ connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
 					throw error("Remote host disconnected",*i);
 				}
 
-				const int remote_handle = SDLNet_Read32(buf);
+				const int remote_handle = SDLNet_Read32(reinterpret_cast<void*>(buf));
 				set_remote_handle(*i,remote_handle);
 
 				continue;
