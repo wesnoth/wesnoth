@@ -205,9 +205,6 @@ std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
 
-/** Returns an uppercased version of the string. */
-utf8_string uppercase(const utf8_string&);
-
 /** Returns a lowercased version of the string. */
 utf8_string lowercase(const utf8_string&);
 
