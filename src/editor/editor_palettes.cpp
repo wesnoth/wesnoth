@@ -66,15 +66,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	terrains_ = map().get_terrain_list();
 
 	//move "invalid" terrains to the end
-	size_t size = terrains_.size();
-	for (size_t i = 0; i < size; ++i) {
-		if (is_invalid_terrain(terrains_[i])) {
-			terrains_.push_back(terrains_[i]);
-			terrains_.erase(terrains_.begin() + i);
-			size--;
-			i--;
-		}
-	}
+	std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain);
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
