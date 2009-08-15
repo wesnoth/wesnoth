@@ -336,13 +336,6 @@ map_location under_leadership(const unit_map& units,
 void check_victory();
 
 /**
- * Gets the time of day at a certain tile.
- * Certain tiles may have a time of day that differs from 'the' time of day, if
- * a unit that illuminates is in that tile or adjacent.
- */
-time_of_day timeofday_at(const unit_map &units, const map_location& loc);
-
-/**
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */

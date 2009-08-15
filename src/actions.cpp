@@ -2030,41 +2030,6 @@ void check_victory()
 	}
 }
 
-time_of_day timeofday_at(const unit_map &units, const map_location &loc)
-{
-	int mod0 = resources::game_map->get_terrain_info(loc).light_modification();
-	int lighten = std::max<int>(mod0, 0);
-	int darken = std::min<int>(mod0, 0);
-
-	time_of_day tod = resources::tod_manager->get_time_of_day(mod0, loc);
-
-	if(loc.valid()) {
-		map_location locs[7];
-		locs[0] = loc;
-		get_adjacent_tiles(loc,locs+1);
-
-		for(int i = 0; i != 7; ++i) {
-			const unit_map::const_iterator itor = units.find(locs[i]);
-			if(itor != units.end() &&
-			    itor->second.get_ability_bool("illuminates") &&
-			    !itor->second.incapacitated())
-			{
-				unit_ability_list illum = itor->second.get_abilities("illuminates");
-				unit_abilities::effect illum_effect(illum,lighten,false);
-				int mod = illum_effect.get_composite_value();
-				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
-					mod = illum.highest("max_value").first - tod.lawful_bonus;
-				}
-				lighten = std::max<int>(mod, lighten);
-				darken = std::min<int>(mod, darken);
-			}
-		}
-	}
-	tod = resources::tod_manager->get_time_of_day(lighten + darken, loc);
-
-	return tod;
-}
-
 int combat_modifier(const unit_map &units, const map_location &loc,
 	unit_type::ALIGNMENT alignment, bool is_fearless)
 {
