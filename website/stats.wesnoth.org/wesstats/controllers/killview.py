@@ -126,7 +126,9 @@ class KillGraphController(BaseController):
 	
 		#compute kill frequency per hex
 		filters_map = helperlib.fconstruct(filters_map,"map_id",[cur_map])
-		curs.execute("SELECT position,COUNT(position) FROM `KILLMAP`"+filters_map+"GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100")
+		query = "SELECT position,COUNT(position) FROM `KILLMAP` INNER JOIN `" + games_tbl + "` USING (game_id)"+filters_map+" GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100"
+		curs.execute(query)
+		print query
 		hexdata = curs.fetchall()
 		conn.close()
 		#first item is 'hottest' -> red (255,0,0), last item is 'coldest' -> blue (0,0,255), linearly interpolate hotness of all values inbetween

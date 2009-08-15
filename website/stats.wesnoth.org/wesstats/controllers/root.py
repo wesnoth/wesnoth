@@ -19,6 +19,7 @@ import StringIO
 import logging
 import hashlib
 import os.path
+import types
 
 import configuration
 import helperlib
@@ -119,6 +120,8 @@ class RootController(BaseController):
 		
 		kill_events = wml_tree["game"].setdefault("kill_event",[])
 		for kill in kill_events:
+			if isinstance(kill["results"],types.StringType):
+				print "moop: "+kill["results"]
 			killed_unit = kill["results"]["unit_hit"]
 			
 			killed_lvl = kill["attack"]["defender_lvl"]
