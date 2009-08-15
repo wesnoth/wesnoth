@@ -7,13 +7,14 @@
 #
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 #
+# Guillaume Melquiond <guillaume.melquiond@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-12 12:58+0200\n"
-"PO-Revision-Date: 2009-07-04 13:40+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
+"PO-Revision-Date: 2009-08-15 16:45+0200\n"
+"Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -591,9 +592,8 @@ msgstr "Spécificités des attaques"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1284 src/help.cpp:1286
-#, fuzzy
 msgid "Factions"
-msgstr "Faction"
+msgstr "Factions"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -3461,9 +3461,8 @@ msgstr ""
 "petit escargot dans son profil."
 
 #: data/core/macros/abilities.cfg:615
-#, fuzzy
 msgid "petrifies"
-msgstr "Attaques"
+msgstr "pétrification"
 
 #: data/core/macros/abilities.cfg:617
 #, fuzzy
@@ -3761,9 +3760,8 @@ msgid "No early finish bonus."
 msgstr "Aucun bonus de fin anticipée."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "<small>(early finish bonus)</small>"
-msgstr "`(bonus de fin anticipée)"
+msgstr "<small>(bonus de fin anticipée)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -5173,9 +5171,8 @@ msgstr "faible"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "aged"
-msgstr "à distance"
+msgstr "âgé"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -7251,9 +7248,8 @@ msgid "female^poisoned"
 msgstr "empoisonnée"
 
 #: src/actions.cpp:1154 src/actions.cpp:1429
-#, fuzzy
 msgid "female^petrified"
-msgstr "empoisonnée"
+msgstr "pétrifiée"
 
 #: src/actions.cpp:1154 src/actions.cpp:1429
 msgid "petrified"
@@ -7348,9 +7344,8 @@ msgid "addon_type^Resources"
 msgstr "Ressources"
 
 #: src/addon_management.cpp:420
-#, fuzzy
 msgid "addon_type^Other"
-msgstr "Ère multijoueur"
+msgstr "Autre"
 
 #: src/addon_management.cpp:422
 msgid "addon_type^(unknown)"
@@ -7361,7 +7356,6 @@ msgid "Dependencies"
 msgstr "Dépendances"
 
 #: src/addon_management.cpp:456
-#, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
 "yet:"
@@ -7369,19 +7363,18 @@ msgid_plural ""
 "$addon_title depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"Cette extension dépend de l'extension suivante que vous n'avez pas encore "
-"installée :"
+"$addon_title dépend des extensions suivantes que vous n'avez pas encore "
+"installées :"
 msgstr[1] ""
 "Cette extension dépend des extensions suivantes que vous n'avez pas encore "
 "installées :"
 
 #: src/addon_management.cpp:459
-#, fuzzy
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
-"Souhaitez-vous télécharger cette extension ? (Vous devrez ensuite "
+"Souhaitez-vous néanmoins télécharger $addon_title| ? (Vous devrez ensuite "
 "télécharger les extensions dont elle dépend afin de pouvoir y jouer.)"
 
 #: src/addon_management.cpp:477 src/addon_management.cpp:549
@@ -7997,7 +7990,6 @@ msgid "poisoned: "
 msgstr "empoisonné : "
 
 #: src/generate_report.cpp:123
-#, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Cette unité a été changée en pierre. Elle ne peut ni bouger, ni attaquer."
@@ -8098,23 +8090,20 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unités ayant cette capacité'</header>"
 
 #: src/help.cpp:1246
-#, fuzzy
 msgid "Leaders:"
-msgstr "Chef : "
+msgstr "Chefs : "
 
 #: src/help.cpp:1255
-#, fuzzy
 msgid "Recruits:"
-msgstr "Recrutements : "
+msgstr "Recrues : "
 
 #: src/help.cpp:1269 src/multiplayer_create.cpp:78
 msgid "Era:"
 msgstr "Ère :"
 
 #: src/help.cpp:1277
-#, fuzzy
 msgid "Factions:"
-msgstr "Faction"
+msgstr "Factions :"
 
 #: src/help.cpp:1287
 msgid "Factions are only used in multiplayer"
@@ -8122,7 +8111,7 @@ msgstr ""
 
 #: src/help.cpp:1362
 msgid "Advances from: "
-msgstr "Évolue à partir de :"
+msgstr "Évolue à partir de : "
 
 #: src/help.cpp:1362
 msgid "Advances to: "
@@ -8264,19 +8253,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:245
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Vérification du cache"
+msgstr "Vérification du cache..."
 
 #: src/loadscreen.cpp:264
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Lecture des unités"
+msgstr "Lecture des unités..."
 
 #: src/loadscreen.cpp:283
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Lecture des fichiers et création du cache"
+msgstr "Lecture des fichiers et création du cache..."
 
 #: src/lobby_data.cpp:243 src/multiplayer_lobby.cpp:431
 msgid "Unknown era: $era_id"
@@ -9072,9 +9058,8 @@ msgid "(Reserved for $playername)"
 msgstr "(Reservé pour $playername)"
 
 #: src/multiplayer_connect.cpp:682
-#, fuzzy
 msgid "(empty)"
-msgstr "Vide"
+msgstr "(vide)"
 
 #: src/multiplayer_connect.cpp:808
 msgid "Reserved"
@@ -9145,11 +9130,8 @@ msgid "Cannot find era $era"
 msgstr "Ère $era introuvable"
 
 #: src/multiplayer_connect.cpp:1654
-#, fuzzy
 msgid "Defeat enemy leader(s)"
-msgstr ""
-"Victoire :\n"
-"@Vaincre le(s) chef(s) ennemi(s)"
+msgstr "Vaincre le(s) chef(s) ennemi(s)"
 
 #: src/multiplayer_connect.cpp:1718
 msgid "Waiting for players to join..."
@@ -9392,18 +9374,16 @@ msgid "Invert"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Places vacantes :"
+msgstr "Places vacantes"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Search:"
-msgstr "Rechercher"
+msgstr "Rechercher :"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Skip quickly to the active turn when observing"
@@ -9750,9 +9730,8 @@ msgid "This is not a multiplayer save"
 msgstr "Cette sauvegarde ne provient pas d'un jeu multijoueur"
 
 #: src/savegame.cpp:553
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Le jeu ne peut pas être sauvegardé"
+msgstr "Le jeu ne peut pas être sauvegardé : "
 
 #: src/savegame.cpp:640
 msgid "Name: "
