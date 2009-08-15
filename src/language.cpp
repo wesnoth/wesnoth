@@ -83,11 +83,6 @@ namespace {
 
 static language_list known_languages;
 
-std::string languagedef_name (const language_def& def)
-{
-	return def.language;
-}
-
 bool current_language_rtl()
 {
 	return get_language().rtl;

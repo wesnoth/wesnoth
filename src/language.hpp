@@ -66,8 +66,6 @@ struct language_def
 
 typedef std::vector<language_def> language_list;
 
-std::string languagedef_name (const language_def& def);
-
 struct symbol_table
 {
 	const t_string& operator[](const std::string& key) const;
