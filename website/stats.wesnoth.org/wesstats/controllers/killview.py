@@ -84,15 +84,28 @@ class KillGraphController(BaseController):
 			ufilters_vals[filter] = filter_vals
 		startdate = ""
 		enddate = ""
-		if 'startdate' in kw and 'enddate' in kw and helperlib.isvalid(kw['startdate']) and helperlib.isvalid(kw['enddate']):
+		if 'startdate' in kw and 'enddate' in kw and helperlib.is_valid_date(kw['startdate']) and helperlib.is_valid_date(kw['enddate']):
 			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
-			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+			ufilters_vals["dates"] = [kw['startdate'] + " to " + kw['enddate']]
 			startdate = kw['startdate']
 			enddate = kw['enddate']
-		print filters
-		print filters_map
-		
+		minkillerlev = ""
+		maxkillerlev = ""
+		minkilledlev = ""
+		maxkilledlev = ""
+		if 'minkillerlev' in kw and 'maxkillerlev' in kw and helperlib.is_valid_level(kw['minkillerlev']) and helperlib.is_valid_level(kw['maxkillerlev']):
+			filters_map = helperlib.rangeconstruct(filters_map,"killer_level",kw['minkillerlev'],kw['maxkillerlev'])
+			minkillerlev = kw['minkillerlev']
+			maxkillerlev = kw['maxkillerlev']	
+			used_filters.append("killer level range")
+			ufilters_vals["killer level range"] = [kw['minkillerlev'] + " to " + kw['maxkillerlev']]
+		if 'minkilledlev' in kw and 'maxkilledlev' in kw and helperlib.is_valid_level(kw['minkilledlev']) and helperlib.is_valid_level(kw['maxkilledlev']):
+			filters_map = helperlib.rangeconstruct(filters_map,"killed_level",kw['minkilledlev'],kw['maxkilledlev'])
+			minkilledlev = kw['minkilledlev']
+			maxkilledlev = kw['maxkilledlev']	
+			used_filters.append("killed level range")
+			ufilters_vals["killed level range"] = [kw['minkilledlev'] + " to " + kw['maxkilledlev']]
 
 		curs.execute("SELECT DISTINCT scenario_name,map_id FROM `KILLMAP` GROUP BY map_id")
 		maps = curs.fetchall()
@@ -134,8 +147,9 @@ class KillGraphController(BaseController):
 			grid_colors = grid_colors[:-1]
 		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,
 			grid_colors=grid_colors,startdate="",enddate="",
-			minkillerlev="",maxkillerlev="",minkilledlev="",
-			maxkilledlev="",used_filters=used_filters+used_filters_map,
+			minkillerlev=minkillerlev,maxkillerlev=maxkillerlev,
+			minkilledlev=minkilledlev,maxkilledlev=minkilledlev,
+			used_filters=used_filters+used_filters_map,
 			ufilters_vals=ufilters_vals,
 			filters=available_filters+available_filters_map,
 			fdata=fdata,cur_map_name=cur_map_name)

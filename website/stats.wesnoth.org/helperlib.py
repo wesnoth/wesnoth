@@ -22,7 +22,7 @@ def get_date_range(startdate,enddate):
 	delta = abs( (enddate-startdate).days )
 	return delta
 
-def isvalid(date):
+def is_valid_date(date):
 	date = date.split('/')
 	if len(date) != 3:
 		return False
@@ -32,6 +32,9 @@ def isvalid(date):
 		if int(i) < 1:
 			return False
 	return True
+
+def is_valid_level(lev):
+	return lev.isdigit()	
 
 def scaled_query(curs,query,threshold,evaluator):
 	s_time = time.time()
@@ -77,13 +80,21 @@ def fconstruct_helper(filters,newfilter):
 		filters += " WHERE "
 	filters += newfilter
 	return filters
-
+#@TODO: replace all instances of this with rangeconstruct
 def dateconstruct(filters,start_date,end_date):
 	if len(filters) != 0:
 		filters += " AND "
 	else:
 		filters += " WHERE "
 	filters += "timestamp BETWEEN '"+start_date+"' AND '"+end_date+"'"
+	return filters
+
+def rangeconstruct(filters,colname,start,end):
+	if len(filters) != 0:
+		filters += " AND "
+	else:
+		filters += " WHERE "
+	filters += "%s BETWEEN '%s' AND '%s'" % (colname,start,end)
 	return filters
 
 def listfix(l):

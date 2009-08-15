@@ -62,10 +62,10 @@ class PieGraphController(BaseController):
 			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
 			filters = helperlib.fconstruct(filters,filter,filter_vals)
 			ufilters_vals[filter] = filter_vals
-		if 'startdate' in kw and 'enddate' in kw and helperlib.isvalid(kw['startdate']) and helperlib.isvalid(kw['enddate']):
+		if 'startdate' in kw and 'enddate' in kw and helperlib.is_valid_date(kw['startdate']) and helperlib.is_valid_date(kw['enddate']):
 			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
-			ufilters_vals["dates"] = [kw['startdate'] + "-" + kw['enddate']]
+			ufilters_vals["dates"] = [kw['startdate'] + " to " + kw['enddate']]
 			startdate = kw['startdate']
 			enddate = kw['enddate']
 		#get columns and column transformations for this view
