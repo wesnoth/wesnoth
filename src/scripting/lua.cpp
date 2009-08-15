@@ -730,8 +730,14 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
+		if (strncmp(m, "~wml:", 5) == 0) {
+			m += 5;
+			char const *e = strstr(m, "stack traceback");
+			lg::wml_error << std::string(m, e ? e - m : strlen(m));
+		} else {
+			chat_message("Lua error", m);
+			ERR_LUA << m << '\n';
+		}
 		lua_pop(L, 2);
 		return;
 	}
