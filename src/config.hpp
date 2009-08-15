@@ -316,14 +316,6 @@ public:
 	 */
 	void merge_with(const config& c);
 
-	/**
-	 * Merge config 'c' into this config.
-	 * Keeps this config's values and does not add existing elements.
-	 * NOTICE: other nonstandard behavior includes no merge recursion into child
-	 * and has limited merging for child lists of differing lengths
-	 */
-    void merge_and_keep(const config& c);
-
 	bool matches(const config &filter) const;
 
 	/** Removes keys with empty values. */
