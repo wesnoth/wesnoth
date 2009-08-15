@@ -78,10 +78,6 @@ clock_t get_cpu_time(bool active) {
 	return buf.tms_utime + buf.tms_stime;
 }
 
-bool match_username(std::pair<network::connection, player> pl, const std::string& username) {
-	return pl.second.name() == username;
-}
-
 }
 
 #else
@@ -92,6 +88,16 @@ clock_t get_cpu_time(bool active) {
 }
 
 #endif
+
+namespace {
+
+bool match_username(std::pair<network::connection, player> pl, const std::string& username) {
+	return pl.second.name() == username;
+}
+bool match_ip(std::pair<network::connection, player> pl, const std::string& ip) {
+	return network::ip_address(pl.first) == ip;
+}
+}
 
 /**
  * fatal and directly server related errors/warnings,
@@ -1700,7 +1706,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 				const std::string& ip = i->second;
 				if (utils::wildcard_string_match(ip, parameters)) {
 					found_something = true;
-					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_username, _1, username));
+					wesnothd::player_map::const_iterator pl = std::find_if(players_.begin(), players_.end(), boost::bind(&::match_ip, _1, ip));
 					if (pl != players_.end()) {
 						out << std::endl << player_status(pl);
 					} else {
