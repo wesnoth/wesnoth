@@ -104,18 +104,18 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 
 		// add the terrain to the requested groups
 		const std::vector<std::string>& keys = utils::split(t_info.editor_group());
-		bool core = true;
+		bool core = false;
 		foreach (const std::string& k, keys) {
 			terrain_map_[k].push_back(t);
 			std::map<std::string, terrain_group*>::iterator i = id_to_group.find(k);
 			if (i != id_to_group.end()) {
-				if (!i->second->core) {
-					core = false;
+				if (i->second->core) {
+					core = true;
 				}
 			}
 		}
-		// A terrain is considered core iff it does not appear in any
-		// non-core terrain group
+		// A terrain is considered core iff it appears in at least
+		// one core terrain group
 		if (core) {
 			// Add the terrain to the default group
 			terrain_map_["all"].push_back(t);
