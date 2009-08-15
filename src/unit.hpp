@@ -488,15 +488,20 @@ int side_units_cost(const unit_map& units, int side_num);
 int side_upkeep(const unit_map& units, int side_num);
 
 unit_map::iterator find_visible_unit(unit_map& units,
-		const map_location loc,
+		const map_location &loc,
 		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team,
 		bool see_all=false);
-unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const map_location loc,
+
+inline unit_map::const_iterator find_visible_unit(const unit_map &units,
+		const map_location &loc,
 		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team,
-		bool see_all=false);
+		bool see_all = false)
+{
+	return find_visible_unit(const_cast<unit_map &>(units), loc, map,
+		teams, current_team, see_all);
+}
 
 const unit *get_visible_unit(const unit_map &units, const map_location &loc,
 	const gamemap &map, const std::vector<team> &teams, const team &current_team,

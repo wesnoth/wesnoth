@@ -3063,33 +3063,12 @@ int side_upkeep(const unit_map& units, int side)
 }
 
 unit_map::iterator find_visible_unit(unit_map& units,
-		const map_location loc,
+		const map_location &loc,
 		const gamemap& map,
 		  const std::vector<team>& teams, const team& current_team,
 		bool see_all)
 {
 	unit_map::iterator u = units.find(loc);
-	if(map.on_board(loc) && !see_all){
-		if(u != units.end()){
-			if(current_team.fogged(loc)){
-				return units.end();
-			}
-			if(current_team.is_enemy(u->second.side()) &&
-					u->second.invisible(loc,units,teams)) {
-				return units.end();
-			}
-		}
-	}
-	return u;
-}
-
-unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const map_location loc,
-		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team,
-		bool see_all)
-{
-	unit_map::const_iterator u = units.find(loc);
 	if(map.on_board(loc) && !see_all){
 		if(u != units.end()){
 			if(current_team.fogged(loc)){
