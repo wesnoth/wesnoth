@@ -49,8 +49,6 @@ public:
 
 	const std::deque<chat_message>& history() const { return history_; }
 
-	std::string assemble_text();
-
 	void clear();
 private:
 	std::deque<chat_message> history_;

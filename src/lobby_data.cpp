@@ -56,15 +56,6 @@ void chat_log::add_message(const std::string& user, const std::string& message) 
 	add_message(time(NULL), user, message);
 }
 
-std::string chat_log::assemble_text()
-{
-	std::stringstream ss;
-	foreach (const chat_message& ch, history_) {
-		ss << "<" << ch.user << ">" << ch.message << "\n";
-	}
-	return ss.str();
-}
-
 void chat_log::clear()
 {
 	history_.clear();
