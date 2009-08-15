@@ -182,6 +182,12 @@ namespace game_events
 
 	bool conditional_passed(const unit_map* units,
 			const vconfig cond, bool backwards_compat=true);
+
+	/**
+	 * Handles newly-created handlers. Flushes WML messages and errors.
+	 */
+	void commit();
+
 	bool pump();
 
 	/**

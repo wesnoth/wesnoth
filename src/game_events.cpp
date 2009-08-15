@@ -3864,6 +3864,19 @@ namespace game_events {
 		}
 	}
 
+	void commit()
+	{
+		if(pump_manager::count() == 1) {
+			commit_wmi_commands();
+			commit_new_handlers();
+		}
+		// Dialogs can only be shown if the display is not locked
+		if (!resources::screen->video().update_locked()) {
+			show_wml_errors();
+			show_wml_messages();
+		}
+	}
+
 	bool pump()
 	{
 		assert(manager_running);
@@ -3917,17 +3930,9 @@ namespace game_events {
 				if(process_event(handler, ev))
 					result = true;
 			}
-			if(pump_manager::count() == 1) {
-				// only commit new event handlers when finished iterating over event_handlers
-				commit_wmi_commands();
-				commit_new_handlers();
-			}
 
-			// Dialogs can only be shown if the display is not locked
-			if (!resources::screen->video().update_locked()) {
-				show_wml_errors();
-				show_wml_messages();
-			}
+			// Only commit new handlers when finished iterating over event_handlers.
+			commit();
 		}
 
 		return result;
