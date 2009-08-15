@@ -2977,6 +2977,7 @@ private:
 	}
 	void console_handler::do_lua() {
 		resources::lua_kernel->run(get_data().c_str());
+		game_events::commit();
 	}
 	void console_handler::do_custom() {
 		preferences::set("custom_command", get_data());
