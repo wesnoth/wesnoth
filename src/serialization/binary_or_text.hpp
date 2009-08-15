@@ -37,9 +37,6 @@ class config;
  */
 bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log=NULL); // Throws config::error
 
-/** Writes a file, compressed or not depending on a flag. */
-void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);
-
 /** Class for writing a config out to a file in pieces. */
 class config_writer
 {

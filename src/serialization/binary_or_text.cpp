@@ -41,14 +41,6 @@ bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_lo
 	}
 }
 
-void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
-{
-	if (compress)
-		write_compressed(out, cfg);
-	else
-		write(out, cfg);
-}
-
 config_writer::config_writer(
 	std::ostream &out, bool compress, int level) :
 		filter_(),
