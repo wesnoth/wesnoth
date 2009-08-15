@@ -1874,6 +1874,30 @@
 					<File
 						RelativePath="..\..\src\gui\dialogs\game_delete.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\game_load.cpp"
@@ -2103,7 +2127,23 @@
 						RelativePath="..\..\src\gui\dialogs\mp_create_game.cpp"
 						>
 						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
 							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -2169,6 +2209,34 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\transient_message.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\unit_create.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -2262,6 +2330,30 @@
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
 					</File>
 					<Filter
 						Name="Window_Builder"
