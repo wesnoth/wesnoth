@@ -645,25 +645,6 @@ wide_string string_to_wstring(const std::string &src)
 	return res;
 }
 
-utf8_string capitalize(const utf8_string& s)
-{
-	if(s.size() > 0) {
-		utf8_iterator itor(s);
-#if defined(__APPLE__) || defined(__AMIGAOS4__)
-		/** @todo FIXME: Should we support towupper on recent OSX platforms? */
-		wchar_t uchar = *itor;
-		if(uchar >= 0 && uchar < 0x100)
-			uchar = toupper(uchar);
-		std::string res = utils::wchar_to_string(uchar);
-#else
-		std::string res = utils::wchar_to_string(towupper(*itor));
-#endif
-		res.append(itor.substr().second, s.end());
-		return res;
-	}
-	return s;
-}
-
 utf8_string uppercase(const utf8_string& s)
 {
 	if(s.size() > 0) {

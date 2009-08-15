@@ -208,9 +208,6 @@ std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
 
-/** Returns a version of the string with the first letter capitalized. */
-utf8_string capitalize(const utf8_string&);
-
 /** Returns an uppercased version of the string. */
 utf8_string uppercase(const utf8_string&);
 
