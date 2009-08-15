@@ -85,7 +85,14 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side(const unsigned int team_index, bool save){
+void playmp_controller::play_side(const unsigned int team_index, bool save)
+{
+	utils::string_map player;
+	player["name"] = current_team().current_player();
+	std::string turn_notification_msg = _("$name has taken control");
+	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
+	gui_->send_notification(_("Turn changed"), turn_notification_msg);
+
 	do {
 		player_type_changed_ = false;
 		if (!skip_next_turn_)
@@ -134,14 +141,6 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 	//keep looping if the type of a team (human/ai/networked) has changed mid-turn
 
 	skip_next_turn_ = false;
-
-	// Notify on turn change.
-	utils::string_map player;
-	player["name"] = current_team().current_player();
-	std::string turn_notification_msg = _("$name has taken control");
-	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
-
-	gui_->send_notification(_("Turn changed"), turn_notification_msg);
 }
 
 void playmp_controller::before_human_turn(bool save){
