@@ -80,14 +80,6 @@ def fconstruct_helper(filters,newfilter):
 		filters += " WHERE "
 	filters += newfilter
 	return filters
-#@TODO: replace all instances of this with rangeconstruct
-def dateconstruct(filters,start_date,end_date):
-	if len(filters) != 0:
-		filters += " AND "
-	else:
-		filters += " WHERE "
-	filters += "timestamp BETWEEN '"+start_date+"' AND '"+end_date+"'"
-	return filters
 
 def rangeconstruct(filters,colname,start,end):
 	if len(filters) != 0:

@@ -85,7 +85,7 @@ class KillGraphController(BaseController):
 		startdate = ""
 		enddate = ""
 		if 'startdate' in kw and 'enddate' in kw and helperlib.is_valid_date(kw['startdate']) and helperlib.is_valid_date(kw['enddate']):
-			filters = helperlib.dateconstruct(filters,kw['startdate'],kw['enddate'])
+			filters = helperlib.rangeconstruct(filters,"timestamp",kw['startdate'],kw['enddate'])
 			used_filters.append("dates")
 			ufilters_vals["dates"] = [kw['startdate'] + " to " + kw['enddate']]
 			startdate = kw['startdate']

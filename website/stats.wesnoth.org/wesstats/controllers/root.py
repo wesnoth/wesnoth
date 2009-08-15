@@ -137,14 +137,13 @@ class RootController(BaseController):
 			params = (
 				wml_tree["game"]["scenario"],	
 				map_id.hexdigest(),
-				0, #@TODO: retrieve actual game_id of the game this is from from GAMES table
 				kill["attack"]["turn"],
 				killed_id,
 				killed_lvl,
 				killer_id,
 				killer_lvl,
 				killed_position[0]+","+killed_position[1] )
-			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",params)
+			curs.execute("INSERT INTO KILLMAP VALUES (%s,%s,LAST_INSERT_ID(),%s,%s,%s,%s,%s,%s)",params)
 
 		conn.close()
 		return dict()
