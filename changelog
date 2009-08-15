@@ -32,6 +32,21 @@ Version 1.7.2+svn:
    * Updated Drake Clasher, Arbiter and Slasher descriptions.
  * Multiplayer
    * Added a /q alias for /query
+   * New lobby interface in gui2, testable work in progress available with
+     --new-widgets. There are known issues with window resizing and low
+     resolution support.
+   * Server-side generation of random numbers for MP (combats)
+   * No MP compatibility with earlier clients and wesnothd
+   * --no-srng command line switch is available to turn off server RNG
+     support (and rquirement) in a client. Only games played with clients
+     pre-srng or with srng disabled as well can work wihout OOS. This is a
+     testing feature that will likely be removed prior to 1.8.
+   * Room support via /join and /room commands, better support in the
+     experimental new lobby. See http://www.wesnoth.org/wiki/MultiplayerRooms
+     for details.
+ * Multiplayer server
+   * Added server-side RNG support. Old clients can still play as normal.
+   * Added room support to the server.
  * Unit balancing:
    * Added Dwarvish Stalwart, Elder Wose, Shock Trooper and White Mage to
      random_leader of the default era.

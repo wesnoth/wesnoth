@@ -26,6 +26,19 @@ notifications. Plain dbus is now sufficient.
 
 ***
 
+Wesnoth 1.7.3 introduces server-side generation of random numbers for
+multiplayer, and is not compatible in terms of MP play with earlier
+versions. The server can support old versions of the game but games
+between old and new clients will result in OOS.
+
+***
+
+A new lobby interface using the new wesnoth widget toolkit is available
+for testing with the --new-widgets switch. There are known issues with
+window resizing and low resolutions that do not have to be reported.
+
+***
+
 REPLACE ME WITH CONTENT...
 
 ***
