@@ -273,17 +273,6 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	return true;
 }
-bool attack_type::has_special_by_id(const std::string& special) const
-{
-	if (const config &abil = cfg_.child("specials"))
-	{
-		foreach (const config::any_child &ab, abil.all_children_range()) {
-			if (ab.cfg["id"] == special)
-				return true;
-		}
-	}
-	return false;
-}
 
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
 	moveCosts_(),

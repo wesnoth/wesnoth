@@ -61,8 +61,6 @@ public:
 		const unit_map &unitmap, bool attacker, const attack_type *other_attack) const;
 	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 
-	bool has_special_by_id(const std::string& special) const;
-
 	bool matches_filter(const config& cfg,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
