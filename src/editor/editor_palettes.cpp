@@ -19,6 +19,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "editor_common.hpp"
 #include "editor_palettes.hpp"
 
 #include "../foreach.hpp"
@@ -92,6 +93,9 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	// add the groups for all terrains to the map
 	foreach (const t_translation::t_terrain& t, terrains_) {
 		const terrain_type& t_info = map().get_terrain_info(t);
+		DBG_ED << "Palette: processing terrain " << t_info.name()
+			<< "(" << t_info.number() << ")"
+			<< ": " << t_info.editor_group() << "\n";
 
 		// don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined()) continue;
