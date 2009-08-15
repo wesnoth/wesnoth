@@ -448,16 +448,6 @@ void play_music_once(const std::string &file)
 	play_music();
 }
 
-void play_no_music()
-{
-	current_track_list = std::vector<music_track>();
-	current_track = music_track();
-
-	if (preferences::music_on() && mix_ok && Mix_PlayingMusic()) {
-		Mix_FadeOutMusic(500);
-	}
-}
-
 void empty_playlist()
 {
     current_track_list = std::vector<music_track>();
