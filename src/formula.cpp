@@ -407,7 +407,7 @@ public:
 	explicit identifier_expression(const std::string& id) : id_(id)
 	{}
 private:
-	variant execute(const formula_callable& variables, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& variables, formula_debugger * /*fdb*/) const {
 		return variables.query_value(id_);
 	}
 	std::string id_;
@@ -417,7 +417,7 @@ class null_expression : public formula_expression {
 public:
 	explicit null_expression() {};
 private:
-	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant();
 	}
 };
@@ -428,7 +428,7 @@ public:
 	explicit integer_expression(int i) : i_(i)
 	{}
 private:
-	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant(i_);
 	}
 
@@ -440,7 +440,7 @@ public:
 	explicit decimal_expression(int i, int f) : i_(i), f_(f)
 	{}
 private:
-	variant execute(const formula_callable& /*variables*/, formula_debugger */*fdb*/) const {
+	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant(i_ * 1000 + f_, variant::DECIMAL_VARIANT );
 	}
 

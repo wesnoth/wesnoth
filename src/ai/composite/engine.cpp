@@ -125,7 +125,7 @@ std::string engine::get_name() const
 }
 
 
-void engine::set_ai_context(ai_context */*context*/)
+void engine::set_ai_context(ai_context * /*context*/)
 {
 	//do nothing
 }

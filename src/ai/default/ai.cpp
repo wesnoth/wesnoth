@@ -1793,7 +1793,7 @@ variant ai_default::get_value(const std::string &/*key*/) const
        return variant();
 }
 
-void ai_default::get_inputs(std::vector<game_logic::formula_input> */*inputs*/) const
+void ai_default::get_inputs(std::vector<game_logic::formula_input>* /*inputs*/) const
 {
 }
 
