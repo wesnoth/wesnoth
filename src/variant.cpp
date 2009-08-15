@@ -2,7 +2,6 @@
 
 #include <cmath>
 #include <iostream>
-#include <inttypes.h>
 #include <string.h>
 
 #include "boost/lexical_cast.hpp"
@@ -548,7 +547,7 @@ variant variant::operator*(const variant& v) const
 {
 	if(type_ == TYPE_DECIMAL || v.type_ == TYPE_DECIMAL) {
 
-		int64_t long_int = as_decimal();
+		long long long_int = as_decimal();
 
 		long_int *= v.as_decimal();
 
@@ -575,7 +574,7 @@ variant variant::operator/(const variant& v) const
 			throw type_error((formatter() << "divide by zero error").str());
 		}
 
-		int64_t long_int = as_decimal();
+		long long long_int = as_decimal();
 
 		long_int *= 10000;
 
