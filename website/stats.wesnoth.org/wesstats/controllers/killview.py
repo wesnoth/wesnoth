@@ -72,15 +72,11 @@ class KillGraphController(BaseController):
 		used_filters = helperlib.intersect(kw.keys(),available_filters)
 		used_filters_map = helperlib.intersect(kw.keys(),available_filters_map)
 		ufilters_vals = dict()
+		used_filters += used_filters_map
 		for filter in used_filters:
 			kw[filter] = helperlib.listfix(kw[filter])
 			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
 			filters = helperlib.fconstruct(filters,filter,filter_vals)
-			ufilters_vals[filter] = filter_vals
-		for filter in used_filters_map:
-			kw[filter] = helperlib.listfix(kw[filter])
-			filter_vals = helperlib.intersect(kw[filter],fdata[filter])
-			filters_map = helperlib.fconstruct(filters_map,filter,filter_vals)
 			ufilters_vals[filter] = filter_vals
 		startdate = ""
 		enddate = ""
@@ -95,13 +91,13 @@ class KillGraphController(BaseController):
 		minkilledlev = ""
 		maxkilledlev = ""
 		if 'minkillerlev' in kw and 'maxkillerlev' in kw and helperlib.is_valid_level(kw['minkillerlev']) and helperlib.is_valid_level(kw['maxkillerlev']):
-			filters_map = helperlib.rangeconstruct(filters_map,"killer_level",kw['minkillerlev'],kw['maxkillerlev'])
+			filters = helperlib.rangeconstruct(filters,"killer_level",kw['minkillerlev'],kw['maxkillerlev'])
 			minkillerlev = kw['minkillerlev']
 			maxkillerlev = kw['maxkillerlev']	
 			used_filters.append("killer level range")
 			ufilters_vals["killer level range"] = [kw['minkillerlev'] + " to " + kw['maxkillerlev']]
 		if 'minkilledlev' in kw and 'maxkilledlev' in kw and helperlib.is_valid_level(kw['minkilledlev']) and helperlib.is_valid_level(kw['maxkilledlev']):
-			filters_map = helperlib.rangeconstruct(filters_map,"killed_level",kw['minkilledlev'],kw['maxkilledlev'])
+			filters = helperlib.rangeconstruct(filters,"killed_level",kw['minkilledlev'],kw['maxkilledlev'])
 			minkilledlev = kw['minkilledlev']
 			maxkilledlev = kw['maxkilledlev']	
 			used_filters.append("killed level range")
@@ -125,8 +121,8 @@ class KillGraphController(BaseController):
 			m_dimensions = helperlib.get_map_dimensions(configuration.MAP_DIR+cur_map)
 	
 		#compute kill frequency per hex
-		filters_map = helperlib.fconstruct(filters_map,"map_id",[cur_map])
-		query = "SELECT position,COUNT(position) FROM `KILLMAP` INNER JOIN `" + games_tbl + "` USING (game_id)"+filters_map+" GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100"
+		filters = helperlib.fconstruct(filters,"map_id",[cur_map])
+		query = "SELECT position,COUNT(position) FROM `KILLMAP` INNER JOIN `" + games_tbl + "` USING (game_id) "+filters+" GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100"
 		curs.execute(query)
 		print query
 		hexdata = curs.fetchall()
@@ -148,10 +144,10 @@ class KillGraphController(BaseController):
 				grid_colors += '"%s":"%s",' % (hex[0],hex_color)
 			grid_colors = grid_colors[:-1]
 		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,
-			grid_colors=grid_colors,startdate="",enddate="",
+			grid_colors=grid_colors,startdate=startdate,enddate=enddate,
 			minkillerlev=minkillerlev,maxkillerlev=maxkillerlev,
 			minkilledlev=minkilledlev,maxkilledlev=minkilledlev,
-			used_filters=used_filters+used_filters_map,
+			used_filters=used_filters,
 			ufilters_vals=ufilters_vals,
 			filters=available_filters+available_filters_map,
 			fdata=fdata,cur_map_name=cur_map_name)
