@@ -32,12 +32,6 @@ struct manager
 enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG, NO_CURSOR, NUM_CURSORS };
 
 /**
- * This function uses temporary the b&w cursors while the display is busy.
- * If used, the colour-cursors will be reused when the display is ready again.
- */
-void temporary_use_bw();
-
-/**
  * Use the default parameter to reset cursors.
  * e.g. after a change in color cursor preferences
  */

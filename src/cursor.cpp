@@ -149,12 +149,6 @@ manager::~manager()
 	SDL_ShowCursor(SDL_ENABLE);
 }
 
-void temporary_use_bw()
-{
-	colour_ready = false;
-	set();
-}
-
 void set(CURSOR_TYPE type)
 {
 	// Change only if it's a valid cursor
