@@ -117,9 +117,6 @@ SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
 			     int x, int y, int max_width);
 
-/** Chop up one long string of text into lines. */
-size_t text_to_lines(std::string& text, size_t max_length);
-
 } // end namespace font
 
 #endif // MARKED_UP_TEXT_HPP_INCLUDED
