@@ -1,3 +1,7 @@
+local function wml_error(m)
+	error("~wml:" .. m, 0)
+end
+
 local function all_teams()
 	local function f(s)
 		local i = s.i
@@ -169,10 +173,13 @@ end
 
 local function wml_store_unit_type(cfg)
 	local var = cfg.variable or "unit_type"
-	wesnoth.set_variable(var, {})
+	local types = cfg.type or wml_error("[store_unit_type] missing required type= attribute.")
+	wesnoth.set_variable(var)
 	local i = 0
-	for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
-		wesnoth.set_variable(var .. '[' .. i .. ']', wesnoth.get_unit_type(w).__cfg)
+	for w in string.gmatch(types, "[^%s,][^,]*") do
+		local unit_type = wesnoth.get_unit_type(w) or
+			wml_error("Attempt to store nonexistent unit type '" .. w .. "'.")
+		wesnoth.set_variable(var .. '[' .. i .. ']', unit_type.__cfg)
 		i = i + 1
 	end
 end
