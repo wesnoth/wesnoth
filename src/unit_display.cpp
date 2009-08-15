@@ -112,22 +112,6 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 namespace unit_display
 {
 
-bool unit_visible_on_path( const std::vector<map_location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
-{
-	game_display* disp = game_display::get_singleton();
-	assert(disp);
-	for(size_t i = 0; i+1 < path.size(); ++i) {
-		const bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-	             u.invisible(path[i],units,teams) &&
-		         u.invisible(path[i+1],units,teams);
-		if(!invisible) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
 void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
