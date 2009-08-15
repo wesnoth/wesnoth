@@ -223,18 +223,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			preload_lua_tags(game_config, gamestate.starting_pos);
 			starting_pos = gamestate.starting_pos;
 			scenario = &starting_pos;
-			foreach (config &side, const_cast<config *>(scenario)->child_range("side"))
-			{
-				if (utils::string_bool(side["rename_leader_to_player"],false)) {
-					if (!side["current_player"].empty()) {
-						//human
-						side["name"] = side["current_player"];
-					} else {
-						//AI
-						side["name"] = side["save_id"];
-					}
-				}
-			}
 		} else {
 			//reload of the scenario, as starting_pos contains carryover information only
 			LOG_G << "loading scenario: '" << gamestate.classification().scenario << "'\n";

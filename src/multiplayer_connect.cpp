@@ -631,6 +631,7 @@ config connect::side::get_config() const
 	if(enabled_ && !parent_->era_sides_.empty()) {
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
+		res["faction_name"] = res["name"];
 	}
 	res.append(cfg_);
 	if (cfg_.get_attribute("side").empty()
@@ -662,9 +663,13 @@ config connect::side::get_config() const
 			}
 			{
 				res["id"] = res["save_id"];
-				res.add_child("ai",ai::configuration::get_ai_config_for(ai_algorithm_));
+				const config &ai_cfg = ai::configuration::get_ai_config_for(ai_algorithm_);
+				res.add_child("ai",ai_cfg);
+				utils::string_map symbols;
+				symbols["playername"] = ai_cfg["description"];
+				symbols["side"] = res["side"].str();
+				description = vgettext("$playername $side",symbols).c_str();
 			}
-			description = N_("Computer player");
 			break;
 		case CNTR_EMPTY:
 			description = N_("(Empty slot)");
@@ -692,6 +697,8 @@ config connect::side::get_config() const
 
 		res["user_description"] = id_;
 	}
+
+	res["name"] = res["user_description"];
 
 	if(enabled_) {
 		if (leader_.empty()) {
