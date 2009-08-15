@@ -101,7 +101,6 @@ public:
 	void do_command(const std::string &str, int side_num, mouse_handler &mousehandler);
 	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
 	void clear_undo_stack(int side_num);
-	bool has_team() const;
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,

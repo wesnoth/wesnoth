@@ -661,21 +661,6 @@ private:
 		return false;
 	}
 
-	bool menu_handler::has_team() const
-	{
-		if(is_observer()) {
-			return false;
-		}
-
-		for(size_t n = 0; n != teams_.size(); ++n) {
-			if(n != gui_->viewing_team() && teams_[gui_->viewing_team()].team_name() == teams_[n].team_name()) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	void menu_handler::recruit(bool browse, int side_num, const map_location &last_hex)
 	{
 		if(browse)
