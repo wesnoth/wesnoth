@@ -286,15 +286,6 @@ std::string get_addon_campaigns_dir()
 	return get_dir(dir_path);
 }
 
-std::vector< std::string > get_addon_dirs()
-{
-	std::vector< std::string > ret;
-
-	ret.push_back(get_addon_campaigns_dir());
-
-	return ret;
-}
-
 std::string get_intl_dir()
 {
 #ifdef _WIN32
