@@ -153,11 +153,6 @@ map_location map_location::legacy_difference(const map_location &a) const
 	return legacy_sum(a.legacy_negation());
 }
 
-map_location& map_location::legacy_difference_assign(const map_location &a)
-{
-	return legacy_sum_assign(a.legacy_negation());
-}
-
 map_location map_location::vector_negation() const
 {
 	return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate

@@ -83,7 +83,6 @@ struct map_location {
 	map_location legacy_sum(const map_location &a) const;
 	map_location& legacy_sum_assign(const map_location &a);
 	map_location legacy_difference(const map_location &a) const;
-	map_location &legacy_difference_assign(const map_location &a);
 
 	// Location arithmetic operations treating the locations as vectors in
 	// a hex-based space. These operations form an abelian group, i.e.
