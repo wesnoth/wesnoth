@@ -44,6 +44,7 @@ extern "C" {
 #include "actions.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -64,6 +65,15 @@ static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const uactionKey = 0;
+
+/**
+ * Displays a message in the chat window.
+ */
+static void chat_message(std::string const &caption, std::string const &msg)
+{
+	resources::screen->add_chat_message(time(NULL), caption, 0, msg,
+		events::chat_handler::MESSAGE_PUBLIC, false);
+}
 
 /**
  * Pushes a t_string on the top of the stack.
@@ -740,9 +750,9 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	int res = lua_pcall(L, 1, 0, -3);
 	if (res)
 	{
-		ERR_LUA
-			<< "Failure while running Lua action handler: "
-			<< lua_tostring(L, -1) << '\n';
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
 		lua_pop(L, 2);
 		return;
 	}
@@ -1169,9 +1179,9 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
-		ERR_LUA
-			<< "Failure while loading Lua script: "
-			<< lua_tostring(L, -1) << '\n';
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
 		lua_pop(L, 2);
 		return;
 	}
@@ -1183,9 +1193,9 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 	if (res)
 	{
-		ERR_LUA
-			<< "Failure while running Lua script: "
-			<< lua_tostring(L, -1) << '\n';
+		char const *m = lua_tostring(L, -1);
+		chat_message("Lua error", m);
+		ERR_LUA << m << '\n';
 		lua_pop(L, 2);
 		return;
 	}
