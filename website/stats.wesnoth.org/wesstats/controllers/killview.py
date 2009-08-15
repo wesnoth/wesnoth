@@ -112,25 +112,30 @@ class KillGraphController(BaseController):
 			m_dimensions = helperlib.get_map_dimensions(configuration.MAP_DIR+cur_map)
 	
 		#compute kill frequency per hex
-		curs.execute("SELECT position,COUNT(position) FROM `KILLMAP` WHERE map_id = %s GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100", (cur_map,))
+		filters_map = helperlib.fconstruct(filters_map,"map_id",[cur_map])
+		curs.execute("SELECT position,COUNT(position) FROM `KILLMAP`"+filters_map+"GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100")
 		hexdata = curs.fetchall()
 		conn.close()
 		#first item is 'hottest' -> red (255,0,0), last item is 'coldest' -> blue (0,0,255), linearly interpolate hotness of all values inbetween
 		grid_colors = ""
-		max = hexdata[0][1]
-		min = hexdata[99][1]
-		for hex in hexdata:
-			v = hex[1]
-			red_val = 255.0*float(v-min)/float(max-min)	
-			blue_val = 255.0 * (1 - (float(v-min)/float(max-min)))
-			hex_color = "%.2x00%.2x" % (int(red_val),int(blue_val))
-			#construct the javascript dicitonary that will store hex->color mappings
-			grid_colors += '"%s":"%s",' % (hex[0],hex_color)
-		grid_colors = grid_colors[:-1]
+		if len(hexdata) != 0:
+			max = hexdata[0][1]
+			min = hexdata[len(hexdata)-1][1]
+			#if there are very few results, the minimum frequency == maximum frequency
+			if max == min:
+				max += 1
+			for hex in hexdata:
+				v = hex[1]
+				red_val = 255.0*float(v-min)/float(max-min)	
+				blue_val = 255.0 * (1 - (float(v-min)/float(max-min)))
+				hex_color = "%.2x00%.2x" % (int(red_val),int(blue_val))
+				#construct the javascript dicitonary that will store hex->color mappings
+				grid_colors += '"%s":"%s",' % (hex[0],hex_color)
+			grid_colors = grid_colors[:-1]
 		return dict(maps=maps,cur_map=cur_map,dimensions=m_dimensions,
 			grid_colors=grid_colors,startdate="",enddate="",
 			minkillerlev="",maxkillerlev="",minkilledlev="",
-			maxkilledlev="",used_filters=used_filters,
+			maxkilledlev="",used_filters=used_filters+used_filters_map,
 			ufilters_vals=ufilters_vals,
 			filters=available_filters+available_filters_map,
 			fdata=fdata,cur_map_name=cur_map_name)
