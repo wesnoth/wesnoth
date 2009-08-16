@@ -34,7 +34,6 @@ public:
 	typedef std::map<std::string,label_map> team_label_map;
 
 	map_labels(const display& disp, const team*);
-	map_labels(const display &disp, const config &cfg, const team *);
 	~map_labels();
 
 	void write(config& res) const;

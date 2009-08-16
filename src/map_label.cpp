@@ -44,17 +44,6 @@ map_labels::map_labels(const display& disp,
 {
 }
 
-map_labels::map_labels(const display& disp,
-		       const config& cfg,
-		       const team* team) :
-		disp_(disp),
-		team_(team),
-		labels_(),
-		label_cache_()
-{
-	read(cfg);
-}
-
 map_labels::~map_labels()
 {
 	clear_all();
