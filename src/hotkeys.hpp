@@ -105,8 +105,6 @@ enum HOTKEY_COMMAND {
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 bool is_scope_active(scope s);
-const std::string& get_scope_string(scope s);
-const std::string& get_scope_label(scope s);
 
 class hotkey_item {
 public:

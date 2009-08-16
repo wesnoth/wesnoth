@@ -202,8 +202,6 @@ hotkey::hotkey_item null_hotkey_;
 
 std::string hotkey_tag_name = "hotkey";
 
-const std::string scope_strings_[] = {"general", "game", "editor"};
-const std::string scope_labels_[] = {"Common", "Game", "Editor"};
 std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
 }
 
@@ -225,16 +223,6 @@ void set_scope_active(scope s, bool set)
 bool is_scope_active(scope s)
 {
 	return scope_active_[s];
-}
-
-const std::string& get_scope_string(scope s)
-{
-	return scope_strings_[s];
-}
-
-const std::string& get_scope_label(scope s)
-{
-	return scope_labels_[s];
 }
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
