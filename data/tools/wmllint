@@ -458,6 +458,11 @@ linechanges = (
         (".stoned", ".petrified"),
         # Changed at rev 37390
         ("swing=", "second_value="),
+        # Changed just before 1.7.3
+        ("Drake Gladiator", "Drake Thrasher"),
+        ("gladiator-", "thrasher-"),
+        ("Drake Slasher", "Drake Arbiter"),
+        ("slasher-", "arbiter-"),
         )
 
 def validate_stack(stack, filename, lineno):
