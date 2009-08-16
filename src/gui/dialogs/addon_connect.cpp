@@ -30,12 +30,12 @@ namespace gui2 {
  * This shows the dialog for managing addons and connecting to the addon server.
  *
  * @start_table = container
- *     [] (button) (2)                 This button closes the dialog and starts
- *                                     the addon manager.
- *     [] (button) (3)                 This button closes the dialog and starts
- *                                     the update routine.
- *     host_name (text_box)            This text contains the name of the server
- *                                     to connect to.
+ *     [] (button) (2)                 This button closes the dialog and
+ *                                     starts the addon manager.
+ *     [] (button) (3)                 This button closes the dialog and
+ *                                     starts the update routine.
+ *     host_name (text_box)            This text contains the name of the
+ *                                     server to connect to.
  * @end_table
  */
 
@@ -46,21 +46,21 @@ twindow* taddon_connect::build_window(CVideo& video)
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
-	VALIDATE(host_widget, missing_widget("host_name"));
+	ttext_box& host_widget =
+			NEW_find_widget<ttext_box>(&window, "host_name", false);
 
-	host_widget->set_value(host_name_);
-	window.keyboard_capture(host_widget);
+	host_widget.set_value(host_name_);
+	window.keyboard_capture(&host_widget);
 }
 
 void taddon_connect::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
-		assert(host_widget);
+		ttext_box& host_widget =
+				NEW_find_widget<ttext_box>(&window, "host_name", false);
 
-		host_widget->save_to_history();
-		host_name_= host_widget->get_value();
+		host_widget.save_to_history();
+		host_name_= host_widget.get_value();
 	}
 }
 
