@@ -764,6 +764,7 @@ struct lua_action_handler : game_events::action_handler
 
 	lua_action_handler(lua_State *l, int n) : L(l), num(n) {}
 	void handle(const game_events::queued_event &, const vconfig &);
+	~lua_action_handler();
 };
 
 void lua_action_handler::handle(const game_events::queued_event &, const vconfig &cfg)
@@ -801,6 +802,17 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	}
 
 	lua_pop(L, 1);
+}
+
+lua_action_handler::~lua_action_handler()
+{
+	// Remove the functions from the registry, so that they can be collected.
+	lua_pushlightuserdata(L, (void *)&uactionKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_pushnil(L);
+	lua_rawseti(L, -2, num);
+	lua_pushnil(L);
+	lua_rawseti(L, -2, num + 1);
 }
 
 /**
