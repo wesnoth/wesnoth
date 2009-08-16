@@ -394,6 +394,7 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 			set_error(E_EMPTY_MOVE);
 			return false;
 		}
+		return true;
 	}
 	const shortest_path_calculator calc(un, my_team, units, teams,map);
 
