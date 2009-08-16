@@ -12,7 +12,13 @@
    See the COPYING file for more details.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:py="http://genshi.edgewall.org/" xmlns="http://www.w3.org/1999/xhtml">
+<html 
+	xmlns:py="http://genshi.edgewall.org/" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+>
+<xi:include href="header.html" />
+<xi:include href="footer.html" />
 <?python
 import urllib
 ?>
@@ -21,24 +27,10 @@ import urllib
 <style type="text/css">@import url('http://www.cornmander.com/wesstats/css/main.css');</style>
 </head>
 <body>
-<div id="header">
-	<div id="logo">
-		<a href="http://www.wesnoth.org/"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
-	</div>
-	<div id="nav">
-		<ul>
-			<li><a href="http://www.wesnoth.org/">Home</a></li>
-			<li><a href="http://www.wesnoth.org/wiki/Play">Play</a></li>
-			<li><a href="http://www.wesnoth.org/wiki/Create">Create</a></li>
-			<li><a href="http://www.wesnoth.org/forum/">Forums</a></li>
-			<li><a href="http://www.wesnoth.org/wiki/Support">Support</a></li>
-			<li><a href="http://www.wesnoth.org/wiki/Project">Project</a></li>
-			<li><a href="http://www.wesnoth.org/wiki/Credits">Credits</a></li>
-		</ul>
-	</div>
-</div>
+${header()}
 <div id="main">
 <h3 py:for="view in views"><a href="/wesstats/${urllib.quote(view[1])}">${view[0]} (${view[2].capitalize()} Graph)</a></h3>
 </div>
+${footer()}
 </body>
 </html>
