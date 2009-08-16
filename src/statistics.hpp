@@ -68,13 +68,6 @@ namespace statistics
 	int sum_str_int_map(const stats::str_int_map& m);
 	int sum_cost_str_int_map(const stats::str_int_map &m);
 
-	struct disabler
-	{
-		disabler();
-		~disabler();
-	};
-
-
 	struct scenario_context
 	{
 		scenario_context(const std::string& name);

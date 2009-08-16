@@ -36,8 +36,6 @@ bool mid_scenario = false;
 
 typedef statistics::stats stats;
 
-int stats_disabled = 0;
-
 struct scenario_stats
 {
 	explicit scenario_stats(const std::string& name) :
@@ -409,9 +407,6 @@ void stats::read(const config& cfg)
 	save_id = cfg["save_id"];
 }
 
-disabler::disabler() { stats_disabled++; }
-disabler::~disabler() { stats_disabled--; }
-
 scenario_context::scenario_context(const std::string& name)
 {
 	if(!mid_scenario || master_stats.empty()) {
@@ -441,9 +436,6 @@ attack_context::attack_context(const unit& a,
 
 attack_context::~attack_context()
 {
-	if(stats_disabled > 0)
-		return;
-
 	std::string attacker_key = "s" + attacker_res;
 	std::string defender_key = "s" + defender_res;
 
@@ -479,9 +471,6 @@ void attack_context::attack_expected_damage(double attacker_inflict_, double def
 
 void attack_context::attack_result(hit_result res, int damage, int drain)
 {
-	if(stats_disabled > 0)
-		return;
-
 	attacker_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
@@ -506,9 +495,6 @@ void attack_context::attack_result(hit_result res, int damage, int drain)
 
 void attack_context::defend_result(hit_result res, int damage, int drain)
 {
-	if(stats_disabled > 0)
-		return;
-
 	defender_res.push_back(res == MISSES ? '0' : '1');
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
@@ -533,9 +519,6 @@ void attack_context::defend_result(hit_result res, int damage, int drain)
 
 void recruit_unit(const unit& u)
 {
-	if(stats_disabled > 0)
-		return;
-
 	stats& s = get_stats(u.side_id());
 	s.recruits[u.type_id()]++;
 	s.recruit_cost += u.cost();
@@ -543,9 +526,6 @@ void recruit_unit(const unit& u)
 
 void recall_unit(const unit& u)
 {
-	if(stats_disabled > 0)
-		return;
-
 	stats& s = get_stats(u.side_id());
 	s.recalls[u.type_id()]++;
 	s.recall_cost += u.cost();
@@ -553,9 +533,6 @@ void recall_unit(const unit& u)
 
 void un_recall_unit(const unit& u)
 {
-	if(stats_disabled > 0)
-		return;
-
 	stats& s = get_stats(u.side_id());
 	s.recalls[u.type_id()]--;
 	s.recall_cost -= u.cost();
@@ -563,9 +540,6 @@ void un_recall_unit(const unit& u)
 
 void un_recruit_unit(const unit& u)
 {
-	if(stats_disabled > 0)
-		return;
-
 	stats& s = get_stats(u.side_id());
 	s.recruits[u.type_id()]--;
 	s.recruit_cost -= u.cost();
@@ -574,9 +548,6 @@ void un_recruit_unit(const unit& u)
 
 void advance_unit(const unit& u)
 {
-	if(stats_disabled > 0)
-		return;
-
 	stats& s = get_stats(u.side_id());
 	s.advanced_to[u.type_id()]++;
 }
