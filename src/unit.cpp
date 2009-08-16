@@ -1282,9 +1282,17 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["type"].empty()) {
 		throw game::load_game_failed("Attempt to de-serialize a unit with an empty 'type' field:\n" + cfg.debug());
 	}
-	type_ = cfg["type"];
 
 	cfg_ = cfg;
+
+	// @todo: FIXME Compatibility hack for unit renames, can be removed for 1.7.5.
+	if (cfg_["type"] == "Drake Gladiator") {
+		cfg_["type"] = "Drake Thrasher";
+	} else if (cfg_["type"] == "Drake Slasher") {
+		cfg_["type"] = "Drake Arbiter";
+	}
+
+	type_ = cfg_["type"];
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
 		side_ = 1;
@@ -1382,6 +1390,11 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
+	// @todo: FIXME Compatibility hack for unit renames, can be removed for 1.7.5.
+	foreach (std::string& advance, temp_advances) {
+		if (advance == "Drake Gladiator") advance = "Drake Thrasher";
+		else if (advance == "Drake Slasher") advance = "Drake Arbiter";
+	}
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
 		advances_to_.clear();
 	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
