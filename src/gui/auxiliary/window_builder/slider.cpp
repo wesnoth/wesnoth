@@ -83,11 +83,21 @@ twidget* tbuilder_slider::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = slider_description
+ *
+ *        A slider is a control that can select a value by moving a grip on a
+ *        groove.
+ * @end_macro
+ */
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 3_slider
  *
  * == Slider ==
+ *
+ * @macro = slider_description
  *
  * @start_table = config
  *     best_slider_length (unsigned = 0)

@@ -199,7 +199,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Multi_page                    @macro = multi_page_description
  *     Panel                         @macro = panel_description
  *     Scroll_label                  @macro = scroll_label_description
- *     Slider                        A slider.
+ *     Slider                        @macro = slider_description
  *     Spacer                        A spacer is a dummy widget which can be
  *                                   used if a cell in a container needs to be
  *                                   empty or have a fixed size.
@@ -1032,8 +1032,7 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Slider ==
  *
- * The definition of a normal slider. A slider is a widget that can be moved by
- * the user to indicate the wanted value.
+ * @macro = slider_description
  *
  * @start_table = config
  *     minimum_positioner_length (unsigned)
@@ -1053,14 +1052,13 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
  *                                     which can't be used by the positioner.
  * @end_table
  *
- *
  * The following states exist:
  * * state_enabled, the slider is enabled.
  * * state_disabled, the slider is disabled.
  * * state_pressed, the left mouse button is down on the positioner of the slider.
  * * state_focussed, the mouse is over the positioner of the slider.
- *
  */
+
 	VALIDATE(minimum_positioner_length,
 		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
