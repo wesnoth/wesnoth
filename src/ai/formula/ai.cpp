@@ -837,18 +837,16 @@ variant formula_ai::get_keeps() const
 }
 
 bool formula_ai::can_reach_unit(map_location unit_A, map_location unit_B) const {
+	if (tiles_adjacent(unit_A,unit_B)) {
+		return true;
+	}
 	move_map::const_iterator i;
 	std::pair<move_map::const_iterator,
 			  move_map::const_iterator> unit_moves;
 
 	unit_moves = get_srcdst().equal_range(unit_A);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		//@todo: 1.7.3 replace with existing function 'tiles_adjacent'
-		map_location diff((((*i).second)).vector_difference(unit_B));
-
-
-		if( ( ( diff.y == -1 || diff.y == 0 ) && (abs(diff.x) <= 1) ) ||
-			( diff.y == 1 && diff.x == 0 ) ) {
+		if (tiles_adjacent((*i).second,unit_B)) {
 			return true;
 		}
 	}
