@@ -308,18 +308,6 @@ terrain_label::terrain_label(const std::string& text,
 	draw();
 }
 
-terrain_label::terrain_label(const map_labels& parent)  :
-		handle_(0),
-		text_(),
-		team_name_(),
-		visible_in_fog_(true),
-		colour_(),
-		parent_(&parent),
-		loc_()
-{
-}
-
-
 /// Load label from config
 terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		handle_(0),

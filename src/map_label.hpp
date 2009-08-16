@@ -95,8 +95,6 @@ public:
 
 	terrain_label(const map_labels &, const config &);
 
-	terrain_label(const map_labels&);
-
 	~terrain_label();
 
 	void write(config& res) const;
