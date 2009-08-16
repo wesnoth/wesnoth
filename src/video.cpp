@@ -30,47 +30,6 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
-#define TEST_VIDEO_ON 0
-
-#if (TEST_VIDEO_ON==1)
-
-
-// Testprogram takes three args: x-res y-res colour-depth
-int main( int argc, char** argv )
-{
-	if( argc != 4 ) {
-		printf( "usage: %s x-res y-res bitperpixel\n", argv[0] );
-		return 1;
-	}
-	SDL_Init(SDL_INIT_VIDEO);
-	CVideo video;
-
-	printf( "args: %s, %s, %s\n", argv[1], argv[2], argv[3] );
-
-	printf( "(%d,%d,%d)\n", strtoul(argv[1],0,10), strtoul(argv[2],0,10),
-	                        strtoul(argv[3],0,10) );
-
-	if( video.setMode( strtoul(argv[1],0,10), strtoul(argv[2],0,10),
-	                        strtoul(argv[3],0,10), FULL_SCREEN ) ) {
-		printf( "video mode possible\n" );
-	} else  printf( "video mode NOT possible\n" );
-	printf( "%d, %d, %d\n", video.getx(), video.gety(),
-	                        video.getBitsPerPixel() );
-
-	for( int s = 0; s < 50; s++ ) {
-		video.lock();
-		for( int i = 0; i < video.getx(); i++ )
-				video.setPixel( i, 90, 255, 0, 0 );
-		if( s%10==0)
-			printf( "frame %d\n", s );
-		video.unlock();
-		video.update( 0, 90, video.getx(), 1 );
-	}
-	return 0;
-}
-
-#endif
-
 namespace {
 	bool fullScreen = false;
 	int disallow_resize = 0;
@@ -395,23 +354,6 @@ void CVideo::lock_updates(bool value)
 bool CVideo::update_locked() const
 {
 	return updatesLocked_ > 0;
-}
-
-void CVideo::lock()
-{
-	if( SDL_MUSTLOCK(frameBuffer) )
-		SDL_LockSurface( frameBuffer );
-}
-
-void CVideo::unlock()
-{
-	if( SDL_MUSTLOCK(frameBuffer) )
-		SDL_UnlockSurface( frameBuffer );
-}
-
-int CVideo::mustLock()
-{
-	return SDL_MUSTLOCK(frameBuffer);
 }
 
 surface CVideo::getSurface()
