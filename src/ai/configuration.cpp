@@ -325,7 +325,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 
 bool configuration::modify_ai_configuration(const config &/*mod_ai*/, config &/*parsed_cfg*/)
 {
-	//@todo 1.7.3 implement
+	//@todo 1.7.4 implement
 	return true;
 }
 
