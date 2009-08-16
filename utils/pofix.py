@@ -235,6 +235,11 @@ stringfixes = {
 (" and and ", " and "),
 ),
 
+"wesnoth-tutorial" :(
+# typo fixes
+("effecient", "efficient"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
