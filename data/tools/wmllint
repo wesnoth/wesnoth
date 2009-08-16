@@ -1389,7 +1389,7 @@ def hack_syntax(filename, lines):
         if "[/standing_anim]" in lines[i]:
             in_standing_anim = False
         if in_standing_anim:
-            lines[i] = re.sub(r"terrain", "terrain_type", lines[i])
+            lines[i] = re.sub(r"terrain([^_])", r"terrain_type\1", lines[i])
     # More syntax transformations would go here.
     return lines
 
