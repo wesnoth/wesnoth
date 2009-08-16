@@ -247,9 +247,6 @@ private:
 	/** Adds a player. */
 	void update_user_combos();
 
-	/** Removes a player and kicks it from the game. */
-	void kick_player(const std::string& name);
-
 	bool local_only_;
 
 	config level_;

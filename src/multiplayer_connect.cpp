@@ -1774,35 +1774,5 @@ void connect::update_user_combos()
 	}
 }
 
-void connect::kick_player(const std::string& name)
-{
-	connected_user_list::iterator player = find_player(name);
-	if(player == users_.end())
-		return;
-
-	if(player->controller != CNTR_NETWORK)
-		return;
-
-	// If we are the server, kick the user ourselves;
-	// else, ask the server to do so.
-	if(network::is_server()) {
-		network::disconnect(player->connection);
-	} else {
-		config kick;
-		kick["username"] = name;
-		config res;
-		res.add_child("kick", kick);
-		network::send_data(res, 0, true);
-	}
-
-	int side = find_player_side(name);
-	if (side != -1) {
-		assert(size_t(side) < sides_.size());
-		sides_[side].reset(sides_[side].get_controller());
-	}
-	users_.erase(player);
-	update_user_combos();
-}
-
 } // end namespace mp
 
