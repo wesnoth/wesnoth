@@ -1452,7 +1452,6 @@ msgstr "Licencija"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:357
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1460,7 +1459,9 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "Dauguma dalinių turi du bruožus. Tačiau nemirėlių daliniams priskirtas "
-"vienintelis bruožas „Nemirėlis“"
+"vienintelis bruožas „Nemirėlis“, o miškiniai neturi jokių bruožų. Bruožai "
+"yra pakeitimai, kurie šiek tiek pakeičia dalinio atributus. Jie paprastai "
+"atsitiktinai priskiriami daliniui, kai jis yra pasamdomas."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:359
@@ -2274,7 +2275,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Perjungti registravimo demeną į kitą lygį.\n"
+"Perjungti registravimo domeną į kitą lygį.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2292,6 +2293,9 @@ msgid ""
 "Bring up theme selection menu.\n"
 "\n"
 msgstr ""
+"\n"
+"Atverti temų pasirinkimo meniu.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:794
@@ -2322,7 +2326,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Išsaugoti žaidimą ir išjunti scenarijų (be užklausimo)."
+"Išsaugoti žaidimą ir išjungti scenarijų (be užklausimo)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:806
@@ -2458,6 +2462,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Iš karto pereina į kitą kampanijos scenarijų.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:852
@@ -2467,7 +2474,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Rankiniu būdu nustatyti žaidimo būsenos kintamąjo vertę.\n"
+"Rankiniu būdu nustatyti žaidimo būsenos kintamojo vertę.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -2535,12 +2542,12 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "regeneruojasi"
+msgstr "regeneruoja"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 msgid "female^regenerates"
-msgstr "regeneruojasi"
+msgstr "regeneruoja"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
@@ -2549,7 +2556,7 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regeneruojasi:\n"
+"Regeneruoja:\n"
 "Dalinys gydysis 8 GT per ėjimą. Jei jis yra apnuodytas, tai vietoj gydymosi "
 "pasišalins nuodus."
 
@@ -2571,7 +2578,7 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "Atsparus:\n"
-"Šio dalinio atsparumai yar padvigubinami, iki didžiausių įmanomų 50%, kai "
+"Šio dalinio atsparumai yra padvigubinami, iki didžiausių įmanomų 50%, kai "
 "ginamasi. Pažeidžiamumai nepaveikiami."
 
 #. [leadership]: id=leadership
@@ -4631,8 +4638,8 @@ msgstr ""
 "matyt jų svarbiausias kariavimo būdas. Dauguma elfų karių nešiojasi lanką ir "
 "jokia kita rasė negali lygintis su jų lankininkais greičiu ir taiklumu. Visi "
 "elfai taip pat turi nepaaiškinamą potraukį prie nepaliestos gamtos. Jie "
-"dažnai jaučiasi nejaukiai didelėse erdvėse be augalų. Elfai pagrindinai "
-"gyvena Didžiojo žemyno miškuose; Aetenvude pietvakariuose, Vesmeroje šiaurės "
+"dažnai jaučiasi nejaukiai didelėse erdvėse be augalų. Elfai pagrinde gyvena "
+"Didžiojo žemyno miškuose; Aetenvude pietvakariuose, Vesmeroje šiaurės "
 "vakaruose ir didžiajame šiauriniame miške, kurio piečiausias kraštas "
 "vadinamas Lintaniro mišku.\n"
 "\n"
@@ -5033,7 +5040,7 @@ msgstr ""
 "išsaugodami tik savo protą ir dvasią.\n"
 "\n"
 "<header>text='Geografija'</header>\n"
-"Nors nemirėlių valdovai į Didijį žemyną žymiais kiekiais atvyko tik Haldriko "
+"Nors nemirėlių valdovai į Didįjį žemyną žymiais kiekiais atvyko tik Haldriko "
 "I pėdomis, tačiau ir prieš tai jie nebuvo visiškai negirdėti elfams ir "
 "dvorfams."
 
@@ -5050,12 +5057,12 @@ msgstr "Vilkai"
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
 msgid "race^Wose"
-msgstr ""
+msgstr "Miškinis"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
 msgid "race^Woses"
-msgstr ""
+msgstr "Miškiniai"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -5328,8 +5335,8 @@ msgid ""
 "some high-level troops sooner."
 msgstr ""
 "Daliniams su „protingas“ bruožu reikia mažiau patirties taškų, kad pasikeltų "
-"lygį. Anksti kampnijoje bandykite atiduoti mirtinus smūgius šiems daliniams, "
-"kad greičiau gautumėte aukšto lygio karių."
+"lygį. Anksti kampanijoje bandykite atiduoti mirtinus smūgius šiems "
+"daliniams, kad greičiau gautumėte aukšto lygio karių."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -5344,7 +5351,7 @@ msgid ""
 "will restrict it to one hex of movement in any direction."
 msgstr ""
 "Apsupties taktika labai naudinga, ypač prieš greitus dalinius. Pastačius du "
-"dalinius abibus priešo, jų įtakos zonos neleis jam pajudėti daugiau, nei "
+"dalinius abipus priešo, jų įtakos zonos neleis jam pajudėti daugiau, nei "
 "vieną langelį."
 
 #. [tip]
@@ -5387,8 +5394,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"Kai būsite sužaidę kelis scenarijus, atidžiai perskaityite „Žaidimas“ skyrių "
-"pagalbos ekrane. Detalės tampa svarbios, kai scenarijai tampa sunkesni!"
+"Kai būsite sužaidę kelis scenarijus, atidžiai perskaitykite „Žaidimas“ "
+"skyrių pagalbos ekrane. Detalės tampa svarbios, kai scenarijai tampa "
+"sunkesni!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5825,6 +5833,9 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Daugelyje kampanijų scenarijų kompiuterio kontroliuojamiems sąjungininkams "
+"galite nurodyti paprastas instrukcijas naudodami dešinio spragtelėjimo "
+"konteksninį meniu."
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -5839,6 +5850,8 @@ msgstr "Išsaugoti mano peržaidimą ir daugiau nebeklausti"
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Kad vėliau pakeistumėte nustatymą, spragtelėkite voko ženkliuką "
+"pagrindiniame meniu."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -8477,7 +8490,7 @@ msgstr " peržaidimas"
 #: src/savegame.cpp:443 src/savegame.cpp:447
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
-"Dėmesio: Failas, kurį bandote įkelti yra sugadintas. Įkėlinėjama vis tiek.\n"
+"Dėmesio: Failas, kurį bandote įkelti yra sugadintas. Įkeliama vis tiek.\n"
 
 #: src/savegame.cpp:474
 msgid "This save is from a version too old to be loaded."
