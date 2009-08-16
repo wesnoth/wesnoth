@@ -65,8 +65,6 @@ image::TYPE editor_display::get_image_type(const map_location& loc)
 {
 	if (brush_locations_.find(loc) != brush_locations_.end()) {
 		return image::BRIGHTENED;
-	} else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
-		return image::SEMI_BRIGHTENED;
 	} else if (map().in_selection(loc)) {
 		return image::SEMI_BRIGHTENED;
 	}

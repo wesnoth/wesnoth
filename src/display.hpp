@@ -382,19 +382,6 @@ public:
 	void set_idle_anim_rate(int rate);
 	double idle_anim_rate() const { return idle_anim_rate_; }
 
-	/**
-	 * Add a location to highlight.
-	 *
-	 * Note that this has nothing to do with selecting hexes,
-	 * it is pure highlighting. These hexes will be highlighted
-	 * slightly darker than the currently selected hex.
-	 */
-	void add_highlighted_loc(const map_location &hex);
-
-	void clear_highlighted_locs();
-
-	void remove_highlighted_loc(const map_location &hex);
-
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
 
@@ -616,7 +603,6 @@ protected:
 	surface mouseover_hex_overlay_;
 	map_location selectedHex_;
 	map_location mouseoverHex_;
-	std::set<map_location> highlighted_locations_;
 	CKey keys_;
 
 public:

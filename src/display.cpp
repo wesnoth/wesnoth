@@ -111,7 +111,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	mouseover_hex_overlay_(0),
 	selectedHex_(),
 	mouseoverHex_(),
-	highlighted_locations_(),
 	keys_(),
 #if TDRAWING_BUFFER_USES_VECTOR
 	drawing_buffer_(LAYER_LAST_LAYER),
@@ -1279,32 +1278,6 @@ void display::enable_menu(const std::string& item, bool enable)
 			}
 			buttons_[index].enable(enable);
 		}
-	}
-}
-
-void display::add_highlighted_loc(const map_location &hex)
-{
-	// Only invalidate and insert if this is a new addition,
-	// for efficiency.
-	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
-		highlighted_locations_.insert(hex);
-		invalidate(hex);
-	}
-}
-
-void display::clear_highlighted_locs()
-{
-	invalidate(highlighted_locations_);
-	highlighted_locations_.clear();
-}
-
-void display::remove_highlighted_loc(const map_location &hex)
-{
-	std::set<map_location>::iterator it = highlighted_locations_.find(hex);
-	// Only invalidate and remove if the hex was found, for efficiency.
-	if (it != highlighted_locations_.end()) {
-		highlighted_locations_.erase(it);
-		invalidate(hex);
 	}
 }
 
