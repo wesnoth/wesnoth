@@ -42,7 +42,7 @@ bool generic_event::attach_handler(observer* obs){
 				handler_attached = true;
 			}
 		}
-		catch (std::exception&){
+		catch (...){
 			change_handler_ = false;
 			throw;
 		}
@@ -68,7 +68,7 @@ bool generic_event::detach_handler(observer* obs){
 				handler_detached = true;
 			}
 		}
-		catch (std::exception&){
+		catch (...){
 			change_handler_ = false;
 			throw;
 		}
@@ -87,7 +87,7 @@ void generic_event::notify_observers(){
 				(*it)->handle_generic_event(name_);
 			}
 		}
-		catch (std::exception&){
+		catch (...){
 			//reset the flag if event handlers throw exceptions and don't catch them
 			notify_active_ = false;
 			throw;
