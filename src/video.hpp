@@ -56,11 +56,6 @@ class CVideo : private boost::noncopyable {
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;
-	int getBitsPerPixel();
-	int getBytesPerPixel();
-	int getRedMask();
-	int getGreenMask();
-	int getBlueMask();
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);

@@ -294,31 +294,6 @@ int CVideo::gety() const
 	return frameBuffer->h;
 }
 
-int CVideo::getBitsPerPixel()
-{
-	return frameBuffer->format->BitsPerPixel;
-}
-
-int CVideo::getBytesPerPixel()
-{
-	return frameBuffer->format->BytesPerPixel;
-}
-
-int CVideo::getRedMask()
-{
-	return frameBuffer->format->Rmask;
-}
-
-int CVideo::getGreenMask()
-{
-	return frameBuffer->format->Gmask;
-}
-
-int CVideo::getBlueMask()
-{
-	return frameBuffer->format->Bmask;
-}
-
 void CVideo::flip()
 {
 	if(fake_screen_)
