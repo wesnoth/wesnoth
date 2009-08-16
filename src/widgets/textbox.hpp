@@ -35,7 +35,6 @@ public:
 	void set_text(const std::string& text, const SDL_Color& color =font::NORMAL_COLOUR);
 	void append_text(const std::string& text,bool auto_scroll = false, const SDL_Color& color =font::NORMAL_COLOUR);
 	void clear();
-	void process();
 
 	void set_editable(bool value);
 	bool editable() const;

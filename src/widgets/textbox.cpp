@@ -194,25 +194,6 @@ void textbox::draw_contents()
 	update_rect(loc);
 }
 
-void textbox::process()
-{
-	if(editable_) {
-		if(focus(NULL)) {
-			const int ticks = SDL_GetTicks();
-			if(ticks > show_cursor_at_+500) {
-				show_cursor_ = !show_cursor_;
-				show_cursor_at_ = ticks;
-				set_dirty();
-			}
-		} else if(show_cursor_ == true) {
-			show_cursor_ = false;
-			set_dirty();
-		}
-	}
-
-	draw();
-}
-
 void textbox::set_editable(bool value)
 {
 	editable_ = value;
