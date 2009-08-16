@@ -151,6 +151,13 @@ private:
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr page_builder_;
 
+	/**
+	 * Inherited from tcontrol.
+	 *
+	 * Since we're always empty the draw does nothing.
+	 */
+	void impl_draw_background(surface& /*frame_buffer*/) {}
+
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
 		{ static const std::string type = "multi_page"; return type; }

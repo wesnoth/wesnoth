@@ -21,7 +21,7 @@
 namespace gui2 {
 
 tmulti_page::tmulti_page()
-	: tcontainer_(1)
+	: tcontainer_(0)
 	, generator_(NULL)
 	, page_builder_(NULL)
 {
