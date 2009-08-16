@@ -46,8 +46,6 @@ struct tbuilder_listbox
 	 * serialize the data in the config, so the config is no longer required.
 	 */
 	std::vector<string_map> list_data;
-
-	bool linked_widgets_disabled_;
 };
 
 } // namespace implementation

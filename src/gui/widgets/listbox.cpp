@@ -37,8 +37,6 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 	, generator_(NULL)
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
-	, linked_size_initialized_(false)
-	, linked_widgets_disabled_(false)
 {
 	generator_ = tgenerator_::build(
 			has_minimum, has_maximum, placement, select);
@@ -49,27 +47,6 @@ void tlistbox::add_row(const string_map& item)
 	assert(generator_);
 	generator_->create_item(
 			-1, list_builder_, item, callback_list_item_clicked);
-
-	tgrid& grid = generator_->get_item(get_item_count() - 1);
-	twindow* window = get_window();
-	assert(window);
-
-	if(get_item_count() == 1) {
-		init_linked_size_widets(*window, grid.begin(), grid.end());
-
-		/**
-		 * @todo add footer and make one function to do this part since the
-		 * code is duplicated at two places.
-		 */
-		tgrid* header_grid = dynamic_cast<tgrid*>(
-				content_grid()->find_widget("_header_grid", false));
-
-		if(header_grid) {
-			add_linked_size_widgets(*window, header_grid->begin(),
-					header_grid->end());
-		}
-	}
-	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
 void tlistbox::add_row(
@@ -78,25 +55,6 @@ void tlistbox::add_row(
 	assert(generator_);
 	generator_->create_item(
 			-1, list_builder_, data, callback_list_item_clicked);
-
-	tgrid& grid = generator_->get_item(get_item_count() - 1);
-	twindow* window = get_window();
-	assert(window);
-
-	if(!linked_size_initialized_) {
-		linked_size_initialized_ = true;
-
-		init_linked_size_widets(*window, grid.begin(), grid.end());
-
-		tgrid* header_grid = dynamic_cast<tgrid*>(
-				content_grid()->find_widget("_header_grid", false));
-
-		if(header_grid) {
-			add_linked_size_widgets(*window, header_grid->begin(),
-					header_grid->end());
-		}
-	}
-	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
 void tlistbox::remove_row(const unsigned row, unsigned count)
@@ -112,14 +70,6 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	for(; count; --count) {
-		twindow* window = get_window();
-		assert(window);
-
-		tgrid* grid = get_row_grid(row);
-		assert(grid);
-
-		remove_linked_size_widgets(*window, grid->begin(), grid->end());
-
 		generator_->delete_item(row);
 	}
 }
@@ -279,86 +229,6 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	// Inherited.
 	if(!handled) {
 		tscrollbar_container::handle_key_right_arrow(modifier, handled);
-	}
-}
-
-void tlistbox::init_linked_size_widets(twindow& window,
-		const tgrid::iterator& begin, const tgrid::iterator& end)
-{
-	if(linked_widgets_disabled_) {
-		return;
-	}
-	ERR_GUI_G << "The listbox uses the "
-			"deprecated automatic linked widget feature.\n";
-	assert(false);
-
-	for(tgrid::iterator itor = begin; itor != end; ++itor) {
-
-		assert(*itor);
-
-		// Add to list.
-		if(!itor->id().empty()) {
-			window.init_linked_size_group(itor->id(), true, false);
-		}
-
-		// Recurse though the children.
-		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
-		if(container) {
-			init_linked_size_widets(window,
-					container->begin(), container->end());
-		}
-	}
-}
-
-void tlistbox::add_linked_size_widgets(twindow& window,
-		const tgrid::iterator& begin, const tgrid::iterator& end)
-{
-	if(linked_widgets_disabled_) {
-		return;
-	}
-	assert(false);
-
-	for(tgrid::iterator itor = begin; itor != end; ++itor) {
-
-		assert(*itor);
-
-		// Add to list.
-		if(!itor->id().empty()) {
-			window.add_linked_widget(itor->id(), *itor);
-		}
-
-		// Recurse though the children.
-		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
-		if(container) {
-			add_linked_size_widgets(window,
-					container->begin(), container->end());
-		}
-	}
-}
-
-void tlistbox::remove_linked_size_widgets(twindow& window,
-		const tgrid::iterator& begin, const tgrid::iterator& end)
-{
-	if(linked_widgets_disabled_) {
-		return;
-	}
-	assert(false);
-
-	for(tgrid::iterator itor = begin; itor != end; ++itor) {
-
-		assert(*itor);
-
-		// Add to list.
-		if(!itor->id().empty()) {
-			window.remove_linked_widget(itor->id(), *itor);
-		}
-
-		// Recurse though the children.
-		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
-		if(container) {
-			remove_linked_size_widgets(window,
-					container->begin(), container->end());
-		}
 	}
 }
 

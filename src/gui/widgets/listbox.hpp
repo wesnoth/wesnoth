@@ -195,48 +195,6 @@ private:
 	 * For now it's always fixed width depending on the first row.
 	 */
 
-	/**
-	 * Initializes the linked size list.
-	 *
-	 * The routine goes from begin to end through the widgets and if the
-	 * widget has an id it's used to initialize the linked size list of the
-	 * parent window. If the widget is a container all its children are also
-	 * initialized.
-	 *
-	 * @param window              The parent window.
-	 * @param begin               Begin iterator.
-	 * @param end                 End iterator.
-	 */
-	void init_linked_size_widets(twindow& window,
-			const tgrid::iterator& begin, const tgrid::iterator& end);
-
-	/**
-	 * Adds widgets to the linked size list.
-	 *
-	 * The routine goes from begin to end through the widgets and if the
-	 * widget has an id it's added to the linked size list of the parent
-	 * window. If the widget is a container all its children are also added.
-	 *
-	 * @param window              The parent window.
-	 * @param begin               Begin iterator.
-	 * @param end                 End iterator.
-	 */
-	void add_linked_size_widgets(twindow& window,
-			const tgrid::iterator& begin, const tgrid::iterator& end);
-
-	/**
-	 * Removes widgets from the linked size list.
-	 *
-	 * The routine goes from begin to end through the widgets and if the
-	 * widget has an id it's removed from the linked size list of the parent
-	 * window. If the widget is a container all its children are also added.
-	 *
-	 * @param window              The parent window.
-	 * @param begin               Begin iterator.
-	 * @param end                 End iterator.
-	 */
-	void remove_linked_size_widgets(twindow& window,
-			const tgrid::iterator& begin, const tgrid::iterator& end);
 
 	/**
 	 * Finishes the building initialization of the widget.
@@ -267,14 +225,6 @@ private:
 	 * change the selected item.
 	 */
 	void (*callback_value_changed_) (twidget*);
-
-	/**
-	 * Is the linked size list initialized.
-	 *
-	 * This needs to be tracked since a listbox can be cleared during its
-	 * usage.
-	 */
-	bool linked_size_initialized_;
 
 	/**
 	 * Automatically add the linked widget style for the listbox?
