@@ -198,7 +198,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Minimap                       @macro = minimap_description
  *     Multi_page                    @macro = multi_page_description
  *     Panel                         @macro = panel_description
- *     Scroll_label                  A label which can have scrollbars.
+ *     Scroll_label                  @macro = scroll_label_description
  *     Slider                        A slider.
  *     Spacer                        A spacer is a dummy widget which can be
  *                                   used if a cell in a container needs to be
@@ -932,11 +932,10 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Scroll label ==
  *
- * The definition of a normal scroll label. A scroll label is a label that
- * wraps its text and also has a vertical scrollbar. This way a text can't be
- * too long to be shown for this widget. This widget is slower as a normal
- * label widget so only use this widget when the scrollbar is required (or
- * expected to become required).
+ * @macro = scroll_label_description
+ *
+ * This widget is slower as a normal label widget so only use this widget
+ * when the scrollbar is required (or expected to become required).
  *
  * @start_table = config
  *     grid (grid)                     A grid containing the widgets for main
