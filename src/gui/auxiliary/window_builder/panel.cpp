@@ -55,20 +55,27 @@ twidget* tbuilder_panel::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = panel_description
+ *
+ *        A panel is an item which can hold other items. The difference
+ *        between a grid and a panel is that it's possible to define how a
+ *        panel looks. A grid in an invisible container to just hold the
+ *        items.
+ * @end_macro
+ */
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_panel
  *
  * == Panel ==
  *
- * A panel is an item which can hold other items. The difference between a
- * grid and a panel is that it's possible to define how a panel looks. A grid
- * in an invisible container to just hold the items.
+ * @macro = panel_description
  *
  * @start_table = config
  *     grid (grid)                     Defines the grid with the widgets to
  *                                     place on the panel.
  * @end_table
- *
  */
 

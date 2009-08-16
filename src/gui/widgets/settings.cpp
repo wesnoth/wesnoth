@@ -197,8 +197,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   is still under heavy development.)
  *     Minimap                       @macro = minimap_description
  *     Multi_page                    @macro = multi_page_description
- *     Panel                         A panel is a container with can have it's
- *                                   own visual attributes.
+ *     Panel                         @macro = panel_description
  *     Scroll_label                  A label which can have scrollbars.
  *     Slider                        A slider.
  *     Spacer                        A spacer is a dummy widget which can be
@@ -888,16 +887,21 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Panel ==
  *
- * The definition of a panel. A panel is a container hold other elements in it's
- * grid. A panel is always enabled and can't be disabled. Instead it uses the
+ * @macro = panel_description
+ *
+ * A panel is always enabled and can't be disabled. Instead it uses the
  * states as layers to draw on.
  *
  * The resolution for a panel also contains the following keys:
  * @start_table = config
- *     top_border (unsigned = 0)     The size which isn't used for the client area.
- *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
- *     left_border (unsigned = 0)    The size which isn't used for the client area.
- *     right_border (unsigned = 0)   The size which isn't used for the client area.
+ *     top_border (unsigned = 0)     The size which isn't used for the client
+ *                                   area.
+ *     bottom_border (unsigned = 0)  The size which isn't used for the client
+ *                                   area.
+ *     left_border (unsigned = 0)    The size which isn't used for the client
+ *                                   area.
+ *     right_border (unsigned = 0)   The size which isn't used for the client
+ *                                   area.
  * @end_table
  *
  * The following layers exist:
