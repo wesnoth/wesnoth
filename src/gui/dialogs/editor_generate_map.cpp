@@ -25,9 +25,30 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_editor_generate_map
+ *
+ * == Editor generate map ==
+ *
+ * This shows the dialog in the editor to select which random generator
+ * should be used to generate a map.
+ *
+ * @start_table = container
+ *     current_generator (label)       The label displaying the name of the
+ *                                     currently selected generator.
+ *     settings (button)               When clicked this button opens the
+ *                                     generator settings dialog.
+ *     next_generator (button)         Selects the next generator in the
+ *                                     list, this list wraps at the end.
+ * @end_table
+ */
+
 teditor_generate_map::teditor_generate_map()
-: map_generators_(), current_map_generator_(0),
-current_generator_label_(NULL), gui_(NULL)
+	: map_generators_()
+	, current_map_generator_(0)
+	, current_generator_label_(NULL)
+	, gui_(NULL)
 {
 }
 
@@ -55,9 +76,11 @@ map_generator* teditor_generate_map::get_selected_map_generator()
 void teditor_generate_map::update_current_generator_label(twindow& window)
 {
 	std::stringstream ss;
-	ss << lexical_cast<std::string>(current_map_generator_ + 1);
-	ss << "/" << lexical_cast<std::string>(map_generators_.size());
-	ss << ": " << get_selected_map_generator()->name() << ", " << get_selected_map_generator()->config_name();
+	ss << lexical_cast<std::string>(current_map_generator_ + 1)
+			<< "/" << lexical_cast<std::string>(map_generators_.size())
+			<< ": " << get_selected_map_generator()->name()
+			<< ", " << get_selected_map_generator()->config_name();
+
 	current_generator_label_->set_label(ss.str());
 
 	window.invalidate_layout();
@@ -72,18 +95,24 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(!map_generators_.empty());
 	assert(gui_);
-	current_generator_label_ = &window.get_widget<tlabel>("current_generator", false);
-	tbutton& settings_button = window.get_widget<tbutton>("settings", false);
+
+	current_generator_label_ =
+			&NEW_find_widget<tlabel>(&window, "current_generator", false);
+
+	tbutton& settings_button =
+			NEW_find_widget<tbutton>(&window, "settings", false);
 	settings_button.set_callback_mouse_left_click(
-		dialog_callback<teditor_generate_map, &teditor_generate_map::do_settings>);
-	tbutton& next_generator_button = window.get_widget<tbutton>("next_generator", false);
+			dialog_callback<teditor_generate_map
+				, &teditor_generate_map::do_settings>);
+
+	tbutton& next_generator_button =
+			NEW_find_widget<tbutton>(&window, "next_generator", false);
 	next_generator_button.set_callback_mouse_left_click(
-		dialog_callback<teditor_generate_map, &teditor_generate_map::do_next_generator>);
+			dialog_callback<teditor_generate_map
+				, &teditor_generate_map::do_next_generator>);
+
 	update_current_generator_label(window);
 }
 
-void teditor_generate_map::post_show(twindow& /*window*/)
-{
-}
-
 } // namespace gui2
+

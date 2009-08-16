@@ -17,17 +17,16 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include <vector>
-
 class map_generator;
-
 class display;
 
 namespace gui2 {
 
 class tlabel;
 
-class teditor_generate_map : public tdialog
+/** The dialog for selecting which random generator to use in the editor. */
+class teditor_generate_map
+	: public tdialog
 {
 public:
 	teditor_generate_map();
@@ -38,7 +37,11 @@ public:
 	/** Callback for the next generator button */
 	void do_next_generator(twindow& window);
 
-	void set_map_generators(std::vector<map_generator*> mg) { map_generators_ = mg; }
+	void set_map_generators(std::vector<map_generator*> mg)
+	{
+		map_generators_ = mg;
+	}
+
 	std::vector<map_generator*> get_map_generators() { return map_generators_; }
 
 	map_generator* get_selected_map_generator();
@@ -55,9 +58,6 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
 	/** Available map generators */
 	std::vector<map_generator*> map_generators_;
 
@@ -67,7 +67,6 @@ private:
 	/** Label for the current map generator */
 	tlabel* current_generator_label_;
 
-
 	/** Needed for the old-style map generator settings dialog */
 	display* gui_;
 };
@@ -75,3 +74,4 @@ private:
 } // namespace gui2
 
 #endif
+
