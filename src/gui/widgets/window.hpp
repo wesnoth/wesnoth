@@ -254,10 +254,15 @@ public:
 	/**
 	 * Does the window close easily?
 	 *
+	 * The behaviour can change at run-time, but that might cause oddities
+	 * with the easy close button (when one is needed).
+	 *
 	 * @returns                   Whether or not the window closes easily.
 	 */
 	bool does_easy_close() const
-		{ return easy_close_ && !easy_close_disabled_; }
+	{
+		return easy_close_ && !disable_easy_close();
+	}
 
 	/**
 	 * Disable the enter key.
@@ -449,15 +454,6 @@ private:
 	 * disable_easy_close().
 	 */
 	bool easy_close_;
-
-	/** 
-	 * Hold the state of the easy close disable state.
-	 *
-	 * This value is set on showing and remains valid for the entire time
-	 * shown. This means the easy close can't be changed on run-time, which
-	 * is good since an extra close button might be needed.
-	 */
-	bool easy_close_disabled_;
 
 	/** Disable the enter key see our setter for more info. */
 	bool enter_disabled_;
