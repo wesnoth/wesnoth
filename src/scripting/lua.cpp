@@ -816,7 +816,7 @@ static int lua_register_wml_action(lua_State *L)
 	// Functions are stored on odd indices, handlers on even ones.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
-	size_t length = (lua_objlen(L, -1) + 1) & -2;
+	size_t length = lua_objlen(L, -1);
 
 	// Push the function on it so that it is not collected.
 	lua_pushvalue(L, 2);
@@ -825,7 +825,11 @@ static int lua_register_wml_action(lua_State *L)
 	// Create the proxy C++ action handler.
 	game_events::action_handler *previous;
 	game_events::register_action_handler(m, new lua_action_handler(L, length + 1), &previous);
-	if (!previous) return 0;
+	if (!previous) {
+		lua_pushboolean(L, 0);
+		lua_rawseti(L, -2, length + 2);
+		return 0;
+	}
 
 	// Detect if the previous handler was already from Lua and optimize it away.
 	lua_action_handler *lua_prev = dynamic_cast<lua_action_handler *>(previous);
