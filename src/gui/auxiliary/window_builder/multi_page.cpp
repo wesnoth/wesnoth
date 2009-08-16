@@ -88,13 +88,22 @@ twidget* tbuilder_multi_page::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = multi_page_description
+ *
+ *        A multi page is a control that contains serveral 'pages' of which
+ *        only one is visible. The pages can contain the same of different
+ *        info.
+ * @end_macro
+ */
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_multi_page
  *
  * == Multi page ==
  *
- * Instance of a multi page.
+ * @macro = multi_page_description
  *
  * List with the multi page specific variables:
  * @start_table = config

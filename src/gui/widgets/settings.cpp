@@ -196,10 +196,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   tabbar in a tabcontrol. (NOTE this widget
  *                                   is still under heavy development.)
  *     Minimap                       @macro = minimap_description
- *     Multi_page                    A multi page is a control that contains
- *                                   serveral 'pages' of which only one is
- *                                   visible. The pages can contain the same
- *                                   of different info.
+ *     Multi_page                    @macro = multi_page_description
  *     Panel                         A panel is a container with can have it's
  *                                   own visual attributes.
  *     Scroll_label                  A label which can have scrollbars.
@@ -858,7 +855,14 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Multi page ==
  *
- * The documentation is not written yet.
+ * @macro = multi_page_description
+ *
+ * @start_table = config
+ *     grid (grid)                     A grid containing the widgets for main
+ *                                     widget.
+ * @end_table
+ *
+ * A multipage has no states.
  */
 
 	// Add a dummy state since every widget needs a state.
