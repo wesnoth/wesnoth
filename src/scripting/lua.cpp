@@ -65,6 +65,7 @@ static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const uactionKey = 0;
+static char const wactionKey = 0;
 
 /**
  * Displays a message in the chat window.
@@ -699,6 +700,48 @@ static int lua_dofile(lua_State *L)
 }
 
 /**
+ * Calls a WML action handler (__call metamethod).
+ * - Arg 1: userdata containing the handler.
+ * - Arg 2: optional WML config.
+ */
+static int lua_wml_action_call(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 2, "WML table");
+	}
+
+	config cfg;
+	if (!lua_isnoneornil(L, 2))
+	{
+		if (!lua_istable(L, 2))
+			goto error_call_destructors;
+		if (!wml_config_of_table(L, cfg))
+			goto error_call_destructors;
+	}
+
+	game_events::action_handler **h =
+		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
+	// Hidden metamethod, so h has to be an action handler.
+	(*h)->handle(game_events::queued_event("_from_lua", map_location(),
+		map_location(), config()), vconfig(cfg, true));
+	return 0;
+}
+
+/**
+ * Destroys a WML action handler before its pointer is collected (__gc metamethod).
+ * - Arg 1: userdata containing the handler.
+ */
+static int lua_wml_action_collect(lua_State *L)
+{
+	game_events::action_handler **h =
+		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
+	// Hidden metamethod, so h has to be an action handler.
+	delete *h;
+	return 0;
+}
+
+/**
  * Proxy class for calling WML action handlers defined in Lua.
  */
 struct lua_action_handler : game_events::action_handler
@@ -716,17 +759,19 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 
-	// Load the user function from the registry.
+	// Load the user function and the old handler from the registry.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num);
-	lua_remove(L, -2);
+	lua_rawgeti(L, -2, num + 1);
+	lua_remove(L, -3);
 
-	// Push the WML table argument.
+	// Push the WML table argument before the old handler.
 	lua_newtable(L);
 	table_of_wml_config(L, cfg.get_parsed_config());
+	lua_insert(L, -2);
 
-	int res = lua_pcall(L, 1, 0, -3);
+	int res = lua_pcall(L, 2, 0, -4);
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
@@ -755,16 +800,27 @@ static int lua_register_wml_action(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 
 	// Retrieve the user action table from the registry.
+	// Functions are stored on odd indices, handlers on even ones.
 	lua_pushlightuserdata(L, (void *)&uactionKey);
 	lua_gettable(L, LUA_REGISTRYINDEX);
-	size_t length = lua_objlen(L, -1);
+	size_t length = (lua_objlen(L, -1) + 1) & -2;
 
 	// Push the function on it so that it is not collected.
 	lua_pushvalue(L, 2);
 	lua_rawseti(L, -2, length + 1);
 
 	// Create the proxy C++ action handler.
-	game_events::register_action_handler(m, new lua_action_handler(L, length + 1));
+	game_events::action_handler *previous;
+	game_events::register_action_handler(m, new lua_action_handler(L, length + 1), &previous);
+	if (!previous) return 0;
+
+	// Push the previous handler in the user action table too.
+	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
+	*static_cast<game_events::action_handler **>(p) = previous;
+	lua_pushlightuserdata(L, (void *)&wactionKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	lua_rawseti(L, -2, length + 2);
 	return 0;
 }
 
@@ -1078,6 +1134,17 @@ LuaKernel::LuaKernel()
 	lua_pushcfunction(L, lua_tstring_tostring);
 	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "Hands off! (tstring metatable)");
+	lua_setfield(L, -2, "__metatable");
+	lua_settable(L, LUA_REGISTRYINDEX);
+
+	// Create the wml action metatable.
+	lua_pushlightuserdata(L, (void *)&wactionKey);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, lua_wml_action_call);
+	lua_setfield(L, -2, "__call");
+	lua_pushcfunction(L, lua_wml_action_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushstring(L, "Hands off! (wml action metatable)");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
 
