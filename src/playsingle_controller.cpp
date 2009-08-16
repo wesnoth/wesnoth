@@ -846,6 +846,7 @@ void playsingle_controller::check_time_over(){
 		game_events::fire("time over");
 		LOG_NG << "done firing time over event...\n";
 
+		check_end_level();
 		throw end_level_exception(DEFEAT);
 	}
 }
