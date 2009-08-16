@@ -814,11 +814,6 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
-boost::tuple<int, int, int> get_colour_adjustment()
-{
-	return boost::make_tuple(red_adjust, green_adjust, blue_adjust);
-}
-
 colour_adjustment_resetter::colour_adjustment_resetter()
 : r_(red_adjust), g_(green_adjust), b_(blue_adjust)
 {
