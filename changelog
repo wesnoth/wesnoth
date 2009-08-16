@@ -16,7 +16,7 @@ Version 1.7.2+svn:
      * Scenario 23 implemented Santi's plan to let half the army defect. 	
      * Map updates (mostly new alias terrains added).	
      * Replaced the campaign image with a transparent one (Thanks to Kitty).
- * Editor
+ * Editor:
    * Renamed editor2 to editor pretty much everywhere
  * Graphics:
    * New portrait for the Duelist, Mermaid Enchantress/Siren,
@@ -30,7 +30,7 @@ Version 1.7.2+svn:
    * Updated translations: Czech, Dutch, Estonian, French, German, Hungarian,
      Lithuanian, Polish, Slovak
    * Updated Drake Clasher, Arbiter and Slasher descriptions.
- * Multiplayer
+ * Multiplayer:
    * Added a /q alias for /query
    * New lobby interface in gui2, testable work in progress available with
      --new-widgets. There are known issues with window resizing and low
@@ -44,7 +44,7 @@ Version 1.7.2+svn:
    * Room support via /join and /room commands, better support in the
      experimental new lobby. See http://www.wesnoth.org/wiki/MultiplayerRooms
      for details.
- * Multiplayer server
+ * Multiplayer server:
    * Added server-side RNG support. Old clients can still play as normal.
    * Added room support to the server.
  * Unit balancing:
@@ -52,6 +52,9 @@ Version 1.7.2+svn:
      random_leader of the default era.
    * Added Ancient Wose, Dwarvish Sentinel, Iron Mauler and Mage of Light to
      random_leader of the AoH era.
+ * Unit renames:
+   * Drake Gladiator -> Drake Thrasher
+   * Drake Slasher -> Drake Arbiter
  * WML Engine:
    * return 0 for length of arrays inside nonexistent containers (bug #13734)
    * [end_turn] now waits for the event to finish before ending the turn
@@ -70,8 +73,6 @@ Version 1.7.2+svn:
      (bug #14039)
    * 'Recruit' and 'recall' don't appear in context menus unless the
      leader is on a keep. (bug #13856 and #13855)
-   * wmllint updated to accomodate new drake names. Gladiator changes must
-     still be done by hand.
    * No longer "crash" upon invalid pango markup
    * It's now possible to display the area a widget uses, for debug purposes
    * The widget in a stacked widget now grows properly
