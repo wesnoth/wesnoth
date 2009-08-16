@@ -2211,7 +2211,7 @@ bool clear_shroud(int side)
 size_t move_unit(move_unit_spectator *move_spectator,
 		 const std::vector<map_location> &route,
 		 replay* move_recorder, undo_list* undo_stack,
-		 bool show_move,
+		 bool /*show_move*/,
 		 map_location *next_unit, bool continue_move,
 		 bool should_clear_shroud, bool is_replay)
 {
