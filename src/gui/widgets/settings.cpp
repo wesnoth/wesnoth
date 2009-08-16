@@ -200,9 +200,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Panel                         @macro = panel_description
  *     Scroll_label                  @macro = scroll_label_description
  *     Slider                        @macro = slider_description
- *     Spacer                        A spacer is a dummy widget which can be
- *                                   used if a cell in a container needs to be
- *                                   empty or have a fixed size.
+ *     Spacer                        @macro = spacer_description
  *     Stacked_widget                A stacked widget is a control several
  *                                   widgets can be stacked on top of each
  *                                   other in the same space. This is mainly
@@ -1087,10 +1085,9 @@ tspacer_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Spacer ==
  *
- * The definition of a normal spacer.
+ * @macro = spacer_description
  *
  * A spacer has no states so nothing to load.
- *
  */
 }
 

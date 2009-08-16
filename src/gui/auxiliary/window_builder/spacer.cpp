@@ -58,15 +58,25 @@ twidget* tbuilder_spacer::build() const
 
 } // namespace gui2
 
+/*WIKI_MACRO
+ * @start_macro = spacer_description
+ *
+ *        A spacer is a dummy item to either fill in a widget since no empty
+ *        items are allowed or to reserve a fixed space.
+ * @end_macro
+ */
+
+
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_spacer
  *
  * == Spacer ==
  *
- * A spacer is a dummy item to either fill in a widget since no empty items
- * are allowed or to reserve a fixed space. If either the width or the height
- * is not zero the spacer functions as a fixed size spacer.
+ * @macro = spacer_description
+ *
+ * If either the width or the height is not zero the spacer functions as a
+ * fixed size spacer.
  *
  * @start_table = config
  *     width (f_unsigned = 0)          The width of the spacer.
