@@ -742,6 +742,19 @@ static int lua_wml_action_collect(lua_State *L)
 }
 
 /**
+ * Calls the first upvalue and passes the first argument and the second upvalue.
+ * - Arg 1: optional WML config.
+ */
+static int lua_wml_action_proxy(lua_State *L)
+{
+	lua_pushvalue(L, lua_upvalueindex(1));
+	lua_pushvalue(L, 1);
+	lua_pushvalue(L, lua_upvalueindex(2));
+	lua_call(L, 2, 0);
+	return 0;
+}
+
+/**
  * Proxy class for calling WML action handlers defined in Lua.
  */
 struct lua_action_handler : game_events::action_handler
@@ -813,6 +826,18 @@ static int lua_register_wml_action(lua_State *L)
 	game_events::action_handler *previous;
 	game_events::register_action_handler(m, new lua_action_handler(L, length + 1), &previous);
 	if (!previous) return 0;
+
+	// Detect if the previous handler was already from Lua and optimize it away.
+	lua_action_handler *lua_prev = dynamic_cast<lua_action_handler *>(previous);
+	if (lua_prev)
+	{
+		lua_rawgeti(L, -1, lua_prev->num);
+		lua_rawgeti(L, -2, lua_prev->num + 1);
+		lua_pushcclosure(L, lua_wml_action_proxy, 2);
+		lua_rawseti(L, -2, length + 2);
+		delete lua_prev;
+		return 0;
+	}
 
 	// Push the previous handler in the user action table too.
 	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
