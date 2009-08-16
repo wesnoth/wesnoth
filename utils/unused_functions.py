@@ -15,23 +15,31 @@ Symbols not in any executable likely are unused.
 
 import os, glob
 
-output = []
-for o in glob.glob("src/*.o") + glob.glob("src/*/*.o"):
-    output.append((o, os.popen("nm -C %s" % o).read()))
+def nm(filename):
+    return os.popen("nm -C %s" % filename).read()
 
-output2 = os.popen("nm -C src/wesnoth").read()
-output2 += os.popen("nm -C src/campaignd").read()
-output2 += os.popen("nm -C src/wesnothd").read()
-output2 += os.popen("nm -C src/exploder").read()
-output2 += os.popen("nm -C src/test").read()
+output1 = []
+for o in glob.glob("src/*.o") + glob.glob("src/*/*.o") + \
+         glob.glob("src/*/*/*.o") + glob.glob("src/*/*/*/*.o"):
+    output1.append((o, nm(o)))
+
+output2 = nm("src/wesnoth")
+output2 += nm("src/campaignd")
+output2 += nm("src/exploder")
+output2 += nm("src/cutter")
+output2 += nm("src/wesnothd")
+output2 += nm("src/test")
 
 def extract(line):
-    return line[11:]
+    return line[line.find(" T ") + 3:]
 
-symbols2 = [extract(x) for x in output2.splitlines() if " T " in x]
+def symbols(lines):
+    return [extract(x) for x in lines.splitlines() if " T " in x]
 
-for o in output:
-    symbols1 = [extract(x) for x in o[1].splitlines() if " T " in x]
+symbols2 = symbols(output2)
+
+for o in output1:
+    symbols1 = symbols(o[1])
 
     found = []
     for symbol in symbols1:
