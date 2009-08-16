@@ -119,13 +119,4 @@ typedef std::vector<events::handler*> handler_vector;
 			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
 			               SDL_EVENTMASK(SDL_JOYBUTTONUP))
 
-class input_blocker
-{
-public:
-	input_blocker();
-	~input_blocker();
-private:
-	static unsigned instance_count;
-};
-
 #endif

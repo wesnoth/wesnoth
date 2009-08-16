@@ -32,8 +32,6 @@
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
-unsigned input_blocker::instance_count = 0; //static initialization
-
 namespace events
 {
 
@@ -490,28 +488,3 @@ int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
 }
 
 } //end events namespace
-
-input_blocker::input_blocker()
-{
-	SDL_EventState(SDL_KEYDOWN, SDL_IGNORE);
-	SDL_EventState(SDL_KEYUP, SDL_IGNORE);
-	SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_IGNORE);
-	SDL_EventState(SDL_MOUSEBUTTONUP, SDL_IGNORE);
-	SDL_EventState(SDL_JOYBUTTONDOWN, SDL_IGNORE);
-	SDL_EventState(SDL_JOYBUTTONUP, SDL_IGNORE);
-	instance_count++;
-}
-
-input_blocker::~input_blocker()
-{
-	instance_count--;
-	if(instance_count == 0) {
-		events::discard(INPUT_MASK);
-		SDL_EventState(SDL_KEYDOWN, SDL_ENABLE);
-		SDL_EventState(SDL_KEYUP, SDL_ENABLE);
-		SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_ENABLE);
-		SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE);
-		SDL_EventState(SDL_JOYBUTTONDOWN, SDL_ENABLE);
-		SDL_EventState(SDL_JOYBUTTONUP, SDL_ENABLE);
-	}
-}
