@@ -489,11 +489,13 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 									status));
 			}
 			
-			//:} else if( action.is_string() && action.as_string() == "recruit") {
-			// recruitment temporary disabled
-			// @todo 1.7.3 rework recruitment as aspect
-			//if( do_recruitment() )
-			//	made_moves.push_back(action);
+		} else if( action.is_string() && action.as_string() == "recruit") {
+			stage_ptr r = get_recruitment(ai_);
+			if (r) {
+				if (r->play_stage()) {
+					made_moves.push_back(action);
+				}
+			}
 		} else if( action.is_string() && action.as_string() == "continue") {
 			if( infinite_loop_guardian_.continue_check() ) {
 				made_moves.push_back(action);
