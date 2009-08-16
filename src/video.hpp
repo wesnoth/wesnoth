@@ -44,7 +44,6 @@ class CVideo : private boost::noncopyable {
 			 FAKE_TEST
 		 };
 	CVideo(FAKE_TYPES type = NO_FAKE);
-	CVideo(int x, int y, int bits_per_pixel, int flags);
 	~CVideo();
 
 
