@@ -555,8 +555,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		playsingle_controller::handle_generic_event(name);
 		turn_data.send_data();
 	}
-	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved")
-		|| (name == "ai_enemy_attacked") || (name == "ai_sync_network")){
+	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
 		turn_data.sync_network();
 	}
 	else if (name == "network_replay_error"){

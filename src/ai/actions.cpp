@@ -92,8 +92,13 @@ void action_result::execute()
 	check_before();
 	if (is_success()){
 		do_execute();
-		check_victory();
-		resources::controller->check_end_level();
+		try {
+			check_victory();
+			resources::controller->check_end_level();
+		} catch (...) {
+			is_ok(); //Silences "unchecked result" warning
+			throw;
+		}
 	}
 	if (is_success()){
 		check_after();
@@ -333,8 +338,8 @@ void attack_result::do_execute()
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
 	try {
-		manager::raise_enemy_attacked();
-	} catch (end_turn_exception&) {
+		manager::raise_gamestate_changed();
+	} catch (...) {
 		is_ok(); //Silences "unchecked result" warning
 		throw;
 	}
@@ -525,8 +530,8 @@ void move_result::do_execute()
 
 	if (is_gamestate_changed()) {
 		try {
-			manager::raise_unit_moved();
-		} catch (end_turn_exception&) {
+			manager::raise_gamestate_changed();
+		} catch (...) {
 			is_ok(); //Silences "unchecked result" warning
 			throw;
 		}
@@ -755,8 +760,8 @@ void recruit_result::do_execute()
 		replay_guard.confirm_transaction();
 		set_gamestate_changed();
 		try {
-			manager::raise_unit_recruited();
-		} catch (end_turn_exception&) {
+			manager::raise_gamestate_changed();
+		} catch (...) {
 			is_ok(); //Silences "unchecked result" warning
 			throw;
 		}
@@ -865,14 +870,14 @@ void stopunit_result::do_execute()
 		if (remove_movement_){
 			un->second.remove_movement_ai();
 			set_gamestate_changed();
-			manager::raise_unit_moved();
+			manager::raise_gamestate_changed();
 		}
 		if (remove_attacks_){
 			un->second.remove_attacks_ai();
 			set_gamestate_changed();
-			manager::raise_unit_moved();//to be on the safe side
+			manager::raise_gamestate_changed();//to be on the safe side
 		}
-	} catch (end_turn_exception&) {
+	} catch (...) {
 		is_ok(); //Silences "unchecked result" warning
 		throw;
 	}

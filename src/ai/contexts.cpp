@@ -77,21 +77,9 @@ void readonly_context_impl::raise_user_interact() const
 }
 
 
-void readwrite_context_impl::raise_unit_recruited() const
+void readwrite_context_impl::raise_gamestate_changed() const
 {
-	manager::raise_unit_recruited();
-}
-
-
-void readwrite_context_impl::raise_unit_moved() const
-{
-	manager::raise_unit_moved();
-}
-
-
-void readwrite_context_impl::raise_enemy_attacked() const
-{
-	manager::raise_enemy_attacked();
+	manager::raise_gamestate_changed();
 }
 
 

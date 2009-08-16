@@ -379,13 +379,7 @@ public:
 	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()) = 0;
 
 
-	virtual void raise_unit_recruited() const = 0;
-
-
-	virtual void raise_unit_moved() const = 0;
-
-
-	virtual void raise_enemy_attacked() const = 0;
+	virtual void raise_gamestate_changed() const = 0;
 
 
 	virtual game_info& get_info_w() = 0;
@@ -909,21 +903,9 @@ public:
 	}
 
 
-	virtual void raise_unit_recruited() const
+	virtual void raise_gamestate_changed() const
 	{
-		target_->raise_unit_recruited();
-	}
-
-
-	virtual void raise_unit_moved() const
-	{
-		target_->raise_unit_moved();
-	}
-
-
-	virtual void raise_enemy_attacked() const
-	{
-		target_->raise_enemy_attacked();
+		target_->raise_gamestate_changed();
 	}
 
 
@@ -1452,10 +1434,9 @@ public:
 	 */
 	bool recruit(const std::string& unit_name, map_location loc=map_location());
 
+
 	/** Notifies all interested observers of the event respectively. */
-	void raise_unit_recruited() const;
-	void raise_unit_moved() const;
-	void raise_enemy_attacked() const;
+	void raise_gamestate_changed() const;
 
 
 	/**

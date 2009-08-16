@@ -159,19 +159,19 @@ public:
 
 
 	/**
-	 * Adds observer of game events except user interact event
+	 * Adds observer of game events except ai_user_interact event and ai_sync_network event
 	 */
 	static void add_gamestate_observer( events::observer* event_observer);
 
 
 	/**
-	 * Removes an observer of game events except user interact event
+	 * Removes an observer of game events except ai_user_interact event and ai_sync_network event
 	 */
 	static void remove_gamestate_observer( events::observer* event_observer );
 
 
 	/**
-	 * Notifies all observers of 'user interact' event.
+	 * Notifies all observers of 'ai_user_interact' event.
 	 * Function which should be called frequently to allow the user to interact
 	 * with the interface. This function will make sure that interaction
 	 * doesn't occur too often, so there is no problem with calling it very
@@ -180,104 +180,56 @@ public:
 	static void raise_user_interact();
 
 	/**
-	 * Notifies all observers of 'sync network' event.
+	 * Notifies all observers of 'ai_sync_network' event.
 	 * Basically a request from the AI to sync the network.
 	 */
 	static void raise_sync_network();
 
 
 	/**
-	 * Notifies all observers of 'unit recruited' event.
+	 * Notifies all observers of 'ai_gamestate_changed' event.
 	 */
-	static void raise_unit_recruited();
+	static void raise_gamestate_changed();
 
 
 	/**
-	 * Notifies all observers of 'unit moved' event.
-	 */
-	static void raise_unit_moved();
-
-
-	/**
-	 * Notifies all observers of 'enemy attacked' event.
-	 */
-	static void raise_enemy_attacked();
-
-
-	/**
-	 * Notifies all observers of 'turn started' event.
+	 * Notifies all observers of 'ai_turn_started' event.
 	 */
 	static void raise_turn_started();
 
 
 	/**
-	 * Adds an observer of 'user interact' event.
+	 * Adds an observer of 'ai_user_interact' event.
 	 */
 	static void add_user_interact_observer( events::observer* event_observer );
 
 
 	/**
-	 * Adds an observer of 'sync network' event.
+	 * Adds an observer of 'ai_sync_network' event.
 	 */
 	static void add_sync_network_observer( events::observer* event_observer );
 
 
 	/**
-	 * Adds an observer of 'unit recruited' event.
-	 */
-	static void add_unit_recruited_observer( events::observer* event_observer );
-
-
-	/**
-	 * Adds an observer of 'unit moved' event.
-	 */
-	static void add_unit_moved_observer( events::observer* event_observer );
-
-
-	/**
-	 * Adds an observers of 'enemy attacked' event.
-	 */
-	static void add_enemy_attacked_observer( events::observer* event_observer );
-
-
-	/**
-	 * Adds an observer of 'turn started' event.
+	 * Adds an observer of 'ai_turn_started' event.
 	 */
 	static void add_turn_started_observer( events::observer* event_observer );
 
 
 	/**
-	 * Removes an observer of 'user interact' event.
+	 * Removes an observer of 'ai_user_interact' event.
 	 */
 	static void remove_user_interact_observer( events::observer* event_observer );
 
 
 	/**
-	 * Deletes an observer of 'sync network' event.
+	 * Deletes an observer of 'ai_sync_network' event.
 	 */
 	static void delete_sync_network_observer( events::observer* event_observer );
 
 
 	/**
-	 * Deletes an observer of 'unit recruited' event.
-	 */
-	static void remove_unit_recruited_observer( events::observer* event_observer );
-
-
-	/**
-	 * Deletes an observer of 'unit moved' event.
-	 */
-	static void remove_unit_moved_observer( events::observer* event_observer );
-
-
-	/**
-	 * Deletes an observer of 'enemy attacked' event.
-	 */
-	static void remove_enemy_attacked_observer( events::observer* event_observer );
-
-
-	/**
-	 * Deletes an observer of 'turn started' event.
+	 * Deletes an observer of 'ai_turn_started' event.
 	 */
 	static void remove_turn_started_observer( events::observer* event_observer );
 
@@ -394,39 +346,6 @@ public:
 
 
 	/**
-	 * Gets AI parameters for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @return a reference to active AI parameters.
-	 * @note This reference may become invalid after specific manager operations.
-	 */
-	static const std::vector<config>& get_active_ai_parameters_for_side( side_number side );
-
-
-	/**
-	 * Gets effective AI parameters for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @return a reference to active AI effective parameters.
-	 * @note this reference may become invalid after specific manager operations.
-	 */
-	static const config& get_active_ai_effective_parameters_for_side( side_number side );
-
-
-	/**
-	 * Get global AI parameters for active AI of the @a given side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @return a reference to active ai global parameters.
-	 * @note This reference may become invalid after specific manager operations.
-	 */
-	static const config& get_active_ai_global_parameters_for_side( side_number side );
-
-
-	/**
 	 * Gets AI info for active AI of the given @a side.
 	 * @param side side number (1-based).
 	 * @return a reference to active AI info.
@@ -441,6 +360,7 @@ public:
 	 * @return ai identifier for the active AI 
 	 */
 	static std::string get_active_ai_identifier_for_side( side_number side );
+
 
 	/**
 	 * Gets AI config for active AI of the given @a side.
@@ -457,28 +377,6 @@ public:
 	static game_info& get_ai_info();
 
 
-	/**
-	 * Gets AI memory for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @return a reference to active AI memory.
-	 * @note This reference may become invalid after specific manager operations.
-	 */
-	static const config& get_active_ai_memory_for_side( side_number side );
-
-
-	/**
-	 * Gets AI algorithm type for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @return a reference to active AI algorithm_type.
-	 * @note This reference may become invalid after specific manager operations.
-	 */
-	static const std::string& get_active_ai_algorithm_type_for_side( side_number side );
-
-
 	// =======================================================================
 	// SET active AI parameters
 	// =======================================================================
@@ -492,61 +390,6 @@ public:
 	 * @param ai_parameters AI paramters to be modified.
 	 */
 	static void modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters );
-
-	/**
-	 * Sets AI parameters for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_parameters AI parameters to be set.
-	 */
-	static void set_active_ai_parameters_for_side( side_number side, const std::vector<config>& ai_parameters );
-
-
-	/**
-	 * Sets effective AI parameters for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_effective_parameters AI effective parameters to be set.
-	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
-	 *             Will be refactored away.
-	 */
-	static void set_active_ai_effective_parameters_for_side( side_number side, const config& ai_effective_parameters );
-
-
-	/**
-	 * Sets global AI parameters for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_global_parameters AI global parameters to be set.
-	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
-	 *             Will be refactored away.
-	 */
-	static void set_active_ai_global_parameters_for_side( side_number side, const config& ai_global_parameters );
-
-
-	/**
-	 * Sets AI memory for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_memory AI memory to be set.
-	 * @deprecated Added only for bug-for-bug compatibility with side.cpp.
-	 *             Will be refactored away.
-	 */
-	static void set_active_ai_memory_for_side( side_number side, const config& ai_memory );
-
-
-	/**
-	 * Sets AI algorithm type for active AI of the given @a side.
-	 * @note Running this command may invalidate references previously returned
-	 *       by manager.
-	 * @param side side number (1-based, as in game_info).
-	 * @param ai_algorithm_type AI algorithm type to be set.
-	 */
-	static void set_active_ai_algorithm_type_for_side( side_number side, const std::string& ai_algorithm_type );
 
 
 	// =======================================================================
@@ -570,9 +413,7 @@ private:
 
 	static events::generic_event user_interact_;
 	static events::generic_event sync_network_;
-	static events::generic_event unit_recruited_;
-	static events::generic_event unit_moved_;
-	static events::generic_event enemy_attacked_;
+	static events::generic_event gamestate_changed_;
 	static events::generic_event turn_started_;
 	static int last_interact_;
 	static int num_interact_;
