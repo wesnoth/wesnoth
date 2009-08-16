@@ -12,6 +12,12 @@ local function all_teams()
 	return f, { i = 1 }
 end
 
+local function get_child(cfg, name) 
+   for i,v in ipairs(cfg) do 
+      if v[1] == name then return v[2] end 
+   end
+end
+
 local function child_range(cfg, tag)
 	local function f(s)
 		local c
@@ -150,6 +156,28 @@ local function wml_show_objectives(cfg)
 	end
 end
 
+local function eval_bool(cfg)
+   table.insert(cfg, { "then", {{ "lua", { code = "wesnoth.dummy_var = true"  }}}})
+   table.insert(cfg, { "else", {{ "lua", { code = "wesnoth.dummy_var = false" }}}})
+   wesnoth.dummy_var = nil
+   wesnoth.fire("if", cfg)
+   if wesnoth.dummy_var == nil then  
+      --TODO print more useful output
+      wml_error("Error in eval_bool")
+   else 
+      local to_return = wesnoth.dummy_var   
+      wesnoth.dummy_var = nil
+      return to_return
+   end
+end
+
+local function wml_message(cfg, engine_message)
+   local test = get_child(cfg,"show_if")
+   if ( (not test) or eval_bool(test) ) then  
+      engine_message(cfg)
+   end
+end
+
 local function wml_gold(cfg)
 	local team = wesnoth.get_side(cfg.side or 1)
 	team.gold = team.gold + cfg.amount
@@ -186,31 +214,23 @@ end
 
 local function wml_action_tag(cfg)
    -- The new tag's name 
-   -- TODO make this attribute mandatory
    local name = cfg.name
+   if not name then wesnoth.message("attribute name is missing in [wml_action]") end
+
    -- The lua function that is executed when the tag is called
-   -- TODO make this attribute mandatory
-
-   -- debug output
-   for tag in child_range(cfg, "tag") do
-      wesnoth.message(tag.name)
-   end
-
-   -- debug output
-   for attribute in child_range(cfg, "attribute") do
-      wesnoth.message(attribute.name)
-   end
-
    local lua_function = assert(loadstring(cfg.lua_function)())
    wesnoth.register_wml_action(name, lua_function)
 end
 
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
+wesnoth.register_wml_action("message", wml_message)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
 wesnoth.register_wml_action("store_unit_type", wml_store_unit_type)
 wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
+
+
 
