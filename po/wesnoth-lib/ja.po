@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2008-02-25 00:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1105,8 +1105,8 @@ msgstr "砂地"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "終了"
 
@@ -1519,6 +1519,40 @@ msgstr "エディタの終了"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "ユニット作成（デバッグ用）"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "新しいマップの生成"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "城"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "キャンセル"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
 msgstr ""
 
 #: src/filechooser.cpp:74
@@ -1992,7 +2026,7 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 #, fuzzy
 msgid "No resolution defined."
 msgstr "サーバーがひとつも設定されていません。"
@@ -2000,9 +2034,9 @@ msgstr "サーバーがひとつも設定されていません。"
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 #, fuzzy
 msgid "No grid defined."
 msgstr "サーバーがひとつも設定されていません。"
@@ -2128,21 +2162,21 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "サーバーがひとつも設定されていません。"
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 #, fuzzy
 msgid "No default gui defined."
 msgstr "サーバーがひとつも設定されていません。"
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "サーバーがひとつも設定されていません。"
@@ -2195,7 +2229,7 @@ msgstr "デフォルトズーム"
 msgid "Toggle Full Screen"
 msgstr "フルスクリーン切り換え"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
@@ -2220,8 +2254,8 @@ msgstr "ユニット名を変更"
 msgid "Save Replay"
 msgstr "リプレイを保存"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
 msgstr "マップの保存"
 
 #: src/hotkeys.cpp:66
@@ -2264,10 +2298,6 @@ msgstr "無音"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "話す"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "ユニット作成（デバッグ用）"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2362,10 +2392,6 @@ msgstr ""
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "マップ読み込み"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "マップの保存"
 
 #: src/hotkeys.cpp:112
 #, fuzzy
@@ -2588,21 +2614,21 @@ msgstr "ユーザーコマンド#2"
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 #, fuzzy
 msgid "Screenshot done"
 msgstr "スクリーンショット"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "スクリーンショット"
@@ -2769,6 +2795,9 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "'[$section|]' セクションにおいて必須のキー '$key|' が設定されていません。"
+
+#~ msgid "Save The Map"
+#~ msgstr "マップの保存"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "ガンマ補正"

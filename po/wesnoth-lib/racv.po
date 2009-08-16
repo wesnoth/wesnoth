@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -1100,8 +1100,8 @@ msgstr "Arena"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Eixir"
 
@@ -1514,6 +1514,40 @@ msgstr "Eixir de l'editor"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Crear una unitat (¡Depurar!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Generar nou mapa"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Castell"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "Cancelar"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
 msgstr ""
 
 #: src/filechooser.cpp:74
@@ -1991,7 +2025,7 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 #, fuzzy
 msgid "No resolution defined."
 msgstr "No s'ha definit cap servidor"
@@ -1999,9 +2033,9 @@ msgstr "No s'ha definit cap servidor"
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 #, fuzzy
 msgid "No grid defined."
 msgstr "No s'ha definit cap servidor"
@@ -2127,21 +2161,21 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 #, fuzzy
 msgid "No default gui defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "No s'ha definit cap servidor"
@@ -2194,7 +2228,7 @@ msgstr "Escala predeterminada"
 msgid "Toggle Full Screen"
 msgstr "Activar Pantalla Completa"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -2219,8 +2253,8 @@ msgstr "Renomenar la unitat"
 msgid "Save Replay"
 msgstr "Guardar la repetició"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
 msgstr "Guardar el mapa"
 
 #: src/hotkeys.cpp:66
@@ -2263,10 +2297,6 @@ msgstr "Mut"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Parlar"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Crear una unitat (¡Depurar!)"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2361,10 +2391,6 @@ msgstr ""
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Carregar un mapa"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Guardar el mapa"
 
 #: src/hotkeys.cpp:112
 #, fuzzy
@@ -2587,21 +2613,21 @@ msgstr "Orde-Usuari#2"
 msgid "User-Command#3"
 msgstr "Orde-Usuari#3"
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "¿Segur que vols eixir?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Captura de pantalla"
@@ -2769,6 +2795,9 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la secció '[$section|]' la clau obligatòria '$key|' no s'ha establit."
+
+#~ msgid "Save The Map"
+#~ msgstr "Guardar el mapa"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Ajustar claritat"

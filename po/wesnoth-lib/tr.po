@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2009-04-12 14:55+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -1081,8 +1081,8 @@ msgstr "Kum"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Çık"
 
@@ -1488,6 +1488,40 @@ msgstr "Düzenleyici"
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Teşekkür"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Birim Oluştur (Hata Ayıklama!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Üret"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Kale"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "İptal"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
+msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1965,16 +1999,16 @@ msgstr "Metin tuvale sığmıyor."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 msgid "No resolution defined."
 msgstr "Tanımlı bir çözünürlük yok."
 
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr "Tanımlı bir ızgara yok."
 
@@ -2099,20 +2133,20 @@ msgstr "Sürüm"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Zorunlu pencere gereci '$id' tanımlı değil."
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 msgid "No default gui defined."
 msgstr "Tanımlı bir arayüz yok."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr "Pencere tanımsız."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Pencere gereci tanımı '$definition', '$id' için tanım içermiyor."
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 msgid "No state or draw section defined."
 msgstr "Tanımlı durum veya çizim bölümü yok."
 
@@ -2164,7 +2198,7 @@ msgstr "Normal Yakınlık"
 msgid "Toggle Full Screen"
 msgstr "Tam Ekran Aç-Kapa"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
@@ -2188,8 +2222,8 @@ msgstr "Birim ismini değiştir"
 msgid "Save Replay"
 msgstr "Oyun Tekrarını Kaydet"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
 msgstr "Haritayı Kaydet"
 
 #: src/hotkeys.cpp:66
@@ -2232,10 +2266,6 @@ msgstr "Sesi Kapat"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Konuş"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Birim Oluştur (Hata Ayıklama!)"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2329,10 +2359,6 @@ msgstr "Kısmî Geri Alma"
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Harita Yükle"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Haritayı Kaydet"
 
 #: src/hotkeys.cpp:112
 msgid "Save Map As"
@@ -2538,19 +2564,19 @@ msgstr "2. Kullanıcı Komutu"
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 msgid "Map-Screenshot"
 msgstr "Harita-Ekran-Görüntüsü"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 msgid "Screenshot done"
 msgstr "Ekran görüntüsü alındı"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 msgid "Screenshot failed"
 msgstr "Ekran görüntüsü alınamadı"
 
@@ -2715,6 +2741,9 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+
+#~ msgid "Save The Map"
+#~ msgstr "Haritayı Kaydet"
 
 #, fuzzy
 #~ msgid ""

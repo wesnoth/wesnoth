@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2009-06-20 14:43+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
@@ -333,7 +333,8 @@ msgstr ""
 "Δρακοειδή της Τελικής Μάχης."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:85
+#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
 #: data/core/units/goblins/Direwolf_Rider.cfg:55
 #: data/core/units/gryphons/Gryphon.cfg:41
@@ -350,12 +351,13 @@ msgstr "νύχια"
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
 #: data/core/units/drakes/Blademaster.cfg:78
-#: data/core/units/drakes/Burner.cfg:116 data/core/units/drakes/Fighter.cfg:75
-#: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Burner.cfg:117
+#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:80
+#: data/core/units/drakes/Flameheart.cfg:88
 #: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:119
 #: data/core/units/drakes/Hurricane.cfg:127
 #: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:126
-#: data/core/units/drakes/Warrior.cfg:82
+#: data/core/units/drakes/Warrior.cfg:116
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "ανάσα φωτιάς"
@@ -383,14 +385,13 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Slasher.cfg:23
-#: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
-#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
-#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
-#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
+#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
+#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
+#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
+#: data/core/units/elves/Marksman.cfg:66 data/core/units/elves/Marshal.cfg:46
+#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
+#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
 #: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:52
@@ -402,8 +403,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Sergeant.cfg:47
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:90 data/core/units/nagas/Myrmidon.cfg:31
-#: data/core/units/nagas/Warrior.cfg:29 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
 #: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "σπαθί"
@@ -414,7 +415,7 @@ msgid "Drake Burner"
 msgstr "Δρακοειδές Καυστήρας"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:19
+#: data/core/units/drakes/Burner.cfg:20
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -425,12 +426,6 @@ msgstr ""
 "πιο τις δυνάμεις των μακρινών προγόνων τους, κυρίως την ικανότητα να "
 "εκπνέουν φωτιά. Αυτό, σε συνδυασμό με το μέγεθος τους και τα μεγάλα νύχια "
 "τους, τους καθιστά έναν επικίνδυνο εχθρό στη μάχη."
-
-#. [attack]: type=impact
-#: data/core/units/drakes/Burner.cfg:107 data/core/units/drakes/Glider.cfg:110
-#: data/core/units/drakes/Hurricane.cfg:118 data/core/units/drakes/Sky.cfg:117
-msgid "slam"
-msgstr "βαρύ χτύπημα"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -521,7 +516,7 @@ msgid "Drake Fighter"
 msgstr "Δρακοειδές Πολεμιστής"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:19
+#: data/core/units/drakes/Fighter.cfg:20
 #, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire-breathing skills "
@@ -536,7 +531,8 @@ msgstr ""
 "οποιαδήποτε άλλης φυλής."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:66
+#: data/core/units/drakes/Fighter.cfg:108
+#: data/core/units/drakes/Warrior.cfg:107
 msgid "scimitar"
 msgstr "γιαταγάνι"
 
@@ -617,6 +613,12 @@ msgstr ""
 "αμυντική κρυψώνα. Η δεξιότητα στο να πετάνε τους επιτρέπει να πετυχαίνουν με "
 "ακρίβεια τους εχθρούς τους ακόμα και σε τέτοιες κρυψώνες."
 
+#. [attack]: type=impact
+#: data/core/units/drakes/Glider.cfg:110
+#: data/core/units/drakes/Hurricane.cfg:118 data/core/units/drakes/Sky.cfg:117
+msgid "slam"
+msgstr "βαρύ χτύπημα"
+
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
@@ -676,12 +678,13 @@ msgstr ""
 "τρομερή ακρίβεια προς τους αντιπάλους τους ακόμα και αν αυτοί κρύβονται σε "
 "θέσεις που κανονικά μπορούν να αμυνθούν πάρα πολύ."
 
-#. [unit_type]: id=Drake Slasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:4
-msgid "Drake Slasher"
-msgstr "Δρκοειδές Πετσοκόφτης"
+#, fuzzy
+msgid "Drake Thrasher"
+msgstr "Δρκοειδές Συγκρουστής"
 
-#. [unit_type]: id=Drake Slasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Slashers have learned "
@@ -715,7 +718,7 @@ msgid "Drake Warrior"
 msgstr "Δρακοειδές Μαχητής"
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:18
+#: data/core/units/drakes/Warrior.cfg:19
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -783,7 +786,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 #: data/core/units/humans/Outlaw_Thief.cfg:188
-#: data/core/units/humans/Woodsman.cfg:41
+#: data/core/units/humans/Woodsman.cfg:42
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
@@ -830,7 +833,7 @@ msgstr "πολεμικό τσεκούρι"
 #: data/core/units/dwarves/Scout.cfg:40 data/core/units/dwarves/Scout.cfg:48
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:30
-#: data/core/units/undead/Skele_Revenant.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
 msgstr "τσεκούρι"
@@ -1136,7 +1139,7 @@ msgstr ""
 #: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Rider.cfg:57
 #: data/core/units/elves/Scout.cfg:56
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
-#: data/core/units/humans/Woodsman.cfg:50
+#: data/core/units/humans/Woodsman.cfg:51
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
@@ -3109,7 +3112,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:37
-#: data/core/units/trolls/Troll.cfg:26
+#: data/core/units/trolls/Troll.cfg:38
 msgid "club"
 msgstr "ρόπαλο"
 
@@ -4024,7 +4027,7 @@ msgstr ""
 "τους."
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:141
+#: data/core/units/nagas/Fighter.cfg:153
 msgid "Nagini Fighter"
 msgstr "Πολεμιστής Ναγκίνι"
 
@@ -4049,12 +4052,12 @@ msgstr ""
 "αλλά η δυνατότητά τους να κολυμπήσουν τους επιτρέπει κινητικότητα στο ύδωρ."
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:83
+#: data/core/units/nagas/Myrmidon.cfg:95
 msgid "Nagini Myrmidon"
 msgstr "Μυρμιδώνας Νάγκίνι"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:85
+#: data/core/units/nagas/Myrmidon.cfg:97
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4093,12 +4096,12 @@ msgstr ""
 "πολύ την τεχνική."
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:80
+#: data/core/units/nagas/Warrior.cfg:92
 msgid "Nagini Warrior"
 msgstr "Μαχητής Ναγκίνι"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:82
+#: data/core/units/nagas/Warrior.cfg:94
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -5099,7 +5102,7 @@ msgid "Revenant"
 msgstr "Επανερχόμενος"
 
 #. [unit_type]: id=Revenant, race=undead
-#: data/core/units/undead/Skele_Revenant.cfg:18
+#: data/core/units/undead/Skele_Revenant.cfg:19
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -5364,6 +5367,9 @@ msgstr ""
 "\n"
 "Οι Δενδροποιμένες είναι γενικά μη πολεμοχαρής τύποι, αν και γενικά έχουν "
 "αρκετή δύναμη. Μα δεν είναι ούτε συνηθισμένοι ούτε γρήγοροι στο να κινούνται."
+
+#~ msgid "Drake Slasher"
+#~ msgstr "Δρκοειδές Πετσοκόφτης"
 
 #~ msgid ""
 #~ "The great Drake Enforcers epitomize the raw strength of their kind. Long "

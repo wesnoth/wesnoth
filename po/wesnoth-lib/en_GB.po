@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2009-04-26 20:35-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -1065,8 +1065,8 @@ msgstr "Sand"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Quit"
 
@@ -1470,6 +1470,40 @@ msgstr "Editor"
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Credits"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Create Unit (Debug!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Generate"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Castle"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "Cancel"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
+msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1942,16 +1976,16 @@ msgstr "Text doesn't start on canvas."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 msgid "No resolution defined."
 msgstr "No resolution defined."
 
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr "No grid defined."
 
@@ -2077,21 +2111,21 @@ msgstr "Version"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Mandatory widget '$id' hasn't been defined."
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 msgid "No default gui defined."
 msgstr "No default gui defined."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr "Window not defined."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 msgid "No state or draw section defined."
 msgstr "No state or draw section defined."
 
@@ -2143,7 +2177,7 @@ msgstr "Default Zoom"
 msgid "Toggle Full Screen"
 msgstr "Toggle Full Screen"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -2167,9 +2201,9 @@ msgstr "Rename Unit"
 msgid "Save Replay"
 msgstr "Save Replay"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
-msgstr "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
+msgstr "Save Map"
 
 #: src/hotkeys.cpp:66
 msgid "Recruit"
@@ -2211,10 +2245,6 @@ msgstr "Mute"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Speak"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Create Unit (Debug!)"
 
 #: src/hotkeys.cpp:77
 msgid "Change Side (Debug!)"
@@ -2307,10 +2337,6 @@ msgstr "Partial Undo"
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Load Map"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Save Map"
 
 #: src/hotkeys.cpp:112
 msgid "Save Map As"
@@ -2516,19 +2542,19 @@ msgstr "User-Command#2"
 msgid "User-Command#3"
 msgstr "User-Command#3"
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 msgid "Map-Screenshot"
 msgstr "Map-Screenshot"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 msgid "Screenshot done"
 msgstr "Screenshot done"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 msgid "Screenshot failed"
 msgstr "Screenshot failed"
 
@@ -2693,6 +2719,9 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "In section '[$section|]' the mandatory key '$key|' isn't set."
+
+#~ msgid "Save The Map"
+#~ msgstr "Save The Map"
 
 #, fuzzy
 #~ msgid ""

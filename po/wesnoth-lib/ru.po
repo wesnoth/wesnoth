@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2009-04-06 18:30+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -1096,8 +1096,8 @@ msgstr "Песок"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Выйти"
 
@@ -1502,6 +1502,40 @@ msgstr "Редактор"
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Команда"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Создать бойца (Отладка!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Создать"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Замок"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "Отмена"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
+msgstr ""
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1978,16 +2012,16 @@ msgstr "Начало текста за пределами подложки."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 msgid "No resolution defined."
 msgstr "Разрешение не определено."
 
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr "Сетка не определена."
 
@@ -2114,20 +2148,20 @@ msgstr "Версия"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обязательный виджет '$id' не определён"
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 msgid "No default gui defined."
 msgstr "GUI пол умолчанию не определён."
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr "Окно не определено."
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Описание виджетов '$definition' не содержит описания для '$id'."
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
@@ -2179,7 +2213,7 @@ msgstr "Увеличение по умолчанию"
 msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Скриншот"
 
@@ -2203,8 +2237,8 @@ msgstr "Переименовать бойца"
 msgid "Save Replay"
 msgstr "Сохранить повтор"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
 msgstr "Сохранить карту"
 
 #: src/hotkeys.cpp:66
@@ -2247,10 +2281,6 @@ msgstr "Выключить звук"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Говорить"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Создать бойца (Отладка!)"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2344,10 +2374,6 @@ msgstr "Частичная отмена"
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Загрузить карту"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Сохранить карту"
 
 #: src/hotkeys.cpp:112
 msgid "Save Map As"
@@ -2553,19 +2579,19 @@ msgstr "Команда пользователя №2"
 msgid "User-Command#3"
 msgstr "Команда пользователя №3"
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 msgid "Map-Screenshot"
 msgstr "Скриншот карты"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 msgid "Screenshot done"
 msgstr "Скриншот готов"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 msgid "Screenshot failed"
 msgstr "Скриншот не удался"
 
@@ -2730,6 +2756,9 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+
+#~ msgid "Save The Map"
+#~ msgstr "Сохранить карту"
 
 #, fuzzy
 #~ msgid ""

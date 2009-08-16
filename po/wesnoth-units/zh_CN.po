@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2009-05-10 01:14-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -185,7 +185,8 @@ msgstr ""
 "焰吐息。"
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:85 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:85
+#: data/core/units/drakes/Burner.cfg:108 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Inferno.cfg:72
 #: data/core/units/goblins/Direwolf_Rider.cfg:55
 #: data/core/units/gryphons/Gryphon.cfg:41
@@ -202,12 +203,13 @@ msgstr "爪"
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:94
 #: data/core/units/drakes/Blademaster.cfg:78
-#: data/core/units/drakes/Burner.cfg:116 data/core/units/drakes/Fighter.cfg:75
-#: data/core/units/drakes/Fire.cfg:80 data/core/units/drakes/Flameheart.cfg:88
+#: data/core/units/drakes/Burner.cfg:117
+#: data/core/units/drakes/Fighter.cfg:117 data/core/units/drakes/Fire.cfg:80
+#: data/core/units/drakes/Flameheart.cfg:88
 #: data/core/units/drakes/Flare.cfg:92 data/core/units/drakes/Glider.cfg:119
 #: data/core/units/drakes/Hurricane.cfg:127
 #: data/core/units/drakes/Inferno.cfg:81 data/core/units/drakes/Sky.cfg:126
-#: data/core/units/drakes/Warrior.cfg:82
+#: data/core/units/drakes/Warrior.cfg:116
 #: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "火焰吐息"
@@ -233,14 +235,13 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Flameheart.cfg:79
 #: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Slasher.cfg:23
-#: data/core/units/drakes/Warrior.cfg:73 data/core/units/elves/Archer.cfg:37
-#: data/core/units/elves/Avenger.cfg:76 data/core/units/elves/Captain.cfg:47
-#: data/core/units/elves/Champion.cfg:36 data/core/units/elves/Fighter.cfg:36
-#: data/core/units/elves/Hero.cfg:35 data/core/units/elves/High_Lord.cfg:73
-#: data/core/units/elves/Lord.cfg:39 data/core/units/elves/Marksman.cfg:66
-#: data/core/units/elves/Marshal.cfg:46 data/core/units/elves/Outrider.cfg:46
-#: data/core/units/elves/Ranger.cfg:73 data/core/units/elves/Rider.cfg:48
-#: data/core/units/elves/Scout.cfg:47
+#: data/core/units/elves/Archer.cfg:37 data/core/units/elves/Avenger.cfg:76
+#: data/core/units/elves/Captain.cfg:47 data/core/units/elves/Champion.cfg:36
+#: data/core/units/elves/Fighter.cfg:36 data/core/units/elves/Hero.cfg:35
+#: data/core/units/elves/High_Lord.cfg:73 data/core/units/elves/Lord.cfg:39
+#: data/core/units/elves/Marksman.cfg:66 data/core/units/elves/Marshal.cfg:46
+#: data/core/units/elves/Outrider.cfg:46 data/core/units/elves/Ranger.cfg:73
+#: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:47
 #: data/core/units/elves/Sharpshooter.cfg:63
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:52
@@ -252,8 +253,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Sergeant.cfg:47
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
-#: data/core/units/nagas/Fighter.cfg:90 data/core/units/nagas/Myrmidon.cfg:31
-#: data/core/units/nagas/Warrior.cfg:29 data/core/units/orcs/Grunt.cfg:71
+#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
+#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
 #: data/core/units/orcs/Leader.cfg:28
 msgid "sword"
 msgstr "剑"
@@ -264,7 +265,7 @@ msgid "Drake Burner"
 msgstr "喷火龙战士"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:19
+#: data/core/units/drakes/Burner.cfg:20
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -273,12 +274,6 @@ msgid ""
 msgstr ""
 "喷火龙战士骄傲的一群──继承自远古祖先的最纯正的血统和力量，赋予与他们强大的火"
 "焰吐息。结合他们高大的身材和可怕的爪，喷火龙战士在战场上是恐怖的对手。"
-
-#. [attack]: type=impact
-#: data/core/units/drakes/Burner.cfg:107 data/core/units/drakes/Glider.cfg:110
-#: data/core/units/drakes/Hurricane.cfg:118 data/core/units/drakes/Sky.cfg:117
-msgid "slam"
-msgstr "猛击"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -369,7 +364,7 @@ msgid "Drake Fighter"
 msgstr "龙族战士"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:19
+#: data/core/units/drakes/Fighter.cfg:20
 #, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire-breathing skills "
@@ -381,7 +376,8 @@ msgstr ""
 "让任何敌人头疼.  他们巨大的力量和坚硬的盔甲足以让任何种族的军队望而生畏."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:66
+#: data/core/units/drakes/Fighter.cfg:108
+#: data/core/units/drakes/Warrior.cfg:107
 msgid "scimitar"
 msgstr "弯刀"
 
@@ -452,6 +448,12 @@ msgstr ""
 "战士，能操纵龙族普遍拥有的火焰吐息。他们也能有效的利用速度制服敌人。他们从高"
 "空可以看穿大多数防御伪装，借助飞行能力他们能精确打击这些伪装下的敌人。"
 
+#. [attack]: type=impact
+#: data/core/units/drakes/Glider.cfg:110
+#: data/core/units/drakes/Hurricane.cfg:118 data/core/units/drakes/Sky.cfg:117
+msgid "slam"
+msgstr "猛击"
+
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
@@ -503,12 +505,13 @@ msgstr ""
 "天空龙战士是真正的天空之王。他们从高空俯冲的可怕冲击力配合火焰吐息成为了可怕"
 "的武器。从空中他们能用火焰对本来防御极佳的敌人进行精确地打击。"
 
-#. [unit_type]: id=Drake Slasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:4
-msgid "Drake Slasher"
-msgstr "龙族劈裂者"
+#, fuzzy
+msgid "Drake Thrasher"
+msgstr "冲击龙战士"
 
-#. [unit_type]: id=Drake Slasher, race=drake
+#. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Slashers have learned "
@@ -542,7 +545,7 @@ msgid "Drake Warrior"
 msgstr "龙族勇士"
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:18
+#: data/core/units/drakes/Warrior.cfg:19
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -601,7 +604,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 #: data/core/units/humans/Outlaw_Thief.cfg:188
-#: data/core/units/humans/Woodsman.cfg:41
+#: data/core/units/humans/Woodsman.cfg:42
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
@@ -649,7 +652,7 @@ msgstr "战斧"
 #: data/core/units/dwarves/Scout.cfg:40 data/core/units/dwarves/Scout.cfg:48
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:30
-#: data/core/units/undead/Skele_Revenant.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
 msgstr "斧"
@@ -928,7 +931,7 @@ msgstr ""
 #: data/core/units/elves/Ranger.cfg:82 data/core/units/elves/Rider.cfg:57
 #: data/core/units/elves/Scout.cfg:56
 #: data/core/units/humans/Loyalist_Bowman.cfg:46
-#: data/core/units/humans/Woodsman.cfg:50
+#: data/core/units/humans/Woodsman.cfg:51
 #: data/core/units/humans/Woodsman_Huntsman.cfg:60
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
@@ -2665,7 +2668,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:37
-#: data/core/units/trolls/Troll.cfg:26
+#: data/core/units/trolls/Troll.cfg:38
 msgid "club"
 msgstr "木棒"
 
@@ -3477,7 +3480,7 @@ msgstr ""
 "惧。他们小巧，而且有点脆弱，但常常比敌人更灵活。"
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:141
+#: data/core/units/nagas/Fighter.cfg:153
 msgid "Nagini Fighter"
 msgstr "娜迦战士"
 
@@ -3500,12 +3503,12 @@ msgstr ""
 "是强大的敌手，善于游泳的天性更是赋予他们致命的机动性。"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:83
+#: data/core/units/nagas/Myrmidon.cfg:95
 msgid "Nagini Myrmidon"
 msgstr "娜迦忠勇武士"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:85
+#: data/core/units/nagas/Myrmidon.cfg:97
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3537,12 +3540,12 @@ msgstr ""
 "挪来躲避攻击。这使他们在陆地上很强大，但水的阻力却影响了他们的闪躲动作。"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:80
+#: data/core/units/nagas/Warrior.cfg:92
 msgid "Nagini Warrior"
 msgstr "娜迦勇士"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:82
+#: data/core/units/nagas/Warrior.cfg:94
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4446,7 +4449,7 @@ msgid "Revenant"
 msgstr "亡魂"
 
 #. [unit_type]: id=Revenant, race=undead
-#: data/core/units/undead/Skele_Revenant.cfg:18
+#: data/core/units/undead/Skele_Revenant.cfg:19
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -4684,6 +4687,9 @@ msgstr ""
 "然界的保护者，树人的动机和行动方式现在仍亦未可知。\n"
 "\n"
 "他们完全不好战，但拥有强大的力量。然而他们不善于迅速的移动。"
+
+#~ msgid "Drake Slasher"
+#~ msgstr "龙族劈裂者"
 
 #~ msgid ""
 #~ "The great Drake Enforcers epitomize the raw strength of their kind. Long "

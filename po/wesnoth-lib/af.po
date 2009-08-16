@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2005-12-14 12:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans <wesnothaf@gmail.com>\n"
@@ -1098,8 +1098,8 @@ msgstr "Sand"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Sluit"
 
@@ -1509,6 +1509,40 @@ msgstr "Stop Verwerker"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Skep Eenheid (Foutsporing!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Maak Nuwe Kaart"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Kasteel"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "Kanselleer"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
 msgstr ""
 
 #: src/filechooser.cpp:74
@@ -1994,7 +2028,7 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Maak van kaart onsuksesvol."
@@ -2002,9 +2036,9 @@ msgstr "Maak van kaart onsuksesvol."
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr ""
 
@@ -2128,20 +2162,20 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 msgid "No state or draw section defined."
 msgstr ""
 
@@ -2195,7 +2229,7 @@ msgstr "Wys Standaard"
 msgid "Toggle Full Screen"
 msgstr "Wissel Volskerm"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Skermkopie"
 
@@ -2221,9 +2255,8 @@ msgstr "Verander eenheidnaam"
 msgid "Save Replay"
 msgstr "Stoor Sleutelbordstellings"
 
-#: src/hotkeys.cpp:64
-#, fuzzy
-msgid "Save The Map"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
 msgstr "Stoor kaart"
 
 #: src/hotkeys.cpp:66
@@ -2266,10 +2299,6 @@ msgstr "Stil"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Praat"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Skep Eenheid (Foutsporing!)"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2367,10 +2396,6 @@ msgstr ""
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Laai kaart"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Stoor kaart"
 
 #: src/hotkeys.cpp:112
 #, fuzzy
@@ -2593,21 +2618,21 @@ msgstr ""
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Wil jy regtig die spel verlaat?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Skermkopie"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Skermkopie"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Skermkopie"
@@ -2770,6 +2795,10 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Save The Map"
+#~ msgstr "Stoor kaart"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Verstel Gamma (lig/donker kontras)"

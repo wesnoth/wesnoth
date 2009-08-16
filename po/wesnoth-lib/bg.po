@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-12 12:58+0200\n"
+"POT-Creation-Date: 2009-08-16 17:44+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -1106,8 +1106,8 @@ msgstr "Песъчлив терен"
 #. [button]: id=quit
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:654
-#: src/hotkeys.cpp:944
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Изход"
 
@@ -1520,6 +1520,40 @@ msgstr "Изход от редактора"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/unit_create.cfg:37 src/hotkeys.cpp:76
+msgid "Create Unit (Debug!)"
+msgstr "Създаване на единица(Debug!)"
+
+#. [label]
+#: data/gui/default/window/unit_create.cfg:66
+#, fuzzy
+msgid "Gender:"
+msgstr "Генериране на нова карта"
+
+#. [toggle_button]: id=male_toggle
+#: data/gui/default/window/unit_create.cfg:80
+#, fuzzy
+msgid "Male"
+msgstr "Замък"
+
+#. [toggle_button]: id=female_toggle
+#: data/gui/default/window/unit_create.cfg:94
+msgid "Female"
+msgstr ""
+
+#. [label]: id=race
+#: data/gui/default/window/unit_create.cfg:124
+#, fuzzy
+msgid "Race"
+msgstr "Отказ"
+
+#. [label]: id=unit_type
+#: data/gui/default/window/unit_create.cfg:136
+msgid "Type"
 msgstr ""
 
 #: src/filechooser.cpp:74
@@ -2000,7 +2034,7 @@ msgstr ""
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:517
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Създаването на картата се провали."
@@ -2008,9 +2042,9 @@ msgstr "Създаването на картата се провали."
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:773 src/gui/widgets/settings.cpp:869
-#: src/gui/widgets/settings.cpp:958 src/gui/widgets/settings.cpp:1000
-#: src/gui/widgets/settings.cpp:1118
+#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
+#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
+#: src/gui/widgets/settings.cpp:1119
 msgid "No grid defined."
 msgstr ""
 
@@ -2134,20 +2168,20 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:141
+#: src/gui/widgets/settings.cpp:142
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:304
+#: src/gui/widgets/settings.cpp:305
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:401
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:543
+#: src/gui/widgets/settings.cpp:544
 msgid "No state or draw section defined."
 msgstr ""
 
@@ -2199,7 +2233,7 @@ msgstr "Стандартен изглед"
 msgid "Toggle Full Screen"
 msgstr "Цял екран"
 
-#: src/hotkeys.cpp:57 src/hotkeys.cpp:899
+#: src/hotkeys.cpp:57 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
@@ -2225,9 +2259,9 @@ msgstr "Преименуване на единица"
 msgid "Save Replay"
 msgstr "Запис"
 
-#: src/hotkeys.cpp:64
-msgid "Save The Map"
-msgstr "Запис на картата"
+#: src/hotkeys.cpp:64 src/hotkeys.cpp:111
+msgid "Save Map"
+msgstr "Запис на карта"
 
 #: src/hotkeys.cpp:66
 msgid "Recruit"
@@ -2269,10 +2303,6 @@ msgstr "Без звук"
 #: src/hotkeys.cpp:75
 msgid "Speak"
 msgstr "Говор"
-
-#: src/hotkeys.cpp:76
-msgid "Create Unit (Debug!)"
-msgstr "Създаване на единица(Debug!)"
 
 #: src/hotkeys.cpp:77
 #, fuzzy
@@ -2368,10 +2398,6 @@ msgstr ""
 #: src/hotkeys.cpp:110
 msgid "Load Map"
 msgstr "Зареждане на карта"
-
-#: src/hotkeys.cpp:111
-msgid "Save Map"
-msgstr "Запис на карта"
 
 #: src/hotkeys.cpp:112
 #, fuzzy
@@ -2596,21 +2622,21 @@ msgstr ""
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:654 src/hotkeys.cpp:944
+#: src/hotkeys.cpp:642 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/hotkeys.cpp:899
+#: src/hotkeys.cpp:885
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:906
+#: src/hotkeys.cpp:892
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Снимка на екрана"
@@ -2772,6 +2798,9 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Save The Map"
+#~ msgstr "Запис на картата"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Настройка на гамата"
