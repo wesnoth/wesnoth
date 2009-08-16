@@ -1040,36 +1040,6 @@ void menu::draw()
 	set_dirty(false);
 }
 
-void menu::wrap_words()
-{
-	int total_width = max_width_ - (style_->get_cell_padding() + (2 * style_->get_thickness()));
-	if(has_scrollbar()) {
-		total_width -= scrollbar_width();
-	}
-	if(total_width <= 0) {
-		return;
-	}
-	std::vector<int> const &widths = column_widths();
-	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
-		int space_remaining = total_width;
-		for(size_t col = 0; col < i->fields.size() && col < widths.size(); ++col) {
-			std::string &to_wrap = i->fields[col];
-			if (!to_wrap.empty()) {
-				if(widths[col] > space_remaining && to_wrap[0] != IMAGE_PREFIX) {
-					to_wrap = font::word_wrap_text(to_wrap, style_->get_font_size(), space_remaining);
-					break;
-				}
-				space_remaining -= widths[col] + 5;
-			}
-		}
-	}
-	itemRects_.clear();
-	column_widths_.clear();
-	max_items_ = -1; // Force recalculation of the max items.
-	item_height_ = -1; // Force recalculation of the item height.
-	update_size();
-}
-
 int menu::hit(int x, int y) const
 {
 	SDL_Rect const &loc = inner_location();
