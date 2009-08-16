@@ -201,9 +201,12 @@ namespace game_events
 
 	/**
 	 * Registers a WML action_handler for the lifetime of the current event manager.
-	 * The handler is automatically destroyed at the end or when overriden.
+	 * The handler is automatically destroyed at the end, if still registered.
+	 * The previous handler is stored at the memory pointed by @a previous if
+	 * nonnull, deleted otherwise.
 	 */
-	void register_action_handler(const std::string &tag, action_handler *);
+	void register_action_handler(const std::string &tag, action_handler *handler,
+		action_handler **previous = NULL);
 
 } // end namespace game_events
 

@@ -342,14 +342,21 @@ static bool call_wml_action_handler(const std::string &cmd,
 
 namespace game_events {
 
-	void register_action_handler(const std::string &tag, action_handler *h)
+	void register_action_handler(const std::string &tag, action_handler *h,
+		action_handler **previous)
 	{
 		dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(tag);
+		action_handler *p = NULL;
 		if (itor != dynamic_wml_actions.end()) {
-			delete itor->second;
+			p = itor->second;
 			itor->second = h;
 		} else {
 			dynamic_wml_actions[tag] = h;
+		}
+		if (previous) {
+			*previous = p;
+		} else {
+			delete p;
 		}
 	}
 
