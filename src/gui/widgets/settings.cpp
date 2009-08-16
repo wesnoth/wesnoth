@@ -191,7 +191,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Image                         @macro = image_description
  *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
  *     Label                         @macro = label_description
- *     Listbox                       A listbox.
+ *     Listbox                       @macro = listbox_description
  *     Menubar                       A menubar which is used in menus and the
  *                                   tabbar in a tabcontrol. (NOTE this widget
  *                                   is still under heavy development.)
@@ -721,11 +721,11 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Listbox ==
  *
- * The definition of a normal listbox. A listbox is multiwidget class which
- * means that it's build from multiple items.  The definition of a listbox
- * contains the definition of it's scrollbar.
+ * @macro = listbox_description
  *
- * The resolution for a text box also contains the following keys:
+ * The definition of a listbox contains the definition of it's scrollbar.
+ *
+ * The resolution for a listbox also contains the following keys:
  * @start_table = config
  *     scrollbar (section)             A grid containing the widgets for the
  *                                     scrollbar. The scrollbar has some special
