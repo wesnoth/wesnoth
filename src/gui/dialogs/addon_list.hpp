@@ -21,13 +21,15 @@ class config;
 
 namespace gui2 {
 
+/** Shows the list of addons on the server. */
 class taddon_list
 	: public tdialog
 {
 public:
 	taddon_list(const config& cfg)
 		: cfg_(cfg)
-	{}
+	{
+	}
 
 private:
 	/** Inherited from tdialog. */

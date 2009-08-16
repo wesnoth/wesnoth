@@ -17,16 +17,8 @@
 #include "gui/dialogs/addon_list.hpp"
 
 #include "foreach.hpp"
-#include "gui/auxiliary/window_builder.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
-#include "serialization/string_utils.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2 {
 
@@ -38,6 +30,17 @@ namespace gui2 {
  *
  * This shows the dialog with the addons to install. This dialog is under
  * construction and only used with --new-widgets.
+ *
+ * @start_table = container
+ *     addon_list (listbox)       A listbox that will contain the info about
+ *                                all addons on the server.
+ *     name [control]             The name of the addon.
+ *     version [control]          The version number of the addon.
+ *     author [control]           The author of the addon.
+ *     downloads [control]        The number of times the addon has been
+ *                                downloaded.
+ *     size [control]             The size of the addon.
+ * @end_table
  */
 
 twindow* taddon_list::build_window(CVideo& video)
@@ -47,12 +50,13 @@ twindow* taddon_list::build_window(CVideo& video)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list =
-		dynamic_cast<tlistbox*>(window.find_widget("addon_list", false));
-	VALIDATE(list, missing_widget("addon_list"));
+	tlistbox& list = NEW_find_widget<tlistbox>(&window, "addon_list", false);
 
-	foreach (const config &c, cfg_.child_range("campaign"))
-	{
+	/**
+	 * @todo do we really want to keep the length limit for the various
+	 * items?
+	 */
+	foreach(const config &c, cfg_.child_range("campaign")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -77,8 +81,7 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		item["label"] = c["size"];
 		data.insert(std::make_pair("size", item));
 
-		list->add_row(data);
-
+		list.add_row(data);
 	}
 }
 
