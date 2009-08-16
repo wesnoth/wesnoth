@@ -190,7 +190,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     Button                        @macro = button_description
  *     Image                         @macro = image_description
  *     Horizontal_scrollbar          @macro = horizontal_scrollbar_description
- *     Label                         A label without scrollbars.
+ *     Label                         @macro = label_description
  *     Listbox                       A listbox.
  *     Menubar                       A menubar which is used in menus and the
  *                                   tabbar in a tabcontrol. (NOTE this widget
@@ -691,12 +691,11 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Label ==
  *
- * The definition of a normal label.
+ * @macro = label_description
  *
  * The following states exist:
  * * state_enabled, the label is enabled.
  * * state_disabled, the label is disabled.
- *
  */
 
 	// Note the order should be the same as the enum tstate is label.hpp.
