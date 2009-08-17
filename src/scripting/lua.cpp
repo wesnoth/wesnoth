@@ -57,6 +57,27 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+/**
+ * Stack storing the queued_event objects needed for calling WML actions.
+ */
+struct queued_event_context
+{
+	typedef game_events::queued_event qe;
+	static qe default_qe;
+	static qe const *current_qe;
+	static qe const &get()
+	{ return *(current_qe ? current_qe : &default_qe); }
+	qe const *previous_qe;
+	queued_event_context(qe const *new_qe)
+	{ previous_qe = current_qe; current_qe = new_qe; }
+	~queued_event_context()
+	{ current_qe = previous_qe; }
+};
+
+game_events::queued_event const *queued_event_context::current_qe = 0;
+game_events::queued_event queued_event_context::default_qe
+	("_from_lua", map_location(), map_location(), config());
+
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const executeKey = 0;
 static char const getsideKey = 0;
@@ -568,8 +589,6 @@ static int lua_get_units(lua_State *L)
  * Fires a WML event handler.
  * - Arg 1: string containing the handler name.
  * - Arg 2: optional WML config.
- * - Arg 3,4: optional first location.
- * - Arg 5,6: optional second location.
  */
 static int lua_fire(lua_State *L)
 {
@@ -586,14 +605,8 @@ static int lua_fire(lua_State *L)
 			goto error_call_destructors;
 		lua_pop(L, 1);
 	}
-	map_location l1, l2;
-	if (lua_gettop(L) >= 4)
-		l1 = map_location(lua_tointeger(L, 3) - 1, lua_tointeger(L, 4) - 1);
-	if (lua_gettop(L) >= 6)
-		l2 = map_location(lua_tointeger(L, 5) - 1, lua_tointeger(L, 6) - 1);
 
-	game_events::handle_event_command
-		(m, game_events::queued_event("_from_lua", l1, l2, config()), vconfig(cfg, true));
+	game_events::handle_event_command(m, queued_event_context::get(), vconfig(cfg, true));
 	return 0;
 }
 
@@ -723,8 +736,7 @@ static int lua_wml_action_call(lua_State *L)
 	game_events::action_handler **h =
 		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
 	// Hidden metamethod, so h has to be an action handler.
-	(*h)->handle(game_events::queued_event("_from_lua", map_location(),
-		map_location(), config()), vconfig(cfg, true));
+	(*h)->handle(queued_event_context::get(), vconfig(cfg, true));
 	return 0;
 }
 
@@ -767,7 +779,7 @@ struct lua_action_handler : game_events::action_handler
 	~lua_action_handler();
 };
 
-void lua_action_handler::handle(const game_events::queued_event &, const vconfig &cfg)
+void lua_action_handler::handle(const game_events::queued_event &ev, const vconfig &cfg)
 {
 	// Load the error handler from the registry.
 	lua_pushlightuserdata(L, (void *)&executeKey);
@@ -785,6 +797,7 @@ void lua_action_handler::handle(const game_events::queued_event &, const vconfig
 	table_of_wml_config(L, cfg.get_parsed_config());
 	lua_insert(L, -2);
 
+	queued_event_context dummy(&ev);
 	int res = lua_pcall(L, 2, 0, -4);
 	if (res)
 	{
@@ -1255,6 +1268,7 @@ void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &e
 	// are not messed with.
 	const std::string &prog = cfg.get_config()["code"];
 
+	queued_event_context dummy(&ev);
 	execute(prog.c_str(), 1, 0);
 }
 
