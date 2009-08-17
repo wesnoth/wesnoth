@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-16 17:44+0200\n"
-"PO-Revision-Date: 2009-04-06 18:30+0200\n"
+"POT-Creation-Date: 2009-08-16 17:55+0200\n"
+"PO-Revision-Date: 2009-08-17 16:02+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
@@ -550,7 +550,7 @@ msgstr "пусто"
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:1428
 msgid "Flat"
-msgstr "Плоская"
+msgstr "Равнина"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:1435
@@ -874,7 +874,7 @@ msgstr "Удалить файл"
 #: data/gui/default/window/game_load.cfg:406
 #, fuzzy
 msgid "Show replay"
-msgstr "игрок"
+msgstr "Сохранить повтор"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:418
@@ -1013,7 +1013,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:334
 #, fuzzy
 msgid "Selected game"
-msgstr "Удалить автосохранения"
+msgstr "Создать игру"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
@@ -1144,15 +1144,14 @@ msgstr ""
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:586
-#, fuzzy
 msgid "Quick replay"
-msgstr "игрок"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
 #, fuzzy
 msgid "Player Info - "
-msgstr "Игроки:"
+msgstr "Игроки: "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
@@ -1304,12 +1303,12 @@ msgstr "Название игры:"
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 msgid "Players: "
-msgstr "Игроки:"
+msgstr "Игроки: "
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr "Размер карты:"
+msgstr "Размер карты: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
@@ -1929,7 +1928,7 @@ msgstr "Скорость: "
 
 #: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
 msgid "Maximum Auto-Saves: "
-msgstr "Макс. число автосохранений:"
+msgstr "Макс. число автосохранений: "
 
 #: src/game_preferences_display.cpp:696
 msgid "infinite"
@@ -1937,7 +1936,7 @@ msgstr "неограничено"
 
 #: src/game_preferences_display.cpp:875
 msgid "Chat Lines: "
-msgstr "Строк в чате:"
+msgstr "Строк в чате: "
 
 #: src/game_preferences_display.cpp:897 src/game_preferences_display.cpp:905
 msgid "Invalid username"
@@ -2759,14 +2758,6 @@ msgstr "В разделе '[$section|]' не задан обязательный
 
 #~ msgid "Save The Map"
 #~ msgstr "Сохранить карту"
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr ""
-#~ "'list_data' должен содержать столько же столбцов, сколько и "
-#~ "'list_definition'."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Настроить гамму"
