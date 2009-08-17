@@ -2,6 +2,7 @@ fai 'new_recruitment.fai'
 
 {ai/formula/lib/map_evaluation.fai}
 {ai/formula/lib/util.fai}
+{ai/formula/lib/recruitment.fai}
 
 def get_terrain_types(ai*, locations)
 	map( locations, 'l', fast_map[l].id ) where fast_map = location_to_terrain_map(ai);
@@ -286,32 +287,22 @@ def calculate_recruits(ai*)
 		)
 	) where recruits_id_map = map(my_recruits, id);
 
-def unit_chooser(ai*,unit_map) 
-	choose(
-		keys(unit_map), 'unit_type',
-		unit_map[unit_type] - 
-		(
-			(
-				100 * 
-				size(
-					filter(
-						my_units, 
-						type = unit_type
-					)
-				)
-			) / 
-			size(my_units)
-		)
-	);
+def do_recruitment( ai* )
+	if( unit_to_recruit,
+		safe_call( 
+			recruit( unit_to_recruit ),
+			end
+		),
+		end
+	)
+	where unit_to_recruit = recruit_army(self, vars.recruits_map);
 
 if( vars.side_terrain,
 	if(vars.direct_enemies,
 		if(vars.turn_initialized = turn,
-	
-			safe_call( recruit(unit_chooser(self, vars.recruits_map)),
-				end
-			),
-	
+
+			do_recruitment(self),
+
 			[
 			set_var(debug_print('turn_initialized'), turn) ,
 			set_var(debug_print('recruits_map'), debug_print( 'RECRUITS ', calculate_recruits(self)) )
