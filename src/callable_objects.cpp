@@ -150,6 +150,8 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.type_id());
 	} else if(key == "name") {
 		return variant(u_.name());
+	} else if(key == "usage") {
+		return variant(u_.usage());
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
@@ -248,6 +250,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("states", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));	
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 }
 
@@ -300,6 +303,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.not_living());
 	} else if(key == "cost") {
 		return variant(u_.cost());
+	} else if(key == "usage") {
+		return variant(u_.usage());
 	} else {
 		return variant();
 	}
@@ -319,6 +324,7 @@ void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inpu
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("usage", FORMULA_READ_ONLY));
 }
 
 int unit_type_callable::do_compare(const formula_callable* callable) const
