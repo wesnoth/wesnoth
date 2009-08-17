@@ -674,19 +674,19 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 const unit_type* unit::type() const
 {
+	if (type_id().empty()) return NULL;
+
 	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find_unit_type(type_id());
-	if (unit_type_data::types().unit_type_exists(type_id())) {
+	if (i != unit_type_data::types().end()) {
 		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
-	if (!type_id().empty()) {
-		std::string error_message = _("Unknown unit type '$type|'");
-		utils::string_map symbols;
-		symbols["type"] = type_id();
-		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		ERR_NG << "unit of type " << type_id() << " not found!\n";
-		throw game::game_error(error_message);
-	}
-	return NULL;
+
+	std::string error_message = _("Unknown unit type '$type|'");
+	utils::string_map symbols;
+	symbols["type"] = type_id();
+	error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+	ERR_NG << "unit of type " << type_id() << " not found!\n";
+	throw game::game_error(error_message);
 }
 
 const std::string& unit::profile() const
