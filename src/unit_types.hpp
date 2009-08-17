@@ -372,7 +372,6 @@ public:
             void add_advancement(unit_type& to_unit) const;
 
             mutable unit_type_map types_;
-            mutable unit_type_map dummy_unit_map_;
             movement_type_map movement_types_;
             race_map races_;
 

@@ -88,25 +88,19 @@ void wait::leader_preview_pane::draw_contents()
 		std::string leader = leaders_.get_leader();
 		std::string gender = leaders_.get_gender();
 
-		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 		std::string leader_name;
 		std::string image;
 
-		const unit_type* ut;
-		const unit_type* utg;
+		const unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
+		const unit_type_data::unit_type_map::const_iterator
+			ut = utypes.find_unit_type(leader);
 
-		if (utypes.unit_type_exists(leader) && leader != "random") {
-			ut = &(utypes.find_unit_type(leader)->second);
-			if (!gender.empty()) {
-				if (gender == "female")
-					utg = &(ut->get_gender_unit_type(unit_race::FEMALE));
-				else
-					utg = &(ut->get_gender_unit_type(unit_race::MALE));
-			} else
-				utg = ut;
+		if (ut != utypes.end()) {
+			unit_race::GENDER g = (gender == "female" ? unit_race::FEMALE : unit_race::MALE);
+			const unit_type& utg = ut->second.get_gender_unit_type(g);
 
-			leader_name = utg->type_name();
-			image = utg->image() + leaders_.get_RC_suffix(utg->flag_rgb());
+			leader_name = utg.type_name();
+			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
 		}
 
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
@@ -474,30 +468,23 @@ void wait::generate_menu()
 
 		std::string leader_name;
 		std::string leader_image;
-		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
-		const unit_type* ut;
-		const unit_type* utg;
 
-		if (utypes.unit_type_exists(leader_type) && leader_type != "random") {
-			ut = &(utypes.find_unit_type(leader_type)->second);
-			if (!gender_id.empty()) {
-				if (gender_id == "female")
-					utg = &(ut->get_gender_unit_type(unit_race::FEMALE));
-				else
-					// FIXME: this will make it look male, even if it's random. But all this
-					// code will be wiped out when the MP UI gets unified, anyway.
-					utg = &(ut->get_gender_unit_type(unit_race::MALE));
-			} else
-				utg = ut;
+		const unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
+		const unit_type_data::unit_type_map::const_iterator
+			ut = utypes.find_unit_type(leader_type);
 
-			leader_name = utg->type_name();
+		if (ut != utypes.end()) {
+			unit_race::GENDER g = (gender_id == "female" ? unit_race::FEMALE : unit_race::MALE);
+			const unit_type& utg = ut->second.get_gender_unit_type(g);
+
+			leader_name = utg.type_name();
 #ifdef LOW_MEM
-			leader_image = utg->image();
+			leader_image = utg.image();
 #else
 			std::string RCcolor = sd["colour"];
 			if (RCcolor.empty())
 				RCcolor = sd["side"];
-			leader_image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + RCcolor + ")");
+			leader_image = utg.image() + std::string("~RC(") + std::string(utg.flag_rgb() + ">" + RCcolor + ")");
 #endif
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;

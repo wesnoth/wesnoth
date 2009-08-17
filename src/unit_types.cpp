@@ -1126,7 +1126,6 @@ unit_type_data::unit_type_data() :
 
 unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 	types_(),
-	dummy_unit_map_(),
 	movement_types_(),
 	races_(),
 	hide_help_all_(false),
@@ -1134,7 +1133,6 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 	hide_help_race_(),
 	unit_cfg_(NULL)
 {
-    dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
 }
 
 void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
@@ -1217,19 +1215,15 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
     if (key.empty() || (key == "random"))
         return types_.end();
 
-    unit_type_map::iterator itor = types_.find(key);
-
 	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
+    const unit_type_map::const_iterator itor = types_.find(key);
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
-        LOG_CONFIG << "key not found, returning dummy_unit\n";
         /*
         for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
             DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.id() << "'\n";
         */
-        itor = dummy_unit_map_.find("dummy_unit");
-        assert(itor != dummy_unit_map_.end());
         return itor;
     }
 
@@ -1278,9 +1272,6 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
 unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
 {
     unit_type_map::iterator ut = types_.find(key);
-
-    if (key == "dummy_unit")
-        return ut->second;
 
     DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
 

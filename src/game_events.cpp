@@ -2382,8 +2382,10 @@ WML_HANDLER_FUNCTION(store_unit_type, /*event_info*/, cfg)
 
 	resources::state_of_game->clear_variable_cfg(variable);
 	for(unsigned int i=0; i < types_to_store.size() && i < game_config::max_loop; ++i) {
-		if(ut_map.unit_type_exists(types_to_store[i])) {
-			resources::state_of_game->add_variable_cfg(variable, ut_map.find_unit_type(types_to_store[i], unit_type::NOT_BUILT)->second.get_cfg());
+		const unit_type_data::unit_type_map::const_iterator
+			ut = ut_map.find_unit_type(types_to_store[i], unit_type::NOT_BUILT);
+		if(ut != ut_map.end()) {
+			resources::state_of_game->add_variable_cfg(variable, ut->second.get_cfg());
 		} else {
 			lg::wml_error << "attempt to store nonexistent unit_type \"" 
 				<< types_to_store[i] << "\"\n";
@@ -3414,8 +3416,11 @@ WML_HANDLER_FUNCTION(unit_worth, /*event_info*/, cfg)
 		const std::vector<std::string>& advances = u->second.advances_to();
 		int best_advance = cost;
 		foreach(const std::string new_type, advances) {
-			unit_type t = unit_type_data::types().find_unit_type(new_type)->second;
-			best_advance = std::max(best_advance, t.cost());
+			const unit_type_data::unit_type_map::const_iterator
+				t = unit_type_data::types().find_unit_type(new_type);
+			if (t != unit_type_data::types().end()) {
+				best_advance = std::max(best_advance, t->second.cost());
+			}
 		}
 
 		const int hp_based = cost * hp / 1000;

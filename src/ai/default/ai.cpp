@@ -1298,7 +1298,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
+		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1336,7 +1336,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_combat()
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
+		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1416,7 +1416,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
+		if(info == unit_type_data::types().end()) {
 			continue;
 		}
 
@@ -1468,7 +1468,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 		const unit_type_data::unit_type_map::const_iterator info =
 			unit_type_data::types().find_unit_type(j->first);
 
-		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
+		if(info == unit_type_data::types().end()) {
 			continue;
 		}
 

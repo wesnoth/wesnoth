@@ -575,7 +575,7 @@ const std::string &recruit_result::get_available_for_recruiting(const team &my_t
 const unit_type *recruit_result::get_unit_type_known(const std::string &recruit, bool)
 {
 	unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(recruit);
-	if (type == unit_type_data::types().end() || type->first == "dummy_unit") {
+	if (type == unit_type_data::types().end()) {
 		set_error(E_UNKNOWN_OR_DUMMY_UNIT_TYPE);
 		return NULL;
 	}
