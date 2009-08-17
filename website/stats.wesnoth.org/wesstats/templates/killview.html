@@ -69,6 +69,7 @@
 						//var myHtml = "You clicked hex "+col+","+row;
 						var myHtml = "hex color: "+grid_colors[col+","+row];
 						map.openInfoWindow(latlng, myHtml);
+						//@TODO: add AJAX stuff to backend and this so that detailed information can be retrieved on-click
 					}
 				});
 				
@@ -98,26 +99,27 @@
 	</script>
 </head>
 <body onload="initialize()" onunload="GUnload()">
+<div id="global">
 ${header()}
 <div id="main">
 <div id="map_canvas" style="width: 800px; height: 600px">
 <noscript>You must enable Javascript in order to see the kill map.</noscript>
-</div>
+</div> <!-- /map_canvas -->
 <br />
 <div id="map_selection">
 Map: ${cur_map_name}
 <div id="used_filters">
-Used filters:
-<b py:if="len(used_filters) == 0">None</b>
-<table border="1">
-<tr py:for="filter in used_filters">
-<td>${filter}</td>
-<td py:for="val in ufilters_vals[filter]">
-${val}
-</td>
-</tr>
-</table>
-</div>
+	Used filters:
+	<b py:if="len(used_filters) == 0">None</b>
+	<table border="1">
+	<tr py:for="filter in used_filters">
+	<td>${filter}</td>
+	<td py:for="val in ufilters_vals[filter]">
+	${val}
+	</td>
+	</tr>
+	</table>
+</div> <!-- /used_filters -->
 <form method="get">
 <table border="1">
 <tr>
@@ -155,8 +157,9 @@ Killed level range: <input name="minkilledlev" value="${minkilledlev}" /> - <inp
 <br />
 <input type="submit" value="Submit" />
 </form>
-</div>
-</div>
+</div> <!-- /map_selection -->
+</div> <!-- /main -->
 ${footer()}
+</div> <!-- /global -->
 </body>
 </html>

@@ -44,48 +44,51 @@
     </script>
 </head>
 <body>
+<div id="global">
 ${header()}
 <div id="main">
 <div id="visualization" style="width: 300px; height: 300px;">
-</div>
+	<noscript>You must enable Javascript in order to see the pie chart.</noscript>
+</div> <!-- /visualization -->
 
 <div id="filter_box">
-Used filters:
-<b py:if="len(used_filters) == 0">None</b>
-<table border="1">
-<tr py:for="filter in used_filters">
-<td>${filter}</td>
-<td py:for="val in ufilters_vals[filter]">
-${val}
-</td>
-</tr>
-</table>
-<form method="get">
-<table border="1">
-<tr>
-<td py:for="filter in filters">
-${filter}
-</td>
-</tr>
-<tr>
-<td py:for="filter in filters">
-<select name="${filter}" multiple="multiple" size="5">
-<option selected="1" py:for="item in sorted(fdata[filter])" py:if="used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item)">${item}</option>
-<option py:for="item in sorted(fdata[filter])" py:if="not (used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item))">${item}</option>
-</select>
-</td>
-</tr>
-</table>
-Start date: <input name="startdate" value="${startdate}" /> 
-<input type="button" value="select" onclick="displayDatePicker('startdate');" />
-<br />
-End date: <input name="enddate" value="${enddate}" /> 
-<input type="button" value="select" onclick="displayDatePicker('enddate');" />
-<br />
-<input type="submit" value="Submit" />
-</form>
-</div>
-</div>
+	Used filters:
+	<b py:if="len(used_filters) == 0">None</b>
+	<table border="1">
+	<tr py:for="filter in used_filters">
+	<td>${filter}</td>
+	<td py:for="val in ufilters_vals[filter]">
+	${val}
+	</td>
+	</tr>
+	</table>
+	<form method="get">
+	<table border="1">
+	<tr>
+	<td py:for="filter in filters">
+	${filter}
+	</td>
+	</tr>
+	<tr>
+	<td py:for="filter in filters">
+	<select name="${filter}" multiple="multiple" size="5">
+	<option selected="1" py:for="item in sorted(fdata[filter])" py:if="used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item)">${item}</option>
+	<option py:for="item in sorted(fdata[filter])" py:if="not (used_filters.__contains__(filter) and ufilters_vals[filter].__contains__(item))">${item}</option>
+	</select>
+	</td>
+	</tr>
+	</table>
+	Start date: <input name="startdate" value="${startdate}" /> 
+	<input type="button" value="select" onclick="displayDatePicker('startdate');" />
+	<br />
+	End date: <input name="enddate" value="${enddate}" /> 
+	<input type="button" value="select" onclick="displayDatePicker('enddate');" />
+	<br />
+	<input type="submit" value="Submit" />
+	</form>
+</div> <!-- /filter_box -->
+</div> <!-- /main -->
 ${footer()}
+</div> <!-- /global -->
 </body>
 </html>

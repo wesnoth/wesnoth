@@ -124,15 +124,16 @@ class KillGraphController(BaseController):
 		filters = helperlib.fconstruct(filters,"map_id",[cur_map])
 		query = "SELECT position,COUNT(position) FROM `KILLMAP` INNER JOIN `" + games_tbl + "` USING (game_id) "+filters+" GROUP BY position ORDER BY COUNT(position) DESC LIMIT 0,100"
 		curs.execute(query)
-		print query
 		hexdata = curs.fetchall()
 		conn.close()
-		#first item is 'hottest' -> red (255,0,0), last item is 'coldest' -> blue (0,0,255), linearly interpolate hotness of all values inbetween
+		
+		#first item is 'hottest' -> red (255,0,0), last item is 'coldest' -> blue (0,0,255)
+		#linearly interpolate hotness of all values inbetween
 		grid_colors = ""
 		if len(hexdata) != 0:
 			max = hexdata[0][1]
 			min = hexdata[len(hexdata)-1][1]
-			#if there are very few results, the minimum frequency == maximum frequency
+			#if there are very few results, the minimum frequency == maximum frequency -> divide by 0
 			if max == min:
 				max += 1
 			for hex in hexdata:
@@ -147,7 +148,6 @@ class KillGraphController(BaseController):
 			grid_colors=grid_colors,startdate=startdate,enddate=enddate,
 			minkillerlev=minkillerlev,maxkillerlev=maxkillerlev,
 			minkilledlev=minkilledlev,maxkilledlev=minkilledlev,
-			used_filters=used_filters,
-			ufilters_vals=ufilters_vals,
+			used_filters=used_filters,ufilters_vals=ufilters_vals,
 			filters=available_filters+available_filters_map,
 			fdata=fdata,cur_map_name=cur_map_name)
