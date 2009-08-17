@@ -35,6 +35,9 @@
 		}
 
 		function make_hex(map, row, col) {
+			if(!(col+","+row in grid_colors)) {
+				return;
+			}	
 			var PRADIUS; //hex radius
 			if(map.getZoom() == 3) {
 				PRADIUS = 9.0;
@@ -62,24 +65,22 @@
 			p = new GPoint(0.5*PRADIUS + xcenter,-1*PRADIUS + ycenter);
 			poly.push(G_NORMAL_MAP.getProjection().fromPixelToLatLng(p,map.getZoom()));
 		
-			if(col+","+row in grid_colors) {	
-				var poly_overlay = new GPolygon(poly,"#000000",1,.25,"#"+grid_colors[col+","+row],.50);
-				GEvent.addListener(poly_overlay, "click", function(latlng) {
-					if(latlng) {
-						//var myHtml = "You clicked hex "+col+","+row;
-						var myHtml = "hex color: "+grid_colors[col+","+row];
-						map.openInfoWindow(latlng, myHtml);
-						//@TODO: add AJAX stuff to backend and this so that detailed information can be retrieved on-click
-					}
-				});
-				
-				map.addOverlay(poly_overlay);
-			}
+			var poly_overlay = new GPolygon(poly,"#000000",1,.25,"#"+grid_colors[col+","+row],.50);
+			GEvent.addListener(poly_overlay, "click", function(latlng) {
+				if(latlng) {
+					//var myHtml = "You clicked hex "+col+","+row;
+					var myHtml = "hex color: "+grid_colors[col+","+row];
+					map.openInfoWindow(latlng, myHtml);
+					//@TODO: add AJAX stuff to backend and this so that detailed information can be retrieved on-click
+				}
+			});
+			
+			map.addOverlay(poly_overlay);
 		}
 		function initialize() {
 			if (GBrowserIsCompatible()) {
-				var copyright = new GCopyrightCollection("&copy; Wesnoth Project");
-				copyright.addCopyright(new GCopyright('test',new GLatLngBounds(new GLatLng(-90,-180), new GLatLng(90,180)) ,0,'2009'));
+				var copyright = new GCopyrightCollection('<a href="http://www.wesnoth.org/">&copy; Wesnoth Project');
+				copyright.addCopyright(new GCopyright('test',new GLatLngBounds(new GLatLng(-90,-180), new GLatLng(90,180)) ,0,'2009</a>'));
 				
 				var minscale = 3;
 				var maxscale = 4;
