@@ -161,10 +161,6 @@ protected:
 	variant enemy_unit_;
 };
 
-class support_candidate_action : public candidate_action_with_filters {
-public:
-	support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
-};
 }
 
 #endif	/* AI_FORMULA_CANDIDATES_HPP_INCLUDED */

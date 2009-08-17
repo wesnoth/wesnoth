@@ -111,7 +111,6 @@ unit::unit(const unit& o):
            unit_formula_(o.unit_formula_),
            unit_loop_formula_(o.unit_loop_formula_),
            unit_priority_formula_(o.unit_priority_formula_),
-           unit_on_fail_formula_(o.unit_on_fail_formula_),
            formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
            recruits_(o.recruits_),
@@ -194,7 +193,6 @@ unit::unit(unit_map* unitmap, const config& cfg,
 	unit_formula_(),
 	unit_loop_formula_(),
         unit_priority_formula_(),
-        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -272,7 +270,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	unit_formula_(),
 	unit_loop_formula_(),
         unit_priority_formula_(),
-        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -377,7 +374,6 @@ unit::unit(unit_map *unitmap, const unit_type *t, int side,
 	unit_formula_(),
 	unit_loop_formula_(),
         unit_priority_formula_(),
-        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -1406,7 +1402,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		unit_formula_ = ai["formula"];
 		unit_loop_formula_ = ai["loop_formula"];
 		unit_priority_formula_ = ai["priority"];
-		unit_on_fail_formula_ = ai["on_fail"];
 
 		if (const config &ai_vars = ai.child("vars"))
 		{
@@ -1586,9 +1581,6 @@ void unit::write(config& cfg) const
 
 		if (has_priority_formula())
 			ai["priority"] = unit_priority_formula_;
-
-		if (has_on_fail_formula())
-			ai["on_fail"] = unit_on_fail_formula_;
 
 
 		if (formula_vars_ && formula_vars_->empty() == false)

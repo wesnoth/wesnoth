@@ -51,8 +51,6 @@ candidate_action_ptr candidate_action_manager::load_candidate_action_from_config
 			new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
 		} else if( type == "attack") {
 			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
-		} else if( type == "support") {
-			new_ca = candidate_action_ptr(new support_candidate_action(name, type, rc_action, function_table ));
 		} else {
 			ERR_AI << "Unknown candidate action type: " << type << "\n";
 		}
@@ -298,10 +296,5 @@ void attack_candidate_action::update_callable_map(game_logic::map_formula_callab
 	callable.add("me", my_unit_);
 	callable.add("target", enemy_unit_);
 }
-
-
-support_candidate_action::support_candidate_action(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table) :
-	candidate_action_with_filters(name, type, cfg, function_table)
-{}
 
 }
