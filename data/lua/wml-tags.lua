@@ -12,10 +12,10 @@ local function all_teams()
 	return f, { i = 1 }
 end
 
-local function get_child(cfg, name) 
-   for i,v in ipairs(cfg) do 
-      if v[1] == name then return v[2] end 
-   end
+local function get_child(cfg, name)
+	for i,v in ipairs(cfg) do
+		if v[1] == name then return v[2] end
+	end
 end
 
 local function child_range(cfg, tag)
@@ -157,25 +157,17 @@ local function wml_show_objectives(cfg)
 end
 
 local function eval_bool(cfg)
-   table.insert(cfg, { "then", {{ "lua", { code = "wesnoth.dummy_var = true"  }}}})
-   table.insert(cfg, { "else", {{ "lua", { code = "wesnoth.dummy_var = false" }}}})
-   wesnoth.dummy_var = nil
-   wesnoth.fire("if", cfg)
-   if wesnoth.dummy_var == nil then  
-      --TODO print more useful output
-      wml_error("Error in eval_bool")
-   else 
-      local to_return = wesnoth.dummy_var   
-      wesnoth.dummy_var = nil
-      return to_return
-   end
+	table.insert(cfg, { "then", {{ "lua", { code = "wesnoth.dummy_var = true"  }}}})
+	wesnoth.dummy_var = nil
+	wesnoth.fire("if", cfg)
+	local to_return = wesnoth.dummy_var or false
+	wesnoth.dummy_var = nil
+	return to_return
 end
 
 local function wml_message(cfg, engine_message)
-   local test = get_child(cfg,"show_if")
-   if ( (not test) or eval_bool(test) ) then  
-      engine_message(cfg)
-   end
+	local test = get_child(cfg, "show_if")
+	if not test or eval_bool(test) then engine_message(cfg) end
 end
 
 local function wml_gold(cfg)
@@ -213,24 +205,22 @@ local function wml_store_unit_type(cfg)
 end
 
 local function wml_action_tag(cfg)
-   -- The new tag's name 
-   local name = cfg.name
-   if not name then wesnoth.message("attribute name is missing in [wml_action]") end
-
-   -- The lua function that is executed when the tag is called
-   local lua_function = assert(loadstring(cfg.lua_function)())
-   wesnoth.register_wml_action(name, lua_function)
+	-- The new tag's name
+	local name = cfg.name or wml_error("[wml_action] missing required name= attribute.")
+	local code = cfg.lua_function or wml_error("[wml_action] missing required lua_function= attribute.")
+	local bytecode, message = loadstring(code)
+	if not bytecode then wml_error("[wml_action] failed to compile Lua code: " .. message) end
+	-- The lua function that is executed when the tag is called
+	local lua_function = bytecode() or wml_error("[wml_action] expects a Lua code returning a function.")
+	wesnoth.register_wml_action(name, lua_function)
 end
 
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
---wesnoth.register_wml_action("message", wml_message)
+wesnoth.register_wml_action("message", wml_message)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
 wesnoth.register_wml_action("store_unit_type", wml_store_unit_type)
 wesnoth.register_wml_action("store_unit_type_ids", wml_store_unit_type_ids)
 wesnoth.register_wml_action("wml_action", wml_action_tag)
-
-
-
