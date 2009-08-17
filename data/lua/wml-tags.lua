@@ -224,7 +224,7 @@ end
 
 wesnoth.register_wml_action("objectives", wml_objectives)
 wesnoth.register_wml_action("show_objectives", wml_show_objectives)
-wesnoth.register_wml_action("message", wml_message)
+--wesnoth.register_wml_action("message", wml_message)
 wesnoth.register_wml_action("gold", wml_gold)
 wesnoth.register_wml_action("store_gold", wml_store_gold)
 wesnoth.register_wml_action("clear_variable", wml_clear_variable)
