@@ -38,16 +38,16 @@ public:
 	void pre_show(CVideo& video, twindow& window);
 
 
-	void callback_continue_button(gui2::twidget *caller);
+	void callback_continue_button(twindow& window);
 
 
-	void callback_next_button(gui2::twidget *caller);
+	void callback_next_button(twindow& window);
 
 
-	void callback_step_button(gui2::twidget *caller);
+	void callback_step_button(twindow& window);
 
 
-	void callback_stepout_button(gui2::twidget *caller);
+	void callback_stepout_button(twindow& window);
 
 private:
 	game_logic::formula_debugger &fdb_;

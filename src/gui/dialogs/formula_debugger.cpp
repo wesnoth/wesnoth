@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/formula_debugger.hpp"
 
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 #include "../../foreach.hpp"
@@ -25,48 +26,6 @@
 
 namespace gui2 {
 
-//ugly hack, should be removed as soon as boost::bind works with tbutton callbacks
-static tformula_debugger *td;
-
-
-
-namespace {
-
-void formula_debugger_callback_continue_function(gui2::twidget *caller)
-{
-	if (td==NULL) {
-		return;
-	}
-	td->callback_continue_button(caller);
-}
-
-void formula_debugger_callback_next_function(gui2::twidget *caller)
-{
-	if (td==NULL) {
-		return;
-	}
-	td->callback_next_button(caller);
-}
-
-void formula_debugger_callback_step_function(gui2::twidget *caller)
-{
-	if (td==NULL) {
-		return;
-	}
-	td->callback_step_button(caller);
-}
-
-void formula_debugger_callback_stepout_function(gui2::twidget *caller)
-{
-	if (td==NULL) {
-		return;
-	}
-	td->callback_stepout_button(caller);
-}
-
-} //of namespace {
-
-
 twindow* tformula_debugger::build_window(CVideo& video)
 {
 	return build(video, get_id(FORMULA_DEBUGGER));
@@ -74,9 +33,6 @@ twindow* tformula_debugger::build_window(CVideo& video)
 
 void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 {
-	//hack
-	td = this;
-
 	// stack label
 	tcontrol* stack_label =
                 dynamic_cast<tcontrol*>(window.find_widget("stack", false));
@@ -130,67 +86,72 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
-	tcontrol* state_label =
-                dynamic_cast<tcontrol*>(window.find_widget("state", false));
-        VALIDATE(state_label, missing_widget("state"));
-       	state_label->set_label(state_str);
+	NEW_find_widget<tcontrol>(&window, "state", false).set_label(state_str);
 
 	// callbacks
+	tbutton& step_button =
+			NEW_find_widget<tbutton>(&window, "step", false);
 
-	tbutton* step_button =
-                dynamic_cast<tbutton*>(window.find_widget("step", false));
-        VALIDATE(step_button, missing_widget("step"));
+	step_button.set_callback_mouse_left_click(dialog_callback<
+			  tformula_debugger
+			, &tformula_debugger::callback_step_button>);
 
-        step_button->set_callback_mouse_left_click(formula_debugger_callback_step_function);
-	
-	tbutton* stepout_button =
-                dynamic_cast<tbutton*>(window.find_widget("stepout", false));
-        VALIDATE(stepout_button, missing_widget("stepout"));
-        stepout_button->set_callback_mouse_left_click(formula_debugger_callback_stepout_function);
 
-	tbutton* next_button =
-                dynamic_cast<tbutton*>(window.find_widget("next", false));
-        VALIDATE(next_button, missing_widget("next"));
-        next_button->set_callback_mouse_left_click(formula_debugger_callback_next_function);
+	tbutton& stepout_button =
+			NEW_find_widget<tbutton>(&window, "stepout", false);
 
-	tbutton* continue_button =
-                dynamic_cast<tbutton*>(window.find_widget("continue", false));
-        VALIDATE(continue_button, missing_widget("continue"));
-        continue_button->set_callback_mouse_left_click(formula_debugger_callback_continue_function);
+	stepout_button.set_callback_mouse_left_click(dialog_callback<
+			  tformula_debugger
+			, &tformula_debugger::callback_stepout_button>);
+
+
+	tbutton& next_button =
+			NEW_find_widget<tbutton>(&window, "next", false);
+
+	next_button.set_callback_mouse_left_click(dialog_callback<
+			  tformula_debugger
+			, &tformula_debugger::callback_next_button>);
+
+
+	tbutton& continue_button =
+			NEW_find_widget<tbutton>(&window, "continue", false);
+
+	continue_button.set_callback_mouse_left_click(dialog_callback<
+			  tformula_debugger
+			, &tformula_debugger::callback_continue_button>);
 
 
 	if (is_end) {
-		step_button->set_active(false);
-		stepout_button->set_active(false);
-		next_button->set_active(false);
-		continue_button->set_active(false);
+		step_button.set_active(false);
+		stepout_button.set_active(false);
+		next_button.set_active(false);
+		continue_button.set_active(false);
 	}
-	
 }
 
 
-void tformula_debugger::callback_continue_button(gui2::twidget* caller)
+void tformula_debugger::callback_continue_button(twindow& window)
 {
 	fdb_.add_breakpoint_continue_to_end();
-	caller->get_window()->set_retval(twindow::OK);
+	window.set_retval(twindow::OK);
 }
 
-void tformula_debugger::callback_next_button(gui2::twidget* caller)
+void tformula_debugger::callback_next_button(twindow& window)
 {
 	fdb_.add_breakpoint_next();
-	caller->get_window()->set_retval(twindow::OK);
+	window.set_retval(twindow::OK);
 }
 
-void tformula_debugger::callback_step_button(gui2::twidget* caller)
+void tformula_debugger::callback_step_button(twindow& window)
 {
 	fdb_.add_breakpoint_step_into();
-	caller->get_window()->set_retval(twindow::OK);
+	window.set_retval(twindow::OK);
 }
 
-void tformula_debugger::callback_stepout_button(gui2::twidget* caller)
+void tformula_debugger::callback_stepout_button(twindow& window)
 {
 	fdb_.add_breakpoint_step_out();
-	caller->get_window()->set_retval(twindow::OK);
+	window.set_retval(twindow::OK);
 }
 
 } //end of namespace gui2
