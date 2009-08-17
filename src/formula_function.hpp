@@ -1,3 +1,4 @@
+
 /* $Id$ */
 /*
    Copyright (C) 2008 - 2009 by David White <dave@whitevine.net>
@@ -21,7 +22,7 @@
 
 #include "formula.hpp"
 #include "formula_callable.hpp"
-#include "formula_debugger.hpp"
+#include "formula_debugger_fwd.hpp"
 #include "variant.hpp"
 
 namespace game_logic {
@@ -33,7 +34,7 @@ public:
 	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const {
 		call_stack_manager manager(name_);
 		if (fdb!=NULL) {
-			return fdb->evaluate_arg_callback(*this,variables);
+			return evaluate_arg_callback(*fdb,*this,variables);
 		} else {
 			return execute(variables,fdb);
 		}
@@ -41,6 +42,7 @@ public:
 	void set_name(const char* name) { name_ = name; }
 
 	const char* get_name() const { return name_; }
+	virtual std::string str() const = 0;
 private:
 	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const = 0;
 	const char* name_;
@@ -67,7 +69,7 @@ public:
 			throw formula_error("Too many arguments", "", "", 0);
 		}
 	}
-
+	virtual std::string str() const;
 protected:
 	const args_list& args() const { return args_; }
 private:

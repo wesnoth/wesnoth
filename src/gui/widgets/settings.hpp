@@ -75,6 +75,7 @@ enum twindow_type {
 	LOBBY_MAIN,               /**< Main MP lobby screen */
 	LOBBY_PLAYER_INFO,        /**< MP lobby player info dialog */
 	UNIT_CREATE,			 /**< Debug-mode unit creation dialog */
+	FORMULA_DEBUGGER,         /**< Formula debugger dialog */
 	COUNT                    /**<
 	                          * The last one to hold the number of items and as
 	                          * sentinel.

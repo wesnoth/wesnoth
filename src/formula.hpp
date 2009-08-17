@@ -17,7 +17,7 @@
 #include <map>
 #include <string>
 
-#include "formula_debugger.hpp"
+#include "formula_debugger_fwd.hpp"
 #include "formula_fwd.hpp"
 #include "formula_tokenizer.hpp"
 #include "variant.hpp"
@@ -45,7 +45,7 @@ public:
 	variant evaluate(const formula_callable& variables, formula_debugger *fdb = NULL) const
 	{
 		if (fdb!=NULL) {
-			return fdb->evaluate_formula_callback(*this,variables);
+			return evaluate_formula_callback(*fdb,*this,variables);
 		} else {
 			return execute(variables,fdb);
 		}
@@ -54,7 +54,7 @@ public:
 	variant evaluate(formula_debugger *fdb = NULL) const
 	{
 		if (fdb!=NULL) {
-			return fdb->evaluate_formula_callback(*this);
+			return evaluate_formula_callback(*fdb,*this);
 		} else {
 			return execute(fdb);
 		}

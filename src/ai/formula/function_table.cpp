@@ -387,8 +387,8 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"nearest_loc:location")))->loc();
-		variant items = args()[1]->evaluate(variables,formula_debugger::add_debug_info(fdb,1,"nearest_loc:locations"));
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"nearest_loc:location")))->loc();
+		variant items = args()[1]->evaluate(variables,add_debug_info(fdb,1,"nearest_loc:locations"));
 		int best = 1000000;
 		int best_i = -1;
 
@@ -615,7 +615,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"nearest_keep:location")))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"nearest_keep:location")))->loc();
 		int best = 1000000;
 		int best_i = -1;
 
@@ -1235,7 +1235,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant res = args()[0]->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"unit_moves:unit_location"));
+		variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_moves:unit_location"));
 		std::vector<variant> vars;
 		if(res.is_null()) {
 			return variant(&vars);

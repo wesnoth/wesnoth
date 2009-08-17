@@ -29,6 +29,25 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 
 namespace game_logic {
 
+
+std::string function_expression::str() const
+{
+	std::stringstream s;
+	s << get_name();
+	s << '(';
+	bool first_arg = true;
+	foreach(expression_ptr a , args()) {
+		if (!first_arg) {
+			s << ',';
+		} else {
+			first_arg = false;
+		}
+		s << a->str();
+		} 
+	s << ')';
+	return s.str();
+}
+
 namespace {
 
 class dir_function : public function_expression {
@@ -813,8 +832,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		return variant(new location_callable(map_location(
-							     args()[0]->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"loc:x")).as_int()-1,
-							     args()[1]->evaluate(variables,formula_debugger::add_debug_info(fdb,1,"loc:y")).as_int()-1)));
+							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int()-1,
+							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int()-1)));
 	}
 };
 

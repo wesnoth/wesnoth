@@ -16,7 +16,7 @@
 #include <iostream>
 #include <set>
 
-//#include "foreach.hpp"
+#include "foreach.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "map_utils.hpp"
@@ -28,6 +28,7 @@ void formula_callable::set_value(const std::string& key, const variant& /*value*
 {
 	std::cerr << "ERROR: cannot set key '" << key << "' on object\n";
 }
+
 
 map_formula_callable::map_formula_callable(
     	const formula_callable* fallback) :
@@ -72,6 +73,10 @@ public:
 		: symbols_(symbols)
 	{}
 
+	virtual std::string str() const
+	{
+		return "{function_list_expression()}";
+	}
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		std::vector<variant> res;
@@ -105,6 +110,25 @@ private:
 	}
 
 	std::vector<expression_ptr> items_;
+
+	std::string str() const
+	{
+		std::stringstream s;
+		s << '[';
+		bool first_item = true;
+		foreach(expression_ptr a , items_) {
+			if (!first_item) {
+				s << ',';
+			} else {
+				first_item = false;
+			}
+			s << a->str();
+		} 
+		s << ']';
+		return s.str();
+	}
+
+
 };
 
 class map_expression : public formula_expression {
@@ -113,6 +137,20 @@ public:
 	   : items_(items)
 	{}
 
+	virtual std::string str() const
+	{
+		std::stringstream s;
+		s << "{map_expression:(";
+		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
+			s << "[";
+			s << (*i)->str();
+			s << "] -> [";
+			s << (*(i+1))->str();
+			s << "]";
+		}
+		s << ")";
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::map<variant,variant> res;
@@ -131,7 +169,7 @@ private:
 class unary_operator_expression : public formula_expression {
 public:
 	unary_operator_expression(const std::string& op, expression_ptr arg) :
-		op_(),
+		op_(),op_str_(op),
 		operand_(arg)
 	{
 		if(op == "not") {
@@ -142,6 +180,13 @@ public:
 			throw formula_error("Illegal unary operator: '" + op + "'" , "", "", 0);
 		}
 	}
+
+	virtual std::string str() const {
+		std::stringstream s;
+		s << op_str_ << '('<< operand_->str() << ')';
+		return s.str();
+	}
+
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant res = operand_->evaluate(variables,fdb);
@@ -155,6 +200,7 @@ private:
 	}
 	enum OP { NOT, SUB };
 	OP op_;
+	std::string op_str_;
 	expression_ptr operand_;
 };
 
@@ -192,6 +238,7 @@ public:
 			return variant();
 		}
 	}
+
 };
 
 class dot_callable : public formula_callable {
@@ -221,9 +268,15 @@ public:
 	dot_expression(expression_ptr left, expression_ptr right)
 	   : left_(left), right_(right)
 	{}
+	std::string str() const
+	{
+		std::stringstream s;
+		s << left_->str() << "." << right_->str();
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"left."));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
                                 list_callable list_call(left);
@@ -235,7 +288,7 @@ private:
 		}
 
                 dot_callable callable(variables, *left.as_callable());
-                return right_->evaluate(callable,formula_debugger::add_debug_info(fdb,1,".right"));
+                return right_->evaluate(callable,add_debug_info(fdb,1,".right"));
         }
 
 	expression_ptr left_, right_;
@@ -246,6 +299,13 @@ public:
 	square_bracket_expression(expression_ptr left, expression_ptr key)
 	   : left_(left), key_(key)
 	{}
+
+	std::string str() const
+	{
+		std::stringstream s;
+		s << left_->str() << '[' << key_->str() << ']';
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const variant left = left_->evaluate(variables,fdb);
@@ -264,7 +324,7 @@ class operator_expression : public formula_expression {
 public:
 	operator_expression(const std::string& op, expression_ptr left,
 	                             expression_ptr right)
-	  : op_(OP(op[0])), left_(left), right_(right)
+		: op_(OP(op[0])), op_str_(op), left_(left), right_(right)
 	{
 		if(op == ">=") {
 			op_ = GTE;
@@ -287,10 +347,16 @@ public:
 		}
 	}
 
+	std::string str() const
+	{
+		std::stringstream s;
+		s << left_->str() << op_str_ << right_->str();
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant left = left_->evaluate(variables,formula_debugger::add_debug_info(fdb,0,"left_OP"));
-		const variant right = right_->evaluate(variables,formula_debugger::add_debug_info(fdb,1,"OP_right"));
+		const variant left = left_->evaluate(variables,add_debug_info(fdb,0,"left_OP"));
+		const variant right = right_->evaluate(variables,add_debug_info(fdb,1,"OP_right"));
 		switch(op_) {
 		case AND:
 			return left.as_bool() == false ? left : right;
@@ -346,6 +412,7 @@ private:
 	          ADD='+', SUB='-', MUL='*', DIV='/', ADDL, SUBL, MULL, DIVL, DICE='d', POW='^', MOD='%' };
 
 	OP op_;
+	std::string op_str_;
 	expression_ptr left_, right_;
 };
 
@@ -391,6 +458,18 @@ public:
 		: body_(body), clauses_(clauses)
 	{}
 
+	std::string str() const
+	{
+		std::stringstream s;
+		s << "{where:(";
+		s << body_->str();
+		foreach (const expr_table::value_type &a, *clauses_) {
+			s << ", [" << a.first << "] -> ["<< a.second->str()<<"]";
+		}
+		s << ")}";
+		return s.str();
+	}
+
 private:
 	expression_ptr body_;
 	expr_table_ptr clauses_;
@@ -406,6 +485,10 @@ class identifier_expression : public formula_expression {
 public:
 	explicit identifier_expression(const std::string& id) : id_(id)
 	{}
+	std::string str() const
+	{
+		return id_;
+	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger * /*fdb*/) const {
 		return variables.query_value(id_);
@@ -416,6 +499,9 @@ private:
 class null_expression : public formula_expression {
 public:
 	explicit null_expression() {};
+	std::string str() const {
+		return "";
+	}
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant();
@@ -427,6 +513,12 @@ class integer_expression : public formula_expression {
 public:
 	explicit integer_expression(int i) : i_(i)
 	{}
+	std::string str() const
+	{
+		std::stringstream s;
+		s << i_;
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant(i_);
@@ -439,6 +531,13 @@ class decimal_expression : public formula_expression {
 public:
 	explicit decimal_expression(int i, int f) : i_(i), f_(f)
 	{}
+
+	std::string str() const
+	{
+		std::stringstream s;
+		s << i_ << '.' << f_;
+		return s.str();
+	}
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		return variant(i_ * 1000 + f_, variant::DECIMAL_VARIANT );
@@ -473,6 +572,11 @@ public:
 		std::reverse(subs_.begin(), subs_.end());
 
 		str_ = variant(str);
+	}
+
+	std::string str() const
+	{
+		return str_.as_string();
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {

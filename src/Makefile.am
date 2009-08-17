@@ -86,6 +86,7 @@ wesnoth_source = \
 	floating_textbox.cpp \
 	formula.cpp \
 	formula_debugger.cpp \
+	formula_debugger_fwd.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
 	formula_string_utils.cpp \
@@ -124,6 +125,7 @@ wesnoth_source = \
 	gui/dialogs/addon_list.cpp \
 	gui/dialogs/campaign_selection.cpp \
 	gui/dialogs/dialog.cpp \
+	gui/dialogs/formula_debugger.cpp \
 	gui/dialogs/game_load.cpp \
 	gui/dialogs/game_delete.cpp \
 	gui/dialogs/game_save.cpp \

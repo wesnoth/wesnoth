@@ -30,6 +30,7 @@
 #include "../manager.hpp"
 
 #include "../../foreach.hpp"
+#include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
 

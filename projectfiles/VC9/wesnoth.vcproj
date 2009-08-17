@@ -358,6 +358,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\formula_debugger_fwd.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\formula_function.cpp"
 				>
 			</File>
@@ -1845,6 +1849,34 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\editor_settings.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\formula_debugger.cpp"
 						>
 						<FileConfiguration
 							Name="Debug|Win32"
@@ -4829,6 +4861,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\formula_debugger_fwd.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\formula_function.hpp"
 				>
 			</File>
@@ -5356,6 +5392,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\field.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\dialogs\formula_debugger.hpp"
 						>
 					</File>
 					<File
