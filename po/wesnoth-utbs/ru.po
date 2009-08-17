@@ -1169,9 +1169,9 @@ msgid ""
 msgstr ""
 "В светлое время суток (восход, утро, полдень, вечер и закат) в начале хода "
 "каждое соединение, находящееся на песке, дороге, щебне или дюне будет "
-"страдать от жажды. Каждый ход жажды снижает атаку юнита и причиняет "
+"страдать от жажды. Каждый ход жажды снижает атаку бойца и причиняет "
 "$dehydration_loss очков ущерба. Только под влиянием лекаря или свежести "
-"оазиса атака юнита восстановится."
+"оазиса атака бойца восстановится."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:296
@@ -4926,7 +4926,7 @@ msgid ""
 "start of each turn. This heat damage can reduce a unit to 1 hit point, but "
 "it can't kill it. "
 msgstr ""
-"Любое соединение, оставшееся в лаве, за исключением пустынной феи или "
+"Любое соединение, оставшееся в лаве, за исключением пустынной шиды или "
 "звезды, способных латать над лавой, будет ранено на 25 единиц урона в начале "
 "следующего хода. Эта лава может убить. Пустынные феи и звезды, находясь над "
 "лавой, будут получать только $temp_damage урона, но и они могут умереть, "
@@ -13053,7 +13053,7 @@ msgid ""
 "in melee combat, but are trained in archery as well."
 msgstr ""
 "Способные командовать другими эльфами, пустынные капитаны руководят всеми "
-"рядом стоящим юнитами 1 уровня, позволяя им наносить больше урона в бою. "
+"рядом стоящим бойцами 1 уровня, позволяя им наносить больше урона в бою. "
 "Пустынные капитаны предпочитают сражаться в рукопашную, но они неплохо "
 "владеют и луком."
 
@@ -13407,7 +13407,7 @@ msgstr "Пустынная снайперша"
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
 msgid "female^Desert Shyde"
-msgstr "Пустынная фея"
+msgstr "Пустынная шида"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -13417,8 +13417,8 @@ msgid ""
 "creatures. They are capable of gliding unencumbered across almost any "
 "terrain."
 msgstr ""
-"Пустынные феи являются эльфами, призванные природой и выбравшими сторону "
-"фей. Крылья, растущие из спины, превращают их прекрасных созданий. Они "
+"Пустынные шиды - это эльфы, призванные природой и выбравшие волшебную "
+"сторону. Крылья, растущие из спины, превращают их прекрасных созданий. Они "
 "способны беспрепятственно парить над любой поверхностью.\n"
 "\n"
 "Примечание: опутывающая атака пустынной феи замедляет противников, заставляя "
@@ -13432,6 +13432,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
 msgstr ""
+"SPECIAL_NOTE^ Этот боец может летать над любой местностью, кроме глубокой "
+"воды."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:44
@@ -13458,6 +13460,10 @@ msgid ""
 "gliding unencumbered across almost any terrain. Eloh's power also reduces "
 "the wounds that Desert Stars suffer when attacked."
 msgstr ""
+"Пустынные Звёзды - это Шиды, которые стали настолько сильны и святы, что "
+"распространяют свет Эло даже в темнейших местах. Они - живые воплощения силы "
+"и славы Эло. Как Шиды, они беспрепятственно скользят над любой местностью. "
+"Сила Эло также уменьшает раны, получаемые ими от врагов."
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
@@ -15005,7 +15011,7 @@ msgstr "Длинная ночь (4)"
 #~ msgstr "Пустынный шаман"
 
 #~ msgid "Desert Shyde"
-#~ msgstr "Пустынная фея"
+#~ msgstr "Пустынная шида"
 
 #~ msgid "Desert Star"
 #~ msgstr "Пустынная звезда"
