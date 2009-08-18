@@ -1077,8 +1077,8 @@ static int lua_get_map_size(lua_State *L)
 
 /**
  * Displays a message in the chat window and in the logs.
- * - Arg 1: optional message header
- * - Arg 2 (or 1): message
+ * - Arg 1: optional message header.
+ * - Arg 2 (or 1): message.
  */
 static int lua_message(lua_State *L)
 {
@@ -1092,6 +1092,28 @@ static int lua_message(lua_State *L)
 	chat_message(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
 	return 0;
+}
+
+/**
+ * Evaluates a boolean WML conditional.
+ * - Arg 1: WML table.
+ * - Ret 1: boolean.
+ */
+static int lua_eval_conditional(lua_State *L)
+{
+	if (!lua_istable(L, 1)) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
+	config cond;
+	lua_settop(L, 1);
+	if (!wml_config_of_table(L, cond))
+		goto error_call_destructors;
+
+	bool b = game_events::conditional_passed(resources::units, vconfig(cond));
+	lua_pushboolean(L, b);
+	return 1;
 }
 
 LuaKernel::LuaKernel()
@@ -1119,6 +1141,7 @@ LuaKernel::LuaKernel()
 	static luaL_reg const callbacks[] = {
 		{ "dofile",                   &lua_dofile                   },
 		{ "fire",                     &lua_fire                     },
+		{ "eval_conditional",         &lua_eval_conditional         },
 		{ "get_map_size",             &lua_get_map_size             },
 		{ "get_side",                 &lua_get_side                 },
 		{ "get_terrain",              &lua_get_terrain              },
