@@ -731,7 +731,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 #endif
 	quit_game_(disp.video(), _("Quit")),
 #ifndef USE_TINY_GUI
-	apply_filter_(disp.video(), _("Apply Filer"), gui::button::TYPE_CHECK),
+	apply_filter_(disp.video(), _("Apply Filter"), gui::button::TYPE_CHECK),
 	invert_filter_(disp.video(), _("Invert"), gui::button::TYPE_CHECK),
 	vacant_slots_(disp.video(), _("Vacant Slots"), gui::button::TYPE_CHECK),
 	friends_in_game_(disp.video(), _("Friends in Game"), gui::button::TYPE_CHECK),

@@ -229,6 +229,7 @@ stringfixes = {
 
 "wesnoth" :(
 ("that have a least one", "that have at least one"),
+("Apply Filer", "Apply Filter"),
 ),
 
 "wesnoth-units" :(
@@ -245,7 +246,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1249222895  # Sun 02 Aug 2009 02:21:35 PM UTC
+timecheck = 1250596411  # Tue 18 Aug 2009 11:53:31 AM UTC
 
 
 import os, sys, time, stat
