@@ -249,8 +249,74 @@ if __name__ == "__main__":
 
         return result
 
+    def create_container_grid(data):
+        """Creates a table for a grid."""
+        # matches a line like:
+        # indention_marker id widget_list ret_val description
+        #
+        # idention_marker = -* every - sign means a level deeper, these levels
+        # are to convey ownership rules eg to mark that certain widgets are in a
+        # listbox, this makes it clear that the elements displayed are for every
+        # row in the listbox. Can't think of a reason to have multiple levels
+        # but hey let's prepare this silly parser.
+        #
+        # id is the id of the widget. If the widget is mandatory it's between
+        # parens else between square brackets. The id might be empty in that
+        # case only the brackets/parens are needed.
+        #
+        # widget_list is a comma separated list of the widgets allowed for this
+        # item. The value control means every non container widget. The value
+        # container means every container widget. The value all means all
+        # widgets. The value is between parens.
+        #
+        # ret_val is the return value of the widget, either a number, a named
+        # value, or nothing. The value is between parens.
+        #
+        # Description is the description for the control, this is all the text
+        # after the ret_val field.
+        idention = r"(-*)"
+        id = r"(?:(\[)|\()(.*)(?(2)\]|\))"
+        widget_list = r"\((.+)\)"
+        ret_val = r"\((.*)\)"
+        description = r"(.+)"
+
+        regex = re.compile(" *" + idention + " *" + id + " *" + widget_list + " * " + ret_val + " *" + description + "\n")
+        res = regex.findall(data)
+
+        # empty table
+        if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
+            return "Empty table."
+
+        result = '{| border="1"'
+        result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
+        for i in range(len(res)):
+            result += "|-\n"
+            if(res[i][2] == ""):
+                result += "|"
+            else:
+                result += "| " + res[i][2] + " "
+
+            if(res[i][4] == ""):
+                result += "\n"
+            else:
+                result += "(" + res[i][4] + ")\n"
+
+            result += "| " + res[i][3] + "\n"
+
+            if(res[i][1] == ""):
+                result += "|yes\n"
+            else:
+                result += "|no\n"
+
+            result += "| " + re.sub(r'@\*', "\n*", res[i][5]) + "\n"
+        result += "|}"
+
+        return result
+
     def create_container_table(data):
         """Creates a table for a container."""
+        print "The container table is deprecated, use the grid instead.\n"
 
         #matches a line like
         # name [widget_list] ret_val description
@@ -324,6 +390,8 @@ if __name__ == "__main__":
             return create_widget_overview_table(table.group(2) + "\n")
         elif(type == "window_overview"):
             return create_window_overview_table(table.group(2) + "\n")
+        elif(type == "grid"):
+            return create_container_grid(table.group(2) + "\n")
         elif(type == "container"):
             return create_container_table(table.group(2) + "\n")
         else:

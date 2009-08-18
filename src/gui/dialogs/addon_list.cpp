@@ -31,15 +31,15 @@ namespace gui2 {
  * This shows the dialog with the addons to install. This dialog is under
  * construction and only used with --new-widgets.
  *
- * @start_table = container
- *     addon_list (listbox)       A listbox that will contain the info about
+ * @start_table = grid
+ *     (addon_list) (listbox) ()  A listbox that will contain the info about
  *                                all addons on the server.
- *     name [control]             The name of the addon.
- *     version [control]          The version number of the addon.
- *     author [control]           The author of the addon.
- *     downloads [control]        The number of times the addon has been
+ *     -[name] (control) ()       The name of the addon.
+ *     -[version] (control) ()    The version number of the addon.
+ *     -[author] (control) ()     The author of the addon.
+ *     -[downloads] (control) ()  The number of times the addon has been
  *                                downloaded.
- *     size [control]             The size of the addon.
+ *     -[size] (control) ()       The size of the addon.
  * @end_table
  */
 
