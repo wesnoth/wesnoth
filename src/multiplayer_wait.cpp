@@ -88,7 +88,6 @@ void wait::leader_preview_pane::draw_contents()
 		std::string leader = leaders_.get_leader();
 		std::string gender = leaders_.get_gender();
 
-		std::string leader_name;
 		std::string image;
 
 		const unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
@@ -99,18 +98,18 @@ void wait::leader_preview_pane::draw_contents()
 			unit_race::GENDER g = (gender == "female" ? unit_race::FEMALE : unit_race::MALE);
 			const unit_type& utg = ut->second.get_gender_unit_type(g);
 
-			leader_name = utg.type_name();
 			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
 		}
 
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
 				itor != recruit_list.end(); ++itor) {
+			const unit_type_data::unit_type_map::const_iterator
+				rt = utypes.find_unit_type(*itor);
+			if (rt == utypes.end()) continue;
 
-			if (utypes.unit_type_exists(leader)) {
-				if(itor != recruit_list.begin())
-					recruit_string << ", ";
-				recruit_string << utypes.find_unit_type(*itor)->second.type_name();
-			}
+			if(itor != recruit_list.begin())
+				recruit_string << ", ";
+			recruit_string << rt->second.type_name();
 		}
 
 		SDL_Rect image_rect = {area.x,area.y,0,0};
