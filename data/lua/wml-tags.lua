@@ -55,20 +55,8 @@ local function generate_objectives(cfg, team, silent)
 	local lose_string = cfg.defeat_string or _ "Defeat:"
 
 	for obj in child_range(cfg, "objective") do
-		-- Check if the display condition is fulfilled
-		local show_if = obj[1]
-		if show_if and show_if[1] == "show_if" then
-			local test = show_if[2]
-			table.insert(test, { "then", {{ "lua", { code = "wesnoth.dummy_var = true" }}}})
-			wesnoth.dummy_var = nil
-			wesnoth.fire("if", test)
-			show_if = wesnoth.dummy_var
-			wesnoth.dummy_var = nil
-		else
-			show_if = true
-		end
-
-		if show_if then
+		local show_if = get_child(obj, "show_if")
+		if not show_if or wesnoth.eval_conditional(show_if) then
 			local condition = obj.condition
 			if condition == "win" then
 				win_objectives = win_objectives .. color_prefix(0, 255, 0) ..
@@ -156,18 +144,11 @@ local function wml_show_objectives(cfg)
 	end
 end
 
-local function eval_bool(cfg)
-	table.insert(cfg, { "then", {{ "lua", { code = "wesnoth.dummy_var = true"  }}}})
-	wesnoth.dummy_var = nil
-	wesnoth.fire("if", cfg)
-	local to_return = wesnoth.dummy_var or false
-	wesnoth.dummy_var = nil
-	return to_return
-end
-
 local function wml_message(cfg, engine_message)
-	local test = get_child(cfg, "show_if")
-	if not test or eval_bool(test) then engine_message(cfg) end
+	local show_if = get_child(cfg, "show_if")
+	if not show_if or wesnoth.eval_conditional(show_if) then
+		engine_message(cfg)
+	end
 end
 
 local function wml_gold(cfg)
