@@ -600,10 +600,9 @@ static int lua_fire(lua_State *L)
 	}
 	config cfg;
 	if (has_config) {
-		lua_pushvalue(L, 2);
+		lua_settop(L, 2);
 		if (!wml_config_of_table(L, cfg))
 			goto error_call_destructors;
-		lua_pop(L, 1);
 	}
 
 	game_events::handle_event_command(m, queued_event_context::get(), vconfig(cfg, true));
@@ -729,6 +728,7 @@ static int lua_wml_action_call(lua_State *L)
 	{
 		if (!lua_istable(L, 2))
 			goto error_call_destructors;
+		lua_settop(L, 2);
 		if (!wml_config_of_table(L, cfg))
 			goto error_call_destructors;
 	}
