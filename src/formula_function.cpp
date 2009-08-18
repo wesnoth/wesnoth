@@ -17,6 +17,7 @@
 
 //#include "foreach.hpp"
 #include "callable_objects.hpp"
+#include "formula_debugger.hpp"
 #include "formula_function.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
@@ -49,6 +50,35 @@ std::string function_expression::str() const
 }
 
 namespace {
+
+class debug_function : public function_expression {
+public:
+	explicit debug_function(const args_list& args)
+		: function_expression("debug",args, 0, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		boost::shared_ptr<formula_debugger> fdbp;
+		bool need_wrapper = false;
+		if (fdb==NULL) {
+			fdbp = boost::shared_ptr<formula_debugger>(new formula_debugger());
+			fdb = &*fdbp;
+			need_wrapper = true;
+
+		}
+
+		if (args().size()==1) {
+			if (!need_wrapper) {
+				return args()[0]->evaluate(variables,fdb);
+			} else {
+				return wrapper_formula(args()[0]).evaluate(variables,fdb);
+			}
+		} else {
+			return wrapper_formula().evaluate(variables,fdb);
+		}
+	}
+};
+
 
 class dir_function : public function_expression {
 public:
@@ -956,6 +986,7 @@ functions_map& get_functions_map() {
 
 	if(functions_table.empty()) {
 #define FUNCTION(name) functions_table[#name] = new function_creator<name##_function>();
+		FUNCTION(debug);
 		FUNCTION(dir);
 		FUNCTION(if);
 		FUNCTION(switch);

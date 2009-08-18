@@ -123,8 +123,8 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		game_logic::map_formula_callable callable(this);
 		callable.add_ref();
 
-		formula_debugger fdb;
-		const variant v = f.evaluate(callable,&fdb);
+		//formula_debugger fdb;
+		const variant v = f.evaluate(callable,NULL);
 
                 outcome_positions_.clear();
 

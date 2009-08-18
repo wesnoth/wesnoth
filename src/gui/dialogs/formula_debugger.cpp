@@ -67,7 +67,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		if (!i.evaluated() ) {
 			execution_text << "#<span color=\"green\">" << i.counter() <<"</span>: \"<span color=\"green\">"<< i.name() << "</span>\": '" << i.str() << "' " << std::endl;
 		} else {
-			execution_text << "#<span color=\"yellow\">" << i.counter() <<"</span>: \"<span color=\"yellow\">"<< i.name() << "</span>\": '" << i.str() << "' = " << "<span color=\"red\">"<< i.value().to_debug_string(NULL,true) <<"</span>" << std::endl;
+			execution_text << "#<span color=\"yellow\">" << i.counter() <<"</span>: \"<span color=\"yellow\">"<< i.name() << "</span>\": '" << i.str() << "' = " << "<span color=\"red\">"<< i.value().to_debug_string(NULL,false) <<"</span>" << std::endl;
 		}
 	}
 

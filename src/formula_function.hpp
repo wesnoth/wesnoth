@@ -141,6 +141,43 @@ expression_ptr create_function(const std::string& fn,
 							   const function_symbol_table* symbols);
 std::vector<std::string> builtin_function_names();
 
+
+class wrapper_formula : public formula_expression {
+public:
+	wrapper_formula()
+		: arg_()
+	{
+	}
+
+	wrapper_formula(expression_ptr arg)
+		: arg_(arg)
+	{
+	}
+
+	virtual ~wrapper_formula()
+	{
+	}
+
+	virtual std::string str() const
+	{
+		if (arg_) {
+			return arg_->str();
+		} else {
+			return "";
+		}
+	}
+private:
+	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const
+	{
+		if (arg_) {
+			return arg_->evaluate(variables,fdb);
+		} else {
+			return variant();
+		}
+	}
+	expression_ptr arg_;
+};
+
 }
 
 #endif

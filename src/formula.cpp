@@ -140,15 +140,13 @@ public:
 	virtual std::string str() const
 	{
 		std::stringstream s;
-		s << "{map_expression:(";
+		s << " [";
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); ( i != items_.end() ) && ( i+1 != items_.end() ) ; i+=2) {
-			s << "[";
 			s << (*i)->str();
-			s << "] -> [";
+			s << " -> ";
 			s << (*(i+1))->str();
-			s << "]";
 		}
-		s << ")";
+		s << " ]";
 		return s.str();
 	}
 private:
