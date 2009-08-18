@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-07-14 23:06+0200\n"
+"POT-Creation-Date: 2009-08-18 21:52+0200\n"
 "PO-Revision-Date: 2008-01-31 02:12+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -124,7 +124,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:501
 msgid "Left click on Konrad"
 msgstr "Αριστερό κλικ στον Κώνραντ"
 
@@ -133,7 +133,7 @@ msgstr "Αριστερό κλικ στον Κώνραντ"
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:209
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:382
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:502
 msgid "Left click on Li'sar"
 msgstr "Αριστερό κλικ στην Λί'ζαρ"
 
@@ -315,7 +315,7 @@ msgstr ""
 "σκοτωθεί ο αρχηγός σου (Λί'ζαρ)."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
@@ -323,13 +323,23 @@ msgstr ""
 "Δυστυχώς, κατανάλωσες τον γύρο σου κάνοντας επίθεση στο ανδρόκειλο. Είναι ο "
 "γύρος του ανδρόκειλου τώρα."
 
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
+#, fuzzy
+msgid ""
+"female^Unfortunately, you've used up your turn attacking the quintain. The "
+"quintain will now get a turn."
+msgstr ""
+"Δυστυχώς, κατανάλωσες τον γύρο σου κάνοντας επίθεση στο ανδρόκειλο. Είναι ο "
+"γύρος του ανδρόκειλου τώρα."
+
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:447
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
 msgid "The DUMMY gets a turn?"
 msgstr "Αυτή το ΣΚΙΑΧΤΡΟ έχει και γύρο;"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:453
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 #, fuzzy
 msgid ""
 "Yes. It's a magical quintain.\n"
@@ -341,25 +351,25 @@ msgstr ""
 "κερδίσεις."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Κάνε κλικ στο Τέλος Γύρου κουμπί κάτω δεξιά"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Άουτς! Χρειάζομαι θεραπεία! Μόνο  $student_hp βυ μου έμειναν!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "Χωριό"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
@@ -369,18 +379,29 @@ msgstr ""
 "ιδέα, και στεκόμενη μια μονάδα σε ένα θα θεραπευτεί στην αρχή του γύρου: "
 "καλυτερα να υποχωρήσεις εκεί."
 
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
+#, fuzzy
+msgid ""
+"female^There is a village on the other side of the river. Visiting villages "
+"is a good idea, and ending your turn in one will heal you. To the village!"
+msgstr ""
+"Υπάρχει ένα χωριό στην άλλη όχθη του ποταμού. Η επίσκεψη χωριών είναι καλή "
+"ιδέα, και στεκόμενη μια μονάδα σε ένα θα θεραπευτεί στην αρχή του γύρου: "
+"καλυτερα να υποχωρήσεις εκεί."
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
 msgid "Click on the village to move Konrad"
 msgstr "Κάνε κλικ στο χωριό για να κουνήσεις τον Κώνραντ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:512
 msgid "Click on the village to move Li'sar"
 msgstr "Κάνε κλικ στο χωριό για να μετακινήσεις την Λί'ζαρ"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
 #, fuzzy
 msgid ""
 "You captured a village! It now flies your flag color and has been added to "
@@ -397,16 +418,16 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:639
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:795
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:847
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:534
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:664
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:820
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:872
 msgid "Click on the End Turn button"
 msgstr "Κάνε κλικ στο κουμπί Τέλος Γύρου"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:554
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
 #, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
@@ -416,7 +437,7 @@ msgstr ""
 "βοήθεια εναντίων του ανδρόκειλου."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
 #, fuzzy
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
@@ -426,19 +447,19 @@ msgstr ""
 "βοήθεια εναντίων του ανδρόκειλου."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:581
 msgid "I'll recruit some elves!"
 msgstr "Θα στρατολογήσω μερικά ξωτικά!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:965
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
 msgid "Keep"
 msgstr "Πύργος"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:570
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:588
 #, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -447,18 +468,28 @@ msgstr ""
 "Καταπληκτική ιδέα. Εάν επιστρέψεις στον πύργο, μπορείς να στρατολογήσεις δύο "
 "μονάδες. Έχεις αρκετό χρυσό γι'αυτό."
 
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
+#, fuzzy
+msgid ""
+"female^A splendid idea. You can recruit two units if you return to the keep. "
+"You have plenty of gold for that."
+msgstr ""
+"Καταπληκτική ιδέα. Εάν επιστρέψεις στον πύργο, μπορείς να στρατολογήσεις δύο "
+"μονάδες. Έχεις αρκετό χρυσό γι'αυτό."
+
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
 msgid "Move Konrad to the keep"
 msgstr "Μετακίνησε τον Κώνραντ στον πύργο"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
 msgid "Move Li'sar to the keep"
 msgstr "Μετακίνησε την Λί'ζαρ στο οχυρό"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:618
 #, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
@@ -471,13 +502,13 @@ msgstr ""
 "*Αριστερό κλικ ή οποιοδήποτε κουμπί για συνέχεια..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
 msgid "Right click on one castle tile and select Recruit"
 msgstr "Δεξί κλικ στο έδαφος του κάστρου και επέλεξε Στρατολόγηση"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:633
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:665
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:690
 #, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
@@ -492,14 +523,14 @@ msgstr ""
 "*Αριστερό κλικ ή οποιοδήποτε άλλο κουμπί για να συνεχίσεις..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:644
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:669
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:701
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Δεξί κλικ σε κάποιο άλλο χώρο του κάστρου και στρατολόγησε μια ακόμα μονάδα"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:718
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
@@ -508,12 +539,12 @@ msgstr ""
 "να επιτεθώ αμέσως!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:722
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:709
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:734
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -525,13 +556,13 @@ msgstr ""
 "ξέρεις ότι έχουν δύο είδη επιθέσεων..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Θα τους πω να χρησιμοποιήσουν αυτό που κάνει την πιο πολλή ζημιά!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:717
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:742
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
@@ -540,18 +571,18 @@ msgstr ""
 "Και πιο είναι αυτό; Το σπαθί (5-4) ή το τόξο (3-3); Υποθέτω θα το βρεις..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
 msgid "Left click on an Elvish Fighter"
 msgstr "Αριστερό κλικ στο Ξωτικοπολεμιστή"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Τελείωσε τον γύρω σου, και τότε ξανακάνε επίθεση."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -559,12 +590,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:750
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
 msgid "Left click on the Quintain to attack it."
 msgstr "Αριστερό κλικ στο Ανδρόκειλο για να επιτεθείς."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -576,7 +607,7 @@ msgstr ""
 "5). Η επίθεση από απόσταση ήταν ασφαλέστερη."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:817
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -590,7 +621,7 @@ msgstr ""
 "Τελείωσε τον γύρο σου, και ξαναπροσπάθησε."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:829
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -603,15 +634,15 @@ msgstr ""
 "Καλύτερα να πεις στο άλλο Ξωτικό να χρησιμοποιήσει τόξο."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:807
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:832
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
 #, fuzzy
 msgid "Attack with the other Elf"
 msgstr "Κάνε επίθεση με το άλλο Ξωτικό"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -623,7 +654,7 @@ msgstr ""
 "έτσι δεν μπόρεσε να αμυνθεί."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -637,19 +668,19 @@ msgstr ""
 "Τελείωσε τον γύρο σου, και ξανακάνε επίθεση."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Συνέχισε να πολεμάς, με τα δύο ξωτικά, μέχρι να νικήσεις το ανδρόκειλο!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
 msgid "Maybe you should recruit another elf?"
 msgstr "Μήπως θα έπρεπε να στρατολογήσεις ένα ακόμα ξωτικό;"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -658,7 +689,7 @@ msgstr ""
 "Μπορείς να κάνεις δεξί κλικ σε μια μονάδα για να δεις το Προφίλ τους."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:943
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -672,7 +703,7 @@ msgstr ""
 "μονάδες με μεγαλύτερη εμπειρία (BE)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:937
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:962
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -683,7 +714,7 @@ msgstr ""
 "κάθε μονάδα κοστίζει ένα νόμισμα ανά γύρο."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:979
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -700,7 +731,7 @@ msgstr ""
 "επιπέδου."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -718,14 +749,14 @@ msgstr ""
 "ευστοχήσουν όπου και αν είναι ο αντίπαλος."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
 #, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "Το ανδρόκειλο είναι νεκρό, κύριοι, και πήρα περισσότερη εμπειρία!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1030
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -735,7 +766,7 @@ msgstr ""
 "Όσο πιο πολύ εμπειρία τόσο ισχυρότερος γίνεσαι."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 #, fuzzy
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -745,7 +776,7 @@ msgstr ""
 "Μετά, έχουμε λίγη πραγματική δουλειά να κάνουμε..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1031
 #, fuzzy
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
@@ -755,7 +786,7 @@ msgstr ""
 "ασχοληθούμε με πραγματικές μάχες..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1070
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -766,22 +797,22 @@ msgstr ""
 "καταφέρεις να τις σκοτώσεις μία μία."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1079
 msgid "Do you want to keep practicing?"
 msgstr "Θέλεις να συνεχίσεις την εξάσκηση;"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1056
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
 msgid "Yes, I'm still figuring it out."
 msgstr "Ναι, ακόμα μαθαίνω."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1084
 msgid "No, I think I've got it."
 msgstr "Όχι, νομίζω το'πιασα."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1100
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1125
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
@@ -1065,7 +1096,20 @@ msgstr ""
 "Έναν Ξωτικο Σαμάνο"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:524
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
+#, fuzzy
+msgid ""
+"During your tutorial, both $recall_name1 and $recall_name2 gained "
+"$recall_xp1 experience points. You should recall them now so they can gain "
+"more experience, rather than recruiting new ones."
+msgstr ""
+"Κατά τη διάρκεια της εκμάθησης, ο  $recall_name1 πήρε $recall_xp1 πόντους "
+"εμπειρίας, και ο  $recall_name2 πήρε $recall_xp2. Καλύτερα να ανακαλέσεις "
+"αυτή τη μονάδα τώρα, και να στρατολογήσεις μια δεύτερη (που είναι πιο φθηνή "
+"από την ανάκληση, άλλωστε)."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should recall them now so they can "
@@ -1077,7 +1121,7 @@ msgstr ""
 "από την ανάκληση, άλλωστε)."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:528
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
 "You should recall that unit now, and recruit a second one (which is cheaper "
@@ -1088,18 +1132,18 @@ msgstr ""
 "στρατολογήσεις μια δεύτερη (που είναι πιο φθηνή από την ανάκληση, άλλωστε)."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:531
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
 msgid "RECALL $recall_name1"
 msgstr "ΑΝΑΚΑΛΕΣΕ $recall_name1"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:543
 #, fuzzy
 msgid "Right click on the tile north-east of you and recall $recall_name1"
 msgstr "Δεξί κλικ στο έδαφος νοτιο-ανατολικά σου και ανακάλεσε $recall_name2"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
 #, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would recall "
@@ -1113,7 +1157,7 @@ msgstr ""
 "Ξωτικοπολεμιστή."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:544
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
 #, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would recall "
@@ -1124,14 +1168,14 @@ msgstr ""
 "Ξωτικοπολεμιστή."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:547
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:803
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:814
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:857
 msgid "Elvish Fighter"
 msgstr "Ξωτικοπολεμιστής"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:559
 #, fuzzy
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
@@ -1139,12 +1183,12 @@ msgstr ""
 "Ξωτικοπολεμιστή."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:599
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
 msgstr "Όχι! Είπα στρατολόγησε έναν Ξωτικό ΣΑΜΑΝΟ! Ξαναπροσπάθησε"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
 #, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit but has the ability to heal units around "
@@ -1156,12 +1200,12 @@ msgstr ""
 "επιβραδύνει εχθρούς, μειώνοντας την ζημιά που προκαλούν!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
 msgid "So, should I end my turn now?"
 msgstr "Λοιπόν, να τελειώσω τον γύρο μου τώρα;"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:600
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:611
 #, fuzzy
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
@@ -1173,88 +1217,88 @@ msgstr ""
 "λιγότερα ανά γύρο. Χρειάζεσαι παραπάνω εισόδημα."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:602
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:613
 msgid "Move Konrad to capture a village"
 msgstr "Μετακίνησε τον Κώνραντ κυριεύοντας ένα χωριό"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
 msgid "Move Li'sar to capture a village"
 msgstr "Μετακίνησε την Λί'ζαρ ώστε να πάρει ένα χωριό"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:659
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:631
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Όχι! Είπα στρατολόγησε έναν ΞωτικοΤΟΞΟΤΗ! Ξαναπροσπάθησε..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
 msgid "Eowynial"
 msgstr "Εογούνιαλ"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:642
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:653
 msgid "Shaman"
 msgstr "Σαμάνος"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:643
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:654
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Στρατολόγησε έναν Ξωτικοσαμάνο στα βόρεια"
 
 #. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:687
 msgid "Elriend"
 msgstr "Έλριεντ"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
 msgid "No! I said RECALL $recall_name2|! Now try again..."
 msgstr "Όχι! Είπα ΑΝΑΚΑΛΕΣΕ $recall_name2|! Ξαναπροσπάθησε..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:708
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:745
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:719
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
 msgid "Archer #1"
 msgstr "Τοξότης #1"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:709
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:746
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:757
 msgid "Archer #2"
 msgstr "Τοξότης #2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:711
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:748
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:722
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:759
 msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Στρατολόγησε δύο Ξωτικοτοξότες δυτικά σου"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:724
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:735
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Όχι! Είπα στρατολόγησε έναν ΞωτικοΠΟΛΕΜΙΣΤΗ! Ξαναδοκίμασε..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
 msgid "Golir"
 msgstr "Γκόλιρ"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:790
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
 "Όχι! Είπα ανακάλεσε $recall_name1, όχι $recall_name2|! Ξαναπροσπάθησε..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:783
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
@@ -1263,25 +1307,25 @@ msgstr ""
 "στρατολογήσεις $recruit.language_name|! Ξαναπροσπάθησε..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:799
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
 #, fuzzy
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr "Δεξί κλικ στο έδαφος νοτιο-ανατολικά σου και ανακάλεσε $recall_name2"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
 msgid "RECALL $recall_name2"
 msgstr "ΑΝΑΚΑΛΕΣΕ $recall_name2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:858
 #, fuzzy
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr "Δεξί κλικ στο έδαφος νότια σου και στρατολόγησε έναν Ξωτικοπολεμιστή"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:827
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:838
 msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
@@ -1291,19 +1335,19 @@ msgstr ""
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:856
 msgid "Elindel"
 msgstr "Έλιντελ"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
 msgid "You've learned well, Konrad! "
 msgstr "Τα καταφέρνεις, Κώνραντ!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:875
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:877
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:888
 #, fuzzy
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You're only losing 1 "
@@ -1313,19 +1357,19 @@ msgstr ""
 "μόνο 1 νόμισμα χρυσού ανά γύρο."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:876
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
 msgid "You've learned well, Li'sar! "
 msgstr "Μια χαρά πας, Λί'ζαρ!"
 
 #. [then]
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:879
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1018
 msgid "End your turn"
 msgstr "Τελείωσε τον γύρο σου"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:896
 msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
@@ -1334,7 +1378,7 @@ msgstr ""
 "στρατολογήσεις κι άλλες μονάδες."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:900
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
@@ -1343,7 +1387,7 @@ msgstr ""
 "χρειάζεται να μείνει κοντά για να στρατολογεί κι όλας."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:901
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
 msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
@@ -1352,7 +1396,7 @@ msgstr ""
 "χρειάζεται να μείνει κοντά για να στρατολογεί κι όλας."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
 #, fuzzy
 msgid "Orcs have no ranged attack, so use your archers against them."
 msgstr ""
@@ -1360,7 +1404,7 @@ msgstr ""
 "εναντίων τους."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:910
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
 #, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
@@ -1370,7 +1414,7 @@ msgstr ""
 "μονάδες για να δεις την περιγραφή τους στα δεξιά)"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
 #, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There's only a 30% chance "
@@ -1380,7 +1424,7 @@ msgstr ""
 "πιθανότητα να χτυπηθεί ένας Ξωτικοτοξότης στο δάσος."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:927
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:938
 #, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about! Your "
@@ -1392,19 +1436,19 @@ msgstr ""
 "Ακύρωσέ το!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:933
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
 #, fuzzy
 msgid "Attack the Orc with the other Archer"
 msgstr "Κάνε επίθεση στον Ορκ με τον άλλον Τοξότη"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:956
 #, fuzzy
 msgid "Fighter to HERE"
 msgstr "Ο πολεμιστής Εδώ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:957
 #, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn. Send a Fighter to the "
@@ -1414,7 +1458,7 @@ msgstr ""
 "Στείλε έναν Πολεμιστή σ' εκείνο το χωριό ανατολικά: αυτό θα πάρει 2 γύρους."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:947
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
 #, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
@@ -1426,12 +1470,12 @@ msgstr ""
 "γύρους για να ολοκληρωθεί."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:959
 msgid "Tell a Fighter to move to the far east village"
 msgstr "Πες στον Πολεμιστή να μετακινηθεί στο μακρινό ανατολικό χωριό"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:966
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:977
 msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
@@ -1440,7 +1484,7 @@ msgstr ""
 "στον επόμενο γύρο, και γύρισε στο πύργο για στρατολόγηση!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:967
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
 #, fuzzy
 msgid "Move your Fighter and Shaman south, then return Konrad to the Keep"
 msgstr ""
@@ -1448,7 +1492,7 @@ msgstr ""
 "στον Πύργο"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:968
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 #, fuzzy
 msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
 msgstr ""
@@ -1456,33 +1500,33 @@ msgstr ""
 "Πύργο"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Recruit another Archer and a Fighter"
 msgstr "Στρατολόγησε έναν Τοξότη και έναν Πολεμιστή"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:993
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1004
 msgid "I have no more money to recruit!"
 msgstr "Δεν έχω άλλα λεφτά για στρατολόγηση!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:994
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1005
 msgid "This is often a problem, which is why owning villages is important."
 msgstr ""
 "Αυτό είναι ένα συχνό πρόβλημα. Γι'αυτό το να έχεις χωριά είναι σημαντικό."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:995
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
 msgid "Move Konrad to another (unowned) village"
 msgstr "Μετακίνησε τον Κώνραντ σε ένα (μη κατεχόμενο) χωριό"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
 msgid "Move Li'sar to another (unowned) village"
 msgstr "Μετακίνησε την Λί'ζαρ σε ένα (μη κατεχόμενο) χωριό"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1021
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
 #, fuzzy
 msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
@@ -1492,22 +1536,22 @@ msgstr ""
 "λυκαναβάτες το φθάσουν."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
 msgid "Can't our units just move around him?"
 msgstr "Δεν μπορούν οι μονάδες μας απλά να κινηθούν γύρω του;"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1025
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1026
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1027
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1028
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1029
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1030
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1038
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
 msgid "ZoC"
 msgstr "ΖοΚ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1044
 #, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its 'Zone of Control' "
@@ -1521,20 +1565,20 @@ msgstr ""
 "περάσεις αργά από το νερό, θα πρέπει να τον σκοτώσεις."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1045
 #, fuzzy
 msgid "Attack the orc with an Archer"
 msgstr "Κάνε επίθεση στον Ορκ με τον Τοξότη"
 
 #. [then]
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1060
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1071
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1084
 msgid "Advance other units and capture villages, then End Turn"
 msgstr "Προώθησε άλλες μονάδες και κατέκτησε χωριά, τότε Τελείωσε τον Γύρο"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1065
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
 #, fuzzy
 msgid ""
 "No other units can reach that Orc. I hope my archer survives its counter-"
@@ -1545,7 +1589,7 @@ msgstr ""
 "μονάδες μου πιο κοντά τον επόμενο γύρο."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1066
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
 #, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
@@ -1555,13 +1599,13 @@ msgstr ""
 "γιατρέψει στην αρχή του επόμενου γύρου, όπως πριν."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1067
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
 #, fuzzy
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "Μετακίνησε τον Σαμάνο στην γέφυρα πίσω από μια άλλη μονάδα"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1113
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1124
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
@@ -1570,7 +1614,7 @@ msgstr ""
 "πολλές πλευρές!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1126
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
 #, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about! Your "
@@ -1582,7 +1626,7 @@ msgstr ""
 "επιτεθούν!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1136
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
 #, fuzzy
 msgid ""
 "Don't forget about your fighter in the east; you can move him south to that "
@@ -1592,7 +1636,7 @@ msgstr ""
 "στο τελευταίο χωριό δίπλα απ' το κανάλι."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1142
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1153
 #, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn! Move "
@@ -1603,7 +1647,7 @@ msgstr ""
 "θεραπευτεί, και τότε σκότωσε αυτόν τον Ορκ!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1154
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
 #, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are chaotic, meaning their attacks are "
@@ -1616,7 +1660,7 @@ msgstr ""
 "και νύχτα."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1155
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1166
 #, fuzzy
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
@@ -1626,7 +1670,7 @@ msgstr ""
 "δεξιά, για να δεις μια περιγραφή της ώρας της μέρας."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1162
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
 #, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
@@ -1637,12 +1681,12 @@ msgstr ""
 "θεραπεύσουν 8 (το μέγιστο για κάθε μονάδα)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1169
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1180
 msgid "Defend here"
 msgstr "Προστατέψου εδώ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1170
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
 #, fuzzy
 msgid ""
 "Beware of those Orcs crossing the river! If they get into the forest they'll "
@@ -1652,7 +1696,7 @@ msgstr ""
 "δύσκολο να τους ξεφορτωθούμε!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1177
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
 #, fuzzy
 msgid ""
 "You can make sure you've used all your units each turn by pressing 'n' to "
@@ -1665,7 +1709,7 @@ msgstr ""
 "Όταν το 'N' δεν επιλέγει κάποια μονάδα, μπορείς να τελειώσεις τον γύρο σου."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1182
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
 #, fuzzy
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
@@ -1673,7 +1717,7 @@ msgstr ""
 "Μενού->Στόχοι Σεναρίου."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1187
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1198
 #, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
@@ -1684,7 +1728,7 @@ msgstr ""
 "τους."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1205
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1216
 #, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
@@ -1695,7 +1739,7 @@ msgstr ""
 "το δικό του στρατόπεδο!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1219
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1230
 #, fuzzy
 msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought. "
@@ -1705,7 +1749,7 @@ msgstr ""
 "νόμιζα: θα γιατρέυεται και θα έχει μια χαρά άμυνα εκεί που είναι."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1230
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1241
 #, fuzzy
 msgid ""
 "That unit has captured our village! You'd better get him out; it heals him "
@@ -1715,7 +1759,7 @@ msgstr ""
 "γιατρεύεται κάθε γύρο και θα έχει καλή άμυνα."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1725,8 +1769,8 @@ msgstr ""
 "αστοχήσω!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1278
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1294
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1289
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1305
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
@@ -1737,7 +1781,7 @@ msgstr ""
 "προσεκτικά την μονάδα που θα δώσει αυτό το χτύπημα!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1337
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1746,8 +1790,18 @@ msgstr ""
 "Θα χάσουμε $deadguy.user_description|, και είχε  $deadguy.experience πόντους "
 "εμπειρίας, το οποίο σημαίνει ότι θα αναβαθμιζόταν στο 2ο επίπεδο σύντομα."
 
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
+#, fuzzy
+msgid ""
+"We will miss $deadguy.name| because she had $deadguy.experience experience "
+"points, meaning she would have advanced to level 2 soon."
+msgstr ""
+"Θα χάσουμε $deadguy.user_description|, και είχε  $deadguy.experience πόντους "
+"εμπειρίας, το οποίο σημαίνει ότι θα αναβαθμιζόταν στο 2ο επίπεδο σύντομα."
+
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1346
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but it's better than one of our experienced "
@@ -1757,7 +1811,7 @@ msgstr ""
 "χάσουμε μία εμπειροπόλεμη μονάδα!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1359
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1381
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy's reach!"
 msgstr ""
@@ -1765,7 +1819,7 @@ msgstr ""
 "την εμβέλεια του εχθρού!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1360
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1382
 #, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
@@ -1777,7 +1831,7 @@ msgstr ""
 "με την μια με την 'Εμφάνιση κινήσεων εχθρού' από το μενού 'Ενέργειες'."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1364
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1386
 #, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
@@ -1786,7 +1840,7 @@ msgstr ""
 "user_description|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1379
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
 #, fuzzy
 msgid ""
 "Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1796,7 +1850,7 @@ msgstr ""
 "πολλές μονάδες μαζί, κατά τη διάρκεια της μέρας."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1393
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1809,7 +1863,20 @@ msgstr ""
 "δύσκολες εχθρικές μονάδες."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1407
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
+#, fuzzy
+msgid ""
+"female^Advancing a level has fully healed me!\n"
+"I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
+"damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+msgstr ""
+"Η προαγωγή με θεράπευσε τελείως!\n"
+"Τώρα θα έχω 60% πιθανότητες να ευχτοχήσω με το τόξο, και 9 βαθμούς ζημιάς σε "
+"κάθε μια από τις 4 επιθέσεις μου. Χρησιμοποίησέ με για να ξεφορτωθείς "
+"δύσκολες εχθρικές μονάδες."
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1823,7 +1890,7 @@ msgstr ""
 "είναι δίπλα μου."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1460
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1836,7 +1903,7 @@ msgstr ""
 "ζημιά. Τοποθέτησέ με σωστά."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1436
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1475
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1846,13 +1913,13 @@ msgstr ""
 "Είμαι σχετικά καλός με το σπαθί: 4 επιθέσεις με 8 ζημιά η καθε μια τους."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1604
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
 #, fuzzy
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "Παίρνει πολλύ ώρα. Ποτέ δεν θα ξεφορτωθούμε αυτά τα Ορκ!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1622
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "

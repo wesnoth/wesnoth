@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-16 17:55+0200\n"
+"POT-Creation-Date: 2009-08-18 21:52+0200\n"
 "PO-Revision-Date: 2009-08-17 16:02+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -37,7 +37,7 @@ msgstr "Ничего"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
+#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Пелена"
 
@@ -566,7 +566,7 @@ msgstr "Непроходимая"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:150
+#: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Подключиться к серверу"
@@ -605,21 +605,21 @@ msgstr "Подключиться"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
-#: data/gui/default/window/campaign_dialog.cfg:317
+#: data/gui/default/window/campaign_dialog.cfg:315
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:459
+#: data/gui/default/window/game_load.cfg:457
 #: data/gui/default/window/game_save.cfg:134
-#: data/gui/default/window/language_selection.cfg:135
+#: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
-#: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:220
-#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:218
+#: data/gui/default/window/mp_server_list.cfg:229 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Отмена"
@@ -632,16 +632,16 @@ msgstr "Кампания"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:303
+#: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:444
-#: data/gui/default/window/game_load.cfg:445
+#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:206
-#: data/gui/default/window/wml_message.cfg:460
-#: data/gui/default/window/wml_message.cfg:681 src/construct_dialog.cpp:125
+#: data/gui/default/window/mp_method_selection.cfg:204
+#: data/gui/default/window/wml_message.cfg:458
+#: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
 #: src/gui/dialogs/message.cpp:195
 msgid "OK"
@@ -791,6 +791,72 @@ msgstr "Открывать более одной карты (MDI)"
 msgid "Apply"
 msgstr "Применить"
 
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:28
+msgid "Formula debugger"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:51
+msgid "Welcome"
+msgstr ""
+
+#. [label]: id=state
+#: data/gui/default/window/formula_debugger.cfg:63
+#, fuzzy
+msgid "state"
+msgstr "Вставить"
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:77
+msgid "Call stack"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:86
+#, fuzzy
+msgid "Actions"
+msgstr "Действие"
+
+#. [button]: id=step
+#: data/gui/default/window/formula_debugger.cfg:120
+#, fuzzy
+msgid "Step operation"
+msgstr "Модерируется"
+
+#. [button]: id=next
+#: data/gui/default/window/formula_debugger.cfg:130
+#, fuzzy
+msgid "Next operation"
+msgstr "Следующий генератор"
+
+#. [button]: id=stepout
+#: data/gui/default/window/formula_debugger.cfg:140
+msgid "Step out"
+msgstr ""
+
+#. [button]: id=continue
+#: data/gui/default/window/formula_debugger.cfg:150
+#, fuzzy
+msgid "Continue"
+msgstr "Продолжить движение"
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:166
+msgid "Execution trace"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/formula_debugger.cfg:222
+#: data/gui/default/window/lobby_main.cfg:539
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
+msgid "Quit"
+msgstr "Выйти"
+
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
 #, fuzzy
@@ -852,32 +918,32 @@ msgstr "Файл: "
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:250
-#: data/gui/default/window/mp_server_list.cfg:98
+#: data/gui/default/window/game_load.cfg:248
+#: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "Имя"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:265
 #, fuzzy
 msgid "Date"
 msgstr "Вставить"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:383
-#: data/gui/default/window/game_load.cfg:384
+#: data/gui/default/window/game_load.cfg:381
+#: data/gui/default/window/game_load.cfg:382
 #, fuzzy
 msgid "Delete"
 msgstr "Удалить файл"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:406
+#: data/gui/default/window/game_load.cfg:404
 #, fuzzy
 msgid "Show replay"
 msgstr "Сохранить повтор"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:418
+#: data/gui/default/window/game_load.cfg:416
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Отмена"
@@ -942,136 +1008,136 @@ msgid "Choose your preferred language:"
 msgstr "Какой язык предпочитаете:"
 
 #. [button]: id=ok
-#: data/gui/default/window/language_selection.cfg:120
-#: data/gui/default/window/language_selection.cfg:121
+#: data/gui/default/window/language_selection.cfg:118
+#: data/gui/default/window/language_selection.cfg:119
 msgid "Change language"
 msgstr "Сменить язык"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:109
+#: data/gui/default/window/lobby_main.cfg:108
 #, fuzzy
 msgid "Games"
 msgstr "Имя"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
 msgstr ""
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:178
-#: data/gui/default/window/mp_create_game.cfg:315
+#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/mp_create_game.cfg:313
 msgid "Use map settings"
 msgstr "Задано картой"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:179
+#: data/gui/default/window/lobby_main.cfg:178
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Создать игру"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:180
+#: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:182
+#: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
 msgstr ""
 
 #. [label]
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:184
-#: data/gui/default/window/mp_create_game.cfg:414
+#: data/gui/default/window/lobby_main.cfg:183
+#: data/gui/default/window/mp_create_game.cfg:412
 msgid "Experience modifier"
 msgstr "Модификатор опыта"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:186
+#: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:306
+#: data/gui/default/window/lobby_main.cfg:304
 #, fuzzy
 msgid "Sort players:"
 msgstr "Игроки:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:314
+#: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
 msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:322
+#: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:332
 #, fuzzy
 msgid "Selected game"
 msgstr "Создать игру"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:333
 msgid "Current room"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:336
+#: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:337
+#: data/gui/default/window/lobby_main.cfg:335
 #, fuzzy
 msgid "Other games"
 msgstr "Создать игру"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:360
+#: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
 msgstr ""
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:378
+#: data/gui/default/window/lobby_main.cfg:375
 #, fuzzy
 msgid "Messages waiting"
 msgstr "Сообщения"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:454
+#: data/gui/default/window/lobby_main.cfg:451
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Многопользовательская"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:462
+#: data/gui/default/window/lobby_main.cfg:459
 #, fuzzy
 msgid "Filter:"
 msgstr "Файл: "
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:473
+#: data/gui/default/window/lobby_main.cfg:470
 #, fuzzy
 msgid "Friends"
 msgstr "Ваш список друзей"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:479
+#: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:485
+#: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:491
+#: data/gui/default/window/lobby_main.cfg:488
 #, fuzzy
 msgid "Invert filter"
 msgstr "Повернуть выделение"
@@ -1080,38 +1146,29 @@ msgstr "Повернуть выделение"
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:506
+#: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Закрыть"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:530
+#: data/gui/default/window/lobby_main.cfg:527
 #, fuzzy
 msgid "Send"
 msgstr "Песок"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=quit
-#. [grid]
-#: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
-#: src/hotkeys.cpp:930
-msgid "Quit"
-msgstr "Выйти"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:548
+#: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Настройки"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:554
+#: data/gui/default/window/lobby_main.cfg:551
 #, fuzzy
 msgid "Refresh"
 msgstr "Обновить экран"
@@ -1119,31 +1176,31 @@ msgstr "Обновить экран"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:560
+#: data/gui/default/window/lobby_main.cfg:557
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Помощь"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:568
+#: data/gui/default/window/lobby_main.cfg:565
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Создать игру"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:574
+#: data/gui/default/window/lobby_main.cfg:571
 #, fuzzy
 msgid "Join"
 msgstr "Логин"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:580
+#: data/gui/default/window/lobby_main.cfg:577
 msgid "Observe"
 msgstr ""
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:586
+#: data/gui/default/window/lobby_main.cfg:583
 msgid "Quick replay"
 msgstr ""
 
@@ -1331,32 +1388,32 @@ msgid "Map to play:"
 msgstr "Играем на карте:"
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:333
+#: data/gui/default/window/mp_create_game.cfg:331
 msgid "Number of turns"
 msgstr "Количество ходов:"
 
 #. [slider]: id=turn_count
-#: data/gui/default/window/mp_create_game.cfg:356
+#: data/gui/default/window/mp_create_game.cfg:354
 msgid "Unlimited"
 msgstr "Неограничены"
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:374
+#: data/gui/default/window/mp_create_game.cfg:372
 msgid "Village gold"
 msgstr "Золота с деревни"
 
 #. [toggle_button]: id=fog
-#: data/gui/default/window/mp_create_game.cfg:454
+#: data/gui/default/window/mp_create_game.cfg:452
 msgid "Fog of War"
 msgstr "Туман войны"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/default/window/mp_create_game.cfg:495
+#: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
 msgstr "Случайное время начала"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_create_game.cfg:537
+#: data/gui/default/window/mp_create_game.cfg:535
 msgid "Create game"
 msgstr "Создать игру"
 
@@ -1420,47 +1477,47 @@ msgstr ""
 "Форум Битвы за Веснот находится по адресу: http://www.wesnoth.org/forum/"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на к официальный мультиплеерный сервер Веснота"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:149
 msgid "Join a different server"
 msgstr "Подключиться к другому серверу"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:160
+#: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
 msgstr "Захостить сетевую игру"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:161
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Захостить сетевую игру через специальный сервер «wesnothd»"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:168
 msgid "Local Game"
 msgstr "Локальная игра"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:171
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Играть в мультиплеер против компьютера или человека, на одной машине"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:115
+#: data/gui/default/window/mp_server_list.cfg:113
 msgid "Address"
 msgstr "Адрес"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:217
+#: data/gui/default/window/mp_server_list.cfg:215
 msgid "Select"
 msgstr "Выбрать"
 
@@ -1526,13 +1583,13 @@ msgid "Female"
 msgstr ""
 
 #. [label]: id=race
-#: data/gui/default/window/unit_create.cfg:124
+#: data/gui/default/window/unit_create.cfg:123
 #, fuzzy
 msgid "Race"
 msgstr "Отмена"
 
 #. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:136
+#: data/gui/default/window/unit_create.cfg:135
 msgid "Type"
 msgstr ""
 
@@ -2011,16 +2068,16 @@ msgstr "Начало текста за пределами подложки."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "Разрешение не определено."
 
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
-#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
-#: src/gui/widgets/settings.cpp:1119
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:867
+#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
+#: src/gui/widgets/settings.cpp:1117
 msgid "No grid defined."
 msgstr "Сетка не определена."
 
@@ -2036,16 +2093,16 @@ msgstr "У строки должен быть столбец."
 msgid "Number of columns differ."
 msgstr "Количество столбцов различается."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:53
+#: src/gui/auxiliary/window_builder/listbox.cpp:51
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "Список не определён."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:57
+#: src/gui/auxiliary/window_builder/listbox.cpp:55
 msgid "A 'list_definition' should contain one row."
 msgstr "В 'list_definition' должна быть одна строка."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:73
+#: src/gui/auxiliary/window_builder/listbox.cpp:71
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -2147,24 +2204,24 @@ msgstr "Версия"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обязательный виджет '$id' не определён"
 
-#: src/gui/widgets/settings.cpp:142
+#: src/gui/widgets/settings.cpp:143
 msgid "No default gui defined."
 msgstr "GUI пол умолчанию не определён."
 
-#: src/gui/widgets/settings.cpp:305
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "Окно не определено."
 
-#: src/gui/widgets/settings.cpp:402
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Описание виджетов '$definition' не содержит описания для '$id'."
 
-#: src/gui/widgets/settings.cpp:544
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
-#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:710 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
 

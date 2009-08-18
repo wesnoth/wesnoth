@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-08-16 17:44+0200\n"
+"POT-Creation-Date: 2009-08-18 21:52+0200\n"
 "PO-Revision-Date: 2009-04-05 12:09-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Nada"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
+#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Oscuro"
 
@@ -555,7 +555,7 @@ msgstr "Intransitable"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:150
+#: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
 msgstr "Conectar al servidor"
@@ -594,21 +594,21 @@ msgstr "Conectar"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
-#: data/gui/default/window/campaign_dialog.cfg:317
+#: data/gui/default/window/campaign_dialog.cfg:315
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/game_load.cfg:459
+#: data/gui/default/window/game_load.cfg:457
 #: data/gui/default/window/game_save.cfg:134
-#: data/gui/default/window/language_selection.cfg:135
+#: data/gui/default/window/language_selection.cfg:133
 #: data/gui/default/window/message.cfg:136
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
-#: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_create_game.cfg:550
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:220
-#: data/gui/default/window/mp_server_list.cfg:231 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:218
+#: data/gui/default/window/mp_server_list.cfg:229 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Cancelar"
@@ -621,16 +621,16 @@ msgstr "Campaña"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:303
+#: data/gui/default/window/campaign_dialog.cfg:301
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/game_load.cfg:444
-#: data/gui/default/window/game_load.cfg:445
+#: data/gui/default/window/game_load.cfg:442
+#: data/gui/default/window/game_load.cfg:443
 #: data/gui/default/window/game_save.cfg:119
 #: data/gui/default/window/game_save.cfg:120
 #: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:206
-#: data/gui/default/window/wml_message.cfg:460
-#: data/gui/default/window/wml_message.cfg:681 src/construct_dialog.cpp:125
+#: data/gui/default/window/mp_method_selection.cfg:204
+#: data/gui/default/window/wml_message.cfg:458
+#: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132 src/gui/dialogs/message.cpp:188
 #: src/gui/dialogs/message.cpp:195
 msgid "OK"
@@ -780,6 +780,72 @@ msgstr "Mantener más de un mapa abierto a la vez (MDI)"
 msgid "Apply"
 msgstr "Aplicar"
 
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:28
+msgid "Formula debugger"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:51
+msgid "Welcome"
+msgstr ""
+
+#. [label]: id=state
+#: data/gui/default/window/formula_debugger.cfg:63
+#, fuzzy
+msgid "state"
+msgstr "Pegar"
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:77
+msgid "Call stack"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:86
+#, fuzzy
+msgid "Actions"
+msgstr "Acción"
+
+#. [button]: id=step
+#: data/gui/default/window/formula_debugger.cfg:120
+#, fuzzy
+msgid "Step operation"
+msgstr "Moderando"
+
+#. [button]: id=next
+#: data/gui/default/window/formula_debugger.cfg:130
+#, fuzzy
+msgid "Next operation"
+msgstr "Siguiente generador"
+
+#. [button]: id=stepout
+#: data/gui/default/window/formula_debugger.cfg:140
+msgid "Step out"
+msgstr ""
+
+#. [button]: id=continue
+#: data/gui/default/window/formula_debugger.cfg:150
+#, fuzzy
+msgid "Continue"
+msgstr "Continuar moviendo"
+
+#. [label]
+#: data/gui/default/window/formula_debugger.cfg:166
+msgid "Execution trace"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#. [button]: id=quit
+#. [grid]
+#: data/gui/default/window/formula_debugger.cfg:222
+#: data/gui/default/window/lobby_main.cfg:539
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
+#: src/hotkeys.cpp:930
+msgid "Quit"
+msgstr "Salir"
+
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
 #, fuzzy
@@ -841,32 +907,32 @@ msgstr "Archivo: "
 
 #. [label]: id=name
 #. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:250
-#: data/gui/default/window/mp_server_list.cfg:98
+#: data/gui/default/window/game_load.cfg:248
+#: data/gui/default/window/mp_server_list.cfg:96
 msgid "Name"
 msgstr "Nombre"
 
 #. [label]: id=date
-#: data/gui/default/window/game_load.cfg:267
+#: data/gui/default/window/game_load.cfg:265
 #, fuzzy
 msgid "Date"
 msgstr "Pegar"
 
 #. [button]: id=delete
-#: data/gui/default/window/game_load.cfg:383
-#: data/gui/default/window/game_load.cfg:384
+#: data/gui/default/window/game_load.cfg:381
+#: data/gui/default/window/game_load.cfg:382
 #, fuzzy
 msgid "Delete"
 msgstr "Borrar archivo"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/default/window/game_load.cfg:406
+#: data/gui/default/window/game_load.cfg:404
 #, fuzzy
 msgid "Show replay"
 msgstr "jugador"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/default/window/game_load.cfg:418
+#: data/gui/default/window/game_load.cfg:416
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Cancelar"
@@ -931,136 +997,136 @@ msgid "Choose your preferred language:"
 msgstr "Escoja su idioma preferido:"
 
 #. [button]: id=ok
-#: data/gui/default/window/language_selection.cfg:120
-#: data/gui/default/window/language_selection.cfg:121
+#: data/gui/default/window/language_selection.cfg:118
+#: data/gui/default/window/language_selection.cfg:119
 msgid "Change language"
 msgstr "Cambiar idioma"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:109
+#: data/gui/default/window/lobby_main.cfg:108
 #, fuzzy
 msgid "Games"
 msgstr "Nombre"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/lobby_main.cfg:176
 msgid "Requires a password to join"
 msgstr ""
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:178
-#: data/gui/default/window/mp_create_game.cfg:315
+#: data/gui/default/window/lobby_main.cfg:177
+#: data/gui/default/window/mp_create_game.cfg:313
 msgid "Use map settings"
 msgstr "Usar ajustes del mapa"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:179
+#: data/gui/default/window/lobby_main.cfg:178
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Crear partida"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:180
+#: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:182
+#: data/gui/default/window/lobby_main.cfg:181
 msgid "Gold per village"
 msgstr ""
 
 #. [label]
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:184
-#: data/gui/default/window/mp_create_game.cfg:414
+#: data/gui/default/window/lobby_main.cfg:183
+#: data/gui/default/window/mp_create_game.cfg:412
 msgid "Experience modifier"
 msgstr "Modificador de experiencia"
 
 #. [row]
-#: data/gui/default/window/lobby_main.cfg:186
+#: data/gui/default/window/lobby_main.cfg:185
 msgid "Time limit"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:306
+#: data/gui/default/window/lobby_main.cfg:304
 #, fuzzy
 msgid "Sort players:"
 msgstr "Jugadores:"
 
 #. [toggle_button]: id=player_list_sort_relation
-#: data/gui/default/window/lobby_main.cfg:314
+#: data/gui/default/window/lobby_main.cfg:312
 msgid "Friends first, ignored people last"
 msgstr ""
 
 #. [toggle_button]: id=player_list_sort_name
-#: data/gui/default/window/lobby_main.cfg:322
+#: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:334
+#: data/gui/default/window/lobby_main.cfg:332
 #, fuzzy
 msgid "Selected game"
 msgstr "Borrar archivo"
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:335
+#: data/gui/default/window/lobby_main.cfg:333
 msgid "Current room"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:336
+#: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
 msgstr ""
 
 #. [definition]
-#: data/gui/default/window/lobby_main.cfg:337
+#: data/gui/default/window/lobby_main.cfg:335
 #, fuzzy
 msgid "Other games"
 msgstr "Crear partida"
 
 #. [label]: id=room
-#: data/gui/default/window/lobby_main.cfg:360
+#: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
 msgstr ""
 
 #. [image]: id=pending_messages
-#: data/gui/default/window/lobby_main.cfg:378
+#: data/gui/default/window/lobby_main.cfg:375
 #, fuzzy
 msgid "Messages waiting"
 msgstr "Mensajería"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:454
+#: data/gui/default/window/lobby_main.cfg:451
 #, fuzzy
 msgid "Multiplayer Lobby"
 msgstr "Multijugador"
 
 #. [label]
-#: data/gui/default/window/lobby_main.cfg:462
+#: data/gui/default/window/lobby_main.cfg:459
 #, fuzzy
 msgid "Filter:"
 msgstr "Archivo: "
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/default/window/lobby_main.cfg:473
+#: data/gui/default/window/lobby_main.cfg:470
 #, fuzzy
 msgid "Friends"
 msgstr "Lista de amigos"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/default/window/lobby_main.cfg:479
+#: data/gui/default/window/lobby_main.cfg:476
 msgid "No ignored"
 msgstr ""
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/default/window/lobby_main.cfg:485
+#: data/gui/default/window/lobby_main.cfg:482
 msgid "Vacant slots"
 msgstr ""
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/default/window/lobby_main.cfg:491
+#: data/gui/default/window/lobby_main.cfg:488
 msgid "Invert filter"
 msgstr ""
 
@@ -1068,38 +1134,29 @@ msgstr ""
 #. [button]: id=ok
 #. [button]: id=cancel
 #. [button]: id=close_window
-#: data/gui/default/window/lobby_main.cfg:506
+#: data/gui/default/window/lobby_main.cfg:503
 #: data/gui/default/window/lobby_player_info.cfg:192
 #: data/gui/default/window/message.cfg:122 src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Cerrar"
 
 #. [button]: id=send_message
-#: data/gui/default/window/lobby_main.cfg:530
+#: data/gui/default/window/lobby_main.cfg:527
 #, fuzzy
 msgid "Send"
 msgstr "Arena"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=quit
-#. [grid]
-#: data/gui/default/window/lobby_main.cfg:542
-#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:642
-#: src/hotkeys.cpp:930
-msgid "Quit"
-msgstr "Salir"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
 #. [grid]
-#: data/gui/default/window/lobby_main.cfg:548
+#: data/gui/default/window/lobby_main.cfg:545
 #: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:78
 msgid "Preferences"
 msgstr "Preferencias"
 
 #. [button]: id=refresh
-#: data/gui/default/window/lobby_main.cfg:554
+#: data/gui/default/window/lobby_main.cfg:551
 #, fuzzy
 msgid "Refresh"
 msgstr "Actualizar pantalla"
@@ -1107,31 +1164,31 @@ msgstr "Actualizar pantalla"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
 #. [button]: id=help
-#: data/gui/default/window/lobby_main.cfg:560
+#: data/gui/default/window/lobby_main.cfg:557
 #: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:185
 msgid "Help"
 msgstr "Ayuda"
 
 #. [label]
 #. [button]: id=create
-#: data/gui/default/window/lobby_main.cfg:568
+#: data/gui/default/window/lobby_main.cfg:565
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
 msgstr "Crear partida"
 
 #. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:574
+#: data/gui/default/window/lobby_main.cfg:571
 #, fuzzy
 msgid "Join"
 msgstr "Nombre de usuario"
 
 #. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:580
+#: data/gui/default/window/lobby_main.cfg:577
 msgid "Observe"
 msgstr ""
 
 #. [toggle_button]: id=skip_replay
-#: data/gui/default/window/lobby_main.cfg:586
+#: data/gui/default/window/lobby_main.cfg:583
 #, fuzzy
 msgid "Quick replay"
 msgstr "jugador"
@@ -1320,32 +1377,32 @@ msgid "Map to play:"
 msgstr "Mapa del juego:"
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:333
+#: data/gui/default/window/mp_create_game.cfg:331
 msgid "Number of turns"
 msgstr "Número de turnos"
 
 #. [slider]: id=turn_count
-#: data/gui/default/window/mp_create_game.cfg:356
+#: data/gui/default/window/mp_create_game.cfg:354
 msgid "Unlimited"
 msgstr "Ilimitado"
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:374
+#: data/gui/default/window/mp_create_game.cfg:372
 msgid "Village gold"
 msgstr "Oro por aldea"
 
 #. [toggle_button]: id=fog
-#: data/gui/default/window/mp_create_game.cfg:454
+#: data/gui/default/window/mp_create_game.cfg:452
 msgid "Fog of War"
 msgstr "Niebla de guerra"
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/default/window/mp_create_game.cfg:495
+#: data/gui/default/window/mp_create_game.cfg:493
 msgid "Random start time"
 msgstr "Hora de inicio aleatoria"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_create_game.cfg:537
+#: data/gui/default/window/mp_create_game.cfg:535
 msgid "Create game"
 msgstr "Crear partida"
 
@@ -1411,50 +1468,50 @@ msgstr ""
 "forum/ (sólo en inglés)."
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Join Official Server"
 msgstr "Unirse al servidor oficial"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 "Iniciar sesión en el servidor oficial para múltiples jugadores de Wesnoth"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:149
 msgid "Join a different server"
 msgstr "Unirse a otro servidor"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:160
+#: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
 msgstr "Servir partida en red"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:161
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Servir una partida en red usando el servidor dedicado «wesnothd»"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:168
 msgid "Local Game"
 msgstr "Partida local"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:171
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Jugar una partida multijugador contra la IA o humanos compartiendo la misma "
 "máquina"
 
 #. [label]: id=address
-#: data/gui/default/window/mp_server_list.cfg:115
+#: data/gui/default/window/mp_server_list.cfg:113
 msgid "Address"
 msgstr "Dirección"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:217
+#: data/gui/default/window/mp_server_list.cfg:215
 msgid "Select"
 msgstr "Seleccionar"
 
@@ -1520,13 +1577,13 @@ msgid "Female"
 msgstr ""
 
 #. [label]: id=race
-#: data/gui/default/window/unit_create.cfg:124
+#: data/gui/default/window/unit_create.cfg:123
 #, fuzzy
 msgid "Race"
 msgstr "Cancelar"
 
 #. [label]: id=unit_type
-#: data/gui/default/window/unit_create.cfg:136
+#: data/gui/default/window/unit_create.cfg:135
 msgid "Type"
 msgstr ""
 
@@ -2025,16 +2082,16 @@ msgstr "El texto no empieza en el lienzo."
 msgid "Linked '$id' group has multiple definitions."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:518
+#: src/gui/auxiliary/window_builder.cpp:186 src/gui/widgets/settings.cpp:513
 msgid "No resolution defined."
 msgstr "No se ha definido ninguna resolución."
 
 #: src/gui/auxiliary/window_builder.cpp:292
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
-#: src/gui/widgets/settings.cpp:774 src/gui/widgets/settings.cpp:870
-#: src/gui/widgets/settings.cpp:959 src/gui/widgets/settings.cpp:1001
-#: src/gui/widgets/settings.cpp:1119
+#: src/gui/widgets/settings.cpp:768 src/gui/widgets/settings.cpp:867
+#: src/gui/widgets/settings.cpp:960 src/gui/widgets/settings.cpp:1002
+#: src/gui/widgets/settings.cpp:1117
 msgid "No grid defined."
 msgstr "No se ha definido ninguna malla."
 
@@ -2050,17 +2107,17 @@ msgstr "Una fila debe tener una columna."
 msgid "Number of columns differ."
 msgstr "El número de columnas es distinto."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:53
+#: src/gui/auxiliary/window_builder/listbox.cpp:51
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:40
 msgid "No list defined."
 msgstr "No se ha definido una lista."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:57
+#: src/gui/auxiliary/window_builder/listbox.cpp:55
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 "Una definición de lista («list_definition») debe contener al menos una fila."
 
-#: src/gui/auxiliary/window_builder/listbox.cpp:73
+#: src/gui/auxiliary/window_builder/listbox.cpp:71
 #: src/gui/auxiliary/window_builder/multi_page.cpp:58
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
@@ -2164,24 +2221,24 @@ msgstr "Versión"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "El widget obligatorio «$id» no ha sido definido."
 
-#: src/gui/widgets/settings.cpp:142
+#: src/gui/widgets/settings.cpp:143
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
-#: src/gui/widgets/settings.cpp:305
+#: src/gui/widgets/settings.cpp:300
 msgid "Window not defined."
 msgstr "Ventana no definida."
 
-#: src/gui/widgets/settings.cpp:402
+#: src/gui/widgets/settings.cpp:397
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:544
+#: src/gui/widgets/settings.cpp:539
 msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 
-#: src/gui/widgets/window.cpp:712 src/tests/gui/test_gui2.cpp:232
+#: src/gui/widgets/window.cpp:710 src/tests/gui/test_gui2.cpp:232
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "No se pudo mostrar un diálogo, que no cabe en la pantalla."
 
