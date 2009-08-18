@@ -742,6 +742,7 @@ bool game_controller::play_multiplayer_mode()
 	std::map<int,std::string> side_types, side_controllers, side_algorithms, side_ai_configs;
 	std::map<int,string_map> side_parameters;
 	std::string turns = "50";
+	std::string label = "";
 
 	size_t sides_counted = 0;
 
@@ -775,6 +776,8 @@ bool game_controller::play_multiplayer_mode()
 				turns = value;
 			} else if(name == "--era") {
 				era = value;
+			} else if(name == "--label") {
+				label = value;
 			} else if(last_digit && name_head == "--controller") {
 				side_controllers[side] = value;
 			} else if(last_digit && name_head == "--ai_config") {
@@ -924,7 +927,10 @@ bool game_controller::play_multiplayer_mode()
 				all_ai = false;
 			}	
 		}
+		
 		upload_log log( all_ai && uploader_settings::new_uploader );
+		level.add_child("ai_log")["label"] = label;
+
 		state_.snapshot = level;
 		play_game(disp(),state_,game_config_,log);
 	} catch(game::error& e) {
