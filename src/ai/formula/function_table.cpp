@@ -96,9 +96,6 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const args_list& arguments = args();
-		const expression_ptr& exp_p = arguments[0];
-		variant my_variant = exp_p->evaluate(variables,fdb);//fixme: WTF is going on there?
 		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
 		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
 		return variant(distance_between(loc1, loc2));
