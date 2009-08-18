@@ -98,9 +98,9 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const args_list& arguments = args();
 		const expression_ptr& exp_p = arguments[0];
-		variant my_variant = exp_p->evaluate(variables,fdb);
-		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+		variant my_variant = exp_p->evaluate(variables,fdb);//fixme: WTF is going on there?
+		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
+		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
 		return variant(distance_between(loc1, loc2));
 	}
 };
@@ -114,7 +114,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_to_nearest_unowned_village:location")))->loc();
 		int best = 1000000;
 		const std::vector<map_location>& villages = ai_.get_info().map.villages();
 		const std::set<map_location>& my_villages = ai_.current_team().villages();
@@ -135,6 +135,7 @@ private:
 
 static unsigned search_counter;
 
+//@todo 1.8: document
 class calculate_map_ownership_function : public function_expression {
 public:
 	calculate_map_ownership_function(const args_list& args, const formula_ai& ai)
@@ -421,7 +422,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"adjacent_locs:location")))->loc();
 		map_location adj[6];
 		get_adjacent_tiles(loc, adj);
 
@@ -487,12 +488,13 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const args_list& arguments = args();
-		const variant var0 = arguments[0]->evaluate(variables,fdb);
+		const variant var0 = arguments[0]->evaluate(variables,add_debug_info(fdb,0,"run_file:file"));
 		const std::string filename = var0.string_cast();
 
 		//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
 		std::string path = get_wml_location(filename);
 		if(path.empty()) {
+			//@todo: 1.7.4: log something
 			return variant(); //no suitable file
 		}
 
@@ -502,7 +504,7 @@ private:
 		if(parsed_formula == game_logic::formula_ptr()) {
 			return variant(); //was unable to create a formula from file
 		}
-		return parsed_formula->evaluate(variables);//@todo: add fdb
+		return parsed_formula->evaluate(variables,add_debug_info(fdb,-1,"run_file:formula_from_file"));
 	}
 
 	formula_ai& ai_;
@@ -517,8 +519,9 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location starting_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-
+		const map_location starting_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"castle_locs:location")))->loc();
+		
+		//looks like reimplementing a generic graph search algorithm to me							       
                 std::set< map_location > visited_locs;
                 std::queue< map_location > queued_locs;
 
@@ -576,7 +579,7 @@ public:
 	}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,fdb);
+		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"timeofday_modifier:unit"));
 
 		if( u.is_null() ) {
 			return variant();
@@ -593,7 +596,7 @@ private:
 		map_location const* loc = NULL;
 
 		if(args().size()==2) {
-			loc = &convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+			loc = &convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"timeofday_modifier:location")))->loc();
 		}
 
 		if (loc == NULL) {
@@ -653,7 +656,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"suitable_keep:location")))->loc();
 		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
 			return variant();
 		}
@@ -677,7 +680,7 @@ private:
 		int w,h;
 
 		if(args().size()==1) {
-			const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,fdb))->get_gamemap();
+			const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"find_shroud:gamemap")))->get_gamemap();
 			w = m.w();
 			h = m.h();
 		} else {
@@ -707,8 +710,8 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> vars;
-		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		int range_s = args()[1]->evaluate(variables,fdb).as_int();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"close_enemies:location")))->loc();
+		int range_s = args()[1]->evaluate(variables,add_debug_info(fdb,1,"close_enemies:distance")).as_int();
 		if (range_s < 0) {
 			WRN_AI << "close_enemies_function: range is negative (" << range_s << ")\n";
 			range_s = 0;
@@ -718,7 +721,7 @@ private:
 		unit_map::const_iterator end = ai_.get_info().units.end();
 		while (un != end) {
 			if (distance_between(loc, un->first) <= range) {
-				if (un->second.side() != ai_.get_side()) {
+				if (un->second.side() != ai_.get_side()) {//fixme: ignores allied units
 					vars.push_back(variant(new unit_callable(*un)));
 				}
 			}
@@ -741,11 +744,11 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> vars;
 		int weapon;
-		if (args().size() > 3) weapon = args()[3]->evaluate(variables,fdb).as_int();
+		if (args().size() > 3) weapon = args()[3]->evaluate(variables,add_debug_info(fdb,3,"calculate_outcome:weapon")).as_int();
 		else weapon = -1;
 
 		map_location attacker_location =
-			convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
+			convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"calculate_outcome:attacker_current_location")))->loc();
 		if(ai_.get_info().units.count(attacker_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
 				attacker_location.x+1 << "," << attacker_location.y+1 << ")\n";
@@ -753,14 +756,14 @@ private:
 		}
 
 		map_location defender_location =
-			convert_variant<location_callable>(args()[2]->evaluate(variables,fdb))->loc();
+			convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"calculate_outcome:defender_location")))->loc();
 		if(ai_.get_info().units.count(defender_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
 				defender_location.x+1 << "," << defender_location.y+1 << ")\n";
 			return variant();
 		}
 
-		battle_context bc(ai_.get_info().units, convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc(),
+		battle_context bc(ai_.get_info().units, convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"calculate_outcome:attacker_attack_location")))->loc(),
 			defender_location, weapon, -1, 1.0, NULL, &ai_.get_info().units.find(attacker_location)->second);
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
@@ -823,7 +826,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant attack = args()[0]->evaluate(variables,fdb);
+		variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		typedef std::pair<map_location, map_location> mv;
@@ -858,11 +861,11 @@ private:
 //
 //private:
 //	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-//		variant position = args()[0]->evaluate(variables,fdb);
+//		variant position = args()[0]->evaluate(variables,add_debug_info(fdb,0,"evaluate_for_position:position"));
 //              ai_.store_outcome_position(position);
 //		position_callable* pos = convert_variant<position_callable>(position);
 //		position_callable::swapper swapper(ai_, *pos);
-//		return args()[1]->evaluate(variables,fdb);
+//		return args()[1]->evaluate(variables,add_debug_info(fdb,1,"evaluate_for_position:formula"));
 //	}
 //
 //	formula_ai& ai_;
@@ -875,7 +878,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const std::string type = args()[0]->evaluate(variables,fdb).as_string();
+		const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"get_unit_type:name")).as_string();
 
 		std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type( type );
 		if (unit_it != unit_type_data::types().end() )
@@ -893,10 +896,10 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const std::string type = args()[0]->evaluate(variables,fdb).as_string();
+		const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"recruit:type")).as_string();
 		map_location loc;
 		if(args().size() >= 2) {
-			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"recruit:location")))->loc();
 		}
 
 		return variant(new recruit_callable(loc, type));
@@ -915,15 +918,15 @@ private:
 
 		std::vector<variant> locations;
 
-		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"shortest_path:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"shortest_path:dst")))->loc();
                 map_location unit_loc;
 
                 if( src == dst )
                     return variant(&locations);
 
                 if(args().size() > 2)
-			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,fdb))->loc();
+			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"shortest_path:unit_location")))->loc();
                 else
                     unit_loc = src;
 
@@ -965,15 +968,15 @@ private:
 
 		std::vector<variant> locations;
 
-		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"simplest_path:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"simplest_path:dst")))->loc();
                 map_location unit_loc;
 
                 if( src == dst )
                     return variant(&locations);
 
                 if(args().size() > 2)
-			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,fdb))->loc();
+			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"simplest_path:unit_location")))->loc();
                 else
                     unit_loc = src;
 
@@ -1016,8 +1019,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"move:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"move:dst")))->loc();
 		LOG_AI << "move(): " << src << ", " << dst << ")\n";
 		return variant(new move_callable(src, dst));
 	}
@@ -1031,8 +1034,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"move_partial:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"move_partial:dst")))->loc();
 		LOG_AI << "move_partial(): " << src << ", " << dst << ")\n";
 		return variant(new move_partial_callable(src, dst));
 	}
@@ -1046,7 +1049,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new set_var_callable(args()[0]->evaluate(variables,fdb).as_string(), args()[1]->evaluate(variables,fdb)));
+		return variant(new set_var_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"set_var:key")).as_string(), args()[1]->evaluate(variables,add_debug_info(fdb,1,"set_var:value"))));
 	}
 };
 
@@ -1058,7 +1061,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new set_unit_var_callable(args()[0]->evaluate(variables,fdb).as_string(), args()[1]->evaluate(variables,fdb), convert_variant<location_callable>(args()[2]->evaluate(variables,fdb))->loc()));
+		return variant(new set_unit_var_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"set_unit_var:key")).as_string(), args()[1]->evaluate(variables,add_debug_info(fdb,1,"set_unit_var:value")), convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"set_unit_var:unit_location")))->loc()));
 	}
 };
 
@@ -1072,7 +1075,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		if( args().size() == 0 )
 			return variant(new fallback_callable(""));
-		return variant(new fallback_callable(args()[0]->evaluate(variables,fdb).as_string()));
+		return variant(new fallback_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"fallback:name")).as_string()));
 	}
 };
 
@@ -1085,10 +1088,10 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location move_from = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb))->loc();
-		const map_location src = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
-		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables,fdb))->loc();
-		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,fdb).as_int() : -1;
+		const map_location move_from = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"attack:move_from")))->loc();
+		const map_location src = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"attack:src")))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"attack:dst")))->loc();
+		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
 			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
 			return variant();
@@ -1163,14 +1166,14 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,fdb))->get_gamemap();
+		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"is_village:map")))->get_gamemap();
 
 		map_location loc;
 		if(args().size() == 2) {
-			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:location")))->loc();
 		} else {
-			loc = map_location( args()[1]->evaluate(variables,fdb).as_int() - 1,
-					    args()[2]->evaluate(variables,fdb).as_int() - 1 );
+			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_village:x")).as_int() - 1,
+					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_village:y")).as_int() - 1 );
 		}
 		return variant(m.is_village(loc));
 	}
@@ -1186,15 +1189,15 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 
-		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,fdb))->get_gamemap();
+		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"is_unowned_village:map")))->get_gamemap();
 		const std::set<map_location>& my_villages = ai_.current_team().villages();
 
 		map_location loc;
 		if(args().size() == 2) {
-			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc();
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:location")))->loc();
 		} else {
-			loc = map_location( args()[1]->evaluate(variables,fdb).as_int() - 1,
-					    args()[2]->evaluate(variables,fdb).as_int() - 1 );
+			loc = map_location( args()[1]->evaluate(variables,add_debug_info(fdb,1,"is_unowned_village:x")).as_int() - 1,
+					    args()[2]->evaluate(variables,add_debug_info(fdb,2,"is_unowned_village:y")).as_int() - 1 );
 		}
 
 		if(m.is_village(loc) && (my_villages.count(loc)==0) ) {
@@ -1215,7 +1218,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables,fdb));
+		const location_callable* loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location")));
 		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
 		if(i != ai_.get_info().units.end()) {
 			return variant(new unit_callable(*i));
@@ -1265,10 +1268,10 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		std::vector<variant> vars;
-		variant dstsrc_var = args()[0]->evaluate(variables,fdb);
+		variant dstsrc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"units_can_reach:possible_move_list"));
 		const ai::move_map& dstsrc = convert_variant<move_map_callable>(dstsrc_var)->dstsrc();
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
-			dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables,fdb))->loc());
+			dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"units_can_reach:possible_move_list")))->loc());
 		while(range.first != range.second) {
 			unit_map::const_iterator un = ai_.get_info().units.find(range.first->second);
 			assert(un != ai_.get_info().units.end());
@@ -1290,8 +1293,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,fdb);
-		variant loc_var = args()[1]->evaluate(variables,fdb);
+		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"defense_on:unit"));
+		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,1,"defense_on:location"));
 		if(u.is_null() || loc_var.is_null()) {
 			return variant();
 		}
@@ -1342,8 +1345,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,fdb);
-		variant loc_var = args()[1]->evaluate(variables,fdb);
+		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"chance_to_hit:unit"));
+		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,1,"chance_to_hit:location"));
 		if(u.is_null() || loc_var.is_null()) {
 			return variant();
 		}
@@ -1388,8 +1391,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,fdb);
-		variant loc_var = args()[1]->evaluate(variables,fdb);
+		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"movement_cost:unit"));
+		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,0,"movement_cost:location"));
 		if(u.is_null() || loc_var.is_null()) {
 			return variant();
 		}
@@ -1434,8 +1437,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u1 = args()[0]->evaluate(variables,fdb);
-		variant u2 = args()[1]->evaluate(variables,fdb);
+		variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage:unit1"));
+		variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage:unit2"));
 		if(u1.is_null() || u2.is_null()) {
 			return variant();
 		}
@@ -1507,8 +1510,8 @@ private:
 	}
 
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u1 = args()[0]->evaluate(variables,fdb);
-		variant u2 = args()[1]->evaluate(variables,fdb);
+		variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage_with_retaliation:unit1"));
+		variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage_with_retaliation:unit2"));
 
 		if(u1.is_null() || u2.is_null()) {
 			return variant();
