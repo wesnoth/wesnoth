@@ -95,8 +95,7 @@ void wait::leader_preview_pane::draw_contents()
 			ut = utypes.find_unit_type(leader);
 
 		if (ut != utypes.end()) {
-			unit_race::GENDER g = (gender == "female" ? unit_race::FEMALE : unit_race::MALE);
-			const unit_type& utg = ut->second.get_gender_unit_type(g);
+			const unit_type& utg = ut->second.get_gender_unit_type(gender);
 
 			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
 		}
@@ -473,8 +472,7 @@ void wait::generate_menu()
 			ut = utypes.find_unit_type(leader_type);
 
 		if (ut != utypes.end()) {
-			unit_race::GENDER g = (gender_id == "female" ? unit_race::FEMALE : unit_race::MALE);
-			const unit_type& utg = ut->second.get_gender_unit_type(g);
+			const unit_type& utg = ut->second.get_gender_unit_type(gender_id);
 
 			leader_name = utg.type_name();
 #ifdef LOW_MEM

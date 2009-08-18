@@ -183,6 +183,7 @@ public:
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 
+	const unit_type& get_gender_unit_type(std::string gender) const;
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
 	/** Info on the type of unit that the unit reanimates as. */

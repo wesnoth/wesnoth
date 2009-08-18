@@ -882,6 +882,13 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
 	build_status_ = CREATED;
 }
 
+const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+{
+	if (gender == "female") return get_gender_unit_type(unit_race::FEMALE);
+	else if (gender == "male") return get_gender_unit_type(unit_race::MALE);
+	else return *this;
+}
+
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;

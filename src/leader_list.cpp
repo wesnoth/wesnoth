@@ -127,11 +127,11 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 	}
 
 	unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
-	if (utypes.unit_type_exists(leader)) {
-		const unit_type* ut;
-		const unit_type* utg;
-		ut = &(utypes.find_unit_type(leader)->second);
-		const std::vector<unit_race::GENDER> genders = ut->genders();
+	const unit_type_data::unit_type_map::const_iterator
+		uti = utypes.find_unit_type(leader);
+	if (uti != utypes.end()) {
+		const unit_type& ut = uti->second;
+		const std::vector<unit_race::GENDER> genders = ut.genders();
 		if ( (genders.size() < 2) && (gender_combo_ != NULL) ) {
 			gender_combo_->enable(false);
 		} else {
@@ -140,16 +140,16 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 			if (gender_combo_ != NULL) gender_combo_->enable(true);
 		}
 		for (std::vector<unit_race::GENDER>::const_iterator i=genders.begin(); i != genders.end(); ++i) {
-			utg = &(ut->get_gender_unit_type(*i));
+			const unit_type& utg = ut.get_gender_unit_type(*i);
 
 			// Make the internationalized titles for each gender, along with the WML ids
 			if (*i == unit_race::FEMALE) {
 				gender_ids_.push_back("female");
-				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_suffix(utg->flag_rgb()) +
+				genders_.push_back(IMAGE_PREFIX + utg.image() + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Female ♀"));
 			} else {
 				gender_ids_.push_back("male");
-				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_suffix(utg->flag_rgb()) +
+				genders_.push_back(IMAGE_PREFIX + utg.image() + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Male ♂"));
 			}
 		}
@@ -177,20 +177,15 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 
 		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 
-		//const std::string name = data_->unit_types->find(*itor).type_name();
-		if (utypes.unit_type_exists(*itor)) {
-			const unit_type* ut;
-			ut = &(utypes.find_unit_type(*itor)->second);
+		const unit_type_data::unit_type_map::const_iterator
+			uti = utypes.find_unit_type(*itor);
+		if (uti != utypes.end()) {
+			std::string gender;
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
-				if (gender_ids_[gender_combo_->selected()] == "male"){
-					ut = &(utypes.find_unit_type(*itor)->second.get_gender_unit_type(unit_race::MALE));
-				} else if (gender_ids_[gender_combo_->selected()] == "female") {
-					ut = &(utypes.find_unit_type(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
-				}
+				gender = gender_ids_[gender_combo_->selected()];
 			}
-			const std::string name =  ut->type_name();
-			const std::string image = ut->image();
-			leader_strings.push_back(IMAGE_PREFIX + image + get_RC_suffix(ut->flag_rgb()) + COLUMN_SEPARATOR + name);
+			const unit_type& ut = uti->second.get_gender_unit_type(gender);
+			leader_strings.push_back(IMAGE_PREFIX + ut.image() + get_RC_suffix(ut.flag_rgb()) + COLUMN_SEPARATOR + ut.type_name());
 
 		} else {
 			if(*itor == "random") {
