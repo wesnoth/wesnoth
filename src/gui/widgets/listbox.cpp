@@ -337,5 +337,10 @@ void tlistbox::finalize(
 
 }
 
+const std::string& tlistbox::get_control_type() const
+{
+	static const std::string type = "listbox";
+	return type;
+}
 } // namespace gui2
 

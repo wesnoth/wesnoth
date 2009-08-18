@@ -67,5 +67,11 @@ void tminimap::draw_map(surface& surface)
 	}
 }
 
+const std::string& tminimap::get_control_type() const
+{
+	static const std::string type = "minimap";
+	return type;
+}
+
 } // namespace gui2
 

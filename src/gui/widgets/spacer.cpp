@@ -14,10 +14,16 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/spacer.hpp"
+
 namespace gui2 {
 
+const std::string& tspacer::get_control_type() const
+{
+	static const std::string type = "spacer";
+	return type;
+}
 
 } // namespace gui2
-
 
 

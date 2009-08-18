@@ -340,5 +340,11 @@ void ttext_box::load_config_extra()
 	update_offsets();
 }
 
+const std::string& ttext_box::get_control_type() const
+{
+	static const std::string type = "text_box";
+	return type;
+}
+
 } //namespace gui2
 

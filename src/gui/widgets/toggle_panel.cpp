@@ -164,6 +164,12 @@ void ttoggle_panel::set_state(const tstate state)
 	assert(conf);
 }
 
+const std::string& ttoggle_panel::get_control_type() const
+{
+	static const std::string type = "toggle_panel";
+	return type;
+}
+
 } // namespace gui2
 
 

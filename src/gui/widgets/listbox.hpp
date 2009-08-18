@@ -227,8 +227,7 @@ private:
 	void (*callback_value_changed_) (twidget*);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "listbox"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

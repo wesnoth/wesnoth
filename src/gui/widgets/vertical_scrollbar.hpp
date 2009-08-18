@@ -57,8 +57,7 @@ private:
 		{ return current.y - original.y; }
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "vertical_scrollbar"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

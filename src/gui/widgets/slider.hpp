@@ -157,8 +157,7 @@ private:
 	std::vector<t_string> value_labels_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "slider"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

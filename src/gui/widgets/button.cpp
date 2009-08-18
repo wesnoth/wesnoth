@@ -80,4 +80,10 @@ void tbutton::set_state(const tstate state)
 	}
 }
 
+const std::string& tbutton::get_control_type() const
+{
+	static const std::string type = "button";
+	return type;
+}
+
 } // namespace gui2

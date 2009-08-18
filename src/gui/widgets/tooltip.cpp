@@ -14,7 +14,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/tooltip.hpp"
+
 namespace gui2 {
+
+const std::string& ttooltip::get_control_type() const
+{
+	static const std::string type = "tooltip";
+	return type;
+}
 
 } // namespace gui2
 

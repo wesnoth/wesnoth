@@ -92,5 +92,11 @@ int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
+const std::string& thorizontal_scrollbar::get_control_type() const
+{
+	static const std::string type = "horizontal_scrollbar";
+	return type;
+}
+
 } // namespace gui2
 

@@ -27,6 +27,11 @@ void tlabel::set_state(const tstate state)
 	}
 }
 
-} // namespace gui2
+const std::string& tlabel::get_control_type() const
+{
+	static const std::string type = "label";
+	return type;
+}
 
+} // namespace gui2
 

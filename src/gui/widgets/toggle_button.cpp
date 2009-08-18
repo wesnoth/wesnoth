@@ -149,5 +149,11 @@ void ttoggle_button::set_state(const tstate state)
 	}
 }
 
+const std::string& ttoggle_button::get_control_type() const
+{
+	static const std::string type = "toggle_button";
+	return type;
+}
+
 } // namespace gui2
 
