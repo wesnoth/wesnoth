@@ -407,6 +407,7 @@ void play_controller::fire_prestart(bool execute){
 	if (execute){
 		update_locker lock_display(gui_->video());
 		game_events::fire("prestart");
+		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
 	}
