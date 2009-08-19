@@ -929,7 +929,7 @@ bool game_controller::play_multiplayer_mode()
 		}
 		
 		upload_log log( all_ai && uploader_settings::new_uploader );
-		recorder.add_log_data("ai_label",label);;
+		recorder.add_log_data("ai_log","ai_label",label);
 
 		state_.snapshot = level;
 		play_game(disp(),state_,game_config_,log);

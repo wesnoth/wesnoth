@@ -19,6 +19,8 @@
 #include "manager.hpp"
 #include "testing.hpp"
 #include "../log.hpp"
+#include "../replay.hpp"
+#include "../util.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");
 #define DBG_AI_TESTING LOG_STREAM(debug, log_ai_testing)
@@ -54,17 +56,30 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	DBG_AI_TESTING << msg << "_GOLD"       << side << ": " << _gold << std::endl;
 	DBG_AI_TESTING << msg << "_VILLAGES"   << side << ": " << _villages << std::endl;
 	DBG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
+	
+	config c;
+        c["side"] = str_cast(side);
+        c["turn"] = str_cast(_turn_number);
+        c["event"] = msg;
+        c["units"] = str_cast(_units);
+        c["units_cost"] =str_cast(_units_cost);
+        c["gold"] = str_cast(_gold);
+        c["villages"] = str_cast(_villages);
+	recorder.add_log_data("ai_log","turn_info",c);
 }
 
 void ai_testing::log_draw()
 {
 	LOG_AI_TESTING << "DRAW:" << std::endl;
+	recorder.add_log_data("ai_log","result","draw");
 }
 
 void ai_testing::log_victory(std::vector<unsigned int> winners)
 {
+	recorder.add_log_data("ai_log","result","victory");
 	for(std::vector<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
 		LOG_AI_TESTING << "WINNER: "<< *w <<std::endl;
+		recorder.add_log_data("ai_log","winner",str_cast(*w));
 	}
 }
 
@@ -77,9 +92,12 @@ void ai_testing::log_game_start()
 		LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
+	recorder.add_log_data("ai_log","version",game_config::revision);
 }
 
 void ai_testing::log_game_end()
 {
 	LOG_AI_TESTING << "GAME_END_TURN: "<< ai::manager::get_ai_info().tod_manager_.turn() <<std::endl;
+	recorder.add_log_data("ai_log","end_turn",
+		str_cast(ai::manager::get_ai_info().tod_manager_.turn()));
 }

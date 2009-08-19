@@ -379,8 +379,22 @@ void replay::add_event(const std::string& name, const map_location& loc)
 
 void replay::add_log_data(const std::string &key, const std::string &var)
 {
-	config* const ulog = &add_command(false)->add_child("upload_log");
-	(*ulog)[key] = var;
+	config& ulog = cfg_.child_or_add("upload_log");
+	ulog[key] = var;
+}
+
+void replay::add_log_data(const std::string &category, const std::string &key, const std::string &var)
+{
+	config& ulog = cfg_.child_or_add("upload_log");
+	config& cat = ulog.child_or_add(category);
+	cat[key] = var;
+}
+
+void replay::add_log_data(const std::string &category, const std::string &key, const config &c)
+{
+	config& ulog = cfg_.child_or_add("upload_log");
+	config& cat = ulog.child_or_add(category);
+	cat.add_child(key,c);
 }
 
 void replay::add_checksum_check(const map_location& loc)

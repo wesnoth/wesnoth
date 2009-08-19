@@ -66,6 +66,8 @@ public:
 	void add_unit_checksum(const map_location& loc,config* const cfg);
 	void add_checksum_check(const map_location& loc);
 	void add_log_data(const std::string &key, const std::string &var);
+	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
+	void add_log_data(const std::string &category, const std::string &key, const config& c);
 	
 	/**
 	 * Mark an expected advancement adding it to the queue

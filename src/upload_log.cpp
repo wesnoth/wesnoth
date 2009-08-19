@@ -212,7 +212,7 @@ static int upload_logs_dev(void *_ti)
 				// As long as we can actually send the data, delete the file.
 				// Even if the server gives a bad response, we don't want to
 				// be sending the same bad data over and over to the server.
-				delete_directory(*i);
+				//delete_directory(*i);
 				numfiles++;
 
 				if (SDLNet_TCP_Recv(sock, response, sizeof(response))
@@ -270,8 +270,9 @@ void upload_log::read_replay()
 		game_ = new config();
 	}
 
-	foreach (const config &c, recorder.get_replay_data().child_range("command")) {
-		if(c.child_count("attack")) {
+	const config& rd = recorder.get_replay_data();
+	foreach (const config &c, rd.child_range("command")) {
+		if(c.child("attack")) {
 			//search through the attack to see if a unit died
 			foreach (const config &c2, c.child_range("random")) {
 				if(c2.child_count("results") && c2.child("results")["dies"] == "yes") {
@@ -281,10 +282,10 @@ void upload_log::read_replay()
 				}
 			}	
 		}
-		
-		if(c.child_count("upload_log")) {
-			game_->merge_with(c.child("upload_log"));
-		}
+	}
+
+	if(rd.child("upload_log")) {
+		game_->add_child("upload_log",rd.child("upload_log"));
 	}
 }
 
