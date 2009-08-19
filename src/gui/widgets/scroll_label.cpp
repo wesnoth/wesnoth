@@ -68,5 +68,11 @@ void tscroll_label::finalize_subclass()
 	lbl->set_can_wrap(true);
 }
 
+const std::string& tscroll_label::get_control_type() const
+{
+	static const std::string type = "scroll_label";
+	return type;
+}
+
 } // namespace gui2
 

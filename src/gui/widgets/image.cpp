@@ -37,5 +37,11 @@ tpoint timage::calculate_best_size() const
 	return result;
 }
 
+const std::string& timage::get_control_type() const
+{
+	static const std::string type = "image";
+	return type;
+}
+
 } // namespace gui2
 

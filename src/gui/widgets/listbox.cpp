@@ -299,5 +299,10 @@ void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
 	content_grid()->set_size(origin, s);
 }
 
+const std::string& tlistbox::get_control_type() const
+{
+	static const std::string type = "listbox";
+	return type;
+}
 } // namespace gui2
 

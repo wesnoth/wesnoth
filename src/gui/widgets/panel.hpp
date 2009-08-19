@@ -65,8 +65,7 @@ private:
 	void impl_draw_foreground(surface& frame_buffer);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "panel"; return type; }
+	const std::string& get_control_type() const;
 
 	/** Inherited from tcontainer_. */
 	tpoint border_space() const;

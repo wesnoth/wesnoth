@@ -18,5 +18,11 @@
 
 namespace gui2 {
 
+const std::string& tscrollbar_panel::get_control_type() const
+{
+    static const std::string type = "scrollbar_panel";
+    return type;
+}
+
 } // namespace gui2
 

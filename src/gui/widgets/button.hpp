@@ -101,8 +101,7 @@ private:
 	void (*callback_mouse_left_click_) (twidget*);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "button"; return type; }
+	const std::string& get_control_type() const;
 };
 
 

@@ -74,8 +74,7 @@ private:
 	bool can_wrap_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "label"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

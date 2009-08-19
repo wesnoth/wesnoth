@@ -533,8 +533,7 @@ private:
 	bool easy_close();
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "window"; return type; }
+	const std::string& get_control_type() const;
 
 	/**
 	 * Inherited from tpanel.

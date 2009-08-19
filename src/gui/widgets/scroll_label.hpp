@@ -80,8 +80,7 @@ private:
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "scroll_label"; return type; }
+	const std::string& get_control_type() const;
 
 };
 

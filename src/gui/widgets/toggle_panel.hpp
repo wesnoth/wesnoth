@@ -190,8 +190,7 @@ private:
 
 
 	/** Inherited from tpanel. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "toggle_panel"; return type; }
+	const std::string& get_control_type() const;
 
 };
 

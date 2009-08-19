@@ -77,5 +77,11 @@ void tstacked_widget::finalize(
 	}
 }
 
+const std::string& tstacked_widget::get_control_type() const
+{
+    static const std::string type = "stacked_widget";
+    return type;
+}
+
 } // namespace gui2
 

@@ -913,6 +913,12 @@ bool twindow::easy_close()
 	return false;
 }
 
+const std::string& twindow::get_control_type() const
+{
+	static const std::string type = "window";
+	return type;
+}
+
 void twindow::draw(surface& /*surf*/, const bool /*force*/,
 		const bool /*invalidate_background*/)
 {

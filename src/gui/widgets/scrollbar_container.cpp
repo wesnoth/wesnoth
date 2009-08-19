@@ -846,5 +846,11 @@ void tscrollbar_container::scrollbar_moved()
 	set_scrollbar_button_status();
 }
 
+const std::string& tscrollbar_container::get_control_type() const
+{
+	static const std::string type = "scrollbar_container";
+	return type;
+}
+
 } // namespace gui2
 

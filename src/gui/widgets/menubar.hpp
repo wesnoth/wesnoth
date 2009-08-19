@@ -117,8 +117,7 @@ private:
 		{ state_ = active ? ENABLED : DISABLED; }
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "menubar"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

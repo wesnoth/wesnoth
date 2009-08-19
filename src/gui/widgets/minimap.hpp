@@ -96,8 +96,7 @@ private:
 	void impl_draw_background(surface& frame_buffer);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "minimap"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

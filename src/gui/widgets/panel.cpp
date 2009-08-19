@@ -60,5 +60,11 @@ tpoint tpanel::border_space() const
 		conf->top_border + conf->bottom_border);
 }
 
+const std::string& tpanel::get_control_type() const
+{
+	static const std::string type = "panel";
+	return type;
+}
+
 } // namespace gui2
 

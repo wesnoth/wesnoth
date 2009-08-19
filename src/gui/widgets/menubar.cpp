@@ -148,5 +148,10 @@ void tmenubar::finalize_setup()
 	}
 }
 
+const std::string& tmenubar::get_control_type() const
+{
+	static const std::string type = "menubar";
+	return type;
+}
 } // namespace gui2
 

@@ -136,6 +136,12 @@ void tmulti_page::finalize(
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 }
 
+const std::string& tmulti_page::get_control_type() const
+{
+	static const std::string type = "multi_page";
+	return type;
+}
+
 } // namespace gui2
 
 

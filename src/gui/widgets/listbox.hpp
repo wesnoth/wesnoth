@@ -241,8 +241,7 @@ private:
 	virtual void set_content_size(const tpoint& origin, const tpoint& size);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "listbox"; return type; }
+	const std::string& get_control_type() const;
 };
 
 } // namespace gui2

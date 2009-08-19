@@ -237,5 +237,11 @@ void tslider::update_canvas()
 	}
 }
 
+const std::string& tslider::get_control_type() const
+{
+	static const std::string type = "slider";
+	return type;
+}
+
 } // namespace gui2
 

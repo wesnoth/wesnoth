@@ -54,8 +54,7 @@ public:
 private:
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "scrollbar_panel"; return type; }
+	const std::string& get_control_type() const;
 
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool /*active*/) {}

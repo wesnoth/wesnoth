@@ -79,8 +79,7 @@ private:
 	void impl_draw_background(surface& /*frame_buffer*/) {}
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "spacer"; return type; }
+	const std::string& get_control_type() const;
 };
 
 

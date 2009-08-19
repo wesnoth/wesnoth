@@ -79,6 +79,12 @@ int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
+const std::string& tvertical_scrollbar::get_control_type() const
+{
+	static const std::string type = "vertical_scrollbar";
+	return type;
+}
+
 } // namespace gui2
 
 

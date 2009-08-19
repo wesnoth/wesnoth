@@ -133,8 +133,7 @@ private:
 	std::string icon_name_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const
-		{ static const std::string type = "toggle_button"; return type; }
+	const std::string& get_control_type() const;
 
 };
 
