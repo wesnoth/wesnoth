@@ -29,7 +29,7 @@ namespace gui2 {
  *
  * This shows the dialog for managing addons and connecting to the addon server.
  *
- * @start_table = container
+ * @start_table = grid
  *     [] (button) (2)                 This button closes the dialog and
  *                                     starts the addon manager.
  *     [] (button) (3)                 This button closes the dialog and
