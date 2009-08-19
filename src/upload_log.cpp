@@ -281,6 +281,10 @@ void upload_log::read_replay()
 				}
 			}	
 		}
+		
+		if(c.child_count("upload_log")) {
+			game_->merge_with(c.child("upload_log"));
+		}
 	}
 }
 

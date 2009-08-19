@@ -377,6 +377,12 @@ void replay::add_event(const std::string& name, const map_location& loc)
 	(*cmd)["undo"] = "no";
 }
 
+void replay::add_log_data(const std::string &key, const std::string &var)
+{
+	config* const ulog = &add_command(false)->add_child("upload_log");
+	(*ulog)[key] = var;
+}
+
 void replay::add_checksum_check(const map_location& loc)
 {
 	if(! game_config::mp_debug) {
