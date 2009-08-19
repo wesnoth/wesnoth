@@ -459,7 +459,7 @@ void ttext::recalculate(const bool force) const
 static void decode_pixel(const unsigned char alpha, unsigned char *sub_pixel)
 {
 	unsigned colour = *sub_pixel;
-	// Sature at 255.
+	// Saturate at 255.
 	*sub_pixel = colour >= alpha
 			? 255
 			: static_cast<unsigned char>((colour << 8) / alpha);
