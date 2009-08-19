@@ -34,8 +34,26 @@ namespace gui2 {
  *
  * == Campaign selection ==
  *
- * This shows the dialog choose which campaign the user wants to play. This
- * dialog is under construction and only used with --new-widgets.
+ * This shows the dialog choose which campaign the user wants to play.
+ *
+ * @start_table = grid
+ *     (campaign_list) (listbox) ()
+ *                                A listbox that contains all available
+ *                                campaigns.
+ *     -[icon] (image) ()         The icon for the campaign.
+ *     -[name] (control) ()       The name of the campaign.
+ *     -[victory] (image) ()      The icon to show when the user finished the
+ *                                campaign. The engine determines whether or
+ *                                not the user has finished the campaign and
+ *                                sets the visible flag for the widget
+ *                                accordingly.
+ *     (campaign_details) (multi_page) ()
+ *                                A multi page widget that shows more details
+ *                                for the selected campaign.
+ *     -[image] (image) ()        The image for the campaign.
+ *     -[description] (control) ()
+ *                                The description of the campaign.
+ * @end_table
  */
 
 void tcampaign_selection::campaign_selected(twindow& window)
