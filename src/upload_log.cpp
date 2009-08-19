@@ -212,7 +212,7 @@ static int upload_logs_dev(void *_ti)
 				// As long as we can actually send the data, delete the file.
 				// Even if the server gives a bad response, we don't want to
 				// be sending the same bad data over and over to the server.
-				//delete_directory(*i);
+				delete_directory(*i);
 				numfiles++;
 
 				if (SDLNet_TCP_Recv(sock, response, sizeof(response))
