@@ -521,6 +521,7 @@ void part_ui::wait_for_input()
 		events::raise_process_event();
 		events::raise_draw_event();
 		disp_.flip();
+		disp_.delay(20);
 	}
 }
 

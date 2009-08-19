@@ -11,6 +11,7 @@ Version 1.7.3+svn:
    * Removed obsolete code for implicit linked widgets for the listbox
    * [part] caption= is no longer supported; prepend the CAPTION macro
      to story text instead
+   * Fixed 100% CPU usage on storyscreens with no text (e.g. map screens)
  * WML Engine:
    * Support for [show_if] inside [message]	
    * Fix ODR issues in gui2
