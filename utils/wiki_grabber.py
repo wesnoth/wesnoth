@@ -291,11 +291,7 @@ if __name__ == "__main__":
         result = '{| border="1"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
         for i in range(len(res)):
-            result += "|-\n"
-            if(res[i][2] == ""):
-                result += "|"
-            else:
-                result += "| " + res[i][2] + " "
+            result += "|-\n| " + "&nbsp;" * len(res[i][0]) * 8 + res[i][2] + " "
 
             if(res[i][4] == ""):
                 result += "\n"
