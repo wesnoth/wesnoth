@@ -1342,20 +1342,80 @@ private:
 		}
 	}
 
+	void menu_handler::create_unit_2(mouse_handler& mousehandler)
+	{
+		assert(gui_ != NULL);
+		static unit_race::GENDER gender = unit_race::MALE;
+		static bool generate_name = false;
+		static std::string last_choice = "";
+		std::vector<const unit_type*> unit_choices;
+		std::vector<std::string> type_ids;
+		size_t choice = 0;
+
+		gui2::tunit_create create_dlg;
+
+		create_dlg.set_gender(gender);
+		create_dlg.set_generate_name(generate_name);
+		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
+			assert(&(i->second) != NULL);
+
+			const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
+			std::string race;
+
+			if(race_it != unit_type_data::types().races().end()) {
+				race = race_it->second.plural_name();
+			}
+
+			create_dlg.add_race_type_pair(race, i->second.type_name());
+			unit_choices.push_back(&(i->second));
+			type_ids.push_back(i->first);
+
+			if(i->first == last_choice) {
+				choice = unit_choices.size() - 1;
+			}
+		}
+		create_dlg.set_list_choice(choice);
+
+		create_dlg.show(gui_->video());
+
+		if((choice = create_dlg.list_choice()) == create_dlg.no_choice()) {
+			return;
+		}
+		assert(type_ids.size() >= choice);
+		last_choice = type_ids[choice];
+		gender = create_dlg.gender();
+		generate_name = create_dlg.generate_name();
+
+		const unit_type& ut = *unit_choices[choice];
+
+		// Do not try to set bad genders, may mess up l10n
+		// FIXME: is this actually necessary?
+		if(ut.genders().end() == std::find(ut.genders().begin(), ut.genders().end(), gender)) {
+			gender = ut.genders().front();
+		}
+
+		unit chosen(&units_, unit_choices[choice], 1, false, false, gender, "");
+		chosen.new_turn();
+
+		const map_location& loc = mousehandler.get_last_hex();
+		units_.replace(loc, chosen);
+
+		if(map_.is_village(loc)) {
+			int team = chosen.side() - 1; // translate to 0-based team number
+			get_village(loc, *gui_, teams_, team, units_);
+		}
+
+		gui_->invalidate(loc);
+		gui_->invalidate_unit();
+	}
+
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
 		if(gui2::new_widgets) {
-			assert(gui_ != NULL);
-			static unit_race::GENDER last_gender = unit_race::MALE;
-
-			gui2::tunit_create create_dlg;
-			create_dlg.set_gender(last_gender);
-
-			create_dlg.show(gui_->video());
-
-			last_gender = create_dlg.gender();
+			create_unit_2(mousehandler);
 			return;
 		}
+
 		std::vector<std::string> options;
 		static int last_selection = -1;
 		static bool random_gender = false;
