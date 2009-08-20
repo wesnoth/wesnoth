@@ -90,6 +90,8 @@ void ai_testing::log_game_start()
 		int side = tm-i.teams.begin()+1;
 		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
 		LOG_AI_TESTING << "FACTION"<<side<<": " << tm->name() << std::endl;
+		recorder.add_log_data("ai_log","ai_id"+str_cast(side),ai::manager::get_active_ai_identifier_for_side(side));
+		recorder.add_log_data("ai_log","faction"+str_cast(side),tm->name());
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision << std::endl;
 	recorder.add_log_data("ai_log","version",game_config::revision);
@@ -100,4 +102,10 @@ void ai_testing::log_game_end()
 	LOG_AI_TESTING << "GAME_END_TURN: "<< ai::manager::get_ai_info().tod_manager_.turn() <<std::endl;
 	recorder.add_log_data("ai_log","end_turn",
 		str_cast(ai::manager::get_ai_info().tod_manager_.turn()));
+	ai::game_info& i = ai::manager::get_ai_info();
+	for (std::vector<team>::const_iterator tm = i.teams.begin(); tm != i.teams.end(); ++tm) {
+		int side = tm-i.teams.begin()+1;
+		recorder.add_log_data("ai_log","end_gold"+str_cast(side),str_cast(tm->gold()));
+		recorder.add_log_data("ai_log","end_units"+str_cast(side),str_cast(side_units(i.units,side)));
+	}
 }
