@@ -124,7 +124,7 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 		return format;
 	}
 
-surface make_neutral_surface(surface const &surf)
+surface make_neutral_surface(const surface &surf)
 {
 	if(surf == NULL) {
 		std::cerr << "null neutral surface...\n";
@@ -157,7 +157,7 @@ surface create_neutral_surface(int w, int h)
 	return result;
 }
 
-surface create_optimized_surface(surface const &surf)
+surface create_optimized_surface(const surface &surf)
 {
 	if(surf == NULL)
 		return NULL;
@@ -263,7 +263,7 @@ surface stretch_surface_vertical(
 }
 
 // NOTE: Don't pass this function 0 scaling arguments.
-surface scale_surface(surface const &surf, int w, int h, bool optimize)
+surface scale_surface(const surface &surf, int w, int h, bool optimize)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
 	assert(SDL_ALPHA_TRANSPARENT==0);
@@ -427,7 +427,7 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize)
 // This is a copy-paste of the previous function scale_surface
 // We only removed the alpha channel and big comments
 // and change how we optimize the resulting surface
-surface scale_opaque_surface(surface const &surf, int w, int h, bool optimize_format)
+surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_format)
 {
 	if(surf == NULL)
 		return NULL;
@@ -516,7 +516,7 @@ surface scale_opaque_surface(surface const &surf, int w, int h, bool optimize_fo
 }
 
 
-surface scale_surface_blended(surface const &surf, int w, int h, bool optimize)
+surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 {
 	if(surf== NULL)
 		return NULL;
@@ -600,7 +600,7 @@ surface scale_surface_blended(surface const &surf, int w, int h, bool optimize)
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
-surface adjust_surface_colour(surface const &surf, int red, int green, int blue, bool optimize)
+surface adjust_surface_colour(const surface &surf, int red, int green, int blue, bool optimize)
 {
 	if((red == 0 && green == 0 && blue == 0) || surf == NULL)
 		return create_optimized_surface(surf);
@@ -640,7 +640,7 @@ surface adjust_surface_colour(surface const &surf, int red, int green, int blue,
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface greyscale_image(surface const &surf, bool optimize)
+surface greyscale_image(const surface &surf, bool optimize)
 {
 	if(surf == NULL)
 		return NULL;
@@ -685,7 +685,7 @@ surface greyscale_image(surface const &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface shadow_image(surface const &surf, bool optimize)
+surface shadow_image(const surface &surf, bool optimize)
 {
 	if(surf == NULL)
 		return NULL;
@@ -759,7 +759,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, boo
 	return surf;
 }
 
-surface brighten_image(surface const &surf, fixed_t amount, bool optimize)
+surface brighten_image(const surface &surf, fixed_t amount, bool optimize)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -801,7 +801,7 @@ surface brighten_image(surface const &surf, fixed_t amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
+surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -840,7 +840,7 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
+surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -878,7 +878,7 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface mask_surface(surface const &surf, surface const &mask)
+surface mask_surface(const surface &surf, const surface &mask)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -934,7 +934,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 	//return create_optimized_surface(nsurf);
 }
 
-bool in_mask_surface(surface const &surf, surface const &mask)
+bool in_mask_surface(const surface &surf, const surface &mask)
 {
 	if(surf == NULL || mask == NULL) {
 		return false;
@@ -977,7 +977,7 @@ bool in_mask_surface(surface const &surf, surface const &mask)
 	return true;
 }
 
-surface blur_surface(surface const &surf, int depth, bool optimize)
+surface blur_surface(const surface &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -1115,7 +1115,7 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 	}
 }
 
-surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
+surface blur_alpha_surface(const surface &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -1237,7 +1237,7 @@ surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
 	return optimize ? create_optimized_surface(res) : res;
 }
 
-surface cut_surface(surface const &surf, SDL_Rect const &r)
+surface cut_surface(const surface &surf, SDL_Rect const &r)
 {
 	surface res = create_compatible_surface(surf, r.w, r.h);
 
@@ -1288,7 +1288,7 @@ surface cut_surface(surface const &surf, SDL_Rect const &r)
 	return res;
 }
 
-surface blend_surface(surface const &surf, double amount, Uint32 colour, bool optimize)
+surface blend_surface(const surface &surf, double amount, Uint32 colour, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -1335,7 +1335,7 @@ surface blend_surface(surface const &surf, double amount, Uint32 colour, bool op
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface flip_surface(surface const &surf, bool optimize)
+surface flip_surface(const surface &surf, bool optimize)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -1364,7 +1364,7 @@ surface flip_surface(surface const &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface flop_surface(surface const &surf, bool optimize)
+surface flop_surface(const surface &surf, bool optimize)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -1394,7 +1394,7 @@ surface flop_surface(surface const &surf, bool optimize)
 }
 
 
-surface create_compatible_surface(surface const &surf, int width, int height)
+surface create_compatible_surface(const surface &surf, int width, int height)
 {
 	if(surf == NULL)
 		return NULL;
@@ -1564,7 +1564,7 @@ void blit_surface(const surface& src,
 
 
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target)
+void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, const surface &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
 		SDL_FillRect(target,&rect,colour);
@@ -1584,7 +1584,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &
 	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
 
-surface get_surface_portion(surface const &src, SDL_Rect &area, bool optimize_format)
+surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_format)
 {
 	if (src == NULL) {
 		return NULL;
@@ -1630,7 +1630,7 @@ struct not_alpha
 
 }
 
-SDL_Rect get_non_transparent_portion(surface const &surf)
+SDL_Rect get_non_transparent_portion(const surface &surf)
 {
 	SDL_Rect res = {0,0,0,0};
 	const surface nsurf(make_neutral_surface(surf));

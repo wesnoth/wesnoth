@@ -135,9 +135,9 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
-surface make_neutral_surface(surface const &surf);
+surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
-surface create_optimized_surface(surface const &surf);
+surface create_optimized_surface(const surface &surf);
 
 /**
  *  Streches a surface in the horizontal direction.
@@ -187,7 +187,7 @@ surface stretch_surface_vertical(
  *  @retval surf             Returned if w == surf->w and h == surf->h
  *                           note this ignores the optimize flag.
  */
-surface scale_surface(surface const &surf, int w, int h, bool optimize=true);
+surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
 
 /** Scale an opaque surface
  *  @param surf              The source surface.
@@ -200,17 +200,17 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize=true);
  *  @retval surf             Returned if w == surf->w and h == surf->h
  *                           note this ignores the optimize_format flag.
  */
-surface scale_opaque_surface(surface const &surf, int w, int h, bool optimize_format=false);
+surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_format=false);
 
-surface scale_surface_blended(surface const &surf, int w, int h, bool optimize=true);
-surface adjust_surface_colour(surface const &surf, int r, int g, int b, bool optimize=true);
-surface greyscale_image(surface const &surf, bool optimize=true);
+surface scale_surface_blended(const surface &surf, int w, int h, bool optimize=true);
+surface adjust_surface_colour(const surface &surf, int r, int g, int b, bool optimize=true);
+surface greyscale_image(const surface &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(surface const &surf, bool optimize=true);
+surface shadow_image(const surface &surf, bool optimize=true);
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
 	bool optimize=true);
 
-surface brighten_image(surface const &surf, fixed_t amount, bool optimize=true);
+surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
 
 /** Get a portion of the screen.
  *  Send NULL if the portion is outside of the screen.
@@ -223,20 +223,20 @@ surface brighten_image(surface const &surf, fixed_t amount, bool optimize=true);
  *                           No RLE or Alpha bits are set.
  *  @retval 0                if error or the portion is outside of the surface.
  */
-surface get_surface_portion(surface const &surf, SDL_Rect &rect,
+surface get_surface_portion(const surface &surf, SDL_Rect &rect,
 	bool optimize_format=false);
 
-surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
-surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize=true);
+surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize=true);
+surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);
 
 /** Applies a mask on a surface. */
-surface mask_surface(surface const &surf, surface const &mask);
+surface mask_surface(const surface &surf, const surface &mask);
 
 /** Check if a surface fit into a mask */
-bool in_mask_surface(surface const &surf, surface const &mask);
+bool in_mask_surface(const surface &surf, const surface &mask);
 
 /** Cross-fades a surface. */
-surface blur_surface(surface const &surf, int depth = 1, bool optimize=true);
+surface blur_surface(const surface &surf, int depth = 1, bool optimize=true);
 
 /**
  * Cross-fades a surface in place.
@@ -254,14 +254,14 @@ void blur_surface(surface& surf, SDL_Rect rect, unsigned depth = 1);
  * @todo FIXME: This is just an adapted copy-paste
  * of the normal blur but with blur alpha channel too
  */
-surface blur_alpha_surface(surface const &surf, int depth = 1, bool optimize=true);
+surface blur_alpha_surface(const surface &surf, int depth = 1, bool optimize=true);
 
 /** Cuts a rectangle from a surface. */
-surface cut_surface(surface const &surf, SDL_Rect const &r);
-surface blend_surface(surface const &surf, double amount, Uint32 colour, bool optimize=true);
-surface flip_surface(surface const &surf, bool optimize=true);
-surface flop_surface(surface const &surf, bool optimize=true);
-surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
+surface cut_surface(const surface &surf, SDL_Rect const &r);
+surface blend_surface(const surface &surf, double amount, Uint32 colour, bool optimize=true);
+surface flip_surface(const surface &surf, bool optimize=true);
+surface flop_surface(const surface &surf, bool optimize=true);
+surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
  *  Replacement for SDL_BlitSurface.
@@ -280,9 +280,9 @@ surface create_compatible_surface(surface const &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, const surface &target);
 
-SDL_Rect get_non_transparent_portion(surface const &surf);
+SDL_Rect get_non_transparent_portion(const surface &surf);
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
@@ -326,7 +326,7 @@ struct pixel_data
 
 struct surface_lock
 {
-	surface_lock(surface const &surf) : surface_(surf), locked_(false)
+	surface_lock(const surface &surf) : surface_(surf), locked_(false)
 	{
 		if(SDL_MUSTLOCK(surface_)) {
 			const int res = SDL_LockSurface(surface_);
@@ -370,7 +370,7 @@ private:
 
 struct clip_rect_setter
 {
-	clip_rect_setter(surface const &surf, const SDL_Rect& r) : surface_(surf), rect()
+	clip_rect_setter(const surface &surf, const SDL_Rect& r) : surface_(surf), rect()
 	{
 		SDL_GetClipRect(surface_,&rect);
 		SDL_SetClipRect(surface_,&r);
