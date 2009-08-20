@@ -106,6 +106,12 @@ class tod_manager : public savegame_config
 		 */
 		bool next_turn();
 
+		/**
+		 * Function to check the end of turns.
+		 *
+		 * @returns                   True if time has not expired.
+		 */
+		bool is_time_not_over();
 	private:
 		void set_start_ToD(config&, int current_turn);
 

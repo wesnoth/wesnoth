@@ -319,5 +319,11 @@ bool tod_manager::next_turn()
 {
 	next_time_of_day();
 	++turn_;
+	return is_time_not_over();
+}
+
+
+bool tod_manager::is_time_not_over()
+{
 	return num_turns_ == -1 || turn_ <= size_t(num_turns_);
 }

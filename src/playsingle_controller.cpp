@@ -837,14 +837,18 @@ void playsingle_controller::check_time_over(){
 	bool b = next_turn();
 	if(!b) {
 
+		LOG_NG << "firing time over event...\n";
+		game_events::fire("time over");
+		LOG_NG << "done firing time over event...\n";
+		//if turns are added while handling 'time over' event
+		if (tod_manager_.is_time_not_over()) {
+			return;
+		}
+
 		if(non_interactive()) {
 			std::cout << "time over (draw)\n";
 			ai_testing::log_draw();
 		}
-
-		LOG_NG << "firing time over event...\n";
-		game_events::fire("time over");
-		LOG_NG << "done firing time over event...\n";
 
 		check_end_level();
 		throw end_level_exception(DEFEAT);
