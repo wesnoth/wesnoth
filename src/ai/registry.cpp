@@ -22,6 +22,7 @@
 #include "composite/aspect.hpp"
 #include "composite/engine_default.hpp"
 #include "composite/engine_fai.hpp"
+#include "composite/goal.hpp"
 #include "default/ai.hpp"
 #include "dfool/ai.hpp"
 #include "formula/ai.hpp"
@@ -100,6 +101,13 @@ static register_candidate_action_factory<testing_ai_default::simple_move_and_tar
 
 static register_candidate_action_factory<testing_ai_default::leader_control_phase>
 	leader_control_phase_factory("testing_ai_default::leader_control_phase");
+
+// =======================================================================
+// Goals
+// =======================================================================
+
+static register_goal_factory<goal>
+	goal_factory("");
 
 // =======================================================================
 // Aspects

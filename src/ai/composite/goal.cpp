@@ -22,22 +22,31 @@
 #include "../../gamestatus.hpp"
 #include "../../variable.hpp"
 
+#include <boost/lexical_cast.hpp>
+
 namespace ai {
 
-static lg::log_domain log_ai_composite_aspect("ai/composite/goal");
+static lg::log_domain log_ai_composite_goal("ai/composite/goal");
 #define DBG_AI_COMPOSITE_GOAL LOG_STREAM(debug, log_ai_composite_goal)
 #define LOG_AI_COMPOSITE_GOAL LOG_STREAM(info, log_ai_composite_goal)
 #define ERR_AI_COMPOSITE_GOAL LOG_STREAM(err, log_ai_composite_goal)
 
-goal::goal(const config &cfg)
-	: cfg_(cfg),loc_(),value_(),type_()
+goal::goal(readonly_context &/*context*/, const config &cfg)
+	: cfg_(cfg), value_()
 {
-	//@todo 1.7: parse config of goal
+	if (cfg.has_attribute("value")) {
+		try {
+			value_ = boost::lexical_cast<double>(cfg["value"]);
+		} catch (boost::bad_lexical_cast){
+			ERR_AI_COMPOSITE_GOAL << "bad value of goal"<<std::endl;
+			value_ = 0;
+		}
+	}
 }
 
 
-goal::goal(const map_location &loc, double value, TYPE type)
-	: cfg_(),loc_(loc), value_(value), type_(type)
+
+void goal::on_create()
 {
 }
 
@@ -60,9 +69,7 @@ bool goal::matches_unit(unit_map::const_iterator u)
 
 config goal::to_config() const
 {
-	config cfg;
-	//@todo 1.7 recreate config
-	return cfg;
+	return cfg_;
 }
 
 

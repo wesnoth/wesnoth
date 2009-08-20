@@ -21,7 +21,9 @@
 
 #include "../../global.hpp"
 
+#include "../contexts.hpp"
 #include "../game_info.hpp"
+
 
 #include <map>
 #include <stack>
@@ -33,22 +35,19 @@ namespace ai {
 
 class goal {
 public:
-	enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
-
-
-	goal(const config &cfg);
-
-
-	goal(const map_location &loc, double value, TYPE type=VILLAGE);
+	goal(readonly_context &context, const config &cfg);
 
 
 	virtual ~goal();
 
 
-	bool matches_unit(unit_map::const_iterator u);
+	virtual bool matches_unit(unit_map::const_iterator u);
 
 
 	config to_config() const;
+
+
+	void on_create();
 
 
 	double value()
@@ -58,10 +57,52 @@ public:
 
 private:
 	config cfg_;
-	map_location loc_;
 	double value_;
-	TYPE type_;
+
 };
+
+
+class goal_factory{
+public:
+	typedef boost::shared_ptr< goal_factory > factory_ptr;
+	typedef std::map<std::string, factory_ptr> factory_map;
+	typedef std::pair<const std::string, factory_ptr> factory_map_pair;
+
+	static factory_map& get_list() {
+		static factory_map *goal_factories;
+		if (goal_factories==NULL) {
+			goal_factories = new factory_map;
+		}
+		return *goal_factories;
+	}
+
+	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ) = 0;
+
+	goal_factory( const std::string &name )
+	{
+		factory_ptr ptr_to_this(this);
+		get_list().insert(make_pair(name,ptr_to_this));
+	}
+
+	virtual ~goal_factory() {}
+};
+
+
+template<class GOAL>
+class register_goal_factory : public goal_factory {
+public:
+	register_goal_factory( const std::string &name )
+		: goal_factory( name )
+	{
+	}
+
+	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ){
+		goal_ptr a(new GOAL(context,cfg));
+		a->on_create();
+		return a;
+	}
+};
+
 
 } //end of namespace ai
 

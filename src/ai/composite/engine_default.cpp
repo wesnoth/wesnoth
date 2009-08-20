@@ -94,6 +94,24 @@ void engine_cpp::do_parse_stage_from_config( ai_context &context, const config &
 }
 
 
+void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
+{
+	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
+	if (f == goal_factory::get_list().end()){
+		ERR_AI_COMPOSITE_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_COMPOSITE_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
+	if (!new_goal) {
+		ERR_AI_COMPOSITE_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]"<< std::endl;
+		DBG_AI_COMPOSITE_ENGINE_CPP << "config snippet contains: " << std::endl << cfg << std::endl;
+		return;
+	}
+	*b = new_goal;
+}
+
+
 std::string engine_cpp::get_name() const
 {
 	return "cpp";
