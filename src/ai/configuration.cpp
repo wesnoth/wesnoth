@@ -178,7 +178,7 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(const config& 
 		if (aspect_was_attribute) {
 			facet_config["value"] = aiparam[id];
 		} else {
-			foreach (const config &value, cfg.child_range(id)) {
+			foreach (const config &value, aiparam.child_range(id)) {
 				facet_config.add_child("value",value);
 			}
 		}
