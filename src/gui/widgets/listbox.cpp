@@ -215,7 +215,22 @@ void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	generator_->handle_key_left_arrow(modifier, handled);
 
 	// Inherited.
-	if(!handled) {
+	if(handled) {
+		// When scrolling make sure the new items is visible but leave the
+		// vertical scrollbar position.
+		const SDL_Rect& visible = content_visible_area();
+		SDL_Rect rect = generator_->get_item(
+				generator_->get_selected_item()).get_rect();
+
+		rect.y = visible.y;
+		rect.h = visible.h;
+
+		show_content_rect(rect);
+
+		if(callback_value_changed_) {
+			callback_value_changed_(this);
+		}
+	} else {
 		tscrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
 }
@@ -227,8 +242,23 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	generator_->handle_key_right_arrow(modifier, handled);
 
 	// Inherited.
-	if(!handled) {
-		tscrollbar_container::handle_key_right_arrow(modifier, handled);
+	if(handled) {
+		// When scrolling make sure the new items is visible but leave the
+		// vertical scrollbar position.
+		const SDL_Rect& visible = content_visible_area();
+		SDL_Rect rect = generator_->get_item(
+				generator_->get_selected_item()).get_rect();
+
+		rect.y = visible.y;
+		rect.h = visible.h;
+
+		show_content_rect(rect);
+
+		if(callback_value_changed_) {
+			callback_value_changed_(this);
+		}
+	} else {
+		tscrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
 }
 
