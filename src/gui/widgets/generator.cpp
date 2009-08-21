@@ -71,6 +71,199 @@ void tone::delete_item(const unsigned index)
 
 namespace placement {
 
+thorizontal_list::thorizontal_list()
+	: placed_(false)
+{
+}
+
+void thorizontal_list::create_item(const unsigned /*index*/)
+{
+	if(!placed_) {
+		return;
+	}
+
+	/** @todo implement. */
+	assert(false);
+}
+
+tpoint thorizontal_list::calculate_best_size() const
+{
+	// The best size is the sum of the widths and the greatest height.
+	tpoint result(0, 0);
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		const tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		const tpoint best_size = grid.get_best_size();
+
+		result.x += best_size.x;
+
+		if(best_size.y > result.y) {
+			result.y = best_size.y;
+		}
+	}
+
+	return result;
+}
+
+void thorizontal_list::set_size(const tpoint& origin, const tpoint& size)
+{
+	/*
+	 * - Set every item to it's best size.
+	 * - The origin gets increased with the width of the last item.
+	 * - No item should be higher as the size.
+	 * - In the end the origin should be the sum or the origin and the wanted
+	 *   width.
+	 */
+
+	tpoint current_origin = origin;
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		tpoint best_size = grid.get_best_size();
+		assert(best_size.y <= size.y);
+		// FIXME should we look at grow factors???
+		best_size.y = size.y;
+
+		grid.set_size(current_origin, best_size);
+
+		current_origin.x += best_size.x;
+	}
+
+	assert(current_origin.x == origin.x + size.x);
+}
+
+void thorizontal_list::set_origin(const tpoint& origin)
+{
+	tpoint current_origin = origin;
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		grid.set_origin(current_origin);
+		current_origin.x += grid.get_width();
+	}
+}
+
+void thorizontal_list::set_visible_area(const SDL_Rect& area)
+{
+	/*
+	 * Note for most implementations this function could work only for the
+	 * tindependant class it probably fails. Evalute to make a generic
+	 * function in the tgenerator template class and call it from the wanted
+	 * placement functions.
+	 */
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		grid.set_visible_area(area);
+	}
+}
+
+twidget* thorizontal_list::find_widget(
+		const tpoint& coordinate, const bool must_be_active)
+{
+	twindow* window = get_window();
+	assert(window);
+
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		twidget* widget =
+				grid.find_widget(coordinate, must_be_active);
+
+		if(widget) {
+			return widget;
+		}
+	}
+	return NULL;
+}
+
+const twidget* thorizontal_list::find_widget(const tpoint& coordinate,
+		const bool must_be_active) const
+{
+	const twindow* window = get_window();
+	assert(window);
+
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		const tgrid& grid = get_item(i);
+		if(grid.get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		const twidget* widget =
+				grid.find_widget(coordinate, must_be_active);
+
+		if(widget) {
+			return widget;
+		}
+	}
+	return NULL;
+}
+
+void thorizontal_list::handle_key_left_arrow(
+		SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(int i = get_selected_item() - 1; i >= 0; --i) {
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(i);
+			return;
+		}
+	}
+}
+
+void thorizontal_list::handle_key_right_arrow(
+		SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
+
+		if(get_item(i).get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(i);
+			return;
+		}
+	}
+}
+
 tvertical_list::tvertical_list()
 	: placed_(false)
 {

@@ -147,14 +147,12 @@ struct tinfinite
 /** Controls how new items are placed. */
 namespace placement {
 
-/**
- * Places the items in a horizontal row.
- *
- * @todo Implement.
- */
+/** Places the items in a horizontal row. */
 struct thorizontal_list
 	: public virtual tgenerator_
 {
+	thorizontal_list();
+
 	/**
 	 * Called when an item is created.
 	 *
@@ -162,7 +160,7 @@ struct thorizontal_list
 	 *
 	 * @param index                  The index of the new item.
 	 */
-	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
+	void create_item(const unsigned index);
 
 	/**
 	 * Tries to reduce the width for the generator.
@@ -189,8 +187,7 @@ struct thorizontal_list
 	 *
 	 * @return                    The best size,
 	 */
-	tpoint calculate_best_size() const
-		{ ERROR_LOG(false); }
+	tpoint calculate_best_size() const;
 
 	/**
 	 * Sets the size of the generator.
@@ -198,49 +195,58 @@ struct thorizontal_list
 	 * @param origin              The origin of the generator.
 	 * @param size                The size of the generator.
 	 */
-	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ ERROR_LOG(false); }
+	void set_size(const tpoint& origin, const tpoint& size);
 
 	/**
 	 * Sets the origin of the generator.
 	 *
 	 * @param origin              The origin of the generator.
 	 */
-	void set_origin(const tpoint& /*origin*/)
-		{ ERROR_LOG(false); }
+	void set_origin(const tpoint& origin);
 
 	/**
 	 * Sets the visible area of the generator.
 	 *
 	 * @param area                The visible area.
 	 */
-	void set_visible_area(const SDL_Rect& /*area*/)
-		{ ERROR_LOG(false); }
+	void set_visible_area(const SDL_Rect& area);
 
 	/** Inherited from tgenerator_. */
-	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tgenerator_. */
-	const twidget* find_widget(const tpoint&, const bool) const
-		{ ERROR_LOG(false); }
+	const twidget* find_widget(const tpoint& coordinate
+			, const bool must_be_active) const;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from tgenerator_. */
-	void handle_key_up_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	{
+		/* do nothing */
+	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_down_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	{
+		/* do nothing */
+	}
 
 	/** Inherited from tgenerator_. */
-	void handle_key_left_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	void handle_key_left_arrow(SDLMod modifier, bool& handled);
 
 	/** Inherited from tgenerator_. */
-	void handle_key_right_arrow(SDLMod, bool&)
-		{ ERROR_LOG(false); }
+	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+
+private:
+	/**
+	 * Has the grid already been placed?
+	 *
+	 * If the grid is placed it's no problem set the location of the new
+	 * item,it hasn't been placed, there's no information about its location
+	 * so do nothing.
+	 */
+	bool placed_;
 };
 
 /** Places the items in a vertical column. */
