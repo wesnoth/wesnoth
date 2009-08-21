@@ -841,7 +841,7 @@ void playsingle_controller::check_time_over(){
 		game_events::fire("time over");
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
-		if (tod_manager_.is_time_not_over()) {
+		if (tod_manager_.is_turns_left()) {
 			return;
 		}
 
