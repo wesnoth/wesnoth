@@ -111,7 +111,7 @@ class tod_manager : public savegame_config
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool is_turns_left();
+		bool is_time_left();
 	private:
 		void set_start_ToD(config&, int current_turn);
 
