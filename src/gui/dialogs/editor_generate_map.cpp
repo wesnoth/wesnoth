@@ -34,12 +34,12 @@ namespace gui2 {
  * This shows the dialog in the editor to select which random generator
  * should be used to generate a map.
  *
- * @start_table = container
- *     current_generator (label)       The label displaying the name of the
+ * @start_table = grid
+ *     (current_generator) (label) ()  The label displaying the name of the
  *                                     currently selected generator.
- *     settings (button)               When clicked this button opens the
+ *     (settings) (button) ()          When clicked this button opens the
  *                                     generator settings dialog.
- *     next_generator (button)         Selects the next generator in the
+ *     (next_generator) (button) ()    Selects the next generator in the
  *                                     list, this list wraps at the end.
  * @end_table
  */
