@@ -19,6 +19,24 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_editor_new_map
+ *
+ * == Editor new map ==
+ *
+ * This shows the dialog to generate a new map in the editor.
+ *
+ * @start_table = grid
+ *     (width) (integer_selector) ()
+ *                                An integer selector to determine the width
+ *                                of the map to create.
+ *     (height) (integer_selector) ()
+ *                                An integer selector to determine the height
+ *                                of the map to create.
+ * @end_table
+ */
+
 teditor_new_map::teditor_new_map() :
 	map_width_(register_integer("width", false)),
 	map_height_(register_integer("height", false))
