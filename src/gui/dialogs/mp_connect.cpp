@@ -74,6 +74,8 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = NEW_find_widget<tlistbox>(
 			&window, "server_list", false);
 
+	window.keyboard_capture(&list);
+
 	const std::vector<game_config::server_info>&
 		pref_servers = preferences::server_list();
 
