@@ -716,7 +716,7 @@ void ai_default::access_points(const move_map& srcdst, const location& u, const 
 }
 
 
-void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
+void ai_default::move_leader_to_keep()
 {
 	const unit_map::iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end() || leader->second.incapacitated()) {
@@ -760,7 +760,7 @@ void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
 			for(std::multimap<int,map_location>::const_iterator j = moves_toward_keep.begin();
 		    	j != moves_toward_keep.end(); ++j) {
 
-				if(enemy_dstsrc.count(j->second) == 0) {
+				if(get_enemy_dstsrc().count(j->second) == 0) {
 					bool gamestate_changed = false;
 					move_unit(leader->first,j->second,gamestate_changed);
 					if (!gamestate_changed) {

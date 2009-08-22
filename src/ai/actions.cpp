@@ -211,58 +211,58 @@ void attack_result::do_check_before()
 
 	if(attacker==NULL)
 	{
-		ERR_AI_ACTIONS << "attempt to attack without attacker\n";
+		LOG_AI_ACTIONS << "attempt to attack without attacker\n";
 		set_error(E_EMPTY_ATTACKER);
 		return;
 	}
 
 	if (defender==NULL)
 	{
-		ERR_AI_ACTIONS << "attempt to attack without defender\n";
+		LOG_AI_ACTIONS << "attempt to attack without defender\n";
 		set_error(E_EMPTY_DEFENDER);
 		return;
 	}
 
 	if(attacker->incapacitated()) {
-		ERR_AI_ACTIONS << "attempt to attack with unit that is petrified\n";
+		LOG_AI_ACTIONS << "attempt to attack with unit that is petrified\n";
 		set_error(E_INCAPACITATED_ATTACKER);
 		return;
 	}
 
 	if(defender->incapacitated()) {
-		ERR_AI_ACTIONS << "attempt to attack unit that is petrified\n";
+		LOG_AI_ACTIONS << "attempt to attack unit that is petrified\n";
 		set_error(E_INCAPACITATED_DEFENDER);
 		return;
 	}
 
 	if(!attacker->attacks_left()) {
-		ERR_AI_ACTIONS << "attempt to attack with no attacks left\n";
+		LOG_AI_ACTIONS << "attempt to attack with no attacks left\n";
 		set_error(E_NO_ATTACKS_LEFT);
 		return;
 	}
 
 	if(attacker->side()!=get_side()) {
-		ERR_AI_ACTIONS << "attempt to attack with not own unit\n";
+		LOG_AI_ACTIONS << "attempt to attack with not own unit\n";
 		set_error(E_NOT_OWN_ATTACKER);
 		return;
 	}
 
 	if(!get_my_team(get_info()).is_enemy(defender->side())) {
-		ERR_AI_ACTIONS << "attempt to attack unit that is not enemy\n";
+		LOG_AI_ACTIONS << "attempt to attack unit that is not enemy\n";
 		set_error(E_NOT_ENEMY_DEFENDER);
 		return;
 	}
 
 	if (attacker_weapon_!=-1) {
 		if ((attacker_weapon_<0)||(attacker_weapon_ > static_cast<int>(attacker->attacks().size()))) {
-			ERR_AI_ACTIONS << "invalid weapon selection for the attacker\n";
+			LOG_AI_ACTIONS << "invalid weapon selection for the attacker\n";
 			set_error(E_WRONG_ATTACKER_WEAPON);
 			return;
 		}
 	}
 
 	if (!tiles_adjacent(attacker_loc_,defender_loc_)) {
-		ERR_AI_ACTIONS << "attacker and defender not adjacent\n";
+		LOG_AI_ACTIONS << "attacker and defender not adjacent\n";
 		set_error(E_ATTACKER_AND_DEFENDER_NOT_ADJACENT);
 		return;
 	}

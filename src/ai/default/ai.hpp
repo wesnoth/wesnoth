@@ -132,20 +132,14 @@ protected:
 
 	virtual void do_move();
 
-	virtual bool do_combat(std::map<map_location,paths>& possible_moves,
-			const move_map& srcdst, const move_map& dstsrc,
-			const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	virtual bool get_villages(std::map<map_location,paths>& possible_moves,
-			const move_map& dstsrc, const move_map& enemy_dstsrc,
-			unit_map::iterator &leader);
-	virtual bool get_healing(std::map<map_location,paths>& possible_moves,
-			const move_map& srcdst, const move_map& enemy_dstsrc);
-	virtual bool retreat_units(std::map<map_location,paths>& possible_moves,
-			const move_map& srcdst, const move_map& dstsrc,
-			const move_map& enemy_dstsrc, unit_map::const_iterator leader);
-	virtual bool move_to_targets(std::map<map_location,paths>& possible_moves,
-			move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
-			unit_map::const_iterator leader);
+	virtual bool do_combat();
+	virtual bool get_villages(const std::map<map_location,paths>& possible_moves,
+		const move_map& dstsrc, const move_map& enemy_dstsrc,
+		unit_map::iterator &leader);
+	virtual bool get_healing();
+	virtual bool retreat_units(const unit_map::const_iterator leader);
+	virtual bool move_to_targets(const unit_map::const_iterator leader);
+	unit_map::const_iterator leader;
 
 	virtual bool should_retreat(const map_location& loc,
 			const unit_map::const_iterator un, const move_map& srcdst,
@@ -153,16 +147,14 @@ protected:
 
 	virtual bool do_recruitment();
 
-	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
-	virtual void move_leader_after_recruit(const move_map& srcdst,
-			const move_map& dstsrc, const move_map& enemy_dstsrc);
+	virtual void move_leader_to_keep();
 
-	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
+	virtual void move_leader_after_recruit();
+
+	virtual void move_leader_to_goals();
 
 
 	virtual bool desperate_attack(const map_location &loc);
-
-	void remove_unit_from_moves(const map_location& u, move_map& srcdst, move_map& dstsrc);
 
 	/** Find enemy units that threaten our valuable assets. */
 	void find_threats();

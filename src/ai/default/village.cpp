@@ -153,7 +153,7 @@ static void full_dispatch(treachmap& reachmap, tmoves& moves);
 /** Shows which villages every unit can reach (debug function). */
 static void dump_reachmap(treachmap& reachmap);
 
-bool ai_default::get_villages(std::map<map_location,paths>& possible_moves,
+bool ai_default::get_villages(const std::map<map_location,paths>& possible_moves,
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::iterator &leader)
 {
