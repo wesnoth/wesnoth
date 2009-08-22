@@ -473,8 +473,6 @@ bool ai_default::multistep_move_possible(const map_location& from,
 
 map_location ai_default::move_unit(map_location from, map_location to, bool &gamestate_changed)
 {
-	moves_map temp_possible_moves;
-
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end() && i->second.can_recruit()) {
 
@@ -864,12 +862,17 @@ bool ai_default::do_combat(std::map<map_location,paths>& /*possible_moves*/, con
 		LOG_AI << "attack option rated at " << rating << " ("
 			<< get_aggression() << ")\n";
 
-		if (recruiting_preferred_)
-		{
-			unit_map::unit_iterator u = units_.find(it->movements[0].first);
-			if (u != units_.end()
-				&& u->second.can_recruit())
-			{
+		unit_map::unit_iterator u = units_.find(it->movements[0].first);
+		if (!u.valid()) {
+			continue;
+		}
+
+		if (u->second.attacks().size()==0) {
+			continue;
+		}
+
+		if (recruiting_preferred_) {
+			if (u->second.can_recruit()) {
 				LOG_AI << "Not fighting with leader because recruiting is more preferable\n";
 				continue;
 			}
@@ -1114,15 +1117,15 @@ bool ai_default::retreat_units(std::map<map_location,paths>& /*possible_moves*/,
 	return false;
 }
 
-bool ai_default::move_to_targets(std::map<map_location, paths>& /*possible_moves*/,
-		move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
+bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
+		move_map& srcdst, move_map& dstsrc, const move_map& /*enemy_dstsrc*/,
 		unit_map::const_iterator leader)
 {
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
 	for(;;) {
 		if(targets.empty()) {
-			targets = find_targets(leader,enemy_dstsrc);
+			targets = find_targets(leader,get_enemy_dstsrc());
 			targets.insert(targets.end(),additional_targets().begin(),
 				       additional_targets().end());
 			LOG_AI << "Found " << targets.size() << " targets\n";
@@ -1132,8 +1135,8 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& /*possible_moves
 		}
 
 		LOG_AI << "choosing move with " << targets.size() << " targets\n";
-		std::pair<location,location> move = choose_move(targets, srcdst,
-				dstsrc, enemy_dstsrc);
+		std::pair<location,location> move = choose_move(targets, get_srcdst(),
+								get_dstsrc(), get_enemy_dstsrc());
 		LOG_AI << "choose_move ends with " << targets.size() << " targets\n";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
@@ -1150,7 +1153,22 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& /*possible_moves
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 		bool gamestate_changed = false;
-		const location arrived_at = move_unit(move.first,move.second,gamestate_changed);
+		const map_location arrived_at = move_unit(move.first,move.second,gamestate_changed);
+
+		const unit_map::const_iterator u_it = units_.find(arrived_at);
+		// Event could have done anything: check
+		if (u_it.valid()) {
+			// Don't allow any other units to move onto the tile
+			// our unit just moved onto
+			typedef move_map::iterator Itor;
+			std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
+			dstsrc.erase(del.first,del.second);
+			for (move_map::iterator i = srcdst.begin(); i!= srcdst.end(); ++i){
+				if (i->second==arrived_at) {
+					srcdst.erase(i);
+				}
+			}
+		}
 
 		// We didn't arrive at our intended destination.
 		// We return true, meaning that the AI algorithm
@@ -1158,16 +1176,6 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& /*possible_moves
 		if(arrived_at != move.second) {
 			WRN_AI << "didn't arrive at destination\n";
 			return gamestate_changed;
-		}
-
-		const unit_map::const_iterator u_it = units_.find(arrived_at);
-		// Event could have done anything: check
-		if (u_it == units_.end()) {
-			// Don't allow any other units to move onto the tile
-			// our unit just moved onto
-			typedef move_map::iterator Itor;
-			std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
-			dstsrc.erase(del.first,del.second);
 		}
 	}
 
