@@ -249,6 +249,7 @@ wesnoth_editor_SOURCES = \
 	editor/editor_layout.cpp \
 	editor/editor_map.cpp \
 	editor/editor_palettes.cpp \
+	editor/editor_preferences.cpp \
 	editor/map_context.cpp \
 	editor/map_fragment.cpp \
 	editor/mouse_action.cpp

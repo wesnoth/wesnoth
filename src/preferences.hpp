@@ -136,20 +136,6 @@ namespace preferences {
 	 */
 	int mouse_scroll_threshold();
 
-	/** Set editor red tint level. */
-	void set_editor_r(int value);
-	/** Set editor green tint level. */
-	void set_editor_g(int value);
-	/** Set editor blue tint level. */
-	void set_editor_b(int value);
-
-	/** Get editor red tint level. */
-	int editor_r();
-	/** Get editor green tint level. */
-	int editor_g();
-	/** Get editor blue tint level. */
-	int editor_b();
-
 	int draw_delay();
 	void set_draw_delay(int value);
 

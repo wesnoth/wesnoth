@@ -17,6 +17,7 @@
 #include "action.hpp"
 #include "editor_controller.hpp"
 #include "editor_palettes.hpp"
+#include "editor_preferences.hpp"
 #include "mouse_action.hpp"
 
 #include "gui/dialogs/editor_new_map.hpp"
@@ -40,19 +41,6 @@
 #include "formula_string_utils.hpp"
 
 #include <boost/bind.hpp>
-
-namespace {
-	const char* prefkey_default_dir = "editor_default_dir";
-	const char* prefkey_auto_update_transitions = "editor_auto_update_transitions";
-	const char* prefkey_use_mdi = "editor_use_mdi";
-
-	namespace TransitionUpdateMode {
-		const int off = 0;
-		const int on = 1;
-		const int partial = 2;
-		const int count = 3;
-	}
-}
 
 namespace editor {
 
@@ -107,10 +95,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	, foreground_terrain_(t_translation::MOUNTAIN)
 	, background_terrain_(t_translation::GRASS_LAND)
 	, clipboard_()
-	, auto_update_transitions_(lexical_cast_default<int>(
-		preferences::get(prefkey_auto_update_transitions), TransitionUpdateMode::partial))
-	, use_mdi_(utils::string_bool(preferences::get(prefkey_use_mdi), true))
-	, default_dir_(preferences::get(prefkey_default_dir))
+	, auto_update_transitions_(preferences::editor::auto_update_transitions())
+	, use_mdi_(preferences::editor::use_mdi())
+	, default_dir_(preferences::editor::default_dir())
 {
 	if (init_map_context == NULL) {
 		create_default_context();
@@ -133,7 +120,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
-	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+	image::set_colour_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 	theme& theme = gui().get_theme();
 	const theme::menu* default_tool_menu = NULL;
 	foreach (const theme::menu& m, theme.menus()) {
@@ -385,7 +372,7 @@ void editor_controller::editor_settings_dialog()
 
 	gui2::teditor_settings dialog;
 	dialog.set_tods(tods_);
-	dialog.set_current_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+	dialog.set_current_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 	dialog.set_redraw_callback(boost::bind(&editor_controller::editor_settings_dialog_redraw_callback, this, _1, _2, _3));
 	image::colour_adjustment_resetter adjust_resetter;
 	dialog.set_use_mdi(use_mdi_);
@@ -394,11 +381,11 @@ void editor_controller::editor_settings_dialog()
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
 		image::set_colour_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
-		preferences::set_editor_r(dialog.get_red());
-		preferences::set_editor_g(dialog.get_green());
-		preferences::set_editor_b(dialog.get_blue());
+		preferences::editor::set_tod_r(dialog.get_red());
+		preferences::editor::set_tod_g(dialog.get_green());
+		preferences::editor::set_tod_b(dialog.get_blue());
 		use_mdi_ = dialog.get_use_mdi();
-		preferences::set(prefkey_use_mdi, lexical_cast<std::string>(use_mdi_));
+		preferences::editor::set_use_mdi(use_mdi_);
 	} else {
 		adjust_resetter.reset();
 	}
@@ -766,8 +753,8 @@ void editor_controller::refresh_after_action(bool drag_part)
 		return;
 	} else {
 		if (get_map_context().needs_terrain_rebuild()) {
-			if ((auto_update_transitions_ == TransitionUpdateMode::on)
-			|| ((auto_update_transitions_ == TransitionUpdateMode::partial)
+			if ((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::on)
+			|| ((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::partial)
 			&& (!drag_part || get_map_context().everything_changed()))) {
 				gui().rebuild_all();
 				get_map_context().set_needs_terrain_rebuild(false);
@@ -1028,9 +1015,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			resize_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			auto_update_transitions_ = (auto_update_transitions_ + 1) % TransitionUpdateMode::count;
-			preferences::set(prefkey_auto_update_transitions, lexical_cast<std::string>(auto_update_transitions_));
-			if (auto_update_transitions_ != TransitionUpdateMode::on) {
+			auto_update_transitions_ = (auto_update_transitions_ + 1)
+				% preferences::editor::TransitionUpdateMode::count;
+			preferences::editor::set_auto_update_transitions(auto_update_transitions_);
+			if (auto_update_transitions_ != preferences::editor::TransitionUpdateMode::on) {
 				return true;
 			} // else intentionally fall through
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
@@ -1107,13 +1095,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 			}
 		} else if (command == hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS) {
 			switch (auto_update_transitions_) {
-				case TransitionUpdateMode::on:
+				case preferences::editor::TransitionUpdateMode::on:
 					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Yes"));
 					break;
-				case TransitionUpdateMode::partial:
+				case preferences::editor::TransitionUpdateMode::partial:
 					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Partial"));
 					break;
-				case TransitionUpdateMode::off:
+				case preferences::editor::TransitionUpdateMode::off:
 				default:
 					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: No"));
 			}
