@@ -248,20 +248,6 @@ void readonly_context_impl::handle_generic_event(const std::string& /*event_name
 }
 
 
-bool readwrite_context_impl::recruit(const std::string& unit_name, map_location loc)
-{
-	recruit_result_ptr recruit_res = check_recruit_action(unit_name,loc);
-	if (!recruit_res->is_ok()) {
-		return false;
-	}
-	recruit_res->execute();
-	if (!recruit_res->is_ok()) {
-		ERR_AI << "recruit failed"<< std::endl;
-	}
-	return recruit_res->is_gamestate_changed();
-}
-
-
 const game_info& readonly_context_impl::get_info() const{
 	return manager::get_active_ai_info_for_side(get_side());
 }
@@ -285,28 +271,6 @@ void readonly_context_impl::log_message(const std::string& msg)
 		get_info().disp.add_chat_message(time(NULL), "ai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
-}
-
-
-map_location readwrite_context_impl::move_unit(map_location from, map_location to,
-		const moves_map &/*possible_moves*/)
-{
-	move_result_ptr move_res = execute_move_action(from,to,true);
-	if (!move_res->is_ok()) {
-		ERR_AI << "full move failed"<< std::endl;
-	}
-	return move_res->get_unit_location();
-}
-
-
-map_location readwrite_context_impl::move_unit_partial(map_location from, map_location to,
-		const moves_map &/*possible_moves)*/)
-{
-	move_result_ptr move_res = execute_move_action(from,to,false);
-	if (!move_res->is_ok()) {
-		ERR_AI << "partial move failed"<< std::endl;
-	}
-	return move_res->get_unit_location();
 }
 
 
@@ -396,17 +360,6 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			}
 		}
 	}
-}
-
-
-bool readwrite_context_impl::attack_enemy(const map_location u,
-		const map_location target, int weapon, int /*def_weapon*/)
-{
-	attack_result_ptr attack_res = execute_attack_action(u,target,weapon);
-	if (!attack_res->is_ok()) {
-		ERR_AI << "attack failed"<< std::endl;
-	}
-	return attack_res->is_gamestate_changed();
 }
 
 

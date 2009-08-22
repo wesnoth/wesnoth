@@ -367,18 +367,6 @@ public:
 	virtual team& current_team_w() = 0;
 
 
-	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon) = 0;
-
-
-	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves) = 0;
-
-
-	virtual map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves) = 0;
-
-
-	virtual bool recruit(const std::string& unit_name, map_location loc=map_location()) = 0;
-
-
 	virtual void raise_gamestate_changed() const = 0;
 
 
@@ -879,30 +867,6 @@ public:
 	}
 
 
-	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon)
-	{
-		return target_->attack_enemy(u, target, att_weapon, def_weapon);
-	}
-
-
-	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves)
-	{
-		return target_->move_unit(from, to, possible_moves);
-	}
-
-
-	virtual map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves)
-	{
-		return target_->move_unit_partial(from, to, possible_moves);
-	}
-
-
-	virtual bool recruit(const std::string& unit_name, map_location loc=map_location())
-	{
-		return target_->recruit(unit_name, loc);
-	}
-
-
 	virtual void raise_gamestate_changed() const
 	{
 		target_->raise_gamestate_changed();
@@ -1383,56 +1347,6 @@ public:
 
 	/** Return a reference to the 'team' object for the AI. */
 	virtual team& current_team_w() { return get_info_w().teams[get_side()-1]; }
-
-
-	/**
-	 * This function should be called to attack an enemy.
-	 *
-	 * @deprecated
-	 * @param u            The location of the attacking unit. (Note this shouldn't
-	 *                     be a reference since attack::attack() can invalidate the
-	 *                     unit_map and references to the map are also invalid then.)
-	 * @param target       The location of the target unit. This unit must be in
-	 *                     range of the attacking unit's weapon. (See note at param u.)
-	 * @param weapon       The number of the weapon (0-based) which should be used
-	 *                     by the attacker. (It must be a valid weapon of the attacker.)
-	 * @param def_weapon   The number of the weapon (0-based) which should be used
-	 *                     by the defender. (It must be a valid weapon of the defender.)
-	 */
-	virtual bool attack_enemy(const map_location u, const map_location target, int att_weapon, int def_weapon);
-
-
-	/**
-	 * This function should be called to move a unit.
-	 *
-	 * @deprecated
-	 * Once the unit has been moved, its movement allowance is set to 0.
-	 * @param from                The location of the unit being moved.
-	 * @param to                  The location to be moved to. This must be a
-	 *                            valid move for the unit.
-	 * @param possible_moves      The map of possible moves, as obtained from
-	 *                            'calculate_possible_moves'.
-	 */
-	virtual map_location move_unit(map_location from, map_location to, const moves_map &possible_moves);
-
-	/**
-	 * @deprecated
-	 * Identical to 'move_unit', except that the unit's movement
-	 * isn't set to 0 after the move is complete.
-	 */
-	map_location move_unit_partial(map_location from, map_location to, const moves_map &possible_moves);
-
-
-	/**
-	 * Recruit a unit. It will recruit the unit with the given name,
-	 * at the given location, or at an available location to recruit units
-	 * if 'loc' is not a valid recruiting location.
-	 *
-	 * @retval false              If recruitment cannot be performed, because
-	 *                            there are no available tiles, or not enough
-	 *                            money.
-	 */
-	bool recruit(const std::string& unit_name, map_location loc=map_location());
 
 
 	/** Notifies all interested observers of the event respectively. */

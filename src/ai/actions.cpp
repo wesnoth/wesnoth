@@ -358,7 +358,7 @@ move_result::move_result(side_number side, const map_location& from,
 		const map_location& to, bool remove_movement)
 	: action_result(side)
 	, from_(from)
-	, move_spectator(get_info().units)
+	, move_spectator_(get_info().units)
 	, to_(to)
 	, remove_movement_(remove_movement)
 	, route_()
@@ -395,6 +395,11 @@ bool move_result::test_route(const unit &un, const team &my_team, const unit_map
 			return false;
 		}
 		return true;
+	}
+
+	if (un.movement_left() == 0 ) {
+		set_error(E_EMPTY_MOVE);
+		return false;
 	}
 	const shortest_path_calculator calc(un, my_team, units, teams,map);
 
@@ -448,13 +453,18 @@ const map_location& move_result::get_unit_location() const
 }
 
 
+const move_unit_spectator& move_result::get_move_spectator() const
+{
+	return move_spectator_;
+}
+
 void move_result::do_check_after()
 {
-	if (move_spectator.get_ambusher().valid()) {
+	if (move_spectator_.get_ambusher().valid()) {
 		set_error(E_AMBUSHED);
 		return;
 	}
-	if (move_spectator.get_failed_teleport().valid()) {
+	if (move_spectator_.get_failed_teleport().valid()) {
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
@@ -488,11 +498,11 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
 
-	move_spectator.set_unit(get_info().units.find(from_));
+	move_spectator_.set_unit(get_info().units.find(from_));
 
 	if (from_ != to_) {
 		move_unit(
-			/*move_unit_spectator* move_spectator*/ &move_spectator,
+			/*move_unit_spectator* move_spectator*/ &move_spectator_,
 			/*std::vector<map_location> route*/ route_.steps,
 			/*replay* move_recorder*/ &recorder,
 			/*undo_list* undo_stack*/ NULL,
@@ -502,10 +512,10 @@ void move_result::do_execute()
 			/*bool should_clear_shroud*/ true,
 			/*bool is_replay*/ false);
 
-		if ( move_spectator.get_ambusher().valid() || !move_spectator.get_seen_enemies().empty() || !move_spectator.get_seen_friends().empty() ) {
+		if ( move_spectator_.get_ambusher().valid() || !move_spectator_.get_seen_enemies().empty() || !move_spectator_.get_seen_friends().empty() ) {
 			set_gamestate_changed();
-		} else if (move_spectator.get_unit().valid()){
-			unit_location_ = move_spectator.get_unit()->first;
+		} else if (move_spectator_.get_unit().valid()){
+			unit_location_ = move_spectator_.get_unit()->first;
 			if (unit_location_ != from_) {
 				set_gamestate_changed();
 			}
@@ -514,9 +524,9 @@ void move_result::do_execute()
 		assert(remove_movement_);
 	}
 
-	if (move_spectator.get_unit().valid()){
-		unit_location_ = move_spectator.get_unit()->first;
-		if ( remove_movement_ && ( move_spectator.get_unit()->second.movement_left() > 0 ) ) {
+	if (move_spectator_.get_unit().valid()){
+		unit_location_ = move_spectator_.get_unit()->first;
+		if ( remove_movement_ && ( move_spectator_.get_unit()->second.movement_left() > 0 ) ) {
 			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
 			if (!stopunit_res->is_ok()) {
 				set_error(stopunit_res->get_status());
@@ -542,7 +552,7 @@ void move_result::do_execute()
 
 void move_result::do_init_for_execution()
 {
-	move_spectator.reset(get_info().units);
+	move_spectator_.reset(get_info().units);
 }
 
 

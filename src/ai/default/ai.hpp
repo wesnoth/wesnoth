@@ -170,17 +170,10 @@ protected:
 	bool threats_found_;
 
 	/**
-	 * Our own version of 'move_unit'. It is like the version in readwrite_context
+	 * Our own version of 'execute_move_action'. It is like the version in readwrite_context
 	 * however if it is the leader moving, it will first attempt recruitment.
 	 */
-	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
-
-	/**
-	 * Our own version of 'attack_enemy'. We record all attacks to support
-	 * group attacking.
-	 */
-	bool attack_enemy(const location& attacking_unit, const location& target,
-			int att_weapon, int def_weapon);
+	location move_unit(map_location from, map_location to, bool &gamestate_changed);
 
 
 	/**

@@ -384,8 +384,11 @@ bool ai_default::desperate_attack(const map_location &loc)
 	}
 
 	if (best_kill_prob > 0.0) {
-		attack_enemy(loc, adj[best_dir], best_weapon, best_def_weapon);
-		return true;
+		attack_result_ptr attack_res = execute_attack_action(loc, adj[best_dir], best_weapon);
+		if (!attack_res->is_ok()) {
+			ERR_AI << "desperate attack failed"<<std::endl;
+		}
+		return attack_res->is_gamestate_changed();
 	}
 
 	double least_hp = u.hitpoints() + 1;
@@ -416,9 +419,11 @@ bool ai_default::desperate_attack(const map_location &loc)
 	// It is possible that there were no adjacent units to attack...
 	if (least_hp != u.hitpoints() + 1) {
 		battle_context bc(units_, loc, adj[best_dir], -1, -1, 0.5);
-		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num,
-					 bc.get_defender_stats().attack_num);
-		return true;
+		attack_result_ptr attack_res = execute_attack_action(loc, adj[best_dir], bc.get_attacker_stats().attack_num);
+		if (!attack_res->is_ok()) {
+			ERR_AI << "desperate attack failed" << std::endl;
+		}
+		return attack_res->is_gamestate_changed();
 	}
 	return false;
 }

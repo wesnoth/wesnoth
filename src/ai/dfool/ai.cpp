@@ -243,10 +243,12 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 {
 	map_location target(atoi(o["target_x"].c_str()) - 1, atoi(o["target_y"].c_str()) - 1);
 	LOG_AI << "\tmoving to:(" << target.x << ',' << target.y << ")\n";
+	bool gamestate_changed = false;
       if(m->second.movement_left()){
 	moves_map possible_moves;
 	move_map srcdst, dstsrc;
 	unit_map known_units;
+
 
 	//	unit_memory_.known_map(known_units, get_info().tod_manager_.turn());
 	unit_memory_.known_map(known_units, 0);
@@ -289,12 +291,16 @@ bool dfool_ai::moveto(const config &o, unit_map::const_iterator m)
 	LOG_AI << "\tdistance: " << closest_distance << '\n';
 
 	if(closest_distance != -1) {
-	  map_location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
-	  if(to != closest_move.second)
-	    return(false);	// Something unexpected happened
+	  move_result_ptr move_res  = execute_move_action(closest_move.second,closest_move.first,false);
+	  gamestate_changed |= move_res->is_gamestate_changed();
+	  if (move_res->is_ok()) {
+		  LOG_AI << "error in move" << std::endl;
+	  }
+	  if(move_res->get_unit_location() != closest_move.second)
+	    return(gamestate_changed);	// Something unexpected happened
 	}
       }
-      return(true);
+      return(gamestate_changed);
   }
 
   unit_map::iterator dfool_ai::unit(size_t unit_id, unit_map& um){

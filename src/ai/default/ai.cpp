@@ -158,12 +158,30 @@ protected:
 				}
 
 				if(best_defense != -1) {
-					move_unit(best_movement.second,best_movement.first,possible_moves);
-					battle_context bc(get_info().units, best_movement.first, i->first, -1, -1, get_aggression());
-					attack_enemy(best_movement.first,i->first,
-								 bc.get_attacker_stats().attack_num,
-								 bc.get_defender_stats().attack_num);
-					do_attacks();
+					bool gamestate_changed = false;
+					bool do_attack = false;
+					if (best_movement.first!=best_movement.second) {
+						move_result_ptr move_res = execute_move_action(best_movement.second,best_movement.first,true);
+						gamestate_changed |= move_res->is_gamestate_changed();
+						if (move_res->is_ok()) {
+							do_attack = true;
+						} else {
+							LOG_AI << "move_failed" << std::endl;
+						}
+					} else {
+						do_attack = true;
+					}
+					if (do_attack) {
+						attack_result_ptr attack_res = execute_attack_action(best_movement.first,i->first,-1);
+						gamestate_changed |= attack_res->is_gamestate_changed();
+						if (attack_res->is_ok()){
+							LOG_AI << "attack failed" << std::endl;
+						}
+					}
+
+					if (gamestate_changed) {
+						do_attacks();
+					}
 					return;
 				}
 			}
@@ -177,8 +195,13 @@ protected:
 
         for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
             if(get_info().map.is_village(i->first) && current_team().owns_village(i->first) == false) {
-                move_unit(i->second,i->first,possible_moves);
-                get_villages();
+                move_result_ptr move_res = execute_move_action(i->second,i->first,true);
+		if (move_res->is_ok()) {
+			LOG_AI << "move failed!" << std::endl;
+		}
+		if (move_res->is_gamestate_changed()) {
+			get_villages();
+		}
                 return;
             }
         }
@@ -211,8 +234,13 @@ protected:
 		}
 
 		if(closest_distance != -1) {
-			move_unit(closest_move.second,closest_move.first,possible_moves);
-			do_moves();
+			move_result_ptr move_ptr = execute_move_action(closest_move.second,closest_move.first,true);
+			if (!move_ptr->is_ok()) {
+				LOG_AI << "move failed!" << std::endl;
+			}
+			if (move_ptr->is_gamestate_changed()) {
+				do_moves();
+			}
 		}
 	}
 
@@ -234,8 +262,11 @@ protected:
 		        std::set<std::string>::const_iterator i = options.begin();
 		        std::advance(i,choice);
 
-			const bool res = recruit(*i);
-			if(res) {
+			recruit_result_ptr recruit_res = execute_recruit_action(*i);
+			if (recruit_res->is_ok()) {
+				LOG_AI << "recruitment failed!" << std::endl;
+			}
+			if (recruit_res->is_gamestate_changed()) {
 				return do_recruitment();
 			}
 			return true;
@@ -364,7 +395,14 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 	// From the available options, choose one at random
 	if(options.empty() == false) {
 		const int option = rand()%options.size();
-		return recruit(options[option]);
+		recruit_result_ptr recruit_res = check_recruit_action(options[option]);
+		if (recruit_res->is_ok()) {
+			recruit_res->execute();
+			if (!recruit_res->is_ok()) {
+				ERR_AI << "recruitment failed "<< std::endl;
+			}
+		}
+		return recruit_res->is_gamestate_changed();
 	}
 	if (found) {
 		LOG_AI << "No available units to recruit that come under the price.\n";
@@ -433,10 +471,9 @@ bool ai_default::multistep_move_possible(const map_location& from,
 	return false;
 }
 
-map_location ai_default::move_unit(map_location from, map_location to, moves_map& possible_moves)
+map_location ai_default::move_unit(map_location from, map_location to, bool &gamestate_changed)
 {
 	moves_map temp_possible_moves;
-	moves_map* possible_moves_ptr = &possible_moves;
 
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end() && i->second.can_recruit()) {
@@ -446,48 +483,44 @@ map_location ai_default::move_unit(map_location from, map_location to, moves_map
 		const map_location& start_pos = nearest_keep(i->first);
 
 		// If we can make it back to the keep and then to our original destination, do so.
-		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
-			from = readwrite_context_proxy::move_unit_partial(from,start_pos,possible_moves);
-			if(from != start_pos) {
+		if(multistep_move_possible(from,to,start_pos,get_possible_moves())) {
+			move_result_ptr move_to_keep_res = execute_move_action(from,start_pos,false);
+			gamestate_changed |= move_to_keep_res->is_gamestate_changed();
+			from = move_to_keep_res->get_unit_location();
+			if (!move_to_keep_res->is_ok()) {
+				LOG_AI << "first part of multistep move (getting to keep) failed" << std::endl;
 				return from;
 			}
 
-			move_map srcdst, dstsrc;
-			calculate_possible_moves(temp_possible_moves,srcdst,dstsrc,false);
-			possible_moves_ptr = &temp_possible_moves;
 		}
 
-		if (map_.is_keep(from))
-			do_recruitment();
+		if (map_.is_keep(from)) {
+			gamestate_changed |= do_recruitment();
+		}
 	}
 
-	if(units_.count(to) == 0 || from == to) {
-		const map_location res = readwrite_context_proxy::move_unit(from,to,*possible_moves_ptr);
-		if(res != to) {
-			// We've been ambushed; find the ambushing unit and attack them.
-			adjacent_tiles_array locs;
-			get_adjacent_tiles(res,locs.data());
-			for(adjacent_tiles_array::const_iterator adj_i = locs.begin(); adj_i != locs.end(); ++adj_i) {
-				const unit_map::const_iterator itor = units_.find(*adj_i);
-				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
-				   !itor->second.incapacitated()) {
-					battle_context bc(units_, res, *adj_i, -1, -1, get_aggression());
-					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
-					break;
+	move_result_ptr move_to_dst_ptr = check_move_action(from,to,true);
+	if (move_to_dst_ptr->is_ok()) {
+		move_to_dst_ptr->execute();
+		gamestate_changed |= move_to_dst_ptr->is_gamestate_changed();
+		if (!move_to_dst_ptr->is_ok()) {
+			LOG_AI << "full move failed" << std::endl;
+		}
+
+		//ambush ?
+		if (move_to_dst_ptr->get_move_spectator().get_ambusher().valid()) {
+			attack_result_ptr attack_res = check_attack_action(move_to_dst_ptr->get_unit_location(),move_to_dst_ptr->get_move_spectator().get_ambusher()->first,-1);
+			if (attack_res->is_ok()) {
+				attack_res->execute();
+				gamestate_changed |= attack_res->is_gamestate_changed();
+				if (!attack_res->is_ok()) {
+					LOG_AI << "attack on the ambusher (after move) failed" << std::endl;
 				}
 			}
 		}
-
-		return res;
-	} else {
-		return from;
+		return move_to_dst_ptr->get_unit_location();
 	}
-}
-
-bool ai_default::attack_enemy(const map_location& attacking_unit, const map_location& target,
-		int att_weapon, int def_weapon)
-{
-	return readwrite_context_proxy::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
+	return from;
 }
 
 
@@ -589,7 +622,6 @@ void ai_default::play_turn()
 	 */
 	try {
 		consider_combat_ = true;
-		game_events::fire("ai turn");
 		do_move();
 	} catch(std::bad_alloc) {
 		lg::wml_error << "Memory exhausted - a unit has either a lot of hitpoints or a negative amount.\n";
@@ -688,7 +720,13 @@ void ai_default::do_move()
 		}
 
 		if(closest_distance != -1) {
-			move_unit(ui->first,closest_move.first,possible_moves);
+			move_result_ptr move_ptr = check_move_action(ui->first,closest_move.first);
+			if (move_ptr->is_ok()) {
+				move_ptr->execute();
+				if (move_ptr->is_ok()) {
+					WRN_AI << "'goto' move failed" << std::endl;
+				}
+			}
 		}
 	}
 
@@ -856,17 +894,20 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 		// Never used:
 		//		const unit_map::const_iterator tgt = units_.find(target_loc);
 
-		const map_location arrived_at = move_unit(from,to,possible_moves);
+		bool gamestate_changed = false;
+		const map_location arrived_at = move_unit(from,to,gamestate_changed);
 		if(arrived_at != to || units_.find(to) == units_.end()) {
 			WRN_AI << "unit moving to attack has ended up unexpectedly at "
 				<< arrived_at << " when moving to " << to << " from " << from << '\n';
-			return true;
+			return gamestate_changed;
 		}
 
-		// Recalc appropriate weapons here: AI uses approximations.
-		battle_context bc(units_, to, target_loc, -1, -1, get_aggression());
-		attack_enemy(to, target_loc, bc.get_attacker_stats().attack_num,
-				bc.get_defender_stats().attack_num);
+		attack_result_ptr attack_res = execute_attack_action(to, target_loc, -1);
+		gamestate_changed |= attack_res->is_gamestate_changed();
+		if (!attack_res->is_ok()) {
+			WRN_AI << "attack failed" << std::endl;
+		}
+
 
 		// If this is the only unit in the attack, and the target
 		// is still alive, then also summon reinforcements
@@ -876,7 +917,7 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 			add_target(target(target_loc,3.0,target::BATTLE_AID));
 		}
 
-		return true;
+		return gamestate_changed;
 
 	} else {
 		return false;
@@ -929,11 +970,9 @@ bool ai_default::get_healing(std::map<map_location,paths>& possible_moves,
 				const location& dst = best_loc->second;
 
 				LOG_AI << "moving unit to village for healing...\n";
-
-				unit_map::iterator u = units_.find(move_unit(src,dst,possible_moves));
-				if (u != units_.end())
-					u->second.remove_movement_ai();
-				return true;
+				bool gamestate_changed = false;
+				unit_map::iterator u = units_.find(move_unit(src,dst,gamestate_changed));
+				return gamestate_changed;
 			}
 		}
 	}
@@ -1057,7 +1096,8 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 				if(best_pos.valid()) {
 					LOG_AI << "retreating '" << i->second.type_id() << "' " << i->first
 					       << " -> " << best_pos << '\n';
-					move_unit(i->first,best_pos,possible_moves);
+					bool gamestate_changed = false;
+					move_unit(i->first,best_pos,gamestate_changed);
 #ifdef SUOKKO
 					// FIXME: This was in sukko's r29531 but backed out.
 					// Is it correct?
@@ -1065,7 +1105,7 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 					if (best_rating < 0.0)
 						add_target(target(best_pos, -3.0*best_rating, target::SUPPORT));
 #endif
-					return true;
+					return gamestate_changed;
 				}
 			}
 		}
@@ -1109,83 +1149,26 @@ bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
 			&& map_.on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
-
-		const location arrived_at = move_unit(move.first,move.second,possible_moves);
+		bool gamestate_changed = false;
+		const location arrived_at = move_unit(move.first,move.second,gamestate_changed);
 
 		// We didn't arrive at our intended destination.
 		// We return true, meaning that the AI algorithm
 		// should be recalculated from the start.
 		if(arrived_at != move.second) {
 			WRN_AI << "didn't arrive at destination\n";
-			return true;
+			return gamestate_changed;
 		}
 
 		const unit_map::const_iterator u_it = units_.find(arrived_at);
 		// Event could have done anything: check
-		if (u_it == units_.end() || u_it->second.incapacitated()) {
-			WRN_AI << "stolen or incapacitated\n";
-		} else {
-			// FIXME: sukko's r29531 inserted the following line, is it correct?
- 			// u_it->second.set_movement(0);
-			// Search to see if there are any enemy units next to the tile
-			// which really should be attacked now the move is done.
-			map_location adj[6];
-			get_adjacent_tiles(arrived_at,adj);
-			map_location target;
-#ifdef SUOKKO
-			// FIXME: This code was in sukko's r29531 and was backed out. Correct?
-			int selected = -1;
-			boost::scoped_ptr<battle_context> bc_sel;
-
-			double harm_weight = 2.0 + current_team().caution();
-			if (chosen->type == target::THREAT
-			    || chosen->type == target::BATTLE_AID)
-			  harm_weight -= 1.0;
-			harm_weight =  current_team().aggression() - harm_weight;
-#endif
-
-			for(int n = 0; n != 6; ++n) {
-				const unit *enemy = get_visible_unit(units_,adj[n], map_, teams_,current_team());
-
-				if (!enemy || !current_team().is_enemy(enemy->side()) || enemy->incapacitated())
-					continue;
-				// Current behavior is to only make risk-free attacks.
-				battle_context bc(units_, arrived_at, adj[n], -1, -1, 100.0);
-#ifndef SUOKKO
-					if (bc.get_defender_stats().damage == 0) {
-						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,
-								bc.get_defender_stats().attack_num);
-						break;
-					}
-#else
-					// FIXME: This code was in sukko's r29531. Correct?
-					const double value = (bc.get_defender_combatant().hp_dist[0] - bc.get_attacker_combatant().hp_dist[0]*harm_weight)*u_it->second.max_hitpoints()/2
-						+ (bc.get_defender_combatant().average_hp() - bc.get_attacker_combatant().average_hp() * harm_weight);
-
-					if (value > 0.0
-						&& (selected == -1
-							|| bc_sel->better_attack(bc,harm_weight)))
-					{
-						// Select attack target
-						bc_sel.reset(new battle_context(bc));
-						selected = n;
-					}
-#endif
-			}
-#ifdef SUOKKO
-			// FIXME: This code was in sukko's r29531 and was backed out. Correct?
-			if (selected >= 0) {
-				attack_enemy(arrived_at, adj[selected], bc_sel->get_attacker_stats().attack_num,
-						bc_sel->get_defender_stats().attack_num);
-			}
-#endif
+		if (u_it == units_.end()) {
+			// Don't allow any other units to move onto the tile
+			// our unit just moved onto
+			typedef move_map::iterator Itor;
+			std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
+			dstsrc.erase(del.first,del.second);
 		}
-
-		// Don't allow any other units to move onto the tile
-		// our unit just moved onto
-		typedef move_map::iterator Itor;
-		std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
-		dstsrc.erase(del.first,del.second);
 	}
 
 	return false;
@@ -1648,7 +1631,11 @@ void ai_default::move_leader_to_goals( const move_map& enemy_dstsrc)
 
 	if(loc.valid()) {
 		LOG_AI << "Moving leader to goal\n";
-		move_unit(leader->first,loc,possible_moves);
+		bool gamestate_changed = false;
+		move_unit(leader->first,loc,gamestate_changed);
+		if (!gamestate_changed) {
+			ERR_AI << "side: "<< get_side() << " trying to move leader to goal has failed" << std::endl;
+		}
 	}
 }
 
@@ -1705,9 +1692,11 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 					if (p.destinations.contains(i->first))
 					{
-						move_unit(leader->first,current_loc,possible_moves);
-						// FIXME: suokko's r29531 included this line
-						// leader->second.set_movement(0);
+						bool gamestate_changed = false;
+						move_unit(leader->first,current_loc,gamestate_changed);
+						if (!gamestate_changed) {
+							ERR_AI << "moving leader after recruit failed"<< std::endl;
+						}
 						return;
 					}
 				}
@@ -1751,7 +1740,12 @@ void ai_default::move_leader_after_recruit(const move_map& /*srcdst*/,
 				    leader_paths.destinations.contains(adj[n]) &&
 				    !is_accessible(adj[n], enemy_dstsrc))
 				{
-					if (move_unit(keep,adj[n],possible_moves)!=keep) {
+					bool gamestate_changed = false;
+					map_location new_loc = move_unit(keep,adj[n],gamestate_changed);
+					if (!gamestate_changed) {
+						ERR_AI << "moving leader after recruit failed" << std::endl;
+					}
+					if (new_loc!=keep) {
 						return;
 					}
 				}

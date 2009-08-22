@@ -222,13 +222,16 @@ bool ai_default::get_villages(std::map<map_location,paths>& possible_moves,
 			leader_move = *i;
 		} else {
 			if(units_.count(i->first) == 0) {
-				const location loc = move_unit(i->second,i->first,possible_moves);
-				++moves_made;
+				bool gamestate_changed = false;
+				const location loc = move_unit(i->second,i->first,gamestate_changed);
+				if (gamestate_changed) {
+					++moves_made;
+				}
 				leader = units_.find_leader(get_side());
 
 				// If we didn't make it to the destination, it means we were ambushed.
 				if(loc != i->first) {
-					return true;
+					return gamestate_changed;
 				}
 
 				const unit_map::const_iterator new_unit = units_.find(loc);
@@ -247,8 +250,11 @@ bool ai_default::get_villages(std::map<map_location,paths>& possible_moves,
 
 	if(leader_move.second.valid()) {
 		if(units_.count(leader_move.first) == 0 && map_.is_village(leader_move.first)) {
-			map_location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
-			++moves_made;
+			bool gamestate_changed = false;
+			map_location loc = move_unit(leader_move.second,leader_move.first,gamestate_changed);
+			if (gamestate_changed) {
+				++moves_made;
+			}
 			// Update leader iterator, since we moved it.
 			leader = units_.find(loc);
 		}

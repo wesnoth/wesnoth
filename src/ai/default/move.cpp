@@ -186,7 +186,7 @@ bool ai_default::move_group(const location& dst, const std::vector<location>& ro
 	move_map srcdst, dstsrc;
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
-	bool res = false;
+	bool gamestate_changed = false;
 
 	for(std::set<location>::const_iterator i = units.begin(); i != units.end(); ++i) {
 		const unit_map::const_iterator un = units_.find(*i);
@@ -221,12 +221,11 @@ bool ai_default::move_group(const location& dst, const std::vector<location>& ro
 		}
 
 		if(best_loc.valid()) {
-			res = true;
-			const location res = move_unit(*i,best_loc,possible_moves);
+		       	const map_location res = move_unit(*i,best_loc,gamestate_changed);
 
 			//if we were ambushed, abort the group's movement.
-			if(res != best_loc) {
-				return true;
+			if (res != best_loc) {
+				return gamestate_changed;
 			}
 
 			// FIXME: suokko's r29531 included the following line.  Correct?
@@ -249,7 +248,7 @@ bool ai_default::move_group(const location& dst, const std::vector<location>& ro
 		}
 	}
 
-	return res;
+	return gamestate_changed;
 }
 
 double ai_default::rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const
@@ -735,7 +734,11 @@ void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
 	// If the leader is not on keep, move him there.
 	if(leader->first != keep) {
 		if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
-			move_unit(leader->first,keep,possible_moves);
+			bool gamestate_changed = false;
+			move_unit(leader->first,keep,gamestate_changed);
+			if (!gamestate_changed) {
+				ERR_AI << "move_leader_to_keep failed!" << std::endl;
+			}
 		} else {
 			// Make a map of the possible locations the leader can move to,
 			// ordered by the distance from the keep.
@@ -758,7 +761,11 @@ void ai_default::move_leader_to_keep(const move_map& enemy_dstsrc)
 		    	j != moves_toward_keep.end(); ++j) {
 
 				if(enemy_dstsrc.count(j->second) == 0) {
-					move_unit(leader->first,j->second,possible_moves);
+					bool gamestate_changed = false;
+					move_unit(leader->first,j->second,gamestate_changed);
+					if (!gamestate_changed) {
+						ERR_AI << "move_leader_to_keep failed!" << std::endl;
+					}
 					break;
 				}
 			}
