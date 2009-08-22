@@ -66,6 +66,7 @@ public:
 	const t_string& income_description_own() const { return income_description_own_; }
 
 	const std::string& editor_group() const { return editor_group_; }
+	void set_editor_group(const std::string& str) { editor_group_ = str; }
 
 	bool is_overlay() const { return overlay_; }
 	bool is_combined() const { return combined_; }
