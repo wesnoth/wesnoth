@@ -32,11 +32,11 @@ namespace gui2 {
  *
  * This shows the dialog to select the kind of MP game the user wants to play.
  *
- * @start_table = container
- *     user_name (text_box)            This text contains the name the user on
+ * @start_table = grid
+ *     (user_name) (text_box) ()       This text contains the name the user on
  *                                     the MP server. This widget will get a
  *                                     fixed maximum length by the engine.
- *     method_list (listbox)           The list with possible game methods.
+ *     (method_list) (listbox) ()      The list with possible game methods.
  * @end_table
  */
 twindow* tmp_method_selection::build_window(CVideo& video)
@@ -47,15 +47,14 @@ twindow* tmp_method_selection::build_window(CVideo& video)
 void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	user_name_ = preferences::login();
-	ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-	VALIDATE(user_widget, missing_widget("user_name"));
-
+	ttext_box* user_widget = NEW_find_widget<ttext_box>(
+			&window, "user_name", false, true);
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
 
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
-	VALIDATE(list, missing_widget("method_list"));
+	tlistbox* list = NEW_find_widget<tlistbox>(
+			&window, "method_list", false, true);
 
 	window.add_to_keyboard_chain(list);
 }
@@ -63,17 +62,15 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_method_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
+		ttext_box& user_widget = NEW_find_widget<ttext_box>(
+				&window, "user_name", false);
+		tlistbox& list = NEW_find_widget<tlistbox>(
+				&window, "method_list", false);
 
-		ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-		assert(user_widget);
+		choice_ = list.get_selected_row();
 
-		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
-		assert(list);
-
-		choice_ = list->get_selected_row();
-
-		user_widget->save_to_history();
-		user_name_= user_widget->get_value();
+		user_widget.save_to_history();
+		user_name_ = user_widget.get_value();
 		preferences::set_login(user_name_);
 	}
 }
