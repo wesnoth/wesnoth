@@ -23,6 +23,59 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_editor_resize_map
+ *
+ * == Editor resize map ==
+ *
+ * This shows the dialog to resize the current map.
+ *
+ * @start_table = grid
+ *     (old_width) (label) ()     Shows the old width of the map.
+ *     (old_height) (label) ()    Shows the old height of the map.
+ *
+ *     (width) (slider) ()        Determines the new width of the map.
+ *     (height) (slider) ()       Determines the new height of the map.
+ *
+ *     (copy_edge_terrain) (boolean_selector) ()
+ *                                Determines whether the border terrains
+ *                                should be used to expand or not.
+ *
+ *     (expand0) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the north east marker.
+ *     (expand1) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the north marker.
+ *     (expand2) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the north west marker.
+ *     (expand3) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the east marker.
+ *     (expand4) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the centre marker.
+ *     (expand5) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the west marker.
+ *     (expand6) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the south east marker.
+ *     (expand7) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the south marker.
+ *     (expand8) (toggle_button) ()
+ *                                Determines in which direction to expand,
+ *                                shows the south west marker.
+ * @end_table
+ */
+
+/**
+ * @todo Test whether the slider can be changed to an interger selector.
+ * Should be possible, since it's also done in the new map dialog.
+ */
 teditor_resize_map::teditor_resize_map() :
 	map_width_(register_integer("width", false)),
 	map_height_(register_integer("height", false)),
@@ -77,23 +130,28 @@ twindow* teditor_resize_map::build_window(CVideo& video)
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel& old_width = window.get_widget<tlabel>("old_width", false);
-	tlabel& old_height = window.get_widget<tlabel>("old_height", false);
-	height_ = &window.get_widget<tslider>("height", false);
-	width_ = &window.get_widget<tslider>("width", false);
+	tlabel& old_width = NEW_find_widget<tlabel>(&window, "old_width", false);
+	tlabel& old_height =
+			NEW_find_widget<tlabel>(&window, "old_height", false);
+	height_ = NEW_find_widget<tslider>(&window, "height", false, true);
+	width_ = NEW_find_widget<tslider>(&window, "width", false, true);
 
-	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
-	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
+	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map
+			, &teditor_resize_map::update_expand_direction>);
+	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map
+			, &teditor_resize_map::update_expand_direction>);
 	old_width.set_label(lexical_cast<std::string>(old_width_));
 	old_height.set_label(lexical_cast<std::string>(old_height_));
 
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + lexical_cast<std::string>(i);
-		direction_buttons_[i] = dynamic_cast<ttoggle_button*>(window.find_widget(name, false));
-		VALIDATE(direction_buttons_[i], missing_widget(name));
+		direction_buttons_[i] = NEW_find_widget<ttoggle_button>(
+				&window, name, false, true);
+
 		direction_buttons_[i]->set_callback_state_change(
-			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
+				dialog_callback<teditor_resize_map
+					, &teditor_resize_map::update_expand_direction>);
 	}
 	direction_buttons_[0]->set_value(true);
 	update_expand_direction(window);
