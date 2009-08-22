@@ -32,9 +32,10 @@ namespace gui2 {
  *
  * This shows the dialog to select the language to use.
  *
- * @start_table = container
- *     language_list (listbox)         This text contains the list with
+ * @start_table = grid
+ *     (language_list) (listbox) ()    This text contains the list with
  *                                     available languages.
+ *     -[] (control) ()                Gets the name of the language.
  * @end_table
  */
 twindow* tlanguage_selection::build_window(CVideo& video)
@@ -44,8 +45,8 @@ twindow* tlanguage_selection::build_window(CVideo& video)
 
 void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
-	VALIDATE(list, missing_widget("language_list"));
+	tlistbox* list = NEW_find_widget<tlistbox>(
+			&window, "language_list", false, true);
 	window.keyboard_capture(list);
 
 	const std::vector<language_def>& languages = get_languages();
@@ -66,8 +67,8 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tlanguage_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
-		assert(list);
+		tlistbox* list = NEW_find_widget<tlistbox>(
+				&window, "language_list", false, true);
 
 		const int res = list->get_selected_row();
 		assert(res != -1);
