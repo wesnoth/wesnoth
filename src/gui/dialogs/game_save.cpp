@@ -32,11 +32,13 @@ namespace gui2 {
  *
  * This shows the dialog to create a savegame file.
  *
- * @start_table = container
- *     txtFilename_ (text_box)            The name of the savefile.
+ * @start_table = grid
+ *     (lblTitle) (label) ()      The title of the window.
+ *     (txtFilename) (text_box) ()
+ *                                The name of the savefile.
  * @end_table
  */
-	tgame_save::tgame_save(const std::string& title, const std::string& filename) :
+tgame_save::tgame_save(const std::string& title, const std::string& filename) :
 	txtFilename_(register_text("txtFilename", false)),
 	title_(title),
 	filename_(filename)
@@ -52,9 +54,7 @@ void tgame_save::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(txtFilename_);
 
-	tlabel* lblTitle = dynamic_cast<tlabel*>(window.find_widget("lblTitle", false));
-	VALIDATE(lblTitle, missing_widget("lblTitle"));
-	lblTitle->set_label(title_);
+	NEW_find_widget<tlabel>(&window, "lblTitle", false).set_label(title_);
 
 	txtFilename_->set_widget_value(window, filename_);
 	window.keyboard_capture(txtFilename_->widget(window));
@@ -77,9 +77,7 @@ twindow* tgame_save_message::build_window(CVideo& video)
 
 void tgame_save_message::pre_show(CVideo& video, twindow& window)
 {
-	tlabel* lblMessage = dynamic_cast<tlabel*>(window.find_widget("lblMessage", false));
-	VALIDATE(lblMessage, missing_widget("lblMessage"));
-	lblMessage->set_label(message_);
+	NEW_find_widget<tlabel>(&window, "lblMessage", false).set_label(message_);
 
 	tgame_save::pre_show(video, window);
 }
