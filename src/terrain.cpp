@@ -16,9 +16,16 @@
 
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "terrain.hpp"
 
+#include <set>
 
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_G LOG_STREAM(warn, lg::general)
+#define LOG_G LOG_STREAM(info, lg::general)
+#define DBG_G LOG_STREAM(debug, lg::general)
 
 terrain_type::terrain_type() :
 		minimap_image_("void"),
@@ -236,8 +243,31 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 	foreach (const config &t, cfgs)
 	{
 		terrain_type terrain(t);
-		terrain_list.push_back(terrain.number());
-		letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
+		DBG_G << "create_terrain_maps: " << terrain.number() << " "
+			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
+
+		std::pair<std::map<t_translation::t_terrain, terrain_type>::iterator, bool> res;
+		res = letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
+		if (!res.second) {
+			terrain_type& curr = res.first->second;
+			WRN_G << "Duplicate terrain code definition found for " << terrain.number() << "\n";
+			WRN_G << "Trying to add terrain "
+				<< terrain.id() << " (" << terrain.name() << ") "
+				<< "[" << terrain.editor_group() << "]" << "\n";
+			WRN_G << "which conflicts with  "
+				<< curr.id() << " (" << curr.name() << ") "
+				<< "[" << curr.editor_group() << "]" << "\n";
+			std::vector<std::string> eg1 = utils::split(curr.editor_group());
+			std::vector<std::string> eg2 = utils::split(terrain.editor_group());
+			std::set<std::string> egs;
+			std::copy(eg1.begin(), eg1.end(), std::inserter(egs, egs.begin()));
+			std::copy(eg2.begin(), eg2.end(), std::inserter(egs, egs.begin()));
+			std::string joined = utils::join(egs);
+			curr.set_editor_group(joined);
+			WRN_G << "Editor groups merged to: " << joined << "\n";
+		} else {
+			terrain_list.push_back(terrain.number());
+		}
 	}
 }
 
