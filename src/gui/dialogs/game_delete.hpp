@@ -27,8 +27,6 @@ public:
 	bool dont_ask_again() const { return dont_ask_again_; }
 
 protected:
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);

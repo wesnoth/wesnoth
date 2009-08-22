@@ -27,20 +27,18 @@ namespace gui2 {
  * This shows the dialog to confirm deleting a savegame file.
  *
  * @start_table = container
+ *     (dont_ask_again) (boolean_selector) ()
+ *                     A checkbox to not show this dialog again.
  * @end_table
  */
 
-tgame_delete::tgame_delete() 
+tgame_delete::tgame_delete()
 	: chk_dont_ask_again_(register_bool("dont_ask_again"))
 {}
 
 twindow* tgame_delete::build_window(CVideo& video)
 {
 	return build(video, get_id(GAME_DELETE));
-}
-
-void tgame_delete::pre_show(CVideo& /*video*/, twindow& /*window*/)
-{
 }
 
 void tgame_delete::post_show(twindow& window)
