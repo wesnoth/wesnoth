@@ -61,7 +61,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	events::pump();
 }
 
-static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit)
+static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit,unsigned int step_num,unsigned int step_left)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
@@ -69,11 +69,13 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	}
 
 
+
 	temp_unit.set_location(a);
 	disp->place_temporary_unit(temp_unit);
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
-	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b);
+	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
+			false,false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -180,7 +182,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 			}
 
 			if(tiles_adjacent(path[i], path[i+1])) {
-				move_unit_between(path[i],path[i+1],temp_unit);
+				move_unit_between(path[i],path[i+1],temp_unit,i,path.size()-2-i);
 			} else if (path[i] != path[i+1]) {
 				teleport_unit_between(path[i],path[i+1],temp_unit);
 			} else {
