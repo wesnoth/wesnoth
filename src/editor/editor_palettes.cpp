@@ -29,8 +29,8 @@
 
 namespace editor {
 
-static bool is_invalid_terrain(t_translation::t_terrain c) {
-	return (c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
+static bool is_valid_terrain(t_translation::t_terrain c) {
+	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
 terrain_group::terrain_group(const config& cfg, display& gui):
@@ -67,7 +67,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	terrains_ = map().get_terrain_list();
 
 	//move "invalid" terrains to the end
-	std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain);
+	std::stable_partition(terrains_.begin(), terrains_.end(), is_valid_terrain);
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
