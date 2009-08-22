@@ -7,13 +7,15 @@ Version 1.7.3+svn:
    * New melee animation for Thunderguard, Dragonguard.
  * Language and i18n:
    * Updated translations: Russian
+ * User interface:
+   * Removed the hotkey to enable/disable mouse scrolling
+ * WML Engine:
+   * Support for [show_if] inside [message]	
  * Miscellaneous and bugfixes:
    * Removed obsolete code for implicit linked widgets for the listbox
    * [part] caption= is no longer supported; prepend the CAPTION macro
      to story text instead
    * Fixed 100% CPU usage on storyscreens with no text (e.g. map screens)
- * WML Engine:
-   * Support for [show_if] inside [message]	
    * Fix ODR issues in gui2
 
 Version 1.7.3:
