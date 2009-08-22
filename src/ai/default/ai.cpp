@@ -833,7 +833,7 @@ void ai_default::do_move()
 	}
 }
 
-bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const move_map& /*srcdst*/,
+bool ai_default::do_combat(std::map<map_location,paths>& /*possible_moves*/, const move_map& /*srcdst*/,
 		const move_map& /*dstsrc*/, const move_map& /*enemy_srcdst*/, const move_map& /*enemy_dstsrc*/)
 {
 
@@ -925,7 +925,7 @@ bool ai_default::do_combat(std::map<map_location,paths>& possible_moves, const m
 }
 
 
-bool ai_default::get_healing(std::map<map_location,paths>& possible_moves,
+bool ai_default::get_healing(std::map<map_location,paths>& /*possible_moves*/,
 		const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	// Find units in need of healing.
@@ -1002,7 +1002,7 @@ bool ai_default::should_retreat(const map_location& loc, const unit_map::const_i
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
+bool ai_default::retreat_units(std::map<map_location,paths>& /*possible_moves*/,
 		const move_map& srcdst, const move_map& dstsrc,
 		const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
@@ -1114,7 +1114,7 @@ bool ai_default::retreat_units(std::map<map_location,paths>& possible_moves,
 	return false;
 }
 
-bool ai_default::move_to_targets(std::map<map_location, paths>& possible_moves,
+bool ai_default::move_to_targets(std::map<map_location, paths>& /*possible_moves*/,
 		move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::const_iterator leader)
 {
