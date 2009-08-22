@@ -47,35 +47,31 @@ twindow* tunit_create::build_window(CVideo& video)
 
 void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttoggle_button* male_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("male_toggle", false));
-	ttoggle_button* female_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("female_toggle", false));
-	ttoggle_button* namegen_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("namegen_toggle", false));
-	tlistbox* list =
-		dynamic_cast<tlistbox*>(window.find_widget("unit_type_list", false));
-
-	VALIDATE(male_toggle, missing_widget("male_toggle"));
-	VALIDATE(female_toggle, missing_widget("female_toggle"));
-	VALIDATE(namegen_toggle, missing_widget("namegen_toggle"));
-	VALIDATE(list, missing_widget("unit_type_list"));
+	ttoggle_button& male_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "male_toggle", false);
+	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "female_toggle", false);
+	ttoggle_button& namegen_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "namegen_toggle", false);
+	tlistbox& list = NEW_find_widget<tlistbox>(
+			&window, "unit_type_list", false);
 
 	if(gender_ == unit_race::FEMALE) {
-		female_toggle->set_value(true);
-		male_toggle->set_value(false);
+		female_toggle.set_value(true);
+		male_toggle.set_value(false);
 	}
 	else {
-		female_toggle->set_value(false);
-		male_toggle->set_value(true);
+		female_toggle.set_value(false);
+		male_toggle.set_value(true);
 	}
 
-	namegen_toggle->set_value(generate_name_);
+	namegen_toggle.set_value(generate_name_);
 
 	if(types_.empty() != true) {
 		// TODO: check at setter time instead/merge setters in one?
 		if(races_.size() != types_.size()) {
-			WRN_GUI_G << "tunit_create::pre_show(): more unit races than types, using minimum set\n";
+			WRN_GUI_G << "tunit_create::pre_show(): more unit "
+					"races than types, using minimum set\n";
 		}
 
 		for(std::vector<std::string>::size_type k = 0; k < list_size(); ++k) {
@@ -87,7 +83,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 			item["label"] = races_[k];
 			data.insert(std::make_pair("race", item));
 
-			list->add_row(data);
+			list.add_row(data);
 		}
 	}
 }
@@ -99,28 +95,22 @@ void tunit_create::post_show(twindow& window)
 		return;
 	}
 
-	ttoggle_button* male_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("male_toggle", false));
-	ttoggle_button* female_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("female_toggle", false));
-	ttoggle_button* namegen_toggle =
-		dynamic_cast<ttoggle_button*>(window.find_widget("namegen_toggle", false));
-	tlistbox* list =
-		dynamic_cast<tlistbox*>(window.find_widget("unit_type_list", false));
+	tlistbox& list = NEW_find_widget<tlistbox>(
+			&window, "unit_type_list", false);
 
-	assert(male_toggle);
-	assert(female_toggle);
-	assert(namegen_toggle);
-	assert(list);
-
-	if(list->get_selected_row() < 0) {
+	if(list.get_selected_row() < 0) {
 		choice_ = no_choice();
 		return;
 	}
 
-	choice_ = static_cast<size_t>(list->get_selected_row());
-	gender_ = female_toggle->get_value() ? unit_race::FEMALE : unit_race::MALE;
-	generate_name_ = namegen_toggle->get_value();
+	ttoggle_button& female_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "female_toggle", false);
+	ttoggle_button& namegen_toggle = NEW_find_widget<ttoggle_button>(
+			&window, "namegen_toggle", false);
+
+	choice_ = static_cast<size_t>(list.get_selected_row());
+	gender_ = female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
+	generate_name_ = namegen_toggle.get_value();
 }
 
 }
