@@ -65,9 +65,6 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
-
 	boost::function<void (int, int, int)> redraw_callback_;
 
 	/** Available time_of_days */

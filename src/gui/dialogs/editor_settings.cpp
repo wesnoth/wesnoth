@@ -29,17 +29,59 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_editor_settings
+ *
+ * == Editor settings ==
+ *
+ * This shows the dialog to set the editor settings.
+ *
+ * @start_table = grid
+ *     (current_tod) (label) ()   Displays the currently selected time of
+ *                                day(ToD) mask.
+ *     (current_tod_image) (label) ()
+ *                                The image for the ToD mask.
+ *     (next_tod) (button) ()     Selects the next ToD mask.
+ *
+ *     (custom_tod_toggle) (toggle_button) ()
+ *                                Allow to set the ToD mask by selecting the
+ *                                colour components manually.
+ *     (custom_tod_red) (slider) ()
+ *                                Sets the red component of the custom ToD
+ *                                mask.
+ *     (custom_tod_green) (slider) ()
+ *                                Sets the green component of the custom ToD
+ *                                mask.
+ *     (custom_tod_blue) (slider) ()
+ *                                Sets the blue component of the custom ToD
+ *                                mask.
+ *
+ *     (custom_tod_auto_refresh) (toggle_button) ()
+ *                                Directly update the ToD mask when a
+ *                                component slider is moved.
+ *
+ *     (use_mdi) (boolean) ()     Sets whether the user interface should be
+ *                                an MDI interface or not.
+ * @end_table
+ */
+
 teditor_settings::teditor_settings()
-: redraw_callback_(),
-tods_(), current_tod_(0),
-current_tod_label_(NULL), current_tod_image_(NULL),
-custom_tod_toggle_(NULL), custom_tod_auto_refresh_(NULL),
-custom_tod_toggle_field_(register_bool("custom_tod_toggle", false)),
-custom_tod_red_(NULL), custom_tod_green_(NULL), custom_tod_blue_(NULL),
-custom_tod_red_field_(register_integer("custom_tod_red", false)),
-custom_tod_green_field_(register_integer("custom_tod_green", false)),
-custom_tod_blue_field_(register_integer("custom_tod_blue", false)),
-use_mdi_field_(register_bool("use_mdi"))
+	: redraw_callback_()
+	, tods_()
+	, current_tod_(0)
+	, current_tod_label_(NULL)
+	, current_tod_image_(NULL)
+	, custom_tod_toggle_(NULL)
+	, custom_tod_auto_refresh_(NULL)
+	, custom_tod_toggle_field_(register_bool("custom_tod_toggle", false))
+	, custom_tod_red_(NULL)
+	, custom_tod_green_(NULL)
+	, custom_tod_blue_(NULL)
+	, custom_tod_red_field_(register_integer("custom_tod_red", false))
+	, custom_tod_green_field_(register_integer("custom_tod_green", false))
+	, custom_tod_blue_field_(register_integer("custom_tod_blue", false))
+	, use_mdi_field_(register_bool("use_mdi"))
 {
 }
 
@@ -123,6 +165,12 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 		ss << "/" << tods_.size();
 		ss << ": " << get_selected_tod().name;
 		current_tod_label_->set_label(ss.str());
+		/**
+		 * @todo Implement the showing of the ToD icon.
+		 *
+		 * Note at the moment the icon is a label widget, should become an
+		 * image widget.
+		 */
 		//current_tod_image_->set_icon_name(get_selected_tod().image);
 		custom_tod_red_->set_value(get_selected_tod().red);
 		custom_tod_green_->set_value(get_selected_tod().green);
@@ -147,32 +195,47 @@ twindow* teditor_settings::build_window(CVideo& video)
 void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(!tods_.empty());
-	current_tod_label_ = &window.get_widget<tlabel>("current_tod", false);
-	current_tod_image_ = &window.get_widget<tlabel>("current_tod_image", false);
-	custom_tod_toggle_ = &window.get_widget<ttoggle_button>("custom_tod_toggle", false);
-	custom_tod_auto_refresh_ = &window.get_widget<ttoggle_button>("custom_tod_auto_refresh", false);
-	custom_tod_red_ = &window.get_widget<tslider>("custom_tod_red", false);
-	custom_tod_green_ = &window.get_widget<tslider>("custom_tod_green", false);
-	custom_tod_blue_ = &window.get_widget<tslider>("custom_tod_blue", false);
-	tbutton& next_tod_button = window.get_widget<tbutton>("next_tod", false);
+	current_tod_label_ = NEW_find_widget<tlabel>(
+			&window, "current_tod", false, true);
+	current_tod_image_ = NEW_find_widget<tlabel>(
+			&window, "current_tod_image", false, true);
+	custom_tod_toggle_ = NEW_find_widget<ttoggle_button>(
+			&window, "custom_tod_toggle", false, true);
+	custom_tod_auto_refresh_ = NEW_find_widget<ttoggle_button>(
+			&window, "custom_tod_auto_refresh", false, true);
+	custom_tod_red_ = NEW_find_widget<tslider>(
+			&window, "custom_tod_red", false, true);
+	custom_tod_green_ = NEW_find_widget<tslider>(
+			&window, "custom_tod_green", false, true);
+	custom_tod_blue_ = NEW_find_widget<tslider>(
+			&window, "custom_tod_blue", false, true);
+
+	tbutton& next_tod_button = NEW_find_widget<tbutton>(
+			&window, "next_tod", false);
 	next_tod_button.set_callback_mouse_left_click(
-		dialog_callback<teditor_settings, &teditor_settings::do_next_tod>);
-	tbutton& apply_button = window.get_widget<tbutton>("apply", false);
+			dialog_callback<teditor_settings
+				, &teditor_settings::do_next_tod>);
+
+	tbutton& apply_button = NEW_find_widget<tbutton>(
+			&window, "apply", false);
 	apply_button.set_callback_mouse_left_click(
-		dialog_callback<teditor_settings, &teditor_settings::update_tod_display>);
+			dialog_callback<teditor_settings
+				, &teditor_settings::update_tod_display>);
+
 	custom_tod_toggle_->set_callback_state_change(
-		dialog_callback<teditor_settings, &teditor_settings::update_selected_tod_info>);
+			dialog_callback<teditor_settings
+				, &teditor_settings::update_selected_tod_info>);
 	custom_tod_red_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
+			dialog_callback<teditor_settings
+				, &teditor_settings::slider_update_callback>);
 	custom_tod_green_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
+			dialog_callback<teditor_settings
+				, &teditor_settings::slider_update_callback>);
 	custom_tod_blue_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
+			dialog_callback<teditor_settings
+				, &teditor_settings::slider_update_callback>);
 	update_selected_tod_info(window);
 }
 
-void teditor_settings::post_show(twindow& /*window*/)
-{
-}
-
 } // namespace gui2
+
