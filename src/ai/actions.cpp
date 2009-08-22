@@ -526,7 +526,7 @@ void move_result::do_execute()
 
 	if (move_spectator_.get_unit().valid()){
 		unit_location_ = move_spectator_.get_unit()->first;
-		if ( remove_movement_ && ( move_spectator_.get_unit()->second.movement_left() > 0 ) ) {
+		if ( remove_movement_ && ( move_spectator_.get_unit()->second.movement_left() > 0 ) && (unit_location_==to_)) {
 			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
 			if (!stopunit_res->is_ok()) {
 				set_error(stopunit_res->get_status());
