@@ -43,6 +43,22 @@ namespace editor {
 		preferences::set("editor_default_dir", value);
 	}
 
+	bool draw_terrain_codes() {
+		return utils::string_bool(preferences::get("editor_draw_terrain_codes"), true);
+	}
+
+	void set_draw_terrain_codes(bool value) {
+		preferences::set("editor_draw_terrain_codes", value ? "yes" : "no");
+	}
+
+	bool draw_hex_coordinates() {
+		return utils::string_bool(preferences::get("editor_draw_hex_coordinates"), true);
+	}
+
+	void set_draw_hex_coordinates(bool value) {
+		preferences::set("editor_draw_hex_coordinates", value ? "yes" : "no");
+	}
+
 	namespace {
 		void normalize_editor_rgb(int rval)
 		{

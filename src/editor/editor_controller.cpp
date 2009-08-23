@@ -147,6 +147,8 @@ void editor_controller::init_gui(CVideo& video)
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
+	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
+	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
 }
 
 void editor_controller::init_sidebar(const config& game_config)
@@ -1032,10 +1034,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().set_draw_coordinates(!gui().get_draw_coordinates());
+			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
+			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
 			gui().invalidate_all();
 			return true;
 		default:

@@ -37,6 +37,13 @@ namespace editor {
 	std::string default_dir();
 	void set_default_dir(const std::string& dir);
 
+	bool draw_terrain_codes();
+	void set_draw_terrain_codes(bool value);
+
+	bool draw_hex_coordinates();
+	void set_draw_hex_coordinates(bool value);
+
+
 	/** Set editor red tint level. */
 	void set_tod_r(int value);
 	/** Set editor green tint level. */
