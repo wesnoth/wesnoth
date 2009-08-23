@@ -64,6 +64,8 @@ public:
 
 	config to_config() const;
 
+	void modify_ai(const config& cfg);
+
 	const std::string get_ai_identifier() const;
 
 private:
@@ -387,10 +389,20 @@ public:
 	 * This function is provided for backward-compatability with [modify_side][ai]...[/ai][/modify_side]
 	 * It can only add new facets to aspects
 	 * @param side side_number (1-based, as in game_info).
-	 * @param ai_parameters AI paramters to be modified.
+	 * @param ai_parameters AI parameters to be modified.
 	 */
 	static void modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters );
 
+
+
+	/**
+	 * Modifies AI parameters for active AI of the given @a side.
+	 * This function is a backend for [modify_ai] tag
+	 * @param side side_number (1-based, as in game_info).
+	 * @param cfg - content of [modify_ai] tag
+	 */
+
+	static void modify_active_ai_for_side( ai::side_number, const config &cfg );
 
 	// =======================================================================
 	// PROXY

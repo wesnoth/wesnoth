@@ -119,6 +119,7 @@ std::string engine::evaluate(const std::string& /*str*/)
 }
 
 
+
 std::string engine::get_name() const
 {
 	return "null";
@@ -136,6 +137,13 @@ config engine::to_config() const
 	cfg["engine"] = engine_;
 	cfg["name"] = get_name();
 	return cfg;
+}
+
+
+component* find_component( component */*root*/, const std::string &/*path*/ )
+{
+	LOG_AI_COMPOSITE_ENGINE << "find_component is not implemented by this engine" << std::endl;
+	return NULL;
 }
 
 } //end of namespace ai

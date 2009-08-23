@@ -98,17 +98,6 @@ public:
 
 
 	/**
-	 * modify a config of the ai by applying rules in [modify_ai] tag
-	 * @param[in] mod_ai config containing the contents of the [modify_ai] tag
-	 * @param[in][out] cfg ai configuration to modify
-	 * @return was all ok?
-	 * @retval true success, cfg is guaranteed to be valid
-	 * @retval false failure
-	 */
-	static bool modify_ai_configuration(const config &mod_ai, config &cfg);
-
-
-	/**
 	 * change a bunch of old aspect configs into a new-style [ai] snippet
 	 * @param[in] ai_parameters - old [ai] snippets
 	 * @param[out cfg - new-style [ai] snippet

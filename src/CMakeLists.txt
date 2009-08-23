@@ -224,6 +224,7 @@ SET(wesnoth-main_SRC
     ai/actions.cpp
     ai/composite/ai.cpp
     ai/composite/aspect.cpp
+    ai/composite/component.cpp
     ai/composite/contexts.cpp
     ai/composite/engine.cpp
     ai/composite/engine_default.cpp

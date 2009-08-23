@@ -53,6 +53,11 @@ typedef boost::shared_ptr< interface > ai_ptr;
 class attack_analysis;
 typedef std::vector<attack_analysis> attacks_vector;
 
+class readonly_context;
+class readwrite_context;
+class default_ai_context;
+class ai_context;
+
 class aspect;
 class candidate_action;
 class engine;

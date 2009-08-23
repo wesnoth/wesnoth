@@ -32,6 +32,7 @@
 #include "../replay.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../statistics.hpp"
+#include "composite/component.hpp"
 
 #include <map>
 #include <stack>
@@ -79,9 +80,16 @@ void holder::init( side_number side )
 	}
 	if (!this->ai_){
 		ai_ = boost::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
-		ai_->on_create();
 	}
-	if (!this->ai_) {
+
+	if (this->ai_) {
+		ai_->on_create();
+		foreach (const config &mod_ai, cfg_.child_range("modify_ai")) {
+			modify_ai(mod_ai);
+		}
+		cfg_.clear_children("modify_ai");
+
+	} else {
 		ERR_AI_MANAGER << describe_ai()<<"AI lazy initialization error!" << std::endl;
 	}
 
@@ -132,6 +140,31 @@ void holder::modify_ai_config_old( const config::const_child_itors &ai_parameter
 				readonly_context_->add_facet(cfg_a["id"],cfg_f);
 			}
 		}
+	}
+}
+
+
+void holder::modify_ai(const config &cfg)
+{
+	if (this->readonly_context_ == NULL) {
+		// if not initialized, initialize now.
+		get_ai_ref();
+	}
+
+	const std::string &act = cfg["action"];
+	bool res = false;
+	if (act == "add") {
+		res = component_manager::add_component(NULL,cfg["path"],cfg.child("cfg"));
+	} else if (act == "change") {
+		res = component_manager::change_component(NULL,cfg["path"],cfg.child("cfg"));
+	} else if (act == "delete") {
+		res = component_manager::delete_component(NULL,cfg["path"]);
+	} else {
+		ERR_AI_MANAGER << "modify_ai tag has invalid 'action' attribute " << std::endl;
+	}
+	if (!res) {
+		ERR_AI_MANAGER << "[modify_ai] failed"<< std::endl;
+		DBG_AI_MANAGER << "[modify_ai] config is: "<< std::endl << cfg << std::endl;
 	}
 }
 
@@ -618,6 +651,13 @@ void manager::modify_active_ai_config_old_for_side ( side_number side, const con
 {
 	get_active_ai_holder_for_side(side).modify_ai_config_old(ai_parameters);
 }
+
+
+void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
+{
+	get_active_ai_holder_for_side(side).modify_ai(cfg);
+}
+
 
 std::string manager::get_active_ai_identifier_for_side( side_number side )
 {

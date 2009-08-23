@@ -36,6 +36,7 @@ namespace ai {
 
 class rca_context;
 class ai_context;
+class component;
 
 class engine {
 public:
@@ -77,7 +78,7 @@ public:
 	//do not override that method in subclasses which cannot create stages
 	virtual void do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b );
 
-	//do not override that method in subclasse which cannot evaluate formulas
+	//do not override that method in subclasses which cannot evaluate formulas
 	virtual std::string evaluate(const std::string& str);
 
 

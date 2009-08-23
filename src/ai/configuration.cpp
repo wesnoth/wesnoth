@@ -26,6 +26,7 @@
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../team.hpp"
+
 #include <boost/lexical_cast.hpp>
 #include <vector>
 
@@ -262,13 +263,7 @@ bool configuration::parse_side_config(const config& original_cfg, config &cfg )
 		aspect_cfg.add_child("default",c);
 	}
 
-	LOG_AI_CONFIGURATION << "Finally, applying [modify_ai] tags to configuration"<< std::endl;
-	foreach (const config &mod_ai, parsed_cfg.child_range("modify_ai")){
-		//do ai config modification without redeployement
-		modify_ai_configuration(mod_ai,parsed_cfg);
-	}
-
-	DBG_AI_CONFIGURATION << "After applying [modify_ai] tags, config contains:"<< std::endl << parsed_cfg << std::endl;
+	DBG_AI_CONFIGURATION << "Done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
 	LOG_AI_CONFIGURATION << "Done parsing side config"<< std::endl;
 
 	cfg = parsed_cfg;
@@ -321,12 +316,6 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(config &cfg)
 	cfg.add_child("ai",parsed_cfg);
 	DBG_AI_CONFIGURATION << "After upgrade to 1.7.3 syntax, config contains:"<< std::endl << cfg << std::endl;
 	return cfg;//in boolean context
-}
-
-bool configuration::modify_ai_configuration(const config &/*mod_ai*/, config &/*parsed_cfg*/)
-{
-	//@todo 1.7.4 implement
-	return true;
 }
 
 

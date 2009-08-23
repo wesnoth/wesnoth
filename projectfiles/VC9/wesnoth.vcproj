@@ -4060,6 +4060,34 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\ai\composite\component.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\ai\composite\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\ai\composite\contexts.cpp"
 						>
 						<FileConfiguration
@@ -5868,6 +5896,10 @@
 					</File>
 					<File
 						RelativePath="..\..\src\ai\composite\aspect.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\ai\composite\component.hpp"
 						>
 					</File>
 					<File
