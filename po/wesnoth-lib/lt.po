@@ -3,18 +3,18 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6\n"
+"Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-18 21:52+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:13
@@ -65,9 +65,8 @@ msgstr "Stovykla"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:173
-#, fuzzy
 msgid "Fort"
-msgstr "Miškas"
+msgstr "Tvirtovė"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=dwarven_castle
@@ -111,29 +110,26 @@ msgstr "Bokštas"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:256
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "Stovykla"
+msgstr "Stovyklos bokštas"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:269
-#, fuzzy
 msgid "Fort Keep"
-msgstr "Bokštas"
+msgstr "Tvirtovės bokštas"
 
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:282 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:347
-#, fuzzy
 msgid "Castle Keep"
-msgstr "Pilis"
+msgstr "Pilies bokštas"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:295
 msgid "Elven Keep"
-msgstr ""
+msgstr "Elfų bokštas"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:321
@@ -180,9 +176,8 @@ msgstr "Apsnigtas miškas"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:442
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "Apsnigtas miškas"
+msgstr "Apsnigtas pušų miškas"
 
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:453
@@ -205,9 +200,8 @@ msgstr "Miškas"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:464
-#, fuzzy
 msgid "Pine Forest"
-msgstr "Apsnigtas miškas"
+msgstr "Pušų miškas"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:473
@@ -358,15 +352,13 @@ msgstr "Kalnai"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:761
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Nepraeinami dykumos kalnai"
+msgstr "Dykumos kalnai"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:779
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "Kalnai"
+msgstr "Apsnigti kalnai"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:793
@@ -610,9 +602,8 @@ msgstr "Atšaukti"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:44
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Kampanija"
+msgstr "Žaisti kampaniją"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -787,9 +778,8 @@ msgstr ""
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Padėti"
+msgstr "būsena"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
@@ -798,15 +788,14 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
-#, fuzzy
 msgid "Actions"
-msgstr "Veiksmas"
+msgstr "Veiksmai"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
 #, fuzzy
 msgid "Step operation"
-msgstr "Moderuoja"
+msgstr "Moderavimas"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:130
@@ -821,9 +810,8 @@ msgstr ""
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:150
-#, fuzzy
 msgid "Continue"
-msgstr "Tęsti judėjimą"
+msgstr "Tęsti"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:166
@@ -849,9 +837,8 @@ msgstr "Trinti failą"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "Ar tikrai norite išjungti?"
+msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
@@ -896,9 +883,8 @@ msgstr ""
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/game_load.cfg:197
-#, fuzzy
 msgid "Filter"
-msgstr "Failas: "
+msgstr "Filtras"
 
 #. [label]: id=name
 #. [label]: id=filename
@@ -909,16 +895,14 @@ msgstr "Pavadinimas"
 
 #. [label]: id=date
 #: data/gui/default/window/game_load.cfg:265
-#, fuzzy
 msgid "Date"
-msgstr "Padėti"
+msgstr "Data"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:381
 #: data/gui/default/window/game_load.cfg:382
-#, fuzzy
 msgid "Delete"
-msgstr "Trinti failą"
+msgstr "Trinti"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
@@ -928,9 +912,8 @@ msgstr "Išsaugoti peržaidimą"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:416
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Atšaukti"
+msgstr "Atšaukti nurodymus"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -944,9 +927,8 @@ msgstr "Išsaugoti žaidimą"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
-msgstr "Pavadinimas: "
+msgstr "Pavadinimas:"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
@@ -961,7 +943,7 @@ msgstr ""
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignoruoti viską"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -972,7 +954,7 @@ msgstr "Išjungti žaidimą"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr ""
+msgstr "Perrašyti?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
@@ -999,9 +981,8 @@ msgstr "Keisti kalbą"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:108
-#, fuzzy
 msgid "Games"
-msgstr "Pavadinimas"
+msgstr "Žaidimai"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
@@ -1024,7 +1005,7 @@ msgstr "Sukurti žaidimą"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Unknown era"
-msgstr ""
+msgstr "Nežinoma era"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:181
@@ -1045,9 +1026,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:304
-#, fuzzy
 msgid "Sort players:"
-msgstr "Žaidėjai:"
+msgstr "Rikiuoti žaidėjus:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:312
@@ -1057,13 +1037,12 @@ msgstr ""
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:320
 msgid "Alphabetically"
-msgstr ""
+msgstr "Pagal abėcėlę"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:332
-#, fuzzy
 msgid "Selected game"
-msgstr "Sukurti žaidimą"
+msgstr "Pasirinktas žaidimas"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:333
@@ -1073,18 +1052,17 @@ msgstr ""
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:334
 msgid "Lobby"
-msgstr ""
+msgstr "Vestibiulis"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:335
-#, fuzzy
 msgid "Other games"
-msgstr "Sukurti žaidimą"
+msgstr "Kiti žaidimai"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:357
 msgid "Rooms"
-msgstr ""
+msgstr "Kambariai"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:375
@@ -1093,21 +1071,18 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:451
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "Daug žaidėjų"
+msgstr "Daugelio žaidėjų žaidimo vestibiulis"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:459
-#, fuzzy
 msgid "Filter:"
-msgstr "Failas: "
+msgstr "Filtras:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:470
-#, fuzzy
 msgid "Friends"
-msgstr "Draugų sąrašas"
+msgstr "Draugai"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:476
@@ -1136,9 +1111,8 @@ msgstr "Užverti"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:527
-#, fuzzy
 msgid "Send"
-msgstr "Smėlis"
+msgstr "Siųsti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1151,9 +1125,8 @@ msgstr "Nustatymai"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:551
-#, fuzzy
 msgid "Refresh"
-msgstr "Atnaujinti vaizdą"
+msgstr "Atnaujinti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_help
@@ -1172,9 +1145,8 @@ msgstr "Sukurti žaidimą"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:571
-#, fuzzy
 msgid "Join"
-msgstr "Jungimasis"
+msgstr "Prisijungti"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:577
@@ -1200,27 +1172,23 @@ msgstr "Siųsti privačią žinutę"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
-#, fuzzy
 msgid "Add to friends list"
-msgstr "Pridėti šį naudotojo vardą prie jūsų draugų sąrašo"
+msgstr "Pridėti prie jūsų draugų sąrašo"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
-#, fuzzy
 msgid "Add to ignores list"
-msgstr "Pridėti šį naudotojo vardą prie jūsų ignoruojamų sąrašo"
+msgstr "Pridėti prie jūsų ignoruojamų sąrašo"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
-msgstr "Pašalinti šį naudotojo vardą iš jūsų sąrašo"
+msgstr "Pašalinti iš sąrašo"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
-msgstr "Moderuoja"
+msgstr "Moderavimas"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
@@ -1501,9 +1469,8 @@ msgstr "Pasirinkti"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:124
-#, fuzzy
 msgid "Previous"
-msgstr "Ankstesnis dalinys"
+msgstr "Ankstesnis"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1545,31 +1512,28 @@ msgstr "Sukurti dalinį (Derinimas!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:66
-#, fuzzy
 msgid "Gender:"
-msgstr "Generuoti"
+msgstr "Lytis:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:80
-#, fuzzy
 msgid "Male"
-msgstr "Pilis"
+msgstr "Vyras"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:94
 msgid "Female"
-msgstr ""
+msgstr "Moteris"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:123
-#, fuzzy
 msgid "Race"
-msgstr "Atšaukti"
+msgstr "Rasė"
 
 #. [label]: id=unit_type
 #: data/gui/default/window/unit_create.cfg:135
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 #: src/filechooser.cpp:74
 msgid "File: "
@@ -1604,9 +1568,8 @@ msgid "player"
 msgstr "žaidėjas"
 
 #: src/game_preferences_display.cpp:156
-#, fuzzy
 msgid "Full Screen"
-msgstr "Perjungti visą ekraną"
+msgstr "Visas ekranas"
 
 #: src/game_preferences_display.cpp:157
 msgid "Enable scroll tracking of unit actions"
@@ -2115,31 +2078,28 @@ msgid "replay"
 msgstr "žaidėjas"
 
 #: src/gui/dialogs/game_load.cpp:251
-#, fuzzy
 msgid "Turn"
-msgstr "Baigti ėjimą"
+msgstr "Ėjimas"
 
 #: src/gui/dialogs/game_load.cpp:253
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Scenarijaus tikslas"
+msgstr "Scenarijaus pradžia"
 
 #: src/gui/dialogs/game_load.cpp:256
 msgid "Difficulty: "
-msgstr ""
+msgstr "Sudėtingumas: "
 
 #: src/gui/dialogs/game_load.cpp:258
-#, fuzzy
 msgid "Version: "
-msgstr "Versija"
+msgstr "Versija: "
 
 #: src/gui/dialogs/lobby_main.cpp:386
 msgid "Observers allowed"
-msgstr ""
+msgstr "Stebėtojai leidžiami"
 
 #: src/gui/dialogs/lobby_main.cpp:389
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Stebėtojai neleidžiami"
 
 #: src/gui/dialogs/lobby_main.cpp:664
 msgid ""
@@ -2152,18 +2112,16 @@ msgid "Room $name joined"
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1088
-#, fuzzy
 msgid "Password Required"
-msgstr "Slaptažodžio priminiklis"
+msgstr "Reikalingas slaptažodis"
 
 #: src/gui/dialogs/lobby_main.cpp:1089
 msgid "Joining this game requires a password."
 msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1090
-#, fuzzy
 msgid "Password: "
-msgstr "Slaptažodis:"
+msgstr "Slaptažodis: "
 
 #: src/gui/dialogs/message.cpp:216
 msgid "Error"
@@ -2316,9 +2274,8 @@ msgid "Speak"
 msgstr "Kalbėti"
 
 #: src/hotkeys.cpp:77
-#, fuzzy
 msgid "Change Side (Debug!)"
-msgstr "Pakeisti dalinio pusę (Derinimas!)"
+msgstr "Keisti pusę (Derinimas!)"
 
 #: src/hotkeys.cpp:79
 msgid "Scenario Objectives"
@@ -2784,6 +2741,3 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-
-#~ msgid "Save The Map"
-#~ msgstr "Išsaugoti žemėlapį"

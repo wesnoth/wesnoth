@@ -3,16 +3,17 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6\n"
+"Project-Id-Version: Battle for Wesnoth 1.8\n"
 "POT-Creation-Date: 2009-08-10 17:58+0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.0\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -36,7 +37,7 @@ msgstr "wesnoth"
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr "Mūšis dėl Wesnoth"
+msgstr "Mūšis dėl Vesnoto"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnothd.6:18
@@ -48,7 +49,7 @@ msgstr "PAVADINIMAS"
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
-"wesnoth - Mūšis dėl Wesnoth, ėjimais pagrįstas fantastinis strateginis "
+"wesnoth - Mūšis dėl Vesnoto, ėjimais pagrįstas fantastinis strateginis "
 "žaidimas"
 
 # type: SH
@@ -72,7 +73,7 @@ msgstr "APRAŠYMAS"
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
 msgstr ""
-"Mūšis dėl B<Wesnoth> yra ėjimais pagrįstas fantastinis strateginis žaidimas."
+"Mūšis dėl B<Vesnoto> yra ėjimais pagrįstas fantastinis strateginis žaidimas."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
@@ -92,7 +93,7 @@ msgstr ""
 "savo pajėgų privalumais, neleisdami to paties padaryti priešams. Daliniams "
 "įgaunant patirties, jie įgyja naujų galimybių ir tampa galingesni. Žaiskite "
 "savo gimtąja kalba ir išbandykite savo meistriškumą prieš protingą "
-"kompiuterinį priešininką arba prisijunkite prie didelės Wesnoth tinklo "
+"kompiuterinį priešininką arba prisijunkite prie didelės Vesnoto tinklo "
 "žaidėjų bendruomenės. Kurkite savo paties dalinius, scenarijus ar kampanijas "
 "ir dalinkitės jais su kitais."
 
@@ -183,7 +184,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e,\\ --editor>I<\\ failas>"
 
@@ -517,9 +518,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:184
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<numeris>B<=>I<vertė>"
+msgstr "B<--ai_config>I<numeris>B<=>I<vertė>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:187
@@ -743,13 +744,13 @@ msgstr "wesnothd"
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Mūšio dėl Wesnoth daugelio žaidėjų žaidimo tinklo demonas"
+msgstr "Mūšio dėl Vesnoto daugelio žaidėjų žaidimo tinklo demonas"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr ""
-"wesnothd - Mūšio dėl B<Wesnoth> daugelio žaidėjų žaidimo tinklo demonas"
+"wesnothd - Mūšio dėl B<Vesnoto> daugelio žaidėjų žaidimo tinklo demonas"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:36
@@ -772,7 +773,7 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Tvarko Mūšio dėl Wesnoth daugelio žaidėjų žaidimus. Žiūrėkite http://www."
+"Tvarko Mūšio dėl Vesnoto daugelio žaidėjų žaidimus. Žiūrėkite http://www."
 "wesnoth.org/wiki/ServerAdministration kurias komandas priima serveris iš "
 "wesnoth kliento (/query ...) arba per fifo."
 
@@ -924,7 +925,7 @@ msgstr "Globalūs raktai:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -951,7 +952,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:121
@@ -1049,7 +1050,7 @@ msgstr "Dienos pranešimas."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:147
@@ -1106,9 +1107,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:159

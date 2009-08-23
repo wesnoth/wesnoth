@@ -3,7 +3,7 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.6\n"
+"Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-08-18 21:52+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
@@ -17,18 +17,17 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Paspauskite kairį pelės klavišą arba tarpą..."
+"<big>Paspauskite pelės klavišą arba tarpą...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
 msgid "Wesnoth Tutorial"
-msgstr "Wesnoth apmokymas"
+msgstr "Vesnoto apmokymas"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -90,9 +89,8 @@ msgstr "Li'sar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:194
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:201
-#, fuzzy
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr "*Sveiki atvykę į Wesnoth!"
+msgstr "<big>Sveiki atvykę į Vesnotą!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:196
@@ -141,23 +139,21 @@ msgstr "Kairiu pelės klavišu paspauskite ant Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:228
-#, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
-"*Pasirinkote Konradą.\n"
-"Vietos kur jis gali eiti yra pašviesintos"
+"<big>Pasirinkote Konradą.</big>\n"
+"Vietos, kur jis gali eiti, yra pašviesintos."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:235
-#, fuzzy
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"*Pasirinkote Li'sar.\n"
-"Vietos kur ji gali eiti yra pašviesintos"
+"<big>Pasirinkote Li'sar.</big>\n"
+"Vietos, kur ji gali eiti, yra pašviesintos."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
@@ -183,13 +179,12 @@ msgstr "Kairiu pelės klavišu paspauskite ant užrašo „ČIA“"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:282
-#, fuzzy
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
-"*Oops!\n"
+"<big>Oops!</big>\n"
 "Nužingsniavote ne ten, kur reikia! Po šio pranešimo galėsite paspausti „u“, "
 "kad atšauktumėte, o tada bandykite dar kartą."
 
@@ -307,15 +302,14 @@ msgstr ""
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
-msgstr "Deja, išnaudojai savo ėjimą puolant iškamšą. Dabar bus jos ėjimas."
+msgstr "Deja, išnaudojai savo ėjimą puldamas iškamšą. Dabar bus jos ėjimas."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
-#, fuzzy
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
-msgstr "Deja, išnaudojai savo ėjimą puolant iškamšą. Dabar bus jos ėjimas."
+msgstr "Deja, išnaudojai savo ėjimą puldama iškamšą. Dabar bus jos ėjimas."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
@@ -363,13 +357,12 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
 "Kitoje upės pusėje yra kaimas. Lankytis kaimuose yra gerai, o jei baigsi "
-"ėjimą būdamas kaime, pagysi. Marš į kaimą!"
+"ėjimą būdama kaime, pagysi. Marš į kaimą!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
@@ -446,12 +439,11 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-#, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
 msgstr ""
-"Nuostabi mintis. Grįžęs į bokštą, gali nusamdyti dar du karius. Tam aukso "
+"Nuostabi mintis. Grįžusi į bokštą, gali nusamdyti dar du karius. Tam aukso "
 "turi per akis."
 
 #. [then]
@@ -701,9 +693,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1021
-#, fuzzy
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr "Ponai, iškamša negyva, o aš gavau patirties!"
+msgstr "Iškamša negyva, o aš gavau patirties!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1026
@@ -773,12 +764,11 @@ msgstr ""
 "pereiti prie kito scenarijaus."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
-#, fuzzy
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
-"*Atminkite:\n"
+"<big>Atminkite:</big>\n"
 "Beveik viską galite atšaukti mygtuku „u“. Naudinga taisant klaidas."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
@@ -891,7 +881,7 @@ msgstr "Taip, samdyk daugiau dalinių. Manau, tau gali jų prireikti!"
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
-msgstr "Wesnoth apmokymas II dalis"
+msgstr "Vesnoto apmokymas II dalis"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
@@ -1031,15 +1021,13 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
-"Per apmokymą $recall_name1 gavo $recall_xp1 patirties taškų, o $recall_name2 "
-"gavo $recall_xp2. Reikia juos sugrąžinti, kad jie ir toliau kauptų patirtį, "
-"o ne samdyti naujus."
+"Per apmokymą $recall_name1 ir $recall_name2 gavo po $recall_xp1. Reikia juos "
+"sugrąžinti, kad jie ir toliau kauptų patirtį, o ne samdyti naujus."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -1084,8 +1072,8 @@ msgid ""
 msgstr ""
 "Jeigu kuris nors iš paskutiniame mūšyje dalyvavusių elfų kovotojų būtų "
 "įgavęs patirties, mes juos sugrąžintume į mūšio lauką. Tačiau, nė vienas "
-"dalinys neįgijo daug patirties, taigi pigiau bus pasamdyti naujus. Pasamdyk "
-"elfų kovotoją."
+"dalinys neįgijo daug patirties, taigi bus naudingiau pasamdyti naujus. "
+"Pasamdyk elfų kovotoją."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
@@ -1330,13 +1318,12 @@ msgstr "Orkai nemoka šaudyti, tad prieš juos naudok lankininkus."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
-#, fuzzy
 msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
-"Pulkite orką su lankininku (užvedus pelę ant dalinio, dešinėje matosi jo "
-"aprašymas)"
+"Pulkite orką su lankininku\n"
+"(užvedus pelę ant dalinio, dešinėje matosi jo aprašymas)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1674,13 +1661,12 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
-"Pasiilgsime $deadguy.name|, nes jis turėjo $deadguy.experience patirties "
-"taškų, jau greitai būtų pasiekęs antrą lygį."
+"Pasiilgsime $deadguy.name|, nes ji turėjo $deadguy.experience patirties "
+"taškų, jau greitai būtų pasiekusi antrą lygį."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1740,15 +1726,14 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Pakilus lygiui pilnai pagijau!\n"
-"Dabar, kai esu snaiperis, kiekvienas šūvis turi 60% tikimybę pataikyti ir "
-"padaro 9 taškus žalos, 4 šūvius per ėjimą. Būsiu naudingas naikinant "
+"Dabar, kai esu snaiperė, kiekvienas šūvis turi 60% tikimybę pataikyti ir "
+"padaro 9 taškus žalos, 4 šūvius per ėjimą. Būsiu naudinga naikinant "
 "sunkiuosius dalinius."
 
 #. [message]: speaker=unit
@@ -1847,15 +1832,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "kovos spragilas"
-
-#~ msgid ""
-#~ "Hello translators! Tutorial is meant to be a little funny at the start, "
-#~ "welcoming new players. Please keep friendly fun feeling! Any questions "
-#~ "email rusty@rustcorp.com.au!"
-#~ msgstr ""
-#~ "Sveiki, vertėjai! Apmokymas sumanytas būti pradžioje truputį juokingas, "
-#~ "taip sveikindamas naujus žaidėjus. Prašom išlaikyti draugišką ir linksmą "
-#~ "toną! Klausimus siųskite el. paštu rusty@rustcorp.com.au!"
-
-#~ msgid "*Galdrad"
-#~ msgstr "*Galdradas"
