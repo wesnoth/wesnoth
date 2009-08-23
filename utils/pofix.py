@@ -24,7 +24,7 @@
 #
 # Example usage:
 # utils/pofix.py po/wesnoth*/*.po*
-# find data/campaigns/ -name '*.cfg' | xargs utils/pofix.py
+# find data/campaigns/ -name '*.cfg' -print0 | xargs -0 utils/pofix.py
 #
 # Three lines in the structure below, marked with "#*", imply changes of
 # meaning that may require a change in translation.
@@ -196,6 +196,7 @@ stringfixes = {
 ("lords of light", "Lords of Light"),
 ("mater what race they come from - even orcs.", "matter what race they come from - even orcs."),
 ("I think we have a chance to make new some allies here...", "I think we have a chance to make some new allies here..."),
+("Such were the last words of of Rakshas the great!", "Such were the last words of Rakshas the great!"),
 ),
 
 "wesnoth-low" :(
@@ -246,7 +247,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1250596411  # Tue 18 Aug 2009 11:53:31 AM UTC
+timecheck = 1250986724  # Sun 23 Aug 2009 12:18:44 AM UTC
 
 
 import os, sys, time, stat
